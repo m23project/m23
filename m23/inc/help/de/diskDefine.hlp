@@ -1,0 +1,18 @@
+Festplattentyp und Größe definieren<!--new v1.6-->
+
+Geben Sie hier die Eigenschaften der Festplatte des definierten Clients an. Da keine Hardwareinformationen über diesen Client ermittelt werden können, müssen Sie definieren, um welchen Festplattentyp (IDE, SCSI) es sich handeln und wie groß das Laufwerk sein soll. Die hier definierte Größe sollte ungefähr mit den Festplattengrößen der abgeleiteten Clients übereinstimmen, die Sie über diesen definierten Client installieren möchten.
+<u>Hinweis</u><ul>
+<LI><b>IDE</b>: /dev/hd? bezeichnet die IDE-Laufwerke, wobei /dev/hda das erste, /dev/hdb das zweite, ... ist.</LI>
+<LI><b>SCSI</b>: Dem entsprechnend bezeichnen /dev/sd? die SCSI-Laufwerke.</LI></ul>
+
+<u>Anpassungskriterien</u>
+Da davon auszugehen ist, daß die hier definierten Festplatten-Parameter nicht für alle Ihre Clients zutreffen, gibt es verschiedene Methoden, wie m23 die Partitionen individuell für die einzelnen Clients anpassen kann.
+<ul><LI>Das <i>"$I18N_diskSelectionCriteria"</i> legt fest, nach welchem Schema die Festplatte im Zielrechner ausgewählt werden soll, falls mehrere Festplatten vorhanden sind.
+	<ul><LI><i>"$I18N_asSpecified"</i> benutzt die oben angegebene Festplatte auch, wenn im Client Festplatten vorhanden sind, die in ihrer Größe ähnlicher sind. Existiert diese Festplatte nicht (z.B. kein Laufwerk /dev/hda in einem reinen SCSI-System), so wird eine andere Festplatte ausgewählt. Wird diese Funktion nicht aktiviert, so wird automatisch die beste Festplatte nach den folgenden Kriterien ausgewählt.</LI>
+
+	<li>Die Toleranzangaben bei <i>"$I18N_identicalType"</i> und <i>"$I18N_otherTypes"</i> geben an, wie groß die Toleranz nach oben (Client-Festplatte ist größer als die definierte) und unten (Client-Festplatte ist kleiner) von der definierten Größe sein soll. Festplatten, die innerhalb der Toleranz liegen, werden als Übereinstimmung mit der Definition gewertet. Wenn Festplatten gleichen Typs (z.B. vom Typ IDE) bevorzugt werden sollen, so wählen Sie bei <i>$I18N_otherTypes</i> einen kleineren oder keinen (obere und untere Toleranzgrenze auf 0 setzen) Toleranzbereich.</ul><br><br>
+	<u>Hinweis</u>
+	Die Toleranz-Werte können in GigaByte (nachgestelltes GB) oder in Prozent (nachgestelltes %) angegeben werden. Z.B. 100% für eine obere Toleranz bedeutet, daß eine Festplatte doppelt so groß sein darf.
+	</li>
+</LI>
+</ul>

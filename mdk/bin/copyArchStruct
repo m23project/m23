@@ -1,0 +1,99 @@
+#! /bin/sh
+
+olddir=$1
+newdir=$2
+newroot=$3
+
+mkdir -p $newroot/bin
+mkdir -p $newroot/lib
+ln -s $newroot/lib $newroot/lib64
+
+if test $# -ne 3
+then
+	echo "Copies architecture specific bootimage files"
+	echo "usage $0 <olddir> <newdir> <newroot>"
+	exit
+fi
+
+echo "Copying files.."
+for file in `find $olddir/bin -type f | sed 's#'$olddir/bin/'##'`
+do
+	if [ -e $newdir/bin/$file ]
+	then
+		str=bin
+	elif [ -e $newdir/sbin/$file ]
+	then
+		str=sbin
+	elif [ -e $newdir/usr/bin/$file ]
+	then
+		str=usr/bin
+	elif [ -e $newdir/usr/local/bin/$file ]
+	then
+		str=usr/local/bin
+	elif [ -e $newdir/usr/sbin/$file ]
+	then
+		str=usr/sbin
+	else
+		echo "$file not found in $newdir"
+		str=0
+	fi
+
+	if [ $str != "0" ]
+	then
+		cp $newdir/$str/$file $newroot/bin/
+		for lib in `ldd $newdir/$str/$file | egrep lib | cut -d "=" -f1`
+		do
+			if [ -e $newdir/lib/$lib ]
+			then
+				if [ ! -e $newroot/lib/$lib ]
+				then
+					cp $newdir/lib/$lib $newroot/lib/
+				fi
+			elif [ -e $newdir$lib ]
+			then
+				if [ ! -e $newroot$lib ]
+				then
+					cp $newdir$lib $newroot$lib
+				fi
+			fi
+		done
+	fi
+done
+echo "Copying files done"
+
+echo "Creating symlinks.."
+for folder in bin lib
+do
+	for link in `find $olddir/$folder -type l | sed 's#'$olddir/$folder/'##'`
+	do
+		target=`find $olddir/$folder/$link -printf %l`
+		if [ -e $newroot/$folder/$target ]
+		then
+			if [ -L $newroot/$folder/$link ]
+			then
+				echo "Symlink already exists $newroot/$folder/$link - skipping"
+			else
+				if [ -e $newroot/$folder/$target ]
+				then
+					cd $newroot/$folder
+					ln -s $target $link
+				else
+					echo "Sourcefile $newroot/$folder/$target doesn't exist - skipping"
+				fi
+			fi
+		fi
+
+		if [ $folder = lib ]
+		then
+			for link2 in `find $newdir/$folder/ -type l | sed 's#'$newdir/$folder/'##'`
+			do
+				target=`find $newdir/$folder/$link2 -printf %l`
+				if [ -e $newroot/$folder/$target ]
+				then
+					cd $newroot/$folder
+					ln -s $target $link2
+				fi
+			done
+		fi
+	done
+done

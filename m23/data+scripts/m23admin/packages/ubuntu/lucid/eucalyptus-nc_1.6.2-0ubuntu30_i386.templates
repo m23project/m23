@@ -1,0 +1,14 @@
+Template: eucalyptus-nc/no_vmx
+Type: error
+Description: This hardware does not support virtualization acceleration
+ This system's CPU does not have support for virtualization acceleration,
+ which is strongly recommended for Eucalyptus Nodes.  Eucalyptus running on
+ this hardware will be unaccelerated.
+
+Template: eucalyptus/cluster-name
+Type: string
+Default: cluster1
+Description: Eucalyptus cluster name:
+ Enter a name for this cluster. The name should contain only ASCII letters,
+ digits, hyphens, and underscores. It will be shown to users as the name of
+ an availability zone.

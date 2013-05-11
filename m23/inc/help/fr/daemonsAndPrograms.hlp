@@ -1,0 +1,30 @@
+<!-- V1.7 new -->$I18N_daemons_and_programs
+
+<b>$I18N_daemons</b>
+
+<u>Notez</u>
+Des <b>démons</b>, sont des programmes serveur toujours actifs en tâche de fond dont on ne visualise l'exécution correcte de leur travaux ;-). Par exemple, le serveur internet Apache et le serveur de base de données MySQL, sont des démons.
+
+<u>Signification des couleurs</u>
+<ul><LI><b>vert:</b> Le démon est actif en tâche de fond et peut être arrêté ou relancé. Il n'est <b>pas recommandé</b> d'arrêter un démon.</LI>
+<LI><b>jaune:</b> Le démon est installé, non lancé, mais activable. Plusieurs démons pourront être lancés seulement s'il sont ponctuellement nécessaires. Un démon dans cet état peut être lancé.</LI>
+<LI><b>rouge:</b> Le démon n'est pas installé et ne peut être activé. Dans ce cas, un composant important de m23 a été effacé ou n'a pas été installé. Vous pouvez l'installer en choisissant &laquo;$I18N_install&raquo; après le démon, puis en cliquant sur &laquo;$I18N_doActions&raquo;.</LI>
+</ul>
+
+<u>Description des démons</u>
+<ul><LI><b>apache:</b> Apache est un serveur internet faisant partie du c&oelig;ur de m23. L'interface d'administration et les travaux à exécuter sur les postes client sont générés via apache par PHP.</LI>
+<LI><b>mysql:</b> MySQL est un serveur de base de données administrant par exemple les propriétés des postes client.</LI>
+<LI><b>dhcpd3:</b> Le serveur DHCP assigne les adresses IP pour l'installation des clients. Il ne peut être lancé que si au moins un poste client doit être installé. L'état &laquo;jaune&raquo; ne signifie pas une erreur.</LI>
+<!--V1.11 begin--><LI><b>slapd:</b> est le démon du serveur LDAP <a href="http://www.openldap.org">OpenLDAP</a>. LDAP permet de stocker les identifiants de connexion sur un serveur central et de les utiliser depuis tout client pouvant accéder à ce serveur.</LI><!--V1.11 end-->
+</ul>
+
+
+<!-- commented out in 11.3 <b>$I18N_helperApplications</b> 
+
+<u>Notez</u>
+<b>$I18N_helperApplications</b> sont des programmes très utiles, seulement activés au besoin. Quelques-uns sont simplement nécessaires pour m23, les autres peuvent être utiles. 
+
+<ul><LI><b>wget (absolument nécessaire):</b> m23 en a besoin pour la mise à jour des logiciels du serveur.</LI>
+<li><b>pwgen (utile):</b> Génère des mots de passe aléatoires des postes client pour l'installation de masse; ils sont facilement mémorisables par les humains. Lorsque pwgen n'est pas installé, les mots de passe sont créés complètement aléatoirement (donc plus difficilement mémorisables).</li>
+<li><b>Programmes de gravure (utiles):</b>  Il s'agit de différents programmes nécessaires pour la gravure des CDRoms de démarrage des clients avec le serveur m23. La gravure est possible depuis l'interface d'administration de m23.
+</ul>-->

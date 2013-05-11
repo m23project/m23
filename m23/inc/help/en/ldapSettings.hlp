@@ -1,0 +1,8 @@
+$I18N_manageLDAPServers<!--v 1.10-->
+
+You can manage different LDAP servers in this dialog that can be used for user authentification on the clients. An OpenLDAP server can be installed and configured in addition.
+
+<ul><LI><b>Add a new LDAP server</b>: Please enter the needed information in the edit lines. The name of the server is "free form" and is entered under <i>"$I18N_LDAPServerName"</i>. It is not required to be the same as the hostname of the LDAP server.<i>"$I18N_LDAPServerHost"</i> has to be the IP or hostname of the LDAP server and must be resolvable from all clients. The preselected port can be cachanged under <i>"$I18N_LDAPServerPort"</i>. If you enter a valid administrator password under <i>"$I18N_password"</i> and <i>"$I18N_repeated_password"</i> the LDAP server can be used for storing new usr accounts. If you leave empty both passwords the server is assumed as read only. Click on <i>"$I18N_add"</i> after entering all required data.</LI>
+<li><b>Change an existing LDAP server</b>: Choose a LDAP server from the drop down list and click on <i>"$I18N_load"</i>. Now you can see all server data in the edit lines. Modify any values you want and click on <i>"$I18N_saveChanges"</i> afterwards.</li>
+<li><b>Delete a LDAP server</b>: Choose a LDAP server from the drop down list and click on <i>"$I18N_delete"</i>.</li>
+<li><b>Edit entries of the LDAP servers</b>: m23 uses the frontend <a href="http://phpldapadmin.sf.net" target="_blank">phpLDAPadmin</a> for editing entries. phpLDAPadmin can be started with a click on the phpLDAPadmin logo.</li></ul>

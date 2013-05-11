@@ -1,0 +1,22 @@
+Définir le type et la taille du disque dur
+
+Entrez les propriétés du disque dur pour le poste client maître, puisqu'elles ne peuvent être collectées sur ce dernier. Vous devez définir le type de disque dur (IDE, SCSI) et la taille à utiliser. La taille ainsi définie devrait correspondre, à peu de chose près, à la taille du disque dur des postes client réels.
+<u>Notez</u><ul>
+<LI><b>IDE:</b> /dev/hd? indique les disques IDE, /dev/hda le premier, /dev/hdb le deuxième etc.</LI>
+<LI><b>SCSI:</b> /dev/sd? indiquent les disques SCSI.</LI></ul>
+
+<u>Critères d'ajustement</u>
+Nous supposons que les paramètres du disque dur définis ne peuvent s'appliquer à tous vos postes clients. M23 fournit différentes méthodes pour l'adaptation individuelle des partitions pour vos différents clients.
+<ul><LI>Le <i>&laquo;$I18N_diskSelectionCriteria&raquo;</i> détermine l'algorithme de sélection du disque dur dans le cas ou il y en aurait plusieurs.
+	<ul>
+		<LI>La fonction <i>&laquo;$I18N_asSpecified&raquo;</i> force l'utilisation du disque dur sélectionné ci-dessus, bien qu'il puisse y avoir des disques durs dont la taille correspondrait mieux à la taille requise. Si ce disque dur n'existait pas (par exemple s'il n'y a pas de /dev/hda pour un système SCSI), un autre disque dur sera sélectionné. Si cette fonction n'est pas activée, le disque dur le mieux adapté sera sélectionné selon les critères suivants:</LI>
+
+		<li>Les bornes de tolérance pour <i>&laquo;$I18N_identicalType&raquo;</i> et <i>&laquo;$I18N_otherTypes&raquo;</i> indiquent la taille maximum (le disque dur du client est plus grand que celui du poste client maître) et la taille minimum (le disque dur du client est plus petit que celui du client maître). Des disques durs dont la taille est comprise entre ces deux valeurs sont conformes. Lorsque des disques durs d'un même type doivent (par exemple du type IDE) être utilisés, sélectionnez des bornes de tolérences plus restreintes (mettre les bornes de tolérances supérieures et inférieures sur 0) pour le disque dur <i>&laquo;$I18N_otherTypes&raquo;</i>.
+
+		<u>Notez</u>
+		Les bornes de tolérances peuvent être entrées en GigaByte (suivi par un GB) ou en pour-cent (suivie par %). Par exemple 100% pour la borne supérieure signifie que la taille du disque dur peut être deux fois plus grande.
+       </li>
+	</ul>
+	
+	</LI>
+</ul>

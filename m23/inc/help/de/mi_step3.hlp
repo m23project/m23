@@ -1,0 +1,34 @@
+<!--v1.5-->Generator-Optionen
+
+Hier können Sie die Parameter für die Generatoren der folgenden Eigenschaften festlegen:
+<ul>
+<LI><b>$I18N_client_name</b>: Sie können hier den Client-Basis-Namen und eine Startnummer vorgeben. Die Clientnamen werden dann in der benötigten Anzahl nach dem Schema &lt;Client-Basis-Name&gt;&lt;fortlaufende Nummer&gt; erstellt. Bereits vergebene Client-Namen werden bei der Generierung übersprungen. Bsp.: Client-Basis-Name=m23client, Startnummer=12 generiert die Clientnamen m23client12, m23client13, ...</LI>
+<!--V1.11 begin--><LI><b>$I18N_login_name</b>: Dies ist der Name, mit dem sich der Benutzer am Client anmelden kann. Es stehen zwei Methoden zur Generierung zur Verfügung. Die inkrementelle Variante verhält sich identisch zur Erstellung bei <i>"$I18N_client_name"</i>. Zusätzlich ist das Bilden aus dem ersten Buchstaben des Vornamens und dem vollständigen Nachnamen möglich (<i>"$I18N_generateFromForenameAndFamilyname"</i>).</LI><!--V1.11 end-->
+<LI><b>$I18N_forename</b>: Die Generierung der Vornamen (die zugleich die Loginnamen sind) geschieht analog zu den Clientnamen.</LI>
+<LI><b>$I18N_ip</b>: Legen sie hier die IP-Adressen-Bereiche fest, in denen nach freien IP-Adressen gesucht werden soll. Standardmäßig werden nur IP-Adressen generiert, die nicht bereits von m23-Clients benutzt werden. Sie können aber auch angeben, daß jede IP-Adresse vor der Verwendung "angepingt" werden soll. Sollte sich unter einer oder mehreren IP-Adressen ein Rechner melden, so werden diese IPs nicht verwendet.</LI>
+<LI><b>$I18N_netmask</b>: Die Netzwerkmasken werden automatisch nach Schema der Netzwerk-Klassen berechnet. Dieses ist per Definition folgendermaßen:
+<table>
+	<tr>
+		<td>Von</td>
+		<td>Bis</td>
+		<td>Netzwerkmaske</td>
+	</tr>
+	<tr>
+		<td>0.0.0.0</td>
+		<td>127.255.255.255</td>
+		<td>255.0.0.0</td>
+	</tr>
+	<tr>
+		<td>128.000.000.000</td>
+		<td>191.255.255.255</td>
+		<td>255.255.0.0</td>
+	</tr>
+	<tr>
+		<td>192.000.000.000</td>
+		<td>255.255.255.255</td>
+		<td>255.255.255.0</td>
+	</tr>
+</table></LI>
+<LI><b>$I18N_first_login</b>: Für dieses Login können die Paßwörter komplett zufällig (<i>"$I18N_randomPasswords"</i>) oder nach einem zufälligen aber für Menschen leichter merkbaren Schema (<i>"$I18N_pwgenPasswords"</i>) angelegt werden. Außerdem kann die Länge der generierten Paßwörter zwischen 6 und 8 Zeichen Länge variiert werden. Es wird empfohlen, die voreingestellte Länge von 8 beizubehalten.</LI>
+<!-- begin 1.10--><LI><b>$I18N_userID</b>: Legen Sie hier die Startnummer fest, ab der freie Benutzer-IDs gesucht und verwendet werden sollen.</LI>
+<LI><b>$I18N_groupID</b>: Legen Sie hier die Startnummer fest, ab der freie Gruppen-IDs gesucht und verwendet werden sollen.</LI><!-- end 1.10--></ul>

@@ -1,0 +1,1687 @@
+
+Template: postfix/mydomain_warning
+Type: boolean
+Description: Add a 'mydomain' entry in main.cf for upgrade?
+ Postfix version 2.3.3-2 and later require changes in main.cf.
+ Specifically, mydomain must be specified, since hostname(1) is not
+ a fully qualified domain name (FQDN).
+ .
+ Failure to fix this will result in a broken mailer. Decline this option
+ to abort the upgrade, giving you the opportunity to add this configuration
+ yourself. Accept this option to automatically set mydomain based on the
+ FQDN of the machine.
+Description-ca.UTF-8: Voleu afegir l'entrada «mydomain» al fitxer main.cf per a l'actualització?
+ A partir de la versió 2.3.3-2 de Postfix es requereixen canvis a main.cf. Més concretament, s'ha d'especificar «mydomain», ja que hostname(2) no és un nom de domini completament qualificat (FQDN).
+ .
+ Si es produeix una fallada en aquest punt, el funcionament de l'administrador de correu pot veure's interromput. Declineu aquesta opció si voleu avortar l'actualització i afegir aquesta configuració manualment. Accepteu si preferiu que s'estableixi «mydomain» automàticament a partir de l'FQDN de la màquina.
+Description-cs.UTF-8: Přidat při aktualizaci do souboru master.cf záznam „mydomain“?
+ Postfix verze 2.3.3-2 a novější vyžadují změnu v main.cf. Konkrétně musí být zadáno mydomain, protože hostname(2) není plně kvalifikované doménové jméno (FQDN).
+ .
+ Opomenutí této opravy bude mít za následek nefunkční poštu. Pro přerušení aktualizace tuto volbu odmítněte, dostanete tak příležitost přidat toto nastavení sami. Chcete-li nastavit mydomain na plně kvalifikované doménové jméno tohoto počítače automaticky, volbu přijměte.
+Description-de.UTF-8: Einen »mydomain«-Eintrag in main.cf beim Upgrade hinzufügen?
+ Postfix, Version 2.3.3-2 und neuer, benötigt Änderungen in der main.cf. Insbesondere muss »mydomain« angegeben werden, da hostname(1) kein voll-qualifizierter Domain-Name (FQDN) ist.
+ .
+ Wenn Sie dies nicht korrigieren, wird Ihr E-Mail-Server unbrauchbar. Verneinen Sie, um das Upgrade abzubrechen und diese Änderung selbst vorzunehmen. Akzeptieren Sie, um, basierend auf dem FQDN, mydomain automatisch zu setzen.
+Description-es.UTF-8: ¿Desea añadir la entrada «mydomain» en el archivo «main.cf» al actualizar?
+ La versión 2.3.3-2 de Postfix y posteriores requieren realizar cambios en «main.cf». Específicamente, se debe definir «mydomain», puesto que hostname(1) no es un nombre de dominio cualificado (FQDN).
+ .
+ En caso de no corregirse, el sistema de correo quedará inestable. Rechace esta opción para cancelar la actualización, esto le dará la oportunidad de añadir la configuración usted mismo. Acepte esta opción para definir «mydomain» automáticamente basandose en el FQDN de la máquina.
+Description-eu.UTF-8: Bertsio berritzerako main.cf-en 'mydomain' sarrera bat gehitu
+ Postfix 2.3.3-2 bertsio eta berriagoek main.cf fitxategian aldaketa batzuk egitea behar dute. Zehazki, mydomain ezarri egin behar da, hostname(1) ez bada guztiz kualifikaturiko domeinu izen (FQDN) bat.
+ .
+ Hau konpontzean huts egiteak posta sistema apurtzea eragin dezake. Aukera hau alde batetara utzi bertsio berritzea utzi eta konfigurazio aldaketak eskuz egiteko aukera izateko. Aukera honen ezarpen automatikoa onartu mydomain makinaren FQDN-ra ezartzeko.
+Description-fi.UTF-8: Lisää "mydomain"-kenttä main.cf:ään päivitettäessä?
+ Postfix versiosta 2.3.3-2 alkaen vaatii muutoksen main.cf:ään. Erityisesti mydomain pitää määritellä, koska hostname(1) ei ole täydellinen toimialuenimi (FQDN).
+ .
+ Tämän korjaamisen epäonnistuessa postipalvelin ei toimi. Kieltäytymällä tästä valinnasta keskeytyy päivitys, ja sinulle annetaan mahdollisuus lisätä tämä asetus itse. Hyväksymällä tämän valinnan mydomain asetetaan automaattisesti tämän tietokoneen FQDN:ksi.
+Description-fr.UTF-8: Faut-il ajouter une entrée « mydomain » dans main.cf pour la mise à jour ?
+ À partir de la version 2.3.3-2, Postfix nécessite des modifications du fichier main.cf. En particulier, « mydomain » doit être indiqué puisque hostname(1) n'est pas un nom de domaine complètement qualifié (FQDN).
+ .
+ Si vous ne faites pas cette correction, le serveur de courriels ne fonctionnera pas. Si vous refusez cette option, la mise à jour sera interrompue, ce qui vous donnera l'occasion de faire vous-même cette configuration. Choisissez cette option pour définir automatiquement « mydomain » en fonction du nom de domaine complètement qualifié de la machine.
+Description-gl.UTF-8: ¿Engadir unha entrada mydomain en main.cf para a actualización?
+ Postfix versión 2.3.3-2 e posteriores precisan de cambios en main.cf. En particular, hai que especificar mydomain, xa que hostname(1) non fornece un nome de dominio completamente cualificado (FQDN).
+ .
+ Se non arranxa isto ha ter un sistema de correo roto. Rexeite esta opción para abortar a actualización, o que lle ha dar a oportunidade de engadir esta configuración vostede mesmo. Acepte esta opción para facer que mydomain estea automaticamente baseado no nome de dominio completo (FQDN) da máquina.
+Description-it.UTF-8: Aggiungere una voce 'mydomain' a main.cf per l'aggiornamento?
+ Postfix a partire dalla versione 2.3.3-2 richiede delle modifiche in main.cf. In particolare, mydomain deve essere specificato, visto che hostname(1) non è un fully qualified domain name (FQDN).
+ .
+ Se non si corregge questa impostazione, il programma sarà inutilizzabile. Rifiutando questa proposta, l'aggiornamento verrà annullato e si potrà eseguire manualmente la modifica alla configurazione. Accettando la proposta il valore di mydomain sarà impostato automaticamente al FQDN del sistema.
+Description-ja.UTF-8: 更新のために master.cf に mydomain エントリを追加しますか?
+ Postfix バージョン 2.3.3-2 以降では、main.cf の変更を必要とします。特に、hostname(1) が完全修飾ドメイン名 (FQDN) ではなくなったので、 mydomain を指定する必要があります。
+ .
+ これを修正するのに失敗すると、壊れたメーラとなってしまいます。更新を中止するにはこの選択肢に「いいえ」とし、この設定をあなた自身で追加します。この選択肢で「はい」と答えれば、自動的にマシンの FQDN に基き mydomain を設定します。
+Description-ko.UTF-8: 업그레이드시 main.cf에 'mydomain' 항목을 추가할까요?
+ Postfix 2.3.3-2 이후 버전을 사용하실 때는 main.cf를 수정하셔야 합니다. 구체적으로는 mydomain을 지정하셔야 합니다. 그 이유는 hostname(1)은 정규화된 도메인 이름(FQDN)이 아니기 때문입니다.
+ .
+ 이 문제를 해결하지 않으시면 이메일 프로그램이 제대로 동작하지 않습니다. 업그레이드를 중단시키려면 이 옵션을 거부하십시오. 이 항목을 직접 추가하실 수 있습니다. 머신의 FQDN에 따라 mydomain을 자동으로 설정하려면 이 옵션을 받아들이십시오.
+Description-nl.UTF-8: Wilt u een 'mydomain'-ingang toevoegen aan main.cf voor de opwaardering?
+ Postfix-versie 2.3.3-2 en later vereisen aanpassingen in main.cf. Specifiek dient mydomain aangegeven te zijn, aangezien hostname(1) geen Volledig gekwalificeerde domeinnaam (FQDN) is.
+ .
+ Als u nalaat om dit te in te stellen resulteert dit in een niet-werkend e-mail-systeem. Als u de opwaardering wilt afbreken dient u hier te weigeren, u kunt de configuratie dan zelf toevoegen. Als u wilt dat mydomain automatisch ingesteld wordt afgaande op de FQDN van deze machine dient u dit te aanvaarden.
+Description-pt.UTF-8: Acrescentar uma entrada 'mydomain' no main.cf para a actualização?
+ As versões 2.3.3-2 e posteriores do Postfix necessitam de alterações no main.cf. Especificamente, o mydomain tem de ser especificado, já que o hostname(1) não é um nome de domínio totalmente qualificado (FQDN).
+ .
+ Falhar corrigir isto resultará num mailer estragado.  Rejeite esta opção para abortar a actualização, dando-lhe a oportunidade de acrescentar você mesmo esta configuração.  Aceite esta opção para definir automaticamente o mydomain baseado no FQDN da máquina.
+Description-ru.UTF-8: Добавить запись 'mydomain' в main.cf для обновления?
+ Postfix версии 2.3.3-2 и более требует изменений в main.cf. А именно, необходимо задать mydomain, поскольку hostname(2) не является полностью определённым именем домена (FQDN).
+ .
+ Невозможность исправления приведёт к неработоспособной почтовой программе. Отказ от этого параметра прервёт обновление, что даст вам возможность добавить эту настройку самостоятельно. Примените этот параметр, для автоматической установки mydomain в соответствии с FQDN машины.
+Description-sv.UTF-8: Lägg till en "mydomain"-post i main.cf inför uppgraderingen?
+ Postfix version 2.3.3-2 och senare kräver ändringar i main.cf. Specifikt måste "mydomain" anges eftersom hostname(1) inte är ett fullständigt kvalificerat domännamn (FQDN).
+ .
+ Om inte du rättar till dessa felaktigheter kommer e-postsystemet inte att fungera korrekt. Vägra denna inställning för att avbryta uppgraderingen och ge dig möjligheten att lägga till denna konfiguration själv.  Acceptera inställningen för att automatiskt ställa in "mydomain" baserat på FQDN för maskinen.
+Description-ta.UTF-8: மேம்படுத்த main.cf இல் 'mydomain'  உள்ளீடு ஒன்றை சேர்க்கலாமா?
+ போஸ்ட்பிக்ஸ் பதிப்பு 2.3.3-2 அல்லது அதற்கு பிந்தையவற்றுக்கு main.cf இல் மாற்றங்கள் தேவை. குறிப்பாக mydomain குறிக்கப்படவேண்டும். ஏனெனில் hostname(1) என்பது முழுமையாக ஏற்கப்பட்ட களப்பெயர் (FQDN) அல்ல.
+ .
+ இதை சரி செய்யாவிடில் அஞ்சல் நிரல்கள் செயல்படா. மேம்படுத்தலை கைவிட இதை நிராகரியுங்கள். பின் நீங்களே இந்த வடிவமைப்பை கை முறையாக சேர்க்கலாம். இந்த தேர்வை ஏற்பின் இந்த கணினியின் முழுமையாக ஏற்கப்பட்ட களப்பெயர் (FQDN) ஐ ஆதாரமாக கொண்டு தானியங்கியாக mydomain அமைக்கப்படும்.
+Description-vi.UTF-8: Têm mục nhập « mydomain » vào « main.cf » để nâng cấp không?
+ Postfix phiên bản 2.3.3-2 và sau cũng cần thiết một số thay đổi trong tập tin « main.cf ». Chính xác là « mydomain » phải được ghi rõ, vì hostname(1) không phải là một tên miền có khả năng đầy đủ (FQDN).
+ .
+ Không sửa thì trình thư bị hỏng. Từ chối tùy chọn này để hủy bỏ việc nâng cấp, cho bạn có dịp tự thêm cấu hình này. Còn chấp nhận tùy chọn này để tự động đặt « mydomain » dựa vào FQDN của máy.
+
+Template: postfix/kernel_version_warning
+Type: boolean
+Description: Install postfix despite an unsupported kernel?
+ Postfix uses features that are not found in kernels prior to 2.6. If you
+ proceed with the installation, Postfix will not run.
+Description-ca.UTF-8: Voleu instal·lar postfix malgrat que el nucli no està suportat?
+ Postfix utilitza característiques que no es troben en nuclis anteriors a 2.6. Si continueu amb la instal·lació, Postfix no s'executarà.
+Description-cs.UTF-8: Instalovat postfix navzdory nepodporovanému jádru?
+ Postfix vyžaduje vlastnosti, které se nachází pouze v jádrech řady 2.6 a novějších. Budete-li pokračovat v instalaci, Postfix nebude fungovat.
+Description-de.UTF-8: Postfix trotz eines nicht-unterstützten Kernels installieren?
+ Postfix verwendet Funktionen, die nicht in Kerneln von 2.6 gefunden werden können. Falls Sie mit der Installation fortfahren, wird Postfix nicht funktionieren.
+Description-es.UTF-8: ¿Desea instalar postfix aún cuando no está soportado por el núcleo?
+ Postfix utiliza características que no están disponibles en núcleos anteriores a 2.6. Si continua con la instalación, Postfix no se ejecutará.
+Description-eu.UTF-8: Postfix instalatu nahiz onartugabeko kernela izan?
+ Postfix-ek 2.6 kernelaren aurretikoak ez dituzten ezaugarri batzuek erabiltzen ditu. Instalazioarekin aurrera eginaz gero postfix ezingo da abiarazi.
+Description-fi.UTF-8: Asenna postfix välittämättä tuettomasta ytimestä?
+ Postfix käyttää ominaisuuksia, joita ei löydy ytimistä ennen 2.6. Mikäli jatkat asennusta, Postfix ei toimi.
+Description-fr.UTF-8: Faut-il installer postfix malgré l'incompatibilité du noyau ?
+ Postfix utilise des fonctionnalités indisponibles avant la version 2.6 du noyau. Si vous poursuivez l'installation, Postfix ne fonctionnera pas.
+Description-gl.UTF-8: ¿Instalar postfix a pesares de ter un núcleo non soportado?
+ Postfix emprega características que non existen nos núcleos anteriores a 2.6. Se continúa coa instalación, Postfix non ha funcionar.
+Description-it.UTF-8: Installare postfix anche se il kernel non è supportato?
+ Postfix usa funzionalità che non sono disponibili nelle versioni del kernel precedenti alla 2.6. Se si procede con l'installazione, Postfix non verrà eseguito.
+Description-ja.UTF-8: サポートされていないカーネルですが、postfix をインストールしますか?
+ Postfix は、2.6 より古いカーネルにはない機能を使います。インストールを続ける場合、Postfix は動作しません。
+Description-ko.UTF-8: 지원하지 않는 커널임에도 postfix를 설치할까요?
+ Postfix는 2.6 커널 이전에는 없는 기능을 사용합니다. 설치를 계속하실 경우 Postfix는 동작하지 않습니다.
+Description-nl.UTF-8: Postfix toch installeren niettegenstaande dat u een niet-ondersteunde kernel heeft?
+ Postfix maakt gebruik van features die in kernelversies kleiner dan 2.6 niet beschikbaar zijn.  Als u doorgaat met de installatie zal Postfix niet werken.
+Description-pt.UTF-8: Instalar o postfix apesar de um kernel não suportado?
+ O Postfix utiliza funcionalidades que não se encontradm em kernels anteriores ao 2.6. Se continuar com a instalação, o Postfix não irá correr.
+Description-ru.UTF-8: Установить postfix несмотря на неподдерживаемое ядро?
+ Postfix использует особенности, которые не заложены в ядра версий до 2.6. Если вы продолжите установку, postfix не будет работать.
+Description-sv.UTF-8: Installera postfix även om kärnan inte stöds?
+ Postfix använder funktioner som inte finns i kärnor före version 2.6. Om du fortsätter med installationen kommer Postfix inte att kunna starta.
+Description-ta.UTF-8: ஆதரவில்லாத உட்கூறு இருப்பினும் போஸ்ட்பிக்ஸ் ஐ நிறுவலாமா?
+ உட்கூறு 2.6 க்கு முந்தையவற்றில் காணப்படாத பண்புகளை போஸ்ட்பிக்ஸ் பயன்படுத்துகிறது. நீங்கள் நிறுவலை தொடர்ந்தால் போஸ்ட்பிக்ஸ் இயங்காது.
+Description-vi.UTF-8: Cài đặt postfix bất chấp hạt nhân không được hỗ trợ không?
+ Postfix có sử dụng một số tính năng không nằm trong hạt nhân cũ hơn 2.6. Tiếp tục cài đặt thì Postfix không chạy.
+
+Template: postfix/retry_upgrade_warning
+Type: boolean
+Description: Correct retry entry in master.cf for upgrade?
+ Postfix version 2.4 requires that the retry service be added to master.cf.
+ .
+ Failure to fix this will result in a broken mailer. Decline this option
+ to abort the upgrade, giving you the opportunity to add this configuration
+ yourself. Accept this option to automatically make master.cf compatible
+ with Postfix 2.4 in this respect.
+Description-ca.UTF-8: Voleu esmenar l'entrada «retry» al fitxer master.cf per a l'actualització?
+ La versió 2.4 de Postfix requereix que s'afegeixi el servei de reintent («retry») al fitxer master.cf.
+ .
+ Si es produeix una fallada en aquest punt, el funcionament de l'administrador de correu pot veure's interromput. Declineu aquesta opció si voleu avortar l'actualització i afegir aquesta configuració manualment. Accepteu si preferiu que es compatibilitzi el fitxer master.cf automàticament amb la versió 2.4 en aquest sentit.
+Description-cs.UTF-8: Opravit záznam retry v souboru master.cf?
+ Postfix verze 2.4 vyžaduje přidání služby retry do master.cf.
+ .
+ Opomenutí této opravy bude mít za následek nefunkční poštu. Pro přerušení aktualizace tuto volbu odmítněte, dostanete tak příležitost přidat toto nastavení sami. Chcete-li mít master.cf po této stránce automaticky kompatibilní s Postfixem 2.4, volbu přijměte.
+Description-de.UTF-8: Möchten Sie den retry-Eintrag in master.cf für ein Upgrade korrigieren?
+ Version 2.4 von Postfix verlangt, dass der »retry«-Dienst zu der master.cf hinzugefügt wird.
+ .
+ Falls Sie dies nicht korrigieren, wird Ihr E-Mail-Server unbrauchbar. Verneinen Sie, um das Upgrade abzubrechen und diese Änderung selbst vorzunehmen. Akzeptieren Sie, um die Datei master.cf in dieser Hinsicht automatisch in ein zu Postfix 2.4 kompatibles Format zu bringen.
+Description-es.UTF-8: ¿Desea corregir la entrada de «retry» en el archivo «master.cf» para la actualización?
+ La versión 2.4 de Postfix requiere que se añada el servicio «retry» en «master.cf»
+ .
+ En caso de no corregirla el sistema de correo quedará inestable. Rechace esta opción para cancelar la actualización, esto le dará la oportunidad de añadirla usted mismo. Acepte esta opción para automáticamente hacer que «master.cf» sea compatible con Postfix 2.4 en este aspecto.
+Description-eu.UTF-8: Bertsio berritzerako master.cf-en retry sarrera zuzendu?
+ Postfix 2.4 bertsioak retry zerbitzua master.cf-ra gehitzea eskatzen du.
+ .
+ Hau konpontzean huts egiteak posta sistema apurtzea eragin dezake. Aukera hau alde batetara utzi bertsio berritzea utzi eta konfigurazio aldaketak eskuz egiteko aukera izateko. Aukera honen ezarpen automatikoa onartu gai honetan master.cf Postfix 2.4-arekin bateragarri egiteko.
+Description-fi.UTF-8: Korjaa retry-tietue master.cf:ssä päivitettäessä?
+ Postfix versio 2.4 tarvitsee retry-palvelun lisäämisen master.cf:ään.
+ .
+ Tämän korjaamisen epäonnistuessa postipalvelin ei toimi. Kieltäytymällä tästä valinnasta keskeytyy päivitys, ja sinulle annetaan mahdollisuus lisätä tämä asetus itse. Hyväksymällä tämän valinnan master.cf asetetaan automaattisesti tämän suhteen yhteensopivaksi Postfix 2.4:n kanssa.<
+Description-fr.UTF-8: Faut-il corriger l'entrée « retry » dans le fichier master.cf ?
+ La version 2.4 de Postfix nécessite que le service « retry » soit ajouté au fichier master.cf.
+ .
+ Si cette correction n'est pas effectuée, le serveur de courriels ne fonctionnera pas. Si vous refusez cette option, la mise à jour sera interrompue, ce qui vous donnera l'occasion d'ajouter vous-même cette configuration. Si vous la choisissez, le fichier master.cf sera rendu compatible avec la version 2.4 de Postfix.
+Description-gl.UTF-8: ¿Corrixir a entrada de retry en master.cf para a actualización?
+ Postfix versión 2.4 precisa de que se engada o servizo retry ao ficheiro master.cf.
+ .
+ Se non arranxa isto ha ter un sistema de correo roto. Rexeite esta opción para abortar a actualización, o que lle ha dar a oportunidade de engadir esta configuración vostede mesmo. Acepte esta opción para facer que master.cf sexa automaticamente compatible con Postfix 2.4 neste respecto.
+Description-it.UTF-8: Correggere la voce retry in master.cf per l'aggiornamento?
+ La versione 2.4 di postfix richiede di aggiungere il servizio retry a master.cf.
+ .
+ Se non si corregge questa impostazione, il programma sarà inutilizzabile. Rifiutando questa proposta, l'aggiornamento verrà annullato e si avrà la possibilità di modificare manualmente la configurazione. Accettando la proposta si renderà master.cf compatibile con Postfix 2.4 in modo automatico.
+Description-ja.UTF-8: 更新のために master.cf の retry エントリを訂正しますか?
+ Postfix バージョン 2.4 では master.cf に retry サービスを追加する必要があります。
+ .
+ これを修正するのに失敗すると、壊れたメーラとなってしまいます。更新を中止するにはこの選択肢に「いいえ」とし、この設定をあなた自身で追加します。この選択肢で「はい」と答えれば、自動的に master.cf は Postfix 4.2 とこの点で互換性を持つようになります。
+Description-ko.UTF-8: 업그레이드시 master.cf에 있는 retry 항목을 고칠까요?
+ Postfix 2.4 버전에서는 master.cf에 retry 항목을 추가해야 합니다.
+ .
+ 이를 고치지 않으면 이메일 프로그램이 제대로 동작하지 않습니다. 이 옵션을 거절하시면 설정을 직접 고치실 수 있도록 업그레이드가 중단됩니다. 이 옵션을 받아들이시면 이 항목에 한해서는 master.cf를 Postfix 2.4에 맞도록 자동으로 수정합니다.
+Description-nl.UTF-8: Wilt u dat de 'retry'-ingang in master.cf verbeterd wordt voor de opwaardering?
+ De 2.4 versie van Postfix vereist dat de 'retry'-dienst toegevoegd wordt aan master.cf .
+ .
+ Als u nalaat om dit te in te stellen resulteert dit in een niet-werkend e-mail-systeem. Als u de opwaardering wilt afbreken dient u hier te weigeren, u kunt de configuratie vervolgens zelf toevoegen. Om master.cf , in dit opzicht, automatisch compatibel te maken met Postfix 2.4 dient u deze optie te kiezen.
+Description-pt.UTF-8: Corrigir a entrada 'retry' no master.cf para a actualização?
+ O Postfix versão 2.4 necesita que o serviço retry seja acrescentado ao master.cf.
+ .
+ Falhar corrigir isto resultará num mailer estragado.  Rejeite esta opção para abortar a actualização, dando-lhe a oportunidade de acrescentar você mesmo esta configuração.  Aceite esta opção para tornar automaticamente o master.cf compatível nesse aspecto com o Postfix 2.4.
+Description-ru.UTF-8: Исправить запись сервиса повтора в master.cf для обновления?
+ Postfix версии 2.4 требует добавления в master.cf сервиса повтора.
+ .
+ Невозможность исправления приведёт к неработоспособной почтовой программе. Отказ от этого параметра прервёт обновление, что даст вам возможность добавить эту настройку самостоятельно. Примените этот параметр для того, чтобы автоматически сделать master.cf совместимым с Postfix 2.2 в этом отношении.
+Description-sv.UTF-8: Korrigera återförsöksposten i master.cf inför uppgradering?
+ Postfix version 2.4 och senare kräver att återförsöksposten läggs till i master.cf.
+ .
+ Om du inte rättar till dessa felaktigheter kommer e-postsystemet inte att fungera korrekt. Vägra denna inställning för att avbryta uppgraderingen och få möjlighet att lägga till denna konfiguration själv.  Acceptera inställningen för att automatiskt göra master.cf kompatibel med Postfix 2.4 i det här avseendet.
+Description-ta.UTF-8: மேம்படுத்த master.cf இல் மீள்முயற்சி உள்ளீட்டை சரி செய்யவா?
+ போஸ்ட்பிக்ஸ் 2.4 வடிவ நிலை மீண்டும் முயலும் சேவையை master.cf க்கு சேர்ப்பதை வேண்டுகிறது.
+ .
+ இதை சரி செய்யவில்லையானால் அஞ்சல் நிரல் சிதைந்ததாகும். மேம்படுத்தலை கைவிட இந்த தேர்வை நிராகரியுங்கள். இதனால் இந்த வடிவமைப்பை நீங்களே சேர்க்க இயலும். தானியங்கியாக மாஸ்டர்.சிஎஃப் இல் சேர்க்க இந்த தேர்வை ஒப்புக்கொள்ளுங்கள்.
+Description-vi.UTF-8: Sửa chữa mục nhập « retry » trong « master.cf » để nâng cấp không?
+ Phần mềm Postfix phiên bản 2.4 cần thiết dịch vụ « retry » được thêm vào tập tin « master.cf ».
+ .
+ Không sửa thì trình thư bị hỏng. Từ chối tùy chọn này để hủy bỏ việc nâng cấp, cho bạn có dịp tự thêm cấu hình này. Còn chấp nhận tùy chọn này để tự động đặt « master.cf » thích hợp với Postfix 2.4 bằng cách này.
+
+Template: postfix/tlsmgr_upgrade_warning
+Type: boolean
+Description: Correct tlsmgr entry in master.cf for upgrade?
+ Postfix version 2.2 has changed the invocation of tlsmgr.
+ .
+ Failure to fix this will result in a broken mailer. Decline this option
+ to abort the upgrade, giving you the opportunity to add this configuration
+ yourself. Accept this option to automatically make master.cf compatible
+ with Postfix 2.2 in this respect.
+Description-ca.UTF-8: Voleu esmenar l'entrada «tlsmgr» al fitxer master.cf per a l'actualització?
+ La versió 2.2 de Postfix ha canviat la invocació de tlsmgr.
+ .
+ Si es produeix una fallada en aquest punt, el funcionament de l'administrador de correu pot veure's interromput. Declineu aquesta opció si voleu avortar l'actualització i afegir aquesta configuració manualment. Accepteu si preferiu que es compatibilitzi el fitxer master.cf automàticament amb la versió 2.2 en aquest sentit.
+Description-cs.UTF-8: Opravit záznam tlsmgr v souboru master.cf?
+ Postfix verze 2.2 změnil způsob spouštění tlsmgr.
+ .
+ Opomenutí této opravy bude mít za následek nefunkční poštu. Pro přerušení aktualizace tuto volbu odmítněte, dostanete tak příležitost přidat toto nastavení sami. Chcete-li mít master.cf po této stránce automaticky kompatibilní s Postfixem 2.2, volbu přijměte.
+Description-de.UTF-8: Möchten Sie den tlsmgr-Eintrag in master.cf für ein Upgrade korrigieren?
+ Postfix hat in Version 2.2 den Aufruf von tlsmgr geändert.
+ .
+ Wenn Sie dies nicht korrigieren, wird Ihr E-Mail-Server unbrauchbar. Verneinen Sie, um das Upgrade abzubrechen und diese Änderung selbst vorzunehmen. Akzeptieren Sie, um die Datei master.cf in dieser Hinsicht automatisch in ein zu Postfix 2.2 kompatibles Format zu bringen.
+Description-es.UTF-8: ¿Desea corregir la entrada de «tlsmgr» en el archivo «master.cf» para la actualización?
+ La versión 2.2 de Postfix ha cambiado la invocación de «tlsmgr».
+ .
+ En caso de no corregirla el sistema de correo quedará inestable. Rechace esta opción para cancelar la actualización, esto le dará la oportunidad de añadirla usted mismo. Acepte esta opción para automáticamente hacer que «master.cf» sea compatible con Postfix 2.2 en este aspecto.
+Description-eu.UTF-8: Bertsio berritzerako master.cf-en tlsmgr sarrera zuzendu?
+ Postfix 2.2 bertsioak tlsmgr deia egiteko modua aldatu du.
+ .
+ Hau konpontzean huts egiteak posta sistema apurtzea eragin dezake. Aukera hau alde batetara utzi bertsio berritzea utzi eta konfigurazio aldaketak eskuz egiteko aukera izateko. Aukera honen ezarpen automatikoa onartu gai honetan master.cf Postfix 2.2-arekin bateragarri egiteko.
+Description-fi.UTF-8: Korjaa tlsmgr-tietue master.cf:ssä päivitettäessä?
+ Postfix versiossa 2.2 on muuttanut tlsmgr:n käynnistystä.
+ .
+ Tämän korjaamisen epäonnistuessa postipalvelin ei toimi. Kieltäytymällä tästä valinnasta keskeytyy päivitys, ja sinulle annetaan mahdollisuus lisätä tämä asetus itse. Hyväksymällä tämän valinnan master.cf asetetaan automaattisesti tämän suhteen yhteensopivaksi Postfix 2.2:n kanssa.<
+Description-fr.UTF-8: Faut-il corriger l'entrée « tlsmgr » dans le fichier master.cf ?
+ L'appel de tlsmgr a été modifié avec la version 2.2.
+ .
+ Si cette correction n'est pas effectuée, le serveur de courriels ne fonctionnera pas. Si vous refusez cette option, la mise à jour sera interrompue, ce qui vous donnera l'occasion de faire vous-même cette configuration. Si vous la choisissez, le fichier master.cf sera rendu compatible avec la version 2.2 de Postfix.
+Description-gl.UTF-8: ¿Corrixir a entrada de tlsmgr en master.cf para a actualización?
+ Postfix versión 2.2 cambiou a invocación de tlsmgr.
+ .
+ Se non arranxa isto ha ter un sistema de correo roto. Rexeite esta opción para abortar a actualización, o que lle ha dar a oportunidade de engadir esta configuración vostede mesmo. Acepte esta opción para facer que master.cf sexa automaticamente compatible con Postfix 2.2 neste respecto.
+Description-it.UTF-8: Correggere la voce tlsmgr in master.cf per l'aggiornamento?
+ Nella versione 2.2 di postfix è cambiata l'invocazione di tlsmgr.
+ .
+ Se non si corregge questa impostazione, il programma sarà inutilizzabile. Rifiutando questa proposta, l'aggiornamento verrà annullato e si avrà la possibilità di eseguire manualmente la configurazione. Accettando la proposta si renderà master.cf compatibile con Postfix 2.2 in modo automatico.
+Description-ja.UTF-8: 更新のために master.cf の tlsmgr エントリを訂正しますか?
+ Postfix バージョン 2.2 では tlsmgr の実施が変更されています。
+ .
+ これを修正するのに失敗すると、壊れたメーラとなってしまいます。更新を中止するにはこの選択肢に「いいえ」とし、この設定をあなた自身で追加します。この選択肢で「はい」と答えれば、自動的に master.cf は Postfix 2.2 とこの点で互換性を持つようになります。
+Description-ko.UTF-8: 업그레이드시 tlsmgr 항목을 고칠까요?
+ Postfix 2.2 버전에서 tlsmgr의 호출방식이 바뀌었습니다.
+ .
+ 이를 고치지 않으면 이메일 프로그램이 제대로 동작하지 않습니다. 이 옵션을 거절하시면 설정을 직접 고치실 수 있도록 업그레이드가 중단됩니다. 이 옵션을 받아들이시면 이 항목에 한해서는 master.cf를 Postfix 2.2에 맞도록 자동으로 수정합니다.
+Description-nl.UTF-8: Wilt u dat de 'tlsmgr'-ingang in master.cf verbeterd wordt voor de opwaardering?
+ De 2.2 versie van Postfix heeft de aanroep van tlsmgr veranderd.
+ .
+ Als u nalaat om dit te in te stellen resulteert dit in een niet-werkend e-mail-systeem. Als u de opwaardering wilt afbreken dient u hier te weigeren, u kunt de configuratie dan zelf toevoegen. Aanvaard dit voorstel om master.cf in dit opzicht automatisch compatibel te maken met Postfix 2.2.
+Description-pt.UTF-8: Corrigir a entrada de tlsmgr no master.cf para a actualização?
+ O Postfix versão 2.2 mudou a invocação de tlsmgr.
+ .
+ Falhar corrigir isto resultará num mailer estragado.  Rejeite esta opção para abortar a actualização, dando-lhe a oportunidade de acrescentar você mesmo esta configuração.  Aceite esta opção para tornar automaticamente o master.cf compatível nesse aspecto com o Postfix 2.2.
+Description-ru.UTF-8: Исправить запись 'tlsmgr' в master.cf для обновления?
+ Postfix версии 2.2 изменил вызов tlsmgr.
+ .
+ Невозможность исправления приведёт к неработоспособной почтовой программе. Отказ от этого параметра прервёт обновление, что даст вам возможность добавить эту настройку самостоятельно. Примените этот параметр для того, чтобы автоматически сделать master.cf совместимым с Postfix 2.2 в этом отношении.
+Description-sv.UTF-8: Korrigera tlsmgr-posten i master.cf inför uppgradering?
+ Postfix version 2.2 har ändringar i uppstarten av tlsmgr.
+ .
+ Om inte du rättar till dessa felaktigheter kommer e-postsystemet inte att fungera korrekt. Vägra denna inställning för att avbryta uppgraderingen och ge dig möjligheten att lägga till denna konfiguration själv.  Acceptera inställningen för att automatiskt göra master.cf kompatibel med Postfix 2.2 i det här avseendet.
+Description-ta.UTF-8: மேம்படுத்த master.cf இல் tlsmgr உள்ளீட்டை சரி செய்யவா?
+ tlsmgr ஐ அழைப்பதை போஸ்ட்பிக்ஸ் பதிப்பு 2.2 மாற்றி விட்டது.
+ .
+ இதை சரி செய்யாவிடில் அஞ்சல் நிரல்கள் செயல்படா. மேம்படுத்தலை கைவிட இதை நிராகரியுங்கள். பின் நீங்களே இந்த வடிவமைப்பை கை முறையாக சேர்க்கலாம். இந்த தேர்வை ஏற்பின் master.cf தானியங்கியாக போஸ்ட்பிக்ஸ் 2.2 க்கு இசைவாக அமைக்கப்படும்.
+Description-vi.UTF-8: Sửa chữa mục nhập « tlsmgr » trong « master.cf » để nâng cấp không?
+ Postfix phiên bản 2.2 đã thay đổi cách gọi « tismgr ».
+ .
+ Không sửa thì trình thư bị hỏng. Từ chối tùy chọn này để hủy bỏ việc nâng cấp, cho bạn có dịp tự thêm cấu hình này. Còn chấp nhận tùy chọn này để tự động đặt « master.cf » thích hợp với Postfix 2.2 bằng cách này.
+
+Template: postfix/rfc1035_violation
+Type: boolean
+Default: false
+Description: Ignore incorrect hostname entry?
+ The string '${enteredstring}' does not follow RFC 1035 and does not
+ appear to be a valid IP address.
+ .
+ RFC 1035 states that 'each component must start with an alphanum, end with
+ an alphanum and contain only alphanums and hyphens. Components must be
+ separated by full stops.'
+ .
+ Please choose whether you want to keep that choice anyway.
+Description-ca.UTF-8: Voleu ignorar l'entrada del nom del sistema incorrecta?
+ La cadena introduïda, «$enteredstring», no segueix l'RFC 1035 i no sembla que sigui una adreça IP vàlida.
+ .
+ L'RFC 1035 diu: «Cada component ha de començar amb un caràcter alfanumèric, acabar en un alfanumèric, i contenir només alfanumèrics i guionets. Els components han d'anar separats per punts.»
+ .
+ Si us plau, indiqueu si voleu mantenir l'opció igualment.
+Description-cs.UTF-8: Ignorovat chybné jméno počítače?
+ Řetězec „${enteredstring}“ ani nevyhovuje RFC 1035, ani nevypadá jako platná IP adresa.
+ .
+ RFC 1035 říká, že: „Každá část musí začínat a končit alfanumerickým znakem a může obsahovat pouze alfanumerické znaky a pomlčky. Jednotlivé části musí být odděleny tečkami.“
+ .
+ Rozhodněte se, zda přesto chcete ponechat zadanou možnost.
+Description-de.UTF-8: Fehlerhaften Hostnamen-Eintrag ignorieren?
+ Die Zeichenkette »${enteredstring}« entspricht nicht RFC 1035 und scheint keine gültige IP-Adresse zu sein.
+ .
+ RFC 1035 fordert, dass »jede Komponente mit einem alphanumerischen Zeichen beginnen und enden muss und ansonsten auch nur aus alphanumerischen Zeichen und Bindestrichen bestehen darf. Alle Komponenten müssen jeweils durch einen Punkt getrennt werden«.
+ .
+ Bitte wählen Sie, ob Sie diese Auswahl trotzdem beibehalten wollen.
+Description-es.UTF-8: ¿Ignorar el nombre de máquina inválido?
+ La cadena «${enteredstring}» no cumple con la RFC 1035 y no parece ser una dirección IP válida.
+ .
+ La RFC 1035 indica que «cada componente debe empezar con un carácter alfanumérico, finalizar con un alfanumérico y solamente contener alfanuméricos y guiones. Los componentes deben estar separados por puntos».
+ .
+ Por favor, indique si quiere mantenerla de todas maneras.
+Description-eu.UTF-8: Ostalari izen baliogabea alde batetar utzi?
+ '${enteredstring}' kateak ez du 1035 RFC-a jarraitzen eta ez dirudi baliozko IP helbide bat denik.
+ .
+ RFC 1035-ak hurrengoak ezartzen ditu: 'osagai bakoitza alfazenbakizko batez hasi eta amaitu eta alfazenbakizkoak eta marratxoak bakarrik eduki ditzake. osagaiak puntuez bereizirik egon behar dira.'
+ .
+ Mesedez bai sakatu aukera hau hala ere mantentzeko.
+Description-fi.UTF-8: Ohita virheellinen hostname-tietue?
+ Merkkijono "${enteredstring}" ei noudata RFC 1035 ja ei vaikuta oikealta IP-osoitteelta.
+ .
+ RFC 1035 toteaa, että "jokaisen osan täytyy alkaa kirjaimella tai numerolla, päättyä kirjaimeen tai numeroon ja sisältää vain kirjaimia, numeroita tai väliviivoja. Osat erotetaan pistein."
+ .
+ Valitse käytetäänkö antamaasi arvoa tästä huolimatta.
+Description-fr.UTF-8: Faut-il ignorer un nom d'hôte erroné ?
+ La chaîne « ${enteredstring} » ne respecte pas la RFC 1035 et ne semble pas être une adresse IP valable.
+ .
+ La RFC 1035 stipule : « Chaque élément doit commencer par un caractère alphanumérique, se terminer par un caractère alphanumérique et ne contenir que des caractères alphanumériques et des traits d'union. Les éléments doivent être séparés par des points. »
+ .
+ Veuillez indiquer si vous souhaitez conserver ce choix malgré tout.
+Description-gl.UTF-8: ¿Ignorar a entrada de nome de máquina incorrecta?
+ A cadea "${enteredstring}" non segue RFC 1035 e non semella un enderezo IP válido.
+ .
+ RFC 1035 di que cada compoñente debe comezar por un carácter alfanumérico, rematar cun alfanumérico e conter só alfanuméricos e guións. Os compoñentes débense separar con puntos.
+ .
+ Indique se quere conservar ese valor igualmente.
+Description-it.UTF-8: Ignorare la voce hostname errata?
+ La stringa "${enteredstring}" non è conforme alla RFC 1035 e non sembra essere un indirizzo IP valido.
+ .
+ La RFC 1035 richiede che ogni componente inizi e finisca con un carattere alfanumerico e contenga solo caratteri alfanumerici o il trattino "-". Le componenti devono essere separate da punti.
+ .
+ Scegliere se si desidera mantenere questa scelta comunque.
+Description-ja.UTF-8: 不正なホスト名エントリを無視しますか?
+ 文字列 '${enteredstring}' は、RFC 1035 に従っていないか、有効な IP アドレスではありません。
+ .
+ RFC 1035 では「各要素は英字アルファベットまたは数字で開始および終了し、その中は英字アルファベットと数字、ハイフンだけを含む。要素はピリオド (.) で区切られていなければならない。」と述べています。
+ .
+ それでもこれを保持するかどうか選んでください。
+Description-ko.UTF-8: 잘못된 hostname 항목을 무시할까요?
+ '${enteredstring}'는 RFC 1035를 따르지 않으며 제대로 된 IP 주소가 아닌 듯 합니다.
+ .
+ RFC 1035에 의하면 '각 부분은 모두 영숫자로 시작하고 끝나야 하며 나머지에는 영숫자와 하이픈(-)만 사용할 수 있다. 각 부분은 마침표로 연결되어야 한다.'
+ .
+ 이 내용을 그대로 사용할 지 결정하십시오.
+Description-nl.UTF-8: Wilt u dat de onjuiste computernaam genegeerd wordt?
+ De ingevoerde strings '${enteredstring}' voldoet niet aan RFC 1035, en lijkt ook geen geldig IP-adres te zijn.
+ .
+ RFC 1035 stelt dat 'Elk onderdeel dient te starten met een alfanumeriek karakter, en mag slechts alfanumerieke karakters en koppeltekens bevatten. Onderdelen dienen van elkaar gescheiden te worden met punten.'.
+ .
+ Wilt u deze keuze toch behouden?
+Description-pt.UTF-8: Ignorar a entrada com o hostname errada?
+ A string '${enteredstring}' não segue a RFC 1035 e não parece ser um endereço IP válido.
+ .
+ A RFC 1035 diz que 'cada componente tem de iniciar com um alfanumérico, terminar com um alfanumérico e conter apenas alfanuméricos e hífens. Os componentes têm de ser separados por pontos finais.'
+ .
+ Por favor escolha se deseja manter, na mesma, essa escolha?
+Description-ru.UTF-8: Игнорировать неподходящее значение хост-имени?
+ Строка '${enteredstring}' не соответствует RFC 1035 и не является правильным IP-адресом.
+ .
+ RFC 1035 гласит, что 'каждый компонент должен начинаться с буквоцифры, заканчиваться на буквоцифру и содержать только буквоцифры и дефисы. Компоненты должны разделяться точками'.
+ .
+ Укажите, желаете ли вы придерживаться этого выбора в любом случае.
+Description-sv.UTF-8: Ignorera felaktig "hostname"-post?
+ Strängen "${enteredstring}" följer inte RFC 1035 och verkar inte vara en giltig IP-adress.
+ .
+ RFC 1035 fastslår att "varje komponent måste börja med ett alfanumeriskt tal, sluta med ett alfanumeriskt tal och får endast innehålla alfanumeriska tal och bindestreck. Komponenter måste separeras med fullständiga stopp."
+ .
+ Välj huruvida du vill behålla valet ändå.
+Description-ta.UTF-8: சரியில்லாத புரவலன் பெயரை உதாசீனம் செய்யவா?
+ சரம் '${enteredstring}' RFC 1035 ஐ தொடரவில்லை. மற்றும் செல்லுபடியாகும் ஐபி முகவரியாக தெரியவில்லை.
+ .
+ RFC 1035 சொல்வது என்னவென்றால் 'ஒவ்வொரு பொருட்கூறுவும் ஒரு எண்ணெழுத்தில் துவங்க வேண்டும்; அதில் எண்ணெழுத்துக்கள் கோடுகள் மட்டுமே இருக்க வேண்டும். பொருட்கூறுகள் முற்றுப்புள்ளிகளால் பிரிக்கப்பட வேண்டும்.'
+ .
+ தயை செய்து எப்படியும் அந்த தேர்வை வைத்துக்கொள்ள வேண்டுமா என தேர்ந்தெடுக்கவும்
+Description-vi.UTF-8: Bỏ qua mục nhập tên máy không đúng không?
+ Chuỗi « ${enteredstring} » không tùy theo RFC 1035, cũng không có vẻ là địa chỉ IP hợp lệ.
+ .
+ RFC 1035 nói « mỗi thành phần phải bắt đầu với một chữ số, kết thúc với một chữ số, và chứa chỉ các chữ số và dấu gạch nối thôi. Nhiều thành phần phải định giới bằng dấu chấm. »
+ .
+ Hãy chọn nếu bạn muốn tiếp tục bất chấp hay không.
+
+Template: postfix/main_mailer_type
+Type: select
+Choices: No configuration, Internet Site, Internet with smarthost, Satellite system, Local only
+Choices-ca.UTF-8: Sense configurar, Lloc d'Internet, Lloc d'Internet amb smarthost, Sistema satèl·lit, Només local
+Choices-cs.UTF-8: Žádné nastavení, Internetový počítač, Internet se smarthostem, Satelitní systém, Pouze tento počítač
+Choices-de.UTF-8: Keine Konfiguration, Internet-Site, Internet mit Smarthost, Satellitensystem, Nur lokal
+Choices-es.UTF-8: Sin configuración, Sitio de Internet, Internet con «smarthost», Sistema satélite, Sólo correo local
+Choices-eu.UTF-8: Konfiguraziorik ez, Internet Gunea, Internet smarthost batez, Satelite sistema, Lokala bakarrik
+Choices-fi.UTF-8: Ei asetuksia, Internet-mesta, Internet smarthostilla, Satelliittijärjestelmä, Vain paikallinen
+Choices-fr.UTF-8: Pas de configuration, Site Internet, Internet avec un « smarthost », Système satellite, Local uniquement
+Choices-gl.UTF-8: Non configurar, Sitio de Internet, Internet con relay, Sistema satélite, Só local
+Choices-it.UTF-8: Nessuna configurazione, Sito internet, Sito internet con smarthost, Sistema satellite, Solo locale
+Choices-ja.UTF-8: 設定なし, インターネットサイト, スマートホスト付きインターネット, サテライトシステム, ローカルのみ
+Choices-ko.UTF-8: 설정 안함, 인터넷 사이트, 스마트호스트가 있는 인터넷 사이트, 위성 시스템, 로컬 전용
+Choices-nl.UTF-8: Geen configuratie, Internetsite, Internet met smarthost, Satellietsysteem, Enkel lokaal
+Choices-pt.UTF-8: Sem configuração, Site Internet, Internet com smarthost, Sistema satélite, Apenas local
+Choices-ru.UTF-8: Без настройки, Интернет-сайт, Интернет со smart-хостом, Система-спутник, Только локально
+Choices-sv.UTF-8: Ingen konfiguration, Internetsystem, Internet med smart värd, Satellitsystem, Endast lokalt
+Choices-ta.UTF-8: வடிவமைப்பு இல்லை, இணையதளம், ஸ்மார்ட் ஹோஸ்ட் உடன் இணையம், செயற்கைக்கோள் அமைப்பு, உள்ளமை மட்டும்
+Choices-vi.UTF-8: Không cấu hình, Nơi Mạng, Mạng có máy khéo, Hệ thống vệ tinh, Chỉ cục bộ
+Default: Internet Site
+Description: General type of mail configuration:
+ Please select the mail server configuration type that best meets your needs.
+ .
+  No configuration:
+   Should be chosen to leave the current configuration unchanged.
+  Internet site:
+   Mail is sent and received directly using SMTP.
+  Internet with smarthost:
+   Mail is received directly using SMTP or by running a utility such
+   as fetchmail. Outgoing mail is sent using a smarthost.
+  Satellite system:
+   All mail is sent to another machine, called a 'smarthost', for delivery.
+  Local only:
+   The only delivered mail is the mail for local users. There is no network.
+Description-ca.UTF-8: Tipus de configuració del correu:
+ Si us plau, seleccioneu el tipus de configuració per al servidor de correu que més s'adeqüi a les vostres necessitats.
+ .
+ - Sense configurar:
+   S'hauria de seleccionar si no voleu que es modifiquin els fitxers de configuració.
+ - Lloc d'Internet:
+   El correu s'envia i es rep directament mitjançant SMTP.
+ - Lloc d'Internet amb smarthost:
+   Es rep el correu directament utilitzant SMTP o executant eines com ara fetchmail. El correu sortint s'envia utilitzant una altra màquina anomenada «smarthost».
+ - Sistema satèl·lit:
+   Tot el correu s'envia cap a una altra màquina, anomenada «smarthost», per fer-ne el lliurament.
+ - Només enviament local:
+   Només es lliurarà el correu per als usuaris locals. No hi ha xarxa.
+Description-cs.UTF-8: Základní model nastavení pošty:
+ Vyberte prosím variantu nastavení poštovního serveru, která nejlépe odpovídá vašim požadavkům.
+ .
+  Žádné nastavení:
+   Vyberte, pokud chcete zachovat stávající nastavení nezměněné.
+  Internetový počítač:
+   Pošta je odesílána a přijímána přímo protokolem SMTP.
+  Internet se smarthostem:
+   Pošta je přijímána přímo pomocí SMTP nebo nástrojem typu
+   fetchmail. Odchozí pošta je zasílána skrze smarthosta.
+  Satelitní systém:
+   Veškerá pošta se zasílá na jiný počítač nazývaný „smarthost“,
+   který poštu doručí.
+  Pouze tento počítač:
+   Pošta se doručuje pouze mezi lokálními uživateli. Není zde síť.
+Description-de.UTF-8: Allgemeine Art der Konfiguration:
+ Bitte wählen Sie die E-Mail-Server-Konfiguration aus, die am besten auf Ihre Bedürfnisse passt.
+ .
+ Keine Konfiguration:
+  Sollte ausgewählt werden, um die aktuelle Konfiguration unverändert zu
+  behalten.
+ Internet-Site:
+  E-Mail wird direkt via SMTP versandt und empfangen.
+ Internet mit Smarthost:
+  E-Mail wird direkt mittels SMTP oder über ein Hilfswerkzeug wie Fetchmail
+  empfangen. Ausgehende E-Mail wird über einen Smarthost versandt.
+ Satellitensystem:
+  Alle E-Mails werden über eine andere Maschine, genannt »Smarthost«, für die Zustellung versandt.
+ Nur lokale:
+  Es wird nur E-Mail für lokale Benutzer zugestellt. Es gibt kein Netz.
+Description-es.UTF-8: Tipo genérico de configuración de correo:
+ Escoja el tipo de configuración del servidor de correo que se ajusta mejor a sus necesidades.
+ .
+  Sin configuración:
+   Se debe elegir para mantener la configuración actual intacta.
+  Sitio de Internet:
+   El correo se envía y recibe directamente utilizando SMTP.
+  Internet con «smarthost»:
+   El correo se recibe directamente utilizando SMTP o ejecutando una
+   herramienta como fectchmail. El correo de salida se envía utilizando
+   un «smarthost».
+  Sólo correo local:
+   El único correo que se entrega es para los usuarios locales. No
+   hay red.
+Description-eu.UTF-8: Posta konfigurazio mota orokorra:
+ Mesedez hautatu zure beharrak hobe asetzen dituen posta zerbitzari konfigurazio mota.
+ .
+  Konfiguraziorik ez:
+   Aukera hau hautatu dagoen konfigurazioa aldatu gabe uzteko.
+  Internet gunea:
+   Posta zuzenean SMTP bidez bidali eta jasoko da.
+  Internet smarthost batez:
+   Posta zuzenean SMTP bidez edo fetchmail antzerako lanabes
+   batez jasoko da. Kanporako posta smarthost baten bidez bidaliko da.
+  Satelite sistema:
+   Posta guztia smarthost izeneko beste makina batetara bidaliko da hark banatu dezan.
+  Lokala bakarrik:
+   Erabiltzaile lokalen posta bakarrik banatuko da. Ez da sarerik behar.
+Description-fi.UTF-8: Postiasetusten yleinen tyyppi:
+ Valitse minkä tyyppiset postipalvelinasetukset sopivat parhaiten tarpeisiisi.
+ .
+  Ei asetuksia:
+   Jätetään nykyiset asetukset muuttamattomiksi.
+  Internet-mesta:
+   Posti lähetetään ja vastaanotetaan suoraan SMTP:llä.
+  Internet smarthostilla:
+   Posti vastaanotetaan suoraan SMTP:llä tai noutamalla työkaluilla kuten
+   fetchmail. Ulosmenevä posti lähetetään smarthostin kautta.
+  Satelliittijärjestelmä:
+   Kaikki posti lähetetään toiseen koneeseen, jota kutsutaan "smarthostiksi"
+   lähetystä varten.
+  Vain paikallinen:
+   Kaikki posti toimitetaan vain paikallisille käyttäjille. Ei verkkoyhteyttä.
+Description-fr.UTF-8: Configuration type du serveur de messagerie :
+ Veuillez choisir la configuration type de votre serveur de messagerie la plus adaptée à vos besoins.
+ .
+  Pas de configuration :
+   Devrait être choisi pour laisser la configuration actuelle inchangée.
+  Site Internet :
+   L'envoi et la réception s'effectuent directement en SMTP.
+  Site Internet avec un smarthost :
+   Les messages sont reçus directement en SMTP ou grâce à un utilitaire comme fechtmail. Les messages sortants sont envoyés en utilisant un smarthost.
+  Système satellite :
+   Tous les messages sont envoyés vers une autre machine, nommée un smarthost.
+ Local uniquement :
+   Le seul courrier géré est le courrier pour les utilisateurs locaux. Il n'y a pas de mise en réseau.
+Description-gl.UTF-8: Tipo xeral de configuración do correo:
+ Escolla o tipo de configuración do servidor de correo que máis se axuste ás súas necesidades.
+ .
+  Non configurar:
+   Debería escollelo se non quere modificar a configuración actual.
+  Sitio de Internet:
+   O correo envíase e recíbese directamente mediante SMTP.
+  Internet con relay:
+   O correo recíbese directamente empregando SMTP ou mediante unha
+   utilidade coma fetchmail. O correo envíase empregando un relay.
+  Sistema satélite:
+   Envíase todo o correo a outra máquina (o relay) para que ela o entregue.
+  Só local:
+   Só se entrega o correo dos usuarios locais. Non hai unha rede.
+Description-it.UTF-8: Profilo generale di configurazione:
+ Selezionare il tipo di configurazione del mailserver che si preferisce.
+ .
+  Nessuna configurazione:
+   Da scegliere se non si vuole modificare la configurazione attuale.
+  Sito internet:
+   La posta è inviata e ricevuta direttamente via SMTP.
+  Sito internet con smarthost:
+   La posta è ricevuta direttamente via SMTP o attraverso programmi
+   come fetchmail. La posta in uscita è inviata a uno smarthost.
+  Sistema satellite:
+   Tutta la posta è inviata a un altro sistema, detto "smarthost",
+   per la consegna.
+  Solo consegna locale:
+   Viene solo consegnata la posta per gli utenti locali, senza attività di rete.
+Description-ja.UTF-8: メール設定の一般形式:
+ あなたの用途に合ったメールサーバ設定形式を選んでください。
+ .
+  設定なし:
+   現在の設定をそのままにしたいときに選びます。
+  インターネットサイト:
+   メールは SMTP を使って直接送受信されます。
+  スマートホスト付きインターネット:
+   メールは SMTP を使って直接、あるいは fetchmail のようなユーティリティ
+   を実行して受信されます。送出メールはスマートホストを使って送信されます。
+  サテライトシステム:
+   すべてのメールは配送用の「スマートホスト」と呼ばれる別のマシンに送られます。
+  ローカルのみ:
+   配送されるのはローカルユーザへのメールのみです。ネットワークはありません。
+Description-ko.UTF-8: 메일 설정의 대략적인 형식:
+ 용법에 가장 맞는 메일 서버 설정 형식을 고르십시오.
+ .
+  설정 안함:
+   현재 설정을 그대로 두고자 할 경우에 선택하십시오.
+  인터넷 사이트:
+   SMTP를 이용하여 이메일을 직접 보내고 받습니다.
+  스마트호스트가 있는 인터넷 사이트:
+   SMTP를 이용하여 이메일을 직접 주고 받거나 fetchmail 등의 응용프로그램을 
+   사용해서 이메일을 주고 받습니다. 나가는 이메일은 스마트호스트를 통해서 
+   보냅니다.
+  위성 시스템:
+   모든 이메일은 전송을 위해 '스마트호스트'라고 하는 다른 머신으로 보냅니다.
+  로컬 전용:
+   로컬 사용자의 이메일만 전송합니다. 네트워크가 없습니다.
+Description-nl.UTF-8: Algemeen type e-mail-serverconfiguratie:
+ Wat voor e-mail-serverconfiguratie komt het best met uw wensen overeen?
+ .
+ Geen configuratie:
+   Kies dit als u de huidige configuratie wilt laten zoals ze is.
+ Internetsite:
+   E-mail wordt rechtstreeks via SMTP verstuurt.
+ Internet met smarthost:
+   E-mail wordt rechtstreeks via SMTP of via een hulpprogramma
+   zoals fetchmail ontvangen. Uitgaande mail wordt via een
+   smarthost verstuurt.
+ Satellietsysteem:
+   Alle e-mail wordt naar een andere machine (een zogenaamde
+   smarthost) verstuurt voor aflevering.
+ Enkel lokaal:
+   Enkel e-mail voor lokale gebruikers wordt afgeleverd, er is geen
+   netwerk.
+Description-pt.UTF-8: Tipo geral de configuração de mail:
+ Por favor escolha o tipo de configuração do servidor de mail que melhor se adequa às suas necessidades.
+ .
+  Sem configuração:
+   Deve ser escolhido para deixar a configuração actual inalterada.
+  Site Internet:
+   O mail é enviado e recebido directamente utilizando SMTP.
+  Internet utilizando smarthost:
+   O mail é recebido directamente utilizando SMTP ou correndo um utilitário
+   como o fetchmail. O mail que sai é enviado utilizando um smarthost.
+  Sistema satélite
+   Todo o mail é enviado para outra máquina, chamada "smarthost".
+  Apenas entrega local:
+   O único mail entregue é o mail para os utilizadores locais. Não existe rede.
+Description-ru.UTF-8: Общий тип почтовой настройки:
+ Выберите тип настройки почтового сервера, который оптимально удовлетворяет ваши требования.
+ .
+  Без настройки:
+   Должно быть выбрано, чтобы использовать текущую настройку неизменной.
+  Интернет-сайт:
+   Почта отправляется и принимается напрямую с использованием SMTP.
+  Интернет-сайт использующий smart-хост:
+   Почта отправляется и принимается напрямую с использованием SMTP или
+   запуском утилиты, такой как fetchmail. Отправляемая почта посылается с
+   использованием smart-хоста.
+  Система-спутник:
+   Вся почта для отправки посылается на другую машину, называемую 'smart-хост'.
+  Только локально:
+   Вся доставляемая почта -- это почта локальных пользователей. Сети нет.
+Description-sv.UTF-8: Allmän typ av e-postkonfiguration:
+ Välj den konfigurationstyp för e-postservern som bäst passar dina behov.
+ .
+  Ingen konfiguration:
+   Bör väljas för att inte röra den befintliga konfiguration.
+  Internet-system:
+   Post skickas och tas emot direkt med SMTP.
+  Internet med smart värd:
+   Post tas emot direkt med SMTP eller genom att köra verktyg som
+   fetchmail. Utgående post skickas via en smart värd.
+  Satellitsystem:
+   All post skickas till en annan maskin, en så kallad "smarthost", för leverans.
+  Endast lokalt:
+   Den enda posten som levereras är posten för lokala användare. Inget nätverk.
+Description-ta.UTF-8: பொதுவான அஞ்சல் வடிவமைப்பு:
+ உங்கள் தேவையை பூர்த்தி செய்யும் அஞ்சல் வடிவமைப்பை தேர்ந்தெடுங்கள்.
+ .
+  அமைப்பு இல்லை:
+  தற்போதைய வடிவமைப்பை மாற்றாது விட தேர்ந்தெடுக்க வேண்டும்.
+  இணைய தளம்:
+  அஞ்சல் எஸ்எம்டிபி(SMTP) ஐ பயன்படுத்தி நேரடியாக அனுப்பி பெறப்படும்.
+  ஸ்மார்ட் ஹோஸ்ட் உடன் இணையம்:
+  அஞ்சல் எஸ்எம்டிபி(SMTP) ஐ பயன்படுத்தி அல்லது பெட்ச் மெயில் போன்ற நிரல்கள் 
+ மூலம் நேரடியாக பெறப்படும். வெளி செல்ல ஸ்மார்ட் ஹோஸ்ட் ஐ பயன்படுத்தும்.
+  செயற்கைக்கோள் அமைப்பு:
+  அனைத்து அஞ்சல்களும் வினியோகத்துக்கு ஸ்மார்ட் ஹோஸ்ட் க்கு அனுப்பப்படும்.
+  உள்ளமை மட்டும்:
+  அஞ்சல் உள்ளமை பயனர்களுக்கு மட்டும் அனுப்பப்படும். வலையமைப்பு இல்லை.
+Description-vi.UTF-8: Kiểu cấu hình thư chung:
+ Hãy chọn kiểu cấu hình trình phục vụ thư thích hợp nhất với yêu cầu của bạn.
+ .
+ Không cấu hình:
+ 	Để lại cấu hình hiện thời, không thay đổi gì.
+ Nơi Mạng:
+ 	Thư được gửi và nhận một cách trực tiếp bằng SMTP.
+ Mạng có máy khéo :
+ 	Thư được nhận trực tiếp bằng SMTP, hoặc bằng cách chạy tiện ích như fetchmail. Thư gửi ra được gửi bằng máy khéo.
+ Hệ thống vệ tinh:
+ 	Mọi thư được gửi cho máy khác, được gọi là « máy khéo » (smarthost), để phát.
+ Chỉ cục bộ :
+ 	Chỉ phát thư cho người dùng cục bộ. Không có mạng nào.
+
+Template: postfix/not_configured
+Type: error
+Description: Postfix not configured
+ You have chosen 'No Configuration'. Postfix will not be configured and
+ will not be started by default. Please run 'dpkg-reconfigure postfix' at
+ a later date, or configure it yourself by:
+  - Editing /etc/postfix/main.cf to your liking; 
+  - Running '/etc/init.d/postfix start'.
+Description-ca.UTF-8: Postfix no està configurat
+ Heu triat «Sense configurar». No es configurarà ni s'iniciarà Postfix. Si us plau, executeu «dpkg-reconfigure postfix» més endavant, o configureu-lo manualment seguint els següents passos:
+  - Editeu «/etc/postfix/main.cf» al vostre gust.
+  - Executeu «/etc/init.d/postfix start».
+Description-cs.UTF-8: Postfix nebyl nastaven
+ Zvolili jste „Žádné nastavení“ - Postfix nyní nebude nastaven a proto také nebude spuštěn. Později to můžete napravit příkazem „dpkg-reconfigure postfix“, nebo ručně:
+  - úpravou /etc/postfix/main.cf dle vašich představ;
+  - následným spuštěním „/etc/init.d/postfix start“.
+Description-de.UTF-8: Postfix ist nicht konfiguriert
+ Sie haben »Keine Konfiguration« gewählt. Postfix wird nicht konfiguriert oder automatisch gestartet. Rufen Sie bitte »dpkg-reconfigure postfix« zu einem späteren Zeitpunkt auf oder konfigurieren Sie Postfix manuell wie folgt:
+  - Bearbeiten Sie /etc/postfix/main.cf nach Ihrem Geschmack;
+  - Führen Sie »/etc/init.d/postfix start« aus.
+Description-es.UTF-8: Postfix no se ha configurado
+ Ha elegido «Sin configuración». Postfix no se configurará y no se iniciará automáticamente. Por favor, ejecute «dpkg-reconfigure postfix» en cualquier momento, o configúrelo usted mismo de la siguiente manera:
+   - Editando «/etc/postfix/main.cf» a su gusto;
+   - Ejecutando «/etc/init.d/postfix start».
+Description-eu.UTF-8: Postfix ez da konfiguratu
+ 'Konfiguraziorik ez' aukeratu duzu. Postfix ez da konfiguratuko eta lehenespen bezala ez da sistema abiaraztean martxan ipiniko. Mesedez edo aurrerago 'dpkg-reconfigure postfix' abiarazi edo zure kabuz konfiguratu hau eginaz:
+  - etc/postfix/main.cf  editatu;
+  - '/etc/init.d/postfix start' abiarazi.
+Description-fi.UTF-8: Postfixia ei asetettu
+ Valitsit "Ei asetuksia". Postfixille ei tehdä asetuksia eikä sitä käynnistetä oletuksena. Suorita "dpkg-reconfigure postfix" myöhemmin tai räätälöi asetukset itse:
+  - Muokkaa /etc/postfix/main.cf:ää makusi mukaan;
+  - Suorita "/etc/init.d/postfix start".
+Description-fr.UTF-8: Postfix non configuré
+ Vous avez choisi l'option « Pas de configuration ». Postfix ne sera ni configuré ni lancé. Vous pourrez plus tard exécuter « dpkg-reconfigure postfix » ou configurer Postfix vous-même de la façon suivante :
+  - éditer /etc/postfix/main.cf à votre convenance ;
+  - exécuter /etc/init.d/postfix start.
+Description-gl.UTF-8: Postfix non está configurado
+ Escolleu "Non configurar". Postfix non ha estar configurado e non se ha iniciar por defecto. Execute "dpkg-reconfigure postfix" máis tarde ou configúreo vostede así:
+  - Edite /etc/postfix/main.cf segundo precise;
+  - Execute "/etc/init.d/postfix start".
+Description-it.UTF-8: Postfix non è configurato
+ Si è scelto "Nessuna configurazione". Postfix non sarà configurato e non sarà avviato automaticamente. Si prega di eseguire "dpkg-reconfigure postfix" in seguito, o di eseguire le seguenti operazioni:
+  - Modificare /etc/postfix/main.cf a piacimento;
+  - Eseguire /etc/init.d/postfix start.
+Description-ja.UTF-8: Postfix が設定されていません
+ あなたは「設定しない」を選びました。Postfix はデフォルトでは設定されておらず、開始もしません。後日 'dpkg-reconfigure postfix' を実行するか、次のとおりあなた自身で変更してください:
+  - /etc/postfix/main.cf を好みに合わせて編集する
+  - '/etc/init.d/postfix start' を実行する
+Description-ko.UTF-8: Postfix 설정 안 됨
+ '설정 안함'을 고르셨습니다. Postfix를 설정하지 않을 것이며 기본으로 시작하지 않습니다. 나중에 'dpkg-reconfigure postfix'를 실행하시든지 직접 설정해 주십시오:
+  - /etc/postfix/main.cf를 수정하시고,
+  - '/etc/init.d/postfix start'를 실행하십시오.
+Description-nl.UTF-8: Postfix is niet geconfigureerd
+ U heeft gekozen voor 'Geen configuratie'. Postfix wordt dus niet geconfigureerd en zal standaard niet gestart worden. U kunt dit later instellen via het commando 'dpkg-reconfigure postfix', of dit handmatig configureren door:
+ - /etc/postfix/main.cf naar wensen in te stellen;
+ - het commando '/etc/init.d/postfix start' uit te voeren.
+Description-pt.UTF-8: Postfix não configurado
+ Você escolheu 'Sem Configuração'. O Postfix não será configurado e por omissão não será iniciado. Por favor, posteriormente corra 'dpkg-reconfigure postfix', ou configure-o você mesmo de uma das seguintes formas:
+  - Editar /etc/postfix/main.cf ao seu gosto;
+  - Correr /etc/init.d/postfix start.
+Description-ru.UTF-8: Postfix не настроен
+ Вы выбрали 'Без настройки'. Postfix не будет настроен и по умолчанию не будет запускаться. Пожалуйста, выполните позже команду 'dpkg-reconfigure postfix', или настройте его самостоятельно следующим образом:
+  - Отредактируйте '/etc/postfix/main.cf' по своему желанию;
+  - Запустите '/etc/init.d/postfix' start.
+Description-sv.UTF-8: Postfix är inte konfigurerad
+ Du har valt "Ingen konfiguration". Postfix kommer inte att konfigureras och kommer som standard inte att starta upp. Kör "dpkg-reconfigure postfix" vid ett senare tillfälle eller konfigurera det själv genom att:
+  - Redigera /etc/postfix/main.cf för att passa dina behov;
+  - Köra "/etc/init.d/postfix start".
+Description-ta.UTF-8: போஸ்ட்பிக்ஸ் வடிவமைக்கப்படவில்லை
+ நீங்கள் அமைப்பு இல்லை ('No Configuration') என தேர்ந்தெடுத்து உள்ளீர்கள். போஸ்ட்பிக்ஸ் வடிவமைக்கப் படாது. முன்னிருப்பாக துவங்காது. பின்னால் 'dpkg-reconfigure postfix'  என்ற கட்டளை மூலமாகவோ அல்லது பின்வருமாறு கைமுறையாகவோ வடிவமைக்கலாம்.
+  - /etc/postfix/main.cf ஐ தேவையானவாறு திருத்தல்
+  - '/etc/init.d/postfix start'. ஐ இயக்குதல்.
+Description-vi.UTF-8: Chưa cấu hình Postfix
+ Bạn đã chọn mục « Không cấu hình ». Vì thế Postfix sẽ không được cấu hình, cũng sẽ không được khởi chạy theo mặc định. Hãy chạy lệnh cấu hình lại « dpkg-reconfigure postfix » về sau, hoặc tự cấu hình nó bằng cách:
+  • sửa tập tin « /etc/postfix/main.cf » để thích hợp với yêu cầu của bạn;
+  • chạy lệnh « /etc/init.d/postfix start ».
+
+Template: postfix/mailname
+Type: string
+Default: /etc/mailname
+Description: System mail name:
+ The "mail name" is the domain name used to "qualify" _ALL_ mail addresses
+ without a domain name. This includes mail to and from <root>: please do not
+ make your machine send out mail from root@example.org unless root@example.org
+ has told you to.
+ .
+ This name will also be used by other programs. It should be the
+ single, fully qualified domain name (FQDN).
+ .
+ Thus, if a mail address on the local host is foo@example.org,
+ the correct value for this option would be example.org.
+ .
+Description-ca.UTF-8: Nom del correu del sistema:
+ El nom del correu és el nom de domini que s'utilitza per qualificar totes les adreces de correu sense nom de domini. Això inclou el correu provinent i destinat a root: no feu que la vostra màquina enviï el correu des de root@exemple.org a menys que root@exemple.org us ho hagi dit.
+ .
+ Aquest nom s'utilitzarà en altres programes. Hauria de ser el nom de domini completament qualificat (FQDN).
+ .
+ Per tant, si «foo@exemple.org» és una adreça de correu local, el valor correcte per a aquesta opció seria «exemple.org».
+Description-cs.UTF-8: Poštovní jméno systému:
+ „Poštovní jméno“ je doménové jméno používané pro „kvalifikování“ poštovních adres bez doménového jména. Sem patří pošta od a pro adresu <root>: ujistěte se prosím, že pokud nemáte svolení od root@domena.cz, tak váš počítač nebude odesílat poštu z adresy root@domena.cz.
+ .
+ Toto jméno budou využívat i jiné programy. Mělo by se jednat o plně kvalifikované doménové jméno (FQDN).
+ .
+ Jestliže je například adresa na lokálním počítači karel@priklad.cz, byla by správná odpověď na tuto otázku priklad.cz.
+Description-de.UTF-8: System-E-Mail-Name:
+ Der »E-Mail-Name« ist der Domainname, der zur genauen Bestimmung von E-Mail-Adressen ohne Domainname verwendet wird. Darunter fallen E-Mails von und an <root>: Bitte lassen Sie Ihre Maschine keine E-Mails von root@example.org versenden, solange Ihnen das nicht root@example.org gesagt hat.
+ .
+ Dieser Name wird auch von anderen Programmen außer Postfix genutzt, es sollte dies der eindeutige voll-qualifizierte Domainname (FQDN) sein.
+ .
+ Falls eine E-Mail-Adresse auf der lokalen Maschine »foo@example.org« lautet, beträgt der korrekte Wert für diese Option »example.org«.
+Description-es.UTF-8: Nombre del sistema de correo:
+ El «nombre de sistema de correo» es el nombre del dominio que se utiliza para «cualificar» _TODAS_ las direcciones de correo sin un nombre de dominio. Esto incluye el correo hacía y desde <root>: por favor, no haga que su máquina envíe los correo electrónicos desde root@ejemplo.org a menos que root@ejemplo.org se lo haya pedido.
+ .
+ Otros programas utilizarán este nombre. Deberá ser un único nombre de dominio cualificado (FQDN).
+ .
+ Por consiguiente, si una dirección de correo en la máquina local es algo@ejemplo.org, el valor correcto para esta opción será ejemplo.org.
+Description-eu.UTF-8: Sistema posta izena:
+ "posta izena" domeinu izenik gabeko posta GUZTIA "kualifikatzeko" erabiliko den domeinu izena da. Honek <root>-en bai barnerako bai kanporako posta guztirako ere erabiliko da. Mesedez ez egin zure makinak root@adibide.net posta kanpora bidaltzea root@adibide.net-ek egiteko esan ez badizu.
+ .
+ Izen hau beste zenbait programek erabiliko dute. Guztiz kalifikaturiko domeinu izen (FQDN) bakan bat izan behar da.
+ .
+ Beraz, ostalari lokaleko posta helbide bat foo@adibide.org bada, aukera honen balio zuzena adibide.org izango litzateke.
+Description-fi.UTF-8: Järjestelmän postinimi:
+ "mail name" on toimialuenimi, jolla täydennetään _KAIKKI_ postiosoitteet ilman toimialuenimeä. Tämä sisältää viestit root-tunnukselle ja -tunnukselta: Ethän aseta tietokonettasi lähettämään postia root@example.org:lta ellei root@example.org ole pyytänyt sinua tekemään niin.
+ .
+ Tätä nimeä käyttää myös muut ohjelmat. Sen pitäisi olla yksittäinen täydellinen toimialuenimi (FQDN).
+ .
+ Mikäli esimerkiksi postiosoite paikalliselle koneelle on foo@example.org, oikea arvo tälle asetukselle on example.org.
+Description-fr.UTF-8: Nom de courrier :
+ Le « nom de courrier » est le nom employé pour qualifier toutes les adresses n'ayant pas de nom de domaine. Cela inclut les courriels de et vers l'adresse du superutilisateur (root). Il est donc conseillé de veiller à éviter d'envoyer des courriels en tant que « root@example.org ».
+ .
+ D'autres programmes se servent de ce nom ; il doit correspondre au domaine unique et complètement qualifié (FQDN) d'où le courrier semblera provenir.
+ .
+ Ainsi, si une adresse provenant de l'hôte local est foo@example.org, la valeur correcte pour cette option serait example.org.
+Description-gl.UTF-8: Nome de correo do sistema:
+ O "nome de correo" é o nome de dominio que se emprega para completar os enderezos de correo sen nome de dominio. Isto inclúe o correo procedente e destinado a "root": non deixe que a máquina envíe correo procedente de root@exemplo.org a menos que root@exemplo.org lle dixera que o fixera.
+ .
+ Este nome tamén o han empregar outros programas. Debería ser o nome completo de dominio (FQDN).
+ .
+ Por exemplo, se un enderezo de correo no servidor local fose foo@example.org, o valor correcto para esta opción había ser example.org.
+Description-it.UTF-8: Nome del sistema per la posta:
+ Il "mail name" è il nome di dominio usato per "qualificare" _TUTTI_ gli indirizzi di posta che non contengono un nome di dominio. Questo comprende anche i messaggi da e per <root>: evitate che il vostro sistema spedisca posta con mittente root@example.org a meno che root@example.org non ve l'abbia chiesto.
+ .
+ Questo nome verrà usato anche da altri programmi. Dovrebbe essere un fully qualified domain name (FQDN).
+ .
+ Ad esempio, se un indirizzo di posta sul sistema locale è foo@example.org, il valore corretto per questo parametro sarebbe example.org.
+Description-ja.UTF-8: システムメール名:
+ "メール名" はドメイン名が指定されていないときに「すべての」メールアドレスを "修飾" するのに使われるドメイン名です。これは <root> への/からのメールを含みます: root@example.org で受け付けるようになっていない限り、root@example.org からのメールをあなたのマシンから送出しないようにしてください。
+ .
+ この名前はほかのプログラムによっても使われます。これは、メールがそこから送出されることになる単一の完全修飾ドメイン名 (FQDN) にすべきです。
+ .
+ そのため、たとえばローカルホストのメールアドレスが foo@example.jp なら、example.org がここでの適切な値となります。
+Description-ko.UTF-8: 시스템 메일 이름:
+ "메일 이름"은 도메인 이름이 없는 메일 주소 전부를 "정규화"할 때 사용하는 도메인 이름입니다. 여기에는 <root>에서 오는 메일과 <root>로 가는 메일도 포함합니다: root@example.org에서 그렇게 하라고 지시하기 전에는 발신자를 root@example.org로 하지 않도록 하시기 바랍니다.
+ .
+ 다른 프로그램에서도 이 이름을 사용할 것입니다. 하나뿐인 정규화된 도메인 이름(FQDN)이어야 합니다.
+ .
+ 즉 로컬 호스트에 있는 이메일 주소가 foo@example.org라면 이 항목에는 example.org를 사용하는 것이 맞습니다.
+Description-nl.UTF-8: E-mail-naam van dit systeem:
+ De 'e-mail-naam' is het domein dat gebruikt wordt om _ALLE_ e-mailadressen zonder een domeinnaam te 'kwalificeren'. Dit omvat e-mail naar en van <root>: laat uw machine aub. geen e-mail versturen van root@example.org tenzij root@example.org u dit opgedragen heeft.
+ .
+ Deze naam wordt ook gebruikt door andere programma's en dient de 'volledig gekwalificeerde domeinnaam' (FQDN) te zijn.
+ .
+ Als een geldig e-mailadres op de lokale computer 'foo@example.org' is, dan is de juiste waarde voor deze optie 'example.org'.
+Description-pt.UTF-8: Nome de mail do sistema:
+ O "nome de mail" é o nome do domínio utilizado para "qualificar" _TODOS_ os endereços de mail sem um nome de domínio. Isto inclui mail de e para <root>: por favor não faça a sua máquina enviar mail de root@exemplo.org a menos que root@exemplo.org lhe tenha dito para o fazer.
+ .
+ Este nome será também utilizado por outros programas. Deve ser o único, nome de domínio completo (FQDN).
+ .
+ Por isso, se um endereço de mail numa máquina local for foo@exemplo.org, o valor correcto para esta opção deve ser exemplo.org.
+Description-ru.UTF-8: Системное почтовое имя:
+ "Почтовое имя" -- это имя домена, используемое для "определения" ВСЕХ почтовых адресов без имени домена, включая письма отправленные и адресованные <root>. Поэтому не делайте так, что ваша машина будет посылать письма от root@example.org, если <root> example.org не сказал вам сделать именно так.
+ .
+ Это имя будет использоваться другими программами. Оно должно быть одним полностью определённым именем домена (FQDN).
+ .
+ Так, если почтовый адрес на локальном хосте имеет вид foo@example.org, то корректное значение этого параметра будет example.org.
+Description-sv.UTF-8: Systemets e-postnamn:
+ Parametern "mail name" är domännamnet som används för att "kvalificera" _ALLA_ e-postadresser utan ett domännamn. Detta inkluderar post till och från <root>: låt inte din maskin skicka ut post från root@example.org såvida inte root@example.org har bett dig göra det.
+ .
+ Detta namn kommer även att användas av andra program. Det bör vara ett enda, fullständigt kvalificerat domännamn (FQDN).
+ .
+ Följaktligen, om en e-postadress på den lokala maskinen är foo@example.org, skulle det korrekta värde för den här inställning vara example.org.
+Description-vi.UTF-8: Tên thư của hệ thống:
+ « Tên thư » là tên miền được dùng để thêm thông tin nhận diện vào TẤT CẢ các địa chỉ thư không co tên miền. Gồm có thư được gửi đến và từ <root>: đừng làm cho máy tính gửi thư từ địa chỉ « root@miền_đó » nếu địa chỉ đó không yêu cầu.
+ .
+ Tên này cũng sẽ được dùng bởi chương trình khác. Nó nên là tên miền khả năng đầy đủ (FQDN) riêng lẻ.
+ .
+ Vì thế, nếu địa chỉ thư trên máy cục bộ là « phu@ví_dụ.org », giá trị đúng cho tùy chọn này là « ví_dụ.org ».
+
+Template: postfix/destinations
+Type: string
+Description: Other destinations to accept mail for (blank for none):
+ Please give a comma-separated list of domains for which this machine
+ should consider itself the final destination. If this is a mail
+ domain gateway, you probably want to include the top-level domain.
+Description-ca.UTF-8: Altres destinacions per a les quals s'accepta correu (deixeu-ho en blanc per a cap):
+ Introduïu una llista, separada per comes, de dominis pels quals aquesta màquina serà considerada el destinatari final. Si aquesta és una passarel·la del domini de correu, probablement vulgueu incloure també el domini de nivell superior.
+Description-cs.UTF-8: Další místa, pro která přijímat poštu (nebo ponechte prázdné):
+ Zadejte čárkami oddělený seznam domén, pro které má Postfix předpokládat, že pošta pro ně skončí na tomto počítači. Pokud je počítač poštovní bránou pro doménu, měli byste zahrnout vrcholovou doménu.
+Description-de.UTF-8: Weitere Rechner, für die E-Mail akzeptiert werden soll (leere Eingabe: keine):
+ Bitte spezifizieren Sie bitte eine durch Kommata getrennte Liste der Rechner, für die dieser Rechner sich als Zielsystem betrachten soll. Ist dieser Rechner für eine gesamte E-Mail-Domain zuständig (»gateway«), sollten Sie wahrscheinlich die Top-Level-Domain (TLD) hinzufügen.
+Description-es.UTF-8: Otros destinos para los cuales aceptar correo (en blanco para ninguno):
+ Por favor, introduzca una lista, separada por comas, de dominios para los que esta máquina deberá considerarse como su destino final. Si esta es una pasarela de correo del dominio, probablemente querrá incluir el dominio padre.
+Description-eu.UTF-8: Bere posta onartuko den beste helburuak (zurian utzi batez erabiltzeko):
+ Mesedez ezarri makina honek helburu bezala bere burua den domeinu zerrenda gakoz bereizirik. Hau posta domeinu atebide bat bada, ziurrenik maila goreneko domeinu izena gehitu nahiko duzu.
+Description-fi.UTF-8: Muut kohteet, joihin hyväksytään postia (tyhjällä ei muita):
+ Luettele pilkuin eroteltuna toimialueet, joille tämä palvelin toimii lopullisena vastaanottajana. Mikäli tämä on postialueen reititin, haluat luultavasti antaa päätason toiminimen.
+Description-fr.UTF-8: Autres destinations pour lesquelles le courrier sera accepté (champ vide autorisé) :
+ Veuillez indiquer une liste des domaines, séparés par des virgules, que cette machine reconnaîtra comme lui appartenant. Si la machine est un serveur de courriels, il est conseillé d'inclure le domaine de plus haut niveau.
+Description-gl.UTF-8: Outros destinos para os que aceptar correo (en branco para ningún):
+ Forneza unha lista de dominios separados por comas para os que esta máquina se debería considerar o destino último. Se esta é unha pasarela de dominio de correo, seguramente queira incluír o dominio de nivel superior.
+Description-it.UTF-8: Altre destinazioni per cui accettare posta (lasciare in bianco se non ce ne sono):
+ Indicare una lista (separata da virgole) di domini per cui questo sistema si deve considerare come la destinazione finale. Se il sistema è un gateway di posta per un intero dominio, è consigliabile includere anche il top-level domain.
+Description-ja.UTF-8: メールを受け取るほかの宛先 (なければ空):
+ このマシンが最終的な宛先と見なされるドメインのリストを、コンマで区切って指定してください。これがメールドメインのゲートウェイであるなら、おそらくトップレベルドメインを含める必要があります。
+Description-ko.UTF-8: 이메일을 받아들일 그 외의 목적지 목록(없으면 빈칸):
+ 이 머신을 최종 목적지로 취급할 도메인의 목록을 쉼표로 연결하여 입력해주십시오. 머신이 메일 도메인 게이트웨이라면 최상위 도메인을 추가하시는 것이 좋을 것입니다.
+Description-nl.UTF-8: Andere bestemmingen waarvoor e-mail aanvaard wordt (laat leeg indien geen):
+ Gelieve een komma-gescheiden lijst van domeinen op te geven waarvoor deze machine zichzelf als de eindbestemming moet beschouwen. Indien dit een e-mail-domein gateway is kunt u best het top-niveau domein toevoegen.
+Description-pt.UTF-8: Outros destinos para os quais aceitar mail? (vazio para nenhum):
+ Por favor forneça uma lista de domínios separados por vírgulas para os quais esta máquina deve considerar-se ela própria como o destino final. Se é um gateway de um domínio de mail, você provelmente quer incluir o domínio de topo.
+Description-ru.UTF-8: Другие места назначений, для которых принимать почту (пусто, если нет):
+ Задайте разделённый запятыми список доменов, для которых эта машина должна считать себя конечным пунктом доставки. Если это шлюз почтового домена, то вы, вероятно, пожелаете включить в этот список домен верхнего уровня.
+Description-sv.UTF-8: Andra destinationer att ta emot e-post för? (lämna blank om ingen):
+ Ange en kommaseparerad lista över domäner som denna maskin ska anse sig själv som den slutgiltiga destinationen för. Om detta är en gateway för e-postdomäner vill du antagligen inkludera toppnivådomänen.
+Description-ta.UTF-8: அஞ்சல் பெற்றுக்கொள்ள மற்ற இலக்குகள் (ஏதுமில்லையானால் வெற்றாகவிடவும்)
+ இந்த கணினி இறுதி இலக்காக தன்னை கருத வேண்டிய களங்களை கால்புள்ளியால் பிரித்த பட்டியலாக தரவும். இது ஒரு அஞ்சல் கள வாயிலானால் நீங்கள் அனேகமாக உயர் நிலை களத்தை சேர்க்க விரும்பலாம்.
+Description-vi.UTF-8: Đích khác cho chúng cần chấp nhận thư (bỏ rỗng nếu không có):
+ Hãy nhập danh sách định giới bằng dấu phẩy hiển thị những miền cho chúng máy này nên xem là nó là đích cuối cùng. Nếu máy này là cổng ra miền thư (mail domain gateway), rất có thể là bạn nên cũng nhập miền cấp đầu.
+
+Template: postfix/relayhost
+Type: string
+Description: SMTP relay host (blank for none):
+ Please specify a domain, host, host:port, [address] or
+ [address]:port. Use the form [destination] to turn off MX lookups.
+ Leave this blank for no relay host.
+ .
+ Do not specify more than one host.
+ .
+ The relayhost parameter specifies the default host to send mail to when no
+ entry is matched in the optional transport(5) table. When no relay host is
+ given, mail is routed directly to the destination.
+Description-ca.UTF-8: Repetidor SMTP (deixeu-ho en blanc per a cap):
+ Especifiqueu un domini, nom, nom:port, [adreça] o [adreça]:port. Utilitzeu la forma [destinació] per desactivar les cerques MX. Deixeu aquest camp en blanc si no voleu tenir un repetidor.
+ .
+ No especifiqueu més d'un ordinador.
+ .
+ Aquest paràmetre especifica la màquina cap a la que s'envia el correu quan no es troba cap entrada coincident a la taula de transport(5) opcional. Quan no s'indica el repetidor, el correu s'encamina directament cap a la seva destinació.
+Description-cs.UTF-8: Počítač pro SMTP relay (nebo prázdné):
+ Zadejte prosím doménu, počítač, počítač:port, [adresu] nebo [adresu]:port. Variantu [cíl] můžete použít pro vypnutí MX dotazů. Pokud nepoužíváte počítač pro přeposílání (relay) pošty, ponechte prázdné.
+ .
+ Nezadávejte více než jeden počítač.
+ .
+ Parametr relayhost zadává výchozí počítač, přes který se zasílá pošta, která nevyhoví žádnému pravidlu ve volitelné tabulce transport(5). Pokud je parametr relayhost prázdný, pošta je směrována rovnou k cíli.
+Description-de.UTF-8: SMTP-Relay-Server (leere Eingabe: keiner):
+ Geben Sie bitte eine Domain, Host, Host:Port, [Adresse] oder [Adresse]:Port an. Nutzen Sie die Form [Ziel], um MX-Abfragen zu verhindern. Lassen Sie dieses Feld leer, falls Sie keinen Relay-Server angeben möchten.
+ .
+ Geben Sie nicht mehr als einen Rechner an.
+ .
+ Der »relayhost«-Parameter gibt den Rechner an, zu dem standardmäßig E-Mail versandt wird, falls ein Eintrag in der optionalen transport(5)-Tabelle zutrifft. Falls kein »relay host« angegeben wird, wird E-Mail direkt zu dem Ziel durchgestellt.
+Description-es.UTF-8: Máquina de pasarela SMTP (en blanco para ninguna):
+ Por favor, especifique un dominio, máquina, máquina:puerto, [dirección] o [dirección:puerto]. Use la forma [destino] para desactivar las búsquedas de MX. Deje en blanco para no utilizar un sistema de reenvío.
+ .
+ No especifique más de una máquina.
+ .
+ El parámetro «relayhost» especifica la máquina predeterminada a donde se debe enviar correo cuando ninguna entrada coincide en la tabla opcional transport(5). Cuando no se especifica la máquina de reenvío, el correo se enruta directamente a su destino.
+Description-eu.UTF-8: SMTP birbidalketa ostalaria (zurin utzi batez erabiltzeko):
+ Mesedez ezarri domeinu, ostalari, ostalari:ataka, [helbidea] edo [helbidea]:ataka. [destination] erabili MX lookup-ak ezgaitzeko. Zurian utzi birbidalketarik nahi izan ez gero.
+ .
+ Ez ezarri ostalari bat baino gehiago.
+ .
+ Birbidalketa-ostalari (relayhost) parametroak aukerako transport(5) taulan parekorik ez dagoen kasuetan posta bidaltzeko erabiliko den lehenetsiriko ostalaria ezartzen du, Birbidalkea ostalaririk ezartzen ez bada posta zuzenean helburura bidaliko da.
+Description-fi.UTF-8: SMTP-välityspalvelin (tyhjä jos ei ole):
+ Anna toimialue, isäntä, isäntä:portti, [osoite] tai [osoite]:portti. Käytä muotoa [kohde] välttämään MX-kyselyt. Jätä tyhjäksi jos ei välityspalvelinta.
+ .
+ Määritä vain yksi isäntä.
+ .
+ "relayhost"-parametri määrittää oletuskoneen, jonne posti lähetetään kun valinnaisesta transport(5)-taulusta ei löydy kohdetta. Mikäli välityspalvelinta ei ole annettu, posti reititetään suoraan kohteeseen.
+Description-fr.UTF-8: Serveur relais SMTP (vide pour aucun) :
+ Veuillez indiquer un domaine, une machine hôte, machine_hôte:port, [adresse] ou [adresse:port]. Utilisez la forme [destination] pour désactiver la recherche de MX (Mail eXchange). Laissez ce champ vide s'il n'existe pas de serveur relais.
+ .
+ Vous ne pouvez pas indiquer plus d'un hôte.
+ .
+ Ce paramètre indique le serveur vers lequel sera envoyé le courrier quand aucune entrée correspondante n'existe dans la table optionnelle de transport(5). Quand aucun serveur relais n'est donné, le courrier est routé directement vers sa destination.
+Description-gl.UTF-8: Servidor de relay SMTP (en branco para ningún):
+ Indique un dominio, servidor, servidor:porto, [enderezo] ou [enderezo]:porto. Empregue a forma [destino] para desactivar as buscas de MX. Déixeo en branco para non empregar un servidor de relay.
+ .
+ Non especifique máis dun servidor.
+ .
+ O parámetro "relayhost" especifica o servidor por defecto ao que lle enviar o correo cando non se atopa unha entrada na táboa opcional de transportes. Se non se indica un servidor de relay, o correo envíase directamente ao destino.
+Description-it.UTF-8: Host da usare come relay SMTP (lasciare in bianco se non viene usato):
+ Indicare un dominio, host, host:porta, [indirizzo] o [indirizzo]:porta. Usando la forma [destinazione] vengono disabilitate le ricerche MX. Lasciare in bianco se non si usa alcun relay.
+ .
+ Non specificare più di un host.
+ .
+ Il parametro "relayhost" indica l'host a cui inviare la posta quando non viene trovata alcuna corrispondenza nella tabella opzionale transport(5). Se non viene indicato, la posta è instradata direttamente alla destinazione.
+Description-ja.UTF-8: SMTP リレーホスト (なければ空):
+ ドメイン、ホスト、ホスト:ポート、[アドレス] または [アドレス:ポート] を指定してください。MX 探索を行わないようにするには [宛先] 形式を使います。リレーホストがなければここは空のままにしておきます。
+ .
+ 複数のホストを指定しないでください。
+ .
+ リレーホストパラメータは、オプションの transport(5) テーブルに適合するエントリがないときにメールを送るデフォルトのホストを指定します。リレーホストが与えられていないときには、メールは直接宛先に発送されます。
+Description-ko.UTF-8: SMTP 중계 호스트(없으면 빈칸으로):
+ 도메인이나, 호스트 이름, 호스트 이름:포트번호, [주소], [주소]:포트번호를 지정해주십시오. MX 참조 기능을 해제하기 위해서는 [목적지]라는 형식을 사용해주십시오. 중계 호스트가 없을 경우에는 빈칸으로 두시기 바랍니다.
+ .
+ 호스트를 하나만 설정하십시오.
+ .
+ relayhost 매개변수는 선택적으로 사용할 수 있는 transport(5)표에 맞는 항목이 없는 이메일은 기본적으로 보낼 호스트 이름을 지정합니다. 중계 호스트가 지정되어있지 않으면 이메일을 목적지까지 직접 보냅니다.
+Description-nl.UTF-8: SMTP-doorvoerserver (laat leeg indien geen):
+ Gelieve een domein, computer, computer:poort, [adres] of [adres:poort] op te geven. Gebruik de vorm [bestemming] om MX-opzoekingen te vermijden. Laat dit leeg als er geen doorvoerserver gebruikt wordt.
+ .
+ Geef niet meer dan één computer.
+ .
+ De 'relayhost'-parameter geeft een standaard server op waarnaar e-mail gestuurd word indien geen enkele ingang in de optionele overzettabel (transport(5)) overeenkomt. Indien er geen doorvoerserver opgegeven is wordt e-mail rechtstreeks naar de bestemming gestuurd.
+Description-pt.UTF-8: Host de relay SMTP? (vazio para nenhum):
+ Especifique um domínio, máquina, máquina:port, [endereço] ou [endereço]:port. Utilize a forma [destino] para desligar as verificações de MX.  Deixe isto em branco para nenhuma máquina de relay.
+ .
+ Não especificar mais do que uma máquina.
+ .
+ O parâmetro relayhost especifica a máquina por omissão para enviar mail quando nenhuma entrada coincide na tabela opcial de transport(5). Quando não é dado nenhum relayhost, o mail é encaminhado directamente para o destino.
+Description-ru.UTF-8: Релейный хост SMTP (пусто, если нет):
+ Укажите домен, хост, хост:порт, [адрес] или [адрес:порт]. Чтобы избежать просмотров МХ-записей, используйте форму [назначение]. Если релейного хоста нет, то оставьте это поле пустым.
+ .
+ Не указывайте более одного хоста.
+ .
+ Параметр relayhost указывает хост по умолчанию, куда должна отправляться почта при отсутствии подходящей записи в необязательной таблице transport(5). Если relayhost не задан, то почта пересылается напрямую адресату.
+Description-sv.UTF-8: SMTP-värd för vidaresändning (lämna blank för ingen alls):
+ Ange en domän, värd, värd:post,  [adress] eller [adress]:port. Använd formatet [destination] för att stänga av MX-uppslag. Lämna blank för att inte använda en vidaresändningsvärd.
+ .
+ Ange inte fler än en värd.
+ .
+ Parametern "relayhost" (relävärd) anger den standardvärd som post ska skickas till när ingen post matchas i den valfria transport(5)-tabellen. När ingen relävärd angivits kommer post att skickas direkt till destinationen.
+Description-ta.UTF-8: எஸ்எம்டிபி(SMTP) திசை மாற்று புரவலன் (ஏதுமில்லையானால் வெற்றாகவிடவும்):
+ தயை செய்து ஒரு களம், புரவலன், புரவலன்:துறை [முகவரி] அல்லது [முகவரி]:துறை இவற்றை குறிப்பிடவும். எம்எக்ஸ் தேடுதலை செயலிழக்கச்செய்ய [destination] படிவத்தை பயன்படுத்துக. திசை மாற்று புரவலன் இல்லையானால் வெற்றாக விடவும்..
+ .
+ ஒன்றுக்கும் அதிக புரவலனை குறிப்பிடாதீர்கள்.
+ .
+ போக்குவரத்து விருப்பத்தேர்வு (5) அட்டவணையில் உள்ள உள்ளீடு ஏதும் ஒத்துப்போகாத போது அஞ்சலை அனுப்ப முன்னிருப்பு புரவலனை திசை மாற்று புரவலன் அளபுரு நிர்ணயிக்கிறது. திசை மாற்று புரவலன் தரப்படாத போது அஞ்சல் நேரடியாக இலக்குக்கு அனுப்பப்படும்.
+Description-vi.UTF-8: Máy tiếp SMTP (rỗng nếu không có):
+ Hãy ghi rõ một miền, máy, máy:cổng, [địa_chỉ] hay [địa_chỉ]:cổng. Dùng dạng [đích] để tắt khả năng tra cứu MX. Bỏ rỗng nếu không có máy tiếp (relay host).
+ .
+ Đừng ghi rõ hơn một máy.
+ .
+ Tham số máy tiếp (relayhost) ghi rõ máy mặc định cho đó cần gửi thư khi không có mục nhập được khớp trong bảng transport(5) tùy chọn. Không nhập máy tiếp thì thư được gửi trực tiếp cho đích.
+
+Template: postfix/procmail
+Type: boolean
+Description: Use procmail for local delivery?
+ Please choose whether you want to use procmail to deliver local mail.
+ .
+ Note that if you use procmail to deliver mail system-wide, you should set
+ up an alias that forwards mail for root to a real user.
+Description-ca.UTF-8: Voleu utilitzar procmail per al lliurament local?
+ Si us plau, indiqueu si voleu utilitzar procmail per lliurar el correu local.
+ .
+ Fixeu-vos que si feu servir procmail per lliurar tots els missatges del sistema, haureu de configurar un àlies per tal de reenviar el correu dirigit a root cap a un usuari de debò.
+Description-cs.UTF-8: Použít pro lokální doručování procmail?
+ Vyberte, zda chcete pro doručování lokální pošty použít procmail.
+ .
+ Pokud budete pro doručování pošty v celém systému používat procmail, měli byste vytvořit alias, který bude přeposílat rootovu poštu reálnému uživateli.
+Description-de.UTF-8: Möchten Sie Procmail zur lokalen E-Mail-Zustellung nutzen?
+ Bitte wählen Sie aus, ob Sie Procmail zur Zustellung lokaler E-Mail verwenden wollen.
+ .
+ Beachten Sie, dass bei systemweiter E-Mail-Zustellung mittels Procmail ein Alias genutzt werden sollte, um an root adressierte E-Mails an einen normalen Benutzer weiterzuleiten.
+Description-es.UTF-8: ¿Usar procmail para la entrega local?
+ Indique si desea usar procmail para entregar el correo local.
+ .
+ Tenga en cuenta de que si usa procmail para entregar el correo de todo el sistema, deberá configurar un alias que reenvíe el correo del superusuario a un usuario real.
+Description-eu.UTF-8: Procmail erabili banaketa lokalerako?
+ Mesedez hautatu posta lokala banatzeko procmail nola erabili nahi duzun.
+ .
+ Kontutan izan sisteman zehar posta banatzeko procmail erabiltzen baduzu, root posta erabiltzaile erreal bati bidaliko dion alias bat ezarri behar duzula.
+Description-fi.UTF-8: Käytä procmailia paikalliseen välitykseen?
+ Valitse haluatko käyttää procmailia välittämään paikalliset postit.
+ .
+ Huomaa, että mikäli käytät procmailia järjestelmän laajuisesti, tulee sinun asettaa alias, joka ohjaa postit rootilta oikealle käyttäjälle.
+Description-fr.UTF-8: Faut-il utiliser procmail pour la distribution locale ?
+ Veuillez choisir si vous souhaitez utiliser procmail pour la distribution locale.
+ .
+ Si vous choisissez cette option, vous devriez créer un alias, pointant sur un utilisateur réel, vers lequel faire suivre le courrier de l'utilisateur root.
+Description-gl.UTF-8: ¿Empregar procmail para entrega local?
+ Indique se quere empregar procmail para entregar o correo local.
+ .
+ Teña en conta que se emprega procmail para entregar o correo en todo o sistema, debería configurar un alias que envíe o correo de "root" a un usuario real.
+Description-it.UTF-8: Usare procmail per la consegna locale?
+ Indicare se si vuole usare procmail per consegnare la posta locale.
+ .
+ Nota: se si usa procmail per consegnare la posta di tutto il sistema, è consigliabile impostare un alias per inoltrare a un altro utente la posta diretta a root.
+Description-ja.UTF-8: ローカル配送に procmail を使いますか?
+ ローカルメールの配送に procmail を使いたいかどうか選んでください。
+ .
+ システム全体の メール配送に procmail を使う場合、rootへのメールを実ユーザに転送するエイリアスをセットアップすべきことに注意してください。
+Description-ko.UTF-8: 로컬 이메일 배달에 procmail를 사용할까요?
+ 로컬 이메일은 procmail을 사용하여 전송할 지를 결정해주십시오.
+ .
+ 참고로 procmail을 이용하여 시스템 전체의 이메일을 전송하신다면, root의 이메일을 실제 사용자에게 전달하도록 대체명(에일리어스)를 설정할 것을 권장합니다.
+Description-nl.UTF-8: Procmail gebruiken voor lokale aflevering?
+ Wilt u procmail gebruiken om lokale e-mail af te leveren?
+ .
+ Merk op dat u, bij gebruik van procmail voor systeemwijde aflevering, een alias dient in te stellen zodat post voor root naar een echte gebruiker gestuurd wordt.
+Description-pt.UTF-8: Utilizar o procmail para entregas locais?
+ Por favor escolha se deseja utilizar o procmail para entregar o mail local.
+ .
+ Note que se utilizar o procmail para entregar mail a todo o sistema, você deve configurar um alias que reencaminhe o mail destinado ao root para um utilizador real.
+Description-ru.UTF-8: Использовать procmail для локальной доставки?
+ Укажите, хотите ли вы использовать procmail для локальной доставки.
+ .
+ Обратите внимание, что если вы используете procmail для доставки почты по системе, то вам рекомендуется установить псевдоним, который будет пересылать почту для root реальному пользователю.
+Description-sv.UTF-8: Använda procmail för lokala leveranser?
+ Välj huruvida du vill använda procmail för att leverera lokal post.
+ .
+ Observera att om du använder procmail för att leverera post över hela systemet bör du ställa in ett alias som skickar vidare post för root till en vanlig användare.
+Description-ta.UTF-8: உள் வினியோகத்துக்கு ப்ராக்மெயில் ஐ பயன்படுத்தலாமா?
+ அஞ்சல் உள் வினியோகத்துக்கு ப்ராக்மெயில் ஐ பயன்படுத்தலாமா என தேர்ந்தெடுங்கள்.
+ .
+ நீங்கள் அமைப்பு முழுதும் அஞ்சல் வினியோகத்துக்கு ப்ராக்மெயில் ஐ பயன்படுத்தினால் ரூட் இடமிருந்து உண்மை பயனருக்கு அஞ்சல் மேல் அனுப்ப ஒரு மாற்றுப்பெயர் அமைக்க வேண்டும்.
+Description-vi.UTF-8: Dùng procmail để phát thư cục bộ không?
+ Hãy chọn nếu bạn muốn sử dụng phần mềm procmail để phát thư cục bộ hay không.
+ .
+ Ghi chú rằng nếu bạn sử dụng procmail để phát thư trên toàn hệ thống, bạn cũng nên thiết lập một bí danh có tiếp thư của người chủ (root) cho một người dùng thật.
+
+Template: postfix/protocols
+Type: select
+Choices: all, ipv6, ipv4
+Choices-ca.UTF-8: ambdós, ipv6, ipv4
+Choices-cs.UTF-8: všechny, ipv6, ipv4
+Choices-de.UTF-8: alle, ipv6, ipv4
+Choices-es.UTF-8: todos, ipv6, ipv4
+Choices-eu.UTF-8: dena, ipv6, ipv4
+Choices-fi.UTF-8: kaikki, ipv6, ipv4
+Choices-fr.UTF-8: tous, ipv6, ipv4
+Choices-gl.UTF-8: todos, ipv6, ipv4
+Choices-it.UTF-8: tutti, ipv6, ipv4
+Choices-ja.UTF-8: すべて, IPv6, IPv4
+Choices-ko.UTF-8: 모두, ipv6, ipv4
+Choices-nl.UTF-8: alle, ipv6, ipv4
+Choices-pt.UTF-8: todos, ipv6, ipv4
+Choices-ru.UTF-8: все, ipv6, ipv4
+Choices-sv.UTF-8: alla, ipv6, ipv4
+Choices-ta.UTF-8: அனைத்தும், ஐபிவி6(ipv6), ஐபிவி4(ipv4)
+Choices-vi.UTF-8: tất cả, ipv6, ipv4
+Description: Internet protocols to use:
+ By default, whichever Internet protocols are enabled on the system at
+ installation time will be used. You may override this default with any
+ of the following:
+ .
+  all : use both IPv4 and IPv6 addresses;
+  ipv6: listen only on IPv6 addresses;
+  ipv4: listen only on IPv4 addresses.
+Description-ca.UTF-8: Protocols d'Internet a utilitzar:
+ Per omissió s'utilitzaran els protocols que estiguin activats al sistema en el moment de fer la instal·lació. Podeu canviar això per qualsevol de les següents opcions:
+ .
+  ambdós: utilitza tant adreces IPv4 com IPv6;
+  ipv6: escolta només adreces IPv6;
+  ipv4: escolta només adreces IPv4.
+Description-cs.UTF-8: Internetové protokoly, které se mají použít:
+ Postfix bude automaticky používat libovolné internetové protokoly, které jsou v době instalace na systému k dispozici. Toto chování můžete změnit následujícím:
+ .
+  všechny: použije adresy IPv4 i IPv6;
+  ipv6:    naslouchá pouze na adresách IPv6;
+  ipv4:    naslouchá pouze na adresách IPv4.
+Description-de.UTF-8: Zu verwendende Internet-Protokolle:
+ Standardmäßig werden alle Internet-Protokolle verwendet, die bei der Installation auf dem System aktiviert sind. Sie können diese Standardeinstellung mit einem der Folgenden überschreiben:
+ .
+  alle: sowohl IPv4- als auch IPv6-Addressen verwenden;
+  ipv6: nur auf IPv6-Adressen auf Nachrichten warten;
+  ipv4: nur auf IPv4-Adressen auf Nachrichten warten.
+Description-es.UTF-8: Protocolos de Internet a usar:
+ De manera predeterminada, se utilizarán los protocolos de Internet que estén activos al momento de la instalación. Puede cambiar esto por cualquiera de los siguientes:
+ .
+  todos: utilizar tanto direcciones IPv4 como IPv6;
+  ipv6 : escuchar únicamente en direcciones IPv6;
+  ipv4 : escuchar únicamente en direcciones IPv4.
+Description-eu.UTF-8: Erabiliko diren internet protokoloak:
+ Lehenespen bezala, sisteman instalazio garaian gaiturik dagoen edozein internet protokolo erabiliko da. Lehenespen hau aukera hauetako edozeinez gainidatzi dezakezu.
+ .
+  dena: bai IPv4 bai IPv6 protokolo helbideak entzun;
+  ipv6: ipv6 helbideak bakarrik entzun;
+  ipv4: ipv4 helbideak bakarrik entzun.
+Description-fi.UTF-8: Käytettävät Internet-protokollat:
+ Oletuksena kaikki järjestelmässä asennuksen aikana käytössä olevat Internet-protokollat otetaan käyttöön. Voit ohittaa tämän oletuksen seuraavasti:
+ .
+  kaikki: käytä sekä IPv4- että IPv6-osoitteita;
+  ipv6  : kuuntele vain IPv6-osoitteissa;
+  ipv4  : kuuntele vain IPv4-osoitteissa.
+Description-fr.UTF-8: Protocoles internet à utiliser :
+ Par défaut, Postfix utilise tous les protocoles internet actifs sur le système. Vous pouvez annuler ce comportement avec les valeurs suivantes :
+ .
+  tous : utilisation des adresses IPv4 et IPv6 ;
+  ipv6 : écoute uniquement les adresses IPv6 ;
+  ipv4 : écoute uniquement les adresses IPv4.
+Description-gl.UTF-8: Protocolos de Internet a empregar:
+ Por defecto hanse empregar os protocolos de Internet que estean activados no sistema durante a instalación. Pode evitar isto escollendo unha das seguintes opcións:
+ .
+  todos: empregar enderezos IPv4 e IPv6;
+  ipv6 : escoitar só nos enderezos IPv6;
+  ipv4 : escoitar só nos enderezos IPv4.
+Description-it.UTF-8: Protocolli internet da usare:
+ Per impostazione predefinita vengono usati tutti i protocolli internet attivi sul sistema al momento dell'installazione. È possibile sovrascrivere questa impostazione usando i valori seguenti:
+ .
+  tutti: usare sia gli indirizzi IPv4 sia quelli IPv6;
+  ipv6 : ascoltare solo sugli indirizzi IPv6;
+  ipv4 : ascoltare solo sugli indirizzi IPv4.
+Description-ja.UTF-8: 利用するインターネットプロトコル:
+ デフォルトでは、インストール時点のシステムで有効などのインターネットプロトコルも使われます。このデフォルトを以下のいずれかで上書きできます:
+ .
+  すべて : IPv4 と IPv6 アドレス両方を使う;
+  IPv6: IPv6 アドレスのみをリスンする;
+  ipv4: IPv4 アドレスのみをリスンする。
+Description-ko.UTF-8: 사용할 인터넷 프로토콜:
+ 기본적으로는 설치할 때 시스템에서 활성화한 인터넷 프로토콜을 사용합니다. 아래 중에서 하나를 선택하여 다른 설정을 사용하실 수 있습니다.
+ .
+  모두: IPv4와 IPv6 주소를 모두 사용합니다
+  ipv6: IPv6 주소에만 대기합니다
+  ipv4: IPv4 주소에만 대기합니다.
+Description-nl.UTF-8: Te gebruiken internetprotocollen:
+ Standaard wordt er geluisterd op alle tijdens de installatie actieve internetprotocollen. U kunt de standaardwaarde aan de kant zetten door één van het volgende te doen:
+ .
+ alle: gebruik zowel IPv4 als IPv6 adressen;
+ ipv6: luister enkel op IPv6 adressen;
+ ipv4: luister enkel op IPv4 adressen.
+Description-pt.UTF-8: Quais os protocolo de Internet a utilizar?
+ Por omissão, quaisquer que sejam os protocolos de Internet que estejam habilitados no sistema na altura da instalação.  Você pode ultrapassar este comportamento por omissão com quaisquer dos seguintes:
+ .
+  todos : utilizar ambos endereços IPv4 e IPv6;
+  ipv6  : escutar apenas endereços IPv6;
+  ipv4  : escutar apenas endereços IPv4.
+Description-ru.UTF-8: Использовать Интернет-протоколы:
+ По умолчанию, будут использованы Интернет-протоколы, которые были разрешены в системе во время установки. Вы можете переопределить это умолчание любым следующим:
+ .
+  все:  использовать и IPv4, и IPv6 адреса;
+  ipv6: слушать только IPv6 адреса;
+  ipv4: слушать только IPv4 адреса.
+Description-sv.UTF-8: Internetprotokoll att använda:
+ Som standard kommer de internetprotokoll som är aktiverade på systemet att användas. Du kan åsidosätta den här inställningen genom att välja någon av följande:
+ .
+  alla: använd både IPv4 och IPv6-adresser;
+  ipv6: lyssna endast på IPv6-adresser;
+  ipv4: lyssna endast på IPv4-adresser.
+Description-ta.UTF-8: பயன்படுத்த வேண்டிய இணைய நெறிமுறை:
+ முன்னிருப்பாக பயன்படுத்த வேண்டிய இணைய நெறிமுறையாக எது கணினியில் நிறுவல் நேரத்தில் அமைக்கப்பட்டதோ அதுவே செயல்படும். முன்னிருப்பை நீங்கள் பின்வரும் ஏதாவதுடன் மீறலாம்:
+ .
+  அனைத்தும் : ஐபிவி4(ipv4) மற்றும் ஐபிவி6(ipv6) முகவரிகள் இரண்டையும் பயன்படுத்துக ;
+  ipv6: ஐபிவி6(ipv6) முகவரிகளில் மட்டும் கவனிக்கவும்;
+  ipv4: ஐபிவி4(ipv4) முகவரிகளில் மட்டும் கவனிக்கவும்.
+Description-vi.UTF-8: Giao thức Mạng cần dùng:
+ Mặc định là dùng những giao thức Mạng được bật trên hệ thống vài lúc cài đặt. Cũng có thể ghi đè giá trị mặc định này bằng bất cứ điều theo đây nào :
+ .
+  • tất cả	dùng địa chỉ kiểu cả hai IPv4 và IPv6;
+  • ipv6	lắng nghe chỉ trên địa chỉ kiểu IPv6;
+  • ipv4	lắng nghe chỉ trên địa chỉ kiểu IPv4.
+
+Template: postfix/recipient_delim
+Type: string
+Default: +
+Description: Local address extension character:
+ Please choose the character that will be used to define a local address
+ extension.
+ .
+ To not use address extensions, leave the string blank.
+Description-ca.UTF-8: Caràcter d'extensió de les adreces locals:
+ Si us plau, trieu el caràcter que s'utilitzarà per definir l'extensió de les adreces locals.
+ .
+ Si no voleu utilitzar extensions a les adreces, deixeu el camp en blanc.
+Description-cs.UTF-8: Znak pro příponu lokální adresy:
+ Vyberte prosím znak, kterým se definuje přípona lokální adresy.
+ .
+ Pokud nechcete používat přípony adres, ponechte prázdné.
+Description-de.UTF-8: Zeichen für lokale Adress-Erweiterung:
+ Bitte geben Sie das Zeichen an, dass zur Definition der lokalen Adress-Erweiterung verwendet wird.
+ .
+ Lassen Sie die Eingabe leer, wenn Sie keine Adress-Erweiterungen nutzen möchten.
+Description-es.UTF-8: Carácter de extensión de direcciones locales:
+ Indique el carácter que se usará para definir una extensión de dirección local.
+ .
+ Para no usar extensiones de dirección, deje la cadena en blanco.
+Description-eu.UTF-8: Helbide lokal hedapen karakterea:
+ Mesedez hautatu helbide lokal hedapena ezartzeko erabiliko den karakterea.
+ .
+ Helbide hedapenik ez erabili nahi izanez gero, utzi katea zurian.
+Description-fi.UTF-8: Paikallisen osoitteen laajennusmerkki:
+ Valitse merkki, jolla määritetään paikallisen osoitteen laajennus.
+ .
+ Jätä tyhjäksi jos et halua käyttää osoitelaajennusta.
+Description-fr.UTF-8: Caractère d'extension des adresses locales :
+ Veuillez choisir le caractère définissant une extension d'adresse locale.
+ .
+ Pour ne pas utiliser d'extension pour les adresses locales, laissez le champ vide.
+Description-gl.UTF-8: Carácter de extensión de enderezos locais:
+ Indique o carácter que se ha empregar para definir unha extensión de enderezos locais.
+ .
+ Para non empregar extensións de enderezos, deixe a cadea en branco.
+Description-it.UTF-8: Carattere per le estensioni degli indirizzi locali:
+ Scegliere il carattere da usare per definire le estensioni degli indirizzi locali.
+ .
+ Per non usare le estensioni degli indirizzi, lasciare in bianco.
+Description-ja.UTF-8: ローカルアドレス拡張文字:
+ ローカルアドレス拡張を定義するのに使われる文字を選んでください。
+ .
+ アドレス拡張を使わないのであれば、この文字列を空にしてください。
+Description-ko.UTF-8: 로컬 주소 확장용 문자:
+ 로컬 주소 확정을 정의할 때 사용할 문자를 결정해주십시오.
+ .
+ 주소 확장 기능을 사용하지 않으실 경우 빈칸으로 두십시오.
+Description-nl.UTF-8: Lokaal adres-uitbreidingskarakter:
+ Welk karakter zal gebruikt worden om een lokale adres-uitbreiding aan te geven?
+ .
+ Laat dit leeg indien u geen adres-uitbreidingen wilt gebruiken.
+Description-pt.UTF-8: Caractere de extensão de endereço local:
+ Por favor escolha qual o caractere que será utilizado para definir uma extensão de endereço local?
+ .
+ Deixar a string vazia, para não utilizar extensões de endereço.
+Description-ru.UTF-8: Символ расширения локальных адресов:
+ Выберите символ, который будет использоваться для определения расширения локальных адресов?
+ .
+ Чтобы не использовать расширение локальных адресов, оставьте поле пустым.
+Description-sv.UTF-8: Tecken för lokala adressutökningar:
+ Välj det tecken som ska användas för att definiera en lokal adressutökning.
+ .
+ För att inte använda adressutökningar, lämna fältet blankt.
+Description-ta.UTF-8: உள்ளிருப்பு முகவரி விரிவாக்க குறியீடு:
+ உள்ளிருப்பு முகவரி விரிவாக்கத்தை அறுதியிடும் குறியீடு எதுவென தேர்ந்தெடுங்கள்:
+ .
+ முகவரி விரிவாக்கம் பயன்படுத்த வேண்டாம் எனில் சரத்தை வெற்றாக விடவும்.
+Description-vi.UTF-8: Ký tự mở rộng địa chỉ cục bộ :
+ Hãy chọn ký tự sẽ được dùng để định nghĩa phần mở rộng địa chỉ cục bộ.
+ .
+ Để không sử dụng phần mở rộng địa chỉ, bỏ rỗng chuỗi này.
+
+Template: postfix/bad_recipient_delimiter
+Type: error
+Description: Bad recipient delimiter
+ The recipient delimiter must be a single character. '${enteredstring}'
+ is what you entered.
+Description-ca.UTF-8: Delimitador de destinatari incorrecte
+ El delimitador de destinatari ha de tenir un sol caràcter. Heu introduït «${enteredstring}».
+Description-cs.UTF-8: Chybný oddělovač příjemců
+ Oddělovač příjemců musí být jediný znak, ale vy jste zadali „${enteredstring}“.
+Description-de.UTF-8: Ungültiges Adress-Trennzeichen
+ Das Adress-Trennzeichen muss ein einzelnes Zeichen sein. Sie haben »${enteredstring}« eingegeben.
+Description-es.UTF-8: Delimitador de destinatario incorrecto
+ El delimitador de destinatario debe ser un único carácter. Ha introducido «${enteredstring}».
+Description-eu.UTF-8: Hartzaile mugatzaile okerra
+ Hartzaile mugatzailea karaktere soil bat izan behar da. '${enteredstring}' da idatzi duzuna.
+Description-fi.UTF-8: Virheellinen vastaanottajaerotin
+ Vastaanottajaerottimen täytyy olla yksi merkki. Syötit juuri "${enteredstring}".
+Description-fr.UTF-8: Mauvais délimiteur du destinataire
+ Le délimiteur du destinataire ne doit comporter qu'un seul caractère. Vous avez saisi « ${enteredstring} ».
+Description-gl.UTF-8: Delimitador de destinatario incorrecto
+ O delimitador de destinatarios debe ser un só carácter. Vostede introduciu "${enteredstring}".
+Description-it.UTF-8: Delimitatore errato.
+ Il delimitatore dei destinatari deve essere un carattere singolo, ma è stata immessa la stringa "${enteredstring}".
+Description-ja.UTF-8: 誤った受信者区切り文字です
+ 受信者区切り文字は単一の文字でなければなりません。あなたが入力したのは '${enteredstring}' でした。
+Description-ko.UTF-8: 잘못된 수신자 구분문자임
+ 수신자 구분문자는 한 글자여야 합니다. '${enteredstring}'을(를) 입력하셨습니다.
+Description-nl.UTF-8: Slecht ontvanger-scheidingsteken
+ Het ontvanger-scheidingsteken is een enkel karakter, u heeft '${enteredstring}' ingevoerd.
+Description-pt.UTF-8: Delimitador de recipiente errado
+ O delimitador de recipiente tem de ser um único caractere. '${enteredstring}' é o que você introduziu.
+Description-ru.UTF-8: Неподходящий разделитель для получателя
+ Разделитель для получателя должен быть одним символом. Вы ввели '${enteredstring}'.
+Description-sv.UTF-8: Felaktig avgränsning för mottagare
+ Avgränsaren för mottagaren måste vara ett enda tecken. Du angav "${enteredstring}".
+Description-ta.UTF-8: மோசமான பெறுனர் வரம்புகுறி
+ பெறுனர் வரம்புகுறி ஒரு தனி குறியாக இருக்க வேண்டும். நீங்கள் உள்ளிட்டது '${enteredstring}'
+Description-vi.UTF-8: Dấu sai định giới người nhận
+ Dấu định giới người nhận phải là một ký tự riêng lẻ. Bạn đã nhập « '${enteredstring} ».
+
+Template: postfix/chattr
+Type: boolean
+Default: false
+Description: Force synchronous updates on mail queue?
+ If synchronous updates are forced, then mail is processed more slowly.
+ If not forced, then there is a remote chance of losing some mail if
+ the system crashes at an inopportune time, and you are not using a
+ journaled filesystem (such as ext3).
+Description-ca.UTF-8: Voleu forçar les actualitzacions síncrones a la cua de correu?
+ Si es forcen les actualitzacions síncrones, aleshores el correu es processa més lentament. Si no es forcen, aleshores hi ha la possibilitat remota de perdre algun correu si es produeix una fallada del sistema en un moment inoportú, i no esteu utilitzant un sistema de fitxers transaccional (com ara ext3).
+Description-cs.UTF-8: Vynutit synchronní aktualizaci poštovní fronty?
+ Pokud je vynucena synchronní aktualizace, bude se pošta zpracovávat pomaleji. Pokud není vynucena, existuje malá šance, že když systém spadne v nevhodný okamžik a nepoužíváte žurnálovací souborový systém (jako ext3), může se některá pošta ztratit.
+Description-de.UTF-8: Synchrone Aktualisierungen der E-Mail-Warteschlange erzwingen?
+ Falls synchrone Aktualisierungen erzwungen werden, wird die E-Mail langsamer verarbeitet. Falls diese nicht erzwungen werden, dann gibt es eine entfernte Möglichkeit, dass bei einem System-Absturz zu einem unglücklichen Zeitpunkt E-Mails verloren gehen, falls Sie kein Dateisystem mit Journal verwenden (wie ext3).
+Description-es.UTF-8: ¿Forzar actualizaciones síncronas en la cola de correo?
+ Si se fuerzan las actualizaciones síncronas, el correo será procesado más lentamente. Si no se fuerzan, existe la posibilidad remota de perder algunos correos si el sistema colapsa en un momento inoportuno y no está usando un sistema de archivos transaccional (como ext3).
+Description-eu.UTF-8: Posta ilararen eguneraketa sinkronoa behartu?
+ Eguneraketa sinkronoak behartuaz gero, posta mantsoago prozesatuko da. Behartzen ez bada, aukera txikiren bat dago posta batenbat galtzekoa sistema momentu desegoki batetan oker itzaltzen bada eta ez baduzu 'journaling' erabiltzen duen fitxategi sistema bat erabiltzen (ext3 bezala).
+Description-fi.UTF-8: Pakota synkroniset päivitykset postijonolle?
+ Mikäli synkroniset päivitykset on pakotettu päälle, posti käsitellään hitaammin. Mikäli niitä ei ole pakotettu, on pieni mahdollisuus hävittää postia mikäli järjestelmä kaatuu väärällä hetkellä, ja et käytä journaloivaa tiedostojärjestelmää (kuten ext3).
+Description-fr.UTF-8: Faut-il forcer des mises à jour synchronisées de la file d'attente des courriels ?
+ Lorsque les mises à jour synchronisées sont imposées, l'envoi des courriels se fait plus lentement. Dans le cas contraire, des courriels risquent d'être perdus si le système s'arrête inopinément et si vous n'utilisez pas un système de fichiers journalisé, comme ext3.
+Description-gl.UTF-8: ¿Forzar actualizacións síncronas na cola de correo?
+ Se se forzan as actualizacións síncronas, o correo procésase máis despacio. Se non se forzan, hai unha posibilidade remota de que se perda algún correo se o sistema falla nun momento inoportuno e non emprega un sistema de ficheiros transaccional (coma ext3).
+Description-it.UTF-8: Forzare gli aggiornamenti sincroni della coda di posta?
+ Se viene forzato l'uso degli aggiornamenti sincroni, la posta verrà processata più lentamente. In caso contrario, potrebbe esserci una remota possibilità di perdere dei messaggi, nel caso il sistema cada in un momento particolarmente inopportuno e non si usi un filesystem journaling (come ext3).
+Description-ja.UTF-8: メールキューの同期更新を強制しますか?
+ 同期更新を強制すると、メールの処理が若干遅くなります。強制しない場合は、ジャーナリングファイルシステム (ext3 など) を使っていない状態でシステムが運悪くクラッシュしたときに、リモートからのいくつかのメールが失われる可能性があります。
+Description-ko.UTF-8: 메일큐(queue)에 동기 업데이트를 강제할까요?
+ 동기 업데이트를 강제할 경우 이메일 처리가 더 느리게 진행됩니다. 강제하지 않았는데 불행한 시기에 시스템이 멈추고, 저널링되는 파일시스템(ext3 등)을 사용하지 않을 경우에는 이메일이 분실될 수 있는 가능성이 살짝 있습니다.
+Description-nl.UTF-8: Synchroon bijwerken van de post-wachtrij afdwingen?
+ Wanneer synchrone bijwerking afgedwongen wordt, verloopt het verwerken van berichten trager. Wanner dit niet afgedwongen wordt is het mogelijk (maar onwaarschijnlijk) dat er berichten verloren gaan als het systeem op het verkeerde moment vastloopt en u geen gebruik maakt van een "journalling"-bestandssysteem (zoals ext3).
+Description-pt.UTF-8: Forçar actualizações síncronas na lista de mail?
+ Se as actualizações síncronas forem forçadas, então o mail é processado mais lentamente. Se não forem forçadas, então existe uma remota hipótese de perder algum mail se o sistema bloquear numa altura inoportuna, e você não estiver a utilizar um sistema de ficheiros com journal (como o ext3).
+Description-ru.UTF-8: Принудительно задействовать синхронные обновления почтовой очереди?
+ Если синхронные обновления задействованы принудительно, то обработка почты станет более медленной. Если нет, то существует вероятность потери некоторой части почты, если будет сбой системы в неподходящий момент и вы не используете журналируемую файловую систему (такую как ext3).
+Description-sv.UTF-8: Tvinga synkroniserade uppdateringar av postkön?
+ Om synkroniserade uppdateringar tvingas igenom kommer posten att behandlas långsammare. Om den inte tvingas finns en liten chans att viss post går förlorad om systemet kraschar vid fel tidpunkt och du inte använder ett journalskrivande filsystem (exempelvis ext3).
+Description-ta.UTF-8: அஞ்சல் வரிசையில் சமகால மேம்படுத்தலை வலியுறுத்தவா? 
+ சமகால மேம்படுத்தல் வலியுறுத்தப்பட்டால் அஞ்சல் செயலாக்கம் மேலும் தாமதமாகும். வலியுறுத்தப்படா விட்டால் ஈஎக்ஸ்டி3 (ext3) போன்ற ஆய்விதழ் கோப்பு அமைப்பு இல்லாவிடில் கணினி திடீரென செயலிழந்தால் நீங்கள் அஞ்சலை இழக்க வாய்ப்புண்டு.
+Description-vi.UTF-8: Ép buộc cập nhật đồng bộ cho hàng đợi thư không?
+ Ép buộc cập nhật đồng bộ thì thư được xử lý chậm hơn. Không ép buộc thì có thể mất thư nếu hệ thống sụp đổ vào lúc không thích hợp, và bạn không sử dụng hệ thống ghi nhật ký (như ext3).
+
+Template: postfix/mynetworks
+Type: string
+Default: 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+Description: Local networks:
+ Please specify the network blocks for which this host should relay mail.
+ The default is just the local host, which is needed by some mail user agents.
+ The default includes local host for both IPv4 and IPv6. If just connecting
+ via one IP version, the unused value(s) may be removed.
+ .
+ If this host is a smarthost for a block of machines, you need to specify the
+ netblocks here, or mail will be rejected rather than relayed.
+ .
+ To use the postfix default (which is based on the connected subnets), leave
+ this blank.
+Description-ca.UTF-8: Xarxes locals:
+ Si us plau, especifiqueu els blocs de xarxa pels quals aquesta màquina hauria de repetir correu. Per omissió només es tracta el correu local, que és el necessari per fer funcionar alguns clients de correu. Això inclou tant IPv4 com IPv6. Si us connecteu mitjançant una versió d'IP en concret, podeu esborrar el valor que no estigueu utilitzant.
+ .
+ Si aquesta màquina fa de «smarthost» per a un conjunt de màquines, haureu d'especificar els blocs de xarxa aquí, o en cas contrari el correu serà rebutjat en comptes de retardat.
+ .
+ Per utilitzar el paràmetre predeterminat de postfix (que està basat en les xarxes connectades), deixeu el camp en blanc.
+Description-cs.UTF-8: Lokální sítě:
+ Zadejte prosím bloky adres, pro které má tento počítač předávat poštu. Výchozí je pouze tento počítač, což je vyžadováno některými poštovními agenty. Výchozí hodnota obsahuje adresu tohoto počítače jak v protokolu IPv4, tak v protokolu IPv6. Pokud používáte pouze jeden z nich, můžete adresu pro nepoužívaný protokol vymazat.
+ .
+ Pokud tento počítač slouží jako smarthost pro skupinu počítačů, musíte je zde zadat, nebo bude jejich pošta odmítnuta.
+ .
+ Chcete-li použít výchozí nastavení (které je založeno na připojených podsítích), ponechte prázdné.
+Description-de.UTF-8: Lokale Netze:
+ Bitte geben Sie an, für welche Teilnetze dieser Rechner E-Mails weiterleiten soll. Standardmäßig ist dies nur der lokale Rechner, da dies für einige E-Mail-Programme benötigt wird. Im Standard sind der lokale Rechner sowohl mit IPv4 als auch IPv6 enthalten. Falls nur mit einer IP-Version angebunden wird, können die unbenutze(n) Wert(e) entfernt werden.
+ .
+ Falls dieser Rechner ein Smarthost für ein Teilnetz anderer Rechner ist, müssen diese Teilnetze hier spezifiziert werden, ansonsten werden weiterzuleitende E-Mails abgewiesen.
+ .
+ Um die Standardeinstellung von Postfix zu verwenden (die von den angebundenen Netzen abhängt), lassen Sie dies leer.
+Description-es.UTF-8: Redes locales:
+ Especifique los bloques de red para los que esta máquina deberá reenviar el correo. El predeterminado es sólo para la máquina local, lo cual se requeriere para algunos agentes de correo de usuario. El predeterminado incluye la máquina local tanto para IPv4 como IPv6. Si se conecta únicametne con una versión de IP, puede eliminar los valores no usados.
+ .
+ Si este sistema es un «smarthost» para un bloque de máquinas, debe especificar los bloques de red aquí, o el correo será rechazado en lugar de reenviado.
+ .
+ Para usar el predeterminado de postfix (que se basa en las redes conectadas), deje en blanco.
+Description-eu.UTF-8: Sare lokalak:
+ Mesedez ezarri ostalari honek posta birbidali behar dien sare multzoak. Lehenespena ostalari lokala bakarrik da, zenbait posta agentek behar dute hau. Lehenespenez ostalari lokalean IPv4 eta IPv6 barneratzen ditu.IP bertsio bakar baten bidez konektatzen bazara erabitzen ez direnak kendu daitezke.
+ .
+ Ostalari hau makina multzo baten smarthost-a bada, sare multzoak hemen ezarri behar dituzu, bestela posta birbidali beharrean ukatu egingo da.
+ .
+ Postfix lehenespenak erabiltzeko (konektaturiko sareetan oinarriturikoa), utzi hau zurian.
+Description-fi.UTF-8: Paikalliset verkot:
+ Määritä verkkolohkot, joiden posteja tämän koneen tulisi välittää. Oletus on vain koneen sisäisesti, koska jotkut postiohjelmat tarvitsevat tätä. Oletus sisältää koneen sisäisesti sekä IPv4:llä että IPv6:lla. Mikäli yhteyksiä otetaan vain yhdellä IP-versiolla, käyttämättömän arvon voi poistaa.
+ .
+ Mikäli tämä kone on smarthost useille koneille, täytyy verkkolohkot määrittää tässä, tai muutoin posti hylätään eikä välitetä.
+ .
+ Käyttääksesi postfixin oletusta (joka perustuu lähiverkkoihin), jätä tyhjäksi.
+Description-fr.UTF-8: Réseaux internes :
+ Veuillez indiquer les réseaux pour lesquels cette machine relaie le courrier. Par défaut, seuls les courriels de l'hôte local sont acceptés, ce qui est demandé par certains lecteurs de courrier. Ce choix par défaut concerne à la fois l'IPv4 et l'IPv6. Si vous êtes connecté par une seule version du protocole IP, la valeur inutilisée peut être supprimée.
+ .
+ Si ce serveur est un « smarthost » pour un ensemble de machines, vous devez indiquer l'ensemble des réseaux, sinon le courrier sera rejeté plutôt qu'expédié.
+ .
+ Pour utiliser les valeurs par défaut de postfix (basées sur les sous-réseaux connectés), veuillez entrer une valeur vide.
+Description-gl.UTF-8: Redes locais:
+ Indique os bloques de rede para os que esta máquina debe actuar coma servidor de relay. O valor por defecto é só o propio servidor, que é necesario nalgúns axentes de usuario. O valor por defecto inclúe o propio servidor tanto en IPv4 coma en IPv6. Se só se conecta mediante unha soa versión de IP, pódese eliminar o valor que non se empregue.
+ .
+ Se este é un servidor de relay para un bloque de máquinas ten que especificar aquí os bloques de rede, ou o correo vai quedar rexeitado no canto de enviado.
+ .
+ Para empregar o valor por defecto de postfix (que se basea nas redes conectadas), deixe esta opción baleira.
+Description-it.UTF-8: Reti locali:
+ Specificare per quali blocchi di rete questo computer deve fare da relay. Il valore predefinito è solo l'host locale, che può essere richiesto da alcuni client di posta. Sono compresi sia gli indirizzi IPv4 che IPv6: se si utilizza solo uno dei due protocolli, è possibile rimuovere i valori non utilizzati.
+ .
+ Se questo sistema deve fare da "smarthost" per un gruppo di altri sistemi, occorre indicare il blocco di rete opportuno, altrimenti la posta verrà rifiutata invece di essere inoltrata.
+ .
+ Per usare il valore predefinito di postfix (che è basato sulle reti a cui il computer è connesso), lasciare in bianco.
+Description-ja.UTF-8: ローカルネットワーク:
+ このホストがメールをリレーすべきネットワークブロックを指定してください。デフォルトでは、いくつかのメールユーザエージェントによって必要とされるローカルホストだけです。デフォルトでは IPv4 と IPv6 双方のローカルホストを含んでいます。一方の IP バージョン経由での接続のみであれば、未使用の値は削除可能です。
+ .
+ このホストがマシンブロック向けのスマートホストならば、ネットワークブロックをここで指定する必要があります。さもなければ、メールはリレーされず、拒否されます。
+ .
+ postfix のデフォルト (接続されているサブネットに基づく) を使うには、空のままにしておいてください。
+Description-ko.UTF-8: 로컬 네트워크:
+ 이 호스트가 이메일을 중계할 네트워크 블럭을 지정해주십시오. 일부 메일유저 클라이언트 때문에 기본값은 로컬호스트의 메일만 중계합니다. 이 기본값에는 IPv4와IPv6 모두에 해당하는 로컬호스트가 포함됩니다. 한가지 IP 버전만으로 접속을 하실 경우에는 사용하지 않는 값을 삭제하셔도 됩니다.
+ .
+ 이 호스트가 일단의 머신들의 스마트호스트 역할을 맡고 있다면, 여기에 해당하는 네트워크 블럭을 입력하지 않으시면 이메일이 중계되지 않고 거절됩니다.
+ .
+ (연결된 서브넷에 기반을 둔) Postfix 기본값을 사용하고자 한다면 이 항목을 비워두십시오.
+Description-nl.UTF-8: Lokale netwerken:
+ Voor welke netwerkblokken dient deze machine e-mail door te geven? Standaard is dit enkel de lokale computer, wat noodzakelijk is voor sommige e-mail-gebruikersagenten. De standaardwaarde omvat zowel IPv4 als IPv6 voor de lokale computer. Als u enkel via één IP-versie verbinding maakt kunt u de niet-gebruikte waarden verwijderen.
+ .
+ Als dit een smarthost is voor een groep machines dient u hier de netwerkblokken op te geven. Als u dit nalaat wordt e-mail geweigerd in plaats van doorgestuurd.
+ .
+ Om de postfix-standaard te gebruiken (die gebaseerd is op verbonden subnetwerken) dient u dit leeg te laten.
+Description-pt.UTF-8: Redes locais:
+ Por favor especifique os blocos de rede para os quais esta máquina deve fazer relay ao mail?  A pré-definição é apenas a máquina local, que é necessário a alguns clientes de mail. A pré-definição inclui a máquina local para IPv4 e IPv6, Se a ligação for apenas através de uma versão do protocolo IP, o(s) valor(es) não utilizado(s) poderão ser removidos.
+ .
+ Se esta máquina for um smarthost para um bloco de máquinas, você tem de especificar aqui os blocos de rede, ou o mail será rejeitado em vez de ser reencaminhado.
+ .
+ Para utilizar a omissão do postfix (que é baseada em redes ligadas), deixe isto em branco.
+Description-ru.UTF-8: Локальные сети:
+ Укажите блоки сетевых адресов, для которых этот хост должен ретранслировать (relay) почту. По умолчанию это только локальный хост, что необходимо некоторым пользовательским почтовым агентам. По умолчанию локальный хост включён и для IPv4, и для IPv6. Если вы соединяетесь только через одну из версий IP, то можете отключить неиспользуемую(ые).
+ .
+ Если этот хост является smart-хостом для блока машин, то вам нужно указать здесь блоки сетевых адресов или почта будет отвергнута, вместо того чтобы быть ретранслированной.
+ .
+ Чтобы использовать значение postfix по умолчанию (которое основано на присоединённых подсетях), оставьте поле пустым.
+Description-sv.UTF-8: Lokala nätverk:
+ Ange de nätverksblock som denna maskin ska vidarebefordra e-post för. Standard är att endast vidarebefordra för den lokala maskinen, vilket krävs för vissa e-postagenter. Standard inkluderar den lokala maskinen både för IPv4 och IPv6. Om du bara ansluter via en version av IP, kan ett eller flera oanvända värden tas bort.
+ .
+ Om den här värden är en smart värd för ett nätverk av maskiner behöver du ange de nätblocken här, eller så kommer post att vägras ta emot istället för att vidarebefordras.
+ .
+ Lämna denna blank för att använda standardvärdet för postfix (som är baserat på anslutna nätverk).
+Description-vi.UTF-8: Mạng cục bộ :
+ Hãy ghi rõ những khối mạng cho chúng máy này nên chuyển tiếp thư. Giá trị mặc định chỉ là máy cục bộ, mà cần thiết cho một số tác nhận người dùng thư (MUA). Giá trị mặc định bao gồm máy cục bộ cho cả hai IPv4 và IPv6. Nếu chỉ kết nối thông qua một phiên bản IP, có thể gỡ bỏ (các) giá trị không dùng.
+ .
+ Nếu máy này là một máy khéo (smarthost) cho khối máy nào, bạn cũng cần ghi rõ những khối mạng (netblock) ở đây; không thì thư bị từ chối, không được tiếp.
+ .
+ Để sử dụng giá trị mặc định của postfix (dựa vào mạng phụ đã kết nối), chỉ bỏ rỗng.
+
+Template: postfix/mailbox_limit
+Type: string
+Default: 0
+Description: Mailbox size limit (bytes):
+ Please specify the limit that Postfix should place on mailbox files
+ to prevent runaway software errors. A value of zero (0) means no
+ limit. The upstream default is 51200000.
+Description-ca.UTF-8: Mida màxima de la bústia (bytes):
+ Si us plau, especifiqueu el límit que Postfix hauria de posar als fitxers de bústia per tal de prevenir errors. Un valor de zero (0) significa que no hi ha límit. El valor predeterminat de Postfix és 51200000.
+Description-cs.UTF-8: Limit poštovní schránky (bajty):
+ Zadejte prosím limit, který má Postfix uplatňovat na velikost poštovních schránek. Hodnota nula (0) znamená bez omezení. Autor programu nastavuje 51200000.
+Description-de.UTF-8: Maximale Postfach-Größe (Bytes):
+ Bitte geben Sie Größenbegrenzung für Postfachdateien an, die Postfix zur Vermeidung von Softwarefehlern erzwingen soll. Null (0) bedeutet: keine Grenze. Der Postfix-Standard der Originalautoren beträgt 51200000.
+Description-es.UTF-8: Límite de tamaño de buzón de correo (en bytes):
+ Por favor, especifique el límite que deberá colocar Postfix en los archivos de buzón de correo para prevenir errores de software. El valor de cero (0) significa ilimitado. El predeterminado por el desarrollador principal es 51200000.
+Description-eu.UTF-8: Postakutxa tamaina muga (byte):
+ Mesedez ezarri postfix-ek postakutxetan kokatu behar duen muga software geldotasunak saihesteko. Zero (0) balioa muga ezgaitzeko. Jatorriaren muga  51200000 da.
+Description-fi.UTF-8: Postilaatikon kokoraja (tavua):
+ Määritä raja, jonka Postfix asettaa postilaatikkotiedostoille estääksesi karanneita ohjelmistovirheitä. Arvo nolla (0) tarkoittaa ei rajaa. Tekijöiden oletus on 51200000.
+Description-fr.UTF-8: Taille maximale des boîtes aux lettres (en octets) :
+ Veuillez choisir la limite que Postfix mettra à la taille des boîtes aux lettres pour empêcher les erreurs de logiciels incontrôlables. Une valeur nulle signifie aucune limite. Les créateurs du logiciel utilisent une valeur par défaut de 51200000.
+Description-gl.UTF-8: Límite de tamaño da caixa do correo (bytes):
+ Indique o límite que Postfix debe impoñer nos ficheiros das caixas de correo para evitar erros de software desbocado. Un valor de cero (0) significa que non se impón un límite. O valor por defecto recomendado polos desenvolvedores de Postfix é 51200000.
+Description-it.UTF-8: Limite di dimensione delle mailbox (byte):
+ Specificare il limite che deve essere imposto da Postfix alla dimensione dei file delle mailbox per prevenire errori causati da processi incontrollabili. Il valore zero (0) indica nessun limite. Il valore predefinito nella distribuzione originale di Postfix è 51200000.
+Description-ja.UTF-8: メールボックスのサイズの制限 (バイト):
+ 手に負えないソフトウェアエラーを防ぐために、メールボックスファイルに置く上限を指定してください。ゼロ (0) という値は制限しないことを意味します。upstream のデフォルトは 51200000 です。
+Description-ko.UTF-8: 편지함 크기 제한 (바이트):
+ 멈추지 않는 소프트웨어 오류를 막기 위해 Postfix가 편지함 파일 크기에 둘 제한을 지정해주십시오. 0이라는 값은 제한이 없음을 의미합니다. 업스트림의 기본값은 51200000입니다.
+Description-nl.UTF-8: Maximum postvakgrootte (in bytes):
+ Wat is de maximum grootte die Postfix op postvakken dient te plaatsen om fouten van op hol geslagen software te voorkomen. 0 betekent geen limiet. (de bovenstroomse standaardwaarde is 51200000).
+Description-pt.UTF-8: Limite do tamanho da Mailbox (bytes):
+ Por favor especifique o limite que o Postfix deve colocar nos ficheiros da mailbox para prevenir erros de software,  Um valor de zero (0) significa sem limite.  (A omissão do original é 51200000.)
+Description-ru.UTF-8: Ограничение размера почтового ящика, байты:
+ Укажите ограничение, которое postfix должен применить на файлы почтового ящика для предотвращения программных ошибок выхода из под контроля. Нуль (0) означает отсутствие ограничения. По умолчанию 51200000.
+Description-sv.UTF-8: Storleksgräns för postlåda (i byte):
+ Vilken gräns ska Postfix sätta på postlådefiler för att förhindra att programvarufel skriver för mycket data. Ett värde på noll (0) betyder att det inte finns någon gräns. Standard från utvecklarna är 51200000.
+Description-ta.UTF-8: அஞ்சல் பெட்டி அளவு (பைட்டுகள்):
+ போஸ்ட்பிக்ஸ் அஞ்சல் பெட்டிகள் மீது அமைக்க வேண்டிய அளவு வரையரையை குறிப்பிடவும். இது மென்பொருள் வழுக்கள் கை மீறி போகாது காக்கும். 0 என்பது வரையரை இல்லை என குறிக்கும். மேலோடை முன்னிருப்பு 51200000.
+Description-vi.UTF-8: Kích cỡ hộp thư tối đa (byte):
+ Hãy ghi rõ kích cỡ tối đa Postfix nên đặt cho tập tin hộp thư, để ngăn cản lỗi phần mềm lồng lên. Giá trị số không (0) nghĩa là vô hạn. Giá trị mặc định của dự án gốc là 51200000.
+
+Template: postfix/root_address
+Type: string
+Default: 
+Description: Root and postmaster mail recipient:
+ Mail for the 'postmaster', 'root', and other system accounts needs to
+ be redirected to the user account of the actual system administrator.
+ .
+ If this value is left empty, such mail will be saved in /var/mail/nobody,
+ which is not recommended.
+ .
+ Mail is not delivered to external delivery agents as root.
+ .
+ If you already have a /etc/aliases file, then you may need to add this
+ entry. Leave this blank to not add one.
+Description-ca.UTF-8: Destinatari del correu de root i postmaster:
+ El correu adreçat a «postmaster», «root», i altres comptes del sistema s'han de redirigir cap al compte d'usuari de l'administrador del sistema.
+ .
+ Si el valor es deixa en blanc, aquest correu es desarà a «/var/mail/nobody», que és poc recomanable.
+ .
+ El correu no es lliura a agents d'enviament externs com a root.
+ .
+ Si ja teniu un fitxer /etc/aliases, és possible que us calgui afegir aquesta entrada. Deixeu-ho en blanc si no en voleu afegir cap.
+Description-cs.UTF-8: Příjemce pošty pro uživatele root a postmaster:
+ Pošta pro uživatele „postmaster“, „root“ a ostatní systémové účty musí být přesměrována na běžný uživatelský účet správce systému.
+ .
+ Ponecháte-li hodnotu prázdnou, bude se tato pošta ukládat do /var/mail/nobody, což se nedoporučuje.
+ .
+ Pošta není předávána externím doručovacím programům pod uživatelem root.
+ .
+ Pokud již soubor /etc/aliases máte, je možné, že tam příslušný záznam budete muset přidat. Ponecháte-li prázdné, záznam se nepřidá.
+Description-de.UTF-8: Empfänger von E-Mails an Root und Postmaster:
+ E-Mails für »postmaster«, »root« und andere Systemkonten müssen zu dem eigentlichen Benutzerkonto des Systemadministrators umgeleitet werden.
+ .
+ Falls dieser Wert leer gelassen wird, werden solche E-Mails in /var/mail/nobody gespeichert. Dies wird nicht empfohlen.
+ .
+ E-Mails werden nicht als root an externe Auslieferungsprogramme ausgeliefert.
+ .
+ Falls Sie bereits eine /etc/aliases-Datei haben, müssen Sie möglicherweise diesen Eintrag hinzufügen. Lassen Sie dies leer, um einen hinzuzufügen.
+Description-es.UTF-8: Recipiente de correo para el administrador y «postmaster»:
+ El correo para el «postmaster», «root», y otras cuentas del sistema se debe direccionar a la cuenta de usuario del verdadero administrador del sistema.
+ .
+ Si deja este valor en blanco, los correos se almacenarán en «/var/mail/nobody», lo cual no está recomendado.
+ .
+ El correo no se entrega a un agente de entrega externo como superusuario.
+ .
+ Si ya tiene un archivo «/etc/aliases», entonces posiblemente necesite añadir esta entrada. Deje esto en blanco para no añadir ninguna.
+Description-eu.UTF-8: Root eta postmaster-en posta jasoko duena:
+ 'postmaster', 'root' eta beste sistema kontuetako posta sistema kudeatzailearen erabiltzaile kontura birbidali behar da.
+ .
+ Balio hau hutsik badago, posta hau /var/mail/nobody-en gordeko da, hau egitea ez da gomendatzen.
+ .
+ Posta ez da root gisa kanpo bidalketa agenteerara banatuko.
+ .
+ Dagoeneko /etc/aliases fitxategi bat baduzu, sarrera hau gehitu behar duzu. Zurian utzi ez gehitzeko.
+Description-fi.UTF-8: Rootin ja postmasterin postien vastaanottaja:
+ Postit "postmasterille" ja "rootille" sekä muille järjestelmätunnuksille pitää ohjata järjestelmän todellisen ylläpitäjän tilille.
+ .
+ Mikäli arvo jätetään tyhjäksi, tällainen posti tallennetaan /var/mail/nobody, mikä ei ole suositeltavaa.
+ .
+ Postia ei välitetä ulkoisille välitysagenteille roottina.
+ .
+ Mikäli sinulla on jo /etc/aliases-tiedosto, voit joutua lisäämään tämän tietueen. Jätä tyhjäksi jos et halua lisätä.
+Description-fr.UTF-8: Destinataire des courriels de « root » et de « postmaster » :
+ Les courriels à destination de « root », de « postmaster » et d'autres utilisateurs systèmes doivent être redirigés vers le compte utilisateur de l'administrateur système.
+ .
+ Si cette valeur reste vide, ces messages seront enregistrés dans /var/mail/nobody, ce qui n'est pas recommandé.
+ .
+ Le courrier ne doit pas être distribué par des agents de distribution externes avec des privilèges du superutilisateur.
+ .
+ Si le fichier /etc/aliases existe déjà, vous devrez sans doute ajouter cette entrée. Laissez le champ vide pour ne pas en ajouter.
+Description-gl.UTF-8: Destinatario do correo do administrador e postmaster:
+ O correo para "postmaster", "root" e outras contas do sistema ten que se redirixir á conta de usuario real do administrador do sistema.
+ .
+ Se este valor se deixa baleiro, ese correo hase gravar en /var/mail/nobody, o que non se recomenda.
+ .
+ O correo non se entrega a axentes de entrega externos coma administrador.
+ .
+ Se xa ten un ficheiro /etc/aliases, probablemente teña que engadir esta entrada. Deixe a opción baleira para non engadila.
+Description-it.UTF-8: Destinatario della posta diretta a root e postmaster:
+ La posta diretta agli utenti "postmaster", "root", e ad altri utenti di sistema deve essere rediretta all'utente effettivo usato dall'amministratore del sistema.
+ .
+ Lasciando in bianco, la posta verrà salvata in /var/mail/nobody, cosa non raccomandabile.
+ .
+ La posta non viene consegnata ad agenti di consegna esterni come utente root.
+ .
+ Se si ha già un file /etc/aliases, occorre aggiungere una voce. Lasciando in bianco non ne verrà aggiunta alcuna.
+Description-ja.UTF-8: root と postmaster のメール受け取りユーザ:
+ 'postmaster'、'root'、その他のシステムアカウントへのメールは、実際のシステム管理者のユーザアカウントに転送されるようにする必要があります。
+ .
+ この値を空のままにすると、そのようなメールは /var/mail/nobody に保存されますが、これは推奨されません。
+ .
+ メールは外部の配送エージェントに root として配送されることはありません。
+ .
+ 既存の /etc/aliases ファイルがある場合は、このエントリを追加する必要があるかもしれません。追加しない場合は空のままにしておいてください。
+Description-ko.UTF-8: root와 postmaster 이메일의 받는이 목록:
+ 'postmaster', 'root' 등의 시스템 계정의 이메일은 실제 시스템 관리자의 사용자 계정으로 전달되어야 합니다.
+ .
+ 이 항목을 비워두면 이러한 이메일은 /var/mail/nobody에 저장되지만, 이는 권장하지 않습니다.
+ .
+ 루트로서의 이메일은 외부 전송 에이전트에 전송되지 않습니다.
+ .
+ /etc/aliases 파일이 있다면 이 항목을 추가해야 할 수 있습니다. 받는이를 추가하지 않으려면 비워두십시오.
+Description-nl.UTF-8: Ontvanger van e-mail gericht aan 'root' of 'postmaster':
+ E-mail voor de 'postmaster', 'root' en andere systeemaccounts dient omgeleid te worden naar de gebruikersaccount van de eigenlijke systeembeheerder.
+ .
+ Als u dit leeg laat wordt deze e-mail opgeslagen in /var/mail/nobody, dit is af te raden.
+ .
+ Als root worden geen e-mails aan externe aflever-agenten afgeleverd.
+ .
+ Indien u reeds een '/etc/aliases'-bestand heeft, dient u mogelijk deze ingang toe te voegen. Als u niet wilt dat er een ingang toegevoegd wordt dient u dit leeg te laten.
+Description-pt.UTF-8: Destinatário do mail para root e postmaster:
+ O mail para o 'postmaster', 'root' e outras contas de sistema necessitam ser redireccionadas para a conta do utilizador do administrador de sistema.
+ .
+ Se este valor for deixado vazio, tal mail será gravado em /var/mail/nobody. o que não é recomendado.
+ .
+ O mail não é entregue a agentes de entrega externos como root.
+ .
+ Se já tem um ficheiro /etc/aliases, então você poderá necessitar de acrescentar esta entrada. Deixe isto em branco para não acrescentar uma.
+Description-ru.UTF-8: Получатель почты root'a и postmaster'а:
+ Почта для 'postmaster', 'root' и других системных учётных записей должна быть перенаправлена на пользовательскую учётную запись настоящего системного администратора.
+ .
+ Если это значение оставить пустым, почта подобного рода будет сохраняться в /var/mail/nobody, что не рекомендуется.
+ .
+ Почта не доставляется внешним агентам доставки как root.
+ .
+ Если у вас уже есть файл /etc/aliases, то, возможно, вам нужно добавить эту запись. Оставьте пустым, чтобы не добавлять.
+Description-sv.UTF-8: E-postmottagare för root och postmaster:
+ E-post till "postmaster", "root" och andra systemkonton behöver omdirigeras till användarkontot för den riktiga systemadministratören.
+ .
+ Om det här värden utelämnas kommer sådan e-post att sparas i /var/mail/nobody, vilket inte rekommenderas.
+ .
+ E-post kommer inte att levereras till externa leveransagenter som root.
+ .
+ Om du redan har filen /etc/aliases kanske du behöver lägga till denna post. Lämna den blank för att inte lägga till någon.
+Description-ta.UTF-8: ரூட் மற்றும் அஞ்சல் அதிகாரி அஞ்சல் பெறுனர்:
+ அஞ்சல் அதிகாரி, ரூட் மற்றும் மற்ற கணினி கணக்குகளுக்கான அஞ்சல்கள் உண்மையான கணினி மேலாளரின் பயனர் கணக்குக்கு மாற்றி அனுப்பப்பட வேண்டும்.
+ .
+ இந்த மதிப்பை காலியாக விட்டால் அத்தகைய அஞ்சல் /var/mail/nobody என்ற அடைவில் சேமிக்கப்படும். இது பரிந்துரைக்கப்பட்டது இல்லை.
+ .
+ அஞ்சல் வெளி வினியோக நிரல்களுக்கு ரூட் ஆக வினியோகிக்கப்படமாட்டாது.
+ .
+ உங்களுக்கு ஏற்கெனவே /etc/aliases கோப்பு இருப்பின் நீங்கள் இந்த உள்ளீட்டை சேர்க்க வேண்டும். எதையும் சேர்க்க வேண்டாம் எனில் வெற்றாக விடவும்.
+Description-vi.UTF-8: Người nhận thư của người chủ và chỉ bưu điện:
+ Thư được gửi cho chủ bưu điện (postmaster), người chủ (root) và các tài khoản hệ thống khác nên được chuyển tiếp cho tài khoản người dùng của quản trị hệ thống thật.
+ .
+ Bỏ rỗng thì thư như vậy được lưu vào «  /var/mail/nobody », mà không khuyến khích.
+ .
+ Thư không được phát cho tác nhân phát bên ngoài như là người chủ.
+ .
+ Nếu bạn đã có tập tin « /etc/aliases », bạn có thể cần phải thêm mục nhập này. Bỏ rỗng để không thêm.

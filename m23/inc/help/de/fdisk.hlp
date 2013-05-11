@@ -1,0 +1,28 @@
+$I18N_client_partition
+Auf dieser Seite können Sie die Partitionierung und Formatierung des Clients vornehmen. Oben sehen Sie die ermittelten Partitionsdaten des Clients.
+
+Sie haben drei Möglichkeiten, wie Sie bei der Partitionierung und Formatierung vorgehen können:
+
+<ul>
+<li><b>$I18N_fdistTypeautomatic:</b> Bei der automatischen Partitionierung werden alle Daten auf der Festplatte gelöscht und zwei neue Partitionen angelegt. Es wird eine Partition für Daten und das Betriebssystem und die andere zum temporären Auslagern (Swappen) erstellt.</li>
+<li><b>$I18N_format_existing:</b> Diese Option bietet Ihnen die Möglichkeit, vorhandene Partitionen neu zu formatieren und für die Installation zu nutzen. Sie wählen zwei Partitionen aus; die erste, um das Betriebssystem zu installieren und die zweite als Auslagerungsplatz (Swap).</li>
+<li><b>$I18N_fdistTypeextended:</b> Bei dieser Partitionierungsart können Sie die Partitionierung ganz individuell vornehmen. Sie können Partitionen löschen, anlegen, formatieren und eine Installations- und eine Swap-Partition auswählen.</li>
+<!-- V1.12 begin-->
+<li><b>$I18N_extended_partitioning_with_raid:</b> Zusätzlich zu den Möglichkeiten der <i>"Erweiterten Partitionierung"</i> können Sie hier Partitionen oder ganze Festplatten zu RAIDs zusammenfassen, um z.B. den Datendurchsatz und/oder die Ausfallsicherheit zu erhöhen.</li><!-- V1.12 end-->
+</ul>
+
+<!-- V1.6 begin --><u>Schrittweises Vorgehen</u>
+<ol>
+<LI>Wählen Sie die gewünschte Partitionierungsmethode aus.</LI>
+<li>Klicken Sie auf <!-- V1.12 change--><i>"$I18N_next"</i><!-- V1.12 change end-->.</li>
+<li>Folgen Sie dann der Hilfe zu der jeweiligen Partitionierungsart.</li>
+</ol>
+<!-- V1.6 end -->
+
+<!-- V1.2 begin --><U>ACHTUNG</U>
+Beim Formatieren gehen die Daten auf der formatierten Partition verloren. Das Löschen einer Partition löscht ebenfalls Daten.<!-- V1.2 end -->
+
+<U>Hinweis:</U>
+<!-- v1.6 change-->Nach Auswahl der Partitionierung kann dem Client ein Basissystem mit oder ohne grafischer Oberfläche zugewiesen werden.<!--v1.6 change end--> Dieses wird nach dem Partitionieren und Formatieren installiert.
+
+<!-- V1.12 begin -->helpInclude("os_on_RAID_hint.inc");<!-- V1.12 end -->

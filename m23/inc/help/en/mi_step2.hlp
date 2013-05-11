@@ -1,0 +1,29 @@
+Select data source/Assign columns
+
+This dialog is divided into two steps:<ul>
+<LI>Select and upload a database file</LI>
+<LI>Assign the fields to the client options</LI></ul>
+
+<u>Select and upload a database file</u>
+Select a file with the diealog and click on <i>"$I18N_upload"</i>.
+
+A special data format is needed to make the value recognition possible for m23. The values for a single client are specified in every line. The client options are separated by a separator character (here ";")::
+<code>option1;option2;option3;...</code>
+You can use other combinations of a maximum of 4 characters. The order of the options has to be the same in all lines.
+
+<!--start v1.10--><u>Hint</u>
+All in the file stored values have to be valid and there are an additional requirements for special options:<ul>
+<LI><b>$I18N_addNewLocalLogin</b>: Set it to "yes" if you want to activate this option. All other values disable it.</LI>
+<LI><b>LDAP</b>: Here three different values are possible:<ul>
+<LI>"none": $I18N_dontUseLDAP</LI>
+<LI>"read": $I18N_readLoginFromLDAP</LI>
+<LI>"write": $I18N_addNewLoginToLDAP</LI></ul></LI></ul><!--end v1.10-->
+
+<u>Assign the fields to the client options</u>
+You can assign the fields to the option names after uploading a file.
+
+<u>Step by step</u><ol>
+<LI>Enter the separator character in the separator field and adjust the column amount if needed.</LI>
+<li>Click on <i>"$I18N_refresh"</i>. The first line of the database file is now separated and shown in the client option fields.</li>
+<li>Assign the separated parts from the database file to the client options by selecting the client option names from the selection list.</li>
+<li>End the dialog with a click on <i>"$I18N_save"</i>.</li></ol>

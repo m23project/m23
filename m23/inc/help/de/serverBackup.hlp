@@ -1,0 +1,62 @@
+<!--v10.0 new-->$I18N_serverBackup
+Dieser Dialog hilft Ihnen, Ihren m23-Server automatisch in regelmäßigen Abständen zu sichern. Die Backups beinhalten neben den Daten für die Wiederherstellung des m23-Servers zusätzlich die Konfiguration des Betriebssystems und eine Liste der installierten Pakete. Mit diesen Informationen ist es möglich, den m23-Server nach einem Datenverlust oder einer sonstigen Beeinträchtigung in den zuletzt gesicherten Zustand zurückzuversetzen. Die gesicherten Daten können auf einen externen Server im eigenen Netz oder im Internet hochgeladen werden, wobei sie mittels <a href="http://de.wikipedia.org/wiki/GNU_Privacy_Guard">GPG</a> verschlüsselt werden, um vor unbefugtem Zugriff gesichert zu sein.
+
+Der Dialog zum Sichern, Verschlüsseln und Hochladen ist in zwei Teile unterteilt.
+<ol>
+	<li><b>$I18N_encryptAndUploadBackup:</b> Dieser Abschnitt befaßt sich mit der Verschlüsselung der Backupdaten und dem Kopieren derselben auf einen externen Server.</li>
+	<li><b>cron-Einstellungen</b>: Die Parameter für den <a href="http://de.wikipedia.org/wiki/Cron">cron</a>-Dämon legen schließlich fest, wann der m23-Server automatisch gesichert werden soll.</li>
+</ol>
+
+
+<br><br><h2>$I18N_encryptAndUploadBackup</h2>
+Hier geben Sie die für die Nutzung des gewählten externen Speichers erforderlichen Daten ein und bestimmen den GPG-Schlüssel zum Verschlüsseln der Backupdaten.
+<u>Hinweis zu GPG-Schlüsseln</u>
+Sollte sich der Schlüssel, den Sie zum Sichern der Daten verwenden möchten, nicht in der Liste befinden, so klicken Sie auf <i>"$I18N_manageGPGKeys"</i> neben der Schlüsselauswahl.
+
+<ol>
+	<li>
+		Unter <i>"$I18N_onlineFileStoringService"</i> wählen Sie zuerst aus, wie Sie die Daten sichern möchten. Zur Auswahl stehen:
+		<ul>
+			<li><b>-</b>: Diese Option sichert den m23-Server nur auf der Festplatte des m23-Servers. Sie sollten diese Möglichkeit nur verwenden, wenn Sie <b>wirklich</b> keinen anderen Server zum Sichern der Backupdaten verwenden möchten. Im Falle eines Datenverlustes z.B. durch Ausfall der Festplatte des m23-Servers kann keine Wiederherstellung des Servers vorgenommen werden. Sie können auch die Backups, die auf dem m23-Server im Verzeichnis <code>/m23/root-only/serverBackups/</code> abgelegt werden, manuell auf ein externes Medium kopieren.</li>
+
+			<li><b>scp</b>: Mittels <a href="http://de.wikipedia.org/wiki/Secure_Copy">Secure Copy</a> können Sie die Backup-Daten auf jeden beliebigen Rechner sichern, auf dem ein SSH-Server läuft. Diese Variante bietet sich an, wenn Sie einen SSH-Server besitzen, der für die Speicherung von Backups geeignet ist. Falls dessen Daten ebenfalls in einem Backupzyklus gesichert werden, ist dies eine sehr sichere Möglichkeit zum Schutz Ihres m23-Servers.</li>
+
+			<li><b>share-online.biz</b>: Wählen Sie diese Einstellung, so lädt der m23-Server die verschlüsselten Backupdaten auf einen sogenannten <a href="http://de.wikipedia.org/wiki/Sharehoster">One-Click-Hoster</a>. Sollten Sie keinen Server zur Sicherung des m23-Servers besitzen, so mag diese Variante eine Option für Sie sein. Durch die Verschlüsselung sind die Backup-Daten vor dem Einsehen durch andere geschützt. Das Hochladen kann unter Umständen einige Zeit in Anspruch nehmen.</li>
+		</ul>
+	</li>
+
+	<li>Klicken Sie auf <i>"$I18N_change"</i> nachdem Sie Ihre Wahl getroffen haben.</li>
+
+	<li>Je nach Dateispeicherdienst müssen Sie andere Angaben machen, damit der gewählte Dienst genutzt werden kann.
+		<ul>
+			<li><h3>scp</h3>
+			Für "Secure Copy" werden folgende Werte benötigt:
+			<ul>
+				<li><b>$I18N_user</b>: Dies ist der Benutzername mit dem sich der m23-Server auf dem SCP-Server anmelden kann, um dort die Sicherungsdateien abzulegen.</li>
+				<li><b>$I18N_scpServer</b>: Geben Sie hier den Namen oder die IP-Adresse an, unter der der SCP-Server durch den m23-Server zu erreichen ist.</li>
+				<li><b>$I18N_scpStoreDirectory</b>: Dies ist das Verzeichnis auf dem SCP-Server, in dem die Backups abgelegt werden sollen. Verwenden Sie hier absolute Pfadangaben.</li>
+				<li><b>$I18N_gpgKey</b>: Hier wählen Sie den GPG-Schlüssel, mit dem Sie die Backups vor dem Kopieren verschlüsseln möchten.</li>
+			</ul>
+			<u>Hinweis</u>
+			Zudem müssen Sie dafür sorgen, daß auf dem SCP-Server in der Datei <code>~/.ssh/authorized_keys</code> des unter <i>"$I18N_user"</i> angegebenen Benutzers der SSH-root-Schlüssel des m23-Servers aus der Datei <code>/root/.ssh/id_dsa.pub</code> eingetragen ist, damit eine paßwortlose Übertragung der Dateien sichergestellt ist. <!--v12.1 begin-->Für die Schlüsselübertragung können Sie auch <code>ssh-copy-id</code> verwenden: <code>ssh-copy-id -i /root/.ssh/id_dsa.pub benutzer@SCP-Server</code>.<!--v12.2 end-->
+			</li>
+		
+			<li><h3>share-online.biz</h3>
+			Haben Sie sich für die "share-online.biz"-Variante entschieden, so müssen Sie folgende Werte angeben:
+			<ul>
+				<li><b>$I18N_user</b>: Dies ist der Benutzername mit dem Sie sich bei share-online.biz angemeldet haben.</li>
+				<li><b>$I18N_password</b>: Geben Sie hier das dazugehörige Paßwort an.</li>
+				<li><b>$I18N_repeated_password</b>: Wiederholen Sie es hier.</li>
+				<li><b>$I18N_gpgKey</b>: Hier wählen Sie den GPG-Schlüssel, mit dem Sie die Backups vor dem Kopieren verschlüsseln möchten.</li>
+			</ul>
+			<u>Hinweis:</u>
+			Für das Hochladen der Backup-Daten ist eine kostenlose Registrierung auf <a href="http://www.share-online.biz/signup.php">www.share-online.biz</a> erforderlich. Das Hochladen und das anschließende Herunterladen sind kostenlos. <b>Sie sollten sich aber dennoch vergewissern, daß sich die Bedingungen nicht geändert haben. Bitte kontaktieren Sie bei einer Änderung zusätzlich <a href="mailto:hhabermann@pc-kiel.de">hhabermann@pc-kiel.de</a>.</b>
+			</li>
+		</ul>
+	</li>
+
+	<li>Klicken Sie abschließend (unabhängig von der gewählten Methode) auf <i>"$I18N_save"</i>.</li>
+</ol>
+
+<br><br><h2>cron-Einstellungen</h2>
+helpInclude("cron.inc");

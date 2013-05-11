@@ -1,0 +1,238 @@
+Template: irda-utils/selectdevice
+Type: select
+Choices: serial, native
+Choices-cs.UTF-8: sériový, přirozený
+Choices-da.UTF-8: seriel, indbygget
+Choices-de.UTF-8: seriell, nativ
+Choices-es.UTF-8: serie, nativo
+Choices-fr.UTF-8: série, natif
+Choices-ja.UTF-8: シリアル, ネイティブ
+Choices-nl.UTF-8: seriëel, autochtoon
+Choices-pt.UTF-8: série, nativo
+Choices-sv.UTF-8: seriell, native
+Choices-vi.UTF-8: nối tiếp, sở hữu
+Default: serial
+Description: IrDA device type:
+ If you want to use a serial dongle, a FIR (Fast IrDA) serial emulation port or
+ something similar choose "serial". Otherwise choose "native" for a native
+ chip driver. Select "serial" if unsure, because nearly all FIR devices can
+ run in slow SIR (Serial IrDA) mode. You might cross-check with the package
+ "setserial" for the serial setup of your system.
+Description-cs.UTF-8: Typ zařízení IrDA:
+ Pokud si přejete použít sériový adaptér, emulaci sériového portu - FIR (Rychlé IrDA) nebo něco podobného, pak zvolte "sériový". Pro přirozený ovladač čipu zvolte "přirozený". Pokud si nejste jistí, pak zvolte "sériový", protože skoro všechna zařízení FIR mohou běžet v pomalém módu SIR (Sériový mód IrDA). Možná byste mohli prověřit nastavení vašich sériových zařízení pomocí balíčku "setserial".
+Description-da.UTF-8: IrDA-enhedstype:
+ Hvis du vil benytte en klods i serielporten, en FIR (Fast IrDA) seriel emuleringsport eller lignende, så vælg serial. Ellers vælg "indbygget" for en indbygget chipdriver. Vælg "seriel" hvis du er usikker, fordi næsten alle FIR-enheder kan køre den langsomme SIR-tilstand (Seriel IrDA). Du kan evt. krydstjekke den serielle opsætning af dit system med pakken "setserial".
+Description-de.UTF-8: Typ des IrDA-Adapters:
+ Wenn Sie einen seriellen Adapter (Dongle), FIR-Adapter (Fast IrDA) mit Emulation der seriellen Schnittstelle oder Ähnliches haben, wählen Sie "serial". Ansonsten, wählen Sie einen speziellen Treiber für den jeweiligen Chip mittels "native". Wählen Sie "serial" wenn sie unsicher sein sollten, da nahezu alle FIR-Adapter den langsamen SIR-Modus (Serial IrDA) unterstützen. Ggf. sollten Sie dann auch die Einstellungen des Paketes "setserial" überprüfen.
+Description-es.UTF-8: Tipo de dispositivo IrDA:
+ Escoja «serie» si quiere usar un dispositivo de seguridad en el puerto serie, un puerto serie de emulación FIR (Fast IrDA) o algo similar. De otro modo escoja «nativo» para un controlador de chip nativo. Seleccione «serie» si no está seguro, porque casi todos los dispositivos FIR pueden ejecutarse en el modo lento SIR (Serial IrDA). Debería comprobar el paquete «setserial» para configurar el puerto serie en su sistema.
+Description-fr.UTF-8: Type de périphérique infrarouge :
+ Si vous souhaitez utiliser un verrou (« dongle ») série, un port d'émulation infrarouge rapide (FIR : Fast IrDA) ou un périphérique analogue, choisissez « série ». Dans le cas contraire, choisissez « natif » pour utiliser un pilote natif. Le choix « série » est peu sûr car pratiquement tous les périphériques FIR peuvent fonctionner en mode SIR (« Serial IrDA » : liaison infrarouge série) lent. Si vous faites ce choix, il sera probablement nécessaire de vérifier les réglages du paquet « setserial » pour la configuration des ports série de votre système.
+Description-ja.UTF-8: IrDAのデバイスの種類
+ もしシリアルドングル、FIR (高速 IrDA) のシリアルエミュレーションもしくはその同等品を利用する場合、"シリアル"を選択してください。そうでなければネイティブチップのドライバには"ネイティブ"を選択してください。分からなければ、ほとんどすべての FIR デバイスは、遅い SIR (シリアル IrDA) モードで動作可能なので"シリアル"を選択してください。"setserial" パッケージでシステムのシリアルの設定を照合できます。
+Description-nl.UTF-8: IrDA-apparaattype:
+ Als u een seriële dongle, een FIR (Fast IrDA) seriële-emulatiepoort of iets gelijkaardigs wilt gebruiken kies dan 'seriëel'. Anders kiest u best 'autochtoon' voor een autochtoon chipstuurprogramma. Bij twijfel kiest u best 'seriëel daar bijna alle FIR-apparaten in de trage SIR (Serial IrDA) modus kunnen draaien. U kunt vergelijken met het pakket 'setserial' voor de seriële instelligen van uw systeem.
+Description-pt.UTF-8: Tipo de dispositivo IrDA:
+ Se quiser usar um dispositivo série, um emulador de porta série FIR (Fast IrDA) ou similares, escolha "série". Caso contrário escolha "nativo" para usar um driver de chip nativo. Escolha "série" se não está seguro, porque quase todos os dispositivos FIR podem ser usados em modo SIR (Serial IrDA) lento. Pode querer verificar com o pacote "setserial" para a configuração do seu sistema.
+Description-sv.UTF-8: Enhetstyp för IrDA:
+ Om du vill använda en serielldongle, ett FIR (Fast IrDA) seriellemuleringsport eller något liknande kan du välja "seriell". Annars kan du välja "native" för ett drivare för native-chip. Välj "seriell" om du är osäker därför att nästan alla FIR-enheter kan köras i långsamt SIR-läge (Seriell IrDA). Du kanske bör dubbelkontrollera med paketet "setserial" för konfigurationen av seriellportar för ditt system.
+Description-vi.UTF-8: Loại thiết bị IrDA:
+ Nếu bạn muốn sử dụng một khóa tiếp hợp (dongle) nối tiếp, một cổng mô phỏng nối tiếp FIR (Fast IrDA), hay một điều tương tự, thì hãy chọn «nối tiếp». Nếu không thì hãy chọn «sở hữu» cho một bộ hỗ trợ thiết bị tinh thể sở hữu. Hãy chọn «nối tiếp» nếu chưa chắc, vì gần tất cả thiết bị FIR có thể chạy trong chế độ IrDA nối tiếp (SIR) chạm. Bạn có thể kiểm tra xem lại gói tin «setserial» để thiết lập hệ thống bạn cho thiết bị nối tiếp.
+
+Template: irda-utils/ttydev
+Type: string
+Default: /dev/ttyS1
+Description: Serial device file for IrDA:
+Description-cs.UTF-8: Soubor sériového zařízení pro IrDA:
+Description-da.UTF-8: Seriel enhedsfil til IrDA:
+Description-de.UTF-8: Serielle Gerätedatei für IrDA:
+Description-es.UTF-8: Fichero de dispositivo serie para IrDA:
+Description-fr.UTF-8: Fichier de périphérique série pour la liaison infrarouge :
+Description-ja.UTF-8: IrDA の利用するシリアルデバイスファイル名 :
+Description-nl.UTF-8: Seriëel apparaat voor IrDA:
+Description-pt.UTF-8: Ficheiro de dispositivo série para IrDA:
+Description-sv.UTF-8: Seriellenhetsfil för IrDA:
+Description-vi.UTF-8: Tập tin thiết bị nối tiếp cho IrDA:
+
+Template: irda-utils/dongle
+Type: select
+Choices: none, act200l, actisys, actisys+, airport, ep7211, esi, girbil, litelink, ma600, mcp2120, old_belkin, tekram
+Choices-cs.UTF-8: žádný, act200l, actisys, actisys+, airport, ep7211, esi, girbil, litelink, ma600, mcp2120, old_belkin, tekram
+Choices-da.UTF-8: ingen, act200l, actisys, actisys+, airport, ep7211, esi, girbil, litelink, ma600, mcp2120, old_belkin, tekram
+Choices-de.UTF-8: keiner, act200l, actisys, actisys+, airport, ep7211, esi, girbil, litelink, ma600, mcp2120, old_belkin, tekram
+Choices-es.UTF-8: ninguno, act200l, actisys, actisys+, airport, ep7211, esi, girbil, litelink, ma600, mcp2120, old_belkin, tekram
+Choices-fr.UTF-8: aucun, act200l, actisys, actisys+, airport, ep7211, esi, girbil, litelink, ma600, mcp2120, old_belkin, tekram
+Choices-ja.UTF-8: none, act200l, actisys, actisys+, airport, ep7211, esi, girbil, litelink, ma600, mcp2120, old_belkin, tekram
+Choices-nl.UTF-8: geen, act200l, actisys, actisys+, airport, ep7211, esi, girbil, litelink, ma600, mcp2120, old_belkin, tekram
+Choices-pt.UTF-8: nenhum, act200l, actisys, actisys+, airport, ep7211, esi, girbil, litelink, ma600, mcp2120, old_belkin, tekram
+Choices-sv.UTF-8: ingen, act200l, actisys, actisys+, airport, ep7211, esi, girbil, litelink, ma600, mcp2120, old_belkin, tekram
+Choices-vi.UTF-8: không có, act200l, actisys, actisys+, airport, ep7211, esi, girbil, litelink, ma600, mcp2120, old_belkin, tekram
+Default: none
+Description: Dongle type:
+ If you use a FIR serial emulation port, choose "none". Note that it is possible that your actual kernel supports more/less/other dongle types. In that case you
+ have to edit /etc/default/irda-utils by hand.
+Description-cs.UTF-8: Typ adaptéru:
+ Zvolte "žádný", pokud používáte emulaci sériového portu - FIR. Pamatujte, že je možné, že vaše aktuální jádro podporuje více/méně/jiné typy zařízení. V  tomto případě budete muset ručně upravit soubor /etc/default/irda-utils.
+Description-da.UTF-8: Klods/dongle-type:
+ Hvis du bruger en FIR seriel emuleringsport, så vælg "ingen". Bemærk at det er muligt at din kerne understøtter flere/færre/andre klodstyper. I så fald må du rette filen /etc/default/irda-utils manuelt.
+Description-de.UTF-8: Adaptertyp:
+ Wenn Sie FIR mit Emulation des seriellen Ports verwenden, wählen Sie "keiner". Beachten Sie, dass die Möglichkeit besteht, dass der laufende Kernel mehr/weniger/andere Adaptertypen unterstützt. In diesem Fall müssen Sie /etc/default/irda-utils von Hand bearbeiten.
+Description-es.UTF-8: Tipo de dispositivo de seguridad:
+ Si usa un puerto serie de emulación FIR escoja «ninguno». Tenga en cuenta que es posible que su núcleo actual soporte más/menos/otros tipos de dispositivos de seguridad. En ese caso tiene que editar /etc/default/irda-utils manualmente.
+Description-fr.UTF-8: Type de verrou (« dongle ») :
+ Si vous utilisez un port d'émulation série FIR, choisissez « aucun ». Veuillez noter qu'il est possible que votre noyau gère d'autres types de verrous. Dans ce cas, vous devrez modifier /etc/default/irda-utils vous-même.
+Description-ja.UTF-8: ドングルの種類 :
+ もし FIR のシリアルエミュレーションを利用する場合、"none" を選択してください。これは、動作中のカーネルがより多く・不足した・他のドングルをサポートしている可能性があるからです。そのような場合、/etc/default/irda-utils を編集する必要があります。
+Description-nl.UTF-8: Type dongle:
+ Als u een FIR seriële-emulatiepoort gebruikt kies dan 'geen'. Merk op dat uw kernel mogelijk meer, minder, of andere dongletypes ondersteunt, in welk geval u /etc/default/irda-utils handmatig zult moeten aanpassen.
+Description-pt.UTF-8: Tipo de dispositivo:
+ Se usar uma porta série de emulação FIR, escolha "nenhum". Note que é possível que o seu kernel actual suporta mais/menos/outros tipos de dispositivos. Nesse caso tem que editar /etc/default&irda-utils à mão.
+Description-sv.UTF-8: Dongle-typ:
+ Om du använder en FIR-seriellemuleringsport, välj "ingen". Notera att det är möjligt att din aktuella kärna har stöd för fler/mindre/andra typer av dongle. I det fallet måste du redigera /etc/default/irda-utils för hand.
+Description-vi.UTF-8: Loại khóa tiếp hợp:
+ Nếu bạn sử dụng một cổng mô phỏng nối tiếp FIR thì hãy chọn «không có». Hãy ghi chú rằng hạt nhân bạn có lẽ sẽ hỗ trợ loại khóa tiếp hợp nhiều hay ít hay khác. Trong trường hợp ấy bạn sẽ phải tự sửa đổi tập tin «/etc/default/irda-utils». 
+
+Template: irda-utils/firdev
+Type: select
+Choices: ali-ircc, au1k_ir, irda-usb, nsc-ircc, sa1100_ir, smc-ircc, smsc-ircc2, stir4200, toshoboe, via-ircc, vlsi_ir, w83977af_ir
+Description: FIR chip type:
+ Note that you must have a properly built kernel module if you want to use
+ a native chip. The modules offered here can be different to the ones that
+ are available for your actual kernel. In that case you have to edit
+ /etc/modutils/irda-utils (2.4) or /etc/modprobe.d/irda-utils (2.6) by hand.
+Description-cs.UTF-8: Typ čipu FIR:
+ Pamatujte, že pokud chcete používat přirozený ovladač čipu, pak musíte mít správně sestavený modul jádra. Zde nabízené moduly mohou být jiné, než ty poskytované vaším současným jádrem. V tom případě je potřeba ručně upravit /etc/modutils/irda-utils (2.4) nebo /etc/modprobe.d/irda-utils (2.6).
+Description-da.UTF-8: FIR-chiptype:
+ Bemærk at du skal have et passende bygget kernemodul, hvis du vil benytte en indbygget chip. De moduler, der tilbydes her, kan afvige fra dem, der er tilgængelige for netop din kerne. I så fald må du selv redigere filen /etc/modutils/irda-utils (2.4) eller /etc/modprobe.d/irda-utils (2.6) manuelt.
+Description-de.UTF-8: Typ des FIR-Chips:
+ Wenn FIR benutzt werden soll, müssen auch die entsprechenden Treibermodule gebaut werden. Die hier angebotenen Module können sich on den im laufenden Kernel verfügbaren Modulen unterscheiden. In diesem Fall müssen /etc/modutils/irda-utils (2.4) oder /etc/modprobe.d/irda-utils (2.6) von Hand bearbeitet werden.
+Description-es.UTF-8: Tipo de chip FIR:
+ Tenga en cuenta que tiene que tener un módulo de núcleo correctamente construido si quiere utilizar un chip nativo. Los módulos que se ofrecen aquí pueden ser distintos a los que están disponibles en su núcleo actual. En ese caso debe editar a mano /etc/modutils/irda-utils (2.4) o /etc/modprobe.d/irda-utils (2.6).
+Description-fr.UTF-8: Type de composant FIR :
+ Veuillez noter que le module correspondant doit avoir été compilé pour le noyau actif si vous avez choisi d'utiliser un composant natif. Les modules proposés ici peuvent être différents de ceux qui sont disponibles pour le noyau que vous utilisés. Dans ce cas, vous devrez modifier /etc/modutils/irda-utils (noayux 2.4) ou /etc/modprobe/irda-utils (noyaux 2.6).
+Description-ja.UTF-8: 赤外線通信チップの種類:
+ ネイティブチップを利用するには、カーネルモジュールを適切にビルドする必要があります。稼働中のカーネルで利用できるモジュールは、提案されたものと異なる可能性があります。そのような時、/etc/modutils/irda-utils (2.4) もしくは /etc/modprobe.d/irda-utils (2.6) を編集する必要があります。
+Description-nl.UTF-8: FIR-chiptype:
+ Merk op dat u een juist gebouwde kernelmodule nodig heeft om een autochtoon chipstuurprogramma te gebruiken. De hier weergegeven modules kunnen verschillen van deze die beschikbaar zijn in uw kernel, in welk geval u /etc/modutils/irda-utils (voor 2.4 kernels) of /etc/modprobe.d/irda-utils (voor 2.6 kernels) handmatig zult moeten aanpassen.
+Description-pt.UTF-8: Tipo de chip FIR:
+ Note que tem que ter um módulo de kernel compilado devidamente se quer usar um chip nativo. Os módulos disponíveis aqui podem ser diferentes dos que estão disponíveis para o seu kernel actual. Nesse caso tem que editar /etc/modutils/irda-utils (2.4) ou /etc/modprobe.d/irda-utils (2.6) à mão.
+Description-sv.UTF-8: FIR-chiptyp:
+ Notera att du måste ha en korrekt byggd kärnmodul om du vill använda ett native-chip. Modulerna som erbjuds här kan vara olika till de som är tillgängliga för din aktuella kärna. Om så är fallet måste du redigera /etc/modutils/irda-utils (2.4) eller /etc/modprobe.d/irda-utils (2.6) för hand.
+Description-vi.UTF-8: Loại tinh thể FIR:
+ Hãy ghi chú rằng bạn phải có một mô-đun hạt nhân được xây dụng cho đúng nếu bạn muốn sử dụng một tinh thể sở hữu. Những mô-đun được cung cấp vào đây có thể khác với những điều trong hạt nhân thật của bạn. Trong trường hợp ấy, bạn sẽ phải sữa đổi tập tin «/etc/modutils/irda-utils (2.4)» hay «/etc/modprobe.d/irda-utils (2.6)».
+
+Template: irda-utils/firopt
+Type: string
+Description: Module options for the FIR chip:
+ Some kernel modules require options to work. You can retrieve the possible
+ options for your module with the command "modinfo <modulename>".
+Description-cs.UTF-8: Volby pro modul čipu FIR:
+ Některé moduly jádra vyžadují ke své správné činnosti dodatečné parametry. Možné volby modulu můžete získat pomocí příkazu "modinfo <jméno_modulu>".
+Description-da.UTF-8: Modulindstillinger for FIR-chippen:
+ Visse kernemoduler skal have nogle indstillinger for at fungere. Du kan få de mulige indstilinger for dit modul med kommandoen "modinfo <modulnavn>".
+Description-de.UTF-8: Optionen für die Module des FIR-Chips:
+ Einige Treibermodule erforden Optionen damit sie funktionieren. Die möglichen Optionen für das zu verwendende Modul können mittels des Kommandos "modinfo <Modulname>" ermittelt werden.
+Description-es.UTF-8: Opciones del módulo para el chip FIR:
+ Algunos módulos del núcleo necesitan algunas opciones para funcionar. Puede obtener las opciones posibles del módulo con la orden «modinfo <nombredelmodulo>».
+Description-fr.UTF-8: Options du module pour le composant FIR :
+ Certains modules du noyau ont besoin d'options pour fonctionner. Les options disponibles pour votre module peuvent être affichées avec la commande « modinfo <nom_du_module> ».
+Description-ja.UTF-8: 赤外線通信チップのモジュールのオプション :
+ ある種のカーネルモジュールはオプションが動作に必要です。モジュールに設定可能なオプションは、"modinfo <modulename>"で取得できます。
+Description-nl.UTF-8: Moduleopties voor de FIR-chip:
+ Sommige kernelmodules vereisen opties opdat ze zouden werken. U kunt de toegelaten opties voor uw module opvragen met het commando 'modinfo <modulenaam>'.
+Description-pt.UTF-8: Opções do módulo para o chip FIR:
+ Alguns módulos do kernel requerem opções para funcionar. Pode saber quais são as opções possíveis para o seu módulo com o comando "modinfo <nome>".
+Description-sv.UTF-8: Modulinställningar för FIR-chip:
+ Vissa kärnmoduler kräver flaggor för att fungera. Du kan hämta de tänkbara flaggorna för din modul med kommandot "modinfo <modulnamn>".
+Description-vi.UTF-8: Tùy chọn mô-đun cho tinh thể FIR:
+ Một số mô-đun hạt nhân cần đến tùy chọn để hoạt động. Bạn có thể gọi mọi tùy chọn có thể cho mô-đun bạn bằng cách dùng lệnh:
+ modinfo <modulename>
+
+Template: irda-utils/setserial
+Type: string
+Description: Port for setserial to quiet:
+ Set the name of the serial port / device which should be quieted by setserial.
+ Only few machines need that when in FIR-mode, so most likely, it should be
+ left blank. See README.Debian for more information.
+Description-cs.UTF-8: Port pro utišení příkazem setserial:
+ Zadejte jméno sériového portu / zařízení, které má setserial ztišit. Tuto hodnotu můžete nechat prázdnou, protože ji vyžadují pouze některé počítače ve FIR režimu. Více informací naleznete v README.Debian.
+Description-da.UTF-8: Port, som setserial skal lukke ned:
+ Navnet på den serielle port/enhed, som skal lukkes ned af setseriel. Dette kræves kun af få maskiner, når de kører i FIR-tilstand, så du kan højst sandsynligt blot lade  feltet stå tomt. Se README.Debian for yderligere oplysninger.
+Description-de.UTF-8: Port für setserial zum Stilllegen:
+ Setzen Sie den Namen des seriellen Ports / Geräts, welches von setserial stillgelegt werden soll. Nur wenige Maschinen brauchen das, wenn sie im FIR-Modus arbeiten, weshalb es wahrscheinlich leer gelassen werden sollte. Siehe README.Debian für weitere Informationen.
+Description-es.UTF-8: Puerto que debe silenciar setserial:
+ Establezca el nombre del puerto/dispositivo serie que debe silenciar setserial. Sólo unas pocas máquinas necesitan eso cuando están en modo FIR, por lo que lo normal es dejarlo en blanco. Consulte README.Debian para mas información.
+Description-fr.UTF-8: Port à rendre silencieux par setserial :
+ Veuillez configure le nom de port ou périphérique série qui sera rendu silencieux par setserial. Seules certains machines ont besoin de cela en mode FIR, donc le plus souvent cette valeur pourra être laissée vide. Veuillez consulter le fichier README.Debian pour plus d'informations.
+Description-ja.UTF-8: setserial で発信を止めるポート :
+ setserial で発信を止めるシリアルポート・デバイス名を指定してください。これは、FIR モードで動作する一部のデバイスで必要であり、たいていは空白のままで問題ありません。詳しくは、README.Debian をご覧ください
+Description-nl.UTF-8: Door setserial te stillen poort:
+ Hier geeft u de naam aan van de seriële poort of het seriële apparaat dat door setserial gestild dient te worden. Er zijn weinig machines die dit nodig hebben in FIR-modus, dus waarschijnlijk kunt u dit leeg laten. Meer informatie vindt u in README.Debian.
+Description-pt.UTF-8: Porta para o setserial calar:
+ Indique o nome da porta série / dispositivo que deva ser calado pelo setserial. Apenas algumas máquinas precisam disto no modo FIR, portanto o mais provável é ser deixado em branco. Ver README.Debian para mais informação.
+Description-sv.UTF-8: Port för setserial att tysta:
+ Ange namnet på seriellporten/enheten som ska tystas ned av setserial. Bara ett fåtal maskiner behöver detta när de är i FIR-läget så antagligen bör den lämnas blank.  Se README.Debian för mer information.
+Description-vi.UTF-8: Cổng cần setserial làm dịu:
+ Hãy lập tên của cổng/thiết bị nối tiếp mà trình setserial nên làm dịu. Rất ít máy cần đến hành động ấy khi trong chế độ FIR, thì rất có thể là nên bỏ nó trống. Hãy xem tập tin README.Debian để tìm thông tin thêm.
+
+Template: irda-utils/discovery
+Type: boolean
+Default: true
+Description: Discovery behavior?
+ Confirm if you want to use discovery mode. When in discovery mode, the
+ device in your machine looks for other devices on a regular basis.
+Description-cs.UTF-8: Vyhledat zařízení?
+ Souhlaste, pokud si přejete použít vyhledávací mód. Pokud se zařízení nachází ve vyhledávacím módu, pak jsou hledána další zařízení.
+Description-da.UTF-8: Opdagelsesopførsel?
+ Bekræft om du vil benytte opdagelsestilstand. I opdagelsestilstand vil din maskines enhed jævnligt lede efter andre enheder.
+Description-de.UTF-8: Discovery-Modus?
+ Bestätigen Sie, wenn der Discovery-Modus verwendet werden soll. Wenn sich das Gerät in Ihrer Maschine in diesem Modus befindet, wird in regelmäßigen Abständen nach anderen Geräten gesucht.
+Description-es.UTF-8: ¿Desea un comportamiento de descubrimiento?
+ Confirme si desea usar el modo descubrimiento. Cuando está en el modo descubrimiento el dispositivo de su máquina busca otros dispositivos regularmente.
+Description-fr.UTF-8: Faut-il utiliser la découverte ?
+ Veuillez choisir si vous souhaitez utiliser le mode de découverte. Dans ce mode, le périphérique de votre système recherche périodiquement d'autres périphériques.
+Description-ja.UTF-8: 探索モードにしますか？
+ 探索モードを利用するかどうかを選択してください。探索モードでは、デバイスは周辺のデバイスを通常の手法で探索します。
+Description-nl.UTF-8: Ontdekkingsmodus activeren?
+ Aanvaard dit als u de ontdekkingsmodus wilt gebruiken. In ontdekkingsmodus zoekt het apparaat in uw machine regelmatig naar andere apparaten.
+Description-pt.UTF-8: Comportamento de descoberta?
+ Confirme se quer usar o modo de descoberta. Neste modo, o dispositivo na sua máquina, procura outros dispositivos regularmente
+Description-sv.UTF-8: Beteende för iakttagelse?
+ Bekräfta att du vill använda iakttagelseläget. När den är i iakttagelseläget kommer enheten i din maskin att leta efter andra enheter med en viss intervall.
+Description-vi.UTF-8: Hành vi phát hiện?
+ Hãy xác nhận nếu bạn muốn sử dụng chế độ phát hiện. Khi trong chế độ phát hiện, thiết bị trong máy bạn tìm thiết bị khác nào một cách đều dặn.
+
+Template: irda-utils/enable
+Type: boolean
+Default: false
+Description: Enable IrDA on system startup?
+ Confirm if you want IrDA to be enabled when your system is booting. This is
+ necessary for devices that need "irattach" to be run. Most devices need it,
+ except for some rare FIR devices.
+Description-cs.UTF-8: Povolit IrDA při startu systému?
+ Souhlaste, pokud si přejete povolit IrDA při startu systému. To je nezbytné pro zařízení, která potřebují mít spuštěn "irattach". Kromě několika málo FIR zařízení to vyžaduje většina zařízení.
+Description-da.UTF-8: Aktivér IrDA under systemopstart?
+ Bekræft hvis du ønsker at IrDA skal aktiveres, når dit system starter op. Dette er nødvendigt for enheder, der kræver at "irattach" køres. De fleste enheder kræver dette, med undtagelse af sjældne FIR-enheder.
+Description-de.UTF-8: Aktiviere IrDA bei Systemstart?
+ Bestätigen Sie, wenn IrDA während des Bootvorgangs aktiviert werden soll. Dies ist für Geräte notwendig, die ein laufendes "irattach" benötigen. Die meisten Geräte brauchen es, mit Ausnahme einiger weniger FIR-Geräte.
+Description-es.UTF-8: ¿Desea activar IrDA en el arranque del sistema?
+ Confirme si desea que se active IrDA en el arranque de su sistema. Esto es necesario para dispositivos que necesitan «irattach» para ejecutarse. Muchos dispositivos lo necesitan, excepto algunos dispositivos FIR poco frecuentes.
+Description-fr.UTF-8: Faut-il activer la gestion de l'infrarouge au démarrage ?
+ Veuillez choisir si vous souhaitez activer la gestion de l'infrarouge au lancement de votre système. Ce choix est indispensable pour les périphériques qui ont besoin de « irattach » pour fonctionner, ce qui est le cas de la plupart, à l'exception de rares périphériques FIR.
+Description-ja.UTF-8: IrDA を起動時に有効にしますか？
+ IrDA を起動時に有効にするかどうかを選択してください。"irattach"を起動しなければならないデバイスでは必須です。いくつかのまれな FIR デバイスを除く大半のデバイスでは必要です。
+Description-nl.UTF-8: IrdA activeren tijdens systeemstarts?
+ Aanvaard dit als u wilt dat IrDA geactiveerd wordt tijdens het opstarten van uw systeem. Dit is noodzakelijk voor apparaten die 'irattach' vereisen om uitgevoerd te worden. Afgezien van een aantal zeldzame FIR-apparaten geldt dit voor de meeste apparaten.
+Description-pt.UTF-8: Habilitar IrDA no arranque do sistema
+ Confirmar se quer habilitar o IrDA enquanto o sistema arranca. Isto é necessário para dispositivos que precisam so "irattach" para funcionar. A maior parte dos dispositivos precisam disto, a não ser alguns dispositivos FIR pouco comuns.
+Description-sv.UTF-8: Aktivera IrDA vid systemets uppstart?
+ Bekräfta att du vill att IrDA ska aktiveras när ditt system startar upp. Detta är nödvändigt för enheter som behöver "irattach" för att köra. De flesta enheter behöver den förrutom några ovanliga FIR-enheter.
+Description-vi.UTF-8: Bật IrDA khi khởi động hệ thống không?
+ Hãy xác nhận nếu bạn muốn hiệu lực IrDA khi hệ thống bạn đang khởi động. Nó cần đến cho mọi thiết bị cần «irattach» có được chạy. Phần lớn thiết bị cần nó, trừ một số thiết bị FIR ít có.
+
+Template: irda-utils/automatic
+Type: boolean
+Default: true
+Description: Attempt to probe for IrDA on system bootup?
+ Confirm if you want to attempt to autoconfigure IrDA on system startup. If 
+ a device is found, irattach will automatically be started up.

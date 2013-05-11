@@ -1,0 +1,16 @@
+<!-- V1.12 new-->$I18N_build_raid
+
+Dans ce dialogue, vous pouvez regrouper des partitions ou des disques entiers sous forme d'un système RAID logiciel. m23 et le programme mdadm supportent les types de RAID 0, 1, 4, 5, 6 et 10, qui offrent respectivement des avantages et désavantages quant à la vitesse de lecture/ecriture et la tolérance de panne. Pour information complémentaires, lisez la page wikipedia <a href="http://fr.wikipedia.org/wiki/RAID_(informatique)" target="_blank">http://fr.wikipedia.org/wiki/RAID_(informatique)</a>. Vous pouvez créer plusieurs systèmes RAID par poste client puis les utiliser pour l'installation du système d'exploitation, la partition linux-swap, etc. Veuillez lire les informations supplémentaires, lorsque vous souhaitez installer le système d'exploitation sur un lecteur RAID.
+
+<u>Procédure étape par étape de création d'un système RAID</u><br>
+
+<ol>
+<li><b>Créer le lecteur RAID:</b> Sélectionnez un nom dans la liste <i>&laquo;$I18N_raidDriveName&raquo;</i> puis, cliquez sur <i>&laquo;$I18N_createRAIDDrive&raquo;</i>. Ce lecteur sera un multi-lecteur virtuel.</li>
+<li><b>Ajouter des partitions et des lecteurs:</b> Dans le champ <i>&laquo;$I18N_addDrivesPartitionsToRaid&raquo;</i>, vous trouverez toutes les fonctions nécessaires pour l'assignation des partitions ou des lecteur à un système RAID. Choisissez le type du RAID et le lecteur RAID dans les listes correspondantes. Ensuite, vous pouvez assigner la partition ou le lecteur présent dans la liste <i>&laquo;$I18N_realDrivePartition&raquo;</i> ci-dessous au système RAID en cliquant sur <i>&laquo;$I18N_add&raquo;</i>. Dans la table <i>&laquo;$I18N_assignedDrivesPartitions&raquo;</i>, vous voyez les lecteurs et partitions déjà assignés.</li>
+<li><b>Finaliser la création du système RAID:</b> Ensuite, cliquez sur <i>&laquo;$I18N_extPartStep2FormartPart&raquo;</i>.</li>
+</ol>
+
+<u>Informations supplémentaires concernant les systèmes RAID et les partitions</u>
+Les RAIDs seront accessible par la fonctionnalité <i>&laquo;multi device&raquo;</i> du noyau Linux. Les lecteurs RAID créés de la sorte se comportent comme des partitions et ne peuvent pas être partitionnés. La nouvelle version du RAID avec possibilité de partitionnement n'est pas utilisée, afin de garantir la compatibilité avec des noyaux plus anciens.
+
+<!-- V1.12 begin -->helpInclude("os_on_RAID_hint.inc");<!-- V1.12 end -->

@@ -1,0 +1,17 @@
+Control center<!--new v1.6-->
+The control center allows you to access the information about clients and offers you a large variety of administration tools.
+
+<!-- v11.5 begin--><u>About virtualisation in m23</u>
+m23 contains the virtualisation solution <a href="http://en.wikipedia.org/wiki/Virtualbox">VirtualBox-OSE</a>, which can create and manage virtual m23 clients on physical m23 clients or on the m23 server.
+
+<u>Start, pause and stop a virtual m23 client</u>
+If the client was created with the VirtualBox-OSE virtualisation contained in m23, you can start, pause and stop the client directly from the m23 interface.
+
+You can choose between two different operation modes. In "<b>non-interface mode</b>" (the so-called <a href="http://en.wikipedia.org/wiki/Headless_system">headless mode</a>), you won't see the virtual monitor. You can start this mode by clicking on <i>"$I18N_VMstart"</i>. Depending on the <a href="http://en.wikipedia.org/wiki/Daemon_%28computing%29">daemons</a> installed, you can access the system using different methods.
+
+m23 also offers a <b>graphical mode</b>, which means that you can access the VM right from the booting. After a click on <i>"$I18N_VMstartVisual"</i> the VM starts and opens a <a href="http://en.wikipedia.org/wiki/VNC_server">VNC server</a>, which you can access using a VNC client. The access data can be found in the <i>"$I18N_client_information"</i> in the category <i>"$I18N_virtualisation"</i> as <i>"$I18N_VMVisualURL"</i> and <i>"$I18N_VMVisualPassword"</i>. Depending on the speed of the virtualisation host, it may take a while until the values are displayed. If necessary, click on <i>"$I18N_refresh"</i> repeatedly. With a click on <i>"$I18N_startVNCApplet"</i> you can open the </a> "<a href="http://www.tightvnc.com/">TightVNC Java Viewer</a>" (you need to have <a href="http://en.wikipedia.org/wiki/Java_applet">Java</a> is installed in your web browser) and access your virtual m23 client directly from the browser. Here, too, it may take a while unitl the link is displayed. Repeatedly click on <i>"$I18N_refresh"</i> if necessary.
+
+To pause a VM, click on <i>"$I18N_VMpause"</i>; to stop the virtualisation, click on <i>"$I18N_VMstop"</i>.
+
+<u>Setting up a VM host</u>
+If you would like to use this m23 client as a host for virtual m23 clients, click on <i>"$I18N_VMinstallVMServerSW"</i>. The virtualisation software (if available for the installed distribution) will then be installed on the m23 client and the client will be added to the list of VM hosts. After the installation is completed, you can create and start virtual m23 clients on your new host by clicking on the menu point <i>"$I18N_createVM"</i>.<!-- v11.5 end-->

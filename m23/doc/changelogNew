@@ -1,0 +1,31 @@
+2013-04-30
+fix: MSG_getRSSFeed: Now works with RSS time/dates that contain a timezone.
++++++
+2013-04-29
+new: PKG_rsyncDebsFromClientToServer: Copies all the Debian packages from a client to a given directory on the server via rsync.
++++++
+2013-04-28
+cha: CPoolLister::getPoolNames: Now returns an array with the all found pool names or empty array.
+cha: CPool::setPoolType: Now supports CPoolLister::POOL_TYPE_USECLIENTDEBS too.
+new: m23BuildPoolFromClientDebsInstall.php: Builds a pool from the Debian packages present on the given client.
+cha: CPoolFromClientGUI::__construct($clientName): Now doesn't call downloadPackagesAndCreatePool.
+cha: CPool::downloadPackagesAndCreatePool: Now has the clientname as optional parameter (only needed when downloadDebsFromClient is used).
+new: CPool::downloadDebsFromClient: Checks, if all pre-requirements for downloading packages to the pool are satisfied. Then starts the routine to download the packages directly from the client.
+new: MSR_buildPoolFromClientDebs: Builds a CPoolFromClientDebsGUI object and starts the download of the packages from the client to the server and the creation of the pool.
+new: MSR_buildPoolFromClientDebsCMD: Generates the commands to start the process for building a CPoolFromClientDebsGUI object and to start the download of the packages from the client to the server and the creation of the pool.
++++++
+2013-04-23
+cha: SERVER_runningInScreen: Changing grep's regexp from single [ to double [[.
+cha: CLCFG_copySSLCert: Now reads all lines from ca.hash and creates hash files on the client.
+cha: m23-tftp/postinst: Add IPv4 mode on Raspberry Pi.
+cha: mkCert.sh: Now calls the old hash routine (on new openssl) and the normal routine (on old openssl). So one or two hashes are added.
+cha: CLIENT_DETAILS_addIcon: Now wraps the title after 30 characters.
++++++
+2013-04-22
+fix: PKG_convertPackagesToRepository: Now urlencodes '%' characters.
+new: PKG_getDebootstrapCacheFilename: Returns the file name of the debootstrap cache file (without path).
+new: PKG_getDebootstrapCacheSfURL: Returns the URL to the debootstrap cache file on the SourceForge server.
+new: PKG_getDebootstrapCacheServerURL: Returns the URL to the debootstrap cache file on the m23 server.
+new: PKG_getDebootstrapCacheServerFile: Returns the full path to the debootstrap cache file on the m23 server.
+cha: CLCFG_debootstrap: Now uses PKG_getDebootstrapCacheServerFile, PKG_getDebootstrapCacheServerURL and PKG_getDebootstrapCacheSfURL.
+cha: PKG_downloadPool: Now downloads the debootstrap cache file too.

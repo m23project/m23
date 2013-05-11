@@ -1,0 +1,117 @@
+#!/bin/sh
+
+device_map=/boot/grub/device.map
+menu_lst=/boot/grub/menu.lst
+
+
+#clears all global set variables
+clearVars()
+{
+	title=""
+	root=""
+	kernel=""
+	initrd=""
+	type=""
+	other=""
+	paramcnt=0
+}
+
+
+
+
+
+#converts a standard device name to the grub's naming schema
+#e.g. grubdev=`convert /dev/hda1`
+convert () {
+	# Break the device name into the disk part and the partition part
+	tmp_disk=$(echo "$1" | sed -e 's%\\(\\(s\\|h\\|v\\|xv\\)d[a-z]\\)[0-9]*$%\\1%' \\
+				-e 's%\\(fd[0-9]*\\)$%\\1%' \\
+				-e 's%/part[0-9]*$%/disc%' \\
+				-e 's%\\(c[0-7]d[0-9]*\\).*$%\\1%' \\
+				-e 's%\\(/mapper/mpath[0-9]\\+\\)-part[0-9]\\+$%\\1%')
+	tmp_part=$(echo "$1" | sed -e 's%.*/\\(s\\|h\\|v\\|xv\\)d[a-z]\\([0-9]*\\)$%\\2%' \\
+				-e 's%.*/fd[0-9]*$%%' \\
+				-e 's%.*/floppy/[0-9]*$%%' \\
+				-e 's%.*/\\(disc\\|part\\([0-9]*\\)\\)$%\\2%' \\
+				-e 's%.*c[0-7]d[0-9]*p*%%' \\
+				-e 's%.*/mapper/mpath[0-9]\\+-part\\([0-9]\\+\\)%\\1%')
+
+	# Get the drive name
+	tmp_drive=$(grep -v '^#' $device_map | grep "$tmp_disk *$" | \\
+		sed 's%.*\\(([hf]d[0-9][a-g0-9,]*)\\).*%\\1%')
+
+	# If not found, print an error message and exit
+	if [ -z "$tmp_drive" ]; then
+		echo "$1 does not have any corresponding BIOS drive." 1>&2
+		exit 1
+	fi
+
+	if [ -n "$tmp_part" ]; then
+		# If a partition is specified, we need to translate it into the
+		# GRUB's syntax
+		echo "$tmp_drive" | sed "s%)$%,`expr $tmp_part - 1`)%"
+	else
+		# If no partition is specified, just print the drive name
+		echo "$tmp_drive"
+	fi
+}
+
+
+
+
+
+#write a windows boot menu entry
+writeWindows()
+{
+	#only write if all four needed information were found
+	if [ $paramcnt -eq 3 ] && [ $type = "w" ]
+	then
+		echo "title=$title
+root $root
+savedefault
+chainloader     +1
+" >> $menu_lst
+
+	clearVars
+	
+	echo "Adding Windows* to Grub's boot menu"
+	fi
+}
+
+
+
+
+clearVars
+#scan the lilo.conf for windows entries and add them to menu.lst
+cat /etc/lilo.conf | while read line
+do
+	cmd=`echo $line | cut -d'=' -f1`
+	param=`echo $line | cut -d'=' -f2`
+
+	case $cmd in
+		label)
+			title=$param
+			paramcnt=`expr $paramcnt \+ 1`
+		;;
+		table)
+			paramcnt=`expr $paramcnt \+ 1`
+		;;
+		other)
+			root=`convert $param`
+			type="w"
+			paramcnt=`expr $paramcnt \+ 1`
+		;;
+		"")
+			clearVars
+		;;
+	esac
+		writeWindows
+done
+
+#add default kernel to start and timeout for user selection
+echo "default 0
+timeout 3
+" > /tmp/menu.lst1.m23
+cp /boot/grub/menu.lst /tmp/menu.lst2.m23
+cat /tmp/menu.lst1.m23 /tmp/menu.lst2.m23 > /boot/grub/menu.lst
+rm /tmp/menu.lst1.m23 /tmp/menu.lst2.m23

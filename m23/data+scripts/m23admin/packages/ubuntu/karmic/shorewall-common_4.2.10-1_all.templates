@@ -1,0 +1,236 @@
+
+Template: shorewall-common/dont_restart
+Type: note
+Description: No automatic restart for Shorewall
+ Shorewall will not be restarted automatically after being upgraded,
+ to prevent changes in configuration files causing network outages.
+ .
+ You should check Shorewall's configuration files and restart it with
+ 'invoke-rc.d shorewall restart'.
+Description-cs.UTF-8: Shorewall nebude restartován automaticky
+ Po aktualizaci nebude Shorewall restartován automaticky, aby případné změny v konfiguračních souborech nezpůsobily výpadky sítě.
+ .
+ Měli byste zkontrolovat konfigurační soubory a poté Shorewall restartovat příkazem „invoke-rc.d shorewall restart“.
+Description-de.UTF-8: Kein automatischer Neustart von Shorewall
+ Shorewall wird nach der Aktualisierung nicht automatisch neu gestartet, damit Änderungen in den Konfigurationdateien keine Netzwerkunterbrechung verursachen.
+ .
+ Sie sollten Shorewalls Konfigurationsdateien überprüfen und das Programm mit dem Kommando 'invoke-rc.d shorewall restart' neu starten.
+Description-es.UTF-8: No se reiniciará Shorewall de forma automática
+ No se reiniciará Shorewall de forma automática tras una actualización para impedir que los cambios en los ficheros de configuración causen una desconexión de la red.
+ .
+ Debería comprobar los ficheros de configuración de Shorewall y reiniciarlo ejecutando «invoke-rc.d shorewall restart».
+Description-eu.UTF-8: Shorewall ez da automatikoki berrabiaraziko
+ Shorewall ez da automatikoki berrabiaraziko bertsio-berritu ondoren, sare isolamenduak sor ditzakeen konfigurazio aldaketak saihesteko.
+ .
+ Shorewall konfigurazioa gainbegiratu eta berau 'invoke-rc.d shorewall restart' erabiliaz berrabiarazi beharko zen.
+Description-fi.UTF-8: Ei automaattista Shorewallin uudelleenkäynnistystä
+ Shorewallia ei käynnistetä automaattisesti uudelleen päivityksen jälkeen, jotta muutokset asetustiedostoissa eivät aiheuttaisi katkoja verkkoyhteyksissä.
+ .
+ Shorewallin asetustiedostot tulisi tarkistaa ja käynnistää se uudelleen ajamalla komento ”invoke-rc.d shorewall restart”.
+Description-fr.UTF-8: Pas de redémarrage automatique de Shorewall
+ Shorewall ne sera pas redémarré automatiquement après la mise à jour, afin d'éviter des coupures complètes du réseau à cause des changements affectant les fichiers de configuration.
+ .
+ Vous devriez vérifier les fichiers de configuration de Shorewall puis le redémarrer avec la commande « invoke-rc.d shorewall restart ».
+Description-gl.UTF-8: Non se ha reiniciar Shorewall automaticamente
+ Non se ha reiniciar Shorewall automaticamente trala actualización para evitar que os cambios nos ficheiros de configuración produzan cortes de rede.
+ .
+ Debería verificar os ficheiros de configuración de Shorewall e reinicialo mediante "invoke-rc.d shorewall restart".
+Description-ja.UTF-8: Shorewall を自動的に再起動しないようにする
+ 設定ファイルでの変更によってネットワーク接続ができなくなるのを防ぐため、アップグレード後に自動的には Shorewall を再起動しないようにします。
+ .
+ Shorewall の設定ファイルをチェックして、'invoke-rc.d shorewall restart' として再起動をする必要があります。
+Description-ko.UTF-8: 자동으로 Shorewall 다시 시작하지 않음
+ 설정파일의 변경사항 때문에 네트워크가 중단되는 일이 없도록 업그레이드 후 Shorewall를 자동으로 다시 시작하지 않습니다.
+ .
+ Shorewall의 설정파일을 검토하신 후 'invoke-rc.d shorewall restart'로 다시 시작시키시기 바랍니다.
+Description-nl.UTF-8: Shorewall wordt niet automatisch herstart
+ Om te voorkomen dat veranderingen in de configuratiebestanden het netwerk plat leggen wordt Shorewall niet automatisch herstart na opwaardering. 
+ .
+ Gelieve Shorewall's configuratiebestanden te controleren en Shorewall vervolgens te herstarten via het commando 'invoke-rc.d shorewall restart'.
+Description-pt.UTF-8: Não reiniciar automaticamente a Shorewall
+ A Shorewall não vai ser reiniciada automaticamente depois de ser actualizada, para evitar que mudanças nos ficheiros de configuração causem falhas de rede.
+ .
+ Deve verificar os ficheiros de configuração da Shorewall e reiniciá-la usando 'invoke-rc.d shorewall restart'.
+Description-pt_BR.UTF-8: Sem reinicialização automática para o Shorewall
+ O shorewall não será reinicializado automaticamente após ser atualizado, para prevenir que mudanças nos arquivos de configuração causem indisponibilidade da rede.
+ .
+ Você deve checar os arquivos de configuração do Shorewall e reinicializá-lo com 'invoke-rc.d shorewall restart'.
+Description-ru.UTF-8: Shorewall не перезапускается автоматически
+ Shorewall не будет автоматически перезапущен после обновления, так как изменение в файлах настроек вызовет перебои в работе сети.
+ .
+ Вы должны самостоятельно проверить файлы настроек Shorewall и выполнить перезапуск командой 'invoke-rc.d shorewall restart'.
+Description-sv.UTF-8: Ingen automatiskt omstart av Shorewall
+ Shorewall kommer inte att startas om automatiskt efter uppgradering. För att undvika att ändringar i konfigurationen orsakar stopp i nätverket.
+ .
+ Du bör kontrollera Shorewalls konfigurationsfiler och starta om den med 'invoke-rc.d shorewall restart'.
+Description-vi.UTF-8: Shorewall sẽ không tự động khởi chạy
+ Shorewall sẽ không tự động khởi chạy sau khi được cập nhật, để tránh tập tin cấu hình bị thay đổi gây ra mạng dừng chạy.
+ .
+ Bạn nên kiểm tra các tập tin cấu hình của Shorewall, rồi khởi chạy nó bằng lệnh « invoke-rc.d shorewall restart ».
+
+Template: shorewall-common/major_release
+Type: boolean
+Description: Restart Shorewall?
+ This release of Shorewall introduces some changes in the
+ configuration files - see
+ /usr/share/doc/shorewall-common/releasenotes.txt.gz.
+ .
+ To avoid the risk of failures and network outages these files should
+ be checked carefully before the firewall is restarted.
+ .
+ Please choose whether you want to restart Shorewall immediately.
+Description-cs.UTF-8: Restartovat Shorewall?
+ Toto vydání Shorewallu přináší nějaké změny v konfiguračních souborech. Podrobnosti naleznete v /usr/share/doc/shorewall-common/releasenotes.txt.gz.
+ .
+ Abyste předešli chybám a výpadkům sítě, měli byste tyto soubory před restartem firewallu pečlivě zkontrolovat.
+ .
+ Rozhodněte se, zda chcete Shorewall restartovat nyní.
+Description-de.UTF-8: Shorewall neu starten?
+ Diese Version von Shorewall bringt die einige Veränderungen in den Konfigurationsdateien mit sich - lesen Sie die Datei /usr/share/doc/shorewall-common/releasenotes.txt.gz.
+ .
+ Diese Dateien sollten sorgfältig überprüft werden, bevor die Firewall neu gestartet wird, um das Risiko von Fehlern und Netzwerkunterbrechungen zu minimieren.
+ .
+ Bitte stimmen Sie zu, wenn Sie Shorewall jetzt neu starten wollen.
+Description-es.UTF-8: ¿Desea reiniciar Shorewall?
+ Esta versión de Shorewall introduce algunos cambios en los archivos de configuración. Para más información consulte «/usr/share/doc/shorewall-common/releasenotes.txt.gz».
+ .
+ Antes de reiniciar el cortafuegos debe comprobar cuidadosamente estos ficheros para evitar fallos y desconexiones de la red.
+ .
+ Escoja si desea reiniciar Shorewall de forma inmediata.
+Description-eu.UTF-8: Shorewall berrabiarazi?
+ Shorewall bertsio honek zenbait aldaketa ditu konfigurazio fitxategietan - ikusi /usr/share/doc/shorewall-common/releasenotes.txt.gz.
+ .
+ Errore eta sare isolamendu arriskua saihesteko fitxategi hauek kontu handiaz egiaztatu beharko lirateke suebakia berrabiarazi aurretik.
+ .
+ Mesedez hautatu Shorewall orain berrabiarazi nahi duzun ala ez.
+Description-fi.UTF-8: Käynnistetäänkö Shorewall uudelleen?
+ Shorewallin tämä versio aiheuttaa joitain muutoksia asetustiedostoihin. Katso /usr/share/doc/shorewall-common/releasenotes.txt.gz.
+ .
+ Nämä tiedostot tulisi tarkistaa huolellisesti ennen kuin palomuuri käynnistetään uudelleen verkkoyhteyksien katkojen välttämiseksi.
+ .
+ Valitse haluatko, että Shorewall käynnistetään uudelleen heti.
+Description-fr.UTF-8: Faut-il redémarrer Shorewall ?
+ Cette version de Shorewall apporte certaines modifications aux fichiers de configuration. Vous devriez consulter le fichier /usr/share/doc/shorewall-common/releasenotes.txt.gz.
+ .
+ Afin d'éviter des erreurs et la perte d'accès réseau, vous devriez soigneusement vérifier ces fichiers de configuration avant de redémarrer le pare-feu.
+ .
+ Veuillez choisir si vous souhaitez redémarrer Shorewall immédiatement.
+Description-gl.UTF-8: ¿Reiniciar Shorewall?
+ Esta versión de Shorewall introduce algúns cambios nos ficheiros de configuración - consulte /usr/share/doc/shorewall-common/releasenotes.txt.gz.
+ .
+ Para evitar o risco de fallos e cortes na rede debería verificar detidamente estes ficheiros antes de reiniciar a devasa.
+ .
+ Indique se quere reiniciar Shorewall agora.
+Description-ja.UTF-8: Shorewall を再起動しますか?
+ Shorewall の今回のリリースでは設定ファイルに若干の変更を行っています。/usr/share/doc/shorewall-common/releasenotes.txt.gz を参照してください。
+ .
+ 失敗してネットワークが切断されるリスクを咲けるため、ファイアウォールが再起動される前に念入りにこれらのファイルをチェックした方が良いでしょう。
+ .
+ 今すぐ Shorewall を再起動するかどうかを選んでください。
+Description-ko.UTF-8: Shorewall 다시 시작할까요?
+ 이번 Shorewall 릴리즈에는 설정파일에 변경사항이 있습니다. 자세한 사항은 /usr/share/doc/shorewall-common/releasenotes.txt.gz을 참조하십시오.
+ .
+ 문제나 네트워크 중단 사태가 발생하지 않도록 방화벽을 다시 시작시키시기 전에 이 파일들을 상세히 검토하시기 바랍니다.
+ .
+ Shorewall를 바로 다시 시작시키실 지를 선택하십시오.
+Description-nl.UTF-8: Wilt u Shorewall herstarten?
+ Deze uitgave van Shorewall introduceert een aantal aanpassingen aan de configuratiebestanden. Meer informatie vindt u in /usr/share/doc/shorewall-common/releasenotes.txt.gz .
+ .
+ Om het risico op netwerkfouten en niet-werkend netwerk te vermijden kijkt u deze bestanden liefst zorgvuldig na voor u de firewall herstart.
+ .
+ Hier geeft u aan of u Shorewall onmiddellijk wilt herstarten.
+Description-pt.UTF-8: Reiniciar a Shorewall?
+ Esta versão da Shorewall introduz algumas mudanças nos ficheiros de configuração - veja /usr/share/doc/shorewall-common/releasenotes.txt.gz.
+ .
+ Para evitar o risco de falhas e perdas de rede estes ficheiros devem ser verificados com cuidado antes de reiniciar a firewall.
+ .
+ Por favor indique se quer reiniciar o Shorewall imediatamente?
+Description-pt_BR.UTF-8: Reinicializar o Shorewall?
+ Esta versão do Shorewall introduz algumas mudanças nos arquivos de configuração - veja /usr/share/doc/shorewall-common/releasenotes.txt.gz.
+ .
+ Para evitar o risco de falhas e indisponibilidade da rede esses arquivos deveriam ser checados cuidadosamente antes do firewall ser reinicializado.
+ .
+ Por favor, escolha se você quer reinicializar o Shorewall imediatamente.
+Description-ru.UTF-8: Перезапустить Shorewall?
+ В этой версии Shorewall сделаны некоторые изменения в файлах настроек; смотрите описание в файле /usr/share/doc/shorewall-common/releasenotes.txt.gz.
+ .
+ Чтобы исключить риск отказа и перебоев в работе сети, эти файлы нужно аккуратно проверить перед перезапуском межсетевого экрана.
+ .
+ Укажите, хотите ли вы перезапустить Shorewall прямо сейчас.
+Description-sv.UTF-8: Start om Shorewall?
+ Detta är en stor utgåva av Shorewall som introducerar några ändringar i konfigurationsfilerna, se vidare i /usr/share/doc/shorewall-common/releasenotes.txt.gz.
+ .
+ För att undvika riskerna för fel och stopp i nätverket ska dessa filer kontrolleras noga innan brandväggen startas om.
+ .
+ Ange om du vill starta om Shorewall omedelbart eller ej.
+Description-vi.UTF-8: Khởi chạy lại Shorewall ?
+ Bản phát hành Shorewall này giới thiếu một số thay đổi trong các tập tin cấu hình — xem Ghi chú Phát hành (/usr/share/doc/shorewall-common/releasenotes.txt.gz).
+ .
+ Để tránh tiến trình không chạy thành công và mạng dừng chạy, bạn nên kiểm tra cẩn thận các tập tin này, trước khi khởi chạy lại bức tường lửa.
+ .
+ Hãy chọn có nên khởi chạy lại Shorewall ngay lập tức hay không.
+
+Template: shorewall-common/invalid_config
+Type: error
+Description: Invalid Shorewall configuration detected
+ Shorewall is configured to restart on upgrades.
+ .
+ However, the current configuration for Shorewall is invalid and it
+ will fail to restart. You should fix the program's configuration,
+ then restart it with 'invoke-rc.d shorewall restart'.
+Description-cs.UTF-8: Rozpoznána chybná konfigurace Shorewallu
+ Shorewall je nastaven, aby se při aktualizacích restartoval.
+ .
+ Stávající konfigurace Shorewallu je však chybná a proto se restart nepodaří. Měli byste konfiguraci opravit a poté Shorewall restartovat příkazem „invoke-rc.d shorewall restart“.
+Description-de.UTF-8: Ungültige Einstellungen bei Shorewall gefunden
+ Shorewall ist eingerichtet, nach Aktualisierungen neu zu starten.
+ .
+ Die aktuellen Einstellungen von Shorewall sind ungültig und sein Neustart wird fehlschlagen. Sie sollten Shorewalls Einstellungen berichtigen und das Programm mit dem Kommando 'invoke-rc.d shorewall restart' neu starten.
+Description-es.UTF-8: Detectada configuración inválida de Shorewall
+ Se ha configurado Shorewall para reiniciarse al actualizarse.
+ .
+ Sin embargo, la configuración actual de Shorewall es inválida y si se reinicia fallará. Debería arreglar la configuración del programa y reiniciarlo más adelante con 'invoke-rc.d shorewall restart'.
+Description-eu.UTF-8: Okerreko Shorewall konfigurazioa atzeman da
+ Shorewall bertsio-berritzean berrabiarazteko konfiguraturik dago.
+ .
+ Hala uneko Shorewall konfigurazioa baliogabea da eta huts egingo du berrabiarazten bada. Programaren konfigurazioa konpondu beharko duzu eta ondoren 'invoke-rc.d shorewall restart' bidez berrabiarazi.
+Description-fi.UTF-8: Virheellinen Shorewall-asetus havaittu
+ Shorewall on asetettu käynnistymään uudelleen päivitysten jälkeen.
+ .
+ Tämänhetkiset Shorewall-asetukset ovat virheellisiä ja tästä johtuen sen uudelleenkäynnistys ei tule onnistumaan. Sinun tulisi korjata virheelliset asetukset ja tämän jälkeen käynnistää Shorewall uudelleen komennolla ”invoke-rc.d shorewall restart”.
+Description-fr.UTF-8: Configuration non valable pour Shorewall
+ Shorewall est configuré pour redémarrer lors des mises à jour.
+ .
+ Cependant, la configuration actuelle du programme n'est pas valable et il ne redémarrera pas correctement. Vous devriez corriger la configuration du programme et le redémarrer avec la commande « invoke-rc.d shorewall restart ».
+Description-gl.UTF-8: Detectouse unha configuración de Shorewall non válida
+ Shorewall está configurado para se reiniciar ao actualizalo.
+ .
+ Nembargantes, a configuración actual de Shorewall non é válida, polo que non se ha poder reiniciar. Debería arranxar a configuración do programa e despois reinicialo con "invoke-rc.d shorewall restart".
+Description-ja.UTF-8: Shorewall の設定が正しくなっていないのを検知しました
+ Shorewall はアップグレードの際に再起動するように設定されました
+ .
+ しかしながら、Shorewall の現在の設定は正しいものではないので再起動に失敗します。プログラムの設定を修正してから、'invoke-rc.d shorewall restart' として再起動を実行してください。
+Description-nl.UTF-8: Ongeldige Shorewall-configuratie gedetecteerd
+ Shorewall is ingesteld om te herstarten na opwaarderingen.
+ .
+ De huidige Shorewall-configuratie is echter ongeldig en herstarten zal dus mislukken. Eens u de huidige configuratie herstelt heeft kunt u Shorewall herstarten via het commando 'invoke-rc.d shorewall restart'.
+Description-pt.UTF-8: Foi detectada uma configuração inválida para o Shorewall
+ O Shorewall está configurado para se reiniciar quando há actualizações.
+ .
+ No entanto, a configuração actual do Shorewall é inválida e a reiniciação irá falhar. A configuração do programa deve ser corrigida, e depois o programa deve ser reiniciado com o comando 'invoke-rc.d shorewall restart'.
+Description-pt_BR.UTF-8: Configuração inválida do Shorewall detectada
+ O Shorewall é configurado para reinicializar em atualizações.
+ .
+ Contudo, a configuração atual do Shorewall é inválida e ele irá falhar em reinicializar. Você deve corrigir a configuração do programa, e então reinicializá-lo com 'invoke-rc.d shorewall restart'.
+Description-ru.UTF-8: Обнаружена неправильная настройка Shorewall
+ Shorewall настроен для перезапуска при обновлениях.
+ .
+ Однако, текущая настройка Shorewall неправильна, и поэтому перезапуск завершится неудачно. Вы должны исправить настройку программы, а затем перезапустить её с помощью команды 'invoke-rc.d shorewall restart'.
+Description-sv.UTF-8: Felaktig Shorewall-konfiguration upptäckt.
+ Shorewall är inställd på att starta om efter uppgraderingar.
+ .
+ Den nuvarande inställningen för Shorewall är felaktig och programmet kommer inte starta korrekt. Du bör gå igenom och laga programmets inställningar för att sedan starta om det med 'invoke-rc.d shorewall restart'.
+Description-vi.UTF-8: Phát hiện được một cấu hình Shorewall không hợp lệ
+ Phần mềm Shorewall được cấu hình để khởi chạy một khi nâng cấp.
+ .
+ Tuy nhiên, cấu hình Shorewall hiện thời không phải là hợp lệ nên nó sẽ không khởi chạy được. Bạn nên sửa chữa cấu hình của chương trình, rồi khởi chạy nó dùng câu lệnh « invoke-rc.d shorewall restart ».

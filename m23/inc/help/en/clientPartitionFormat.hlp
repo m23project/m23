@@ -1,0 +1,52 @@
+$I18N_clientPartitioningAndFormating<!--new 10.4 -->
+This dialog is designed for partitioning and formating your m23 client and the management and creation of software RAIDs. Click on <i>"$I18N_finalisePartitioningAndselectClientDistribution"</i> after you did all changes.
+
+<b>Overview</b>
+The tools and functions for editing the drives and partitions are shown in the menu on the left side. You can point to the desired function with the mouse cursor to open the menu block. Adjacent (and right) to the menu, the current partition and formating of all drives and RAIDs is displayed. Under <i>"$I18N_waitingPartitioningAndFormatingJobs"</i> the tasks are shown, that are needed to get the client into the displayed state. Adjacent (and right) to it detailed information are shown (if JavaScript is activated or the information about all drives are shown if deactivated) about the drive, the mouse cursor points to. In the caption under <i>"$I18N_supported_filesystems"</i> all file systems that can be created and managed with m23 are listed.
+
+<u>Hint: Undoing your changes</u>
+All actions can be discarded by going back in the browser history (e.g. by pressing <i>"Alt"</i> + <i>"Left arrow"</i> in Firefox).
+
+<u>Hint: Usage of JavaScript</u>
+The activation of JavaScript is optionally. Some additional comfort functions (e.g. the automatic opening and closing of menu entries or coloring of the partition under the mouse cursor) are available only if JavaScript is activated.
+
+<h2>Overview of the menu entries</h2>
+<b>$I18N_currentDriveAndPartition</b>
+Many operations are bound to a partition (e.g. formating) or a drive (e.g. creation of a new partition). Such functions correspond to the selected drive (<i>"$I18N_currentDrive"</i>) and the selected partition (<i>"$I18N_currentPartition"</i>) that are choosen under <i>"$I18N_currentDriveAndPartition"</i>.
+
+<b>$I18N_partitionScheme</b>
+Predefined schemes for partitioning and formating the hard disk of the m23 client can be choosen here and executed by a click on <i>"$I18N_executeScheme"</i>.
+<ul>
+	<li><b>$I18N_fdistTypeautomatic</b>: This scheme deletes all data from the first hard disk and creates two new partitions. The first partition is used for the operating system and data and the second for swapping.</li>
+</ul>
+
+<b>$I18N_deleteCurrentPartition</b>
+A click on <i>"$I18N_delete"</i> removes the current (shown/selected at <i>"$I18N_currentPartition"</i>) partition.
+
+<b>$I18N_add_new_partition</b>
+You can create a new partition in the free space of a hard disk with this function. Choose the start and end point of the new partition by clicking into the white space of a drive (on activated JavaScript) or by entering the values for its bordes into <i>"$I18N_start"</i> and <i>"$I18N_end"</i>. Of course it is possible to create a partition that is smaler than the whole free area. Choose the type of the partition at <i>"$I18N_type"</i> to select, if a primary, extended or logical partition should be created. Finally create it with a click to <i>"$I18N_add"</i>.
+
+<b>$I18N_formatPartition</b>
+This formats the choosen partition. Select the desired file system at <i>"$I18N_type"</i> and click on <i>"$I18N_format"</i>.
+
+<b>"$I18N_raidDrives"</b>
+<!-- from RAID_add.hlp--><!-- V1.12 new-->You can join partitions and/or complete drives to create software RAIDs in that space. m23 and accordingly the program mdadm support RAID levels 0, 1, 4, 5, 6 and 10. These RAID levels have advantages and disadvantages in relation to speed increase and data reliability. For additional information about RAIDs read the Wikipedia page <a href="http://en.wikipedia.org/wiki/RAID" target="_blank">http://en.wikipedia.org/wiki/RAID</a>, please. You can create several RAIDs on a single client and use the RAIDs for operating system installation, the swap partition etc. Please read the hint if you want to install an operating system on a RAID.
+
+<u>Step by step</u><br>
+
+<ol>
+<li><b>Create a RAID drive:</b> Choose a device name from the list <i>"$I18N_raidDriveName"</i> and click on <i>"$I18N_createRAIDDrive"</i>. This device is a virtual multi device.</li>
+<li><b>Add partitions and drives:</b> You can find all necessary functions for assigning partitions and drives to a RAID in the box <i>"$I18N_addDrivesPartitionsToRaid"</i>. Choose the RAID type and RAID drive from the accordant lists. Afterwards, you have to choose a partition or drive from the list <i>"$I18N_realDrivePartition"</i> to add it to the RAID. Click on <i>"$I18N_add"</i>. The table <i>"$I18N_assignedDrivesPartitions"</i> lists all assigned drives and partitions.</li>
+<li><b>Complete the RAID creation:</b> Click on <i>"$I18N_extPartStep2FormartPart"</i> in the last step.</li>
+</ol>
+
+<u>Hint for RAIDs and partitions</u>
+The Linux kernel accesses the software RAIDs via <i>"multi devices"</i>. These RAID drives behave like partitions and cannot be partitioned further. This limitation is made by m23 to accomplish backwards compatibility to older Linux kernels.
+
+helpInclude("os_on_RAID_hint.inc");<!-- from RAID_add.hlp end-->
+
+<b>$I18N_installationAndSwapPartition</b>
+A partition for installing the operating system and a partition for swapping have to be selected to make the m23 client installable. Choose the partitions at <i>"$I18N_installationPartition"</i> and <i>"$I18N_swapPartition"</i> and then click on <i>"$I18N_select"</i>.
+
+<b>$I18N_defineMountpoints</b>
+<!-- from fdisk-extended3.hlp-->If you need additional mountpoints, you can define them under <i>"$I18N_defineMountpoints"</i>. Enter the partition, the mountpoint and the required parameters into the appropriate input fields and click on <i>"$I18N_add"</i>. These informations correspond to those which you can find in the file <b>/etc/fstab</b>. You can see mountpoints which are already defined in the table under the input lines.<!-- from fdisk-extended3.hlp end--> To delete a mount point simply click on <i>"$I18N_delete"</i> after the mount point to remove.

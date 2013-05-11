@@ -1,0 +1,104 @@
+Template: pbuilder/mirrorsite
+Type: string
+Default: http://archive.ubuntu.com/ubuntu
+Description: Default mirror site:
+ Please enter the default mirror you want to be used by pbuilder.
+ .
+ If you leave this field blank, there will be one attempt to autodetect
+ this information. If this attempt fails, you will be prompted again
+ to insert some valid mirror information.
+ .
+ Here is a valid mirror example: http://archive.ubuntu.com/ubuntu
+
+Template: pbuilder/nomirror
+Type: error
+Description: Default mirror not found
+ Mirror information detection failed and the user provided no mirror information.
+ .
+ Please enter valid mirror information.
+Description-ca.UTF-8: No s'ha trobat la rèplica predeterminada
+ Ha fallat la detecció de la rèplica i l'usuari no ha introduït informació sobre aquesta.
+ .
+ Introduïu una rèplica vàlida.
+Description-cs.UTF-8: Výchozí zrcadlo nenalezeno
+ Automatické rozpoznání zrcadla selhalo a uživatel neposkytnul žádné informace.
+ .
+ Zadejte prosím platné zrcadlo.
+Description-de.UTF-8: Standard-Spiegelserver nicht gefunden
+ Spiegelserver-Informationserkennung schlug fehl und der Benutzer stellte keine Spiegelserver-Informationen bereit.
+ .
+ Bitte geben Sie gültige Spiegelserver-Informationen ein.
+Description-es.UTF-8: No se encontró la replica por omisión
+ Ha fallado la auto detección de la información de la replica y el usuario no ha ingreso ninguna información sobre la misma.
+ .
+ Por favor ingrese información valida sobre una replica.
+Description-eu.UTF-8: Ispilu lehenetsia ez da aurkitu
+ Ispiluaren informazioa atzemateko saioak huts egin du, eta erabiltzaileak ez du eman ispiluaren informaziorik.
+ .
+ Sartu mesedez baliozko ispilu informazioa.
+Description-fi.UTF-8: Oletuspeiliä ei löytynyt
+ Peilitietojen etsintä epäonnistui, eikä käyttäjä antanut peilitietoja.
+ .
+ Anna kelvollinen peili.
+Description-fr.UTF-8: Miroir introuvable
+ La tentative de détection automatique d'un miroir a échoué.
+ .
+ Veuillez indiquer un miroir valable.
+Description-gl.UTF-8: Non se atopou a réplica por defecto
+ A detección da información das réplicas fallou, e o usuario non forneceu información sobre as réplicas.
+ .
+ Introduza información válida sobre as réplicas.
+Description-ja.UTF-8: デフォルトミラーが発見できませんでした
+ ミラー情報の検出が失敗し、ユーザがミラー情報を何も提供しませんでした。
+ .
+ 正しいミラー情報を入力してください。
+Description-pt.UTF-8: Mirror pré-definido não encontrado
+ A detecção de informação do mirror falhou e o utilizador não disponibilizou informação de nenhum mirror.
+ .
+ Por favor indique informação válida de um mirror.
+Description-ro.UTF-8: Saitul-oglindă implicit nu a fost găsit
+ Detectarea informațiilor despre saitul-oglindă a eșuat și utilizatorul nu a furnizat nici o informație despre saitul-oglindă.
+ .
+ Introduceți informație validă referitoare la saituri .
+Description-ru.UTF-8: Сервер-зеркало по умолчанию не найден
+ Не удалось определить сервер-зеркало и пользователь также не ввёл эту информацию.
+ .
+ Укажите рабочий сервер-зеркало.
+Description-sv.UTF-8: Standarsspegel kunde inte hittas
+ Den automatiska sökningen efter standardspegel misslyckades och användaren har inte angivit någoninformation.
+ .
+ Ange korrekt spegelinformation.
+
+Template: pbuilder/rewrite
+Type: boolean
+Default: false
+Description: Overwrite current configuration?
+ Your system seems to have already pbuilder configuration.
+ Proceeding might discard or overwrite part or the entire
+ pbuilder's configuration.
+Description-ca.UTF-8: Voleu sobreescriure la configuració actual?
+ Ja hi ha una configuració de pbuilder al sistema. Continuar aquesta operació pot descartar o sobreescriure la configuració de pbuilder parcial o completament.
+Description-cs.UTF-8: Přepsat stávající konfiguraci?
+ Zdá se, že se na vašem systému již nachází konfigurace pbuilderu. Budete-li pokračovat, může se stát, že přepíšete část nastavení pbuilderu.
+Description-de.UTF-8: Aktuelle Konfiguration überschreiben?
+ Es scheint, dass Ihr System bereits über eine Pbuilder-Konfiguration verfügt. Falls Sie fortfahren, könnten die gesamte oder Teile der Pbuilder-Konfiguration verworfen oder überschrieben werden.
+Description-es.UTF-8: ¿Sobreescribir la configuración actual?
+ Su sistema parece ya disponer de una configuración de pbuilder. El proseguir puede descartar o sobreescribir parcial o totalmente la configuración de pbuilder.
+Description-eu.UTF-8: Dagoen konfigurazioa gainidatzi?
+ Zure sistemak pbuilder konfigurazioa baduela dirudi. Aurrera jarraituz gero, baliteke pbuilder-en konfigurazio osoa edo zati bat baztertzea edo gainidaztea.
+Description-fi.UTF-8: Kirjoitetaanko nykyisten asetusten päälle?
+ Järjestelmässä on jo pbuilder-asetukset. Jatkaminen saattaa hävittää tai kirjoittaa yli osan tai kaikki pbuilderin aiemmista asetuksista.
+Description-fr.UTF-8: Faut-il écraser la configuration actuelle?
+ Des paramètres de configuration de pbuilder semblent déjà exister sur ce système. Veuillez choisir si vous acceptez de perdre tout ou partie de ces informations de configuration.
+Description-gl.UTF-8: ¿Sobrescribir a configuración actual?
+ Semella que o sistema xa ten unha configuración de pbuilder. Se continúa pódese sobrescribir ou eliminar parcial ou totalmente a configuración de pbuilder.
+Description-ja.UTF-8: 現在の設定を上書きしますか？
+ システムにはpbuilderの設定がすでに存在します。このまま進めると一部か全体の設定を上書きしてしまう可能性があります。
+Description-pt.UTF-8: Sobreescrever a configuração actual?
+ O seu sistema parece já ter uma configuração de pbuider. Prosseguir poderá anular ou sobreescrever partes ou toda a configuração do pbuilder.
+Description-ro.UTF-8: Se suprascrie actualul fișier de configurație?
+ Sistemul pare să aibă deja o configurație pentru pbuilder. Continuarea cu această acțiune ar putea duce la ștergerea sau suprascrierea parțială sau totală a fișierului de configurare aparținând lui pbuilder.
+Description-ru.UTF-8: Изменить имеющуюся настройку?
+ Кажется, что в вашей системе уже выполнена настройка pbuilder. Продолжение работы может стереть или изменить часть или всю настройку pbuilder.
+Description-sv.UTF-8: Ska de aktuella inställningarna skrivas över?
+ Det verkar som om du redan har en inställningsfil för pbuilder på systemet. Om du fortsätter körningen nu kan hela eller delar av den komma att skrivas över.

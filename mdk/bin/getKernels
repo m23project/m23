@@ -1,0 +1,53 @@
+if test $# != 2
+then
+ echo "getkernels <target> <kernel version file>"
+ echo Downloads the selected kernel to the target directory and
+ echo saves the kernel version to the kernel version file.
+ exit
+fi
+
+list=""
+
+#get all kernel packages and comments
+for i in `apt-cache search kernel-source | grep kernel-source | grep -v nvidia | sort | sed 's/ - /@/g' | sed 's/ /_/g'`
+do
+ package=`echo $i | cut -d'@' -f1`
+ comment=`echo $i | cut -d'@' -f2`
+
+ list="$list°$package $comment"
+done
+
+#generate the list for the dialog menu
+list=`echo $list | sed 's/°/\n/g' | sed 's/Linux_kernel_source_for_version_//g'`
+
+kernelPackage=`kernelPackage 2>/dev/null` || kernelPackage=/tmp/kernelPackage$$
+dialog --clear --backtitle "m23 kernel buider" --title "Download kernel source" \
+        --menu "Choose the kernel source you want to download" 25 75 17 \
+	$list 2> $kernelPackage
+retval=$?
+case $retval in
+    1)
+       exit;;
+    255)
+       exit;;
+esac
+
+dialog --backtitle "m23 kernel builder" --infobox "\n Downloading the kernel source" 5 35
+
+#get the kernel package name
+choice=`cat $kernelPackage`
+
+#save the current directory
+oldDir=`pwd`
+
+#cd to the target directory
+cd $1
+
+#download and extract the kernel source
+apt-get source $choice
+
+#saves the kernel version to the kernel version file
+echo $choice > $2
+
+#cd to the old directory
+cd $oldDir

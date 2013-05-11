@@ -1,0 +1,757 @@
+#!/bin/sh
+
+keys=""
+vals=""
+
+
+
+
+
+#name php_urlencode
+#description Urlencodes a string as PHP's urlencode function.
+#parameter input string: Not urlencoded string
+#returns Shows the urlencoded string in PHP style
+php_urlencode()
+{
+#Set AWK's row seperator to a very unlikely value to get newlines (ascii number 10) converted correctly
+echo -n "$1" | awk -vRS='Kawtyf7hsdUMMq3NcdHVMkdKyXjNKRxRFauwrncLWpqwp9fyHCnjU3hcVrpJyhtk34hhUUzcxNKdycXPPEtXgV44Lp3hMPiKTLrFyeJwdNjt3u7UoXwWeXRPpF9HnCjz' '
+BEGIN {
+	#Build a table to get similar functionality as PHPs ord function
+	for ( i=1; i<=255; ++i )
+		ord[sprintf ("%c", i) ""]=i""
+}
+
+{
+	#Run thru the characters of the input string
+	for (i = 1; i <= length($0); i++)
+	{
+		#Fetch the character at position i
+		c = substr ($0, i, 1)
+		#Get its ascii number
+		o = int (ord[c])
+
+		#Special handling for spaces
+		if (c == " ")
+			out=out "+"
+		#List and ranges of ascii characters that should be converted
+		else if (((123 <= o) && ( o <= 255)) || ((91 <= o) && ( o <= 94)) || ((58 <= o) && ( o <= 64)) || ((0 <= o) && ( o <= 44)) || (o == 47) || (o == 96))
+			out=out sprintf("%%%02X", ord[c])
+		else
+		#Normal characters are not converted
+			out=out c
+	}
+}
+
+END {
+print out
+}'
+}
+
+
+
+
+
+#name getDrives
+#description Shows a list of all drives.
+#returns Shows a list of all drives.
+getDrives()
+{
+	parted -m -l 2> /dev/null | grep dev | sed 's#Error: ##g' |  cut -d':' -f1 | sed 's#[^a-z0-9A-Z/]##g' > /tmp/getDrives.list
+	dmesg | grep '\* md[0-9].* configuration \*' | sed 's#[^md0-9]##g' | awk '{print("/dev/"$0)}' >> /tmp/getDrives.list
+	sort -u /tmp/getDrives.list | grep dev
+}
+
+
+
+
+#name getDriveInfo
+#description Gets information about a drive.
+#parameter path ($1): The full path to the drive.
+#returns Shows the information line about a drive.
+getDriveInfo()
+{
+	pathLocal="$1"
+	parted -m -s "$pathLocal" unit MB print | grep "$pathLocal"
+}
+
+
+
+
+
+#name getAllPartInfo
+#description Gets the information lines of all partitions for a given drive
+#parameter path ($1): The full path to the drive.
+#returns Shows the information lines of all partitions.
+getAllPartInfo()
+{
+	pathLocal="$1"
+	#parted -m -s "$pathLocal" unit MB print | grep "^[0-9]"
+	parted "$pathLocal" -s unit MB print | tr -s [:blank:] | sed 's/ /#/g' | sed 's/^#*//g' | grep ^[0-9] | sed 's/,[0-9]*MB//g' | sed 's/MB//g'
+}
+
+
+
+
+
+#name addAssoc
+#description Adds a key value pair to the associative array
+#params key ($1): Name of the key.
+#params val ($2): The value for the key.
+addAssoc()
+{
+	key="$1"
+	val="$2"
+	keys="$keys###$key"
+	vals="$vals###$val"
+}
+
+
+
+
+
+#name showAssoc
+#description Shows the contents of the associative array as serialized m23 array.
+#returns Shows the contents of the associative array as serialized m23 array.
+showAssoc()
+{
+	uvals=`php_urlencode "$vals"`
+	echo $keys$uvals | sed 's/^###//'
+}
+
+
+
+
+
+#name getCDRoms
+#description Shows a list of all DVD/CD drives.
+#returns Shows a list of all DVD/CD drives.
+getCDRoms()
+{
+	#Get the IDE drives
+	for i in `find /proc/ide/ -name media`
+	do
+		media=`grep cdrom $i`
+		if test -z $media
+		then
+			false
+		else
+			echo $i | cut -d'/' -f5
+		fi
+	done
+
+	#Now check for SCSI/SATA drives
+	dmesg | grep Attached | grep -v "scsi disk" | awk '/scsi/ {
+	for (i=1; i < NF; i++)
+	{
+		if (match($i,"scsi") > 0)
+			{
+				print($(i+2));
+				break;
+			}
+	}}'
+}
+
+
+
+
+
+#name addCdrom
+#description Adds a CD/DVD drive to fstab and creates an eject icon
+#params dev ($1): The device name WITHOUT full path (e.g. hdc)
+addCdrom()
+{
+	dev=$1
+
+	mountDir="/mnt/cdrom$dev"
+
+	#Add entry to fstab
+	printf "/dev/%s %s auto ro,noauto,user,exec 0 0\n" $dev $mountDir >> /etc/fstab
+
+	#Create the mount dir
+	mkdir -p -m 777 "$mountDir"
+
+	iconFile="/usr/m23/skel/Desktop/DVD-CD$dev.desktop"
+
+	echo "[Desktop Action Eject]
+Exec=kdeeject $dev
+Name=Eject
+Name[de]=Auswerfen
+
+[Desktop Entry]
+Actions=Eject
+Dev=/dev/$dev
+Encoding=UTF-8
+FSType=Default
+Icon=cdrom_mount
+MountPoint=$mountDir
+ReadOnly=true
+Type=FSDevice
+UnmountIcon=cdrom_unmount" > "$iconFile"
+}
+
+
+
+
+
+#name getIDE_SCSIEmulation(char *out)
+#description gets all cdrom drives and generates an append line for the lilo.conf all cdrom are set to ide-scsi emulation
+#returns Shows the append ide-scsi emulation line.
+getIDE_SCSIEmulation()
+{
+	out="append=\""
+
+	#Run thru all CD/DVD drives and add
+	for drive in `getCDRoms`
+	do
+		out="$out$drive=scsi-ide "
+	done
+
+	#strip the last blank
+	echo -n "$out" | sed 's/ $/"/'
+}
+
+
+
+
+
+#name getIDE_SCSIEmulation(char *out)
+#description creates the /etc/fstab and /etc/lilo.conf files or overwrites them if they exist and creates a header in the files.
+InitLiloFstab()
+{
+	liloDevice="$1"
+
+	#Create the desktop folder for storing the icons etc.
+	mkdir -m 777 -p "/usr/m23/skel/Desktop" "/proc"
+
+	echo '#/etc/fstab was created by m23hwscanner3
+#<file system> <mount point> <type> <options> <dump> <pass>
+proc /proc proc defaults 0 0' > /etc/fstab
+
+	#Add CD/DVD drives to fstab and create eject icons
+	for drive in `getCDRoms`
+	do
+		addCdrom "$drive"
+	done
+
+	#Check, if IDE/SCSI emulation should be added
+	append=`getIDE_SCSIEmulation`
+
+	echo "#/etc/lilo.conf was created by m23hwscanner3
+lba32
+boot=$liloDevice
+install=/boot/boot-menu.b
+map=/boot/map
+prompt
+delay=20
+timeout=150
+$append
+default=m23angelOne" > /etc/lilo.conf
+}
+
+
+
+
+
+#name void addHD(const char *path, const char *fs)
+#description adds a harddisk to /etc/fstab and creates a KDE icon
+#parameter path ($1): path to the partition (e.g. /dev/hda2)
+#parameter fs ($2): filesystem of the partition (e.g. ext3)
+#parameter wantedMp ($3): The desired mount point or empty, if the mount point should be calculated internally
+addHD()
+{
+	pathLocal=$1
+	fs=$2
+	wantedMp=$3
+	dev=`basename "$pathLocal"`
+
+	#Check if the wantedMp parameter is given
+	if [ -z "$wantedMp" ]
+	then
+		mountPoint="/mnt/$dev"
+	else
+		mountPoint="$wantedMp"
+	fi
+
+	#Create the mount point
+	mkdir -p -m 777 "$mountPoint"
+
+	#Add the HD to the fstab
+	echo "$pathLocal $mountPoint $fs defaults 0 0" >> /etc/fstab
+
+	#Generate the icon filename with full path
+	iconFile="/usr/m23/skel/Desktop/$dev.desktop"
+
+	#Write the HD destop icon
+	echo "[Desktop Entry]
+Dev=$pathLocal
+FSType=Default
+Icon=hdd_mount
+MountPoint=$mountPoint
+ReadOnly=false
+Type=FSDevice
+UnmountIcon=hdd_unmount" > "$iconFile"
+
+	#Change the access rights
+	chmod 777 "$iconFile"
+};
+
+
+
+
+
+#name addLinux
+#description Adds a linux system to lilo.conf and fstab. It also tries to detect, if there is a Linux operating system installed on the partition and adds it in this case as a alternative bootable system.
+#paramater path ($1): path to the Linux device to add
+#parameter fs ($2): filesystem of the partition (e.g. ext3)
+#parameter rootDev ($2): set to 1 if it is the partition, the m23 operating system is installed on
+addLinux()
+{
+	pathLocal=$1
+	fs=$2
+	rootDev=$3
+
+	#make mount dir
+	mkdir -p -m 777 /tmp/mounttest
+	
+	#mount dev
+	mount -t $fs $pathLocal /tmp/mounttest
+	mountRet=$?
+
+	#get the name of the divice from a path (e.g. sdb1 from /dev/sdb1)
+	deviceName=`basename "$pathLocal"`
+	
+	mountPoint=""
+
+	#if its our rootdevice select the special name
+	if [ $rootDev -eq 1 ]
+	then
+		label="m23angelOne"
+		#if it's the root device set the mountpoint to root
+		mountPoint="/"
+		export mountPoint
+	else
+		label="Linux($deviceName)"
+		mountPoint=""
+		export mountPoint
+	fi
+
+	#check if we have a bootable linux system
+	if [ $rootDev -eq 1 ] || [ -f /tmp/mounttest/vmlinuz ] || [ -L /tmp/mounttest/vmlinuz ]
+	then
+		echo "
+image=/vmlinuz
+label=$label
+read-only
+root=$pathLocal" >> /etc/lilo.conf
+
+		#check if there is an initial ramdisk
+		if [ -f /tmp/mounttest/initrd.img ] || [ -L /tmp/mounttest/initrd.img ]
+		then
+			echo "initrd=/initrd.img" >> /etc/lilo.conf
+		fi
+	fi
+
+	umount /tmp/mounttest
+
+	rmdir /tmp/mounttest
+
+	addHD $pathLocal $fs $mountPoint
+}
+
+
+
+
+
+#name addRAID
+#description Adds a RAID to the associative output array.
+#paramater path ($1): Path to the RAID (e.g. /dev/md0)
+#parameter vDev ($2): Virtual internally used device number of the drive.
+addRAID()
+{
+	pathLocal=$1
+	vDev=$2
+	rPart=0
+
+	#split the full device name to device name (e.g. /dev/md0 => md0)
+	devName=`basename "$pathLocal"`
+
+	# let's fetch the line with RAID information from /proc/mdstat this line may look like this:
+	# md0 : active raid0 hda1[0] sda2[1]	
+	raidInfo=`grep "^$devName" /proc/mdstat`
+
+	# echo $raidInfo | sed 's/ /\n/g' generates output like:
+	# md0
+	# :
+	# active
+	# (auto-read-only)
+	# raid5
+	# hda[0]
+	# sda[1]
+
+	# Get the RAID level by greping and seding and save it
+	raidLevel=`echo $raidInfo | sed 's/ /\n/g' | grep raid | sed 's/raid//'`
+	addAssoc "dev$vDev""part0_type" "RAID-$raidLevel"
+
+	# Go thru all drives/partitions (marked by "[%i]") the RAID is build of
+	for rDev in `echo "$raidInfo" | sed 's/ /\n/g' | grep "\[" | cut -d '[' -f1`
+	do
+		addAssoc `printf "dev%i_raidDrive%i" $vDev $rPart` "/dev/$rDev"
+		rPart=`expr $rPart + 1`
+	done
+
+	#Add the amount of drives/partitions the RAID is build of
+	addAssoc `printf "dev%i_raidDriveAmount" $vDev` $rPart
+}
+
+
+
+
+
+#name addWindows
+#description Adds a Win32/64 system to lilo.conf and fstab.
+#paramater path ($1): path to the Win32 partition to add.
+#parameter fs ($2): filesystem of the partition (e.g. vfat).
+#parameter bootable ($3): set to 1 if it is a bootable partition.
+addWindows()
+{
+	pathLocal=$1
+	fs=$2
+	bootable=$3
+
+	#get the name of the device from a path (e.g. sdb1 from /dev/sdb1)
+	deviceName=`basename "$pathLocal"`
+
+	#Add it to fstab, if it is bootable
+	if [ $bootable -eq 1 ]
+	then
+		echo "other=$pathLocal
+label=Windows($deviceName)
+table=$pathLocal" >> /etc/lilo.conf
+	fi
+
+	addHD $pathLocal $fs ""
+};
+
+
+
+
+
+#name addPartition
+#description adds a partition to lilo.conf and fstab and calls the real-adding functions.
+#paramater path: path to the Win32 partition to add.
+#parameter fs: filesystem of the partition (e.g. vfat).
+#parameter type: type of the partition (e.g. extended, primary)
+#parameter bootable: set to 1 if it is a bootable partition.
+addPartition()
+{
+	if [ $argc -eq 0 ]
+	then
+		return
+	fi
+
+	pathLocal=$1
+	fs=$2
+	type=$3
+	bootable=$4
+
+	#extended partitions can't be added
+	if [ $type = "extended" ]
+	then
+		return
+	fi
+
+	case $fs in
+		"ext2" | "ext3" | "ext4" | "reiserfs" )
+			#Check, if the current partition is the m23 OS installation partition
+			if [ $rootDevice = $pathLocal ]
+			then
+				addLinux $pathLocal $fs 1
+			else
+				addLinux $pathLocal $fs 0
+			fi
+		;;
+	
+		"fat32" | "fat16" | "vfat" | "ntfs" )
+			addWindows $pathLocal $fs $bootable
+		;;
+	
+		"linux-swap" )
+			echo "$pathLocal none swap sw 0 0" >> /etc/fstab
+		;;
+	esac
+}
+
+
+
+
+
+#name getDriveSize
+#description Shows the size of the drive (in MB).
+#paramater driveInfo ($1): Drive information string, that contains all infomation about the current drive.
+getDriveSize()
+{
+	echo $1 | cut -d':' -f2 | sed 's/MB//'
+}
+
+
+
+
+
+#name getDriveModel
+#description Shows the model of the drive.
+#paramater driveInfo ($1): Drive information string, that contains all infomation about the current drive.
+getDriveModel()
+{
+	echo "$1" | cut -d':' -f7 | sed 's/;$//'
+}
+
+
+
+
+
+#name getPartNr
+#description Shows the number of the partition.
+#paramater partInfo ($1): Partition information string, that contains all infomation about the current partition.
+getPartNr()
+{
+	echo "$1" | cut -d'#' -f1
+}
+
+
+
+
+
+#name getPartStart
+#description Shows the start position of the partition (in MB).
+#paramater partInfo ($1): Partition information string, that contains all infomation about the current partition.
+getPartStart()
+{
+	echo "$1" | cut -d'#' -f2
+}
+
+
+
+
+
+#name getPartEnd
+#description Shows the end position of the partition (in MB).
+#paramater partInfo ($1): Partition information string, that contains all infomation about the current partition.
+getPartEnd()
+{
+	echo "$1" | cut -d'#' -f3
+}
+
+
+
+
+
+#name getPartType
+#description Shows the type of the partition (primary, extendex, logical).
+#paramater partInfo ($1): Partition information string, that contains all infomation about the current partition.
+getPartType()
+{
+	echo "$1" | cut -d'#' -f5 | awk '/primary/ {print}
+/extended/ {print}
+/logical/ {print}'
+}
+
+
+
+
+
+#name getPartFS
+#description Shows the filesystem type of the partition.
+#paramater partInfo ($1): Partition information string, that contains all infomation about the current partition.
+getPartFS()
+{
+	fs=`echo "$1" | cut -d'#' -f6`
+	if [ -z "$fs" ]
+	then
+		fs=`echo "$1" | cut -d'#' -f5`
+	fi
+	
+	echo -n "$fs"
+}
+
+
+
+
+
+#name getPartBootable
+#description Shows 1 if the partition has the bootable flag set or 0 otherwise.
+#paramater partInfo ($1): Partition information string, that contains all infomation about the current partition.
+getPartBootable()
+{
+	if [ `echo "$1" | grep boot -c` -gt 0 ]
+	then
+		echo 1
+	else
+		echo 0
+	fi
+}
+
+
+
+
+
+#name scanDisksPartitions()
+#description scans all disks and partitions and saves the gathered information in an associative array
+scanDisksPartitions()
+{
+	#Virtual internally used device number
+	devNr=0
+
+	#Run thru all devices
+	for path in `getDrives`
+	do
+		#save path of the device (e.g. /dev/hda)
+		addAssoc `printf "dev%i_path" $devNr` "$path"
+
+		#label the partition
+		checkdisklabel "$path" 2> /dev/null > /dev/null
+
+		#Get all information about the drive
+		driveInfo=`getDriveInfo "$path"`
+
+		#save size in MB
+		addAssoc `printf "dev%i_size" $devNr` `getDriveSize $driveInfo`
+
+		#save model name of the device (e.g. WD 22323)
+		model=`getDriveModel "$driveInfo"`
+		addAssoc `printf "dev%i_model" $devNr` "$model"
+
+		#Virtual internally used partition number
+		partNr=0
+
+		#Run thru all partitions with their information
+		for partInfo in `getAllPartInfo "$path"`
+		do
+			#partition number (e.g. 1 for /dev/hda1)
+			addAssoc `printf "dev%ipart%i_nr" $devNr $partNr` `getPartNr $partInfo`
+
+			#partition start
+			addAssoc `printf "dev%ipart%i_start" $devNr $partNr` `getPartStart $partInfo`
+
+			#partition end
+			addAssoc `printf "dev%ipart%i_end" $devNr $partNr` `getPartEnd $partInfo`
+
+			#partition file system
+			addAssoc `printf "dev%ipart%i_fs" $devNr $partNr` `getPartFS $partInfo`
+
+			#Only add a type here if it's not a MD (MDs get RAID-? as type)
+			if [ `echo $path | grep md -c` -eq 0 ]
+			then
+				addAssoc `printf "dev%ipart%i_type" $devNr $partNr` `getPartType $partInfo`
+				partPath="$path`getPartNr $partInfo`"
+			else
+				partPath=$path
+			fi
+
+			#figure out, if the partition is bootable
+			bootable=`getPartBootable $partInfo`
+
+			addPartition $partPath `getPartFS $partInfo` `getPartType $partInfo` $bootable
+
+			#Increment the virtual part number
+			partNr=`expr $partNr + 1`
+		done
+
+		#save amount of partitions
+		addAssoc `printf "dev%i_partamount" $devNr` $partNr
+
+		#add RAID information
+		if [ `echo $path | grep md -c` -gt 0 ]
+		then
+			addRAID $path $devNr
+		fi
+
+		devNr=`expr $devNr + 1`
+	done
+}
+
+
+
+
+
+#name getHardwareData()
+#description Gets lots of hardware information and stores it in the associative array.
+getHardwareData()
+{
+	addAssoc "cpu" "`grep name /proc/cpuinfo | cut -d':' -f2`"
+	addAssoc "mhz" "`grep MHz /proc/cpuinfo | cut -d':' -f2 | cut -d' ' -f2`"
+	addAssoc "net" "`lspci | grep Ethernet`"
+	addAssoc "sound" "`lspci | grep -i audio`"
+	addAssoc "vga" "`lspci | grep -i vga; lspci | grep -i display`"
+	addAssoc "isa" "`grep Card /proc/isapnp 2> /dev/null | cut -d\"'\" -f2`" #'
+	mem=`grep MemTotal /proc/meminfo | tr -d '[ \t]' | sed 's/[^0-9]//g'`
+	mem=`expr $mem / 1024`
+	addAssoc "mem" "$mem"
+	addAssoc "dmi" "`dmidecode`"
+	addAssoc "modules" "`lsmod`"
+};
+
+
+
+
+
+#name fixLiloFstab()
+#description Checks, if the lilo.conf contains the line for starting the m23 client and fixes it, if not.
+fixLiloFstab()
+{
+
+#if the m23hwscanner doesn't detect the root device => add the entries to lilo.conf and fstab via the script
+if test `grep -c m23angelOne /etc/lilo.conf` -lt 2
+then
+cat >> /etc/lilo.conf << "LILOEOF"
+image=/vmlinuz
+label=m23angelOne
+read-only
+root=F16ekLMvpDpasr0P
+initrd=/initrd.img
+LILOEOF
+
+#Change the placeholder "F16ekLMvpDpasr0P" with the root device
+sed -i "s/F16ekLMvpDpasr0P/$rootDevice/g" /etc/lilo.conf
+
+echo "$rootDevice / auto defaults 0 0" >> /etc/fstab
+fi
+}
+
+
+
+
+
+bootDevice=$1
+rootDevice=$2
+export rootDevice
+argc=$#
+export argc
+
+if [ $# -eq 2 ]
+then
+	InitLiloFstab $bootDevice
+else
+	if [ $# -ne 0 ]
+	then
+		echo "$0 can be used in 2 different ways
+1. gather hardware and partition information in the m23 hardware and
+partition format ans store the result in /tmp/partHwData.post:
+use $0 with NO arguments
+2. generate /etc/fstab and /etc/lilo.conf by:
+$0 [bootDevice] [rootDevice]
+e.g.: bootDevice=/dev/hda and rootDevice=/dev/hda1"
+		exit 1
+	fi
+fi
+
+addAssoc "ver" "2"
+
+scanDisksPartitions
+getHardwareData
+
+if [ $# -eq 3 ]
+then
+	fixLiloFstab
+else
+	echo "type=partHwData&data=`showAssoc`" > "/tmp/partHwData.post"
+fi

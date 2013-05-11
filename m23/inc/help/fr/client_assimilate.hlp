@@ -1,0 +1,18 @@
+$I18N_client_assimilation<!--new v1.10-->
+
+Avec m23, vous pouvez administrer des systèmes Debian préexistants dans votre parc en les intégrant à m23. Pour une intégration sans difficultés, le poste client doit obligatoirement être pleinement démarré et accessible par le réseau. Pour ce faire, seulement trois valeurs sont à saisir:
+<ul><LI><b>$I18N_client_name:</b> Le nom sous lequel le poste client doit être reconnu donc administré par le serveur m23. Ce n'est pas nécessairement le nom d'hôte du poste client.</LI>
+<LI><b>$I18N_ip:</b> L'adresse IP (eventuellement temporaire) du poste client.</LI>
+<!--begin v1.17--><LI><b>$I18N_UbuntuUserIfUbuntuSystem:</b> Le nom de du compte utilisateur, préexistant sur l'ordinateur à intégrer, pouvant être accédé par SSH. Ce compte devant être capable d'exécuter sur le poste client des commandes avec les privilèges superutilisateur (root) en utilisant sudo avec le même mot de pase. Cette option est uniquement nécessaire sur des systèmes Ubuntu ou lorsque la connexion avec les privilèges superutilisateur «root» est désactivée.</LI>
+<LI><b>$I18N_rootPasswordOrUbuntuUserPassword:</b> Mot de passe actuel du superutilisateur «root» sur le poste client (pour Debian) ou le mot de passe de l'utilisateur habilité à administrer le poste client (pour Ubuntu). Bien sûr, ce champs peut être laissé vide, si vous préférez une intégration manuelle.</LI><!--end v1.17--></ul>
+Ensuite, cliquez sur <i>«$I18N_assimilate»</i>. L'intégration se déroule en tâche de fond.
+
+<u>Notez</u>
+Pour une intégration automatique un démon SSH actif, permettant l'administration du poste client en tant que superutilisateur «root» ou équivalent (sudo), le programme «wget» et le paquet «coreutils» sont indispensables. De plus, il est nécessaire que des paquets puissent être téléchargés par APT sur internet.
+
+<u>Intégration manuelle</u>
+Si aucun démon SSH n'est actif sur le poste client, vous avez également la possibilité de lancer le processus d'intégration manuellement. Pour ce faire, exécutez les commandes suivantes en tant que &laquo;root&raquo; ou équivalent (sudo) dans la console du poste client (remplacez &laquo;serverIP&raquo; par l'adresse IP de votre serveur m23):
+<code>cd /tmp; wget http://&lt;serverIP&gt;/work.php -O work.php; sh work.php</code>
+
+<u>Intégrer des systèmes Ubuntu</u>
+En général, les systèmes Ubuntu se laissent intégrer uniquement manuellement, après l'installation standard, le compte «root» est désactivé et aucun démon SSH n'est actif. Vous devez donc lancer une console en tant que superutilisateur «root» ou équivalent (sudo) sur l'ordinateur Ubuntu et commencer l'intégration manuellement.

@@ -1,0 +1,4 @@
+/m23/bin/sedfile /etc/squid.conf "offline_mode off" "offline_mode on"
+/m23/bin/sedfile /etc/squid.conf "# offline_mode on" "offline_mode on"
+
+squid -k reconfigure

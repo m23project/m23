@@ -1,0 +1,54 @@
+$I18N_clientPartitioningAndFormating<!--new 10.4 -->
+In diesem Dialog können Sie Ihren m23-Client partionieren und formatieren, sowie Software-RAIDs verwalten. Nachdem Sie Ihre Änderungen vorgenommen haben, klicken Sie auf <i>"$I18N_finalisePartitioningAndselectClientDistribution"</i>.
+
+<b>Überblick</b>
+Im linken Menü sehen Sie die Werkzeuge und Funktionen zum Bearbeiten von Festplatten und Partitionen. Bei aktiviertem JavaScript bewegen Sie die Maus im Menü über die gewünschte Funktion, um das Menü auszuklappen. Rechts daneben befindet sich die aktuelle Partitionierung und Formatierung aller Festplatten und RAIDs. Darunter (unter <i>"$I18N_waitingPartitioningAndFormatingJobs"</i>) sehen Sie die Aufgabenliste mit Partitionierungsanweisungen, die der m23-Client durchlaufen muß, um den derzeit dargestellten Zustand zu erreichen. Rechts daneben sehen Sie detaillierte Informationen über das Laufwerk, das sich unter dem Mauszeiger befindet (bei aktiviertem JavaScript bzw. bei deaktivierten die Informationen von allen Laufwerken). In der Legende unter <i>"$I18N_supported_filesystems"</i> sehen Sie die Dateisystemtypen, die mit m23 angelegt und verwaltet werden können.
+
+<u>Hinweis zum Rückgängigmachen von Aktionen</u>
+Sie können jede vorgenommene Änderung durch Zurückspringen in der Browserhistorie (z.B. durch Drücken von <i>"Alt"</i> + <i>"Pfeil nach links"</i> in Firefox) rückgängig machen.
+
+<u>Hinweis zur Verwendung von JavaScript</u>
+Die Aktivierung von JavaScript ist optional. Bei aktiviertem JavaScript stehen einige zusätzliche Komfortfunktionen (z.B. das automatische Aufklappen der Menüpunkte oder die Kennzeichnung der Partition unter dem Mauszeiger) zur Verfügung. Aber auch ohne JavaScript können alle nötigen Funktionen genutzt werden.
+
+<h2>Menüpunkte im Überblick</h2>
+
+<b>$I18N_currentDriveAndPartition</b>
+Viele der Operationen sind an eine Partition (z.B. formatieren) oder an eine Festplatte (z.B. neue Partition anlegen) gebunden. Diese Operationen beziehen sich jeweils auf die unter <i>"$I18N_currentDriveAndPartition"</i> in <i>"$I18N_currentDrive"</i> und <i>"$I18N_currentPartition"</i> angegebenen Laufwerke bzw. Partitionen. Sie können die aktuelle Festplatte und Partition durch Anklicken in der grafischen Übersicht ändern.
+
+<b>$I18N_partitionScheme</b>
+Unter diesem Menüpunkt können Sie ein vordefiniertes Schema zum Partitionieren und Formatieren der Festplatte des m23-Clients auswählen und durch einen Klick auf <i>"$I18N_executeScheme"</i> anwenden.
+<ul>
+	<li><b>$I18N_fdistTypeautomatic</b>: Bei der automatischen Partitionierung werden alle Daten auf der ersten Festplatte gelöscht und zwei neue Partitionen angelegt. Es wird eine Partition für Daten und das Betriebssystem und die andere zum temporären Auslagern (Swappen) erstellt.</li>
+</ul>
+
+<b>$I18N_deleteCurrentPartition</b>
+Mit einem Klick auf <i>"$I18N_delete"</i> entfernen Sie die aktuelle (unter <i>"$I18N_currentPartition"</i> angegebene) Partition.
+
+<b>$I18N_add_new_partition</b>
+Mit dieser Funktion können Sie neue Partitionen innerhalb eines freien Bereiches auf der Festplatte anlegen. Zum Wählen von Start- und Endpunkt der neuen Partition klicken Sie (bei aktivertem JavaScript) auf einen weißen Bereich oder geben diese unter <i>"$I18N_start"</i> und <i>"$I18N_end"</i> an. Sie können natürlich auch eine Partition anlegen, die nicht den ganzen freien Platz einnimmt. Wählen Sie zudem unter <i>"$I18N_type"</i> aus, ob Sie eine primäre (primary), erweiterte (extended) oder logische (logical) Partition erstellen möchten. Klicken Sie abschließend auf <i>"$I18N_add"</i>.
+
+<b>$I18N_formatPartition</b>
+Hiermit formatieren Sie die aktuell ausgewählte Partition. Wählen Sie hierzu unter <i>"$I18N_type"</i> das gewünschte Dateisystem und klicken anschließend auf <i>"$I18N_format"</i>.
+<!-- V11.5 begin --><u>Hinweis zu Dateisystemen</u>
+Sollten Sie ein Dateisystem auswählen, das nicht von der (später zu wählenden) Client-Distribution unterstützt wird, so wird das Dateisystem automatisch auf ein unterstütztes angepaßt.<!-- V11.5 end -->
+
+<b>"$I18N_raidDrives"</b>
+<!-- from RAID_add.hlp--><!-- V1.12 new-->In diesem Dialog können Sie Partitionen oder ganze Laufwerke zu Software-RAIDs zusammenfassen. m23 bzw. das Programm mdadm unterstützen die RAID-Level 0, 1, 4, 5, 6 und 10, die jeweils unterschiedliche Vor- und Nachteile im Bezug auf erzielten Geschwindigkeitszuwachs und Ausfallsicherheit bieten. Für weitere Informationen zu RAIDs lesen Sie bitte die Wikipedia-Seite <a href="http://de.wikipedia.org/wiki/RAID" target="_blank">http://de.wikipedia.org/wiki/RAID</a>. Sie können mehrere RAIDs pro Client anlegen und dann zur Installation des Betriebssystems, der Swap-Partition etc. benutzen. Lesen Sie bitte den Hinweis, wenn Sie das Betriebssystem auf einem RAID-Laufwerk installieren wollen.
+
+<u>Schrittweises Vorgehen zum Anlegen eines RAIDs</u>
+<ol>
+<li><b>Anlegen des RAID-Laufwerks:</b> Wählen Sie aus der Liste <i>"$I18N_raidDriveName"</i> einen Namen aus und klicken Sie anschließend auf <i>"$I18N_createRAIDDrive"</i>. Dieses Laufwerk ist ein virtuelles Multi-Device.</li>
+<li><b>Hinzufügen von Partitionen und Laufwerken:</b> In dem Kasten <i>"$I18N_addDrivesPartitionsToRaid"</i> finden Sie alle benötigten Funktionen zum Zuweisen von Partitionen und Laufwerken zu einem RAID. Wählen Sie dazu den RAID-Typ und das RAID-Laufwerk aus den entsprechenden Listen aus. Sie können anschließend die weiter unten aufgelistete Partition bzw. das Laufwerk aus der Liste <i>"$I18N_realDrivePartition"</i> dem RAID mit einem Klick auf <i>"$I18N_add"</i> zuweisen. In der Tabelle <i>"$I18N_assignedDrivesPartitions"</i> sehen Sie die bereits zugewiesenen Laufwerke und Partitionen.</li>
+<li><b>RAID-Erstellung abschließen:</b> Klicken Sie anschließend auf <i>"$I18N_extPartStep2FormartPart"</i>.</li>
+</ol>
+
+<u>Hinweis zu RAIDs und Partitionen</u>
+Auf die RAIDs wird durch die <i>"Multi device"</i>-Funktion des Linux-Kernels zugegriffen. Die so gebildeten RAID-Laufwerke verhalten sie wie Partitionen und können nicht weiter partitioniert werden. Die neue Software-RAID-Variante mit Partitionierungsmöglichkeit wird nicht verwendet, um Rückwärtskompatibilität zu älteren Kerneln zu gewährleisten.
+
+<!-- V1.12 begin -->helpInclude("os_on_RAID_hint.inc");<!-- V1.12 end --><!-- from RAID_add.hlp end-->
+
+<b>$I18N_installationAndSwapPartition</b>
+Damit der m23-Client installiert werden kann, müssen Sie abschließend eine Partition zur Installierung des Betriebssystems unter <i>"$I18N_installationPartition"</i> sowie eine Partition zum Swappen unter <i>"$I18N_swapPartition"</i> auswählen und auf <i>"$I18N_select"</i> klicken.
+
+<b>$I18N_defineMountpoints</b>
+<!-- from fdisk-extended3.hlp--><!-- V1.12 begin -->Falls Sie zusätzliche Mountpunkte benötigen, können Sie diese unter <i>"$I18N_defineMountpoints"</i> erstellen. Geben Sie dazu die Partition, den Mountpunkt und zum Mounten benötigte Parameter an und klicken Sie anschließend auf <i>"$I18N_add"</i>. Diese Informationen entsprechen denen, die auf einem Linux-System in der Datei <b>/etc/fstab</b> stehen. In der Tabelle unter den Eingabefeldern können Sie die bereits definierten Mountpunkte sehen.<!-- V1.12 end --><!-- from fdisk-extended3.hlp end--> Möchten Sie eine angelegten Mountpunkt wieder löschen, so klicken Sie in der betreffenden Zeile auf <i>"$I18N_delete"</i>.

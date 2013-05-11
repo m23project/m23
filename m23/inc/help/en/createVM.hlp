@@ -1,0 +1,22 @@
+$I18N_createVM<!--new v1.22-->
+The purpose of this page is to create virtual m23 clients (<a href="http://en.wikipedia.org/wiki/Virtual_machine" target="_blank">VM</a>s). VMs share the host's resources and are appearing on the network as "normal" m23 clients. The VM host must be switched on and the m23 virtualisation package must be installed for creating a new VM guest (further information at the bottom of the page).
+
+<u>Step by step</u>
+<ol><li>Choose the m23 client with the m23 virtualisation package installed under <i>"$I18N_vmHost"</i>. This will be the computer that stores the VM to create. Afterwards, click on <i>"$I18N_select"</i>.</li>
+<li>There is shown status information about the m23 client/VM host if it is running. You need to specify the settings of your new virtual m23 clients after choosing the VM host:
+<ul><li><b>$I18N_hostNetworkCard</b>: Here you need to select the physical network card of your host if it has more than one network card. This must be the network card which is used to connect the host to your internal LAN. The VMs are connected via a software <a href="http://en.wikipedia.org/wiki/Network_bridge" target="_blank">network bridge</a> to the physical network.</li>
+<li><b>$I18N_VMName</b>: The name of the new virtual machine. This name is identical with the name of the according m23 client.</li>
+<li><b>$I18N_mac</b>: The MAC address of the VM. This address will be generated at random so it's very unlikely that there is a collision with other MAC addresses, but you can edit the proposed MAC.</li>
+<li><b>$I18N_memory</b>: The size of the memory (RAM) of the VM. This value should not be too high to allow the running of other applications and possible other VMs.</li>
+<li><b>$I18N_harddisk</b>: The maximum size of the virtual harddisk.</li></ul>
+Click on <i>"$I18N_create"</i> to create the new VM.</li>
+<li>You <b>necessarily need</b> to click on the link <i>"&gt; &gt; &gt; $I18N_add_client &lt; &lt; &lt;"</i> after the successful creation of the VM. Otherwise there will be no m23 client and the VM would not be manageable via m23. Any error messages of the virtualisation software will be shown in a red box if there occurs an error while creating the VM.</li>
+</ol>
+
+<u>Hints about the VM host</u>
+The m23 client needs to have installed the m23 virtualisation package <i>"m23VirtualBox"</i> to be capable of creating and running virtual m23 clients. The package can be found under <i>"$I18N_special_packages"</i> in the package installation dialogue (<i>$I18N_packages</i> &rarr; <i>$I18N_install</i>) in the m23 administration interface and can be installed on any m23 client.
+
+Remember that the VM host needs enough free disk space and free memory and adequate CPU power, because all virtual machines share the resources of the host's physical hardware.
+
+<u>Memory, harddisk and CPU</u>
+The virtual memory will be assigned to the VMs when they get started and therefore subtracted from the free memory of the VM host. Every VM uses a virtual harddisk that is stored in a file which is small at the beginning and grows when data is filled in. Running applications in a VM will result in a lower execution speed than running on the same machine without virtualisation.

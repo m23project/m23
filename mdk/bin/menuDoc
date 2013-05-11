@@ -1,0 +1,55 @@
+#!/bin/sh
+
+
+#Check if LaTeX is installed
+if [ ! -f /usr/bin/pdflatex ]
+then
+	echo "LaTeX environment not found!
+	Without it you can neither create the manual nor the development guide.
+	Please enter your root password to install the needed packages:"
+	su -c "apt-get update; apt-get install texlive latex2html texlive-latex-extra"
+fi
+
+
+# if [ `whoami` = "root" ]
+# then
+# 	echo "You MUST NOT be root here. Switch to your normal working account and start again. Now press \"enter\" to leave."
+# 	read gaga
+# 	exit
+# fi
+
+
+menuDocSel=`menuDocSel 2>/dev/null` || menuDocSel=/tmp/menuDocSel$$
+dialog --backtitle "MDK documentation generator" --clear --title "Select what you want to do" \
+        --menu "Select the documentation you want to generate" 10 50 3 \
+        "manual"  "generate manual" \
+        "devguide"  "generate development guide" \
+        "translator"  "download and maintain translations" 2> $menuDocSel
+retval=$?
+case $retval in
+    1)
+       exit;;
+    255)
+       exit;;
+esac
+
+
+choice=`cat $menuDocSel`
+
+if test $choice == "manual"
+then
+	/mdk/doc/manual/bin/menuManualStart.sh
+	/mdk/bin/menuDoc
+fi
+
+if test $choice == "devguide"
+then
+	/mdk/doc/devguide/bin/menuDevguide
+	/mdk/bin/menuDoc
+fi
+
+if test $choice == "translator"
+then
+	/mdk/doc/translator/bin/menuTranslator
+	/mdk/bin/menuDoc
+fi

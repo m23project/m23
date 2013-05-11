@@ -1,0 +1,11 @@
+#!/bin/bash
+
+rds=`grep kernelRamDisk /m23/inc/kernelRamDisk.inc | cut -d'=' -f2 | cut -d';' -f1`
+
+cd /m23/tftp/pxelinux.cfg/
+
+for f in `ls`
+do
+	sed "s#ramdisk_size=[0-9]*#ramdisk_size=$rds#" $f > /tmp/pxecfg.tmp
+	cat /tmp/pxecfg.tmp > $f
+done

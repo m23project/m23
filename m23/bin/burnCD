@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "burn" > /tmp/m23cdBurner.LOCK
+rm /tmp/m23cdBurner.log
+cdrecord dev=$1 -eject gracetime=2 driveropts=burnproof $2 speed=$3 2> /dev/stdout > /tmp/m23cdBurner.log
+rm /tmp/m23cdBurner.LOCK

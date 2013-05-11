@@ -1,0 +1,13 @@
+Connexion directe au poste client<!--V1.5-->
+Une connexion directe au poste client peut être nécessaire pour intervenir manuellement sur le processus d'installation, pour visualiser l'affichage d'un hôte distant ou encore pour tester ou déboguer. La connexion sera effectuée par SSH,
+elle peut être établie à partir de tout poste ayant un client SSH de connexion.
+
+<u>Mot de passe</u>
+Si le poste client est encore au début de l'installation, le mot de passe root est: &raquo;NETROOTPWD&laquo;.
+Plus tard, ce sera le mot de passe saisi pendant la création du poste client.
+
+Si votre navigateur web supporte le protocole SSH directement, vous pouvez établir la connexion en cliquant sur ce lien: <a href="ssh://root@CLIENTIP">ssh://root@CLIENTIP</a>
+
+Sinon, ouvrez un terminal et entrez la commande: <b>ssh -o UserKnownHostsFile=/dev/null -l root CLIENTIP</b>.
+
+Afin de lire l'affichage actuel du poste client ou d'intervenir sur l'installation en cours utilisez cette commande: <b>screen -x m23install</b>.

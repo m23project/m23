@@ -1,0 +1,62 @@
+<!--v10.0 new-->$I18N_serverBackup
+This dialog will help you to create automatic backups of your m23 server at given points in time. The backups are containing the rescue data to restore the m23 server, the configuration of the operating system and the list of the installed packages. It is possible to restore the m23 server to the last saved sate with these files after a data loss or other damage. The backuped data can be stored on an external server in the network or uploaded to the internet and are encrypted via <a href="http://en.wikipedia.org/wiki/GNU_Privacy_Guard">GPG</a> before the upload, to make your data confidential.
+
+This dialog for storing, encrypting and uploading consists of two parts.
+<ol>
+	<li><b>$I18N_encryptAndUploadBackup:</b> This part deals with the encryption of the backups and copying them on an external storage.</li>
+	<li><b>cron settings</b>: Here you can specify the parameters for the <a href="http://en.wikipedia.org/wiki/Cron">cron</a> daemon to determine the points of time for the automatic backup process.</li>
+</ol>
+
+
+<br><br><h2>$I18N_encryptAndUploadBackup</h2>
+Here you need to enter the required access information for the chosen external storage and the GPG key for encrypting the backup data.
+<u>Hint for the GPG keys</u>
+Click on <i>"$I18N_manageGPGKeys"</i>, if the desired GPG key for encrypting the data cannot be found in the list.
+
+<ol>
+	<li>
+		Choose the type of storing service at <i>"$I18N_onlineFileStoringService"</i>. The following services are supported by m23:
+		<ul>
+			<li><b>-</b>: This option stores the backups on the hard disk of the m23 server only. You should use this alternative, if you <b>really</b> do not want to use an external storage server. It is NOT possible to restore the m23 server in case of data loss e.g. caused by a head crash in the harddisk of the m23 server. The backups are stored on the m23 server in the directory <code>/m23/root-only/serverBackups/</code> and can be copied manually to an external storage.</li>
+
+			<li><b>scp</b>: <a href="http://en.wikipedia.org/wiki/Secure_Copy">Secure Copy</a> allows to copy data to any computer that is reachable by the network and that is running the SSH daemon. This option is the method of choice, if you own an SSH server that is capable of storing the backup files. To add this server to your standard backup cycle is saving your m23 server in an optimal way.</li>
+
+			<li><b>share-online.biz</b>: The m23 server will upload the encrypted backup data to a so-called <a href="http://en.wikipedia.org/wiki/File_hosting_service">file hosting service</a>, if you choose this option. This may be an option for you, if don't own a server for storing the m23 server backups. Your backup data is safe due to the GPG encryption before the upload. The upload of your backup data may take some time.</li>
+		</ul>
+	</li>
+
+	<li>Click on <i>"$I18N_change"</i> after you made your decision.</li>
+
+	<li>Depending on the choice of the external storage you need to give additional access information for the external storage.
+		<ul>
+			<li><h3>scp</h3>
+			To use "Secure Copy" you are required to enter the following values:
+			<ul>
+				<li><b>$I18N_user</b>: This is the user name the m23 server needs to connect to the SCP server and to copy the files to it.</li>
+				<li><b>$I18N_scpServer</b>: Enter the IP or the name of the SCP server accessible by the m23 server.</li>
+				<li><b>$I18N_scpStoreDirectory</b>: The directory on the SCP server where to place the backup files. You should use full path names here.</li>
+				<li><b>$I18N_gpgKey</b>: Choose the GPG key for encrypting the backups before copying.</li>
+			</ul>
+			<u>Hint</u>
+			You need to make sure that the SCP server can be reached by the root account of the m23 server. Add the contents of the file <code>/root/.ssh/id_dsa.pub</code> on the m23 server to the file <code>~/.ssh/authorized_keys</code> on the SCP server owned by the user given above to ensure this. <!--v12.1 begin-->You can use the tool <code>ssh-copy-id</code> for the key exchange too: <code>ssh-copy-id -i /root/.ssh/id_dsa.pub benutzer@SCP-Server</code>.<!--v12.2 end-->
+			</li>
+		
+			<li><h3>share-online.biz</h3>
+			You need to enter the following values if you prefer the "share-online.biz" variant:
+			<ul>
+				<li><b>$I18N_user</b>: This is the user name you used during the registration process on share-online.biz.</li>
+				<li><b>$I18N_password</b>: Enter the according password here.</li>
+				<li><b>$I18N_repeated_password</b>: Repeat it here, to avoid mistyping.</li>
+				<li><b>$I18N_gpgKey</b>: Choose the GPG key for encrypting the backups before copying.</li>
+			</ul>
+			<u>Hint:</u>
+			You need to register for a free account at <a href="http://www.share-online.biz/signup.php">www.share-online.biz</a> to use the service. Uploads and downloads are free of charge. <b>But you should make sure that the terms of use have not changed. Please contact <a href="mailto:hhabermann@pc-kiel.de">hhabermann@pc-kiel.de</a> in case of changes.</b>
+			</li>
+		</ul>
+	</li>
+
+	<li>Finally, click on <i>"$I18N_save"</i> (independent of the chosen method).</li>
+</ol>
+
+<br><br><h2>cron settings</h2>
+helpInclude("cron.inc");

@@ -1,0 +1,24 @@
+$I18N_createVM<!--new v1.22-->
+Ce dialogue vous permet de créer des postes client m23 virtuels (<a href="http://fr.wikipedia.org/wiki/Machine_virtuelle" target="_blank">machines virtuelles</a>). Les machines virtuelles se partagent les ressources du système hôte et se comportent comme des postes client m23  &laquo;normaux&raquo; sur le réseau. Pour la création d'une nouvelle machine virtuelle sur l'hôte, le système hôte doit être démarrée et le paquet de virtualisation m23 doit y avoir été installé (pour plus d'informations, voir ci-dessous)
+
+<u>Déroulement pas à pas</u>
+<ol><li>Sélectionnez le client m23 où le paquet logiciel de virtualisation est installé dans <i>&laquo;$I18N_vmHost&raquo;</i>. Ensuite, cliquez sur <i>&laquo;$I18N_select&raquo;</i>.</li>
+<li>Si le système hôte est fonctionnel, vous verrez une multitude d'informations sur son état actuel. 
+Vous devez saisir les paramètres pour votre nouveau poste client m23 virtuel après avoir choisi la machine virtuelle du système hôte: 
+<ul><li><b>$I18N_hostNetworkCard:</b> Si l'ordinateur du système hôte dispose de plusieures cartes réseau, sélectionnez la carte réseau communiquant avec votre réseau local (LAN). Les machines virtuelles sont connectées au réseau physique par un <a href="http://fr.wikipedia.org/wiki/Pont_%28informatique%29" target="_blank">pont réseau</a> logiciel (network bridge).</li>
+<li><b>$I18N_VMName:</b> Le nom de la machine virtuelle est identique à celui du poste client m23 correspondant.</li>
+<li><b>$I18N_mac:</b> L'adresse MAC du poste client virtuel sera créée aléatoirement, vous pouvez la garder ou la changer (p. ex. si elle était déjà attribuée sur une des machines de votre réseau local)./li>
+<li><b>$I18N_memory:</b> La taille de la mémoire vive (RAM) de votre poste client m23 virtuel devrait être choisi raisonnablement afin qu'assez de mémoire reste pour les autres applications actives et les éventuelles autres machines virtuelles.</li>
+<li><b>$I18N_harddisk:</b> La taille (maximale) du disque dur virtuel.</li></ul>
+Finalement, cliquez sur <i>&laquo;$I18N_create&raquo;</i>.</li>
+<li>Après la création réussie de la VM, vous devez <b>absolument</b> cliquer sur <i>&laquo;&gt; &gt; &gt; $I18N_add_client &lt; &lt; &lt;&raquo;</i>, sinon la machine virtuelle ne deviendra pas un poste client m23 et la VM ne pourra être gérée par m23. Toute erreur du logiciel de virtualisation pendant la création du poste client s'affichera dans l'encadré rouge.</li>
+</ol>
+
+<u>Concerne le système hôte de la machine virtuelle</u>
+L'hôte m23 client requière l'installation préalable du paquet logiciel de virtualisation m23 <i>&laquo;m23VirtualBox&raquo;</i> afin de pouvoir créer et héberger les clients virtuels m23. Vous trouverez ce paquet sous <i>&laquo;$I18N_special_packages&raquo;</i> dans le dialogue d'installation des paquets (<i>$I18N_packages</i> &rarr; <i>$I18N_install</i>) sous l'interface d'administration m23. Il peut être installé sur tous postes client m23.
+
+Toutes les machines virtuelles se partageant les ressources d'un ordinateur physique donné, gardez bien en tête que le système hôte accueillant ces machines virtuelles doit disposer d'une taille de disque dur, de mémoire vive et de ressources processeur (CPU) suffisantes. 
+
+<u>Mémoire vive, disque dur et processeur (CPU)</u>
+La mémoire assignée à une machine virtuelle sera soustraite à la mémoire physique du système hôte lorsque la VM du client m23 virtuelle est démarrée. Chaque poste client virtuel possède un disque dur virtuel sous forme d'un fichier très petit au début mais grandissant au fil de l'avancement de l'activité et ce jusqu'a la taille limite du disque dur paramétrée. Les applications exécutées dans une machine virtuelle seront moins efficientes que celles hébergées directement sur l'ordinateur. 
+

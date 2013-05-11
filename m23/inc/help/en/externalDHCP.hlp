@@ -1,0 +1,43 @@
+Using m23 with an external DHCP server<!--new v10.3-->
+Scenario: There is an existing DHCP server in your network, that distributes network settings (IP, netmask, ...) to all your computers and an m23 server, that should install the clients.
+
+Problem: The installation of the m23 clients doesn't work, because the other DHCP server assigns the network settings faster that the m23 server.
+
+Reason: The m23 server needs to assign the IP and other network settings to let the client boot and install via the network. If these settings are distributed by another DHCP server, the client cannot find the m23 server, cannot download the network bootimage and cannot be installed. This cannot be changed generally, because there are standards in the network and boot protocols, that define a standardised network booting procedure.
+
+<h3>The other DHCP server can be deactivated</h3>
+Solutions:
+<ul>
+	<li>Disable the other DHCP server for the MAC addresses of the clients you want to install (at least) during the operating system installation.</li>
+	<li>Or: Reconfigure the DHCP server to make it send its network settings with a delay of 2 seconds, to give the m23 server the chance for answering earlier.</li>
+	<li>Or: Deactivate the other DHCP server during the operating system installation with m23.</li>
+</ul>
+
+<h3>The other DHCP server CANNOT be deactivated</h3>
+In this case you need to adjust the configuration of the other DHCP server manually and set up a TFTP server if necessary. Have a look into the documentation of your DHCP and TFTP servers for correct configuration.
+
+<ol>
+	<li>Choose <i>"gPXE/DHCP"</i> at <i>"$I18N_boottype"</i> when adding a new client in the m23 webinterface. Assign the computer name the DHCP server will give to the client at <i>"$I18N_client_name"</i>.</li>
+
+	<li>Configure the DHCP server to send the same client name, that was entered in the m23 webinterface, to the m23 client.</li>
+
+<!--cha v13.1 -->
+	<li>The PXE kernel name the DHCP server transfers to the client needs to be <b>pxelinux.0</b>. TFTP server is the m23 server.</li>
+
+	<li>The DHCP server must send the following kernel parameters to the m23 client:
+		<pre>m23clientID="<b>&lt;m23 client number&gt;</b>" m23server="<b>&lt;m23 server hostname or IP&gt;</b>" devfs=nomount vga=normal load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=<b>45000</b> initrd=initrd.gz root=/dev/ram0 rw</pre>
+		Replace <b>&lt;m23 client number&gt;</b> with the number of the m23 client (you can find this number under <i>"$I18N_overview_clients"</i> in the URL of the particular client) and <b>&lt;m23 server hostname or IP&gt;</b> with the computer name (resolvable by the m23 client) (<a href="http://en.wikipedia.org/wiki/Fully_qualified_domain_name">FQDN</a>) or the IP of the m23 server. In addition, you may need to adjust <b>45000</b> with the current value from the file /m23/inc/kernelRamDisk.inc.
+	</li>
+<!--cha v13.1 end-->
+
+	<li>You may need to set up a TFTP server on the same machine as your DHCP server, if you cannot configure the DHCP to let the m23 clients download the boot files from the m23 server. You can take the files from the directory /m23/tftp/ as basis for your configuration.</li>
+</ol>
+
+<!--new v13.1 -->
+<h3>Proxy DHCP</h3>
+Maybe it could be helpful for your setup to use <a href="http://en.wikipedia.org/wiki/Preboot_Execution_Environment#Proxy_DHCP">Proxy DHCP</a>.
+<!--new v13.1 end -->
+
+<div align="right">
+	<b>Please visit the (German) <a href="http://www.goos-habermann.de/index.php?s=Entwicklung#Support">Support für m23, Linux und OpenSource von goos-habermann.de</a>, if you need commercial support for set up and configuration of m23 or other OpenSource components.</b>
+</div>

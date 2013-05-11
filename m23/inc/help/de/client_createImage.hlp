@@ -1,0 +1,19 @@
+$I18N_createImage<!--V 1.11 new-->
+
+Mit diesem Dialog können Sie Dateiabbilder von Partitionen oder ganzen Laufwerken eines Clients erstellen, die Sie anschließend zum Installieren von anderen Clients nutzen können. Wählen Sie dazu das gewünschte $I18N_imageFormat, den $I18N_imageTransferType und die $I18N_imageCompression aus. Je nach $I18N_imageFormat müssen Sie bei <i>"$I18N_imageSource"</i> zusätzliche Angaben machen, z.B. die Partition oder das komplette Laufwerk, das in der Abbilddatei gespeichert werden soll.
+Wählen Sie dann einen Namen für die Datei und tragen ihn unter <i>"$I18N_imageName"</i> ein. Klicken Sie anschließend auf <i>"$I18N_createImage"</i>.
+
+<!--V11.4 begin--><u><b>Achtung</b></u>
+Der Client wird vor dem Anlegen des Abbildes und direkt nach dem Klick auf <i>"$I18N_createImage"</i> <b>neu gestartet</b>! Nicht gespeicherte <b>Daten gehen somit verloren</b>.<!--V11.4 end-->
+
+<u>Hinweis zu den Abbilddateien</u>
+Die Dateien werden im Verzeichnis <b>/m23/data+scripts/clientImages</b> abgelegt und können in verschiedenen Formaten und mit anderen Verfahren komprimiert werden, sind aber immer nach dem gleichen Dateinamenschema aufgebaut: &lt;Abbildname&gt;&lt;Größe des entpackten Abbildes in Bytes&gt;&lt;Abbildformat&gt;&lt;Kompression&gt;
+Hierbei kann das Abbildformat folgendes sein:
+<ul><LI><a href="index.php?page=manViewer&manPage=dd" target="_blank"><b>dd</b></a>: Speichert die kompletten Daten einer Partition oder Festplatte</LI></ul>
+Für die Kompression sind folgende Werte gültig:
+<ul><LI> (keine Kompressionsendung): Die Abbilddatei ist nicht komprimiert.</LI>
+<LI><a href="index.php?page=manViewer&manPage=gzip" target="_blank"><b>gz</b></a>: Komprimiert mit dem Programm gzip.</LI>
+<LI><a href="index.php?page=manViewer&manPage=bzip2" target="_blank"><b>bz2</b></a>: Komprimiert mit dem Programm bzip2 und komprimiert meist stärker.</LI></ul>
+
+<u>Hinweis zum $I18N_transferPort</u>
+Für den $I18N_imageTransferType müssen Sie zusätzlich einen Netzwerk-Port angeben, der auf Client- und Serverseite verwendet werden kann und nicht durch eine Firewall etc. geblockt ist. Möchten Sie mehrere Abbilder gleichzeitig erstellen, so müssen Sie unterschiedliche Ports wählen.

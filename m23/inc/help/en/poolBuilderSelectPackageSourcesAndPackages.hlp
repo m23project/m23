@@ -1,0 +1,19 @@
+$I18N_poolBuilder (Select package sources and packages)<!--v1.9 new-->
+
+Here you can chosse the originating package source for your packages. This is done in two steps:
+<ol><LI>You should select packages sources at first.
+helpInclude("sourceslistEditor.inc");
+
+Activated lists will be shown in the <i>"$I18N_packageSources"</i>-window.</LI>
+<li>Using the lower part you can add a blank-seperated list of packages you wish to use for this pool.
+<ul><LI><b>Load / Delete:</b> If you have already created a list you can choose it in <i>"Package list"</i> and then you can either load it by clicking <i>"$I18N_load"</i> or remove it by clicking <i>"$I18N_delete"</i>.</LI>
+<!--v1.10 begin--><LI><b>$I18N_add</b>: By clicking on <i>"$I18N_add"</i> you can add pages from the selected  package to the list loaded in the editor.<!--v1.10 end-->
+<LI><b>$I18N_save</b>: Enter a name in <i>"$I18N_packageList"</i> and hit  <i>"Save"</i> for saving your currently edited package list.</LI>
+<LI><b>$I18N_addPackagesFromClient</b>: This option maybe extremely useful for those who like to get a package list from a previously installed client. To add all the packages from a certain client choose this client (you will only see clients which have packages installed) and hit <i>"$I18N_add"</i>. You can even add packages from more than one client - multiple selected packages will only be added once.</LI>
+</ul></li>
+<!--v1.10 begin--><li>All packes needed for installing the base system (expect the kerne) are downloaded if you activate the option <i>"$I18N_downloadBasePackages"</i>.</li><!--v1.10 end-->
+<li>To finish this step hit <i>"$I18N_nextStep ($I18N_poolStep[3download])".</i></li>
+</ol>
+
+<u>Hint</u>
+You definitely need to take care of chosing a sensible combination of package source lists and packages. To asure a working download you can e.g. use a package source list and packages of an already installed client.

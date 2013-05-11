@@ -1,0 +1,87 @@
+
+Template: etckeeper/commit_failed
+Type: error
+Description: Commit failed
+ An attempt to commit /etc changes to ${VCS} failed.
+ .
+ You may manually resolve the issues with the uncommitted changes
+ before continuing.
+Description-cs.UTF-8: Zápis selhal
+ Pokus o zapsání změn v /etc do ${VCS} selhal.
+ .
+ Před pokračováním byste měli ručně vyřešit problémy s nezapsanými změnami.
+Description-de.UTF-8: Übergabe (commit) fehlgeschlagen
+ Ein Versuch, die Änderungen an /etc an ${VCS} zu übergeben, schlug fehl.
+ .
+ Sie können das Problem mit den nicht-übergebenen Änderungen manuell beheben, bevor Sie fortfahren.
+Description-es.UTF-8: El envío de los cambios ha fallado
+ Ha fallado un intento de enviar los cambios en «/etc» a ${VCS}.
+ .
+ Puede resolver manualmente los problemas con los cambios que no se han enviado antes de continuar.
+Description-eu.UTF-8: Onarpenak failatu du
+ /etc-ko aldaketak ${VCS}-en onartzearen saiakerak huts egin du.
+ .
+ Aurrera jarraitu baino lehen, eskuz erresolbitu beharko ditu onartu gabeko aldaketak.
+Description-fi.UTF-8: Tallettaminen epäonnistui
+ Yritys tallettaa /etc:n muutokset ${VCS}-varastoon epäonnistui.
+ .
+ Voit selvittää tallettamattomien muutosten ongelmat käsin ennen jatkamista.
+Description-fr.UTF-8: Échec de la synchronisation
+ La tentative d'enregistrement (« commit ») des modifications de /etc vers ${VCS} a échoué.
+ .
+ Avant de poursuivre, vous devriez résoudre vous-même les problèmes liés aux changements non sauvegardés.
+Description-gl.UTF-8: O gardado fallou
+ Fallou unha tentativa de gardar en ${VCS} os cambios de /etc.
+ .
+ configurar apt para que instale paquetes adicionais do CD.<
+Description-it.UTF-8: Commit fallito
+ Il tentativo di commit delle modifiche in /etc a ${VCS} è fallito.
+ .
+ Potrebbe essere necessario risolvere manualmente i problemi con le modifiche delle quali non è stato fatto il commit prima di continuare.
+Description-ja.UTF-8: コミットに失敗しました
+ /etc の変更を ${VCS} にコミットしようとしましたが失敗しました。
+ .
+ 続ける前に、この問題とコミットされていない変更について、手動で解決する必要があるでしょう。
+Description-nl.UTF-8: Vastleggen is mislukt.
+ De poging om de aanpassingen in '/etc' vast te leggen in ${VCS} is mislukt.
+ .
+ U kunt de problemen met de niet-vastgelegde aanpassingen handmatig oplossen alvorens verder te gaan.
+Description-pt.UTF-8: Submissão falhou
+ A tentativa de submeter as alterações de /etc ao ${VCS} falhou.
+ .
+ Você pode resolver manualmente as situações com as alterações não submetidas antes de continuar.
+Description-ru.UTF-8: Фиксация завершилась неудачно
+ Попытка зафиксировать изменения /etc в ${VCS} завершилась неудачно.
+ .
+ Перед тем как продолжить вы можете вручную исправить положение с незафиксированными изменениями.
+Description-sv.UTF-8: Verkställning misslyckades
+ Ett försök att verkställa ändringar i /etc i ${VCS} misslyckades.
+ .
+ Du kan lösa problemen med de overkställda ändringarna manuellt innan du fortsätter.
+
+Template: etckeeper/purge
+Type: boolean
+Default: true
+Description: Remove etckeeper ${VCS} repository and associated files?
+ Etckeeper is being purged from the system, and was used to
+ store /etc in a ${VCS} repository. If you choose to remove the
+ repository, this will DESTROY all history etckeeper has recorded
+ for /etc.
+Description-cs.UTF-8: Odstranit ${VCS} repositář etckeeperu a přidružené soubory?
+ Etckeeper se na tomto systému používal pro uchování /etc v ${VCS} repositáři, avšak nyní je ze systému odstraňován. Pokud povolíte odstranění repositáře, ZNIČÍTE tím veškerou historii, kterou etckeeper uchovával.
+Description-de.UTF-8: Das ${VCS}-Depot von Etckeeper und die zugehörigen Dateien entfernen?
+ Etckeeper wurde zum Speichern von /etc in einem ${VCS}-Depot verwandt und wird jetzt vollständig vom System gelöscht. Falls Sie entscheiden, das Depot zu entfernen, wird dies den Verlauf, den Etckeeper für /etc aufgezeichnet hat, ZERSTÖREN.
+Description-es.UTF-8: ¿Desea eliminar el repositorio ${VCS} de etckeeper y los ficheros asociados?
+ Se está eliminando completamente etckeeper de su sistema. Etckeeper se ha utilizado para almacenar el directorio «/etc» en un repositorio ${VCS}. Si elige eliminar el repositorio, se DESTRUIRÁ todo el historial que etckeeper ha guardado para «/etc».
+Description-fr.UTF-8: Faut-il supprimer le référentiel ${VCS} d'etckeeper et les fichiers associés ?
+ Etckeeper est purgé du système, et était utilisé pour stocker /etc dans un référentiel ${VCS}. Si vous choisissez de supprimer ce référentiel, cela va DÉTRUIRE tout l'historique qu'etckeeper a enregistré pour /etc.
+Description-it.UTF-8: Eliminare il repository ${VCS} di etckeeper e i file associati?
+ Etckeeper sta per essere completamente rimosso dal sistema, è stato usato per memorizzare il contenuto di /etc in un repository ${VCS}. Nel caso si scelga di eliminare il repository, si DISTRUGGE tutta la storia di /etc registrata da etckeeper.
+Description-ja.UTF-8: etckeeper の$ {VCS} リポジトリおよび関連ファイルを削除しますか?
+ Etckeeper はシステムから完全に削除されようとしており、/etc の保存には ${VCS} リポジトリを利用していました。リポジトリを削除すると、/etc について etckeeper が記録してた全ての履歴は「破壊」されます。
+Description-pt.UTF-8: Remover o repositório ${VCS} do etckeeper e os ficheiros associados?
+ O etckeeper está a ser purgado do sistema, e foi usado para guardar o /etc num repositório ${VCS}. Se escolher remover o repositório, isto irá DESTRUIR todo o histórico que o etckeeper guardou de /etc.
+Description-ru.UTF-8: Удалить репозиторий etckeeper ${VCS} и связанные с ним файлы?
+ Etckeeper вычищается из системы, но использовался для хранения каталога /etc в репозитории ${VCS}. Если вы выберете удаление репозитория, то это УНИЧТОЖИТ всю историю, которую etckeeper вёл для /etc.
+Description-sv.UTF-8: Ska ${VCS}-förrådet för etckeeper och alla tillhörande filer tas bort?
+ Etckeeper håller på att tas bort från systemet, användningsområdet för etckeeper är att spara /etc i ett ${VCS}-förråd. Om du väljer att ta bort förrådet kommer all historik för /etc att raderas.

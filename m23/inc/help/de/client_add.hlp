@@ -1,0 +1,44 @@
+Client hinzufügen
+(mit * gekennzeichnete Felder müssen auf jeden Fall korrekt ausgefüllt werden)
+
+<ul>
+<li><b>$I18N_preferences:</b> Sie können bereits gespeicherte Konfigurationen auswählen und anschließend laden oder löschen. Möchten Sie die aktuelle Konfiguration speichern, geben Sie einen aussagekräftigen Namen ein und klicken auf <i>"$I18N_save"</i>.</li>
+<!-- 1.10 begin--><li><b>$I18N_language:</b>Hier können Sie die Sprache für Ihren m23-Client auswählen. Diese Sprache wird für die Tastatur-, Desktop- und Konsolen-Einstellung verwendet.</li>
+<li><b>$I18N_login_name:</b> Der Name mit dem sich der Benutzer beim Client anmeldet.</li><!-- 1.10 end-->
+<li><b>$I18N_client_name:</b> Ist der einmalige Name Ihres Clients, dieser sollte nicht mehrfach verwendet werden.</li>
+<li><b>$I18N_office:</b> Diese Angabe ist freiwillig, hier können Sie eintragen, wo sich der Rechner befindet (z.B. Raumnummer etc.).</li>
+<li><b>$I18N_forename:</b> Vorname des Benutzers, entspricht dem Loginnamen</li>
+<li><b>$I18N_familyname:</b> Nachname des Benutzers</li>
+<li><b>eMail:</b> eMail-Adresse des Benutzers</li>
+<!-- V1.2 --><li><b>$I18N_boottype:</b> Bootstandard für das Booten der Clients über das Netzwerk <!-- 10.3 begin-->(Hinweis: Falls Sie m23 mit einem vorhanden DHCP-Server verwenden möchten, lesen Sie bitte folgende Seite: <m23help>externalDHCP</m23help>)<!-- 10.3 end--></li>
+<!-- V1.19 begin--><li><b>$I18N_bootloader:</b> Wählen Sie hier, welchen <a href="http://de.wikipedia.org/wiki/Bootloader" target="_blank">Bootloader/Bootmanager/Urlader</a> Sie zum Starten des Linux-Kernels und evtl. anderen, bereits installierten Betriebssystemen verwenden möchten. Sie haben die Wahl zwischen <a href="http://de.wikipedia.org/wiki/LILO" target="_blank">LILO</a> (LInux LOader) und <a href="http://de.wikipedia.org/wiki/GRUB" target="_blank">GRUB</a> (GRand Unified Bootloader).
+<!-- V1.20 begin--><br><u>Hinweis</u><br>
+Alle mit m23 0.6.4 oder höher installierten Clients beinhalten einen Paßwortschutz, der das Editieren der Bootparameter verhindert. Zum Freischalten der Bootmanager-Editierfunktion ist die Eingabe des Netzwerkbootpaßwortes nötig. Dies kann im Kontrollzentrum unter <i>"$I18N_client_directConnect"</i> abgefragt werden.<!-- V1.20 end--></li><!-- V1.19 end-->
+<!-- V1.16 --><li><b>$I18N_arch:</b> Wahl ob 32- oder 64-bittige Software auf dem Client installiert werden soll. Sehen Sie hierzu auch den Hinweis unten auf der Seite.</li>
+<li><b>$I18N_mac:</b> MAC-Adresse der Client-Netzwerkkarte (z.B. 00D0B723865C)</li>
+<li><b>$I18N_ip:</b> gewünschte IP-Adresse des Clients (z.B. 192.168.1.23)</li>
+<li><b>$I18N_netmask:</b> Netzwerkmaske des Netzwerkes (z.B. 255.255.255.0)</li>
+<li><b>$I18N_gateway:</b> Gateway-IP für Internet- oder andere Verbindungen außerhalb des Netzwerkes</li>
+<li><b>DNS1:</b> IP-Adresse des DNS-Servers zum Auflösen der Internetnamen</li>
+<li><b>DNS2 (optional):</b> IP des Backup-DNS-Servers</li>
+<!-- V1.4 --><li><b>$I18N_packageProxy:</b> Der Client versucht die Softwarepakete von der angegebenen Proxy-Server-IP zu beziehen. Im Standardfall ist dies die IP des m23-Servers, alternativ kann auch ein anderer Proxy-Server angegeben werden. Wenn das Feld leer gelassen wird, so lädt der Client die Softwarepakete aus dem Internet herunter. Geben Sie bitte auch die Port-Addresse der Proxy-Servers an. Beim m23-Server ist dies der Port 2323. Wird der <i>"$I18N_add_client"</i>-Dialog geöffnet, so ist der m23-Server als Proxy voreingestellt.</li>
+<li><b>$I18N_group (optional):</b> Angabe der Clientgruppe für den Client</li>
+<li><b>$I18N_userpassword:</b> Es wird standardmäßig ein 6-stelliges Zufallspaßwort erstellt, das für den ersten Login auf dem Client benutzt wird. Sie können aber auch ein anderes Passwort vorgeben.</li>
+<li><b>$I18N_rootpassword:</b> Es wird standardmäßig ein 8-stelliges Zufallspaßwort erstellt, das für den Root-Zugang auf dem Client benutzt wird. Sie können aber auch ein anderes Passwort vorgeben.</li>
+<!-- 1.11 begin--><li><b>$I18N_timeZone:</b> Hier können Sie die Zeitzone festlegen, die von Client benutzt werden soll.</li>
+<li><b>$I18N_getSystemtimeByNTP:</b> Setzen Sie diese Option, wenn Sie wünschen, daß die Uhrzeit des Clients beim Systemstart über das Internet abgeglichen werden soll.</li>
+<li><b>$I18N_installPrinterDriversAndDetectPrinter:</b> Wenn Sie diese Option wählen, werden Druckertreiber auf dem Client installiert sowie angeschlossene Drucker erkannt.</li><!-- 1.11 end--><!-- 1.10 begin-->
+<li><b>$I18N_addNewLocalLogin:</b>Setzen Sie hier einen Haken, um die lokale Benutzeranmeldung des Clients zu verwenden.</li>
+<li><b>$I18N_dontUseLDAP</b>: Um nur die lokale Benutzeranmeldung des Clients zu verwenden, wählen Sie <i>"$I18N_dontUseLDAP"</i>.</LI> 
+<li><b>$I18N_readLoginFromLDAP</b>: Wünschen Sie hingegen, die bereits in einen LDAP-Server eingetragene Benutzerauthentifizierungsdaten zu nutzen, klicken Sie auf <i>"$I18N_readLoginFromLDAP"</i>.</LI>
+<li><b>$I18N_addNewLoginToLDAP</b>: Wollen Sie hingegen die oben angegebenen Benutzerdaten in die LDAP-Datenbank des m23-Servers eintragen und für Clientlogins nutzen, so wählen Sie <i>"$I18N_addNewLoginToLDAP"</i>. Bei Auswahl dieser Option ist ein LDAP-Server mit Vollzugriff erforderlich, da die oben angegebenen Benutzerdaten auf dem LDAP geschrieben werden.</LI>
+<li><b>$I18N_userID, $I18N_groupID</b>: Zusätzlich müssen Sie die <i>"$I18N_userID"</i> und <i>"$I18N_groupID"</i> für den Benutzer auswählen. Dies ist insbesondere wichtig, wenn Sie NFS für das Speichern der Heimatverzeichnisse verwenden wollen.</LI>
+<li><b>$I18N_LDAPServerName</b>: Zuletzt müssen Sie einen LDAP-Server aus der Auswahlliste bei <i>"$I18N_LDAPServerName"</i> auswählen. Sollte der gewünschte LDAP-Server nicht vorhanden sein, so können Sie ihn durch einen Klick auf <i>"$I18N_manageLDAPServers"</i> hinzufügen.</LI>
+<li><b>$I18N_homeOnNFS:</b> Diese Option sorgt dafür, daß die Benutzerdaten auf einem zentralen NFS-Server gespeichert werden, sodaß auf diese (in Kombination mit LDAP) von jedem Client aus zugegriffen werden kann. Um NFS zu aktivieren, geben Sie den Rechnernamen bzw. die IP-Adresse und den Pfad zum Speichern der Heimatverzeichnisse an z.B. <code>192.168.1.42/nfs/home</code>.</li><!-- 1.10 end-->
+</ul>
+
+<u>Hinweis:</u>
+<!-- V1.2 -->Nach dem Anlegen startet der Client, durchläuft eine Hardwareerkennungssequenz, in der Informationen wie Größe der verwendeten Festplatte etc. an den Server gesendet werden. Nach Abschluß des Datentransfers wechselt der Client auf Status <i>"gelb"</i> und Sie können den Client einrichten. Klicken Sie dazu im Menü auf <i>"$I18N_clients"</i> &rarr; <i>"$I18N_setup"</i>.
+
+<!-- begin V1.16 --><u>Hinweis zur Rechnerarchitektur</u>
+m23 unterstützt nativ 32- und 64-bittige Rechner. Eine 32-Bit Distribution kann auch auf einem 64-Bit Rechner installiert werden. Umgekehrt ist dies allerdings nicht möglich. Um das volle Potential einer vorhandenen 64-Bit-CPU auszunutzen, sollten Sie <i>"amd64"</i> auswählen. Unter <i>"amd64"</i> fallen nicht nur die CPUs von AMD sondern auch die von Intel. Beispielhaft seien hier die Intel-CPUs Pentium D, Pentium Extreme Edition, Celeron D und Core 2 sowie die AMD-CPUs AMD Sempron, Athlon 64, Athlon X2 und Phenom genannt.<!-- end V1.16 -->

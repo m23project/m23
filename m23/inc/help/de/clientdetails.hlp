@@ -1,0 +1,17 @@
+Kontrollzentrum<!--new v1.6-->
+Das Kontrollzentrum gibt Ihnen Zugriff auf die Informationen des Clients und bietet umfangreiche Administrationswerkzeuge.
+
+<!-- v11.5 begin--><u>Hinweis zur Virtualisierung</u>
+m23 enthält die Virtualisierungslösung <a href="http://de.wikipedia.org/wiki/Virtualbox">VirtualBox-OSE</a>, mit der auf m23-Clients oder dem m23-Server virtuelle m23-Clients angelegt und verwaltet werden können.
+
+<u>Virtuellen m23-Client starten, anhalten und stoppen</u>
+Handelt es sich bei diesem m23-Client um einen Client, der mit der in m23 enthaltenen VirtualBox-OSE-Virtualisierung angelegt wurde, so können Sie diesen direkt aus der m23-Oberfläche heraus starten, anhalten und stoppen.
+
+Sie haben hierbei die Wahl zwischen zwei verschiedenen Betriebsarten. Beim "<b>Modus ohne Anzeige</b>" (dem sogenannten <a href="http://de.wikipedia.org/wiki/Headless">Headless-Modus</a>) sehen Sie keine Ausgabe des virtuellen Bildschirmes. Diesen Modus starten Sie mit einem Klick auf <i>"$I18N_VMstart"</i>. Je nach installierten <a href="http://de.wikipedia.org/wiki/Daemon">Daemons</a> haben Sie aber anderweitig Zugriff auf das virtuelle System.
+
+m23 bietet auch einen <b>grafischen Modus</b>, bei dem Sie ab dem Booten der VM Zugriff auf diese haben. Nach einem Klick auf <i>"$I18N_VMstartVisual"</i> startet die VM und öffnet einen <a href="http://de.wikipedia.org/wiki/Vnc">VNC-Server</a>, auf den Sie mit einem VNC-Client zugreifen können. Die Zugangsdaten finden Sie in den <i>"$I18N_client_information"</i> in der Kategorie <i>"$I18N_virtualisation"</i> in den beiden Eigenschaften <i>"$I18N_VMVisualURL"</i> und <i>"$I18N_VMVisualPassword"</i>. Je nach Geschwindigkeit des Virtualisierungs-Gastgebers kann es etwas dauern, bis die Werte angezeigt werden. Klicken Sie gegebenenfalls mehrmals auf <i>"$I18N_refresh"</i>. Durch einen Klick auf <i>"$I18N_startVNCApplet"</i> können Sie den </a> "<a href="http://www.tightvnc.com/">TightVNC Java Viewer</a>" öffnen (sofern <a href="http://de.wikipedia.org/wiki/Java-Applet">Java</a> in Ihrem Browser installiert ist) und so direkt aus dem Browser auf den virtuellen m23-Client zugreifen. Auch beim Applet kann es etwas dauern, bis der Link erscheint. Klicken Sie hier auch gegebenenfalls mehrmals auf <i>"$I18N_refresh"</i>.
+
+Um eine VM anzuhalten, klicken Sie auf <i>"$I18N_VMpause"</i>, um die Virtualisierung abzubrechen auf <i>"$I18N_VMstop"</i>.
+
+<u>VM-Gastgeberrechner einrichten</u>
+Möchten Sie diesen m23-Client als Gastgeberrechner für virtuelle m23-Clients nutzen, so klicken Sie auf <i>"$I18N_VMinstallVMServerSW"</i>. Die Virtualisierungssoftware wird (sofern für die Client-Distribution verfügbar) auf dem m23-Client installiert und dieser in die Liste der VM-Gastgeberrechner aufgenommen. Nach erfolgter Installation können Sie auf diesem mittels des Menüeintrages <i>"$I18N_createVM"</i> virtuelle m23-Clients einrichten und starten.<!-- v11.5 end-->

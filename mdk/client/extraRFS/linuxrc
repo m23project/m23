@@ -1,0 +1,137 @@
+#!/bin/sh
+/bin/mount /proc
+/bin/MAKEDEV
+
+#Disable screensaver
+setterm -blank 0
+
+#Do hardware detection via hwsetup
+/bin/hwsetup -p
+dataVersion=`uname -r`
+
+#Make sure we have an empty status file
+rm /tmp/moduleLoad.status 2> /dev/null
+touch /tmp/moduleLoad.status
+
+dialog --backtitle "m23 hardware detection" --title "Module testing" --clear --tailbox /tmp/moduleLoad.status 10 50&
+
+#Set to no output
+echo 0 > /proc/sys/kernel/printk
+
+#Do hardware detection via discover
+for moduleOption in usbhid `discover --data-path=linux/module/name --data-path=linux/module/options --format="%s %s" --data-version="$dataVersion" 2> /dev/null | grep -E -v '^ *$' | sort -u`
+do
+	#get the name of the module: split from the options
+	moduleName=`echo $moduleOption | cut -d' ' -f1`
+
+	#only load it if it is not already loaded
+	if [ `lsmod 2> /dev/null | grep $moduleName -c` -eq 0 ]
+	then
+		echo "Loading: $moduleOption" >> /tmp/moduleLoad.status
+		modprobe $moduleOption 2>&1 | cat >> /tmp/moduleLoad.status
+	fi
+done
+
+#Check if there are specified modules in kernel parameter m23modules and load them
+if [ $m23modules ]
+then
+	for module in $m23modules
+	do
+		echo "Loading: $module" >> /tmp/moduleLoad.status
+		modprobe $module 2>&1 | cat >> /tmp/moduleLoad.status
+	done
+fi
+
+#Close the dialog and clear the screen
+killall -1 dialog 2> /dev/null
+
+#Make the console working again after killing dialog
+reset
+
+touch /var/run/utmp
+
+#Activate all ethernet interfaces
+for i in `seq 0 9`
+do
+/bin/ifconfig eth$i 1.1.1.$i 2> /dev/null
+done
+
+#Show the MAC adress(es)
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo "MAC addresses"
+ifconfig | grep eth
+echo "Press Ctrl+C if the output is too fast"
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
+#Configure via DHCP
+/bin/dhclient
+
+#Stop dhclient to make sure that the IP configuration will not be changed during installation
+for dhClientPID in `ps -A | grep dhclient | tr -s [:blank:] | cut -d' ' -f2`
+do
+	kill -9 $dhClientPID
+done
+
+killall -9 dhclient
+
+#Configure random as non blocking random
+mv /dev/random /dev/random-blocks
+ln -s /dev/urandom /dev/random
+
+if [ $m23server ]
+then
+	server=$m23server
+
+	#Check if the hostname is a valid m23shared client ID
+	if [ `hostname | grep -c "^m23S"` -gt 0 ]
+	then
+		m23Client="?m23clientID=`hostname`"
+		echo `hostname` > /m23clientID
+	else
+		#Check if the ID of the m23 client was choosen by the m23clientID kernel parameter.
+		if [ $m23clientID ]
+		then
+			id=$m23clientID
+		else
+			repeat=true
+
+			#Repeat reading the client name until a valid name is entered
+			while $repeat
+			do
+				dialog --backtitle "m23@web" --title "Clientname" --clear --inputbox "Please enter the complete m23 client ID of this client:
+Bitte geben Sie die komplette m23-Client-Nummer dieses Rechners ein:" 10 75 m23S 2> /tmp/m23sClName
+	
+				ret=$?
+	
+				#Check if the return code of dialog is ok, the clien name begins with the keyword and has a dot.
+				if [ $ret -eq 0 ] && [ `grep -c ^m23S /tmp/m23sClName` -eq 1 ] && [ `grep -c '\.' /tmp/m23sClName` -eq 1 ]
+				then
+					repeat=false
+				fi
+			done
+
+			id=`cat /tmp/m23sClName`
+		fi
+
+		m23Client="?m23clientID=$id"
+		echo $id > /m23clientID
+	fi
+else
+	#Get the server via DHCP log
+	for i in `grep dhcp-server-identifier /var/lib/dhcp/dhclient.leases | cut -d' ' -f5 | cut -d';' -f1`
+	do
+		server=$i
+	done
+fi
+
+#Download and execute debug commands
+wget --no-check-certificate https://$server/debugScreen.php$m23Client -O debug.sh
+chmod +x debug.sh
+./debug.sh
+
+#Download the first job
+wget --no-check-certificate https://$server/work.php$m23Client -O work.php
+chmod +x work.php
+
+export SCREENRC="/etc/screenrc"
+screen -mS m23install ./work.php

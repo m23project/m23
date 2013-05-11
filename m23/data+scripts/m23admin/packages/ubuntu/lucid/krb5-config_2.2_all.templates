@@ -1,0 +1,202 @@
+Template: krb5-config/title
+Type: title
+Description: Configuring Kerberos Authentication
+Description-cs.UTF-8: Nastavení autentizace systému Kerberos
+Description-de.UTF-8: Konfiguration der Kerberos-Authentisierung
+Description-es.UTF-8: Configurando la autenticación de Kerberos
+Description-fr.UTF-8: Configuration de l'authentification Kerberos
+Description-gl.UTF-8: A configurar a autenticación en Kerberos
+Description-it.UTF-8: Configurazione dell'autenticazione Kerberos
+Description-ja.UTF-8: ケルベロス認証を設定します
+Description-pt.UTF-8: Configuração da Autenticação Kerberos
+Description-ru.UTF-8: Настройка аутентификации Kerberos
+Description-sv.UTF-8: Inställningar för autentisering med Kerberos
+
+Template: krb5-config/default_realm
+Type: string
+Description: Default Kerberos version 5 realm:
+ When users attempt to use Kerberos and specify a principal or user name
+ without specifying what administrative Kerberos realm that principal
+ belongs to, the system appends the default realm.  The default realm
+ may also be used as the realm of a Kerberos service running on the
+ local machine.  Often, the default
+ realm is the uppercase version of the local DNS domain.
+Description-cs.UTF-8: Výchozí říše Kerbera verze 5:
+ Když se uživatelé pokusí použít Kerberos a zadají pouze uživatelské jméno nebo identifikátor bez určení říše, do které patří, systém za jméno připojí výchozí říši. Výchozí říše se dá také použít jako říše pro kerberos službu běžící na lokálním počítači. Obvykle to bývá lokální DNS doména zapsaná velkými písmeny.
+Description-de.UTF-8: Voreingestellter Realm für Kerberos Version 5:
+ Wenn Benutzer versuchen, Kerberos zu nutzen und einen Principal oder Benutzernamen angeben, ohne dabei festzulegen, zu welchem Kerberos-Administrationsbereich (Realm) dieser Principal gehört, dann fügt das System den voreingestellten Realm an. Der voreingestellte Realm kann auch als Realm eines Kerberos-Dienstes verwendet werden, der auf dem lokalen Rechner läuft. Der voreingestellte Realm ist die großgeschriebene Version der lokalen DNS-Domain.
+Description-es.UTF-8: Reino predeterminado de la versión 5 de Kerberos:
+ Cuando los usuarios intentan usar Kerberos y especifican un nombre principal o de usuario sin aclarar a qué dominio administrativo de Kerberos pertenece el principal, el sistema toma el reino predeterminado. El reino predeterminado también se puede utilizar como el reino de un servicio de Kerberos que se ejecute en la máquina local. Normalmente, el reino predeterminado es el nombre en mayúsculas del dominio del DNS local.
+Description-fr.UTF-8: Royaume (« realm ») Kerberos version 5 par défaut :
+ Quand les utilisateurs tentent d'utiliser Kerberos et indiquent un principal ou un identifiant sans préciser à quel royaume (« realm ») administratif Kerberos ce principal est attaché, le système ajoute le royaume par défaut. Le royaume par défaut peut également être utilisé comme royaume d'un service Kerberos s'exécutant sur la machine locale. Il est d'usage que le royaume par défaut soit le nom de domaine DNS local en majuscules.
+Description-gl.UTF-8: Reino predeterminado de Kerberos versión 5:
+ Cando os usuarios tentan empregar Kerberos e especifican un principal ou nome de usuario sen especificar o reino administrativo de Kerberos ao que pertence ese principal, o sistema engade o reino predeterminado. Este tamén pode empregarse como o reino dun servizo Kerbereos en execución na máquina local. Normalmente, o reino predeterminado é a versión en maiúsculas do dominio DNS local.
+Description-it.UTF-8: Realm predefinito per Kerberos versione 5:
+ Quando gli utenti cercano di usare Kerberos specificando un principal o un nome utente e senza indicare a quale realm amministrativo Kerberos appartengono, il sistema aggiunge il realm predefinito. Il realm predefinito potrebbe anche essere usato come realm di un servizio Kerberos in esecuzione sulla macchina locale. Spesso, il realm predefinito, è la versione in maiuscolo del dominio DNS locale.
+Description-ja.UTF-8: デフォルトのケルベロスバージョン 5 レルム:
+ 利用者がケルベロスを利用しようとするとき、プリンシパルやユーザ名の属するケルベロスの管理レルムを指定せずに使うと、そこにデフォルトのレルムが加えられます。デフォルトのレルムはローカルなマシン上のケルベロスサービスのレルムとしても使われるでしょう。多くの場合、デフォルトのレルムはローカルな DNS ドメインを大文字にしたものです。
+Description-pt.UTF-8: Reino por omissão do Kerberos versão 5:
+ Quando os utilizadores tentam usar o Kerberos e especificam um principal ou um nome de utilizador sem especificar a que reino administrativo Kerberos pertencem, o sistema assume o reino por omissão. O reino por omissão também pode ser usado como o reino de um serviço Kerberos que corra na máquina local. Muitas vezes, o reino por omissão é a versão em maiúsculas do domínio DNS local.
+Description-ru.UTF-8: Область по умолчанию для Kerberos версии 5:
+ Когда пользователи пытаются использовать Kerberos и указывают принципала или пользовательское имя без административной области Kerberos, которому принадлежит принципал, то система добавляет область по умолчанию. Область по умолчанию может также использоваться в качестве области службы Kerberos, запущенной на локальной машине. Часто, областью по умолчанию является имя локального домена DNS, записанное в верхнем регистре.
+Description-sv.UTF-8: Kerberos version 5 standardrealm
+ När användare försöker använda Kerbers och anger ett användarnamn utan att ange vilken administrativ Kerberos realm den tillhör så försöker systemet lägga till en standardrealm. Standardrealm kan också användas för tjänster på den lokala maskinen. Vanligen är standardrealm en versalversion av den lokala DNS-domänen.
+
+Template: krb5-config/read_conf
+Type: boolean
+Default: true
+Description: For internal use only
+ We want to try and capture user changes when they edit a config file
+ manually.  To do this, we look in the config script to read the file.
+ However, in the case of preconfigure, the config script is run twice
+ before the postinst is run.  Thus, we may read the wrong value before the
+ edited value is written out in postinst.  If this is false, we skip
+ reading config files until postinst runs.
+
+Template: krb5-config/add_servers_realm
+Type: string
+Description: for internal use
+
+Template: krb5-config/add_servers
+Type: boolean
+Default: false
+Description: Add locations of default Kerberos servers to /etc/krb5.conf?
+ Typically, clients find Kerberos servers for their default realm in
+ the domain-name system. ${dns} 
+Description-cs.UTF-8: Přidat umístění výchozích Kerberos serverů do /etc/krb5.conf?
+ Klienti typicky hledají Kerberos servery pro svou výchozí říši v DNS (doménovém jmenném systému). ${dns}
+Description-de.UTF-8: Die Standorte der voreingestellten Kerberos-Server zu /etc/krb5.conf hinzufügen?
+ Typischerweise finden Clients die Kerberos-Server für ihren voreingestellten Realm im Domain-Namen-System. ${dns}
+Description-es.UTF-8: ¿Desea añadir ubicaciones de los servidores predeterminados de Kerberos al archivo «/etc/krb5.conf»?
+ Normalmente, los clientes encuentran los servidores de Kerberos para su reino predeterminado mediante el sistema de nombres de dominio. ${dns}
+Description-fr.UTF-8: Ajouter les emplacements des serveurs Kerberos par défaut dans /etc/krb5.conf ?
+ Habituellement, les clients recherchent les serveurs Kerberos de leur royaume par défaut en utilisant le système de nom de domaine. ${dns}
+Description-gl.UTF-8: Desexa engadir as localizacións dos servidores Kerberos predeterminados a /etc/krb5.conf?
+ Xeralmente, os clientes achan os servidores Kerberos do reino predeterminado no sistema de nomes de dominio. ${dns}
+Description-it.UTF-8: Aggiungere i server Kerberos predefiniti in /etc/krb5.conf?
+ Solitamente i client trovano i server Kerberos del proprio realm predefinito tramite il DNS. ${dns}
+Description-ja.UTF-8: デフォルトのケルベロスサーバーの位置を /etc/krb5.conf に加えますか？
+ 大抵、クライアントはデフォルトのレルムのケルベロスサーバを DNS ${dns} で見つけます。
+Description-pt.UTF-8: Adicionar as localizações dos servidores por omissão a /etc/krb5.conf?
+ Tipicamente, os clientes encontram os servidores para o reino deles por omissão no sistema de nomes de domínios. ${dns}
+Description-ru.UTF-8: Добавить расположения серверов Kerberos по умолчанию в /etc/krb5.conf?
+ Обычно, клиенты находят серверы Kerberos для своей области по умолчанию в системе доменных имён. ${dns}
+Description-sv.UTF-8: Ska standardservrar för Kerberos läggas till i /etc/krb5.conf?
+ Vanligen hittar klienter till Kerberosservrar sin standardrealm i domännamnssystemet. ${dns}
+
+Template: krb5-config/no_dns
+Type: text
+Description: short description unused
+ However, the Kerberos servers for your realm do not appear to be
+ listed either in the domain-name system or the kerberos configuration
+ file shipped with Debian. You may add them to the Kerberos
+ configuration file or add them to your DNS configuration.
+Description-cs.UTF-8: Nepoužitý krátký popis
+ Nicméně se zdá, že Kerberos servery ve vaší říši nejsou uvedeny ani v DNS (doménovém jmenném systému) ani v konfiguračním souboru. Měli byste je přidat do konfiguračního souboru Kerbera, nebo do DNS.
+Description-de.UTF-8: Kurzbeschreibung nicht verwendet
+ Jedoch scheinen die Kerberos-Server für Ihren Realm weder im Domain-Namen-System noch in der Konfigurationsdatei für Kerberos, wie sie mit Debian installiert wurde, aufgeführt zu sein. Sie können sie zur Konfigurationsdatei von Kerberos oder zu Ihrer DNS-Konfiguration hinzufügen.
+Description-es.UTF-8: descripción corta sin utilizar
+ Sin embargo, los servidores de Kerberos para su reino no parecen estar ni en el sistema de nombres de dominio ni en el archivo de configuración de Kerberos que viene con Debian. Debería añadirlos al archivo de configuración de Kerberos o a su configuración del DNS.
+Description-fr.UTF-8: courte description inutilisée.
+ Cependant, les serveurs Kerberos du royaume utilisé par cette machine ne semblent pas être référencés dans le système de nom de domaine ou dans le fichier de configuration Kerberos fourni avec Debian. Vous devriez les ajouter au fichier de configuration Kerberos ou dans le DNS.
+Description-gl.UTF-8: descrición curta non empregada
+ Porén, os servidores Kerberos do seu reino non semellan estar nin na lista do sistema de nomes de dominio nin na do ficheiro de configuración de Kerberos fornecido en Debian. Pode engadilos ao ficheiro de configuración de Kerberos ou á configuración do DNS.
+Description-it.UTF-8: nessuno potrà mai leggere questo messaggio
+ Purtroppo i server Kerberos del proprio realm non sono elencati né nel DNS né nel file di configurazione di Kerberos fornito con Debian. È possibile aggiungerli al file di configurazione di Kerberos oppure alla configurazione del proprio DNS.
+Description-ja.UTF-8: 使われていない短かい叙述
+ しかし、あなたが使うレルムのケルベロスサーバーは DNS にも Debian のケルベロス設定ファイルにも記されてないようです。サーバーをケルベロスの設定ファイル、もしくは、あなたの DNS の設定に加えると良いでしょう。
+Description-pt.UTF-8: pequena descrição não utilizada
+ No entanto, os servidores Kerberos do seu reino não parecem estar listados nem no sistema de nomes de domínios nem no ficheiro de configuração que vem com o Debian. Você pode adicioná-los tanto ao ficheiro de configuração como à sua configuração de DNS.
+Description-ru.UTF-8: короткое описание не используется
+ Однако, кажется, серверы Kerberos вашей области не описаны, ни в системе доменных имён, ни в файле настройки kerberos, поставляемого в Debian. Вы можете добавить их в файл настройки Kerberos или в настройку DNS.
+Description-sv.UTF-8: kort beskrivning används ej
+ Det verkar dock som om servrar för din realm inte finns listade i vare sig domännamnssytemet eller i kerberos inställningsfiler som levereras med Debian. Du kan lägga till dem i Kerberos inställningsfil eller lägga till dem i DNS.
+
+Template: krb5-config/found_dns
+Type: text
+Description: short description unused
+ Servers for your realm were found in DNS. For most configurations it
+ is best to use DNS to find these servers so that if the set of
+ servers for your realm changes, you need not reconfigure each machine
+ in the realm. However, in special situations, you can locally
+ configure the set of servers for your Kerberos realm.
+Description-cs.UTF-8: Nepoužitý krátký popis
+ Servery vaší říše byly nalezeny v DNS (doménovém jmenném systému). Pro většinu konfigurací je nejvhodnější použít pro hledání Kerberos serverů DNS, protože pokud se množina Kerberos serverů změní, nebudete muset upravovat každý počítač v říši. Nic vám však nebrání nastavit množinu Kerberos serverů pro danou říši lokálně na daném počítači.
+Description-de.UTF-8: Kurzbeschreibung nicht verwendet
+ Es wurden Server für Ihren Realm im DNS gefunden. Für die meisten Konfigurationen ist es am Besten, das DNS zum Auffinden dieser Server zu nutzen. Damit muss nicht jeder Rechner im Realm neu konfiguriert werden, falls sich die Server ändern. In besonderen Situationen können Sie jedoch die Server für Ihren Kerberos-Realm lokal konfigurieren.
+Description-es.UTF-8: descripción corta sin utilizar
+ Los servidores para su reino se encontraron en el DNS. Para la mayoría de las configuraciones es mejor utilizar el DNS para encontrar estos servidores, de modo que si el conjunto de servidores de su reino cambia, no necesitará reconfigurar cada máquina en el reino. Sin embargo, en situaciones especiales, puede configurar localmente el conjunto de servidores para su reino de Kerberos.
+Description-fr.UTF-8: courte description inutilisée.
+ Les serveurs pour le royaume utilisé sur cette machine ont été trouvés dans le DNS. Il est le plus souvent préférable d'utiliser le DNS afin de ne pas avoir à reconfigurer les clients si les serveurs changent. Cependant, dans des situations particulières, il est possible d'indiquer localement quels sont les serveurs pour le royaume Kerberos.
+Description-gl.UTF-8: descrición curta non empregada
+ Os servidores do seu reino acháronse no DNS. Na maioría das configuracións é mellor empregar DNS para atopar estes servidores de maneira que de mudar o conxunto de servidores do seu reino non ha precisar reconfigurar cada máquina do reino. Porén, en situacións especiais pode configurar localmente o conxunto de servidores do reino Kerberos.
+Description-it.UTF-8: nessuno potrà mai leggere questo messaggio
+ I server del proprio realm sono stati trovati nel DNS. Nella maggior parte dei casi è meglio usare il DNS per cercare questi server così quando l'insieme dei server del proprio realm cambia, non sarà necessario riconfigurare ogni macchina del realm. È comunque possibile, in casi particolari, configurare localmente l'insieme dei server del proprio realm Kerberos.
+Description-ja.UTF-8: 使われていない短かい叙述
+ サーバーが DNS で見つかりました。大抵は DNS でサーバーを探すべきです。というのも、サーバーが代わっても個々のマシンを再設定しないで良いからです。ただし、特別な状況では、ローカルにケルベロスレルムのサーバーを設定することはできます。
+Description-pt.UTF-8: pequena descrição não utilizada
+ Foram encontrados servidores para o seu reino no DNS. Na maioria das configurações é melhor usar DNS para encontrar estes servidores de modo a que se o conjunto de servidores mudar no futuro, não seja necessário reconfigurar todas as máquinas do reino individualmente. No entanto, em situações especiais, pode configurar o conjunto de servidores do seu reino Kerberos localmente.
+Description-ru.UTF-8: короткое описание не используется
+ Серверы для вашей области найдены в DNS. В большинстве случаев, для поиска серверов лучше использовать DNS, чтобы при изменении серверов, ответственных за область, не нужно было перенастраивать каждую машину области. Однако, в некоторых случаях, вы можете задать серверы области Kerberos локально.
+Description-sv.UTF-8: kort beskrivning används ej
+ Servrar för din realm hittades i DNS. I de flesta fallen är det bästa valet att använda DNS för att hitta servrarna eftersom du då inte behöver ändra inställningar i alla maskinerna samma realm. Det kan å andra sidan finnas specialfall där det är att föredra lokala inställningar för servrarna för din Kerberos realm.
+
+Template: krb5-config/kerberos_servers
+Type: string
+Description: Kerberos servers for your realm:
+ Enter the hostnames of Kerberos servers in the ${realm} Kerberos realm
+ separated by spaces.
+Description-cs.UTF-8: Kerberos servery ve vaší říši:
+ Zadejte mezerami oddělená jména Kerberos serverů v říši ${realm}.
+Description-de.UTF-8: Kerberos-Server für Ihren Realm:
+ Geben Sie die Hostnamen von Kerberos-Servern im Kerberos-Realm ${realm} durch Leerzeichen getrennt ein.
+Description-es.UTF-8: Servidores de Kerberos para su reino:
+ Introduzca los nombres de los servidores Kerberos en el reino ${realm} de Kerberos, separados por espacios.
+Description-fr.UTF-8: Serveurs Kerberos du royaume :
+ Veuillez indiquer les noms d'hôtes des serveurs Kerberos dans le royaume Kerberos ${realm}, séparés par des espaces.
+Description-gl.UTF-8: Servidores Kerberos do reino:
+ Introduza os nomes dos servidores Kerberos no reino de Kerberos ${realm}, separados por espazos.
+Description-it.UTF-8: Server Kerberos del proprio realm:
+ Inserire i nomi host dei server Kerberos nel realm Kerberos ${realm} separati da degli spazi.
+Description-ja.UTF-8: あなたのレルムのケルベロスサーバ:
+ ${realm} ケルベロスレルムでのケルベロスサーバのホスト名を入力してください。複数あるときはスペースで区切ってください。
+Description-nl.UTF-8: Kerberos-servers voor uw gebied:
+ Geef de computernamen, door spaties gescheiden, van de Kerberos-servers in het ${realm} Kerberos-gebied.
+Description-pt.UTF-8: Servidores Kerberos para o seu reino:
+ Introduza os nomes das máquinas dos servidores de Kerberos no reino ${realm}, separados por espaços.
+Description-pt_BR.UTF-8: Servidores Kerberos para seu realm:
+ Informe os hostnames dos servidores Kerberos no realm Kerberos ${realm}, separados por espaços.
+Description-ru.UTF-8: Серверы Kerberos для вашей области:
+ Введите имена хостов для серверов Kerberos в области Kerberos ${realm} через пробел.
+Description-sv.UTF-8: Kerberosservrar för ditt realm:
+ Ange värdnamnen för Kerberosservrar i ${realm} Kerberos realm, avskilj med blanksteg.
+
+Template: krb5-config/admin_server
+Type: string
+Description: Administrative server for your Kerberos realm:
+ Enter the hostname of the administrative (password changing) server for
+ the ${realm} Kerberos realm.
+Description-cs.UTF-8: Administrativní server vaší Kerberovy říše:
+ Zadejte jméno počítače, na kterém běží administrativní server (ten, který mění hesla) pro Kerberovu říši ${realm}.
+Description-de.UTF-8: Administrations-Server für Ihren Kerberos-Realm:
+ Geben Sie den Hostnamen des Administrations-Servers (zur Änderung von Passwörtern) für den Kerberos-Realm ${realm} ein.
+Description-es.UTF-8: Servidor administrativo para su reino de Kerberos:
+ Introduzca el nombre del servidor administrativo (cambio de contraseña) para el reino ${realm} de Kerberos.
+Description-fr.UTF-8: Serveur administratif du royaume Kerberos :
+ Veuillez indiquer le nom d'hôte du serveur administratif (permettant les modifications de mot de passe) pour le royaume Kerberos ${realm}.
+Description-gl.UTF-8: Servidor administrativo do reino Kerberos:
+ Introduza o nome do servidor administrativo (de cambio de contrasinais) do reino de Kerberos ${realm}.
+Description-it.UTF-8: Server amministrativo per il realm Kerberos:
+ Inserire il nome host del server amministrativo (cambio password) per il realm Kerberos ${realm}.
+Description-ja.UTF-8: あなたのケルベロスレルムの管理サーバ:
+ ${realm} ケルベロスレルムでの(パスワード変更用)管理サーバのホスト名を入力してください。
+Description-nl.UTF-8: Administratieve server voor uw Kerberos-gebied:
+ Geef de computernaam van de administratieve server (wijziging wachtwoorden) voor het ${realm} Kerberos-gebied.
+Description-pt.UTF-8: Servidor administrativo do seu reino Kerberos:
+ Introduza o nome da máquina do servidor administrativo para o reino ${realm} do Kerberos.
+Description-pt_BR.UTF-8: Servidor administrativo para seu realm Kerberos:
+ Informe o hostname do servidor administrativo (que gerencia a troca de senhas) para o realm Kerberos ${realm}.
+Description-ru.UTF-8: Управляющий сервер вашей области Kerberos:
+ Введите имя хоста управляющего (изменение пароля) сервера для области Kerberos ${realm}.
+Description-sv.UTF-8: Administrativserver för ditt Kerberos realm:
+ Ange värdnamnet för administrtationsservern (den som kan ändra lösenord) för ${realm} Kerberos realm.

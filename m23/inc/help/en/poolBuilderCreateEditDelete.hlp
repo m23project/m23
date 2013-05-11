@@ -1,0 +1,16 @@
+$I18N_poolBuilder (Create, edit, delete pool)<!--v1.9 new-->
+
+The pool builder makes it possible to combine software packages from different media (CD, DVD, internet) on the m23 server and convert them to a package source. These package sources can be used to install clients. This can be done without an internet connection. It is possible too to add selfmade packages to the pool.
+
+<ul><LI><b>Create a new pool:</b> You can create a new pool by entering a name in the <i>"$I18N_poolName"</i> and clicking on <i>"$I18N_add"</i>.</LI>
+<LI><b>Delete or load a pool</b>: Select a pool from the list <i>"$I18N_existingPool"</i> and click on desired action.</LI>
+<LI><b>$I18N_usedPool</b>: In this section you can see information about the elected pool.</LI>
+<LI><b>Change description or type</b>: You can add a description to the pool or change its type. Afterwards click on <i>"$I18N_save"</i>.</LI>
+<LI><b>$I18N_packageSources</b>: The package sources are show that represent the package pool. Simply copy the lines to the package sources list, if you want to install a client from this pool.</LI>
+<li><b>$I18N_nextStep</b>: Click on the button to copy the packages or select the package source.</li>
+</ul>
+
+<u>Hint</u><ul>
+<LI><b>$I18N_poolType</b>: The type selects the media the packages should be fetched from. <!-- v13.1 deactivated <i>"$I18N_CDPool"</i> is used for all CD and DVD media. All mount points from /etc/fstab are shown and can be used as source for software packages.--> <i>"$I18N_downloadPool"</i>: This variant downloads all packages from HTTP or FTP servers that can be used for package installation.</li>
+<!--begin v1.18--><li><b>$I18N_arch</b>: Choose here the architecture for the packages to download. Here the architecture of the clients is meant and not the architecture of the m23 server.</li><!--end v1.18-->
+<li><b>Package source</b>: A package source is a directory (with subdirectories) that contains software packages and index files. The index files are storing information about the software packages and are needed to make the packages available for installation.</li></ul>

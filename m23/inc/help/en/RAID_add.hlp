@@ -1,0 +1,16 @@
+<!-- V1.12 new-->$I18N_build_raid
+
+You can join partitions and/or complete drives to create software RAIDs in that space. m23 and accordingly the program mdadm support RAID levels 0, 1, 4, 5, 6 and 10. These RAID levels have advantages and disadvantages in relation to speed increase and data reliability. For additional information about RAIDs read the Wikipedia page <a href="http://en.wikipedia.org/wiki/RAID" target="_blank">http://en.wikipedia.org/wiki/RAID</a>, please. You can create several RAIDs on a single client and use the RAIDs for operating system installation, the swap partition etc. Please read the hint if you want to install an operating system on a RAID.
+
+<u>Step by step</u><br>
+
+<ol>
+<li><b>Create a RAID drive:</b> Choose a device name from the list <i>"$I18N_raidDriveName"</i> and click on <i>"$I18N_createRAIDDrive"</i>. This device is a virtual multi device.</li>
+<li><b>Add partitions and drives:</b> You can find all necessary functions for assigning partitions and drives to a RAID in the box <i>"$I18N_addDrivesPartitionsToRaid"</i>. Choose the RAID type and RAID drive from the accordant lists. Afterwards, you have to choose a partition or drive from the list <i>"$I18N_realDrivePartition"</i> to add it to the RAID. Click on <i>"$I18N_add"</i>. The table <i>"$I18N_assignedDrivesPartitions"</i> lists all assigned drives and partitions.</li>
+<li><b>Complete the RAID creation:</b> Click on <i>"$I18N_extPartStep2FormartPart"</i> in the last step.</li>
+</ol>
+
+<u>Hint for RAIDs and partitions</u>
+The Linux kernel accesses the software RAIDs via <i>"multi devices"</i>. These RAID drives behave like partitions and cannot be partitioned further. This limitation is made by m23 to accomplish backwards compatibility to older Linux kernels.
+
+helpInclude("os_on_RAID_hint.inc");

@@ -1,0 +1,28 @@
+$I18N_client_partition
+Cette page vous permet de partitionner et formater un poste client. En haut de celle-ci, s'affiche le partitionnement actuel du poste client.
+
+Trois possibilités vous sont offertes pour procéder au formatage et au partitionnement: 
+
+<ul>
+<li><b>$I18N_fdistTypeautomatic:</b> Pendant le partitionnement automatique, toutes les données sur le disque dur seront effacées et deux nouvelles partitions seront créées; une pour les données et le système d'exploitation et l'autre pour l'espace d'échange (mémoire virtuelle) linux-swap.
+<li><b>$I18N_format_existing:</b> Vous offre la possibilité de formater à nouveau des partitions existantes, puis de les employer pour l'installation. Vous devez sélectionner deux partitions - la première pour l'installation du système d'exploitation et la deuxième pour l'espace d'échange linux-swap.
+<li><b>$I18N_fdistTypeextended:</b> Avec ce type de partitionnement, vous pouvez opérer de fa&ccedil;on individuelle. Vous pouvez effacer, créer et formater des partitions, puis choisir une partition pour l'installation et une pour l'espace d'échange linux-swap.
+<!-- V1.12 begin-->
+<li><b>$I18N_extended_partitioning_with_raid:</b> En plus des possibilités du <i>&laquo;partitionnement étendu&raquo;</i>,vous pouvez agglomérer des partitions ou des disques durs entiers sous forme de RAID(s), pour augmenter par exemple la vitesse de lecture/ecriture des données (RAID 0) et/ou la tolérance de pannes (RAID 1,5, ...).</li><!-- V1.12 end-->
+</ul>
+
+<!-- V1.6 begin --><u>Procédé étape par étape</u>
+<ol>
+<LI>Choisissez la méthode de partitionnement souhaitée.</LI>
+<li>Cliquez sur <i>&laquo;$I18N_next&raquo;</i>.</li>
+<li>Puis, suivez les textes d'aide du type de partitionnement choisi.</li>
+</ol>
+<!-- V1.6 end -->
+
+<!-- V1.2 begin --><U>ATTENTION</U>
+Formater détruit les données de la partition. L'effacement d'une partition efface également les données sur celle-ci.<!-- V1.2 end -->
+
+<U>Information supplémentaire:</U>
+Après formatage, le poste client comprendra automatiquement un système de base avec ou sans interface graphique.
+
+<!-- V1.12 begin -->helpInclude("os_on_RAID_hint.inc");<!-- V1.12 end -->

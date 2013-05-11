@@ -1,0 +1,28 @@
+$I18N_client_partition
+This page let you partition and format the client. On top you can see the current partition schema.
+
+You have three possibilities to partition and format your client. 
+
+<ul>
+<li><b>$I18N_fdistTypeautomatic</b>: deletes all data from the client hard disk. m23 will create two new partitions, one for the data and base system and one for swapping.
+<li><b>$I18N_format_existing</b>: Here you have the possibility to reuse existing partitions. You have to select one partition for the base system and one for swapping.
+<li><b>$I18N_fdistTypeextended</b>: With this partition type you can partition and format individually. You can delete, add and format partitions and you have to select an installation and a swap partition.
+<!-- V1.12 begin-->
+<li><b>$I18N_extended_partitioning_with_raid:</b> In addition to the possibilities of the <i>"Extended partitioning"</i>, here you can join partitions or entire hard drives to form RAIDs, to increase the amount of data processed or the safety in regard to a failure, for example.</li><!-- V1.12 end-->
+</ul>
+
+<!-- V1.7 --><u>Step by step</u>
+<ol>
+<LI>Select the desired partition method.</LI>
+<li>Click on <!-- V1.12 change--><i>"$I18N_next"</i><!-- V1.12 change end-->.</li>
+<li>Follow the help text to the selected partition method.</li>
+</ol>
+<!-- V1.7 end -->
+
+<!-- V1.2 begin --><U>CAUTION</U>
+Formatting destroys the data of the formatted partition. The removal of a partition will delete the contained data.<!-- V1.2 end -->
+
+<U>Hint:</U>
+After formatting the client automatically gets a base system with or without a graphical user interface.
+
+<!-- V1.12 begin -->helpInclude("os_on_RAID_hint.inc");<!-- V1.12 end -->

@@ -1,0 +1,207 @@
+Template: slapd/no_configuration
+Type: boolean
+Default: false
+Description: Omit OpenLDAP server configuration?
+ If you enable this option, no initial configuration or database will be
+ created for you.
+Description-cs.UTF-8: Přeskočit nastavení OpenLDAP serveru?
+ Přistoupíte-li na tuto možnost, nevytvoří se databáze ani počáteční nastavení.
+Description-da.UTF-8: Undlad opsætning af OpenLDAP-server?
+ Hvis du aktiverer denne indstilling, vil der ikke blive oprettet en begyndelsesopsætning eller -database for dig.
+Description-de.UTF-8: Soll die OpenLDAP-Server-Konfiguration ausgelassen werden?
+ Falls Sie diese Option aktivieren, wird keine Startkonfiguration oder Datenbank für Sie erstellt.
+Description-es.UTF-8: ¿Desea omitir la configuración del servidor OpenLDAP?
+ No se creará la configuración ni la base de datos inicial si habilita esta opción.
+Description-eu.UTF-8: OpenLDAP zerbitzari konfigurazio alde batetara utzi?
+ Aukera hau gaitzen baduzu ez da hasierako konfigurazio edo datubaserik sortuko.
+Description-fi.UTF-8: Ohitetaanko OpenLDAP-palvelimen asetus?
+ Jos valitset tämän vaihtoehdon, asetuksia ja tietokantaa ei luoda.
+Description-fr.UTF-8: Voulez-vous omettre la configuration d'OpenLDAP ?
+ Si vous choisissez cette option, aucune configuration par défaut et aucune base de données ne seront créées.
+Description-gl.UTF-8: ¿Omitir a configuración do servidor OpenLDAP?
+ Se resposta afirmativamente aquí, non se ha crear ningunha configuración ou base de datos inicial.
+Description-it.UTF-8: Omettere la configurazione del server OpenLDAP?
+ Se si accetta, non verranno creati né la configurazione iniziale né il database.
+Description-ja.UTF-8: OpenLDAP サーバの設定を省略しますか?
+ ここで「はい」を選ぶと、初期設定やデータベースは作成されません。
+Description-nl.UTF-8: Wilt u de OpenLDAP-serverconfiguratie overslaan?
+ Wanneer u deze optie kiest worden er geen initiële configuratie en database voor u aangemaakt.
+Description-pt.UTF-8: Omitir a configuração do servidor OpenLDAP?
+ Se activar esta opção, não será criada inicialmente uma configuração ou base de dados para si.
+Description-pt_BR.UTF-8: Omitir a configuração do servidor OpenLDAP?
+ Se você habilitar esta opção, nenhuma configuração inicial ou base de dados será criada para você.
+Description-ru.UTF-8: Не выполнять настройку сервера OpenLDAP?
+ Если вы ответите утвердительно, начальная конфигурация или база данных создаваться не будет.
+Description-sv.UTF-8: Utelämna konfiguration av OpenLDAP-servern?
+ Om du aktiverar det här alternativet kommer ingen initial konfiguration eller databas att skapas åt dig.
+Description-vi.UTF-8: Bỏ qua cấu hình trình phục vụ OpenLDAP không?
+ Bật tùy chọn này thì không tạo cho bạn cấu hình hay cơ sở dữ liệu đầu tiên.
+
+Template: slapd/dump_database
+Type: select
+Choices: always, when needed, never
+Choices-cs.UTF-8: vždy, v případě potřeby, nikdy
+Choices-de.UTF-8: immer, wenn benötigt, nie
+Choices-es.UTF-8: siempre, cuando se necesite, nunca
+Choices-eu.UTF-8: beti, beharrezko denean, inoiz
+Choices-fi.UTF-8: aina, tarvittaessa, ei koskaan
+Choices-fr.UTF-8: Toujours, Lorsque nécessaire, Jamais
+Choices-gl.UTF-8: sempre, cando se precise, nunca
+Choices-it.UTF-8: sempre, quando necessario, mai
+Choices-ja.UTF-8: 常に, 必要なときに, 行わない
+Choices-nl.UTF-8: altijd, wanneer nodig, nooit
+Choices-pt.UTF-8: sempre, quando necessário, nunca
+Choices-pt_BR.UTF-8: sempre, quando necessário, nunca
+Choices-ru.UTF-8: всегда, только при необходимости, никогда
+Choices-sv.UTF-8: alltid , vid behov, aldrig
+Choices-vi.UTF-8: luôn luôn, khi cần thiết, không bao giờ
+Default: when needed
+Description: Dump databases to file on upgrade:
+ Before upgrading to a new version of the OpenLDAP server, the data from
+ your LDAP directories can be dumped into plain text files in the
+ standard LDAP Data Interchange Format.
+ .
+ Selecting "always" will cause the databases to be dumped
+ unconditionally before an upgrade. Selecting "when needed" will only
+ dump the database if the new version is incompatible with the old
+ database format and it needs to be reimported. If you select "never",
+ no dump will be done.
+Description-cs.UTF-8: Při aktualizaci uložit databáze do souboru:
+ Před aktualizací na novější verzi serveru OpenLDAP se mohou data z LDAP adresářů vyexportovat do textových souborů ve formátu LDAP Data Interchange Format, což je standardizovaný formát pro popis těchto dat.
+ .
+ Výběrem „“vždy“ zajistíte, že se databáze vyexportují do souborů před každou aktualizací. Volba „v případě potřeby“ znamená, že se databáze vyexportují pouze v případě, že je formát nové databáze nekompatibilní s předchozí verzí a tudíž je potřeba data znovu nahrát. Zvolíte-li „nikdy“, data se nebudou exportovat.
+Description-de.UTF-8: Datenbank beim Upgrade in Datei ausgeben (»dump«):
+ Bevor Sie ein Upgrade auf eine neue Version des OpenLDAP-Servers durchführen, können die Daten Ihres LDAP-Verzeichnisses in reine Text-Dateien im standardisierten »LDAP Data Interchange Format« ausgegeben werden.
+ .
+ Die Auswahl von »immer« führt dazu, dass die Datenbanken bedingungslos vor Upgrades ausgegeben werden. Die Auswahl von »wenn benötigt« führt dazu, dass die Datenbank nur ausgegeben wird, falls die neue Version nicht mit dem alten Datenbankformat kompatibel ist und die Datenbank re-importiert werden muss. Die »nie«-Auswahl führt dazu, dass keine Ausgabe der Daten erfolgt.
+Description-es.UTF-8: Volcar las bases de datos a un fichero al actualizar:
+ Antes de que actualice a una nueva versión del servidor OpenLDAP, se puede volcar la información de sus directorios LDAP en ficheros de texto plano en el formato estandarizado «LDAP Data Interchange Format», -formato de intercambio de datos de LDAP-.
+ .
+ Si selecciona «siempre» se volcarán sus bases de datos antes de que se actualice de forma incondicional. Si selecciona «cuando se necesite» sólo se hará un volcado si la nueva versión es incompatible con el formato de la base de datos antigua y la información se debe volver a importar. Si selecciona «nunca» no se hará ningún volcado.
+Description-eu.UTF-8: Irauli datu-baseak fitxategi batetara bertsio-berritzean:
+ OpenLDAP zerbitzariaren bertsio berri batetara bertsio-berritu aurretik, zure LDAP direktorioak testu lau fitxategietara irauliko dira LDAP datu elkartrukatze formatu estandarra erabiliaz.
+ .
+ "Beti" hautatuaz datubaseak baldintzarik gabe iraukiko dira bertsio-berritze baten aurretik. "Beharrezko denean" hautatuaz bertsio berria datubase formatu zaharrarekin bateragarri ez denean eta berrinportatu behar denean bakarrik irauliko da datubasea. "Inoiz" hautatzen baduzu inoiz ez da datubasea irauliko.
+Description-fi.UTF-8: Vedosta tietokannat tiedostoon päivitettäessä:
+ Ennen päivitystä OpenLDAP-palvelimen uuteen versioon, LDAP-hakemistoista voidaan tallentaa vedos standardissa LDAP-tiedonsiirtomuodossa oleviin tekstitiedostoihin.
+ .
+ Valinta ”aina” merkitsee, että tietokannat vedostetaan tilanteesta riippumatta ennen päivitystä. Valinta ”tarvittaessa” merkitsee, että tietokannoista otetaan vedos vain, jos uusi versio ei ole yhteensopiva vanhan tietokantamuodon kanssa ja tiedot tulee tuoda kantaan uudelleen. Valittaessa ”ei koskaan” vedostusta ei tehdä.
+Description-fr.UTF-8: Sauvegarde des bases de données dans un fichier pour la mise à niveau :
+ Avant la mise à niveau du serveur OpenLDAP, les données des annuaires LDAP peuvent être exportées dans des fichiers au format texte LDIF (« LDAP Data Interchange Format » : format d'échange de données LDAP).
+ .
+ Si vous choisissez l'option « Toujours », les données seront systématiquement exportées avant une mise à niveau. Si vous choisissez « Lorsque nécessaire », elles ne seront exportées que lorsque la nouvelle version utilisera un format incompatible avec l'ancienne, ce qui imposera de réimporter les données. Si vous choisissez « Jamais », les données ne seront jamais exportées.
+Description-gl.UTF-8: Envorcar as bases de datos a un ficheiro na actualización:
+ Antes de se actualizar a unha nova versión do servidor OpenLDAP, pódense envorcar os datos dos seus directorios LDAP a ficheiros de texto normal no formato estándar LDIF, formato de intercambio de datos LDAP.
+ .
+ Se escolle "sempre" ha facer que as bases de datos se envorquen incondicionalmente antes de as actualizar. Se escolle "cando se precise" só se ha envorcar a base de datos se a nova versión é incompatible co formato antigo da base de datos e hai que reimportala. Se escolle "nunca" non se ha envorcar a base de datos.
+Description-it.UTF-8: Effettuare il dump dei database prima di un aggiornamento:
+ Prima dell'aggiornamento a una nuova versione del server OpenLDAP, è possibile effettuare il dump delle proprie directory LDAP in dei semplici file di testo in formato LDIF (lo standard per lo scambio di dati LDAP).
+ .
+ Selezionando "sempre" il dump dei database verrà effettuato prima di ogni aggiornamento. Con "quando necessario" il dump dei database verrà fatto solo quando la nuova versione è incompatibile con il vecchio formato del database e quindi deve essere reimportato. Infine con "mai" il dump dei database non verrà mai fatto.
+Description-ja.UTF-8: 更新時にデータベースをファイルにダンプ:
+ OpenLDAP サーバの新しいバージョンへの更新の前に、LDAP ディレクトリのデータを、標準 LDAP データ交換フォーマットのプレインテキストファイルにダンプできます。
+ .
+ 「常に」を選ぶと、無条件に更新の前にデータベースをダンプするようになります。「必要なときに」を選ぶと、新しいバージョンが古いデータベースフォーマットと非互換で、再インポートが必要なときに、データベースをダンプします。「行わない」を選ぶと、データベースのダンプを行いません。
+Description-nl.UTF-8: Wilt u bij de opwaardering de databases naar een bestand exporteren?
+ Voor een opwaardering naar een nieuwe versie van de OpenLDAP-server uitgevoerd wordt kan de data in uw LDAP-catalogussen geëxporteerd worden naar een gewoon tekstbestand in LDIF-formaat (dit is het gestandaardiseerde 'LDAP Data Interchange Format').
+ .
+ Wanneer u 'altijd' selecteert worden de databases voor elke opwaardering on-conditioneel naar een bestand geëxporteerd. Wanneer u 'wanneer nodig' selecteert worden de databases enkel geëxporteerd wanneer het nieuwe databaseformaat incompatibel is met het oude formaat en de data opnieuw geïmporteerd moet worden. Wanneer u 'nooit' kiest wordt er geen database-export gemaakt.
+Description-pt.UTF-8: Despejar as bases de dados para ficheiro durante a actualização:
+ Antes de actualizar para uma nova versão do servidor OpenLDAP, os dados dos seu directórios LDAP podem ser despejados para ficheiros de texto simples no formato padronizado LDAP Data Interchange Format.
+ .
+ Seleccionar "sempre" fará com as bases de dados sejam despejadas incondicionalmente antes de uma actualização. Seleccionar "quando necessário" irá apenas despejar a base de dados se a nova versão for incompatível com o formato da base de dados antiga e for necessário reimporta-la. Se seleccionar "nunca", não será feito qualquer despejo.
+Description-pt_BR.UTF-8: Descarregar as bases de dados para arquivos na atualização:
+ Antes de atualizar para uma nova versão do servidor OpenLDAP os dados dos seus diretórios LDAP podem ser descarregados em arquivos texto plano no formato padrão "LDAP Interchange Format" (Formato de Intercâmbio LDAP).
+ .
+ Selecionar "sempre" fará com que as bases de dados sejam descarregadas incondicionalmente antes de atualizar. Selecionando "quando necessário" só descarregará a base de dados se a nova versão for incompatível com o formato da antiga base de dados e tiver que ser importada novamente. Se você escolher "nunca", nenhum descarregamento será feito.
+Description-ru.UTF-8: При обновлении сохранять данные из базы данных в файл:
+ Перед обновлением до новой версии сервера OpenLDAP данные из ваших каталогов LDAP могут быть сохранены в текстовые файлы в стандартизованном формате обмена данных LDAP.
+ .
+ Если выбрать "всегда", то перед обновлением данные из баз будут обязательно сохранены. Если выбрать "только при необходимости", то база данных будет сохранена, только если новая версия не совместима со старым форматом базы данных и должна быть реимпортирована. Если выбрать "никогда", то сохранение базы будет пропущено.
+Description-sv.UTF-8: Dumpa databaser till fil vid uppgradering:
+ Innan du uppgraderar till en ny version av OpenLDAP-servern, kan datat från dina LDAP-kataloger dumpas till klartextfiler i standardformatet LDAP Data Interchange Format.
+ .
+ Väljer du "alltid" kommer databaserna alltid att dumpas före en uppgradering. Väljer du "vid behov" kommer databasen bara dumpas om den nya versionen är inkompatibel med det gamla databasformatet och måste återimporteras. Om du väljer "aldrig", kommer ingen dump göras.
+Description-vi.UTF-8: Nâng cấp thì đổ các cơ sở dữ liệu vào tập tin:
+ Trước khi nâng cấp lên phiên bản mới của trình phục vụ OpenLDAP, dữ liệu nằm trong các thư mục LDAP có thể được đổ vào tập tin nhập thô theo định dạng trao đổi dữ liệu LDAP chuẩn.
+ .
+ Chọn mục « luôn luôn » thì gây ra các cơ sở dữ liệu bị đổ một cách không điều kiện trước khi nâng cấp. Chọn « khi cần thiết » thì chỉ đổ cơ sở dữ liệu nếu phiên bản mới không tương thích với định dạng cơ sở dữ liệu cũ và cần phải nhập lại nó. Còn chọn « không bao giờ » thì không đổ gì.
+
+Template: slapd/dump_database_destdir
+Type: string
+Default: /var/backups/slapd-VERSION
+Description: Directory to use for dumped databases:
+ Please specify the directory where the LDAP databases will be exported.
+ In this directory, several LDIF files will be created which correspond
+ to the search bases located on the server. Make sure you have enough
+ free space on the partition where the directory is located. The first
+ occurrence of the string "VERSION" is replaced with the server version
+ you are upgrading from.
+Description-cs.UTF-8: Adresář pro exportované databáze:
+ Zadejte prosím adresář, do kterého se budou exportovat LDAP databáze. V tomto adresáři se vytvoří několik LDIF souborů odpovídajících kořenům LDAP adresářů na daném serveru. Ujistěte se, že máte na dané oblasti dostatek místa. První výskyt řetězce "VERSION" se nahradí verzí LDAP serveru, ze kterého aktualizujete na novější verzi.
+Description-de.UTF-8: Verzeichnis für Datenbank-Ausgaben (»dumps«):
+ Bitte geben Sie ein Verzeichnis an, in das die Datenbanken exportiert werden. Innerhalb dieses Verzeichnisses werden mehrere LDIF-Dateien erstellt, die zu den im Server befindlichen Suchbasen korrespondieren. Stellen Sie sicher, dass Sie genug freien Platz auf der Partition haben, auf der sich das Verzeichnis befindet. Das erste Auftreten der Zeichenkette »VERSION« wird mit der Server-Version ersetzt, von der aus Sie das Upgrade durchführen.
+Description-es.UTF-8: Directorio donde volcar las bases de datos:
+ Por favor especifique el directorio donde se exportarán las bases de datos de LDAP.  En éste se crearán diversos ficheros LDIF que corresponden a las bases de datos ubicadas en el servidor. Asegúrese de que tiene suficiente espacio libre en la partición donde se ubica el directorio. La primera ocurrencia de la cadena «VERSION» se reemplaza con la versión del servidor que va a actualizar.
+Description-eu.UTF-8: Datubaseak iraultzeko erabilioko den direktorioa:
+ Mesedez zehaztu LDAP esportatzeko erabiliko den direktorioa. Direktorio honetan zerbitzariko datubase ezberdinei dagozkien LDIF fitxategiak sortuko dira. Ziurtatu zaitez direktorioaren partizioan behar duzun bezainbeste leku libre duzula. "VERSION" katearen lehenengo agerpena zerbitzariaren jatorrizko bertsio zenbakiagatik ordeztuko da.
+Description-fi.UTF-8: Tietokantavedosten hakemisto:
+ Anna hakemisto, johon LDAP-tietokannat vedostetaan. Hakemistoon luodaan useita LDIF-tiedostoja, joiden sisältö vastaa palvelimen hakukantoja. Varmista, että valitulla levyosiolla on tarpeeksi vapaata tilaa. Merkkijonon ”VERSION” ensimmäinen esiintymä korvataan päivitettävän palvelimen versionumerolla.
+Description-fr.UTF-8: Répertoire où exporter les bases de données :
+ Veuillez indiquer le répertoire où les bases de données LDAP seront exportées. Plusieurs fichiers LDIF seront créés dans ce répertoire. Ils correspondent aux bases de recherche présentes sur le serveur. Veuillez vérifier que la partition où se trouve ce répertoire comporte suffisamment de place disponible. La première occurrence de « VERSION » dans le nom de ce répertoire sera remplacée par la version d'OpenLDAP utilisée avant la mise à niveau.
+Description-gl.UTF-8: Directorio para as bases de datos envorcadas:
+ Especifique o directorio no que se han exportar as bases de datos LDAP. Neste directorio hanse crear varios ficheiros LDIF que se corresponden coas bases de busca armacenadas no servidor. Asegúrese de ter espazo libre dabondo na partición na que reside o directorio. A primeira aparición da cadea "VERSION" substitúese pola versión do servidor a partires da que se actualiza.
+Description-it.UTF-8: Directory per il dump dei database:
+ Specificare la directory in cui verranno esportati i database LDAP. In questa directory verrà creato un file LDIF per ogni base di ricerca presente sul server. Assicurarsi di avere spazio libero sufficiente sulla partizione che contiene la directory indicata. La prima occorrenza della stringa "VERSION" viene sostituita con la versione del server che si sta aggiornando.
+Description-ja.UTF-8: データベースのダンプに使うディレクトリ:
+ LDAP データベースをエキスポートするディレクトリを指定してください。このディレクトリの中には、サーバ上に配置された検索ベースに関連するいくつかの LDIF ファイルが作成されます。ディレクトリを格納するパーティションに十分な空き領域があることを確認してください。最初に出現する文字列 "VERSION" は、更新対象のサーバのバージョンで置き換えられます。
+Description-nl.UTF-8: Voor database-dumps te gebruiken map:
+ Wat is de map waarnaar LDAP-databases geëxporteerd moeten worden?. In deze map worden verschillende LDIF-bestanden aangemaakt die overeenkomen met de zoekbasissen op de server. U dient ervoor te zorgen dat u genoeg vrije ruimte heeft op de partitie waar de map zich bevindt. Het eerste voorkomen van de string 'VERSION' wordt vervangen door de server-versie vanwaar u opwaardeert.
+Description-pt.UTF-8: Directório a utilizar para bases de dados despejadas:
+ Por favor, especifique o directório para onde as bases de dados LDAP serão exportadas. Dentro deste directório serão criados vários ficheiros LDIF que correspondem às bases de pesquisas localizadas no servidor. Assegure-se que tem espaço livre suficiente na partição onde se encontra o directório. A primeira ocorrência da string "VERSION" é substituída com a versão do servidor que está a actualizar.
+Description-pt_BR.UTF-8: Diretório para descarregar suas bases de dados:
+ Por favor, especifique o diretório onde as bases LDAP serão exportadas. Nesse diretório vários arquivos LDIF serão criados correspondendo às bases de procura localizadas no servidor. Tenha certeza de ter espaço livre suficiente na partição onde este diretório está localizado. A primeira ocorrência da string "VERSION" é substituída com a versão do servidor a partir da qual você está atualizando.
+Description-ru.UTF-8: Каталог сохранения данных из баз:
+ Укажите каталог, куда будут экспортированы базы данных LDAP. В этом каталоге будет создано несколько файлов LDIF, которые соответствуют поисковым базам, расположенным на сервере. Убедитесь, что у вас достаточно места на разделе, где расположен каталог. Первое появление строки со словом "VERSION" заменяется на версию сервера, с которой производится обновление.
+Description-sv.UTF-8: Katalog att dumpa databaser i:
+ Ange den katalog dit LDAP-databaser ska exporteras. I denna katalog kommer flera LDIF-filer att skapas som svarar mot sökbaserna på servern. Se till att du har tillräckligt med ledigt utrymme på den partition där katalogen finns. Den första förekomsten av strängen "VERSION" ersätts med den serverversion du uppgraderar från.
+Description-vi.UTF-8: Thư mục vào đó cần đổ cơ sở dữ liệu :
+ Ghi rõ tên thư mục vào đó cần xuất các cơ sở dữ liệu LDAP. Trong thư mục này thì tạo vài tập tin LDIF mà tương ứng với những cơ bản tìm kiếm nằm trên máy phục vụ. Hãy kiểm tra xem vẫn có đủ chỗ rỗng trong phân vùng đó. Lần đầu tiên gặp chuỗi « VERSION » (phiên bản) thì được thay thế bằng phiên bản từ đó bạn đang nâng cấp.
+
+Template: slapd/purge_database
+Type: boolean
+Default: false
+Description: Do you want the database to be removed when slapd is purged?
+Description-cs.UTF-8: Chcete při vyčištění balíku slapd ze systému smazat i databázi?
+Description-de.UTF-8: Soll die Datenbank entfernt werden, wenn slapd vollständig gelöscht wird?
+Description-es.UTF-8: ¿Desea que se borre la base de datos cuando se purgue el paquete slapd?
+Description-eu.UTF-8: Slapd garbitzen bada datubasea ezabatzea nahi al duzu?
+Description-fi.UTF-8: Haluatko, että tietokanta poistetaan siivottaessa paketti slapd?
+Description-fr.UTF-8: Faut-il supprimer la base de données à la purge du paquet ?
+Description-gl.UTF-8: ¿Quere que se elimine a base de datos ao purgar slapd?
+Description-it.UTF-8: Eliminare il database in caso di rimozione completa di slapd?
+Description-ja.UTF-8: slapd をパージしたときにデータベースを削除しますか?
+Description-nl.UTF-8: Wilt u dat de database verwijderd wordt wanneer slapd gewist wordt?
+Description-pt.UTF-8: Quer que a base de dados seja removida quando o slapd for purgado?
+Description-pt_BR.UTF-8: Você deseja que a base de dados seja removida quando o pacote slapd for expurgado ("purge")?
+Description-ru.UTF-8: Удалять базу данных при вычистке slapd?
+Description-sv.UTF-8: Vill du att databasen ska tas bort när slapd rensas bort?
+Description-vi.UTF-8: Khi tẩy gói phần mềm slapd, bạn cũng có muốn gỡ bỏ cơ sở dữ liệu không?
+
+Template: slapd/allow_ldap_v2
+Type: boolean
+Default: false
+Description: Allow LDAPv2 protocol?
+ The obsolete LDAPv2 protocol is disabled by default in slapd. Programs
+ and users should upgrade to LDAPv3.  If you have old programs which
+ can't use LDAPv3, you should select this option and 'olcAllows: bind_v2'
+ will be added to your cn=config directory.
+Description-es.UTF-8: ¿Permitir el protocolo LDAPv2?
+ El protocolo obsoleto LDAPv2 se ha desactivado de manera predeterminada en slapd. Los programas y los usuarios deberían actualizarse a LDAPv3. Debe seleccionar esta opción si aún tiene programas antiguos que no utilicen LDAPv3. Si lo hace, se añadirá la opción «allow bind_v2» al fichero de configuración «slapd.conf».
+Description-fr.UTF-8: Faut-il autoriser le protocole LDAPv2 ?
+ L'ancien protocole LDAPv2 est désactivé dans slapd. Il est conseillé de migrer les programmes et les utilisateurs vers la version LDAPv3 . Si vous utilisez d'anciens programmes qui ne gèrent pas encore LDAPv3, vous devriez choisir cette option, ce qui ajoutera l'option « olcAllows: bind_v2 » au répertoire cn=config.
+Description-pt.UTF-8: Permitir o protocolo LDAPv2?
+ O protocolo obsoleto LDAPv2 está desactivado por pré-definição no slapd. Os programas e utilizadores devem actualizar para LDAPv3. Se tiver programas antigos que não conseguem usar LDAPv3, deverá seleccionar esta opção e será adicionado 'allow bin_v2' ao seu directório cn=config.
+Description-pt_BR.UTF-8: Permitir o protocolo LDAPv2?
+ O protocolo LDAPv2 é desabilitado por padrão no slapd. Os programas e usuários devem atualizar-se para o LDAPv3. Se você tem programas antigos que não usam LDAPv3, você deve selecionar esta opção e "olcAllows: bind_v2" será adicionado ao seu diretório cn=config.
+

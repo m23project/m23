@@ -1,0 +1,19 @@
+$I18N_poolBuilder (Paketquellen und Pakete auswählen)<!--v1.9 new-->
+
+Wählen Sie hier aus, von welchen Paketquellen Sie welche Pakete beziehen möchten. Der Dialog setzt sich aus 2 Teilen zusammen:
+<ol><LI>Wählen Sie zuerst die Paketquellen aus.
+helpInclude("sourceslistEditor.inc");
+
+Letztendlich wird die im Fenster <i>"$I18N_packageSources"</i> angezeigte Liste benutzt.</LI>
+<li>Im unteren Teil des Dialogs geben Sie die Pakete an, die Sie in die Paketquelle herunterladen möchten. Die Pakete werden dabei durch Leerzeichen getrennt.
+<ul><LI><b>Laden / Löschen:</b> Haben Sie bereits eine Paketliste gespeichert, so können Sie diese nach Auswahl unter <i>"$I18N_packageList"</i> mit einem Klick auf den <i>"$I18N_load"</i>-Button in das Editierfenster laden bzw. mit <i>"$I18N_delete"</i> entfernen.</LI>
+<!--v1.10 begin--><LI><b>$I18N_add</b>: Sie können die Pakete aus der Paketliste zu denen im Editor hinzufügen, indem Sie auf <i>"$I18N_add"</i> klicken.</LI><!--v1.10 end-->
+<LI><b>$I18N_save</b>: Möchten Sie die Liste im Editor speichern, so geben Sie einen Namen in der Eingabezeile <i>"$I18N_packageList"</i> ein und klicken Sie anschließend auf <i>"$I18N_save"</i>.</LI>
+<LI><b>$I18N_addPackagesFromClient</b>: Diese Option ist besonders hilfreich, wenn Sie Pakete von bereits installierten Clients in die Paketquelle herunterladen möchten. Um alle Pakete eines Clients hinzuzufügen wählen Sie den Client aus der Liste aus (es werden nur Clients angezeigt, die Pakete installiert haben) und klicken anschließend auf <i>"$I18N_add"</i>. Sie können auch Pakete von mehreren Clients hinzufügen, wobei mehrfach vorkommende Pakete nur einmal in die Liste aufgenommen werden.</LI>
+</ul></li>
+<!--v1.10 begin--><li>Aktivieren Sie die Option <i>"$I18N_downloadBasePackages"</i> so werden alle Dateien (außer dem Clientkernel) mit heruntergeladen, die nötig sind, um das Basissystem zu installieren.</li><!--v1.10 end-->
+<li>Klicken Sie abschließend auf <i>"$I18N_nextStep ($I18N_poolStep[3download])"</i></li>
+</ol>
+
+<u>Hinweis</u>
+Sie müssen selbst darauf achten, daß die Kombination aus ausgewählter Paketquellenliste und Paketen möglich ist. Um sicherzustellen, daß ein Download funktionieren wird, sollten Sie eine vorhandene Paketquellenliste und die Pakete eines Clients der mit dieser Liste aufgesetzt wurde, benutzen.

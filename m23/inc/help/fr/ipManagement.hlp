@@ -1,0 +1,27 @@
+$I18N_ipManagement
+Ce dialogue vous aide à gérer les paramètres de réseau pour des machines hors de m23.
+
+<u>$I18N_singleClientsNetworksettings</u>
+Ici, il vous est possible d'assigner des paramètres réseau spécifiques à des machines individuelles ou bien de réserver des valeurs spécifiques qui ne seront alors plus disponibles pour des postes client m23, ainsi il ne sera plus possible d'assigner à tort ces valeurs à un poste client m23.
+<ul>
+	<li>
+		<b>$I18N_lockIPMACClientName</b>: En utilisant la fonction <b>$I18N_lockIPMACClientName</b>, vous pouvez réserver un nom de poste client, une adresse IP ou une adresse MAC (par exemple l'adresse IP d'une imprimante réseau), afin que cette valeur ne puisse pas être utilisée à tort par des postes client m23. Entrez l'adresse IP, l'adresse MAC ou le nom que vous souhaitez réserver dans les champs <i>"$I18N_client_name"</i>, <i>"$I18N_ip"</i> ou <i>"$I18N_mac"</i>, puis cliquez sur <i>"$I18N_lockIPMACClientName"</i>. L'utilisation de la fonction "$I18N_lockIPMACClientName" nécessite au moins une valeur dans un des champs marqués par <sup>1</sup>.
+	</li>
+	<li>
+		<b>$I18N_addSettingsToDhcp</b>: Si vous souhaitez assigner des paramètres réseau à une machine (externe) en utilisant DHCP, entrez les valeurs désirées dans les champs <i>"$I18N_client_name"</i>, <i>"$I18N_ip"</i>, <i>"$I18N_netmask"</i>, <i>"$I18N_mac"</i> et <i>"$I18N_gateway"</i>, puis cliquez sur <i>"$I18N_addSettingsToDhcp"</i>. Tous les champs marqués par <sup>2</sup> sont nécessaires à cette fonction.
+	</li>
+</ul>
+
+<u>$I18N_IPRanges</u>
+Pour les plages d'adresses IP, une fonctionnalité similaire est disponible. Contrairement à la fonction <i>"$I18N_singleClientsNetworksettings"</i>, vous n'y entrerez pas des machines individuelles ou des paramètres de réseau unitaires, mais des plages d'adresses IP qui ne seront plus disponibles pour m23 ou bien dont les adresses IP seront assignées dynamiquement par le serveur DHCP aux machines n'étant pas de postes client m23.
+<ul>
+	<li>
+		<b>$I18N_lockIpRange</b>: Entrez la première et la dernière adresse IP dans les champs <i>"$I18N_firstIP"</i> et <i>"$I18N_lastIP"</i> et le masque de réseau correspondant (<i>"$I18N_netmask"</i>), puis cliquez sur <i>"$I18N_lockIpRange"</i>, s.v.p. Toutes les adresses IP dans cette plage (la première et la dernière adresse IP incluses) seront ne seront plus disponibles pour les postes client m23. Les valeurs marquées par <sup>1</sup> sont nécessaires pour cette fonction.
+	</li>
+	<li>
+		<b>$I18N_addDynamicIpRange</b>: Entrez la première et la dernière adresse IP dans les champs <i>"$I18N_firstIP"</i> et <i>"$I18N_lastIP"</i> et le masque réseau correspondant (<i>"$I18N_netmask"</i>) ainsi que la passerelle (<i>"$I18N_gateway"</i>) puis cliquez sur <i>"$I18N_addDynamicIpRange"</i>, s.v.p. Toutes les adresses IP dans la plage indiqué (la première et la dernière adresse IP incluses) seront assignées dynamiquement aux machines cherchant un serveur DHCP sur le réseau. Les valeurs marquées avec <sup>2</sup> sont nécessaires pour cette fonction.
+	</li>
+</ul>
+
+<u>Tableaux d'adresses</u>
+Le trois tableaux <i>"$I18N_usedIPs"</i>, <i>"$I18N_dynamicIpRanges"</i> et <i>"$I18N_lockedIpRanges"</i> contiennent les valeurs gérées par la gestion d'adresses IP. Le champ <i>"$I18N_search"</i> permet d'entrer un critère de recherche (IP, masque de réseau, MAC, nom d'un groupe ou d'autres propriétés d'un poste client) pour restreindre le nombre d valeurs affichées dans le tableau. Pour effacer les paramètres d'une des lignes du tableau, cochez la case en fin de la ligne correspondante, puis cliquez sur <i>"$I18N_remove"</i> ou utilisez le bouton <i>"$I18N_remove"</i> à la fin de la ligne.

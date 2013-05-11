@@ -1,0 +1,422 @@
+Template: grub2/linux_cmdline
+Type: string
+Description: Linux command line:
+ The following Linux command line was extracted from /etc/default/grub or the
+ `kopt' parameter in GRUB Legacy's menu.lst.  Please verify that it is correct,
+ and modify it if necessary.
+Description-ar.UTF-8: سطر أوامر لينكس:
+ سطر أوامر لينكس التالي تم استخراجه من /etc/default/grub أو
+ مُعطى `kopt' في ملف menu.lst الخاص بحزمة GRUB القديمة. رجاءً تحقق من
+ صحته وقم بتعديله إن كانت هناك ضرورة.
+Description-ast.UTF-8: Linia comandos Linux:
+ La siguiente llinia de comandu Linux fue estrayía dende /etc/default/grub o del parámetru `kopt' nel menú Legacy GRUB menu.lst. Por favor, comprueba que ye correuto, y modificalo si ye necesario.
+Description-be.UTF-8: Радок камандаў для ядра Linux:
+ Гэты радок камандаў для ядра Linux узяты з файлу /etc/default/grub або з параметру `kopt' у файле наладак (menu.lst) папярэдняй версіі GRUB. Калі ласка, пераканайцеся, што каманды запісаныя правільна, або папраўце іх, калі трэба.
+Description-ca.UTF-8: Línia d'ordres de Linux:
+ La següent línia d'ordres de Linux ha sigut extreta de /etc/default/grub o del paràmetre «kopt» del fitxer menu.lst del GRUB Legacy. Per favor verifique que és correcta, i modifiqueu-la si és necessari.
+Description-cs.UTF-8: Parametry pro Linux:
+ Následující řádka s parametry pro Linux byla získána ze starého souboru menu.lst z parametru „kopt“ nebo ze souboru /etc/default/grub. Zkontrolujte prosím, zda jsou parametry v pořádku a případně je upravte do požadované podoby.
+Description-de.UTF-8: Linux-Kommandozeile:
+ Die folgende Linux-Kommandozeile wurde aus /etc/default/grub oder dem Parameter »kopt« in GRUB Legacys menu.lst extrahiert. Bitte überprüfen Sie, ob diese korrekt ist und passen Sie sie falls notwendig an.
+Description-es.UTF-8: Linea de órdenes de Linux:
+ La siguiente linea de órdenes de Linux se extrajo del archivo «/etc/default/grub» o del parámetro «kopt» en el archivo «menu.lst» de la versión anterior de GRUB. Por favor, compruebe que esto es correcto y modifíquelo si es necesario.
+Description-fr.UTF-8: Ligne de commande de Linux :
+ La ligne de commande de Linux suivante a été récupérée via le fichier /etc/default/grub ou le paramètre « kopt » du fichier menu.lst utilisé par la version originelle de GRUB. Veuillez contrôler qu'elle est correcte et la modifier si nécessaire.
+Description-it.UTF-8: Riga di comando Linux:
+ La seguente riga di comando Linux è stata estratta da /etc/default/grub oppure dal parametro "kopt" presente nel file menu.lst del vecchio GRUB. Controllare che sia corretta e modificarla se necessario.
+Description-ja.UTF-8: Linux コマンド:
+ 以下の Linux のコマンドラインは /etc/default/grub か GRUB Legacy の menu.lst 上の「kopt」パラメータから取得されています。これが正しいものであるかを確認して、必要であれば修正してください。
+Description-ka.UTF-8: ლინუქსის ბრძანების სტრიქონი:
+ ლინუქსის შემდეგი ბრძანება მოძიებულ იქნა /etc/default/grub-დან ან `kopt' პარამეტრიდან ძველი GRUB-ის menu.lst-ში.  გადაამოწმეთ, რომ იგი სწორია, ან შეცვალეთ შესაბამისად.
+Description-nl.UTF-8: Linux-commandoregel:
+ De volgende Linux-commandoregel is gebaseerd op /etc/default/grub of op de 'kopt'-parameter gevonden in het menu.lst bestand van de oude-stijl GRUB. Wilt u deze op correctheid controleren en indien nodig aanpassen?
+Description-pt_BR.UTF-8: Linha de comando Linux:
+ A linha de comando Linux a seguir foi extraída de /etc/default/grub ou do parâmetro `kopt' do menu.lst do Grub Legado. Por favor, verifique se ela está correta, e modifique-a se necessário.
+Description-ru.UTF-8: Строка команд Linux:
+ Представленная ниже строка команд Linux была извлечена из /etc/default/grub или параметра `kopt' старого файла GRUB menu.lst. Проверьте, что всё правильно, или измените её, если требуется.
+Description-sv.UTF-8: Kommandorad för Linux:
+ Följande Linux-kommandorad hämtades från /etc/default/grub eller 'kopt'-parametern i gamla GRUB:s menu.lst. Verifiera att den är korrekt och modifiera den om nödvändigt.
+
+Template: grub2/linux_cmdline_default
+Type: string
+Default: quiet splash
+Description: Linux default command line:
+ The following string will be used as Linux parameters for the default menu
+ entry but not for the recovery mode.
+Description-ar.UTF-8: سطر أوامر لينكس الافتراضي:
+ سيتم استخدام سلسلة الحروف التالية كمُعطيات لتشغيل النظام لمُدخل القائمة
+ الافتراضي ولكن ليس لوضع الإنقاذ.
+Description-ast.UTF-8: Linia comandos por defeutu de Linux:
+ La siguiente cadena será usada como parámetros Linux pa la entrada del menú por defeutu, pero non pal mou recuperación.
+Description-be.UTF-8: Прадвызначаны радок камандаў для ядра Linux:
+ Наступны радок будзе выкарыстаны ў якасці параметраў ядра Linux для прадвызначанага пункту меню (але не для рэжыму аднаўлення).
+Description-ca.UTF-8: Línia d'ordres de Linux per defecte:
+ La següent cadena serà usada com a paràmetre Linux per al menú d'entrada per defecte però no per al mode de recuperació.
+Description-cs.UTF-8: Výchozí parametry pro Linux:
+ Následující parametry pro Linux se použijí pro výchozí položku menu, ale ne pro záchranný režim.
+Description-de.UTF-8: Linux Standard-Kommandozeile:
+ Die folgende Zeichenkette wird als Linux-Parameter für den Standardmenüeintrag, nicht aber für den Rettungsmodus verwandt.
+Description-es.UTF-8: Linea de órdenes predeterminada de Linux:
+ La siguiente cadena se utilizará como parámetros de Linux para la entrada predeterminada del menú pero no para el modo de recuperación.
+Description-fr.UTF-8: Ligne de commande par défaut de Linux :
+ Les paramètres indiqués seront utilisés pour le noyau Linux de l'entrée de menu par défaut mais pas pour le mode de secours.
+Description-it.UTF-8: Riga di comando Linux predefinita:
+ Questa stringa verrà usata come parametri per Linux nella voce di menu predefinita ma non nella modalità di ripristino.
+Description-ja.UTF-8: Linux デフォルトコマンドライン:
+ 以下の文字列はリカバリーモードではない通常のメニューエントリでの Linux パラメータとして使われます。
+Description-ka.UTF-8: ლინუქსის სტანდარტული ბრძანების სტრიქონი:
+ შემდეგი სტრიქონი გამოყენებულ იქნება როგორც ლინუქსის პარამეტრები მენიუს სტანდარტული შენატანისათვის, მაგრამ არა აღდგენის რეჟიმისათვის.
+Description-nl.UTF-8: Standaard Linux-commandoregel:
+ De volgende regel zal, behalve in de herstelmodus, gebruikt worden voor de Linux parameters in de standaard menuoptie.
+Description-pt_BR.UTF-8: Linha de comando padrão Linux:
+ A seguinte string será usada como um parâmetro Linux para a entrada no menu padrão, mas não para o modo de recuperação.
+Description-ru.UTF-8: Строка команд Linux по умолчанию:
+ Данная строка будет использоваться в качестве параметров Linux в меню в записи по умолчанию, кроме режима восстановления.
+Description-sv.UTF-8: Standardkommandorad för Linux:
+ Följande sträng kommer användas som Linux-parametrar för standardmenyvalet men inte för återhämtningsläge (eng. recovery).
+
+Template: grub2/kfreebsd_cmdline
+Type: string
+Description: kFreeBSD command line:
+ The following kFreeBSD command line was extracted from /etc/default/grub or the
+ `kopt' parameter in GRUB Legacy's menu.lst.  Please verify that it is correct,
+ and modify it if necessary.
+Description-ar.UTF-8: سطر أوامر KFreeBSD:
+ سطر أوامر KFreeBSD التالي تم استخراجه من /etc/default/grub أو
+ مُعطى `kopt' في ملف menu.lst الخاص بحزمة GRUB القديمة. رجاءً تحقق من صحته وقم بتعديله إن كانت هناك ضرورة.
+Description-ast.UTF-8: Linia comandos kFreeBSD:
+ La siguiente llinia de comandu kFreeBSD fue estrayía dende /etc/default/grub o del parámetru `kopt' nel menú Legacy GRUB menu.lst. Por favor, comprueba que ye correuto, y modificalo si ye necesario.
+Description-be.UTF-8: Радок камандаў для ядра kFreeBSD:
+ Гэты радок камандаў для kFreeBSD узяты з файлу /etc/default/grub або з параметру `kopt' у файле наладак (menu.lst) папярэдняй версіі GRUB. Калі ласка, пераканайцеся, што каманды запісаныя правільна, або папраўце іх, калі трэба.
+Description-cs.UTF-8: Parametry pro kFreeBSD:
+ Následující řádka s parametry pro kFreeBSD byla získána ze starého souboru menu.lst z parametru „kopt“ nebo ze souboru /etc/default/grub. Zkontrolujte prosím, zda jsou parametry v pořádku a případně je upravte do požadované podoby.
+Description-de.UTF-8: kFreeBSD-Kommandozeile:
+ Die folgende kFreeBSD-Kommandozeile wurde aus /etc/default/grub oder dem Parameter »kopt« in GRUB Legacys menu.lst extrahiert. Bitte überprüfen Sie, ob diese korrekt ist und passen Sie sie falls notwendig an.
+Description-es.UTF-8: Linea de órdenes de kFreeBSD:
+ La siguiente linea de órdenes de kFreeBSD se extrajo del archivo «/etc/default/grub» o del parámetro «kopt» en el archivo «menu.lst» de la versión anterior de GRUB. Por favor, compruebe que esto es correcto y modifíquelo si es necesario.
+Description-fr.UTF-8: Ligne de commande de kFreeBSD :
+ La ligne de commande de kFreeBSD suivante a été récupérée via le fichier /etc/default/grub ou le paramètre « kopt » du fichier menu.lst utilisé par la version originelle de GRUB. Veuillez contrôler qu'elle est correcte et la modifier si nécessaire.
+Description-it.UTF-8: Riga di comando kFreeBSD:
+ La seguente riga di comando kFreeBSD è stata estratta da /etc/default/grub oppure dal parametro "kopt" presente nel file menu.lst del vecchio GRUB. Controllare che sia corretta e modificarla se necessario.
+Description-ja.UTF-8: kFreeBSD コマンドライン:
+ 以下の kFreeBSD のコマンドラインは /etc/default/grub か GRUB Legacy の menu.lst 上の「kopt」パラメータから取得されています。これが正しいものであるかを確認して、必要であれば修正してください。
+Description-ka.UTF-8: kFreeBSD ბრძანების სტრიქონი:
+ შემდეგი kFreeBSD-ის ბრძანების სტრიქონი ამოღებულ იქნა /etc/default/grub-დან ან `kopt'  პარამეტრიდან ძველი GRUB-ის menu.lst-ში.  გადაამოწმეთ, რომ იგი სწორია, ან შეცვალეთ შესაბამისად.
+Description-nl.UTF-8: kFreeBSD-commandoregel:
+ De volgende kFreeBSD-commandoregel is gebaseerd /etc/default/grub of op de 'kopt'-parameter gevonden in het menu.lst bestand van de oude-stijl GRUB. Wilt u deze op correctheid controleren en indien nodig aanpassen?
+Description-pt_BR.UTF-8: Linha de comando kFreeBSD:
+ A linha de comando kFreeBSD a seguir foi extraída de /etc/default/grub ou do parâmetro `kopt' do menu.lst do Grub Legado. Por favor, verifique se ela está correta, e modifique-a se necessário.
+Description-ru.UTF-8: Строка команд kFreeBSD:
+ Представленная ниже строка команд kFreeBSD была извлечена из /etc/default/grub или параметра `kopt' старого файла GRUB menu.lst. Проверьте, что всё правильно, или измените её, если требуется.
+Description-sv.UTF-8: Kommandorad för kFreeBSD:
+ Följande kFreeBSD-kommandorad hämtades från /etc/default/grub eller 'kopt'-parametern i gamla GRUB:s menu.lst. Verifiera att den är korrekt och modifiera den om nödvändigt.
+
+Template: grub2/kfreebsd_cmdline_default
+Type: string
+Default: quiet
+Description: kFreeBSD default command line:
+ The following string will be used as kFreeBSD parameters for the default menu
+ entry but not for the recovery mode.
+Description-ar.UTF-8: سطر أوامر KFreeBSD الافتراضي:
+ سيتم استخدام النص التالي كمُعطى KFreeBSD لمُدخل القائمة
+ الافتراضي ولكن ليس لوضع الإنقاذ.
+Description-ast.UTF-8: Llínia comandos por defeutu kFreeBSD:
+ La siguiente cadena será usada cómo parametros kFreeBSD pa la entrada del menú por defeutu, pero non pal mou recuperación.
+Description-be.UTF-8: Прадвызначаны радок камандаў для ядра kFreeBSD:
+ Наступны радок будзе выкарыстаны ў якасці параметраў ядра kFreeBSD для прадвызначанага пункту меню (але не для рэжыму аднаўлення).
+Description-ca.UTF-8: Línia d'ordres de kFreeBSD per defecte:
+ La següent cadena serà usada com a paràmetre kFreeBSD per al menú d'entrada per defecte però no per al mode de recuperació.
+Description-cs.UTF-8: Výchozí parametry pro kFreeBSD:
+ Následující parametry pro kFreeBSD se použijí pro výchozí položku menu, ale ne pro záchranný režim.
+Description-de.UTF-8: kFreeBSD Standard-Kommandozeile:
+ Die folgende Zeichenkette wird als kFreeBSD-Parameter für den Standardmenüeintrag, nicht aber für den Rettungsmodus verwandt.
+Description-es.UTF-8: Linea de órdenes predeterminada de kFreeBSD:
+ La siguiente cadena se utilizará como parámetros de kFreeBSD para la entrada predeterminada del menú pero no para el modo de recuperación.
+Description-fr.UTF-8: Ligne de commande par défaut de kFreeBSD :
+ Les paramètres indiqués seront utilisés pour le noyau kFreeBSD de l'entrée de menu par défaut mais pas pour le mode de secours.
+Description-it.UTF-8: Riga di comando kFreeBSD predefinita:
+ Questa stringa verrà usata come parametri per kFreeBSD nella voce di menu predefinita ma non nella modalità di ripristino.
+Description-ja.UTF-8: kFreeBSD デフォルトコマンドライン:
+ 以下の文字列はリカバリーモードではない通常のメニューエントリでの kFreeBSD パラメータとして使われます。
+Description-ka.UTF-8: kFreeBSD-ის სტანდარტული ბრძანების სტრიქონი:
+ შემდეგი სტრიქონი გამოყენებულ იქნება როგორც kFreeBSD-ს პარამეტრები მენიუს სტანდარტული შენატანისათვის, მაგრამ არა აღდგენის რეჟიმისათვის.
+Description-nl.UTF-8: Standaard kFreeBSD-commandoregel:
+ De volgende regel zal, behalve in de herstelmodus, gebruikt worden voor de kFreeBSD parameters in de standaard menuoptie.
+Description-pt_BR.UTF-8: Linha de comando padrão kFreeBSD:
+ A seguinte string será usada como um parâmetro kFreeBSD para a entrada no menu padrão, mas não para o modo de recuperação.
+Description-ru.UTF-8: Строка команд kFreeBSD по умолчанию:
+ Данная строка будет использоваться в качестве параметров kFreeBSD в меню в записи по умолчанию, кроме режима восстановления.
+Description-sv.UTF-8: Standardkommandorad för kFreeBSD:
+ Följande sträng kommer användas som Linux-parametrar för standardmenyvalet men inte för återhämtningsläge (eng. recovery).
+
+
+Template: grub-pc/chainload_from_menu.lst
+Type: boolean
+Default: true
+Description: Chainload from menu.lst?
+ GRUB upgrade scripts have detected a GRUB Legacy setup in /boot/grub.
+ .
+ In order to replace the Legacy version of GRUB in your system, it is
+ recommended that /boot/grub/menu.lst is adjusted to chainload GRUB 2
+ from your existing GRUB Legacy setup.  This step may be automaticaly
+ performed now.
+ .
+ It's recommended that you accept chainloading GRUB 2 from menu.lst, and
+ verify that your new GRUB 2 setup is functional for you, before you install
+ it directly to your MBR (Master Boot Record).
+ .
+ In either case, whenever you want GRUB 2 to be loaded directly from MBR,
+ you can do so by issuing (as root) the following command:
+ .
+ upgrade-from-grub-legacy
+Description-ar.UTF-8: تفعيل التحميل التسلسلي من menu.lst؟
+ عثرت بريمجيات ترقية GRUB على إعداد سابق في /boot/grub.
+ .
+ لتستبدل النسخة السابقة من GRUB في نظامك، يُستحسن تعديل الملف /boot/grub/menu.lst لتحميل GRUB 2 تسلسلياً من إعداد GRUB السابق. ويمكن تنفيذ هذه الخطوة تلقائياً الآن.
+ .
+ يُستحسن أن تقبل التحميل التسلسلي لمدير الإقلاع GRUB من خلال الملف menu.lst، وتحقق من أن إعداد GRUB 2 صالح لاستخدامك، قبل أن تُبّته مباشرة على سجل الإقلاع الرئيسي MBR الخاص بك.
+ .
+ في أي من الحالتين، متى ما أردت تحميل GRUB 2 مباشرة من سجل الإقلاع الرئيسي MBR، يمكنك ذلك بإصدار الأمر التالي كمُستخدم root:
+ .
+ upgrade-from-grub-legacy
+Description-ast.UTF-8: ¿Cadena de carga dende menu.lst?
+ El scripts d'actualización GRUB detectó una configuración GRUB Legacy en /boot/grub.
+ .
+ Col fin de camudar la versión Legacy de GRUB nel to sistema, ye recomendable que /boot/grub/menu.lst seya axustáu a la cadena de carga GRUB 2 dende la to configuración Legacy GRUB existente. Esti pasu puede ser fechu automáticamente agora.
+ .
+ Ye recomendable que aceptes la cadena de carga GRUB 2 dende'l menu.lst, y compruebes que la to nueva configuración de GRUB 2 ye funcional pa ti, anantes de que lo instales directamente nel to MBR (Master Boot Record).
+ .
+ En cualisquier casu, cuando quieras que GRUB 2 seya cargáu directamente dende'l MBR, puedes facelo col siguiente comandu (como root):
+ .
+ upgrade-from-grub-legacy
+Description-be.UTF-8: Ланцуговая загрузка з menu.lst?
+ Скрыпты абнаўлення GRUB выявілі папярэднюю версію GRUB, усталяваную ў /boot/grub.
+ .
+ Каб замяніць папярэднюю версію GRUB у Вашай сістэме, раім выправіць файл /boot/grub/menu.lst такім чынам, каб GRUB 2 загружаўся праз механізм ланцуговай загрузкі (chainload) з існуючай папярэдняй версіі GRUB. Зараз можна зрабіць гэтую наладку аўтаматычна. 
+ .
+ Раім абраць опцыю ланцуговай загрузкі GRUB 2 з menu.lst, каб праверыць, ці прыдатны для Вас нанова ўсталяваны GRUB 2, перад тым як усталёўваць яго непасрэдна ў галоўны загрузачны запіс (MBR, Master Boot Record).
+ .
+ Калі ж Вы хочаце, каб GRUB 2 запускаўся непасрэдна з MBR, дастаткова запусціць з правамі карыстальніка root наступную каманду:
+ .
+ update-from-grub-legacy
+Description-ca.UTF-8: Voleu carregar en cadena des del menu.lst?
+ Els scripts d'actualització del GRUB han detectat una configuració del GRUB Legacy en /boot/grub.
+ .
+ A l'hora de reemplaçar la versió Legacy del GRUB que hi ha al sistema, és recomanable que es modifique /boot/grub/menu.lst per a carregar el GRUB 2 en cadena des de la vostra configuració del GRUB Legacy existent. Aquest pas es pot dur a terme ara.
+ .
+ És recomanable que accepteu la càrrega en cadena del GRUB 2 des del menu.lst, per a verificar que la nova configuració del GRUB 2 funciona correctament, abans de que l'instal·leu directament al vostre registre mestre d'arrencada (MBR).
+ .
+ En qualsevol cas, quan vulgueu que es carregue el GRUB 2 directament des de l'MBR, podeu fer-ho executant (com a root) l'ordre següent:
+ .
+ upgrade-from-grub-legacy
+Description-cs.UTF-8: Zavést přes menu.lst?
+ Aktualizační skripty GRUBu rozpoznaly v /boot/grub nastavení pro předchozí verzi GRUBu (tzv. GRUB Legacy).
+ .
+ Abyste na svém systému nahradili zastaralou verzi GRUBu, je doporučeno upravit /boot/grub/menu.lst tak, aby zavedl GRUB 2 pomocí stávajícího GRUB Legacy. Tento krok je nyní možné provést automaticky.
+ .
+ Před instalací GRUBu 2 přímo do MBR (Master Boot Record) se doporučuje nejprve vyzkoušet zavedení GRUBu 2 skrze menu.lst a teprve po ověření, že vše funguje očekávaným způsobem, zkusit instalaci do MBR.
+ .
+ Až se rozhodnete zavádět GRUB 2 přímo z MBR, stačí jako uživatel root spustit příkaz:
+ .
+ upgrade-from-grub-legacy
+Description-de.UTF-8: Chainload (Kettenladen) aus menu.lst?
+ Die Upgrade-Skripte von GRUB haben eine »GRUB Legacy«-Installation in /boot/grub erkannt.
+ .
+ Um die Legacy-Version von GRUB auf Ihrem System zu ersetzen, wird empfohlen, dass /boot/grub/menu.lst angepasst wird, so dass GRUB 2 aus Ihrer existierenden »GRUB Legacy«-Einrichtung heraus geladen wird. Dieser Schritt kann jetzt automatisch vollzogen werden.
+ .
+ Es wird empfohlen, dass Sie dem Chainloading von GRUB 2 aus der menu.lst zustimmen und überprüfen, dass die »GRUB 2«-Installation für Sie funktioniert, bevor Sie diese direkt in Ihren MBR (Master Boot Record) installieren.
+ .
+ Auf jeden Fall können Sie den folgenden Befehl (als root) eingeben, wenn Sie möchten, dass GRUB 2 direkt vom MBR geladen wird:
+ .
+ upgrade-from-grub-legacy
+Description-es.UTF-8: ¿Desea realizar la carga en cadena desde el archivo «menu.lst»?
+ Los scripts de actualización han detectado en «/boot/grub» una configuración heredada de una versión anterior de GRUB.
+ .
+ Para reemplazar la versión anterior de GRUB en el sistema, se recomienda que se configure «/boot/grub/menu.lst» para que cargue en cadena GRUB 2 a partir de la configuración heredada de GRUB. Este paso se debería hacer de forma automática.
+ .
+ Antes de instalar GRUB 2 directamente en el MBR («Master Boot Record») se recomienda que acepte cargarlo en cadena desde el archivo «menu.lst» y que verifique que puede utilizar la nueva configuración de GRUB 2.
+ .
+ En cualquier caso, cuando quiera que GRUB 2 se cargue directamente desde el MBR, puede hacerlo ejecutando (como usuario «root») la siguiente orden:
+ .
+ upgrade-from-grub-legacy
+Description-eu.UTF-8: Kargatu menu.lst fitxategitik?
+ GRUB eguneratzeko skriptek GRUB zahar baten konfigurazioa aurkitu dute /boot/grub-en.
+ .
+ GRUB zaharraren bertsioa behar bezala ordezkatzeko, gomendagarria da /boot/grub/menu.lst doitzea GRUB 2 dagoeneko instalaturik duzun GRUB zaharraren bidez kargatzeko.  Urrats hau automatikoki egin daiteke orain.
+ .
+ Gomendagarria da GRUB 2 menu.lst bidez kargatzea onartzea, GRUB 2 konfigurazioak zure beharrak betetzen dituela egiatzatzeko MBR-ran (Master Boot Record) zuzenean instalatu aurretik.
+ .
+ Edozein kasutan, GRUB 2 zuzenean MBR-tik kargatzea nahi duzunean exekutatu honako komandoa (root gisa):
+ .
+ upgrade-from-grub-legacy
+Description-fi.UTF-8: Ladataanko ketjutettuna tiedostosta menu.lst?
+ GRUBin päivityskomentosarjat ovat löytäneet vanhoja GRUB-asetuksia tiedostosta /boot/grub.
+ .
+ Järjestelmässä olevan vanhan GRUB-version korvaamiseksi on suositeltavaa muokata tiedostoa /boot/grub/menu.lst siten, että GRUB 2 ladataan olemassa olevista vanhoista GRUB-asetuksista. Tämä voidaan tehdä automaattisesti nyt.
+ .
+ On suositeltavaa, että hyväksyt GRUB 2:n ketjutetun lataamisen tiedostosta menu.lst ja varmistat, että uudet GRUB 2 -asetukset toimivat, ennen kuin asennat ne pääkäynnistyslohkoon (MBR).
+ .
+ Kun haluat asentaa GRUB 2:n latautumaan suoraan pääkäynnistyslohkosta, voit joka tapauksessa tehdä sen ajamalla pääkäyttäjänä seuraavan komennon:
+ .
+ upgrade-from-grub-legacy
+Description-fr.UTF-8: Faut-il enchaîner le chargement depuis menu.lst ?
+ Une installation standard de GRUB a été détectée dans /boot/grub.
+ .
+ Afin de remplacer cette installation, il est recommandé de modifier /boot/grub/menu.lst pour enchaîner le chargement de GRUB 2 depuis l'installation standard de GRUB (« chainload »). Veuillez choisir si vous souhaitez effectuer cette modification.
+ .
+ Il est recommandé de choisir cette option pour pouvoir confirmer le bon fonctionnement de GRUB 2 avant de l'installer directement sur le secteur d'amorçage (MBR : « Master Boot Record »).
+ .
+ Dans tous les cas, pour charger GRUB 2 directement depuis le secteur d'amorçage, vous devrez utiliser la commande suivante avec les privilèges du superutilisateur :
+ .
+ upgrade-from-grub-legacy
+Description-gl.UTF-8: ¿Cargar en cadea desde menu.lst?
+ Os scripts de actualización de GRUB detectaron unha configuración do GRUB antigo en /boot/grub.
+ .
+ Para substituír a versión antiga de GRUB do sistema, recoméndase axustar /boot/grub/menu.lst para cargar GRUB 2 en cadea desde a configuración existente do GRUB antigo. Pódese realizar este paso automaticamente agora.
+ .
+ Recoméndase que acepte cargar en cadea GRUB 2 desde menu.lst, e que verifique que a nova configuración de GRUB 2 funciona para vostede, antes de instalalo directamente no MBR (rexistro mestre de inicio).
+ .
+ En calquera caso, cando queira cargar GRUB 2 directamente desde o MBR, pode facelo executando (coma administrador) a seguinte orde:
+ .
+ upgrade-from-grub-legacy
+Description-it.UTF-8: Effettuare il caricamento in cascata da menu.lst?
+ Gli script di aggiornamento hanno rilevato una configurazione del vecchio GRUB in /boot/grub.
+ .
+ Per sostituire la vecchia versione di GRUB sul proprio sistema, si raccomanda di correggere il file /boot/grub/menu.lst in modo da caricare GRUB 2 in cascata dalla versione di GRUB esistente. Questa modifica può essere effettuata automaticamente adesso.
+ .
+ Si raccomanda di accettare il caricamento in cascata di GRUB 2 da menu.lst e di verificare che la nuova configurazione di GRUB 2 sia adatta alle proprie necessità prima di procedere con l'installazione diretta sul MBR (Master Boot Record).
+ .
+ In ogni caso, per caricare GRUB 2 direttamente dal MBR, è necessario eseguire (da root) il seguente comando:
+ .
+ upgrade-from-grub-legacy
+Description-ja.UTF-8: menu.lst から続けて起動 (チェーンロード)しますか?
+ GRUB のアップグレードプログラムは GRUB Legacy の設定が /boot/grub にあるのを検出しました。
+ .
+ システム中に存在している以前のバージョンの GRUB を置き換えるためには、/boot/grub/menu.lst にある GRUB Legacy の設定を使って GRUB2 をチェーンロードするように調整するのがお勧めです。この作業は自動的に実行されます。
+ .
+ MBR (マスタブートレコード) に直接インストールする前に、GRUB 2 が menu.lst からチェーンロードするように設定し、新しい GRUB 2 の設定が動作するかどうかを確認する事をお勧めします。
+ .
+ いずれにせよ、GRUB 2 を MBR から直接起動したくなった時いつでも (root にて) 以下のコマンドを入力することで対応できます:
+ .
+ upgrade-from-grub-legacy
+Description-ka.UTF-8: გსურთ Chainload ჩატვირთვა menu.lst-დან?
+ GRUB-ის განახლების სკრიფტები GRUB-ის ძველ ინსტალაციას გადააწყდა /boot/grub მდებარეობაში.
+ .
+ იმისათვის, რომ თქვენს სისტემაზე ჩანაცვლდეს ძველი GRUB-ის ინსტალაცია, სასურველია /boot/grub/menu.lst ჩასწორდეს, რომ შეასრულოს GRUB 2-ის chainload ჩატვირთვა თქვენი არსებული GRUB-ის ძველი ინსტალაციიდან.  ეს საფეხური შესაძლებელია ახლა შესრულდეს ავტომატურად.
+ .
+ სასურველია მიიღოთ menu.lst-დან GRUB 2-ის chainload მეთოდით ჩატვირთვა, ასევე გადაამოწმოთ, რომ თქვენი ახალი GRUB 2-ის ინსტალაცია ფუნქციონირებდეს, სანამ მას პირდაპირ Master Boot Record (MBR)-ში ჩაწერდეთ.
+ .
+ ნებისმიერ შემთხვევაში, როდესაც მოისურვებთ GRUB 2 პირდაპირ MBR-დან ჩაიტვირთოს, ამისათვის გაუშვით შემდეგი ბრძანება (root პრივილეგიებით):
+ .
+ upgrade-from-grub-legacy
+Description-nl.UTF-8: Doorschakelen vanuit menu.lst?
+ GRUB's opwaardeerscripts hebben een oude-stijl GRUB opstelling in /boot/grub gedetecteerd.
+ .
+ Om de oude-stijl versie van GRUB op uw systeem te vervangen wordt het aangeraden om het /boot/grub/menu.lst bestand zo te laten aanpassen dat naar GRUB2 wordt doorgeschakeld (chainloading) vanuit uw bestaande oude-stijl GRUB opstelling. Deze stap kan nu automatisch worden uitgevoerd.
+ .
+ U wordt aangeraden om het doorschakelen van GRUB2 vanuit menu.lst te accepteren, en daarna te verifiëren dat uw nieuwe GRUB2 opstelling werkt voordat u het in de MBR (Master Boot Record) installeert.
+ .
+ Waar u ook voor kiest, als u GRUB2 direct in de MBR wilt laden kunt u dat doen door het volgende commando uit te voeren (met beheerdersrechten (root)):
+ .
+ upgrade-from-grub-legacy
+Description-pt.UTF-8: Carregar a partir do menu.lst?
+ Os scripts de actualização do GRUB detectaram uma configuração do GRUB Legacy em /boot/grub.
+ .
+ Para substituir a versão Legacy do GRUB no seu sistema, é recomendado que o /boot/grub/menu.lst seja ajustado para carregar o GRUB 2 a partir da sua configuração do GRUB Legacy existente. Este passo pode ser executado agora automaticamente.
+ .
+ É recomendado que aceite carregar o GRUB 2 a partir do menu.lst, e verifique que a sua nova configuração do GRUB 2 está funcional, antes de o instalar directamente no seu MBR (Master Boot Record).
+ .
+ Em qualquer dos casos, quando quiser que o GRUB 2 seja carregado directamente a partir do MBR, pode fazê-lo correndo o seguinte comando (como root):
+ .
+ upgrade-from-grub-legacy
+Description-pt_BR.UTF-8: Carregar em cadeia a partir do menu.lst?
+ Os scripts de atualização do GRUB detectaram uma configuração do GRUB Legado em /boot/grub.
+ .
+ A fim de substituir a versão Legada do GRUB no seu sistema, é recomendável que o /boot/grub/menu.lst seja ajustado para carregar em cadeia o GRUB 2 a partir da sua configuração existente do GRUB Legado. Este passo pode ser executado automaticamente agora.
+ .
+ É recomendado que você aceite o carregamento em cadeia do GRUB 2 a partir do menu.lst, e verifique que sua nova configuração do GRUB 2 está funcional para você, antes de instalá-lo diretamente no seu MBR ("Master Boot Record").
+ .
+ Em todo caso, sempre que você quiser que o GRUB 2 seja carregado diretamente do MBR, você pode fazê-lo (como root) através do seguinte comando:
+ .
+ upgrade-from-grub-legacy
+Description-ro.UTF-8: Încărcare înlănțuită din menu.lst?
+ Scripturile de înnoire ale lui GRUB au detectat în /boot/grub o configurație pentru vechiul GRUB.
+ .
+ Pentru a înlocui vechea versiune a lui GRUB, se recomandă modificarea lui /boot/grub/menu.lst astfel încât GRUB 2 sa fie încărcat prin înlănțuire din vechea configurare. Acest pas poate fi făcut chiar acum în mod automat.
+ .
+ Este recomandat să acceptați înlănțuirea lui GRUB 2 din menu.lst și să verificați că noua configurație pentru GRUB 2 funcționează, înainte de a o instala în înregistrarea „Master Boot” (MBR).
+ .
+ Oricum, atunci când veți dori ca GRUB 2 sa fie încărcat direct din MBR, puteți rula (ca root) comanda următoare:
+ .
+ upgrade-from-grub-legacy
+Description-ru.UTF-8: Включить загрузку по цепочке (chainload) в menu.lst?
+ Сценарии обновления обнаружили установку GRUB предыдущего поколения в /boot/grub.
+ .
+ Чтобы заменить в системе версию GRUB предыдущего поколения, рекомендуется исправить /boot/grub/menu.lst так, чтобы GRUB 2 загружался по цепочке из существующей установки GRUB предыдущего поколения. Это может быть сделано автоматически прямо сейчас.
+ .
+ Рекомендуется ответить утвердительно и проверить, что новая настройка GRUB 2 работает так как нужно, перед тем как устанавливать её непосредственно в MBR (главную загрузочную запись).
+ .
+ В любом случае, если вы хотите, чтобы GRUB 2 загружался непосредственно из MBR, выполните следующую команду (имея права суперпользователя):
+ .
+ upgrade-from-grub-legacy
+Description-sv.UTF-8: Kedjeladda från menu.lst?
+ GRUB:s uppgraderingsskript har upptäckt en gammal GRUB-inställning i /boot/grub.
+ .
+ Om du vill ersätta den gamla versionen av GRUB i systemet, rekommenderas att /boot/grub/menu.lst justeras till att kedjeladda GRUB 2 från din existerande, gamla GRUB-inställning.  Detta steg kan nu utföras automatiskt.
+ .
+ Det rekommenderas att GRUB 2 kedjeladdas från menu.lst så att det kan säkerställas att den nya GRUB 2-inställningen fungerar innan den installeras direkt till huvudstartsektorn.
+ .
+ När GRUB 2 ska laddas direkt från huvudstartsektorn, kan detta åstadkommas genom att (som root) köra följande kommando:
+ .
+ upgrade-from-grub-legacy
+Description-zh_TW.UTF-8: ?????? menu.list ? chainload ???
+ GRUB ?????? /boot/grub ???? GRUB ? Legacy ???
+ .
+ ?????????? Legacy ?? GRUB,????? /boot/grub/menu.lst ?????? GRUB Legacy ???? chainload ????? GRUB 2??????????????
+ .
+ ???? GRUB 2 ??? MBR(??????)??,??????? menu.lst ??? chainload ????? GRUB 2,?????? GRUB 2 ?????????
+ .
+ ??????????,???? GRUB 2 ??? MBR ??????,???(? root ??)???????:
+ .
+ upgrade-from-grub-legacy
+
+Template: grub-pc/install_devices
+Type: multiselect
+Choices: ${CHOICES}
+Description: GRUB install devices:
+ The grub-pc package is being upgraded.  This menu allows you to select which
+ devices you'd like grub-install to be automatically run for, if any.
+ .
+ It is recommended that you do this in most situations, to prevent the installed
+ GRUB from getting out of sync with other components such as grub.cfg or with
+ newer Linux images it will have to load.
+ .
+ If you're unsure which drive is designated as boot drive by your BIOS, it is
+ often a good idea to install GRUB to all of them.
+ .
+ Note: It is possible to install GRUB to partition boot records as well.
+ However, this forces GRUB to use the blocklist mechanism, which makes it
+ less reliable, and therefore is not recommended.
+
+Template: grub-pc/postrm_purge_boot_grub
+Type: boolean
+Default: false
+Description: Remove GRUB 2 from /boot/grub?
+ Do you want to have all GRUB 2 files removed from /boot/grub?
+ .
+ Your system would be then unbootable if you don't install another bootloader.
+
+Template: grub-pc/kopt_extracted
+Type: boolean
+Default: false
+Description: for internal use
+
+Template: grub-pc/timeout
+Type: string
+Default: 10
+Description: GRUB timeout
+
+Template: grub-pc/hidden_timeout
+Type: boolean
+Default: true
+Description: Hide the GRUB timeout

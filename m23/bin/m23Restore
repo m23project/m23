@@ -1,0 +1,64 @@
+#!/bin/bash
+
+export DEBIAN_FRONTEND=noninteractive
+apt-get update
+
+#Restore debconf
+apt-get --force-yes -y install debconf-utils
+bzcat -d -c debconf.bz2 > /tmp/debconfm23Restore
+debconf-set-selections /tmp/debconfm23Restore
+
+#Get the difference between the installed packages of the backupped server and the current server
+dpkg --get-selections | grep -v deinstall$ | tr -d [:blank:] | sed 's/install$//g' | sort -u > /tmp/foundPKG
+bzcat -d -c packages.bz2 | sed 's/ /\n/g' | sort -u > /tmp/wantedPKG
+diff /tmp/foundPKG /tmp/wantedPKG | grep '>' | cut -d' ' -f2 > /tmp/missingPKG
+
+if [ `wc -l /tmp/missingPKG | cut -d' ' -f1` -gt 0 ]
+then
+	#Install the missing packages
+	for package in `cat /tmp/missingPKG`
+	do
+		echo -n "Trying to install $package ..."
+		apt-get --force-yes -y install $package
+		echo "finished"
+	done
+fi
+
+echo -n "Restoring m23 and m23captured databases..."
+dbuser=`grep "^user" /etc/mysql/debian.cnf | tr -d [:blank:] | cut -d'=' -f2 | head -1`
+dbpass=`grep "^password" /etc/mysql/debian.cnf | tr -d [:blank:] | cut -d'=' -f2 | head -1`
+bzcat -d -c m23.sql.bz2 | mysql -u$dbuser -p$dbpass m23
+bzcat -d -c m23captured.sql.bz2 | mysql -u$dbuser -p$dbpass m23captured
+echo " done"
+
+
+
+
+
+echo -n "Restoring m23 config files..."
+tar -xvjf m23config.tar.bz2 -C/
+echo " done"
+
+
+
+
+
+echo -n "Restoring /etc..."
+tar -xvjf etc.tar.bz2 -C/
+echo " done"
+
+
+
+
+
+dpkg-reconfigure m23
+/etc/init.d/networking restart
+if [ -e /etc/init.d/apache2 ]
+then
+	/etc/init.d/apache2 restart
+fi
+
+if [ -e /etc/init.d/apache ]
+then
+	/etc/init.d/apache restart
+fi

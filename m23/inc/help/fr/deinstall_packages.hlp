@@ -1,0 +1,23 @@
+<!-- rewritten v1.6 -->Désinstaller des paquets
+Dans ce dialogue, vous avez la possibilité d'effacer des paquets de vos postes client.
+
+helpInclude("packageTypes.inc");
+
+<u>Désinstaller des paquets:</u><ol>
+<LI>Choisissez &laquo;$I18N_package_selection&raquo; ou &laquo;$I18N_normal_packages&raquo;.</LI>
+<LI>Entrez le mot recherché pour votre paquet dans le champ de saisie <i>&laquo;$I18N_package_search&raquo;</i> ou laissez le champ vide si vous souhaitez afficher tous les paquets d'un type de paquets installés sur le poste client.</LI>
+<LI>Sous <i>&laquo;$I18N_found_packages&raquo;</i>, vous apparaissent tous les paquets correspondants à vos critères de recherche.</LI>
+<LI>Cochez la case pour les paquets dont vous souhaitez la désinstallation.</LI>
+<LI>Présélectionnez les paquets à désinstaller en cliquant sur <i>&laquo;$I18N_preselect&raquo;</i>.</LI>
+<LI>Répétez les étapes 1 à 5 selon vos besoins.</LI></ol>
+
+Après que vous ayez présélectionné les paquets pour la désinstallation, <!-- v1.5--> une coche verte indique les paquets à installer, une croix rouge indique ceux à effacer du client.<!--end v1.5--> Vous pouvez effacer la liste de ces paquets en cliquant sur <i>&laquo;$I18N_discard_all&raquo;</i> ou sélectionner des paquets et les effacer après avoir cliqué sur <i>&laquo;$I18N_discard_selected&raquo;</i>.
+
+Confirmez votre choix en cliquant sur &laquo;$I18N_deinstall_selected&raquo;.
+
+<!-- v1.3--><!-- v1.5--><u>$I18N_previewDeinstallation</u><!--end v1.5-->
+Avant la désinstallation effective, vous pouvez visualiser les conséquences de la désinstallation pour le poste client. Il est possible de prévisualiser quels paquets additionels seront désinstallés et si des problèmes pourraient apparaître en cliquant sur <i>&laquo;$I18N_previewDeinstallation&raquo;</i>. Après un court laps de temps, s'affichera une représentation prévisionnelle de la désinstallation.<!--end v1.3--><!-- v1.5-->
+Une prévision est uniquement possible sur un poste client seul et non un groupe.
+<!--end v1.5-->
+
+helpInclude("packageSelections.inc");

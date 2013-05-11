@@ -1,0 +1,213 @@
+Template: nbd-server/number
+Type: string
+Default: 0
+Description: How many nbd-servers do you want to run?
+ You can run multiple nbd-server processes, to export multiple files or
+ block devices. Please specify how many nbd-server configurations you
+ want this configuration script to generate.
+ .
+ Note that you can always add extra servers by adding them to
+ /etc/nbd-server/config, or by running 'dpkg-reconfigure nbd-server'.
+Description-cs.UTF-8: Kolik nbd-serverů chcete spustit?
+ Můžete mít spuštěných více procesů nbd-server a exportovat tak více souborů nebo blokových zařízení. Zadejte, kolik konfigurací nbd-serveru má tento konfigurační skript vytvořit.
+ .
+ Další servery můžete přidat později přidáním do /etc/nbd-server/config, nebo spuštěním „dpkg-reconfigure nbd-server“.
+Description-de.UTF-8: Wie viele nbd-Server möchten Sie betreiben?
+ Sie können mehrere nbd-Server-Prozesse betreiben, um mehrere Dateien oder Blockgeräte zu exportieren. Bitte geben Sie an, wie viele nbd-Server-Konfigurationen das Konfiguration-Skript für Sie erstellen soll.
+ .
+ Beachten Sie, dass Sie immer zusätzliche Server hinzufügen können, indem Sie sie zu /etc/nbd-server/config hinzufügen oder indem Sie »dpkg-reconfigure nbd-server« ausführen.
+Description-fr.UTF-8: Nombre de processus nbd-server à lancer :
+ Vous pouvez lancer plusieurs instances de nbd-server afin d'exporter plusieurs fichiers ou périphériques bloc. Veuillez indiquer le nombre d'instances de nbd-server qui doivent être configurées par cet outil.
+ .
+ Veuillez noter que vous pouvez ajouter des serveurs supplémentaires en les ajoutant à /etc/nbd-server/config ou en utilisant la commande « dpkg-reconfigure nbd-server ».
+Description-nl.UTF-8: Hoeveel nbd-servers wenst U uit te voeren?
+ U kan verschillende nbd-server processen uitvoeren, om verschillende bestanden of blok-apparaten te exporteren. Gelieve op te geven hoeveel nbd-server configuraties u dit configuratiescript wilt laten genereren
+ .
+ Merk op dat u altijd extra servers kan toevoegen door ze aan het bestand /etc/nbd-server/config toe te voegen, of door 'dpkg-reconfigure nbd-server' uit te voeren.
+Description-pt.UTF-8: Quantos servidores nbd você quer a funcionar?
+ Você pode correr vários processos nbd-server, para exportar vários ficheiros ou dispositivos de bloco. Por favor especifique quantas configurações de servidor nbd você quer que este script de configuração gere.
+ .
+ Note que você pode sempre adicionar servidores extra ao adicioná-los ao /etc/nbd-server, ou correndo 'dpkg-reconfigure nbd-server'.
+Description-vi.UTF-8: Bạn có muốn chạy mấy trình phục vụ nbd-server?
+ Bạn có khả năng chạy đồng thời nhiều tiến trình nbd-server, để xuất khẩu nhiều tập tin hay nhiều thiết bị khối. Hãy ghi rõ bao nhiêu cấu hình nbd-server bạn muốn văn lệnh cấu hình này tạo ra.
+ .
+ Ghi chú rằng bạn vẫn còn có thể dùng các trình phục vụ thêm, bằng cách thêm chúng vào tập tin cấu hình « /etc/nbd-server/config », hoặc bằng cách chạy lệnh cấu hình lại « dpkg-reconfigure nbd-server ».
+
+Template: nbd-server/port
+Type: string
+Description: What port do you want to run the server on (number: ${number})?
+ A port is a number in the TCP-header of a TCP/IP network package, that
+ defines which application should process the data being sent. For most
+ application-layer protocols, like FTP, HTTP, POP3 or SMTP, these numbers
+ have been well-defined by IANA, and can be found in /etc/services or STD
+ 2; for NBD, however, this would not be appropriate since NBD works with a
+ separate port for each and every block device being used.
+ .
+ Therefore, NBD does not have a standard portnumber, which means you need
+ to enter one. Make sure the portnumber being entered is not in use
+ already.
+Description-ca.UTF-8: A quin port voleu vincular el servidor (nombre: ${number})?
+ Un port é sun nombre en la capçalera TCP d'un paquet de xarxa de TCP/IP que defineix quina aplicació hauria de processar les dades que s'envien. Per a la majoria de protocols de la capa d'aplicació com l'FTP, l'HTTP, el POP3 o l'SMTP, els nombres els defineix la IANA, i es poden trobar a /etc/services o STD2. Pel NBD no seria necessari ja que s'executa en un port diferent per a cada dispositiu de blocs que s'utilitza.
+ .
+ Per tant el NBD no té un nombre de port estàndard, per la qual cosa n'heu d'introduir un. Assegureu-vos que el nombre de port que introduïu no s'estigui utilitzant.
+Description-cs.UTF-8: Na kterém portu chcete spustit server (číslo ${number})?
+ Port je číslo v TCP hlavičce síťového TCP/IP paketu, které určuje, která aplikace by měla obdržet zaslaná data. Pro většinu aplikačních protokolů typu FTP, HTTP, POP3 nebo SMTP jsou tato čísla definována organizací IANA a jsou k nalezení v /etc/services nebo STD 2. To však není případ NBD, které pracuje se samostatným portem pro každé blokové zařízení.
+ .
+ NBD tedy nemá standardní číslo portu, což znamená, že nějaké musíte zadat. Ujistěte se, že zadané číslo portu již není využíváno jinou aplikací.
+Description-de.UTF-8: Auf welchem Port soll der Server (Nummer: ${number}) laufen?
+ Eine Portnummer ist für die TCP-Kopfzeile in einem TCP/IP-Paket wichtig, da dadurch die für das Datenpaket passende Anwendung bestimmt wird. Für die meisten Protokolle der Anwendungs-Schicht wie z.B. FTP, HTTP, POP3 oder SMTP sind die zu verwendenden Portnummern durch die IANA bestimmt und können in der Datei /etc/services oder STD 2 nachgeschlagen werden. Für NBD ist dies nicht festgelegt, da für jedes Blockgerät ein eigener Port verwendet wird.
+ .
+ Deshalb hat NBD keinen festgelegten Port. Daher müssen Sie den zu verwendenden Port eingeben. Wählen Sie einen noch nicht benutzten Port aus.
+Description-fr.UTF-8: Port sur lequel nbd-server (numéro : ${number}) sera à l'écoute :
+ Un port est un nombre dans l'en-tête TCP d'un paquet TCP/IP, qui permet d'indiquer quelle application doit traiter l'information qu'il contient. Pour de nombreux protocoles de la couche réseau applicative, comme FTP, HTTP, POP3 ou SMTP, ces numéros de port ont été normalisés par l'IANA. On peut les trouver dans /etc/services ou STD 2. Pour NBD, cela n'est toutefois pas possible puisqu'il fonctionne avec un port distinct pour chaque périphérique bloc.
+ .
+ En conséquence, NBD ne possède pas de port officiellement attribué et vous devez donc en indiquer un. Assurez-vous que le port que vous indiquez n'est pas actuellement utilisé.
+Description-nl.UTF-8: Op welke poort wil je de server laten draaien (nummer: ${number})?
+ Een poort is een nummer in de TCP-header van een TCP/IP netwerkpakket, dewelke definieert welke applicatie de verzonden data moet verwerken. Voor de meeste application-layer protocollen, zoals FTP, HTTP, POP3 of SMTP, zijn deze nummers duidelijk gedefinieerd door IANA, en kunnen ze gevonden worden in het bestand /etc/services, of in STD2; voor NBD is dit echter geen goed idee vermits nbd met een aparte poort werkt voor elk gebruikt block device.
+ .
+ Daarom heeft NBD geen standaard poortnummer, wat betekent dat je er zelf één moet opgeven. Zorg er voor dat het poortnummer dat je opgeeft nog niet in gebruik is.
+Description-pt.UTF-8: Em que porto você quer correr o servidor (número: ${number})?
+ O porto é um número no cabeçalho TCP dum pacote de rede TCP/IP, o qual define qual a aplicação deverá processar os dados que são enviados. Para a maioria das aplicações e protocolos, como FTP, HTTP, POP3 ou SMTP, este números foram bem definidos pela IANA, e podem ser encontrados em /etc/services ou STD 2; contudo, para o NBD, isto não seria apropriado pois NBD funciona com portos separados para cada um dos dispositivos de bloco que são usados.
+ .
+ Portanto, NBD não tem um número de porto standard, o que quer dizer que você vai ter que indicar um. Certifique-se que o número de porto indicado não está já a ser usado.
+Description-pt_BR.UTF-8: Em qual porta você deseja executar o servidor (número: ${number}) ?
+ Uma porta é um número no cabeçalho TCP de um pacote de rede TCP/IP que define qual aplicação deverá processar os dados sendo enviados. Para a maioria dos protocolos da camada de aplicação, como FTP, HTTP, POP3 ou SMTP, este números foram bem definidos pelo IANA, e podem ser encontrados em /etc/services ou STD2; para NBD, porém, isto não seria aproriado uma vez que o NBD trabalha com uma porta separada para cada dispositivo de bloco sendo usado.
+ .
+ Portanto,o NBD não possui um número de porta padrão, o que significa que você precisa informar um número. Certifique-se de que o número de porta sendo informado já não esteja em uso.
+Description-vi.UTF-8: Bạn có muốn chạy trình phục vụ này trên cổng nào (số : ${number})?
+ Cổng là một con số trong phần đầu TCP (TCP header) của một gói mạng TCP/IP mà xác định ứng dụng nào nên xử lý dữ liệu đang được gửi. Cho phần lớn giao thức kiểu tầng ứng dụng, như FTP, HTTP, POP3 hay SMTP, các con số này đã do IANA định nghĩa được, và nằm trong « /etc/services » hay « STD 2 ». Tuy nhiên, nó không thích hợp với NBD, vi NBD sử dụng một cổng riêng cho mỗi tính năng khối được dùng.
+ .
+ Vì vậy, NBD không có một số hiệu cổng chuẩn, mà có nghĩa là bạn cần phải nhập vào đây một số thứ tự cổng. Hãy chắc là bạn nhập một số hiệu cổng vẫn còn rảnh.
+
+Template: nbd-server/filename
+Type: string
+Description: What file do you want to export (number: ${number})?
+ You need to enter a filename to a file or block device you want to export
+ over the network. You can either export a real block device (e.g.
+ "/dev/hda1"), export a normal file (e.g. "/export/nbd/bl1"), or export a
+ bunch of files all at once; for the last option, you have the
+ possibility to use "%s" in the filename, which will be expanded to the
+ IP-address of the connecting client. An example would be
+ "/export/swaps/swp%s".
+ .
+ Note that it is possible to tune the way in which the IP address will
+ be substituted in the file name. See "man 5 nbd-server" for details.
+Description-cs.UTF-8: Který soubor chcete exportovat (číslo ${number})?
+ Musíte zadat jméno souboru nebo blokového zařízení, které chcete exportovat přes síť. Můžete exportovat buď skutečné blokové zařízení (např. „/dev/hda1“), běžný soubor (např. „/export/nbd/bl1“), nebo dokonce skupinu souborů najednou. U poslední možnosti můžete ve jméně souboru použít „%s“, což se expanduje na IP adresu připojujícího se klienta, například „/export/swaps/swp%s“.
+ .
+ Způsob, jakým bude v názvu souboru nahrazena IP adresa, se dá měnit. Více naleznete v manuálové stránce „man 5 nbd-server“.
+Description-de.UTF-8: Welche Datei soll exportiert werden (Nummer: ${number})?
+ Sie müssen einen Dateinamen oder ein Blockgerät angeben, das Sie über das Netz exportieren möchten. Sie können entweder ein Gerät (z.B. »/dev/hda1«), eine normale Datei (z.B. »/export/nbd/bl1«) oder aber eine Gruppe von Dateien auf einmal exportieren. Für die letzte Option verwenden Sie »%s« im Dateinamen, damit der Name mit den IP-Adressen der sich verbindenden Clients aufgefüllt wird. Ein Beispiel ist »/etc/swaps/swp%s«.
+ .
+ Beachten Sie, dass Sie über den Dateinamen einstellen können, auf welche Art IP-Adressen substituiert werden. Lesen Sie »man 5 nbd-server« für weitere Details.
+Description-fr.UTF-8: Fichier à exporter (numéro : ${number}) :
+ Veuillez indiquer le nom d'un fichier ou d'un périphérique bloc que vous souhaitez exporter via le réseau. Vous pouvez exporter un véritable périphérique bloc (par exemple « /dev/hda1 »), un fichier normal (par exemple « /export/nbd/bl1 ») ou plusieurs fichiers à la fois. Dans ce dernier cas, vous pouvez utiliser « %s » dans le nom du fichier, cette valeur étant alors remplacée par l'adresse IP du client qui s'y connectera. Un exemple serait « /export/swap/swp%s ».
+ .
+ Veuillez noter qu'il est possible de régler la méthode de remplacement de l'adresse IP dans le nom de fichier. Veuillez consulter la page de manuel de nbd-server(5) pour plus d'informations.
+Description-nl.UTF-8: Welk bestand wil je exporteren (nummer: ${number})?
+ Je moet hier een bestandnaam opgeven van een bestand of apparaatbestand welke je via het netwerk wilt exporteren. Je kunt ofwel een echt apparaatbestand exporteren (b.v. "/dev/hda1"), een normaal bestand exporteren (b.v. "/export/nbd/bl1"), of een hoop bestanden in één keer; voor de laatste optie kan je "%s" in de bestandnaam gebruiken, wat dan vervangen zal worden door het IP-adres van de client die probeert te connecteren. Een mogelijk voorbeeld is "/export/swaps/swp%s".
+ .
+ Merk op dat het mogelijk is om de wijze waarop het IP-adres vervangen wordt in de bestandnaam, aan te passen. Zie "man 5 nbd-server" voor details.
+Description-pt.UTF-8: Qual ficheiro você quer exportar (número: ${number})?
+ Você precisa indicar um nome de ficheiro ou dispositivo de bloco que você quer exportar para a rede. Você pode exportar um dispositivo de bloco real (ex. "/dev/hda1"), exportar um ficheiro normal (ex. "/export/nbd/bl1"), ou exportar um leque de ficheiros duma vez; para a última opção, você tem a possibilidade de usar "%s" no nome de ficheiro, o qual será expandido ao endereço IP do cliente a ligar. Um exemplo seria "/export/swaps/swp%s".
+ .
+ Note que é possível afinar a maneira como o endereço IP será substituido no nome de ficheiro. Veja "man 5 nbd-server" para detalhes.
+Description-vi.UTF-8: Bạn có muốn xuất khẩu tập tin nào (số : ${number})?
+ Bạn cần phải nhập vào đây tên tập tin của một tập tin hay thiết bị khối bạn muốn xuất khẩu qua mạng. Bạn có thể hoặc xuất khẩu một thiết bị khối thật (v.d. « /dev/hda1 »), hoặc xuất khẩu một tập tin bình thường (v.d. « export/nbd/bl1 »), hoặc xuất khẩu một số tập tin cùng lúc. Đối với tùy chọn cuối cùng, bạn có thể sử dụng « %s » trong tên tập tin, mà sẽ được mở rộng tới địa chỉ IP của trình khách đang kết nối. Thí dụ: « export/swaps/swp%s ».
+ .
+ Ghi chú rằng cũng có thể điều chỉnh cách thay thế địa chỉ IP trong tên tập tin. Xem trang hướng dẫn « man 5 nbd-server » để tìm chi tiết.
+
+Template: nbd-server/autogen
+Type: error
+Description: AUTO_GEN is set at "n" in /etc/nbd-server
+ /etc/nbd-server contains a line "AUTO_GEN=n" -- or something equivalent in
+ bash-syntaxis. This means you don't want me to automatically regenerate
+ that file.
+ .
+ Note that the current version of the nbd-server package no longer uses
+ /etc/nbd-server; rather, it uses a new configuration file that is read by
+ nbd-server itself (rather than the initscript), and which allows to set more
+ options. See 'man 5 nbd-server' for details.
+ .
+ If you remove or uncomment the AUTO_GEN line, a file
+ /etc/nbd-server/config in the new format may be generated based on your
+ current configuration. Until then, your nbd-server installation will be
+ broken.
+Description-cs.UTF-8: Volba AUTO_GEN je v /etc/nbd-server nastavena na „n“.
+ Soubor /etc/nbd-server obsahuje řádek „AUTO_GEN=n“, nebo jeho bashový ekvivalent. To znamená, že nechcete, abych soubor obnovoval automaticky.
+ .
+ Aktuální verze balíku nbd-server již nepoužívá konfigurační soubor /etc/nbd-server, který byl načítán spouštěcím skriptem nbd. Nový konfigurační soubor je čten samotným nbd-serverem a umožňuje nastavit více voleb.Podrobnosti naleznete v manuálové stránce nbd-server(5).
+ .
+ Pokud odstraníte nebo odkomentujete řádek AUTO_GEN, vytvoří se nový soubor /etc/nbd-server/config na základě stávající konfigurace. Do té doby bude instalace nbd-serveru porušená.
+Description-de.UTF-8: AUTO_GEN=n wurde in /etc/nbd-server auf »n« gesetzt
+ /etc/nbd-server enthält eine Zeile »AUTO_GEN=n« oder etwas entsprechendes in der Bash-Syntax. Das bedeutet, dass Sie die Datei nicht automatisch regenerieren lassen möchten.
+ .
+ Beachten Sie, dass die aktuelle Version des Pakets nbd-server /etc/nbd-server nicht mehr benutzt, stattdessen verwendet es eine neue Konfigurationsdatei, die vom nbd-Server selbst (statt vom Initskript) eingelesen wird und die es auch erlaubt, mehr Optionen zu setzten. Lesen Sie »man 5 nbd-server« für weitere Details.
+ .
+ Falls Sie die AUTO_GEN-Zeile entfernen oder einkommentieren, kann eine Datei /etc/nbd-server/config im neuen Format, basierend auf Ihrer aktuellen Konfiguration, erstellt werden. Bis dahin wird Ihre nbd-server-Installation defekt sein.
+Description-fr.UTF-8: La variable AUTO_GEN vaut « n » dans /etc/nbd-server.
+ Une ligne de /etc/nbd-server spécifie « AUTO_GEN=n » (ou quelque chose d'équivalent en syntaxe bash). Cela signifie que vous ne souhaitez pas que ce fichier soit modifié par cet outil de configuration.
+ .
+ Veuillez noter que la version actuelle du paquet nbd-server n'utilise plus /etc/nbd-server. À la place, un fichier de configuration est lu par nbd-server lui-même : il gère plus d'options qui sont détaillées dans « man 5 ndb-server ».
+ .
+ Si vous supprimez ou commentez la ligne AUTO_GEN, un fichier /etc/nbd-server/config sera créé au nouveau format, à partir de la configuration actuelle. Tant que cette opération n'aura pas été effectuée, l'installation du serveur nbd ne sera pas opérationnelle.
+Description-nl.UTF-8: AUTO_GEN staat op "n" in /etc/nbd-server
+ /etc/nbd-server bevat een lijn "AUTO_GEN=n" -- of iets gelijkaardigs in bash-syntaxis. Dit betekent dat je niet wilt dat ik dat bestand automatisch hergenereer.
+ .
+ Merk op dat de huidige versie van het nbd-server pakket het bestand /etc/nbd-server niet langer ondersteunt. In de plaats daarvan gebruikt het een nieuwe stijl van configuratiebestand dat gelezen wordt door nbd-server zelf (in plaats van het init-script), en dat meer mogelijkheden heeft. Zie "man 5 nbd-server" voor details.
+ .
+ Als u de AUTO_GEN lijn verwijdert of uitcommentarieert, dan kan een bestand /etc/nbd-server/config gegenereerd worden gebaseerd op uw huidige configuratie. Tot dan zal uw nbd-server installatie niet werken.
+Description-pt.UTF-8: AUTO_GEN está regulado a "n" em /etc/nbd-server
+ O /etc/nbd-server contém uma linha "AUTO_GEN=n" -- ou algo semelhante em sintaxe bash. Isto quer dizer que você não quer que eu regenere esse ficheiro automaticamente.
+ .
+ Note que a actual versão do pacote nbd-server já não usa /etc/nbd-server; em vez disso, usa um novo ficheiro de configuração que é lido pelo próprio nbd-server (ao invés do script de iniciação), o qual permite definir mais opções. Veja man 5 nbd-server para mais detalhes.
+ .
+ Se você remover ou comentar a linha AUTO_GEN, um ficheiro /etc/nbd-server/config será gerado no novo formato baseado na sua configuração actual. Até lá, a sua instalação do nbd-server não estará funcional.
+Description-vi.UTF-8: « AUTO_GEN » đã đặt thành « n » trong « /etc/nbd-server ».
+ Trong tập tin « /etc/nbd-server », có một dòng « AUTO_GEN=n » hay tương tự trong cú pháp trình bao (sh-syntaxis). Có nghĩa là bạn không muốn trình này tự động tạo ra lại tập tin đó (« y » là Có, « n » là Không).
+ .
+ Ghi chú rằng phiên bản hiện thời của gói nbd-server không còn sử dụng lại « etc/nbd-server », vì nó sử dụng một tập tin cấu hình mới được đọc bởi nbd-server chính nó (hơn là văn lệnh khởi động) và mà cho phép đặt nhiều tùy chọn hơn. Xem « man 5 nbd-server » để tìm chi tiết.
+ .
+ Nếu bạn gỡ bỏ hay hủy ghi chú dòng « AUTO_GEN », một tập tin « /etc/nbd-server/config » theo định dạng mới có thể được tạo ra dựa vào cấu hình hiện thời của bạn. Chưa tạo ra thì bản cài đặt nbd-server bị hỏng.
+
+Template: nbd-server/convert
+Type: boolean
+Default: true
+Description: Convert old style nbd-server configuration file?
+ A pre-2.9 nbd-server configuration file has been found on your system.
+ The current nbd-server package no longer supports this file; if you
+ depend on it, your nbd-server no longer works. If you accept this
+ option, the system will generate a new style configuration file based
+ upon your old style configuration file. Then, the old style
+ configuration file will be removed. If you do not accept this option, a
+ new style configuration file will be generated based on a number of
+ questions that will be asked; these may be the very same questions that
+ you used to create the old style configuration file in the first place.
+ .
+ If you already have a new style configuration file and you accept this
+ option, you will shortly see a "modified configuration file" prompt, as
+ usual.
+Description-cs.UTF-8: Převést starý konfigurační soubor nbd-serveru?
+ Na vašem systému byl nalezen konfigurační soubor nbd-serveru < 2.9. Současný balík nbd-server již tento soubor nepodporuje; pokud na souboru závisíte, nbd-server již nebude fungovat. Budete-li souhlasit, systém automaticky vytvoří nový konfigurační soubor založený na původním souboru a pak původní soubor smaže. V opačném případě bude nový konfigurační soubor vytvořen na základě několika otázek a vašich odpovědí (je docela možné, že jste původní konfigurační soubor vytvořili právě takto).
+ .
+ Pokud již nový konfigurační soubor máte a na tuto otázku povolíte kladně, zobrazí se klasická výzva „změněný konfigurační soubor“.
+Description-de.UTF-8: Nbd-Server-Konfiguration im alten Format konvertieren?
+ Eine nbd-server-Konfigurationsdatei (vor Version 2.9) wurde auf Ihrem System gefunden. Das aktuelle Paket nbd-server unterstützt diese Datei nicht mehr; falls Sie diese benötigen, wird Ihr nbd-server nicht mehr funktionieren. Falls Sie diese Option akzeptieren, wird das System eine Konfigurationsdatei im neuen Format, basierend auf Ihrer Konfigurationsdatei im alten Format, erstellen. Dann wird die Konfigurationsdatei im alten Format entfernt. Falls Sie dieser Option nicht zustimmen, wird eine Konfigurationsdatei, basierend auf einer Reihe von Fragen, erstellt; dies könnten die gleichen Fragen sein, die Ihnen auch bei der Erstellung der Konfigurationsdatei im alten Format gestellt wurden.
+ .
+ Falls Sie bereits eine Konfigurationsdatei im neuen Format haben und Sie dieser Option zustimmen, wird in Kürze wie gewohnt die Abfrage »geänderte Konfigurationsdatei« erfolgen.
+Description-fr.UTF-8: Faut-il convertir l'ancien fichier de configuration de nbd-server ?
+ Un fichier de configuration pour une version de nbd-server antérieure à 2.9 a été trouvé sur le système. La version actuelle du paquet nbd-server ne gère plus ce fichier et le serveur nbd risque de ne plus fonctionner correctement. Si vous choisissez de convertir l'ancien fichier, un nouveau fichier sera créé à partir de l'ancien qui sera ensuite supprimé. Dans le cas contraire, un nouveau fichier sera créé à partir des réponses à des questions qui seront posées. Ces questions risquent d'être les mêmes que celles auxquelles vous avez déjà répondu lors de la première installation du paquet.
+ .
+ Si vous utilisez déjà un fichier de configuration au nouveau format et que vous choisissez cette option, vous verrez apparaître, brièvement, une notification pour « fichier de configuration modifié ».
+Description-nl.UTF-8: Het oude-stijl nbd-server configuratiebestand converteren?
+ Een configuratiebestand van nbd-server met een versie ouder dan 2.9 is op uw systeem gevonden. Het huidige nbd-server pakket ondersteunt dit bestand niet meer; als u er gebruik van maakt, dan zal uw nbd-server niet langer werken. Als u deze optie accepteert, dan zal het systeem een nieuwe-stijl configuratiebestand genereren gebaseerd op uw oude-stijl configuratiebestand. Daarna zal het oude-stijl configuratiebestand verwijderd worden. Als u deze optie niet accepteert, dan zal een nieuwe-stijl configuratiebestand gegenereerd worden op basis van een aantal vragen die u gesteld zullen worden; dit kunnen zeer wel dezelfde vragen zijn waarmee het oude-stijl configuratiebestand oorspronkelijk aangemaakt was.
+ .
+ Als u reeds een nieuwe-stijl configuratiebestand hebt en u accepteert deze optie, dan zal u zodadelijk een "gewijzigd configuratiebestand"-prompt zien, zoals gewoonlijk.
+Description-pt.UTF-8: Converter o estilo antigo do ficheiro de configuração do servidor nbd?
+ Foi encontrado um ficheiro de configuração de servidor nbd pré-2.9 no seu sistema. O actual pacote nbd-server já não suporta este ficheiro. Se você depender dele, o seu servidor nbd não irá mais funcionar. Se aceitar esta opção, o sistema irá gerar um ficheiro de configuração com o novo estilo baseando-se no ficheiro de configuração de estilo antigo. Então o ficheiro de configuração antigo será removido. Se você não aceitar esta opção, um ficheiro de configuração com novo estilo será gerado baseado numa série de perguntas que lhe serão feitas, estas podem ser as mesmas perguntas que foram usadas em primeiro lugar para criar o antigo ficheiro configuração.
+ .
+ Se você já tem um ficheiro de configuração com novo estilo e aceitar esta opção, você irá ver brevemente um aviso "modified configuration file", como é habitual.
+Description-vi.UTF-8: Chuyển đổi tập tin cấu hình nbd-server kiểu cũ không?
+ Tìm thấy một tập tin cấu hình nbd-server cũ hơn phiên bản 2.9 trên hệ thống của bạn. Gói nbd-server hiện thời không còn hỗ trợ lại tập tin này; nếu bạn phụ thuộc vào nó, nbd-server của bạn sẽ không còn chạy được lại. Bật tùy chọn này thì hệ thống sẽ tạo ra một tập tin cấu hình kiểu mới dựa vào tập tin cấu hình kiểu cũ của bạn. Sau đó, tập tin cũ sẽ được gỡ bỏ. Không bật tùy chọn này thì một tập tin cấu hình kiểu mới sẽ được tạo ra dựa vào một số câu sẽ được hỏi; chúng có thể là cùng những câu hỏi bạn đã sử dụng để tạo tập tin cấu hình cũ lần trước.
+ .
+ Nếu bạn đã có một tập tin cấu hình kiểu mới, và cũng bật tùy chọn này, bạn sẽ thấy một dấu nhắc « tập tin cấu hình đã sửa đổi » như bình thường.

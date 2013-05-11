@@ -1,0 +1,101 @@
+#!/bin/bash
+
+#Include user and password
+if [ -e /m23/root-only/serverBackup.conf ]
+then
+	. /m23/root-only/serverBackup.conf
+else
+	echo "/m23/root-only/serverBackup.conf NOT found!"
+	exit 1
+fi
+
+#Check if user and password were set
+if [ -z $user ] || [ -z $pass ]
+then
+	echo "\$user and/or \$pass variable empty!"
+	exit 2
+fi
+
+if [ $# -lt 1 ]
+then
+	echo "Uploads a file to share-online.biz"
+	echo "Usage: $0 <file to upload>"
+fi
+
+
+
+upload() {
+	#First parameter is the file to upload
+	file="$1"
+	
+	#Store a string with current date and time
+	now=`date +%Y-%m-%d-%H.%M`
+	
+	#Get the download session
+	sessSrv=`curl http://www.share-online.biz/upv3_session.php -F username=$user -F password=$pass`
+	
+	#Get the download session and upload server from the result
+	sess=`echo $sessSrv | cut -d';' -f1`
+	srv=`echo $sessSrv | cut -d';' -f2`
+	
+	#Calculate file size and MD5 of the original file
+	size=`find $file -printf "%s"`
+	md5=`md5sum $file | cut -d' ' -f1`
+	
+	echo "curl $srv -F username=$user -F password=$pass -F upload_session=$sess -F chunk_no=1 -F chunk_number=1 -F filesize=$size -F fn=@$file"
+	
+	#Upload the file
+	linkSizeMD5=`curl $srv -F username=$user -F password=$pass -F upload_session=$sess -F chunk_no=1 -F finalize=1 -F chunk_number=1 -F filesize=$size -F fn=@$file`
+
+	#Check if there was an upload error (not enough ";" are in the result answer)
+	if [ `echo $linkSizeMD5 | sed 's/;/;\n/g' | grep -c ';'` -lt 2 ]
+	then
+		echo "ERR: $linkSizeMD5"
+		exit 4
+	fi
+
+	#Get the download url, the uploaded file size and MD5
+	dlUrl=`echo $linkSizeMD5 | cut -d';' -f1`
+	dlSize=`echo $linkSizeMD5 | cut -d';' -f2`
+	dlMD5=`echo $linkSizeMD5 | cut -d';' -f3`
+	
+	#Check if the file size of original and uploaded file are identically
+	if [ $dlSize -ne $size ]
+	then
+		echo "ERR: $now: Original ($file) and uploaded file size mismatch." | tee -a share-online.biz-uploader.log
+		exit 1
+	fi
+	
+	#Check if the MD5 sum of original and uploaded file are identically
+	if [ $dlMD5 != $md5 ]
+	then
+		echo "ERR: $now: Original ($file) and uploaded file MD5 mismatch." | tee -a share-online.biz-uploader.log
+		exit 2
+	fi
+	
+	echo "INFO: $now: All ok :-) The file \"$file\" was uploaded to $dlUrl" | tee -a share-online.biz-uploader.log
+}
+
+
+file=$1
+
+#Calculate file size
+size=`find $file -printf "%s"`
+
+#Check if the file is bigger than the maximum allowed file size
+if [ $size -gt 313524224 ]
+then
+	echo "File too big. Splitting into 300MB parts..."
+	#Split the file in 299MB parts
+	split -b 299M -a 2 "$file" "$file"
+
+	#Upload part by part
+	ls "$file"?? | while read upfile
+	do
+		echo "INFO: Uploading $upfile"
+		upload "$upfile"
+		rm "$upfile"
+	done
+else
+	upload $file
+fi

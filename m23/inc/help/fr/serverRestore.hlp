@@ -1,0 +1,34 @@
+<!--v10.0 new-->Réstitution de votre serveur m23
+Si une panne survenait sur votre serveur m23, vous pouvez restaurer votre serveur dans un des états sauvegardés au préalable en utilisant une des sauvegardes disponibles. Procédez comme suit:
+
+<ol>
+	<li>Installez votre serveur m23 sur un disque dur sain avec le CD d'installation du serveur m23. Vous pouvez télécharger l'image ISO sur <a href="http://m23.sf.net">m23.sf.net</a> pour la graver sur un CD.</li>
+	<li>Enregistrez la dernière archive de sauvegarde sur l'ordinateur ou se trouve la clé GPG pour le chiffrement et déchiffrement.</li>
+	<li>S'il s'agit d'un système basé sur Linux, vous pouvez déchiffrer le fichier de sauvegarde en utilisant la ligne de commande ci-dessous:
+
+	<code>gpg -d < m23serverBackup-*.tar.gpg > m23backup.tar</code>
+
+	Sinon, utilisez l'interface graphique GPG de votre système d'exploitation.
+	</li>
+	<li>Copiez le fichier de sauvegarde déchiffré <i>&laquo;m23backup.tar&raquo;</i> sur le serveur m23  nouvellement installé dans le répertoire <i>&laquo;/tmp&raquo;</i>. Depuis Linux, vous pouvez le copier par SCP:
+
+	<code>scp m23backup.tar root@[IP]:/tmp</code>
+
+	Remplacez <i>&laquo;[IP]&raquo;</i> par l'adresse IP de votre serveur m23. Sous Windows, vous pouvez utiliser le programme <a href="http://winscp.net/eng/docs/lang:fr">WinSCP (www.winscp.net)</a>.</li>
+	<li>Entrez le système du serveur m23 comme <b>root</b>.</li>
+	<li>Placez-vous dans le répertoire <i>&laquo;/tmp&raquo;</i> par la commande:
+
+	<code>cd /tmp</code></li>
+	<li>Créez un nouveau répertoire pour les données déchiffrées et placez-vous dans celui-ci:
+
+	<code>mkdir restore; cd restore</code></li>
+	<li>Décompressez le fichier par la commande:
+
+	<code>tar xfv /tmp/m23backup.tar</code></li>
+	<li>Démarrez le processus de restauration par la commande:
+
+	<code>/m23/bin/m23Restore</code></li>
+	<li>Après la fin de la restauration vous devrez redémarrer votre serveur m23 , p.ex. avec: 
+	<code>reboot</code></li>
+	<li>Maintenant, votre serveur m23 restauré dans l'état de la sauvegarde utilisée devrait être fonctionnel.</li>
+</ol>

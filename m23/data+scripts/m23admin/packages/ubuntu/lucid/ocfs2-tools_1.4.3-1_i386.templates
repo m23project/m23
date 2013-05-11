@@ -1,0 +1,368 @@
+Template: ocfs2-tools/init
+Type: boolean
+Default: false
+Description: Would you like to start an OCFS2 cluster (O2CB) at boot time?
+Description-cs.UTF-8: Chcete spustit cluster OCFS2 (O2CB) během zavádění systému?
+Description-de.UTF-8: Möchten Sie, dass ein OCFS2-Cluster (O2CB) beim Systemstart gestartet wird?
+Description-es.UTF-8: ¿Desea iniciar un clúster de OCFS2 (O2CB) en el arranque del sistema?
+Description-eu.UTF-8: Abioan OCFS2 cluster bat (O2CB) abiarazi nahi al duzu?
+Description-fi.UTF-8: Tulisiko OCFS2-klusteri (O2CB) käynnistää käynnistettäessä järjestelmä?
+Description-fr.UTF-8: Voulez-vous lancer un cluster OCFS2 (OC2B) au démarrage ?
+Description-gl.UTF-8: ¿Quere iniciar un clúster OCFS2 (O2CB) co ordenador?
+Description-nl.UTF-8: Wilt u een OCFS2-cluster (O2CB) starten tijdens het opstarten van de machine?
+Description-pt.UTF-8: Deseja iniciar o cluster OCFS2·(O2CB) durante o arranque do sistema?
+Description-pt_BR.UTF-8: Você gostaria de iniciar um cluster OCFS2 (O2CB) em tempo de inicialização?
+Description-ru.UTF-8: Запускать кластер OCFS2 (O2CB) во время загрузки компьютера?
+Description-sv.UTF-8: Vill du starta ett OCFS2-kluster (O2CB) vid systemets uppstart?
+Description-vi.UTF-8: Lúc khởi động máy, bạn có muốn khởi chạy một chùm OCFS2 (O2CB) không?
+
+Template: ocfs2-tools/clustername
+Type: string
+Default: ocfs2
+Description: Name of the cluster to start at boot time:
+Description-cs.UTF-8: Jméno clusteru, který se má spustit při zavádění systému:
+Description-de.UTF-8: Name des Clusters, der beim Systemstart gestartet werden soll:
+Description-es.UTF-8: Nombre del clúster que desea que se inicie en el arranque:
+Description-eu.UTF-8: Abioan abiarazi behar den klusterraren izena:
+Description-fi.UTF-8: Järjestelmän käynnistyksen yhteydessä käynnistettävän klusterin nimi:
+Description-fr.UTF-8: Nom du cluster à lancer au démarrage :
+Description-gl.UTF-8: Nome do clúster a iniciar co ordenador:
+Description-nl.UTF-8: Naam van de bij het opstarten van de machine te starten cluster:
+Description-pt.UTF-8: Nome do cluster a iniciar durante o arranque do sistema:
+Description-pt_BR.UTF-8: Nome do cluster para iniciar em tempo de inicialização:
+Description-ru.UTF-8: Имя кластера, запускаемого во время загрузки компьютера:
+Description-sv.UTF-8: Namn på klustret att starta vid systemuppstart:
+Description-vi.UTF-8: Tên của chùm cần khởi chạy vào lúc khởi động:
+
+Template: ocfs2-tools/heartbeat_threshold
+Type: string
+Default: 31
+Description: O2CB heartbeat threshold:
+ The O2CB heartbeat threshold sets up the maximum time in seconds that a
+ node awaits for an I/O operation. After it, the node "fences" itself,
+ and you will probably see a crash.
+ .
+ It is calculated as the result of: (threshold - 1) x 2.
+ .
+ Its default value is 31 (60 seconds).
+ .
+ Raise it if you have slow disks and/or crashes with kernel messages
+ like:
+ .
+ o2hb_write_timeout: 164 ERROR: heartbeat write timeout to device XXXX
+ after NNNN milliseconds
+Description-cs.UTF-8: Práh kontroly O2CB:
+ Práh kontroly O2CB nastaví maximální čas v sekundách, po který uzel očekává V/V operaci. Po této době se uzel sám "izoluje" a pravděpodobně se dočkáte pádu.
+ .
+ Hodnota se počítá jako: (práh - 1) x 2.
+ .
+ Výchozí hodnota je 31 (60 sekund).
+ .
+ Práh je dobré zvýšit v případě pomalých disků a/nebo pokud v syslogu vídáte zprávy jako:
+ .
+ o2hb_write_timeout: 164 ERROR: heartbeat write timeout to device XXXX after NNNN milliseconds
+Description-de.UTF-8: Schwellwert des O2BC-Heartbeats:
+ Der Schwellwert des O2CB-Heartbeats bestimmt die maximale Zeit in Sekunden, die ein Knoten für eine E/A-Operation abwartet. Danach »grenzt« sich der Knoten aus, und Sie werden wahrscheinlich einen Absturz beobachten.
+ .
+ Er berechnet sich wie folgt: (Schwellwert - 1) x 2.
+ .
+ Der voreingestellte Wert ist 31 (60 Sekunden).
+ .
+ Erhöhen Sie ihn, falls Sie langsame Festplatten und/oder Abstürze haben mit Kernel-Meldungen wie:
+ .
+ o2hb_write_timeout: 164 ERROR: heartbeat write timeout to device XXXX after NNNN milliseconds
+Description-es.UTF-8: Intervalo de latidos de O2CB:
+ El intervalo de latidos de O2CB configura el tiempo máximo en segundos que un nodo espera en una operación de E/S. Después, el nodo se aislará, y probablemente verá un fallo grave.
+ .
+ Es el resultado de la operación: (intervalo -1) x 2.
+ .
+ Su valor predeterminado es 31 (es decir, 60 segundos).
+ .
+ Auméntelo si tiene discos lentos y/o cuelgues con mensajes del núcleo del tipo:
+ .
+ o2hb_write_timeout: 164 ERROR: heartbeat write timeout to device XXXX after NNNN milliseconds
+Description-eu.UTF-8: O2CB taupada muga:
+ O2CB taupada mugak nodo batek segundutan S/I ekintza baten zain egon daiteken denbora-muga ezartzen du. Honen ondoren, nodoak bere burua "hesitzen" du eta ziurrenik kraskatze bat ikusiko duzu.
+ .
+ Berau honen emaitza bezala kalkulatzen da (muga - 1) x 2.
+ .
+ Lehenetsiriko balioa 31 da (60 segundu).
+ .
+ Handitu ezazu disko geldoak edo/eta horrelako kernel mezudun kraskatzeak badituzu:
+ .
+ o2hb_write_timeout: 164 ERROR: heartbeat write timeout to device XXXX after NNNN milliseconds
+Description-fi.UTF-8: O2CB:n ajoituksen rajoitin: 
+ O2CB:n ajoituksen rajoitin määrittää enimmäisajan sekunneissa kauanko solmu odottaa I/O-operaation valmistumista. Tämän jälkeen solmu ”sulkee” itsensä ja ohjelma luultavasti kaatuu.
+ .
+ Enimmäisaika lasketaan kaavasta: (raja -1) x 2.
+ .
+ Oletusarvo on 31 (60 sekuntia).
+ .
+ Arvoa kannattaa suurentaa, jos käytössä on hitaita levyjä tai tapahtuu kaatumisia, jotka tuottavat seuraavanlaisia ytimen viestejä:
+ .
+ o2hb_write_timeout: 164 ERROR: heartbeat write timeout to device XXXX after NNNN milliseconds
+Description-fr.UTF-8: Seuil de battement O2CB :
+ Le seuil de battement O2CB détermine le temps maximal en secondes qu'un nœud peut attendre lors d'une opération d'E/S. Passé ce délai, le nœud « implose » et le système a de fortes chances de planter.
+ .
+ La valeur réelle est le résultat de l'opération suivante : (seuil - 1) x 2.
+ .
+ La valeur par défaut est de 31, ce qui correspond à un seuil de 60 secondes.
+ .
+ Augmentez cette valeur si vous avez des disques lents et/ou des plantages signalés par des messages du noyau tels que :
+ .
+ o2hb_write_timeout: 164 ERROR: heartbeat write timeout to device XXXX after NNNN milliseconds
+Description-gl.UTF-8: Umbral de latexo de O2CB:
+ O umbral de latexo de O2CB establece o tempo máximo, en segundos, que un nodo ha agardar por unha operación de E/S. Despois del, o nodo establece unha barreira e, probablemente, vexa un fallo.
+ .
+ Calcúlase coma resultado de: (umbral - 1) x 2.
+ .
+ O seu valor por defecto é 31 (60 segundos).
+ .
+ Auménteo se ten discos lentos e/ou fallos con mensaxes do núcleo semellantes a:
+ .
+ o2hb_write_timeout: 164 ERROR: heartbeat write timeout to device XXXX after NNNN milliseconds
+Description-nl.UTF-8: O2CB-hartslagdrempel:
+ De O2CB-hartslagdrempel zet de maximum tijd (in seconden) voor een knooppunt om te wachten op een I/O-operatie. Daarna zal het knooppunt zichzelf 'insluiten', wat waarschijnlijk leidt tot een crash.
+ .
+ Dit is het resultaat van: (drempel - 1) x 2.
+ .
+ De standaardwaarde is 31 (60 seconden).
+ .
+ U dient dit te verhogen als u trage schijven heeft of crashes met kernel-berichten als volgt:
+ .
+ o2hb_write_timeout: 164 ERROR: heartbeat write timeout to device XXXX after NNNN milliseconds
+Description-pt.UTF-8: Limite de "batimento cardíaco" do O2CB:
+ O limite de "batimento cardíaco" do O2CB define o tempo máximo em segundos em que um 'node' espera por uma operação de I/O. Após este tempo, o 'node' "fecha-se sobre ele próprio" e provavelmente verá um crash.
+ .
+ Está calculado como o resultado de:(limite - 1) x 2.
+ .
+ O valor por omissão é de 31 (60 segundos).
+ .
+ Aumente o valor se tiver discos lentos e/ou 'crashes' com mensagens do kernel como:
+ .
+ o2hb_write_timeout: 164 ERROR: heartbeat write timeout to device XXXX after NNNN milliseconds
+Description-pt_BR.UTF-8: Threshold do heartbeat O2CB:
+ O threshold do heartbeat O2CB define o tempo máximo em segundos que um nó aguarda por uma operação de E/S. Após esse tempo, o nó cerca a si próprio, e você provavelmente verá uma falha.
+ .
+ Ele é calculado como o resultado de: (threshold -1) x 2.
+ .
+ Seu valor padrão é 31 (60 segundos).
+ .
+ Aumente esse valor se você possui discos lentos e/ou falhas com mensagens de kernel como:
+ .
+ o2hb_write_timeout: 164 ERROR: heartbeat write timeout to device XXXX after NNNN milliseconds
+Description-ru.UTF-8: Пороговое значение "сердцебиения" O2CB:
+ Пороговое значение "сердцебиения" (heartbeat threshold) O2CB задаёт максимальный промежуток в секундах, который узел должен ждать операцию ввода/вывода (I/O). Не дождавшись, узел "защищает (fences)" себя, и, вероятно, вы получите аварийное завершение программы.
+ .
+ Оно вычисляется как: (порог - 1) x 2.
+ .
+ Значение по умолчанию равно 31 (60 секунд).
+ .
+ Увеличивайте его, если у вас медленные диски и/или происходит аварийное завершение работы с сообщением ядра типа:
+ .
+ o2hb_write_timeout: 164 ERROR: heartbeat write timeout to device XXXX after NNNN milliseconds
+Description-sv.UTF-8: Tröskelvärde för O2CB-hjärtslag:
+ Tröskelvärdet för O2CB-hjärtslag ställer in maximal tid (i sekunder) som en nod väntar på en in/ut-operation. Efter det kommer noden att "fences" och du kommer antagligen att få se en krasch.
+ .
+ Det beräknas som resultatet av: (tröskelvärde - 1) x 2.
+ .
+ Dess standardvärde är 31 (60 sekunder).
+ .
+ Öka värdet om du har långsamma diskar och/eller kraschar med kärnmeddelanden som:
+ .
+ o2hb_write_timeout: 164 ERROR: heartbeat write timeout to device XXXX after NNNN milliseconds
+Description-vi.UTF-8: Ngưỡng nhịp tim O2CB:
+ Ngưỡng nhịp tim (heartbeat threshold) kiểu O2CB thì đặt thời gian tối đa theo giây mỗi nút đợi một thao tác nhập vào/xuất ra (V/R). Sau đó, nút tự « rào lại », và bạn rất có thể sẽ thấy phần mềm sụp đổ.
+ .
+ Giá trị này được tính là kết quả của công thức: (ngưỡng - 1) × 2
+ .
+ Giá trị mặc định là 31 (60 giây).
+ .
+ Hãy tăng giá trị này nếu bạn có đĩa chạy chậm hay/và phần mềm sụp đổ với thông điệp hạt nhân như :
+ .
+ o2hb_write_timeout: 164 ERROR: heartbeat write timeout to device XXXX after NNNN milliseconds
+
+Template: ocfs2-tools/idle_timeout
+Type: string
+Default: 30000
+Description: O2CB idle timeout:
+ The O2CB idle timeout (expressed in milliseconds) is the time before
+ a network connection is considered dead.
+ .
+ Its default value is 30000 (30 seconds) and the minimum recommended value
+ is 5000 (5 seconds).
+Description-cs.UTF-8: Časový limit nečinnosti O2CB:
+ Časový limit nečinnosti O2CB je čas (vyjádřený v milisekundách), po kterém je síťové spojení považováno za mrtvé.
+ .
+ Výchozí hodnota je 30000 (30 sekund), minimální doporučená hodnota pak 5000 (5 sekund).
+Description-de.UTF-8: O2CB-Leerlaufzeitlimit:
+ Das O2CB-Leerlaufzeitlimit (in Millisekunden) ist die Zeit, nach der eine Netzwerkverbindung als tot angesehen wird.
+ .
+ Der voreingestellte Wert ist 30000 (30 Sekunden) und der minimale empfohlene Wert ist 2000 (2 Sekunden).
+Description-es.UTF-8: Tiempo de expiración de inactividad de OC2B:
+ El tiempo de expiración de inactividad de OC2B es el intervalo de tiempo necesario para que una conexión de red se considere inactiva.
+ .
+ Su valor predeterminado es 30000 (30 segundos) y el mínimo valor que se recomienda es 5000 (5 segundos).
+Description-eu.UTF-8: O2CB inaktibo denbora-muga:
+ O2CB inaktibo denbora-muga (milisegundutan) sare konexio bat hilda kontsideratu aurretik itxarongo den denbora da.
+ .
+ Bere lehenetsiriko balioa 30000 da (30 segundu) eta gomendaturiko gutxieneko balioa 5000 da (5 segundu).
+Description-fi.UTF-8: O2CB:n odotuksen aikaraja:
+ O2CB:n odotuksen aikaraja (määritetään millisekunteina) on aika, jonka jälkeen verkkoyhteyden oletetaan katkenneen.
+ .
+ Oletusarvo on 30000 (30 sekuntia) ja suositeltu vähimmäisarvo 2000 (2 sekuntia).
+Description-fr.UTF-8: Délai d'attente sur inactivité O2CB :
+ Le délai d'attente sur inactivité O2CB (exprimé en millisecondes) est le délai à l'expiration duquel une connection réseau est considérée inactive.
+ .
+ Sa valeur par défaut est de 30000 (soit 30 secondes), le minimum recommandé étant de 5000 (soit 5 secondes).
+Description-gl.UTF-8: Tempo de espera de inactividade para O2CB:
+ O tempo de espera de inactividade (expresado en milisegundos) é o tempo a agardar antes de considerar morta unha conexión de rede.
+ .
+ O seu valor por defecto é 30000 (30 segundos) e o valor mínimo recomendado é 5000 (5 segundos).
+Description-nl.UTF-8: O2CB inactivitet-timeout:
+ De 02CB inactiviteit-timeout (aangegeven in milliseconden) is de tijd die zonder activiteit moet verlopen voordat de netwerkverbinding als dood wordt gezien.
+ .
+ De standaardwaarde is 30000 (30 seconden) en de minimum aanbevolen waarde is 5000 (5 seconden).
+Description-pt.UTF-8: Tempo limite de inactividade do O2CB:
+ O tempo limite de inactividade do O2CB (expresso em milisegundos) corresponde ao tempo antes do qual uma ligação de rede é considerada inactiva.
+ .
+ O valor por omissão é de 30000 (30 segundos) e o valor minimo recomendado de 5000 (5 segundos).
+Description-pt_BR.UTF-8: Tempo de espera ocioso do O2CB:
+ O tempo de espera ocioso do O2CB (expresso em milissegundos) é o tempo antes de uma conexão de rede ser considerada morta.
+ .
+ Seu valor padrão é 30000 (30 segundos) e o valor mínimo recomendado é 5000 (5 segundos).
+Description-ru.UTF-8: Время простоя O2CB:
+ Время простоя (idle timeout) O2CB -- это временной промежуток, который должен пройти перед тем как сетевое подключение будет рассматриваться нерабочим (выражается в секундах).
+ .
+ Значение по умолчанию равно 30000 (30 секунд), а минимальное рекомендуемое значение равно 5000 (5 секунд).
+Description-sv.UTF-8: O2CB:s tomgångstid:
+ O2CB:s tomgångstid (uttryckt i millisekunder) är den tid som måste förflyta innan en nätverksuppkoppling utan aktivitet anses vara död.
+ .
+ Dess standardvärde är 30000 (30 sekunder) och det minsta rekommenderade värdet är 2000 (2 sekunder).
+Description-vi.UTF-8: Thời hạn nghỉ O2CB:
+ Thời hạn nghỉ O2CB (xác định theo mili-giây) là khoảng thời gian sau đó thấy kết nối mạng đã chết.
+ .
+ Giá trị mặc định là 30000 (30 giây), còn giá trị tối thiểu khuyến khích là 5000 (5 giây).
+
+Template: ocfs2-tools/keepalive_delay
+Type: string
+Default: 2000
+Description: O2CB keepalive delay:
+ The O2CB keepalive delay (expressed in milliseconds) is the maximum time before
+ a keepalive package is sent.
+ .
+ Its default value is 2000 (2 seconds) and the minimum recommended value
+ is 1000 (1 second).
+Description-cs.UTF-8: Interval udržování spojení O2CB:
+ Interval udržování spojení O2CB je maximální čas (vyjádřený v milisekundách), po kterém je odeslán udržovací paket.
+ .
+ Výchozí hodnota je 2000 (2 sekund), minimální doporučená hodnota pak 1000 (1 sekunda).
+Description-de.UTF-8: O2CB-Keepalive-Verzögerung:
+ Die O2CB-Keepalive-Verzögerung (in Millisekunden) ist die maximale Zeit, nach der ein Keepalive-Paket gesendet wird.
+ .
+ Der voreingestellte Wert ist 2000 (2 Sekunden) und der minimale empfohlene Wert ist 1000 (1 Sekunde).
+Description-es.UTF-8: Retraso en notificación de funcionamiento de O2CB:
+ El retraso en la notificación de funcionamiento de O2CB (expresado en milisegundos) es el intervalo máximo de tiempo antes de enviar un paquete de notificación («keepalive»).
+ .
+ Su valor predeterminado es 2000 (2 segundos) y el mínimo valor que se recomienda es 1000 (1 segundo).
+Description-eu.UTF-8: O2CB bizirik-mantedu (keepalive) atzerapena:
+ O2CB bizirik-mantedu atzerapena (milisegundutan zehaztua) mantedu-bizirik paketeak bidaltzeko tarte handiena da.
+ .
+ Bere lehenetsiriko balioa 2000 da (2 segundu) eta gomendaturiko gutxieneko balioa 1000 da (1 segundu).
+Description-fi.UTF-8: O2CB:n virkistysviive:
+ O2CB:n virkistysviive (määritetään millisekunteina) on enimmäisaika ennen keepalive-paketin lähettämistä.
+ .
+ Oletusarvo on 2000 (2 sekuntia) ja suositeltu vähimmäisarvo on 1000 (1 sekunti).
+Description-fr.UTF-8: Intervalle de test de lien O2CB :
+ L'intervalle de test de lien O2CB (exprimé en millisecondes) est la durée maximum au bout de laquelle un paquet dit "keepalive" est envoyé pour tester l'activité d'un lien.
+ .
+ Sa valeur par défaut est de 2000 (soit 2 secondes), le minimum recommandé étant de 1000 (soit 1 seconde).
+Description-gl.UTF-8: Retraso de "keepalive" de O2CB:
+ O retraso de "keepalive" de O2CB (expresado en milisegundos) é o tempo máximo a agardar antes de enviar un paquete "keepalive".
+ .
+ O seu valor por defecto é 2000 (2 segundos) e o valor mínimo recomendado é 1000 (1 segundo).
+Description-nl.UTF-8: 02CB levend-houden-vertraging:
+ De 02CB levend-houden-vertraging (aangegeven in milliseconden) is de maximale tijd die mag verlopen alvorens een 'hou-levend'-pakket verstuurd wordt. 
+ .
+ De standaardwaarde is 2000 (2 seconden) en de minimum aanbevolen waarde is 1000 (1 seconde).
+Description-pt.UTF-8: Atraso de manutenção da ligação O2CB:
+ O atraso de manutenção da ligação (expresso em milisegundos) corresponde ao tempo máximo antes do qual um pacote de manutenção da ligação é enviado.
+ .
+ O valor por omissão é de 2000 (2 segundos) e o valor minimo recomendado de 1000 (1 segundos).
+Description-pt_BR.UTF-8: Delay de conexões ativas do O2CB:
+ O delay de conexões ativas do O2CB (expresso em milissegundos) é o tempo máximo antes de um pacote keepalive ser enviado.
+ .
+ Seu valor padrão é 2000 (2 segundos) e o valor mínimo recomendado é 1000 (1 segundo).
+Description-ru.UTF-8: Задержка O2CB keepalive:
+ Задержка O2CB keepalive (выражается в секундах) -- это максимальный промежуток времени перед отправкой пакета keepalive.
+ .
+ Значение по умолчанию равно 2000 (2 секунд), а минимальное рекомендуемое значение равно 1000 (1 секунда).
+Description-sv.UTF-8: O2CB:s levandehållningsintervall:
+ O2CB:s levandehållningsintervall (uttryckt i millisekunder) är den längsta tiden innan ett levandehållningspaket (eng. "keepalive") skickas.
+ .
+ Dess standardvärde är 2000 (2 sekunder) och det minsta rekommenderade värdet är 1000 (1 sekund).
+Description-vi.UTF-8: Khoảng đợi cứ hoạt động O2CB:
+ Khoảng đợi cứ hoạt động O2CB (xác định theo mili-giây) là khoảng thời gian tối đa sau đó gửi gói tin giữ cho kết nối hoạt động.
+ .
+ Giá trị mặc định là 2000 (2 giây), còn giá trị tối thiểu khuyến khích là 1000 (1 giây).
+
+Template: ocfs2-tools/reconnect_delay
+Type: string
+Default: 2000
+Description: O2CB reconnect delay:
+ The O2CB reconnect delay (expressed in milliseconds) is the minimum time between
+ connection attempts.
+ .
+ Its default and recommended minimum value is 2000 (2 seconds).
+Description-cs.UTF-8: Pauza před novým připojením O2CB
+ Pauza před novým připojením O2CB je minimální čas (vyjádřený v milisekundách) mezi pokusy o nové připojení.
+ .
+ Výchozí a zároveň doporučená minimální hodnota je 2000 (2 sekundy).
+Description-de.UTF-8: O2CB-Wiederverbindungsverzögerung:
+ Die O2CB-Wiederverbindungsverzögerung (in Millisekunden) ist die minimale Zeit zwischen Verbindungsversuchen.
+ .
+ Der voreingestellte und empfohlene minimale Wert ist 2000 (2 Sekunden).
+Description-es.UTF-8: Intervalo de reconexión OC2B:
+ El intervalo de reconexión OC2B (expresado en milisegundos) es el tiempo mínimo entre intentos de conexión.
+ .
+ Su valor predeterminado y recomendado es 2000 (2 segundos).
+Description-eu.UTF-8: O2CB berkonexio atzerapena:
+ O2CB berkonexio atzerapena (milisegundutan zehaztua) konexio saiakera arteko gutxieneko tartea da.
+ .
+ Lehenetsiriko eta gomendaturiko gutxieneko balioa 2000 da (2 segundu).
+Description-fi.UTF-8: O2CB:n yhteydenottoviive:
+ O2CB:n yhteydenottoviive (määritetään millisekunteina) on vähimmäisaika yhteydenottoyritysten välillä.
+ .
+ Se oletusarvo ja suositeltu vähimmäisarvo on 2000 (2 sekuntia).
+Description-fr.UTF-8: Délai de reconnexion O2CB :
+ Le délai de reconnexion O2CB (exprimé en millisecondes) est l'intervalle de temps minimal entre deux tentatives de connexion.
+ .
+ La valeur par défaut, recommandée, est de 2000 (2 secondes).
+Description-gl.UTF-8: Retardo de reconexión de O2CB:
+ O retardo de reconexión de O2CB (expresado en milisegundos) é o tempo mínimo a agardar entre tentativas de reconexión.
+ .
+ O seu valor por defecto e mínimo recomendado é 2000 (2 segundos).
+Description-nl.UTF-8: 02CB herverbindingsvertraging:
+ De 02CB herverbindingsverlaging (aangegeven in milliseconden) is de minimum tijd tussen twee verbindingspogingen. 
+ .
+ De standaard en aanbevolen minimumwaarde is 2000 (2 seconden).
+Description-pt.UTF-8: Atraso de re-ligação O2CB:
+ O atraso de re-ligação (expresso em milisegundos) corresponde ao tempo minimo entre tentivas de ligação.
+ .
+ O valor por omissão e minimo recomemndado é de 2000 (2 segundos).
+Description-pt_BR.UTF-8: Delay de reconexão do O2CB:
+ O delay de reconexão do O2CB (expresso em milissegundos) é o tempo mínimo entre as tentativas de conexão.
+ .
+ Seu valor padrão e mínimo recomendado é 2000 (2 segundos).
+Description-ru.UTF-8: Задержка переподключения O2CB:
+ Задержка переподключения O2CB (выражается в секундах) -- это минимальный промежуток времени между попытками подключения.
+ .
+ Значение по умолчанию равно и рекомендуемое значение равно 2000 (2 секунды).
+Description-sv.UTF-8: O2CB:s återuppkopplingsintervall:
+ O2CB:s återuppkopplingsintervall (uttryckt i millisekunder) är den minsta tiden mellan uppkopplingsförsök.
+ .
+ Dess standard- och rekommenderade värde är 2000 (2 sekunder).
+Description-vi.UTF-8: Khoảng đợi tái kết nối O2CB:
+ Khoảng đợi tái kết nối O2CB (xác định theo mili-giây) là khoảng thời gian tối thiểu giữa hai lần thử kết nối.
+ .
+ Giá trị mặc định và khuyến khích là 2000 (2 giây).

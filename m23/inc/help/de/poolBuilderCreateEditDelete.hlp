@@ -1,0 +1,16 @@
+$I18N_poolBuilder (Paketquelle erstellen, editieren, löschen)<!--v1.9 new-->
+
+Der Paketquellen-Architekt erlaubt Ihnen, Softwarepakete von verschiedenen Medien (CD, DVD, Internet) auf den m23-Server zu kopieren und diese in eine Paketquelle umzuwandeln. Diese Paketquelle kann dann dazu benutzt werden, um Clients zu installieren. So ist es möglich, ohne Internetverbindung Clients zu installieren. Auch kann es wünschenswert sein, eigene Pakete in einer Paketquelle abzulegen.
+
+<ul><LI><b>Neue Paketquelle erstellen:</b> Sie erstellen eine neue Paketquelle, indem Sie einen Namen bei <i>"$I18N_poolName"</i> angeben, den Paketquellentyp auswählen und anschließend auf <i>"$I18N_add"</i> klicken.</LI>
+<LI><b>Paketquelle löschen oder laden</b>: Wählen Sie aus der Liste unter <i>"$I18N_existingPool"</i> die Paketquelle aus, die Sie löschen oder laden möchten und klicken Sie danach auf die gewünschte Aktion.</LI>
+<LI><b>$I18N_usedPool</b>: In diesem Abschnitt werden vorhandene Informationen zu der gewählten Paketquelle angezeigt.</LI>
+<LI><b>Beschreibung oder Typ ändern</b>: Sie können zusätzlich eine Beschreibung für die Paketquelle vergeben oder den Paketquellentyp ändern. Klicken Sie anschließend auf <i>"$I18N_save"</i>.</LI>
+<LI><b>$I18N_packageSources</b>: Hier wird die Paketquellenliste gezeigt, die der Paketquelle entspricht. Wollen Sie einen Client aus dieser Paketquelle installieren, dann kopieren Sie die angegebenen Zeilen und fügen Sie diese zu der Paketquellenliste des Clients hinzu.</LI>
+<li><b>$I18N_nextStep</b>: Klicken Sie anschließend auf den Button, um mit dem Kopieren der Pakete oder der Auswahl der Paketquellen und Pakete fortzufahren.</li>
+</ul>
+
+<u>Hinweise</u><ul>
+<LI><b>$I18N_poolType</b>: Der Typ legt fest, von welchem Medium die Pakete stammen. <!-- v13.1 deactivated <i>"$I18N_CDPool"</i> bezeichnet alle CD- und DVD-Medien. Außerdem werden alle zusätzlichen Mountpunkte aus /etc/fstab angezeigt, die Pakete enthalten könnten. --><i>"$I18N_downloadPool"</i>: Bei dieser Variante werden die Pakete von einem HTTP- oder FTP-Server heruntergeladen, der bereits dazu geeignet ist, von ihm Pakete zu installieren.</li>
+<!--begin v1.18--><li><b>$I18N_arch</b>: Wählen Sie hier, für welche Rechnerarchitektur die Pakete heruntergeladen werden sollen. Die Architektur muß mit der der Clients und nicht mit der des Servers übereinstimmen.</li><!--end v1.18-->
+<li><b>Paketquelle</b>: Eine Paketquelle ist ein Verzeichnis (evtl. mit Unterverzeichnissen) in dem Softwarepakete gespeichert sind und das zusätzlich Indexdateien enthält, die Informationen über die Softwarepakete bereithalten. Diese Indexdateien werden benötigt, damit die Clients die Softwarepakete herunterladen können.</li></ul>

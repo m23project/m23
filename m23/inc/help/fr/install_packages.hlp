@@ -1,0 +1,26 @@
+Installer des paquets
+
+helpInclude("packageTypes.inc");
+
+<u>Installer des paquets:</u>
+<ol>
+<LI>Choisissez <i>&laquo;$I18N_package_selection&raquo;</i>, <i>&laquo;$I18N_normal_packages&raquo;</i> ou <i>&laquo;$I18N_special_packages&raquo;</i>.</LI>
+<LI>Entrez le critère de recherche pour le paquet dans le champ de saisie &laquo;$I18N_package_search&raquo; ou laissez vide ce champs pour chercher tous les paquets d'un type donné. A cause de la multitude de paquets existant, cette option n'est pas possible pour les paquets standards - dans ce cas, il est obligatoire d'entrer un critère de recherche.</LI>
+<LI>Sous <i>&laquo;$I18N_found_packages&raquo;</i>, s'affichent tous les paquets correspondant à vos critères de recherche.</LI>
+<LI>Cliquez sur la case à cocher derrière les paquets souhaités.</LI>
+<LI>Notez les paquets pour l'installation en cliquant sur <i>&laquo;$I18N_preselect&raquo;</i>.</LI>
+<LI>Répétez les étapes 1 à 5 selon vos besoins.</LI></ol>
+
+Maintenant, vous avez préselectionné des paquets pour l'installation. <!-- v1.5--> Une coche verte indique que ce paquet est à installer, une croix rouge indique qu'il est à effacer du client.<!--end v1.5--> Vous pouvez effacer la liste de ces paquets en cliquant sur <i>&laquo;$I18N_discard_all&raquo;</i> ou sélectionner des paquets <!-- v12.3-->(en cliquant sur les symboles en haut de la colonne avec les cases à cocher, vous pouvez sélectionner tous les paquets ou aucun paquet ou inverser votre sélection)<!-- end v12.3--> et les effacer après en cliquant sur <i>&laquo;$I18N_discard_selected&raquo;</i>.
+
+Confirmez votre choix en cliquant sur <i>&laquo;$I18N_install_selected&raquo;</i>.
+
+<!-- v12.3--><u>Changer la priorité des paquets</u>
+Les paquets et les tâches seront exécutés dans l'ordre de leur priorité (les petits chiffres avant les grands) sur le poste client. Si vous voudriez changer la priorité, sélectionnez les paquets souhaités et entrez la nouvelle valeur de la priorité dans la case à côté de <i>&laquo;$I18N_changePackagePriority&raquo;</i>. Enfin, cliquez sur <i>&laquo;$I18N_changePackagePriority&raquo;</i>. Le cas échéant, répétez le procès pour des autres tâches/paquets.<!-- end v12.3-->
+
+<!-- v1.3--><!-- v1.5--><u>Prévisualisation de l'installation</u><!--end v1.5-->
+Avant l'installation réelle, vous pouvez prévisualiser les conséquences de l'installation pour le poste client; grace à l'affichage des paquets additionels à installer ainsi que les problèmes possiblement rencontrés durant l'installation. Pour la prévisualisation, cliquez sur <i>&laquo;$I18N_previewInstallation&raquo;</i> après que vous ayez choisi les paquets. Puis, vous verrez une synthèse prévisionnelle de l'installation.<!--end v1.3--><!-- v1.5-->
+Une prévisualisation est seulement possible si vous avez choisi d'installer un poste client unique et non un groupe.
+<!--end v1.5-->
+
+helpInclude("packageSelections.inc");

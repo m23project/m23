@@ -1,0 +1,1 @@
+<b>$I18N_packageSources</b>: Hier wird die Paketquellenliste gezeigt, die der Paketquelle entspricht. Wollen Sie einen Client aus diesem Pool installieren, dann kopieren Sie die angegebenen Zeilen und fügen Sie diese zu der Paketquellenliste des Clients hinzu.

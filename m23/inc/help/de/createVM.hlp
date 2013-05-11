@@ -1,0 +1,24 @@
+$I18N_createVM<!--new v1.22-->
+Auf dieser Seite können Sie virtuelle m23-Clients (<a href="http://de.wikipedia.org/wiki/Virtuelle_Maschine" target="_blank">VM</a>s) erstellen. VMs teilen sich die Ressourcen des Gastgeberrechners und verhalten sich im Netzwerk wie "normale" m23-Clients. Zum Anlegen einer virtuellen Maschine muß der VM-Gastgeberrechner angeschaltet und auf diesem das m23-Virtualisierungspaket installiert sein (Weiteres s.u.).
+
+<u>Schrittweises Vorgehen</u>
+<ol><li>Wählen Sie unter <i>"$I18N_vmHost"</i> den Rechner aus, der die Virtualisierungssoftware bereitstellt und auf dem Sie den virtuellen m23-Client erstellen möchten. Klicken Sie anschließend auf <i>"$I18N_select"</i>.</li>
+<li>Läuft der VM-Gastgeberrechner, so werden Ihnen eine Vielzahl an Informationen über dessen gegenwärtigen Status angezeigt. Möchten Sie diesen VM-Gastgeberrechner verwenden, so wählen Sie die Eigenschaften für den virtuellen m23-Client aus:
+<ul><li><b>$I18N_hostNetworkCard</b>: Sollte der VM-Gastgeberrechner über mehr als eine Netzwerkkarte verfügen, so wählen Sie die Netzwerkkarte aus, mit der dieser mit Ihrem übrigen Netzwerk kommuniziert. Virtuelle Maschinen werden mittels einer Software-<a href="http://de.wikipedia.org/wiki/Bridge_(Netzwerk)" target="_blank">Netzwerkbrücke</a> an das physikalische Netzwerk angeschlossen.</li>
+<li><b>$I18N_VMName</b>: Wählen Sie hier den Namen für die virtuelle Maschine. Dieser Name ist identisch mit dem Namen des m23-Clients.</li>
+<li><b>$I18N_mac</b>: Die MAC-Adresse des virtuellen Clients. Es wird eine zufällige MAC-Adresse erstellt, die Sie beibehalten oder ändern können.</li>
+<li><b>$I18N_memory</b>: Die Größe des Arbeitsspeichers Ihres virtuellen m23-Clients. Diese sollte so gewählt werden, daß noch genügend Speicher für andere laufende Anwendungen und ggf. weitere virtuelle Maschinen verfügbar ist.</li>
+<li><b>$I18N_harddisk</b>: Die (maximale) Größe der virtuellen Festplatte.</li></ul>
+Klicken Sie abschließend auf <i>"$I18N_create"</i>.</li>
+<li>Nach der erfolgreichen Erstellung der VM klicken Sie <b>unbedingt</b> auf die Verknüpfung <i>"&gt; &gt; &gt; $I18N_add_client &lt; &lt; &lt;"</i>, denn nur so wird die VM zu einem virtuellen m23-Client. Sollte beim Anlegen ein Fehler aufgetreten sein, so finden Sie die Fehlermeldung der Virtualisierungssoftware im roten Kasten.</li>
+</ol>
+
+<u>Hinweis zum VM-Gastgeberrechner</u>
+Zum Anlegen einer virtuellen Maschine muß auf dem VM-Gastgeberrechner (Host) zuvor das m23-Virtualisierungspaket <i>"m23VirtualBox"</i> installiert sein. Sie finden dieses Paket, das auf jedem m23-Client installiert werden kann, unter <i>"$I18N_special_packages"</i> im Paketeinstallations-Dialog (<i>$I18N_packages</i> &rarr; <i>$I18N_install</i>) in der m23-Administrationsoberfläche.
+
+Bedenken Sie bei der Auswahl des VM-Gastgeberrechners, daß dieser über ausreichend Festplattenkapazität, Arbeitsspeicher und CPU-Ressourcen verfügen muß, da sich alle virtuellen Maschinen einen physikalischen Rechner teilen.
+
+<u>Arbeitsspeicher, Festplatte und CPU</u>
+Der einer virtuellen Maschine zugewiesene Arbeitsspeicher wird vom physikalisch vorhandenen Arbeitsspeicher des Gastgeberrechners abgezogen, wenn die VM gestartet wird. Jeder virtuelle Client besitzt eine virtuelle Festplatte in Form einer Datei, die anfangs sehr klein und im weiteren Betrieb auf die tatsächlich benötigte Größe bis zur vorgegebenen Festplattengröße anwächst. Die CPU-Auslastung von Anwendungen ist prinzipbedingt höher, wenn diese in einer VM ausgeführt werden, als wenn dieses direkt auf der Maschine geschieht.
+
+

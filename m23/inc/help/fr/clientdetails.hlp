@@ -1,0 +1,23 @@
+Centre de contrôle<!--new v1.6-->
+Le centre de contrôle vous permet d'accéder aux informations concernant le poste client et vous offre une grande variété d'outils d'administration.
+
+<!-- v11.5 begin--><u>Remarques sur la virtualisation</u>
+m23 comporte la solution de virtualisation <a href="http://fr.wikipedia.org/wiki/Oracle_VM_VirtualBox">VirtualBox-OSE</a>, qui permet d'installer et administrer des postes client virtuels sur des postes client m23 réels (physiques) ou le serveur m23.
+
+<u>Démarrer, suspendre et arrêter un poste client m23 virtuel</u>
+Lorsqu'il s'agit d'un poste client m23 ayant été créé par la virtualisation VirtualBox OSE integrée dans m23, 
+vous pouvez démarrer, suspendre et arrêter le poste client directement depuis l'interface m23.
+
+Vous avez le choix entre deux modes d'opération. 
+Dans le"<b>mode sans affichage</b>" (dit <a href="http://en.wikipedia.org/wiki/Headless_system">headless mode</a>) vous ne voyez pas de moniteur virtuel. 
+Vous démarrez le poste client dans ce mode en cliquant sur <i>"$I18N_VMstart"</i>. Dépendemment des <a href="http://fr.wikipedia.org/wiki/Daemon_%28informatique%29">démons</a> installés, vous avez d'autres possibilités pour accéder au système virtuel.
+
+m23 vous met également à disposition un <b>mode graphique</b>, permettant d'avoir accès à la VM dès le démarrage. 
+En cliquant sur <i>"$I18N_VMstartVisual"</i>, la VM démarre et ouvre un <a href="http://fr.wikipedia.org/wiki/Virtual_Network_Computing">serveur VNC</a>, accessible par un client VNC. 
+Vous trouverez les informations de connexion dans les <i>"$I18N_client_information"</i> dans la catégorie <i>"$I18N_virtualisation"</i> dans les deux champs <i>"$I18N_VMVisualURL"</i> et <i>"$I18N_VMVisualPassword"</i>. 
+Dépendant de la vitesse de l'hôte virtuel, l'affichage peut prendre un peu de temps à apparaitre. Le cas échéant, cliquez sur <i>"$I18N_refresh"</i> plusieurs fois. En cliquant sur <i>"$I18N_startVNCApplet"</i>, vous pouvez ouvrir le </a> "<a href="http://www.tightvnc.com/">TightVNC Java Viewer</a>" (si <a href="http://fr.wikipedia.org/wiki/Applet_Java">Java</a> est installé dans votre navigateur web) et accéder à votre poste client m23 virtuel directement à partir du navigateur web. Comme précedemment, un peu de temps peut être nécessaire pour obtenir l'affichage du poste client m23 . Cliquez sur <i>"$I18N_refresh"</i> le cas échéant.
+
+Pour suspendre une VM, cliquez sur <i>"$I18N_VMpause"</i>; afin d'arrêter complètement la virtualisation, cliquez sur <i>"$I18N_VMstop"</i>.
+
+<u>Établir un hôte de VM</u>
+Si vous souhaitez utiliser ce poste client m23 comme hôte pour des postes client m23 virtuels, cliquez sur <i>"$I18N_VMinstallVMServerSW"</i>. Le logiciel de virtualisation (s'il est disponible pour la distribution installé) sera installé sur le poste client m23 et sera automatiquement intégré dans la liste des hôtes virtuels. Après une installation concluante, vous pouvez créer et démarrer des postes client m23 virtuels en utilisant la partie du menu <i>"$I18N_createVM"</i>.<!-- v11.5 end-->

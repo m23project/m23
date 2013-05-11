@@ -1,0 +1,58 @@
+#!/bin/bash
+. /mdk/m23update/bin/m23update.functions
+. /mdk/bin/serverFunctions.inc
+
+killall -9 safe_mysqld 2> /dev/null
+killall -9 mysqld_safe 2> /dev/null
+killall -9 mysqld 2> /dev/null
+
+#delete dummy files
+delDummyFiles /m23
+delDummyFiles /mdk/
+
+#generate missing mysql data files
+# for file in `ls /m23/db/m23/*.frm | cut -d'.' -f1`
+# do
+#  touch $file.MYD
+# done
+
+#fetch the user+groupname of the apache process
+apacheUser=`getApacheUser`
+apacheGroup=`getApacheGroup`
+
+#set nobody/nogroup permissions
+for path in data+scripts inc cvs dhcp tftp etc var doc bin
+do
+	mkdir -p /m23/$path/
+	chown -R $apacheUser /m23/$path/ 2> /dev/null
+	chgrp -R $apacheGroup /m23/$path/ 2> /dev/null
+done
+
+#Don't change the permissions of the files in /m23/tmp.
+chown  $apacheUser /m23/tmp/ 2> /dev/null
+chgrp $apacheGroup /m23/tmp/ 2> /dev/null
+
+chown -R $apacheUser /m23/var/cache/m23apt 2> /dev/null
+chgrp -R $apacheGroup /m23/var/cache/m23apt 2> /dev/null
+
+chown -R $apacheUser /m23 2> /dev/null
+chgrp -R $apacheGroup /m23 2> /dev/null
+chmod 755 /m23/dhcp 2> /dev/null
+
+chown m23-vbox /m23/vms/vbox -R
+
+#set mysql permission
+# chown -R mysql /m23/db 2> /dev/null
+# chgrp -R mysql /m23/db
+
+chmod 777 /tmp 2> /dev/null
+
+#directory for special files, only root should have access to
+chown root.root -R /m23/root-only 2> /dev/null
+chmod 700 -R /m23/root-only 2> /dev/null
+
+touch /m23/dhcp/dhcpd.leases
+chown nobody.nogroup /m23/dhcp/dhcpd.leases 2> /dev/null
+chmod 644 /m23/dhcp/dhcpd.leases 2> /dev/null
+
+/etc/init.d/mysql start

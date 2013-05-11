@@ -1,0 +1,226 @@
+Template: nagios3/httpd
+Type: multiselect
+Choices: apache, apache-ssl, apache2
+Default: apache2
+Description: Apache servers to configure for nagios3:
+ Please select which apache servers should be configured for nagios3.
+ .
+ If you would prefer to perform configuration manually, leave all
+ servers unselected.
+Description-cs.UTF-8: Servery Apache pro nastavení s nagios3:
+ Vyberte prosím, které servery apache nastavit pro použití s nagios3.
+ .
+ Pokud dáváte přednost ruční konfiguraci, nevybírejte žádné servery.
+Description-de.UTF-8: Für nagios3 einzurichtende Apache-Server:
+ Bitte wählen Sie, welche Apache-Server für nagios3 eingerichtet werden sollen.
+ .
+ Falls Sie es vorziehen, die Einrichtung manuell durchzuführen, lassen Sie alle Server deselektiert.
+Description-es.UTF-8: Servidores apache que se deberían configurar para nagios3:
+ Por favor, seleccione los servidores apache que se deberían configurar para nagios3.
+ .
+ No elija ningún servidor si prefiere realizar la configuración de forma manual.
+Description-eu.UTF-8: Nagios3-rako konfiguratu behar diren apache zerbitzariak:
+ Mesedez hautatu zein apache zerbitzari konfiguratu behar dira nagios3-rako.apache konfiguratuta errepikatu arte.
+ .
+ Eskuzko instalazio bat egitea nahigo baduzu, utzi zerbitzari guztiak hautatu gabe.
+Description-fi.UTF-8: Apache-palvelimet, joiden asetuksia muokataan nagios3:a varten:
+ Valitse minkä Apache-palvelimien asetuksia tulisi muokata nagios3:n käyttöönottamiseksi.
+ .
+ Jos haluat tehdä asetukset käsin, älä valitse mitään palvelinta.
+Description-fr.UTF-8: Serveurs Apache à configurer pour Nagios3 :
+ Veuillez choisir le(s) serveur(s) web à configurer pour Nagios3.
+ .
+ Si vous préférez configurer vous-même ce paquet, ne sélectionnez aucun serveur.
+Description-it.UTF-8: Server Apache da configurare per nagios3:
+ Selezionare quali server Apache devono essere configurati per nagios3.
+ .
+ Per effettuare una configurazione manuale, lasciare tutti i server non selezionati.
+Description-ja.UTF-8: nagios3 の設定をする Apache サーバ:
+ nagios3 の設定をする Apache サーバを選択してください。
+ .
+ 手動で設定を行う方がよい場合は、どのサーバも選択せずに次に進んでください。
+Description-pl.UTF-8: Konfiguracja serwerów Apache dla nagios3:
+ Proszę wybrać, które serwery apache powinny zostać skonfigurowane dla nagios3.
+ .
+ Nie zaznaczaj żadnego serwera jeżeli chcesz przeprowadzić konfigurację ręcznie.
+Description-pt.UTF-8: Servidores Apache a configurar para nagios3:
+ Por favor seleccione quais servidores Apache deverão ser configurados para nagios3.
+ .
+ Se você preferir efectuar a configuração manualmente, não seleccione nenhum servidor.
+Description-pt_BR.UTF-8: Servidores apache a serem configurados para o nagios3:
+ Por favor, selecione quais servidores apache deverão ser configurados para o nagios3.
+ .
+ Se você preferir realizar a configuração manualmente, não selecione nenhum servidor.
+Description-ru.UTF-8: Серверы apache для настройки под nagios3:
+ Выберите серверы apache, которые нужно настроить для nagios3.
+ .
+ Если вы хотите выполнить настройку вручную, то ничего не выбирайте.
+Description-sv.UTF-8: Ange vilken apacheversion som ska förberedas för nagios3:
+ Ange den apacheserver som ska ställas in för nagios3.
+ .
+ Om du föredrar att ställa in apache manuellt markerar du inte något av alternativen.
+
+Template: nagios3/adminpassword
+Type: password
+Description: Nagios web administration password:
+ Please provide the password to be created with the "nagiosadmin" user.
+ .
+ This is the username and password you will use to log in to your nagios
+ installation after configuration is complete.  If you do not provide
+ a password, you will have to configure access to nagios yourself.
+Description-cs.UTF-8: Heslo webové administrace Nagios:
+ Zadejte prosím heslo použité pro nově vytvořeného uživatele "nagiosadmin".
+ .
+ Toto uživatelské jméno a heslo bude po dokončení nastavení použito pro přihlášení k nagios. Pokud nezadáte heslo, budete muset nastavit přístup k nagios ručně.
+Description-de.UTF-8: Passwort für die Web-Administration von nagios:
+ Bitte geben Sie das Passwort ein, das für den »nagiosadmin«-Benutzer festgelegt werden soll.
+ .
+ Dies sind Benutzername und Passwort, die Sie verwenden werden, sich bei Ihrer nagios-Installation anzumelden, nachdem deren Einrichtung beendet ist. Falls Sie kein Passwort eingeben, werden Sie den Zugang zu nagios selbst einrichten müssen.
+Description-es.UTF-8: Clave de administración web de Nagios
+ Por favor, introduzca la contraseña para el nuevo usuario «nagiosadmin».
+ .
+ Estos son el usuario y contraseña que usará para ingresar a su instalación de
+ nagios, después de que termine la configuración. Si no define una contraseña
+ tendrá que configurar nagios de forma manual.
+Description-eu.UTF-8: Nagios web kudeatzaile pasahitza:
+ Mesedez ezarri "nagiosadmin" erabiltzailearen pasahitza.
+ .
+ Hau da nagios instalazioan konfigurazioa amaitu aurretik saioa hasteko erabili behar diren erabiltzaile-izen eta pasahitza. Ez baduzu pasahitzik ezartzen nagios saio hasiera zure kabuz konfiguratu beharko duzu.
+Description-fi.UTF-8: Nagios-verkkoylläpidon salasana:
+ Anna salasana käyttäjätunnukselle ”nagiosadmin”.
+ .
+ Tämän käyttäjätunnuksen ja salasanan avulla voidaan nagios-asennukseen kirjautua, kun asetusten muokkaus on päättynyt. Jos salasanaa ei anneta, täytyy nagiokseen pääsy asettaa käsin.
+Description-fr.UTF-8: Mot de passe pour l'administration web de Nagios :
+ Veuillez fournir le mot de passe à utiliser avec l'utilisateur « nagiosadmin ».
+ .
+ Il s'agit du nom d'utilisateur et du mot de passe que vous utiliserez pour vous connecter à Nagios une fois que l'installation est terminée. Si vous ne fournissez pas de mot de passe, vous devrez configurer Nagios vous-même afin d'y accéder.
+Description-it.UTF-8: Password per l'amministrazione di nagios da web:
+ Inserire la password da associare all'utente "nagiosadmin".
+ .
+ Al termine della configurazione è necessario usare questo nome utente e questa password per accedere alla propria installazione di nagios. Se non si inserisce una password, si dovrà configurare da soli l'accesso a nagios.
+Description-ja.UTF-8: nagios ウェブ管理用パスワード:
+ "nagiosadmin" ユーザ用に作成するパスワードを入力してください。
+ .
+ これは、設定完了後に、インストールした nagios にログインするのに使用されるユーザ名とパスワードです。ここでパスワードを入力しない場合は、nagios へのアクセスを自分で設定しなければなりません。
+Description-pl.UTF-8: Hasło administratora Nagios:
+ Proszę podać hasło dla użytkownika "nagiosadmin".
+ .
+ Po zakończeniu konfiguracji ta nazwa użytkownika oraz hasło zostaną użyte do zalogowania się w nagios. Jeśli hasło nie zostanie podane, konieczne będzie ręczne skonfigurowanie dostępu do nagios.
+Description-pt.UTF-8: Password de administração Web do Nagios:
+ Por favor indique uma password para ser criada com o utilizador "nagiosadmin".
+ .
+ Este é o nome de utilizador e password que irá usar para se autenticar na instalação do seu nagios após a configuração estar completa. Se você não providenciar uma password, terá que ser você a configurar o acesso ao nagios.
+Description-pt_BR.UTF-8: Senha de administração web do Nagios:
+ Por favor, forneça a senha a ser criada com o usuário "nagiosadmin".
+ .
+ Este é o nome de usuário e a senha que você usará para acessar sua instalação nagios depois que a configuração estiver completa. Se você não fornecer uma senha, você mesmo terá que configurar o acesso ao nagios.
+Description-ru.UTF-8: Пароль для веб-администрирования Nagios:
+ Введите пароль для создаваемой учётной записи "nagiosadmin".
+ .
+ Вы будете использовать эту учётную запись и пароль для доступа к nagios после завершения настройки. Если вы не укажите пароль, то вам нужно будет настроить доступ к nagios самостоятельно.
+Description-sv.UTF-8: Lösenord för nagios webbadministration:
+ Ange lösenordet som ska användas för användaren "nagiosadmin".
+ .
+ Detta användarnamn och lösenord använder du för att logga in i din nagiosinstallation. Om du inte anger ett lösenord här måste du ställa in nagios manuellt.
+
+Template: nagios3/adminpassword-repeat
+Type: password
+Description: Password confirmation:
+Description-cs.UTF-8: Potvrzení hesla:
+Description-de.UTF-8: Passwortbestätigung:
+Description-es.UTF-8: Confirmar clave:
+Description-eu.UTF-8: Pasahitz berrespena:
+Description-fi.UTF-8: Salasanan vahvistus:
+Description-fr.UTF-8: Confirmation du mot de passe :
+Description-it.UTF-8: Conferma della password:
+Description-ja.UTF-8: パスワードの確認:
+Description-pl.UTF-8: Potwierdzenie hasła:
+Description-pt.UTF-8: Confirmação da password:
+Description-pt_BR.UTF-8: Confirmação de senha:
+Description-ru.UTF-8: Введите пароль ещё раз:
+Description-sv.UTF-8: Upprepa lösenordet:
+
+Template: nagios3/adminpassword-mismatch
+Type: note
+Description: The passwords do not match
+Description-cs.UTF-8: Hesla nesouhlasí
+Description-de.UTF-8: Die Passwörter stimmen nicht überein.
+Description-es.UTF-8: Las contraseñas no coinciden
+Description-eu.UTF-8: Pasahitzak ez datoz bat
+Description-fi.UTF-8: Salasanat eivät täsmää.
+Description-fr.UTF-8: Mots de passe différents
+Description-it.UTF-8: Le password non coincidono
+Description-ja.UTF-8: パスワードが一致しません
+Description-pl.UTF-8: Hasła nie są takie same
+Description-pt.UTF-8: As passwords não condizem.
+Description-pt_BR.UTF-8: As senhas não coincidem
+Description-ru.UTF-8: Пароли не совпадают
+Description-sv.UTF-8: Lösenorden stämmer inte överrens
+
+Template: nagios3/nagios1-in-apacheconf
+Type: boolean
+Default: false
+Description: Enable support for nagios 1.x links in nagios3?
+ Please choose whether the Apache configuration for nagios3 should
+ provide compatibility with links from nagios 1.x.
+ .
+ If you select this option, the apache configuration used for nagios
+ will include directives to support URLs from nagios 1.x.
+ You should not choose this option if you still have nagios 1.x on your
+ system, or unpredictable results may occur.
+Description-cs.UTF-8: Povolit podporu odkazů nagios 1.x v nagios3?
+ Vyberte si prosím, zda má konfigurace Apache pro nagios3 poskytovat kompatibilitu s odkazy z nagios 1.x.
+ .
+ Pokud zvolíte tuto možnost, konfigurace apache použitá pro nagios bude obsahovat příkazy pro podporu URL adres známých z nagios 1.x. Tuto volbu byste neměli volit v případě, že máte dosud nainstalován nagios 1.x. Jinak může dojít k neočekávaným výsledkům.
+Description-de.UTF-8: Unterstützung für nagios-1.x-Links in nagios3 freischalten?
+ Bitte wählen Sie, ob die Apache-Konfiguration für nagios3 Kompatibilität mit Links von nagios 1.x zur Verfügung stellen soll.
+ .
+ Falls Sie diese Möglichkeit wählen, wird die Apache-Konfiguration für nagios Direktiven enthalten, um URLs von nagios 1.x zu unterstützen. Sie sollten diese Möglichkeit nicht wählen, falls noch nagios 1.x auf Ihrem System installiert ist. Dies könnte unvorhersehbare Ergebnisse liefern.
+Description-es.UTF-8: ¿Desea activar el soporte para enlaces de nagios 1.x en nagios3?
+ Indique si la configuración de apache para nagios3 debería ser compatible
+ con enlaces de nagios 1.x.
+ .
+ Si elije esta opción, se incluirán las directivas para soporte de URLs
+ de nagios 1.x en la configuración de apache. No debe elegir esta
+ opción si todavía tiene nagios 1.x instalado en su sistema, esto puede
+ producir resultados impredecibles.
+Description-eu.UTF-8: Nagios 1.x loturako gaitu nagios3-an?
+ Mesedez hautatu Apache zerbitzariko nagios3 konfigurazioak nagios 1.x bertsioko loturekin bateragarritasuna mantendu behar duen ala ez.
+ .
+ Aukera hau hautatuaz gero apache nagios-en konfigurazioak nagios 1.x bertsioko loturak onartzeko direktibak izango ditu. Ez zenuke aukera hau onartu beharko dagoeneko 1.x bertsioetako nagios bat sisteman abiarazirik baduzu edo emaitza aurre-ikustezinak gerta daitezke.
+Description-fi.UTF-8: Otetaanko nagiosin version 1.x linkkien tuki käyttöön nagios3:ssa?
+ Valitse tulisiko nagios3:n Apache-asetusten olla yhteensopivia nagios 1.x:n linkkien kanssa.
+ .
+ Jos valitset tämän, Apachen nagios-asetuksiin sisällytetään tuki nagios 1.x:n URLeille. Tätä ei tulisi valita, jos järjestelmässä on edelleen nagios 1.x asennettuna, koska seuraukset eivät ole ennustettavissa.
+Description-fr.UTF-8: Faut-il activer la gestion des liens de Nagios 1.x pour Nagios3 ?
+ Veuillez choisir si la configuration d'Apache pour Nagios3 doit permettre la compatibilité avec les liens de Nagios 1.x.
+ .
+ En choisissant cette option, la configuration d'Apache pour Nagios contiendra des directives permettant la gestion d'URL depuis Nagios 1.x. Vous ne devriez pas choisir cette option si vous avez encore Nagios 1.x sur votre système, sinon vous risquez d'avoir des résultats inattendus.
+Description-it.UTF-8: Attivare il supporto per i collegamenti di nagios 1.x in nagios3?
+ Scegliere se la configurazione di Apache per nagios3 deve fornire anche la compatibilità con i collegamenti di nagios 1.x.
+ .
+ Se si accetta, la configurazione di apache per nagios includerà anche le direttive per il supporto delle URL di nagios 1.x. Non si deve accettare se sul proprio sistema è ancora installato nagios 1.x, altrimenti i risultati saranno imprevedibili.
+Description-ja.UTF-8: nagios3 内で nagios 1.x のリンクのサポートを有効にしますか?
+ nagios3 用の Apache の設定によって nagios 1.x 由来のリンクとの互換性を与えるかどうかを選択してください。
+ .
+ このオプションを選択すると、nagios 用に使用される Apache の設定に、nagios 1.x 由来の URL をサポートするディレクティブが含まれるようになります。システムでまだ nagios 1.x を使用している場合はこのオプションを選択すべきではありません。選択すると予測不可能な結果になります。
+Description-pl.UTF-8: Włączyć obsługę linków z nagios 1.x w nagios3?
+ Czy konfiguracja Apache dla nagios3 powinna być kompatybilna z linkami z nagios 1.x.
+ .
+ Jeśli ta opcja zostanie wybrana, konfiguracja apache używana dla nagios będzie zawierać dyrektywy obsługujące URL-e z nagios 1.x. Ta opcja nie powinna być zaznaczona jeśli nagios 1.x jest nadal zainstalowany na tym systemie ponieważ może to wywołać niemożliwe do przewidzenia efekty.
+Description-pt.UTF-8: Activar suporte para atalhos do nagios 1.x no nagios3?
+ Por favor escolha se a configuração do Apache para nagios3 deverá providenciar compatibilidade com atalhos do nagios 1.x.
+ .
+ Se seleccionar esta opção, a configuração do apache usada para nagios irá incluir directivas para suportar URLs do nagios 1.x. Você não deverá escolher esta opção se ainda tiver o nagios 1.x no seu sistema, ou podem ocorrer resultados imprevisíveis.
+Description-pt_BR.UTF-8: Habilitar suporte para links do nagios 1.x no nagios3?
+ Por favor, selecione se a configuração do Apache para o nagios3 deve fornecer compatibilidade com links do nagios 1.x.
+ .
+ Se você selecionar esta opção, a configuração do apache usada para o nagios incluirá diretivas para dar suporte a URLs do nagios 1.x. Você não deveria escolher esta opção se você ainda tem o nagios 1.x no seu sistema, ou resultados imprevisíveis podem ocorrer.
+Description-ru.UTF-8: Включить поддержку ссылок nagios 1.x в nagios3?
+ Выберите, нужно ли настраивать Apache в nagios3 для предоставления обратной совместимости по ссылкам с nagios 1.x.
+ .
+ Если вы ответите утвердительно, то в настройку apache, который используется с nagios, будут включены директивы для поддержки URL-ов из nagios 1.x. Лучше не включать поддержку, если в системе ещё используется nagios 1.x, так как это приведёт к непредсказуемым последствиям.
+Description-sv.UTF-8: Aktivera stöd för länkar som de såg ut inagios 1.x?
+ Ange om du vill att inställningarna i Apache ska ha stöd för länkar från nagios 1.x.
+ .
+ Om du väljer detta alternativ för nagios så kommer stöd för URL:er från nagios 1.x aktiveras. Du ska inte aktivera detta om du fortfarande har nagios 1.x instllerat på ditt system, konflikter kan då uppstå.

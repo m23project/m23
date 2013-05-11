@@ -1,0 +1,148 @@
+
+Template: postgresql-common/obsolete-major
+Type: error
+Description: Obsolete major version ${old}
+ The PostgreSQL version ${old} is obsolete, but the server
+ or client packages are still installed. Please install the latest packages
+ (postgresql-${latest} and postgresql-client-${latest}) and upgrade the
+ existing ${oldversion} clusters with pg_upgradecluster (see manpage).
+ .
+ Please be aware that the installation of postgresql-${latest} will
+ automatically create a default cluster ${latest}/main. If you want to upgrade
+ the ${old}/main cluster, you need to remove the already existing ${latest}
+ cluster (pg_dropcluster --stop ${latest} main, see manpage for
+ details).
+ .
+ The old server and client packages are no longer supported. After the
+ existing clusters are upgraded, the postgresql-${old} and
+ postgresql-client-${old} packages should be removed.
+ .
+ Please see /usr/share/doc/postgresql-common/README.Debian.gz for details.
+Description-cs.UTF-8: Zastaralá hlavní verze ${old}
+ PostgreSQL verze ${old} je již zastaralá, ale v systému se stále nachází balík se serverem a/nebo klientem. Nainstalujte prosím nejnovější balíky (postgresql-${latest} a postgresql-client-${latest}) a aktualizujte své klastry ${oldversion} pomocí pg_upgradecluster (viz manuálová stránka).
+ .
+ Vemte prosím na vědomí, že instalací postgresql-${latest} se automaticky vytvoří výchozí klastr ${latest}/main. Chcete-li aktualizovat klastr ${old}/main, musíte odstranit nově vytvořený klastr ${latest} (pg_dropcluster --stop ${latest} main, viz manuálová stránka).
+ .
+ Staré balíky serveru a klienta již nejsou podporovány. Po aktualizaci stávajících klastrů byste měli balíky postgresql-${old} a postgresql-client-${old} odstranit.
+ .
+ Podrobnosti naleznete v /usr/share/doc/postgresql-common/README.Debian.gz.
+Description-de.UTF-8: Veraltete Version ${old}
+ Die PostgreSQL-Version ${old} ist veraltet, aber die Server-oder Client-Pakete sind noch installiert. Bitte installieren Sie die aktuellen Pakete (postgresql-${latest} und postgresql-client-${latest}) und aktualisieren Sie die existierenden Cluster mit pg_upgradecluster (siehe man-Seite).
+ .
+ Bitte beachten Sie, dass die Installation des Pakets postgresql-${latest} automatisch einen Standard-Cluster ${latest}/main anlegt. Wenn Sie den Cluster ${old}/main aktualisieren möchten, müssen Sie den schon vorhandenen ${latest} Cluster entfernen (pg_dropcluster --stop ${latest} main, siehe man-Seite für Details).
+ .
+ Die alten Server- und Client-Pakete werden nicht mehr unterstützt. Nachdem die existierenden Cluster aktualisiert werden, sollten die Pakete postgresql-${old} und postgresql-client-${old} entfernt werden.
+ .
+ Bitte lesen Sie /usr/share/doc/postgresql-common/README.Debian.gz für Details.
+Description-es.UTF-8: Versión principal ${old} obsoleta
+ La versión de PostgreSQL ${old} está obsoleta, pero el paquete del cliente o del servidor aún están instalados. Debe instalar las últimas versiones de los paquetes (postgresql-${latest} y postgresql-client-${latest}) y actualizar sus clústers ${oldversion} con la orden «pg_upgradecluster» (consulte la página del manual).
+ .
+ Tenga en cuenta que la instalación de postgresql-${latest} creará automáticamente un clúster por omisión ${latest}/main. Tiene que borrar el clúster ${latest} existente («pg_dropcluster --stop ${latest}) si desea actualizar el clúster ${old}/main, consulte la página de manual para conocer los detalles.
+ .
+ Ya no se da soporte a los paquetes antiguos de cliente y servidor. Debería eliminar los paquetes postgresql-${old} y postgresql-client-${old} después de actualizar los clústers que tenga.
+ .
+ Para más información consulte «/usr/share/doc/postgresql-common/README.Debian.gz».
+Description-eu.UTF-8: Zaharkituriko ${old} bertsio nagusia
+ PostgreSQL ${old} bertsioa zaharkiturik dago, baina bezero edo zerbitzari paketea oraindik instalaturik dago. Mesedez instalatu azken paketeak (postgresql-${latest} eta postgresql-client-${latest}) eta dauden ${oldversion} taldeak pg_upgradecluster (manual orria ikusi) erabiliaz eguneratu.
+ .
+ Kontu izan postgresql-${latest} instalatzean automatikoki ${latest}/main taldea sortuko duela. ${old}/main taldea eguneratu nahi baduzu dagoeneko dagoen ${latest} taldea ezabatu behar duzu (pg_dropcluster --stop ${latest} main, begiatu manual orrialdea xehetasunentzat).
+ .
+ Zerbitzari eta bezero zahar paketeak ez dira luzaroago onartuko. Dauden taldeak eguneratu ondoren, postgresql-${old} eta postgresql-client-${old} paketeak ezabatu beharko lireateke.
+ .
+ Begiratu /usr/share/doc/postgresql-common/README.Debian.gz xehetasunetarako.
+Description-fi.UTF-8: Vanhentunut pääversio ${old}
+ Ohjelman PostgreSQL versio ${old} on vanhentunut, mutta palvelin- tai asiakaspaketteja on vielä asennettuna. Asenna uusimmat paketit (postgresql-${latest} ja postgresql-client-${latest}) ja päivitä olemassa olevat version ${oldversion} klusterit ohjelmalla pg_upgradecluster (katso man-ohjesivu).
+ .
+ Version postgresql-${latest} asennus luo automaattisesti oletusklusterin ${latest}/main. Jos haluat päivittää klusterin ${old}/main, sinun tulee poistaa jo olemassa oleva klusteri ${latest} (komennolla pg_dropcluster --stop ${latest} main, lisätietoja man-ohjesivulta).
+ .
+ Vanhoja palvelin- ja asiakaspaketteja ei enää tueta. Kun olemassa olevat klusterit on päivitetty, paketit postgresql-${old} ja postgresql-client-${old} tulisi poistaa.
+ .
+ Tiedostosta /usr/share/doc/postgresql-common/README.Debian.gz löytyy lisätietoja (englanniksi).
+Description-fr.UTF-8: Version majeure ${old} obsolète
+ La version ${old} de PostgreSQL est obsolète, mais le paquet du client ou du serveur est toujours installé. Veuillez installer la version la plus récente des paquets postgresql-${latest} et postgresql-client-${latest} et mettre à niveau les grappes (« clusters ») en version ${oldversion} avec « pg_upgradecluster ». Veuillez consulter la page de manuel pour plus de précisions.
+ .
+ Veuillez noter que l'installation de postgresql-${latest} créera par défaut une grappe (« cluster ») ${latest}/main. Si vous souhaitez mettre à niveau la grappe ${old}/main, il faudra supprimer la grappe ${latest} en exécutant la commande « pg_dropcluster--stop ${latest} main ». Veuillez consulter la page de manuel pour plus de précisions.
+ .
+ Les anciennes versions des paquets client et serveur ne sont plus maintenues. Après la mise à niveau des grappes (« clusters »), les paquets postgresql-${old} et postgresql-client-${old} devraient être supprimés.
+ .
+ Veuillez consulter /usr/share/doc/postgresql-common/README.Debian.gz pour plus de détails.
+Description-gl.UTF-8: Versión ${old} obsoleta
+ A versión ${old} de PostgreSQL está obsoleta, pero aínda ten instalado os paquetes do servidor ou do cliente. Instale os últimos paquetes (postgresql-${latest} e postgresql-client-${latest}) e actualice os clusters que teñan ${oldversion} mediante pg_upgradecluster (consulte a páxina de manual).
+ .
+ Teña en conta que a instalación de postgresql-${latest} ha crear automaticamente un cluster ${latest}/main por defecto. Se quere actualizar o cluster ${old}/mail ha ter que eliminar o cluster ${latest} que xa existe (pg_dropcluster --stop ${latest} main, consulte a páxina man para máis detalles).
+ .
+ Xa non hai soporte dos paquetes de servidor e cliente vellos. Despois de actualizar os clusters existentes debería eliminar os paquetes postgresql-${old} e postgresql-client-${old}.
+ .
+ Consulte /usr/share/doc/postgresql-common/README.Debian.gz para ter máis detalles.
+Description-it.UTF-8: La versione ${old} è obsoleta
+ La versione ${old} di PostgreSQL è obsoleta, ma alcuni dei pacchetti server o client sono ancora installati. Installare i pacchetti più recenti (postgresql-${latest} e postgresql-client-${latest}) e aggiornare i cluster ${oldversion} esistenti con pg_upgradecluster (si veda la pagina man).
+ .
+ Attenzione: l'installazione di postgresql-${latest} crea automaticamente il cluster predefinito ${latest}/main. Se si vuole aggiornare il cluster ${old}/main è necessario rimuovere cluster ${latest} dopo la sua creazione (pg_dropcluster --stop ${latest} main, si veda la pagina man per i dettagli).
+ .
+ I vecchi pacchetti di server e client non sono più supportati. Dopo aver aggiornato i cluster esistenti è consigliabile rimuovere i pacchetti postgresql-${old} e postgresql-client-${old}.
+ .
+ Si veda /usr/share/doc/postgresql-common/README.Debian.gz per i dettagli.
+Description-ja.UTF-8: メジャーバージョン ${old} はもはや使われません
+ PostgreSQL バージョン ${old} は既に使われなくなっていますが、サーバおよびクライアント用パッケージがインストールされたままになっています。最新のパッケージ (postgresql-${latest} と postgresql-client-${latest}) をインストールして、現在の ${oldversion} クラスタを pg_upgradecluster コマンドを使ってアップグレードしてください (詳細は man ページを参照)。
+ .
+ postgresql-${latest} のインストールでは自動的にデフォルトのクラスタ ${latest}/main が作成されることに注意してください。${old}/main クラスタをアップグレードしたい場合は、既にある ${latest} クラスタを削除する必要があります (pg_dropcluster --stop ${latest} main 、詳細は manpage を参照してください)。
+ .
+ 以前のサーバ・クライアントパッケージはもはやサポートされていません。現在のクラスタをアップグレード後、postgresql-${old} パッケージと postgresql-client-${old} パッケージを削除する必要があります。
+ .
+ 詳細は /usr/share/doc/postgresql-common/README.Debian.gz を参照してください。
+Description-pt.UTF-8: Versão maior ${old} obsoleta
+ A versão ${old} do PostgreSQL está obsoleta, mas ainda tem os pacotes de cliente e/ou do servidor instalados. Por favor instale os últimos pacotes (postgresql-${latest} e postgresql-client-${latest}) e actualize os seus 'clusters' ${oldversion} existentes com o pg_upgradecluster (ver página do manual).
+ .
+ Por favor tenha consciência que a instalação de postgresql-${latest} irá criar automaticamente o 'cluster' por omissão ${latest}/main. Se deseja actualizar o cluster ${old}/main, precisa de remover o 'cluster' ${latest} existente (pg_dropcluster --stop ${latest} main, ver página do manual para detalhes).
+ .
+ Os pacotes de cliente e servidor antigos já não são suportados. Após actualizar os 'clusters' existentes, deve remover os pacotes postgresql-${old} e postgresql-client-${old}.
+ .
+ Por favor consulte o ficheiro /usr/share/doc/postgresql-common/README.Debian.gz para mais detalhes.
+Description-pt_BR.UTF-8: Versão principal ${old} obsoleta
+ O PostgreSQL versão ${old} está obsoleto, mas os pacotes servidor ou cliente ainda estão instalados. Por favor, instale os últimos pacotes (postgresql-${latest} e postgresql-client-${latest}) e atualize seus clusters ${oldversion} existentes com o pg_upgradecluster (veja a página de manual).
+ .
+ Por favor, esteja ciente de que a instalação do postgresql-${latest} irá criar automaticamente um cluster padrão ${latest}/main. Se você quer atualizar o cluster ${old}/main, você precisa remover o cluster ${latest} já existente (pg_dropcluster --stop ${latest} main, veja a página de manual para detalhes).
+ .
+ Os antigos pacotes servidor e cliente não são mais suportados. Após os clusters existentes terem sido atualizados, os pacotes postgresql-${old} e postgresql-client-${old} deveriam ser removidos.
+ .
+ Por favor, veja  /usr/share/doc/postgresql-common/README.Debian.gz para detalhes.
+Description-ro.UTF-8: Versiunea majoră învechită ${old}
+ Versiunea PostgreSQL ${old} este învechită, dar pachetele pentru server sau client sunt încă instalate. Instalați cele mai recente pachete (postgresql-${latest} și postgresql-client-${latest}) și actualizați clusterele ${oldversion} existente cu pg_upgradecluster (a se vedea pagina de manual).
+ .
+ Se atrage atenția că instalarea postgresql-${latest} va crea în mod automat un cluster implicit ${latest}/main. Dacă doriți să actualizați clusterul ${old}/main, este necesar să eliminați clusterul ${latest} care deja există (pg_dropcluster --stop ${latest} main, a se vedea pagina de manual pentru detalii).
+ .
+ Pachetele vechi pentru server și client nu mai sunt întreținute. După actualizarea clusterelor existente pachetele postgresql-${old} și postgresql-client-${old} ar trebui dezinstalate.
+ .
+ A se vedea /usr/share/doc/postgresql-common/README.Debian.gz pentru detalii.
+Description-ru.UTF-8: Устаревшая версия ${old}
+ PostgreSQL версии ${old} устарел, но пакет сервера или клиента все ещё установлен. Пожалуйста, установите последние пакеты (postgresql-${latest} и postgresql-client-${latest}), и обновите ваши существующие кластеры ${oldversion} с помощью pg_upgradecluster (смотрите man-страницу).
+ .
+ Предупреждаю, что установка postgresql-${latest} автоматически создаст кластер по умолчанию ${latest}/main. Если вы желаете обновить  кластер ${old}/main, то должны удалить существующий кластер ${latest} (pg_dropcluster --stop ${latest} main, смотрите man-страницу).
+ .
+ Старые пакеты сервера и клиента более не поддерживаются. После того как существующие кластеры будут обновлены, пакеты postgresql-${old} и postgresql-client-${old} должны быть удалены.
+ .
+ Смотрите /usr/share/doc/postgresql-common/README.Debian.gz для дальнейшей информации.
+Description-sv.UTF-8: ${old} är en utfasad version
+ PostgreSQL-versionen ${old} är utfasad men du har fortfarande server- eller klientpaketen installerade. Installera de senaste paketen (postgresql-${latest} och postgresql-client-${latest}) och uppgradera ditt befintliga ${oldversion}-kluster med pg_updatecluster (se manualsidan).
+ .
+ Observera att installationen av postgresql-${latest} automatiskt skapar ett standardkluster ${latest}/main. Om du vill uppgradera ${old}/main-klustret, kommer du behöva ta bort det befintliga ${latest}-klustret (pg_dropcluster --stop ${latest} main, se manualsida för mer information).
+ .
+ De gamla server- och klientpaketen stöds inte längre. Efter uppgradering av de existerande klustren bör du ta bort paketen postgresql-${old} och postgresql-client-${old}.
+ .
+ För mer information läs /usr/share/doc/postgresql-common/README.Debian.gz
+Description-tr.UTF-8: Eskimiş ana sürüm ${old}
+ PostgreSQL'in ${old}. sürümü artık eskimiş ve kullanılmayan bir sürümdür, ama sisteminizde hâlâ bu sürümdeki istemci ya da sunucu paketleri kurulu. Lütfen en yeni paketleri (postgresql-${latest} ve postgresql-client-${latest}) kurun ve mevcut ${oldversion}. sürüm kümelerini pg_upgradecluster ile yükseltin (ayrıntılar için kılavuz sayfasına bakın).
+ .
+ postgresql-${latest} paketinin kurulumunun öntanımlı ${latest}/main kümesini oluşturacağını unutmayın. Eğer ${old}/main kümesini yükseltmek istiyorsanız mevcut ${latest}. sürüm kümesini kaldırmalısınız. Bu işi pg_dropcluster --stop ${latest} main komutuyla yapabilirsiniz, ayrıntılar için kılavuz sayfasına bakın.
+ .
+ Eski sunucu ve istemci paketleri artık desteklenmiyor. Var olan kümeler yükseltildikten sonra postgresql-${old} ve postgresql-client-${old} paketlerinin kaldırılması tavsiye edilir.
+ .
+ Ayrıntılar için lütfen /usr/share/doc/postgresql-common/README.Debian.gz belgesine bakın.
+Description-vi.UTF-8: Phiên bản chính cũ ${old}
+ Phiên bản PostgreSQL ${old} quá cũ, các gói trình phục vụ hay gói trình khách vẫn còn được cài đặt. Hãy cài đặt các gói mới nhất (postgresql-${latest} và postgresql-client-${latest}) rồi nâng cấp các tập hợp ${oldversion} tồn tại bằng chức năng pg_upgradecluster (xem trang hướng dẫn [man]).
+ .
+ Ghi chú rằng tiến trình cài đặt postgresql-${latest} sẽ tự động tạo một tập hợp mặc định ${latest}/main. Muốn nâng cấp tập hợp ${old}/main thì bạn cần phải gỡ bỏ tập hợp ${latest} cluster đã tồn tại (pg_dropcluster --stop ${latest} main, xem trang hướng dẫn để tìm chi tiết).
+ .
+ Không còn hỗ trợ lại các gói trình phục vụ và gói trình khách. Sau khi nâng cấp các tập hợp đã tồn tại, khuyên bạn gỡ bỏ các gói postgresql-${old} và postgresql-client-${old}.
+ .
+ Xem tài liệu Đọc Đi « /usr/share/doc/postgresql-common/README.Debian.gz » để tìm chi tiết.

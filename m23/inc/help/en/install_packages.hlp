@@ -1,0 +1,28 @@
+Install packages
+
+helpInclude("packageTypes.inc");
+
+<u>Installation of packages:</u><ol>
+<li> Select <i>"$I18N_package_selection"</i>, <i>"$I18N_normal_packages"</i> or <i>"$I18N_special_packages"</i>.</li>
+<li> Enter your search key at <i>"$I18N_package_search"</i>. If you leave the field blank all packages matching the package criteria are displayed. Please note that this doesn't work if you select <i>"$I18N_normal_packages"</i> because of the huge amount of normal packages.</li>
+<li> At <i>"$I18N_found_packages"</i> you can see all packages matching your search criteria.</li>
+<li> Check the checkbox beside all the packages you want to install.</li>
+<li> Preselect your chosen packages by clicking on <i>"$I18N_preselect"</i>.</li>
+<li> Repeat step 1-5 if required.</li></ol>
+
+Complete the installation by clicking on <i>"Install preselected packages"</i>.
+
+Now you have preselected packages for installation. <!-- v1.5-->A green check mark shows that the package will be installed on the client and a red cross that the package will be removed. <!--end v1.5-->You can remove packages from the installation list by checking the packages <!-- v12.3-->(by clicking on the symbols at the top of the checkbox column you can select all or no packages or invert your selection)<!-- end v12.3--> and clicking on <i>"$I18N_discard_selected"</i> or all packages by clicking on <i>"$I18N_discard_all"</i>.
+
+Install the packages with a click on <i>"$I18N_install_selected"</i>.
+
+<!-- v12.3--><u>Changing the package priority</u>
+Packages or jobs are executed following the order of their priority (small numbers preceed higher numbers) on the client. If you would like to change the priority, select the desired packages and enter a new value for their priority into the field next to  <i>"$I18N_changePackagePriority"</i>. When you are finished, click on <i>"$I18N_changePackagePriority"</i>. If necessary, repeat the process for further jobs/packages.<!-- end v12.3-->
+
+<!-- v1.3-->
+<u>Installation preview</u>
+Before you start the real installation, you can test what will happen during installation. You can check, which additional packages will be installed or if there will be problems. Simply click on the <i>"$I18N_previewInstallation"</i> button. After some time you will see the previewed installation protocol.
+<!--end v1.3--><!-- v1.5-->
+An installation preview works for a single client only.<!--end v1.5-->
+
+helpInclude("packageSelections.inc");

@@ -1,0 +1,34 @@
+<!--v10.0 new-->Wiederherstellung Ihres m23-Servers
+Sollte es zu einem Ausfall Ihres m23-Servers kommen, so können Sie diesen mittels der zuvor angelegten Backups in einen der gesicherten Zustände zurückversetzen. Gehen Sie hierzu wie folgt vor:
+
+<ol>
+	<li>Installieren Sie Ihren m23-Server auf einer fehlerfreien Festplatte mit der m23-Serverinstallations-CD (zu beziehen von <a href="http://m23.sf.net">m23.sf.net</a>).</li>
+	<li>Speichern Sie die letzte Sicherungsdatei auf dem Rechner, der auch den GPG-Schlüssel zum ver- und entschlüsseln bereithält.</li>
+	<li>Wenn es sich um ein Linux-System handelt, so entschlüsseln Sie die Backup-Datei auf der Kommandozeile mittels:
+
+	<code>gpg -d < m23serverBackup-*.tar.gpg > m23backup.tar</code>
+
+	Ansonsten verwenden Sie die GPG-Anwendung Ihres Betriebssystems.
+	</li>
+	<li>Kopieren Sie die entschlüsselte Sicherungsdatei <i>"m23backup.tar"</i> auf den neu installierten m23-Server in das Verzeichnis <i>"/tmp"</i>. Unter Linux können Sie das Kopieren mit SCP durchführen:
+
+	<code>scp m23backup.tar root@[IP]:/tmp</code>
+
+	Ersetzen Sie hierbei <i>"[IP]"</i> durch die IP Ihres m23-Servers. Unter Windows können Sie das Programm <a href="http://winscp.net/eng/docs/lang:de">WinSCP (www.winscp.net)</a> verwenden.</li>
+	<li>Loggen Sie sich auf dem m23-Server als Benutzer <b>root</b> ein.</li>
+	<li>Wechseln Sie in das Verzeichnis <i>"/tmp"</i> mit:
+
+	<code>cd /tmp</code></li>
+	<li>Erstellen Sie ein neues Verzeichnis für die entpackten Daten und wechseln Sie in dieses:
+
+	<code>mkdir restore; cd restore</code></li>
+	<li>Entpacken Sie das Backup mit:
+
+	<code>tar xfv /tmp/m23backup.tar</code></li>
+	<li>Starten Sie den Wiederherstellungsprozeß mit:
+
+	<code>/m23/bin/m23Restore</code></li>
+	<li>Nach Beendigung der Wiederherstellung sollten Sie Ihren m23-Server neu starten, z.B. mit:
+	<code>reboot</code></li>
+	<li>Nun sollte Ihr m23-Server wieder funktionsfähig sein.</li>
+</ol>

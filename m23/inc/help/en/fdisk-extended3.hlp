@@ -1,0 +1,12 @@
+Extended partitioning: Select installation partitions
+Select the partitions you want to use for installation and as swap space. You can only select partitions that can be used for installation or swap.
+
+<!-- V1.7 new--><u>Step by step</u>
+<ol>
+<LI>Choose the partitions for installation and as swap from the lists.</LI>
+<!-- V1.12 begin --><LI>If you need additional mountpoints, you can define them under <i>"$I18N_defineMountpoints"</i>. Enter the partition, the mountpoint and the required parameters into the appropriate input fields and click on <i>"$I18N_add"</i>. These informations correspond to those which you can find in the file <b>/etc/fstab</b>. You can see mountpoints which are already defined in the table under the input lines.</LI><!-- V1.12 end -->
+<LI>When you have made your selection, click on <i>"$I18N_format_client"</i>.</LI>
+</ol><!-- V1.7 new end-->
+
+<!-- V1.12 begin --><u>Hint for installation on a RAID</u>
+You have to define a mountpoint, if you want to install an operating system on a RAID. Choose a partition which is not located on a RAID from the list <i>"$I18N_partition"</i>. Enter <b>"/boot"</b> in <i>"$I18N_mountpoint"</i> and <b>"auto defaults,noauto 0 0"</b> in <i>"$I18N_parameter"</i>.<!-- V1.12 end -->

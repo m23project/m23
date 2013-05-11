@@ -1,0 +1,62 @@
+<!--v10.0 new-->$I18N_serverBackup
+Ce dialogue vous aide à sauvegarder votre serveur m23 automatiquement à intervalles réguliers. Les sauvegardes contiennent la configuration du système d'exploitation et la liste des paquets installés en plus des fichiers nécessaires pour la restauration du serveur m23. En utilisant ces informations, il est possible de régénérer le serveur m23 après une perte de données ou quelconque endommagement dans le dernier état sauvegardé. Les données sauvegardées peuvent être téléchargées sur un serveur externe à votre propre réseau ou sur internet après qu'elles aient été cryptées avec <a href="http://fr.wikipedia.org/wiki/GNU_Privacy_Guard">GPG</a> pour être à l'abris d'accès indésirés.
+
+Le dialogue de sauvegarde, chiffrement et téléchargement est partagé en deux parties.
+<ol>
+	<li><b>$I18N_encryptAndUploadBackup:</b> Cette partie traite du chiffrement des données à sauvegarder et de la copie sur un serveur tierce.</li>
+	<li><b>Paramètres pour cron:</b> Les paramètres pour le démon <a href="http://fr.wikipedia.org/wiki/Cron">cron</a> déterminent à quelles échéances le serveur m23 doit être sauvegardé automatiquement.</li>
+</ol>
+
+
+<br><br><h2>$I18N_encryptAndUploadBackup</h2>
+Ici, vous entrez les données requises pour l'utilisation de l'espace de stockage externe désiré et sélectionnez la clé GPG pour le chiffrement des vos sauvegardes.
+<u>Remarque concernant les clés GPG</u>
+Si la clé GPG que vous souhaitez utiliser pour le chiffrement des données n'est pas dans la liste, cliquez sur <i>&laquo;$I18N_manageGPGKeys&raquo;</i>.
+
+<ol>
+	<li>
+		Sélectionnez la méthode de sauvegarde de données dans <i>&laquo;$I18N_onlineFileStoringService&raquo;</i>. vous avez le choix entre:
+		<ul>
+			<li><b>-:</b> Cette option copie l'archive de sauvegarde uniquement sur le disque dur du serveur m23. Vous devriez utiliser cette option seulement si vous ne souhaitez <b>absolument</b> pas utiliser d'autre serveur pour la sauvegarde de vos archives. Dans le cas d'une perte de données, par exemple par défaillance du disque dur du serveur m23, le serveur m23 ne pourra pas être restauré. Vous pouvez copier les fichiers de sauvegarde, qui se trouvent dans le répertoire <code>/m23/root-only/serverBackups/</code>, manuellement sur un média externe.</li>
+
+			<li><b>scp:</b> Au moyen de <a href="http://fr.wikipedia.org/wiki/Secure_Copy">Secure Copy</a> vous pouvez sauvegarder les archives de sauvegarde sur un quelconque ordinateur accessible par son serveur SSH. Cette option s'impose si vous disposez d'un serveur SSH pouvant accueillir les sauvegardes. Si les données de ce serveur sont également sauvegardées par un cycle de sauvegarde, cette option est une possibilité très sûre pour la protection de votre serveur m23.</li>
+
+			<li><b>share-online.biz:</b> Si vous sélectionnez cette option, le serveur m23 va transférer vos archives de sauvegarde chiffrées sur un <a href="http://fr.wikipedia.org/wiki/Site_d%27h%C3%A9bergement_de_fichiers_en_un_clic">One-Click-Hoster</a>. Si vous n'avez pas de serveur pour copier l'archive de sauvegarde de votre serveur m23, cette option pourrait vous intéresser. Vos données de sauvegarde seront protégées par le chiffrement contre l'accès non autorisé. Le téléchargement peut durer quelque temps.</li>
+		</ul>
+	</li>
+
+	<li>Cliquez sur <i>&laquo;$I18N_change&raquo;</i> après avoir choisi.</li>
+
+	<li>Dépendant du service en ligne de sauvegarde de fichiers vous devrez fournir différentes indications afin de pouvoir utiliser ce service.
+		<ul>
+			<li><h3>scp</h3>
+			Pour "Secure Copy" les indications suivantes sont nécessaires:
+			<ul>
+				<li><b>$I18N_user:</b> C'est le nom d'utilisateur avec lequel le serveur m23 doit se connecter sur le serveur SCP pour y sauvegarder le fichiers de sauvegarde.</li>
+				<li><b>$I18N_scpServer:</b> Ici, entrez le nom ou l'adresse IP par le(la)quel(le) le serveur m23 se connectera au serveur SCP.</li>
+				<li><b>$I18N_scpStoreDirectory:</b> C'est le répertoire sur le serveur SCP où les archives de sauvegarde seront copiés. Entrez le chemin absolu.</li>
+				<li><b>$I18N_gpgKey:</b> Ici, choisissez la clé GPG avec laquelle vous souhaitez chiffrer les sauvegardes avant de les transférer.</li>
+			</ul>
+			<u>Remarque</u>
+			Prenez soin que la clé SSH du superutilisateur root du serveur m23 qui est contenu dans le fichier <code>/root/.ssh/id_dsa.pub</code> serait entré dans le fichier <code>~/.ssh/authorized_keys</code> de l'utilisateur indiqué <i>&laquo;$I18N_user&raquo;</i> sur le serveur SCP pour qu'un transfert des fichiers sans mot de passe soit possible. <!--v12.1 begin-->Si vous disposez de la commande &laquo;ssh-copy-id&raquo;, la copie s'effectuera simplement. Pour ce faire, tapez la commande &laquo;ssh-copy-id -i /root/.ssh/id_dsa.pub user@serveur_SCP&raquo;.<!--v12.2 end-->
+			</li>
+		
+			<li><h3>share-online.biz</h3>
+			Si vous avez choisi "share-online.biz", vous devez entrer les valeurs suivantes:
+			<ul>
+				<li><b>$I18N_user:</b> C'est le nom d'utilisateur, avec lequel vous êtes registrés chez share-online.biz.</li>
+				<li><b>$I18N_password:</b> Entrez le mot de passe correspondant.</li>
+				<li><b>$I18N_repeated_password:</b> Resaisissez-le pour confirmation.</li>
+				<li><b>$I18N_gpgKey:</b> Sélectionnez la clé GPG, avec laquelle vous souhaitez chiffrer vos archives de sauvegardes avant le transfert.</li>
+			</ul>
+			<u>Remarque:</u>
+			Pour transférer des archives de sauvegarde, il faut s'enregistrer gratuitement sur <a href="http://www.share-online.biz/signup.php">www.share-online.biz</a>. Les transferts sur et depuis le serveur sont gratuits. <b>Vous devriez vous assurer que les conditions n'aient pas changées. Si c'était le cas, contactez-nous sous<a href="mailto:hhabermann@pc-kiel.de">hhabermann@pc-kiel.de</a>,s.v.p.</b>
+			</li>
+		</ul>
+	</li>
+
+	<li>Enfin cliquez sur <i>&laquo;$I18N_save&raquo;</i> (indépendant de la méthode choisi).</li>
+</ol>
+
+<br><br><h2>Paramètres cron</h2>
+helpInclude("cron.inc");

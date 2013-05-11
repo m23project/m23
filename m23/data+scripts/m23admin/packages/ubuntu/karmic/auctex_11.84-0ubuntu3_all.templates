@@ -1,0 +1,220 @@
+Template: auctex/doauto
+Type: select
+Choices: Background, Foreground, None
+Choices-cs.UTF-8: Pozadí, Popředí, Žádný
+Choices-de.UTF-8: Hintergrund, Vordergrund, Nicht
+Choices-es.UTF-8: Segundo plano, Primer plano, Ninguno
+Choices-fr.UTF-8: Arrière-plan, Avant-plan, Aucun
+Choices-gl.UTF-8: Fondo, Primeiro plano, Ningún
+Choices-it.UTF-8: Sottofondo, Primo piano, Nessuno
+Choices-ja.UTF-8: バックグラウンド, フォアグラウンド, なし
+Choices-nl.UTF-8: Achtergrond, Voorgrond, Geen
+Choices-pt.UTF-8: Segundo plano, Primeiro plano, Nenhum
+Choices-pt_BR.UTF-8: Segundo plano, Primeiro plano, Nenhum
+Choices-ru.UTF-8: фоновый, оперативный, не выполнять
+Default: Background
+Description: (La)TeX macros parsing mode:
+ To greatly improve AUCTeX performances, every TeX macro package and LaTeX
+ style file currently installed at your site will be parsed.
+ .
+ This may take a lot of time, so it should be probably done in the
+ background; however you may also choose to have it done in the foreground,
+ or to skip the parsing at all instead.  If you choose Background, you will
+ find a detailed log of the process in the file: ${LOGFILE}.
+ .
+ A weekly cron job will also take care of updating the data collected now,
+ so usually you won't need to worry about them whenever you install new
+ (La)TeX packages or remove old ones.
+ .
+ Anyway, you can update them by hand running update-auctex-elisp.
+Description-cs.UTF-8: Režim analyzování (La)TeXových maker:
+ Pro výrazné zlepšení výkonnosti AUCTeXu se analyzuje každý nainstalovaný TeXový balík s makry a LaTeXový soubor se styly.
+ .
+ Analýza může trvat poměrně dlouho, takže je rozumné to provést na pozadí. Nic vám však nebrání analyzovat na popředí, případně analýzu zcela přeskočit. Zvolíte-li Pozadí, naleznete podrobný záznam celého procesu v souboru ${LOGFILE}.
+ .
+ O průběžnou aktualizaci analyzovaných dat se postará týdenní cronová úloha, takže se o ni nemusíte starat při instalaci nových nebo rušení starých (La)TeXových balíků.
+ .
+ Data můžete aktualizovat i ručně spuštěním update-auctex-elisp.
+Description-de.UTF-8: (La)TeX-Makros Parsing-Modus:
+ Zur deutlichen Beschleunigung von AUCTeX kann jedes derzeit bei Ihnen installierte TeX-Makro-Paket und jede LaTeX-Style-Datei im Voraus eingelesen werden.
+ .
+ Das kann eine Weile dauern, daher wird die Bearbeitung im Hintergrund empfohlen. Die Bearbeitung kann allerdings auch im Vordergrund erfolgen, und die Voraus-Bearbeitung kann auch ganz unterbleiben. Wenn Sie die Bearbeitung im Hintergrund wählen, finden Sie eine detaillierte Protokollausgabe in ${LOGFILE}.
+ .
+ Weiterhin wird ein wöchentlicher cron-Job auf die Fortschreibung der nun erhobenen Informationen achten, so dass Sie sich für gewöhnlich nicht weiter darum kümmern müssen, wenn Sie LaTeX-Pakete installieren oder entfernen.
+ .
+ Die Aktualisierung kann zudem von Hand durch Aufruf von update-auctex-elisp erfolgen.
+Description-es.UTF-8: Modo de interpretación de las macros (La)TeX:
+ Para mejorar el rendimiento de AUCTeX se analizará el contenido de cada paquete de macros TeX y cada fichero de estilos LaTeX instalado en su sistema.
+ .
+ Esto puede tardar mucho tiempo, por lo que probablemente debería
+ realizarse en segundo plano; sin embargo puede elegir hacerlo en primer
+ plano u omitir por completo el análisis. Si elige hacerlo en segundo
+ plano, encontrará un registro detallado del proceso en el fichero:
+ ${LOGFILE}.
+ .
+ Una tarea semanal actualizará la información recolectada en esta sesión,
+ por lo que no se tiene que preocupar cuando instale nuevos paquetes de
+ (La)TeX o desinstale los antiguos.
+ .
+ De cualquier forma, puede actualizarlos manualmente ejecutando
+ update-auctex-elisp.
+Description-fr.UTF-8: Mode d'analyse des macros (La)TeX :
+ Afin d'augmenter grandement les performances d'AUCTeX, chaque paquet de macros de TeX ainsi que le fichier style de LaTeX installés sur votre site seront analysés.
+ .
+ Ceci risque de prendre beaucoup de temps, ainsi il est préférable de le faire en arrière-plan ; toutefois, vous pouvez aussi choisir de le faire en avant-plan ou encore sauter complètement cette partie. Si vous choisissez de le faire en arrière-plan, vous trouverez un rapport détaillé dans le fichier ${LOGFILE}.
+ .
+ Une tâche cron hebdomadaire s'occupera de mettre à jour les données récoltées maintenant, ainsi vous n'aurez pas besoin de vous en soucier au moment de l'installation de nouveaux paquets (La)TeX ou quand vous en supprimez des vieux.
+ .
+ De toute façon vous pouvez les mettre à jour vous-même en exécutant la commande « update-auctex-elisp ».
+Description-gl.UTF-8: Modo de análise de macros de (La)TeX:
+ Para mellorar moito o rendemento de AUCTeX, hanse analizar tódolos paquetes de macros de TeX e ficheiros de estilos de LaTeX instalados actualmente no seu sitio.
+ .
+ Isto pode levar moito tempo, así que seguramente sexa mellor facelo coma tarefa de fondo; nembargantes tamén pode facelo coma tarefa de primeiro plano, ou omitir completamente a análise. Se escolle "Fondo", ha ter un rexistro detallado do proceso no ficheiro ${LOGFILE}.
+ .
+ Unha tarefa de cron semanal tamén se ha encargar de actualizar os datos que se colleiten agora, así que normalmente non ha ter que se preocupar por eles ao instalar novos paquetes de (La)TeX ou eliminar paquetes antigos.
+ .
+ De tódolos xeitos, pode actualizalos á man executando update-auctex-elisp.
+Description-it.UTF-8: Modalità di scansione delle macro per (La)TeX:
+ Per migliorare grandemente le proprie prestazioni, AUCTeX scandirà tutti i pacchetti di macro per TeX ed i file di stile per LaTeX attualmente installati su questa macchina.
+ .
+ Questa operazione potrebbe richiedere molto tempo ed è quindi probabilmente preferibile eseguirla in sottofondo; tuttavia, si può anche scegliere di eseguirla in primo piano o di non eseguirla affatto.  Se si sceglie Sottofondo verrà generata una cronistoria dettagliata dell'operazione nel file: ${LOGFILE}.
+ .
+ Le informazioni raccolte adesso saranno aggiornate settimanalmente per mezzo del demone cron, di modo che normalmente non sarà necessario preoccuparsene di persona al momento dell'installazione o della rimozione di pacchetti aggiuntivi per (La)TeX.
+ .
+ In ogni caso, le informazioni si possono sempre aggiornare a mano lanciando update-auctex-elisp.
+Description-ja.UTF-8: (La)TeX マクロの解析モード :
+ AUCTeX のパフォーマンスを劇的に改善するために、インストール済みの全ての TeX マクロパッケージと LaTeX スタイルファイルは解析されます。
+ .
+ これには非常に時間がかかりますので、おそらくバックグラウンドで実行すべきであると思われます。しかし、フォアグラウンドで実行することも、解析を行わないことも選択できます。もし、バックグラウンドを選択した場合、解析についての詳細のログは、${LOGFILE} に出力されます。
+ .
+ 毎週の cron ジョブにより、今収集したデータは更新されます。ですので、通常は新しい (La)TeX パッケージを入れたり、古いパッケージを削除した際に気にする必要はありません。
+ .
+ いずれにせよ、update-auctex-elisp を手動で実行することで更新できます。
+Description-nl.UTF-8: Modus voor het ontleden van (La)TeX macros:
+ Om AUCTeX prestaties flink te verbeteren wordt ieder TeX-macropakket en LaTeX-stijlbestand dat momenteel op uw computer is geïnstalleerd nu ontleed.
+ .
+ Dit kan veel tijd kosten: het verdient dus de voorkeur om dit in de achtergrond te laten doen. U kunt echter ook kiezen dit op de voorgrond te laten doen of om de ontleding geheel achterwege te laten. Indien u achtergrond kiest, kunt u een gedetailleerde log van het proces vinden in het bestand ${LOGFILE}.
+ .
+ Een wekelijkse cron-taak zal er voor zorgen dat de gegevens die nu worden verzameld ook worden bijgewerkt, dus normaal gesproken hoeft u zich daarover geen zorgen te maken wanner u nieuwe (La)TeX-pakketten installeert of oude verwijdert.
+ .
+ Daarnaast kunt u ze altijd met de hand bijwerken door update-auctex-elisp uit te voeren
+Description-pt.UTF-8: Modo de análise de macros do (La)TeX:
+ Para optimizar o desempenho do AUCTeX, todos os pacotes de macros do TeX e todos os ficheiros de estilo do LaTeX instalados serão analisados.
+ .
+ Este processo poderá demorar algum tempo, pelo que provavelmente deverá ser executado em segundo plano. No entanto, poderá escolher executá-lo em primeiro plano, ou até saltar o processo de análise. Caso decida executar em segundo plano, um registo detalhado do processo será armazenado no ficheiro: $(LOGFILE).
+ .
+ Uma tarefa semanal do cron será encarregue de actualizar os dados agora recolhidos, o que fará com que normalmente não se tenha de preocupar quando instalar ou remover pacotes antigos do (La)TeX.
+ .
+ De qualquer modo, poderá actualizá-los manualmente executando o update-auctex-elisp.
+Description-pt_BR.UTF-8: Modo de interpretação de macros (La)TeX:
+ Para melhorar enormemente a performance de AUCTeX, todo pacote de macro TeX e arquivo de estilo LaTeX instalados atualmente em seu sistema serão interpretados.
+ .
+ Isso pode consumir um bom tempo, então pode ser feito provavelmente em segundo plano; entretanto, você pode optar por ter isso feito em primeiro plano, ou ao invés disso pular o processo de interpretação. Caso você optar por fazer a interpretação em segundo plano, encontrará um log detalhado do processo no arquivo: ${LOGFILE}.
+ .
+ Um trabalho semanal do cron também tomará o cuidado de atualizar as informações obtidas agora, então você normalmente não precisará preocupar-se com elas mesmo quando instalar novos pacotes (La)TeX ou remover antigos.
+ .
+ De qualquer forma, você pode atualizá-las manualmente executando update-auctex-elisp.
+Description-ru.UTF-8: Режим анализа макросов (La)TeX:
+ Для значительного увеличения производительности AUCTeX, каждый макропакет TeX и файл стилей LaTeX, установленный в системе, будет проанализирован.
+ .
+ Это может занять много времени, поэтому, вероятно должно выполняться в фоновом режиме; однако также вы можете выполнить это в оперативном режиме, или анализ может вообще не выполняться. Если вы выберете 'фоновый', то подробный протокол обработки можно найти в файле ${LOGFILE}.
+ .
+ Еженедельное задание cron позаботится об обновлении данных, собранных сейчас, поэтому обычно вам не нужно беспокоиться о том, что нужно что-то делать при установке новых пакетов (La)TeX или удалении старых.
+ .
+ В любом случае, вы можете обновить данные вручную запустив update-auctex-elisp.
+
+Template: auctex/doautofg
+Type: select
+Choices: Console, File
+Choices-cs.UTF-8: Konzole, Soubor
+Choices-de.UTF-8: Konsole, Datei
+Choices-es.UTF-8: Consola, Fichero
+Choices-fr.UTF-8: Console, Fichier
+Choices-gl.UTF-8: Consola, Ficheiro
+Choices-it.UTF-8: Video, File
+Choices-ja.UTF-8: コンソール, ファイル
+Choices-nl.UTF-8: Console, Bestand
+Choices-pt.UTF-8: Consola, Ficheiro
+Choices-pt_BR.UTF-8: Console, Arquivo
+Choices-ru.UTF-8: на консоль, в файл
+Default: File
+Description: Parsing output destination:
+ You chose to parse TeX macro packages and LaTeX style files in foreground.
+ This is OK, but normally it will also generate quite a lot of output.
+ .
+ By default -- i.e., answering File to this question -- further output from
+ the parsing process will go to a file named: ${LOGFILE}.
+ .
+ If you answer Console, you will see all of the (boring) output right on
+ your terminal.
+Description-cs.UTF-8: Výstup analýzy:
+ Zvolili jste, aby analýza TeXových maker a LaTeXových stylů probíhala na popředí. To je v pořádku, nicméně tato analýza vytvoří spoustu výstupu.
+ .
+ Ve výchozím nastavení (tj. Soubor) bude veškerý výstup vytvořený během analýzy přesměrován do souboru ${LOGFILE}.
+ .
+ Zvolíte-li možnost Konzole, uvidíte veškerý (nudný) výstup přímo na svém terminálu.
+Description-de.UTF-8: Ziel der Parsing-Ausgabe:
+ Sie wählten die Bearbeitung der Tex-Makros und LaTeX-Styles im Vordergrund. Das ist schon in Ordnung, aber für gewöhnlich wird dabei eine Menge Ausgabe erzeugt.
+ .
+ Standardmäßig (also bei der Wahl von »Datei«) wird die weitere Ausgabe des Bearbeitungsprozesses in die Datei ${LOGFILE} umgeleitet.
+ .
+ Wenn Sie mit »Konsole« antworten, wird die gesamte Ausgabe direkt auf Ihrem Terminal erscheinen.
+Description-es.UTF-8: Destino de la salida del análisis:
+ Ha elegido analizar los paquetes de macros TeX y ficheros de estilos LaTeX
+ en primer plano. Esto es correcto, pero normalmente también mostrará una
+ gran cantidad de información.
+ .
+ Por omisión, esto es , respondiendo «Fichero» a esta pregunta, los
+ siguientes mensajes del proceso de análisis se guardarán en un fichero
+ llamado: ${LOGFILE}.
+ .
+ Si responde «Consola», verá todos los (aburridos) mensajes en su terminal.
+Description-fr.UTF-8: Analyse de la destination de sortie :
+ Vous avez décidé d'analyser les paquets de macros de TeX ainsi que les fichiers style de LaTeX en avant-plan. Cela est parfaitement valable, mais sachez que ce processus génère beaucoup de texte en sortie.
+ .
+ Le choix par défaut (i.e., répondre Fichier) implique que la sortie du processus d'analyse est dirigée dans un fichier nommé ${LOGFILE}. 
+ .
+ En répondant Console, vous verrez la sortie (ennuyeuse) s'afficher sur votre terminal.
+Description-gl.UTF-8: Destino da saída da análise:
+ Decidiu analizar os paquetes de macros de TeX e os ficheiros de estilos de LaTeX nunha tarefa de fondo. Isto é correcto, pero normalmente tamén xera moita saída.
+ .
+ Por defecto -- é dicir, se resposta "Ficheiro" a esta pregunta --, a saída do proceso de análise ha ir a un ficheiro chamado ${LOGFILE}.
+ .
+ Se resposta "Consola" ha ver toda a saída no seu terminal.
+Description-it.UTF-8: Destinazione dei messaggi della scansione:
+ I pacchetti di macro per TeX ed i file di stile per LaTeX saranno scanditi in primo piano come è stato richiesto.  Questo va bene, ma di solito produce molti messaggi informativi.
+ .
+ In mancanza di scelte contrarie, cioè rispondendo File a questa domanda, i messaggi originati dalla scansione verranno scritti in un file di nome ${LOGFILE}.
+ .
+ Rispondendo Video, i (noiosi) messaggi verranno visualizzati direttamente sul proprio terminale.
+Description-ja.UTF-8: 解析の出力先 :
+ TeX マクロパッケージと LaTeX スタイルファイルをフォアグラウンドで解析することを選択しました。もちろん問題ありませんが、非常に大量の出力が生成されます。
+ .
+ 既定では、つまりこの質問にファイルと答えた場合、解析プロセスの詳細な出力は ${LOGFILE} へ出力されます。
+ .
+ もしコンソールと答えると、すべての (退屈な) 出力があなたのターミナルへそのまま出力されます。
+Description-nl.UTF-8: Uitvoerbestemming van het ontleden:
+ U hebt gekozen om TeX-macropakketten en LaTeX-stijlbestanden in de voorgrond te ontleden. Dat is in orde, maar het genereert veel uitvoer.
+ .
+ Standaard, dat wil zeggen, als u kiest voor Bestand, zal verdere uitvoer van het ontleedproces worden bewaard in een bestand genaamd ${LOGFILE}.
+ .
+ Als u kiest voor Console, zult u al die (saaie) uitvoer hier op uw terminal zien.
+Description-pt.UTF-8: Destino do 'output' da análise:
+ Escolheu que a análise dos pacotes de macros do TeX e os ficheiros de estilo do LaTeX seja feita em primeiro plano. Tal é permitido, mas normalmente gerará um 'output' de grandes dimensões.
+ .
+ Por omissão -- ou escolhendo a opção Ficheiro -- qualquer 'output' do processo de análise será armazenado no ficheiro: $(LOGFILE).
+ .
+ Caso escolha a opção Consola, visualizará todo o (enfadonho) 'output' no seu terminal.
+Description-pt_BR.UTF-8: Destino da saída do processo de interpretação:
+ Você optou por interpretar pacotes de macros TeX e arquivos de estilo LaTeX em primero plano. Não há problemas em relação a isso, mas normalmente esse processo também irá gerar bastante saída.
+ .
+ Por padrão -- isto é, respondendo Arquivo a esta questão -- a saída adicional do processo de interpretação irá para um arquivo nomeado: ${LOGFILE}.
+ .
+ Caso você optar por Console, verá toda a saída (cansativa) direto em seu terminal.
+Description-ru.UTF-8: Место вывода результатов анализа:
+ Вы выбрали анализ макропакетов TeX и файлов стилей LaTeX в оперативном режиме. В этом случае, обычно, создаётся много результатов обработки.
+ .
+ По умолчанию, то есть, при выборе 'в файл' -- весь вывод процесса анализа направляется в файл с именем ${LOGFILE}.
+ .
+ Если вы выберете 'на консоль', то вы увидите все (часто ненужные) результаты прямо в терминале.
+

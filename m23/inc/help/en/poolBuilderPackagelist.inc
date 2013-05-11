@@ -1,0 +1,1 @@
+<b>$I18N_packageSources</b>: here you can see the package source list which corresponds to a pool. To install a client in this pool copy the corresponding line into the package source list of the client you wish to install.

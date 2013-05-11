@@ -1,0 +1,486 @@
+
+Template: lirc/install_devices
+Type: boolean
+Default: true
+Description: Create LIRC device nodes if they are not there?
+ LIRC needs the /dev/lirc, /dev/lircd and /dev/lircm files in /dev.
+ .
+ 
+Description-cs.UTF-8: Vytvořit soubory LIRC zařízení, pokud ještě neexistují?
+ LIRC potřebuje soubory /dev/lirc, /dev/lircd a /dev/lircm v adresáři /dev.
+Description-de.UTF-8: Sollen die LIRC-Gerätedateien erstellt werden, wenn sie nicht vorhanden sind?
+ LIRC benötigt die Dateien /dev/lirc, /dev/lircd und /dev/lircm in /dev.
+Description-es.UTF-8: ¿Crear ficheros de dispositivo para LIRC si aún no existen?
+ LIRC requiere que existan los ficheros /dev/lirc, /dev/lircd, y /dev/lircm en /dev.
+Description-fi.UTF-8: Luodaanko LIRC-laitetiedostot, jos niitä ei ole?
+ LIRC tarvitsee tiedostot /dev/lirc, /dev/lircd ja /dev/lircm hakemistoon /dev.
+Description-fr.UTF-8: Créer ces fichiers de périphériques s'ils n'existent pas déjà ?
+ LIRC a besoin des périphériques /dev/lirc, /dev/lircd et /dev/lircm.
+Description-gl.UTF-8: ¿Crear os nodos dos dispositivos LIRC se non existen?
+ LIRC precisa dos ficheiros /dev/lirc, /dev/lircd e /dev/lircm .
+Description-it.UTF-8: Creare i nodes del dvice LIRC se questi non sono presenti?
+ LIRC necessita dei file /dev/lirc, /dev/lircd e /dev/lircm in /dev.
+Description-ja.UTF-8: 存在しない場合、LIRC デバイスノードを作成しますか?
+ LIRC は、/dev に /dev/lirc、/dev/lircd、/dev/lircm ファイルを必要とします。
+Description-pt.UTF-8: Criar os dispositivos do LIRC se não estiverem presentes?
+ O LIRC necessita dos ficheiros /dev/lirc, /dev/lircd e /dev/lircm em /dev.
+Description-pt_BR.UTF-8: Criar nós de dispositivo LIRC se eles não existirem?
+ O LIRC precisa dos arquivos /dev/lirc, /dev/lircd e /dev/lircm no /dev.
+Description-ru.UTF-8: Создать файлы устройств LIRC, если их нет?
+ Для LIRC требуются файлы устройств /dev/lirc, /dev/lircd и /dev/lircm в каталоге /dev.
+Description-sv.UTF-8: Skapa enhetsnoder för LIRC om de inte redan finns?
+ /dev/lirc  /dev/lircd och /dev/lircm
+Description-vi.UTF-8: Tạo nút thiết bị LIRC chưa có không?
+ LIRC cần thiết các tập tin:
+  • /dev/lirc
+  • /dev/lircd
+  • /dev/lircm
+ trong thư mục « /dev ».
+
+Template: lirc/reconfigure
+Type: boolean
+Default: false
+Description: Do you want to reconfigure LIRC?
+ LIRC is already configured, reconfiguring it may overwrite the
+ existing configuration in /etc/lirc/hardware.conf.
+ .
+ However, comments, LIRC_ARGS and other unknown code will be preserved.
+Description-cs.UTF-8: Chcete přenastavit LIRC?
+ LIRC je již nastaveno. Přenastavení může přepsat vaše současné nastavení v souboru /etc/lirc/hardware.conf.
+ .
+ Avšak komentáře, LIRC_ARGS a jiný neznámý kód bude zachován.
+Description-de.UTF-8: Soll LIRC neu konfiguriert werden?
+ LIRC ist schon konfiguriert, eine Neukonfiguration könnte die existierende Konfiguration in /etc/lirc/hardware.conf überschreiben.
+ .
+ Jedoch werden Kommentare, LIRC_ARGS und anderer unbekannter Code beibehalten.
+Description-es.UTF-8: ¿Desea volver a configurar LIRC?
+ Ya se ha configurado LIRC, si lo vuelve a configurar puede sobreescribir la configuración existente en /etc/lirc/hardware.conf.
+ .
+ Sin embargo, se preservarán los comentarios, LIRC_ARGS y cualquier otro código desconocido.
+Description-eu.UTF-8: LIRC birkonfiguratu nahi al duzu?
+ LIRC dagoeneko konfiguraturik dago, birkonfiguratzean /etc/lirc/hardware.conf fitxategian dagoen konfigurazioa gainidatzi egingo da.
+ .
+ Hala ere, iruzkinak, LIRC_ARGS eta beste zenbait kode ezezagun mantendu egingo da.
+Description-fi.UTF-8: Haluatko muuttaa LIRC:n asetuksia?
+ LIRC:n asetukset on jo tehty. Asetusten muuttaminen saattaa kirjoittaa tiedostossa /etc/lirc/hardware.conf olevien asetusten päälle.
+ .
+ Kuitenkin kommentit, LIRC_ARGS ja muut tuntemattomat asetukset säilytetään.
+Description-fr.UTF-8: Faut-il reconfigurer LIRC ?
+ Une configuration antérieure de LIRC existe déjà. Reconfigurer le paquet peut corrompre la configuration existante située dans /etc/lirc/hardware.conf.
+ .
+ Cependant, les commentaires, LIRC_ARGS et les parties inconnues seront conservés.
+Description-gl.UTF-8: ¿Quere reconfigurar LIRC?
+ LIRC xa está configurado, e reconfiguralo pode estragar parte da configuración existente en /etc/lirc/hardware.conf.
+ .
+ Nembargantes, hanse conservar os comentarios, LIRC_ARGS e calquera código descoñecido.
+Description-it.UTF-8: Vuoi riconfigurare LIRC?
+ LIRC è già configurato, eseguire la riconfigurazione può sovrascrivere la configurazione esistente in /etc/lirc/hardware.conf.
+ .
+ Comunque, i commenti, LIRC_ARGS e altro codice sconosciuto saranno conservati.
+Description-ja.UTF-8: LIRC を再設定しますか?
+ LIRC はすでに設定されており、これを再設定すると、/etc/lirc/hardware.conf の既存の設定を上書きすることになります。
+ .
+ ただし、コメント、LIRC_ARGS およびその他の未知のコードは残されます。
+Description-nb.UTF-8: Vil du omkonfigurere LIRC?
+ LIRC er allerede satt opp, omkonfigurering kan overskrive det eksisterende oppsettet i /etc/lirc/hardware.conf.
+ .
+ Imidlertid blir kommentarer, LIRC_ARGS og annen ukjent kode beholdt.
+Description-no.UTF-8: Vil du omkonfigurere LIRC?
+ LIRC er allerede satt opp, omkonfigurering kan overskrive det eksisterende oppsettet i /etc/lirc/hardware.conf.
+ .
+ Imidlertid blir kommentarer, LIRC_ARGS og annen ukjent kode beholdt.
+Description-pt.UTF-8: Deseja reconfigurar o LIRC?
+ O LIRC já se encontra configurado, reconfigurá-lo novamente pode estragar a configuração existente em /etc/lirc/hardware.conf.
+ .
+ No entanto, comentários, LIRC_ARGS e outro código desconhecido será preservado.
+Description-pt_BR.UTF-8: Você quer reconfigurar o LIRC?
+ O LIRC já está configurado, reconfigurá-lo pode sobrescrever as configurações existentes em /etc/lirc/hardware.conf.
+ .
+ No entanto, comentários, LIRC_ARGS e outros códigos desconhecidos serão preservados.
+Description-ru.UTF-8: Перенастроить LIRC?
+ LIRC уже настроен, повторная настройка может затереть изменения, сделанные вручную в существующем файле /etc/lirc/hardware.conf.
+ .
+ Однако комментарии, LIRC_ARGS и другой неизвестный код останутся неизменёнными.
+Description-sv.UTF-8: Vill du konfigurera om LIRC?
+ LIRC är redan konfigurerad, att konfigurera om den kan förstöra delar av din hopsnickrade konfiguration i /etc/lirc/hardware.conf.
+ .
+ Dock kommer kommentarer, LIRC_ARGS och annan okänd kod att behållas.
+Description-vi.UTF-8: Bạn có muốn cấu hình lại LIRC không?
+ LIRC đã được cấu hình nên việc cấu hình lại nó có thể ghi đè lên cấu hình đã tồn tại trong « /etc/lirc/hardware.conf ».
+ .
+ Tuy nhiên, các chú thích, đối số LIRC_ARGS và mã lạ khác vẫn còn sẽ được bảo tồn.
+
+Template: lirc/take_care_of_old_config
+Type: note
+Description: Old configuration files found
+ Previous versions of this package didn't include any configuration
+ file and expected users to create their own /etc/lircd.conf and
+ /etc/lircmd.conf.
+ .
+ The new location for these files is /etc/lirc/.
+ .
+ File locations will be corrected but you should check that none of
+ LIRC configuration files are left directly under /etc/.
+Description-cs.UTF-8: Nalezeny soubory s dřívějším nastavením
+ Předchozí verze tohoto balíku neobsahovaly žádný konfigurační soubor a očekávaly, že uživatel vytvoří vlastní /etc/lircd.conf a /etc/lircmd.conf.
+ .
+ Nové umístění pro tyto soubory je /etc/lirc/.
+ .
+ Umístnění souborů bude opraveno, ale stejně byste měli zkontrolovat, že žádný z konfiguračních souborů LIRC nezůstal přímo v /etc/.
+Description-de.UTF-8: Alte Konfigurationsdateien gefunden
+ Vorhergehende Versionen dieses Pakets beinhalteten keine Konfigurationsdateien und erwarteten vom Benutzer, eigene Konfigurationen in /etc/lircd.conf und /etc/lircmd.conf anzulegen.
+ .
+ Der neue Ort dieser Dateien ist /etc/lirc/.
+ .
+ Dateiorte werden korrigiert, aber Sie sollten überprüfen, dass keine der Konfigurationsdateien von LIRC direkt unter /etc verblieben ist.
+Description-es.UTF-8: Se ha encontrado ficheros de configuración antiguos.
+ Las versiones anteriores de este paquete no incluían ningún fichero de configuración y esperaban que el propio usuario las escribiera en /etc/lircd.conf y /etc/lircmd.conf.
+ .
+ La nueva ubicación de estos ficheros es /etc/lirc/.
+ .
+ Se tratará corregir las ubicaciones de los ficheros, pero debe asegúrarse de no dejar ningún fichero de configuración de LIRC directamente en /etc/.
+Description-eu.UTF-8: Konfigurazio zahar fitxategiak aurkitu dira
+ Pakete honen aurreko bertsioak ez zuen konfigurazio fitxategirik eta erabiltzaileak /etc/lircd.conf eta /etc/lircmd.conf pertsonalizatuak sortzea eskatzen zuen.
+ .
+ Fitxategi horien kokaleku berria /etc/lirc/ da.
+ .
+ Fitxategi kokapena aldatu egingo da baina zuk /etc/ karpeta LIRC konfigurazio fitxategirik geratzen ez dela ziurtatu beharko zenuke.
+Description-fi.UTF-8: Vanha asetustiedosto löydetty
+ Tämän paketin aiemmat versiot eivät sisältäneet mitään asetustiedostoja ja käyttäjien oletettiin luovan omat /etc/lircd.conf ja /etc/lircmd.conf.
+ .
+ Näiden tiedostojen uusi sijainti on /etc/lirc/.
+ .
+ Tiedostojen sijainnit korjataan, mutta sinun tulisi varmistaa ettei mitään LIRC:n asetustiedostoja ole jäänyt hakemistoon /etc/.
+Description-fr.UTF-8: Anciens fichiers de configuration présents
+ Les versions antérieures de ce paquet ne comportaient aucun fichier de configuration. Les fichiers de configuration /etc/lircd.conf et /etc/lircmd.conf devaient être créés manuellement.
+ .
+ Ces fichiers se trouvent maintenant dans le répertoire /etc/lirc/.
+ .
+ L'emplacement des fichiers de configuration de LIRC va être corrigé mais vous devriez contrôler qu'aucun fichier de configuration de LIRC ne subsiste dans /etc/.
+Description-gl.UTF-8: Atopáronse ficheiros de configuración antigos
+ As versións anteriores deste paquete non incluían ningún ficheiro de configuración e esperábase que os usuarios creasen os seus ficheiros /etc/lircd.conf e /etc/lircmd.conf
+ .
+ A nova ubicación deses ficheiros é /etc/lirc/.
+ .
+ Hanse corrixir as ubicacións dos ficheiros, pero debería comprobar que ningún dos ficheiros de configuración de LIRC permaneza directamente baixo /etc/.
+Description-it.UTF-8: Trovato vecchio file di configurazione.
+ La precedente versione di questo pacchetto non includeva alcun file di configurazione e si attendeva che l'utente creasse i propri file di configurazione /etc/lircd.conf e /etc/lircmd.conf.
+ .
+ La nuova ubicazione di questi file è /etc/lirc/.
+ .
+ Le ubicazioni dei file saranno corretti, ma devi assicurarti che nessuno dei file di configurazione di LIRC sia lasciato direttamente sotto /etc/.
+Description-ja.UTF-8: 古い設定ファイルが見つかりました
+ このパッケージの以前のバージョンでは、設定ファイルを含んでおらず、ユーザが自身の /etc/lircd.conf および /etc/lircmd.conf を作成するようになっていました。
+ .
+ これらのファイルの新しい場所は、/etc/lirc/ です。
+ .
+ ファイル位置は正されますが、LIRC の設定ファイルが /etc/ の直下に何も残っていないことを確認してください。
+Description-nb.UTF-8: Gamle oppsettsfiler funnet
+ Det var ikke oppsettsfiler levert med tidligere versjoner av denne pakka, og det ble ventet at brukere opprettet sine egne /etc/lircd.conf og /etc/lircmd.conf.
+ .
+ Det nye stedet der disse filene plasseres er /etc/lirc/.
+ .
+ Filsteder vil bli korrigert, men du bør sjekke at ingen av LIRCs oppsettsfiler blir lagt direkte under /etc/.
+Description-no.UTF-8: Gamle oppsettsfiler funnet
+ Det var ikke oppsettsfiler levert med tidligere versjoner av denne pakka, og det ble ventet at brukere opprettet sine egne /etc/lircd.conf og /etc/lircmd.conf.
+ .
+ Det nye stedet der disse filene plasseres er /etc/lirc/.
+ .
+ Filsteder vil bli korrigert, men du bør sjekke at ingen av LIRCs oppsettsfiler blir lagt direkte under /etc/.
+Description-pt.UTF-8: Encontrados antigos ficheiros de configuração
+ Versões anteriores deste pacote não incluíam qualquer ficheiro de configuração sendo esperado que o utilizador criasse o seu em /etc/lircd.conf·e·/etc/lircmd.conf.
+ .
+ A nova localização para estes ficheiros é /etc/lirc/.
+ .
+ Os locais dos ficheiros serão corrigidos, no entanto certifique-se que nenhum dos ficheiros de configuração é deixado directamente em /etc/.
+Description-pt_BR.UTF-8: Arquivos de configuração antigos encontrados
+ Versões anteriores deste pacote não incluíam quaisquer arquivos de configuração e esperavam que os usuários criassem seus próprios /etc/lircd.conf e /etc/lircmd.conf.
+ .
+ A nova localização destes arquivos é /etc/lirc/.
+ .
+ As localizações dos arquivos será consertada mas você deveria verificar se nenhum arquivo de configuração LIRC foi deixado diretamente sob /etc/.
+Description-ru.UTF-8: Найдены старые конфигурационные файлы
+ В предыдущей версии пакета не было файлов конфигурации и предполагалось, что пользователь сам создаст файлы /etc/lircd.conf и /etc/lircmd.conf.
+ .
+ Теперь эти файлы должны лежать в каталоге /etc/lirc/.
+ .
+ Размещение файлов будет исправлено, но проверьте, что в каталоге /etc/ не осталось ни одного конфигурационного файла LIRC.
+Description-sv.UTF-8: Gammal inställningsfil funnen.
+ Tidigare versioner av detta paket inkluderade inte någon konfigurationsfil och förväntade sig att användaren skapade sina egna /etc/lircd.conf och /etc/lircmd.conf
+ .
+ Den nya platsen för dessa filer är /etc/lirc/.
+ .
+ Jag kommer att försöka arrangera saker rätt men om jag inte kan bör du kontrollera att ingen av LIRCs konfigurationsfiler lämnas direkt under /etc/.
+Description-vi.UTF-8: Tìm thấy tập tin cấu hình cũ
+ Phiên bản trước của gói này không chứa tập tin cấu hình, nhờ người dùng tự tạo « /etc/lircd.conf » và « /etc/lircmd.conf ».
+ .
+ Vị trí mới của các tập tin này là « /etc/lirc/ ».
+ .
+ Các vị trí tập tin sẽ được sửa chữa, nhưng bạn vẫn còn nên kiểm tra không có tập tin cấu hình LIRC còn lại dưới thư mục « /etc/ ».
+
+Template: lirc/remote_driver
+Type: string
+Description: Driver name for lircd:
+ for internal use only
+
+Template: lirc/remote_modules
+Type: string
+Description: Needed kernel modules for LIRC to work:
+ for internal use only
+
+Template: lirc/remote_device
+Type: string
+Description: Device node for lircd:
+ for internal use only
+
+Template: lirc/remote_lircd_conf
+Type: string
+Description: Recommended configuration file for lircd:
+ for internal use only
+
+Template: lirc/transmitter_driver
+Type: string
+Description: Driver name for lircd:
+ for internal use only
+
+Template: lirc/transmitter_modules
+Type: string
+Description: Needed kernel modules for LIRC to work:
+ for internal use only
+
+Template: lirc/transmitter_device
+Type: string
+Description: Device node for lircd:
+  for internal use only
+
+Template: lirc/transmitter_lircd_conf
+Type: string
+Description: Recommended configuration file for lircd:
+ for internal use only
+
+Template: lirc/lircmd_conf
+Type: string
+Description: Recommended configuration file for lircmd:
+ for internal use only
+
+Template: lirc/port
+Type: string
+Description: Hint for lirc-modules-source:
+ for internal use only
+
+Template: lirc/irq
+Type: string
+Description: Hint for lirc-modules-source:
+ for internal use only
+
+Template: lirc/timer
+Type: string
+Description: Hint for lirc-modules-source:
+ for internal use only
+
+Template: lirc/blacklist
+Type: string
+Description: blacklisted kernel modules:
+ for internal use only
+
+Template: lirc/cflags
+Type: string
+Description: Hint for lirc-modules-source:
+ for internal use only
+
+Template: lirc/should-use-IntelliMouse
+Type: note
+Description: IntelliMouse protocol preferred over IMPS/2
+ You are currently using lircmd with the IMPS/2 protocol. This is not
+ compatible with the method lircmd uses to simulate a mouse, so IntelliMouse
+ support has been added and is now the preferred protocol.
+ .
+ You should update /etc/lirc/lircmd.conf and the configuration of any program
+ which uses lircmd as a mouse to use the IntelliMouse protocol instead.
+ .
+ NOTE: gpm will refuse to use lircmd as a mouse with IMPS/2 protocol.
+Description-cs.UTF-8: Upřednostňovat protokol IntelliMouse namísto IMPS/2
+ V současnosti používáte lircmd s protokolem IMPS/2. Ten není kompatibilní s metodou, kterou lircmd používá, aby simuloval myš. Proto byla přidána podpora pro protokol IntelliMouse, který je nyní upřednostňovaný.
+ .
+ Měli byste aktualizovat /etc/lirc/lircmd.conf a konfiguraci každého programu,který používá lircmd jako myš, aby používal protokol IntelliMouse.
+ .
+ POZNÁMKA: gpm odmítne používat lircmd jako myš s protokolem IMPS/2.
+Description-de.UTF-8: Das IntelliMouse-Protokoll sollte statt des IMPS/2-Protokolls verwendet werden.
+ Sie verwenden momentan Lircmd mit dem IMPS/2-Protokoll. Dies ist nicht kompatibel mit der Methode, die Lircmd zur Simulation einer Maus verwendet, daher wurde Unterstützung für die IntelliMouse hinzugefügt und diese ist nun das bevorzugte Protokoll.
+ .
+ Sie sollten /etc/lirc/lircmd.conf und die Konfigurationen von allen Programmen, die Lircmd als Maus verwenden, aktualisieren, und stattdessen das IntelliMouse-Protokoll verwenden.
+ .
+ Hinweis: gpm wird sich weigern, Lircmd als Maus mit dem IMPS/2 Protokoll zu benutzen.
+Description-es.UTF-8: El protocolo IntelliMouse tiene preferencia sobre IMPS/2
+ Está utilizando lircmd con el protocolo IMPS/2. Esto no es compatible con el método que utiliza lircmd para simular un ratón, por esto se ha añadido soporte para IntelliMouse que es ahora el protocolo preferido.
+ .
+ Debe actualizar /etc/lirc/lircmd.conf y la configuración de cualquier programa que utilice lircmd como un ratón para que utilice el protocolo IntelliMouse en su lugar.
+ .
+ NOTA: gpm se negará a usar lircmd como ratón con el protocolo IMPS/2.
+Description-eu.UTF-8: IntelliMouse protokoloa hobetsia IMPS/2 gainean
+ Zu licmd IMPS/2 protokoloaz erabiltzen ari zara. Hau ez da lircmd-ek sagu bat simulatzeko erabiltzen duen metodoarekin bateragarria, beraz IntelliMouse gehitu da eta hori da orain lehenetsiriko protokoloa.
+ .
+ /etc/lirc/lircmd.conf eta lircmd sagu bezala erabiltzen duen edozein programaren konfigurazioa eguneratu behar duzu horren ordez IntelliMouse protokoloa erabiltzeko.
+ .
+ Oharra: gpme-k ez du funtzionatuko lircmd sagu bezala IMPS/2 protokoloaz erabiltzean.
+Description-fi.UTF-8: IntelliMouse-yhteyskäytäntöä suositaan IMPS/2:n sijaan
+ Tällä hetkellä käytät ohjelmaa lircmd IMPS/2-yhteyskäytännöllä. Se ei ole yhteensopiva lircmd:n käyttämän hiiren simulointitavan kanssa, joten tuki IntelliMouse-yhteyskäytännölle on lisätty ja se on asetettu suosituksi yhteyskäytännöksi
+ .
+ Sinun tulisi päivittää /etc/lirc/lircmd.conf ja kaikkien ohjelmaa lircmd hiirenä käyttävien ohjelmien asetukset käyttämään IntelliMouse-yhteyskäytäntöä.
+ .
+ HUOM: gpm ei suostu käyttämään ohjelmaa lircmd hiirenä IMPS/2-yhteyskäytännön kanssa.
+Description-fr.UTF-8: Protocole IntelliMouse suggéré à la place d'IMPS/2
+ Le programme lircmd est actuellement utilisé avec le protocole IMPS/2. Cela n'est pas compatible avec la méthode employée par lircmd pour simuler une souris. La gestion du protocole IntelliMouse a donc été ajoutée et il est recommandé de l'utiliser.
+ .
+ Vous devriez mettre à jour /etc/lirc/lircmd.conf, ainsi que la configuration des programmes utilisant lircmd comme souris, afin d'utiliser le protocole IntelliMouse.
+ .
+ Note : lircmd ne pourra pas être utilisé comme souris par gpm si vous choisissez IMPS/2.
+Description-gl.UTF-8: Prefírese o protocolo IntelliMouse sobre IMPS/2
+ Está a empregar lircmd co protocolo IMPS/2. Isto non é compatible co método empregado por lircmd para simular un rato, así que se engadiu soporte de IntelliMouse, que é agora o protocolo preferido.
+ .
+ Debería actualizar /etc/lirc/lircmd.conf e a configuración dos programas que empreguen lircmd coma rato, para que empreguen no seu canto o protocolo IntelliMouse.
+ .
+ NOTA: gpm hase negar a empregar lircmd coma rato co protocolo IMPS/2.
+Description-it.UTF-8: Il protocollo IntelliMouse è preferito a IMPS/2.
+ Stai attualmente usando lircmd con il protocollo IMPS/2. Questo non è compatibile con il metodo usato da licrmd per simulare un mouse, per cui è stato aggiunto il supporto ad IntelliMouse, e ora quest'ultimo è il protocollo preferito.
+ .
+ Devi aggiornare /etc/lirc/lircmd.conf e la configurazione di ogni programma che usa lircmd come mouse per usare il protocollo IntelliMouse in sostituzione.
+ .
+ NOTA: gmp rifiuterà di usare lircmd come mouse con il protocollo IMPS/2.
+Description-ja.UTF-8: IntelliMouse プロトコルは IMPS/2 に優先します
+ 現在 IMPS/2 プロトコル付きで lircmd を使っています。これは、マウスをシミュレートするのに使われる lircmd のやり方と互換ではないので、InteliMouse サポートが追加され、推奨プロトコルとなります。
+ .
+ /etc/lirc/lircmd.conf および lircmd をマウスとして使う各プログラムの設定を、IntelliMouse プロトコルを使うように更新してください。
+ .
+ 注意: gpm は lircmd を IMPS/2 プロトコルのマウスとして使うのを許しません。
+Description-nb.UTF-8: IntelliMouse-protokoll foretrekkes over IMPS/2
+ Du bruker for tiden lircmd med IMPS/2-protokollen. Dette er ikke kompatibelt med den metoden lircmd bruker til å simulere en mus, så det er blitt lagt til støtte for IntelliMouse, som nå er foretrukket protokoll.
+ .
+ Du bør oppdatere /etc/lirc/lircmd.conf og oppsettet for alle programmer som bruker lircmd som mus til å bruke IntelliMouse-protokollen i stedet.
+ .
+ MERK: gpm vil nekte å bruke lircmd som mus med IMPS/2-protokoll.
+Description-no.UTF-8: IntelliMouse-protokoll foretrekkes over IMPS/2
+ Du bruker for tiden lircmd med IMPS/2-protokollen. Dette er ikke kompatibelt med den metoden lircmd bruker til å simulere en mus, så det er blitt lagt til støtte for IntelliMouse, som nå er foretrukket protokoll.
+ .
+ Du bør oppdatere /etc/lirc/lircmd.conf og oppsettet for alle programmer som bruker lircmd som mus til å bruke IntelliMouse-protokollen i stedet.
+ .
+ MERK: gpm vil nekte å bruke lircmd som mus med IMPS/2-protokoll.
+Description-pt.UTF-8: O protocolo IntelliMouse·será preferido em detrimento do IMPS/2
+ Está actualmente a utilizar o protocolo IMPS/2. Este é um protocolo não compatível com o método que o lircmd usa para simular um rato, assim o suporte ao IntelliMouse foi adicionado e é agora o protocolo preferido.
+ .
+ Deverá actualizar o /etc/lirc/lircmd.conf e a configuração de qualquer programa que utilize o lircmd como um rato para que use o protocolo IntelliMouse.
+ .
+ Nota: o gpm recusará utilizar o lircmd como um rato com o protocolo IMPS/2.
+Description-pt_BR.UTF-8: Protocolo IntelliMouse preferido sobre IMPS/2
+ Você está atualmente usando lircmd com o protocolo IMPS/2. Isto não é compatível com o método que o lircmd usa para simular um mouse, portanto o suporte IntelliMouse foi adicionado e agora é o protocolo preferido.
+ .
+ Você deveria atualizar /etc/lirc/lircmd.conf e a configuração de qualquer programa que use o lircmd como um mouse para usar o protocolo IntelliMouse.
+ .
+ NOTA: gpm se recusará a usar o lircmd como um mouse com o protocolo IMPS/2.
+Description-ru.UTF-8: Протокол IntelliMouse более предпочтителен чем IMPS/2
+ Метод, который использует lircmd для эмуляции мыши, не совместим с протоколом IMPS/2. Поэтому была добавлена поддержка протокола IntelliMouse, который теперь является предпочтительным.
+ .
+ Вы должны изменить используемый протокол на IntelliMouse в файле /etc/lirc/lircmd.conf и в настройках всех программ, использующих lircmd в качестве мыши.
+ .
+ ЗАМЕЧАНИЕ: gpm не будет использовать lircmd как мышь с протоколом IMPS/2.
+Description-sv.UTF-8: lircmd bör använda IntelliMouse-protokollet istället för IMPS/2.
+ Metoden som lircmd använder för att simulera en mus är inte kompatibel med IMPS/2-protokollet så att stöd för IntelliMouse har lagts till och är nu det föredragna protokollet.
+ .
+ Du ANVÄNDER för närvarande lircmd med IMPS/2-protokollet och det rekommenderas att du uppdaterar /etc/lirc/lircmd.conf och konfigurationen för de program som använder lircmd som en mus med IntelliMouse-protokollet.
+ .
+ NOTERA: gpm kommer att vägra använda lircmd som en mus med IMPS/2-protokollet.
+Description-vi.UTF-8: Khuyên giao thức IntelliMouse thay cho IMPS/2
+ Hiện thời bạn sử dụng trình nền lircmd với giao thức IMPS/2. Giao thức này không tương thích với phương pháp mô phỏng con chuột của lircmd, vì vậy khả năng hỗ trợ IntelliMouse đã được thêm vào. IntelliMouse giờ này là giao thức khuyến khích.
+ .
+ Khuyên bạn cập nhật tập tin cấu hình « /etc/lirc/lircmd.conf » và cấu hình của bất kỳ chương trình sử dụng lircmd làm con chuột, để sử dụng giao thức IntelliMouse thay thế.
+ .
+ GHI CHÚ : gpm sẽ từ chối dùng lircmd làm con chuột với giao thức IMPS/2.
+
+Template: lirc/remove_var-log-lircd
+Type: boolean
+Default: true
+Description: Delete /var/log/lircd?
+ LIRC now uses syslog as a logging mechanism, so /var/log/lircd is no longer
+ relevant.
+Description-cs.UTF-8: Smazat /var/log/lircd?
+ LIRC nyní používá syslog pro zaznamenávání událostí, takže /var/log/lircd je zastaralý.
+Description-de.UTF-8: /var/log/lircd löschen?
+ LIRC benutzt nun syslog als Protokollmechanismus, daher ist /var/log/lircd nicht mehr relevant.
+Description-es.UTF-8: ¿Borrar /var/log/lircd?
+ LIRC ahora usa syslog como mecanismo de registro, por ende /var/log/lircd ya no es pertinente.
+Description-eu.UTF-8: /var/log/lircd ezabatu?
+ LIRC-ek orain syslog erabiltzen du erregistro mekanismo gisa, beraz /var/log/lircd ez da luzaroago behar.
+Description-fi.UTF-8: Poistetaanko /var/log/lircd?
+ LIRC käyttää nykyään lokin pitämiseen syslog-järjestelmää, joten /var/log/lircd ei ole enää tarpeellinen.
+Description-fr.UTF-8: Faut-il effacer /var/log/lircd ?
+ LIRC utilise maintenant syslog pour gérer ses journaux. En conséquence, le fichier /var/log/lircd n'est plus utilisé.
+Description-gl.UTF-8: ¿Eliminar /var/log/lircd?
+ Agora LIRC emprega syslog coma mecanismo de rexistro, así que /var/log/lircd xa non é pertinente.
+Description-it.UTF-8: Cancellare /var/log/lircd?
+ LIRC ora usa syslog come meccanismo di log, per cui /var/log/lircd non è più rilevante.
+Description-ja.UTF-8: /var/log/lircd を削除しますか?
+ LIRC は今ではログ機構として syslog を使います。/var/log/lircd はもはや無関係です。
+Description-nb.UTF-8: Slette /var/log/lircd?
+ LIRC bruker nå syslog som loggesystem, så /var/log/lircd er ikke relevant lenger.
+Description-no.UTF-8: Slette /var/log/lircd?
+ LIRC bruker nå syslog som loggesystem, så /var/log/lircd er ikke relevant lenger.
+Description-pt.UTF-8: Apagar /var/log/lircd?
+ O LIRC usa agora o syslog como mecanismo de registo. assim o /var/log/lircd já não é relevante.
+Description-pt_BR.UTF-8: Apagar /var/log/lircd?
+ O LIRC agora usa o syslog como mecanismo de registro de log, então o /var/log/lircd não é mais relevante.
+Description-ru.UTF-8: Удалить /var/log/lircd?
+ Теперь LIRC использует syslog в качестве механизма протоколирования, поэтому /var/log/lircd больше не обновляется.
+Description-sv.UTF-8: Ta bort /var/log/lircd?
+ LIRC använder numera syslog som en loggmekanism. Detta betyder att /var/log/lircd inte längre är relevant.
+Description-vi.UTF-8: Xoá « /var/log/lircd » không?
+ LIRC giờ này dùng syslog (bản ghi hệ thống) để ghi lưu dữ liệu. Vì vậy « /var/log/lircd » không còn hữu ích lại.
+
+Template: lirc/remote
+Type: select
+Choices: None, Custom${REMOTES}
+Default: None
+Description: Remote control configuration:
+ If you choose a remote or transmitter, but already have a
+ configuration file in /etc/lirc/lircd.conf, the existing
+ file will be renamed to /etc/lirc/lircd.conf.dpkg-old and
+ the community configurations loaded into
+ /etc/lirc/lircd.conf.  If you have a
+ /etc/lirc/lircd.conf.dpkg-old file already, it will not
+ be overwritten and your current /etc/lirc/lircd.conf will
+ be lost.
+
+Template: lirc/transmitter
+Type: select
+Choices: None, Custom${TRANSMITTERS}
+Default: None
+Description: IR transmitter, if present:
+ IR transmitters can be used for controlling external devices.  Some
+ devices are considered transceivers, with the ability to both send
+ and receive.  Other devices require separate hardware to accomplish
+ these tasks.
+
+Template: lirc/dev_input_device
+Type: select
+Choices: /dev/lirc0${EVENTS}
+Default: /dev/lirc0
+Description: Custom event interface for your dev/input device:
+ Many remotes that were previously supported by the lirc_gpio interface now
+ need to be set up via the dev/input interface.  You will need to custom
+ select your remote's event character device.  This can be determined by
+ 'cat /proc/bus/input/devices'.
+
+Template: lirc/start_lircd
+Type: string
+Default: true
+Description: Hint for lirc:
+ for internal use only
+
+Template: lirc/serialport
+Type: select
+Choices: /dev/ttyS0, /dev/ttyS1
+Default: /dev/ttyS0
+Description: Port your serial device is attached to:
+ The UART (serial) driver is a low level driver that takes advantage
+ of bit banging a character device.  This means that you can only use it
+ with hardware serial devices.  It unfortunately does not work with USB
+ serial devices.

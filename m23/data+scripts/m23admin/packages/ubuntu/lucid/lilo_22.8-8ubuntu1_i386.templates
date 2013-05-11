@@ -1,0 +1,1188 @@
+Template: lilo/new-config
+Type: note
+Description: LILO configuration
+ It seems to be your first LILO installation. It is absolutely necessary to
+ run liloconfig(8) when you complete this process and execute /sbin/lilo 
+ after this.
+ .
+ LILO won't work if you don't do this. 
+Description-ar.UTF-8: تهيئة LILO
+ يبدو أن هذا هو أول تثبيت LILO. من الضروري جداً تشغيل liloconfig(8) عند اكتمال هذه العملية وتنفيذ /sbin/lilo بعدها.
+ .
+ لن يعمل LILO إن لم تقم بهذا.
+Description-cs.UTF-8: Konfigurace zavaděče LILO
+ Vypadá to jako vaše první instalace LILA. Je nezbytné, abyste po skončení tohoto procesu a spustili liloconfig(8) a poté /sbin/lilo.
+ .
+ Pokud to neuděláte, LILO nebude fungovat.
+Description-da.UTF-8: LILO-opsætning
+ Dette lader til at være din første installation af LILO. Det er vigtigt at køre liloconfig(8) når du har fuldført denne proces og derefter køre /sbin/lilo.
+ .
+ LILO vil ikke fungere hvis du ikke gør dette.
+Description-de.UTF-8: LILO-Konfiguration
+ Es scheint so, als sei dies Ihre erste LILO-Installation. Wenn Sie diesen Vorgang abschließen, ist es absolut notwendig liloconfig(8) und danach /sbin/lilo auszuführen.
+ .
+ LILO wird nicht funktionieren, falls Sie dies nicht tun.
+Description-es.UTF-8: Configuración de LILO
+ Parece que esta es su primera instalación de LILO. Es absolutamente necesario ejecutar liloconfig(8) cuando complete este proceso y después ejecutar /sbin/lilo.
+ .
+ LILO no funcionará si no hace esto.
+Description-eu.UTF-8: LILOren konfigurazioa
+ LILO lehen aldiz instalatzera zoazela dirudi. Ezinbestekoa da liloconfig(8) exekutatzea prozesu hau burutzen duzunean, eta ondoren /sbn/lilo exekutatzea.
+ .
+ LILOk ez du funtzionatuko hori egiten ez baduzu.
+Description-fi.UTF-8: LILOn asetukset
+ Tämä näyttää olevan ensimmäinen LILOn asennuskerta. liloconfig(8) on ehdottomasti ajettava, kun tämä prosessi on valmis ja sen jälkeen on ajettava /sbin/lilo.
+ .
+ LILO ei toimi, jos näin ei tehdä.
+Description-fr.UTF-8: Configuration de LILO
+ Il semble qu'il s'agisse de votre première installation de LILO. Il est tout à fait indispensable d'utiliser liloconfig(8) lorsque vous aurez terminé l'installation, puis d'exécuter ensuite /sbin/lilo.
+ .
+ LILO ne fonctionnera pas sans cette opération.
+Description-gl.UTF-8: Configuración de LILO
+ Semella que esta é a súa primeira instalación de LILO. É absolutamente necesario executar liloconfig(8) despois de completar este proceso e executar /sbin/lilo despois diso.
+ .
+ LILO non ha funcionar se non o fai.
+Description-ja.UTF-8: LILO の設定
+ LILO のインストールは初めてのようです。このプロセスが終了したら、liloconfig(8) を実行し、それから /sbin/lilo を実行することが、絶対に必要です。
+ .
+ これを実行しないと LILO は動作しません。
+Description-nl.UTF-8: LILO-configuratie
+ Dit lijkt uw eerste LILO-installatie te zijn. Het is absoluut noodzakelijk om na deze installatie liloconfig(8) en /sbin/lilo uit te voeren.
+ .
+ Als u dit niet doet zal LILO niet werken.
+Description-pt.UTF-8: Configuração do LILO
+ Parece que esta é a primeira vez que instala o LILO. É absolutamente necessário correr o liloconfig(8) quando completar este processo e executar o /sbin/lilo depois disso.
+ .
+ O LILO não vai funcionar se não fizer isto.
+Description-pt_BR.UTF-8: Configuração do LILO
+ Esta parece ser sua primeira instalação do LILO. É absolutamente necessário executar o liloconfig(8) quando você finalizar esta instalação e então executar /sbin/lilo após isso.
+ .
+ O LILO não funcionará caso você não o faça.
+Description-ru.UTF-8: Настройка LILO
+ Кажется это первая установка LILO. Абсолютно необходимо запустить liloconfig(8) после завершения данной настройки, а потом /sbin/lilo.
+ .
+ LILO не будет работать, если вы не сделаете этого.
+Description-sv.UTF-8: LILO konfiguration
+ Det verkar som om detta är din första installation av LILO. Det är absolut nödvändigt att köra liloconfig(8) när du är färdig med denna process och starta /sbin/lilo efter det.
+ .
+ LILO kommer inte att fungera om du inte gör detta.
+Description-uk.UTF-8: Налаштування LILO
+ Здається, це ваше перше встановлення LILO. Після закінчення цього процесу, абсолютно необхідно запустити liloconfig(8) та виконати команду /sbin/lilo.
+ .
+ LILO не буде працювати, якщо ви це не зробите.
+Description-vi.UTF-8: Cấu hình LILO
+ Hình như bạn đăng cài đặt LILO lần đầu tiên. Một khi cài đặt xong, cũng phải chạy liloconfig(8) và sau đó thực hiện « /sbin/lilo ».
+ .
+ Nếu bạn không theo thủ tục này, LILO sẽ không hoạt động.
+
+Template: lilo/upgrade
+Type: note
+Description: Deprecated parameters in LILO configuration
+ Deprecated files have been found on your system.
+ You must update the 'install=' parameter in your LILO configuration file
+ (/etc/lilo.conf) in order to properly upgrade the package.
+ .
+ The new 'install=' options are:
+ .
+  new: install=bmp
+  old: install=/boot/boot-bmp.b
+ .
+  new: install=text
+  old: install=/boot/boot-text.b
+ .
+  new: install=menu
+  old: install=/boot/boot-menu.b or boot.b
+Description-ar.UTF-8: معطيات مُلغاة في تهيئة LILO
+ تم العثور على ملفات ملغاة على نظامك. يجب تحديث المعطى 'install=' في ملف تهيئة LILO (/etc/lilo.conf) كي تتم ترقية الحزمة بشكل ملائم.
+ .
+ خيارات 'install=' الجديدة هي:
+ .
+  الجديد: install=bmp
+  القديم: install=/boot/boot-bmp.b
+ .
+  الجديد: install=text
+  القديم: install=/boot/boot-text.b
+ .
+  الجديد: install=menu
+  القديم: install=/boot/boot-menu.b أو boot.b
+Description-cs.UTF-8: Zapovězené parametry v nastavení LILA
+ Na vašem systému byly nalezeny zapovězené soubory. Aby se aktualizace tohoto balíku zdařila, musíte ve svém konfiguračním souboru (/etc/lilo.conf) opravit parametr 'install='.
+ .
+ Nové možnosti 'install=' jsou:
+ .
+   nová: install=bmp
+  stará: install=/boot/boot-bmp.b
+ .
+   nová: install=text
+  stará: install=/boot/boot-text.b
+ .
+   nová: install=menu
+  stará: install=/boot/boot-menu.b nebo boot.b
+Description-da.UTF-8: Forældede parametre i LILO-opsætningen
+ Der er fundet forældede filer på dit system. Du skal opdatere parameteret 'install=' i din LILO-opsætningsfil (/etc/lilo.conf) for at kunne opgradere pakken ordentligt.
+ .
+ De nye 'install='-tilvalg er:
+ .
+  ny:     install=bmp
+  gammel: install=/boot/boot-bmp.b
+ .
+  ny:     install=text
+  gammel: install=/boot/boot-text.b
+ .
+  ny:     install=menu
+  gammel: install=/boot/boot-menu.b eller boot.b
+Description-de.UTF-8: Veraltete Parameter in LILO-Konfiguration
+ Auf Ihrem System sind veraltete Dateien gefunden worden. Sie müssen den »install=«-Parameter in Ihrer LILO-Konfigurationsdatei (/etc/lilo.conf) aktualisieren, um ein korrektes Upgrade diese Paketes durchzuführen.
+ .
+ Die neuen »install=«-Optionen sind:
+ .
+  neu: install=bmp
+  alt: install=/boot/boot-bmp.b
+ .
+  neu: install=text
+  alt: install=/boot/boot-text.b
+ .
+  neu: install=menu
+  alt: install=/boot/boot-menu.b oder boot.b
+Description-es.UTF-8: Parámetros obsoletos en la configuración de LILO
+ Se encontraron ficheros obsoletos en su sistema. Tiene que modificar el parámetro «install=» en su archivo de configuración de LILO (/etc/lilo.conf) para poder actualizar apropiadamente el paquete.
+ .
+ Las nuevas opciones de «install=» son:
+ .
+  nueva: install=bmp
+  antigua: install=/boot/boot-bmp.b
+ .
+  nueva: install=text
+  antigua: install=/boot/boot-text.b
+ .
+  nueva: install=menu
+  antigua: install=/boot/boot-menu.b o boot.b
+Description-eu.UTF-8: Parametro zaharkituak LILOren konfigurazioan
+ Fitxategi zaharkituak aurkitu dira zure sisteman. Paketea behar bezala bertsioberritu ahal izateko, eguneratu egin behar duzu 'install=' parametroa zure LILO konfigurazio-fitxategian (/etc/lilo.conf).
+ .
+ Hauek dira 'install='-en aukera berriak:
+ .
+  berria: install=bmp
+  zaharra: install=/boot/boot-bmp.b
+ .
+  berria: install=text
+  zaharra: install=/boot/boot-text.b
+ .
+  berria: install=menu
+  zaharra: install=/boot/boot-menu.b edo boot.b
+Description-fi.UTF-8: Vanhentuneita parametreja LILOn asetuksissa
+ Järjestelmästäsi on löytynyt vanhentuneita tiedostoja. LILOn asetustiedoston (/etc/lilo.conf) parametri ”install=” on päivitettävä ennen kuin paketti voidaan päivittää.
+ .
+ Uudet ”install=”-valitsimet ovat:
+ .
+  uusi:  install=bmp
+  vanha: install=/boot/boot-bmp.b
+ .
+  uusi:  install=text
+  vanha: install=/boot/boot-text.b
+ .
+  uusi:  install=menu
+  vanha: install=/boot/boot-menu.b or boot.b
+Description-fr.UTF-8: Paramètres obsolètes dans la configuration de LILO
+ Des fichiers obsolètes ont été trouvés sur votre système. Vous devez mettre à jour le paramètre « install= » du fichier de configuration de LILO (/etc/lilo.conf) afin que la mise à niveau du paquet fonctionne correctement.
+ .
+ Les nouvelles options pour le paramètre « install= » sont :
+ .
+ nouveau : install=bmp
+ ancien  : install=/boot/boot-bmp.b
+ .
+ nouveau : install=text
+ ancien  : install=/boot/boot-text.b
+ .
+ nouveau : install=menu
+ ancien  : install=/boot/boot-menu.b ou boot.b
+Description-gl.UTF-8: Parámetros obsoletos na configuración de LILO
+ Atopáronse ficheiros obsoletos no seu sistema. Ten que actualizar o parámetro "install=" do ficheiro de configuración de LILO (/etc/lilo.conf) para actualizar correctamente o paquete.
+ .
+ As novas opcións "install=" son:
+ .
+   nova: install=bmp
+  vella: install=/boo/boot-bmp.b
+ .
+   nova: install=text
+  vella: install=/boot/boot-text.b
+ .
+   nova: install=menu
+  vella: install=/boot/boot-menu.b ou boot.b
+Description-ja.UTF-8: LILO の設定に廃止予定のパラメータがあります
+ システム内に廃止予定のファイルが見付かりました。パッケージをきちんとアップグレードするため、LILO の設定ファイル (/etc/lilo.conf) 中の 'install=' パラメータを更新する必要があります。
+ .
+ 新しい 'install=' オプション:
+ .
+  新: install=bmp
+  旧: install=/boot/boot-bmp.b
+ .
+  新: install=text
+  旧: install=/boot/boot-text.b
+ .
+  新: install=menu
+  旧: install=/boot/boot-menu.b or boot.b
+Description-nl.UTF-8: Veroudere parameters aanwezig in de LILO-configuratie
+ Er zijn verouderde bestanden aangetroffen op uw systeem. U dient de 'install='-parameter in uw LILO-configuratiebestand (/etc/lilo.conf) aan te passen om het opgewaarde pakket zonder problemen te kunnen gebruiken.
+ .
+ De nieuwe 'install='-opties zijn:
+ .
+  nieuw: install=bmp
+  oud: install=/boot/boot-bmp.b
+ .
+  nieuw: install=text
+  oud: install=/boot/boot-text.b
+ .
+  nieuw: install=menu
+  oud: install=/boot/boot-menu.b or boot.b
+Description-pt.UTF-8: Parâmetros obsoletos na configuração do LILO
+ Foram encontrados no seu sistema ficheiros obsoletos. Você precisa actualizar o parâmetro 'install=' no ficheiro de configuração do LILO (/etc/lilo.conf) de modo a poder actualizar devidamente este pacote.
+ .
+ As novas opções 'install=' são:
+ .
+  nova: install=bmp
+  antiga: install=/boot/boot-bmp.b
+ .
+  nova: install=text
+  antiga: install=/boot/boot-text.b
+ .
+  nova: install=menu
+  antiga: install=/boot/boot-menu.b ou boot.b
+Description-pt_BR.UTF-8: Parâmetros obsoletos na configuração do LILO
+ Arquivos obsoletos foram encontrados no seu sistema. Você deve atualizar o parâmetro 'install' no seu arquivo de configuração do LILO (/etc/lilo.conf) para que a atualização do pacote seja feita de forma apropriada.
+ .
+ As novas opções 'install=' são:
+ .
+  novo: install=bmp
+  antigo: install=/boot/boot-bmp.b
+ .
+  novo: install=text
+  antigo: install=/boot/boot-text.b
+ .
+  novo: install=menu
+  antigo: install=/boot/boot-menu.b ou boot.b
+Description-ru.UTF-8: Параметры настройки LILO, которые лучше не использовать
+ В системе были найдены нежелательные файлы. Вы должны обновить параметр 'install=' в файле настроек LILO (/etc/lilo.conf), чтобы пакет был обновлён правильно.
+ .
+ Новые параметры 'install=':
+ .
+   новый: install=bmp
+  старый: install=/boot/boot-bmp.b
+ .
+   новый: install=text
+  старый: install=/boot/boot-text.b
+ .
+   новый: install=menu
+  старый: install=/boot/boot-menu.b или boot.b
+Description-sv.UTF-8: Föråldrade parametrar i LILO-konfigurationen
+ Föråldrade filer har hittats på ditt system. Du måste uppdatera parametern 'install=' i din LILO-konfigurationsfil (/etc/lilo.conf) för att korrekt uppgradera paketet.
+ .
+ De nya 'install=' inställningarna är:
+ .
+  ny: install=bmp
+  gammal: install=/boot/boot-bmp.b
+ .
+  ny: install=text
+  gammal: install=/boot/boot-text.b
+ .
+  ny: install=menu
+  gammal: install=/boot/boot-menu.b eller boot.b
+Description-uk.UTF-8: Застарілі параметри в налаштуваннях LILO
+ На вашій системі були знайдені застарілі файли. Вам потрібно оновити параметр "install=" в файлі налаштувань LILO (/etc/lilo.conf), щоб коректно оновити пакунок.
+ .
+ Нові опції "install=":
+ .
+  нові : install=bmp
+  старі: install=/boot/boot-bmp.b
+ .
+  нові : install=text
+  старі: install=/boot/boot-text.b
+ .
+  нові : install=menu
+  старі: install=/boot/boot-menu.b or boot.b
+Description-vi.UTF-8: Gặp tham số bị phản đối trong cấu hình LILO
+ Tìm thấy một số tập tin bị phản đối trong hệ thống của bạn. Vì thế bạn cần phải cập nhật tham số « install= » trong tập tin cấu hình LILO (/etc/lilo.conf) để nâng cấp đúng gói này.
+ .
+ Những tùy chọn « install= » mới:
+ .
+  mới: install=bmp
+  cũ : install=/boot/boot-bmp.b
+ .
+  mới: install=text
+  cũ : install=/boot/boot-text.b
+ .
+  mới: install=menu
+  cũ : install=/boot/boot-menu.b or boot.b
+
+Template: lilo/add_large_memory
+Type: boolean
+Default: true
+Description: Do you want to add the large-memory option?
+ By default, LILO loads the initrd file into the first 15MB of memory
+ to avoid a BIOS limitation with older systems (earlier than 2001).
+ .
+ However, with newer kernels the combination of kernel and initrd
+ may not fit into the first 15MB of memory and so the system will not
+ boot properly. It seems that the boot issues appear when the
+ kernel+initrd combination is larger than 8MB.
+ .
+ If this machine has a recent BIOS without the 15MB limitation, you can
+ add the 'large-memory' option to /etc/lilo.conf to instruct LILO to use
+ more memory for passing the initrd to the kernel. You will need to
+ re-run the 'lilo' command to make this option take effect.
+ .
+ If this machine has an older BIOS, you may need to reduce the size of
+ the initrd *before* rebooting. Please see the README.Debian file for
+ tips on how to do that.
+Description-ar.UTF-8: تريد إضافة خيار حجم الذاكرة الكبيرة؟
+ بشكل افتراضي، يقوم LILO بتحميل ملف initrd في أول 15م.ب. من الذاكرة كي يتجنّب مشكلة أنظمة BIOS القديمة (أقدم من سنة 2001).
+ .
+ على أي، بوجود النواة الجديدة وinitrd فقد لا يمكن تحميلها في أول 15م.ب. من الذاكرة ولن يكون النظام قادراً على الإقلاع بشكل صحيح. يبدو أن مشاكل الإقلاع تظهر عندما يكون مجموعة حجم النواة وinitrd أكبر من 8م.ب.
+ .
+ إن كان نظام BIOS الخاص بهذا الجهاز لا يعاني مشكلة الـ15م.ب.، يمكنك إضافة الخيار 'large-memory' إلى ملف التهيئة /etc/lilo.conf لإعلام LILO باستخدام المزيد من الذاكرة لتمرير initrd إلى النواة. ستحتاج إلى إعادة تنفيذ الأمر 'lilo' كي يسري مفعول هذا الخيار.
+ .
+ إن كان نظام BIOS لهذا الجهاز قديماً، فقد تحتاج إلى تصغير حجم initrd *قبل* إعادة التشغيل. رجاء اقرأ ملف المساعدة README.Debian للمساعدة حول كيفية القيام بذلك.
+Description-de.UTF-8: Möchten Sie die Option »large-memory« hinzufügen?
+ Standardmäßig lädt LILO die Initrd-Datei in die ersten 15 MB des Speichers, um eine BIOS-Beschränkung auf älteren Systemen (älter als 2001) zu vermeiden.
+ .
+ Allerdings kann bei neueren Kerneln die Kombination von Kernel und Initrd nicht innerhalb der ersten 15 MB an Speicher passen und daher wird das System nicht korrekt starten. Es scheint, dass die Boot-Probleme auftauchen, wenn die Kombination von Kernel und Initrd größer als 8 MB ist.
+ .
+ Falls diese Maschine ein neueres BIOS ohne die 15 MB-Begrenzung hat, können Sie die Option »large-memory« zu /etc/lilo.conf hinzufügen, um LILO anzuweisen, mehr Speicher für die Übergabe der Initrd an den Kernel zu verwenden. Sie müssen den Befehl »lilo« erneut aufrufen, damit diese Option greift.
+ .
+ Falls diese Maschine ein älteres BIOS hat, müssen Sie *vor* dem Neustart des Systems die Größe der Initrd reduzieren. Bitte lesen Sie die Datei README.Debian für Hinweise, wie dies erreicht werden kann.
+Description-fr.UTF-8: Voulez-vous ajouter l'option « large memory » ?
+ Par défaut, LILO charge l'image de démarrage (« initrd ») dans les 15 premiers méga-octets de mémoire pour éviter une limitation du BIOS de certains systèmes anciens (antérieurs à 2001).
+ .
+ Cependant, avec les noyaux récents, l'ensemble noyau et image de démarrage dépassent cette taille et le système ne peut alors plus démarrer correctement. Ces difficultés de démarrage semblent se produire dès que la taille de l'ensemble dépasse 8 Mo.
+ .
+ Si le BIOS de cette machine ne possède pas cette limitation à 15 Mo, il est possible d'ajouter l'option « large-memory » au fichier de configuration de LILO, ce qui permet d'utiliser plus de mémoire. Il sera nécessaire de lancer la commande « lilo » afin que cette option devienne active.
+ .
+ Si le BIOS de cette machine est ancien, il est suggéré de réduire la taille de l'image de démarrage *avant* de redémarrer. Veuillez consulter le fichier README.Debian pour des conseils sur la manière de procéder.
+Description-ja.UTF-8: large-memory オプションを追加しますか?
+ デフォルトでは、LILO は古いシステム (2001 年より前のもの) での BIOS 制限を回避するため、initrd ファイルを最初の 15MB メモリ内にロードするようにしています。
+ .
+ しかし、新しいカーネルの場合、カーネルと initrd の組み合わせが最初の 15MB メモリには収まらなくなって、システムは正常に起動しないかもしれません。カーネル＋initrd が 8MB より大きくなった場合にこの起動問題が発生するようです。
+ .
+ このマシンの BIOS が最近のもので 15MB 制限が無い場合、/etc/lilo.conf に 'large-memory' オプションを付け加えることで、LILO が initrd をカーネルに渡す際により多くのメモリを使うようにできます。このオプションを有効にするには再度 'lilo' コマンドを実行する必要があります
+ .
+ このマシンの BIOS が古い場合は、再起動の「前に」initrd のサイズを小さくする必要があるかもしれません。やり方については README.Debian ファイルを参照してください。
+Description-pt.UTF-8: Pretende adicionar a opção de memória de grande dimensão?
+ Por omissão, o LILO carrega o ficheiro initrd dentro dos primeiros 15 MB da memória para evitar as limitações da BIOS nos sistemas antigos (anteriores a 2001).
+ .
+ No entanto, com os kernels mais recentes a combinação do kernel e do initrd pode não encaixar nos primeiros 15 MB de memória, e deste modo o sistema não irá arrancar correctamente. Parece que as questões de arranque surgem apenas quando a combinação de kernel+initrd é maior que 8MB.
+ .
+ Se a máquina possui um BIOS recente sem a limitação de 15MB, pode adicionar a opção 'large-memory' ao /etc/lilo.conf, de modo a instruir o LILO a utilizar mais memória para passar o initrd ao kernel. Necessitará de voltar a executar o comando 'lilo' de modo a efectivar esta opção.
+ .
+ Se esta máquina tiver uma BIOS antiga, pode precisar de reduzir a dimensão do initrd *antes* de reiniciar. Por favor veja o ficheiro Debian README para instruções de como o fazer.
+Description-ru.UTF-8: Добавить параметр large-memory?
+ По умолчанию, LILO загружает файл initrd в первые 15MB оперативной памяти, чтобы избежать ограничений BIOS старых компьютеров (выпущенных до 2001 года).
+ .
+ Однако, новые ядра и initrd вместе могут не вместиться в первые 15MB, и поэтому система может не загрузиться. Есть мнение, что проблемы загрузки начинаются когда размер ядра+initrd становится больше 8MB.
+ .
+ Если у данного компьютера новый BIOS без ограничения в 15MB, то вы можете добавить параметр large-memory в /etc/lilo.conf, чтобы указать LILO использовать больший объём памяти при передачи initrd ядру. Чтобы параметр начал действовать нужно перезапустить команду lilo.
+ .
+ Если у данного компьютера старый BIOS, то вам может потребоваться сократить размер initrd *перед* перезагрузкой. О том, как это сделать, см. в файле README.Debian.
+Description-sv.UTF-8: Vill du använda alternativet "large-memory"?
+ Som standard kommer LILO ladda initrd-filen till de första 15MB minne för att undvika en BIOS-begränsning på äldre system (tidigare än 2001).
+ .
+ Dock är det så att med nyare kärnor förekommer det att kombinationen kärna och initrd inte får plats i de första 15MB minne och systemet kommer inte starta. Det verkar som problemen uppstår när kärna+initrd-kombinationen är större än 8MB.
+ .
+ Om denna maskin har en nyare BIOS utan 15MB-begränsningen kan du använda alternativet "large-memory" i /etc/lilo.conf för att instruera LILO att använda mer minne när initrd skickas till kärnan. Du kommer behöva köra om 'lilo'-kommandot för att få ändringen att träda i kraft.
+ .
+ Om denna maskin har en äldre BIOS kan du behöva reducera storleken på initrd *innan* du startar om. Vänligen se filen README.Debian för tips på tillvägagångssätt.
+
+Template: lilo/runme
+Type: boolean
+Default: false
+Description: Do you want to run /sbin/lilo now?
+ It was detected that it's necessary to run /sbin/lilo in order to update
+ the new LILO configuration.
+ .
+ WARNING: This procedure will write data in your MBR and may overwrite
+ some things in that place. If you skip this step, you must run /sbin/lilo
+ before reboot your computer or your system may not boot again.
+Description-ar.UTF-8: هل تريد تشغيل /sbin/lilo الآن؟
+ تم اكتشاف أنه من الضروري تشغيل /sbin/lilo كي يتم تحديث تهيئة LILO الجديدة.
+ .
+ تحذير: سيكتب هذا الإجراء بيانات إلى MBR وقد يكتب على بعض الأشياء بذلك المكان. إن تخطيت هذه الخطوة، يجب أن تقوم بتشغيل /sbin/lilo قبل إعادة تشغيل حاسبك وإلا قد لا يتمكن نظامك من الإقلاع مجدداً.
+Description-cs.UTF-8: Chcete nyní spustit /sbin/lilo?
+ Bylo zjištěno, že pro instalaci nové konfigurace LILA je nutné spustit /sbin/lilo.
+ .
+ VAROVÁNÍ: Tento postup zapíše data do MBR a tím přepíše nějaká data tam umístěná. Pokud tento krok přeskočíte, musíte spustit /sbin/lilo ještě před restartem počítače, protože jinak by systém nemusel nastartovat.
+Description-da.UTF-8: Vil du køre /sbin/lilo nu?
+ Det er nødvendigt at køre /sbin/lilo for at opdatere den nye LILO-opsætning.
+ .
+ ADVARSEL: Dette vil skrive data i din opstartsblok (MBR) og kan overskrive nogle ting der. Hvis du springer dette trin over, skal du køre /sbin/lilo før du genstarter computeren, da systemet ellers kan være ude af stand til at starte op igen.
+Description-de.UTF-8: Möchten Sie /sbin/lilo jetzt ausführen?
+ Es wurde festgestellt, dass es notwendig ist /sbin/lilo auszuführen, um die neue LILO-Konfiguration zu aktivieren.
+ .
+ WARNUNG: Dieser Vorgang wird Daten in Ihren MBR (master boot record) schreiben und dies könnte dort einige Sachen überschreiben. Falls Sie diesen Schritt überspringen, müssen Sie /sbin/lilo ausführen, bevor Sie Ihren Computer neu starten; anderenfalls könnte dieses System nicht wieder hochfahren.
+Description-es.UTF-8: ¿Desea ejecutar /sbin/lilo ahora?
+ Se ha detectado que hay que ejecutar /sbin/lilo para actualizar la nueva configuración de LILO.
+ .
+ Advertencia: este procedimiento escribirá datos en su registro maestro de arranque (MBR) y podría sobreescribir algo en ese lugar. Si omite este paso, tendrá que ejecutar /sbin/lilo antes de reiniciar su ordenador, o puede que el sistema no arranque de nuevo.
+Description-eu.UTF-8: /sbin/lilo exekutatu nahi duzu orain?
+ LILO konfigurazioa bertsioberritu ahal izateko /sbin/lilo exekutatu behar dela detektatu da.
+ .
+ KONTUZ: Prozedura honek datuak idatziko ditu zure MBRn (Abioko Erregistro Nagusian) eta beraz, hor dagoena gainidatz lezake. Urrats hau saltatzen baduzu /sbin/lilo exekutatu beharko duzu ordenagailua berrabiabiarazi aurretik, bestela baliteke makina berriro ezin abiaraztea.
+Description-fi.UTF-8: Ajetaanko /sbin/lilo nyt?
+ LILOn uusien asetusten päivittämiseksi on tarpeellista ajaa /sbin/lilo.
+ .
+ VAROITUS: Tämä prosessi kirjoittaa tietoja pääkäynnistyslohkoon (MBR) ja saattaa kirjoittaa siellä joidenkin tietojen päälle. Jos ohitat tämän vaiheen, ohjelma /sbin/lilo tulee ajaa ennen kuin järjestelmä käynnistetään uudelleen tai järjestelmä ei välttämättä käynnisty.
+Description-fr.UTF-8: Souhaitez-vous lancer /sbin/lilo maintenant ?
+ Il est nécessaire d'utiliser la commande /sbin/lilo pour mettre à niveau la nouvelle configuration de LILO.
+ .
+ ATTENTION : cette opération va écrire sur votre secteur de démarrage principal (MBR : « Master Boot Record »). Si vous sautez cette étape, vous devrez lancer /sbin/lilo avant de redémarrer sous peine de ne plus pouvoir ensuite lancer le système.
+Description-gl.UTF-8: ¿Quere executar /sbin/lilo agora?
+ Detectouse que é necesario executar /sbin/lilo para actualizar a nova configuración de LILO.
+ .
+ AVISO: Este procedemento ha gravar datos no MBR e pode sobrescribir algunhas cousas dese sitio. Se omite este paso debe executar /sbin/lilo antes de reiniciar o ordenador ou o sistema non ha poder arrincar máis.
+Description-ja.UTF-8: すぐに /sbin/lilo を実行しますか?
+ 新しい LILO の設定を反映するため、/sbin/lilo を実行する必要があります。
+ .
+ 警告: この動作は MBR に書き込みを行うのでそこにあったデータを上書きします。この手順をスキップした場合、コンピュータを再起動する前に /sbin/lilo を実行する必要があります。さもなければシステムは二度と起動しません。
+Description-nl.UTF-8: Wilt u /sbin/lilo nu uitvoeren?
+ /sbin/lilo dient uitgevoerd te worden om uw nieuwe LILO-configuratie bij te werken.
+ .
+ Waarschuwing: deze procedure schrijft gegevens weg in uw hoofd-opstartblok (master boot record, MBR) en zal daar mogelijk dingen overschrijven. Bij overslaan van deze stap dient u /sbin/lilo uit te voeren voordat u herstart; anders zal uw systeem mogelijk niet meer opstarten.
+Description-pt.UTF-8: Quer correr o /sbin/lilo agora ?
+ Foi detectada a necessidade de correr o /sbin/lilo para que a nova configuração do LILO seja actualizada.
+ .
+ AVISO: Este procedimento vai escrever dados no seu MBR e pode reescrever alguns nesse lugar. Se saltar este passo, terá que correr o /sbin/lilo antes de reiniciar o seu computador ou o seu sistema pode não voltar a iniciar.
+Description-pt_BR.UTF-8: Você deseja executar o /sbin/lilo agora?
+ Foi detectado que a execução de /sbin/lilo é necessária para atualizar a nova configuração do LILO.
+ .
+ AVISO : Este procedimento irá gravar dados em sua MBR e poderá sobrescrever o que existir atualmente na mesma. Caso você pule esta etapa, o comando /sbin/lilo deverá ser executado antes que seu computador seja reiniciado ou seu sistema poderá não será capaz de ser iniciado novamente.
+Description-ru.UTF-8: Запустить /sbin/lilo сейчас?
+ Было обнаружено, что требуется запуск /sbin/lilo для установки новой конфигурации LILO.
+ .
+ ПРЕДУПРЕЖДЕНИЕ: Данная процедура выполняет запись в MBR и может переписать данные, расположенные там. Если вы пропустите этот шаг, то вы должны запустить /sbin/lilo перед перезагрузкой компьютера или система больше не загрузится.
+Description-sv.UTF-8: Vill du köra /sbin/lilo nu?
+ Det upptäcktes att det är nödvändigt att köra /sbin/lilo för att uppdatera den nya LILO-konfigurationen.
+ .
+ VARNING: Denna procedyr kommer att skriva data till din MBR (Master Boot Record) och kan skriva över saker som finns där. Om du hoppar över detta steg måste du köra /sbin/lilo före du startar om din dator annars kommer ditt system inte att starta upp igen.
+Description-uk.UTF-8: Чи хочете ви запустити /sbin/lilo зараз?
+ Необхідно виконати команду /sbin/lilo для того, щоб оновити конфігурацію LILO.
+ .
+ УВАГА: в результаті цієї процедури в MBR будуть записані дані, що можуть затерти деякі речі там. Якщо ви пропустите цей етап, то ви повинні будете запустити програму /sbin/lilo перед перезавантаженням вашого комп'ютера, інакше ваша система може не завантажитися.
+Description-vi.UTF-8: Bạn có muốn chạy « /sbin/lilo » ngay bây giờ không?
+ Đã phát hiện cần phải chạy « /sbin/lilo » để cập nhật cấu hình mới LILO.
+ .
+ CẢNH BÁO : thủ tục này sẽ ghi dữ liệu vào MBR của bạn, và có thể ghi đè lên một số đồ ở đó. Nếu bạn bỏ qua bước này thì phải chạy « /sbin/lilo » trước khi khởi động lại máy tính. Không thì hệ thống có lẽ sẽ không thể khởi động lại.
+
+Template: lilo/bad_bitmap
+Type: note
+Description: Invalid bitmap path
+ A deprecated bitmap path entry has been discovered in your LILO configuration 
+ file (/etc/lilo.conf). You must upgrade this path in order to run LILO. You 
+ can also run liloconfig(8) and get a fresh configuration file.
+Description-ar.UTF-8: مسار صورة غير صالح
+ اكتشف مسار صورة ملغى في ملف تهيئة LILO (/etc/lilo.conf). يجب ترقية هذا المسار لتشغيل LILO. يمكنك أيضاً تشغيل liloconfig(8) والحصول على ملف تهيئة جديد.
+Description-cs.UTF-8: Neplatná cesta k bitové mapě
+ Ve vašem konfiguračním souboru zavaděče (/etc/lilo.conf) byl nalezen zastaralý záznam s cestou k bitové mapě. Abyste mohli spustit LILO, musíte tento záznam aktualizovat. Nový konfigurační soubor můžete získat například příkazem liloconfig(8).
+Description-da.UTF-8: Ugyldig bitmap-sti
+ Der er opdaget en forældet sti til bitmap-filer i din LILO-opsætningsfil (/etc/lilo.conf). Du er nødt til at opgradere denne sti for at kunne kører LILO. Du kan også køre liloconfig(8) for at få en ny opsætningsfil.
+Description-de.UTF-8: Ungültiger Bitmap-Pfad
+ In Ihrer LILO-Konfigurationsdatei (/etc/lilo.conf) ist ein veralteter Bitmap-Pfad-Eintrag gefunden worden. Sie müssen ein Upgrade dieses Pfades durchführen, um LILO aufrufen zu können. Sie können auch liloconfig(8) ausführen, um eine neu Konfigurationsdatei zu erzeugen.
+Description-es.UTF-8: Ruta inválida a mapa de bits
+ Se encontró una ruta obsoleta para el mapa de bits en su archivo de configuración de LILO (/etc/lilo.conf). Debe actualizar esta ruta para poder ejecutar LILO. También puede ejecutar liloconfig(8) y obtener un nuevo archivo de configuración.
+Description-fi.UTF-8: Virheellinen bittikartan polku
+ LILOn asetustiedostosta (/etc/lilo.conf) löytyi vanhentunut bittikartan polku. Tämä polku tulee päivittää, jotta LILO toimisi. Voit myös ajaa ohjelman liloconfig(8) saadaksesi uuden asetustiedoston.
+Description-fr.UTF-8: Chemin d'accès non valable pour le fichier image
+ Une valeur obsolète a été trouvée dans le champ indiquant le chemin d'accès au fichier d'image affiché avec LILO, dans le fichier de configuration de LILO (/etc/lilo.conf). Cette valeur doit être mise à jour afin de pouvoir utiliser LILO. Vous pouvez également utiliser la commande liloconfig(8) pour créer un nouveau fichier de configuration.
+Description-gl.UTF-8: Ruta de bitmap non válida
+ Descubriuse unha entrada de ruta de bitmap obsoleta no ficheiro de configuración de LILO (/etc/lilo.conf). Debe actualizar esta ruta para executar LILO. Tamén pode executar liloconfig(8) e obter un ficheiro de configuración novo.
+Description-ja.UTF-8: ビットマップファイルへのパスが無効です
+ LILO 設定ファイル (/etc/lilo.conf) 中に無効なビットマップファイルへのパスが見付かりました。LILO を実行するにはこのパスを更新しなければなりません。liloconfig(8) を実行して新しい設定ファイルを取得することも可能です。
+Description-nl.UTF-8: Ongeldig bitmappad
+ Er is een verouderde bitmappad-ingang gevonden in uw LILO-configuratiebestand (/etc/lilo.conf). U dient dit pad aan te passen om LILO te kunnen draaien. U kunt ook liloconfig(8) uitvoeren, en op die manier een nieuw configuratiebestand aanmaken,
+Description-pt.UTF-8: Caminho do bitmap inválido.
+ Foi encontrado um caminho inválido para bitmap no seu ficheiro de configuração do LILO (/etc/lilo.conf). Deve actualizar este caminho para poder correr o LILO. Também pode correr o liloconfig(8) e obter um ficheiro de configuração novo.
+Description-pt_BR.UTF-8: Caminho para bitmaps inválido
+ Um campo de caminho para bitmaps obsoleto foi descoberto em seu arquivo de configuração do LILO (/etc/lilo.conf). Você deve atualizar este caminho para poder executar o LILO. Também é possível executar o liloconfig(8) e obter uma nova cópia do arquivo de configuração.
+Description-ru.UTF-8: Неправильный путь к картинкам
+ В файле конфигурации LILO (/etc/lilo.conf) был найден нежелательный путь к картинкам. Вы должны обновить этот путь, чтобы запустить LILO. Также вы должны запустить liloconfig(8), чтобы получить обновлённый конфигурационный файл.
+Description-sv.UTF-8: Felaktig bitmapsökväg
+ En föråldrad bitmapsökväg har hittats i din LILO-konfigurationsfil (/etc/lilo.conf). Du måste uppgradera denna sökväg för att köra LILO. Du kan också köra liloconfig(8) och få en färsk konfigurationsfil.
+Description-uk.UTF-8: Невірний шлях до bitmap
+ У вашому файлі налаштувань LILO (/etc/lilo.conf) виявлений застарілий запис зі шляхом до bitmap. Вам потрібно виправити цей шлях, щоб запустити LILO. Ви можете запустити liloconfig(8) та отримати свіжі налаштування.
+
+Template: liloconfig/maintitle
+Type: title
+Description: LILO configuration.
+Description-ar.UTF-8: تهيئة LILO.
+Description-cs.UTF-8: Konfigurace zavaděče LILO.
+Description-da.UTF-8: LILO-opsætning.
+Description-de.UTF-8: LILO-Konfiguration.
+Description-es.UTF-8: Configuración de LILO.
+Description-eu.UTF-8: LILOren konfigurazioa.
+Description-fi.UTF-8: LILOn asetukset
+Description-fr.UTF-8: Configuration de LILO
+Description-gl.UTF-8: Configuración de LILO.
+Description-ja.UTF-8: LILO の設定
+Description-nl.UTF-8: LILO-configuratie.
+Description-pt.UTF-8: Configuração do LILO.
+Description-pt_BR.UTF-8: Configuração do LILO.
+Description-ru.UTF-8: Настройка LILO.
+Description-sv.UTF-8: LILO konfiguration.
+Description-vi.UTF-8: Cấu hình LILO.
+
+Template: liloconfig/banner
+Type: text
+Description: LILO, the LInux LOader, sets up your system to boot Linux directly from your hard disk, without the need for a boot floppy.
+Description-ar.UTF-8: مُحمّل لينكس، LILO، يقوم بإعداد نظامك لإقلاع لينكس مباشرة من القرص الصلب، دون الحاجة إلى قرص مرن.
+Description-cs.UTF-8: LILO, linuxový zavaděč, nastaví systém tak, aby zaváděl Linux přímo z pevného disku, bez použití zaváděcí diskety.
+Description-da.UTF-8: LILO, Linuxindlæseren, sætter dit system op, så det kan starte Linux direkte fra din harddisk uden at skulle bruge en diskette.
+Description-de.UTF-8: LILO, der LInux LOader, richtet Ihr System ein, um Linux direkt von der Festplatte zu starten, ohne eine Boot-Diskette zu benötigen.
+Description-es.UTF-8: LILO, el cargador de Linux (LInux LOader), configura su sistema para que Linux arranque directamente del disco duro, sin la necesidad de discos de arranque.
+Description-eu.UTF-8: LILO Linux abiarazleak (LInux LOader) zure makina gai egiten du zuzenean disko gogorretik Linux abiatzeko, diskete beharrik gabe.
+Description-fi.UTF-8: LILO (LInux LOader, Linuxin lataaja) asettaa järjestelmäsi käynnistämään Linuxin suoraan kovalevyltä ilman levykettä.
+Description-fr.UTF-8: LILO, le chargeur de Linux (« LInux LOader »), configure le système pour qu'il puisse démarrer Linux directement depuis le disque dur, sans nécessiter de disquette de démarrage.
+Description-gl.UTF-8: LILO, o cargador de Linux, configura o seu sistema para iniciar Linux directamente do seu disco duro, sen necesidade dun disquete de inicio.
+Description-ja.UTF-8: LILO (the LInux LOader) は、ブートフロッピーを必要とせずに、ハードディスクから直接 Linux を起動するようにシステムを設定します。
+Description-nl.UTF-8: LILO, de "LInux LOader", configureert uw systeem in om Linux direct vanaf uw vaste schijf op te starten, zonder opstartdiskette.
+Description-pt.UTF-8: O carregador LInux LILO configura o seu sistema de modo a arrancar o Linux directamente a partir do seu disco rígido sem necessidade de uma disquete de arranque.
+Description-pt_BR.UTF-8: LILO, o LInux LOader (Carregador Linux), configura o seu sistema para que o mesmo consiga iniciar o Linux diretamente de seu disco rígido, sem a necessidade de um disquete de inicialização.
+Description-ru.UTF-8: LILO, LInux LOader, нужен для того, чтобы загружать Linux с жёсткого диска без каких-либо загрузочных дискет.
+Description-sv.UTF-8: LILO, LInux LOader, ger ditt system möjlighet att starta direkt från hårddisk, utan att beva använda en start-diskett.
+Description-vi.UTF-8: LILO, trình nạp Linux, thiết lập hệ thống của bạn để khởi động Linux một cách trực tiếp từ đĩa cứng, không cần dùng đĩa mềm khởi động.
+
+Template: liloconfig/configuring_base
+Type: error
+Description: Hmm. I think you're configuring the base filesystem, and I'm therefore simply going to exit successfully without trying to actually configure LILO properly. If you're not doing that, this is an important bug against Debian's lilo package, and should be reported as such...
+Description-ar.UTF-8: يبدو أنك تهيّئ نظام الملفات الأساسي، ولذا سأقوم ببساطة بالانتهاء بنجاح دون محاولة تهيئة LILO فعلياً بشكل صحيح. إن لم تكون تقوم بذلك، فهذه مشكلة مهمّة تتعلق بحزمة lilo لنظام دبيان، ونرجو منك إعلامنا بذلك.
+Description-cs.UTF-8: Hmm, zdá se, že konfigurujete základní souborový systém a tedy se ani nepokusím LILO nakonfigurovat a skončím úspěchem. Pokud nekonfigurujete základní systém, je to závažná chyba v debianím balíku a měli byste ji nahlásit.
+Description-da.UTF-8: Hmm, jeg tror, du er ved at sætte basisfilsystemet op, og derfor vil jeg ganske enkelt afslutte med en succeskode, uden egentlig at forsøge at sætte LILO ordentligt op. Hvis du ikke er i gang med det, er dette en vigtig fejl i Debians lilopakke, og bør indberettes som en sådan...
+Description-de.UTF-8: Hmm. Es wird davon ausgegangen, dass Sie das Basis-System konfigurieren, und daher wird diese Konfiguration einfach erfolgreich beendet, ohne LILO selber einzurichten. Falls Sie gerade nicht das Basis-System konfigurieren, dann ist dies ein wichtiger (»important«) Fehler des Lilo-Pakets von Debian, und sollte demnach auch als solcher berichtet werden.
+Description-es.UTF-8: Mmm, aparentemente está configurando el sistema de archivos base, y por ello esta utilidad simplemente finalizará sin intentar configurar LILO apropiadamente. Si no está haciendo eso, este es un error importante del paquete Debian de LILO, y se debería informar de él como tal...
+Description-eu.UTF-8: Hmm. Uste dut erro fitxategi-sistema konfiguratzen ari zarela, eta beraz, utilitate honek eten egingo du bere lana LILO behar bezala konfiguratzen saiatu gabe. Ez bazara hori egiten ari, esan nahi du hau Debianen lilo paketearen akats garrantzistua dela, eta haren berri eman beharra dagoela...
+Description-fi.UTF-8: Hmm. Näyttää siltä, että olet tekemässä perustiedostojärjestelmän asetuksia ja sen takia tämä ohjelma lopetetaan nyt yrittämättä tehdä kunnollisia LILOn asetuksia. Jos näin ei ole, kyseessä on tärkeä virhe Debianin lilo-paketissa ja se tulisi sellaisena raportoida...
+Description-fr.UTF-8: Il est possible que vous soyiez en train de configurer le système de fichiers de base, donc la configuration de LILO ne va pas avoir lieu maintenant. Si ce n'est pas ce que vous êtes en train de faire, alors ceci est un bogue important du paquet Debian « lilo », que vous devriez signaler comme tel.
+Description-gl.UTF-8: Semella que está a configurar o sistema de ficheiros base, polo que se ha saír sen tentar configurar LILO realmente. Se non é o que está a facer, este é un fallo grave do paquete lilo de Debian, e debería informar del.
+Description-ja.UTF-8: ふむ。あなたはベースファイルシステムを設定しようとしてるようです。そのため実際には LILO を完全に設定しようとせず、単に何事もなく終了しようとしています。もし、そのような作業をしていないという場合は、これは Debian の lilo パッケージに重大なバグがあり、報告が必要だということになります…
+Description-nl.UTF-8: Zo te zien bent u momenteel het basisbestandssysteem aan het instellen. Daarom stopt deze LILO-configuratie zonder foutmelding, en zonder feitelijk LILO te configureren. Als u niet het basisbestandssysteem aan het instellen bent is dat een belangrijke fout in Debians lilo-pakket, en moedigen wij u aan dit als zodanig te rapporteren.
+Description-pt.UTF-8: Hmm. Penso que está a configurar o sistema de ficheiros de base, e deste modo vou simplesmente fechar o programa sem tentar efectivamente configurar o LILO de modo correcto. Se não estiver a fazer isso, este torna-se um erro (bug) importante no pacote lilo da Debian, deverá desse modo ser reportado como tal...
+Description-pt_BR.UTF-8: Hmm, eu acho que você está configurando o sistema de arquivos básico, e portanto eu vou simplesmente sair com status de sucesso sem tentar configurar o LILO adequadamente. Caso você não esteja fazendo isso, esta é uma falha (bug) importante no pacote Debian lilo e deve ser relatada como tal ...
+Description-ru.UTF-8: Хмм. Обнаружено, что вы находитесь в процессе настройки файловой системы, и поэтому будет выполнено простое успешное завершение работы, без реальной настройки LILO. Если это не так, то это важная ошибка пакета Debian lilo, и о ней нужно сообщить...
+Description-sv.UTF-8: Hmm. Jag tror att du konfigurerar bas-filsystemet, och därför kommer detta avslutas utan felkod utan att LILO faktiskt har försökt konfigureras. Om så inte är fallet, så är detta en viktig bugg i Debians lilo-paket, och skall rapporteras med denna alvarlighetsgrad (Severity: important).
+Description-vi.UTF-8: Hình như bạn đang cấu hình hệ thống tập tin cơ bản. Do đó, chương trình này sẽ thoát thành công mà không thật thử cấu hình đúng LILO. Nếu bạn không đang làm như thế, đây là một lỗi quan trọng trong gói lilo của Debian: hãy thông báo.
+
+Template: liloconfig/liloconf_exists
+Type: note
+Description: You already have a LILO configuration in the file ${liloconf}. If you want to use the new LILO boot menu, please take a look to /usr/share/doc/lilo/examples/conf.sample and choose one of the bitmaps located on /boot.
+Description-ar.UTF-8: لديك تهيئة LILO سابقة في ${liloconf}. إن كنت تريد استخدام قائمة إقلاع LILO الجديدة، رجاء انظر في الملف /usr/share/doc/lilo/examples/conf.sample واختر أحد الصور الموجودة في /boot.
+Description-cs.UTF-8: Již máte konfiguraci LILA v souboru ${liloconf}. Chcete-li použít novou zaváděcí nabídku LILA, podívejte se do ukázkového /usr/share/doc/lilo/examples/conf.sample a zvolte si některou z bitmap umístěných v adresáři /boot.
+Description-da.UTF-8: Du har allerede in LILO-opsætning i filen ${liloconf}. Hvis du vil benytte den nye LILO-opstartsmenu, så se i /usr/share/doc/lilo/examples/conf.sample og vælg en af billederne i /boot.
+Description-de.UTF-8: Sie verfügen bereits über eine LILO-Konfiguration in der Datei ${liloconf}. Falls Sie das neue LILO-Boot-Menü verwenden wollen, schauen Sie bitte in /usr/share/doc/lilo/examples/conf.sample und wählen Sie eines der in /boot befindlichen Bitmaps aus.
+Description-es.UTF-8: Ya tiene una configuración de LILO en el archivo ${liloconf}. Si desea utilizar el nuevo menú de arranque de LILO, por favor, eche un vistazo «/usr/share/doc/lilo/examples/conf.sample» y seleccione uno de los mapas de bits ubicados en /boot.
+Description-eu.UTF-8: Baduzu dagoeneko LILO konfigurazio bat ${liloconf} fitxategian. LILOren abiatze menu berria erabili nahi baduzu, eman iezaiozu begirada bat /usr/share/doc/lilo/examples/conf.sample-ri eta aukera ezazu /boot-en dauden bitmap-etako bat.
+Description-fi.UTF-8: Tiedostossa ${liloconf} on jo LILOn asetukset. Jos haluat käyttää LILOn uutta käynnistysvalikkoa, katso tiedostoa /usr/share/doc/lilo/examples/conf.sample ja valitse yksi tiedostossa /boot olevista bittikartoista.
+Description-fr.UTF-8: Une configuration de LILO existe déjà dans le fichier ${liloconf}. Si vous voulez utiliser le nouveau menu de démarrage de LILO, veuillez consulter /usr/share/doc/lilo/examples/conf.sample et sélectionner une des images situées dans /boot.
+Description-gl.UTF-8: Xa ten unha configuración de LILO no ficheiro ${liloconf}. Se quere empregar o novo menú de inicio de LILO, bote unha ollada no ficheiro /usr/share/doc/lilo/examples/conf.sample e escolla un dos bitmaps que hai en /boot.
+Description-ja.UTF-8: 既に ${liloconf} ファイル中に LILO の設定があります。新しい LILO の起動メニューを使いたい場合は、/usr/share/doc/lilo/examples/conf.sample を確認して、/boot にあるビットマップファイルから一つを選んでください。
+Description-nl.UTF-8: U hebt al een LILO-configuratie in bestand ${liloconf}. Indien u het nieuwe LILO-opstartmenu wilt gebruiken, raadpleeg dan /usr/share/doc/lilo/examples/conf.sample en kies één van de plaatjes die zich in /boot bevinden.
+Description-pt.UTF-8: Já possui uma configuração do LILO no ficheiro ${liloconf}. Se preferir usar o novo menu de arranque do LILO, por favor dê uma vista de olhos em /usr/share/doc/lilo/examples/conf.sample·e escolha um dos bitmaps existentes em /boot.
+Description-pt_BR.UTF-8: Você já possui uma configuração do LILO no arquivo ${liloconf}. Caso você queira utilizar o novo menu de inicialização do LILO, por favor, confira o arquivo /usr/share/doc/lilo/examples/conf.sample e escolha um dos bitmaps localizados em /boot.
+Description-ru.UTF-8: Уже имеется конфигурация LILO в файле ${liloconf}. Если вы хотите использовать новое загрузочное меню LILO, посмотрите файл /usr/share/doc/lilo/examples/conf.sample и выберите одну из картинок в каталоге /boot.
+Description-sv.UTF-8: Du har redan en LILO-konfiguration i filen ${liloconf}. Om du vill använda den nya LILO boot-menyn, ta då vänligen en titt på /usr/share/doc/lilo/examples/conf.sample och välj en av de bitmaps som finns tillgängliga i /boot.
+Description-vi.UTF-8: Bạn đã có một cấu hình LILO trong tập tin ${liloconf}. Nếu bạn muốn sử dụng trình đơn khởi động LILO mới, hãy xem tập tin « /usr/share/doc/lilo/examples/conf.sample » và chọn một của những ảnh mảng nằm trên « /boot ».
+
+Template: liloconfig/liloconf_incompatible
+Type: error
+Description: WARNING!
+ You have an old incompatible lilo configuration file!
+ Read the file /usr/share/doc/lilo/INCOMPAT.gz and rerun /sbin/lilo to write the
+ changes to your boot sectors
+Description-ar.UTF-8: تحذير!
+ لديك ملف تهيئة lilo سابق وغير متوافق! اقرأ الملف /usr/share/doc/lilo/INCOMPAT.gz وأعد تنفيذ الأمر /sbin/lilo لكتابة التغييرات إلى قرص الإقلاع.
+Description-cs.UTF-8: VAROVÁNÍ!
+ Máte starý nekompatibilní konfigurační soubor lila! Přečtěte si /usr/share/doc/lilo/INCOMPAT.gz a zapište změny spuštěním příkazu /sbin/lilo.
+Description-da.UTF-8: ADVARSEL!
+ Du har en gammel, inkompatibel lilo-opsætningsfil! Læs filen usr/share/doc/lilo/INCOMPAT.gz, og kør /sbin/lilo igen, for at skrive ændringerne til dine opstartssektorer
+Description-de.UTF-8: WARNUNG!
+ Sie haben eine alte, inkompatible Lilo-Konfigurationsdatei! Lesen Sie die Datei /usr/share/doc/lilo/INCOMPAT.gz und rufen Sie /sbin/lilo erneut auf, um die Änderungen in Ihre Boot-Sektoren zu schreiben.
+Description-es.UTF-8: ¡Aviso!
+ ¡Tiene un archivo de configuración de LILO antiguo e incompatible! Lea el archivo «/usr/share/doc/lilo/INCOMPAT.gz» y ejecute «/sbin/lilo» de nuevo, para escribir los cambios en el sector de arranque.
+Description-eu.UTF-8: KONTUZ!
+ Lilo-ren konfigurazio-fitxategi zahar bat daukazu! Irakur ezazu /usr/share/doc/lilo/INCOMPAT.gz eta berriro exekuta ezazu /sbin/lilo aldaketak abiarazte-sektorean idazteko
+Description-fi.UTF-8: VAROITUS!
+ Järjestelmässä on vanha yhteensopimaton lilo-asetustiedosto! Lue tiedosto /usr/share/doc/lilo/INCOMPAT.gz ja aja uudelleen /sbin/lilo kirjoittaaksesi muutokset käynnistyssektoreille.
+Description-fr.UTF-8: Fichier de configuration incompatible
+ L'ancien fichier de configuration de lilo est incompatible avec la nouvelle version.Veuillez consulter le fichier /usr/share/doc/lilo/INCOMPAT.gz and relancer /sbin/lilo pour enregistrer les modifications dans vos secteurs de démarrage.
+Description-gl.UTF-8: AVISO
+ Ten un ficheiro de configuración de lilo antigo e incompatible. Consulte o ficheiro /usr/share/doc/lilo/INCOMPAT.gz e volva executar /sbin/lilo para gravar os cambios nos sectores de inicio.
+Description-ja.UTF-8: 警告!
+ 古い互換性の無い lilo 設定ファイルがあります! /usr/share/doc/lilo/INCOMPAT.gz を読んでブートセクタに変更を書き込むために /sbin/lilo を再度実行してください。
+Description-nl.UTF-8: Waarschuwing!
+ U hebt een oud, niet compatibel LILO-configuratiebestand! Lees het bestand /usr/share/doc/lilo/INCOMPAT.gz en voer /sbin/lilo opnieuw uit om de wijzigingen naar uw opstartsector te schrijven.
+Description-pt.UTF-8: ATENÇÃO!
+ Possui uma versão antiga e incompatível do ficheiro de configuração do lilo! Leia o ficheiro /usr/share/doc/lilo/INCOMPAT.gz e volte a correr /sbin/lilo para escrever as alterações aos seus sectores de arranque
+Description-pt_BR.UTF-8: AVISO!
+ Você possui um antigo arquivo de configuração do lilo incompatível! Leia o arquivo /usr/share/doc/lilo/INCOMPAT.gz e execute novamente o /sbin/lilo para gravar as mudanças para seus setores de inicialização
+Description-ru.UTF-8: ПРЕДУПРЕЖДЕНИЕ!
+ Обнаружен старый несовместимый конфигурационный файл lilo! Прочитайте файл /usr/share/doc/lilo/INCOMPAT.gz и перезапустите /sbin/lilo для записи изменений в загрузочные сектора
+Description-sv.UTF-8: VARNING!
+ Du har en gammal inkompatibel lilo-konfigurationsfil! Läs filen /usr/share/doc/lilo/INCOMPAT.gz och kör om /sbin/lilo för att skriva ändringarna till boot-sektorn
+Description-vi.UTF-8: CẢNH BÁO !
+ Bạn có một tập tin cấu hình lilo cũ không tương thích. Hãy đọc tập tin « /usr/share/doc/lilo/INCOMPAT.gz » và chạy lại « /sbin/lilo » để ghi các thay đổi vào các rãnh ghi khởi động.
+
+Template: liloconfig/use_current_lilo
+Type: boolean
+Default: true
+Description: Install a boot block using your current LILO configuration?
+Description-ar.UTF-8: تثبيت كتلة الإقلاع باستخدام تهيئة LILO الحالية؟
+Description-cs.UTF-8: Instalovat zaváděcí blok pomocí stávajícího nastavení LILA?
+Description-da.UTF-8: Installér en opstartsblok ved hjælp af din nuværende LILO-opsætning?
+Description-de.UTF-8: Soll ein Boot-Block mit Ihrer aktuellen LILO-Konfiguration installiert werden?
+Description-es.UTF-8: ¿Instalar un bloque de arranque utilizando la configuración actual de LILO?
+Description-eu.UTF-8: Abio-blokea instalatu oraingo LILO konfigurazioa erabiliz?
+Description-fi.UTF-8: Asennetaanko käynnistyslohko käyttäen nykyisiä LILOn asetuksia?
+Description-fr.UTF-8: Installer un secteur de démarrage avec la configuration LILO actuelle ?
+Description-gl.UTF-8: ¿Instalar un bloque de inicio coa configuración actual de LILO?
+Description-ja.UTF-8: 現在の LILO 設定を利用してブートブロックをインストールしますか?
+Description-nl.UTF-8: Een opstartblok installeren met uw huidige LILO-configuratie?
+Description-pt.UTF-8: Instalar um bloco de arranque utilizando a sua actual configuração LILO?
+Description-pt_BR.UTF-8: Instalar um bloco de inicialização utilizando sua configuração do LILO atual?
+Description-ru.UTF-8: Установить загрузочный блок в соответствии с текущей конфигурацией LILO?
+Description-sv.UTF-8: Installera ett boot-block med din nuvarande LILO-konfiguration?
+Description-vi.UTF-8: Cài đặt một khối khởi động dùng cấu hình LILO hiện thời không?
+
+Template: liloconfig/lilo_warning
+Type: error
+Description: WARNING!
+ Even if lilo runs successfully, see /usr/share/doc/lilo/INCOMPAT.gz for
+ changes in the usage of the ${liloconf} file.  If needed: edit ${liloconf} and
+ rerun '/sbin/lilo -v'
+Description-ar.UTF-8: تحذير!
+ حتى وإن عمل lilo بنجاح، اقرأ الملف /usr/share/doc/lilo/INCOMPAT.gz حول التغييرات في استخدام ملف ${liloconf}. وإن كانت هناك حاجة، عدّل الملف ${liloconf} وأعد تنفيذ الأمر '/sbin/lilo -v'
+Description-cs.UTF-8: VAROVÁNÍ!
+ I když lilo proběhne úspěšně, podívejte se do /usr/share/doc/lilo/INCOMPAT.gz a přečtěte si o změnách v používání souboru ${liloconf}. V případě potřeby upravte ${liloconf} a znovu spusťte '/sbin/lilo -v'
+Description-da.UTF-8: ADVARSEL!
+ Selv hvis lilo kan køre problemfrit, bør du se beskrivelsen af ændringer i brugen af filen ${liloconf} i /usr/share/doc/lilo/INCOMPAT.gz. Ret om nødvendigt ${liloconf} og kør'/sbin/lilo -v' igen
+Description-de.UTF-8: WARNUNG!
+ Selbst falls Lilo erfolgreich durch läuft, lesen Sie /usr/share/doc/lilo/INCOMPAT.gz für Änderungen in der Verwendung der ${liloconf}-Datei. Falls notwendig bearbeiten Sie ${liloconf} und rufen Sie »/sbin/lilo -v« erneut auf.
+Description-es.UTF-8: ¡Aviso!
+ Aunque LILO se ejecute satisfactoriamente, vea «/usr/share/doc/lilo/INCOMPAT.gz» para ver los cambios en el uso del archivo ${liloconf}. Si es necesario, edite ${liloconf} y ejecute «/sbin/lilo -v» nuevamente.
+Description-eu.UTF-8: KONTUZ!
+ Lilo behar bezala exekutatzen bada ere, begira ezazu /usr/share/doc/lilo/INCOMPAT.gz artxiboa ${liloconf} fitxategiaren erabilera aldaketak ikusteko. Behar izanez gero, edita ezazu ${liloconf} eta '/sbin/lilo -v' berriro exekutatu.
+Description-fi.UTF-8: VAROITUS!
+ Vaikka lilon ajo onnistuisi, lue tiedostosta /usr/share/doc/lilo/INCOMPAT.gz tiedoston ${liloconf} käyttöä koskevista muutoksista. Muokkaa tarvittaessa tiedostoa ${liloconf} ja aja ”/sbin/lilo -v” uudelleen.
+Description-fr.UTF-8: Fichier de configuration incompatible
+ Même si lilo se lance correctement, veuillez consulter /usr/share/doc/lilo/INCOMPAT.gz pour les changements relatifs au fichier ${liloconf}. Si nécessaire, éditez ${liloconf} et relancez « /sbin/lilo -v ».
+Description-gl.UTF-8: AVISO
+ Incluso se lilo se executa con éxito, consulte /usr/share/doc/lilo/INCOMPAT.gz para buscar cambios no emprego do ficheiro ${liloconf}. Se é preciso, edite ${liloconf} e volva executar "/sbin/lilo -v".
+Description-ja.UTF-8: 警告!
+ lilo の実行が成功したとしても、 ${liloconf} ファイルの使い方の変更について /usr/share/doc/lilo/INCOMPAT.gz を確認してください。必要であれば、${liloconf} を編集して '/sbin/lilo -v' を再度実行してください。
+Description-nl.UTF-8: Waarschuwing!
+ Zelfs als LILO succesvol wordt uitgevoerd, lees /usr/share/doc/lilo/INCOMPAT.gz voor wijzigingen in het gebruik van bestand ${liloconf}. Indien nodig, wijzig ${liloconf} en voer '/sbin/lilo -v' opnieuw uit.
+Description-pt.UTF-8: ATENÇÃO!
+ Mesmo que o lilo corra sem problemas, veja /usr/share/doc/lilo/INCOMPAT.gz para alterações ao uso do ficheiro ${liloconf}.  Se necessário: edite ${liloconf} e volte a correr '/sbin/lilo·-v'
+Description-pt_BR.UTF-8: AVISO!
+ Mesmo caso o lilo seja executado com sucesso, confira o arquivo /usr/share/doc/lilo/INCOMPAT.gz para conhecer as mudanças no uso do arquivo ${liloconf}. Caso necessário, edite o arquivo ${liloconf} e execute novamente '/sbin/lilo -v'
+Description-ru.UTF-8: ПРЕДУПРЕЖДЕНИЕ!
+ Даже если lilo выполнилась успешно, посмотрите в файле /usr/share/doc/lilo/INCOMPAT.gz что изменилось в формате файла ${liloconf}. Если нужно, отредактируйте ${liloconf} и перезапустите '/sbin/lilo -v'
+Description-sv.UTF-8: VARNING!
+ Även om lilo körs utan problem, läs /usr/share/doc/lilo/INCOMPAT.gz för ändringarna i användandet av filen ${liloconf}. Om det behövs: ändra i ${liloconf} och kör '/sbin/lilo -v' igen.
+Description-vi.UTF-8: CẢNH BÁO !
+ Thậm chí nếu LILO chạy thành công, xem « /usr/share/doc/lilo/INCOMPAT.gz » để tìm thay đổi trong cách sử dụng tập tin ${liloconf}. Nếu cần: chỉnh sửa ${liloconf} và chạy lại câu lệnh « /sbin/lilo -v ».
+
+Template: liloconfig/select_bitmap
+Type: select
+Choices: /boot/sarge.bmp, /boot/sid.bmp, /boot/coffee.bmp, /boot/debianlilo.bmp
+Default: /boot/coffee.bmp
+Description: The following is the list of the available bitmaps
+Description-ar.UTF-8: فيما يلي قائمة بالصور المتوفّرة
+Description-cs.UTF-8: Následuje seznam dostupných bitmap
+Description-da.UTF-8: Herunder er listen over de tilgængelige bitmaps
+Description-de.UTF-8: Folgende Liste enthält die verfügbaren Bitmaps
+Description-es.UTF-8: A continuación, la lista de mapas de bits disponibles
+Description-eu.UTF-8: Hau da eskura diren bitmap-en zerrenda
+Description-fi.UTF-8: Alla lista käytettävissä olevista bittikartoista
+Description-fr.UTF-8: Liste des images disponibles :
+Description-gl.UTF-8: Segue a lista dos bitmaps dispoñibles
+Description-ja.UTF-8: 利用可能なビットマップファイルのリスト
+Description-nl.UTF-8: De volgende lijst bevat de beschikbare bitmappen
+Description-pt.UTF-8: A lista seguinte mostra os bitmaps disponíveis
+Description-pt_BR.UTF-8: O que se segue é a lista de bitmaps disponíveis
+Description-ru.UTF-8: Список доступных картинок
+Description-sv.UTF-8: Följande är en lista av tillgängliga bitmaps
+Description-vi.UTF-8: Theo đây có danh sách các ảnh mảng sẵn sàng
+
+Template: liloconfig/lilo_error
+Type: error
+Description: ERROR!
+ Correct ${liloconf} manually and rerun /sbin/lilo.
+Description-ar.UTF-8: خطأ!
+ صحّح ${liloconf} يدوياً وأعد تنفيذ /sbin/lilo.
+Description-cs.UTF-8: CHYBA!
+ Opravte ${liloconf} ručně a znovu spusťte /sbin/lilo.
+Description-da.UTF-8: FEJL!
+ Korrigér ${liloconf} manuelt, og kør /sbin/lilo.
+Description-de.UTF-8: FEHLER!
+ Korrigieren Sie ${liloconf} manuell und rufen Sie /sbin/lilo erneut auf.
+Description-es.UTF-8: ¡Error!
+ Corrija manualmente ${liloconf} y ejecute «/sbin/lilo» de nuevo.
+Description-eu.UTF-8: AKATSA!
+ Eskuz zuzendu ${liloconf} eta berriro exekutatu /sbin/lilo.
+Description-fi.UTF-8: VIRHE!
+ Korjaa ${liloconf} käsin ja aja /sbin/lilo uudelleen.
+Description-fr.UTF-8: Erreur dans le fichier de configuration de lilo
+ Veuillez corriger ${liloconf} vous-même et relancer /sbin/lilo.
+Description-gl.UTF-8: ERRO
+ Corrixa ${liloconf} manualmente e execute /sbin/lilo.
+Description-ja.UTF-8: エラー!
+ ${liloconf} を修正して再度 /sbin/lilo を実行してください。
+Description-nl.UTF-8: Fout!
+ Herstel ${liloconf} handmatig en voer /sbin/lilo opnieuw uit.
+Description-pt.UTF-8: ERRO!
+ Corrija manualmente o ${liloconf} e volte a correr /sbin/lilo.
+Description-pt_BR.UTF-8: ERRO!
+ Corrigir ${liloconf} manualmente e executar /sbin/lilo manualmente.
+Description-ru.UTF-8: ОШИБКА!
+ Исправьте ${liloconf} вручную и перезапустите /sbin/lilo.
+Description-sv.UTF-8: FEL!
+ Korrigera ${liloconf} manuellt och kör /sbin/lilo igen.
+Description-vi.UTF-8: LỖI !
+ Bạn hãy tự sửa chữa ${liloconf} và chạy lại « /sbin/lilo ».
+
+Template: liloconfig/wipe_old_liloconf
+Type: boolean
+Default: false
+Description: Wipe out your old LILO configuration and make a new one?
+Description-ar.UTF-8: تريد حذف تهيئة LILO السابقة وإنشاء أخرى جديدة؟
+Description-cs.UTF-8: Smazat vaši starou konfiguraci LILA a vytvořit novou?
+Description-da.UTF-8: Skal din gamle LILO-opsætning ryddes væk, og en ny oprettes?
+Description-de.UTF-8: Ihre alte LILO-Konfiguration löschen und eine neue erstellen?
+Description-es.UTF-8: ¿Desea borrar su vieja configuración de LILO y crear una nueva?
+Description-eu.UTF-8: LILOren konfigurazio zaharra ezabatu eta berria sortu?
+Description-fi.UTF-8: Korvataanko vanhat LILOn asetukset uusilla?
+Description-fr.UTF-8: Supprimer votre ancienne configuration LILO et en créer une nouvelle ?
+Description-gl.UTF-8: ¿Borrar a configuración antiga de LILO e crear unha nova?
+Description-ja.UTF-8: 古い LILO の設定を消去して新たに作り直しますか?
+Description-nl.UTF-8: Uw oude LILO-configuratie wissen en een nieuwe maken?
+Description-pt.UTF-8: Limpe toda a configuração do seu antigo LILO e volte a fazer uma nova?
+Description-pt_BR.UTF-8: Apagar sua antiga configuração do LILO e criar uma nova?
+Description-ru.UTF-8: Стереть старую конфигурацию LILO и создать новую?
+Description-sv.UTF-8: Ta bort din gamla LILO-konfiguration och gör en ny?
+Description-vi.UTF-8: Xoá cấu hình LILO cũ và tạo một cấu hình mới không?
+
+Template: liloconfig/no_changes
+Type: error
+Description: No changes made.
+Description-ar.UTF-8: لم يحدث أي تغيير.
+Description-cs.UTF-8: Nebyly provedeny žádné změny.
+Description-da.UTF-8: Foretog ingen ændringer.
+Description-de.UTF-8: Keine Änderungen durchgeführt.
+Description-es.UTF-8: No hubo cambios.
+Description-eu.UTF-8: Ez da egin aldaketarik.
+Description-fi.UTF-8: Muutoksia ei tehty.
+Description-fr.UTF-8: Pas de modification effectuée
+Description-gl.UTF-8: Non se fixo ningún cambio.
+Description-ja.UTF-8: 変更は行われません。
+Description-nl.UTF-8: Geen wijzigingen gemaakt.
+Description-pt.UTF-8: Nenhumas alterações efectuadas.
+Description-pt_BR.UTF-8: Nenhuma mudança feita.
+Description-ru.UTF-8: Изменения не сделаны.
+Description-sv.UTF-8: Inga ändringar har gjorts.
+Description-vi.UTF-8: Chưa thay đổi gì.
+
+Template: liloconfig/fstab_broken
+Type: error
+Description: WARNING!
+ Either your ${fstab} configuration file is missing, or it doesn't contain a
+ valid entry for the root filesystem! This generally means that your system is
+ very badly broken. Configuration of LILO will be aborted; you should try to
+ repair the situation and then run /usr/sbin/liloconfig again to retry the
+ configuration process.
+Description-ar.UTF-8: تحذير!
+ إما أن ملفة التهيئة ${fstab} مفقود، أو أنه لا يحتوي مُدخلاً صالحاً لنظام الملفات الجذر! غالباً ما يعني هذا أن نظامكمُحطّم إلى حد كبير. سيتم تجاهل تهيئة LILO؛ وعليك أن تحاول إصلاح الوضع وتنفيذ /usr/sbin/liloconfig مجدداً لإتمام عملية التهيئة.
+Description-cs.UTF-8: VAROVÁNÍ!
+ Buď chybí konfigurační soubor ${fstab}, nebo neobsahuje platný záznam pro kořenový souborový systém! To obvykle znamená, že je váš systém závažně poškozen. Konfigurace LILA bude přerušena. Měli byste se pokusit situaci napravit a poté znovu spustit nastavení příkazem /usr/sbin/liloconfig.
+Description-da.UTF-8: ADVARSEL!
+ Enten mangler din ${fstab}-opsætningsfil, eller også indeholder den ikke en gyldig linje med rodsystemet! Det betyder normalt, at dit system er i stykker. Opsætningen af LILO afbrydes.. Du bør forsøge at løse situationen, og derefter køre /usr/sbin/liloconfig igen, for at gentage forsøget på at sætte lilo op.
+Description-de.UTF-8: WARNUNG!
+ Entweder fehlt Ihre ${fstab}-Konfigurationsdatei oder sie enthält keinen gültigen Eintrag für das Wurzel-Dateisystem! Dies bedeutet in der Regel, dass Ihr System defekt ist. Die Konfiguration von LILO wird abgebrochen; Sie sollten versuchen, den Fehler zu beheben und dann /usr/sbin/liloconfig nochmals auszuführen, um den Konfigurationsprozess erneut zu versuchen.
+Description-es.UTF-8: ¡Aviso!
+ ¡O se ha perdido su archivo de configuración ${fstab}, o no contiene una entrada válida para el sistema de archivos raíz! Esto significa, normalmente, que su sistema está roto o de mala manera. Se cancelará la configuración de LILO, debería tratar de reparar la situación y entonces ejecutar «/usr/sbin/liloconfig» nuevamente para reiterar el proceso de configuración.
+Description-eu.UTF-8: KONTUZ!
+ Edo ${fstab} konfigurazio-fitxategia falta da, edo ez dauka baliozko sarrerarik erro fitxategi-sistemarako! Horrek normalean esan nahi duena da hautsita dagoela sistema. LILOren konfigurazioa bertan behera geldituko da; saia zaitez arazoa konpontzen eta gero exekuta ezazu /usr/sbin/liloconfig berriro saiatzeko konfigurazio-prozesua burutzen.
+Description-fi.UTF-8: VAROITUS!
+ Joko asetustiedosto ${fstab} puuttuu tai se ei sisällä validia juuritiedostojärjestelmän määrittelyä. Tämä yleensä tarkoittaa, että järjestelmä on pahasti rikki. LILOn asetusten teko tulisi keskeyttää ja järjestelmä tulisi yrittää korjata. Tämän jälkeen asetusten tekoa voidaan yrittää uudelleen ajamalla /usr/sbin/liloconfig uudelleen.
+Description-fr.UTF-8: Fichier de configuration incompatible
+ Soit le fichier de configuration ${fstab} est manquant, soit il ne contient pas d'entrée valable pour votre système de fichiers principal (« / ») ! En général, ceci signifie que le système est en mauvais état. La configuration de LILO va être annulée ; vous devriez essayer de résoudre ces problèmes et de relancer /usr/sbin/liloconfig pour essayer à nouveau d'effectuer la configuration.
+Description-gl.UTF-8: AVISO
+ Ou falla o ficheiro de configuración ${fstab} ou non contén unha entrada válida para o sistema de ficheiros raíz. Isto adoita significar que o seu sistema está en moi mal estado. Hase abortar a configuración de LILO; debería tentar arranxar a situación e despois volver executar /usr/sbin/liloconfig para volver tentar o proceso de configuración.
+Description-ja.UTF-8: 警告!
+ ${fstab} 設定ファイルシステムが見つからないか、そのファイルにルートファイルシステムの指定が正しく含まれていません! 大抵の場合、これはシステムが非常に壊れた状態であるということです。LILO の設定を終了します。この状態を修復してから、設定作業をもう一度行うために再度 /usr/sbin/liloconfig を実行してください。
+Description-nl.UTF-8: Waarschuwing!
+ Uw ${fstab} configuratiebestand ontbreekt of bevat geen geldige ingang voor het basisbestandssysteem. Meestal houdt dit in dat uw systeem ernstig defect is. De configuratie van LILO wordt afgebroken: u kunt het best proberen de situatie te herstellen, en daarna /usr/sbin/liloconfig uit te voeren om het configuratieprocess opnieuw te proberen.
+Description-pt.UTF-8: ATENÇÃO!
+ Ou o seu ficheiro de configuração ${fstab} não existe, ou não contém uma entrada válida para o seu sistema de ficheiros root! Isto significa normalmente que o seu sistema está em muito mau estado. A configuração do LILO será abortada; deverá tentar reparar a situação e então correr /usr/sbin/liloconfig de novo de modo a repetir o processo de configuração.
+Description-pt_BR.UTF-8: AVISO!
+ Seu arquivo de configuração ${fstab} está faltando ou o mesmo não contém uma entrada válida para o sistema de arquivoz raíz! Isso geralmente significa que seu sistema está bastante bagunçado. A configuração do LILO será abortada. Você deverá tentar reparar a situação e após isso executar /usr/sbin/liloconfig novamente e executar novamente o processo de configuração.
+Description-ru.UTF-8: ПРЕДУПРЕЖДЕНИЕ!
+ Или у вас отсутствует конфигурационный файл ${fstab}, или в нём нет правильной записи для корневой файловой системы! Обычно это означает, что ваша система совсем сломана. Настройка LILO будет прекращена; вы должны попытаться исправить ситуацию и затем запустить /usr/sbin/liloconfig для повторения процесса настройки.
+Description-sv.UTF-8: VARNING!
+ Antingen saknas din konfigurationsfil ${fstab}, eller så innehåller den inte en giltig post för ditt root-filsystem! Detta betyder vanligtvis att ditt system är allvarligt skadat. Konfiguration av LILO kommer avbrytas; du bör försöka att reparera situationen och sedan köra /usr/sbin/liloconfig igen för att göra ett nytt försök med konfigurationsprocessen.
+Description-vi.UTF-8: CẢNH BÁO !
+ Hoặc tập tin cấu hình ${fstab} bị thiếu, hoặc nó không chứa một mục nhập hợp lệ cho hệ thống tập tin gốc. Thường có nghĩa là hệ thống của bạn rất bị hỏng. Tiến trình cấu hình LILO sẽ bị hủy bỏ : bạn nên thử sửa chữa trường hợp này, sau đó chạy « /usr/sbin/liloconfig » lần nữa đổ thử lại tiến trình cấu hình.
+
+Template: liloconfig/odd_fstab
+Type: error
+Description: WARNING!
+ Your ${fstab} configuration file gives device ${device} as the root filesystem
+ device. This doesn't look to me like an "ordinary" block device. Either your
+ fstab is broken and you should fix it, or you are using hardware (such as a
+ RAID array) which this simple configuration program does not handle.
+ .
+ You should either repair the situation or hand-roll your own ${liloconf}
+ configuration file; you can then run /usr/sbin/liloconfig again to retry the
+ configuration process. Documentation for LILO can be found in
+ /usr/share/doc/lilo/.
+Description-ar.UTF-8: تحذير!
+ يُحدّد ملف التهيئة ${fstab} الجهاز ${device} على أنه نظام الملفات الجذر. إلا أنه يبدو جهازاً ليس "اعتيادياً". فإما أن ملف fstab غير صحيح وعليك إصلاحه، أو أنك تستخدم عتاداً (مثل مصفوفة RAID) والذي لا يستطيع ملف التهيئة البسيط هذا أن يتعامل معه.
+ .
+ يجب أن تصحيح الوضع أو أن تقوم بكتابة ملفالتهيئة ${liloconf} بنفسك؛ ويمكنك بعدها تنفيذ الأمر /usr/sbin/liloconfig مجدداً ومحاولة عملية التهيئة مجدداً. وثائق LILO موجودة في /usr/share/doc/lilo/.
+Description-cs.UTF-8: VAROVÁNÍ!
+ Váš konfigurační soubor ${fstab} říká, že kořenový souborový systém leží na ${device}. Toto zařízení nevypadá jako "běžné" blokové zařízení. Buď je váš fstab poškozen a měli byste jej opravit, nebo používáte hardware (jako RAID pole), které tento jednoduchý konfigurační program nezvládá.
+ .
+ Buď byste měli situaci napravit, nebo si vytvořit konfigurační soubor ${liloconf} ručně. Poté se můžete znovu pokusit o nastavení příkazem /usr/sbin/liloconfig. Dokumentaci k LILU naleznete v /usr/share/doc/lilo/.
+Description-da.UTF-8: ADVARSEL!
+ Din ${fstab}-opsætningsfil angiver enheden ${device} som den enhed, der indeholder rodfilsystemet. Det ser ikke ud som en "normal" blokenhed. Enten er din fstab i stykker (i så fald bør du ordne den), eller også benytter du udstyr (f.eks. RAID-enheder), som dette simple opsætningsprogram ikke kan håndtere.
+ .
+ Du bør enten ordne situationen, eller selv skrive din egen ${liloconf} -opsætningsfil. Du kan derefter køre /usr/sbin/liloconfig igen, for at forsøge opsætningen af lilo igen. Du finder lilos dokumentation i /usr/share/doc/lilo/.
+Description-de.UTF-8: WARNUNG!
+ Ihre ${fstab}-Konfigurationsdatei erklärt das Gerät ${device} als das Gerät des Wurzeldateisystems. Dies sieht nicht nach einem »gewöhnlichen« Blockgerät aus. Entweder ist Ihre fstab defekt und Sie sollten sie korrigieren, oder Sie verwenden Hardware (wie beispielsweise einen RAID-Verbund), mit dem dieses einfache Konfigurationsprogramm nicht umgehen kann.
+ .
+ Sie sollten die Situation entweder korrigieren oder manuell Ihre eigene ${liloconf}-Konfigurationsdatei erstellen; Sie können dann /usr/sbin/liloconfig nochmals ausführen, um den Konfigurationsprozess erneut zu versuchen. Dokumentation zu LILO befindet sich in /usr/share/doc/lilo/.
+Description-es.UTF-8: ¡Aviso!
+ Su archivo de configuración ${fstab} muestra como dispositivo del sistema de archivos raíz al dispositivo ${device}. No parece un dispositivo de bloques «normal». O su fstab está roto y debería  arreglarlo, o está utilizando hardware (como un RAID) que este sencillo programa de configuración no soporta.
+ .
+ Debería reparar la situación o hacer a mano su propio archivo de configuración ${liloconf}, luego puede ejecutar «/usr/sbin/liloconfig» otra vez para reintentar el proceso de configuración. Puede encontrar documentación sobre LILO en «/usr/share/doc/lilo/».
+Description-eu.UTF-8: KONTUZ!
+ Zure ${fstab} konfigurazio-fitxategiak ${device} gailua ematen du erro fitxategi-sistema gisa. Horrek ez dirudi bloke-gailu "arrunta". Edo fstab hautsita dago, eta beraz konpondu beharra duzu, edo konfigurazio programa sinple honek kudeatu ezin duen hardwarea (hala nola RAID multzo bat) erabiltzen ari zara.  
+ .
+ Arazoa konpon ezazu, edo bestela eskuz molda ezazu ${liloconf} konfigurazio-fitxategia; gero berriro exekuta dezakezu /usr/sbin/liloconfig konfiguratze prozesua berriro abiatzeko. LILOri buruzko dokumentazioa /usr/share/doc/lilo/-n aurkituko duzu.
+Description-fi.UTF-8: VAROITUS!
+ Asetustiedosto ${fstab} antaa laitteen ${device} juuritiedostojärjestelmän laitteeksi. Se ei näytä ”normaalilta” lohkolaitteelta. Joko fstab on rikki ja pitäisi korjata tai käytät laitteistoa (esimerkiksi RAID-pakkaa), jota tämä yksinkertainen asetusohjelma ei hallitse.
+ .
+ Voit joko korjata tilanteen tai luoda käsin oman asetustiedoston ${liloconfig}. Tämän jälkeen voit ajaa uudelleen ohjelman /usr/bin/liloconfig yrittääksesi asetusten tekoa. LILOn dokumentaatio löytyy hakemistosta /usr/share/doc/lilo/.
+Description-fr.UTF-8: Fichier de configuration incompatible
+ Le fichier de configuration ${fstab} (« fstab ») n'indique pas que ${device} est le système de fichiers principal. Celui-ci ne semble pas être un périphérique de type bloc « ordinaire ». Soit le fichier de configuration « fstab » est corrompu, soit vous utilisez du matériel tel qu'un ensemble RAID, ce qui n'est pas géré par ce simple programme de configuration.
+ .
+ Vous devriez soit corriger la situation, soit écrire votre propre fichier de configuration ${liloconf} ; vous pouvez alors relancer /usr/sbin/liloconfig pour essayer le processus de configuration à nouveau. La documentation de LILO se trouve dans /usr/share/doc/lilo/.
+Description-gl.UTF-8: AVISO
+ O ficheiro de configuración ${fstab} dá o dispositivo ${device} coma dispositivo que contén o sistema de ficheiros raíz. Este non semella un dispositivo de bloques "normal". Ou o fstab está en mal estado e debería arranxalo, ou está a empregar hardware (coma un sistema RAID) que este sinxelo programa de configuración non pode xestionar.
+ .
+ Debería reparar a situación ou crear á man o seu propio ficheiro de configuración ${liloconf}; despois ha poder executar /usr/sbin/liloconfig outra vez para volver tentar o proceso de configuración. Pódese atopar documentación de LILO en /usr/share/doc/lilo/.
+Description-ja.UTF-8: 警告!
+ ${fstab} 設定ファイルでは、${device} デバイスをルートファイルシステムとして扱っています。これは「通常の」ブロックデバイスとして見えていません。fstab が壊れていて修復の必要があるか、このシンプルな設定プログラムでは扱えないハードウェア (RAID アレイなど) を使っています。
+ .
+ この状態を修復するか、${liloconf} 設定ファイルを手動で修正する必要があります。その後、設定作業をもう一度行うために再度 /usr/sbin/liloconfig を実行してください。/usr/share/doc/lilo/ で LILO のドキュメントを見ることができます。
+Description-nl.UTF-8: Waarschuwing!
+ Uw ${fstab} configuratiebestand bevat ${device} als het apparaat waar het basisbestandssysteem op staat. Dit ziet er niet uit als een "gewoon" blok-apparaat. Ofwel uw fstab is defect, in welk geval u het moet herstellen, ofwel u gebruikt hardware (zoals een RAID) waar dit eenvoudige configuratieprogramma niet mee om kan gaan.
+ .
+ U dient de situatie te herstellen of zelf uw ${liloconf} configuratiebestand samen te stellen. Daarna kunt u /usr/sbin/liloconfig uitvoeren om de configuratie opnieuw te proberen. Documentatie voor LILO vindt u in /usr/share/doc/lilo/.
+Description-pt.UTF-8: ATENÇÃO!
+ O seu ficheiro de configuração ${fstab} indica o dispositivo ${device} como o dispositivo de root do sistema de ficheiros. Este não parece ser um dispositivo de bloco "convencional". Ou o seu fstab está danificado e então deverá repará-lo, ou está a usar hardware (como um 'array' RAID) que o programa de configuração simples não detecta.
+ .
+ Deverá ou reparar a situação ou voltar atrás no seu ficheiro de configuração ${liloconf}; poderá depois voltar a correr /usr/sbin/liloconfig de novo e reiniciar o processo de configuração. A documentação para o LILO pode ser encontrada em /usr/share/doc/lilo/.
+Description-pt_BR.UTF-8: AVISO!
+ Seu arquivo de configuração ${fstab} indica que o dispositivo ${device} é o dispositivo onde o sistema de arquivos raíz está localizado. Isso não parece um dispositivo de blocos "comum". Ou seu fstab está errado e você deve corrigí-lo ou você está usando hardware (como um arranjo RAID) com o qual este simples programa de configuração não consegue lidar.
+ .
+ Você deverá reparar a situação e criar manualmente seu próprio arquivo de configuração ${liloconf}. Após isso você poderá executar o /usr/sbin/liloconfig novamente e tentar o processo de configuração novamente. A documentação para o LILO pode ser encontrada no diretório /usr/share/doc/lilo/.
+Description-ru.UTF-8: ПРЕДУПРЕЖДЕНИЕ!
+ Согласно конфигурационному файлу ${fstab} будет взято устройство ${device} в качестве устройства для корневой файловой системы. Оно не похоже на "обычное" блочное устройство. Или у вас неправильный fstab и вы должны исправить его, или вы используете аппаратуру (типа RAID-массива), с которой эта простая программа настройки не знает что делать.
+ .
+ Вы должны или исправить ситуацию, или написать свой собственный конфигурационный файл ${liloconf}; затем вы можете запустить /usr/sbin/liloconfig снова, чтобы повторить процесс настройки. Документацию на LILO можно найти в /usr/share/doc/lilo/.
+Description-sv.UTF-8: VARNING!
+ Din konfigurationsfil ${fstab} anger enhet ${device} som enhet innehållande root-filsystemet. Detta ser inte ut som en "vanlig" block-enhet. Antingen är din fstab söndrig och du bör laga den, eller så använder du hårdvara (som t.ex. en RAID-array) som detta simpla konfigurations-program inte klarar hantera.
+ .
+ Du bör antingen reparera situationen eller manuellt skapa din egen konfigurationsfil ${liloconf}. Du kan då köra /usr/sbin/liloconfig igen för att göra ett nytt försök med konfigurationsprocessen. Dokumentation för lilo hittas under /usr/share/doc/lilo/.
+Description-vi.UTF-8: CẢNH BÁO !
+ Tập tin cấu hình ${fstab} đặt thiết bị ${device} là thiết bị hệ thống tập tin gốc. Không hình như một thiết bị khối « thông thường ». Hoặc fstab bị hỏng và bạn nên sửa chữa, hoặc bạn đang sử dụng phần cứng (v.d. một mảng RAID) mà chương trình cấu hình đơn giản này không thể quản lý.
+ .
+ Bạn nên hoặc sửa chữa trường hợp này, hoặc tạo một tập tin cấu hình ${liloconf} riêng: sau đó bạn có thể chạy « /usr/sbin/liloconfig » lần nữa để thử lại tiến trình cấu hình. Tài liệu hướng dẫn về LILO nằm trong thư mục « /usr/share/doc/lilo/ ».
+
+Template: liloconfig/instruction
+Type: note
+Description: Booting from hard disk.
+ You must do three things to make the Linux system boot from the hard disk.
+ Install a partition boot record, install a master boot record, and set the
+ partition active. You'll be asked to perform each of these tasks. You may skip
+ any or all of them, and perform them manually later on.
+ .
+ This will result in Linux being booted by default from the hard disk.  If your
+ setup is complicated or unusual you should consider writing your own
+ customised ${liloconf}. To do this you should exit this configuration program
+ and refer to the comprehensive lilo documentation, which can be found in
+ /usr/share/doc/lilo/.
+Description-ar.UTF-8: جاري الإقلاع من القرص الصلب.
+ يجب أن تقوم بثلاثة أشياء لتجعل نظام لينكس قادراً على الإقلاع من القرص الصلب. ثبّت سجلّ إقلاع للجزء، وسجلّ إقلاع رئيسي، وعيّن الجزء بنشط. ستُسأل أن تقوم بكل من هذه الخطوات. ويمكنك تخطي أي منها أو جميعها، والقيام بذلك يدوياً لاحقاً.
+ .
+ سينتج عن هذا إقلاع لينكس من القرص الصلب بشكل افتراضي. إن كان إعدادك مُعقداً أو غير اعتيادي فعليك النظر في كتابة إعداد ${liloconf} مُخصّص لك. وكي تقوم بذلك اخرج من برنامج التهيئة هذا وراجع وثائق lilo المُفصلة، والذي يمكن أن تجده في /usr/share/doc/lilo/.
+Description-cs.UTF-8: Zavádění z disku.
+ Abyste mohli Linux zavádět z disku, musíte provést 3 věci. Nainstalovat zaváděcí záznam dané oblasti, nainstalovat hlavní zaváděcí záznam (MBR) a nastavit oblast jako aktivní. Budete požádáni o provedení každého úkonu. Jeden nebo více těchto úkonů můžete přeskočit a provést je později ručně.
+ .
+ Toto způsobí, že se Linux bude implicitně zavádět z pevného disku. Pokud požadujete komplikované nebo neobvyklé nastavení, měli byste zvážit vytvoření vlastního upraveného ${liloconf}. Toho dosáhnete tak, že ukončíte tento konfigurační program a přečtete si vyčerpávající dokumentaci v adresáři /usr/share/doc/lilo/.
+Description-da.UTF-8: Starter op fra harddisk.
+ Du er nødt til at gøre tre ting, for at få linuxsystemet til at starte op fra hariddisken. Installér en partitionsopstartsblok, installér en master boot record (MBR), og marker partitionen som aktiv. Du vil blive bedt om at gennemføre disse ting. Du kan vælge at springe en eller flere af dem over, og senere gennemføre dem selv.
+ .
+ Det vil medføre, at Linux bliver startet op som udgangspunkt fra harddisken. Hvis din opsætning er kompliceret eller usædvanligt, bør du overveje at skrive din egen tilpassede ${liloconf}. For at gøre dette, bør du afbryde dette opsætningsprogram og følge den grundige lilo-dokumentation, som du finder i /usr/share/doc/lilo/.
+Description-de.UTF-8: Starten von der Festplatte.
+ Sie müssen drei Dinge erledigen, damit Ihr Linux-System von der Festplatte startet. Installation eines »Partition-Boot-Records«, Installation eines »Master-Boot-Records« und aktivieren der Partition. Sie werden aufgefordert, jede der drei Aufgaben zu erledigen. Sie können alle oder einige davon überspringen und diese Schritte dann später manuell durchführen.
+ .
+ Dies führt dazu, dass standardmäßig Linux von der Festplatte gestartet wird. Falls Ihre Einrichtung kompliziert oder ungewöhnlich ist, sollten Sie in Erwägung ziehen, Ihre eigene, angepasste ${liloconf} zu erstellen. Dafür sollten sie dieses Konfigurationsprogramm beenden und sich auf die umfassende Lilo-Dokumentation beziehen, die sich in /usr/share/doc/lilo/ befindet.
+Description-es.UTF-8: Arrancar desde el disco duro.
+ Debe hacer tres cosas para que su sistema Linux arranque desde el disco duro. Instalar un registro de arranque de partición, instalar un registro de arranque maestro, y hacer activa la partición. Se le preguntará para realizar cada una de estas tareas. Puede saltarse cualquiera o todos ellos, y realizarlos luego en forma manual.
+ .
+ Esto causará el arranque predeterminado de Linux desde el disco duro. Debería considerar escribir su propio ${liloconf} personalizado si su configuración es complicada o inusual. Debería salir de este programa de configuración para hacerlo y referirse a una amplia documentación de LILO, que puede encontrar en  «/usr/share/doc/lilo/».
+Description-eu.UTF-8: Disko gogorretik abiarazten. 
+ Hiru gauza egin behar dituzu Linux sistema disko gogorretik abiarazteko: partizioko abio erregistroa instalatu, abio erregistro nagusia (MBR) instalatu eta partizioa aktibo bihurtu. Zeregin hauetako bakoitza egiteko eskatuko dizu programak. Hauetako bat edo denak utz ditzakezu egin gabe, eta geroago eskuz egiteko utzi. 
+ .
+ Honela eginik Linux disko gogorretik abiaraziko da aukera lehenetsi gisa. Zure konfigurazioa konplikatua edo ez-ohikoa bada, ${liloconf} fitxategia zuretzat egokia den erara idazteko aukera azter dezakezu. Hori egiteko irten zaitez konfigurazio programatik eta kontsulta ezazu lilo-ren dokumentazio zabala /usr/share/doc/lilo/ direktorioan.
+Description-fi.UTF-8: Käynnistetään kovalevyltä.
+ Linux-järjestelmän käynnistäminen kovalevyltä vaatii kolme asiaa: osion käynnistyslohkon asentamisen, pääkäynnistyslohkon asentamisen ja osion merkitsemisen aktiiviseksi. Kukin näistä on mahdollista tehdä nyt. Mikä tahansa kohta voidaan ohittaa ja tehdä käsin myöhemmin.
+ .
+ Asetusten teon jälkeen Linux käynnistetään oletuksena kovalevyltä. Jos laitteistosi on monimutkainen tai epätavallinen, harkitse oman mukautetun tiedoston ${liloconf} kirjoittamista. Tehdäksesi tämän poistu asetusohjelmasta ja käytä apuna hakemistosta /usr/share/doc/lilo löytyvää laajaa lilon dokumentaatiota.
+Description-fr.UTF-8: Démarrage depuis le disque dur
+ Trois actions sont nécessaire pour rendre possible le démarrage du système Linux depuis le disque dur : installer un secteur de démarrage de partition, installer un secteur de démarrage principal et rendre la partition active. Il va vous être demandé d'effectuer chacune de ces actions. Vous pouvez en passer une ou plusieurs, pour vous en occuper manuellement plus tard.
+ .
+ Après ces opérations, Linux sera le système d'exploitation démarré par défaut depuis le disque dur. Si votre système est complexe ou inhabituel, vous devriez envisager d'écrire votre propre fichier ${liloconf}. Pour ce faire, vous devriez interrompre ce programme de configuration et vous reporter à la documentation complète de lilo, que vous pouvez trouver dans /usr/share/doc/lilo/.
+Description-gl.UTF-8: Inicio de disco duro.
+ Debe facer tres cousas para que o sistema Linux se inicie do disco duro. Instalar un rexistro de inicio da partición, instalar un rexistro mestre de inicio e activar a partición. Háselle pedir que realice cada unha destas accións. Pode omitir calquera delas ou todas, e realizalas manualmente despois.
+ .
+ Isto ha facer que Linux se inicie por defecto do disco duro. Se a súa configuración é complicada ou pouco habitual debería pensar en escribir o seu propio ${liloconf}. Para o facer debería saír deste programa de configuración e consultar a documentación completa de lilo, que se pode atopar en /usr/share/doc/lilo/.
+Description-ja.UTF-8: ハードディスクから起動する
+ Linux システムをハードディスクから起動するには 3 つのことをしなくてはいけません。パーティションブートレコードをインストールし、マスターブートレコードをインストールし、パーティションをアクティブにします。それぞれのタスクについて実行するかどうか尋ねられます。どれか、あるいはすべてをスキップした場合は、後で手動で実行してください。
+ .
+ この結果、Linux はデフォルトでハードディスクから起動するようになります。構成が複雑であったり通常でなかったりする場合は、カスタマイズした ${liloconf} を自分で書くことを検討する必要があります。この様にしたい場合は、この設定プログラムを終了して /usr/share/doc/lilo/ で見ることができる包括的な lilo のドキュメントに従ってください。
+Description-nl.UTF-8: Opstarten van vaste schijf.
+ U moet drie dingen doen om het Linux-systeem van de vaste schijf te laten opstarten: een partitie-opstartblok installeren, een hoofdopstartblok installeren, en de partitie op actief zetten.
+ .
+ Het gevolg hiervan zal zijn dat Linux standaard van de vaste schijf wordt opgestart. Als uw situatie ingewikkeld of ongewoon is, overweeg dan om ${liloconf} met de hand samen te stellen. Als u dit wilt doen, sluit dan dit configuratieprogramma af en raadpleeg de uitgebreide LILO-documentatie, te vinden in /usr/share/doc/lilo/.
+Description-pt.UTF-8: A arrancar do seu disco rígido.
+ Deverá fazer três coisas de modo a arrancar o seu sistema Linux a partir do seu disco rígido. Instalar uma partição de arranque, instalar um registo de arranque 'master' e defini-la como partição activa. Ser-lhe-á pedido que efectue cada um destes passos. Pode saltar um deles ou todos e efectua-los manualmente mais tarde.
+ .
+ O resultado pode ser o Linux arrancar por omissão pelo disco rígido.  Se a sua configuração é complexa ou fora do normal deverá considerar escrever o seu ${liloconf} personalizado. Para fazer isto deverá sair do programa de configuração e consultar a documentação completa do lilo, a qual pode ser encontrada em /usr/share/doc/lilo/.
+Description-pt_BR.UTF-8: Iniciando a partir do disco rígido.
+ Você deve fazer três coisas para fazer com que o sistema Linux inicie a partir de um disco rígido. Instale um registro de inicialização de partição, instale um registro de inicialização mestre (MBR) e defina a partição ativa. Você será então questionado sobre executar cada uma dessas tarefas. Você pode pular qualquer uma delas e executá-las manualmente posteriormente.
+ .
+ Isso resultará no Linux sendo iniciado por padrão a partir do disco rígido. Caso sua configuração seja complicada ou fora do comum, você deveria considerar escever seu próŕio ${liloconf} personalizado. Para fazê-lo, você deveria sair deste programa de configuração e consultar a extensa documentação do lilo, a qual pode ser encontrada sob o diretório /usr/share/doc/lilo/.
+Description-ru.UTF-8: Загрузка с жёсткого диска.
+ Чтобы запустить Linux с жёсткого диска вы должны сделать три вещи. Установить загрузочную запись на раздел, установить главную загрузочную запись и сделать раздел активным. Вас попросят подтвердить выполнение каждой из этих задач. Вы можете пропустить все или любую из них, и выполнить её позже вручную.
+ .
+ В результате по умолчанию будет загружаться Linux с жёсткого диска. Если ваши настройки сложны или необычны, то вам нужно написать свой собственный ${liloconf}. Для этого вы должны выйти из этой программы настройки и обратиться к полной документации к lilo, которую можно найти в каталоге /usr/share/doc/lilo/.
+Description-sv.UTF-8: Startar från hårddisk.
+ Du måste göra tre saker för att göra så att ditt Linux-system kan starta från hårddisk. Installera ett partition boot record, installera ett master boot record, och sätta aktiv partition. Du kommer tillfrågas för att utföra varje steg. Du kan skippa en eller flera av dessa steg och manuellt utföra de senare.
+ .
+ Detta kommer resultera i att Linux startas som standard från hårddisken. Om din konfiguration är komplicerad eller ovanlig bör du överväga att skriva din egen ${liloconf}. För att göra det så avslutar du denna konfigurationsprocess och tittar på den utförliga lilo-dokumentationen, som återfinns under /usr/share/doc/lilo/.
+Description-vi.UTF-8: Khởi động từ đĩa cứng.
+ Bạn cần phải làm ba việc để làm cho hệ thống Linux khởi động từ đĩa cứng:
+  1. cài đặt một mục ghi khởi động phân vùng
+  2. cài đặt một mục ghi khởi động chủ (MBR)
+  3. đặt phân vùng là hoạt động.
+ Bạn sẽ được nhắc làm mỗi công việc trong danh sách này. Cũng có thể bỏ qua bất cứ bước nào để tự làm về sau.
+ .
+ Kết quả là Linux được khởi động theo mặc định từ đĩa cứng. Nếu bạn có một thiết lập phức tạp hay không thường, khuyên bạn tạo một ${liloconf} riêng. Để làm như thế, bạn nên thoát khỏi chương trình cấu hình này, và đọc tài liệu hướng dẫn lilo chi tiết mà nằm trong thư mục « /usr/share/doc/lilo/ ».
+
+Template: liloconfig/install_from_root_device
+Type: boolean
+Default: true
+Description: Install a partition boot record to boot Linux from ${device}?
+Description-ar.UTF-8: تريد تثبيت سجلّ إقلاع للجزء لإقلاع لينكس من ${device}؟
+Description-cs.UTF-8: Instalovat zaváděcí záznam oblasti, kterým zavedete Linux z ${device}?
+Description-da.UTF-8: Skal der installeres en partitions-opstartsblok, så Linux startes op fra ${device}?
+Description-de.UTF-8: Installation eines »Partition-Boot-Records«, um Linux von ${device} zu starten?
+Description-es.UTF-8: ¿Instalar un registro de arranque de partición para iniciar Linux desde ${device}?
+Description-eu.UTF-8: Linux ${device}-tik abiarazteko partizioko abio erregistroa instalatu?
+Description-fi.UTF-8: Asennetaanko osion käynnistyslohko käynnistämään Linux laitteelta ${device}?
+Description-fr.UTF-8: Installer un secteur de démarrage de partition pour démarrer Linux depuis ${device} ?
+Description-gl.UTF-8: ¿Instalar un rexistro de inicio de partición para iniciar Linux en ${device}?
+Description-ja.UTF-8: ${device} から Linux が起動するように、パーティションブートレコードをインストールしますか?
+Description-nl.UTF-8: Een partitie-opstartblok installeren om Linux vanaf ${device} op te starten?
+Description-pt.UTF-8: Instalar uma partição de arranque para arrancar o Linux a partir de ${device}?
+Description-pt_BR.UTF-8: Instalar um registro de inicialização de partição para iniciar o Linux a partir de ${device}?
+Description-ru.UTF-8: Установить загрузочную запись раздела для загрузки Linux с ${device}?
+Description-sv.UTF-8: Installera ett partition boot record för att starta Linux från ${device}?
+Description-vi.UTF-8: Cài đặt một mục ghi khởi động phiên bản để khởi động Linux từ thiết bị ${device} không?
+
+Template: liloconfig/use_lba32
+Type: boolean
+Default: true
+Description: Use LBA32 for addressing big disks using new BIOS features?
+Description-ar.UTF-8: استخدام LBA32 للتعرف على الأقراص الضخمة بمساعدة مزايا BIOS الجديدة؟
+Description-cs.UTF-8: Použít LBA32 pro adresování velkých disků pomocí nových vlastností BIOSU?
+Description-da.UTF-8: Skal der benyttes LBA32 til adressering af store diske med nye BIOS-funktioner?
+Description-de.UTF-8: LBA32 verwenden, um große Platten über neue BIOS-Funktionen anzusprechen?
+Description-es.UTF-8: ¿Utilizar LBA32 para direccionar discos grandes utilizando las nuevas características de BIOS?
+Description-eu.UTF-8: LBA32 erabili nahi duzu disko handiak helbideratzeko, BIOSaren ezaugarri berriak baliatuz?
+Description-fi.UTF-8: Käytetäänkö LBA32:ta suurien, uusia BIOS-ominaisuuksia käyttävien levyjen osoittamiseen?
+Description-fr.UTF-8: Utiliser LBA32 pour gérer les disques de grande capacité en utilisant les nouvelles fonctionnalités du BIOS ?
+Description-gl.UTF-8: ¿Empregar LBA32 para manipular discos grandes con novas funcións da BIOS?
+Description-ja.UTF-8: 新しい BIOS 機能を利用して、大きなディスクの取扱いに LBA32 オプションを使いますか?
+Description-nl.UTF-8: LBA32 gebruiken om grote schijven met nieuwe BIOS-eigenschappen te adresseren?
+Description-pt.UTF-8: Usar LBA32 para suportar discos de grande dimensão utilizando as novas funcionalidades das BIOS?
+Description-pt_BR.UTF-8: Utilizar LBA32 para endereçar discos grandes utilizando novos recursos da BIOS ?
+Description-ru.UTF-8: Использовать LBA32 для доступа к большим дискам с помощью новых возможностей BIOS?
+Description-sv.UTF-8: Använd LBA32 för adressering av stora diskar som använder nya BIOS-utökningar?
+Description-vi.UTF-8: Dùng LBA32 để đặt địa chỉ của đĩa lớn, dùng các tính năng BIOS mới không?
+
+Template: liloconfig/install_mbr
+Type: boolean
+Default: false
+Description: Install a master boot record on ${disk}?
+ A master boot record is required to run the partition boot record. If you are
+ already using a boot manager, and want to keep it, answer "no" to the
+ following question. If you don't know what a boot manager is or whether you
+ have one, answer "yes".
+Description-ar.UTF-8: تثبيت سجلّ الإقلاع الرئيسي على ${disk}؟
+ سجل الإقلاع الرئيسي مطلوب لتشغيل سجلّ إقلاع الجزء. إن كنت تستخدم مُدير إقلاع مسبقاً، وتريد إبقاءه، أجب بـ"لا" على السؤال التالي. وإن لم تكن تعرف ما هو مُدير الإقلاع أو ما إذا كان لديك، فأجب بـ"نعم".
+Description-cs.UTF-8: Instalovat hlavní zaváděcí záznam (MBR) na ${disk}?
+ Hlavní zaváděcí záznam je vyžadován pro to, aby spustil zaváděcí záznam v konkrétní oblasti. Pokud již používáte nějaký zavaděč a chcete si jej ponechat, odpovězte na následující otázku "ne". Nevíte-li, co to je zavaděč, resp. netušíte-li, zda nějaký máte, odpovězte "ano".
+Description-da.UTF-8: Installér en "master boot record" på ${disk}?
+ Der kræves en "Master Boot Record" for at køre din partitions-opstartsblok. Hvis du allerede benytter en opstartshåndtering, og ønsker at beholde denne, så afvis dette spørgsmål. Acceptér det, hvis du ikke ved, hvad en opstartshåndtering (boot manager) er, eller om du overhovedet har sådan en.
+Description-de.UTF-8: Einen »Master-Boot-Record« auf ${disk} installieren?
+ Ein »Master-Boot-Record« wird benötigt, um den »Partition-Boot-Record« auszuführen. Falls Sie bereits einen Boot-Manager verwenden und diesen behalten möchten, antworten Sie »nein« auf die folgende Frage. Falls Sie nicht wissen, was ein Boot-Manager ist oder ob Sie einen haben, antworten Sie »ja«.
+Description-es.UTF-8: ¿Instalar un registro de arranque maestro en ${disk}?
+ Para ejecutar el registro de arranque de partición se necesita un registro de arranque maestro. Si está utilizando un gestor de arranque, y desea mantenerlo, responda «no» a la siguiente pregunta. Si no sabe lo que es un gestor de arranque o tiene uno, responda «si».
+Description-eu.UTF-8: Abio erregistro nagusia instalatu ${disk}-en?
+ Abio erregistro nagusia (MBR) ezinbestekoa da partizioko abio erregistroa exekutatzeko. Dagoeneko abio kudeatzaile bat erabiltzen ari bazara, eta harekin jarraitu nahi baduzu, ondoko galderari "ez" erantzun. Abio kudeatzaile bat zer den edo halakorik daukazun ez badakizu, "bai" erantzun.
+Description-fi.UTF-8: Asennetaanko pääkäynnistyslohko levylle ${disk}?
+ Osion käynnistyslohkon ajamiseen tarvitaan pääkäynnistyslohkoa. Jos käytössä on jo alkulatausohjelma ja haluat säilyttää sen, vastaa ”ei” seuraavaan kysymykseen. Jos et tiedä mikä alkulatausohjelma on tai onko käytössä sellaista, vastaa ”kyllä”.
+Description-fr.UTF-8: Faut-il installer un secteur de démarrage principal sur ${fdisk} ?
+ Un secteur de démarrage principal est nécessaire pour lancer le secteur de démarrage de partition. Si vous utilisez déjà un gestionnaire de démarrage et voulez le conserver, ne choisissez pas cette option. Si vous ne savez pas ce qu'est un gestionnaire de démarrage ou si vous en avez un, choisissez cette option.
+Description-gl.UTF-8: ¿Instalar un rexistro mestre de inicio en ${disk}?
+ É preciso un rexistro mestre de inicio para executar o rexistro de inicio da partición. Se xa emprega un xestor de inicio e quere conservalo, resposte "non" á seguinte pregunta. Se non sabe que é un xestor de inicio ou se ten un, resposte "si".
+Description-ja.UTF-8: マスターブートレコードを ${disk} にインストールしますか?
+ パーティションブートレコードを起動するにはマスターブートレコードが必要です。既にブートマネージャを使っておりこれを使いたい場合は、以下の質問に「いいえ」と答えてください。ブートマネージャが何か分からない、あるかどうか分からない場合は「はい」と答えてください。
+Description-nl.UTF-8: Een hoofd-opstartblok installeren op ${disk}?
+ Een hoofd-opstartblok (master boot record, MBR) is vereist om het partitie-opstartblok uit te voeren. Als u al een opstart-beheerprogramma (boot manager) gebruikt en dat wilt behouden, weiger dan de volgende vraag. Als u niet weet wat een opstart-beheerprogramma is of of u zoiets heeft, accepteer dan.
+Description-pt.UTF-8: Instalar um registo de arranque 'master' em ${disk}?
+ Um registo de arranque 'master' é necessário para correr a partição de arranque. Se já está a utilizar um gestor de arranque, e pretende mantê-lo, responda negativamente à questão seguinte. Se não souber o que é um gestor de arranque ou se não possuir nenhum, responda afirmativamente.
+Description-pt_BR.UTF-8: Instalar um registro de inicialização mestre em ${disk}?
+ Um registro de inicialização mestre é necessário para executar o registro de inicialização de partição. Caso você já esteja utilizando um gerenciador de inicialização e deseje mantê-lo, responda "não" para a pergunta a seguir. Caso você não saiba o que é um gerenciador de inicialização ou se você possui um, responda "sim".
+Description-ru.UTF-8: Установить главную загрузочную запись на ${disk}?
+ Главная загрузочная запись требуется для запуска загрузочной записи раздела. Если у вас уже установлен менеджер загрузки, и вы хотите сохранить его, ответьте "нет" на следующий вопрос. Если вы не знаете что такое менеджер загрузки или есть ли он у вас, ответьте "да".
+Description-sv.UTF-8: Installera ett master boot record på ${disk}?
+ Ett master boot record krävs för att köra partition boot record. Om du redan använder en boot manager, och vill behålla den, svara "nej" till följande frågor. Om du inte vet vad en boot manager är eller om du har en, svara "ja".
+Description-vi.UTF-8: Cài đặt một mục ghi khởi động chủ vào đĩa ${disk} không?
+ Một mục ghi khởi động chủ (MBR) đòi hỏi để chạy mục ghi khởi động phân vùng. Nếu bạn đã có chạy một chương trình quản lý khởi động, và muốn giữ nó, hãy đáp ứng « không » ở câu hỏi theo đây. Không quen với chương trình quản lý khởi động thì đáp ứng « có ».
+
+Template: liloconfig/mbr_error
+Type: error
+Description: ERROR!
+ install-mbr failed! Your system may not be bootable.
+Description-ar.UTF-8: خطأ!
+ فشل الأمر install-mbr! قد لا يكون نظامك قابلاً للإقلاع.
+Description-cs.UTF-8: CHYBA!
+ install-mbr selhal! Váš systém se nemusí podařit zavést.
+Description-da.UTF-8: FEJL!
+ install-mbr mislykkedes! Dit system kan muligvis ikke startes op.
+Description-de.UTF-8: FEHLER!
+ install-mbr fehlgeschlagen! Ihr System könnte nicht-startbar sein.
+Description-es.UTF-8: ¡Error!
+ ¡«install-mbr» falló! El sistema puede no ser arrancable.
+Description-eu.UTF-8: AKATSA!
+ Huts egin du 'install-mbr'-k! Baliteke zure makina abiagarria ez izatea.
+Description-fi.UTF-8: VIRHE!
+ install-mbr epäonnistui! Järjestelmä ei välttämättä ole käynnistyskelpoinen.
+Description-fr.UTF-8: Erreur dans le fichier de configuration de lilo
+ Échec d'install-mbr : démarrage du système probablement impossible
+Description-gl.UTF-8: ERRO
+ install-mbr fallou. Pode que non se poida iniciar o seu sistema.
+Description-ja.UTF-8: エラー!
+ install-mbr が失敗しました! システムが起動できない可能性があります。
+Description-nl.UTF-8: Fout!
+ install-mbr mislukt! Uw systeem kan mogelijk niet opstarten.
+Description-pt.UTF-8: ERRO!
+ A instalação do install-mbr falhou! O seu sistema pode ficar sem arrancar.
+Description-pt_BR.UTF-8: ERRO!
+ install-mbr falhou! Seu sistema pode naõ ser capaz de ser iniciado.
+Description-ru.UTF-8: ОШИБКА!
+ install-mbr завершилась неудачно! Система не сможет загружаться.
+Description-sv.UTF-8: FEL!
+ install-mbr misslyckades! Ditt systems uppstart kan misslyckas vid omstart.
+Description-vi.UTF-8: LỖI !
+ install-mbr không thành công. Có lẽ hệ thống không khởi động được.
+
+Template: liloconfig/make_active_partition
+Type: boolean
+Default: true
+Description: Make ${device} the active partition
+ The master boot record will boot the active partition. If you want your system
+ to boot another operating system, such as DOS or Windows, by default, answer
+ "no" to the following question. You may still use your boot manager or the
+ master boot record to boot Linux. If you want the system to boot Linux by
+ default, answer "yes". In this case you could still boot some other OS if you
+ know what partition it is on.
+Description-ar.UTF-8: اجعل الجزء ${device} هو جزء الإقلاع
+ سجلّ الإقلاع الرئيسي يُمكّن الجزء النشط من الإقلاع. إن أردت لنظامك أن يتمكن من إقلاع نظام تشغيل آخر، مثل DOS أو ويندوز بشكل افتراضي، فأجب بـ"لا" على السؤال التالي. وستكون قادراً على استخدام مُدير الإقلاع أو سجل الإقلاع الرئيسي لإقلاع لينكس. وإن أردت أن يقوم نظامك بإقلاع لينكس بشكل افتراضي، فأجب بـ"نعم". وفي هذه الحالة تستطيع إقلاع اي نظام تشغيل آخر أيضاً إن كنت تعرف في أي جزء هو.
+Description-cs.UTF-8: Nastavit ${device} jako aktivní
+ Hlavní zaváděcí záznam zavede oblast, která je označena jako aktivní. Chcete-li, aby váš počítač implicitně zaváděl jiný operační systém (např. DOS nebo Windows), odpovězte na následující otázku záporně. V takovém případě byste stále mohli použít svůj stávající zavaděč nebo hlavní zaváděcí záznam k zavádění Linuxu. Chcete-li, aby se implicitně zaváděl Linux, odpovězte kladně. V takovém případě stále můžete zavádět jiné operační systémy za předpokladu, že víte, na kterých oblastech leží.
+Description-da.UTF-8: Gør ${device} til den aktive partition
+ "Master Boot Record" vil opstarte den aktive partition. Hvis du ønsker, at dit system som udgangspunkt skal starte et andet styresystem op, såsom DOS eller Windows, så afvis dette spørgsmål. Du kan stadig bruge din opstartshåndtering eller Master Boot Record til at starte Linux op. Accepter spørgsmålet, hvis du vil have systemet til som udgangspunkt at starte Linux op. I så fald kan du stadig starte et andet styresystem op, hvis du ved, hvilken partitoin, det ligger på.
+Description-de.UTF-8: ${device} als aktive Partition einrichten
+ Der »Master-Boot-Record« wird die aktive Partition starten. Falls Sie möchten, dass Ihr System standardmäßig ein anderes Betriebssystem startet, wie beispielsweise DOS oder Windows, antworten Sie »nein« auf die folgende Frage. Sie können Ihren Boot-Manager oder den »Master-Boot-Record« immer noch dazu verwenden, Linux zu starten. Falls Sie möchten, dass Ihr System standardmäßig Linux startet, antworten Sie »ja«. In diesem Fall können Sie immer noch einige andere Betriebssysteme starten, falls Sie wissen, auf welchen Partitionen sich diese befinden.
+Description-es.UTF-8: Hacer activa la partición ${device}
+ El sistema de arranque maestro iniciará la partición activa. Si desea que su sistema arranque otro sistema operativo, como DOS o Windows, responda «no» a la siguiente pregunta. Aún puede utilizar su gestor de arranque o el registro de arranque maestro para iniciar Linux. Si quiere que el sistema inicie Linux por omisión, responda «sí». En este caso aún puede iniciar algún otro sistema operativo si sabe en que partición se encuentra.
+Description-eu.UTF-8: Bihur ezazu ${device} partizio aktiboa
+ Abio erregistro nagusiak partizio aktiboa abiaraziko du. Zure makinak lehenetsi gisa beste sistema eragile bat abiaraztea nahi baduzu, hala nola DOS edo Windows, "ez" erantzun hurrengo galderari. Hautu hori egin arren Linux ere abiarazi ahalko duzu abio kudeatzailea edo abio erregistro nagusia erabiliz. Makinak lehenetsi gisa Linux abiaraztea nahi baduzu, "bai" erantzun. Horrela ere beste sistema eragile bat abiarazi ahalko duzu zein partiziotan dagoen baldin badakizu.
+Description-fi.UTF-8: Tehdäänkö laitteesta ${device} aktiivinen?
+ Pääkäynnistyslohko käynnistää aktiivisen osion. Jos haluat järjestelmän käynnistävän oletuksena toisen käyttöjärjestelmän kuten DOSin tai Windowsin, vastaa ”ei” seuraavaan kysymykseen. Voit silti käyttää alkulatausohjelmaa tai pääkäynnistyslohkoa Linuxin käynnistämiseen. Jos haluat Linux käynnistyvän oletuksena, vastaa ”kyllä”. Tässä tapauksessa voit edelleen käynnistää jonkin toisen käyttöjärjestelmän, jos tiedät millä osiolla se on.
+Description-fr.UTF-8: Faut-il faire de ${device} la partition active ?
+ Le secteur de démarrage principal va démarrer la partition active. Si vous voulez que votre système démarre un autre système d'exploitation par défaut, comme DOS ou Windows, ne choisissez pas cette option. Vous pouvez toujours utiliser votre gestionnaire de démarrage ou le secteur de démarrage principal pour démarrer Linux. Si vous voulez que le système démarre Linux par défaut, choisissez cette option. Dans ce cas, vous pourrez toujours démarrer un autre système d'exploitation si vous savez sur quelle partition il se trouve.
+Description-gl.UTF-8: Converter a ${device} na partición activa
+ O rexistro mestre de inicio ha iniciar a partición activa. Se quere que o sistema inicie outro sistema operativo por defecto, coma DOS ou Windows, resposte "non" á seguinte pregunta. Aínda ha poder seguir usando o seu xestor de inicio ou o rexistro mestre de inicio para iniciar Linux. Se quere que o sistema inicie Linux por defecto, resposte "si". Neste caso aínda ha poder iniciar outro sistema operativo se sabe en que partición está.
+Description-ja.UTF-8: ${device} をアクティブパーティションにする
+ マスターブートレコードはアクティブパーティションを起動します。DOS や Windows のような他の OS を起動したいという場合、デフォルトでは以下の質問に「いいえ」と答えてください。ブートマネージャを使うかマスターブートレコードを使えば Linux を起動することもできます。システムがデフォルトで Linux を起動するようにしたい場合は「はい」と答えてください。この場合、どのパーティションに OS が入っているのかを知っていれば、他の OS を起動することもできます。
+Description-nl.UTF-8: ${device} de actieve partitie maken
+ Het hoofd-opstartblok zal de actieve partitie opstarten. Indien u wilt dat uw systeem standaard een ander beheerssysteem (operating system, OS) opstart, zoals DOS of Windows, weiger dan de volgende vraag. U kunt nog steeds uw opstart-beheerprogramma of het hoofd-opstartblok gebruiken om Linux op te starten. Als u wilt dat het systeem standaard Linux opstart, accepteer dan. In dat geval zou u nog steeds een ander beheerssysteem kunnen opstarten, onder voorwaarde dat u weet op welke partitie het staat.
+Description-pt.UTF-8: Fazer do ${device} a partição activa
+ O registo de arranque 'master' irá arrancar a sua partição activa. Se preferir que o seu sistema arranque outro sistema operativo, como DOS ou Windows por omissão, responda negativamente à questão seguinte. Pode querer usar o seu gestor de arranque ou o registo de arranque 'master' para arrancar o Linux. Se quiser arrancar o Linux por omissão, responda afirmativamente. Neste caso pode ainda arrancar outro SO se souber qual a partição em que está.
+Description-pt_BR.UTF-8: Tornar ${device} a partição ativa
+ O registro de inicialização mestre irá iniciar a partição ativa. Caso você queira que seu sistema inicie outro sistema operacional, como o DOS ou o Windows, por padrão, responda "não" para a pergunta a seguir. Caso você queira que o sistema inicie o Linux por padrão, responde "sim". Nesse caso, você ainda poderá iniciar algum outro sistema operacional caso você saiba em qual partição o mesmo se encontra.
+Description-ru.UTF-8: Активировать раздел ${device} ?
+ Главная загрузочная запись будет загружать активный раздел. Если вы хотите, чтобы по умолчанию загружалась другая операционная система, типа DOS или Windows, ответьте "нет" на следующей вопрос. Вы всё ещё можете использовать ваш менеджер загрузки или главную загрузочную запись для загрузки Linux. Если вы хотите, чтобы по умолчанию загружался Linux, ответьте "да". В этом случае вы всё равно сможете загрузить другую ОС, если знаете на каком разделе она установлена.
+Description-sv.UTF-8: Gör ${device} till aktiv partition
+ Master boot record kommer starta den aktiva partitionen. Om du vill att ditt system skall starta ett annat operativsystem, så som DOS eller Windows, som standard, svara "nej" på följande frågor. Du kan fortfarande använda din boot manager eller master boot record för att starta Linux. Om du vill att systemet skall starta Linux som standard, svara "ja". I detta fall kan du fortfarande starta vissa andra operativsystem om du vet vilken partition de finns på.
+Description-vi.UTF-8: Làm cho thiết bị ${device} là phân vùng hoạt động
+ Mục ghi khởi động chủ sẽ khởi động phân vùng hoạt động. Nếu bạn muốn hệ thống khởi động một hệ điều hành khác (v.d. DOS hay Windows) theo mặc định, hãy đáp ứng « không » ở câu hỏi theo đây. Muốn hệ thống khởi động Linux theo mặc định thì đáp ứng « có ». Trong trường hợp này, bạn vẫn còn có thể khởi động hệ điều hành khác, nếu bạn biết nó nằm trên phân vùng nào.
+
+Template: liloconfig/activate_error
+Type: error
+Description: ERROR!
+ activate failed! Your system may not be bootable.
+Description-ar.UTF-8: خطأ!
+ فشل التفعيل! قد لا يكون نظامك قابلاً للإقلاع.
+Description-cs.UTF-8: CHYBA!
+ aktivace selhala! Váš systém se nemusí podařit zavést.
+Description-da.UTF-8: FEJL!
+ aktivering mislykkedes! Dit system kan muligvis ikke startes op.
+Description-de.UTF-8: FEHLER!
+ Aktivierung fehlgeschlagen! Ihr System könnte nicht startbar sein.
+Description-es.UTF-8: ¡Error!
+ ¡Falló la activación! Puede que el sistema no arranque.
+Description-eu.UTF-8: AKATSA!
+ Aktibazioak huts egin du! Baliteke zure makina abiagarria ez izatea.
+Description-fi.UTF-8: VIRHE!
+ aktivointi epäonnistui! Järjestelmä ei ehkä ole käynnistyskelpoinen.
+Description-fr.UTF-8: Erreur dans le fichier de configuration de lilo
+ Échec de l'activation : démarrage du système probablement impossible
+Description-gl.UTF-8: ERRO
+ activate fallou. Pode que non se poida iniciar o seu sistema
+Description-ja.UTF-8: エラー!
+ アクティブ化が失敗しました!  システムが起動できない可能性があります。
+Description-nl.UTF-8: Fout!
+ activate mislukt! Uw systeem kan mogelijk niet opstarten.
+Description-pt.UTF-8: ERRO!
+ falhou a activação! O seu sistema pode não arrancar.
+Description-pt_BR.UTF-8: ERRO!
+ ativação falhou! Seu sistema pode não ser capaz de ser iniciado.
+Description-ru.UTF-8: ОШИБКА!
+ активирование завершилось неудачно! Система не сможет загружаться.
+Description-sv.UTF-8: FEL!
+ aktivering misslyckades! Ditt system kan misslyckas starta vid omstart.
+Description-vi.UTF-8: LỖI !
+ activate không thành công. Có lẽ hệ thống không khởi động được.
+

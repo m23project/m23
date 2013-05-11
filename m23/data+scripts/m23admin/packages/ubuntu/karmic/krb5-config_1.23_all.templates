@@ -1,0 +1,129 @@
+Template: krb5-config/default_realm
+Type: string
+Description: Default Kerberos version 5 realm:
+ When users attempt to use Kerberos and specify a principal or user name
+ without specifying what administrative Kerberos realm that principal
+ belongs to, the system appends the default realm.  Normally, the default
+ realm is the uppercase version of the local DNS domain.
+Description-cs.UTF-8: Výchozí říše Kerbera verze 5:
+ Když se uživatelé pokusí použít Kerbera a zadají pouze uživatelské jméno nebo identifikátor bez určení říše, do které patří, systém připojí výchozí říši. Obvykle to bývá lokální DNS doména zapsaná velkými písmeny.
+Description-de.UTF-8: Voreingestellter Realm für Kerberos Version 5:
+ Wenn Benutzer versuchen, Kerberos zu nutzen, und sie geben einen Principal oder Benutzernamen an, ohne festzulegen, zu welchem Kerberos-Administrationsbereich (Realm) dieser Principal gehört, dann fügt das System den voreingestellten Realm an. Normalerweise ist der voreingestellte Realm die großgeschriebene Version der lokalen DNS-Domain.
+Description-es.UTF-8: Dominio predeterminado de la versión 5 de Kerberos:
+ Cuando los usuarios intentan usar Kerberos y especifican un nombre principal o de usuario sin aclarar a qué dominio administrativo de Kerberos pertenece el principal, el sistema toma el dominio predeterminado. Normalmente, el dominio predeterminado es el nombre en mayúsculas del dominio del DNS local.
+Description-fr.UTF-8: Domaine Kerberos version 5 par défaut :
+ Quand les utilisateurs tentent d'utiliser Kerberos et spécifient un principal ou un identifiant sans spécifier à quel domaine administratif Kerberos ce principal est attaché, le système ajoute le domaine par défaut. Normalement, le domaine par défaut est la version en lettres majuscules du domaine DNS local.
+Description-gl.UTF-8: Reino por defecto de Kerberos versión 5:
+ Cando os usuarios tentan empregar Kerberos e especifican un principal ou nome de usuario sen especificar o reino administrativo de Kerberos ao que pertence ese principal, o sistema engade o reino por defecto. Normalmente, o reino por defecto é a versión en maiúsculas do dominio DNS local.
+Description-it.UTF-8: Realm predefinito per Kerberos versione 5:
+ Quando gli utenti cercano di usare Kerberos specificando un principal o un nome utente e senza indicare a quale realm amministrativo Kerberos appartengono, il sistema aggiunge un realm predefinito. Normalmente il realm predefinito è la versione in maiuscolo del dominio DNS.
+Description-ja.UTF-8: デフォルトの Kerberos バージョン 5 レルム:
+ 利用者が Kerberos を利用しようとするとき、プリンシパルやユーザ名を属するKerberos の管理レルムを指定せずに使うと、システムはデフォルトのレルムを加えます。通常、デフォルトのレルムはローカルな DNS ドメインを大文字にしたものです。
+Description-nl.UTF-8: Standaard Kerberos5-gebied?
+ Als gebruikers Kerberos proberen te gebruiken en een principal of gebruikersnaam specificeren zonder te omschrijven tot welk administratief gebied (realm) de principal behoort, zal het systeem het standaardgebied achteraan toevoegen. Normaal is het standaardgebied de hoofdletterversie van het lokale DNS-domein.
+Description-pt.UTF-8: Reino por omissão do Kerberos versão 5:
+ Quando os utilizadores tentam usar o Kerberos e especificam um principal ou um nome de utilizador sem especificar a que reino administrativo Kerberos pertencem, o sistema assume o reino por omissão. Normalmente o reino por omissão é a versão só em maiúsculas do domínio DNS local.
+Description-pt_BR.UTF-8: Realm Kerberos versão 5 padrão:
+ Quando usuários tentam utilizar Kerberos e especificam um principal ou nome de usuário sem especificar a qual realm Kerberos administrativo esse principal pertence, o sistema inclui o realm padrão. Normalmente, o realm padrão é a versão em maiúsculas do domínio DNS local.
+Description-sv.UTF-8: Kerberos version 5 standardrealm
+ När användare försöker använda Kerbers och anger ett användarnamn utan att ange vilken administrative Kerberos realm den tillhör så försöker systemet lägga till standardrealm. Vanligen är standardrealm en versalversion av den lokala DNS-domänen.
+
+Template: krb5-config/read_conf
+Type: boolean
+Default: true
+Description: For internal use only
+ We want to try and capture user changes when they edit a config file
+ manually.  To do this, we look in the config script to read the file.
+ However, in the case of preconfigure, the config script is run twice
+ before the postinst is run.  Thus, we may read the wrong value before the
+ edited value is written out in postinst.  If this is false, we skip
+ reading config files until postinst runs.
+
+Template: krb5-config/dns_for_default
+Type: boolean
+Default: false
+Description: Does DNS contain pointers to your realm's Kerberos Servers?
+ Traditionally new realms have been added to /etc/krb5.conf so that
+ clients can find the Kerberos servers for the realm.  Modern Kerberos
+ implementations support looking this information up using DNS.  If your
+ default realm has DNS pointers, they will be used.  Otherwise, if your
+ realm is not already in /etc/krb5.conf, you will be asked for the
+ Kerberos servers' hostnames so the realm can be added.
+Description-cs.UTF-8: Obsahuje DNS odkazy na vaše servery Kerberovy říše?
+ Tradičně se nové říše přidávaly do souboru /etc/krb5.conf, aby klienti mohli najít kerberovy servery v dané říši. Moderní implementace Kerbera  podporují vyhledání těchto informací pomocí DNS. Pokud má vaše výchozí říše DNS odkazy, budou použity. V opačném případě budete dotázáni na jména Kerberových serverů, aby mohla být říše přidána (pokud se již v /etc/krb5.conf nenachází).
+Description-de.UTF-8: Enthält das DNS Verweise zu den Kerberos-Servern Ihres Realm?
+ Traditionell wurden neue Realms zu /etc/krb5.conf hinzugefügt, so dass Clients die Kerberos-Server für den Realm finden können. Moderne Kerberos-Implementationen unterstützen das Beziehen dieser Information vom DNS. Falls Ihr voreingestellter Realm DNS-Einträge hat, werden sie benutzt. Wenn anderenfalls Ihr Realm noch nicht in /etc/krb5.conf verzeichnet ist, werden Sie nach dem Hostnamen der Kerberos-Server gefragt, damit der Realm hinzugefügt werden kann.
+Description-es.UTF-8: ¿El DNS contiene punteros a su dominio de Servidores Kerberos?
+ Tradicionalmente, los nuevos dominios se han añadido a «/etc/krb5.conf» para que los clientes puedan encontrar los servidores Kerberos para el dominio. Las nuevas implementaciones de Kerberos a veces permiten mirar esta información usando el DNS. Se usarán punteros al DNS si su dominio predeterminado los tiene De lo contrario, si su dominio no está aún en «/etc/krb5.conf», se le preguntará por los nombres de los servidores Kerberos para que se pueda añadir el dominio.
+Description-fr.UTF-8: Le DNS contient-il des enregistrements pointant vers les domaines de vos serveurs Kerberos ?
+ Habituellement, les nouveaux domaines sont ajoutés au fichier /etc/krb5.conf afin que les clients puissent trouver les serveurs Kerberos pour ce domaine.  Les implémentations modernes de Kerberos peuvent parfois retrouver cette information en utilisant le service DNS. Si votre domaine par défaut possède des pointeurs DNS, ils seront utilisés.  Sinon, si votre domaine n'est pas encore dans le fichier /etc/krb5.conf, les noms d'hôtes des serveurs Kerberos vous seront demandés afin que le domaine puisse être ajouté.
+Description-gl.UTF-8: ¿DNS contén punteiros aos servidores Kerberos do seu reino?
+ Tradicionalmente engádense os novos reinos a /etc/krb5.conf para que os clientes poidan atopar os servidores Kerberos do reino. As implementacións modernas de Kerberos ás veces poden buscar esa información mediante DNS. Se o seu reino por defecto ten punteiros en DNS, hanse empregar. Se non, se o seu reino non está xa en /etc/krb5.conf, hánselle pedir os nomes dos servidores Kerberos para poder engadir o reino.
+Description-it.UTF-8: Il DNS contiene puntatori ai server del realm Kerberos?
+ Tradizionalmente, i nuovi realm erano aggiunti in /etc/krb5.conf in modo che i client potessero trovare i server Kerberos per il realm. Le moderne realizzazioni di Kerberos supportano la ricerca di queste informazioni tramite il DNS; se nel DNS esistono dei puntatori al realm predefinito, i client li useranno. Altrimenti, se il proprio realm non è già stato inserito in /etc/krb5.conf, verranno chiesti i nomi host dei server Kerberos per poterlo aggiungere.
+Description-ja.UTF-8: DNS はあなたのレルムの Kerberos サーバの情報を含んでいますか?
+ 従来、新しいレルムは /etc/krb.conf に加えられることでクライアントがレルムのサーバを探せるようにしていました。近頃の Kerberos の実装ではこの情報を探すのに DNS が使えます。もしあなたのデフォルトのレルムにDNSのポインタがあるなら、それが使用されます。そうで無い場合、もしレルムが/etc/krb.conf にまだ無ければ、これを追加するために Kerberos サーバのホスト名を尋ねられます。
+Description-nl.UTF-8: Bevat het DNS verwijzingen naar de Kerberos-servers van uw gebied?
+ Traditioneel werden nieuwe gebieden toegevoegd aan /etc/krb5.conf zodat clients de Kerberos-servers voor het gebied vindt. Moderne Kerberos-implementaties ondersteunen het opzoeken van deze informatie via DNS. Indien uw standaardgebied verwijzingen naar het DNS bevat, zullen deze worden gebruikt. Anderzijds, als uw gebied nog niet opgenomen is in /etc/krb5.conf, zal u naar de computernamen van de Kerberos-servers gevraagd worden zodat het gebied kan worden toegevoegd.
+Description-pt.UTF-8: O DNS tem apontadores para os servidores Kerberos do seu reino?
+ Tradicionalmente eram adicionados novos reinos ao /etc/krb5.conf para que os clientes possam encontrar os servidores Kerberos no reino. Implementações modernas do Kerberos por vezes suportam a procura dessa informação usando DNS. Se o seu reino por omissão tiver apontadores DNS, eles serão usados. De outra forma, se o seu reino não estiver já em /etc/krb5.conf, ser-lhe-ão feitas perguntas sobre os nomes dos servidores Kerberos antes que o reino possa ser adicionado.
+Description-pt_BR.UTF-8: O DNS contém apontadores para seus servidores Kerberos de seu realm ?
+ Tradicionalmente, novos realms eram adicionados em /etc/krb5.conf de forma que clients pudessem encontrar servidores Kerberos para o realm. Implementações Kerberos modernas suportam pesquisar esta informação usando DNS. Caso seu realm padrão possua apontadores DNS, os mesmos serão usados. Caso contrário, e caso seu realm já não esteja em /etc/krb5.conf, você será questionado pelos hostnames (nomes de máquinas) do servidor Kerberos para que o realm possa ser adicionado.
+Description-sv.UTF-8: Finns det pekare till ditt Kerberos realm i DNS?
+ Historiskt sett så har nya realmar laggts till i /etc/krb5.conf så att klienterna ska kunna hitta Kerberosservrar för realmen. Moderna Kerberosimplementationer har ibland stöd för att hämta denna informationen via DNS. Om din standardrealm har DNS-pekare så används dessa. I övriga fall, om din realm inte redan finns i /etc/krb5.conf. så blir tillfrågad om Kerberosservrarnas värdnamn så att realmen kan läggas till.
+
+Template: krb5-config/kerberos_servers
+Type: string
+Description: Kerberos servers for your realm:
+ Enter the hostnames of Kerberos servers in the ${realm} Kerberos realm
+ separated by spaces.
+Description-cs.UTF-8: Kerberovy servery ve vaší říši:
+ Zadejte mezerami oddělená jména kerberových serverů v říši ${realm}.
+Description-de.UTF-8: Kerberos-Server für Ihren Realm:
+ Geben Sie die Hostnamen von Kerberos-Servern in der ${realm}-Kerberos-Realm durch Leerzeichen getrennt ein.
+Description-es.UTF-8: Servidores Kerberos para su dominio:
+ Introduzca los nombres de los servidores Kerberos en el dominio ${realm} de Kerberos, separados por espacio.
+Description-fr.UTF-8: Serveurs Kerberos pour votre domaine :
+ Veuillez indiquer les noms d'hôtes des serveurs Kerberos dans le domaine ${realm} Kerberos, séparés par des espaces.
+Description-gl.UTF-8: Servidores Kerberos do reino:
+ Introduza os nomes dos servidores Kerberos no reino de Kerberos ${realm}, separados por espazos.
+Description-it.UTF-8: Server Kerberos per il realm:
+ Inserire i nomi host dei server Kerberos nel realm Kerberos ${realm} separati da degli spazi.
+Description-ja.UTF-8: あなたのレルムの Kerberos サーバ:
+ ${realm} Kerberos レルムでの Kerberos サーバのホスト名を入力してください。複数あるときはスペースで区切ってください。
+Description-nl.UTF-8: Kerberos-servers voor uw gebied:
+ Geef de computernamen, door spaties gescheiden, van de Kerberos-servers in het ${realm} Kerberos-gebied.
+Description-pt.UTF-8: Servidores Kerberos para o seu reino:
+ Introduza os nomes das máquinas dos servidores de Kerberos no reino ${realm}, separados por espaços.
+Description-pt_BR.UTF-8: Servidores Kerberos para seu realm:
+ Informe os hostnames dos servidores Kerberos no realm Kerberos ${realm}, separados por espaços.
+Description-sv.UTF-8: Kerberosservrar för ditt realm:
+ Ange värdnamnen för Kerberosservrar i ${realm} Kerberos realm, avskilj med blanksteg.
+
+Template: krb5-config/admin_server
+Type: string
+Description: Administrative server for your Kerberos realm:
+ Enter the hostname of the administrative (password changing) server for
+ the ${realm} Kerberos realm.
+Description-cs.UTF-8: Administrativní server vaší Kerberovy říše:
+ Zadejte jméno počítače, na kterém běží administrativní server (ten, který mění hesla) pro Kerberovu říši ${realm}.
+Description-de.UTF-8: Administrations-Server für Ihren Kerberos-Realm:
+ Geben Sie den Hostnamen des Administrations-Servers (zur Änderung von Passwörtern) für den ${realm}-Kerberos-Realm ein.
+Description-es.UTF-8: Servidor administrativo para su dominio Kerberos:
+ Introduzca el nombre del servidor administrativo (cambio de contraseña) para el dominio ${realm} de Kerberos.
+Description-fr.UTF-8: Serveur administratif pour votre domaine Kerberos :
+ Veuillez indiquer le nom d'hôte du serveur administratif (modification du mot de passe) pour le domaine ${realm} Kerberos.
+Description-gl.UTF-8: Servidor administrativo do seu reino Kerberos:
+ Introduza o nome do servidor administrativo (de cambio de contrasinais) do reino de Kerberos ${realm}.
+Description-it.UTF-8: Server amministrativo per il realm Kerberos:
+ Inserire il nome host del server amministrativo (cambio password) per il realm Kerberos ${realm}.
+Description-ja.UTF-8: あなたの Kerberos レルムの管理サーバ:
+ ${realm} Kerberos レルムでの(パスワード変更用)管理サーバのホスト名を入力してください。
+Description-nl.UTF-8: Administratieve server voor uw Kerberos-gebied:
+ Geef de computernaam van de administratieve server (wijziging wachtwoorden) voor het ${realm} Kerberos-gebied.
+Description-pt.UTF-8: Servidor administrativo do seu reino Kerberos:
+ Introduza o nome da máquina do servidor administrativo para o reino ${realm} do Kerberos.
+Description-pt_BR.UTF-8: Servidor administrativo para seu realm Kerberos:
+ Informe o hostname do servidor administrativo (que gerencia a troca de senhas) para o realm Kerberos ${realm}.
+Description-sv.UTF-8: Administrativserver för ditt Kerberos realm:
+ Ange värdnamnet för administrtationsservern (den som kan ändra lösenord) för ${realm} Kerberos realm.

@@ -1,0 +1,105 @@
+#!/bin/bash
+#	Execution of commands on the server
+#	Copyright (C) 2005-2009 Hauke Goos-Habermann
+# 
+#	This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published #	by the Free Software Foundation; either version 3 of the License, or any later version.
+# 
+#	This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+#	You should have received a copy of the GNU General Public License along with this program; see the file COPYING.  If not, write to
+#	the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+
+if [ $# -ne 1 ]
+then
+	echo "Wrong parameter count"
+	exit 1
+fi
+
+
+
+
+
+#Executes the command on the server and receive its return message
+sendCommand()
+{
+	i=0;
+
+	while [ $i -lt 3 ]
+	do
+		#Get the seconds since 1.1.1970
+		t=`date +%s`
+		#Get the remainder by the division of 5 to get a time window of 5 seconds
+		d=`expr $t % 5`
+		#Make the the seconds dividable by 5 without remainder
+		t=`expr $t \- $d`
+		#Get the cron secret
+		cronSecret=`grep CONF_CRON_SECRET /m23/inc/cronSecret.php | cut -d"'" -f4`
+		#Calculate the 5 second valid code
+		code=`echo -n "$cronSecret$t" | md5sum - | cut -d' ' -f1`
+
+		ret=`wget "http://127.0.0.1/cron.php?cmd=$1&code=$code" -q -O -`
+		retCode=$?
+		if [ $retCode -ne 0 ]
+		then
+			exit 2
+		fi
+
+		if [ `echo "$ret" | head -1`  = "ok" ] && [ $retCode -eq 0 ]
+		then
+			echo "RAUS"
+			break
+		fi
+
+		#Check if the server reported an unauthorized execution (this may be in case of a time difference between the execution of the BASH and the PHP script)
+		if [ "$ret" = "Unauthorized" ]
+		then
+			sleep 2
+		fi
+
+		#Increment the failure counter
+		i=`expr $i \+ 1`
+	done
+	
+	echo "$ret"
+}
+
+
+
+
+
+#Sends all billing mails
+m23SHARED_sendAllBillMails()
+{
+	while `true`
+	do
+		ret=`sendCommand m23SHARED_sendAllBillMails`
+
+		#all emails sent so the loop can be left
+		if [ $ret = "allSent" ]
+		then
+			echo "Nothing to do"
+			exit 0
+		fi
+	done
+}
+
+
+SERVER_startBackup()
+{
+	sendCommand SERVER_startBackup
+}
+
+
+
+
+case $1 in
+	"m23SHARED_sendAllBillMails")
+		m23SHARED_sendAllBillMails
+		exit;;
+	"SERVER_startBackup")
+		SERVER_startBackup
+		exit;;
+	*)
+		exit 1
+esac

@@ -1,0 +1,19 @@
+$I18N_poolBuilder (Sélectionner les sources de paquets et les paquets)<!--v1.9 new-->
+
+Choisissez l'origine des sources de paquets logiciels pour l'installation. Le dialogue se décompose en deux parties:
+<ol><LI>D'abord, sélectionnez les sources de paquets.
+helpInclude("sourceslistEditor.inc");
+
+Ensuite,la liste affichée dans la fenêtre <i>&laquo;$I18N_packageSources&raquo;</i> sera utilisée.</LI>
+<li>Dans la partie inférieure du dialogue, entrez les noms des paquets que vous souhaitez enregistrer dans votre source de paquets. Les noms des paquets doivent être séparés par des espaces.
+<ul><LI><b>Charger / Effacer:</b> Si vous avez déjà enregistré une liste de paquets, vous pouvez la charger dans la fenêtre de l'éditeur ou l'effacer en cliquant sur <i>&laquo;$I18N_load&raquo;</i> ou <i>&laquo;$I18N_delete&raquo;</i> après l'avoir sélectionnée dans le champ <i>&laquo;$I18N_packageList&raquo;</i>.</LI>
+<!--v1.10 begin--><LI><b>$I18N_add:</b> Vous pouvez ajouter les paquets dans la liste de paquets à ceux dans l'éditeur en cliquant sur <i>&laquo;$I18N_add&raquo;</i>.</LI><!--v1.10 end-->
+<LI><b>$I18N_save:</b> Si vous souhaitez enregistrer la liste affichée dans l'éditeur, entrez un nom dans le champ de saisie <i>&laquo;$I18N_packageList&raquo;</i>, puis, cliquez sur <i>&laquo;$I18N_save&raquo;</i></LI>
+<LI><b>$I18N_addPackagesFromClient:</b> Cette fonction ajoute les noms des paquets installés sur le poste client sélectionné à la liste de paquets affichée dans l'éditeur. Pour pouvoir ajouter tous les paquets d'un poste client, sélectionnez le poste client dans la liste (qui contient seulement les postes client sur lesquels il y a des paquets installés) et ensuite, cliquez sur <i>&laquo;$I18N_add&raquo;</i>. Il est également possible d'ajouter des paquets provenant de plusieurs postes clients - en ce cas, les paquets en double ne seront affichés qu'une seule fois.</LI>
+</ul></li>
+<!--v1.10 begin--><li>Si vous activez la fonction <i>&laquo;$I18N_downloadBasePackages&raquo;</i> tous les fichiers nécessaires à l'installation du système de base (sauf le noyau du poste client) seront téléchargés.</li><!--v1.10 end-->
+<li>Enfin, cliquez sur <i>&laquo;$I18N_nextStep ($I18N_poolStep[3download])&raquo;</i>.</li>
+</ol>
+
+<u>Notez</u>
+Vous devez faire extrèmement attention à ce que la combinaison de la liste de paquets sélectionnée et des paquets soit possible. Pour garantir un téléchargement fonctionnel, vous devriez par exemple, utiliser une liste de sources de paquets et des paquets utilisés par un poste client déjà installé par m23.

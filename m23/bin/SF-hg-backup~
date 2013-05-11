@@ -1,0 +1,28 @@
+#!/bin/sh
+
+hgDir="/mnt/crypto/m23-hg/m23"
+
+mkdir -p "$hgDir"
+
+#Copy all php files to the mercurial directory
+#find /m23/ -type f 2> /dev/null | grep php$ | grep -v "config\." | grep -v m23shared | grep -v phpMyAdmin | grep -v phpldapadmin | xargs tar cv | tar -C "$hgDir" -x 
+
+echo "Building file list"
+find /m23/ -type f 2> /dev/null | grep php$ | grep -v "config\." | grep -v m23shared | grep -v phpMyAdmin | grep -v phpldapadmin > /tmp/m23-hg.lst
+
+echo "Copy changes"
+rsync -raPy --delete --files-from=/tmp/m23-hg.lst / "$hgDir"
+rsync -raPy --delete /m23/bin "$hgDir/m23"
+
+cd "$hgDir"
+
+echo "Mercurial add/remove files"
+hg addremove
+
+datum=`date +"m23-backup from %Y-%m-%d %H:%M"`
+
+echo "Mercurial commit changes"
+hg commit -m ""
+
+echo "Mercurial uploading changes"
+hg push -v

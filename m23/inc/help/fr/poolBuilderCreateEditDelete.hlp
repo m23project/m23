@@ -1,0 +1,16 @@
+$I18N_poolBuilder (Créer, modifier, effacer des sources de paquets)<!--v1.9 new-->
+
+Le constructeur de sources de paquets vous permet de copier des paquets logiciels provenant de médias différents (CD, DVD, internet) sur le serveur m23 et de les transformer en une source de paquets. Cette nouvelle source de paquets peut être utilisée pour l'installation de vos postes client. Cela rend possible l'installation des postes client sans aucune connection internet. De cette fa&ccedil;on, il est également possible de mettre des paquets que vous avez créés vous-mêmes dans le référentiel.
+
+<ul><LI><b>Créer une nouvelle source de paquets:</b> Vous pouvez créer une nouvelle source de paquets en entrant un nom dans le champ <i>&laquo;$I18N_poolName&raquo;</i>, ensuite choisissez le genre de source de paquets, puis cliquez sur <i>&laquo;$I18N_add&raquo;</i>.</LI>
+<LI><b>Effacer ou charger une source de paquets:</b> Sélectionnez la source de paquets à effacer ou charger dans la liste <i>&laquo;$I18N_existingPool&raquo;</i> puis, cliquez sur l'action souhaitée.</LI>
+<LI><b>$I18N_usedPool:</b> Dans cette section, les informations sur la source de paquets sélectionnée sont affichées.</LI>
+<LI><b>Modifier la description ou le genre:</b> Vous avez la possibilité d'entrer une description de votre source de paquets ou de changer son genre. Ensuite, cliquez sur <i>&laquo;$I18N_save&raquo;</i>.</LI>
+<LI><b>$I18N_packageSources:</b> Là, vous voyez la liste des sources de paquets correspondant à votre source de paquets. Si vous voulez utiliser des paquets de votre provenance pour l'installation d'un poste client, copiez les lignes affichées et ajoutez-les à la liste des sources de paquets du poste client.</LI>
+<li><b>$I18N_nextStep:</b> Finalement, cliquez sur ce bouton pour commencer la copie des paquets sur le serveur ou pour sélectionner les sources de paquets et les paquets.</li>
+</ul>
+
+<u>Notez</u><ul>
+<LI><b>$I18N_poolType:</b> Le genre selectionne le média d'où proviennent les paquets. <!-- v13.1 deactivated <i>&laquo;$I18N_CDPool&raquo;</i> est utilisé pour tous les média CD et DVD. Tous les points de montage additionnels dans /etc/fstab peuvent être utilisés comme source de paquets logiciels.--> <i>&laquo;$I18N_downloadPool&raquo;</i>: Les paquets seront téléchargés d'un serveur HTTP ou FTP pouvant être con&ccedil;u pour l'installation des paquets.</li>
+<!--begin v1.18--><li><b>$I18N_arch:</b> Là, vous pouvez préciser l'architecture du processeur pour laquelle vous souhaitez télécharger des paquets. L'architecture doit correspondre à celle des postes clients à installer et non à celle du serveur.</li><!--end v1.18-->
+<li><b>Source de paquets:</b> Une source de paquets est un répertoire (contenant peut-être des sous-répertoires), dans lequel des paquets logiciels sont enregistrés et qui contient des fichiers d'index fournissant des informations sur ces paquets logiciels. Ces fichiers d'index sont absolument nécessaires pour le téléchargement des paquets logiciels par les postes client.</li></ul>

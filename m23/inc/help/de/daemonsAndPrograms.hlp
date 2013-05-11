@@ -1,0 +1,30 @@
+<!-- new 1.6 -->$I18N_daemons_and_programs
+
+<b>$I18N_daemons</b>
+
+<u>Hinweis</u>
+<b>$I18N_daemons</b> sind Server-Programme, die ständig im Hintergrund laufen und von denen man nichts sieht, solange sie ihre Arbeit gut machen ;-). Solche Dämonen sind z.B. der Webserver Apache oder der Datenbankserver MySQL.
+
+<u>Farberklärung</u>
+<ul><LI><b>grün</b>: Der Dämon läuft im Hintergrund und kann gestoppt oder neu gestartet werden. Das Stoppen einen Dämons wird <b>nicht</b> empfohlen.</LI>
+<LI><b>gelb</b>: Der Dämon ist installiert, aber nicht gestartet. Einige Dämonen werden erst gestartet, wenn sie das erste Mal benötigt werden. Ein Dämon mit diesem Status kann gestartet werden.</LI>
+<LI><b>rot</b>: Der Dämon läuft nicht und ist auch nicht installiert. Hier wurde eine wichtige Serverkomponente von m23 entfernt oder nicht installiert. Sie können diese installieren, indem Sie bei Aktionen hinter dem Dämon <i>"$I18N_install"</i> auswählen und danach auf <i>"$I18N_doActions"</i> klicken.</LI>
+</ul>
+
+<u>Dämonenerklärung</u>
+<ul><LI><b>apache</b>: Apache ist ein Webserver, der gleichzeitig das Herzstück von m23 darstellt. Durch ihn wird die m23-Administrationsoberfläche generiert und die Jobs für die Clients erstellt.</LI>
+<LI><b>mysql</b>: MySQL ist der Datenbankserver, der z.B. die Daten der Clients verwaltet.</LI>
+<LI><b>dhcpd3</b>: Der DHCP-Server weist den Clients IP-Adressen für die Installation zu. Der DHCP-Server kann erst dann gestartet werden, wenn mindestens ein Client aufgesetzt werden soll. Ein gelber Status ist hier kein Anzeichen für einen Fehler.</LI>
+<!--V1.11 begin--><LI><b>slapd</b>: Dies ist der Dämon des LDAP-Servers <a href="http://www.openldap.org">OpenLDAP</a>. Mit LDAP ist es möglich, Benutzerkonten auf einem zentralen Server zu speichern und von jedem Client zu benutzen, der Zugriff hat.</LI><!--V1.11 end-->
+</ul>
+
+
+<!-- commented out in 11.3 <b>$I18N_helperApplications</b>
+
+<u>Hinweis</u>
+<b>$I18N_helperApplications</b> sind Programme die benötigt, aber nur bei Benutzung ausgeführt werden. Einige der Hilfsprogramme sind unbedingt für m23 nötig, andere sind "nett zu haben".
+
+<ul><LI><b>wget (unbedingt erforderlich)</b>: Wird zum Updaten der Serversoftware benötigt.</LI>
+<li><b>pwgen (nett)</b>: Erzeugt für die Massen-Installations-Clients Zufallspaßwörter, die man sich leichter merken kann. Wird pwgen nicht installiert, so können nur komplett zufällige Paßwörter generiert werden.</li>
+<li><b>Brennprogramme (nett)</b>: Dies sind verschiedene Programme, die dazu benötigt werden, um mit dem m23-Server Client-Boot-CDs zu brennen. Das Brennen ist dann sogar aus der m23-Administrationsoberfläche möglich.
+</ul>-->

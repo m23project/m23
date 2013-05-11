@@ -1,0 +1,53 @@
+$I18N_clientPartitioningAndFormating<!--new 10.4 -->
+Dans ce dialogue, vous pouvez partitionner et formater votre poste client m23, ainsi qu'administrer des partitions RAIDs. Après avoir effectué les changements, cliquez sur <i>&laquo;$I18N_finalisePartitioningAndselectClientDistribution&raquo;</i>.
+
+<b>Vue d'ensemble</b>
+Dans le menu de gauche, apparaissent les outils et fonctions pour la modification des disques durs et des partitions. Lorsque JavaScript est activé, déplacez la souris sur la fonction choisie pour déplier le menu. A droite, le partitionnement et le formatage actuels de tous les disques durs et RAIDs sont affichés. Sous <i>&laquo;$I18N_waitingPartitioningAndFormatingJobs&raquo;</i>, s'affiche la liste des tâches de partitionnement à accomplir sur le poste client pour parvenir à l'état affiché. A droite, se trouvent des informations plus détaillées concernant le lecteur actuellement positionné sous le pointeur de la souris (si JavaScript est activé, sinon, vous verrez les informations de tous les lecteurs).Dans la légende sous <i>&laquo;$I18N_supported_filesystems&raquo;</i>, sont affichés les types de système de fichiers pouvant être générés et administrés avec m23. 
+
+<u>Indication concernant l'annulation des actions</u>
+Vous pouvez annuler tout changement en parcourant l'historique passé de votre navigateur web (p.ex. en appuyant sur la touche <i>&laquo;Alt&raquo;</i> + <i>&laquo;flèche indiquant la gauche&raquo;</i> dans Firefox.
+
+<u>Indication concernant l'utilisation de JavaScript</u>
+L'activation de JavaScript est optionnelle. Lorsqu'il est activé, quelques fonctions additionnelles de comfort seront à votre disposition (p.ex. l'ouverture automatique de l'index du menu ou le marquage de la partition se trouvant sous le pointeur de la souris). Néanmoins, toutes les fonctions nécessaires sont aussi disponibles sans JavaScript.
+
+<h2>Index du menu dans la vue d'ensemble</h2>
+
+<b>$I18N_currentDriveAndPartition</b>
+Plusieurs opérations sont liées à une partition (p.ex. le formatage) ou à un disque dur (p.ex. établir une nouvelle partition). Ces fonctions correspondent au partitions respectives affichées sous <i>&laquo;$I18N_currentDriveAndPartition&raquo;</i> dans <i>&laquo;$I18N_currentDrive&raquo;</i> et <i>&laquo;$I18N_currentPartition&raquo;</i>. Vous pouvez afficher la composition d'un disque dur et de la partition en cliquant dessus.
+
+<b>$I18N_partitionScheme</b>
+Des schemas prédéfinis pour le partitionnement et le formatage du disque dur du poste client m23 peuvent être choisis ici. Confirmez votre choix en cliquant sur <i>&laquo;$I18N_executeScheme&raquo;</i>.
+<ul>
+	<li><b>$I18N_fdistTypeautomatic:</b> Pour le partitionnement automatique, toutes les données du premier disque dur seront effacées et deux nouvelles partitions seront créées, la première pour les données et le système d'exploitation et la seconde pour le swap.</li>
+</ul>
+
+<b>$I18N_deleteCurrentPartition</b>
+En cliquant sur <i>&laquo;$I18N_delete&raquo;</i>, vous effacez la partition actuelle (indiquée sous <i>&laquo;$I18N_currentPartition&raquo;</i>).
+
+<b>$I18N_add_new_partition</b>
+Vous pouvez créer une nouvelle partition dans l'espace non utilisé du disque dur. Sélectionnez le début et la fin de la nouvelle partition en cliquant sur la partie blanche (quand JavaScript est activé) ou entrez-les sous <i>&laquo;$I18N_start&raquo;</i> et <i>&laquo;$I18N_end&raquo;</i>. Vous pouvez également créer une partition ne prenant pas tout l'espace libre. Choisissez le type de partition sous <i>&laquo;$I18N_type&raquo;</i>, pour créer une partition primaire (primary), étendue (extended) ou logique (logical). Enfin, cliquez sur <i>&laquo;$I18N_add&raquo;</i>.
+
+<b>$I18N_formatPartition</b>
+En cliquant sur <i>&laquo;$I18N_format&raquo;</i>, vous formatez la partition actuellement sélectionnée après avoir choisi le type de système de fichiers sous <i>&laquo;$I18N_type&raquo;</i>.
+
+<b>"$I18N_raidDrives"</b>
+<!-- from RAID_add.hlp--><!-- V1.12 new-->Vous pouvez assembler des partitions ou des disques entiers sous forme d'un système RAID logiciel. m23 en accord avec le programme mdadm supportent respectivement les RAID de type 0, 1, 4, 5, 6 et 10, offrant respectivement des avantages et désavantages quant à la célérité d'écriture et la sécurité de panne. Nous vous conseillons vivement de consulter les informations supplémentaires sur la page wikipedia <a href="http://fr.wikipedia.org/wiki/RAID_(informatique)" target="_blank">http://fr.wikipedia.org/wiki/RAID_(informatique)</a>. Vous pouvez créer plusieurs systèmes RAID logiciels par poste client puis, les utiliser pour l'installation du système d'exploitation, la partition swap etc. Veuillez-bien lire, s'il vous plaît, les informations supplémentaires, si vous souhaitez installer le système d'exploitation sur un système RAID.
+
+<u>Création d'un système RAID étape par étape</u><br>
+
+<ol>
+<li><b>Créer un disque RAID:</b> Sélectionnez un disque dans la liste <i>&laquo;$I18N_raidDriveName&raquo;</i> puis, cliquez sur <i>&laquo;$I18N_createRAIDDrive&raquo;</i>. Ce disque sera un multi-lecteur virtuel.</li>
+<li><b>Ajouter des partitions et des disques:</b> Dans la case <i>&laquo;$I18N_addDrivesPartitionsToRaid&raquo;</i>, vous trouverez les fonctions nécessaires à l'assignation des partitions ou des disques à un système RAID. Choisissez le type du RAID et le disques RAID dans les listes correspondantes. Ensuite, vous pouvez assigner la partition ou le lecteur affiché dans la liste <i>&laquo;$I18N_realDrivePartition&raquo;</i> au système RAID par un clic sur <i>&laquo;$I18N_add&raquo;</i>. La table <i>&laquo;$I18N_assignedDrivesPartitions&raquo;</i>, affiche les lecteurs et partitions déjà assignés.</li>
+<li><b>Finaliser la création du système RAID:</b> Cliquez sur <i>&laquo;$I18N_extPartStep2FormartPart&raquo;</i> dans l'étape finale.</li>
+</ol>
+
+<u>Informations supplémentaires concernant les configurations RAID et les partitions</u>
+Les RAIDs logiciels seront accédés à travers <i>&laquo;multi device&raquo;</i> du noyau Linux. Ces disques RAID se comportent comme des partitions et ne peuvent donc pas être partitionnés. La récente fonctionnalité du RAID permettant le partitionnement des disques RAID n'est volontairement pas utilisée par m23, ceci afin de garantir la compatibilité avec des noyaux antérieurs.
+
+<!-- V1.12 begin -->helpInclude("os_on_RAID_hint.inc");<!-- V1.12 end --><!-- from RAID_add.hlp end-->
+
+<b>$I18N_installationAndSwapPartition</b>
+Pour l'installation du poste client m23, vous devez choisir une partition pour l'installation du système d'exploitation sous <i>&laquo;$I18N_installationPartition&raquo;</i> et une partition pour l'espace de swap sous <i>&laquo;$I18N_swapPartition&raquo;</i>, puis cliquez sur <i>&laquo;$I18N_select&raquo;</i>.
+
+<b>$I18N_defineMountpoints</b>
+<!-- from fdisk-extended3.hlp-->Si vous désirez des points de montage additionels, vous pouvez les définir sous <i>&laquo;$I18N_defineMountpoints&raquo;</i>. Entrez la partition, le point de montage et les paramètres requis au montage, puis cliquez sur <i>&laquo;$I18N_add&raquo;</i>. Ces informations correspondent à celles pouvant être trouvées dans le fichier <b>/etc/fstab</b> d'un système Linux. Vous pouvez voir les points de montage déjà définis dans la table sous le champs de saisie.<!-- from fdisk-extended3.hlp end--> Si vous désirez effacer un point de montage créé, cliquez sur <i>&laquo;$I18N_delete&raquo;</i> sur la ligne concernée.

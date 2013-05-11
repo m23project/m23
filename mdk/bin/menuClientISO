@@ -1,0 +1,123 @@
+#!/bin/sh
+
+if [ `whoami` != "root" ]
+then
+	echo "You MUST BE root here. Switch to root account and start again. Now press \"enter\" to leave."
+	read gaga
+	exit
+fi
+
+. /mdk/bin/kernelFunctions.inc
+. /mdk/bin/busyBoxFunctions.inc
+. /mdk/bin/archFunctions.inc
+. /mdk/bin/menuFunctions.inc
+. /mdk/bin/rfsFunctions.inc
+. /mdk/bin/editFunctions.inc
+
+	#stores the base root filesystem directory (without trailing architecture)
+	menuVarAdd rootFSDir /mdk/client/initrd/mnt
+	#where the initrd file should be build and the subdirectory to mount the initrd should be placed
+	menuVarAdd initrdBuildDir /mdk/client/initrd
+	#where the ISO file should be build
+	menuVarAdd ISOBuildDir /mdk/client/iso
+	#directory that stored additional files and directories that should be copied into the RFS
+	menuVarAdd rootFSExtraDir /mdk/client/extraRFS
+	#name of the prefix of the bootCD: $bootCDPrefix-$arch.iso (e.g. m23client-i386.iso)
+	menuVarAdd bootCDPrefix m23client
+
+	#kernelBranch is set in checkKernelBranch and stores the kernel main version (2.4 or 2.6)
+	#kernelDir is set in checkKernelDir and stores the directory under kernelStoreDir where the kernel code is extracted
+	#busyBoxDir is set in checkBusyBoxDir
+	#kernelType is set in menuSelectArch and getBuildArch
+
+. /tmp/menuVars
+
+busyBoxInfo="`getCompiledDirWithArch`/bin/busybox"
+busyBoxInfo=`find $busyBoxInfo -printf "%Cx %CT"`
+kernelInfo="`getKernelStoreDirWithArch`/bzImage"
+kernelInfo=`find $kernelInfo -printf "%Cx %CT"`
+RFSInfo=`getRootFSDownloadDirWithArch`
+RFSInfo=`find $RFSInfo -mindepth 0 -maxdepth 0 -type d -printf "%Cx %CT"`
+
+dialog --clear --backtitle "m23 Software Development Kit (MDK)" --title "m23 Client netBootImage + ISO builder" \
+        --menu "Build architecture: `getBuildArch`
+BusyBox compiled on $busyBoxInfo
+Kernel compiled on $kernelInfo
+RFS was downloaded on $RFSInfo
+" 16 75 6 \
+	"arch" "select architecture(s) for the bootimage"\
+	"RFSdownload" "download Debian packages for building the RFS "\
+	"kernel" "download and make kernel" \
+	"busybox" "download and make BusyBox" \
+	"build" "build new netBootImage (Etherboot/PXE) + ISO"\
+	"help" "help" 2> /tmp/bootImageOption
+choice=`cat /tmp/bootImageOption`
+rm /tmp/bootImageOption
+
+retval=$?
+case $retval in
+    1)
+       exit;;
+    255)
+       exit;;
+esac
+
+
+
+
+case $choice in
+	"arch")
+		menuSelectArch
+		/mdk/bin/menuClientISO
+		exit;;
+
+	"RFSdownload")
+		downloadExtractRFS
+
+		echo "Are there any error messages?"
+		echo "Press \"Return\" to go back to the menue..."
+		read maha
+
+		/mdk/bin/menuClientISO
+		exit;;
+
+	"busybox")
+		menuBusyBox
+		/mdk/bin/menuClientISO
+		exit;;
+
+	#build new netBootImage (Etherboot/PXE) + ISO
+	"build")
+		oldPath=`pwd`
+		createRFSImage
+		createRFSBins
+		createRFSCopyExtraFilesAndDirs
+		createRFSBinLinks
+		createRFSDevs
+		createRFSFinishInitrd
+		createRFSISO
+		createRFSISO m23shared.goos-habermann.de /m23/data+scripts/m23shared/bootMedia/
+		createRFSEtherboot
+		createRFSPXE
+		cd $oldPath
+
+		echo "Are there any error messages?"
+		echo "Press \"Return\" to go back to the menue..."
+		read maha
+
+		/mdk/bin/menuClientISO
+		exit;;
+
+	#download and make kernel
+	"kernel")
+		#menu to start after the kernelBuilder
+		menuVarAdd menuExecAfter /mdk/bin/menuClientISO
+		menuKernelBuilder
+		/mdk/bin/menuClientISO
+		exit;;
+
+	"help")
+		dialog --backtitle "m23 Software Development Kit (MDK)" --textbox help/menuClientISO.hlp 22 80
+		/mdk/bin/menuClientISO
+		exit;;
+esac

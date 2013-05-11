@@ -1,0 +1,11 @@
+
+cp /m23/etc/php.ini.debug /etc/php4/apache/php.ini
+/etc/init.d/apache restart
+
+if `/m23/bin/pscheck apache`
+then
+ echo "ok apache running"
+else
+ /etc/init.d/apache start
+fi
+

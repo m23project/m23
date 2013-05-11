@@ -1,0 +1,7 @@
+#!/bin/bash
+pass=$1
+clip=$2
+svip=$3
+user=$4
+
+/m23/bin/plink-no_ask -pw $pass -l $user $clip "wget http://$svip/work.php -O /tmp/work.php; echo \"$pass\" | sudo -S chmod 777 /tmp/work.php; echo \"$pass\" | sudo -S sh /tmp/work.php"

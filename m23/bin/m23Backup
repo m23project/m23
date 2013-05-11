@@ -1,0 +1,166 @@
+#!/bin/bash
+
+backupDir="/m23/root-only/serverBackups/"
+
+if [ -e /m23/root-only/serverBackup.conf ]
+then
+	. /m23/root-only/serverBackup.conf
+else
+	echo "/m23/root-only/serverBackup.conf NOT found!"
+	exit 1
+fi
+
+
+
+checkForDebconf()
+{
+	#Force installation of debconf
+	if [ ! -e /usr/bin/debconf-get-selections ]
+	then
+		export DEBIAN_FRONTEND=noninteractive
+		apt-get update
+		apt-get --force-yes -y install debconf-utils
+	fi
+}
+
+
+
+
+
+createBackupList()
+{
+	#Create the backup list
+	backupList="/tmp/m23Backup$$.list"
+	rm $backupList 2> /dev/null
+	
+	#Add symlinks in the tftp directory (these are the client dependend links to the Etherboot boot image)
+		find /m23/tftp/ -type l >> $backupList
+	
+	#Add complete PXE client settings
+		echo "/m23/tftp/pxelinux.cfg/" >> $backupList
+	
+	#Add the package status files of the clients
+		echo "/m23/var/cache/clients/" >> $backupList
+	
+	#Add the bills an other data of m23Shared
+		echo "/m23/var/m23shared/" >> $backupList
+	
+	#Add the http password
+		echo "/m23/etc/" >> $backupList
+	
+	#Add the logs (if any)
+		echo "/m23/log/" >> $backupList
+	
+	#Add the RAS tunnel settings
+		ls /m23/bin/m23RemoteAdministrationServiceOpenTunnel-* >> $backupList
+	
+	#Add config files of phpMyAdmin and phpldapadmin
+		echo "/m23/data+scripts/m23admin/phpMyAdmin/config.inc.php
+/m23/data+scripts/m23admin/phpldapadmin/config.php" >> $backupList
+
+	export backupList
+}
+
+
+
+
+
+backupPackages()
+{
+	echo -n "Storing information about installed packages..."
+		dpkg --get-selections | grep -v deinstall$ | tr -d [:blank:] | sed 's/install$//g' | awk -v ORS='' '{print($0" ")}' | bzip2 -9 -z -c > packages.bz2
+	echo " done"
+}
+
+
+
+
+
+backupDebconf()
+{
+	echo -n "Storing packages configuration..."
+	#Disable reconfiguration of the SSL and SSH keys to make the restored server use the same keys as the backupped server
+		debconf-get-selections | \
+		sed 's#m23\/configureSSL[\t ]*boolean[\t ]*true#m23\/configureSSL boolean false#g' | \
+		sed 's#m23\/configureSSH[\t ]*boolean[\t ]*true#m23\/configureSSH boolean false#g' | \
+		bzip2 -9 -z -c > debconf.bz2
+	echo " done"
+}
+
+
+
+
+
+backupDB()
+{
+	echo -n "Storing m23 and m23captured databases..."
+		dbuser=`grep "^user" /etc/mysql/debian.cnf | tr -d [:blank:] | cut -d'=' -f2 | head -1`
+		dbpass=`grep "^password" /etc/mysql/debian.cnf | tr -d [:blank:] | cut -d'=' -f2 | head -1`
+		mysqldump -u$dbuser -p$dbpass m23 | sed 's/ DEFAULT CHARSET=latin1//g'  | bzip2 -9 -z -c > m23.sql.bz2
+		mysqldump -u$dbuser -p$dbpass m23captured | sed 's/ DEFAULT CHARSET=latin1//g'  | bzip2 -9 -z -c > m23captured.sql.bz2
+	echo " done"
+}
+
+
+
+
+
+backupFiles()
+{
+	tarParam="cjp --same-owner -f"
+	echo -n "Storing m23 config files..."
+		echo -n ".svn" | tar $tarParam m23config.tar.bz2 -X- -T $backupList
+	echo " done"
+	
+	
+	echo -n "Storing /etc..."
+		tar $tarParam etc.tar.bz2 /etc/*
+	echo " done"
+}
+
+
+
+
+
+uploadBackup()
+{
+	#Check if the backup should be encrypted for upload
+	if [ $uploadServices != "-" ]
+	then
+		tar cfv "m23serverBackup-$backupName.tar" *
+		cat "m23serverBackup-$backupName.tar" | sudo -u $CONF_GPG_USER gpg --homedir $CONF_GPG_HOME --trust-model always --batch --no-tty --yes --digest-algo sha1 -e -r "$gpgKey" --no-use-agent > m23serverBackup-$backupName.tar.gpg
+		rm m23serverBackup-$backupName.tar
+	fi
+	
+	#Upload with the selected uploader
+	case $uploadServices in
+		share-online.biz)
+			/m23/bin/share-online.biz-uploader m23serverBackup-$backupName.tar.gpg
+		break;;
+
+		scp)
+			scp -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -C m23serverBackup-$backupName.tar.gpg $user@$scpServer:$scpStoreDirectory
+		break;;
+		
+	esac
+}
+
+
+
+
+
+
+checkForDebconf
+createBackupList
+
+backupName=`date +%F-%H-%M`
+mkdir -p $backupDir
+cd $backupDir
+mkdir -p "$backupName"
+cd "$backupName"
+
+backupPackages
+backupDebconf
+backupDB
+backupFiles
+uploadBackup

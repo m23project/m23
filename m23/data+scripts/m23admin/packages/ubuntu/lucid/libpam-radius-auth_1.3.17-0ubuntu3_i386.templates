@@ -1,0 +1,46 @@
+Template: libpam-radius-auth/fixperms
+Type: boolean
+Default: true
+Description: Fix erroneous file permissions
+ Older versions of libpam-radius-auth installed the
+ /etc/pam_radius_auth.conf file with incorrect permissions. Should these
+ permissions be corrected? (I strongly recommend doing this.)
+Description-cs.UTF-8: Opravit chybná oprávnění k souborům
+ Starší verze balíku libpam-radius-auth instalovala soubor /etc/pam_radius_auth.conf s chybnými právy. Mají se přístupová práva opravit? (Důrazně doporučeno.)
+Description-de.UTF-8: Korrigiere fehlerhafte Datei-Zugriffsrechte
+ Ältere Versionen von libpam-radius-auth installierten die Datei /etc/pam_radius_auth.conf mit inkorrekten Datei-Zugriffsrechten. Sollen diese Rechte korrigiert werden? (Es wird nachdrücklich dazu geraten.)
+Description-es.UTF-8: Corregir permisos erróneos de archivo
+ Las versiones anteriores de libpam-radius-auth, instalaban el fichero /etc/pam_radius_auth.conf con permisos erróneos. ¿Deben corregirse estos permisos? (Yo recomiendo encarecidamente hacer esto.)
+Description-fr.UTF-8: Faut-il corriger les autorisations ?
+ Les autorisations du fichier /etc/pam_radius_auth.conf, installé par une ancienne version de libpam-radius-auth, ne sont pas correctes. Veuillez confirmer si vous souhaitez qu'elles soient corrigées (ce choix est recommandé).
+Description-nl.UTF-8: Foute bestandspermissies herstellen
+ Vroegere versies van libpam-radius-auth installeerden het /etc/pam_radius_auth.conf-bestand met foutieve toegangsrechten. Moeten deze toegangsrechten gecorrigeerd worden? (Het is sterk aangeraden dit te doen.)
+Description-sv.UTF-8: Fixa felaktiga filrättigheter
+ Äldre versioner av libpam-radius-auth installerade filen /etc/pam_radius_auth.conf med felaktiga rättigheter. Ska dessa rättigheter korrigeras? (Jag rekommenderar starkt detta.)
+Description-vi.UTF-8: Sửa các quyền hạn tập tin không đúng
+ Phiên bản libpam-radius-auth cũ đã cài đặt tập tin «/etc/pam_radius_auth.conf» với quyền hạn không đúng. Bạn có muốn sửa những quyền hạn này không? (Khuyến khích mạnh.)
+
+Template: libpam-radius-auth/permnote
+Type: note
+Default: false
+Description: Possible information leak
+ An older version of libpam-radius-auth installed the
+ /etc/pam_radius_auth.conf file world-readable. This potentially allowed
+ unauthorized parties to read the radius shared secret, which could permit
+ various attacks against the radius authentication mechanism. The
+ permissions have been corrected, but you should consider changing your
+ radius shared secret.
+Description-cs.UTF-8: Možný únik informací
+ Starší verze balíku libpam-radius-auth instalovala soubor /etc/pam_radius_auth.conf tak, že byl čitelný pro všechny. Tím měl potenciální útočník přístup ke sdílenému tajemství, což otevírá bránu možností k útokům na autentizační mechanizmus systému radius. Oprávnění byla změněna, avšak nyní byste ještě měli změnit sdílené tajemství radiusu.
+Description-de.UTF-8: Mögliches Informationsleck
+ Eine ältere Version von libpam-radius-auth installierte die Datei /etc/pam_radius_auth.conf weltlesbar. Dies erlaubte möglicherweise nicht-autorisierten Personen das verteilte Geheimnis von Radius zu lesen, wodurch verschiedene Angriffe gegen den Authentisierungsmechanismus von Radius ermöglicht werden. Die Zugriffsrechte wurden korrigiert, aber Sie sollten überlegen, das verteilte Geheimnis von Radius zu ändern.
+Description-es.UTF-8: Es probable que exista agujero de seguridad en la información
+ La versión anterior de libpam-radius-auth instalaba el fichero /etc/pam_radius_auth.conf con permiso global de lectura. Esto, potencialmente, permite a usuarios no autorizados leer el secreto compartido radius, lo cual permite ataques contra el proceso de autentificación de radius. Los permisos han sido arreglados,  pero debería considerar cambiar su secreto compartido radius.
+Description-fr.UTF-8: Informations probablement manquantes
+ Le fichier /etc/pam_radius_auth.conf, installé par une ancienne version de libpam-radius-auth, était accessible à tous les utilisateurs. La lecture du mot de passe, même chiffré, rend possible des attaques envers le protocole d'authentification. Les autorisations ont été corrigées mais vous devriez changer le mot de passe.
+Description-nl.UTF-8: Mogelijk informatielek
+ Een vroegere versie van libpam-radius-auth installeerde het /etc/pam_radius_auth.conf-bestand als leesbaar voor de hele wereld. Dit kon onbevoegde partijen toelaten om het gedeelde radius-wachtwoord te lezen, wat verschillende aanvallen tegen het radius-authenticatiemechanisme kon uitlokken. De toegangsrechten zijn gecorrigeerd, maar u zou moeten overwegen om uw gedeelde radius-geheim te wijzigen.
+Description-sv.UTF-8: Möjligt informationsläckage
+ En äldre version av libpam-radius-auth installerade filen /etc/pam_radius_auth.conf läsbar för alla. Denna möjlighet tillåter otillåtna personer att läsa radius shared-secret som kunde ge olika attacker mot radius autentiseringsmekanism. Rättigheterna har nu korrigerats men du bör fundera på att ändra din radius shared-secret.
+Description-vi.UTF-8: Thông tin có thể lọt ra ngoài
+ Một phiên bản libpam-radius-auth cũ đã cài đặt tập tin «/etc/pam_radius_auth.conf» với quyền vô hạn, cho phẹp mọi người đọc. Như thế thì có thể cho phép người khác đọc bí mật dùng chung radius, mà có thể cho phép ta tấn công cơ chế xác thực radius. Đã sửa những quyền ấy, nhưng mà bạn nên thay đổi bí mật dùng chung (shared secret) radius của bạn.

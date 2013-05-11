@@ -1,0 +1,284 @@
+
+Template: nbd-server/number
+Type: string
+Default: 0
+Description: Number of nbd-server instances to run:
+ Multiple nbd-server processes may run to export multiple files or
+ block devices. Please specify how many configurations for such servers you
+ want to generate.
+ .
+ Note that you can always add extra servers by adding them to
+ /etc/nbd-server/config, or by running "dpkg-reconfigure nbd-server".
+Description-cs.UTF-8: Počet instancí nbd-serveru, které chcete spustit:
+ Můžete mít spuštěných více procesů nbd-server a exportovat tak více souborů nebo blokových zařízení. Zadejte, kolik konfigurací se má pro tyto servery vytvořit.
+ .
+ Další servery můžete přidat později přidáním do /etc/nbd-server/config, nebo spuštěním „dpkg-reconfigure nbd-server“.
+Description-de.UTF-8: Zahl der zu betreibenden nbd-Serverinstanzen:
+ Mehrere nbd-Server-Prozesse könnten zum Exportieren mehrerer Dateien oder Blockgeräte laufen. Bitte geben Sie an, wie viele Konfigurationen für solche Server Sie erzeugen möchten.
+ .
+ Beachten Sie, dass Sie immer zusätzliche Server hinzufügen können, indem Sie sie zu /etc/nbd-server/config hinzufügen oder indem Sie »dpkg-reconfigure nbd-server« ausführen.
+Description-fi.UTF-8: Ajettavien nbd-server-instanssien lukumäärä:
+ Useita tiedostoja tai lohkolaitteita voidaan laittaa saataville ajamalla useampia nbd-server-prosesseja. Valitse monenko palvelimen asetukset haluat luoda.
+ .
+ Voit lisätä palvelimia lisäämällä ne tiedostoon /etc/nbd-server/config tai ajamalla komennon ”dpkg-reconfigure nbd-server”.
+Description-fr.UTF-8: Nombre d'instance de nbd-server à exécuter :
+ Plusieurs instances de nbd-server peuvent être exécutées afin d'exporter plusieurs fichiers ou périphériques bloc. Veuillez indiquer le nombre d'instances de nbd-server qui doivent être configurées.
+ .
+ Veuillez noter que vous pouvez ajouter des serveurs supplémentaires en les ajoutant à /etc/nbd-server/config ou en utilisant la commande « dpkg-reconfigure nbd-server ».
+Description-nl.UTF-8: Aantal te draaien nbd-server instanties:
+ U kan verschillende nbd-server processen uitvoeren, om verschillende bestanden of blok-apparaten te exporteren. Gelieve op te geven hoeveel nbd-server configuraties u dit configuratiescript wilt laten genereren
+ .
+ Merk op dat u altijd extra servers kan toevoegen door ze aan het bestand /etc/nbd-server/config toe te voegen, of door 'dpkg-reconfigure nbd-server' uit te voeren.
+Description-pt.UTF-8: Número de instâncias do nbd-server a correr:
+ Podem correr vários processos nbd-server para exportar vários ficheiros ou dispositivos de bloco. Por favor especifique quantas configurações para tais servidores você quer gerar.
+ .
+ Note que você pode sempre adicionar servidores extra ao adicioná-los ao /etc/nbd-server/config, ou correndo "dpkg-reconfigure nbd-server".
+Description-ru.UTF-8: Число запускаемых экземпляров nbd-server:
+ С помощью нескольких процессов nbd-server можно экспортировать несколько файловых или блочных устройств. Укажите сколько настроек для таких серверов вы хотите создать.
+ .
+ Заметим, что вы всегда можете добавить дополнительные серверы, указав их в /etc/nbd-server/config или запустив "dpkg-reconfigure nbd-server".
+Description-sv.UTF-8: Antal instanser av nbd-server som ska köras:
+ Du kan köra flera nbd-server-processer för att kunna exportera flera filer eller blockenheter. Ange hur många nbd-server-inställningar du vill att denna inställningsprocedur ska skapa.
+ .
+ Du kan alltid skapa extra servrar genom att lägga till dem i /etc/nbd-server/config eller genom att köra "dpkg-reconfigure nbd-server".
+Description-vi.UTF-8: Số các thể hiện nbd-server cần chạy:
+ Nhiều tiến trình phục vụ nbd-server có thể chạy đồng thời để xuất nhiều tập tin hay nhiều thiết bị khối. Hãy ghi rõ bao nhiêu cấu hình cho các trình phục vụ như vậy bạn muốn tạo ra.
+ .
+ Ghi chú rằng bạn vẫn còn có thể thêm trình phục vụ bổ sung, bằng cách thêm mỗi trình phục vụ vào tập tin cấu hình « /etc/nbd-server/config », hoặc bằng cách chạy câu lệnh cấu hình lại « dpkg-reconfigure nbd-server ».
+
+Template: nbd-server/port
+Type: string
+Description: TCP Port for server number ${number}:
+ Please specify the TCP port this instance of nbd server will use for
+ listening. As NBD is likely to use more than one port, no dedicated
+ port has been assigned in IANA lists.
+ .
+ Therefore, NBD does not have a standard port number, which means you need
+ to provide one. You should make sure this port is not already in use.
+Description-cs.UTF-8: TCP port serveru číslo ${number}:
+ Zadejte TCP port, na kterém bude tato instance nbd-serveru naslouchat příchozím požadavkům. Protože je pravděpodobné, že bude NBD používat více než jeden port, nebyl mu v IANA registrech přiřazen specifický port.
+ .
+ NBD tedy nemá standardní číslo portu, což znamená, že nějaké musíte zadat. Ujistěte se, že zadané číslo portu již není využíváno jinou aplikací.
+Description-de.UTF-8: TCP-Port für Server Nummer ${number}:
+ Bitte geben Sie den TCP-Port an, den diese Instanz des nbd-Servers zum Warten auf Anfragen verwenden wird. Da NBD wahrscheinlich mehr als einen Port benutzt, wurde in den IANA-Listen kein bestimmter Port zugewiesen.
+ .
+ Deshalb hat NBD keinen festgelegten Port, daher müssen Sie einen eingeben. Sie sollten sicherstellen, dass dieser Port nicht bereits benutzt wird.
+Description-fi.UTF-8: Palvelimen numero ${number} TCP-portti:
+ Anna TCP-portti, jota tämä nbd-server kuuntelee. Koska NBD yleensä kuuntelee useampaa kuin yhtä porttia, sille ei ole varattu tiettyä porttia IANA-listoilta.
+ .
+ Tästä syystä NBD:llä ei ole standardia porttinumeroa ja sinun tulee valita numero. Varmista, ettei valittu portti ole jo käytössä.
+Description-fr.UTF-8: Port TCP du serveur numéro ${number} :
+ Veuillez indiquer le port TCP où cette instance du serveur NBD sera à l'écoute. Comme NBD utilise souvent plus d'un port, aucun numéro de port dédié n'a été réservé par l'IANA.
+ .
+ En conséquence, NBD n'utilise pas de port officiellement attribué et vous devez donc en indiquer un. Vous devriez vous assurer que ce port n'est pas actuellement utilisé.
+Description-nl.UTF-8: TCP poort voor de server (nummer: ${number})?
+ Gelieve de TCP poort op te geven waarnaar deze instantie van nbd-server zal luisteren. Vermits NBD gemakkelijk meer dan één poort gebruikt, werd geen poort toegewezen in de IANA-lijsten.
+ .
+ Daarom heeft NBD geen standaard poortnummer, wat betekent dat je er zelf één moet opgeven. Zorg er voor dat het poortnummer dat je opgeeft nog niet in gebruik is.
+Description-pt.UTF-8: Porto TCP para o servidor número ${number}:
+ Por favor indique o porto TCP que esta instância de servidor nbd irá usar para escuta. Como é provável que o NBD use mais do que um porto, nenhum porto dedicado foi atribuído nas listas IANA.
+ .
+ Portanto, o NBD não tem um número de porto standard, o que quer dizer que você vai ter que indicar um. Deve certificar que este porto não está já a ser usado.
+Description-ru.UTF-8: TCP порт для сервера номер ${number}:
+ Укажите порт TCP данного экземпляра сервера nbd для приёма запросов. Обычно NBD использует более одного порта, в таблицах IANA не было выделено какого-то определённого номера.
+ .
+ Поэтому, для NBD нет стандартного номера порта, который вам нужно ввести. Проверьте, что указываемый порт не занят.
+Description-sv.UTF-8: TCP-port för server ${number}:
+ Ange TCP-port som denna instans av nbd-servern ska använda för att lyssna. Eftersom NBD troligen kommer att använda mer än en port har ingen port blivit tilldelad i IANA:s listor.
+ .
+ Därför har NBD inget standardvärd för portnummer och du måste dämed ange ett. Säkerställ att du inte anger ett portnummer som redan används.
+Description-vi.UTF-8: Cổng TCP cho trình phục vụ số ${number}:
+ Hãy ghi rõ số thứ tự cổng TCP mà thể hiện nbd-server sẽ sử dụng để lắng nghe. Vì NBD rất có thể sử dụng nhiều cổng, không có cổng dành riêng được gán trong danh sách IANA.
+ .
+ Vì vậy, NBD không có một số thứ tự cổng tiêu chuẩn, nghĩa là bạn cần phải cung cấp nó. Cũng cần kiểm tra lại cổng này không đang được sử dụng.
+
+Template: nbd-server/filename
+Type: string
+Description: File to export (server number ${number}):
+ Please specify a file name or block device that should be exported
+ over the network. You can export a real block device (for instance
+ "/dev/hda1"); a normal file (such as "/export/nbd/bl1"); or a
+ bunch of files all at once. For the third option, you can
+ use "%s" in the filename, which will be expanded to the
+ IP-address of the connecting client. An example would be
+ "/export/swaps/swp%s".
+ .
+ Note that it is possible to tune the way in which the IP address will
+ be substituted in the file name. See "man 5 nbd-server" for details.
+Description-cs.UTF-8: Soubor, který se má exportovat (server číslo ${number}):
+ Zadejte jméno souboru nebo blokového zařízení, které chcete exportovat přes síť. Můžete exportovat buď skutečné blokové zařízení (např. „/dev/hda1“), běžný soubor (např. „/export/nbd/bl1“), nebo dokonce skupinu souborů najednou. U poslední možnosti můžete ve jméně souboru použít „%s“, což se expanduje na IP adresu připojujícího se klienta, například „/export/swaps/swp%s“.
+ .
+ Způsob, jakým bude v názvu souboru nahrazena IP adresa, se dá měnit. Více naleznete v manuálové stránce „man 5 nbd-server“.
+Description-de.UTF-8: Datei zum Exportieren (Server Nummer ${number}):
+ Bitte geben Sie einen Dateinamen oder ein Blockgerät an, das über das Netz exportiert werden soll. Sie können ein echtes Gerät (z.B. »/dev/hda1«), eine normale Datei (z.B. »/export/nbd/bl1«) oder aber eine Gruppe von Dateien auf einmal exportieren. Für die dritte Option können Sie »%s« im Dateinamen benutzen, damit der Name mit den IP-Adressen der sich verbindenden Clients aufgefüllt wird. Ein Beispiel ist »/export/swaps/swp%s«.
+ .
+ Beachten Sie, dass es möglich ist, die Art und Weise, wie die IP-Adressen in den Dateinamen eingebaut werden, zu beeinflussen. Lesen Sie »man 5 nbd-server« für weitere Details.
+Description-fi.UTF-8: Tiedosto, jonka palvelin numero ${number} tarjoaa käyttöön:
+ Anna tiedostonimi tai lohkolaite, jonka haluat laittaa saataville verkon yli. Voit jakaa todellisen lohkolaitteen (esimerkiksi ”/dev/hda1”), tavallisen tiedoston (kuten ”/export/nbd/bl1”) tai joukon tiedostoja kerralla. Kolmatta vaihtoehtoa varten voit käyttää tiedostonimessä merkkijonoa ”%s”, joka muutetaan yhteyden ottavan asiakkaan IP-osoitteeksi. Esimerkki tästä on ”/export/swaps/swp%s”.
+ .
+ Tapaa, jolla IP-osoite korvaa tiedostonimessä olevan merkkijonon voi muokata. Lisätietoja löytyy man-ohjesivulta nbd-server(5).
+Description-fr.UTF-8: Fichier à exporter (serveur numéro ${number}) :
+ Veuillez indiquer le nom d'un fichier ou d'un périphérique bloc que vous souhaitez exporter via le réseau. Vous pouvez exporter un véritable périphérique bloc (par exemple « /dev/hda1 »), un fichier normal (par exemple « /export/nbd/bl1 ») ou plusieurs fichiers à la fois. Dans ce dernier cas, vous pouvez utiliser « %s » dans le nom du fichier, cette valeur étant alors remplacée par l'adresse IP du client qui s'y connectera. Un exemple serait « /export/swap/swp%s ».
+ .
+ Veuillez noter qu'il est possible de régler la méthode de remplacement de l'adresse IP dans le nom de fichier. Veuillez consulter la page de manuel de nbd-server(5) pour plus d'informations.
+Description-nl.UTF-8: Te exporteren bestand (server nummer: ${number})?
+ Je moet hier een bestandnaam opgeven van een bestand of apparaatbestand welke je via het netwerk wilt exporteren. Je kunt ofwel een echt apparaatbestand exporteren (b.v. "/dev/hda1"), een normaal bestand exporteren (b.v. "/export/nbd/bl1"), of een hoop bestanden in één keer; voor de laatste optie kan je "%s" in de bestandnaam gebruiken, wat dan vervangen zal worden door het IP-adres van de client die probeert te connecteren. Een mogelijk voorbeeld is "/export/swaps/swp%s".
+ .
+ Merk op dat het mogelijk is om de wijze waarop het IP-adres vervangen wordt in de bestandnaam, aan te passen. Zie "man 5 nbd-server" voor details.
+Description-pt.UTF-8: Ficheiro a exportar (servidor número ${number}):
+ Por favor indique um nome de ficheiro ou dispositivo de bloco que deverá ser exportado pela rede. Você pode exportar um dispositivo de bloco real (por exemplo "/dev/hda1"), um ficheiro normal (tal como "/export/nbd/bl1"), ou exportar um leque de ficheiros duma vez. Para a terceira opção, você pode usar "%s" no nome de ficheiro, o qual será expandido ao endereço IP do cliente que se liga. Um exemplo seria "/export/swaps/swp%s".
+ .
+ Note que é possível afinar a maneira como o endereço IP será substituído no nome de ficheiro. Veja "man 5 nbd-server" para detalhes.
+Description-ru.UTF-8: Экспортируемый файл (сервер номер ${number}):
+ Укажите имя файла или блочного устройства, которое должно быть доступно по сети. Вы можете экспортировать реальное блочное устройство (например, "/dev/hda1"); обычный файл (например, "/export/nbd/bl1"); или несколько файлов сразу. В третьем варианте, вы можете использовать в имени файла "%s", которое будет преобразовано в IP-адрес подключающегося клиента. Пример: "/export/swaps/swp%s".
+ .
+ Заметим, что возможно подстроить каким образом IP-адрес будет подменяться именем файла. См. "man 5 nbd-server".
+Description-sv.UTF-8: Fil att exportera (server ${number}):
+ Du måste ange ett filnamn eller en blockenhet som du vill exportera över nätverket. Du kan exportera en verklig blockenhet (ex. "/dev/hda1"), en vanlig fil ("/export/nbd/bl1") eller en mängd filer på en gång. För den sistnämnda har du möjlighet att nyttja "%s" i filnamnet vilket i så fall ersätts med IP-adressen för klienten som ansluter, exempelvis "/export/swaps/swp%2".
+ .
+ Observera att det är möjligt att ställa in hur en IP-adress ska ersättas i filnamnet, läs vidare i "man 5 nbd-server".
+Description-vi.UTF-8: Tập tin cần xuất (trình phục vụ số ${number}):
+ Hãy ghi rõ một tên tập tin hay thiết bị khối nên được xuất qua mạng. Bạn có thể xuất một thiết bị khối thật (v.d. « /dev/hda1 »), một tập tin tiêu chuẩn (v.d. « export/nbd/bl1») hoặc một bó tập tin đồng thời. Đối với tuỳ chọn thứ ba này, cũng có thể sử dụng « %s » trong tên tập tin, mà được mở rộng thành địa chỉ IP của ứng dụng khách đang kết nối. Ví dụ « export/swaps/swp%s ».
+ .
+ Ghi chú rằng cũng có thể điều chỉnh phương pháp thay thế địa chỉ IP trong tên tập tin. Xem trang hướng dẫn « man 5 nbd-server » để tìm chi tiết.
+
+Template: nbd-server/autogen
+Type: error
+Description: AUTO_GEN is set to "n" in /etc/nbd-server
+ The /etc/nbd-server file contains a line that sets the AUTO_GEN variable
+ to "n". The file will therefore not be regenerated automatically.
+ .
+ Note that the current version of the nbd-server package no longer uses
+ /etc/nbd-server. Instead it uses a new configuration file, read by
+ nbd-server itself (rather than the init script), which supports more
+ options. See "man 5 nbd-server" for details.
+ .
+ If you remove or comment out the AUTO_GEN line, a file
+ /etc/nbd-server/config in the new format may be generated based on the
+ current configuration. Until then, the nbd-server installation will be
+ broken.
+Description-cs.UTF-8: Volba AUTO_GEN je v /etc/nbd-server nastavena na „n“
+ V souboru /etc/nbd-server se nachází řádek, který nastavuje proměnnou AUTO_GEN na hodnotu „n“. To znamená, že nechcete, aby se soubor obnovoval automaticky.
+ .
+ Aktuální verze balíku nbd-server již nepoužívá konfigurační soubor /etc/nbd-server, který byl načítán spouštěcím skriptem nbd. Nový konfigurační soubor je čten samotným nbd-serverem a umožňuje nastavit více voleb. Podrobnosti naleznete v manuálové stránce nbd-server(5).
+ .
+ Pokud odstraníte nebo zakomentujete řádek AUTO_GEN, vytvoří se nový soubor /etc/nbd-server/config na základě stávající konfigurace. Do té doby bude instalace nbd-serveru porušená.
+Description-de.UTF-8: AUTO_GEN wurde in /etc/nbd-server auf »n« gesetzt
+ Die Datei /etc/nbd-client enthält eine Zeile, in der die Variable AUTO_GEN auf »n« gesetzt wird. Die Datei wird daher nicht automatisch erneuert.
+ .
+ Beachten Sie, dass die aktuelle Version des Pakets nbd-server /etc/nbd-server nicht mehr benutzt. Stattdessen verwendet es eine neue Konfigurationsdatei, die vom nbd-Server selbst (statt vom Initskript) eingelesen wird, die mehr Optionen unterstützt. Lesen Sie »man 5 nbd-server« für weitere Details.
+ .
+ Falls Sie die AUTO_GEN-Zeile entfernen oder in einen Kommentar setzen, kann eine Datei /etc/nbd-server/config im neuen Format, basierend auf Ihrer aktuellen Konfiguration, erstellt werden. Bis dahin wird Ihre nbd-server-Installation defekt sein.
+Description-fi.UTF-8: Asetuksen AUTO_GEN arvo on ”n” tiedostossa /etc/nbd-server
+ Tiedostossa /etc/nbd-server on rivi, jolla muuttujalle AUTO_GEN asetetaan arvo ”n”. Tästä syystä tiedostoa ei luoda automaattisesti uudelleen.
+ .
+ Paketin nbd-server nykyinen versio ei enää käytä tiedostoa /etc/nbd-server. Sen sijaan se käyttää uutta useampia valitsimia tukevaa asetustiedostoa, jonka nbd-server lukee itse (init-komentosarjan sijaan). Lisätietoja löytyy man-ohjesivulta nbd-server(5).
+ .
+ Jos poistat tai laitat kommentteihin AUTO_GEN-rivin, tiedosto /etc/nbd-server/config voidaan luoda uudessa muodossa nykyisten asetusten pohjalta. Tätä ennen nbd-server-asennus ei toimi.
+Description-fr.UTF-8: Variable AUTO_GEN égale à « n » dans /etc/nbd-server
+ Le fichier /etc/nbd-server comporte une ligne qui définit la variable AUTO_GEN à « n ». Le fichier ne sera donc pas recréé automatiquement.
+ .
+ Veuillez noter que la version actuelle du paquet nbd-server n'utilise plus /etc/nbd-server. À la place, un fichier de configuration est lu par nbd-server lui-même : il gère plus d'options qui sont détaillées dans « man 5 ndb-server ».
+ .
+ Si vous supprimez ou commentez la ligne AUTO_GEN, un fichier /etc/nbd-server/config sera créé au nouveau format, à partir de la configuration actuelle. Tant que cette opération n'aura pas été effectuée, l'installation du serveur nbd ne sera pas opérationnelle.
+Description-nl.UTF-8: AUTO_GEN staat op "n" in /etc/nbd-server
+ Het bestand /etc/nbd-server bevat een lijn dat de AUTO_GEN variabele op "n" zet. Dit bestand zal daarom niet automatisch geregenereerd worden.
+ .
+ Merk op dat de huidige versie van het nbd-server pakket het bestand /etc/nbd-server niet langer ondersteunt. In de plaats daarvan gebruikt het een nieuwe stijl van configuratiebestand dat gelezen wordt door nbd-server zelf (in plaats van het init-script), en dat meer mogelijkheden heeft. Zie "man 5 nbd-server" voor details.
+ .
+ Als u de AUTO_GEN lijn verwijdert of uitcommentarieert, dan kan een bestand /etc/nbd-server/config gegenereerd worden gebaseerd op uw huidige configuratie. Tot dan zal uw nbd-server installatie niet werken.
+Description-pt.UTF-8: AUTO_GEN está definido para "n" em /etc/nbd-server
+ O ficheiro /etc/nbd-server contém uma linha que define a variável AUTO_GEN para "n". Por isto o ficheiro não será regenerado automaticamente.
+ .
+ Note que a actual versão do pacote nbd-server já não usa o /etc/nbd-server. Em vez disso usa um novo ficheiro de configuração, que é lido pelo próprio nbd-server (ao invés do script de iniciação), o qual suporta mais opções. Veja "man 5 nbd-server" para detalhes.
+ .
+ Se você remover ou comentar a linha AUTO_GEN, poderá ser gerado um ficheiro /etc/nbd-server/config no novo formato baseado na configuração actual. Até lá, a instalação do nbd-server não estará funcional.
+Description-ru.UTF-8: Значение переменной AUTO_GEN равно "n" в /etc/nbd-server
+ Файл /etc/nbd-server содержит строку, которая устанавливает переменную AUTO_GEN в значение "n". Из-за этого регенерация файла не будет выполнена автоматически.
+ .
+ Заметим, что в текущей версии пакета nbd-server больше не используется /etc/nbd-server. Вместо него используется новый файл настройки, который читается самим сервером nbd-server (а не сценарием начального запуска) и используется больше параметров. См. "man 5 nbd-server".
+ .
+ Если вы удалите или закомментируете строку AUTO_GEN, будет создан файл /etc/nbd-server/config в новом формате на основе имеющихся настроек. Пока этого не будет сделано настройка nbd-server будет нерабочей.
+Description-sv.UTF-8: AUTO_GEN är satt till  "n" i /etc/nbd-server
+ Filen /etc/nbd-server innehåller en rad som sätter variabeln AUTO_GEN till "n". På grund av detta kommer filen inte att återskapas automatiskt.
+ .
+ Aktuell version av nbd-server-paketet använder inte längre /etc/nbd-server utan använder istället en inställningsfil som nbd-server själv läser (istället för att iniskriptet ska läsa den). Denna fil kan innehålla fler inställningar. Läs mer i "man 5 nbd-server".
+ .
+ Om du tar bort eller kommenterar bort AUTO_GEN-raden kommer en /etc/nbd-server/config med det nya formatet att skapas baserad på dina nuvarande inställningar. Tills det är gjort kommer din nbd-server-installation att vara trasig.
+Description-vi.UTF-8: « AUTO_GEN » được đặt thành « n » trong « /etc/nbd-server »
+ Tập tin trình phục vụ « /etc/nbd-server » chứa một dòng mà đặt biến tự động tạo « AUTO_GEN » thành « n » (không). Tập tin này thì không được tự động tạo lại.
+ .
+ Ghi chú rằng phiên bản hiện thời của gói trình phục vụ nbd-server không còn sử dụng lại « etc/nbd-server ». Để thay thế, nó sử dụng một tập tin cấu hình mới, được đọc bởi nbd-server chính nó (hơn là văn lệnh khởi động) mà hỗ trợ nhiều tùy chọn hơn. Xem « man 5 nbd-server » để tìm chi tiết.
+ .
+ Nếu bạn gỡ bỏ hay hủy ghi chú dòng « AUTO_GEN », một tập tin « /etc/nbd-server/config » theo định dạng mới có thể được tạo ra dựa vào cấu hình hiện thời. Đến lúc đó, bản cài đặt trình phục vụ nbd-server bị hỏng.
+
+Template: nbd-server/convert
+Type: boolean
+Default: true
+Description: Convert old-style nbd-server configuration file?
+ A pre-2.9 nbd-server configuration file has been found on this system.
+ The current nbd-server package no longer supports this file and will
+ not work if it is kept as is.
+ .
+ If you choose this
+ option, the system will generate a new style configuration file based
+ upon the old-style configuration file, which will be removed. Otherwise,
+ configuration questions will be asked and the system will generate a new configuration file.
+ .
+ If a new-style configuration file already exists and you choose this
+ option, you will shortly see a "modified configuration file" prompt, as
+ usual.
+Description-cs.UTF-8: Převést starý konfigurační soubor nbd-serveru?
+ V systému byl nalezen konfigurační soubor nbd-serveru < 2..9. Současný balík nbd-server již tento soubor nepodporuje a pokud soubor nepřevedete na novější formát, nebude nbd-server fungovat.
+ .
+ Budete-li souhlasit, systém automaticky vytvoří nový konfigurační soubor založený na původním souboru a pak původní soubor smaže. V opačném případě bude nový konfigurační soubor vytvořen na základě několika otázek a vašich odpovědí.
+ .
+ Pokud již nový konfigurační soubor existuje a na tuto otázku povolíte kladně, zobrazí se klasická výzva „změněný konfigurační soubor“.
+Description-de.UTF-8: Im alten Format vorliegende nbd-server-Konfiguration konvertieren?
+ Eine nbd-server-Konfigurationsdatei vor 2.9 wurde auf diesem System gefunden. Das aktuelle nbd-server-Paket unterstützt diese Datei nicht länger und wird nicht funktionieren, wenn sie so beibehalten wird, wie sie ist.
+ .
+ Wenn Sie diese Option wählen, wird das System eine Konfiguration im neuen Stil erzeugen, die auf der Konfigurationsdatei im alten Stil basiert, welche entfernt wird. Andernfalls werden Konfigurationsfragen gestellt und das System erzeugt eine neue Konfigurationsdatei.
+ .
+ Falls bereits eine Konfigurationsdatei im neuen Format existiert und Sie diese Option wählen, wird in Kürze wie gewohnt die Abfrage »geänderte Konfigurationsdatei« erfolgen.
+Description-fi.UTF-8: Muunnetaanko nbd-serverin vanhan muotoinen asetustiedosto?
+ Järjestelmästä löytyi paketin nbd-server versiota 2.9 vanhempi asetustiedosto. Nykyinen nbd-server-paketti ei enää tue tätä tiedostoa, eikä toimi, jos tilanne säilytetään nykyisellään.
+ .
+ Jos valitset tämän vaihtoehdon, järjestelmään luodaan vanhan asetustiedoston pohjalta uusi asetustiedosto ja vanha poistetaan. Muussa tapauksessa uusi asetustiedosto luodaan myöhemmin esitettävien asetuskysymysten avulla.
+ .
+ Jos valitset tämän vaihtoehdon ja uuden muotoinen asetustiedosto on jo olemassa, näytetään asennusprosessin aikana normaali kysymys paikallisesti muokatusta asetustiedostosta.
+Description-fr.UTF-8: Faut-il convertir l'ancien fichier de configuration de nbd-server ?
+ Un fichier de configuration pour une version antérieure à 2.9 a été trouvé sur ce système. Le paquet nbd-server actuel ne peut plus gérer ce type de fichier et ne fonctionnera pas s'il n'est pas modifié.
+ .
+ Si vous choisissez cette option, un nouveau fichier de configuration sera créé à partir de l'ancien, qui sera supprimé. Dans le cas contraire, des questions de configuration seront posées et un nouveau fichier de configuration sera créé.
+ .
+ Si vous utilisez déjà un fichier de configuration au nouveau format et que vous choisissez cette option, vous verrez apparaître, brièvement, une notification pour « fichier de configuration modifié ».
+Description-nl.UTF-8: Het oude-stijl nbd-server configuratiebestand converteren?
+ Een configuratiebestand voor nbd-server van voor versie 2.9 werd op dit systeem gevonden. De huidige versie van het nbd-server pakket ondersteunt dit bestand niet meer en zal zonder wijzigingen niet werken.
+ .
+ Indien u deze optie accepteert, dan zal het systeem een nieuwe-stijl configuratiebestand aanmaken gebaseerd op het oude-stijl configuratiebestand, dat vervolgens verwijderd zal worden. In het andere geval zullen configuratievragen gesteld worden en zal het systeem een nieuw configuratiebestand genereren.
+ .
+ Als u reeds een nieuwe-stijl configuratiebestand hebt en u accepteert deze optie, dan zal u zodadelijk een "gewijzigd configuratiebestand"-prompt zien, zoals gewoonlijk.
+Description-pt.UTF-8: Converter o ficheiro de configuração nbd-server de estilo antigo?
+ Foi encontrado neste sistema um ficheiro de configuração anterior a 2.9 do servidor nbd. O pacote actual nbd-server já não suporta este ficheiro e não irá funcionar se este for mantido como está.
+ .
+ Se escolher esta opção, o sistema irá gerar um ficheiro de configuração no novo estilo baseando-se no ficheiro de configuração do estilo antigo, o qual será removido. De outro modo, serão feitas perguntas de configuração e o sistema irá gerar um novo ficheiro de configuração.
+ .
+ Se um ficheiro de configuração com novo estilo já existir e aceitar esta opção, você irá ver brevemente um aviso "modified configuration file", como é normal.
+Description-ru.UTF-8: Преобразовать файл настроек nbd-server из старого формата?
+ В системе найден файл настройки nbd-server версии pre-2.9. Данный пакет nbd-server больше не поддерживает этот файл и не будет работать, если он останется в системе.
+ .
+ Если вы ответите утвердительно, то будет создан файл настройки в новом формате на основе существующего файла в системе, который после этого будет удалён. Иначе, будут заданы вопросы по настройке и в системе будет создан новый файл настройки.
+ .
+ Если файл настройки в новом формате уже существует и вы ответите утвердительно, то вскоре вы увидите обычный диалог "изменяется файл настройки".
+Description-sv.UTF-8: Konvertera inställningar till den nya typen av isntällningsfil?
+ En konfigurationsfil från en äldre (före 2.9) nbd-server har upptäckts på systemet. Det aktuella paketet för nbd-server kan inte längre använda denna fil och kommer därmed inte fungera om den inte uppdateras.
+ .
+ Väljer du detta alternativ kommer systemet att skapa en konfigurationsfil av det nya formatet utifrån innehållet i den gamla konfigurationsfilen som sedan kommer att raderas. Alternativet är att låta systemet ställa frågor för att skapa en helt ny konfigurationsfil.
+ .
+ Om du redan har en inställningsfil i det nya formatet och du väljer detta alternativ kommer du snart att se en notis om "modifierad inställningsfil", precis som vanligt.
+Description-vi.UTF-8: Chuyển đổi tập tin cấu hình nbd-server kiểu cũ ?
+ Một tập tin cấu hình trình phục vụ nbd-server cũ hơn phiên bản 2.9 đã được tìm trên hệ thống này. Gói nbd-server hiện thời không còn hỗ trợ lại tập tin này thì sẽ không hoạt động được nếu trường hợp này không thay đổi.
+ .
+ Bật tùy chọn này thì hệ thống tạo một tập tin cấu hình kiểu mới dựa vào tập tin cấu hình cũ (mà bị gỡ bỏ). Không thì chương trình hỏi một số câu về cấu hình, sau đó hệ thống tạo một tập tin cấu hình mới.
+ .
+ Nếu một tập tin cấu hình kiểu mới đã tồn tại, và bạn bật tuỳ chọn này, chương trình sẽ hiển thị một dấu nhắc « tập tin cấu hình đã sửa đổi » như bình thường.

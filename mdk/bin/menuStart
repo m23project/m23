@@ -1,0 +1,71 @@
+#!/bin/sh
+
+cd /mdk/bin
+
+. /mdk/bin/menuFunctions.inc
+
+menuVarInit
+. /tmp/menuVars
+
+#	"update" "build m23/MDK updates"\
+startOption=`startOption 2>/dev/null` || startOption=/tmp/startOption$$
+dialog --clear --backtitle "m23 Software Development Kit (MDK)" --title "Main menu" --menu "Main menu" 13 75 6 \
+	"serverISO" "tools for generating, burning a server ISO" \
+	"clientISO" "netBootImage and ISO for client installation"\
+	"debs" "build special m23 Debian packages"\
+	"doc" "build documents"\
+	"help" "view the help file for this menu" \
+	"quit" "quit menu" 2> $startOption
+retval=$?
+case $retval in
+    1)
+       exit;;
+    255)
+       exit;;
+esac
+
+
+choice=`cat $startOption`
+
+rm $startOption
+
+#build iso
+if test $choice == "serverISO"
+then
+	echo "This menu entry MUST BE run as \"root\". If you are not root allready you have to enter your root password"
+	su -c /mdk/bin/menuServerISO
+	/mdk/bin/menuStart
+fi
+
+if test $choice == "clientISO"
+then
+	echo "This menu entry MUST BE run as \"root\". If you are not root allready you have to enter your root password"
+	su -c /mdk/bin/menuClientISO
+	/mdk/bin/menuStart
+fi
+
+if test $choice == "debs"
+then
+	echo "This menu entry MUST BE run as \"root\". If you are not root allready you have to enter your root password"
+	su -c /mdk/m23Debs/bin/menuDeb
+	read gaga
+	/mdk/bin/menuStart
+fi
+
+if test $choice == "doc"
+then
+	/mdk/bin/menuDoc
+	/mdk/bin/menuStart
+fi
+
+if test $choice == "update"
+then
+	/mdk/m23update/bin/menuUpdate
+	/mdk/bin/menuStart
+fi
+
+if test $choice == "help"
+then
+	dialog --backtitle "m23 Software Development Kit (MDK)" --textbox help/menuStart.hlp 22 80
+	/mdk/bin/menuStart
+fi

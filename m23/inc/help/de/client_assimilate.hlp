@@ -1,0 +1,18 @@
+$I18N_client_assimilation<!--new v1.10-->
+
+Sie können bestehende Debian-Systeme mit m23 administrieren, indem Sie sie integrieren und somit m23 bekannt machen. Für eine reibungslose Integration ist es erforderlich, daß der Client komplett hochgefahren und über das Netzwerk erreichbar ist. Nun werden nur noch drei Angaben benötigt:
+<ul><LI><b>$I18N_client_name</b>: Geben Sie hier einen Namen an, über den der Client im m23-Server verwaltet werden soll. Dieser Name muß nicht zwangsläufig mit dem Hostnamen des Clients identisch sein.</LI>
+<LI><b>$I18N_ip</b>: Dies ist die (ggf. temporäre) IP-Adresse des Clients.</LI>
+<!--begin v1.17--><LI><b>$I18N_UbuntuUserIfUbuntuSystem</b>: Geben Sie hier einen Benutzernamen an, der auf dem Rechner ein Konto besitzt und mit dem man sich per SSH einloggen kann. Außerdem muß dieser Benutzer mittels sudo und seinem Paßwort Befehle als root ausführen können. Dies wird nur bei Computern benötigt, auf denen Ubuntu installiert ist oder bei denen das Einloggen als root deaktiviert ist.</LI>
+<LI><b>$I18N_rootPasswordOrUbuntuUserPassword</b>: Das aktuelle Root-Paßwort des Clients bei Debian-Systemen oder das Paßwort eines Benutzers bei Ubuntu-Systemen. Sie können dieses Feld allerdings auch leer lassen, wenn Sie eine manuelle Integration vorziehen.</LI><!--end v1.17--></ul>
+Klicken Sie anschließend auf <i>"$I18N_assimilate"</i>. Die Integration läuft nun im Hintergrund.
+
+<u>Hinweis</u>
+Für eine automatische Integration wird auf der Clientseite ein laufender SSH-Dämon, der das Einloggen als "root" erlaubt, sowie das Programm "wget" und das Paket "coreutils" vorrausgesetzt. Weiterhin ist es erforderlich, daß Pakete aus dem Internet per APT installiert werden können.
+
+<u>Manuelle Integration</u>
+Sollte auf dem Client kein SSH-Dämon laufen, so ist es auch möglich, den Integrationsprozeß auf dem Client per Hand anzustoßen. Führen Sie dazu folgende Befehle als "root" in der Konsole des Clients aus (serverIP dabei durch die IP des m23-Servers ersetzen):
+<code>cd /tmp; wget http://&lt;serverIP&gt;/work.php -O work.php; sh work.php</code>
+
+<u>Hinweis für die Integration von Ubuntu-Systemen</u>
+Ubuntusysteme lassen sich normalerweise nur manuell integrieren, da bei der Standardinstallation <!--begin v1.17 das root-Konto deaktiviert und end v1.17--> kein laufender SSH-Dämon vorhanden ist. Starten Sie deshalb auf dem Ubuntu-Rechner eine Root-Konsole und beginnen Sie mit der manuellen Integration.

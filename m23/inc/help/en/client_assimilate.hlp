@@ -1,0 +1,18 @@
+$I18N_client_assimilation<!--new v1.10-->
+
+After the assimilation over this dialog you can administrate existing Debian systems with m23. The client must be started up completely and reachable over the network for smooth assimilation. Now you have to enter only three values:
+<ul><LI><b>$I18N_client_name</b>: This is the name the client should be known by the m23 server. It is advised, but not required to enter the hostname of the client.</LI>
+<LI><b>$I18N_ip</b>: This is the (temporary) IP address of the client</LI>
+<!--begin v1.17--><LI><b>$I18N_UbuntuUserIfUbuntuSystem</b>: Enter here a username that is known to the system and that is allowed to log in via SSH and execute commands via sudo as root with the same password. This is only needed on computers installed with Ubuntu or with disabled root logins.</LI>
+<LI><b>$I18N_rootPasswordOrUbuntuUserPassword</b>: This is the current root password of the client or the user password on Ubuntu systems. You can leave empty this field too if you prefer manual intergration.</LI><!--end v1.17--></ul>
+Click on <i>"$I18N_assimilate"</i> afterwards. The assimilation is done in the background.
+
+<u>Hint</u>
+For automatic assimilation a running SSH daemon that allows logging in as "root" is required on client side. The programm "wget" and the package "coreutils" have to be installed too. And at last it is required that packages can be installed via APT and downloaded from the internet.
+
+<u>Manual assimilation</u>
+You can start the assimilation by hand if there is no SSH daemon running on the client. Execute the following commands as root in a console on the client (replace "serverIP" with the IP of your m23 server):
+<code>cd /tmp; wget http://&lt;serverIP&gt;/work.php -O work.php; sh work.php</code>
+
+<u>Hint for the assimilation of an Ubuntu system</u>
+Ubuntu systems can be assimilated normally with "manual assimilation" only, because there is no running SSH daemon <!--begin v1.17 and the root login is deactivatedend v1.17-->. Please start a root console on the Ubuntu system and continue with the hint "Manual assimilation".

@@ -1,0 +1,162 @@
+Template: tftpd-hpa/username
+Type: string
+Default: tftp
+Description: Dedicated system account for the tftpd-hpa TFTP daemon:
+ The TFTP server must use a dedicated account for its operation so that
+ the system's security is not compromised by running it with superuser
+ privileges.
+ .
+ Please choose that account's username.
+Description-cs.UTF-8: Vyhrazený systémový účet, pod kterým bude běžet TFTP démon tftpd-hpa:
+ Pokud by byl TFTP server spuštěn se superuživatelskými oprávněními, mohlo by dojít ke kompromitaci zabezpečení systému. Proto musí TFTP server pro svoji činnost používat vyhrazený neprivilegovaný účet.
+ .
+ Zvolte prosím název totoho účtu.
+Description-de.UTF-8: Eigenes Systemkonto für den tftpd-hpa TFTP-Daemon:
+ Der TFTP-Server muss ein eigenes Konto für den Betrieb verwenden, um die Sicherheit des Systems nicht durch das Betreiben mit Superuser-Rechten zu kompromittieren.
+ .
+ Bitte wählen Sie den Benutzernamen dieses Kontos.
+Description-es.UTF-8: Cuenta del sistema dedicada para el demonio de TFTP tftpd-hpa:
+ El servidor de TFTP debe utilizar una cuenta dedicada para su funcionamiento, de tal modo que la seguridad del sistema no se vea comprometida por su utilización con privilegios de administración.
+ .
+ Elija un nombre de usuario para esa cuenta.
+Description-fi.UTF-8: Dedikoitu järjestelmätunnus vsfptd:n TFTP-taustaohjelman ajamiseen:
+ TFTP-palvelimen tulee käyttää dedikoitua tunnusta toiminnoissaan, jotta järjestelmän turvallisuus ei vaarannu kuten käytettäessä pääkäyttäjäoikeuksia.
+ .
+ Valitse kyseisen tunnuksen nimi.
+Description-fr.UTF-8: Identifiant dédié pour le démon TFTP tftpd-hpa :
+ Afin de ne pas compromettre la sécurité du système, le serveur TFTP doit être exécuté avec un identifiant spécifique, différent du superutilisateur.
+ .
+ Veuillez choisir cet identifiant.
+Description-gl.UTF-8: Conta de usuario do sistema adicada ao daemon TFTP tftpd-hpa:
+ O servidor TFTP debe empregar unha conta adicada a el para que a seguridade do sistema non se poña en perigo ao executalo con privilexios de administrador.
+ .
+ Escolla o nome de usuario desa conta.
+Description-it.UTF-8: Account di sistema dedicato per il demone TFTP di tftpd-hpa:
+ Il server TFTP deve utilizzare un account dedicato per eseguire le proprie operazioni, in modo che la sicurezza del sistema non rischi di essere compromessa eseguendolo con privilegi di superutente.
+ .
+ Scegliere il nome utente di tale account.
+Description-ja.UTF-8: tftpd-hpa TFTP デーモン専用のシステムアカウント:
+ TFTP サーバはその動作について専用のアカウントを使うようになっているため、管理者特権で動作していてもシステムのセキュリティは侵害されません。
+ .
+ アカウントのユーザ名を選んでください。
+Description-pt.UTF-8: Conta dedicada do sistema para o daemon TFTP tftpd-hpa:
+ O servidor TFTP tem que usar uma conta dedicada para as suas operações, isto para que a segurança do sistema não seja comprometida ao corrê-lo com privilégios de super-utilizador.
+ .
+ Por favor escolha o nome de utilizador dessa conta.
+Description-ru.UTF-8: Специально выделенная системная учётная запись для TFTP службы tftpd-hpa:
+ Для улучшения безопасности системы TFTP сервер должен использовать специально выделенную учётную запись, а не запускаться с правами суперпользователя.
+ .
+ Укажите имя такой учётной записи.
+Description-sv.UTF-8: Dedikerat systemkonto för ftp-tjänsten tftpd-hpa:
+ TFTP-servern måste ha ett dedikerat konto för att fungera på ett säkert sätt, att använda privilegier från en superanvändare är inte säkert.
+ .
+ Ange kontots användarnamn.
+Description-zh_CN.UTF-8: 指定操作 tftpd-hpa TFTP 守护进程的专用系统帐户：
+ TFTP 服务器必须使用一个专用的账户来进行操作，这样就不会因为使用超级用户权限运行而破坏系统的安全。
+ .
+ 请选择账户的用户名。
+
+Template: tftpd-hpa/directory
+Type: string
+Default: /var/lib/tftpboot
+Description: TFTP root directory:
+ Please specify the directory that will be used as root for the
+ TFTP server.
+Description-cs.UTF-8: Kořenový adresář TFTP:
+ Zadejte prosím adresář, ve kterém bude umístěn kořen TFTP serveru:
+Description-de.UTF-8: TFTP-Wurzelverzeichnis:
+ Bitte geben Sie das Verzeichnis an, welches als Wurzelverzeichnis für den TFTP-Server verwendet werden soll.
+Description-es.UTF-8: Directorio raíz del servidor de TFTP:
+ Especifique el directorio que se utilizará como directorio raíz para el servidor de TFTP.
+Description-fi.UTF-8: TFTP-juurihakemisto:
+ Anna hakemisto, jota käytetään TFTP-palvelimen juurena.
+Description-fr.UTF-8: Répertoire racine TFTP :
+ Veuillez choisir le répertoire racine qui sera utilisé par le serveur TFTP.
+Description-gl.UTF-8: Directorio raíz do TFTP:
+ Especifique o directorio que se empregará como raíz polo servidor TFTP.
+Description-it.UTF-8: Directory radice TFTP:
+ Specificare la directory che verrà utilizzata come radice per il server TFTP.
+Description-ja.UTF-8: TFTP の root ディレクトリ:
+ TFTP サーバの root ディレクトリとして利用するディレクトリを指定してください。
+Description-pt.UTF-8: Directório raiz TFTP:
+ Por favor especifique o directório que será usado como a raiz do servidor TFTP.
+Description-ru.UTF-8: Корневой каталог TFTP:
+ Укажите каталог, который будет использован в качестве корневого каталога TFTP сервера.
+Description-sv.UTF-8: Rot-katalog för TFTP:
+ Ange katalog som ska agera rot-nivå för ftp-servern.
+Description-zh_CN.UTF-8: TFTP 根目录：
+ 请指定用作 TFTP 服务器根目录的目录。
+
+Template: tftpd-hpa/address
+Type: string
+Default: 0.0.0.0:69
+Description: TFTP server address and port
+ Please specify an address and port to listen to in the form of
+ [address][:port].
+ .
+ By default, the TFTP server listens to port 69 on all addresses and all
+ interfaces (0.0.0.0:69). If no port is specified, it defaults to 69.
+ .
+ Please note that numeric IPv6 addresses must be enclosed in square brackets
+ to avoid ambiguity with the optional port information.
+Description-de.UTF-8: TFTP-Serveradresse und -Port
+ Bitte geben Sie eine Adresse und einen Port in der Form [Adresse][:Port] an, an dem auf Anfragen gewartet werden soll.
+ .
+ Standardmässig wartet der TFTP-Server auf Port 69 auf allen Adressen und allen Schnittstellen (0.0.0.0:69). Ohne Port-Angabe wird die Vorgabe 69 verwendet.
+ .
+ Bitte beachten Sie, dass numerische IPv6-Adressen in eckige Klammern eingeschlossen werden müssen, um Zweideutigkeiten mit der Port-Information zu vermeiden.
+Description-fr.UTF-8: Adresse et port du serveur TFTP :
+ Veuillez indiquer une adresse et un port d'écoute sous la forme [adresse][:port].
+ .
+ Le serveur TFTP écoute par défaut sur le port 69 pour toutes les adresses et toutes les interfaces (0.0.0.0:69). Si aucun port n'est indiqué, le port par défaut sera le port 69.
+ .
+ Veuillez noter que pour ne pas être confondues avec des numéros de ports, d'éventuelles adresses IPv6 doit être entourées de crochets.
+Description-pt.UTF-8: Endereço e porto do servidor TFTP
+ Por favor especifique um endereço e porto a escutar no formato de [endereço][:porto].
+ .
+ Por predefinição, o servidor TFTP escuta no porto 69 em todos os endereços e todas as interfaces (0.0.0.0:69). Se nenhum porto for especificado, será usado o 69.
+ .
+ Por favor note que endereços IPv6 numéricos tem que estar dentro de parênteses rectos para evitar a ambiguidade com a informação de porto opcional.
+Description-ru.UTF-8: Адрес и порт сервера TFTP:
+ Укажите прослушиваемый адрес и порт в виде [адрес][:порт].
+ .
+ По умолчанию, сервер TFTP прослушивает порт 69 на всех адресах и интерфейсах (0.0.0.0:69). Если порт не указан, то по умолчанию используется 69.
+ .
+ Заметим, что числовые адреса IPv6 нужно заключать в квадратные скобки, чтобы избежать неоднозначности с указанием номера порта.
+Description-sv.UTF-8: Adress och port till TFTP-server
+ Ange en adress och en port att lyssnar på, använd formen [adress][:port].
+ .
+ Standardvärdet är att TFTP-servern lyssnar på port 69 på alla adress och alla gränssnitt (0.0.0.0:69). Om ingen port anges kommer standardporten 69 att användas.
+ .
+ Observera att numeriska IPv6-adresser måste omges av hakparanteser för att undvika att tolkas som ett portnummer.
+
+Template: tftpd-hpa/options
+Type: string
+Default: --secure
+Description: TFTP server additional options
+ Additional options can be passed to the TFTP server with this mechanism,
+ please consult the tftpd(8) manpage for more information about available
+ options.
+ .
+ Options other than the recommended '--secure' are rarely needed and only
+ for special situations. If unsure, leave it at the recommended default value.
+Description-de.UTF-8: Zusätzliche TFTP-Server Optionen
+ Dem TFTP-Server kann mit diesem Mechanismus zusätzliche Optionen übergeben werden. Bitte lesen Sie die Handbuchseite tftpd(8) für weitere Informationen über verfügbare Optionen.
+ .
+ Andere als die empfohlene Option "--secure" werden selten und nur für besondere Situationen benötigt. Falls Sie sich unsicher sind, belassen Sie den Vorgabewert.
+Description-fr.UTF-8: Options supplémentaires pour le serveur TFTP :
+ Des options supplémentaires peuvent être utilisées avec le serveur TFTP. Veuillez consulter la page de manuel tftp(8) pour davantage d'informations sur les options disponibles.
+ .
+ À part l'option « --secure » qui est recommandée, les autres sont rarement nécessaires et ne sont utilisées que pour des situations très spéciales. Dans le doute, vous devriez laisser les valeurs par défaut.
+Description-pt.UTF-8: Opções adicionais do servidor TFTP
+ Pode ser passadas opções adicionais ao servidor TFTP com este mecanismo, por favor consulte a manpage tftpd(8) para mais informação sobre opções disponíveis.
+ .
+ Opções além da recomendada '--secure' são raramente necessárias e apenas para situações especiais. Em caso de dúvidas, deixe no valor predefinido e recomendado.
+Description-ru.UTF-8: Дополнительные параметры сервера TFTP:
+ Серверу TFTP можно передать дополнительные параметры; возможные параметры описаны в справочной странице tftpd(8).
+ .
+ Кроме рекомендуемого параметра '--secure' все остальные используются редко и в определённых ситуациях. Если не уверены, оставьте рекомендуемое значение по умолчанию.
+Description-sv.UTF-8: Ytterligare inställningar för TFTP-server
+ Med detta val kan ytterligare inställningar skickas till TFTP-servern. Läs i manualsidan tftpd(8) om vilka inställningar som kan göras.
+ .
+ Särskilda inställningar utöver den rekomenderade "--secure" används nästan aldrig och kräver vanligen mycket speciella omständigheter. Använd de rekomenderade inställningarna om du är osäker.

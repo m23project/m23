@@ -1,0 +1,192 @@
+
+Template: chkrootkit/run_daily
+Type: boolean
+Default: false
+Description: Should chkrootkit be run automatically every day?
+ The chkrootkit program can be run automatically via a daily cron job. If you
+ choose this option, you'll also be given the opportunity to
+ specify options for the daily run.
+Description-cs.UTF-8: Má se chkrootkit spouštět automaticky každý den?
+ chkrootkit se může spouštět automaticky každý den jako cronová úloha. Pokud zde odpovíte kladně, budete moci zadat parametry, se kterými se má chkrootkit spouštět.
+Description-de.UTF-8: Soll Chkrootkit täglich automatisch ausgeführt werden?
+ Chkrootkit kann täglich automatisch über einen Cron-Auftrag laufen. Falls Sie diese Option wählen, dann können Sie weitere Optionen für die tägliche Ausführung angeben.
+Description-es.UTF-8: ¿Desea que chkrootkit se ejecute cada día automáticamente?
+ Si desea, chkrootkit se puede ejecutar automáticamente mediante una tarea diaria de cron. Si escoge esta opción, también tendrá la oportunidad de especificar las opciones de la ejecución diaria.
+Description-eu.UTF-8: Chkrootkit egunero automatikoki abiarazi behar al da?
+ Chkrootkit programa automatikoki abiarazi daiteke cron lan baten bidez. Aukera hautatzen baduzu, eguneroko abiorako argumentu gehigarriak ezartzeko aukera izango duzu.
+Description-fi.UTF-8: Tulisiko chkrootkit ajaa automaattisesti joka päivä?
+ Ohjelma chkrootkit voidaan ajaa automaattisesti päivittäisenä cron-työnä. Jos valitset tämän vaihtoehdon, voit määrittää päivittäisen ajon valitsimet.
+Description-fr.UTF-8: Faut-il lancer chkrootkit automatiquement chaque jour ?
+ Chkrootkit peut être lancé automatiquement par l'intermédiaire d'une tâche quotidienne de cron. Si vous choisissez cette option, vous pourrez alors préciser les réglages qui seront utilisés lors de cette exécution quotidienne.
+Description-gl.UTF-8: ¿Quere executar chkrootkit automaticamente cada día?
+ Pódese executar o programa chkrootkit automaticamente mediante unha tarefa diaria de cron. Se escolle esta opción, tamén se lle ha dar a oportunidade de especificar opcións para a execución diaria.
+Description-it.UTF-8: Eseguire automaticamente chkrootkit tutti i giorni?
+ Il programma chkrootkit può essere eseguito automaticamente tramite un job quotidiano di cron. Se si accetta, verrà data l'opportunità di specificare le opzioni per l'esecuzione giornaliera.
+Description-ja.UTF-8: 毎日自動的に chkrootkit を実行しますか?
+ chkrootkit プログラムを cron.dairy 経由で自動的に実行できます。このオプションを選んだ場合、毎日実行する際のオプションも指定できます。
+Description-nb.UTF-8: Skal chkrootkit kjøres automatisk hver dag?
+ Programmet chkrootkit kan kjøres automatisk som en daglig cron-jobb. Hvis du velger denne, så får du også mulighet til å oppgi valg for den daglige kjøringen.
+Description-no.UTF-8: Skal chkrootkit kjøres automatisk hver dag?
+ Programmet chkrootkit kan kjøres automatisk som en daglig cron-jobb. Hvis du velger denne, så får du også mulighet til å oppgi valg for den daglige kjøringen.
+Description-pt.UTF-8: Deseja correr o chkrootkit automaticamente todos os dias?
+ O programa chkrootkit pode ser corrido automaticamente através de um trabalho diário no cron. Se escolher esta opção, ser-lhe-á dada a oportunidade de especificar as opções para o arranque diário.
+Description-ru.UTF-8: Запускать chkrootkit автоматически каждый день?
+ Программа chkrootkit может запускаться автоматически как ежедневное задание cron. Если вы ответите утвердительно, то также сможете указать параметры для ежедневного запуска.
+Description-sv.UTF-8: Vill du köra chkrootkit automatiskt varje dag?
+ chkrootkit kan köras automatiskt via ett cron.daily-skript om du vill.  Om du svarar ja på denna fråga kommer du även att få chansen att specificera inställningar för den dagliga körningen.
+Description-vi.UTF-8: Có nên tự động chạy chrootkit hàng ngày không?
+ Chương trình chrootkit có khả năng được tự động chạy thông qua một công việc định thời (cron) hàng ngày. Bật tùy chọn này thì bạn cũng có dịp ghi rõ các tùy chọn cho tiến trình chạy hàng ngày.
+
+Template: chkrootkit/run_daily_opts
+Type: string
+Default: -q
+Description: Arguments to use with chkrootkit in the daily run:
+ The following are useful arguments to pass to chkrookit:
+  -r <root>: use an alternate root directory;
+  -n       : do not attempt to analyze NFS-mounted files;
+  -q       : run in quiet mode [highly recommended].
+Description-cs.UTF-8: Parametry, které se mají použít při každodenním spouštění:
+ chkrootkitu můžete předat následující užitečné parametry:
+  -r <kořen> použije alternativní kořenový adresář
+  -n nebude analyzovat soubory připojené přes NFS
+  -q spustí se v tichém režimu [doporučeno].
+Description-de.UTF-8: Argumente, die beim täglichen Lauf von Chkrootkit verwandt werden sollen:
+ Die folgenden Argumente können an Chkrootkit übergeben werden:
+  -r <Wurzel>: verwende ein anderes Wurzelverzeichnis
+  -n         : schließe via NFS eingehängte Verzeichnisse aus
+  -q         : »stiller« Modus [sehr empfohlen]
+Description-es.UTF-8: Argumentos que usará chkrootkit en la ejecución diaria:
+ Argumentos útiles para pasarle a chkrootkit:
+ -r <raíz> : especifica un directorio raíz alternativo.
+ -n       : no intenta analizar archivos montados a través de nfs.
+ -q       : ejecución en modo silencioso (altamente recomendado).
+Description-eu.UTF-8: Eguneroko abioan chkrootkit-ekin erabiltzeko argumentuak:
+ Hurrengo aukerak erabilgarriak dira chkrootkit-ekin erabiltzeko:
+  -r <root>: erabili aukerako beste erroa direktorio bat;
+  -n       : Ez saiatu NFS bidez muntaturiko fitxategiak arakatzen;
+  -q       : Isiltasun moduan abiarazi [oso gomendagarria].
+Description-fi.UTF-8: Päivittäisen chkrootkitin ajon argumentit:
+ Seuraavat chkrootkitin valitsimet ovat hyödyllisiä:
+  -r <juuri>: käytä toista juurihakemistoa
+  -n:         älä tutki NFS-liitettyjä tiedostoja
+  -q:         aja hiljaisessa tilassa (erittäin suositeltavaa)
+Description-fr.UTF-8: Paramètres à utiliser lors de l'exécution journalière de chkrootkit :
+ Les options suivantes peuvent être utilement passées à chkrootkit :
+  -r <racine> : répertoire racine à utiliser ;
+  -n          : pas d'analyse des fichiers sur les montages NFS ;
+  -q          : exécution en mode silencieux [hautement recommandé].
+Description-gl.UTF-8: Argumentos a empregar con chkrootkit na execución diaria:
+ Estes son algúns argumentos útiles para lle pasar a chkrootkit:
+  -r <raíz>: emprega un directorio raíz alternativo;
+  -n       : non tenta analizar ficheiros montados por NFS;
+  -q       : executa en modo silencioso [recoméndase].
+Description-it.UTF-8: Argomenti da usare con l'esecuzione giornaliera di chkrootkit:
+ I seguenti sono argomenti utili da passare a chkrootkit:
+  -r <root>: usa una directory root alternativa;
+  -n       : non analizza i file montati tramite NFS;
+  -q       : esecuzione in modalità silenziosa [raccomandata].
+Description-ja.UTF-8: 日次で実行される際に chkrootkit で使われる引数
+ 以下が chkrootkit に与えられる有用な引数です:
+  -r <root>: 別のディレクトリを root ディレクトリとして指定します
+  -n       : nfs マウントされたファイルは分析しようとしません
+  -q       : 静粛モードで動作します [非常にお勧め]
+Description-nb.UTF-8: Argumenter som skal brukes med chkrootkit i den daglige kjøringen:
+ Føglende er nyttige argumenter til chkrookit:
+  -r <root>: bruk en annen rotmappe;
+  -n       : ikke forsøk å analysere NFS-monterte filer;
+  -q       : kjør på stille måte [anbefales sterkt].
+Description-no.UTF-8: Argumenter som skal brukes med chkrootkit i den daglige kjøringen:
+ Føglende er nyttige argumenter til chkrookit:
+  -r <root>: bruk en annen rotmappe;
+  -n       : ikke forsøk å analysere NFS-monterte filer;
+  -q       : kjør på stille måte [anbefales sterkt].
+Description-pt.UTF-8: Argumentos a passar ao chkrootkit na execução diária:
+ A seguir estão argumentos úteis que pode passar ao chkrootkit:
+  -r <root>: especificar um directório raiz alternativo;
+  -n       : não tentar analizar os ficheiros montados em NFS;
+  -q       : correr no modo silencioso [altamente recomendado].
+Description-ru.UTF-8: Параметры для ежедневного запуска chkrootkit:
+ Полезные параметры chkrookit:
+  -r <каталог>: использовать другой корневой каталог
+  -n          : не обрабатывать файлы на смонтированных разделах NFS
+  -q          : не выводить сообщения при работе (настоятельно рекомендуется)
+Description-sv.UTF-8: Använd dessa argument när chkrootkit dagligen körs automatiskt:
+ Följande argument är användbara för att skicka till chkrootkit:
+ -r <rot>: specificera en alternativ rotmapp
+ -n       : försök inte att analysera NFS-monterade filer
+ -q       : kör i tyst läge [mycket rekommenderat]
+Description-vi.UTF-8: Các đối số cần dùng với chrootkit khi chạy hàng ngày:
+ Các đối số sau có ích khi được gửi cho chkrookit:
+  -r <root>: dùng một thư mục gốc xen kẽ
+  -n       : đừng thử phân tích tập tin được NFS lắp;
+  -q       : chạy ở chế độ im (rất khuyến khích).
+
+Template: chkrootkit/diff_mode
+Type: boolean
+Default: false
+Description: Only report problems if they differ from previous day's problems?
+ If you choose this option, chkrootkit will
+ only report problems when they differ from the previous day's run.
+ .
+ Using this option is not recommended as it is likely to hide existing
+ security problems.
+Description-cs.UTF-8: Hlásit problémy pouze pokud se liší od těch minulých?
+ Vyberete-li tuto možnost, bude chkrootkit hlásit problémy pouze tehdy, pokud se liší od těch z předchozího dne.
+ .
+ Tato možnost se příliš nedoporučuje, protože může skrývat stávající bezpečnostní problémy.
+Description-de.UTF-8: Probleme nur berichten, falls sie von Problemen des Vortages abweichen?
+ Falls Sie diese Option wählen, wird Chkrootkit nur Probleme berichten, wenn sich diese von denen des Vortages unterscheiden.
+ .
+ Die Verwendung dieser Option wird nicht empfohlen, da sie wahrscheinlich existierende Sicherheitsprobleme versteckt.
+Description-es.UTF-8: ¿Desea que se informe de los problemas sólo cuando sean distintos a los del día anterior?
+ Si elige esta opción, chkrootkit sólo informará de los problemas distintos a su anterior ejecución diaria.
+ .
+ No es recomendable usar esta opción, ya que suele ocultar problemas de seguridad existentes.
+Description-eu.UTF-8: Arazoen berri aurreko egunekoen ezerdinak badira bakarrik eman?
+ Aukera hau hautaz chkrootkit-ek aurkitzen dituen arazoak aurreko egunekoen ezberdinak badira bakarrik ohartuko du erabiltzailea.
+ .
+ Aukera hau erabiltzea ez da gomendatzen segurtasun arazoak ezkutatu ditzake eta.
+Description-fi.UTF-8: Raportoidaanko vain edellisen päivän ongelmista poikkeavat ongelmat?
+ Jos valitset tämän vaihtoehdon, chkrootkit raportoi vain ongelmat, jotka poikkeavat edellisen päivän ajosta.
+ .
+ Tämän valitsimen käyttöä ei suositella, koska se saattaa piilottaa olemassa olevia turvallisuusongelmia.
+Description-fr.UTF-8: Signaler seulement les problèmes différents de ceux de la veille ?
+ Si vous choisissez cette option, chkrootkit ne signalera les problèmes que s'ils sont différents de ceux découverts lors de l'exécution de la veille.
+ .
+ Il est déconseillé de choisir cette option car elle peut facilement masquer des problèmes de sécurité existants.
+Description-gl.UTF-8: ¿Informar dos problemas só se son diferentes dos do día anterior?
+ Se escolle esta opción, chkrootkit só ha informar dos problemas se son diferentes dos que apareceron na execución do día anterior.
+ .
+ Non se recomenda empregar esta opción xa que pode ocultar problemas de seguridade existentes.
+Description-it.UTF-8: Segnalare i problemi solo se diversi da quelli del giorno precedente?
+ Se si accetta, chkrootkit segnalerà solo i problemi che non si erano verificati nell'esecuzione del giorno precedente.
+ .
+ Si raccomanda di non usare questa opzione poiché potrebbe nascondere dei problemi di sicurezza esistenti.
+Description-ja.UTF-8: 前日の問題との差分があった場合のみ、問題を報告するようにしますか?
+ このオプションを選ぶと、chkrootkit は前日の動作と違っていた場合のみ問題を報告します。
+ .
+ このオプションの利用は、存在しているセキュリティ問題を隠すことになり得るのでお勧めできません。
+Description-nb.UTF-8: Skal problemer rapporteres bare hvis de er forskjellige fra forrige dags problemer?
+ Hvis du velger dette vil chkrootkit melde om problemer som er annerledes enn i gårsdagens kjøring.
+ .
+ Det anbefales ikke å bruke dette siden det lett kan skjule eksisterende sikkerhetsproblemer.
+Description-no.UTF-8: Skal problemer rapporteres bare hvis de er forskjellige fra forrige dags problemer?
+ Hvis du velger dette vil chkrootkit melde om problemer som er annerledes enn i gårsdagens kjøring.
+ .
+ Det anbefales ikke å bruke dette siden det lett kan skjule eksisterende sikkerhetsproblemer.
+Description-pt.UTF-8: Apenas reportar problemas se diferirem com os problemas do dia anterior?
+ Se escolher esta opção, o chkrootkit só irá reportar problemas se diferirem dos problemas do dia anterior.
+ .
+ O uso desta opção não é recomendado já que é possível que esconda problemas de segurança existentes.
+Description-ru.UTF-8: Сообщать только о проблемах, которые появились с момента предыдущего запуска?
+ Если вы ответите утвердительно, то chkrootkit сообщит только о проблемах, появившихся с момента предыдущего запуска.
+ .
+ Использование этого параметра не рекомендуется, так как это, по всей вероятности, скроет существующие проблемы с безопасностью.
+Description-sv.UTF-8: Rapportera bara problem om de skiljer sig från gårdagens körning?
+ Detta instruerar cron.daily att chkrootkit bara rapporterar problem om de skiljer sig från gårdagens körning.
+ .
+ Det här alternativet kan dölja existerande säkerhetsproblem och bär inte användas.
+Description-vi.UTF-8: Chỉ thông báo lỗi khác với các lỗi của ngày trước không?
+ Bật tùy chọn này thì chrootkit sẽ chỉ thông báo lỗi khi nó khác với các lỗi được gặp bởi tiến trình chạy vào ngày trước.
+ .
+ Không khuyên bạn hiệu lực tùy chọn này, vì nó rất có thể ẩn các vấn đề bảo mật đã có.

@@ -1,0 +1,24 @@
+<!--v1.3-->Select the client distribution
+<u>Information:</u>
+A distribution is a composition of different software packages stored on CDs, DVDs or in the internet. Some of these distributions are free software and available for free download. E.g. <a href="http://www.debian.org" target="_blank">Debian</a> is a free Linux distribution. Distributions differentiate in the installation program and the eye candy of the desktop only. There are no significant differences. The selection of a certain distribution is mostly a matter of taste. This dialog makes it possible to install different distributions with m23.
+
+<ul>
+	<li><b>Loading preferences</b>: Select a previously saved preference from the list and click on <i>"$I18N_load"</i>.</li>
+	<li><b>Deleting preferences</b>: By clicking on the <i>"$I18N_delete"</i> button you can remove the selected preference.</li>
+	<li><b>Saving preferences</b>: You can save the current values as a preference by entering a name and clicking on the <i>"$I18N_save"</i> button.</li>
+	<!--v1.8 moved, changed--><li><b>$I18N_packageSources</b>: You have to choose the package source first that can be found, created or modified under  <i>$I18N_packages</i> &rarr; <i>$I18N_packageSources</i>. Choosing a package selection predefines the Linux distribution and the distribution's release and the installable user interfaces. Click on <i>"$I18N_select"</i> to choose the package source. The logo and a short descriptive text for the choosen distribution will be shown.</li><!--v1.8 end-->
+	<li><b>$I18N_userInterface</b>: Depending on the selected distribution, you have the choice between different graphical user interfaces (GUIs). If you want to install a server without a graphical desktop you can select <i>"Textmode"</i> .</li>
+	<!--v1.14 new--><li><b>$I18N_packageSelection</b>: You can choose a package selection that will be installed together with the operating system.</li><!--v1.14 end-->
+	<!--v1.21 new-->
+	<li><b>$I18N_MBRTarget</b>: m23 tries to detect the first harddisk drive for installing the bootmanager automatically. If you want to choose a different disk, you can do it here. Please keep in mind that you have to choose the drive that is the first in the <a href="http://en.wikipedia.org/wiki/Basic_Input_Output_System" target="_blank">BIOS</a> booting order.</li>
+	<!--v1.21 end-->
+	<li><b>$I18N_distributionSpecificOptions</b>: Every distribution can define a variety of options which are used during the distribution installation.</li>
+</ul>
+To start the installation simply click on <i>"$I18N_install_distribution"</i>.
+
+<!--v1.11 begin--><u>Hint for imaging</u>
+Select <i>"imaging"</i> as package sources to install images.<!--v1.11 end-->
+<!--v1.19 begin-->You can choose if you want to install a previously created MBR file or the generic bootloader of m23 to the the client's <a href="http://en.wikipedia.org/wiki/Master_Boot_Record" target="_blank">MBR (Master Boot Record)</a>. Select the file name or <i>"$I18N_genericMBR"</i> from the <i>"$I18N_chooseMBRtoInstall"</i> list.<!--v1.19 end-->
+
+<u>Hint:</u>
+If you save a preference under the same name as a preference for client settings, the distribution settings will be added to the preference. On the other hand, distribution specific preferences will be overwritten.

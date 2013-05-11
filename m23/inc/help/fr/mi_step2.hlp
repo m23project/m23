@@ -1,0 +1,29 @@
+<!--v1.5-->Choisir la source de données/assigner les colonnes
+
+Ce dialogue est divisé en deux parties:<ul>
+<LI>Choisir le fichier de données et le télécharger</LI>
+<LI>Assigner les propriétés aux colonnes du fichier texte</LI></ul>
+
+<u>Choisir le fichier de données et le télécharger</u>
+Choisissez un fichier par le dialogue, puis, cliquez sur <i>&laquo;$I18N_upload&raquo;</i>.
+
+Un format spécifique pour les données est requis afin que m23 puisse identifier les valeurs. Les valeurs des propriétés d'un poste client sont spécifiées sur une seule ligne. Chaque propriété est séparée des autres par un signe séparateur (ici: &laquo;;&raquo;): <code>propriété1;propriété2;propriété3;...</code>
+A la place du point-virgule, vous pouvez utiliser n'importe quelle combinaison d'un maximum de 4 lettres/chiffres. L'ordre des propriétés doit être le même dans chaque ligne.
+
+<!--start v1.10--><u>Notez</u>
+Toutes les valeurs présentes dans le fichier de données doivent être valides et en adéquation avec les propriétés. Des conditions additionnelles existent pour les propriétés suivantes:<ul>
+<LI><b>$I18N_addNewLocalLogin:</b> En saisissant &laquo;yes&raquo;, vous activez cette option; toute autre valeur la désactive.</LI>
+<LI><b>LDAP:</b> 3 valeurs différentes sont admissibles:<ul>
+<LI>&laquo;none&raquo;: $I18N_dontUseLDAP</LI>
+<LI>&laquo;read&raquo;: $I18N_readLoginFromLDAP</LI>
+<LI>&laquo;write&raquo;: $I18N_addNewLoginToLDAP</LI></ul></LI></ul><!--end v1.10-->
+
+<u>Assigner les colonnes du fichier de données aux propriétés du poste client</u>
+Après avoir téléchargé un fichier de données, vous pouvez assigner les colonnes de ce fichier aux propriétés de vos postes client.
+
+
+<u>Procédez comme suit:</u><ol>
+<LI>Entrez votre délimiteur (signe séparateur) dans le champ correspondant, puis adaptez le nombre de colonnes si nécessaire.</LI>
+<li>Cliquez sur <i>&laquo;$I18N_refresh&raquo;</i> La première ligne du fichier de données est maintenant délimité par le séparateur et affiché dans le champ des options du client.</li>
+<li>Assignez les colonnes du fichier de données ainsi séparées aux propriétés de vos postes client.</li>
+<li>Enregistrez votre sélection en cliquant sur <i>&laquo;$I18N_save&raquo;</i>.</li></ol>

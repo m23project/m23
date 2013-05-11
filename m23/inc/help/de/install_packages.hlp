@@ -1,0 +1,25 @@
+Paketinstallation
+
+helpInclude("packageTypes.inc");
+
+<u>Installation von Paketen</u>
+<ol><LI> Wählen Sie <i>"$I18N_package_selection"</i>, <i>"$I18N_normal_packages"</i> oder <i>"$I18N_special_packages"</i> aus.</LI>
+<LI> Geben Sie bei <i>"$I18N_package_search"</i> den Suchbegriff für das gewünschte Paket ein. Lassen Sie das Suchfeld leer, wenn Sie nach allen Pakete einer Paketart suchen möchten. Dies ist allerdings bei der großen Menge der "normalen Pakete" nicht möglich. Hier muß ein Suchbegriff angegeben werden.</LI>
+<LI> Unter <i>"$I18N_found_packages"</i> finden Sie alle Pakete, die Ihren Suchparametern entsprechen.</LI>
+<LI> Klicken Sie bei den gewünschten Paketen die Checkbox an.</LI>
+<LI> Merken Sie die gewählten Pakete durch Klick auf <i>"$I18N_preselect"</i> vor.</LI>
+<LI> Wiederholen Sie bei Bedarf Schritt 1-5.</LI></ol>
+
+Nun haben Sie Pakete für die Installation vorgemerkt. <!-- v1.5--> Ein grüner Haken gibt an, daß dieses Paket zu installieren ist und ein rotes Kreuz, daß dieses Paket vom Client entfernt werden soll.<!--end v1.5--> Sie können die Liste dieser Pakete durch einen Klick auf den Button <i>"$I18N_discard_all"</i> löschen oder Pakete auswählen <!-- v12.3-->(durch Klicken der Symbole über den Auswahlkästchen können Sie alle oder keine Pakete auswählen bzw. die Auswahl umkehren)<!-- end v12.3--> und diese durch <i>"$I18N_discard_selected"</i> entfernen.
+
+Schließen Sie Ihre Auswahl durch Klick auf <i>"$I18N_install_selected"</i> ab.
+
+<!-- v12.3--><u>Paketpriorität ändern</u>
+Pakete bzw. Aufträge werden in der Reihenfolge ihrer Priorität (kleine Nummern vor höheren) auf dem Client ausgeführt. Möchten Sie die Priorität ändern, so wählen Sie die gewünschten Pakete aus und geben Sie in das Feld neben <i>"$I18N_changePackagePriority"</i> den neuen Prioritätswert ein. Klicken Sie anschließend auf <i>"$I18N_changePackagePriority"</i>. Wiederholen Sie ggf. den Vorgang für weitere Aufträge.<!-- end v12.3-->
+
+<!-- v1.3--><!-- v1.5--><u>Installationsvorschau</u><!--end v1.5-->
+Vor der wirklichen Installation können Sie überprüfen, was die Installation auf dem Client für Folgen hat. So können Sie vorher sehen, welche zusätzlichen Pakete mitinstalliert werden oder ob es Probleme bei der Installation geben wird. Klicken Sie dazu nach Auswahl der Pakete auf <i>"$I18N_previewInstallation"</i>. Nach einiger Zeit sehen Sie ein Protokoll der Installationsvorschau.<!--end v1.3--><!-- v1.5-->
+Eine Installationsvorschau ist allerdings nur dann möglich, wenn ein einzelner Client und keine Gruppe ausgewählt wurde.
+<!--end v1.5-->
+
+helpInclude("packageSelections.inc");

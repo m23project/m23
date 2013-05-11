@@ -1,0 +1,53 @@
+
+Template: sysv-rc/convert-legacy
+Type: boolean
+Default: true
+Description: Migrate legacy boot sequencing to dependency based sequencing?
+ The boot system is prepared to migrate to dependency based sequencing.
+ It is recommended to migrate for the following reasons:
+ .
+  * the order of boot and shutdown is calculated dynamically, using
+    dependency information declared within each init.d script, which
+    ensures optimum and correct boot sequence for the set of installed
+    packages
+  * protection against problems introduced by new or upgraded packages
+    by preserving the boot sequence when problems are detected; the boot
+    sequence is only modified if it is safe to do so
+  * potential for further optimization by way of concurrent boot
+    methodology in order to increase boot efficiency
+  * fixes long standing issues with the legacy, static priority based
+    boot ordering.
+ .
+ This migration process is non-reversible. The legacy way of ordering
+ boot scripts using static sequence numbers will be made obsolete by
+ choosing to migrate.  Any boot sequence changes done locally will be
+ lost and have to redone using dependencies.
+ .
+ See http://wiki.debian.org/LSBInitScripts/DependencyBasedBoot for
+ more information about dependency based boot sequencing. To
+ reattempt the migration process run 'dpkg-reconfigure sysv-rc'.
+
+Template: sysv-rc/unable-to-convert
+Type: note
+Description: Unable to migrate to dependency based boot system
+ Tests have determined that problems in the boot system exist which
+ prevent migration to dependency based boot sequencing. It is
+ recommended to migrate for the following reasons:
+ .
+  * the order of boot and shutdown is calculated dynamically, using
+    dependency information declared within each init.d script, which
+    ensures optimum and correct boot sequence for the set of installed
+    packages
+  * protection against problems introduced by new or upgraded packages
+    by preserving the boot sequence when problems are detected; the boot
+    sequence is only modified if it is safe to do so
+ .
+ If the reported problem is a local modification it needs to be fixed
+ manually.  If it's a bug in the package it should be reported to the
+ BTS and fixed in the package. See
+ http://wiki.debian.org/LSBInitScripts/DependencyBasedBoot for more
+ information about how to fix the problems preventing migration. To
+ reattempt the migration process after the problems have been fixed,
+ run 'dpkg-reconfigure sysv-rc'.
+ .
+ The following problems were detected: ${PROBLEMATIC}

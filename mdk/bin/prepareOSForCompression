@@ -1,0 +1,9 @@
+#!/bin/sh
+
+. /mdk/bin/serverFunctions.inc
+
+cleanOSForCompressing deleteSquidCache
+
+dd if=/dev/zero of=/tmp/z.dd bs=1M
+
+rm /tmp/z.dd

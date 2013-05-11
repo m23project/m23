@@ -1,0 +1,1763 @@
+#!/bin/bash
+LC_ALL=C
+
+#####
+# name saveRet
+# description Saves the return code of the last called tool to /tmp/HSCommandExecutionStatus.code.
+# parameter none
+#####
+saveRet() {
+	ret=$?
+
+	cf="/tmp/HSCommandExecutionStatus.code"
+	aret=`cat $cf`
+
+	expr $ret \+ $aret > $cf
+}
+
+
+
+
+
+#####
+# name resetRet
+# description Resets the file that contains the accumulated return codes of the commands to execute.
+# parameter none
+#####
+resetRet() {
+	echo 0 > /tmp/HSCommandExecutionStatus.code
+}
+
+
+
+
+#####################
+# stopLog and startLog are based on the KVM guest launcher. The author wishes to include the following notice:
+#
+# Copyright (c) 2010, Noah Spurrier <noah@noah.org>
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+#
+# Version 1
+#####################
+
+
+
+
+
+#####
+# name startLog
+# description Starts logging stdout and stderr to /tmp/HSCommandExecutionStatus.message.
+# parameter none
+#####
+startLog()
+{
+	LOGFILE="/tmp/HSCommandExecutionStatus.message"
+	PIPEFILE="/tmp/HSCommandExecutionStatus.pipe"
+
+	rm ${PIPEFILE} 2> /dev/null
+	mkfifo ${PIPEFILE}
+	tee ${LOGFILE} < ${PIPEFILE} &
+	TEEPID=$!
+	# Redirect subsequent stdout and stderr output to named pipe.
+	exec > ${PIPEFILE} 2>&1
+	trap stopLog EXIT
+}
+
+
+
+
+
+#####
+# name stopLog
+# description Stops logging stdout and stderr to /tmp/HSCommandExecutionStatus.message.
+# parameter none
+#####
+stopLog()
+{
+	# Close stdin and stdout which closes our end of the pipe
+	# and tells `tee` we are done.
+	exec 1>&- 2>&-
+	# Wait for `tee` process to finish. If we exited here then the `tee`
+	# process might get killed before it hand finished flushing its buffers
+	# to the logfile.
+	wait ${TEEPID}
+	rm ${PIPEFILE}
+}
+
+
+
+
+######################
+# Package management #
+######################
+
+
+#####
+# name pkgUpdateCache
+# description Updates the list of available packages
+# parameter none
+#####
+pkgUpdateCache()
+{
+	. /etc/m23-zypper-proxy.conf
+	export ZYPP_ARIA2C=0
+	zypper --no-gpgp-checks refresh
+	zypper --no-gpgp-checks -n -q ref
+	. /etc/m23-zypper-proxy-unset.conf
+}
+
+
+
+
+
+#####
+# name pkgInstall
+# description Installs one or more packages
+# parameter List of packages to install seperated by spaces
+#####
+pkgInstall()
+{
+	. /etc/m23-zypper-proxy.conf
+	zypper -n in -n -l --force-resolution $@
+	. /etc/m23-zypper-proxy-unset.conf
+	ret=$?
+
+	#4 means "nothing to do", 104 "no upgradable packages found", this should not be marked as error
+	if [ $ret -eq 4 ] || [ $ret -eq 104 ]
+	then
+		return 0
+	else
+		return $ret
+	fi
+}
+
+
+
+
+
+#####
+# name pkgInstallPreview
+# description Shows an installtion preview
+# parameter List of packages to install seperated by spaces
+#####
+pkgInstallPreview()
+{
+	. /etc/m23-zypper-proxy.conf
+	zypper -n in -l -D $@
+	. /etc/m23-zypper-proxy-unset.conf
+}
+
+
+
+
+
+#####
+# name pkgDeinstall
+# description Deinstalls one or more packages
+# parameter List of packages to deinstall seperated by spaces
+#####
+pkgDeinstall()
+{
+	. /etc/m23-zypper-proxy.conf
+	zypper -n remove --force-resolution $@
+	. /etc/m23-zypper-proxy-unset.conf
+}
+
+
+
+
+
+#####
+# name pkgDeinstallPreview
+# description Shows a deinstallation preview
+# parameter List of packages to deinstall seperated by spaces
+#####
+pkgDeinstallPreview()
+{
+	. /etc/m23-zypper-proxy.conf
+	zypper -n remove -D --force-resolution $@
+	. /etc/m23-zypper-proxy-unset.conf
+}
+
+
+
+
+
+#####
+# name pkgSearch
+# description Searches for available packages matching all keywords.
+# parameter Search terms seperated spaces.
+#####
+pkgSearch()
+{
+	echo $@ | perl -e '
+	$arg=<>;
+	open(ZYPPER, "zypper -n search $arg |");
+	while(<ZYPPER>){
+		if( $start ){
+				@a = split /[\s]+\|[\s]+/, $_;
+				if( $a[3] =~ "^package" ){
+					$size=0;
+					$size=`rpm -q $a[1] --qf "%{SIZE}"` if $a[0] eq "i";
+					print "$a[1]###$a[2]###$size\n";
+				}
+		}elsif( $_ =~ /([-]+\+)+[-]+/ ){
+				$start = 1;
+		}
+	}'
+}
+
+
+
+#####
+# name pkgInstalledList
+# description Lists the installed packages or writes the list to a file.
+# parameter file name: Name of the file to store the list of installed files in.
+#####
+pkgInstalledList()
+{
+	if [ $1 ]
+	then
+		add="$1"
+	else
+		add="/dev/null"
+	fi
+
+	rpm -qa --qf '%{NAME}.%{ARCH}\n' > $add
+}
+
+
+
+
+
+#####
+# name pkgWritePackageStatusFile
+# description Generates the POST file to send the package infos. Generates the package status file /tmp/packagestatus and the file converted to POST format /tmp/packagestatus.post.
+# parameter none
+#####
+pkgWritePackageStatusFile()
+{
+	#repoquery --pkgnarrow=installed --qf 'ii %{name} %{version}' -a > /tmp/packagestatus
+	rpm -qa --qf 'ii %{NAME} %{VERSION}\n' > /tmp/packagestatus
+	echo "type=pkg&count=`wc -l /tmp/packagestatus | sed 's/[  ][   ]*//g' | cut -d'/' -f1``cat /tmp/packagestatus | awk -v ORS='' '{print "&s"NR"="$1"&p"NR"="$2"&v"NR"="$3}' | sed 's/+/%2B/g'` " > /tmp/packagestatus.post
+}
+
+
+
+
+
+#####
+# name pkgInstallBasePackages
+# description Installs basic packages
+# parameter none
+#####
+pkgInstallBasePackages()
+{
+	pkgUpdateCache
+
+	pkgInstall nano wget parted dialog screen makedev pciutils dmidecode php5-gettext binutils \
+mc acl e2fsprogs netcat man selinux-policy selinux-tools selinux-policy-refpolicy-standard \
+selinux-policy-refpolicy-mcs selinux-policy-refpolicy-mls policycoreutils file acpid hdparm \
+nano dhcp-client sysvinit-tools sysvinit bootsplash bootsplash-branding-openSUSE cpio \
+dmraid e2fsprogs cpufrequtils pm-profiler yast2-power-management yast2-bootloader wireless-tools cron \
+cronie sudo
+
+	ldconfig
+	yast2 power-management set profile="Powersaving"
+	netPrepare
+	#Reenable crontab ( in case it gets overwritten )
+	sysWriteCrontabm23fetchjobEvery5Minutes
+}
+
+
+
+
+
+#####
+# name intEnableXBoot
+# description Enables the start of graphical sessions on booting.
+# parameter none
+#####
+intEnableXBoot()
+{
+	sed -i 's#id:3:initdefault:#id:5:initdefault:#g' /etc/inittab
+	#Configure the language again (just to be sure that they are set correctly in xorg.conf.d)
+	sysSetLanguage `sysGetm23Language`
+}
+
+
+
+
+
+#####
+# name pkgInstallKDE
+# description Installs KDE
+# parameter none
+#####
+pkgInstallKDE()
+{
+	#Install the meta package
+	pkgInstall patterns-openSUSE-kde4
+	sleep 5
+
+	#Get the m23 language to find the correct KDE language package
+	pkgLang=`sysGetm23Language | cut -d'-' -f2`
+
+	#Generate a table for the KDE translation packages
+# 	pkgTab[de]='kde4-l10n-de'
+# 	pkgTab[fr]='kde4-l10n-fr'
+# 	pkgTab[]=''
+# 	pkgTab[]=''
+# 	pkgTab[]=''
+
+	#Install the language package
+	if [ $pkgLang != 'en' ]
+	then
+		pkgInstall "kde4-l10n-$pkgLang"
+		saveRet
+	fi
+
+	#Set Window Manager to kdm4
+	yast2 sysconfig set DISPLAYMANAGER=kdm4
+	yast2 sysconfig set DEFAULT_WM=startkde
+
+	intEnableXBoot
+	
+	ldconfig
+
+	resetRet
+	true
+}
+
+
+
+
+
+#####
+# name pkgInstallGnome
+# description Installs Gnome
+# parameter none
+#####
+pkgInstallGnome()
+{
+	pkgInstall patterns-openSUSE-gnome
+	sleep 5
+
+	#Set Window Manager to gdm	
+	yast2 sysconfig set DISPLAYMANAGER=gdm
+	yast2 sysconfig set DEFAULT_WM=gnome
+
+	pkgInstall MozillaFirefox evolution
+
+	intEnableXBoot
+
+	ldconfig
+}
+
+
+
+
+
+#####
+# name pkgInstallXFce
+# description Installs XFce
+# parameter none
+#####
+pkgInstallXFce()
+{
+	pkgInstall patterns-openSUSE-xfce
+	pkgInstall gdm
+
+	#Set Window Manager to gdm	
+	yast2 sysconfig set DISPLAYMANAGER=gdm
+	yast2 sysconfig set DEFAULT_WM=xfce
+	
+	#Set xfce as default gdm session
+	#and alter ownership
+	for home in /home/*;
+	do
+			echo -ne "[Desktop]\nSession=xfce\nLanguage=$(sysGetLanguage)\n" > $home/.dmrc
+			chown $(basename $home):users  $home/.dmrc
+	done
+	
+	intEnableXBoot
+	
+	ldconfig
+	resetRet
+	true
+}
+
+
+
+
+#TODO
+#####
+# name pkgInstallLXDE
+# description Installs LXDE
+# parameter none
+#####
+pkgInstallLXDE()
+{
+	pkgInstall patterns-openSUSE-lxde
+	pkgInstall gdm
+	
+	yast2 sysconfig set DISPLAYMANAGER=gdm
+	yast2 sysconfig set DEFAULT_WM=startlxde
+
+	for home in /home/*;
+	do
+			echo -ne "[Desktop]\nSession=lxde\nLanguage=$(sysGetLanguage)\n" > $home/.dmrc
+			chown $(basename $home):users  $home/.dmrc
+	done
+
+	intEnableXBoot	
+
+	ldconfig
+	resetRet
+	true
+}
+
+
+
+
+
+#####
+# name pkgInstallX
+# description Installs XOrg or another shipped X11 server.
+# parameter none
+#####
+pkgInstallX()
+{
+	pkgInstall xorg-x11
+	sleep 5
+
+# 	resetRet
+# 	true
+}
+
+
+
+
+
+#####
+# name pkgShowSourcesList
+# description Shows the package sources list
+# parameter none
+#####
+pkgShowSourcesList()
+{
+	cat /etc/zypp/repos.d/*
+}
+
+
+
+
+#####
+# name pkgSetSourcesList
+# description Sets a package sources list. Its contents is expected in the file /tmp/sources.list.
+# parameter none
+#####
+pkgSetSourcesList()
+{
+	rm -rf /etc/zypp/repos.d/*
+	sed 's/\r//g' /tmp/sources.list > /etc/zypp/repos.d/m23.repo
+}
+
+
+
+
+
+#####
+# name pkgSetPackageProxy
+# description Setups YUM to use a proxy.
+# parameter IP and port of th proxy (e.g. 192.168.1.23:2323)
+#####
+pkgSetPackageProxy()
+{
+	export http_proxy="http://$1"
+
+	echo "export http_proxy=\"http://$1\"" > /etc/m23-zypper-proxy.conf
+	echo "export -n http_proxy" > /etc/m23-zypper-proxy-unset.conf
+}
+
+
+
+
+
+#####
+# name pkgNormalUpdate
+# description Performs a normal update of the installed packages.
+# parameter none.
+#####
+pkgNormalUpdate()
+{
+	. /etc/m23-zypper-proxy.conf
+	pkgUpdateCache
+	zypper -n update -l
+	. /etc/m23-zypper-proxy-unset.conf
+	ldconfig
+	saveRet
+	true
+}
+
+
+
+
+
+#####
+# name pkgNormalUpdatePreview
+# description Shows a preview of a normal update of the installed packages.
+# parameter none.
+#####
+pkgNormalUpdatePreview()
+{
+	. /etc/m23-zypper-proxy.conf
+	pkgUpdateCache
+	zypper -n update -l -D
+	. /etc/m23-zypper-proxy-unset.conf
+	saveRet
+}
+
+
+
+
+
+#####
+# name pkgFullUpdate
+# description Performs a full update of the installed packages.
+# parameter none.
+#####
+pkgFullUpdate()
+{
+	. /etc/m23-zypper-proxy.conf
+	pkgUpdateCache
+	zypper -n dist-upgrade -l
+	. /etc/m23-zypper-proxy-unset.conf
+	ldconfig
+	saveRet
+	true
+}
+
+
+
+
+
+#####
+# name pkgFullUpdatePreview
+# description Shows a preview of a full update of the installed packages.
+# parameter none.
+#####
+pkgFullUpdatePreview()
+{
+	. /etc/m23-zypper-proxy.conf
+	pkgUpdateCache
+	zypper -n dist-upgrade -l -D
+	. /etc/m23-zypper-proxy-unset.conf
+	saveRet
+}
+
+
+
+
+
+#####
+# name pkgListContents
+# description Lists the contents of a package.
+# parameter package name: Name of the package to list its contents.
+#####
+pkgListContents()
+{
+	. /etc/m23-zypper-proxy.conf
+	zypper -n info $1
+	. /etc/m23-zypper-proxy-unset.conf
+}
+
+
+
+
+
+#########################
+# Network configuration #
+#########################
+
+
+
+
+
+#####
+# name netPrepare
+# description Prepares the first network card for configuration
+# parameter none
+#####
+netPrepare()
+{
+
+# pkgInstall dhcp-client
+# 
+# #Use yast to setup every device to use dhcp
+# echo
+# echo "Setting up network devices..."
+# echo
+# yast lan list 2>&1 | while read id name bootproto;
+# do
+# 	if [ $id -ge 0 2> /dev/null ];
+# 	then
+# 		yast lan edit id=$id bootproto=dhcp
+# 	fi
+# done
+
+true
+}
+
+
+
+
+#####
+# name netSetIPNetmask
+# description Sets the IP and netmask for the first network card
+# parameter IP: IP address
+# parameter netmask: Netmask address
+#####
+netSetIPNetmask()
+{
+	m23ip="$1"
+	netmask="$2"
+
+	pkgDeinstall dhcp-client
+
+	ifconfig "eth0" "$m23ip" netmask "$netmask"
+
+	yast lan list 2>&1 | while read id name bootproto;
+	do
+		if [ $id -ge 0 2> /dev/null ];
+		then
+			yast lan edit id=$id bootproto=static ip=$m23ip netmask=$netmask
+		fi
+	done
+}
+
+
+
+
+
+#####
+# name netSetGateway
+# description Sets the gateway for the machine.
+# parameter IP of the gateway
+#####
+netSetGateway()
+{
+	route add -net default gw "$1"
+	echo "default $1 - -" > /etc/sysconfig/network/routes
+}
+
+
+
+
+
+#####
+# name netSetDNS
+# description Sets the DNS server for the machine.
+# parameter IP of the DNS server
+#####
+netSetDNS()
+{
+	sed -i "s/m23dns/$1/g" /etc/sysconfig/network/ifcfg-Auto_eth0
+	echo "nameserver $1" > /etc/resolv.conf
+}
+
+
+
+
+
+#####
+# name netSetHostname
+# description Sets the hostname of the machine.
+# parameter Hostname: Hostname of the machine.
+#####
+netSetHostname()
+{
+	#Write the config file
+	#echo "NETWORKING=yesHOSTNAME=$1" > /etc/sysconfig/network
+
+	#Set permissions
+	#chown root.root /etc/sysconfig/network
+	#chmod 644 /etc/sysconfig/network
+
+	#Set the host name at once
+	hostname "$1"
+	echo $1 > /etc/HOSTNAME
+}
+
+
+
+
+
+#####
+# name netSetm23SSLCertificate
+# description Downloads and stores the SSL public key of the m23 server into the correct directory.
+# parameter URL: The URL where to download the key from.
+# parameter pathPrefix: Extra path to put before the SSL store path.
+# example: netSetm23SSLCertificate "http://192.168.1.77/packages/baseSys/ca.crt"
+#####
+netSetm23SSLCertificate()
+{
+	url="$1"
+	pathPrefix="$2"
+
+	certFile="$pathPrefix/tmp/m23crt"
+
+	#Download the key only if the cert files doesn't exist and the URL is given
+	if [ ! -e "$certFile" ] && [ "$url" ]
+	then
+		wget --no-check-certificate -O "$certFile" "$url"
+		saveRet
+	fi
+
+	#Check if openssl exists
+	if [ `which openssl | wc -l` -gt 0 ]
+	then
+
+		hash=`openssl x509 -in "$certFile" -hash | head -1`
+		saveRet
+
+		dest="$pathPrefix/etc/ssl/certs/$hash.0"
+		mv "$certFile" "$dest"
+
+		#Fix permissions
+		chmod 755 "$dest"
+		chown root.root "$dest"
+	fi
+}
+
+
+
+
+
+#####
+# name netEnableNTP
+# description Enable getting the system time by NTP.
+# parameter none
+#####
+netEnableNTP()
+{
+	/etc/init.d/ntp start
+	chkconfig ntp on
+	pkgInstall ntp
+}
+
+
+
+
+
+#####
+# name netDisableNTP
+# description Disable getting the system time by NTP.
+# parameter none
+#####
+netDisableNTP()
+{
+	/etc/init.d/ntp stop
+	chkconfig ntp off
+	pkgDeinstall ntp
+}
+
+
+
+
+
+#####
+# name netEnableLDAP
+# description Enables LDAP login for a client.
+# parameter host: The hostname (resolvable by the client without LDAP) or IP of the LDAP server.
+# parameter basedn: BaseDN of the LDAP server.
+#####
+netEnableLDAP()
+{
+	host="$1"
+	basedn="$2"
+
+	pkgInstall openldap2 nss_ldap pam_ldap openssl
+	yast2 ldap pam disable
+	yast2 ldap pam enable server="$host" base="$basedn" sssd=no tls=no mkhomedir=yes
+	yast2 ldap pam enable
+	resetRet	#Because some LDAP packages may be installed already what leads to an error
+}
+
+
+
+
+
+#####
+# name netEnableSSHdAndImportKey
+# description Enables the SSH daemon and adds a SSH key to let the m23 server log into the machine
+# parameter SSH key URL: URL to download the SSH key from.
+#####
+netEnableSSHdAndImportKey()
+{
+	sshKeyURL="$1"
+
+	#Make sure that no old SSH keys are existing
+	rm -f /etc/ssh/*key* /root/.ssh/id_dsa*
+
+	#Install the ssh server
+	pkgInstall openssh
+	
+	#Enable SSH key login
+	mkdir -p /root/.ssh/
+	chmod 755 /root/.ssh
+
+	touch /root/.ssh/authorized_keys
+	
+	wget -O - $sshKeyURL >> /root/.ssh/authorized_keys
+
+	chmod 644 /root/.ssh/authorized_keys
+	saveRet
+	
+	#Change network start levels
+	chkconfig network on
+	#Make it start on every system start
+	chkconfig sshd on
+	
+	#Don't start sshd because dropbear is already running
+	true
+}
+
+
+
+
+
+#####
+# name netWriteHosts
+# description Writes the /etc/hosts file for the client.
+# parameter clientIP: IP of the client
+# parameter clientName: Name of the client
+#####
+netWriteHosts()
+{
+	clientIP="$1"
+	clientName="$2"
+
+echo "$clientIP	$clientName	# Added by m23
+127.0.0.1	localhost.localdomain   localhost
+::1	$clientName	localhost6.localdomain6 localhost6
+" > /etc/hosts
+
+	chmod 644 /etc/hosts
+	chown root /etc/hosts
+	chgrp root /etc/hosts
+}
+
+
+
+
+
+#####
+# name netEnableNFSHome
+# description enables storing of home directories on a NFS server
+# parameter nfsURL: URL to the NFS storage (e.g. 192.168.1.42/up/home)
+#####
+netEnableNFSHome()
+{
+	nfsURL=$1
+	return
+}
+
+
+
+
+
+########################
+# System configuration #
+########################
+
+
+
+
+
+#####
+# name sysSetLanguage
+# description Sets the system language.
+# parameter Language: Two(or more)-character code of the language to set (de, en, fr).
+#####
+sysSetLanguage()
+{
+	fullLang="$1"
+
+	#Make sure that only the two letter code is used (e.g. ch-de => de)
+	lang=$(echo $fullLang | cut -d'-' -f2)
+
+	#Get all languages known by yast2
+	yast2 language list 2>&1 | cut -d' ' -f1 > /tmp/lang.list
+
+	#Check for the matching language by $lang_
+	ylang=$(grep "${lang}_" /tmp/lang.list)
+
+	#Set the language with yast2
+	yast2 language set lang=$ylang
+
+	#Remove the temporary language list
+	rm /tmp/lang.list
+
+	#Generate the UTF language string (e.g. de_DE.UTF-8)
+	utf8lang=$(echo $lang | awk '{print($0"_"toupper($0)".UTF-8");}')
+
+	#Install aspell
+	pkgInstall aspell-$lang
+
+	. /etc/m23-zypper-proxy.conf
+	zypper -n in -n -l --force-resolution -f glibc-locale glibc
+	. /etc/m23-zypper-proxy-unset.conf
+
+	mkdir -p /etc/sysconfig
+
+	#Generate a table for the keyboard languages
+	keyTab_de='german'
+	keyTab_benl='belgian'
+	keyTab_chde='german-ch'
+	keyTab_cn='chinese'
+	keyTab_cs='czech'
+	keyTab_dk='danish'
+	keyTab_es='spanish'
+	keyTab_fi='finnish'
+	keyTab_fr='french'
+	keyTab_ja='japanese'
+	keyTab_nl='dutch'
+	keyTab_pl='polish'
+	keyTab_ru='russian'
+	keyTab_sk='slovak'
+	keyTab_sl='slovene'
+	keyTab_tr='turkish'
+	keyTab_tw='chinese'
+	keyTab_uk='english-uk'
+	keyTab_hu='hungarian'
+	keyTab_no='norwegian'
+	keyTab_sv='swedish'
+	keyTab_pt='portugese'
+	keyTab_et='estonian'
+	keyTab_gr='greek'
+	keyTab_is='icelandic'
+	keyTab_it='italian'	
+	keyTab_ro='lithuanian'
+	keyTab_sr='serbian'
+
+	#Not available => English
+	keyTab_bg='english-uk'
+	keyTab_lt='english-uk'
+	keyTab_il='english-uk'
+	keyTab_ie='english-uk'
+
+	#Get the varible name of the "table" with the wanted language
+	e="keyTab_${fullLang}"
+	#Get the value for the variable
+	keylayout=$(eval echo $`echo $e`)
+
+	#Set to false value before
+	yast2 keyboard set layout=arabic
+
+	#Now set the correct value
+	yast2 keyboard set layout=$keylayout
+	yast2 sysconfig set RC_LANG=$utf8lang
+	yast2 sysconfig set RC_LC_ALL=$utf8lang
+#	yast2 sysconfig set AUDITD_LANG=$utf8lang
+#	yast2 sysconfig set KEYTABLE="$lang"
+
+	#Set the keyboard language in sysconfig (so XOrg will be configured automatically).
+	#sed -i "s/^KEYTABLE=\".*/KEYTABLE=\"$lang\"/g" /etc/sysconfig/keyboard
+
+	echo "LANG=\"$utf8lang\"
+m23LANG=\"$1\"" > /etc/sysconfig/i18n
+
+	#Restart the graphical login manager
+# 	if [ `whereis rcxdm | grep / -c` -gt 0 ]
+# 	then
+# 		rcxdm restart
+# 	fi
+}
+
+
+
+
+
+#####
+# name sysGetLanguage
+# description Shows the system language as two-character code.
+# parameter none
+#####
+sysGetLanguage()
+{
+	locale | grep LANG | cut -d '=' -f2 | cut -d '_' -f1
+}
+
+
+
+
+
+#####
+# name sysGetm23Language
+# description Shows the m23 language as two/five-character code.
+# parameter none
+#####
+sysGetm23Language()
+{
+	grep "m23LANG=" /etc/sysconfig/i18n | cut -d'"' -f2 | cut -d'_' -f1
+}
+
+
+
+
+
+#####
+# name sysMakeBootable
+# description Makes the system bootable.
+# parameter rootDevice: Device with partition where the os will be installed (e.g. /dev/hda1).
+# parameter bootDevice: Device (with partition) where the bootmanager will be installed (e.g. /dev/hda).
+# parameter rootDeviceFS: Filesystem of the root device.
+#####
+sysMakeBootable()
+{
+	rootDevice=$1
+	bootDevice=$2
+	rootDeviceFS=$3
+	
+	pkgInstall grub yast2-bootloader
+	
+	grubEntryTitle=`head -1 /etc/issue`
+
+	#Create fstab and lilo.conf
+	m23hwscanner $bootDevice $rootDevice
+	
+	#Workaround for opensuse kernel naming ide devices sd.
+	workaroundRoot=$( echo $rootDevice | sed -e 's/^\/dev\/hd/\/dev\/sd/' )
+	
+	sed 's/^\/dev\/hd/\/dev\/sd/g' /etc/fstab > /tmp/fstab
+	mv -f /tmp/fstab /etc/fstab
+	saveRet
+	
+	
+	yast2 bootloader add section="default"
+	#Use boot Device as hd0 for setup
+	echo "(hd0) $bootDevice" > /boot/grub/device.map
+	#Get partition (subtract 1 from number or use 0 if negative or unknown
+	grubPart=$( echo $workaroundRoot | perl -e '$a=<>;$a=~s/^[^0-9]+//g; print(($a>0)?$a-1:0);' )
+	#Setup grub
+	echo -ne "root (hd0,$grubPart)\n setup (hd0)\n" | grub --no-floppy --batch
+	
+	#Read mode and resolution from hwinfo for intrd
+	hwinfo --framebuffer | grep 'Mode ' > /tmp/MODES
+	#Use mode which is found in dmesg
+	while read line; do
+		res="$( echo $line | sed -e 's/.*: //' -e 's/ (.*//' )"
+		mode="$(echo $line | sed -e 's/.*Mode //' -e 's/:.*//' )"
+		bits="$(echo $line | sed -e 's/.*, //' -e 's/ bits.*//')"
+		if [ $bits -eq 24 2> /dev/null ] && dmesg | grep -e -e "$res" &> /dev/null;
+		then
+				break;
+		fi
+	done < /tmp/MODES
+	rm /tmp/MODES
+	#Make default entry in menu.lst (must not be changed because vmlinuz and initrd are symlinks
+	#to the latest kernel and initrd
+	echo "#Edited by m23
+default 0
+timeout 8
+
+gfxmenu (hd0,$grubPart)/boot/message
+
+
+title Desktop -- openSUSE 11.4 (default)
+root (hd0,$grubPart)
+kernel /boot/vmlinuz root=$workaroundRoot splash=silent quiet showopts vga=$mode
+initrd /boot/initrd " \
+	> /boot/grub/menu.lst
+	saveRet
+	echo $res > /tmp/RES
+	#Regenerate initrd to have working root partition
+	mkinitrd -s $res
+	true
+}
+
+
+
+
+
+#####
+# name sysInstallKernel
+# description Installs a matching kernel.
+# parameter kernel name: Name of the kernel package to install.
+#####
+sysInstallKernel()
+{
+	pkgInstall kernel-$1 kernel-firmware
+# 	echo -n 0 > /tmp/HSCommandExecutionStatus.code 
+}
+
+
+
+
+
+#####
+# name sysHWsetup
+# description Detects and configures new hardware
+# parameter none
+#####
+sysHWsetup()
+{
+	pkgInstall hal
+	/etc/init.d/haldaemon restart
+	chkconfig haldaemon on
+	true
+
+	pkgInstall mdadm
+
+	echo 'DEVICE /dev/hd*[0-9] /dev/sd*[0-9]' > /etc/mdadm.conf
+	mdadm --detail --scan >> /etc/mdadm.conf
+	true
+
+}
+
+
+
+
+
+#####
+# name sysAddUser
+# description Creates a new user with home directoy and sets password.
+# parameter Username: Name of the user to add.
+# parameter Password: The password of the user to add.
+#####
+sysAddUser()
+{
+	username="$1"
+	password="$2"
+
+	#Create a temporary encrypted password (with short hash)
+	cpass=`echo "$password" | openssl passwd -stdin -1`
+
+	#Create user with home directory
+	useradd -m -g users -d "/home/$username" -s /bin/bash -p "$cpass" "$username"
+
+	#Change the password to let it use the long hash
+	echo "$password" | passwd --stdin "$username"
+}
+
+
+
+
+
+#####
+# name sysChangeUserPass
+# description Changes the password of a user.
+# parameter Username: Name of the user.
+# parameter Password: The crypted password of the user to set.
+#####
+sysChangeUserPass()
+{
+	username="$1"
+	cpass="$2"
+
+	usermod -p "$cpass" "$username"
+}
+
+
+
+
+
+#####
+# name sysChangeUserName
+# description Changes an username.
+# parameter Username: Old username.
+# parameter newUserName: The new username.
+#####
+sysChangeUserName()
+{
+	username="$1"
+	newUserName="$2"
+
+	usermod -l "$newUserName" "$username"
+}
+
+
+
+
+
+sysConfigureScanner()
+{
+	return
+}
+
+#TODO
+#####
+# name sysConfigurePrinter
+# description Detects and installs printer(s)
+#####
+sysConfigurePrinter()
+{
+	pkgInstall cups-pdf foomatic gutenprint-cups ptouch-driver cups-bjnp
+	saveRet
+
+	rm /etc/cups/cupsd.conf 2> /dev/null
+
+	cat >> /etc/cups/cupsd.conf << "CUPSEOF"
+MaxLogSize 0
+#
+# Sample configuration file for the CUPS scheduler.  See "man cupsd.conf" for a
+# complete description of this file.
+#
+
+# Log general information in error_log - change "warn" to "debug"
+# for troubleshooting...
+LogLevel debug
+SystemGroup sys root
+# Allow remote access
+Port 631
+Listen /var/run/cups/cups.sock
+# Enable printer sharing and shared printers.
+Browsing On
+BrowseOrder allow,deny
+BrowseAllow all
+BrowseLocalProtocols CUPS dnssd
+
+# Default authentication type, when authentication is required...
+DefaultAuthType Basic
+<Location />
+  # Allow shared printing and remote administration...
+  Order allow,deny
+  Allow @LOCAL
+</Location>
+<Location /admin>
+  Encryption Required
+  # Allow remote administration...
+  Order allow,deny
+  Allow @LOCAL
+</Location>
+<Location /admin/conf>
+  AuthType Default
+  Require user @SYSTEM
+  # Allow remote access to the configuration files...
+  Order allow,deny
+  Allow @LOCAL
+</Location>
+<Policy default>
+  # Job-related operations must be done by the owner or an administrator...
+  <Limit Create-Job Print-Job Print-URI Validate-Job>
+	Order deny,allow
+  </Limit>
+
+  <Limit Send-Document Send-URI Hold-Job Release-Job Restart-Job Purge-Jobs Set-Job-Attributes Create-Job-Subscription Renew-Subscription Cancel-Subscription Get-Notifications Reprocess-Job Cancel-Current-Job Suspend-Current-Job Resume-Job CUPS-Move-Job CUPS-Get-Document>
+	Require user @OWNER @SYSTEM
+	Order deny,allow
+  </Limit>
+  # All administration operations require an administrator to authenticate...
+  <Limit CUPS-Add-Modify-Printer CUPS-Delete-Printer CUPS-Add-Modify-Class CUPS-Delete-Class CUPS-Set-Default CUPS-Get-Devices>
+	AuthType Default
+	Require user @SYSTEM
+	Order deny,allow
+  </Limit>
+  # All printer operations require a printer operator to authenticate...
+  <Limit Pause-Printer Resume-Printer Enable-Printer Disable-Printer Pause-Printer-After-Current-Job Hold-New-Jobs Release-Held-New-Jobs Deactivate-Printer Activate-Printer Restart-Printer Shutdown-Printer Startup-Printer Promote-Job Schedule-Job-After CUPS-Accept-Jobs CUPS-Reject-Jobs>
+	AuthType Default
+	Require user @SYSTEM
+	Order deny,allow
+  </Limit>
+
+  # Only the owner or an administrator can cancel or authenticate a job...
+  <Limit Cancel-Job CUPS-Authenticate-Job>
+	Require user @OWNER @SYSTEM
+	Order deny,allow
+  </Limit>
+  # Only the owner or an administrator can cancel a job...
+  <Limit Cancel-Job>
+	Order deny,allow
+	Require user @OWNER @SYSTEM
+  </Limit>
+  <Limit All>
+	Order deny,allow
+  </Limit>
+</Policy>
+
+# Set the authenticated printer/job policies...
+<Policy authenticated>
+  # Job-related operations must be done by the owner or an administrator...
+  <Limit Create-Job Print-Job Print-URI Validate-Job>
+	AuthType Default
+	Order deny,allow
+  </Limit>
+
+  <Limit Send-Document Send-URI Hold-Job Release-Job Restart-Job Purge-Jobs Set-Job-Attributes Create-Job-Subscription Renew-Subscription Cancel-Subscription Get-Notifications Reprocess-Job Cancel-Current-Job Suspend-Current-Job Resume-Job CUPS-Move-Job CUPS-Get-Document>
+	AuthType Default
+	Require user @OWNER @SYSTEM
+	Order deny,allow
+  </Limit>
+
+  # All administration operations require an administrator to authenticate...
+  <Limit CUPS-Add-Modify-Printer CUPS-Delete-Printer CUPS-Add-Modify-Class CUPS-Delete-Class CUPS-Set-Default>
+	AuthType Default
+	Require user @SYSTEM
+	Order deny,allow
+  </Limit>
+
+  # All printer operations require a printer operator to authenticate...
+  <Limit Pause-Printer Resume-Printer Enable-Printer Disable-Printer Pause-Printer-After-Current-Job Hold-New-Jobs Release-Held-New-Jobs Deactivate-Printer Activate-Printer Restart-Printer Shutdown-Printer Startup-Printer Promote-Job Schedule-Job-After CUPS-Accept-Jobs CUPS-Reject-Jobs>
+	AuthType Default
+	Require user @SYSTEM
+	Order deny,allow
+  </Limit>
+
+  # Only the owner or an administrator can cancel or authenticate a job...
+  <Limit Cancel-Job CUPS-Authenticate-Job>
+	AuthType Default
+	Require user @OWNER @SYSTEM
+	Order deny,allow
+  </Limit>
+
+  <Limit All>
+	Order deny,allow
+  </Limit>
+</Policy>
+CUPSEOF
+
+/etc/init.d/cups restart
+true
+}
+
+
+
+
+
+#####
+# name sysWriteCrontabm23fetchjobEvery5Minutes
+# description Adds entries to crontab to check every 5 minutes for new jobs.
+#####
+sysWriteCrontabm23fetchjobEvery5Minutes()
+{
+	echo "-*/5 * * * * root screen -dmS m23fetchjob /etc/init.d/m23fetchjob" >> /etc/crontab
+	/etc/init.d/cron stop
+}
+
+
+
+
+
+#####
+# name sysWriteM23fetchjob
+# description Generates the m23fetchjob script and adds it to the init levels
+# parameter serverIP: IP of the m23 server
+#####
+sysWriteM23fetchjob()
+{
+serverIP=$1
+
+#write the m23fetchjob script
+echo "#!/bin/bash
+### BEGIN INIT INFO
+# Provides:		  m23fetchjob
+# Required-Start:
+# Required-Stop:
+# Default-Start:	 S
+# Default-Stop:	  0 6
+# Short-Description: Fetches new m23 client jobs
+### END INIT INFO
+
+# /etc/init.d/m23fetchjob
+
+if [ \`screen -ls | grep -c m23fetchjob\` -gt 1 ]
+then
+	exit
+fi
+
+m23fetchjob $serverIP" > /etc/init.d/m23fetchjob
+chmod +x /etc/init.d/m23fetchjob
+
+#link it to get it executed on every start
+chkconfig --level S m23fetchjob on
+
+rm /sbin/m23fetchjob 2> /dev/null
+
+cat >> /sbin/m23fetchjob << "MFJEOF"
+#!/bin/bash
+export PATH=/sbin:/usr/sbin:/usr/local/sbin:/bin:/usr/bin:/usr/local/bin
+
+id=`cat /m23clientID 2> /dev/null`
+
+cd /tmp
+rm work.php* 2> /dev/null
+
+wget -t2 -w5 https://$1/work.php?$idr -O work.php
+chmod +x work.php
+./work.php
+exit
+
+MFJEOF
+
+chmod 755 /sbin/m23fetchjob
+chmod +x /sbin/m23fetchjob
+}
+
+
+
+
+
+#####
+# name sysSetm23ClientID
+# description Sets the m23 client ID.
+# parameter ID: The m23 client ID.
+#####
+sysSetm23ClientID()
+{
+	echo "$1" > /m23clientID
+}
+
+
+
+
+
+#####
+# name sysSetRootPW
+# description Sets the root password.
+# parameter Password: The encrypted password of the user root.
+#####
+sysSetRootPW()
+{
+	sed "s#\(root:\)\([0-9a-zA-Z\$\/.*]*\)\(.*\)#\1$1\3#" -i /etc/shadow
+}
+
+
+
+
+
+#####
+# name sysSetTimeZone
+# description Sets the time zone.
+# parameter timezone: Timezone in POSIX notation (e.g. Europe/Berlin)
+#####
+sysSetTimeZone()
+{
+	cat "/tmp/HSCommandExecutionStatus.code" > "/tmp/startcode"
+	timezone="$1"
+	rm -f /etc/localtime && ln -sf "/usr/share/zoneinfo/posix/$timezone" /etc/localtime
+
+	#Remove the "ZONE" entry and add a new at the end of the file
+	grep -v ZONE /etc/sysconfig/clock > /tmp/zone
+	echo ZONE="\"$timezone\"" >> /tmp/zone
+	cat /tmp/zone > /etc/sysconfig/clock
+	saveRet
+	rm /tmp/zone
+}
+
+
+
+
+
+#####
+# name sysAddFstabEntry
+# description Generates commands to edit a given fstab, add new entries and remove old ones before.
+# parameter fstab line: Fstab line to add
+#####
+sysAddFstabEntry()
+{
+	#Temporary fstab
+	tmp="/tmp/sysAddFstabEntry.tmp"
+
+	#Replace all tabulators or spaces by '?'
+	splittedFstabLine=`echo "$@" | sed 's#[ \t]\+#?#g'`
+
+	#Get the device name from the fstab line
+	dev=`echo $splittedFstabLine | cut -f'?' -f1`
+
+	#Get the mount point name from the fstab line
+	mountPoint=`echo $splittedFstabLine | cut -f'?' -f1`
+
+	#Filter out the fstab line that has the same device
+	grep -v "^${dev}[ \t]" /etc/fstab > $tmp
+
+	#Add the new line
+	echo "$@" >> $tmp
+	saveRet
+
+	#Make the temporary fstab the normal fstab
+	cat $tmp > /etc/fstab
+	rm $tmp
+
+	#Create the mount point
+	mkdir -p "$mountPoint"
+	chmod 777 "$mountPoint"
+	mount "$mountPoint"
+	true
+}
+
+
+
+
+
+#####
+# name sysImportConfDB
+# description Generates BASH code to import client package configuration settings from the DB into the client package configuration of the client. The client package configuration settings are exspected in /tmp/confDB.update.
+# parameter none
+#####
+sysImportConfDB()
+{
+	rm /tmp/confDB.update 2> /dev/null
+	true
+	resetRet
+}
+
+
+
+
+sysInstallPrinter()
+{
+	pkgInstall cups-backends gutenprint cups foomatic-filters
+	chkconfig cups on
+	/etc/init.d/cups start
+	true
+	resetRet
+}
+
+
+sysCleanSystem()
+{
+	. /etc/m23-zypper-proxy.conf
+	#Clean cache
+	zypper -n cc -a
+	. /etc/m23-zypper-proxy-unset.conf
+}
+
+sysCompressSystem()
+{
+	cd /
+	tar -c --same-owner *| 7zr a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -si HS-opensuse-$arch.tar.7z
+}
+
+#########
+# Hooks #
+#########
+
+
+
+
+
+#####
+# name hookBeginAfterChroot
+# description Scripts that should be run at the beginning of the afterChroot.
+# parameter rootDevice: Device with partition where the os will be installed (e.g. /dev/hda1).
+# parameter bootDevice: Device (with partition) where the bootmanager will be installed (e.g. /dev/hda).
+# parameter rootDeviceFS: Filesystem of the root device.
+# parameter makedevURL: Compressed archive that contains the device nodes for /dev/.
+#####
+hookBeginAfterChroot()
+{
+	rootDevice=$1
+	bootDevice=$2
+	rootDeviceFS=$3
+	makedevURL=$4
+
+	echo '#!/bin/sh
+in="XX"
+
+while [ $in != "go" ]
+do
+	echo "Enter \"go\" + Enter to continue"
+	read in
+done' > /bin/wait4go
+
+	chmod +x /bin/wait4go
+	saveRet
+
+	mv /dev/random /dev/random.bak
+	mknod /dev/random c 1 9
+
+echo "proc /proc proc defaults 0 0
+$rootDevice / $rootDeviceFS defaults 0 1
+proc /proc proc defaults 0 0
+tmpfs /dev/shm tmpfs defaults 0 0
+devpts /dev/pts devpts gid=5,mode=620 0 0
+sysfs /sys sysfs defaults 0 0" > /etc/fstab
+
+	#Mount some devices
+	for dev in /proc /sys /dev/shm /dev/pts
+	do
+		mkdir -p $dev 2> /dev/null
+		mount $dev 2> /dev/null
+	done
+
+	#Use the hardware and nodes detected/created by initrd
+	mount -o bind /oldroot/dev /dev
+
+	#Workaround for missing modules.dep
+	[ -d "/lib/modules/$(uname -r)" ] || mkdir "/lib/modules/$(uname -r)"
+	cat /lib/modules/*/modules.dep > "/lib/modules/$(uname -r)/modules.dep";
+
+	#Move the SSL cert to the right place
+	netSetm23SSLCertificate
+
+	cd $cDir
+}
+
+
+
+
+
+
+#####
+# name hookEndAfterChroot
+# description Scripts that should be run at the end of the afterChroot.
+# parameter rootDevice: Device with partition where the os will be installed (e.g. /dev/hda1).
+# parameter bootDevice: Device (with partition) where the bootmanager will be installed (e.g. /dev/hda).
+# parameter rootDeviceFS: Filesystem of the root device.
+# parameter makedevURL: Compressed archive that contains the device nodes for /dev/.
+#####
+hookEndAfterChroot()
+{
+	rootDevice=$1
+	bootDevice=$2
+	rootDeviceFS=$3
+	makedevURL=$4
+	
+	#Cleanup workaround
+	rm -rf "/lib/modules/$(uname -r)"
+}
+
+
+
+
+
+#####
+# name helpPage
+# description Generates a help page if m23HSAdmins is called with wrong parameters.
+#####
+helpPage()
+{
+	echo "Usage: $0 <action> <parameter 1> <parameter 2> <parameter ...>
+
+Actions:"
+
+	awk '
+
+	BEGIN {
+		show=1
+	}
+
+	/^# name / {
+		gsub("^# name ","")
+		l=l$0
+	}
+
+	/^# parameter / {
+		gsub("^# parameter ","")
+		l=l" <"$0">"
+		show=1
+	}
+
+	/^# description / {
+		gsub("^# description ","")
+		d="ö"$0
+	}
+
+	/^#####/ {
+		if (show == 1)
+		{
+			print(l""d)
+			l=" * "
+			show=0
+		}
+	}
+
+	' $0 | sort | sed 's/ö/\n   /g'
+}
+
+
+
+
+
+#####
+# name pkgUpdateCacheOnServer
+# description updates the package list on the server ( for editing package selections )
+#			 and saves it gzipped in /m23/data+scripts/distr/halfSister/packages-$packagesourcename-$arch.gz
+# parameter name of the package source
+# parameter force the update
+# parameter architecture
+# output: Lines with the format: <package name>###<description without line breaks>###<installed size in KB>
+#####
+pkgUpdateCacheOnServer()
+{
+	packagesourcename="$1"
+	force="$2"
+	arch="$3"
+
+	#Reads the contents of the package source from stdin
+	packagesource=$(cat /dev/stdin)
+	
+	OUTFILE="/m23/data+scripts/distr/halfSister/packages-$packagesourcename-$arch.gz";
+	
+	#Should work with the next version
+	susever="$(echo "$packagesourcename" | sed -e 's/^[^0-9]*//' )"
+
+	out="$(mktemp)"
+	time=0;
+	if [ -f "$OUTFILE" ];
+	then
+		time=$( stat -c %X "$OUTFILE" );
+	fi
+
+	time=$(( $(stat -c %X $out ) - $time ));
+
+	#Update only after 2h or if forced
+	if [ $force -ne 0 ] && [ $time -lt 7200 ];
+	then
+		exit;
+	fi
+
+	LIST=" ";
+
+	#Get the files and test if they changed
+	for url in $packagesource;
+	do
+		if [[ "$url" =~ baseurl ]];
+		then
+			url="$(echo $url | sed -e 's/.*baseurl=//' | tr -d '[:cntrl:]' )";
+			tmp="$(mktemp)";
+
+			wget --quiet "$url/ARCHIVES.gz" -O "$tmp";
+
+			LIST="$LIST $tmp";
+		fi;
+	done;
+
+	for t in $LIST;
+	do
+		zcat "$t" | grep -i -e "--->" | sed -e 's/^.*\///g' -e 's/-[0-9].*/### ###0/g' >> "$out";
+	done
+
+	echo "OUTFILE: $OUTFILE" > /dev/stderr
+
+	cat "$out" | sort -d -u | gzip > "$OUTFILE";
+	rm "$out";
+}
+
+
+
+#Make sure, the action doesn't begin with one or more "-" (e.g. if the user decides to use --help)
+action=`echo "$1" | sed 's/^-*//g'`
+
+if [ `grep "$action()" $0 -c` -lt 1 ] || [ $# -eq 0 ]
+then
+	helpPage
+else
+	startLog
+	resetRet
+	shift
+	$action $@
+	saveRet
+	stopLog
+fi

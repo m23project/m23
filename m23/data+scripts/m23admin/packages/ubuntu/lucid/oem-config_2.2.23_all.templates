@@ -1,0 +1,85 @@
+Template: oem-config/remove
+Type: boolean
+Default: true
+Description: for internal use; can be preseeded
+ Remove oem-config on successful completion
+
+Template: oem-config/removing
+Type: text
+Description: Removing packages
+Description-ast.UTF-8: Desaniciando paquetes
+Description-be.UTF-8: Выдаленьне пакетаў
+Description-bg.UTF-8: Премахване на пакети
+Description-ca.UTF-8: S'estan suprimint els paquets
+Description-csb.UTF-8: Rëmanié paczétów
+Description-da.UTF-8: Fjerner pakker
+Description-de.UTF-8: Pakete werden entfernt
+Description-eo.UTF-8: Forigas pakaĵojn
+Description-es.UTF-8: Desinstalando paquetes
+Description-et.UTF-8: Pakettide eemaldamine
+Description-fi.UTF-8: Poistetaan paketteja
+Description-fr.UTF-8: Suppression des paquets
+Description-gl.UTF-8: Eliminando os paquetes
+Description-hi.UTF-8: पैकेज हटा रहा है
+Description-hu.UTF-8: Csomagok eltávolítása
+Description-it.UTF-8: Rimozione dei pacchetti
+Description-kk.UTF-8: Пакеттер жойылуда
+Description-lt.UTF-8: Šalinami paketai
+Description-lv.UTF-8: Noņem pakotnes
+Description-nb.UTF-8: Fjerner pakker
+Description-nl.UTF-8: Pakketten verwijderen
+Description-no.UTF-8: Fjerner pakker
+Description-oc.UTF-8: Supression dels paquets
+Description-pt.UTF-8: A remover pacotes
+Description-pt_BR.UTF-8: Removendo pacotes
+Description-ro.UTF-8: Se elimină pachetele
+Description-ru.UTF-8: Удаление пакетов
+Description-sq.UTF-8: Duke hequr paketat
+Description-sv.UTF-8: Tar bort paket
+Description-th.UTF-8: กำลังถอดถอนแพกเกจ
+Description-tr.UTF-8: Paketler kaldırılıyor
+Description-zh_CN.UTF-8: 正在删除软件包
+Description-zh_TW.UTF-8: 移除套件中
+
+Template: oem-config/early_command
+Type: string
+Description: for internal use; can be preseeded
+ Run a command just before oem-config starts.
+
+Template: oem-config/late_command
+Type: string
+Description: for internal use; can be preseeded
+ Run a command after oem-config completes.
+
+Template: oem-config/extra_packages
+Type: string
+Description: for internal use; can be preseeded
+ Comma/space-separated list of extra packages to install
+ as part of user configuration
+
+Template: oem-config/repository
+Type: string
+Description: for internal use; can be preseeded
+ Line to enter into sources.list for the duration of
+ oem-config/extra_packages
+
+Template: oem-config/key
+Type: string
+Description: for internal use; can be preseeded
+ Path of a public key that packages in oem-config/repository
+ are signed with.
+
+Template: oem-config/install-language-support
+Type: boolean
+Default: false
+Description: for internal use; can be preseeded
+ Install language support packages for the locale that has been selected by
+ the user.  Ensure you have provided these packages in oem-config/repository
+ or can guarantee a connection to the Internet.
+
+Template: oem-config/remove_extras
+Type: boolean
+Default: false
+Description: for internal use; can be preseeded
+ Remove packages that were not part of the base install and are not needed
+ by the final system.

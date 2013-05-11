@@ -1,0 +1,4 @@
+/etc/init.d/squid stop
+rm -r /var/spool/squid/*
+squid -z
+/etc/init.d/squid start

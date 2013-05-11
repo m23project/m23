@@ -1,0 +1,206 @@
+Template: ipvsadm/daemon_method
+Type: select
+Choices: none, master, backup, both
+Choices-cs.UTF-8: žádný, master, backup, oboje
+Choices-de.UTF-8: keinen, Master, Backup, beide
+Choices-eu.UTF-8: batez, nagusia, babeskopia, biak
+Choices-fi.UTF-8: ei mikään, isäntä, varmuuskopio, molemmat
+Choices-fr.UTF-8: Aucun, Maître, Sauvegarde, Les deux
+Choices-gl.UTF-8: ningún, mestre, respaldo, ambos
+Choices-it.UTF-8: nessuno, master, backup, entrambi
+Choices-nb.UTF-8: ingen, hovednisse, reserve, begge
+Choices-nl.UTF-8: geen, primair, reserve, beide
+Choices-no.UTF-8: ingen, hovednisse, reserve, begge
+Choices-pt.UTF-8: none, master, backup, ambos
+Choices-ru.UTF-8: не активировать, основной, резервный, оба
+Choices-sv.UTF-8: ingen, master, backup, bÃ¥da
+Choices-vi.UTF-8: không có, chủ, sao lưu, cả hai
+Default: none
+Description: Daemon method:
+ ipvsadm can activate the IPVS synchronization daemon. "master" starts this
+ daemon in master mode, "backup" in backup mode and "both" uses master and
+ backup mode at the same time. "none" disables the daemon.
+ .
+ See the man page for more details, ipvsadm(8).
+Description-cs.UTF-8: Metoda spuštění daemona:
+ ipvsadm může spustit synchronizačního daemona IPVS. "master" spustí daemona v master módu, "backup" v backup módu a "oboje" zapne master i backup mód najednou. "žádný" daemona vypne.
+ .
+ Pro více informací si přečtěte manuálové stránky ipvsadm(8).
+Description-de.UTF-8: Daemon-Methode:
+ Ipvsadm kann den IPVS-Synchronisationsdaemon aktivieren. »Master« startet diesen Daemon im Master-Modus, »Backup« im Backup-Modus und »beide« verwendet Master- und Backup-Modus gleichzeitig. »keinen« deaktiviert den Daemon.
+ .
+ Für nähere Informationen lesen Sie die Handbuchseite ipvsadm(8).
+Description-eu.UTF-8: Deabru metodoa:
+ ipvsadm-ek IPVS sinkronizazio deabrua aktibatu dezake. "nagusi" erabiliaz deabrua nagusi moduan abiaraziko da, "babeskopia" erabiliaz babeskopia moduan eta "biak" hauatatuz nagusi eta babeskopia moduan aldi berean abiaraziko dira. "batez" erabiliaz deabrua ezgaitzen da.
+ .
+ Ikusi man orrialdea xehetasun gehiagorako ipvsadm(8).
+Description-fi.UTF-8: Taustaohjelman toimintatapa:
+ ipvsadm voi käynnistää IPVS-synkronisointitaustaohjelman. Valinnalla ”isäntä” taustaohjelma käynnistyy isäntätilassa, valinnalla ”varmmuskopio” varmuuskopiotilassa ja valinnalla ”molemmat” se käyttää molempia tiloja yhtäaikaa. Valinta ”ei mikään” poistaa taustaohjelman käytöstä.
+ .
+ Lisätietoja löytyy man-ohjesivulta ipvsadm(8).
+Description-fr.UTF-8: Méthode de lancement du démon :
+ Ipvsadm peut activer le démon de synchronisation IPVS. Le choix « Maître » lance le démon en mode maître, « Sauvegarde » en mode sauvegarde, « Les deux » utilise les deux modes et « Aucun » désactive le démon.
+ .
+ Veuillez consulter la page de manuel, ipvsadm(8), pour plus d'informations.
+Description-gl.UTF-8: Método do servizo:
+ ipvsadm pode activar o servizo de sincronización de IPVS. "Mestre" inicia este servizo en modo mestre, "respaldo" en modo de respaldo e "ambos" emprega o modo mestre e de respaldo ao mesmo tempo. "Ningún" desactiva o servizo.
+ .
+ Consulte a páxina de manual, ipvsadm(8), para máis detalles.
+Description-it.UTF-8: Modalità del demone:
+ ipvsadmin può attivare il demone di sincronizzazione IPVS. Con "master" il demone parte in modalità master, con "backup" il demone parte in modalità backup invece con "entrambi" si attivano le modalità master e backup allo stesso tempo. Con "nessuno" il demone viene disabilitato.
+ .
+ Si veda la pagina man ipvsadm(8) per maggiori dettagli.
+Description-nb.UTF-8: Nisse-metode:
+ ipvsadm kan starte synkroniseringsnissen for IPVS. «Hovednisse» starter denne nissen som hovedkjøring, «reserve» som reservekjøring og «begge» bruker hoved- og reservekjøring samtidig. «Ingen» slår av nissen.
+ .
+ Mer detaljer finnes i man-sida, ipvsadm(8).
+Description-nl.UTF-8: Achtergronddienst-methode:
+ ipvsadm kan de IPVS-synchronisatie-achtergronddienst activeren. 'primair' start deze achtergronddienst in primaire modus, 'reserve' in reserve-modus, en 'beide' gebruikt zowel de primaire als de reserve-modus. 'geen' schakelt de achtergronddienst uit.
+ .
+ Meer informatie vindt u in de man-pagina ipvsadm(8).
+Description-no.UTF-8: Nisse-metode:
+ ipvsadm kan starte synkroniseringsnissen for IPVS. «Hovednisse» starter denne nissen som hovedkjøring, «reserve» som reservekjøring og «begge» bruker hoved- og reservekjøring samtidig. «Ingen» slår av nissen.
+ .
+ Mer detaljer finnes i man-sida, ipvsadm(8).
+Description-pt.UTF-8: Método para o 'daemon':
+ O ipvsadm pode activar o 'daemon' de sincronização IPVS. O método "master" inicia o 'daemon' em modo principal. "backup" em modo de backup, e "ambos" utiliza o modo principal e o backup ao mesmo tempo, "none " desactiva o 'daemon'.
+ .
+ Veja a página man para mais detalhes, ipvsadm(8).
+Description-ru.UTF-8: Режим работы демона:
+ ipvsadm может активировать демон синхронизации IPVS. При выборе "основной", демон запускается как основной (master), при выборе "резервный", как резервный (backup), а при выборе "оба", используется основной и резервный режим одновременно. Если выбрать "не активировать", то демон запущен не будет.
+ .
+ Подробности описаны на странице руководства ipvsadm(8).
+Description-sv.UTF-8: VÃ¤lj metod fÃ¶r demonen.
+ ipvsadm kan aktivera synkroniseringsdemonen fÃ¶r IPVS. "master" startar denna demon i master-lÃ¤ge, "backup" i backup-lÃ¤ge och "bÃ¥da" anvÃ¤nder master och backup samtidigt. "ingen" stÃ¤nger av demonen.
+ .
+ Se manualsidan fÃ¶r mer detaljer, ipvsadm(8).
+
+Template: ipvsadm/kernel_does_not_support_ipvs
+Type: note
+Description: Kernel does not support IPVS
+ ipvsadm requires IPVS support in the kernel. Please use a kernel with IPVS
+ modules, otherwise this software is pretty useless.
+Description-cs.UTF-8: Jádro nepodporuje IPVS
+ ipvsadm požaduje podporu IPVS, který je součástí jádra. Použijte prosím jádro s podporou IPVS, jinak vám tento program bude k ničemu.
+Description-de.UTF-8: Der Kernel unterstützt IPVS nicht
+ Ipvsadm benötigt IPVS-Unterstützung im Kernel. Bitte benutzen Sie einen Kernel mit IPVS-Modulen, sonst ist diese Software nutzlos.
+Description-eu.UTF-8: Kernelak ez du IPVS onartzen
+ ipvsadm-ek kernelean IPVS onarpena behar du. Mesedez erabili IPVS moduluak dituen kernel bat, bestela software hau ezin da erabili.
+Description-fi.UTF-8: Ydin ei tue IPVS:ää
+ ipvsadm vaatii, että ydin tukee IPVS:ää. Käytä ytimen IPVS-moduuleita, koska ilman niitä tämä ohjelma on käyttökelvoton.
+Description-fr.UTF-8: Pas de gestion IPVS dans le noyau
+ Ipvsadm a besoin d'un noyau qui gère IPVS. Veuillez utiliser un noyau qui comporte un module IPVS. Sans cela, ce logiciel ne peut pas être utilisé.
+Description-gl.UTF-8: O núcleo non soporta IPVS
+ ipvsadm precisa de soporte de IPVS no núcleo. Empregue un núcleo con módulos de IPVS, ou este software non ha servir para nada.
+Description-it.UTF-8: Il kernel non supporta IPVS
+ ipvsadm richiede il supporto IPVS da parte del kernel. Se non si usa un kernel con i moduli per IPVS questo programma è praticamente inutile.
+Description-nb.UTF-8: Kjernen støtter ikke IPVS
+ ipvsadm trenger IPVS-støtte i kjernen. Bruk en kjerne med IPVS-moduler, ellers er dette programmet ganske nytteløst.
+Description-nl.UTF-8: Uw kernel ondersteunt geen IPVS.
+ ipvsadm vereist IPVS-ondersteuning in de kernel. Gelieve een kernel met IPVS-modules te gebruiken, anders is deze software nutteloos.
+Description-no.UTF-8: Kjernen støtter ikke IPVS
+ ipvsadm trenger IPVS-støtte i kjernen. Bruk en kjerne med IPVS-moduler, ellers er dette programmet ganske nytteløst.
+Description-pt.UTF-8: O kernel não suporta IPVS
+ O ipvsadm necessita de suporte IPVS no kernel. Por favor utilize um kernel com módulos IPVS, caso contrário este software não lhe será útil.
+Description-ru.UTF-8: Ядро не поддерживает IPVS
+ Для ipvsadm требуется поддержка IPVS в ядре. Используйте ядро с модулями IPVS, так как иначе данное ПО бесполезно.
+Description-sv.UTF-8: KÃ¤rnan har inte stÃ¶d fÃ¶r IPVS.
+ ipvsadm krÃ¤ver stÃ¶d fÃ¶r IPVS i kÃ¤rnan. VÃ¤nligen anvÃ¤nd en kÃ¤rna med IPVS-moduler annars Ã¤r denna programvara ganska oanvÃ¤ndbar.
+Description-vi.UTF-8: Hạt nhân này không hỗ trợ IPVS
+ Trình ipvsadm cần thiết hạt nhân hỗ trợ IPVS. Hãy dùng một hạt nhân chứa mô-đun IPVS, không thì phần mềm này hơi vô ích.
+
+Template: ipvsadm/auto_load_rules
+Type: boolean
+Default: false
+Description: Do you want to automatically load IPVS rules on boot?
+ If you choose this option your IPVS rules will be loaded from
+ /etc/ipvsadm.rules automatically on boot.
+Description-cs.UTF-8: Chcete načíst pravidla IPVS automaticky při startu počítače?
+ Pokud zvolíte tuto možnost, pak budou vaše pravidla IPVS automaticky načtena ze souboru /etc/ipvsadm.rules při startu počítače.
+Description-de.UTF-8: Möchten Sie IPVS-Regeln beim Booten automatisch laden?
+ Falls Sie diese Option wählen, werden Ihre IPVS-Regeln beim Booten automatisch aus /etc/ipvsadm.rules geladen.
+Description-eu.UTF-8: Abioan automatikoki IPVS arauak autoamtikoki kargatzea nahi al duzu?
+ Aukera hau hautatuaz IPVS arauak sistema abioan automatikoki kargatuko dira /etc/ipvsadm-etik.
+Description-fi.UTF-8: Tulisiko IPVS-säännöt ladata käynnistettäessä järjestelmä?
+ Jos valitset tämän vaihtoehdon, IPVS-säännöt ladataan automaattisesti tiedostosta /etc/ipvsadm.rules, kun järjestelmä käynnistyy.
+Description-fr.UTF-8: Faut-il charger automatiquement les règles d'IPVS au démarrage ?
+ Si vous choisissez cette option, les règles IPVS seront automatiquement chargées à chaque démarrage, depuis le fichier /etc/ipvsadm.rules.
+Description-gl.UTF-8: ¿Quere cargar as regras de IPVS automaticamente no inicio?
+ Se escolle esta opción, hanse cargar automaticamente as regras de IPVS de /etc/ipvsadm.rules no inicio.
+Description-it.UTF-8: Caricare automaticamente le regole IPVS all'avvio?
+ Accettando questa opzione le regole IPVS saranno caricate automaticamente da /etc/ipvsadm.rules a ogni avvio.
+Description-nb.UTF-8: Vil du at IPVS-moduler skal lastes inn automatisk ved oppstart?
+ Hvis du velger dette blir IPVS-reglene dine lastet inn automatisk fra /etc/ipvsadm.rules når maskinen starter.
+Description-nl.UTF-8: Wilt u dat de IPVS-regels automatisch geladen tijdens het opstarten van de computer?
+ Als u deze optie kiest zullen uw IPVS-regels tijdens het opstarten van de machine automatisch geladen worden uit /etc/ipvsadm.rules.
+Description-no.UTF-8: Vil du at IPVS-moduler skal lastes inn automatisk ved oppstart?
+ Hvis du velger dette blir IPVS-reglene dine lastet inn automatisk fra /etc/ipvsadm.rules når maskinen starter.
+Description-pt.UTF-8: Deseja carregar automaticamente as regras IPVS durante o arranque?
+ Se escolher esta opção as suas regras IPVS serão carregadas a partir de /etc/ipvsadm.rules de modo automático durante o arranque do sistema.
+Description-ru.UTF-8: Загружать правила IPVS автоматически при включении компьютера?
+ Если вы ответите утвердительно, то правила IPVS будут сохраняться и загружаться из /etc/ipvsadm.rules автоматически при включении компьютера.
+Description-sv.UTF-8: Vill du automatiskt ladda in IPVS-regler vid systemets uppstart?
+ Om du vÃ¤ljer denna funktion kommer dina IPVS-regler att sparas till och laddas frÃ¥n /etc/ipvsadm.rules automatiskt vid nedstÃ¤ngning av systemet och uppstart.
+Description-vi.UTF-8: Bạn có muốn tự động nạp các quy tắc IPVS khi khởi động hệ thống không?
+ Bật tùy chọn này thì các quy tắc IPVS của bạn sẽ được nạp từ « /etc/ipvsadm.rules » một cách tự động khi khởi động hệ thống.
+
+Template: ipvsadm/daemon_multicast_interface
+Type: string
+Default: eth0
+Description: Multicast interface for ipvsadm:
+ Select the multicast interface to be used by synchronization daemon. e.g.
+ eth0, eth1...
+ .
+ ${interface_error}
+Description-cs.UTF-8: Rozhraní multicast pro ipvsadm:
+ Vyberte multicast rozhraní, na kterém poběží synchronizační daemon. Např. eth0, eth1...
+ .
+ ${interface_error}
+Description-de.UTF-8: Multicast-Schnittstelle für Ipvsadm:
+ Wählen Sie die Multicast-Schnittstelle aus, die vom Synchronisationsdaemon verwendet werden soll, z.B. eth0, eth1 usw.
+ .
+ ${interface_error}
+Description-eu.UTF-8: ipvsadm-ek erabiliko duen multicast interfazea:
+ Hautatu sinkronizazio deabruak erabili duen multicast interfazea. adib. eth0, eth1...
+ .
+ ${interface_error}
+Description-fi.UTF-8: ipvsadminin ryhmälähetysliitäntä:
+ Valitse ryhmälähetysliitäntä, jota synkronisointitaustaohjelman tulisi käyttää, esim. eth0, eth1...
+ .
+ ${interface_error}
+Description-fr.UTF-8: Interface multidiffusion pour ipvsadm :
+ Veuillez indiquer l'interface de multidiffusion (« multicast ») qui doit être utilisée par le démon de synchronisation. Par exemple : eth0, eth1...
+ .
+ ${interface_error}
+Description-gl.UTF-8: Interface multicast para ipvsadm:
+ Escolla a interface multicast que debe empregar o servizo de sincronización. Por exemplo, eth0, eth1, ...
+ .
+ ${interface_error}
+Description-it.UTF-8: Interfaccia multicast per ipvsadm:
+ Scegliere quale interfaccia di multicast deve essere usata dal demone di sincronizzazione; per esempio eth0, eth1...
+ .
+ ${interface_error}
+Description-nb.UTF-8: Flerkastingsgrensesnitt for ipvsadm:
+ Velg det flerkastings-grensesnittet som synkroniseringsnissen skal bruke, f.eks. eth0, eth1 …
+ .
+ ${interface_error}
+Description-nl.UTF-8: Multicast-interface voor ipvsadm:
+ Welke multicast-interface dient door de synchronisatie-achtergronddienst gebruikt te worden? (bijvoorbeeld eth0, eth1 ...)
+ .
+ ${interface_error}
+Description-no.UTF-8: Flerkastingsgrensesnitt for ipvsadm:
+ Velg det flerkastings-grensesnittet som synkroniseringsnissen skal bruke, f.eks. eth0, eth1 …
+ .
+ ${interface_error}
+Description-pt.UTF-8: Interface multicast para o ipvsadm:
+ Seleccione a interface multicast para ser utilizada pelo 'daemon' de sincronização, por. ex. eth0, eth1...
+ .
+ ${interface_error}
+Description-ru.UTF-8: Интерфейс многоадресной передачи для ipvsadm:
+ Укажите интерфейс многоадресной передачи, который должен использовать демон синхронизации, например eth0, eth1...
+ .
+ ${interface_error}
+Description-sv.UTF-8: Multicast-grÃ¤nssnitt fÃ¶r ipvsadm
+ VÃ¤lj det multicastgrÃ¤nssnitt som ska anvÃ¤ndas av synkroniseringsdemonen. Exempelvis eth0, eth1...
+ .
+ ${interface_error}

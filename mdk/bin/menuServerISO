@@ -1,0 +1,135 @@
+#!/bin/sh
+
+if [ `whoami` != "root" ]
+then
+	echo "You MUST BE root here. Switch to root account and start again. Now press \"enter\" to leave."
+	read gaga
+	exit
+fi
+
+
+. /mdk/bin/kernelFunctions.inc
+. /mdk/bin/busyBoxFunctions.inc
+. /mdk/bin/archFunctions.inc
+. /mdk/bin/menuFunctions.inc
+. /mdk/bin/rfsFunctions.inc
+. /mdk/bin/serverFunctions.inc
+
+	#stores the base root filesystem directory (without trailing architecture)
+	menuVarAdd rootFSDir /mdk/server/initrd/mnt
+	#where the initrd file should be build and the subdirectory to mount the initrd should be placed
+	menuVarAdd initrdBuildDir /mdk/server/initrd
+	#where the ISO file should be build
+	menuVarAdd ISOBuildDir /mdk/server/iso
+	#directory that stored additional files and directories that should be copied into the RFS
+	menuVarAdd rootFSExtraDir /mdk/server/extraRFS
+	#server installation CD is available in i386 only
+	menuVarAdd kernelType i386
+	echo "x86" > /tmp/m23architecture
+	#name of the prefix of the bootCD: $bootCDPrefix-$arch.iso (e.g. m23server-i386.iso)
+	menuVarAdd bootCDPrefix m23server
+
+	#kernelBranch is set in checkKernelBranch and stores the kernel main version (2.4 or 2.6)
+	#kernelDir is set in checkKernelDir and stores the directory under kernelStoreDir where the kernel code is extracted
+	#busyBoxDir is set in checkBusyBoxDir
+
+. /tmp/menuVars
+
+
+
+#get version information
+#mdkver=`find /mdk/bootCD/iso/mdk.tb2 -printf "%s Bytes %TD %TH:%TM:%TS"`
+#m23ver=`find /mdk/bootCD/iso/m23.tb2 -printf "%s Bytes %TD %TH:%TM:%TS"`
+imagever=`find $ISOBuildDir/m23image.tar.7z -printf "%s Bytes %TD %TH:%TM:%TS"`
+isover=`cat $ISOBuildDir/ISO.info`
+usrm23ver=`find /m23/data+scripts/distr/debian/usrm23.tar.gz -printf "%s Bytes %TD %TH:%TM:%TS"`
+#dbver=`find $ISOBuildDir/m23.sql.bz2 -printf "%TD %TH:%TM:%TS"`
+
+
+#	"mdk" "Make MDK archive ($mdkver)" \
+#	"m23" "Make m23 software archive ($m23ver)" \
+
+#	"exportDB" "Export DB to SQL (m23.sql.bz2: $dbver)"\
+
+bootCDOption=`bootCDOption 2>/dev/null` || bootCDOption=/tmp/bootCDOption$$
+dialog --clear --backtitle "m23 Software Development Kit (MDK)" --title "m23 Server ISO builder" \
+	--menu "Main menu" 15 75 8 \
+	"kernel" "download and make kernel" \
+	"osimage" "Make server OS image ($imagever)"\
+	"transfer" "=> Transfer the osimage to 192.168.1.77"\
+	"usrm23" "=> make new /usr/m23-file ($usrm23ver)"\
+	"iso" "build new ISO image ($isover)"\
+	"burn" "burn ISO"\
+	"help" "help"\
+	"quit" "quit menu" 2> $bootCDOption
+retval=$?
+case $retval in
+    1)
+       exit;;
+    255)
+       exit;;
+esac
+
+# 	#kernel for bootCD or bootimage
+# 	echo "bootCD" > /tmp/m23kernelType
+# 	#kernel compile directory
+# 	echo "/mdk/bootCD/kernel" > /tmp/m23kernelStoreDir
+# 	#directory the old configure files
+# 	echo "/mdk/bootCD/" > /tmp/m23kernelConfigDir
+# 	#name and path of the target kernel
+# 	echo "/mdk/bootCD/iso/isolinux/kernel" > /tmp/m23targetKernelName
+# 	#path to the target module directory
+# 	echo "/mdk/bootCD/root/lib/modules/" > /tmp/m23targetModulesDir
+
+choice=`cat $bootCDOption`
+
+rm $bootCDOption
+
+
+case $choice in
+# 	"exportDB")
+# 		exportDBInitTable
+# 		/mdk/bin/menuServerISO
+# 		exit;;
+
+#transfers the m23 base system image to the master server
+	"transfer")
+		scp $ISOBuildDir/m23image.tar.7z 192.168.1.77:$ISOBuildDir
+		exit;;
+
+#download and make kernel
+	"kernel")
+		menuVarAdd menuExecAfter /mdk/bin/menuServerISO
+		menuKernelBuilder
+		/mdk/bin/menuServerISO
+		exit;;
+
+#build m23image.tb2
+	"osimage")
+		createOSImage
+		/mdk/bin/menuServerISO
+		exit;;
+
+#build iso
+	"iso")
+		createServerInstallISO
+		/mdk/bin/menuServerISO
+		exit;;
+
+#burn iso
+	"burn")
+		burnClientOrServerISO
+		/mdk/bin/menuServerISO
+		exit;;
+
+#Creates an archive of the files in /m23/data+scripts/distr/debian/usrm23/.
+	"usrm23")
+		mkusrm23
+		/mdk/bin/menuServerISO
+		exit;;
+
+	"help")
+		dialog --backtitle "m23 Software Development Kit (MDK)" --title "Server installation CD creator" --textbox help/menuBootCD.hlp 22 80
+		/mdk/bin/menuServerISO
+		exit;;
+esac

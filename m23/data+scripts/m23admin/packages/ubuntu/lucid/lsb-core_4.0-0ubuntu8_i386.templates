@@ -1,0 +1,125 @@
+
+Template: lsb/shadowconfig
+Type: boolean
+Default: true
+Description: Enable shadow passwords?
+ The Linux Standard Base requires that certain features of adduser(8)
+ be available to conforming applications (such as password
+ aging). These features are only provided when shadow passwords are
+ enabled, while this system has them disabled.
+ .
+ Most LSB applications will work fine with either setting, but complete
+ conformance requires shadow passwords to be enabled.
+ .
+ Generally speaking, it is considered good practice to enable shadow
+ passwords. However, there are some situations in which shadow passwords
+ may not work properly (most notably, if non-root users need to
+ check passwords against /etc/passwd).
+Description-ar.UTF-8: تمكين shadow passwords؟
+ تتطلب Linux Standard Base أن تتوفر ميزات معينة من adduser(8) للتطبيقات المماثلة لها (كتقادم كلمة المرور). وتتوفر هذه الميزات فقط عند تمكن shadow passwords، إلا أن هذا النظام لا تتوفر فيه هذه الميزة.
+ .
+ ستعمل معظم تطبيقات LSB بشكل جيد باستخدام أي من الإعدادات، ولكن التوافق الكامل يتطلب تمكين shadow passwords.
+ .
+ بشكل عام، من المستحسن تمكين shadow passwords. مع ذلك، فهناك بعض الحالات التي قد لا تعمل معها هذه الميزة (وبالأخص، في حال حاجة المستخدمين العاديين التحقق من كلمة السر الخاصة بهم ومطابقتها مع /etc/passwd).
+Description-cs.UTF-8: Povolit stínová hesla?
+ Linux Standard Base vyžaduje, aby byly určité vlastnosti programu adduser(8) (např. stárnutí hesel) dostupné odpovídajícím aplikacím. Tyto vlastnosti jsou k dispozici pouze při zapnutých stínových heslech, ovšem zdá se, že váš systém má podporu stínových hesel vypnutu.
+ .
+ Většina LSB aplikací bude pracovat s oběma nastaveními, ale úplné kompatibility dosáhnete pouze se zapnutou podporou stínových hesel.
+ .
+ Obecně jsou stínová hesla doporučena, avšak existují situace, kdy nemusí fungovat (například pokud si neprivilegovaní uživatelé potřebují kontrolovat hesla oproti /etc/passwd).
+Description-de.UTF-8: Schatten-Passworte (»shadow passwords«) aktivieren?
+ Die LSB (»Linux Standard Base«) verlangt, dass bestimmte Funktionen von adduser(8) für LSB-konforme Anwendungen verfügbar sind (z.B. Passwort-Alterung). Diese Funktionen werden nur zur Verfügung gestellt, wenn Schatten-Passworte aktiviert werden; während in diesem System Schatten-Passworte derzeit nicht aktiviert sind.
+ .
+ Die meisten LSB-Anwendungen werden mit jeder Einstellung prima funktionieren, aber vollständige Konformität verlangt, dass Schatten-Passworte aktiviert werden.
+ .
+ Es ist generell das Richtige, Schatten-Passworte zu benutzen. Es gibt jedoch einige Situationen, in denen Schatten-Passworte nicht richtig funktionieren (insbesondere falls Nicht-Root-Benutzer Passworte in /etc/passwd überprüfen müssen).
+Description-es.UTF-8: ¿Activar las contraseñas ocultas?
+ El estándar base de Linux (LSB, «Linux Standard Base») exige que ciertas características de adduser(8) (como pueda ser el envejecimiento de contraseñas) estén disponibles para las aplicaciones que siguen dicho estándar. Actualmente sólo se proporciona esas características cuando están activas las contraseñas ocultas («shadow») pero está desactivadas en su sistema.
+ .
+ La mayoría de las aplicaciones LSB funcionarán correctamente en cualquiera de las dos configuraciones posibles. Sin embargo, para cumplir el estándar es necesario activar el uso de contraseñas ocultas.
+ .
+ La activación de las contraseñas ocultas se considera una buena práctica. Pero hay algunas situaciones en las que éstas pueden no funcionar correctamente. El caso más notable es cuando es necesario que los usuarios que no son administradores tengan que comprobar las contraseñas utilizando el fichero «/etc/passwd».
+Description-eu.UTF-8: Gaitu itzalpeko pasahitzak?
+ Linux Standard Base-k (Linuxen Oinarri Estandarrak) beharrezkoak ditu adduser(8)-en zenbait ezaugarri (hala nola pasahitzen zahartzea) LSB aplikazioen eskura egotea. Ezaugarri hauek itzalpeko pasahitzak gaituta daudenean soilik daude eskura, baina sistema honek desgaiturik ditu une honetan.
+ .
+ LSB aplikazio gehienek ondo funtzionatuko dute ezarpen biekin, baina LSB bateragarritasun osorako beharrezkoa da itzalpeko pasahitzak gaituta egotea. 
+ .
+ Oro har, jokabide egokitzat hartzen da itzalpeko pasahitzak gaitzea. Alabaina, egoera jakin batzuetan itzalpeko pasahitzek zuzen ez funtzionatzea gerta daiteke (adibide argiena, pribilegiorik gabeko erabiltzaileek pasahitzak egiaztatzeko /etc/password begiratzen dutenean).
+Description-fi.UTF-8: Otetaanko varjosalasanat käyttöön?
+ Linux Standard Base vaatii, että tietyt ohjelman adduser(8) ominaisuudet (kuten salasanojen vanheneminen) ovat yhteensopivien ohjelmien käytettävissä. Nämä ominaisuudet ovat saatavilla vain, kun varjosalasanat ovat käytössä, mutta tässä järjestelmässä ne eivät ole käytössä.
+ .
+ Useimmat LSB-ohjelmat toimivat hyvin kummallakin valinnalla, mutta täydellinen yhteensopivuus vaatii, että varjosalasanat ovat käytössä.
+ .
+ Yleisesti ottaen varjosalasanojen käyttöä pidetään hyvänä tapana. On kuitenkin joitain tilanteita, joissa varjosalasanat eivät välttämättä toimi oikein (eritysesti, jos ei-pääkäyttäjien tarvitsee tarkistaa salasanoja tiedoston /etc/passwd avulla).
+Description-fr.UTF-8: Faut-il activer les mots de passe cachés (« shadow passwords ») ?
+ La base normalisée de Linux (LSB : «  Linux Standard Base ») impose que certaines fonctionnalités de adduser(8) (p. ex. l'expiration des mots de passe) soient disponibles pour les applications. Ces possibilités ne sont disponibles que lorsque les mots de passe cachés sont activés ; or, ils sont actuellement désactivés sur ce système.
+ .
+ La plupart des applications conformes à la LSB fonctionnent correctement dans tous les cas, mais la conformité complète n'est possible qu'avec l'activation des mots de passe cachés.
+ .
+ En général, l'activation des mots de passe cachés est plutôt un choix judicieux. Cependant, leur utilisation peut créer des difficultés dans certains cas (typiquement, lorsqu'un utilisateur non privilégié cherche à utiliser /etc/passwd pour contrôler les mots de passe).
+Description-gl.UTF-8: ¿Activar os contrasinais "shadow"?
+ Linux Standard Base require que algunhas características de adduser(8), coma o avellentamento dos contrasinais, estean dispoñibles para as aplicacións que cumpran con LSB. Estas características só están dispoñibles cando os contrasinais "shadow" están activados, mentres que este sistema os ten desactivados.
+ .
+ A maioría das aplicacións LSB han funcionar correctamente de calquera maneira, pero para conseguir unha total compatibilidade hai que activar os contrasinais "shadow".
+ .
+ Xeralmente considérase unha boa práctica activar os contrasinais "shadow". Nembargantes hai algunhas situacións nas que os contrasinais "shadow" poden non funcionar correctamente (por exemplo, se algún usuario que non sexa "root" ten que comprobar contrasinais contra /etc/passwd).
+Description-it.UTF-8: Abilitare le password shadow?
+ Il Linux Standard Base richiede che le applicazioni conformi possano disporre di alcune funzionalità di adduser(8) (per esempio la scadenza delle password). Queste funzionalità sono disponibili solo quando sono abilitate le password shadow; su questo sistema sono attualmente disabilitate.
+ .
+ La maggior parte delle applicazioni LSB funzionano correttamente con entrambe le impostazioni, ma per essere completamente conformi è necessario abilitare le password shadow.
+ .
+ In generale l'abilitazione delle password shadow è considerata una buona pratica. Purtroppo ci sono dei casi in cui le password shadow potrebbero non funzionare correttamente (il caso più comune quando gli utenti non-root hanno la necessità di verificare le password con /etc/passwd).
+Description-ja.UTF-8: shadow パスワードを有効にしますか?
+ Linux Standard Base では、適合アプリケーションになるために adduser(8) の特定の機能 (パスワード有効期限など) が利用できる必要があります。これらの機能は、shadow パスワードが有効になった時のみに提供されますが、このシステムでは無効になっています。
+ .
+ どちらの設定であっても、ほとんどの LSB アプリケーションは問題なく動作しますが、LSB に完全に適合するには shadow パスワードが有効になっている必要があります。
+ .
+ 一般的に言って、shadow パスワードを有効にするのは良い選択だと考えられています。しかしながら、shadow パスワードが正しく動作しないような場合もあります (特に root ではないユーザが /etc/passwd を使ってパスワード認証をする必要がある場合など)。
+Description-ml.UTF-8: ഷാഡോ (shadow)  അടയാളവാക്ക് പ്രാവര്‍ത്തികമാക്കട്ടെ?
+ അനുസരിക്കുന്ന (അടയാളവാക്കിന്റെ കാലാവധിപോലുളള) പ്രയോഗങ്ങള്‍ക്കായി ആഡ്‌യുസറിന്റെ(adduser)(8) ചില ഗുണങ്ങള്‍ ലഭ്യമായിരിയ്ക്കേണ്ടത്  ലിനക്സ് സ്റ്റാന്‍ഡേര്‍ഡ് ബേസിന് (Linux Standard Base) ആവശ്യമുണ്ട്. ഷാഡോ (shadow)  അടയാളവാക്കുകള്‍ പ്രാവര്‍ത്തികമാക്കുമ്പോള്‍ മാത്രമാണ്  ഈ ഗുണങ്ങള്‍  നല്‍കുന്നത്, പക്ഷേ ഈ സിസ്റ്റത്തില്‍ അവ തടഞ്ഞിരിക്കുന്നു. 
+ .
+ ഒട്ടുമിക്ക എല്എസ്ബി (LSB) പ്രയോഗങ്ങളും രണ്ടിലേത് സജ്ജീകരണങ്ങിലും നന്നായി പ്രവര്‍ത്തിക്കും. പക്ഷേ പൂര്‍ണ്ണ അനുസരണത്തിനു (complete conformance) ഷാഡോ (shadow) അടയാളവാക്കുകള്‍ പ്രാവര്‍ത്തികമാക്കേണ്ടതുണ്ട്.
+ .
+ പൊതുവേ പറഞ്ഞാല്‍, ഷാഡോ (shadow)  അടയാളവാക്കുകള്‍ പ്രാവര്‍ത്തികമാക്കുന്നത് ഒരു നല്ല രീതിയായി കരുുതപ്പെടുന്നു. എന്നിരുന്നാലും ഷാഡോ (shadow)  അടയാളവാക്കുകള്‍ നന്നായി പ്രവര്‍ത്തിക്കാത്ത ചില സാഹചര്യങ്ങളുണ്ട് (റൂട്ടല്ലാത്ത ഉപയോക്താക്കള്‍ക്ക്  അടയാളവാക്കുകള്‍  /etc/passwd ല്‍ പരിശോദിയ്ക്കുേണ്ടി വരുന്നതാണ് ഏറ്റവും പ്രസക്തം).
+Description-nl.UTF-8: Wilt u schaduwwachtwoorden activeren?
+ De Linux Standard Base (LSB) vereist dat adduser(8) bepaalde opties beschikbaar maakt (zoals wachtwoordveroudering). Deze opties zijn enkel beschikbaar wanneer schaduwwachtwoorden geactiveerd zijn, op dit systeem zijn deze momenteel gedeactiveerd.
+ .
+ De meeste LSB-applicaties werken prima ongeacht of schaduwwachtwoorden wel of niet geactiveerd zijn, maar om volledig aan de LSB-standaard te voldoen dienen ze geactiveerd te zijn.
+ .
+ In het algemeen wordt het als 'goede gewoonte' beschouwd om schaduwwachtwoorden te activeren.  Wel zijn er bepaalde situaties waarin schaduwwachtwoorden mogelijk niet goed werken (met name, wanneer niet-root gebruikers wachtwoorden dienen te controleren via /etc/passwd).
+Description-pt.UTF-8: Activar as passwords 'shadow'?
+ O Linux Standard Base requere que determinadas funcionalidades do adduser(8) estejam disponíveis a aplicações conformes (tal como o envelhecimento da password). Estas funcionalidades só estão disponíveis quando as passwords 'shadow' estão activadas, no entanto, no seu sistema estão desactivadas.
+ .
+ A maioria das aplicações LSB irão funcionar correctamente com qualquer opção, no entanto para haver completa conformidade as passwords 'shadow' devem estar activadas.
+ .
+ Por norma, é considerada boa prática activar as passwords 'shadow'. No entanto, existem algumas situações em que as passwords 'shadow' podem não funcionar correctamente (mais notavelmente, se utilizadores não-root precisam de autenticar passwords com o /etc/passwd).
+Description-ro.UTF-8: Se activează parolele ascunse?
+ Linux Standard Base cere ca anumite facilităţi ale lui adduser(8) să fie conforme standardului (faciltăţi precum expirarea parolelor). Debian oferă aceste facilităţi doar atunci când sunt activate parolele ascunse; totuşi, în prezent, parolele ascunse sunt dezactivate pe sistemul dumneavoastră.
+ .
+ Majoritatea aplicaţiilor LSB vor funcţiona cu ambele setări, dar pentru conformitate deplină este necesară activarea parolelor ascunse.
+ .
+ În general, este bine să activaţi parolele ascunse. Totuşi, există unele situaţii în care parolele ascunse nu vor funcţiona corespunzător (cazul cel mai evident, atunci când utilizatorii obişnuiţi trebuie să autentifice parolele faţă de cele din /etc/passwd).
+Description-ru.UTF-8: Включить механизм теневых паролей?
+ Согласно Linux Standard Base требуется, чтобы для соответствующих стандарту приложений были доступны определённые (например, устаревание паролей) возможности adduser(8). Эти возможности предоставляются при включённом механизме теневых паролей, но в вашей системе он отключён.
+ .
+ Большинство приложений, удовлетворяющих LSB, будут правильно работать при любой настройке, но для полного соответствия требуется включить механизм теневых паролей.
+ .
+ В большинстве вариантов установок рекомендуется включать механизм теневых паролей. Однако возможны ситуации, при которых использование механизма теневых паролей невозможно (в частности, если пользователям с обычными правами требуется проверка паролей из файла /etc/passwd).
+Description-sk.UTF-8: Zapnúť tieňové heslá?
+ Linux Standard Base požaduje dostupnosť istých vlastnosti adduser(8) (napr. zastaranie hesiel) pre aplikácie zodpovedajúce štandardu. Tieto vlastnosti budú poskytnuté iba ak je podpora tieňových hesiel zapnutá, tento systém ju však má vypnutú.
+ .
+ Väčšina LSB aplikácií bude fungovať správne s oboma voľbami, no na úplné splnenie štandardu musia byť tieňové heslá zapnuté.
+ .
+ Vo všeobecnosti sa považuje za vhodné zapnúť tieňové heslá. Existujú však určité situácie, kedy tieňové heslá nemusia fungovať správne (predovšetkým ak kontrolu hesiel voči /etc/passwd požadujú iní používatelia ako root).
+Description-sv.UTF-8: Aktivera skugglösenord?
+ Linux Standard Base kräver att vissa funktioner av adduser(8) ska finnas tillgängliga till giltiga program (såsom lösenordföråldring). Dessa funktioner tillhandahålls endast när skugglösenord är aktiverade, men ditt system har dem för närvarande inaktiverade.
+ .
+ De flesta LSB-program fungerar fint med båda inställningarna men fullständig giltighet kräver att skugglösenord är aktiverade.
+ .
+ Vanligtvis anses det som korrekt att aktivera skugglösenord. Dock finns det vissa situationer där skugglösenord kanske inte fungerar som de ska (till exempel om icke-rootanvändare behöver kontrollera lösenord mot /etc/passwd).
+Description-vi.UTF-8: Bật mật khẩu bóng không?
+ Cơ bản chuẩn Linux (Linux Standard Base: lsb) cần đến một số tính năng của adduser(8) có phải sẵn sàng cho những ứng dụng thích hợp (như khả năng làm cho mật khẩu cũ hơn). Chỉ cung cấp những tính năng này khi mật khẩu bóng được bật; hệ thống này đã tắt mật khẩu bóng.
+ .
+ Phần lớn ứng dụng LSB sẽ hoạt động được với mỗi thiết lập, nhưng mà độ phù hợp hoàn toàn cần đến bạn bật mật khẩu bóng.
+ .
+ Nói chung, tốt để bật mật khẩu bóng. Tuy nhiên, cũng có một số trường hợp không có mật khẩu bóng hoạt động được (nhất là nếu người dùng khác người chủ cần so sánh mật khẩu với « /etc/passwd »).

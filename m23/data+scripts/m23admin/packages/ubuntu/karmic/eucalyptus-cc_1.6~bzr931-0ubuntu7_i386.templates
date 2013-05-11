@@ -1,0 +1,77 @@
+Template: eucalyptus/cluster-name
+Type: string
+Description: Eucalyptus cluster name:
+ Enter a name for this cluster. The name should contain only ASCII letters,
+ digits, hyphens, and underscores. It will be shown to users as the name of
+ an availability zone.
+
+Template: eucalyptus/subnet
+Type: string
+Default: 172.19.0.0
+Description: Choose a subnet for your UEC instances:
+ The subnet should be set to an IP subnet that is free for eucalyptus to use
+ (i.e. no other system connected to your network directly is configured with
+ addresses from this subnet).
+ .
+ Examples: 192.168.144.0, 172.17.0.0, 10.0.0.0
+
+Template: eucalyptus/netmask
+Type: string
+Default: 255.255.0.0
+Description: Choose a netmask for your UEC instances:
+ The netmask of subnet you specified.
+ .
+ Examples: 255.255.255.0, 255.255.240.0, 255.255.0.0
+
+Template: eucalyptus/dns
+Type: string
+Default: 192.168.144.0
+Description: Choose a DNS for your UEC instances:
+ The DNS should be set to the IP address of a DNS server that your systems use
+ (usually safe to use the same DNS that is configured on the front-end). 
+
+Template: eucalyptus/publicips
+Type: string
+Default:
+Description: Provide a list of "public" IP's for your instances:
+ Eucalyptus requires a pool of IP addresses that can be dynamically assigned as
+ the "public" IPs of virtual machines.  These IPs must be unused within their
+ Class C subnet, this system must have an interface configured with an address
+ on this subnet, and your prospective users must be able to connect to these
+ IPs from wherever they run the client tools.
+ .
+ Please specify one or more ranges of IP addresses, e.g.:
+  192.168.1.100-192.168.1.199
+ or
+  192.168.2.50-192.168.2.99 192.168.2.150-192.168.2.199
+ .
+ You may leave this blank if you have no IP addresses available, BUT you and
+ your users must then request the private addressing scheme when starting a
+ virtual machine instance. For ec2-run-instances and euca-run-instances, this
+ is done with the option "--addressing private".
+
+Template: eucalyptus/addrspernet
+Type: string
+Default: 32
+Description: Choose number of addresses per network/security group:
+ The number of addresses can be used to limit the number of instances that can
+ be attached to each named security group simultaneously.
+
+Template: eucalyptus/mode
+Type: select
+Default: MANAGED-NOVLAN
+Choices: STATIC, SYSTEM, MANAGED, MANAGED-NOVLAN
+Description: Select the networking mode for your cluster:
+ MANAGED and MANAGED-NOVLAN configure eucalyptus to fully manage
+ the VM networks, and enables the ability to use EBS, security groups
+ and dynamic public IP assignment (with and without vlan tagging of
+ security group networks, respectively).
+ .
+ In STATIC mode, you can manually configure a set of IP addresses that will be
+ allocated to VMs at boot time in a first come, first served manner.
+ .
+ If you would like UEC to not manage the VM network at all, choose SYSTEM.  In
+ this mode, VM interfaces are attached directly to your physical ethernet by
+ way of a bridge, at which point they will typically invoke a DHCP client to
+ aquire an IP address.  Use this mode if you wish to manage VM IPs yourself, or
+ allow the VMs to pick up an IP from a non-UEC managed DHCP server.

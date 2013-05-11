@@ -1,0 +1,869 @@
+
+Template: clamav-base/debconf
+Type: boolean
+Default: true
+Description: Handle the configuration file automatically?
+ Some options must be configured for clamav-base.
+ .
+ The ClamAV suite won't work if it isn't configured. If you do not
+ configure it automatically, you'll have to configure
+ /etc/clamav/clamd.conf manually or run 'dpkg-reconfigure clamav-base'
+ later. In any case, manual changes in /etc/clamav/clamd.conf will
+ be respected.
+Description-cs.UTF-8: Spravovat konfigurační soubor automaticky?
+ U clamav-base je několik voleb, které musíte nastavit.
+ .
+ Pokud ClamAV nenastavíte, nebude fungovat. Nezvolíte-li automatickou konfiguraci, budete muset /etc/clamav/clamd.conf nastavit ručně, nebo později spustit příkaz „dpkg-reconfigure clamav-base“. V obou případech budou ruční zásahy do /etc/clamav/clamd.conf respektovány.
+Description-de.UTF-8: Soll die Konfigurationsdatei automatisch verwaltet werden?
+ Einige Optionen für clamav-base müssen noch konfiguriert werden.
+ .
+ Die ClamAV-Suite ist nicht betriebsbereit, solange sie nicht eingerichtet ist. Falls Sie es nicht automatisch konfigurieren lassen, müssen Sie die Datei /etc/clamav/clamd.conf manuell ändern oder später den Befehl »dpkg-reconfigure clamav-base« aufrufen. Auf jeden Fall werden aber manuelle Änderungen in der Datei /etc/clamav/clamd.conf beachtet.
+Description-es.UTF-8: ¿Quiere gestionar el fichero de configuración automáticamente?
+ Debe configurar algunas opciones para clamav-base.
+ .
+ Las herramientas de ClamAV no funcionarán si no están correctamente configuradas. Si lo configura de forma automátca tendrá que configurar «/etc/clamav/clamav.conf» manualmente o ejecutar «dpkg-reconfigure clamav-daemon» más adelante. En cualquier caso, se respetarán los cambios manuales en «/etc/clamav/clamav.conf».
+Description-eu.UTF-8: Kudeatu konfigurazio fitxategia automatikoki?
+ Zenbait aukera konfiguratu egin behar dira clamav-base-rentzat.
+ .
+ Clamav suiteak ez du funtzionatuko konfiguraturik ez badago. Ez baduzu konfigurazio automatikoa egiten,  /etc/clamav/clamd.conf eskuz konfiguratu edo beranduago 'dpkg-reconfigure clamav-base' exekutatu beharko duzu. Edozein kasutan /etc/clamav/clamd.conf fitxategiak izan ditzakeen pertsonalizazioak errespetatu egingo dira.
+Description-fi.UTF-8: Muokataanko asetustiedostoa automaattisesti?
+ Ohjelmaa clamav-base varten tulee tehdä joitain asetuksia. 
+ .
+ ClamAV-ohjelmisto ei toimi, jos sen asetuksia ei ole tehty. Jos asetuksia ei tehdä automaattisesti, sinun tulee käsin tehdä asetukset tiedostoon /etc/clamav/clamd.conf tai ajaa ”dpkg-reconfigure clamav-base” myöhemmin. Joka tapauksessa manuaaliset tiedostoon /etc/clamav/clamd.conf tehdyt muutokset säilytetään.
+Description-fr.UTF-8: Faut-il gérer le fichier de configuration automatiquement ?
+ Certaines options de clamav-base doivent être configurées.
+ .
+ La suite ClamAV ne fonctionnera pas si elle n'est pas configurée. Si vous choisissez de ne pas configurer automatiquement ce paquet, vous devrez modifier le fichier /etc/clamav/clamd.conf vous-même ou utiliser la commande « dpkg-reconfigure clamav-base » plus tard. Dans tous les cas, les modifications manuelles de /etc/clamav/clamd.conf seront préservées.
+Description-gl.UTF-8: Desexa xestionar o ficheiro de configuración automaticamente?
+ Hai que configurar algunhas opcións para clamav-base.
+ .
+ O sistema ClamAV non ha funcionar se non está configurado. Se non o configura automaticamente, ha ter que configurar /etc/clamav/clamd.conf á man ou executar «dpkg-reconfigure clamav-base» despois. En calquera caso, hanse respectar os cambios manuais en /etc/clamav/clamd.conf.
+Description-it.UTF-8: Gestire il file di configurazione automaticamente?
+ Occorre configurare alcune opzioni di clamav-base.
+ .
+ La suite ClamAV non funzionerà se non viene configurata. Se non viene configurata automaticamente, occorrerà modificare /etc/clamav/clamd.conf manualmente o eseguire "dpkg-reconfigure clamav-base" in seguito. In ogni caso, sarà sempre possibile modificare manualmente /etc/clamav/clamd.conf
+Description-ja.UTF-8: 設定ファイルを自動で管理しますか?
+ clamav-base のためにいくつかのオプションを設定する必要があります。
+ .
+ ClamAV スイートは、設定されていなければ動作しません。自動での設定を行わない場合は、/etc/clamav/clamd.conf を手動で設定するか、'dpkg-reconfigure clamav-base' をあとで実行しなければなりません。いずれにせよ、/etc/clamav/clamd.conf への手動の変更は尊重されます。
+Description-nl.UTF-8: Wilt u het configuratiebestand automatisch laten afhandelen?
+ Enkele instellingen van clamav-base dienen geconfigureerd te worden.
+ .
+ Het clamav pakket werkt alleen als het ingesteld is. Als u ervoor kiest om dit niet automatisch te doen, zult u /etc/clamav/clamd.conf handmatig moeten instellen of later 'dpkg-reconfigure clamav-base' moeten uitvoeren. Waar u ook voor kiest, handmatige veranderingen in /etc/clamav/clamd.conf zullen altijd ongemoeid gelaten worden.
+Description-pt.UTF-8: Gerir o ficheiro de configuração automaticamente?
+ Algumas opções têm que ser configuradas para o clamav-base.
+ .
+ A suite ClamAV não funcionará se não for configurada. Se não o configurar automaticamente, terá de configurar o /etc/clamav/clamd.conf manualmente ou correr 'dpkg-reconfigure clamav-base' mais tarde. De qualquer das formas, as alterações manuais ao /etc/clamav/clamd.conf serão respeitadas.
+Description-pt_BR.UTF-8: Manipular o arquivo de configuração automaticamente?
+ Algumas opções devem ser configuradas para o clamav-base.
+ .
+ A suíte ClamAV não funcionará se não for configurada. Se você não configurá-la automaticamente, você terá que configurar o arquivo /etc/clamav/clamd.conf manualmente ou executar o comando 'dpkg-reconfigure clamav-base' posteriormente. Em qualquer caso, mudanças feitas manualmente no arquivo /etc/clamav/clamd.conf serão respeitadas.
+Description-ru.UTF-8: Управлять файлом настройки автоматически?
+ Для clamav-base требуется настроить несколько параметров.
+ .
+ Комплект ClamAV не будет работать без настройки. Если вы не выберете автоматическую настройку, то вам придётся настроить /etc/clamav/clamd.conf вручную или запустить позже 'dpkg-reconfigure clamav-base'. В любом случае, будут задействованы ручные изменения в /etc/clamav/clamd.conf.
+Description-sv.UTF-8: Vill du hantera konfigurationsfilen med debconf?
+ Det är ett antal inställningar som ska konfigureras för clamav-base.
+ .
+ ClamAV-sviten kommer inte att fungera om den inte är konfigurerad.  Om du inte väljer debconf så måste du konfigurera /etc/clamav/clamd.conf manuellt eller köra 'dpkg-reconfigure clamav-base' senare. Om du väljer debconf eller inte kommer manuella ändringar i /etc/clamav/clamd.conf att respekteras.
+Description-vi.UTF-8: Tự động quản lý tập tin cấu hình không?
+ Vài tùy chọn cần phải được cấu hình cho clamav-base.
+ .
+ Chưa cấu hình thì phần mềm ClamAV không hoạt động được. Không cấu hình tự động thì bạn cần phải tự cấu hình « /etc/clamav/clamd.conf », hoặc chạy lệnh « dpkg-reconfigure clamav-base » về sau. Trong mọi trường hợp đều, phần mềm sẽ thực hiện mỗi thay đổi tự làm trong tập tin cấu hình « /etc/clamav/clamd.conf ».
+
+Template: clamav-base/TcpOrLocal
+Type: select
+Choices: TCP, UNIX
+Default: UNIX
+Description: Socket type:
+ Please choose the type of socket clamd will be listening on.
+ .
+ If you choose TCP, clamd can be accessed remotely. If you choose local
+ UNIX sockets, clamd can be accessed through a file. Local UNIX sockets
+ are recommended for security reasons.
+Description-cs.UTF-8: Typ socketu:
+ Vyberte typ socketu, na kterém bude clamd poslouchat.
+ .
+ Zvolíte-li TCP, budete moci k clamd přistupovat vzdáleně. Vyberete-li lokální unixový socket, můžete k daemonu přistupovat skrze soubor. Z bezpečnostních důvodů je preferována druhá možnost.
+Description-de.UTF-8: Socket-Typ:
+ Bitte wählen Sie den Typ des Sockets, an dem Clamd auf Verbindungen warten soll.
+ .
+ Falls Sie TCP auswählen, kann von Rechnern aus der Ferne auf Clamd zugegriffen werden. Falls Sie lokale UNIX-Sockets auswählen, kann über eine Datei auf Clamd zugegriffen werden. Aus Sicherheitsgründen werden lokale UNIX-Sockets empfohlen.
+Description-es.UTF-8: Tipo de socket:
+ Seleccione el tipo de socket en el que escuchará clamd.
+ .
+ Si escoge TCP se podrá acceder al demonio «clamd» de forma remota. Clamd será accesible a través de un fichero si escoge sockets UNIX locales. Se recomienda el uso de sockets UNIX locales por motivos de seguridad.
+Description-eu.UTF-8: Socket mota:
+ Mesedez hautatu clamd-ek entzungo duen socket mota.
+ .
+ TCP hautatzen baduzu clamd urrunetik atzitu ahal izango da. UNIX socket lokalak hautatzen badituzu, clamd fitxategi baten bitartez atzitu ahal izango da. Segurtasun arrazoiak direla eta UNIX socket lokalak erabiltzea gomendatzen da.
+Description-fi.UTF-8: Pistoketyyppi:
+ Valitse minkä tyyppistä pistoketta clamd kuuntelee.
+ .
+ Jos valitset TCP:n, clamdiin voidaan ottaa yhteys etänä. Jos valitset paikalliset UNIX-pistokkeet, clamdiin voidaan ottaa yhteys tiedoston kautta. Turvallisuussyistä suositellaan paikallisia UNIX-pistokkeita.
+Description-fr.UTF-8: Type de « socket » :
+ Veuillez choisir le type de « socket » où clamd sera à l'écoute.
+ .
+ Si vous choisissez « TCP », clamd pourra être utilisé à distance. Si vous choisissez des « sockets » UNIX locales, clamd peut être utilisé par l'intermédiaire d'un fichier. Ce dernier choix est recommandé pour des raisons de sécurité.
+Description-gl.UTF-8: Tipo de socket:
+ Escolla o tipo de socket no que clamd ha escoitar.
+ .
+ Se escolle TCP, hase poder acceder de xeito remoto a clamd. Se escolle sockets UNIX locais, hase poder acceder a clamd mediante un ficheiro. Recoméndanse os sockets UNIX locais por motivos de seguridade.
+Description-it.UTF-8: Tipo di socket
+ Scegliere il tipo di socket su cui clamd sta in ascolto.
+ .
+ Scegliendo TCP, clamd può essere contattato da remoto. Scegliendo la socket UNIX locale, l'accesso a clamd avviene tramite un file speciale. La socket UNIX locale è raccomandata per motivi si sicurezza.
+Description-ja.UTF-8: ソケット形式:
+ clamd がリスンするソケット形式を選択してください。
+ .
+ TCP を選ぶと、clamd はリモートからアクセスできます。ローカル UNIX ソケットを選ぶと、ファイルを通して clamd にアクセスできるようになります。ローカル UNIX ソケットは、セキュリティ上の理由で推奨されます。
+Description-nl.UTF-8: Socket-type:
+ Aan welk type socket wilt u dat clamd luistert?
+ .
+ Als u voor TCP kiest, is clamd op afstand toegankelijk. Als u lokale UNIX-sockets kiest kan clamd worden benaderd via een bestand. Om veiligheidsredenen worden de lokale UNIX-sockets aangeraden.
+Description-pt.UTF-8: Tipo de socket:
+ Por favor escolha o tipo de 'socket' no qual o clamd escutará.
+ .
+ Se escolher TCP, o clamd pode ser acedido remotamente. Se escolher sockets UNIX locais, o clamd pode ser acedido através de um ficheiro. Os sockets UNIX locais são recomendados por razões de segurança.
+Description-pt_BR.UTF-8: Tipo de socket:
+ Por favor, escolha o tipo de socket no qual o clamd estará ouvindo.
+ .
+ Se você escolher TCP, o clamd poderá ser acessado remotamente. Se você escolher sockets UNIX locais, o clamd poderá ser acessado através de um arquivo. Sockets UNIX locais são recomendados por questões de segurança.
+Description-ru.UTF-8: Тип сокета:
+ Выберите тип сокета, на котором будет слушать clamd.
+ .
+ Если вы выберете TCP, clamd будет доступен удалённо. Если вы выберете локальные сокеты UNIX, clamd будет доступен через файл. Рекомендуется использовать локальные сокеты UNIX, так как с ними более безопасно.
+Description-sv.UTF-8: Socket-typ:
+ Välj den typ av socket som clamd ska lyssna på.
+ .
+ Om du väljer TCP kan clamd ges tillgång från utsidan. Detta val är inte rekommenderat eftersom ClamAV är ett ungt projekt. Om du väljer lokal UNIX-socket kan clamd ges tillgång till via en fil.
+Description-vi.UTF-8: Kiểu ổ cắm:
+ Hãy chọn kiểu ổ cắm trên đó trình nền clamd sẽ lắng nghe.
+ .
+ Chọn TCP thì clamd có thể được truy cập từ xa. Chọn ổ cắm UNIX cục bộ thì clamd có thể được truy cập thông qua tập tin. Ổ cắm UNIX cục bộ khuyến khích vì lý do bảo mật.
+
+Template: clamav-base/LocalSocket
+Type: string
+Default: /var/run/clamav/clamd.ctl
+Description: Local (UNIX) socket clamd will listen on:
+Description-cs.UTF-8: Lokální (unixový) socket, na kterém bude clamd naslouchat:
+Description-de.UTF-8: Lokaler (UNIX-)Socket, an dem Clamd auf Verbindungen warten soll:
+Description-es.UTF-8: Socket local (UNIX) en el que clamd escuchará:
+Description-eu.UTF-8: Clamd entzuten egon behar den socket lokala (UNIX):
+Description-fi.UTF-8: Paikallinen pistoke (UNIX), jota clamd kuuntelee:
+Description-fr.UTF-8: « Socket » locale (UNIX) où clamd sera à l'écoute :
+Description-gl.UTF-8: Socket local (UNIX) no que clamd ha escoitar:
+Description-it.UTF-8: Socket locale (UNIX) su cui clamd deve stare in ascolto:
+Description-ja.UTF-8: clamd がリスンするローカル (UNIX) ソケット:
+Description-nl.UTF-8: Lokale (Unix-) socket waaraan clamd moet luisteren:
+Description-pt.UTF-8: 'Socket' UNIX local o qual o clamd irá escutar:
+Description-pt_BR.UTF-8: Socket (UNIX) local no qual o clamd deverá ouvir:
+Description-ru.UTF-8: Локальный (UNIX) сокет, на котором будет слушать clamd:
+Description-sv.UTF-8: Lokal (Unix) socket som clamd ska lyssna på:
+Description-vi.UTF-8: Ổ cắm cục bộ (UNIX) trên đó clamd sẽ lắng nghe:
+
+Template: clamav-base/FixStaleSocket
+Type: boolean
+Default: true
+Description: Gracefully handle left-over UNIX socket files?
+Description-cs.UTF-8: Elegantně zpracovat pozůstalé soubory unixových socketů?
+Description-de.UTF-8: Großzügiger Umgang mit übrig gebliebenen UNIX-Socket-Dateien?
+Description-es.UTF-8: ¿Quiere que el demonio gestione los ficheros de sockets UNIX abandonados?
+Description-eu.UTF-8: Utzitako UNIX socket fitxategiak deabruak kudeatzea nahi al duzu?
+Description-fi.UTF-8: Huolehditaanko unohtuneista UNIX-pistoketiedostoista?
+Description-fr.UTF-8: Faut-il gérer correctement les fichiers « socket » Unix restés ouverts ?
+Description-gl.UTF-8: Desexa xestionar correctamente os ficheiros de socket UNIX sobrantes?
+Description-it.UTF-8: Il demone deve gestire automaticamente i file UNIX socket inutilizzati?
+Description-ja.UTF-8: 残りの UNIX ソケットファイルを管理するようにしますか?
+Description-nl.UTF-8: Wilt u dat achtergebleven UNIX-socketbestanden elegant worden afgehandeld?
+Description-pt.UTF-8: Tratar cuidadosamente ficheiros de 'socket' UNIX deixados para trás?
+Description-pt_BR.UTF-8: Manipular graciosamente arquivos de socket UNIX deixados para trás?
+Description-ru.UTF-8: Обрабатывать оставленные файлы UNIX-сокетов корректно?
+Description-sv.UTF-8: Hantera överblivna Unix socketfiler snällt?
+Description-vi.UTF-8: Quản lý khéo tập tin ổ cắm UNIX thừa không?
+
+Template: clamav-base/TCPSocket
+Type: string
+Default: 3310
+Description: TCP port clamd will listen on:
+Description-cs.UTF-8: TCP port, na kterém bude clamd naslouchat:
+Description-da.UTF-8: TCP-port, clamd skal lytte på:
+Description-de.UTF-8: TCP-Port, an dem Clamd Verbindungen erwarten soll:
+Description-es.UTF-8: Puerto TCP en el que escuchará clamd:
+Description-eu.UTF-8: Clamd-ek entzun behar duen TCP ataka:
+Description-fi.UTF-8: TCP-portti, jota clamd kuuntelee:
+Description-fr.UTF-8: Port TCP où clamd sera à l'écoute :
+Description-gl.UTF-8: Porto TCP no que clamd ha escoitar:
+Description-it.UTF-8: Porta TCP su cui clamd deve stare in ascolto:
+Description-ja.UTF-8: clamd がリスンする TCP ポート:
+Description-nl.UTF-8: TCP-poort waaraan clamd moet luisteren:
+Description-pt.UTF-8: Porto TCP no qual o clamd irá escutar:
+Description-pt_BR.UTF-8: Porta TCP na qual o clamd deverá ouvir:
+Description-ru.UTF-8: Порт TCP, на котором будет слушать clamd:
+Description-sv.UTF-8: TCP-port som clamd ska lyssna på:
+Description-vi.UTF-8: Cổng TCP trên đó trình nền clamd sẽ lắng nghe:
+
+Template: clamav-base/TCPAddr
+Type: string
+Default: any
+Description: IP address clamd will listen on:
+ Enter "any" to listen on every IP address configured. If you want
+ to listen on a single address or host name, enter it here.
+Description-cs.UTF-8: IP adresa, na které bude clamd naslouchat:
+ Má-li daemon poslouchat na každé nakonfigurované IP adrese, zadejte „any“. Pokud jej chcete omezit na konkrétní adresu nebo jméno počítače, zadejte příslušnou adresu nebo jméno počítače.
+Description-de.UTF-8: IP-Adresse, an der Clamd Verbindungen erwarten soll:
+ Geben Sie »any« ein, damit auf allen eingerichteten IP-Adressen auf Anfragen gewartet wird. Falls an genau einer Adresse bzw. einem Rechnernamen auf Anfragen gewartet werden soll, geben Sie diese hier ein.
+Description-es.UTF-8: Dirección IP en la que escuchará clamd:
+ Escriba «any» para que escuche en cada dirección IP configurada. Si en vez de eso quiere que escuche en una única dirección o nombre de servidor, introdúzcala aquí.
+Description-eu.UTF-8: Clamd-ek entzun behar duen IP helbidea:
+ "any" idatzi konfiguraturik duzun edoizen IP helbidetan entzuteko. Helbide edo ostalari izen bakar jakin batez bakarrik entzun nahi baduzu, idatzi berau hemen.
+Description-fi.UTF-8: IP-osoite, jota clamd kuuntelee:
+ Syötä ”any” kuunnellaksesi kaikkia asetettuja IP-osoitteita. Jos haluat kuunnella yhtä osoitetta tai verkkonimeä, syötä se tähän.
+Description-fr.UTF-8: Adresse IP où clamd sera à l'écoute :
+ Vous pouvez indiquer « any » (n'importe laquelle) pour que le démon soit à l'écoute sur toutes les adresses IP configurées. Vous pouvez également indiquer une adresse IP unique ou un nom d'hôte.
+Description-gl.UTF-8: Enderezo IP no que clamd ha escoitar:
+ Introduza «any» para escoitar en todos os enderezos IP configurados. Se quere escoitar nun só enderezo ou nome de servidor, introdúzao aquí.
+Description-it.UTF-8: Indirizzo IP su cui clamd deve accettare connessioni:
+ Inserire "any" per accettare connessioni su uno qualunque degli indirizzi IP configurati. Se si desidera accettare solo connessioni destinate ad un indirizzo o a un nome host specifico, inserirlo qui.
+Description-ja.UTF-8: clamd がリスンする IP アドレス:
+ すべての TCP アドレスをリスンするよう設定するには "any" と入力してください。単一のアドレスまたはホスト名でリスンしたいときには、それを入力してください。
+Description-nl.UTF-8: IP-adres waaraan clamd moet luisteren:
+ Als clamd aan elk geconfigureerd TCP-adres moet luisteren, kunt u "any" invullen. Als clamd in plaats daarvan aan een adres of computernaam moet luisteren, vult u dan dat adres (bijv. "127.0.0.1") of die computernaam in.
+Description-pt.UTF-8: Endereço IP no qual o clamd irá escutar:
+ Introduza "any" para escutar em todos os endereços IP configurados. Se quiser escutar num único endereço IP ou nome de máquina, indique-o aqui.
+Description-pt_BR.UTF-8: Endereço IP no qual o clamd deverá ouvir:
+ Informe "any" para ouvir em cada endereço IP configurado. Se você quiser ouvir em um único endereço ou nome de máquina, informe-o aqui.
+Description-ru.UTF-8: Адрес IP, на котором будет слушать clamd:
+ Введите "any", чтобы слушать на всех настроенных адресах IP. Если вы хотите слушать на одном адресе или имени хоста, то введите его здесь.
+Description-sv.UTF-8: IP-address som clamd ska lyssna på:
+ Ange "any" för att lyssna på alla konfigurerade IP-addresser.  Om du istället vill lyssna på en enda address eller värdnamn, ange den addressen (till exempel "127.0.0.1") eller värdnamn.
+Description-vi.UTF-8: Địa chỉ IP trên đó trình nền clamd sẽ lắng nghe:
+ Gõ « any » (bất kỳ) để lắng nghe trên mọi địa chỉ IP được cấu hình. Muốn lắng nghe trên một địa chỉ hay tên máy riêng thì gõ nó vào đây.
+
+Template: clamav-base/numinfo
+Type: error
+Description: Mandatory numeric value
+ This question requires a numeric answer.
+Description-cs.UTF-8: Povinná číselná hodnota
+ Tato otázka vyžaduje číselnou odpověď.
+Description-de.UTF-8: Zwingend numerischer Wert
+ Diese Frage erfordert eine numerische Antwort.
+Description-es.UTF-8: Valor numérico obligatorio
+ Debe proporcionar un valor numérico como respuesta a esta pregunta.
+Description-eu.UTF-8: Derrigorrezko zenbakizko balioa
+ Galdera honek zenbakizko erantzun bat behar du.
+Description-fi.UTF-8: Pakollinen numeroarvo
+ Tämä kysymys vaatii numeerisen vastauksen.
+Description-fr.UTF-8: Valeur numérique obligatoire
+ La valeur de ce réglage doit être numérique.
+Description-gl.UTF-8: Valor numérico obrigatorio
+ Esta pregunta precisa dunha resposta numérica.
+Description-it.UTF-8: Valore numerico obbligatorio
+ Questa domanda richiede di indicare un valore numerico.
+Description-ja.UTF-8: 数値での入力を強制
+ この質問には数値で答える必要があります。
+Description-nl.UTF-8: Numerieke waarde verplicht
+ Deze vraag vereist een numerieke waarde als antwoord.
+Description-pt.UTF-8: Valor numérico obrigatório
+ Esta pergunta precisa de uma resposta numérica.
+Description-pt_BR.UTF-8: Valor numérico obrigatório
+ Esta questão requer uma resposta numérica.
+Description-ru.UTF-8: Обязательно числовое значение
+ В ответе требуется указать число.
+Description-sv.UTF-8: Obligatoriskt numeriskt värde.
+ Du måste ange ett numeriskt värde som svar.
+Description-vi.UTF-8: Bắt buộc phải gõ giá trị thuộc số 
+ Câu hỏi này yêu cầu đáp ứng thuộc số.
+
+Template: clamav-base/ScanMail
+Type: boolean
+Default: true
+Description: Do you want to enable mail scanning?
+ This option enables scanning mail contents for viruses.
+ You need this option
+ enabled if you want to use clamav-milter. It is recommended that you use
+ a separate unpacker to extract any MIME parts of email messages if you want
+ to scan email.
+Description-cs.UTF-8: Chcete povolit prohledávání pošty?
+ Touto volbou povolíte prohledávání pošty na výskyt virů. Volba je nutnou podmínkou pro použití clamav-milter. Při prohledávání pošty doporučujeme pro rozbalení jednotlivých částí MIME zpráv použít samostatný program.
+Description-de.UTF-8: Soll E-Mail-Überprüfung aktiviert werden?
+ Diese Option ermöglicht, den Inhalt von E-Mails auf Viren zu prüfen. Sie benötigen diese Option, falls Sie Clamav-Milter nutzen wollen. Es wird empfohlen, einen separaten Entpacker benutzen, um MIME-Teile aus E-Mails zu extrahieren, falls Sie E-Mails überprüfen wollen.
+Description-es.UTF-8: ¿Quiere habilitar el análisis del correo?
+ Esta opción configura el demonio para que analice el contenido del correo en busca de virus. Necesita activar esta opción si quiere utilizar «clamav-filter». Se recomienda que utilice un extractor independiente para las partes MIME de los mensajes de correo si desea analizarlos.
+Description-eu.UTF-8: Posta eskaneatzea gaitu nahi al duzu?
+ Aukera honek birus bila eposta arakatzea gaitzen du. Aukera hau gaiturik izan behar duzu clamav-milter erabili nahi baduzu. Gomendagarria da eposta mezuen edozien MIME zati ateratzeko despaketatzaile ezberdin bat erabiltzea.
+Description-fi.UTF-8: Otetaanko käyttöön sähköpostien tutkinta?
+ Tämä valinta ottaa käyttöön sähköpostien sisällön tutkimisen virusten varalta. Tämän tulee olla valittuna, jos haluat käyttää ohjelmaa clamav-milter. On suositeltavaa, että käytät erillistä purkajaa MIME-osioiden erottamiseksi sähköpostiviesteistä, jos haluat tutkia sähköposteja.
+Description-fr.UTF-8: Faut-il activer la vérification du courriel ?
+ Cette option active la recherche de virus dans les courriels par le démon. Cette option n'est utile que si vous utilisez clamav-milter. Vous devriez utiliser un outil supplémentaire pour extraire les parties MIME des courriels si vous souhaitez les examiner.
+Description-gl.UTF-8: Desexa activar o exame do correo?
+ Esta opción activa o exame do contido dos correos á procura de virus. Precisa de activar esta opción se quere empregar clamav-milter. Recoméndase que empregue un desempaquetador separado para extraer as partes MIME das mensaxes de correo se quere examinalo.
+Description-it.UTF-8: Abilitare l'analisi delle email?
+ Questa opzione abilita l'analisi del contenuto delle email alla ricerca di virus. Occorre abilitarla se si intende usare clamav-milter. Si raccomanda di usare un programma separato per estrarre le parti MIME dai messaggi email.
+Description-ja.UTF-8: メール走査を有効にしますか?
+ この選択肢は、メールの内容のウイルス走査をすることを有効にします。clamav-milter を使いたければこの選択肢を有効にしなければなりません。メールを走査したいのであれば、メールメッセージの MIME パートの展開に別の展開ツールを使うことをお勧めします。
+Description-nl.UTF-8: Wilt u dat e-mailberichten gecontroleerd worden?
+ Deze optie stelt de achtergronddienst in staat de inhoud van e-mail te controleren op virussen. Als u gebruik wilt maken van clamav-milter dan dient u deze optie te gebruiken. Als u e-mail wilt scannen wordt het aangeraden dat u een losstaande uitpakker gebruikt om een eventueel MIME-gedeelte uit een e-mail te halen.
+Description-pt.UTF-8: Quer activar a sondagem ao correio electrónico (mail)?
+ Esta opção activa a sondagem aos conteúdos de correio electrónico à procura de vírus. Precisa de ter esta opção activa se quiser usar o clamav-milter. É recomendado que use um extractor separado para extrair quaisquer partes MIME da mensagem de email se quiser sondar as mensagens de email.
+Description-pt_BR.UTF-8: Deseja habilitar a varredura de e-mails?
+ Esta opção habilita a varredura do conteúdo do e-mail à procura de vírus. Você precisa desta opção habilitada se você quer usar o clamav-milter. É recomendado que você use um desempacotador separado para extrair quaisquer partes MIME das mensagens de e-mail se você quiser verificar e-mails.
+Description-ru.UTF-8: Разрешить сканирование почты?
+ Эта настройка разрешает сканирование почтового содержимого на вирусы. Вам нужно включить эту настройку, если вы хотите использовать clamav-milter. При сканировании почты рекомендуется использовать отдельный распаковщик для извлечения любых MIME-частей почтовых сообщений.
+Description-sv.UTF-8: Vill du aktivera skanning av e-post?
+ Denna inställning aktiverar skanning av e-postinnehåll efter virus. Men detta är den minst stabila delar av libclamav behöver du ha denna inställningen aktiverad om du vill använda clamav-milter.  Det rekommenderas att du använder en separat uppackare för att plocka ut de MIME-delar ur e-postmeddelande om du vill skanna e-post.
+Description-vi.UTF-8: Bạn có muốn hiệu lực quét thư không?
+ Tùy chọn này hiệu lực khả năng quét tìm vi-rút trong nội dung thư tín. Tùy chọn này cần thiết để sử dụng clamav-milter. Muốn quét thư thì khuyên bạn sử dụng bộ giải nén riêng để rút phần MIME nào ra thư điện tử.
+
+Template: clamav-base/ScanArchive
+Type: boolean
+Default: true
+Description: Do you want to enable archive scanning?
+ If archive scanning is enabled, the daemon will extract archives such as
+ bz2, tar.gz, deb and many more, to check their contents for viruses.
+ .
+ For more information about what archives are supported, see
+ /usr/share/doc/clamav-docs/clamdoc.pdf or the manpage clamscan(5).
+Description-cs.UTF-8: Chcete povolit prohledávání archivů?
+ Jestliže odpovíte kladně, daemon bude hledat viry i v archivech typu bz2, tar.gz, deb a mnoha dalších.
+ .
+ Seznam podporovaných archivů naleznete v /usr/share/doc/clamav-docs/clamdoc.pdf nebo v manuálové stránce clamscan(5).
+Description-de.UTF-8: Soll die Überprüfung von Archiven aktiviert werden?
+ Falls die Archiv-Überprüfung aktiviert ist, wird der Daemon Archive wie bz2, tar.gz, deb und viele andere auspacken, um den Inhalt auf Viren zu überprüfen.
+ .
+ Mehr Informationen darüber, welche Archive unterstützt werden, finden Sie in der Datei /usr/share/doc/clamav-docs/clamdoc.pdf oder in der Handbuchseite clamscan(5).
+Description-es.UTF-8: ¿Quiere habilitar el análisis de archivos?
+ Si se habilita el análisis de archivos el demonio extraerá el contenido de archivos tales como .bz2, .tar.gz, .deb, y de otros tipos para buscar virus en éstos.
+ .
+ Si desea más información sobre los tipos de archivos que se analizarán, consulte «/usr/share/doc/clamav/clamdoc.pdf.gz» o la página de manual clamscan(5).
+Description-eu.UTF-8: Artxibo eskaneatzea gaitu nahi al duzu?
+ Artxibo arakatzea gaiturik badago, deabruak bz2, tar.gz, deb eta mota gehiagotako artxiboetako fitxategiak atera egingo ditu birus bila arakatzeko.
+ .
+ Onartzen diren artxibo motei buruz argibide gehiagorako, /usr/share/doc/clamav-docs/clamdoc.pdf edo clamscan(5) manual orria irakurri.
+Description-fi.UTF-8: Otetaanko käyttöön arkistojen tutkinta?
+ Jos arkistojen tutkinta on käytössä, taustaprosessi purkaa arkistot bz2, tar.gz, deb ja monia muita niiden sisällön tarkistamiseksi virusten varalta.
+ .
+ Lisätietoja siitä mitä arkistoja tuetaan löytyy tiedostosta /usr/share/doc/clamav-docs/clamdoc.pdf tai man-ohjesivulta clamscan(5).
+Description-fr.UTF-8: Souhaitez-vous activer la vérification des archives ?
+ Si l'analyse des archives est activée, le démon extraira le contenu des archives bz2, tar.gz, deb ainsi que de nombreux autres formats, puis vérifiera l'absence de virus dans leur contenu.
+ .
+ Pour plus d'informations sur les formats d'archives gérés, veuillez consulter /usr/share/doc/clamav-docs/clamdoc.pdf ou la page de manuel clamscan(5).
+Description-gl.UTF-8: Desexa activar o exame de arquivos?
+ De activar o exame de arquivos, o servizo ha extraer os arquivos tales coma bz2, tar.gz, deb e moitos máis, para explorar o seu contido na busca de virus.
+ .
+ Para máis información sobre os arquivos soportados, consulte /usr/share/doc/clamav-docs/clamdoc.pdf ou a páxina de manual clamscan(5).
+Description-it.UTF-8: Abilitare la scansione degli archivi?
+ Abilitando la scansione degli archivi, il demone estrarrà archivi in formato bz2, tar.gz, deb e molti altri, per controllarne il contenuto alla ricerca di virus.
+ .
+ Per maggiori informazioni sui formati di archivi supportati si veda /usr/share/doc/clamav-docs/clamdoc.pdf o la pagina di manuale clamscan(5).
+Description-ja.UTF-8: アーカイブの走査を有効にしますか?
+ アーカイブ操作を有効にすると、コンテンツのウイルスチェックのためにデーモンはアーカイブ (.bz2、.tar.gz、.deb その他多数) を展開します。
+ .
+ どのようなアーカイブがサポートされているかの詳細については、/usr/share/doc/clamav-docs/clamdoc.pdf.gz または man ページ clamscan(5) を参照してください。
+Description-nl.UTF-8: Wilt u het scannen van archieven aanzetten?
+ Als scannen van archieven is aangezet zal de achtergronddienst archieven zoals .bz2, .tar.gz, .deb en vele andere uitpakken en hun inhoud controleren op virussen.
+ .
+ Voor meer informatie over welke archieven worden ondersteund zie /usr/share/doc/clamav-docs/clamdoc.pdf of de man-pagina van clamscan(5).
+Description-pt.UTF-8: Quer activar a sondagem de arquivos?
+ Se a análise de arquivos estiver activa, o 'daemon' extrairá arquivos, tal como bz2, tar.gz, deb e muitos mais, para verificar se os seus conteúdos têm vírus.
+ .
+ Para mais informação sobre quais arquivos são suportados, veja /usr/share/doc/clamav-docs/clamdoc.pdf ou a página do manual clamscan(5).
+Description-pt_BR.UTF-8: Deseja habilitar a varredura em arquivos que contêm outros arquivos?
+ Se a verificação de arquivos que contêm outros arquivos está habilitada, o daemon abrirá os arquivos com extensões como .bz2, .tar.gz, deb e muitos outros, para verificar o conteúdo à procura de vírus.
+ .
+ Para maiores informações sobre quais arquivos são suportados, veja /usr/share/doc/clamav-docs/clamdoc.pdf ou a página de manual clamscan(5).
+Description-ru.UTF-8: Разрешить сканирование архивов?
+ Если разрешено сканирование архивов, служба будет распаковывать архивы, такие как bz2, tar.gz, deb и многие другие, для проверки их содержимого на вирусы.
+ .
+ Более подробная информация о поддерживаемых форматах архивов находится в файле /usr/share/doc/clamav-docs/clamdoc.pdf или в справочной странице clamscan(5).
+Description-sv.UTF-8: Vill du aktivera skanning av arkiv?
+ Om arkivskanning är aktiverad kommer daemonen att packa upp arkiv såsom bz2, tar.gz, deb och många fler för att kontrollera deras innehåll efter virus.
+ .
+ För mer information om vilka arkiv som stöds, se /usr/share/doc/clamav-docs/clamdoc.pdf eller manualsidan för clamscan(5).
+Description-vi.UTF-8: Bạn có muốn hiệu lực quét kho không?
+ Hiệu lực khả năng quét kho thì trình nền sẽ giải nén kho kiểu bz2, tar.gz, deb v.v. để kiểm tra nội dung có vi-rút không.
+ .
+ Để tìm thêm thông tin về những kho nào được hỗ trợ, xem tập tin « /usr/share/doc/clamav-docs/clamdoc.pdf », hoặc đọc trang hướng dẫn (man) « clamscan(5) ».
+
+Template: clamav-base/StreamMaxLength
+Type: string
+Default: 0
+Description: Maximum stream length (unit Mb) allowed:
+ You can set a limit on the stream length that can be scanned.
+ .
+ Entering '0' will disable this limit.
+Description-cs.UTF-8: Maximální povolená délka proudu (v Mb):
+ Můžete omezit délku prohledávaného proudu.
+ .
+ Hodnotou „0“ limit zrušíte.
+Description-de.UTF-8: Maximale zugelassene Datenstromlänge (in MByte):
+ Sie können eine Obergrenze der Datenstromlänge setzen, die überprüft werden darf.
+ .
+ Die Eingabe von »0« hebt die Begrenzung auf.
+Description-es.UTF-8: Longitud máxima de secuencia permitida (en unidades de Mb)?
+ Si lo desea puede ajustar el límite de longitud de la secuencia que podrá ser rastreada.
+ .
+ Si introduce '0' deshabilitará este límite.
+Description-eu.UTF-8: Onartzen den gehienezko korronte tamaina (unitate Mb):
+ Arakatuko den korrontearen gehienezko tamaina ezarri dezakezu.
+ .
+ '0' ezarriaz gero muga hau ezgaituko da.
+Description-fi.UTF-8: Syötevirran suurin sallittu pituus (yksikkö Mt):
+ Voit asettaa tutkittavan syötevirran pituudelle rajoituksen.
+ .
+ Asetus 0 poistaa tämän rajoituksen.
+Description-fr.UTF-8: Longueur maximale (en Mo) autorisée pour les flux :
+ Vous pouvez limiter la taille des flux qui seront analysés.
+ .
+ Une valeur nulle désactivera cette limite.
+Description-gl.UTF-8: Lonxitude de fluxo máxima (en Mb) admitida:
+ Pode establecer un límite na lonxitude dos fluxos que se poden examinar.
+ .
+ Se introduce «0» o límite ha quedar desactivado.
+Description-it.UTF-8: Massima lunghezza consentita degli stream (in Mb)?
+ È possibile impostare un limite di lunghezza per gli stream da analizzare.
+ .
+ Il valore "0" disabilita il limite di dimensione.
+Description-ja.UTF-8: 許可する最大ストリーム長 (Mb 単位):
+ 走査可能なストリーム長を制限できます。
+ .
+ '0' を入力すると、制限が無効になります。
+Description-nl.UTF-8: Maximaal toegestane datastroomlengte (in Mb):
+ Als u wilt, kunt u een limiet zetten op de lengte van een te scannen datastroom.
+ .
+ De waarde 0 betekent ongelimiteerd.
+Description-pt.UTF-8: Comprimento máximo permitido do fluxo (unidades Mb):
+ Pode definir um limite ao tamanho do fluxo que pode ser sondado.
+ .
+ Definir '0' desactiva este limite.
+Description-pt_BR.UTF-8: Tamamho máximo de "stream" permitido (unidade Mb):
+ Você pode definir um limite para o tamanho do "stream" que pode ser verificado.
+ .
+ Informar '0' desabilitará este limite.
+Description-ru.UTF-8: Максимально разрешённая длина потока (в Мб):
+ Можно задать ограничение на длину потока, который можно сканировать.
+ .
+ Значение '0' отключает это ограничение.
+Description-sv.UTF-8: Max strömlängd (i Mb) tillåtet:
+ Om du vill kan du sätta en begränsning på strömlängden som kan skannas. Värdet 0 stänger av denna begränsning.
+ .
+ Värdet 0 stänger av storleksbegränsningen.
+Description-vi.UTF-8: Cho phép chiều dài luồng tối đa (theo Mb):
+ Bạn có khả năng hạn chế chiều dài luồng được quét.
+ .
+ Gõ giá trị « 0 » thì tắt sự hạn chế này.
+
+Template: clamav-base/MaxDirectoryRecursion
+Type: string
+Default: 0
+Description: Maximum directory depth that will be allowed:
+ This value must be set if you want to allow the daemon to follow
+ directory symlinks.
+ .
+ Entering '0' will disable this limit.
+Description-cs.UTF-8: Maximální povolená hloubka adresářů:
+ Pokud chcete, aby daemon následoval symbolické odkazy na adresáře, musíte tuto hodnotu nastavit.
+ .
+ Hodnotou „0“ limit zrušíte.
+Description-de.UTF-8: Maximale erlaubte Verzeichnistiefe:
+ Dieser Wert muss gesetzt werden, falls dem Daemon erlaubt werden soll, symbolischen Verzeichnis-Verweisen zu folgen.
+ .
+ Die Eingabe von »0« hebt die Begrenzung auf.
+Description-es.UTF-8: Máxima profundidad de directorio permitida:
+ Debe definir este valor si quiere que el demonio siga los enlaces simbólicos a directorios.
+ .
+ Si introduce '0' deshabilitará este límite.
+Description-eu.UTF-8: Onartzen den gehienezko direktorioa sakontasuna:
+ Balio hau ezarri behar da deabruak direktorio lotura sinbolikoak jarraitzen nahi baduzu.
+ .
+ '0' ezarriaz gero muga hau ezgaituko da.
+Description-fi.UTF-8: Suurin sallittu hakemistopuun syvyys:
+ Tämän arvon tulee olla asetettuna, jos haluat taustaprosessin seuraavan symbolisia hakemistolinkkejä.
+ .
+ Asetus 0 poistaa tämän rajoituksen.
+Description-fr.UTF-8: Profondeur maximale autorisée pour les répertoires :
+ Cette valeur doit être indiquée si vous souhaitez autoriser le démon à suivre les liens symboliques de répertoires.
+ .
+ Une valeur nulle désactivera cette limite.
+Description-gl.UTF-8: Profundidade máxima de directorio admitida:
+ Hase establecer este valor se quere que o servizo poida seguir ligazóns simbólicas a directorios.
+ .
+ Se introduce «0» o límite ha quedar desactivado.
+Description-it.UTF-8: Massimo livello di profondità per le directory da analizzare:
+ Occorre impostare questo valore se si desidera che il demone segua i link simbolici alle directory.
+ .
+ Il valore "0" disabilita il limite di dimensione.
+Description-ja.UTF-8: 許可する最大ディレクトリ深度:
+ デーモンがディレクトリシンボリックリンクに追従できるようにしたいなら、値を設定する必要があります。
+ .
+ '0' を入力すると、制限が無効になります。
+Description-nl.UTF-8: Maximale diepte van de mapstructuur die is toegestaan:
+ Indien u wilt dat de achtergronddienst symbolische koppelingen naar mappen kan volgen, dient u hier een waarde op te geven.
+ .
+ De waarde 0 betekent ongelimiteerd.
+Description-pt.UTF-8: Máxima profundidade de directórios que será permitida:
+ Este valor tem de ser definido se desejar que o daemon siga as ligações simbólicas (symlinks) de directórios.
+ .
+ Definir '0' desactiva este limite.
+Description-pt_BR.UTF-8: Profundidade máxima de diretórios permitida:
+ Este valor deverá ser definido se você quer permitir que o daemon siga ligações simbólicas.
+ .
+ Informar '0' desabilitará este limite.
+Description-ru.UTF-8: Максимально разрешённая глубина каталогов:
+ Это значение должно быть указано, если вы хотите разрешить службе переходить по символическим ссылкам на каталоги.
+ .
+ Значение '0' отключает это ограничение.
+Description-sv.UTF-8: Max mappdjup som ska tillåtas:
+ Vill du att daemonen ska följa symboliska länkar på kataloger?
+ .
+ Värdet 0 stänger av storleksbegränsningen.
+Description-vi.UTF-8: Độ sâu thư mục tối đa sẽ được phép:
+ Phải đặt giá trị này để cho phép trình nền theo liên kết mềm đến thư mục.
+ .
+ Gõ giá trị « 0 » thì tắt sự hạn chế này.
+
+Template: clamav-base/FollowDirectorySymlinks
+Type: boolean
+Default: false
+Description: Do you want the daemon to follow directory symlinks?
+Description-cs.UTF-8: Chcete, aby daemon následoval symbolické odkazy na adresáře?
+Description-da.UTF-8: Ønsker du at dæmonen skal følge symbolske mappelænker?
+Description-de.UTF-8: Soll der Daemon symbolischen Verzeichnis-Verweisen folgen?
+Description-es.UTF-8: ¿Quiere que el demonio siga los enlaces simbólicos a directorios?
+Description-eu.UTF-8: Deabruak direktorio lotura sinbolikoak jarraitzea nahi al duzu?
+Description-fi.UTF-8: Tuleeko taustaprosessin seurata symbolisia hakemistolinkkejä?
+Description-fr.UTF-8: Faut-il autoriser le démon à suivre les liens symboliques de répertoires ?
+Description-gl.UTF-8: Desexa que o servizo siga ligazóns simbólicas a directorios?
+Description-it.UTF-8: Si desidera che il demone segua i link simbolici alle directory?
+Description-ja.UTF-8: デーモンがディレクトリシンボリックリンクに追従するようにしますか?
+Description-nl.UTF-8: Wilt u de achtergronddienst toestaan symbolische koppelingen naar mappen te volgen?
+Description-pt.UTF-8: Quer que o daemon siga as ligações simbólicas de directórios?
+Description-pt_BR.UTF-8: Deseja que o daemon siga ligações simbólicas para diretórios?
+Description-ru.UTF-8: Хотите, чтобы служба следовала символическим ссылкам на каталоги?
+Description-sv.UTF-8: Vill du att daemonen ska följa symboliska länkar på kataloger?
+Description-vi.UTF-8: Bạn có muốn trình nền theo liên kết tượng trưng kiểu thư mục không?
+
+Template: clamav-base/FollowFileSymlinks
+Type: boolean
+Default: false
+Description: Do you want the daemon to follow regular file symlinks?
+Description-cs.UTF-8: Chcete, aby daemon následoval symbolické odkazy na běžné soubory?
+Description-da.UTF-8: Ønsker du at dæmonen skal følge almindelige symbolske fillænker?
+Description-de.UTF-8: Soll der Daemon normalen symbolischen Datei-Verweisen folgen?
+Description-es.UTF-8: ¿Quiere que el demonio siga los enlaces simbólicos a ficheros normales?
+Description-eu.UTF-8: Deabruak fitxategi lotura sinboliko arruntak jarraitzea nahi al duzu?
+Description-fi.UTF-8: Tuleeko taustaprosessin seurata tavallisia symbolisia linkkejä?
+Description-fr.UTF-8: Faut-il autoriser le démon à suivre les liens symboliques de fichiers ?
+Description-gl.UTF-8: Desexa que o servizo siga ligazóns simbólicas a ficheiros normais?
+Description-it.UTF-8: Si desidera che il demone segua i link simbolici ai file regolari?
+Description-ja.UTF-8: デーモンが一般ファイルのシンボリックリンクに追従するようにしますか?
+Description-nl.UTF-8: Wilt u de achtergronddienst toestaan symbolische koppelingen naar gewone bestanden te volgen?
+Description-pt.UTF-8: Quer que o daemon siga as ligações simbólicas de ficheiros normais?
+Description-pt_BR.UTF-8: Deseja que o daemon siga ligações simbólicas normais para arquivos?
+Description-ru.UTF-8: Хотите, чтобы служба следовала символическим ссылкам на обычные файлы?
+Description-sv.UTF-8: Vill du att daemonen ska följa symboliska länkar för filer?
+Description-vi.UTF-8: Bạn có muốn trình nền theo liên kết tượng trưng kiểu tập tin chuẩn không?
+
+Template: clamav-base/ReadTimeout
+Type: string
+Default: 180
+Description: Timeout for stopping the thread-scanner (seconds):
+ Entering '0' will disable the timeout.
+Description-cs.UTF-8: Časový limit pro zastavení thread-scanner (v sekundách):
+ Hodnotou „0“ časový limit zrušíte.
+Description-de.UTF-8: Zeitbeschränkung für den Stopp des Thread-Scanners (in Sekunden):
+ Eine Eingabe von »0« hebt die Zeitbeschränkung auf.
+Description-es.UTF-8: Límite de tiempo para detener el análisis en hilos (en segundos):
+ Si introduce el valor '0' desactivará el límite de tiempo.
+Description-eu.UTF-8: Harizko arakatzea gelditzeko denboraz-kanpo muga (segundutan):
+  '0' ezarriaz denboraz-kanpo muga desgaituko da.
+Description-fi.UTF-8: Tutkimisen aikakatkaisu (sekunteina):
+ Asetus 0 poistaa aikakatkaisun.
+Description-fr.UTF-8: Délai d'attente (en secondes) avant l'arrêt de l'analyse avec processus légers :
+ Une valeur nulle désactive le délai d'expiration.
+Description-gl.UTF-8: Tempo límite para o explorador de fíos (segundos):
+ Se introduce «0» hase desactivar o límite de tempo.
+Description-it.UTF-8: Limite di tempo per l'analizzatore (secondi):
+ Il valore "0" disabilita il limite di tempo.
+Description-ja.UTF-8: スレッドスキャナを停止するまでのタイムアウト値 (秒):
+ '0' を入力すると、タイムアウトが無効になります。
+Description-nl.UTF-8: Tijdslimiet voor het stoppen van de scanner (seconden):
+ De waarde "0" schakelt de tijdslimiet uit.
+Description-pt.UTF-8: Limite de tempo para parar o processo de sondagem (segundos):
+ Definir '0' desactiva o limite de tempo.
+Description-pt_BR.UTF-8: Tempo limite para parar o verificador de threads (em segundos):
+ Informar '0' desabilitará o limite de tempo.
+Description-ru.UTF-8: Таймаут для остановки thread-scanner (секунды):
+ Значение '0' отключает таймаут.
+Description-sv.UTF-8: Timeout för att stoppa tråd-skannern (i sekunder):
+ Värdet 0 stänger av denna timeout.
+Description-vi.UTF-8: Quá hạn ngừng bộ quét mạch (theo giây):
+ Gõ « 0 » thì tắt quá hạn.
+
+Template: clamav-base/MaxThreads
+Type: string
+Default: 12
+Description: Number of threads for the daemon:
+Description-cs.UTF-8: Počet vláken daemona:
+Description-da.UTF-8: Antal tråde til dæmonen:
+Description-de.UTF-8: Anzahl der Threads für den Daemon:
+Description-es.UTF-8: Número de hilos para el demonio:
+Description-eu.UTF-8: Deabruaren hari kopurua:
+Description-fi.UTF-8: Taustaprosessin säikeiden määrä:
+Description-fr.UTF-8: Nombre de processus légers (« threads ») du démon :
+Description-gl.UTF-8: Número de fíos para o servizo:
+Description-it.UTF-8: Numero di thread per il demone:
+Description-ja.UTF-8: デーモンのスレッド数:
+Description-nl.UTF-8: Aantal threads voor de achtergronddienst:
+Description-pt.UTF-8: Número de processos para o 'daemon':
+Description-pt_BR.UTF-8: Número de threads para o daemon:
+Description-ru.UTF-8: Количество потоков службы:
+Description-sv.UTF-8: Antal trådar för daemonen:
+Description-vi.UTF-8: Tổng số mạch cho trình nền:
+
+Template: clamav-base/MaxConnectionQueueLength
+Type: string
+Default: 15
+Description: Number of pending connections allowed:
+Description-cs.UTF-8: Počet povolených čekajících spojení:
+Description-da.UTF-8: Antal tilladte ventende forbindelser:
+Description-de.UTF-8: Erlaubte Anzahl der wartenden Verbindungen:
+Description-es.UTF-8: Número de conexiones pendientes permitidas:
+Description-eu.UTF-8: Onartzen diren burutu gabeko konexio kopurua:
+Description-fi.UTF-8: Sallittu odottavien yhteyksien lukumäärä:
+Description-fr.UTF-8: Nombre maximal de connexions en attente autorisées :
+Description-gl.UTF-8: Número de conexións pendentes permitidas:
+Description-it.UTF-8: Numero di connessioni contemporanee che possono essere gestite:
+Description-ja.UTF-8: 許可する接続待ち数:
+Description-nl.UTF-8: Toegestaan aantal wachtende verbindingen:
+Description-pt.UTF-8: Número de ligações pendentes permitidas:
+Description-pt_BR.UTF-8: Número de conexões pendentes permitidas:
+Description-ru.UTF-8: Разрешённое число ожидающих подключений:
+Description-sv.UTF-8: Antal väntande anslutningar tillåtna:
+Description-vi.UTF-8: Số kết nối bị hoãn tối đa được phép:
+
+Template: clamav-base/LogSyslog
+Type: boolean
+Default: false
+Description: Do you want to use the system logger?
+ It is possible to log the daemon activity to the system logger. This can be
+ done independently of whether you want to log activity to a special file.
+Description-cs.UTF-8: Chcete použít syslog?
+ Aktivitu daemona můžete zaznamenávat do systémového logu, což se může dít nezávisle na tom, zda má svou činnost zaznamenávat do speciálního souboru.
+Description-de.UTF-8: Soll der Protokolldienst des Systems (syslog) genutzt werden?
+ Es ist möglich, Meldungen des Daemons an den Protokolldienst des Systems weiterzuleiten. Das ist unabhängig davon, ob Sie Meldungen in eine spezielle Datei schreiben wollen.
+Description-es.UTF-8: ¿Quiere usar el servicio de registro de actividades del sistema?
+ Es posible registrar la actividad del demonio a través del registro de actividades del sistema. Puede hacerlo independientemente de que desee registrar además las actividades del sistema en un fichero especial.
+Description-eu.UTF-8: Sistemako erregistroa erabili nahi al duzu?
+ Posible da deabru aktibitatea sistema erregistroan erregistratzea. Hau aktibitatea beste fitxategi batetan gordetzen edo gorde gabe egin daiteke.
+Description-fi.UTF-8: Haluatko käyttää järjestelmälokia?
+ Taustaprosessin toiminta on mahdollista kirjata järjestelmälokiin. Tämä voidaan tehdä riippumatta siitä haluatko kirjata toimintaa erityiseen tiedostoon.
+Description-fr.UTF-8: Souhaitez-vous utiliser la journalisation du système ?
+ L'activité du démon peut être envoyée au processus de journalisation du système. Cela peut être indépendant de la journalisation dans un fichier dédié.
+Description-gl.UTF-8: Desexa empregar o sistema de rexistro do sistema?
+ É posíbel rexistrar a actividade do servizo no sistema de rexistro do sistema. Isto pódese facer tanto se quere coma se non quere rexistrar a actividade nun ficheiro especial.
+Description-it.UTF-8: Si desidera utilizzare il log di sistema?
+ È possibile registrare l'attività del demone usando il log di sistema, e in modo indipendente registrarla su un altro file.
+Description-ja.UTF-8: システムロガーを使いますか?
+ デーモンの活動をシステムロガーに記録できます。これは活動を特別なファイルに記録したいかどうかとは独立して行えます。
+Description-nl.UTF-8: Wilt u het systeemlogproces gebruiken?
+ Het is mogelijk om de activiteit van de achtergronddienst te loggen via het systeemlogproces. Deze keuze is onafhankelijk van de keuze om de activiteiten van clamav-daemon in een speciaal bestand te loggen.
+Description-pt.UTF-8: Quer usar o criador de relatórios (logger) do sistema?
+ É possível passar o registo da actividade do daemon para o criador de relatórios do sistema. Isto pode ser feito independentemente de querer registar a actividade para um ficheiro especial.
+Description-pt_BR.UTF-8: Deseja usar o registrador de logs do sistema?
+ É possível fazer o log das atividades do daemon usando o registrador de logs do sistema. Isto pode ser feito independentemente de você desejar fazer o log das atividades para um arquivo especial.
+Description-ru.UTF-8: Использовать системную службу протоколирования?
+ Можно протоколировать активность службы в системный протокол (syslog). Это может быть сделано независимо от того, будете ли вы протоколировать активность в специальный файл.
+Description-sv.UTF-8: Vill du använda systemets loggningsfunktion?
+ Det är möjligt att logga daemonens aktiviteter till systemloggaren. Detta kan göras oberoende om du vill logga aktivitet till en speciell fil.
+Description-vi.UTF-8: Bạn có muốn sử dụng khả năng ghi lưu của hệ thống không?
+ Có thể ghi lưu hoạt động của trình nền vào khả năng ghi lưu của hệ thống. Ghi lưu vào tập tin riêng hay không cũng được.
+
+Template: clamav-base/LogFile
+Type: string
+Default: /var/log/clamav/clamav.log
+Description: Log file for clamav-daemon (enter none to disable):
+Description-cs.UTF-8: Logovací soubor pro clamav-daemon (nechcete-li použít, ponechte prázdné):
+Description-da.UTF-8: Logfil for clamav-dæmonen (lad feltet stå tomt for at deaktivere):
+Description-de.UTF-8: Protokolldatei für den Clamav-Daemon (zum Deaktivieren »none« eingeben):
+Description-es.UTF-8: Fichero de registro para clamav-daemon (escriba «none» para deshabilitarlo):
+Description-eu.UTF-8: Clamav-daemon erregistro fitxategia (ez idatzi ezer desgaitzeko):
+Description-fi.UTF-8: Ohjelman clamav-daemon lokitiedosto (jätä tyhjäksi poistaaksesi käytöstä):
+Description-fr.UTF-8: Fichier de journalisation de clamav-daemon (« none » pour désactiver) :
+Description-gl.UTF-8: Ficheiro de rexistro para clamav-daemon (introduza «none» para desactivar):
+Description-it.UTF-8: File di log per clamav-daemon (lasciare in bianco per disabilitarlo):
+Description-ja.UTF-8: clamav-daemon のログファイル (無効にするには空):
+Description-nl.UTF-8: Logbestand voor clamav-daemon (vul "none" in om dit uit te zetten):
+Description-pt.UTF-8: Ficheiro de relatório para o clamav-daemon (definir 'none' para desactivar):
+Description-pt_BR.UTF-8: Arquivo de log para o clamav-daemon (informe "none" para desabilitar):
+Description-ru.UTF-8: Файл протокола для clamav-daemon (введите none для запрета):
+Description-sv.UTF-8: Loggfil för clamav-daemon (ange 'none' för att stänga av):
+Description-vi.UTF-8: Tập tin ghi lưu cho trình nền clamav-daemon (bỏ rỗng để tắt):
+
+Template: clamav-base/LogTime
+Type: boolean
+Default: true
+Description: Do you want to log time information with each message?
+Description-cs.UTF-8: Chcete s každou zprávou zaznamenat i čas události?
+Description-da.UTF-8: Vil du inkludere tidspunktet ved hver besked?
+Description-de.UTF-8: Sollen mit jeder Meldung auch Zeitangaben protokolliert werden?
+Description-es.UTF-8: ¿Quiere registrar información de hora con cada mensaje?
+Description-eu.UTF-8: Mezu bakoitzarekin ordu informazioa erregistratzea nahi duzu?
+Description-fi.UTF-8: Haluatko tallentaa aikatiedon jokaisen viestin yhteydessä?
+Description-fr.UTF-8: Souhaitez-vous indiquer l'heure pour chaque entrée du journal ?
+Description-gl.UTF-8: Desexa rexistrar a hora con cada mensaxe?
+Description-it.UTF-8: Si desidera registrare anche l'orario nei messaggi di log?
+Description-ja.UTF-8: 各メッセージに時間情報を記録しますか?
+Description-nl.UTF-8: Wilt u bij elk bericht de tijd loggen?
+Description-pt.UTF-8: Quer registar informação temporal em cada mensagem?
+Description-pt_BR.UTF-8: Deseja fazer o log de informações de horas com cada mensagem?
+Description-ru.UTF-8: Протоколировать информацию о времени с каждым сообщением?
+Description-sv.UTF-8: Vill du logga tidsinformation med varje meddelande?
+Description-vi.UTF-8: Bạn có muốn ghi lưu thông tin thời gian cùng với mỗi thông điệp không?
+
+Template: clamav-base/SelfCheck
+Type: string
+Default: 3600
+Description: Delay in seconds between daemon self checks:
+ During the SelfCheck the daemon checks if it needs to reload the virus
+ database. It also tries to repair problems caused by bugs in the daemon,
+ (that is, in some cases it's able to repair broken data structures).
+Description-cs.UTF-8: Čas mezi sebekontrolami daemona (v sekundách):
+ Během kontrol daemon zjišťuje, zda potřebuje nahrát novou virovou databázi a také se snaží opravit problémy vzniklé chybami v programu (tzn. někdy je schopen opravit své porušené datové struktury).
+Description-de.UTF-8: Zeitspanne in Sekunden zwischen Selbsttests des Daemons:
+ Während des Selbsttests prüft der Daemon, ob es nötig ist, die Virus-Datenbank neu einzulesen. Er versucht auch Probleme zu beheben, die von Fehlern im Daemon erzeugt werden, so können z. B. manchmal defekte Datenstrukturen repariert werden.
+Description-es.UTF-8: Demora en segundos entre auto comprobaciones del demonio:
+ Durante la autocomprobación el demonio determina si necesita recargar la base de datos de virus. También intentará reparar problemas provocados por fallos del demonio. En algunos casos, por ejemplo, será posible reparar estructuras de datos dañadas.
+Description-eu.UTF-8: Deabruaren auto-egiaztapenen arteko tartea segundutan:
+ Auto-egiaztapenean deabruak datu-basea birkargatu behar duen egiaztatzen du. Deabruaren programa-erroreek sortutako arazoak konpontzen ere saiatzen da, adibidez posible izango da Hondatutako datu estrukturak konpontzea kasu batzuetan.
+Description-fi.UTF-8: Taustaprosessin itsetarkistusten väli sekunneissa:
+ Itsetarkistuksen aikana taustaprosessi tarkistaa tarvitseeko sen ladata virustietokanta uudelleen. Se yrittää myös korjata ohjelmavirheiden aiheuttamia ongelmia taustaprosessissa (toisin sanoen, joissain tilanteissa se pystyy korjaamaan rikkoutuneita tietorakenteita).
+Description-fr.UTF-8: Délai en secondes entre les auto-vérifications du démon :
+ L'auto-vérification du démon lui permet de vérifier s'il est nécessaire de recharger la base de données des virus. Cette opération tente également de contourner des problèmes posés par des bogues du démon : il est ainsi, dans certains cas, possible de réparer des structures de données endommagées.
+Description-gl.UTF-8: Retardo en segundos entre as comprobacións automáticas do servizo:
+ Durante a autocomprobación, o servizo comproba se ten que recargar a base de datos de virus. Tamén tenta arranxar os problemas causados por erros no servizo (é dicir, nalgúns casos pode reparar estruturas de datos rotas).
+Description-it.UTF-8: Ritardo in secondi tra i controlli automatici del demone (SelfCheck):
+ Durante il SelfCheck il demone controlla se deve rileggere il database dei virus e se deve rimediare a problemi causati da bug nel demone (ad es. in alcuni casi è in grado di riparare strutture dati danneggiate).
+Description-ja.UTF-8: デーモンのセルフチェックのあいだの遅延秒数:
+ SelfCheck では、デーモンはウイルスデータベースをリロードすべきかどうかをチェックします。デーモンのバグによって引き起こされる問題を修復することも試行されます ( つまり、壊れたデータ構造の修復をするといった場合です) 。
+Description-nl.UTF-8: Vertraging in seconden tussen achtergronddienst-zelfcontroles:
+ Tijdens de zelfcontrole controleert de achtergronddienst of het nodig is om de virusdatabase te herladen. Het probeert ook problemen te repareren die zijn ontstaan door programmeerfouten in de achtergronddienst. In sommige gevallen is het bijvoorbeeld mogelijk defecte datastructuren te repareren.
+Description-pt.UTF-8: Espera em segundos entre auto-testes do 'daemon':
+ Durante o auto-teste o 'daemon' verifica se necessita de recarregar a base de dados dos vírus. Também tenta reparar problemas causados por bugs no daemon (isto é, em alguns casos é capaz de reparar estruturas de dados corrompidas).
+Description-pt_BR.UTF-8: Atraso em segundos entre as checagens do próprio daemon:
+ Durante o SelfCheck (AutoChecagem), o daemon verifica se precisa recarregar a base de dados de vírus. Ele também tenta reparar problemas causados por bugs no daemon (ou seja, em alguns casos ele é capaz de reparar estruturas de dados corrompidas.
+Description-ru.UTF-8: Задержка в секундах между самопроверками службы:
+ Во время самопроверки служба проверяет, надо ли перегрузить вирусную базу. Также она пытается исправить проблемы, вызванные ошибками в службе (т.е. в некоторых случаях можно исправить разрушенные структуры данных).
+Description-sv.UTF-8: Fördröjning i sekunder mellan daemonens självkontroller:
+ Under självkontrollerna undersöker daemonen om den behöver ladda om virusdatabasen. Den försöker och reparera problem som skapats av buggar i daemonen, exempelvis i några fall kan den laga brutna datastrukturer.
+Description-vi.UTF-8: Thời gian giữa hai lần trình nền tự kiểm tra (giây):
+ Trong khi SelfCheck (tự kiểm tra), trình nền kiểm tra nếu cần phải nạp lại cơ sở dữ liệu hay không. Nó cũng thử sửa chữa lỗi trong chính nó, tức là trong một số trường hợp, nó có thể sửa chữa cấu trúc dữ liệu bị ngắt.
+
+Template: clamav-base/User
+Type: string
+Default: clamav
+Description: User to run clamav-daemon as:
+ It is recommended to run the ClamAV programs as a non-privileged user.
+ This will work with most MTAs with a little tweaking, but if you want to
+ use clamd for filesystem scans, running as root is probably unavoidable.
+ Please see README.Debian in the clamav-base package for details.
+Description-cs.UTF-8: Uživatel, pod kterým se má spouštět clamav-daemon:
+ Doporučujeme spouštět programy ClamAVu pod neprivilegovaným uživatelem, což bude (po nějakém úsilí) pracovat s většinou poštovních serverů. Pokud však budete clamd používat pro prohledávání souborového systému, je spouštění pod uživatelem root pravděpodobně nevyhnutelné. Podrobnosti naleznete v souboru README.Debian v balíku clamav-base.
+Description-de.UTF-8: Benutzername, unter dem der Clamav-Daemon laufen soll:
+ Es wird empfohlen, dass die ClamAV-Programme als nicht privilegierter Benutzer laufen. Das funktioniert mit den meisten MTAs mit minimalen Anpassungen. Aber falls Sie Clamd zur Überprüfung von Dateisystemen verwenden wollen, ist der Betrieb mit root-Rechten wahrscheinlich unvermeidlich. Einzelheiten entnehmen Sie bitte der Datei README.Debian im Paket clamav-base.
+Description-es.UTF-8: Usuario con el que ejecutar el demonio clamav:
+ Se recomienda que ejecute los programas de ClamAV como usuario no privilegiado. Esto funciona bien con la mayoría de MTAs con pocos cambios, pero probablemente no pueda evitar ejecutar clamd como root si quiere utilizarlo para analizar los sistemas de ficheros. Si desea más información lea el fichero README.Debian en el paquete clamav-base.
+Description-eu.UTF-8: Clamav-deamon exekutatzeko erabiltzailea:
+ Gomendagarria da ClamAV programak pribilegio gabeko erabiltzaile gisa abiaraztea. Honek behar bezala funtzionatzen du posta garraio sistema (MTA) gehienekin baina posible da root gisa exekutatu behar izatea fitxategi sistemak arakatu nahi badituzu. Irakurri clamav-base paketeko README.Debian fitxategia xehetasun gehiagorako.
+Description-fi.UTF-8: Tunnus, jolla clamav-daemon ajetaan:
+ On suositeltavaa ajaa ClamAV-ohjelmat normaalilla käyttäjätunnuksella. Tämä toimii useimpien postiohjelmien kanssa pienellä hiomisella, mutta jos haluat käyttää clamdia tiedostojärjestelmän tutkimiseen, pääkäyttäjänä ajamista ei luultavasti voida välttää. Paketin clamav-base tiedosto README.Debian sisältää lisätietoja.
+Description-fr.UTF-8: Identifiant qui exécutera le démon :
+ Il est conseillé d'exécuter les programmes de ClamAV avec les droits d'un utilisateur non privilégié. Avec la plupart des agents de transport de courriel, cela demandera quelques adaptations pour fonctionner mais si vous utilisez clamd pour l'examen des systèmes de fichiers, il sera probablement inévitable de l'exécuter avec les privilèges du superutilisateur. Veuillez consulter le fichier README.Debian du paquet clamav-base pour plus d'informations.
+Description-gl.UTF-8: Usuario co que executar clamav-daemon:
+ Recoméndase executar os programas de ClamAV coma un usuario sen privilexios. Isto ha funcionar coa maioría dos MTA cuns pequenos axustes, pero se quere empregar clamd para facer exames do sistema de ficheiros, probabelmente sexa inevitábel executalos como administrador. Consulte o ficheiro README.Debian no paquete clamav-base para ter máis detalles.
+Description-it.UTF-8: Utente che deve eseguire clamav-daemon:
+ Si raccomanda di far eseguire i programmi di ClamAV da un utente non privilegiato. Questa impostazione funziona con i principali MTA (potrebbe essere necessaria qualche correzione alla configurazione), mentre se si vuole usare clamd per analizzare il proprio filesystem è molto probabile che occorra farlo eseguire dall'utente root. Si veda "README.Debian" nel pacchetto clamav-base per i dettagli.
+Description-ja.UTF-8: clamav-daemon を実行するユーザ:
+ 非特権ユーザとして ClamAV プログラムを実行することをお勧めします。これはごくわずかな調整で多くの MTA で動作しますが、ファイルシステムの走査に clamd を使いたいのであれば、root で動作させることはおそらく不可避でしょう。clamav-base パッケージの詳細については、README.Debian を参照してください。
+Description-nl.UTF-8: Gebruiker als welke clamav-daemon draait:
+ Het wordt aangeraden om de clamav programma's te draaien als een gebruiker zonder speciale rechten. Dit werkt, na soms kleine aanpassingen, met de meeste mail transfer agents (MTA's). Als u clamd wilt gebruiken voor het scannen van bestandssystemen, is het draaien met systeembeheerdersrechten waarschijnlijk onontkoombaar. Om de details te bekijken kunt u het README.Debian bestand in het clamav-base pakket raadplegen.
+Description-pt.UTF-8: Utilizador a utilizar para correr o clamav-daemon:
+ É recomendado que corra os programas do ClamAV como um utilizador não privilegiado. Isto funciona para a maioria dos MTAs com poucas alterações, mas se quer usar o clamd para sondagens a sistemas de ficheiros, corrê-lo como root é provavelmente inevitável. Por favor leia o ficheiro README.Debian no pacote clamav-base para detalhes.
+Description-pt_BR.UTF-8: Usuário para executar o clamav-daemon:
+ É recomendado executar os programas ClamAV como um usuário não privilegiado. Isto funcionará com a maioria dos MTAs com pouca configuração, mas se você quiser usar o clamd para varreduras no sistema de arquivos, executá-lo como root será, provavelmente, inevitável. Por favor, consulte o arquivo README.Debian no pacote clamav-base para maiores detalhes.
+Description-ru.UTF-8: С правами какого пользователя запускать clamav-daemon:
+ Рекомендуется запускать программы ClamAV с правами непривилегированного пользователя. Это будет работать с большинством MTA с небольшими поправками, но если вы хотите использовать clamd для проверок файловой системы, запуск из-под root, вероятно, неизбежен. Подробности смотрите в файле README.Debian из пакета clamav-base.
+Description-sv.UTF-8: Vilken användare vill du ska köra clamav-daemonen som?
+ Det rekommenderas att köra ClamAV-programmen som en icke-priviligerad användare. Detta kommer att fungera med de flesta MTA's med lite skruvande men om du vill använda clamd för att skanna filsystem måste du tyvärr köra som root. Se README.Debian i paketet clamav-base för detaljer.
+Description-vi.UTF-8: Người dùng dưới họ cần chạy clamav-daemon:
+ Khuyên bạn chạy các chương trình ClamAV với tư cách một người dùng không có quyền truy cập đặc biệt. Trường hợp này thích hợp với phần lớn MTA (khi điều chỉnh một ít), nhưng nếu bạn muốn sử dụng clamd để quét hệ thống tập tin, thường cần phải chạy dưới người chủ (root). Xem tập tin Đọc Đi « README.Debian » trong gói clamav-base, để tìm chi tiết.
+
+Template: clamav-base/AddGroups
+Type: string
+Description: Groups for clamav-daemon (space-separated):
+ Please enter any extra groups for clamd.
+ .
+ By default, clamd runs as a non-privileged user. If you need clamd to
+ be able to access files owned by another user (e.g., in combination with
+ an MTA), then you will need to add clamd to the group for that piece of
+ software. Please see README.Debian in the clamav-base package for details.
+Description-cs.UTF-8: Skupiny pro clamav-daemon (oddělené mezerami):
+ Zadejte libovolné skupiny, do kterých má clamd patřit.
+ .
+ Clamd implicitně běží pod neprivilegovaným uživatelem. Pokud chcete, aby měl clamd přístup k souborům vlastněným jiným uživatelem (třeba v kombinaci s poštovním serverem), musíte clamd přidat do stejné skupiny, jako má daný software. Podrobnosti naleznete v souboru README.Debian v balíku clamav-base.
+Description-de.UTF-8: Benutzergruppen für den ClamAV-Daemon (durch Leerzeichen getrennt):
+ Bitte geben Sie jede zusätzliche Gruppe für Clamd an.
+ .
+ In der Voreinstellung läuft Clamd als nicht privilegierter Benutzer. Falls es bei Ihnen notwendig ist, dass Clamd auf Dateien zugreifen kann, die anderen Benutzern gehören (z. B. in Zusammenarbeit mit einem MTA), dann müssen Sie den Benutzer »clamd« den Gruppen für diese Software hinzufügen. Einzelheiten entnehmen Sie bitte der Datei README.Debian im Paket »clamav-base«.
+Description-es.UTF-8: Grupos a los que asignar clamav-daemon (separdos por espacios):
+ Por favor, introduzca grupos adicionales para clamd.
+ .
+ Clamd se ejecuta por omisión como usuario no privilegiado. Si necesita que clamd tenga acceso a ficheros que son propiedad de otros usuarios (por ejemplo, si lo está utilizando en combinación con un MTA), entonces necesitará añadir clamd al grupo al que pertenezca ese programa. Consulte el fichero README.Debian en el paquete clamav-base para más información.
+Description-eu.UTF-8: Clamav-deamon taldeak (zuriunez bereizirik):
+ Mesedez idatzi clamd-rentzat talde gehiagarri bat.
+ .
+ Lehenespen bezala clamd pribilegio gabeko erabiltzaile gisa exekutatzen da. Beste erabiltzaile baten jabetzapean dauden fitxategiak arakatzea nahi baduzu (adibidez MTA batekin erabiltzeko) clamd software horren taldera gehitu beharko duzu.Irakurri clamav-base paketeko README.Debian fitxategia xehetasun gehiagorako.
+Description-fi.UTF-8: Ohjelman clamav-daemon ryhmät (välilyönnein eroteltuina):
+ Anna mahdolliset clamdin lisäryhmät.
+ .
+ Oletuksena clamd ajetaan tavallisella käyttäjätunnuksella. Jos clamdin tulee päästä käsiksi toisen käyttäjän omistamiin tiedostoihin (esim. toimiessaan postiohjelman kanssa), clamd tulee lisätä kyseisen ohjelman käyttäjäryhmään. Paketin clamav-base sisältämä tiedosto README.Debian sisältää lisätietoja.
+Description-fr.UTF-8: Groupes de clamav-daemon (séparés par des espaces) :
+ Veuillez indiquer tous les groupes supplémentaires auxquels appartient clamd.
+ .
+ Clamd se lance par défaut sans privilège particulier. S'il faut que clamd accède aux fichiers d'un autre utilisateur (par exemple en combinaison avec un agent de transport de courriel), vous devez mettre clamd dans un groupe qui peut accéder à ces fichiers. Veuillez consulter le fichier README.Debian du paquet clamav-base pour plus d'informations.
+Description-gl.UTF-8: Grupos para clamav-daemon (separados por espazos):
+ Introduza os grupos extra para clamd, se hai algún.
+ .
+ Por omisión, clamd execútase cun usuario sen privilexios. Se clamd ten que poder acceder a ficheiros que pertenzan a outro usuario (por ex., en combinación cun MTA), ha ter que engadir a clamd ao grupo dese programa. Consulte o ficheiro README.Debian no paquete clamav-base para ter máis detalles.
+Description-it.UTF-8: Gruppi per clamav-daemon (separati da spazi):
+ Inserire eventuali gruppi aggiuntivi per clamd.
+ .
+ In modo predefinito, clamd viene eseguito da un utente non privilegiato. Se occorre che clamd abbia accesso a file di proprietà di altri utenti o gruppi (ad esempio perchè si usa clamd in combinazione con un MTA) occorre aggiungere l'utente clamd ai gruppi necessari. Si veda "README.Debian" nel pacchetto clamav-base per i dettagli.
+Description-ja.UTF-8: clamav-daemon のグループ (スペースで区切る):
+ clamd のその他のグループを入力してください。
+ .
+ デフォルトでは、clamd は非特権ユーザとして動作します。clamd をほかのユーザが所有するファイルにアクセスできるようにしたいなら (たとえば MTA との組み合わせなど)、clamd を、そのソフトウェアのグループに追加する必要があります。詳細については、clamav-base パッケージの README.Debian を参照してください。
+Description-nl.UTF-8: Groepen voor clamav-daemon (gescheiden door spaties):
+ Aan welke extra groepen wilt u clamd toevoegen?
+ .
+ Clamd draait standaard als een gebruiker zonder speciale rechten. Als clamd toegang nodig heeft tot bestanden van andere gebruikers (bijv. in combinatie met een MTA), dan dient u clamd toe te voegen aan de groep van het desbetreffende programma. Voor details kunt u het README.Debian bestand in het clamav-base pakket raadplegen.
+Description-pt.UTF-8: Grupos para o clamav-daemon (separados por espaços):
+ Por favor indique quaisquer grupos extra para o clamd.
+ .
+ O clamd corre como um utilizador não privilegiado por predefinição. Se necessitar que o clamd seja capaz de aceder a ficheiros de outro utilizador (por exemplo, em combinação com um MTA), então terá de adicionar o clamd ao grupo daquele software. Por favor leia o ficheiro README.Debian no pacote clamav-base para detalhes.
+Description-pt_BR.UTF-8: Grupos para o clamav-daemon (separados por espaço):
+ Por favor, informe quaisquer grupos extras para o clamd.
+ .
+ Por padrão, o clamd é executado como um usuário não privilegiado. Se você precisa que o clamd seja capaz de acessar arquivos de propriedade de outro usuário (e.g., em combinação com um MTA), então você precisará adicionar o clamd ao grupo deste componente de software. Por favor, veja o arquivo README.Debian no pacote clamav-base para maiores detalhes.
+Description-ru.UTF-8: Группы для clamav-daemon (через пробел):
+ Введите дополнительные группы для clamd.
+ .
+ По умолчанию clamd работает с правами непривилегированного пользователя. Если вам надо, чтобы clamd мог получить доступ к файлам другого пользователя (например, в комбинации с MTA), то вы должны добавить clamd в группу этой части программ. Подробности смотрите в файле README.Debian из пакета clamav-base.
+Description-sv.UTF-8: Grupper för clamav-daemon (separera med mellanslag):
+ Ange de extra grupper som clamd ska ingå i.
+ .
+ Clamd körs som en icke-priviligerad användare som standard.  Om du behöver clamd att ska ha tillgång till filer ägda av andra användare (exempel, i kombination med en MTA) så måste du lägga till clamd i gruppen för den programvaran.  Se README.Debian i paketet clamav-base för detaljer.
+Description-vi.UTF-8: Các nhóm cho trình nền clamav-daemon (định giới bằng dấu cách):
+ Hãy gõ nhóm thêm nào cho trình nền clamd.
+ .
+ Mặc định là trình nền clamd chạy với tư cách một người dùng không có quyền truy cập đặc biệt. Nếu trường hợp của bạn yêu cầu trình clamd có khả năng truy cập tập tin được người dùng khác sở hữu (v.d. cùng với một MTA) thì bạn cần phải thêm trình nền clamd vào nhóm cho phần mềm đó. Xem tập tin Đọc Đi « README.Debian » trong gói clamav-base, để tìm chi tiết.

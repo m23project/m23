@@ -1,0 +1,12 @@
+Client direct connection<!--V1.5-->
+A client direct connection can be used to engage in the client installation process, to read the screen contents or for testing and debugging purpose. The connection is done via SSH. That makes it possible to connect with any SSH client.
+
+<u>Password</u>
+If the client is in an early installation state, the root password for this client is: "NETROOTPWD"
+Later, it will be the password you entered for root in the client add dialog.
+
+If your browser supports the SSH protocol directly, then you can click on the link to connect to the client: <a href="ssh://root@CLIENTIP">ssh://root@CLIENTIP</a>
+
+Otherwise open a console and enter the command: <b>ssh -o UserKnownHostsFile=/dev/null -l root CLIENTIP</b>
+
+To read the current client screen or to engage in the running installation use the command: <b>screen -x m23install</b>

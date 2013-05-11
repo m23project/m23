@@ -1,0 +1,38 @@
+<!--v1.5-->Options de générateur
+
+Dans ce dialogue, vous pouvez entrer les paramètres pour les générateurs des propriétés suivantes:
+
+<ul>
+<LI><b>$I18N_client_name:</b> Définissez la base des noms des postes client et un numéro de départ. Le nombre de noms des postes client nécessaire sera créé selon le schéma &lt;base du nom du poste client&gt;&lt;numéro d'ordre&gt;. Les noms de postes client déjà existant seront sautés pendant ce processus. Exemple: base des noms des postes client=m23client, numéro de départ=12 génère les noms de postes client m23client12, m23client13, ...</LI>
+<!--V1.11 begin--><LI><b>$I18N_login_name:</b> C'est le nom avec lequel l'utilisateur peut s'authentifier sur le système du poste client. Vous avez le choix entre deux méthodes de génération. La variante incrémentale fonctionne de manière identique à celle de <i>&laquo;$I18N_client_name&raquo;</i>. Il est également possible de choisir un nom d'authentification construit avec la première lettre du prénom concaténée au nom de famille complet. (<i>&laquo;$I18N_generateFromForenameAndFamilyname&raquo;</i>).</LI><!--V1.11 end-->
+<LI><b>$I18N_forename:</b> La génération des prénoms (qui seront également les nom d'authentification sur le système) sera exécuté de la même fa&ccedil;on.</LI>
+<LI><b>$I18N_ip:</b> Vous pouvez définir les plages d'adresses IP, parmis lesquelles les adresses IP libres seront recherchées. Une option supplémentaire peut être activée afin d'effectuer un test ping pour chaque adresse IP dans la plage demandée; en découlera la génération des adresses IP n'étant pas déjà utilisées sur le réseau local.</LI>
+<LI><b>$I18N_netmask:</b> Les masques réseaux seront calculés automatiquement d'après la norme standardisée des classes réseau (A, B, C).
+Ceci est par définition:
+<table>
+	<tr>
+		<td>à partir de</td>
+		<td>jusqu'à</td>
+		<td>Masque réseau</td>
+	</tr>
+	<tr>
+		<td>0.0.0.0</td>
+		<td>127.255.255.255</td>
+		<td>255.0.0.0</td>
+	</tr>
+	<tr>
+		<td>128.000.000.000</td>
+		<td>191.255.255.255</td>
+		<td>255.255.0.0</td>
+	</tr>
+	<tr>
+		<td>192.000.000.000</td>
+		<td>255.255.255.255</td>
+		<td>255.255.255.0</td>
+	</tr>
+</table>
+</LI>
+<LI><b>$I18N_first_login:</b> Ces mots de passe peuvent être générés de manière purement aléatoire (<i>&laquo;$I18N_randomPasswords&raquo;</i>) ou par un algorithme aléatoire simplement mémorisable pour les hommes (<i>&laquo;$I18N_pwgenPasswords&raquo;</i>). La longueur des mots de passe générés peut varier entre 6 et 8 caractères. Il est recommandé de garder la longeur par défaut de 8 caractères.</LI>
+<!-- begin 1.10--><LI><b>$I18N_userID:</b> Définissez le numéro de début à partir duquel les identifiants utilisateur (libres) seront utilisés.</LI>
+<LI><b>$I18N_groupID:</b> Définissez le numéro de début à partir duquel les identifiants des groupes (libres) doivent être utilisés.</LI><!-- end 1.10-->
+</ul>

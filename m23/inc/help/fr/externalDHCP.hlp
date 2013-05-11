@@ -1,0 +1,47 @@
+Utiliser m23 conjointement avec un serveur DHCP externe<!--new v10.3-->
+Supposons qu'un un serveur DHCP diffuse sur votre réseau local les paramètres du réseau (IP, masque de réseau etc.) pour tous les ordinateurs et qu'il existe un serveur m23 hébergeant également un serveur DHCP, à partir duquel les postes client doivent être installés.
+
+Problème: L'installation des postes client m23 ne fonctionne pas, parce que le serveur DHCP diffuse les paramètres du réseau plus vite que le serveur DHCP de m23.
+
+La raison: Le serveur m23 doit assigner l'adresse IP et les autres paramètres du réseau au poste client lors de l'installation du système d'exploitation. Si un autre serveur DHCP fixe ces paramètres à la place du serveur DHCP m23, le poste client ne trouvera pas le serveur m23, en conséquence de quoi, l'image d'amor&ccedil;age du réseau ne sera pas accessible et le poste client ne pourra pas être installé. En principe, on ne peut modifier ce comportement, parce que les standards réseaux et les protocoles de démarrage réseau (netboot) suivent une procédure standardisé de démarrage par le réseau.
+
+<h3>Si l'autre serveur DHCP peut être désactivé:</h3>
+Solutions:
+<ul>
+	<li>Vous pouvez désactiver la réponse de l'autre serveur DHCP pour les adresses MAC des postes client pendant la durée de l'installation.</li>
+	<li>Alternative: Il suffit probablement de configurer l'autre serveur DHCP de sorte qu'il diffuse les paramètres du réseau 2 secondes plus tard, afin que le serveur DHCP m23 réponde toujours plus rapidement.</li>
+	<li>Alternative: Désactivez l'autre serveur DHCP pour la durée de l'installation du système d'exploitation des postes m23.</li>
+</ul>
+
+<h3>Si l'autre serveur DHCP NE PEUT PAS être désactivé:</h3>
+Dans ce cas, vous devez ajuster la configuration de l'autre serveur DHCP manuellement et éventuellement installer un serveur TFTP. Suivez le manuel de vos serveurs DHCP et TFTP quant à la configuration à y apporter. 
+
+<ol>
+	<li>Dans l'interface web de m23, choisissez <i>"gPXE/DHCP"</i> quand vous créez un nouveau poste client sous <i>"$I18N_boottype"</i>. Utilisez le même nom de poste client sous <i>"$I18N_client_name"</i>, que celui utilisé par votre serveur DHCP pour le poste client en question.</li>
+
+	<li>Ajustez votre serveur DHCP de sorte qu'il assigne le nom du poste client indiqué dans l'interface web m23 au poste client m23.</li>
+
+<!--cha v13.1-->
+	<li>Le nom du noyau, transmis par votre serveur DHCP au poste client, doit être <b>pxelinux.0</b>. Le serveur TFTP est le serveur m23.</li>
+
+	<li>De plus, vous devez configurer votre serveur DHCP de fa&ccedil;on à ce qu'il diffuse les paramètres suivants comme paramètres du noyau au poste client:
+		<pre>m23clientID="<b>&lt;numéro du poste client m23&gt;</b>" m23server="<b>&lt;Nom de domaine du serveur m23 ou son adresse IP&gt;</b>" devfs=nomount vga=normal load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=<b>45000</b> initrd=initrd.gz root=/dev/ram0 rw</pre>
+		Remplacez <b>&lt;numéro du poste client m23&gt;</b> par le numéro du poste client m23 (que vous pouvez trouver chez <i>"$I18N_overview_clients"</i> dans le lien à chaque poste client) et le <b>&lt;Nom de domaine du serveur m23 ou son adresse IP&gt;</b> par le <a href="http://fr.wikipedia.org/wiki/Nom_de_domaine">nom de domaine</a> du serveur m23 résolvable par le poste client m23 ou son adresse IP. Il sera éventuellement nécessaire de remplacer le numéro <b>45000</b> par la valeur indiquée dans le fichier /m23/inc/kernelRamDisk.inc.
+	</li>
+<!--cha v13.1 end-->
+
+	<li>Si malgré cela, l'ajustage de votre serveur DHCP ne fonctionne pas, vous devez installer un serveur TFTP sur l'ordinateur hébergeant votre serveur DHCP. La configuration de base du serveur TFTP peut s'inspirer des fichiers de configuration du répertoire /m23/tftp/.</li>
+</ol>
+
+<!--new v13.1 -->
+<h3>Proxy DHCP</h3>
+Peut-être qu'il vous est utile d'utiliser <a href="http://en.wikipedia.org/wiki/Preboot_Execution_Environment#Proxy_DHCP">Proxy DHCP</a>.
+<!--new v13.1 end -->
+
+
+<div align="right">
+	<b>Vous avez besoin de compléments concernant l'installation et la configuration de votre système m23 ou des autres composants open source?</b>
+	Visitez <a href="http://www.goos-habermann.de/index.php?s=Entwicklung#Support">Support für m23, Linux und OpenSource von goos-habermann.de</a>.
+</div>
+
+

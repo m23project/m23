@@ -1,0 +1,31 @@
+This menu helps you to create your own m23 server installation CDs.
+
+* kernel
+	Here you can download, configure and build the Linux kernel for
+	the m23 server installation CD. Actual it is the same 32-bit
+	kernel that is used for the m23 client installation.
+
+* osimage
+	Builds a compressed archive from all files of the current server.
+	These files are used to install the operating system from your
+	selfmade m23 server installation CDs. You should pay attention to
+	the size of your current installed Linux system. All files expect
+	/tmp, /m23, /mdk, /var are copied to the archive. If you install
+	unnecessary tools or other big files these files are installed to
+	your other m23 servers too and make the server installation CD
+	bigger as needed.
+
+* transfer
+	Transfers the osimage to my m23 testserver 192.168.1.42. This may
+	be useless for you in most cases.
+
+* usrm23
+	Creates an archive of the files in
+	/m23/data+scripts/distr/debian/usrm23/.
+	These files contain user settings like the desktop background image.
+
+* iso
+	Creates a bootable ISO image from the above files.
+
+* burn
+	Burns the server installation CD.

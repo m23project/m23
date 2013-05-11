@@ -1,0 +1,93 @@
+#!/bin/bash
+
+. /mdk/bin/forkFunctions.inc
+
+isDevelReturn
+if [ $? -eq 0 ]
+then
+	develDirAdd='-devel'
+else
+	develDirAdd=''
+fi
+
+m23hgDir="/mnt/crypto/m23-hg/m23$develDirAdd"
+mdkhgDir="/mnt/crypto/m23-hg/mdk$develDirAdd"
+
+
+
+hgBackup()
+{
+storeDir="$1"
+package="$2"
+
+#Where to store the list of files
+fileList="/tmp/$package-hg.lst"
+
+echo ">>> Backing up package \"$package\""
+
+mkdir -p "$storeDir"
+
+#Get the list of files belonging to a package
+cd /mdk/m23Debs/indices
+/mdk/m23update/bin/md5Check f "$package""deb" "$fileList" 2> /dev/null
+
+#Copy all files that have been changed to the HG directory
+echo "Copy changes"
+rsync -raPy --delete --files-from="$fileList" / "$storeDir"
+
+cd "$storeDir"
+
+if [ ! -f .hgignore ]
+then
+	echo '.git' > .hgignore
+fi
+
+#Check if there is a never version
+hg pull
+
+#Check with Mercurial if files were added or removed
+echo "Mercurial add/remove files"
+hg addremove
+
+#Generate the commit message
+backupDate=`date +"$package-backup from %Y-%m-%d %H:%M"`
+
+echo "Mercurial commit changes"
+hg commit -m "$backupDate"
+
+echo "Mercurial uploading changes"
+hg push -v
+
+#Check if the changes can be committed
+if [ $? -ne 0 ]
+then
+	hg merge
+
+	#/tmp/changedFilesFromMerge.tmp will contain the complete output of
+	hg commit -m "$backupDate" | tee /tmp/changedFilesFromMerge.tmp
+
+	hg push -v
+
+	#Copy back all changed files
+	#Files have a '/' in the full path, so status messages are filtered out
+	for hgFile in `grep '/' /tmp/changedFilesFromMerge.tmp`
+	do
+		diff "$hgFile" "/$hgFile" | less
+		cp -i -v "$hgFile" "/$hgFile"
+	done
+fi
+
+}
+
+
+hgBackup "$m23hgDir" m23
+hgBackup "$mdkhgDir" m23-mdk-base
+hgBackup "$mdkhgDir" m23-mdk-client
+hgBackup "$mdkhgDir" m23-mdk-client-server
+hgBackup "$mdkhgDir" m23-mdk-debs
+hgBackup "$mdkhgDir" m23-mdk-doc
+hgBackup "$mdkhgDir" m23-mdk-helper
+hgBackup "$mdkhgDir" m23-mdk-plugin
+hgBackup "$mdkhgDir" m23-mdk-server
+hgBackup "$mdkhgDir" m23-mdk-translator
+hgBackup "$mdkhgDir" m23-mdk-update

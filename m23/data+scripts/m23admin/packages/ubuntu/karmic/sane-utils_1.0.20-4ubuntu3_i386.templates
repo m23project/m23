@@ -1,0 +1,177 @@
+Template: sane-utils/saned_run
+Type: boolean
+Default: false
+Description: Enable saned as a standalone server?
+ The saned server, when enabled, makes scanners available over the network.
+ .
+ There are two ways of running saned:
+  - as an inetd service, started by the inetd superserver. In this mode,
+ saned is started as needed by inetd whenever a client tries to connect
+ to the server;
+  - as a standalone daemon, started at system boot. In this mode, saned
+ runs in the background all by itself and listens for client connections.
+ .
+ When run in standalone mode, saned advertises itself on the network and
+ can be detected automatically by the SANE clients with no configuration
+ on the client side. You still need to configure the server to accept
+ connections from your clients.
+ .
+ Accept this option if you want to make use of this feature.
+Description-cs.UTF-8: Povolit saned jako samostatný server?
+ Pokud je saned server povolený, zpřístupňuje dostupné scannery přes síť.
+ .
+ Existují dva způsoby, jak spouštět saned:
+  - jako službu inetd, kterou startuje superserver inetd. V tomto režimu je saned spuštěn pouze v případě, že se klient snaží připojit k serveru;
+  - jako samostatný daemon, spouštěný při zavádění systému. V tomto režimuběží saned celou dobu na pozadí a sám naslouchá příchozím spojením.
+ .
+ Při spuštění jako samostatný daemon se saned sám nabízí na síti a SANE klienti ho mohou rozpoznat automaticky, bez dalšího nastavování na straně klienta. Stále však budete muset nastavit server, aby přijímal příchozí spojení od klientů.
+ .
+ Chcete-li této vlastnosti využít, odpovězte kladně.
+Description-de.UTF-8: Aktiviere Saned als Einzel-Server?
+ Der Saned-Server stellt Scanner über das Netz zu Verfügung, wenn er aktiviert ist.
+ .
+ Es gibt zwei Arten, Saned zu betreiben:
+  - als Inetd-Service, gestartet über den Inetd-Superserver. In diesem Modus
+    wird Saned immer dann vom Inetd gestartet, wenn ein Scanner einen
+    Verbindungsaufbau startet
+  - als Einzel-Server, gestartet beim Systemstart. In diesem Modus läuft Saned
+    selbst im Hintergrund und wartet auf Anfragen von Clients
+ .
+ Im Einzel-Server-Modus macht sich Saned über das Netz bekannt und kann von SANE-Clients ohne Konfiguration auf der Clientseite automatisch erkannt werden. Sie müssen dennoch den Server konfigurieren, damit er Verbindungen von den Clients akzeptiert.
+ .
+ Akzeptieren Sie diese Option, falls Sie diese Funktionalität nutzen wollen.
+Description-es.UTF-8: ¿Desea activar «saned» como un servidor independiente?
+ Se puede acceder a los escáneres a través de la red cuando se activa el servidor «saned».
+ .
+ Hay dos maneras de ejecutar «saned»;
+  - como un servicio «inetd», iniciado por el súper servidor «inetd». En este modo, «saned» se inicia cuando inetd lo necesita cada vez que el cliente intenta conectarse al servidor;
+  - como un demonio independiente, lanzado al inicio del sistema. En
+ este modo «saned» se ejecuta en segundo plano por sí mismo y escucha conexiones de los clientes.
+ .
+ En modo independiente, «saned» se anuncia por sí mismo en la red y puede detectarse automáticamente por los clientes SANE sin configuración por parte de los mismos. Aun así, será necesario que configure el servidor para aceptar conexiones de los clientes.
+ .
+ Acepte esta opción si desea utilizar esta característica.
+Description-eu.UTF-8: Saned bakarkako deabru gisa gaitu?
+ Saned zerbitzariak, gaiturik dagoenean, eskanerrak sare biez eskuragarri egiten ditu.
+ .
+ Saned exekutatzeko bi modu ezberdin daude:
+  - inetd zerbitzu gisa, inetd superzerbitzariak abiarazia. Modu honetan
+ saned behar denean inetd bidez abiaraziko da bezero batek zerbitzarira konektatzen saiatzean;
+  - bakarkako deabru gisa, sistema abioan abiarazia. Modu honetan, saned
+ atzeko planoan exekutatzen da eta bezero konexioa itxoiten ditu.
+ .
+ Bakarkako moduan exekutatzen, saned-ek bere burua sarean aurkezten du eta automatikoki atzeman dezakete SANE bezeroek konfigurazio berezirik gabe. Zuk zerbitzaria konfiguratu behar duzu bezeroetatik konexioak onartzeko.
+ .
+ Aukera hau onartu ezaugarri hau erabili nahi baduzu.
+Description-fr.UTF-8: Faut-il activer le serveur « saned » ?
+ Le serveur « saned », une fois activé, rend disponibles les scanners sur le réseau.
+ .
+ Il existe deux méthodes pour exécuter le serveur :
+  - via le superserveur inetd : dans ce mode, le serveur est lancé
+    à la demande quand un client se connecte ; 
+  - en tant que démon autonome, lancé au démarrage du système : dans
+    ce mode, le serveur fonctionne en permanence en tâche de fond, en
+    attente des connexions des clients.
+ .
+ En mode autonome, le démon s'annonce sur le réseau et peut alors être automatiquement détecté par les clients SANE sans nécessiter de configuration particulière de ces clients. Il restera nécessaire de configurer le serveur pour qu'il accepte les connexions des clients.
+ .
+ Si vous choisissez cette option, le serveur sera lancé au démarrage du système.
+Description-gl.UTF-8: ¿Activar saned coma un servidor autónomo?
+ O servidor saned, cando está activado, deixa os escáneres dispoñibles pola rede.
+ .
+ Hai dúas maneiras de executar saned:
+  - coma un servizo de inetd, iniciado polo superservidor inetd.
+    Neste modo, saned iníciase cando sexa necesario cada vez que
+    un cliente tente conectarse ao servidor;
+  - coma un servizo autónomo, que se inicia ao arrincar o sistema.
+    Neste modo, saned execútase en segundo plano e espera
+    conexións por parte dos clientes.
+ .
+ Ao executalo en modo autónomo, saned anúnciase na rede e os clientes SANE pódeno detectar automaticamente sen necesidade de os configurar. Aínda ha ter que configurar o servidor para aceptar conexións dos clientes.
+ .
+ Acepte esta opción se quere empregar esta funcionalidade.
+Description-it.UTF-8: Attivare saned come servizio autonomo?
+ Il server saned, quando attivo, rende gli scanner disponibili tramite la rete.
+ .
+ Il server può essere eseguito in due modalità:
+  - come servizio di inetd, attivato dal superserver inetd. In questa
+    modalità saned è attivato solo quando un client prova a connettersi
+    al server;
+  - come demone autonomo, attivato all'avvio del sistema. In questa
+    modalità saned è sempre attivo e in ascolto per le connessioni dei
+    client.
+ .
+ In modalità autonoma, saned si annuncia da solo sulla rete e può essere rilevato automaticamente dai client SANE senza configurare i client. È comunque necessario configurare il server per accettare le connessioni dai client.
+ .
+ Accettare per utilizzare questa funzione.
+Description-ja.UTF-8: saned をスタンドアロンなサーバとして有効にしますか?
+ 有効にした場合、saned サーバはネットワーク越しにスキャナを利用できるようになります。
+ .
+ saned を実行するには二通りのやり方があります:
+  - inetd サービスとして実行し、inetd スーパーサーバから起動する。この場合、saned はクライアントが接続しようとしてきた時にいつでも inetd の要請に応じて起動されます。
+  - システム起動時にスタンドアロンなデーモンとして実行する。この場合、saned は完全にバックグラウンドで実行されクライアントからの接続を待ちつづけます。
+ .
+ スタンドアロンで実行している場合、saned はネットワークに対して存在していることを通知します。そのため、クライアント側では何の設定もせずに SANE クライアントがサーバを自動的に認識できるようになります。サーバの設定でクライアントからの接続を受け付けられるようにする必要もあります。
+ .
+ この機能を使いたい場合はこのオプションを有効にしてください。
+Description-pt.UTF-8: Activar o saned como servidor autónomo?
+ O servidor saned, quando activo, torna os scanners disponíveis na rede. 
+ .
+ Existem duas maneiras de correr o saned:
+ - como um serviço inetd, arrancado pelo superservidor inetd. Neste modo,
+ o saned arranca quando necessário pelo inetd sempre que um cliente tenta ligar-se ao servidor;
+ - como um deamon standalone, arrancado com o arranque do sistema. Neste modo,
+ o saned corre autónomo nos bastidores e escuta por ligações de clientes.
+ .
+ Quando corre em modo autónomo, o saned anuncia-se a si próprio na rede e pode ser detectado automaticamente pelos clientes SANE sem nenhuma configuração no lado do cliente. Você ainda precisa de configurar o servidor para aceitar ligações dos seus clientes.
+ .
+ Aceite esta opção se deseja usar esta funcionalidade.
+Description-pt_BR.UTF-8: Habilitar o saned como um servidor autônomo?
+ O servidor saned, quando habilitado, torna os scanners disponíveis através da rede.
+ .
+ Existem duas maneiras de executar o saned:
+  - como um serviço inetd, iniciado pelo superservidor inetd. Neste modo,
+ o saned é iniciado quando necessário pelo inetd sempre que um cliente tentar conectar ao servidor;
+  - como um daemon autônomo, iniciado na inicialização do sistema. Neste modo,
+ o saned executa em segundo plano por si só e escuta por conexões de clientes.
+ .
+ Quando executado no modo autônomo, o saned publica-se na rede e pode ser detectado automaticamente pelos clientes SANE sem nenhuma configuração no lado do cliente. Você continua precisando configurar o servidor para aceitar conexões de seus clientes.
+ .
+ Aceite esta opção se você quer fazer uso desse recurso.
+Description-ru.UTF-8: Запускать saned как отдельную службу?
+ Если включена служба saned, то сканеры становятся доступными по сети.
+ .
+ saned может запускаться двумя способами:
+  - как служба inetd с помощью суперсервера inetd. В этом режиме
+ saned запускается в момент, когда в inetd поступает клиентский запрос на подключение к серверу;
+  - в виде самостоятельной службы при включении компьютера. В этом режиме saned
+ работает в фоновом режиме и сам принимает клиентские подключения.
+ .
+ При работе в виде самостоятельной службы, saned анонсирует себя в сети и может быть автоматически найден клиентами SANE без выполнения настроек на их стороне. Вам нужно только настроить сервер для приёма запросов от клиентов.
+ .
+ Ответьте утвердительно, если хотите использовать эту возможность.
+Description-sv.UTF-8: Aktivera saned som ensamstående tjänst?
+ När saned är aktiverad så kan man komma åt scanrarna över nätverket.
+ .
+ Det finns två sätt att köra saned:
+  - som en inetd-tjänst, startad av inetd. I detta läge startas saned
+ när det behövs av inetd.
+  - som ensamstående tjänst, startad av systemet vid uppstart. I detta läge körs saned i bakgrunden hela tiden och lyssnar efter anslutningar från klienter.
+ .
+ När saned körs i ensamstående läge så meddelar saned det till nätverket och kan på så vis automatiskt upptäckas av SANE-klienter utan att det behöver ställas in något på klient-sidan. Du behöver dock fortfarande ställa in tjänsten att ta emot anslutningar från klienterna.
+ .
+ Välj detta alternativet om du vill använda denna funktionen.
+Description-vi.UTF-8: Bật saned làm trình phục vụ độc lập không?
+ Bật trình phục vụ saned thì làm cho máy quét sẵn sàng trên khắp mạng.
+ .
+ Có hai phương pháp chạy saned:
+  • làm dịch vụ inetd, được khởi chạy bởi siêu trình phục vụ inetd.
+ 	Trong chế độ này, saned được inetd khởi chạy theo yêu cầu,
+ 	khi ứng dụng khách thử kết nối đến trình phục vụ.
+  • làm trình nền độc lập, được khởi chạy khi khởi động hệ thống.
+ 	Trong chế độ này, saned chạy một mình về nền,
+ 	và lắng nghe kết nối của ứng dụng khách.
+ .
+ Khi chạy trong chế độ độc lập, saned tự quảng cáo trên mạng, và có thể được tự động phát hiện bởi các ứng dụng khách SANE, không cần cấu hình riêng bên khách. Bạn vẫn còn cần phải cấu hình trình phục vụ để chấp nhận kết nối từ ứng dụng khách.
+ .
+ Muốn dùng tính năng đó thì hãy bật tùy chọn này.

@@ -1,0 +1,13 @@
+<!-- V1.13 new-->$I18N_packageBuilder
+
+The integrated $I18N_packageBuilder is a comfortable tool to create Debian packages directly from the m23 webinterface. These packages can be installed on the m23 clients like any other package and can contain single files or complete file directory trees.
+
+The packages are created from archive files in <a href="http://en.wikipedia.org/wiki/Tar_%28file_format%29">tar</a> format compressed with <a href="http://en.wikipedia.org/wiki/Bzip2">bzip2</a> or <a href="http://en.wikipedia.org/wiki/Gzip">gzip</a>. User and access rights of files and directories are tranferred to the Debian package without recompression. The resulting Debian packages are independent of a certain distribution or release branch. This means that the same package can be installed on Debian, Ubuntu or Kubuntu clients.
+
+Creation of the package step-by-step:
+<ol><li>Filing of the tar file into the directory /m23/data+scripts/extraDebs/. This can be done e.g. with <a href="http://en.wikipedia.org/wiki/Secure_copy">scp</a> or the integrated file upload <i>"$I18N_uploadedTarFileForCenversion"</i>.</li>
+<li><!-- V11.3 begin -->Click on <i>"$I18N_refresh"</i> after the filing to see the file in the list <i>"$I18N_fileList"</i>.<!-- V11.3 end --></li>
+<li>Choose the tar file you want to convert and click after its file name on <i>"$I18N_convertToDeb"</i>. The package index files are re-created automatically to ensure a ready-for-use package source.</li></ol>
+
+<u>Hint</u>
+Of course you can put already created Debian packages into the package source and re-create the package index afterwards by clicking on <i>"$I18N_recreatePackageIndex"</i>.

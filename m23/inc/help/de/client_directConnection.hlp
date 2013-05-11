@@ -1,0 +1,12 @@
+Client-Direkt-Verbindung<!--V1.5-->
+Eine Client-Direkt-Verbindung kann dazu verwendet werden, um manuell in den Installations-Prozeß eines Clients einzugreifen, oder die Bildschirmausgabe von einem entfernten Ort aus zu lesen, sowie zu Test- und Debug-Zwecken. Die Verbindung wird per SSH aufgebaut und kann so mit jedem SSH-Client hergestellt werden.
+
+<u>Paßwort</u>
+Ist der Client noch in einem frühen Installationsstadium, so lautet das Root-Paßwort: "NETROOTPWD"
+Später ist es das Paßwort, das Sie beim Anlegen des Clients vergeben haben.
+
+Sollte Ihr Browser das SSH-Protokoll direkt unterstützen, so können Sie die Verbindung durch Anklicken dieses Links herstellen: <a href="ssh://root@CLIENTIP">ssh://root@CLIENTIP</a>
+
+Sonst öffnen Sie bitte eine Konsole und geben den Befehl: <b>ssh -o UserKnownHostsFile=/dev/null -l root CLIENTIP</b>
+
+Um in die aktuelle Client-Bildschirmausgabe zu lesen oder in die laufende Installation einzugreifen benutzen Sie den Befehl: <b>screen -x m23install</b>

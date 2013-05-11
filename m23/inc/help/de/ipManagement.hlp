@@ -1,0 +1,27 @@
+$I18N_ipManagement
+In diesem Dialog können Sie Netzwerkeinstellungen für Rechner verwalten, die keine m23-Clients sind.
+
+<u>$I18N_singleClientsNetworksettings</u>
+Hier können Sie sowohl einzelnen Geräten bestimmte Netzwerkeinstellungen zuweisen als auch einzelne Werte sperren, die dadurch nicht (fälschlicherweise) für m23-Clients verwendet werden können.
+<ul>
+	<li>
+		<b>$I18N_lockIPMACClientName</b>: Sie können mit der Funktion <b>$I18N_lockIPMACClientName</b> einen Clientnamen, eine IP- oder MAC-Adresse (z.B. die IP eines Netzwerkdruckers) sperren, damit diese nicht fälschlicherweise für m23-Clients verwendet werden  kann. Geben Sie hierzu bei <i>"$I18N_client_name"</i>, <i>"$I18N_ip"</i> oder <i>"$I18N_mac"</i> die zu sperrende IP, die MAC oder den Namen ein und klicken Sie anschließend auf <i>"$I18N_lockIPMACClientName"</i>. Für die Verwendung der "$I18N_lockIPMACClientName"-Funktion müssen Sie mindestens eine der mit <sup>1</sup> gekennzeichneten Informationen eingeben.
+	</li>
+	<li>
+		<b>$I18N_addSettingsToDhcp</b>: Möchten Sie einem Rechner per DHCP Netzwerkeinstellungen zuweisen, so können Sie die Angaben in den zugehörigen Eingabefeldern (<i>"$I18N_client_name"</i>, <i>"$I18N_ip"</i>, <i>"$I18N_netmask"</i>, <i>"$I18N_mac"</i> und <i>"$I18N_gateway"</i>) eingeben und anschließend auf <i>"$I18N_addSettingsToDhcp"</i> klicken. Mit <sup>2</sup> gekennzeichnete Angaben sind für diese Funktion zwingend erforderlich.
+	</li>
+</ul>
+
+<u>$I18N_IPRanges</u>
+Für IP-Adressen-Bereiche steht Ihnen eine ähnliche Funktionalität zur Verfügung. Anders als bei <i>"$I18N_singleClientsNetworksettings"</i> geben Sie hier allerdings keine einzelnen Rechner und Netzwerkeinstellungen an, sondern definieren einen zu sperrenden Adreßbereich bzw. einen IP-Bereich dessen IPs dynamisch an Rechner vergeben werden, die keine m23-Clients sind.
+<ul>
+	<li>
+		<b>$I18N_lockIpRange</b>: Geben Sie hier die erste und die letzte IP-Adresse bei <i>"$I18N_firstIP"</i> und <i>"$I18N_lastIP"</i> sowie die dazugehörige Netzwerkmaske (<i>"$I18N_netmask"</i>) an und klicken Sie anschließend auf <i>"$I18N_lockIpRange"</i>. Alle IPs, die innerhalb des angegebenen IP-Bereiches (einschließlich der ersten und der letzten IP-Adresse) liegen, werden gesperrt und können nicht mehr (fälschlicherweise) für m23-Clients verwendet werden. Mit <sup>1</sup> gekennzeichnete Angaben sind für diese Funktion zwingend erforderlich.
+	</li>
+	<li>
+		<b>$I18N_addDynamicIpRange</b>: Geben Sie hier die erste und die letzte IP-Adresse bei <i>"$I18N_firstIP"</i> und <i>"$I18N_lastIP"</i>, die dazugehörige Netzwerkmaske (<i>"$I18N_netmask"</i>) sowie das Gateway (<i>"$I18N_gateway"</i>) an und klicken Sie anschließend auf <i>"$I18N_addDynamicIpRange"</i>. Alle IPs, innerhalb des angegebenen IP-Bereiches (einschließlich der ersten und der letzten IP-Adresse) liegen, werden dynamisch an Rechner vergeben, die im Netzwerk nach einem DHCP-Server suchen. Mit <sup>2</sup> gekennzeichnete Angaben sind für diese Funktion zwingend erforderlich.
+	</li>
+</ul>
+
+<u>Adreßlisten</u>
+In den drei Listen <i>"$I18N_usedIPs"</i>, <i>"$I18N_dynamicIpRanges"</i> und <i>"$I18N_lockedIpRanges"</i> sehen Sie die durch die IP-Verwaltung verwalteten Werte. Unter <i>"$I18N_search"</i> können Sie einen Suchbegriff (IP, Netmask, MAC, Gruppenname oder andere Client-Eigenschaften) eingeben, um die in den Listen ausgegebenen Werte einzugrenzen. Möchten Sie die Einstellungen in einer Tabellenzeile aufheben, so setzen Sie am Ende der entsprechenden Zeile den Haken und klicken Sie anschließend auf <i>"$I18N_remove"</i>.

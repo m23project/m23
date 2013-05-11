@@ -1,0 +1,164 @@
+Template: amavisd-new/outdated_config_style_warning
+Type: note
+Description: Incompatible configuration file layout detected
+ The Debian packages have changed the way they handle configuration files
+ for amavisd-new to a better system, which uses multiple files instead of a
+ single, monolithic file.
+ .
+ The old amavisd-new configuration files that are still present in your
+ system (named either /etc/amavisd.conf or /etc/amavis/amavisd.conf) are
+ incompatible with this new config file layout.
+ .
+ You should read /usr/share/doc/amavisd-new/README.Debian to understand the
+ new configuration layout, and after that you should port your
+ configuration to the new layout.
+ .
+ For your safety, the old configuration files in your system have been
+ disabled, and a ".disabled" postfix was added to their file names.  The
+ amavisd-new service will refuse to start until you remove (or rename)
+ these ".disabled" files.
+ .
+ This safety is in place to avoid starting an unconfigured amavisd-new in
+ place of your previously configured one.  Do not remove the ".disabled"
+ files until you have read the /usr/share/doc/amavisd-new/README.Debian
+ file and ported your old configuration to the new layout.
+Description-cs.UTF-8: Rozpoznáno nekompatibilní rozložení konfiguračního souboru
+ Debianí balík amavisd-new změnil způsob, jakým spravuje konfigurační soubory. Nyní se místo jediného monolitického souboru používá několik menších.
+ .
+ Staré konfigurační soubory amavisd-new (pojmenované buď /etc/amavisd.conf nebo /etc/amavis/amavisd.conf), které jsou stále nainstalovány na vašem systému, jsou nekompatibilní s novým rozložením konfiguračních souborů.
+ .
+ Nejprve byste si měli přečíst /usr/share/doc/amavisd-new/README.Debian, abyste porozuměli novému rozložení konfiguračních souborů, a poté byste měli převést své nastavení na nové rozložení.
+ .
+ Pro větší bezpečí byly staré konfigurační soubory deaktivovány a přejmenovány s příponou ".disabled". Dokud tyto soubory neodstraníte (nebo nepřejmenujete), služba amavisd-new se odmítne spustit.
+ .
+ Tato bezpečnostní opatření mají zabránit spuštění nenastaveného amavisd-new. Soubory ".disabled" neodstraňujte, dokud si nepřečtete soubor /usr/share/doc/amavisd-new/README.Debian a nepřevedete své staré nastavení na nové rozložení.
+Description-de.UTF-8: Inkompatible Struktur in der Konfigurationsdatei erkannt
+ In den Debian-Paketen wurde der Umgang mit Konfigurationsdateien für Amavisd-new geändert. Es wird jetzt ein besseres System eingesetzt, das mehrere Dateien statt einer einzigen, monolithischen Datei verwendet.
+ .
+ Die alten Amavisd-new-Konfigurationsdateien, die noch in Ihrem System vorhanden sind (sie heißen entweder /etc/amavisd.conf oder /etc/amavis/amavisd.conf) sind nicht mit dieser neuen Struktur der Konfigurationsdateien kompatibel.
+ .
+ Sie sollten /usr/share/doc/amavisd-new/README.Debian lesen, um die neue Struktur der Konfiguration zu verstehen. Danach sollten Sie Ihre Konfiguration an die neue Struktur anpassen.
+ .
+ Zu Ihrer Sicherheit wurden die alten Konfigurationsdateien deaktiviert und eine ».disabled«-Endung wurde ihren Dateinamen hinzugefügt. Der Amavisd-new-Dienst wird nicht starten, bis Sie diese ».disabled«-Dateien entfernt oder umbenannt haben.
+ .
+ Diese Sicherheitsmaßnahme verhindert, dass Sie ein nicht-konfiguriertes Amavisd-new statt Ihres bisher konfigurierten starten. Entfernen Sie die ».disabled«-Dateien nicht, bevor Sie die Datei /usr/share/doc/amavisd-new/README.Debian gelesen und Ihre Konfigurationsdatei auf die neue Struktur angepasst haben.
+Description-es.UTF-8: Se ha detectado un formato incompatible del archivo de configuración
+ Los paquetes de Debian han cambiado la forma en que gestionan los archivos de configuración de amavisd-new por un sistema mejor, que utiliza varios archivos en lugar de un único archivo monolítico.
+ .
+ Los antiguos archivos de configuración de amavisd-new que todavía están presentes en el sistema (nombrados como «/etc/amavisd.conf» o «/etc/amavis/amavisd.conf») son incompatibles con el nuevo formato de los archivos de configuración.
+ .
+ Debería leer «/usr/share/doc/amavisd-new/README.Debian» para entender el nuevo formato de la configuración, y después debería adaptar la configuración al nuevo formato.
+ .
+ Por su seguridad, los antiguos archivos de configuración del sistema se han desactivado, y el sufijo «.disabled» se ha añadido a dichos archivos. El servicio amavisd-new no se iniciará hasta que elimine (o renombre) los archivos con el sufijo «.disabled».
+ .
+ Esta medida de seguridad se ha adoptado para evitar que se inicie un amavisd-new sin configurar en lugar del que estaba anteriormente configurado. No elimine los archivos con el sufijo «.disabled» hasta que haya leído el archivo «/usr/share/doc/amavisd-new/README.Debian» y haya adaptado la vieja configuración al nuevo formato.
+Description-eu.UTF-8: Konfigurazio fitxategi bateraezin ingurunea antzeman da
+ Debian paketeek amavisd-new konfigurazio fitxategien kudeaketa aldatu dute; modu honek fitxategi ezberdinak erabiltzen ditu fitxategi bakar, monolitikoaren ordez.
+ .
+ Amavisd-new konfigurazio zaharra zure sisteman jarraitzen duen ( /etc/amavisd.conf edo /etc/amavis/amavisd.conf izenarekin) konfigurazio ingurune berriarekin bateraezinak dira.
+ .
+ /usr/share/doc/amavisd-new/README.Debian irakurri behar duzu konfigurazio ingurune berria ulertzeko, eta hau egin ondoren konfigurazio ingurune berrira migratu dezakezu.
+ .
+ Zure segurtasunagatik, zure sistemako konfigurazio fitxategiak desgaitu egin dira, eta ".disabled" aurrizkia gehitu zaie fitxategi izenei. Amavisd-new zerbitzua ez da abiaraziko ".disabled" fitxategiak ezabatu (edo berrizendatu) arte.
+ .
+ Segurtasun neurri hau aurretik konfiguraturik zenuenaren ordez konfiguratu gabeko amavid-new bat abiarazi ez dadin egiten da. Ez ezabatu ".disabled" fitxategiak /usr/share/doc/amavisd-new/README.Debian fitxategia irakurri eta konfigurazio ingurune berrira berritu arte.
+Description-fi.UTF-8: Löydetyt asetustiedostot eivät ole yhteensopivia
+ Debian-paketin amavisd-new asetustiedostoissa ollaan siirrytty yksittäisestä suuresta tiedostosta useampaan, paremmin hallittavaan tiedostoon.
+ .
+ Järjestelmässä edelleen oleva vanha paketin amavisd-new asetustiedosto (nimellä /etc/amavisd.conf tai /etc/amavis/amavisd.conf tai molemmilla) ei ole yhteensopiva uuden asetustiedostojen säilytystavan kanssa.
+ .
+ Tiedostossa /usr/share/doc/amavisd-new/README.Debian on kuvattu asetustiedostojen uusi järjestys, johon nykyiset asetukset pitäisi siirtää.
+ .
+ Turvallisuussyistä vanha järjestelmässä oleva asetustiedosto on otettu pois käytöstä ja sen nimeen on lisätty liite ”.disabled”. Palvelu amavisd-new ei käynnisty ennen kuin käytöstä poistettu tiedosto poistetaan tai nimetään uudelleen.
+ .
+ Tämän turvajärjestelyn tarkoituksena on estää ohjelmaa amavisd-new käynnistymästä ilman asetuksia. Älä poista ”.disabled”-tiedostoja ennen kuin olet lukenut tiedoston /usr/share/doc/amavisd-new/README.Debian ja siirtänyt vanhat asetukset uusiin tiedostoihin.
+Description-fr.UTF-8: Organisation incorrecte du fichier de configuration
+ La gestion des fichiers de configuration d'amavisd-new a changé et ce paquet utilise désormais plusieurs fichiers à la place d'un seul.
+ .
+ Les anciens fichiers de configuration d'amavisd-new qui sont toujours présents sur votre système (appelés /etc/amavisd.conf ou /etc/amavis/amavisd.conf) sont incompatibles avec cette nouvelle organisation du fichier de configuration.
+ .
+ Veuillez consulter le fichier /usr/share/doc/amavisd-new/README.Debian pour comprendre la nouvelle organisation de la configuration. Vous devrez ensuite migrer votre configuration vers la nouvelle organisation.
+ .
+ Pour votre sécurité, les anciens fichiers de configuration ont été désactivés et une extension « .disabled » a été ajoutée aux noms des fichiers. Le service amavisd-new ne démarrera pas si vous ne supprimez (ou renommez) pas ces fichiers « .disabled ».
+ .
+ Cette précaution permet d'éviter de démarrer amavisd-new sans qu'il ait été configuré à la place de votre précédente version opérationnelle. Ne supprimez pas les fichiers « .disabled » sans avoir lu le fichier /usr/share/doc/amavisd-new/README.Debian et migré votre ancienne configuration vers la nouvelle organisation.
+Description-gl.UTF-8: Detectouse unha disposición dos ficheiros de configuración incompatible
+ Os paquetes Debian modificaron a maneira en que xestionan os ficheiros de configuración de amavisd-new a un sistema mellor que emprega varios ficheiros no canto dun só ficheiro monolítico.
+ .
+ Os ficheiros de configuración antigos de amavisd-new que aínda están presentes no seu sistema (chamados /etc/amavisd.conf ou /etc/amavis/amavisd.conf) son incompatibles con esta nova disposición dos ficheiros de configuración.
+ .
+ Debería consultar /usr/share/doc/amavisd-new/README.Debian para comprender a nova disposición da configuración, e despois diso debería portar a súa configuración á nova disposición.
+ .
+ Para a súa seguridade, desactiváronse os ficheiros de configuración antigos, e engadiuse un sufixo ".disabled" aos seus nomes. O servizo amavisd-new non se ha iniciar ata que elimine (ou cambie o nome) dos ficheiros ".disabled".
+ .
+ Este seguro incluiuse para evitar iniciar un amavisd-new no canto do que tiña configurado antes. Non elimine os ficheiros ".disabled" ata que teña lido o ficheiro /usr/share/doc/amavisd-new/README.Debian e teña portada a súa configuración antiga á nova disposición.
+Description-it.UTF-8: Rilevata una struttura del file di configurazione non compatibile
+ Nei pacchetti Debian è stato cambiato il modo con cui sono gestiti i file di configurazione di amavisd-new con uno migliore, sono usati più file al posto di un singolo file monolitico.
+ .
+ I vecchi file di configurazione di amavid-new, ancora presenti nel sistema (chiamati /etc/amavisd.conf o /etc/amavis/amavisd.conf), sono incompatibili con la nuova struttura per i file di configurazione.
+ .
+ Si consulti /usr/share/doc/amavisd-new/README.Debian per capire la nuova struttura della configurazione e poi adattare la propria configurazione alla nuova struttura.
+ .
+ Per sicurezza i vecchi file di configurazione sono stati disabilitati, in pratica è stato aggiunto il suffisso ".disabled" al loro nome. Il servizio amavisd-new non si avvia fino a quando i file ".disabled" non vengono rimossi (o rinominati).
+ .
+ Questa misura di sicurezza impedisce l'avvio di una versione non configurata di amavisd-new al posto della precedente che era configurata. Non eliminare i file ".disabled" fino a quando non si è convertito, seguendo le indicazioni in /usr/share/doc/amavisd-new/README.Debian, la vecchia configurazione alla nuova struttura.
+Description-ja.UTF-8: 非互換の設定ファイルレイアウトが検出されました
+ Debian パッケージは amavisd-new の設定ファイルを管理する方法を、単一ファイルのモノリシックなファイルの代わりに複数のファイルを使った、より良いシステムに変更しました。
+ .
+ あなたのシステムで提供されている古い amavisd-new 設定ファイル (/etc/amavisd.conf または /etc/amavis/amavisd.conf という名前) は、この新しい設定ファイルレイアウトと互換性がありません。
+ .
+ 新しい設定レイアウトを理解するために、/usr/share/doc/amavisd-new/README.Debian を読んでください。それから、あなたの設定を新しいレイアウトに移植してください。
+ .
+ 安全のためにあなたのシステムの古い設定ファイルは無効とされ、".disabled" の接尾辞がそれらのファイル名に付加されます。amavisd-new サービスは、あなたがこれらの ".disabled" ファイルを削除 (あるいは名前変更) するまで拒否されます。
+ .
+ この安全装置は、あなたの以前の設定の代わりに未設定の amavisd-new が開始するのを避けるためのものです。/usr/share/doc/amavisd-new/README.Debian ファイルを読み、あなたの古い設定を新しいレイアウトに移植するまで、".disabled" ファイルを削除しないでください。
+Description-nl.UTF-8: Incompatibele layout van de configuratiebestanden ontdekt.
+ De Debian-pakketten behandelen de configuratiebestanden voor amavisd-new nu in een nieuw en beter systeem, dat meerdere bestanden gebruikt i.p.v. één groot monolitisch bestand.
+ .
+ De op uw systeem aanwezige configuratiebestanden (/etc/amavisd.conf, of /etc/amavis/amavisd.conf) gaan nog uit van de oude opzet, en zijn niet compatibel met de nieuwe opzet.
+ .
+ Meer informatie over de nieuwe layout vindt u in /usr/share/doc/amavisd-new/README.Debian, na dit door te lezen kunt u uw configuratie omzetten naar de nieuwe layout.
+ .
+ Voor uw veiligheid zijn de oude configuratiebestanden gedeactiveerd, en is er een 'disabled'-postfix toegevoegd aan hun naam. De 'amavisd-new'-dienst zal weigeren op te starten tot u deze '.disabled'-bestanden verwijdert of hernoemt.
+ .
+ Deze beveiliging is in plaats om te vermijden dat u een niet geconfigureerde amavisd-new start i.p.v. uw eerder geconfigureerde. Verwijder de '.disabled' bestanden niet voor u het bestand /usr/share/doc/amavisd-new/README.Debian gelezen heeft en de oude configuratie omgezet is naar de nieuwe opzet.
+Description-pt.UTF-8: Detectado layout do ficheiro de configuração incompatível
+ Os pacotes Debian mudaram a maneira como lidam com os ficheiros de configuração do amavisd-new para um melhor sistema, o qual usa ficheiros multiplos em vez de um ficheiro único e monolítico.
+ .
+ Os antigos ficheiros de configuração do amavisd-new que ainda estão presentes no seu sistema (chamados /etc/amavisd.conf ou /etc/amavis/amavisd.conf) são incompatíveis com o novo layout deste novo ficheiro de configuração.
+ .
+ Você deve ler /usr/share/doc/amavisd-new/README.Debian para perceber o novo layout de configuração, e a seguir a isso, deveria modificar a sua configuração para o novo layout.
+ .
+ Para sua segurança, os ficheiros antigos de configuração foram desactivados, e um sufixo ".disabled" foi adicionado aos seus nomes. O serviço amavisd-new irá negar-se a iniciar até que você remova (ou mude o nome) destes ficheiros ".disabled".
+ .
+ Esta segurança está activa para evitar iniciar um amavisd-new não configurado em detrimento do seu anterior configurado.  Não remova os ficheiros ".disabled" até que tenha lido o ficheiro /usr/share/doc/amavisd-new/README.Debian e mudado a sua antiga configuração para o novolayout.
+Description-pt_BR.UTF-8: Detectado layout de arquivo de configuração incompatível
+ Os pacotes Debian alteraram o modo com o qual manipulam os arquivos de configuração do amavisd-new para um sistema melhor, que usa múltiplos arquivos ao invés de um único arquivo monolítico.
+ .
+ Os arquivos de configuração antigos do amavisd-new que ainda estão presentes no seu sistema (nomeados como /etc/amavisd.conf ou /etc/amavis/amavisd.conf) são incompatíveis com este novo layout de arquivos de configuração.
+ .
+ Você deveria ler /usr/share/doc/amavisd-new/README.Debian para entender o novo layout de configuração, e depois disso você deveria portar a sua configuração para o novo layout.
+ .
+ Para sua segurança, os arquivos de configuração antigos em seu sistema foram desabilitados, e um sufixo ".disabled" foi adicionado aos seus nomes de arquivo. O serviço amavisd-new se recusará a iniciar até que você remova (ou renomeie) estes arquivos ".disabled".
+ .
+ Esta medida de segurança é tomada para evitar que se inicie um amavisd-new desconfigurado no lugar do seu já configurado anteriormente. Não remova os arquivos ".disabled" até que você tenha lido o arquivo /usr/share/doc/amavisd-new/README.Debian e portado a sua configuração antiga para o novo layout.
+Description-ru.UTF-8: Обнаружена несовместимость в хранении настроек
+ В пакетах Debian изменился способ обработки файлов настроек amavisd-new, теперь используется несколько файлов вместо одного, хранящего всё, файла.
+ .
+ Старые файлы настройки amavisd-new, которые находятся в системе (под именами /etc/amavisd.conf или /etc/amavis/amavisd.conf) несовместимы с новым способом хранения настроек.
+ .
+ Вам нужно прочитать файл /usr/share/doc/amavisd-new/README.Debian, в котором описан новый способ хранения, и после этого вы должны перенести свои настройки в новую систему.
+ .
+ В целях безопасности, старые файлы настройки в системе будут выключены, а к их именам будет добавлено ".disabled". Служба amavisd-new не будет запускаться, пока вы не удалите (или переименуете) эти ".disabled" файлы.
+ .
+ Безопасней совсем выключить запуск ненастроенного amavisd-new, вместо работы со старой настройкой. Не удаляйте файлы ".disabled", пока не прочитаете файл /usr/share/doc/amavisd-new/README.Debian и не перенесёте старую настройку в новые файлы.
+Description-sv.UTF-8: En inkompatibel konfigurationsfilslayout har upptäckts
+ Debianpaketen har ändrat sättet på vilket de hanterar konfigurationsfiler för amavisd-new till ett bättre system, som använder flera filer istället för en enda, ogenomtränglig fil.
+ .
+ De gamla amavisd-new-konfigurationsfilerna som fortfarande finns i ditt system (de heter antingen /etc/amavisd.conf eller /etc/amavis/amavisd.conf) är inkompatibla med den nya konfigurationsfilslayouten.
+ .
+ Du måste läsa /usr/share/doc/amavisd-new/README.Debian för att förstå den nya konfigurationslayouten och därefter överföra din konfiguration till den nya layouten.
+ .
+ För säkerhets skull har de gamla konfigurationsfilerna i ditt system avaktiverats och ett ".disabled"-suffix lagts till deras filnamn. amavisd-new-tjänsten kommer vägra starta tills du tar bort (eller byter namn på) dessa ".disabled"-filer.
+ .
+ Den här säkerhetsmekanismen finns till för att undvika att en okonfigurerad amavisd-new startas i stället för din tidigare konfigurerade version. Ta inte bort ".disabled"-filerna innan du har läst /usr/share/doc/amavisd-new/README.Debian och fört över din gamla konfiguration till den nya layouten.

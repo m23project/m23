@@ -1,0 +1,19 @@
+$I18N_createImage<!--V 1.11 new-->
+
+You can create images from a partition or a whole drive of your client in this dialog. This image can be used to install clients. Select your preferred $I18N_imageFormat, the $I18N_imageTransferType and the $I18N_imageCompression. You have to make additional designations under <i>"$I18N_imageSource"</i> for some image formats e.g. the partition or drive that should be stored in the image.
+Choose a name for the image and enter it at <i>"$I18N_imageName"</i>. Click on <i>"$I18N_createImage"</i> afterwards.
+
+<!--V11.4 begin--><u><b>Caution</b></u>
+The client will <b>reboot immediately</b> after clicking on <i>"$I18N_createImage"</i> and before it begins to create the image! Data that has not been saved before <b>will be lost</b>.<!--V11.4 end-->
+
+<u>Hint for image files</u>
+The files are stored in the directory <b>/m23/data+scripts/clientImages</b> in different types and with distinct compressions. The file names are always created after the following scheme: &lt;Image name&gt;&lt;Size of the extracted image in bytes&gt;&lt;Image format&gt;&lt;Compression&gt;
+Image format is one of the following values:
+<ul><LI><a href="index.php?page=manViewer&manPage=dd" target="_blank"><b>dd</b></a>: Saves the whole data of a partition or harddisk.</LI></ul>
+For the compression the following is valid:
+<ul><LI>(no extension): The image file will be stored with no compression.</LI>
+<LI><a href="index.php?page=manViewer&manPage=gzip" target="_blank"><b>gz</b></a>: The image will be compressed with  gzip.</LI>
+<LI><a href="index.php?page=manViewer&manPage=bzip2" target="_blank"><b>bz2</b></a>: It will be compressed with bzip2 that compresses better mostly.</LI></ul>
+
+<u>Hint for the $I18N_transferPort</u>
+You have to enter a network port that can be used on client and server side and is not blocked (e.g. firewall) for the $I18N_imageTransferType. If you want to create images from multiple clients concurrently you have to choose different port numbers.

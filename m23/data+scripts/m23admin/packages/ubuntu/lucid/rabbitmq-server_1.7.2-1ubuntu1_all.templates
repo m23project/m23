@@ -1,0 +1,9 @@
+Template: rabbitmq-server/upgrade_previous
+Type: note
+Description: Upgrading from 1.5.4 and below.
+ You are upgrading from a release prior to 1.6.0. When the
+ RabbitMQ server detects the presence of an old database, it moves it
+ to a backup location, creates a fresh, empty database, and logs a
+ warning. If your RabbitMQ installation contains important data then we
+ recommend you contact support@rabbitmq.com for assistance with the
+ upgrade.

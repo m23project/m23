@@ -1,0 +1,82 @@
+04-13-2003 Daniel
+client_showwaitingjobs 	- fixed, so only done packages are shown
+afterChrootInstall.php 	- Added clockset of client via NTP
+client.inc		- Added Function CLIENT_isrunning 
+
+04-13-2003 Hauke
+client.inc 		- added CLIENT_reset
+client.inc		- CLIENT_desasterRecovery: clients will be automatically reseted
+partinfodb		- now sends cpu speed to server
+db.inc			- introducing sendClientLogStatus()
+db			- added table "clientlogs"
+setLog.php		- logs script events to clientlogs
+db.inc			- added deleteClientLogs(), deletes the client logs
+
+04-17-2003 Hauke
+dbimg.tgz		- added ntpdate + execute @ startup
+			- added hdparm + dma autodetection @ startup
+			- added libmysqlclient
+m23remasterImg.sh	- fixed: /oldroot and / aren't tared 
+log2db			- introducing tool, saves logfiles to db
+			
+04-18-2003 Hauke
+log2db			- changed sql query method, now logfiles can be send easier
+client.inc		- CLIENT_showLog, entries get colored
+			- CLIENT_showLog, logfiles are correctly shown
+pxelinux.cfg		- local boot of clients works now (with hint of Daniel)
+
+04-19-2003 Hauke
+plugins			- new table plugins
+plugin.inc		- added PLG_install, PLG_getTempDir, PLG_getFilename, PLG_realInstall, PLG_DBInstall, PLG_checkOverwriting, PLG_getPlugin, PLG_showDownloadStatus
+			- installation of plugins works
+
+04-20-2003 Hauke
+plugin.inc		- added PLG_showPluginOverview, PLG_delete
+			- deinstallation of plugins works
+			- update works
+
+04-21-2003 Hauke
+plugin.inc		- added error messages for failed downloads
+			- fixed an error in plugin updates
+			- some changes to the layout: only error messages are shown
+help.inc		- help files are now under inc/help/de
+
+
+04-22 - 04-28-2003 Hauke
+
+			- countless changes for multi language support
+
+04-29-2003 Hauke
+remortevar.php		- added, for saving remote variables on the server, usefull, if cookies are disabled
+
+
+
+04-30-2003 Hauke
+m23BaseSysInstall.php	- commented out getBootFS(), seems to be not used any more
+			- added debug flag for disabling dialog messages
+afterChrootInstall.php	- 	"
+m23FdiskFormatInstall.php-	"
+			- removed obsolete code
+m23KdeInstall.php	- added debug flag for disabling dialog messages
+m23PreSetupInstall.php	-	"
+log2db			- fixed help message
+			- fixed compiler warnings
+partinfodb		- removed output of sql statement
+
+
+05-01-2003 Hauke
+index.php		- changed language detection scheme to fix double click for language change
+debimg.tgz		- removed hwcheck from rc2-5, added hwcheck to rcS
+			- added ntpsync to rcS
+			- updated kernel to 2.4.21-rc1
+			- removed interface.* files from /root
+			- made new debimg.tgz
+dhcp.php		- fix: DHCP_rmClient, trimmed clientname
+			- added return code to DHCP_rmClient
+delete_client.php	- added return message
+add_client.php		- shortened delay by client adding
+
+
+03-05-2003 Hauke
+fdisk.php		- changed parameters of FDISK_autoPart($clientName,&$command, $dev, $param)
+			- amount of partitons is now calculated with the param string

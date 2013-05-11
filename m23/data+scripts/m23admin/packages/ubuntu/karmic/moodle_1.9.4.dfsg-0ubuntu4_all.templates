@@ -1,0 +1,226 @@
+Template: moodle/local_only
+Type: boolean
+Default: true
+Description: Should access to this Moodle server be restricted to localhost?
+ If access is restricted to localhost, other computers will be prevented from
+ connecting to this Moodle site. If you wish for others to be able to use this
+ Moodle site you must not restrict access to localhost.
+ .
+ Note: Opening your system to connections from remote hosts may have security
+ implications.
+
+Template: moodle/fqdn_check
+Type: boolean
+Default: true
+Description: Is your FQDN correct?
+ Moodle will be configured to use this system's Fully Qualified Domain Name
+ (FQDN). This must be correct, and you cannot easily change this after your
+ Moodle installation is complete.
+ .
+ The command 'hostname --fqdn' will display your system's current FQDN.
+ .
+ If your FQDN is incorrect, you should change the FQDN and use 'sudo
+ dpkg-reconfigure moodle' later to complete the Moodle configuration.
+
+Template: moodle/https_only
+Type: boolean
+Default: false
+Description: Should https be required to access this Moodle server?
+ If you elect to use https, you must have Apache's SSL module enabled and
+ configured in order to complete the Moodle installation after this
+ configuration script ends.
+ .
+ Note: Requiring https will have a slight impact on your Moodle site's
+ performance.
+ .
+
+Template: moodle/db_server
+Type: select
+Choices: postgresql, mysql-server
+Default: postgresql
+Description: Database server software for Moodle:
+ Moodle can work with either MySQL or PostgreSQL. Please choose which
+ one you want to use (and check that it is installed before continuing).
+ .
+ Select 'Cancel' if you want to complete the Moodle configuration completely
+ manually. (This is not recommended.)
+
+Template: moodle/db_create
+Type: boolean
+Default: true
+Description: Should a default database be created for Moodle on localhost?
+ If you do not create a default database, you must create the database and
+ configure access to it manually.
+
+Template: moodle/db_host
+Type: string
+Default: localhost
+Description: Database server hostname:
+ Please enter the hostname of the database server host.
+Description-cs.UTF-8: Jméno počítače s databázovým serverem:
+ Zadejte jméno počítače, na kterém běží databázový server.
+Description-de.UTF-8: Datenbankserver-Rechnername:
+ Bitte geben Sie den Rechnernamen des Datenbankservers (Hosts) ein.
+Description-es.UTF-8: Nombre del servidor de bases de datos:
+ Por favor, introduzca el nombre del servidor de bases de datos.
+Description-eu.UTF-8: Datubase zerbitzari ostalari-izena:
+ Mesedez idatzi datubase zerbitzariaren ostalari-izena.
+Description-fi.UTF-8: Tietokantapalvelimen verkkonimi:
+ Anna tietokantapalvelimen verkkonimi.
+Description-fr.UTF-8: Nom d'hôte du serveur de bases de données :
+ Veuillez indiquer le nom d'hôte du serveur de bases de données.
+Description-gl.UTF-8: Nome do servidor de bases de datos:
+ Introduza o nome do servidor de bases de datos.
+Description-ja.UTF-8: データベースサーバのホスト名:
+ データベースサーバのホストのホスト名を入力してください。
+Description-nl.UTF-8: Computernaam van de databaseserver:
+ Wat is de computernaam van de databaseserver?
+Description-pt.UTF-8: Hostname do servidor de Bases de Dados:
+ Por favor introduza o 'hostname' do servidor de bases de dados.
+Description-pt_BR.UTF-8: Nome de máquina do servidor de banco de dados:
+ Por favor, informe o nome de máquina do servidor de banco de dados.
+Description-ru.UTF-8: Имя хоста сервера базы данных:
+ Введите имя машины, на котором будет распологаться база данных.
+Description-sk.UTF-8: Názov stroja databázového servera:
+ Prosím, zadajte názov stroja, na ktorom beží databázový server:
+Description-sv.UTF-8: Värdnamn för databasserver:
+ Ange värdnamnet för databasservern.
+Description-vi.UTF-8: Tên máy có chạy trình phục vụ cơ sở dữ liệu :
+ Hãy nhập tên máy của máy có chạy trình phục vụ cơ sở dữ liệu.
+
+Template: moodle/dba_password
+Type: password
+Description: root's MySQL password:
+ Please enter root's MySQL password, which is needed for
+ the database creation.
+ .
+ (This password was set (or left blank) when you installed mysql-server.)
+
+Template: moodle/dba_confirm
+Type: password
+Description: root's MySQL password confirmation:
+ Please confirm the password in order to continue.
+
+Template: moodle/pwmismatch
+Type: note
+Description: Password mismatch
+ The password and its confirmation do not match. Please
+ reenter the passwords.
+Description-cs.UTF-8: Hesla nesouhlasí
+ Zadané heslo a jeho potvrzení nesouhlasí. Zadejte prosím hesla znovu.
+Description-de.UTF-8: Passwörter stimmen nicht überein
+ Das Passwort und seine Bestätigung stimmen nicht überein. Bitte geben Sie die Passwörter erneut ein.
+Description-es.UTF-8: Las contraseñas no coinciden
+ La contraseña y su confirmación no coinciden. Por favor, vuelva a introducirlas.
+Description-eu.UTF-8: Pasahitz ezberdinak
+ Pasahitz eta berrespena ez dira berdinak. Mesedez berriz idatzi pasahitzak.
+Description-fi.UTF-8: Salasanat eroavat
+ Salasana ja sen varmistus eivät täsmää. Anna salasanat uudelleen.
+Description-fr.UTF-8: Mots de passe différents
+ Le mot de passe et sa confirmation ne correspondent pas. Veuillez indiquer à nouveau les mots de passe.
+Description-gl.UTF-8: Contrasinais distintos
+ O contrasinal e a súa confirmación non coinciden. Volva introducir os contrasinais.
+Description-ja.UTF-8: パスワードの不一致
+ パスワードとその確認で入力したものが一致しません。もう一度パスワードを入力してください。
+Description-nl.UTF-8: De wachtwoorden komen niet overeen.
+ Het wachtwoord en de bevestiging komen niet overeen. Gelieve het wachtwoord opnieuw in te voeren.
+Description-pt.UTF-8: Palavra-chave não coincidente
+ A palavra-chave e a sua confirmação não são iguais. Por favor volte a introduzi-las.
+Description-pt_BR.UTF-8: Senhas diferem
+ A senha informada e a sua confirmação não conferem. Por favor, informe as senhas novamente.
+Description-ru.UTF-8: Пароли не совпадают
+ Введённые пароли не совпадают. Повторите ввод паролей ещё раз.
+Description-sk.UTF-8: Heslá sa nezhodujú
+ Heslo a potvrdenie hesla sa nezhodujú. Prosím, zadajte ich znovu.
+Description-sv.UTF-8: Lösenorden stämmer inte.
+ Lösenordet stämmer inte med det upprepade lösenordet. Ange lösenord igen.
+Description-vi.UTF-8: Sai khớp mật khẩu
+ Mật khẩu và mật khẩu xác nhận không trùng. Hãy nhập lại cả hai.
+
+Template: moodle/pwempty
+Type: note
+Description: Password is empty
+ Your password must not be empty. Please reenter your password.
+
+Template: moodle/pwillegalchar
+Type: note
+Description: Illegal password character
+ The password you specified has at least one of the following disallowed characters: '  "  \
+
+Template: moodle/dbu_name
+Type: string
+Default: moodle
+Description: Database owner username:
+ Please enter the username of the Moodle database owner.
+Description-cs.UTF-8: Uživatelské jméno vlastníka databáze:
+ Zadejte uživatelské jméno vlastníka databáze Moodle.
+Description-de.UTF-8: Benutzername des Datenbankeigentümers:
+ Bitte geben Sie den Benutzernamen des Eigentümers der Moodle-Datenbank ein.
+Description-es.UTF-8: Nombre del usuario propietario de la base de datos:
+ Por favor, introduzca el nombre del usuario propietario de la base de datos Moodle.
+Description-eu.UTF-8: Datubase jabe erabiltzaile-izena:
+ Mesedez idatzi Moodle datubase jabearen erabiltzaile-izena.
+Description-fi.UTF-8: Tietokannan omistajan käyttäjätunnus:
+ Annan Moodle-tietokannan omistajan käyttäjätunnus.
+Description-fr.UTF-8: Identifiant du propriétaire de la base de données :
+ Veuillez indiquer l'identifiant du propriétaire de la base de données de Moodle.
+Description-gl.UTF-8: Usuario propietario da base de datos:
+ Introduza o nome do usuario propietario da base de datos de Moodle.
+Description-ja.UTF-8: データベースの所有者のユーザ名:
+ Moodle のデータベースの所有者のユーザ名を入力してください。
+Description-nl.UTF-8: Gebruikersnaam van de database-eigenaar:
+ Wat is de gebruikersnaam van de eigenaar van de Moodle-Database?
+Description-pt.UTF-8: Nome de utilizador do dono da base de dados:
+ Por favor introduza o nome de utilizador do dono de base de dados do Moodle.
+Description-pt_BR.UTF-8: Nome de usuário do proprietário do banco de dados:
+ Por favor, informe o nome de usuário do proprietário do banco de dados do Moodle.
+Description-ru.UTF-8: Имя владельца базы данных:
+ Введите имя, которому будет принадлежать база данных Moodle.
+Description-sk.UTF-8: Používateľské meno účtu vlastníka databázy:
+ Prosím, zadajte používateľské meno účtu vlastníka databázy Moodle.
+Description-sv.UTF-8: Databasägarens användarnamn:
+ Ange användarnamnet för ägaren av Moodledatabasen.
+Description-vi.UTF-8: Tên người dùng sở hữu cơ sở dữ liệu :
+ Hãy nhập tên người dùng của người sở hữu cơ sở dữ liệu Moodle.
+
+Template: moodle/dbu_password
+Type: password
+Description: Moodle database password:
+ Please enter the password of the Moodle database.
+ .
+ This password will appear in Moodle's config.php file:
+  you should not re-use a password from elsewhere,
+  you will not need to remember this password after this installation, and
+  you should choose a strong password with letters, numbers, and symbols.
+ .
+ (This password cannot be blank.)
+
+Template: moodle/dbu_confirm
+Type: password
+Description: Moodle database password confirmation:
+ Please confirm the password of the Moodle database.
+
+Template: moodle/notconfigured
+Type: note
+Description: Warning - Moodle is not configured
+ Please note that you have not completed the Moodle configuration. In order to
+ complete it, please use "sudo dpkg --configure moodle" later.
+
+Template: moodle/db_populate
+Type: note
+Description: Warning - Moodle database not populated.
+ This install script may create the Moodle database, but the database needs to
+ be populated by Moodle itself. Please launch Moodle immediately after this
+ installation completes:
+ .
+ http://localhost/moodle/admin or http://<FQDN>/moodle/admin
+
+Template: moodle/config_php_created
+Type: note
+Description: Moodle config.php created
+ This install script will create Moodle's config.php file, but the Moodle
+ database will not be created or populated. You must create the Moodle database
+ and then launch Moodle immediately to complete the installation.
+ .
+ (The database configuration you've specified can be seen in /etc/moodle/config.php.)
+

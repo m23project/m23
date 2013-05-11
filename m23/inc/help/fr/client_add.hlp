@@ -1,0 +1,48 @@
+Ajouter un poste client
+(les champs de saisie marquées avec * doivent être remplis correctement dans tous les cas)
+
+<ul>
+<li><b>$I18N_preferences:</b> Il vous est possible de choisir parmis les configurations déjà enregistrées, vous aurez par la suite la possibilité de les charger ou de les effacer. Si vous souhaitez enregistrer la configuration actuelle, entrez un nom pertinent et cliquez sur <i>&laquo;$I18N_save&raquo;</i>.</li>
+<!-- 1.10 begin--><li><b>$I18N_language:</b> Choisissez la langue du poste client m23. Cette langue sera employée pour le paramétrage du clavier, du bureau et de la console.</li>
+<li><b>$I18N_login_name:</b> Compte de connexion de l'utilisateur sur le poste client.</li><!-- 1.10 end-->
+<li><b>$I18N_client_name:</b> Nom unique du poste client ne devant être employé qu'une seule fois dans m23</li>
+<li><b>$I18N_office:</b> Cette information est facultative, vous pouvez indiquer l'endroit où le poste client est localisé (par ex. le numéro et/ou l'étage de la pièce, etc )</li>
+<li><b>Langue:</b> Choisissez la langue employée pour l'installation de votre poste client; elle sera employée également pour tous les programmes installés, pour le clavier et les options de pays.</li>
+<li><b>$I18N_forename:</b> Prénom de l'utilisateur, correspond au nom d'entrée dans le système</li>
+<li><b>$I18N_familyname:</b> Nom de famille de l'utilisateur</li>
+<li><b>eMail:</b> Adresse de courrier électronique de l'utilisateur</li>
+<!-- V1.2 --><li><b>$I18N_boottype:</b> Type de démarrage des postes clients par le réseau. <!-- 10.3 begin-->(Notez: Si vous souhaitez utiliser m23 avec un serveur DHCP existant, lisez la page suivante: <m23help>externalDHCP</m23help>)<!-- 10.3 end--></li>
+<!-- V1.19 begin--><li><b>$I18N_bootloader:</b> Choisissez quel <a href="http://fr.wikipedia.org/wiki/Boot_loader" target="_blank">chargeur d'amor&ccedil;age/boot loader</a> vous souhaitez utiliser pour l'amor&ccedil;age du noyau Linux et des autres systèmes d'exploitation eventuellement installés. Il vous est possible de choisir entre <a href="http://fr.wikipedia.org/wiki/Linux_loader" target="_blank">LILO</a> (LInux LOader) et <a href="http://fr.wikipedia.org/wiki/GRand_Unified_Bootloader" target="_blank">GRUB</a> (GRand Unified Bootloader).<!-- V1.20 begin--><br><u>Information supplémentaire</u><br>
+La modification des paramètres de démarrage par des personnes non autorisées n'est rendue possible qu'en saisissant un mot de passe à partir de la version m23 0.6.4 . Il est nécessaire d'entrer le mot des passe de démarrage par le réseau (netboot). Vous pouvez l'extraire dans le centre de contrôle sous <i>&laquo;$I18N_client_directConnect&raquo;</i>.<!-- V1.20 end--><!-- V1.20 end--></li><!-- V1.19 end-->
+<!-- V1.16 --><li><b>$I18N_arch:</b> Choix d'installation des logiciels en version 32 bits ou 64 bits. Regardez également les informations de bas de page.</li>
+<li><b>$I18N_mac:</b> Adresse MAC de la carte réseau du poste client (par ex. 00D0B723865C)</li>
+<li><b>$I18N_ip:</b> Adresse IP fixe du poste client (par ex. 192.168.1.23)</li>
+<li><b>$I18N_netmask:</b> Masque de sous-réseau (par ex. 255.255.255.0)</li>
+<li><b>$I18N_gateway:</b> Adresse IP de la passerelle (gateway) pour les connexions au réseau internet ou à d'autres connexions externes à votre propre réseau</li>
+<li><b>DNS1:</b> Adresse IP du serveur DNS de résolution des noms internet</li>
+<li><b>DNS2 (facultatif):</b> Adresse IP du serveur DNS backup</li>
+<!-- V1.4 --><li><b>$I18N_packageProxy:</b> Le poste client essaie de télécharger les paquets logiciels sur l'adresse IP du serveur proxy indiqué dans ce champ. En général, il s'agit de l'adresse IP du serveur m23, mais il est également possible d'indiquer un autre serveur proxy. Si vous laissez ce champs de saisie vide, le client téléchargera les paquets logiciels sur internet. Entrez également le numéro du port du serveur proxy. Dans le cas du serveur m23, c'est le port 2323. Lorsque vous ouvrez la boîte de dialogue <i>&laquo;$I18N_add_client&raquo;</i>, le serveur m23 est le serveur proxy par défaut.</li>
+<li><b>$I18N_group (facultatif):</b> Nom du groupe de postes client auquel appartient ce poste client</li>
+<li><b>$I18N_userpassword:</b> Mot de passe de l'utilisateur employé à la première connexion au système. Ce mot de passe comporte six chiffres sélectionnés au hasard, vous pouvez également choisir un mot de passe de votre choix.</li>
+<li><b>$I18N_rootpassword:</b> Mot de passe employé pour l'accès au poste client en tant que super-utilisateur (root) . Il comporte huit chiffres sélectionnés au hasard, vous pouvez également choisir un mot de passe de votre choix.</li>
+<!-- 1.11 begin--><li><b>$I18N_timeZone:</b> Définition du fuseau horaire d'appartenance du poste client.</li>
+<li><b>$I18N_getSystemtimeByNTP:</b> Option de synchronisation de l'heure du poste client par un serveur de temps NTP accessible sur internet.</li>
+<li><b>$I18N_installPrinterDriversAndDetectPrinter:</b> Détection puis installation automatique des imprimantes et de leurs pilotes.</li><!-- 1.11 end-->
+<!-- 1.10 begin-->
+<li><b>$I18N_addNewLocalLogin:</b> Cochez cette option si vous désirez un compte local sur le poste client pour l'utilisateur.</li>
+<li><b>$I18N_dontUseLDAP:</b> Pour utiliser uniquement l'authentification locale sur les postes client, cochez <i>&laquo;$I18N_dontUseLDAP&raquo;</i>.</LI> 
+<li><b>$I18N_readLoginFromLDAP:</b> Pour utiliser les données d'authentification du compte utilisateur enregistrées sur le serveur LDAP, cochez <i>&laquo;$I18N_readLoginFromLDAP&raquo;</i>.</LI>
+<li><b>$I18N_addNewLoginToLDAP:</b> Enregistrement des données de l' utilisateur renseignées ci-dessus, dans la base de données du serveur LDAP m23, pour l'authentification sur les postes client, cochez <i>&laquo;$I18N_addNewLoginToLDAP&raquo;</i>. Le bon fonctionnement de cette option nécessite un accès complet au serveur LDAP pour l'enregistrement des données sur celui-ci.</LI>
+<li><b>$I18N_userID, $I18N_groupID:</b> De plus, vous devez renseigner l'<i>&laquo;$I18N_userID&raquo;</i> et l'<i>&laquo;$I18N_groupID&raquo;</i> pour le compte utilisateur. Ceci est très important; surtout lors de l'utilisation de NFS pour les répertoires personnels.</LI>
+<li><b>$I18N_LDAPServerName:</b> Sélectionnez un serveur LDAP dans la liste <i>&laquo;$I18N_LDAPServerName&raquo;</i>. Si le serveur LDAP souhaité n'y apparaissait pas, vous pouvez l'ajouter en cliquant sur <i>&laquo;$I18N_manageLDAPServers&raquo;</i>.</LI>
+<li><b>$I18N_homeOnNFS:</b> Ce champ assure l'enregistrement des données du répertoire personnel de l'utilisateur sur un serveur NFS central, afin qu'elles puissent être accédées de tout poste client (en combination avec LDAP). Pour activer le NFS, entrez le nom de l'ordinateur ou son adresse IP et le chemin pour l'enregistrement des répertoires personnels, comme par exemple: <code>192.168.1.42/nfs/home</code>.</li><!-- 1.10 end-->
+</ul>
+
+Validation de l'ajout du poste client en cliquant sur <i>&laquo;Ajouter&raquo;</i>.
+
+<u>Information supplémentaire:</u>
+Après ajout du nouveau client, ce dernier démarrera sur le réseau (netboot) pour effectuer une séquence de détection du matériel, durant laquelle les informations collectées, comme par ex. la taille du disque dur utilisé, seront envoyées au serveur.
+Après l'achèvement du transfert des données l'état du client passera à <i>&laquo;jaune&raquo;</i> vous pourrez dès lors ajuster les paramètres du client. Pour cela, cliquez sur <i>&laquo;$I18N_clients&raquo;</i> puis sur <i>&laquo;$I18N_setup&raquo;</i> dans le menu.
+
+<!-- begin V1.16 --><u>Renseignement concernant l'architecture du processeur</u>
+m23 est compatible avec les processeurs 32 et 64 bits. Une version 32 bits peut être installée sur un ordinateur 64 bits, l'inverse n'est pas possible. Pour profiter de l'entière potentialité d'un microprocesseur 64 bits, vous devez choisir <i>&laquo;amd64&raquo;</i>. Cette catégorie <i>&laquo;amd64&raquo;</i> ne comportent pas uniquement les processeurs AMD, mais également ceux d'Intel. Par exemple, les processeurs Intel Pentium D, Pentium Extreme Edition, Celeron D, Core 2 et les processeurs AMD Sempron, Athlon 64, Athlon X2 et Phenom en font partie.<!-- end V1.16 -->

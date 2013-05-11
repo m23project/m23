@@ -1,0 +1,144 @@
+
+Template: openvpn/create_tun
+Type: boolean
+Default: false
+Description: Create the TUN/TAP device?
+ If you choose this option, the /dev/net/tun device
+ needed by OpenVPN will be created.
+ .
+ You should not choose this option if you're using devfs.
+Description-cs.UTF-8: Vytvořit zařízení TUN/TAP?
+ Povolíte-li tuto možnost, vytvoří se zařízení /dev/net/tun, které je nutné pro činnost OpenVPN.
+ .
+ Používáte-li devfs, tuto volbu nepovolujte.
+Description-de.UTF-8: TUN/TAP-Gerät anlegen?
+ Wenn Sie hier zustimmen, wird das von OpenVPN benötigte Gerät /dev/net/tun erzeugt.
+ .
+ Sie sollten nicht zustimmen, wenn Sie Devfs benutzen.
+Description-es.UTF-8: ¿Crear dispositivo TUN/TAP?
+ Si elije esta opción, se creará el dispositivo «/dev/net/tun» requerido por OpenVPN.
+ .
+ No elija esta opción si está utilizando devfs.
+Description-eu.UTF-8: TUN/TAP gailua sortu?
+ Aukera hau hautatzen baduzu OpenVPN-ek behar duen /dev/net/tun gailua sortuko da.
+ .
+ Ez zenuke aukera hau onartu beharko devfs erabiltzen ari bazara.
+Description-fi.UTF-8: Luodaanko TUN/TAP-laite?
+ Jos valitset tämän vaihtoehdon, OpenVPN:n tarvitsema laite /dev/net/tun luodaan.
+ .
+ Tätä vaihtoehtoa ei tulisi valita, jos käytössä on devfs.
+Description-fr.UTF-8: Faut-il créer le périphérique TUN/TAP ?
+ Si vous choississez cette option, le périphérique TUN/TAP /dev/net/tun nécessaire pour OpenVPN sera créé.
+ .
+ Vous ne devriez pas choisir cette option si vous utilisez devfs.
+Description-gl.UTF-8: ¿Crear o dispositivo TUN/TAP?
+ Se escolle esta opción, hase crear o dispositivo /dev/net/tun necesario para OpenVPN.
+ .
+ Non debería escoller esta opción se emprega devfs.
+Description-it.UTF-8: Creare il device TUN/TAP?
+ Se si accetta verrà creato il device /dev/net/tun necessario a OpenVPN.
+ .
+ Se si usa devfs, rifiutare la creazione del device.
+Description-ja.UTF-8: TUN/TAP デバイスを作成しますか?
+ ここで「はい」と答えると、openvpn が必要とする /dev/net/tun デバイスを作成します。
+ .
+ devfs を使っている場合は「いいえ」と答えてください。
+Description-nb.UTF-8: Skal TUN/TAP-enheten opprettes?
+ Hvis du velger dette, så opprettes enheten /dev/net/tun/ som OpenVPN trenger.
+ .
+ Ikke velg dette derson du bruker devfs.
+Description-no.UTF-8: Skal TUN/TAP-enheten opprettes?
+ Hvis du velger dette, så opprettes enheten /dev/net/tun/ som OpenVPN trenger.
+ .
+ Ikke velg dette derson du bruker devfs.
+Description-pt.UTF-8: Criar o dispositivo TUN/TAP?
+ Se escolher esta opção, será criado o dispositivo /dev/net/tun preciso pelo OpvnVPN.
+ .
+ Não deverá escolher esta opção se estiver a usar devfs.
+Description-pt_BR.UTF-8: Criar o dispositivo TUN/TAP?
+ Se você escolher esta opção, o dispositivo /dev/net/tun necessário ao openvpn será criado.
+ .
+ Você não deve escolher esta opção se você está usando devfs.
+Description-ru.UTF-8: Создать устройство TUN/TAP?
+ При выборе этой опции, будет создано устройство /dev/net/tun, необходимое для OpenVPN.
+ .
+ Вам не следует выбирать эту опцию при использовании devfs.
+Description-sv.UTF-8: Skapa TUN/TAP-gränssnittet?
+ Om du väljer detta alternativ kommer specialfilen /dev/net/tun som behövs av OpenVPN att skapas.
+ .
+ Du skall ej välja detta alternativ om du använder devfs.
+Description-vi.UTF-8: Tạo thiết bị TUN/TAP không?
+ Bật tùy chọn này thì tạo thiết bị « /dev/net/tun » được OpenVPN cần.
+ .
+ Không nên bật tùy chọn này nếu bạn đang dùng devfs.
+
+Template: openvpn/vulnerable_prng
+Type: note
+Description: Vulnerable random number generator
+ A weakness has been discovered in the random number generator used by OpenSSL
+ on Ubuntu and Debian systems.  As a result of this weakness, certain
+ encryption keys are generated much more frequently than they should be, such
+ that an attacker could guess the key through a brute-force attack given minimal
+ knowledge of the system.
+ .
+ Any keys created on a vulnerable system may be affected by this problem. The
+ 'openssl-vulnkey' command may be used as a partial test for RSA keys with
+ certain bit sizes, and the 'openvpn-vulnkey' for OpenVPN shared secret keys.
+ Users are urged to verify their keys or simply regenerate any server or client
+ certificates and keys in use on the system.
+Description-cs.UTF-8: Zranitelný generátor náhodných čísel
+ V OpenSSL používaném na systémech Ubuntu a Debian byla objevena slabina v generátoru náhodných čísel. Důsledkem slabiny je fakt, že se některé šifrovací klíče generují častěji než by měly. Útočník tak může s jistou minimální znalostí systému odhalit klíč pomocí útoku hrubou silou.
+ .
+ Jakékoliv klíče vytvořené na postiženém systému mohou být tímto problémem zasaženy. Jako částečný test RSA klíčů s určitými délkami můžete použít příkaz „openssl-vulnkey“, případně pro sdílené tajné klíče OpenVPN příkaz „openvpn-vulnkey“. Uživatelé by měli okamžitě zkontrolovat své klíče, případně rovnou přegenerovat všechny serverové a klientské certifikáty a klíče, které se na systému používají.
+Description-de.UTF-8: Unsicherer Zufallszahlen-Generator
+ Im Zufallszahlen-Generator von OpenSSL auf Ubuntu- und Debian-Systemen ist eine Schwachstelle gefunden worden. Diese Schwachstelle sorgt dafür, dass bestimmte Verschlüsselungsschlüssel öfter erzeugt werden, als sie sollten. Dadurch kann ein Angreifer den Schlüssel mittels eines »Brute-Force«-Angriffs erraten, auch wenn er nur wenig über das System weiß.
+ .
+ Alle Schlüssel, die auf einem System mit dieser Schwachstelle erzeugt wurden, können von diesem Problem betroffen sein. Das Kommando 'openssl-vulnkey' kann als ein Teil eines Tests benutzt werden, um RSA-Schlüssel mit bestimmten Bit-Größen zu überprüfen. Das Kommando 'openvpn-vulnkey' testet OpenVPNs verteilte geheime Schlüssel (shared secret keys).
+Description-es.UTF-8: Vulnerabilidad de generador de número aleatorio
+ Se ha descubierto un problema en el generador de número aleatorio utilizado por OpenSSL en los sistemas Debian y Ubuntu. Como resultado de esto, ciertas claves de cifrado se generan de forma mucho más frecuente de las que deberían, esto posibilita que un atacante pueda adivinar la clave mediante un ataque de fuerza bruta si posee información básica sobre el sistema objetivo.
+ .
+ Todas las claves creadas en un sistema vulnerable están afectas por este problema. Puede utilizar la orden «openssl-vulnkey» para realizar una prueba parcial para claves RSA con cierto tamaño y la orden «openvpn-vulnkey» para claves secretas compartidas de OpenVPN. Se insta a los usuarios a verificar sus claves o simplemente volver a generar cualquier clave y certificado de cliente y servidor que se usa en el sistema.
+Description-eu.UTF-8: Ausazko zenbaki sortzaile ahula
+ Debian eta Ubuntu sistemek erabiltzen duten OpenSSL bertsioan ahulgune bat aurkitua izan da ausazko zenbaki sortzailean.  Ahulgune honen eraginagatik zenbait enkriptazio gako beharko luketenetan baino gehiagotan sortzen dira, horregatik sistemaren ezagutza minimo duen erasotzaile batek indarrezko eraso batez eskuratu ditzake.
+ .
+ Ahuldutako sistema batetan sortutako gako guztietan du honek eragina. 'openssl-vulnkey' komandoa erabili daiteke bit tamaina batzuetako RSA gakoak probatzeko, eta 'openvpn-vulnkey' OpenVPN partekatutako gako sekretuentzat. Erabiltzaileei bakoitzaren gakoak egiaztatu edo zuzenean sistemako zerbitzari edo bezero ziurtagiriak eta erabiltzen diren gakoak birsortzea eskatzen zaie.
+Description-fi.UTF-8: Haavoittuva satunnaislukugeneraattori
+ Debianissa ja Ubuntussa käytössä olleesta ohjelman OpenSSL satunnaislukugeneraattorista on löydetty heikkous. Siitä johtuen tietyt salausavaimet luodaan huomattavasti useammin kuin olisi tarkoitus ja hyökkääjä voi arvata avaimen järjestelmällisellä kokeilulla vähäisillä tiedoilla järjestelmästä.
+ .
+ Tämä saattaa vaikuttaa mihin tahansa haavoittuvaisessa järjestelmässä luotuun avaimeen. Komennolla ”openssl-vulnkey” voidaan osittain testata tietyt kokoiset RSA-avaimet ja komennolla ”openvpn-vulnkey” OpenVPN:n jaetut salaiset avaimet. Käyttäjiä kehoitetaan tarkistamaan avaimensa tai yksinkertaisesti luomaan uudet palvelin- ja asiakasvarmenteet ja -avaimet järjestelmään.
+Description-fr.UTF-8: Générateur de nombres aléatoires vulnérable
+ Une faille a été découverte dans le générateur de nombres aléatoires d'OpenSSL dans Debian et les distributions dérivées. Cela implique que certaines clés sont générées plus souvent que d'autres, permettant à une attaque par force brute de réussir à trouver une clé de chiffrement même avec une connaissance minimale du système.
+ .
+ Toutes les clés créées sur un système vulnérable sont potentiellement touchées par ce problème. La commande « openssl-vulnkey » peut être utilisée pour trouver certaines des clés RSA vulnérables d'une certaine taille. De même la commande « openvpn-vulnkey » peut rechercher de telles clés secrètes partagées d'OpenVPN. Il est très fortement conseillé de vérifier les clés de chiffrement ou de simplement recréer les certificats des serveurs et des clients, ainsi que les clés utilisées sur le système.
+Description-gl.UTF-8: Xerador de números aleatorios vulnerable
+ Descubriuse unha debilidade no xerador de números aleatorios empregado por OpenSSL nos sistemas Ubuntu e Debian. Coma resultado desta debilidade, algunhas claves de cifrado xéranse con moita máis frecuencia da que lles corresponde, de xeito que un atacante podería adiviñar a clave mediante un ataque por forza bruta tendo coñecementos mínimos do sistema.
+ .
+ As claves xeradas nun sistema vulnerable poden estar afectadas por este problema. Pódese empregar a orde "openssl-vulnkey" coma unha proba parcial para claves RSA con determinados tamaños, e a orde "openvpn-vulnkey" para claves secretas compartidas de OpenVPN. Anímase aos usuarios a que verifiquen as súas claves ou, simplemente, rexeneren os certificados de cliente e servidor e as claves que empregue no sistema.
+Description-it.UTF-8: Vulnerabilità nel generatore di numeri casuali
+ È stata scoperta una vulnerabilità nel generatore di numeri casuali usato da OpenSSL su sistemi Debian e Ubuntu. L'effetto di questa vulnerabilità è che alcune chiavi di cifratura sono state generate più frequentemente, quindi un attaccante con una minima conoscenza del sistema potrebbe indovinare la chiave usando un attacco di tipo forza bruta.
+ .
+ Qualsiasi chiave creata su un sistema vulnerabile potrebbe essere afflitta da questo problema. È possibile usare il comando "openssl-vulnkey" per fare un test parziale delle chiavi RSA con un certo numero di bit e il comando "openvpn-vulnkey" per le chive segrete condivise di OpenVPN. Gli utenti devono verificare le proprie chiavi oppure rigenerare qualsiasi certificato o chiave per client o server usati su questo sistema.
+Description-ja.UTF-8: 脆弱な乱数生成器について
+ Ubuntu および Debian のシステムの OpenSSL で利用されている乱数生成器に弱点が見つかりました。この弱点によって、本来あるべきより頻繁に特定の暗号鍵が生成されてしまうことになり、システムについてほんの少しだけ知識を得るだけで、攻撃者が総当たり攻撃によって鍵を推測できてしまいます。
+ .
+ 脆弱性があるシステムで生成された全ての鍵がこの問題の影響を受けます。特定のビット数の RSA 鍵については 'openssl-vulnkey' コマンドが、OpenVPN の共有秘密鍵には 'openvpn-vulnkey' コマンドが部分的なテストとして利用できます。ユーザには鍵の確認を行うか、システムで利用しているサーバ／クライアント証明書及び鍵を単に再生成することをお勧めします。
+Description-pt.UTF-8: Gerador de numeros aleatórios vulnerável
+ Foi descoberta uma fraqueza no gerador de números aleatórios utilizado pelo OpenSSL nos sistemas Ubuntu e Debian. Como resultado desta fraqueza, certaschaves de criptação são geradas com maior frequência do que devem ser, de talforma que um atacante pode adivinhar a chave através de um ataque de força bruta, dado um conhecimento minimo do sistema.
+ .
+ Quaisquer chaves criadas num sistema vulnerável podem estar afectadas por este problema. O comando 'openssl-vulnkey' pode ser usado como um teste parcialpara chaves RSA com certo tamanho de bits, e o 'openvpn-vulnkey' para chaves secretas partilhadas do OpenVPN. É aconselhado aos utilizadores, verificar com alguma urgênciaas suas chaves ou simplesmente gerar de novo quaisquer certificados ou chavesde cliente e/ou servidor em utilização no sistema.
+Description-pt_BR.UTF-8: Gerador de números aleatórios vulnerável
+ Uma falha foi descoberta no gerador de números aleatórios usado pelo OpenSSL em sistemas Ubuntu e Debian. Como resultado desta falha, certas chaves de encriptação são geradas muito mais frequentemente do que deveriam ser, por isso um atacante pode adivinhar a chave através de um ataque de força bruta com um conhecimento mínimo do sistema. 
+ .
+ Qualquer chave criada em um sistema vulnerável pode ser afetada por este problema. O comando 'openssl-vulnkey' pode ser usado como um teste parcial para chaves RSA com certos bits de tamanho, e o 'openvpn-vulnkey' para as chaves secretas compartilhadas do OpenVPN. Usuários são instados a verificar suas chaves ou simplesmente regerar qualquer certificado de servidor ou cliente e chaves em uso no sistema.
+Description-ru.UTF-8: Уязвимый генератор случайных чисел
+ В генераторе случайных чисел систем Debian и Ubuntu использующем OpenSSL была обнаружена уязвимость. В результате чего, определённые ключи шифрования генерируются намного чаще, чем это следует, так что атакующий может подобрать ключ атакой перебором, обладая минимальными знаниями о системе.
+ .
+ Любые ключи созданные на уязвимой системе могут быть подвержены этой проблеме. Команда 'openssl-vulnkey' может использоваться как частичный тест для ключей RSA с определёнными битовыми размерами, а команда 'openvpn-vulnkey' -- для разделяемых секретных ключей OpenVPN. Пользователям настоятельно рекомендуется проверить их ключи или пересоздать любые серверные и клиентские сертификаты и ключи использующиеся в системе.
+Description-sv.UTF-8: Sårbar slumptalsgenerator
+ En sårbarhet har hittats i slumptalsgeneratorn som används av OpenSSL på Ubuntu- och Debian-system. Som en följd av denna sårbarhet genereras vissa krypteringsnycklar mycket oftare än de borde, så att en attack kan utföras genom att med minimal kunskap om systemet ändå kunna gissa sig fram till rätt nyckel genom att använda "rå kraft" (automatiskt testa alla kombinationer).
+ .
+ Alla nycklar som skapats på ett sårbart system kan ha detta problem. Kommandot 'openssl-vulnkey' kan användas som ett del-test för RSA-nycklar med vissa bit-storlekar, och 'openvpn-vulnkey' för OpenVPNs delade hemliga nycklar. Användare uppmanas att verifiera deras nycklar eller helt enkelt generera om alla server- eller klient-certifikat och tillhörande nycklar som används på systemet.
+Description-vi.UTF-8: Cơ chế tạo ra số ngẫu nhiên còn có thể lạm dụng
+ Một sở đoản đã được phát hiện trong cơ chế tạo ra số ngẫu nhiên được OpenSSL dùng trên hệ thống Ubuntu và Debian. Kết quả của sở đoản này là một số khoá mật mã được tạo rất nhiều lần hơn số nên tạo, thì cho phép người tấn công đoán khoá thông qua một sự tấn công sức mạnh vũ phu, không cần biết nhiều về hệ thống đó.
+ .
+ Bất cứ khoá nào được tạo trên hệ thống sử dụng gói OpenSSL của Debian thì bị vấn đề này ảnh hưởng. Có thể sử dụng câu lệnh « openssl-vulnkey » làm phép thử bộ phận phát hiện khoá RSA có một số kích cỡ cụ thể, và câu lệnh « openvpn-vulnkey » phát hiện khoá mật chia sẻ OpenVPN. Khuyên mọi người dùng thẩm tra các khoá hoặc đơn giản tạo ra bất cứ khoá hay chứng nhận nào kiểu máy phục vụ hay trình khách được dùng trên hệ thống đó.

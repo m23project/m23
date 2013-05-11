@@ -1,0 +1,2 @@
+<!-- V1.12 new--><u>Hinweis zur Installation von Betriebssystemen auf RAIDs</u>
+Soll das Betriebssystem auf einem RAID-Laufwerk installiert werden, so muß meistens (außer bei RAID-1) eine extra Partition, die nicht auf einem RAID-Laufwerk liegt, für den Kernel und die Module angelegt werden. Für diese Partition reicht eine Größe von ca. 50 MB aus. Sollte keine Partition mehr frei sein, so klicken Sie bitte solange auf den <i>Zurück</i>-Knopf Ihres Browsers bis Sie zum Anlegen bzw. Löschen von Partitionen kommen, und legen Sie eine kleine Partition an.

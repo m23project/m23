@@ -1,0 +1,28 @@
+This menu helps you to generate the m23 manual in different languages. On
+top of the window you can see the genration dates and times of the manuals
+and manual parts devided by languages.
+
+lang: Here you can select the language you want to generate the manual for.
+You can select only one of the languages or all together. This setting is
+used for all other menu entries. If you select all languages, the 
+screenshots are made for all languages, ...
+
+screenshots: This takes scrennshots of the m23 administration web interface
+in the selectes language(s). To do this, you need a running X session with
+KDE 3.1.X or KDE 3.2.X. The screenshots are take from the HTML window shown
+on you desktop. You should not scroll the contents of the window or close
+it. This will make the screenshot unusable.
+Hint: For propper execution of the screenshot script you need html2png (can
+be found under /mdk/m23helper) and the "imagemagick" package installed on
+the computer.
+
+text: Fetches text information from the online help that is used in the
+manual.
+
+pdf-html: Generates the manual in HTML and PDF format.
+
+upload: Uploads the manual(s) to SF. If you want to use the upload
+entry you have to modify the upload script in 
+/mdk/doc/manual/bin/menuManualStart.sh. You may want to change the host, user
+password or the copy command. If you want to use FTP for uploading, you may
+use the "ncftpput" tool.

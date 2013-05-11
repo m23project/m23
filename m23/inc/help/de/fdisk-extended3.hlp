@@ -1,0 +1,14 @@
+Erweiterte Partitionierung: Installationsziel wählen
+
+Wählen Sie die Partitionen aus, die Sie für die Installation nutzen möchten. Wählen Sie hierzu zwei Partitionen aus. Die erste, um das Betriebssystem zu installieren und die zweite als Auslagerungsplatz (Swap).
+<U>Schrittweises Vorgehen:</U>
+<ol>
+<LI>Wählen Sie die Partitionen aus, die Sie zur Installation und als Swap nutzen möchten.</LI>
+<!-- V1.12 begin --><LI>Falls Sie zusätzliche Mountpunkte benötigen, können Sie diese unter <i>"$I18N_defineMountpoints"</i> erstellen. Geben Sie dazu die Partition, den Mountpunkt und zum Mounten benötigte Parameter an und klicken Sie anschließend auf <i>"$I18N_add"</i>. Diese Informationen entsprechen denen, die auf einem Linux-System in der Datei <b>/etc/fstab</b> stehen. In der Tabelle unter den Eingabefeldern können Sie die bereits definierten Mountpunkte sehen.</LI><!-- V1.12 end -->
+
+<LI>Klicken Sie auf <i>"$I18N_format_client"</i>, um die Angaben zu übernehmen</LI>
+</ol>
+
+<!-- V1.12 begin --><u>Hinweis zur Installation auf einem RAID</u>
+Wie bereits in den vorherigen Hilfetexten angekündigt, müssen Sie einen extra Mountpunkt definieren, wenn Sie das Betriebssystem auf einem RAID installieren. Verwenden Sie hierzu eine Partition, die nicht auf einem RAID liegt und wählen Sie diese unter <i>"$I18N_partition"</i> aus. Unter <i>"$I18N_mountpoint"</i> geben Sie bitte <b>"/boot"</b> und unter <i>"$I18N_parameter"</i> <b>"auto defaults,noauto 0 0"</b> an.
+<!-- V1.12 end -->

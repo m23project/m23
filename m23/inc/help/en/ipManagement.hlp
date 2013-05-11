@@ -1,0 +1,27 @@
+$I18N_ipManagement
+This dialog helps you to administer network settings for devices beyond m23.
+
+<u>$I18N_singleClientsNetworksettings</u>
+Here you can assign specific network settings to single devices or lock specific values, that are then no longer available for m23 clients and thus cannot wrongly be assigned to an m23 client.
+<ul>
+	<li>
+		<b>$I18N_lockIPMACClientName</b>: By use of the function <b>$I18N_lockIPMACClientName</b>, you can lock a client name, an IP address or a MAC address (e.g. the IP address of a network printer), so that this value cannot wrongly be used for m23 clients. Enter the IP, MAC address or name you would like to lock into the fields <i>"$I18N_client_name"</i>, <i>"$I18N_ip"</i> or <i>"$I18N_mac"</i> and click on <i>"$I18N_lockIPMACClientName"</i>. The usage of the "$I18N_lockIPMACClientName" function requires you to fill out at least one of the fields marked with <sup>1</sup>.
+	</li>
+	<li>
+		<b>$I18N_addSettingsToDhcp</b>: If you would like to allocate network settings to a device by use of DHCP, you can enter your values in the fields <i>"$I18N_client_name"</i>, <i>"$I18N_ip"</i>, <i>"$I18N_netmask"</i>, <i>"$I18N_mac"</i> and <i>"$I18N_gateway"</i> and click on <i>"$I18N_addSettingsToDhcp"</i>. The fields marked with <sup>2</sup> are all required for this function.
+	</li>
+</ul>
+
+<u>$I18N_IPRanges</u>
+For IP address ranges, a similar functionality is available. Unlike at <i>"$I18N_singleClientsNetworksettings"</i> you will not enter single devices or network settings, but you can define a range of IP addresses where the IPs will be locked for m23 or where the IPs will be dynamically allotted to devices which are not m23 clients.
+<ul>
+	<li>
+		<b>$I18N_lockIpRange</b>: Please enter the first and the last IP address into the fields <i>"$I18N_firstIP"</i> and <i>"$I18N_lastIP"</i> and the corresponding network mask (<i>"$I18N_netmask"</i>) and click on <i>"$I18N_lockIpRange"</i>. All IPs in the indicated range  (including the first and the last IP address) will be blocked for m23 and can no longer wrongly be used for m23 clients. The values marked with <sup>1</sup> are required for this function.
+	</li>
+	<li>
+		<b>$I18N_addDynamicIpRange</b>: Please enter the first and the last IP address into the fields <i>"$I18N_firstIP"</i> and <i>"$I18N_lastIP"</i> and the corresponding network mask (<i>"$I18N_netmask"</i>) and the gateway (<i>"$I18N_gateway"</i>) and click on <i>"$I18N_addDynamicIpRange"</i>. All IPs in the indicated range  (including the first and the last IP address) will be allotted dynamically to devices searching for a DHCP server in the network. The values marked with <sup>2</sup> are required for this function.
+	</li>
+</ul>
+
+<u>Adress tables</u>
+The three tables <i>"$I18N_usedIPs"</i>, <i>"$I18N_dynamicIpRanges"</i> and <i>"$I18N_lockedIpRanges"</i> contain the values administered by the IP management. You can use the  <i>"$I18N_search"</i> field to enter a search term (IP, network mask, MAC, group name or other client properties) to narrow down the number of values shown in the tables. If you would like to remove the settings in one of the table rows, check the box at the end of the corresponding row and click on <i>"$I18N_remove"</i> or use the <i>"$I18N_remove"</i> button at the end of the row.

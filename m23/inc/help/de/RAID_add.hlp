@@ -1,0 +1,16 @@
+<!-- V1.12 new-->$I18N_build_raid
+
+In diesem Dialog können Sie Partitionen oder ganze Laufwerke zu Software-RAIDs zusammenfassen. m23 bzw. das Programm mdadm unterstützen die RAID-Level 0, 1, 4, 5, 6 und 10, die jeweils unterschiedliche Vor- und Nachteile im Bezug auf erzielten Geschwindigkeitszuwachs und Ausfallsicherheit bieten. Für weitere Informationen zu RAIDs lesen Sie bitte die Wikipedia-Seite <a href="http://de.wikipedia.org/wiki/RAID" target="_blank">http://de.wikipedia.org/wiki/RAID</a>. Sie können mehrere RAIDs pro Client anlegen und dann zur Installation des Betriebssystems, der Swap-Partition etc. benutzen. Lesen Sie bitte den Hinweis, wenn Sie das Betriebssystem auf einem RAID-Laufwerk installieren wollen.
+
+<u>Schrittweises Vorgehen zum Anlegen eines RAIDs</u><br>
+
+<ol>
+<li><b>Anlegen des RAID-Laufwerks:</b> Wählen Sie aus der Liste <i>"$I18N_raidDriveName"</i> einen Namen aus und klicken Sie anschließend auf <i>"$I18N_createRAIDDrive"</i>. Dieses Laufwerk ist ein virtuelles Multi-Device.</li>
+<li><b>Hinzufügen von Partitionen und Laufwerken:</b> In dem Kasten <i>"$I18N_addDrivesPartitionsToRaid"</i> finden Sie alle benötigten Funktionen zum Zuweisen von Partitionen und Laufwerken zu einem RAID. Wählen Sie dazu den RAID-Typ und das RAID-Laufwerk aus den entsprechenden Listen aus. Sie können anschließend die weiter unten aufgelistete Partition bzw. das Laufwerk aus der Liste <i>"$I18N_realDrivePartition"</i> dem RAID mit einem Klick auf <i>"$I18N_add"</i> zuweisen. In der Tabelle <i>"$I18N_assignedDrivesPartitions"</i> sehen Sie die bereits zugewiesenen Laufwerke und Partitionen.</li>
+<li><b>RAID-Erstellung abschließen:</b> Klicken Sie anschließend auf <i>"$I18N_extPartStep2FormartPart"</i>.</li>
+</ol>
+
+<u>Hinweis zu RAIDs und Partitionen</u>
+Auf die RAIDs wird durch die <i>"Multi device"</i>-Funktion des Linux-Kernels zugegriffen. Die so gebildeten RAID-Laufwerke verhalten sie wie Partitionen und können nicht weiter partitioniert werden. Die neue Software-RAID-Variante mit Partitionierungsmöglichkeit wird nicht verwendet, um Rückwärtskompatibilität zu älteren Kerneln zu gewährleisten.
+
+<!-- V1.12 begin -->helpInclude("os_on_RAID_hint.inc");<!-- V1.12 end -->

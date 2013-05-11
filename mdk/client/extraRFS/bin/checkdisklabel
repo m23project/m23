@@ -1,0 +1,12 @@
+#!/bin/sh
+
+parted -s $1 print 2> /tmp/checklabeltest
+parted -s $1 print >> /tmp/checklabeltest 2> /dev/null
+if [ `grep unrecognised /tmp/checklabeltest -c` -gt 0 ]
+# || [ `grep loop /tmp/checklabeltest -c` -gt 0 ]
+then
+	if [ `grep "Warning:" /tmp/checklabeltest -c` -eq 0 ]
+	then
+		parted -s $1 mklabel msdos
+	fi
+fi

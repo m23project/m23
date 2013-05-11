@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#install ssl package, if the command line parameter is not "noAptGet"
+if test ! "$1" = "noAptGet"
+then
+	apt-get update
+	apt-get install libapache-mod-ssl
+fi
+
+if [ -d /etc/apache/conf.d ]
+then
+	cp /m23/bin/ssl-data/* /etc/apache/conf.d/
+fi
+
+sh /m23/bin/mkCert.sh
+
+if [ -f /etc/init.d/apache ]
+then
+	/etc/init.d/apache restart
+fi
+
+if [ -f /etc/init.d/apache2 ]
+then
+	#Enable SSL module
+	ln -s /etc/apache2/mods-available/ssl.* /etc/apache2/mods-enabled
+	/etc/init.d/apache2 restart
+	
+	if [ `grep 443 -c /etc/apache2/ports.conf` -eq 0 ]
+	then
+		echo "Listen 443" >> /etc/apache2/ports.conf
+	fi
+fi

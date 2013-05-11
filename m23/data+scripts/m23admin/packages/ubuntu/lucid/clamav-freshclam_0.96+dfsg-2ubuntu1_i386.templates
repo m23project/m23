@@ -1,0 +1,557 @@
+
+Template: clamav-freshclam/autoupdate_freshclam
+Type: select
+Choices: daemon, ifup.d, cron, manual
+Choices-cs.UTF-8: daemon, ifup.d, cron, ruční
+Choices-de.UTF-8: Daemon, ifup.d, cron, manuell
+Choices-es.UTF-8: demonio, ifup.d, cron, manual
+Choices-eu.UTF-8: deabrua, ifup.d, cron, eskuz
+Choices-fi.UTF-8: taustaohjelma, ifup.d, cron, manuaalinen
+Choices-fr.UTF-8: démon, ifup.d, cron, manuelle
+Choices-gl.UTF-8: servizo, ifup.d, cron, manual
+Choices-it.UTF-8: demone, ifup.d, cron, manuale
+Choices-ja.UTF-8: デーモン, ifup.d, cron, 手動
+Choices-nl.UTF-8: achtergronddienst, ifup.d, cron, handmatig
+Choices-pt.UTF-8: daemon, ifup.d, cron, manual
+Choices-pt_BR.UTF-8: daemon, ifup.d, cron, manual
+Choices-ru.UTF-8: службой, ifup.d, cron, вручную
+Choices-sv.UTF-8: demon, ifup.d, cron, manuell
+Choices-vi.UTF-8: trình nền, ifup.d, cron, bằng tay
+Default: daemon
+Description: Virus database update method:
+ Please choose the method for virus database updates.
+ .
+  daemon:  freshclam is running as a daemon all the time. You should choose
+           this option if you have a permanent network connection;
+  ifup.d:  freshclam will be running as a daemon as long as your Internet
+           connection is up. Choose this one if you use a dialup Internet
+           connection and don't want freshclam to initiate new connections;
+  cron:    freshclam is started from cron. Choose this if you want full control
+           of when the database is updated;
+  manual:  no automatic invocation of freshclam. This is not recommended,
+           as ClamAV's database is constantly updated.
+Description-cs.UTF-8: Způsob aktualizace virové databáze:
+ Vyberte způsob aktualizace virové databáze.
+ .
+  daemon : freshclam běží celý čas jako daemon. Tuto možnost vyberte,
+           pokud máte trvalé síťové připojení.
+  ifup.d : freshclam poběží jako daemon pouze po dobu, kdy bude nahozeno
+           internetové spojení. Tuto možnost vyberte, pokud máte vytáčené
+           připojení a nechcete, aby freshclam spouštěl nová spojení.
+  cron   : freshclam se spouští z cronu. Toto zvolte v případě, že chcete
+           mít plnou kontrolu nad časem, kdy se má databáze aktualizovat.
+  manual : freshclam se nebude spouštět automaticky. Toto nedoporučujeme,
+           protože databáze clamavu se neustále aktualizuje.
+Description-de.UTF-8: Aktualisierungsmethode für die Virus-Datenbank:
+ Bitte wählen Sie die Methode für Aktualisierungen der Virus-Datenbank.
+ .
+  Daemon : Freshclam läuft ständig als Daemon. Sie sollten dies wählen,
+           falls Sie eine permanente Netzwerkverbindung haben.
+  ifup.d : Freshclam wird nur als Daemon laufen, solange Sie mit dem
+           Internet verbunden sind. Wählen Sie dies, falls Sie eine
+           Wählverbindung ins Internet haben und nicht wollen, dass
+           Freshclam neue Verbindungen aufbaut.
+  Cron   : Freshclam wird durch Cron gestartet. Wählen Sie dies, falls
+           Sie genau festlegen wollen, wann die Datenbank aktualisiert
+           wird.
+  manuell: Kein automatischer Start von Freshclam. Dies wird nicht
+           empfohlen, weil die Datenbank von ClamAV ständig aktualisiert wird.
+Description-es.UTF-8: Método de actualización de la base de datos de virus:
+ Por favor, seleccione el método de actualización de la base de datos virus.
+ .
+  demonio : «freshclam» se ejecutará como demonio todo el tiempo. Debería
+            escoger esta opción si tiene una conexión permanente a Internet.
+  ifup.d  : «freshclam» se ejecutará como demonio mientras tenga una conexión a
+            Internet. Escoja esta opción si utiliza una conexión telefónica a
+            Internet y no desea que freshclam genere nuevas conexiones.
+  cron    : El planificador de tareas («cron») iniciará «freshclam». Escoja esta
+            opción si desea un control total sobre cuándo se actualiza la
+            base de datos.
+  manual  : Sin llamada automática de «freshclam». No se recomienda esta opción 
+            porque la base de datos de ClamAV se actualiza constantemente.
+Description-eu.UTF-8: Birusa datu-base eguneraketa metodoa:
+ Mesedez hautatu birus datu-base eguneraketa metodoa.
+ .
+  daemon:  freshclam deabru gisa denbora guztian abiarazirik egongo da. Aukera
+           hau hautatu internetera konexio iraunkor bat baduzu;
+  ifup.d:  freshclam deabru bezala abiaraziko da internet konexioa martxan duzunean.
+           Aukera hau hautatu modem bidezko konexio bat baduzu eta ez baduzu
+           freshclam-ek konexioa abiaraztea nahi;
+  cron:    freshclam cron bidez abiaraziko da. Aukera hau hautatu datu-basea noiz
+           bertsio-berritzenden kontrolatu nahi baduzu;
+  eskuz:   Ez da freshclam automatikoki abiaraziko. Hau ez da gomendagarria,
+           ClamAV datu-basea oso sarri eguneratzen da eta.
+Description-fi.UTF-8: Virustietokannan päivitystapa:
+ Valitse tapa, jolla virustietokanta päivitetään.
+ .
+ taustaprosessi: Freshclamia ajetaan taustaprosessina koko ajan.
+                 Valitse tämä vaihtoehto, jos sinulla on verkkoyhteys
+                 jatkuvasti käytettävissä
+ ifup.d:         Freshclamia ajetaan taustaprosessina niin kauan kun
+                 Internet-yhteys on käytettävissä. Valitse tämä, jos
+                 käytät soittoyhteyttä, etkä halua freshclamin avaavan
+                 uusia yhteyksiä
+ cron:           Freshclam käynnistetään ohjelmasta cron.
+                 Valitse tämä, jos haluat kontrolloida täysin, koska
+                 tietokanta päivitetään
+ manuaalinen:    Freshclamia ei käynnistetä automaattisesti.
+                 Tätä ei suositella, sillä ClamAVin tietokantaa
+                 päivitetään jatkuvasti
+Description-fr.UTF-8: Méthode de mise à jour de la base de données des virus :
+ Veuillez choisir la méthode de mise à jour de la base de données des virus.
+ .
+ démon    : freshclam fonctionne en permanence en tant que démon.
+            Utilisez ce choix avec un connexion réseau permanente ;
+ ifup.d   : freshclam fonctionne en tant que démon pendant que la
+            connexion à Internet est active. Utilisez ce choix avec
+            une connexion Internet intermittente pour éviter que
+            freshclam ne provoque l'établissement de nouvelles
+            connexions ;
+ cron     : freshclam est démarré par une tâche périodique de cron.
+            Utilisez ce choix si vous souhaitez complètement contrôler la
+            façon dont la base de données est mise à jour ;
+ manuelle : pas de lancement automatique de freshclam. Ce choix est
+            déconseillé car les mises à jour de la base de données de
+            ClamAV sont très fréquentes.
+Description-gl.UTF-8: Método de actualización da base de datos de virus:
+ Escolla o método para a actualización da base de datos de virus.
+ .
+  servizo:  freshclam execútase coma un servizo todo o tempo. Debería escoller
+            esta opción se ten unha conexión permanente á rede.
+  ifup.d:   freshclam hase executar coma servizo mentres a súa conexión a
+            Internet estea levantada. Escolla isto se emprega unha conexión por
+            módem a Internet e non quere que freshclam inicie novas conexións.
+  cron:     freshclam iníciase desde cron. Escolla isto se quere ter control
+            absoluto sobre cando se actualiza a base de datos.
+  manual:   non se chama automaticamente a freshclam. Non se recomenda, xa que
+            a base de datos de ClamAV actualízase continuamente.
+Description-it.UTF-8: Metodo di aggiornamento del database dei virus:
+ Scegliere il metodo da usare per aggiornare il database dei virus.
+ .
+  demone  : freshclam resta in esecuzione permanente come demone.
+            Scegliere questo metodo se si dispone di una connessione di
+            rete permanente;
+  ifup.d  : freshclam viene eseguito come demone fintanto che la
+            connessione internet è attiva. Scegliere questo metodo se si
+            dispone di una connessione telefonica e non si vuole che
+            freshclam avvii nuove connessioni;
+  cron    : freshclam viene avviato da cron. Scegliere questo metodo se si
+            vuole controllare in modo preciso il momento in cui il database
+            viene aggiornato;
+  manuale : freshclam non viene eseguito automaticamente. Questo metodo
+            non è raccomandato, visto che il database centrale di ClamAV
+            viene costantemente aggiornato.
+Description-ja.UTF-8: ウイルスデータベースの更新方法:
+ ウイルスデータベース更新の方法を選択してください。
+ .
+  デーモン: freshclam はデーモンとして常に実行され続けます。永続的なネット
+            ワーク接続があるなら、これを選ぶべきです。
+  ifup.d  : freshclam はインターネット接続が起きているあいだ、デーモンとし
+            て実行され続けます。ダイヤルアップインターネット接続を使っており
+            freshclam が新しい接続を開かないようにしたいときには、これを選ん
+            でください。
+  cron    : freshclam は cron から開始します。データベースがいつ更新される
+            かの完全な制御を望むなら、これを選んでください。
+  手動    : 自動的な freshclam 呼び出しをしません。ClamAV のデータベースは
+            常に更新されているので、これは推奨されません。
+Description-nl.UTF-8: Methode voor het bijwerken van de virusdatabase:
+ Welke methode wilt u voor het bijwerken van de virusdatabase?
+ .
+  achtergronddienst: freshclam draait continu als een achtergronddienst. 
+          Als u een permanente internetverbinding heeft, wordt deze optie 
+          aanbevolen.
+  ifup.d: freshclam draait alleen als u een verbinding heeft met
+          internet. U kiest deze optie als u een inbelverbinding heeft
+          met het internet en niet wilt dat freshclam zelf nieuwe
+          verbindingen maakt.
+  cron:   freshclam wordt gestart door cron. U kiest deze optie als u
+          volledige controle wilt hebben over wanneer de database
+          bijgewerkt wordt.
+  handmatig: freshclam wordt niet automatisch bijgewerkt. Dit wordt niet
+          aangeraden, omdat de online database van clamav continu wordt
+          bijgewerkt.
+Description-pt.UTF-8: Método de actualização da base de dados de vírus:
+ Por favor escolha o método de actualizações da base de dados de vírus.
+ .
+ daemon : o freshclam corre sempre como um 'daemon'. Deve escolher esta opção
+          se tem uma ligação permanente à Internet;
+ ifup.d : o freshclam corre como um 'daemon' enquanto a sua ligação à Internet
+          estiver activa. Escolha este modo se tem uma ligação 'dialup' e não
+          quer que o freshclam inicie novas ligações;
+ cron   : o freshclam é inicializado pelo cron. Escolha isto se quer controle
+           absoluto sobre quando a base de dados é actualizada.
+ manual : sem invocação automática do freshclam. Não recomendado, uma vez
+         que a base de dados é constantemente actualizada.
+Description-pt_BR.UTF-8: Método de atualização da base de dados de vírus:
+ Por favor, escolha o método para atualização da base de dados de vírus.
+ .
+  daemon:  o freshclam fica em execução como daemon o tempo todo. Você
+           deveria escolher esta opção se você possui uma conexão de
+           rede permanente;
+  ifup.d:  o freshclam fica em execução como daemon enquanto sua conexão
+           à Internet estiver estabelecida. Escolha esta opção se você
+           usa conexão discada à Internet e não quer que o freshclam
+           inicie novas conexões;
+  cron:    o freshclam será iniciado a partir do cron. Escolha esta opção
+           se você quer controle total sobre quando a base de dados é
+           atualizada.
+  manual:  sem invocação automática do freshclam. Este método não é
+           recomendado, pois a base de dados do ClamAV é constantemente
+           atualizada.
+Description-ru.UTF-8: Способ обновления вирусной базы:
+ Выберите способ обновления вирусной базы.
+ .
+  службой: freshclam всё время запущен в качестве службы. Вы должны выбрать
+           этот вариант, если у вас есть постоянное подключение к сети.
+  ifup.d:  freshclam будет работать в качестве службы, пока будет активно ваше
+           подключение к Интернет. Выбирайте, если вы подключаетесь к
+           Интернет по линии с коммутируемым доступом и не хотите, чтобы
+           freshclam создавал новые подключения.
+  cron:    freshclam запускается из cron. Выберите, если хотите полностью
+           контролировать, когда обновляется база.
+  вручную: Нет автоматического вызова freshclam. Не рекомендуется,
+           потому что база данных clamav постоянно обновляется.
+Description-sv.UTF-8: Metod för uppdatering av virusdatabasen:
+ Välj en metod för uppdatering av virusdatabasen.
+ .
+  daemon :   freshclam körs som en daemon hela tiden. Du bör välja
+             denna om du har en permanent nätverksuppkoppling.
+  ifup.d :   freshclam kommer att köras som en daemon så längre som din
+             Internet förbindelse är igång. Välj denna om du har en uppringd
+             förbindelse och inte vill att freshclam ska skapa nya uppkopplingar.
+  cron     : freshclam startas från cron. Välj denna om du vill ha full kontroll
+             när databasen ska uppdateras.
+  manuellt : Ingen automatiskt uppdatering av freshclam. Detta är inte
+             rekommanderat eftersom clamav's databas uppdateras ofta.
+Description-vi.UTF-8: Phương pháp cập nhật cơ sở dữ liệu vi-rút:
+ Hãy chọn phương pháp cập nhật cơ sở dữ liệu vi-rút.
+ .
+  • trình nền 	freshclaim lúc nào cũng chạy làm trình nền.
+ 	Bật tuỳ chọn này nếu bạn có kết nối mạng bền bỉ.
+  • ifup.d 	 	freshclam sẽ chạy làm trình nền miền là kết nối được tới Internet.
+ 	Bật tùy chọn này nếu bạn quay số để kết nối tới Internet,
+ 	và không muốn freshclam sơ khởi kết nối mới.
+  • cron  		freshclam được khởi chạy từ trình cron (định kỷ).
+ 	Bật tùy chọn này nếu bạn muốn điều khiển hoàn toàn
+ 	khi nào cơ sở dữ liệu được cập nhật.
+  • bằng tay 	không tự động gọi freshclam.
+ 	Không khuyến khích, vì cơ sở dữ liệu ClamAV được cập nhật liên miên.
+
+Template: clamav-freshclam/local_mirror
+Type: select
+Choices: db.local.clamav.net, db.ac.clamav.net (Ascension Island), db.ad.clamav.net (Andorra), db.ae.clamav.net (United Arab Emirates), db.af.clamav.net (Afghanistan), db.ag.clamav.net (Antigua and Barbuda), db.ai.clamav.net (Anguilla), db.al.clamav.net (Albania), db.am.clamav.net (Armenia), db.an.clamav.net (Netherlands Antilles), db.ao.clamav.net (Angola), db.aq.clamav.net (Antarctica), db.ar.clamav.net (Argentina), db.as.clamav.net (American Samoa), db.at.clamav.net (Austria), db.au.clamav.net (Australia), db.aw.clamav.net (Aruba), db.ax.clamav.net (Aland Islands), db.az.clamav.net (Azerbaijan), db.ba.clamav.net (Bosnia and Herzegovina), db.bb.clamav.net (Barbados), db.bd.clamav.net (Bangladesh), db.be.clamav.net (Belgium), db.bf.clamav.net (Burkina Faso), db.bg.clamav.net (Bulgaria), db.bh.clamav.net (Bahrain), db.bi.clamav.net (Burundi), db.bj.clamav.net (Benin), db.bm.clamav.net (Bermuda), db.bn.clamav.net (Brunei Darussalam), db.bo.clamav.net (Bolivia), db.br.clamav.net (Brazil), db.bs.clamav.net (Bahamas), db.bt.clamav.net (Bhutan), db.bv.clamav.net (Bouvet Island), db.bw.clamav.net (Botswana), db.by.clamav.net (Belarus), db.bz.clamav.net (Belize), db.ca.clamav.net (Canada), db.cc.clamav.net (Cocos (Keeling) Islands), db.cd.clamav.net (Congo The Democratic Republic of the), db.cf.clamav.net (Central African Republic), db.cg.clamav.net (Congo Republic of), db.ch.clamav.net (Switzerland), db.ci.clamav.net (Cote d'Ivoire), db.ck.clamav.net (Cook Islands), db.cl.clamav.net (Chile), db.cm.clamav.net (Cameroon), db.cn.clamav.net (China), db.co.clamav.net (Colombia), db.cr.clamav.net (Costa Rica), db.cs.clamav.net (Serbia and Montenegro), db.cu.clamav.net (Cuba), db.cv.clamav.net (Cape Verde), db.cx.clamav.net (Christmas Island), db.cy.clamav.net (Cyprus), db.cz.clamav.net (Czech Republic), db.de.clamav.net (Germany), db.dj.clamav.net (Djibouti), db.dk.clamav.net (Denmark), db.dm.clamav.net (Dominica), db.do.clamav.net (Dominican Republic), db.dz.clamav.net (Algeria), db.ec.clamav.net (Ecuador), db.ee.clamav.net (Estonia), db.eg.clamav.net (Egypt), db.eh.clamav.net (Western Sahara), db.er.clamav.net (Eritrea), db.es.clamav.net (Spain), db.et.clamav.net (Ethiopia), db.fi.clamav.net (Finland), db.fj.clamav.net (Fiji), db.fk.clamav.net (Falkland Islands (Malvinas)), db.fm.clamav.net (Micronesia Federal State of), db.fo.clamav.net (Faroe Islands), db.fr.clamav.net (France), db.ga.clamav.net (Gabon), db.gb.clamav.net (United Kingdom), db.gd.clamav.net (Grenada), db.ge.clamav.net (Georgia), db.gf.clamav.net (French Guiana), db.gg.clamav.net (Guernsey), db.gh.clamav.net (Ghana), db.gi.clamav.net (Gibraltar), db.gl.clamav.net (Greenland), db.gm.clamav.net (Gambia), db.gn.clamav.net (Guinea), db.gp.clamav.net (Guadeloupe), db.gq.clamav.net (Equatorial Guinea), db.gr.clamav.net (Greece), db.gs.clamav.net (South Georgia and the South Sandwich Islands), db.gt.clamav.net (Guatemala), db.gu.clamav.net (Guam), db.gw.clamav.net (Guinea-Bissau), db.gy.clamav.net (Guyana), db.hk.clamav.net (Hong Kong), db.hm.clamav.net (Heard and McDonald Islands), db.hn.clamav.net (Honduras), db.hr.clamav.net (Croatia/Hrvatska), db.ht.clamav.net (Haiti), db.hu.clamav.net (Hungary), db.id.clamav.net (Indonesia), db.ie.clamav.net (Ireland), db.il.clamav.net (Israel), db.im.clamav.net (Isle of Man), db.in.clamav.net (India), db.io.clamav.net (British Indian Ocean Territory), db.iq.clamav.net (Iraq), db.ir.clamav.net (Iran Islamic Republic of), db.is.clamav.net (Iceland), db.it.clamav.net (Italy), db.je.clamav.net (Jersey), db.jm.clamav.net (Jamaica), db.jo.clamav.net (Jordan), db.jp.clamav.net (Japan), db.ke.clamav.net (Kenya), db.kg.clamav.net (Kyrgyzstan), db.kh.clamav.net (Cambodia), db.ki.clamav.net (Kiribati), db.km.clamav.net (Comoros), db.kn.clamav.net (Saint Kitts and Nevis), db.kp.clamav.net (Korea Democratic People's Republic), db.kr.clamav.net (Korea Republic of), db.kw.clamav.net (Kuwait), db.ky.clamav.net (Cayman Islands), db.kz.clamav.net (Kazakhstan), db.la.clamav.net (Lao People's Democratic Republic), db.lb.clamav.net (Lebanon), db.lc.clamav.net (Saint Lucia), db.li.clamav.net (Liechtenstein), db.lk.clamav.net (Sri Lanka), db.lr.clamav.net (Liberia), db.ls.clamav.net (Lesotho), db.lt.clamav.net (Lithuania), db.lu.clamav.net (Luxembourg), db.lv.clamav.net (Latvia), db.ly.clamav.net (Libyan Arab Jamahiriya), db.ma.clamav.net (Morocco), db.mc.clamav.net (Monaco), db.md.clamav.net (Moldova Republic of), db.mg.clamav.net (Madagascar), db.mh.clamav.net (Marshall Islands), db.mk.clamav.net (Macedonia The Former Yugoslav Republic of), db.ml.clamav.net (Mali), db.mm.clamav.net (Myanmar), db.mn.clamav.net (Mongolia), db.mo.clamav.net (Macau), db.mp.clamav.net (Northern Mariana Islands), db.mq.clamav.net (Martinique), db.mr.clamav.net (Mauritania), db.ms.clamav.net (Montserrat), db.mt.clamav.net (Malta), db.mu.clamav.net (Mauritius), db.mv.clamav.net (Maldives), db.mw.clamav.net (Malawi), db.mx.clamav.net (Mexico), db.my.clamav.net (Malaysia), db.mz.clamav.net (Mozambique), db.na.clamav.net (Namibia), db.nc.clamav.net (New Caledonia), db.ne.clamav.net (Niger), db.nf.clamav.net (Norfolk Island), db.ng.clamav.net (Nigeria), db.ni.clamav.net (Nicaragua), db.nl.clamav.net (Netherlands), db.no.clamav.net (Norway), db.np.clamav.net (Nepal), db.nr.clamav.net (Nauru), db.nu.clamav.net (Niue), db.nz.clamav.net (New Zealand), db.om.clamav.net (Oman), db.pa.clamav.net (Panama), db.pe.clamav.net (Peru), db.pf.clamav.net (French Polynesia), db.pg.clamav.net (Papua New Guinea), db.ph.clamav.net (Philippines), db.pk.clamav.net (Pakistan), db.pl.clamav.net (Poland), db.pm.clamav.net (Saint Pierre and Miquelon), db.pn.clamav.net (Pitcairn Island), db.pr.clamav.net (Puerto Rico), db.ps.clamav.net (Palestinian Territory Occupied), db.pt.clamav.net (Portugal), db.pw.clamav.net (Palau), db.py.clamav.net (Paraguay), db.qa.clamav.net (Qatar), db.re.clamav.net (Reunion Island), db.ro.clamav.net (Romania), db.ru.clamav.net (Russian Federation), db.rw.clamav.net (Rwanda), db.sa.clamav.net (Saudi Arabia), db.sb.clamav.net (Solomon Islands), db.sc.clamav.net (Seychelles), db.sd.clamav.net (Sudan), db.se.clamav.net (Sweden), db.sg.clamav.net (Singapore), db.sh.clamav.net (Saint Helena), db.si.clamav.net (Slovenia), db.sj.clamav.net (Svalbard and Jan Mayen Islands), db.sk.clamav.net (Slovak Republic), db.sl.clamav.net (Sierra Leone), db.sm.clamav.net (San Marino), db.sn.clamav.net (Senegal), db.so.clamav.net (Somalia), db.sr.clamav.net (Suriname), db.st.clamav.net (Sao Tome and Principe), db.sv.clamav.net (El Salvador), db.sy.clamav.net (Syrian Arab Republic), db.sz.clamav.net (Swaziland), db.tc.clamav.net (Turks and Caicos Islands), db.td.clamav.net (Chad), db.tf.clamav.net (French Southern Territories), db.tg.clamav.net (Togo), db.th.clamav.net (Thailand), db.tj.clamav.net (Tajikistan), db.tk.clamav.net (Tokelau), db.tl.clamav.net (Timor-Leste), db.tm.clamav.net (Turkmenistan), db.tn.clamav.net (Tunisia), db.to.clamav.net (Tonga), db.tp.clamav.net (East Timor), db.tr.clamav.net (Turkey), db.tt.clamav.net (Trinidad and Tobago), db.tv.clamav.net (Tuvalu), db.tw.clamav.net (Taiwan), db.tz.clamav.net (Tanzania), db.ua.clamav.net (Ukraine), db.ug.clamav.net (Uganda), db.uk.clamav.net (United Kingdom), db.um.clamav.net (United States Minor Outlying Islands), db.us.clamav.net (United States), db.uy.clamav.net (Uruguay), db.uz.clamav.net (Uzbekistan), db.va.clamav.net (Holy See (Vatican City State)), db.vc.clamav.net (Saint Vincent and the Grenadines), db.ve.clamav.net (Venezuela), db.vg.clamav.net (Virgin Islands British), db.vi.clamav.net (Virgin Islands U.S.), db.vn.clamav.net (Vietnam), db.vu.clamav.net (Vanuatu), db.wf.clamav.net (Wallis and Futuna Islands), db.ws.clamav.net (Western Samoa), db.ye.clamav.net (Yemen), db.yt.clamav.net (Mayotte), db.yu.clamav.net (Yugoslavia), db.za.clamav.net (South Africa), db.zm.clamav.net (Zambia), db.zw.clamav.net (Zimbabwe), db.ipv6.clamav.net (IPv6 mirror)
+Default: db.local.clamav.net
+Description: Local database mirror site:
+ Please select the closest local mirror site.
+ .
+ Freshclam updates its database from a world wide network of mirror
+ sites. Please select the closest mirror. If you leave
+ the default setting, an attempt will be made to guess a
+ nearby mirror.
+Description-cs.UTF-8: Lokální zrcadlo databáze:
+ Vyberte nejbližší zrcadlo s virovou databází.
+ .
+ Freshclam aktualizuje svou databázi z celosvětové sítě zrcadel. Vyberte nejbližší zrcadlo. Ponecháte-li výchozí nastavení, skript se pokusí odhadnout rozumně blízké zrcadlo.
+Description-de.UTF-8: Lokaler Datenbank-Spiegel-Server:
+ Bitte wählen Sie den nächsten lokalen Spiegel-Server.
+ .
+ Freshclam aktualisiert seine Datenbank von einem weltweiten Netzwerk von Spiegel-Servern. Bitte wählen Sie den nächstliegenden Spiegel-Server aus.  Falls Sie die Voreinstellung beibehalten, wird versucht, den nächstliegenden Spiegel zu erraten.
+Description-es.UTF-8: Réplica local de la base de datos:
+ Por favor, seleccione la réplica local más cercana.
+ .
+ Freshclam actualiza su base de datos desde una amplia red mundial de réplicas locales. Si deja la configuración por omisión se intentará adivinar cuál es la réplica más cercana.
+Description-eu.UTF-8: Datu-base lokal ispilu gunea:
+ Mesedez hautatu gertuen duzun ispiluaten gunea.
+ .
+ Freshclam-ek bere datu-base saretan banaturik dauden ispilu guneetatik eguneratzen du. Mesedez hautatu zutaz gertuen dagoen ispilua. Lehenetsitako ezarpena uzten baduzu, gertuen duzun ispilua asmatzeko saiakera egingo da.
+Description-fi.UTF-8: Paikallinen peilitietokantasivusto:
+ Valitse lähin paikallinen peilisivusto.
+ .
+ Freshclam päivittää tietokantansa maailmanlaajuisesta peilisivustojen verkosta. Valitse lähin peili. Jos valitset oletusvalinnan, lähellä oleva peili yritetään arvata.
+Description-fr.UTF-8: Miroir de la base de données :
+ Veuillez choisir le miroir le plus proche.
+ .
+ Freshclam met à jour sa base de données à partir d'un réseau de sites miroirs. Si vous laissez la valeur par défaut, un miroir théoriquement proche sera proposé.
+Description-gl.UTF-8: Réplica local da base de datos:
+ Escolla a réplica local máis próxima.
+ .
+ Freshclam actualiza a súa base de datos mediante unha rede mundial de réplicas. Escolla a réplica máis próxima. Se deixa o valor predeterminado, hase tentar empregar unha réplica próxima.
+Description-it.UTF-8: Sito mirror per il database:
+ Selezionare il sito mirror più vicino.
+ .
+ Freshclam aggiorna il suo database utilizzando una rete globale di siti mirror. Scegliere il mirror più vicino. Con l'impostazione predefinita, il programma cercherà di scegliere un mirror vicino.
+Description-ja.UTF-8: ローカルデータベースミラーサイト:
+ 最も近いローカルミラーサイトを選択してください。
+ .
+ freshclam は、そのデータベースを、世界中のミラーサイトネットワークから更新します。最も近いミラーを選択してください。デフォルト設定のままにすると、手近なミラーの推測を試みます。
+Description-nl.UTF-8: Dichtstbijzijnde database-mirror:
+ Wat is de dichtstbijzijnde mirror?
+ .
+ Freshclam werkt zijn database bij via een wereldwijd netwerk van mirrors. Wilt u de dichtstbijzijnde mirror kiezen? Als u de standaardwaarde laat staan, zal geprobeerd worden om een mirror in uw buurt te vinden.
+Description-pt.UTF-8: Site 'mirror' da base de dados local:
+ Por favor escolha o site 'mirror' local mais próximo.
+ .
+ O freshclam actualiza a sua base de dados a partir de uma rede global de sites 'mirror'. Por favor escolha o que está mais próximo de si. Se deixar a configuração predefinida, irá se tentar adivinhar o 'mirror' mais próximo.
+Description-pt_BR.UTF-8: Site espelho local da base de dados:
+ Por favor, selecione o site espelho local mais próximo.
+ .
+ O freshclam atualiza sua base de dados a partir de uma rede mundial de sites espelhos. Por favor, selecione o espelho mais próximo. Se você deixar a configuração padrão, uma tentativa será feita para adivinhar um espelho próximo.
+Description-ru.UTF-8: Сайт локального зеркала базы данных:
+ Выберите сайт ближайшего локального зеркала.
+ .
+ Freshclam обновляет свою базу с зеркал из всемирной сети. Выберите ближайшее к вам зеркало. Если оставить настройку по умолчанию, будет проведена попытка подключиться к предположительно ближайшему к вам зеркалу.
+Description-sv.UTF-8: Lokal spegelsajt för databas:
+ Välj den närmaste lokala spegelsajten.
+ .
+ Freshclam uppdaterar sin database från ett världsspännande nätverk av spegelsajter.  Välj den spegel som är närmast dig.  Om du lämnar detta kvar som standardvärdet kommer ett försök att göras att hitta en spegel närmast dig men detta försök kanske inte alltid ger dig den närmaste spegelsajten.
+Description-vi.UTF-8: Địa chỉ nhân bản cơ sở dữ liệu cục bộ :
+ Hãy chọn địa chỉ của máy nhân bản cục bộ gần nhất.
+ .
+ Freshclam cập nhật cơ sở dữ liệu từ một mạng địa chỉ nhân bản trên khắp thế giới. Hãy chọn nhân bản gần nhất chỗ bạn. Để lại thiết lập mặc định thì phần mềm sẽ thử đoán một máy nhân bản gần.
+
+Template: clamav-freshclam/http_proxy
+Type: string
+Description: HTTP proxy information (leave blank for none):
+ If you need to use an HTTP proxy to access the outside world, enter the
+ proxy information here. Otherwise, leave this blank.
+ .
+ Please use URL syntax ("http://host[:port]") here.
+Description-cs.UTF-8: HTTP proxy (pokud nepoužíváte, ponechte prázdné):
+ Potřebujete-li pro přístup k vnějšímu světu použít HTTP proxy, zadejte zde příslušné informace. V ostatních případech nezadávejte nic.
+ .
+ Zadejte URL ve tvaru „http://počítač[:port]“.
+Description-de.UTF-8: HTTP-Proxy-Server (leer lassen für keinen):
+ Falls Sie einen HTTP-Proxy benutzen müssen, um Zugang zur Außenwelt zu erlangen, geben Sie hier die Daten dazu ein. Anderenfalls lassen Sie das Feld leer.
+ .
+ Bitte benutzen Sie die URL-Schreibweise (»http://Rechner[:Port]«).
+Description-es.UTF-8: Información HTTP del proxy (déjelo en blanco si no tiene):
+ Si necesita usar proxy para acceder a Internet, introduzca aquí la información del proxy. De lo contrario deje este campo en blanco.
+ .
+ Por favor utilice aquí la sintaxis URL («http://host[:port]»).
+Description-eu.UTF-8: HTTP proxy-a argibideak (hutsi utzi ez erabiltzeko):
+ Sarea atzitzeko HTTP proxy bat behar izanez gero, idatzi proxy-aren argibideak hemen. Bestela zurian utzi ezazu.
+ .
+ Mesedez URL sintaxia ("http://ostalari[:ataka]") erabili hemen.
+Description-fi.UTF-8: HTTP-välityspalvelimen tiedot:
+ Jos tarvitset HTTP-välityspalvelinta päästäksesi ulkomaailmaan, syötä tähän välityspalvelimen tiedot. Jätä muussa tapauksessa kenttä tyhjäksi.
+ .
+ Käytä URL-syntaksia (”http://verkkonimi[:portti]”) tässä.
+Description-fr.UTF-8: Mandataire HTTP (laisser vide pour aucun) :
+ Si vous avez besoin d'utiliser un mandataire HTTP (souvent appelé « proxy ») pour accéder au monde extérieur, indiquez ses paramètres ici. Sinon, laissez ce champ vide.
+ .
+ Les paramètres du mandataire doivent être indiqués avec la forme normalisée « http://hôte[:port]/ ».
+Description-gl.UTF-8: Información do proxy HTTP (en branco para non usar):
+ Se ten que usar un proxy HTTP para acceder ao exterior, introduza a información do proxy aquí. Se non, déixeo en branco.
+ .
+ Empregue aquí unha sintaxe de URL ("http://servidor[:porto]").
+Description-it.UTF-8: Informazioni sul proxy HTTP (lasciare in bianco se non serve):
+ Se occorre usare un proxy HTTP per accedere all'esterno, inserire qui le informazioni relative, altrimenti lasciare in bianco.
+ .
+ Usare la sintassi per gli URL ("http://host[:porta]").
+Description-ja.UTF-8: HTTP プロキシ情報 (ないなら空のままにしておきます):
+ 外の世界へのアクセスに HTTP プロキシを使う必要があるなら、ここにプロキシ情報を入力してください。そうでなければ、ここは空のままにしておきます。
+ .
+ ここでは URL 文法 ("http://host[:port]") を使ってください。
+Description-nl.UTF-8: HTTP-proxygegevens (leeglaten indien niet van toepassing):
+ Als u een HTTP-proxy nodig heeft om op het internet te komen, dient u de proxy-gegevens hier op te geven.
+ .
+ U dient hier URL-notatie te gebruiken ("http://host[:poort]").
+Description-pt.UTF-8: Informação do proxy HTTP (deixe vazio para nenhum):
+ Se necessitar de usar um proxy HTTP para aceder ao mundo exterior, indique a informação do proxy aqui. De outra forma, deixe isto em vazio.
+ .
+ Por favor, utilize sintaxe URL aqui ("http://máquina[:porto]").
+Description-pt_BR.UTF-8: Informação do proxy HTTP (deixe em branco para nenhum):
+ Se você precisa usar um proxy HTTP para acessar o mundo exterior, informe os dados do proxy aqui. Caso contrário, deixe em branco.
+ .
+ Por favor, use sintaxe de URL ("http://máquina[:porta]") aqui.
+Description-ru.UTF-8: Информация о HTTP прокси (оставьте поле пустым, если его нет):
+ Если вы должны использовать HTTP прокси для доступа во внешний мир, введите здесь информацию о прокси. Иначе оставьте поле пустым.
+ .
+ Используйте URL-синтаксис ("http://хост[:порт]").
+Description-sv.UTF-8: HTTP-proxy information (lämna blank om du inte har en):
+ Om du behöver använda en HTTP-proxy för att få tillgång till världen utanför, ange proxyinformationen här. Om inte, lämna denna blank.
+ .
+ Använd URL-syntax ("http://värd[:port]") här.
+Description-vi.UTF-8: Thông tin ủy nhiệm HTTP (không có thì bỏ trống):
+ Nếu bạn cần phải sử dụng máy ủy nhiệm HTTP để kết nối tới Internet, hãy gõ vào đây thông tin ủy nhiệm. Không thì bỏ trống.
+ .
+ Ở đây hãy sử dụng cú pháp địa chỉ URL (« http://máy[:cổng] »).
+
+Template: clamav-freshclam/proxy_user
+Type: string
+Description: Proxy user information (leave blank for none):
+ If you need to supply a username and password to the proxy, enter it here.
+ Otherwise, leave this blank.
+ .
+ When entering user information, use the standard form of
+ "user:pass".
+Description-cs.UTF-8: Proxy uživatel (pokud nepoužíváte, ponechte prázdné):
+ Musíte-li zadat jméno a heslo k proxy serveru, zadejte zde příslušné informace. V ostatních případech nezadávejte nic.
+ .
+ Informace zadejte ve standardním tvaru „uživatel:heslo“.
+Description-de.UTF-8: Proxy-Benutzer-Daten (leer lassen für keine)
+ Falls Sie für den Proxy einen Benutzernamen und ein Passwort benötigen, geben Sie diese hier ein. Anderenfalls lassen Sie das Feld leer.
+ .
+ Wenn Sie Benutzerdaten eingeben, dann in der Form »Benutzer:Passwort«.
+Description-es.UTF-8: Introduzca la información del usuario proxy (déjelo en blanco si no tiene)
+ Si necesita proporcionar un nombre de usuario y contraseña para el proxy introdúzcalo aquí. De lo contrario déjelo en blanco.
+ .
+ Cuando introduzca la información del usuario utilice la forma estándar «usuario:contraseña».
+Description-eu.UTF-8: Proxy erabiltzaile argibidea (zurian ez erabiltzeko):
+ Proxy-a erabiltzeko erabiltzaile-izen bat zehaztu behar baduzu, idatz ezazu hemen. Bestela zurian utzi ezazu.
+ .
+ Erabiltzaile argibideak ezartzerakoan, "erabiltzaile:pasahitza" estandarra erabili.
+Description-fi.UTF-8: Välityspalvelimen käyttäjätiedot:
+ Jos välityspalvelin vaatii käyttäjätunnuksen ja salasanan, syötä ne tässä. Jätä muussa tapauksessa kenttä tyhjäksi.
+ .
+ Syöttäessäsi käyttäjätietoja, käytä standardimuotoa ”tunnus:salasana”.
+Description-fr.UTF-8: Identifiant pour le mandataire (laisser vide pour aucun) :
+ S'il est nécessaire d'indiquer un identifiant et un mot de passe pour le mandataire, veuillez les indiquer ici. Dans le cas contraire, laissez cette entrée vide.
+ .
+ Ces paramètres doivent être indiqués avec la forme normalisée « utilisateur:mot_de_passe ».
+Description-gl.UTF-8: Información do usuario do proxy (en branco para non usar):
+ Se ten que forneces un nome de usuario e contrasinal ao proxy, introdúzaos aquí. Se non, déixeos en branco.
+ .
+ Ao introducir a información do usuario, empregue a forma estándar «usuario:contrasinal».
+Description-it.UTF-8: Informazioni sull'utente del proxy (lasciare in bianco se non serve):
+ Se occorre inserire un nome utente e una password per accedere al proxy, inserirla qui, altrimenti lasciare in bianco.
+ .
+ Per inserire le informazioni relative all'utente, si usi la forma standard "utente:password".
+Description-ja.UTF-8: プロキシユーザ情報 (ないなら空のまま):
+ プロキシのユーザ名とパスワードを提供する必要があるなら、ここに入力してください。そうでなければ、ここは空のままにしておきます。
+ .
+ ユーザ情報を入力するときには、"user:pass" の標準形式を使ってください。
+Description-nl.UTF-8: Gebruikersgegevens voor proxy (leeglaten indien niet van toepassing):
+ Indien de proxy dit nodig heeft, wat zijn de gebruikersnaam en het wachtwoord?
+ .
+ Als u gebruikergegevens opgeeft, gebruikt u de standaardvorm "gebruiker:wachtwoord".
+Description-pt.UTF-8: Informação do utilizador do proxy (deixe vazio para nenhum):
+ Se necessitar de fornecer um nome de utilizador e uma palavra-passe para o proxy, introduza-os aqui. De outra forma, deixe vazio.
+ .
+ Ao introduzir a informação do utilizador, use o formato standard de "utilizador:palavra-passe".
+Description-pt_BR.UTF-8: Informação sobre usuário do proxy (deixe em branco para nenhum):
+ Se você precisa fornecer um nome de usuário e senha ao proxy, informe-os aqui. Caso contrário, deixe em branco.
+ .
+ Quando estiver informando os dados do usuário, use o formato padrão de "usuário:senha".
+Description-ru.UTF-8: Информация о пользователе прокси (оставьте пустым, если не используется):
+ Если вы должны передавать имя пользователя и пароль на прокси, введите их здесь. Иначе оставьте поле пустым.
+ .
+ При вводе информации, используйте стандартную форму "пользователь:пароль".
+Description-sv.UTF-8: Användarinformation för proxy (lämna blank om du inte har någon):
+ Om du behöver skicka med ett användarnamn och lösenord till proxyn, ange då det här. Om inte, lämna fältet blankt.
+ .
+ När du anger användarinformation, använd standardformatet "användare:lösenord"
+Description-vi.UTF-8: Thông tin người dùng ủy nhiệm (không có thì bỏ trống):
+ Nếu bạn cần phải cung cấp cho may ủy nhiệm một tên người dùng và một mật khẩu, hãy gõ vào đây. Không thì bỏ trống.
+ .
+ Gõ thông tin người dùng theo định dạng tiêu chuẩn: « người_dùng:mật_khẩu ».
+
+Template: clamav-freshclam/update_interval
+Type: string
+Default: 24
+Description: Number of freshclam updates per day:
+Description-cs.UTF-8: Počet denních aktualizací freshclamu:
+Description-da.UTF-8: Antal daglige freshclam-opdateringer:
+Description-de.UTF-8: Anzahl der Freshclam-Aktualisierungen pro Tag:
+Description-es.UTF-8: Número de actualizaciones diarias de freshclam:
+Description-eu.UTF-8: Eguneko freshclam eguneraketa kopurua:
+Description-fi.UTF-8: Päivittäisten freshclam-päivitysten lukumäärä:
+Description-fr.UTF-8: Nombre de mises à jour de freshclam par jour :
+Description-gl.UTF-8: Número de actualizacións de freshclam diarias:
+Description-it.UTF-8: Numero di aggiornamenti giornalieri di freshclam:
+Description-ja.UTF-8: 1日あたりの freshclam の更新回数:
+Description-nl.UTF-8: Aantal freshclam-bijwerkingen per dag:
+Description-pt.UTF-8: Número de actualizações do freshclam por dia:
+Description-pt_BR.UTF-8: Número de atualizações do freshclam por dia:
+Description-ru.UTF-8: Количество обновлений freshclam в день:
+Description-sv.UTF-8: Antal freshclam uppdateringar per dag:
+Description-vi.UTF-8: Mỗi ngày cập nhật freshclam bao nhiêu lần:
+
+Template: clamav-freshclam/internet_interface
+Type: string
+Description: Network interface connected to the Internet:
+ Please enter the name of the network interface connected to the Internet.
+ Example: eth0.
+ .
+ If the daemon runs when the network is down, the log file will be filled
+ with entries like 'ERROR: Connection with database.clamav.net failed.',
+ making it easy to miss when freshclam really can't update the database.
+ .
+ You can leave this field blank and the daemon will be started from
+ the initialization scripts instead. You should then make sure the computer is
+ permanently connected to the Internet to avoid filling the log files.
+ .
+ If the computer has multiple network interfaces connecting to the Internet use
+ a space-separated list of device names.
+
+Template: clamav-freshclam/NotifyClamd
+Type: boolean
+Default: true
+Description: Should clamd be notified after updates?
+ Please confirm whether clamd should be notified to reload the database after
+ successful updates.
+ .
+ If you do not choose this option, clamd's database reloads will be notably
+ delayed (it performs this check every 6 hours by default), posing the risk
+ that a new virus may slip through even if the database is up to date.
+ Do not use this if you do not use clamd, as it will produce errors.
+Description-cs.UTF-8: Má být clamd po aktualizaci upozorněn?
+ Potvrďte, zda má být po úspěšné aktualizaci clamd upozorněn, aby si nahrál novou databázi.
+ .
+ Jestliže tuto možnost nevyberete, bude se databáze nahrávat se zpožděním (implicitně každých 6 hodin), což vás vystavuje riziku, že nějaký nový vir proklouzne, i když máte aktuální databázi. Pokud clamd nepoužíváte, tuto volbu nepovolujte, protože by vyvolala nějaké chyby.
+Description-de.UTF-8: Soll Clamd nach Aktualisierungen benachrichtigt werden?
+ Bitte bestätigen Sie, ob Clamd nach erfolgreichen Aktualisierungen die Datenbank neu laden soll.
+ .
+ Falls Sie diese Option nicht wählen, wird das Neuladen der Datenbank durch Clamd erheblich verzögert (in der Voreinstellung erfolgt diese Prüfung alle sechs Stunden). Dies birgt das Risiko, dass ein neuer Virus durchschlüpft, obwohl Ihre Datenbank aktuell ist. Benutzen Sie diese Einstellung nicht, Falls Sie Clamd nicht einsetzen, weil dies Fehler hervorrufen würde.
+Description-es.UTF-8: ¿Desea que clamd le avise tras actualizar?
+ Por favor, confirme si desea que clamd le avise al recargar la base de datos tras cada actualización satisfactoria.
+ .
+ Las recargas de las bases de datos de clamd se retrasarán notablemente (por omisión se realiza esta comprobación cada 6 horas) si no escoge esta opción. Esto introduce el riesgo de que no detecte un nuevo virus aunque su base de datos esté al día. No utilice esta opción si no utiliza clamd, si lo hace se producirán errores.
+Description-eu.UTF-8: Bertsio-berritzeen ondoren clamd ohartu egin behar al da?
+ Mesedez berretsi datu-basea birkargatzeko clamd ohartu egin behar dela bertsio-berritzeen ondoren.
+ .
+ Aukera hau hautatzen ez baduzu birkarga horiek beranduago egingo dira (egiaztapena 6 orduro egiten da), nahiz datu-basea eguneraturik izan birus baten erasoaren aukera emanez. Ez erabili aukera hau ez baduzu clamd erabiltzen, horrela erabiltzeak erroreak sortzen ditu.
+Description-fi.UTF-8: Tulisiko ohjelmalle clamd tiedottaa päivityksistä?
+ Valitse tulisiko ohjelmaa clamd kehottaa lataamaan tietokanta uudelleen, kun se on onnistuneesti päivitetty.
+ .
+ Jos et valitse tätä vaihtoehtoa, clamdin tietokannan uudelleenlataus viivästyy huomattavasti (se tehdään oletuksena joka kuudes tunti). Tällöin on vaarana, että uusi virus pääsee läpi vaikka tietokanta on ajan tasalla. Älä valitse tätä, jos et käytä ohjelmaa clamd, koska silloin tämä tuottaisi virheitä.
+Description-fr.UTF-8: Faut-il notifier clamd des mises à jour ?
+ Veuillez indiquer si vous souhaitez que clamd soit averti des mises à jour réussies de la base de données.
+ .
+ Si clamd n'est pas averti des mises à jour, le rechargement de sa base de données sera notablement différé (le délai est de 6 heures par défaut), ce qui peut permettre à des virus de se propager dans l'intervalle, bien que la base de données soit à jour. Ne choisissez pas cette option si vous n'utilisez pas clamd, car cela produirait des erreurs.
+Description-gl.UTF-8: Debería avisarse a clamd tralas actualizacións?
+ Confirme se quere que se avise a clamd para que recargue a base de datos despois dunha actualización con éxito.
+ .
+ Se non escolle esta opción, as recargas da base de datos de clamd hanse atrasar moito (por omisión fai esta comprobación cada 6 horas), o que ten o risco de que un novo virus pase as comprobacións incluso se a base de datos está actualizada. Non a escolla se non usa clamd, xa que ha producir erros.
+Description-it.UTF-8: Si desidera avvisare clamd dopo ogni aggiornamento del database?
+ Confermare se clamd deve rileggere il database subito dopo ogni aggiornamento di quest'ultimo.
+ .
+ Se non si abilita questa opzione, clamd rileggerà il database con un certo ritardo (il valore predefinito è ogni 6 ore) esponendo al rischio che un nuovo virus non venga identificato, anche se è incluso nel database aggiornato. Non abilitare questa opzione se non si usa clamd, altrimenti si verificheranno degli errori.
+Description-ja.UTF-8: 更新後に clamd に教示しますか?
+ 更新が成功したあとにデータベースをリロードするよう clamd に教示するかどうかを指定してください。
+ .
+ ここで「いいえ」を選ぶと、clamd のデータベースのリロードは著しく遅れることになり (このチェックはデフォルトでは毎 6 時間ごとに行われます)、データベースが最新であっても、新しいウイルスがすり抜けてくるというリスクを抱えます。エラーが発生するため、clamd を使うのでない場合は、この選択肢を選ばないでください。
+Description-nl.UTF-8: Wilt u dat clamd gewaarschuwd wordt na het bijwerken?
+ Wilt u dat clamd gewaarschuwd wordt dat het zijn database moet herladen nadat deze succesvol is bijgewerkt?
+ .
+ Als u ervoor kiest om dit niet te doen zal het herladen van de database door clamd merkbare vertraging oplopen (standaard controleert clamd de database elke 6 uur). Dit brengt het risico met zich mee dat een nieuw virus niet gedetecteerd wordt, terwijl uw database al volledig is bijgewerkt. Als u deze instelling aanzet zonder dat u clamd gebruikt, dan zal dit fouten opleveren.
+Description-pt.UTF-8: Deve o clamd ser notificado após as actualizações?
+ Por favor confirme se o clamd deve ser notificado para recarregar a base de dados depois de uma actualização com sucesso.
+ .
+ Se não escolher esta opção, as recargas da base de dados do clamd serão notavelmente atrasadas (ele faz esta verificação de 6 em 6 horas por predefinição), colocando o risco que novos vírus possam penetrar mesmo que a sua base de dados esteja actualizada. Não use isto se não usar o clamd, porque vai produzir erros.
+Description-pt_BR.UTF-8: O clamd deverá ser notificado após as atualizações?
+ Por favor, confirme se o clamd deverá ser notificado para que o mesmo possa recarregar sua base de dados após atualizações que tenham sucesso.
+ .
+ Se você não escolher esta opção, as recargas da base de dados do clamd serão notavelmente atrasadas (ele realiza esta verificação a cada 6 horas por padrão), abrindo a possibilidade de um novo vírus não ser detectado mesmo que sua base de dados esteja atualizada. Não utilize esta opção se você não usa o clamd, pois a mesma produzirá erros.
+Description-ru.UTF-8: Известить clamd после обновления?
+ Укажите, надо ли извещать clamd о необходимости перезагрузки баз после успешного обновления.
+ .
+ Если вы ответите отрицательно, то перезагрузка базы clamd значительно задержится (по умолчанию он проводит проверку каждые 6 часов), и появится риск, что новый вирус сможет проскользнуть, хотя ваша база будет свежей. Не используйте, если вы не пользуетесь clamd, потому что это создаст ошибки.
+Description-sv.UTF-8: Ska clamd bli informerad efter uppdateringar?
+ Vänligen bekräfta om clamd ska informeras och ladda om databasen efter lyckade uppdateringar.
+ .
+ Om du inte väljer detta kommer clamd's omladdningar av databasen att bli fördröjda (den gör denna kontroll var 6:e timme som standard) vilket innebär en risk att nya virus kan slinka igenom även om din databas är uppdaterad. Använd inte detta om du inte använder clamd eftersom den kommer att producera felmeddelanden.
+Description-vi.UTF-8: Có nên thông báo clamd sau khi cập nhật ?
+ Hãy xác nhận nếu trình nền clamd nên được thông báo để nạp lại cơ sở dữ liệu sau khi cập nhật thành công.
+ .
+ Không bật tùy chọn này thì sự nạp lại cơ sở dữ liệu của clamd bị trễ đáng kể (nó làm kiểm tra này mỗi 6 giờ theo mặc định), mà rủi ro có vi-rút mới thâm nhập mặc dù cơ sở dữ liệu vẫn còn hiện thời. Đừng bật tuỳ chọn này nếu bạn không sử dụng clamd, vì nó sẽ gây ra lỗi.

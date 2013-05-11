@@ -1,0 +1,11 @@
+Partitionnement étendu: Choisir les partitions d'installation
+
+Choisissez deux partitions que vous souhaitez utiliser pour l'installation - la première pour le système d'exploitation et la deuxième comme espace d'échange (mémoire virtuelle) linux-swap.
+<U>Processus étape par étape:</U>
+<ol>
+<LI>Sélectionnez les partitions à utiliser pour le système de base et comme linux-swap.</LI>
+<!-- V1.12 begin --><LI>Si vous avez besoin de points de montage supplémentaires, vous pouvez les définir sous <i>&laquo;$I18N_defineMountpoints&raquo;</i>. Saisissez la partition, le point de montage et les paramètres nécessaires à ce dernier, puis, cliquez sur <i>&laquo;$I18N_add&raquo;</i>. Ces informations correspondent à celles présentes dans le fichier <b>/etc/fstab</b> d'un système Linux. Dans la table sous les champs de saisie, s'affichent les points de montage déjà définis.</LI><!-- V1.12 end -->
+<LI>Cliquez sur <i>&laquo;$I18N_format_client&raquo;</i> lorsque votre choix sera finalisé.</LI>
+</ol><!-- V1.12 begin --><u>Information supplémentaire pour l'installation sur un système RAID</u>
+Comme exposé dans les écrans d'aide précédents, vous devez définir un point de montage supplémentaire lorsque vous installez un système d'exploitation sur un système RAID. Sélectionnez une partition qui ne fait pas partie d'un système RAID sous <i>&laquo;$I18N_partition&raquo;</i>. Sous <i>&laquo;$I18N_mountpoint&raquo;</i> entrez <b>&laquo;/boot&raquo;</b> et sous <i>&laquo;$I18N_parameter&raquo;</i> <b>&laquo;auto defaults,noauto 0 0&raquo;</b>.
+<!-- V1.12 end -->

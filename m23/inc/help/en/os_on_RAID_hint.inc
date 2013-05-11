@@ -1,0 +1,2 @@
+<!-- V1.12 new--><u>Hint for the installation of operating systems on a RAID</u>
+You have to create an extra partition that is not located on a RAID to store the Linux kernel and modules. This must be done for all RAIDs except for RAID level 1. For this purpose, a partition of approximately 50 MB is sufficient. Please hit the <i>back</i> button of your browser until you get to the dialog for creating or deleting partitions, if you do not yet have a partition for the kernel and modules. Delete a necessary number of partitions to create a new small partition.

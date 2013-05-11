@@ -1,0 +1,28 @@
+#this file contains variables that never change
+
+#client and server varables
+	#kernel compile directory
+		kernelStoreDir="/mdk/client+server/kernel"
+	#where to search and store the configuration files for the kernel
+		kernelConfigDir="/mdk/client+server/kernel-configs"
+	#path to store the kernel and its modules
+		kernelNModulesStoreDir="/mdk/client+server/kernelNmodules"
+	#path for storing temporary files for the bootimage root file system
+		rootFSDownloadDir="/mdk/client+server/tmpRoot"
+	#where self compiled binaries should be stored
+		compiledDir="/mdk/client+server/compiled"
+	#where to download
+		busyBoxDownloadDir="/mdk/client+server/busyBox"
+	#where to store to and read the BusyBox config files from
+		busyBoxConfigDir="/mdk/client+server/BusyBox-configs"
+	#cache file for storing device nodes. Extracting the file is much faster than creating the device nodes via MAKEDEV.
+		devsFile="/mdk/client+server/deviceNodes.tar.gz"
+	#where to install the compiled BusyBox with its symlinks
+		busyBoxInstallDir="/mdk/client+server/compiledBusyBox-install"
+
+#documentation variables
+	#directory for storing the
+		devguideDir="/mdk/doc/devguide"
+	
+	#where the server Debian packages are stored
+		serverPackagesPool="/mdk/server/iso/pool"

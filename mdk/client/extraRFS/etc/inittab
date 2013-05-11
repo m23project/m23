@@ -1,0 +1,14 @@
+id:1:initdefault:
+
+init::sysinit:/linuxrc
+def::respawn:/bin/sh
+
+1:2345:respawn:/bin/sh
+
+rebo::ctrlaltdel:/bin/reboot; /bin/reboot -f
+
+tty2::respawn:/bin/getty 38400 tty2
+tty3::respawn:/bin/getty 38400 tty3
+tty4::respawn:/bin/getty 38400 tty4
+tty5::respawn:/bin/getty 38400 tty5
+tty6::respawn:/bin/getty 38400 tty6

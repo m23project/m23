@@ -1,0 +1,23 @@
+<!-- rewritten v1.6 -->Pakete deinstallieren
+In diesem Dialog können Sie Pakete von einem Client entfernen.
+
+helpInclude("packageTypes.inc");
+
+<u>Deinstallation von Paketen</u>
+<ol><LI> Wählen Sie <i>"$I18N_package_selection"</i> oder <i>"$I18N_normal_packages"</i> aus.</LI>
+<LI> Geben Sie bei <i>"$I18N_package_search"</i> den Suchbegriff für das gewünschte Paket ein. Lassen Sie das Suchfeld leer, wenn Sie alle Pakete des Clients sehen möchten.</LI>
+<LI> Unter <i>"$I18N_found_packages"</i> finden Sie alle Pakete, die Ihren Suchparametern entsprechen.</LI>
+<LI> Klicken Sie bei den gewünschten Paketen die Checkbox an.</LI>
+<LI> Merken Sie die gewählten Pakete durch Klick auf <i>"$I18N_preselect"</i> vor.</LI>
+<LI> Wiederholen Sie bei Bedarf Schritt 1-5.</LI></ol>
+
+Nun haben Sie Pakete für die Deinstallation vorgemerkt. <!-- v1.5--> Ein grüner Haken gibt an, daß dieses Paket zu installieren ist und ein rotes Kreuz, daß dieses Paket vom Client entfernt werden soll.<!--end v1.5--> Sie können die Liste dieser Pakete durch einen Klick auf den Button <i>"$I18N_discard_all"</i> löschen oder Pakete auswählen und diese durch <i>"$I18N_discard_selected"</i> entfernen.
+
+Schließen Sie Ihre Auswahl durch Klick auf <i>"$I18N_deinstall_selected"</i> ab.
+
+<!-- v1.3--><!-- v1.5--><u>$I18N_previewDeinstallation</u><!--end v1.5-->
+Vor der wirklichen Deinstallation können Sie überprüfen, was die Deinstallation auf dem Client für Folgen hat. So können Sie vorher sehen, welche zusätzlichen Pakete entfernt werden. Klicken Sie dazu nach Auswahl der Pakete auf <i>"$I18N_previewDeinstallation"</i>. Nach einem Augenblick sehen Sie ein Protokoll der Deinstallationsvorschau.<!--end v1.3--><!-- v1.5-->
+Eine Deinstallationsvorschau ist allerdings nur dann möglich, wenn ein einzelner Client und keine Gruppe ausgewählt wurde.
+<!--end v1.5-->
+
+helpInclude("packageSelections.inc");

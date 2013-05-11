@@ -1,0 +1,415 @@
+/***********************************
+CSS File for m23
+***********************************/
+
+
+/*****************************/
+/*Allgemeines Style für Links*/
+/*****************************/
+
+body {
+	color:					#000000;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+}
+
+.title {
+	color:					#0000FF;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica;
+	font-size:				18px;
+	white-space:			nowrap;
+	text-shadow:			#808080 2px 2px 3px;
+	margin-bottom:			1.5em;
+	line-height:			1.5em;
+}
+
+.titlesmal {
+	color:					#0000FF;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica;
+	font-weight:			bold;
+	font-size:				14px;
+	line-height:			16px;
+	text-shadow:			#909090 2px 2px 2px;
+}
+
+table {
+	color:					#000000;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+	overflow:				hidden;
+}
+
+.a, a:link, a:active, a:visited {
+	color:					#1d1dc1;
+	font-family:			Tahoma, Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+	text-decoration:		none;
+}
+
+a:hover {
+	color:					#1d1dc1;
+	font-family:			Tahoma, Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+	text-decoration:		underline;
+	cursor:					pointer;
+}
+
+
+.normaltable {
+	border-top:				1px solid #000000;
+	border-bottom:			1px solid #000000;
+	border-left:			1px solid #000000;
+	border-right:			1px solid #000000;
+	color:					#000000;
+	background-color:		#BBBBBB;
+}
+
+.highlight {
+	color:					#bb0000;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	font-weight:			bold;
+	font-size:				14px;
+	line-height:			15px;
+
+}
+
+.menuhighlight {
+	color:					#bb0000;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+
+}
+
+/* SUBTABLE */
+.subtable, .partTables {
+	empty-cells:			hide;
+	border-top:				1px solid #000000;
+	border-bottom:			1px solid #000000;
+	border-left:			1px solid #000000;
+	border-right:			1px solid #000000;
+	color:					#000000;
+	background-color:		#CCCCBB;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+	position:				relative; left:-3px; top:-3px;
+	overflow:				hidden;
+}
+
+.subtable td, .partTables td {
+	vertical-align:			top;
+}
+
+.partTables td {
+	empty-cells: show !important;
+}
+
+/* SUBTABLE */
+.subtable2 {
+	border:					1px solid #000000;
+	border-collapse:		collapse;
+	color:					#000000;
+	background-color:		#CCCCBB;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	font-weight:			normal;
+	font-size:				14px;
+	text-indent:			3px;
+	position:				relative; left:-3px; top:-3px;
+	letter-spacing: 		0.6px;
+	overflow:				hidden;
+}
+
+.subtable2 td{
+	border-bottom:			2px groove silver;
+	border-left:			2px groove silver;
+	border-top:				2px groove silver;
+	overflow:				hidden;
+}
+
+.subtable2 p{
+	padding: 5px;
+}
+
+
+.subhighlight {
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			bold;
+	font-size:				14px;
+	line-height:			15px;
+	color:					#ffffff;
+	text-shadow:			#606060 2px 2px 3px;
+}
+
+.subtable a, .subtable a:link, .subtable a:active, .subtable a:visited, .partTables a, .partTables a:link, .partTables a:active, .partTables a:visited {
+	color:					#1d1dc1;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+	text-decoration:		none;
+}
+
+.subtable a:hover, .partTables a:hover  {
+	color:					#1d1dc1;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+	text-decoration:		underline;
+	cursor:					pointer;
+}
+
+.subtable_shadow {
+	empty-cells:			hide;
+	background-color:		333333;
+	border-collapse:		collapse;
+}
+
+.subtable_shadow tr, .subtable_shadow td, .subtable_shadow tbody {
+	empty-cells:			hide;
+	border-collapse:		collapse;
+	padding:				0px;
+}
+
+.subhighlight_yellow {
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			bold;
+	font-size:				14px;
+	line-height:			15px;
+	color:					#FFFF66;
+}
+
+.subhighlight_green {
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			bold;
+	font-size:				14px;
+	line-height:			15px;
+	color:					#33912C;
+}
+
+.subhighlight_red {
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			bold;
+	font-size:				14px;
+	line-height:			15px;
+	color:					#FF0644;
+}
+
+.consoleLinux {
+	margin:					0px;
+	padding:				2px 2px 2px;
+	color:					#CCCCCC;
+	background-color:		#000000;
+}
+
+.consoleLinux p {
+	font-family:			monospace;
+	margin:					0px;
+	padding:				0px 2px 2px;
+	background-color:		#000000;
+	color:					#CCCCCC;
+}
+
+.helptable {
+	border-top:				1px solid #000000;
+	border-bottom:			1px solid #000000;
+	border-left:			1px solid #000000;
+	border-right:			1px solid #000000;
+	color:					#000000;
+	background-color:		#CCCCBB;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+}
+
+.warningtable, .newfeaturetable {
+	border-top:				1px solid #000000;
+	border-bottom:			1px solid #000000;
+	border-left:			1px solid #000000;
+	border-right:			1px solid #000000;
+	color:					#000000;
+	background-color:		#FF9933;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+}
+
+.infotable {
+	border-top:				1px solid #000000;
+	border-bottom:			1px solid #000000;
+	border-left:			1px solid #000000;
+	border-right:			1px solid #000000;
+	color:					#000000;
+	background-color:		#9DA5CC;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+}
+
+.communitytable {
+	border-top:				1px solid #000000;
+	border-bottom:			1px solid #000000;
+	border-left:			1px solid #000000;
+	border-right:			1px solid #000000;
+	color:					#000000;
+	background-color:		#00FF6A;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+}
+
+.updatetable {
+	border-top:				1px solid #000000;
+	border-bottom:			1px solid #000000;
+	border-left:			1px solid #000000;
+	border-right:			1px solid #000000;
+	color:					#000000;
+	background-color:		#FF6A00;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+}
+
+.developmentBlogtable {
+	border-top:				1px solid #000000;
+	border-bottom:			1px solid #000000;
+	border-left:			1px solid #000000;
+	border-right:			1px solid #000000;
+	color:					#000000;
+	background-color:		#FFEA00;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+}
+
+.businessBlogtable {
+	border-top:				1px solid #000000;
+	border-bottom:			1px solid #000000;
+	border-left:			1px solid #000000;
+	border-right:			1px solid #000000;
+	color:					#000000;
+	background-color:		#3DAEFF;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+}
+
+.errortable {
+	border-top:				1px solid #000000;
+	border-bottom:			1px solid #000000;
+	border-left:			1px solid #000000;
+	border-right:			1px solid #000000;
+	color:					#000000;
+	background-color:		#CF9E9E;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+}
+
+/* Style für Errors */
+.inputerror {
+	color:					#ff0000;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+	text-decoration:		none;
+}
+
+.box {
+	border-top:				1px solid #000000;
+	border-bottom:			1px solid #000000;
+	border-left:			1px solid #000000;
+	border-right:			1px solid #000000;
+	background-color:		#eeeee6;
+	color:					#000000;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+}
+
+.mainbox {
+	border-top:				0px solid #000000;
+	border-bottom:			0px solid #000000;
+	border-left:			0px solid #000000;
+	border-right:			0px solid #000000;
+	background-color:		#eeeee6;
+	color:					#000000;
+	font-family:			Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	font-weight:			normal;
+	font-size:				14px;
+	line-height:			15px;
+	/*
+	background-image:		url(../logo.png);
+	background-repeat:	no-repeat; 
+	background-attachment:croll;  
+	background-position:	center;
+	*/
+}
+
+.navmenu {
+	list-style-position:	inside;
+	list-style-image:		url("/gfx/point.png");
+	padding-left:			17px;
+	list-style-type:		disc;
+}
+
+ul.navmenu {
+ font-style:				normal;
+/* margin:;
+ padding:; */
+ list-style-type:			disc; 
+}
+
+
+.tdborder {
+	outline-style : 		solid;
+	outline-width : 		1px;
+}
+
+div#esel {
+	position: absolute; top:0px; right: 0px; z-index: 2342; width:48px; height:48px;
+	background-image: url("/gfx/esel-zu.png");
+	background-repeat: no-repeat;
+	background-position: right top;
+	border:none;
+	padding:0;
+	margin:0;
+	text-align: right;
+}
+
+
+div#eselinhalt {
+	position:relative;
+	width:90%;
+	height:90%;
+	background-color:#ffffff; 
+}
+
+/*pictures*/
+.framed_image {
+		border-style:solid;
+		border-width: 2px;
+		border-spacing: 	0;
+		border-color: #596374;
+}

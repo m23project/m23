@@ -1,0 +1,88 @@
+Template: vsftpd/username
+Type: string
+Default: ftp
+Description: Dedicated system account for the vsftpd FTP daemon:
+ The FTP server must use a dedicated account for its operation so that
+ the system's security is not compromised by running it with superuser
+ privileges.
+ .
+ Please choose that account's username.
+Description-cs.UTF-8: Vyhrazený systémový účet, pod kterým bude běžet FTP démon vsftpd:
+ Pokud by byl FTP server spuštěn se superuživatelskými oprávněními, mohlo by dojít ke kompromitaci zabezpečení systému. Proto musí FTP server pro svoji činnost používat vyhrazený neprivilegovaný účet.
+ .
+ Zvolte prosím název totoho účtu.
+Description-de.UTF-8: Eigenes Systemkonto für den Vsftpd-FTP-Daemon:
+ Der FTP-Server muss ein eigenes Konto für den Betrieb verwenden, um die Sicherheit des Systems nicht durch das Betreiben mit Superuser-Rechten zu kompromittieren.
+ .
+ Bitte wählen Sie den Benutzernamen dieses Kontos.
+Description-es.UTF-8: Cuenta del sistema dedicada para el demonio de FTP vsftpd:
+ El servidor de FTP debe utilizar una cuenta dedicada para su funcionamiento, de tal modo que la seguridad del sistema no se vea comprometida por su utilización con privilegios de administración.
+ .
+ Elija un nombre de usuario para esa cuenta.
+Description-fi.UTF-8: Dedikoitu järjestelmätunnus vsfptd:n FTP-taustaohjelman ajamiseen:
+ FTP-palvelimen tulee käyttää dedikoitua tunnusta toiminnoissaan, jotta järjestelmän turvallisuus ei vaarannu kuten käytettäessä pääkäyttäjäoikeuksia.
+ .
+ Valitse kyseisen tunnuksen nimi.
+Description-fr.UTF-8: Identifiant dédié pour le démon FTP vsftpd :
+ Le serveur FTP doit être exécuté avec un identifiant spécifique, différent du superutilisateur, afin de ne pas compromettre la sécurité du système.
+ .
+ Veuillez choisir cet identifiant.
+Description-gl.UTF-8: Conta de usuario do sistema adicada ao daemon FTP vsftpd:
+ O servidor FTP debe empregar unha conta adicada a el para que a seguridade do sistema non se poña en perigo ao executalo con privilexios de administrador.
+ .
+ Escolla o nome de usuario desa conta.
+Description-it.UTF-8: Account di sistema dedicato per il demone FTP di vsftpd:
+ Il server FTP deve utilizzare un account dedicato per eseguire le proprie operazioni, in modo che la sicurezza del sistema non rischi di essere compromessa eseguendolo con privilegi di superutente.
+ .
+ Scegliere il nome utente di tale account.
+Description-ja.UTF-8: vsftpd FTP デーモン専用のシステムアカウント:
+ FTP サーバはその動作について専用のアカウントを使うようになっているため、管理者特権で動作していてもシステムのセキュリティは侵害されません。
+ .
+ アカウントのユーザ名を選んでください。
+Description-pt.UTF-8: Conta dedicada do sistema para o deamon FTP vsftpd:
+ O servidor FTP tem que usar uma conta dedicada para as suas operações, isto para que a segurança do sistema não seja comprometida ao corrê-lo com privilégios de superutilizador.
+ .
+ Por favor escolha o nome dessa conta.
+Description-ru.UTF-8: Специально выделенная системная учётная запись для FTP службы vsftpd:
+ Для улучшения безопасности системы FTP сервер должен использовать специально выделенную учётную запись, а не запускаться с правами суперпользователя.
+ .
+ Укажите имя такой учётной записи.
+Description-sv.UTF-8: Dedikerat systemkonto för ftp-tjänsten vsftpd:
+ FTP-servern måste ha ett dedikerat konto för att fungera på ett säkert sätt, att använda privilegier från en superanvändare är inte säkert.
+ .
+ Ange kontots användarnamn.
+Description-zh_CN.UTF-8: 指定操作 vsftpd FTP 守护进程的专用系统帐户：
+ FTP 服务器必须使用一个专用的账户来进行操作，这样就不会因为使用超级用户权限运行而破坏系统的安全。
+ .
+ 请选择账户的用户名。
+
+Template: vsftpd/directory
+Type: string
+Default: /srv/ftp
+Description: FTP root directory:
+ Please specify the directory that will be used as root for the
+ FTP server.
+Description-cs.UTF-8: Kořenový adresář FTP:
+ Zadejte prosím adresář, ve kterém bude umístěn kořen FTP serveru:
+Description-de.UTF-8: FTP-Wurzelverzeichnis:
+ Bitte geben Sie das Verzeichnis an, welches als Wurzelverzeichnis für den FTP-Server verwendet werden soll.
+Description-es.UTF-8: Directorio raíz del servidor de FTP:
+ Especifique el directorio que se utilizará como directorio raíz para el servidor de FTP.
+Description-fi.UTF-8: FTP-juurihakemisto:
+ Anna hakemisto, jota käytetään FTP-palvelimen juurena.
+Description-fr.UTF-8: Répertoire racine FTP :
+ Veuillez choisir le répertoire racine qui sera utilisé par le serveur FTP.
+Description-gl.UTF-8: Directorio raíz do FTP:
+ Especifique o directorio que se empregará como raíz polo servidor FTP.
+Description-it.UTF-8: Directory radice FTP:
+ Specificare la directory che verrà utilizzata come radice per il server FTP.
+Description-ja.UTF-8: FTP の root ディレクトリ:
+ FTP サーバの root ディレクトリとして利用するディレクトリを指定してください。
+Description-pt.UTF-8: Directório raiz FTP:
+ Por favor especifique o directório que será usado como a raiz do servidor FTP.
+Description-ru.UTF-8: Корневой каталог FTP:
+ Укажите каталог, который будет использован в качестве корневого каталога FTP сервера.
+Description-sv.UTF-8: Rot-katalog för FTP:
+ Ange katalog som ska agera rot-nivå för ftp-servern.
+Description-zh_CN.UTF-8: FTP 根目录：
+ 请指定用作 FTP 服务器根目录的目录。

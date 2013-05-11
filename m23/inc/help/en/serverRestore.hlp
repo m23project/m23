@@ -1,0 +1,34 @@
+<!--v10.0 new-->Howto restore your m23 server
+You can restore your m23 server with the previously created backups to any saved state in case of a failure.
+
+To restore it, use the following step-by-step restoration guide:
+<ol>
+	<li>Install the m23 server with the m23 server installation CD on an error free hard disk. You can download the ISO for burning the CD from <a href="http://m23.sf.net">m23.sf.net</a>.</li>
+	<li>Save the last backup file on the computer that contains the GPG key for encryption and decryption.</li>
+	<li>Decrypt the backup file. If the computer is a Linux system the backup file may be decrypted with:
+
+	<code>gpg -d < m23serverBackup-*.tar.gpg > m23backup.tar</code>
+
+	Otherwise, use the GPG application of your operating system.</li>
+	<li>Now copy the decrypted backup file <i>"m23backup.tar"</i> to the newly installed m23 server into the directory <i>"/tmp"</i>. With Linux you can do the copying as follows:
+
+	<code>scp m23backup.tar root@[IP]:/tmp</code>
+
+	Replace <i>"[IP]"</i> with the IP of your m23 server. You can use the tool <a href="http://winscp.net/eng/docs/lang:en">WinSCP (www.winscp.net)</a>, if you use Windows.</li>
+	<li>Log in to the m23 server as user <b>root</b>.</li>
+	<li>Go to the directory <i>"/tmp"</i> with:
+
+	<code>cd /tmp</code></li>
+	<li>Create a new directory for extracting the backup file and go to this directory:
+
+	<code>mkdir restore; cd restore</code></li>
+	<li>Extract the backup file with:
+
+	<code>tar xfv /tmp/m23backup.tar</code></li>
+	<li>Now start the recovery with:
+
+	<code>/m23/bin/m23Restore</code></li>
+	<li>You should reboot the server after the restoring is finished. This can be done with the command:
+	<code>reboot</code></li>
+	<li>The m23 server should work as expected afterwards.</li>
+</ol>

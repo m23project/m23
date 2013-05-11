@@ -1,0 +1,26 @@
+<!--v1.3-->Wählen der Client-Distribution
+<u>Information:</u>
+Eine Distribution ist eine Zusammenstellung von verschiedenen Softwarepaketen, die auf unterschiedlichen Medien (CD, DVD, Internet) vertrieben werden. Es gibt Distributionen, die frei sind und zum kostenlosen Download im Internet angeboten werden. Ein Beispiel dafür ist <a href="http://www.debian.org" target="_blank"> Debian</a>. Unterschiede bei den Distributionen bestehen lediglich in den eingesetzten Installationsprogrammen und der grafischen Aufmachung der Desktops. Die Auswahl einer Distribution ist meist reine Geschmackssache. Um die Unterstützung von verschiedenen Client-Distributionen in m23 zu ermöglichen, gibt es nun diesen Auswahl-Dialog.
+
+<ul>
+	<li><b>Voreinstellungen laden</b>: Wählen Sie dazu eine zuvor abgespeicherte Voreinstellung aus der Auswahlliste aus und klicken Sie auf <i>"$I18N_load"</i>.</li>
+	<li><b>Voreinstellungen löschen</b>: Sie können eine ausgewählte Voreinstellung löschen, indem Sie auf <i>"$I18N_delete"</i> klicken.</li>
+	<li><b>Voreinstellungen speichern</b>: Die aktuellen Einstellungen können Sie als Voreinstellung speichern, indem Sie einen Namen eingeben und danach auf <i>"$I18N_save"</i> klicken.</li>
+	<!--v1.8 moved, changed--><li><b>$I18N_packageSources</b>: Zuerst müssen Sie eine Paketquelle auswählen, die Sie unter <i>$I18N_packages</i> &rarr; <i>$I18N_packageSources</i> erstellt haben. Mit Auswahl der Paketquelle werden gleichzeitig die Distribution, das Release sowie die wählbaren Benutzeroberflächen festgelegt. Klicken Sie dazu auf <i>"$I18N_select"</i>. Danach wird das Logo der Distribution zusammen mit einer kurzen Beschreibung oben angezeigt.</li><!--v1.8 end-->
+	<li><b>$I18N_userInterface</b>: Abhängig von der <!--v1.8 Distribution-->Paketquelle können Sie verschiedene Grafische Oberflächen auswählen. Alternativ steht <i>"Textmode"</i> zur Verfügung, um einen Server zu installieren, der keinen grafischen Desktop benötigt.</li>
+	<!--v1.14 new-->
+	<li><b>$I18N_packageSelection</b>: Sie können hier eine Paketzusammenstellung wählen, die zusammen mit dem Betriebssystem installiert wird.</li>
+	<!--v1.14 end-->
+	<!--v1.21 new-->
+	<li><b>$I18N_MBRTarget</b>: m23 versucht automatisch die erste Festplatte für die Installation des Bootmanagers zu bestimmen. Möchten Sie eine hiervon abweichende Festplatte verwenden, so können Sie diese hier auswählen. Bedenken Sie, daß dies die Festplatte sein muß, die vom <a href="http://de.wikipedia.org/wiki/Basic_Input_Output_System" target="_blank">BIOS</a> zum Booten verwendet wird.</li>
+	<!--v1.21 end-->
+	<li><b>$I18N_distributionSpecificOptions</b>: Jede Distribution kann eine Vielzahl von Optionen definieren, die dann zur Installation dieser Distribution genutzt werden.</li>
+</ul>
+Zum Starten der Installation klicken Sie abschließend auf <i>"$I18N_install_distribution"</i>.
+
+<!--v1.11 begin--><u>Hinweis zu Abbilddateien</u>
+Wählen Sie die Paketquellenliste <i>"imaging"</i>, um Abbilddateien zu installieren.<!--v1.11 end-->
+<!--v1.19 begin-->Zusätzlich haben Sie die Wahl, ob Sie den <a href="http://de.wikipedia.org/wiki/Master_Boot_Record" target="_blank">MBR (Master Boot Record)</a> aus einer zuvor erstellten Datei oder den generischen MBR von m23 installieren möchten, der bootfähige Partitionen startet. Wählen Sie hierzu unter <i>"$I18N_chooseMBRtoInstall"</i> den Dateinamen oder <i>"$I18N_genericMBR"</i>.<!--v1.19 end-->
+
+<u>Hinweis:</u>
+Speichern Sie eine Voreinstellung unter dem gleichen Namen ab, unter dem Sie schon Voreinstellungen für einen Client gespeichert haben, dann werden die Einstellungen der Distribution hinzugefügt. Distributions-Einstellungen werden in diesem Fall überschrieben.

@@ -1,0 +1,13 @@
+<!-- V1.13 new-->$I18N_packageBuilder
+
+Le $I18N_packageBuilder integré dans m23 est un outil comfortable de construction des paquets Debian directement à partir de l'environnement graphique de m23. Ces paquets peuvent etre installés comme tout autre paquet tout en étant constitués de fichiers et/ou d'arborescences de fichiers.
+
+Les paquets seront construits à partir d'archives compressées au format <a href="http://de.wikipedia.org/wiki/Tar">tar</a> compressé par <a href="http://de.wikipedia.org/wiki/Bzip2">bzip2</a> ou <a href="http://de.wikipedia.org/wiki/Gzip">gzip</a>. Les droits d'accès des fichiers et répertoires seront conservés. Les paquets Debian créés sont indépendents des distributions ou des versions de distribution et peuvent être utilisés sur des postes client Debian, Ubuntu et Kubuntu.
+
+La création d'un paquet se déroule de la fa&ccedil;on suivante:
+<ol><li>L'enregistrement du fichier tar dans le répertoire /m23/data+scripts/extraDebs/ peut être effectué avec <a href="http://de.wikipedia.org/wiki/Secure_Copy">scp</a> ou en utilisant le téléchargement de fichiers intégré <i>&laquo;$I18N_uploadedTarFileForCenversion&raquo;</i>.</li>
+<li><!-- V11.3 begin -->Après enregistrement du fichier, cliquez sur <i>&laquo;$I18N_refresh&raquo;</i>, s.v.p., pour qu' il apparaisse dans la <i>&laquo;$I18N_fileList&raquo;</i>.</li><!-- V11.3 end -->
+<li>Sélectionnez le fichier à transformer, puis cliquez sur <i>&laquo;$I18N_convertToDeb&raquo;</i> à côté du nom du fichier. L'actualisation des fichiers index des paquets s'effectue automatiquement et vous pouvez utiliser la source de paquets instantanément.</li></ol>
+
+<u>Notez</u>
+Bien sûr, vous pouvez copier des paquets Debian déjà créés dans les sources de paquets, puis reconstruire le fichier d'index des paquets après coup, en cliquant sur <i>&laquo;$I18N_recreatePackageIndex&raquo;</i>.

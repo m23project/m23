@@ -1,0 +1,536 @@
+/***********************************
+CSS File for m23 'Fresh Blue' theme
+***********************************/
+
+
+body {
+	color:				#232931;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	font-weight:		normal;
+	font-size:			14px;
+	line-height:		1.2em;
+	background-color:	#85b6f3;
+	background-image:	url("/gfx/background_blue_1280.png"); 
+	background-repeat:	no-repeat; 
+	background-position:	left top;
+}
+
+/*TITLES and captions*/
+.title {
+	color:			#0a356b;
+	font-family:	Liberation Sans, Arial, Verdana, Helvetica;
+	font-size:		23px;
+	white-space:	nowrap;
+	text-shadow:	#375477 2px 2px 3px;
+	margin-bottom:	1.5em;
+	line-height:	1.5em;
+}
+
+.titlesmal {
+	color:			#0a356b;
+	font-family:	Liberation Sans, Arial, Verdana, Helvetica;
+	font-weight:	bold;
+	font-size:		14px;
+	line-height:	1.4em;
+	text-shadow:	#909090 2px 2px 2px;
+}
+
+.highlight {
+	color:				#bb0000;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	font-weight:		bold;
+	font-size:			15px;
+	line-height:		1.3em;
+
+}
+
+.menuhighlight {
+	color:				#3f72ab;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	font-weight:		bold;
+	font-size:			14px;
+	line-height:		1.3em;
+}
+
+.subhighlight {
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		bold;
+	font-size:			14px;
+	line-height:		1.3em;
+	color:				#50627a;
+}
+
+/*TABLES*/
+table {
+	color:				#232931;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		normal;
+	font-size:			14px;
+	line-height:		1.1em;
+	overflow:			hidden;
+	*border-collapse: 	collapse; /* IE7 and lower */
+    border-spacing: 	0;
+	-moz-border-radius: 	8px;
+    -webkit-border-radius: 8px;
+    border-radius: 		8px;
+	border-color: 		#ffffff;
+	padding: 			8px;
+}
+
+table td:first-child, table th:first-child {
+    	border-left: 		none;
+}
+
+table th:first-child {
+    	-moz-border-radius: 	8px 0 0 0;
+    	-webkit-border-radius: 8px 0 0 0;
+    	border-radius: 			8px 0 0 0;
+}
+
+table th:last-child {
+    	-moz-border-radius: 	0 8px 0 0;
+    	-webkit-border-radius: 0 8px 0 0;
+    	border-radius: 			0 8px 0 0;
+}
+
+table th:only-child {
+    	-moz-border-radius: 	8px 8px 0 0;
+    	-webkit-border-radius: 8px 8px 0 0;
+    	border-radius: 			8px 8px 0 0;
+}
+
+table tr:last-child td:first-child {
+    	-moz-border-radius: 	0 0 0 8px;
+    	-webkit-border-radius: 0 0 0 8px;
+    	border-radius: 			0 0 0 8px;
+}
+
+table tr:last-child td:last-child {
+    	-moz-border-radius: 	0 0 8px 0;
+    	-webkit-border-radius: 0 0 8px 0;
+    	border-radius: 			0 0 8px 0;
+}
+
+#calc_table {
+      border-spacing:	8px;
+      border:			8px outset #4a76a8; 
+      font-size: 		large; 
+      font-weight:		bold;
+      border-collapse:	separate;
+}
+
+.normaltable {
+	border:				1px solid #0a356b;
+	color:				#232931;
+	background-color:	#BBBBBB;
+}
+
+.subtable {
+	empty-cells:		hide;
+	border:				1px solid #0a356b;
+	color:				#232931;
+	background-color:	#d6dadd;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	font-weight:		normal;
+	font-size:			13px;
+	line-height:		1.3em;
+	position:			relative; left:-3px; top:-3px;
+	overflow:			hidden;
+	padding:			3px;
+}
+
+
+.subtable2 {
+	border:				1px solid #0a356b;
+	border-collapse:	collapse;
+	color:				#232931;
+	background-color:	#d6dadd;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	font-weight:		normal;
+	font-size:			13px;
+	text-indent:		3px;
+	position:			relative; left:-3px; top:-3px;
+	letter-spacing: 	0.6px;
+	overflow:			hidden;
+}
+
+.subtable2 td{
+	border-bottom:		2px groove silver;
+	border-left:		2px groove silver;
+	border-top:			2px groove silver;
+	overflow:			hidden;
+}
+
+.subtable2 p{
+	padding: 5px;
+}
+
+
+.subtable a, .subtable a:link, .subtable a:active, .subtable a:visited {
+	color:				#0a356b;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		normal;
+	font-size:			13px;
+	line-height:		1.3em;
+	text-decoration:	none;
+}
+
+.subtable a:hover {
+	color:				#3f72ab;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	text-decoration:	underline;
+	cursor:				pointer;
+}
+
+.subtable_shadow {
+	empty-cells:		hide;
+	border-collapse:	collapse;
+}
+
+.subtable_shadow tr, .subtable_shadow td, .subtable_shadow tbody {
+	empty-cells:		show;
+	border-collapse:	collapse;
+	padding:			5px;
+}
+
+/*Coloured titles*/
+.subhighlight_yellow {
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		bold;
+	font-size:			16px;
+	line-height:		1.3em;
+	color:				#FFFF66;
+}
+
+.subhighlight_green {
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		bold;
+	font-size:			16px;
+	line-height:		1.3em;
+	color:				#33912C;
+}
+
+.subhighlight_red {
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		bold;
+	font-size:			16px;
+	line-height:		1.3em;
+	color:				#FF0644;
+}
+
+.consoleLinux {
+	margin:				0px;
+	padding:			2px 2px 2px;
+	color:				#CCCCCC;
+	background-color:	#000000;
+}
+
+.consoleLinux p {
+	font-family:		monospace;
+	margin:				0px;
+	padding:			0px 2px 2px;
+	background-color:	#000000;
+	color:				#CCCCCC;
+}
+
+.helptable {
+	border:				1px solid #0a356b;
+	color:				#232931;
+	background-color:	#d6dadd;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		normal;
+	font-size:			13px;
+	line-height:		1.1em;
+}
+
+.partTables {
+	empty-cells:		hide;
+	border:				1px solid #0a356b;
+	color:				#232931;
+	background-color:	#d6dadd;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	font-weight:		normal;
+	font-size:			13px;
+	line-height:		1.3em;
+	position:			relative; left:-3px; top:-3px;
+	overflow:			hidden;
+	padding:			3px;
+}	
+
+.partTables tr td, #fdiskbar tr td {
+	-moz-border-radius: 	0px !important;
+	-webkit-border-radius: 0px !important;
+	border-radius: 			0px !important;
+}
+
+#fdiskbar {
+	padding:		2px;
+}
+
+
+.newfeaturetable {
+	border:				1px solid #0a356b;
+	color:				#232931;
+	background-color:	#FF9933;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		normal;
+	font-size:			13px;
+	line-height:		1.2em;
+}
+
+.warningtable {
+	border:				4px solid #ffffff;
+	color:				#232931;
+	background-color:	#ffe3b8;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		normal;
+	font-size:			15px;
+	line-height:		1.2em;
+}
+
+.warningtable .subhighlight {
+	font-size:			17px;
+	font-weight:		bold;
+	color:				#c66900;	
+}
+
+.infotable {
+	border:				4px solid #ffffff;
+	color:				#232931;
+	background-color:	#9fc6f6;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		normal;
+	font-size:			15px;
+	line-height:		1.2em;
+}
+
+.infotable .subhighlight {
+	font-size:			17px;
+	font-weight:		bold;
+	color:				#0e4890;	
+}
+
+.errortable {
+	border:				4px solid #ffffff;
+	color:				#232931;
+	background-color:	#f4adad;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		normal;
+	font-size:			15px;
+	line-height:		1.3em;
+}
+
+.errortable .subhighlight {
+	font-size:			17px;
+	font-weight:		bold;
+	color:				#b80000;
+}	
+	
+.communitytable {
+	border:				3px solid #4c83c6;
+	color:				#232931;
+	background-color:	#9bdbb6;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		normal;
+	font-size:			13px;
+	line-height:		1.2em;
+}
+
+.updatetable {
+	border:				3px solid #4c83c6;
+	color:				#232931;
+	background-color:	#efc5ab;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		normal;
+	font-size:			13px;
+	line-height:		1.2em;
+}
+
+.developmentBlogtable {
+	border:				3px solid #4c83c6;
+	color:				#232931;
+	background-color:	#f5f3aa;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		normal;
+	font-size:			13px;
+	line-height:		1.2em;
+}
+
+.businessBlogtable {
+	border:				3px solid #4c83c6;
+	color:				#232931;
+	background-color:	#bad6f8;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		normal;
+	font-size:			13px;
+	line-height:		1.2em;
+}
+
+/*pictures*/
+.framed_image {
+		border-style:			solid;
+		*border-collapse: 		collapse; /* IE7 and lower */
+		border-spacing: 		0;
+		-moz-border-radius: 	8px;
+		-webkit-border-radius: 8px;
+		border-radius: 			8px;
+		border-color: 			#ffffff;
+}
+
+
+/*LINKS*/
+
+.a, a:link, a:active, a:visited {
+	color:				#0a356b;
+	font-family:		Tahoma, Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	text-decoration:	none;
+}
+
+a:hover {
+	color:				#3f72ab;
+	font-family:		Tahoma, Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	text-decoration:	underline;
+	cursor:				pointer;
+}
+
+
+/* ERRORS */
+.inputerror {
+	color:				#ff0000;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		normal;
+	font-size:			14px;
+	line-height:		1.3em;
+	text-decoration:	none;
+}
+
+/*basic things*/
+.box {
+	border:				4px solid #ffffff;
+	background-color:	#ebf0f7;
+	color:				#232931;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
+	font-weight:		normal;
+	font-size:			15px;
+	line-height:		1.3em;
+}
+
+.mainbox {
+	border:				0px solid #0a356b;
+	background-color:	#eeeee6;
+	color:				#000000;
+	font-family:		Liberation Sans, Arial, Verdana, Helvetica, sans-serif; 
+	font-weight:		normal;
+	font-size:			15px;
+	line-height:		1.3em;
+}
+
+/*menu*/
+.navmenu {
+	list-style-position:	inside;
+	list-style-image:		url("/gfx/point.png");
+	padding-left:			17px;
+	list-style-type:		disc;
+}
+
+ul.navmenu {
+	font-style:				normal;
+	list-style-type:		disc; 
+}
+
+ul.navmenu li {
+	font-style:			italic;
+	font-weight:			bold;
+}
+
+
+.tdborder {
+	outline-style : 	solid;
+	outline-width : 	1px;
+}
+
+/*CORNER*/
+div#esel {
+	position: 			absolute; top:0px; right: 0px; z-index: 2342; width:48px; height:48px;
+	background-image: 	url("/gfx/esel-zu.png");
+	background-repeat: 	no-repeat;
+	background-position: 	right top;
+	border:				none;
+	padding:			0;
+	margin:				0;
+	text-align: 		right;
+}
+
+div#eselinhalt {
+	position:			relative;
+	width:				90%;
+	height:				90%;
+	background-color:	#ffffff; 
+}
+
+/*BUTTONS*/
+input[type="submit"] {
+	color: 			#3f72ab;
+	font-weight:		bold;
+	-moz-border-radius:	14px;
+	-webkit-border-radius: 14px;
+	border-radius: 		14px;
+	border: 4px double #C4DCFC;
+	cursor: 		pointer;
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(243,243,243,1) 50%, rgba(237,237,237,1) 51%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(50%,rgba(243,243,243,1)), color-stop(51%,rgba(237,237,237,1)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(243,243,243,1) 50%,rgba(237,237,237,1) 51%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(243,243,243,1) 50%,rgba(237,237,237,1) 51%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(243,243,243,1) 50%,rgba(237,237,237,1) 51%,rgba(255,255,255,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(243,243,243,1) 50%,rgba(237,237,237,1) 51%,rgba(255,255,255,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+input[type="submit"]:hover {
+	color: 			#295996;
+	border: 4px double #79abec;
+	text-shadow: 	0px 0px 10px #79abec;
+}
+
+input[type="submit"]:active {
+	color: 			#295996;
+	text-shadow: none;
+	background: rgb(224,224,224); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(224,224,224,1) 0%, rgba(214,214,214,1) 50%, rgba(209,209,209,1) 51%, rgba(224,224,224,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(224,224,224,1)), color-stop(50%,rgba(214,214,214,1)), color-stop(51%,rgba(209,209,209,1)), color-stop(100%,rgba(224,224,224,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(224,224,224,1) 0%,rgba(214,214,214,1) 50%,rgba(209,209,209,1) 51%,rgba(224,224,224,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(224,224,224,1) 0%,rgba(214,214,214,1) 50%,rgba(209,209,209,1) 51%,rgba(224,224,224,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(224,224,224,1) 0%,rgba(214,214,214,1) 50%,rgba(209,209,209,1) 51%,rgba(224,224,224,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgba(224,224,224,1) 0%,rgba(214,214,214,1) 50%,rgba(209,209,209,1) 51%,rgba(224,224,224,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0e0e0', endColorstr='#e0e0e0',GradientType=0 ); /* IE6-9 */
+}
+
+/*dropdown selection boxes*/
+
+select {
+	/*-webkit-appearance: none;*/
+	padding:			2px;
+	background-color: #ffffff;
+	color:				#232931;
+	border:				4px double #C4DCFC;
+	line-height:		1em;
+	-moz-border-radius:	14px;
+	-webkit-border-radius: 14px;
+	border-radius: 		14px;
+	text-align:			center;
+	vertical-align:		middle;
+
+}
+
+option {
+	-moz-border-radius:	10px;
+	-webkit-border-radius: 10px;
+	border-radius: 		10px;
+	background-color: #ffffff;
+	color:				#232931;
+	border:				1px solid #C4DCFC;
+	margin:				3px;
+	-webkit-appearance: none;
+	font-style:		italic;
+}

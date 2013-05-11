@@ -1,0 +1,29 @@
+<!-- V1.7 new-->$I18N_daemons_and_programs
+
+<b>$I18N_daemons</b>
+<u>Hint</u>
+<b>Daemons</b> are server programms that are running in the background and you won't even notice, if they make a good job ;-) E.g. the web server Apache or the database server MySQL are daemons. 
+
+<u>Color codes</u>
+<ul><LI><b>Green</b>: The daemon is running in the background and can be stopped or restarted. Stopping of daemons is <b>NOT</b> recommended.</LI>
+<LI><b>Yellow</b>: The daemon is installed but not running. Some daemons are just started if they are needed. A daemon with this state can be started.</LI>
+<LI><b>Red</b>: The daemon is not installed and not running. This means that an important server component of m23 was removed or not installed. You can install it by choosing <i>"$I18N_install"</i> from the action list after the daemon and clicking on <i>"$I18N_doActions"</i>.</LI>
+</ul>
+
+<u>Description of daemons</u>
+<ul><LI><b>apache</b>: Apache is a web server and the most important part of m23. The m23 administration interface and the client jobs are generated via Apache and PHP.</LI>
+<LI><b>mysql</b>: MySQL is a database server which stores the client information.</LI>
+<LI><b>dhcpd3</b>: The DHCP server assigns IP addresses to the clients and can only be started if there is a minimum of one managed clients. A "yellow" state is not always an indicator for an error.</LI>
+<!--V1.11 begin--><LI><b>slapd</b>: This is the daemon of the LDAP server <a href="http://www.openldap.org">OpenLDAP</a>. With LDAP you can store login on a central server and use these login from all clients that can access this server.</LI><!--V1.11 end-->
+</ul>
+
+
+<!-- commented out in 11.3 <b>$I18N_helperApplications</b>
+
+<u>Hint</u>
+<b>$I18N_helperApplications</b> are programms which are usefully and executed when needed. Some of these are essential other are "nice to have".
+
+<ul><LI><b>wget (always needed)</b>: Is needed e.g. for updating the server software.</LI>
+<li><b>pwgen (nice to have)</b>: Generates random and easily memorisable for humans passwords during the mass installation. If pwgen is not installed only totally random passwords can be generated.</li>
+<li><b>Burner tools (nice to have)</b>: This is a bunch of programms which are needed if you want to burn the m23 client boot CD with the m23 server. You can burn these CDs directly in the m23 administration interface.</li>
+</ul>-->

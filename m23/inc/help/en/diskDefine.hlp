@@ -1,0 +1,18 @@
+Define disk type and size<!--new v1.6-->
+
+Please enter the preferences of the hard drive for the master client. You have to enter these values because there can't be gathered any hardware information about the master client. Select the hard disk type (IDE, SCSI) and size. The defined size should be the approximate disk size of your real clients.
+<u>Hint</u><ul>
+<li><b>IDE</b>: /dev/hd? names IDE drives, /dev/hda is the first, /dev/hdb the second, ...</li>
+<li><b>SCSI</b>: /dev/sd? names the SCSI drives.</li></ul>
+
+<u>Adjustment criteria</u>
+It is assumed that the defined hard disk parameters aren't valid for all your clients. m23 offers different methods for individual partitioning adjustment of your clients.
+<ul><LI>The <i>"$I18N_diskSelectionCriteria"</i> defines the algorithm for choosing the hard disk of the client if there should be more than one.
+	<ul><LI><i>"$I18N_asSpecified"</i> uses the hard disk selected above, even if there should be a hard disk whose size matches the specified size better. If the defined hard disk shouldn't exist (e.g. there is no /dev/hda in a SCSI system) another hard disk is chosen. If this option is not activated the best hard disk will be selected according to the following criteria.</LI>
+	<li>The tolerances for <i>"$I18N_identicalType"</i> and <i>"$I18N_otherTypes"</i> define the upper tolerance (client hard disk is bigger than defined) and the lower tolerance (client hard disk is smaller) from the defined size. Hard disks within the tolerance are detected as a match. If you prefer hard disks of the same type (e.g. IDE) choose a smaller or no (set upper and lower tolerance to 0) tolerance for hard disks of <i>"$I18N_otherTypes"</i>.<br><br>
+	<u>Hint</u>
+	Tolerance values can be expressed in gigabyte (followed by GB) or percent (followed by %). E.g. 100% for the upper tolerance means that the hard disk may be of twice the size of the defined one.
+	</li>
+	</ul>
+</LI>
+</ul>

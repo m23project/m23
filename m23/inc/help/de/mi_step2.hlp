@@ -1,0 +1,29 @@
+<!--v1.5-->Dateiquelle wählen/Spalten zuordnen
+
+Dieser Dialog ist in zwei Schritte aufgeteilt:<ul>
+<LI>Datei auswählen und hochladen</LI>
+<LI>Den Feldern in der Datei die Client-Eigenschaften zuweisen</LI></ul>
+
+<u>Datei auswählen und hochladen</u>
+Wählen Sie eine Datei über den Dialog aus und klicken Sie danach auf <i>"$I18N_upload"</i>.
+
+Die Datei muß speziell aufgebaut sein, damit m23 die Werte erkennen kann. Pro Zeile werden die Eigenschaftswerte für je einen Client spezifiziert. Die einzelnen Eigenschaften werden durch ein Trennzeichen (hier ";") getrennt:
+<code>Eigenschaft1;Eigenschaft2;Eigenschaft3;...</code>
+An Stelle eines Semikolons kann jede Kombination von bis zu 4 Zeichen verwendet werden. Die Reihenfolge der Eigenschaften muß in allen Zeilen gleich sein.
+
+<!--start v1.10--><u>Hinweis</u>
+Neben der grundlegenden Bedingung, daß die in der Datei abgelegten Werte zu den Eigenschaften passen müssen, gelten für folgende Eigenschaften die zusätzlichen Bedingungen:<ul>
+<LI><b>$I18N_addNewLocalLogin</b>: Wert "yes" aktiviert diese Option, jeder andere Wert deaktiviert sie.</LI>
+<LI><b>LDAP</b>: Es sind 3 verschiedene Werte zulässig:<ul>
+<LI>"none": $I18N_dontUseLDAP</LI>
+<LI>"read": $I18N_readLoginFromLDAP</LI>
+<LI>"write": $I18N_addNewLoginToLDAP</LI></ul></LI></ul><!--end v1.10-->
+
+<u>Den Feldern in der Datei die Client-Eigenschaften zuweisen</u>
+Nachdem Sie eine Datei hochgeladen haben, können Sie den einzelnen Feldern in der Datei die Eigenschaftsnamen der Clients zuweisen.
+
+<u>Gehen Sie hierzu wie folgt vor</u><ol>
+<LI>Geben Sie das Trennzeichen in das vorgesehene Feld ein und passen Sie ggf. die Spaltenanzahl an.</LI>
+<li>Klicken Sie auf <i>"$I18N_refresh"</i>.</li>
+<li>Weisen Sie nun den Feldern aus der Datenbankdatei die Eigenschaftsnamen aus den Listen zu.</li>
+<li>Schließen Sie Ihre Auswahl mit einem Klick auf <i>"$I18N_save"</i> ab.</li></ol>
