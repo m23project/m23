@@ -22,8 +22,6 @@ include_once('/m23/inc/CObjectStorageManager.php');
 include_once('/m23/inc/CObjectStorage.php');
 include("/m23/inc/helper.php");
 include("/m23/inc/html.php");
-include_once('/m23/inc/Cm23Admin.php');
-include_once('/m23/inc/Cm23AdminLister.php');
 
 
 if (file_exists('/m23/inc/m23shared/m23shared.php')) include_once('/m23/inc/m23shared/m23shared.php');
@@ -32,8 +30,6 @@ session_start();
 echo('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">');
 
 dbConnect();
-$Admin = new Cm23Admin();
-$cssFile = $Admin->getCSS();
 
 /***************
 ** Get the language of the interface
@@ -81,6 +77,11 @@ if (file_exists("/m23/tmp/screenshot.lang"))
 
 //Include the language file
 include("/m23/inc/i18n/".$GLOBALS['m23_language']."/m23base.php");
+
+include_once('/m23/inc/Cm23Admin.php');
+include_once('/m23/inc/Cm23AdminLister.php');
+$Admin = new Cm23Admin();
+$cssFile = $Admin->getCSS();
 
 //Log out the current user
 if ($_GET['logout'] == 1)

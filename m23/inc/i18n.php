@@ -69,9 +69,14 @@ function I18N_m23instLanguage($shortLanguage)
 function I18N_addLanguage($webinterface, $shortLanguage, $longLanguage, $country, $lang, $keymap, $xkeyboard, $kdekeyboard, $locale, $kdekeyboards, $timezone, $packagelang)
 {
 	//If it's a webinterface language, set the value to 'w'. Otherwise it's a client language, marked by a 'c'.
-	$webinterface = ($webinterface ? 'w' : 'c');
+	$webinterface = ($webinterface ? 'w' : 'c');	
 
-	foreach (array('m23','m23captured') as $db)
+	if ($_SESSION['m23Shared'] === true)
+		$DB_list = array('m23shared_'.$_SESSION['m23Shared_DB']);
+	else
+		$DB_list = array('m23','m23captured');
+
+	foreach ($DB_list as $db)
 	{
 		db_query("INSERT INTO `$db`.`i18n` (`webinterface`, `ShortLanguage`, `LongLanguage`, `country`, `lang`, `keymap`, `xkeyboard`, `kdekeyboard`, `locale`, `kdekeyboards`, `timezone`, `packagelang`) VALUES ('$webinterface', '$shortLanguage', '$longLanguage', '$country', '$lang', '$keymap', '$xkeyboard', '$kdekeyboard', '$locale', '$kdekeyboards', '$timezone', '$packagelang');");
 	}

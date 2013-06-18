@@ -223,7 +223,7 @@ cd /tmp
 	/* =====> */ MSR_statusBarIncCommand(2);
 
 //sets the client language
-	CLCFG_language($clientParams['language']);
+	CLCFG_language($clientParams['language'], $clientOptions['release']);
 
 //generate commands for adding the user account on the client
 	$accountInfo['groups'][0]="audio";

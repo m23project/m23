@@ -8,7 +8,7 @@
 <br><br>
 
 
-<a name="groupInformation">
+<a name="groupInformation"></a>
 <span class="title"><?PHP echo($I18N_group_information);?><br><br></span>
 <table align="center">
 <td>
@@ -30,7 +30,7 @@
 <br><br>
 
 
-<a name="groupAdministration">
+<a name="groupAdministration"></a>
 <span class="title"><?PHP echo($I18N_groupAdministration);?><br><br></span>
 <table align="center">
 <td>

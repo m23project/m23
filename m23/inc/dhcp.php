@@ -470,7 +470,7 @@ function DHCP_activateBoot($clientName, $on, $bootType = 'x')
 **/
 function DHCP_calcPXEIP($ip)
 {
-	return(strtoupper(dechex(ip2longSafe($ip))));
+	return(str_pad(strtoupper(dechex(ip2longSafe($ip))), 8, 0, STR_PAD_LEFT));
 }
 
 

@@ -322,6 +322,9 @@ fix: CLCFG_interfaces: Now uses correct path to ethtool (Thx FP).
 new forkFunctions.inc / diffExcludeMeld: Checks for differences between a development and a release directory and calls meld with the changed files.
 +++++
 2013-01-12
+patch: Workaround for Ubuntu kernel question and added missing cron.
+cha: ubuntu / DISTR_afterChrootInstall: Added "cron" to the base package list.
+fix: UBUNTU_fixBeforeBaseInstall: Now creates empty /boot/grub/menu.lst for disabling the new non debconf Ubuntu kernel question.
 cha: incPatchLevelInVersionPhp: Now calls getNextPatchlevel.
 new: forkFunctions.inc / getNextPatchlevel: Shows the next available patch number.
 cha: forkFunctions.inc / moveDevel2Release: Now removes the -devel tag from the codename

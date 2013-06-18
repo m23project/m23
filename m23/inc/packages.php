@@ -1125,7 +1125,7 @@ function PKG_addPackageToPackageselection($selectionName, $packageName, $params,
 	{
 		CHECK_FW(CC_packageselectionname, $selectionName, CC_package, $packageName, CC_packagepriority, $priority, CC_packagesize, $installedSize, CC_nochecknow, $params);
 // 		$priority = PKG_getSpecialPackagePriority($packageName);
-		$sql = "SELECT id FROM `recommendpackages` WHERE name='$selectionName' AND params='$params'";
+		$sql = "SELECT id FROM `recommendpackages` WHERE name='$selectionName' AND params='$params' AND package='$packageName'";
 
 		$insertSql="INSERT INTO recommendpackages  (name,package,version,priority,params,installedSize) VALUES ('$selectionName', '$packageName', '', '$priority', '$params','$installedSize');";
 	}

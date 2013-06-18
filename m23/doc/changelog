@@ -1,3 +1,46 @@
+2013-06-18
+cha: CLCFG_language: Now has an extra parameter for setting the release name of the distribution (for special handling).
++++++
+2013-06-17
+cha: CLCFG_genFstab: Now installs grub2 on Debian 7.
+cha: CLCFG_createBootDeviceNode: Special handling for udev in Debian 7.
+fix: I18N_addLanguage: Now works with m23shared too.
+patch 100666: Netboot images are using Kernel 2.9.5 now to (hopefully) fix the problem with older SATA controlers.
+cha: checkKernelBranch: Added Linux Kernel 3.9.
++++++
+2013-06-14
+cha: excludem23-tftpdeb: Now excludes clonezilla images.
++++++
+2013-06-11
+fix: PKG_addPackageToPackageselection: Now stores all selected special packages to the selection. (THX FW).
+cha: checkKernelBranch: Added Linux Kernel 3.4.
++++++
+2013-06-07
+fix: group_details.php: Now titles are links no more.
++++++
+2013-06-05
+patch 100665: Fix for PXE IP calculation.
+fix: DHCP_calcPXEIP: Now calculates teh numbers correctly on all IPs.
++++++
+2013-05-19
+patch 100664: Corrected order of inclusion of Cm23Admin.php.
+fix: index.php: Corrected order of inclusion of Cm23Admin.php.
++++++
+2013-05-14
+patch 100663: Translations and server installation CD setup help text enhancements.
+cha: de / en / fr: Translations updated.
+cha: Cm23Admin.php: Introduced translated I18N tags.
+cha: m23 / postinst: Now adds the grdmgpg line in sudoers only if it is missing.
+cha: showNetworkDialog: Now shows a hint for choosing a valid hostname.
+cha: configureNetwork: Now filters out all 192.168.1.* IPs from /etc/hosts before adding the IP of the server.
+cha: m23 / postinst: Fixes /etc/sudoers, if there are more than one entry for grdmgpg.
++++++
+2013-05-12
+patch 100662: French translation enhancements.
+cha: French translation enhanced (THX Philippe).
+patch 100661: Added package sources list for "Linux Mint 13 Maya".
+cha: exportDBsourceslist.php: Now exports "Linux Mint 13 Maya" too.
++++++
 2013-05-11
 patch 100646: Correct detection of patch number.
 fix: getNextPatchlevel: Now works with release or development version only present.

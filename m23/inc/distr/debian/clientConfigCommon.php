@@ -57,6 +57,7 @@ function CLCFG_setDebConfDM($dm)
 lightdm shared/default-x-display-manager select $dm
 xdm shared/default-x-display-manager select $dm
 gdm shared/default-x-display-manager select $dm
+gdm3 shared/default-x-display-manager select $dm
 mdm shared/default-x-display-manager select $dm");
 }
 
@@ -488,8 +489,42 @@ rm /etc/rc2.d/S99kdm\n
 ");
 }
 
+function LXDE_install($lang, $fullInstall)
+{
+	CLCFG_setDebConfDM('gdm3');
+	CLCFG_setDebConfDirect('
+tasksel tasksel/desktop multiselect gnome
+libpam-runtime libpam-runtime/profiles multiselect unix, gnome-keyring, consolekit, capability
+gdm3 gdm3/daemon_name string /usr/sbin/gdm3
+');
+
+	if ($fullInstall)
+		$pkgs = 'lxde';
+	else
+		$pkgs = 'lxde-core';
+		
+	$pkgs .= 'gdm3';
+
+	CLCFG_aptGet('install', $pkgs);
+}
 
 
+function GNOME3_install($lang, $fullInstall)
+{
+	CLCFG_setDebConfDM('gdm3');
+	CLCFG_setDebConfDirect('
+tasksel tasksel/desktop multiselect gnome
+libpam-runtime libpam-runtime/profiles multiselect unix, gnome-keyring, consolekit, capability
+gdm3 gdm3/daemon_name string /usr/sbin/gdm3
+');
+
+	if ($fullInstall)
+		$pkgs = 'gnome-desktop-environment';
+	else
+		$pkgs = 'gnome-core';
+
+	CLCFG_aptGet('install', $pkgs);
+}
 
 
 /**
@@ -1191,7 +1226,20 @@ return("
 
 	#make sure the devices are created
 	mount /sys 2> /dev/null
+
+	if [ $(grep -c 'Debian GNU/Linux 7' /etc/issue) -gt 0 ]
+	then
+		echo -n \$RUNLEVEL > /tmp/RUNLEVEL.bak
+		RUNLEVEL='S'
+		sed -i -e 's#sleep 30##g' -e 's#sleep 60##g' /etc/init.d/udev
+	fi
+
 	/etc/init.d/udev start 2> /dev/null
+
+	if [ $(grep -c 'Debian GNU/Linux 7' /etc/issue) -gt 0 ]
+	then
+		export RUNLEVEL=$(cat /tmp/RUNLEVEL.bak)
+	fi
 
 	#Check if udev runs
 	if [ `ps -A | grep udevd -c` -gt 0 ]
@@ -1352,9 +1400,21 @@ fi
 if ($bootloader == "grub")
 	{
 		CLCFG_aptGet("remove", "lilo");
-		CLCFG_aptGet("install", "grub m23-grub-splash");
+		
+		echo("
+		if [ $(grep -c 'Debian GNU/Linux 7' /etc/issue) -gt 0 ]
+		then
+		");
+			CLCFG_aptGet("install", "grub2");
+		echo("
+		else
+		");
+			CLCFG_aptGet("install", "grub m23-grub-splash");
+		echo("
+		fi
+		");
 
-		echo ("
+		echo("
 			#write Grub
 			if /usr/sbin/grub-install $bootDevice
 			then
@@ -1865,13 +1925,29 @@ fi
 
 
 /**
-**name CLCFG_language($lang)
+**name CLCFG_language($lang, $release = null)
 **description sets the language for keyboard in console and X11 and console language
 **parameter lang: 2 letter language code (de,fr,it,en)
+**parameter release: The release name of the distribution (for special handling).
 **/
-function CLCFG_language($lang)
+function CLCFG_language($lang, $release = null)
 {
 	$lV=I18N_getLangVars($lang);
+	
+	if ($release !== null)
+	{
+		switch($release)
+		{
+			case 'wheezy':
+				foreach ($lV as $var => $val)
+				{
+					$val = str_replace('utf', 'UTF', $val);
+					$val = str_replace('UTF8', 'UTF-8', $val);
+					$lV[$var] = $val;
+				}
+			break;
+		}
+	}
 
 echo("
 
@@ -1901,7 +1977,7 @@ GDM_LANG=$lV[lang]\" > /etc/environment
 cat /etc/locale.gen | xargs -n1 locale-gen
 
 #Special handling for Debian Squeeze
-if [ `grep \"Debian GNU/Linux 6.0\" /etc/issue -c` -eq 1 ]
+if [ `grep \"Debian GNU/Linux 6.0\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 7\" /etc/issue -c` -eq 1 ]
 then
 	rm /etc/environment /tmp/lg 2> /dev/null
 

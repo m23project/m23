@@ -18,6 +18,8 @@ class Cm23Admin extends CChecks
 **/
 	public function __construct($name = null, $password = null)
 	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		
 		$this->name = $name;
 		$this->serverLoad = false;
 
@@ -36,13 +38,13 @@ class Cm23Admin extends CChecks
 			if ($this->serverLoad === false)
 			{
 				if (Cm23AdminLister::AdminExistsDB($name) || Cm23AdminLister::AdminExistsHt($name))
-					$this->addErrorMessage('Der Administrator existiert schon!');
+					$this->addErrorMessage($I18N_adminExists);
 					
 				if (!checkNormalKeys($name))
-					$this->addErrorMessage('Der Login-Name ist ungültig!');
+					$this->addErrorMessage($I18N_loginNameInvalid);
 					
 				if (empty($password))
-					$this->addErrorMessage('Bitte geben Sie ein Passwort ein!');
+					$this->addErrorMessage($I18N_enterPassword);
 			}		
 
 			if (!$this->hasErrors())
@@ -53,7 +55,7 @@ class Cm23Admin extends CChecks
 					$result = Cm23Admin::addToDB($name, $password);
 					if ($result === False)
 					{
-						$this->addErrorMessage('Datenbankfehler!');
+						$this->addErrorMessage($I18N_error_db);
 						$this->showMessages();
 						exit();
 					};
@@ -62,14 +64,14 @@ class Cm23Admin extends CChecks
 				if ($this->serverLoad === false)
 					{
 						if (Cm23Admin::addToPwFiles($name, $password))
-							$this->addInfoMessage('Der Administrator '.$this->name.' wurde hinzugefuegt');
+							$this->addInfoMessage($I18N_adminAdded_one.$this->name.$I18N_adminAdded_two);
 					}			
 			}		
 		}
 		else	//load existing logged-in admin
 		{	
 			if (!Cm23AdminLister::AdminExistsHt($name))
-				$this->addErrorMessage('Der Administrator existiert nicht!');
+				$this->addErrorMessage($I18N_adminDoesntExist);
 		};
 		
 		if (!$this->hasErrors())
@@ -87,7 +89,7 @@ class Cm23Admin extends CChecks
 				$this->optionsMd5 = md5($line['options']);
 			}
 		else //info because of database change
-			$this->addErrorMessage('Wegen einer Aenderung der DB-Struktur muss sich der Nutzer zunaechst einmalig selbst eingeloggt haben');
+			$this->addErrorMessage($I18N_dbStructureChanged);
 		}
 	}	
 	
@@ -98,6 +100,8 @@ class Cm23Admin extends CChecks
 **/
 	function __destruct()
 	{	
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		
 		//check if the options have changed and update if necessary
 		if ($this->options)
 		{
@@ -107,7 +111,7 @@ class Cm23Admin extends CChecks
 				$sql = "UPDATE `m23Admins` SET options='$serialized_options' WHERE name='".$this->name."' ";
 				$result = DB_query($sql);
 				if (!$result)
-					$this->addErrorMessage('Datenbankfehler');
+					$this->addErrorMessage($I18N_error_db);
 			}
 		}
 	}
@@ -119,15 +123,17 @@ class Cm23Admin extends CChecks
 **/
 	function delete()
 	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		
 		if (Cm23AdminLister::CountAdmins() < 2)
 		{	
-			$this->addErrorMessage('Der letzte Administrator kann nicht geloescht werden!');
+			$this->addErrorMessage($I18N_cantDeleteLastAdmin);
 			return (false);
 		}
 		
 		if ($_SERVER['PHP_AUTH_USER'] == $this->name)
 		{	
-			$this->addErrorMessage('Sie duerfen Ihren eigenen Account nicht loeschen, solange Sie eingeloggt sind!');
+			$this->addErrorMessage($I18N_cantDeleteOwnAccount);
 			return (false);
 		}
 	
@@ -140,23 +146,23 @@ class Cm23Admin extends CChecks
 					$sql = "DELETE FROM `m23Admins` WHERE name='".$this->name."' ";
 					if (!DB_query($sql))
 					{
-						$this->addErrorMessage('Datenbankfehler!');
+						$this->addErrorMessage($I18N_databaseDeletionError);
 						$this->showMessages();
 						exit();
 					}
 				}
-				$this->addInfoMessage('Der Administrator '.$this->name.' wurde geloescht');
+				$this->addInfoMessage($I18N_adminDeleted_one.$this->name.$I18N_adminDeleted_two);
 				return (true);
 			}
 			else
 			{
-				$this->addErrorMessage('Fehler beim Schreiben in die Passwortdateien');
+				$this->addErrorMessage($I18N_errorWritePwFiles);
 				return (false);
 			}
 		}	
 		else
 		{	
-			$this->addErrorMessage('Dieser Administrator kann nicht geloescht werden!');
+			$this->addErrorMessage($I18N_cantDeleteAdmin);
 			return (false);
 		}
 	}
@@ -170,22 +176,24 @@ class Cm23Admin extends CChecks
 **/
 	function changePw($oldpassword, $newpassword)
 	{	
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		
  		if ($this->hasErrors())
 		{
-			$this->addErrorMessage('Das Passwort konnte nicht geaendert werden');
+			$this->addErrorMessage($I18N_passwordCouldNotGetChanged);
 			return (false);	
 		}
 		print ('1.'.HELPER_md5x5($oldpassword.$this->salt.'   '));
 		print ('2.'.$this->pwhash);
 		if (HELPER_md5x5($oldpassword.$this->salt) !== $this->pwhash)
 		{
-			$this->addErrorMessage('Das angegebene Passwort ist falsch');
+			$this->addErrorMessage($I18N_wrongPassword);
 			return (false);	
 		}
 		
 		if (empty($newpassword))
 		{	
-			$this->addErrorMessage('Bitte geben Sie ein Passwort ein!');
+			$this->addErrorMessage($I18N_pleaseEnterApassword);
 			return (false);	
 		}
 		
@@ -197,15 +205,15 @@ class Cm23Admin extends CChecks
 			$result = DB_query($sql);
 			if (!$result)
 			{	
-				$this->addErrorMessage('Datenbankfehler');
+				$this->addErrorMessage($I18N_error_db);
 				return (false);
 			}	
-			$this->addInfoMessage('Das Passwort fuer '.$this->name.' wurde erfolgreich geaendert');
+			$this->addInfoMessage($I18N_passwordChanged_one.$this->name.$I18N_passwordChanged_two);
 			return (true);
 		}
 		else
 		{
-			$this->addErrorMessage('Fehler beim Aendern der Passwortdateien');
+			$this->addErrorMessage($I18N_errorWritePwFiles);
 			return (false);
 		}
 	}
@@ -217,14 +225,16 @@ class Cm23Admin extends CChecks
 **parameter $css: element indicating chosen CSS, see array $cssList
 **/
 	function setCss($css)
-	{
+	{	
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		
 		if (in_array($css, $this->cssList)) 
 		{
 			$this->options['css'] = $css;
-			$this->addInfoMessage("Das CSS wurde auf ".$css." geaendert");
+			$this->addInfoMessage($I18N_cssChanged_one.$css.$I18N_cssChanged_two);
 		}
 		else
-		$this->addErrorMessage('Das gewaehlte CSS ist nicht verfuegbar');
+		$this->addErrorMessage($I18N_cssNotAvailable);
 	}
 	
 /**
@@ -259,8 +269,10 @@ class Cm23Admin extends CChecks
 **/
 	function setLanguage($shortLanguage)
 	{	
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		
 		$this->options['language'] = I18N_m23instLanguage($shortLanguage);
-		$this->addInfoMessage("Die Sprache wurde auf ".$this->options['language']." geaendert");
+		$this->addInfoMessage($I18N_languageChangedTo_one.$this->options['language'].$I18N_languageChangedTo_two);
 	}
 	
 /**
