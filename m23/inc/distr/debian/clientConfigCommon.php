@@ -150,30 +150,38 @@ echo('
 
 
 /**
-**name CLCFG_installLightDM()
+**name CLCFG_installLightDM($session, $addSessionWrapper = false)
 **description Installs the light DM display manager.
+**parameter session: Name of the session to select by default.
+**parameter addSessionWrapper: Set to true, if an additional line with "session-wrapper=/etc/X11/Xsession" should be added.
 **/
-function CLCFG_installLightDM($session)
+function CLCFG_installLightDM($session, $addSessionWrapper = false)
 {
 	CLCFG_setDebConfDM('lightdm');
+	$addLines = '';
 
-$greeters['ubuntu'] = 'unity-greeter';
-$greeters['ubuntu-2d'] = 'unity-greeter';
+	$greeters['ubuntu'] = 'unity-greeter';
+	$greeters['ubuntu-2d'] = 'unity-greeter';
 
-$greeters['gnome-classic'] = 'lightdm-gtk-greeter';
-$greeters['gnome'] = 'lightdm-gtk-greeter';
-$greeters['gnome-fallback'] = 'lightdm-gtk-greeter';
+	$greeters['gnome-classic'] = 'lightdm-gtk-greeter';
+	$greeters['gnome'] = 'lightdm-gtk-greeter';
+	$greeters['gnome-fallback'] = 'lightdm-gtk-greeter';
 
-$greeters['gnome-shell'] = 'lightdm-gtk-greeter';
+	$greeters['gnome-shell'] = 'lightdm-gtk-greeter';
 
-$greeters['Lubuntu'] = 'lightdm-gtk-greeter';
-$greeters['Lubuntu-Netbook'] = 'lightdm-gtk-greeter';
+	$greeters['Lubuntu'] = 'lightdm-gtk-greeter';
+	$greeters['Lubuntu-Netbook'] = 'lightdm-gtk-greeter';
 
-$greeters['xfce'] = 'lightdm-gtk-greeter';
-$greeters['xubuntu'] = 'lightdm-gtk-greeter';
-$greeters['ubuntustudio'] = 'lightdm-gtk-greeter';
+	$greeters['xfce'] = 'lightdm-gtk-greeter';
+	$greeters['xubuntu'] = 'lightdm-gtk-greeter';
+	$greeters['ubuntustudio'] = 'lightdm-gtk-greeter';
 
-$greeters['kde-plasma'] = 'lightdm-kde-greeter';
+	$greeters['kde-plasma'] = 'lightdm-kde-greeter';
+
+	$greeters['LXDE'] = 'lightdm-greeter';
+
+	if ($addSessionWrapper)
+		$addLines .= "\nsession-wrapper=/etc/X11/Xsession";
 
 	CLCFG_aptGet("install", "lightdm");
 	CLCFG_aptGet("install", $greeters[$session]);
@@ -181,7 +189,7 @@ $greeters['kde-plasma'] = 'lightdm-kde-greeter';
 echo("echo \"[SeatDefaults]
 allow-guest=false
 user-session=$session
-greeter-session=".$greeters[$session]."\" > /etc/lightdm/lightdm.conf
+greeter-session=".$greeters[$session]."$addLines\" > /etc/lightdm/lightdm.conf
 ");
 }
 
@@ -489,26 +497,38 @@ rm /etc/rc2.d/S99kdm\n
 ");
 }
 
+
+
+
+
+/**
+**name LXDE_install($lang, $fullInstall)
+**description Installs the LXDE desktop.
+**parameter lang: short language
+**parameter fullInstall: Set to true, if the full desktop with all applications should be installed. Otherwise a minimal desktop will be installed
+**/
 function LXDE_install($lang, $fullInstall)
 {
-	CLCFG_setDebConfDM('gdm3');
-	CLCFG_setDebConfDirect('
-tasksel tasksel/desktop multiselect gnome
-libpam-runtime libpam-runtime/profiles multiselect unix, gnome-keyring, consolekit, capability
-gdm3 gdm3/daemon_name string /usr/sbin/gdm3
-');
+	CLCFG_installLightDM('LXDE', true);
 
 	if ($fullInstall)
-		$pkgs = 'lxde';
+		$pkgs = 'task-lxde-desktop';
 	else
 		$pkgs = 'lxde-core';
-		
-	$pkgs .= 'gdm3';
 
 	CLCFG_aptGet('install', $pkgs);
 }
 
 
+
+
+
+/**
+**name GNOME3_install($lang, $fullInstall)
+**description Installs the GNOME 3 desktop.
+**parameter lang: short language
+**parameter fullInstall: Set to true, if the full desktop with all applications should be installed. Otherwise a minimal desktop will be installed
+**/
 function GNOME3_install($lang, $fullInstall)
 {
 	CLCFG_setDebConfDM('gdm3');
@@ -525,6 +545,9 @@ gdm3 gdm3/daemon_name string /usr/sbin/gdm3
 
 	CLCFG_aptGet('install', $pkgs);
 }
+
+
+
 
 
 /**
