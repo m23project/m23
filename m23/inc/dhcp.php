@@ -12,6 +12,25 @@ define('DHCPD_CONF_FILE', '/m23/dhcp/dhcpd.conf');
 
 
 /**
+**name DHCP_exportDHCPSettingsForExternalDHCPServer()
+**description Exports the DHCP settings of m23 clients that are booting over the network and adds settings for external DHCP servers.
+**/
+function DHCP_exportDHCPSettingsForExternalDHCPServer()
+{
+	$serverIP = getServerIP();
+
+	//Get all host lines of the DHCP config file
+	$lines = shell_exec("sudo grep 'host ' ".DHCPD_CONF_FILE);
+
+	//Add settings for the external DHCP server
+	return(str_replace('hardware ethernet', "option dhcp-server-identifier $serverIP; option root-path \"/\"; next-server $serverIP; hardware ethernet", $lines));
+}
+
+
+
+
+
+/**
 **name DHCP_lineNumberAffterLastClient()
 **description Gets the line number with the last client definition in the dhcpd.conf.
 **returns Line number with the last client definition in the dhcpd.conf.

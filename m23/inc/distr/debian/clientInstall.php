@@ -70,7 +70,7 @@ install needed additional m23 tools on the client
 
 	CLCFG_fetchm23BasicTools();
 
-	CLCFG_copySSLCert();
+	CLCFG_copySSLCert('/mnt/root', ($clientOptions['disableSSLCertCheck'] == 1));
 	/* =====> */ MSR_statusBarIncCommand(2);
 
 

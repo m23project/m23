@@ -203,11 +203,11 @@ function IMG_getAllImagesSel($selName,$default)
 	
 	if (is_array($images))
 		foreach ($images as $image)
-			{
-				$list["name$nr"]=$image[filename]." $I18N_imageExtractedSize: ".$image[extractedSize];
-				$list["val$nr"]=$image[filename];
-				$nr++;
-			};
+		{
+			$list["name$nr"]=$image[filename]." $I18N_imageExtractedSize: ".$image[extractedSize];
+			$list["val$nr"]=$image[filename];
+			$nr++;
+		};
 
 	return(HTML_listSelection($selName,$list,$default));
 };

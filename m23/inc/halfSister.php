@@ -4,6 +4,85 @@ define('HSIMGSTOREDIR',"/m23/data+scripts/distr/halfSister/");
 define('HSIMGHTTPDIR',"/distr/halfSister/");
 
 
+
+
+
+/**
+**name HS_ASSI_getClientSettingsCommand()
+**description Generates the commands to send the client infos to the server (This has the same functionality as MSR_getClientSettingsCommand) if this is an halfSister client to be assimilated.
+**/
+function HS_ASSI_getClientSettingsCommand()
+{
+	echo('
+	if [ -f /tmp/HSClient ]
+	then
+	');
+		HS_getClientSettingsCommand();
+	echo('
+	fi
+	');
+}
+
+
+
+
+
+/**
+**name HS_getClientSettingsCommand()
+**description Generates the commands to send the client infos to the server (This has the same functionality as MSR_getClientSettingsCommand).
+**/
+function HS_getClientSettingsCommand()
+{
+	HS_wrapper('getClientSettingsCommand');
+}
+
+
+
+
+
+/**
+**name HS_ASSI_statusFileCommand()
+**description Generates the commands to send the package infos to the server (This has the same functionality as MSR_statusFileCommand) if this is an halfSister client to be assimilated.
+**/
+function HS_ASSI_statusFileCommand()
+{
+	echo('
+	if [ -f /tmp/HSClient ]
+	then
+	');
+		HS_statusFileCommand();
+	echo('
+	fi
+	');
+}
+
+
+
+
+
+/**
+**name HS_ASSI_prepareClient()
+**description Prepares a halfSister client for assimilisation.
+**/
+function HS_ASSI_prepareClient()
+{
+	$clientParams = CLIENT_getAskingParams();
+	
+	HS_pkgInstallBasePackages();
+	
+	HS_sysSetm23ClientID($clientParams);
+
+	HS_netSetm23SSLCertificate();
+
+	HS_netEnableSSHdAndImportKey();
+
+	HS_sysWriteM23fetchjob();
+}
+
+
+
+
+
 /**
 **name HS_getm23HSAdminPath($release)
 **description Calculates the complete local path (including the file name) to m23HSAdmin for a choosen distribution release.
@@ -150,6 +229,47 @@ function HS_fetchAndExtractOSImage($distr, $arch, $DNSServers, $gateway, $packag
 		\n
 	");
 };
+
+
+
+
+
+/**
+**name HS_fetchm23HSAdminAndm23hwscannerByOS()
+**description Fetches the m23HSAdmin tool and m23hwscanner by detection of the OS.
+**/
+function HS_fetchm23HSAdminAndm23hwscannerByOS()
+{
+	$scrFile = '/tmp/hsfetch.sh';
+
+	//Write a tool fetching script with placeholders
+	echo("cat >> $scrFile << \"HSFETCHEOF\"\n");
+	HS_fetchm23HSAdminAndm23hwscanner('XXXXX');
+	echo("HSFETCHEOF\n");
+
+	echo('
+	#Suse releases
+	if [ -f /etc/SuSE-release ]
+	then
+		#Check for SLED
+		if [ $(grep -c "SUSE Linux Enterprise Desktop" /etc/SuSE-release) -gt 0 ]
+		then
+			maj=$(tr -d "[:blank:]" < /etc/SuSE-release | grep -i VERSION | cut -d"=" -f2)
+			min=$(tr -d "[:blank:]" < /etc/SuSE-release | grep -i PATCHLEVEL | cut -d"=" -f2)
+			sed -i "s/XXXXX/SLED$maj.$min/g" '.$scrFile.'
+			touch /tmp/HSClient
+		fi
+	fi
+
+	if [ -f /tmp/HSClient ]
+	then
+		bash '.$scrFile.'
+	');
+		HS_ASSI_prepareClient();
+	echo('
+	fi
+');
+}
 
 
 

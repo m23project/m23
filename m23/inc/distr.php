@@ -30,6 +30,7 @@ function DISTR_releaseVersionTranslator($release)
 	$r['etch']="4.0";
 	$r['lenny']="5.0";
 	$r['squeeze']="6.0";
+	$r['wheezy']="7.x";
 
 	return(ucfirst($release)." ".$r[$release]);
 }

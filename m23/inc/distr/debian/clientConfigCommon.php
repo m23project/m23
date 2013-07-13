@@ -2075,8 +2075,6 @@ keyboard-configuration keyboard-configuration/model select Generic 105-key (Intl
 keyboard-configuration keyboard-configuration/layoutcode string $lV[country]
 keyboard-configuration keyboard-configuration/store_defaults_in_debconf_db boolean true\" > /tmp/keyboard-configuration.debconf
 
-cp /tmp/consolesetup.debconf /		#DEBUG
-
 debconf-set-selections /tmp/consolesetup.debconf
 debconf-set-selections /tmp/keyboard-configuration.debconf
 
@@ -2900,11 +2898,12 @@ FSTABEOF
 
 
 /**
-**name CLCFG_copySSLCert($rootPath)
+**name CLCFG_copySSLCert($rootPath="/mnt/root", $disableSSLCertCheck = false)
 **description fetches the SSL certificate from the server and copies it to the client
 **parameter rootPath: the path to where the root directory is mounted
+**parameter disableSSLCertCheck: Disables the SSL certificate check of wget.
 **/
-function CLCFG_copySSLCert($rootPath="/mnt/root")
+function CLCFG_copySSLCert($rootPath="/mnt/root", $disableSSLCertCheck = false)
 {
 	$serverIP = getServerIP();
 	$quietWget = ($_SESSION['debug'] ? "": "-qq");
@@ -2964,6 +2963,9 @@ for ($year = 11; $year <= date('y'); $year++)
 	
 	$greps .= "[ `grep -i 'Ubuntu $year.04' $rootPath/etc/issue -c` -gt 0 ] || [ `grep -i 'Ubuntu $year.10' $rootPath/etc/issue -c` -gt 0 ]";
 }
+
+if ($disableSSLCertCheck)
+	$greps .= ' || true';
 
 echo("
 if $greps

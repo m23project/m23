@@ -11,64 +11,47 @@ $password1 = $_POST['password1'];
 $password2 = $_POST['password2'];
 $newadmin = $_POST['newadmin'];
 
+
+
+
 $m23adminHtpasswd = "/m23/etc/.htpasswd";
 $m23phpMyLDAPAdminHtpasswd = "/m23/etc/.phpMyLDAPAdminHtpasswd";
-if( $action == "del" && $sure != "1" )
- {
-  /*Sicherheitsabfrage für löschen Dialog */
-  echo("
-  <table align=\"center\">
-	<tr>
-		<td><div class=\"subtable_shadow\">
-		<table class=\"subtable\" align=\"center\"><tr><td>$I18N_should_admin<span class=\"highlight\"> $name </span>$I18N_get_deleted</td></tr>
-		<tr><td align=\"center\"><a href=\"index.php?page=htaccess&action=del&name=$name&sure=1\">$I18N_yes</a>
-		 		 <a href=\"index.php?page=htaccess\">$I18N_no</a></td></tr></table></div></td><tr></table>");
- }
-elseif( $action == "del" && $sure == "1" )
- {
-	/*Löschen des Users */
-	if(SERVER_delFromHtpasswd($m23adminHtpasswd,$name))
-		{
-			MSG_showInfo("$I18N_admin<span class=\"highlight\"> $name </span> $I18N_was_deleted!");
-			echo("<center><a href=\"index.php?page=htaccess\">$I18N_back</a></center>");
-			BACKUP_delAdmin($name);
-		}
+
+	if( $action == "del" && $sure != "1" )
+	{
+		/*Sicherheitsabfrage für löschen Dialog */
+		echo("
+		<table align=\"center\">
+		<tr>
+			<td><div class=\"subtable_shadow\">
+			<table class=\"subtable\" align=\"center\"><tr><td>$I18N_should_admin<span class=\"highlight\"> $name </span>$I18N_get_deleted</td></tr>
+			<tr><td align=\"center\"><a href=\"index.php?page=htaccess&action=del&name=$name&sure=1\">$I18N_yes</a>
+					<a href=\"index.php?page=htaccess\">$I18N_no</a></td></tr></table></div></td><tr></table>");
+	}
+	elseif( $action == "del" && $sure == "1" )
+	{
+		$m23AdminO = new Cm23Admin($name);
+		$m23AdminO->delete();
+
+		$m23AdminO->showMessages();
+		echo("<center><a href=\"index.php?page=htaccess\">$I18N_back</a></center>");
+	}
 	else
+	{
+		if( $action == "add" )
 		{
-			MSG_showError("$I18N_could_not_delete_admin <span class=\"highlight\"> $name </span>!");
-			echo("<center><a href=\"index.php?page=htaccess\">$I18N_back</a></center>");
-		}
-
-	SERVER_delFromHtpasswd("/etc/backuppc/htpasswd",$name);
-	SERVER_delFromHtpasswd($m23phpMyLDAPAdminHtpasswd,$name);
- }
-
-else{
-
-if( $action == "add" )
-{
-	if( $password1 == $password2 && !empty($password1) )
-		{
-			/* Erstellen eines neuen Users */
-			if(SERVER_addToHtpasswd($m23adminHtpasswd,$newadmin,$password1))
-				{
-					MSG_showInfo("$I18N_admin<span class=\"highlight\"> $newadmin </span> $I18N_was_created.<br><br>");
-					BACKUP_addAdmin($newadmin);
-				}
+			if( $password1 == $password2 && !empty($password1) )
+			{
+				$m23AdminO = new Cm23Admin($newadmin,$password1);
+				$m23AdminO->showMessages();
+			}
 			else
-				MSG_showError("$I18N_could_not_create_admin <span class=\"highlight\"> $newadmin </span>.");
+			{
+				MSG_showError("<span class=\"inputerror\">$I18N_passwords_dont_match.</span><br><br>");
+				echo("<center><a href=\"index.php?page=htaccess\">$I18N_back</a></center>");
+			}
+		
 		}
-	else
-		{
-			MSG_showError("<span class=\"inputerror\">$I18N_passwords_dont_match.</span><br><br>");
-			echo("<center><a href=\"index.php?page=htaccess\">$I18N_back</a></center>");
-		}
-
-	SERVER_addToHtpasswd("/etc/backuppc/htpasswd",$newadmin,$password1);
-	SERVER_addToHtpasswd($m23phpMyLDAPAdminHtpasswd,$newadmin,$password1);
-}
-
-
 ?>
 
 <!-- LAYOUT TABLE -->
@@ -86,21 +69,19 @@ if( $action == "add" )
 
 <?php
 
-$fp = fopen("$m23adminHtpasswd","r");
-$adminleft = countLinesInFile($m23adminHtpasswd); /* Nicht den letzten Admin löschen ;) */
-$counter = 0;
-	while( ! feof($fp) )
-	 {
-		$templine = fgets($fp,1024);
-		$templine = explode(":",$templine);
+	$adminleft = Cm23AdminLister::CountAdmins(); /* Nicht den letzten Admin löschen ;) */
+	$admins = Cm23AdminLister::ListAdmins();
+	$counter = 0;
+
+	foreach ($admins as $admin)
+	{
 		$counter++;
-		if( empty($templine[0]) ) { break; }; //filtert letzte Leerzeile in Datei heraus
 		/* Ausgabe der Benutzer mit Nummerierung */
-		print("<tr><td> $counter. </td><td>  $templine[0] </td>");
-		if( $adminleft > "2")
-		  { print("<td> <a href=\"index.php?page=htaccess&action=del&name=$templine[0]\">$I18N_delete</a> </td></tr>"); }
-		 else
-		  { print("<td> </td></tr>"); }
+		echo("<tr><td> $counter. </td><td> $admin </td>");
+		if ( $adminleft > 2)
+			echo("<td> <a href=\"index.php?page=htaccess&action=del&name=$admin\">$I18N_delete</a> </td></tr>");
+		else
+			echo("<td> </td></tr>");
 	}
 ?>
 </table>

@@ -5,24 +5,11 @@
 	HTML_showFormHeader();
 // 	HTML_showTableHeader();
 	HTML_setPage("developersPlayground");
-	
-	$lang = 'de';
-	$lv = I18N_getLangVars($lang);
-	
-	
-	foreach ($lv as $var => $val)
-	{
-		$val = str_replace('utf', 'UTF', $val);
-		$val = str_replace('UTF8', 'UTF-8', $val);
-		$lv[$var] = $val;
-	}
-	
-	print_r2($lv);
-	
-	
-// 	print(DHCP_calcPXEIP('10.10.150.212'));
+
+
+	print(nl2br(DHCP_exportDHCPSettingsForExternalDHCPServer()));
+
 	exit(0);
-	
 	
 	
 	$poolFromClientGUIO = new CPoolFromClientGUI('m23-ubuntu');

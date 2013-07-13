@@ -2,8 +2,11 @@
 
 class Cm23AdminLister
 {
+	const M23ADMIN_HT_PASSWD = "/m23/etc/.htpasswd";
 
-const M23ADMIN_HT_PASSWD = "/m23/etc/.htpasswd";
+
+
+
 
 /**
 **name Cm23AdminLister::AdminExistsDB($name)
@@ -19,7 +22,11 @@ const M23ADMIN_HT_PASSWD = "/m23/etc/.htpasswd";
 
 		return( $line[0] > 0 );
 	}
-	
+
+
+
+
+
 /**
 **name Cm23AdminLister::AdminExistsHt($name)
 **description checks if an admin with the selected name exists in the m23 password file and returns true if yes, otherwise false
@@ -31,15 +38,20 @@ const M23ADMIN_HT_PASSWD = "/m23/etc/.htpasswd";
 		$fp = fopen(Cm23AdminLister::M23ADMIN_HT_PASSWD,"r");
 
 		while( ! feof($fp) )
-		{	
+		{
 			$templine = fgets($fp,1024);
 			$templine = explode(":",$templine);
 			if ($templine[0] == $name)
 				 return (true);
 			if( empty($templine[0]) ) { break; }; 
 		}
-	return (false);	
+
+		return (false);
 	}
+
+
+
+
 
 /**
 **name Cm23AdminLister::CountAdmins()
@@ -50,7 +62,11 @@ const M23ADMIN_HT_PASSWD = "/m23/etc/.htpasswd";
 	{
 		$number = (countLinesInFile(Cm23AdminLister::M23ADMIN_HT_PASSWD) - 1); //there is an empty line at the end of the file	
 		return( $number );
-	}	
+	}
+
+
+
+
 
 /**
 **name Cm23AdminLister::ListAdmins()
@@ -64,7 +80,7 @@ const M23ADMIN_HT_PASSWD = "/m23/etc/.htpasswd";
 		$counter = 0;
 		$adminlist = array();
 		while( ! feof($fp) )
-		{	
+		{
 			$templine = fgets($fp,1024);
 			$templine = explode(":",$templine);
 			$counter++;
@@ -72,13 +88,7 @@ const M23ADMIN_HT_PASSWD = "/m23/etc/.htpasswd";
 			/* build array using counter for enumeration */
 			$adminlist[$counter] = $templine[0];
 		}
-	return ($adminlist);	
+		return ($adminlist);
 	}
-	
-	
 }
-
-
-
-
 ?>

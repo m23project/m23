@@ -1185,4 +1185,7 @@ $I18N_cssChanged_two = ' geändert.';
 $I18N_cssNotAvailable = 'Das gewählte CSS ist nicht verfügbar.';
 $I18N_languageChangedTo_one = 'Die Sprache wurde auf ';
 $I18N_languageChangedTo_two = ' geändert.';
+
+//13.2
+$I18N_disableSSLCertCheck = 'SSL-Zertifikatsüberprüfung für wget deaktivieren';
 ?>

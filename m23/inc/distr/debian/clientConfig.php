@@ -92,19 +92,25 @@ function CLCFG_addDistributionSpecificOptions($options)
 function CLCFG_showDistributionSpecificOptions($options)
 {
 	include_once("/m23/inc/distr/debian/packages.php");
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 	$options = CLIENT_getSetOption($kernel,"kernel",$options);
 
 	$kernelList = PKG_getKernels("debian",$_POST['SEL_sourcename'],$options['arch']);
 	$kernel = HTML_storableSelection("SEL_kernel", "kernel", $kernelList, SELTYPE_selection, true, $options['kernel'], $options['kernel']);
-
 	$options = CLIENT_getSetOption($kernel,"kernel",$options);
 
+	$disableSSLCertCheck = HTML_storableCheckBox('CB_disableSSLCertCheck', '', 'disableSSLCertCheck', ($options['disableSSLCertCheck'] == 1));
+	$options = CLIENT_getSetOption(($disableSSLCertCheck ? 1 : 0), 'disableSSLCertCheck', $options);
 
 	echo("
 	<tr>
 		<td>Kernel</td>
 		<td colspan=\"2\">".SEL_kernel."</td>
+	</tr>
+	<tr>
+		<td>$I18N_disableSSLCertCheck</td>
+		<td colspan=\"2\">".CB_disableSSLCertCheck."</td>
 	</tr>
 	");
 

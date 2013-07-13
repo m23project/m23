@@ -101,10 +101,8 @@ function ASSI_addUbuntuRoot()
 
 
 /**
-**name ASSI_showClientAddDialog()
-**description sets the last modified time of a client
-**parameter id: id of the client
-**parameter client: name of the client
+**name ASSI_prepareClient()
+**description Prepares a client for assimilisation.
 **/
 function ASSI_prepareClient()
 {
@@ -115,27 +113,32 @@ function ASSI_prepareClient()
 	$clientOptions = CLIENT_getAllAskingOptions();
 
 	echo("
-	export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11
+	if [ ! -f /tmp/HSClient ]
+	then
+		export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11
+	
+		export DEBIAN_FRONTEND=noninteractive
+	
+		".EDIT_addIfNotExists("/etc/apt/sources.list","m23.sourceforge.net/m23debs","deb http://m23.sourceforge.net/m23debs/ ./").
+		"
+		wget -T1 -t1 -q http://m23.sourceforge.net/m23-Sign-Key.asc -O - | apt-key add -
+	
+		apt-get update
+	
+		apt-get -y --force-yes install wget screen sed ssh parted gawk hwsetup hwdata-knoppix m23hwscanner dmidecode m23-initscripts finger debconf-utils");
 
-	export DEBIAN_FRONTEND=noninteractive
+		CLCFG_fetchm23BasicTools("");
+		CIR_writeClientID($clientParams);
+		CLCFG_copySSLCert("");
 
-	".EDIT_addIfNotExists("/etc/apt/sources.list","m23.sourceforge.net/m23debs","deb http://m23.sourceforge.net/m23debs/ ./").
-	"
-	wget -T1 -t1 -q http://m23.sourceforge.net/m23-Sign-Key.asc -O - | apt-key add -
+		CLCFG_setAuthorized_keys(getServerIP(),"/packages/baseSys/authorized_keys");
 
-	apt-get update
+		CLCFG_writeM23fetchjob();
 
-	apt-get -y --force-yes install wget screen sed ssh parted gawk hwsetup hwdata-knoppix m23hwscanner dmidecode m23-initscripts finger debconf-utils");
-
-	CLCFG_fetchm23BasicTools("");
-	CIR_writeClientID($clientParams);
-	CLCFG_copySSLCert("");
-
-	CLCFG_setAuthorized_keys(getServerIP(),"/packages/baseSys/authorized_keys");
-
-	CLCFG_writeM23fetchjob();
-
-	ASSI_addUbuntuRoot();
-	CLCFG_createScreenRC();
+		ASSI_addUbuntuRoot();
+		CLCFG_createScreenRC();
+	echo('
+	fi
+	');
 };
 ?>

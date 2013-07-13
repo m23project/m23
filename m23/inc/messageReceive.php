@@ -329,8 +329,14 @@ function MSR_importDiffFile($outFile, $diffType)
 function MSR_CopyClientPackageStatusCommand()
 {
 	$clientName = CLIENT_getClientName();
-
-	MSR_copyDiffFileFromClient('/var/lib/dpkg/status', "/m23/var/cache/clients/$clientName/packageStatus", 'MSR_copyClientPackageStatus');
+	echo('
+	if [ ! -f /tmp/HSClient ]
+	then
+');
+		MSR_copyDiffFileFromClient('/var/lib/dpkg/status', "/m23/var/cache/clients/$clientName/packageStatus", 'MSR_copyClientPackageStatus');
+	echo('
+	fi
+');
 };
 
 
@@ -775,20 +781,27 @@ function MSR_logCommand($logFile, $show = true)
 function MSR_statusFileCommand()
 {
 	$serverIP = getServerIP();
-
-	echo("
-	mkdir -p /var/cache/m23
-
-	export COLUMNS=3000; export LC_ALL=\"C\"; dpkg --list | tr -s [:blank:] | grep -v '^/' | grep -v '^+' | grep -v '^=' | grep -v '^|' | grep -v '^Desired' | awk '{print $1\" \"$2\" \"$3}' > /var/cache/m23/packagestatus
-
-	echo \"type=pkg&count=`wc -l /var/cache/m23/packagestatus | sed 's/[  ][   ]*//g' | cut -d'/' -f1``cat /var/cache/m23/packagestatus | awk -v ORS='' '{print \"&s\"NR\"=\"$1\"&p\"NR\"=\"$2\"&v\"NR\"=\"$3}' | sed 's/+/%2B/g'` \" > /tmp/packagestatus.post
 	
-	".MSR_getm23clientIDCMD('?')."
+	echo('
+	if [ ! -f /tmp/HSClient ]
+	then
+');
+		echo("
+		mkdir -p /var/cache/m23
 	
-	wget --post-file=/tmp/packagestatus.post https://$serverIP/postMessage.php\$idvar
- ");
+		export COLUMNS=3000; export LC_ALL=\"C\"; dpkg --list | tr -s [:blank:] | grep -v '^/' | grep -v '^+' | grep -v '^=' | grep -v '^|' | grep -v '^Desired' | awk '{print $1\" \"$2\" \"$3}' > /var/cache/m23/packagestatus
 	
-	MSR_genSendCommand('/var/lib/dpkg/status','statusFile');
+		echo \"type=pkg&count=`wc -l /var/cache/m23/packagestatus | sed 's/[  ][   ]*//g' | cut -d'/' -f1``cat /var/cache/m23/packagestatus | awk -v ORS='' '{print \"&s\"NR\"=\"$1\"&p\"NR\"=\"$2\"&v\"NR\"=\"$3}' | sed 's/+/%2B/g'` \" > /tmp/packagestatus.post
+		
+		".MSR_getm23clientIDCMD('?')."
+		
+		wget --post-file=/tmp/packagestatus.post https://$serverIP/postMessage.php\$idvar
+		");
+	
+		MSR_genSendCommand('/var/lib/dpkg/status','statusFile');
+	echo('
+	fi
+');
 };
 
 
@@ -1039,145 +1052,147 @@ function MSR_getClientSettingsCommand()
 	$clientName=CLIENT_getClientName();
 
 	echo("
-
-	echo -n \"type=clientSettings&id=$clientId&clientname=$clientName\" > /tmp/clientSettings.post
- 
-	#get DNS servers
-	awk -v DNR=1 -v ORS=\"\" '/^nameserver/ {print \"&dns\"DNR\"=\"\$2; DNR++; if (DNR ==2) exit;}' /etc/resolv.conf >> /tmp/clientSettings.post
-
-	#get ip, netmask, network and gateway
-	if [ `grep -c netmask /etc/network/interfaces` -gt 0 ]
+	if [ ! -f /tmp/HSClient ]
 	then
-		awk -v ORS=\"\" '/address/ {print(\"&ip=\"$2)}
-		/netmask/ {print(\"&netmask=\"$2)}
-		/gateway/ {print(\"&gateway=\"$2)}
-		' /etc/network/interfaces >> /tmp/clientSettings.post
-	else
-		#Check if the connections are manages by Network Manager
-		if [ -d /etc/NetworkManager/system-connections ]
-		then
-			cat /etc/NetworkManager/system-connections/* | grep addresses | cut -d'=' -f2 | head -1 | awk -vFS=';' -vORS='' '{print(\"&ip=\"\$1\"&netmask=\"\$2\"&gateway=\"\$3)}' >> /tmp/clientSettings.post
-		fi
-	fi
+		echo -n \"type=clientSettings&id=$clientId&clientname=$clientName\" > /tmp/clientSettings.post
 	
-	#get the MAC address
-	LANG=C; ifconfig eth0 | tr -s \"\\t \" | awk -v ORS=\"\" '/HWaddr/ {
-	for (i=1; i < NF; i++)
-	if (\$i == \"/HWaddr/\")
-		break;
-
-	gsub(/:/,\"\",\$i);
-	\$i=tolower(\$i);
-	print (\"&mac=\"\$i);
-	}' >> /tmp/clientSettings.post
-
-	#get the sources.list
-	echo -n \"&sourceslist=\" >> /tmp/clientSettings.post
-	cat /etc/apt/sources.list | sed 's/%/%25/g' | sed 's/\"/%22/g' | sed 's/\\\\\\\\/%5C/g' | sed 's/&/%26/g' >> /tmp/clientSettings.post
-
-	#get the timeZone
-	awk -v ORS=\"\" '{print(\"&timeZone=\"$1)}' /etc/timezone >> /tmp/clientSettings.post
-
-	#check if it's Debian
-	if test `ls /etc/debian_version | wc -l` -gt 0
-	then
-		if test -f /etc/lsb-release
+		#get DNS servers
+		awk -v DNR=1 -v ORS=\"\" '/^nameserver/ {print \"&dns\"DNR\"=\"\$2; DNR++; if (DNR ==2) exit;}' /etc/resolv.conf >> /tmp/clientSettings.post
+	
+		#get ip, netmask, network and gateway
+		if [ `grep -c netmask /etc/network/interfaces` -gt 0 ]
 		then
-			awk -v ORS='' '/DISTRIB_ID=Ubuntu/ {print(\"&distr=ubuntu\")}
-			/DISTRIB_ID=LinuxMint/ {print(\"&distr=ubuntu\")}
-			' /etc/lsb-release >> /tmp/clientSettings.post
+			awk -v ORS=\"\" '/address/ {print(\"&ip=\"$2)}
+			/netmask/ {print(\"&netmask=\"$2)}
+			/gateway/ {print(\"&gateway=\"$2)}
+			' /etc/network/interfaces >> /tmp/clientSettings.post
 		else
-			echo -n \"&distr=debian\" >> /tmp/clientSettings.post
+			#Check if the connections are manages by Network Manager
+			if [ -d /etc/NetworkManager/system-connections ]
+			then
+				cat /etc/NetworkManager/system-connections/* | grep addresses | cut -d'=' -f2 | head -1 | awk -vFS=';' -vORS='' '{print(\"&ip=\"\$1\"&netmask=\"\$2\"&gateway=\"\$3)}' >> /tmp/clientSettings.post
+			fi
 		fi
-	fi
 
-	#get Debian release
-	echo -n \"&release=\" >> /tmp/clientSettings.post
-	cut -d'/' -f2 /etc/debian_version | awk -v ORS='' '{print}' >> /tmp/clientSettings.post
+		#get the MAC address
+		LANG=C; ifconfig eth0 | tr -s \"\\t \" | awk -v ORS=\"\" '/HWaddr/ {
+		for (i=1; i < NF; i++)
+		if (\$i == \"/HWaddr/\")
+			break;
 	
-	#get APT proxy settings
-	awk -v FS='\"' -v ORS=\"\" '/Acquire::(http|ftp)::Proxy/ {
-	gsub(\"http://\",\"\");
-	gsub(\"HTTP://\",\"\");
-	gsub(\"ftp://\",\"\");
-	gsub(\"FTP://\",\"\");
-	print(\"&aptproxy=\"$2); exit;
-	}' /etc/apt/apt.conf.d/70debconf >> /tmp/clientSettings.post
-
-	#get login
-	gawk -v FS=\":\" '(match($0,\"/bin/sh\") || match($0,\"/bin/bash\") || match($0,\"/bin/dash\")) && $3 > 100 {print $1\"_\"$3\"_\"$4}' /etc/passwd > /tmp/users
-
-	rm /tmp/userAmount 2> /dev/null
-
-	for user in `cat /tmp/users`
-	do
-		uname=`echo \$user | cut -d'_' -f1`
-		am=`grep \$uname /etc/group | wc -l`
-		echo \"\$am?\$user\" >> /tmp/userAmount
-	done
-
-	#The login name of the main user is the username with the most group entries
-	echo -n \"&login=\" >> /tmp/clientSettings.post
-	mainUser=`sort -n -r /tmp/userAmount | head -1 | cut -d'?' -f2 | cut -d'_' -f1`
-	echo -n \$mainUser >> /tmp/clientSettings.post
-
-	#Get the fore and family name
-	echo -n \"&forefamilyname=\" >> /tmp/clientSettings.post
-	finger -lp \$mainUser | sed 's/[\\t]/\\n/g' | grep \"^Name:\" | sed 's/Name: //' >> /tmp/clientSettings.post
-
-	#Get the user ID and group ID of the main user
-	echo -n \"&userID=\" >> /tmp/clientSettings.post
-	grep \"^\$mainUser:\" /etc/passwd | cut -d':' -f3 >> /tmp/clientSettings.post
-	echo -n \"&groupID=\" >> /tmp/clientSettings.post
-	grep \"^\$mainUser:\" /etc/passwd | cut -d':' -f4 >> /tmp/clientSettings.post
-
-	rm /tmp/userAmount /tmp/users 2> /dev/null
-
-	#Get the language
-	echo -n \"&language=\" >> /tmp/clientSettings.post
-	#load locale, if present
-	[ -f /etc/default/locale ] && . /etc/default/locale
-	echo \"\$LANG
+		gsub(/:/,\"\",\$i);
+		\$i=tolower(\$i);
+		print (\"&mac=\"\$i);
+		}' >> /tmp/clientSettings.post
+	
+		#get the sources.list
+		echo -n \"&sourceslist=\" >> /tmp/clientSettings.post
+		cat /etc/apt/sources.list | sed 's/%/%25/g' | sed 's/\"/%22/g' | sed 's/\\\\\\\\/%5C/g' | sed 's/&/%26/g' >> /tmp/clientSettings.post
+	
+		#get the timeZone
+		awk -v ORS=\"\" '{print(\"&timeZone=\"$1)}' /etc/timezone >> /tmp/clientSettings.post
+	
+		#check if it's Debian
+		if test `ls /etc/debian_version | wc -l` -gt 0
+		then
+			if test -f /etc/lsb-release
+			then
+				awk -v ORS='' '/DISTRIB_ID=Ubuntu/ {print(\"&distr=ubuntu\")}
+				/DISTRIB_ID=LinuxMint/ {print(\"&distr=ubuntu\")}
+				' /etc/lsb-release >> /tmp/clientSettings.post
+			else
+				echo -n \"&distr=debian\" >> /tmp/clientSettings.post
+			fi
+		fi
+	
+		#get Debian release
+		echo -n \"&release=\" >> /tmp/clientSettings.post
+		cut -d'/' -f2 /etc/debian_version | awk -v ORS='' '{print}' >> /tmp/clientSettings.post
+		
+		#get APT proxy settings
+		awk -v FS='\"' -v ORS=\"\" '/Acquire::(http|ftp)::Proxy/ {
+		gsub(\"http://\",\"\");
+		gsub(\"HTTP://\",\"\");
+		gsub(\"ftp://\",\"\");
+		gsub(\"FTP://\",\"\");
+		print(\"&aptproxy=\"$2); exit;
+		}' /etc/apt/apt.conf.d/70debconf >> /tmp/clientSettings.post
+	
+		#get login
+		gawk -v FS=\":\" '(match($0,\"/bin/sh\") || match($0,\"/bin/bash\") || match($0,\"/bin/dash\")) && $3 > 100 {print $1\"_\"$3\"_\"$4}' /etc/passwd > /tmp/users
+	
+		rm /tmp/userAmount 2> /dev/null
+	
+		for user in `cat /tmp/users`
+		do
+			uname=`echo \$user | cut -d'_' -f1`
+			am=`grep \$uname /etc/group | wc -l`
+			echo \"\$am?\$user\" >> /tmp/userAmount
+		done
+	
+		#The login name of the main user is the username with the most group entries
+		echo -n \"&login=\" >> /tmp/clientSettings.post
+		mainUser=`sort -n -r /tmp/userAmount | head -1 | cut -d'?' -f2 | cut -d'_' -f1`
+		echo -n \$mainUser >> /tmp/clientSettings.post
+	
+		#Get the fore and family name
+		echo -n \"&forefamilyname=\" >> /tmp/clientSettings.post
+		finger -lp \$mainUser | sed 's/[\\t]/\\n/g' | grep \"^Name:\" | sed 's/Name: //' >> /tmp/clientSettings.post
+	
+		#Get the user ID and group ID of the main user
+		echo -n \"&userID=\" >> /tmp/clientSettings.post
+		grep \"^\$mainUser:\" /etc/passwd | cut -d':' -f3 >> /tmp/clientSettings.post
+		echo -n \"&groupID=\" >> /tmp/clientSettings.post
+		grep \"^\$mainUser:\" /etc/passwd | cut -d':' -f4 >> /tmp/clientSettings.post
+	
+		rm /tmp/userAmount /tmp/users 2> /dev/null
+	
+		#Get the language
+		echo -n \"&language=\" >> /tmp/clientSettings.post
+		#load locale, if present
+		[ -f /etc/default/locale ] && . /etc/default/locale
+		echo \"\$LANG
 \$LC_ALL\" | cut -d'_' -f1 | sort -u | tail -1 >> /tmp/clientSettings.post
-
-	#kernel
-	kernelPkg=$(dpkg --get-selections | grep -v deinstall | grep $(uname -r) | grep image | tr -d '[:blank:]' | sed 's/install$//')
-	echo -n \"&kernel=\$kernelPkg\" >> /tmp/clientSettings.post
-
-	#LDAP
-	debconf-get-selections | awk -v ORS=\"\" -v FS=\" \" -v NOBASEDN=1 -v NOLDAPSERVER=1 '
-	(match($0,\"base-dn\") && (match($0,\"libnss-ldap\") || match($0,\"libpam-ldap\")) && NOBASEDN) {NOBASEDN=0; gsub(\"=\",\"%3D\"); print(\"&basedn=\"$4)}
-	(match($0,\"ldap-server\") && (match($0,\"libnss-ldap\") || match($0,\"libpam-ldap\")) && NOLDAPSERVER) {NOLDAPSERVER=0; gsub(\"=\",\"%3D\"); print(\"&ldapserver=\"$4)}' >> /tmp/clientSettings.post
-
-	#Desktop
-	dpkg --get-selections | awk  -v ORS=\"\" '
-	/^kdelibs-data/ {print(\"&desktop=kde\"); DFOUND=1; exit}
-	/^gnome-desktop-data/ {print(\"&desktop=gnome2\"); DFOUND=1; exit}
-	/xfce/ {print(\"&desktop=XFce\"); DFOUND=1; exit}
-	/libx11/ {XFOUND=1}
-	END {
-		if (XFOUND && !DFOUND)
-			print(\"&desktop=X\");
-		if (!XFOUND && !DFOUND)
-			print(\"&desktop=Textmode\")}' >> /tmp/clientSettings.post
-
-	#install & swap partition
-	grep -v '#' /etc/fstab | awk -v ORS=\"\" '
-	{gsub(\"=\",\"%3D\",$1)}
-	$2==\"/\" {print(\"&instPart=\"$1)}
-	$3==\"swap\" {print(\"&swapPart=\"$1)}
-	$2==\"/home\" {print(\"&homePart=\"$1)}
-	' >> /tmp/clientSettings.post
+		
+		#kernel
+		kernelPkg=$(dpkg --get-selections | grep -v deinstall | grep $(uname -r) | grep image | tr -d '[:blank:]' | sed 's/install$//')
+		echo -n \"&kernel=\$kernelPkg\" >> /tmp/clientSettings.post
 	
-	ls -l /home | tr -s \" \" | awk -v ORS=\"\" '/\\/net\\// {gsub(\"/net/\",\"\"); print \"&homePart2=\"$11}' >> /tmp/clientSettings.post
-
-	echo -n \"&arch=\" >> /tmp/clientSettings.post
-	uname -m | awk '
-		/i[3-9]86/ {print(\"i386\")}
-		/x86_64/ {print(\"amd64\")}
-	' >> /tmp/clientSettings.post
-
-	wget -T5 -t0 --post-file /tmp/clientSettings.post https://$serverIP/postMessage.php?m23clientID=$clientId -O /dev/null
+		#LDAP
+		debconf-get-selections | awk -v ORS=\"\" -v FS=\" \" -v NOBASEDN=1 -v NOLDAPSERVER=1 '
+		(match($0,\"base-dn\") && (match($0,\"libnss-ldap\") || match($0,\"libpam-ldap\")) && NOBASEDN) {NOBASEDN=0; gsub(\"=\",\"%3D\"); print(\"&basedn=\"$4)}
+		(match($0,\"ldap-server\") && (match($0,\"libnss-ldap\") || match($0,\"libpam-ldap\")) && NOLDAPSERVER) {NOLDAPSERVER=0; gsub(\"=\",\"%3D\"); print(\"&ldapserver=\"$4)}' >> /tmp/clientSettings.post
+	
+		#Desktop
+		dpkg --get-selections | awk  -v ORS=\"\" '
+		/^kdelibs-data/ {print(\"&desktop=kde\"); DFOUND=1; exit}
+		/^gnome-desktop-data/ {print(\"&desktop=gnome2\"); DFOUND=1; exit}
+		/xfce/ {print(\"&desktop=XFce\"); DFOUND=1; exit}
+		/libx11/ {XFOUND=1}
+		END {
+			if (XFOUND && !DFOUND)
+				print(\"&desktop=X\");
+			if (!XFOUND && !DFOUND)
+				print(\"&desktop=Textmode\")}' >> /tmp/clientSettings.post
+	
+		#install & swap partition
+		grep -v '#' /etc/fstab | awk -v ORS=\"\" '
+		{gsub(\"=\",\"%3D\",$1)}
+		$2==\"/\" {print(\"&instPart=\"$1)}
+		$3==\"swap\" {print(\"&swapPart=\"$1)}
+		$2==\"/home\" {print(\"&homePart=\"$1)}
+		' >> /tmp/clientSettings.post
+		
+		ls -l /home | tr -s \" \" | awk -v ORS=\"\" '/\\/net\\// {gsub(\"/net/\",\"\"); print \"&homePart2=\"$11}' >> /tmp/clientSettings.post
+	
+		echo -n \"&arch=\" >> /tmp/clientSettings.post
+		uname -m | awk '
+			/i[3-9]86/ {print(\"i386\")}
+			/x86_64/ {print(\"amd64\")}
+		' >> /tmp/clientSettings.post
+	
+		wget -T5 -t0 --post-file /tmp/clientSettings.post https://$serverIP/postMessage.php?m23clientID=$clientId -O /dev/null
+	fi
 	");
 };
 

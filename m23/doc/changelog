@@ -1,3 +1,36 @@
+2013-07-13
+cha: ASSI_prepareClient, MSR_getClientSettingsCommand, MSR_CopyClientPackageStatusCommand, MSR_statusFileCommand: Now are checking, if a halfSister compatible distribution was found and skips the Debian-based distributions setup.
+new: HS_fetchm23HSAdminAndm23hwscannerByOS: Fetches the m23HSAdmin tool and m23hwscanner by detection of the OS.
+new: HS_ASSI_prepareClient: Prepares a halfSister client for assimilisation.
+new: HS_ASSI_statusFileCommand: Generates the commands to send the package infos to the server (This has the same functionality as MSR_statusFileCommand) if this is an halfSister client to be assimilated.
+new: HS_getClientSettingsCommand: Generates the commands to send the client infos to the server (This has the same functionality as MSR_getClientSettingsCommand).
+new: HS_ASSI_getClientSettingsCommand: Generates the commands to send the client infos to the server (This has the same functionality as MSR_getClientSettingsCommand) if this is an halfSister client to be assimilated.
+cha: m23AssimilateInstall.php: Now uses halfSister functions too.
+new: DHCP_exportDHCPSettingsForExternalDHCPServer: Exports the DHCP settings of m23 clients that are booting over the network and adds settings for external DHCP servers.
+cha: de/en/fr client_distr.hlp, manageImageFiles.hlp, client_createImage.hlp: Improved help files concerning imaging.
+new: exportDHCPSettings.php: Calls DHCP_exportDHCPSettingsForExternalDHCPServer.
++++++
+2013-07-10
+patch 100668: More adjustments for Debian 7.
+cha: Package source "wheezy" now includes Triniy desktop 3.5.13.
+cha: exportDBsourceslist.php: Now doesn't export "wheezy+squeeze+TDE" anymore.
++++++
+2013-07-07
+cha: htaccess.php: Now uses the mothods of the classes Cm23AdminLister and Cm23Admin.
+cha: createInitrd: Now creates empty *initrd.img files to satisfy depmod of Debian Wheezy.
++++++
+2013-07-06
+fix: createRFSBins: Now processes links correctly.
+cha: downloadExtractRFS / createRFSBins: Switched to Debian Wheezy.
++++++
+2013-06-27
+cha: CLCFG_copySSLCert: Now has a new option to disable the SSL certificate check of wget.
+cha: CLCFG_showDistributionSpecificOptions: Added checkbox to disable the SSL certificate check of wget.
+cha: debin / clientInstall.php: 
++++++
+2013-06-25
+cha: DISTR_releaseVersionTranslator: Added "wheezy".
++++++
 2013-06-24
 new: debian-update-howto.tex: Mini howto for 
 patch 100667: Added LXDE, GNOME 3 and TDE for Debian 7.
