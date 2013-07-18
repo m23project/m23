@@ -14,21 +14,52 @@ Lösungen:
 </ul>
 
 <h3>Der andere DHCP-Server kann NICHT deaktiviert werden</h3>
-In diesem Falle müssen Sie die Konfiguration des anderen DHCP-Servers per Hand anpassen und ggf. einen TFTP-Server einrichten. Wie die Konfiguration genau vorzunehmen ist, entnehmen Sie bitte der Dokumentation Ihres DHCP- und des TFTP-Servers. 
+In diesem Falle müssen Sie die Konfiguration des anderen DHCP-Servers per Hand anpassen und ggf. einen TFTP-Server einrichten. Wie die Konfiguration genau vorzunehmen ist, entnehmen Sie bitte der Dokumentation Ihres DHCP- und des TFTP-Servers.
 
 <ol>
-	<li>In der m23-Weboberfläche wählen Sie beim Anlegen eines neuen Clients <i>"gPXE/DHCP"</i> unter <i>"$I18N_boottype"</i> aus. Vergeben Sie bei <i>"$I18N_client_name"</i> den Rechnernamen, den Ihr DHCP-Server dem Client zuweist.</li>
+</ol>
+
+<h4>ISC DHCP server</h4>
+Handelt es sich bei dem anderen DHCP-Server um den <a href="http://www.isc.org/downloads/dhcp/">ISC DHCP server</a>, so können Sie diesen anstelle des m23-DHCP-Servers verwenden.
+
+<!-- v13.2 begin-->
+<ol>
+	<li>In der m23-Weboberfläche wählen Sie beim Anlegen eines neuen Clients <i>"PXE"</i> unter <i>"$I18N_boottype"</i> aus. Vergeben Sie bei <i>"$I18N_client_name"</i> den Rechnernamen, den Ihr DHCP-Server dem Client zuweist.</li>
+
+	<li>Deaktivieren Sie den DHCP-Server auf dem m23-Server: Editieren Sie die Datei <pre>/etc/default/isc-dhcp-server</pre> auf dem m23-Server, kommentieren die Zeile <pre>INTERFACES=...</pre> mit einer vorangestellten "#" aus und fügen darunter die neue Zeile <pre>INTERFACES=""</pre> ein. Starten Sie anschließend den DHCP-Server mit <pre>/etc/init.d/isc-dhcp-server restart</pre> neu. Dieser läuft dann zwar, beantwortet aber keine Anfragen mehr.</li>
+	
+	<li>Setzen Sie in der Konfiguration Ihres DHCP-Servers die Option <pre>use-host-decl-names on</pre> für die Gruppe, die die m23-Clients enthalten soll.</li>
+	
+	<li>Aktualisieren Sie m23-Gruppe in der Konfiguration Ihres DHCP-Servers regelmäßig (z.B. mittels cronjob oder anderer Verfahren) mit den Daten des m23-Servers von der URL <pre>http://&lt;m23-Server-IP&gt;/exportDHCPSettings.php</pre>. Diese URL stellt die Konfiguration in "ISC DHCP server"-Notation für m23-Clients, die über das Netzwerk booten sollen, bereit. Die Gruppe mit den m23-Clients könnte dann wie folgt aussehen:
+	<code>
+group {
+use-host-decl-names on;
+&lt;Aus exportDHCPSettings.php eingefügte Daten&gt;
+}
+	</code>
+
+	
+	
+	</li>
+</ol>
+
+
+<!-- v13.2 end-->
+
+<h4>Anderer DHCP-Server</h4>
+
+<ol>
+	<li>In der m23-Weboberfläche wählen Sie beim Anlegen eines neuen Clients <!--cha v13.2--><i>"PXE"</i><!--cha v13.2 end--> unter <i>"$I18N_boottype"</i> aus. Vergeben Sie bei <i>"$I18N_client_name"</i> den Rechnernamen, den Ihr DHCP-Server dem Client zuweist.</li>
 
 	<li>Konfigurieren Sie Ihren DHCP-Server so, daß der m23-Client den in der m23-Weboberfläche angegebenen Rechnernamen zugewiesen bekommt.</li>
 
 <!--cha v13.1-->
 	<li>Der PXE-Kernel, den Ihr DHCP-Server an den m23-Client übermittelt, muß <b>pxelinux.0</b> heißen. TFTP-Server ist der m23-Server.</li>
-
-	<li>Ihren DHCP-Server müssen Sie zudem so konfigurieren, daß er an den m23-Client folgende Werte als Kernel-Parameter verteilt:
-		<pre>m23clientID="<b>&lt;m23-Clientnummer&gt;</b>" m23server="<b>&lt;m23-Server-Hostname oder IP&gt;</b>" devfs=nomount vga=normal load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=<b>45000</b> initrd=initrd.gz root=/dev/ram0 rw</pre>
-		Ersetzen Sie hierbei <b>&lt;m23-Clientnummer&gt;</b> durch die Nummer der m23-Clients (zu finden im <i>"$I18N_overview_clients"</i> in der URL des jeweiligen Clients) und <b>&lt;m23-Server-Hostname oder IP&gt;</b> durch den vom m23-Client auflösbaren Rechnernamen (<a href="http://de.wikipedia.org/wiki/Fully-Qualified_Host_Name">FQHN</a>) des m23-Servers oder durch dessen IP. Sie müssen zudem die <b>45000</b> durch den in der Datei /m23/inc/kernelRamDisk.inc angegebenen Wert ersetzen.
-	</li>
 <!--cha v13.1 end-->
+
+<!-- v13.2 begin-->
+	<li>Konfigurieren Sie den DHCP-Server so, daß dieser den m23-Clients als Herkunfts-IP die IP der m23-Servers übermittelt und .</li>
+<!-- v13.2 end-->
 
 	<li>Sollte sich der DHCP-Server nicht so einrichten lassen, so müssen Sie ggf. einen eigenen TFTP-Server auf demselben Rechner einrichten, der auch Ihren DHCP-Server beinhaltet. Als Basis für die Einrichtung des TFTPs können Sie die Konfigurationsdateien aus dem Verzeichnis /m23/tftp/ verwenden.</li>
 </ol>

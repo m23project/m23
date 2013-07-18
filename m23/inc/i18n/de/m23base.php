@@ -1188,4 +1188,5 @@ $I18N_languageChangedTo_two = ' geändert.';
 
 //13.2
 $I18N_disableSSLCertCheck = 'SSL-Zertifikatsüberprüfung für wget deaktivieren';
+$I18N_exportSelectedPackages="Vorgemerkte Pakete exportieren";
 ?>

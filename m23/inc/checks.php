@@ -21,6 +21,7 @@ $*/
 define('CONF_ALLOWEDCHARACTERS','#?.,+*=@äüöÄÜÖß\!@:\-/_ )(');
 define('CC_clientname','S64');
 define('CC_client',CC_clientname);
+define('CC_clientOrEmpty','se64');
 define('CC_language','s5');
 define('CC_status','i');
 define('CC_statusOrEmpty','ie');

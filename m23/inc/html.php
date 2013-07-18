@@ -14,6 +14,17 @@ define('H_AJAXAUTOSUBMIT_VALUE','submit');
 
 
 
+function HTML_downloadButton($htmlName, $label, $url)
+{
+
+	define($htmlName,'<a href="'.$url.'" class="buttondeko">'.$label.'</a>
+');
+}
+
+
+
+
+
 /**
 **name HTML_sourceViewer($htmlName, $code, $highlighting)
 **description Creates a source code viewer area with syntax highlighting.

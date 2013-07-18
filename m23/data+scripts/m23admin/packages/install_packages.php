@@ -591,6 +591,8 @@ if (!$isUpdate)
 				}
 		};
 
+	HTML_downloadButton('DL_exportSelectedPackages', $I18N_exportSelectedPackages, '/m23admin/packages/exportSelectedPackages.php?client='.$client);
+
 	//draw package selection save dialog
 	
 	//(de)install mode
@@ -614,21 +616,24 @@ if (!$isUpdate)
 		<input type=\"submit\" name=\"BUT_saveSelectedPackages\" value=\"$I18N_save\"><br>
 		$I18N_package_selection 
 		".PKG_showAllPackageSelections("SEL_packageSelection",$packageSelectionName)."&nbsp;
-		<input type=\"submit\" name=\"BUT_deletePackageSelection\" value=\"$I18N_delete\">
+		<input type=\"submit\" name=\"BUT_deletePackageSelection\" value=\"$I18N_delete\"><br>
 		");
-		
-?>
 
-<script language=JavaScript>
-set(1);
-</script>
+	echo('
+	<script language=JavaScript>
+		set(1);
+	</script>
+	');
 
+	if (!$isUpdate || $isPackageSelection)
+		echo('<br>'.DL_exportSelectedPackages);
 
-<BR><BR>
-</center>
-
-<?PHP
 	HTML_showFormEnd();
+
+	echo('
+	<BR><BR>
+	</center>
+	');
 
 	if ($isGroup && !$isPackageSelection)
 		GRP_HTMLBackToOverview();

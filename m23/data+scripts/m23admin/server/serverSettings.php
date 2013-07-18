@@ -135,13 +135,13 @@
 	<div class="subtable_shadow">
 	<table align="center" class="subtable" cellspacing="10">
 		<tr>
-			<td align="center">
+<!--			<td align="center">
 				<a href="index.php?page=capture#serverHacks">
 					<img src="/gfx/keyboard.png" border="0">
 					<img src="<?PHP echo(CAPTURE_captureImg());?>" border="0"><br>
 					<?PHP echo($I18N_acquireFormularData);?>
 				</a>
-			</td>
+			</td>-->
 
 			<td align="center">
 				<a href="/m23admin/phpMyAdmin/" target="_blank">

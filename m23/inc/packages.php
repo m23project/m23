@@ -6,6 +6,29 @@ $*/
 
 
 
+/**
+**name PKG_exportSelectedPackages($client)
+**description Exports the wait4acc/selected packages of a client.
+**parameter client: Name of the client or empty.
+**/
+function PKG_exportSelectedPackages($client)
+{
+	CHECK_FW(CC_clientOrEmpty, $client);
+	$out = '';
+	$sql = "SELECT package,params,normalPackage,id,installedSize,priority FROM `clientjobs` WHERE client='$client' AND status='wait4acc' ORDER BY package, normalPackage";
+	$result = DB_query($sql); //FW ok
+
+	while ($line = mysql_fetch_array($result))
+	{
+		if (isset($line['normalPackage']{0}))
+			$out .= $line['normalPackage'].' ';
+	}
+
+	return(rtrim($out));
+};
+
+
+
 
 
 /**
