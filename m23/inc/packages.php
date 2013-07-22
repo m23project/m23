@@ -6,6 +6,39 @@ $*/
 
 
 
+
+
+/**
+**name PKG_importSelectedPackagesFromFile($client, $file)
+**description Imports space-seperated packages from a file and adds them to the wait4acc/selected packages of a client.
+**parameter client: Name of the client or empty.
+**parameter file: Name of the file with full path containing space-seperated packages.
+**/
+function PKG_importSelectedPackagesFromFile($client, $file)
+{
+	CHECK_FW(CC_clientOrEmpty, $client);
+	if (!file_exists($file))
+		return(false);
+
+	//Get the space-seperated packages from the file and generate an array
+	$packages = explode(' ',file_get_contents($file));
+
+	//Run thru the packages
+	foreach ($packages as $package)
+	{
+		CHECK_FW(CC_package, $package);
+	
+		$sqlInsert = "INSERT INTO `clientjobs` (`client` , `package` , `priority` , `status` , `params` , `normalPackage` , `installedSize`) VALUES ('$client', 'm23normal', 25, 'wait4acc', '', '$package', 0)";
+
+		DB_query($sqlInsert);
+	}
+	return(true);
+};
+
+
+
+
+
 /**
 **name PKG_exportSelectedPackages($client)
 **description Exports the wait4acc/selected packages of a client.

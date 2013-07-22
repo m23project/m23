@@ -35,6 +35,15 @@
 		PKG_deletePackageselection($_POST[SEL_packageSelection]);
 
 
+
+	$selectedPackagesFile = HTML_uploadFile('UP_importSelectedPackages', $I18N_fileWithExportedSelectedPackages, 5242880);
+	
+	if (is_string($selectedPackagesFile))
+	{
+		PKG_importSelectedPackagesFromFile($client, $selectedPackagesFile);
+		unlink($selectedPackagesFile);
+	}
+
 	//Change title ($actionStr), button label and help page according to the choosen action
 	switch ($action)
 		{
@@ -591,7 +600,8 @@ if (!$isUpdate)
 				}
 		};
 
-	HTML_downloadButton('DL_exportSelectedPackages', $I18N_exportSelectedPackages, '/m23admin/packages/exportSelectedPackages.php?client='.$client);
+	HTML_urlButton('DL_exportSelectedPackages', $I18N_exportSelectedPackages, '/m23admin/packages/exportSelectedPackages.php?client='.$client);
+
 
 	//draw package selection save dialog
 	
@@ -626,7 +636,7 @@ if (!$isUpdate)
 	');
 
 	if (!$isUpdate || $isPackageSelection)
-		echo('<br>'.DL_exportSelectedPackages);
+		echo('<br>'.DL_exportSelectedPackages.'<br>'.UP_importSelectedPackages);
 
 	HTML_showFormEnd();
 

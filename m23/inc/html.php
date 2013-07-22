@@ -14,10 +14,94 @@ define('H_AJAXAUTOSUBMIT_VALUE','submit');
 
 
 
-function HTML_downloadButton($htmlName, $label, $url)
+/**
+**name HTML_uploadFile($htmlName,$label,$maxFileSize)
+**description Shows a dialog for uploading image files.
+**parameter htmlName: Name of the HTML element
+**parameter label: The visual naming of the HTML element.
+**parameter maxFileSize: The maximum allowed filesize in bytes.
+**returns The full path to the uploaded file or false in case of an error.
+**/
+function HTML_uploadFile($htmlName,$label,$maxFileSize)
 {
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	clearstatcache();
+	$visibleSize=sprintf("%.2f",$maxFileSize / 1048576);
+	
+	$htmlBUTName = "BUT_UL_$htmlName";
+	
+	HTML_submitDefine($htmlBUTName, $I18N_upload);
+	
+	define($htmlName,'
+		<table>
+			<tr>
+				<td valign="top">
+					'.$label.' ('.$I18N_maximalAllowedFileSize.': '.$visibleSize.' MB)<br>
+					<input type="hidden" name="MAX_FILE_SIZE" value="'.$maxFileSize.'">
+					<input name="'.$htmlName.'" type="file" size="" maxlength="'.$maxFileSize.'" accept="text/*">
+					'.constant($htmlBUTName).'
+				</td>
+			</tr>
+		</table>
+		');
 
-	define($htmlName,'<a href="'.$url.'" class="buttondeko">'.$label.'</a>
+	if (HTML_submitCheck($htmlBUTName))
+	{
+		//if the element wan't posted before => don't try to check its value.
+		if (!isset($_FILES[$htmlName]))
+			return(false);
+
+		//If the dialog was called first, there is no tmp_name => don't try to use the file
+		if (!isset($_FILES[$htmlName]['tmp_name']{0}))
+			return(false);
+
+		//try 5 times to find a random filename that isn't used
+		$newFileFound=false;
+		for ($i=0; $i < 5; $i ++)
+		{
+			$fullName="/m23/tmp/".md5(uniqid(mt_rand(), true));
+			if (!file_exists($fullName))
+			{
+				$newFileFound=true;
+				break;
+			}
+		}
+
+		//show an error message or move the uploaded file to the new filename
+		if ($newFileFound)
+			move_uploaded_file($_FILES[$htmlName]['tmp_name'],$fullName);
+		else
+		{
+			MSG_showError($I18N_errorFileExists);
+			return(false);
+		};
+
+		//check if the file was uploaded correctly
+		if (filesize($fullName) != $_FILES[$htmlName]['size'])
+		{
+			unlink($fullName);
+			MSG_showError($I18N_errorUploadSizeMismatch);
+			return(false);
+		};
+
+		return($fullName);
+	}
+	else
+		return(false);
+};
+
+
+
+/**
+**name HTML_urlButton($htmlName, $label, $url)
+**description Defines a link that appears like a button.
+**parameter htmlNames: Name of the constant.
+**parameter label: Label of the button.
+**parameter url: The URL where the link button should point to.
+**/
+function HTML_urlButton($htmlName, $label, $url)
+{
+	define($htmlName,'<a href="'.$url.'" class="linkAsButton">'.$label.'</a>
 ');
 }
 
@@ -1430,7 +1514,7 @@ function HTML_showFormHeader($addAction="",$method="post")
 {
 // 	$_SESSION = array();
 
-	echo("<form method=\"$method\" action=\"index.php$addAction\" name=\"htmlform\" id=\"htmlformID\">".'
+	echo("<form method=\"$method\" action=\"index.php$addAction\" name=\"htmlform\" id=\"htmlformID\" enctype=\"multipart/form-data\">".'
 	<script language="javascript">document.write(\'<input type="hidden" name="javaScriptEnabled" value="on">\');</script>');
 
 	$sessionFromPost = unserialize(urldecode($_POST['MSESS_variables']));

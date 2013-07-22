@@ -468,15 +468,19 @@ div#eselinhalt {
 	background-color:	#ffffff; 
 }
 
-/*BUTTONS*/
-input[type="submit"], .buttondeko {
-	color: 			#3f72ab;
+/*BUTTONS and Links looking like buttons*/
+input[type="submit"], .linkAsButton, .linkAsButton:link {
+	color: 			#3f72ab !important;
 	font-weight:		bold;
 	-moz-border-radius:	14px;
 	-webkit-border-radius: 14px;
 	border-radius: 		14px;
 	border: 4px double #C4DCFC;
 	cursor: 		pointer;
+	padding: 0 6;
+	font-size: 14px;
+	line-height: 1.3em;
+	font-family: Liberation Sans, Arial, Verdana, Helvetica, sans-serif;
 	background: rgb(255,255,255); /* Old browsers */
 	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(243,243,243,1) 50%, rgba(237,237,237,1) 51%, rgba(255,255,255,1) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(50%,rgba(243,243,243,1)), color-stop(51%,rgba(237,237,237,1)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
@@ -487,15 +491,17 @@ input[type="submit"], .buttondeko {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 }
 
-input[type="submit"]:hover, .buttondeko:hover {
+input[type="submit"]:hover, .linkAsButton:hover {
 	color: 			#295996;
 	border: 4px double #79abec;
 	text-shadow: 	0px 0px 10px #79abec;
+	text-decoration: none;
 }
 
-input[type="submit"]:active, .buttondeko:active {
+input[type="submit"]:active, .linkAsButton:active {
 	color: 			#295996;
 	text-shadow: none;
+	text-decoration: none;
 	background: rgb(224,224,224); /* Old browsers */
 	background: -moz-linear-gradient(top, rgba(224,224,224,1) 0%, rgba(214,214,214,1) 50%, rgba(209,209,209,1) 51%, rgba(224,224,224,1) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(224,224,224,1)), color-stop(50%,rgba(214,214,214,1)), color-stop(51%,rgba(209,209,209,1)), color-stop(100%,rgba(224,224,224,1))); /* Chrome,Safari4+ */

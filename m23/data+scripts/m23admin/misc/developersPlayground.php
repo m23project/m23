@@ -6,8 +6,9 @@
 // 	HTML_showTableHeader();
 	HTML_setPage("developersPlayground");
 
+	print(serialize(HTML_uploadFile('UP_text','Textdatei',300000)));
 
-	print(nl2br(DHCP_exportDHCPSettingsForExternalDHCPServer()));
+	print(UP_text);
 
 	exit(0);
 	

@@ -183,9 +183,7 @@ function MASS_showFileFormatDialog($EGKparams)
 	
 	//DB file is stored to disk: now define the columns
 	if (!empty($DBfileName))
-		{
-			MASS_showTableDefinition($EGKparams,$DBfileName);
-		};
+		MASS_showTableDefinition($EGKparams,$DBfileName);
 	
 	//show upload dialog, if the user sees the page first
 	if (empty($DBfileName))
