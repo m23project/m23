@@ -1,0 +1,2 @@
+<!-- v12.3--><u>Changing the package priority</u>
+Packages or jobs are executed following the order of their priority (small numbers preceed higher numbers) on the client. If you would like to change the priority, select the desired packages and enter a new value for their priority into the field next to  <i>"$I18N_changePackagePriority"</i>. When you are finished, click on <i>"$I18N_changePackagePriority"</i>. If necessary, repeat the process for further jobs/packages.<!-- end v12.3-->

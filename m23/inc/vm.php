@@ -1352,30 +1352,30 @@ function VM_parseVBOXNic($param)
 		$varVal = explode(": ",$line);
 
 		switch($varVal[0])
-			{
-				case "Attachment":
-					//Get the part between the two "'". This is the physical network card.
-					$tmp = explode("'",$varVal[1]);
-					$out['netDev'] = $tmp[1];
-					
-					//Check if the virtual network device is of the type "host interface" (other types are not supported at the moment)
-					if (!(strpos($tmp[0],"Host Interface") === false))
-						$out['netType'] = VM_NETTYPE_HOSTINTERFACE;
-					else
-						$out['netType'] = false;
-				break;
+		{
+			case "Attachment":
+				//Get the part between the two "'". This is the physical network card.
+				$tmp = explode("'",$varVal[1]);
+				$out['netDev'] = $tmp[1];
+				
+				//Check if the virtual network device is of the type "host interface" (other types are not supported at the moment)
+				if (!(strpos($tmp[0],"Host Interface") === false))
+					$out['netType'] = VM_NETTYPE_HOSTINTERFACE;
+				else
+					$out['netType'] = false;
+			break;
 
-				case "Cable connected":
-					if ($varVal[1] === "on")
-						$out['cable'] = VM_NET_CONNECTED;
-					else
-						$out['cable'] = VM_NET_DISCONNECTED;
-				break;
+			case "Cable connected":
+				if ($varVal[1] === "on")
+					$out['cable'] = VM_NET_CONNECTED;
+				else
+					$out['cable'] = VM_NET_DISCONNECTED;
+			break;
 
-				case "Reported speed":
-					$out['speed'] = $varVal[1];
-				break;
-			}
+			case "Reported speed":
+				$out['speed'] = $varVal[1];
+			break;
+		}
 	}
 	return($out);
 }

@@ -16,8 +16,7 @@ Now you have preselected packages for installation. <!-- v1.5-->A green check ma
 
 Install the packages with a click on <i>"$I18N_install_selected"</i>.
 
-<!-- v12.3--><u>Changing the package priority</u>
-Packages or jobs are executed following the order of their priority (small numbers preceed higher numbers) on the client. If you would like to change the priority, select the desired packages and enter a new value for their priority into the field next to  <i>"$I18N_changePackagePriority"</i>. When you are finished, click on <i>"$I18N_changePackagePriority"</i>. If necessary, repeat the process for further jobs/packages.<!-- end v12.3-->
+helpInclude("packagePriority.inc");
 
 <!-- v1.3-->
 <u>Installation preview</u>
@@ -25,4 +24,4 @@ Before you start the real installation, you can test what will happen during ins
 <!--end v1.3--><!-- v1.5-->
 An installation preview works for a single client only.<!--end v1.5-->
 
-helpInclude("packageSelections.inc");
+helpInclude("packageSelectionsHint.inc");

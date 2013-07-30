@@ -16,13 +16,10 @@ Lösungen:
 <h3>Der andere DHCP-Server kann NICHT deaktiviert werden</h3>
 In diesem Falle müssen Sie die Konfiguration des anderen DHCP-Servers per Hand anpassen und ggf. einen TFTP-Server einrichten. Wie die Konfiguration genau vorzunehmen ist, entnehmen Sie bitte der Dokumentation Ihres DHCP- und des TFTP-Servers.
 
-<ol>
-</ol>
-
-<h4>ISC DHCP server</h4>
+<!-- v13.2 begin-->
+<h4>ISC DHCP Server</h4>
 Handelt es sich bei dem anderen DHCP-Server um den <a href="http://www.isc.org/downloads/dhcp/">ISC DHCP server</a>, so können Sie diesen anstelle des m23-DHCP-Servers verwenden.
 
-<!-- v13.2 begin-->
 <ol>
 	<li>In der m23-Weboberfläche wählen Sie beim Anlegen eines neuen Clients <i>"PXE"</i> unter <i>"$I18N_boottype"</i> aus. Vergeben Sie bei <i>"$I18N_client_name"</i> den Rechnernamen, den Ihr DHCP-Server dem Client zuweist.</li>
 
@@ -30,7 +27,7 @@ Handelt es sich bei dem anderen DHCP-Server um den <a href="http://www.isc.org/d
 	
 	<li>Setzen Sie in der Konfiguration Ihres DHCP-Servers die Option <pre>use-host-decl-names on</pre> für die Gruppe, die die m23-Clients enthalten soll.</li>
 	
-	<li>Aktualisieren Sie m23-Gruppe in der Konfiguration Ihres DHCP-Servers regelmäßig (z.B. mittels cronjob oder anderer Verfahren) mit den Daten des m23-Servers von der URL <pre>http://&lt;m23-Server-IP&gt;/exportDHCPSettings.php</pre>. Diese URL stellt die Konfiguration in "ISC DHCP server"-Notation für m23-Clients, die über das Netzwerk booten sollen, bereit. Die Gruppe mit den m23-Clients könnte dann wie folgt aussehen:
+	<li>Aktualisieren Sie die m23-Gruppe in der Konfiguration Ihres DHCP-Servers regelmäßig (z.B. mittels cronjob oder anderer Verfahren) mit den Daten des m23-Servers von der URL <pre>http://&lt;m23-Server-IP&gt;/exportDHCPSettings.php</pre>. Diese URL stellt die Konfiguration in "ISC DHCP server"-Notation für m23-Clients, die über das Netzwerk booten sollen, bereit. Die Gruppe mit den m23-Clients könnte dann wie folgt aussehen:
 	<code>
 group {
 use-host-decl-names on;
@@ -58,7 +55,7 @@ use-host-decl-names on;
 <!--cha v13.1 end-->
 
 <!-- v13.2 begin-->
-	<li>Konfigurieren Sie den DHCP-Server so, daß dieser den m23-Clients als Herkunfts-IP die IP der m23-Servers übermittelt und .</li>
+	<li>Konfigurieren Sie den DHCP-Server so, daß dieser den m23-Clients als Herkunfts-IP die IP des m23-Servers übermittelt.</li>
 <!-- v13.2 end-->
 
 	<li>Sollte sich der DHCP-Server nicht so einrichten lassen, so müssen Sie ggf. einen eigenen TFTP-Server auf demselben Rechner einrichten, der auch Ihren DHCP-Server beinhaltet. Als Basis für die Einrichtung des TFTPs können Sie die Konfigurationsdateien aus dem Verzeichnis /m23/tftp/ verwenden.</li>

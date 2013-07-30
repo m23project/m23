@@ -1,0 +1,2 @@
+<!-- v12.3--><u>Paketpriorität ändern</u>
+Pakete bzw. Aufträge werden in der Reihenfolge ihrer Priorität (kleine Nummern vor höheren) auf dem Client ausgeführt. Möchten Sie die Priorität ändern, so wählen Sie die gewünschten Pakete aus und geben Sie in das Feld neben <i>"$I18N_changePackagePriority"</i> den neuen Prioritätswert ein. Klicken Sie anschließend auf <i>"$I18N_changePackagePriority"</i>. Wiederholen Sie ggf. den Vorgang für weitere Aufträge.<!-- end v12.3-->

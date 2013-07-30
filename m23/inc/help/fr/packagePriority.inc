@@ -1,0 +1,2 @@
+<!-- v12.3--><u>Changer la priorité des paquets</u>
+Les paquets et les tâches seront exécutés dans l'ordre de leur priorité (les petits chiffres avant les grands) sur le poste client. Si vous voudriez changer la priorité, sélectionnez les paquets souhaités et entrez la nouvelle valeur de la priorité dans la case à côté de <i>&laquo;$I18N_changePackagePriority&raquo;</i>. Enfin, cliquez sur <i>&laquo;$I18N_changePackagePriority&raquo;</i>. Le cas échéant, répétez le procès pour des autres tâches/paquets.<!-- end v12.3-->

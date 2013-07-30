@@ -1,124 +1,131 @@
 <?PHP
-	//first the client name is fetched with GET, afterwards with POST
-	if (empty($_GET['client']))
-		$client=$_POST['client'];
-	else
-		$client = $_GET['client'];
+	//Get the client name, the client's ID and current action (deinstall, update, ...) first by fetching with GET, afterwards with POST
+	$client = (isset($_GET['client']) ? $_GET['client'] : $_POST['HID_client']);
+	$id = (empty($_GET['id']) ? $_POST['HID_id'] : $_GET['id']);
+	$action = (isset($_GET['action']) ? $_GET['action'] : $_POST['HID_action']);
 
-	//Get client's ID and current action (deinstall, update, ...)
-	$id = (empty($_GET['id']) ? $_POST['id'] : $_GET['id']);
-	$action = (isset($_GET['action']) ? $_GET['action'] : $_POST['action']);
 
+
+	//Group variables
 	$isGroup = false;
 	$isUpdate = false;
-	$isPackageSelection = false;
 	$groups=array();
 
+
+	//define radio buttons for selecting the update method
+	$updateTypesA['complete'] = $I18N_fullUpdate;
+	$updateTypesA['normal'] = $I18N_normalUpdate;
+	$updateType = HTML_selection('RB_updateType', $updateTypesA, SELTYPE_radio, false, 'complete');
+
+
+
+	//Package selections
+	$isPackageSelection = false;
+
 	//try to get the package selection name from the input save field
-	$packageSelectionName = $_POST[ED_packageSelection];
+	$packageSelectionName = HTML_input('ED_packageSelection', false, 20, 50);
 
 	//otherwise get the first selected package selection
-	if (empty($packageSelectionName))
-	for ($i = 0; $i < $CB_counter; $i++)
-		{
-			$var="CB_pkgRecommend".$i;
-
-			if (!empty($_POST[$var]))
-				{
-					$packageSelectionName=$_POST[$var];
-					break;
-				};
-		};
+// 	if (empty($packageSelectionName))
+// 	for ($i = 0; $i < $CB_counter; $i++)
+// 	{
+// 		$var="CB_pkgRecommend".$i;
+// 
+// 		if (!empty($_POST[$var]))
+// 		{
+// 			$packageSelectionName=$_POST[$var];
+// 			break;
+// 		};
+// 	};
 
 	//delete the selected package selection
-	if (isset($_POST[BUT_deletePackageSelection]))
-		PKG_deletePackageselection($_POST[SEL_packageSelection]);
+	if (HTML_submit('BUT_deletePackageSelection',$I18N_delete))
+		PKG_deletePackageselection($_POST['SEL_packageSelection']);		//Defined with function PKG_showAllPackageSelections
 
-
-
+	//Upload dialog for a package selection file
 	$selectedPackagesFile = HTML_uploadFile('UP_importSelectedPackages', $I18N_fileWithExportedSelectedPackages, 5242880);
-	
 	if (is_string($selectedPackagesFile))
 	{
 		PKG_importSelectedPackagesFromFile($client, $selectedPackagesFile);
 		unlink($selectedPackagesFile);
 	}
 
+
+
 	//Change title ($actionStr), button label and help page according to the choosen action
 	switch ($action)
+	{
+		//package deinstallation
+		case 'deinstall':
 		{
-			//package deinstallation
-			case "deinstall":
-				{
-					$actionStr = $I18N_deinstall_packages;
-					$submitButLabel=$I18N_deinstall_selected;
-					$helpPage="deinstall_packages";
-					break;
-				}
+			$actionStr = $I18N_deinstall_packages;
+			$submitButLabel=$I18N_deinstall_selected;
+			$helpPage="deinstall_packages";
+			break;
+		}
 
-			//package installation
-			case "":
-				{
-					$actionStr = $I18N_install_packages;
-					$submitButLabel=$I18N_install_selected;
-					$helpPage="install_packages";
-					break;
-				};
-
-			//client update (full update)
-			case "update":
-				{
-					$actionStr = $I18N_update;
-					$submitButLabel=$I18N_startUpdate;
-					$helpPage="update_packages";
-					$isUpdate=true;
-					break;
-				};
-
-			//package selection
-			case "packageSelection":
-				{
-					$helpPage="editPackageSelection";
-					$groupmode=1;
-					$isUpdate=false;
-					$isPackageSelection=true;
-					$isGroup=true;
-					break;
-				};
+		//package installation
+		case '':
+		{
+			$actionStr = $I18N_install_packages;
+			$submitButLabel=$I18N_install_selected;
+			$helpPage="install_packages";
+			break;
 		};
+
+		//client update (full update)
+		case 'update':
+		{
+			$actionStr = $I18N_update;
+			$submitButLabel=$I18N_startUpdate;
+			$helpPage="update_packages";
+			$isUpdate=true;
+			break;
+		};
+
+		//package selection
+		case 'packageSelection':
+		{
+			$helpPage="editPackageSelection";
+			$groupmode=1;
+			$isUpdate=false;
+			$isPackageSelection=true;
+			$isGroup=true;
+			break;
+		};
+	}
+
 
 
 	//Change the sources list and the distribution
-	if (isset($_POST[BUT_distrSource]))
-		{
-			$packagesource = $_POST[SEL_sourceslist];
-			$distr = $_POST[SEL_distr];
-		}
+	if (HTML_submitCheck('BUT_distrSource'))			//BUT_distrSource is defined in /m23/inc/groups.php
+	{
+		$packagesource = $_POST['SEL_sourceslist'];		//SEL_sourceslist is defined in /m23/inc/groups.php
+		$distr = $_POST['SEL_distr'];					//SEL_distr is defined in /m23/inc/groups.php
+	}
 	else
-		{
-			$distr = $_POST[distr];
-			$packagesource = $_POST[packagesource];
-		};
+	{
+		$packagesource = $_POST['HID_packagesource'];
+		$distr = $_POST['HID_distr'];
+	};
 
 	//Check if we have groups in the hidden variable and if yes: restore the groups array
-	if (!empty($_POST['groupStr']))
+	if (!empty($_POST['HID_groupStr']))
 		{
-			$groups = explode("?",$_POST['groupStr']);
+			$groups = explode("?",$_POST['HID_groupStr']);
 			$isGroup=true;
-			$groupStr = $_POST['groupStr'];
+			$groupStr = $_POST['HID_groupStr'];
 		}
 	elseif($isPackageSelection)
 		{
-			$groupsAndCount=GRP_listGroupsAndCount();
+			$groupsAndCount = GRP_listGroupsAndCount();
 			
 			//get all groups
 			for ($i=0; $i < count($groupsAndCount); $i++)
-				{
-					$groups[$i]=$groupsAndCount[$i]['groupname'];
-				};
+				$groups[$i] = $groupsAndCount[$i]['groupname'];
 		}
 	//groups are fetched (POST) from the groups overview page
-	elseif(isset($_POST["selectedGroups"]))
+	elseif(isset($_POST['selectedGroups']))				//selectedGroups is defined in /m23/inc/groups.php
 		{
 			//Get all groups
 			$groupList = GRP_listGroupsAndCount();
@@ -127,7 +134,7 @@
 			//get all groups and store them in an array
 			for ($i=0; $i < count($groupList); $i++)
 			{
-				if (isset($_POST["CB_do$i"]))
+				if (isset($_POST["CB_do$i"]))			//CB_do$i is defined in /m23/inc/groups.php
 					$groups[$nr++]=$_POST["CB_do$i"];
 			}
 
@@ -173,10 +180,7 @@
 		}
 	//package selection
 	else
-		{
-			$title=str_replace("-","",str_replace("<br>","",str_replace("&nbsp;","",$I18N_editPackageSelection)));
-		};
-	
+		$title = str_replace("-","",str_replace("<br>","",str_replace("&nbsp;","",$I18N_editPackageSelection)));
 ?>
 
 
@@ -193,173 +197,155 @@ function showWait()
 
 
 <CENTER>
-	<?PHP
-		HTML_showFormHeader();
+<?PHP
+	HTML_showFormHeader();
 
-		if ($isGroup && !$isUpdate)
-			{
-				/*show selection for distribution and package source
-				if there is nothing to select for distr and/or packagesource the values are written to $distr and $packagesource*/
-				GRP_showSelDistrSources($groups,$distr,$packagesource);
+	if ($isGroup && !$isUpdate)
+	{
+		/*show selection for distribution and package source
+		if there is nothing to select for distr and/or packagesource the values are written to $distr and $packagesource*/
+		GRP_showSelDistrSources($groups,$distr,$packagesource);
 
-				if (!empty($distr))
-					include_once("/m23/inc/distr/$distr/packages.php");
-				else
-					$searchDisabled="disabled";
-			}
+		if (!empty($distr))
+			include_once("/m23/inc/distr/$distr/packages.php");
+		else
+			$searchDisabled="disabled";
+	}
 
 	switch ($action)
+	{
+		case 'deinstall':
 		{
-			case "deinstall":
-				{
-					$packetTypesA['recommend'] = $I18N_package_selection;
-					$packetTypesA['installed'] = $I18N_normal_packages;
-					$packetType = HTML_selection('RB_packetType', $packetTypesA, SELTYPE_radio, false, 'installed');
-					
-					$searchTerm = HTML_input('ED_search', false, 30, 100);
+			$packetTypesA['recommend'] = $I18N_package_selection;
+			$packetTypesA['installed'] = $I18N_normal_packages;
+			$packetType = HTML_selection('RB_packetType', $packetTypesA, SELTYPE_radio, false, 'installed');
+			
+			$searchTerm = HTML_input('ED_search', false, 30, 100);
+			HTML_submitDefine('BUT_search', $I18N_search);
 
-					echo ("
-					$I18N_package_search ".ED_search."
-					<input type=\"submit\" name=\"BUT_search\" value=\"$I18N_search\"><br>
-					".RB_packetType."
-					");
-					break;
-				}
+			echo ("$I18N_package_search ".ED_search.BUT_search.'<br>'.RB_packetType);
+			break;
+		}
 
-			case "packageSelection":
-			case "":
-				{
-					$packetTypesA['recommend'] = $I18N_package_selection;
-					$packetTypesA['normal'] = $I18N_normal_packages;
-					$packetTypesA['special'] = $I18N_special_packages;
-					$packetType = HTML_selection('RB_packetType', $packetTypesA, SELTYPE_radio, false, 'normal');
+		case 'packageSelection':
+		case '':
+		{
+			$packetTypesA['recommend'] = $I18N_package_selection;
+			$packetTypesA['normal'] = $I18N_normal_packages;
+			$packetTypesA['special'] = $I18N_special_packages;
+			$packetType = HTML_selection('RB_packetType', $packetTypesA, SELTYPE_radio, false, 'normal');
 
-					$searchTerm = HTML_input('ED_search');
+			$searchTerm = HTML_input('ED_search');
 
-					//Add an extra checkbox for choosing to search complete package descriptions/sizes on Debian/Ubuntu
-					if (('debian' == $distr) || ('ubuntu' == $distr))
-					{
-						$completeDescription = HTML_checkBox('CB_completeDescription', $I18N_fetchCompletePackageDescriptionAndSize);
-						$completeDescriptionHTML = '<br>'.constant('CB_completeDescription');
-					}
-					else
-						$completeDescriptionHTML = '';
+			//Add an extra checkbox for choosing to search complete package descriptions/sizes on Debian/Ubuntu
+			if (('debian' == $distr) || ('ubuntu' == $distr))
+			{
+				$completeDescription = HTML_checkBox('CB_completeDescription', $I18N_fetchCompletePackageDescriptionAndSize);
+				$completeDescriptionHTML = '<br>'.constant('CB_completeDescription');
+			}
+			else
+				$completeDescriptionHTML = '';
 
-					echo("
-					$I18N_package_search ".ED_search."&nbsp;
-					<input type=\"submit\" name=\"BUT_search\" value=\"$I18N_search\" $searchDisabled onClick=\"showWait()\">&nbsp; $completeDescriptionHTML
-					<BR>
-					".RB_packetType."
-					<br>
+			HTML_submitDefine('BUT_search', $I18N_search, "$searchDisabled onClick=\"showWait()\"");
 
-					<div style=\"display: none\" id=\"waitdiv\">
-						<table class=\"infotable\">
-							<tr>
-								<td>
-									<img id=\"waitimg\" src=\"/gfx/wait-ani.gif\">
-									$I18N_pleaseWaitPackageSearchInProgress
-								</td>
-							</tr>
-						</table>
-					</div>
-					
-					");
-					break;
-				};
+			echo("
+			$I18N_package_search ".ED_search."&nbsp;".BUT_search."&nbsp; $completeDescriptionHTML<BR>".RB_packetType."
+			<br>
 
-			case "update":
-				{
-					//show radio buttons for selecting the update method
-					$completeChecked="";
-					$normalChecked="";
-					
-					if ($_POST['RB_updateType']=='complete')
-						$completeChecked="checked";
-						
-					if ($_POST['RB_updateType']=='normal')
-						$normalChecked="checked";
-					
-					echo("
-					<input type=\"radio\" name=\"RB_updateType\" value=\"complete\" $completeChecked>$I18N_fullUpdate&nbsp;
-					
-					<input type=\"radio\" name=\"RB_updateType\" value=\"normal\" $normalChecked>$I18N_normalUpdate");
-					
-					break;
-				};
+			<div style=\"display: none\" id=\"waitdiv\">
+				<table class=\"infotable\">
+					<tr>
+						<td>
+							<img id=\"waitimg\" src=\"/gfx/wait-ani.gif\">
+							$I18N_pleaseWaitPackageSearchInProgress
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			");
+			break;
 		};
+
+		case 'update':
+		{
+			echo(RB_updateType);
+			break;
+		};
+	};
 ?>
 </CENTER>
-
 <BR>
-<input type="hidden" name="groupStr" value="<?PHP echo($groupStr);?>">
-<input type="hidden" name="distr" value="<?PHP echo($distr);?>">
-<input type="hidden" name="packagesource" value="<?PHP echo($packagesource);?>">
-<input type="hidden" name="action" value="<?PHP echo($action);?>">
-<input type="hidden" name="id" value="<?PHP echo($id);?>">
-
 
 <?PHP
-	HTML_setPage("installpackages");
+	echo(HTML_hiddenVar('HID_packagesource', $packagesource).
+		HTML_hiddenVar('HID_distr', $distr).
+		HTML_hiddenVar('HID_groupStr', $groupStr).
+		HTML_hiddenVar('HID_action', $action).
+		HTML_hiddenVar('HID_id', $id));
+
+	HTML_setPage('installpackages');
 
 	if (!$isUpdate)
-		echo("<span class=\"titlesmal\">$I18N_found_packages</span><br><br>");
+	{
+		HTML_showSmallTitle($I18N_found_packages); echo('<br><br>');
+	}
 
-	if (!empty($_POST['CB_counter']))
-		$CB_counter=$_POST['CB_counter'];
-		else
-		$CB_counter=0;
+	$CB_counter = (isset($_POST['HID_CB_counter']) ? $_POST['HID_CB_counter'] : 0);
 
-	if (!empty($_POST['CB_markCounter']))
-		$CB_markCounter=$_POST['CB_markCounter'];
-		else
-		$CB_markCounter=0;
+// 	if (!empty($_POST['CB_markCounter']))
+// 		$CB_markCounter=$_POST['CB_markCounter'];
+// 		else
+// 		$CB_markCounter=0;
 
-	if (!empty($_POST['packageType']))
-		$packageType=$_POST['packageType'];
+// 	if (!empty($_POST['packageType']))
+// 		$packageType=$_POST['packageType'];
 
  //list packages
-	if(!empty($_POST['BUT_search']))
+	if (HTML_submitCheck('BUT_search'))
+	{
 		switch($packetType)
 		{
-			case "normal":
-				{
-					if (('debian' == $distr) || ('ubuntu' == $distr))
-						$CB_counter = PKG_listPackages($searchTerm, $distr, $packagesource, $client, $completeDescription);
-					else
-						//we have a normal apt package
-						$CB_counter = PKG_listPackages($searchTerm, $distr, $packagesource, $client);
-					break;
-				};
+			case 'normal':
+			{
+				if (('debian' == $distr) || ('ubuntu' == $distr))
+					$CB_counter = PKG_listPackages($searchTerm, $distr, $packagesource, $client, $completeDescription);
+				else
+					//we have a normal apt package
+					$CB_counter = PKG_listPackages($searchTerm, $distr, $packagesource, $client);
+				break;
+			};
 	
-			case "recommend":
-				{
-					//we have a recommend package
-					$CB_counter=PKG_listRecommendPackages($searchTerm);
-					break;
-				};
+			case 'recommend':
+			{
+				//we have a recommend package
+				$CB_counter=PKG_listRecommendPackages($searchTerm);
+				break;
+			};
 	
-			case "special":
-				{
-					//we have a special package
-					$CB_counter=PKG_listSpecialPackages($searchTerm,"<br>\n",$distr);
-					break;
-				};
+			case 'special':
+			{
+				//we have a special package
+				$CB_counter=PKG_listSpecialPackages($searchTerm,"<br>\n",$distr);
+				break;
+			};
 	
-			case "installed":
-				{
-					if ($isGroup)
-						$CB_counter=GRP_getAllPackages($groups,$searchTerm,true);
-					else
-						$CB_counter=CLIENT_listPackages($client, $searchTerm,true);
-					break;
-				};
-		};
+			case 'installed':
+			{
+				if ($isGroup)
+					$CB_counter=GRP_getAllPackages($groups,$searchTerm,true);
+				else
+					$CB_counter=CLIENT_listPackages($client, $searchTerm,true);
+				break;
+			};
+		}
+	}
 	
 	switch ($action)
 	{
-		case "packageSelection": CAPTURE_captureAll(3,"editPackageSelection: create a package selection",true); break;
-		case "update": CAPTURE_captureAll(2,"update_packages: make a full update",true); break;
-		case "deinstall": CAPTURE_captureAll(1,"deinstall_packages: search for mozilla",true); break;
+		case 'packageSelection': CAPTURE_captureAll(3,"editPackageSelection: create a package selection",true); break;
+		case 'update': CAPTURE_captureAll(2,"update_packages: make a full update",true); break;
+		case 'deinstall': CAPTURE_captureAll(1,"deinstall_packages: search for mozilla",true); break;
 		default: CAPTURE_captureAll(0,"install_packages: search for kate",true);
 	};
 
@@ -367,27 +353,31 @@ function showWait()
 	if (!$CB_counter)
 		$tableClose = false;
 
- //send all marked jobs
-if(!empty($_POST['BUT_mark']))
+	//send all marked jobs
+
+	
+	
+
+	if (HTML_submit('BUT_mark', $I18N_preselect))
 	{
-	 switch($packetType)
+		switch($packetType)
 		{
-		case "normal":
+			case 'normal':
 			{
 				PKG_addNormalPackages($CB_counter,$client);
 				break;
 			};
-		case "recommend":
-		 	{
+			case 'recommend':
+			{
 				PKG_addRecommendPackages($CB_counter,$client,$_POST[SEL_specialNormalType],$distr);
 				break;
 			};
-		case "special":
+			case 'special':
 			{
 				PKG_addSpecialPackages($CB_counter,$client,$distr);
 				break;
 			};
-		case "installed":
+			case 'installed':
 			{
 				PKG_remNormalPackages($CB_counter,$client);
 				break;
@@ -401,73 +391,74 @@ if(!empty($_POST['BUT_mark']))
 
 
 	//discard only selected jobs
-	if(!empty($_POST['BUT_discardSelected']))
+	if (HTML_submit('BUT_discardSelected', $I18N_discard_selected))
 		PKG_rmSelectedPackages(PKG_countSelectedpackages($client),$client);
+		
+	HTML_submitDefine('BUT_acceptJobs', $submitButLabel);
+	HTML_submitDefine('BUT_startUpdate', $I18N_startUpdate);
 
-
-if (!empty($_POST['BUT_acceptJobs']) ||
-	!empty($_POST['BUT_startUpdate']))
+	if (HTML_submitCheck('BUT_acceptJobs') || HTML_submitCheck('BUT_startUpdate'))
+	{
+		if ($isGroup)
 		{
-			if ($isGroup)
-				{
-					//get all clients in the groups
-					$clients = GRP_listAllClientsInGroups($groups);
-					$clAmount = count($clients);
-					$clientOrig = $client;
-					$showMsg = false;
-				}
-			else
-				{
-					$clAmount = 1;
-					$showMsg = true;
-				};
+			//get all clients in the groups
+			$clients = GRP_listAllClientsInGroups($groups);
+			$clAmount = count($clients);
+			$clientOrig = $client;
+			$showMsg = false;
+		}
+		else
+		{
+			$clAmount = 1;
+			$showMsg = true;
 		};
-			
- //accept all jobs
- if(!empty($_POST['BUT_acceptJobs']))
+	};
+
+	//accept all jobs
+	if(HTML_submitCheck('BUT_acceptJobs'))
 	{
 		for ($i = 0; $i < $clAmount; $i++)
+		{
+			if ($isGroup)
 			{
-				if ($isGroup)
-					{
-						//assign current client name
-						$client = $clients[$i];
-						//copy the waiting packages from the fake client to the current
-						PKG_copyWait4accPackagesToClient($client,$clientOrig);
-					};
-
-				PKG_addJob($client,"m23UpdateSourcesList",PKG_getSpecialPackagePriority("m23UpdateSourcesList"),"");
-
-				//Make preselected jobs waiting jobs and don't show the message if we are in group mode
-				PKG_acceptJobs($client,!$isGroup);
-
-				//Make sure that the client is in the same state (running or turned off) after the insallation like before.
-				if (!$isGroup)
-					PKG_addShutdownPackage($client);
-
-				PKG_addJob($client,"m23UpdatePackageInfos",PKG_getSpecialPackagePriority("m23UpdatePackageInfos"),"");
-
-				//if ((CLIENT_getClientStatus($client) != STATUS_BLUE) && !$isGroup)
-				//now do all group jobs at once
-				if (CLIENT_getClientStatus($client) != STATUS_BLUE)
-					CLIENT_startInstall($client);
-			}
-			
-		if ($isGroup)
-			{
-				//make fake client name the normal
-				$client = $clientOrig;
-
-				//Get the amount of jobs that have been assigned to the clients of the group(s)
-				$jobNr = PKG_countJobs($client,'wait4acc');
-
-				MSG_showAddJobsInfo($jobNr,$clAmount);
-
-				//discard all waiting jobs from the fake client
-				PKG_discardJobs($client);
+				//assign current client name
+				$client = $clients[$i];
+				//copy the waiting packages from the fake client to the current
+				PKG_copyWait4accPackagesToClient($client,$clientOrig);
 			};
 
-	 $tableClose = false;
+			PKG_addJob($client,"m23UpdateSourcesList",PKG_getSpecialPackagePriority("m23UpdateSourcesList"),"");
+
+			//Make preselected jobs waiting jobs and don't show the message if we are in group mode
+			PKG_acceptJobs($client,!$isGroup);
+
+			//Make sure that the client is in the same state (running or turned off) after the insallation like before.
+			if (!$isGroup)
+				PKG_addShutdownPackage($client);
+
+			PKG_addJob($client,"m23UpdatePackageInfos",PKG_getSpecialPackagePriority("m23UpdatePackageInfos"),"");
+
+			//if ((CLIENT_getClientStatus($client) != STATUS_BLUE) && !$isGroup)
+			//now do all group jobs at once
+			if (CLIENT_getClientStatus($client) != STATUS_BLUE)
+				CLIENT_startInstall($client);
+		}
+			
+		if ($isGroup)
+		{
+			//make fake client name the normal
+			$client = $clientOrig;
+
+			//Get the amount of jobs that have been assigned to the clients of the group(s)
+			$jobNr = PKG_countJobs($client,'wait4acc');
+
+			MSG_showAddJobsInfo($jobNr,$clAmount);
+
+			//discard all waiting jobs from the fake client
+			PKG_discardJobs($client);
+		};
+
+		$tableClose = false;
 	};
 
 
@@ -475,9 +466,9 @@ if (!empty($_POST['BUT_acceptJobs']) ||
 
 
 	//update client
-	if (!empty($_POST['BUT_startUpdate']))
+	if (HTML_submitCheck('BUT_startUpdate'))
 		{
-			$arr['type']=$_POST['RB_updateType'];
+			$arr['type'] = $updateType;
 
 			$pkgparams=implodeAssoc("?#?",$arr);
 			
@@ -487,14 +478,14 @@ if (!empty($_POST['BUT_acceptJobs']) ||
 			for ($i = 0; $i < $clAmount; $i++)
 			{
 				if ($isGroup)
-					{
-						//assign current client name
-						$client = $clients[$i];
+				{
+					//assign current client name
+					$client = $clients[$i];
 
-						$clientOptions=CLIENT_getAllOptions($client);
+					$clientOptions=CLIENT_getAllOptions($client);
 
-						$distr=$clientOptions['distr'];
-					};
+					$distr=$clientOptions['distr'];
+				};
 
 				PKG_addJob($client,"m23update",PKG_getSpecialPackagePriority("m23update",$distr),$pkgparams);
 
@@ -514,32 +505,33 @@ if (!empty($_POST['BUT_acceptJobs']) ||
 		};
 
 
- //discard all marked jobs
- if(!empty($_POST['BUT_discardAll']))
-	PKG_discardJobs($client);
+	//discard all marked jobs
+	if (HTML_submit('BUT_discardAll',$I18N_discard_all))
+		PKG_discardJobs($client);
 
- if(!empty($_POST['BUT_saveSelectedPackages']))
-	PKG_savePackageselection($client, $_POST['ED_packageSelection']);
-
+	if (HTML_submit('BUT_saveSelectedPackages',$I18N_save))
+		PKG_savePackageselection($client, $packageSelectionName);
 ?>
 
 <center>
 
 <?PHP 
-//preselect packages button
-if (!$isUpdate)
-echo("<BR><input type=\"submit\" name=\"BUT_mark\" value=\"$I18N_preselect\"></center><BR>");
+	//preselect packages button
+	if (!$isUpdate)
+		echo('<BR>'.BUT_mark.'</center><BR>');
 
-echo("
-<input type=\"hidden\" name=\"CB_counter\" value=\"$CB_counter\">
-<input type=\"hidden\" name=\"client\" value=\"$client\">
-");
+
+	echo(HTML_hiddenVar('HID_CB_counter', $CB_counter).
+		HTML_hiddenVar('HID_CB_client', $client));
+
 
 //title: preselected packages
-if (!$isUpdate)
-	echo("<BR><BR><span class=\"titlesmal\">$I18N_preselected_packages</span><br><br>");
-	
-	
+	if (!$isUpdate)
+	{
+		echo('<BR><BR>'); HTML_showSmallTitle($I18N_preselected_packages); echo('<BR><BR>');
+	}
+
+
 //show selected packages
 	if (!$isUpdate)
 		{
@@ -553,94 +545,90 @@ if (!$isUpdate)
 <center>
 
 <?PHP
+	HTML_submitDefine('BUT_refresh', $I18N_refresh);
+
+
 	//draw discard (all, selected) and refresh buttons
 	if (!$isUpdate)
-		echo("
-<input type=\"submit\" name=\"BUT_discardAll\" value=\"$I18N_discard_all\">&nbsp;&nbsp;
-<input type=\"submit\" name=\"BUT_discardSelected\" value=\"$I18N_discard_selected\">
-<br><br>
-".ED_priority."&nbsp;&nbsp;".BUT_priority."<br><br>
-<input type=\"submit\" name=\"BUT_refresh\" value=\"$I18N_refresh\">&nbsp;&nbsp;");
+		echo(BUT_discardAll.'&nbsp;&nbsp;'.BUT_discardSelected.'<br><br>'.
+		ED_priority.'&nbsp;&nbsp;'.BUT_priority.'<br><br>'.
+		BUT_refresh.'&nbsp;&nbsp;');
 
 
 	//show preview results
-	if (!empty($_POST['BUT_previewInstallation']))
+	if (HTML_submit('BUT_previewInstallation',$I18N_previewInstallation))
 		PKG_showPreviewInstallationDeinstallation($client,true);
 		
-	if (!empty($_POST['BUT_previewDeinstallation']))
+	if (HTML_submit('BUT_previewDeinstallation',$I18N_previewDeinstallation))
 		PKG_showPreviewInstallationDeinstallation($client,false);
 		
-	if (!empty($_POST['BUT_previewUpdate']))
-		PKG_showPreviewUpdateSystem($client,$_POST['RB_updateType']=="complete");
+	if (HTML_submit('BUT_previewUpdate',$I18N_updatePreview))
+		PKG_showPreviewUpdateSystem($client, 'complete' == $updateType);
 		
 	
 
 	//show correct preview button
 	if (!$isGroup)
+	{
+		switch ($action)
 		{
-			switch ($action)
-				{
-					case "deinstall":
-						{
-							echo("<input type=\"submit\" name=\"BUT_previewDeinstallation\" value=\"$I18N_previewDeinstallation\">");
-							break;
-						};
+			case 'deinstall':
+			{
+				echo(BUT_previewDeinstallation);
+				break;
+			};
 
-					case "":
-						{
-							echo("<input type=\"submit\" name=\"BUT_previewInstallation\" value=\"$I18N_previewInstallation\">");
-							break;
-						};
+			case '':
+			{
+				echo(BUT_previewInstallation);
+				break;
+			};
 
-					case "update":
-						{
-							echo("<input type=\"submit\" name=\"BUT_previewUpdate\" value=\"$I18N_updatePreview\">");
-							break;
-						};
-				}
-		};
+			case 'update':
+			{
+				echo(BUT_previewUpdate);
+				break;
+			};
+		}
+	};
+
+	if ('packageSelection' != $action)
+		echo('<br><br>'.BUT_acceptJobs);
+
 
 	HTML_urlButton('DL_exportSelectedPackages', $I18N_exportSelectedPackages, '/m23admin/packages/exportSelectedPackages.php?client='.$client);
 
-
-	//draw package selection save dialog
-	
-	//(de)install mode
-	if (!$isUpdate && !$isPackageSelection)
-		echo("<br><br>$I18N_save_package_selection <input type=\"text\" name=\"ED_packageSelection\" value=\"$packageSelectionName\" size=20 maxlength=50>&nbsp;
-		
-		<input type=\"submit\" name=\"BUT_saveSelectedPackages\" value=\"$I18N_save\">
-
-		<br><br>
-		<input type=\"submit\" name=\"BUT_acceptJobs\" value=\"$submitButLabel\">
-		");
-	
 	//update mode
-	elseif (!$isPackageSelection)
-		echo("<input type=\"submit\" name=\"BUT_startUpdate\" value=\"$I18N_startUpdate\">");
-		
-	//package selection mode
-	else
-		echo("<br><br>$I18N_save_package_selection <input type=\"text\" name=\"ED_packageSelection\" value=\"$packageSelectionName\" size=20 maxlength=50>&nbsp;
-		
-		<input type=\"submit\" name=\"BUT_saveSelectedPackages\" value=\"$I18N_save\"><br>
-		$I18N_package_selection 
-		".PKG_showAllPackageSelections("SEL_packageSelection",$packageSelectionName)."&nbsp;
-		<input type=\"submit\" name=\"BUT_deletePackageSelection\" value=\"$I18N_delete\"><br>
-		");
+	if (!$isPackageSelection)
+		echo(BUT_startUpdate);
+
+
+	HTML_showSmallTitle($I18N_package_selection);
+	HTML_showTableHeader();
+		echo('<tr><td align="center">');
+		//draw package selection save dialog
+		//(de)install mode
+		if (!$isUpdate && !$isPackageSelection)
+			echo("$I18N_save_package_selection ".ED_packageSelection.'&nbsp;'.BUT_saveSelectedPackages);
+		//package selection mode
+		else
+			echo("$I18N_save_package_selection ".ED_packageSelection.'&nbsp;'.BUT_saveSelectedPackages."<br><br>
+			$I18N_package_selection 
+			".PKG_showAllPackageSelections('SEL_packageSelection',$packageSelectionName)."&nbsp;".BUT_deletePackageSelection."<br>
+			");
+
+		if (!$isUpdate || $isPackageSelection)
+			echo('<br>'.UP_importSelectedPackages.'<br>'.DL_exportSelectedPackages);
+		echo('</td></tr>');
+	HTML_showTableEnd();
+
+	HTML_showFormEnd();
 
 	echo('
 	<script language=JavaScript>
 		set(1);
 	</script>
-	');
 
-	if (!$isUpdate || $isPackageSelection)
-		echo('<br>'.DL_exportSelectedPackages.'<br>'.UP_importSelectedPackages);
-
-	HTML_showFormEnd();
-
-	echo('
 	<BR><BR>
 	</center>
 	');

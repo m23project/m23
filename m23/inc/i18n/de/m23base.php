@@ -1188,7 +1188,7 @@ $I18N_languageChangedTo_two = ' geändert.';
 
 //13.2
 $I18N_disableSSLCertCheck = 'SSL-Zertifikatsüberprüfung für wget deaktivieren';
-$I18N_exportSelectedPackages="Vorgemerkte Pakete exportieren";
+$I18N_exportSelectedPackages="Paketauswahl exportieren";
 $I18N_maximalAllowedFileSize="Maximale Dateigröße";
 $I18N_errorFileExists = 'Datei existiert bereits!';
 $I18N_errorUploadSizeMismatch = 'Die vom Browser gesendete Größe der hochgeladenen Datei stimmt mit der übertragenen Datenmenge nicht überein!';
