@@ -9,6 +9,50 @@ $*/
 
 
 /**
+**name PKG_combinem23normal($packageSelectionName)
+**description Combines the package names of multiple entries for m23normal and m23normalRemove jobs ind a package selection.
+**parameter packageSelectionName: Name of the package selection to optimise.
+**/
+function PKG_combinem23normal($packageSelectionName)
+{
+	foreach (array('m23normal', 'm23normalRemove') as $type)
+	{
+		//Get all packages from package selections that are included as m23normal or m23normalRemove
+		$res = db_query("SELECT priority, normalPackage FROM `recommendpackages` WHERE `name`='$packageSelectionName' AND `package`='$type'");
+	
+		$packagesPriorityA = array();
+
+		//Create strings containing all packages saved under the priority as key
+		while ($line = mysql_fetch_array($res))
+			$packagesPriorityA[$line['priority']] .= $line['normalPackage'];
+
+		//Run thru the package strings by priority
+		foreach ($packagesPriorityA as $priority => $packages)
+		{
+			//Convert the package string to array
+			$packagesA = explode(' ', $packages);
+
+			//Make the entries unique and sort them
+			$packagesA = array_unique($packagesA);
+			sort($packagesA);
+
+			//Convert the packages array back to string
+			$packagesStr = implode(' ', $packagesA);
+			
+			//Delete the old entries
+			db_query("DELETE FROM `recommendpackages` WHERE `priority`='$priority' AND `package`='$type' AND `name`='$packageSelectionName'");
+
+			//Insert a combined entry
+			db_query("INSERT INTO recommendpackages (name,package,priority,normalPackage) VALUES ('$packageSelectionName', '$type', '$priority', '$packagesStr')");
+		}
+	}
+}
+
+
+
+
+
+/**
 **name PKG_importSelectedPackagesFromFile($client, $file)
 **description Imports space-seperated packages from a file and adds them to the wait4acc/selected packages of a client.
 **parameter client: Name of the client or empty.
@@ -1176,6 +1220,8 @@ function PKG_addPackageToPackageselection($selectionName, $packageName, $params,
 
 		$insertSql = "INSERT INTO recommendpackages (name,package,version,priority,normalPackage,params,installedSize) VALUES
 				('$selectionName', '$packageName', '', '$priority', '$normalPackage','$params','$installedSize');";
+
+		$m23normalOrRemove = true;
 	}
 	else //if we have other packages the package names differ
 	{
@@ -1184,11 +1230,17 @@ function PKG_addPackageToPackageselection($selectionName, $packageName, $params,
 		$sql = "SELECT id FROM `recommendpackages` WHERE name='$selectionName' AND params='$params' AND package='$packageName'";
 
 		$insertSql="INSERT INTO recommendpackages  (name,package,version,priority,params,installedSize) VALUES ('$selectionName', '$packageName', '', '$priority', '$params','$installedSize');";
+
+		$m23normalOrRemove = true;
 	}
 
 	$result = DB_query($sql); //FW ok
 	if (mysql_num_rows($result) == 0)
 		DB_query($insertSql); //FW ok
+		
+		
+	if ($m23normalOrRemove)
+		PKG_combinem23normal($selectionName);
 }
 
 

@@ -6,16 +6,18 @@
 // 	HTML_showTableHeader();
 	HTML_setPage("developersPlayground");
 
-	print(serialize(HTML_uploadFile('UP_text','Textdatei',300000)));
+	$packageSelectionName = 'Build_from_precise-pool';
+	PKG_combinem23normal($packageSelectionName);
 
-	print(UP_text);
+	
 
-	exit(0);
 	
-	
-	$poolFromClientGUIO = new CPoolFromClientGUI('m23-ubuntu');
-	$objectStorage = new CObjectStorage('m23-ubuntu', $poolFromClientGUIO, true);
-	$poolFromClientGUIO->downloadPackagesAndCreatePool();
+// 	SELECT * FROM `recommendpackages` WHERE name='Build_from_precise-pool' ORDER BY priority
+
+
+// 	$poolFromClientGUIO = new CPoolFromClientGUI('m23-ubuntu');
+// 	$objectStorage = new CObjectStorage('m23-ubuntu', $poolFromClientGUIO, true);
+// 	$poolFromClientGUIO->downloadPackagesAndCreatePool();
 
 	
 
@@ -48,11 +50,11 @@
 	print(serialize(PKG_getDebootStrapBasePackages('squeeze')));*/
 	
 
-	if (!isset($_SESSION['poolOGUI']))
-	{
-		print('NEU');
-		$_SESSION['poolOGUI'] = new CPoolGUI();
-	}
+// 	if (!isset($_SESSION['poolOGUI']))
+// 	{
+// 		print('NEU');
+// 		$_SESSION['poolOGUI'] = new CPoolGUI();
+// 	}
 	
 	
 // 	$testO = new CPool('test');
@@ -63,11 +65,11 @@
 // 	print(BUT_testJS);
 
 	
-	print('<tr><td>');
-	
-	$_SESSION['poolOGUI']->show();
-	
-	print('</td></tr>');
+// 	print('<tr><td>');
+// 	
+// 	$_SESSION['poolOGUI']->show();
+// 	
+// 	print('</td></tr>');
 
 // $MessageManagerO = new CMessageManager();
 // 

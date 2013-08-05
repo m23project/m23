@@ -1,3 +1,11 @@
+2013-08-05
+patch 100669: Export of DHCP setting, optimisation of installation jobs with multiple packages, preparation for assimilsation of halfSister distributions.
++++++
+2013-08-01
+cha: m23 / postinst: Now increase the size of the normalPackage field to LONGTEXT in the table recommendpackages.
+new: PKG_combinem23normal: Combines the package names of multiple entries for m23normal and m23normalRemove jobs ind a package selection.
+cha: PKG_addPackageToPackageselection: Now calls PKG_combinem23normal.
++++++
 2013-07-30
 new: m23Debs.inc / rsyncUploadSpeedLimit: Determines the maximum upload speed.
 cha: install_packages.php: Now is using the HTML functions as often as possible.
