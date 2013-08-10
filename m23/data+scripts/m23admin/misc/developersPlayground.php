@@ -1,4 +1,6 @@
 <span class="title">Developer's playground</span>
+
+
 <?PHP
 	include_once('/m23/inc/distr/debian/clientConfigCommon.php');
 	include_once('/m23/inc/messageReceive.php');
@@ -8,8 +10,10 @@
 
 	$packageSelectionName = 'Build_from_precise-pool';
 	PKG_combinem23normal($packageSelectionName);
-
 	
+	HTML_imgSwitch('SW_img', '/gfx/SSLCertificateCheckDisabled-32.png', '/gfx/SSLCertificateCheckEnabled-32.png', 'aus', 'an', '<br>', true);
+
+	print(SW_img);
 
 	
 // 	SELECT * FROM `recommendpackages` WHERE name='Build_from_precise-pool' ORDER BY priority

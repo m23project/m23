@@ -245,7 +245,7 @@ function HS_fetchm23HSAdminAndm23hwscannerByOS()
 	//Write a tool fetching script with placeholders
 	echo("cat >> $scrFile << \"HSFETCHEOF\"\n");
 	HS_fetchm23HSAdminAndm23hwscanner('XXXXX');
-	echo("HSFETCHEOF\n");
+	echo("\nHSFETCHEOF\n");
 
 	echo('
 	#Suse releases

@@ -2908,6 +2908,10 @@ function CLCFG_copySSLCert($rootPath="/mnt/root", $disableSSLCertCheck = false)
 	$serverIP = getServerIP();
 	$quietWget = ($_SESSION['debug'] ? "": "-qq");
 
+	//Determine, if the SSL certificate check is diabled globally for all clients.
+	if (SERVER_isSSLCertCheckDisabled())
+		$disableSSLCertCheck = true;
+
 	if ($_SESSION['m23Shared'])
 		$extraDir = "/$serverIP";
 	else
@@ -2963,6 +2967,9 @@ for ($year = 11; $year <= date('y'); $year++)
 	
 	$greps .= "[ `grep -i 'Ubuntu $year.04' $rootPath/etc/issue -c` -gt 0 ] || [ `grep -i 'Ubuntu $year.10' $rootPath/etc/issue -c` -gt 0 ]";
 }
+
+//Disable checks for Linux Mint 11 and above
+$greps .= ' || ( [ $(grep \'Mint\' /etc/issue -c) -gt 0 ] && [ $(sed \'s/[^0-9]//g\' /etc/issue) -gt 10 ] )';
 
 if ($disableSSLCertCheck)
 	$greps .= ' || true';

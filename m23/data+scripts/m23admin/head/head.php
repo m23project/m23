@@ -1,5 +1,13 @@
 <?php
- include("/m23/inc/version.php");
+	include("/m23/inc/version.php");
+
+	//Check, if this is the development version and adjust the coloring of the header
+	if (false !== strstr($m23_codename, '-devel'))
+		$tableType = 'errortable';
+	else
+		$tableType = 'helptable';
+	
+	
 ?>
 
 <table cellspacing="0" cellpadding="3" width="100%" border="0">
@@ -15,7 +23,7 @@
 		</td>
 
 		<td align="center">
-			<table class="helptable">
+			<table class="<?= $tableType ?>">
 				<tr>
 				<?php 
 					echo ("

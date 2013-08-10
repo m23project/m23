@@ -15,6 +15,83 @@ define('m23RASTunnelScript','/m23/bin/m23RemoteAdministrationServiceOpenTunnel')
 
 
 /**
+**name SERVER_setSSLCertCheckDisabled($disableSSLCertCheck)
+**description Sets, if the SSL certificate check is disabled globally for all clients.
+**parameter: disableSSLCertCheck: true, if the check is disabled otherwise false.
+**/
+function SERVER_setSSLCertCheckDisabled($disableSSLCertCheck)
+{
+	if ($disableSSLCertCheck)
+		$val = 1;
+	else
+		$val = 0;
+	
+	SERVER_setServerSetting('disableSSLCertCheck', $val)
+}
+
+
+
+
+
+/**
+**name SERVER_isSSLCertCheckDisabled()
+**description Determines, if the SSL certificate check is disabled globally for all clients.
+**returns: true, if the check is disabled otherwise false.
+**/
+function SERVER_isSSLCertCheckDisabled()
+{
+	return(SERVER_existsServerSetting('disableSSLCertCheck') && (SERVER_getServerSetting('disableSSLCertCheck') == 1));
+}
+
+
+
+
+
+/**
+**name SERVER_setServerSetting($var, $val)
+**description Sets the value of a server setting.
+**parameter: var: Name of the setting.
+**parameter: val: Value of the setting.
+**/
+function SERVER_setServerSetting($var, $val)
+{
+	RMV_set4IP($var, $val, 'm23ServerSetting');
+}
+
+
+
+
+
+/**
+**name SERVER_getServerSetting($var)
+**description Gets the value of a server setting.
+**parameter: var: Name of the setting.
+**returns: Value the setting.
+**/
+function SERVER_getServerSetting($var)
+{
+	return(RMV_get4IP($var, 'm23ServerSetting'));
+}
+
+
+
+
+/**
+**name SERVER_existsServerSetting($var)
+**description Checks, if a named server setting exists in the DB.
+**parameter: var: Name of the setting.
+**returns: True if the setting exists.
+**/
+function SERVER_existsServerSetting($var)
+{
+	return(RMV_exists4IP($var, 'm23ServerSetting'));
+}
+
+
+
+
+
+/**
 **name SERVER_killPID($pid, $signal=9)
 **description Kills a process running under a given PID or sends a signal.
 **parameter: pid: The PID of the process to kill.
@@ -274,10 +351,10 @@ function SERVER_sendScriptToSF($name,$author,$description,$script)
 function SERVER_dynamicIPWarn()
 {
 	if (strlen(getServerIP()) == 0)
-		{
-			include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
-			MSG_showMessageBox($I18N_serverDynamicIPWarnung,"errortable",$I18N_serverStatusCritical,120);
-		}
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		MSG_showMessageBox($I18N_serverDynamicIPWarnung,"errortable",$I18N_serverStatusCritical,120);
+	}
 	else
 		return(false);
 }

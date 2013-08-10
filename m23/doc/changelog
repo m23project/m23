@@ -1,4 +1,19 @@
+2013-08-10
+fix: HS_fetchm23HSAdminAndm23hwscannerByOS: Now the end mark for HSFETCHEOF is set correctly.
+cha: CLCFG_copySSLCert: Now disables ssl certificate checks for Linux Mint 11 and above.
+new: SERVER_isSSLCertCheckDisabled: Now determines, if the SSL certificate check is disabled globally for all clients.
+cha: CLCFG_copySSLCert: Now calls SERVER_isSSLCertCheckDisabled.
+new: SERVER_setSSLCertCheckDisabled: Sets, if the SSL certificate check is disabled globally for all clients.
++++++
+2013-08-06
+new: SERVER_setServerSetting: Sets the value of a server setting.
+new: SERVER_getServerSetting: Gets the value of a server setting.
+new: SERVER_existsServerSetting: Checks, if a named server setting exists in the DB.
+cha: head.php: Now checks, if this is the development version and adjust the coloring of the header.
++++++
 2013-08-05
+cha: moveDevel2Release: Now calls /mdk/doc/changelog-merger.php.
+new: changelog-merger.php: Script for merging the changelogs of development and release versions.
 patch 100669: Export of DHCP setting, optimisation of installation jobs with multiple packages, preparation for assimilsation of halfSister distributions.
 +++++
 2013-08-01
