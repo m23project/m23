@@ -3439,6 +3439,8 @@ function CLIENT_getNamesWithPackages($showFakeClients=false)
 function CLIENT_changeClient()
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	
+	$checker = new CChecks();
 
 	//$_SESSION['changeElements'] contains all element names that could be changed
 	$elements = explode("#",$_SESSION['changeElements']);
@@ -3537,6 +3539,10 @@ function CLIENT_changeClient()
 					$sql.="`$varname`='".$_SESSION['preferenceSpace'][$elem]."', ";
 					break;
 				case "ip":
+					//Check, if the new IP is nonused
+					$checker->checkNonusedIP($_SESSION['preferenceSpace'][$elem]);
+					if ($checker->showMessages())
+						return(false);
 				case "netmask":
 					$changeDHCP=true;
 					CHECK_FW(CC_ip, $_SESSION['preferenceSpace'][$elem]);
@@ -3650,6 +3656,12 @@ function CLIENT_changeClient()
 					if ($_SESSION['preferenceSpace']['installPrinter']) //FIX
 						PKG_addJob($clientName,"m23PrinterConfig",PKG_getSpecialPackagePriority("m23PrinterConfig"),"");
 					break;
+
+				case "ip":
+					//Check, if the new IP is nonused
+					$checker->checkNonusedIP($_SESSION['preferenceSpace'][$elem]);
+					if ($checker->showMessages())
+						return(false);
 
 				default:
 					$parms[$varname]=$_SESSION['preferenceSpace'][$elem];

@@ -10,10 +10,14 @@
 
 	$packageSelectionName = 'Build_from_precise-pool';
 	PKG_combinem23normal($packageSelectionName);
-	
-	HTML_imgSwitch('SW_img', '/gfx/SSLCertificateCheckDisabled-32.png', '/gfx/SSLCertificateCheckEnabled-32.png', 'aus', 'an', '<br>', true);
 
-	print(SW_img);
+	if (HTML_imgSwitch('SW_img', '/gfx/SSLCertificateCheckDisabled-32.png', '/gfx/SSLCertificateCheckEnabled-32.png', $I18N_SSLCertCheckDisabled, $I18N_SSLCertCheckEnabled, '<br>', !SERVER_isSSLCertCheckDisabled(), $state))
+		SERVER_setSSLCertCheckDisabled(!$state);
+	
+	HTML_submit('BUT_akt','aktual');
+
+	print(SW_img.BUT_akt.serialize(SERVER_isSSLCertCheckDisabled()));
+	
 
 	
 // 	SELECT * FROM `recommendpackages` WHERE name='Build_from_precise-pool' ORDER BY priority

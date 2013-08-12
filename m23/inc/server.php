@@ -25,8 +25,8 @@ function SERVER_setSSLCertCheckDisabled($disableSSLCertCheck)
 		$val = 1;
 	else
 		$val = 0;
-	
-	SERVER_setServerSetting('disableSSLCertCheck', $val)
+
+	SERVER_setServerSetting('disableSSLCertCheck', $val);
 }
 
 

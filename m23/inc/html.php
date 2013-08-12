@@ -15,8 +15,8 @@ define('H_AJAXAUTOSUBMIT_VALUE','submit');
 
 
 /**
-**name HTML_imgSwitch($htmlName, $off_img, $on_img, $off_text, $on_text, $separator, $default)
-**description Defines an image input with two states and a text next to it.
+**name HTML_imgSwitch($htmlName, $off_img, $on_img, $off_text, $on_text, $separator, $default, &$outState)
+**description Defines an image button with two states and a text next to it.
 **parameter $htmlName: Name of the html image input element.
 **parameter $off_img: Name and path of image to be displayed if its state is "off"
 **parameter $on_img: Name and path of image to be displayed it its state is "on"
@@ -24,10 +24,13 @@ define('H_AJAXAUTOSUBMIT_VALUE','submit');
 **parameter $on_text: Text to be displayed if state is "on"
 **parameter $separator: Anything which shall be displayed between the picture (clickable) and the text (not clickable)
 **parameter $default: State of the image input element on first load of page ("on" or "off")
-**returns state of element (true for "on" or false for "off")
+**parameter $outState: Current state of element (true for "on" or false for "off").
+**returns true, if the button was clicked otherwise false.
 **/
-function HTML_imgSwitch($htmlName, $off_img, $on_img, $off_text, $on_text, $separator, $default)
+function HTML_imgSwitch($htmlName, $off_img, $on_img, $off_text, $on_text, $separator, $default, &$outState)
 {
+	$stateOld = $_POST['state_'.$htmlName];
+
 	if (isset($_POST[$htmlName.'_x']) && $_POST['state_'.$htmlName]=="on")
 		$state = "off" ;
 	elseif (isset($_POST[$htmlName.'_x']) && $_POST['state_'.$htmlName]=="off")
@@ -53,11 +56,13 @@ function HTML_imgSwitch($htmlName, $off_img, $on_img, $off_text, $on_text, $sepa
 		$text = $off_text;
 	}
 
-	define($htmlName, 
+	define($htmlName,
 		  HTML_hiddenVar('state_'.$htmlName, $state).'<INPUT type="image" src="'.$image.'" name="'.$htmlName.'">'.$separator.$text
 	);
+	
+	$outState = ($state == "on");
 
-	return($state == "on");
+	return($stateOld != $state);
 }
 
 

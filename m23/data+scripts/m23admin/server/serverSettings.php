@@ -128,6 +128,13 @@
 <br>
 
 
+<?php
+
+if (HTML_imgSwitch('SW_img', '/gfx/SSLCertificateCheckDisabled-32.png', '/gfx/SSLCertificateCheckEnabled-32.png', $I18N_SSLCertCheckDisabled, $I18N_SSLCertCheckEnabled, '<br>', !SERVER_isSSLCertCheckDisabled(), $SSLCertificateState))
+		SERVER_setSSLCertCheckDisabled(!$SSLCertificateState);
+
+?>
+
 <a name="serverHacks"></a>
 <span class="titlesmal"><?PHP echo($I18N_serverHacks);?></span>
 <table align="center">
@@ -156,6 +163,10 @@
 					<br>
 					<?=$I18N_calculator?>
 				</a>
+			</td>
+
+			<td align="center">
+				<?= SW_img ?>
 			</td>
 		</tr>
 	</table>

@@ -1192,5 +1192,7 @@ $I18N_exportSelectedPackages="Paketauswahl exportieren";
 $I18N_maximalAllowedFileSize="Maximale Dateigröße";
 $I18N_errorFileExists = 'Datei existiert bereits!';
 $I18N_errorUploadSizeMismatch = 'Die vom Browser gesendete Größe der hochgeladenen Datei stimmt mit der übertragenen Datenmenge nicht überein!';
-$I18N_fileWithExportedSelectedPackages="Datei mit vorgemerkten Paketen";
+$I18N_fileWithExportedSelectedPackages = 'Datei mit vorgemerkten Paketen';
+$I18N_SSLCertCheckDisabled = 'SSL-Zertifikatsüberprüfung deaktiviert';
+$I18N_SSLCertCheckEnabled = 'SSL-Zertifikatsüberprüfung aktiviert';
 ?>
