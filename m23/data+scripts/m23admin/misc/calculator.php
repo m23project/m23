@@ -94,7 +94,7 @@ if (HTML_submit("reset","RESET", stylishx2))
 if (HTML_submit("equals","=", stylishx2))
 	{for_equals($_SESSION["to_compute"]);};
 
-print ("<br>
+echo("<br>
 	<br>
 	<br>
 	<table border=\"8\" cellspacing=\"10\" cellpadding=\"5\" style=\"font-size: large ; font-weight:bold\">
@@ -108,7 +108,7 @@ print ("<br>
 		HTML_showTableRow(seven, eight, nine, minus);
 		HTML_showTableRow(four, five, six, times);
 		HTML_showTableRow(one, two, three, divide);
-print("	
+echo("	
 		<tr>
 			<td>".zero."</td>
 			<td>".dec."</td>

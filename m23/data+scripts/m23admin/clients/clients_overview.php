@@ -211,13 +211,13 @@
 		$lastmodify = date($DATE_TIME_FORMAT, $data['lastmodify']);
 		
 		if (($lineNr%2) == 1)
-			$color=' bgcolor="#A4D9FF" bordercolor="#A4D9FF"';
+			$class=' class="oddrow"';
 		else
-			$color='';
+			$class=' class="evenrow"';
 
 		/* Spalte für Client ausgeben */
 		echo("
-		<tr$color>
+		<tr$class>
 			<td>".($lineNr+1)."</td>
 			<td align=\"left\">$htmlStatus</td>
 			<td><a href=\"index.php?page=clientdetails&client=".$data['client']."&id=".$data['id']."\">$data[client]</a></td>

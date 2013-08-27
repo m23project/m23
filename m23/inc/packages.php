@@ -9,8 +9,32 @@ $*/
 
 
 /**
+**name PKG_cleanPackageLine(&$packageLine)
+**description Removes unwanted characters from a line containing package names and makes sure that there is only one line without line breaks.
+**parameter packageLine: Space seperated line containing the package names. The changed line will be written to the parameter too.
+**/
+function PKG_cleanPackageLine(&$packageLine)
+{
+	$packagesA = explode(' ', $packageLine);
+
+	//Make the entries unique and sort them
+	$packagesA = array_unique($packagesA);
+	sort($packagesA);
+	
+	//Trim every package name
+	array_walk($packagesA, 'HELPER_trimValue');
+
+	//Convert the packages array back to string
+	$packageLine = implode(' ', $packagesA);
+}
+
+
+
+
+
+/**
 **name PKG_combinem23normal($packageSelectionName)
-**description Combines the package names of multiple entries for m23normal and m23normalRemove jobs ind a package selection.
+**description Combines the package names of multiple entries for m23normal and m23normalRemove jobs in a package selection.
 **parameter packageSelectionName: Name of the package selection to optimise.
 **/
 function PKG_combinem23normal($packageSelectionName)
@@ -24,7 +48,7 @@ function PKG_combinem23normal($packageSelectionName)
 
 		//Create strings containing all packages saved under the priority as key
 		while ($line = mysql_fetch_array($res))
-			$packagesPriorityA[$line['priority']] .= $line['normalPackage'];
+			$packagesPriorityA[$line['priority']] .= trim($line['normalPackage']).' ';
 
 		//Run thru the package strings by priority
 		foreach ($packagesPriorityA as $priority => $packages)
@@ -38,7 +62,7 @@ function PKG_combinem23normal($packageSelectionName)
 
 			//Convert the packages array back to string
 			$packagesStr = implode(' ', $packagesA);
-			
+
 			//Delete the old entries
 			db_query("DELETE FROM `recommendpackages` WHERE `priority`='$priority' AND `package`='$type' AND `name`='$packageSelectionName'");
 
@@ -1020,9 +1044,9 @@ while ($line=mysql_fetch_row($result))
 	 $isNormal = false;
 
 	if (($i % 2) == 0)
-		$col = 'bgcolor="#A4D9FF" bordercolor="#A4D9FF"';
+		$class = 'class="evenrow"';
 	else
-		$col = '';
+		$class = 'class="oddrow"';
 
 	if ($line[0]=='m23normal')
 		{
@@ -1044,7 +1068,7 @@ while ($line=mysql_fetch_row($result))
 
 		 $var=$cbBaseName.$i;
 		 echo("
-		 	<tr $col>
+		 	<tr $class>
 				<td>$jobImg</td>
 				<td valign=\"top\">$status</td>
 				<td valign=\"top\"><b>".$line[2]."</b></td>
@@ -1059,7 +1083,7 @@ while ($line=mysql_fetch_row($result))
 		{//adds remove line for other packages
 		 $var="CB_rmpkg".$i;
 		 echo("
-		 	<tr $col>
+		 	<tr $class>
 				<td>$jobImg</td>
 				<td valign=\"top\">$status</td>
 				<td valign=\"top\"><b>".$line[0]."</b></td>
@@ -1297,9 +1321,9 @@ while (!feof($file))
 			$userScript = '';
 
 		if (($i % 2) == 0)
-			$col = 'bgcolor="#A4D9FF" bordercolor="#A4D9FF"';
+			$class = 'class="evenrow"';
 		else
-			$col = '';
+			$class = 'class="oddrow"';
 
 		//split package name and extension
 		$name_extension=explode("Install.php",$line);
@@ -1307,7 +1331,7 @@ while (!feof($file))
 		//adds remove line for other packages
 		$var="CB_specialPkg".$i;
 		
-		echo("<tr $col><td>$userScript".$name_extension[0]."</td><td></td><td>".PKG_getSpecialPackageDescription($name_extension[0],$distr)."</td><td><input type=\"checkbox\" name=\"$var\" value=\"".$name_extension[0]."\"></td></tr>\n");
+		echo("<tr $class><td>$userScript".$name_extension[0]."</td><td></td><td>".PKG_getSpecialPackageDescription($name_extension[0],$distr)."</td><td><input type=\"checkbox\" name=\"$var\" value=\"".$name_extension[0]."\"></td></tr>\n");
 
 		$i++;
 	};
@@ -1539,6 +1563,8 @@ function PKG_addStatusJob($client,$packageName,$priority,$params,$status)
 			{
 				$installedSize = 0;
 			}
+			
+			PKG_cleanPackageLine($params);
 
 			$sql = "SELECT id FROM `clientjobs` WHERE client='$client' AND status='$status' AND normalPackage='$params'";
 

@@ -22,10 +22,6 @@ export DEBIAN_FRONTEND=noninteractive\n
 
 apt-get update 2>&1 | tee -a /tmp/m23sourceupdate.log
 
-
-#apt-get -y --force-yes install xubuntu-desktop 2>&1 ; echo $? > /tmp/apt-err | tee /tmp/m23XubuntuDesktop.log
-#if test `cat /tmp/apt-err` -eq 0
-
 (");
 
 CLCFG_aptGet("install", "xubuntu-desktop");

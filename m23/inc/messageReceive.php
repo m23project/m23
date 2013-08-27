@@ -696,7 +696,7 @@ function MSR_getm23clientIDCMD($addChar)
 return("\n
 id=`cat /m23clientID 2> /dev/null`
 
-if test \$id
+if [ \$id ]
  then
   idvar=\"$addChar"."m23clientID=\$id\"
 fi
@@ -1093,9 +1093,9 @@ function MSR_getClientSettingsCommand()
 		awk -v ORS=\"\" '{print(\"&timeZone=\"$1)}' /etc/timezone >> /tmp/clientSettings.post
 	
 		#check if it's Debian
-		if test `ls /etc/debian_version | wc -l` -gt 0
+		if [ `ls /etc/debian_version | wc -l` -gt 0 ]
 		then
-			if test -f /etc/lsb-release
+			if [ -f /etc/lsb-release ]
 			then
 				awk -v ORS='' '/DISTRIB_ID=Ubuntu/ {print(\"&distr=ubuntu\")}
 				/DISTRIB_ID=LinuxMint/ {print(\"&distr=ubuntu\")}

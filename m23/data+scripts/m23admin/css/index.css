@@ -92,7 +92,7 @@ a:hover {
 
 /* SUBTABLE */
 .subtable, .partTables {
-	empty-cells:			hide;
+	empty-cells:			show/*hide*/;
 	border-top:				1px solid #000000;
 	border-bottom:			1px solid #000000;
 	border-left:			1px solid #000000;
@@ -177,7 +177,7 @@ a:hover {
 }
 
 .subtable_shadow tr, .subtable_shadow td, .subtable_shadow tbody {
-	empty-cells:			hide;
+	empty-cells:			show;
 	border-collapse:		collapse;
 	padding:				0px;
 }
@@ -324,6 +324,17 @@ a:hover {
 	font-size:				14px;
 	line-height:			15px;
 }
+
+.oddrow {
+	background-color: #A4D9FF;
+	border-color: #A4D9FF;
+  
+}
+
+.evenrow:hover, .oddrow:hover {
+	background-color: #FFFFFF;
+}
+
 
 /* Style für Errors */
 .inputerror {

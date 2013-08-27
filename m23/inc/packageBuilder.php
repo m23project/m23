@@ -117,15 +117,15 @@ function PKGBUILDER_listFiles()
 
 	foreach ($files as $fileName)
 	{
-		if ($colorBlue)
+		if ($rowodd)
 			{
-				$color=' bgcolor="#A4D9FF" bordercolor="#A4D9FF"';
-				$colorBlue = false;
+				$class=' class="oddrow"';
+				$rowodd = false;
 			}
 		else
 			{
-				$color='';
-				$colorBlue = true;
+				$class=' class="evenrow"';
+				$rowodd = true;
 			}
 
 		if (preg_match("/(tar.bz2$|tb2$|tar.gz$|tgz$)/i",$fileName) > 0)
@@ -152,7 +152,7 @@ function PKGBUILDER_listFiles()
 		}
 		
 		$fullPath = EXTRA_DEBS_DIRECTORY.$fileName;
-		echo("<tr$color>
+		echo("<tr$class>
 		<td>$fileName</td>
 		<td>".filesize($fullPath)."</td>
 		<td>".date($DATE_TIME_FORMAT,filectime($fullPath))."</td>

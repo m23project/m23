@@ -225,7 +225,7 @@ function EDIT_insertLineNumber($file, $lineNumber, $insertText,$insertMode,$addI
 	if ($addIfNotExists)
 		{
 			$preAdd="
-if test `".EDIT_countMatches($file,$insertText)."` -lt 1
+if [ `".EDIT_countMatches($file,$insertText)."` -lt 1 ]
 then
 	";
 			$afterAdd="
@@ -393,7 +393,7 @@ return("
 function EDIT_deleteLines($file,$from,$to)
 {
 return("
-if test $from
+if [ $from ]
 then
 	".EDIT_savePerms($file)."
 	awk -v FROM=$from -v TO=$to '(NR<FROM)||(NR>TO) {print \$0}' $file > $file.m23
@@ -416,7 +416,7 @@ fi");
 function EDIT_deleteLinesAmount($file,$from,$amount)
 {
 return("
-if test $from
+if [ $from ]
 then
 	".EDIT_savePerms($file)."
 	awk -v FROM=$from -v AMOUNT=$amount '
@@ -442,7 +442,7 @@ function EDIT_addIfNotExists($file,$search,$add)
 {
 return(EDIT_savePerms($file)."
 
-if test `".EDIT_countMatches($file,$search)."` -lt 1
+if [ `".EDIT_countMatches($file,$search)."` -lt 1 ]
 then
 cat >> $file << \"ADDIFNOTEXISTSEOF\"
 $add

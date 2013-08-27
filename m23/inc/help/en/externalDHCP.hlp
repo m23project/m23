@@ -16,22 +16,49 @@ Solutions:
 <h3>The other DHCP server CANNOT be deactivated</h3>
 In this case you need to adjust the configuration of the other DHCP server manually and set up a TFTP server if necessary. Have a look into the documentation of your DHCP and TFTP servers for correct configuration.
 
-<ol>
-	<li>Choose <i>"gPXE/DHCP"</i> at <i>"$I18N_boottype"</i> when adding a new client in the m23 webinterface. Assign the computer name the DHCP server will give to the client at <i>"$I18N_client_name"</i>.</li>
+<!-- v13.2 begin-->
+<h4>ISC DHCP server</h4>
+If the other DHCP server is the <a href="http://www.isc.org/downloads/dhcp/">ISC DHCP server</a>, you can use it in place of the m23 DHCP server.
 
-	<li>Configure the DHCP server to send the same client name, that was entered in the m23 webinterface, to the m23 client.</li>
+<ol>
+
+	<li>Choose <i>"PXE"</i> at <i>"$I18N_boottype"</i> when adding a new client in the m23 webinterface. Assign the computer name the DHCP server will give to the client at <i>"$I18N_client_name"</i>.</li>	
+
+	<li>Deactivate the DHCP server on your m23 server: Edit the file <pre>/etc/default/isc-dhcp-server</pre> at the m23 server, comment out the line <pre>INTERFACES=...</pre> by putting a "#" in front and add the new line <pre>INTERFACES=""</pre> below. Afterwards, restart the DHCP server with <pre>/etc/init.d/isc-dhcp-server restart</pre>. It will still be running, but will not answer any requests any longer.</li>
+	
+	<li>In the configuration for your DHCP server, set the option <pre>use-host-decl-names on</pre> for the group which will contain the m23 clients.</li>
+	
+	<li>Regularly update the m23 group in the configuration of your DHCP server (e.g. using a cron job or another automated method) using the data of your m23 from the URL  <pre>http://&lt;m23-Server-IP&gt;/exportDHCPSettings.php</pre>. This URL provides the configuration in "ISC DHCP server" notation for m23 clients which are to boot via network. The group with the m23 clients could, for example, look like this:
+	<code>
+group {
+use-host-decl-names on;
+&lt;data imported from exportDHCPSettings.php&gt;
+}
+	</code>
+
+	
+	
+	</li>
+</ol>
+<!-- v13.2 end-->
+
+<h4>Other DHCP server</h4>
+
+<ol>
+	
+	<li>Choose <!--cha v13.2--><i>"PXE"</i><!--cha v13.2 end--> at <i>"$I18N_boottype"</i> when adding a new client in the m23 webinterface. Assign the computer name the DHCP server will give to the client at <i>"$I18N_client_name"</i>.</li>
+	
+	<li>Configure the DHCP server in order to send the same client name which was entered in the m23 webinterface to the m23 client.</li>
 
 <!--cha v13.1 -->
 	<li>The PXE kernel name the DHCP server transfers to the client needs to be <b>pxelinux.0</b>. TFTP server is the m23 server.</li>
-
-	<li>The DHCP server must send the following kernel parameters to the m23 client:
-		<pre>m23clientID="<b>&lt;m23 client number&gt;</b>" m23server="<b>&lt;m23 server hostname or IP&gt;</b>" devfs=nomount vga=normal load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=<b>45000</b> initrd=initrd.gz root=/dev/ram0 rw</pre>
-		Replace <b>&lt;m23 client number&gt;</b> with the number of the m23 client (you can find this number under <i>"$I18N_overview_clients"</i> in the URL of the particular client) and <b>&lt;m23 server hostname or IP&gt;</b> with the computer name (resolvable by the m23 client) (<a href="http://en.wikipedia.org/wiki/Fully_qualified_domain_name">FQDN</a>) or the IP of the m23 server. In addition, you may need to adjust <b>45000</b> with the current value from the file /m23/inc/kernelRamDisk.inc.
-	</li>
 <!--cha v13.1 end-->
 
+<!-- v13.2 begin-->
+	<li>Configure the DHCP server in a way that it gives the IP of the m23 server as IP of origin to the m23 clients.</li>
+<!-- v13.2 end-->
+
 	<li>You may need to set up a TFTP server on the same machine as your DHCP server, if you cannot configure the DHCP to let the m23 clients download the boot files from the m23 server. You can take the files from the directory /m23/tftp/ as basis for your configuration.</li>
-</ol>
 
 <!--new v13.1 -->
 <h3>Proxy DHCP</h3>

@@ -10,6 +10,20 @@ $*/
 
 
 /**
+**name HELPER_trimValue(&$value)
+**description Runs trim on the input parameter and writes the result back.
+**parameter value: Value to trim.
+**/
+function HELPER_trimValue(&$value)
+{
+	$value = trim($value);
+}
+
+
+
+
+
+/**
 **name HELPER_xargsRecursive($cmd, $argsA, $tabAmount = 0)
 **description Executes a BASH command with a list of arguments. If the BASH command fails, the argument list is split in two parts and recursively executed again.
 **parameter cmd: BASH command
@@ -482,7 +496,7 @@ function print_r2($in)
 	if (is_array($in))
 		ksort($in);
 
-	print(nl2br(print_r($in,true)));
+	echo(nl2br(print_r($in,true)));
 }
 
 

@@ -88,7 +88,7 @@ m23clientIDEOF
 function CIR_detectSCSI()
 {
 	echo("
-	if test -e /tmp/scsirun
+	if [ -e /tmp/scsirun ]
 	then
  		true
 	else
@@ -150,6 +150,8 @@ function CIR_waitForNextJob()
 
 	$quiet = ($_SESSION['debug'] ? "": "-qq");
 
+	$wPhp = workPhpName();
+
 	include("/m23/inc/i18n/".I18N_m23instLanguage($lang)."/m23inst.php");
 
 
@@ -170,16 +172,16 @@ while \$loopRun
 	echo("
 		#Add the client ID if it is available
 		id=`cat /m23clientID 2> /dev/null`
-		if test \$id
+		if [ \$id ]
 		then
 			idvar=\"?m23clientID=\$id\"
 		fi
 
-		wget $quiet -Owork.php \"https://".getServerIP()."/work.php\$idvar\" --no-check-certificate
+		wget $quiet -O$wPhp \"https://".getServerIP()."/work.php\$idvar\" --no-check-certificate
 		
-		if test `find work.php -printf \"%s\"` -gt 0
+		if [ `find $wPhp -printf \"%s\"` -gt 15 ]
 		then
-			chmod +x work.php
+			chmod +x $wPhp
 			loopRun=`false`
 			break
 		fi
@@ -187,7 +189,7 @@ while \$loopRun
 		TIME=`expr \$SEC / 60`
 		SEC=`expr \$SEC + 20`
 	done
-	./work.php
+	./$wPhp
 	\n");
 };
 
@@ -217,7 +219,7 @@ function CIR_enableDropbear()
 // 	return(true);
 
 	echo ("
-if test -e /etc/dropbear/dropbear_rsa_host_key
+if [ -e /etc/dropbear/dropbear_rsa_host_key ]
 then
 	echo
 else\n");

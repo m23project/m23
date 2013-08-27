@@ -61,7 +61,7 @@ if (BURN_getStatus()==BURNSTATE_IDLE)
 		$blankCommand="
 sudo screen -dmS m23cdBlank sh /m23/bin/blankCD $dev $method
 ";
-	print($blankCommand);
+// 	print($blankCommand);
 		exec($blankCommand);
 	};
 };

@@ -102,13 +102,13 @@ function PKG_listPackages($key,$distr="debian",$packagesource, $client)
 		$i++;
 
 		if (($i % 2) == 0)
-			$col = 'bgcolor="#A4D9FF" bordercolor="#A4D9FF"';
+			$class = 'class="evenrow"';
 		else
-			$col = '';
+			$class = 'class="oddrow"';
 
 		//print the line
 		echo("
-		<tr $col>
+		<tr $class>
 			<td>".$name."</td>
 			<td>".number_format((float)$size/1024,2)." MB</td>
 			<td>".wordwrap(htmlentities($desc),60,"<br>",1)."</td>

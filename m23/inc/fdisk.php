@@ -3547,15 +3547,15 @@ function FDISK_showDiskDefine($client)
 	//figure out client name + id
 	if (empty($client))
 	{
-		print("<h1>empty($client)</h1>");
+// 		print("<h1>empty($client)</h1>");
 		$client = $_SESSION['preferenceSpace']['client'];
-		print("<h1>empty($client)</h1>");
+// 		print("<h1>empty($client)</h1>");
 	}
 	
-	print("<h1>FDISK_showDiskDefine($client)</h1>");
+// 	print("<h1>FDISK_showDiskDefine($client)</h1>");
 	
 	$id = CLIENT_getId($client);
-	print("<h1>FDISK_showDiskDefine($id)</h1>");
+// 	print("<h1>FDISK_showDiskDefine($id)</h1>");
 
 	
 	if (isset($_POST['BUT_submit']) && !is_numeric($_POST['ED_size']) && isset($_POST['go2']))
@@ -3890,7 +3890,7 @@ function FDISK_genPartedCommands($partJobs, $mkfsextOptions, $sourceslist)
 			$out .= "\n
 			echo $? > /tmp/parted.err
 
-			if test `cat /tmp/parted.err` -ne 0
+			if [ `cat /tmp/parted.err` -ne 0 ]
 			then
 				".sendClientLogStatus("Partition or format error: $cmd",false,$critical)."
 			else

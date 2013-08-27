@@ -1176,4 +1176,14 @@ $I18N_cssChanged_two = '.';
 $I18N_cssNotAvailable = 'The selected CSS is not available.';
 $I18N_languageChangedTo_one = 'The language was changed to ';
 $I18N_languageChangedTo_two = '.';
+
+//13.2
+$I18N_disableSSLCertCheck = 'Disable SSL certificate check for wget';
+$I18N_exportSelectedPackages = 'Export selected packages';
+$I18N_maximalAllowedFileSize = 'Maximal file size';
+$I18N_errorFileExists = 'File exists already!';
+$I18N_errorUploadSizeMismatch = 'The file size reported by the webbrowser and the amount of transferred data are mismatching!';
+$I18N_fileWithExportedSelectedPackages = 'File with selected packages';
+$I18N_SSLCertCheckDisabled = 'SSL certificate check disabled';
+$I18N_SSLCertCheckEnabled = 'SSL certificate check enabled';
 ?>

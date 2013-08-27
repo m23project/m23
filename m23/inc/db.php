@@ -355,25 +355,40 @@ function deleteClientLogs($clientName)
 
 
 /**
+**name workPhpName()
+**description Generates an unique name for storing the work.php file.
+**returns Unique name for storing the work.php file.
+**/
+function workPhpName()
+{
+	return('work.php-'.uniqid(time().'-'));
+}
+
+
+
+
+
+/**
 **name executeNextWork()
 **description generates a bash script that fetches the next work.php from server
 **/
 function executeNextWork()
 {
 	$quietWget = ($_SESSION['debug'] ? "": "-qq");
+	$wPhp = workPhpName();
 
  echo("
- mv work.php `date +%s`.old
+ mv work.php* `date +%s`.old 2> /dev/null
  
  ".MSR_getm23clientIDCMD("?")."
  
- rm work.php 2> /dev/null\n
+ rm work.php* 2> /dev/null\n
  
- wget $quietWget -Owork.php \"https://".getServerIP()."/work.php\$idvar\"
+ wget $quietWget -O$wPhp \"https://".getServerIP()."/work.php\$idvar\"
  
- chmod +x work.php
+ chmod +x $wPhp
  
- ./work.php\n");
+ ./$wPhp\n");
 }
 
 

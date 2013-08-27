@@ -1926,9 +1926,9 @@ function HTML_showTableRow()
 	if (is_bool($first))
 	{
 		if ($first)
-			$color=' bgcolor="#A4D9FF" bordercolor="#A4D9FF"';
+			$class=' class="oddrow"';
 		else
-			$color='';
+			$class=' class="evenrow"';
 
 		//The first parameter with row contents is 1
 		$i = 1;
@@ -1938,7 +1938,7 @@ function HTML_showTableRow()
 		$i = 0;
 
 	$amount = func_num_args();
-	echo("<tr$color>\n");
+	echo("<tr$class>\n");
 	for(; $i < $amount; $i++)
 		echo("<td><p>".func_get_arg($i)."</p></td>\n");
 	echo("</tr>\n");

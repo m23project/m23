@@ -282,7 +282,9 @@ function showWait()
 		HTML_hiddenVar('HID_distr', $distr).
 		HTML_hiddenVar('HID_groupStr', $groupStr).
 		HTML_hiddenVar('HID_action', $action).
-		HTML_hiddenVar('HID_id', $id));
+		HTML_hiddenVar('HID_id', $id).
+		HTML_hiddenVar('HID_client', $client)
+		);
 
 	HTML_setPage('installpackages');
 
@@ -592,14 +594,14 @@ function showWait()
 		}
 	};
 
-	if ('packageSelection' != $action)
+	if (('packageSelection' != $action) && (!$isUpdate))
 		echo('<br><br>'.BUT_acceptJobs);
 
 
 	HTML_urlButton('DL_exportSelectedPackages', $I18N_exportSelectedPackages, '/m23admin/packages/exportSelectedPackages.php?client='.$client);
 
 	//update mode
-	if (!$isPackageSelection)
+	if ($isUpdate)
 		echo(BUT_startUpdate);
 
 

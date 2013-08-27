@@ -1151,4 +1151,14 @@ $I18N_cssChanged_two = '.';
 $I18N_cssNotAvailable = 'Le CSS sélectionné n\'est pas disponible.';
 $I18N_languageChangedTo_one = 'La langue a été changée à ';
 $I18N_languageChangedTo_two = '.';
+
+//13.2
+$I18N_disableSSLCertCheck = 'Désactiver la vérification des certificats SSL pour wget';
+$I18N_exportSelectedPackages = 'Exporter la sélection de paquets';
+$I18N_maximalAllowedFileSize = 'Taille maximale du fichier';
+$I18N_errorFileExists = 'Le fichier existe déjà!';
+$I18N_errorUploadSizeMismatch = 'La taille du fichier téléchargé indiquée par le navigateur web ne correspond pas à la quantité de données téléchargée!';
+$I18N_fileWithExportedSelectedPackages = 'Datei mit vorgemerkten Paketen';
+$I18N_SSLCertCheckDisabled = 'Vérification des certificats SSL désactivée';
+$I18N_SSLCertCheckEnabled = 'Vérification des certificats SSL activée';
 ?>

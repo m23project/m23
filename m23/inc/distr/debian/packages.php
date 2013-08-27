@@ -418,9 +418,9 @@ function PKG_listPackages($key,$distr="debian",$packagesource, $client="", $comp
 		$i++;
 
 		if (($i % 2) == 0)
-			$col = 'bgcolor="#A4D9FF" bordercolor="#A4D9FF"';
+			$class = 'class="evenrow"';
 		else
-			$col = '';
+			$class = 'class="oddrow"';
 			
 
 		//Get the full package description and sizes (or not)
@@ -437,7 +437,7 @@ function PKG_listPackages($key,$distr="debian",$packagesource, $client="", $comp
 
 		//print the line
 		echo("
-		<tr $col>
+		<tr $class>
 			<td>".$package_description[0]."</td>
 			<td>".number_format((float)$descriptionSize[1]/1024,2)." MB</td>
 			<td>".wordwrap(htmlentities($descriptionSize[0]),60,"<br>",1)."</td>

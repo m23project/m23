@@ -1,3 +1,59 @@
+2013-08-27
+new: CLI_getModulePath: Checks, if a module exists and builds the full path to the module file.
+new: CLI_getModuleInfo: Gets information about a given module.
+new: CLI_getModuleDescription: Gets the description about a given module.
+new: CLI_getModuleParameter: Gets the parameter(s) about a given module.
+new: CLI_getModuleParameterLine: Gets the information line with module name and parameter(s) about a given module.
+new: CLI_showAllModuleDescription: Shows a list of all modules with their descriptions.
+patch 100679: CSS improvements.
+cha: CSS improvements: Now the current row the mouse points to in many tables is highlighted.
++++++
+2013-08-26
+patch 100678: Fix for the mass installation dialog and smal fixes.
+fix: massInstall.php: Fixed call time pass by reference.
+fix: CLCFG_monoRemove: Corrects syntax if BASH's [ ].
+new: HELPER_trimValue: Runs trim on the input parameter and writes the result back.
+new: PKG_cleanPackageLine: Removes unwanted characters from a line containing package names and makes sure that there is only one line without line breaks.
+cha: PKG_addStatusJob: Now calls PKG_cleanPackageLine on normal package installation or removal.
++++++
+2013-08-24
+cha: FDISK_showDiskDefine, BURN_blank, CPoolLister::__construct: Commented out debug code.
+cha: print_r2, calculator.php, themeChoice.php: Now uses echo instead of print.
+cha: check.php: Removed.
++++++
+2013-08-22
+patch 100677: Corrects output of the package selection optimisation.
+fix: PKG_combinem23normal: Now adds the needed space between the package names.
++++++
+2013-08-19
+patch 100676: Fixed update buttons.
+fix: install_packages.php: Now the update button is shown only when in update mode.
++++++
+2013-08-18
+release 13.2
+patch 100675: Smal fix for package installation, updated documentation.
+new: Translations complete. New manuals and development guide.
+fix: install_packages.php: Now the client name is stored.
++++++
+2013-08-17
+patch 100674: New network bootimages to add SSH login (e.g for client's realtime status) again.
+cha: createRFSBins: Now adds libnsl.so.1 for dropbear.
+patch 100673: Configuration for the netbootimages.
+cha: BusyBox config: Now the BB's internal functions are used to handle /etc/shadow and /etc/passwd.
+new: DebianSystemCleaner-PrepareVMForCompression: Removes unneeded packages from a Raspbian installation and prepares for compression.
++++++
+2013-08-14
+patch 100672: Presetup works now on Wheezy bootimages.
+fix: CIR_waitForNextJob: Increased check size for empty fetched work.phps to 15 bytes.
+patch 100671: Fixes for Debian Wheezy booimages.
+cha: *.php: Changed all BASH "test" calls to "[ ]" syntax.
+new: workPhpName: Generates an unique name for storing the work.php file.
+cha: executeNextWork, CIR_waitForNextJob: Now uses workPhpName.
++++++
+2013-08-13
+patch 100670: Support for Linux Mint assimisation, Debian Wheezy based netbootimages, option for disabling the SSL certificate check for all clients.
+cha: downloadExtractRFS: Now uses the BASH version of hwsetup.
++++++
 2013-08-12
 cha: Kernel configuration: Changed ramdisk size to 80MB.
 +++++

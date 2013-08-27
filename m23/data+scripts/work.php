@@ -25,6 +25,9 @@
 	if (file_exists('/m23/inc/m23shared/m23shared.php')) include_once('/m23/inc/m23shared/m23shared.php');
 
 	session_start();
+	
+echo('#!/bin/bash
+');
 
 	dbConnect();
 

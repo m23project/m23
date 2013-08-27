@@ -23,7 +23,7 @@ export DEBIAN_FRONTEND=noninteractive\n
 apt-get update 2>&1 | tee -a /tmp/m23sourceupdate.log
 
 langPkg=`apt-cache search kde-i18n-$lV[packagelang] | cut -d' ' -f1`
-if test -z \$langPkg
+if [ -z \$langPkg
 then
 	langPkg=`apt-cache search language-pack-kde-$lV[packagelang] | cut -d' ' -f1`
 fi

@@ -26,7 +26,7 @@ apt-get update 2>&1 | tee -a /tmp/m23sourceupdate.log
 apt-get -y -m --force-yes install linuxmint-keyring
 
 langPkg=`apt-cache search kde-i18n-$lV[packagelang] | cut -d' ' -f1`
-if test -z \$langPkg
+if [ -z \$langPkg ]
 then
 	langPkg=`apt-cache search language-pack-kde-$lV[packagelang] | cut -d' ' -f1`
 fi
@@ -40,7 +40,7 @@ fi
 
 apt-get -y -m --force-yes install \$langPkg kubuntu-desktop 2>&1 ; echo $? > /tmp/apt-err | tee /tmp/m23UbuntuDesktop.log
 
-if test `cat /tmp/apt-err` -eq 0
+if [ `cat /tmp/apt-err` -eq 0 ]
 then
 	".sendClientLogStatus("KDE installed",true,false)."
 else

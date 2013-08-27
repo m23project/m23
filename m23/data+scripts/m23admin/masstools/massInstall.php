@@ -123,7 +123,7 @@
 						{ //submit button clicked
 							if (!empty($_POST[DBfileName]))
 								{ //no db file selected
-									$errMsg = MASS_checkAndSaveFields(&$EGKparams);
+									$errMsg = MASS_checkAndSaveFields($EGKparams);
 		
 									if (!empty($errMsg))
 										MSG_showError($errMsg,$GLOBALS["m23_language"]);
@@ -151,7 +151,7 @@
 
 					if (!empty($_POST[BUT_submit3]) && $_POST[go]=="t")
 						{
-							MASS_saveGeneratorOptions(&$EGKparams);
+							MASS_saveGeneratorOptions($EGKparams);
 							MSG_showInfo($I18N_data_saved,$GLOBALS["m23_language"]);
 							$LAB_submit="$I18N_nextStep ($I18N_MIstep4)";
 							$step = 4;

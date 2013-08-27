@@ -1092,11 +1092,11 @@ function CLIENT_listPackages($client, $key,$withActions)
 				$actions="";
 				
 			if (($counter % 2) == 0)
-				$col = 'bgcolor="#A4D9FF" bordercolor="#A4D9FF"';
+				$class = 'class="evenrow"';
 			else
-				$col = '';
+				$class = 'class="oddrow"';
 
-			echo("<tr $col><td>".$line[0]."</td><td>".$line[1]."</td><td>".PKG_translateClientPackageStatus($line[2])."</td>$actions</tr>\n");
+			echo("<tr $class><td>".$line[0]."</td><td>".$line[1]."</td><td>".PKG_translateClientPackageStatus($line[2])."</td>$actions</tr>\n");
 			$counter++;
 		};
 
@@ -1583,12 +1583,12 @@ if( $results )
 			$status = PKG_translateClientjobsStatus($data['status']);
 
 			if (($count % 2) == 0)
-				$col = 'bgcolor="#A4D9FF" bordercolor="#A4D9FF"';
+				$class = 'class="evenrow"';
 			else
-				$col = '';
+				$class = 'class="oddrow"';
 
 			echo("
-						<tr $col>
+						<tr $class>
 							<td valign=\"top\">$package</td>
 							<td valign=\"top\">".wordwrap($params,75,"<br>",1)."</td>
 							<td valign=\"top\" align=\"center\">$data[priority]</td>
@@ -3221,7 +3221,8 @@ function CLIENT_showAddDialog($addType)
 	else
 {
 
-$col = 'bgcolor="#A4D9FF" bordercolor="#A4D9FF"';
+$oddrow = 'class="oddrow"';
+$evenrow = 'class="evenrow"';
 
 HTML_setPage($page);
 		echo ("
@@ -3231,42 +3232,42 @@ HTML_setPage($page);
 	<td><div class=\"subtable_shadow\">
 		<table align=\"center\" class=\"subtable2\">
 			
-			<tr><td>$I18N_preferences</td><td>");PREF_showPreferenceManager();echo("</td>$rowDescription</tr>
-			<tr $col><td>$I18N_language</td><td>".SEL_language."</td>".RB_change_language."</tr>
-			<tr><td>$I18N_login_name*</td><td>".ED_login." ($I18N_eg pmiller)</td>".RB_change_login."</tr>
-			<tr $col><td>$I18N_client_name*</td><td>".ED_client." ($I18N_eg Test01)</td>".RB_change_client."</tr>
-			<tr><td>$I18N_office</td><td>".ED_office."</td>".RB_change_office."</tr>
-			<tr $col><td>$I18N_forename*</td><td>".ED_name."</td>".RB_change_name."</tr>
-			<tr><td>$I18N_familyname</td><td>".ED_familyname."</td>".RB_change_familyname."</tr>
-			<tr $col><td>eMail</td><td>".ED_eMail."</td>".RB_change_eMail."</tr>
-			<tr><td>$I18N_boottype*</td><td>".SEL_boottype."</td>".RB_change_boottype."</tr>
-			<tr $col><td>$I18N_bootloader</td><td>".SEL_bootloader."</td>".RB_change_bootloader."</tr>
-			<tr><td>$I18N_arch*</td><td>".SEL_arch."</td>".RB_change_arch."</tr>
+			<tr $evenrow><td>$I18N_preferences</td><td>");PREF_showPreferenceManager();echo("</td>$rowDescription</tr>
+			<tr $oddrow><td>$I18N_language</td><td>".SEL_language."</td>".RB_change_language."</tr>
+			<tr $evenrow><td>$I18N_login_name*</td><td>".ED_login." ($I18N_eg pmiller)</td>".RB_change_login."</tr>
+			<tr $oddrow><td>$I18N_client_name*</td><td>".ED_client." ($I18N_eg Test01)</td>".RB_change_client."</tr>
+			<tr $evenrow><td>$I18N_office</td><td>".ED_office."</td>".RB_change_office."</tr>
+			<tr $oddrow><td>$I18N_forename*</td><td>".ED_name."</td>".RB_change_name."</tr>
+			<tr $evenrow><td>$I18N_familyname</td><td>".ED_familyname."</td>".RB_change_familyname."</tr>
+			<tr $oddrow><td>eMail</td><td>".ED_eMail."</td>".RB_change_eMail."</tr>
+			<tr $evenrow><td>$I18N_boottype*</td><td>".SEL_boottype."</td>".RB_change_boottype."</tr>
+			<tr $oddrow><td>$I18N_bootloader</td><td>".SEL_bootloader."</td>".RB_change_bootloader."</tr>
+			<tr $evenrow><td>$I18N_arch*</td><td>".SEL_arch."</td>".RB_change_arch."</tr>
 			");
 
 if ($addType == ADDDIALOG_changeClient)
-		echo("<tr><td>Kernel</td><td>".SEL_kernel."</td>".RB_change_kernel."</tr>");
+		echo("<tr $evenrow><td>Kernel</td><td>".SEL_kernel."</td>".RB_change_kernel."</tr>");
 
 if ((($addType == ADDDIALOG_normalAdd) ||
 	($addType == ADDDIALOG_changeClient)) && !$_SESSION['m23Shared'])
-		echo("<tr $col><td>$I18N_mac*</td><td>".ED_mac." ($I18N_eg 009b52a5e121)</td>".RB_change_mac."</tr>
-			<tr><td>$I18N_ip*</td><td>".ED_ip." ($I18N_eg 192.168.0.5)</td>".RB_change_ip."</tr>");
+		echo("<tr $oddrow><td>$I18N_mac*</td><td>".ED_mac." ($I18N_eg 009b52a5e121)</td>".RB_change_mac."</tr>
+			<tr $evenrow><td>$I18N_ip*</td><td>".ED_ip." ($I18N_eg 192.168.0.5)</td>".RB_change_ip."</tr>");
 
 	if (!$_SESSION['m23Shared'])
-echo("		<tr $col><td>$I18N_netmask*</td><td>".ED_netmask." ($I18N_eg 255.255.255.0)</td>".RB_change_netmask."</tr>
-			<tr><td>$I18N_gateway*</td><td>".ED_gateway." ($I18N_eg 192.168.0.1)</td>".RB_change_gateway."</tr>
-			<tr $col><td>DNS1*</td><td>".ED_dns1." ($I18N_eg 192.168.0.1)</td>".RB_change_dns1."</tr>
-			<tr><td>DNS2</td><td>".ED_dns2."</td>".RB_change_dns2."</tr>");
+echo("		<tr $oddrow><td>$I18N_netmask*</td><td>".ED_netmask." ($I18N_eg 255.255.255.0)</td>".RB_change_netmask."</tr>
+			<tr $evenrow><td>$I18N_gateway*</td><td>".ED_gateway." ($I18N_eg 192.168.0.1)</td>".RB_change_gateway."</tr>
+			<tr $oddrow><td>DNS1*</td><td>".ED_dns1." ($I18N_eg 192.168.0.1)</td>".RB_change_dns1."</tr>
+			<tr $evenrow><td>DNS2</td><td>".ED_dns2."</td>".RB_change_dns2."</tr>");
 
 echo("
-			<tr $col><td>$I18N_packageProxy</td><td>".ED_packageProxy." Port ".ED_packagePort."</td>".RB_change_proxy."</tr>
-			<tr><td>$I18N_group</td><td>".SEL_group."</td></tr>
-			<tr $col><td>$I18N_userpassword*</td><td>".ED_firstpw."</td>".RB_change_firstpw."</tr>
-			<tr><td>$I18N_rootpassword*</td><td>".ED_rootpassword."</td>".RB_change_rootpassword."</tr>
-			<tr $col><td>$I18N_timeZone</td><td>".SEL_timeZone."</td>".RB_change_timeZone."</tr>
-			<tr><td>$I18N_getSystemtimeByNTP</td><td>".CB_getSystemtimeByNTP."</td>".RB_change_getSystemtimeByNTP."</tr>
-			<tr $col><td>$I18N_installPrinterDriversAndDetectPrinter</td><td>".CB_installPrinter."</td>".RB_change_installPrinter."</tr>
-			<tr><td>$I18N_addNewLocalLogin</td><td>".CB_addNewLocalLogin."</td>".RB_change_addNewLocalLogin."</tr>
+			<tr $oddrow><td>$I18N_packageProxy</td><td>".ED_packageProxy." Port ".ED_packagePort."</td>".RB_change_proxy."</tr>
+			<tr $evenrow><td>$I18N_group</td><td>".SEL_group."</td></tr>
+			<tr $oddrow><td>$I18N_userpassword*</td><td>".ED_firstpw."</td>".RB_change_firstpw."</tr>
+			<tr $evenrow><td>$I18N_rootpassword*</td><td>".ED_rootpassword."</td>".RB_change_rootpassword."</tr>
+			<tr $oddrow><td>$I18N_timeZone</td><td>".SEL_timeZone."</td>".RB_change_timeZone."</tr>
+			<tr $evenrow><td>$I18N_getSystemtimeByNTP</td><td>".CB_getSystemtimeByNTP."</td>".RB_change_getSystemtimeByNTP."</tr>
+			<tr $oddrow><td>$I18N_installPrinterDriversAndDetectPrinter</td><td>".CB_installPrinter."</td>".RB_change_installPrinter."</tr>
+			<tr $evenrow><td>$I18N_addNewLocalLogin</td><td>".CB_addNewLocalLogin."</td>".RB_change_addNewLocalLogin."</tr>
 	");
 
 

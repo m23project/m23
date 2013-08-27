@@ -35,7 +35,7 @@ function CLCFG_monoRemove()
 	CLCFG_aptGet('remove', 'libmono*');
 
 	echo('
-	if [ $tomboyCounter -gt 0]
+	if [ $tomboyCounter -gt 0 ]
 	then
 	');
 		CLCFG_aptGet('install', 'gnote');
@@ -210,8 +210,8 @@ echo("
 cat >> $tempFile << \"EOF\"
 $debconf
 EOF
-	rm $tempFile
 	debconf-set-selections $tempFile
+	rm $tempFile
 ");
 }
 
@@ -596,7 +596,7 @@ debconf-set-selections /tmp/debconfGnome2
 apt-get --force-yes -y install gnome-core xscreensaver 2>&1 | tee -a /tmp/m23gnome2.log
 
 run=0
-while test `whereis gnome-control-center | wc -w` -lt 2 && test \$run -lt 10
+while [ `whereis gnome-control-center | wc -w` -lt 2 ] && [ \$run -lt 10 ]
 do
 apt-get --force-yes -y install gnome-core xscreensaver 2>&1 | tee -a /tmp/m23gnome2.log
 apt-get install -f
@@ -669,7 +669,7 @@ apt-get remove xdm -y
 
 grep DEBCONF_DAEMON= /etc/init.d/gdm | cut -d'=' -f2 > /etc/X11/default-display-manager
 
-#if test -f /usr/bin/gdm
+#if [ -f /usr/bin/gdm ]
 #then
 #	echo \"/usr/bin/gdm\" > /etc/X11/default-display-manager
 #else
@@ -766,15 +766,15 @@ kdeBase=`apt-cache search kdebase | grep ^kdebase | cut -d' ' -f1 | grep -v \"\\
 kdeLibs=`apt-cache search kdelibs4 | cut -d' ' -f1 | grep -v \"\\-\"`
 kdm=`apt-cache search kdm | cut -d' ' -f1 | grep kdm\$`
 langPkg=`apt-cache search kde-i18n-$lV[packagelang] | cut -d' ' -f1`
-if test -z \$langPkg
+if [ -z \$langPkg ]
 then
 	langPkg=`apt-cache search language-pack-kde-$lV[packagelang] | cut -d' ' -f1`
 fi
 
-if test -z \$kdm
+if [ -z \$kdm ]
 then
 	kdm=`apt-cache search xdm | cut -d' ' -f1`
-	if test -z \$kdm
+	if [ -z \$kdm ]
 	then
 		kdm=`apt-cache search gdm | cut -d' ' -f1`
 	fi
@@ -830,7 +830,7 @@ apt-get -m -y --force-yes install phonon-backend-gstreamer gstreamer0.10-plugins
 echo("
 apt-get -m -y --force-yes install language-pack-gnome-$lV[packagelang]
 
-if test `cat /tmp/apt-err` -eq 0
+if [ `cat /tmp/apt-err` -eq 0 ]
 then
 	".sendClientLogStatus("KDE installed",true,$critical)."
 else
@@ -1184,11 +1184,11 @@ useradd -m -g users -d /home/$username -s /bin/bash -p '$cpass' \"$username\"  >
 
 err=\$?
 
-if test \$err -eq 0
+if [ \$err -eq 0 ]
 	then
 		".sendClientLogStatus("adding user",true)."
 	else
-		if test \$err -eq 9
+		if [ \$err -eq 9 ]
 			then
 				".sendClientLogStatus("adding user (user exists)",true)."
 			else
@@ -1326,7 +1326,7 @@ then
 fi
 
 #alternative way to get the kernel version: used by Debian
-if test -z \"\$KERNEL_NAME\"
+if [ -z \"\$KERNEL_NAME\" ]
 then
 	olddir=`pwd`
 	cd /boot/
@@ -1376,11 +1376,11 @@ echo 'none	/dev/pts	devpts	defaults,auto	0 0
 mkdir -p /dev/pts
 
 #check for the programm to create the initrd
-if test `whereis mkinitrd | wc -w` -gt 1
+if [ `whereis mkinitrd | wc -w` -gt 1 ]
 then
 	initrdPath=\"mkinitrd\"
 else
-	if test `whereis mkinitramfs | wc -w` -gt 1
+	if [ `whereis mkinitramfs | wc -w` -gt 1 ]
 	then
 		initrdPath=\"mkinitramfs\"
 	fi
@@ -1591,7 +1591,7 @@ echo ("
 mv /sbin/init.deactivated /sbin/init
 
 #check if the fstab file exists
-if test -f /etc/fstab
+if [ -f /etc/fstab ]
 then
 	".sendClientLogStatus("/etc/fstab was written",true)."
 else
@@ -1674,7 +1674,7 @@ $eth0Config
 EOF
 
 #check if the interfaces file exists
-if test -f /etc/network/interfaces
+if [ -f /etc/network/interfaces ]
 then
 	".sendClientLogStatus("/etc/network/interfaces was written",true)."
 else
@@ -1741,7 +1741,7 @@ cat >> /etc/hostname << \"EOF\"
 $clientName
 EOF
 
-if test -f /etc/hostname
+if [ -f /etc/hostname ]
 then
 	".sendClientLogStatus("/etc/hostname was written",true)."
 else
@@ -1788,7 +1788,7 @@ cat >> /etc/resolv.conf << \"EOF\"
 $nameserver
 EOF
 
-if test -f /etc/resolv.conf
+if [ -f /etc/resolv.conf ]
 then
 	".sendClientLogStatus("/etc/resolv.conf was written",true)."
 else
@@ -1829,7 +1829,7 @@ Acquire::ftp::Proxy \"http://$proxyServer:$proxyPort\";");
 echo ("
 EOF
 
-if test -f /etc/apt/apt.conf.d/70debconf
+if [ -f /etc/apt/apt.conf.d/70debconf ]
 then
 	".sendClientLogStatus("/etc/apt/apt.conf.d/70debconf was written",true)."
 else
@@ -1864,7 +1864,7 @@ cat >> /etc/apt/sources.list << \"EOF\"
 
 EOF
 
-if test -f /etc/apt/sources.list
+if [ -f /etc/apt/sources.list ]
 then
 	".sendClientLogStatus("/etc/apt/sources.list was written",true)."
 else
@@ -2336,7 +2336,7 @@ function CLCFG_setDebconf($serverIP,$debconfFile)
 	apt-get -m --force-yes -y install debconf-utils
 	apt-get -m --force-yes -y install dialog
 
-	if test -f /usr/bin/debconf-set-selections
+	if [ -f /usr/bin/debconf-set-selections ]
 	then
 		echo \"debconf-set-selections found\"
 	else
@@ -2540,7 +2540,7 @@ function CLCFG_mountRootDir($rootDev,$mountPoint="root")
 			mkdir -p /mnt/$mountPoint
 
 			#check if the device was mounted before and unmounts it if it was mounted
-			if test `grep /mnt/$mountPoint /proc/mounts |awk '{print \$i}' | wc -l` -gt 0
+			if [ `grep /mnt/$mountPoint /proc/mounts |awk '{print \$i}' | wc -l` -gt 0 ]
 			then
 				umount /mnt/$mountPoint
 			fi
@@ -2937,7 +2937,7 @@ ln -s /etc/ssl/certs $rootPath/usr/lib/ssl
 	
 		echo("
 wget $quietWget -O$rootPath/etc/ssl/certs/$hash.0 \"https://$serverIP/packages/baseSys$extraDir/ca.crt\"
-if test $? -gt 0
+if [ $? -gt 0 ]
 then
 	wget $quietWget --no-check-certificate -O$rootPath/etc/ssl/certs/$hash.0 \"https://$serverIP/packages/baseSys$extraDir/ca.crt\"
 fi
@@ -3009,7 +3009,7 @@ function CLCFG_changeUser($username, $password="", $newUserName="")
 				$cpass = $password;
 			echo("
 					usermod -p '$cpass' $username
-					if test $? -eq 0
+					if [ $? -eq 0 ]
 					then
 						".sendClientLogStatus("Changing password for user \"$username\"",true)."
 					else
@@ -3023,7 +3023,7 @@ function CLCFG_changeUser($username, $password="", $newUserName="")
 			//change the username
 			echo("
 					usermod -l $newUserName $username
-					if test $? -eq 0
+					if [ $? -eq 0 ]
 					then
 						".sendClientLogStatus("Changing username from \"$username\" to \"$newUserName\"",true)."
 					else
@@ -3215,7 +3215,7 @@ base $baseDN\" > /etc/libnss-ldap.conf\n");
 	#Add permission to udev that all users can access the audio device
 	echo(
 			"export udevfile=`grep 'SUBSYSTEM==\"sound\"' /etc/udev/ -r -l | head -1`
-			if test \$udevfile
+			if [ \$udevfile ]
 			then
 			".
 			EDIT_searchLineNumber("\$udevfile","SUBSYSTEM==\\\"sound\\\"").
@@ -3367,13 +3367,13 @@ function CLCFG_updateDebootstrapScripts($distrDir)
 		exec("sudo rm $timeFile;
 
 sudo apt-get update;
-if test \$? -ne 0
+if [ \$? -ne 0 ]
 	then
 		exit
 fi
 
 sudo apt-get -m --force-yes -y install debootstrap;
-if test \$? -ne 0
+if [ \$? -ne 0 ]
 	then
 		exit
 fi

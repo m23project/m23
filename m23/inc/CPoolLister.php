@@ -54,7 +54,8 @@ class CPoolLister extends CChecks
 
 	public function __construct()
 	{
-		print('KONSTRUKT');
+		$i = 1 + 1; //nop
+// 		print('KONSTRUKT');
 	}
 }
 
