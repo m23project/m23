@@ -226,8 +226,9 @@ cd /tmp
 		PKG_addJob($clientParams['client'],"m23AddUser",PKG_getSpecialPackagePriority("m23AddUser",""),serialize($accountInfo));
 	}
 
-//Add a job for compiling the VirtualBox guest module after the the first boot
-// 	PKG_addJob($clientParams['client'],"m23VBoxKernelModule",PKG_getSpecialPackagePriority("m23VBoxKernelModule",""),"");
+//Disables getting root rights of normal users via sudo, if enabled in the options.
+	if ($clientOptions['disableSudoRootLogin'] == 1)
+		CLCFG_disableSudoRootLogin();
 
 //sets the ssh authorized_file for remote login into the clients
 	CLCFG_setAuthorized_keys($serverIP,"/packages/baseSys/authorized_keys");

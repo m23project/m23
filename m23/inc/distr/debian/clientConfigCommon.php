@@ -5,6 +5,24 @@
 
 
 /**
+**name CLCFG_disableSudoRootLogin()
+**description Disables getting root rights of normal users via sudo.
+**/
+function CLCFG_disableSudoRootLogin()
+{
+echo("
+cat >> /etc/sudoers.d/noSudoRootLogin << \"EOF\"
+Defaults	targetpw,timestamp_timeout = 0
+EOF
+chmod 0440 /etc/sudoers.d/noSudoRootLogin
+");
+}
+
+
+
+
+
+/**
 **name CLCFG_installFirmware()
 **description Installs available firmware packages.
 **/

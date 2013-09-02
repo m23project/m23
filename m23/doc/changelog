@@ -1,3 +1,19 @@
+2013-09-02
+new: forkFunctions.inc / getm23Dir: description Shows the full path to the active m23 directory or exits with an error.
+new: forkFunctions.inc / getmdkDir: Shows the full path to the active mdk directory or exits with an error.
+patch 100681: Added new option to disable root access via sudo for Ubuntu-derivatives, deactivation of SSL check now works, kernel list now sorted with generic kernels first.
+new: CLCFG_disableSudoRootLogin: Disables getting root rights of normal users via sudo.
+new: CLCFG_showDistributionSpecificOptionsUbuntu: Shows additional distribution specific options for Ubuntu.
+cha: GRP_showGroupsAndCount2: now shows group table with alternating line colors and mouseover effect.
+new: HELPER_compareLengthAbc: new function to compare strings first by length and then by alphabet.
+new: HELPER_sortByLength: new function to sort arrays by length and alphabet-position of their values.
+cha: m23/inc/debian/packages.php: function to get kernel list (PKG_getKernels) now outputs an ordered kernel list.
+cha: m23/inc/halfSister/packages.php: function to get kernel list (PKG_getKernels) now outputs an ordered kernel list.
+cha: CLCFG_addDistributionSpecificOptions: Now adds 'disableSSLCertCheck' and 'CB_disableSSLCertCheck'.
++++++
+2013-08-28
+patch 100680: Many improvements to the m23 cli.
++++++
 2013-08-27
 new: CLI_getModulePath: Checks, if a module exists and builds the full path to the module file.
 new: CLI_getModuleInfo: Gets information about a given module.

@@ -34,6 +34,38 @@ define('UBUNTDM_MDM',1002);
 
 
 /**
+**name CLCFG_showDistributionSpecificOptionsUbuntu($options)
+**description Shows additional distribution specific options for Ubuntu.
+**parameter options: options array
+**returns Options array or false, if there was an error
+**/
+function CLCFG_showDistributionSpecificOptionsUbuntu($options)
+{
+	include_once("/m23/inc/distr/debian/packages.php");
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	//Add Debian's options
+	$options = CLCFG_showDistributionSpecificOptions($options);
+
+	$disableSudoRootLogin = HTML_storableCheckBox('CB_disableSudoRootLogin', '', 'disableSudoRootLogin', ($options['disableSudoRootLogin'] == 1));
+	$options = CLIENT_getSetOption(($disableSudoRootLogin ? 1 : 0), 'disableSudoRootLogin', $options);
+
+	echo("
+	<tr>
+		<td>$I18N_disableSudoRootLogin</td>
+		<td colspan=\"2\">".CB_disableSudoRootLogin."</td>
+	</tr>
+	");
+
+	return($options);
+};
+$CLCFG_showDistributionSpecificOptions='CLCFG_showDistributionSpecificOptionsUbuntu';
+
+
+
+
+
+/**
 **name UBUNTU_installLanguagePacks($lang)
 **description Installs the language packs on Ubuntu.
 **parameter lang: short language

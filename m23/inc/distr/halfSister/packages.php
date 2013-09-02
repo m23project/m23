@@ -182,6 +182,27 @@ function PKG_getKernels($distr,$packagesource,$arch)	//HS-function
 			$out[$kernelPKG] = $kernelPKG;
 
 		fclose($fin);
+		
+		//sort the result so the generic kernels appear first in the list, both parts of list sorted alphabetically
+		$gen = array();
+		$nogen = array();
+		foreach ($out as $kernelname)
+		{
+			if (stripos($kernelname,'generic') !== FALSE || stripos($kernelname, 'default') !== FALSE)
+			{	
+				$gen[$kernelname] = $kernelname;
+			}
+			else
+			{
+				$nogen[$kernelname] = $kernelname;
+			}
+
+		}
+
+		HELPER_sortByLength($gen);
+		HELPER_sortByLength($nogen);
+
+		$out = array_merge($gen,$nogen);	
 	}
 	//If there is no file with available kernel packages, only show generic.
 	else

@@ -42,7 +42,7 @@
 	function CLI_getModulePath($moduleName)
 	{
 		// Get the name of the module with full path
-		$moduleFile = MODULE_PATH.preg_replace('/[^a-z0-9]/i', '', $moduleName).'.php';
+		$moduleFile = MODULE_PATH.preg_replace('/[^a-z0-9_]/i', '', $moduleName).'.php';
 
 		if (file_exists($moduleFile))
 			return($moduleFile);
@@ -97,7 +97,7 @@
 	**/
 	function CLI_getModuleDescription($moduleName)
 	{
-		return(CLI_getModuleInfo($moduleName, 'Description','')."\n");
+		return(CLI_getModuleInfo($moduleName, 'Description',''));
 	}
 
 
@@ -159,8 +159,8 @@
 		echo("Commands:\n");
 		foreach ($moduleFiles as $moduleFile)
 		{
-			//Get only files that end with '.php' and are no backups '~'
-			if ((strstr($moduleFile, '.php') !== false) && (strstr($moduleFile, '~') === false))
+			//Get only files that end with '.php', are no backups '~' and no function libraries '_functions'
+			if ((strstr($moduleFile, '.php') !== false) && (strstr($moduleFile, '~') === false) && (strstr($moduleFile, '_functions') === false))
 			{
 				$moduleName = basename($moduleFile, '.php');
 				echo(CLI_getModuleDescriptionLine($moduleName));

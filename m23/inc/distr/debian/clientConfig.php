@@ -76,7 +76,8 @@ $CLCFG_listReleases=CLCFG_listDebianReleases;
 function CLCFG_addDistributionSpecificOptions($options)
 {
 	$options['kernel']=$_POST['SEL_kernel'];
-
+	$options['disableSSLCertCheck']=($_POST['CB_disableSSLCertCheck'] ? 1 : 0);
+	$options['disableSudoRootLogin']=($_POST['CB_disableSudoRootLogin'] ? 1 : 0);
 	return($options);
 };
 
@@ -116,6 +117,7 @@ function CLCFG_showDistributionSpecificOptions($options)
 
 	return($options);
 };
+$CLCFG_showDistributionSpecificOptions='CLCFG_showDistributionSpecificOptions';
 
 
 

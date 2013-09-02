@@ -4,20 +4,17 @@
 <?PHP
 	include_once('/m23/inc/distr/debian/clientConfigCommon.php');
 	include_once('/m23/inc/messageReceive.php');
+	include_once('/m23/inc/distr/ubuntu/clientConfig.php');
 	HTML_showFormHeader();
-// 	HTML_showTableHeader();
+	HTML_showTableHeader();
 	HTML_setPage("developersPlayground");
 
-	$packageSelectionName = 'Build_from_precise-pool';
-	PKG_combinem23normal($packageSelectionName);
 
-	if (HTML_imgSwitch('SW_img', '/gfx/SSLCertificateCheckDisabled-32.png', '/gfx/SSLCertificateCheckEnabled-32.png', $I18N_SSLCertCheckDisabled, $I18N_SSLCertCheckEnabled, '<br>', !SERVER_isSSLCertCheckDisabled(), $state))
-		SERVER_setSSLCertCheckDisabled(!$state);
+	HTML_submit('BUT_sp','Speichern', AJAXBUT_testJS);
+	$options2=$CLCFG_showDistributionSpecificOptions($options);
+	print(BUT_sp);
 	
-	HTML_submit('BUT_akt','aktual');
-
-	print(SW_img.BUT_akt.serialize(SERVER_isSSLCertCheckDisabled()));
-	
+	print_r($options2);
 
 	
 // 	SELECT * FROM `recommendpackages` WHERE name='Build_from_precise-pool' ORDER BY priority
@@ -134,6 +131,6 @@
 print("<pre>\n");
 // 	print_r($CIPRanges->getAllLockedIPsInt());
 print("</pre>\n");
-// 	HTML_showTableEnd();
+	HTML_showTableEnd();
 	HTML_showFormEnd();
 ?>

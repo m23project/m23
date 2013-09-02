@@ -926,12 +926,40 @@ function HELPER_showFileContents($fileName)
 
 
 /**
-**name HELPER_getFileContents($fileName)
-**description Returnes the maximum file upload size allowed by php.ini.
+**name HELPER_maxPhpUploadSize()
+**description Returns the maximum file upload size allowed by php.ini.
 **/
 function HELPER_maxPhpUploadSize()
 {
 	return(exec("grep '\(post_max_size\|upload_max_filesize\)' /etc/php4/apache/php.ini | cut -d' ' -f3 | sort -b -r | head -1"));
+}
+
+/**
+**name HELPER_compareLengthAbc($a, $b)
+**description Compares the length of two strings and then by alphabet
+**parameter $a: string of a certain length
+**parameter $b: string of a certain length
+**/
+function HELPER_compareLengthAbc($a, $b)
+{	
+	if (strlen($a) == strlen($b)) 
+	{
+		return (strcasecmp($a, $b));
+	}
+	return (strlen($a) < strlen($b)) ? -1 : 1;
+}
+
+
+
+
+/**
+**name HELPER_sortByLength($array)
+**description Sorts an array by length of its values, shortest value first, keeping key-value pairs
+**parameter $array: The array you want to sort by length
+**/
+function HELPER_sortByLength(&$array)
+{
+	uasort($array, 'HELPER_compareLengthAbc');
 }
 
 ?>

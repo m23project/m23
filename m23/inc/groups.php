@@ -489,7 +489,7 @@ function GRP_showGroupsAndCount2()
 		foreach ($groupList as $entry)
 			{
 				HTML_checkBox("CB_do$i", $entry['groupname'], false, "", $entry['groupname']);
-				HTML_showTableRow("<a href=\"index.php?page=groupdetails&groupname=$entry[groupname]\">$entry[groupname]</a>", $entry['count'], constant("CB_do$i"));
+				HTML_showTableRow(($i % 2 == 1),"<a href=\"index.php?page=groupdetails&groupname=$entry[groupname]\">$entry[groupname]</a>", $entry['count'], constant("CB_do$i"));
 				$i++;
 			};
 

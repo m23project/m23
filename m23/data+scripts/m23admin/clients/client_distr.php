@@ -305,7 +305,7 @@ echo("
 						</center>
 						</span>");
 
-						$options2=CLCFG_showDistributionSpecificOptions($options);
+						$options2=$CLCFG_showDistributionSpecificOptions($options);
 
 						if ($options2 === false)
 						{
@@ -318,6 +318,8 @@ echo("
 							$options = $options2;
 							$disableInstall = "";
 						}
+						
+						print_r($options);
 
 echo("					".CLIENT_options2HiddenForm($options)."
 				</td>

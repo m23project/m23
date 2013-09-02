@@ -1186,4 +1186,5 @@ $I18N_errorUploadSizeMismatch = 'The file size reported by the webbrowser and th
 $I18N_fileWithExportedSelectedPackages = 'File with selected packages';
 $I18N_SSLCertCheckDisabled = 'SSL certificate check disabled';
 $I18N_SSLCertCheckEnabled = 'SSL certificate check enabled';
+$I18N_disableSudoRootLogin = 'Disable root logins via sudo for normal users';
 ?>

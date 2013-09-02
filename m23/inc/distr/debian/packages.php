@@ -689,11 +689,11 @@ function PKG_previewInstallDeinstall($clientName,$distr,$packagesource,$packages
 
 /**
 **name PKG_getKernels($distr,$packagesource,$arch)
-**description Generates an associative array with the available kernels for an architecture and distribution as keys and values.
+**description Generates an associative array with the available kernels for an architecture and distribution as keys and values, where kernels containing the term 'generic' are at the front.
 **parameter distr: the distribution name
 **parameter packagesource: name of the package source
 **parameter arch: Architecture to get package infos for.
-**returns Asssociative array with the available kernels for an architecture and distribution as keys and values.
+**returns Associative array with the available kernels for an architecture and distribution as keys and values with kernels containing the term 'generic' at the front, sorted by length and then by alphabet.
 **/
 function PKG_getKernels($distr,$packagesource,$arch)
 {
@@ -770,6 +770,27 @@ function PKG_getKernels($distr,$packagesource,$arch)
 
 	//close search
 	PKG_closeSearch($file);
+	
+	//sort the result so the generic kernels appear first in the list, both parts of list sorted alphabetically
+	$gen = array();
+	$nogen = array();
+	foreach ($out as $kernelname)
+	{
+		if (stripos($kernelname,'generic') !== FALSE  || stripos($kernelname, 'default') !== FALSE)
+		{	
+			$gen[$kernelname] = $kernelname;
+		}
+		else
+		{
+			$nogen[$kernelname] = $kernelname;
+		}
+	
+	}
+	
+	HELPER_sortByLength($gen);
+	HELPER_sortByLength($nogen);
+	
+	$out = array_merge($gen,$nogen);
 
 	return($out);
 };

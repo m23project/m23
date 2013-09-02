@@ -1161,4 +1161,5 @@ $I18N_errorUploadSizeMismatch = 'La taille du fichier téléchargé indiquée par le
 $I18N_fileWithExportedSelectedPackages = 'Datei mit vorgemerkten Paketen';
 $I18N_SSLCertCheckDisabled = 'Vérification des certificats SSL désactivée';
 $I18N_SSLCertCheckEnabled = 'Vérification des certificats SSL activée';
+$I18N_disableSudoRootLogin = 'Désactiver les connexions root via sudo pour les utilisateurs normaux';
 ?>
