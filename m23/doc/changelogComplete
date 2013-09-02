@@ -1,8 +1,246 @@
+2013-09-02
+new: forkFunctions.inc / getm23Dir: description Shows the full path to the active m23 directory or exits with an error.
+new: forkFunctions.inc / getmdkDir: Shows the full path to the active mdk directory or exits with an error.
+patch 100681: Added new option to disable root access via sudo for Ubuntu-derivatives, deactivation of SSL check now works, kernel list now sorted with generic kernels first.
+new: CLCFG_disableSudoRootLogin: Disables getting root rights of normal users via sudo.
+new: CLCFG_showDistributionSpecificOptionsUbuntu: Shows additional distribution specific options for Ubuntu.
+cha: GRP_showGroupsAndCount2: now shows group table with alternating line colors and mouseover effect.
+new: HELPER_compareLengthAbc: new function to compare strings first by length and then by alphabet.
+new: HELPER_sortByLength: new function to sort arrays by length and alphabet-position of their values.
+cha: m23/inc/debian/packages.php: function to get kernel list (PKG_getKernels) now outputs an ordered kernel list.
+cha: m23/inc/halfSister/packages.php: function to get kernel list (PKG_getKernels) now outputs an ordered kernel list.
+cha: CLCFG_addDistributionSpecificOptions: Now adds 'disableSSLCertCheck' and 'CB_disableSSLCertCheck'.
++++++
+2013-08-28
+patch 100680: Many improvements to the m23 cli.
++++++
+2013-08-27
+new: CLI_getModulePath: Checks, if a module exists and builds the full path to the module file.
+new: CLI_getModuleInfo: Gets information about a given module.
+new: CLI_getModuleDescription: Gets the description about a given module.
+new: CLI_getModuleParameter: Gets the parameter(s) about a given module.
+new: CLI_getModuleParameterLine: Gets the information line with module name and parameter(s) about a given module.
+new: CLI_showAllModuleDescription: Shows a list of all modules with their descriptions.
+patch 100679: CSS improvements.
+cha: CSS improvements: Now the current row the mouse points to in many tables is highlighted.
++++++
+2013-08-26
+patch 100678: Fix for the mass installation dialog and smal fixes.
+fix: massInstall.php: Fixed call time pass by reference.
+fix: CLCFG_monoRemove: Corrects syntax if BASH's [ ].
+new: HELPER_trimValue: Runs trim on the input parameter and writes the result back.
+new: PKG_cleanPackageLine: Removes unwanted characters from a line containing package names and makes sure that there is only one line without line breaks.
+cha: PKG_addStatusJob: Now calls PKG_cleanPackageLine on normal package installation or removal.
++++++
+2013-08-24
+cha: FDISK_showDiskDefine, BURN_blank, CPoolLister::__construct: Commented out debug code.
+cha: print_r2, calculator.php, themeChoice.php: Now uses echo instead of print.
+cha: check.php: Removed.
++++++
+2013-08-22
+patch 100677: Corrects output of the package selection optimisation.
+fix: PKG_combinem23normal: Now adds the needed space between the package names.
++++++
+2013-08-19
+patch 100676: Fixed update buttons.
+fix: install_packages.php: Now the update button is shown only when in update mode.
++++++
+2013-08-18
+release 13.2
+patch 100675: Smal fix for package installation, updated documentation.
+new: Translations complete. New manuals and development guide.
+fix: install_packages.php: Now the client name is stored.
++++++
+2013-08-17
+patch 100674: New network bootimages to add SSH login (e.g for client's realtime status) again.
+cha: createRFSBins: Now adds libnsl.so.1 for dropbear.
+patch 100673: Configuration for the netbootimages.
+cha: BusyBox config: Now the BB's internal functions are used to handle /etc/shadow and /etc/passwd.
+new: DebianSystemCleaner-PrepareVMForCompression: Removes unneeded packages from a Raspbian installation and prepares for compression.
++++++
+2013-08-14
+patch 100672: Presetup works now on Wheezy bootimages.
+fix: CIR_waitForNextJob: Increased check size for empty fetched work.phps to 15 bytes.
+patch 100671: Fixes for Debian Wheezy booimages.
+cha: *.php: Changed all BASH "test" calls to "[ ]" syntax.
+new: workPhpName: Generates an unique name for storing the work.php file.
+cha: executeNextWork, CIR_waitForNextJob: Now uses workPhpName.
++++++
+2013-08-13
+patch 100670: Support for Linux Mint assimisation, Debian Wheezy based netbootimages, option for disabling the SSL certificate check for all clients.
+cha: downloadExtractRFS: Now uses the BASH version of hwsetup.
++++++
+2013-08-12
+cha: Kernel configuration: Changed ramdisk size to 80MB.
++++++
+2013-08-11
+cha: CLIENT_changeClient: Now checks, if the new IP is nonused.
++++++
+2013-08-10
+fix: HS_fetchm23HSAdminAndm23hwscannerByOS: Now the end mark for HSFETCHEOF is set correctly.
+cha: CLCFG_copySSLCert: Now disables ssl certificate checks for Linux Mint 11 and above.
+new: SERVER_isSSLCertCheckDisabled: Now determines, if the SSL certificate check is disabled globally for all clients.
+cha: CLCFG_copySSLCert: Now calls SERVER_isSSLCertCheckDisabled.
+new: SERVER_setSSLCertCheckDisabled: Sets, if the SSL certificate check is disabled globally for all clients.
+new: HTML_imgSwitch: Defines an image button with two states and a text next to it.
+cha: serverSettings.php: Now has a button to (de)activate the SSL certificate check globally for all clients.
++++++
+2013-08-06
+new: SERVER_setServerSetting: Sets the value of a server setting.
+new: SERVER_getServerSetting: Gets the value of a server setting.
+new: SERVER_existsServerSetting: Checks, if a named server setting exists in the DB.
+cha: head.php: Now checks, if this is the development version and adjust the coloring of the header.
++++++
+2013-08-05
+cha: moveDevel2Release: Now calls /mdk/doc/changelog-merger.php.
+new: changelog-merger.php: Script for merging the changelogs of development and release versions.
+patch 100669: Export of DHCP setting, optimisation of installation jobs with multiple packages, preparation for assimilsation of halfSister distributions.
++++++
+2013-08-01
+cha: m23 / postinst: Now increase the size of the normalPackage field to LONGTEXT in the table recommendpackages.
+new: PKG_combinem23normal: Combines the package names of multiple entries for m23normal and m23normalRemove jobs ind a package selection.
+cha: PKG_addPackageToPackageselection: Now calls PKG_combinem23normal.
++++++
+2013-07-30
+new: m23Debs.inc / rsyncUploadSpeedLimit: Determines the maximum upload speed.
+cha: install_packages.php: Now is using the HTML functions as often as possible.
++++++
+2013-07-18
+cha: install_packages.php: Now imports and exports the preselected packages of a clients from and to files.
+new: PKG_importSelectedPackagesFromFile: Imports space-seperated packages from a file and adds them to the wait4acc/selected packages of a client.
+new: HTML_uploadFile: Shows a dialog for uploading image files.
+new: HTML_urlButton: Defines a link that appears like a button.
++++++
+2013-07-17
+cha: menuDeb / uploadtesting: Now uploads the files directly to FRS.
+cha: menuServerISO: Now shows the architecture too.
++++++
+2013-07-15
+cha: m23-tftp / postinst: Now restores backuped bootimages from /m23/tftp/bak2.6.
+new: PKG_exportSelectedPackages: Exports the wait4acc/selected packages of a client.
++++++
+2013-07-13
+cha: ASSI_prepareClient, MSR_getClientSettingsCommand, MSR_CopyClientPackageStatusCommand, MSR_statusFileCommand: Now are checking, if a halfSister compatible distribution was found and skips the Debian-based distributions setup.
+new: HS_fetchm23HSAdminAndm23hwscannerByOS: Fetches the m23HSAdmin tool and m23hwscanner by detection of the OS.
+new: HS_ASSI_prepareClient: Prepares a halfSister client for assimilisation.
+new: HS_ASSI_statusFileCommand: Generates the commands to send the package infos to the server (This has the same functionality as MSR_statusFileCommand) if this is an halfSister client to be assimilated.
+new: HS_getClientSettingsCommand: Generates the commands to send the client infos to the server (This has the same functionality as MSR_getClientSettingsCommand).
+new: HS_ASSI_getClientSettingsCommand: Generates the commands to send the client infos to the server (This has the same functionality as MSR_getClientSettingsCommand) if this is an halfSister client to be assimilated.
+cha: m23AssimilateInstall.php: Now uses halfSister functions too.
+new: DHCP_exportDHCPSettingsForExternalDHCPServer: Exports the DHCP settings of m23 clients that are booting over the network and adds settings for external DHCP servers.
+cha: de/en/fr client_distr.hlp, manageImageFiles.hlp, client_createImage.hlp: Improved help files concerning imaging.
+new: exportDHCPSettings.php: Calls DHCP_exportDHCPSettingsForExternalDHCPServer.
++++++
+2013-07-10
+patch 100668: More adjustments for Debian 7.
+cha: Package source "wheezy" now includes Triniy desktop 3.5.13.
+cha: exportDBsourceslist.php: Now doesn't export "wheezy+squeeze+TDE" anymore.
++++++
+2013-07-07
+cha: htaccess.php: Now uses the mothods of the classes Cm23AdminLister and Cm23Admin.
+cha: createInitrd: Now creates empty *initrd.img files to satisfy depmod of Debian Wheezy.
++++++
+2013-07-06
+fix: createRFSBins: Now processes links correctly.
+cha: downloadExtractRFS / createRFSBins: Switched to Debian Wheezy.
++++++
+2013-06-27
+cha: CLCFG_copySSLCert: Now has a new option to disable the SSL certificate check of wget.
+cha: CLCFG_showDistributionSpecificOptions: Added checkbox to disable the SSL certificate check of wget.
+cha: debin / clientInstall.php: 
++++++
+2013-06-25
+cha: DISTR_releaseVersionTranslator: Added "wheezy".
++++++
+2013-06-24
+new: debian-update-howto.tex: Mini howto for 
+patch 100667: Added LXDE, GNOME 3 and TDE for Debian 7.
+cha: exportDBsourceslist.php: Now exports "wheezy" and "wheezy+squeeze+TDE" (for installing TDE with all needed packages from Squeeze) too.
++++++
+2013-06-22
+cha: CLCFG_installLightDM: Now has an extra parameter, if set to true, an additional line with "session-wrapper=/etc/X11/Xsession" will be added.
+new: LXDE_install: Installs the LXDE desktop.
+new: GNOME3_install: Installs the GNOME 3 desktop.
++++++
+2013-06-18
+cha: CLCFG_language: Now has an extra parameter for setting the release name of the distribution (for special handling).
++++++
+2013-06-17
+cha: CLCFG_genFstab: Now installs grub2 on Debian 7.
+cha: CLCFG_createBootDeviceNode: Special handling for udev in Debian 7.
+fix: I18N_addLanguage: Now works with m23shared too.
+patch 100666: Netboot images are using Kernel 2.9.5 now to (hopefully) fix the problem with older SATA controlers.
+cha: checkKernelBranch: Added Linux Kernel 3.9.
++++++
+2013-06-14
+cha: excludem23-tftpdeb: Now excludes clonezilla images.
++++++
+2013-06-11
+fix: PKG_addPackageToPackageselection: Now stores all selected special packages to the selection. (THX FW).
+cha: checkKernelBranch: Added Linux Kernel 3.4.
++++++
+2013-06-07
+fix: group_details.php: Now titles are links no more.
++++++
+2013-06-05
+patch 100665: Fix for PXE IP calculation.
+fix: DHCP_calcPXEIP: Now calculates teh numbers correctly on all IPs.
++++++
+2013-05-19
+patch 100664: Corrected order of inclusion of Cm23Admin.php.
+fix: index.php: Corrected order of inclusion of Cm23Admin.php.
++++++
+2013-05-14
+patch 100663: Translations and server installation CD setup help text enhancements.
+cha: de / en / fr: Translations updated.
+cha: Cm23Admin.php: Introduced translated I18N tags.
+cha: m23 / postinst: Now adds the grdmgpg line in sudoers only if it is missing.
+cha: showNetworkDialog: Now shows a hint for choosing a valid hostname.
+cha: configureNetwork: Now filters out all 192.168.1.* IPs from /etc/hosts before adding the IP of the server.
+cha: m23 / postinst: Fixes /etc/sudoers, if there are more than one entry for grdmgpg.
++++++
+2013-05-12
+patch 100662: French translation enhancements.
+cha: French translation enhanced (THX Philippe).
+patch 100661: Added package sources list for "Linux Mint 13 Maya".
+cha: exportDBsourceslist.php: Now exports "Linux Mint 13 Maya" too.
++++++
+2013-05-11
+patch 100646: Correct detection of patch number.
+fix: getNextPatchlevel: Now works with release or development version only present.
+release 13.1
+patch 100645: All things for 13.1 included ;-)
+cha: New manuals and development guide.
+cha: Added missing screenshots.
+fix: HELP_showHelpTex: Now converts _ correctly.
+cha: Translations completed.
+cha: changelog merged.
+new: optimisePNGs: Optimises PNGs for size with the help of pngquant.
++++++
+2013-05-05
+fix: mkRelease: Now uses the correct user for signing the Release file.
++++++
+2013-05-03
+new: CPoolFromClientDebsGUI::addm23BuildPoolFromClientDebsJob: Adds a m23BuildPoolFromClientDebs job to the client.
++++++
 2013-04-30
 fix: MSG_getRSSFeed: Now works with RSS time/dates that contain a timezone.
+new: PKG_ncTarDebsFromClientToServer_Server: Starts a server to receive the Debian packages from an m23 client.
+new: PKG_ncTarDebsFromClientToServer_Client: Client to send the Debian packages to the m23 client.
+cha: CPool::downloadDebsFromClient: Now uses PKG_ncTarDebsFromClientToServer_Server.
 +++++
 2013-04-29
 new: PKG_rsyncDebsFromClientToServer: Copies all the Debian packages from a client to a given directory on the server via rsync.
+cha: message.php: changed MSG_showWarning to represent new CSS element warningtable
+cha: index.css / index_fb.css: added element warningtable
+cha: reworked CSS for warning messages
+cha: fdisk.php: exchanged several css classes
+cha: HTML_jQueryMenu: exchanged css class
+cha: FDISK_listPartTable exchanged subtable for partTables css class
+cha: changed both css files
+cha: FDISK_printBars added css id fdiskbar
+cha: HTML_showTitle deleted two br
+cha: FDISK_showCombinedFdiskGUIDialog removed background color
 +++++
 2013-04-28
 cha: CPoolLister::getPoolNames: Now returns an array with the all found pool names or empty array.
@@ -53,6 +291,7 @@ cha: client_distr.php: Now calls CPoolFromClientGUI:: showCheckboxForAddingm23Bu
 +++++
 2013-04-06
 new: poolFromClient.php: Dialog for creating a pool and package selection from a client's installed packages.
+cha: remodeled CSS to hold absolute font sizes
 +++++
 2013-04-05
 new: CPoolFromClientGUI::getCOSStatusHumanReadable: Translates the status code (COSSTATUS_*) into human readable word(s).
@@ -140,12 +379,31 @@ fix: PKG_getDebootStrapBasePackages: Now works again and uses pre-cached files g
 cha: mkm23Deb: Now calls mkAllBaseSysFileLists.
 new: mkAllBaseSysFileLists: Generates a list of all base system packages for all (Debian/Ubuntu) releases
 cha: m23 / control: Added apt-utils to the dependencies.
+cha: SERVERBACKUP_showConfigurationDialog: replaced class 'title' by 'titlesmal' for $I18N_encryptAndUploadBackup
+cha: SERVERBACKUP_runBackupNowDialog: replaced class 'title' by 'titlesmal' for $I18N_runServerBackupNow
+add: HTML_showSmallTitle: function which shows a title of the second tier
+cha: cron.php: replaced HTML_showTitle by HTML_showSmallTitle for $I18N_cronTimeBase and $I18N_addCronEntry
+cha: VM_VBOXaddonDownloadDialog: replaced class 'title' by 'titlesmal' for $I18N_downloadableVBoxAddons, $I18N_downloadStatus and $I18N_chooseDefaultVersion
+cha: CIPManagement::singleSettingsAddDialog: HTML_showSmallTitle($I18N_singleClientsNetworksettings) instead of HTML_showTitle
+cha: CIPManagement::showUsedIPsAndMACs: HTML_showSmallTitle($I18N_usedIPs) instead of HTML_showTitle
+cha: CIPRanges::showRangesList: HTML_showSmallTitle($I18N_lockedIpRanges) instead of HTML_showTitle
+cha: CIPRanges::showDynamicRangesList: corrected function description, HTML_showSmallTitle($I18N_dynamicIpRanges) instead of HTML_showTitle
+cha: CIPRanges::showRangesAddingDialog: HTML_showSmallTitle($I18N_IPRanges) instead of HTML_showTitle
+cha: CIPRanges::showSearchDialog: HTML_showSmallTitle($I18N_search) instead of HTML_showTitle
 +++++
 2013-03-15
 cha: DISTR_afterChrootInstall: Added #!/bin/sh to indentify the afterChrootInstall.sh script.
 +++++
 2013-03-12
 cha: client / linuxrc: Removed ps' parameter '-A', because it doesn't exist in this BusyBox release
+cha: PKGBUILDER_showUploadDialog, PKGBUILDER_listFiles: replaced class 'title' by 'titlesmal'
+cha: SRCLST_showEditor: replaced class 'title' by 'titlesmal'
+cha: DISTR_getDesktopsCBList: replaced class 'title' by 'titlesmal'
+cha: install_packages.php: replaced class 'title' by 'titlesmal' for I18N_found_packages and $I18N_preselected_packages
+cha: makeBootCD.php: replaced class 'title' by 'titlesmal' for $I18N_used_burner, $I18N_make_bootcd, $I18N_blank_cdrw
+cha: burn.php: replaced class 'title' by 'titlesmal' for $I18N_burner_status
+cha: daemonsAndPrograms.php: replaced class 'title' by 'titlesmal' for $I18N_daemons
+cha: serverSettings.php: replaced class 'title' by 'titlesmal' for $I18N_components, $I18N_system, $I18N_serverHacks
 +++++
 2013-03-11
 cha: HELPER_getFdiskMountPoints: Now uses the mount point as array key.
@@ -165,6 +423,10 @@ cha: PKG_addPackageToPackageselection: Removed $client parameter.
 cha: PKG_addNormaltoPackageselection: Now is called PKG_addPackageToPackageselection.
 new: CClient::getClientPackages: Returns an array or a space separated list of all packages installed on a client
 +++++
+2013-02-26
+cha: index_fb.css: changed button layout
+cha: PREF_showPreferenceManager(): removed ridges from table in subtable2 which looked bad in both CSS and added padding because first word was cut off
++++++
 2013-02-25
 m23hwscanner: Now checks for (needed) parted and exits, if it is not found.
 cha: m23InstallerBase.inc / chrootSystem: Added workaround for missing modules.dep to disable the repeated showing of the "FATAL" error.
@@ -172,6 +434,16 @@ cha: m23InstallerBase.inc / chrootSystem: Added workaround for missing modules.d
 2013-02-24
 fix: extractFile: Now gets the PID of the 7-Zip process more precisely.
 cha: m23install.sh: Now should work with all USB keyboards.
+cha: Cm23Admin.php: added layout for themeChoice in getCSS
+cha: index.css: added shadow to subhighlight class
+cha: index_fb.css: added class for framed images
+cha: index.css: added class for framed images
+cha: themeChoice.php: changed layout
++++++
+2013-02-23
+cha: serverSettings.php: added themeChoice
+cha: index.php: added themeChoice, added showMessages for m23Admin
+new: /misc/themeChoice.php: introduced theme choice page
 +++++
 2013-02-22
 new: HTML_AJAXAutoSubmit: Defines AJAX code that clicks a submit button when the given URL returns 'submit'. The defined constant should be used as LAST part of the $extra parameter in the HTML_submit function.
@@ -272,6 +544,8 @@ new: CPool::getProperty: Reads the contents of a property file
 new: CPool::getSize: Calculates the disk usage of a pool.
 new: CPool::setPoolDir: Sets the name of the pool and makes sure, the pool directory exists.
 new: CPool::destroyPool: Deletes the pool
+cha: i18n.php: introduced constant for list of languages and removed that list from function I18N_m23instLanguage($shortLanguage)
+cha: /m23admin/index.php: included the two new classes
 +++++
 2013-01-28
 cha: m23-xorg-configuratior: Now doesn't exit in Linux Mint 13 (that is based on Ubuntu 12.04)
@@ -290,6 +564,13 @@ cha: m23-skel: Added dconf settings for Cinnamon.
 +++++
 2013-01-23
 cha: m23AddUserInstall.php: Now adds the normal user to the root group, so the user can be given root rights by giving him the root password.
+cha: class Cm23Admin: added functionality to add and delete admins
+cha: DB table 'clients': extended table by one column
++++++
+2013-01-22
+new: class Cm23AdminLister
+new: class Cm23Admin
+new: DB table 'clients'
 +++++
 2013-01-20
 cha: UBUNTU_desktopInstall: Now adds debconf settings for samba.
@@ -311,6 +592,8 @@ cha menuFork: Now allows all access to the X session of the non root user.
 cha menuFork: Added 
 new forkFunctions.inc / linkOrTouchINT: Makes a link, if there is an original file, otherwise create an empty file.
 new forkFunctions.inc / copyNewFilesINT: Copies new files (that didn't exist in the CURRENT fork, but in the OTHER fork) to the CURRENT fork.
+cha: m23/inc/calculator.php: numbers are now rendered in calculator-typical order
+cha: 'Fresh Blue' theme: revamped calculator
 +++++
 2013-01-16
 cha: FDISK_findDevNrPosition, CMessageManager::addInfoMessage, CMessageManager::addWarningMessage, CMessageManager::addErrorMessage: Corrected deprecated call-time pass-by-reference.
@@ -320,11 +603,13 @@ fix: CLCFG_interfaces: Now uses correct path to ethtool (Thx FP).
 +++++
 2013-01-14
 new forkFunctions.inc / diffExcludeMeld: Checks for differences between a development and a release directory and calls meld with the changed files.
+cha: CSS File for m23 'Fresh Blue' theme added and modified
+cha: packageBuilder.php, m23base: added $fileSizeByte for file list in package architect
+fix: .HELP_getHelp: added parameter to remove empty helptable on welcome page
+fix: welcome.hlp: closed <td>
+fix: VM_getAllVMHosts: now returns empty array if no vmhosts available
 +++++
 2013-01-12
-patch: Workaround for Ubuntu kernel question and added missing cron.
-cha: ubuntu / DISTR_afterChrootInstall: Added "cron" to the base package list.
-fix: UBUNTU_fixBeforeBaseInstall: Now creates empty /boot/grub/menu.lst for disabling the new non debconf Ubuntu kernel question.
 cha: incPatchLevelInVersionPhp: Now calls getNextPatchlevel.
 new: forkFunctions.inc / getNextPatchlevel: Shows the next available patch number.
 cha: forkFunctions.inc / moveDevel2Release: Now removes the -devel tag from the codename
