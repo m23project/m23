@@ -318,8 +318,6 @@ echo("
 							$options = $options2;
 							$disableInstall = "";
 						}
-						
-						print_r($options);
 
 echo("					".CLIENT_options2HiddenForm($options)."
 				</td>

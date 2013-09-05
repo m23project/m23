@@ -10,11 +10,10 @@
 	HTML_setPage("developersPlayground");
 
 
-	HTML_submit('BUT_sp','Speichern', AJAXBUT_testJS);
-	$options2=$CLCFG_showDistributionSpecificOptions($options);
-	print(BUT_sp);
+	print(serialize(SRCLST_packageInformationOlderThan(15,'debian','precise')));
+
+
 	
-	print_r($options2);
 
 	
 // 	SELECT * FROM `recommendpackages` WHERE name='Build_from_precise-pool' ORDER BY priority

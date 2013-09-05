@@ -332,13 +332,21 @@ function SRCLST_checkList($sourceName, $arch)
 **/
 function SRCLST_packageInformationOlderThan($minutes,$distr,$sourcename)
 {
-	$statusFile = "/m23/var/cache/m23apt/$distr/$sourcename/status";
+	$baseDir = "/m23/var/cache/m23apt/$distr/$sourcename";
+	$listsDir = "$baseDir/lists/";
+
+	//Get the size of the lists directory, that contains the lists of available packages
+	$listsDirSize = exec("du -s \"$listsDir\" | sed 's#[ \\t].*##g'", $outLines, $retCode);
+	//If the list size could not be get or the size is less than 100 bytes, there must be an error.
+	$listsDirTooSmal = ( ($retCode != 0) || ( $listsDirSize < 100) );
+
+	$statusFile = "$baseDir/status";
 
 	//clear the cache that caches informations about the access time of files
 	clearstatcache();
 
 	return ((!file_exists('/m23/etc/offlineMode')) &&
-		((!file_exists($statusFile)) || (((time()-filectime($statusFile))/60) > $minutes)));
+		((!file_exists($statusFile)) || (((time()-filectime($statusFile))/60) > $minutes) || $listsDirTooSmal));
 };
 
 
