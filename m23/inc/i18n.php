@@ -9,6 +9,24 @@ const LANGUAGELIST = 'de#en#fr';
 
 
 
+
+
+/**
+**name I18N_number_format($in)
+**description Converts numbers to the language specific number formating.
+**parameter in: Input number.
+**returns Language specific number formated number.
+**/
+function I18N_number_format($in)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	return(number_format($in, 2, $I18Nnumber_format_dec_point, $I18Nnumber_format_thousands_sep));
+}
+
+
+
+
+
 /**
 **name I18N_convertToHumanReadableName($lang)
 **description Converts a short language into a human readable name.

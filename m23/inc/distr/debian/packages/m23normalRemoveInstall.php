@@ -6,6 +6,8 @@ Priority:25
 
 function run($id)
 {
+	include('/m23/inc/distr/debian/clientConfigCommon.php');
+
 	$sql="SELECT normalPackage FROM `clientjobs` WHERE id=$id";
 	$result=mysql_query($sql) or die ("SQL-Befehl konnte nicht ausgef¸hrt werden:".$sql);
 
@@ -13,6 +15,8 @@ function run($id)
 
 	$line=mysql_fetch_row($result);
 	sendClientStageStatus(STATUS_BLUE);
+	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $I18N_deinstalling_packages);
+
 	echo("
 			export DEBIAN_FRONTEND=noninteractive
 			apt-get --force-yes -y remove $line[0] --purge\n");

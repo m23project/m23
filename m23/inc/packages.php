@@ -9,6 +9,109 @@ $*/
 
 
 /**
+**name PKG_addHSUser($client, $login, $firstpw, $uid = '', $gid = '')
+**description Adds a job for creating an user on a halfSister client.
+**parameter client: Name of the client.
+**parameter login: Login name of the new user.
+**parameter firstpw: Password for the new user.
+**parameter uid: Optional user ID of the new user.
+**parameter gid: Optional group ID of the new user.
+**/
+function PKG_addHSUser($client, $login, $firstpw, $uid = '', $gid = '')
+{
+	$accountInfo['login'] = $login;
+	$accountInfo['firstpw'] = $firstpw;
+	$accountInfo['uid'] = $uid;
+	$accountInfo['gid'] = $gid;
+
+	PKG_addJob($client, 'm23AddUser',PKG_getSpecialPackagePriority('m23AddUser'),serialize($accountInfo));
+}
+
+
+
+
+
+/**
+**name PKG_addUbuntuUser($client, $login, $firstpw, $uid = '', $gid = '')
+**description Adds a job for creating an user on a Ubuntu client.
+**parameter client: Name of the client.
+**parameter login: Login name of the new user.
+**parameter firstpw: Password for the new user.
+**parameter uid: Optional user ID of the new user.
+**parameter gid: Optional group ID of the new user.
+**/
+function PKG_addUbuntuUser($client, $login, $firstpw, $uid = '', $gid = '')
+{
+	$groups[0]="audio";
+	$groups[1]="floppy";
+	$groups[2]="cdrom";
+	$groups[3]="video";
+	$groups[4]="users";
+	$groups[5]="lpadmin";
+	$groups[6]="plugdev";
+	PKG_addUser($client, $login, $firstpw, $groups);
+}
+
+
+
+
+
+/**
+**name PKG_addDebianUser($client, $login, $firstpw, $uid = '', $gid = '')
+**description Adds a job for creating an user on a Debian client.
+**parameter client: Name of the client.
+**parameter login: Login name of the new user.
+**parameter firstpw: Password for the new user.
+**parameter uid: Optional user ID of the new user.
+**parameter gid: Optional group ID of the new user.
+**/
+function PKG_addDebianUser($client, $login, $firstpw, $uid = '', $gid = '')
+{
+	$groups[0]="audio";
+	$groups[1]="floppy";
+	$groups[2]="cdrom";
+	$groups[3]="video";
+	$groups[4]="users";
+	$groups[5]="lpadmin";
+	$groups[6]="plugdev";
+	$groups[7]="lp";
+	$groups[8]="scanner";
+	PKG_addUser($client, $login, $firstpw, $groups);
+}
+
+
+
+
+
+/**
+**name PKG_addUser($client, $login, $firstpw, $groups, $uid = '', $gid = '')
+**description Adds a job for creating an user on the client.
+**parameter client: Name of the client.
+**parameter login: Login name of the new user.
+**parameter firstpw: Password for the new user.
+**parameter groups: Array of groups the user should be added.
+**parameter uid: Optional user ID of the new user.
+**parameter gid: Optional group ID of the new user.
+**/
+function PKG_addUser($client, $login, $firstpw, $groups, $uid = '', $gid = '')
+{
+	if (!is_array($groups) || !sort($groups))
+		exit('ERROR: PKG_addUser: $groups not an array OR cannot be sorted.');
+
+	$accountInfo['groups']= $groups;
+	$accountInfo['login'] = $login;
+	$accountInfo['firstpw'] = $firstpw;
+	$accountInfo['uid'] = $uid;
+	$accountInfo['gid'] = $gid;
+
+	PKG_addJob($client, 'm23AddUser',PKG_getSpecialPackagePriority('m23AddUser'),serialize($accountInfo));
+}
+
+
+
+
+
+/**
 **name PKG_cleanPackageLine(&$packageLine)
 **description Removes unwanted characters from a line containing package names and makes sure that there is only one line without line breaks.
 **parameter packageLine: Space seperated line containing the package names. The changed line will be written to the parameter too.
@@ -229,6 +332,7 @@ function PKG_translateClientjobsStatus($status)
 	$trans['done'] = $I18N_done;
 	$trans['waiting'] = $I18N_waiting;
 	$trans['wait4acc'] = $I18N_preselected;
+	$trans['error'] = $I18N_error;
 
 	return($trans[$status]);
 }
@@ -608,7 +712,7 @@ function PKG_listRecommendPackages($key,$install=true)
 		 echo("
 			<tr>
 				<td valign=\"top\">".$line[0]."</td>
-				<td valign=\"top\">".number_format((float)PKG_getRecommendPackageAllInstalledSize($line[0])/1024,2)." MB</td>
+				<td valign=\"top\">".I18N_number_format((float)PKG_getRecommendPackageAllInstalledSize($line[0])/1024)." MB</td>
 				<td valign=\"top\">".PKG_listRecommendSubPackages($line[0],"<br>",$params)."</td>
 				<td valign=\"top\">$params</td>
 				<td valign=\"top\">
@@ -1072,7 +1176,7 @@ while ($line=mysql_fetch_row($result))
 				<td>$jobImg</td>
 				<td valign=\"top\">$status</td>
 				<td valign=\"top\"><b>".$line[2]."</b></td>
-				<td valign=\"top\">".number_format((float)$line[4]/1024,2)." MB</td>
+				<td valign=\"top\">".I18N_number_format((float)$line[4]/1024)." MB</td>
 				<td valign=\"top\">".PKG_listParams($line[1])."</td>
 				<td valign=\"top\"><CENTER>".PKG_hasOptions($line[2], $packageID, $distr, $client, $release)."</CENTER></td>
 				<td valign=\"top\"><CENTER>".$line[5]."</CENTER></b></td>
@@ -1087,7 +1191,7 @@ while ($line=mysql_fetch_row($result))
 				<td>$jobImg</td>
 				<td valign=\"top\">$status</td>
 				<td valign=\"top\"><b>".$line[0]."</b></td>
-				<td valign=\"top\">".number_format((float)$line[4]/1024,2)." MB</td>
+				<td valign=\"top\">".I18N_number_format((float)$line[4]/1024)." MB</td>
 				<td valign=\"top\">".PKG_listParams($line[1])."</td>
 				<td valign=\"top\"><CENTER>".PKG_hasOptions($line[0], $packageID, $distr, $client, $release)."</CENTER></td>
 				<td valign=\"top\"><CENTER>".$line[5]."</CENTER></b></td>
@@ -1101,7 +1205,7 @@ while ($line=mysql_fetch_row($result))
 			<td colspan=\"7\">
 				<hr>
 				$I18N_packageAmount: $packageAmount<br>
-				$I18N_wholeSize: ".number_format((float)$allInstalledSize/1024,2)." MB<br>
+				$I18N_wholeSize: ".I18N_number_format((float)$allInstalledSize/1024)." MB<br>
 			</td>
 			<td>
 				".BUT_checkboxChanger."
@@ -1779,7 +1883,7 @@ function PKG_addShutdownOrRebootPackage($client)
 	if ($_SESSION['m23Shared'])
 		PKG_addJob($client,"m23Shutdown",PKG_getSpecialPackagePriority("m23Shutdown"),"");
 
-	if (CLIENT_isrunning($client))
+	if (CLIENT_isrunning($client) || VM_isCloudStackClient($client))
 		PKG_addJob($client,"m23Reboot",PKG_getSpecialPackagePriority("m23Reboot"),"");
 	else
 		PKG_addJob($client,"m23Shutdown",PKG_getSpecialPackagePriority("m23Shutdown"),"");
@@ -2182,12 +2286,7 @@ function PKG_updateSourcesListAtAllClients($sourcename)
 				$options = CLIENT_getAllOptions($line[0]);
 
 				if ($options['packagesource']==$sourcename)
-					{
-					PKG_addJob($line[0],
-					"m23UpdateSourcesList",
-					PKG_getSpecialPackagePriority("m23UpdateSourcesList"),
-					$sourcename);
-					};
+					PKG_addJob($line[0], "m23UpdateSourcesList", PKG_getSpecialPackagePriority("m23UpdateSourcesList"), $sourcename);
 			}
 };
 

@@ -18,6 +18,8 @@ $I18N_kdm_greeting="Welcome to your m23 Client: %n";
 
 //1.3
 $I18N_installing_gnome2="Installing Gnome2";
+$I18N_installing_basesystem="Installing base system";
+$I18N_installing_base_packages="Installing base packages";
 
 //1.5
 $I18N_installing_xfce="Installing XFce";
@@ -51,4 +53,11 @@ $I18N_installing_unityfull="Installing full featured Unity 2D/3D desktop";
 //13.1
 $I18N_installingCinnamon="Installing Cinnamon";
 $I18N_installingMate="Installing Mate";
+
+//13.3
+$I18N_installing_x2go_server='Installing x2go server';
+$I18N_installing_packages='Installing packages';
+$I18N_deinstalling_packages='Uninstalling packages';
+$I18N_updating_packages='Updating packages';
+$I18N_updating_package_information='Updating package information';
 ?>

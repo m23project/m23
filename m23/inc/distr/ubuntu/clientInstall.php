@@ -29,7 +29,7 @@ function DISTR_baseInstall($lang,$id)
 
 	CLCFG_activateDMA();
 
-	CLCFG_mountRootDir($clientOptions[instPart]);
+	CLCFG_mountRootDir($clientOptions['instPart']);
 	/* =====> */ MSR_statusBarIncCommand(2);
 
 	if (!PKG_isReconfiguredWithExtraDistr($id))
@@ -193,8 +193,6 @@ cd /tmp
 
 	CLCFG_dialogInfoBox($I18N_client_installation,$I18N_client_status,$I18N_setup_bootmanager);
 
-	CLCFG_dialogInfoBox($I18N_client_installation,$I18N_client_status,$I18N_add_user);
-
 echo("
 
 cd /tmp
@@ -209,22 +207,8 @@ cd /tmp
 //sets the client language
 	CLCFG_language($clientParams['language']);
 
-//generate commands for adding the user account on the client
-	$accountInfo['groups'][0]="audio";
-	$accountInfo['groups'][1]="floppy";
-	$accountInfo['groups'][2]="cdrom";
-	$accountInfo['groups'][3]="video";
-	$accountInfo['groups'][4]="users";
-	$accountInfo['groups'][5]="lpadmin";
-	$accountInfo['groups'][6]="plugdev";
-
-	$accountInfo['login'] = $clientOptions['login'];
-
 	if (($clientOptions['addNewLocalLogin']=="yes") || (!isset($clientOptions['addNewLocalLogin'])))
-	{
-		$accountInfo['firstpw'] = $clientParams['firstpw'];
-		PKG_addJob($clientParams['client'],"m23AddUser",PKG_getSpecialPackagePriority("m23AddUser",""),serialize($accountInfo));
-	}
+		PKG_addUbuntuUser($clientParams['client'], $clientOptions['login'], $clientParams['firstpw']);
 
 //Disables getting root rights of normal users via sudo, if enabled in the options.
 	if ($clientOptions['disableSudoRootLogin'] == 1)
@@ -268,6 +252,8 @@ mkdir -p /dev/pts
 #####################
 
 \n");
+
+	CLCFG_disablePlymouth();
 
 	CLCFG_writeM23fetchjob();
 
@@ -347,6 +333,10 @@ function DISTR_startInstall($client,$desktop,$instPart,$swapPart)
 	//add printer detection job (or not)
 	if ($options['installPrinter']=="yes")
 		PKG_addJob($client,"m23PrinterConfig",PKG_getSpecialPackagePriority("m23PrinterConfig"),"");
+
+	//Add the x2go server installation job (or not)
+	if ($options['installX2goserver'] == 1)
+		PKG_addJob($client,"m23x2goServer",PKG_getSpecialPackagePriority("m23x2goServer"),"");
 
 	//Make sure that the client is in the same state (running or turned off) after the insallation like before.
 	PKG_addShutdownOrRebootPackage($client);

@@ -138,6 +138,12 @@
 					$groups[$nr++]=$_POST["CB_do$i"];
 			}
 
+			if (0 == $nr)
+			{
+				MSG_showError($I18N_noGroupSelected);
+				exit();
+			}
+
 			//Make the groups storable in a hidden variable
 			$groupStr = implode("?",$groups);
 
@@ -181,6 +187,8 @@
 	//package selection
 	else
 		$title = str_replace("-","",str_replace("<br>","",str_replace("&nbsp;","",$I18N_editPackageSelection)));
+
+
 ?>
 
 
@@ -212,6 +220,11 @@ function showWait()
 			$searchDisabled="disabled";
 	}
 
+	if (HTML_submit('BUT_updatePackageSearchIndex', $I18N_updatePackageSearchIndex))
+		PKG_updatePackageSearchCacheFile($packagesource);
+	
+	$packageInformationChange = constant('BUT_updatePackageSearchIndex').' '.SRCLST_packageInformationChangeInformationHumanReadable($distr, $packagesource);
+
 	switch ($action)
 	{
 		case 'deinstall':
@@ -240,7 +253,7 @@ function showWait()
 			//Add an extra checkbox for choosing to search complete package descriptions/sizes on Debian/Ubuntu
 			if (('debian' == $distr) || ('ubuntu' == $distr))
 			{
-				$completeDescription = HTML_checkBox('CB_completeDescription', $I18N_fetchCompletePackageDescriptionAndSize);
+				$completeDescription = HTML_checkBox('CB_completeDescription', $I18N_fetchCompletePackageDescription);
 				$completeDescriptionHTML = '<br>'.constant('CB_completeDescription');
 			}
 			else
@@ -249,8 +262,9 @@ function showWait()
 			HTML_submitDefine('BUT_search', $I18N_search, "$searchDisabled onClick=\"showWait()\"");
 
 			echo("
-			$I18N_package_search ".ED_search."&nbsp;".BUT_search."&nbsp; $completeDescriptionHTML<BR>".RB_packetType."
-			<br>
+			$I18N_package_search ".ED_search."&nbsp;".BUT_search."<BR>".RB_packetType."
+			<br>$completeDescriptionHTML<br>
+			$packageInformationChange
 
 			<div style=\"display: none\" id=\"waitdiv\">
 				<table class=\"infotable\">
@@ -269,7 +283,7 @@ function showWait()
 
 		case 'update':
 		{
-			echo(RB_updateType);
+			echo(RB_updateType."<br>$packageInformationChange");
 			break;
 		};
 	};
@@ -295,6 +309,7 @@ function showWait()
 
 	$CB_counter = (isset($_POST['HID_CB_counter']) ? $_POST['HID_CB_counter'] : 0);
 
+
 // 	if (!empty($_POST['CB_markCounter']))
 // 		$CB_markCounter=$_POST['CB_markCounter'];
 // 		else
@@ -310,10 +325,16 @@ function showWait()
 		{
 			case 'normal':
 			{
+				//we have a normal apt package
+				if (empty($searchTerm))
+				{
+					MSG_showError($I18N_pleaseEnterASearchTerm);
+					break;
+				}
+			
 				if (('debian' == $distr) || ('ubuntu' == $distr))
 					$CB_counter = PKG_listPackages($searchTerm, $distr, $packagesource, $client, $completeDescription);
 				else
-					//we have a normal apt package
 					$CB_counter = PKG_listPackages($searchTerm, $distr, $packagesource, $client);
 				break;
 			};

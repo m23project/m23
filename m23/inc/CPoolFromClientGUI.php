@@ -68,7 +68,7 @@ class CPoolFromClientGUI extends CPoolGUI
 	public function __construct($clientName, $type = CPoolLister::POOL_TYPE_DOWNLOAD)
 	{
 		//Create a new client object
-		$clientO = new CClient($clientName, true);
+		$clientO = new CClient($clientName, CClient::CHECKMODE_MUSTEXIST);
 
 		//Set the pool names
 		$this->setImportPoolName($clientName);

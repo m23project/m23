@@ -250,8 +250,11 @@ function MSG_showMessageBoxHeader($tableType,$type,$width=700,$dontShowButReturn
 		$htmlWidth="";
 	else
 		$htmlWidth="width=\"$width\"";
- 
-	$out = "<br><CENTER>
+
+	if (HELPER_isExecutedInCLI())
+		$out = '';
+	else
+		$out = "<br><CENTER>
 	<table class=\"$tableType\" $htmlWidth align=\"center\" border=\"0\" cellspacing=\"5\">
 	<tr><td><span class=\"subhighlight\">$type</span></td></tr>
 	<tr><td><br>";
@@ -273,7 +276,10 @@ function MSG_showMessageBoxHeader($tableType,$type,$width=700,$dontShowButReturn
 **/
 function MSG_showMessageBoxFooter($dontShowButReturn=false)
 {
-	$out = "<br></td></tr>
+	if (HELPER_isExecutedInCLI())
+		$out = '';
+	else
+		$out = "<br></td></tr>
 	</table></CENTER><br>";
 
 	if ($dontShowButReturn)

@@ -117,7 +117,7 @@ $m23cupsadminPW = md5(HELPER_generateSalt(256));
 
 // Add the new user
 $groups[0] = 'lpadmin';
-CLCFG_addUser('m23cupsadmin', $m23cupsadminPW, $groups);
+CLCFG_addUser('m23cupsadmin', $m23cupsadminPW, $groups, 523);
 
 // Store the password as client option
 $clientName = CLIENT_getClientName();

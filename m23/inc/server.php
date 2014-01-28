@@ -15,6 +15,37 @@ define('m23RASTunnelScript','/m23/bin/m23RemoteAdministrationServiceOpenTunnel')
 
 
 /**
+**name SERVER_logLocalScreenSessionToFile($session, $user ='root')
+**description Logs the output of a local screen session to a file.
+**parameter session: name screen session to log.
+**parameter user: user the script runs under
+**returns Full path to the log file.
+**/
+function SERVER_logLocalScreenSessionToFile($session, $user ='root')
+{
+	$logfile = "/m23/tmp/$session.screen";
+
+	//Check, if the logfile is newer than 5 minutes => give back the name of the log file only
+	if (file_exists($logfile) && ((time() - filectime($logfile)) < 300))
+		return($logfile);
+
+	$cmd = "sudo rm $logfile
+sudo su - $user -c \"screen -XS $session logfile $logfile\"
+sudo su - $user -c \"screen -XS $session log off\"
+sudo su - $user -c \"screen -XS $session log on\"
+chmod 755 $logfile
+";
+
+	exec($cmd);
+
+	return($logfile);
+}
+
+
+
+
+
+/**
 **name SERVER_setSSLCertCheckDisabled($disableSSLCertCheck)
 **description Sets, if the SSL certificate check is disabled globally for all clients.
 **parameter: disableSSLCertCheck: true, if the check is disabled otherwise false.
@@ -702,8 +733,8 @@ function SERVER_runInBackground($jobName,$cmds,$user="root",$runInScreen=true)
 	rm $lock 2> /dev/null
 	touch $lock
 $cmds
-	#rm $cmdf
-	#rm $lock\n");
+	rm $cmdf
+	rm $lock\n");
 
 	fclose($file);
 
@@ -760,7 +791,7 @@ function SERVER_runningInScreen($jobName, $user)
 {
 	$jobName = trim($jobName);
 	//Get the amount of the screens with the given job name
-	$ret = SERVER_runInBackground("$jobName-checkRunning","screen -ls | egrep [0-9]*\.".$jobName."[[:blank:]]* -c",$user,false);
+	$ret = SERVER_runInBackground("$jobName-checkRunning","screen -ls | egrep [0-9]*\.".$jobName."[[:blank:]] -c",$user,false);
 
 	//If there are jobs reported by screen the process runs
 	return($ret > 0);

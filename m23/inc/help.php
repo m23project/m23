@@ -46,7 +46,8 @@ function HELP_getHelp($topic,$language="",$fileName="",$latex=false)
 			if (!(strpos($topic,"man://")===false))
 				{
 					$manPage=explode("//",$topic);
-					exec("man $manPage[1] > /tmp/m23man$manPage[1]");
+					$manPage = escapeshellarg($manPage[1]);
+					exec("man $manPage > /tmp/m23man$manPage[1]");
 					$helpfile="/tmp/m23man$manPage[1]";
 				}
 			//Check if the help file exists in the current language
@@ -266,6 +267,8 @@ function HELP_showHelpTex($fileName,$imageFile,$scale=0.45)
 	$s[23]="'&OElig;'s"; $r[23]="\\OE{}";
 	$s[24]="'&bull;'si"; $r[24]="\\newline\n\$\\bullet\$";
 	$s[25]="'_'si"; $r[25]="\\_";
+	$s[26]="'&reg;'si"; $r[26]="\\textsuperscript{\\textregistered}";
+	$s[27]="'&trade;'si"; $r[27]="\\textsuperscript{\\texttrademark}";
 //	$s[25]="'%'si"; $r[25]="\\%";
 	
 

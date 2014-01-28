@@ -186,7 +186,14 @@ function getServerIP()
 	if ($_SESSION['m23Shared'])
 		return(m23SHARED_getServerIP());
 	else
-		return(exec("sudo grep address /etc/network/interfaces | cut -d's' -f3 | cut -d' ' -f2 | head -1"));
+	{
+		$ip = exec("sudo grep address /etc/network/interfaces | cut -d's' -f3 | cut -d' ' -f2 | head -1");
+
+		if (empty($ip) && VM_CloudStack_available())
+			$ip = VM_CloudStack_getServerIP();
+
+		return($ip);
+	}
 }
 
 
@@ -199,7 +206,14 @@ function getServerIP()
 **/
 function getServerNetmask()
 {
-	return(exec("sudo grep netmask /etc/network/interfaces | cut -d'k' -f2 | cut -d' ' -f2 | head -1"));
+	for ($ethNr = 0; $ethNr < 10; $ethNr++)
+	{
+		$netmask = exec('LC_ALL="C"; sudo /sbin/ifconfig eth'.$ethNr.' | sed "s/  /\n/g" | grep "^Mask" | cut -d":" -f2');
+		if (isset($netmask{6}))
+			break;
+	}
+
+	return($netmask);
 }
 
 
@@ -213,6 +227,12 @@ function getServerNetmask()
 function getDNSServers()
 {
 	exec("sudo grep nameserver /etc/resolv.conf | cut -d' ' -f2",$nameservers);
+	if (!isset($nameservers[0]))
+		$nameservers[0] = '85.88.19.10';
+
+	if (!isset($nameservers[1]))
+		$nameservers[1] = '8.8.8.8';
+
 	return($nameservers);
 }
 
@@ -226,7 +246,7 @@ function getDNSServers()
 **/
 function getServerGateway()
 {
-	return(exec("sudo grep gateway /etc/network/interfaces | cut -d'y' -f2 | cut -d' ' -f2"));
+	return(exec("sudo /sbin/ip route | awk '/default/ { print $3 }'"));
 }
 
 

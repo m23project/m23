@@ -6,7 +6,7 @@
 
 /**
 **name CALC_add_number($number, $signs)
-**description Adds a number to the calculator.
+**description Adds a number from 0 to 9 to the calculator.
 **parameter number: Number to add.
 **parameter signs: Array of possible signs.
 **/

@@ -1,5 +1,7 @@
 <?php
 
+$groupname = urldecode($_GET['groupname']);
+
 switch ($_GET['action'])
 	{
 		case "renameGroup" :

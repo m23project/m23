@@ -11,7 +11,7 @@ $*/
 
 /**
 **name SRCLST_getAddToFile($sourceName)
-**description Returns addToFile paremters from the given sources list as an associative array, where file name and file contents are seperated.
+**description Returns addToFile paramters from the given sources list as an associative array, where file name and file contents are seperated.
 **parameter sourceName: The name of the package source list
 **returns: Associative array with file name and file contents (e.g. [0] => Array ([file] => file1.txt, [text] => text1), [1] => Array ([file] => file2.txt, [text] => text2), ...)
 **/
@@ -293,7 +293,7 @@ function SRCLST_checkList($sourceName, $arch)
 		return(false);
 	}
 
-	$logFile = PKG_updatePackageInfo($distr,$sourceName,true,$arch);
+	$logFile = PKG_updatePackageInfo($distr, $sourceName, true, $arch);
 
 	//there was an error updating the package source
 	if (!$logFile)
@@ -324,13 +324,72 @@ function SRCLST_checkList($sourceName, $arch)
 
 
 /**
-**name SRCLST_packageInformationOlderThan($minutes,$distr,$sourcename)
-**description checks if a package info is older than a selected amount of minutes
+**name SRCLST_packageInformationChangeInformationHumanReadable($distr, $sourcename)
+**description Returns the time point when the package information was changed last.
+**parameter distr: the short name of the distribution
+**parameter sourceName: the name of the package source list
+**returns: Time when the package information was changed last.
+**/
+function SRCLST_packageInformationChangeInformationHumanReadable($distr, $sourcename)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	//Get time information
+	$packageInformationChange = SRCLST_packageInformationChangeTime($distr, $sourcename, $packageInformationChangedBefore);
+
+	//Convert the time information into human readable form
+	$packageInformationChangeS = strftime($I18N_timeFormat, $packageInformationChange);
+
+	return("$I18N_updatedLastAt $packageInformationChangeS ($I18N_changedBeforeMinutes1 ".(int)($packageInformationChangedBefore / 60)." $I18N_changedBeforeMinutes2)");
+	
+}
+
+
+
+
+
+/**
+**name SRCLST_packageInformationChangeTime($distr, $sourcename, &$changedBefore)
+**description Returns the time point when the package information was changed last.
+**parameter distr: the short name of the distribution
+**parameter sourceName: the name of the package source list
+**parameter changedBefore: Amount of seconds before the package information was changed.
+**returns: Time when the package information was changed last.
+**/
+function SRCLST_packageInformationChangeTime($distr, $sourcename, &$changedBefore)
+{
+	//clear the cache that caches informations about the access time of files
+	clearstatcache();
+	
+	$statusFile = "/m23/var/cache/m23apt/$distr/$sourcename/status";
+
+	if (file_exists($statusFile))
+	{
+		$changeTime = filectime($statusFile);
+		$changedBefore = time() - $changeTime;
+	}
+	else
+	{
+		$changeTime = 0;
+		$changedBefore = time();
+	}
+
+	return($changeTime);
+}
+
+
+
+
+
+/**
+**name SRCLST_packageInformationOlderThan($minutes, $distr, $sourcename)
+**description Checks if a package info is older than a selected amount of minutes or if the package info directory is too smal.
 **parameter minutes: the amount of minutes the package information can be older to return true
 **parameter distr: the short name of the distribution
 **parameter sourceName: the name of the package source list
+**returns: true when package info is older than a selected amount of minutes or if the package info directory is too smal, otherwise false.
 **/
-function SRCLST_packageInformationOlderThan($minutes,$distr,$sourcename)
+function SRCLST_packageInformationOlderThan($minutes, $distr, $sourcename)
 {
 	$baseDir = "/m23/var/cache/m23apt/$distr/$sourcename";
 	$listsDir = "$baseDir/lists/";
@@ -342,11 +401,10 @@ function SRCLST_packageInformationOlderThan($minutes,$distr,$sourcename)
 
 	$statusFile = "$baseDir/status";
 
-	//clear the cache that caches informations about the access time of files
-	clearstatcache();
+	$changeTime = SRCLST_packageInformationChangeTime($distr, $sourcename, $changedBefore);
 
 	return ((!file_exists('/m23/etc/offlineMode')) &&
-		((!file_exists($statusFile)) || (((time()-filectime($statusFile))/60) > $minutes) || $listsDirTooSmal));
+		((!file_exists($statusFile)) || (($changedBefore / 60) > $minutes) || $listsDirTooSmal));
 };
 
 
@@ -554,7 +612,7 @@ function SRCLST_getArchitectures($sourceName)
 		return(HELPER_array2AssociativeArray($archs));
 	}
 	else
-		return(false);
+		return(array('i386'));
 }
 
 

@@ -456,24 +456,24 @@ function DHCP_activateBoot($clientName, $on, $bootType = 'x')
 
 	switch ($bootType)
 	{
-		case 'none':
-		case 'pxe':
-			if ($on)
-				{
-					DHCP_writePXEcfg($clientName, $allOptions['arch']);
-					return(DHCP_addClient($clientName, $allParams['ip'], $allParams['netmask'], $allParams['mac'], $bootType, $allParams['gateway']));
-				}
-			else
-				{
-					return(DHCP_rmClient($clientName));
-				}
-		break;
 
 		case "etherboot":
 			if ($on)
 				DHCP_setBootimage($clientName, "m23install-".$allOptions['arch']);
 			else
 				DHCP_setBootimage($clientName, "hdboot");
+		break;
+
+		default:
+			if ($on)
+			{
+				if (empty($bootType))
+					$bootType = 'pxe';
+				DHCP_writePXEcfg($clientName, $allOptions['arch']);
+				return(DHCP_addClient($clientName, $allParams['ip'], $allParams['netmask'], $allParams['mac'], $bootType, $allParams['gateway']));
+			}
+			else
+				return(DHCP_rmClient($clientName));
 		break;
 	}
 }

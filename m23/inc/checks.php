@@ -26,7 +26,8 @@ define('CC_language','s5');
 define('CC_status','i');
 define('CC_statusOrEmpty','ie');
 define('CC_firstpw','sn');
-define('CC_rootpassword',0);
+define('CC_firstpwOrEmpty','se');
+define('CC_rootpassword','l3');
 define('CC_installdate','i');
 define('CC_dns2','pe');
 define('CC_dns1','pe');
@@ -35,14 +36,18 @@ define('CC_netmask','p');
 define('CC_ip','p');
 define('CC_mac','An12');
 define('CC_email','ee');
-define('CC_familyname','s40');
-define('CC_forename','s40');
+define('CC_familyname','se40');
+define('CC_forename','sn40');
 define('CC_name',CC_forename);
 define('CC_office','se');
+define('CC_login','An32');
+define('CC_loginOrEmpty','Ae32');
 define('CC_id','i');
+define('CC_userID','i');
+define('CC_groupID','i');
 define('CC_lastmodify','i');
-define('CC_groupname','s200');
-define('CC_groupnameOrEmpty','Ae');
+define('CC_groupname','A200');
+define('CC_groupnameOrEmpty','se200');
 define('CC_biggerEqualSmaler','V>=<');
 define('CC_package','sn255');
 define('CC_packagestatus','sn2');
@@ -51,6 +56,7 @@ define('CC_packageselectionname','sn255');
 define('CC_jobstatus','sn10');
 define('CC_jobstatusOrEmpty','se10');
 define('CC_packagestatusOrEmpty','se10');
+define('CC_nfshomeserver','se255');
 define('CC_nochecknow',0);
 define('CC_packagesize','i');
 define('CC_packagepriority','i');
@@ -109,6 +115,8 @@ define('CC_statusBarID','i');
 define('CC_poolName','sn255');
 define('CC_COSident','sn255');
 define('CC_COSclass','sn255');
+define('CC_deviceNameDrive', 'd');
+define('CC_deviceNamepartition', 'dp');
 
 
 
@@ -195,13 +203,13 @@ function CHECK_FW()
 	{
 		$typeS = func_get_arg($i);
 		$val = func_get_arg($i + 1);
-		
-		if (empty($val))
-			continue;
 
 		//Store debuging info for CHECK_letFWDie
 		$GLOBALS['CHECK_FW_DEBUG_typeS'] = $typeS;
 		$GLOBALS['CHECK_FW_DEBUG_val'] = $val;
+
+		if (empty($val) && !$returnNoDie)
+			continue;
 
 		switch ($typeS{0})
 		{
@@ -233,7 +241,7 @@ function CHECK_FW()
 				return(CHECK_strAlphaNum($val, (isset($typeS{2}) ? substr($typeS,2) : 0), $typeS{1} == "e", $returnNoDie));
 				break;
 
-			case "s":
+			case 's':
 				//s:	string with allowed characters or numbers and unlimited length but no empty string allowed
 				//se:	string with allowed characters or numbers and unlimited length AND empty string allowed
 				//sn10:	string with allowed characters or numbers and maximum length of 10 and NO empty string allowed
@@ -249,6 +257,24 @@ function CHECK_FW()
 						return(false);
 					else
 						CHECK_letFWDie("CHECK_FW error: IP invalid!");
+				}
+				break;
+				
+
+			case 'd':
+				//d:	valid device name for HD drive
+				//dp:	valid device name for HD partition
+				$partCheck = ($typeS{1} === 'p');
+
+				if (!CHECK_deviceName($val, $partCheck))
+				{
+					if ($returnNoDie)
+						return(false);
+					else
+					{
+						$errDevMsg = ($partCheck ? 'partition' : 'drive');
+						CHECK_letFWDie("CHECK_FW error: Device name for $errDevMsg invalid!");
+					}
 				}
 				break;
 
@@ -296,6 +322,12 @@ function CHECK_FW()
 				}
 				break;
 
+			case 'l':
+				//l:	length of the input string is greater than 0
+				//l10:	length of the input string is greater than 10
+				return(isset($val{(isset($typeS{1}) ? substr($typeS,1) : 0)}));
+				break;
+
 			case 0:
 				//0:	all allowed
 				break;
@@ -311,12 +343,33 @@ function CHECK_FW()
 
 
 /**
+**name CHECK_deviceName($devName, $partition)
+**description Checks if the input value is a valid device name for a HD drive or partition.
+**parameter devName: Device name to check.
+**parameter partition: Set to true if you want to check for a partition.
+**returns The input value is a a valid drive or partition or false on an error.
+**/
+function CHECK_deviceName($devName, $partition)
+{
+	if ($partition)
+		$partAdd = '[0-9]{1,2}';
+	else
+		$partAdd = '';
+
+	return(1 === preg_match("#/dev/[sh]d[a-z]$partAdd\$#", $devName));
+}
+
+
+
+
+
+/**
 **name CHECK_int($val,$allowEmpty=false, $returnNoDie=false)
 **description Checks if the input value is an integer and shuts down the application if not.
 **parameter val: Input value to check.
 **parameter allowEmpty: Set to true if you want to allow empty strings.
 **parameter returnNoDie: Set to true if you want to return (instead of aborting the program) when an error in the input is found.
-**returns The input value if it's an integer or false on an error.
+**returns The input value is an integer or false on an error.
 **/
 function CHECK_int($val, $allowEmpty=false, $returnNoDie=false)
 {
@@ -377,10 +430,14 @@ function CHECK_strAlpha($val, $maxlen=0, $allowEmpty=false, $returnNoDie=false)
 {
 	//set language of language specific functions to german
 	setlocale(LC_CTYPE, "german");
-	if (ctype_alpha($val) && (($maxlen==0) || (!isset($val{$maxlen}))))
-		return((string)$val);
-	elseif ($allowEmpty && !isset($val{0}))
-		return((string)"");
+
+	if ($allowEmpty || isset($val{0}))
+	{
+		if (ctype_alpha($val) && (($maxlen==0) || (!isset($val{$maxlen}))))
+			return((string)$val);
+		elseif ($allowEmpty && !isset($val{0}))
+			return((string)"");
+	}
 
 	if ($returnNoDie)
 		return(false);
@@ -406,10 +463,14 @@ function CHECK_strAlphaNum($val, $maxlen=0, $allowEmpty=false, $returnNoDie=fals
 
 	//set language of language specific functions to german
 	setlocale(LC_CTYPE, "german");
-	if (ctype_alnum($val) && (($maxlen==0) || (!isset($val{$maxlen}))))
-		return((string)$val);
-	elseif ($allowEmpty && !isset($val{0}))
-		return((string)"");
+	
+	if ($allowEmpty || isset($val{0}))
+	{
+		if (ctype_alnum($val) && (($maxlen==0) || (!isset($val{$maxlen}))))
+			return((string)$val);
+		elseif ($allowEmpty && !isset($val{0}))
+			return((string)"");
+	}
 
 	if ($returnNoDie)
 		return(false);
@@ -469,12 +530,15 @@ function CHECK_str($val, $maxlen=0, $allowEmpty=false, $returnNoDie=false)
 	//set language of language specific functions to german
 	setlocale(LC_CTYPE, "german");
 
-	//the value must be shorter than $malen
-	//and only some letters are allowed
-	if ((($maxlen==0) || (!isset($val{$maxlen}))) && (preg_match("![^-'[:alpha:][:digit:]".CONF_ALLOWEDCHARACTERS." \t\n\r]!", $val)==0))
-		return((string)$val);
-	elseif ($allowEmpty && !isset($val{0}))
-		return((string)"");
+	if ($allowEmpty || isset($val{0}))
+	{
+		//the value must be shorter than $malen
+		//and only some letters are allowed
+		if ((($maxlen==0) || (!isset($val{$maxlen}))) && (preg_match("![^-'[:alpha:][:digit:]".CONF_ALLOWEDCHARACTERS." \t\n\r]!", $val)==0))
+			return((string)$val);
+		elseif ($allowEmpty && !isset($val{0}))
+			return((string)"");
+	}
 
 	if ($returnNoDie)
 		return(false);

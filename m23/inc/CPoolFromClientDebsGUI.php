@@ -10,7 +10,7 @@ class CPoolFromClientDebsGUI extends CPoolFromClientGUI
 	public function __construct($clientName)
 	{
 		//Create a new client object
-		$clientO = new CClient($clientName, true);
+		$clientO = new CClient($clientName, CClient::CHECKMODE_MUSTEXIST);
 
 		//Set the pool names
 		$this->setImportPoolName($clientName);

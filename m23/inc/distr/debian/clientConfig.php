@@ -76,8 +76,9 @@ $CLCFG_listReleases=CLCFG_listDebianReleases;
 function CLCFG_addDistributionSpecificOptions($options)
 {
 	$options['kernel']=$_POST['SEL_kernel'];
-	$options['disableSSLCertCheck']=($_POST['CB_disableSSLCertCheck'] ? 1 : 0);
-	$options['disableSudoRootLogin']=($_POST['CB_disableSudoRootLogin'] ? 1 : 0);
+	$options['disableSSLCertCheck']=($_POST['CB_disableSSLCertCheck'] == 'yes' ? 1 : 0);
+	$options['disableSudoRootLogin']=($_POST['CB_disableSudoRootLogin'] == 'yes' ? 1 : 0);
+	$options['installX2goserver']=($_POST['CB_installX2goserver'] == 'yes' ? 1 : 0);
 	return($options);
 };
 
@@ -104,6 +105,14 @@ function CLCFG_showDistributionSpecificOptions($options)
 	$disableSSLCertCheck = HTML_storableCheckBox('CB_disableSSLCertCheck', '', 'disableSSLCertCheck', ($options['disableSSLCertCheck'] == 1));
 	$options = CLIENT_getSetOption(($disableSSLCertCheck ? 1 : 0), 'disableSSLCertCheck', $options);
 
+	$installX2goserver = HTML_storableCheckBox('CB_installX2goserver', '', 'installX2goserver', ($options['installX2goserver'] == 1));
+	$options = CLIENT_getSetOption(($installX2goserver ? 1 : 0), 'installX2goserver', $options);
+	
+	
+	/***********
+	CAUTION: Must be set in CLCFG_addDistributionSpecificOptions too
+	***********/
+
 	echo("
 	<tr>
 		<td>Kernel</td>
@@ -112,6 +121,10 @@ function CLCFG_showDistributionSpecificOptions($options)
 	<tr>
 		<td>$I18N_disableSSLCertCheck</td>
 		<td colspan=\"2\">".CB_disableSSLCertCheck."</td>
+	</tr>
+	<tr>
+		<td>$I18N_installX2goserver</td>
+		<td colspan=\"2\">".CB_installX2goserver."</td>
 	</tr>
 	");
 

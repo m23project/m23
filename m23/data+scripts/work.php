@@ -31,6 +31,8 @@ echo('#!/bin/bash
 
 	dbConnect();
 
+	$GLOBALS["m23_language"] = 'en';
+
 	$client = CLIENT_getClientName();
 	$_SESSION['clientName'] = $client;
 
@@ -57,8 +59,10 @@ echo('#!/bin/bash
 
 		if (strlen($package)>0)
 		{
+
 			$error=false;
-			if (UPDATE_running() || (($package == "m23fdiskFormat") && empty($options['release'])))
+			CLIENT_recalculateStatusBar($client);
+			if (UPDATE_running() || (($package == "m23fdiskFormat") && empty($options['release']) && ('halfSister' != $distr)))
 			{
 				echo("sleep 60\n");
 				executeNextWork();

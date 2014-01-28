@@ -118,6 +118,54 @@ function MSR_decodeMessage()
 
 
 /**
+**name MSR_curDynIPCommand($return)
+**description Generates the commands to transfer the current dynamic IP of the m23 client to the server.
+**parameter return: true, if the commands should be returned, false when shown.
+**/
+function MSR_curDynIPCommand($return)
+{
+$m23Server = getServerIP();
+
+$cmd = "\n".MSR_getm23clientIDCMD('?')."
+
+#Check if the client has a dynamic IP
+if [ ! -f /etc/network/interfaces ] || [ `grep static /etc/network/interfaces | grep eth -c` -eq 0 ]
+then
+	#Check, if the tool ip is present
+	ip -V
+	if [ $? -eq 0 ]
+	then
+		serverGateway=$(ip route | awk \'/default/ { print $3 }\')
+	else
+		serverGateway=$(route -n | grep '^0\.0\.0\.0' | tr -s '[:blank:]' | cut -d' ' -f2)
+	fi
+
+	#CloudStack test
+	wget -T5 -t0 http://\$serverGateway/latest/public-ipv4 -O /tmp/clientIP
+
+	if [ $? -eq 0 ]
+	then
+		#yes, run in CloudStack
+		curIP=$(cat /tmp/clientIP)
+	else
+		#no, normal DHCP IP
+		curIP=`export LC_ALL=C; ifconfig | grep \"inet addr\" | cut -d':' -f2 | cut -d' ' -f1 | head -1`
+	fi
+	wget -T5 -t0 --post-data \"type=MSR_curDynIP&curIP=\$curIP\" https://$m23Server/postMessage.php\$idvar -O /tmp/clientIP.log
+fi
+";
+
+if ($return)
+	return($cmd);
+else
+	echo($cmd);
+}
+
+
+
+
+
+/**
 **name MSR_buildPoolFromClientDebsCMD()
 **description Generates the commands to start the process for building a CPoolFromClientDebsGUI object and to start the download of the packages from the client to the server and the creation of the pool.
 **/
@@ -250,9 +298,6 @@ function MSR_statusBar($percent, $statustext)
 **/
 function MSR_curDynIP($curIP)
 {
-	if (!$_SESSION['m23Shared'])
-		return(false);
-
 	db_query("UPDATE `clients` SET `ip` = \"$curIP\" WHERE `client` = \"".CLIENT_getClientName()."\"");
 }
 
@@ -697,8 +742,8 @@ return("\n
 id=`cat /m23clientID 2> /dev/null`
 
 if [ \$id ]
- then
-  idvar=\"$addChar"."m23clientID=\$id\"
+then
+	idvar=\"$addChar"."m23clientID=\$id\"
 fi
 \n");
 }
@@ -1219,16 +1264,18 @@ function MSR_clientSettings()
 		$sourcesListName="From_$client";
 // 		print("muhu");
 		SRCLST_saveList($sourcesListName,$_POST['sourceslist'],"Imported from $client",$_POST['distr']);
+		$archs = array(trim($_POST['arch']));
+		SRCLST_saveArchitectures($sourcesListName, $archs);
 	};
 	
 	//store values
-	$data['dns1']					= $_POST['dns1'];
-	$data['dns2']					= $_POST['dns2'];
+	$data['dns1']					= trim($_POST['dns1']);
+	$data['dns2']					= trim($_POST['dns2']);
 	$data['language']				= trim($_POST['language']);
 // 	$data['ip']					= $_POST['ip'];
 	$data['netmask']				= HELPER_netmaskCalculator($_POST['netmask']);
-	$data['gateway']				= $_POST['gateway'];
-	$data['mac']					= $_POST['mac'];
+	$data['gateway']				= trim($_POST['gateway']);
+	$data['mac']					= trim($_POST['mac']);
 	$data['firstpw']				= '';
 
 	$loginUidGid=explode('_',$_POST['login']);
@@ -1237,16 +1284,16 @@ function MSR_clientSettings()
 	$options['groupID']				= (isset($_POST['groupID']{1}) ? trim($_POST['groupID']) : rtrim($loginUidGid[2]));
 	$proxyPort=explode(':',$_POST['aptproxy']);
 	$options['packageProxy']		= $proxyPort[0];
-	$options['packagePort']		= $proxyPort[1];
-	$options['kernel']			= $_POST['kernel'];
-	$options['distr']				= $_POST['distr'];
+	$options['packagePort']			= $proxyPort[1];
+	$options['kernel']				= trim($_POST['kernel']);
+	$options['distr']				= trim($_POST['distr']);
 	$options['addNewLocalLogin']	= 'yes';
-	$options['release']			= $_POST['release'];
-	$options['packagesource']		= $sourcesListName;
-	$options['instPart']			= $_POST['instPart'];
-	$options['swapPart']			= $_POST['swapPart'];
-	$options['arch']				= $_POST['arch'];
-	$options['timeZone']			= $_POST['timeZone'];
+	$options['release']				= trim($_POST['release']);
+	$options['packagesource']		= trim($sourcesListName);
+	$options['instPart']			= trim($_POST['instPart']);
+	$options['swapPart']			= trim($_POST['swapPart']);
+	$options['arch']				= trim($_POST['arch']);
+	$options['timeZone']			= trim($_POST['timeZone']);
 
 	//Check if fore and family name could be found
 	if (isset($_POST['forefamilyname']{2}))

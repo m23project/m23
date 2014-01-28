@@ -96,4 +96,5 @@ function CLCFG_showDistributionSpecificOptions($options)
 
 	return($options);
 };
+$CLCFG_showDistributionSpecificOptions = 'CLCFG_showDistributionSpecificOptions';
 ?>

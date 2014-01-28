@@ -8,6 +8,111 @@ define('DIR_M23APTCACHE', ($_SESSION['m23Shared'] ? "/m23/var/cache/m23apt/".m23
 
 
 /**
+**name PKG_updatePackageSearchCacheFile($packagesource)
+**description Updates the compressed package search file.
+**parameter packagesource: Name of the package sources list.
+**returns Full path to the log file.
+**/
+function PKG_updatePackageSearchCacheFile($packagesource)
+{
+	$distr = SRCLST_getValue($packagesource,"distr");
+	$archs = SRCLST_getArchitectures($packagesource);
+
+	foreach ($archs as $arch)
+		$logFile = PKG_updatePackageInfo($distr, $packagesource, true, $arch);
+
+	return($logFile);
+}
+
+
+
+
+
+/**
+**name PKG_getSearchCacheFileName($dir, $arch)
+**description Returns the full path to the compressed package search file.
+**parameter dir: Directory where the package information is stored.
+**parameter arch: Architecture for the packages in the search file.
+**returns Full path to the compressed package search file.
+**/
+function PKG_getSearchCacheFileName($dir, $arch)
+{
+	return("'$dir/pkgCache-$arch.gz'");
+}
+
+
+
+
+
+/**
+**name PKG_genPackageSearchCacheFileCMD($dir, $arch)
+**description Generates commands to create a compressed package search file.
+**parameter dir: Directory where the package information is stored.
+**parameter arch: Architecture for the packages in the search file.
+**returns BASH commands for creating a compressed package search file.
+**/
+function PKG_genPackageSearchCacheFileCMD($dir, $arch)
+{
+return("
+sudo cat '$dir/lists/'*Packages | awk '
+/^Package:/ {
+pkg=$2
+}
+
+/^Description:/ {
+gsub(\"^Description: \", \"\")
+descr=$0
+}
+
+/^Installed-Size:/ {
+size=$2
+}
+
+/^$/ {
+print(pkg\" - \"descr\" - \"size)
+}
+
+' | sort -d -u | sudo gzip > ".PKG_getSearchCacheFileName($dir, $arch)."
+");
+}
+
+
+
+
+
+/**
+**name PKG_searchPackageSearchCacheFileCMD($dir, $arch, $search)
+**description Generates BASH commands to search a compressed package search file.
+**parameter dir: Directory where the package information is stored.
+**parameter arch: Architecture for the packages in the search file.
+**parameter search: Search terms.
+**returns BASH commands to search a compressed package search file.
+**/
+function PKG_searchPackageSearchCacheFileCMD($dir, $arch, $search)
+{
+	$cacheFile = PKG_getSearchCacheFileName($dir, $arch);
+
+	//Split the search terms by blanks
+	$searchA = explode(' ', $search);
+
+	//Use the first term for zgrep
+	$cmd = "zgrep -i $searchA[0] $cacheFile";
+
+	//Remove the first search term
+	array_shift($searchA);
+
+	//Run thru the remaining terms
+	foreach ($searchA as $term)
+		$cmd .= " | grep -i $term";
+
+	return($cmd);
+}
+
+
+
+
+
+/**
 **name PKG_ncTarDebsFromClientToServer_Client()
 **description Client to send the Debian packages to the m23 client.
 **/
@@ -125,7 +230,7 @@ Description: m23 pool
 function PKG_convertPackagesToRepository($poolDir, $logFile, $poolName, &$sourceslist)
 {
 	$serverIP = getServerIP();
-
+	
 	//Generate commands for transforming the downloaded packages to a pool
 	$cmds = '
 	#Jump to the pool directory
@@ -216,26 +321,29 @@ function PKG_searchFor($key,$distr,$packagesource,$archs=array()) //deb-specific
 	$tempFile = uniqid('/m23/tmp/PKG_searchFor');
 
 	//Generate the default command with implicit architecture of the m23 server
-	$cmd = "sudo apt-cache search -o=Dir::Cache::archives='$packageInfoDir/archivs' -o=Dir::State::status='$packageInfoDir/status' -o=Dir::State='$packageInfoDir' -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$packageInfoDir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$packageInfoDir/preferences.d' -o=Dir::Etc::sourcelist='$packageInfoDir/sources.list' $key > $tempFile";
-	
+	$cmd = 'sudo '.PKG_searchPackageSearchCacheFileCMD($packageInfoDir, 'i386', $key)." > $tempFile;";
+// 	$cmd = "sudo apt-cache search -o=Dir::Cache::archives='$packageInfoDir/archivs' -o=Dir::State::status='$packageInfoDir/status' -o=Dir::State='$packageInfoDir' -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$packageInfoDir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$packageInfoDir/preferences.d' -o=Dir::Etc::sourcelist='$packageInfoDir/sources.list' $key > $tempFile";
+
 	//Run thru the architetures of the sources list
 	foreach ($archs as $arch)
 	{
 		//Update the package info for the architecture
-		$logFile = PKG_updatePackageInfo($distr,$packagesource,false, $arch);
-	
+		$logFile = PKG_updatePackageInfo($distr, $packagesource, false, $arch);
+
 		if ($logFile!=false)
 		{
-			$archOption = PKG_getAptArchOptions($arch);
+			$cmd .= 'sudo '.PKG_searchPackageSearchCacheFileCMD($packageInfoDir, $arch, $key)." >> $tempFile;";
+		
+// 			$archOption = PKG_getAptArchOptions($arch);
 
 			//Add a command with explicit architecture setting
-			$cmd .= "; sudo apt-cache search -o=Dir::Cache::archives='$packageInfoDir/archivs' -o=Dir::State::status='$packageInfoDir/status' -o=Dir::State='$packageInfoDir' $archOption -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$packageInfoDir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$packageInfoDir/preferences.d' -o=Dir::Etc::sourcelist='$packageInfoDir/sources.list' $key >> $tempFile";
+// 			$cmd .= "; sudo apt-cache search -o=Dir::Cache::archives='$packageInfoDir/archivs' -o=Dir::State::status='$packageInfoDir/status' -o=Dir::State='$packageInfoDir' $archOption -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$packageInfoDir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$packageInfoDir/preferences.d' -o=Dir::Etc::sourcelist='$packageInfoDir/sources.list' $key >> $tempFile";
 		}
 
 	}
 
 	//Sort the output and make them unique
-	$cmd .= "; sort -u $tempFile; rm $tempFile";
+	$cmd .= " sort -u $tempFile | awk -vFS=' - ' '{if ($1 != old) {print; old=$1}}' ; rm $tempFile";
 
 	$file=popen($cmd, "r");
 
@@ -271,6 +379,69 @@ function PKG_getPackageName($line) //deb-specific
 	$package_description=explode(" - ",$line);
 	return($package_description[0]);
 };
+
+
+
+
+
+/**
+**name PKG_getLongPackageDescription($package, $distr, $packagesource)
+**description Gets the description of a package.
+**parameter package: Name of the package.
+**parameter distr: the distribution name
+**parameter packagesource: name of the package source
+**returns Description of the package.
+**/
+function PKG_getLongPackageDescription($package, $distr, $packagesource)
+{
+$packageInfoDir = DIR_M23APTCACHE."/$distr/$packagesource";
+
+$cmd = "
+infoFile=$(grep -l \"Package: $package$\" $packageInfoDir/lists/*Translation-en | head -1)
+
+awk '
+
+#Reset all values
+BEGIN {
+	description=\"\"
+	searchDescr=0
+	pkgFound=0
+}
+
+#End parsing the description?
+/^[^:]*: / {
+	if (searchDescr==1) {
+		searchDescr=0
+		print(description)
+		exit
+	}
+}
+
+/Package: $package$/ {
+	pkgFound=1
+}
+
+
+#Start parsing the description?
+/^Description-en/ {
+	if (pkgFound==1) {
+		searchDescr=1
+		gsub(/Description[^:]*: /,\"\",$0);
+	}
+}
+
+#Add lines, if belonging to the description
+{
+	if (searchDescr==1) {
+		description=description$0
+	}
+}
+' \$infoFile
+}
+";
+
+return(exec($cmd));
+}
 
 
 
@@ -410,6 +581,7 @@ function PKG_listPackages($key,$distr="debian",$packagesource, $client="", $comp
 	while (!feof($file))
 	{//read the pipe and split
 		$package_description=explode(" - ",PKG_getNextPackage($file));
+
 		//if we don't get a new package name break
 		if (empty($package_description[0]))
 			break;
@@ -421,25 +593,24 @@ function PKG_listPackages($key,$distr="debian",$packagesource, $client="", $comp
 			$class = 'class="evenrow"';
 		else
 			$class = 'class="oddrow"';
-			
 
 		//Get the full package description and sizes (or not)
 		if ($completeDescription)
 		{
-			$temp = PKG_getPackageDescriptionSize($distr,$packagesource,$package_description[0]);
-			$descriptionSize = explode('###',$temp);
+			$descriptionSize[0] = PKG_getLongPackageDescription($package_description[0], $distr, $packagesource);
+			$descriptionSize[1] = $package_description[2];
 		}
 		else
 		{
 			$descriptionSize[0] = $package_description[1];
-			$descriptionSize[1] = 0;
+			$descriptionSize[1] = $package_description[2];
 		}
 
 		//print the line
 		echo("
 		<tr $class>
 			<td>".$package_description[0]."</td>
-			<td>".number_format((float)$descriptionSize[1]/1024,2)." MB</td>
+			<td>".I18N_number_format((float)$descriptionSize[1]/1024)." MB</td>
 			<td>".wordwrap(htmlentities($descriptionSize[0]),60,"<br>",1)."</td>
 			<td><center><input type=\"checkbox\" name=\"$cbName\" value=\"".$package_description[0].'###'.$descriptionSize[1]."\"></center></td>
 		</tr>");
@@ -542,8 +713,7 @@ function PKG_preparePackageDir($dir,$packagesource,$logFile="",$returnCmd=false,
 	if (!file_exists("$dir/lists/lock"))
 		exec("touch '$dir/lists/lock'");
 
-	if (!file_exists("$dir/status"))
-		exec("touch '$dir/status'");
+	exec("touch '$dir/status'");
 
 	//if there is no sources.list, generate it from the db
 	if (!file_exists("$dir/sources.list"))
@@ -557,7 +727,7 @@ EOF");
 		PKG_addAPTConfigFiles($sourceName, "$dir");
 
 	//update the package information
-	$cmd = "export LANG=\"C\"; sudo apt-get update -o=Dir::Cache::archives='$dir/archivs' -o=Dir::State::status='$dir/status' -o=Dir::State='$dir' $archOption -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$dir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$dir/preferences.d' -o=Dir::Etc::sourcelist='$dir/sources.list' &> '$logFile'";
+	$cmd = "export LANG=\"C\"; sudo apt-get update -o=Dir::Cache::archives='$dir/archivs' -o=Dir::State::status='$dir/status' -o=Dir::State='$dir' $archOption -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$dir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$dir/preferences.d' -o=Dir::Etc::sourcelist='$dir/sources.list' &> '$logFile'".PKG_genPackageSearchCacheFileCMD($dir, $arch);
 
 
 	if ($returnCmd)
@@ -596,14 +766,15 @@ EOF");
 
 
 /**
-**name PKG_updatePackageInfo($distr,$packagesource, $force=false, $arch="")
-**description updates the package information to make it searchable
+**name PKG_updatePackageInfo($distr, $packagesource, $force, $arch)
+**description Updates the package information to make it searchable.
 **parameter distr: the distribution name
 **parameter packagesource: name of the package source
 **parameter force: set to true if you want to update the package info and the time is not over
 **parameter arch: Architecture to get package infos for.
+**parameter changeTime: Writes the time when the status file was last modified to.
 **/
-function PKG_updatePackageInfo($distr,$packagesource, $force=false, $arch="")
+function PKG_updatePackageInfo($distr, $packagesource, $force, $arch)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
@@ -612,7 +783,7 @@ function PKG_updatePackageInfo($distr,$packagesource, $force=false, $arch="")
 	if (!is_dir($dir))
 		exec("mkdir -p $dir");
 
-	if ((!file_exists("$dir/sources.list")) ||(SRCLST_packageInformationOlderThan(15,$distr,$packagesource)) || $force)
+	if ((!file_exists("$dir/sources.list")) ||(SRCLST_packageInformationOlderThan(300, $distr, $packagesource)) || $force)
 		{
 			$logFile = "/m23/tmp/update$packagesource.log";
 			$errMsg=PKG_preparePackageDir($dir,SRCLST_loadSourceList($packagesource),$logFile,false,$arch,$packagesource);
@@ -651,7 +822,7 @@ function PKG_previewInstallDeinstall($clientName,$distr,$packagesource,$packages
 	$clientStatusFile="/m23/var/cache/clients/$clientName/packageStatus";
 
 	$arch = CLIENT_getOption($clientName, 'arch');
-	PKG_updatePackageInfo($distr,$packagesource, $arch);
+	PKG_updatePackageInfo($distr, $packagesource, false, $arch);
 
 	$archOption = PKG_getAptArchOptions($arch);
 
@@ -716,7 +887,8 @@ function PKG_getKernels($distr,$packagesource,$arch)
 				break;
 
 			if ((strlen($package_description[0])>0) &&
-				((strstr($package_description[0],"-image"))))
+				(strstr($package_description[0],"-image")) &&
+				(strpos($package_description[0], 'grub-imageboot') === FALSE))
 				{
 					$temp=explode("-",$package_description[0]);
 
@@ -882,7 +1054,7 @@ function PKG_downloadPool($destDir, $sourceslist, $packagesArr, $arch, $release)
 	{
 		sudo rm lock
 		echo \"PID:\$\$\" >> $logFile
-		
+
 		(sudo apt-get install -d -y -f --force-yes --ignore-missing -o=APT::Get::Fix-Missing=true -o=APT::Force-LoopBreak=true -o=APT::Get::Fix-Broken=true -o=Dir::Cache::'archives=$destDir/archivs' -o=Dir::State::status='$destDir/status' -o=Dir::State='$destDir' -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$destDir/apt.conf.d' -o=Acquire::http::Proxy='http://127.0.0.1:2323' -o=Acquire::ftp::Proxy='http://127.0.0.1:2323' -o=Acquire::Retries=5 -o=Dir::Etc::PreferencesParts='$destDir/preferences.d' -o=Dir::Etc::sourcelist='$destDir/sources.list' $archOption \$@; echo $? > $retFile) 2>&1 | tee -a '$logFile'
 		return $(cat $retFile)
 	}\n";

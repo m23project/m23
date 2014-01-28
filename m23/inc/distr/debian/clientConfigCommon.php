@@ -361,7 +361,30 @@ function CLCFG_makeDev()
 		./MAKEDEV generic 2> /dev/null
 	fi
 
+	mknod vda b 254 0
+	for i in `seq 1 9`
+	do
+		mknod vda\$i b 254 \$i
+	done
+
 	cd \$cDir
+	");
+}
+
+
+
+
+
+/**
+**name CLCFG_disablePlymouth()
+**description Disables the plymouth.
+**/
+function CLCFG_disablePlymouth()
+{
+	foreach (array('/bin/plymouth', '/bin/plymouth-upstart-bridge') as $file)
+	echo("
+		dpkg-divert --local --rename --add $file
+		ln -s /bin/true $file
 	");
 }
 
@@ -1179,26 +1202,37 @@ chown root.utmp /var/run/screen
 
 
 /**
-**name CLCFG_addUser($username, $password, $groups)
+**name CLCFG_addUser($username, $password, $groups, $uid = '', $gid = '')
 **description generates the commands to add a user on the client. it adds the user account, creates a home directory, copies the m23 skel files and sets the
 **parameter userName: the username for the account
 **parameter password: the unecrypted password for the account
 **parameter groups: the groups the user should be added to
 **parameter skelDir: directory to the skeleton files
+**parameter uid: Optional user ID of the new user.
+**parameter gid: Optional group ID of the new user.
 **/
-function CLCFG_addUser($username, $password, $groups)
+function CLCFG_addUser($username, $password, $groups, $uid = '', $gid = '')
 {
 	if (isset($username{0}) && isset($password{0}))
 	{
 		//encrypt the password
 		$cpass= encryptShadow($username,$password);
-	
+
+		if (is_numeric($uid))
+			$uid = "--uid=$uid";
+
+		if (is_numeric($gid))
+			$gid = "--gid=$gid";
+
 		echo ("
+#In case that NFS is used.
+mount /home
+
 #WARNING: Don't delete the blank lines!
 
 #mkdir /home/$username >> /tmp/m23ClientInstall.log
 
-useradd -m -g users -d /home/$username -s /bin/bash -p '$cpass' \"$username\"  >> /tmp/m23ClientInstall.log
+useradd $uid $gid -m -g users -d /home/$username -s /bin/bash -p '$cpass' \"$username\"  >> /tmp/m23ClientInstall.log
 
 err=\$?
 
@@ -1512,7 +1546,7 @@ if ($bootloader == "grub")
 				kernels=0
 				[ -f /boot/grub/menu.lst ] && kernels=$( expr \$kernels + $(grep ^title /boot/grub/menu.lst -c))
 				[ -f /boot/grub/grub.cfg ] && kernels=$( expr \$kernels + $(grep menuentry /boot/grub/grub.cfg -c))
-				echo \"++++Kerneleintraege: \$kernels\" > /dev/stderr
+				#echo \"++++Kerneleintraege: \$kernels\" > /dev/stderr
 				
 				echo \$kernels
 			}
@@ -2278,6 +2312,9 @@ function CLCFG_installBasePackages($packagelist, $keyring="debian-keyring")
 	#Deactivate init
 	mv /sbin/init /sbin/init.deactivated
 
+	#Make sure, ischroot will return 2 to stop sysvinit from shuting down the installation
+	mv /usr/bin/ischroot /usr/bin/ischroot.deactivated
+
 	#set these options to make the kerne install without user interverntion
 	echo \"do_initrd = Yes\" >> /etc/kernel-img.conf
 
@@ -2311,6 +2348,8 @@ function CLCFG_installBasePackages($packagelist, $keyring="debian-keyring")
 	CLCFG_aptGet("install","$keyring screen dialog gnupg sudo");
 
 	CLCFG_aptGet("install","ethtool");
+
+	CLCFG_aptGet("install","isc-dhcp-client");
 	
 	echo("
 		wget -T1 -t1 -q http://m23.sourceforge.net/m23-Sign-Key.asc -O - | apt-key add -
@@ -2326,8 +2365,10 @@ function CLCFG_installBasePackages($packagelist, $keyring="debian-keyring")
 
 	#Reactivate init
 	mv /sbin/init.deactivated /sbin/init
+	mv /usr/bin/ischroot.deactivated /usr/bin/ischroot
 
-	rm /var/log/exim4/paniclog 2> /dev/null
+	rm /var/log/exim4/paniclog 2> /dev/null	
+	
 	\n");
 
 	CLCFG_disableAvahiDaemon();
@@ -2485,7 +2526,7 @@ function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePor
 			else
 				#so dialog is available after change root
 				export additional=\"apt $additionalPackages\"
-	
+
 #				mkdir m23-time
 #				date +%s > m23-time/debootstrap.start
 				
@@ -2500,7 +2541,7 @@ function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePor
 				done
 
 #				date +%s > m23-time/debootstrap.stop
-	
+
 				if [ -f usr/bin/apt-get ]
 					then
 						".sendClientLogStatus("debootstrap APT check",true)."
@@ -2761,7 +2802,7 @@ function CLCFG_writeCrontabm23fetchjobEvery5Minutes($clientParams)
 {
 	if ($clientParams['dhcpBootimage'] == "gpxe")
 echo('
-echo "-*/5 * * * * root screen -dmS m23fetchjob /etc/init.d/m23fetchjob" >> /etc/crontab
+echo "*/5 * * * * root screen -dmS m23fetchjob /etc/init.d/m23fetchjob" >> /etc/crontab
 ');
 }
 
@@ -2811,15 +2852,7 @@ cat >> /sbin/m23fetchjob << \"MFJEOF\"
 #!/bin/bash
 export PATH=/sbin:/usr/sbin:/usr/local/sbin:/bin:/usr/bin:/usr/local/bin
 
-".MSR_getm23clientIDCMD("?")."
-
-#Check if the client has a dynamic IP
-if [ `grep dhcp /etc/network/interfaces | grep eth -c` -gt 0 ]
-then
-	#Get the current IP and tell it the m23 server
-	curIP=`export LC_ALL=C; ifconfig | grep \"inet addr\" | cut -d':' -f2 | cut -d' ' -f1 | head -1`
-	wget -T5 -t0 --post-data \"type=MSR_curDynIP&curIP=\$curIP\" https://\$1/postMessage.php\$idvar -O /dev/null
-fi
+".MSR_curDynIPCommand(true)."
 
 cd /tmp
 rm work.php* 2> /dev/null
@@ -3251,7 +3284,7 @@ base $baseDN\" > /etc/libnss-ldap.conf\n");
 /**
 **name CLCFG_enableNFSHome($nfsURL)
 **description enables storing of home directories on a NFS server
-**parameter nfsURL: URL to the NFS storage (e.g. 192.168.1.42/up/home)
+**parameter nfsURL: URL to the NFS storage (e.g. 192.168.1.23:/nfs-homes)
 **/
 function CLCFG_enableNFSHome($nfsURL)
 {
@@ -3261,7 +3294,7 @@ function CLCFG_enableNFSHome($nfsURL)
 		return(false);
 	}
 
-	$fstabLine = "$nfsURL /home nfs user,auto 0 0";
+	$fstabLine = "$nfsURL /home nfs defaults 0 0";
 
 	echo("
 	export DEBIAN_FRONTEND=noninteractive

@@ -20,10 +20,10 @@ function run($id)
 
 	CLCFG_copySSLCert("");
 
-	CLCFG_setRootPassword($clientParams['rootPassword']);
-
 	if (PKG_getPackageParams($id)!="assimilate")
 		{
+			CLCFG_setRootPassword($clientParams['rootPassword']);
+
 			/* =====> */ MSR_statusBarCommand(false, $I18N_hardware_detection);
 			CIR_detectSCSI();
 			/* =====> */ MSR_statusBarIncCommand(25);

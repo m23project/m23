@@ -31,11 +31,16 @@ function run($id)
 
 	IMG_clientCreate($imgparams['trans'],$imgparams['form'],$imgparams['compr'],$imgparams['param'],$imgparams['server'],$imgparams['port']);
 
+	//Make sure, the file with the size exists
+	echo("
+		cat /tmp/m23ImagerSize2 | grep out | cut -d'+' -f1 > /tmp/m23ImagerSize
+	");
+
 	MSR_genSendCommand("/tmp/m23ImagerSize","m23ImagerSize&imagename=".urlencode($imgparams['imagename']));
 
 	IMG_storeMBR($imgparams['param'], $imgparams['imagename']);
 
-	DHCP_activateBoot(CLIENT_getClientName(), true);
+	DHCP_activateBoot(CLIENT_getClientName(), false);
 
 	sendClientStatus($id,"done");
 

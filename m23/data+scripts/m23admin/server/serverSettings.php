@@ -13,12 +13,6 @@
 	<table align="center" class="subtable" cellspacing="10">
 		<tr>
 			<td align="center">
-				<a href="index.php?page=server_daemonsAndPrograms">
-					<img src="/gfx/internals.png" border="0"><br>
-					<?PHP echo($I18N_daemons_and_programs);?>
-				</a>
-			</td>
-			<td align="center">
 				<a href="index.php?page=update">
 					<img src="/gfx/update.png" border="0"><br>
 					<?PHP echo($I18N_update);?>
@@ -31,15 +25,15 @@
 				</a>
 			</td>
 			<td align="center">
-				<a href="index.php?page=serverStatus">
-					<img src="/gfx/serverStatus.png" border="0"><br>
-					<?PHP echo($I18N_serverStatus);?>
+				<a href="index.php?page=themeChoice">
+					<img src="/gfx/theme.png" border="0"><br>
+					<?PHP echo($I18N_themeChoice);?>
 				</a>
 			</td>
 			<td align="center">
-				<a href="index.php?page=manageGPGKeys">
-					<img src="/gfx/gpg.png" border="0"><br>
-					<?PHP echo($I18N_manageGPGKeys);?>
+				<a href="index.php?page=serverStatus">
+					<img src="/gfx/serverStatus.png" border="0"><br>
+					<?PHP echo($I18N_serverStatus);?>
 				</a>
 			</td>
 		</tr>
@@ -64,6 +58,12 @@
 				</a>
 			</td>
 			<td align="center">
+				<a href="index.php?page=ipManagement">
+					<img src="/gfx/ipmanagement.png" border="0"><br>
+					<?PHP echo($I18N_ipManagement);?>
+				</a>
+			</td>
+			<td align="center">
 				<a href="index.php?page=ldapSettings">
 					<img src="/gfx/settings.png" border="0"><br>
 					LDAP
@@ -78,16 +78,15 @@
 						m23@web
 					</a>
 				</td>');
-			
-				if ("de" == $GLOBALS["m23_language"])
-				echo('
-				<td align="center">
-					<a href="index.php?page=bafh">
-						<img src="/gfx/rabe.png" border="0"><br>
-						'.$I18N_BAfHDaylyExcuse.'
-					</a>
-				</td>');
 			?>
+		<tr>
+		</tr>
+			<td align="center">
+				<a href="index.php?page=manageGPGKeys">
+					<img src="/gfx/gpg.png" border="0"><br>
+					<?PHP echo($I18N_manageGPGKeys);?>
+				</a>
+			</td>
 			<td align="center">
 				<a href="index.php?page=serverBackup">
 					<img src="/gfx/backup.png" border="0"><br>
@@ -109,15 +108,9 @@
 				</a>
 			</td>
 			<td align="center">
-				<a href="index.php?page=ipManagement">
-					<img src="/gfx/ipmanagement.png" border="0"><br>
-					<?PHP echo($I18N_ipManagement);?>
-				</a>
-			</td>
-			<td align="center">
-				<a href="index.php?page=themeChoice">
-					<img src="/gfx/theme.png" border="0"><br>
-					<?PHP echo($I18N_themeChoice);?>
+				<a href="index.php?page=cloudStack">
+					<img src="/gfx/cloud.png" border="0"><br>
+					<?= $I18N_cloudFunctionsCS?>
 				</a>
 			</td>
 		</tr>
@@ -156,7 +149,30 @@ if (HTML_imgSwitch('SW_img', '/gfx/SSLCertificateCheckDisabled-32.png', '/gfx/SS
 					phpMyAdmin
 				</a>
 			</td>
+			<td align="center">
+				<?= SW_img ?>
+			</td>
+			<td align="center">
+				<a href="index.php?page=server_daemonsAndPrograms">
+					<img src="/gfx/internals.png" border="0"><br>
+					<?PHP echo($I18N_daemons_and_programs);?>
+				</a>
+			</td>
+		</tr>
+	</table>
+	</div>
+</td>
+</table>
 
+
+
+<a name="extras"></a>
+<span class="titlesmal"><?PHP echo($I18N_extras);?></span>
+<table align="center">
+<td>
+	<div class="subtable_shadow">
+	<table align="center" class="subtable" cellspacing="10">
+		<tr>
 			<td align="center">
 				<a href="index.php?page=calculator">
 					<img src="/gfx/calc.png" border="0">
@@ -164,17 +180,25 @@ if (HTML_imgSwitch('SW_img', '/gfx/SSLCertificateCheckDisabled-32.png', '/gfx/SS
 					<?=$I18N_calculator?>
 				</a>
 			</td>
-
-			<td align="center">
-				<?= SW_img ?>
-			</td>
+			<?php
+				if ("de" == $GLOBALS["m23_language"])
+				echo('
+				<td align="center">
+					<a href="index.php?page=bafh">
+						<img src="/gfx/rabe.png" border="0"><br>
+						'.$I18N_BAfHDaylyExcuse.'
+					</a>
+				</td>');
+			?>
 		</tr>
 	</table>
-	</div>	
+	</div>
 </td>
 </table>
+
 <br>
 
 <?PHP
 	HTML_showFormEnd();
+	help_showhelp('serverSettings');
 ?>

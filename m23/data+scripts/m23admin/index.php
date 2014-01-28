@@ -328,6 +328,9 @@ switch($m23_page)
 		$page = "misc/themeChoice.php";
 		break;
 
+	case 'cloudStack':
+		$page = "server/cloudStack.php";
+		break;
 
 	case 'support':
 		$page = "misc/support.php" ;

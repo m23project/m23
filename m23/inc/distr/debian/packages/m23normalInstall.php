@@ -15,6 +15,7 @@ function run($id)
 	$line=mysql_fetch_array($result);
 
 	sendClientStageStatus(STATUS_BLUE);
+	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $I18N_installing_packages);
 
 	$clientOptions=CLIENT_getAllOptions($line['client']);
 

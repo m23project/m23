@@ -1,8 +1,8 @@
 <?PHP
 $I18N_client_installation="Bienvenu sur l'installation de votre poste client m23!";
 $I18N_client_status="État du poste client m23";
-$I18N_setup_bootmanager="Ajuster le boot manager ";
-$I18N_setup_network="Ajuster le réseau";
+$I18N_setup_bootmanager="Paramétrer le chargeur de démarrage (boot manager) ";
+$I18N_setup_network="Paramétrer le réseau";
 $I18N_add_user="Ajouter l'utilisateur";
 $I18N_update_packagelist="Mettre à jour la liste des paquets";
 $I18N_hardware_detection="Détection du matériel";
@@ -48,9 +48,16 @@ $I18N_installing_trinity="Installation de Trinity";
 $I18N_installing_unity2d="Installation de Unity 2D";
 $I18N_installing_unity3d="Installation de Unity 3D";
 $I18N_installing_gnomeclassic="Installation de Gnome classique";
-$I18N_installing_unityfull="Installation du bureau Unity 2D/3D complet";
+$I18N_installing_unityfull="Installation du bureau complet Unity 2D/3D";
 
 //13.1
 $I18N_installingCinnamon="Installation de Cinnamon";
 $I18N_installingMate="Installation de Mate";
+
+//13.3
+$I18N_installing_x2go_server='Installation du serveur x2go';
+$I18N_installing_packages='Installation des paquets';
+$I18N_deinstalling_packages='Désinstallation des paquets';
+$I18N_updating_packages='Mise à jour des paquets';
+$I18N_updating_package_information='Mise à jour des informations sur les paquets';
 ?>

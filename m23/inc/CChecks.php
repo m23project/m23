@@ -1,7 +1,305 @@
 <?
-
+// CC_forename, $data['name'], CC_familyname, $data['familyname'], CC_email, $data['email']
 class CChecks extends CMessageManager
 {
+
+
+
+
+
+/**
+**name CChecks::checkSwapPart($swapPart)
+**description Checks if the device name for the swap partition is valid.
+**parameter swapPart: Swap partition to check.
+**returns true, if the swap partition name is valid otherwise false.
+**/
+	public function checkSwapPart($swapPart)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_deviceNamepartition, $swapPart, $I18N_swapPartInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkInstPart($instPart)
+**description Checks if the device name for the installation partition is valid.
+**parameter instPart: Installation partition to check.
+**returns true, if the installation partition name is valid otherwise false.
+**/
+	public function checkInstPart($instPart)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_deviceNamepartition, $instPart, $I18N_instPartInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkRelease($release)
+**description Checks if a release name is valid.
+**parameter release: Release name to check.
+**returns true, if the release name is valid otherwise false.
+**/
+	public function checkRelease($release)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_sourceslistrelease, $release, $I18N_releaseNameInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkDistribution($distr)
+**description Checks if a distribution name is valid.
+**parameter distr: Distribution name to check.
+**returns true, if the distribution name is valid otherwise false.
+**/
+	public function checkDistribution($distr)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_sourceslistdistr, $distr, $I18N_distributionNameInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkNfshomeserver($nfshomeserver)
+**description Checks if the NFS share is valid.
+**parameter nfshomeserver: NFS share name to check.
+**returns true, if the NFS share is valid otherwise false.
+**/
+	public function checkNfshomeserver($nfshomeserver)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		
+		if (isset($nfshomeserver{1}) && (strpos($nfshomeserver, ':') == false))
+		{
+			$this->addErrorMessage($I18N_nfshomeserverInvalid);
+			return(false);
+		}
+		
+		return($this->genericCHECK_FW(CC_nfshomeserver, $nfshomeserver, $I18N_nfshomeserverInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkGroupname($group)
+**description Checks if the groupname is valid.
+**parameter group: Groupname to check.
+**returns true, if the groupname is valid otherwise false.
+**/
+	public function checkGroupname($group)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_groupname, $group, $I18N_groupnameInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkUserGroupIDs($userID, $groupID)
+**description Checks the user ID and group ID are valid.
+**parameter userID: The user ID to check.
+**parameter groupID: The group ID to check.
+**returns true, if user ID and group ID are valid otherwise false.
+**/
+	public function checkUserGroupIDs($userID, $groupID)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		
+		$ret1 = $this->genericCHECK_FW(CC_userID, $userID, $I18N_userIDInvalid);
+		$ret2 = $this->genericCHECK_FW(CC_groupID, $groupID, $I18N_groupIDInvalid);
+		return($ret1 && $ret2);
+	}
+
+
+
+
+
+/**
+**name CChecks::checkLanguage($language)
+**description Checks if the language is valid.
+**parameter language: Language value to check.
+**returns true, if the language is valid otherwise false.
+**/
+	public function checkLanguage($language)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+		$languageList = array_keys(I18N_listClientLanguages("", false));
+
+		if (!in_array($language, $languageList))
+			die('checkLanguage: Unknown language "'.$language.'"!');
+		
+		return($this->genericCHECK_FW(CC_language, $language, $I18N_languageInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkRootpassword($rootpassword)
+**description Checks if the root password is valid.
+**parameter rootpassword: The password to check.
+**returns true, if the root password is valid otherwise false.
+**/
+	public function checkRootpassword($rootpassword)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_rootpassword, $rootpassword, $I18N_rootpasswordInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::firstpw($pass, $allowEmpty = false)
+**description Checks if the first name's password is valid.
+**parameter pass: The password to check.
+**parameter allowEmpty: Set to true, if empty passwords should be allowed (e.g. when read from an LDAP server)
+**returns true, if the password is valid otherwise false.
+**/
+	public function firstpw($pass, $allowEmpty = false)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+		if ($allowEmpty)
+			$CC = CC_firstpwOrEmpty;
+		else
+			$CC = CC_firstpw;
+
+		return($this->genericCHECK_FW($CC, $pass, $I18N_userpasswordInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkLogin($login, $allowEmpty = false)
+**description Checks if the given login is valid.
+**parameter login: The login name to check.
+**parameter allowEmpty: Set to true, if empty logins should be allowed (e.g. when read from an LDAP server)
+**returns true, if the login name is valid otherwise false.
+**/
+	public function checkLogin($login, $allowEmpty = false)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		
+		if ($allowEmpty)
+			$CC = CC_loginOrEmpty;
+		else
+			$CC = CC_login;
+		
+		return($this->genericCHECK_FW($CC, $login, $I18N_loginInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkProxy($proxyIP, $proxyPort)
+**description Checks the IP and port of the package proxy.
+**parameter proxyIP: The IP of the package proxy.
+**parameter proxyPort: The port of the package proxy.
+**returns true, if the package IP and port are valid otherwise false.
+**/
+	public function checkProxy($proxyIP, $proxyPort)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+		//Check that IP and port are both empty or set
+		$ret3 = !(empty($proxyIP) xor empty($proxyPort));
+		if (!$ret3)
+			 $this->addErrorMessage($I18N_packageProxyOnlyIPOrPortSet);
+
+		
+		$ret1 = $this->genericCHECK_FW(CC_packageproxy, $proxyIP, $I18N_packageProxyIncorrectIP);
+		$ret2 = $this->genericCHECK_FW(CC_packageport, $proxyPort, $I18N_packageProxyIncorrectPort);
+		return($ret1 && $ret2 && $ret3);
+	}
+
+
+
+
+
+/**
+**name CChecks::checkOffice($office)
+**description Checks if the given office name is valid.
+**parameter office: The office name to check.
+**returns true, if the office name is valid otherwise false.
+**/
+	public function checkOffice($office)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_office, $office, $I18N_officeInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkEmail($email, $allowEmpty = true)
+**description Checks if the given eMail is valid (or optionally empty).
+**parameter email: eMail address to check.
+**parameter allowEmpty: Set to true, if empty eMail addresses should accepted as valid.
+**returns true, if the eMail address is valid (or empty) otherwise false.
+**/
+	public function checkEmail($email, $allowEmpty = false)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(($allowEmpty ? 'ee' : 'e'), $email, $I18N_invalid_email));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkFamilyname($familyname)
+**description Checks if the user's familyname is valid.
+**parameter familyname: The familyname of the user.
+**returns true, if the familyname name is valid otherwise false.
+**/
+	public function checkFamilyname($familyname)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_familyname, $familyname, $I18N_familynameInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkForename($forename)
+**description Checks if the user's forename is valid.
+**parameter forename: The forename of the user.
+**returns true, if the forename name is valid otherwise false.
+**/
+	public function checkForename($forename)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_forename, $forename, $I18N_forenameInvalidOrEmpty));
+	}
 
 
 
@@ -16,9 +314,14 @@ class CChecks extends CMessageManager
 **/
 	protected function checkIPGeneric($ip, $msg)
 	{
+		if (!empty($ip))
+			$msgAdd = " ($ip)";
+		else
+			$msgAdd = '';
+	
 		if (!checkIP($ip))
 		{
-			$this->addErrorMessage("$msg ($ip)");
+			$this->addErrorMessage($msg.$msgAdd);
 			return(false);
 		}
 
@@ -143,7 +446,7 @@ class CChecks extends CMessageManager
 
 		if (!isset($clientName{0}))
 		{
-			$this->addErrorMessage("$I18N_no_clientname ($clientName)");
+			$this->addErrorMessage($I18N_no_clientname);
 			return(false);
 		}
 		elseif (!checkFQDN($clientName))
@@ -190,7 +493,7 @@ class CChecks extends CMessageManager
 
 		if (!isset($netmask{0}))
 		{
-			$this->addErrorMessage("$I18N_no_netmask ($netmask)");
+			$this->addErrorMessage("$I18N_no_netmask");
 			return(false);
 		}
 		elseif (!checkNetmask($netmask))
@@ -219,7 +522,7 @@ class CChecks extends CMessageManager
 		
 		if (!isset($mac{0}))
 		{
-			$this->addErrorMessage("$I18N_no_mac ($mac)");
+			$this->addErrorMessage($I18N_no_mac);
 			return(false);
 		}
 		elseif (!checkMAC($mac))
@@ -318,7 +621,7 @@ class CChecks extends CMessageManager
 **/
 	public function checkBootType($bootType)
 	{
-		if ((CClient::BOOTTYPE_PXE == $bootType) || (CClient::BOOTTYPE_NOBOOT == $bootType) || (CClient::BOOTTYPE_ETHERBOOT == $bootType))
+		if ((CClient::BOOTTYPE_PXE == $bootType) || (CClient::BOOTTYPE_NOBOOT == $bootType) || (CClient::BOOTTYPE_ETHERBOOT == $bootType) || (CClient::BOOTTYPE_GPXE == $bootType))
 			return(true);
 		else
 		{
@@ -362,6 +665,7 @@ class CChecks extends CMessageManager
 **/
 	public function checkPoolName($poolName)
 	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 		return($this->genericCHECK_FW(CC_poolName, $poolName, $I18N_poolNameInvalid));
 	}
 }

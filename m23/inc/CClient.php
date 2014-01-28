@@ -1,5 +1,48 @@
 <?
 
+/*
+> memory
+> hd
+> partitions
+> cpu
+> MHz
+> netcards
+> graficcard
+> soundcard
+> isa
+> dmi
+
+> vmRunOnHost
+> vmSoftware
+> vmRole
+> vmVisualPassword
+> vmVisualURL
+
+> [desktop] => GnomeClassic
+
+> [disableSSLCertCheck] => 0
+
+> [disableSudoRootLogin] => 1
+
+> [fstab]
+
+> [mbrPart] => /dev/sda
+
+> [instPart] => /dev/sda1
+
+> [installPrinter] => yes
+
+> [kernel] => linux-image
+
+> [m23cupsadminPW] => a5b6ebb0971731c80c85708b0761a5e2
+
+> [swapPart] => /dev/sda2
+*/
+
+
+
+
+
 class CClient extends CChecks
 {
 	private $clientInfo = array(), $paramKeys = '', $md5 = '';
@@ -17,18 +60,22 @@ class CClient extends CChecks
 	const BOOTTYPE_PXE = 'pxe';
 	const BOOTTYPE_ETHERBOOT = 'etherboot';
 	const BOOTTYPE_NOBOOT = 'none';
+	const BOOTTYPE_GPXE = 'gpxe';
+	const CHECKMODE_NORMAL = 0;
+	const CHECKMODE_MUSTEXIST = 1;
+	const CHECKMODE_MUSTNOTEXIST = 2;
 
 
 
 
 
 /**
-**name CClient::__construct($in, $mustExist = false)
+**name CClient::__construct($in, $checkMode = CClient::CHECKMODE_NORMAL)
 **description Constructor for new CClient objects. The object holds all information about a single client and loads the values from the DB.
 **parameter in: ID of an existing client (to load), name of an existing or nonexisting (to create) client or associative array of parameters.
-**parameter mustExist: If set to true, the client with the given name must exist.
+**parameter checkMode: Check for the input variable.
 **/
-	public function __construct($in, $mustExist = false)
+	public function __construct($in, $checkMode = CClient::CHECKMODE_NORMAL)
 	{
 		//Check if the parameter is a client ID
 		if (is_numeric($in))
@@ -47,7 +94,13 @@ class CClient extends CChecks
 		elseif (is_string($in))
 		{
 			$clientName = $in;
-			if ($this->checkClientname($clientName))
+
+			$clientExistenceStatusOk = true;
+
+			if (CClient::CHECKMODE_MUSTNOTEXIST === $checkMode)
+				$clientExistenceStatusOk = $this->checkNonusedClientname($clientName);
+
+			if ($clientExistenceStatusOk && $this->checkClientname($clientName))
 			{
 				//Try to get the params of the client
 				$sqlSelect = "SELECT * FROM `clients` WHERE client='$clientName'";
@@ -56,9 +109,9 @@ class CClient extends CChecks
 				//Check if there could be fetched no params (client is nonexisting)
 				if (mysql_num_rows($result) === 0)
 				{
-					if ($mustExist != false)
+					if (CClient::CHECKMODE_MUSTEXIST === $checkMode)
 						die('Client with name '.$clientName.' does not exist!');
-				
+
 					$modifydate = time();
 
 					//Add a basic entry to the DB
@@ -71,8 +124,7 @@ class CClient extends CChecks
 			}
 			else
 			{
-				$this->showError();
-				die('Clientname invalid.');
+				throw new Exception($this->popErrorMessagesHTML());
 			}
 		}
 		elseif (is_array($in))
@@ -91,6 +143,9 @@ class CClient extends CChecks
 
 		//Calculate a checksum over the initial settings of the client
 		$this->md5 = md5(serialize($this->clientInfo));
+
+		//Make sure there is a status bar
+		HTML_newStatusBar('installStatus', $this->getClientName(), STATUSBAR_TYPE_db);
 	}
 
 
@@ -112,6 +167,714 @@ class CClient extends CChecks
 	public function saveClientPackagesAsPackageSelection($packageSelectionName)
 	{
 		
+	}
+
+
+
+
+
+/**
+**name CClient::copyImagingParameters($options)
+**description Copies the imaging parameters (if present).
+**parameter options: Associative array with all options.
+**/
+	public function copyImagingParameters($options)
+	{
+		if (isset($options['IMGPartitionAmount']))
+		{
+			$this->clientInfo['IMGPartitionAmount'] = $options['IMGPartitionAmount'];
+
+			for ($i=0; $i < $options['IMGPartitionAmount']; $i++)
+			{
+				if (isset($options["IMGname$i"]))
+				{
+					$this->clientInfo["IMGdrv$i"] = $options["IMGdrv$i"];
+					$this->clientInfo["IMGname$i"] = $options["IMGname$i"];
+				};
+			};
+		}
+	}
+
+
+
+
+
+/**
+**name CClient::copyMassOptions($options)
+**description Copies the mass installation options (if present).
+**parameter options: Associative array with all options.
+**/
+	public function copyMassOptions($options)
+	{
+		foreach (array('desktop', 'disableSSLCertCheck', 'disableSudoRootLogin', 'fstab', 'installX2goserver', 'kernel', 'm23cupsadminPW', 'mbrPart', 'packagesource') as $key)
+		{
+			if (isset($options[$key]))
+				$this->clientInfo[$key] = $options[$key];
+		}
+	}
+
+
+
+
+
+/**
+**name CClient::setInstallationStatusBar($percent=false, $statustext=false)
+**description Sets new percent value and/or new status text on the client's installation status bar.
+**parameter percent: Percent value to write into the DB (may be false, if it should not be changed).
+**parameter statustext: A text message that should be shown under the status bar and written to the DB (may be false, if it should not be changed).
+**returns: false on parameter error.
+**/
+	public function setInstallationStatusBar($percent=false, $statustext=false)
+	{
+		return(HTML_setStatusBarStatusByName('installStatus', $this->getClientName(), $percent, $statustext));
+	}
+
+
+
+
+
+/**
+**name CClient::addJob($packageName,$priority,$params)
+**description Adds a job to the client's job table.
+**parameter packageName: name of the package
+**parameter priority: priority of the package
+**parameter params: parameter for installing the package
+**/
+	public function addJob($packageName,$priority,$params)
+	{
+		PKG_addJob($this->getClientName(),$packageName,$priority,$params);
+	}
+
+
+
+
+
+/**
+**name CClient::setInstPart($instPart)
+**description Sets the installation partition of the client.
+**parameter instPart: Installation partition device name.
+**returns true, if the installation partition is valid otherwise false.
+**/
+	public function setInstPart($instPart)
+	{
+		if ($this->checkInstPart($instPart))
+		{
+			$this->clientInfo['instPart'] = $instPart;
+			return(true);
+		}
+		else
+			return(false);
+	}
+
+
+
+
+
+/**
+**name CClient::setSwapPart($swapPart)
+**description Sets the swap partition of the client.
+**parameter swapPart: Swap partition device name.
+**returns true, if the swap partition is valid otherwise false.
+**/
+	public function setSwapPart($swapPart)
+	{
+		if ($this->checkSwapPart($swapPart))
+		{
+			$this->clientInfo['swapPart'] = $swapPart;
+			return(true);
+		}
+		else
+			return(false);
+	}
+
+
+
+
+
+/**
+**name CClient::setLanguage($language)
+**description Sets the language of the client.
+**parameter language: Language of the client.
+**returns true, if the language is valid otherwise false.
+**/
+	public function setLanguage($language)
+	{
+		if ($this->checkLanguage($language))
+		{
+			$this->clientInfo['language'] = $language;
+			return(true);
+		}
+		else
+			return(false);
+	}
+
+
+
+
+
+/**
+**name CClient::getLanguage()
+**description Gets the language of the client.
+**returns The language of the client.
+**/
+	public function getLanguage()
+	{
+		return($this->getProperty('language', 'getLanguage: language not set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::setTimeZone($timeZone)
+**description Sets the timezone of the client.
+**parameter timeZone: Timezone of the client.
+**returns true, if the timezone is valid otherwise false.
+**/
+	public function setTimeZone($timeZone)
+	{
+		$timeZones = HELPER_getTimeZones($this->getLanguage());
+
+		if (!in_array($timeZone, $timeZones))
+			die('setTimeZone: Unknown timezone "'.$timeZone.'"!');
+
+		$this->clientInfo['timeZone'] = $timeZone;
+
+		return(true);
+	}
+
+
+
+
+
+/**
+**name CClient::getTimeZone()
+**description Gets the timezone of the client.
+**returns The timezone of the client.
+**/
+	public function getTimeZone()
+	{
+		return($this->getProperty('timeZone', 'getTimeZone: timeZone not set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::setBootloader($bootloader)
+**description Sets the bootloader of the client.
+**parameter bootloader: Bootloader of the client.
+**returns true, if the bootloader is valid otherwise dies.
+**/
+	public function setBootloader($bootloader)
+	{
+		$bootLoaders = HELPER_getBootLoaders();
+
+		if (!in_array($bootloader, $bootLoaders))
+			die('setBootloader: Unknown bootloader "'.$bootloader.'"!');
+
+		$this->clientInfo['bootloader'] = $bootloader;
+
+		return(true);
+	}
+
+
+
+
+
+/**
+**name CClient::getBootloader()
+**description Gets the bootloader of the client.
+**returns The bootloader of the client.
+**/
+	public function getBootloader()
+	{
+		return($this->getProperty('bootloader', 'getBootloader: bootloader not set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::getClientGroup()
+**description Gets the m23 group of the client.
+**returns The m23 group of the client.
+**/
+	public function getClientGroup()
+	{
+		return($this->getProperty('newgroup', 'getClientGroup: group not set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::setNetRootPwd()
+**description Generates and sets the netboot root password.
+**/
+	public function setNetRootPwd()
+	{
+		$this->clientInfo['netRootPwd'] = DB_genPassword(6);
+		return(true);
+	}
+
+
+
+
+
+/**
+**name CClient::getNetRootPwd()
+**description Gets the netboot root password.
+**returns Netboot root password.
+**/
+	public function getNetRootPwd()
+	{
+		return($this->getProperty('netRootPwd', 'getNetRootPwd: netboot root password not set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::setNfshomeserver($nfshomeserver)
+**description Sets the NFS share of the client.
+**parameter nfshomeserver: NFS share with path.
+**returns true, if the NFS share is valid.
+**/
+	public function setNfshomeserver($nfshomeserver)
+	{
+		if ($this->checkNfshomeserver($nfshomeserver))
+		{
+			$this->clientInfo['nfshomeserver'] = $nfshomeserver;
+			return(true);
+		}
+		else
+			return(false);
+	}
+
+
+
+
+
+/**
+**name CClient::getNfshomeserver()
+**description Gets the NFS share of the client.
+**returns NFS share of the client.
+**/
+	public function getNfshomeserver()
+	{
+		return($this->getProperty('nfshomeserver', 'getNfshomeserver: No nfshomeserver set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::setBoolProperty($var, $setIt, $func, $trueVal = 'yes', $falseVal = '')
+**description Sets a boolean value in the client's settings.
+**parameter var: Name of the setting variable.
+**parameter setIt: Set to true, if the variable should be set, otherwise false.
+**parameter func: Name of the calling function (for error reporting)
+**parameter trueVal: String that should be set in the client's settings, if $setIt is true.
+**parameter falseVal: String that should be set in the client's settings, if $setIt is false.
+**returns true on sucessfully setting.
+**/
+	private function setBoolProperty($var, $setIt, $func, $trueVal = 'yes', $falseVal = '')
+	{
+		if (!is_bool($setIt))
+			die($func.': "'.$setIt.'" is not boolean');
+			
+		if ($setIt)
+			$this->clientInfo[$var] = $trueVal;
+		else
+			$this->clientInfo[$var] = $falseVal;
+
+		return(true);
+	}
+
+
+
+
+
+/**
+**name CClient::setInstallPrinter($setIt)
+**description Sets, if the local printer should be detected/installed.
+**parameter setIt: Set to true, if the local printer should be detected/installed, otherwise false.
+**returns true on sucessfully setting.
+**/
+	public function setInstallPrinter($setIt)
+	{
+		return($this->setBoolProperty('installPrinter', $setIt, 'setInstallPrinter'));
+	}
+
+
+
+
+
+/**
+**name CClient::getInstallPrinter()
+**description Checks, if the local printer should be detected/installed.
+**returns true, if the local printer should be detected/installed, otherwise false.
+**/
+	public function getInstallPrinter()
+	{
+		return(('yes' == $this->getProperty('installPrinter', 'getInstallPrinter: installPrinter not set.')));
+	}
+
+
+
+
+
+/**
+**name CClient::setAddNewLocalLogin($setIt)
+**description Sets, if the local login should be created.
+**parameter setIt: Set to true, if the local login should be created, otherwise false.
+**returns true on sucessfully setting.
+**/
+	public function setAddNewLocalLogin($setIt)
+	{
+		return($this->setBoolProperty('addNewLocalLogin', $setIt, 'setAddNewLocalLogin'));
+	}
+
+
+
+
+
+/**
+**name CClient::getAddNewLocalLogin()
+**description Checks, if the local login should be created.
+**returns true, if the local login should be created, otherwise false.
+**/
+	public function getAddNewLocalLogin()
+	{
+		return(('yes' == $this->getProperty('addNewLocalLogin', 'getAddNewLocalLogin: addNewLocalLogin not set.')));
+	}
+
+
+
+
+
+/**
+**name CClient::setGetSystemtimeByNTP($setIt)
+**description Sets, if the system time should be set by NTP.
+**parameter setIt: Set to true, if the system time should be set by NTP otherwise false.
+**returns true on sucessfully setting.
+**/
+	public function setGetSystemtimeByNTP($setIt)
+	{
+		return($this->setBoolProperty('getSystemtimeByNTP', $setIt, 'setGetSystemtimeByNTP'));
+	}
+
+
+
+
+
+/**
+**name CClient::getGetSystemtimeByNTP()
+**description Checks, if the system time should be set by NTP.
+**returns true, if the system time should be set by NTP otherwise false.
+**/
+	public function getGetSystemtimeByNTP()
+	{
+		return(('yes' == $this->getProperty('getSystemtimeByNTP', 'getGetSystemtimeByNTP: getSystemtimeByNTP not set.')));
+	}
+
+
+
+
+
+/**
+**name CClient::setRootPassword($rootPassword, $rootPassword)
+**description Sets the root password for the client.
+**parameter rootPassword: The (encrypted) root password to set.
+**parameter cryptRootPw: set to true, if the password should be encrypted or false, if it's already encrypted.
+**returns true, if the root password is valid.
+**/
+	public function setRootPassword($rootPassword, $cryptRootPw)
+	{
+		if ($this->checkRootpassword($rootPassword))
+		{
+			if ($cryptRootPw)
+				$rootPassword = encryptShadow('root', $rootPassword);
+
+			$this->clientInfo['rootPassword'] = $rootPassword;
+			return(true);
+		}
+		else
+			return(false);
+	}
+
+
+
+
+
+/**
+**name CClient::addToClientGroup($group)
+**description Adds the client to an m23 client group.
+**parameter group: Name of the client group.
+**returns true, if the was added to the group.
+**/
+	public function addToClientGroup($group)
+	{
+		$groups = GRP_listGroups();
+
+		if (!in_array($group, $groups))
+			die('addToClientGroup: Unknown group "'.$group.'"!');
+
+		if ($this->checkGroupname($group))
+		{
+			$this->clientInfo['newgroup'] = $group;
+			GRP_addClientToGroup($this->getClientName(), $group);
+			return(true);
+		}
+		else
+			return(false);
+	}
+
+
+
+
+
+/**
+**name CClient::setUserGroupIDs($userID, $groupID)
+**description Sets the user ID and group ID (for LDAP).
+**parameter userID: The user ID.
+**parameter groupID: The group ID.
+**returns true, if user ID and group ID are valid otherwise false.
+**/
+	public function setUserGroupIDs($userID, $groupID)
+	{
+		//Set them, if all three are correct
+		if ($this->checkUserGroupIDs($userID, $groupID))
+		{
+			$this->clientInfo['userID'] = $userID;
+			$this->clientInfo['groupID'] = $groupID;
+			return(true);
+		}
+			return(false);
+	}
+
+
+
+
+
+/**
+**name CClient::getGroupID()
+**description Returns the (LDAP) group ID.
+**returns Group ID.
+**/
+	public function getGroupID()
+	{
+		return($this->getProperty('groupID', 'getGroupID: No group ID set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::getUserID()
+**description Returns the (LDAP) user ID.
+**returns User ID.
+**/
+	public function getUserID()
+	{
+		return($this->getProperty('userID', 'getUserID: No user ID set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::setUserDetails($forename, $familyname, $eMail, $office, $login, $firstpw)
+**description Generates HTML code for returning to the client control center page.
+**parameter forename: Forename of the user.
+**parameter familyname: Familyname of the user (or empty).
+**parameter eMail: eMail address of the user (or empty).
+**parameter office: Office of the user (or empty).
+**parameter login: The login name of the user.
+**parameter firstpw: The password of the user.
+**returns true, if all input parameters are valid.
+**/
+	public function setUserDetails($forename, $familyname, $eMail, $office, $login, $firstpw)
+	{
+		//Check the input variables
+		$ret1 = $this->checkForename($forename);
+		$ret2 = $this->checkFamilyname($familyname);
+		$ret3 = $this->checkEmail($eMail, true);
+		$ret4 = $this->checkOffice($office);
+		//The login may be empty, if user accounts are read from an LDAP server
+		$ret5 = $this->checkLogin($login, ($this->getLDAPType() == 'read'));
+		//The user password may be empty, if user accounts are read from an LDAP server
+		$ret6 = $this->firstpw($firstpw, ($this->getLDAPType() == 'read'));
+
+		//Set them, if all three are correct
+		if ($ret1 && $ret2 && $ret3 && $ret4 && $ret5 && $ret6)
+		{
+			$this->clientInfo['name'] = $forename;
+			$this->clientInfo['familyname'] = $familyname;
+			$this->clientInfo['eMail'] = $eMail;
+			$this->clientInfo['office'] = $office;
+			$this->clientInfo['login'] = $login;
+			$this->clientInfo['firstpw'] = $firstpw;
+			return(true);
+		}
+			return(false);
+	}
+
+
+
+
+
+/**
+**name CClient::getFirstpw()
+**description Returns the user's first password.
+**returns The user's first password.
+**/
+	public function getFirstpw()
+	{
+		return($this->getProperty('firstpw', 'getFirstpw: No firstpw set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::getFamilyname()
+**description Returns the user's familyname.
+**returns The user's familyname.
+**/
+	public function getFamilyname()
+	{
+		return($this->getProperty('familyname', 'getFamilyname: No familyname set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::getForename()
+**description Returns the user's forename.
+**returns The user's forename.
+**/
+	public function getForename()
+	{
+		return($this->getProperty('name', 'getForename: No forename set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::getLogin()
+**description Returns the user's login.
+**returns The user's login.
+**/
+	public function getLogin()
+	{
+		return($this->getProperty('login', 'getLogin: No login set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::setLDAPType($type)
+**description Sets the LDAP type.
+**parameter type: LDAP usage type to set.
+**/
+	public function setLDAPType($type)
+	{
+		$LDAPTypes = LDAP_getTypes();
+
+		if (!in_array($type, $LDAPTypes))
+			die('setLDAPType: Unknown LDAP type "'.$type.'"!');
+		
+		$this->clientInfo['ldaptype'] = $type;
+	}
+
+
+
+
+
+/**
+**name CClient::getLDAPType()
+**description Returns the LDAP type of the client.
+**returns LDAP type of the client.
+**/
+	public function getLDAPType()
+	{
+		return($this->getProperty('ldaptype', 'getLDAPType: No LDAP type set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::setLDAPServer($LDAPServer)
+**description Sets the LDAP server.
+**parameter LDAPServer: The name of the LDAP server.
+**returns true, if the LDAP server was set, otherwise false.
+**/
+	public function setLDAPServer($LDAPServer)
+	{
+		if (empty($LDAPServer))
+			return(false);
+
+		$LDAPServers = LDAP_listServers();
+
+		if (!in_array($LDAPServer, $LDAPServers))
+			die('setLDAPServer: Unknown LDAP server "'.$LDAPServer.'"!');
+
+		$this->clientInfo['ldapserver'] = $LDAPServer;
+		return(true);
+	}
+
+
+
+
+
+/**
+**name CClient::getLDAPServer()
+**description Returns the LDAP server of the client.
+**returns LDAP server of the client.
+**/
+	public function getLDAPServer()
+	{
+		return($this->getProperty('ldapserver', 'getLDAPServer: No LDAP server set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::addToCredentialsToLDAPServer()
+**description Adds the credentials of the main (desktop) user to the given LDAP server.
+**returns If the credentials could be saved to the LDAP server, otherwise false.
+**/
+	public function addToCredentialsToLDAPServer()
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		if (LDAP_addPosix($this->getLDAPServer(), $this->getLogin(), $this->getForename(), $this->getFamilyname(), $this->getFirstpw(), $this->getUserID(), $this->getGroupID()) === FALSE)
+		{
+			$this->addErrorMessage($I18N_errorAddingNewLoginToLDAP);
+			return(false);
+		}
+		else
+			return(true);
 	}
 
 
@@ -253,6 +1016,27 @@ class CClient extends CChecks
 
 
 /**
+**name CClient::setArch($arch)
+**description Set the CPU architecture of the client.
+**parameter arch: The architecture to set.
+**returns true on successfully setting of the client's architecture, otherwise false.
+**/
+	public function setArch($arch)
+	{
+		$archList = getArchList();
+	
+		if (!in_array($arch, $archList))
+			die('setArch: Unknown CPU architecture "'.$arch.'"!');
+	
+		$this->clientInfo['arch'] = $arch;
+		return(true);
+	}
+
+
+
+
+
+/**
 **name CClient::getArch()
 **description Returns the architecture of the client.
 **returns Architecture of the client.
@@ -260,6 +1044,26 @@ class CClient extends CChecks
 	public function getArch()
 	{
 		return($this->getProperty('arch', 'getArch: No architecture set.'));
+	}
+
+
+
+
+/**
+**name CClient::setDistribution($distr)
+**description sets the distribution of the client.
+**parameter distr: Distribution of the client.
+**returns true on sucessfully setting, otherwise false.
+**/
+	public function setDistribution($distr)
+	{
+		if ($this->checkDistribution($distr))
+		{
+			$this->clientInfo['distr'] = $distr;
+			return(true);
+		}
+		else
+			return(false);
 	}
 
 
@@ -274,6 +1078,27 @@ class CClient extends CChecks
 	public function getDistribution()
 	{
 		return($this->getProperty('distr', 'getDistribution: No distribution set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::setRelease($release)
+**description Sets the distribution release of the client.
+**parameter release: Distribution release of the client.
+**returns true on sucessfully setting, otherwise false.
+**/
+	public function setRelease($release)
+	{
+		if ($this->checkRelease($release))
+		{
+			$this->clientInfo['release'] = $release;
+			return(true);
+		}
+		else
+			return(false);
 	}
 
 
@@ -441,6 +1266,91 @@ class CClient extends CChecks
 
 
 /**
+**name CClient::setDNS($dns1, $dns2 = '')
+**description Sets the main and (optionally) the backup DNS server(s).
+**parameter dns1: The IP of the main DNS server.
+**parameter dns2: The IP of the backup DNS server.
+**returns true when the DNS(s) IP(s) is correct.
+**/
+	public function setDNS($dns1, $dns2 = '')
+	{
+		
+		if ($this->checkDNS1($dns1))
+		{
+			$this->clientInfo['dns1'] = $dns1;
+
+			if (isset($dns2{2}))
+			{
+				if ($this->checkDNS2($dns2))
+					$this->clientInfo['dns2'] = $dns2;
+				else
+					return(false);
+			}
+
+			return(true);
+		}
+		else
+			return(false);
+	}
+
+
+
+
+
+/**
+**name CClient::getDNS1()
+**description Returns the IP of the main DNS server.
+**returns Main DNS server IP of the client.
+**/
+	public function getDNS1()
+	{
+		return($this->getProperty('dns1', 'getDNS: No dns1 set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::getDNS2()
+**description Returns the IP of the backup DNS server (if set).
+**returns Backup DNS server IP of the client.
+**/
+	public function getDNS2()
+	{
+		return($this->getProperty('dns2', 'getDNS: No dns2 set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::setPackageProxy($proxyIP, $proxyPort)
+**description Sets the IP and port of the package proxy.
+**parameter proxyIP: The IP of the package proxy.
+**parameter proxyPort: The port of the package proxy.
+**returns true, if the package IP and port are valid and set otherwise false.
+**/
+	public function setPackageProxy($proxyIP, $proxyPort)
+	{
+		if ($this->checkProxy($proxyIP, $proxyPort))
+		{
+			if (!empty($proxyIP))
+				$this->clientInfo['packageProxy'] = $proxyIP;
+			if (!empty($proxyPort))
+				$this->clientInfo['packagePort'] = $proxyPort;
+			return(false);
+		}
+		else
+			return(true);
+	}
+
+
+
+
+
+/**
 **name CClient::setIP($ip)
 **description Sets the IP of the client to an unsused IP.
 **parameter IP: unused IP for the client.
@@ -451,7 +1361,7 @@ class CClient extends CChecks
 		if ($this->checkNonusedIP($ip))
 		{
 			$this->clientInfo['ip'] = $ip;
-			//IDEE: Bei aktiviertem Netzbooten gleich dhcp-Einstellungen ändern
+			SERVER_addEtcHosts($this->getClientName(), $this->getIP());
 			return(true);
 		}
 		else
@@ -684,13 +1594,28 @@ class CClient extends CChecks
 
 
 /**
+**name CClient::startInstall()
+**description Starts the installation on the client
+**/
+	public function startInstall()
+	{
+		CLIENT_startInstall($this->getClientName());
+	}
+
+
+
+
+
+/**
 **name CClient::activateNetboot()
 **description Activates network booting for the client.
 **returns true on successfully restarting the DHCP server.
 **/
 	public function activateNetboot()
 	{
-		return(DHCP_addClient($this->getClientName(), $this->getIP(), $this->getNetmask(), $this->getMAC(), $this->getBootType(), $this->getGateway(), false));
+		//Make sure, the settings are written to the DB (needed for DHCP_activateBoot)
+		$this->save();
+		return(DHCP_activateBoot($this->getClientName(), true, $this->getBootType()));
 	}
 
 
@@ -814,7 +1739,7 @@ class CClient extends CChecks
 
 
 /**
-**name CClientLister::destroy()
+**name CClient::destroy()
 **description Destroys a client finally.
 **/
 	public function destroy()
@@ -822,16 +1747,20 @@ class CClient extends CChecks
 		$client = $this->getClientName();
 		$this->deactivateNetboot();
 
-		//Delete the VM: if ($deleteVM) VM_delete($client);
+		if (!empty($client))
+		{
+			//Delete the VM: if ($deleteVM) VM_delete($client);
 
-		deleteClientLogs($client);
-		CLIENT_removeServerCache($client);
-		GRP_delClientFromGroup($client);
-		SERVER_delEtcHosts($client);
+			SERVER_delEtcHosts($client);
+			deleteClientLogs($client);
+			CLIENT_removeServerCache($client);
+			GRP_delClientFromGroup($client);
+			SERVER_delEtcHosts($client);
 
-		db_query("DELETE FROM clients WHERE client='$client'"); //FW ok
-		db_query("DELETE FROM clientjobs WHERE client='$client' "); //FW ok
-		db_query("DELETE FROM clientpackages WHERE clientname='$client' "); //FW ok
+			db_query("DELETE FROM clients WHERE client='$client'"); //FW ok
+			db_query("DELETE FROM clientjobs WHERE client='$client' "); //FW ok
+			db_query("DELETE FROM clientpackages WHERE clientname='$client' "); //FW ok
+		}
 	
 		//Re-calculate the MD5 sum to disable saving on calling the destructor
 		$this->md5 = md5(serialize($this->clientInfo));

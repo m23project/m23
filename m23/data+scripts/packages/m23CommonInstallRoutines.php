@@ -40,17 +40,7 @@ function CIR_WorkaroundForMissingModulesDep()
 **/
 function CIR_transferClientIP()
 {
-	if (!$_SESSION['m23Shared'])
-		return(false);
-
-	$quiet = ($_SESSION['debug'] ? "": "-qq");
-
-	$m23Server = getServerIP();
-	echo("
-	id=`cat /m23clientID 2> /dev/null`
-	curIP=`export LC_ALL=C; ifconfig | grep \"inet addr\" | cut -d':' -f2 | cut -d' ' -f1 | head -1`
-	wget $quiet -T5 -t0 --post-data \"type=MSR_curDynIP&curIP=\$curIP\" https://$m23Server/postMessage.php?m23clientID=\$id -O /dev/null
-	");
+	MSR_curDynIPCommand(false);
 }
 
 

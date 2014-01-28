@@ -1,4 +1,396 @@
+2014-01-26
+cha: prepareOSDorCompression: Now sure that m23debs.list is deleted.
++++++
+2014-01-25
+release 14.1
+patch 100740: Release of m23 rock 14.1.
++++++
+2014-01-23
+cha: FDISK_genPartedCommands: Now modprobes ext2-4.
+fix: linuxrc: Now links dhclient-script from /bin to /sbin.
++++++
+2014-01-22
+new: optimiseAllPNGs: Script for optimising all PNGs in the manual screenshot directories.
+cha: menuManualStart.sh: Added menu entry for optimiseAllPNGs.
++++++
+2014-01-21
+fix: getServerNetmask: Added full path to ifconfig.
+fix: FDISK_showDiskDefine: Now sets /dev/sda on top of the list.
+fix: PKG_getSearchCacheFileName: Now adds "'" around the file name to support distributions with spaces in the name.
++++++
+2014-01-20
+cha: PKGBUILDER_tar2deb: Now changed the access rights of all files to 755 before creating a new package index.
++++++
+2014-01-19
+menuDeb: Now ensures that development packages are uploaded into the development repository and release packages are uploaded into the release repository.
++++++
+2014-01-07
+new: checkForMissingi18n.sh: Script for checking for missing I18N translations.
++++++
+2014-01-04
+fix: MSR_clientSettings: Now sets the architecture in the imported sources list too.
+fix: SRCLST_getArchitectures: Now returns "i386" when no architecture can be get from the sources list.
+fix: PKG_genPackageSearchCacheFileCMD: Now reads "Installed-Size" from *Packages and uses empty line as package separator.
++++++
+2014-01-01
+cha: CLIENT_showGeneralInfo: Now calls nl2br on the kernel variable in case that there are more than one kernels.
+cha: de / createVM.hlp: Added CloudStack.
++++++
+2013-12-31
+cha: m23-initscripts / control: Changed the package hwinfo from "Depends" to "Recommends".
++++++
+2013-12-28
+cha: ASSI_addUbuntuRoot: Now sets a random password for user root, if the root account is not enabled.
++++++
+2013-12-22
+patch 100721: Removal of bad SSH keys for the backuppc and root users.
+cha: m23 / postinst: Now deletes a bunch of bad SSH keys for the backuppc and root users.
+cha: mkm23Deb: Now deletes tmp/m23-install only.
+cha: i18n and help: Added "Apache" and "&reg;" to CloudStack.
++++++
+2013-12-21
+fix: CLIENT_desasterRecovery: Now uses the extra parameter correctly when set to true, the names of all installed packages will be combined to a m23normal and all revomed to a m23normalRemove job.
+cha: CLIENT_resetAndInstall: Now calls CLIENT_startLiveScreenRecording too.
+cha: CLIENT_desasterRecovery.php: Now calls PKG_addShutdownOrRebootPackage.
+cha: VM_rebootChangeBootDevice: Now stops and starts the VM, when it is CloudStack.
++++++
+2013-12-20
+patch 100719: Assimilastion doesn't remove the root password any more.
+fix: m23PresetupInstall.php: Now doesn't set (empty) password when assimilating a client (THX jaywalker).
+cha: m23 / postinst: Now accepts "Raspbian" as valid dirtribution too.
+fix: VM_GUIstepSelectHost: Now returns false if there is no host for the choosen virtualisation solution.
+fix: VM_getAllVMHosts: Now doesn't exit on CloudStack even if the CloudStack object couldn't be fetched.
+cha: CLCFG_enableNFSHome: Now uses defaults as mount parameter in fstab.
++++++
+2013-12-19
+patch 100718: Removes the bad test SSH key of the backuppc user.
+cha: m23 / postinst: Now deletes the bad SSH key for the backuppc user too.
+patch 100717: Removes the bad SSH key from the m23 client.
+cha: m23updateAuthorizedKeysInstall.php: Now removes the bad SSH key before.
+patch 100716: Added job for updating the authorized_keys file with the public SSH key of the m23 server.
+new: m23updateAuthorizedKeysInstall.php: Updates the authorized_keys file with the public SSH key of the m23 server.
+patch 100714: Removes the bad test SSH key.
+cha: m23 / postinst: Now deletes the bad SSH key.
+cha: startBaseInstallation, cleanOSForCompressing: Now deletes /root/.ssh/authorized_keys, /root/.ssh/id_dsa*, /var/lib/backuppc/.ssh/* to remove maybe existing SSH keys (THX jaywalker).
++++++
+2013-12-18
+cha: FDISK_showDiskDefine: Removed IDE devices, because they are called sdX now.
+fix: CLIENT_addClient: Now doesn't overwrite the boot type with a wrong value.
+cha: CLCFG_addUser: Now tries to mount /home. May be helpful in case of NFS.
+cha: m23AddUserInstall.php: Changed priority to 125 so it gets executed after system boot.
++++++
+2013-12-17
+new: mk-nfs-server-home: Script for installing an configuring a simple NFS server.
+cha: CChecks::checkNfshomeserver: Now checks for the existence of ':'.
++++++
+2013-12-16
+fix: en / m23inst.php: Added missing translations.
+fix: CClient::addToCredentialsToLDAPServer: Now stores the LDAP credentials.
++++++
+2013-12-15
+new: I18N_number_format: Converts numbers to the language specific number formating.
+cha: PKG_listRecommendPackages, m23SHARED_priceFormater, SERVERBACKUP_backupOverviewDialog, PKG_listPackages, IMG_showImageManagement and VM_GUIstepCheckHost: Now are using I18N_number_format.
+cha: PKG_genPackageSearchCacheFileCMD: Now package sizes are stored in KB too.
+new: CClient::copyMassOptions: Copies the mass installation options (if present).
+cha: IMG_showCreateImage: Making Partclone the default method.
+cha: HELP_getHelp: Now uses escapeshellarg to secure the name of the man page.
+cha: debian / PKG_getKernels: Now filters out "grub-imageboot".
++++++
+2013-12-11
+fix: MASS_startInstall: Now adds boot type, distribution and release too.
+new: CClient::setDistribution: Sets the distribution of the client.
+new: CChecks::checkDistribution: Checks if a distribution name is valid.
+new: CClient::setRelease: Sets the distribution release of the client.
+new: CChecks::checkRelease: Checks if a release name is valid.
+new: CClient::copyImagingParameters: Copies the imaging parameters (if present).
+cha: CLIENT_addClient: Now calls setDistribution, setRelease and copyImagingParameters.
+new: CHECK_deviceName: Checks if the input value is a valid device name for a HD drive or partition.
+new: CChecks::checkSwapPart: Checks if the device name for the swap partition is valid.
+new: CChecks::checkInstPart: Checks if the device name for the installation partition is valid.
+new: CClient::setInstPart: Sets the installation partition of the client.
+new: CClient::setSwapPart: Sets the swap partition of the client.
++++++
+2013-12-10
+cha: getDNSServers: Now has a fallback, if no DNS servers could be fetched.
++++++
+2013-12-08
+fix: Added symlink for m23AddUserInstall.php to /m23/data+scripts/packages (for imaging).
+fix: imaging / DISTR_startInstall: Corrected parameter for user creation.
++++++
+2013-12-03
+fix: CLCFG_addDistributionSpecificOptions: Now values from checkboxes are set correctly in the options array.
+cha: DISTR_startInstall: Now adds the x2go server installation job, if set in the options.
+cha: debian / CLCFG_showDistributionSpecificOptions: Adds a checkbox for adding the x2go server installation job.
++++++
+2013-11-28
+cha: partcloneWrapper: Changed logging from /tmp/partclone.log to /dev/null.
+cha: ASSI_prepareClient: Now calls CLCFG_disablePlymouth.
++++++
+2013-11-27
+fix: SERVER_runningInScreen: Corrected regular expression.
+cha: SERVER_logLocalScreenSessionToFile: Now deletes the logfile at the beginning.
+cha: update.php: Now shows the live log right after clicking the update button.
+fix: UPDATE_running: Now uses SERVER_runningInScreen.
+cha: MSR_clientSettings: Now trims the input values.
+cha: DHCP_activateBoot: Now uses PXE as default, if no boot type is set.
+cha: createRFSBins: Added the tools resize_reiserfs, resize2fs and xfs_growfs.
+new: FSEnlargeWrapper: Enlarges the file system on a given partition to match the size of the partition.
+cha: IMG_clientRestore: Now adds FSEnlargeWrapper to the BASH code if restored by dd.
++++++
+2013-11-26
+cha: HTML_newStatusBar: Now uses 5 seconds as default refresh time.
+fix: imaging / halfSister / clientConfig.php: Added 100 percent for the status bar.
+new: CLIENT_resetStatusBar: Resets the percent points to 0 for the pending jobs on a client.
+fix: halfSister / clientConfig.php: Now sets $CLCFG_showDistributionSpecificOptions.
+new: PKG_addHSUser: Adds a job for creating an user on a halfSister client
+cha: HS_sysAddUser: Now has parameter for user and group IDs.
+cha: m23AddUserInstall.php: Now is placed under /m23/inc/distr/ debian/packages with symlink to ubuntu.
++++++
+2013-11-20
+cha: HTML_setStatusBarPercentPointByName: New parameter to recalculate the remaining percent value of the status barfor better fitting.
++++++
+2013-11-19
+new: debian / halfSister / PKG_updatePackageSearchCacheFile: Updates the compressed package search file.
+new: debian / PKG_getLongPackageDescription: Gets the description of a package.
+cha: PKG_translateClientjobsStatus: Added translation for 'error'.
++++++
+2013-11-18
+fix: PKG_previewInstallDeinstall: Now calls PKG_updatePackageInfo with correct parameters.
+cha: PKG_updatePackageInfo: Now updates the package index only every 5 hours, when not forced.
+cha: SRCLST_packageInformationOlderThan, PKG_updatePackageInfo: Now writes the time when the status file was last modified to a new parameter.
+new: SRCLST_packageInformationChangeTime: Returns the time point when the package information was changed last.
+cha: SRCLST_packageInformationOlderThan: Now calls SRCLST_packageInformationChangeTime.
++++++
+2013-11-17
+cha: PKG_searchFor: Now package names are unique again.
+new: PKG_genPackageSearchCacheFileCMD: Generates commands to create a compressed package search file.
+cha: PKG_preparePackageDir: Now calls PKG_genPackageSearchCacheFileCMD.
+new: PKG_getSearchCacheFileName: Returns the full path to the compressed package search file.
+new: PKG_searchPackageSearchCacheFileCMD: Generates BASH commands to search a compressed package search file.
+cha: PKG_searchFor: Now uses PKG_searchPackageSearchCacheFileCMD.
+fix: PKG_preparePackageDir: Now always touches the status file to update the modification time.
++++++
+2013-11-14
+cha: getServerNetmask: Now tries to get the netmask from networkdevices eth0 to eth9.
+cha: IMG_clientRestore: Added support for partclone.
++++++
+2013-11-13
+cha: IMG_clientCreate: Added timeout for netcat transfer.
+cha: IMG_clientCreate: Gauge now disabled when using partclone.
+cha: IMG_clientCreate, IMG_showCreateImage: Added support for partclone.
++++++
+2013-11-12
+cha: GRP_showSelDistrSources: Now shows a different message for choosing the distribution and sources list, when a package selection without clients should be created.
+cha: downloadExtractRFS, createRFSBins: Now are adding partclone to the bootimage.
+new: partcloneWrapper: Calls the correct partclone tool depending on the file system of the partition.
++++++
+2013-11-11
+cha: m23AddUserInstall.php: Now optionally adds UID and GID.
+new: PKG_addUser: Adds a job for creating an user on the client.
+new: PKG_addUbuntuUser: Adds a job for creating an user on a Ubuntu client.
+new: PKG_addDebianUser: Adds a job for creating an user on a Debian client.
+cha: debian / clientInstall.php: Now calls PKG_addDebianUser.
+cha: ubuntu / clientInstall.php: Now calls PKG_addUbuntuUser.
+new postinst / getCSExternIP: Get the external IP of this server, if run in CloudStack.
+fix: group_actions.php: Now gets the groupname from the URL.
+cha: enable-ssl: Now if an additional IP is given, makes it be used as default.
++++++
+2013-11-09
+patch 100694: Fixes installation of Ubuntu images with upstart.
+cha: imaging / DISTR_startInstall: Now adds the package m23configUpstartForNormalUsage, if the extra distribution is ubuntu.
+cha: imaging / m23configUpstartForNormalUsage: Now is a symlink too.
+cha: VM_rebootChangeBootDevice: Now doesn't stop and start the VM when run on CloudStack, because this will stop the VM before it can send the job's "done" status.
++++++
+2013-11-08
+cha: imaging / DISTR_startInstall: Now adds the package m23configUpstartForNormalUsage, if the extra distribution is ubuntu.
+cha: imaging / m23configUpstartForNormalUsage: Now is a symlink too.
++++++
+2013-11-05
+patch 100692: Fixes for image creation.
+fix: m23createImageInstall.php: Sends correct extracted size of the created image.
+fix: m23createImageInstall.php: Now deactivates the network booting.
+cha: m23 / postinst: Now uses the half of (during the configuration) available disk space as maximum for the size of the squid cache.
+new: VM_CloudStackDeleteClientVM: Deletes a virtual machine for use with m23 in CloudStack, only a cloudstack admin can recover it
++++++
+2013-11-02
+patch 100691: Fixes selection of images when using imaging as client distribution (THX IPB).
+fix: imaging / clientConfig.php: Added missing function variable for showDistributionSpecificOptions.
+new: update.php: Now adds a live status of the update progress.
+new: SERVER_logLocalScreenSessionToFile: Logs the output of a local screen session to a file.
++++++
+2013-11-01
+cha: install_packages.php: Now shows an error message and exists when in group mode and no group name is given.
+cha: install_packages.php: Now shows an error message when the serarch button is clicked without entering a search term.
++++++
+2013-10-30
+cha: serverSettings.php: Rearanged the icons. Added a new "extra" category.
+new: de / serverSettings.hlp: Added help page for the server settings page.
+fix: SERVERBACKUP_getBackupList: Now returns an empty array, if no backups are present.
+fix: htaccess.php: Now administrators can be deleted when there are two or more.
+cha: MSG_showMessageBoxFooter, MSG_showMessageBoxHeader: Now are generating HTML code only when not in CLI mode.
+new: HELPER_isExecutedInCLI: Checks, if it is run in CLI.
++++++
+2013-10-28
+new: CLCFG_disablePlymouth: Disables the plymouth.
+cha: ubuntu / clientInstall.php: Now calls CLCFG_disablePlymouth.
++++++
+2013-10-23
+cha: VM_CloudStack_getObject: Now has parameters to set the API entpoint, the API key and the secret API key.
+cha: VM_CloudStackEditConfFileGUI: Renamed to VM_CloudStackConfigGUI.
+new: VM_CloudStackCheckConstants: Checks, if the given constant values are valid.
+cha: VM_GUIstepSelectHost: Now gives back the VM host.
+cha: Added help for CloudStack.
++++++
+2013-10-21
+new: VM_isCloudStackClient: Checks, if the client is run in CloudStack.
+cha: PKG_addShutdownOrRebootPackage: Now reboots the client when run in CloudStack.
++++++
+2013-10-19
+new: VM_CloudStackEnablePortForwarding: creates a port forwarding rule for a virtual machine, with private port and public port being the same
+new: VM_CloudStackUploadIso: uploads and registers a new bootable ISO file into cloudstack from a given website
+new: VM_CloudStackWriteConfFile: Writes the CloudStack config file or writes a basic config file, if it does not exist.
+new: VM_CloudStackEditConfFileGUI: Shows a dialog for editing the CloudStack config file.
++++++
+2013-10-15
+patch 100686: Now works with Debian 7.2.
+fix: CLCFG_installBasePackages: Now works with Debian 7.2.
++++++
+2013-10-07
+cha: CLCFG_addUser: Now has optional parameters for user and group ID.
+cha: m23PrinterConfigInstall.php: Now adds ther user m23cupsadmin with user and group ID 523.
++++++
+2013-10-06
+new: VM_CloudStackSendSetVisualURL: Sends the visual URL (<current client ip>:22) to the m23 server, if run under CloudStack.
+cha: VM_setVisualURL: Now uses the host part of the URL, if vmHostIP is empty.
+fix: CLCFG_writeCrontabm23fetchjobEvery5Minutes: Corrected entry for every 5 minutes.
+new: MSR_curDynIPCommand: Generates the commands to transfer the current dynamic IP of the m23 client to the server.
+cha: CLCFG_writeM23fetchjob: Now uses MSR_curDynIPCommand.
+cha: CIR_transferClientIP: Now calls MSR_curDynIPCommand.
++++++
+2013-10-05
+cha: CLCFG_installBasePackages: Now installs isc-dhcp-client too.
+new: VM_CloudStackStartVM: starts a virtual machine in CloudStack
+cha: VM_startVM: Now uses VM_CloudStackStartVM too.
+new: VM_CloudStackStopVM: stops a virtual machine in CloudStack
+cha: VM_stopVM: Now uses VM_CloudStackStopVM too.
+new: VM_CloudStackGetVMStatus: gets the status of a virtual machine
+new: VM_CloudStackClientName2ClientID: returns the Cloudstack-ID of a client with the given client host name
+new: VM_CloudStackNetBootActivate: attaches/exchanges or removes (if any) a network boot ISO to or from the client
+cha: VM_rebootChangeBootDevice: Now uses VM_CloudStackNetBootActivate too.
+cha: VM_status: Now may returns an array containing the status of the VM.
++++++
+2013-10-03
+cha: Checks::checkBootType: Added gpxe.
+cha: CLIENT_getClientName: Now accepts client's hostname via m23clientID GET parameter.
+cha: CLIENT_isAskingInDebugMode, CLIENT_getAskingParams: Now uses CLIENT_getClientName.
+cha: CLIENT_getClientID: Now uses CLIENT_getAskingParams.
+cha: clientISO / linuxrc: Now creates /dev/vdaX devices.
+cha: CLCFG_makeDev: Now creates /dev/vdaX devices.
++++++
+2013-10-02
+new: HELPER_getContentFromURL: Downloads an URL via curl and gives back the site code.
+new: VM_CloudStack_getServerIP: Gets the external m23 server IP if the m23 server is run as CloudStack VM.
+cha: getServerGateway, getServerNetmask: Now uses a more general approach to find out the gateway/router IP.
++++++
+2013-10-01
+cha: getServerIP: Now supports CloudStack too.
++++++
+2013-09-30
+new: VM_CloudStack_available: Checks, if the CloudStack configuration file is included and contains the needed constants.
+cha: VM_vmSwNr2Name, VM_getAllVMHosts: Now supports CloudStack too.
+new: VM_CloudStack_getObject: Gets a new CloudStackClient object.
+new: VM_CloudStack_getVersion: Gets the version of CloudStack.
++++++
+2013-09-27
+new: CClient::setNetRootPwd: Generates and sets the netboot root password.
+new: CClient::getNetRootPwd: Gets the netboot root password.
++++++
+2013-09-26
+new: CClient::setGetSystemtimeByNTP: Sets, if the system time should be set by NTP.
+new: CClient::getGetSystemtimeByNTP: Checks, if the system time should be set by NTP.
+new: CClient::setAddNewLocalLogin: Sets, if the local login should be created.
+new: CClient::getAddNewLocalLogin: Checks, if the local login should be created.
+new: CClient::setBoolProperty: Sets a boolean value in the client's settings.
+new: CClient::setInstallPrinter: Sets, if the local printer should be detected/installed.
+new: CClient::getInstallPrinter: Checks, if the local printer should be detected/installed.
+new: CClient::getLanguage: Gets the the language of the client.
+new: CClient::setTimeZone: Sets the the timezone of the client.
+new: CClient::getTimeZone: Gets the the timezone of the client.
+new: HELPER_getBootLoaders: Returns a list of available bootloaders.
+new: CClient::setBootloader: Sets the the bootloader of the client.
+new: CClient::getBootloader: Gets the the bootloader of the client.
+new: CClient::getClientGroup: Gets the m23 group of the client.
+new:CChecks::checkNfshomeserver: Checks if the NFS share is valid.
+new: CClient::setNfshomeserver: Sets the NFS share of the client.
+new: CClient::getNfshomeserver: Gets the NFS share of the client.
++++++
+2013-09-24
+new: CClient::setArch: Set the CPU architecture of the client.
+cha: CChecks::checkProxy: Now checks that IP and port are both empty or set too.
+cha: m23/postinst: Now figures out IP, netmask and gateway if the settings were given by a DHCP server.
++++++
+2013-09-23
+patch 100685: Now the groupnames can contain white spaces without getting stopped by the variable firewall.
+fix: checks.php: Now CC_groupnameOrEmpty accepts white spaces (Thx Oliver).
++++++
+2013-09-18
+fix: CHECK_str, CHECK_strAlphaNum, CHECK_strAlpha: Now returns false, if the input value is empty and empty values are not allowed.
+cha: CHECK_FW: Now ignores empty input values only when in firewall and not in check mode.
++++++
+2013-09-16
+cha: CClient::destroy: Now removes the client from the server's /etc/hosts.
+cha: CClient::setIP: Now adds the client to the server's /etc/hosts.
+new: CClient::addJob: Adds a job to the client's job table.
+new: CClient::startInstall: Starts the installation on the client.
+new: CClient::setInstallationStatusBar: Sets new percent value and/or new status text on the client's installation status bar.
+new: CChecks::checkUserGroupIDs: Checks the user ID and group ID are valid.
+new: CClient::setUserGroupIDs: Sets the user ID and group ID (for LDAP).
+new: CClient::getGroupID: Returns the (LDAP) group ID.
+new: CClient::getUserID: Returns the (LDAP) user ID.
+new: CClient::setLDAPServer: Sets the LDAP server.
+new: CClient::getLDAPServer: Returns the LDAP server of the client.
+new: CClient::getLogin: Returns the user's login.
+new: CClient::getFamilyname: Returns the user's familyname.
+new: CClient::getForename: Returns the user's forename.
+new: CClient::getFirstpw: Returns the user's first password.
+new: CClient::addToCredentialsToLDAPServer: Adds the credentials of the main (desktop) user to the given LDAP server.
+new: CChecks::checkGroupname: Checks if the groupname is valid.
+new: CClient::addToClientGroup: Adds the client to an m23 client group.
++++++
+2013-09-15
+new: CClient::setRootPassword: Sets the root password for the client.
+cha: CHECK_FW: Now has an extra check mode for minumum length of the input value.
+new: CChecks::checkRootpassword: Checks if the root password is valid.
+new: CChecks::checkLanguage: Checks if the language is valid.
+new: CClient::setLanguage: Sets the the language of the client.
++++++
+2013-09-14
+cha: CClient::__construct: Now has a parameter to check the input variable.
+cha: CPoolFromClientDebsGUI, CPoolFromClientGUI, CLIENT_addClient: Now are using the new CClient constructor.
+new: CChecks::checkForename: Checks if the user's forename is valid.
+new: CChecks::checkFamilyname: Checks if the user's familyname is valid.
+new: CChecks::checkOffice: Checks if the given office name is valid.
+new: CChecks::checkEmail: Checks if the given eMail is valid (or optionally empty).
+new: CClient::setUserDetails: Generates HTML code for returning to the client control center page.
+new: CChecks::checkProxy: Checks the IP and port of the package proxy.
+new: CClient::setPackageProxy: Sets the IP and port of the package proxy.
+new: CChecks::checkLogin: Checks if the given login is valid.
+new: LDAP_getTypes: Returns an array with the known LDAP types.
+new: CClient::setLDAPType: Sets the LDAP type.
+new: CClient::getLDAPType: Returns the LDAP type of the client.
+new: CChecks::firstpw: Checks if the first name's password is valid.
++++++
+2013-09-13
+new: CClient::setDNS: Sets the main and (optionally) the backup DNS server(s).
+new: CClient::getDNS1: Returns the IP of the main DNS server.
+new: CClient::getDNS2: Returns the IP of the backup DNS server (if set).
++++++
+2013-09-12
+patch 100684: Replaces medibuntu.org (obsolete) with videolan.org in the Linux Mint sources lists.
+cha: Replaced "http://packages.medibuntu.org" with "http://download.videolan.org" in the sources lists "Linux Mint 13 Maya" and "Linux Mint 9 KDE", because medibuntu.org is obsolete now.
++++++
 2013-09-05
+patch 100683: Now the list of available kernels is updated on refresh.
 new: forkFunctions.inc / downloadBazaarRepo: Downloads a Bazaar repository to the current directory.
 new: forkFunctions.inc / createNewBazaarRepo: Adds the files and directories of the current directory to a new Bazaar repository
 cha: forkFunctions.inc / copym23: Now calls createNewBazaarRepo.
@@ -2287,7 +2679,6 @@ cha: downloadExtractRFS, m23hwdetect: Removed udev.
 2011-04-25
 patch: Translations completed.
 cha: i18n/de/en/fr: Completed.
-+++++
 patch: Fixes for updating from m23 11.1 to 11.2.
 cha: m23/postinst: Now makes sure that the password file for phpMyAdmin and phpLDAPAdmin exists.
 new: updateSQLIfOlder: Updates SQL information or executes SQL statements, if the current version of this packages is older than a given version.

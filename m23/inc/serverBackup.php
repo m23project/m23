@@ -240,6 +240,9 @@ function SERVERBACKUP_getBackupList()
 		$nr++;
 	}
 
+	if (0 == $nr)
+		$out = array();
+
 	return($out);
 }
 
@@ -286,7 +289,7 @@ function SERVERBACKUP_backupOverviewDialog()
 		if (HTML_submit($deleteButton,$I18N_delete))
 			SERVERBACKUP_rmBackup($backup['name']);
 		else
-			HTML_showTableRow(strftime($I18N_timeFormat,$backup['ts']), number_format($backup['size'] / 1000, 2), constant($deleteButton));
+			HTML_showTableRow(strftime($I18N_timeFormat,$backup['ts']), I18N_number_format($backup['size'] / 1000), constant($deleteButton));
 	}
 	HTML_showTableEnd(true);
 }

@@ -35,6 +35,7 @@ function DISTR_baseInstall($lang,$id)
 
 	//Fetch the m23HSAdmin tool to the RAM disk to enable the HS_* functions
 	HS_fetchm23HSAdminAndm23hwscanner($clientOptions['release']);
+	/* =====> */ MSR_statusBarIncCommand(10);
 
 	FDISK_genManualFstab(explodeAssoc("###",$clientOptions['fstab']),"/mnt/root",$sourceName);
 	/* =====> */ MSR_statusBarIncCommand(2);
@@ -44,6 +45,7 @@ function DISTR_baseInstall($lang,$id)
 
 	if (!PKG_isReconfiguredWithExtraDistr($id))
 		HS_fetchAndExtractOSImage($clientOptions['release'], $clientOptions['arch'], $DNSServers, $clientParams['gateway'], $clientOptions['packageProxy'], $clientOptions['packagePort']);
+	/* =====> */ MSR_statusBarIncCommand(65);
 
 	echo("
 			mkdir -p /tmp /mnt/root/tmp
@@ -174,8 +176,8 @@ cd /tmp
 	HS_sysSetLanguage($clientParams['language']);
 
 //generate commands for adding the user account on the client
-	CLCFG_dialogInfoBox($I18N_client_installation,$I18N_client_status,$I18N_add_user);
-	HS_sysAddUser((empty($clientOptions['login']) ? $clientParams['name'] : $clientOptions['login']), $clientParams['firstpw']);
+	if (($clientOptions['addNewLocalLogin']=="yes") || (!isset($clientOptions['addNewLocalLogin'])))
+		PKG_addHSUser($clientParams['client'], $clientOptions['login'], $clientParams['firstpw']);
 
 //Add a job for compiling the VirtualBox guest module after the the first boot
 // 	PKG_addJob($clientParams['client'],"m23VBoxKernelModule",PKG_getSpecialPackagePriority("m23VBoxKernelModule",""),"");

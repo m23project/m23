@@ -550,14 +550,16 @@ function HS_sysHWsetup()
 
 
 /**
-**name HS_sysAddUser($username, $password)
+**name HS_sysAddUser($username, $password, $uid = '', $gid = '')
 **description Creates a new user with home directoy and sets password.
 **parameter username: Name of the user to add.
 **parameter password: The password of the user to add.
+**parameter uid: User ID to give the new user.
+**parameter gid: Group ID to give the new user.
 **/
-function HS_sysAddUser($username, $password)
+function HS_sysAddUser($username, $password, $uid = '', $gid = '')
 {
-	HS_wrapper("sysAddUser", "'$username'", "'$password'");
+	HS_wrapper("sysAddUser", "'$username'", "'$password'", $uid, $gid);
 }
 
 

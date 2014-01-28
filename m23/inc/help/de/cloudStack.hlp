@@ -1,0 +1,21 @@
+Apache CloudStack&reg;
+In diesem Dialog können Sie Einstellungen für <a href="http://cloudstack.apache.org/">Apache CloudStack&reg;</a> vornehmen.
+
+Unter <i>"$I18N_credentials"</i> nehmen Sie einige grundlegende Einstellungen vor, damit eine Verbindung zum Apache CloudStack&reg;-Service hergestellt werden kann. Diese Parameter erhalten Sie von Ihrem Apache CloudStack&reg;-Betreiber oder aus Ihrer eigenen Apache CloudStack&reg;-Installation.
+
+Unter <i>"$I18N_CLOUDSTACK_API_ENDPOINT"</i> geben Sie die Adresse (z.B. https://mein-server/client/api ) für die Kommunikation zum Apache CloudStack&reg;-Service an. Für den Zugriff benötigen Sie außerdem einen API-Schlüssel und einen geheimen API-Schlüssel, welche Sie unter <i>"$I18N_CLOUDSTACK_API_KEY"</i> und <i>"$I18N_CLOUDSTACK_SECRET_KEY"</i> eintragen.
+
+<i>"$I18N_CLOUDSTACK_SERVICE_OFFERING_ID"</i> (CPU und RAM), <i>"$I18N_CLOUDSTACK_NETWORKIDS"</i> (virtuelles Apache CloudStack&reg;-Netzwerk) und <i>"$I18N_CLOUDSTACK_DISK_OFFERING_ID"</i> (virtueller Festplattentyp) beschreiben die Werte, mit denen ein neuer m23-Client in Apache CloudStack&reg; angelegt wird.
+
+Unveränderlich sind (im Moment) die Auswahl des Bootmediums mit dem die Betriebssysteminstallation durchgeführt wird <i>"$I18N_CLOUDSTACK_TEMPLATE_ID"</i>, die benötigte Lösung zum Virtualisieren <i>"$I18N_VMSoftware"</i> und die Nummer des Betriebssystems <i>"$I18N_CLOUDSTACK_OSTYPE_ID"</i>.
+
+Mit einem Klick auf <i>"$I18N_save"</i> bzw. <i>"$I18N_test_it"</i> speichern Sie die Konfiguration, wobei der 2. Button zuvor einen Verbindungstest durchführt und nur speichert, wenn kein Fehler vorliegt.
+
+Unter <i>"$I18N_CloudStack_boot_ISO"</i> wählen Sie die Apache CloudStack&reg;-Zone (<i>"$I18N_vmHost"</i>) aus, in die (falls noch nicht geschehen) das m23-Client-Boot-ISO hochgeladen wird. Starten Sie den Upload mit einem Klick auf <i>"$I18N_upload"</i>. <i>"$I18N_CLOUDSTACK_TEMPLATE_ID"</i> wird nach dem Hochladen automatisch angepaßt.
+
+Die Informationen werden in der Datei <i>"/m23/inc/CloudStackConf.php"</i> auf dem Server abgelegt, die Sie auch mit einem Texteditor bearbeiten können.
+
+<u>Hinweis</u>
+Wie Sie den m23-Server in Apache CloudStack&reg; einrichten erfahren Sie im <a href="http://m23.sf.net/instManual">Installationsleitfaden</a> auf der m23-Projektseite.
+
+CloudStack ist ein eingetragenes Warenzeichen der Apache Software Foundation.

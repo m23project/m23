@@ -53,6 +53,9 @@ createBackupList()
 	
 	#Add the RAS tunnel settings
 		ls /m23/bin/m23RemoteAdministrationServiceOpenTunnel-* >> $backupList
+		
+	if [ -f /m23/inc/CloudStackConf.php ]
+		echo "/m23/inc/CloudStackConf.php" >> $backupList
 	
 	#Add config files of phpMyAdmin and phpldapadmin
 		echo "/m23/data+scripts/m23admin/phpMyAdmin/config.inc.php

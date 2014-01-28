@@ -1,0 +1,21 @@
+Apache CloudStack&reg;
+This dialogue allows you to make settings for <a href="http://cloudstack.apache.org/">Apache CloudStack&reg;</a>.
+
+Please enter your user credentials at <i>"$I18N_credentials"</i>, to enable the m23 server to contact your Apache CloudStack&reg; service. You will get these parameters from your Apache CloudStack&reg; provider or from your own Apache CloudStack&reg; installation.
+
+At <i>"$I18N_CLOUDSTACK_API_ENDPOINT"</i>, please enter the address (e.g. https://my-server/client/api ) for the communication with the Apache CloudStack&reg; service. To get access, you will also need an API key and a secret API key, which you will have to enter at <i>"$I18N_CLOUDSTACK_API_KEY"</i> and <i>"$I18N_CLOUDSTACK_SECRET_KEY"</i>.
+
+<i>"$I18N_CLOUDSTACK_SERVICE_OFFERING_ID"</i> (CPU and RAM), <i>"$I18N_CLOUDSTACK_NETWORKIDS"</i> (virtual Apache CloudStack&reg; network) and <i>"$I18N_CLOUDSTACK_DISK_OFFERING_ID"</i> (type of the virtual hard disk) specify the values of a newly created m23 client in Apache CloudStack&reg;.
+
+(Currently) You cannot change the choice of the boot medium from which the operating system installation will be started, the <i>"$I18N_CLOUDSTACK_TEMPLATE_ID"</i>, the virtualisation software used: <i>"$I18N_VMSoftware"</i> and the identification number of the operating system: <i>"$I18N_CLOUDSTACK_OSTYPE_ID"</i>.
+
+By clicking on <i>"$I18N_save"</i> or on <i>"$I18N_test_it"</i>, you save the configuration. The second button will execute a connection check first and only save the configuration if there was no error.
+
+At <i>"$I18N_CloudStack_boot_ISO"</i>, you can select the Apache CloudStack&reg; zone (<i>"$I18N_vmHost"</i>), where the m23 client boot ISO will be uploaded to (if it is not yet there). You can start the upload by clicking on <i>"$I18N_upload"</i>. <i>"$I18N_CLOUDSTACK_TEMPLATE_ID"</i> will be adapted automatically after the upload.
+
+These settings are stored on the server in the file <i>"/m23/inc/CloudStackConf.php"</i> and can be edited with a texteditor.
+
+<u>Hint</u>
+You can read how to set up the m23 server in Apache CloudStack&reg; in the <a href="http://m23.sf.net/instManual">Installation guide</a> on the m23 project page.
+
+CloudStack is a registered trademark of the Apache Software Foundation.

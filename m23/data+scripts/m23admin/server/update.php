@@ -11,8 +11,8 @@ if (!empty($_POST['newVersion']))
 	else
 	$newVersion="???";
 
-
-
+	HTML_showFormHeader();
+	HTML_setPage('update');
 
 
  //get update URL
@@ -25,45 +25,44 @@ if (empty($updateURL))
 	$updateURL="http://m23.sf.net/m23patch/m23patch.php";
 
 
-	if (UPDATE_running())
+	if (UPDATE_running() || !empty($_POST['BUT_update']))
 	{
+		HTML_liveLogArea('LLA_serverLiveLog',80,25,'serverLiveLog.php?screen=m23install');
+
 		HTML_submit('BUT_refresh',$I18N_refresh);
 		HTML_showTableHeader(true);
 
 		echo('<tr><td>');
 		MSG_showInfo($I18N_updateInProgress);
-		echo('</td></tr><tr><td>'.BUT_refresh.'</td></tr>');
+		echo('</td></tr>
+		<tr><td>'.LLA_serverLiveLog.'</td></tr>
+		<tr><td>'.BUT_refresh.'</td></tr>');
 
 		HTML_showTableEnd(true);
 	}
-	else
+
+	if (!UPDATE_running())
 	{
 
 		//get the update information text
 		$m23updateInfoText=urldecode($_POST[m23updateInfoText]);
-		
+
 		if (empty($m23updateInfoText))
-		{
-				$m23updateInfoText=UPDATE_getInfo(UPDATE_getUrl($updateURL,"info",$m23_version,
-				$m23_patchLevel));
-		}
-		
+			$m23updateInfoText=UPDATE_getInfo(UPDATE_getUrl($updateURL,"info",$m23_version, $m23_patchLevel));
+
 		if (!empty($_POST['BUT_getUpdateInfo']))
-			{
-				RMV_set4IP("m23ServerSoftwareUpdateURL",$updateURL,"serverUpdate");
-				$m23updateInfoText=UPDATE_getInfo(UPDATE_getUrl($updateURL,"info",$m23_version,$m23_patchLevel));
-			};
-		
-		
+		{
+			RMV_set4IP("m23ServerSoftwareUpdateURL",$updateURL,"serverUpdate");
+			$m23updateInfoText=UPDATE_getInfo(UPDATE_getUrl($updateURL,"info",$m23_version,$m23_patchLevel));
+		};
+
+
 		if (!empty($_POST['BUT_update']))
-			{
-				UPDATE_doUpdate(UPDATE_getUrl($updateURL,"cmd",$m23_version,$m23_patchLevel));
-				MSG_showInfo($I18N_updateInProgress);
-			}
+		{
+			UPDATE_doUpdate(UPDATE_getUrl($updateURL,"cmd",$m23_version,$m23_patchLevel));
+		}
 		else
 		{
-			HTML_showFormHeader();
-			HTML_setPage('update');
 
 			HTML_showTableHeader(true);
 			echo("
@@ -100,13 +99,14 @@ if (empty($updateURL))
 				");
 			HTML_showTableEnd(true);
 
-		echo("
-			<input type=\"hidden\" name=\"newVersion\" value=\"$newVersion\">
-			<input type=\"hidden\" name=\"m23updateInfoText\" value=\"".urlencode($m23updateInfoText)."\">
-		");
-		HTML_showFormEnd();
-	}
+			echo("
+				<input type=\"hidden\" name=\"newVersion\" value=\"$newVersion\">
+				<input type=\"hidden\" name=\"m23updateInfoText\" value=\"".urlencode($m23updateInfoText)."\">
+			");
+		}
+
+	};
 
 	help_showhelp("serverupdate");
-	};
+	HTML_showFormEnd();
 ?>

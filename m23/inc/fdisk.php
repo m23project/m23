@@ -3583,8 +3583,8 @@ function FDISK_showDiskDefine($client)
 	else
 		{
 			//show selection for drive type and size
-			$diskList=array("/dev/hda","/dev/hdb","/dev/hdc","/dev/hdd","/dev/hde","/dev/hdf","/dev/hdg","/dev/hdh","/dev/sda","/dev/sdb","/dev/sdc","/dev/sdd","/dev/sde","/dev/sdf","/dev/sdg","/dev/sdh");
-			$first = "/dev/hda";
+			$diskList=array("/dev/sda","/dev/sdb","/dev/sdc","/dev/sdd","/dev/sde","/dev/sdf","/dev/sdg","/dev/sdh");
+			$first = "/dev/sda";
 			$diskHTML=HTML_listSelection("SEL_disk",$diskList,$first);
 
 			HTML_setPage('addclient');
@@ -3691,7 +3691,7 @@ function FDISK_defineDrive($client,$path,$size,$upperI,$lowerI,$upperO,$lowerO,$
 	$param["dev_amount"]=1;
 	$param["dev0_partamount"]=0;
 	
-	print_r($param);
+// 	print_r($param);
 
 	$sql="UPDATE `clients` SET `partitions` = '".implodeAssoc("###",$param)."' WHERE `client` = '$client'";
 
@@ -3861,9 +3861,9 @@ function FDISK_genPartedCommands($partJobs, $mkfsextOptions, $sourceslist)
 
 							switch(SRCLST_getStorageFS($partJobs["fs$jobNr"], $sourceslist))
 								{
-									case ext2: $cmd = "sfdisk -c $partPath $partNr 83; mkfs.ext2 $mkfsextOptions $part"; break;
-									case ext3: $cmd = "sfdisk -c $partPath $partNr 83; mkfs.ext3 $mkfsextOptions $part"; break;
-									case ext4: $cmd = "sfdisk -c $partPath $partNr 83; mkfs.ext4 $mkfsextOptions $part"; break;
+									case ext2: $cmd = "modprobe ext2; sfdisk -c $partPath $partNr 83; mkfs.ext2 $mkfsextOptions $part"; break;
+									case ext3: $cmd = "modprobe ext3; sfdisk -c $partPath $partNr 83; mkfs.ext3 $mkfsextOptions $part"; break;
+									case ext4: $cmd = "modprobe ext4; sfdisk -c $partPath $partNr 83; mkfs.ext4 $mkfsextOptions $part"; break;
 									case reiserfs: $cmd = "modprobe reiserfs; sfdisk -c $partPath $partNr 83; mkreiserfs -f $part"; break;
 									case "linux-swap": $cmd = "sfdisk -c $partPath $partNr 82; mkswap $part"; break;
 								}

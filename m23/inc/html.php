@@ -147,6 +147,8 @@ function HTML_uploadFile($htmlName,$label,$maxFileSize)
 
 
 
+
+
 /**
 **name HTML_urlButton($htmlName, $label, $url)
 **description Defines a link that appears like a button.
@@ -875,13 +877,15 @@ function HTML_incStatusBarPercentByName($statusBarName, $client, $percent)
 
 
 /**
-**name HTML_setStatusBarPercentPointByName($statusBarName, $client)
+**name HTML_setStatusBarPercentPointByName($statusBarName, $client, $recalculate = false)
 **description Calculates the value of a percent point according to the amount of waiting packages and stores the result in the DB.
 **parameter statusBarName: The name of the status bar.
 **parameter client: The name of the client, the status bar belongs to (or other values for identifying the object the status bar belongs to)
 changed).
+**parameter recalculate: true, if the remaining percent value of the status bar should be used to calculate a new (better fitting) percentpoint.
+**returns false on errors, otherwise true.
 **/
-function HTML_setStatusBarPercentPointByName($statusBarName, $client)
+function HTML_setStatusBarPercentPointByName($statusBarName, $client, $recalculate = false)
 {
 // 	HELPER_debugBacktraceToFile("/tmp/HTML_setStatusBarPercentPointByName.trace");
 	$waitingJobs = PKG_countJobs($client,'waiting');
@@ -889,17 +893,40 @@ function HTML_setStatusBarPercentPointByName($statusBarName, $client)
 	if (0 == $waitingJobs)
 		return(false);
 
-	$percentPoint = ((((float)100)/((float)$waitingJobs))/((float)100));
-
 	if (($client!==false) && ($statusBarName!==false))
-	{
 		CHECK_FW(CC_clientname, $client, CC_statusBarName, $statusBarName);
-		$wSQL="`client`='$client' AND `name`='$statusBarName'";
-	}
 	else
 		return(false);
 
-	DB_query("UPDATE `statusbar` SET `percentpoint` =  '$percentPoint' , `statustext` = '' , `percent` = 0, `ts` = ".time()." WHERE `client`='$client' AND `name`='$statusBarName'");
+	if ($recalculate)
+	{
+		//Get the current percent value of the status bar
+		$res = DB_query("SELECT `percent` FROM `statusbar` WHERE `client`='$client' AND `name`='$statusBarName'");
+		$line = mysql_fetch_row($res);
+
+		//Check, if there is a result (the current percent value of the status bar)
+		if (mysql_num_rows($res) > 0)
+			$percent = $line[0];
+		else
+			return(false);
+
+		/*
+			remaining percents of the status bar / 100% to finish in each job
+			e.g the status bar shows 60% => 40% unfinished, remaining percents for the remaining jobs
+		*/
+		$basePercent = (float)(((float)100) - ((float)$percent)) / ((float)100);
+	}
+	else
+	{
+		$basePercent = 1;
+		$percent = 0;
+	}
+
+	$percentPoint = (float)((((float)$basePercent)/((float)$waitingJobs)));
+
+	DB_query("UPDATE `statusbar` SET `percentpoint` = '$percentPoint' , `statustext` = '' , `percent` = '$percent', `ts` = ".time()." WHERE `client`='$client' AND `name`='$statusBarName'");
+
+	return(true);
 }
 
 
@@ -1033,7 +1060,7 @@ function HTML_getStatusBarID($name, $client="")
 define('STATUSBAR_TYPE_bash','bash'); //The status bar percentage is calculated by executing a BASH script
 define('STATUSBAR_TYPE_db','db'); //The status bar percentage is taken from the DB
 /**
-**name HTML_newStatusBar($name, $client, $type, $cmd="", $refreshtime=1, $statustext="", $percent=0)
+**name HTML_newStatusBar($name, $client, $type, $cmd="", $refreshtime=5, $statustext="", $percent=0)
 **description Shows the iframe for a status bar. This actually displays the status bar.
 **parameter name: The name of the status bar.
 **parameter client: The name of the client, the status bar belongs to (or other values for identifying the object the status bar belongs to)
@@ -1044,7 +1071,7 @@ define('STATUSBAR_TYPE_db','db'); //The status bar percentage is taken from the 
 **parameter percent: Percent value to write into the DB.
 **returns: The status bar ID of the just created status bar or false, if it could not be created.
 **/
-function HTML_newStatusBar($name, $client, $type, $cmd="", $refreshtime=1, $statustext="", $percent=0)
+function HTML_newStatusBar($name, $client, $type, $cmd="", $refreshtime=5, $statustext="", $percent=0)
 {
 	CHECK_FW(CC_clientname, $client, CC_statusBarType, $type);
 

@@ -53,4 +53,11 @@ $I18N_installing_unityfull="Komplettes Unity 2D/3D wird installiert";
 //13.1
 $I18N_installingCinnamon="Cinnamon wird installiert";
 $I18N_installingMate="Mate wird installiert";
+
+//13.3
+$I18N_installing_x2go_server='x2go-Server wird installiert';
+$I18N_installing_packages='Pakete werden installiert';
+$I18N_deinstalling_packages='Pakete werden deinstalliert';
+$I18N_updating_packages='Pakete werden aktualisiert';
+$I18N_updating_package_information='Paketinformationen werden aktualisiert';
 ?>

@@ -84,12 +84,13 @@ function ASSI_addClient($client,$ip,$password,$ubuntuUser)
 **/
 function ASSI_addUbuntuRoot()
 {
+	$pw = encryptShadow('root', HELPER_generateSalt(32));
+
 	echo("
 #Enables the root account in Ubuntu if a Ubuntu installation is found.
 	if [ `grep -i ubuntu /etc/issue -c` -gt 0 ]
 	then
-		pw=`cut -d':' -f2 /etc/shadow | sort -u | tail -n1`
-		sed \"s#root:\!:#root:\$pw:#\" /etc/shadow > /tmp/shadow
+		sed \"s#root:\!:#root:$pw:#\" /etc/shadow > /tmp/shadow
 		cat /tmp/shadow > /etc/shadow
 		rm /tmp/shadow
 	fi
@@ -136,6 +137,9 @@ function ASSI_prepareClient()
 		CLCFG_writeM23fetchjob();
 
 		ASSI_addUbuntuRoot();
+
+		CLCFG_disablePlymouth();
+
 		CLCFG_createScreenRC();
 	echo('
 	fi

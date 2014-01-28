@@ -12,6 +12,25 @@ $*/
 
 
 /**
+**name PKG_updatePackageSearchCacheFile($packagesource)
+**description Updates the compressed package search file.
+**parameter packagesource: Name of the package sources list.
+**returns The name of the package cache.
+**/
+function PKG_updatePackageSearchCacheFile($packagesource)
+{
+	$archs = SRCLST_getArchitectures($packagesource);
+
+	//Get the first architecture from array
+	$arch = array_shift($archs);
+	return(HS_pkgUpdateCacheOnServer($packagesource, true, $arch));
+}
+
+
+
+
+
+/**
 **name PKG_fastGetInstalledPackages($storeFile="")
 **description Gets a list of all installed packages (faster than dpkg --get-selections).
 **parameter storeFile: File name to store the list of installed on the client or empty if the list should be outputted to stdout.
@@ -110,7 +129,7 @@ function PKG_listPackages($key,$distr="debian",$packagesource, $client)
 		echo("
 		<tr $class>
 			<td>".$name."</td>
-			<td>".number_format((float)$size/1024,2)." MB</td>
+			<td>".I18N_number_format((float)$size/1024)." MB</td>
 			<td>".wordwrap(htmlentities($desc),60,"<br>",1)."</td>
 			<td><center><input type=\"checkbox\" name=\"$cbName\" value=\"".$name.'###'.$size."\"></center></td>
 		</tr>");

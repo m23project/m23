@@ -8,14 +8,14 @@
 	HTML_showFormHeader();
 	HTML_showTableHeader();
 	HTML_setPage("developersPlayground");
-
-
-	print(serialize(SRCLST_packageInformationOlderThan(15,'debian','precise')));
-
-
 	
-
+	include_once('/m23/inc/distr/debian/packages.php');
 	
+	
+	
+	print_r2(explodeAssoc('?','getSystemtimeByNTP?addNewLocalLogin?installPrinter?arch?ldaptype?ldapserver?login?packageProxy?packagePort?userID?groupID?timeZone?bootloader?nfshomeserver?netRootPwd?newgroup?instPart?mbrPart?swapPart?desktop?distr?release?packagesource?fstab?kernel?disableSSLCertCheck?disableSudoRootLogin?installX2goserver?m23cupsadminPW?yes?yes?yes?i386?none?m23-LDAP?deb?192.168.1.77?2323?1006?1006?Europe/Berlin?grub??29ddfd?default?/dev/sda1?/dev/sda?/dev/sda6?Trinity?debian?wheezy?wheezy?fstab_amount###0?linux-image-486?1?0?1?adfa902e2127df21dc95671bf709cdcb'));
+
+
 // 	SELECT * FROM `recommendpackages` WHERE name='Build_from_precise-pool' ORDER BY priority
 
 
@@ -128,7 +128,6 @@
 // 	HTML_showTableEnd();
 
 print("<pre>\n");
-// 	print_r($CIPRanges->getAllLockedIPsInt());
 print("</pre>\n");
 	HTML_showTableEnd();
 	HTML_showFormEnd();

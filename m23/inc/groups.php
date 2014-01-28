@@ -34,9 +34,14 @@ function GRP_exists($groupName)
 **/
 function GRP_add($groupName)
 {
-	CHECK_FW(CC_groupname,$groupName);
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
-	
+
+	if (CHECK_FW(true, CC_groupname, $groupName) === false)
+	{
+		MSG_showError($I18N_groupnameInvalid);
+		return(false);
+	}
+
 	if (GRP_exists($groupName))
 		{
 			MSG_showError($I18N_group_exists);
@@ -48,10 +53,10 @@ function GRP_add($groupName)
   			if( db_query($sql)) //FW ok
 				MSG_showInfo($I18N_group_added_sucessfully);
 			else
-   				{
-					MSG_showError($I18N_error_db);
-					return(false);
-				}
+			{
+				MSG_showError($I18N_error_db);
+				return(false);
+			}
 		};
 		
 	return(true);
@@ -1066,20 +1071,21 @@ function GRP_getDistrsAndSourcesLists($groupName, &$distrs, &$sourceslists)
 function GRP_showSelDistrSources($groupNames,&$distr, &$sourceslist)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
-	
+
 	//store all distributions and sources lists used in the clients in $distrs and $sourceslists
 	foreach ($groupNames as $groupName)
 		GRP_getDistrsAndSourcesLists($groupName, $distrs, $sourceslists);
 
 	$moreDistrs=(count($distrs) > 1);
 	$moreSourceslists=(count($sourceslists) > 1);
+	$selectionMessage=($_GET['action'] == 'packageSelection' ? $I18N_beAwareOfDifferenDistros : $I18N_clientsInGroupHaveDifferentDistributionsSourceslist);
 
 	//if there is anything to select show selection
 	if ($moreDistrs || $moreSourceslists)
 		{
 			HTML_showTableHeader();
 
-			echo("<tr><td>$I18N_clientsInGroupHaveDifferentDistributionsSourceslist<br><br>");
+			echo("<tr><td>$selectionMessage<br><br>");
 
 			//are there distributions to select?
 			if ($moreDistrs)

@@ -32,9 +32,11 @@ and store it to the mounted root directory
 */
 	
 	$enableMBR = IMG_clientRestoreAll($clientOptions, $lang);
+	/* =====> */ MSR_statusBarIncCommand(95);
 
 	//install the generic MBR or an MBR from a file.
 	IMG_installMBR($clientOptions);
+	/* =====> */ MSR_statusBarIncCommand(5);
 };
 
 
@@ -52,6 +54,7 @@ and store it to the mounted root directory
 function DISTR_startInstall($client,$desktop,$instPart,$swapPart)
 {
 	$options = CLIENT_getAllOptions($client);
+	$params = CLIENT_getParams($client);
 
 	$distr = $options['distr'];
 
@@ -61,14 +64,32 @@ function DISTR_startInstall($client,$desktop,$instPart,$swapPart)
 	$extraDistr = $options['configLikeDistr'];
 
 	if (strlen(trim($extraDistr)) > 0)
+	{
 		PKG_addJob($client,"m23baseSys",PKG_getSpecialPackagePriority("m23baseSys",$extraDistr) + 1, "instPart=$instPart#swapPart=$swapPart#extraDistr=$extraDistr");
+
+		if ('ubuntu' == $extraDistr)
+			PKG_addJob($client,'m23configUpstartForNormalUsage',PKG_getSpecialPackagePriority('m23configUpstartForNormalUsage',$extraDistr),"");
+
+		//Add local users if wanted and if on Debian or Ubuntu
+		if (($options['addNewLocalLogin']=="yes") || (!isset($options['addNewLocalLogin'])))
+		{
+			switch($extraDistr)
+			{
+				case 'ubuntu':
+					PKG_addUbuntuUser($client, $options['login'], $params['firstpw']);
+					break;
+				case 'debian':
+					PKG_addDebianUser($client, $options['login'], $params['firstpw']);
+					break;
+			}
+		}
+	}
 
 	//update package infos
 	PKG_addJob($client,"m23UpdatePackageInfos",PKG_getSpecialPackagePriority("m23UpdatePackageInfos",$extraDistr),"");
 
 	//Make sure that the client is in the same state (running or turned off) after the insallation like before.
 	PKG_addShutdownOrRebootPackage($client);
-
 
 	CLIENT_startInstall($client);
 };

@@ -8,6 +8,23 @@ $*/
 define('m23serverName',"m23 LDAP server");
 
 
+
+
+
+/**
+**name LDAP_getTypes()
+**description Returns an array with the known LDAP types.
+**returns Aarray with the known LDAP types.
+**/
+function LDAP_getTypes()
+{
+	return(array('none', 'read', 'write'));
+};
+
+
+
+
+
 /**
 **name LDAP_connectServer($name)
 **description Connects with read/write access to the LDAP server on the m23 server.

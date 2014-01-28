@@ -78,7 +78,7 @@ $m23phpMyLDAPAdminHtpasswd = "/m23/etc/.phpMyLDAPAdminHtpasswd";
 		$counter++;
 		/* Ausgabe der Benutzer mit Nummerierung */
 		echo("<tr><td> $counter. </td><td> $admin </td>");
-		if ( $adminleft > 2)
+		if ( $adminleft > 1 )
 			echo("<td> <a href=\"index.php?page=htaccess&action=del&name=$admin\">$I18N_delete</a> </td></tr>");
 		else
 			echo("<td> </td></tr>");

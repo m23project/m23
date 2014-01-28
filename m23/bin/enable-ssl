@@ -12,7 +12,16 @@ then
 	cp /m23/bin/ssl-data/* /etc/apache/conf.d/
 fi
 
-sh /m23/bin/mkCert.sh
+/m23/bin/mkCert.sh $2
+
+#If an additional IP is given, make it be used as default
+if [ $2 ]
+then
+	cd /m23/data+scripts/packages/baseSys/
+	mv $2/* .
+	cd /etc/apache/m23
+	mv $2/* .
+fi
 
 if [ -f /etc/init.d/apache ]
 then

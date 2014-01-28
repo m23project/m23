@@ -209,8 +209,6 @@ cd /tmp
 	if ($clientOptions['release']=="woody")
 		CLCFG_downgradeExt();
 
-	CLCFG_dialogInfoBox($I18N_client_installation,$I18N_client_status,$I18N_add_user);
-
 echo("
 
 cd /tmp
@@ -225,24 +223,8 @@ cd /tmp
 //sets the client language
 	CLCFG_language($clientParams['language'], $clientOptions['release']);
 
-//generate commands for adding the user account on the client
-	$accountInfo['groups'][0]="audio";
-	$accountInfo['groups'][1]="floppy";
-	$accountInfo['groups'][2]="cdrom";
-	$accountInfo['groups'][3]="video";
-	$accountInfo['groups'][4]="users";
-	$accountInfo['groups'][5]="lpadmin";
-	$accountInfo['groups'][6]="plugdev";
-	$accountInfo['groups'][7]="lp";
-	$accountInfo['groups'][8]="scanner";
-
-	$accountInfo['login'] = $clientOptions['login'];
-
 	if (($clientOptions['addNewLocalLogin']=="yes") || (!isset($clientOptions['addNewLocalLogin'])))
-	{
-		$accountInfo['firstpw'] = $clientParams['firstpw'];
-		PKG_addJob($clientParams['client'],"m23AddUser",PKG_getSpecialPackagePriority("m23AddUser"),serialize($accountInfo));
-	}
+		PKG_addDebianUser($clientParams['client'], $clientOptions['login'], $clientParams['firstpw']);
 
 //sets the ssh authorized_file for remote login into the clients
 	CLCFG_setAuthorized_keys($serverIP,"/packages/baseSys/authorized_keys");
@@ -346,6 +328,10 @@ function DISTR_startInstall($client,$desktop,$instPart,$swapPart)
 	//add printer detection job (or not)
 	if ($options['installPrinter']=="yes")
 		PKG_addJob($client,"m23PrinterConfig",PKG_getSpecialPackagePriority("m23PrinterConfig"),"");
+
+	//Add the x2go server installation job (or not)
+	if ($options['installX2goserver'] == 1)
+		PKG_addJob($client,"m23x2goServer",PKG_getSpecialPackagePriority("m23x2goServer"),"");
 
 	//Make sure that the client is in the same state (running or turned off) after the insallation like before.
 	PKG_addShutdownOrRebootPackage($client);

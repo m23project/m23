@@ -12,6 +12,22 @@ function run($id)
  CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $I18N_installing_xfree86);
 echo("
 
+#Check, if the postfix user is existing
+# type getent 2> /dev/null > /dev/null
+# if [ $? -eq 0 ]
+# then
+# 	postfixCount=$(getent passwd | grep postfix -c)
+# else
+# 	postfixCount=0
+# fi
+# postfixCount=$[ \$postfixCount + $(grep postfix /etc/passwd -c) ]
+# 
+# #If not, try to remove it from statoverride file
+# if [ \$postfixCount -eq 0 ]
+# then
+# 	sed -i '/postfix/d' /var/lib/dpkg/statoverride
+# fi
+
 echo \"
 	xserver-xorg xserver-xorg/config/doublequote_in_string_error note
 xserver-xorg xserver-xorg/config/device/bus_id_error note

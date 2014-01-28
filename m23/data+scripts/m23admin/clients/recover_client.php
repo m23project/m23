@@ -56,11 +56,10 @@
 			default:
 				CLIENT_desasterRecovery($client);
 				PKG_addJob($client,"m23UpdatePackageInfos",PKG_getSpecialPackagePriority("m23UpdatePackageInfos"),"");
-				PKG_addShutdownOrRebootPackage($client);
 				MSG_showInfo("$I18N_client_start_recover<br><br>$I18N_youCanStartYourm23ClientNow");
 		}
 
-		CLIENT_startInstall($client);
+// 		CLIENT_startInstall($client);	UNNEEDED because CLIENT_backToRed and CLIENT_desasterRecovery 
 	}
 	else
 	{

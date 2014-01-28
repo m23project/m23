@@ -15,6 +15,9 @@ define("CLIENT_ADD_TYPE_assimilate",2);
 
 
 
+
+
+
 /**
 **name CLIENT_removeServerCache($client)
 **description Removes the client cache on the m23 server.
@@ -519,16 +522,9 @@ function CLIENT_getCurrentFreeSpaceInDir($clientNameOrIP, $dir)
 **/
 function CLIENT_getClientID()
 {
-	if (isset($_GET[m23clientID]))
-		return($_GET['m23clientID']);
-	else
-		$sql = "SELECT id FROM `clients` WHERE ip='".getenv('REMOTE_ADDR')."';";
+	$line = CLIENT_getAskingParams();
 
-	CHECK_FW(CC_ip,getenv('REMOTE_ADDR'));
-	$result = db_query($sql); //FW ok
-	$line = mysql_fetch_row($result);
-
-	$clientID = $line[0];
+	$clientID = $line['id'];
 	return($clientID);
 }
 
@@ -732,97 +728,81 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 	$err="";
-	$checker = new CChecks();
-
-	//check client name
-	$checker->checkNonusedClientname($data['client']);
 	
-// 	print("<h2>CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw)</h2>");
+	
+// 	print('<h2>cryptRootPw: '.serialize($cryptRootPw).'</h2>');
+// 	print('<h2>options</h2>');
+// 	print_r2($options);
+// 	print('<h2>data</h2>');
+// 	print_r2($data);
+	
+	try
+	{
+		$CClientO = new CClient($data['client'], CClient::CHECKMODE_MUSTNOTEXIST);
+	}
+	catch (Exception $e)
+	{
+		return($e->getMessage());
+	}
 
 	if (($clientAddType == CLIENT_ADD_TYPE_add) ||
 		($clientAddType == CLIENT_ADD_TYPE_define))
 		{
-			//check username
-			if( empty($data['name']))
-				$err.="$I18N_no_name<br>";
+			$CClientO->setGetSystemtimeByNTP('yes' == $options['getSystemtimeByNTP']);
+			$CClientO->setAddNewLocalLogin('yes' == $options['addNewLocalLogin']);
+			$CClientO->setInstallPrinter('yes' == $options['installPrinter']);
 		
+			$CClientO->setArch($options['arch']);
 		
-			if( !empty($data['email']) && !checkEmail($data['email']))
-				$err.="$I18N_invalid_email<br>";
+			$CClientO->setLDAPType($options['ldaptype']);
+			$CClientO->setLDAPServer($options['ldapserver']);
+
+			$CClientO->setUserDetails($data['name'], $data['familyname'], $data['email'], $data['office'], $options['login'], $data['firstpw']);
+			
+			$CClientO->setBootType($data['dhcpBootimage']);
 
 			//Don't check Network settings in an DHCP/m23shared environment
-			if ($data['dhcpBootimage'] != "gpxe")
+			if ($CClientO->getBootType() != 'gpxe')
 			{
-				$checker->checkNetmask($data['netmask']);
-				$checker->checkGateway($data['gateway']);
+				$CClientO->setNetmask($data['netmask']);
+				$CClientO->setGateway($data['gateway']);
 				//check DNS servers
-				$checker->checkDNS1($data['dns1']);
-				if( !empty($data['dns2']))
-					$checker->checkDNS2($data['dns2']);
+				$CClientO->setDNS($data['dns1'], $data['dns2']);
 			}
-		
-			//check the login name
-			if (empty($options['login']))
-			{
-				//If a readonly LDAP server should be used, m23 doesn't need a login name
-				if ($options['ldaptype'] != "read")
-					$err.="$I18N_login_name_empty<br>";
-			}
-			elseif (!checkNormalKeys($options['login']))
-				$err.="$I18N_login_name_invalid<br>";
-		
-			//check the user password
-			if( empty($data['firstpw']))
-				$err.="$I18N_no_userpassword<br>";
-			//if( !empty($data['firstpw']) && !checkNormalKeys($data['firstpw']))
-			//	$err.="$I18N_invalid_userpassword><br>";
-		
-		
+
 			//check the user password
 			if( empty($data['rootpassword']) )
 				$err.="$I18N_no_rootpassword<br>";
 			//if( !empty($data['rootpassword']) && !checkNormalKeys($data['rootpassword']))
 			//	$err.="$I18N_invalid_rootpassword<br>";
-			
-			
-			//if one of the package proxy settings is empty clear both values
-			if (empty($options['packageProxy']) || empty($options['packagePort']))
-				{
-					$options['packageProxy']="";
-					$options['packagePort']="";
-				}
-			else
-				{
-					if (!checkIP($options['packageProxy']))
-						$err.="$I18N_packageProxyIncorrectIP<br>";
-				};
+
+			$CClientO->setPackageProxy($options['packageProxy'], $options['packagePort']);
+
+			//The following is most likely used on mass installation
+			if (isset($options['release'])) $CClientO->setRelease($options['release']);
+			if (isset($options['distr'])) $CClientO->setDistribution($options['distr']);
+			if (isset($options['instPart'])) $CClientO->setInstPart($options['instPart']);
+			if (isset($options['swapPart'])) $CClientO->setSwapPart($options['swapPart']);
+			$CClientO->copyImagingParameters($options);
+			$CClientO->copyMassOptions($options);
 		};
 
-	if (($clientAddType == CLIENT_ADD_TYPE_add) &&
-		($data['dhcpBootimage'] != "gpxe"))
-			$checker->checkNonusedMAC($data['mac']);
+	if (($clientAddType == CLIENT_ADD_TYPE_add) && ($CClientO->getBootType() != 'gpxe'))
+		$CClientO->setMAC($data['mac']);
 
-	if ((($clientAddType == CLIENT_ADD_TYPE_add) ||
-		($clientAddType == CLIENT_ADD_TYPE_assimilate)) && 
-		($data['dhcpBootimage'] != "gpxe"))
-			$checker->checkNonusedIP($data['ip']);
+	if ((($clientAddType == CLIENT_ADD_TYPE_add) || ($clientAddType == CLIENT_ADD_TYPE_assimilate)) && ($CClientO->getBootType() != 'gpxe'))
+		$CClientO->setIP($data['ip']);
 
 
-	if ($clientAddType == CLIENT_ADD_TYPE_add)
-		{
-			//write account to the LDAP server
-			if (($options['ldaptype']=="write") && (!$defineOnly) && (strlen($err) == 0))
-				{
-					if (LDAP_addPosix($options['ldapserver'],$options['login'],$data['name'],$data['familyname'],$data['firstpw'],$options['userID'],$options['groupID']) === FALSE)
-					$err.="$I18N_errorAddingNewLoginToLDAP<br>";
-				};
-		};
+	if ($clientAddType != CLIENT_ADD_TYPE_assimilate)
+	{
+		$CClientO->setUserGroupIDs($options['userID'], $options['groupID']);
 
-	$err.=$checker->popErrorMessagesHTML();
-
-	//if there is an error message quit with it
-	if (strlen($err) > 0)
-		return($err);
+		$CClientO->setLanguage($data['language']);
+		$CClientO->setTimeZone($options['timeZone']);
+		$CClientO->setBootloader($options['bootloader']);
+		$CClientO->setNfshomeserver($options['nfshomeserver']);
+	}
 
 	//set the right status
 	if ($clientAddType == CLIENT_ADD_TYPE_define)
@@ -830,75 +810,48 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 	else
 		$status=STATUS_RED;
 
-	//Unix time
-	$installdate = time();
+	$CClientO->setStatus($status);
 
-	if ($cryptRootPw)
-		$cryptedrootpw = encryptShadow("root",$data['rootpassword']);
-	else
-		$cryptedrootpw = $data['rootpassword'];
+	$CClientO->setRootPassword($data['rootpassword'], $cryptRootPw);
+	$CClientO->setNetRootPwd();
 
-
-	//write client data to the DB
-	if ($clientAddType != CLIENT_ADD_TYPE_assimilate)
+	//if there is an error message quit with it
+	if ($CClientO->hasErrors())
 	{
-		CHECK_FW(CC_clientname, $data['client'], CC_office, $data['office'], CC_forename, $data['name'], CC_familyname, $data['familyname'], CC_email, $data['email'], CC_netmask, $data['netmask'], CC_gateway, $data['gateway'], CC_dns1, $data['dns1'], CC_dns2, $data['dns2'], CC_installdate, $installdate, CC_rootpassword, $cryptedrootpw, CC_firstpw, $data['firstpw'], CC_status, $status, CC_language, $data['language']);
-
-		if (($clientAddType != CLIENT_ADD_TYPE_define) && ($data['dhcpBootimage'] != "gpxe"))
-			CHECK_FW(CC_ip, $data['ip'], CC_mac, $data['mac']);
-
-		$sql="INSERT INTO clients (client, office, name, familyname, eMail, mac, ip, netmask, gateway, dns1, dns2, installdate, rootPassword, firstpw, status, language, options) VALUES
-		('".$data['client']."', '".$data['office']."', '".$data['name']."',
-		'".$data['familyname']."', '".$data['email']."', '".$data['mac']."',
-		'".$data['ip']."', '".$data['netmask']."', '".$data['gateway']."',
-		'".$data['dns1']."', '".$data['dns2']."',
-		'".$installdate."', '".$cryptedrootpw."',
-		'".$data['firstpw']."',$status, '".$data['language']."','')";
+		$err = $CClientO->popErrorMessagesHTML();
+		$CClientO->destroy();
+		return($err);
 	}
-	else
-	{
-		CHECK_FW(CC_clientname, $data['client'], CC_ip, $data['ip'], CC_installdate, $installdate);
-		$sql="INSERT INTO clients (client,ip,installdate) VALUES ('".$data['client']."', '".$data['ip']."', '".$installdate."')";
-	}
-
-	if(!db_query($sql) ) //FW ok
-		return($I18N_error_db);
-
-	$id = mysql_insert_id();
-
-	CLIENT_setLastmodify($id);
-
-	//write the options
-	if ($clientAddType != CLIENT_ADD_TYPE_assimilate)
-		CLIENT_setAllOptions($data['client'],$options);
-	
-	GRP_addClientToGroup($data['client'],$data['newgroup']);
 
 	if ($clientAddType == CLIENT_ADD_TYPE_add)
-		{
-			DHCP_activateBoot($data['client'], true, $data['pxe']);
-			SERVER_addEtcHosts($data['client'], $data['ip']);
-		};
+	{
+		//write account to the LDAP server
+		if (($CClientO->getLDAPType()=="write") && (!$defineOnly))
+			$CClientO->addToCredentialsToLDAPServer();
+	}
 
-	if ($clientAddType != CLIENT_ADD_TYPE_assimilate)
-		{
-			PKG_addJob($data['client'],"m23Presetup",0,"" );
-		}
+	$CClientO->updateModifyDate();
+	$CClientO->updateInstallDate();
+	$CClientO->addToClientGroup($data['newgroup']);
+
+	if ($clientAddType == CLIENT_ADD_TYPE_add)
+		$CClientO->activateNetboot();
+
+	if ($clientAddType == CLIENT_ADD_TYPE_assimilate)
+	{
+		$CClientO->addJob("m23Assimilate",0,"");
+		$CClientO->addJob("m23Presetup",1,"assimilate");
+		$CClientO->addJob("m23UpdatePackageInfos",2,"");
+		$CClientO->addJob("m23setStatusGreen",3,"");
+	}
 	else
-		{
-			SERVER_addEtcHosts($data['client'], $data['ip']);
-			PKG_addJob($data['client'],"m23Assimilate",0,"");
-			PKG_addJob($data['client'],"m23Presetup",1,"assimilate");
-			PKG_addJob($data['client'],"m23UpdatePackageInfos",2,"");
-			PKG_addJob($data['client'],"m23setStatusGreen",3,"");
-		};
+		$CClientO->addJob("m23Presetup",0,"");
 
 	//Create a new status bar for the installation
-	HTML_newStatusBar("installStatus", $data['client'], STATUSBAR_TYPE_db);
-	HTML_setStatusBarStatusByName("installStatus", $data['client'], false, $I18N_client_added);
+	$CClientO->setInstallationStatusBar(false, $I18N_client_added);
 
 	if ($clientAddType == CLIENT_ADD_TYPE_add)
-		CLIENT_startInstall($data['client']);
+		$CClientO->startInstall();
 };
 
 
@@ -970,21 +923,9 @@ function CLIENT_exists($clientName)
 **/
 function CLIENT_getAskingParams()
 {
-	if (isset($_SESSION['m23Shared_clientName']{1}))
-	{
-		CHECK_FW(CC_clientname, $_SESSION['m23Shared_clientName']);
-		$sql= "SELECT * FROM `clients` WHERE client='$_SESSION[m23Shared_clientName]'";
-	}
-	elseif (isset($_GET[m23clientID]))
-	{
-		CHECK_FW(CC_id, $_GET['m23clientID']);
-		$sql= "SELECT * FROM `clients` WHERE id='$_GET[m23clientID]'";
-	}
-	else
-	{
-		CHECK_FW(CC_ip, getenv('REMOTE_ADDR'));
-		$sql = "SELECT * FROM `clients` WHERE ip=\"".getenv('REMOTE_ADDR')."\"";
-	}
+	$clientName = (isset($_SESSION['m23Shared_clientName']{1}) ? $_SESSION['m23Shared_clientName'] : CLIENT_getClientName());
+	
+	$sql= "SELECT * FROM `clients` WHERE client='$clientName'";
 
 	$result=DB_query($sql); //FW ok
 	$line=mysql_fetch_array($result,MYSQL_ASSOC);
@@ -1441,7 +1382,7 @@ function CLIENT_showGeneralInfo($id,$generateEnterKeep=false)
 	<tr> <td>$I18N_familyname:</td><td>$data[familyname]</td>$familynameEGK</tr>
 	<tr> <td>eMail:</td><td>$data[email]</td>$emailEGK</tr>
 	<tr> <td>$I18N_arch:</td><td>$allOptions[arch]</td></tr>
-	<tr> <td>Kernel:</td><td>$allOptions[kernel]</td></tr>");
+	<tr> <td>Kernel:</td><td>".nl2br($allOptions['kernel'])."</td></tr>");
 
 	//Only show network information if the client is gPXE or DHCP client
 	if ($data['dhcpBootimage'] != "gpxe")
@@ -1511,7 +1452,7 @@ function CLIENT_showJobs($client)
 			PKG_removeFromJobList($delList);
 			PKG_changeClientJobsStatus($rerunList,"waiting");
 			PKG_changeClientJobsStatus($doneList,"done");
-			CLIENT_recalculateStatusBar($client);
+			CLIENT_resetStatusBar($client);
 		};
 	
 	if (isset($_POST['BUT_start']))
@@ -1896,12 +1837,12 @@ function CLIENT_backToRed($clientName)
 
 
 /**
-**name CLIENT_desasterRecovery($clientName, $combineJobs = true)
+**name CLIENT_desasterRecovery($clientName, $addInstallRemovalJobs = true)
 **description recover a client: all client jobs are done again, status is set to 0
 **parameter clientName: name of the client
-**parameter combineJobs: If set to true, the normal installation and removal jobs are combined to a m23normal and a m23normalRemove job otherwise the jobs are switched back to waiting status.
+**parameter addInstallRemovalJobs: If set to true, the names of all installed packages will be combined to a m23normal and all revomed to a m23normalRemove job.
 **/
-function CLIENT_desasterRecovery($clientName, $combineJobs = true)
+function CLIENT_desasterRecovery($clientName, $addInstallRemovalJobs = true)
 {
 	CHECK_FW(CC_clientname, $clientName);
 	//set all packages from the client to status waiting
@@ -1912,7 +1853,7 @@ function CLIENT_desasterRecovery($clientName, $combineJobs = true)
 	$sql = "UPDATE `clients` SET status = '0' WHERE client = '$clientName'";
 	DB_query($sql); //FW ok
 
-	if ($completeRecovery)
+	if ($addInstallRemovalJobs)
 	{
 		#remove all installation and removal jobs
 		PKG_rmAllSpecialPackagesByName($clientName,"m23normal");
@@ -1935,6 +1876,7 @@ function CLIENT_desasterRecovery($clientName, $combineJobs = true)
 	deleteClientLogs($clientName);
 	CLIENT_removeServerCache($clientName);
 	CLIENT_resetAndInstall($clientName);
+	PKG_addShutdownOrRebootPackage($clientName);
 }
 
 
@@ -1966,7 +1908,21 @@ function CLIENT_wol($clientName)
 **/
 function CLIENT_recalculateStatusBar($clientName)
 {
-	HTML_setStatusBarPercentPointByName("installStatus", $clientName);
+	HTML_setStatusBarPercentPointByName("installStatus", $clientName, true);
+}
+
+
+
+
+
+/**
+**name CLIENT_resetStatusBar($clientName)
+**description Resets the percent points to 0 for the pending jobs on a client.
+**parameter clientName: name of the client
+**/
+function CLIENT_resetStatusBar($clientName)
+{
+	HTML_setStatusBarPercentPointByName("installStatus", $clientName, false);
 }
 
 
@@ -1980,7 +1936,7 @@ function CLIENT_recalculateStatusBar($clientName)
 **/
 function CLIENT_startInstall($clientName)
 {
-	CLIENT_recalculateStatusBar($clientName);
+	CLIENT_resetStatusBar($clientName);
 	CLIENT_startLiveScreenRecording($clientName);
 	if ( CLIENT_isrunning($clientName) )
 		CLIENT_sshFetchJob($clientName);
@@ -1999,11 +1955,12 @@ function CLIENT_startInstall($clientName)
 **/
 function CLIENT_resetAndInstall($clientName)
 {
-	CLIENT_recalculateStatusBar($clientName);
+	CLIENT_resetStatusBar($clientName);
 	DHCP_activateBoot($clientName, true);
+	CLIENT_startLiveScreenRecording($clientName);
 	if (CLIENT_isrunning($clientName))
 		CLIENT_reset($clientName);
-		else
+	else
 		CLIENT_wol($clientName);
 }
 
@@ -2054,10 +2011,10 @@ function CLIENT_isrunning($clientName)
 **/
 function CLIENT_reset($clientName)
 {
- $ip=CLIENT_getIPbyName($clientName);
+	$ip=CLIENT_getIPbyName($clientName);
 
- $cmd="sudo ssh -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $ip \"screen -dmS m23install /sbin/reboot -f\"";
- system($cmd);
+	$cmd="sudo ssh -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $ip \"screen -dmS m23install /sbin/reboot -f\"";
+	system($cmd);
 };
 
 
@@ -2154,11 +2111,16 @@ function CLIENT_getClientName()
 		return($_SESSION['m23Shared_clientName']);
 	elseif (isset($_GET['m23clientID']))
 	{
-		CHECK_FW(CC_id, $_GET['m23clientID']);
 		if (is_numeric($_GET['m23clientID']))
+		{
+			CHECK_FW(CC_id, $_GET['m23clientID']);
 			$sql = "SELECT client FROM `clients` WHERE id='$_GET[m23clientID]';";
+		}
 		else
+		{
+			CHECK_FW(CC_clientname, $_GET['m23clientID']);
 			$clientName = $_GET['m23clientID'];
+		}
 	}
 	else
 	{
@@ -2642,17 +2604,7 @@ function CLIENT_showDirectConnectionHelp($clientName,$language)
 **/
 function CLIENT_isAskingInDebugMode()
 {
-	if (isset($_GET[m23clientID]))
-		{
-			CHECK_FW(CC_id, $_GET['m23clientID']);
-			$sql= "SELECT ip FROM `clients` WHERE id='".$_GET['m23clientID']."'";
-			$result=DB_query($sql); //FW ok
-			$ip=mysql_fetch_array($result,MYSQL_ASSOC);
-			$ip=$ip[ip];
-		}
-	else
-		$ip=getenv('REMOTE_ADDR');
-
+	$ip = CLIENT_getIPbyName(CLIENT_getClientName());
 	return (RMV_get4IP("debug",$ip)==1);
 };
 
@@ -2943,49 +2895,50 @@ function CLIENT_showAddDialog($addType)
 	
 	if (isset($_GET['VM_host'])) $_SESSION['VM_host'] = $_GET['VM_host'];
 	if (isset($_GET['VM_software'])) $_SESSION['VM_software'] = $_GET['VM_software'];
+	if (isset($_GET['VM_dhcpBootimage'])) unset($_SESSION['preferenceSpace']);	//HACK to make sure, this is really read from GET
 
 	$colspanWithoutRadios=$colspan=2;
 	switch($addType)
-		{
-			case ADDDIALOG_normalAdd:
-				$submitLabel=$I18N_add;
-				$page="addclient";
-				break;
-			case ADDDIALOG_defineOnly:
-				$submitLabel=$I18N_define;
-				$page="addclient";
-				break;
-			case ADDDIALOG_changeClient:
-				$submitLabel=$I18N_edit_client;
-				$page="editclient";
+	{
+		case ADDDIALOG_normalAdd:
+			$submitLabel=$I18N_add;
+			$page="addclient";
+			break;
+		case ADDDIALOG_defineOnly:
+			$submitLabel=$I18N_define;
+			$page="addclient";
+			break;
+		case ADDDIALOG_changeClient:
+			$submitLabel=$I18N_edit_client;
+			$page="editclient";
 
-				//Empty all elements to change
-				$_SESSION['changeElements'] = "";
-				//Set to true to tell CLIENT_addChangeElement to create the HTML elements
-				$_SESSION['createChangeElements'] = true;
+			//Empty all elements to change
+			$_SESSION['changeElements'] = "";
+			//Set to true to tell CLIENT_addChangeElement to create the HTML elements
+			$_SESSION['createChangeElements'] = true;
 
-				//Create descriptive row
-				$rowDescription="
-					<td align=\"center\" valign=\"bottom\"><img src=\"/gfx/mini_trash.png\" title=\"$I18N_noChanges\"></td>
-					<td align=\"center\" valign=\"bottom\"><img src=\"/gfx/client-mini.png\" title=\"$I18N_edit_client\"></td>
-					<td align=\"center\" valign=\"bottom\"><img src=\"/gfx/server-mini.png\" title=\"$I18N_writeInDB\"></td>";
+			//Create descriptive row
+			$rowDescription="
+				<td align=\"center\" valign=\"bottom\"><img src=\"/gfx/mini_trash.png\" title=\"$I18N_noChanges\"></td>
+				<td align=\"center\" valign=\"bottom\"><img src=\"/gfx/client-mini.png\" title=\"$I18N_edit_client\"></td>
+				<td align=\"center\" valign=\"bottom\"><img src=\"/gfx/server-mini.png\" title=\"$I18N_writeInDB\"></td>";
 
-				$colspan=5;
-				$colspanWithoutRadios=2;
+			$colspan=5;
+			$colspanWithoutRadios=2;
 
-				$params=CLIENT_getParams($_SESSION['clientName']);
-				$options=CLIENT_getAllOptions($_SESSION['clientName']);
-				$installOptions = $options;
+			$params=CLIENT_getParams($_SESSION['clientName']);
+			$options=CLIENT_getAllOptions($_SESSION['clientName']);
+			$installOptions = $options;
 
-				//Some settings (e.g. kernel) cannot be changed, if no distribution is choosen
-				if (!isset($options['distr']{1}))
-				{
-					MSG_showError($I18N_distributionMustBeChoosenToEditTheClient);
-					return(false);
-				}
+			//Some settings (e.g. kernel) cannot be changed, if no distribution is choosen
+			if (!isset($options['distr']{1}))
+			{
+				MSG_showError($I18N_distributionMustBeChoosenToEditTheClient);
+				return(false);
+			}
 
-				break;
-		};
+			break;
+	};
 
 
 
@@ -3035,7 +2988,7 @@ function CLIENT_showAddDialog($addType)
 		$bootTypeList = array("gpxe" => "gPXE/DHCP");
 	else
 		$bootTypeList = array("pxe" => "pxe","etherboot" => "etherboot", "gpxe" => "gPXE/DHCP");
-	$boottype = HTML_storableSelection("SEL_boottype", "boottype", $bootTypeList, SELTYPE_selection, true, $params['dhcpBootimage'], $installParams['dhcpBootimage'], 'onchange="disableNetworkOnDHCP()"');
+	$boottype = HTML_storableSelection("SEL_boottype", "boottype", $bootTypeList, SELTYPE_selection, true, isset($_GET['VM_dhcpBootimage']) ? $_GET['VM_dhcpBootimage'] : $params['dhcpBootimage'], $installParams['dhcpBootimage'], 'onchange="disableNetworkOnDHCP()"');
 	$installParams['pxe'] = $boottype;
 		CLIENT_addChangeElement("boottype",true);
 
@@ -3062,7 +3015,7 @@ function CLIENT_showAddDialog($addType)
 
 	//Bootloader:Grub
 // LiLO or , "lilo" => "lilo"
-	$bootloaderList = array("grub" => "grub");
+	$bootloaderList = HELPER_getBootLoaders();
 	HTML_storableSelection("SEL_bootloader", "bootloader", $bootloaderList, SELTYPE_selection, true, $options['bootloader'], $installOptions['bootloader']);
 		CLIENT_addChangeElement("bootloader");
 
@@ -3281,7 +3234,7 @@ echo("
 				<a href=\"/m23admin/index.php?page=ldapSettings\">$I18N_manageLDAPServers</a></td>
 			</tr>
 
-			<tr><td bgcolor=\"#EF9F74\">$I18N_homeOnNFS</td><td bgcolor=\"#EF9F74\" align=\"right\">".ED_nfshomeserver."<br>($I18N_eg 192.168.1.23/nfs/home)</td>".RB_change_nfshomeserver."</tr>
+			<tr><td bgcolor=\"#EF9F74\">$I18N_homeOnNFS</td><td bgcolor=\"#EF9F74\" align=\"right\">".ED_nfshomeserver."<br>($I18N_eg 192.168.1.23:/nfs-homes)</td>".RB_change_nfshomeserver."</tr>
 	");
 	
 echo("

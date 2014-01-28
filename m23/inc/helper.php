@@ -6,6 +6,39 @@
 $*/
 
 
+/**
+**name HELPER_isExecutedInCLI()
+**description Checks, if it is run in CLI.
+**returns True, when run in CLI otherwise false.
+**/
+function HELPER_isExecutedInCLI()
+{
+	return(php_sapi_name() == 'cli');
+}
+
+
+
+
+
+/**
+**name HELPER_getContentFromURL($url)
+**description Downloads an URL via curl and gives back the site code.
+**parameter url: The URL to download.
+**returns The downloaded site code or false in case of an error.
+**/
+function HELPER_getContentFromURL($url)
+{
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_HEADER, false);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$out = curl_exec($ch);
+	curl_close($ch);
+
+	return($out);
+}
+
+
 
 
 
@@ -708,6 +741,20 @@ function HELPER_listFilesInDir($dirname)
 	//close the directory handle
 	closedir($dir);
 	return($out);
+}
+
+
+
+
+
+/**
+**name HELPER_getBootLoaders()
+**description Returns a list of available bootloaders.
+**returns Array with available bootloaders.
+**/
+function HELPER_getBootLoaders()
+{
+	return(array('grub' => 'grub'));
 }
 
 

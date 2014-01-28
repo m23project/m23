@@ -23,40 +23,40 @@ function MASS_EGKradioBoxes($RB_name,$arr,$checkNr=-1)
 	$i=0;
 
 	foreach ($actions as $val)
-		{
-			$out.="<td align=\"center\">";
-			
-			if ($i == $checkNr)
-				$checked="checked";
-			else
-				$checked="";
-
-			switch ($arr[$i])
-				{
-					case "e": //enables radio button
-						{
-							$out.="<INPUT type=\"radio\" name=\"$RB_name\" value=\"$val\" $checked>";
-							break;
-						}
+	{
+		$out.="<td align=\"center\">";
 		
-					case "n": //value is disabled
-						{
-							$out.="<img src=\"/gfx/button_cancel-mini.png\">";
-							break;
-						}
+		if ($i == $checkNr)
+			$checked="checked";
+		else
+			$checked="";
 
-					case "y": //value is always true
-						{
-							$out.="<img src=\"/gfx/button_ok-mini.png\">
-											<INPUT type=\"hidden\" name=\"$RB_name\" value=\"$val\">";
-							break;
-						}
-				};
+		switch ($arr[$i])
+		{
+			case "e": //enables radio button
+			{
+				$out.="<INPUT type=\"radio\" name=\"$RB_name\" value=\"$val\" $checked>";
+				break;
+			}
 
-			$out.="</td>";
+			case "n": //value is disabled
+			{
+				$out.="<img src=\"/gfx/button_cancel-mini.png\">";
+				break;
+			}
 
-			$i++;
+			case "y": //value is always true
+			{
+				$out.="<img src=\"/gfx/button_ok-mini.png\">
+								<INPUT type=\"hidden\" name=\"$RB_name\" value=\"$val\">";
+				break;
+			}
 		};
+
+		$out.="</td>";
+
+		$i++;
+	};
 
 	return($out);
 };
@@ -301,14 +301,14 @@ function MASS_showTableDefinition($EGKparams,$DBfileName)
 	$enterPropertiesAmount = 0;
 
 	foreach ($keys as $key)
+	{
+		if ($EGKparams["FH_".$key]=="f")
 		{
-			if ($EGKparams["FH_".$key]=="f")
-				{
-					$enterProperties["val$enterPropertiesAmount"]=$key;
-					$enterProperties["name$enterPropertiesAmount"]=MASS_keyToI18N($key);
-					$enterPropertiesAmount++;
-				}
-		};
+			$enterProperties["val$enterPropertiesAmount"]=$key;
+			$enterProperties["name$enterPropertiesAmount"]=MASS_keyToI18N($key);
+			$enterPropertiesAmount++;
+		}
+	};
 
 	//the amount of selections can be increased to the amount of fields in the DB file
 	if ($_POST[ED_columnAmount] > $enterPropertiesAmount)
@@ -406,73 +406,72 @@ function MASS_checkAndSaveFields(&$EGKparams)
 	$assignCounter = 0;
 
 	//assign column names
-	for ($i=0; $i < $_POST[ED_columnAmount]; $i++)
-		{
-			$key=$_POST["SEL_enter$i"];
+	for ($i=0; $i < $_POST['ED_columnAmount']; $i++)
+	{
+		$key=$_POST["SEL_enter$i"];
 
-			//check if the key has been saved before
-			if ((in_array($key,$keylist)) && $key != "ignore")
-				{
-					return("$I18N_multipleDeclarationsOfField: ".$_POST["SEL_enter$i"]);
-				}
-			elseif ($key != "ignore")
-				$assignCounter++;
+		//check if the key has been saved before
+		if ((in_array($key,$keylist)) && $key != "ignore")
+			return("$I18N_multipleDeclarationsOfField: ".$_POST["SEL_enter$i"]);
+		elseif ($key != "ignore")
+			$assignCounter++;
 
-			$keylist[$i] = $key;
+		$keylist[$i] = $key;
 
-			if ($key != "ignore")
-				$EGKparams["columnKey$i"] = $key;
-			else
-				$EGKparams["columnKey$i"] = "";
-		};
+		if ($key != "ignore")
+			$EGKparams["columnKey$i"] = $key;
+		else
+			$EGKparams["columnKey$i"] = "";
+	};
 		
 	//if there were assigned less properties than it should be, return an error message
 	$propKeys = MASS_getXProperties($EGKparams,"f","FH_");
-	if ($assignCounter < $propKeys[amount])
+	if ($assignCounter < $propKeys['amount'])
 		return($I18N_notAllFieldsWereAssigned);
 
-	$EGKparams[DBfileName] = $_POST[DBfileName];
-	$EGKparams[glue] = $_POST[ED_glue];
-	$EGKparams[columnAmout] = $_POST[ED_columnAmount];
+	$EGKparams['DBfileName'] = $_POST['DBfileName'];
+	$EGKparams['glue'] = $_POST['ED_glue'];
+	$EGKparams['columnAmout'] = $_POST['ED_columnAmount'];
 
-	$file = MASS_openDBFile($EGKparams[DBfileName]);
+	$file = MASS_openDBFile($EGKparams['DBfileName']);
 	
 	$errMsg="";
 
-	$parts = MASS_readDBFileRaw($file,$EGKparams[glue]);
+	$parts = MASS_readDBFileRaw($file,$EGKparams['glue']);
 
-	for ($i=0; $i < $EGKparams[columnAmout]; $i++)
+	for ($i=0; $i < $EGKparams['columnAmout']; $i++)
+	{
+		switch ($EGKparams["columnKey$i"])
 		{
-			switch ($EGKparams["columnKey$i"])
-				{
-					case "ip": 
-						{
-							if (!checkIP($parts[$i])) 
-								$errMsg .= $I18N_invalid_ip."\n"; 
-							break; 
-						};
-						
-					case "netmask":
-						{
-							if (!checkNetmask($parts[$i]))
-								$errMsg .= $I18N_invalid_netmask."\n";
-							break;
-						}
-					case "email":
-						{
-							if (!checkEmail($parts[$i]))
-								$errMsg .= $I18N_invalid_email."\n";
-							break;
-						};
-						
-					case "client":
-						{
-							if (!checkNormalKeys($parts[$i]))
-								$errMsg .= $I18N_invalid_clientname."\n";
-							break;
-						};
-				}
-		};
+			case "ip": 
+			{
+				if (!checkIP($parts[$i])) 
+					$errMsg .= $I18N_invalid_ip."\n"; 
+				break; 
+			};
+
+			case "netmask":
+			{
+				if (!checkNetmask($parts[$i]))
+					$errMsg .= $I18N_invalid_netmask."\n";
+				break;
+			}
+
+			case "email":
+			{
+				if (!checkEmail($parts[$i]))
+					$errMsg .= $I18N_invalid_email."\n";
+				break;
+			};
+
+			case "client":
+			{
+				if (!checkNormalKeys($parts[$i]))
+					$errMsg .= $I18N_invalid_clientname."\n";
+				break;
+			};
+		}
+	};
 
 	MASS_closeDBFile($file);
 
@@ -536,11 +535,11 @@ function MASS_readDBFile($file,$EGKparams)
 function MASS_readDBFileRaw($file,$glue)
 {
 	if ($file)
-		{
-			$line=fgets($file);
-			
-			$parts=explode($_POST[ED_glue],$line);
-		};
+	{
+		$line=fgets($file);
+
+		$parts=explode($_POST['ED_glue'],$line);
+	};
 
 	return($parts);
 };
@@ -579,11 +578,11 @@ function MASS_getXProperties($EGKparams,$x,$pre="")
 
 	foreach ($keys as $key)
 		if ($EGKparams["$pre$key"]==$x)
-			{
-				$var="key$out[amount]";
-				$out[$var]=$key;
-				$out[amount]++;
-			}
+		{
+			$var="key$out[amount]";
+			$out[$var]=$key;
+			$out['amount']++;
+		}
 
 	return($out);
 };
@@ -607,12 +606,12 @@ function MASS_showGeneratorOptions($EGKparams)
 
 //generator for:CLIENTNAME
 
-	$clientStartNumber = $_POST[ED_clientStartNumber];
+	$clientStartNumber = $_POST['ED_clientStartNumber'];
 	
 	if (empty($clientStartNumber))
 		$clientStartNumber = 0;
 	
-	$htmlGenerator[client]="
+	$htmlGenerator['client']="
 <tr>
 	<td colspan=2>
 		<span class=\"subhighlight\">$I18N_client_name</span>
@@ -633,12 +632,12 @@ function MASS_showGeneratorOptions($EGKparams)
 
 //generator for: FORENAME
 
-	$forenameStartNumber = $_POST[ED_forenameStartNumber];
+	$forenameStartNumber = $_POST['ED_forenameStartNumber'];
 	
 	if (empty($forenameStartNumber))
 		$forenameStartNumber = 0;
 
-	$htmlGenerator[forename]="
+	$htmlGenerator['forename']="
 <tr>
 	<td colspan=2>
 		<span class=\"subhighlight\">$I18N_forename</span><br>
@@ -667,10 +666,10 @@ function MASS_showGeneratorOptions($EGKparams)
 			$ipRanges = "$minMaxIP[0]-$minMaxIP[1]";
 		};
 		
-	if (isset($_POST[CB_ipPing]))
+	if (isset($_POST['CB_ipPing']))
 		$ipPingChecked="checked";
 
-	$htmlGenerator[ip]="
+	$htmlGenerator['ip']="
 <tr>
 	<td>
 	<span class=\"subhighlight\">$I18N_ip</span><br><br>
@@ -690,7 +689,7 @@ $ipRanges
 
 
 //generator: NETMASK
-	$htmlGenerator[netmask]="
+	$htmlGenerator['netmask']="
 	<tr>
 		<td>
 			<span class=\"subhighlight\">$I18N_netmask</span><br><br>
@@ -705,12 +704,12 @@ $ipRanges
 //generator: FIRSTLOGIN
 	$firstPasswordLengths[0]=6;$firstPasswordLengths[1]=7;$firstPasswordLengths[2]=8;
 
-	$firstPasswordLength = $_POST[SEL_firstloginLength];
+	$firstPasswordLength = $_POST['SEL_firstloginLength'];
 	if (empty($firstPasswordLength))
 		$firstPasswordLength = 8;
 
 	//set the radio buttons
-	if ($_POST[RB_firstloginGenerationMethod]=="pwgen")
+	if ($_POST['RB_firstloginGenerationMethod']=="pwgen")
 		$pwgenChecked="checked";
 	else
 		$randomChecked="checked";
@@ -728,7 +727,7 @@ $ipRanges
 	$randPwdrandom = MASS_passGenerator($firstPasswordLength,"random",1);
 	
 	//whole HTML code
-	$htmlGenerator[firstlogin]="
+	$htmlGenerator['firstlogin']="
 	<tr>
 		<td>
 			<span class=\"subhighlight\">$I18N_first_login</span><br><br>
@@ -744,12 +743,12 @@ $ipRanges
 
 //generator for:USERID
 
-	$userIDStartNumber = $_POST[ED_userIDStartNumber];
+	$userIDStartNumber = $_POST['ED_userIDStartNumber'];
 	
 	if (empty($userIDStartNumber))
 		$userIDStartNumber = LDAP_getNextUserID();
 	
-	$htmlGenerator[userID]="
+	$htmlGenerator['userID']="
 	<tr>
 		<td colspan=2>
 			<span class=\"subhighlight\">$I18N_userID</span><br>
@@ -765,12 +764,12 @@ $ipRanges
 
 //generator for:GROUPID
 
-	$groupIDStartNumber = $_POST[ED_groupIDStartNumber];
+	$groupIDStartNumber = $_POST['ED_groupIDStartNumber'];
 	
 	if (empty($groupIDStartNumber))
 		$groupIDStartNumber = LDAP_getNextgroupID();
 	
-	$htmlGenerator[groupID]="
+	$htmlGenerator['groupID']="
 	<tr>
 		<td colspan=2>
 			<span class=\"subhighlight\">$I18N_groupID</span><br>
@@ -787,16 +786,16 @@ $ipRanges
 //generator for: LOGIN
 
 	//set the radio buttons
-	if ($_POST[RB_loginGenerationMethod]=="ForeFamilyName")
+	if ($_POST['RB_loginGenerationMethod']=="ForeFamilyName")
 		$foreFamilyNameChecked="checked";
 	else
 		$incrementalChecked="checked";
 		
-	$loginStartNumber = $_POST[ED_loginStartNumber];
+	$loginStartNumber = $_POST['ED_loginStartNumber'];
 	if (empty($loginStartNumber))
 		$loginStartNumber = 0;
 
-	$htmlGenerator[login]="
+	$htmlGenerator['login']="
 <tr>
 	<td colspan=2>
 		<span class=\"subhighlight\">$I18N_login_name</span><br><br>
@@ -823,7 +822,7 @@ $ipRanges
 
 
 //show needed generator dialogs
-	for ($i = 0; $i < $generatorKeys[amount]; $i++)
+	for ($i = 0; $i < $generatorKeys['amount']; $i++)
 		{
 			$var="key$i";
 
@@ -851,21 +850,21 @@ $ipRanges
 function MASS_passGenerator($length,$method,$amount)
 {
 	switch ($method)
+	{
+		case "pwgen":
 		{
-			case "pwgen":
-				{
-					$pwds = shell_exec("pwgen -1 $length $amount");
-					$out = explode("\n",$pwds);
-					break;
-				};
-				
-			case "random":
-				{
-					for ($i = 0; $i < $amount; $i++)
-						$out[$i] = DB_genPassword($length);
-					break;
-				};
+			$pwds = shell_exec("pwgen -1 $length $amount");
+			$out = explode("\n",$pwds);
+			break;
 		};
+
+		case "random":
+		{
+			for ($i = 0; $i < $amount; $i++)
+				$out[$i] = DB_genPassword($length);
+			break;
+		};
+	};
 		
 	return ($out);
 };
@@ -889,19 +888,20 @@ function MASS_loginGenerator($base,$start,$forenames,$familynames,$type,$amount)
 	switch ($type)
 	{
 		case "incremental":
+		{
+			for ($i = 0; $i < $amount; $i++)
 			{
-				for ($i = 0; $i < $amount; $i++)
-					{
-						$out[$i]=$base.$start;
-						$start++;
-					}
-				break;
-			};
+				$out[$i]=$base.$start;
+				$start++;
+			}
+			break;
+		};
+
 		case "ForeFamilyName":
-			{
-				for ($i = 0; $i < $amount; $i++)
-					$out[$i]=str_replace("ä","ae",(str_replace("ü","ue",str_replace("ö","oe",str_replace("ß","ss",strtolower($forenames[$i][0].$familynames[$i]))))));
-			};
+		{
+			for ($i = 0; $i < $amount; $i++)
+				$out[$i]=str_replace("ä","ae",(str_replace("ü","ue",str_replace("ö","oe",str_replace("ß","ss",strtolower($forenames[$i][0].$familynames[$i]))))));
+		};
 	};
 
 	return($out);
@@ -924,30 +924,30 @@ function MASS_ipGenerator($amount,$rangesStr,$ping)
 	$counter = 0;
 
 	foreach ($ranges as $range)
-		{
-			$fromTo = explode('-',$range);
-			
-			$fromTo[0] = explode(".",trim($fromTo[0]));
-			$fromTo[1] = explode(".",trim($fromTo[1]));
-			
-			for ($a = $fromTo[0][0]; $a <= $fromTo[1][0]; $a++)
-				for ($b = $fromTo[0][1]; $b <= $fromTo[1][1]; $b++)
-					for ($c = $fromTo[0][2]; $c <= $fromTo[1][2]; $c++)
-						for ($d = $fromTo[0][3]; $d <= $fromTo[1][3]; $d++)
-							{
-								//generate new ip
-								$ip = "$a.$b.$c.$d";
+	{
+		$fromTo = explode('-',$range);
+		
+		$fromTo[0] = explode(".",trim($fromTo[0]));
+		$fromTo[1] = explode(".",trim($fromTo[1]));
+		
+		for ($a = $fromTo[0][0]; $a <= $fromTo[1][0]; $a++)
+			for ($b = $fromTo[0][1]; $b <= $fromTo[1][1]; $b++)
+				for ($c = $fromTo[0][2]; $c <= $fromTo[1][2]; $c++)
+					for ($d = $fromTo[0][3]; $d <= $fromTo[1][3]; $d++)
+					{
+						//generate new ip
+						$ip = "$a.$b.$c.$d";
 
-								//only add if this ip isn't used by a client
-								if (!CLIENT_IPexists($ip) &&
-									(!$ping || !pingIP($ip)))
-									$out[$counter++] = $ip;
+						//only add if this ip isn't used by a client
+						if (!CLIENT_IPexists($ip) &&
+							(!$ping || !pingIP($ip)))
+							$out[$counter++] = $ip;
 
-								//there have been generated enough ips
-								if ($counter == $amount)
-									return($out);
-							};
-		};
+						//there have been generated enough ips
+						if ($counter == $amount)
+							return($out);
+					};
+	};
 
 	return ($out);
 };
@@ -1084,13 +1084,13 @@ function MASS_generateClientNames($base,$start,$amount)
 	$nr = $start;
 
 	while ($count < $amount)
-		{
-			$clName=$base.$nr;
+	{
+		$clName=$base.$nr;
 
-			if (!CLIENT_exists($clName))
-				$out[$count++]=$clName;
-			$nr++;
-		};
+		if (!CLIENT_exists($clName))
+			$out[$count++]=$clName;
+		$nr++;
+	};
 
 	return($out);
 };
@@ -1106,23 +1106,23 @@ function MASS_generateClientNames($base,$start,$amount)
 **/
 function MASS_saveGeneratorOptions(&$EGKparams)
 {
-	$EGKparams[clientBaseName] = $_POST[ED_clientBaseName];
-	$EGKparams[clientStartNumber] = $_POST[ED_clientStartNumber];
-	$EGKparams[forenameBaseName] = $_POST[ED_forenameBaseName];
-	$EGKparams[forenameStartNumber] = $_POST[ED_forenameStartNumber];
-	$EGKparams[ipRanges] = $_POST[TA_ipRanges];
-	$EGKparams[firstloginGenerationMethod] = $_POST[RB_firstloginGenerationMethod];
-	$EGKparams[firstloginLength] = $_POST[SEL_firstloginLength];
-	$EGKparams[userIDStartNumber] = $_POST[ED_userIDStartNumber];
-	$EGKparams[groupIDStartNumber] = $_POST[ED_groupIDStartNumber];
-	$EGKparams[loginGenerationMethod]=$_POST[RB_loginGenerationMethod];
-	$EGKparams[loginBaseName]=$_POST[ED_loginBaseName];
-	$EGKparams[loginStartNumber]=$_POST[ED_loginStartNumber];	
+	$EGKparams['clientBaseName'] = $_POST['ED_clientBaseName'];
+	$EGKparams['clientStartNumber'] = $_POST['ED_clientStartNumber'];
+	$EGKparams['forenameBaseName'] = $_POST['ED_forenameBaseName'];
+	$EGKparams['forenameStartNumber'] = $_POST['ED_forenameStartNumber'];
+	$EGKparams['ipRanges'] = $_POST['TA_ipRanges'];
+	$EGKparams['firstloginGenerationMethod'] = $_POST['RB_firstloginGenerationMethod'];
+	$EGKparams['firstloginLength'] = $_POST['SEL_firstloginLength'];
+	$EGKparams['userIDStartNumber'] = $_POST['ED_userIDStartNumber'];
+	$EGKparams['groupIDStartNumber'] = $_POST['ED_groupIDStartNumber'];
+	$EGKparams['loginGenerationMethod']=$_POST['RB_loginGenerationMethod'];
+	$EGKparams['loginBaseName']=$_POST['ED_loginBaseName'];
+	$EGKparams['loginStartNumber']=$_POST['ED_loginStartNumber'];
 
-	if ($_POST[CB_ipPing]=="yes")
-		$EGKparams[ipPing]="y";
+	if ($_POST['CB_ipPing']=="yes")
+		$EGKparams['ipPing']="y";
 	else
-		$EGKparams[ipPing]="n";
+		$EGKparams['ipPing']="n";
 };
 
 
@@ -1634,6 +1634,8 @@ function MASS_startInstall($EGKparams)
 	$allParams=CLIENT_getParams($client);
 	$defineOptions=CLIENT_getAllOptions($client);
 	
+// 	print_r($defineOptions);
+	
 	$msg="<ul>";
 
 	for ($i=0; $i < $generateAmount; $i++)
@@ -1650,23 +1652,24 @@ function MASS_startInstall($EGKparams)
 			$alldata['dns1'] 		= trim($_POST["ED_dns1$i"]);
 			$alldata['dns2'] 		= trim($_POST["ED_dns1$i"]);
 			$alldata['firstpw']		= $_POST["ED_firstlogin$i"];
-			$alldata['pxe']			= ($allParams[dhcpBootimage]!="etherboot");
-			$alldata['language']	= $allParams[language];
+			$alldata['pxe']			= ($allParams['dhcpBootimage']!="etherboot");
+			$alldata['language']	= $allParams['language'];
 			$alldata['newgroup']	= $_POST["SEL_group$i"];
+			$alldata['dhcpBootimage'] = $allParams['dhcpBootimage'];
 
-			$allOptions				= $defineOptions;
-			$allOptions['netRootPwd']= DB_genPassword(6);
-			$allOptions['addNewLocalLogin'] = $_POST["CB_addNewLocalLogin$i"];
-			$allOptions['ldaptype'] = $_POST["SEL_ldaptype$i"];
-			$allOptions['userID'] = $_POST["ED_userID$i"];
-			$allOptions['groupID'] = $_POST["ED_groupID$i"];
-			$allOptions['ldapserver'] = $_POST["SEL_ldapserver$i"];
-			$allOptions['nfshomeserver'] = $_POST["ED_nfshomeserver$i"];
-			$allOptions['login'] = $_POST["ED_login$i"];
+			$allOptions						= $defineOptions;
+			$allOptions['netRootPwd']		= DB_genPassword(6);
+			$allOptions['addNewLocalLogin']	= $_POST["CB_addNewLocalLogin$i"];
+			$allOptions['ldaptype']			= $_POST["SEL_ldaptype$i"];
+			$allOptions['userID']			= $_POST["ED_userID$i"];
+			$allOptions['groupID']			= $_POST["ED_groupID$i"];
+			$allOptions['ldapserver']		= $_POST["SEL_ldapserver$i"];
+			$allOptions['nfshomeserver']	= $_POST["ED_nfshomeserver$i"];
+			$allOptions['login']			= $_POST["ED_login$i"];
 
 			if ($EGKparams[rootlogin]=="k")
 				{
-					$alldata['rootpassword'] = $allParams[rootPassword];
+					$alldata['rootpassword'] = $allParams['rootPassword'];
 					$cryptRootPw = false;
 				}
 			else

@@ -35,7 +35,7 @@ function UPDATE_doUpdate($URL)
 **/
 function UPDATE_running()
 {
-	return(exec("sudo screen -ls | grep -c '.m23install '") == 1);
+	return(SERVER_runningInScreen('m23install', 'root'));
 }
 
 

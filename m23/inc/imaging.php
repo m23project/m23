@@ -2,21 +2,25 @@
 
 
 
-//transfer methods for the images
+//Transfer methods for the images
 define('IMGTRANS_NC',0);
+
+//Image formats
 define('IMGFORMAT_DD',1);
 define('IMGFORMAT_TAR',2);
 define('IMGFORMAT_DDRESCUE',6);
+define('IMGFORMAT_PARTCLONE',7);
 
+//Compression
 define('IMGCOMPRESSION_NONE',3);
 define('IMGCOMPRESSION_GZ',4);
 define('IMGCOMPRESSION_BZ2',5);
 
 //descriptions for the transfer, format and compression types
-define('IMGDESCRIPTIONS',serialize(array(IMGTRANS_NC => "nc (netcat)", IMGFORMAT_DD => "dd (Convert and Copy)", IMGFORMAT_TAR => "tar (Tarball)", IMGFORMAT_DDRESCUE => "ddrescue (Harddisk rescue)", IMGCOMPRESSION_NONE => "-", IMGCOMPRESSION_GZ => "Gzip", IMGCOMPRESSION_BZ2 => "bzip2")));
+define('IMGDESCRIPTIONS',serialize(array(IMGTRANS_NC => "nc (netcat)", IMGFORMAT_DD => "dd (Convert and Copy)", IMGFORMAT_TAR => "tar (Tarball)", IMGFORMAT_DDRESCUE => "ddrescue (Harddisk rescue)", IMGFORMAT_PARTCLONE => 'Partclone', IMGCOMPRESSION_NONE => "-", IMGCOMPRESSION_GZ => "Gzip", IMGCOMPRESSION_BZ2 => "bzip2")));
 
 //format extension
-define('IMGFORMEXTENSIONS',serialize(array(IMGFORMAT_DD => "dd", IMGFORMAT_TAR => "tar")));
+define('IMGFORMEXTENSIONS',serialize(array(IMGFORMAT_DD => "dd", IMGFORMAT_TAR => "tar", IMGFORMAT_PARTCLONE => 'partclone')));
 
 //compression extensions
 define('IMGCOMPREXTENSIONS',serialize(array(IMGCOMPRESSION_NONE => "", IMGCOMPRESSION_GZ => "gz", IMGCOMPRESSION_BZ2 => "bz2")));
@@ -120,7 +124,7 @@ function IMG_clientRestoreAll($options, $lang)
 {
 	$dnr=$pnr=0;
 	$devs=$enable=array();
-	for ($i=0; $i < $options[IMGPartitionAmount]; $i++)
+	for ($i=0; $i < $options['IMGPartitionAmount']; $i++)
 	{
 		if (isset($options["IMGname$i"]))
 			{
@@ -163,11 +167,20 @@ function IMG_clientRestore($fileName, $destDevice, $lang)
 
 	$cmd="\nwget -q https://".getServerIP().IMGHTTPDIR."$fileName -O - | ";
 
+	$FSEnlargeWrapper = false;
+	$gaugeActive = true;
+
 	switch ($format)
 	{
 		case IMGFORMAT_DD:
 			$cmd.=$compr[IMGFORMAT_DD][$compression]."dd of=$destDevice&";
 			$mount=false;
+			$FSEnlargeWrapper = true;
+			break;
+		case IMGFORMAT_PARTCLONE:
+			$cmd.=$compr[IMGFORMAT_DD][$compression]."partclone.restore -F -L /tmp/partclone.log -o $destDevice -s -";
+			$mount = false;
+			$gaugeActive = false;
 			break;
 	};
 	
@@ -177,8 +190,14 @@ function IMG_clientRestore($fileName, $destDevice, $lang)
 		CLCFG_mountRootDir($destDevice,basename($destDevice));
 	echo($cmd);
 
-	$infofilecmd = "find /proc -printf \"%l*%p\\n\" 2> /dev/null | grep $destDevice | grep -v task | cut -d'*' -f2 | sed 's/fd/fdinfo/'";
-	CLCFG_dialogGaugeProcPos($I18N_client_installation, $I18N_client_status, "$I18N_installing_images: $fileName", $infofilecmd, IMG_getExtractedSize($fileName));
+	if ($gaugeActive)
+	{
+		$infofilecmd = "find /proc -printf \"%l*%p\\n\" 2> /dev/null | grep $destDevice | grep -v task | cut -d'*' -f2 | sed 's/fd/fdinfo/'";
+		CLCFG_dialogGaugeProcPos($I18N_client_installation, $I18N_client_status, "$I18N_installing_images: $fileName", $infofilecmd, IMG_getExtractedSize($fileName));
+	}
+
+	if ($FSEnlargeWrapper)
+		echo("\nFSEnlargeWrapper $destDevice\n");
 }
 
 
@@ -324,8 +343,8 @@ function IMG_showImageManagement()
 			echo("
 			<tr>
 				<td>$fileInfo[filename]</td>
-				<td>".number_format($fileInfo[size] / 1048576)." MB</td>
-				<td>".number_format($fileInfo[extractedSize] / 1048576)." MB</td>
+				<td>".I18N_number_format($fileInfo[size] / 1048576)." MB</td>
+				<td>".I18N_number_format($fileInfo[extractedSize] / 1048576)." MB</td>
 				<td>$fileInfo[form]</td>
 				<td>$fileInfo[comp]</td>
 				<td>".strftime($I18N_timeFormat,$fileInfo["date"])."</td>
@@ -510,12 +529,19 @@ function IMG_clientCreate($transport ,$format, $compression, $device, $server, $
 	$compr[IMGFORMAT_DD][IMGCOMPRESSION_NONE] = "";
 	$compr[IMGFORMAT_DD][IMGCOMPRESSION_GZ] = "gzip | ";
 	$compr[IMGFORMAT_DD][IMGCOMPRESSION_BZ2] = "bzip2 | ";
+	
+	$gaugeActive = true;
 
 	switch ($format)
 	{
 		case IMGFORMAT_DD:
 			$cmd.="(dd bs=1M if=$device 2> /tmp/m23ImagerSize2 | ".$compr[IMGFORMAT_DD][$compression];
-			$statusCmd="cat /tmp/m23ImagerSize2 | grep out | cut -d'+' -f1 > /tmp/m23ImagerSize; rm /tmp/m23ImagerSize2)";
+			$statusCmd="cat /tmp/m23ImagerSize2 | grep out | cut -d'+' -f1 > /tmp/m23ImagerSize; rm /tmp/m23ImagerSize2)&";
+			break;
+		case IMGFORMAT_PARTCLONE:
+			$cmd.="partcloneWrapper $device | ".$compr[IMGFORMAT_DD][$compression];
+			$statusCmd="";
+			$gaugeActive = false;
 			break;
 		case IMGFORMAT_TAR:
 			$cmd.="cat $device | ";
@@ -525,14 +551,17 @@ function IMG_clientCreate($transport ,$format, $compression, $device, $server, $
 	switch ($transport)
 	{
 		case IMGTRANS_NC:
-			$cmd.="nc $server $port";
+			$cmd.="nc -w10 $server $port";
 			break;
 	};
 
-	echo("$cmd;$statusCmd&");
+	echo("$cmd;$statusCmd");
 
-	$infofilecmd = "find /proc -printf \"%l*%p\\n\" 2> /dev/null | grep $device | grep -v task | cut -d'*' -f2 | sed 's/fd/fdinfo/'";
-	CLCFG_dialogGaugeProcPos("Image creation", "Image creation", "Creating image file of: $device", $infofilecmd, "`cat /proc/partitions | grep \"$onlyDeviceName$\" | tr -s [:blank:] | cut -d' ' -f4 | awk -vOFMT=\"%.100g\" '{print($0 * 1024);}'`");
+	if ($gaugeActive)
+	{
+		$infofilecmd = "find /proc -printf \"%l*%p\\n\" 2> /dev/null | grep $device | grep -v task | cut -d'*' -f2 | sed 's/fd/fdinfo/'";
+		CLCFG_dialogGaugeProcPos("Image creation", "Image creation", "Creating image file of: $device", $infofilecmd, "`cat /proc/partitions | grep \"$onlyDeviceName$\" | tr -s [:blank:] | cut -d' ' -f4 | awk -vOFMT=\"%.100g\" '{print($0 * 1024);}'`");
+	}
 }
 
 
@@ -560,20 +589,21 @@ function IMG_showCreateImage($client)
 				mkdir(IMGSTOREDIR);
 
 			//set format and server in the parameters array for the create image job
-			$imgparams[form] = $_POST[RB_imageFormat];
-			$imgparams[server] = getServerIP();
+			$imgparams['form'] = $_POST['SEL_imageFormat'];
+			$imgparams['server'] = getServerIP();
 	
-			switch ($imgparams[form])
+			switch ($imgparams['form'])
 			{
 				case IMGFORMAT_DD:
 				case IMGFORMAT_DDRESCUE:
-					$imgparams[trans] = $_POST[SEL_ddTrans];
-					$imgparams[compr] = $_POST[SEL_ddComp];
-					$imgparams[port] = $_POST[ED_transferPort];
+				case IMGFORMAT_PARTCLONE:
+					$imgparams['trans'] = $_POST['SEL_ddTrans'];
+					$imgparams['compr'] = $_POST['SEL_ddComp'];
+					$imgparams['port'] = $_POST['ED_transferPort'];
 	
-					$temp=explode(" ",$_POST[SEL_ddDrive]);
+					$temp=explode(" ",$_POST['SEL_ddDrive']);
 					//device to save
-					$imgparams[param] = $temp[0];
+					$imgparams['param'] = $temp[0];
 					break;
 			};
 
@@ -602,38 +632,38 @@ function IMG_showCreateImage($client)
 	$param=FDISK_getPartitions($client);
 	$first="";
 
+	$formatArray[IMGFORMAT_PARTCLONE] = $desc[IMGFORMAT_PARTCLONE];
+	$formatArray[IMGFORMAT_DD] = $desc[IMGFORMAT_DD];
+	HTML_selection('SEL_imageFormat', $formatArray, SELTYPE_selection);
+
 	HTML_showFormHeader();
 	HTML_showTableHeader();
 	HTML_setPage('createImage');
 	echo("
 	<input type=\"hidden\" name=\"client\" value=\"$client\">
 	<tr>
-		<td><span class=\"subhighlight\">$I18N_selected</span></td>
 		<td><span class=\"subhighlight\">$I18N_imageFormat</span></td>
 		<td><span class=\"subhighlight\">$I18N_imageTransferType</span></td>
 		<td><span class=\"subhighlight\">$I18N_imageCompression</span></td>
 	</tr>
 	<tr>
-		<td><INPUT type=\"radio\" name=\"RB_imageFormat\" value=\"".IMGFORMAT_DD."\" checked></td>
-		<td>".$desc[IMGFORMAT_DD]."</td>
+		<td>".SEL_imageFormat."</td>
 		<td>".IMG_getImageFormatSelection("SEL_ddTrans",array(IMGTRANS_NC),IMGTRANS)."</td>
 		<td>".IMG_getImageFormatSelection("SEL_ddComp",array(IMGCOMPRESSION_GZ,IMGCOMPRESSION_BZ2,IMGCOMPRESSION_NONE),IMGCOMPRESSION)."</td>
 	</tr>
 
 	<tr>
-		<td></td>
 		<td colspan=\"3\"><span class=\"subhighlight\">$I18N_imageSource</span></td>
 	</tr>
 
 	<tr>
-		<td></td>
 		<td colspan=\"3\">
 			".FDISK_listDrivesAndPartitions($param, $first, "SEL_ddDrive")."
 		</td>
 	</tr>
 
 <!--	<tr>
-		<td><INPUT type=\"radio\" name=\"RB_imageFormat\" value=\"".IMGFORMAT_TAR."\"></td>
+		<td><INPUT type=\"radio\" name=\"SEL_imageFormat\" value=\"".IMGFORMAT_TAR."\"></td>
 		<td>".$desc[IMGFORMAT_TAR]."</td>
 		<td>".IMG_getImageFormatSelection("SEL_ddTrans",array(IMGTRANS_NC),IMGTRANS)."</td>
 		<td>".IMG_getImageFormatSelection("SEL_tarComp",array(IMGCOMPRESSION_GZ,IMGCOMPRESSION_BZ2,IMGCOMPRESSION_NONE),IMGCOMPRESSION)."</td>
@@ -654,27 +684,27 @@ function IMG_showCreateImage($client)
 		</td>
 	</tr>
 
-	<tr><td colspan=\"4\" align=\"center\"><hr></td></tr>
+	<tr><td colspan=\"3\" align=\"center\"><hr></td></tr>
  -->
 
 	<tr>
 		<td colspan=\"2\" align=\"left\">
 			<span class=\"subhighlight\">$I18N_transferPort</span>
 		</td>
-		<td colspan=\"2\" align=\"left\"></td>
+		<td colspan=\"1\" align=\"left\"></td>
 	</tr>
 	
 	<tr>
 		<td colspan=\"2\" align=\"left\">
 			<INPUT type=\"text\" name=\"ED_transferPort\" size=\"5\" maxlength=\"5\" value=\"12345\">
 		</td>
-		<td colspan=\"2\" align=\"left\"></td>
+		<td colspan=\"1\" align=\"left\"></td>
 	</tr>
 
-	<tr><td colspan=\"4\" align=\"left\"><span class=\"subhighlight\">$I18N_imageName</span></td></tr>
+	<tr><td colspan=\"3\" align=\"left\"><span class=\"subhighlight\">$I18N_imageName</span></td></tr>
 
 	<tr>
-		<td colspan=\"4\" align=\"left\">
+		<td colspan=\"3\" align=\"left\">
 			<nobr>
 				<INPUT type=\"text\" name=\"ED_imageName\" size=\"50\" maxlength=\"10240\">
 				<INPUT type=\"submit\" name=\"BUT_createImage\" value=\"$I18N_createImage\">

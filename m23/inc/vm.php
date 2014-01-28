@@ -6,7 +6,11 @@
 $*/
 
 
+define('CLOUDSTACK_CONFFILE', '/m23/inc/CloudStackConf.php');
 
+//Try to include the maybe existing CloudStack configuration file and class
+@include_once(CLOUDSTACK_CONFFILE);
+@include_once('/m23/inc/CloudStack/CloudStackClient.php');
 
 //Path to store the images and virtual machine files
 define('VM_IMAGE_DIR','/m23/vms/');
@@ -27,6 +31,7 @@ define('VM_NET_CONNECTED',1);
 define('VM_SW_NONE',0);
 define('VM_SW_VBOX',1);
 define('VM_SW_KVM',2);
+define('VM_SW_CLOUDSTACK',3);
 
 //Role of the client as VM host, guest or none of them
 define('VM_ROLE_NONE',0);
@@ -37,6 +42,827 @@ define('VM_ROLE_GUEST',2);
 define('VM_stepSelectHost',0);
 define('VM_stepCheckHost',1);
 define('VM_stepCreateGuest',2);
+define('VM_stepCreateCloudStackVM',3);
+
+
+
+
+
+/**
+**name VM_CloudStackDeleteClientVM($virtualMachineId, &$VMDeletionOK)
+**description Deletes a virtual machine for use with m23 in CloudStack, only a cloudstack admin can recover it
+**parameter virtualMachineId:  CloudStack ID of the virtual machine
+**parameter VMDeletionOK: True if VM was successfully deleted, false otherwise
+**returns ErrorMessages or Success messages, sets parameter VMDeletionOK (true if all went well, false if an error ocurred)
+**/	
+function VM_CloudStackDeleteClientVM($virtualMachineId, &$VMDeletionOK)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	
+	try
+	{
+		$csClient = VM_CloudStack_getObject();
+		$result = $csClient->destroyVirtualMachine($virtualMachineId);
+
+		if (property_exists($result, 'errorcode'))
+		{
+			$VMDeletionOK = FALSE;
+			return($I18N_csError."\n".$I18N_csErrorCode.$result->errorcode."\n".$I18N_csErrorText.$result->errortext);
+		}
+		else
+		{
+			$jobid = $result->jobid;
+			$jobstatus = 0;
+			$maxtrynumber = 150;
+			while ($jobstatus == 0)
+			{
+				sleep(1);
+				$jobresult = $csClient->queryAsyncJobResult($jobid);
+				$jobstatus = $jobresult->jobstatus;
+
+				if ($jobstatus == 2)
+				{
+					$VMDeletionOK = FALSE;
+					return($I18N_csError."\n".$I18N_csErrorText.$jobresult->jobresult);
+				}
+				
+				if (0 == ($maxtrynumber--))
+				{
+					$VMDeletionOK = FALSE;
+					return($I18N_csTimeout);
+				}
+			}
+
+			$VMDeletionOK = TRUE;
+			return($I18N_csJobSuccess);
+		}
+	}
+	catch(Exception $except)
+	{
+		$VMDeletionOK = FALSE;
+		return($I18N_csError."\n".$I18N_csErrorText.$except->getMessage());
+	}
+}
+
+
+
+
+
+/**
+**name VM_isCloudStackClient($clientName)
+**description Checks, if the client is run in CloudStack
+**returns true, when the client is run in CloudStack otherwise false.
+**/
+function VM_isCloudStackClient($clientName)
+{
+	//Check, if this is a virtual client
+	$vmSwHost = VM_getSWandHost($clientName);
+	if ($vmSwHost === false)
+		return(false);
+
+	//Check, if is is run in CloudStack
+	if (VM_SW_CLOUDSTACK == $vmSwHost['vmSoftware'])
+		return(true);
+	else
+		return(false);
+}
+
+
+
+
+
+/**
+**name VM_CloudStackCheckConstants($CLOUDSTACK_API_ENDPOINT, $CLOUDSTACK_API_KEY, $CLOUDSTACK_SECRET_KEY)
+**description Checks, if the given constant values are valid.
+**parameter CLOUDSTACK_API_ENDPOINT: The API entpoint.
+**parameter CLOUDSTACK_API_KEY: The API key.
+**parameter CLOUDSTACK_SECRET_KEY: The secret API key.
+**returns true, when the constant values are valid otherwise false.
+**/
+function VM_CloudStackCheckConstants($CLOUDSTACK_API_ENDPOINT, $CLOUDSTACK_API_KEY, $CLOUDSTACK_SECRET_KEY)
+{
+	if (empty($CLOUDSTACK_API_ENDPOINT) || empty($CLOUDSTACK_API_KEY) || empty($CLOUDSTACK_SECRET_KEY))
+		return(false);
+
+	$cloudstack = VM_CloudStack_getObject($CLOUDSTACK_API_ENDPOINT, $CLOUDSTACK_API_KEY, $CLOUDSTACK_SECRET_KEY);
+
+	return(is_string($cloudstack->listCapabilities()->capability->cloudstackversion));
+}
+
+
+
+
+
+/**
+**name VM_CloudStackConfigGUI()
+**description Shows a dialog for editing the CloudStack config file and uploading the m23 client ISO.
+**/
+function VM_CloudStackConfigGUI()
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	VM_CloudStackWriteConfFile();
+	@include(CLOUDSTACK_CONFFILE);
+	
+	echo(H_MESSAGEBOXPLACEHOLDER);
+
+	// Generate the elements for entering the CloudStack credentials
+	$CLOUDSTACK_API_ENDPOINT = HTML_input('ED_CLOUDSTACK_API_ENDPOINT', CLOUDSTACK_API_ENDPOINT, 85);
+	$CLOUDSTACK_API_KEY = HTML_input('ED_CLOUDSTACK_API_KEY', CLOUDSTACK_API_KEY, 85);
+	$CLOUDSTACK_SECRET_KEY = HTML_input('ED_CLOUDSTACK_SECRET_KEY', CLOUDSTACK_SECRET_KEY, 85);
+	$CLOUDSTACK_SERVICE_OFFERING_ID = HTML_input('ED_CLOUDSTACK_SERVICE_OFFERING_ID', CLOUDSTACK_SERVICE_OFFERING_ID, 85);
+	$CLOUDSTACK_NETWORKIDS = HTML_input('ED_CLOUDSTACK_NETWORKIDS', CLOUDSTACK_NETWORKIDS, 85);
+	$CLOUDSTACK_DISK_OFFERING_ID = HTML_input('ED_CLOUDSTACK_DISK_OFFERING_ID', CLOUDSTACK_DISK_OFFERING_ID, 85);
+	$CLOUDSTACK_TEMPLATE_ID = (defined('CLOUDSTACK_TEMPLATE_ID') ? constant('CLOUDSTACK_TEMPLATE_ID') : '');
+
+	// Check, if the given values build a valid configuration
+	$constantsValid = VM_CloudStackCheckConstants($CLOUDSTACK_API_ENDPOINT, $CLOUDSTACK_API_KEY, $CLOUDSTACK_SECRET_KEY);
+
+	// The config file is written, when the save button clicked or the test button is clicked and valid parameters are present
+	if (HTML_submit('BUT_save', $I18N_save) || ($constantsValid && (HTML_submitCheck('BUT_test'))))
+	{
+		VM_CloudStackWriteConfFile(true, $CLOUDSTACK_API_ENDPOINT, $CLOUDSTACK_API_KEY, $CLOUDSTACK_SECRET_KEY, $CLOUDSTACK_SERVICE_OFFERING_ID, $CLOUDSTACK_TEMPLATE_ID, $CLOUDSTACK_NETWORKIDS, $CLOUDSTACK_DISK_OFFERING_ID);
+		MSG_showInfo($I18N_CloudStack_credentials_saved);
+	}
+
+	// Show the result of the test
+	if (HTML_submit('BUT_test', $I18N_test_it))
+	{
+		if ($constantsValid)
+			MSG_showInfo($I18N_CloudStack_credentials_valid);
+		else
+			MSG_showError($I18N_CloudStack_credentials_invalid);
+	}
+
+	// Show the table with the elements
+	HTML_showSmallTitle($I18N_credentials);
+	HTML_showTableHeader(true);
+		HTML_showTableRow($I18N_CLOUDSTACK_API_ENDPOINT, ED_CLOUDSTACK_API_ENDPOINT);
+		HTML_showTableRow($I18N_CLOUDSTACK_API_KEY, ED_CLOUDSTACK_API_KEY);
+		HTML_showTableRow($I18N_CLOUDSTACK_SECRET_KEY, ED_CLOUDSTACK_SECRET_KEY);
+		HTML_showTableRow($I18N_CLOUDSTACK_SERVICE_OFFERING_ID, ED_CLOUDSTACK_SERVICE_OFFERING_ID);
+		HTML_showTableRow($I18N_CLOUDSTACK_NETWORKIDS, ED_CLOUDSTACK_NETWORKIDS);
+		HTML_showTableRow($I18N_CLOUDSTACK_DISK_OFFERING_ID, ED_CLOUDSTACK_DISK_OFFERING_ID);
+		HTML_showTableRow($I18N_CLOUDSTACK_TEMPLATE_ID, CLOUDSTACK_TEMPLATE_ID);
+		HTML_showTableRow($I18N_VMSoftware, CLOUDSTACK_HYPERVISOR);
+		HTML_showTableRow($I18N_CLOUDSTACK_OSTYPE_ID, CLOUDSTACK_OSTYPE_ID);
+		HTML_showTableRow('', BUT_save.' '.BUT_test);
+	HTML_showTableEnd(true);
+
+	// If the configuration is valid, the dialog for downloading the client ISO is shown
+	if ($constantsValid)
+	{
+		// Define the dialog elements
+		$CLOUDSTACK_BOOTISO_URL = HTML_input('ED_CLOUDSTACK_BOOTISO_URL', CLOUDSTACK_BOOTISO_URL, 85);
+		HTML_submitDefine('BUT_uploadISO', $I18N_upload);
+
+		// Choose the CloudStack zone and the the download URL
+		HTML_showSmallTitle($I18N_CloudStack_boot_ISO);
+		HTML_showTableHeader(true);
+			$zoneID = VM_GUIstepSelectHost(VM_SW_CLOUDSTACK);
+			echo('<tr><td colspan="3">'.ED_CLOUDSTACK_BOOTISO_URL.' '.BUT_uploadISO.'</td></tr>');
+		HTML_showTableEnd(true);
+
+		// Do the upload
+		if (HTML_submitCheck('BUT_uploadISO'))
+		{
+			// Download the ISO to the CloudStack zone
+			$msg = VM_CloudStackUploadIso(basename($CLOUDSTACK_BOOTISO_URL), $CLOUDSTACK_BOOTISO_URL, $zoneID, $isoUploadSuccess, $isoID);
+
+			// Check, if it was downloaded and registered sucessfully
+			if ($isoUploadSuccess)
+			{
+				// Show a success message
+				MSG_showInfo($msg);
+
+				// Write an updated config file with the new template ID ( = ID of the uploaded ISO)
+				VM_CloudStackWriteConfFile(true, $CLOUDSTACK_API_ENDPOINT, $CLOUDSTACK_API_KEY, $CLOUDSTACK_SECRET_KEY, $CLOUDSTACK_SERVICE_OFFERING_ID, $isoID, $CLOUDSTACK_NETWORKIDS, $CLOUDSTACK_DISK_OFFERING_ID);
+			}
+			else
+				MSG_showError($msg);
+		}
+	}
+
+}
+
+
+
+
+
+/**
+**name VM_CloudStackWriteConfFile($overwrite, $CLOUDSTACK_API_ENDPOINT, $CLOUDSTACK_API_KEY, $CLOUDSTACK_SECRET_KEY, $CLOUDSTACK_SERVICE_OFFERING_ID, $CLOUDSTACK_TEMPLATE_ID, $CLOUDSTACK_NETWORKIDS, $CLOUDSTACK_DISK_OFFERING_ID);
+**description Writes the CloudStack config file or writes a basic config file, if it does not exist.
+**parameter overwrite: Set to true, if the config file should be overwritten in any case.
+**parameter CLOUDSTACK_API_ENDPOINT: The API entpoint.
+**parameter CLOUDSTACK_API_KEY: The API key.
+**parameter CLOUDSTACK_SECRET_KEY: The secret API key.
+**parameter CLOUDSTACK_SERVICE_OFFERING_ID: The virtual CPU and RAM combination to use for a new VM.
+**parameter CLOUDSTACK_TEMPLATE_ID: The ID of the m23 client installation ISO.
+**parameter CLOUDSTACK_NETWORKIDS: The ID of the network to use.
+**parameter CLOUDSTACK_DISK_OFFERING_ID: The virtual hard disk type.
+**/
+function VM_CloudStackWriteConfFile($overwrite = false, $CLOUDSTACK_API_ENDPOINT = '', $CLOUDSTACK_API_KEY = '', $CLOUDSTACK_SECRET_KEY = '', $CLOUDSTACK_SERVICE_OFFERING_ID = '', $CLOUDSTACK_TEMPLATE_ID = '', $CLOUDSTACK_NETWORKIDS = '', $CLOUDSTACK_DISK_OFFERING_ID = '')
+{
+	if ($overwrite || (!VM_CloudStack_available()))
+	{
+		$contents = "<?php
+define('CLOUDSTACK_API_ENDPOINT', '$CLOUDSTACK_API_ENDPOINT');
+define('CLOUDSTACK_API_KEY', '$CLOUDSTACK_API_KEY');
+define('CLOUDSTACK_SECRET_KEY', '$CLOUDSTACK_SECRET_KEY');
+define('CLOUDSTACK_SERVICE_OFFERING_ID', '$CLOUDSTACK_SERVICE_OFFERING_ID');
+define('CLOUDSTACK_TEMPLATE_ID', '$CLOUDSTACK_TEMPLATE_ID');
+define('CLOUDSTACK_NETWORKIDS', '$CLOUDSTACK_NETWORKIDS');
+define('CLOUDSTACK_DISK_OFFERING_ID', '$CLOUDSTACK_DISK_OFFERING_ID');
+define('CLOUDSTACK_HYPERVISOR', 'KVM');
+define('CLOUDSTACK_BOOTISO_URL', 'http://switch.dl.sourceforge.net/project/m23/CloudStack/m23client-amd64.iso');
+define('CLOUDSTACK_BOOTISO_MD5', '10df9ec3dedc8f2a6095d9e23dd3bddf');
+define('CLOUDSTACK_OSTYPE_ID', '133');
+define('CLOUDSTACK_X2GO_PORTNUMBER', '22');
+?>";
+
+		SERVER_putFileContents(CLOUDSTACK_CONFFILE, $contents, '555', 'www-data', 'www-data');
+	}
+}
+
+
+
+
+
+
+/**
+**name VM_CloudStackUploadIso($isoName, $isoUrl, $zoneID, &$isoUploadSuccess, &$isoID)
+**description Uploads and registers a new bootable ISO file into cloudstack from a given website
+**parameter isoName: the name you choose for the ISO file 
+**parameter isoUrl: the url from where you want cloudstack to download the ISO file
+**parameter zoneID: The ID of the CloudStack zone.
+**parameter isoUploadSuccess: is set to True if action succeeded, false otherwise
+**parameter isoID: is set to Cloudstack-Iso-ID if action succeeded, otherwise not set
+**returns textmessage about result (errormessage or success message) and sets isoUploadSuccess to True if action succeeded, false otherwise, sets isoID to Iso-ID
+**/
+function VM_CloudStackUploadIso($isoName, $isoUrl, $zoneID, &$isoUploadSuccess, &$isoID)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	$cloudstack = VM_CloudStack_getObject();
+
+	try
+	{
+		$result = $cloudstack->registerIso($isoName.date('Ymd-H-i-s'), $isoName.date('Ymd-H-i-s'), $isoUrl, $zoneID, "", "", "", "", "", CLOUDSTACK_OSTYPE_ID);
+
+		if (property_exists($result, 'errorcode'))
+		{
+			$isoUploadSuccess = FALSE;
+			return($I18N_csError."\n".$I18N_csErrorCode.$result->errorcode."\n".$I18N_csErrorText.$result->errortext);
+		}
+		else
+		{
+			if ($result->count != 1)
+			{
+				$isoUploadSuccess = FALSE;
+				return ($I18N_csError);
+			}
+
+			$isolist = $result->iso;
+			$isolisting = $isolist[0];
+
+			$isready = $isolisting->isready;
+			$status = $isolisting->status;
+			$iso_id = $isolisting->id;
+
+// 			print("is ready: ".$isready.", iso-id: ".$iso_id.", job-status: ".$status);
+
+			$maxtrynumber = 120;
+			while ($status !== "Successfully Installed" && $isready !== '1')
+			{
+				sleep(2);
+
+				$isos = $cloudstack->listIsos();
+
+				foreach ($isos as $iso) 
+				{
+					if ($iso->id == $iso_id)
+					{
+					$isready = $iso->isready;
+					$status = $iso->status;
+					}
+				}
+
+				if (0 == ($maxtrynumber--))
+				{
+					$isoUploadSuccess = FALSE;
+					return($I18N_csTimeout);
+				}
+			}
+
+			$isoUploadSuccess = TRUE;
+			$isoID = $iso_id;
+			return($I18N_csJobSuccess);
+		}
+	}
+	catch(Exception $except)
+	{
+		$isoUploadSuccess = FALSE;
+		return($I18N_csError."\n".$I18N_csErrorText.$except->getMessage());
+	}
+}
+
+
+
+
+
+/**
+**name VM_CloudStackEnablePortForwarding($virtualMachineId, &$pFSuccess)
+**description creates a port forwarding rule for a virtual machine, with private port and public port being the same
+**parameter virtualMachineId: the cloudstack ID of the virtual machine to which the rule shall apply
+**parameter pFSuccess: is set to true, if the rule was created
+**returns textmessage about result (errormessage or success message) and sets pFSuccess to True if action succeeded, false otherwise
+**/
+function VM_CloudStackEnablePortForwarding($virtualMachineId, &$pFSuccess)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	$cloudstack = VM_CloudStack_getObject();
+
+	$publicIPAddressList = $cloudstack->listPublicIpAddresses();
+	foreach ($publicIPAddressList->publicipaddress as $publicIPaddressListing)
+	{
+		if ($publicIPaddressListing->associatednetworkid == CLOUDSTACK_NETWORKIDS)
+		{
+			$publicIPAddressID = $publicIPaddressListing->id;
+			break;
+		}
+	}
+
+	try
+	{
+		$result = $cloudstack->createPortForwardingRule($publicIPAddressID, CLOUDSTACK_X2GO_PORTNUMBER, 'TCP', CLOUDSTACK_X2GO_PORTNUMBER, $virtualMachineId);
+		if (property_exists($result, 'errorcode'))
+		{
+			$pFSuccess = FALSE;
+			return($I18N_csError."\n".$I18N_csErrorCode.$result->errorcode."\n".$I18N_csErrorText.$result->errortext);
+		}
+	}
+	catch(Exception $except)
+	{
+		$pFSuccess = FALSE;
+		return($I18N_csError."\n".$I18N_csErrorText.$except->getMessage());
+	}
+
+	$pFSuccess = TRUE;
+	return($I18N_csJobSuccess);
+}
+
+
+
+
+
+/**
+**name VM_CloudStackSendSetVisualURL()
+**description Sends the visual URL (current client ip:22) to the m23 server, if run under CloudStack.
+**/
+function VM_CloudStackSendSetVisualURL()
+{
+	echo(MSR_getm23clientIDCMD('?').'
+	serverGateway=$(/sbin/ip route | awk \'/default/ { print $3 }\')
+	
+	wget -T5 -t0 http://$serverGateway/latest/public-ipv4 -O /tmp/clientIP
+	if [ $? -eq 0 ]
+	then
+		clientIP=$(cat /tmp/clientIP)
+		url="$clientIP:22"
+
+		#Send the visual connection URL to the m23 server
+		wget -T5 -t0 --post-data="url=$url&clientName='.CLIENT_getClientName().'&type=MSR_VM_setVisualURL" "https://'.getServerIP().'/postMessage.php?$idvar" --no-check-certificate -O "/tmp/MSR_VM_setVisualURL-$clientIP.log"
+	fi
+');
+}
+
+
+
+
+
+/**
+**name VM_CloudStackStartVM($clientname, &$startVMOK)
+**description starts a virtual machine in CloudStack
+**parameter clientname: CloudStack name of the instance / name of the m23 client.
+**parameter startVMOK: true if started successfully or already running, false otherwise
+**returns textmessage with result of start or error message
+**/
+function VM_CloudStackStartVM($clientname, &$startVMOK)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	$clientID = VM_CloudStackClientName2ClientID($clientname);
+
+	try
+	{
+		$csClient = VM_CloudStack_getObject();
+		$result = $csClient->startVirtualMachine($clientID);
+		if (property_exists($result, 'errorcode'))
+		{
+			$startVMOK = FALSE;
+			return($I18N_csError."\n".$I18N_csErrorCode.$result->errorcode."\n".$I18N_csErrorText.$result->errortext);
+		}
+		else
+		{
+			$jobid = $result->jobid;
+			$jobstatus = 0;
+			$maxtrynumber = 180;
+			while ($jobstatus == 0) 
+			{
+				sleep(2);
+				$jobresult = $csClient->queryAsyncJobResult($jobid);
+				$jobstatus = $jobresult->jobstatus;
+				
+				if ($jobstatus == 2)
+				{
+					$startVMOK = FALSE;
+// 					return($I18N_csError."\n".$I18N_csErrorText.$jobresult->jobresult);
+				}
+
+				if (0 == ($maxtrynumber--))
+				{
+					$startVMOK = FALSE;
+					return($I18N_csTimeout);
+				}
+			}
+
+			$startVMOK = TRUE;
+			return($I18N_csJobSuccess);
+		}
+	}
+	catch(Exception $except)
+	{
+		$startVMOK = FALSE;
+		return($I18N_csError."\n".$I18N_csErrorText.$except->getMessage());
+	}
+}
+
+
+
+
+
+/**
+**name VM_CloudStackStopVM($clientname, &$stopVMOK)
+**description stops a virtual machine in CloudStack
+**parameter clientname: CloudStack name of the instance / name of the m23 client.
+**parameter stopVMOK: true if stopped successfully or already stopped, false otherwise
+**returns textmessage with result of stop or error message
+**/
+function VM_CloudStackStopVM($clientname, &$stopVMOK)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	$clientID = VM_CloudStackClientName2ClientID($clientname);
+
+	try
+	{
+		$csClient = VM_CloudStack_getObject();
+		$result = $csClient->stopVirtualMachine($clientID);
+		if (property_exists($result, 'errorcode'))
+		{
+			$stopVMOK = FALSE;
+			return($I18N_csError."\n".$I18N_csErrorCode.$result->errorcode."\n".$I18N_csErrorText.$result->errortext);
+		}
+		else
+		{
+			$jobid = $result->jobid;
+			$jobstatus = 0;
+			$maxtrynumber = 180;
+			while ($jobstatus == 0)
+			{
+				sleep(2);
+				$jobresult = $csClient->queryAsyncJobResult($jobid);
+				$jobstatus = $jobresult->jobstatus;
+				
+				if ($jobstatus == 2)
+				{
+					$stopVMOK = FALSE;
+					return($I18N_csError."\n".$I18N_csErrorText.$jobresult->jobresult);
+				}
+				
+				if (0 == ($maxtrynumber--))
+				{
+					$stopVMOK = FALSE;
+					return($I18N_csTimeout);
+				}
+			}
+
+			$stopVMOK = TRUE;
+			return($I18N_csJobSuccess);
+		}
+	}
+	catch(Exception $except)
+	{
+		$stopVMOK = FALSE;
+// 		return($I18N_csError."\n".$I18N_csErrorText.$except->getMessage());
+	}
+}
+
+
+
+
+
+/**
+**name VM_CloudStackGetVMStatus($clientname)
+**description gets the status of a virtual machine
+**parameter clientname: CloudStack name of the instance / name of the m23 client.
+**returns textmessage with machine status (like 'Running' or 'Stopped') or FALSE if no status could be retrieved (e.g. if machine doesn't exist)
+**/
+function VM_CloudStackGetVMStatus($clientname)
+{
+	$clientID = VM_CloudStackClientName2ClientID($clientname);
+	$cloudstack = VM_CloudStack_getObject();
+	$vms = $cloudstack->listVirtualMachines();
+	foreach ($vms as $vm)
+	{
+		if ($vm->id == $clientID)
+		{
+			switch($vm->state)
+			{
+				case 'Running':
+					return(VM_STATE_ON);
+				case 'Stopped':
+					return(VM_STATE_OFF);
+			}
+		}
+	}
+	return(FALSE);
+}
+
+
+
+
+
+/**
+**name VM_CloudStackClientName2ClientID($clientname)
+**description returns the Cloudstack-ID of a client with the given client host name
+**parameter clientname: Host name of the virtual machine
+**returns Cloudstack-Client-ID if the clientname can be retrieved, False otherwise 
+**/
+function VM_CloudStackClientName2ClientID($clientname)
+{
+	$cloudstack = VM_CloudStack_getObject();
+	$vms = $cloudstack->listVirtualMachines();
+	foreach ($vms as $vm)
+	{
+		if ($vm->name == $clientname)
+			return($vm->id);
+	}
+	return(FALSE);
+}
+
+
+
+
+
+/**
+**name VM_CloudStackNetBootActivate($clientname, $activate, &$nBASuccess)
+**description attaches/exchanges or removes (if any) a network boot ISO to or from the client
+**parameter clientname: CloudStack name of the instance / name of the m23 client.
+**parameter activate: TRUE for attaching ISO, FALSE for removing
+**parameter nBASuccess: is set to True if action succeeded, false otherwise
+**returns textmessage about result (errormessage or success message) and sets nBASuccess to True if action succeeded, false otherwise
+**/
+function VM_CloudStackNetBootActivate($clientname, $activate, &$nBASuccess)
+{
+	$clientID = VM_CloudStackClientName2ClientID($clientname);
+
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	$cloudstack = VM_CloudStack_getObject();
+	try
+	{
+		if ($activate === TRUE)
+			$result = $cloudstack->attachIso(CLOUDSTACK_TEMPLATE_ID, $clientID);
+		else
+			$result = $cloudstack->detachIso($clientID);
+
+		if (property_exists($result, 'errorcode'))
+		{
+			$nBASuccess = FALSE;
+			return($I18N_csError."\n".$I18N_csErrorCode.$result->errorcode."\n".$I18N_csErrorText.$result->errortext);
+		}
+		else
+		{
+			$jobid = $result->jobid;
+			$jobstatus = 0;
+			$maxtrynumber = 30;
+			while ($jobstatus == 0) 
+			{
+				sleep(2);
+				$jobresult = $cloudstack->queryAsyncJobResult($jobid);
+				$jobstatus = $jobresult->jobstatus;
+
+				if ($jobstatus == 2)
+				{
+					$nBASuccess = FALSE;
+// 					return($I18N_csError."\n".$I18N_csErrorText.$jobresult->jobresult);
+				}
+
+				if (0 == ($maxtrynumber--))
+				{
+					$nBASuccess = FALSE;
+					return($I18N_csTimeout);
+				}
+			}
+
+			$nBASuccess = TRUE;
+			return($I18N_csJobSuccess);
+		}
+	}
+	catch(Exception $except)
+	{
+		$nBASuccess = FALSE;
+		return($I18N_csError."\n".$I18N_csErrorText.$except->getMessage());
+	}
+}
+
+
+
+
+
+/**
+**name VM_CloudStackCreateVM($name, $zoneID, &$VMCreationOK)
+**description Creates a virtual machine for use with m23 in CloudStack
+**parameter name: Name of the virtual machine, can contain ASCII letters 'a' through 'z', the digits '0' through '9', and the hyphen ('-'), must be between 1 and 63 characters long, and can't start or end with "-" and can't start with digit
+**parameter zoneID: zoneID for CloudStack
+**/
+function VM_CloudStackCreateVM($name, $zoneID, &$VMCreationOK)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	$userData = base64_encode('m23server='.getServerIP());
+
+	try
+	{
+		$csClient = VM_CloudStack_getObject();
+		$result = $csClient->deployVirtualMachine(CLOUDSTACK_SERVICE_OFFERING_ID, CLOUDSTACK_TEMPLATE_ID, $zoneID, "", CLOUDSTACK_DISK_OFFERING_ID, $name, "", "", "", CLOUDSTACK_HYPERVISOR, "", $name, CLOUDSTACK_NETWORKIDS, "", "", "", $userData, "FALSE");
+		
+		if (property_exists($result, 'errorcode'))
+		{
+			$VMCreationOK = FALSE;
+			return($I18N_csError."\n".$I18N_csErrorCode.$result->errorcode."\n".$I18N_csErrorText.$result->errortext);
+		}
+		else
+		{
+			$jobid = $result->jobid;
+			$jobstatus = 0;
+			$maxtrynumber = 30;
+
+			while ($jobstatus == 0) 
+			{
+				sleep(1);
+				$jobresult = $csClient->queryAsyncJobResult($jobid);
+				$jobstatus = $jobresult->jobstatus;
+
+				if ($jobstatus == 2)
+				{
+					$VMCreationOK = FALSE;
+					return($I18N_csError."\n".$I18N_csErrorText.$jobresult->jobresult);
+				}
+
+				if (0 == ($maxtrynumber--))
+				{
+					$VMCreationOK = FALSE;
+					return($I18N_csTimeout);
+				}
+			}
+
+			$pFSuccess = '';
+			$virtualMachineId = VM_CloudStackClientName2ClientID($name);
+			$pFError = VM_CloudStackEnablePortForwarding($virtualMachineId, $pFSuccess);
+
+			if ($pFSuccess)
+			{
+				$VMCreationOK = TRUE;
+				return($I18N_csVMCreatedSuccessfully);
+			}
+			else
+			{
+				$VMCreationOK = FALSE;
+				return($pFError);
+			}
+		}
+	}
+	catch(Exception $except)
+	{
+		$VMCreationOK = FALSE;
+		return($I18N_csError."\n".$I18N_csErrorText.$except->getMessage());
+	}
+}
+
+
+
+
+
+/**
+**name VM_CloudStack_getServerIP()
+**description Gets the external m23 server IP if the m23 server is run as CloudStack VM.
+**returns External m23 server IP.
+**/
+function VM_CloudStack_getServerIP()
+{
+	return(HELPER_getContentFromURL('http://'.getServerGateway().'/latest/public-ipv4'));
+}
+
+
+
+
+
+/**
+**name VM_GUIstepCreateCloudStackVM()
+**description Shows a dialog to create a new VM in CloudStack.
+**/
+function VM_GUIstepCreateCloudStackVM()
+{
+	//Check if this part should be shown in the current step
+	if ($_SESSION['VM_createStep'] != VM_stepCreateCloudStackVM)
+		return(false);
+
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	//Input lines for the VM name, its MAC and the RAM and harddisk sizes
+	$_SESSION['VM_name'] = HTML_input("ED_VMName");
+
+	//Button for creating the VM
+	if (HTML_submit("BUT_createVM", $I18N_create))
+	{
+		$VMCReationMessage = VM_CloudStackCreateVM($_SESSION['VM_name'] /*name*/, $_SESSION['VM_host'] /*zone*/, $VMCreationOK);
+	}
+	else
+		$VMCreationOK = $VMCReationMessage = false;
+
+	//Show the dialog elements for creating the VM
+	echo("	<tr><td colspan=\"2\"><hr></td></tr>
+			<tr><td>$I18N_VMName</td><td align=\"right\">".ED_VMName."</td></tr>\n");
+
+	if (($VMCReationMessage === false) || ($VMCreationOK === false))
+		//Show the button if the creation failed or hasn't been started
+		echo("<tr><td colspan=\"2\" align=\"center\">".BUT_createVM."</td></tr>\n");
+	else
+		//Show the link for adding the VM client to the m23 management
+		echo("<tr><td colspan=\"2\" align=\"center\"><a href=\"index.php?page=addclient&VM_client=".$_SESSION['VM_name']."&VM_host=".$_SESSION['VM_host']."&VM_dhcpBootimage=gpxe&VM_software=".VM_stepCreateCloudStackVM."\">&gt; &gt; &gt; $I18N_add_client &lt; &lt; &lt;</a></td></tr>\n");
+
+	//Check if there is a message from the VM creation tool
+	if ($VMCReationMessage != false)
+	{
+		echo("<tr><td colspan=\"2\" align=\"center\">");
+		//Decide if the message should be shown as an info or error message
+		if ($VMCreationOK)
+			MSG_showInfo(nl2br($VMCReationMessage));
+		else
+			MSG_showError(nl2br($VMCReationMessage));
+		echo("</td></tr>\n");
+	}
+}
+
+
+
+
+
+/**
+**name VM_CloudStack_available()
+**description Checks, if the CloudStack configuration file is included and contains the needed constants.
+**returns true, if the CloudStack are present.
+**/
+function VM_CloudStack_available()
+{
+	return(defined('CLOUDSTACK_SECRET_KEY') && defined('CLOUDSTACK_API_ENDPOINT') && defined('CLOUDSTACK_API_KEY'));
+}
+
+
+
+
+
+/**
+**name VM_CloudStack_getObject($CLOUDSTACK_API_ENDPOINT = false, $CLOUDSTACK_API_KEY = false, $CLOUDSTACK_SECRET_KEY = false)
+**description Gets a new CloudStackClient object.
+**parameter CLOUDSTACK_API_ENDPOINT: The API entpoint.
+**parameter CLOUDSTACK_API_KEY: The API key.
+**parameter CLOUDSTACK_SECRET_KEY: The secret API key.
+**returns New CloudStackClient object.
+**/
+function VM_CloudStack_getObject($CLOUDSTACK_API_ENDPOINT = false, $CLOUDSTACK_API_KEY = false, $CLOUDSTACK_SECRET_KEY = false)
+{
+	if ($CLOUDSTACK_API_ENDPOINT == false)
+	{
+		$CLOUDSTACK_API_ENDPOINT = CLOUDSTACK_API_ENDPOINT;
+		$CLOUDSTACK_API_KEY = CLOUDSTACK_API_KEY;
+		$CLOUDSTACK_SECRET_KEY = CLOUDSTACK_SECRET_KEY;
+	}
+
+	return(new CloudStackClient($CLOUDSTACK_API_ENDPOINT, $CLOUDSTACK_API_KEY, $CLOUDSTACK_SECRET_KEY));
+}
+
+
+
+
+
+/**
+**name VM_CloudStack_getVersion()
+**description Gets the version of CloudStack.
+**returns CloudStack version.
+**/
+function VM_CloudStack_getVersion()
+{
+	$cloudstack = VM_CloudStack_getObject();
+	return($cloudstack->listCapabilities()->capability->cloudstackversion);
+}
 
 
 
@@ -114,13 +940,20 @@ function VM_shutdownAndDisableNetboot($type, $vmName)
 **parameter visual: If set to true, the VM should be run in visual mode otherwise in headless mode.
 **returns BASH code to reboot an VM and to disable network booting.
 **/
-function VM_rebootChangeBootDevice($type, $visual, $vmName, $bootdevide)
+function VM_rebootChangeBootDevice($type, $visual, $vmName, $bootdevice)
 {
 	switch ($type)
 	{
 		case VM_SW_VBOX:
 			$visual = ($visual ? 0 : 1);
-			$cmd = "/m23/vms/vbox/bin/reboot $vmName $visual $bootdevide";
+			$cmd = "/m23/vms/vbox/bin/reboot $vmName $visual $bootdevice";
+		break;
+
+		case VM_SW_CLOUDSTACK:
+			$retMsg = VM_CloudStackNetBootActivate($vmName, $bootdevice == 'net', $nBASuccess);
+			VM_CloudStackStopVM($vmName, $startVMOK1);
+			VM_CloudStackStartVM($vmName, $startVMOK2);
+			return($nBASuccess && $startVMOK1 && $startVMOK2);
 		break;
 	}
 	return($cmd);
@@ -415,6 +1248,11 @@ function VM_stopVM($type, $vmName)
 		case VM_SW_VBOX:
 			$cmd = "VBoxManage controlvm \"$vmName\" poweroff";
 		break;
+
+		case VM_SW_CLOUDSTACK:
+			VM_CloudStackStopVM($vmName, $startVMOK);
+			return($startVMOK);
+		break;
 	}
 
 	VM_stopVMCommandFile($vmName);
@@ -518,8 +1356,9 @@ function VM_webAction($vmName, $action)
 		default:
 			return(false);
 	}
-
-	$out = CLIENT_executeOnClientOrIP($info['vmHost'],"VM_startStopPause","$cmd","m23-vbox",$runInScreen);
+	
+	if (!is_bool($cmd))
+		$out = CLIENT_executeOnClientOrIP($info['vmHost'],"VM_startStopPause","$cmd","m23-vbox",$runInScreen);
 // 	print("<pre>$out</pre>");
 	return(true);
 }
@@ -541,11 +1380,19 @@ function VM_delete($vmName)
 	//Exit if it's not a VM
 	if ($info == false)
 		return(false);
-
-	$cmd = VM_delVMCMD($info['vmSoftware'], $vmName);
-
-	CLIENT_executeOnClientOrIP($info['vmHost'],"VM_deleteVM","$cmd","m23-vbox",true);
-	return(true);
+	
+	switch ($info['vmSoftware'])
+	{
+		case VM_SW_CLOUDSTACK:
+			$virtualMachineId = VM_CloudStackClientName2ClientID($vmName);
+			VM_CloudStackDeleteClientVM($virtualMachineId, $VMDeletionOK);
+			return($VMDeletionOK);
+		default:
+			$cmd = VM_delVMCMD($info['vmSoftware'], $vmName);
+		
+			CLIENT_executeOnClientOrIP($info['vmHost'],"VM_deleteVM","$cmd","m23-vbox",true);
+			return(true);
+	}
 }
 
 
@@ -565,6 +1412,8 @@ function VM_vmSwNr2Name($vmType)
 	{
 		case VM_SW_VBOX:
 			return($I18N_VMSwVBox);
+		case VM_SW_CLOUDSTACK:
+			return($I18N_VMSwCloudStack);
 		default:
 			return(false);
 	}
@@ -594,28 +1443,43 @@ function VM_getHTMLStatusBlock($clientName)
 
 		//convert the switch status to readable information
 		$readableStatus = VM_convertSwitchStatusInfo($vmInfo['state']);
-
-		//Show general information about the VM client
-		$vmInfoHTML = "<tr><td colspan=\"2\"><span class=\"subhighlight\">$I18N_virtualisation</span></td></tr>
-		<tr><td>$I18N_vmHost:</td><td>$vmSwHost[vmHost]</td></tr>
-		<tr><td>$I18N_VMSoftware:</td><td>".VM_vmSwNr2Name($vmSwHost[vmSoftware])."</td></tr>
-		<tr><td>$I18N_status:</td><td>$readableStatus[text] $readableStatus[imgTag]</td></tr>";
-
-		//Show the visual connection URL and password if the VM client is on
-		if ($vmInfo['state'] == VM_STATE_ON)
+		
+		
+		switch ($vmSwHost['vmSoftware'])
 		{
-			$hostDisplay = explode(':',$vmSwHost['vmVisualURL']);
-			$vmInfoHTML .= "<tr><td>$I18N_VMVisualURL:</td><td>$vmSwHost[vmVisualURL]</td></tr>
-			<tr><td>$I18N_VMVisualPassword:</td><td>$vmSwHost[vmVisualPassword]</td></tr>
-			<tr><td>TightVNC Java Viewer:</td><td><a target=\"_blank\" href=\"/java-vnc/vnc-viewer.php?host=$hostDisplay[0]&pass=$vmSwHost[vmVisualPassword]&display=$hostDisplay[1]\">$I18N_startVNCApplet</a></td></tr>";
-		}
+			case VM_SW_VBOX:
+				//Show general information about the VM client
+				$vmInfoHTML = "<tr><td colspan=\"2\"><span class=\"subhighlight\">$I18N_virtualisation</span></td></tr>
+				<tr><td>$I18N_vmHost:</td><td>$vmSwHost[vmHost]</td></tr>
+				<tr><td>$I18N_VMSoftware:</td><td>".VM_vmSwNr2Name($vmSwHost['vmSoftware'])."</td></tr>
+				<tr><td>$I18N_status:</td><td>$readableStatus[text] $readableStatus[imgTag]</td></tr>";
 
-		//Run thru the network cards and add their infos
-		for ($nicNr = 1; isset($vmInfo["nic$nicNr"]); $nicNr++)
-		{
-			//Get the info blick for the current selected NIC
-			$nic = $vmInfo["nic$nicNr"];
-			$vmInfoHTML .= "<tr><td>$I18N_VMNetworkCard $nicNr:</td><td>$nic[netDev], $nic[speed]</td></tr>";
+				//Show the visual connection URL and password if the VM client is on
+				if ($vmInfo['state'] == VM_STATE_ON)
+				{
+					$hostDisplay = explode(':',$vmSwHost['vmVisualURL']);
+					$vmInfoHTML .= "<tr><td>$I18N_VMVisualURL:</td><td>$vmSwHost[vmVisualURL]</td></tr>
+					<tr><td>$I18N_VMVisualPassword:</td><td>$vmSwHost[vmVisualPassword]</td></tr>
+					<tr><td>TightVNC Java Viewer:</td><td><a target=\"_blank\" href=\"/java-vnc/vnc-viewer.php?host=$hostDisplay[0]&pass=$vmSwHost[vmVisualPassword]&display=$hostDisplay[1]\">$I18N_startVNCApplet</a></td></tr>";
+				}
+		
+				//Run thru the network cards and add their infos
+				for ($nicNr = 1; isset($vmInfo["nic$nicNr"]); $nicNr++)
+				{
+					//Get the info blick for the current selected NIC
+					$nic = $vmInfo["nic$nicNr"];
+					$vmInfoHTML .= "<tr><td>$I18N_VMNetworkCard $nicNr:</td><td>$nic[netDev], $nic[speed]</td></tr>";
+				}
+			break;
+
+			case VM_SW_CLOUDSTACK:
+				$hostDisplay = explode(':',$vmSwHost['vmVisualURL']);
+				//Show general information about the VM client
+				$vmInfoHTML = "<tr><td colspan=\"2\"><span class=\"subhighlight\">$I18N_virtualisation</span></td></tr>
+				<tr><td>$I18N_VMSoftware:</td><td>".VM_vmSwNr2Name($vmSwHost['vmSoftware'])."</td></tr>
+				<tr><td>$I18N_status:</td><td>$readableStatus[text] $readableStatus[imgTag]</td></tr>
+				<tr><td>$I18N_SSHx2goIP:</td><td>$hostDisplay[0]</td></tr>
+				<tr><td>$I18N_SSHx2goPort:</td><td>$hostDisplay[1]</td></tr>";
 		}
 	}
 
@@ -735,11 +1599,14 @@ function VM_getStatus($clientName)
 
 	//Create the status command string and execute it on the VM host
 	$cmd = VM_status($info['vmSoftware'], $clientName);
-
-// 	print("<pre>$cmd</cmd>");
-
-	$ret = CLIENT_executeOnClientOrIP($info['vmHost'],"VM_status","$cmd","m23-vbox",false);
-	return(VM_parseStatus($info['vmSoftware'],$ret));
+	
+	if (!is_array($cmd))
+	{
+		$ret = CLIENT_executeOnClientOrIP($info['vmHost'],"VM_status","$cmd","m23-vbox",false);
+		return(VM_parseStatus($info['vmSoftware'],$ret));
+	}
+	else
+		return($cmd);
 }
 
 
@@ -752,11 +1619,12 @@ function VM_getStatus($clientName)
 **/
 function VM_GUIstepCreateGuest()
 {
+	//Check if this part should be shown in the current step
+	if ($_SESSION['VM_createStep'] != VM_stepCreateGuest)
+		return(false);
+
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
-	//Check if this part should be shown in the current step
-	if ($_SESSION['VM_createStep'] < VM_stepCreateGuest)
-		return(false);
 
 	//Get all active network devices that can be used for bridging
 	$activeDevices = CLIENT_getActiveNetDevices($_SESSION['VM_host']);
@@ -842,49 +1710,89 @@ function VM_GUIstepCheckHost()
 	if ($_SESSION['VM_createStep'] < VM_stepCheckHost)
 		return(false);
 
-	//Check if the client is running and offer wake-on-lan if not
-	if (CLIENT_isrunning($_SESSION['VM_host']))
+	$title = VM_vmSwNr2Name($_SESSION['VM_software']);
+	HTML_showSmallTitle($title);
+
+	switch($_SESSION['VM_software'])
 	{
-		//Get current disk and memory usage
-		$freeDiskSpace = (CLIENT_getCurrentFreeSpaceInDir($_SESSION['VM_host'], "/m23/vms") / 1024);
-		$memoryUsage = CLIENT_getCurrentMemoryUsage($_SESSION['VM_host']);
+		case VM_SW_VBOX:
+			//Check if the client is running and offer wake-on-lan if not
+			if (CLIENT_isrunning($_SESSION['VM_host']))
+			{
+				//Get current disk and memory usage
+				$freeDiskSpace = (CLIENT_getCurrentFreeSpaceInDir($_SESSION['VM_host'], "/m23/vms") / 1024);
+				$memoryUsage = CLIENT_getCurrentMemoryUsage($_SESSION['VM_host']);
+				
+				$cpuInfoHTML = HWINFO_getCPU($_SESSION['VM_host']);
 		
-		$cpuInfoHTML = HWINFO_getCPU($_SESSION['VM_host']);
-
-		$VBoxVer = VM_getVBoxVersion($_SESSION['VM_host']);
-
-		//convert the switch status to readable information
-		$readableStatus = VM_convertSwitchStatusInfo(VM_STATE_ON);
-
-		echo("
-			<tr><td colspan=\"2\"><hr></td></tr>
-			<tr><td>$readableStatus[text]</td><td align=\"right\">$readableStatus[imgTag]</td></tr>
-			<tr><td>$I18N_vboxVersion</td><td align=\"right\">$VBoxVer</td></tr>
-			<tr><td colspan=\"2\"><hr></td></tr>
-			<tr><td colspan=\"2\"><span class=\"title\">$I18N_hardware_info</span></td></tr>
-			<tr><td>CPU</td><td>$cpuInfoHTML</td></tr>
-			<tr><td>$I18N_freeDiskSpace</td><td align=\"right\">".number_format($freeDiskSpace, 0, ",",".")." MB</td></tr>
-			<tr><td>$I18N_totalMemory</td><td align=\"right\">".number_format($memoryUsage['all'] / 1024, 0, ",",".")." MB</td></tr>
-			<tr><td>$I18N_freeMemory</td><td align=\"right\">".number_format($memoryUsage['free'] / 1024, 0, ",",".")." MB</td></tr>
-			");
+				$VBoxVer = VM_getVBoxVersion($_SESSION['VM_host']);
 		
-		//If the client is accessible go forward to the next step
-		$_SESSION['VM_createStep'] = VM_stepCreateGuest;
-	}
-	else
-	{
-		if (HTML_submit("BUT_wol",$I18N_wakeUp))
-			CLIENT_wol($_SESSION['VM_host']);
+				//convert the switch status to readable information
+				$readableStatus = VM_convertSwitchStatusInfo(VM_STATE_ON);
+		
+				echo("
+					<tr><td colspan=\"2\"><hr></td></tr>
+					<tr><td>$readableStatus[text]</td><td align=\"right\">$readableStatus[imgTag]</td></tr>
+					<tr><td>$I18N_vboxVersion</td><td align=\"right\">$VBoxVer</td></tr>
+					<tr><td colspan=\"2\"><hr></td></tr>
+					<tr><td colspan=\"2\"><span class=\"title\">$I18N_hardware_info</span></td></tr>
+					<tr><td>CPU</td><td>$cpuInfoHTML</td></tr>
+					<tr><td>$I18N_freeDiskSpace</td><td align=\"right\">".I18N_number_format($freeDiskSpace)." MB</td></tr>
+					<tr><td>$I18N_totalMemory</td><td align=\"right\">".I18N_number_format($memoryUsage['all'] / 1024)." MB</td></tr>
+					<tr><td>$I18N_freeMemory</td><td align=\"right\">".I18N_number_format($memoryUsage['free'] / 1024)." MB</td></tr>
+					");
+				
+				//If the client is accessible go forward to the next step
+				$_SESSION['VM_createStep'] = VM_stepCreateGuest;
+			}
+			else
+			{
+				if (HTML_submit("BUT_wol",$I18N_wakeUp))
+					CLIENT_wol($_SESSION['VM_host']);
+		
+				HTML_submit("BUT_refresh",$I18N_refresh);
+		
+				//convert the switch status to readable information
+				$readableStatus = VM_convertSwitchStatusInfo(VM_STATE_OFF);
+		
+				echo("
+					<tr><td colspan=\"2\"><hr></td></tr>
+					<tr><td>$readableStatus[text]</td><td align=\"right\">$readableStatus[imgTag]</td></tr>
+					<tr><td>".BUT_wol."</td><td>".BUT_refresh."</td></tr>");
+			}
+			break;
 
-		HTML_submit("BUT_refresh",$I18N_refresh);
+		case VM_SW_CLOUDSTACK:
+				$readableStatus = VM_convertSwitchStatusInfo(VM_STATE_ON);
+				echo("
+				<tr><td>$readableStatus[text]</td><td align=\"right\">$readableStatus[imgTag]</td></tr>
+				<tr><td>$I18N_CloudStackVersion</td><td align=\"right\">".VM_CloudStack_getVersion()."</td></tr>
+				");
 
-		//convert the switch status to readable information
-		$readableStatus = VM_convertSwitchStatusInfo(VM_STATE_OFF);
+				//Get information about the accounts
+				$info = VM_CloudStack_getObject()->listAccounts();
+				$info = $info[0];
+				$info = get_object_vars($info);
 
-		echo("
-			<tr><td colspan=\"2\"><hr></td></tr>
-			<tr><td>$readableStatus[text]</td><td align=\"right\">$readableStatus[imgTag]</td></tr>
-			<tr><td>".BUT_wol."</td><td>".BUT_refresh."</td></tr>");
+				//Build array with 
+				$typeI18N['vm'] = $I18N_CloudStack_vm;
+				$typeI18N['ip'] = $I18N_CloudStack_ip;
+				$typeI18N['network'] = $I18N_CloudStack_network;
+				$typeI18N['volume'] = $I18N_CloudStack_volume;
+				$typeI18N['snapshot'] = $I18N_CloudStack_snapshot;
+				$typeI18N['project'] = $I18N_CloudStack_project;
+	
+				foreach ($typeI18N as $type => $i18n)
+				{
+					$total = str_replace('Unlimited', '&infin;', $info[$type.'total']);
+					$limit = str_replace('Unlimited', '&infin;', $info[$type.'limit']);
+					$available = str_replace('Unlimited', '&infin;', $info[$type.'available']);
+					echo("<tr><td>$i18n</td><td align=\"right\">$total/$limit</td></tr>\n");
+				}
+
+				//If the client is accessible go forward to the next step
+				$_SESSION['VM_createStep'] = VM_stepCreateCloudStackVM;
+			break;
 	}
 }
 
@@ -896,17 +1804,23 @@ function VM_GUIstepCheckHost()
 **name VM_GUIstepSelectHost($VM_software)
 **description Shows a dialog part for choosing the VM host.
 **parameter VM_software: Code number of the virtualisation software.
+**returns Gives back the VM host or false if there is no host for the choosen virtualisation solution.
 **/
 function VM_GUIstepSelectHost($VM_software)
 {
+	if ((VM_SW_CLOUDSTACK == $VM_software) && !VM_CloudStack_available())
+		return(false);
+
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	$SEL_vmHost = "SEL_vmHost$VM_software";
+	$BUT_selectHost = "BUT_selectHost$VM_software";
 
 	//Preset values for making screenshots
 	if ($_GET['screenshot'] == 1)
-	{
-		$_POST['SEL_vmHost'] = "localhost";
-	}
+		$_POST[$SEL_vmHost] = 'localhost';
 
+	$title = VM_vmSwNr2Name($VM_software);
 
 	//Make sure the creation step is set in the session variable
 	if (!isset($_SESSION['VM_createStep']))
@@ -914,21 +1828,29 @@ function VM_GUIstepSelectHost($VM_software)
 
 	//Get the list of all VM hosts with the chosen VM software
 	$vmHosts = VM_getAllVMHosts($VM_software);
-	$vmHost = HTML_selection("SEL_vmHost",$vmHosts,SELTYPE_selection,true,$_SESSION['VM_host']);
 
-	if (HTML_submit("BUT_selectHost",$I18N_select))
+	//Return if there are no hosts for the choosen virtualisation solution
+	if (count($vmHosts) === 0)
+		return(false);
+
+	$vmHost = HTML_selection($SEL_vmHost, $vmHosts, SELTYPE_selection, true, $_SESSION['VM_host']);
+
+	if (HTML_submit($BUT_selectHost, $I18N_select))
 	{
 		$_SESSION['VM_host'] = $vmHost;
 		$_SESSION['VM_createStep'] = VM_stepCheckHost;
 		$_SESSION['VM_software'] = $VM_software;
 	}
 
+	HTML_showSmallTitle($title);
 	//Draw it
 	echo('
 	<tr>
-		<td>'.$I18N_vmHost.' '.SEL_vmHost.'</td>
-		<td align="right">'.BUT_selectHost.'</td>
+		<td>'.$I18N_vmHost.' '.constant($SEL_vmHost).'</td>
+		<td align="right">'.constant($BUT_selectHost).'</td>
 	</tr>');
+	
+	return($vmHost);
 }
 
 
@@ -944,13 +1866,37 @@ function VM_GUIstepSelectHost($VM_software)
 function VM_getAllVMHosts($VM_software)
 {
 	CHECK_FW(CC_vmsoftware, $VM_software);
-	$res = db_query("SELECT `client` FROM `clients` WHERE (`vmSoftware` & $VM_software ) = $VM_software AND (`vmRole` & ".VM_ROLE_HOST.") = ".VM_ROLE_HOST); //FW ok
+	
+	switch ($VM_software)
+	{
+		case VM_SW_VBOX:
+		case VM_SW_KVM:
+			$res = db_query("SELECT `client` FROM `clients` WHERE (`vmSoftware` & $VM_software ) = $VM_software AND (`vmRole` & ".VM_ROLE_HOST.") = ".VM_ROLE_HOST); //FW ok
 
-	$out = array();
-	while ($row = mysql_fetch_row($res))
-		$out[$row[0]] = $row[0];
+			$out = array();
+			while ($row = mysql_fetch_row($res))
+				$out[$row[0]] = $row[0];
 
-	return($out);
+			return($out);
+
+		case VM_SW_CLOUDSTACK:
+			try
+			{
+				$cloudstack = VM_CloudStack_getObject();
+	
+				$zones = $cloudstack->listZones();
+	
+				$out = array();
+				foreach ($zones as $zone)
+					$out[$zone->id] = $zone->name;
+	
+				return($out);
+			}
+			catch(Exception $except)
+			{
+				return(array());
+			}
+	}
 }
 
 
@@ -971,7 +1917,13 @@ function VM_setVisualURL($VMguest,$url)
 
 	//e.g. $url = "m23vmclient:1" => $hostScreen[0] = "m23vmclient", $hostScreen[1] = "1"
 	$hostScreen = explode(":",$url);
-	$data['vmVisualURL'] = "$info[vmHostIP]:$hostScreen[1]";
+	
+	if (isset($info['vmHostIP']{1}))
+		$host = $info['vmHostIP'];
+	else
+		$host = $hostScreen[0];
+	
+	$data['vmVisualURL'] = "$host:$hostScreen[1]";
 	return(CLIENT_setAllParams($VMguest,$data));
 }
 
@@ -1233,6 +2185,11 @@ function VM_startVM($type, $vmName, $vnc)
 			else
 				$cmd = "VBoxHeadless -s \"$vmName\"\n";
 		break;
+
+		case VM_SW_CLOUDSTACK:
+			VM_CloudStackStartVM($vmName, $startVMOK);
+			return($startVMOK);
+		break;
 	}
 
 	VM_startVMCommandFile($vmName, $cmd);
@@ -1278,7 +2235,7 @@ function VM_stopVMCommandFile($vmName)
 **description Gets the current status of a virtual machine.
 **parameter type: VM_SW_VBOX for VirtualBox OSE
 **parameter vmName: Name of the VM.
-**returns BASH code to get the current status of a virtual machine.
+**returns BASH code to get the current status of a virtual machine or array containing the status of the VM.
 **/
 function VM_status($type, $vmName)
 {
@@ -1287,6 +2244,10 @@ function VM_status($type, $vmName)
 		case VM_SW_VBOX:
 			$cmd = "VBoxManage showvminfo \"$vmName\" | grep \":\" | tr -s [':blank:'] 2>&1 | cat";
 			break;
+
+		case VM_SW_CLOUDSTACK:
+			$out['state'] = VM_CloudStackGetVMStatus($vmName);
+			return($out);
 	}
 	return($cmd);
 }
@@ -1379,6 +2340,7 @@ function VM_parseVBOXNic($param)
 	}
 	return($out);
 }
+
 
 
 
