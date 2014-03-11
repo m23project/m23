@@ -32,31 +32,33 @@ createBackupList()
 	#Create the backup list
 	backupList="/tmp/m23Backup$$.list"
 	rm $backupList 2> /dev/null
-	
+
 	#Add symlinks in the tftp directory (these are the client dependend links to the Etherboot boot image)
 		find /m23/tftp/ -type l >> $backupList
-	
+
 	#Add complete PXE client settings
 		echo "/m23/tftp/pxelinux.cfg/" >> $backupList
-	
+
 	#Add the package status files of the clients
 		echo "/m23/var/cache/clients/" >> $backupList
-	
+
 	#Add the bills an other data of m23Shared
 		echo "/m23/var/m23shared/" >> $backupList
-	
+
 	#Add the http password
 		echo "/m23/etc/" >> $backupList
-	
+
 	#Add the logs (if any)
 		echo "/m23/log/" >> $backupList
-	
+
 	#Add the RAS tunnel settings
 		ls /m23/bin/m23RemoteAdministrationServiceOpenTunnel-* >> $backupList
-		
+
 	if [ -f /m23/inc/CloudStackConf.php ]
+	then
 		echo "/m23/inc/CloudStackConf.php" >> $backupList
-	
+	fi
+
 	#Add config files of phpMyAdmin and phpldapadmin
 		echo "/m23/data+scripts/m23admin/phpMyAdmin/config.inc.php
 /m23/data+scripts/m23admin/phpldapadmin/config.php" >> $backupList

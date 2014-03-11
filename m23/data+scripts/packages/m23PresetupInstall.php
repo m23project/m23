@@ -51,5 +51,5 @@ function run($id)
 		CIR_waitForNextJob();
 	else
 		executeNextWork();
-};
-?>	
+}
+?>

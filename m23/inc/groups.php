@@ -628,18 +628,19 @@ function GRP_showGeneralInfo($groupName)
 **name GRP_showRenDialog()
 **description shows a dialog to rename a group
 **/
-function GRP_showRenDialog()
+function GRP_showRenDialog($groupname)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 	echo("
-<table align=\"center\"><tr><td><div class=\"subtable_shadow\">
-<table class=\"subtable\" align=\"center\">
+	<table align=\"center\"><tr><td><div class=\"subtable_shadow\">
+	<table class=\"subtable\" align=\"center\">
 	<tr>
 		<td>
 			<span class=\"subhighlight\">$I18N_newName</span><br>
 			<INPUT type=\"text\" name=\"ED_newgroupname\" size=\"40\" maxlength=\"255\"><br>
 			<INPUT type=\"submit\" name=\"BUT_ren\" value=\"$I18N_rename\">
+			
 		</td>
 	</tr>
 	</table></div></td><tr></table>	
