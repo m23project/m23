@@ -21,6 +21,8 @@
 
 	SERVER_programmStatus($dhcpDaemon,$dhcpPkg,$dhcpScript,$I18N_descrDhcp,SERVER_dhcpInfo());
 	SERVER_programmStatus("slapd","slapd","/etc/init.d/slapd",$I18N_descrOpenLDAP,SERVER_LDAPInfo());
+	SERVER_programmStatus('opentracker', 'opentracker-installer', '/m23/bin/btServer.php', $I18N_descrBTServer, BT_status(true, true), false);
+	
 	HTML_showTableEnd();
 
 // 	echo("<br><span class=\"title\">$I18N_helperApplications</span>");

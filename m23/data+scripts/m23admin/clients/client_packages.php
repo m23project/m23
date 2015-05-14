@@ -18,10 +18,10 @@ if (strlen($distr)==0)
 
 
 	if (!(empty($_GET['BUT_search'])))
-		{
-			$key=$_GET['ED_search'];
-			CAPTURE_captureAll(0,"clientpackages: show mozilla",true);
-		}
+	{
+		$key=$_GET['ED_search'];
+		CAPTURE_captureAll(0,"clientpackages: show mozilla",true);
+	}
 	else
 		$key=$_GET['HID_key'];
 

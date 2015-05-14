@@ -18,6 +18,10 @@ function DISTR_baseInstall($lang,$id)
 	$clientParams=CLIENT_getAskingParams();
 	$clientOptions=CLIENT_getAllAskingOptions();
 
+	// Generate a new CFDiskIO object
+	$client = CLIENT_getClientName();
+	$CFDiskIOO = new CFDiskIO($client);
+
 	CIR_writeClientID($clientParams);
 
 	CIR_detectSCSI();

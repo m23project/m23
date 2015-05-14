@@ -8,6 +8,70 @@ class CChecks extends CMessageManager
 
 
 /**
+**name CChecks::checkSizeInMB($size)
+**description Checks if a size in MB is valid.
+**parameter size: Size to check.
+**returns true, if the size is valid (numeric) otherwise false.
+**/
+	public function checkSizeInMB($size)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_sizeinmb, $size, $I18N_sizeInMBInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkDiskDefinedSize($size)
+**description Checks if a size (in MB) for the defined disk is valid.
+**parameter size: Size to check.
+**returns true, if the size is valid (numeric) otherwise false.
+**/
+	public function checkDiskDefinedSize($size)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_sizeinmb, $size, $I18N_definedDiskSizeInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkFdiskAdjustmentUpperToleranceIdentical($size)
+**description Checks if a size (may contain g/G for GB, m/M for MB or % for percentual amount of a given value) for the upper tolerance is valid.
+**parameter size: Size to check.
+**returns true, if the size is valid otherwise false.
+**/
+	public function checkFdiskAdjustmentUpperToleranceIdentical($size)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_sizewithGBorMBporPercent, $size, $I18N_fdiskUpperToleranceIdenticalInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkFdiskAdjustmentLowerToleranceIdentical($size)
+**description Checks if a size (may contain g/G for GB, m/M for MB or % for percentual amount of a given value) for the lower tolerance is valid.
+**parameter size: Size to check.
+**returns true, if the size is valid otherwise false.
+**/
+	public function checkFdiskAdjustmentLowerToleranceIdentical($size)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_sizewithGBorMBporPercent, $size, $I18N_fdiskLowerToleranceIdenticalInvalid));
+	}
+
+
+
+
+
+/**
 **name CChecks::checkSwapPart($swapPart)
 **description Checks if the device name for the swap partition is valid.
 **parameter swapPart: Swap partition to check.
@@ -24,6 +88,22 @@ class CChecks extends CMessageManager
 
 
 /**
+**name CChecks::checkEFIPart($EFIPart)
+**description Checks if the device name for the EFI partition is valid.
+**parameter EFIPart: EFI partition to check.
+**returns true, if the EFI partition name is valid otherwise false.
+**/
+	public function checkEFIPart($EFIPart)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_deviceNamepartition, $EFIPart, "$I18N_EFIPartInvalid ($EFIPart)"));
+	}
+
+
+
+
+
+/**
 **name CChecks::checkInstPart($instPart)
 **description Checks if the device name for the installation partition is valid.
 **parameter instPart: Installation partition to check.
@@ -33,6 +113,54 @@ class CChecks extends CMessageManager
 	{
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 		return($this->genericCHECK_FW(CC_deviceNamepartition, $instPart, $I18N_instPartInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkMountDev($dev)
+**description Checks if the device name for mounting a disk or partition is valid.
+**parameter dev: Device name for disk or partition to check.
+**returns true, if the device name for mounting a disk or partition is valid otherwise false.
+**/
+	public function checkMountDev($dev)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_deviceNameOrPartitionOrRaid, $dev, $I18N_deviceNameForMountingInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkMountPoint($mountpoint)
+**description Checks if the input value is a valid mountpoint.
+**parameter mountpoint: Mountpoint to check.
+**returns The input value is a valid mountpoint or false on an error.
+**/
+	public function checkMountPoint($mountpoint)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_mountPoint, $mountpoint, $I18N_mountPointInvalid));
+	}
+
+
+
+
+
+/**
+**name CChecks::checkFdiskAdjustmentSpecifiedDev($dev)
+**description Checks if the device name for the disk of the defined client is valid.
+**parameter dev: Device name to check.
+**returns true, if the installation partition name is valid otherwise false.
+**/
+	public function checkFdiskAdjustmentSpecifiedDev($dev)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		return($this->genericCHECK_FW(CC_deviceNameDrive, $dev, $I18N_fdiskAdjustmentSpecifiedDevInvalid));
 	}
 
 
@@ -621,7 +749,7 @@ class CChecks extends CMessageManager
 **/
 	public function checkBootType($bootType)
 	{
-		if ((CClient::BOOTTYPE_PXE == $bootType) || (CClient::BOOTTYPE_NOBOOT == $bootType) || (CClient::BOOTTYPE_ETHERBOOT == $bootType) || (CClient::BOOTTYPE_GPXE == $bootType))
+		if ((CClient::BOOTTYPE_PXE == $bootType) || (CClient::BOOTTYPE_NOBOOT == $bootType) || (CClient::BOOTTYPE_ETHERBOOT == $bootType) || (CClient::BOOTTYPE_GPXE == $bootType) || (CClient::BOOTTYPE_GRUB2EFIX64 == $bootType))
 			return(true);
 		else
 		{

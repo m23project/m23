@@ -19,6 +19,10 @@ function DISTR_baseInstall($lang,$id)
 	$clientParams=CLIENT_getAskingParams();
 	$clientOptions=CLIENT_getAllAskingOptions();
 
+	// Generate a new CFDiskIO object
+	$client = CLIENT_getClientName();
+	$CFDiskIOO = new CFDiskIO($client);
+
 	//Get the name of the sources list
 	$sourceName = $clientOptions['packagesource'];
 
@@ -28,13 +32,15 @@ function DISTR_baseInstall($lang,$id)
 
 	CLCFG_activateDMA();
 
-	CLCFG_mountRootDir($clientOptions[instPart]);
+	CLCFG_mountRootDir($clientOptions['instPart'], 'root', $CFDiskIOO);
 
 	CIR_writeClientID($clientParams);
 
 	CIR_WorkaroundForMissingModulesDep();
 
-	FDISK_genManualFstab(explodeAssoc("###",$clientOptions['fstab']),"/mnt/root", $sourceName);
+	$CFDiskIOO->genManualFstab('/mnt/root');
+
+	
 	/* =====> */ MSR_statusBarIncCommand(2);
 
 	if (!PKG_isReconfiguredWithExtraDistr($id))
@@ -103,6 +109,10 @@ function DISTR_afterChrootInstall($lang,$pkgid)
 	$clientParams = CLIENT_getAskingParams();
 	$clientOptions = CLIENT_getAllAskingOptions();
 
+	// Generate a new CFDiskIO object
+	$client = CLIENT_getClientName();
+	$CFDiskIOO = new CFDiskIO($client);
+
 	//Get the name of the sources list
 	$sourceName = $clientOptions['packagesource'];
 
@@ -126,7 +136,8 @@ cd /tmp
 	CIR_WorkaroundForMissingModulesDep();
 
 	//edit /etc/fstab
-	FDISK_genManualFstab(explodeAssoc("###",$clientOptions['fstab']),'',$sourceName);
+	$CFDiskIOO->genManualFstab('');
+
 	/* =====> */ MSR_statusBarIncCommand(2);
 
 	CLCFG_dialogInfoBox($I18N_client_installation,$I18N_client_status, $I18N_setup_network);
@@ -161,6 +172,8 @@ cd /tmp
 	apt-get --force-yes -y -f install
 
 	apt-get --force-yes -y install wget mdadm
+
+	apt-get --force-yes -y dist-upgrade
 
 	");
 
@@ -197,10 +210,12 @@ cd /tmp
 	/* =====> */ MSR_statusBarIncCommand(5);
 
 	//generate a new lilo.conf & fstab to make lilo install
-	CLCFG_genFstab($bootDevice, $rootDevice, $clientOptions['bootloader']);
+	CLCFG_genFstab($bootDevice, $rootDevice, $clientOptions['bootloader'], $CFDiskIOO);
 
 	//edit /etc/fstab again
-	FDISK_genManualFstab(explodeAssoc("###",$clientOptions['fstab']),'',$sourceName);
+	$CFDiskIOO->genManualFstab('');
+
+	CLCFG_efi($CFDiskIOO);
 
 	CLCFG_dialogInfoBox($I18N_client_installation,$I18N_client_status,$I18N_setup_bootmanager);
 

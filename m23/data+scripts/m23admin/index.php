@@ -123,7 +123,6 @@ include("/m23/inc/backup.php");
 include("/m23/inc/assimilate.php");
 include("/m23/inc/raidlvm.php");
 include("/m23/inc/packageBuilder.php");
-include("/m23/inc/scredit.php");
 include("/m23/inc/vm.php");
 include("/m23/inc/cron.php");
 include("/m23/inc/version.php");
@@ -132,6 +131,11 @@ include("/m23/inc/mail.php");
 include("/m23/inc/serverBackup.php");
 include("/m23/inc/halfSister.php");
 include("/m23/inc/m23RemoteAdministrationService.php");
+include('/m23/inc/bittorrent.php');
+include_once('/m23/inc/CFDiskIO.php');
+include_once('/m23/inc/CFDiskBasic.php');
+include_once('/m23/inc/CFDiskGUI.php');
+include("/m23/inc/CScredit.php");
 
 CAPTURE_load();
 
@@ -441,15 +445,12 @@ switch($m23_page)
 	<meta http-equiv="expires" content="0">
 	<link rel="stylesheet" type="text/css" href="css/<?echo($cssFile);?>">
 	<link rel="stylesheet" type="text/css" href="css/jQuery.css">
-	<link rel="stylesheet" type="text/css" href="/js/syntaxhighlighter_3.0.83/styles/shCoreDefault.css">
 	<script src="packages/codepress/codepress.js" type="text/javascript"></script>
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="/js/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
-	<script type="text/javascript" src="/js/syntaxhighlighter_3.0.83/scripts/shBrushBash.js"></script>
 </head>
 
- <body bgcolor="#596374">
+ <body bgcolor="#596374" onload="if (typeof setEFIStartEndPositionIfEFIBootPartitionTypeIsSet == 'function') { setEFIStartEndPositionIfEFIBootPartitionTypeIsSet(); }">
 <?
 	HTML_esel();
 	HTML_questionnaire($_GET['disableQuestionnaire'] == 1);

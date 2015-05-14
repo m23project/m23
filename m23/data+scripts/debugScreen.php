@@ -10,6 +10,7 @@ include_once('/m23/inc/client.php');
 include_once('/m23/inc/remotevar.php');
 include_once('/m23/inc/db.php');
 include_once('/m23/inc/capture.php');
+include_once('/m23/inc/helper.php');
 
 dbConnect();
 

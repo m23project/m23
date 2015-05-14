@@ -180,9 +180,18 @@ function FDISK_showFdiskCombinedGUIFunctions()
 
 
 
-	//Get the installation drive (e.g. for creating new partitions in free space)
-	$instDrive = FDISK_fdiskSessionInstallDrive(HTML_selection("SEL_instDrive", HELPER_array2AssociativeArray(FDISK_getAllDrives(FDISK_fdiskSessionParam())), SELTYPE_selection));
-
+	$allDrives = FDISK_getAllDrives(FDISK_fdiskSessionParam());
+	if ($allDrives !== NULL)
+	{
+		//Get the installation drive (e.g. for creating new partitions in free space)
+		$instDrive = FDISK_fdiskSessionInstallDrive(HTML_selection("SEL_instDrive", HELPER_array2AssociativeArray($allDrives), SELTYPE_selection));
+	}
+	else
+	{
+		MSG_showError($I18N_errorNoHardDiskDetected);
+		exit(1);
+	}
+	
 
 
 	//Format the choosen partition

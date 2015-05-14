@@ -1,0 +1,8 @@
+<?
+
+class CFDiskPartitionFormat extends CFDiskBasic
+{
+
+}
+
+?>

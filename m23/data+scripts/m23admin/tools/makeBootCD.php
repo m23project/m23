@@ -21,7 +21,7 @@
 	echo("
 	<tr>
 		<td>
-			<span class=\"titlesmal\">$I18N_used_burner</span><br><br>".BURN_listBurners(&$burner)."<input type=\"submit\" name=\"BUT_select\" value=\"$I18N_select\"><br>
+			<span class=\"titlesmal\">$I18N_used_burner</span><br><br>".BURN_listBurners($burner)."<input type=\"submit\" name=\"BUT_select\" value=\"$I18N_select\"><br>
 		</td>
 	</tr>");
 	HTML_showTableEnd();

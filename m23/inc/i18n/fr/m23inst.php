@@ -60,4 +60,9 @@ $I18N_installing_packages='Installation des paquets';
 $I18N_deinstalling_packages='Désinstallation des paquets';
 $I18N_updating_packages='Mise à jour des paquets';
 $I18N_updating_package_information='Mise à jour des informations sur les paquets';
+
+//14.2
+$I18N_installing_unityfull_1404='Installation du bureau Unity 3D complet';
+$I18N_installingLXDELubuntuCore='Installation minimale du bureau LXDE/Lubuntu';
+$I18N_installingLXDELubuntu='Installation complète du bureau LXDE/Lubuntu';
 ?>

@@ -60,4 +60,9 @@ $I18N_installing_packages='Installing packages';
 $I18N_deinstalling_packages='Uninstalling packages';
 $I18N_updating_packages='Updating packages';
 $I18N_updating_package_information='Updating package information';
+
+//14.2
+$I18N_installing_unityfull_1404='Installing the full Unity 3D';
+$I18N_installingLXDELubuntuCore='Installing minimal LXDE/Lubuntu desktop';
+$I18N_installingLXDELubuntu='Installing full LXDE/Lubuntu desktop';
 ?>

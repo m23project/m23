@@ -5,9 +5,18 @@ Der in m23 integrierte $I18N_packageBuilder ist ein komfortables Werkzeug, um di
 Die Pakete werden aus Archivdateien im <a href="http://de.wikipedia.org/wiki/Tar">tar</a>-Format mit <a href="http://de.wikipedia.org/wiki/Bzip2">bzip2</a>- oder <a href="http://de.wikipedia.org/wiki/Gzip">gzip</a>-Kompression erzeugt. Darin enthaltene Benutzer- und Zugriffsrechte von Dateien und Verzeichnissen werden dabei ohne Neukompression beibehalten. Die erzeugten Debian-Pakete sind unabhängig von einer Distribution und einer Distributionsversion und können somit auf Debian-, Ubuntu- oder Kubuntu-Clients verwendet werden.
 
 Die Erstellung des Paketes läuft folgendermaßen ab:
-<ol><li>Ablegen der tar-Datei in das Verzeichnis /m23/data+scripts/extraDebs/. Dies kann z.B. durch Hochladen mittels <a href="http://de.wikipedia.org/wiki/Secure_Copy">scp</a> geschehen oder durch den integrierten Datei-Upload <i>"$I18N_uploadedTarFileForCenversion"</i>.</li>
+<ol><li>Ablegen der tar-Datei in das Verzeichnis <i>"/m23/data+scripts/extraDebs/"</i>. Dies kann z.B. durch Hochladen mittels <a href="http://de.wikipedia.org/wiki/Secure_Copy">scp</a> geschehen oder durch den integrierten Datei-Upload <i>"$I18N_uploadedTarFileForCenversion"</i>.</li>
 <li><!-- V11.3 begin -->Nach dem Ablegen der Datei klicken Sie auf <i>"$I18N_refresh"</i>, damit diese in der Liste <i>"$I18N_fileList"</i> erscheinen.<!-- V11.3 end --></li>
 <li>Wählen Sie die Datei aus, die sie umwandeln möchten und klicken neben dem Dateinamen auf <i>"$I18N_convertToDeb"</i>. Die Aktualisierung der Paketindexdateien erfolgt automatisch, so daß die Paketquelle sofort verwendet werden kann.</li></ol>
 
 <u>Hinweis</u>
 Natürlich können Sie auch bereits fertige Debian-Pakete im Paket-Verzeichnis ablegen. Um den Paketindex zu aktualisieren klicken Sie bitte auf <i>"$I18N_recreatePackageIndex"</i>.
+
+<!-- V14.3 begin --><u>BitTorrent</u>
+Wenn Sie große Dateien auf viele Rechner verteilen und dabei den m23-Server entlasten möchten, können Sie die <a href="http://de.wikipedia.org/wiki/BitTorrent">BitTorrent</a>-Funktion verwenden. Mit BitTorrent tauschen die m23-Clients bereits heruntergeladene Teile von Dateien untereinander aus, sodaß der m23-Server (im optimalen Fall) die Dateien nur ein einziges Mal überträgt.
+
+Um Bittorrent zu verwenden, gehen Sie wie folgt vor:
+
+<ol><li>Kopieren Sie die Datei(en), die Sie verteilen möchten, auf den m23-Server in das Verzeichnis <i>"/m23/data+scripts/extraDebs/"</i></li>
+<li>Klicken Sie auf den Button <i>"$I18N_createTorrent"</i> nach den betreffenden Dateinamen</li>
+<li>Verwenden Sie in Ihren eigenen Skripten die m23-Funktion <code>BT_dlFile($torrentDateiName, $ZielverzeichnisAufClient)</code></li></ol><!-- V14.3 end -->

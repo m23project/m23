@@ -31,11 +31,12 @@
 	if (!empty($_GET['BUT_startUpdate']))
 		{
 			$arr['type']=$_GET['RB_updateType'];
-			
+
 			$pkgparams=implodeAssoc("?#?",$arr);
-			
+
 			PKG_addJob($client,"m23update",PKG_getSpecialPackagePriority("m23update",$distr),$pkgparams);
-			
+			CLIENT_startInstall($client);
+
 			MSG_showInfo($I18N_updateJobHasBeenStored);
 		};
 
@@ -60,6 +61,7 @@
 
 
 <input type="hidden" name="client" value="<?PHP echo($client);?>">
+<input type="hidden" name="id" value="<?PHP echo($id);?>">
 <input type="submit" name="BUT_previewUpdate" value="<?PHP echo($I18N_updatePreview);?>">&nbsp;
 <input type="submit" name="BUT_startUpdate" value="<?PHP echo($I18N_startUpdate);?>">
 

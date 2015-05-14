@@ -183,11 +183,16 @@ function dbClose()
 **/
 function getServerIP()
 {
-	if ($_SESSION['m23Shared'])
+	if (isset($_SESSION['m23Shared']))
 		return(m23SHARED_getServerIP());
 	else
 	{
-		$ip = exec("sudo grep address /etc/network/interfaces | cut -d's' -f3 | cut -d' ' -f2 | head -1");
+		if (!HELPER_isExecutedInCLI())
+			$addSudo = 'sudo';
+		else
+			$addSudo = '';
+
+		$ip = exec("$addSudo grep address /etc/network/interfaces | cut -d's' -f3 | cut -d' ' -f2 | head -1");
 
 		if (empty($ip) && VM_CloudStack_available())
 			$ip = VM_CloudStack_getServerIP();

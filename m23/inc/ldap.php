@@ -129,6 +129,10 @@ function LDAP_addPosix($ldapServer,$account,$forename,$familyname,$pwd,$uid,$gid
 	if (empty($familyname))
 		$familyname="-";
 
+	$server=LDAP_loadServer($ldapServer);
+	$ds=LDAP_connectServer($ldapServer);
+
+	// Build the array for creating a new user entry
 	$out=array();
 	$out[uid][0]=$account;
 	$out[gn][0]=$forename;
@@ -151,14 +155,35 @@ function LDAP_addPosix($ldapServer,$account,$forename,$familyname,$pwd,$uid,$gid
 	$out[objectClass][3]="shadowAccount";
 	$out[objectClass][4]="inetOrgPerson";
 
-	$server=LDAP_loadServer($ldapServer);
+	// Add the new user
 	$dn="uid=$account,ou=people,$server[base]";
+	$ret=ldap_add($ds , $dn, $out);
+
+	// Create a group name by the GID
+	$groupname = "gid$gid";
+
+	// Build the array for creating a new group entry
+	$out=array();
+	$out[cn][0] = $groupname;
+	$out[gidNumber][0] = $gid;
+	$out[memberUid] = $account;
+	$out[objectClass][0]="top";
+	$out[objectClass][1]="posixGroup";
+
+	// Try to create the new group
+	$dn="cn=$groupname,ou=Group,$server[base]";
+	$ret = @ldap_add($ds, $dn, $out);
+	if (false === $ret)
+	{
+		// The group seems to exist => Add the uid to 
+		$miniOut=array();
+		$miniOut[memberUid] = $uid;
+		$ret = @ldap_mod_add($ds, $dn, $miniOut);
+	}
+
 	LDAP_addNewUserID($uid);
 	LDAP_addNewGroupID($gid);
 
-	$ds=LDAP_connectServer($ldapServer);
-
-	$ret=ldap_add($ds , $dn, $out );
 	ldap_close($ds);
 
 	return($ret);

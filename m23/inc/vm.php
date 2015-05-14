@@ -22,6 +22,7 @@ define('VM_STATE_ON',2);
 
 //Types of virtual network cards
 define('VM_NETTYPE_HOSTINTERFACE',0);
+define('VM_NETTYPE_BRIDGEDINTERFACE',1);
 
 //Status of a virtual network cards
 define('VM_NET_DISCONNECTED',0);
@@ -43,6 +44,37 @@ define('VM_stepSelectHost',0);
 define('VM_stepCheckHost',1);
 define('VM_stepCreateGuest',2);
 define('VM_stepCreateCloudStackVM',3);
+
+
+
+
+
+/**
+**name VM_captureVMScreenAsMovie($type, $vmName, $enable, $movieFile, $width, $height, $rate, $fps)
+**description Enables/disables capturing the screen of a VM to a movie file.
+**parameter type: VM_SW_VBOX for VirtualBox OSE
+**parameter vmname: Name of the VM.
+**parameter enable: true for enabling the capturing, false for disabling.
+**parameter movieFile: File to store the capturing in.
+**parameter width: Width of the movie.
+**parameter height: Height of the movie.
+**parameter rate: Bitrate of the movie.
+**parameter fps: Frames per second
+**returns BASH code for enabling/disabling the capturing of the VM's screens to a movie file.
+**/
+function VM_captureVMWindowAsMovie($type, $vmName, $enable, $movieFile, $width, $height, $rate, $fps)
+{
+	switch ($type)
+	{
+		case VM_SW_VBOX:
+			if ($enable)
+				return("VBoxManage modifyvm \"$vmName\" --vcpenabled on --vcpscreens 0 --vcpfile \"$movieFile\" --vcpwidth $width --vcpheight $height --vcprate $rate --vcpfps $fps\n");
+			else
+				return("VBoxManage modifyvm \"$vmName\" --vcpenabled off\n");
+		break;
+	}
+	return($cmd);
+}
 
 
 
@@ -252,7 +284,7 @@ function VM_CloudStackConfigGUI()
 **name VM_CloudStackWriteConfFile($overwrite, $CLOUDSTACK_API_ENDPOINT, $CLOUDSTACK_API_KEY, $CLOUDSTACK_SECRET_KEY, $CLOUDSTACK_SERVICE_OFFERING_ID, $CLOUDSTACK_TEMPLATE_ID, $CLOUDSTACK_NETWORKIDS, $CLOUDSTACK_DISK_OFFERING_ID);
 **description Writes the CloudStack config file or writes a basic config file, if it does not exist.
 **parameter overwrite: Set to true, if the config file should be overwritten in any case.
-**parameter CLOUDSTACK_API_ENDPOINT: The API entpoint.
+**parameter CLOUDSTACK_API_ENDPOINT: The API endpoint.
 **parameter CLOUDSTACK_API_KEY: The API key.
 **parameter CLOUDSTACK_SECRET_KEY: The secret API key.
 **parameter CLOUDSTACK_SERVICE_OFFERING_ID: The virtual CPU and RAM combination to use for a new VM.
@@ -407,6 +439,48 @@ function VM_CloudStackEnablePortForwarding($virtualMachineId, &$pFSuccess)
 	}
 
 	$pFSuccess = TRUE;
+	return($I18N_csJobSuccess);
+}
+
+
+
+
+
+/**
+**name VM_CloudStackDisablePortForwarding($virtualMachineId, &$pFSuccess)
+**description deletes a port forwarding rule for a virtual machine, with private port and public port being the same (CLOUDSTACK_X2GO_PORTNUMBER)
+**parameter virtualMachineId: the cloudstack ID of the virtual machine from which the port forwarding rule shall be deleted
+**parameter pFDSuccess: is set to true, if the rule was deleted successfully
+**returns textmessage about result (errormessage or success message) and sets pFDSuccess to True if action succeeded, false otherwise
+**/
+function VM_CloudStackDisablePortForwarding($virtualMachineId, &$pFDSuccess)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	$cloudstack = VM_CloudStack_getObject();
+	
+	foreach ($cloudstack->listPortForwardingRules() as $portforwardingrule)
+	{ 
+	  if ($portforwardingrule->virtualmachineid == $virtualMachineId and $portforwardingrule->publicport == CLOUDSTACK_X2GO_PORTNUMBER and $portforwardingrule->privateport == CLOUDSTACK_X2GO_PORTNUMBER)
+	  { 
+	    try
+	    {
+ 	      $result = $cloudstack->deletePortForwardingRule($portforwardingrule->id);
+	      if (property_exists($result, 'errorcode'))
+		{
+			$pFDSuccess = FALSE;
+			return($I18N_csError."\n".$I18N_csErrorCode.$result->errorcode."\n".$I18N_csErrorText.$result->errortext);
+		}
+	    }
+	    catch(Exception $except)
+	    {
+		$pFDSuccess = FALSE;
+		return($I18N_csError."\n".$I18N_csErrorText.$except->getMessage());
+	    }
+	    break;
+	  }
+	}
+	$pFDSuccess = TRUE;
 	return($I18N_csJobSuccess);
 }
 
@@ -1385,8 +1459,9 @@ function VM_delete($vmName)
 	{
 		case VM_SW_CLOUDSTACK:
 			$virtualMachineId = VM_CloudStackClientName2ClientID($vmName);
+			VM_CloudStackDisablePortForwarding($virtualMachineId, $pFDSuccess);
 			VM_CloudStackDeleteClientVM($virtualMachineId, $VMDeletionOK);
-			return($VMDeletionOK);
+			return($pFDSuccess.", ".$VMDeletionOK);
 		default:
 			$cmd = VM_delVMCMD($info['vmSoftware'], $vmName);
 		
@@ -2030,7 +2105,7 @@ function VM_statusIcons($param)
 **parameter size: Size of the image file in MB.
 **returns BASH code to create a virtual disk image.
 **/
-function VM_createDiskImage($type, $vmName, $diskName, $size)
+function VM_createDiskImage($type, $vmName, $diskName, $size, $imageDir = VM_IMAGE_DIR)
 {
 	switch ($type)
 	{
@@ -2043,9 +2118,9 @@ function VM_createDiskImage($type, $vmName, $diskName, $size)
 			$cmd = "mkdir -p \"".VM_IMAGE_DIR."/vbox/$vmName/\"
 			if [ `VBoxManage --version | cut -d'.' -f1` -eq 4 ]
 			then
-				VBoxManage createhd --filename \"".VM_IMAGE_DIR."/vbox/$vmName/$diskName.vdi\" --size $size 2>&1 | cat
+				VBoxManage createhd --filename \"$imageDir/vbox/$vmName/$diskName.vdi\" --size $size 2>&1 | cat
 			else
-				VBoxManage createvdi -filename \"".VM_IMAGE_DIR."/vbox/$vmName/$diskName.vdi\" -size $size -register 2>&1 | cat
+				VBoxManage createvdi -filename \"$imageDir/vbox/$vmName/$diskName.vdi\" -size $size -register 2>&1 | cat
 			fi\n";
 				
 			break;
@@ -2133,7 +2208,7 @@ function VM_activateNetbootCMD($type, $vmName, $activate)
 **parameter netDev: Device of the real network card that is used to let the VM communictae with the outer world.
 **returns BASH code to create a virtual machine.
 **/
-function VM_createVM($type, $vmName, $ramSize, $diskName, $mac, $netDev)
+function VM_createVM($type, $vmName, $ramSize, $diskName, $mac, $netDev, $imageDir = VM_IMAGE_DIR)
 {
 	switch ($type)
 	{
@@ -2150,13 +2225,83 @@ function VM_createVM($type, $vmName, $ramSize, $diskName, $mac, $netDev)
 				
 				if [ `VBoxManage --version | cut -d'.' -f1` -eq 2 ]
 				then
-					VBoxManage modifyvm \"$vmName\" -pae \$hwvirt -ostype debian -memory $ramSize -vram 8 -acpi on -ioapic off -hwvirtex \$hwvirt -nestedpaging \$hwvirt -monitorcount 1 -bioslogofadein off -bioslogofadeout off -hda \"".VM_IMAGE_DIR."/vbox/$vmName/$diskName.vdi\" -nic1 hostif -hostifdev1 $netDev -cableconnected1 on -macaddress1 $mac\n
+					VBoxManage modifyvm \"$vmName\" -pae \$hwvirt -ostype debian -memory $ramSize -vram 8 -acpi on -ioapic off -hwvirtex \$hwvirt -nestedpaging \$hwvirt -monitorcount 1 -bioslogofadein off -bioslogofadeout off -hda \"$imageDir/vbox/$vmName/$diskName.vdi\" -nic1 hostif -hostifdev1 $netDev -cableconnected1 on -macaddress1 $mac\n
 				else
 					VBoxManage storagectl \"$vmName\" --name \"IDE Controller\" --add ide
-					VBoxManage modifyvm \"$vmName\" --pae \$hwvirt --ostype debian --memory $ramSize --vram 8 --acpi on --ioapic off --hwvirtex \$hwvirt --nestedpaging \$hwvirt --monitorcount 1 --bioslogofadein off --bioslogofadeout off --hda \"".VM_IMAGE_DIR."/vbox/$vmName/$diskName.vdi\" --nic1 bridged --bridgeadapter1 $netDev --cableconnected1 on --macaddress1 $mac
+					VBoxManage modifyvm \"$vmName\" --pae \$hwvirt --ostype debian --memory $ramSize --vram 8 --acpi on --ioapic off --hwvirtex \$hwvirt --nestedpaging \$hwvirt --monitorcount 1 --bioslogofadein off --bioslogofadeout off --hda \"$imageDir/vbox/$vmName/$diskName.vdi\" --nic1 bridged --bridgeadapter1 $netDev --cableconnected1 on --macaddress1 $mac
 				fi
 				\n";
 	}
+	return($cmd);
+}
+
+
+
+
+
+/**
+**name VM_insertBootISO($type, $vmName, $iso)
+**description Inserts a bootable ISO into a VM.
+**parameter type: VM_SW_VBOX for VirtualBox OSE
+**parameter vmName: Name of the VM.
+**parameter iso: ISO file with full path.
+**returns BASH code to insert a bootable ISO into a VM.
+**/
+function VM_insertBootISO($type, $vmName, $iso)
+{
+	switch ($type)
+	{
+		case VM_SW_VBOX:
+			$cmd = "
+				if [ `VBoxManage --version | cut -d'.' -f1` -eq 2 ]
+				then
+					VBoxManage storageattach \"$vmName\" -storagectl \"IDE Controller\" -port 1 -device 0 -type dvddrive -medium \"$iso\"
+					VBoxManage modifyvm \"$vmName\" -dvd \"$iso\"
+					VBoxManage modifyvm \"$vmName\" -boot1 dvd\n
+				else
+					VBoxManage storageattach \"$vmName\" --storagectl \"IDE Controller\" --port 1 --device 0 --type dvddrive --medium \"$iso\"
+					VBoxManage modifyvm \"$vmName\" --dvd \"$iso\"
+					VBoxManage modifyvm \"$vmName\" --boot1 dvd\n
+				fi
+				\n";
+	}
+	return($cmd);
+}
+
+
+
+
+
+/**
+**name VM_startVMInExistingXSession($type, $vmName)
+**description Starts a virtual machine in an existing X session.
+**parameter type: VM_SW_VBOX for VirtualBox OSE
+**parameter vmName: Name of the VM.
+**returns BASH code to start a virtual machine and finding the DISPLAY number of the user who runs this script.
+**/
+function VM_startVMInExistingXSession($type, $vmName)
+{
+	$cmd ='
+	# Try to get the DISPLAY number of the user who runs this script
+	disp=$(who | tr -s \'[:blank:]\' | grep $(whoami) | cut -d\' \' -f2 | grep \':\')
+
+	# Check, if a DISPLAY number could retrieved
+	if [ $(echo -n $disp | wc -m) -gt 0 ]
+	then
+		export DISPLAY="$disp"
+	else
+		echo "No DISPLAY found"
+		exit 1
+	fi
+	';
+
+	switch ($type)
+	{
+		case VM_SW_VBOX:
+			$cmd .= "VBoxManage startvm $vmName&\n";
+		break;
+	}
+
 	return($cmd);
 }
 
@@ -2283,17 +2428,18 @@ function VM_parseVBOXdisk($param)
 **/
 function VM_parseVBOXstate($param)
 {
-	$tmp = explode(" (",$param);
-	switch ($tmp[0])
+	$stateText[VM_STATE_OFF] = 'powered off';
+	$stateText[VM_STATE_OFF] = 'aborted';
+	$stateText[VM_STATE_PAUSE] = 'paused';
+	$stateText[VM_STATE_ON] = 'running';
+	
+	foreach ($stateText as $state => $text)
 	{
-		case "powered off":
-		case "aborted":
-			return(VM_STATE_OFF);
-		case "paused": return(VM_STATE_PAUSE);
-		case "running": return(VM_STATE_ON);
-		default:
-			return(false);
+		if (substr_count($param, $text) > 0)
+			return($state);
 	}
+
+	return(false);
 }
 
 
@@ -2318,10 +2464,12 @@ function VM_parseVBOXNic($param)
 				//Get the part between the two "'". This is the physical network card.
 				$tmp = explode("'",$varVal[1]);
 				$out['netDev'] = $tmp[1];
-				
+
 				//Check if the virtual network device is of the type "host interface" (other types are not supported at the moment)
 				if (!(strpos($tmp[0],"Host Interface") === false))
 					$out['netType'] = VM_NETTYPE_HOSTINTERFACE;
+				elseif (!(strpos($tmp[0],"Bridged Interface") === false))
+					$out['netType'] = VM_NETTYPE_BRIDGEDINTERFACE;
 				else
 					$out['netType'] = false;
 			break;
@@ -2353,6 +2501,7 @@ function VM_parseVBOXNic($param)
 **/
 function VM_parseStatus($type, $status)
 {
+	$out = array();
 	switch ($type)
 	{
 		case VM_SW_VBOX:
@@ -2364,7 +2513,7 @@ function VM_parseStatus($type, $status)
 				//Parse the parameters
 				switch($varVal[0])
 				{
-					case "Name": $out['vmName'] = $varVal[1]; break;
+					case "Name": $out['vmName'] = trim($varVal[1]); break;
 					case "Floppy": $out['floppy'] = VM_parseVBOXdisk($varVal[1]); break;
 					case "Primary master": $out['hda'] = VM_parseVBOXdisk($varVal[1]); break;
 					case "Primary slave": $out['hdb'] = VM_parseVBOXdisk($varVal[1]); break;

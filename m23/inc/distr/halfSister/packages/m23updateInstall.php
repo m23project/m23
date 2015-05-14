@@ -6,6 +6,9 @@ Priority:25
 function run($id)
 {
 	include('/m23/inc/distr/debian/clientConfigCommon.php');
+	$lang=getClientLanguage();
+
+	include("/m23/inc/i18n/".I18N_m23instLanguage($lang)."/m23inst.php");
 
 	$sql="SELECT client,params FROM `clientjobs` WHERE id=$id";
 	$result=mysql_query($sql) or die ("SQL statement could not executed:".$sql);

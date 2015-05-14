@@ -62,6 +62,7 @@ CLIENT_DETAILS_addIcon2("https://$cupsUserPW$params[ip]:631/admin/", "printer.pn
 echo('</tr><tr>'); //Make a third row for the icons
 
 CLIENT_DETAILS_addIcon("poolFromClientDebs", "", "poolFromClient.png", $I18N_poolFromClientDebs, $I18N_createPoolFromClientDebs_tooltip);
+CLIENT_DETAILS_addIcon('deleteclient&id='.$_GET['id'].'&client='.$_GET['client'], '', 'trash.png', $I18N_delete_client, $I18N_client_delete_tooltip);
 
 CLIENT_DETAILS_endCategory();
 

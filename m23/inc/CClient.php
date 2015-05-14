@@ -61,6 +61,7 @@ class CClient extends CChecks
 	const BOOTTYPE_ETHERBOOT = 'etherboot';
 	const BOOTTYPE_NOBOOT = 'none';
 	const BOOTTYPE_GPXE = 'gpxe';
+	const BOOTTYPE_GRUB2EFIX64 = 'grub2EFIx64';
 	const CHECKMODE_NORMAL = 0;
 	const CHECKMODE_MUSTEXIST = 1;
 	const CHECKMODE_MUSTNOTEXIST = 2;
@@ -234,15 +235,14 @@ class CClient extends CChecks
 
 
 /**
-**name CClient::addJob($packageName,$priority,$params)
-**description Adds a job to the client's job table.
-**parameter packageName: name of the package
-**parameter priority: priority of the package
-**parameter params: parameter for installing the package
+**name CClient::delSpecialJob($packageName, $priority)
+**description Removes a special job from the joblist identified by package name and priority.
+**parameter package: Name of the package.
+**parameter priority: Priority of the job.
 **/
-	public function addJob($packageName,$priority,$params)
+	public function delSpecialJob($packageName, $priority)
 	{
-		PKG_addJob($this->getClientName(),$packageName,$priority,$params);
+		PKG_removeSpecialFromJobList($this->getClientName(), $packageName, $priority);
 	}
 
 
@@ -250,12 +250,119 @@ class CClient extends CChecks
 
 
 /**
-**name CClient::setInstPart($instPart)
+**name CClient::addJob($packageName,$priority,$params)
+**description Adds a job to the client's job table.
+**parameter packageName: name of the package
+**parameter priority: priority of the package
+**parameter params: parameter for installing the package
+**/
+	public function addJob($packageName, $priority, $params)
+	{
+		PKG_addJob($this->getClientName(), $packageName, $priority, $params);
+	}
+
+
+
+
+
+/**
+**name CClient::includeDistributionSpecificPackagesPHP()
+**description Includes distribution specific packages.php.
+**/
+	private function includeDistributionSpecificPackagesPHP()
+	{
+		$distr = $this->getDistribution();
+		if (!empty($distr))
+			include_once("/m23/inc/distr/$distr/packages.php");
+	}
+
+
+
+
+
+/**
+**name CClient::addNormalJob($packageName, $priority = 25)
+**description Adds a normal package to the installation queue.
+**parameter packageName: name of the package
+**parameter priority: priority of the package
+**/
+	public function addNormalJob($packageName, $priority = 25)
+	{
+		$this->includeDistributionSpecificPackagesPHP();
+		PKG_addStatusJob($this->getClientName(), 'm23normal', $priority, $packageName, 'waiting');
+	}
+
+
+
+
+
+/**
+**name CClient::addSpecialJob($packageName, $params = '', $priority = false)
+**description Adds a special package to the installation queue.
+**parameter packageName: name of the package.
+**parameter params: Parameter for the special package.
+**parameter priority: priority of the package (if false, the priority from the special package will be used).
+**/
+	public function addSpecialJob($packageName, $params = '', $priority = false)
+	{
+		$this->includeDistributionSpecificPackagesPHP();
+
+		if ($priority === false)
+			$priority = PKG_getSpecialPackagePriority($packageName);
+
+		PKG_addJob($this->getClientName(), $packageName, $priority, $params);
+	}
+
+
+
+
+
+/**
+**name CClient::addUpdateSourcesListJob()
+**description Adds a job to update the package source of the client to the installation queue.
+**/
+	public function addUpdateSourcesListJob()
+	{
+		$this->addSpecialJob('m23UpdateSourcesList', $this->getSourcesList());
+	}
+
+
+
+
+
+/**
+**name CClient::addUpdatePackageInfosJob()
+**description Adds a job to update the package information of the client to the installation queue.
+**/
+	public function addUpdatePackageInfosJob()
+	{
+		$this->addSpecialJob('m23UpdatePackageInfos', '', 90);
+	}
+
+
+
+
+
+/**
+**name CClient::unsetInstPartDev()
+**description Unsets the installation partition of the client (by removing the variable in the client info).
+**/
+	public function unsetInstPartDev()
+	{
+		$this->clientInfo['instPart'] = NULL;
+	}
+
+
+
+
+
+/**
+**name CClient::setInstPartDev($instPart)
 **description Sets the installation partition of the client.
 **parameter instPart: Installation partition device name.
 **returns true, if the installation partition is valid otherwise false.
 **/
-	public function setInstPart($instPart)
+	public function setInstPartDev($instPart)
 	{
 		if ($this->checkInstPart($instPart))
 		{
@@ -271,12 +378,129 @@ class CClient extends CChecks
 
 
 /**
-**name CClient::setSwapPart($swapPart)
+**name CClient::setUEFI($enabled)
+**description Sets the UEFI usage of the client.
+**parameter enabled: true, if UEFI is used on the client, otherwise false.
+**/
+	public function setUEFI($enabled)
+	{
+		$this->clientInfo['uefiActive'] = (($enabled === true) ? 1 : 0);
+	}
+
+
+
+
+
+/**
+**name CClient::isUEFIActive()
+**description Returns, if the client uses UEFI.
+**returns true, if the client uses UEFI otherwise false.
+**/
+	public function isUEFIActive()
+	{
+		return($this->clientInfo['uefiActive'] == 1);
+	}
+
+
+
+
+
+/**
+**name CClient::isHalfSisterClient()
+**description Returns, if the client uses a halfSister distribution.
+**returns true, if the client uses a halfSister distribution otherwise false.
+**/
+	public function isHalfSisterClient()
+	{
+		return(strpos($this->getSourcesList(), 'HS-') === 0);
+	}
+
+
+
+
+
+/**
+**name CClient::getEFIBootPartDev()
+**description Gets the EFI boot partition of the client.
+**returns The EFI partition of the client or false, if not set.
+**/
+	public function getEFIBootPartDev()
+	{
+		return($this->getProperty('efiPart', 'getEFIBootPartDev: efiPart not set.', false));
+	}
+
+
+
+
+
+/**
+**name CClient::setEFIBootPartDev($EFIPart)
+**description Sets the EFI partition of the client.
+**parameter EFIPart: EFI partition device name.
+**returns true, if the EFI boot partition is valid otherwise false.
+**/
+	public function setEFIBootPartDev($EFIPart)
+	{
+		if ($this->checkEFIPart($EFIPart))
+		{
+			$this->clientInfo['efiPart'] = $EFIPart;
+			return(true);
+		}
+		else
+			return(false);
+	}
+
+
+
+
+
+/**
+**name CClient::unsetEFIBootPartDev()
+**description Unsets the EFI boot partition of the client (by removing the variable in the client info).
+**/
+	public function unsetEFIBootPartDev()
+	{
+		$this->clientInfo['efiPart'] = NULL;
+	}
+
+
+
+
+
+/**
+**name CClient::getInstPartDev()
+**description Gets the installation partition of the client.
+**returns The installation partition of the client or false, if not set.
+**/
+	public function getInstPartDev()
+	{
+		return($this->getProperty('instPart', 'getInstPart: instPart not set.', false));
+	}
+
+
+
+
+
+/**
+**name CClient::unsetSwapPartDev()
+**description Unsets the swap partition of the client (by removing the variable in the client info).
+**/
+	public function unsetSwapPartDev()
+	{
+		$this->clientInfo['swapPart'] = NULL;
+	}
+
+
+
+
+
+/**
+**name CClient::setSwapPartDev($swapPart)
 **description Sets the swap partition of the client.
 **parameter swapPart: Swap partition device name.
 **returns true, if the swap partition is valid otherwise false.
 **/
-	public function setSwapPart($swapPart)
+	public function setSwapPartDev($swapPart)
 	{
 		if ($this->checkSwapPart($swapPart))
 		{
@@ -285,6 +509,53 @@ class CClient extends CChecks
 		}
 		else
 			return(false);
+	}
+
+
+
+
+
+/**
+**name CClient::getSwapPartDev()
+**description Gets the swap partition of the client.
+**returns The swap partition of the client or false, if not set.
+**/
+	public function getSwapPartDev()
+	{
+		return($this->getProperty('swapPart', 'getSwapPart: swapPart not set.', false));
+	}
+
+
+
+
+
+/**
+**name CClient::isDerivedClient()
+**description Checks, if the client is derived from a defined client.
+**returns true, if the client is derived, otherwise false.
+**/
+	public function isDerivedClient()
+	{
+		// A defined client cannot be a derived client
+		if ($this->isDefinedClient())
+			return(false);
+
+		// An empty serialized array has 7 characters
+		if (isset($this->clientInfo['CFDiskTemp']{6}))
+		{
+			// Try to decode the CFDiskTemp serialized array
+			$CFDiskTemp = @unserialize($this->clientInfo['CFDiskTemp']);
+
+			// Check, if it is a valid array
+			if (!is_array($CFDiskTemp))
+				return(false);
+
+			// If there are defined disk devices and sizes => It should be a derived client
+			if (is_array($CFDiskTemp['definedDiskSizes']))
+				return(true);
+			else
+				return(false);
+		}
 	}
 
 
@@ -754,7 +1025,7 @@ class CClient extends CChecks
 **/
 	public function getFamilyname()
 	{
-		return($this->getProperty('familyname', 'getFamilyname: No familyname set.'));
+		return($this->getProperty('familyname', 'getFamilyname: No familyname set.', ''));
 	}
 
 
@@ -913,13 +1184,22 @@ class CClient extends CChecks
 
 
 /**
-**name CClient::getClientCurrentWorkPHP()
+**name CClient::getClientCurrentWorkPHP($otherScript)
 **description Returns the current contents of the work.php for this client.
+**parameter otherScript: If set, this job will be taken instead of the job with the lowest priority.
 **returns Current contents of the work.php for this client.
 **/
-	public function getClientCurrentWorkPHP()
+	public function getClientCurrentWorkPHP($otherScript = '')
 	{
-		return(HELPER_getRemoteFileContents($this->getClientWorkPHPURL('127.0.0.1'), 'getClientCurrentWorkPHP', 0, true));
+		if (isset($otherScript{1}))
+		{
+			$this->addJob($otherScript, -23, '');
+			$out = HELPER_getRemoteFileContents($this->getClientWorkPHPURL('127.0.0.1'), 'getClientCurrentWorkPHP', 0, true);
+			$this->delSpecialJob($otherScript, -23);
+			return($out);
+		}
+		else
+			return(HELPER_getRemoteFileContents($this->getClientWorkPHPURL('127.0.0.1'), 'getClientCurrentWorkPHP', 0, true));
 	}
 
 
@@ -954,7 +1234,7 @@ class CClient extends CChecks
 		foreach ($this->clientInfo as $key => $val)
 		{
 			//Continue on empty key
-			if (!isset($key{1}) || ($key == 'id'))
+			if (!isset($key{1}) || ($key == 'id') || ($key == 'CFDiskTemp'))
 				continue;
 
 			//Make the values safe
@@ -983,18 +1263,24 @@ class CClient extends CChecks
 
 
 /**
-**name CClient::getProperty($key, $dieMessage)
-**description Gets a client property from $this->clientInfo and dies, if this property is not set.
+**name CClient::getProperty($key, $dieMessage, $return = null)
+**description Gets a client property from $this->clientInfo and dies (or returns an error value), if this property is not set.
 **parameter key: Name of the property.
 **parameter dieMessage: Message to show before dying.
-**returns Value of the property.
+**parameter return: This will returned in case of an error, if set to another value, than 'null'.
+**returns Value of the property (or error value).
 **/
-	private function getProperty($key, $dieMessage)
+	protected function getProperty($key, $dieMessage, $return = null)
 	{
 		if (isset($this->clientInfo[$key]) && (is_numeric($this->clientInfo[$key]) || !empty($this->clientInfo[$key])))
 			return($this->clientInfo[$key]);
-/*		else
-			die($dieMessage);*/
+		else
+		{
+			if ($return === null)
+				die($dieMessage);
+			else
+				return($return);
+		}
 	}
 
 
@@ -1373,13 +1659,14 @@ class CClient extends CChecks
 
 
 /**
-**name CClient::getIP()
+**name CClient::getIP($return = null)
 **description Returns the client's IP.
+**parameter return: This will returned in case of an error, if set to another value, than 'null'.
 **returns IP of the client.
 **/
-	public function getIP()
+	public function getIP($return = null)
 	{
-		return($this->getProperty('ip', 'getIP: No IP set.'));
+		return($this->getProperty('ip', 'getIP: No IP set.', $return));
 	}
 
 
@@ -1444,13 +1731,14 @@ class CClient extends CChecks
 
 
 /**
-**name CClient::getMAC()
+**name CClient::getMAC($return = null)
 **description Returns the client's MAC.
+**parameter return: This will returned in case of an error, if set to another value, than 'null'.
 **returns MAC of the client.
 **/
-	public function getMAC()
+	public function getMAC($return = null)
 	{
-		return($this->getProperty('mac', 'getMAC: No MAC set.'));
+		return($this->getProperty('mac', 'getMAC: No MAC set.',$return));
 	}
 
 
@@ -1528,6 +1816,20 @@ class CClient extends CChecks
 
 
 /**
+**name CClient::isDefinedClient()
+**description Checks, if the client is defined client.
+**returns true, if the client is defined client, otherwise false.
+**/
+	public function isDefinedClient()
+	{
+		return ($this->getStatus() == CClient::STATUS_DEFINE);
+	}
+
+
+
+
+
+/**
 **name CClient::generateHTMLStatusBar()
 **description Generates HTML code containing the status of the client with links to the pages.
 **/
@@ -1575,11 +1877,20 @@ class CClient extends CChecks
 /**
 **name CClient::setBootType($bootType)
 **description Sets the client's (network) boot type.
-**parameter bootType: CClient::BOOTTYPE_PXE, CClient::BOOTTYPE_NOBOOT, CClient::BOOTTYPE_ETHERBOOT
+**parameter bootType: CClient::BOOTTYPE_PXE, CClient::BOOTTYPE_NOBOOT, CClient::BOOTTYPE_ETHERBOOT, CClient::BOOTTYPE_GRUB2EFIX64
 **returns true on successfully setting the client's boot type, otherwise false.
 **/
 	public function setBootType($bootType)
 	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+		// Check, if client should be booted via EFI and if is uses another architecture than amd64
+		if ((CClient::BOOTTYPE_GRUB2EFIX64 == $bootType) && ($this->getArch() != 'amd64'))
+		{
+			$this->addErrorMessage($I18N_uefiBooingIsOnlySupportedOnAMD64);
+			return(false);
+		}
+
 		if ($this->checkBootType($bootType))
 		{
 			$this->clientInfo['dhcpBootimage'] = $bootType;
@@ -1587,6 +1898,23 @@ class CClient extends CChecks
 		}
 		else
 			return(false);
+	}
+
+
+
+
+
+/**
+**name CClient::getNetworkBootTypesArrayForSelection()
+**description Generates an array with all avaialable network boot types for using it in a selection.
+**returns Array with all avaialable network boot types (depends on the usage of m23shared) for using it in a selection.
+**/
+	public static function getNetworkBootTypesArrayForSelection()
+	{
+		if ($_SESSION['m23Shared'])
+			return(array(CClient::BOOTTYPE_GPXE => "gPXE/DHCP"));
+		else
+			return(array(CClient::BOOTTYPE_PXE => "pxe", CClient::BOOTTYPE_GRUB2EFIX64 => 'UEFI x86_64', CClient::BOOTTYPE_ETHERBOOT => "etherboot", CClient::BOOTTYPE_GPXE => "gPXE/DHCP"));
 	}
 
 
@@ -1636,6 +1964,22 @@ class CClient extends CChecks
 
 
 /**
+**name CClient::wol()
+**description Wakes a client over the network.
+**/
+	public function wol()
+	{
+		if (file_exists('/m23/ar/09_etherwaker'))
+			exec('/m23/ar/09_etherwaker '.$this->getIP());
+		else
+			CLIENT_wol($this->getClientName());
+	}
+
+
+
+
+
+/**
 **name CClient::isNetbootActive()
 **description Check, if network booting is active for the client.
 **returns true when network booting is active otherwise false.
@@ -1643,6 +1987,49 @@ class CClient extends CChecks
 	public function isNetbootActive()
 	{
 		DHCP_isNetworkBootingActive($this->getClientName());
+	}
+
+
+
+
+
+/**
+**name CClient::isPingable()
+**description Checks, if the client can be pinged over the network.
+**return true, if the client can be pinged, otherwise false.
+**/
+	public function isPingable()
+	{
+		return(pingIP($this->getIP()));
+	}
+
+
+
+
+
+/**
+**name CClient::sshFetchJob()
+**description Connects to the client via SSH and lets the next job fetch and execute it in a screen (named "m23install").
+**/
+	public function sshFetchJob()
+	{
+		CLIENT_sshFetchJob($this->getClientName());
+	}
+
+
+
+
+
+/**
+**name CClient::executeBySSH($cmds)
+**description Runs a commands under a plain BASH with root rights on the client.
+**parameter cmds: the commands of the script 
+**returns The output of the script.
+**/
+	public function executeBySSH($cmds)
+	{
+		$jobName = uniqid('executeBySSH');
+		return(CLIENT_executeOnClientOrIP($this->getIP(), $jobName, $cmds, 'root', false));
 	}
 
 

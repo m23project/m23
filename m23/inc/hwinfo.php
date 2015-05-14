@@ -13,48 +13,42 @@ $*/
 **/
  function HWINFO_getParam($paramName, $clientName)
  {
-  $sql="SELECT $paramName FROM `clients` WHERE client='$clientName'";
+	$sql="SELECT $paramName FROM `clients` WHERE client='$clientName'";
 
-  $result=DB_query($sql);
-  $line=mysql_fetch_row($result);
+	$result=DB_query($sql);
+	$line=mysql_fetch_row($result);
 
-  return ($line[0]);
+	return ($line[0]);
  }
 
 
 
 
 
- /**
- **name HWINFO_getMemory($clientName)
- **description returns the size of memory
- **parameter clientName: name of the client
- **/
- function HWINFO_getMemory($clientName)
- {
-  return(HWINFO_getParam("memory", $clientName));
- };
+/**
+**name HWINFO_getMemory($clientName)
+**description returns the size of memory
+**parameter clientName: name of the client
+**/
+function HWINFO_getMemory($clientName)
+{
+	return(HWINFO_getParam("memory", $clientName));
+}
 
 
 
 
 
- /**
- **name HWINFO_getHDSize($clientName)
- **description returnes the sizes of all harddisks in a string, sperated by html breaks
- **parameter clientName: name of the client
- **/
+/**
+**name HWINFO_getHDSize($clientName)
+**description Returnes the sizes of all harddisks in a string, sperated by html breaks
+**parameter clientName: name of the client
+**/
 function HWINFO_getHDSize($clientName)
 {
-	$param = FDISK_getPartitions($clientName);
-	
-	$out="";
-	
-	for ($vDev=0; $vDev < $param[dev_amount]; $vDev++)
-		$out.=$param["dev$vDev"."_path"].": ".$param["dev$vDev"."_size"]." MB<BR>";
-		
-	return($out);
-};
+	$CFDiskGUIO = new CFDiskGUI($clientName);
+	return($CFDiskGUIO->getHDSizes());
+}
 
 
 
@@ -178,9 +172,6 @@ function HWINFO_printPartitions($clientName)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
-	$param = FDISK_getPartitions($clientName);
-	$fstab = FDISK_getFstabArray($clientName);
-
 	echo("
 	<span class=\"title\"> $I18N_partition_information </span>
 	<br>");
@@ -188,9 +179,10 @@ function HWINFO_printPartitions($clientName)
 	echo("
 	<tr>
 		<td>");
-			FDISK_printAllBars($param, $fstab);
-
-			FDISK_printColorDefinitions();
+			$CFDiskGUIO = new CFDiskGUI($clientName);
+			$CFDiskGUIO->printAllBars();
+			$CFDiskGUIO->showAllPartTables();
+			$CFDiskGUIO->showColorDefinitions();
 	echo("</td>
 	</tr>");
 	HTML_showTableEnd();

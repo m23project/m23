@@ -239,7 +239,7 @@ function HELP_getHelpString($topic,$language)
 function HELP_showHelpTex($fileName,$imageFile,$scale=0.45)
 {
 	//exchange all french special characters by their LaTeX equivalents
-	exec("cat $fileName | sed \"s/á/\\\\\\'a/g\" | sed \"s/Á/\\\\\\'A/g\" | sed 's/à/\\\\`a/g' | sed 's/À/\\\\`A/g' | sed 's/â/\\\\^a/g' | sed 's/Â/\\\\^A/g' | sed \"s/é/\\\\\\'e/g\" | sed \"s/É/\\\\\\'E/g\" | sed 's/è/\\\\`e/g' | sed 's/È/\\\\`E/g' | sed 's/ê/\\\\^e/g' | sed 's/Ê/\\\\^E/g' | sed \"s/í/\\\\\\'i/g\" | sed \"s/Í/\\\\\\'I/g\" | sed 's/ì/\\\\`i/g' | sed 's/Ì/\\\\`I/g' | sed 's/î/\\\\^i/g' | sed 's/Î/\\\\^I/g'| sed \"s/ó/\\\\\\'o/g\" | sed \"s/Ó/\\\\\\'O/g\" | sed 's/ò/\\\\`o/g' | sed 's/Ò/\\\\`O/g' | sed 's/ô/\\\\^o/g' | sed 's/Ô/\\\\^O/g' | sed \"s/ú/\\\\\\'u/g\" | sed \"s/Ú/\\\\\\'U/g\" | sed 's/ù/\\\\`u/g' | sed 's/Ù/\\\\`U/g' | sed 's/û/\\\\^u/g' | sed 's/Û/\\\\^U/g' | sed 's/½/\\\\oe{}/g' | sed 's/¼/\\\\OE{}/g'> /tmp/m23doc.htmltex");
+	exec("cat $fileName | sed \"s/á/\\\\\\'a/g\" | sed \"s/Á/\\\\\\'A/g\" | sed 's/à/\\\\`a/g' | sed 's/À/\\\\`A/g' | sed 's/â/\\\\^a/g' | sed 's/Â/\\\\^A/g' | sed \"s/é/\\\\\\'e/g\" | sed \"s/É/\\\\\\'E/g\" | sed 's/è/\\\\`e/g' | sed 's/È/\\\\`E/g' | sed 's/ê/\\\\^e/g' | sed 's/Ê/\\\\^E/g' | sed \"s/í/\\\\\\'i/g\" | sed \"s/Í/\\\\\\'I/g\" | sed 's/ì/\\\\`i/g' | sed 's/Ì/\\\\`I/g' | sed 's/î/\\\\^i/g' | sed 's/Î/\\\\^I/g'| sed \"s/ó/\\\\\\'o/g\" | sed \"s/Ó/\\\\\\'O/g\" | sed 's/ò/\\\\`o/g' | sed 's/Ò/\\\\`O/g' | sed 's/ô/\\\\^o/g' | sed 's/Ô/\\\\^O/g' | sed \"s/ú/\\\\\\'u/g\" | sed \"s/Ú/\\\\\\'U/g\" | sed 's/ù/\\\\`u/g' | sed 's/Ù/\\\\`U/g' | sed 's/û/\\\\^u/g' | sed 's/Û/\\\\^U/g' | sed 's/½/\\\\oe{}/g' | sed 's/¼/\\\\OE{}/g' > /tmp/m23doc.htmltex");
 
 	$s[0]="'&nbsp;|<br>|</a>|<img[ a-zA-Z0-9/\.\"=]*>|<A HREF[ a-zA-Z0-9/.\"\\=:_-]*>'si"; $r[0]="";
 	$s[1]="'<b>'si"; $r[1]="\\textbf{";
@@ -269,6 +269,7 @@ function HELP_showHelpTex($fileName,$imageFile,$scale=0.45)
 	$s[25]="'_'si"; $r[25]="\\_";
 	$s[26]="'&reg;'si"; $r[26]="\\textsuperscript{\\textregistered}";
 	$s[27]="'&trade;'si"; $r[27]="\\textsuperscript{\\texttrademark}";
+	$s[28]="'&#8203;'si"; $r[28]="";
 //	$s[25]="'%'si"; $r[25]="\\%";
 	
 

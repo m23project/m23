@@ -42,13 +42,7 @@ function PKG_addHSUser($client, $login, $firstpw, $uid = '', $gid = '')
 **/
 function PKG_addUbuntuUser($client, $login, $firstpw, $uid = '', $gid = '')
 {
-	$groups[0]="audio";
-	$groups[1]="floppy";
-	$groups[2]="cdrom";
-	$groups[3]="video";
-	$groups[4]="users";
-	$groups[5]="lpadmin";
-	$groups[6]="plugdev";
+	$groups = DISTR_getUbuntuUserGroups();
 	PKG_addUser($client, $login, $firstpw, $groups);
 }
 
@@ -67,15 +61,7 @@ function PKG_addUbuntuUser($client, $login, $firstpw, $uid = '', $gid = '')
 **/
 function PKG_addDebianUser($client, $login, $firstpw, $uid = '', $gid = '')
 {
-	$groups[0]="audio";
-	$groups[1]="floppy";
-	$groups[2]="cdrom";
-	$groups[3]="video";
-	$groups[4]="users";
-	$groups[5]="lpadmin";
-	$groups[6]="plugdev";
-	$groups[7]="lp";
-	$groups[8]="scanner";
+	$groups = DISTR_getDebianUserGroups();
 	PKG_addUser($client, $login, $firstpw, $groups);
 }
 
@@ -853,7 +839,7 @@ function PKG_addPackageSelection($client,$packageSelectionName,$normalPackageTyp
 			($line['package']=='m23normalRemove'))
 		{
 			if ($normalPackageType2=="orig")
-				$normalPackageType=$line[package];
+				$normalPackageType=$line['package'];
 			else
 				$normalPackageType=$normalPackageType2;
 
@@ -873,13 +859,21 @@ function PKG_addPackageSelection($client,$packageSelectionName,$normalPackageTyp
 				};
 
 			CHECK_FW(CC_package, $normalPackageType, CC_clientname, $client);
-			$sqlInsert = "INSERT INTO `clientjobs` (`client` , `package` , `priority` , `status` , `params` , `normalPackage` , `installedSize`) VALUES ('$client', '$normalPackageType', '".$line['priority']."','wait4acc', '".$line['params']."', '".$line['normalPackage']."', '".$line['installedSize']."')";
 
-			DB_query($sqlInsert);
+			// Split normal package lines, that may contain multiple package names
+			foreach (explode(' ', $line['normalPackage']) as $normalPackage)
+			{
+				if (empty($normalPackage)) continue;
 
-			//add sub packages as param string to a m23normal package
-			//PKG_addNormalPackagesToWait4Aac($client,25,$params[$p]);
-			$count++;
+				$sqlInsert = "INSERT INTO `clientjobs` (`client` , `package` , `priority` , `status` , `params` , `normalPackage` , `installedSize`) VALUES ('$client', '$normalPackageType', '".$line['priority']."','wait4acc', '".$line['params']."', '$normalPackage', '".$line['installedSize']."')";
+
+				DB_query($sqlInsert);
+
+				//add sub packages as param string to a m23normal package
+				//PKG_addNormalPackagesToWait4Aac($client,25,$params[$p]);
+				$count++;
+			}
+
 		}
 		else
 		{
@@ -2282,12 +2276,12 @@ function PKG_updateSourcesListAtAllClients($sourcename)
 	$result = DB_query($sql); //FW ok
 
 	while ($line = mysql_fetch_row($result))
-			{
-				$options = CLIENT_getAllOptions($line[0]);
-
-				if ($options['packagesource']==$sourcename)
-					PKG_addJob($line[0], "m23UpdateSourcesList", PKG_getSpecialPackagePriority("m23UpdateSourcesList"), $sourcename);
-			}
+	{
+		$options = CLIENT_getAllOptions($line[0]);
+	
+		if ($options['packagesource']==$sourcename)
+			PKG_addJob($line[0], "m23UpdateSourcesList", PKG_getSpecialPackagePriority("m23UpdateSourcesList"), $sourcename);
+	}
 };
 
 
@@ -2328,7 +2322,7 @@ function PKG_executeOnClientJobs($sql,$packageIDList)
 function PKG_removeFromJobList($packageIDList)
 {
 	PKG_executeOnClientJobs("DELETE FROM `clientjobs` WHERE ",$packageIDList);
-};
+}
 
 
 
@@ -2344,6 +2338,24 @@ function PKG_changeClientJobsStatus($packageIDList,$status)
 {
 	CHECK_FW(CC_jobstatus, $status);
 	PKG_executeOnClientJobs("UPDATE `clientjobs` SET `status` = '$status' WHERE ",$packageIDList);
+}
+
+
+
+
+
+/**
+**name PKG_removeSpecialFromJobList($clientName, $package, $priority)
+**description Removes a special job from the joblist identified by package name and priority.
+**parameter clientName: Name of the client
+**parameter package: Name of the package.
+**parameter priority: Priority of the job.
+**/
+function PKG_removeSpecialFromJobList($clientName, $package, $priority)
+{
+	CHECK_FW(CC_clientname, $clientName, CC_package, $package, CC_packagepriority, $priority);
+	$sql = "DELETE FROM `clientjobs` WHERE `client` = '$clientName' AND `priority` = $priority AND `package` = '$package'";
+	db_query($sql); //FW ok
 }
 
 
@@ -2435,6 +2447,131 @@ function PKG_rmAllSpecialPackagesByName($clientName,$packageName)
 
 
 /**
+**name PKG_getClientsWithPackage($packageName)
+**description Gets all clients that have the specific package installed (or with another status).
+**parameter packageName: Name of the package.
+**parameter status: The status the package should have.
+**returns Array with all clients that have the specific package installed (or with another status).
+**/
+function PKG_getClientsWithPackage($packageName, $status = 'ii')
+{
+	CHECK_FW(CC_package, $packageName);
+
+	$clients = array();
+
+	$sql = "SELECT clientname FROM `clientpackages` WHERE package = '$packageName' AND status = '$status' ORDER BY clientname";
+	$res = db_query($sql); //FW ok
+	
+	while ($line = mysql_fetch_row($res))
+	{
+		if (!empty($line[0]))
+			$clients[$line[0]] = $line[0];
+	}
+
+	return($clients);
+}
+
+
+
+
+
+/**
+**name PKG_getClientsWithWaitingJobs()
+**description Gets all clients that have waiting jobs.
+**returns Array with all clients that have waiting jobs.
+**/
+function PKG_getClientsWithWaitingJobs()
+{
+	$clients = array();
+
+	// Get the client jobs that are waiting and the client name from them with the distinct client name
+	$sql = "SELECT DISTINCT `client` FROM `clientjobs` WHERE `status` = 'waiting'";
+
+	$res = db_query($sql); //FW ok
+	
+	while ($line = mysql_fetch_row($res))
+	{
+		if (!empty($line[0]))
+			$clients[$line[0]] = $line[0];
+	}
+
+	return($clients);
+}
+
+
+
+
+
+/**
+**name PKG_getClientsByPackages($packageNames, $status = true, $and = true, $not = false)
+**description Gets all clients that have the specific packages (not) installed (or with another given status).
+**parameter packageNames: Array with the packages to check.
+**parameter status: Debian status code or true for "installed".
+**parameter and: Set to true, if all packages must (not) match the status or, if false, at least one package must match the status.
+**parameter not: If set to true, only clients, that have no packes with the given status will be added to the output array.
+**returns Array with all clients that have the specific package (not) installed (or with another given status).
+**/
+function PKG_getClientsByPackages($packageNames, $status = true, $and = false, $not = false)
+{
+	$clients = array();
+
+	// The status code, that must match the client's package
+	if ($status === true) $status = 'ii';
+
+	$sql = 'SELECT `clientname` FROM `clientpackages` GROUP BY `clientname` HAVING (';
+
+	// If set to true, a plus should be added before next query part
+	$addPlus = false;
+
+	$partCounter = 0;
+
+	// Add packages and wanted status to the query
+	foreach ($packageNames as $packageName)
+	{
+		// Check for a valid package name
+		CHECK_FW(CC_package, $packageName);
+
+		// Check, if a plus should be added before next query part (only after the first element the plus must be added)
+		if ($addPlus)
+			$sql .= ' + ';
+		else
+			$addPlus = true;
+
+		// Add the package and its wanted status to the query
+		$sql .= "MAX(`package` = '$packageName' AND `status` = '$status')";
+
+		$partCounter++;
+	}
+
+	// If none of the packages should have the given status (eg. no package is installed), there should be no zero packages and the conjunction should be done with "and"
+	if ($not)
+	{
+		$partCounter = 0;
+		$and = true;
+	}
+
+	// Have all packages to match the status ($and = true) or, if false, at least one package must match the status ($and = false).
+	if ($and)
+		$sql .= ") = $partCounter";
+	else
+		$sql .= ') > 0';
+	
+	$res = db_query($sql); //FW ok
+	
+	while ($line = mysql_fetch_row($res))
+	{
+		if (!empty($line[0]))
+			$clients[$line[0]] = $line[0];
+	}
+
+	return($clients);
+}
+
+
+
+
+
+/**
 **name PKG_countPackages($clientName)
 **description counts all packages on a client
 **parameter clientName: name of the client 
@@ -2489,12 +2626,12 @@ function PKG_copyPackagesToClient($to,$from,$status)
 	$res = DB_query($sql); //FW ok
 
 	while( $data = mysql_fetch_array($res))
-		{
-			$iSQL="INSERT INTO `clientjobs` (`client` , `package` , `priority` , `status` , `params` , `normalPackage` , `installedSize` ) VALUES (
-			'$to', '$data[package]', '$data[priority]', '$data[status]', '$data[params]', '$data[normalPackage]', '$data[installedSize]')";
+	{
+		$iSQL="INSERT INTO `clientjobs` (`client` , `package` , `priority` , `status` , `params` , `normalPackage` , `installedSize` ) VALUES (
+		'$to', '$data[package]', '$data[priority]', '$data[status]', '$data[params]', '$data[normalPackage]', '$data[installedSize]')";
 
-			DB_query($iSQL); //FW ok
-		};
+		DB_query($iSQL); //FW ok
+	};
 };
 
 

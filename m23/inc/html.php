@@ -765,7 +765,7 @@ return('
 **parameter titleCSS: CSS class for marking the title.
 **returns The jQuery code for the menu entry.
 **/
-function HTML_jQueryMenu($title, $html, $titleCSS = 'titlesmal')
+function HTML_jQueryMenu($title, $html, $titleCSS = 'menuhighlight')
 {
 return('
 <a href="#"><span class="'.$titleCSS.'">&nbsp;&nbsp;'.$title.'</span></a>
@@ -792,9 +792,6 @@ function HTML_jQueryMenuHeader($menuName)
 	//Try to fetch the active element from a perviously transfered form
 	$active = (is_numeric($_POST[$hiddenVarName]) ? $_POST[$hiddenVarName] : 0);
 
-	//Last Y position of the content the browser window
-	$hiddenPosName = $menuName.'lastYPos';
-	$lastPos = (is_numeric($_POST[$hiddenPosName]) ? $_POST[$hiddenPosName] : 0);
 
 return('
 <script>
@@ -802,8 +799,6 @@ return('
 	{
 		//Make the previously opened element open again
 		$( "#'.$menuName.'" ).accordion({ active: '.$active.' });
-
-		$("body").scrollTop('.$lastPos.');
 
 		$( "#'.$menuName.'" ).accordion
 		({
@@ -815,14 +810,58 @@ return('
 				$( "#'.$hiddenVarName.'" ).val(active);
 			}
 		});
-		$(window).scroll(function () {
-			$( "#'.$hiddenPosName.'" ).val($("body").scrollTop());
-		});
+		
+		'.HTML_jQueryReStoreYWindowPosition($menuName, $hiddenPosCode).'
 	});
 	</script>
+	'.$hiddenPosCode.'
 
 <div id="'.$menuName.'">
 ');
+}
+
+
+
+
+
+/**
+**name HTML_jQueryReStoreYWindowPosition($variablePrefix, &$hiddenPosCode, $standalone = false)
+**description Generates jQuery code for storing the Y scroll position of the window and to restore the position after a submit.
+**parameter variablePrefix: Prefix for the hidden variable with the Y position.
+**parameter hiddenPosCode: Variable where the hidden variable HTML code is written to.
+**returns The jQuery code for storing the Y scroll position of the window and to restore the position after a submit.
+**/
+function HTML_jQueryReStoreYWindowPosition($variablePrefix, &$hiddenPosCode, $standalone = false)
+{
+	//Last Y position of the content the browser window
+	$hiddenPosName = $variablePrefix.'lastYPos';
+	$lastPos = (is_numeric($_POST[$hiddenPosName]) ? $_POST[$hiddenPosName] : 0);
+
+	// If it is standalone, the jQuery functions and the script tags must be around
+	if ($standalone)
+	{
+		$begin = '
+				<script>
+			$(function()
+			{';
+	
+		$end = '
+			});
+			</script>
+			';
+	}
+	else
+		$begin = $end = '';
+	
+	$hiddenPosCode = HTML_hiddenVar($hiddenPosName,$lastPos);
+
+	return($begin.'
+		$("body").scrollTop('.$lastPos.');
+
+		$(window).scroll(function () {
+		$( "#'.$hiddenPosName.'" ).val($("body").scrollTop());
+		});
+	'.$end);
 }
 
 
@@ -846,7 +885,7 @@ function HTML_jQueryMenuEnd($menuName)
 	$hiddenPosName = $menuName.'lastYPos';
 	$lastPos = (is_numeric($_POST[$hiddenPosName]) ? $_POST[$hiddenPosName] : 0);
 
-	return(HTML_hiddenVar($hiddenPosName,$lastPos).HTML_hiddenVar($hiddenVarName,$active).'
+	return(HTML_hiddenVar($hiddenVarName,$active).'
 	</div>
 ');
 }
@@ -1802,7 +1841,7 @@ function HTML_selection($htmlName, $array, $type, $vertical = true, $defaultSele
 			elseif (!($selected === false))
 				array_makeFirst($array, $array[$selected]);
 
-			$htmlCode='<SELECT '.$js.' name="'.$htmlName.$multipleHtmlNameAdd.'" '.$multipleSelectEnable.' '.$multipleSizeAdd.'>'."\n";
+			$htmlCode='<SELECT '.$js.' id="'.$htmlName.$multipleHtmlNameAdd.'" name="'.$htmlName.$multipleHtmlNameAdd.'" '.$multipleSelectEnable.' '.$multipleSizeAdd.'>'."\n";
 
 			foreach ($array as $value => $description)
 			{
@@ -1894,6 +1933,7 @@ function HTML_checkBox($htmlName, $label, $defaultCheck = false, $prefKey = "", 
 **/
 function HTML_checkBoxCheckAll($filter = 'CB_')
 {
+	$out = array();
 	$i = 0;
 	foreach ($_POST as $key => $value)
 	{

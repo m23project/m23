@@ -6,6 +6,10 @@ Priority:25
 function run($id)
 {
 	include('/m23/inc/distr/debian/clientConfigCommon.php');
+	$lang=getClientLanguage();
+
+	include("/m23/inc/i18n/".I18N_m23instLanguage($lang)."/m23inst.php");
+
 
 	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $I18N_updating_package_information);
 

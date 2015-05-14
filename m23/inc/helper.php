@@ -6,6 +6,76 @@
 $*/
 
 
+
+
+/**
+**name HELPER_URIencode($in)
+**description Encodes a string like the JavaScript function URIencode would do it.
+**parameter in: Input string to be encoded.
+**returns Encoded version of the string
+**/
+function HELPER_URIencode($in)
+{
+	// Build an array with characters, that should not be encoded
+	$exceptions = array('-', '_', '.', '!', '~', '*', '\'', '(', ')', ',', '/', '?', ':', '@', '&', '=', '+', '$', ' ', ';');
+	$i = count($exceptions);
+
+	// Add digits (0-9), upper and lower case characters (A-Z, a-z)
+	for ($cNr = ord('0'); $cNr <= ord('9'); $cNr++) $exceptions[$i++] = chr($cNr);
+	for ($cNr = ord('A'); $cNr <= ord('Z'); $cNr++) $exceptions[$i++] = chr($cNr);
+	for ($cNr = ord('a'); $cNr <= ord('z'); $cNr++) $exceptions[$i++] = chr($cNr);
+	$out = '';
+
+	// Run thru the input string and encode all characters, that are not on the exception list
+	for ($i = 0; $i < strlen($in); $i++)
+	{
+		if (in_array($in{$i},$exceptions))
+			$out .= $in{$i};
+		else
+			$out .= urlencode($in{$i});
+	}
+
+	return($out);
+}
+
+
+
+
+
+/**
+**name HELPER_isUpper($char)
+**description Checks, if a character is upper case
+**parameter char: Character to check.
+**returns true, when upper case otherwise false
+**/
+function HELPER_isUpper($char)
+{
+	$ord = ord($char);
+	return(($ord > 64) && ($ord < 91));
+}
+
+
+
+
+
+/**
+**name HELPER_filesize($fileName)
+**description Gets the correct file size of a file, even if it is bigger than 2 GB.
+**parameter fileName: Name of the file with full path.
+**returns The file size of the file in bytes.
+**/
+function HELPER_filesize($fileName)
+{
+	if (file_exists($fileName))
+		return(exec("stat -c %s '$fileName'"));
+	else
+		return(-1);
+}
+
+
+
+
+
 /**
 **name HELPER_isExecutedInCLI()
 **description Checks, if it is run in CLI.
@@ -839,8 +909,8 @@ function HELPER_calcMBSize($number,$from=0,$trunc=false)
 **/
 function HELPER_grep($string,$search,$cut="\n")
 {
-	$parts=explode($cut,$string);
-	$out="";
+	$parts = explode($cut,$string);
+	$out = "";
 
 	for ($i=0; $i < count($parts); $i++)
 		if (!(strpos($parts[$i],$search) === false))
@@ -980,6 +1050,10 @@ function HELPER_maxPhpUploadSize()
 {
 	return(exec("grep '\(post_max_size\|upload_max_filesize\)' /etc/php4/apache/php.ini | cut -d' ' -f3 | sort -b -r | head -1"));
 }
+
+
+
+
 
 /**
 **name HELPER_compareLengthAbc($a, $b)

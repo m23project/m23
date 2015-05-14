@@ -60,4 +60,12 @@ $I18N_installing_packages='Pakete werden installiert';
 $I18N_deinstalling_packages='Pakete werden deinstalliert';
 $I18N_updating_packages='Pakete werden aktualisiert';
 $I18N_updating_package_information='Paketinformationen werden aktualisiert';
+
+//14.2
+$I18N_installing_unityfull_1404='Komplettes Unity 3D wird installiert';
+$I18N_installingLXDELubuntuCore='Minimaler LXDE/Lubuntu-Desktop wird installiert';
+$I18N_installingLXDELubuntu='Kompletter LXDE/Lubuntu-Desktop wird installiert';
+
+//15.1
+$I18N_installing_elementary_desktop = 'Elementary OS Desktop wird installiert';
 ?>

@@ -45,9 +45,6 @@
 	//Show the client add dialog if possible
 	if ($showDialog)
 	{
-		if (isset($_SESSION['FDISK_showDiskDefine']))
-			FDISK_showDiskDefine($_SESSION['preferenceSpace']['client']);
-		else
 			$helpPage2 = CLIENT_showAddDialog($clientBuilder);
 	
 		if (!empty($helpPage2))

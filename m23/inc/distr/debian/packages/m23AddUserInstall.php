@@ -16,6 +16,11 @@ function run($id)
 
 	CLCFG_addUser($accountInfo['login'], $accountInfo['firstpw'], $accountInfo['groups'], $uid, $gid);
 	/* =====> */ MSR_statusBarIncCommand(100);
+	
+	echo('
+	export DEBIAN_FRONTEND=noninteractive
+	dpkg-reconfigure libpam-runtime
+	');
 
 	sendClientStatus($id,"done");
 	executeNextWork();

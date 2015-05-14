@@ -153,7 +153,7 @@ function MASS_showFileHandDialog($EGKparams)
 **/
 function MASS_propertyKeys()
 {
-	return(array(client,office,group,login,forename,familyname,email,mac,ip,netmask,gateway,dns1,dns2,firstlogin,rootlogin,addNewLocalLogin,ldaptype,userID,groupID,ldapserver,nfshomeserver,timeZone,getSystemtimeByNTP));
+	return(array('client','office','group','login','forename','familyname','email','mac','ip','netmask','gateway','dns1','dns2','firstlogin','rootlogin','addNewLocalLogin','ldaptype','userID','groupID','ldapserver','nfshomeserver','timeZone','getSystemtimeByNTP'));
 
 };
 
@@ -172,11 +172,11 @@ function MASS_showFileFormatDialog($EGKparams)
 
 	$uploadDir="/m23/tmp/";
 	
-	if (isset($_POST[DBfileName]))
-		$DBfileName=$_POST[DBfileName];
+	if (isset($_POST['DBfileName']))
+		$DBfileName=$_POST['DBfileName'];
 		
 	//user uploaded a file
-	if (isset($_POST[BUT_uploadFile]) && move_uploaded_file(
+	if (isset($_POST['BUT_uploadFile']) && move_uploaded_file(
 		$_FILES['userfile']['tmp_name'],$uploadDir.$_FILES['userfile']['name']))
 			$DBfileName=$uploadDir.$_FILES['userfile']['name'];
 	
@@ -312,7 +312,7 @@ function MASS_showTableDefinition($EGKparams,$DBfileName)
 
 	//the amount of selections can be increased to the amount of fields in the DB file
 	if ($_POST[ED_columnAmount] > $enterPropertiesAmount)
-		$selectionAmount = $_POST[ED_columnAmount];
+		$selectionAmount = $_POST['ED_columnAmount'];
 	else
 		$selectionAmount = $enterPropertiesAmount;
 
@@ -334,10 +334,10 @@ function MASS_showTableDefinition($EGKparams,$DBfileName)
 	//read the first line from the DB file
 	$file = MASS_openDBFile($DBfileName);
 
-	if (!empty($_POST[ED_glue]))
+	if (!empty($_POST['ED_glue']))
 		{
 			//split the first line with the entered seperator
-			$parts = MASS_readDBFileRaw($file,$_POST[ED_glue]);
+			$parts = MASS_readDBFileRaw($file,$_POST['ED_glue']);
 
 			$partNr = 0;
 			$lineHtml = "";
@@ -443,11 +443,11 @@ function MASS_checkAndSaveFields(&$EGKparams)
 	{
 		switch ($EGKparams["columnKey$i"])
 		{
-			case "ip": 
+			case "ip":
 			{
-				if (!checkIP($parts[$i])) 
+				if (!checkIP($parts[$i]))
 					$errMsg .= $I18N_invalid_ip."\n"; 
-				break; 
+				break;
 			};
 
 			case "netmask":
@@ -514,7 +514,7 @@ function MASS_readDBFile($file,$EGKparams)
 
 		$parts=explode($EGKparams[glue],$line);
 
-		for ($i = 0; $i < $EGKparams[columnAmout]; $i++)
+		for ($i = 0; $i < $EGKparams['columnAmout']; $i++)
 			$out[$EGKparams["columnKey$i"]] = $parts[$i];
 
 	};
@@ -536,9 +536,9 @@ function MASS_readDBFileRaw($file,$glue)
 {
 	if ($file)
 	{
-		$line=fgets($file);
+		$line = trim(fgets($file));
 
-		$parts=explode($_POST['ED_glue'],$line);
+		$parts = explode($_POST['ED_glue'],$line);
 	};
 
 	return($parts);
@@ -574,7 +574,7 @@ function MASS_getXProperties($EGKparams,$x,$pre="")
 	$keys = MASS_propertyKeys();
 	$out = array();
 
-	$out[amount] = 0;
+	$out['amount'] = 0;
 
 	foreach ($keys as $key)
 		if ($EGKparams["$pre$key"]==$x)
@@ -964,6 +964,9 @@ function MASS_ipGenerator($amount,$rangesStr,$ping)
 **/
 function MASS_minMaxIP($netmask, $ip)
 {
+	if (!isset($netmask{1}))
+		$netmask = '255.255.255.0';
+
 	//Convert IPs to long
 	$netmaskL = ip2long($netmask);
 	$ipL = ip2long($ip);
@@ -1167,7 +1170,7 @@ function MASS_showOverview($EGKparams)
 	if (!empty($EGKparams['DBfileName']))
 		{
 			if (empty($generateAmount))
-				$generateAmount = countLinesInFile($EGKparams['DBfileName']);
+				$generateAmount = countLinesInFile($EGKparams['DBfileName'], true);
 
 			$file = MASS_openDBFile($EGKparams['DBfileName']);
 
@@ -1582,7 +1585,7 @@ function MASS_getAllFromFile($key,$EGKparams,$generateAmount,$fromDBFile)
 {
 	if (($EGKparams[$key]=="e") && ($EGKparams["FH_$key"]=="f"))
 		for ($nr = 0; $nr < $generateAmount; $nr++)
-			$out[$nr] = chop($fromDBFile[$nr][$key]);
+			$out[$nr] = trim($fromDBFile[$nr][$key]);
 
 	return($out);
 };
@@ -1629,8 +1632,8 @@ function MASS_getLongestLength($arr,$amount,$max)
 **/
 function MASS_startInstall($EGKparams)
 {
-	$client = $_GET[client];
-	$generateAmount = $_POST[ED_clientAmount];
+	$client = $_GET['client'];
+	$generateAmount = $_POST['ED_clientAmount'];
 	$allParams=CLIENT_getParams($client);
 	$defineOptions=CLIENT_getAllOptions($client);
 	
@@ -1639,62 +1642,70 @@ function MASS_startInstall($EGKparams)
 	$msg="<ul>";
 
 	for ($i=0; $i < $generateAmount; $i++)
+	{
+		$alldata['client']		= trim($_POST["ED_clientName$i"]);
+		$alldata['office']		= trim($_POST["ED_office$i"]);
+		$alldata['name']		= trim($_POST["ED_forename$i"]);
+		$alldata['familyname']	= trim($_POST["ED_familyname$i"]);
+		$alldata['email']		= trim($_POST["ED_email$i"]);
+		$alldata['mac']			= trim($_POST["ED_mac$i"]);
+		$alldata['ip']			= trim($_POST["ED_ip$i"]);
+		$alldata['netmask']		= trim($_POST["ED_netmask$i"]);
+		$alldata['gateway'] 	= trim($_POST["ED_gateway$i"]);
+		$alldata['dns1'] 		= trim($_POST["ED_dns1$i"]);
+		$alldata['dns2'] 		= trim($_POST["ED_dns2$i"]);
+		$alldata['firstpw']		= $_POST["ED_firstlogin$i"];
+		$alldata['language']	= $allParams['language'];
+		$alldata['newgroup']	= $_POST["SEL_group$i"];
+		$alldata['dhcpBootimage'] = $allParams['dhcpBootimage'];
+
+		$allOptions						= $defineOptions;
+		$allOptions['netRootPwd']		= DB_genPassword(6);
+		$allOptions['addNewLocalLogin']	= $_POST["CB_addNewLocalLogin$i"];
+		$allOptions['ldaptype']			= $_POST["SEL_ldaptype$i"];
+		$allOptions['userID']			= $_POST["ED_userID$i"];
+		$allOptions['groupID']			= $_POST["ED_groupID$i"];
+		$allOptions['ldapserver']		= $_POST["SEL_ldapserver$i"];
+		$allOptions['nfshomeserver']	= $_POST["ED_nfshomeserver$i"];
+		$allOptions['login']			= $_POST["ED_login$i"];
+
+		$alldata['CFDiskTemp']			= $allParams['CFDiskTemp'];
+/*		
+		print('<h2>allParams</h2>');
+		print_r($allParams);
+		print('<h2>defineOptions</h2>');
+		print_r($defineOptions);
+*/
+		if ($EGKparams['rootlogin']=="k")
 		{
-			$alldata['client']		= trim($_POST["ED_clientName$i"]);
-			$alldata['office']		= trim($_POST["ED_office$i"]);
-			$alldata['name']		= trim($_POST["ED_forename$i"]);
-			$alldata['familyname']	= trim($_POST["ED_familyname$i"]);
-			$alldata['email']		= trim($_POST["ED_email$i"]);
-			$alldata['mac']			= trim($_POST["ED_mac$i"]);
-			$alldata['ip']			= trim($_POST["ED_ip$i"]);
-			$alldata['netmask']		= trim($_POST["ED_netmask$i"]);
-			$alldata['gateway'] 	= trim($_POST["ED_gateway$i"]);
-			$alldata['dns1'] 		= trim($_POST["ED_dns1$i"]);
-			$alldata['dns2'] 		= trim($_POST["ED_dns1$i"]);
-			$alldata['firstpw']		= $_POST["ED_firstlogin$i"];
-			$alldata['pxe']			= ($allParams['dhcpBootimage']!="etherboot");
-			$alldata['language']	= $allParams['language'];
-			$alldata['newgroup']	= $_POST["SEL_group$i"];
-			$alldata['dhcpBootimage'] = $allParams['dhcpBootimage'];
+			$alldata['rootpassword'] = $allParams['rootPassword'];
+			$cryptRootPw = false;
+		}
+		else
+		{
+			$alldata['rootpassword'] = $_POST["ED_rootlogin$i"];
+			$cryptRootPw = true;
+		}
 
-			$allOptions						= $defineOptions;
-			$allOptions['netRootPwd']		= DB_genPassword(6);
-			$allOptions['addNewLocalLogin']	= $_POST["CB_addNewLocalLogin$i"];
-			$allOptions['ldaptype']			= $_POST["SEL_ldaptype$i"];
-			$allOptions['userID']			= $_POST["ED_userID$i"];
-			$allOptions['groupID']			= $_POST["ED_groupID$i"];
-			$allOptions['ldapserver']		= $_POST["SEL_ldapserver$i"];
-			$allOptions['nfshomeserver']	= $_POST["ED_nfshomeserver$i"];
-			$allOptions['login']			= $_POST["ED_login$i"];
-
-			if ($EGKparams[rootlogin]=="k")
-				{
-					$alldata['rootpassword'] = $allParams['rootPassword'];
-					$cryptRootPw = false;
-				}
-			else
-				{
-					$alldata['rootpassword'] = $_POST["ED_rootlogin$i"];
-					$cryptRootPw = true;
-				}
-
-			$err=CLIENT_addClient($alldata,$allOptions,CLIENT_ADD_TYPE_add,$cryptRootPw);
-			
-			if (empty($err))
-				{
-					//add the client to all needed groups
-					for ($g = 1; $g < count($groups); $g++)
-						GRP_addClientToGroup($alldata['client'],$groups[$g]);
+		$err = CLIENT_addClient($alldata,$allOptions,CLIENT_ADD_TYPE_add,$cryptRootPw);
 		
-					//copy all packages from the defined client to this client
-					PKG_copyPackagesToClient($alldata['client'],$client,"");
-					$msg.="<li>$alldata[client]: <img src=\"/gfx/button_ok-mini.png\"> </li>";
-				}
-			else
-				$msg.="<li>$alldata[client]: <img src=\" /gfx/button_cancel-mini.png\">: $err</li>";
+		if (empty($err))
+			{
+				//add the client to all needed groups
+				for ($g = 1; $g < count($groups); $g++)
+					GRP_addClientToGroup($alldata['client'],$groups[$g]);
+	
+				//copy all packages from the defined client to this client
+				PKG_copyPackagesToClient($alldata['client'],$client,"");
 
+				//copy the debconf from the defined client to this client
+				CLIENT_copyDebconfDB($client, $alldata['client']);
 
-		};
+				$msg.="<li>$alldata[client]: <img src=\"/gfx/button_ok-mini.png\"> </li>";
+			}
+		else
+			$msg.="<li>$alldata[client]: <img src=\" /gfx/button_cancel-mini.png\">: $err</li>";
+	}
 
 	$msg.="</ul>";
 

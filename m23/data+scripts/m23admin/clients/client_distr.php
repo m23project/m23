@@ -7,19 +7,19 @@
 	
 	if ($captureLoad==1)
 		//get the step from the captured GET array
-		$step = $_POST[step];
+		$step = $_POST['step'];
 	else
 		//overwrite the clientname only, if it's not given in the url
-		$client = FDISK_fdiskSessionClient();
+		$client = $_POST['client'];
+
+	$CFDiskGUIO = new CFDiskGUI($client);
 
 	//get all drives that can be found on the client to let the user choose the drive to install the MBR in
-	$MBRdriveList = FDISK_getAllDrives(FDISK_fdiskSessionParam());
+	$MBRdriveList = $CFDiskGUIO->getDrivesAndPartitions(false, false);
 
 	//check for the distribution
 	$distr = $_POST['distr'];
 	$release = $_POST['release'];
-
-	$fstab = FDISK_fdiskSessionFstab();
 
 	if (isset($_POST['SEL_MBRpart']))
 		$mbrPart = $_POST['SEL_MBRpart'];
@@ -32,8 +32,8 @@
 
 	$desktop = $_POST['SEL_desktop'];
 
-	$instPart = FDISK_fdiskSessionInstPart();
-	$swapPart = FDISK_fdiskSessionSwapPart();
+	$instPart = $CFDiskGUIO->getInstPartDev();
+	$swapPart = $CFDiskGUIO->getSwapPartDev();
 
 	//Add the installation partition to the list of drives that can be used to install the MBR on
 	$MBRdriveList = array_unique(array_merge($MBRdriveList,array($instPart)));
@@ -75,7 +75,7 @@
 			$step = 1;
 		};
 	
-	if (isset($_POST['BUT_refresh']))
+	if (isset($_POST['BUT_refresh']) || isset($_POST['BUT_step2A']) || isset($_POST['BUT_step2B']))
 		{
 			$step = 2;
 			CAPTURE_captureAll($step,"select client distribution");
@@ -99,7 +99,7 @@
 		}
 
 //install the distribution
-	if (isset($_POST['BUT_install']))
+	if (isset($_POST['BUT_install']) && !SRCLST_clientUsesEfiButSourcesListDoesntSupportEfi($client, $sourcename))
 		{
 			//set options
 			$options['instPart']		= $instPart;
@@ -109,7 +109,6 @@
 			$options['distr']			= $distr;
 			$options['release']			= $release;
 			$options['packagesource']	= $sourcename;
-			$options['fstab']			= implodeAssoc("###",$fstab);
 
 			if (is_array($packageSelection))
 			{
@@ -173,6 +172,8 @@
 <input type="hidden" name="swapPart" value="<?PHP echo($swapPart);?>">
 <input type="hidden" name="instPart" value="<?PHP echo($instPart);?>">
 <input type="hidden" name="step" value="<?PHP echo($step);?>">
+<input type="hidden" name="client" value="<?PHP echo($client);?>">
+
 
 
 <?PHP 
@@ -180,6 +181,8 @@ if ($step >= 0)
 {
 if ($distrValues['Name'] == "Ubuntu")
 	MSG_showWarning($I18N_ubuntuWarning);
+
+SRCLST_showErrorIfClientUsesEfiButSourcesListDoesntSupportEfi($client, $sourcename);
 
 HTML_showTableHeader();
 
@@ -268,6 +271,10 @@ echo("
 
 			<tr>
 				<td colspan=\"3\">
+");
+			if (file_exists('/m23/inc/userGUIAddons/client_distr_PackageKernelSelection.php'))
+				include('/m23/inc/userGUIAddons/client_distr_PackageKernelSelection.php');
+echo("
 					<span class=\"title\">
 						<center>
 							$I18N_packageSelectionToInstall

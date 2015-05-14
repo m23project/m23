@@ -22,6 +22,8 @@ function run($id)
 
 	//Get the name of the sources list
 	$sourceName = $clientOptions['packagesource'];
+	
+	$clientName = CLIENT_getClientName();
 
 	CIR_detectSCSI();
 
@@ -33,11 +35,25 @@ function run($id)
 
 	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $I18N_partition_format_client);
 
-	FDISK_adjustFdiskParams(CLIENT_getClientName());
-	/* =====> */ MSR_statusBarIncCommand(25);
 
-	//get package parameters => convert to the associative array => convert to the commands
-	$formatCommands = FDISK_genPartedCommands(explodeAssoc("###",PKG_getPackageParams($id)), $mkfsextOptions, $sourceName);
+	// Check, if there are parameters in the package job (backward compatibility)
+	$params = PKG_getPackageParams($id);
+	if (isset($params{1}))
+	{
+		FDISK_adjustFdiskParams($clientName);
+		/* =====> */ MSR_statusBarIncCommand(25);
+
+		//get package parameters => convert to the associative array => convert to the commands
+		$formatCommands = FDISK_genPartedCommands(explodeAssoc("###",PKG_getPackageParams($id)), $mkfsextOptions, $sourceName);
+	}
+	// or, if the part of the client object (new version)
+	else
+	{
+		$CFDiskBasicO = new CFDiskBasic($clientName);
+		$CFDiskBasicO->fdiskAdjustPartitioning();
+		$formatCommands = $CFDiskBasicO->genPartedCommands($mkfsextOptions, $sourceName);
+	}
+	
  
 	echo($formatCommands);
 	/* =====> */ MSR_statusBarIncCommand(75);

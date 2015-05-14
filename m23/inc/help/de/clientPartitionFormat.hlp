@@ -2,18 +2,27 @@ $I18N_clientPartitioningAndFormating<!--new 10.4 -->
 In diesem Dialog können Sie Ihren m23-Client partionieren und formatieren, sowie Software-RAIDs verwalten. Nachdem Sie Ihre Änderungen vorgenommen haben, klicken Sie auf <i>"$I18N_finalisePartitioningAndselectClientDistribution"</i>.
 
 <b>Überblick</b>
-Im linken Menü sehen Sie die Werkzeuge und Funktionen zum Bearbeiten von Festplatten und Partitionen. Bei aktiviertem JavaScript bewegen Sie die Maus im Menü über die gewünschte Funktion, um das Menü auszuklappen. Rechts daneben befindet sich die aktuelle Partitionierung und Formatierung aller Festplatten und RAIDs. Darunter (unter <i>"$I18N_waitingPartitioningAndFormatingJobs"</i>) sehen Sie die Aufgabenliste mit Partitionierungsanweisungen, die der m23-Client durchlaufen muß, um den derzeit dargestellten Zustand zu erreichen. Rechts daneben sehen Sie detaillierte Informationen über das Laufwerk, das sich unter dem Mauszeiger befindet (bei aktiviertem JavaScript bzw. bei deaktivierten die Informationen von allen Laufwerken). In der Legende unter <i>"$I18N_supported_filesystems"</i> sehen Sie die Dateisystemtypen, die mit m23 angelegt und verwaltet werden können.
+Im linken Menü sehen Sie die Werkzeuge und Funktionen zum Bearbeiten von Festplatten und Partitionen. Bei aktiviertem JavaScript bewegen Sie die Maus im Menü über die gewünschte Funktion, um das Menü auszuklappen. Rechts daneben befindet sich die aktuelle Partitionierung und Formatierung aller Festplatten und RAIDs. Darunter (unter <i>"$I18N_waitingPartitioningAndFormatingJobs"</i>) sehen Sie die Aufgabenliste mit Partitionierungsanweisungen, die der m23-Client durchlaufen muß, um den derzeit dargestellten Zustand zu erreichen. Rechts daneben sehen Sie detaillierte Informationen über das Laufwerk, das sich unter dem Mauszeiger befindet (bei aktiviertem JavaScript bzw. bei deaktiviertem sehen Sie die Informationen aller Laufwerke). In der Legende unter <i>"$I18N_supported_filesystems"</i> sehen Sie die Dateisystemtypen, die mit m23 angelegt und verwaltet werden können.
+
 
 <u>Hinweis zum Rückgängigmachen von Aktionen</u>
-Sie können jede vorgenommene Änderung durch Zurückspringen in der Browserhistorie (z.B. durch Drücken von <i>"Alt"</i> + <i>"Pfeil nach links"</i> in Firefox) rückgängig machen.
+<!-- V15.1 begin -->Sie können die jeweils letzte Änderung durch einen Klick auf <i>"$I18N_discardLastAction"</i> rückgängigmachen. Mit <i>"$I18N_reset"</i> verwerfen Sie alle Partitionierungs- und Formatierungsanweisungen. Versuchen Sie <b>keinesfalls</b>, Änderung durch Zurückspringen in der Browserhistorie rückgängigzumachen.<!-- V15.1 end -->
+
+
 
 <u>Hinweis zur Verwendung von JavaScript</u>
 Die Aktivierung von JavaScript ist optional. Bei aktiviertem JavaScript stehen einige zusätzliche Komfortfunktionen (z.B. das automatische Aufklappen der Menüpunkte oder die Kennzeichnung der Partition unter dem Mauszeiger) zur Verfügung. Aber auch ohne JavaScript können alle nötigen Funktionen genutzt werden.
+
 
 <h2>Menüpunkte im Überblick</h2>
 
 <b>$I18N_currentDriveAndPartition</b>
 Viele der Operationen sind an eine Partition (z.B. formatieren) oder an eine Festplatte (z.B. neue Partition anlegen) gebunden. Diese Operationen beziehen sich jeweils auf die unter <i>"$I18N_currentDriveAndPartition"</i> in <i>"$I18N_currentDrive"</i> und <i>"$I18N_currentPartition"</i> angegebenen Laufwerke bzw. Partitionen. Sie können die aktuelle Festplatte und Partition durch Anklicken in der grafischen Übersicht ändern.
+
+<!-- V15.1 begin addendum --><b>$I18N_virtual_disks</b>
+Wenn Sie einen Client für die Masseninstallation definieren, legen Sie unter diesem Menüpunkt virtuelle Festplatten an. Wählen Sie unter <i>"$I18N_diskName"</i> den gewünschten Gerätenamen und geben Sie unter <i>"$I18N_size"</i> die Größe des zu erstellenden Laufwerkes an und klicken Sie anschließend auf <i>"$I18N_create"</i>.
+<u>Hinweis</u>
+Die so erstellten virtuellen Festplatten werden wie die realen Festplatten einen Clients eingerichtet (Partitionieren, Formatieren, Software-RAIDs, Installations- und Swappartition). Die Größen sollten ähnlich (oder identisch), die Laufwerksnamen müssen hingegen identisch zu den in Ihren Clients verbauten realen Festplatten sein. Bei Abweichung der virtuellen von der realen Festplattengröße werden die Partitionsgrößen prozentual angepasst.<!-- V15.1 end addendum -->
 
 <b>$I18N_partitionScheme</b>
 Unter diesem Menüpunkt können Sie ein vordefiniertes Schema zum Partitionieren und Formatieren der Festplatte des m23-Clients auswählen und durch einen Klick auf <i>"$I18N_executeScheme"</i> anwenden.
@@ -27,6 +36,9 @@ Mit einem Klick auf <i>"$I18N_delete"</i> entfernen Sie die aktuelle (unter <i>"
 <b>$I18N_add_new_partition</b>
 Mit dieser Funktion können Sie neue Partitionen innerhalb eines freien Bereiches auf der Festplatte anlegen. Zum Wählen von Start- und Endpunkt der neuen Partition klicken Sie (bei aktivertem JavaScript) auf einen weißen Bereich oder geben diese unter <i>"$I18N_start"</i> und <i>"$I18N_end"</i> an. Sie können natürlich auch eine Partition anlegen, die nicht den ganzen freien Platz einnimmt. Wählen Sie zudem unter <i>"$I18N_type"</i> aus, ob Sie eine primäre (primary), erweiterte (extended) oder logische (logical) Partition erstellen möchten. Klicken Sie abschließend auf <i>"$I18N_add"</i>.
 
+<!-- V15.1 begin --><u>Hinweis zu UEFI</u>
+Verwendet Ihr m23-Client UEFI, so muß zuerst eine EFI-Boot-Partition angelegt werden. Die Position und Größe sind bei dieser vorgegeben und kann nicht geändert werden.<!-- V15.1 end -->
+
 <b>$I18N_formatPartition</b>
 Hiermit formatieren Sie die aktuell ausgewählte Partition. Wählen Sie hierzu unter <i>"$I18N_type"</i> das gewünschte Dateisystem und klicken anschließend auf <i>"$I18N_format"</i>.
 <!-- V11.5 begin --><u>Hinweis zu Dateisystemen</u>
@@ -37,9 +49,9 @@ Sollten Sie ein Dateisystem auswählen, das nicht von der (später zu wählenden) C
 
 <u>Schrittweises Vorgehen zum Anlegen eines RAIDs</u>
 <ol>
-<li><b>Anlegen des RAID-Laufwerks:</b> Wählen Sie aus der Liste <i>"$I18N_raidDriveName"</i> einen Namen aus und klicken Sie anschließend auf <i>"$I18N_createRAIDDrive"</i>. Dieses Laufwerk ist ein virtuelles Multi-Device.</li>
-<li><b>Hinzufügen von Partitionen und Laufwerken:</b> In dem Kasten <i>"$I18N_addDrivesPartitionsToRaid"</i> finden Sie alle benötigten Funktionen zum Zuweisen von Partitionen und Laufwerken zu einem RAID. Wählen Sie dazu den RAID-Typ und das RAID-Laufwerk aus den entsprechenden Listen aus. Sie können anschließend die weiter unten aufgelistete Partition bzw. das Laufwerk aus der Liste <i>"$I18N_realDrivePartition"</i> dem RAID mit einem Klick auf <i>"$I18N_add"</i> zuweisen. In der Tabelle <i>"$I18N_assignedDrivesPartitions"</i> sehen Sie die bereits zugewiesenen Laufwerke und Partitionen.</li>
-<li><b>RAID-Erstellung abschließen:</b> Klicken Sie anschließend auf <i>"$I18N_extPartStep2FormartPart"</i>.</li>
+<li><b>Anlegen des RAID-Laufwerks:</b> Wählen Sie <!-- V15.1 begin -->unter <i>"$I18N_createRAIDDrive"</i><!-- V15.1 end --> aus der Liste <i>"$I18N_raidDriveName"</i> einen Namen <!-- V15.1 begin -->und unter <i>"$I18N_raidLevel"</i> das zugehörige RAID-Level<!-- V15.1 end --> aus und klicken Sie anschließend auf <i>"$I18N_createRAIDDrive"</i>. Dieses Laufwerk ist ein virtuelles Multi-Device.</li>
+<li><b>Hinzufügen von Partitionen und Laufwerken:</b> In dem Kasten <i>"$I18N_addDrivesPartitionsToRaid"</i> finden Sie alle benötigten Funktionen zum Zuweisen von Partitionen und Laufwerken zu einem RAID. <!-- V15.1 begin --><!--Wählen Sie dazu den RAID-Typ und das RAID-Laufwerk aus den entsprechenden Listen aus. -->Wählen Sie unter <i>"$I18N_raidDrive"</i> das gewünschte RAID-Laufwerk und bestätigen dieses mit einem Klick auf <i>"$I18N_select"</i>. Weisen Sie die weiter unten aufgelistete Partition bzw. das Laufwerk aus der Liste <i>"$I18N_realDrivePartition"</i> dem RAID mit einem Klick auf <i>"$I18N_addToRAID"</i> zu. In der Tabelle <i>"$I18N_assignedDrivesPartitions"</i> sehen Sie die bereits zugewiesenen Laufwerke und Partitionen. Hier können Sie Partitionen und Laufwerke auch wieder aus dem RAID-Verbund entfernen.<!-- V15.1 end --></li>
+<!-- V15.1 begin --><!--<li><b>RAID-Erstellung abschließen:</b> Klicken Sie anschließend auf <i>"$I18N_extPartStep2FormartPart"</i>.</li>--> <!-- V15.1 end -->
 </ol>
 
 <u>Hinweis zu RAIDs und Partitionen</u>

@@ -87,18 +87,19 @@ function CLCFG_addDistributionSpecificOptions($options)
 
 
 /**
-**name CLCFG_showDistributionSpecificOptions($options)
+**name CLCFG_showDistributionSpecificOptions($options, $distr = "debian")
 **description shows distribution specific options and returns false, if there was an error
 **parameter options: options array
+**parameter distr: The name the distribution to use.
 **/
-function CLCFG_showDistributionSpecificOptions($options)
+function CLCFG_showDistributionSpecificOptions($options, $distr = "debian")
 {
 	include_once("/m23/inc/distr/debian/packages.php");
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 	$options = CLIENT_getSetOption($kernel,"kernel",$options);
 
-	$kernelList = PKG_getKernels("debian",$_POST['SEL_sourcename'],$options['arch']);
+	$kernelList = PKG_getKernels($distr, $_POST['SEL_sourcename'], $options['arch']);
 	$kernel = HTML_storableSelection("SEL_kernel", "kernel", $kernelList, SELTYPE_selection, true, $options['kernel'], $options['kernel']);
 	$options = CLIENT_getSetOption($kernel,"kernel",$options);
 
@@ -156,12 +157,27 @@ function CLCFG_enableLDAPDebian($clientOptions)
 	if (empty($LDAPhost) || empty($baseDN))
 		return;
 
-	echo("
-		rm /tmp/debconfLDAP 2> /dev/null
-
-		#write debconf data
-cat >> /tmp/debconfLDAP << \"EOF\"
-libnss-ldap libnss-ldap/binddn string cn=proxyuser,$baseDN
+	if ('wheezy' == $clientOptions['release'])
+	{
+		CLCFG_setDebConfDirect("libnss-ldap libnss-ldap/binddn string cn=proxyuser,$baseDN
+libnss-ldap libnss-ldap/bindpw password
+libnss-ldap libnss-ldap/confperm boolean true
+libnss-ldap libnss-ldap/dblogin boolean false
+libnss-ldap libnss-ldap/dbrootlogin boolean false
+libnss-ldap libnss-ldap/nsswitch note
+libnss-ldap libnss-ldap/override boolean true
+libnss-ldap libnss-ldap/rootbinddn string cn=manager,$baseDN
+libnss-ldap libnss-ldap/rootbindpw password
+libnss-ldap shared/ldapns/base-dn string $baseDN
+libnss-ldap shared/ldapns/ldap-server string ldap://$LDAPhost
+libnss-ldap shared/ldapns/ldap_version select 3
+libpam-runtime libpam-runtime/override boolean false
+libpam-runtime libpam-runtime/profiles multiselect unix, ldap
+portmap portmap/loopback boolean false");
+	}
+	else
+	{
+		CLCFG_setDebConfDirect("libnss-ldap libnss-ldap/binddn string cn=proxyuser,$baseDN
 libnss-ldap libnss-ldap/bindpw password
 libnss-ldap libnss-ldap/confperm boolean false
 libnss-ldap libnss-ldap/dblogin boolean false
@@ -183,18 +199,17 @@ libpam-ldap libpam-ldap/rootbinddn string cn=manager,$baseDN
 libpam-ldap libpam-ldap/rootbindpw password
 libpam-ldap shared/ldapns/base-dn string $baseDN
 libpam-ldap shared/ldapns/ldap-server string ldapi://$LDAPhost
-ldap-auth-config ldap-auth-config/ldapns/ldap-server string ldapi://$LDAPhost
 libpam-ldap shared/ldapns/ldap_version select 3
+ldap-auth-config ldap-auth-config/ldapns/ldap-server string ldapi://$LDAPhost
 portmap portmap/loopback boolean false
-EOF
+");
+	}
 
-debconf-set-selections /tmp/debconfLDAP
+	//Thanks to the howto from: http://www.debuntu.org/ldap-server-and-linux-ldap-clients-p2
 
-	#Thanks to the howto from: http://www.debuntu.org/ldap-server-and-linux-ldap-clients-p2
-
-	export DEBIAN_FRONTEND=noninteractive
-
-	apt-get -m --force-yes -qq -y install libnss-ldap libpam-ldap nscd	
+	CLCFG_aptGet('install','libnss-ldap libpam-ldap nscd ldap-utils libnss-db nss-updatedb');
+	
+echo("
 
 	echo \"host $LDAPhost
 base $baseDN
@@ -221,11 +236,46 @@ session optional pam_foreground.so\" > /etc/pam.d/common-session
 
 	echo \"BASE dc=$baseDN
 URI ldap://$LDAPhost\" > /etc/ldap/ldap.conf
-
 ");
 
+// Add the local groups to the LDAP user
+echo('
+echo "*; *; *; Al0000-2400;'.DISTR_getDebianUserGroups(',').'" >> /etc/security/group.conf
+echo "auth required pam_group.so use_first_pass" >> /etc/pam.d/common-auth
+');
+
 	CLCFG_patchNsswitchForLDAP();
+	
+	echo("
+	/usr/sbin/nss_updatedb ldap
+	dpkg-reconfigure libpam-runtime
+	");
+
+	if ('wheezy' == $clientOptions['release'])
+	{
+		echo(EDIT_writeToFile('/etc/pam.d/common-account', 'account [success=2 new_authtok_reqd=done default=ignore]        pam_unix.so
+account [success=1 default=ignore]      pam_ldap.so
+account requisite                       pam_deny.so
+account required                        pam_permit.so
+session required pam_mkhomedir.so umask=0022 skel=/etc/skel/ silent')."\n".
+		EDIT_writeToFile('/etc/pam.d/common-auth', 'auth    [success=2 default=ignore]      pam_unix.so nullok_secure
+auth    [success=1 default=ignore]      pam_ldap.so use_first_pass
+auth    requisite                       pam_deny.so
+auth    required                        pam_permit.so')."\n".
+		EDIT_writeToFile('/etc/pam.d/common-password', 'password        [success=2 default=ignore]      pam_unix.so obscure sha512
+password        [success=1 user_unknown=ignore default=die]     pam_ldap.so use_authtok try_first_pass
+password        requisite                       pam_deny.so
+password        required                        pam_permit.so')."\n".
+		EDIT_writeToFile('/etc/pam.d/common-session', 'session [default=1]                     pam_permit.so
+session requisite                       pam_deny.so
+session required                        pam_permit.so
+session required        pam_unix.so
+session optional                        pam_ldap.so')."\n".
+		EDIT_writeToFile('/etc/pam.d/common-session-noninteractive', 'session [default=1]                     pam_permit.so
+session requisite                       pam_deny.so
+session required                        pam_permit.so
+session required        pam_unix.so
+session optional                        pam_ldap.so'));
+	}
 }
-
-
 ?>

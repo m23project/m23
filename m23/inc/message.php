@@ -226,7 +226,7 @@ function MSG_show($message, $language="", $width = 700, $urgency, $I18Ntitle)
 {
 	if (!isset($language{1}))
 		include("/m23/inc/i18n/$GLOBALS[m23_language]/m23base.php");
-	elseif ($language != "none")	
+	elseif ($language != "none")
 		include("/m23/inc/i18n/$language/m23base.php");
 
 	MSG_showMessageBox($message,$urgency,$$I18Ntitle,$width);
@@ -252,7 +252,19 @@ function MSG_showMessageBoxHeader($tableType,$type,$width=700,$dontShowButReturn
 		$htmlWidth="width=\"$width\"";
 
 	if (HELPER_isExecutedInCLI())
-		$out = '';
+	{
+		switch ($type)
+		{
+			case 'errortable':
+				$out = "\nERROR: ";
+				break;
+			case 'warningtable':
+				$out = "\nWARNING: ";
+				break;
+			default:
+				$out = "\nINFO: ";
+		}
+	}
 	else
 		$out = "<br><CENTER>
 	<table class=\"$tableType\" $htmlWidth align=\"center\" border=\"0\" cellspacing=\"5\">

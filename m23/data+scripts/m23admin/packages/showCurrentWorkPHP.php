@@ -7,14 +7,19 @@
 	CHECK_FW(CC_id, $id);
 
 	$clientO = new CClient($id);
+	
+	if (isset($_GET['script']))
+		$otherScript = $_GET['script'];
+	else
+		$otherScript = '';
 
 	HTML_showTitle($I18N_currentWorkPHP.': '.$clientO->getClientName());
 
 	HTML_showFormHeader();
 	HTML_setPage('showCurrentWorkPHP');
-	
+
 	HTML_submitDefine('BUT_refresh', $I18N_refresh);
-	HTML_sourceViewer('SRC_currentWorkPHP', $clientO->getClientCurrentWorkPHP(), 'bash');
+	HTML_sourceViewer('SRC_currentWorkPHP', $clientO->getClientCurrentWorkPHP($otherScript), 'bash');
 	HTML_logArea('TA_wgetCode', 100, 1, 'wget "'.$clientO->getClientWorkPHPURL().'" -O /tmp/work.sh; less /tmp/work.sh');
 
 

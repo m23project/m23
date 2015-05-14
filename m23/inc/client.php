@@ -15,9 +15,6 @@ define("CLIENT_ADD_TYPE_assimilate",2);
 
 
 
-
-
-
 /**
 **name CLIENT_removeServerCache($client)
 **description Removes the client cache on the m23 server.
@@ -62,6 +59,7 @@ function CLIENT_getNextFreeIp()
 	$minMax = MASS_minMaxIP(getServerNetmask(),$server);
 	$oldip = $ip = ip2longSafe($minMax[0]);
 	$max = ip2longSafe($minMax[1]);
+	$min = ip2longSafe($minMax[0]);
 
 	//Generate an array with IPs that cannot be used
 	$i = 0;
@@ -83,7 +81,7 @@ function CLIENT_getNextFreeIp()
 		$ip = $line[0];
 
 		//If the difference between the previous used IP and the current IP is bigger than 1, then there is a hole
-		if ((($ip - $oldip) > 1) && (! in_array(($ip - 1),$notUse)) && (! pingIP(long2ip($ip - 1))))
+		if (($ip >= $min) && ($ip <= $max) && (($ip - $oldip) > 1) && (! in_array(($ip - 1),$notUse)) && (! pingIP(long2ip($ip - 1))))
 			return(long2ip($ip - 1));
 
 		$oldip = $ip;
@@ -373,6 +371,28 @@ debConfEOF
 
 
 /**
+**name CLIENT_copyDebconfDB($clientName, $destClient)
+**description Copies all debconf values from one client to another.
+**parameter clientName: Name of the source client.
+**parameter destClient: Name of the destination client.
+**/
+function CLIENT_copyDebconfDB($clientName, $destClient)
+{
+	CHECK_FW(CC_clientname, $clientName, CC_clientname, $destClient);
+
+	$result = db_query("SELECT * FROM debconf WHERE client = '$clientName'");
+
+	while ($line = mysql_fetch_array($result))
+	{
+		DB_query("INSERT INTO debconf (client, package, var, val, type) VALUES ('$destClient', '$line[package]', '$line[var]', '$line[val]', '$line[type]') ON DUPLICATE KEY UPDATE val = '$line[val]'");
+	}
+}
+
+
+
+
+
+/**
 **name CLIENT_setDebconfDB($clientName, $package, $variablesValues)
 **description Sets debconf values for a client and a package.
 **parameter clientName: Name of the client.
@@ -432,6 +452,26 @@ function CLIENT_getDebconfDBValue($clientName, $package, $var)
 	$result = db_query("SELECT val FROM debconf WHERE client = '$clientName' AND package = '$package' AND var = '$var'");
 	$line = mysql_fetch_row($result);
 	return($line[0]);
+}
+
+
+
+
+
+/**
+**name CLIENT_getAllClientNames()
+**description Gets the names of all clients.
+**returns Array with the names of all clients.
+**/
+function CLIENT_getAllClientNames()
+{
+	$out = array();
+	$i = 0;
+	$result = db_query("SELECT client FROM `clients`"); //FW ok
+	while ($line = mysql_fetch_row($result))
+		$out[$i++] = $line[0];
+
+	return($out);
 }
 
 
@@ -601,16 +641,25 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 			$cmdf="/tmp/m23remote$jobName.sh";
 			$lock="/tmp/m23remote$jobName.lock";
 
+			// Disable sudo calls, when run from the command line
+			if (HELPER_isExecutedInCLI())
+				$sudoWithArgs = $sudoWithoutArgs = '';
+			else
+			{
+				$sudoWithArgs = "sudo -i -u $user";
+				$sudoWithoutArgs = 'sudo';
+			}
+
 			//Choose the execution mechanism
 			if ($runInScreen)
 			{
-				$execCMD = "screen -dmS $jobName sudo -i -u $user $cmdf; exit";
+				$execCMD = "screen -dmS $jobName $sudoWithArgs $cmdf; exit";
 				$sshExtra = "-t -t";
 				$sshOutput = "";
 			}
 			else
 			{
-				$execCMD = "sudo -i -u $user $cmdf";
+				$execCMD = "$sudoWithArgs $cmdf";
 				$sshExtra = "";
 				$sshOutput = "2>&1 | cat";
 			}
@@ -622,19 +671,17 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 			touch $lock
 			$cmds
 			rm $lock
-			#rm $cmdf
+			rm $cmdf
 			");
 			fclose($file);
 
 			#Transfer the command file
-			exec("sudo scp -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $localCmdf root@$ip:$cmdf");
-
+			exec("$sudoWithoutArgs scp -o LogLevel=FATAL -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $localCmdf $user@$ip:$cmdf");
 			#Delete the temporary local command file
 			unlink($localCmdf);
 
-
 			//Generate the SSH command and the script generating script
-			$SSHcmd = "echo 'chmod +x $cmdf; chown $user $cmdf; $execCMD' | sudo ssh -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $sshExtra -l root $ip $sshOutput";
+			$SSHcmd = "$sudoWithoutArgs ssh -o LogLevel=FATAL -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $sshExtra -l $user $ip 'chmod +x $cmdf; chown $user $cmdf; $execCMD' $sshOutput";
 
 			if ($runInScreen)
 			{
@@ -645,19 +692,17 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 // 			print("<pre>$SSHcmd</pre>");
 
 			//Get the output of SSH and split the lines into an array
-			$lines = explode("\n",shell_exec($SSHcmd));
+			$lines = explode("\n",@shell_exec($SSHcmd));
 			$out = "";
 
 			//Run thru the lines and filter out unwanted SSH messages
 			foreach ($lines as $line)
 			{
-				if (!(strpos($line,"Warning: Permanently added") === false))
-					continue;
-				if (!(strpos($line,"stdin: is not a tty") === false))
-					continue;
-				if (!(strpos($line,"stdin is not a terminal") === false))
-					continue;
-				$out .= "$line\n";
+				if ((strpos($line, "Warning: Permanently") === false) &&
+					(strpos($line, "stdin: is not a tty") === false) &&
+					(strpos($line, "stdin is not a terminal") === false) &&
+					(strpos($line, "bash: warning: setlocale") === false))
+					$out .= "$line\n";
 			}
 
 			return($out);
@@ -702,7 +747,6 @@ function CLIENT_isBasesystemInstalledFromImage($options)
 **parameter data['gateway']: gateway of the client
 **parameter data['dns1']: DNS server 1
 **parameter data['dns2']: DNS server 2
-**parameter data['pxe']: if true PXE is the boot standard, otherwise Etherboot
 **parameter data['newgroup']: group of the client
 **parameter data['language']: client language
 **parameter data['firstpw']: password for the first user login
@@ -738,7 +782,7 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 	
 	try
 	{
-		$CClientO = new CClient($data['client'], CClient::CHECKMODE_MUSTNOTEXIST);
+		$CClientO = new CFDiskIO($data['client'], CClient::CHECKMODE_MUSTNOTEXIST);
 	}
 	catch (Exception $e)
 	{
@@ -758,11 +802,19 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 			$CClientO->setLDAPServer($options['ldapserver']);
 
 			$CClientO->setUserDetails($data['name'], $data['familyname'], $data['email'], $data['office'], $options['login'], $data['firstpw']);
-			
+
 			$CClientO->setBootType($data['dhcpBootimage']);
 
+			//if there is an error message quit with it
+			if ($CClientO->hasErrors())
+			{
+				$err = $CClientO->popErrorMessagesHTML();
+				$CClientO->destroy();
+				return($err);
+			}
+
 			//Don't check Network settings in an DHCP/m23shared environment
-			if ($CClientO->getBootType() != 'gpxe')
+			if ($CClientO->getBootType() != CClient::BOOTTYPE_GPXE)
 			{
 				$CClientO->setNetmask($data['netmask']);
 				$CClientO->setGateway($data['gateway']);
@@ -781,18 +833,24 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 			//The following is most likely used on mass installation
 			if (isset($options['release'])) $CClientO->setRelease($options['release']);
 			if (isset($options['distr'])) $CClientO->setDistribution($options['distr']);
-			if (isset($options['instPart'])) $CClientO->setInstPart($options['instPart']);
-			if (isset($options['swapPart'])) $CClientO->setSwapPart($options['swapPart']);
+			if (isset($options['instPart'])) $CClientO->setInstPartDev($options['instPart']);
+			if (isset($options['swapPart'])) $CClientO->setSwapPartDev($options['swapPart']);
+			
+			if (isset($data['CFDiskTemp'])) $CClientO->setCFDiskTemp(unserialize($data['CFDiskTemp']));
+
 			$CClientO->copyImagingParameters($options);
 			$CClientO->copyMassOptions($options);
 		};
 
-	if (($clientAddType == CLIENT_ADD_TYPE_add) && ($CClientO->getBootType() != 'gpxe'))
+	if (($clientAddType == CLIENT_ADD_TYPE_add) && ($CClientO->getBootType() != CClient::BOOTTYPE_GPXE))
 		$CClientO->setMAC($data['mac']);
 
-	if ((($clientAddType == CLIENT_ADD_TYPE_add) || ($clientAddType == CLIENT_ADD_TYPE_assimilate)) && ($CClientO->getBootType() != 'gpxe'))
+	if ((($clientAddType == CLIENT_ADD_TYPE_add) || ($clientAddType == CLIENT_ADD_TYPE_assimilate)) && ($CClientO->getBootType() != CClient::BOOTTYPE_GPXE))
 		$CClientO->setIP($data['ip']);
 
+	// Set system in UEFI mode, if UEFI booting is choosen
+	if (($clientAddType == CLIENT_ADD_TYPE_define) && ($CClientO->getBootType() == CClient::BOOTTYPE_GRUB2EFIX64))
+		$CClientO->setUEFI(true);
 
 	if ($clientAddType != CLIENT_ADD_TYPE_assimilate)
 	{
@@ -1026,20 +1084,20 @@ function CLIENT_listPackages($client, $key,$withActions)
 		");
 
 	while ($line=mysql_fetch_row($result))
-		{
-			if ($withActions)
-				$actions="<td><INPUT type=\"checkbox\" name=\"CB_pkg$counter\" value=\"$line[0]\"></td>";
-				else
-				$actions="";
-				
-			if (($counter % 2) == 0)
-				$class = 'class="evenrow"';
+	{
+		if ($withActions)
+			$actions="<td><INPUT type=\"checkbox\" name=\"CB_pkg$counter\" value=\"$line[0]\"></td>";
 			else
-				$class = 'class="oddrow"';
+			$actions="";
+			
+		if (($counter % 2) == 0)
+			$class = 'class="evenrow"';
+		else
+			$class = 'class="oddrow"';
 
-			echo("<tr $class><td>".$line[0]."</td><td>".$line[1]."</td><td>".PKG_translateClientPackageStatus($line[2])."</td>$actions</tr>\n");
-			$counter++;
-		};
+		echo("<tr $class><td>".$line[0]."</td><td>".$line[1]."</td><td>".PKG_translateClientPackageStatus($line[2])."</td>$actions</tr>\n");
+		$counter++;
+	}
 
 	HTML_showTableEnd();
 
@@ -1384,8 +1442,8 @@ function CLIENT_showGeneralInfo($id,$generateEnterKeep=false)
 	<tr> <td>$I18N_arch:</td><td>$allOptions[arch]</td></tr>
 	<tr> <td>Kernel:</td><td>".nl2br($allOptions['kernel'])."</td></tr>");
 
-	//Only show network information if the client is gPXE or DHCP client
-	if ($data['dhcpBootimage'] != "gpxe")
+	//Only show network information if the client is NOT gPXE or DHCP client
+	if ($data['dhcpBootimage'] != CClient::BOOTTYPE_GPXE)
 		echo( "<tr> <td>$I18N_mac:</td><td>$data[mac]</td>$macEGK</tr>
 		<tr> <td>$I18N_ip:</td><td>$data[ip]</td>$ipEGK</tr>
 		<tr> <td>$I18N_netmask:</td><td>$data[netmask]</td>$netmaskEGK</tr>
@@ -1739,9 +1797,13 @@ function CLIENT_convertMac($mac, $splitter)
 **description returns the ip from a selected clientname
 **parameter clientName: name of the client
 **/
-function CLIENT_getIPbyName($clientName)
+function CLIENT_getIPbyName($clientName, $IPOnCLI = false)
 {
 	CHECK_FW(CC_clientname,$clientName);
+	
+	if (!$IPOnCLI && HELPER_isExecutedInCLI())
+		return($clientName);
+	
 	$sql = "SELECT IP FROM `clients` WHERE client='$clientName'";
 
 	$result=DB_query($sql); //FW ok
@@ -1798,13 +1860,15 @@ function CLIENT_getMACbyName($clientName)
 
 
 /**
-**name CLIENT_sshFetchJob($clientName)
-**description connects to the client and lets it fetch the next job
+**name CLIENT_sshFetchJob($clientName, $ip = false)
+**description Connects to the client via SSH and lets the next job fetch and execute it in a screen (named "m23install").
 **parameter clientName: name of the client
+**parameter ip: Optional parameter for the client's IP (faster than getting the IP by the client name)
 **/
-function CLIENT_sshFetchJob($clientName)
+function CLIENT_sshFetchJob($clientName, $ip = false)
 {
-	$ip=CLIENT_getIPbyName($clientName);
+	if ($ip === false)
+		$ip=CLIENT_getIPbyName($clientName);
 
 	$cmd="sudo ssh -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $ip \"screen -dmS m23install /sbin/m23fetchjob ".getServerIP()."\"";
 	system($cmd);
@@ -1829,7 +1893,7 @@ function CLIENT_backToRed($clientName)
 	PKG_addJob($clientName,"m23Presetup",0,"");
 
 	//Start desaster recovery without adding new packages
-	CLIENT_desasterRecovery($clientName, false);
+	CLIENT_desasterRecovery($clientName, false, false);
 }
 
 
@@ -1837,12 +1901,13 @@ function CLIENT_backToRed($clientName)
 
 
 /**
-**name CLIENT_desasterRecovery($clientName, $addInstallRemovalJobs = true)
+**name CLIENT_desasterRecovery($clientName, $addInstallRemovalJobs = true, $addShutdownOrRebootPackage = true)
 **description recover a client: all client jobs are done again, status is set to 0
 **parameter clientName: name of the client
 **parameter addInstallRemovalJobs: If set to true, the names of all installed packages will be combined to a m23normal and all revomed to a m23normalRemove job.
+**parameter addShutdownOrRebootPackage: If set to true, a shutdown or reboot package will be added.
 **/
-function CLIENT_desasterRecovery($clientName, $addInstallRemovalJobs = true)
+function CLIENT_desasterRecovery($clientName, $addInstallRemovalJobs = true, $addShutdownOrRebootPackage = true)
 {
 	CHECK_FW(CC_clientname, $clientName);
 	//set all packages from the client to status waiting
@@ -1852,6 +1917,9 @@ function CLIENT_desasterRecovery($clientName, $addInstallRemovalJobs = true)
 	//set statuscode of the client to 0
 	$sql = "UPDATE `clients` SET status = '0' WHERE client = '$clientName'";
 	DB_query($sql); //FW ok
+
+	$CFDiskBasicO = new CFDiskBasic($clientName);
+	$CFDiskBasicO->resetWantedPartitioning();
 
 	if ($addInstallRemovalJobs)
 	{
@@ -1876,7 +1944,8 @@ function CLIENT_desasterRecovery($clientName, $addInstallRemovalJobs = true)
 	deleteClientLogs($clientName);
 	CLIENT_removeServerCache($clientName);
 	CLIENT_resetAndInstall($clientName);
-	PKG_addShutdownOrRebootPackage($clientName);
+	if ($addShutdownOrRebootPackage)
+		PKG_addShutdownOrRebootPackage($clientName);
 }
 
 
@@ -2473,7 +2542,7 @@ function CLIENT_generateHTMLStatusBar($clientName)
 {
 	//Get the client status and choose the image for the status
 	$data=CLIENT_getParams($clientName);
-	$id=$data[id];
+	$id=$data['id'];
 	$statusimage=CLIENT_getStatusimage($data['status']);
 
 	//Get the status of the debug mode and
@@ -2663,9 +2732,13 @@ function CLIENT_query($o1,$s1,$o2,$s2,$groupName="",$o3="",$s3="", $search="")
 	//If all clients running on a special VM host should be searched, no search string is allowed
 	if (isset($_GET['vmRunOnHost']))
 		$search = '';
-
+		
+	$orderBy = isset($_GET['orderBy']) ? $_GET['orderBy'] : '';
+	$direction = isset($_GET['direction']) ? $_GET['direction'] : '';
+	$w = $and = '';
+		
 	//generate the SQL commands that should be added for sorting
-	switch ($_GET['orderBy'])
+	switch ($orderBy)
 	{
 		case "status":
 			$orderBy="clients.status";
@@ -2690,7 +2763,7 @@ function CLIENT_query($o1,$s1,$o2,$s2,$groupName="",$o3="",$s3="", $search="")
 	}
 
 	//add SQL command for sorting direction
-	switch ($_GET['direction'])
+	switch ($direction)
 	{
 		case "desc":
 			$direction="DESC";
@@ -2984,12 +3057,9 @@ function CLIENT_showAddDialog($addType)
 	HTML_storableInput("ED_rootpassword", "rootpassword", HELPER_passGenerator(8), $installParams['rootpassword'], 20, 20);
 		CLIENT_addChangeElement("rootpassword");
 
-	if ($_SESSION['m23Shared'])
-		$bootTypeList = array("gpxe" => "gPXE/DHCP");
-	else
-		$bootTypeList = array("pxe" => "pxe","etherboot" => "etherboot", "gpxe" => "gPXE/DHCP");
-	$boottype = HTML_storableSelection("SEL_boottype", "boottype", $bootTypeList, SELTYPE_selection, true, isset($_GET['VM_dhcpBootimage']) ? $_GET['VM_dhcpBootimage'] : $params['dhcpBootimage'], $installParams['dhcpBootimage'], 'onchange="disableNetworkOnDHCP()"');
-	$installParams['pxe'] = $boottype;
+	$bootTypeList = CClient::getNetworkBootTypesArrayForSelection();
+	$boottype = HTML_storableSelection("SEL_boottype", "boottype", $bootTypeList, SELTYPE_selection, true, isset($_GET['VM_dhcpBootimage']) ? $_GET['VM_dhcpBootimage'] : $params['dhcpBootimage'], $installParams['dhcpBootimage'], 'onchange="disableNetworkOnDHCP(); chooseAmd64ArchitectureOnUEFIBootType();"');
+	$installParams['dhcpBootimage'] = $boottype;
 		CLIENT_addChangeElement("boottype",true);
 
 	$languageList = I18N_listClientLanguages("", false);
@@ -3089,14 +3159,10 @@ function CLIENT_showAddDialog($addType)
 				
 					//Add the client
 					$err = CLIENT_addClient($installParams,$installOptions,$addType == ADDDIALOG_defineOnly ? CLIENT_ADD_TYPE_define : CLIENT_ADD_TYPE_add);
-
-					//Save in the session that the next dialog is the disk define dialog
+					
 					if ($addType == ADDDIALOG_defineOnly)
-					{
-						$_SESSION['FDISK_showDiskDefine'] = true;
-/*						print("FDISK_showDiskDefine: $_SESSION[FDISK_showDiskDefine]");*/
-					}
-
+						$defineDisk = true;
+					
 				}
 			elseif ($addType == ADDDIALOG_changeClient)
 				{
@@ -3107,10 +3173,7 @@ function CLIENT_showAddDialog($addType)
 
 			//Show the message for sucessfully adding a new client
 			if ($addType == ADDDIALOG_defineOnly)
-				{
-					$defineDisk=true;
-					CAPTURE_captureAll(1,"define client, adjusted add client dialog");
-				}
+				CAPTURE_captureAll(1,"define client, adjusted add client dialog");
 			elseif ($addType == ADDDIALOG_normalAdd)
 				{
 					$defineDisk=false;
@@ -3164,8 +3227,12 @@ function CLIENT_showAddDialog($addType)
 
 	if ($defineDisk)
 		{
-			FDISK_showDiskDefine($client);
-			$helpFile="diskDefine";
+			HTML_showTableHeader(true, 'subtable', 'width="100%" cellspacing=10');
+			$CFDiskGUIO = new CFDiskGUI($client);
+			$CFDiskGUIO->fdiskSessionReset(true);
+			$CFDiskGUIO->showCombinedFdiskGUIDialog();
+			HTML_showTableEnd(true);
+			return('clientPartitionFormat');
 		}
 	elseif($changeClientExitDialog)
 		{
@@ -3248,29 +3315,60 @@ echo("
 	echo('
 		<script type="text/javascript">
 
+		function setSelectionElement(selName, val)
+		{
+			//Get the dialog element with the name "selName"
+			var sel = document.getElementsByName(selName);
+			var i;
+
+			//Run thru all its options
+			for (i=0; i < sel[0].options.length; i++)
+			{
+				//Check, if the option with the desired value was found.
+				if (sel[0].options[i].value == val)
+					break;
+			}
+
+			//Make the found option the selected
+			sel[0].selectedIndex = i;
+		}
+
+		function chooseAmd64ArchitectureOnUEFIBootType()
+		{
+			if (document.htmlform.SEL_boottype.value == "'.CClient::BOOTTYPE_GRUB2EFIX64.'")
+			{
+				setSelectionElement("SEL_arch", "amd64");
+			}
+		}
+
 		function disableNetworkOnDHCP()
 		{
-			if (document.htmlform.SEL_boottype.value == "gpxe")
-				{
-					document.htmlform.ED_netmask.disabled = true;
+			if (document.htmlform.SEL_boottype.value == "'.CClient::BOOTTYPE_GPXE.'")
+			{
+				document.htmlform.ED_netmask.disabled = true;
+				if (document.htmlform.ED_mac !== undefined)
 					document.htmlform.ED_mac.disabled  = true;
+				if (document.htmlform.ED_ip !== undefined)
 					document.htmlform.ED_ip.disabled  = true;
-					document.htmlform.ED_gateway.disabled  = true;
-					document.htmlform.ED_dns1.disabled  = true;
-					document.htmlform.ED_dns2.disabled  = true;
-				}
+				document.htmlform.ED_gateway.disabled  = true;
+				document.htmlform.ED_dns1.disabled  = true;
+				document.htmlform.ED_dns2.disabled  = true;
+			}
 			else
-				{
-					document.htmlform.ED_netmask.disabled = false;
+			{
+				document.htmlform.ED_netmask.disabled = false;
+				if (document.htmlform.ED_mac !== undefined)
 					document.htmlform.ED_mac.disabled  = false;
+				if (document.htmlform.ED_ip !== undefined)
 					document.htmlform.ED_ip.disabled  = false;
-					document.htmlform.ED_gateway.disabled  = false;
-					document.htmlform.ED_dns1.disabled  = false;
-					document.htmlform.ED_dns2.disabled  = false;
-				}
+				document.htmlform.ED_gateway.disabled  = false;
+				document.htmlform.ED_dns1.disabled  = false;
+				document.htmlform.ED_dns2.disabled  = false;
+			}
 		}
 
 		disableNetworkOnDHCP();
+		chooseAmd64ArchitectureOnUEFIBootType();
 
 		</script>
 	');

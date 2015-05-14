@@ -1,9 +1,12 @@
 #!/usr/bin/php
 <?
+	if (!isset($GLOBALS["m23_language"]))
+		$GLOBALS['m23_language'] = 'de';
+
 	include('/m23/inc/checks.php');
 	include('/m23/inc/db.php');
 	include('/m23/inc/fdisk.php');
-// 	include_once('/m23/inc/html.php');
+	include_once('/m23/inc/html.php');
 	include('/m23/inc/remotevar.php');
 	include('/m23/inc/client.php');
 	include('/m23/inc/distr.php');
@@ -23,6 +26,11 @@
 	include_once('/m23/inc/raidlvm.php');
 	include_once("/m23/inc/halfSister.php");
 	include_once('/m23/inc/vm.php');
+	include_once('/m23/inc/groups.php');
+	include_once('/m23/inc/CMessageManager.php');
+	include_once('/m23/inc/CChecks.php');
+	include_once('/m23/inc/CClient.php');
+	include_once('/m23/inc/CClientLister.php');
 
 	dbConnect();
 
@@ -102,6 +110,23 @@
 
 
 
+
+
+	/**
+	**name CLI_getModuleExitcodes($moduleName)
+	**description Gets the exit codes about a given module.
+	**parameter moduleName: Name of the module.
+	**returns Description of the exit codes about a given module or empty string, if an invalid module name is given.
+	**/
+	function CLI_getModuleExitcodes($moduleName)
+	{
+		return(CLI_getModuleInfo($moduleName, 'Returns',''));
+	}
+
+
+
+
+
 	/**
 	**name CLI_getModuleParameter($moduleName)
 	**description Gets the parameter(s) about a given module.
@@ -134,14 +159,18 @@
 
 	/**
 	**name CLI_getModuleParameterLine($m23cliFile, $moduleName)
-	**description Gets the information line with module name and parameter(s) about a given module.
+	**description Gets the information line with module name, parameter(s) and (optionally) exit code(s) about a given module.
 	**parameter moduleName: Name of the module.
 	**parameter m23cliFile: Name of the m23cli file.
 	**returns Information line with module name and parameter(s) about a given module.
 	**/
 	function CLI_getModuleParameterLine($m23cliFile, $moduleName)
 	{
-		return("Usage: $m23cliFile $moduleName ".CLI_getModuleParameter($moduleName)."\nDescription: ".CLI_getModuleDescription($moduleName));
+		$exitcodes = CLI_getModuleExitcodes($moduleName);
+		if (isset($exitcodes{1}))
+			$exitcodes = "\nExit codes: $exitcodes";
+	
+		return("Usage: $m23cliFile $moduleName ".CLI_getModuleParameter($moduleName)."\nDescription: ".CLI_getModuleDescription($moduleName).$exitcodes);
 	}
 
 
@@ -186,7 +215,7 @@ $argv[0] --help <Command>: Show the parameter for a command.
 
 ");
 		if (isset($argv[2]) && CLI_getModulePath($argv[2]))
-			echo(CLI_getModuleParameterLine($argv[0], $argv[2]));
+			echo(CLI_getModuleParameterLine($argv[0], $argv[2])."\n");
 		else
 			CLI_showAllModuleDescription();
 	}

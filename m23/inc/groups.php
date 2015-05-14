@@ -70,17 +70,22 @@ function GRP_add($groupName)
 **name GRP_getIdByName($groupName)
 **description gets the Id of a groupname
 **parameter groupName: name of the group
+**returns Group number or false, if no matching group is found.
 **/
 function GRP_getIdByName($groupName)
 {
-	CHECK_FW(CC_groupname,$groupName);
-	$sql = "SELECT Id FROM `groups` WHERE groupname='$groupName'";
+	if (CHECK_FW(true,CC_groupname,$groupName))
+	{
+		$sql = "SELECT Id FROM `groups` WHERE groupname='$groupName'";
 
-	$result = db_query($sql); //FW ok
+		$result = db_query($sql); //FW ok
 
-	$line = mysql_fetch_row($result);
+		$line = mysql_fetch_row($result);
 
-	return($line[0]);
+		return($line[0]);
+	}
+	else
+	return(false);
 };
 
 
@@ -290,7 +295,7 @@ function GRP_showGroupsAndCount()
 		$nr = 0;
 
 		//get all groups and store them in an array
-		for ($i=0; $i < $_POST[groupAmount]; $i++)
+		for ($i=0; $i < $_POST['groupAmount']; $i++)
 			{
 				if (isset($_POST["CB_do$i"]))
 					$groups[$nr++]=$_POST["CB_do$i"];
@@ -994,14 +999,12 @@ function GRP_showClientGroups($clientName, $link=false, $output=true )
 function GRP_listAllClientsInGroup($groupName)
 {
 	$res = CLIENT_query("","","","",$groupName);
-	
+
 	$nr = 0;
-	
+
 	while( $data = mysql_fetch_array($res) )
-		{
-			$out[$nr++] = $data[client];
-		};
-		
+		$out[$nr++] = $data['client'];
+
 	return($out);
 };
 

@@ -10,6 +10,8 @@ function run($id)
 	
 	$lang=getClientLanguage();
 	
+	$options = CLIENT_getAllAskingOptions();
+	
 	include("/m23/inc/i18n/".I18N_m23instLanguage($lang)."/m23inst.php");
 	include('/m23/inc/distr/ubuntu/clientConfigCommon.php');
 
@@ -89,7 +91,10 @@ KDE_install($lang, 4);
 /* =====> */ MSR_statusBarIncCommand(60);
 
 
-KDE_installLoginManager($lang,4);
+if ('trusty' == $options['release'])
+	CLCFG_installLightDM('plasma-desktop');
+else
+	KDE_installLoginManager($lang,4);
 /* =====> */ MSR_statusBarIncCommand(3);
 
 CLCFG_installApplicationLanguagePackages($lang);

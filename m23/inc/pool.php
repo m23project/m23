@@ -24,15 +24,15 @@ function POOL_selectPoolType()
 		$out="dl";
 
 	if (empty($out))
-		{
-			echo "<INPUT type=\"submit\" name=\"BUT_cdPool\" value=\"$I18N_CDPool\">
-			<INPUT type=\"submit\" name=\"BUT_downloadPool\" value=\"$I18N_downloadPool\">";
-		}
+	{
+		echo "<INPUT type=\"submit\" name=\"BUT_cdPool\" value=\"$I18N_CDPool\">
+		<INPUT type=\"submit\" name=\"BUT_downloadPool\" value=\"$I18N_downloadPool\">";
+	}
 
 	echo("<input type=\"hidden\" name=\"poolType\" value=\"$out\">");
 
 	return($out);
-};
+}
 
 
 
@@ -72,7 +72,7 @@ function POOL_showLoadDeleteCreate($poolName)
 		unlink("/m23/tmp/copyPoolPackages.sh");
 
 	HTML_showTableHeader();
-	
+
 	if (empty($poolName))
 		$poolName=false;
 	else

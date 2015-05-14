@@ -12,6 +12,30 @@ define('SED_foundLine',"\$m23searchLine");
 
 
 /**
+**name EDIT_writeToFile($file, $text)
+**description Writes a text to a file on a client.
+**parameter file: Name of the file.
+**parameter text: The text to insert.
+**returns Code for writing a text to a file on a client.
+**/
+function EDIT_writeToFile($file,$text)
+{
+
+$stopper = uniqid('EDIT_writeToFile');
+
+return("
+rm \"$file\" 2> /dev/null
+cat >> $file << \"$stopper\"
+$text
+$stopper
+");
+}
+
+
+
+
+
+/**
 **name EDIT_setOption($file, $option, $value)
 **description Changes an option in a configuration file to a given value.
 **parameter file: Name of the file to change.

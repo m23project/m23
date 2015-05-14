@@ -712,9 +712,9 @@ function HS_netEnableLDAP($clientOptions)
 **description Generates commands to edit a given fstab, add new entries and remove old ones before.
 **parameter fstab: All fstab lines to add as assiciative array.
 **/
-function HS_sysAddFstabEntries($fstab, $sourceName)
+function HS_sysAddFstabEntries($fstab, $sourceName, $mntPrefix = '')
 {
-	$fstabAmount = isset($fstab[fstab_amount]) ? $fstab[fstab_amount] : 0;
+	$fstabAmount = isset($fstab['fstab_amount']) ? $fstab['fstab_amount'] : 0;
 
 	for ($fstabNr = 0; $fstabNr < $fstabAmount; $fstabNr++)
 	{

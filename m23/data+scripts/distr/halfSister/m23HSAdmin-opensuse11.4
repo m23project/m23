@@ -1470,13 +1470,13 @@ sysAddFstabEntry()
 	tmp="/tmp/sysAddFstabEntry.tmp"
 
 	#Replace all tabulators or spaces by '?'
-	splittedFstabLine=`echo "$@" | sed 's#[ \t]\+#?#g'`
+	splittedFstabLine=`echo "$@" | sed 's#[ \t]\+#°#g'`
 
 	#Get the device name from the fstab line
-	dev=`echo $splittedFstabLine | cut -f'?' -f1`
+	dev=`echo $splittedFstabLine | cut -d'°' -f1`
 
 	#Get the mount point name from the fstab line
-	mountPoint=`echo $splittedFstabLine | cut -f'?' -f1`
+	mountPoint=`echo $splittedFstabLine | cut -d'°' -f2`
 
 	#Filter out the fstab line that has the same device
 	grep -v "^${dev}[ \t]" /etc/fstab > $tmp
@@ -1490,7 +1490,7 @@ sysAddFstabEntry()
 	rm $tmp
 
 	#Create the mount point
-	mkdir -p "$mountPoint"
+	mkdir -p -v "$mountPoint"
 	chmod 777 "$mountPoint"
 	mount "$mountPoint"
 	true

@@ -702,7 +702,7 @@ function PKG_preparePackageDir($dir,$packagesource,$logFile="",$returnCmd=false,
 
 	//create the package directory if it doesn't exist
 	if (!file_exists($dir))
-		exec("mkdir -p $dir");
+		exec("mkdir -p '$dir'");
 
 	foreach(array("$dir/lists/partial", "$dir/apt.conf.d", "$dir/archivs/partial", "$dir/preferences.d") as $testDir)
 	{
@@ -779,11 +779,12 @@ function PKG_updatePackageInfo($distr, $packagesource, $force, $arch)
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 	$dir = DIR_M23APTCACHE."/$distr/$packagesource";
+	$cacheFile = PKG_getSearchCacheFileName($dir, $arch);
 
 	if (!is_dir($dir))
-		exec("mkdir -p $dir");
+		exec("mkdir -p '$dir'");
 
-	if ((!file_exists("$dir/sources.list")) ||(SRCLST_packageInformationOlderThan(300, $distr, $packagesource)) || $force)
+	if ((!file_exists("$dir/sources.list")) || (!file_exists($cacheFile)) || (SRCLST_packageInformationOlderThan(300, $distr, $packagesource)) || $force)
 		{
 			$logFile = "/m23/tmp/update$packagesource.log";
 			$errMsg=PKG_preparePackageDir($dir,SRCLST_loadSourceList($packagesource),$logFile,false,$arch,$packagesource);

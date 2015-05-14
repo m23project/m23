@@ -18,10 +18,16 @@
 	include("/m23/inc/checks.php");
 	include("/m23/inc/server.php");
 	if (file_exists('/m23/inc/m23shared/m23shared.php')) include_once('/m23/inc/m23shared/m23shared.php');
+	include_once('/m23/inc/CMessageManager.php');
+	include_once('/m23/inc/CChecks.php');
+	include_once('/m23/inc/CClient.php');
+	include_once('/m23/inc/CFDiskIO.php');
+	include_once('/m23/inc/CFDiskBasic.php');
 
 	session_start();
 
 	dbConnect();
+	$GLOBALS["m23_language"] = 'en';
 
 	MSR_decodeMessage();
 ?>

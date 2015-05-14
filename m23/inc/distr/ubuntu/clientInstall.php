@@ -19,6 +19,10 @@ function DISTR_baseInstall($lang,$id)
 	$clientParams=CLIENT_getAskingParams();
 	$clientOptions=CLIENT_getAllAskingOptions();
 
+	// Generate a new CFDiskIO object
+	$client = CLIENT_getClientName();
+	$CFDiskIOO = new CFDiskIO($client);
+
 	CIR_writeClientID($clientParams);
 
 	CIR_WorkaroundForMissingModulesDep();
@@ -29,7 +33,7 @@ function DISTR_baseInstall($lang,$id)
 
 	CLCFG_activateDMA();
 
-	CLCFG_mountRootDir($clientOptions['instPart']);
+	CLCFG_mountRootDir($clientOptions['instPart'], 'root', $CFDiskIOO);
 	/* =====> */ MSR_statusBarIncCommand(2);
 
 	if (!PKG_isReconfiguredWithExtraDistr($id))
@@ -97,6 +101,10 @@ function DISTR_afterChrootInstall($lang,$pkgid)
 	$clientParams=CLIENT_getAskingParams();
 	$clientOptions=CLIENT_getAllAskingOptions();
 
+	// Generate a new CFDiskIO object
+	$client = CLIENT_getClientName();
+	$CFDiskIOO = new CFDiskIO($client);
+
 	echo("
 
 
@@ -113,7 +121,7 @@ cd /tmp
 	CIR_WorkaroundForMissingModulesDep();
 	
 	//edit /etc/fstab
-	FDISK_genManualFstab(explodeAssoc("###",$clientOptions['fstab']),'',$sourceName);
+	$CFDiskIOO->genManualFstab('', $sourceName);
 
 	CLCFG_configUpstartForChroot();
 	/* =====> */ MSR_statusBarIncCommand(2);
@@ -152,9 +160,11 @@ cd /tmp
 
 	apt-get --force-yes -y install wget lsb-release apt-utils
 
+	apt-get --force-yes -y dist-upgrade
+
 	");
 
-	UBUNTU_fixBeforeBaseInstall($clientOptions['release']);
+	UBUNTU_fixBeforeBaseInstall($clientOptions);
 
 	CLCFG_setDebconf($serverIP,"/distr/debian/m23client-debconf");
 	/* =====> */ MSR_statusBarIncCommand(2);
@@ -186,10 +196,12 @@ cd /tmp
 	UBUNTU_fixAfterBaseInstall($clientOptions['release']);
 
 	//generate a new lilo.conf & fstab to make lilo install
-	CLCFG_genFstab($bootDevice, $rootDevice, $clientOptions['bootloader']);
+	CLCFG_genFstab($bootDevice, $rootDevice, $clientOptions['bootloader'], $CFDiskIOO);
 
 	//edit /etc/fstab
-	FDISK_genManualFstab(explodeAssoc("###",$clientOptions['fstab']),'',$sourceName);
+	$CFDiskIOO->genManualFstab('', $sourceName);
+
+	CLCFG_efi($CFDiskIOO);
 
 	CLCFG_dialogInfoBox($I18N_client_installation,$I18N_client_status,$I18N_setup_bootmanager);
 

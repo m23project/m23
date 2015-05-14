@@ -7,7 +7,7 @@ $*/
 
 /*
 	Variable checking functions
-	Copyright (C) 2005-2009 Hauke Goos-Habermann
+	Copyright (C) 2005-2015 Hauke Goos-Habermann
 
 	This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or any later version.
 
@@ -75,6 +75,8 @@ define('CC_partitiontype','se');
 define('CC_partitionfs','sn');
 define('CC_partitionamount','i');
 define('CC_partitionsize','i');
+define('CC_sizeinmb','i');
+define('CC_sizewithGBorMBporPercent','V0123456789gGbB%');
 define('CC_remotevarip','sn255');
 define('CC_remotevarvar','sn255');
 define('CC_sourceslistname','sn255');
@@ -117,7 +119,8 @@ define('CC_COSident','sn255');
 define('CC_COSclass','sn255');
 define('CC_deviceNameDrive', 'd');
 define('CC_deviceNamepartition', 'dp');
-
+define('CC_deviceNameOrPartition', 'do');
+define('CC_deviceNameOrPartitionOrRaid', 'dr');
 
 
 
@@ -211,6 +214,10 @@ function CHECK_FW()
 		if (empty($val) && !$returnNoDie)
 			continue;
 
+		// Adds an extra character at position 1, if it does not exist. This disables showing the PHP warning, when accessing the 1st character
+		if (!isset($typeS{1}))
+			$typeS{1}='°';
+
 		switch ($typeS{0})
 		{
 			case "i":
@@ -262,20 +269,54 @@ function CHECK_FW()
 				
 
 			case 'd':
-				//d:	valid device name for HD drive
+				//d:	valid device name for HD disk
 				//dp:	valid device name for HD partition
-				$partCheck = ($typeS{1} === 'p');
+				//do:	valid device name for HD disk or partition
+				//dr:	valid device name for HD disk or partition or RAID
+				
+				// Check, if the additional parameter is given
+				$partCheck = $diskOrPartitionCheck = $raidAllowed = false;
+				if (isset($typeS{1}))
+				{
+					switch ($typeS{1})
+					{
+						case 'p':
+							$partCheck = true;
+							break;
+						case 'o':
+							$diskOrPartitionCheck = true;
+							break;
+						case 'r':
+							$raidAllowed = true;
+							$diskOrPartitionCheck = true;
+							break;
+					}
+				}
 
-				if (!CHECK_deviceName($val, $partCheck))
+				if (!CHECK_deviceName($val, $partCheck, $diskOrPartitionCheck, $raidAllowed))
 				{
 					if ($returnNoDie)
 						return(false);
 					else
 					{
-						$errDevMsg = ($partCheck ? 'partition' : 'drive');
+						$errDevMsg = ($partCheck ? 'partition' : 'disk');
+						$errDevMsg = ($diskOrPartitionCheck ? 'partition or disk' : $errDevMsg);
 						CHECK_letFWDie("CHECK_FW error: Device name for $errDevMsg invalid!");
 					}
 				}
+				break;
+			
+			case 'm':
+				// m: valid directory name that can be used as mountpoint
+
+				if (!CHECK_mointPoint($val))
+				{
+					if ($returnNoDie)
+						return(false);
+					else
+						CHECK_letFWDie("CHECK_FW error: Mountpoint invalid!");
+				}
+
 				break;
 
 			case "e":
@@ -336,6 +377,8 @@ function CHECK_FW()
 				CHECK_letFWDie("FW error: Unknown command \"$typeS\"");
 		}
 	}
+
+	return(true);
 }
 
 
@@ -343,20 +386,51 @@ function CHECK_FW()
 
 
 /**
-**name CHECK_deviceName($devName, $partition)
-**description Checks if the input value is a valid device name for a HD drive or partition.
+**name CHECK_deviceName($devName, $partition, $diskOrPartition = false, $raidAllowed = false)
+**description Checks if the input value is a valid device name for a HD drive or partition or a RAID.
 **parameter devName: Device name to check.
 **parameter partition: Set to true if you want to check for a partition.
-**returns The input value is a a valid drive or partition or false on an error.
+**parameter diskOrPartition: Set to true, if a disk or partition should be valid. This overwrites the parameter "partition".
+**parameter raidAllowed: Set to true, if RAIDs are allowed too.
+**returns The input value is a valid drive, partition or RAID or false on an error.
 **/
-function CHECK_deviceName($devName, $partition)
+function CHECK_deviceName($devName, $partition, $diskOrPartition = false, $raidAllowed = false)
 {
+	// Check for RAID
+	if ($raidAllowed && (strpos($devName, '/dev/md') !== false))
+		return(true);
+
+	// Add numbers to the regex, if we search for a partition
 	if ($partition)
 		$partAdd = '[0-9]{1,2}';
 	else
 		$partAdd = '';
+	
+	// Are disk or partition searched?
+	if ($diskOrPartition)
+	{
+		$partAdd = '';
+		$endRegex = '';
+	}
+	else
+		$endRegex = '$';
 
-	return(1 === preg_match("#/dev/[sh]d[a-z]$partAdd\$#", $devName));
+	return(1 === preg_match("#/dev/[sh]d[a-z]$partAdd$endRegex#", $devName));
+}
+
+
+
+
+
+/**
+**name CHECK_mointPoint($mountpoint)
+**description Checks if the input value is a valid mountpoint.
+**parameter mountpoint: Mountpoint to check.
+**returns The input value is a valid mountpoint or false on an error.
+**/
+function CHECK_mointPoint($mountpoint)
+{
+	return(1 === preg_match("#/[a-zA-Z0-9]*#", $mountpoint));
 }
 
 
@@ -551,19 +625,21 @@ function CHECK_str($val, $maxlen=0, $allowEmpty=false, $returnNoDie=false)
 
 
 /**
-**name countLinesInFile($dateiname)
+**name countLinesInFile($dateiname, $ignoreEmpty = false)
 **description counts the lines of a file, return value is the amount of lines
 **parameter dateiname: file name
+**parameter ignoreEmpty: If set to true, empty lines are ignored.
 **/
-function countLinesInFile($dateiname)
+function countLinesInFile($dateiname, $ignoreEmpty = false)
  {
 	$fp = fopen("$dateiname","r");
 	$counter = 0;
 	while( ! feof($fp) )
-		{
-			fgets($fp,1024);
+	{
+		$buf = fgets($fp, 1024);
+		if (false === $ignoreEmpty || isset($buf{1}))
 			$counter++;
-		}
+	}
 	//fclose("$dateiname");
 	return $counter;
  }

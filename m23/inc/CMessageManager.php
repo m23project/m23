@@ -17,6 +17,17 @@ class CMessageManager
 **/
 	private function addMessage($msg, &$msgVar, &$foundVar)
 	{
+		if (HELPER_isExecutedInCLI())
+		{
+			$bull = "\n\t*";
+			$br = "\n";
+		}
+		else
+		{
+			$bull = '&bull;';
+			$br = "</br>\n";
+		}
+	
 		//Check, if there is a message
 		if (isset($msg{1}))
 		{
@@ -24,7 +35,7 @@ class CMessageManager
 			if (0 === strpos ($msg,'&bull;'))
 				$msgVar .= "$msg\n";
 			else
-				$msgVar .= "&bull; $msg</br>\n";
+				$msgVar .= "$bull $msg$br";
 			$foundVar = true;
 		}
 	}

@@ -1,8 +1,6 @@
 <?php
 /*
 Description: Fetches the IPs of all clients.
-Parameter: p1
-Parameter: p2
 */
 
 function run($argc, $argv)

@@ -141,7 +141,7 @@ then
 	fi
 
 	#CloudStack test
-	wget -T5 -t0 http://\$serverGateway/latest/public-ipv4 -O /tmp/clientIP
+	wget -T5 -t5 http://\$serverGateway/latest/public-ipv4 -O /tmp/clientIP
 
 	if [ $? -eq 0 ]
 	then
@@ -1018,58 +1018,59 @@ function MSR_importPartHwData()
 	$clientName = CLIENT_getClientName();
 	CHECK_FW(CC_clientname, $clientName);
 
+
 	for ($devNr = 0; !empty($data["dev$devNr".'_path']); $devNr++)
+	{
+		CHECK_FW(CC_partitionpath, $data["dev$devNr".'_path'], CC_partitionsize, $data["dev$devNr".'_size']);
+		$out["dev$devNr".'_path'] = $data["dev$devNr".'_path'];
+		$out["dev$devNr".'_size'] = $data["dev$devNr".'_size'];
+
+		//calculate the amount of partitions
+		for ($partNr = 0; !empty($data["dev$devNr"."part$partNr".'_nr']); $partNr++)
 		{
-			CHECK_FW(CC_partitionpath, $data["dev$devNr".'_path'], CC_partitionsize, $data["dev$devNr".'_size']);
-			$out["dev$devNr".'_path'] = $data["dev$devNr".'_path'];
-			$out["dev$devNr".'_size'] = $data["dev$devNr".'_size'];
+			CHECK_FW(CC_partitionnr, $data["dev$devNr"."part$partNr".'_nr'], CC_partitionstart, $data["dev$devNr"."part$partNr".'_start'], CC_partitionend, $data["dev$devNr"."part$partNr".'_end'], CC_partitiontype, $data["dev$devNr"."part$partNr".'_type']);
 
-			//calculate the amount of partitions
-			for ($partNr = 0; !empty($data["dev$devNr"."part$partNr".'_nr']); $partNr++)
+			$out["dev$devNr"."part$partNr".'_nr'] = $data["dev$devNr"."part$partNr".'_nr'];
+
+			$out["dev$devNr"."part$partNr".'_start'] = $data["dev$devNr"."part$partNr".'_start'];
+
+			$out["dev$devNr"."part$partNr".'_end'] = $data["dev$devNr"."part$partNr".'_end'];
+
+			$out["dev$devNr"."part$partNr".'_type'] = $data["dev$devNr"."part$partNr".'_type'];
+
+			if ($data["dev$devNr"."part$partNr".'_type'] == 'extended')
+				$out["dev$devNr"."part$partNr".'_fs'] = -1;
+			else
 			{
-				CHECK_FW(CC_partitionnr, $data["dev$devNr"."part$partNr".'_nr'], CC_partitionstart, $data["dev$devNr"."part$partNr".'_start'], CC_partitionend, $data["dev$devNr"."part$partNr".'_end'], CC_partitiontype, $data["dev$devNr"."part$partNr".'_type']);
-
-				$out["dev$devNr"."part$partNr".'_nr'] = $data["dev$devNr"."part$partNr".'_nr'];
-
-				$out["dev$devNr"."part$partNr".'_start'] = $data["dev$devNr"."part$partNr".'_start'];
-
-				$out["dev$devNr"."part$partNr".'_end'] = $data["dev$devNr"."part$partNr".'_end'];
-
-				$out["dev$devNr"."part$partNr".'_type'] = $data["dev$devNr"."part$partNr".'_type'];
-
-				if ($data["dev$devNr"."part$partNr".'_type'] == 'extended')
-					$out["dev$devNr"."part$partNr".'_fs'] = -1;
-				else
-				{
-					CHECK_FW(CC_partitionfs, $data["dev$devNr"."part$partNr".'_fs']);
-					$out["dev$devNr"."part$partNr".'_fs'] = $data["dev$devNr"."part$partNr".'_fs'];
-				}
-			};
-
-			//check if this is a RAID
-			if (isset($data["dev$devNr".'_raidDriveAmount']))
-				{
-					CHECK_FW(CC_partitionamount, $data["dev$devNr".'_raidDriveAmount']);
-					$out["dev$devNr".'_raidDriveAmount'] = $data["dev$devNr".'_raidDriveAmount'];
-
-					for ($rDev = 0; !empty($data["dev$devNr"."_raidDrive$rDev"]); $rDev++)
-						{
-							CHECK_FW(CC_partitionpath, $data["dev$devNr"."_raidDrive$rDev"]);
-							$out["dev$devNr"."_raidDrive$rDev"] = $data["dev$devNr"."_raidDrive$rDev"];
-
-							//get the drive/partition to lock
-							FDISK_dev2LDevLPart($data,$data["dev$devNr"."_raidDrive$rDev"],$lDev,$lPart);
-
-							//lock drive/partition that is used for RAID
-							if ($lPart === false)
-								$out["dev$lDev".'_raidLvmLock'] = 1;
-							else
-								$out["dev$lDev"."part$lPart".'_raidLvmLock'] = 1;
-						}
-				};
-
-			$out["dev$devNr".'_partamount'] = $partNr;
+				CHECK_FW(CC_partitionfs, $data["dev$devNr"."part$partNr".'_fs']);
+				$out["dev$devNr"."part$partNr".'_fs'] = $data["dev$devNr"."part$partNr".'_fs'];
+			}
 		}
+
+		//check if this is a RAID
+		if (isset($data["dev$devNr".'_raidDriveAmount']))
+		{
+			CHECK_FW(CC_partitionamount, $data["dev$devNr".'_raidDriveAmount']);
+			$out["dev$devNr".'_raidDriveAmount'] = $data["dev$devNr".'_raidDriveAmount'];
+
+			for ($rDev = 0; !empty($data["dev$devNr"."_raidDrive$rDev"]); $rDev++)
+			{
+				CHECK_FW(CC_partitionpath, $data["dev$devNr"."_raidDrive$rDev"]);
+				$out["dev$devNr"."_raidDrive$rDev"] = $data["dev$devNr"."_raidDrive$rDev"];
+
+				//get the drive/partition to lock
+				FDISK_dev2LDevLPart($data,$data["dev$devNr"."_raidDrive$rDev"],$lDev,$lPart);
+
+				//lock drive/partition that is used for RAID
+				if ($lPart === false)
+					$out["dev$lDev".'_raidLvmLock'] = 1;
+				else
+					$out["dev$lDev"."part$lPart".'_raidLvmLock'] = 1;
+			}
+		}
+
+		$out["dev$devNr".'_partamount'] = $partNr;
+	}
 
 	//set the amount of drives
 	$out['dev_amount'] = $devNr;
@@ -1079,7 +1080,12 @@ function MSR_importPartHwData()
 	$sql="UPDATE clients SET partitions='$partitions', cpu='".CHECK_text2db(trim($data['cpu']))."', netcards='".CHECK_text2db(trim($data['net']))."', graficcard='".CHECK_text2db(trim($data['vga']))."', soundcard='".CHECK_text2db(trim($data['sound']))."', isa='".CHECK_text2db(trim($data['isa']))."', memory='".CHECK_text2db($data['mem'])."', dmi='".CHECK_text2db($data['dmi'])."', MHz='".CHECK_text2db($data['mhz'])."' WHERE client='$clientName'";
 
 	db_query($sql); //FW ok
-};
+
+	$CFDiskBasicO = new CFDiskBasic($clientName);
+	$CFDiskBasicO->setUEFI($data['uefi'] == 1);
+	$CFDiskBasicO->resetWantedPartitioning();
+	$CFDiskBasicO->findAndSetEFIBootPartDev();
+}
 
 
 

@@ -33,7 +33,7 @@ firmware-ipw2x00 firmware-ipw2x00/license/accepted boolean true
 firmware-ivtv firmware-ivtv/license/error error
 firmware-ivtv firmware-ivtv/license/accepted boolean true');
 
-	echo('apt-cache search firmware | sort | grep firmware | cut -d\' \' -f1 | grep firmware | grep -v installer$ | grep -v grub | grep -v tools$ | grep -v dev$ | grep -v libertas-firmware | xargs -n1 apt-get -y -m --force-yes install');
+	echo('apt-cache search firmware | sort | grep firmware | cut -d\' \' -f1 | grep firmware | grep -v installer$ | grep -v nexus7 | grep -v grub | grep -v tools$ | grep -v dev$ | grep -v libertas-firmware | xargs -n1 apt-get -y -m --force-yes install');
 }
 
 
@@ -104,6 +104,22 @@ function CLCFG_installMintDM($session)
 	}
 
 	echo("
+
+if [ $(grep qiana /etc/apt/sources.list -c) -gt 0 ]
+then
+echo '
+[daemon]
+DefaultSession=$session
+Greeter=/usr/lib/mdm/mdmgreeter
+[security]
+[xdmcp]
+[gui]
+[greeter]
+GraphicalTheme=Elegance
+[chooser]
+[debug]
+[servers]' > /etc/mdm/mdm.conf
+else
 echo '
 [daemon]
 DefaultSession=$session
@@ -114,6 +130,7 @@ DefaultSession=$session
 [chooser]
 [debug]
 [servers]' > /etc/mdm/mdm.conf
+fi
 
 sed -i \"s/Session=.*/Session=$dmrcSession/\" /etc/skel/.dmrc\n");
 }
@@ -195,8 +212,11 @@ function CLCFG_installLightDM($session, $addSessionWrapper = false)
 	$greeters['ubuntustudio'] = 'lightdm-gtk-greeter';
 
 	$greeters['kde-plasma'] = 'lightdm-kde-greeter';
+	$greeters['plasma-desktop'] = 'lightdm-kde-greeter';
 
 	$greeters['LXDE'] = 'lightdm-greeter';
+
+	$greeters['pantheon'] = 'pantheon-greeter';
 
 	if ($addSessionWrapper)
 		$addLines .= "\nsession-wrapper=/etc/X11/Xsession";
@@ -303,8 +323,10 @@ EOF
 		cd "$dir"
 		mv .kde .trinity
 	done
-	
+
 	mv /etc/skel/.kde /etc/skel/.trinity
+
+	ln -s /opt/trinity/bin/startkde /bin/starttrinity
 	');
 
 
@@ -381,11 +403,33 @@ function CLCFG_makeDev()
 **/
 function CLCFG_disablePlymouth()
 {
-	foreach (array('/bin/plymouth', '/bin/plymouth-upstart-bridge') as $file)
+	foreach (array('/bin/plymouth', '/bin/plymouth-upstart-bridge', '/sbin/plymouthd') as $file)
 	echo("
 		dpkg-divert --local --rename --add $file
 		ln -s /bin/true $file
 	");
+	
+// 	echo("
+// 	sed -i 's/splash//' /etc/default/grub
+// 	update-grub
+// 	");
+// 	
+// 	
+// 	echo('
+// 	rm /etc/default/grub
+// 	cat >> /etc/default/grub << "EOF"
+// 	GRUB_DEFAULT=0
+// GRUB_HIDDEN_TIMEOUT=0
+// GRUB_HIDDEN_TIMEOUT_QUIET=true
+// GRUB_TIMEOUT=10
+// GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+// GRUB_CMDLINE_LINUX_DEFAULT=""
+// GRUB_CMDLINE_LINUX=""
+// EOF
+// 	update-grub
+// 	');
+	
+	/* rm /etc/init/plymouth* */
 }
 
 
@@ -570,19 +614,23 @@ function LXDE_install($lang, $fullInstall)
 **parameter lang: short language
 **parameter fullInstall: Set to true, if the full desktop with all applications should be installed. Otherwise a minimal desktop will be installed
 **/
-function GNOME3_install($lang, $fullInstall)
+function GNOME3_install($lang, $fullInstall, $dm = 'gdm3')
 {
-	CLCFG_setDebConfDM('gdm3');
+	$lV = I18N_getLangVars($lang);
+	
+	CLCFG_setDebConfDM($dm);
 	CLCFG_setDebConfDirect('
 tasksel tasksel/desktop multiselect gnome
 libpam-runtime libpam-runtime/profiles multiselect unix, gnome-keyring, consolekit, capability
 gdm3 gdm3/daemon_name string /usr/sbin/gdm3
 ');
 
+	$pkgs = "language-pack-gnome-$lV[packagelang]";
+
 	if ($fullInstall)
-		$pkgs = 'gnome-desktop-environment';
+		$pkgs .= ' gnome-desktop-environment';
 	else
-		$pkgs = 'gnome-core';
+		$pkgs .= ' gnome-core';
 
 	CLCFG_aptGet('install', $pkgs);
 }
@@ -1331,6 +1379,79 @@ return("
 
 
 /**
+**name CLCFG_efi($CFDiskIOO)
+**description Configures the client for UEFI booting.
+**parameter CFDiskIOO: Object to with partition information for the calling client.
+**returns true, if the client uses EFI, otherwise false.
+**/
+function CLCFG_efi($CFDiskIOO)
+{
+	if (!$CFDiskIOO->isUEFIActive())
+		return(false);
+
+	$EFIBootPartDev = $CFDiskIOO->getEFIBootPartDev();
+// 	$CFDiskIOO->getpDiskAndpPartFromDev($EFIBootPartDev, $pDisk, $pPart);
+
+// 	$possibleEFILoaders = '/tmp/possibleEFILoaders.list';
+
+	// Add entry in fstab
+	echo("
+		efiBootID=`blkid $EFIBootPartDev | sed 's/ /\\n/g' | grep ^UUID | cut -d'\"' -f2`
+		
+		echo \"UUID=\$efiBootID /boot/efi vfat defaults 0  1\" >> /etc/fstab
+
+		fsck -y $EFIBootPartDev
+
+		mount /boot/efi
+
+		mount /sys
+
+		mount /proc
+
+		mount -t efivarfs efivarfs /sys/firmware/efi/efivars
+	");
+
+	CLCFG_aptGet('install', 'efibootmgr shim grub-efi-amd64 grub-efi-amd64-bin linux-signed-generic grub-efi-amd64-signed shim-signed');
+
+	echo("
+		grub-install --uefi-secure-boot
+	");
+
+	return(true);
+
+
+// 	echo("
+// 		title=`head -1 /etc/issue.net`
+// 
+// 		if [ -z \$title ]
+// 		then
+// 			title='Linux'
+// 		fi
+// 
+// 		find /boot/efi/ | grep \.efi$ | sed 's#/boot/efi##g' | grep -v MokManager | while read loader
+// 		do
+// 			loaderBackslash=`echo -n \"\$loader\" | sed 's#/#\\\\\\\\#g'`
+// 			loaderFile=`basename \"\$loader\"`
+// 			
+// 			efibootmgr --create --gpt --disk $pDisk --part $pPart --write-signature --label \"\$title (\$loaderFile)\" --loader \"$loader\"
+// 			efibootmgr --create --gpt --disk $pDisk --part $pPart --write-signature --label \"\$title (\$loaderFile BS)\" --loader \"\$loaderBackslash\"
+// 		done
+// 		
+// 		bootOrder=`efibootmgr | grep ^Boot[0-9A-F][0-9A-F][0-9A-F][0-9A-F] | grep -v \"\$title\" | sed -e 's/^Boot//' -e 's/[^0-9A-F].*//' | awk -vORS=',' '{print}' | sed 's/,$//'`
+// 		
+// 		if [ \$bootOrder ]
+// 		then
+// 			efibootmgr --bootorder \$bootOrder
+// 		fi
+// 	");
+
+
+// 	EFI/BOOT/bootx64.efi ööö
+// 
+}
+
+
+/**
 **name CLCFG_genFstab($bootDevice,$rootDevice)
 **description generates the commands to auto detect the partitions and generate the fstab file
 **parameter bootDevice: the device the bootloader should be installed on (e.g. /dev/hda)
@@ -1520,7 +1641,9 @@ if ($bootloader == "grub")
 						".sendClientLogStatus("Grub installation (Fallback)",true)."
 					else
 					");
-						if (!$ignoreErrors)
+						if ($ignoreErrors)
+							echo('echo "Grub installation: ERROR"');
+						else
 							echo(sendClientLogStatus("Grub installation",false,true));
 						echo("
 					fi
@@ -1570,7 +1693,9 @@ if ($bootloader == "grub")
 				".sendClientLogStatus("Grub: Kernels found in menu.lst",true)."
 			else
 				");
-				if (!$ignoreErrors)
+				if ($ignoreErrors)
+					echo('echo "Grub: Kernels found in menu.lst: ERROR"');
+				else
 					echo(sendClientLogStatus("Grub: Kernels found in menu.lst",false,true));
 				echo("
 			fi
@@ -1615,8 +1740,11 @@ else
 					".sendClientLogStatus("LILO installation ok",true)."
 				else
 				");
-					if (!$ignoreErrors)
-						echo(sendClientLogStatus("LILO installation ok",false,true)."
+					if ($ignoreErrors)
+						echo('echo "LILO installation: ERROR"');
+					else
+						echo(sendClientLogStatus("LILO installation ok",false,true));
+				echo("
 				fi
 				
 				#find all \"update-grub\" files
@@ -1648,7 +1776,9 @@ then
 	".sendClientLogStatus("/etc/fstab was written",true)."
 else
 ");
-	if (!$ignoreErrors)
+	if ($ignoreErrors)
+		echo('echo "/etc/fstab was written: ERROR"');
+	else
 		echo(sendClientLogStatus("/etc/fstab was written",false,true));
 echo("
 fi
@@ -2076,6 +2206,7 @@ GDM_LANG=$lV[lang]\" >/etc/default/locale
 #Ubuntu fix
 sed -i 's/-e//g' /etc/default/locale
 
+echo 'PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games\"' >> /etc/environment
 
 echo \"[Desktop]
 Session=default
@@ -2519,7 +2650,7 @@ function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePor
 				mkdir m23-time
 				date +%s > m23-time/debootstrap7z.start
 
-				7zr x -so $debootstrapCacheFile | tar xpv --same-owner
+				7zr x -so $debootstrapCacheFile | tar xp --same-owner
 				rm $debootstrapCacheFile
 
 				date +%s > m23-time/debootstrap7z.stop
@@ -2587,15 +2718,15 @@ echo("
 
 
 /**
-**name CLCFG_mountRootDir($rootDev,$mountPoint="root")
+**name CLCFG_mountRootDir($rootDev, $mountPoint, $CFDiskIOO = false)
 **description create a new directory for mounting the root partition of the client, mount the installation directory to this mount point and create a temp directory
 **parameter rootDev: the root device (e.g. /dev/hda1)
 **parameter mountPoint: directory under /mnt to mount the device in
+**parameter CFDiskIOO: Client object (used for mounting the EFI boot partition).
 **/
-function CLCFG_mountRootDir($rootDev,$mountPoint="root")
+function CLCFG_mountRootDir($rootDev, $mountPoint, $CFDiskIOO = false)
 {
 	echo("
-
 			mkdir -p /mnt/$mountPoint
 
 			#check if the device was mounted before and unmounts it if it was mounted
@@ -2614,6 +2745,24 @@ function CLCFG_mountRootDir($rootDev,$mountPoint="root")
 			mkdir -p /mnt/$mountPoint/tmp
 			cd /mnt/$mountPoint\n
 	");
+
+	// Check, if $CFDiskIOO contains an object
+	if (is_object($CFDiskIOO))
+	{
+		$efiBootMountPoint = "/mnt/$mountPoint/boot/efi";
+
+		// Mount the EFI boot partition, if the client is in UEFI mode
+		if ($CFDiskIOO->isUEFIActive())
+		echo("
+			mkdprobe vfat
+			
+			mount /proc
+
+			mkdir -p $efiBootMountPoint
+
+			mount -t vfat ".$CFDiskIOO->getEFIBootPartDev()." $efiBootMountPoint
+		");
+	}
 };
 
 
@@ -3114,169 +3263,6 @@ shadow:  compat ldap\" > $file.tmp
 ");
 }
 
-
-
-
-
-/**
-**name CLIENT_enableLDAP($clientOptions)
-**description enables LDAP login for a client.
-**parameter clientOptions: the client's options array
-**/
-function CLCFG_enableLDAPAlt($clientOptions)
-{
-	//exit the function if LDAP shouldn't used
-	if ($clientOptions['ldaptype']=="none")
-		return;
-
-	$server=LDAP_loadServer($clientOptions['ldapserver']);
-
-	$LDAPhost=$server[host];
-	$baseDN=$server[base];
-
-	//exit the function if LDAP host or base DN is empty
-	if (empty($LDAPhost) || empty($baseDN))
-		return;
-
-	//files to change
-	$files=explode("#","account#auth#password#session");
-	//insert the following parts before a "pam_unix.so" line
-	$inserts[account]="account sufficient      pam_ldap.so";
-	$inserts[auth]="auth    sufficient      pam_ldap.so";
-	$inserts[password]="password sufficient      pam_ldap.so";
-	$inserts[session]="session required pam_mkhomedir.so  skel=/etc/skel umask=0022";
-
-	echo("
-		rm /tmp/debconfLDAP 2> /dev/null
-
-		#write debconf data
-
-cat >> /tmp/debconfLDAP << \"EOF\"
-libnss-ldap libnss-ldap/bindpw password
-libnss-ldap libnss-ldap/dblogin boolean false
-libnss-ldap libnss-ldap/override boolean true
-libnss-ldap shared/ldapns/base-dn string $baseDN
-libnss-ldap shared/ldapns/ldap-server string $LDAPhost
-libnss-ldap libnss-ldap/confperm boolean false
-libnss-ldap shared/ldapns/ldap_version select 3
-libnss-ldap libnss-ldap/binddn string cn=proxyuser,$baseDN
-libpam-ldap libpam-ldap/rootbindpw password
-libpam-ldap libpam-ldap/bindpw password
-libpam-ldap shared/ldapns/base-dn string $baseDN
-libpam-ldap shared/ldapns/ldap-server string $LDAPhost
-libpam-ldap libpam-ldap/pam_password select crypt
-libpam-ldap libpam-ldap/binddn string cn=proxyuser,$baseDN
-libpam-ldap libpam-ldap/rootbinddn string cn=manager,$baseDN
-libpam-ldap libpam-ldap/dbrootlogin boolean false
-libpam-ldap libpam-ldap/override boolean true
-libpam-ldap shared/ldapns/ldap_version select 3
-libpam-ldap libpam-ldap/dblogin boolean false
-portmap portmap/loopback boolean false
-EOF
-
-	debconf-set-selections /tmp/debconfLDAP
-
-	export DEBIAN_FRONTEND=noninteractive
-
-	apt-get -m --force-yes -qq -y install libpam-ldap libnss-ldap nfs-common $extraPackages \n");
-
-	//modify common files
-	foreach ($files as $file)
-	{
-		$insert=$inserts[$file];
-
-		//if there is nothing to insert => continue with the next insert
-		if (empty($insert))
-		continue;
-
-		$file="/etc/pam.d/common-$file";
-
-		echo("
-
-		userGroup=`find $file -printf 'chown %u.%g $file'`
-		perm=`find $file -printf 'chmod %m $file'`
-	
-		line=`grep pam_unix.so $file | head -1`
-	
-		cat $file | sed \"/\$line/i\\
-$insert\" > $file#
-
-		mv $file# $file
-	
-		\$userGroup
-	
-		\$perm
-
-		");
-	};
-
-
-
-	//change nsswitch.conf
-	$file="/etc/nsswitch.conf";
-
-	echo("
-	echo \"$LDAPhost\" > /etc/ldap/ldap.conf
-	
-	
-	userGroup=`find $file -printf 'chown %u.%g $file'`
-	perm=`find $file -printf 'chmod %m $file'`
-
-	cat $file | sed 's/^passwd:/#passwd:/g' | sed 's/^group:/#group:/g' | sed 's/^shadow:/#shadow:/g'  | sed \"/#passwd/i\\
-passwd:  compat ldap\" | sed \"/#group/i\\
-group:   compat ldap\" | sed \"/#shadow/i\\
-shadow:  compat ldap\" > $file.tmp
-
-	mv $file.tmp $file
-
-	\$userGroup
-
-	\$perm
-	");
-
-	$file="/etc/libnss-ldap.conf";
-
-
-	echo("\necho \"host $LDAPhost
-base $baseDN\" > /etc/libnss-ldap.conf\n");
-
-	//disable further configuration by debconf
-	echo(EDIT_replace($file, "###DEBCONF###", "#disabled by m23 ###DEBCONF###","x"));
-	echo(EDIT_replace($file, "host 127.0.0.1", $LDAPhost,"x"));
-	echo(EDIT_replace($file, "base dc=padl,dc=com", "base $baseDN","x"));
-
-	$replaces = array(
-		"nss_reconnect_tries" => 1,
-		"nss_reconnect_sleeptime" => 1,
-		"nss_reconnect_maxsleeptime" => 8,
-		"nss_reconnect_maxconntries" => 2
-		);
-
-	foreach($replaces as $variable => $value)
-		{
-			echo(
-			EDIT_searchLineNumber($file,$variable).
-			EDIT_commentout($file,SED_foundLine,SED_foundLine,"#").
-			EDIT_insertAfterLineNumber($file, SED_foundLine, "$variable $value").
-			"\n");
-		}
-
-
-
-	#Add permission to udev that all users can access the audio device
-	echo(
-			"export udevfile=`grep 'SUBSYSTEM==\"sound\"' /etc/udev/ -r -l | head -1`
-			if [ \$udevfile ]
-			then
-			".
-			EDIT_searchLineNumber("\$udevfile","SUBSYSTEM==\\\"sound\\\"").
-			EDIT_commentout("\$udevfile",SED_foundLine,SED_foundLine,"#").
-			EDIT_insertAtLineNumber("\$udevfile", SED_foundLine, "SUBSYSTEM==\"sound\", GROUP=\"audio\", MODE=\"0666\"").
-			EDIT_addIfNotExists("\$udevfile","^SUBSYSTEM==\"sound\"","SUBSYSTEM==\"sound\", GROUP=\"audio\", MODE=\"0666\"").
-			"
-			fi
-			\n");
-}
 
 
 

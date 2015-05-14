@@ -1,3 +1,3 @@
 <?PHP
-$kernelRamDisk=81920;
+$kernelRamDisk=131072;
 ?>

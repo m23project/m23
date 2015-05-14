@@ -535,7 +535,92 @@ function SRCLST_showDesktopsSel($sourceName,$selName,$first)
 		$first="";
 
 	return(HTML_listSelection($selName,$desktops,$first));
-};
+}
+
+
+
+
+
+/**
+**name SRCLST_doesDistrSupportEFI($sourceName)
+**description Checks, if a sources list contains a distribution that supports EFI.
+**parameter sourceName: the name of the package source list
+**returns true, if the distribution supports EFI, otherwise false.
+**/
+function SRCLST_doesDistrSupportEFI($sourceName)
+{
+	// Try to get the line with the (possibly existing) EFI supporting architectures
+	$efiArchsSupportedByDistribution = SRCLST_getParameter($sourceName, 'supportedEFI');
+
+	// Currently check only for amd64
+	return(in_array('amd64', $efiArchsSupportedByDistribution));
+}
+
+
+
+
+
+/**
+**name SRCLST_getListnamesWithEfiSupport()
+**description Gets a list with all sources lists that support EFI.
+**returns Array with all sources lists that support EFI.
+**/
+function SRCLST_getListnamesWithEfiSupport()
+{
+	$listnamesWithEfiSupport = array();
+
+	// Get all sources list names
+	$allLists = SRCLST_getListnames('*');
+
+	// Check each list name and add it to the output array, if the list supports EFI
+	foreach ($allLists as $listName)
+		if (SRCLST_doesDistrSupportEFI($listName))
+			$listnamesWithEfiSupport[$listName] = $listName;
+
+	return($listnamesWithEfiSupport);
+}
+
+
+
+
+
+/**
+**name SRCLST_clientUsesEfiButSourcesListDoesntSupportEfi($client, $sourceName)
+**description Checks, if the client uses EFI and the choosen sources list doesn't.
+**parameter client: Name of the client.
+**parameter sourceName: The name of the package source list.
+**returns: true, if the client uses EFI and the choosen sources list doesn't, otherwise false.
+**/
+function SRCLST_clientUsesEfiButSourcesListDoesntSupportEfi($client, $sourceName)
+{
+	$CFDiskIOO = new CFDiskIO($client);
+
+	return ($CFDiskIOO->isUEFIActive() && !SRCLST_doesDistrSupportEFI($sourceName));
+}
+
+
+
+
+
+/**
+**name SRCLST_showErrorIfClientUsesEfiButSourcesListDoesntSupportEfi($client, $sourceName)
+**description Shows an error message, if the client uses EFI and the choosen sources list doesn't.
+**parameter client: Name of the client.
+**parameter sourceName: The name of the package source list.
+**returns: false, if the client uses EFI and the choosen sources list doesn't, otherwise true.
+**/
+function SRCLST_showErrorIfClientUsesEfiButSourcesListDoesntSupportEfi($client, $sourceName)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	if (SRCLST_clientUsesEfiButSourcesListDoesntSupportEfi($client, $sourceName))
+	{
+		MSG_showError($I18N_clientUsesEfiButSourcesListDoesntSupportEfi_Alternatives.' '.implode(' , ', SRCLST_getListnamesWithEfiSupport()));
+		return(false);
+	}
+
+	return(true);
+}
 
 
 

@@ -5,6 +5,65 @@
 
 
 /**
+**name DISTR_getUbuntuUserGroups($arrayOrSeparator = true)
+**description Returns the default groups an user of a Ubuntu system should be in.
+**parameter arrayOrSeparator: If set to true, the groups are returned as array, otherwise the value is used as separator character.
+**returns Default groups as array or as string, where the groups are separates by a separator character.
+**/
+function DISTR_getUbuntuUserGroups($arrayOrSeparator = true)
+{
+	$groups = array();
+	$groups[0]="audio";
+	$groups[1]="cdrom";
+	$groups[2]="floppy";
+	$groups[3]="plugdev";
+	$groups[4]="video";
+	$groups[5]="fuse";
+	$groups[6]="scanner";
+	$groups[7]="dip";
+	$groups[8]="users";
+	$groups[9]="lpadmin";
+
+	if ($arrayOrSeparator === true)
+		return($groups);
+	else
+		return(implode($arrayOrSeparator, $groups));
+}
+
+
+
+
+
+/**
+**name DISTR_getDebianUserGroups($arrayOrSeparator = true)
+**description Returns the default groups an user of a Debian system should be in.
+**parameter arrayOrSeparator: If set to true, the groups are returned as array, otherwise the value is used as separator character.
+**returns Default groups as array or as string, where the groups are separates by a separator character.
+**/
+function DISTR_getDebianUserGroups($arrayOrSeparator = true)
+{
+	$groups = array();
+	$groups[0]="audio";
+	$groups[1]="floppy";
+	$groups[2]="cdrom";
+	$groups[3]="video";
+	$groups[4]="users";
+	$groups[5]="lpadmin";
+	$groups[6]="plugdev";
+	$groups[7]="lp";
+	$groups[8]="scanner";
+
+	if ($arrayOrSeparator === true)
+		return($groups);
+	else
+		return(implode($arrayOrSeparator, $groups));
+}
+
+
+
+
+
+/**
 **name DISTR_releaseVersionTranslator($release)
 **description Adds the version number to a Debian or Ubuntu release.
 **parameter release: Release name (e.g. etch)
@@ -24,6 +83,7 @@ function DISTR_releaseVersionTranslator($release)
 	$r['intrepid']="8.10";
 	$r['lucid']="10.04 LTS";
 	$r['precise']="12.04 LTS";
+	$r['trusty']="14.04 LTS";
 
 	//Debian
 	$r['sarge']="3.1";
@@ -230,9 +290,11 @@ function DISTR_commaSeperatedSelections($selName,$first,$variable,$values)
 **/
 function DISTR_getDesktopsCBList($distr,$selectedDesktops)
 {
+	if (!isset($distr{1}))
+		return(false);
+
 	$distrValues = DISTR_getDescriptionValues($distr);
 	$desktops = DISTR_listCommaSeperated("GUIs",$distrValues);
-	
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 	//start table and add heading

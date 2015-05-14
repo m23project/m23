@@ -209,6 +209,7 @@ function DHCP_delDynamicRange($firstIP, $lastIP)
 
 
 
+
 /**
 **name DHCP_bootTypeToNewFormat($bootType)
 **description Converts a boolean boot type to the new string format.
@@ -221,11 +222,11 @@ function DHCP_bootTypeToNewFormat($bootType)
 	if (is_bool($bootType))
 	{
 		if ($bootType)
-			$bootType = "pxe";
+			$bootType = CClient::BOOTTYPE_PXE;
 		else
-			$bootType = "etherboot";
+			$bootType = CClient::BOOTTYPE_ETHERBOOT;
 	}
-	
+
 	return($bootType);
 }
 
@@ -265,7 +266,7 @@ function DHCP_addClient($clientName, $ip, $netmask, $mac, $bootType, $gateway, $
 	//generate command-line to add a line to dhcpd.conf for PXE or Etherboot
 	switch ($bootType)
 	{
-		case 'pxe':
+		case CClient::BOOTTYPE_PXE:
 			//generate command-line to add a line to dhcpd.conf
 			{
 // 				DHCP_addLineToDHCPDConf("subnet $subnet netmask $netmask { host $clientName { hardware ethernet $mac; fixed-address $ip;  filename \\\"pxelinux.0\\\"; } option broadcast-address $broadcast; option routers $gateway; option subnet-mask $netmask;}");
@@ -282,7 +283,14 @@ function DHCP_addClient($clientName, $ip, $netmask, $mac, $bootType, $gateway, $
 			}
 		break;
 
-		case 'etherboot':
+		case CClient::BOOTTYPE_GRUB2EFIX64:
+			//generate command-line to add a line to dhcpd.conf
+			{
+				DHCP_addLineToDHCPDConf("host $clientName { hardware ethernet $mac; fixed-address $ip;  filename \\\"grubnetx64.efi.signed\\\"; option broadcast-address $broadcast; option routers $gateway; option subnet-mask $netmask;}");
+			}
+		break;
+
+		case CClient::BOOTTYPE_ETHERBOOT:
 			//generate command-line to add a line to dhcpd.conf
 			{
 // 				DHCP_addLineToDHCPDConf("subnet $subnet netmask $netmask { host $clientName { hardware ethernet $mac; fixed-address $ip;  filename \\\"$ip\\\"; } option broadcast-address $broadcast; option routers $gateway; option subnet-mask $netmask;}");
@@ -290,7 +298,7 @@ function DHCP_addClient($clientName, $ip, $netmask, $mac, $bootType, $gateway, $
 			}
 		break;
 
-		case 'none':
+		case CClient::BOOTTYPE_NOBOOT:
 			{
 // 				DHCP_addLineToDHCPDConf("subnet $subnet netmask $netmask { host $clientName { hardware ethernet $mac; fixed-address $ip; } option broadcast-address $broadcast; option routers $gateway; option subnet-mask $netmask;}");
 				DHCP_addLineToDHCPDConf("host $clientName { hardware ethernet $mac; fixed-address $ip; option broadcast-address $broadcast; option routers $gateway; option subnet-mask $netmask;}");
@@ -368,7 +376,7 @@ function DHCP_rmClient($clientName)
 {
 	$bootType = CLIENT_getBootType($clientName);
 
-	if ($bootType == "gpxe")
+	if ($bootType == CClient::BOOTTYPE_GPXE)
 		return(true);
 
 	//Delete the line from DHCP server only if it is not gPXE
@@ -382,12 +390,12 @@ function DHCP_rmClient($clientName)
 	//Choose remove method by boot type
 	switch ($bootType)
 	{
-		case 'none':
-		case 'pxe':
+		case CClient::BOOTTYPE_NOBOOT:
+		case CClient::BOOTTYPE_PXE:
 			DHCP_removePXEcfg($clientName);
 		break;
 
-		case 'etherboot':
+		case CClient::BOOTTYPE_ETHERBOOT:
 			$ip = CLIENT_getIPbyName($clientName);
 			$cmd="sudo rm /m23/tftp/$ip";
 			//remove link
@@ -457,7 +465,7 @@ function DHCP_activateBoot($clientName, $on, $bootType = 'x')
 	switch ($bootType)
 	{
 
-		case "etherboot":
+		case CClient::BOOTTYPE_ETHERBOOT:
 			if ($on)
 				DHCP_setBootimage($clientName, "m23install-".$allOptions['arch']);
 			else
@@ -468,8 +476,10 @@ function DHCP_activateBoot($clientName, $on, $bootType = 'x')
 			if ($on)
 			{
 				if (empty($bootType))
-					$bootType = 'pxe';
-				DHCP_writePXEcfg($clientName, $allOptions['arch']);
+					$bootType = CClient::BOOTTYPE_PXE;
+
+				if (CClient::BOOTTYPE_NOBOOT != $bootType)
+					DHCP_writePXEcfg($clientName, $allOptions['arch']);
 				return(DHCP_addClient($clientName, $allParams['ip'], $allParams['netmask'], $allParams['mac'], $bootType, $allParams['gateway']));
 			}
 			else

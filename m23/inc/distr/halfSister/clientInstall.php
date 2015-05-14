@@ -19,6 +19,10 @@ function DISTR_baseInstall($lang,$id)
 	$clientParams=CLIENT_getAskingParams();
 	$clientOptions=CLIENT_getAllAskingOptions();
 
+	// Generate a new CFDiskIO object
+	$client = CLIENT_getClientName();
+	$CFDiskIOO = new CFDiskIO($client);
+
 	//Get the name of the sources list
 	$sourceName = $clientOptions['packagesource'];
 
@@ -29,7 +33,7 @@ function DISTR_baseInstall($lang,$id)
 	CLCFG_activateDMA();
 
 	//Mount and change into the installation directory
-	CLCFG_mountRootDir($clientOptions['instPart']);
+	CLCFG_mountRootDir($clientOptions['instPart'], 'root', $CFDiskIOO);
 
 	CIR_writeClientID($clientParams);
 
@@ -37,7 +41,8 @@ function DISTR_baseInstall($lang,$id)
 	HS_fetchm23HSAdminAndm23hwscanner($clientOptions['release']);
 	/* =====> */ MSR_statusBarIncCommand(10);
 
-	FDISK_genManualFstab(explodeAssoc("###",$clientOptions['fstab']),"/mnt/root",$sourceName);
+	$CFDiskIOO->genManualFstab('/mnt/root', $sourceName);
+
 	/* =====> */ MSR_statusBarIncCommand(2);
 
 	$DNSServers[0]=$clientParams['dns1'];
@@ -94,6 +99,9 @@ function DISTR_afterChrootInstall($lang,$pkgid)
 	
 	$clientName = $clientParams['client'];
 
+	// Generate a new CFDiskIO object
+	$CFDiskIOO = new CFDiskIO($clientName);
+
 	//Get the name of the sources list
 	$sourceName = $clientOptions['packagesource'];
 
@@ -121,7 +129,8 @@ cd /tmp
 	HS_sysSetm23ClientID($clientParams);
 
 	//edit /etc/fstab
-	HS_sysAddFstabEntries(explodeAssoc("###",$clientOptions['fstab']),$sourceName);
+	$CFDiskIOO->genManualFstab('', $sourceName);
+
 
 	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $I18N_setup_network);
 

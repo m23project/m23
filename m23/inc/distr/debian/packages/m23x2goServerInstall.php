@@ -1,6 +1,6 @@
 <?PHP
 /*
-Description:XFree86 or XOrg base system
+Description: Installs the x2go server.
 Priority:30
 */
 function run($id)

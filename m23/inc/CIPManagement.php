@@ -119,7 +119,7 @@
 		{
 			include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
-			$CClientListerO = new CClientLister;
+			$CClientListerO = new CClientLister();
 
 			if (HTML_submit('BUT_delete', $I18N_remove))
 			{

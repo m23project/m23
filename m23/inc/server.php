@@ -357,15 +357,37 @@ function SERVER_dhcpServerInNetWarn()
 function SERVER_sendScriptToSF($name,$author,$description,$script)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
-	$name=base64_encode($name);
-	$author=base64_encode($author);
-	$description=base64_encode($description);
-	$script=base64_encode(bzcompress($script));
 
-	$cmds="wget -q -O /dev/stdout \"http://m23.sf.net/scriptUpload/upload.php?author=$author&description=$description&script=$script&name=$name\"";
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, 'http://m23.sourceforge.net/scriptUpload/upload.php');
+
+	// Set to NOT urlencoded data
+	$headers[] = 'Content-type: multipart/form-data';
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+	// Enable compression
+	curl_setopt($ch,CURLOPT_ENCODING , 'gzip');
+	
+	
+	curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
+	curl_setopt($ch, CURLOPT_CRLF, false);
+
+	// Add post data
+	curl_setopt($ch, CURLOPT_POST, true);
+	$data = array('name' => $name, 'author' => $author, 'description' => $description, 'script' => $script);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
+	curl_setopt($ch, CURLOPT_HEADER, false);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+
+// 	$cmds="wget -q -O /dev/stdout --post-data \"author=$author&description=$description&script=$script&name=$name\" \"http://m23.sourceforge.net/scriptUpload/upload.php\"";
+	
+// 	print("<pre>$cmds</pre>");
 
 	MSG_showMessageBoxHeader("infotable",$I18N_information);
-	SERVER_runInBackground("uploadScriptToSF",$cmds,HELPER_getApacheUser,false);
+	$Rec_Data = curl_exec($ch);
+	curl_close($ch);
+// 	SERVER_runInBackground("uploadScriptToSF",$cmds,HELPER_getApacheUser,false);
 	MSG_showMessageBoxFooter();
 	
 }
@@ -603,16 +625,16 @@ function SERVER_programmStatus($progname,$pkgName,$daemonScript,$description,$in
 
 	$infoHTML="<table cellpadding=\"5\">
 		<tr>
-			<td><img src=\"$statusImg\"></td>
+			<td valign=\"top\"><img src=\"$statusImg\"></td>
 			<td>$infoString</td>
 		</tr>
 		</table>";
 	
 	echo("
 <tr>
-	<td>$progname</td>
-	<td>$description</td>
-	<td>$infoHTML</td>
+	<td valign=\"top\">$progname</td>
+	<td valign=\"top\">$description</td>
+	<td valign=\"top\">$infoHTML</td>
 	<td>$selection</td>
 </tr>
 	");
@@ -726,10 +748,34 @@ function SERVER_runInBackground($jobName,$cmds,$user="root",$runInScreen=true)
 	$cmdf="/m23/tmp/$jobName.sh";
 	$lock="/m23/tmp/$jobName.lock";
 
+	// Check, if the script is run in command line
+	if (HELPER_isExecutedInCLI())
+	{
+		// If the user who runs the script is identically with the user who should run the commands => No sudo magic is needed
+		if (HELPER_getApacheUser() == $user)
+			$changeUserScreenBegin = $changeUserScreenEnd = $changeUserDirectBegin = $changeUserDirectEnd = '';
+		else
+			{
+				$changeUserScreenBegin = "su - $user -c \"";
+				$changeUserScreenEnd = "\"";
+				$changeUserDirectBegin = "sudo -i -u $user ";
+				$changeUserDirectEnd = '';
+			}
+	}
+	else
+	{
+		// Run under Apache
+		$changeUserScreenBegin = "sudo su - $user -c \"";
+		$changeUserScreenEnd = "\"";
+		$changeUserDirectBegin = "sudo sudo -i -u $user ";
+		$changeUserDirectEnd = '';
+	}
+
 	$file=fopen($cmdf,"w");
 
 	fwrite($file,
 	"#!/bin/bash
+	chmod 775 /var/run/screen 2> /dev/null
 	rm $lock 2> /dev/null
 	touch $lock
 $cmds
@@ -740,10 +786,9 @@ $cmds
 
 	//Choose the execution mechanism
 	if ($runInScreen)
-		$execCMD = "sudo su - $user -c \"screen -dmS $jobName $cmdf\"";
-// 		$execCMD = "sudo screen -dmS $jobName sudo -i -u $user $cmdf";
+		$execCMD = "${changeUserScreenBegin}screen -dmS $jobName $cmdf${changeUserScreenEnd}";
 	else
-		$execCMD = "sudo sudo -i -u $user $cmdf";
+		$execCMD = "${changeUserDirectBegin}$cmdf${changeUserDirectEnd}";
 
 return(shell_exec("
 	chmod +x $cmdf
@@ -1107,4 +1152,21 @@ function SERVER_multiMkDir($path, $mode)
 		@mkdir($p, $mode);
 	}
 }
+
+
+
+
+
+/**
+**name SERVER_commandAvailable($cmd, $user="root")
+**description Checks, if a given command is available for the given user.
+**parameter user: user the command should be run under.
+**returns: true when the command is available otherwise false.
+**/
+function SERVER_commandAvailable($cmd, $user="root")
+{
+	$ret = SERVER_runInBackground("CheckFor".uniqid($cmd), "(type $cmd 2>&1) > /dev/null && echo ok",$user,false);
+	return ("ok\n" == $ret);
+}
+
 ?>

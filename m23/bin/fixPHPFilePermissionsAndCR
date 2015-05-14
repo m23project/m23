@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Install the dos2unix package, if not present
+(type dos2unix 2>&1) > /dev/null
+if [ $? -eq 0 ]
+then
+	apt-get -y install dos2unix
+fi
+
+# Install the recode package, if not present
+(type recode 2>&1) > /dev/null
+if [ $? -eq 0 ]
+then
+	apt-get -y install recode
+fi
+
+# Get all PHP files under /m23 (that are not part of other software or are the option pages for Debian packages)
+find /m23/inc /m23/data+scripts/ -type f -name *.php | grep -v inc/geshi | grep -v inc/html2pdf | grep -v m23admin/phpMyAdmin | grep -v m23admin/phpldapadmin | grep -v m23admin/packages/debian/ | grep -v m23admin/packages/ubuntu/ | while read phpFile
+do
+	# Check, if the PHP file is readable by www-data
+	res=$(find "$phpFile" ! \( \( -user www-data -perm -u=r \) -o \( -group www-data -perm -g=r \) -o \( ! \( -user www-data -o -group www-data \) -perm -o=r \) \) -ls | wc -l)
+
+	# If it is not redable, make it readable by all users
+	if [ $ret -gt 0 ]
+	then
+		chmod o+rx "$phpFile"
+		echo "Making \"$phpFile\" readable by the Apache user."
+	fi
+
+	# Remove "carriage return" (CR) from the file
+	if [ $(file "$phpFile" | grep 'with CRLF line' -c) -gt 0 ]
+	then
+		dos2unix "$phpFile"
+	fi
+	
+	recode ..CHAR "$phpFile"
+done

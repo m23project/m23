@@ -35,7 +35,6 @@ define('IMGEXTENSION',3);
 //directory to store the images
 define('IMGSTOREDIR',"/m23/data+scripts/clientImages/");
 define('IMGHTTPDIR',"/clientImages/");
-define('IMGINFOTABLE',serialize($ImageInfoTable));
 
 
 
@@ -187,7 +186,7 @@ function IMG_clientRestore($fileName, $destDevice, $lang)
 	$cmd.="\n";
 	
 	if ($mount)
-		CLCFG_mountRootDir($destDevice,basename($destDevice));
+		CLCFG_mountRootDir($destDevice, basename($destDevice));
 	echo($cmd);
 
 	if ($gaugeActive)

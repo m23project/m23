@@ -35,7 +35,7 @@ class CClientLister extends CChecks
 	const ACTION_MASSINSTALL = 6;
 	const ACTION_CONTROLCENTER = 2323;
 
-	private $orderBy = 'clients.client', $statusWHERE = '', $groupWHERE = '', $groupFROM = '', $searchWHERE = '', $directionORDER = 'ASC', $vmRunOnHostWHERE = '', $mySQLResID = null, $actionString ='', $outputColumns = null, $checkedClientNamesIDs = array(), $extraLine = null;
+	private $orderBy = 'clients.client', $statusWHERE = '', $groupWHERE = '', $groupFROM = '', $searchWHERE = '', $directionORDER = 'ASC', $vmRunOnHostWHERE = '', $mySQLResID = null, $actionString ='', $outputColumns = null, $checkedClientNamesIDs = array(), $extraLine = null, $pingableFilter = null;
 
 
 
@@ -121,6 +121,67 @@ class CClientLister extends CChecks
 
 
 /**
+**name CClientLister::isVisibleByPingableFilter($CClientO)
+**description Checks, if only clients that can (not) be pinged should be shown and if the given client matches the filter rule.
+**parameter CClientO: Object to the client to check.
+**returns true, if there is no pingable filter rule, or if the client matches the filter rule.
+**/
+	private function isVisibleByPingableFilter($CClientO)
+	{
+		if ($this->pingableFilter === null)
+			return(true);
+		else
+			return($this->pingableFilter == $CClientO->isPingable());
+	}
+
+
+
+
+
+/**
+**name CClientLister::setVisibleByPingableFilter($filterState)
+**description Sets the pingable filter rule (show only clients that can (not) be pinged or all clients).
+**parameter filterState: true (for showing only pingable clients), false (for not pingable clients) or null for all clients (filter deactivated).
+**/
+	public function setVisibleByPingableFilter($filterState)
+	{
+		if ((null == $filterState) || (false == $filterState) || (true == $filterState))
+			$this->pingableFilter = $filterState;
+	}
+
+
+
+
+
+/**
+**name CClientLister::getClientNames()
+**description Gets an array with all clients matching the filter rules.
+**returns Array with all clients matching the filter rules.
+**/
+	public function getClientNames()
+	{
+		$out = array();
+		$i = 0;
+	
+		while ($clientInfo = $this->getClient())
+		{
+			$CClientO = new CClient($clientInfo);
+
+			// Filter out the client, if it is not matching the rule of the pingable filter
+			if (!$this->isVisibleByPingableFilter($CClientO))
+				continue;
+
+			$out[$i++] = $CClientO->getClientName();
+		}
+
+		return($out);
+	}
+
+
+
+
+
+/**
 **name CClientLister::showClientList()
 **description Shows the table header of the client output list.
 **/
@@ -132,6 +193,11 @@ class CClientLister extends CChecks
 		while ($clientInfo = $this->getClient())
 		{
 			$CClientO = new CClient($clientInfo);
+
+			// Filter out the client, if it is not matching the rule of the pingable filter
+			if (!$this->isVisibleByPingableFilter($CClientO))
+				continue;
+
 			$i = 1;
 
 			//Write the coloring for the row in the 0 entry of the array
@@ -149,8 +215,8 @@ class CClientLister extends CChecks
 					case CClientLister::COLUMN_INSTALL_DATE: $lines[$nr][$i++] = $CClientO->getInstallDateHumanReadable(); break;
 					case CClientLister::COLUMN_LAST_CHANGE: $lines[$nr][$i++] = $CClientO->getModifyDateHumanReadable(); break;
 					case CClientLister::COLUMN_ACTION: $lines[$nr][$i++] = $CClientO->getActionString($this->getActionString()); break;
-					case CClientLister::COLUMN_IP: $lines[$nr][$i++] = $CClientO->getIP(); break;
-					case CClientLister::COLUMN_MAC: $lines[$nr][$i++] = $CClientO->getMAC(); break;
+					case CClientLister::COLUMN_IP: $lines[$nr][$i++] = $CClientO->getIP(''); break;
+					case CClientLister::COLUMN_MAC: $lines[$nr][$i++] = $CClientO->getMAC(''); break;
 					case CClientLister::COLUMN_CONTINUOUS_NUMBER: $lines[$nr][$i++] = $nr; break;
 					case CClientLister::COLUMN_CHECKBOX: $lines[$nr][$i++] = $this->generateHTMLClientNameIdCheckbox($clientInfo); break;
 				}

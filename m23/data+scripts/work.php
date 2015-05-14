@@ -22,7 +22,13 @@
 	include_once('/m23/inc/raidlvm.php');
 	include_once("/m23/inc/halfSister.php");
 	include_once('/m23/inc/vm.php');
+	include_once('/m23/inc/bittorrent.php');
 	if (file_exists('/m23/inc/m23shared/m23shared.php')) include_once('/m23/inc/m23shared/m23shared.php');
+	include_once('/m23/inc/CMessageManager.php');
+	include_once('/m23/inc/CChecks.php');
+	include_once('/m23/inc/CClient.php');
+	include_once('/m23/inc/CFDiskIO.php');
+	include_once('/m23/inc/CFDiskBasic.php');
 
 	session_start();
 	
@@ -39,7 +45,7 @@ echo('#!/bin/bash
 	//Set client debug status in a session parameter
 	$_SESSION['debug'] = CLIENT_isInDebugMode($client);
 
-	if ($_SESSION['m23Shared_blockAccount'] === true)
+	if (isset($_SESSION['m23Shared_blockAccount']) && ($_SESSION['m23Shared_blockAccount'] === true))
 		die("echo blocked");
 
 	//get all options
@@ -87,6 +93,13 @@ echo('#!/bin/bash
 
 					if (CLIENT_isAskingInDebugMode())
 						MSR_logCommand("work.php");
+
+					echo("
+					echo \"$package\" >> /efi-debug.log
+					mount 2>&1 >> /efi-debug.log
+					efibootmgr 2>&1 >> /efi-debug.log
+					echo \"+++++\" >> /efi-debug.log
+					");
 
 					run($line[1]);
 				}
