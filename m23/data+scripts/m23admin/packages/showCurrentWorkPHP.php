@@ -9,7 +9,12 @@
 	$clientO = new CClient($id);
 	
 	if (isset($_GET['script']))
+	{
 		$otherScript = $_GET['script'];
+		ini_set('display_errors', 'On');
+		ini_set('html_errors', 0);
+		error_reporting(-1);
+	}
 	else
 		$otherScript = '';
 

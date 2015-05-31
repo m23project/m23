@@ -1,3 +1,34 @@
+2015-05-31
+cha: showCurrentWorkPHP.php: Now enables reporting of all PHP errors if called with a script name.
++++++
+2015-05-25
+cha: m23Backup, m23Restore: Now backups and restores openLDAP and BackupPC settings too.
++++++
+2015-05-23
+patch 100769: Support for Squid 3.
+cha: m23 / postinst / configureSquid: Now supports Squid 3 too.
++++++
+2015-05-20
+patch 100768: Smal postinst fix for configuring BackupPC.
+fix: m23 / postinst / configureBackupPC: Now includes needed helper.php.
+patch 100767: More compatibility for Debian 8.
+cha: m23 / postinst / configureApache: Now sets character encoding for PHP.
+patch 100766: More compatibility for Debian 8.
+cha: m23 / postinst / configureApache: Special handling for Apache 2.4.
+patch 100764: Smal changes for SF and Debian 8.
+cha: m23instUpload: Now checks, if the Debian packages, that were downloaded as test, match the original MD5 sum.
+cha: m23DuplicateToFRS, m23instUpload: Adjusted paths to the new SF FRS.
++++++
+2015-05-19
+cha: m23 / postinst: Now enables PHP's short tags in php.ini.
++++++
+2015-05-18
+cha: enable-ssh: Changes for Apache 2.4.
++++++
+2015-05-15
+patch 100764: Changed dependencies to make it installable on Debian 8 (for future developement).
+cha: m23 / control: Changed dependencies to make it installable on Debian 8 (for future developement).
++++++
 2015-05-14
 patch 100763: Added elementary OS with patheon as additional desktop.
 cha: exportDBsourceslist.php: Now exports "elementary OS" too.

@@ -51,6 +51,12 @@ createBackupList()
 	#Add the logs (if any)
 		echo "/m23/log/" >> $backupList
 
+	#Add openLDAP
+		echo "/var/lib/ldap/" >> $backupList
+
+	#Add BackupPC settings
+		echo "/etc/backuppc/" >> $backupList
+
 	#Add the RAS tunnel settings
 		ls /m23/bin/m23RemoteAdministrationServiceOpenTunnel-* >> $backupList
 
@@ -135,6 +141,9 @@ backupDB()
 
 backupFiles()
 {
+	# Stop openLDAP to get a clean copy of the DB state
+	/etc/init.d/slapd stop
+
 	tarParam="cjp --same-owner -f"
 	echo -n "Storing m23 config files..."
 		echo -n ".svn" | tar $tarParam m23config.tar.bz2 -X- -T $backupList
@@ -144,6 +153,9 @@ backupFiles()
 	echo -n "Storing /etc..."
 		tar $tarParam etc.tar.bz2 /etc/*
 	echo " done"
+
+	# Start oepnLDAP again
+	/etc/init.d/slapd start
 }
 
 

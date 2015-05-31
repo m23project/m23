@@ -38,4 +38,16 @@ then
 	then
 		echo "Listen 443" >> /etc/apache2/ports.conf
 	fi
+
+	# Check, if apache2ctl is present
+	type apache2ctl &> /dev/null
+	if [ $? -eq 0 ]
+	then
+		# Check, if Apache 2.4 is installed
+		if [ $(apache2ctl -v | grep version | grep -c '/2\.4') -gt 0 ]
+		then
+			sed -i '/.*shmcb.*/d' /etc/apache2/mods-enabled/ssl.conf
+			sed -i -e '/.*Order allow,deny/d' -e 's/Allow from all/Require all granted/g' /etc/apache2/sites-enabled/m23.conf
+		fi
+	fi
 fi
