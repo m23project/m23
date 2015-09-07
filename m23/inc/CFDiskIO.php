@@ -178,7 +178,7 @@ class CFDiskIO extends CClient
 		$sql = "SELECT partitions, CFDiskTemp FROM `clients` WHERE client='".$this->getClientName()."';";
 
 		$result = db_query($sql); //FW ok
-		$line = mysql_fetch_row($result);
+		$line = mysqli_fetch_row($result);
 
 		// Get the current partitioning of the client
 		$this->setCurrentPartitioning($this->convertPartitioning2Array(explodeAssoc("###",$line[0])));

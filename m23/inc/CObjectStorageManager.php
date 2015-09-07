@@ -49,7 +49,7 @@ class CObjectStorageManager extends CChecks
 	{
 		$i = 0;
 		$this->foundObjects = array();
-		while ($line = mysql_fetch_assoc($res))
+		while ($line = mysqli_fetch_assoc($res))
 		{
 			$this->foundObjects[$i] = unserialize(CHECK_db2text($line['object']));
 			$this->getObjectMethodReturnValue($this->foundObjects[$i], 'runCOSLoop', 0);

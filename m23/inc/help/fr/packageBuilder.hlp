@@ -11,3 +11,12 @@ La création d'un paquet se déroule de la fa&ccedil;on suivante:
 
 <u>Notez</u>
 Bien sûr, vous pouvez copier des paquets Debian déjà créés dans les sources de paquets, puis reconstruire le fichier d'index des paquets après coup, en cliquant sur <i>&laquo;$I18N_recreatePackageIndex&raquo;</i>.
+
+<!-- V15.2 begin --><u>BitTorrent</u>
+Lorsque vous souhaitez distribuer des fichiers volumineux à plusieurs ordinateurs clients tout en réduisant la charge induite sur le serveur, vous pouvez utiliser la fonctionnalité <a href="https://fr.wikipedia.org/wiki/BitTorrent_%28protocole%29">BitTorrent</a>. BitTorrent rend possible le partage des fichiers déjà téléchargés sur des clients m23 pour les autres clients, (dans le cas idéal) le serveur m23 ne transférera le fichier qu'une seule fois.
+
+Pour utiliser Bittorrent, suivez ces étapes:
+
+<ol><li>Copiez le(s) fichier(s) à transférer sur les clients dans le répertoire <i>"/m23/data+scripts/extraDebs/"</i> de votre serveur m23.</li>
+<li>Cliquez sur le bouton <i>"$I18N_createTorrent"</i> sous le fichier correspondant.</li>
+<li>Dans vos propres scripts, utilisez la fonction m23 <code>BT_dlFile($torrentFileName, $DestinationDirectoryOnClient)</code>.</li></ol><!-- V15.2 end -->

@@ -448,18 +448,16 @@ function MAIL_cryptMailServer()
 	//Simple connection to the DB
 	function dbConnect()
 	{
-		$dbConnection=mysql_connect("localhost","cryptMailer",CryptMailerDBPWD)
-			or die ("Could not connect to database server!");
-
-		mysql_select_db("cryptMailer",$dbConnection)
-			or die ("Could not select database!");
+		DB_setConnection(mysqli_connect("localhost","cryptMailer",CryptMailerDBPWD, "cryptMailer"));
+		if (!DB_isConnectionValid())
+			die ("Could not connect to database server!");
 	}
 
 	//Simple query function
 	function DB_query($sql)
 	{
-		$result = mysql_query($sql)
-			or die ("DB_query: Could not execute SQL statement: $sql ERROR:".mysql_error());
+		$result = DB_query($sql)
+			or die ("DB_query: Could not execute SQL statement: $sql ERROR:".mysqli_error(DB_getConnection()));
 		return($result);
 	}
 
@@ -483,7 +481,7 @@ function MAIL_cryptMailServer()
 	$res = DB_query("DELETE FROM `codes` WHERE `code` = '$_POST[cmsgID]'");
 
 	//If there could be deleted a row, then the code from the client was valid
-	if (mysql_affected_rows() > 0)
+	if (mysqli_affected_rows(DB_getConnection()) > 0)
 	{
 		//Get random salt for this transfer
 		$randSalt = $_POST['randSalt'];

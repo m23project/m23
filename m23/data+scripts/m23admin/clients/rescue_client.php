@@ -34,6 +34,8 @@
 		$title = $I18N_startRescueSystem;
 		$afterClientname = $I18N_shouldRescueSystemBeStarted2;
 	}
+	
+	$noURL = CLIENT_getToDetailsURL($client,$id,"criticalStatus");
 ?>
 
 <span class="title"><?PHP echo("$data[client] : $title");?></span>
@@ -62,7 +64,7 @@
  </tr>
  <tr>
   <td align="center">
-    <a href="?page=rescueclient&id=<?php echo("$id"); ?>&client=<?php echo("$data[client]"); ?>&sure=1&deactivate=<?php echo($deactivate); ?>"><img src="/gfx/button_ok-mini.png"><?PHP echo($I18N_yes);?></a> &nbsp; <a href="?page=clientsoverview"><img src="/gfx/button_cancel-mini.png"><?PHP echo($I18N_no);?><br></a>
+    <a href="?page=rescueclient&id=<?php echo("$id"); ?>&client=<?php echo("$data[client]"); ?>&sure=1&deactivate=<?php echo($deactivate); ?>"><img src="/gfx/button_ok-mini.png"><?PHP echo($I18N_yes);?></a> &nbsp; <a href="<? echo($noURL); ?>"><img src="/gfx/button_cancel-mini.png"><?PHP echo($I18N_backToControlCenter);?><br></a>
 
 </td></tr></table>
 </div></td><tr></table>

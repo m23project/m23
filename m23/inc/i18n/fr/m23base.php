@@ -670,7 +670,7 @@ include("/m23/inc/i18n/en/m23base.php");
 @$I18N_maxUploadFileSize="Taille maximale du fichier à téléverser";
 @$I18N_recreatePackageIndex="Recréer l&apos;index des paquets";
 
-$DATE_TIME_FORMAT="d.m.y Hhi";
+@$DATE_TIME_FORMAT="d.m.y Hhi";
 
 //1.14
 @$I18N_packageSelectionToInstall="Combinaison de paquets devant également être installée";
@@ -859,11 +859,10 @@ Attention: Si le nom de l&apos;utilisateur et son mot de passe sont encore enreg
 @$I18N_Iaccept = "J'accepte.";
 @$I18N_privacyInformation = "Protection des données";
 @$I18N_disclaimer = "Clause de non-responsabilité";
-$dateTimeSQLFormat = '%d.%m.%Y %H:%i:%S';
+@$dateTimeSQLFormat = '%d.%m.%Y %H:%i:%S';
 @$I18N_passwordChangedSucessfully = "Le mot de passe a été changé avec succès.";
 @$I18N_passwordCouldNotGetChanged = "Le mot de passe ne pouvait pas été changé.";
 @$I18N_eMailChangedSucessfully = "L'adresse e-mail a été changé avec succès.";
-$dateTimeSQLFormat = "%d.%m.%Y %H:%i:%S";
 @$I18N_change = "Changer";
 @$I18N_dateFormat="%d.%m.%Y";
 @$I18N_address = "Adresse";
@@ -1328,4 +1327,16 @@ $dateTimeSQLFormat = "%d.%m.%Y %H:%i:%S";
 @$I18N_viewScriptOutput = 'Visualiser le résultat du script';
 @$I18N_openScriptOutputView = 'Ouvrir la visualisation du résultat du script';
 @$I18N_scriptDownloadMalwareWarning = '<b>VERIFIEZ TOUJOURS</b> chaque script téléchargé. Utilisez le <b>EN TOUTE CONNAISSANCE DE CAUSE</b>!';
+
+//15.2
+@$I18N_firewallSetting = 'Configuration du pare-feu';
+@$I18N_firewallScriptSaved = 'Le script du pare-feu a été sauvé';
+@$I18N_firewallScriptExecuted = 'Le script du Pare-feu a été exécuté';
+@$I18N_firewallRulesExported = 'les règles du Pare-feu ont été exportées';
+@$I18N_autoLoadingOfFirewallRulesActivated = 'Le chargement automatique des règles du pare-feu a été activé';
+@$I18N_autoLoadingOfFirewallRulesDeactivated = 'Le chargement automatique des règles du pare-feu a été désactivé';
+@$I18N_enabled = 'Activé';
+@$I18N_disabled = 'Désactivé';
+@$I18N_saveAndActivate = 'Sauvegarder et activer';
+@$I18N_firewallRulesDeactivated = 'Les règles du Pare-feu ont été désactivées';
 ?>

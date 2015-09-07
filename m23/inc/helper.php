@@ -91,17 +91,23 @@ function HELPER_isExecutedInCLI()
 
 
 /**
-**name HELPER_getContentFromURL($url)
+**name HELPER_getContentFromURL($url, $range = '')
 **description Downloads an URL via curl and gives back the site code.
 **parameter url: The URL to download.
+**parameter range: If set, a part of the file will be downloaded. (e.g. 0-500 will download the first 500 kb)
 **returns The downloaded site code or false in case of an error.
 **/
-function HELPER_getContentFromURL($url)
+function HELPER_getContentFromURL($url, $range = '')
 {
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_HEADER, false);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+	if (isset($range{2}))
+		curl_setopt($ch, CURLOPT_RANGE, $range);
+
 	$out = curl_exec($ch);
 	curl_close($ch);
 
@@ -317,6 +323,39 @@ function HELPER_ucrc32($in)
 function HELPER_md5x5($in)
 {
 	return(md5(md5(md5(md5(md5($in))))));
+}
+
+
+
+
+
+/**
+**name HELPER_netmaskAmountOfSetBits($nm)
+**description Calculates the amount of set bits in a network mask (as used in the short form of netmasks).
+**parameter: nm: The netmask in decimal notation.
+**returns Amount of set bits in the network mask.
+**/
+function HELPER_netmaskAmountOfSetBits($nm)
+{
+	$long = ip2longSafe($nm);
+	$base = ip2longSafe('255.255.255.255');
+	return(32-log(($long ^ $base)+1,2));
+}
+
+
+
+
+
+/**
+**name HELPER_networkCalculator($ip, $nm)
+**description Calculates the network IP by a given IP and the netmask.
+**parameter: ip: The IP.
+**parameter: nm: The netmask.
+**returns Network IP.s
+**/
+function HELPER_networkCalculator($ip, $nm)
+{
+	return(long2ip(ip2longSafe($nm) & ip2longSafe($ip)));
 }
 
 
@@ -906,8 +945,9 @@ function HELPER_calcMBSize($number,$from=0,$trunc=false)
 **parameter string: the text, that should be searched
 **parameter search: the string to be searched
 **parameter cut: seperator for the input and output lines
+**returns The found lines as string separated by $cut.
 **/
-function HELPER_grep($string,$search,$cut="\n")
+function HELPER_grep($string, $search, $cut="\n")
 {
 	$parts = explode($cut,$string);
 	$out = "";
@@ -917,6 +957,53 @@ function HELPER_grep($string,$search,$cut="\n")
 			$out.=$cut.trim($parts[$i]);
 
 	return($out);
+}
+
+
+
+
+
+/**
+**name HELPER_grepNot($string,$search,$cut="\n")
+**description Returnes all lines from $string seperated by $cut that do NOT contain $search.
+**parameter string: the text, that should be searched
+**parameter search: the string to be searched
+**parameter cut: seperator for the input and output lines
+**returns The found lines as string separated by $cut.
+**/
+function HELPER_grepNot($string, $search, $cut="\n")
+{
+	$parts = explode($cut,$string);
+	$out = "";
+
+	for ($i=0; $i < count($parts); $i++)
+		if (strpos($parts[$i],$search) === false)
+			$out.=$cut.trim($parts[$i]);
+
+	return($out);
+}
+
+
+
+
+/**
+**name HELPER_grepCount($string,$search,$cut="\n")
+**description Counts the lines from $string seperated by $cut that contain $search.
+**parameter string: the text, that should be searched
+**parameter search: the string to be searched
+**parameter cut: seperator for the input and output lines
+**returns Amount of lines that match the $search.
+**/
+function HELPER_grepCount($string,$search,$cut="\n")
+{
+	$parts = explode($cut,$string);
+	$found = 0;
+
+	for ($i=0; $i < count($parts); $i++)
+		if (!(strpos($parts[$i],$search) === false))
+			$found++;
+
+	return($found);
 };
 
 

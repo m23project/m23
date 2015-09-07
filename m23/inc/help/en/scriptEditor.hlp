@@ -4,13 +4,50 @@ $I18N_scriptEditor<!--v1.18 new-->
 
 <ul>
 <li><b>Open an existing script</b>: Choose the script from the list under <i>"$I18N_scriptManagement"</i> and click on <i>"$I18N_load"</i>. The source code will be shown in the editor window.</li>
-<li><b>Save and delete script</b>: Click on <i>"$I18N_save"</i> or <i>"$I18N_delete"</i> for the desired action. The action applies to the currently loaded script.</li>
+<li><b>Save and delete scripts</b>: Click on <i>"$I18N_save"</i> or <i>"$I18N_delete"</i> for the desired action. The action applies to the currently loaded script.</li>
+<!--v15.2 begin--><li><b>Save script under a different name</b>: If you would like to save the script in the editor under a new name, please enter this name at <i>"$I18N_saveAs"</i> and then, click on <i>"$I18N_save"</i>.<!--v15.2 end-->
 <li><b>Create a new script</b>: Enter the name for the new script at <i>"$I18N_createNewScript"</i> and confirm with a click on <i>"$I18N_create"</i>. A short example script you can edit will be loaded into the editor window.<li>
-<li><b>Share your scripts with other m23 users</b>: The editor contains an easy function to share your scripts with other m23 users and open it for a bigger audience. All scripts are published on the m23 webpage under the category "Scripts of m23 users". Please enter a short text about the purpose of your script under <i>"$I18N_description"</i> to upload it. Then add your identification code, your name or another word for identification of your script at <i>"$I18N_author"</i>. To finally upload the script click on <i>"$I18N_uploadScriptToSF"</i>. Your script will be uploaded to the m23 website immediately.
-<b align="center">You aggree to your script being published under the terms of the <a href="http://www.gnu.org/licenses/gpl-2.0.html" target="_blank">GPLv2</a>, if you want to publish your script on the m23 website.</b></li>
+<!--v15.2 begin--><li><b>Download scripts from other m23 users</b>: You can load scripts published by other m23 users directly into the editor. For this, update the list of available scripts by clicking on <i>"$I18N_updateOnlineScriptList"</i>. Then select the script you would like to use from the list by clicking on <i>"$I18N_scriptDownload"</i> and load it into the editor with a click on <i>"$I18N_load"</i><!--v15.2 end-->
+<li><b>Share your scripts with other m23 users</b>: The editor contains an easy function to share your scripts with other m23 users and to open it for a bigger audience. All scripts are published on the m23 web page in the category "Scripts of m23 users". Please enter a short text about the purpose of your script under <i>"$I18N_description"</i> to upload it. Then add your identification code, your name or another word for identification of your script at <i>"$I18N_author"</i>. To finally upload the script click on <i>"$I18N_uploadScriptToSF"</i>. Your script will be uploaded to the m23 website immediately.<!--v15.2 deleted--></li>
+<!--v15.2 begin--><li><b>Examine script output</b>: As a first test for your script, you can check its output, in order to correct syntax errors, for example. For this, the script will temporarily be assigned to a client, and the BASH-Code that was generated to fit that client will be displayed in a window. Select the client from the list <i>"$I18N_client_name"</i> below <i>"$I18N_viewScriptOutput"</i> and then click on <i>"$I18N_openScriptOutputView"</i>.<!--v15.2 end--></li>
 </ul>
 
 <u>Hints</u>
-<ul><li>You can find your scripts in the package installation dialogue under the category <i>"$I18N_special_packages"</i>.</li>
-<li>For using the syntax highlighting you need to activate JavaScript in your browser.</li>
-<li>The scripts published by other m23 users can be found <a href="http://m23.sourceforge.net/links/news.php?id=1000000230">here</a>.</li></ul>
+<ul><li>You can find your scripts in the package installation dialogue in the category <i>"$I18N_special_packages"</i>.</li>
+
+<!--v15.2 begin--><li>In order to use the editor, you need to activate Javascript in your web browser.</li><!--v15.2 end--><!--v15.2 deleted-->
+
+<li>The scripts published by other m23 users are available <a href="http://m23.sourceforge.net/links/news.php?id=1000000230">here</a>.</li></ul>
+
+<!--v15.2 begin--><h3>List of keyboard shortcuts</h3>
+<u>Text selection</u>
+<ul>
+        <li>Delete current line: <i>Ctrl + D</i> (PC), <i>Command + D</i> (Mac)</li>
+        <li>Select all: <i>Ctrl + A</i> (PC), <i>Command + A</i> (Mac)</li>
+        <li>Select text beginning at current cursor position: <i>&uArr; + &larr; or &rarr;</i> (PC), <i>&uArr; + &larr; or &rarr;</i> (Mac)</li>
+        <li>Select line above or below current line: <i>&uArr; + &uarr; or &darr;</i> (PC), <i>&uArr; + &uarr; or &darr;</i>
+        <li>Select text until start or end of current line beginning at current cursor position: <i>&uArr; + Pos1 or End</i> (PC), <i>&uArr; + Home or End</i>
+</ul>
+<u>Find and replace</u>
+<ul>
+        <li>Search: <i>Ctrl + F</i> (PC), <i>Command + F</i> (Mac)</li>
+        <li>Find next occurance: <i>Ctrl + K</i> (PC), <i>Command + G</i> (Mac)</li>
+        <li>Find previous occurance: <i>Ctrl + &uArr; + K</i> (PC), <i>Command + &uArr; + G</i> (Mac)</li>
+        <li>Find and replace: <i>Ctrl + H</i> (PC), <i>Command + Option + F</i> (Mac)</li>
+        <li>Jump to line number: <i>Strg + L</i> (PC), <i>Command + L</i> (Mac)</li>
+</ul>
+<u>Indentation</u>
+<ul>
+        <li>Indent: <i>Tab</i> (PC), <i>Tab</i> (Mac)</li>
+        <li>Revert indentation: <i>&uArr; + Tab</i> (PC), <i>&uArr; + Tab</i> (Mac)</li>
+</ul>
+<u>Undo and redo</u>
+<ul>
+        <li>Undo: <i>Ctrl + Z</i> (PC), <i>Command + Z</i> (Mac)</li>
+        <li>Redo: <i>Ctrl + Y</i> (PC), <i>Command + Y</i> (Mac)</li>
+</ul>
+
+Hint: &uArr; = Shift, &larr;, &rarr;, &uarr; and &darr; = arrow keys
+
+Further keyboard shortcuts for this editor are available at <a href="https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts">ace: Default Keyboard Shortcuts</a>.
+<!--v15.2 end-->

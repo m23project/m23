@@ -12,11 +12,11 @@ Die Erstellung des Paketes läuft folgendermaßen ab:
 <u>Hinweis</u>
 Natürlich können Sie auch bereits fertige Debian-Pakete im Paket-Verzeichnis ablegen. Um den Paketindex zu aktualisieren klicken Sie bitte auf <i>"$I18N_recreatePackageIndex"</i>.
 
-<!-- V14.3 begin --><u>BitTorrent</u>
+<!-- V15.2 begin --><u>BitTorrent</u>
 Wenn Sie große Dateien auf viele Rechner verteilen und dabei den m23-Server entlasten möchten, können Sie die <a href="http://de.wikipedia.org/wiki/BitTorrent">BitTorrent</a>-Funktion verwenden. Mit BitTorrent tauschen die m23-Clients bereits heruntergeladene Teile von Dateien untereinander aus, sodaß der m23-Server (im optimalen Fall) die Dateien nur ein einziges Mal überträgt.
 
 Um Bittorrent zu verwenden, gehen Sie wie folgt vor:
 
 <ol><li>Kopieren Sie die Datei(en), die Sie verteilen möchten, auf den m23-Server in das Verzeichnis <i>"/m23/data+scripts/extraDebs/"</i></li>
 <li>Klicken Sie auf den Button <i>"$I18N_createTorrent"</i> nach den betreffenden Dateinamen</li>
-<li>Verwenden Sie in Ihren eigenen Skripten die m23-Funktion <code>BT_dlFile($torrentDateiName, $ZielverzeichnisAufClient)</code></li></ol><!-- V14.3 end -->
+<li>Verwenden Sie in Ihren eigenen Skripten die m23-Funktion <code>BT_dlFile($torrentDateiName, $ZielverzeichnisAufClient)</code></li></ol><!-- V15.2 end -->

@@ -1,0 +1,12 @@
+<!--v15.2 new-->$I18N_firewallSetting
+
+This dialog allows you to create and edit firewall rules for your m23 server. When you open this page for the first time, a set of simple firewall rules will be created, which block all access to the m23 from outside your network (except for SSH).
+
+If your situation requires a different set of rules, you can create those using <a href="https://en.wikipedia.org/wiki/Iptables">iptables</a> and paste them into the editor.
+
+To accept the settings displayed in the editor, click on <i>"$I18N_save"</i> or <i>"$I18N_saveAndActivate"</i>, respectively. If the firewall is deactivated, the rules you set will only be saved to the file <code>/m23/bin/firewall.sh</code>. If activated, the rules will be saved and used.
+
+The buttons <i>"$I18N_activate"</i> and <i>"$I18N_deactivate"</i> activate and deactivate the Firewall.
+
+<u>Hint</u>
+During activation of the firewall, the file <code>/etc/network/interfaces</code> is modified to enable automatic loading of the rules. The modification is removed again when the firewall is being deactivated.

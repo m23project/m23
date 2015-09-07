@@ -111,7 +111,7 @@ function getClientLanguage()
 
 	$res=db_query($sql); //FW ok
 
-	$line=mysql_fetch_row($res);
+	$line=mysqli_fetch_row($res);
 
 	if (!empty($line[0]))
 		return($line[0]);
@@ -138,6 +138,48 @@ function getInstDev($id)
 
 
 /**
+**name DB_getConnection()
+**description Gets the MySQLi connection.
+**returns MySQLi connection.
+**/
+function DB_getConnection()
+{
+	global $GLOB_mysqliConnection;
+	return($GLOB_mysqliConnection);
+}
+
+
+
+
+
+/**
+**name DB_setConnection($conn)
+**description Sets the MySQLi connection to use globally.
+**parameter conn: MySQLi connection to use globally.
+**/
+function DB_setConnection($conn)
+{
+	global $GLOB_mysqliConnection;
+	$GLOB_mysqliConnection = $conn;
+}
+
+
+
+/**
+**name DB_isConnectionValid()
+**description Checks, if the MySQLi connection is valid.
+**returns true on valid MySQLi connection, otherwise false.
+**/
+function DB_isConnectionValid()
+{
+	return(!DB_getConnection() == false);
+}
+
+
+
+
+
+/**
 **name dbConnect()
 **description connects to the m23 database
 **/
@@ -146,18 +188,17 @@ function dbConnect()
 	//Check if we have the m23SHARED functions
 	if (!function_exists('m23SHARED_init') || !m23SHARED_init())
 	{
-		$dbConnection=mysql_pconnect("localhost","m23dbuser","m23secret")
-			or die ("Could not connect to database server!");
-	
 		if (CAPTURE_isActive() || (isset($_GET['captureLoad']) && $_GET['captureLoad']==1))
 			$dbName="m23captured";
 		else
 			$dbName="m23";
 
-		mysql_select_db($dbName,$dbConnection)
-			or die ("Could not select database!");
+		DB_setConnection(mysqli_connect("localhost","m23dbuser","m23secret", $dbName));
+
+		if (!DB_isConnectionValid())
+			die ("Could not connect to database server!");
 	}
-};
+}
 
 
 
@@ -169,7 +210,7 @@ function dbConnect()
 **/
 function dbClose()
 {
-	//mysql_close($dbConnection);
+	mysqli_close(DB_getConnection());
 };
 
 
@@ -219,6 +260,20 @@ function getServerNetmask()
 	}
 
 	return($netmask);
+}
+
+
+
+
+
+/**
+**name getServerNetwork()
+**description Get the network IP of the m23 server.
+**returns Network IP of the m23 server.
+**/
+function getServerNetwork()
+{
+	return(HELPER_networkCalculator(getServerIp(), getServerNetmask()));
 }
 
 
@@ -428,8 +483,12 @@ function executeNextWork()
 **/
 function DB_query($sql)
 {
-	$result = mysql_query($sql)
-		or die ("DB_query: Could not execute SQL statement: $sql ERROR:".mysql_error());
+	if (DB_getConnection() == NULL) dbConnect();
+
+	$result = mysqli_query(DB_getConnection(), $sql);
+	if ($result === false)
+		die ("DB_query: Could not execute SQL statement: $sql ERROR:".mysqli_error(DB_getConnection()));
+
 	return($result);
 }
 
@@ -444,7 +503,7 @@ function DB_query($sql)
 **/
 function DB_queryNoDie($sql)
 {
-	$ret = @mysql_query($sql);
+	$ret = @mysqli_query(DB_getConnection(), $sql);
 	return($ret);
 }
 
@@ -609,7 +668,7 @@ function isProgrammInstalled($progName)
 **/
 function pingIP($ip)
 {
-	$ret=exec("ping $ip -c1 -q -n -w1
+	$ret=exec("sudo ping $ip -c1 -q -n -w1
 if [ $? -eq 0 ]
 then
  echo t
@@ -685,9 +744,9 @@ function DB_getLikeableColumns($table)
 	$out = array();
 	$res = DB_query("SHOW COLUMNS FROM $table"); //FW ok
 
-	if (mysql_num_rows($res) > 0)
+	if (mysqli_num_rows($res) > 0)
 	{
-		while ($row = mysql_fetch_assoc($res))
+		while ($row = mysqli_fetch_assoc($res))
 			if ((!(strpos($row['Type'], 'char'  ) === false)) || (!(strpos($row['Type'], 'text' ) === false)))
 				$out[$row['Field']] = $row['Field'];
 	}

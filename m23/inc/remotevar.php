@@ -18,7 +18,7 @@ function RMV_exists4IP($var, $ip)
 
 	$result = db_query($sql); //FW ok
 
-	$line = mysql_fetch_row($result);
+	$line = mysqli_fetch_row($result);
 
 	return($line[0]>0);
 };
@@ -62,7 +62,7 @@ function RMV_get4IP($var,$ip)
 
 	$result = db_query($sql); //FW ok
 
-	$line = mysql_fetch_row($result);
+	$line = mysqli_fetch_row($result);
 
 	return(CHECK_db2text($line[0]));
 };
@@ -98,7 +98,7 @@ function RMV_get($var)
 
 	$result = db_query($sql); //FW ok
 
-	$line = mysql_fetch_row($result);
+	$line = mysqli_fetch_row($result);
 
 	return(CHECK_db2text($line[0]));
 };

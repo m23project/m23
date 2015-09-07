@@ -97,7 +97,7 @@ function CAPTURE_load()
 
 	$res = db_query($sql); //FW ok
 
-	$line=mysql_fetch_array($res);
+	$line=mysqli_fetch_array($res);
 
 	$_GET=array_merge($_GET,explodeAssoc("???",$line[get]));
 	$_GET[page]=$page;
@@ -222,7 +222,7 @@ function CAPTURE_showEntries()
 
 
 	
-	while ($line=mysql_fetch_array($res))
+	while ($line=mysqli_fetch_array($res))
 		{
 			//<a href=\"index.php?page=capture&showEntries=yes&action=edit&id=$line[id]\">$I18N_edit</a>
 			echo("<tr>

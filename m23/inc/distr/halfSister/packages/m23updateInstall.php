@@ -11,8 +11,8 @@ function run($id)
 	include("/m23/inc/i18n/".I18N_m23instLanguage($lang)."/m23inst.php");
 
 	$sql="SELECT client,params FROM `clientjobs` WHERE id=$id";
-	$result=mysql_query($sql) or die ("SQL statement could not executed:".$sql);
-	$line=mysql_fetch_row($result);
+	$result=DB_query($sql) or die ("SQL statement could not executed:".$sql);
+	$line=mysqli_fetch_row($result);
 	sendClientStageStatus(STATUS_BLUE);
 	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $I18N_updating_packages);
 	

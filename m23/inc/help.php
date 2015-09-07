@@ -270,6 +270,13 @@ function HELP_showHelpTex($fileName,$imageFile,$scale=0.45)
 	$s[26]="'&reg;'si"; $r[26]="\\textsuperscript{\\textregistered}";
 	$s[27]="'&trade;'si"; $r[27]="\\textsuperscript{\\texttrademark}";
 	$s[28]="'&#8203;'si"; $r[28]="";
+	$s[29]="'&egrave;'si"; $r[29]="\`{e}";
+	$s[30]="'&Egrave;'si"; $r[30]="\`{E}";
+	$s[31]="'&eacute;'si"; $r[31]="\'{e}";
+	$s[32]="'&Eacute;'si"; $r[32]="\'{E}";
+	$s[33]="'&darr;'si"; $r[33]="\$\\downarrow\$";
+	$s[34]="'&uArr;'si"; $r[34]="\$\\Uparrow\$";
+
 //	$s[25]="'%'si"; $r[25]="\\%";
 	
 
@@ -333,7 +340,7 @@ function HELP_showHelpTex($fileName,$imageFile,$scale=0.45)
 								};
 						}
 
-					$html.="\n\end{tabular}\n";
+					$html.="\n\\end{tabular}\n";
 				};
 		};
 

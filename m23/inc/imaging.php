@@ -49,10 +49,10 @@ define('IMGHTTPDIR',"/clientImages/");
 **/
 function IMG_installMBR($options)
 {
-	if ($options[IMGMBRfile] == "*generic*")
+	if ($options['IMGMBRfile'] == "*generic*")
 		echo("\ninstall-mbr -e $options[mbrPart]\n");
 	else
-		echo("\nwget -q https://".getServerIP().IMGHTTPDIR.$options[IMGMBRfile]." -O - | dd of=".$options[mbrPart]."\n");
+		echo("\nwget -q https://".getServerIP().IMGHTTPDIR.$options['IMGMBRfile']." -O - | dd of=".$options['mbrPart']."\n");
 }
 
 
@@ -138,8 +138,8 @@ function IMG_clientRestoreAll($options, $lang)
 			};
 	};
 
-	$out[p]=$partNrs;
-	$out[d]=$devs;
+	$out['p']=$partNrs;
+	$out['d']=$devs;
 
 	return($out);
 };
@@ -222,8 +222,8 @@ function IMG_getAllImagesSel($selName,$default)
 	if (is_array($images))
 		foreach ($images as $image)
 		{
-			$list["name$nr"]=$image[filename]." $I18N_imageExtractedSize: ".$image[extractedSize];
-			$list["val$nr"]=$image[filename];
+			$list["name$nr"]=$image['filename']." $I18N_imageExtractedSize: ".$image['extractedSize'];
+			$list["val$nr"]=$image['filename'];
 			$nr++;
 		};
 
@@ -280,17 +280,17 @@ function IMG_getAllImages()
 	if ($fileName != "." && $fileName != ".." && !preg_match('/\.mbr$/',$fileName))
 	{
 		$fullPath=IMGSTOREDIR.$fileName;
-		$out[$i][filename] = $fileName;
-		$out[$i][size] = exec ('stat -c %s '. escapeshellarg ($fullPath));
+		$out[$i]['filename'] = $fileName;
+		$out[$i]['size'] = exec ('stat -c %s '. escapeshellarg ($fullPath));
 		IMG_getFormatCompressionFromFile($fullPath,$format,$compression,$withMBR);
-		$out[$i][form] = $desc[$format];
-		$out[$i][comp] = $desc[$compression];
-		$out[$i][mbr] = $withMBR;
-		$out[$i]["date"] = filectime($fullPath);
+		$out[$i]['form'] = $desc[$format];
+		$out[$i]['comp'] = $desc[$compression];
+		$out[$i]['mbr'] = $withMBR;
+		$out[$i]['date'] = filectime($fullPath);
 
 		//the extracted size is the last numeric part of the filename
 		preg_match ("/[.]+[0-9]+[.]+/",$fileName, $found);
-		$out[$i][extractedSize] = str_replace(".","",$found[(count($found)-1)]);
+		$out[$i]['extractedSize'] = str_replace(".","",$found[(count($found)-1)]);
 		$i++;
 	}
 
@@ -311,7 +311,7 @@ function IMG_showImageManagement()
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
-	switch ($_GET[action])
+	switch ($_GET['action'])
 	{
 		case del:
 			$file = IMGSTOREDIR.urldecode($_GET["file"]);
@@ -342,12 +342,12 @@ function IMG_showImageManagement()
 			echo("
 			<tr>
 				<td>$fileInfo[filename]</td>
-				<td>".I18N_number_format($fileInfo[size] / 1048576)." MB</td>
-				<td>".I18N_number_format($fileInfo[extractedSize] / 1048576)." MB</td>
+				<td>".I18N_number_format($fileInfo['size'] / 1048576)." MB</td>
+				<td>".I18N_number_format($fileInfo['extractedSize'] / 1048576)." MB</td>
 				<td>$fileInfo[form]</td>
 				<td>$fileInfo[comp]</td>
 				<td>".strftime($I18N_timeFormat,$fileInfo["date"])."</td>
-				<td><a href=\"index.php?page=manageImageFiles&action=del&file=".urlencode($fileInfo[filename])."\">$I18N_delete</a></td>	
+				<td><a href=\"index.php?page=manageImageFiles&action=del&file=".urlencode($fileInfo['filename'])."\">$I18N_delete</a></td>	
 			</tr>");
 		}
 	else
@@ -436,7 +436,8 @@ function IMG_getFormatCompressionFromFile($fileName,&$format,&$compression,&$wit
 **/
 function IMG_getImageFormatSelection($selname,$types,$showType)
 {
-	$desc=unserialize(IMGDESCRIPTIONS);
+	$desc = unserialize(IMGDESCRIPTIONS);
+	$selArray = array();
 
 	switch ($showType)
 	{
@@ -446,21 +447,13 @@ function IMG_getImageFormatSelection($selname,$types,$showType)
 		case IMGTRANS:
 			$first=IMGTRANS_NC;
 			break;
-	};
-
-	$nr=0;
-	$min=99999;
-
-	foreach ($types as $type)
-	{
-		if ($type < $min)
-			$min = $type;
-
-		$list["name$nr"]=$desc[$type];
-		$list["val".$nr++]=$type;
 	}
+	
+	foreach ($types as $type)
+		$selArray[$type] = $desc[$type];
 
-	return(HTML_listSelection($selname,$list,$first));
+	HTML_selection($selname, $selArray, SELTYPE_selection, true, $first);
+	return(constant($selname));
 };
 
 
@@ -577,9 +570,13 @@ function IMG_showCreateImage($client)
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	$desc=unserialize(IMGDESCRIPTIONS);
 	
-	if (isset($_POST[BUT_createImage]))
+	$port = HTML_input('ED_transferPort', rand(10000, 50000), 5);
+	$imageName = HTML_input('ED_imageName', '', 50, 200);
+
+
+	if (HTML_submit('BUT_createImage',$I18N_createImage))
 	{
-		if (empty($_POST[ED_imageName]))
+		if (empty($imageName))
 			MSG_showError($I18N_imageNameEmpty);
 		else
 		{
@@ -598,7 +595,7 @@ function IMG_showCreateImage($client)
 				case IMGFORMAT_PARTCLONE:
 					$imgparams['trans'] = $_POST['SEL_ddTrans'];
 					$imgparams['compr'] = $_POST['SEL_ddComp'];
-					$imgparams['port'] = $_POST['ED_transferPort'];
+					$imgparams['port'] = $port;
 	
 					$temp=explode(" ",$_POST['SEL_ddDrive']);
 					//device to save
@@ -607,20 +604,20 @@ function IMG_showCreateImage($client)
 			};
 
 			//create image name with format and compression extension
-			$imgparams[imagename] = $_POST[ED_imageName].IMG_makeExtension($imgparams[form],$imgparams[compr]);
+			$imgparams['imagename'] = $imageName.IMG_makeExtension($imgparams['form'],$imgparams['compr']);
 
-			if (is_file(IMGSTOREDIR.$imgparams[imagename]))
-				MSG_showError(IMGSTOREDIR.$imgparams[imagename].": $I18N_imageFileExists");
+			if (is_file(IMGSTOREDIR.$imgparams['imagename']))
+				MSG_showError(IMGSTOREDIR.$imgparams['imagename'].": $I18N_imageFileExists");
 			else
 			{
-				PKG_addJob($client,"m23createImage",PKG_getSpecialPackagePriority("m23createImage"),mysql_real_escape_string(serialize($imgparams)));
+				PKG_addJob($client,"m23createImage",PKG_getSpecialPackagePriority("m23createImage"), mysqli_real_escape_string(DB_getConnection(), serialize($imgparams)));
 
 				CLIENT_resetAndInstall($client);
 
 				PKG_addShutdownOrRebootPackage($client);
 
 				MSG_showInfo($I18N_createImageJobHasBeenStored);
-	
+
 				return;
 			};
 		}
@@ -663,7 +660,7 @@ function IMG_showCreateImage($client)
 
 <!--	<tr>
 		<td><INPUT type=\"radio\" name=\"SEL_imageFormat\" value=\"".IMGFORMAT_TAR."\"></td>
-		<td>".$desc[IMGFORMAT_TAR]."</td>
+		<td>".$desc['IMGFORMAT_TAR']."</td>
 		<td>".IMG_getImageFormatSelection("SEL_ddTrans",array(IMGTRANS_NC),IMGTRANS)."</td>
 		<td>".IMG_getImageFormatSelection("SEL_tarComp",array(IMGCOMPRESSION_GZ,IMGCOMPRESSION_BZ2,IMGCOMPRESSION_NONE),IMGCOMPRESSION)."</td>
 	</tr>
@@ -692,10 +689,10 @@ function IMG_showCreateImage($client)
 		</td>
 		<td colspan=\"1\" align=\"left\"></td>
 	</tr>
-	
+
 	<tr>
 		<td colspan=\"2\" align=\"left\">
-			<INPUT type=\"text\" name=\"ED_transferPort\" size=\"5\" maxlength=\"5\" value=\"12345\">
+			".ED_transferPort."
 		</td>
 		<td colspan=\"1\" align=\"left\"></td>
 	</tr>
@@ -705,8 +702,8 @@ function IMG_showCreateImage($client)
 	<tr>
 		<td colspan=\"3\" align=\"left\">
 			<nobr>
-				<INPUT type=\"text\" name=\"ED_imageName\" size=\"50\" maxlength=\"10240\">
-				<INPUT type=\"submit\" name=\"BUT_createImage\" value=\"$I18N_createImage\">
+				".ED_imageName."
+				".BUT_createImage."
 			</nobr>
 		</td>
 	</tr>

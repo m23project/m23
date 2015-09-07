@@ -10,7 +10,7 @@ dbConnect();
 
 $results = db_query("SELECT client, ip FROM clients");
 
-while ($data = mysql_fetch_array($results))
+while ($data = mysqli_fetch_array($results))
 {
 	if (!empty($data[1]))
 		SERVER_addEtcHosts($data[0], $data[1]);

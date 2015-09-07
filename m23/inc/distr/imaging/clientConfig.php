@@ -31,18 +31,19 @@ function CLCFG_addDistributionSpecificOptions($options)
 
 
 /**
-**name CLCFG_showDistributionSpecificOptions($options)
+**name CLCFG_showDistributionSpecificOptions($options, $client)
 **description shows distribution specific options and returns false, if there was an error
 **parameter options: options array
+**parameter client: Name of the client.
 **/
-function CLCFG_showDistributionSpecificOptions($options)
+function CLCFG_showDistributionSpecificOptions($options, $client)
 {
 	include_once("/m23/inc/distr/debian/packages.php");
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 	//list all drives and partitions
-	$driveParams=FDISK_fdiskSessionParam();
-	$driveList=FDISK_getDrivesAndPartitions($driveParams);
+	$CFDiskGUIO = new CFDiskGUI($client);
+	$driveList = $CFDiskGUIO->getDrivesAndPartitions(false, false);
 
 	$nr=0;
 	

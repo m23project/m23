@@ -130,7 +130,7 @@ function PREF_loadAllPreferenceValues()
 	$sql = "SELECT DISTINCT var, value FROM `clientpreferences` WHERE name = '$prefName'";
 	$res = db_query($sql); //FW ok
 
-	while($data = mysql_fetch_assoc($res))
+	while($data = mysqli_fetch_assoc($res))
 		$_SESSION['preferenceSpace'][$data['var']] = $data['value'];
 
 	$_SESSION['preferenceForceHTMLReloadValues'] = true;
@@ -158,7 +158,7 @@ function PREF_getClientPreferences($default, $directOutput = true)
 		if (PREF_exists($default))
 			echo("<option value=\"$default\">$default</option>");
 	
-		while( $data = mysql_fetch_array($result) )
+		while( $data = mysqli_fetch_array($result) )
 		{
 			if ($data[0] != $default)
 				echo("<option value=\"$data[0]\">$data[0]</option>");
@@ -168,7 +168,7 @@ function PREF_getClientPreferences($default, $directOutput = true)
 	{
 		$out = array();
 
-		while($data = mysql_fetch_array($result))
+		while($data = mysqli_fetch_array($result))
 			$out[$data[0]] = $data[0];
 
 		return($out);
@@ -192,7 +192,7 @@ function PREF_getValue($name, $var)
 
 	$result = db_query($sql); //FW ok
 
-	$data = mysql_fetch_array($result);
+	$data = mysqli_fetch_array($result);
 
 	return($data[0]);
 }
@@ -217,7 +217,7 @@ function PREF_putValue($name, $var, $value)
 
 	$result = db_query($sql); //FW ok
 
-	$line = mysql_fetch_row($result);
+	$line = mysqli_fetch_row($result);
 
 	if ($line[0] > 0)
 		{
@@ -271,7 +271,7 @@ function PREF_exists($name)
 
 	$result = db_query($sql); //FW ok
 
-	$data = mysql_fetch_array($result);
+	$data = mysqli_fetch_array($result);
 
 	return($data[0]==$name);
 }
@@ -314,7 +314,7 @@ function PREF_getAllValues($prefName, $options)
 
 	$result = db_query($sql); //FW ok
 
-	while ($data = mysql_fetch_array($result))
+	while ($data = mysqli_fetch_array($result))
 		$options[$data[0]]=$data[1];
 
 	return($options);

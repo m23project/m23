@@ -9,7 +9,6 @@ include ('m23CommonInstallRoutines.php');
 function run($id)
 {
 	include('/m23/inc/distr/debian/clientConfigCommon.php');
-	include('/m23/inc/dhcp.php');
 
 	$serverIP=getServerIP();
 

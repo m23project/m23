@@ -12,6 +12,7 @@ include_once('/m23/inc/CChecks.php');
 include_once('/m23/inc/CClient.php');
 include_once('/m23/inc/CIPRanges.php');
 include_once('/m23/inc/CIPManagement.php');
+include_once('/m23/inc/CFirewall.php');
 include_once('/m23/inc/CClientLister.php');
 include_once('/m23/inc/CPoolLister.php');
 include_once('/m23/inc/CPool.php');
@@ -371,9 +372,13 @@ switch($m23_page)
 	case 'ldapSettings':
 		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/ldapSettings.php");
 		break;
-		
+
 	case 'ipManagement':
 		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/ipManagement.php");
+		break;
+
+	case 'firewall':
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/firewall.php");
 		break;
 
 	case 'server_daemonsAndPrograms':

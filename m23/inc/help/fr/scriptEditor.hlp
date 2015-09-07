@@ -1,16 +1,53 @@
 $I18N_scriptEditor<!--v1.18 new-->
 
-L'éditeur de scripts simplifie l'exécution de tâches répétitives sur vos postes clients en la rendant aussi facile que l'installation d'un paquet. En utilisant l'éditeur, vous pouvez créer vos propres scripts et profiter de toute l'étendue possible de l'environnement fourni par m23, pour générer le code <a href="http://fr.wikipedia.org/wiki/Bash" target="_blank">BASH</a> afin que ces scripts puissent être exécuté sur les postes clients. Vous pouvez utiliser toutes les commandes BASH et tous les programmes installés sur les postes clients. L'index des commandes de m23 est consultable dans le <i>&laquo;Development Guide&raquo;</i>, dans le menu de gauche.
+<!--v15.1 begin-->Les scripts simplifient<!--v15.1 end--> l'exécution de tâches répétitives sur vos postes clients en la rendant aussi facile que l'installation d'un paquet. En utilisant l'éditeur, vous pouvez créer vos propres scripts et profiter de toute l'étendue possible de l'environnement fourni par m23, pour générer le code <a href="http://fr.wikipedia.org/wiki/Bash" target="_blank">BASH</a> afin que ces scripts puissent être exécuté sur les postes clients. Vous pouvez utiliser toutes les commandes BASH et tous les programmes installés sur les postes clients. L'index des commandes de m23 est consultable dans le <i>&laquo;Development Guide&raquo;</i>, dans le menu de gauche.
 
 <ul>
 <li><b>Ouvrir des scripts existants:</b> Sélectionnez le script souhaitée dans la liste sous <i>&laquo;$I18N_scriptManagement&raquo;</i> puis, cliquez sur <i>&laquo;$I18N_load&raquo;</i>. Ensuite, le texte apparait dans la fenêtre de l'éditeur.</li>
 <li><b>Enregistrer et effacer des scripts:</b> Cliquez sur <i>&laquo;$I18N_save&raquo;</i> ou sur <i>&laquo;$I18N_delete&raquo;</i>. Les actions se réfèrent au script qui est actuellement chargée.</li>
+<!--v15.2 begin--><li><b>Sauvegardez le script sous un nom différent</b>: Si vous souhaitez sauvegarder le script dans l'éditeur sous un nouveau nom, saisisez ce nouveau nom dans <i>"$I18N_saveAs"</i> puis, cliquez sur <i>"$I18N_save"</i>.<!--v15.2 end-->
 <li><b>Création d'un nouveau script:</b> Entrez un nom pour le nouveau script par <i>&laquo;$I18N_createNewScript&raquo;</i> et confirmez-le en cliquant sur <i>&laquo;$I18N_create&raquo;</i>. Un exemple de script court, que vous pouvez adapter à vos besoins, sera affichée dans la fenêtre de l'éditeur.</li>
+<!--v15.2 begin--><li><b>Télécharger des scripts appartenant à d'autres utilisateurs m23</b>: Vous pouvez charger les scripts publiés par d'autres utilisateurs directement depuis l'éditeur. Pour ce faire, mettez à jour la liste des scripts disponibles en cliquant sur <i>"$I18N_updateOnlineScriptList"</i>. Sélectionnez ensuite le script désiré en cliquant sur <i>"$I18N_scriptDownload"</i> puis chargez le dans l'éditeur en cliquant sur <i>"$I18N_load"</i><!--v15.2 end-->
 <li><b>Partagez vos scripts avec les autres utilisateurs de m23:</b> L'éditeur vous offre une possibilité simple de partager vos scripts avec des autres utilisateurs de m23 et par conséquent, d'en faire profiter un plus grande communauté d'utilisateurs. Tous ces scripts seront publiées sur le site web de m23 dans la rubrique &laquo;Scripts of m23 users&raquo;. Pour la publication de votre script, qui est actuellement chargée dans l'éditeur, entrez une description de la fonction du script sous <i>&laquo;$I18N_description&raquo;</i>. En outre, entrez votre code d'identification, nom ou un autre mot d'identification sous <i>&laquo;$I18N_author&raquo;</i>. Ensuite, cliquez sur <i>&laquo;$I18N_uploadScriptToSF&raquo;</i>. Votre script sera immédiatement chargé et apparaîtra sur le site web de m23.
-<b align="center">Votre script sera publiée sous la license  <a href="http://www.gnu.org/licenses/gpl-2.0.html" target="_blank">GPLv2</a>.</b></li>
+<!--v15.2 deleted--></li>
+<!--v15.2 begin--><li><b>Examinez la sortie du script</b>: Pour le premier test de votre script, vous pouvez vérifier ses résultats, afin par exemple, de corriger les éventuelles erreurs de syntaxe. Pour ce faire, le script sera temporairement assigné à un client, et le Code-BASH résultant affichera ce qui aurait du aparaitre dans la fenêtre du client. Sélectionnez le client dans la liste <i>"$I18N_client_name"</i> ci-dessous <i>"$I18N_viewScriptOutput"</i>puis cliquez sur <i>"$I18N_openScriptOutputView"</i>.<!--v15.2 end--></li>
 </ul>
 
 <u>Notez</u>
 <ul><li>Vous trouverez vos scripts créés dans le dialogue d'installation des paquets sous la catégorie <i>&laquo;$I18N_special_packages&raquo;</i>.</li>
-<li>Pour pouvoir utiliser l'affichage syntaxique coloré dans l'éditeur, vous devez activer JavaScript dans votre navigateur web.</li>
+<!--v15.2 begin--><li>Pour pouvoir utiliser l'éditeur, il faut activer Javascript dans le navigateur web.</li><!--v15.2 end--><!--v15.2 deleted-->
+
 <li>Vous trouvez les scripts d'autres utilisateurs de m23 <a href="http://m23.sourceforge.net/links/news.php?id=1000000230">ici</a></li></ul>
+
+<!--v15.2 begin--><h3>Liste des raccourcis clavier</h3>
+<u>Sélection de texte</u>
+<ul>
+        <li>Supprime la ligne courante: <i>Ctrl + D</i> (PC), <i>Command + D</i> (Mac)</li>
+        <li>Tout sélectionner all: <i>Ctrl + A</i> (PC), <i>Command + A</i> (Mac)</li>
+        <li>Selectionnez le texte débutant au curseur: <i>&uArr; + &larr; or &rarr;</i> (PC), <i>&uArr; + &larr; or &rarr;</i> (Mac)</li>
+        <li>Selectionnez la ligne au dessus ou au dessous de la ligne courante: <i>&uArr; + &uarr; or &darr;</i> (PC), <i>&uArr; + &uarr; or &darr;</i>
+        <li>Selectionnez le texte depuis le début ou jusqu'à la fin de la ligne débutant sous le curseur: <i>&uArr; + Pos1 or End</i> (PC), <i>&uArr; + Home or End</i>
+</ul>
+<u>Chercher et remplacer</u>
+<ul>
+        <li>Chercher: <i>Ctrl + F</i> (PC), <i>Command + F</i> (Mac)</li>
+        <li>Chercher la prochaine occurence: <i>Ctrl + K</i> (PC), <i>Command + G</i> (Mac)</li>
+        <li>Chercher la précédente occurence: <i>Ctrl + &uArr; + K</i> (PC), <i>Command + &uArr; + G</i> (Mac)</li>
+        <li>Chercher et remplacer: <i>Ctrl + H</i> (PC), <i>Command + Option + F</i> (Mac)</li>
+        <li>Sauter à la ligne numéro: <i>Strg + L</i> (PC), <i>Command + L</i> (Mac)</li>
+</ul>
+<u>Indentation</u>
+<ul>
+        <li>Indentation: <i>Tab</i> (PC), <i>Tab</i> (Mac)</li>
+        <li>Inverser l'indentation: <i>&uArr; + Tab</i> (PC), <i>&uArr; + Tab</i> (Mac)</li>
+</ul>
+<u>Undo and redo</u>
+<ul>
+        <li>Annuler l'opération précédente: <i>Ctrl + Z</i> (PC), <i>Command + Z</i> (Mac)</li>
+        <li>Rejouer l'opération précédente: <i>Ctrl + Y</i> (PC), <i>Command + Y</i> (Mac)</li>
+</ul>
+
+Hint: &uArr; = Shift, &larr;, &rarr;, &uarr; and &darr; = arrow keys
+
+D'autre Raccourcis Claviers sont disponible pour cet éditeur à <a href="https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts">ace: Raccourcis Claviers par défaut</a>.
+<!--v15.2 end-->

@@ -7,7 +7,7 @@ Priority:20
 
 function run($id)
 {
-	include_once('/m23/inc/distr/debian/clientConfigCommon.php');
+//	include_once('/m23/inc/distr/debian/clientConfigCommon.php');
 	include_once('/m23/inc/distr/ubuntu/clientConfig.php');
 
 	UBUNTU_desktopInstall(UBUNTUDESKTOP_KDE, false, true, true, true, true);

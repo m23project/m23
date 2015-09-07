@@ -125,7 +125,7 @@ function SRCLST_saveList($name,$list,$description,$distr,$release="")
 	$sql="SELECT count(*) FROM `sourceslist` WHERE `name`='$name'";
 	$result=db_query($sql); //FW ok
 
-	$line=mysql_fetch_row($result);
+	$line=mysqli_fetch_row($result);
 
 	if ($line[0] > 0)
 		$sql="UPDATE `sourceslist` SET `list` = '$list', `description` = '$description', `distr` = '$distr', `release` = '$release', `desktops` = '$desktops' WHERE `name` = '$name' LIMIT 1";
@@ -185,7 +185,7 @@ function SRCLST_genSelection($selName, $first, $distr)
 	if (strlen($first) > 0)
 		$out.="<option>$first</option>";
 
-	while ($line=mysql_fetch_row($result))
+	while ($line=mysqli_fetch_row($result))
 		if ($line[0] != $first)
 			$out.="<option>".$line[0]."</option>";
 
@@ -215,7 +215,7 @@ function SRCLST_getValue($name,$var)
 
 	$result = db_query($sql); //FW ok
 
-	$line = mysql_fetch_row($result);
+	$line = mysqli_fetch_row($result);
 
 	if ('list' == $var)
 		$line[0] = CHECK_db2text($line[0]);
@@ -228,14 +228,55 @@ function SRCLST_getValue($name,$var)
 
 
 /**
-**name SRCLST_loadSourceList($name)
-**description loads and returnes the the package source list
+**name SRCLST_loadSourceListFromDB($name)
+**description loads and returnes the the package source list from the DB.
 **parameter name: the name of the package source list
 **/
-function SRCLST_loadSourceList($name)
+function SRCLST_loadSourceListFromDB($name)
 {
 	return(SRCLST_getValue($name,"list"));
 };
+
+
+
+
+
+/**
+**name SRCLST_loadSourceList($name)
+**description Loads and returnes the package source list and tries to find a valid mirror for m23debs.
+**parameter name: the name of the package source list
+**returns package source list
+**/
+function SRCLST_loadSourceList($name)
+{
+	$out = '';
+	
+	// Load the sources list from DB
+	$lst = SRCLST_loadSourceListFromDB($name);
+
+	// Run thru the lines
+	$lines = explode("\n",$lst);
+	foreach ($lines as $line)
+	{
+		// Let the line unchanged, if the line does NOT contain an m23debs mirror
+		if (strpos($line,'m23debs') === false)
+			$out .= "$line\n";
+		else
+		{// Check, if the given m23debs mirror is valid
+
+			// Split the line into (deb, mirror url and directory on the mirror)
+			$debUrlDir = preg_split('/[ \t]+/', $line);
+
+			// Use the mirror, if it is valid
+			if (SRCLST_checkm23debsMirror($debUrlDir[1]))
+				$out .= "$line\n";
+			else
+			// Otherwise find another mirror
+				$out .= "deb ".SRCLST_getWorkingm23debsMirror()." ./\n";
+		}
+	}
+	return($out);
+}
 
 
 
@@ -420,6 +461,9 @@ function SRCLST_packageInformationOlderThan($minutes, $distr, $sourcename)
 **/
 function SRCLST_getStorageFS($fs, $sourceName)
 {
+	if ('imaging' == $sourceName)
+		return($fs);
+
 	if (in_array($fs,SRCLST_supportedFS($sourceName)) || ('linux-swap' == $fs) || ('auto' == $fs))
 		return($fs);
 	else
@@ -471,7 +515,7 @@ function SRCLST_alternativeFS($sourceName)
 **/
 function SRCLST_getParameter($sourceName, $parameter)
 {
-	$list=SRCLST_loadSourceList($sourceName);
+	$list=SRCLST_loadSourceListFromDB($sourceName);
 	$i=0;
 	$out = array();
 	$lines = explode("\n",trim(HELPER_grep($list,"#$parameter:")));
@@ -729,7 +773,7 @@ function SRCLST_showEditor($poolName="")
 	if (isset($_POST['BUT_load']) || isset($_POST['BUT_deleteCancel']))
 		{
 			$sourcename = $_POST['SEL_name'];
-			$sourcelist = trim(SRCLST_loadSourceList($sourcename));
+			$sourcelist = trim(SRCLST_loadSourceListFromDB($sourcename));
 			$sourcedescr = trim(SRCLST_getDescription($sourcename));
 			$distr = SRCLST_getValue($sourcename,"distr");
 			$release = SRCLST_getValue($sourcename,"release");
@@ -930,7 +974,7 @@ $sourcedescr
 else
 	//delete the package source
 {
-	$sourcelist=SRCLST_loadSourceList($sourcename);
+	$sourcelist=SRCLST_loadSourceListFromDB($sourcename);
 	$sourcedescr=SRCLST_getDescription($sourcename);
 
 	//Re-include to set the correct variable in $I18N_should_packageSource_be_deleted
@@ -1046,7 +1090,7 @@ function SRCLST_getListnames($distr)
 
 	$i=0;
 
-	while ($line=mysql_fetch_row($result))
+	while ($line=mysqli_fetch_row($result))
 		$out[$i++]=$line[0];
 
 	return($out);
@@ -1095,7 +1139,7 @@ function SRCLST_matchList($distr,$search)
 
 	foreach ($listNames as $listName)
 	{
-		$list=SRCLST_loadSourceList($listName);
+		$list=SRCLST_loadSourceListFromDB($listName);
 		$list=SRCLST_cleanList($list);
 		$lamount=count($list);
 
@@ -1116,5 +1160,68 @@ function SRCLST_matchList($distr,$search)
 			return($listName);
 	};
 	return(false);
-};
+}
+
+
+
+
+
+/**
+**name SRCLST_possiblem23debsMirrors()
+**description Returns an array with mirrors for m23 debs.
+**returns Array with mirrors for m23 debs.
+**/
+function SRCLST_possiblem23debsMirrors()
+{
+	return(array(
+	'http://downloads.sourceforge.net/project/m23/m23debs',
+	'http://vorboss.dl.sourceforge.net/project/m23/m23debs',
+	'http://netcologne.dl.sourceforge.net/project/m23/m23debs',
+	'http://skylink.dl.sourceforge.net/project/m23/m23debs',
+	'http://m23debs.goos-habermann.de'
+	));
+}
+
+
+
+
+
+/**
+**name SRCLST_checkm23debsMirror($url)
+**description Checks, if the url contains a valid mirror for m23debs.
+**parameter url: URL of the (possible) m23debs mirror.
+**returns true, if the url contains a valid mirror for m23debs, otherwise false.
+**/
+function SRCLST_checkm23debsMirror($url)
+{
+	// Gets the contents of the Packages file from the url
+	$contentPackages = HELPER_getContentFromURL("$url/Packages");
+
+	// Gets the contents of the InRelease file from the url
+	$contentInRelease = HELPER_getContentFromURL("$url/InRelease");
+
+	// Check, if Packages and InRelease contain valid lines
+	return((strpos($contentPackages,'Package: m23-initscripts') !== false) &&
+		   (strpos($contentInRelease,'Origin: m23') !== false));
+}
+
+
+
+
+
+/**
+**name SRCLST_getWorkingm23debsMirror()
+**description Get the url of a working m23debs mirror.
+**returns Url to a working m23debs mirror or false, if none could be found.
+**/
+function SRCLST_getWorkingm23debsMirror()
+{
+	foreach (SRCLST_possiblem23debsMirrors() as $url)
+	{
+		if (SRCLST_checkm23debsMirror($url))
+			return($url);
+	}
+	return(false);
+}
+
 ?>

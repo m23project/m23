@@ -67,6 +67,7 @@
 
 		CLIENT_showGeneralInfo($id);
 
+		$noURL = CLIENT_getToDetailsURL($client,$id,"criticalStatus");
 
 		HTML_showTableHeader(true);
 		echo("
@@ -77,12 +78,14 @@
 			</tr>
 			<tr>
 				<td align=\"center\">
-					<a href=\"?page=recoverclient&id=$id&client=$client&sure=1&redoJobs=$redoJobs&backToRed=$backToRed\"><img src=\"/gfx/button_ok-mini.png\">$I18N_yes</a> &nbsp; <a href=\"?page=clientsoverview\"><img src=\"/gfx/button_cancel-mini.png\">$I18N_no<br></a>
+					<a href=\"?page=recoverclient&id=$id&client=$client&sure=1&redoJobs=$redoJobs&backToRed=$backToRed\"><img src=\"/gfx/button_ok-mini.png\">$I18N_yes</a> &nbsp; <a href=\"$noURL\"><img src=\"/gfx/button_cancel-mini.png\">$I18N_no<br></a>
 				</td>
 			</tr>
 		");
 		HTML_showTableEnd(true);
 	}
+	
+	
 
 	CLIENT_HTMLBackToDetails($client,$id,"criticalStatus");
 

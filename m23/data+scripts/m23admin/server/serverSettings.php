@@ -113,6 +113,12 @@
 					<?= $I18N_cloudFunctionsCS?>
 				</a>
 			</td>
+			<td align="center">
+				<a href="index.php?page=firewall">
+					<img src="/gfx/firewall.png" border="0"><br>
+					<?= $I18N_firewallSetting?>
+				</a>
+			</td>
 		</tr>
 	</table>
 	</div>

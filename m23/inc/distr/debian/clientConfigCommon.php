@@ -64,6 +64,8 @@ function CLCFG_monoRemove()
 
 
 
+
+
 /**
 **name CLCFG_setDebConfDM($dm)
 **description Sets the display manager in debconf.
@@ -333,7 +335,7 @@ EOF
 
 	//Check the installation
 echo("
-if [ -f /opt/trinity/bin/kdm ]
+if [ -f /opt/trinity/bin/kdm ] || [ -f /opt/trinity/bin/tdm ]
 then
 	".sendClientLogStatus("Trinity installed",true,$critical)."
 else
@@ -1475,6 +1477,8 @@ echo \"proc /proc proc defaults 0 0\" > /etc/fstab
 #mount it
 mount /proc
 
+mount /sys
+
 #delete temporary fstab
 rm /etc/fstab 2> /dev/null
 
@@ -1604,9 +1608,16 @@ if ($bootloader == "grub")
 			CLCFG_aptGet("install", "grub2");
 		echo("
 		else
-		");
-			CLCFG_aptGet("install", "grub m23-grub-splash");
+			if [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ]
+			then
+			");
+				CLCFG_aptGet("install", "grub-pc");
+			echo("
+			else
+			");
+				CLCFG_aptGet("install", "grub m23-grub-splash");
 		echo("
+			fi
 		fi
 		");
 
@@ -1650,35 +1661,12 @@ if ($bootloader == "grub")
 				fi
 			fi
 
-			#write menu.lst
-			/usr/sbin/update-grub -y
-
-			#Some versions need it without \"-y\"
-			if [ $? -ne 0 ]
+			if [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ]
 			then
-				/usr/sbin/update-grub
-			fi
-
-			#Make sure the root device is correct in menu.lst (if update-grub could not determine the root device /dev/hda1 is assumed)
-			[ -f /boot/grub/menu.lst ] && sed -i 's#/dev/hda1#$rootDevice#g' /boot/grub/menu.lst
-
-			#Check if there are kernels listed in menu.lst
-
-			kernelsInGrub()
-			{
-				kernels=0
-				[ -f /boot/grub/menu.lst ] && kernels=$( expr \$kernels + $(grep ^title /boot/grub/menu.lst -c))
-				[ -f /boot/grub/grub.cfg ] && kernels=$( expr \$kernels + $(grep menuentry /boot/grub/grub.cfg -c))
-				#echo \"++++Kerneleintraege: \$kernels\" > /dev/stderr
-				
-				echo \$kernels
-			}
-
-			#No kernels found?
-			if [ \$(kernelsInGrub) -eq 0 ]
-			then
-				#Delete menu.lst and try to create it new
-				rm /boot/grub/menu.lst 2> /dev/null
+				/usr/sbin/update-grub2
+				sync
+			else
+				#write menu.lst
 				/usr/sbin/update-grub -y
 
 				#Some versions need it without \"-y\"
@@ -1686,23 +1674,54 @@ if ($bootloader == "grub")
 				then
 					/usr/sbin/update-grub
 				fi
-			fi
 
-			if [ \$(kernelsInGrub) -gt 0 ]
-			then
-				".sendClientLogStatus("Grub: Kernels found in menu.lst",true)."
-			else
-				");
-				if ($ignoreErrors)
-					echo('echo "Grub: Kernels found in menu.lst: ERROR"');
+				#Make sure the root device is correct in menu.lst (if update-grub could not determine the root device /dev/hda1 is assumed)
+				[ -f /boot/grub/menu.lst ] && sed -i 's#/dev/hda1#$rootDevice#g' /boot/grub/menu.lst
+
+				#Check if there are kernels listed in menu.lst
+
+				kernelsInGrub()
+				{
+					kernels=0
+					[ -f /boot/grub/menu.lst ] && kernels=$( expr \$kernels + $(grep ^title /boot/grub/menu.lst -c))
+					[ -f /boot/grub/grub.cfg ] && kernels=$( expr \$kernels + $(grep menuentry /boot/grub/grub.cfg -c))
+					#echo \"++++Kerneleintraege: \$kernels\" > /dev/stderr
+					
+					echo \$kernels
+				}
+
+				#No kernels found?
+				if [ \$(kernelsInGrub) -eq 0 ]
+				then
+					#Delete menu.lst and try to create it new
+					rm /boot/grub/menu.lst 2> /dev/null
+					/usr/sbin/update-grub -y
+
+					#Some versions need it without \"-y\"
+					if [ $? -ne 0 ]
+					then
+						/usr/sbin/update-grub
+					fi
+				fi
+
+				if [ \$(kernelsInGrub) -gt 0 ]
+				then
+					".sendClientLogStatus("Grub: Kernels found in menu.lst",true)."
 				else
-					echo(sendClientLogStatus("Grub: Kernels found in menu.lst",false,true));
-				echo("
+					");
+					if ($ignoreErrors)
+						echo('echo "Grub: Kernels found in menu.lst: ERROR"');
+					else
+						echo(sendClientLogStatus("Grub: Kernels found in menu.lst",false,true));
+					echo("
+				fi
+		");
+			CLCFG_addGrubPassword();
+		echo("
 			fi
 		");
 
-		CLCFG_lilo2Grub();
-		CLCFG_addGrubPassword();
+// 		CLCFG_lilo2Grub();
 	}
 else
 	{
@@ -1970,6 +1989,21 @@ cat >> /etc/resolv.conf << \"EOF\"
 $nameserver
 EOF
 
+# Make a backup of the resolv.conf file
+cp /etc/resolv.conf /etc/resolv.conf.m23
+mkdir -p /etc/NetworkManager/dispatcher.d
+rm /etc/NetworkManager/dispatcher.d/m23restore-resolv.conf 2> /dev/null
+
+# Create a script, that will copy the backup back
+cat >> /etc/NetworkManager/dispatcher.d/m23restore-resolv.conf << \"EOF\"
+#!/bin/bash
+if [ $(diff -u /etc/resolv.conf.m23 /etc/resolv.conf | grep -e ^' ' -c) -eq 0 ]
+then
+	cat /etc/resolv.conf.m23 >> /etc/resolv.conf
+fi
+EOF
+chmod +x /etc/NetworkManager/dispatcher.d/m23restore-resolv.conf
+
 if [ -f /etc/resolv.conf ]
 then
 	".sendClientLogStatus("/etc/resolv.conf was written",true)."
@@ -2127,7 +2161,8 @@ fi
 
 
 
-
+// locales locales/locales_to_be_generated multiselect de_DE.UTF-8 UTF-8
+// locales locales/default_environment_locale select de_DE.UTF-8
 
 /**
 **name CLCFG_language($lang, $release = null)
@@ -2144,6 +2179,7 @@ function CLCFG_language($lang, $release = null)
 		switch($release)
 		{
 			case 'wheezy':
+			case 'jessie':
 				foreach ($lV as $var => $val)
 				{
 					$val = str_replace('utf', 'UTF', $val);
@@ -2153,6 +2189,7 @@ function CLCFG_language($lang, $release = null)
 			break;
 		}
 	}
+
 
 echo("
 
@@ -2182,7 +2219,7 @@ GDM_LANG=$lV[lang]\" > /etc/environment
 cat /etc/locale.gen | xargs -n1 locale-gen
 
 #Special handling for Debian Squeeze
-if [ `grep \"Debian GNU/Linux 6.0\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 7\" /etc/issue -c` -eq 1 ]
+if [ `grep \"Debian GNU/Linux 6.0\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 7\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 8\" /etc/issue -c` -eq 1 ]
 then
 	rm /etc/environment /tmp/lg 2> /dev/null
 
@@ -2314,7 +2351,8 @@ fi
 **/
 function CLCFG_setAuthorized_keys($serverIP,$pathToKeyFile)
 {
-	$quiet = ($_SESSION['debug'] ? "": "-qq");
+// 	$quiet = ($_SESSION['debug'] ? "": "-qq"); ööö
+$quiet = '-d';
 
 	echo("
 mkdir -p /root/.ssh
@@ -2486,8 +2524,16 @@ function CLCFG_installBasePackages($packagelist, $keyring="debian-keyring")
 		wget -T1 -t1 -q http://m23.sourceforge.net/m23-Sign-Key.asc -O - | apt-key add -
 
 		dpkg-reconfigure sudo
-		
+
 		dpkg-reconfigure openssh-server
+
+		if [ -f '/lib/systemd/system/ssh@.service' ] && [ $( grep -c 'KillMode=process' '/lib/systemd/system/ssh@.service') -eq 0 ]
+		then
+			# Needed by SSH server under systemd. Otherwise screen sessions that are started via SSH are stopped when the SSH disconnects
+			echo 'KillMode=process' >> '/lib/systemd/system/ssh@.service'
+			
+			loginctl enable-linger root
+		fi
 	");
 
 	CLCFG_aptGet("install","man nano");
@@ -2498,7 +2544,7 @@ function CLCFG_installBasePackages($packagelist, $keyring="debian-keyring")
 	mv /sbin/init.deactivated /sbin/init
 	mv /usr/bin/ischroot.deactivated /usr/bin/ischroot
 
-	rm /var/log/exim4/paniclog 2> /dev/null	
+	rm /var/log/exim4/paniclog 2> /dev/null
 	
 	\n");
 
@@ -2629,7 +2675,10 @@ function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePor
 		if (file_exists(PKG_getDebootstrapCacheServerFile($suite, $arch)))
 			$debootstrapCacheFileURL = PKG_getDebootstrapCacheServerURL($suite, $arch);
 		else
+		{
 			$debootstrapCacheFileURL = PKG_getDebootstrapCacheSfURL($suite, $arch);
+			PKG_downloadBaseSysTom23Server($suite, $arch);
+		}
 
 		echo("
 			rm -r * 2> /dev/null
@@ -2966,6 +3015,8 @@ echo "*/5 * * * * root screen -dmS m23fetchjob /etc/init.d/m23fetchjob" >> /etc/
 function CLCFG_writeM23fetchjob()
 {
 echo("
+export > /CLCFG_writeM23fetchjob.log #üüü
+
 #write the m23fetchjob script
 echo \"#!/bin/bash
 
@@ -3122,6 +3173,7 @@ function CLCFG_copySSLCert($rootPath="/mnt/root", $disableSSLCertCheck = false)
 echo("
 mkdir -p $rootPath/etc/ssl/certs
 mkdir -p $rootPath/usr/lib/ssl
+mkdir -p $rootPath/usr/local/share/ca-certificates/m23
 
 ln -s /etc/ssl/certs $rootPath/usr/lib/ssl
 ");
@@ -3141,6 +3193,9 @@ if [ $? -gt 0 ]
 then
 	wget $quietWget --no-check-certificate -O$rootPath/etc/ssl/certs/$hash.0 \"https://$serverIP/packages/baseSys$extraDir/ca.crt\"
 fi
+
+# Copy the certificate to CAcert
+cp $rootPath/etc/ssl/certs/$hash.0 $rootPath/usr/local/share/ca-certificates/m23/m23server.crt
 ");
 	}
 
@@ -3148,9 +3203,9 @@ fi
 
 	//Set permission the directories for the SSL certificates
 echo("
-chmod -R 755 $rootPath/etc/ssl/certs $rootPath/usr/lib/ssl/certs
-chown -R root $rootPath/etc/ssl/certs $rootPath/usr/lib/ssl/certs
-chgrp -R root $rootPath/etc/ssl/certs $rootPath/usr/lib/ssl/certs
+chmod -R 755 $rootPath/etc/ssl/certs $rootPath/usr/lib/ssl/certs $rootPath/usr/local/share/ca-certificates/m23
+chown -R root $rootPath/etc/ssl/certs $rootPath/usr/lib/ssl/certs $rootPath/usr/local/share/ca-certificates/m23
+chgrp -R root $rootPath/etc/ssl/certs $rootPath/usr/lib/ssl/certs $rootPath/usr/local/share/ca-certificates/m23
 \n
 ");
 
@@ -3317,6 +3372,60 @@ function CLCFG_disableNFSHome()
 		"
 	fi
 	");
+}
+
+
+
+
+
+/**
+**name CLCFG_installDesktopLanguagePackage($lang, $kde = false, $gnome = false)
+**description Installs some additional language packages for (KDE / Gnome) desktops.
+**parameter lang: short language
+**parameter kde: Install KDE language packages too.
+**parameter gnome: Install Gnome language packages too.
+**/
+function CLCFG_installDesktopLanguagePackage($lang, $kde = false, $gnome = false)
+{
+	$langTrans['de'] = 'german';		// German
+	$langTrans['bg'] = 'bulgarian';		// Bulgarian
+	$langTrans['cn'] = 'chinese-s';		// Simplified Chinese desktop
+	$langTrans['tw'] = 'chinese-t';		// Traditional Chinese desktop
+	$langTrans['cs'] = 'czech';			// Czech desktop
+	$langTrans['dk'] = 'danish';		// Danish desktop
+	$langTrans['es'] = 'spanish';		// Spanish desktop
+	$langTrans['fi'] = 'finnish';		// Finnish desktop
+	$langTrans['fr'] = 'french';		// French desktop
+	$langTrans['he'] = 'hebrew';		// Hebrew desktop
+	$langTrans['ie'] = 'irish';			// Irish desktop
+	$langTrans['it'] = 'italian';		// Italian desktop
+	$langTrans['jp'] = 'japanese';		// Japanese desktop
+	$langTrans['nl'] = 'dutch';			// Dutch desktop
+	$langTrans['pl'] = 'polish';		// Polish desktop
+	$langTrans['ru'] = 'russian';		// Russian desktop
+	$langTrans['sk'] = 'slovak';		// Slovak desktop
+	$langTrans['sl'] = 'slovenian';		// Slovenian desktop
+	$langTrans['tr'] = 'turkish';		// Turkish desktop
+	$langTrans['uk'] = 'british';		// British English desktop
+	$langTrans['hu'] = 'hungarian';		// Hungarian desktop
+	$langTrans['no'] = 'norwegian';		// Norwegian (Bokmaal and Nynorsk) desktop
+	$langTrans['sv'] = 'swedish';		// Swedish desktop
+	$langTrans['pt'] = 'portuguese';	// Portuguese desktop
+	$langTrans['et'] = 'estonian';		// Estonian desktop
+	$langTrans['gr'] = 'greek';			// Greek desktop
+	$langTrans['is'] = 'icelandic';		// Icelandic desktop
+	$langTrans['id'] = 'indonesian';	// Indonesian desktop
+	$langTrans['lt'] = 'lithuanian';	// Lithuanian desktop
+	$langTrans['ro'] = 'romanian';		// Romanian desktop
+	$langTrans['sr'] = 'serbian';		// Serbian desktop
+
+	$trans = $langTrans[$lang];
+
+	$pkg = "task-$trans-desktop";
+	if ($kde) $pkg .= " task-$trans-kde-desktop";
+	if ($gnome) $pkg .= " task-$trans-gnome-desktop";
+
+	CLCFG_aptGet("install", $pkg);
 }
 
 

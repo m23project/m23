@@ -136,7 +136,7 @@ function PKG_combinem23normal($packageSelectionName)
 		$packagesPriorityA = array();
 
 		//Create strings containing all packages saved under the priority as key
-		while ($line = mysql_fetch_array($res))
+		while ($line = mysqli_fetch_array($res))
 			$packagesPriorityA[$line['priority']] .= trim($line['normalPackage']).' ';
 
 		//Run thru the package strings by priority
@@ -208,7 +208,7 @@ function PKG_exportSelectedPackages($client)
 	$sql = "SELECT package,params,normalPackage,id,installedSize,priority FROM `clientjobs` WHERE client='$client' AND status='wait4acc' ORDER BY package, normalPackage";
 	$result = DB_query($sql); //FW ok
 
-	while ($line = mysql_fetch_array($result))
+	while ($line = mysqli_fetch_array($result))
 	{
 		if (isset($line['normalPackage']{0}))
 			$out .= $line['normalPackage'].' ';
@@ -247,8 +247,69 @@ function PKG_getDebootstrapCacheFilename($release, $arch)
 function PKG_getDebootstrapCacheSfURL($release, $arch)
 {
 	$debootstrapCacheFile = PKG_getDebootstrapCacheFilename($release, $arch);
-	return("http://sourceforge.net/projects/m23/files/baseSys/$debootstrapCacheFile/download");
+	
+	$sfURL = "http://sourceforge.net/projects/m23/files/baseSys/$debootstrapCacheFile/download";
+
+	// Checks, if the downloaded file begins with 7z (to indicate a 7-Zip file)
+	if (HELPER_getContentFromURL($sfURL, '0-1') == '7z')
+		return($sfURL);
+	else
+		// Otherwise return an alternate mirror
+		return("http://basesys.goos-habermann.de/$debootstrapCacheFile");
 }
+
+
+
+
+
+/**
+**name PKG_downloadBaseSysTom23Server($release, $arch)
+**description Downloads the debootstrap cache file to the m23 server and checks its validity (by signature).
+**parameter release: Select the Debian/Ubuntu suite (squeeze, sarge, sid, precise).
+**parameter arch: the computer architecture of the client
+**/
+function PKG_downloadBaseSysTom23Server($release, $arch)
+{
+	if (SERVER_runningInBackground('PKG_downloadBaseSysTom23Server'))
+		return(false);
+
+	// Make sure the GPG sign key is imported
+	SERVER_importGPGPackageSignKey();
+
+	// Get the name of the debootstrap cache file, the signature file and the URL to the signature file
+	$debootstrapCacheFile = PKG_getDebootstrapCacheFilename($release, $arch);
+	$debootstrapCacheFileTemp = "$debootstrapCacheFile.tmp";
+	$debootstrapCacheSignFile = "$debootstrapCacheFile.sig";
+	$debootstrapCacheSignFileURL = "http://basesys.goos-habermann.de/$debootstrapCacheSignFile";
+
+	// Download URL for the debootstrap cache file
+	$debootstrapCacheFileURL = PKG_getDebootstrapCacheSfURL($release, $arch);
+
+	// Download the signature file and check the debootstrap cache file
+	SERVER_runInBackground('PKG_downloadBaseSysTom23Server', "
+	cd /m23/data+scripts/packages/baseSys
+	
+	# Download the debootstrap cache file to a temporary file name
+	wget -qq -c $debootstrapCacheFileURL -O $debootstrapCacheFileTemp
+
+	# Get the signature file
+	wget -qq $debootstrapCacheSignFileURL -O $debootstrapCacheSignFile
+
+	# Check, if the debootstrap cache file is valid
+	gpg --verify $debootstrapCacheSignFile $debootstrapCacheFileTemp 2> /dev/null
+
+	# Rename the temporary debootstrap cache file to its normal name, if valid or delete it
+	if [ $? -eq 0 ]
+	then
+		mv $debootstrapCacheFileTemp $debootstrapCacheFile
+		chmod 755 $debootstrapCacheFile
+	else
+		rm $debootstrapCacheFileTemp
+	fi
+	");
+}
+
+
 
 
 
@@ -597,7 +658,7 @@ function PKG_countSpecialPackages($client,$package,$status)
 
 	$result=DB_query($sql); //FW ok
 
-	$line=mysql_fetch_row($result);
+	$line=mysqli_fetch_row($result);
 
 	return($line[0]);
 };
@@ -690,7 +751,7 @@ function PKG_listRecommendPackages($key,$install=true)
 	$i=0;
 	//run thru the packages
 
-	while ($line=mysql_fetch_row($result))
+	while ($line=mysqli_fetch_row($result))
 	{
 		 $cbName="CB_pkgRecommend".$i;
 
@@ -760,7 +821,7 @@ function PKG_listRecommendSubPackages($package,$cut,&$params)
 	$out="";
 	$params="";
 	//run thru the sub packages
-	while ($line=mysql_fetch_row($result))
+	while ($line=mysqli_fetch_row($result))
 		{//add new sub package to out divided by $cut
 			if (($line[0] == "m23normal") || ($line[0] == "m23normalRemove"))
 				//take packagename from normalPackage
@@ -832,7 +893,7 @@ function PKG_addPackageSelection($client,$packageSelectionName,$normalPackageTyp
 
 	$result = DB_query($sql); //FW ok
 
-	while ($line=mysql_fetch_assoc($result))
+	while ($line=mysqli_fetch_assoc($result))
 	{
 
 		if (($line['package']=='m23normal') ||
@@ -849,7 +910,7 @@ function PKG_addPackageSelection($client,$packageSelectionName,$normalPackageTyp
 
 			$resultDelete = DB_query($sqlDelete); //FW ok
 
-			$lineDelete = mysql_fetch_row($resultDelete);
+			$lineDelete = mysqli_fetch_row($resultDelete);
 
 			//if there is one, delete it
 			if (strlen($lineDelete[0]) > 0)
@@ -939,7 +1000,7 @@ function PKG_countJobsWithStatus($client, $package, $status)
 	$sql = "SELECT COUNT(*) FROM `clientjobs` WHERE `client` = '$client' AND ( `package` = '$package' OR `normalPackage` = '$package' ) AND `status` = '$status'";
 
 	$result = db_query($sql); //FW ok
-	$line = mysql_fetch_row($result);
+	$line = mysqli_fetch_row($result);
 	return($line[0]);
 }
 
@@ -964,7 +1025,7 @@ function PKG_getClientjobsStatus($client,$package,$distr,$params,$normalPackage)
 	$sql="SELECT status,id FROM `clientjobs` WHERE client='$client' AND package='$package' OR (params='$params' AND normalPackage='$normalPackage')";	
 
 	$result = db_query($sql); //FW ok
-	$line=mysql_fetch_row($result);
+	$line=mysqli_fetch_row($result);
 
 	if (strstr($line[0],"wait4acc"))
 		$action=$I18N_preselected;
@@ -1127,7 +1188,7 @@ $i=0;
 $allInstalledSize=0;
 $packageAmount=0;
 
-while ($line=mysql_fetch_row($result))
+while ($line=mysqli_fetch_row($result))
 	{
 	 $status=PKG_getClientjobsStatus($client,$line[0],$distr,$line[1],$line[2]);
 
@@ -1242,7 +1303,7 @@ function PKG_countJobs($client,$status)
 
 	$sql = "SELECT count(*) FROM `clientjobs` WHERE client='$client'$add;";
 	$result = DB_query($sql); //FW ok
-	$line = mysql_fetch_row($result);
+	$line = mysqli_fetch_row($result);
 	return($line[0]);
 };
 
@@ -1306,7 +1367,7 @@ function PKG_savePackageselection($client, $selectionName, $showMsg=true, $statu
 	$counter = 0;
 
 	//gets the params for the packages
-	while ($line=mysql_fetch_assoc($result))
+	while ($line=mysqli_fetch_assoc($result))
 	{
 		PKG_addPackageToPackageselection($selectionName, $line['package'], $line['params'], $line['normalPackage'], $line['installedSize'],$line['priority']);
 		$counter++;
@@ -1357,7 +1418,7 @@ function PKG_addPackageToPackageselection($selectionName, $packageName, $params,
 	}
 
 	$result = DB_query($sql); //FW ok
-	if (mysql_num_rows($result) == 0)
+	if (mysqli_num_rows($result) == 0)
 		DB_query($insertSql); //FW ok
 		
 		
@@ -1551,7 +1612,7 @@ function PKG_getPackageID($client,$package)
 	$sql = "SELECT id FROM `clientjobs` WHERE client='$client' AND status='wait4acc' AND package='$package'";
 
 	$result = DB_query($sql); //FW ok
-	$line = mysql_fetch_row($result);
+	$line = mysqli_fetch_row($result);
 	return($line[0]);
 };
 
@@ -1680,7 +1741,7 @@ function PKG_addStatusJob($client,$packageName,$priority,$params,$status)
 
 	$result=DB_query($sql); //FW ok
 
-	if ($line=mysql_fetch_row($result))
+	if ($line=mysqli_fetch_row($result))
 		{//we got one old job: let's delete it
 			$sql="DELETE FROM clientjobs WHERE id = '".$line[0]."';";
 			DB_query($sql); //FW ok
@@ -1711,10 +1772,10 @@ function PKG_acceptJobs($client,$showMsg)
 	$packagesA = array();
 	$res = DB_query("SELECT * FROM clientjobs WHERE client='$client' AND package='m23normal' AND status='wait4acc';"); //FW ok
 	
-	if (mysql_num_rows($res) > 0)
+	if (mysqli_num_rows($res) > 0)
 	{
 		//Get all waiting for accept normal installation jobs
-		while( $data = mysql_fetch_array($res))
+		while( $data = mysqli_fetch_array($res))
 			$packagesA[$data['priority']].=$data['normalPackage']." ";
 	
 		foreach ($packagesA as $priority => $packages)
@@ -1731,10 +1792,10 @@ function PKG_acceptJobs($client,$showMsg)
 	$packagesA = array();
 	$res = DB_query("SELECT * FROM clientjobs WHERE client='$client' AND package='m23normalRemove' AND status='wait4acc';"); //FW ok
 
-	if (mysql_num_rows($res) > 0)
+	if (mysqli_num_rows($res) > 0)
 	{
 		//Get all waiting for accept normal deinstallation jobs
-		while( $data = mysql_fetch_array($res))
+		while( $data = mysqli_fetch_array($res))
 			$packagesA[$data['priority']].=$data['normalPackage']." ";
 	
 		foreach ($packagesA as $priority => $packages)
@@ -1901,7 +1962,7 @@ function PKG_getAllParams($packageID)
 
 	$result = DB_query($sql); //FW ok
 
-	$line = mysql_fetch_row($result);
+	$line = mysqli_fetch_row($result);
 
 	return(explodeAssoc("?#*",$line[0]));
 };
@@ -2162,7 +2223,7 @@ function PKG_getRecommendPackageAllInstalledSize($packageSelection)
 	CHECK_FW(CC_packageselectionname, $packageSelection);
 	$result = DB_query("SELECT SUM(installedSize) FROM `recommendpackages` WHERE name='$packageSelection'"); //FW ok
 
-	$line = mysql_fetch_row($result);
+	$line = mysqli_fetch_row($result);
 
 	return($line[0]);
 };
@@ -2197,7 +2258,7 @@ function PKG_previewInstallationDeinstallation($clientName,$install)
 
 	$packages="";
 
-	while( $data = mysql_fetch_array($res))
+	while( $data = mysqli_fetch_array($res))
 			$packages.=$data['normalPackage']." ";
 
 	if (strlen($packages) == 0)
@@ -2275,7 +2336,7 @@ function PKG_updateSourcesListAtAllClients($sourcename)
 
 	$result = DB_query($sql); //FW ok
 
-	while ($line = mysql_fetch_row($result))
+	while ($line = mysqli_fetch_row($result))
 	{
 		$options = CLIENT_getAllOptions($line[0]);
 	
@@ -2462,7 +2523,7 @@ function PKG_getClientsWithPackage($packageName, $status = 'ii')
 	$sql = "SELECT clientname FROM `clientpackages` WHERE package = '$packageName' AND status = '$status' ORDER BY clientname";
 	$res = db_query($sql); //FW ok
 	
-	while ($line = mysql_fetch_row($res))
+	while ($line = mysqli_fetch_row($res))
 	{
 		if (!empty($line[0]))
 			$clients[$line[0]] = $line[0];
@@ -2489,7 +2550,7 @@ function PKG_getClientsWithWaitingJobs()
 
 	$res = db_query($sql); //FW ok
 	
-	while ($line = mysql_fetch_row($res))
+	while ($line = mysqli_fetch_row($res))
 	{
 		if (!empty($line[0]))
 			$clients[$line[0]] = $line[0];
@@ -2558,7 +2619,7 @@ function PKG_getClientsByPackages($packageNames, $status = true, $and = false, $
 	
 	$res = db_query($sql); //FW ok
 	
-	while ($line = mysql_fetch_row($res))
+	while ($line = mysqli_fetch_row($res))
 	{
 		if (!empty($line[0]))
 			$clients[$line[0]] = $line[0];
@@ -2581,7 +2642,7 @@ function PKG_countPackages($clientName)
 	CHECK_FW(CC_clientname, $clientName);
 	$sql = "SELECT COUNT(*) FROM `clientpackages` WHERE clientname='$clientName'";
 	$clientpackages = db_query($sql); //FW ok
-	$counted_clientpackages = mysql_fetch_row( $clientpackages );
+	$counted_clientpackages = mysqli_fetch_row( $clientpackages );
 
 	return($counted_clientpackages[0]);
 };
@@ -2625,7 +2686,7 @@ function PKG_copyPackagesToClient($to,$from,$status)
 
 	$res = DB_query($sql); //FW ok
 
-	while( $data = mysql_fetch_array($res))
+	while( $data = mysqli_fetch_array($res))
 	{
 		$iSQL="INSERT INTO `clientjobs` (`client` , `package` , `priority` , `status` , `params` , `normalPackage` , `installedSize` ) VALUES (
 		'$to', '$data[package]', '$data[priority]', '$data[status]', '$data[params]', '$data[normalPackage]', '$data[installedSize]')";
@@ -2735,7 +2796,7 @@ function PKG_getAllPackageSelections($addFirstEntry="")
 	if (strlen($addFirstEntry) > 0)
 		$out[$i++]=$addFirstEntry;
 
-	while ($line=mysql_fetch_row($result))
+	while ($line=mysqli_fetch_row($result))
 		$out[$i++]=$line[0];
 
 	return($out);
@@ -2819,7 +2880,7 @@ function PKG_getInfoFromPackageID($id,$variable)
 	$sql = "SELECT $variable FROM clientjobs WHERE id='".$id."';";
 
 	$result = DB_query($sql); //FW ok
-	$line = mysql_fetch_row($result);
+	$line = mysqli_fetch_row($result);
 	return($line[0]);
 }
 
@@ -2891,7 +2952,7 @@ function PKG_getPackageIDsByName($client,$packageName,$specialPackage)
 	$result=DB_query($sql); //FW ok
 
 	$nr = 0;	
-	while ($line=mysql_fetch_row($result))
+	while ($line=mysqli_fetch_row($result))
 		$out[$nr++] = $line[0];
 
 	return($out);
@@ -2943,15 +3004,15 @@ function PKG_getClientPackages($client, $key, $arr, $status="")
 		{
 			$i=0;
 			
-			while ($data = mysql_fetch_row($res))
+			while ($data = mysqli_fetch_row($res))
 				$out[$i++]=$data[0];
 		}
 	else
 		{
-			$data = mysql_fetch_row($res);
+			$data = mysqli_fetch_row($res);
 			$out = $data[0];
 /*			$out="";
-			while ($data = mysql_fetch_row($res))
+			while ($data = mysqli_fetch_row($res))
 				$out.="$data[0] ";*/
 		}
 		

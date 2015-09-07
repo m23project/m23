@@ -16,7 +16,7 @@ $*/
 	$sql="SELECT $paramName FROM `clients` WHERE client='$clientName'";
 
 	$result=DB_query($sql);
-	$line=mysql_fetch_row($result);
+	$line=mysqli_fetch_row($result);
 
 	return ($line[0]);
  }

@@ -13,6 +13,6 @@ function run($id)
 
 	DHCP_activateBoot(CLIENT_getClientName(), false);
 
-	echo("/sbin/reboot -f; /sbin/reboot");
+	echo("/sbin/reboot -f; /sbin/reboot; reboot -f; reboot");
 }
 ?>

@@ -11,3 +11,12 @@ Creation of the package step-by-step:
 
 <u>Hint</u>
 Of course you can put already created Debian packages into the package source and re-create the package index afterwards by clicking on <i>"$I18N_recreatePackageIndex"</i>.
+
+<!-- V15.2 begin --><u>BitTorrent</u>
+If you would like to distribute large files to many client computers, and would like to reduce the strain this puts on the server, you can use the <a href="https://en.wikipedia.org/wiki/BitTorrent">BitTorrent</a> functionality. BitTorrent makes it possible that the m23 clients share parts of already downloaded files among each other, which (in the ideal case) will result in the m23 server only transferring this file a single time.
+
+To use Bittorrent, follow these steps:
+
+<ol><li>Copy the file(s) you would like to transfer to the clients into the directory <i>"/m23/data+scripts/extraDebs/"</i> on your m23 server.</li>
+<li>Click on the button labelled <i>"$I18N_createTorrent"</i> behind the corresponding file name.</li>
+<li>In your own scripts, use the m23 function <code>BT_dlFile($torrentFileName, $DestinationDirectoryOnClient)</code>.</li></ol><!-- V15.2 end -->

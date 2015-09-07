@@ -252,7 +252,7 @@ echo("
 					".SRCLST_showDesktopsSel($sourcename,"SEL_desktop",$desktop)."
 				</td>
 				<td valign=\"top\">".
-				nl2br(wordwrap(DISTR_geti18nValue($GLOBALS['m23_language'],"GUI".$desktop,$distrValues),$wordwrapsize)).
+				nl2br(wordwrap(DISTR_getDesktopDescription($distr, $desktop),$wordwrapsize)).
 				"</td>
 			</tr>
 
@@ -312,7 +312,7 @@ echo("
 						</center>
 						</span>");
 
-						$options2=$CLCFG_showDistributionSpecificOptions($options);
+						$options2=$CLCFG_showDistributionSpecificOptions($options, $client);
 
 						if ($options2 === false)
 						{

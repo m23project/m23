@@ -81,6 +81,18 @@ createBackupList()
 		then
 			echo "/m23/inc/userGUIAddons/" >> $backupList
 		fi
+		
+	#Add firewall configuration
+		if [ -f /m23/bin/firewall.sh ]
+		then
+			echo "/m23/bin/firewall.sh" >> $backupList
+		fi
+
+		if [ -f /m23/bin/firewall.iptables ]
+		then
+			echo "/m23/bin/firewall.iptables" >> $backupList
+		fi
+
 
 	#Add user addons and scripts (if existing)
 		if [ -d /m23/data+scripts/packages/userPackages ]

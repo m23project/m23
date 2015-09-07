@@ -943,27 +943,32 @@ function PKG_getKernels($distr,$packagesource,$arch)
 
 	//close search
 	PKG_closeSearch($file);
-	
+
 	//sort the result so the generic kernels appear first in the list, both parts of list sorted alphabetically
 	$gen = array();
+	$genArch = array();
 	$nogen = array();
+	$nogenArch = array();
 	foreach ($out as $kernelname)
 	{
 		if (stripos($kernelname,'generic') !== FALSE  || stripos($kernelname, 'default') !== FALSE)
-		{	
-			$gen[$kernelname] = $kernelname;
-		}
+			if (stripos($kernelname, $arch))
+				$genArch[$kernelname] = $kernelname;
+			else
+				$gen[$kernelname] = $kernelname;
 		else
-		{
-			$nogen[$kernelname] = $kernelname;
-		}
-	
+			if (stripos($kernelname, $arch))
+				$nogenArch[$kernelname] = $kernelname;
+			else
+				$nogen[$kernelname] = $kernelname;
 	}
-	
+
+	HELPER_sortByLength($genArch);
 	HELPER_sortByLength($gen);
+	HELPER_sortByLength($nogenArch);
 	HELPER_sortByLength($nogen);
-	
-	$out = array_merge($gen,$nogen);
+
+	$out = array_merge($genArch,$nogenArch,$gen,$nogen);
 
 	return($out);
 };

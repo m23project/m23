@@ -54,11 +54,11 @@ echo('#!/bin/bash
 	$distr = $options['distr'];
 
 	$sql="SELECT package,id FROM `clientjobs` WHERE client='$client' AND status='waiting' ORDER BY priority, id";
-	$result=mysql_query($sql) or die ("work.php: Can't execute SQL statement:".$sql);
+	$result=DB_query($sql) or die ("work.php: Can't execute SQL statement:".$sql);
 	
 	if ($result)
 	{
-		$line = mysql_fetch_row($result);
+		$line = mysqli_fetch_row($result);
 
 		$package=$line[0];
 		$id=$line[1];
@@ -94,14 +94,11 @@ echo('#!/bin/bash
 					if (CLIENT_isAskingInDebugMode())
 						MSR_logCommand("work.php");
 
-					echo("
-					echo \"$package\" >> /efi-debug.log
-					mount 2>&1 >> /efi-debug.log
-					efibootmgr 2>&1 >> /efi-debug.log
-					echo \"+++++\" >> /efi-debug.log
-					");
+					echo("\nsync\n");
 
 					run($line[1]);
+
+					echo("\nsync\n");
 				}
 				else
 				{

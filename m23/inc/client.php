@@ -76,7 +76,7 @@ function CLIENT_getNextFreeIp()
 
 	//Get all used IPs as longs
 	$res = DB_query("SELECT INET_ATON( ip ) AS intip FROM clients ORDER BY intip");
-	while ($line  = mysql_fetch_row($res))
+	while ($line  = mysqli_fetch_row($res))
 	{
 		$ip = $line[0];
 
@@ -382,7 +382,7 @@ function CLIENT_copyDebconfDB($clientName, $destClient)
 
 	$result = db_query("SELECT * FROM debconf WHERE client = '$clientName'");
 
-	while ($line = mysql_fetch_array($result))
+	while ($line = mysqli_fetch_array($result))
 	{
 		DB_query("INSERT INTO debconf (client, package, var, val, type) VALUES ('$destClient', '$line[package]', '$line[var]', '$line[val]', '$line[type]') ON DUPLICATE KEY UPDATE val = '$line[val]'");
 	}
@@ -430,7 +430,7 @@ function CLIENT_getDebconfDB($clientName)
 	db_query("SET @@group_concat_max_len := @@max_allowed_packet");
 
 	$result = db_query("SELECT GROUP_CONCAT(package, ' ', var, ' ', type, ' ', val SEPARATOR '\\n') FROM debconf WHERE client = '$clientName'");
-	$line = mysql_fetch_row($result);
+	$line = mysqli_fetch_row($result);
 	return($line[0]);
 }
 
@@ -450,7 +450,7 @@ function CLIENT_getDebconfDBValue($clientName, $package, $var)
 {
 	CHECK_FW(CC_clientname, $clientName, CC_package, $package, CC_debconfVarName, $var);
 	$result = db_query("SELECT val FROM debconf WHERE client = '$clientName' AND package = '$package' AND var = '$var'");
-	$line = mysql_fetch_row($result);
+	$line = mysqli_fetch_row($result);
 	return($line[0]);
 }
 
@@ -468,7 +468,7 @@ function CLIENT_getAllClientNames()
 	$out = array();
 	$i = 0;
 	$result = db_query("SELECT client FROM `clients`"); //FW ok
-	while ($line = mysql_fetch_row($result))
+	while ($line = mysqli_fetch_row($result))
 		$out[$i++] = $line[0];
 
 	return($out);
@@ -486,7 +486,7 @@ function CLIENT_getAllClientNames()
 function CLIENT_getClientAmount()
 {
 	$result = db_query("SELECT COUNT( * ) AS cnt FROM `clients`"); //FW ok
-	$line = mysql_fetch_row($result);
+	$line = mysqli_fetch_row($result);
 	return($line[0]);
 }
 
@@ -667,7 +667,7 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 			#Write a local command file to transfer via scp
 			$localCmdf="/m23/tmp/$jobName.sh";
 			$file=fopen($localCmdf,"w");
-			fwrite($file,"#!/bin/sh
+			fwrite($file,"#!/bin/bash
 			touch $lock
 			$cmds
 			rm $lock
@@ -675,13 +675,23 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 			");
 			fclose($file);
 
-			#Transfer the command file
+			// Transfer the command file
 			exec("$sudoWithoutArgs scp -o LogLevel=FATAL -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $localCmdf $user@$ip:$cmdf");
-			#Delete the temporary local command file
+			// Delete the temporary local command file
 			unlink($localCmdf);
 
+			if ($runInScreen)
+			{
+				// Check, if the client is running systemd and disable killing of processes (like screen) after SSH disconnects
+				exec("$sudoWithoutArgs ssh -o ConnectTimeout=5 -o LogLevel=FATAL -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $ip 'loginctl enable-linger $user'", $outputLinesA, $returnCode);
+
+				// On systemd (or Debian 8 ?) the extra parameters (-t -t) must not be set
+				if ((1 == $returnCode) || (0 == $returnCode))
+					$sshExtra = '';
+			}
+			
 			//Generate the SSH command and the script generating script
-			$SSHcmd = "$sudoWithoutArgs ssh -o LogLevel=FATAL -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $sshExtra -l $user $ip 'chmod +x $cmdf; chown $user $cmdf; $execCMD' $sshOutput";
+			$SSHcmd = "$sudoWithoutArgs ssh -o ConnectTimeout=5 -o LogLevel=FATAL -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $sshExtra -l $user $ip 'chmod +x $cmdf; chown $user $cmdf; $execCMD' $sshOutput";
 
 			if ($runInScreen)
 			{
@@ -689,7 +699,6 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 				return('');
 			}
 
-// 			print("<pre>$SSHcmd</pre>");
 
 			//Get the output of SSH and split the lines into an array
 			$lines = explode("\n",@shell_exec($SSHcmd));
@@ -787,6 +796,12 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 	catch (Exception $e)
 	{
 		return($e->getMessage());
+	}
+
+	// The value(s) must be set before integration
+	if ($clientAddType == CLIENT_ADD_TYPE_assimilate)
+	{
+		$CClientO->setBootType(CClient::BOOTTYPE_PXE);
 	}
 
 	if (($clientAddType == CLIENT_ADD_TYPE_add) ||
@@ -926,7 +941,7 @@ function CLIENT_IPexists($ip)
 	CHECK_FW(CC_ip, $ip);
 	$sql = "SELECT COUNT(*) FROM `clients` WHERE ip='$ip' ";
 	$result=DB_query($sql); //FW ok
-	$line=mysql_fetch_array($result);
+	$line=mysqli_fetch_array($result);
 
 	return( $line[0] > 0 );
 };
@@ -946,7 +961,7 @@ function CLIENT_MACexists($mac)
 	CHECK_FW(CC_mac, $mac);
 	$sql = "SELECT COUNT(*) FROM `clients` WHERE mac='$mac' ";
 	$result=DB_query($sql); //FW ok
-	$line=mysql_fetch_array($result);
+	$line=mysqli_fetch_array($result);
 
 	return( $line[0] > 0 );
 };
@@ -965,8 +980,8 @@ function CLIENT_exists($clientName)
 {
 	CHECK_FW(CC_clientname, $clientName);
 	$sql = "SELECT COUNT(*) FROM `clients` WHERE client='$clientName' ";
-	$result=DB_query($sql); //FW ok
-	$line=mysql_fetch_array($result);
+	$result = DB_query($sql); //FW ok
+	$line = mysqli_fetch_array($result);
 
 	return( $line[0] > 0 );
 };
@@ -986,7 +1001,7 @@ function CLIENT_getAskingParams()
 	$sql= "SELECT * FROM `clients` WHERE client='$clientName'";
 
 	$result=DB_query($sql); //FW ok
-	$line=mysql_fetch_array($result,MYSQL_ASSOC);
+	$line=mysqli_fetch_array($result,MYSQLI_ASSOC);
 
 	return($line);
 }
@@ -1006,7 +1021,7 @@ function CLIENT_getParams($clientName)
 	$sql = "SELECT * FROM `clients` WHERE client=\"$clientName\"";
 
 	$result=DB_query($sql); //FW ok
-	$line=mysql_fetch_array($result,MYSQL_ASSOC);
+	$line=mysqli_fetch_array($result,MYSQLI_ASSOC);
 
 	return($line);
 };
@@ -1040,7 +1055,7 @@ function CLIENT_getProperty($client,$var)
 	CHECK_FW(CC_clientname, $client, "A", $var);
 	$sql = "SELECT $var FROM `clients` WHERE CLIENT = '$client'";
 	$res = db_query($sql); //FW ok
-	$line = mysql_fetch_row($res);
+	$line = mysqli_fetch_row($res);
 	return($line[0]);
 };
 
@@ -1083,7 +1098,7 @@ function CLIENT_listPackages($client, $key,$withActions)
 			</tr>
 		");
 
-	while ($line=mysql_fetch_row($result))
+	while ($line=mysqli_fetch_row($result))
 	{
 		if ($withActions)
 			$actions="<td><INPUT type=\"checkbox\" name=\"CB_pkg$counter\" value=\"$line[0]\"></td>";
@@ -1346,7 +1361,7 @@ function CLIENT_showGeneralInfo($id,$generateEnterKeep=false)
 	CHECK_FW(CC_id, $id);
 
 	$result = DB_query("SELECT * FROM clients WHERE id='$id' "); //FW ok
-	$data = mysql_fetch_array($result);
+	$data = mysqli_fetch_array($result);
 	
 	//Try to get the block with informations for the VM client. If it's not a VM client the variable will be empty.
 	$vmInfoHTML = VM_getHTMLStatusBlock($data['client']);
@@ -1561,7 +1576,7 @@ $list[name3]=$I18N_done;
 if( $results )
 	{
 		//show the packages with actions
-		while( $data = mysql_fetch_array($results) )
+		while( $data = mysqli_fetch_array($results) )
 		{
 			$package=$data['package'];
 
@@ -1808,7 +1823,7 @@ function CLIENT_getIPbyName($clientName, $IPOnCLI = false)
 
 	$result=DB_query($sql); //FW ok
 
-	$line=mysql_fetch_row($result);
+	$line=mysqli_fetch_row($result);
 
 	return($line[0]);
 };
@@ -1829,7 +1844,7 @@ function CLIENT_getNamebyIP($ip)
 
 	$result=DB_query($sql); //FW ok
 
-	$line=mysql_fetch_row($result);
+	$line=mysqli_fetch_row($result);
 
 	return($line[0]);
 };
@@ -1850,7 +1865,7 @@ function CLIENT_getMACbyName($clientName)
 
 	$result=DB_query($sql); //FW ok
 
-	$line=mysql_fetch_row($result);
+	$line=mysqli_fetch_row($result);
 
 	return($line[0]);
 };
@@ -2049,7 +2064,7 @@ function CLIENT_getBootType($clientName)
 
 	$result=DB_query($sql); //FW ok
 
-	$line=mysql_fetch_row($result);
+	$line=mysqli_fetch_row($result);
 
 	return($line[0]);
 }
@@ -2080,11 +2095,8 @@ function CLIENT_isrunning($clientName)
 **/
 function CLIENT_reset($clientName)
 {
-	$ip=CLIENT_getIPbyName($clientName);
-
-	$cmd="sudo ssh -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $ip \"screen -dmS m23install /sbin/reboot -f\"";
-	system($cmd);
-};
+	CLIENT_executeOnClientOrIP($clientName, 'm23install', '/sbin/reboot -f; /sbin/reboot; reboot -f; reboot');
+}
 
 
 
@@ -2112,13 +2124,18 @@ function CLIENT_showLog($clientName)
 		<td><span class=\"subhighlight\">$I18N_status</span></td>
 		</tr>");
 
-while ($line=mysql_fetch_row($result))
+while ($line=mysqli_fetch_row($result))
 	   {
 			$loglines=explode("\n",CHECK_db2text(urldecode($line[1])));
-			
+
 			//split the entry in message and status
-			$logStatus=explode("°",$loglines[0]);
-	
+			if (strpos($loglines[0], '°') !== false)
+				$splitter = '°';
+			else
+				$splitter = '?';
+
+			$logStatus = explode($splitter, $loglines[0]);
+
 			//color the
 			if ($logStatus[1]==" ok")
 				$color="subhighlight_green";
@@ -2175,6 +2192,10 @@ while ($line=mysql_fetch_row($result))
 **/
 function CLIENT_getClientName()
 {
+	$clientIP = getenv('REMOTE_ADDR');
+	$sql = '';
+
+
 	//Check if a m23shared client exists and give it out directly if there is one.
 	if (isset($_SESSION['m23Shared_clientName']{1}))
 		return($_SESSION['m23Shared_clientName']);
@@ -2183,26 +2204,49 @@ function CLIENT_getClientName()
 		if (is_numeric($_GET['m23clientID']))
 		{
 			CHECK_FW(CC_id, $_GET['m23clientID']);
-			$sql = "SELECT client FROM `clients` WHERE id='$_GET[m23clientID]';";
+
+			// Requests from localhost/m23server may set any client ID
+			if (('127.0.0.1' == $clientIP) || (getServerIP() == $clientIP))
+				$sql = "SELECT client FROM `clients` WHERE id='$_GET[m23clientID]';";
+			else
+			{
+				// Check, if the client uses dynamic IP assignment
+				$clientO = new CClient($_GET['m23clientID'], CClient::CHECKMODE_MUSTEXIST);
+				if ($clientO->usesDynamicIP())
+					// Clients with dynamic IPs are identified by client id (Needed for MSR_curDynIP)
+					$sql = "SELECT client FROM `clients` WHERE id='$_GET[m23clientID]';";
+				else
+				// Request from other IPs must match wanted client ID and client IP
+					$sql = "SELECT client FROM `clients` WHERE id='$_GET[m23clientID]' AND ip='$clientIP';";
+			}
 		}
 		else
 		{
 			CHECK_FW(CC_clientname, $_GET['m23clientID']);
-			$clientName = $_GET['m23clientID'];
+
+			// Requests from localhost/m23server may set any client name
+			if (('127.0.0.1' == $clientIP) || (getServerIP() == $clientIP))
+				$clientName = $_GET['m23clientID'];
+			else
+			// Request from other IPs must match wanted client name and client IP
+				$sql = "SELECT client FROM `clients` WHERE client='$_GET[m23clientID]' AND ip='$clientIP';";
 		}
 	}
 	else
 	{
 		CHECK_FW(CC_ip,getenv('REMOTE_ADDR'));
-		$sql="SELECT client FROM `clients` WHERE ip='".getenv('REMOTE_ADDR')."';";
+		$sql="SELECT client FROM `clients` WHERE ip='$clientIP';";
 	}
 
 	if (isset($sql{1}))
 	{
 		$result = db_query($sql); //FW ok
-		$line = mysql_fetch_row($result);
+		$line = mysqli_fetch_row($result);
 		$clientName = $line[0];
 	}
+
+	if (!isset($clientName{1}))
+		die('CLIENT_getClientName: No client name could be found.');
 
 	return($clientName);
 }
@@ -2222,7 +2266,7 @@ function CLIENT_getAllOptions($clientName)
 
 	$result=DB_query($sql); //FW ok
 
-	$line=mysql_fetch_row($result);
+	$line=mysqli_fetch_row($result);
 
 	return(explodeAssoc("?",$line[0]));
 };
@@ -2380,7 +2424,7 @@ function CLIENT_showStatusSelection($client, $id)
 	$sql="SELECT status FROM `clients` WHERE client='$client'";
 
 	$result = DB_query($sql); //FW ok
-	$line = mysql_fetch_array($result);
+	$line = mysqli_fetch_array($result);
 
 	//check if the client name (and id) is given or should be read from the form POST
 	if (!isset($client))
@@ -2455,7 +2499,7 @@ function CLIENT_listCriticalClients()
 	
 	$result=DB_query($sql);	//FW ok
 	
-	$line=mysql_fetch_array($result);	
+	$line=mysqli_fetch_array($result);	
 		
 	if ($line[0] > 0)
 		{
@@ -2679,6 +2723,21 @@ function CLIENT_isAskingInDebugMode()
 
 
 
+/**
+**name CLIENT_getToDetailsURL($clientName,$id,$section)
+**description Generates the link to the client's control center page
+**parameter clientName: the name of the client
+**parameter id: the id of the client
+**parameter section: section to jump on the page
+**returns Link to the client's control center page
+**/
+function CLIENT_getToDetailsURL($clientName,$id,$section)
+{
+	return("index.php?page=clientdetails&client=$clientName&id=$id#$section");
+}
+
+
+
 
 
 /**
@@ -2691,8 +2750,9 @@ function CLIENT_isAskingInDebugMode()
 function CLIENT_HTMLBackToDetails($clientName,$id,$section)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	$url = CLIENT_getToDetailsURL($clientName,$id,$section);
 	
-	echo("<br><a href=\"index.php?page=clientdetails&client=$clientName&id=$id#$section\"><img src=\"/gfx/settings.png\"> $I18N_backToControlCenter <img src=\"/gfx/settings.png\"></a><br>");
+	echo("<br><a href=\"$url\"><img src=\"/gfx/settings.png\"> $I18N_backToControlCenter <img src=\"/gfx/settings.png\"></a><br>");
 };
 
 
@@ -3428,7 +3488,7 @@ function CLIENT_getNames($groupName="")
 	$i=0;
 
 	$res=CLIENT_query("","","","",$groupName);
-	while( $data = mysql_fetch_array($res) )
+	while( $data = mysqli_fetch_array($res) )
 		$out[$i++]=$data[client];
 
 	return($out);
@@ -3459,12 +3519,12 @@ function CLIENT_getNamesWithPackages($showFakeClients=false)
 	
 	if (!$showFakeClients)
 		{
-			while( $data = mysql_fetch_row($res))
+			while( $data = mysqli_fetch_row($res))
 				$out[$i++]=$data[0];
 		}
 	else
 		{
-			while( $data = mysql_fetch_row($res))
+			while( $data = mysqli_fetch_row($res))
 				{
 					$packageName=str_replace($marker,"",$data[0]);
 					if (!empty($packageName))

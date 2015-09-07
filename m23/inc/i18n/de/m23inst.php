@@ -68,4 +68,7 @@ $I18N_installingLXDELubuntu='Kompletter LXDE/Lubuntu-Desktop wird installiert';
 
 //15.1
 $I18N_installing_elementary_desktop = 'Elementary OS Desktop wird installiert';
+
+//15.2
+$I18N_installing_gnome="Gnome Desktop wird installiert";
 ?>

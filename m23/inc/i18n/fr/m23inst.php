@@ -65,4 +65,10 @@ $I18N_updating_package_information='Mise à jour des informations sur les paquets
 $I18N_installing_unityfull_1404='Installation du bureau Unity 3D complet';
 $I18N_installingLXDELubuntuCore='Installation minimale du bureau LXDE/Lubuntu';
 $I18N_installingLXDELubuntu='Installation complète du bureau LXDE/Lubuntu';
+
+//15.1
+$I18N_installing_elementary_desktop = 'Installation du bureau Elementary OS';
+
+//15.2
+$I18N_installing_gnome="Installation du bureau Gnome";
 ?>

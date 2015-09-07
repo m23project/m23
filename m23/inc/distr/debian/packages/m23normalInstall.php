@@ -10,9 +10,9 @@ function run($id)
 	include("/m23/inc/distr/debian/clientConfigCommon.php");
 
 	$sql="SELECT normalPackage,client FROM `clientjobs` WHERE id=$id";
-	$result=mysql_query($sql) or die ("Could not execute SQL statement:".$sql);
+	$result=DB_query($sql) or die ("Could not execute SQL statement:".$sql);
 
-	$line=mysql_fetch_array($result);
+	$line=mysqli_fetch_array($result);
 
 	sendClientStageStatus(STATUS_BLUE);
 	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $I18N_installing_packages);

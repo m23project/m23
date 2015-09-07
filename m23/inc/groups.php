@@ -18,7 +18,7 @@ function GRP_exists($groupName)
 
 	$result = DB_query($sql); //FW ok
 
-	$count = mysql_fetch_row($result);
+	$count = mysqli_fetch_row($result);
 
 	return($count[0] > 0 );
 };
@@ -80,7 +80,7 @@ function GRP_getIdByName($groupName)
 
 		$result = db_query($sql); //FW ok
 
-		$line = mysql_fetch_row($result);
+		$line = mysqli_fetch_row($result);
 
 		return($line[0]);
 	}
@@ -132,7 +132,7 @@ function GRP_isClientInGroup($clientName,$groupName)
 
 	$res = db_query($sql); //FW ok
 
-	$line = mysql_fetch_row($res);
+	$line = mysqli_fetch_row($res);
 
 	return($line[0] > 0);
 };
@@ -592,7 +592,7 @@ function GRP_countClients($groupName)
 
 	$res = db_query($sql); //FW ok
 
-	$line = mysql_fetch_row($res);
+	$line = mysqli_fetch_row($res);
 
 	return($line[0]);
 }
@@ -708,7 +708,7 @@ function GRP_listGroups()
 
 	$i = 0;
 
-	while ($line = mysql_fetch_row($result))
+	while ($line = mysqli_fetch_row($result))
 		{
 			$arr[$i] = $line[0];
 			$i++;
@@ -941,7 +941,7 @@ function GRP_listClientGroups($clientName)
 
 	$i=0;
 
-	while ($line = mysql_fetch_row($res))
+	while ($line = mysqli_fetch_row($res))
 		{
 			$arr[$i]=$line[0];
 			$i++;
@@ -1002,7 +1002,7 @@ function GRP_listAllClientsInGroup($groupName)
 
 	$nr = 0;
 
-	while( $data = mysql_fetch_array($res) )
+	while( $data = mysqli_fetch_array($res) )
 		$out[$nr++] = $data['client'];
 
 	return($out);
@@ -1160,7 +1160,7 @@ function GRP_listAllClientsInGroups($groupNames)
 
 	$i=0;
 
-	while ($line = mysql_fetch_row($res))
+	while ($line = mysqli_fetch_row($res))
 		{
 			$arr[$i]=$line[0];
 			$i++;
@@ -1221,7 +1221,7 @@ function GRP_getAllPackages($groupNames,$key,$withActions)
 
 	HTML_showTableHeader();
 
-	while ($line = mysql_fetch_row($result))
+	while ($line = mysqli_fetch_row($result))
 		{
 		 if ($withActions)
 		 	 $actions="<td><INPUT type=\"checkbox\" name=\"CB_pkg$counter\" value=\"$line[0]\"></td>";

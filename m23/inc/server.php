@@ -15,6 +15,19 @@ define('m23RASTunnelScript','/m23/bin/m23RemoteAdministrationServiceOpenTunnel')
 
 
 /**
+**name SERVER_importGPGPackageSignKey()
+**description Imports the m23 GPG package sign key.
+**/
+function SERVER_importGPGPackageSignKey()
+{
+	return(SERVER_runInBackground('SERVER_importGPGPackageSignKey', 'wget -T1 -t1 -q http://m23.sourceforge.net/m23-Sign-Key.asc -O - | gpg --import /dev/stdin', 'root', false));
+}
+
+
+
+
+
+/**
 **name SERVER_logLocalScreenSessionToFile($session, $user ='root')
 **description Logs the output of a local screen session to a file.
 **parameter session: name screen session to log.
@@ -519,28 +532,58 @@ function SERVER_daemonStartStop($daemonScript,$action)
 {
 	exec("sudo $daemonScript $action",$output,$rv);
 	return($rv == 0);
-};
+}
 
 
 
 
 
 /**
-**name SERVER_installTool
+**name SERVER_getAptGetInstallCommand($pkgName)
+**description Returns the apt-get commands to install a tool on the server.
+**parameter pkgName: name of the software package
+**returns: apt-get commands to install a tool on the server.
+**/
+function SERVER_getAptGetInstallCommand($pkgName)
+{
+	return("
+	export DEBIAN_FRONTEND=noninteractive
+	sudo apt-get update
+	
+	sudo apt-get --force-yes -y install $pkgName
+	");
+}
+
+
+
+
+
+/**
+**name SERVER_installTool($pkgName)
 **description installs a tool on the server
 **parameter pkgName: name of the software package
 **returns: true on successfully execution otherwise false.
 **/
 function SERVER_installTool($pkgName)
 {
-	$ret=exec("
-	export DEBIAN_FRONTEND=noninteractive
-	sudo apt-get update
-	
-	sudo apt-get --force-yes -y install $pkgName
-	",$output,$rv);
+	$ret=exec(SERVER_getAptGetInstallCommand($pkgName),$output,$rv);
 	return($rv == 0);
-};
+}
+
+
+
+
+
+/**
+**name SERVER_installToolInBackground($pkgName)
+**description Installs a tool on the server in background.
+**parameter pkgName: name of the software package
+**/
+function SERVER_installToolInBackground($pkgName)
+{
+	if (!SERVER_runningInBackground('APTInstall'))
+		SERVER_runInBackground('APTInstall',SERVER_getAptGetInstallCommand($pkgName));
+}
 
 
 
@@ -667,8 +710,8 @@ function SERVER_mysqlInfo()
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	
-	$info = "$I18N_MySqlVersion: ".mysql_get_client_info().
-			" $I18N_MySqlProtocol: ".mysql_get_proto_info()." ".mysql_stat();
+	$info = "$I18N_MySqlVersion: ".mysqli_get_client_info(DB_getConnection()).
+			" $I18N_MySqlProtocol: ".mysqli_get_proto_info(DB_getConnection())." ".mysqli_stat(DB_getConnection());
 	
 	return($info);
 };

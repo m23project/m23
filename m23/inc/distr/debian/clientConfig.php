@@ -4,6 +4,99 @@ include('clientConfigCommon.php');
 
 
 
+define('DEBIAN8DESKTOP_MATE_FULL', 4001);
+define('DEBIAN8DESKTOP_MATE_MINIMAL', 4002);
+define('DEBIAN8DESKTOP_TRINITY_MINIMAL', 4003);
+define('DEBIAN8DESKTOP_GNOME_FULL', 4004);
+define('DEBIAN8DESKTOP_XFCE_FULL', 4005);
+define('DEBIAN8DESKTOP_KDE_FULL', 4006);
+define('DEBIAN8DESKTOP_CINNAMON_FULL', 4007);
+define('DEBIAN8DESKTOP_LXDE_FULL', 4008);
+
+
+
+
+
+/**
+**name DEBIAN_desktopInstall($desktop)
+**description Installs a Debian desktop.
+**parameter desktop: Desktop constant.
+**/
+function DEBIAN_desktopInstall($desktop)
+{
+	$lang = getClientLanguage();
+
+	$lV = I18N_getLangVars($lang);
+
+	include("/m23/inc/i18n/".I18N_m23instLanguage($lang)."/m23inst.php");
+
+	$installDesktopLanguagePackage = $installGnomeLanguagePackage = $installKdeLanguagePackage = false;
+
+	switch($desktop)
+	{
+		case DEBIAN8DESKTOP_MATE_FULL:
+			$desktopPackages = 'task-mate-desktop';
+			$dialogHeader = $I18N_installingMate;
+			$installDesktopLanguagePackage = true;
+		break;
+
+		case DEBIAN8DESKTOP_MATE_MINIMAL:
+			$desktopPackages = 'mate-applets mate-applets-common mate-backgrounds mate-control-center mate-control-center-common mate-desktop mate-desktop-common mate-desktop-environment mate-desktop-environment-core mate-icon-theme mate-icon-theme-faenza mate-media mate-media-common mate-media-pulse mate-menus mate-notification-daemon mate-panel mate-panel-common mate-polkit:amd64 mate-polkit-common mate-power-manager mate-power-manager-common mate-screensaver mate-screensaver-common mate-session-manager mate-settings-daemon mate-settings-daemon-common mate-settings-daemon-pulse mate-system-monitor mate-system-monitor-common mate-terminal mate-terminal-common mate-themes mate-utils mate-utils-common';
+			$dialogHeader = $I18N_installingMate;
+		break;
+
+		case DEBIAN8DESKTOP_TRINITY_MINIMAL:
+			$desktopPackages = 'desktop-base-trinity kate-trinity kdesktop-trinity kicker-trinity konsole-trinity kpersonalizer-trinity ksmserver-trinity ksplash-trinity tdebase-runtime-data-common-trinity tdebase-trinity-bin tdm-trinity twin-trinity';
+			$dialogHeader = $I18N_installingMate;
+		break;
+
+		case DEBIAN8DESKTOP_GNOME_FULL:
+			$desktopPackages = 'task-gnome-desktop';
+			$dialogHeader = $I18N_installing_gnome;
+			$installDesktopLanguagePackage = true;
+		break;
+
+		case DEBIAN8DESKTOP_XFCE_FULL:
+			$desktopPackages = 'task-xfce-desktop';
+			$dialogHeader = $I18N_installing_xfce;
+			$installDesktopLanguagePackage = true;
+		break;
+
+		case DEBIAN8DESKTOP_KDE_FULL:
+			$desktopPackages = "task-kde-desktop kde-l10n-$lV[packagelang]";
+			$dialogHeader = $I18N_installing_kde;
+			$installDesktopLanguagePackage = true;
+		break;
+
+		case DEBIAN8DESKTOP_CINNAMON_FULL:
+			$desktopPackages = 'task-cinnamon-desktop';
+			$dialogHeader = $I18N_installingCinnamon;
+			$installDesktopLanguagePackage = true;
+		break;
+
+		case DEBIAN8DESKTOP_LXDE_FULL:
+			$desktopPackages = 'task-lxde-desktop';
+			$dialogHeader = $I18N_installingLXDE;
+			$installDesktopLanguagePackage = true;
+		break;
+	}
+
+	if ($installDesktopLanguagePackage)
+		CLCFG_installDesktopLanguagePackage($lang, $installKdeLanguagePackage, $installGnomeLanguagePackage);
+
+	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $dialogHeader);
+
+	CLCFG_setDebConfDirect('lightdm shared/default-x-display-manager select lightdm');
+
+	// Install the chosen desktop
+	CLCFG_aptGet("install", "$desktopPackages acpi-support lightdm");
+	/* =====> */ MSR_statusBarIncCommand(100);
+
+	echo("\ndpkg-reconfigure m23-skel\n");
+}
+
+
+
 
 
 /**
@@ -157,25 +250,7 @@ function CLCFG_enableLDAPDebian($clientOptions)
 	if (empty($LDAPhost) || empty($baseDN))
 		return;
 
-	if ('wheezy' == $clientOptions['release'])
-	{
-		CLCFG_setDebConfDirect("libnss-ldap libnss-ldap/binddn string cn=proxyuser,$baseDN
-libnss-ldap libnss-ldap/bindpw password
-libnss-ldap libnss-ldap/confperm boolean true
-libnss-ldap libnss-ldap/dblogin boolean false
-libnss-ldap libnss-ldap/dbrootlogin boolean false
-libnss-ldap libnss-ldap/nsswitch note
-libnss-ldap libnss-ldap/override boolean true
-libnss-ldap libnss-ldap/rootbinddn string cn=manager,$baseDN
-libnss-ldap libnss-ldap/rootbindpw password
-libnss-ldap shared/ldapns/base-dn string $baseDN
-libnss-ldap shared/ldapns/ldap-server string ldap://$LDAPhost
-libnss-ldap shared/ldapns/ldap_version select 3
-libpam-runtime libpam-runtime/override boolean false
-libpam-runtime libpam-runtime/profiles multiselect unix, ldap
-portmap portmap/loopback boolean false");
-	}
-	else
+	if ('squeeze' == $clientOptions['release'])
 	{
 		CLCFG_setDebConfDirect("libnss-ldap libnss-ldap/binddn string cn=proxyuser,$baseDN
 libnss-ldap libnss-ldap/bindpw password
@@ -203,6 +278,24 @@ libpam-ldap shared/ldapns/ldap_version select 3
 ldap-auth-config ldap-auth-config/ldapns/ldap-server string ldapi://$LDAPhost
 portmap portmap/loopback boolean false
 ");
+	}
+	else
+	{
+		CLCFG_setDebConfDirect("libnss-ldap libnss-ldap/binddn string cn=proxyuser,$baseDN
+libnss-ldap libnss-ldap/bindpw password
+libnss-ldap libnss-ldap/confperm boolean true
+libnss-ldap libnss-ldap/dblogin boolean false
+libnss-ldap libnss-ldap/dbrootlogin boolean false
+libnss-ldap libnss-ldap/nsswitch note
+libnss-ldap libnss-ldap/override boolean true
+libnss-ldap libnss-ldap/rootbinddn string cn=manager,$baseDN
+libnss-ldap libnss-ldap/rootbindpw password
+libnss-ldap shared/ldapns/base-dn string $baseDN
+libnss-ldap shared/ldapns/ldap-server string ldap://$LDAPhost
+libnss-ldap shared/ldapns/ldap_version select 3
+libpam-runtime libpam-runtime/override boolean false
+libpam-runtime libpam-runtime/profiles multiselect unix, ldap
+portmap portmap/loopback boolean false");
 	}
 
 	//Thanks to the howto from: http://www.debuntu.org/ldap-server-and-linux-ldap-clients-p2

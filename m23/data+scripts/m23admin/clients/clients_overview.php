@@ -167,7 +167,7 @@
 
 	if($results)
 	{
-	  while( $data = mysql_fetch_array($results) ) //Schleife mit Client-Daten
+	  while( $data = mysqli_fetch_array($results) ) //Schleife mit Client-Daten
 	   {
 		/* LINK für Action setzen */
 		switch ($action)

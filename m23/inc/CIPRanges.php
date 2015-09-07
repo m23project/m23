@@ -52,7 +52,7 @@
 				return(false);
 
 			//Get ranges and convert the IPs back to normal notation
-			while ($line = mysql_fetch_assoc($res))
+			while ($line = mysqli_fetch_assoc($res))
 			{
 				$out[$i]['id'] = $line['id'];
 				$out[$i]['firstIP'] = long2ip($line['firstIPInt']);
@@ -83,7 +83,7 @@
 				return(false);
 
 			//Get ranges and convert the IPs back to normal notation
-			while ($line = mysql_fetch_assoc($res))
+			while ($line = mysqli_fetch_assoc($res))
 				$out[$i++] = $line;
 
 			return($out);
@@ -129,7 +129,7 @@
 
 			if (false !== $res)
 			{
-				$line = mysql_fetch_row($res);
+				$line = mysqli_fetch_row($res);
 				$lockedRanges = $line[0];
 			}
 

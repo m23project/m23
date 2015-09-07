@@ -1649,7 +1649,7 @@ function VM_getSWandHost($clientName)
 	//SQL query for getting the VM software on the guest, a check that the client is a VM guest and the VM host that runs the guest
 	$res = db_query('SELECT vmRunOnHost AS vmHostID, vmSoftware, ((vmRole & '.VM_ROLE_GUEST.') = '.VM_ROLE_GUEST.') AS roleTrue, (SELECT client FROM `clients` WHERE id = vmHostID) AS vmHost, (SELECT vmVisualPassword FROM `clients` WHERE id = vmHostID) AS vmVisualPassword, vmVisualURL, (SELECT ip FROM `clients` WHERE id = vmHostID) AS vmHostIP FROM `clients` WHERE client="'.$clientName.'"'); //FW ok
 
-	$info = mysql_fetch_assoc($res);
+	$info = mysqli_fetch_assoc($res);
 
 	//Exit if this client is no VM guest
 	if ($info['roleTrue'] != 1)
@@ -1949,7 +1949,7 @@ function VM_getAllVMHosts($VM_software)
 			$res = db_query("SELECT `client` FROM `clients` WHERE (`vmSoftware` & $VM_software ) = $VM_software AND (`vmRole` & ".VM_ROLE_HOST.") = ".VM_ROLE_HOST); //FW ok
 
 			$out = array();
-			while ($row = mysql_fetch_row($res))
+			while ($row = mysqli_fetch_row($res))
 				$out[$row[0]] = $row[0];
 
 			return($out);

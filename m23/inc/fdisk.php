@@ -2364,7 +2364,7 @@ function FDISK_getPartitions($client)
 	$sql = "SELECT partitions FROM `clients` WHERE client='".$client."';";
 
 	$result = db_query($sql); //FW ok
-	$line = mysql_fetch_row($result);
+	$line = mysqli_fetch_row($result);
  
 	return (explodeAssoc("###",$line[0]));
 };

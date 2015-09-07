@@ -722,10 +722,10 @@ function LDAP_getNextID($type)
 	$result = DB_query($sql);
 
 	//Check if there is at least one ID of the choosen type in the DB
-	if (mysql_num_rows($result) > 0)
+	if (mysqli_num_rows($result) > 0)
 	{
 		//Yes, so get it
-		$line = mysql_fetch_row($result);
+		$line = mysqli_fetch_row($result);
 		$id = $line[0];
 	}
 	else
@@ -765,7 +765,7 @@ function LDAP_addNewID($type,$id)
 {
 	$sql="SELECT COUNT(*) FROM `$type"."IDs` WHERE $type"."ID=\"$id\"";
 	$result=DB_query($sql);
-	$line=mysql_fetch_row($result);
+	$line=mysqli_fetch_row($result);
 	if ($line[0] > 0)
 	return (false);
 	
@@ -850,7 +850,7 @@ function LDAP_getFreeIDs($type,$start,$amount)
 		{
 			$sql="SELECT COUNT(*) FROM `$type"."IDs` WHERE $type"."ID=\"$id\"";
 			$result=DB_query($sql);
-			$line=mysql_fetch_row($result);
+			$line=mysqli_fetch_row($result);
 			if ($line[0] == 0)
 				{
 					$out[$pos++]=$id;

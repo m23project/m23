@@ -18,7 +18,7 @@ class Cm23AdminLister
 	{
 		$sql = "SELECT COUNT(*) FROM `m23Admins` WHERE name='$name' ";
 		$result=DB_query($sql);
-		$line=mysql_fetch_array($result);
+		$line=mysqli_fetch_array($result);
 
 		return( $line[0] > 0 );
 	}

@@ -152,7 +152,7 @@ function CHECK_text2db($val,$like = false)
 	if (get_magic_quotes_gpc())
 		$val = stripslashes($val);
 
-	$val = mysql_real_escape_string($val);
+	$val = mysqli_real_escape_string(DB_getConnection(), $val);
 	if ($like)
 		$val = addcslashes($val, "%_");
 

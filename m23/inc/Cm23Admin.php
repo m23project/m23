@@ -80,9 +80,9 @@ class Cm23Admin extends CChecks
 		{	//find admin properties in database
 			$sql = "SELECT * FROM `m23Admins` WHERE name='$name' ";
 			$result = DB_query($sql);
-			if (mysql_num_rows($result) === 1)
+			if (mysqli_num_rows($result) === 1)
 			{
-				$line = mysql_fetch_array($result);
+				$line = mysqli_fetch_array($result);
 
 				//fill properties of new m23Admin object
 				$this->options = unserialize($line['options']);

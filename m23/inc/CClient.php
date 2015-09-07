@@ -86,10 +86,10 @@ class CClient extends CChecks
 			$sql = "SELECT * FROM `clients` WHERE id='$clientID'";
 			$result = DB_query($sql); //FW ok
 
-			if (mysql_num_rows($result) === 0)
+			if (mysqli_num_rows($result) === 0)
 				die('Client with ID '.$clientID.' does not exist!');
 
-			$params = mysql_fetch_assoc($result);
+			$params = mysqli_fetch_assoc($result);
 		}
 		//Check if the parameter is a client name
 		elseif (is_string($in))
@@ -108,7 +108,7 @@ class CClient extends CChecks
 				$result = DB_query($sqlSelect); //FW ok
 
 				//Check if there could be fetched no params (client is nonexisting)
-				if (mysql_num_rows($result) === 0)
+				if (mysqli_num_rows($result) === 0)
 				{
 					if (CClient::CHECKMODE_MUSTEXIST === $checkMode)
 						die('Client with name '.$clientName.' does not exist!');
@@ -121,7 +121,7 @@ class CClient extends CChecks
 					//Fetch the entry from the DB again
 					$result = DB_query($sqlSelect); //FW ok
 				}
-				$params = mysql_fetch_assoc($result);
+				$params = mysqli_fetch_assoc($result);
 			}
 			else
 			{
@@ -1868,6 +1868,20 @@ class CClient extends CChecks
 	public function getBootType()
 	{
 		return($this->getProperty('dhcpBootimage', 'getBootType: No boot type set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::usesDynamicIP()
+**description Checks if the client uses dynamic IPs.
+**returns true, if the client uses dynamic IPs otherwise false.
+**/
+	public function usesDynamicIP()
+	{
+		return($this->getBootType() == CClient::BOOTTYPE_GPXE);
 	}
 
 

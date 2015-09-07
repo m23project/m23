@@ -829,7 +829,7 @@ class CClientLister extends CChecks
 		}
 		
 		if ($this->mySQLResID !== false)
-			return(mysql_fetch_assoc($this->mySQLResID));
+			return(mysqli_fetch_assoc($this->mySQLResID));
 		else
 			return(false);
 	}
@@ -849,7 +849,7 @@ class CClientLister extends CChecks
 	{
 		$sql = "SELECT COUNT(*) FROM `clients` WHERE $key='$val' ";
 		$result=DB_query($sql);
-		$line=mysql_fetch_array($result);
+		$line=mysqli_fetch_array($result);
 
 		return( $line[0] > 0 );
 	}

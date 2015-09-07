@@ -199,8 +199,12 @@ cd /tmp
 		$ntpPackage="";
 
 
+	if ($clientOptions['release'] == 'jessie')
+		$bootloaderPackage = 'grub-pc';
+	else
+		$bootloaderPackage = $clientOptions['bootloader'];
 
-	CLCFG_installBasePackages("powermgmt-base console-common console-data console-tools less screen sed ssh net-tools $ntpPackage parted gawk hdparm dialog locales $clientOptions[bootloader] hwsetup hwdata-knoppix m23-initscripts m23hwscanner m23-skel ". $clientOptions['kernel']);
+	CLCFG_installBasePackages("powermgmt-base console-common console-data console-tools less screen sed ssh net-tools $ntpPackage parted gawk hdparm dialog locales $bootloaderPackage hwsetup hwdata-knoppix m23-initscripts m23hwscanner m23-skel ". $clientOptions['kernel']);
 	/* =====> */ MSR_statusBarIncCommand(15);
 	
 	if ($clientOptions['release'] == 'lenny')
@@ -286,6 +290,8 @@ rm /debootstrap
 	/* =====> */ MSR_statusBarIncCommand(2);
 
 echo("
+
+sync
 
 TIME=0
 

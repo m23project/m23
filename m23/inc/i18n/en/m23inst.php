@@ -65,4 +65,10 @@ $I18N_updating_package_information='Updating package information';
 $I18N_installing_unityfull_1404='Installing the full Unity 3D';
 $I18N_installingLXDELubuntuCore='Installing minimal LXDE/Lubuntu desktop';
 $I18N_installingLXDELubuntu='Installing full LXDE/Lubuntu desktop';
+
+//15.1
+$I18N_installing_elementary_desktop = 'Installing Elementary OS Desktop';
+
+//15.2
+$I18N_installing_gnome="Installing Gnome Desktop";
 ?>

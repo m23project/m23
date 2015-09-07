@@ -1330,4 +1330,16 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_viewScriptOutput = 'Skriptausgabe betrachten';
 @$I18N_openScriptOutputView = 'Skriptausgabenbetrachter öffnen';
 @$I18N_scriptDownloadMalwareWarning = '<b>Überprüfen</b> Sie unbedingt jedes Skript nach dem Herunterladen. Sie verwenden jedes Skript auf <b>Ihr eigenes Risiko</b>!';
+
+//15.2
+@$I18N_firewallSetting = 'Firewall-Einstellungen';
+@$I18N_firewallScriptSaved = 'Firewall-Skript wurde gespeichert';
+@$I18N_firewallScriptExecuted = 'Firewall-Skript wurde ausgeführt';
+@$I18N_firewallRulesExported = 'Firewall-Regeln wurden exportiert';
+@$I18N_autoLoadingOfFirewallRulesActivated = 'Automatisches Laden der Firewall-Regeln aktiviert';
+@$I18N_autoLoadingOfFirewallRulesDeactivated = 'Automatisches Laden der Firewall-Regeln deaktiviert';
+@$I18N_enabled = 'Aktiviert';
+@$I18N_disabled = 'Deaktiviert';
+@$I18N_saveAndActivate = 'Speichern und aktivieren';
+@$I18N_firewallRulesDeactivated = 'Firewall-Regeln deaktiviert';
 ?>

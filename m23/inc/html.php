@@ -941,10 +941,10 @@ function HTML_setStatusBarPercentPointByName($statusBarName, $client, $recalcula
 	{
 		//Get the current percent value of the status bar
 		$res = DB_query("SELECT `percent` FROM `statusbar` WHERE `client`='$client' AND `name`='$statusBarName'");
-		$line = mysql_fetch_row($res);
+		$line = mysqli_fetch_row($res);
 
 		//Check, if there is a result (the current percent value of the status bar)
-		if (mysql_num_rows($res) > 0)
+		if (mysqli_num_rows($res) > 0)
 			$percent = $line[0];
 		else
 			return(false);
@@ -1083,9 +1083,9 @@ function HTML_getStatusBarID($name, $client="")
 	$res = DB_query("SELECT `id` FROM `statusbar` WHERE $clSQL `name` = '$name'");
 
 	//Check, if we got a status bar with the given parameters
-	if (mysql_num_rows($res) > 0)
+	if (mysqli_num_rows($res) > 0)
 	{
-		$info = mysql_fetch_array($res);
+		$info = mysqli_fetch_array($res);
 		return((int)$info['id']);
 	}
 	else
@@ -1122,7 +1122,7 @@ function HTML_newStatusBar($name, $client, $type, $cmd="", $refreshtime=5, $stat
 	if ($ret === false)
 		return(false);
 	else
-		return(mysql_insert_id());
+		return(mysqli_insert_id(DB_getConnection()));
 }
 
 
@@ -1158,7 +1158,7 @@ function HTML_showStatusBarHTML($id)
 
 	//Get some basic informations about the status bar
 	$res = DB_query("SELECT `type` , `cmd` , `refreshtime`, `statustext`, `percent` , `ts` FROM `statusbar` WHERE `id` =$id");
-	$info = mysql_fetch_array($res);
+	$info = mysqli_fetch_array($res);
 
 	//Calculate the percentage by the status bar type
 	switch ($info['type'])

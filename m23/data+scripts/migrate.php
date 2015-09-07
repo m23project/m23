@@ -156,7 +156,7 @@ db_query("ALTER TABLE `sourceslist` ADD `release` VARCHAR( 255 ) NOT NULL AFTER 
 db_query("ALTER TABLE `sourceslist` ADD `desktops` LONGTEXT NOT NULL");
 /*$res = CLIENT_query("","","","");
 
-while($data = mysql_fetch_array($res))
+while($data = mysqli_fetch_array($res))
 	{
 		echo("$data[client]: ");
 		MIGR_dmi($data);

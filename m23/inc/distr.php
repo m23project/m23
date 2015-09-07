@@ -91,6 +91,8 @@ function DISTR_releaseVersionTranslator($release)
 	$r['lenny']="5.0";
 	$r['squeeze']="6.0";
 	$r['wheezy']="7.x";
+	$r['jessie']="8.x";
+	
 
 	return(ucfirst($release)." ".$r[$release]);
 }
@@ -194,8 +196,13 @@ function DISTR_DistributionsSelections($selName,$first,$addEmpty=false)
 		if ($dist != $first)
 		{
 			$info = DISTR_getDescriptionValues($dist);
+			
+			if (isset($info["Name"]))
+				$name = $info["Name"];
+			else
+				$name = ' ';
 
-			$out.="<option value=\"$dist\">".$info["Name"]."</option>";
+			$out.="<option value=\"$dist\">$name</option>";
 		};
 
 	$out.="</select>";
@@ -332,6 +339,22 @@ function DISTR_getDesktopsCBList($distr,$selectedDesktops)
 
 	return($out);
 };
+
+
+
+
+
+/**
+**name DISTR_getDesktopDescription($distr, $desktop)
+**description Returns the description for the given desktop in the given distribution preferedly in the language of the m23 webinterface.
+**parameter distr: Name of the distribution.
+**parameter desktop: Name of the desktop.
+**/
+function DISTR_getDesktopDescription($distr, $desktop)
+{
+	$distrValues = DISTR_getDescriptionValues($distr);
+	return(DISTR_geti18nValue($GLOBALS["m23_language"],"GUI".$desktop,$distrValues));
+}
 
 
 

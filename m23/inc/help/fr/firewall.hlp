@@ -1,0 +1,13 @@
+<!--v15.2 new-->$I18N_firewallSetting
+
+Ce dialogue vous permet de cr&eacute;er et d'&eacute;diter les r&egrave;gles du firewall de votre serveur m23. Lorsque vous acc&eacute;dez &agrave; cette page pour la premi&egrave;re fois, un ensemble de r&egrave;gles simples du firewall seront cr&eacute;&eacute;es, elles bloqueront tout acc&egrave;s au serveur m23 depuis l'ext&eacute;rieur de votre r&eacute;seau (except&eacute; pour SSH).
+
+Si votre situation requi&egrave;re un ensemble de r&egrave;gles diff&eacute;rent, vous pouvez en cr&eacute;er de nouvelles &agrave; l'aide d'<a href="https://fr.wikipedia.org/wiki/Iptables">iptables</a> puis coller ces derni&egrave;res dans l'&eacute;diteur.
+
+Pour accepter le param&eacute;trage affich&eacute; dans l'&eacute;diteur, cliquez sur <i>"$I18N_save"</i> ou respectivement sur <i>"$I18N_saveAndActivate"</i>. Si le firewall est d&eacute;sactiv&eacute;, les r&egrave;gles saisies seront seulement sauvegard&eacute;es dans le fichier <code>/m23/bin/firewall.sh</code>. S'il est activ&eacute;, les r&egrave;gles seront sauvegard&eacute;es et imm&eacute;diatement appliqu&eacute;es.
+
+
+Les boutons <i>"$I18N_activate"</i> et <i>"$I18N_deactivate"</i> activent et d&eacute;activent le Firewall.
+
+<u>Nota</u>
+Pendant l'activation du firewall, le fichier <code>/etc/network/interfaces</code> est modifi&eacute; afin de permettre le chargement automatique des r&egrave;gles. Ces modifications seront invalid&eacute;es lorsque le firewall passera dans l'&eacute;tat d&eacute;sactiv&eacute;.

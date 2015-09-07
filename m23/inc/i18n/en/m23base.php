@@ -1322,4 +1322,16 @@ Hint: You (or anybody else with access to your webbrowser) can use the m23 webin
 @$I18N_viewScriptOutput = 'View output of script';
 @$I18N_openScriptOutputView = 'Open script output viewer';
 @$I18N_scriptDownloadMalwareWarning = '<b>ALWAYS CHECK</b> every script you download. Use <b>AT YOUR OWN RISK</b>!';
+
+//15.2
+@$I18N_firewallSetting = 'Firewall settings';
+@$I18N_firewallScriptSaved = 'Firewall script has been saved';
+@$I18N_firewallScriptExecuted = 'Firewall script has been executed';
+@$I18N_firewallRulesExported = 'Firewall rules have been exported';
+@$I18N_autoLoadingOfFirewallRulesActivated = 'Automatic loading of firewall rules has been activated';
+@$I18N_autoLoadingOfFirewallRulesDeactivated = 'Automatic loading of firewall rules has been deactivated';
+@$I18N_enabled = 'Active';
+@$I18N_disabled = 'Deactivated';
+@$I18N_saveAndActivate = 'Save and activate';
+@$I18N_firewallRulesDeactivated = 'Firewall rules have been deactivated';
 ?>

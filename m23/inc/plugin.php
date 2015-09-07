@@ -508,7 +508,7 @@ function PLG_showPluginOverview()
 	<td><span class=\"subhighlight\">$I18N_action</span></td>
 </tr>");
 
-  while ($line=mysql_fetch_row($result))
+  while ($line=mysqli_fetch_row($result))
 	{
 	 //print plugin informations
 	 echo("<tr>
@@ -546,7 +546,7 @@ function PLG_delete($name)
 	//CC_nochecknow: Checks disabled, because if an unauthorized user can achieve to the plugin function, plugins with all commands enabled can be inserted, so SQL checking would not make much sense
 	$result=db_query("SELECT files, deinstall FROM `plugins` where name='$name'"); //FW ok
 
-	$line=mysql_fetch_row($result);
+	$line=mysqli_fetch_row($result);
 
 	//split the file string in single files
 	$files=explode("\?",$line[0]);
@@ -593,7 +593,7 @@ function PLG_getUpdateFile($name)
 	//CC_nochecknow: Checks disabled, because if an unauthorized user can achieve to the plugin function, plugins with all commands enabled can be inserted, so SQL checking would not make much sense
 	//get the update url for the plugin
 	$result=db_query("SELECT updateurl FROM `plugins` where name='$name'"); //FW ok
-	$line=mysql_fetch_row($result);
+	$line=mysqli_fetch_row($result);
 
 	$url=$line[0];
 

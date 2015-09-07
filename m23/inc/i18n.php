@@ -42,7 +42,7 @@ function I18N_convertToHumanReadableName($lang)
 
 	//Get the short and (translated) longanames
 	$res = db_query("SELECT * FROM `i18n` WHERE webinterface = 'c' AND ShortLanguage = '$lang'");
-	$l = mysql_fetch_assoc($res);
+	$l = mysqli_fetch_assoc($res);
 	return($$l['LongLanguage']);
 }
 
@@ -119,7 +119,7 @@ function I18N_listClientLanguages($default, $directOutputtedSelection = true)
 
 	//Get the short and (translated) longanames
 	$res = db_query("SELECT * FROM `i18n` WHERE webinterface = 'c'");
-	while ($lang = mysql_fetch_assoc($res))
+	while ($lang = mysqli_fetch_assoc($res))
 		$langA[$lang['ShortLanguage']] = $$lang['LongLanguage'];
 
 	//Sort by the translated labels
@@ -142,7 +142,7 @@ function I18N_countCachedLanguages($webinterface)
 {
 	$webinterface = ($webinterface ? 'w' : 'c');
 	$res = db_query("SELECT COUNT(*) FROM i18n WHERE webinterface = '$webinterface'");
-	$out = mysql_fetch_row($res);
+	$out = mysqli_fetch_row($res);
 	return($out[0]);
 }
 
@@ -215,7 +215,7 @@ function I18N_getAllCachedLanguages($webinterface)
 {
 	$webinterface = ($webinterface ? 'w' : 'c');
 	$res = db_query("SELECT ShortLanguage, LongLanguage FROM i18n WHERE webinterface = '$webinterface'");
-	while ($line = mysql_fetch_assoc($res))
+	while ($line = mysqli_fetch_assoc($res))
 	{
 		$out[$line['ShortLanguage']] = $line['LongLanguage'];
 	}
@@ -425,7 +425,7 @@ function I18N_getLangVars(&$lang)
 
 	//Get the info for the 
 	$res = db_query("SELECT * FROM `i18n` WHERE webinterface = 'c' AND `ShortLanguage` = '$lang'");
-	return(mysql_fetch_assoc($res));
+	return(mysqli_fetch_assoc($res));
 };
 
 ?>
