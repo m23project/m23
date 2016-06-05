@@ -1,0 +1,313 @@
+
+Template: matlab-support/title
+Type: title
+description: MATLAB interface configuration
+description-cs.UTF-8: Nastavení rozhraní MATLAB
+description-da.UTF-8: MATLAB-grænsefladekonfiguration
+description-de.UTF-8: MATLAB-Schnittstellenkonfiguration
+description-es.UTF-8: Configuración de la interfaz de MATLAB
+description-fr.UTF-8: Configuration de l'interface de MATLAB
+description-it.UTF-8: Configurazione dell'interfaccia di MATLAB
+description-ja.UTF-8: MATLAB インターフェイス設定
+description-nl.UTF-8: Configuratie van de MATLAB-interface
+description-pt.UTF-8: Interface de configuração MATLAB
+description-pt_BR.UTF-8: Configuração da interface do MATLAB
+description-ru.UTF-8: Настройка интерфейса MATLAB
+description-sv.UTF-8: Inställningar för MATLAB-gränssnittet
+
+
+Template: matlab-support/matlab-install-glob
+Type: string
+Description: Location of MATLAB installation(s):
+ The MATLAB interface needs to know where MATLAB is installed on this
+ system. This can be specified as a single directory or, in case of multiple
+ MATLAB installations, as a glob expression (any expression supported by bash,
+ including extended pattern matching operators).
+ .
+ If, for example, the MATLAB executable is installed in /opt/matlab76/bin/matlab,
+ please enter "/opt/matlab76". If there are multiple MATLAB versions
+ installed, you can enter "/opt/matlab*" or a similar expression. Only
+ matches that really contain a MATLAB executable will be considered.
+ Therefore, a glob expression may match more than
+ just MATLAB installation directories without negative side effects.
+Description-cs.UTF-8: Umístění instalace(cí) MATLAB:
+ Rozhraní MATLAB potřebuje znát, kde je na tomto systému nainstalován MATLAB. Umístění lze zadat jako jeden adresář nebo, v případě několika instalací MATLAB, jako dávkový výraz (všechny výrazy, které podporuje bash, včetně rozšířených tvarů operátorů).
+ .
+ Je-li například spouštěč pro MATLAB nainstalován v /opt/matlab76/bin/matlab zadejte "/opt/matlab76". Máte-li nainstalovaných více verzí MATLAB, můžete zadat "/opt/matlab*" či podobný výraz. V úvahu budou brány pouze ty, které skutečně obsahují spouštěč pro MATLAB. Dávkové výrazy mohou tedy obsahovat více než jeden adresář s instalací MATLAB bez negativních dopadům s tím spojených.
+Description-da.UTF-8: Placering af MATLAB-installationer:
+ MATLAB-brugerfladen skal vide hvor MATLAB er installeret på dit system. Dette kan angives som en enkel mappe eller i tilfælde af flere MATLAB-installationer, som et glob-udtryk (alle udtryk understøttet af bash, inklusiv operatører for udvidet mønstermatchning).
+ .
+ Hvis for eksempel den kørbare fil for MATLAB er installeret i /opt/matlab76/bin/matlab, så indtast venligst »/opt/matlab76/«. Hvis der er flere MATLAB-versioner installeret kan du indtaste »/opt/matlab*/« eller et lignende udtryk. Kun matchninger, som reelt indeholder en MATLAB-kørbar fil, vil blive medtaget. Derfor kan et glob-udtryk matche mere end bare MATLAB-installationsmappen uden negative sideeffekter.
+Description-de.UTF-8: Speicherort der MATLAB-Installation(en):
+ Die MATLAB-Schnittstelle muss wissen, wo auf dem System MATLAB installiert ist. Dies kann als einzelnes Verzeichnis angegeben werden oder im Fall mehrerer MATLAB-Installationen als Glob-Ausdruck (jeder durch die Bash unterstützte Ausdruck, einschließlich erweiterter Mustervergleichsoperatoren).
+ .
+ Falls zum Beispiel das MATLAB-Programm in /opt/matlab76/bin/matlab installiert ist, geben Sie bitte »/opt/matlab76« ein. Falls mehrere MATLAB-Versionen installiert sind, können Sie »/opt/matlab*« oder einen ähnlichen Ausdruck eingeben. Nur Treffer, die wirklich die ausführbare MATLAB-Binärdatei enthalten, werden berücksichtigt. Daher darf ein Glob-Ausdruck ohne negative Nebeneffekte auf mehr Verzeichnisse als nur solche mit MATLAB-Installationen zutreffen.
+Description-es.UTF-8: Ubicación de la instalación de MATLAB:
+ La interfaz de MATLAB necesita conocer dónde está instalado MATLAB en este sistema. Esto se puede indicar como un único directorio, o en caso de varias instalaciones de MATLAB, como una expresión con comodines (cualquier expresión permitida en bash, incluyendo los operadores de coincidencia de patrones extendidos).
+ .
+ Si, por ejemplo, el ejecutable de MATLAB está instalado en «/opt/matlab76/bin/matlab», introduzca «opt/matlab76/». Si hay varias versiones de MATLAB instaladas, puede introducir «opt/matlab*» o una expresión parecida. Sólo se considerarán las coincidencias que realmente contengan un ejecutable de MATLAB. Por tanto, una expresión con comodines puede coincidir con más de un directorio de instalación de MATLAB sin efectos colaterales negativos.
+Description-fr.UTF-8: Emplacement de MATLAB :
+ L'interface de MATLAB doit connaître l'emplacement de MATLAB sur ce système. Il peut s'agir d'un unique répertoire ou, dans le cas d'installations multiples, d'un motif générique (« glob ») (n'importe quelle expression bash, en incluant les opérateurs étendus de correspondance de motifs).
+ .
+ Si, par exemple, l'exécutable de MATLAB est installé dans /opt/matlab76/bin/matlab, veuillez indiquer « /opt/matlab76 ». Si plusieurs versions de MATLAB sont installées, vous pouvez indiquer « /opt/matlab* » ou une expression similaire. Seules les correspondances qui contiennent vraiment un exécutable de MATLAB seront prises en compte. Par conséquent, à une expression glob peut correspondre plus d'un répertoire d'installation de MATLAB sans effets de bord indésirables.
+Description-it.UTF-8: Posizione dell'installazione (o installazioni) di MATLAB:
+ L'interfaccia MATLAB deve sapere dove è installato MATLAB nel sistema. Ciò può essere specificato come directory singola o, in caso di più installazioni di MATLAB, come un'espressione con metacaratteri (qualsiasi espressione gestita da bash, inclusi gli operatori per corrispondenza a modelli estesa).
+ .
+ Se, per esempio, l'eseguibile di MATLAB è installato in /opt/matlab76/bin/matlab, inserire "/opt/matlab76". Se ci sono più versioni di MATLAB installate, si può inserire "/opt/matlab*" o un'espressione simile. Solo le corrispondenze che contengono davvero un eseguibile MATLAB verranno prese in considerazione. Perciò un'espressione con metacaratteri può corrispondere a più directory, e non solo a quelle delle installazioni di MATLAB, senza effetti collaterali negativi.
+Description-ja.UTF-8: MATLAB がインストールされている場所:
+ MATLAB インターフェイスはこのシステムのどこに MATLAB がインストールされているのか知る必要があります。これには単一ディレクトリ、あるいは 複数の MATLAB がインストールされている場合はグロブ表現を指定することができます (bash でサポートされている表現が、拡張パターンマッチ演算子も含めてすべて使えます)。
+ .
+ 例えば MATLAB 実行ファイルが /opt/matlab76/bin/matlab にインストールされている場合は "/opt/matlab76" を入力してください。 MATLAB の複数のバージョンがインストールされている場合は、"/opt/matlab*" のような表現を入力できます。マッチするもののうち、MATLAB 実行ファイルが実際に存在するものだけが対象となります。したがって、グロブ表現は MATLAB がインストールされているディレクトリ以外にもマッチしますが悪影響はありません。
+Description-nl.UTF-8: Locatie van de MATLAB-installatie(s):
+ De MATLAB-interface moet weten waar MATLAB op dit systeem is geïnstalleerd. Dit kan worden opgegeven als een enkele map of, indien er meerdere MATLAB-installaties zijn, als een glob-uitdrukking (elke door bash ondersteunde uitdrukking is toegestaan, inclusief de 'extended pattern matching'-operatoren).
+ .
+ Bijvoorbeeld: Als het MATLAB-programma in /opt/matlab76/bin/matlab is geïnstalleerd dient u "/opt/matlab76" in te voeren. Als er meerdere versies van MATLAB zijn geïnstalleerd kunt u "/opt/matlab*" of een soortgelijke uitdrukking invoeren. Alleen resultaten die echt een MATLAB-programma bevatten worden meegenomen. Daarom is het niet erg als een glob-uitdrukking naast MATLAB-installaties ook andere resultaten geeft.
+Description-pt.UTF-8: Localização da(s) instalação(ões) MATLAB:
+ O interface MATLAB necessita saber onde está instalado o MATLAB neste sistema. Isto pode ser especificado como um único directório ou, no caso de ter várias instalações de MATLAB, como uma expressão glob (qualquer expressão bash suportada, incluindo operadores estendidos de padrões).
+ .
+ Se, por exemplo, o executável MATLAB estiver em /opt/matlab76/bin/matlab', por favor introduza "/opt/matlab76"'. Se estiverem instaladas várias versões de MATLABi, pode introduzir "/opt/matlab*" ou uma expressão similar). Apenas será considerado o que coincidir com o que na realidade contiver um executável MATLAB. Por isso uma expressão glob pode coincidir com mais do que directórios de instalação de MATLAB sem efeitos secundários negativos.
+Description-pt_BR.UTF-8: Local(is) de instalação do MATLAB:
+ A interface do MATLAB necessita saber onde o MATLAB está instalado nesse sistema. Isso pode ser especificado como um único diretório ou, no caso de múltiplas instalações do MATLAB, como uma expressão "glob" (qualquer expressão suportada pelo bash, incluindo operadores de combinação de padrões estendidos).
+ .
+ Se, por exemplo, o executável do MATLAB está instalado em /opt/matlab76/bin/matlab, por favor, informe "/opt/matlab76". Se existem múltiplas versões do MATLAB instaladas, você pode informar "/opt/matlab*" ou uma expressão similar. Somente combinações que realmente contenham um executável do MATLAB serão consideradas. Assim, uma expressão "glob" pode combinar com mais do que apenas diretórios de instalação do MATLAB sem efeitos colaterais negativos.
+Description-ru.UTF-8: Расположение установки(ок) MATLAB:
+ Интерфейсу MATLAB требуется указать место установки MATLAB в системе. Можно задать единственный каталог или, если есть несколько установок MATLAB, шаблон (любое выражение, поддерживаемое bash, включающее расширенные шаблонные операторы поиска совпадений).
+ .
+ Если, например, полный путь исполняемого файла MATLAB — /opt/matlab76/bin/matlab, то введите «/opt/matlab76». Если установлено несколько версий MATLAB, то можно указать «/opt/matlab*» (или похожее выражение). Будут учтены только те совпадения, которые действительно содержат исполняемый файл MATLAB, всё остальное игнорируется. Поэтому в шаблоне без проблем можно указывать не только каталоги установки MATLAB.
+Description-sv.UTF-8: Plats för MATLAB-instllation(er):
+ MATLAB-gränssnittet måste veta var MATLAB är installerat på systemet. Detta kan anges som en ensam katalog eller,  ex när flera MATLAB-installationer finns tillgängliga, som ett glob-uttryck (alla uttryck som bash hanterar, inklusive mönstermatchande operatorer).
+ .
+ Om, exempelvis MATLABs körbara delar installeras i /opt/matlab76/bin/matlab ska "/opt/matlab76" anges. Om det finns flera MATLAB-versioner installerade kan du ange  "/opt/matlab*" eller motsvarnade uttryck. Endast korrekta MATLAB-träffar kommer att användas. Det är därför möjligt att använda ett glob-uttryck som innefattar mer än bara MATLAB-installationer utan negativa följder.
+
+
+Template: matlab-support/default-version
+Type: select
+Choices: ${choices}
+Description: Default MATLAB version:
+ The following MATLAB versions were found on this system. Please select which
+ one should serve as the default MATLAB on this system.
+Description-cs.UTF-8: Výchozí verze MATLAB:
+ Na tomto systému byly nalezeny následující verze MATLAB. Vyberte si prosím jednu z nich, která se na tomto systému bude používat jako výchozí.
+Description-da.UTF-8: Standardversion for MATLAB:
+ De følgende MATLAB-versioner blev fundet på dette system. Vælg venligst hvilken der skal være standarden på dette system.
+Description-de.UTF-8: Standard-MATLAB-Version:
+ Die folgenden MATLAB-Versionen wurden auf diesem System gefunden. Bitte wählen Sie aus, welche als Standard-MATLAB auf diesem System dienen soll.
+Description-es.UTF-8: Versión predeterminada de MATLAB:
+ Se encontraron las siguientes versiones de MATLAB en este sistema. Escoja cual de ellas debería ser la predeterminada de este sistema.
+Description-fr.UTF-8: Version par défaut de MATLAB :
+ Les versions ci-dessous de MATLAB ont été trouvées sur ce système. Veuillez choisir celle qui sera utilisée par défaut.
+Description-it.UTF-8: Versione di MATLAB predefinita:
+ Sul sistema sono state trovate le versioni di MATLAB seguenti. Selezionare quale deve essere quella predefinita per MATLAB su questo sistema.
+Description-ja.UTF-8: デフォルトの MATLAB バージョン:
+ このシステム上に MATLAB の以下のバージョンが見つかりました。このシステムのデフォルトの MATLAB として使うものを選択してください。
+Description-nl.UTF-8: Standaard MATLAB-versie:
+ De volgende versies van MATLAB zijn op dit systeem gevonden. Selecteer de versie die als de standaard MATLAB van dit systeem moet fungeren.
+Description-pt.UTF-8: Versão MATLAB predefinida:
+ Foram encontradas, neste sistema, as seguintes versões de MATLAB. Por favor escolha qual deve servir como o MATLAB predefinido neste sistema.
+Description-pt_BR.UTF-8: Versão MATLAB padrão:
+ As seguintes versões do MATLAB foram encontradas nesse sistema. Por favor, selecione qual delas servirá como padrão para o MATLAB neste sistema.
+Description-ru.UTF-8: Версия MATLAB по умолчанию:
+ В системе найдено несколько версий MATLAB. Выберите версию, которая  должна использоваться в качестве системной версии MATLAB по умолчанию.
+Description-sv.UTF-8: Standard MATLAB-version:
+ Följande MATLAB-versioner hittades på detta system. Ange vilken av dessa som ska vara standardversion för MATLAB på detta system.
+
+
+Template: matlab-support/no-matlab-found
+Type: error
+Description: No MATLAB installation found
+ No MATLAB executables were found in the directories you specified.
+ .
+ This package requires at least one local installation of MATLAB.
+Description-cs.UTF-8: Žádná instalace MATLAB nebyla nalezena
+ V adresářích, které jste zadali nebyl nalezen žádný spouštěč pro MATLAB.
+ .
+ Tento balíček vyžaduje alespoň jednu místní instalaci MATLAB.
+Description-da.UTF-8: Ingen MATLAB-installation blev fundet
+ Ingen MATLAB-kørbare filer blev i fundet i mapperne du angav.
+ .
+ Denne pakke kræver mindst en lokal installation af MATLAB.
+Description-de.UTF-8: Keine MATLAB-Installation gefunden
+ Es wurden in den von Ihnen angegebenen Verzeichnissen keine MATLAB-Programme gefunden.
+ .
+ Dieses Paket benötigt mindestens eine lokale Installation von MATLAB.
+Description-es.UTF-8: No se ha encontrado ninguna instalación de MATLAB
+ No se ha encontrado ningún ejecutable de MATLAB en los directorios que indicó.
+ .
+ Este paquete necesita al menos una instalación local de MATLAB.
+Description-fr.UTF-8: Installation de MATLAB introuvable
+ Aucun exécutable de MATLAB n'a été trouvé dans les répertoires indiqués.
+ .
+ Ce paquet requiert au moins une installation locale de MATLAB.
+Description-it.UTF-8: Nessuna installazione di MATLAB trovata
+ Nelle directory specificate non è stato trovato alcun eseguibile per MATLAB.
+ .
+ Questo pacchetto richiede almeno una installazione locale di MATLAB.
+Description-ja.UTF-8: インストールされている MATLAB が見つかりませんでした
+ 指定されたディレクトリに MATLAB の実行ファイルが見つかりませんでした。
+ .
+ このパッケージには、ローカルにインストールされている MATLAB が最低 1 つ必要です。
+Description-nl.UTF-8: Geen MATLAB-installatie gevonden
+ Er zijn geen uitvoerbare bestanden van MATLAB gevonden in de opgegeven mappen.
+ .
+ Dit pakket vereist ten minste één lokale installatie van MATLAB.
+Description-pt.UTF-8: Não foram encontradas instalações de MATLAB
+ Não foram encontrados executáveis de MATLAB nos directórios que especificou.
+ .
+ Este pacote necessita de pelo menos uma instalação local de MATLAB.
+Description-pt_BR.UTF-8: Não foram encontradas instalações do MATLAB
+ Não foram encontrados executáveis do MATLAB nos diretórios que você especificou.
+ .
+ Este pacote requer pelo menos uma instalação local do MATLAB.
+Description-ru.UTF-8: MATLAB не найден
+ В указанных вами каталогах исполняемых файлов MATLAB не найдено.
+ .
+ Для данного пакета требуется хотя бы одна установленная версия MATLAB.
+Description-sv.UTF-8: Ingen MATLAB-instalaltion hittades
+ Inga körbara MATLAB-filer hittades i katalogerna du angav.
+ .
+ Detta paket kräver åtminstone en lokal installation av MATLAB.
+
+
+Template: matlab-support/mexbuild-user
+Type: string
+Description: Authorized user for MATLAB:
+ If MATLAB can only be launched by a limited set of user accounts, please
+ specify one of these. This account will be used by other
+ packages to build MEX extensions upon installation.
+ .
+ You may leave this field empty if any user account 
+ (including root) is allowed to launch MATLAB.
+Description-cs.UTF-8: Oprávněný uživatel pro MATLAB:
+ V případě, že MATLAB může spouštět pouze omezená skupina uživatelů, zadejte prosím jednoho z nich. Tohoto uživatele budou při instalaci používat ostatní balíčky k sestavení rozšíření MEX.
+ .
+ Pokud může MATLAB spouštět jakýkoli uživatel (včetně uživatele root), můžete políčko ponechat prázdné.
+Description-da.UTF-8: Godkendt bruger for MATLAB:
+ Hvis MATLAB kun kan startes af et begrænset sæt af brugerkontoer, så angiv venligst en af disse. Denne konto vil blive brugt af andre pakker til at bygge MEX-udvidelser ved installationen.
+ .
+ Du kan efterlade dette felt tomt, hvis en brugerkonto (inklusiv root) har tilladelse til at starte MATLAB.
+Description-de.UTF-8: Autorisierter Benutzer für MATLAB:
+ Falls MATLAB nur durch eine begrenzte Auswahl von Benutzerkonten gestartet werden kann, geben Sie bitte eines davon an. Dieses Konto wird von anderen Paketen benutzt, um MEX-Erweiterungen während der Installation zu bauen.
+ .
+ Sie können dieses Feld leer lassen, falls es beliebigen Benutzerkonten (einschließlich Root) erlaubt ist, MATLAB zu starten.
+Description-es.UTF-8: Usuario autorizado para MATLAB:
+ Si MATLAB sólo se puede ejecutar por un conjunto limitado de cuentas de usuario, indique una de ellas. Esta cuenta se utilizará por otros paquetes para generar las extensiones MEX durante la instalación.
+ .
+ Puede dejar este campo vacío si cualquier cuenta de usuario (incluyendo al administrador) puede ejecutar MATLAB.
+Description-fr.UTF-8: Identifiant autorisé pour MATLAB :
+ Si MATLAB ne peut être exécuté que par un groupe limité d'utilisateurs, veuillez choisir un de ces utilisateurs dont le compte sera utilisé par d'autres paquets pour construire les extensions MEX lors de l'installation.
+ .
+ Vous pouvez laisser ce champ vide si n'importe quel identifiant (root inclus) est autorisé à exécuter MATLAB.
+Description-it.UTF-8: Utente autorizzato per MATLAB:
+ Se MATLAB può essere avviato da un insieme limitato di account utente, specificarne uno. Questo account verrà usato da altri pacchetti per compilare le estensioni MEX al momento dell'installazione.
+ .
+ Questo campo può essere lasciato vuoto se qualsiasi account utente (incluso root) ha il permesso di avviare MATLAB.
+Description-ja.UTF-8: MATLAB の承認ユーザ:
+ MATLAB が限られたユーザアカウント群からのみ起動できる場合、その 1 つを指定してください。このアカウントは他のパッケージがインストール時に MEX の拡張をビルドするのに使用されます。
+ .
+ (root を含む) どのアカウントでも MATLAB を起動できるようにする場合は、これを空白にしてください。
+Description-nl.UTF-8: Geautoriseerde MATLAB-gebruiker:
+ Indien MATLAB alleen door een beperkt aantal gebruikersaccounts kan worden opgestart dient u een geautoriseerde inlognaam op te geven. Deze account wordt door andere pakketten gebruikt om bij installatie MEX-uitbreidingen te maken.
+ .
+ U kunt dit veld leeg laten wanneer u alle gebruikersaccounts (inclusief de beheerdersaccount 'root') wilt toestaan om MATLAB op te starten.
+Description-pt.UTF-8: Utilizados autorizado para MATLAB:
+ Se o MATLAB apenas puder ser lançado por um conjunto limitado de contas de utilizador, por favor especifique uma dessas. Esta conta será utilizada por outros pacotes para compilar extensões MEX durante a instalação.
+ .
+ Pode deixar este campo vazio se qualquer conta (incluindo root) estiver autorizada a lançar o MATLAB.
+Description-pt_BR.UTF-8: Usuário autorizado para o MATLAB:
+ Se o MATLAB pode ser iniciado somente por um conjunto limitado de contas de usuário, por favor, especifique uma delas. Esta conta será usada por outros pacotes para construir extensões MEX após a instalação.
+ .
+ Você pode deixar este campo em branco se nenhuma conta de usuário (incluindo o root) tiver permissão para iniciar o MATLAB.
+Description-ru.UTF-8: Пользователь с правами запуска MATLAB:
+ Если MATLAB разрешено запускать ограниченному числу учётных записей, то укажите одну из них. Эта учётная запись будет использоваться другими пакетами для сборки расширений MEX при установке.
+ .
+ Если MATLAB можно запускать из-под любой учётной записи (даже root), то оставьте поле пустым.
+Description-sv.UTF-8: Användare som får använda MATLAB:
+ Om MATLAB endast kan köras av ett begränsat antal användarkonton ska åtminstone ett av dessa anges här. Detta konto används sedan av andra paket för att bygga MEX-utökningar vid installation.
+ .
+ Du kan lämna detta fält tomt om alla konton (inklusive root) får lov att köra MATLAB.
+
+
+Template: matlab-support/rename-libs
+Type: boolean
+Default: false
+Description: Rename MATLAB's GCC libraries?
+ A MATLAB installation is shipped with copies of GCC dynamic loadable
+ libraries, which typically come from an old version of GCC.
+ .
+ These libraries sometimes cause conflicts.
+ .
+ If you choose this option, the conflicting libraries will be renamed by appending
+ a ".bak" extension. These libraries are located in the "sys/os/glnx86" or
+ "sys/os/glnxa64" subdirectory of a MATLAB installation tree.
+Description-cs.UTF-8: Přejmenovat GCC knihovny MATLAB?
+ Instalace MATLAB je dodávána s dynamicky zaveditelnými knihovnami GCC, které běžně pocházejí ze starší verze GCC.
+ .
+ Tyto knihovny občas způsobují konflikty.
+ .
+ Zvolíte-li tuto možnost, konfliktní knihovny budou přejmenovány přidáním koncovky ".bak". Tyto knihovny se nacházejí v podadresáři instalace MATLAB "sys/os/glnx86" nebo "sys/os/glnxa64".
+Description-da.UTF-8: Omdøb MATLAB's GCC-biblioteker?
+ En MATLAB-installation leveres med kopier af GCC-dynamiske indlæsbare biblioteker, som typisk kommer fra en gammel version af GCC.
+ .
+ Disse biblioteker kan undertiden medføre konflikter.
+ .
+ Hvis du vælger denne indstilling, vil de konflikramte biblioteker blive omdøbt med tilføjelse af endelsen ».bak«. Disse biblioteker er placreet i undermappen »sys/os/ginx86« eller undermappen »sys/os/glnxa64« i et MATLAB-installationstræ.
+Description-de.UTF-8: Die GCC-Bibliotheken von MATLAB umbenennen?
+ Eine MATLAB-Installation wird mit Kopien dynamisch ladbarer GCC-Bibliotheken ausgeliefert, die typischerweise von einer alten GCC-Version stammen.
+ .
+ Diese Bibiotheken verursachen manchmal Konflikte.
+ .
+ Falls Sie sich für diese Option entscheiden, werden die problematischen Bibliotheken durch Anhängen der Erweiterung ».bak« umbenannt. Diese Bibliotheken liegen in den Unterverzeichnissen »sys/os/glnx86« oder »sys/os/glnxa64« des MATLAB-Installationsverzeichnisses.
+Description-es.UTF-8: ¿Desea renombrar las bibliotecas GCC de MATLAB?
+ Una instalación de MATLAB se distribuye con copias de las bibliotecas dinámicas de GCC, que normalmente son de una versión antigua de GCC.
+ .
+ Estas bibliotecas, a veces, pueden causar problemas.
+ .
+ Si escoge esta opción, las bibliotecas problemáticas se renombrarán añadiendo la extensión «.bak». Estas bibliotecas están ubicadas en el subdirectorio «sys/os/glnx86» o «sys/os/glnxa64» del directorio de instalación de MATLAB.
+Description-fr.UTF-8: Faut-il renommer les librairies GCC de MATLAB ?
+ MATLAB est distribué avec des copies des bibliothèques dynamiques chargeables de GCC, qui proviennent typiquement d'une ancienne version de GCC.
+ .
+ Ces bibliothèques peuvent parfois créer des conflits.
+ .
+ En choisissant cette option, les bibliothèques conflictuelles seront renommées en ajoutant une extension « .bak ». Elles se trouvent dans le sous-répertoire « sys/os/glnx86 » ou « sys/os/glnxa64 » d'une installation de MATLAB.
+Description-it.UTF-8: Rinominare le librerie GCC di MATLAB?
+ Un'installazione MATLAB viene fornita con copie delle librerie caricabili dinamiche GCC, che tipicamente provengono da una vecchia versione di GCC.
+ .
+ Queste librerie a volte causano conflitti.
+ .
+ Se si abilita questa opzione, le librerie che causano il conflitto vengono rinominate aggiungendovi un'estensione ".bak". Queste librerie sono posizionate nella sottodirectory "sys/os/glnx86" o "sys/os/glnxa64" dell'albero di installazione di MATLAB.
+Description-ja.UTF-8: MATLAB の GCC ライブラリを改名しますか?
+ インストールされている MATLAB に、GCC の動的ロード可能なライブラリが同梱されていたものがあります。これは通常、GCC の古いバージョンからきたものです。
+ .
+ こういったライブラリは競合の原因となることがあります。
+ .
+ このオプションを選択すると、競合するライブラリは後ろに ".bak" 拡張子を付加して改名されます。このライブラリは MATLAB のインストール先ツリーの "sys/os/glnx86" または "sys/os/glnxa64" サブディレクトリに置かれます。
+Description-nl.UTF-8: MATLAB's GCC-bibliotheken hernoemen?
+ Een MATLAB-installatie bevat kopieën van dynamische bibliotheken van GCC. Deze komen meestal uit een oude versie van GCC.
+ .
+ Deze bibliotheken veroorzaken soms conflicten.
+ .
+ Als u hiervoor kiest worden de conflicterende bibliotheken hernoemt door ".bak" achter hun bestandsnaam te zetten. Deze bibliotheken bevinden zich in de "sys/os/glnx86"- of "sys/os/glnxa64"-submap van een MATLAB-installatie.
+Description-pt.UTF-8: Renomear as bibliotecas GCC do MATLAB?
+ Uma instalação de MATLAB é distribuída com cópias de bibliotecas GCC carregadas dinamicamente, que tipicamente vêm de uma versão antiga do GCC.
+ .
+ Estas bibliotecas por vezes causam conflitos.
+ .
+ Se escolher esta opção, as bibliotecas em conflito serão renomeadas acrescentando uma extensão ".bak". Estas bibliotecas estão localizadas no sub-directório "sys/os/glnx86" ou em "sys/os/glnxa64" da árvore da sua instalação de MATLAB.
+Description-pt_BR.UTF-8: Renomear as bibliotecas do GCC do MATLAB?
+ Uma instalação do MATLAB contém cópias de bibliotecas dinamicamente carregáveis do GCC, as quais tipicamente vêm de uma versão antiga do GCC.
+ .
+ Estas bibliotecas algumas vezes causam conflitos.
+ .
+ Se você escolher esta opção, as bibliotecas conflitantes serão renomeadas adicionando-se uma extensão ".bak". Estas bibliotecas estão localizadas no subdiretório "sys/os/glnx86" ou "sys/os/glnxa64" de uma árvore de instalação do MATLAB.
+Description-ru.UTF-8: Переименовать библиотеки MATLAB GCC?
+ В установке MATLAB есть копии динамически загружаемых библиотек GCC, обычно старой версии.
+ .
+ Иногда, из-за этих библиотек могут возникать проблемы.
+ .
+ Если вы ответите утвердительно, то к именам проблемных библиотек будет добавлено расширение «.bak». Эти библиотеки расположены в подкаталоге «sys/os/glnx86» или «sys/os/glnxa64» дерева установки MATLAB.
+Description-sv.UTF-8: Ska MATLABs GCC-bibliotek byta namn?
+ En MATLAB-installation levereras med kopior på GCC:s dynamiskt inlästa bibliotek, dessa kommer vanligen från en äldre version av GCC.
+ .
+ Dessa bibliotek kan orsaka konflikter.
+ .
+ Om du väljer att byta namn på dem kommer ".bak" läggas till i slutet. Dessa bibliotek finns i underkatalogerna "sys/os/glnx86" eller "sys/os/glnxa64" i MATLABs installationsträd.

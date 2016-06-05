@@ -1,0 +1,276 @@
+
+Template: mistral/configure_db
+Type: boolean
+Default: false
+Description: Set up a database for Mistral?
+ No database has been set up for Mistral to use. Before
+ continuing, you should make sure you have the following information:
+ .
+  * the type of database that you want to use;
+  * the database server hostname (that server must allow TCP connections from this
+    machine);
+  * a username and password to access the database.
+ .
+ If some of these requirements are missing, do not choose this option and run with
+ regular SQLite support.
+ .
+ You can change this setting later on by running "dpkg-reconfigure -plow
+ mistral-common".
+Description-nl.UTF-8: Een database opzetten voor Mistral?
+ Er werd geen database opgezet om door Mistral gebruikt te worden. Voor u doorgaat moet u beschikken over de volgende informatie:
+ .
+  * het type database dat u wenst te gebruiken;
+  * de computernaam van de database-server (die server moet
+    TCP-verbindingen vanaf deze computer accepteren);
+  * een gebruikersnaam en wachtwoord voor toegang tot de database.
+ .
+ Indien niet aan al deze vereisten voldaan is, zou u deze optie niet moeten kiezen en gebruik moeten maken van de reguliere SQLite-ondersteuning.
+ .
+ U kunt deze instelling later wijzigen door het uitvoeren van "dpkg-reconfigure -plow mistral-common".
+Description-pt.UTF-8: Configurar uma base de dados para o Mistral?
+ Nenhuma base de dados foi configurada para o Mistral usar. Antes de continuar, você deve certificar-se que tem a seguinte informação:
+ .
+  * o tipo de base de dados que deseja usar;
+  * o nome de máquina do servidor da base de dados (esse servidor deve permitir ligações TCP a partir desta
+    máquina);
+  * um nome de utilizador e palavra passe para aceder à base de dados.
+ .
+ Se alguns destes requerimentos estão em falta, não escolha esta opção e corra com o suporte SQLite regular.
+ .
+ Você pode modificar estas definições mais tarde ao correr "dpkg-reconfigure -plow mistral-common".
+
+Template: mistral/auth-host
+Type: string
+Default: 127.0.0.1
+Description: Authentication server hostname:
+ Please specify the hostname of the authentication server. Typically
+ this is also the hostname of the OpenStack Identity Service (Keystone).
+Description-fr.UTF-8: Nom d'hôte du serveur d'authentification.
+ Veuillez indiquer le nom d'hôte du serveur d'authentification. Habituellement, c'est également le nom d'hôte du Service d'Identité OpenStack (Keystone).
+Description-nl.UTF-8: Computernaam van de authenticatieserver:
+ Gelieve de computernaam van de authenticatieserver op te geven. Meestal is dit ook de computernaam van de OpenStack Identiteitsdienst (Keystone).
+Description-pt.UTF-8: Nome de máquina do servidor de autenticação:
+ Por favor especifique o nome de máquina do servidor de autenticação. Tipicamente este é também o nome de máquina do Serviço de Identidade OpenStack (Keystone).
+
+Template: mistral/admin-tenant-name
+Type: string
+Default: admin
+Description: Authentication server tenant name:
+ Please specify the authentication server tenant name.
+Description-da.UTF-8: Lejenavn (tenant) for godkendelsesserver:
+ Angiv venligst lejenavn (tenant) for godkendelsesserveren.
+Description-de.UTF-8: Tenant-Name des Authentifizierungsservers:
+ Bitte geben Sie den Tenant-Namen des Authentifizierungsservers an.
+Description-es.UTF-8: Nombre del inquilino («tenant») del servidor de autenticación:
+ Indique el nombre del inquilino («tenant») del servidor de autenticación.
+Description-fr.UTF-8: Nom d'espace client du serveur d'authentification :
+ Veuillez indiquer le nom de l'espace client du serveur d'authentification.
+Description-it.UTF-8: Nome del locatario («tenant») per il server di autenticazione:
+ Inserire il nome del locatario («tenant») per il server di autenticazione.
+Description-nl.UTF-8: Naam van de clientruimte (tenant) op de authenticatieserver:
+ Gelieve de naam van de clientruimte (tenant) op de authenticatieserver op te geven.
+Description-pt.UTF-8: Nome "tenant" do servidor de autenticação:
+ Por favor especifique o nome "tenant" do servidor de autenticação.
+Description-pt_BR.UTF-8: Nome de locatário ("tenant") do servidor de autenticação:
+ Por favor, especifique o nome de locatário ("tenant") do servidor de autenticação.
+Description-ru.UTF-8: Членское имя сервера аутентификации:
+ Укажите членское (tenant) имя сервера аутентификации.
+Description-sv.UTF-8: Namn för "tenant" (administratör) på identifieringsservern:
+ Ange "tenant"-namn för identifieringsservern. ("Tenant" är ungefär översättningsbart till "administratör").
+
+Template: mistral/admin-user
+Type: string
+Default: admin
+Description: Authentication server username:
+ Please specify the username to use with the authentication server.
+Description-da.UTF-8: Brugernavn for godkendelsesserver:
+ Angiv venligst brugernavnet der skal bruges med godkendelsesserveren.
+Description-de.UTF-8: Benutzername des Authentifizierungsservers:
+ Bitte geben Sie den Benutzernamen an, der für den Authentifizierungsserver benutzt wird.
+Description-es.UTF-8: Nombre de usuario del servidor de autenticación:
+ Indique el nombre de usuario para usar con el servidor de autenticación.
+Description-fr.UTF-8: Nom d'utilisateur pour le serveur d'authentification :
+ Veuillez indiquer le nom d'utilisateur à utiliser sur le serveur d'authentification.
+Description-it.UTF-8: Nome utente per il server di autenticazione:
+ Inserire il nome utente da usare con il server di autenticazione.
+Description-nl.UTF-8: Gebruikersnaam op de authenticatieserver:
+ Gelieve de gebruikersnaam te vermelden die op de authenticatieserver gebruikt zal worden.
+Description-pt.UTF-8: Nome de utilizador do servidor de autenticação:
+ Por favor especifique o nome de utilizador a usar com o servidor de autenticação.
+Description-pt_BR.UTF-8: Nome de usuário do servidor de autenticação:
+ Por favor, especifique o nome de usuário para usar com o servidor de autenticação.
+Description-ru.UTF-8: Имя пользователя для сервера аутентификации:
+ Введите имя пользователя для работы с сервером аутентификации.
+Description-sv.UTF-8: Användarnamn på identifieringsservern:
+ Ange användarnamnet som ska användas för att komma åt identifieringsservern.
+
+Template: mistral/admin-password
+Type: password
+Description: Authentication server password:
+ Please specify the password to use with the authentication server.
+Description-da.UTF-8: Adgangskode for godkendelsesserver:
+ Angiv venligst adgangskoden der skal bruges med godkendelsesserveren.
+Description-de.UTF-8: Passwort des Authentifizierungsservers:
+ Bitte geben Sie das Passwort an, der für den Authentifizierungsserver benutzt wird.
+Description-es.UTF-8: Contraseña del servidor de autenticación:
+ Indique la contraseña para usar con del servidor de autenticación.
+Description-fr.UTF-8: Mot de passe pour le serveur d'authentification :
+ Veuillez indiquer le mot de passe à utiliser sur le serveur d'authentification.
+Description-it.UTF-8: Password per il server di autenticazione:
+ Inserire la password da usare con il server di autenticazione.
+Description-nl.UTF-8: Wachtwoord op de authenticatieserver:
+ Gelieve het wachtwoord te vermelden dat op de authenticatieserver gebruikt zal worden.
+Description-pt.UTF-8: Palavra passe do servidor de autenticação:
+ Por favor especifique a palavra passe a usar com o servidor de autenticação.
+Description-pt_BR.UTF-8: Senha do servidor de autenticação:
+ Por favor, especifique a senha para usar com o servidor de autenticação.
+Description-ru.UTF-8: Пароль для сервера аутентификации:
+ Введите пароль для работы с сервером аутентификации.
+Description-sv.UTF-8: Lösenord på identifieringsservern:
+ Ange lösenordet som ska användas för att komma åt identifieringsservern.
+
+Template: mistral/rabbit_host
+Type: string
+Default: localhost
+Description: IP address of your RabbitMQ host:
+ In order to interoperate with other components of OpenStack, this package
+ needs to connect to a central RabbitMQ server.
+ .
+ Please specify the IP address of that server.
+Description-da.UTF-8: IP-adresse for din RabbitMQ-vært:
+ Denne pakke skal forbinde til en central RabbitMQ-server, for at fungere med andre komponenter i OpenStack.
+ .
+ Angiv venligst IP-adressen for denne server.
+Description-de.UTF-8: IP-Adresse Ihres RabbitMQ-Rechners:
+ Um mit weiteren Bestandteilen von OpenStack zusammenzuarbeiten, muss sich dieses Paket mit einem zentralen RabbitMQ-Server verbinden.
+ .
+ Bitte geben Sie die IP-Adresse dieses Servers an.
+Description-es.UTF-8: Dirección IP del equipo RabbitMQ:
+ Para poder interoperar con otros componentes de OpenStack, este paquete necesita conectarse a un servidor central de RabbitMQ.
+ .
+ Especifique la dirección IP de ese servidor.
+Description-fr.UTF-8: Adresse IP de l'hôte RabbitMQ :
+ Afin de pouvoir interagir avec d'autres composants d'OpenStack, ce paquet doit se connecter à un serveur centralisé RabbitMQ.
+ .
+ Veuillez indiquer l'adresse IP de ce serveur.
+Description-it.UTF-8: Indirizzo IP dell'host RabbitMQ:
+ Per poter funzionare insieme agli altri componenti di OpenStack, questo pacchetto deve connettersi al server RabbitMQ centrale.
+ .
+ Inserire l'indirizzo IP di tale server.
+Description-nl.UTF-8: IP-adres van uw RabbitMQ-computer:
+ Om met andere componenten van OpenStack samen te werken, moet dit pakket een verbinding maken met een centrale RabbitMQ-server.
+ .
+ Gelieve het IP-adres van die server op te geven.
+Description-pt.UTF-8: Endereço IP da sua máquina RabbitMQ:
+ De modo a interagir com outros componentes do OpenStack, este pacote precisa de ligar a um servidor RabbitMQ central.
+ .
+ Por favor especifique o endereço IP desse servidor.
+Description-pt_BR.UTF-8: Endereço IP da sua máquina RabbitMQ:
+ Para interoperar com outros componentes do OpenStack, esse pacote precisa conectar a um servidor RabbitMQ central.
+ .
+ Por favor, especifique o endereço IP de tal servidor.
+Description-ru.UTF-8: IP-адрес узла RabbitMQ:
+ Для взаимодействия с другими компонентами OpenStack, этому пакету необходимо подключаться к центральному серверу RabbitMQ.
+ .
+ Укажите IP-адрес этого сервера.
+Description-sv.UTF-8: IP-adress för din RabbitMQ-värd:
+ För att interagera med andra Openstack-komponenter behöver detta paketet kunna ansluta till en central RabbitMQ-server.
+ .
+ Ange IP-adressen för den servern.
+
+Template: mistral/rabbit_userid
+Type: string
+Default: guest
+Description: Username for connection to the RabbitMQ server:
+ In order to interoperate with other components of OpenStack, this package
+ needs to connect to a central RabbitMQ server.
+ .
+ Please specify the username used to connect to the RabbitMQ server.
+Description-da.UTF-8: Brugernavn for forbindelse til RabbitMQ-serveren:
+ Denne pakke skal forbinde til en central RabbitMQ-server, for at fungere med andre komponenter i OpenStack.
+ .
+ Angiv venligst brugernavnet brugt til at forbinde med RabbitMQ-serveren.
+Description-de.UTF-8: Benutzername für die Verbindung mit dem RabbitMQ-Server:
+ Um mit weiteren Bestandteilen von OpenStack zusammenzuarbeiten, muss sich dieses Paket mit einem zentralen RabbitMQ-Server verbinden.
+ .
+ Bitte geben Sie den Benutzernamen ein, den Sie zum Verbinden mit dem RabbitMQ-Server verwenden.
+Description-es.UTF-8: Nombre de usuario para la conexión del servidor RabbitMQ:
+ Para poder interoperar con otros componentes de OpenStack, este paquete necesita conectarse a un servidor central de RabbitMQ.
+ .
+ Indique el nombre de usuario para conectarse al servidor RabbitMQ.
+Description-fr.UTF-8: Nom d'utilisateur pour la connexion au serveur RabbitMQ : 
+ Afin de pouvoir interagir avec d'autres composants d'OpenStack, ce paquet doit se connecter à un serveur centralisé RabbitMQ.
+ .
+ Veuillez indiquer le nom d'utilisateur à utiliser pour se connecter au serveur RabbitMQ.
+Description-it.UTF-8: Nome utente per la connessione al server RabbitMQ:
+ Per poter funzionare insieme agli altri componenti di OpenStack, questo pacchetto deve connettersi al server RabbitMQ centrale.
+ .
+ Specificare il nome utente da usare per connettersi al server RabbitMQ.
+Description-nl.UTF-8: Gebruikersnaam voor de verbinding met de RabbitMQ-server:
+ Om met andere componenten van OpenStack samen te werken, moet dit pakket een verbinding maken met een centrale RabbitMQ-server.
+ .
+ Gelieve de gebruikersnaam te vermelden waarmee verbinding gemaakt wordt met de RabbitMQ-server.
+Description-pt.UTF-8: Nome de utilizador para ligação ao servidor RabbitMQ:
+ De modo a interagir com outros componentes do OpenStack, este pacote precisa de ligar a um servidor RabbitMQ central.
+ .
+ Por favor especifique o nome de utilizador a usar para ligação ao servidor RabbitMQ.
+Description-pt_BR.UTF-8: Nome de usuário para conexão ao servidor RabbitMQ:
+ Para interoperar com outros componentes do OpenStack, esse pacote precisa conectar a um servidor RabbitMQ central.
+ .
+ Por favor, especifique o nome de usuário usado para conectar ao servidor RabbitMQ.
+Description-ru.UTF-8: Имя пользователя для подключения к серверу RabbitMQ:
+ Для взаимодействия с другими компонентами OpenStack, этому пакету необходимо подключаться к центральному серверу RabbitMQ.
+ .
+ Введите имя пользователя для подключения к серверу RabbitMQ.
+Description-sv.UTF-8: Användarnamn för att ansluta till RabbitMQ-servern:
+ För att interagera med andra Openstack-komponenter behöver detta paketet kunna ansluta till en central RabbitMQ-server.
+ .
+ Ange användarnamnet som ska användas för att ansluta till RabbitMQ-servern:
+
+Template: mistral/rabbit_password
+Type: password
+Description: Password for connection to the RabbitMQ server:
+ In order to interoperate with other components of OpenStack, this package
+ needs to connect to a central RabbitMQ server.
+ .
+ Please specify the password used to connect to the RabbitMQ server.
+Description-da.UTF-8: Adgangskode for forbindelsen med RAbbitMQ-serveren:
+ Denne pakke skal forbinde til en central RabbitMQ-server, for at fungere med andre komponenter i OpenStack.
+ .
+ Angiv venligst adgangskoden brugt til at forbinde med RabbitMQ-serveren.
+Description-de.UTF-8: Passwort für die Verbindung mit dem RabbitMQ-Server:
+ Um mit weiteren Bestandteilen von OpenStack zusammenzuarbeiten, muss sich dieses Paket mit einem zentralen RabbitMQ-Server verbinden.
+ .
+ Bitte geben Sie das Passwort ein, das Sie zum Verbinden mit dem RabbitMQ-Server verwenden.
+Description-es.UTF-8: Contraseña para la conexión del servidor RabbitMQ:
+ Para poder interoperar con otros componentes de OpenStack, este paquete necesita conectarse a un servidor central de RabbitMQ.
+ .
+ Indique la contraseña para conectarse al servidor RabbitMQ.
+Description-fr.UTF-8: Mot de passe pour la connexion au serveur RabbitMQ : 
+ Afin de pouvoir interagir avec d'autres composants d'OpenStack, ce paquet doit se connecter à un serveur centralisé RabbitMQ.
+ .
+ Veuillez indiquer le mot de passe à utiliser pour se connecter au serveur RabbitMQ.
+Description-it.UTF-8: Password per la connessione al server RabbitMQ:
+ Per poter funzionare insieme agli altri componenti di OpenStack, questo pacchetto deve connettersi al server RabbitMQ centrale.
+ .
+ Specificare la password da usare per connettersi al server RabbitMQ.
+Description-nl.UTF-8: Wachtwoord voor de verbinding met de RabbitMQ-server:
+ Om met andere componenten van OpenStack samen te werken, moet dit pakket een verbinding maken met een centrale RabbitMQ-server.
+ .
+ Gelieve het wachtwoord op te geven dat gebruikt wordt om verbinding te maken met de RabbitMQ-server.
+Description-pt.UTF-8: Palavra passe para ligação ao servidor RabbitMQ:
+ De modo a interagir com outros componentes do OpenStack, este pacote precisa de ligar a um servidor RabbitMQ central.
+ .
+ Por favor especifique a palavra passe a usar para ligação ao servidor RabbitMQ.
+Description-pt_BR.UTF-8: Senha para conexão com o servidor RabbitMQ:
+ Para interoperar com outros componentes do OpenStack, esse pacote precisa conectar a um servidor RabbitMQ central.
+ .
+ Por favor, especifique a senha usada para conectar ao servidor RabbitMQ.
+Description-ru.UTF-8: Пароль для подключения к серверу RabbitMQ:
+ Для взаимодействия с другими компонентами OpenStack, этому пакету необходимо подключаться к центральному серверу RabbitMQ.
+ .
+ Введите пароль для подключения к серверу RabbitMQ.
+Description-sv.UTF-8: Lösenord för att ansluta till RabbitMQ-servern:
+ För att interagera med andra Openstack-komponenter behöver detta paketet kunna ansluta till en central RabbitMQ-server.
+ .
+ Lösenord för att ansluta till RabbitMQ-servern:

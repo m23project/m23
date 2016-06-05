@@ -1,0 +1,48 @@
+Template: med-config/group
+Type: multiselect
+Choices: ${users}
+Description: Debian Med users:
+ Please select, among the whole system user list, users who should get
+ a Debian Med user menu.
+Description-ca.UTF-8: Usuaris de Debian Med:
+ Si us plau seleccioneu, de la llista de tots els usuaris del sistema, aquells usuaris que han d'obtenir un menú d'usuari de Debian Med.
+Description-de.UTF-8: Debian Med Nutzer:
+ Bitte wählen Sie aus der Liste aller Nutzer des Systems diejenigen aus, die ein Debian Med Nutzermenü erhalten sollen.
+Description-fr.UTF-8: Utilisateurs de Debian Med :
+ Veuillez choisir parmi tous les utilisateurs du système ceux qui auront un menu Debian Med.
+Description-pt_BR.UTF-8: Usuários Debian Med : 
+ Por favor, selecione dentre a lista de usuários de todo o sistema os usuários que devem obter um menu de usuário do Debian Med.
+
+Template: shared/med-config/usermenus
+Type: select
+Choices: Each package installation, End of installation, Never
+Choices-ca.UTF-8: En cada instal·lació d'un paquet, Al final de la instal·lació, Mai
+Choices-de.UTF-8: Paketinstallation, Installationsende, Nie
+Choices-fr.UTF-8: À chaque installation de paquet, À la fin de l'installation, Jamais
+Choices-pt_BR.UTF-8: A cada instalação de pacote, Ao final da instalação, Nunca
+Default: never
+Description: Build user menus at:
+ The metapackages of the Debian Med Debian Pure Blend
+ contain extra menus that will be auto generated from existing packages.
+ If the role based user menu option was choosen these menus will be built
+ when a user who is registered to a given role uses the "update-menus"
+ utility.  This can be done automatically for all users who are registered
+ for Debian Med after installation of each single metapackage,
+ at the end of the whole installation process to save time in case
+ of installing more than one metapackage or just leave the call of
+ "update-menus" to the users themselves.
+  * Each package installation : Call "update-menus" after each metapackage
+                               (time consuming);
+  * End of installation       : Call "update-menus" only once at the end of
+                                the whole installation/upgrading process;
+  * Never                     : Do not call "update-menus" at all.
+
+Template: shared/med-config/useusermenus
+Type: boolean
+Description: Do you want user menus?
+ The menus for the Debian Med Debian Pure Blend could be
+ implemented as user menus which means they are visible only for those
+ users that will be selected explicitely.  Be warned that selecting
+ the users from a large list does not scale very well so it makes no
+ real sense to activate this feature if there are more than 50 users
+ on this machine.

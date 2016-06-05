@@ -1,0 +1,498 @@
+Template: collectd/migration-3-4
+Type: note
+Description: Layout of RRD files has changed
+ The layout of the RRD files created by collectd has changed significantly
+ since version 3.x. In order to keep your old data you have to migrate it.
+ This can be done by using /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ This step requires both the perl and the rrdtool packages to be installed,
+ which is currently not the case. You need to perform the migration manually.
+ .
+ See /usr/share/doc/collectd-core/NEWS.Debian.gz for details.
+Description-cs.UTF-8: Uspořádání souborů RRD se změnilo
+ Ve struktuře souborů RRD vytvořených collectd počínaje verzí 3.x došlo k výrazné změně. Pro uchování vašich dat je nutná jejich migrace. Tu můžete provést pomocí /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Tento krok vyžaduje instalaci balíčku perl a rrdtool, což nyní nemáte. Migraci je tedy nutné provést ručně.
+ .
+ Pro více informací se podívejte na /usr/share/doc/collectd-core/NEWS.Debian.gz.
+Description-da.UTF-8: Layout for RRD-filer har ændret sig
+ Layouttet for RRD-filer oprettet af collectd har ændret sig markant siden version 3.x. For at bevare dine gamle data skal du migrere dem. Dette kan gøres ved at bruge /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Dette trin kræver at pakkerne perl og rrdtool installeres, hvilket ikke er tilfældet i øjeblikket. Du skal udføre migreringen manuelt.
+ .
+ Se /usr/share/doc/collectd-core/NEWS.Debian.gz for detaljer.
+Description-de.UTF-8: Das Layout der RRD-Dateien hat sich geändert.
+ Das Layout der von collectd erstellten RRD-Dateien hat sich seit Version 3.x grundlegend geändert. Um Ihre alten Daten beizubehalten, müssen Sie diese migrieren. Dies kann durch Verwendung von »/usr/lib/collectd/utils/migrate-3-4.px« erreicht werden.
+ .
+ Für diesen Schritt müssen sowohl das perl- als auch das rrdtool-Paket installiert sein. Da dies im Moment nicht der Fall ist, müssen Sie die Migration manuell durchführen.
+ .
+ Siehe »/usr/share/doc/collectd-core/NEWS.Debian.gz« für Details.
+Description-es.UTF-8: La distribución de los archivos RRD ha cambiado
+ La distribución de los archivos RRD creados por collectd ha cambiado significativamente desde la versión 3.x. Los datos antiguos se deben migrar para que se puedan seguir utilizando. Puede hacer esto ejecutando el programa «/usr/lib/collectd/utils/migrate-3-4.px».
+ .
+ Actualmente no tiene instalados los paquetes perl y rrdtool, que son necesarios para poder llevar a cabo este paso. Tendrá que realizar la migración manualmente.
+ .
+ Vea el archivo «/usr/share/doc/collectd-core/NEWS.Debian.gz» para más detalles.
+Description-fr.UTF-8: Changement du format des fichiers RRD
+ Le format des fichiers RRD créés par collectd a changé de façon significative depuis la version 3.x. Afin de conserver les données, il est nécessaire de les convertir. Cette opération peut être réalisée avec la commande « /usr/lib/collectd/utils/migrate-3-4.px ».
+ .
+ Cette étape a besoin des paquets perl et rrdtool qui ne sont pas actuellement installés. La conversion doit par conséquent être effectuée manuellement.
+ .
+ Veuillez lire le fichier « /usr/share/doc/collectd-core/NEWS.Debian.gz » pour plus d'informations.
+Description-gl.UTF-8: A organización dos ficheiros RRD cambiou
+ A organización dos ficheiros RRD creados por collectd cambiou significativamente desde a versión 3.x. Para conservar os seus datos antigos ten que migralos. Pódese facer empregando /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Este paso precisa de que os paquetes perl e rrd estean instalados, o que actualmente non é o caso. Ten que realizar a migración manualmente.
+ .
+ Consulte /usr/share/doc/collectd-core/NEWS.Debian.gz para máis detalles.
+Description-it.UTF-8: Il formato dei file RRD è cambiato
+ Il formato dei file RRD creati da collectd è cambiato in modo significativo rispetto alla versione 3.x. Per poter mantenere i propri vecchi dati è necessario fare una migrazione. Ciò può essere fatto usando /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Per questo passo è necessario che i pacchetti perl e rrdtool siano entrambi installati, condizione attualmente non soddisfatta. È necessario effettuare la migrazione a mano.
+ .
+ Per i dettagli vedere /usr/share/doc/collectd-core/NEWS.Debian.gz.
+Description-ja.UTF-8: RRD ファイルの配置位置が変更されました
+ collectd によって作成された RRD ファイルの配置位置はバージョン 3.x から大きく変わりました。移行を行うために古いデータを保存します。これは /usr/lib/collectd/utils/migrate-3-4.px を使って行われます。
+ .
+ この作業には perl パッケージと rrdtool パッケージの両方がインストールされている必要がありますが、現在そうなっていないようです。手動で移行作業を実行する必要があります。
+ .
+ 詳細については /usr/share/doc/collectd-core/NEWS.Debian.gz を参照してください。
+Description-nl.UTF-8: De lay-out van RRD-bestanden is gewijzigd.
+ De lay-out van de RRD-bestanden, die zijn gemaakt door collectd, is sterk gewijzigd sinds versie 3.x. Om uw oude gegevens te behouden zult u deze moeten migreren. Dit kunt u doen door /usr/lib/collectd/utils/migrate-3-4.px te gebruiken.
+ .
+ Deze stap vereist dat zowel de perl als de rrdtool pakketten worden genstalleerd, wat op dit moment niet het geval is. U zult de migratie handmatig moeten verrichten.
+ .
+ Zie /usr/share/doc/collectd-core/NEWS.Debian.gz voor meer informatie.
+Description-pl.UTF-8: Składnia plików RRD zmieniła się
+ Układ plików RRD tworzonych przez collectd znacznie się zmienił od wersji 3.x. Aby zatrzymać stare dane, należy je przekształcić np. za pomocą /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Ten krok wymaga zainstalowania pakietów perl i rrdtool, co aktualnie nie ma miejsca. Konieczne jest ręczne przeprowadzenie migracji.
+ .
+ Plik /usr/share/doc/collectd-core/NEWS.Debian.gz zawiera więcej szczegółów.
+Description-pt.UTF-8: A disposição dos ficheiros RRD foi alterada
+ A disposição dos ficheiros RRD criada pelo collectd foi alterada significativamente desde a versão 3.x. De forma a manter os seus dados antigos você terá que migrá-los. Isto pode ser feito usando /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Este passo necessita que ambos os pacotes perl e rrdtool estejam instalados, o que não é actualmente o caso. Você precisa executar manualmente a migração.
+ .
+ Veja /usr/share/doc/collectd-core/NEWS.Debian.gz para mais detalhes.
+Description-pt_BR.UTF-8: O layout dos arquivos RRD foi alterado
+ O layout dos arquivos RRD criados pelo collectd foi alterado significativamente desde a versão 3.x. Para manter seus dados antigos você deve migrá-los. Isso pode ser feito usando /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Esse passo requer que ambos os pacotes perl e rrdtool estejam instalados, o que não é o caso atualmente. Você deve fazer a migração manualmente.
+ .
+ Veja /usr/share/doc/collectd-core/NEWS.Debian.gz para detalhes.
+Description-ru.UTF-8: Изменилось расположение файлов RRD
+ Начиная с версий 3.x изменилось расположение файлов RRD, создаваемых collectd. Чтобы сохранить старые данные, вы должны их переместить. Это можно сделать с помощью /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Для этого должны быть установлены пакеты perl и rrdtool, которых, похоже, нет в системе. Вам нужно выполнить перенос вручную.
+ .
+ Подробности см. в /usr/share/doc/collectd-core/NEWS.Debian.gz.
+Description-sk.UTF-8: Rozloženie súborov RRD sa zmenilo
+ Rozloženie súborov RRD, ktoré vytvára collectd sa výrazne zmenilo od verzie 3.x. Ak si chcete zachovať vaše staré dára, musíte ich migrovať. To je možné pomocou /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Tento krok vyžaduje, aby boli nainštalované balíky perl a rrdtool. Momentálne nie sú. Migráciu musíte vykonať ručne.
+ .
+ Pozri podrobnosti v /usr/share/doc/collectd-core/NEWS.Debian.gz
+Description-sv.UTF-8: Strukturen för RRD-filen har ändrats.
+ Strukturen för RRD-filen som collectd skapar har ändrats mycket sedan version 3.x. För att behålla dina gamla data måste dessa migreras, detta kan göras genom att köra '/usr/lib/collectd/utils/migrate-3-4.px'.
+ .
+ Detta steg kräver att både perl och rrdtool är installerade och så är inte fallet just nu. Du måste genomföra migreringen manuellt.
+ .
+ Läs även /usr/share/doc/collectd-core/NEWS.Debian.gz för ytterligare information.
+Description-vi.UTF-8: Bố trí tập tin RRD đã thay đổi
+ Bố trí của tập tin RRD được collectd thu thập đã thay đổi nhiều kể từ phiên bản 3.x. Muốn giữ lại dữ liệu cũ thì bạn cần phải nâng cấp, dùng « /usr/lib/collectd/utils/migrate-3-4.px ».
+ .
+ Bước này yêu cầu cài đặt cả hai gói perl và gói rrdtool mà chưa. Bạn cần phải tự làm quá trình nâng cấp này.
+ .
+ Xem tài liệu Tin Tức « /usr/share/doc/collectd-core/NEWS.Debian.gz » để tìm chi tiết.
+
+Template: collectd/auto-migrate-3-4
+Type: boolean
+Default: false
+Description: Automatically try to migrate your RRD files?
+ The layout of the RRD files created by collectd has changed significantly
+ since version 3.x. In order to keep your old data you have to migrate it.
+ This can be done by using /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ This step can be done automatically. In this case a backup of
+ /var/lib/collectd/ is made in /var/backups/. This script is still
+ experimental, though. Do not expect it to work in all cases.
+ .
+ See /usr/share/doc/collectd-core/NEWS.Debian.gz for details.
+Description-cs.UTF-8: Pokusit se o automatickou migraci souborů RRD?
+ Ve struktuře souborů RRD vytvořených collectd počínaje verzí 3.x došlo k výrazné změně. Pro uchování vašich dat je nutná jejich migrace. Tu můžete provést pomocí /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Tento krok je možno provést automaticky. Pokud se pro to rozhodnete, bude ve /var/backups/ provedena záloha /var/lib/collectd. Tento skript je stále ve stavu testování, takže nečekejte že bude ve všech případech zcela funkční.
+ .
+ Pro více informací se podívejte na /usr/share/doc/collectd-core/NEWS.Debian.gz.
+Description-da.UTF-8: Forsøg automatisk at migrere dine RRD-filer?
+ Layouttet for RRD-filer oprettet af collectd har ændret sig markant siden version 3.x. For at bevare dine gamle data skal du migrere dem. Dette kan gøres ved at bruge /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Dette trin kan udføres automatisk. I dette tilfælde laves en sikkerhedskopi af /var/lib/collectd/ i /var/backups/. Dette skript er dog stadig under udvikling. Forvent ikke at det virker i alle tilfælde.
+ .
+ Se /usr/share/doc/collectd-core/NEWS.Debian.gz for detaljer.
+Description-de.UTF-8: Soll automatisch versucht werden, Ihre RRD-Dateien zu migrieren?
+ Das Layout der von collectd erstellten RRD-Dateien hat sich seit Version 3.x grundlegend geändert. Um Ihre alten Daten beizubehalten, müssen Sie diese migrieren. Dies kann durch Verwendung von »/usr/lib/collectd/utils/migrate-3-4.px« erreicht werden.
+ .
+ Dieser Schritt kann automatisch ausgeführt werden. Sollten Sie sich hierfür entscheiden, wird eine Sicherungskopie von »/var/lib/collectd/« unter »/var/backups/« erstellt. Dieses Skript ist aber noch experimentell. Erwarten Sie nicht, dass es in allen Fällen problemlos funktioniert.
+ .
+ Siehe »/usr/share/doc/collectd-core/NEWS.Debian.gz« für Details.
+Description-es.UTF-8: ¿Desea migrar automáticamente los archivos RRD?
+ La distribución de los archivos RRD creados por collectd ha cambiado significativamente desde la versión 3.x. Los datos antiguos se deben migrar para que se puedan seguir utilizando. Puede hacer esto ejecutando el programa «/usr/lib/collectd/utils/migrate-3-4.px».
+ .
+ Este paso se puede realizar automáticamente. En este caso se genera una copia de seguridad de «/var/lib/collectd/» en «/var/backups/». El script que hace esto es aún experimental. No se espera que funcione en todos los casos.
+ .
+ Vea el archivo «/usr/share/doc/collectd-core/NEWS.Debian.gz» para más detalles.
+Description-fr.UTF-8: Faut-il tenter de convertir automatiquement les fichiers RRD ?
+ Le format des fichiers RRD créés par collectd a changé de façon significative depuis la version 3.x. Afin de conserver les données, il est nécessaire de les convertir. Cette opération peut être réalisée avec la commande « /usr/lib/collectd/utils/migrate-3-4.px ».
+ .
+ La conversion des fichiers RRD peut être effectuée automatiquement. Pour cela, une sauvegarde du répertoire « /var/lib/collectd/ » aura lieu dans le répertoire « /var/backups/ ». Veuillez noter que cette conversion est expérimentale ; ne vous attendez pas à ce qu'elle fonctionne dans tous les cas.
+ .
+ Veuillez lire le fichier « /usr/share/doc/collectd-core/NEWS.Debian.gz » pour plus d'informations.
+Description-gl.UTF-8: Quere migrar automaticamente os seus ficheiros RRD?
+ A organización dos ficheiros RRD creados por collectd cambiou significativamente desde a versión 3.x. Para conservar os seus datos antigos ten que migralos. Pódese facer empregando /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Este paso pódese realizar automaticamente. Neste caso faise unha copia de /var/lib/collectd/ en /var/backups/. Este script aínda é experimental, porén. Non espere que funcione en tódolos casos.
+ .
+ Consulte /usr/share/doc/collectd-core/NEWS.Debian.gz para máis detalles.
+Description-it.UTF-8: Cercare di migrare automaticamente i file RRD?
+ Il formato dei file RRD creati da collectd è cambiato in modo significativo rispetto alla versione 3.x. Per poter mantenere i propri vecchi dati è necessario fare una migrazione. Ciò può essere fatto usando /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Questo passo può essere fatto automaticamente. In tal caso viene creato un backup di /var/lib/collectd/ in /var/backups/. Questo script però è ancora in fase sperimentale; non ci si aspetti che funzioni in tutti i casi.
+ .
+ Per i dettagli vedere /usr/share/doc/collectd-core/NEWS.Debian.gz.
+Description-ja.UTF-8: RRD ファイルの自動変換を試みますか?
+ collectd によって作成された RRD ファイルの配置位置はバージョン 3.x から大きく変わりました。移行を行うために古いデータを保存します。これは /usr/lib/collectd/utils/migrate-3-4.px を使って行われます。
+ .
+ この作業は自動的に行われます。今回の場合 /var/lib/collectd/ のバックアップは /var/backups/ に作成されます。しかし、このスクリプトはまだ実験的なものです。あらゆる状況で動作するのは期待しないでください。
+ .
+ 詳細については /usr/share/doc/collectd-core/NEWS.Debian.gz を参照してください。
+Description-nl.UTF-8: Proberen om uw RRD-bestanden automatisch te migreren?
+ De lay-out van de RRD-bestanden, die zijn gemaakt door collectd, is sterk gewijzigd sinds versie 3.x. Om uw oude gegevens te behouden zult u deze moeten migreren. Dit kunt u doen door /usr/lib/collectd/utils/migrate-3-4.px te gebruiken.
+ .
+ Deze stap kan automatisch verricht worden. In dat geval wordt er in /var/backups/ een back-up gemaakt van /var/lib/collectd/. Dit script is echter nog experimenteel. Verwacht u niet dat het in alle gevallen werkt.
+ .
+ Zie /usr/share/doc/collectd-core/NEWS.Debian.gz voor meer informatie.
+Description-pl.UTF-8: Spróbować przekształcić pliki RRD automatycznie?
+ Układ plików RRD tworzonych przez collectd znacznie się zmienił od wersji 3.x. Aby zatrzymać stare dane, należy je przekształcić np. za pomocą /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Ten krok może zostać przeprowadzony automatycznie. Kopia zapasowa /var/lib/collectd/ zostanie utworzona w /var/backups/. Skrypt jest jednak wciąż eksperymentalny. Proszę nie oczekiwać, że będzie działał we wszystkich przypadkach.
+ .
+ Plik /usr/share/doc/collectd-core/NEWS.Debian.gz zawiera więcej szczegółów.
+Description-pt.UTF-8: Tentar migrar automaticamente os seus ficheiros RRD?
+ A disposição dos ficheiros RRD criada pelo collectd foi alterada significativamente desde a versão 3.x. De forma a manter os seus dados antigos você terá que migrá-los. Isto pode ser feito usando /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Este passo pode ser feito automaticamente. Neste caso uma cópia de segurança de /var/lib/collectd/ é criada em /var/backups/. Este script ainda é experimental. Não espere que ele funcione em todos os casos.
+ .
+ Veja /usr/share/doc/collectd-core/NEWS.Debian.gz para mais detalhes.
+Description-pt_BR.UTF-8: Tentar migrar seus arquivos RRD automaticamente?
+ O layout dos arquivos RRD criados pelo collectd foi alterado significativamente desde a versão 3.x. Para manter seus dados antigos você deve migrá-los. Isso pode ser feito usando /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Esse passo pode ser feito automaticamente. Nesse caso, uma cópia de segurança de /var/lib/collectd/ é feita em /var/backups/. Entretanto, esse script ainda é experimental. Não espere que ele funcione para todos os casos.
+ .
+ Veja /usr/share/doc/collectd-core/NEWS.Debian.gz para detalhes.
+Description-ru.UTF-8: Попытаться выполнить перенос файлов RRD автоматически?
+ Начиная с версий 3.x изменилось расположение файлов RRD, создаваемых collectd. Чтобы сохранить старые данные, вы должны их переместить. Это можно сделать с помощью /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Этот шаг может быть выполнен автоматически. В этом случае создаётся резервная копия /var/lib/collectd/ в /var/backups/. Учтите, что это пока экспериментальный сценарий. Возможно, он не сработает в вашем случае.
+ .
+ Подробности см. в /usr/share/doc/collectd-core/NEWS.Debian.gz.
+Description-sk.UTF-8: Pokúsiť sa automaticky migrovať vaše súbory RRD?
+ Rozloženie súborov RRD, ktoré vytvára collectd sa výrazne zmenilo od verzie 3.x. Ak si chcete zachovať vaše staré dára, musíte ich migrovať. To je možné pomocou /usr/lib/collectd/utils/migrate-3-4.px.
+ .
+ Tento krok je možné vykonať automaticky. V tomto prípade sa vykoná záloha /var/lib/collectd/ do /var/backups/. Tenti skript je však ešte stále experimentálny. Neočakávajte, že bude fungovať vo všetkých prípadoch.
+ .
+ Pozri podrobnosti v /usr/share/doc/collectd-core/NEWS.Debian.gz
+Description-sv.UTF-8: Vill du försöka migrera RRD-filerna automatiskt?
+ Strukturen för RRD-filen som collectd skapar har ändrats mycket sedan version 3.x. För att behålla dina gamla data måste dessa migreras, detta kan göras genom att köra '/usr/lib/collectd/utils/migrate-3-4.px'.
+ .
+ Detta steg kan genomföras automatiskt, då kommer en säkerhetskopia av /var/lib/collectd i /var/backups. Detta skript är dock fortfarande inte helt uttestat, det kan finnas tillfällen när det inte fungerar.
+ .
+ Läs även /usr/share/doc/collectd-core/NEWS.Debian.gz för ytterligare information.
+Description-vi.UTF-8: Tự động thử nâng cấp các tập tin RRD của bạn ?
+ Bố trí của tập tin RRD được collectd thu thập đã thay đổi nhiều kể từ phiên bản 3.x. Muốn giữ lại dữ liệu cũ thì bạn cần phải nâng cấp, dùng « /usr/lib/collectd/utils/migrate-3-4.px ».
+ .
+ Bước này có thể được tự động làm. Trong trường hợp này, một bản sao của « /var/lib/collectd/ » được tạo trong thư mục « /var/backups/ ». Tuy nhiên, văn lệnh này vẫn còn dựa vào thí nghiệm. Không nên nhờ nó trong mọi trường hợp.
+ .
+ Xem tài liệu Tin Tức « /usr/share/doc/collectd-core/NEWS.Debian.gz » để tìm chi tiết.
+
+Template: collectd/migration-4-5
+Type: note
+Description: Layout of RRD files has changed in version 5.0
+ The layout of some RRD files created by collectd has changed since version
+ 4.x. In order to keep your old data you have to migrate it. This can be done
+ by using /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ This step requires both the perl and the rrdtool packages to be installed,
+ which is currently not the case. You need to perform the migration manually.
+ .
+ See /usr/share/doc/collectd-core/NEWS.Debian.gz and the collectd wiki at
+ <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> for details.
+Description-cs.UTF-8: Uspořádání souborů RRD se změnilo ve verzi 5.0
+ Struktura některých souborů RRD vytvořených collectd počínaje verzí 4.x byla změněna. Pro uchování vašich dat je nutná jejich migrace. Tu můžete provést pomocí /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Tento krok vyžaduje instalaci balíčku perl a rrdtool, což nyní nemáte. Migraci je tedy nutné provést ručně.
+ .
+ Pro více informací se podívejte do souboru /usr/share/doc/collectd-core/NEWS.Debian.gz a na wiki collectd na adrese <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>.
+Description-da.UTF-8: Layout for RRD-filer har ændret sig i version 5.0
+ Layouttet for RRD-filer oprettet af collectd har ændret sig markant siden version 4.x. For at bevare dine gamle data skal du migrere dem. Dette kan gøres ved at bruge /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Dette trin kræver at pakkerne perl og rrdtool installeres, hvilket ikke er tilfældet i øjeblikket. Du skal udføre migreringen manuelt.
+ .
+ Se /usr/share/doc/collectd-core/NEWS.Debian.gz og wikien for collectd på <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> for detaljer.
+Description-de.UTF-8: Das Layout der RRD-Dateien hat sich in Version 5.0 geändert.
+ Das Layout einiger von collectd erstellten RRD-Dateien hat sich seit Version 4.x grundlegend geändert. Um Ihre alten Daten beizubehalten, müssen Sie diese migrieren. Dies kann durch Verwendung von »/usr/lib/collectd/utils/migrate-4-5.px« erreicht werden.
+ .
+ Für diesen Schritt müssen sowohl das perl- als auch das rrdtool-Paket installiert sein. Da dies im Moment nicht der Fall ist, müssen Sie die Migration manuell durchführen.
+ .
+ Siehe »/usr/share/doc/collectd-core/NEWS.Debian.gz« und das collectd Wiki unter <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> für Details.
+Description-es.UTF-8: La distribución de los archivos RRD ha cambiado en la versión 5.0
+ La distribución de los archivos RRD creados por collectd ha cambiado desde la versión 4.x. Los datos antiguos se deben migrar para que se puedan seguir utilizando. Puede hacer esto utilizando el programa «/usr/lib/collectd/utils/migrate-4-5.px».
+ .
+ Actualmente no tiene instalados los paquetes perl y rrdtool, que son necesarios para poder llevar a cabo este paso. Tendrá que realizar la migración manualmente.
+ .
+ Para más detalles consulte «/usr/share/doc/collectd-core/NEWS.Debian.gz» y la página wiki de collectd en <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>.
+Description-fr.UTF-8: Le format des fichiers RRD a changé dans la version 5.0
+ Le format des fichiers RRD créés par collectd a changé depuis la version 4.x. Afin de conserver les données, il est nécessaire de les convertir. Cette opération peut être réalisée avec la commande « /usr/lib/collectd/utils/migrate-4-5.px ».
+ .
+ Cette étape a besoin des paquets perl et rrdtool qui ne sont pas actuellement installés. La conversion doit par conséquent être effectuée manuellement.
+ .
+ Voir /usr/share/doc/collectd-core/NEWS.Debian.gz et le wiki de collectd (<http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>) pour plus de détails.
+Description-gl.UTF-8: A organización dos ficheiros RRD cambiou na versión 5.0
+ A organización dos ficheiros RRD creados por collectd cambiou desde a versión 4.x. Para conservar os seus datos antigos ten que migralos. Pódese facer empregando /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Este paso precisa de que os paquetes perl e rrd estean instalados, o que actualmente non é o caso. Ten que realizar a migración manualmente.
+ .
+ Consulte o ficheiro /usr/share/doc/collectd-core/NEWS.Debian.gz e a wiki de collectd en <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> para obter máis detalles.
+Description-it.UTF-8: Il formato dei file RRD è cambiato nella versione 5.0
+ Il formato di alcuni file RRD creati da collectd è cambiato rispetto alla versione 4.x. Per poter mantenere i propri vecchi dati è necessario fare una migrazione. Ciò può essere fatto usando /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Per questo passo è necessario che i pacchetti perl e rrdtool siano entrambi installati, condizione attualmente non soddisfatta. È necessario effettuare la migrazione a mano.
+ .
+ Per i dettagli vedere /usr/share/doc/collectd-core/NEWS.Debian.gz e il wiki di collectd all'indirizzo <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>.
+Description-ja.UTF-8: バージョン 5.0 で RRD ファイルの配置位置が変更されました
+ collectd によって作成されるいくつかの RRD ファイルの配置がバージョン 4.x から変わりました。移行を行うために古いデータを保存します。これは /usr/lib/collectd/utils/migrate-4-5.px を使って行うことができます。
+ .
+ この作業には perl パッケージと rrdtool パッケージの両方がインストールされている必要がありますが、現在そうなっていないようです。手動で移行作業を実行する必要があります。
+ .
+ 詳細については /usr/share/doc/collectd-core/NEWS.Debian.gz 及び collectd wiki <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> を見てください。
+Description-nl.UTF-8: De lay-out van RRD-bestanden is gewijzigd in versie 5.0.
+ De lay-out van de RRD-bestanden, die zijn gemaakt door collectd, is gewijzigd sinds versie 4.x. Om uw oude gegevens te behouden zult u deze moeten migreren. Dit kunt u doen door /usr/lib/collectd/utils/migrate-4-5.px te gebruiken.
+ .
+ Deze stap vereist dat zowel de perl als de rrdtool pakketten worden genstalleerd, wat op dit moment niet het geval is. U zult de migratie handmatig moeten verrichten.
+ .
+ Zie /usr/share/doc/collectd-core/NEWS.Debian.gz en de wikipagina van collectd, <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>, voor meer informatie.
+Description-pl.UTF-8: Składnia plików RRD zmieniła się w wersji 5.0
+ Układ plików RRD tworzonych przez collectd znacznie się zmienił od wersji 4.x. Aby zatrzymać stare dane, należy je przekształcić np. za pomocą /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Ten krok wymaga zainstalowania pakietów perl i rrdtool, co aktualnie nie ma miejsca. Konieczne jest ręczne przeprowadzenie migracji.
+ .
+ Plik /usr/share/doc/collectd-core/NEWS.Debian.gz oraz wiki collectd <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> zawiera więcej informacji na ten temat.
+Description-pt.UTF-8: A disposição dos ficheiros RRD foi alterada na versão 5.0
+ A disposição de alguns ficheiros RRD criada pelo collectd foi alterada desde a versão 4.x. De modo a manter os seus dados antigos você terá que migrá-los. Isto pode ser feito usando /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Este passo necessita que ambos os pacotes perl e rrdtool estejam instalados, o que não é actualmente o caso. Você precisa executar manualmente a migração.
+ .
+ Veja /usr/share/doc/collectd-core/NEWS.Debian.gz e o wiki do collectd em <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> para mais detalhes.
+Description-pt_BR.UTF-8: O layout dos arquivos RRD foi alterado na versão 5.0
+ O layout dos arquivos RRD criados pelo collectd foi alterado desde a versão 4.x. Para manter seus dados antigos você deve migrá-los. Isso pode ser feito usando /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Esse passo requer que ambos os pacotes perl e rrdtool estejam instalados, o que não é o caso atualmente. Você deve fazer a migração manualmente.
+ .
+ Veja /usr/share/doc/collectd-core/NEWS.Debian.gz e o wiki do collectd em <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> para detalhes.
+Description-ru.UTF-8: В версии 5.0 изменилось расположение файлов RRD
+ Начиная с версий 4.x изменилось расположение файлов RRD, создаваемых collectd. Чтобы сохранить старые данные, вы должны их переместить. Это можно сделать с помощью /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Для этого должны быть установлены пакеты perl и rrdtool, которых, похоже, нет в системе. Вам нужно выполнить перенос вручную.
+ .
+ Дополнительную информацию можно найти в файле /usr/share/doc/collectd-core/NEWS.Debian.gz и вики collectd wiki по адресу <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>.
+Description-sk.UTF-8: Rozloženie súborov RRD sa vo verzii 5.0 zmenilo
+ Rozloženie súborov RRD, ktoré vytvára collectd sa výrazne zmenilo od verzie 4.x. Ak si chcete zachovať vaše staré dára, musíte ich migrovať. To je možné pomocou /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Tento krok vyžaduje, aby boli nainštalované balíky perl a rrdtool. Momentálne nie sú. Migráciu musíte vykonať ručne.
+ .
+ Pozri podrobnosti v /usr/share/doc/collectd-core/NEWS.Debian.gz a na wiki collectd na adrese <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>
+Description-sv.UTF-8: Strukturen för RRD-filerna har ändrats i version 5.0
+ Strukturen för RRD-filerna som collectd skapar har ändrats sedan version 4.x. För att behålla dina gamla data måste dessa migreras, detta kan göras genom att köra /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Detta steg kräver att både perl och rrdtool är installerade och så är inte fallet just nu. Du måste genomföra migreringen manuellt.
+ .
+ För mer information läs /usr/share/doc/collectd-core/NEWS.Debian.gz och collectd-wikin på <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>.
+
+Template: collectd/auto-migrate-4-5
+Type: boolean
+Default: false
+Description: Automatically try to migrate your RRD files?
+ The layout of some RRD files created by collectd has changed since version
+ 4.x. In order to keep your old data you have to migrate it. This can be done
+ by using /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ This step can be done automatically. In this case a backup of
+ /var/lib/collectd/ is made in /var/backups/. This script is still
+ experimental, though. Do not expect it to work in all cases.
+ .
+ See /usr/share/doc/collectd-core/NEWS.Debian.gz and the collectd wiki at
+ <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> for details.
+Description-cs.UTF-8: Pokusit se o automatickou migraci souborů RRD?
+ Struktura některých souborů RRD vytvořených collectd počínaje verzí 4.x byla změněna. Pro uchování vašich dat je nutná jejich migrace. Tu můžete provést pomocí /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Tento krok je možno provést automaticky. Pokud se pro to rozhodnete, bude ve /var/backups/ provedena záloha /var/lib/collectd. Tento skript je stále ve stavu testování, takže nečekejte že bude ve všech případech zcela funkční.
+ .
+ Pro více informací se podívejte do souboru /usr/share/doc/collectd-core/NEWS.Debian.gz a na wiki collectd na adrese <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>.
+Description-da.UTF-8: Forsøg automatisk at migrere dine RRD-filer?
+ Layouttet for RRD-filer oprettet af collectd har ændret sig markant siden version 4.x. For at bevare dine gamle data skal du migrere dem. Dette kan gøres ved at bruge /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Dette trin kan udføres automatisk. I dette tilfælde laves en sikkerhedskopi af /var/lib/collectd/ i /var/backups/. Dette skript er dog stadig under udvikling. Forvent ikke at det virker i alle tilfælde.
+ .
+ Se /usr/share/doc/collectd-core/NEWS.Debian.gz og wikien for collectd på <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> for detaljer.
+Description-de.UTF-8: Soll automatisch versucht werden, Ihre RRD-Dateien zu migrieren?
+ Das Layout einiger von collectd erstellten RRD-Dateien hat sich seit Version 4.x grundlegend geändert. Um Ihre alten Daten beizubehalten, müssen Sie diese migrieren. Dies kann durch Verwendung von »/usr/lib/collectd/utils/migrate-4-5.px« erreicht werden.
+ .
+ Dieser Schritt kann automatisch ausgeführt werden. Sollten Sie sich hierfür entscheiden, wird eine Sicherungskopie von »/var/lib/collectd/« unter »/var/backups/« erstellt. Dieses Skript ist aber noch experimentell. Erwarten Sie nicht, dass es in allen Fällen problemlos funktioniert.
+ .
+ Siehe »/usr/share/doc/collectd-core/NEWS.Debian.gz« und das collectd Wiki unter <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> für Details.
+Description-es.UTF-8: ¿Desea migrar automáticamente los archivos RRD?
+ La distribución de los archivos RRD creados por collectd ha cambiado desde la versión 4.x. Los datos antiguos se deben migrar para que se puedan seguir utilizando. Puede hacer esto utilizando el programa «/usr/lib/collectd/utils/migrate-4-5.px».
+ .
+ Este paso se puede realizar automáticamente. En este caso se genera una copia de seguridad de «/var/lib/collectd/» en «/var/backups/». El script que hace esto es aún experimental. No se espera que funcione en todos los casos.
+ .
+ Para más detalles consulte «/usr/share/doc/collectd-core/NEWS.Debian.gz» y la página wiki de collectd en <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>.
+Description-fr.UTF-8: Faut-il tenter de convertir automatiquement les fichiers RRD ?
+ Le format des fichiers RRD créés par collectd a changé depuis la version 4.x. Afin de conserver les données, il est nécessaire de les convertir. Cette opération peut être réalisée avec la commande « /usr/lib/collectd/utils/migrate-4-5.px ».
+ .
+ La conversion des fichiers RRD peut être effectuée automatiquement. Pour cela, une sauvegarde du répertoire « /var/lib/collectd/ » aura lieu dans le répertoire « /var/backups/ ». Veuillez noter que cette conversion est expérimentale ; ne vous attendez pas à ce qu'elle fonctionne dans tous les cas.
+ .
+ Voir /usr/share/doc/collectd-core/NEWS.Debian.gz et le wiki de collectd (<http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>) pour plus de détails.
+Description-gl.UTF-8: Quere migrar automaticamente os seus ficheiros RRD?
+ A organización dos ficheiros RRD creados por collectd cambiou desde a versión 4.x. Para conservar os seus datos antigos ten que migralos. Pódese facer empregando /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Este paso pódese realizar automaticamente. Neste caso faise unha copia de /var/lib/collectd/ en /var/backups/. Este script aínda é experimental, porén. Non espere que funcione en tódolos casos.
+ .
+ Consulte o ficheiro /usr/share/doc/collectd-core/NEWS.Debian.gz e a wiki de collectd en <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> para obter máis detalles.
+Description-it.UTF-8: Cercare di migrare automaticamente i file RRD?
+ Il formato di alcuni file RRD creati da collectd è cambiato rispetto alla versione 4.x. Per poter mantenere i propri vecchi dati è necessario fare una migrazione. Ciò può essere fatto usando /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Questo passo può essere fatto automaticamente. In tal caso viene creato un backup di /var/lib/collectd/ in /var/backups/. Questo script però è ancora in fase sperimentale; non ci si aspetti che funzioni in tutti i casi.
+ .
+ Per i dettagli vedere /usr/share/doc/collectd-core/NEWS.Debian.gz e il wiki di collectd all'indirizzo <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>.
+Description-ja.UTF-8: RRD ファイルの自動変換を試みますか?
+ collectd によって作成されるいくつかの RRD ファイルの配置がバージョン 4.x から変わりました。移行を行うために古いデータを保存します。これは /usr/lib/collectd/utils/migrate-4-5.px を使って行うことができます。
+ .
+ この作業は自動的に行われます。今回の場合 /var/lib/collectd/ のバックアップは /var/backups/ に作成されます。しかし、このスクリプトはまだ実験的なものです。あらゆる状況で動作するのは期待しないでください。
+ .
+ 詳細については /usr/share/doc/collectd-core/NEWS.Debian.gz 及び collectd wiki <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> を見てください。
+Description-nl.UTF-8: Proberen om uw RRD-bestanden automatisch te migreren?
+ De lay-out van de RRD-bestanden, die zijn gemaakt door collectd, is gewijzigd sinds versie 4.x. Om uw oude gegevens te behouden zult u deze moeten migreren. Dit kunt u doen door /usr/lib/collectd/utils/migrate-4-5.px te gebruiken.
+ .
+ Deze stap kan automatisch verricht worden. In dat geval wordt er in /var/backups/ een back-up gemaakt van /var/lib/collectd/. Dit script is echter nog experimenteel. Verwacht u niet dat het in alle gevallen werkt.
+ .
+ Zie /usr/share/doc/collectd-core/NEWS.Debian.gz en de wikipagina van collectd, <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>, voor meer informatie.
+Description-pl.UTF-8: Spróbować przekształcić pliki RRD automatycznie?
+ Układ plików RRD tworzonych przez collectd znacznie się zmienił od wersji 4.x. Aby zatrzymać stare dane, należy je przekształcić np. za pomocą /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Ten krok może zostać przeprowadzony automatycznie. Kopia zapasowa /var/lib/collectd/ zostanie utworzona w /var/backups/. Skrypt jest jednak wciąż eksperymentalny. Proszę nie oczekiwać, że będzie działał we wszystkich przypadkach.
+ .
+ Plik /usr/share/doc/collectd-core/NEWS.Debian.gz oraz wiki collectd <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> zawiera więcej informacji na ten temat.
+Description-pt.UTF-8: Tentar migrar automaticamente os seus ficheiros RRD?
+ A disposição de alguns ficheiros RRD criada pelo collectd foi alterada desde a versão 4.x. De modo a manter os seus dados antigos você terá que migrá-los. Isto pode ser feito usando /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Este passo pode ser feito automaticamente. Neste caso uma cópia de segurança de /var/lib/collectd/ é criada em /var/backups/. Este script ainda é experimental. Não espere que ele funcione em todos os casos.
+ .
+ Veja /usr/share/doc/collectd-core/NEWS.Debian.gz e o wiki do collectd em <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> para mais detalhes.
+Description-pt_BR.UTF-8: Tentar migrar seus arquivos RRD automaticamente?
+ O layout dos arquivos RRD criados pelo collectd foi alterado desde a versão 4.x. Para manter seus dados antigos você deve migrá-los. Isso pode ser feito usando /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Esse passo pode ser feito automaticamente. Nesse caso, uma cópia de segurança de /var/lib/collectd/ é feita em /var/backups/. Entretanto, esse script ainda é experimental. Não espere que ele funcione para todos os casos.
+ .
+ Veja /usr/share/doc/collectd-core/NEWS.Debian.gz e o wiki do collectd em <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide> para detalhes.
+Description-ru.UTF-8: Попытаться выполнить перенос файлов RRD автоматически?
+ Начиная с версий 4.x изменилось расположение файлов RRD, создаваемых collectd. Чтобы сохранить старые данные, вы должны их переместить. Это можно сделать с помощью /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Этот шаг может быть выполнен автоматически. В этом случае создаётся резервная копия /var/lib/collectd/ в /var/backups/. Учтите, что это пока экспериментальный сценарий. Возможно, он не сработает в вашем случае.
+ .
+ Дополнительную информацию можно найти в файле /usr/share/doc/collectd-core/NEWS.Debian.gz и вики collectd wiki по адресу <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>.
+Description-sk.UTF-8: Pokúsiť sa automaticky migrovať vaše súbory RRD?
+ Rozloženie súborov RRD, ktoré vytvára collectd sa výrazne zmenilo od verzie 4.x. Ak si chcete zachovať vaše staré dára, musíte ich migrovať. To je možné pomocou /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Tento krok je možné vykonať automaticky. V tomto prípade sa vykoná záloha /var/lib/collectd/ do /var/backups/. Tenti skript je však ešte stále experimentálny. Neočakávajte, že bude fungovať vo všetkých prípadoch.
+ .
+ Pozri podrobnosti v /usr/share/doc/collectd-core/NEWS.Debian.gz a na wiki collectd na adrese <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>
+Description-sv.UTF-8: Vill du försöka migrera RRD-filerna automatiskt?
+ Strukturen för RRD-filerna som collectd skapar har ändrats sedan version 4.x. För att behålla dina gamla data måste dessa migreras, detta kan göras genom att köra /usr/lib/collectd/utils/migrate-4-5.px.
+ .
+ Detta steg kan genomföras automatiskt, då kommer en säkerhetskopia av /var/lib/collectd i /var/backups. Detta skript är dock fortfarande inte helt uttestat, det kan finnas tillfällen när det inte fungerar.
+ .
+ För mer information läs /usr/share/doc/collectd-core/NEWS.Debian.gz och collectd-wikin på <http://collectd.org/wiki/index.php/V4_to_v5_migration_guide>.
+
+Template: collectd/postrm_purge_data
+Type: boolean
+Default: true
+Description: Remove all collected data (e.g. RRD files)?
+ The /var/lib/collectd/ directory which contains the data files containing the
+ collected statistics is about to be removed. For example, this directory
+ includes (in the default configuration) all RRD files.
+ .
+ If you're purging the collectd package in order to replace it with a more
+ recent or custom version or if you want to keep the data for further
+ analysis, the data should be kept.
+Description-cs.UTF-8: Smazat všechna získaná data (např. soubory RRD)?
+ Adresář /var/lib/collectd/ obsahuje soubory se statistikami a může být v tomto kroku odstraněn. Tento adresář obsahuje (ve výchozím nastavení) např. soubory RRD.
+ .
+ Pokud nahrazujete balíček collectd novější nebo jinou verzí, nebo chcete stávající data uchovat pro jejich pozdější analýzu, měli byste tato data zachovat.
+Description-da.UTF-8: Fjern alle indsamlede data (dvs. RRD-filer)?
+ Mappen /var/lib/collectd/ som indeholder datafilerne indeholdende den indsamlede statistik er ved at blive fjernet. For eksempel inkluderer denne mappe (i standardkonfigurationen) alle RRD-filer.
+ .
+ Hvis du afinstallerer pakken collectd for at erstatte den med en nyere eller tilpasset version, eller hvis du ønsker at beholde dataene for yderligere analyse, så bør du bevare dataene.
+Description-de.UTF-8: Alle gesammelten Daten entfernen (z.B. RRD-Dateien)?
+ Das Verzeichnis /var/lib/collectd/ mit den gesammelten Statistiken soll entfernt werden. Das Verzeichnis enthält (in der Standardkonfiguration) zum Beispiel die RRD-Dateien.
+ .
+ Falls geplant ist, nur eine höhere oder eigene Version von collectd zu installieren oder falls die Daten für weitere Analysen genutzt werden, sollten die Daten behalten werden.
+Description-es.UTF-8: ¿Desea eliminar todos los datos almacenados (esto es, los archivos RRD)?
+ Se va a eliminar el directorio «/var/lib/collectd/», que almacena los archivos de datos que contienen las estadísticas recopiladas. Por ejemplo, este directorio incluye (con la configuración predeterminada) todos los archivos RRD.
+ .
+ Si purga el paquete collectd para sustituirlo por una versión más reciente o personalizada, o si desea guardar los datos para un análisis posterior, los datos se deben preservar.
+Description-fr.UTF-8: Faut-il supprimer toutes les données collectées (p. ex. les fichiers RRD) ?
+ Le répertoire « /var/lib/collectd/ », qui contient tous les fichiers de données des statistiques collectées, est en passe d'être supprimé. Dans la configuration par défaut, ce répertoire contient tous les fichiers RRD.
+ .
+ Si vous purgez le paquet collectd afin de le remplacer par une version plus récente ou une version personnalisée ou si vous désirez conserver les données pour une analyse ultérieure, vous devriez refuser.
+Description-gl.UTF-8: Quere eliminar todos os datos recollidos (por exemplo, os ficheiros RRD)?
+ O cartafol /var/lib/collectd/, que contén os ficheiros de datos cas estatísticas recollidas, vai a ser eliminado. Este cartafol inclúe, por exemplo (na configuración predeterminada) todos os ficheiros RRD.
+ .
+ Se está purgando o paquete «collectd» para substituílo por unha versión máis recente, ou unha versión personalizada, ou se quere conservar os datos para posteriores análises, os datos deben conservarse.
+Description-it.UTF-8: Rimuovere tutti i dati raccolti (ad esempio, i file RRD)?
+ La directory /var/lib/collectd/ che contiene i file dei dati con le statistiche raccolte sta per essere rimossa. Per esempio, questa directory (nella configurazione predefinita) include tutti i file RRD.
+ .
+ Se si sta eliminando il pacchetto collectd per sostituirlo con una versione più recente o una personalizzata, oppure se si desidera mantenere i dati per un'ulteriore analisi, i dati dovrebbero essere conservati.
+Description-ja.UTF-8: 収集したデータ (例えば RRD ファイル) を全て削除しますか?
+ 収集した統計の含まれるデータファイルが置かれている /var/lib/collectd/ ディレクトリが削除されます。このディレクトリには (デフォルト設定では) 例えば RRD ファイルが全て置かれています。
+ .
+ もっと新しいまたは独自のバージョンに置き換える目的で collectd パッケージを完全削除する場合やデータを残しておいて詳細な分析を行いたい場合にはこのデータを残すようにしてください。
+Description-nl.UTF-8: All verzamelde gegevens verwijderen (zoals de RRD-bestanden)?
+ De map /var/lib/collectd/, welke alle gegevensbestanden met verzamelde statistieken bevat, staat op het punt om verwijderd te worden. Deze map bevat (in de standaardconfiguratie) alle RRD-bestanden.
+ .
+ Als u het pakket collectd opruimt met als doel het te vervangen door een nieuwere of aangepaste versie, of als u verdere analyses op de gegevens wilt uitvoeren, dan dient u de gegevens te bewaren.
+Description-pl.UTF-8: Usunąć wszystkie zgromadzone dane (np. pliki RRD)?
+ Katalog /var/lib/collectd/, zawierający pliki z danymi obejmującymi zgromadzone statystyki jest przeznaczony do usunięcia. Ten katalog zawiera np. (w domyślnej konfiguracji) wszystkie pliki RRD.
+ .
+ Jeśli pakiet collectd jest czyszczony w celu zastąpienia go nowszą lub własną wersją, albo dane będą jeszcze analizowane, to powinny one zostać zachowane.
+Description-pt.UTF-8: Remover todos os dados recolhidos (ex. ficheiros RDD)?
+ O directório /var/lib/collectd/ que contém todos os ficheiros de dados com as estatísticas recebidas está prestes a ser removido. Por exemplo, este directório inclui todos os ficheiros RDD (na configuração predefinida).
+ .
+ Se está a purgar o pacote collectd de modo a substituí-lo por uma versão mais recente ou personalizada, ou se deseja manter os dados para análise posterior, estes dados deverão ser mantidos.
+Description-pt_BR.UTF-8: Remover todos os dados coletados (por exemplo, arquivos RRD)?
+ O diretório /var/lib/collectd/, que contém os arquivos de dados contendo as estatísticas coletadas, está prestes a ser removido. Esse diretório inclui, por exemplo (na configuração padrão), todos os arquivos RRD.
+ .
+ Se você está expurgando o pacote collectd para substituí-lo por uma versão mais recente ou personalizada, ou se você quer manter os dados para uma análise mais aprofundada, os dados deveriam ser mantidos.
+Description-ru.UTF-8: Удалить все собранные данные (например, RRD-файлы)?
+ Каталог /var/lib/collectd/, содержащий данные собранной статистики, будет удалён. В этом каталоге, например, находятся (при стандартной настройке) все RRD-файлы.
+ .
+ Если вы удаляете пакет collectd для замещения его более новой или нестандартной версией, или если вы хотите сохранить данные для последующего анализа, эти данные нужно сохранить.
+Description-sk.UTF-8: Odstrániť všetky zozbierané dáta (napr. súbory RRD)?
+ Adresár /var/lib/collectd/, ktorý obsahuje dátové súbory obsahujúce zozbierané štatistiky bude odstránený. Tento adresár obsahuje napríklad (v predvolenej konfigurácii) všetky súbory RRD.
+ .
+ Ak vykonávate vyčistenie balíka collectd, aby ste ho nahradilo novšou alebo prispôsobenou verziou alebo ak chcete údaje zachovať na ďalšiu analýzu, dáta by ste mali zachovať.
+Description-sv.UTF-8: Ta bort all insamlad data (RRD-filer)?
+ Katalogen /var/lib/collectd/ som innehåller datafiler med insamlad statistik ska tas bort. Exempelvis innehåller den här sökvägen (i standardutförande) alla RRD-filer.
+ .
+ Om du tar bort collectd-paketet för att ersätta det med en nyare eller anpassad version eller om du vill behålla datafilerna för ytterligare analys ska katalogen behållas.
+

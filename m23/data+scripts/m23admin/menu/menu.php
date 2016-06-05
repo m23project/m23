@@ -33,7 +33,9 @@
 			};
 	};
 
+//m23customPatchBegin type=del id=SERVER_dhcpServerInNetWarnDeactivate
 SERVER_dhcpServerInNetWarn();
+//m23customPatchEnd id=SERVER_dhcpServerInNetWarnDeactivate
 SERVER_dynamicIPWarn();
 SERVER_rootFreeSpace();
 SERVER_tmpNotWritable();
@@ -82,6 +84,8 @@ CAPTURE_showMessageBox();
 		MENU_showEntry($I18N_add,"index.php?page=creategroup","/gfx/add-mini.png");
 // 		PLG_listMenuPlugins("/m23/data+scripts/m23admin/groups/");
 	MENU_endGroup();
+//m23customPatchBegin type=change id=additionalMenuEntriesAfterGroups
+//m23customPatchEnd id=additionalMenuEntriesAfterGroups
 
 	MENU_startGroup($I18N_packages);
 		MENU_showEntry($I18N_install,"index.php?page=clientsoverview&action=install",

@@ -1,0 +1,507 @@
+Template: ez-ipupdate/service_type
+Type: select
+Choices: configure manually, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-ca.UTF-8: configura manualment, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-cs.UTF-8: nastavit ručně, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-da.UTF-8: konfigurer manuelt, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-de.UTF-8: manuell einrichten, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-es.UTF-8: configurar manualmente, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-eu.UTF-8: eskuz konfiguratu, zoneedit, ez-ip, pgpow, dhs, dynds, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-fr.UTF-8: Configurer moi-même, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-gl.UTF-8: configurar manualmente, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-it.UTF-8: configurazione manuale, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-ja.UTF-8: 手動で設定, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-nb.UTF-8: sett opp manuelt, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-nl.UTF-8: handmatig instellen, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-no.UTF-8: sett opp manuelt, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-pl.UTF-8: konfiguracja ręczna, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-pt.UTF-8: configurar manualmente, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-pt_BR.UTF-8: configurar manualmente, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-ro.UTF-8: configurare manuală, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partener, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-ru.UTF-8: настроить вручную, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-sv.UTF-8: konfigurera manuellt, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Choices-vi.UTF-8: cấu hình bằng tay, zoneedit, ez-ip, pgpow, dhs, dyndns, dyndns-static, dyndns-custom, ods, tzo, easydns, easydns-partner, gnudip, justlinux, dyns, hn, heipv6tb
+Description: Dynamic DNS provider to use:
+ There are many Dynamic DNS providers supported by ez-ipupdate. If you want
+ your default configuration to be created automatically, you must select the
+ provider that you wish to use here. You must configure an account on your
+ chosen provider's service yourself.
+ .
+ If you prefer your default ez-ipupdate configuration not to be managed for
+ you, you may choose "configure manually".
+ .
+ Whatever your decision, you can later put as many additional configuration
+ files in /etc/ez-ipupdate/ as you need.
+Description-ca.UTF-8: Proveïdor de DNS dinàmic que voleu utilitzar:
+ ez-ipupdate suporta molts proveïdors de DNS dinàmic. Si voleu crear automàticament una configuració predeterminada, heu de seleccionar quin proveïdor voleu utilitzar. La configuració del compte d'usuari al proveïdor l'haureu de fer vosaltres mateixos.
+ .
+ Si preferiu que la configuració predeterminada d'ez-ipupdate no sigui gestionada automàticament, podeu triar «configura manualment».
+ .
+ Sigui quina sigui la vostra decisió, sempre podeu afegir més endavant tants fitxers de configuració addicionals a /etc/ez-ipupdate/ com us facin falta.
+Description-cs.UTF-8: Poskytovatel dynamického DNS:
+ ez-ipupdate podporuje mnoho poskytovatelů dynamického DNS. Chcete-li vytvořit výchozí konfiguraci automaticky, vyberte zde, kterého poskytovatele používáte. Vlastní účet u svého poskytovatele si však musíte nastavit sami.
+ .
+ Nechcete-li, aby se výchozí konfigurace ez-ipupdate spravovala automaticky, zvolte "nastavit ručně".
+ .
+ Ať už se rozhodnete jakkoliv, stále máte možnost do adresáře /etc/ez-ipupdate/ přidat libovolný počet dalších konfigurací.
+Description-da.UTF-8: Hvilken dynamisk DNS-leverandør skal bruges:
+ Der er mange dynamiske DNS-leverandører understøttet af ez-ipupdate. Hvis du ønsker at din standardkonfiguration skal oprettes automatisk, så skal du her vælge leverandøren, som du ønsker at bruge. Du skal selv konfigurere en konto for din valgte leverandørs tjeneste.
+ .
+ Hvis du foretrækker at din standardkonfiguration for ez-ipupdate ikke håndteres for dig, så kan du vælge »konfigurer manuelt«.
+ .
+ Uanset din beslutning, så kan du senere placere det antal konfigurationsfiler i /etc/ez-ipupdate/ som du har brug for.
+Description-de.UTF-8: Zu benutzender Dynamischer DNS-Provider:
+ ez-ipupdate unterstützt viele Dynamische DNS-Provider. Wenn die Standard-Konfiguration automatisch erstellt werden soll, dann wählen Sie hier den Provider aus, den Sie benutzen möchten. Das Benutzerkonto müssen Sie beim Provider Ihrer Wahl selbst einrichten.
+ .
+ Soll die Standard-Konfiguration von ez-ipupdate nicht automatisch verwaltet werden, dann wählen Sie bitte »manuell einrichten«.
+ .
+ Was auch immer Sie auswählen, Sie können später so viele zusätzliche Konfigurationen unter /etc/ez-ipupdate/ erstellen, wie Sie wollen.
+Description-es.UTF-8: Proveedor de DNS dinámico a utilizar:
+ ez-ipupdate soporta muchos proveedores de DNS dinámicos. Si desea que se cree automáticamente su configuración predeterminada, debe elegir aquí el proveedor que desea usar. Tiene que configurar usted mismo una cuenta en el servicio del proveedor elegido. 
+ .
+ Si prefiere gestionar personalmente su configuración predeterminada, entonces seleccione «configurar manualmente».
+ .
+ Cualquiera que sea su decisión, luego puede crear tantos archivos de configuración adicionales como necesite en «/etc/ez-ipupdate/»
+Description-eu.UTF-8: DNS dinamiko hornitzaile hau erabili:
+ DNS dinamiko hornitzaile ugari onartzen ditu 'ez-ipupdate'-k. Konfigurazio lehenetsia automatikoki sortzea nahi baduzu, hemen erabili nahi duzun hornitzailea hautatu behar duzu. Zuk zeuk konfiguratu beharko duzu kontu bat aukeratu duzun hornitzailearen zerbitzuan.
+ .
+ Ez-update-ren konfigurazio lehenetsia automatikoki sortzen utzi beharrean, zuk ezarri nahiago baduzu, "eskuz konfiguratu" hauta ezazu.
+ .
+ Zure erabakia edozein dela, behar beste konfigurazio-fitxategi erantsi ditzakezu gero /etc/ez-ipupdate/-n.
+Description-fr.UTF-8: Fournisseur de service de nom dynamique à utiliser :
+ Il existe de nombreux fournisseurs de service de nom dynamique pris en charge par ez-ipupdate. Pour que votre configuration par défaut soit créée automatiquement, choisissez le vôtre ici. Vous devez configurer vous-même votre compte chez ce fournisseur.
+ .
+ Si vous préférez que la configuration par défaut d'ez-ipupdate ne soit pas gérée automatiquement, vous pouvez choisir « Configurer moi-même ».
+ .
+ Indépendamment de votre choix, vous pourrez ajouter ultérieurement, à votre convenance, des fichiers de configuration supplémentaires dans /etc/ez-ipupdate/.
+Description-gl.UTF-8: Fornecedor de servizo de DNS dinámico a empregar:
+ Existen moitos fornecedores de DNS dinámico con soporte en ez-ipupdate. Se quere crear automaticamente a configuración por defecto, debe escoller aquí o fornecedor que quere empregar. Ten que configurar vostede unha conta no servizo do fornecedor que escolleu.
+ .
+ Se prefire que non se xestione por vostede a configuración por defecto de ez-ipupdate, escolla "configurar manualmente".
+ .
+ Decida o que decida, despois ha poder engadir tódolos ficheiros de configuración adicionais que precise en /etc/ez-ipupdate/.
+Description-it.UTF-8: Fornitore del DNS dinamico da utilizzare:
+ ez-ipupdate supporta molti fornitori di DNS dinamico. Se si vuole creare automaticamente la propria configurazione predefinita, selezionare qui il fornitore che si desidera utilizzare. È necessario configurare da sé un account presso il fornitore di servizi scelto.
+ .
+ Se si preferisce gestire da sé la propria configurazione predefinita di ez-ipupdate, scegliere "configurazione manuale".
+ .
+ Indipendentemente dalla scelta fatta, successivamente si possono aggiungere file addizionali di configurazione in "/etc/ez-ipupdate/", se necessario.
+Description-ja.UTF-8: 利用する動的 DNS プロバイダ:
+ ez-ipupdate によってサポートされるたくさんの動的 DNS プロバイダがあります。デフォルト設定を自動的に作成したいのであれば、ここで利用したいプロバイダを選択してください。選択したプロバイダサービスのアカウントはあなた自身で設定する必要があります。
+ .
+ デフォルトの ez-ipupdate 設定を自動管理したくなければ、"手動で設定" を選択してください。
+ .
+ 決定にかかわらず、必要なら /etc/ez-ipupdate/ に多くの追加設定ファイルをあとで置くことができます。
+Description-nb.UTF-8: Dynamisk DNS-leverandør som skal brukes:
+ Det fins mange leverandører av dynamisk DNS som støttes av ez-ipupdate. Du må velge her en leverandør som du vil bruke. Du må selv sette opp en konto hos din valgte leverandør.
+ .
+ Hvis du foretrekker at ez-update-oppsettet ikke håndteres for deg, så kan du velge «manuelt oppsett».
+ .
+ Uansett hva du velger, så kan du senere legge til så mange oppsettsfiler du vil i /etc/ez-ipupdate/.
+Description-nl.UTF-8: Te gebruiken Dynamische-DNS-aanbieder:
+ ez-ipupdate ondersteund heel wat Dynamsiche-DNS-aanbieders. Als u wilt dat er automatisch een standaardconfiguratie aangemaakt wordt dient u hier de aanbieder die u wilt gebruiken te selecteren. U dient zelf de account bij de gekozen aanbieder in te stellen.
+ .
+ Als u verkiest om de standaard ez-ipupdate configuratie zelf te beheren dient u 'handmatig instellen' te kiezen.
+ .
+ Onafhankelijk van uw beslissing kunt u net zoveel aanvullende configuratiebestanden in /etc/ez-ipupdate/ plaatsen als u nodig heeft.
+Description-no.UTF-8: Dynamisk DNS-leverandør som skal brukes:
+ Det fins mange leverandører av dynamisk DNS som støttes av ez-ipupdate. Du må velge her en leverandør som du vil bruke. Du må selv sette opp en konto hos din valgte leverandør.
+ .
+ Hvis du foretrekker at ez-update-oppsettet ikke håndteres for deg, så kan du velge «manuelt oppsett».
+ .
+ Uansett hva du velger, så kan du senere legge til så mange oppsettsfiler du vil i /etc/ez-ipupdate/.
+Description-pl.UTF-8: Dostawca dynamicznego DNS:
+ Istnieje wielu dostawców usługi dynamicznego DNS, którzy są obsługiwani przez ez-ipupdate. Aby automatycznie utworzyć domyślną konfigurację, należy wybrać swojego dostawcę. Konieczna jest uprzednia samodzielna konfiguracja konta u wybranego dostawcy.
+ .
+ Jeśli domyślna konfiguracja ez-ipupdate nie ma być zarządzana automatycznie, proszę wybrać "konfiguracja ręczna".
+ .
+ Niezależnie od podjętej decyzji, można dodać później dowolną liczbę plików konfiguracyjnych w katalogu /etc/ez-ipupdate/.
+Description-pt.UTF-8: Fornecedor de DNS Dinmico a usar:
+ Existem muitos fornecedores de DNS Dinmicos suportados pelo ez-ipupdate. Se quiser que a sua configurao por omisso seja criada automaticamente, ter que seleccionar o fornecedor que desejar nesta fase. Ter que configurar uma conta do seu fornecedor voc mesmo.
+ .
+ Se preferir que a sua configurao ez-ipupdate por omisso no seja modificada, pode configura-la manualmente - "configurar manualmente".
+ .
+ Qualquer que seja a sua deciso, pode adicionar os ficheiros de configurao que entender mais tarde em /etc/ez-ipupdate/  medida que for necessitando.
+Description-pt_BR.UTF-8: Provedor de DNS Dinâmico a ser usado:
+ Há vários provedores de DNS Dinâmico suportados pelo ez-ipupdate. Se você quer sua configuração padrão seja criada automaticamente, você deve selecionar o provedor que gostaria de usar aqui. Você mesmo deve configurar uma conta no serviço do provedor que escolheu.
+ .
+ Se preferir que sua configuração padrão do ez-ipupdate não seja gerenciada para você, é possível optar por "configurar manualmente".
+ .
+ Qualquer que seja sua decisão, você pode, posteriormente, colocar quantos arquivos de configuração adicionais forem necessários, em /etc/ez-ipupdate/.
+Description-ro.UTF-8: Furnizorul de DNS dinamic:
+ ez-ipupdate oferă suport pentru mulți furnizori de DNS dinamic. Dacă doriți crearea automată a configurației implicite, trebuie să selectați aici furnizorul pe care doriți să-l folosiți. Trebuie să configurați personal un cont la serviciul furnizorului ales.
+ .
+ Dacă preferați să întrțineți personal configurația implicită a lui ez-ipupdate, puteți alege „configurare manuală”.
+ .
+ Indiferent de decizia dumneavoastră, puteți să puneți în /etc/ez-ipupdate cât de multe fișiere de configurație aveți nevoie.
+Description-ru.UTF-8: Выберите провайдера динамического DNS:
+ ez-ipupdate умеет работать с многими провайдерами динамического DNS. Если вы хотите, чтобы конфигурация по умолчанию была создана автоматически, выберите нужного провайдера из списка. Вы должны самостоятельно настроить учётную запись в службе выбранного провайдера.
+ .
+ Если вы хотите, чтобы конфигурация ez-ipupdate по умолчанию не создавалась автоматически, выберите "настроить вручную".
+ .
+ Независимо от решения, позже вы можете добавить дополнительные конфигурационные файлы в каталог /etc/ez-ipupdate/.
+Description-sv.UTF-8: Dynamisk DNS-leverantör att använda:
+ Det finns många dynamiska DNS-leveratörer som stöds av ez-ipupdate. Om du vill att en standardkonfiguration ska skapas automatiskt, måste du välja en leverantör som du önskar använda. Du måste konfigurera ett konto för den valda leverantörens tjänst själv.
+ .
+ Om du vill att din standardkonfiguration för ez-ipupdate inte ska hanteras åt dig, kan du välja "konfigurera manuellt".
+ .
+ Oavsett vad du väljer, kan du senare ange så många ytterligare konfigurationer  i /etc/ez-ipupdate/ som du vill.
+Description-vi.UTF-8: Nhà cung cấp DNS động cần dùng:
+ Trình ez-ipupdate hỗ trợ nhiều nhà cung cấp dịch vụ DNS động khác nhau. Nếu bạn muốn tự động tạo cấu hình mặc định, ở đây bạn cần phải chọn nhà cung cấp bạn muốn sử dụng. Bạn cũng cần phải tự cấu hình một tài khoản với dịch vụ của nhà cung cấp đã chọn.
+ .
+ Nếu bạn muốn tự quản lý cấu hình mặc định của ez-ipupdate, hãy chọn « cấu hình bằng tay ».
+ .
+ Bất chấp sự chọn ở đây, về sau bạn cũng có khả năng thêm các tập tin cấu hình khác vào thư mục « /etc/ez-ipupdate/ » như cần thiết.
+
+Template: ez-ipupdate/ppp
+Type: boolean
+Default: false
+Description: Does this system use dialup PPP to connect to the internet?
+ If you use dialup PPP to connect to the internet, then ez-ipupdate can
+ be run to notify providers of your new address when ppp connects to the
+ network. Otherwise it will run in the background, and scan for changes
+ to your address while you are online.
+Description-ca.UTF-8: Utilitzeu marcatge directe PPP per connectar-vos a internet?
+ Si utilitzeu PPP per connectar-vos a internet, aleshores ez-ipupdate pot executar-se per notificar els proveïdors de la nova adreça quan us connecteu a la xarxa. Altrament s'executarà en segon pla, i escanejarà els canvis en l'adreça mentre esteu en línia.
+Description-cs.UTF-8: Používá tento systém pro připojení k Internetu PPP?
+ Používáte-li pro připojení k Internetu PPP, můžete využít ez-ipupdate, aby informoval poskytovatele o vaší nové adrese při každém připojení ppp k síti. V opačném případě poběží ez-ipupdate na pozadí a bude sledovat změny adresy během celého připojení.
+Description-da.UTF-8: Bruger dette system en opkalds-PPP for at forbinde til internettet?
+ Hvis du bruger opkalds-PPP for at forbinde til internettet, så kan ez-ipupdate køres for at give leverandører besked om din nye adresse, når ppp forbindet til netværket. Ellers vil programmet køre i baggrunden, og skanne for ændringer til din adresse mens du er på nettet.
+Description-de.UTF-8: Verwendet dieser Rechner PPP um sich ins Internet einzuwählen?
+ Wenn Sie PPP verwenden um sich ins Internet einzuwählen, dann kann ez-ipupdate so gestartet werden, dass es den Providern die neue IP-Adresse dann mitteilt, wenn sich ppp mit dem Internet verbindet. Ansonsten läuft ez-ipupdate im Hintergrund und überwacht Ihre IP-Adresse, während Sie online sind.
+Description-es.UTF-8: ¿Este sistema se conecta a internet mediante PPP?
+ Si usa una conexión PPP para acceder a internet, entonces ez-ipupdate se puede ejecutar para que informe a los proveedores de su nueva dirección cuando se conecte a la red por PPP. Además, se ejecutará en segundo plano, y comprobará si hay cambios en su dirección mientras está conectado.
+Description-eu.UTF-8: Sistema hau PPP bidez konektatzen da internetera?
+ Internera konektatzeko PPP erabiltzen baduzu, ez-ipupdate exekuta daiteke hornitzaileei zure helbide berria ezagutarazteko. Bestela, bigarren planoan arituko da, konektaturik zauden bitartean zure helbideak aldaketarik duen begiratzen.
+Description-fr.UTF-8: Votre système utilise-t-il une liaison téléphonique (PPP) pour se connecter à Internet ?
+ Si vous utilisez une liaison téléphonique (PPP) pour vous connecter sur Internet, alors ez-ipupdate peut être lancé, une fois la connexion établie, pour communiquer au fournisseur de service votre nouvelle adresse. Sinon, il s'exécute en tâche de fond et surveille les modifications de votre adresse tant que vous êtes en ligne.
+Description-gl.UTF-8: ¿Este sistema emprega PPP por módem para se conectar a Internet?
+ Se emprega PPP por módem para se conectar a Internet, ez-ipupdate pódese empregar para advertir aos fornecedores do novo enderezo cando ppp se conecte á rede. Se non ha funcionar no segundo plano, e ha esperar cambios no enderezo mentres se manteña conectado.
+Description-it.UTF-8: Il sistema usa una connessione dial-up PPP per collegarsi a Internet?
+ Se si usa una connessione dial-up PPP per collegarsi a Internet, ez-ipupdate può essere eseguito per notificare ai fornitori il nuovo indirizzo quando PPP si collega alla rete. Altrimenti sarà eseguito in background e verificherà eventuali cambiamenti di indirizzo mentre si è collegati.
+Description-ja.UTF-8: このシステムはインターネットに接続するのにダイヤルアップ PPP を使いますか?
+ インターネットに接続するのにダイヤルアップ PPP を使うのであれば、ネットワークに PPP が接続したときに、ez-ipupdate があなたの新しいアドレスをプロバイダに知らせるようにできます。さもなければ、これはバックグラウンドで実行され、オンライン中にあなたのアドレスが変更になったことを検出します。
+Description-nb.UTF-8: Bruker dette systemet oppringt PPP som tilkobling til Internett?
+ Hvis du bruker oppringt PPP for å koble til Internett, så kan ez-ipupdate kjøres for å opplyse leverandører om din nye adresse når ppp kobler til nettet. Ellers vil det kjøre i bakgrunnen og se etter endringer i IP-adressen mens du er tilkoblet.
+Description-nl.UTF-8: Gebruikt dit systeem inbel-PPP om verbinding te maken met het internet?
+ Als u inbel-PPP gebruikt om verbinding te maken met het internet kan ez-ipupdate uw aanbieders het nieuwe ip-adres doorgeven telkens als een ppp-verbinding gemaakt wordt. Zoniet scant ez-ipupdate in de achtergrond voor adreswijzigingen wanneer u online bent.
+Description-no.UTF-8: Bruker dette systemet oppringt PPP som tilkobling til Internett?
+ Hvis du bruker oppringt PPP for å koble til Internett, så kan ez-ipupdate kjøres for å opplyse leverandører om din nye adresse når ppp kobler til nettet. Ellers vil det kjøre i bakgrunnen og se etter endringer i IP-adressen mens du er tilkoblet.
+Description-pl.UTF-8: Czy system używa wzdzwanianego połączenia PPP do połączenia z Internetem?
+ Jeśli używane jest połączenie wdzwaniane, to ez-ipupdate może być uruchomiony, aby poinformować dostawcę o nowym adresie, gdy ppp łączy się z siecią. W przeciwnym wypadku będzie uruchomiony w tle w celu poszukiwania zmian adresu, gdy połączenie sieciowe jest aktywne.
+Description-pt.UTF-8: Este sistema usa o modo de ligao PPP para se ligar  internet?
+ Se usar o modo de ligao PPP para se ligar  internet, ento o ez-ipupdate pode ser executado de modo a notificar os fornecedores do seu novo endereo quando o ppp se liga  rede. De outro modo correr em segundo plano e procurar alteraes ao seu endereo enquanto estiver online.
+Description-pt_BR.UTF-8: Este sistema usa discagem PPP para conectar-se à internet?
+ Se você usa discagem PPP para conectar-se à internet, então ez-ipupdate pode ser executado para notificar os provedores do seu novo endereço quando o ppp conecta-se à rede. Caso contrário, ele será executando em segundo plano, e verificando mudanças em seu endereço enquanto você estiver "online".
+Description-ro.UTF-8: Acest sistem folosește o conexiune „PPP dialup” pentru a se conecta la internet?
+ Dacă folosiți „PPP dialup” pentru a vă conecta la internet, ez-ipupdate poate fi configurat astfel încât să notifice funizorii în legătură cu noua adresă atunci când ppp se conectează la rețea. Altfel, va rula în fundal și va căuta schimbări ale adresei în timp ce conexiunea este activă.
+Description-ru.UTF-8: Данный компьютер использует коммутируемый доступ с PPP для подключения к интернет?
+ Если вы используете коммутируемый доступ с PPP для подключения к интернет, то ez-ipupdate для уведомления провайдера о новом адресе может запускаться во время подключения к сети. Или он может работать постоянно, ожидая изменения адреса.
+Description-sv.UTF-8: Använder detta system uppringd PPP för att ansluta till internet?
+ Om du använder uppringd PPP för att ansluta till internet, kan ez-ipupdate köras för att meddela leverantörerna din nya adress när ppp ansluter till nätverket. Annars kommer den köras i bakgrunden och lyssna efter ändringar av adressen när du är online.
+Description-vi.UTF-8: Hệ thống này có sử dụng PPP quay số để kết nối đến Mạng không?
+ Nếu bạn sử dụng PPP kiểu quay số (dialup) để kết nối tới Mạng, tiến trình ez-ipupdate có thể được chạy để thông báo địa chỉ mới của bạn cho nhà cung cấp, khi PPP kết nối tới mạng. Nếu không thì nó chạy về nền, và quét tìm thay đổi trong địa chỉ của bạn trong khi bạn trực tuyến.
+
+Template: ez-ipupdate/server
+Type: string
+Description: Address for your Dynamic DNS server:
+ The service type you selected requires a server address to connect to. You
+ may specify either a full hostname or an IP address.
+Description-ca.UTF-8: Adreça del servidor de DNS dinàmic:
+ El tipus de servei que heu seleccionat requereix l'adreça d'un servidor on connectar-se. Podeu especificar o bé el nom complet de la màquina, o bé l'adreça IP.
+Description-cs.UTF-8: Adresa serveru dynamického DNS:
+ Služba, kterou jste vybrali, vyžaduje adresu serveru, ke kterému se má připojit. Můžete zadat buď celé jméno serveru nebo jeho IP adresu.
+Description-da.UTF-8: Adresse for din dynamsike DNS-server:
+ Tjenestetypen du valgte kræver en serveradresse at forbinde til. Du kan specificere enten et fuld værtsnavn eller en IP-adresse.
+Description-de.UTF-8: Adresse für Ihren Dynamischen DNS-Server:
+ Für den ausgewählten Service wird eine Server-Adresse benötigt, zu der eine Verbindung aufgebaut wird. Sie können entweder einen vollständigen Host-Namen oder eine IP-Adresse angeben.
+Description-es.UTF-8: Dirección de su servidor de DNS dinámico:
+ El tipo de servicio que ha indicado, necesita una dirección del servidor al que conectar. Puede especificar o bien el nombre completo del servidor o su dirección IP.
+Description-eu.UTF-8: Zure DNS zerbitzari dinamikoaren helbidea:
+ Hautatu duzun zerbitzu motak zerbitzari-helbide bat behar du bertara konektatzeko. Ostalariaren izen osoa edo IP helbidea eman dezakezu.
+Description-fr.UTF-8: Adresse de votre serveur de nom dynamique :
+ Le type de service que vous avez choisi a besoin de l'adresse d'un serveur. Vous pouvez indiquer un nom d'hôte complètement qualifié ou une adresse IP.
+Description-gl.UTF-8: Enderezo do servidor de DNS dinámico:
+ O tipo de servizo que escolleu require un enderezo de servidor ao que se conectar. Pode especificar un nome de máquina ou un enderezo IP.
+Description-it.UTF-8: Indirizzo del proprio server DNS dinamico:
+ Il tipo di servizio selezionato richiede un indirizzo di server a cui collegarsi. Si può specificare un nome completo di host o un indirizzo IP.
+Description-ja.UTF-8: あなたの動的 DNS サーバのアドレス:
+ あなたの選んだサービスタイプには、接続するサーバアドレスが必要です。完全ホスト名または IP アドレスのいずれかを指定できます。
+Description-nb.UTF-8: Adresse for din dynamiske DNS-tjener:
+ Tjenestetypen du valgte krever en tjeneraddresse å koble til. Du kan oppgi enten et fullt vertsnavn eller en IP-adresse.
+Description-nl.UTF-8: Adres van uw Dynamische-DNS-server:
+ Het door u geselecteerde service-type vereist een adres van de server waarmee verbinding gemaakt wordt.  U kunt een volledige computernaam of een IP-adres opgeven.
+Description-no.UTF-8: Adresse for din dynamiske DNS-tjener:
+ Tjenestetypen du valgte krever en tjeneraddresse å koble til. Du kan oppgi enten et fullt vertsnavn eller en IP-adresse.
+Description-pl.UTF-8: Adres dynamicznego serwera DNS:
+ Wybrany typ usługi wymaga adresu serwera, z którym następuje połączenie. Można podać pełną nazwę domenową lub adres IP.
+Description-pt.UTF-8: Endereo do seu servidor de DNS Dinmico: 
+ O tipo de servio que seleccionou requer um endereo de servidor para se ligar a si. Tanto pode especificar um nome de mquina completo ou um endereo de IP.
+Description-pt_BR.UTF-8: Endereço do seu servidor de DNS Dinâmico:
+ O tipo do serviço que você selecionou requer um endereço de servidor para se conectar. Você pode especificar um nome de máquina ou um endereço IP.
+Description-ro.UTF-8: Adresa pentru serverul dumneavoastră de DNS dinamic:
+ Tipul de serviciu selectat de dumneavoastră necesită o adresă de server la care să se conecteze. Puteți preciza fie un nume de calculator complet sau o adresă IP.
+Description-ru.UTF-8: Адрес сервера динамического DNS:
+ Выбранный вами тип требует адрес сервера для подключения. Вы можете указать полное имя или IP адрес.
+Description-sv.UTF-8: Address för din dynamiska DNS-server:
+ Tjänstetypen du valde kräver en serveradress att ansluta till. Du kan ange antingen ett fullt värdnamn eller en IP-address.
+Description-vi.UTF-8: Địa chỉ cho máy phục vụ DNS động:
+ Bạn đã chọn một kiểu dịch vụ cần thiết một địa chỉ máy phục vụ đến đó cần kết nối. Bạn có khả năng xác định hoặc tên máy đầy đủ hoặc địa chỉ IP.
+
+Template: ez-ipupdate/username
+Type: string
+Description: Username for your Dynamic DNS account:
+Description-ca.UTF-8: Nom d'usuari del servei de DNS dinàmic:
+Description-cs.UTF-8: Uživatelské jméno pro účet dynamického DNS:
+Description-da.UTF-8: Brugernavn for din dynamiske DNS-konto:
+Description-de.UTF-8: Benutzername für Ihr Dynamisches DNS-Konto:
+Description-es.UTF-8: Nombre de usuario de la cuenta del DNS dinámico:
+Description-eu.UTF-8: Zure DNS dinamiko kontuko erabiltzaile-izena:
+Description-fr.UTF-8: Identifiant de votre compte de service de nom dynamique :
+Description-gl.UTF-8: Nome de usuario para a conta de DNS dinámico:
+Description-it.UTF-8: Nome utente per l'account DNS dinamico:
+Description-ja.UTF-8: あなたの動的 DNS アカウントのユーザ名:
+Description-nb.UTF-8: Brukernavn for din dynamiske DNS-konto:
+Description-nl.UTF-8: Gebruikersnaam van uw Dynamische-DNS account:
+Description-no.UTF-8: Brukernavn for din dynamiske DNS-konto:
+Description-pl.UTF-8: Nazwa użytkownika usługi dynamicznego DNS:
+Description-pt.UTF-8: Nome de utilizador para a sua conta de DNS Dinmico:
+Description-pt_BR.UTF-8: Nome do usuário para a sua conta de DNS Dinâmico:
+Description-ro.UTF-8: Numele de utilizator pentru contul dumneavoastră de DNS dinamic:
+Description-ru.UTF-8: Имя пользователя учётной записи в динамическом DNS:
+Description-sv.UTF-8: Användarnamn för ditt dynamiska DNS-konto:
+Description-vi.UTF-8: Tên người dùng cho tài khoản DNS động của bạn:
+
+Template: ez-ipupdate/password
+Type: password
+Description: Password for your Dynamic DNS account:
+Description-ca.UTF-8: Contrasenya del servei de DNS dinàmic:
+Description-cs.UTF-8: Heslo pro účet dynamického DNS:
+Description-da.UTF-8: Adgangskode for din dynamiske DNS-konto:
+Description-de.UTF-8: Passwort für Ihr Dynamisches DNS-Konto:
+Description-es.UTF-8: Contraseña de la cuenta del DNS dinámico
+Description-eu.UTF-8: Zure DNS dinamiko kontuko pasahitza:
+Description-fr.UTF-8: Mot de passe de votre compte de service de nom dynamique :
+Description-gl.UTF-8: Contrasinal para a conta de DNS dinámico:
+Description-it.UTF-8: Password per l'account DNS dinamico:
+Description-ja.UTF-8: あなたの動的 DNS アカウントのパスワード:
+Description-nb.UTF-8: Passord for din dynamiske DNS-konto:
+Description-nl.UTF-8: Wachtwoord van uw Dynamische-DNS account:
+Description-no.UTF-8: Passord for din dynamiske DNS-konto:
+Description-pl.UTF-8: Hasło usługi dynamicznego DNS:
+Description-pt.UTF-8: Palavra chave para a sua conta de DNS Dinmico:
+Description-pt_BR.UTF-8: Senha para a sua conta de DNS Dinâmico:
+Description-ro.UTF-8: Parola pentru contul dumneavoastră de DNS dinamic:
+Description-ru.UTF-8: Пароль учётной записи в динамическом DNS:
+Description-sv.UTF-8: Lösenord för ditt dynamiska DNS-konto:
+Description-vi.UTF-8: Mật khẩu cho tài khoản DNS động của bạn:
+
+Template: ez-ipupdate/interface
+Type: string
+Default: eth0
+Description: Network interface to monitor:
+ ez-ipupdate will monitor the chosen network interface for changes of IP
+ address. It is not possible to automatically detect which interface should
+ be monitored, so you must name the interface here.
+Description-ca.UTF-8: Interfície de xarxa a monitoritzar:
+ ez-ipupdate monitoritzarà els canvis en l'adreça IP de la interfície de xarxa triada. No és possible detectar automàticament quina interfície s'hauria de monitoritzar, l'haureu d'especificar aquí.
+Description-cs.UTF-8: Sledovat síťové rozhraní:
+ ez-ipupdate bude na daném síťovém rozhraní sledovat změny IP adresy. Program neumí odhadnout, které rozhraní má sledovat a proto zde musíte uvést přesný název rozhraní.
+Description-da.UTF-8: Netværksgrænseflade der skal overvåges:
+ ez-ipupdate vil overvåge den valgte netværksgrænseflade for ændringer af IP-adresser. Det er ikke muligt automatisk at detektere hvilken grænseflade der skal overvåges, så du skal navngive grænsefladen her.
+Description-de.UTF-8: Zu verwaltende Netzwerk-Schnittstelle:
+ ez-ipupdate wird die ausgewählte Netzwerk-Schnittstelle auf Veränderungen der IP-Adresse beobachten. Es ist nicht möglich automatisch festzustellen, welche Schnittstelle beobachtet werden soll. Deshalb müssen Sie hier den Namen der Schnittstelle selbst angeben.
+Description-es.UTF-8: Interfaz de red que va a monitorizar:
+ ez-ipupdate monitorizará el interfaz de red elegido por si hubiera cambios de la dirección IP. No es posible detectar automáticamente qué interfaz de red se va a monitorizar, así que debe indicar el nombre aquí.
+Description-eu.UTF-8: Monitorizatuko den sare-interfazea:
+ ez-ipupdate-k aukeratzen duzun sare-interfazea monitorizatuko du IP aldaketarik gertatzen den ikusteko. Ezin da automatikoki detektatu zein interfaze monitorizatu behar den; beraz, zuk interfazea hemen zehaztu behar duzu.
+Description-fr.UTF-8: Interface réseau à surveiller :
+ Ez-ipupdate surveille les changements d'adresse IP sur une interface réseau. Cette interface ne peut pas être détectée automatiquement et vous devez donc la préciser ici.
+Description-gl.UTF-8: Interface de rede a monitorizar:
+ ez-ipupdate ha monitorizar a interface de rede escollida á espera de cambios de enderezo IP. Non é posible detectar automaticamente a interface a monitorizar, polo que debe escribir o seu nome aquí.
+Description-it.UTF-8: Interfaccia di rete da monitorare:
+ ez-ipupdate monitorerà l'interfaccia di rete scelta per cambiamenti di indirizzo IP. Non è possibile trovare automaticamente quale interfaccia deve essere monitorata, per cui bisogna inserire qui il nome dell'interfaccia.
+Description-ja.UTF-8: 監視するネットワークインターフェイス:
+ ez-ipupdate は選択したネットワークインターフェイスの IP アドレスの変更を監視します。監視するインターフェイスを自動検出することは不可能なので、ここでインターフェイス名を指定してください。
+Description-nb.UTF-8: Nettverksgrensesnitt som skal overvåkes:
+ ez-ipupdate kommer til å overvåke det valgte nettverksgrensesnittet etter endringer i IP-adressen. Det er ikke mulig å avgjøre automatisk hvilket grensesnitt som bør overvåkes, så du må velge grensesnitt her.
+Description-nl.UTF-8: Te controleren netwerkinterface:
+ ez-ipupdate controleert de gekozen netwerkinterface voor ip-adreswijzigingen. Daar het niet mogelijk is om de te controleren interfaces automatisch te detecteren dient u de interface hier aan te geven.
+Description-no.UTF-8: Nettverksgrensesnitt som skal overvåkes:
+ ez-ipupdate kommer til å overvåke det valgte nettverksgrensesnittet etter endringer i IP-adressen. Det er ikke mulig å avgjøre automatisk hvilket grensesnitt som bør overvåkes, så du må velge grensesnitt her.
+Description-pl.UTF-8: Interfejs sieciowy do monitorowania:
+ ez-ipupdate będzie monitorował wybrany interfejs sieciowy, szukając zmian adresu IP. Nie da się wykryć go automatycznie, więc konieczne jest ręczne podanie nazwy interfejsu.
+Description-pt.UTF-8: Placa de rede a monitorizar:
+ O ez-ipupdate ir monitorizar a placa de rede escolhida, procurando alteraes de IP. No  possvel detectar automaticamente a placa a ser monitorizada, deste modo dever introduzir o nome da placa neste ponto.
+Description-pt_BR.UTF-8: Interface de rede para monitorar:
+ ez-ipupdate irá monitorar mudanças do endereço IP na interface de rede escolhida. Não é possível detectar automaticamente qual interface deve ser monitorada, portanto você deve nomear a interface aqui.
+Description-ro.UTF-8: Interfața de rețea urmărită:
+ ez-ipupdate va urmări interfața de rețea aleasă pentru a observa schimbările de adresă IP. Nu este posibil să se detecteze interfața care ar trebui urmărită, deci va trebui să o precizați aici.
+Description-ru.UTF-8: Сетевой интерфейс для мониторинга:
+ ez-ipupdate будет контролировать указанный сетевой интерфейс на предмет изменения IP адреса. Невозможно автоматически определить какой интерфейс нужно контролировать, поэтому вы должны указать имя интерфейса.
+Description-sv.UTF-8: Nätverksgränssnitt att övervaka:
+ ez-ipupdate kommer att övervaka det valda nätverkssgränssnittet efter ändringar för IP-addressen. Det är inte möjligt att automatiskt detektera vilket gränssnitt som bör övervakas så du måste välja gränssnitt här.
+Description-vi.UTF-8: Giao diện mạng cần theo dõi:
+ Trình ez-ipupdate sẽ theo dõi giao diện mạng đã chọn, để tìm lần thay đổi địa chỉ IP. Không thể tự động phát hiện giao diện nào cần theo dõi, thì bạn hãy đặt tên của giao diện ở đây.
+
+Template: ez-ipupdate/hostname
+Type: string
+Description: Dynamic DNS hostname to keep updated:
+Description-ca.UTF-8: Nom del sistema que voleu mantenir actualitzat:
+Description-cs.UTF-8: Dynamické DNS jméno počítače, jež se má udržovat aktuální:
+Description-da.UTF-8: Dynamisk DNS-værtsnavn der skal holdes opdateret:
+Description-de.UTF-8: Zu aktualisierender Dynamischer DNS-Hostname:
+Description-es.UTF-8: Nombre del DNS dinámico que se debe mantener actualizado:
+Description-eu.UTF-8: Eguneraturik eduki behar den DNS dinamikoaren ostalari-izena:
+Description-fr.UTF-8: Nom d'hôte dynamique à tenir à jour :
+Description-gl.UTF-8: Nome de DNS dinámico a manter actualizado:
+Description-it.UTF-8: Nome dell'host DNS dinamico da mantenere aggiornato:
+Description-ja.UTF-8: 更新を保持する動的 DNS ホスト名:
+Description-nb.UTF-8: Dynamisk DNS-vertsnavn som skal holdes oppdatert:
+Description-nl.UTF-8: Bij te werken Dynamische-DNS-computernaam:
+Description-no.UTF-8: Dynamisk DNS-vertsnavn som skal holdes oppdatert:
+Description-pl.UTF-8: Nazwa hosta dynamicznego DNS do aktualizowania:
+Description-pt.UTF-8: Nome de mquina DNS Dinmico a manter actualizado
+Description-pt_BR.UTF-8: Nome de máquina do DNS Dinâmico para manter atualizado:
+Description-ro.UTF-8: Numele de calculator de tip DNS dinamic de actualizat:
+Description-ru.UTF-8: Имя машины в динамическом DNS:
+Description-sv.UTF-8: Dynamiskt DNS-värdnamn att hålla uppdaterad:
+Description-vi.UTF-8: Tên máy DNS động cần cứ cập nhật:
+
+Template: ez-ipupdate/dns_wildcard
+Type: boolean
+Default: false
+Description: Enable DNS wildcards for your Dynamic DNS hostname?
+ Many Dynamic DNS providers are capable of supporting "wildcard" DNS
+ lookups. This means that for yourdomain, a lookup for anything.yourdomain
+ will return an answer that points to yourdomain.
+Description-ca.UTF-8: Voleu activar els comodins en la resolució del nom del sistema?
+ Molts proveïdors de DNS dinàmic permeten comodins en la cerca de DNS. Això vol dir que si teniu «domini», una cerca de «quelcom.domini» retornarà una resposta que apuntarà a «domini».
+Description-cs.UTF-8: Povolit zástupné znaky DNS pro dynamické DNS jméno počítače?
+ Mnoho poskytovatelů dynamického DNS podporuje DNS dotazy se zástupnými znaky. To znamená, že pro vasedomena vrátí dotaz na cokoliv.vasedomena odpověď ukazující na vasedomena.
+Description-da.UTF-8: Aktivere DNS-jokertegn for dit dynamiske DNS-værtsnavn?
+ Mange dynamiske DNS-leverandører er i stand til at understøtter »jokertegns« DNS-opslag. Dette betyder at for ditdomæne, vil et opslag for etellerandet.ditdomæne returnere et svar som peger mod ditdomæne.
+Description-de.UTF-8: DNS-Wildcards für Ihren Dynamischen DNS-Hostnamen aktivieren?
+ Viele Dynamische DNS-Provider unterstützen DNS-Lookups mit Platzhaltern (»wildcards«). Das bedeutet: Haben Sie eine Domain namens »ihredomain«, dann werden Anfragen nach »irgendetwas.ihredomain« mit einer Antwort erwidert, die auf »ihredomain« verweist.
+Description-es.UTF-8: ¿Desea habilitar los comodines del DNS para el nombre de su DNS dinámico?
+ Muchos proveedores de DNS dinámico permiten usar comodines en búsquedas DNS Esto significa que para «sudominio», la búsqueda de «cualquiercosa.sudominio» devolverá una respuesta que apunte a «sudominio».
+Description-eu.UTF-8: DNS komodinak gaitu nahi dituzu zure DNS dinamikoaren ostalari-izenerako?
+ DNS dinamiko hornitzaile asko gai dira DNS bilaketarako "komodinak" erabiltzeko. Era horretan, zuredomeinu-rako, edozer.zuredomeinua bilatuz gero, emaitzak zuredomeinu-ra bideratuko gaitu.
+Description-fr.UTF-8: Faut-il activer les requêtes DNS génériques pour votre nom d'hôte dynamique ?
+ De nombreux fournisseurs de service de nom dynamique gèrent les requêtes DNS génériques (« wildcard DNS »). Cela signifie qu'une requête pour « quelquechose.votredomaine.votrezone » sera résolue comme étant une requête vers « votredomaine.votrezone ».
+Description-gl.UTF-8: ¿Activar comodíns DNS para o seu nome de DNS dinámico?
+ Moitos fornecedores de DNS dinámico poden soportar buscas de DNS con "comodíns". Isto significa que se ten o dominio "oseudominio", unha busca de "calqueracousa.oseudominio" ha dar unha resposta que apunta a "oseudominio".
+Description-it.UTF-8: Abilitare i metacaratteri DNS per il proprio host DNS dinamico?
+ Molti fornitori di DNS dinamico supportano le ricerche DNS con i metacaratteri. Ciò significa che, per "miodominio", una ricerca per "qualsiasicosa.miodominio" restituirà una risposta che punta a "miodominio".
+Description-ja.UTF-8: あなたの動的 DNS ホスト名で DNS ワイルドカードを有効にしますか?
+ たいていの動的 DNS プロバイダは "ワイルドカード" DNS ルックアップのサポートを提供しています。これは、yourdomain というドメインがあったとして、<何でも>.yourdomain というルックアップがあったときに yourdomain を指す回答を返すというものです。
+Description-nb.UTF-8: Aktivere DNS-jokertegn for ditt dynamiske DNS-vertnavn?
+ Mange dynamiske DNS-leverandører har mulihet for å gi støtte for «jokertegn» ved DNS-oppslag. Dette betyr at for dittdomene.no kan et oppslag for hvasomhelst.dittdomene.no returnere et svar som peker til dittdomene.no.
+Description-nl.UTF-8: Wilt u jokers activeren voor uw Dynamische-DNS-computernaam?
+ Veel Dynamische-DNS-aanbieders ondersteunen DNS-opzoekingen met jokers. Dit houdt in dat een opzoeking voor iets.uwdomein een antwoord teruggeeft dat naar uwdomein wijst.
+Description-no.UTF-8: Aktivere DNS-jokertegn for ditt dynamiske DNS-vertnavn?
+ Mange dynamiske DNS-leverandører har mulihet for å gi støtte for «jokertegn» ved DNS-oppslag. Dette betyr at for dittdomene.no kan et oppslag for hvasomhelst.dittdomene.no returnere et svar som peker til dittdomene.no.
+Description-pl.UTF-8: Włączyć maskę (ang. wildcard) DNS dla nazwy hosta dynamicznego DNS?
+ Wielu dostawców dynamicznego DNS obsługuje wyszukiwanie masek DNS (ang. wildcard DNS lookup). Oznacza to, że dla twojadomena, wyszukiwanie coś.twojadomena zwróci odpowiedź wskazującą na twojadomena.
+Description-pt.UTF-8: Activar 'DNS wildcards' para o seu nome de mquina DNS Dinmico?
+ Muitos fornecedores de DNS Dinmico so capazes de suportar "wildcard" DNS lookups. Significa que para o seu seu_domnio, uma procura por  qualquer_coisa.seu_domnio devolver-lhe- uma resposta que aponta para o seu_domnio.
+Description-pt_BR.UTF-8: Habilitar máscaras ("wildcards") de DNS para o seu nome de máquina do DNS Dinâmico?
+ Vários provedores de DNS Dinâmico são capazes de suportar consultas para "máscaras" ("wildcards") de DNS. Isso significa que para o seu domínio, uma consulta para qualquercoisa.seudominio vai retornar uma resposta que aponta para o seu domínio.
+Description-ro.UTF-8: Se activează „joker-ii” DNS pentru numele de calculator de tip DNS dinamic?
+ Mulți funizori de DNS dinamic pot oferi suport pentru „joker-i” DNS. Acest lucru înseamnă că pentru domeniul dumneavoastră o interogare pentru orice.domeniul.dumneavoastră va returna un răspuns care indică spre domeniul.dumneavoastră.
+Description-ru.UTF-8: Включить обобщение имени машины в динамическом DNS?
+ Многие провайдеры динамического DNS поддерживают "обобщение" запрашиваемых имён DNS. Например, если ваше имя в DNS -- yourdomain и запрашивается anything.yourdomain, то вернётся ответ, указывающий на ваш yourdomain.
+Description-sv.UTF-8: Aktivera DNS-jokertecken för ditt dynamiska DNS-värdnamn?
+ Många dynamiska DNS-leverantörer har möjligheten att ge stöd för "jokertecken" vid DNS-uppslag. Detta betyder att för dindomän.se kan ett uppslag för vadsomhelst.dindomän.se returnera ett svar som pekar till dindomän.se.
+Description-vi.UTF-8: Bật ký tự đại diện DNS cho tên máy DNS động không?
+ Nhiều nhà cung cấp dịch vụ DNS động có khả năng hỗ trợ việc tra cứu DNS kiểu « đại diện » (wildcard). Có nghĩa là cho « miền_tôi », việc tra cứu « cái_gì.miền_tôi » sẽ trả về một trả lời chỉ tới « miền_tôi ».
+
+Template: ez-ipupdate/dns_mx
+Type: string
+Description: MX record to add:
+ Many Dynamic DNS providers are capable of supporting MX records. If you
+ want an MX record enabled for your domain, specify the content of that MX
+ record here. If you do not want an MX record, leave it blank.
+ .
+ For further information on MX records, what they do, and how they are
+ used, see your Dynamic DNS provider.
+Description-ca.UTF-8: Registre MX a afegir:
+ Molts proveïdors de DNS dinàmic permeten l'ús de registres MX. Si voleu activar un d'aquests registres al vostre domini, especifiqueu-ne el contingut a continuació. Si no voleu un registre MX, deixeu el camp en blanc.
+ .
+ Per a més informació quant a registres MX, el que fan, i com s'utilitzen, consulteu el vostre proveïdor de DNS dinàmic.
+Description-cs.UTF-8: MX záznam:
+ Mnoho poskytovatelů dynamického DNS podporuje MX záznamy. Chcete-li pro svou doménu povolit MX záznam, zadejte zde jeho obsah. V opačném případě ponechte pole prázdné.
+ .
+ Další informace o MX záznamech (co dělají, jak se používají) naleznete u svého poskytovatele dynamického DNS.
+Description-da.UTF-8: MX-punkt der skal tilføjes:
+ Mange dynamiske DNS-leverandører er i stand til at understøtte MX-punkter. Hvis du ønsker et MX-punkt aktiveret for dit domæne, så angiv indholdet for det MX-punkt her. Hvis du ikke ønsker et MX-punkt, så efterlad feltet tomt.
+ .
+ For yderligere information om MX-punkter, hvad de gør, og hvordan de bruges, så konsulter din dynamiske DNS-leverandør.
+Description-de.UTF-8: Hinzuzufügender MX-Record:
+ Viele Dynamische DNS-Provider unterstützen MX-Records. Wollen Sie für Ihre Domain einen MX-Record hinzufügen, dann geben Sie hier bitte den Inhalt des MX-Records an. Wollen Sie keinen MX-Record, dann lassen Sie das Feld frei.
+ .
+ Weitere Informationen über MX-Records, wofür sie gut sind, und wie sie verwendet werden, erfahren Sie von Ihrem Dynamischen DNS-Provider.
+Description-es.UTF-8: Añadir el registro MX:
+ Muchos proveedores de DNS dinámico permiten usar registros MX. Si desea habilitar el registro MX en su dominio, especifique el contenido de ese registro MX aquí. Si no desea un registro MX, déjelo en blanco.
+ .
+ Para más información sobre los registros MX, qué hacen, y cómo se usan, consulte a su proveedor de DNS dinámico.
+Description-eu.UTF-8: MX erregistroa gehitu:
+ DNS dinamiko hornitzaile asko gai dira MX erregistroak erabiltzeko. Zure domeinuan MX erregistro bat gaitu nahi baduzu, zehaztu ezazu MX erregistro horren edukia hemen. MX erregistrorik nahi ez baduzu, utz ezazu hutsik.
+ .
+ MX erregistroez gehiago jakin nahi baduzu, egiten dutenaz edo erabiltzeko eraz, jo ezazu zure DNS dinamiko hornitzailera.
+Description-fr.UTF-8: Enregistrement MX à ajouter :
+ De nombreux fournisseurs de service de nom dynamique gèrent les enregistrements MX. Si vous souhaitez en activer un pour votre domaine, veuillez en indiquer le contenu ici. Si vous laissez ce champ vide, aucun enregistrement MX ne sera ajouté.
+ .
+ Pour plus d'informations sur les enregistrements MX et leur utilisation, veuillez consulter votre fournisseur de service de nom dynamique.
+Description-gl.UTF-8: Rexistro MX a engadir:
+ Moitos fornecedores de DNS dinámico soportan rexistros MX. Se quere activar un rexistro MX no seu dominio, especifique aquí o contido dese rexistro MX. Se non quere un rexistro MX, déixeo en branco.
+ .
+ Para máis información sobre os rexistros MX, o que fan, e como se empregan, consulte ao seu fornecedor de DNS dinámico.
+Description-it.UTF-8: Record MX da aggiungere:
+ Molti fornitori di DNS dinamico supportano i record MX. Se si vuole abilitare un record MX per il proprio dominio, specificare il contenuto di tale record MX qui. Se non si desidera un record MX, lasciare vuoto.
+ .
+ Per maggiori informazioni sui record MX, cosa fanno e come sono utilizzati, consultare il proprio fornitore di DNS dinamico.
+Description-ja.UTF-8: 追加する MX レコード:
+ たいていの動的 DNS プロバイダは MX レコードのサポートを提供しています。あなたのドメインで MX レコードを有効にしたいなら、MX レコードの内容をここで指定してください。MX レコードが不要であれば空のままにしてください。
+ .
+ MX レコード、これが何をするか、どのように使われるかといった情報については、お使いの動的 DNS プロバイダに問い合わせてください。
+Description-nb.UTF-8: MX-peker som skal legges til:
+ Mange dynamiske DNS-leverandører har mulighet til å gi støtte for MX-pekere Hvis du vil ha en MX-peker aktivert for ditt domenr, så oppgi innholdet for den MX-pekeren her. La det stå tomt om du ikke vil ha en MX-peker.
+ .
+ For mer informasjon om MX-pekere, hva de gjør og hvordan de brukes, se din dynamiske DNS-leverandør.
+Description-nl.UTF-8: Toe te voegen MX-record:
+ Veel Dynamische-DNS-aanbieders ondersteunen MX-records. Als u een MX-record wilt activeren voor uw domein dient u de inhoud van dat MX-record hier op te geven. Als u geen MX-record wilt, dient u dit leeg te laten.
+ .
+ Meer informatie over MX-records, wat ze doen, en hoe ze gebruikt worden dient u bij uw Dynamische-DNS-aanbieder op te vragen.
+Description-no.UTF-8: MX-peker som skal legges til:
+ Mange dynamiske DNS-leverandører har mulighet til å gi støtte for MX-pekere Hvis du vil ha en MX-peker aktivert for ditt domenr, så oppgi innholdet for den MX-pekeren her. La det stå tomt om du ikke vil ha en MX-peker.
+ .
+ For mer informasjon om MX-pekere, hva de gjør og hvordan de brukes, se din dynamiske DNS-leverandør.
+Description-pl.UTF-8: Rekord MX do dodania:
+ Wielu dostawców dynamicznego DNS obsługuje rekordy MX. Aby je włączyć, proszę podać tu zawartość rekordu MX. Aby ich nie używać, proszę pozostawić pole puste.
+ .
+ Więcej informacji o rekordach MX, o tym co robią i jak są używane, powinien dostarczyć wybrany dostawca dynamicznego DNS.
+Description-pt.UTF-8: Registo MX a adicionar
+ Muitos fornecedores de DNS Dinmico so capazes de suportar registos MX. Se quiser activar um registo MX para o seu domnio, especifique o contedo desse registo MX neste ponto. Se no quiser um registo MX, deixe em branco.
+ .
+ Para mais informaes sobre registos MX, o que fazem, e como so utilizados, consulte o seu fornecedor de DNS Dinmico.
+Description-pt_BR.UTF-8: Entrada MX a ser adicionada:
+ Vários provedores de DNS Dinâmico são capazes de suportar entradas MX. Se você deseja que uma entrada MX seja habilitada para o seu domínio, especifique aqui o conteúdo da sua entrada MX. Se você não quer uma entrada MX, deixe em branco.
+ .
+ Para maiores informações sobre entradas MX, o que elas fazem, e como são usadas, veja o seu provedor de DNS Dinâmico.
+Description-ro.UTF-8: Înregistrarea MX de adăugat:
+ Mulți funizori de DNS dinamic pot oferi suport pentru înregistrări MX. Dacă doriți activarea unei înregistrări MX pentru domeniul dumneavoastră, precizați conținutul acelei înregistrări MX aici. Dacă nu dorți o asemenea înregistrare, lăsați câmpul liber.
+ .
+ Pentru mai multe informații legate de înregistrarile MX, ce fac și cum se folosesc se vedea furnizorul dumneavoastră de DNS dinamic.
+Description-ru.UTF-8: Добавляемая MX-запись:
+ Многие провайдеры динамического DNS поддерживают MX-записи. Если вы хотите включить MX-запись в свой домен, то укажите здесь данные для MX-записи. Если MX-запись не требуется, оставьте поле пустым.
+ .
+ Подробней о MX-записях, для чего они нужны и как их использовать, читайте в документации предоставляемой вашим провайдером динамического DNS.
+Description-sv.UTF-8: MX-pekare att lägga till:
+ Många dynamiska DNS-leverantörer har möjligheten att ge stöd för MX-pekare. Om du vill ha en MX-pekare aktiverad för din domän, ange innehållet för den MX-pekaren här. Om du inte vill ha en MX-pekare, lämna denna blank.
+ .
+ För mer information om MX-pekare, vad de gör och hur de används, se din dynamiska DNS-leverantör.
+Description-vi.UTF-8: Mục ghi MX cần thêm:
+ Nhiều nhà cung cấp dịch vụ DNS động có khả năng hỗ trợ mục ghi MX. Nếu bạn muốn bật một mục ghi MX cho miền của mình, hãy ghi rõ nội dung của mục ghi MX đó ở đây. Còn nếu bạn không muốn nó, bỏ rỗng.
+ .
+ Để tìm thông tin thêm về mục ghi MX, chức năng và cách sử dụng, xem nhà cung cấp dịch vụ DNS động của bạn.

@@ -1,0 +1,362 @@
+
+Template: prey/reporting_frequency
+Type: string
+Default: 20
+Description: Frequency of Prey reports and actions (minutes):
+ Please enter the time to wait before waking up Prey. Control Panel users can
+ change this setting later through the web interface.
+Description-cs.UTF-8: Frekvence hlášení a akcí Prey (v minutách):
+ Zadejte prosím čas, po který čekat před aktivací Prey. Uživatele s přístupem k ovládacímu panelu si mohou toto nastavení ve webovém rozhraní změnit.
+Description-da.UTF-8: Frekvens for Prey-rapporter og -handlinger (minutter):
+ Indtast venligst tidsperioden der skal ventes før Prey vækkes. Bruger af kontrolpanelet kan ændre denne indstilling via internetbrugerfladen.
+Description-de.UTF-8: Zeitabstand der Prey-Berichte und -Aktionen (Minuten):
+ Bitte geben Sie die Zeit ein, die vor dem Aufwecken von Prey gewartet werden soll. Benutzer des Kontrollfelds können diese Einstellung später über die Web-Schnittstelle ändern.
+Description-es.UTF-8: Frecuencia de informes y acciones de Prey en minutos:
+ Introduzca el tiempo de espera antes de iniciar Prey. Los usuarios del Panel de Control pueden modificar esta opción en otro momento a través la interfaz web.
+Description-fi.UTF-8: Preyn raporttien ja toimintojen tiheys (minuutteina):
+ Anna odotusaika ennen Preyn herättämistä. Hallintapaneelin käyttäjät voivat vaihtaa tätä asetusta myöhemmin verkkokäyttöliittymän kautta.
+Description-fr.UTF-8: Intervalle entre les actions et rapports de Prey (en minutes) :
+ Veuillez indiquer le délai entre chaque lancement de Prey. Les utilisateurs du panneau de contrôle peuvent modifier ultérieurement ce réglage via l'interface web.
+Description-nl.UTF-8: Frequentie van Prey-rapporten en acties (in minuten):
+ Hoe lang moet er gewacht worden voordat Prey wordt gewekt? Gebruikers van het controlepaneel kunnen deze instelling later wijzigen via de webinterface.
+Description-pt.UTF-8: Frequência de relatórios e acções Prey (minutos):
+ Por favor introduza o tempo de espera para acordar o Prey. Os utilizadores do Painel de Controlo podem alterar esta configuração mais tarde através da interface web.
+Description-pt_BR.UTF-8: Frequência dos relatórios e ações do Prey (minutos):
+ Por favor, informe o tempo a esperar antes de acordar o Prey. Usuários do painel de controle podem modificar essa configuração depois através da interface web.
+Description-ru.UTF-8: Частота отправки отчётов и действий Prey (в минутах):
+ Введите время задержки перед активацией Prey. В режиме Control Panel пользователи могут изменить эту настройку через веб-интерфейс.
+Description-sk.UTF-8: Frekvencia hlásení a činností Prey (v minútach):
+ Ako dlho čakať pred zobudením Prey. Používatelia Riadiaceho panelu môžu toto nastavenie neskôr zmeniť pomocou webového rozhrania.
+Description-sv.UTF-8: Frekvens för Prey-rapporter och -åtgärder (minuter):
+ Ange tiden som ska förflyta innan Prey startas. Körs Prey i läget Kontrollpanel kan denna inställning ändras senare genom webbgränssnittet.
+
+Template: prey/active_modules
+Type: multiselect
+Choices: ${choices}
+Default: alarm
+Description: Modules to enable:
+ Prey has many optional modules; if enabled they will be triggered
+ automatically if prey recognizes that the device is stolen.
+ .
+  * alarm:   plays a loud sound for 30 seconds;
+  * alert:   shows the thief a short message (and may change the
+             wallpaper);
+  * geo:     attempts to geolocate the device by using its internal
+             GPS or the nearest WiFi access points as reference;
+  * lock:    locks the device and asks for a password;
+  * network: collects information about the Internet connection;
+  * secure:  deletes browser cookies and stored passwords;
+  * session: takes a screenshot, collects information about modified
+             files and running programs;
+  * system:  collects information about the hardware configuration of
+             the machine;
+  * webcam:  tries to take a picture using the webcam.
+Description-cs.UTF-8: Povolit moduly:
+ Prey má mnoho volitelných modulů; povolíte-li je, automaticky se spustí, jakmile Prey rozpozná, že bylo zařízení odcizeno.
+ .
+  * alarm:   po dobu 30 sekund přehraje hlasitý zvuk;
+  * alert:   zloději zobrazuje krátkou zprávu (a může změnit
+             tapetu);
+  * geo:     pomocí interní GPS či referenčních přístupových
+             bodů pro WiFi se pokusí určit, kde se zařízení nachází;
+  * lock:    uzamkne zařízení a požádá o zadání hesla;
+  * network: shromažďuje informace o připojení k Internetu;
+  * secure:  z prohlížeče vymaže soubory cookie a uložená hesla;
+  * session: pořizuje snímek obrazovky, shromažďuje informace o změněných
+             souborech a spuštěných programech;
+  * system:  shromažďuje informace o hardwarové konfiguraci
+             počítače;
+  * webcam:  pomocí webové kamery se pokusí pořídit snímek.
+Description-da.UTF-8: Moduler at aktivere:
+ Prey har mange valgfrie moduler; hvis aktiveret vil de blive udløst automatisk, hvis prey ser, at enheden er stjålet.
+ .
+  * alarm:   afspiller en høj lyd i 30 sekunder;
+  * alert:   viser tyven en kort besked (og kan ændre baggrundsbilledet);
+  * geo:     forsøger at lokalisere enheden ved at bruge enhedens interne
+             GPS eller det nærmeste WiFi-adgangspunkt som reference;
+  * lock:    låser enheden og spørger efter en adgangskode;
+  * network: indsamler information om Internetforbindelsen;
+  * secure:  sletter browsercookier og gemte adgangskoder;
+  * session: tager et skærmbillede, indsamler information om ændrede
+             filer og kørende programmer;
+  * system:  indsamler information om udstyrets (hardware) konfiguration
+             af maskinen;
+  * webcam:  forsøger at tage et billede med internetkameraet.
+Description-de.UTF-8: Zu aktivierende Module:
+ Prey hat viele optionale Module; falls sie aktiviert sind, werden sie automatisch ausgelöst, wenn Prey erkennt, dass das Gerät gestohlen wurde.
+ .
+  * alarm:   spielt 30 Sekunden lang ein lautes Geräusch
+  * alert:   zeigt dem Dieb eine kurze Nachricht (und kann das
+             Hintergrundbild ändern)
+  * geo:     versucht das Gerät mit internem GPS oder den nächsten
+             WiFi-Zugangspunkten als Bezugspunkten zu orten
+  * lock:    sperrt das Gerät und erfragt ein Passwort
+  * network: sammelt Informationen über die Internetverbindung
+  * secure:  löscht Browser-Cookies und gespeicherte Passwörter
+  * session: schießt ein Bildschirmfoto, sammelt Informationen über geänderte
+             Dateien und laufende Programme
+  * system:  sammelt Informationen über die Hardware-Konfiguration des Rechners
+  * webcam:  versucht mit der Webcam ein Bild aufzunehmen
+Description-es.UTF-8: Módulos que activar:
+ Prey ofrece varios módulos opcionales. Si están activos, se iniciarán automáticamente si Prey detecta que el dispositivo ha sido robado.
+ .
+  * alarm:   Emite un fuerte sonido durante 30 segundos.
+  * alert:   Muestra un corto mensaje al ladrón (y puede que cambie
+             el fondo de escritorio).
+  * geo:     Intenta geolocalizar el dispositivo utilizando el sistema
+             GPS integrado, o los puntos de acceso WiFi más cercanos
+             como referencia.
+  * lock:    Bloquea el dispositivo y pide una contraseña.
+  * network: Reúne información de la conexión a Internet.
+  * secure:  Elimina «cookies» de explorador y contraseñas guardadas.
+  * session: Guarda la sesión, reuniendo información de ficheros
+             modificados y de los programas en ejecución.
+  * system:  Reúne información de la configuración de hardware
+             del sistema. * webcam:  Intenta tomar una fotografía usando la cámara web.
+Description-fr.UTF-8: Modules à activer :
+ Prey fournit de nombreux modules facultatifs. Veuillez choisir ceux qui seront activés et utilisés si cette machine est volée.
+ .
+  * alarm :   diffuse un son à volume élevé pendant 30 secondes ;
+  * alert :   affiche un message bref au voleur (et peut modifier
+              le papier-peint du bureau) ;
+  * geo :     tente de géolocaliser le périphérique avec son GPS
+              interne ou avec les points d'accès WiFi les plus
+              proches ;
+  * lock :    verrouille le périphérique et demande un mot de passe ;
+  * network : récupère les informations de la connexion réseau ;
+  * secure :  supprime les cookies et les mots de passe sauvegardés
+              du navigateur ;
+  * session : réalise une capture d'écran, récupère les informations sur
+              les fichiers modifiés et les programmes exécutés ;
+  * system :  récupère les informations sur la configuration matérielle
+              de la machine ;
+  * webcam :  tente de prendre une photo avec la webcam.
+Description-nl.UTF-8: In te schakelen modules:
+ Prey heeft veel optionele modules; indien actief zullen ze automatisch worden getriggerd wanneer Prey er achter komt dat het apparaat is gestolen.
+ .
+  * alarm:   Laat 30 seconden lang een hard geluid horen.
+  * alert:   Toont de dief een kort bericht (en kan de
+             achtergrondafbeelding veranderen).
+  * geo:     Probeert de geografische locatie van het apparaat te
+             achterhalen met behulp van de interne GPS of de nabije
+             WiFi-toegangspunten.
+  * lock:    Vergrendelt het apparaat en vraagt om een wachtwoord.
+  * network: Verzamelt informatie over de internetverbinding.
+  * secure:  Verwijdert de cookies en opgeslagen wachtwoorden van de
+             browser.
+  * session: Maakt een schermafdruk en verzamelt informatie over
+             gewijzigde bestanden en programma's die uitgevoerd worden.
+  * system:  Verzamelt informatie over de hardwareconfiguratie van de
+             machine.
+  * webcam:  Probeert een foto te maken met de webcam.
+Description-pt.UTF-8: Módulos a activar:
+ O Prey possui muitos módulos opcionais; se estiverem activados serão disparados automaticamente caso o prey verifique que o dispositivo foi roubado.
+ .
+  * alarm:   toca um som alto durante 30 segundos;
+  * alert:   mostra ao ladrão uma curta mensagem ( o wallpaper
+             pode ser alterado);
+  * geo:     tenta geo-localizar o dispositivo utilizando o GPS interno
+             ou os pontos de acessos WiFi mais próximos como referência;
+  * lock:    bloqueia o dispositivo e pede uma password;
+  * network: recolhe informação acerca da ligação à Internet;
+  * secure:  apaga cookies do browser e passwords armazenadas;
+  * session: tira uma imagem do ecrã, recolhe informação acerca de ficheiros
+             modificados e programas a correr;
+  * system:  recolhe informação sobre a configuração do hardware da
+             máquina;
+  * webcam:  tenta tirar uma imagem usando a webcam.
+Description-ru.UTF-8: Включаемые модули:
+ Для prey есть много вспомогательных модулей; если их включить, то они будут вызываться автоматически, если prey обнаружит, что устройство украдено.
+ .
+  * alarm:   воспроизводит громкий звук 30 секунд;
+  * alert:   показывает вору короткое сообщение (может изменить
+             обои рабочего стола);
+  * geo:     пытается определить местоположение устройства с помощью
+             встроенного GPS или ближайших точек WiFi;
+  * lock:    блокирует устройство и запрашивает пароль;
+  * network: собирает информацию о подключении к Интернет;
+  * secure:  удаляет куки браузера и хранимые пароли;
+  * session: делает снимок экрана, собирает информацию об изменённых
+             файлах и работающих программах;
+  * system:  собирает информацию об аппаратуре компьютера;
+  * webcam:  пытается сделать снимок с помощью веб-камеры.
+Description-sk.UTF-8: Ktoré moduly zapnúť:
+ Prey má mnoho nepovinných modulov. Ak sú zapnuté, spustia sa automaticky, keď Prey zistí, že bolo zariadenie ukradnuté.
+ .
+  * alarm:       prehrať na 30 sekúnd hlasný zvuk.
+  * geo:         pokúsiť sa o geolokalizáciu zariadenia podľa jeho
+                 vnútorného GPS alebo najbližšieho prístupového
+                 bodu WiFi.
+  * relácia:     urobiť snímku obrazovky, zhromažďovať informácie
+                 o zmenených súboroch a bežiacich programoch.
+  * sieť:        zhromažďovať informácie o pripojení k internetu.
+  * systém:      zhromaždí informácie o hardvérovej konfigurácii
+                 počítača.
+  * upozornenie: zobraziť zlodejovi krátku správu a voliteľne
+                 zmeniť pozadie plochy.
+  * webcam:      skúsiť urobiť snímku webkamerou.
+  * zabezpečiť:  zmazať cookies prehliadača a uložené heslá.
+  * zámok:       zamknúť notebook a vyžadovať heslo.
+Description-sv.UTF-8: Moduler att aktivera:
+ Prey har många frivilliga moduler; om dessa aktiveras kommer de att köras automatiskt om prey känner igen enheten som stjäls.
+ .
+  * alarm: aktiverar ett starkt ljud i 30 sekunder
+  * alert: visar tjuven ett kort meddelande (och kan byta skrivbordets
+             bakgrundsbild)
+  * geo: försöker geografiskt bestämma var enheten befinner sig med
+             hjälp av den interna GPS:en eller närmsta accesspunkt för
+             trådlöst nätverk.
+  * lock: låser enheten och frågar efter lösenord.
+  * network: samlar informaion om Internetanslutningen
+  * secure: raderar kakor och sparade lösenord från webbläsare
+  * session: gör en skärmavbildning och samlar information om ändrade
+             filer och körande program
+  * system: samlar information om hårdvara och inställningar för maskinen.
+  * webcam: försöker ta en bild med webbkameran.
+
+Template: prey/edit_config
+Type: note
+Description: Configuration required
+ To finish configuring Prey, you need to edit "/etc/prey/config" and
+ choose its running mode. The options are:
+ .
+  * Control Panel: reports are sent to preyproject.com. Go to
+                   http://control.preyproject.com/signup and create
+                   an account, then set "apt_key" and "device_key"
+                   appropriately in the configuration file.
+  * Standalone:    reports are sent directly to the owner at a
+                   specified mail or SSH (scp/sftp) server when
+                   activated via a trigger URL under your control.
+Description-cs.UTF-8: Je vyžadováno nastavení
+ K dokončení nastavení Prey je třeba, abyste upravili soubor "/etc/prey/config" a zvolili si režim spuštění. Možnosti jsou:
+ .
+  * Ovládací panel: hlášení se zasílají na preyproject.com. Jděte na
+                   http://control.preyproject.com/signup a založte si
+                   si účet a následně v konfiguračním souboru nastavte volby
+                   "apt_key" a "device_key"
+  * Samostatně:    hlášení se zasílají přímo majiteli na uvedený e-mail či
+                   na SSH (scp/sftp) server, je-li aktivován přes 
+                   spouštěcí URL, kterou máte pod kontrolou.
+Description-da.UTF-8: Krævet konfiguration
+ For at afslutte konfigurationen af Prey skal du redigere »/etc/prey/config« og vælge dennes kørselstilstand. Indstillingerne er:
+ .
+  * Control Panel: rapporter sendes til preyproject.com. Gå til
+                   http://control.preyproject.com/signup og opret
+                   en konto, indstil så »apt_key« og »device_key«
+                   tilsvarende i konfigurationsfilen.
+  * Standalone:    rapporter sendes direkte til ejeren på en angivet
+                   e-post- eller SSH-server (scp/sftp) når den
+                   aktiveres via en udløseradresse (URL) under din kontrol.
+Description-de.UTF-8: Konfiguration erforderlich
+ Um die Konfiguration von Prey abzuschließen, müssen Sie »/etc/prey/config« bearbeiten und den Ausführungsmodus wählen. Die Optionen lauten:
+ .
+  * Control Panel: Berichte werden an preyproject.com gesandt. Gehen Sie auf
+                   http://control.preyproject.com/signup und legen Sie ein
+                   Konto an. Dann setzen Sie in der Konfigurationsdatei
+                   »apt_key« und »device_key« auf geeignete Werte.
+  * Standalone:    Berichte werden direkt an den Besitzer auf einem
+                   angegebenen Mail- oder SSH-Server (scp/sftp) gesandt, wenn
+                   dies über eine auslösenden URL unter Ihrer Kontrolle
+                   aktiviert wird.
+Description-es.UTF-8: Requisitos de configuración
+ Para finalizar la configuración de Prey, debe editar «/etc/prey/config» y seleccionar el modo de funcionamiento. Las opciones son:
+ .
+  * Control Panel: Los informes se envían a «preyproject.com».
+                   Visite «http://control.preyproject.com/signup» y cree
+                   una cuenta. A continuación, defina «apt_key» y «device_key»
+                   adecuadamente en el fichero de configuración.
+  * Standalone:    Los informes se envían directamente al propietario
+                   mediante una dirección definida, o servidor SSH (scp/sftp)
+                   cuando se inicie mediante una URL de activado bajo su control.
+Description-fi.UTF-8: Asetuksia tulee muokata
+ Preyn asetusten viimeisteleminen vaatii, että muokkaat tiedostoa /etc/prey/config ja valitset missä tilassa ohjelmaa ajetaan. Vaihtoehdot ovat:
+ .
+  * Control Panel: Raportit lähetetään palveluun preyproject.com.
+                   Mene sivulle http://control.preyproject.com/signup ja
+                   luo tunnus. Tämän jälkeen muokkaa asetuksia ”apt_key” 
+                   ja ”device_key” asianmukaisesti asetustiedostossa.
+  * Standalone:    Raportit lähetetään suoraan omistajalle annettuun
+                   sähköpostiosoitteeseen tai SSH-palvelimelle
+                   (scp/sftp), kun otat yhteyttä määrittelemääsi 
+                   laukaisu-URLiin.
+Description-fr.UTF-8: Configuration indispensable
+ Pour terminer la configuration de Prey, vous devez modifier le fichier « /etc/prey/config » et choisir son mode de fonctionnement. Les options possibles sont :
+ .
+  * Control Panel : Panneau de contrôle.
+                    Les rapports sont envoyés à preyproject.com.
+                    Vous devez vous rendre sur
+                    http://control.preyproject.com/signup, créer un
+                    compte puis configurer « apt_key » et « device_key »
+                    correctement dans le fichier de configuration.
+  * Standalone :    Autonome
+                    Les rapports sont envoyés directement au
+                    propriétaire à une adresse électronique
+                    prédéfinie ou par SSH (scp/sftp) à un serveur
+                    lorsqu'il est activé par une URL contrôlée
+                    par le propriétaire.
+Description-nl.UTF-8: Configuratie vereist
+ Om de configuratie van Prey te voltooien dient u "/etc/prey/config" te bewerken en de uitvoeringsmodus te kiezen. De mogelijkheden zijn:
+ .
+  * Controlepaneel: Rapporten worden naar preyproject.com gestuurd.
+                    Ga naar http://control.preyproject.com/signup en
+                    maak een account aan. Stel daarna in het
+                    configuratiebestand de "apt_key" en "device_key"
+                    in op de juiste waarde.
+  * Zelfstandig:    Rapporten worden direct naar de eigenaar gestuurd
+                    op de opgegeven e-mail- of SSH-server (scp/sftp)
+                    wanneer geactiveerd door een trigger-URL onder uw
+                    beheer.
+Description-pt.UTF-8: Configuração necessária
+ Para terminar de configurar o Prey, necessita de editar "/etc/prey/config" e escolher o método de funcionamento. As opções são:
+ .
+  * Control Panel: os relatórios são enviados para preyproject.com. Vá a
+                   http://control.preyproject.com/signup e crie uma
+                   conta, configurando a "apt_key" e o "device_key"
+                   apropriadamente no ficheiro de configuração.
+  * Standalone:    os relatórios são enviados directamente para o dono para
+                   um e-mail específico ou servidor SSH (scp/sftp)
+                   quando activado através de um URL sob o seu controlo.
+Description-pt_BR.UTF-8: Configuração necessária
+ Para finalizar a configuração do Prey, você precisa editar o arquivo "/etc/prey/config" e escolher o seu modo de execução. As opções são:
+ .
+  * Painel de Controle: relatórios são enviados para preyproject.com. Vá
+                        em http://control.preyproject.com/signup e crie
+                        uma conta, então configure "apt_key" e
+                        "device_key" adequadamente no arquivo de
+                        configuração.
+  * Autônomo:           relatórios são enviados diretamente ao dono em um
+                        servidor de e-mail ou SSH (scp/sftp) específico
+                        quando ativado via uma URL gatilho sob o seu
+                        controle.
+Description-ru.UTF-8: Требуется настройка
+ Для завершения настройки Prey вам нужно отредактировать файл «/etc/prey/config» и выбрать режим работы. Варианты:
+ .
+  * Control Panel: посылать сообщения на preyproject.com. Перейдите
+                   на http://control.preyproject.com/signup и создайте
+                   учётную запись, а затем внесите полученные данные
+                   для «apt_key» и «device_key» в файл настройки.
+  * Standalone:    посылать сообщения владельцу на указанный адрес
+                   электронной почты или на сервер SSH (scp/sftp) при
+                   активации через сигнальный URL, находящийся под вашим
+                   управлением.
+Description-sk.UTF-8: Vyžaduje sa nastavenie
+ Konfiguráciu Prey dokončíte upravením súboru „/etc/prey/config“ a zvolením režimu, v ktorom pobeží. Možnosti sú:
+ .
+  * Riadiaci panel: Hlásenia sa posielajú na preyproject.com. Po získaní
+                    účtu na http://control.preyproject.com/signup
+                    nastavte „apt_key“ a „device_key“ v konfiguračnom
+                    súbore.
+  * Samostatný:     Hlásenia sa posielajú priamo vlastníkovi na
+                    určený poštový alebo SSH (scp/sftp) server
+                    po aktivovaní spúšťacím URL, ktorý máte pod
+                    kontrolou.
+Description-sv.UTF-8: Inställningar måste göras
+ För att slutföra inställningarna av Prey behöver du redigera "/etc/prey/config" och ange körläge. Alternativen är:
+ .
+  * Kontrollpanel: rapporter skickas till preyproject.com. Gå till
+                   http://control.preyproject.com/signup och skapa
+                   ett konto. Ange sedan "apt_key" och "device_key"
+                   korrekt i konfigurationsfilen.
+  * Fristående: rapporter skickas direkt till ägaren på en specifik
+                    e-post-adress eller SSH(scp/sftp)-server när en URL
+                    du kontrollerar aktiveras.

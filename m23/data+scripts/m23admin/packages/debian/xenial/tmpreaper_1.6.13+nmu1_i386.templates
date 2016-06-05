@@ -1,0 +1,422 @@
+Template: tmpreaper/confignowexists
+Type: note
+Description: tmpreaper can now be adjusted through /etc/tmpreaper.conf
+ Any local preferences for the daily tmpreaper run should now be configured
+ through /etc/tmpreaper.conf (explanation is in that file).
+ .
+ Previously, you had to modify /etc/cron.daily/tmpreaper which could be a
+ pain because that got updated regularly, and you'd have to reimplement
+ your modifications each time (or miss out on the new changes). Now you can
+ adjust the file age, extra --protect patterns, and which directories to reap
+ in /etc/tmpreaper.conf.
+ .
+ For this to work, however, you have to install the new
+ /etc/cron.daily/tmpreaper file now.
+Description-cs.UTF-8: Tmpreaper nyní můžete nastavit pomocí /etc/tmpreaper.conf
+ Všechna nastavení pro každodenní běh tmpreaperu by se nyní měla provádět v souboru /etc/tmpreaper.conf (vysvětlení je uvnitř souboru).
+ .
+ Dříve jste museli upravovat /etc/cron.daily/tmpreaper, což mohlo působit problémy, protože tento soubor byl pravidelně přepisován a museli jste si vybrat, zda budete zadávat své úpravy znova a znova, nebo zda oželíte nové změny. V souboru /etc/tmpreaper.conf nyní můžete nastavit stáří mazaných souborů, speciální vzory pro volbu --protect a seznam promazávaných adresářů.
+ .
+ Aby to fungovalo, musí se nyní nainstalovat nový soubor /etc/cron.daily/tmpreaper.
+Description-da.UTF-8: tmpreaper kan nu justeres via /etc/tmpreaper.conf
+ Alle lokale præferencer for den daglige tmpreaperkørsel skal nu konfigureres via /etc/tmpreaper.conf (forklaring er i den fil).
+ .
+ Tidligere, måtte du ændre /etc/cron.daily/tmpreaper hvilket kunne være særdeles besværligt da den opdateres dagligt, og du måtte gendanne dine ændringer hver gang (eller miste de nye ændringer). Nu kan du justere filalderen, der er ekstra --protect mønstre, og vælge hvilke mapper der skal læses fra i /etc/tmpreaper.conf.
+ .
+ For at dette skal virke, skal du dog installere den nye fil /etc/cron.daily/tmpreaper nu.
+Description-de.UTF-8: tmpreaper kann jetzt über /etc/tmpreaper.conf angepasst werden
+ Alle Einstellungen für den täglichen tmpreaper-Lauf können jetzt in der Datei /etc/tmpreaper.conf vorgenommen werden (Erklärungen zu den Optionen finden Sie in dieser Datei).
+ .
+ Bisher musste die Datei /etc/cron.daily/tmpreaper angepasst werden, die allerdings regelmäßig aktualisiert wurde. Dadurch mussten Sie jeweils Ihre Änderungen erneut einpflegen (oder auf die neuen Änderungen verzichten). Jetzt können Sie das Dateialter, zusätzliche »--protect«-Begriffe und die zu bearbeitenden Verzeichnisse in /etc/tmpreaper.conf angeben.
+ .
+ Damit dies funktioniert, müssen Sie jetzt allerdings die neue Datei /etc/cron.daily/tmpreaper installieren.
+Description-es.UTF-8: Puede ajustar tmpreaper a través de «/etc/tmpreaper.conf»
+ Puede configurar la preferencia local para la ejecución diaria de tmpreaper en el fichero «/etc/tmpreaper.conf» (encontrará una explicación de cómo hacerlo en ese fichero).
+ .
+ En versiones anteriores tenía que modificar «/etc/cron.daily/tmpreaper», lo que era un problema porque se actualizaba con frecuencia y tenía que reimplementar sus cambios tras cada modificación (o perderse los nuevos cambios). Ahora puede ajustar el tiempo, patrones extra para «--protect» y los directorios a vaciar en «/etc/tmpreaper.conf».
+ .
+ Sin embargo, para que esto funcione, debe instalar ahora el nuevo archivo «/etc/cron.daily/tmpreaper».
+Description-eu.UTF-8: tmpreaper orain /etc/tmpreaper.conf bidez doitu daiteke
+ Eguneroko tmpreaper exekuzioari buruzko edozein erreferentzi lokal orain /etc/tmpreaper.conf bidez konfiguratu behar da (azalpena fitxategi honetan).
+ .
+ Aurreko bertsioetan /etc/cron.daily/tmpreaper aldatu egin behar zen, hau arazo bat zen aldiro bertsio-berritzen bait zen eta zuk zure pertsonalizazioak bertsio-berritze bakoitzean berregin behar bait zenituen (edo aldaketa berriak galdu). Orain fitxategi data, --protect patroi gehigarriak, eta garbitu behar diren direktorioak /etc/tmpreaper.conf-en konfiguratu ditzakezu.
+ .
+ Honetarako /etc/cron.daily/tmpreaper fitxategi berria orain instalatu behar duzu.
+Description-fr.UTF-8: Tmpreaper peut maintenant être configuré via /etc/tmpreaper.conf
+ Toutes les préférences locales pour l'exécution quotidienne de tmpreaper doivent maintenant être configurées via /etc/tmpreaper.conf (ce fichier contient des explications).
+ .
+ Auparavant, vous deviez modifier /etc/cron.daily/tmpreaper ce qui était pénible car ce fichier est régulièrement mis à jour, vous obligeant à renouveler vos modifications (ou à ne pas prendre en compte les nouvelles évolutions). Maintenant, vous pouvez définir l'âge des fichiers, les modèles (« patterns ») supplémentaires pour « --protect », ainsi que les répertoires à analyser grâce au fichier /etc/tmpreaper.conf.
+ .
+ Pour réaliser cette tâche, vous devez installer dès à présent le nouveau fichier /etc/cron.daily/tmpreaper.
+Description-gl.UTF-8: Agora pódese axustar tmpreaper mediante /etc/tmpreaper.conf
+ As preferencias locais para a execución diaria de tmpreaper débense configurar mediante /etc/tmpreaper.conf (as explicacións están nese ficheiro).
+ .
+ Antes tiña que modificar /etc/cron.daily/tmpreaper, o que podía ser problemático porque se actualizaba con regularidade, e tería que reimplementar as súas modificacións de cada vez (ou non recibir os novos cambios). Agora pode axustar a idade dos ficheiros, engadir patróns --protect, e novos directorios a colleitar en /etc/tmpreaper.conf.
+ .
+ Para que isto funcione, nembargantes, ten que instalar agora o novo ficheiro /etc/cron.daily/tmpreaper.
+Description-it.UTF-8: Adesso è possibile configurare tmpreaper tramite /etc/tmpreaper.conf
+ Tutte le impostazioni locali per l'esecuzione quotidiana di tmpreader dovrebbero essere fatte attraverso /etc/tmpreaper.conf (la spiegazione è nel file).
+ .
+ In precedenza era necessario modificare /etc/cron.daily/tmpreaper, questo poteva essere un'operazione noiosa perché veniva aggiornato regolarmente e quindi ogni volta era necessario rifare le proprie modifiche (o non sfruttare le nuove modifiche). Adesso è possibile impostare in /etc/tmpreaper.conf l'età dei file, dei pattern aggiuntivi per --protect e quali directory ripulire.
+ .
+ Per far funzionare tutto ciò, è necessario installare un nuovo /etc/cron.daily/tmpreaper.
+Description-ja.UTF-8: tmpreaper は /etc/tmpreaper.conf で調整できるようになりました。
+ tmpreaper の日次での実行についてのローカルの設定は /etc/tmpreaper.conf で設定できるようになりました (設定はそのファイル内に記載されています)。
+ .
+ 以前は /etc/cron.daily/tmpreaper を変更する必要がありましたが、これは面倒なことでした。なぜならばこれは頻繁に更新され、その度に自分の設定に入れ替えないといけなかったからです (でなければ新しい変更点を見過ごすことになるでしょう)。これからは /etc/tmpreaper.conf に --protect patterns を追加することでファイルの期間を、そしてどのディレクトリを消去するかを調整できるようになったのです。
+ .
+ しかしながら、これを動作させるには、新たに /etc/cron.daily/tmpreaper ファイルをインストールする必要があります。
+Description-nl.UTF-8: tmpreaper kan nu via /etc/tmpreaper.conf aangepast worden
+ Eigen voorkeuren voor tmpreaper kunnen nu via /etc/tmpreaper.conf geconfigureerd worden (in die file zelf wordt uitleg gegeven).
+ .
+ Voorheen moest de /etc/cron.daily/tmpreaper script rechtstreeks aangepast worden, en dat was lastig wanneer die in een nieuwe versie ook veranderd was. Je moest dan steeds opnieuw je eigen aanpassingen maken, of de wijzigingen van de nieuwe versie missen. Nu kan de file leeftijd, extra --protect patterns en welke directories geschoond moeten worden, aangegeven worden in /etc/tmpreaper.conf.
+ .
+ Voordat dit kan gaan werken, moet nu wel de nieuwe versie van /etc/cron.daily/tmpreaper geinstalleerd worden.
+Description-pt.UTF-8: tmpreaper pode ser agora ajustado através de /etc/tmpreaper.conf
+ Quaisquer preferências locais para a execução diária do tmpreaper devem ser configuradas através de /etc/tmpreaper.conf (explicações no ficheiro).
+ .
+ Anteriormente, tinha que modificar /etc/cron.daily/tmpreaper, o que podia ser difícil porque esse ficheiro é actualizado regularmente e você teria de re-implementar as suas modificações (ou não tirar partido das novas alterações). Agora pode ajustar a idade do ficheiro, padrões --protect extra, e que directórios limpar em /etc/tmpreaper.conf.
+ .
+ No entanto, para que isto funcione, tem que instalar agora o novo ficheiro /etc/cron.daily/tmpreaper.
+Description-ru.UTF-8: tmpreaper теперь можно управлять через /etc/tmpreaper.conf
+ Любые локальные настройки для ежедневного запуска tmpreaper теперь нужно проводить в /etc/tmpreaper.conf (объяснение даны в этом файле).
+ .
+ Раньше, вы изменяли /etc/cron.daily/tmpreaper, что могло быть непросто, так как он регулярно обновлялся, и вам приходилось вносить свои изменения каждый раз заново (или выкидывать появившиеся изменения). Теперь вы можете подстраивать срок хранения файла, дополнительные шаблоны --protect и очищаемые каталоги в /etc/tmpreaper.conf.
+ .
+ Для этого сейчас вам нужно установить новый файл /etc/cron.daily/tmpreaper.
+Description-sv.UTF-8: tmpreaper kan justeras genom /etc/tmpreaper.conf
+ Alla lokala inställningar för dagliga tmpreaper ska numera ställas in genom /etc/tmpreaper.conf (förklaringar för inställningarna finns i filen).
+ .
+ Tidigare var du tvungen att redigera /etc/cron.daily/tmpreaper vilket var en irriterande process då filen uppdaterades med jämna mellanrum och inställningarna då behövde läggas tillbaka (eller så glömdes det bort med alla problem det innebär). Nu kan filålder och --protect-mönster och vilka kataloger som ska övervakas i /etc/tmpreaper.conf.
+ .
+ För att det här ska fungera måste du dock installera den nya filen för /etc/cron.daily/tmpreaper nu.
+Description-vi.UTF-8: Giờ này có thể điều chỉnh tmpreaper bằng « /etc/tmpreaper.conf ».
+ Bất cứ tùy thích nào về tiến trình chạy tmpreaper hàng ngày nên được cấu hình trong tập tin « /etc/tmpreaper.conf » (xem tập tin này để tìm chi tiết).
+ .
+ Lần trước, bạn đã cần phải sửa đổi tập tin « /etc/cron.daily/tmpreaper », mà có thể làm phiền vì nó cập nhật đều đặn, thì bạn cần phải sửa đổi lại (không thì không có sự thay đổi mới). Lúc bây giờ bạn có thể điều chỉnh thời gian hoạt động của tập tin, mẫu « --protect » (bảo vệ) thêm và những thư mục nào cần hưởng, cả trong tập tin cấu hình « /etc/tmpreaper.conf ».
+ .
+ Tùy nhiên, để hoạt động được bạn cần phải cài đặt tập tin « /etc/cron.daily/tmpreaper » ngay bây giờ.
+
+Template: tmpreaper/TMPREAPER_TIME
+Type: note
+Description: default value for TMPREAPER_TIME now set via /etc/default/rcS
+ Before, you could set the maximum age for files before they were removed
+ in /etc/tmpreaper.conf; however, there is another place where something
+ similar is set, namely the TMPTIME value in /etc/default/rcS which is used
+ during booting to clean out /tmp.
+ .
+ To avoid having to enter this value in two places, the new
+ /etc/tmpreaper.conf script now obtains the TMPTIME value from
+ /etc/default/rcS, and uses that (if it is greater than zero, that is).
+ .
+ You apparently have changed the default value in /etc/tmpreaper.conf; you
+ may want to check /etc/default/rcS to see if the value there is
+ acceptable, if you want the upgrade procedure to replace your
+ /etc/tmpreaper.conf with the new version.
+Description-cs.UTF-8: Výchozí hodnota TMPREAPER_TIME se nyní nastavuje v /etc/default/rcS
+ Dříve se maximální stáří souborů před odstraněním nastavovalo v /etc/tmpreaper.conf. Nicméně v souboru /etc/default/rcS existuje podobná proměnná TMPTIME, která se používá při zavádění systému k mazání adresáře /tmp.
+ .
+ Abyste nemuseli zadávat tuto hodnotu na dvou místech, nový /etc/tmpreaper.conf nyní používá hodnotu TMPTIME z /etc/default/rcS (pokud je ovšem větší než nula).
+ .
+ Evidentně jste v souboru /etc/tmpreaper.conf změnili výchozí hodnotu. Měli byste zkontrolovat /etc/default/rcS, zda vám tam nastavená hodnota vyhovuje. (Pokud ovšem povolíte, aby se nahradil stávající /etc/tmpreaper.conf novou verzí.)
+Description-da.UTF-8: Standardværdi for TMPREAPER_TIME nu angivet via /etc/default/rcS
+ Før kunne du angive den maksimale alder for filer før de blev fjernet i /etc/tmpreaper.conf; der er dog et andet sted hvor noget lignende kan angives, nemlig værdien TMPTIME i /etc/default/rcS som bruges under opstart til at rense ud i /tmp.
+ .
+ For at undgå at indtaste denne værdi to steder, henter det nye skript /etc/tmpreaper.conf nu værdien TMPTIME fra /etc/default/rcS, og bruger den (vel at mærke hvis den er større end nul).
+ .
+ Du har tilsyneladende ændret standardværdien i /etc/tmpreaper.conf; du vil måske tjekke /etc/default/rcS for at se hvorvidt værdien der er acceptabel, hvis du ønsker at opgraderingsprocessen skal erstatte din /etc/tmpreaper.conf med den nye version.
+Description-de.UTF-8: Der Standardwert von TMPREAPER_TIME wird nun über /etc/default/rcS gesetzt
+ Früher konnte das Höchstalter für Dateien bevor sie gelöscht wurden in /etc/tmpreaper.conf angegeben werden; aber es gibt eine andere Art, dies anzugeben, nämlich der TMPTIME-Wert in /etc/default/rcS, welcher während des Startvorgangs benutzt wird, um /tmp zu säubern.
+ .
+ Um zu verhindern, dass dieser Wert in zwei Dateien eingestellt wird, holt sich das neue /etc/tmpreaper.conf-Skript den Wert von TMPTIME aus /etc/default/rcS und nutzt ihn, falls er größer als 0 ist.
+ .
+ Sie haben anscheinend den Standardwert in /etc/tmpreaper.conf geändert; Sie sollten überprüfen, ob der Wert in /etc/default/rcS in Ordnung ist, falls Sie wollen, das die Upgrade-Prozedur Ihre /etc/tmpreaper.conf durch die neue Version ersetzen soll.
+Description-es.UTF-8: el valor por omisión de TMPREAPER_TIME se fija ahora en «/etc/default/rcS»
+ Podía fijar antes la edad máxima de los ficheros que se iban a eliminar en «/etc/tmpreaper.conf». Hay una ubicación donde se define un valor similar, en concreto el valor TMPTIME fijado en «/etc/default/rcS» y que se utiliza para limpiar el «/tmp».
+ .
+ Para impedir que tenga que introducir dos veces este valor el nuevo guión «/etc/tmpreaper.conf» obtiene el valor TMPTIME de «/etc/default/rcS» y lo utiliza (siempre que sea mayor que cero, claro está).
+ .
+ Parece que ha cambiado el valor por omisión en «/etc/tmpreaper.conf». Debería comprobar «/etc/default/rcS» para determinar si el valor que se define ahí es aceptable, si desea que el procedimiento de actualización reemplaze «/etc/tmpreaper.conf» con la nueva versión.
+Description-eu.UTF-8: TMPREAPER_TIME -ren lehenetsiriko balioa orain /etc/default/rcS bidez ezartzen da
+ Honen aurretik ezabatu behar diren fitxategien gehienezko adina /etc/tmpreaper.conf-en ezarri ahal izango duzu; hala ere horren antzeko zerbait ezartzen den beste leku bat badago, zehazki sistema abiaraztean /tmp garbitzeko erabiltzen den /etc/default/rcS -ko TMPTIME balioa.
+ .
+ Balio hau bi lekutan ezarri behar ez izateko, /etc/tmpreaper.conf script-ak orain TMPTIME balioa /etc/default/rcS-tik eskuratzen eta erabiltzen du (0 baina handoiagoa bada noski).
+ .
+ Dirudienez /etc/tmpreaper.conf fitxategiko lehenetsiriko balioa aldatu duzu; /etc/default/rcS egiaztatu beharko zenuke hor ezartzen den balioa onargarria dela ziurtatzeko, bertsio-berritze prozesuak zure /etc/tmpreaper.conf bertsio berriagatik ordeztea nahi baduzu.
+Description-fr.UTF-8: La valeur par défaut pour TMPREAPER_TIME est maintenant définie dans /etc/default/rcS
+ Auparavant, vous pouviez définir dans /etc/tmpreaper.conf, l'âge minimum que devaient avoir les fichiers avant d'être supprimés. Cependant, un réglage similaire est défini par ailleurs grâce à la variable TMPTIME dans /etc/default/rcS, qui est utilisée pour nettoyer /tmp lors du démarrage du système.
+ .
+ Pour éviter de définir cette valeur à deux reprises, le nouveau script /etc/tmpreaper.conf lit et utilise dorénavant la variable TMPTIME située dans /etc/default/rcS (si elle est supérieure à zéro).
+ .
+ Vous avez apparemment changé la valeur par défaut dans /etc/tmpreaper.conf ; vous voudrez sans doute vérifier que la valeur située dans /etc/default/rcS est satisfaisante afin que la mise à jour remplace votre /etc/tmpreaper.conf par la nouvelle version.
+Description-gl.UTF-8: Agora establécese o valor por defecto de TMPREAPER_TIME en /etc/default/rcS
+ Antes tiña que establecer a idade máxima dos ficheiros antes de que se eliminaran en /etc/tmpreaper.conf; nembargantes, hai outro sitio no que se establece algo semellante: o valor de TMPTIME en /etc/default/rcS, que se emprega durante o inicio para limpar /tmp.
+ .
+ Para evitar ter que introducir este valor en dous sitios, o novo script /etc/tmpreaper.conf obtén o valor de TMPTIME de /etc/default/rcS, e emprega ese valor (se é superior a cero, claro).
+ .
+ Semella que cambiou o valor por defecto en /etc/tmpreaper.conf; pode querer comprobar /etc/default/rcS para ver se o valor de alí é aceptable, se quere que o procedemento de actualización substitúa o ficheiro /etc/tmpreaper.conf pola nova versión.
+Description-it.UTF-8: il valore predefinito di TMPREAPER_TIME viene impostato in /etc/default/rcS
+ In precedenza era possibile impostare in /etc/tmpreaper.conf l'età massima dei file prima che venissero cancellati; adesso è possibile fare questa impostazione in un altro posto, in particolare con il valore di TMPTIME in /etc/default/rcS usato durante l'avvio per pulire /tmp.
+ .
+ Per evitare di inserire questo valore in due posti, il nuovo script di configurazione /etc/tmpreaper.conf recupera il valore di TMPTIME da /etc/default/rcS e, se diverso da zero, lo utilizza.
+ .
+ Apparentemente il valore predefinito in /etc/tmpreaper.conf è stato cambiato; verificare se il valore in /etc/default/rcS è accettabile, qualora si voglia che la procedura d'aggiornamento sostituisca il proprio /etc/tmpreaper.conf con la nuova versione.
+Description-ja.UTF-8: TMPREAPER_TIME のデフォルト値は /etc/default/rcS で設定されるようになりました。
+ 以前は削除対象ファイルの最長日数を /etc/tmpreaper.conf で設定することができました。しかしながら、他の場所でも似たようなものが設定されています。すなわち、/etc/default/rcS 中の TMPTIME という値のことで、起動時に /tmp を掃除するのに使われています。
+ .
+ この値を二箇所に入力するのを避けるため、新たな /etc/tmpreaper.conf スクリプトではこれから /etc/default/rcS から TMPTIME の値を取得して (それが 0 より大きければ) 使います。
+ .
+ あなたは明示的に /etc/tmpreaper.conf にあるデフォルト値を変更しています。/etc/tmpreaper.conf を新しいバージョンに置き換えることになるアップグレード作業を続けたい場合、/etc/default/rcS を確認してその値が妥当なものかを確認した方が良いでしょう。
+Description-nl.UTF-8: /etc/default/rcS bepaalt nu de default waarde voor TMPREAPER_TIME
+ Vroeger werd de maximale leeftijd van bestanden (voordat ze verwijderd werden) bepaald in /etc/tmpreaper.conf; echter, er is nog een plek waar een soortgelijke instelling gemaakt wordt, namelijk de TMPTIME instelling in /etc/default/rcS die gebruikt wordt tijdens het booten om /tmp op te ruimen.
+ .
+ Om te voorkomen dat deze instelling op twee plaatsen gemaakt moet worden, zal de nieuwe /etc/tmpreaper.conf script de TMPTIME instelling uit /etc/default/rcS halen en die gebruiken (indien die groter is dan nul).
+ .
+ U heeft blijkbaar de default waarde in /etc/tmpreaper.conf veranderd; het is wellicht raadzaam om /etc/default/rcS te controleren of die waarde daar acceptabel is, indien u de upgrade procedure toestaat uw /etc/tmpreaper.conf te vervangen door de nieuwe versie.
+Description-pt.UTF-8: o valor por omissão para TMPREAPER_TIME é definido via /etc/default/rcS
+ Antes podia definir a idade máxima para ficheiros antes da sua remoção em /etc/tmpreaper.conf; no entanto, existe outra localização onde é definido um valor semelhante: o valor de TMPTIME em /etc/default/rcS que é usado durante o processo de arranque para limpar /tmp.
+ .
+ Para evitar definir o mesmo valor em dois sítios diferentes, o novo /etc/tmpreaper.conf obtém o valor de TMPTIME de /etc/default/rcS, e usa-o (se for maior que zero, claro).
+ .
+ Aparentemente alterou o valor pré-definido em /etc/tmpreaper.conf; pode querer verificar /etc/default/rcS para ver se o valor aí definido é aceitável, se actualizar o ficheiro /etc/tmpreaper.conf com a nova versão.
+Description-ru.UTF-8: Значение по умолчанию для TMPREAPER_TIME теперь устанавливается в /etc/default/rcS
+ Раньше, вы могли задать максимальный срок хранения файлов в /etc/tmpreaper.conf; однако, есть другое место, где устанавливается нечто подобное, а именно значение переменной TMPTIME в /etc/default/rcS, которое используется при загрузке операционной системы для очистки /tmp.
+ .
+ Чтобы не вводить одинаковое значение в двух местах, новый сценарий /etc/tmpreaper.conf теперь получает значение TMPTIME из /etc/default/rcS и использует его (если оно больше нуля).
+ .
+ Вы, несомненно, меняли значение по умолчанию в /etc/tmpreaper.conf; проверьте, что значение в /etc/default/rcS подходит для работы, если хотите выполнить процедуру обновления для замены /etc/tmpreaper.conf на новую версию.
+Description-sv.UTF-8: standardvärdet för TMPREAPER_TIME sätts numera via /etc/default/rcS
+ Tidigare kunde man ställa in åldern för som filer var tvunga att uppnå innan de raderades automatiskt genom /etc/tmpreaper.conf, hur som helst finns det en annan liknande inställning nämligen TMPTIME i /etc/default/rcS som används vid systemets uppstart för att radera filer i /tmp.
+ .
+ För att undvika att ha detta värde på två ställe läser numera värdet på TMPTIME från /etc/default/rcS in av skriptet /etc/tmpreaper.conf och används (om värdet är större än noll).
+ .
+ Du har tydligen ändrat standardvärdet i /etc/tmpreaper.con, du bör kontrollera värdet i /etc/default/rcS och överväga om det är en korrekt inställning som ska användas av uppgraderingsprocessen när /etc/tmpreaper.conf ersätts.
+Description-vi.UTF-8: Giá trị mặc định cho « TMPREAPER_TIME » (thời gian tmpreaper) giờ này được đặt thông qua « /etc/default/rcS ».
+ Lần trước, bạn có thể đặt trong « /etc/tmpreaper.conf » thời gian hoạt động tối đa cho tập tin trước khi nó bị gỡ bỏ. Tùy nhiên, cũng có một chỗ khác trong đó đặt giá trị tương tự, giá trị « TMPTIME » (thời gian tạm thời) trong « /etc/default/rcS », mà được dùng trong khi khởi động để xóa sạch thư mục « /tmp » (tạm thời).
+ .
+ Để tránh trường hợp cần phải nhập giá trị này vào hai tập tin khác nhau, văn lệnh « /etc/tmpreaper.conf » giờ này lấy giá trị « TMPTIME » từ « /etc/default/rcS », và dùng nó (nếu nó hơn số không).
+ .
+ Hình như bạn đã thay đổi giá trị mặc định trong « /etc/tmpreaper.conf »; đề nghị bạn kiểm tra xem nếu giá trị trong « /etc/default/rcS » là thích hợp không, nếu bạn muốn tiến trình nâng cấp thay thế « /etc/tmpreaper.conf » tồn tại bằng phiên bản mới.
+
+Template: tmpreaper/readsecurity
+Type: note
+Description: Please first read README.security
+ Before running tmpreaper for the first time, please read the file
+ /usr/share/doc/tmpreaper/README.security.gz, e.g. with zless. Therein is
+ contained a discussion of possible ways that usage of tmpreaper may be
+ insecure.
+ .
+ If after that you still want tmpreaper to run, please edit
+ /etc/tmpreaper.conf and remove the line:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-cs.UTF-8: Nejprve si přečtěte README.security
+ Před prvním spuštěním tmpreaperu si přečtěte soubor /usr/share/doc/tmpreaper/README.security.gz (např. programem zless). V souboru jsou popsány možné situace, kdy není použití tmpreaperu bezpečné.
+ .
+ Pokud chcete tmpreaper používat i po přečtení zmíněného souboru, upravte soubor /etc/tmpreaper.conf a odstraňte následující řádek:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-da.UTF-8: Læs venligst først README.security
+ Før kørsel af tmpreaper for første gang, læs venligst filen /usr/share/doc/tmpreaper/README.security.gz, for eksempel med zless. Deri er indeholdt en diskussion hvor mulige måder der gør brugen af tmpreaper usikker er omtalt.
+ .
+ Hvis du derefter stadig ønsker at tmpreaper skal køre, så rediger venligst /etc/tmpreaper.conf og fjern linjen:
+ .
+  echo »Læs venligst først /usr/share/doc/tmpreaper/README.security.gz.";
+  exit 0
+Description-de.UTF-8: Please first read README.security
+ Bevor Sie tmpreaper zum ersten Mal laufen lassen, lesen Sie bitte die Datei /usr/share/doc/tmpreaper/README.security.gz z.B. mit zless. Dort finden Sie eine Diskussion, inwiefern die Benutzung von tmpreaper unsicher sein könnte.
+ .
+ Falls Sie immer noch tmpreaper laufen lassen wollen, editieren Sie bitte /etc/tmpreaper.conf und löschen Sie die Zeile:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-es.UTF-8: Por favor, consulte primero «README.security»
+ Antes de ejecutar por primera vez tmpreaper debe consultar el fichero «/usr/share/doc/tmpreaper/README.security.gz» con, por ejemplo, zless. En este fichero se discuten las posibles formas en las que el uso de tmpreaper puede causar problemas de seguridad.
+ .
+ Si después de leer esto quiere activar tmpreaper, edite «/etc/tmpreaper.conf» y elimine la siguiente línea:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-eu.UTF-8: Mesedez lehenengo README.security irakurri
+ Tmpreaper lehen aldian exekutatu aurretik, mesedez irakurri /usr/share/doc/tmpreaper/README.security.gz adibidez zless erabiliaz. Fitxategi honetan tmpreaper segurtasun arazo bat izanteko aukerak eztabaidatzen dira.
+ .
+ Honen ondoren tmpreaper exekutatu nahi baduzu, mesedez editatu /etc/tmpreaper.conf fitxategia eta lerro hau ezabatu:
+ .
+  echo "Mesedez irakurri /usr/share/doc/tmpreaper/README.security.gz lehenengo.";
+  exit 0
+Description-fr.UTF-8: Veuillez d'abord lire README.security
+ Avant de lancer tmpreaper pour la première fois, veuillez consulter le fichier /usr/share/doc/tmpreaper/README.security.gz, avec zless par exemple. Il contient une discussion sur les différents cas possibles dans lesquels l'usage de tmpreaper peut présenter des risques.
+ .
+ Après cela, si vous souhaitez toujours lancer tmpreaper, veuillez modifier /etc/tmpreaper.conf et y supprimer la ligne :
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-gl.UTF-8: Lea primeiro o ficheiro README.security
+ Antes de executar tmpreaper por primeira vez, lea o ficheiro /usr/share/doc/tmpreaper/README.security.gz; por exemplo, con zless. Nel hai unha discusión sobre distintas maneiras en que o emprego de tmpreaper pode ser inseguro.
+ .
+ Se despois de lelo aínda quere executar tmpreaper, edite o ficheiro /etc/tmpreaper.conf e elimine a liña:
+ .
+  echo "Lea primeiro /usr/share/doc/tmpreaper/README.security.gz .";
+  exit 0
+Description-it.UTF-8: Prima consultare README.security
+ Prima di eseguire tmpreader per la prima volta, leggere il file /usr/share/doc/tmpreaper/README.security.gz con zless. Contiene un'analisi su come l'uso di tmpreaper possa essere insicuro.
+ .
+ Dopo aver letto il documento, per usare tmpreaper è necessario modificare /etc/tmpreaper.conf e rimuovere la riga:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-ja.UTF-8: まず README.security を最初に読んでください。
+ 初めて tmpreaper を動作させる前に、/usr/share/doc/tmpreaper/README.security.gz ファイルを、zless などを使って読んでください。そこには、tmpreaper の利用が危険を招く可能性のある方法についてのディスカッションが含まれています。
+ .
+ その後であっても tmpreaper を実行したい場合、/etc/tmpreaper.conf を編集して以下の行を削除してください:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-nl.UTF-8: AUB eerst README.security lezen
+ Voordat tmpreaper for het eerst gedraaid wordt, AUB eerst het document /usr/share/doc/tmpreaper/README.security.gz lezen, b.v. met zless. Daarin staat een verhaal over de mogelijke manieren waarop het gebruik van tmpreaper tot onveilige situaties kan leiden (ook al zijn de kansen daarop hoogstwaarschijnlijk te verwaarlozen).
+ .
+ Indien u na het lezen daarvan nog steeds tmpreaper wilt gebruiken, dan moet u uit /etc/tmpreaper.conf de volgende regel verwijderen:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";   exit 0
+Description-pt.UTF-8: Por favor leia primeiro README.security
+ Antes de executar tmpreaper pela primeira vez, leia por favor o ficheiro /usr/share/doctmpreaper/REAMDE.security.gz, e.g. com zless. Aí encontra uma discussão sobre possíveis modos de execução do tmpreaper que podem ser inseguros.
+ .
+ Se depois ainda quiser executar o tmpreaper, por favor remova a seguinte linha do /etc/tmpreaper.conf:
+ .
+  echo "Por favor leia primeiro /usr/share/doc/tmpreaper/README.security.gz.";
+  exit 0
+Description-ru.UTF-8: Сначала прочитайте README.security
+ Перед первым запуском tmpreaper, прочитайте файл /usr/share/doc/tmpreaper/README.security.gz, например, с помощью zless. В нём содержится описание возможных способов небезопасного использования tmpreaper.
+ .
+ Если после этого вы всё ещё хотите запускать tmpreaper, отредактируйте файл /etc/tmpreaper.conf и удалите строку:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-sv.UTF-8: Vänligen läs README.security först
+ Innan du kör tmpreaper första gången bör du läsa filen /usr/share/doc/tmpreaper/README.security.gz med exempelvis zless. I filen finns exempelvis avsnitt om osäkra användningsområden för tmpreaper och hur man undviker dessa.
+ .
+ Slutligen när du bestämt dig för att köra tmpreaper så redigerar du filen /etc/tmpreaper och tar bort raden:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-vi.UTF-8: Trước tiên hãy đọc tài liệu Đọc Đi về bảo mật « README.security ».
+ Trước khi chạy trình tmpreaper lần đầu tiên, hãy đọc tập tin Đọc Đi « /usr/share/doc/tmpreaper/README.security.gz », v.d. dùng trình đọc zless. Tập tin này chứa thông tin về những trường hợp sử dụng tmpreaper có thể rủi ro bảo mật.
+ .
+ Sau đó, nếu bạn còn muốn chạy trình tmpreaper, hãy hiệu chỉnh tập tin « /etc/tmpreaper.conf » để gỡ bỏ dòng:
+ .
+  echo "Trước tiên hãy đọc tài liệu bảo mật « /usr/share/doc/tmpreaper/README.security.gz ».";
+  exit 0
+
+Template: tmpreaper/readsecurity_upgrading
+Type: note
+Description: Please first read README.security
+ Before running tmpreaper after this upgrade, please read the file
+ /usr/share/doc/tmpreaper/README.security.gz e.g. with zless. Therein is
+ contained a discussion of possible ways that usage of tmpreaper may be
+ insecure.
+ .
+ If during the upgrade the /etc/tmpreaper.conf file is replaced, and you
+ still want tmpreaper to run, please edit /etc/tmpreaper.conf and remove
+ the line:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-cs.UTF-8: Nejprve si přečtěte README.security
+ Před spuštěním tmpreaperu po této aktualizaci si prosím přečtěte /usr/share/doc/tmpreaper/README.security.gz, kde se probírají různé způsoby použití, jež nejsou bezpečné.
+ .
+ Pokud je během aktualizace nahrazen soubor /etc/tmpreaper.conf a stále chcete tmpreaper spouštět, upravte, prosím, soubor /etc/tmpreaper.conf a odstraňte řádek:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-da.UTF-8: Læs venligst først README.security
+ Læs venligst filen /usr/share/doc/tmpreaper/README.seurity.gz før kørsel af tmpreaper efter denne opgradering. For eksempel med zless. Deri er indeholdt en diskussion, der omtaler, at brugen af tmpreaper kan være usikker.
+ .
+ Hvis filen /etc/tmpreaper.conf under opgraderingen bliver erstattet, og du stadig ønsker at tmpreaper skal køre, så rediger venligst /etc/tmpreaper.conf og fjern linjen:
+ .
+  echo »Læs venligst først /usr/share/doc/tmpreaper/README.security.gz.";
+  exit 0
+Description-de.UTF-8: Please first read README.security
+ Bevor Sie tmpreaper nach diesem Upgrade starten, lesen Sie bitte die Datei /usr/share/doc/tmpreaper/README.security.gz z.B. mit zless. Dort finden Sie eine Diskussion, inwiefern die Benutzung tmpreaper unsicher sein könnte.
+ .
+ Falls während des Upgrades die Datei /etc/tmpreaper.conf überschrieben wird und Sie tmpreaper noch benutzen wollen, editieren Sie bitte /etc/tmpreaper.conf und löschen Sie die Zeile:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-es.UTF-8: Por favor, consulte primero «README.security»
+ Antes de ejecutar tmpreaper después de esta actualización, lea, por favor, el fichero «/usr/share/doc/tmpreaper/README.security.gz» con, por ejemplo, zless. En este fichero se discuten las posibles formas en las que el uso de tmpreaper puede causar problemas de seguridad.
+ .
+ Si después de que la actualización reemplace el fichero «/etc/tmpreaper.conf» y aún quiere activar tmpreaper, edite «/etc/tmpreaper.conf» y elimine la siguiente línea:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-eu.UTF-8: Mesedez lehenengo README.security irakurri
+ Bertsio-berritze honen ondoren tmpreaper exekutatu aurretik mesedez irakurri /usr/share/doc/tmpreaper/README.security.gz adibidez zless erabiliaz. Fitxategi honetan tmpreaper segurtasun arazo bat izanteko aukerak eztabaidatzen dira.
+ .
+ Bertsio-berritzean /etc/tmpreaper.conf fitxategia ordezten bada eta honen ondoren tmpreaper exekutatu nahi baduzu, mesedez editatu /etc/tmpreaper.conf fitxategia eta lerro hau ezabatu:q
+ .
+  echo "Mesedez irakurri /usr/share/doc/tmpreaper/README.security.gz lehenengo.";
+  exit 0
+Description-fr.UTF-8: Veuillez d'abord lire README.security
+ Avant de lancer tmpreaper après cette mise à jour, veuillez lire le fichier /usr/share/doc/tmpreaper/README.security.gz, avec zless par exemple. Il contient une discussion sur les différents cas possibles dans lesquels l'usage de tmpreaper peut présenter des risques.
+ .
+ Si, pendant la mise à jour, le fichier /etc/tmpreaper.conf est remplacé et que vous souhaitez toujours lancer tmpreaper, veuillez modifier /etc/tmpreaper.conf et y supprimer la ligne :
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-gl.UTF-8: Lea primeiro o ficheiro README.security
+ Antes de executar tmpreaper despois desta actualización, lea o ficheiro /usr/share/doc/tmpreaper/README.security.gz; por exemplo, con zless. Nel hai unha discusión sobre distintas maneiras en que o emprego de tmpreaper pode ser inseguro.
+ .
+ Se se substitúe o ficheiro /etc/tmpreaper.conf durante a actualización e aínda quere executar tmpreaper, edite o ficheiro /etc/tmpreaper.conf e elimine a liña:
+ .
+  echo "Lea primeiro /usr/share/doc/tmpreaper/README.security.gz .";
+  exit 0
+Description-it.UTF-8: Prima consultare README.security
+ Dopo questo aggiornamento, prima di usare tmpreader, consultare il file /usr/share/doc/tmpreaper/README.security.gz usando zless. Contiene un'analisi su come l'uso di tmpreaper possa essere insicuro.
+ .
+ Se durante l'aggiornamento il file /etc/tmpreaper.conf viene sostituito, per usare tmpreaper è necessario modificare /etc/tmpreaper.conf e rimuovere le righe:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-ja.UTF-8: まず README.security を最初に読んでください。
+ 今回のアップグレード後に tmpreaper を実行する前に、zless などを使って /usr/share/doc/tmpreaper/README.security.gz ファイルを読んでください。そこには、tmpreaper の利用が危険を招く可能性のある方法についてのディスカッションが含まれています。
+ .
+ アップグレード中に /etc/tmpreaper.conf ファイルが置き換えられても tmpreaper の実行を続けたい場合には、 /etc/tmpreaper.conf を編集して以下の行を削除してください:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-nl.UTF-8: AUB eerst README.security lezen
+ Voordat tmpreaper for het eerst na deze upgrade gedraaid wordt, AUB eerst het document /usr/share/doc/tmpreaper/README.security.gz ezen, b.v. met zless. Daarin staat een verhaal over de mogelijke manieren waarop het gebruik van tmpreaper tot onveilige situaties kan leiden (ook al zijn de kansen daarop hoogstwaarschijnlijk te verwaarlozen).
+ .
+ Indien tijdens de upgrade het /etc/tmpreaper.conf is vervangen, en u nog steeds tmpreaper wilt gebruiken, dan moet u uit /etc/tmpreaper.conf de volgende regel verwijderen:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";   exit 0
+Description-pt.UTF-8: Por favor leia primeiro README.security
+ Antes de executar tmpreaper após esta actualização, leia por favor o ficheiro /usr/share/doctmpreaper/REAMDE.security.gz e.g. com zless. Aí encontra uma discussão sobre possíveis modos de execução do tmpreaper que podem ser inseguros.
+ .
+ Se o ficheiro /etc/tmpreaper.conf for substituído durante a actualização, e ainda quiser executar o tmpreaper, por favor remova a seguinte linha de /etc/tmpreaper.conf:
+ .
+  echo "Por favor leia primeiro /usr/share/doc/tmpreaper/README.security.gz.";
+  exit 0
+Description-ru.UTF-8: Сначала прочитайте README.security
+ Перед запуском tmpreaper после этого обновления, прочитайте файл /usr/share/doc/tmpreaper/README.security.gz, например, с помощью zless. В нём содержится описание возможных способов небезопасного использования tmpreaper.
+ .
+ Если при обновлении был заменён файл /etc/tmpreaper.conf, и вы всё ещё хотите запускать tmpreaper, отредактируйте файл /etc/tmpreaper.conf и удалите строку:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-sv.UTF-8: Vänligen läs README.security först
+ Innan du kör tmpreapder efter denna uppgradering vänligen läs filen /usr/share/doc/tmpreaper/README.security.gz med exempelvis zless. I filen finns exempelvis avsnitt om osäkra användningsområden för tmpreaper och hur man undviker dessa.
+ .
+ Om filen /etc/tmpreaper.conf ersätts under uppgraderingen och du vill fortsätta att köra tmpreaper måste filen redigeras och följande rad raderas:
+ .
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first.";
+  exit 0
+Description-vi.UTF-8: Trước tiên hãy đọc tài liệu Đọc Đi về bảo mật « README.security ».
+ Trước khi chạy trình tmpreaper sau tiến trình nâng cấp này, hãy đọc tập tin Đọc đi về bảo mật « /usr/share/doc/tmpreaper/README.security.gz », v.d. dùng trình đọc zless. Tập tin này chứa thông tin về những trường hợp sử dụng tmpreaper có thể rủi ro bảo mật.
+ .
+ Nếu tiến trình nâng cấp thay thế tập tin « /etc/tmpreaper.conf », và bạn còn muốn chạy trình tmpreaper, hãy hiệu chỉnh tập tin « /etc/tmpreaper.conf » để gỡ bỏ dòng:
+ .
+  echo "Trước tiên hãy đọc tài liệu bảo mật « /usr/share/doc/tmpreaper/README.security.gz ».";
+  exit 0

@@ -1,0 +1,259 @@
+Template: esmtp/overwriteconfig
+Type: boolean
+Default: false
+Description: Automatically overwrite configuration files?
+ The mail configuration file /etc/esmtprc can be automatically updated on
+ each upgrade with the information supplied to the debconf database. If you
+ do not want this to happen (i.e., you want to maintain control of this file
+ yourself) then unset this option to prevent the program touching this file.
+Description-cs.UTF-8: Automaticky přepsat konfigurační soubory?
+ Konfigurační soubor pošty (/etc/esmtprc) může být při každém upgradu automaticky aktualizován pomocí informací získaných prostřednictvím databáze debconfu. Pokud si to nepřejete (např. chcete tento soubor spravovat sami), pak zvolte ne, aby debconf tento soubor nikdy nepřepisoval.
+Description-da.UTF-8: Overskriv automatisk konfigurationsfiler?
+ Postkonfigurationsfilen /etc/esmtprc kan automatisk opdateres ved hver opgradering med informationen angivet i debconf-databasen. Hvis du ikke ønsker dette (for eksempel hvis du selv ønsker at bevare kontrol over denne fil) så fravælg denne indstilling for at forhindre programmet i at røre denne fil.
+Description-de.UTF-8: Konfigurationsdateien automatisch überschreiben?
+ Die Konfigurationsdatei /etc/esmtprc kann bei jeder Aktualisierung des Pakets automatisch mit den Informationen aus der Debconf-Datenbank überarbeitet werden. Wenn Sie das nicht wollen (z. B. wenn Sie diese Datei selbst verwalten wollen), dann lehnen Sie diese Option ab, damit das Programm diese Datei unberührt lässt.
+Description-es.UTF-8: ¿Desea sobreescribir los archivos de configuración de forma automática?
+ El fichero de configuración de correo «/etc/esmtprc» se puede actualizar automáticamente en cada actualización con la información que se le proporciona a la base de datos de debconf. Si no quiere que esto ocurra (es decir, quiere mantener el control de este fichero usted mismo) entonces desactive esta opción para no permitir que el programa toque este fichero
+Description-fr.UTF-8: Écraser automatiquement les fichiers de configuration ?
+ Le fichier de configuration /etc/esmtprc peut être mis à jour automatiquement à chaque mise à niveau du paquet avec les informations fournies par la base de données de debconf. Si vous ne désirez pas cette mise à jour automatique (pour garder le contrôle sur les modifications du fichier), n'acceptez pas les mises à jour automatiques.
+Description-it.UTF-8: Sovrascrivere automaticamente i file di configurazione?
+ Il file di configurazione della posta elettronica «/etc/esmtprc» può essere sovrascritto automaticamente a ogni aggiornamento con le informazioni fornite nel database debconf. Se non si desidera che questo accada (cioè se si desidera mantenere il controllo su questo file), disattivare questa opzione onde evitare che il programma modifichi questo file.
+Description-ja.UTF-8: 自動的に設定ファイルを上書きしますか?
+ debconf データベースに与えた情報を元にして、アップグレード時にメール設定ファイル /etc/esmtprc を毎回自動的に更新できます。この動作が気に入らなければ (例: このファイルを自分で管理したい場合)、その際はこのオプションを設定しないでください。プログラムではこのファイルをいじらないようになります。
+Description-nl.UTF-8: Configuratiebestanden automatisch overschrijven?
+ Het e-mailconfiguratiebestand /etc/esmtprc kan automatisch worden bijgewerkt bij elke opwaardering met de informatie aangeboden aan de debconf-database. Als u dit niet wilt (vb. u wilt zelf de controle houden over dit bestand), stel dan deze optie uit zodat het programma dit bestand nooit aanraakt.
+Description-pt.UTF-8: Sobrescrever automaticamente os ficheiros de configuração?
+ O ficheiro de configuração do mail, /etc/esmtprc, pode ser actualizado automaticamente a cada actualização com a informação fornecida à base de dados debconf. Se não quiser que isto aconteça (i.e., se quiser, você mesmo, manter o controlo deste ficheiro) então desligue esta opção para prevenir que o programa toque neste ficheiro.
+Description-ru.UTF-8: Перезаписать файлы настройки автоматически?
+ Главный файл настройки, /etc/esmtprc, может быть обновлён автоматически при каждом обновлении версии пакета согласно информации из базы данных debconf. Если вы не хотите этого (т.е., вы выполняете настройку вручную), то ответьте отрицательно, чтобы этот процесс не изменил данный файл.
+Description-sv.UTF-8: Automatiskt skriva över konfigurationsfiler?
+ E-postkonfigurationsfilen /etc/esmtprc kan automatiskt uppdateras vid varje uppgradering med information som kommer från Debconf-databasen. Om du inte vill att detta ska göras (exempelvis att du vill hantera kontrollen av denna fil själv) så ska du stänga av denna funktion för att förhindra att programmet rör denna fil.
+Description-vi.UTF-8: Tự động ghi đè lên các tập tin cấu hình ?
+ Tập tin cấu hình thư tín « /etc/esmtprc » cũng có thể được tự động cập nhật mỗi lần nâng cấp, dùng thông tin được cung cấp cho cơ sở dữ liệu debconf. Nếu bạn không muốn sử dụng tính năng này (tức là bạn muốn cứ tự điều khiển tập tin này) thì tắt tuỳ chọn này để ngăn cản chương trình sửa đổi tập tin này.
+
+Template: esmtp/hostname
+Type: string
+Default: localdomain
+Description: SMTP server hostname:
+Description-cs.UTF-8: Jméno SMTP serveru:
+Description-da.UTF-8: SMTP-serverværtsnavn:
+Description-de.UTF-8: Rechnername des SMTP-Servers:
+Description-es.UTF-8: Nombre del servidor de SMTP:
+Description-fr.UTF-8: Nom d'hôte du serveur SMTP :
+Description-it.UTF-8: Nome host del server SMTP:
+Description-ja.UTF-8: SMTP サーバのホスト名:
+Description-nl.UTF-8: SMTP-servercomputernaam:
+Description-pt.UTF-8: Nome da máquina do servidor SMTP:
+Description-ru.UTF-8: Имя хоста сервера SMTP:
+Description-sv.UTF-8: Värdnamn för SMTP-servern:
+Description-vi.UTF-8: Tên máy hỗ trợ trình phục vụ SMTP:
+
+Template: esmtp/hostport
+Type: string
+Default: 25
+Description: SMTP server port number:
+Description-cs.UTF-8: Číslo portu serveru SMTP:
+Description-da.UTF-8: SMTP-serverportnummer:
+Description-de.UTF-8: Portnummer des SMTP-Servers:
+Description-es.UTF-8: Número del puerto del servidor de SMTP:
+Description-fr.UTF-8: Port TCP du serveur SMTP :
+Description-it.UTF-8: Numero di porta del server SMTP:
+Description-ja.UTF-8: SMTP サーバのポート番号:
+Description-nl.UTF-8: SMTP-serverpoortnummer:
+Description-pt.UTF-8: Número do porto do servidor SMTP:
+Description-ru.UTF-8: Номер порта сервера SMTP:
+Description-sv.UTF-8: Portnummer för SMTP-servern:
+Description-vi.UTF-8: Số thứ tự cổng của trình phục vụ SMTP:
+
+Template: esmtp/username
+Type: string
+Description: Authentication username:
+ This is the username to be given to the mailhub if authentication is
+ required by the SMTP server.
+ .
+ Do NOT set the username and password on the system configuration file
+ unless you are the sole user of this machine.  Esmtp is not run with suid
+ privileges therefore the system configuration file must be readable by
+ everyone.  If your SMTP server requires authorization and you are not the
+ only user then accept the default options in the system configuration file
+ for local delivery and specify your personal SMTP account details in the
+ user configuration file.
+Description-cs.UTF-8: Přihlašovací jméno:
+ Toto uživatelské jméno bude předáno poštovnímu SMTP serveru, pokud jím bude vyžadována autentizace.
+ .
+ Pokud nejste jediný uživatel tohoto počítače, pak NENASTAVUJTE uživatelské jméno a heslo do systémové konfigurace. Esmtp neběží se suid právy, takže jeho systémový konfigurační soubor musí být čitelný pro každého. Pokud váš server SMTP požaduje autorizaci a vy nejste jediný uživatel, pak přijměte výchozí nastavení systémové konfigurace pro místní doručování a své privátní nastavení SMTP účtu zadejte v konfiguračním souboru konkrétního uživatele.
+Description-da.UTF-8: Godkendelsesbrugernavn:
+ Dette er brugernavnet, der skal angives til mailhub'en, hvis godkendelse er krævet af SMTP-serveren.
+ .
+ Angiv IKKE brugernavn og adgangskode i systemets konfigurationsfil med mindre du er den eneste bruger af denne maskine. Esmtp køres ikke med suid-privilegier, så systemets konfigurationsfil skal være læsbar for alle. Hvis din SMTP-server kræver godkendelse, og du ikke er den eneste bruger så accepter standardinstillingerne i systemets konfigurationsfil for lokal levering og angiv dine personlige SMTP-kontodetaljer i brugerkonfigurationsfilen.
+Description-de.UTF-8: Benutzername zur Authentifizierung:
+ Dieser Benutzername wird verwendet, wenn der SMTP-Server eine Authentifizierung verlangt.
+ .
+ Speichern Sie Benutzernamen und Passwort in der Konfigurationsdatei NUR , wenn Sie als einziger Benutzer an diesem Rechner arbeiten.  Weil Esmtp nicht mit SUID-Rechten läuft, muss die Konfigurationsdatei für alle lesbar sein.  Wenn Ihr SMTP-Server eine Authentifizierung verlangt und Sie nicht der einzige Benutzer des Rechners sind, lassen Sie die Standardwerte für lokale Auslieferung in der Konfigurationsdatei stehen. Legen Sie dann Ihre SMTP-Zugangsdaten in einer benutzereigenen Konfigurationsdatei ab.
+Description-es.UTF-8: Nombre de usuario de autenticación:
+ Este es el nombre de usuario que se le proporciona a la pasarela de correo si el servidor de SMTP requiere autenticación.
+ .
+ NO establezca el nombre de usuario y la contraseña en el fichero de configuración del sistema a menos que sea el único usuario de esta máquina. Esmtp no se ejecuta con el bit suid activado por lo que el fichero de configuración del sistema debe tener permisos de lectura para todo el mundo. Si su servidor de SMTP requiere autorización, y no es el único usuario, entonces acepte las opciones predeterminadas en el fichero de configuración del sistema para el envío local y especifique los detalles de su cuenta personal de SMTP en el fichero de configuración del usuario.
+Description-fr.UTF-8: Identifiant :
+ Veuillez indiquer l'identifiant qu'utilisera mailhub si une authentification est demandée par le serveur SMTP.
+ .
+ Vous ne devez PAS inscrire d'identifiant et de mot de passe dans le fichier de configuration général si vous n'êtes pas le seul utilisateur de la machine. Esmtp n'est pas lancé avec le bit « setuid » positionné, donc le fichier de configuration est en lecture pour tout le monde. Si votre serveur SMTP demande une authentification et que vous n'êtes pas le seul utilisateur de la machine, acceptez les options par défaut pour le fichier de configuration général et inscrivez les détails personnels de votre compte SMTP dans le fichier de configuration utilisateur.
+Description-it.UTF-8: Nome utente per l'autenticazione:
+ Questo è il nome utente da fornire all'hub della posta elettronica se il server SMTP richiede l'autenticazione.
+ .
+ NON impostare nome utente e password nel file di configurazione del sistema, a meno che non si sia l'unico utente della macchina: esmtp non viene eseguito con privilegi suid, pertanto il file di configurazione del sistema deve essere leggibile da chiunque. Se il proprio server SMTP richiede l'autenticazione e non si è l'unico utente della macchina, accettare le opzioni predefinite nel file di configurazione del sistema per la consegna locale e specificare le informazioni sul proprio account SMTP nel file di configurazione utente.
+Description-ja.UTF-8: 認証を行うユーザ名:
+ SMTP サーバで認証が必要な場合にメールハブに渡されるユーザ名です。
+ .
+ このマシンの唯一のユーザでなければ、ユーザ名とパスワードをシステムの設定ファイルに設定「しない」様にしてください。esmtp は suid 特権では動作しません。つまり、システムの設定ファイルは誰でも読める必要があります。もし SMTP サーバが認証を必要としており、あなたがこのマシンでのたった一人のユーザではない場合、ローカル配送についてはシステムの設定ファイルではデフォルトのオプションを許可し、個人の SMTP アカウントの詳細な設定はユーザの設定ファイルで指定してください。
+Description-nl.UTF-8: Gebruikersnaam voor authentificatie:
+ Dit is de gebruikersnaam die aan de e-mailhub wordt gegeven voor authentificatie als dit vereist is door de SMTP-server.
+ .
+ Zet het gebruikersnaam en wachtwoord NIET in het systeemconfiguratiebestand tenzij u de enige gebruiker bent van deze machine. Esmtp wordt niet uitgevoerd met suid-privileges, daarom moet het systeemconfiguratiebestand leesbaar zijn voor iedereen. Als uw SMTP-server autorisatie vereist en u bent niet de enige gebruiker, aanvaard dan de standaardopties in het systeemconfiguratiebestand voor lokale bedeling en geef aan wat uw persoonlijke SMTP-accountdetails zijn in het gebruikersconfiguratiebestand.
+Description-pt.UTF-8: Nome de utilizador para autenticação:
+ Este é o nome de utilizador a ser dado ao mailhub se for necessária autenticação no servidor SMTP.
+ .
+ NÃO defina o nome de utilizador e palavra-passe no ficheiro de configuração do sistema a menos que seja o único utilizador desta máquina.  O esmtp não corre com privilégios suid por isso o ficheiro de configuração tem de ser legível para todos.  Se o seu servidor de SMTP necessitar de autenticação e você não for o único utilizador então aceite as opções por omissão no ficheiro de configuração do sistema para entrega local e especifique os seus detalhes da sua conta SMTP pessoal no ficheiro de configuração do utilizador.
+Description-ru.UTF-8: Имя пользователя для аутентификации:
+ Данное имя пользователя будет посылаться, если сервер SMTP требует пройти аутентификацию.
+ .
+ НЕ ЗАДАВАЙТЕ имя пользователя и пароль в системном файле настройки, если вы не единственный пользователь данной машины. Esmtp не работает с правами suid, поэтому системный файл настройки доступен на чтение всем. Если ваш сервер SMTP требует авторизации и вы не единственный пользователь, то примите настройки по умолчанию в системном файле настройки для локальной доставки, и укажите значения своей собственной учётной записи SMTP в пользовательском файле настройки.
+Description-sv.UTF-8: Användarnamn för autentisering:
+ Detta är användarnamnet som anges till mailhubben om autentisering krävs av SMTP-servern.
+ .
+ Sätt INTE användarnamn och lösenord på systemkonfigurationen om inte du har fullständiga rättigheter till denna maskin.  Esmtp kan inte köras med suid-rättigheter och därför måste systemkonfigurationen vara läsbar för alla användare.  Om din SMTP-server kräver autentisering och du inte är den enda användaren bör du acceptera standardvalet i systemkonfigurationen för lokala leveranser och specificera detaljer för ditt personliga SMTP-konto i användarkonfigurationen.
+Description-vi.UTF-8: Tên người dùng xác thực:
+ Đây là tên người dùng cần cung cấp cho thiết bị trung tâm mạng thư tin nếu trình phục vụ SMTP yêu cầu xác thực.
+ .
+ ĐỪNG lập tên người dùng và mật khẩu trong tập tin cấu hình hệ thống, trừ khi bạn là người dùng duy nhất trên máy này. Trình esmtp không phải chạy với quyền truy cập SUID, thì tập tin cấu hình hệ thống phải cho mọi người đọc. Nếu trình phục vụ SMTP yêu cầu xác thực và bạn không phải là người dùng duy nhất, hãy chấp nhận những tùy chọn mặc định trong tập tin cấu hình hệ thống để phát thư cục bộ, và ghi rõ chi tiết tài khoản SMTP cá nhân của bạn vào tập tin cấu hình người dùng.
+
+Template: esmtp/password
+Type: password
+Description: Authentication password:
+ This is the password to be given to the mailhub if authentication is
+ required by the SMTP server.
+Description-cs.UTF-8: Heslo pro přihlášení:
+ Toto heslo bude předáno poštovnímu SMTP serveru, pokud jím bude vyžadována autentizace.
+Description-da.UTF-8: Godkendelsesadgangskode:
+ Dette er adgangskoden, der skal gives til mailhub'en, hvis godkendelse er krævet af SMTP-serveren.
+Description-de.UTF-8: Passwort zur Authentifizierung:
+ Dieses Passwort wird verwendet, wenn der SMTP-Server eine Authentifizierung verlangt.
+Description-es.UTF-8: Contraseña de autenticación:
+ Esta es la contraseña que se le proporciona a la pasarela de correo si el servidor de SMTP requiere autenticación.
+Description-fr.UTF-8: Mot de passe :
+ Veuillez indiquer le mot de passe fourni à mailhub si une authentification est demandée par le serveur SMTP.
+Description-it.UTF-8: Password di autenticazione:
+ Questa è la password da fornire all'hub della posta elettronica se il server SMTP richiede l'autenticazione.
+Description-ja.UTF-8: 認証パスワード:
+ SMTP サーバで認証が必要な場合にメールハブに渡されるパスワードです。
+Description-nl.UTF-8: Wachtwoord voor authentificatie:
+ Dit is het wachtwoord dat aan de e-mailhub wordt gegeven als authentificatie vereist is door de SMTP-server.
+Description-pt.UTF-8: Palavra-passe de autenticação:
+ Isto é a palavra-passe a ser dada ao mailhub se for necessária autenticação para o servidor de SMTP.
+Description-ru.UTF-8: Пароль для аутентификации:
+ Данный пароль будет посылаться, если сервер SMTP требует пройти аутентификацию.
+Description-sv.UTF-8: Lösenord för autentisering:
+ Detta är lösenordet som anges till mailhubben om authentisering krävs av SMTP-servern.
+Description-vi.UTF-8: Mật khẩu xác thực:
+ Đây là mật khẩu cần cung cấp cho thiết bị trung tâm mạng thư tin nếu trình phục vụ SMTP yêu cầu xác thực.
+
+Template: esmtp/starttls
+Type: select
+Choices: enabled, disabled, required
+Choices-cs.UTF-8: povoleno, zakázáno, požadováno
+Choices-da.UTF-8: aktiveret, deaktiveret, krævet
+Choices-de.UTF-8: einschalten, ausschalten, auf Anforderung
+Choices-es.UTF-8: activo, inactivo, requerido
+Choices-fr.UTF-8: Activée, Désactivée, Obligatoire
+Choices-it.UTF-8: abilitato, disabilitato, richiesto
+Choices-ja.UTF-8: 有効にする, 無効にする, 必要
+Choices-nl.UTF-8: aangeschakeld, uitgeschakeld, vereist
+Choices-pt.UTF-8: ligado, desligado, necessário
+Choices-ru.UTF-8: да, нет, обязательно
+Choices-sv.UTF-8: aktiverad, avstängd, krävs
+Choices-vi.UTF-8: bật, tắt, cần thiết
+Default: disabled
+Description: Whether to use the Starttls extension
+Description-cs.UTF-8: Používat rozšíření Starttls
+Description-da.UTF-8: Hvorvidt Starttls-udvidelsen skal bruges
+Description-de.UTF-8: Start-TLS-Erweiterung benutzen?
+Description-es.UTF-8: ¿Desea usar la extensión Starttls?
+Description-fr.UTF-8: Utilisation de l'extension starttls :
+Description-it.UTF-8: Se utilizzare l'estensione StartTLS
+Description-ja.UTF-8: StartTLS 機能を使うかどうか
+Description-nl.UTF-8: Of de Starttls-extensie gebruikt wordt
+Description-pt.UTF-8: Utilizar a extensão Starttls
+Description-ru.UTF-8: Использовать расширение Starttls:
+Description-sv.UTF-8: Om utökningen STARTTLS ska användas eller inte
+Description-vi.UTF-8: Có nên dùng phần mở rộng StartTLS hay không.
+
+Template: esmtp/certificate_passphrase
+Type: password
+Description: Certificate passphrase:
+  This is the certificate passphrase for the StartTLS extension.
+Description-cs.UTF-8: Heslo certifikátu:
+  Toto heslo (fráze) certifikátu se použije pro rozšíření StartTLS.
+Description-da.UTF-8: Certifikatadgangsfrase:
+  Dette er en certifikatadgangsfrase til StartTLS-udvidelsen.
+Description-de.UTF-8: Zertifikat-Passwort:
+ Geben Sie das Passwort für die Start-TLS-Erweiterung ein.
+Description-es.UTF-8: Frase de paso del certificado:
+ Esta es la frase de paso certificado para la extensión StartTLS.
+Description-fr.UTF-8: Phrase secrète pour le certificat :
+ Veuillez indiquer la phrase secrète du certificat utilisée par l'extension starttls.
+Description-it.UTF-8: Frase di accesso del certificato:
+  Questa è la frase di riconoscimento del certificato per l'estensione StartTLS.
+Description-ja.UTF-8: 証明書のパスフレーズ:
+ StartTLS 機能を利用する際の証明書のパスフレーズです。
+Description-nl.UTF-8: Wachtwoord voor certificaat:
+ Dit is het wachtwoord voor het certificaat voor de StartTLS-extensie.
+Description-pt.UTF-8: Palavra-passe do certificado:
+  Esta é a palavra-passe do certificado para a extensão StartTLS.
+Description-ru.UTF-8: Ключевая фраза к сертификату:
+ Это ключевая фраза для расширения StartTLS.
+Description-sv.UTF-8: Lösenfras för certifikat:
+  Detta är lösenfrasen för certifikatet för utökningen STARTTLS.
+Description-vi.UTF-8: Cụm từ mật khẩu chứng nhận:
+ Đây là cụm từ mật khẩu chứng nhận cho phần mở rộng StartTLS.
+
+Template: esmtp/mda
+Type: select
+Choices: none, procmail, maildrop
+Choices-cs.UTF-8: žádný, procmail, maildrop
+Choices-da.UTF-8: ingen, procmail, maildrop
+Choices-de.UTF-8: keiner, procmail, maildrop
+Choices-es.UTF-8: ninguno, procmail, maildrop
+Choices-fr.UTF-8: Autre, Procmail, Maildrop
+Choices-it.UTF-8: nessuno, procmail, maildrop
+Choices-ja.UTF-8: 使わない, procmail, maildrop
+Choices-nl.UTF-8: geen, procmail, maildrop
+Choices-pt.UTF-8: nada, procmail, maildrop
+Choices-ru.UTF-8: нет, procmail, maildrop
+Choices-sv.UTF-8: ingen, procmail, maildrop
+Choices-vi.UTF-8: không có, procmail, thả thư
+Description: Mail Delivery Agent
+ This is the Mail Delivery Agent used for local mail delivery.
+Description-cs.UTF-8: Způsob doručování pošty
+ Tento poštovní program bude použit pro místní doručování pošty.
+Description-da.UTF-8: Postleveringsagent
+ Dette er postleveringsagenten brugt til lokal postlevering.
+Description-de.UTF-8: E-Mail-Transport-Programm
+ Wählen Sie das E-Mail-Transport-Programm für die lokale Auslieferung aus.
+Description-es.UTF-8: Agente para la entrega del correo
+ Este es el agente para la entrega del correo que se usa para el envío del correo local.
+Description-fr.UTF-8: Agent de distribution de courrier :
+ Veuillez indiquer l'agent de distribution du courrier local.
+Description-it.UTF-8: Mail Delivery Agent
+ Questo è il Mail Delivery Agent utilizzato per la consegna locale della posta elettronica.
+Description-ja.UTF-8: メール配送エージェント
+ これは、ローカルでのメール配送に利用されるメール配送エージェント (MDA) です。
+Description-nl.UTF-8: Mail Delivery Agent
+ Dit is de Mail Delivery Agent die gebruikt wordt voor lokale e-mailbezorging.
+Description-pt.UTF-8: Agente de Entrega de Mail (MDA)
+ Este é o Agente de Entrega de Mail (MDA) para a entrega local de mail.
+Description-ru.UTF-8: Агент доставки почты:
+ Агент доставки почты, используемый для доставки локальной почты.
+Description-sv.UTF-8: Leveransagent för elektronisk post
+ Detta är postleveransagenten som används för lokala postleveranser.
+Description-vi.UTF-8: Tác nhân phát thư
+ Đây là tác nhân phát thư tin được dùng để phân phát thư một cách cục bộ.

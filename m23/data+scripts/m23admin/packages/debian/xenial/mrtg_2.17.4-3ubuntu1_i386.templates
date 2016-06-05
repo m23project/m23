@@ -1,0 +1,67 @@
+Template: mrtg/conf_mods
+Type: boolean
+Default: true
+Description: Make /etc/mrtg.cfg owned by and readable only by root?
+ If your MRTG configuration file is readable by users other than the user
+ MRTG runs as ('root' by default) it can present a security risk, as this
+ file contains SNMP community names.
+ .
+ It is recommended that you make the file owned by and readable only by
+ 'root', unless you have specific reasons not to (for example, because
+ third-party tools need to read that file, like 'mrtg-rrd').
+Description-cs.UTF-8: Má být vlastníkem a mít práva pro čtení /etc/mrtg.cfg pouze root?
+ Pokud je konfigurační soubor MRTG čitelný jinými uživateli, než je uživatel, pod kterým MRTG běží (ve výchozím nastavení 'root'), může to znamenat bezpečnostní riziko, jelikož tento soubor obsahuje veřejné SNMP názvy.
+ .
+ Doporučuje se, aby byl vlastníkem tohoto souboru a jediným, kdo bude mít práva pro čtení, byl 'root' pokud ovšem nemáte specifické důvody, aby jím nebyl (například, protože nástroje třetích stran, jako je 'mrtg-rrd', potřebují číst tento soubor).
+Description-da.UTF-8: Gør /etc/mrtg.cfg ejet af og kun læsbar af root?
+ Hvis din MRTG-opsætningsfil kan læses af andre brugere end den bruger, MRTG køres som (som standard 'root'), kan det udgøre en sikkerhedsrisiko, da filen indeholder SNMP-communitynavne.
+ .
+ Det anbefales, at du sørger for at filen er ejet af og kun læsbar for 'root', med mindre du har særlige behov for ikke at gøre det (for eksempel, fordi tredjepartsværktøjer har brug for at læse den fil, såsom 'mrtg-rrd').
+Description-de.UTF-8: Soll der Benutzer »root« Eigentümer der Datei /etc/mrtg.cfg sein und ausschließlich er diese Datei lesen können?
+ Falls Ihre MRTG-Konfigurationsdatei von anderen Benutzern als dem Benutzer, der MRTG ausführt (standardmäßig »root«) lesbar ist, so kann dies ein Sicherheitsrisiko darstellen, weil diese Datei SNMP-Community-Namen enthält.
+ .
+ Es wird empfohlen, dass der Benutzer »root« Eigentümer dieser Datei ist und ausschließlich er Lesezugriff bekommt, es sei denn, Sie haben besondere Gründe dagegen (z. B. weil Programme von Drittanbietern diese Datei lesen müssen, wie etwa »mrtg-rrd«).
+Description-es.UTF-8: ¿Desea hacer que el archivo «/etc/mrtg.cfg» pertenezca al usuario «root» y sólo lo pueda leer éste?
+ Si su archivo de configuración de MRTG lo pueden leer otros usuarios distintos al que ejecuta MRTG («root» de forma predeterminada) puede llegar a ser un riesgo de seguridad, ya que este archivo contiene nombres de comunidad de SNMP.
+ .
+ Se recomienda que haga este archivo pertenezca al usuario «root» y que sólo lo pueda leer éste, a menos que tenga alguna razón concreta para no hacerlo (por ejemplo, porque herramientas de terceras partes necesitan leer el archivo, como podría ser «mrtg-rrd»).
+Description-fi.UTF-8: Asetetaanko /etc/mrtg.cfg omistajaksi ja ainoastaan luettavaksi pääkäyttäjälle?
+ Jos muutkin kuin käyttäjä, jona MRTG ajetaan (oletuksena ”root”), voivat lukea MRTG:n asetustiedoston, voi tästä muodostua tietoturvariski, sillä tämä tiedosto sisältää SNMP-yhteisönimiä.
+ .
+ On suositeltavaa, että tiedoston omistaa ja sitä voi lukea ainoastaan pääkäyttäjä ”root” ellei sinulla ole erityisiä syitä tehdä toisin. (Tällaisia syitä voivat olla esimerkiksi kolmannen osapuolen työkalut, kuten ”mrtg-rrd”, joiden tarvitsee lukea tiedostoa.)
+Description-fr.UTF-8: Le fichier /etc/mrtg.cfg doit-il être réservé au superutilisateur ?
+ Si le fichier de configuration de MRTG peut être lu par des utilisateurs autres que celui dont MRTG prend l'identité (par défaut, « root », le superutilisateur), il existe un certain risque pour la sécurité car ce fichier contient les noms de communautés SNMP.
+ .
+ Ce fichier devrait appartenir au superutilisateur et n'être accessible que par celui-ci, sauf s'il existe de bonnes raisons pour procéder différemment (par exemple si des outils tiers, comme « mrtg-rrd », ont besoin de lire ce fichier).
+Description-id.UTF-8: Buat /etc/mrtg.cfg dimiliki dan dibaca hanya oleh root?
+ Jika pengaturan berkas MRTG anda dapat dibaca oleh pengguna lain daripada pengguna yang menjalankan MTRG ('root' sebagai bawaan) dapat menimbulkan resiko keamanan, dikarenakan berkas ini mengandung nama community SNMP.
+ .
+ Sangat dianjurkan kepada anda untuk membuat berkas dimiliki dan dibaca hanya oleh 'root', kecuali jika anda memiliki alasan tententu (sebagai contoh, dikarenakan peralatan pihak ketiga yang memerlukan untuk mambaca berkas ini, seperti 'mrtg-rrd').
+Description-it.UTF-8: Rendere /etc/mrtg.cfg di proprietà e leggibile solo da root?
+ Se file di configurazione di MRTG è leggibile da altri utenti oltre che all'utente con cui viene eseguito MRTG (quello predefinitio è "root") potrebbe essere un rischio per la sicurezza, dato che il file contiene i Community Name SNMP.
+ .
+ Si raccomanda di rendere il file di proprietà e leggibile solo da "root", a meno che non si abbiano dei particolari motivi per non farlo (per esempio perché altri programmi di terze parti, come "mrtg-rrd", hanno la necessità di leggere tale file).
+Description-ja.UTF-8: /etc/mrtg.cfg を root ユーザの所有にして、このユーザだけが読み取れるようにしますか?
+ MRTG 設定ファイルが MRTG を動作させているユーザ (デフォルトでは 'root') 以外のユーザから読み取れるようになっている場合、このファイルは SNMP のコミュニティ名を含んでいるためにセキュリティ上のリスクになる可能性があります。
+ .
+ 何かそうしたくない特別な理由 (例えば 'mrtg-rrd' のようなサードパーティ製のツールがファイルを読み取る必要がある場合など) がない限り、このファイルを root ユーザの所有にし、このユーザのみが読み取れるようにしておくのをお勧めします。
+Description-nl.UTF-8: /etc/mrtg.cfg enkel leesbaar maken voor de beheerder?
+ Als uw MRTG-configuratiebestand leesbaar is door andere gebruikers dan de gebruiker waaronder MRTG draait (standaard is dit 'root'), dan kan dat een veiligheidsrisico inhouden omdat dit bestand namen van SNMP-gemeenschappen bevat.
+ .
+ Het is aan te raden dat u dit bestand enkel leesbaar maakt voor de beheerdersaccount 'root', tenzij u specifieke redenen heeft om dit niet te doen (bv. omdat hulpprogramma's van externen zoals 'mrtg-rrd' het bestand moeten kunnen lezen).
+Description-pt.UTF-8: Tornar o /etc/mrtg.cfg propriedade de, e legível apenas pelo root?
+ Se o seu ficheiro de configuração do MRTG for legível por outros utilizadores que não aquele sob o qual corre o MRTG (o 'root', por predefinição) pode representar um risco de segurança, uma vez que este ficheiro contém nomes de comunidades SNMP.
+ .
+ É recomendado que torne o ficheiro propriedade de, e legível apenas pelo 'root', a menos que tenha motivos específicos para o não fazer (por exemplo, porque ferramentas de terceiros precisam de ler esse ficheiro, como o 'mrtg-rrd').
+Description-ru.UTF-8: Сделать /etc/mrtg.cfg принадлежащим и читаемым только root?
+ Если ваш настроечный файл MRTG читается не только пользователем, с правами которого работает MRTG (по умолчанию root), то это может привести к проблемам с безопасностью, так как в этом файле указаны семейства (community) SNMP.
+ .
+ Рекомендуется сделать этот файл принадлежащим и читаемым только root, если только у вас нет веских причин этого не делать (какой-то сторонней утилите требуется читать этот файл, например mrtg-rrd).
+Description-sv.UTF-8: Ska /etc/mrtg.cfg ägas av och endast vara läsbar av root?
+ Om din MRTG konfigurationsfil är läsbar av andra användare än den användaren som kör MRTG ("root" som standardval) kan det vara en säkerhetsrisk eftersom filen innehåller SNMP-community-namn.
+ .
+ Det rekommenderas att du gör filen ägd av och läsbar endast av root-användaren om du inte har andra specifika anledningar (exempelvis för att verktyg från tredjepart som "mrtg-rrd" ska kunna läsa filen).
+Description-vi.UTF-8: Làm cho « /etc/mrtg.cfg » chỉ được người chủ sở hữu và đọc ?
+ Nếu tập tin cấu hình MRTG cấp quyền đọc cho người khác với người dùng dưới họ chạy MRTG (mặc định là « root ») thì có thể rủi ro bảo mật, vì tập tin này chứa các tên cộng đồng SNMP.
+ .
+ Khuyên bạn cấp quyền đọc và quyền sơ hữu tập tin này chỉ cho người chủ (root), nếu bạn không có lý do đặc biệt để gán quyền rộng hơn (v.d. vì công cụ nhóm ba cần đọc tập tin đó, như « mrtg-rrd »).

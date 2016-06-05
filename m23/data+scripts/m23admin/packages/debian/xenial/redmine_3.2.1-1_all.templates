@@ -1,0 +1,36 @@
+Template: redmine/current-instances
+Type: string
+Default: default
+Description: Redmine instances to be configured or upgraded:
+ Space-separated list of instances identifiers.
+ . 
+ Each instance has its configuration files in /etc/redmine/<instance-identifier>/
+ .
+ To deconfigure an instance, remove its identifier from this list.
+ Configuration files and data from removed instances will not be deleted until
+ the package is purged, but they will be no longer managed automatically.
+Description-pt_BR.UTF-8: Instâncias do Redmine para serem configuradas ou atualizadas:
+ Lista de identificadores de instâncias separados por espaço.
+ .
+ Cada instância tem seus arquivos de configuração em /etc/redmine/<identificador-da-instancia>/
+ .
+ Para desconfigurar uma instância, remova o seu identificador desta lista. Arquivos de configuração e dados de instâncias removidas não serão removidos até que o pacote seja removido completamente (purge), mas não serão mais gerenciados automaticamente.
+
+Template: redmine/default-language
+Type: select
+Choices: ar, az, bg, bs, ca, cs, da, de, el, en, en-gb, es, es-pa, et, eu, fa, fi, fr, gl, he, hr, hu, id, it, ja, ko, lt, lv, mk, mn, nl, no, pl, pt, pt-br, ro, ru, sk, sl, sq, sr, sr-yu, sv, th, tr, uk, vi, zh, zh-tw
+Default: en
+Description: Default redmine language:
+Description-cs.UTF-8: Výchozí jazyk pro redmine:
+Description-da.UTF-8: Standardsprog for redmine:
+Description-de.UTF-8: Standardsprache für Redmine:
+Description-es.UTF-8: Idioma predeterminado para Redmine:
+Description-fr.UTF-8: Langue par défaut de Redmine :
+Description-it.UTF-8: Lingua predefinita per redmine:
+Description-ja.UTF-8: redmine のデフォルト言語:
+Description-nl.UTF-8: Standaard taal voor redmine:
+Description-pt.UTF-8: Linguagem predefinida do redmine:
+Description-pt_BR.UTF-8: Língua padrão do Redmine:
+Description-ru.UTF-8: Язык по умолчанию в redmine:
+Description-sv.UTF-8: Standardspråk för Redmine:
+Description-vi.UTF-8: Ngôn ngữ redmine mặc định:

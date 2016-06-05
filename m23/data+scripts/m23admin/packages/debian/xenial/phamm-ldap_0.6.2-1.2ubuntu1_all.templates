@@ -1,0 +1,179 @@
+
+Template: phamm-ldap/init_base_ldap
+Type: boolean
+Default: false
+Description: Create empty LDAP base for Phamm?
+Description-cs.UTF-8: Vytvořit prázdný LDAP podstrom pro Phamm?
+Description-de.UTF-8: Soll eine leere LDAP-Basis für Phamm erstellt werden?
+Description-es.UTF-8: ¿Desea crear una base de LDAP vacía para Phamm?
+Description-eu.UTF-8: LDAP oinarri hutsa sortu Phamm-entzako?
+Description-fi.UTF-8: Luodaanko Phammille tyhjä LDAP-kanta?
+Description-fr.UTF-8: Faut-il créer une base LDAP pour Phamm ?
+Description-gl.UTF-8: ¿Crear unha base LDAP baleira para Phamm?
+Description-it.UTF-8: Creare una base dati LDAP vuota?
+Description-ja.UTF-8: Phamm 用に、空の LDAP ベースを作成しますか?
+Description-pt.UTF-8: Criar base LDAP vazia para o Phamm?
+Description-ru.UTF-8: Создать пустую базу LDAP для Phamm?
+Description-sv.UTF-8: Ska en tom grundinställning av LDAP genomföras?
+Description-vi.UTF-8: Tạo cơ bản LDAP trống cho Phamm ?
+Description-zh_TW.UTF-8: 建立空白 LDAP 基底供 Phamm 使用？
+
+Template: phamm-ldap/ldap-basedn
+Type: string
+Default: dc=example,dc=org
+Description: Distinguished Name of the search base:
+ Please enter the Distinguished Name (DN) of the LDAP search base. Many sites
+ use the components of their domain names for this purpose. For example,
+ the domain "example.org" would use "dc=example,dc=org".
+Description-cs.UTF-8: Rozlišovací název prohledávaného stromu:
+ Zadejte prosím rozlišitelný název (DN) prohledávaného LDAP stromu. Mnoho serverů pro tento účel využívá části svých doménových jmen. Například doména „priklad.cz“ by jako rozlišovací název svého stromu použila „dc=priklad,dc=cz“.
+Description-de.UTF-8: »Distinguished Name« der Suchbasis:
+ Bitte geben Sie den »Distinguished Name« (DN) der LDAP-Suchbasis ein. Viele Sites verwenden die Teile ihrer Domänennamen für diesen Zweck. Beispielsweise würde die Domäne »example.org« die Angabe »dc=example,dc=org« verwenden.
+Description-es.UTF-8: Nombre distintivo de la base de búsqueda:
+ Introduzca el Nombre Distintivo (DN) de la base de búsqueda de LDAP. Muchos sitios usan los componentes de sus nombres de dominio para este propósito. Por ejemplo, el dominio «ejemplo.org» usaría «dc=ejemplo,dc=org».
+Description-eu.UTF-8: Bilaketa oinarriaren izen bereizia (DN):
+ Sartu LDAPen bilaketa-oinarriaren izen bereizia (DN). Gune askok beraien domeinu-izenaren osagaiak erabiltzen dituzte xede honetarako. Adibidez, "adibidea.org" domeinuak  "dc=adibidea,dc=org" erabiliko luke.
+Description-fi.UTF-8: Hakukannan erittelevä nimi:
+ Anna LDAP-hakukannan erittelevä nimi (Distinguished Name, DN). Useat sivustot käyttävät verkkoaluenimensä komponentteja tähän tarkoitukseen. Esimerkiksi verkkoalue ”example.org” käyttäisi komponentteja ”dc=example,dc=org”.
+Description-fr.UTF-8: Nom distinctif de base pour les recherches :
+ Veuillez indiquer le nom distinctif (« Distinguished Name » : DN) de base pour les recherches LDAP. De nombreux sites utilisent les composants de leur nom de domaine à cet effet. Ainsi, le domaine « example.org » utilisera « dc=example,dc=org ».
+Description-gl.UTF-8: Nome distinguido da base de busca:
+ Introduza o nome distinguido (DN) da base de busca LDAP. Moitos sitios empregan os compoñentes dos seus nomes de dominio para esta finalidade. Por exemplo, o dominio "exemplo.org" había empregar "dc=exemplo,dc=org".
+Description-it.UTF-8: DN della base dati:
+ Indicare il DN della base dati LDAP. In molti casi si utilizzano le componenti del nome a dominio per questo scopo. Per esempio, il dominio "example.org" sarebbe indicato come "dc=example,dc=org".
+Description-ja.UTF-8: 検索開始位置の識別名 (Distinguished Name) :
+ LDAP 検索の開始位置の識別名 (DN：Distinguished Name) を入力してください。この識別名には、多くのサイトがドメイン名の構成要素を使っています。例えば「example.org」は「dc=example,dc=org」を使います。
+Description-nb.UTF-8: Entydig navn på søkebasen:
+ Oppgi entydig navn (DN) på LDAP-søkebasen. Mange steder bruker deler av domenenavnet sitt tiol dette. For eksempel ville domenet «example.org» bruke «dc=example,dc=org».
+Description-nl.UTF-8: 'Distinghuished Name' van de zoekbasis:
+ Wat is de DN (Distinguished Name) van de LDAP-zoekbasis? Veel sites gebruiken hiervoor delen van hun domeinnaam. Bijvoorbeeld: het domein 'example.org' gebruikt 'dc=example, dc=org'.
+Description-no.UTF-8: Entydig navn på søkebasen:
+ Oppgi entydig navn (DN) på LDAP-søkebasen. Mange steder bruker deler av domenenavnet sitt tiol dette. For eksempel ville domenet «example.org» bruke «dc=example,dc=org».
+Description-pt.UTF-8: Nome distinguido (DN) da base de busca:
+ Por favor indique o nome distinguido (DN) da base de busca LDAP. Muitos sites usam componentes dos seus nomes de domínio para este efeito. Por exemplo, o domínio "exemplo.org" poderá usar "dc=exemplo,dc=org".
+Description-ru.UTF-8: Индивидуальное имя базы поиска:
+ Введите индивидуальное имя (DN) для базы поиска LDAP. Многие сайты для этой цели используют части своих доменных имён. Например, домен "example.org" использовал бы "dc=example,dc=org".
+Description-sv.UTF-8: Särskilt urvalsnamn för sökbasen: 
+ Ange ett särskilt urvalsnamn (eng: "Distinguished Name", DN) som utsökningen ska basera sig på. Det är vanligt att använda delar av domänen för detta. Exempelvis så kan domänen "exempel.se" bli "dc=exempel,dc=se".
+Description-vi.UTF-8: Tên phân biệt (DN) của cơ bản tìm kiếm:
+ Hãy nhập tên phân biệt (DN) của cơ bản tìm kiếm LDAP. Rất nhiều địa chỉ cũng dùng thành phần của tên miền cho mục đích này. Thí dụ, miền « vnoss.org » sẽ dùng « dc=vnoss,dc=org ».
+Description-zh_TW.UTF-8: 搜尋用的辨識名稱：
+ 請輸入 LDAP 搜尋用的辨識名稱 (DN)。很多站台使用自己的網域名稱。例如"example.org" 會使用 "dc=example,dc=org"。
+
+Template: phamm-ldap/ldap-binddn
+Type: string
+Default: cn=manager,dc=example,dc=tld
+Description: Login DN for the LDAP server:
+ Please enter the Distinguished Name of the account that will be used
+ to log in to the LDAP server. If you use form-based authentication
+ this will be the default login DN. In this case leaving it empty will
+ prevent the creation of a default login DN.
+Description-cs.UTF-8: Přihlašovací jméno k LDAP serveru:
+ Zadejte prosím rozlišovací jméno (DN) účtu, který se použije pro přihlášení k LDAP serveru. Používáte-li autentizaci pomocí formuláře, bude toto výchozí přihlašovací DN. Jestliže ponecháte prázdné, výchozí přihlašovací DN se nevytvoří.
+Description-de.UTF-8: Anmelde-DN für den LDAP-Server:
+ Bitte geben Sie den »Distinguished Name« des Benutzerkontos ein, das zur Anmeldung beim LDAP-Server verwendet wird. Falls Sie eine Formular-basierte Authentisierung benutzen, wird dies der voreingestellte Anmelde-DN. Es wird kein voreingestellter Anmelde-DN erstellt, wenn Sie dieses Feld leer lassen.
+Description-es.UTF-8: Identificación DN del servidor de LDAP:
+ Introduzca el Nombre Distintivo de la cuenta que se usará para identificarse en el servidor LDAP. Si usa una autenticación basada en formulario, éste será la identificación DN predeterminada. En ese caso dejar en blanco este campo, evitará la creación de una identificación DN predeterminada.
+Description-eu.UTF-8: LDAP zerbitzariaren saio-hasierako DNa:
+ Sartu kontuaren izen bereizia (DN) LDAP zerbitzarian saioa hastean erabiltzeko. Inprimakian oinarritutako autentifikazioa erabiltzen baduzu, hau izango da saio-hasierako DN lehenetsia. Kasu honetan, hau hutsik utziz gero saio-hasierako DN lehenetsia sortzea saihestuko da.
+Description-fi.UTF-8: LDAP-palvelimen kirjautumis-DN:
+ Anna LDAP-palvelimelle kirjautumiseen käytettävän tunnuksen erittelevä nimi. Jos käytät lomakepohjaista tunnistautumista, tämä on oletuskirjautumis-DN. Tässä tapauksessa kentän jättäminen tyhjäksi estää oletuskirjautumis-DN:n luonnin.
+Description-fr.UTF-8: Nom distinctif de connexion au serveur LDAP :
+ Veuillez indiquer le nom distinctif (« Distinguished Name » : DN) du compte qui sera utilisé pour la connexion au serveur LDAP. Si vous utilisez une authentification par formulaires, ce sera l'identifiant de connexion par défaut. Dans ce cas, le laisser vide permettra d'éviter la création d'un identifiant de connexion par défaut.
+Description-gl.UTF-8: DN para se identificar ao servidor LDAP:
+ Introduza o nome distinguido da conta que se ha empregar para se identificar no servidor LDAP. Se emprega autenticación baseada en formularios ha ser o DN de identificación por defecto. Neste caso, se o deixa baleiro hase impedir a creación dun DN de identificación por defecto.
+Description-it.UTF-8: Utente di login al server LDAP:
+ Indicare il DN per dell'account di amministrazione che sarà utilizzato per collegarsi al server LDAP.
+Description-ja.UTF-8: LDAP サーバのログイン DN を入力してください。
+ LDAP サーバへのログインに使うアカウントの識別名を入力してください。フォームベース認証を使う場合は、これがデフォルトのログイン DN になります。空のままにしておいた場合は、デフォルトのログイン DN の作成を行いません。
+Description-nb.UTF-8: Login DN for LDAP-tjeneren:
+ Oppgi Entydig Navn (DN) for kontoen som vil bli brukt til å logge inn på LDAP-tjeneren. Hvis du bruker skjema-basert autentisering er dette standard login DN. I dette tilfelle kan det ikke lages et standard login DN hvis denne feltet står tomt.
+Description-nl.UTF-8: Aanmeld-DN voor de LDAP-server:
+ Wat is de DN (Distinguished Name) van de account waarmee aangemeld zal worden op de LDAP-server? Als u 'form-based' authenticatie gebruikt is dit de standaard aanmeld-DN. Dit veld blanco laten zorgt er dan voor dat er geen standaard aanmeld-DN aangemaakt wordt.
+Description-no.UTF-8: Login DN for LDAP-tjeneren:
+ Oppgi Entydig Navn (DN) for kontoen som vil bli brukt til å logge inn på LDAP-tjeneren. Hvis du bruker skjema-basert autentisering er dette standard login DN. I dette tilfelle kan det ikke lages et standard login DN hvis denne feltet står tomt.
+Description-pt.UTF-8: Login DN para o servidor LDAP:
+ Por favor indique o nome distinguido (DN) da conta que irá ser usada para aceder ao servidor LDAP. Se você escolher uma autenticação baseada em formulários este será o login DN prédefinido. Neste caso, deixando-o vazio, irá prevenir a criação dum login DN prédefinido.
+Description-ru.UTF-8: Логин для доступа к серверу LDAP:
+ Введите индивидуальное имя (DN) учётной записи, которая будет использована для доступа к серверу LDAP. Если вы используете аутентификацию, основанную на форме, то это будет учётная запись DN для входа по умолчанию. Если оставить поле пустым, то учётная запись DN по умолчанию создана не будет.
+Description-sv.UTF-8: Inloggnings-DN för LDAP-server:
+ Ange ditt standardiserade särskilda urvalsnamn för kontot som ska användas till att logga in i LDAP-servern. Om du använder dig av formulärbaserad autentisiering så kommer detta att vara ditt standardvärde för DN vid inloggning. I sådana fall bör du lämna fältet tomt för att förhindra skapandet av ett standard DN för inloggning.
+Description-vi.UTF-8: DN đăng nhập vào máy phục vụ LDAP:
+ Hãy nhập tên phân biệt (DN) của tài khoản sẽ được dùng để đăng nhập vào máy phục vụ LDAP. Nếu bạn dùng tiến trình xác thực dựa vào biểu mẫu, đây sẽ là DN đăng nhập mặc định. Trong trường hợp này, đơn giản bỏ trống trường này sẽ ngăn cản tạo một DN đăng nhập mặc định.
+Description-zh_TW.UTF-8: 登入 LDAP 伺服器用的 DN：
+ 請輸入登入 LDAP 伺服器用的辨識名稱 (DN)。如果您使用表單認證的話，這將會是預設的登入 DN。若留下空白則不會產生預設的登入用 DN。
+
+Template: phamm-ldap/ldap-bindpw
+Type: password
+Default: secret
+Description: Login password for the LDAP server:
+ Please enter the password that will be used to log in to the LDAP server.
+Description-cs.UTF-8: Přihlašovací heslo k LDAP serveru:
+ Zadejte prosím heslo, které se použije pro připojení k LDAP serveru.
+Description-de.UTF-8: Anmelde-Passwort für den LDAP-Server:
+ Bitte geben Sie das Passwort ein, das für die Anmeldung beim LDAP-Server verwendet werden wird.
+Description-es.UTF-8: Contraseña para la identificación en el servidor de LDAP:
+ Introduzca la contraseña que se usará para la identificación en el servidor de LDAP.
+Description-eu.UTF-8: LDAP zerbitzariaren saio-hasierako pasahitza:
+ Sartu pasahitza LDAP zerbitzarian saioa hastean erabiltzeko.
+Description-fi.UTF-8: LDAP-palvelimen kirjautumissalasana:
+ Anna salasana, jota käytetään kirjauduttaessa LDAP-palvelimelle.
+Description-fr.UTF-8: Mot de passe de connexion au serveur LDAP :
+ Veuillez indiquer le mot de passe à utiliser pour la connexion au serveur LDAP.
+Description-gl.UTF-8: Contrasinal para se conectar ao servidor LDAP:
+ Introduza o contrasinal que se ha empregar para se conectar ao servidor LDAP.
+Description-it.UTF-8: Password di amministrazione del server LDAP:
+ Inserire la password che sarà usata per accedere al server LDAP.
+Description-ja.UTF-8: LDAP サーバのログインパスワード:
+ LDAP サーバへのログインに使うパスワードを入力してください。
+Description-nb.UTF-8: Login-passord for LDAP-tjeneren:
+ Oppgi passordet som vil bli brukt til å logge inn på LDAP-tjeneren.
+Description-nl.UTF-8: Wachtwoord om aan te melden bij de LDAP-server:
+ Wat is het wachtwoord dat gebruikt zal worden om aan te melden bij de LDAP-server?
+Description-no.UTF-8: Login-passord for LDAP-tjeneren:
+ Oppgi passordet som vil bli brukt til å logge inn på LDAP-tjeneren.
+Description-pt.UTF-8: Palavra-chave de login para o servidor LDAP:
+ Por favor indique a palavra-chave que irá ser usada para aceder ao servidor LDAP.
+Description-ru.UTF-8: Пароль учётной записи на сервер LDAP:
+ Введите пароль, который будет использован для входа на сервер LDAP.
+Description-sv.UTF-8: Lösenord för inloggning i LDAP-servern:
+ Ange lösenordet som ska användas för att logga in i LDAP-servern.
+Description-vi.UTF-8: Mật khẩu đăng nhập vào máy phục vụ LDAP:
+ Hãy nhập mật khẩu sẽ được dùng để đăng nhập vào máy phục vụ LDAP.
+Description-zh_TW.UTF-8: 登入 LDAP 伺服器用的密碼：
+ 請輸入用來登入 LDAP 伺服器用的密碼。
+
+Template: phamm-ldap/ldap-phammpw
+Type: password
+Default: secret
+Description: Login password for the LDAP phamm user:
+ Please enter the password for "phamm user" useful for binding with limited privileges.
+Description-cs.UTF-8: Přihlašovací heslo k LDAP serveru pro uživatele phamm:
+ Zadejte prosím heslo pro uživatele „phamm“, které se použije pro připojení k LDAP serveru s omezenými oprávněními.
+Description-de.UTF-8: Anmelde-Passwort für den LDAP-Benutzer »phamm user«:
+ Bitte geben Sie das Passwort für »phamm user« ein. Dies ist praktisch, um eine Anmeldung mit eingeschränkten Rechten durchzuführen.
+Description-es.UTF-8: Contraseña para la identificación del usuario de LDAP phamm:
+ Introduzca la contraseña del «usuario phamm», es útil para enlazar con privilegios limitados.
+Description-eu.UTF-8: LDAPeko phamm erabiltzailearen saio-hasierako pasahitza:
+ Sartu "phamm erabiltzailearen" pasahitza murriztutako pribilegioekin esleitzeko.
+Description-fi.UTF-8: LDAP:n phamm-tunnuksen kirjautumissalasana:
+ Anna salasana phamm-tunnukselle, joka on kätevä yhdistämisiin rajoitetuilla oikeuksilla.
+Description-fr.UTF-8: Mot de passe de connexion LDAP avec privilèges limités :
+ Veuillez indiquer le mot de passe à utiliser pour l'« utilisateur phamm », utile pour des connexions LDAP avec privilèges limités.
+Description-gl.UTF-8: Contrasinal do usuario LDAP "phamm":
+ Introduza o contrasinal do usuario phamm para se conectar con privilexios limitados.
+Description-it.UTF-8: Scegli una password per l'utente LDAP phamm:
+ Inserire la password per l'utente "phamm user" che potrà essere usato per il bind con privilegi limitati.
+Description-ja.UTF-8: LDAP での phamm user のログインパスワード:
+ 限定された権限を付与するのに便利な「phamm user」のパスワードを入力してください。
+Description-pt.UTF-8: Palavra-chave de login para o utilizador de LDAP phamm:
+ Por favor indique a palavra-chave para o "utilizador de phamm", útil para ligações com privilégios limitados.
+Description-ru.UTF-8: Пароль учётной записи phamm на сервер LDAP:
+ Введите пароль для "пользователя phamm", который будет использован для входа на сервер LDAP.
+Description-sv.UTF-8: Lösenord för phamm-användaren i LDAP-servern:
+ Ange lösenordet som "phamm-användaren" ska använda för att logga in i LDAP-servern med begränsade rättigheter.
+Description-vi.UTF-8: Mật khẩu đăng nhập cho người dùng phamm LDAP:
+ Hãy nhập mật khẩu cho « phamm user » hữu ích để đóng kết với quyền truy cập bị hạn chế.
+Description-zh_TW.UTF-8: 以使用者權限登入 LDAP 伺服器用的密碼：
+ 請輸入供 "phamm user" 用來以受限的權限登入 LDAP 伺服器用的密碼。
+

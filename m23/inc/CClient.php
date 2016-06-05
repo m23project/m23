@@ -340,6 +340,46 @@ class CClient extends CChecks
 	}
 
 
+/**
+**name CClient::addNormalUpdateJob()
+**description Adds a job to perform a normal update of the client.
+**parameter type: normal or complete.
+**/
+	public function addNormalUpdateJob()
+	{
+		$this->addUpdateJob('normal');
+	}
+
+
+
+
+
+/**
+**name CClient::addCompleteUpdateJob()
+**description Adds a job to perform a complete update of the client.
+**parameter type: normal or complete.
+**/
+	public function addCompleteUpdateJob()
+	{
+		$this->addUpdateJob('complete');
+	}
+
+
+
+
+
+/**
+**name CClient::addUpdateJob($type)
+**description Adds a job to update the client to the installation queue.
+**parameter type: normal or complete.
+**/
+	private function addUpdateJob($type)
+	{
+		$arr['type'] = $type;
+		$this->addSpecialJob('m23update', implodeAssoc("?#?",$arr));
+	}
+
+
 
 
 
@@ -1139,6 +1179,21 @@ class CClient extends CChecks
 	public function addToCredentialsToLDAPServer()
 	{
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+		if (HELPER_isExecutedOnUCS())
+		{
+			$returnText = UCS_addLDAPUser($this->getLogin(), $this->getForename(), $this->getFamilyname(), $this->getFirstpw(), $this->getUserID());
+			
+			if (UCS_udmSuccessOrErrorMessage($returnText, $errorMessage))
+				return(true);
+			else
+			{
+				$this->addErrorMessage("$I18N_addNewLoginToUCSLDAPError $errorMessage");
+				return(false);
+			}
+		}
+	
+	
 		if (LDAP_addPosix($this->getLDAPServer(), $this->getLogin(), $this->getForename(), $this->getFamilyname(), $this->getFirstpw(), $this->getUserID(), $this->getGroupID()) === FALSE)
 		{
 			$this->addErrorMessage($I18N_errorAddingNewLoginToLDAP);

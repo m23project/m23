@@ -263,15 +263,46 @@ function PKG_getDebootstrapCacheSfURL($release, $arch)
 
 
 /**
+**name PKG_baseSysDownloadedCompletelyTom23Server($release, $arch)
+**description Checks, if the debootstrap cache file was downloaded completely to the m23 server.
+**parameter release: Select the Debian/Ubuntu suite (squeeze, sarge, sid, precise).
+**parameter arch: the computer architecture of the client
+**returns true, on complete download otherwise false.
+**/
+function PKG_baseSysDownloadedCompletelyTom23Server($release, $arch)
+{
+	$debootstrapCacheFile = PKG_getDebootstrapCacheServerFile($release, $arch);
+	$debootstrapCacheFileTemp = "$debootstrapCacheFile.tmp";
+
+	return(file_exists($debootstrapCacheFile) && !file_exists($debootstrapCacheFileTemp));
+}
+
+
+
+
+
+/**
 **name PKG_downloadBaseSysTom23Server($release, $arch)
 **description Downloads the debootstrap cache file to the m23 server and checks its validity (by signature).
 **parameter release: Select the Debian/Ubuntu suite (squeeze, sarge, sid, precise).
 **parameter arch: the computer architecture of the client
+**returns true, if the download is completed, otherwise false.
 **/
 function PKG_downloadBaseSysTom23Server($release, $arch)
 {
-	if (SERVER_runningInBackground('PKG_downloadBaseSysTom23Server'))
+	$backgroundJobName = "PKG_downloadBaseSysTom23Server$release";
+
+	// Download in progress
+	if (SERVER_runningInBackground($backgroundJobName))
 		return(false);
+
+	// No release given (client has no distribution set) => Don't start download and don't block the client partition/format job
+	if (empty($release))
+		return(true);
+
+	// The debootstrap cache file is on the m23 server
+	if (PKG_baseSysDownloadedCompletelyTom23Server($release, $arch))
+		return(true);
 
 	// Make sure the GPG sign key is imported
 	SERVER_importGPGPackageSignKey();
@@ -286,7 +317,7 @@ function PKG_downloadBaseSysTom23Server($release, $arch)
 	$debootstrapCacheFileURL = PKG_getDebootstrapCacheSfURL($release, $arch);
 
 	// Download the signature file and check the debootstrap cache file
-	SERVER_runInBackground('PKG_downloadBaseSysTom23Server', "
+	SERVER_runInBackground($backgroundJobName, "
 	cd /m23/data+scripts/packages/baseSys
 	
 	# Download the debootstrap cache file to a temporary file name
@@ -307,6 +338,8 @@ function PKG_downloadBaseSysTom23Server($release, $arch)
 		rm $debootstrapCacheFileTemp
 	fi
 	");
+
+	return(false);
 }
 
 
@@ -1458,8 +1491,8 @@ if (empty($key))
 		");
 
 //list all m23 special packages and cut the path
-$file=popen("find /m23/data+scripts/packages/ /m23/inc/distr/$distr/packages -xtype f -name 'm23*Install.php' -printf \"%f\\n\" $grep;
-find /m23/data+scripts/packages/userPackages/ -xtype f -name 'm23*Install.php' -printf \"%f\\n\" $grep | awk '{print(\"?\"$0)}';" ,"r");
+$file=popen("find /m23/data+scripts/packages/ /m23/inc/distr/$distr/packages -xtype f -maxdepth 1 -name 'm23*Install.php' -printf \"%f\\n\" $grep;
+find /m23/data+scripts/packages/userPackages/ -xtype f -maxdepth 1 -name 'm23*Install.php' -printf \"%f\\n\" $grep | awk '{print(\"?\"$0)}';" ,"r");
 
 $i=0;
 while (!feof($file))

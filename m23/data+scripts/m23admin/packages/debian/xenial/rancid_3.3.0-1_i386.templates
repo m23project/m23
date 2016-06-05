@@ -1,0 +1,68 @@
+Template: rancid/warning
+Type: note
+Description: Note
+ Rancid debian package is still in an alpha stage.  If you find
+ problems first check all the docs and then report them as bugs as
+ soon as possible.  Currently it doesn't have any installation script
+ to help you configuring it, look at the examples directory under
+ /usr/share/doc/rancid to look for some example for your configuration.
+Description-cs.UTF-8: Poznámka
+ Debianí balík Rancid je stále ve vývoji. Pokud zaznamenáte nějaké problémy, nejprve je konzultujte s dokumentací a poté je nahlaste jako chybu. Rancid zatím neobsahuje instalační skript, který by vám pomohl v nastavení. Nějaké příklady konfigurace naleznete v /usr/share/doc/rancid.
+Description-da.UTF-8: Bemærk
+ Debianpakken Rancid er stadig i alpha-stadie. Hvis du finder problemer, så tjek først dokumentationen og rapporter dem som en fejl så hurtigt som muligt. På nuværende tidspunkt, har rancid ingen installationsskripter til at hjælpe dig med at opsætte rancid. Kig i mappen 'examples' under /usr/share/doc/rancid for at finde nogle eksempler til din konfiguration.
+Description-de.UTF-8: Hinweis
+ Das Debian-Paket von Rancid befindet sich noch im Alpha-Stadium; falls Sie ein Problem finden, lesen Sie erst alle Dokumente und berichten Sie es dann so schnell wie möglich als Fehler. Derzeit hat es kein Installationsskript, um Ihnen bei der Konfiguration zu helfen; schauen Sie ins »examples«-Verzeichnis unter /usr/share/doc/rancid für einige Beispiele für Ihre Konfiguration.
+Description-es.UTF-8: Nota
+ El paquete de debian de rancid todavía está en fase alfa. Si tiene problemas, primero compruebe todos los documentos e informe de los errores lo más pronto posible. Actualmente no tiene ningún script de instalación para ayudarle en la configuración, vea el directorio de ejemplos en «/usr/share/doc/rancid» para conseguir algún ejemplo para la configuración.
+Description-fr.UTF-8: Avertissement
+ Le paquet Debian de Rancid est encore en phase initiale de développement. Si vous rencontrez des problèmes, veuillez d'abord consulter la documentation et les signaler par un rapport de bogue dès que possible. Il n'existe actuellement aucun script de configuration pour vous assister : vous devriez consulter le répertoire d'exemples dans /usr/share/doc/rancid.
+Description-it.UTF-8: Note
+ Il pacchetto debian di rancid e' ancora in fase alfa, se trovate problemi controllate prima la documentazione e poi riportateli come bug il piu' velocemente possibile. Attualmente non ha alcun script di installazione per aiutarvi nella configurazione, tuttavia sono disponibili alcuni esempi nella directory examples in /usr/share/doc/rancid per alcuni esempi per aiutarvi nella configurazione
+Description-ja.UTF-8: 注意
+ rancid の Debian パッケージはまだアルファ版です。問題を見つけたら、まず全てのドキュメントをチェックしてからすぐにバグとして報告してください。現状では設定の手助けをしてくれるインストールスクリプトはありません。/usr/share/doc/rancid 以下のサンプルディレクトリを参照して、設定例を探してください。
+Description-nl.UTF-8: Opmerking
+ Het Debianpakket van rancid bevindt zich nog in een alfa-stadium. Als u problemen vindt, raadpleeg dan eerst de documentatie en meld ze zo snel mogelijk als bugs. Er is op dit moment geen installatiescript om u te helpen met de configuratie, bekijk de voorbeeldenmap onder /usr/share/doc/rancid voor configuratievoorbeelden.
+Description-pt.UTF-8: Nota
+ O pacote Debian Rancid ainda está em estado alfa, se você detectar problemas, primeiro verifique todos os documentos e depois reporte-os como 'bugs' assim que for possível. Actualmente não tem nenhum script de instalação para o ajudar a configurar, veja no directório dos exemplos em /usr/share/doc/rancid para ver algum exemplo para a sua configuração.
+Description-pt_BR.UTF-8: Nota
+ O pacote rancid no Debian ainda está em estado alfa. Se você encontrar problemas, primeiro verifique toda a documentação e então reporte-os como bugs tão logo quanto possível. Atualmente, ele não tem nenhum script de instalação para ajudar você a configurá-lo, veja nos diretórios de exemplos sob /usr/share/doc/rancid para procurar algum exemplo para a sua configuração.
+Description-ru.UTF-8: Замечание
+ Debian-пакет Rancid пока считается экспериментальным. Если вы обнаружите проблему, во-первых, просмотрите всю документацию, а затем отправьте сообщение об ошибке как можно скорее. В настоящее время, в пакете нет сценария установки, который бы выполнил настройку — в этом вам могут помочь примеры из каталога /usr/share/doc/rancid.
+Description-sv.UTF-8: Notera
+ Debianpaketet rancid är fortfarande i alphastadiet. Om du hittar problem, läs då alla manualer och rapportera sedan problemet som en bug så snart som möjligt. För tillfället finns inga installationsskript som hjälper dig att konfigurera applikationen men exempel finns i katalogen /usr/share/doc/rancid*.
+Description-vi.UTF-8: Ghi chú
+ Gói Debian tên Rancid vẫn còn trong giai đoạn alpha (giai đoạn đầu tiên, chỉ để thử). Nếu gặp vấn đề thì trước tiên bạn nên kiểm tra các tài liệu hướng dẫn, sau đó thông báo lỗi càng sớm càng có thể. Hiện thời gói Rancid không có văn lệnh cài đặt để giúp bạn cấu hình nó — xem thư mục « examples » nằm dưới « /usr/share/doc/rancid » để tìm các mẫu cấu hình.
+
+Template: rancid/go_on
+Type: boolean
+Default: false
+Description: Really continue?
+ Please check, whether you made a backup copy of your rancid data.  If
+ it's your first installation of rancid accept here, otherwise
+ decline, perform the backup and then run "dpkg-reconfigure rancid"
+Description-cs.UTF-8: Opravdu pokračovat?
+ Zazálohovali jste si data? Pokud je to vaše první instalace rancidu, odpovězte kladně. V opačném případě zvolte „Ne“, vytvořte zálohu a poté spusťte „dpkg-reconfigure rancid“.
+Description-da.UTF-8: Fortsæt?
+ Tjek venligst, hvorvidt du har lavet en sikkerhedskopi af dine ranciddata. Hvis det er din første installation af rancid, så accepter her, ellers afvis, udfør sikkerhedskopieringen og kør så »dpkg-reconfigure rancid«
+Description-de.UTF-8: Wirklich fortfahren?
+ Bitte überprüfen Sie, ob Sie eine Sicherungskopie Ihrer Rancid-Daten angelegt haben. Falls dies Ihre erste Installation von Rancid ist, stimmen Sie hier zu, andernfalls lehnen Sie ab, um das Backup durchzuführen und dann »dpkg-reconfigure rancid« auszuführen.
+Description-es.UTF-8: ¿Desea continuar?
+ Compruebe si ha realizado una copia de seguridad de los datos de rancid. Acepte si es la primera instalación de rancid, sino no acepte y realice la copia de seguridad y después ejecute «dpkg-reconfigure rancid».
+Description-fr.UTF-8: Faut-il vraiment continuer ?
+ Ne choisissez cette option que si vous effectuez actuellement une installation initiale de Rancid. Dans le cas contraire, sauvegardez d'abord vos données, puis utilisez la commande « dpkg-reconfigure rancid ».
+Description-it.UTF-8: Si e' sicuri di continuare?
+ Controllare se e' stata eseguita una copia di backup dei vostri dati di rancid.   Se questa e' la vostra prima installazione di rancid potete rispondere tranquillamente 'Si', altrimenti scegliete 'No', procedete al backup, e poi eseguite 'dpkg-reconfigure rancid' per tornare a questo menu
+Description-ja.UTF-8: 本当に続けますか?
+ rancid のデータについて、バックアップコピーを作ったかどうかを確認してください。rancid を初めてインストールしている場合、ここで「はい」と答えてください。それ以外の場合は、「いいえ」と答えてバックアップを実施してから「dpkg-reconfigure rancid」を実行してください。
+Description-nl.UTF-8: Echt verdergaan?
+ Controleer eerst of u een reservekopie van uw rancid-gegevens heeft gemaakt. Als dit uw eerste installatie van rancid is, ga dan verder. Anders dient u te stoppen, een reservekopie te maken en "dpkg-reconfigure rancid" uit te voeren.
+Description-pt.UTF-8: Deseja continuar?
+ Por favor verifique se Já fez uma cópia de segurança dos dados rancid. Aceite aqui se é a sua primeira instalação do rancid, caso contrário rejeite, faça a cópia de segurança e depois corra 'dpkg-reconfigure rancid'.
+Description-pt_BR.UTF-8: Realmente continuar?
+ Por favor, verifique se você fez uma cópia de segurança dos seus dados do rancid. Se essa é a sua primeira instalação do rancid, aceite aqui, de outra forma, recuse, faça uma cópia de segurança e então execute "dpkg-reconfigure rancid".
+Description-ru.UTF-8: Хотите продолжить?
+ Убедитесь, что сделали резервную копию данных rancid. Если rancid устанавливается впервые, то ответьте утвердительно, иначе не соглашайтесь, сделайте резервную копию, а затем запустите "dpkg-reconfigure rancid".
+Description-sv.UTF-8: Vill du verkligen fortsätta?
+ Har du gjort en backup av rancids data ? Om detta är din första installation av rancid, svara "Ja". Om inte, svara "Nej" och gör sedan en backup och kör 'dpkg-reconfigure rancid'.
+Description-vi.UTF-8: Thật tiếp tục ?
+ Hãy kiểm tra lại nếu bạn đã sao lưu dữ liệu Rancid chưa. Nếu đây là lần đầu tiên bạn cài đặt Rancid thì đồng ý ở đây; không thì từ chối, chạy tiến trình sao lưu và sau đó chạy câu lệnh cấu hình lại « dpkg-reconfigure rancid ».

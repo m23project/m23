@@ -267,7 +267,7 @@ mkdir -p /dev/pts
 
 	CLCFG_disablePlymouth();
 
-	CLCFG_writeM23fetchjob();
+	CLCFG_writeM23fetchjob($clientOptions['release']);
 
 	CLCFG_writeCrontabm23fetchjobEvery5Minutes($clientParams);
 

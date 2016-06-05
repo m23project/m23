@@ -1,0 +1,192 @@
+
+Template: lsh-server/lshd_port
+Type: string
+Default: 22
+Description: lsh server port:
+ The default port for lshd is 22. If lshd should run on a different port,
+ please specify the alternative port here. If you specify 22, you will
+ need to manually disable any other SSH servers running on port 22, other
+ than OpenSSH (from the package openssh-server), which will be disabled
+ automatically if you choose 22 here.
+Description-cs.UTF-8: Číslo portu lsh serveru:
+ Výchozí číslo portu pro lshd je 22. Pokud si přejete spustit lshd na jiném portu, zadejte zde prosím jeho číslo. Pokud necháte 22, budete muset ručně vypnout všechny ssh servery, které běží na tomto portu, kromě OpenSSH (součást balíčku `openssh-server'), které bude vypnuto automaticky.
+Description-da.UTF-8: lsh-serverport:
+ lshd's standardport er 22. Hvis du ønsker at køre lshd på en anden port, så angiv den alternative port her. Hvis du skriver 22, skal du manuelt deaktivere eventuelle andre SSH-servere, du har kørende på port 22, udover OpenSSH (fra pakken openssh-server). OpenSSH bliver automatisk deaktiveret, hvis du skriver 22 her.
+Description-de.UTF-8: Port für den lsh-Server:
+ Der Standardport für lshd ist 22. Wenn lshd auf einem anderen Port laufen soll, geben Sie den entsprechenden Port bitte hier an. Wenn Sie Port 22 verwenden wollen, dann müssen Sie alle anderen SSH-Server (außer OpenSSH aus dem Paket »openssh-server«), die Port 22 verwenden, manuell deaktivieren. OpenSSH wird automatisch abgeschaltet, wenn Sie hier 22 wählen.
+Description-es.UTF-8: Puerto del servidor lsh:
+ El puerto predeterminado para lshd es el número 22. Debe especificar aquí un puerto aternativo si desea que lshd se ejecute en un puerto diferente. Si usa el puerto 22, deberá deshabilitar manualmente otros servidores SSH que se estén ejecutando en dicho puerto, excepto OpenSSH (del paquete «openssh-server»). Se deshabilitará automáticamente OpenSSH si selecciona el puerto 22 aquí.
+Description-fr.UTF-8: Port du serveur lsh :
+ Le port par défaut pour lshd est 22. Veuillez modifier cette valeur si vous souhaitez qu'il soit à l'écoute sur un autre port. Si vous choisissez le port 22, pensez à désactiver vous-même les autres serveurs SSH qui pourraient fonctionner sur le port 22. Cela est inutile pour OpenSSH (du paquet « openssh-server ») qui, lui, sera, dans ce cas, désactivé automatiquement.
+Description-it.UTF-8: Porta del server lsh:
+ La porta predefinita per lshd è la 22. Se lshd deve essere eseguito su una porta diversa, specificare la porta alternativa qui. Se si specifica 22 è necessario disabilitare manualmente qualsiasi altro server SSH in esecuzione sulla porta 22 che non sia OpenSSH (dal pacchetto openssh-server) il quale sarà automaticamente disabilitato.
+Description-ja.UTF-8: lsh サーバのポート番号:
+ lshd のデフォルトのポート番号は 22 番です。別のポートで lshd を動作させたい場合は、ここで別のポートを指定してください。22 番を指定した場合は、同じポート番号で動作する (openssh-server パッケージの) OpenSSH 以外の ssh サーバを手動で無効にする必要があります。ポート 22 番を選択した場合、OpenSSH は自動的に無効に設定されます。
+Description-nl.UTF-8: lsh-serverpoort:
+ De standaardpoort voor lshd is 22. Als u wilt dat lshd draait op een andere poort, specificeer deze alternatieve poort dan hier. Als u 22 aangeeft, dan zult u andere ssh-servers die draaien op poort 22 verschillend van OpenSSH (uit het `openssh-server'-pakket) handmatig moeten uitzetten. OpenSSH zal automatisch uitgezet worden als u hier 22 kiest.
+Description-pl.UTF-8: Port serwera lsh:
+ Domyślnym portem lshd jest 22. Jeśli program powinien korzystać z innego portu, proszę go określić. Po wpisaniu 22, konieczne jest ręczne wyłączenie wszystkich pozostałych serwerów SSH korzystających z portu 22, poza OpenSSH (z pakietu openssh-server), który zostanie wówczas wyłączony automatycznie.
+Description-pt.UTF-8: porto do servidor lsh:
+ O porto por omissão do lsh é o 22. Se preferir correr o lsh num porto diferente, por favor especifique o porto alternativo. Se especificar o 22, terá que desactivar manualmente qualquer outro servidor ssh que tenha a correr no porto 22 que não o OpenSSH (a partir do pacote openssh-server). O OpenSSH será automaticamente desactivado, se escolher o porto 22 agora.
+Description-ru.UTF-8: Порт сервера lsh:
+ По умолчанию lshd запускается на порту 22. Если нужно запустить lshd на другом порту, то укажите его номер здесь. Если вы зададите порт 22, то вам нужно вручную выключить любые другие серверы SSH, запущенные на порту 22, кроме OpenSSH (из пакета openssh-server). OpenSSH будет выключен автоматически, если вы укажите порт 22.
+Description-sk.UTF-8: Port servera lsh:
+ Predvolený port pre lshd je 22. Ak má byť lshd spustený na inom porte, prosím, zadajte tu alternatívny port. Ak zadáte 22, budete musieť manuálne vypnúť všetky ostatné servery SSH, ktoré bežia na porte 22, okrem OpenSSH (z balíka openssh-server), ktorý bude vypnutý automaticky, ak tu zvolíte 22.
+Description-sv.UTF-8: Serverport för lsh:
+ Standardport för lshd är 22. Om du vill att lshd ska köra på en annan port, ange den alternativa porten här. Om du anger 22 behöver du manuellt inaktivera andra SSH-servrar som du har körande på port 22, förutom OpenSSH (från paketet openssh-server) som kommer att avaktiveras automatiskt om du väljer 22 här.
+Description-vi.UTF-8: Cổng máy phục vụ « lsh »:
+ Cổng mặc định của lshd là 22. Nếu bạn muốn trình nền lshd chạy trong một cổng khác, hãy ghi rõ cổng đó vào đây. Nếu chọn cổng 22 thì sẽ phải tự tắt máy phục vụ SSH nào đang chạy trên cổng 22, khác với OpenSSH, (từ gói openssh-server). Nếu bạn chọn cổng 22 ở đây, OpenSSH sẽ bị tắt tự động.
+
+Template: lsh-server/sftp
+Type: boolean
+Default: false
+Description: Enable the SFTP subsystem?
+ Please choose whether you want to use the EXPERIMENTAL lsh SFTP support.
+ .
+ Since it is experimental, the default is for it to be disabled, but it
+ can be enabled now or later by manually changing /etc/default/lsh-server.
+Description-cs.UTF-8: Povolit podsystém SFTP?
+ Rozhodněte se prosím, zda chcete používat EXPERIMENTÁLNÍ podporu lsh SFTP.
+ .
+ Protože se jedná o experimentální funkci, je ve výchozím nastavení vypnuta. Tuto volbu můžete zapnout nyní nebo kdykoliv později změnou nastavení v souboru /etc/default/lsh-server.
+Description-da.UTF-8: Skal SFTP-undersystemet aktiveres?
+ Vælg venligst om du vil benytte den EKSPERIMENTELLE lsh SFTP-understøttelse.
+ .
+ Da den er eksperimentel, er standarden at den er deaktiveret, men den kan aktivere nu eller senere ved manuelt at ændre /etc/default/lsh-server.
+Description-de.UTF-8: Soll das SFTP-Subsystem aktiviert werden?
+ Bitte wählen Sie, ob Sie die EXPERIMENTELLE lsh-SFTP-Unterstützung wünschen.
+ .
+ Da dies noch experimentell ist, ist es standardmäßig deaktiviert, kann aber jetzt oder später aktiviert werden, indem /etc/default/lsh-server manuell angepasst wird.
+Description-es.UTF-8: ¿Desea habilitar el subsistema SFTP?
+ Seleccione si desea utilizar el soporte EXPERIMENTAL de lsh para SFTP.
+ .
+ El valor por omisión es no habilitarlo, debido a su caracter experimental, pero puede activarlo ahora o más adelante editando manualmente «/etc/default/lsh-server».
+Description-fr.UTF-8: Faut-il activer les fonctionnalités SFTP ?
+ Veuillez confirmer si vous souhaitez activer la gestion expérimentale de SFTP.
+ .
+ La gestion de SFTP est encore expérimentale et le service est désactivé par défaut. Il est possible de l'activer automatiquement maintenant ou plus tard en modifiant /etc/default/lsh-server.
+Description-it.UTF-8: Abilitare il sottosistema SFTP?
+ Scegliere se si desidera usare il supporto SPERIMENTALE di lsh per SFTP.
+ .
+ Dato che è sperimentale, è disabilitato in modo predefinito, ma può essere abilitato ora o successivamente modificando manualmente /etc/default/lsh-server.
+Description-ja.UTF-8: SFTP サブシステムを有効にしますか?
+ 「実験的な」lsh の SFTP サポートを使うかどうかを選んでください。
+ .
+ この機能は実験的なものなのでデフォルトでは無効になっていますが、今すぐ有効にすることもできますし、あるいは後ほど手動で /etc/default/lsh-server を変更して有効にもできます。
+Description-nl.UTF-8: Het SFTP-subsysteem aanzetten?
+ Kies nu of u de EXPERIMENTELE lsh-SFTP-ondersteuning wilt gebruiken.
+ .
+ Aangezien dit experimenteel is, staat het standaard uit, maar kan het nu of later worden aangezet door /etc/default/lsh-server handmatig te bewerken.
+Description-pl.UTF-8: Włączyć podsystem SFTP?
+ Proszę zdecydować o użyciu EKSPERYMENTALNEJ obsługi SFTP lsf.
+ .
+ Ze względu na status eksperymentalny, domyślnie jest ona wyłączona, lecz może zostać włączona w tym kroku lub ręcznie, dokonując później zmiany w pliku /etc/default/lsh-server.
+Description-pt.UTF-8: Activar o sub-sistema SFTP?
+ Por favor decida se quer usar o suporte lsh sFTP EXPERIMENTAL.
+ .
+ Visto ser experimental, por omissão é desactivado, mas pode ser activado agora ou mais tarde, de modo manual alterando /etc/default/lsh-server.
+Description-ru.UTF-8: Включить подсистему SFTP?
+ Укажите, хотите ли вы использовать ЭКСПЕРИМЕНТАЛЬНУЮ поддержку SFTP в lsh.
+ .
+ Так как это пока экспериментальная версия, поэтому, по умолчанию она выключена. Её можно включить сейчас или вручную в файле /etc/default/lsh-server.
+Description-sk.UTF-8: Zapnúť subsystém SFTP?
+ Prosím, zvoľte, či chcete v lsh používať EXPERIMENTÁLNU podporu SFTP.
+ .
+ Pretože je táto podpora experimentálna, je predvolene vypnutá, ale môžete ju zapnúť teraz  alebo neskôr manuálne, zmenou /etc/default/lsh-server.
+Description-sv.UTF-8: Aktivera SFTP-undersystemet?
+ Ange om du vill använda lsh:s EXPERIMENTIELLA SFTP-stöd.
+ .
+ Eftersom det är experimentiellt är standardvalet att avaktivera stödet men det kan aktiveras nu eller senare genom att ändra /etc/default/lsh-server.
+Description-vi.UTF-8: Bật hệ thống con SFTP không?
+ Bạn muốn sử dụng cách hỗ trợ SFTP _thực nghiệm_ không?
+ .
+ Lưu ý rằng đây là chức năng thử nghiệm, do đó cấu hình mặc định là tắt. Tuy nhiên, bạn có thể bật nó, bây giờ hoặc sau này bằng tệp /etc/default/lsh-server.
+
+Template: lsh-server/purge_hostkey
+Type: boolean
+Default: true
+Description: Remove host key on purge?
+ When this package is installed, a host key is generated to authenticate
+ your host.
+ .
+ Please choose whether you want to purge the host key when the package
+ is removed.
+Description-cs.UTF-8: Smazat klíč hostitele při odstranění balíčku?
+ Při instalaci balíčku je vytvořen klíč sloužící k ověření pravosti vašeho počítače.
+ .
+ Rozhodněte se prosím, zda si při odstranění balíčku přejete smazat také tento klíč.
+Description-da.UTF-8: Fjern værtsnøglen ved udrensning?
+ Når denne pakke er installeret, vil der blive genereret en værtsnøgle til at autentificere din vært.
+ .
+ Vælg om du ønsker at slette værtsnøglen, når pakken fjernes.
+Description-de.UTF-8: Beim Entfernen des Pakets den kryptografischen Schlüssel des Rechners löschen?
+ Wenn dieses Paket installiert wird, wird ein kryptografischer Schlüssel generiert, um den Rechner zu authentifizieren.
+ .
+ Bitte wählen Sie, ob Sie den kryptografischen Schlüssel beim Entfernen des Pakets löschen wollen.
+Description-es.UTF-8: ¿Desea eliminar la clave del equipo al purgar?
+ Se genera una clave para autenticar su equipo cuando este paquete se instala.
+ .
+ Indique si desea purgar la clave del equipo cuando se desinstale el paquete.
+Description-fr.UTF-8: Faut-il supprimer la clé d'hôte lors de la purge du paquet ?
+ Lors de l'installation de ce paquet, une clé d'hôte est générée pour permettre l'authentification de votre serveur.
+ .
+ Si vous souhaitez que la clé d'hôte soit supprimée quand le paquet est purgé, vous devriez choisir cette option.
+Description-it.UTF-8: Rimuovere la chiave dell'host all'eliminazione del pacchetto?
+ Quando viene installato questo pacchetto, viene generata una chiave per autenticare l'host.
+ .
+ Scegliere se si desidera eliminare la chiave dell'host quando viene rimosso il pacchetto.
+Description-ja.UTF-8: 完全削除 (purge) 時にホスト鍵を削除しますか?
+ このパッケージがインストールされる際、ホストを認証するためのホスト鍵が生成されます。
+ .
+ パッケージが削除される際にホスト鍵も完全に削除するかどうかを選んでください。
+Description-nl.UTF-8: Host-sleutel verwijderen bij wissen (purge)?
+ Wanneer dit pakket wordt geïnstalleerd, wordt er een host-sleutel
+ aangemaakt om uw computer te authenticeren.
+ .
+ Kies of u de host-sleutel wilt verwijderen wanneer het pakket wordt verwijderd.
+Description-nn.UTF-8: Fjern vertsnøkkel ved utreinsking?
+ Når denne pakka blir installert, vil ein vertsnøkkel bli laga for å autentisere verten.
+ .
+ Viss du vil fjerna han saman med pakka når den blir fjerna så må du oppgje det her.
+Description-pl.UTF-8: Usunąć klucz komputera przy czyszczeniu?
+ Przy instalowaniu pakietu został utworzony klucz komputera, służący do uwierzytelnienia go.
+ .
+ Proszę zdecydować, czy ma on zostać usunięty przy czyszczeniu pakietu.
+Description-pt.UTF-8: Remover a chave da máquina na purga do pacote?
+ Quando este pacote está instalado, uma chave no anfitrião é gerada de modo a autenticar o mesmo.
+ .
+ Por favor escolha se quer purgar a chave do anfitrião quando o pacote é eliminado.
+Description-ru.UTF-8: Удалять ключ узла при вычистке?
+ При установке пакета создаётся ключ аутентификации данного узла.
+ .
+ Выберите, нужно ли удалять ключ при удалении пакета.
+Description-sk.UTF-8: Odstrániť kľúč hostiteľa pri vyčistení (purge)?
+ Pri inštalácii tohoto balíka je vygenerovaný kľúč hostiteľa, na autentifikáciu vášho hostiteľa.
+ .
+ Prosím, zvoľte, či chcete pri odstránení balíka odstrániť aj kľúč hostiteľa.
+Description-sv.UTF-8: Ta bort värdnyckel vid avinstallation?
+ När detta paket installeras genereras en värdnyckel för att autentisera ditt värdsystem.
+ .
+ Välj om du vill ta bort värdnyckeln när paketets konfigurationsfiler tas bort.
+Description-vi.UTF-8: Gỡ bỏ khóa máy khi tẩy không?
+ Khi cài đặt gói này, cũng tạo ra một khóa máy chủ, để xác thực máy của bạn.
+ .
+ Hãy chọn có nên tẩy khóa máy chủ khi gói được gỡ bỏ hay không.
+
+Template: lsh-server/extra_args
+Type: string
+Description: Additional arguments to pass to lshd:
+Description-cs.UTF-8: Další argumenty předávané lshd:
+Description-da.UTF-8: Yderligere parametre at sende til lshd:
+Description-de.UTF-8: Zusätzliche Argumente für lshd:
+Description-es.UTF-8: Opciones adicionales a dar a lshd:
+Description-fr.UTF-8: Paramètres supplémentaires pour lshd :
+Description-it.UTF-8: Opzioni aggiuntive da passare a lshd:
+Description-ja.UTF-8: lshd に追加で渡す引数:
+Description-nl.UTF-8: Extra argumenten om aan lshd mee te geven:
+Description-pl.UTF-8: Dodatkowe argumenty przekazywane do lshd:
+Description-pt.UTF-8: Argumentos adicionais a passar ao lshd:
+Description-ru.UTF-8: Дополнительные параметры, передаваемые lshd:
+Description-sk.UTF-8: Doplnkové argumenty pre lshd:
+Description-sv.UTF-8: Ytterligare argument som ska skickas till lshd:
+Description-vi.UTF-8: Tham số phụ để qua lshd:

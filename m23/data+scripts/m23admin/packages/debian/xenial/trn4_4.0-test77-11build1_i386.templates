@@ -1,0 +1,133 @@
+Template: shared/news/server
+Type: string
+Description: What news server should be used for reading and posting news?
+ trn is configured to read news via an NNTP connection, and needs to know
+ the fully-qualified host name of the server (such as news.example.com). If
+ you have a local news spool, you should consider installing some NNTP
+ server like inn2; in that case, enter "localhost" as your news server.
+Description-cs.UTF-8: Který news server chcete použít pro čtení a zasílání příspěvků?
+ trn je nastaven, aby četl příspěvky přes NNTP spojení a potřebuje znát plně kvalifikované doménové jméno serveru (jako je news.priklad.cz). Máte-li lokální spool s příspěvky, měli byste zvážit instalaci NNTP serveru (např. inn2) a zde zadat jako jméno serveru "localhost".
+Description-da.UTF-8: Hvilken nyhedsserver skal bruges til at læse og laver poster til nyhedsgrupper?
+ trn er sat op til at læse nyheder via en NNTP-forbindelse, og skal vide det fuldt kvalificerede værtsnavn på serveren (f.eks. news.eksempel.com). Hvis du har nyhedsgrupper liggende lokalt, bør du overveje at installere en NNTP-server (som f.eks. inn2). I det tilfælde kan du indtaste "localhost" som din nyhedsserver.
+Description-de.UTF-8: Welcher Server soll benutzt werden?
+ trn wird konfiguriert, News über eine NNTP-Verbindung zu lesen und muss den vollständigen Rechnernamen des Servers wissen (zum Beispiel news.beispiel.de). Wenn Sie einen lokalen News-Spool haben, sollten Sie wahrscheinlich irgendeinen NNTP-Server wie inn2 installieren. In diesem Fall geben Sie "localhost" als Ihren News-Server an.
+Description-es.UTF-8: ¿Qué servidor de noticias se debe utilizar para la lectura y el envío de noticias?
+ trn está configurado para leer noticias a través de una conexión NNTP y necesita conocer el nombre completamente cualificado del servidor (p. ej. news.ejemplo.com). Si dispone de un almacén de noticias local, debería considerar la instalación de un servidor NNTP como inn2. En ese caso, introduzca «localhost» como nombre del servidor.
+Description-fr.UTF-8: Nom du serveur de nouvelles :
+ Trn est configuré pour lire les nouvelles via une connexion NNTP, et doit connaître le nom complètement qualifié du serveur de nouvelles (par exemple news.exemple.com). Si vous désirez utiliser un serveur local NNTP tel que inn2, vous devez dans ce cas indiquer « localhost » comme serveur de nouvelles.
+Description-gl.UTF-8: Que servidor de noticias debe empregarse para ler e enviar novas?
+ trn está configurado para ler as novas mediante unha conexión NNTP e precisa saber o nome completo do servidor (como news.exemplo.net). Se ten un spool local de novas, debería pensar en instalar algún servidor NNTP como inn2, neste caso, indique «localhost» como o seu servidor de novas.
+Description-it.UTF-8: Quale server dovrà essere utilizzato per la lettura e l'invio di news?
+ trn è configurato in modo da leggere le news tramite una connessione NNTP e necessita quindi di sapere il nome host completo (fully qualified host name) del server, come per esempio news.esempio.it. Se si possiede uno spool di news locale, si dovrebbe considerare l'installazione di un server NNTP come, per esempio, inn2; in tal caso, inserire «localhost» come server delle news.
+Description-ja.UTF-8: どのニュースサーバをニュースの読み取りや投稿に使いますか?
+ trn はニュースを NNTP 接続経由で読み取るように設定されており、サーバの完全修飾ホスト名 (例えば news.example.com) を知っている必要があります。ローカルのニューススプールを持っている場合は、inn2 のような NNTP サーバのインストールを検討すべきです。その場合、ニュースサーバには "localhost" を入力してください。
+Description-nl.UTF-8: Welke nieuwsserver moet worden gebruikt voor het lezen en posten van nieuwsberichten?
+ Trn is geconfigureerd om nieuws te lezen via een NNTP-verbinding en heeft daarvoor de volledige computernaam (FQDN) van de server nodig (bv. news.example.com). Indien u beschikt over een lokale nieuws-spool dient u de installatie te overwegen van een NNTP-server zoals inn2. In dat geval vult u hier "localhost" in.
+Description-pt.UTF-8: Que servidor de 'news' deverá ser utilizado para ler e enviar 'news'?
+ O trn está configurado para ler 'news' através de uma ligação NNTP e precisa de saber o nome de máquina do servidor 'fully-qualified' (como por exemplo news.example.com). Se possui um 'local news spool' deverá considerar a instalação de um servidor NNTP como inn2; nesse caso introduza "localhost" como o seu servidor de 'news'.
+Description-ru.UTF-8: Новостной сервер, который нужно использовать для чтения и отправки новостей:
+ Для чтения новостей trn использует протокол NNTP, и поэтому нужно задать полностью определённое доменное имя сервера (например, news.example.com). Если у вас есть локальный буфер новостей, установите один из NNTP серверов, например, inn2; в этом случае в качестве сервера новостей введите "localhost".
+Description-sv.UTF-8: Vilken news-server ska användas för att läsa och skicka news?
+ trn är konfigurerad att läsa news via en NTTP-uppkoppling och behöver veta host-addressen till servern (typ news.example.com). Om du har en lokal news spool kanske du önskar installera en NNTP-server typ inn2, i så fall, ange "localhost" som din news-server.
+Description-tr.UTF-8: Haberleri okumak ve göndermek için hangi haber sunucusu kullanılsın? (tam nitelikli alan adı)
+ trn haberleri bir NNTP bağlantısı ile okuyacak şekilde yapılandırılmış, bu nedenle haber sunucusunun tam nitelikli alan adını bilmesi gerekiyor (örneğin haberler.örnek.com). Eğer yerel bir haber sistemi kullanıyorsanız inn2 gibi bir NNTP sunucusu kurmayı düşünün. Bu durumda haber sunucusu olarak "localhost" girmeniz yeterli olacaktır.
+
+Template: trn4/mail-name
+Type: string
+Description: What is your system's mail name?
+ Please enter the 'mail name' of your system. This is the hostname portion
+ of the address to be shown on outgoing news and mail messages, and is used
+ by many packages. trn4 users may override this individually by setting the
+ FROM environment variable.
+Description-cs.UTF-8: Jaké je poštovní jméno systému?
+ Zadejte poštovní jméno svého systému. Toto je název počítače a zároveň část adresy za zavináčem, která se bude zobrazovat na odchozích zprávách. Uživatelé si mohou toto nastavení individuálně změnit nastavením proměnné prostředí FROM.
+Description-da.UTF-8: Hvad er dit systems post-navn?
+ Indtast 'post-navnet' på dit system. Dette er værtsnavn-delen af de adresser der skal vises på udgående nyheds- og postbeskeder, og er brugt af mange pakker. trn4 brugere kan overskride dette individuelt ved at sætte FROM miljø-variablen.
+Description-de.UTF-8: Was ist der Mailname Ihres Systems?
+ Bitte geben Sie den 'Mailnamen' Ihres Systems an. Dieser ist der erste Teil des Rechnernamens, die bei abgeschickten News- und Mailmeldungen verwendet werden und wird von mehreren Paketen verwendet. trn4-Benutzer können durch Setzen der FROM-Variable diese Einstellung abändern.
+Description-es.UTF-8: ¿Cuál es el nombre de correo del sistema?
+ Por favor, introduzca el «nombre de correo» de su sistema. Es la parte de la dirección del equipo que se mostrará en las noticias y mensajes de correo salientes, utilizada por otros paquetes. Los usuarios de trn4 pueden anular este ajuste de forma individual modificando la variable de entorno FROM.
+Description-fr.UTF-8: Nom de votre système de courrier :
+ Veuillez indiquer le nom de courrier de votre système. C'est la partie de l'adresse correspondant au nom d'hôte qui est affichée sur les nouvelles et les courriels envoyés, et elle est utilisée par de nombreux paquets.
+Description-gl.UTF-8: Cal é o nome do correo do sistema?
+ Indique o «nome do correo» do sistema. Esta é a parte do enderezo que se refire ao servido, que se mostra nas novas e mensaxes de correo enviadas e que se emprega en moitos paquetes. Os usuarios de trn4 poden sobrescribir isto manualmente mediante a variábel de entorno FROM.
+Description-it.UTF-8: Qual è il «nome mail» del sistema?
+ Inserire il «nome mail» del sistema. Si tratta della porzione del nome host che viene mostrata sulle news e sulle mail inviate e che viene utilizzata da molti pacchetti. Gli utenti di trn4 possono sovrascriverlo individualmente, impostando la variabile d'ambiente FROM.
+Description-ja.UTF-8: システムのメール名は何ですか?
+ システムの「メール名」を入力してください。これはアドレスのホスト名の部分で、外に出て行くニュースやメールのメッセージで表示され、また多くのパッケージで使用されています。trn4 ユーザは FROM 環境変数を設定することでこれを個々に上書きできます。
+Description-nl.UTF-8: Wat is het e-maildomain van uw systeem?
+ Geeft het "e-maildomain" van uw systeem op. Het e-maildomein is het computernaam-gedeelte van het adres dat wordt getoond bij uitgaande e-mail- en nieuwsberichten en wordt door meerdere pakketten gebruikt. Gebruikers van trn4 kunnen dit individueel aanpassen met de omgevingsvariable FROM.
+Description-pt.UTF-8: Qual o nome de mail do seu sistema?
+ Por favor introduza o 'nome de mail' do seu sistema. Esta é a porção do nome da máquina do endereço a ser visualizado nas 'news' de saída e mensagens de mail, e é usado por muitos pacotes. Os utilizadores do trn4 podem individualmente sobrepor esta configuração ao definirem a variável de ambiente FROM.
+Description-ru.UTF-8: Имя почтовой системы:
+ Введите 'почтовое имя' вашей системы. Данная системная часть имени машины будет показана в отправляемых новостях и почтовых сообщениях, и используется многими пакетами. Пользователи trn4 могут изменить её в личных настройках, определив переменную окружения FROM.
+Description-sv.UTF-8: Vilket är mail-namnet för ditt system?
+ Vänligen ange 'mail-namnet' för ditt system. Detta är hostnamnet (den första delen av hostaddressen) på den address som visas på utgående news och epost-meddelanden och som används av många paket. Användare av trn4 kan ändra detta genom att sätta miljövariabeln FROM.
+Description-tr.UTF-8: Sisteminizin posta adı nedir?
+ Lütfen sisteminizin "posta adı"nı girin. Posta adı, sisteminizden gönderilen haber ve posta iletilerinin gönderen adres kısmında belirtilen makine adı kısmıdır ve birçok paket tarafından kullanılır. trn4 kullanıcıları FROM ortam değişkenini düzenleyerek bu ayarı geçersiz kılabilir.
+
+Template: trn4/whoami-change
+Type: error
+Description: /etc/news/whoami and /etc/mailname differ
+ Some versions of Debian's various trn packages used /etc/news/whoami to
+ construct the default From: line of outgoing mail and news messages. This
+ package uses /etc/mailname instead, to comply with Debian policy.
+ .
+ However, /etc/news/whoami says that addresses on your system are in the
+ domain ${whoami}, while /etc/mailname says that they are in the domain
+ ${mailname}. In common with your mail configuration, trn4 will use
+ /etc/mailname from now on anyway; if you need to change this, you might
+ consider setting the FROM environment variable for each user to be that
+ user's e-mail address.
+Description-cs.UTF-8: /etc/news/whoami a /etc/mailname se liší
+ Některé verze trn používaly soubor /etc/news/whoami pro vytvoření výchozí hlavičky From: na odchozích poštovních zprávách a news příspěvcích. Tento balíček však v souladu s politikou Debianu používá /etc/mailname.
+ .
+ Zádrhel je v tom, že /etc/news/whoami říká, že se nacházíte v doméně ${whoami}, zatímco /etc/mailname tvrdí, že jste součástí domény ${mailname}. V souladu s nastavením pošty bude trn4 od nynějška používat /etc/mailname. Pokud tuto hodnotu potřebujete změnit, může si každý uživatel upravit proměnnou prostředí FROM tak, aby obsahovala jeho emailovou adresu.
+Description-da.UTF-8: /etc/news/whoami og /etc/mailname er forskellige
+ Nogle versioner af Debians forskellige trn pakker brugte /etc/news/whoami til at oprette standard "fra"-linje på udgående post- og nyhedsbeskeder. Denne pakker bruger /etc/mailname istedet, for at stemme overens med Debians retningslinjer.
+ .
+ Men /etc/news/whoami fortæller at adresser på dit system er i ${whoami} domænet, mens /etc/mailname siger at de er i ${mailname} domænet. For at dele opsætning med din postopsætning, vil trn4 bruge /etc/mailname fra nu af; hvis du har behov for at ændre dette, skal du sætte FROM miljø-variablen for hver enkel bruger. Den skal sættes til brugerens email adresse.
+Description-de.UTF-8: /etc/news/whoami und /etc/mailname unterscheiden sich
+ Einige Versionen von Debians trn-Paketen haben /etc/news/whoami verwendet, um die From:-Zeile abzuschickender Mail- und Newsmeldungen zu erzeugen. Statt dessen benutzt dieses Paket /etc/mailname, damit die Debian-Policy beachtet wird.
+ .
+ /etc/news/whoami sagt aber, dass Adressen bei Ihrem System in der Domain ${whoami} sind, während /etc/mailname sagt, die Adressen sind in der Domain ${mailname}. Gemeinsam mit Ihrer Mail-Konfiguration wird trn4 ab jetzt jedenfalls /etc/mailname benutzen. Wenn Sie dieses ändern wollen, sollten Sie vielleicht die Umgebungsvariable FROM jedes Benutzers auf seine E-Mail-Adresse setzen.
+Description-es.UTF-8: «/etc/news/whoami» y «/etc/mailname» difieren
+ Algunas versiones de los paquetes trn de Debian utilizaban «/etc/news/whoami» para generar el campo «De:» predeterminado en los mensajes de correo y noticias salientes. En cambio, este paquete utiliza «/etc/mailname» para cumplir con las directrices de Debian.
+ .
+ Sin embargo, «/etc/news/whoami» dice que las direcciones de su sistema se encuentran en el dominio ${whoami}, mientras que «/etc/mailname» dice que se encuentran en el dominio ${mailname}. Al igual que la configuración de su correo, trn4 utilizará a partir de ahora «/etc/mailname». Si necesita cambiarlo, considere ajustar la variable de entorno FROM para que cada usuario la utilice como su dirección de correo.
+Description-fr.UTF-8: Les fichiers /etc/news/whoami et /etc/mailname diffèrent
+ Des anciennes versions du paquet trn utilisaient le fichier /etc/news/whoami pour mettre en forme le champ origine (« From: ») des courriels et des messages de news envoyés. Trn utilise désormais le fichier /etc/mailname pour se conformer à la Charte Debian.
+ .
+ Cependant, le fichier /etc/news/whoami de votre système mentionne le domaine ${whoami} alors que le fichier /etc/mailname indique le domaine ${mailname}. Par cohérence avec la configuration de votre système de courrier, trn4 utilisera désormais le fichier /etc/mailname. Pour passer outre ces réglages, les utilisateurs peuvent positionner la variable d'environnement « FROM » sur leur adresse électronique.
+Description-gl.UTF-8: /etc/news/whoami es /etc/mailname son diferentes
+ Algunhas versións de distintos paquetes do trn de Debian empregaban /etc/news/whoami para construír a liña Desde: predeterminada do correo saínte e das mensaxes de novas. Este paquete emprega /etc/mailname no canto, para satisfacer a política de Debian.
+ .
+ Porén, /etc/news/whoami di que os enderezos deste sistema son do dominio ${whoami}, mentres que /etc/mailname di que son do ${mailname}. De acordo coa configuración do correo, trn4 empregará /etc/mailname de agora en diante; se precisa mudar isto lembre que o pode facer mediante a variábel FROM de cada usuario para que sexa a do enderezo de correo de cada un.
+Description-it.UTF-8: «/etc/news/whoami» e «/etc/mailname» sono differenti
+ Alcune versioni di vari pacchetti Debian di trn utilizzavano «/etc/news/whoami» per costruire la riga «From:» predefinita per i messaggi di posta elettronica e le news che vengono inviati. Questo pacchetto utilizza invece «/etc/mailname», per conformarsi alle policy Debian.
+ .
+ «/etc/news/whoami» mostra però che gli indirizzi su questo sistema sono nel dominio ${whoami}, mentre «/etc/mailname» indica che si trovano nel dominio ${mailname}. D'ora in poi trn4 utilizzerà comunque «/etc/mailname». Se si desidera modificare questa impostazione, si potrebbe impostare la variabile d'ambiente «FROM» per ogni utente in modo che corrisponda al rispettivo indirizzo di posta elettronica.
+Description-ja.UTF-8: /etc/news/whoami と /etc/mailname が異なります
+ Debian の様々な trn パッケージには外に出て行くメールやニュースのメッセージのデフォルトの From: 行の構成に /etc/news/whoami を使うバージョンがありました。このパッケージでは /etc/mailname を使い、Debian ポリシーに従うようになっています。
+ .
+ このシステムのアドレスが /etc/news/whoami では ドメイン ${whoami} に属するものとなっていますが、/etc/mailname ではそれがドメイン ${mailname} となっています。メールの設定と同じように、trn4 は今後 /etc/mailname を使います。これを変更する必要がある場合は、ユーザのメールアドレスになるように各ユーザの FROM 環境変数を設定することを検討してみてください。
+Description-nl.UTF-8: /etc/news/whoami en /etc/mailname verschillen
+ Sommige versies van de verscheidene Debian-pakketten van trn gebruikten /etc/whoami voor het opbouwen van de standaard 'From:'-regel voor uitgaande e-mail- en nieuwsberichten. Dit pakket gebruikt in plaats daarvan /etc/mailname om te voldoen aan het Debian-beleid.
+ .
+ Het geval is dat /etc/news/whoami zegt dat de adressen op uw systeem zich in het domein ${whoami} bevinden, terwijl /etc/mailname het domein ${mailname} zegt. Net zoals uw e-mailconfiguratie zal trn4 voortaan /etc/mailname gebruiken. Als u dit wilt veranderen kunt u overwegen om voor elke gebruiker de omgevingsvariabele FROM in te stellen op diens e-mailadres.
+Description-pt.UTF-8: /etc/news/whoami e /etc/mailname diferem
+ Algumas versões da Debian variam no uso de pacotes usados pelo /etc/news/whoami para construir a linha de From por omissão nas mensagens de mail e de 'news'. Este pacote utiliza o /etc/mailname para cumprir com a política da Debian.
+ .
+ No entanto, o /etc/news/whoami diz que os endereços no seu sistema estão no domínio ${whoami}, enquanto que o /etc/mailname diz que estes estão no domínio ${mailname}. Em sintonia com a sua configuração de mail, o trn4 utilizará /etc/mailname a partir de agora; se precisar de alterar, pode considerar definir a variável de ambiente FROM para cada utilizador, de modo a servir de endereço email de cada utilizador.
+Description-ru.UTF-8: Файлы /etc/news/whoami и /etc/mailname различаются
+ Некоторые версии различных Debian пакетов trn используют /etc/news/whoami при создании значения строки From: по умолчанию для исходящих почтовых и новостных сообщений. Этот пакет использует /etc/mailname, как указано в политике Debian.
+ .
+ Однако, в /etc/news/whoami указаны адреса системы в домене ${whoami}, в то время как в /etc/mailname записано, что они в домене ${mailname}. Совместно с настройками почтовой системы в trn4 теперь, как бы то ни было, будет использоваться /etc/mailname; если вам нужно изменить это, настройте переменную окружения FROM для каждого пользователя на необходимый пользовательский адрес электронной почты.
+Description-sv.UTF-8: /etc/news/whoami och /etc/mailname är olika
+ Några versioner av Debian's olika trn-paket använde /etc/news/whoami för att sätta From: raden på utgående mail och news meddelanden. Detta paket använder /etc/mailname istället för att följa Debian's policy.
+ .
+ Emellertid, /etc/news/whoami säger att adressen för ditt system är i domänen ${whoami} medans /etc/mailname säger att den är i domänen ${mailname}. Precis som din epost-konfiguration kommer trn4 att använda /etc/mailname från och med nu. Om du vill ändra detta kan du sätta miljövariabeln FROM till användarens epost-address.
+Description-tr.UTF-8: /etc/news/whoami ve /etc/mailname farklı
+ Debian trn paketinin geçmişteki bazı sürümleri giden postaların ve haber iletilerinin öntanımlı "From:" satırını oluşturmak için /etc/news/whoami dosyasını kullanmıştır. Bu paket ise /etc/mailname dosyasını kullanır.
+ .
+ Ancak /etc/news/whoami dosyasına göre sisteminizdeki adresler ${whoami} alan adını kullandığı halde /etc/mailname dosyasında ${mailname} alan adı kullanılmaktadır. Posta yapılandırmanıza uygun olarak trn4 /etc/mailname dosyasını kullanacaktır. Bu ayarı değiştirmek istediğiniz takdirde her kullanıcının FROM ortam değişkenini posta adreslerine uygun olarak ayarlayabilirsiniz.

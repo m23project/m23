@@ -1,0 +1,559 @@
+Template: greylistd/restartexim
+Type: boolean
+Default: true
+Description: Restart Exim after adding it to the greylist group?
+ You are using Exim 4 as your Mail Transport Agent (MTA).  Great!
+ .
+ The "Debian-exim" user will be added to the "greylist" group, so that the
+ Exim daemon process can talk to greylistd.  However, for this change to
+ take effect, the process must also be restarted.
+Description-cs.UTF-8: Restartovat Exim po přidání do skupiny greylist?
+ Jako svůj poštovní server používáte Exim4. Výborně!
+ .
+ Aby mohl daemon Exim komunikovat s daemonem greylistd, přidám uživatele "Debian-exim" do skupiny "greylist". Aby se tato změna projevila, musí se daemon restartovat.
+Description-da.UTF-8: Genstart Exim efter tilføjelse af den til greylistgruppen?
+ Du bruger Exim 4 som din posttransportagent (MTA). Storartet!
+ .
+ Brugeren »Debian-exim« vil blive tilføjet til gruppen »greylist«, så at Eximdæmonprocessen kan snakke med greylistd. For at denne ændring træder i kraft, skal processen dog også genstartes.
+Description-de.UTF-8: Exim nach dem Hinzufügen zu der Greylist-Gruppe neu starten?
+ Sie verwenden Exim 4 als Ihr »Mail Transport Agent« (MTA). Super!
+ .
+ Der »Debian-exim«-Benutzer wird zu der »greylist«-Gruppe hinzugefügt, so dass der Exim-Daemon-Prozess direkt mit Greylistd sprechen kann. Damit diese Änderung allerdings in Kraft treten kann, muss der Prozess auch neu gestartet werden.
+Description-es.UTF-8: ¿Desea reiniciar Exim después de añadirlo al grupo de greylist?
+ Está usando Exim 4 como agente de transporte de correo (MTA). ¡Bien!
+ .
+ Se añadirá el usuario «Debian-exim» al grupo «greylist» para que el demonio Exim pueda comunicarse con greylistd. Sin embargo, para que este cambio tenga efecto, también se debe reiniciar el proceso.
+Description-eu.UTF-8: Berrabiarazi Exim greylist taldera gehitu ondoren?
+ Exim 4 erabiltzen duzu posta garraio agente (MTA) gisa. Ondo!
+ .
+ "Debian-exim" erabiltzailea "greylist" taldera gehitu da, horrela Exim deabru prozesuak greylistd-rekin harremanak izan ahal izateko.  Hala ere, aldaketa honek eragina izateko prozesua berrabiarazi egin behar da.
+Description-fr.UTF-8: Faut-il redémarrer Exim après l'avoir ajouté au groupe « greylist » ?
+ Votre agent de transport du courrier (« MTA : Mail Transport Agent ») est Exim4.
+ .
+ L'utilisateur « Debian-exim » va être ajouté au group « greylist » afin de permettre au démon Exim de dialoguer avec greylistd. Cependant, pour que ces changements soient effectifs, il faut aussi le redémarrer.
+Description-it.UTF-8: Riavviare Exim dopo averlo aggiunto al gruppo greylist?
+ Si utilizza Exim 4 come Mail Transport Agent (MTA). Bene!
+ .
+ L'utente "Debian-exim" viene aggiunto al gruppo "greylist", in modo da consentire al demone Exim di comunicare con greylistd. Purtroppo, per rendere effettiva questa modifica, è necessario riavviare il processo.
+Description-ja.UTF-8: Exim を greylist グループに追加後、再起動しますか?
+ メール転送エージェント (MTA) として Exim 4 を使っているようですね。素晴らしい!
+ .
+ "Debian-exim" ユーザが "greylist" グループに追加されるので、Exim デーモンプロセスは greylistd と通信ができます。しかし、この変更を有効にするにはプロセスを再起動する必要があります。
+Description-nb.UTF-8: Skal Exim 4 omstartes etter å ha fått adgang til "greylistd"?
+ Det ser ut til at du bruker Exim 4 som postbehandlingsprogram.  Fint!
+ .
+ Brukerkontoen "Debian-exim" blir nå lagt til "greylist"-gruppa, slik at Exim kan snakke med greylistd.  Men for at denne endringen skal trå i kraft, må Exim-prosessen også omstartes.
+Description-nl.UTF-8: Wilt u dat Exim herstart wordt na het toevoegen van de greylist-groep?
+ U gebruikt Exim 4 als MTA (Mail Transport Agent). Fantastisch!
+ .
+ De gebruiker 'Debian-exim' wordt toegevoegd aan de groep 'greylist'; hierdoor kan de Exim-achtergronddienst met greylistd communiceren. Deze aanpassing wordt pas van kracht wanneer dat proces herstart wordt.
+Description-no.UTF-8: Skal Exim 4 omstartes etter å ha fått adgang til "greylistd"?
+ Det ser ut til at du bruker Exim 4 som postbehandlingsprogram.  Fint!
+ .
+ Brukerkontoen "Debian-exim" blir nå lagt til "greylist"-gruppa, slik at Exim kan snakke med greylistd.  Men for at denne endringen skal trå i kraft, må Exim-prosessen også omstartes.
+Description-pt.UTF-8: Reiniciar o Exim após adicioná-lo ao grupo greylist?
+ Você está a usar o Exim 4 como agente de transporte de mail (MTA).  Muito bem!
+ .
+ O utilizador "Debian-exim" precisa ser adicionado ao grupo "greylist", para que o processo independente Exim possa falar com o greylistd.  No entanto, para que esta alteração tome efeito, o processo também precisa ser reiniciado.
+Description-pt_BR.UTF-8: Reiniciar o Exim depois de adicioná-lo ao grupo greylist?
+ Você está usando o Exim 4 como seu Agente de Transporte de Mensagens (MTA - Mail Transport Agent). Excelente!
+ .
+ O usuário "Debian-exim" será adicionado ao grupo "greylist", então o processo daemon do Exim poderá falar com o greylistd. Entretanto, para que esta mudança tenha efeito, o processo também deve ser reiniciado.
+Description-ru.UTF-8: Перезапустить Exim после добавления его в группу greylist?
+ Вы используете Exim 4 в качестве агента пересылки почты (MTA). Замечательно!
+ .
+ Для взаимодействия фонового процесса службы Exim с greylistd в группу "greylist" будет добавлена учётная запись "Debian-exim". Однако, для завершения настройки требуется перезапустить этот процесс.
+Description-sv.UTF-8: Starta om Exim efter att ha lagt till det i gruppen greylist?
+ Du använder Exim 4 som leveransagent för elektronisk post (MTA). Utmärkt!
+ .
+ Användaren "Debian-exim" kommer läggas till gruppen "greylist", så att Exims demonprocess kan tala med greylistd.  För att denna förändring ska få effekt måste dock processen startas om.
+Description-vi.UTF-8: Khởi chạy lại trình Exim sau khi thêm nó vào nhóm danh sách màu xám (greylist) không?
+ Bạn đang sử dụng trình Exim 4 là tác nhân truyền thư (Mail Transport Agent: MTA): hay quá!
+ .
+ Sẽ thêm người dùng «Debian-exim» vào nhóm «danh sách màu xám», để mà tiến trình nền Exim có thể liên lạc với trình nền greylistd. Tuy nhiên, để áp dụng thay đổi này, cũng cần phải khởi chạy lại tiến trình Exim.
+
+Template: greylistd/autoconfig_notdone_exim4
+Type: note
+Description: Exim 4 needs additional configuration
+ For greylisting to become effective, your Mail Transport Agent (MTA) needs
+ to talk to greylistd while receiving incoming mail; and depending on the
+ response, issue a temporary rejection (451 SMTP code) to the remote host.
+ .
+ Since you are using Exim 4 as your MTA, a script is available for you to
+ perform this task.  At a root prompt, type:
+  # greylistd-setup-exim4 add
+ If you overwrite your Exim configuration files in the future (for
+ instance, when upgrading Exim), you may need to re-run this command.
+ .
+ Later, before you uninstall "greylistd", you want to run:
+  # greylistd-setup-exim4 remove
+ .
+ For more options and help on usage, run the command without any arguments,
+ or see the "greylistd-setup-exim4(8)" manual page.  One suggested option
+ for the "add" command is "-netmask=24".
+ .
+ The reason this operation is not performed automatically is that Exim's
+ configuration files are tagged as "conffiles", so per Debian Policy they
+ are completely under your control.  Only you can change them.
+ .
+ If you prefer to configure Exim 4 for greylistd by hand, please see
+ /usr/share/doc/greylistd/README.Debian.
+Description-cs.UTF-8: Exim4 vyžaduje dodatečné nastavení
+ Aby mohl greylisting fungovat, je zapotřebí nastavit poštovní server (MTA) tak, aby příchozí poštu předával daemonu greylistd a na základě jeho odpovědi případně vracel vzdálenému počítači SMTP kód 451 (dočasné odmítnutí).
+ .
+ Protože je vaším MTA Exim4, může toto nastavení provést skript. V příkazovém řádku pod uživatelem root napište:
+  # greylistd-setup-exim4 add
+ Pokud si později přepíšete konfigurační soubory Eximu (například při přechodu na novější verzi), budete možná muset spustit příkaz znovu.
+ .
+ Před odinstalováním balíku greylistd budete muset spustit:
+  # greylistd-setup-exim4 remove
+ .
+ Pro více voleb a nápovědu k použití se podívejte do manuálové stránky "greylistd-setup-exim4(8)", nebo spusťte příkaz bez parametrů. Zajímavý by mohl být například parametr "-netmask=24" příkazu "add".
+ .
+ Důvodem, proč se skript neprovádí automaticky, je fakt, že jsou konfigurační soubory Eximu označeny jako "conffiles", takže podle politiky Debianu spadají kompletně pod vaši kontrolu. Vy jste jediní, kdo je může změnit.
+ .
+ Preferujete-li ruční nastavení Eximu 4 pro spolupráci s daemonem greylistd, přečtěte si /usr/share/doc/greylistd/README.Debian.
+Description-da.UTF-8: Exim 4 kræver yderligere konfiguration
+ For at grålistning bliver effektivt, skal din posttransportagent (MTA) snakke med greylistd når den modtager indkommende post; og afhængig af svaret, udstede en midlertidig nægtelse (451 SMTP-kode) til den eksterne vært.
+ .
+ Da du bruger Exim 4 som din MTA, er et skript tilgængelig for dig, hvor du kan udføre denne opgave. Ved en rodprompt indtastes:
+  # greylistd-setup-exim4 add
+ Hvis du overskriver dine konfigurationsfiler for Exim i fremtiden (for eksempel under en opgradering), kan der være behov for at genkøre denne kommando.
+ .
+ Senere før du afinstallerer »greylistd«, skal du køre:
+  # greylistd-setup-exim4 remove
+ .
+ For yderligere tilvalg og hjælp til brug, kør kommandoen uden argumenter, eller se manualsiden »greylistd-setup-exim4(8)«. Foreslået tilvalg for kommandoen »add« er »-netmask=24«.
+ .
+ Årsagen, til at denne handling ikke udføres automatisk, er at Exims konfigurationsfiler er mærket som »conffiles«, så per Debianpolitik er de fuldstændig under din kontrol. Kun du kan ændre dem.
+ .
+ Hvis du foretrækker at konfigurere Exim4 til greylistd manuelt, så se venligst /usr/share/doc/greylistd/README.Debian.
+Description-de.UTF-8: Exim 4 benötigt zusätzliche Konfiguration
+ Damit das Greylisting effektiv wird, muss Ihr »Mail Transport Agent« (MTA) während des Empfangs eingehender E-Mail mit Greylistd sprechen; und abhängig von der Antwort eine vorübergehende Ablehnung (SMTP-Code 451) an den entfernten Rechner senden.
+ .
+ Da Sie Exim 4 als Ihren MTA verwenden, ist ein Skript für Sie vorhanden, dass diese Aufgabe erledigt. Tippen Sie an einer Eingabeaufforderung für root folgendes ein:
+  # greylistd-setup-exim4 add
+ Falls Sie in der Zukunft Ihre Exim-Konfigurationsdateien überschreiben (zum Beispiel, wenn Sie ein Upgrade von Exim durchführen), müssen Sie eventuell diesen Befehl erneut ausführen.
+ .
+ Später, bevor Sie »greylistd« deinstallieren, sollten Sie folgendes ausführen:
+  # greylistd-setup-exim4 remove
+ .
+ Für weitere Optionen und Benutzungshilfe führen Sie den Befehl ohne Argumente aus oder lesen Sie die »greylistd-setup-exim4(8)«-Handbuchseite. Eine empfohlene Option für das »add«-Kommando ist »-netmask=24«.
+ .
+ Der Grund, dass diese Operation nicht automatisch durchgeführt wird ist der, dass Exims Konfigurationsdateien als »conffiles« markiert sind, so dass sie laut den Debian-Richtlinien komplett Ihrer Kontrolle unterliegen. Nur Sie können sie ändern.
+ .
+ Falls Sie die Konfiguration von Exim 4 für Greylistd per Hand bevorzugen, lesen Sie bitte /usr/share/doc/greylistd/README.Debian.
+Description-es.UTF-8: Exim 4 necesita configuración adicional
+ Para que las listas grises sean efectivas su agente de transporte de correo (MTA) necesita comunicarse con greylistd mientras recibe correo entrante; y dependiendo de la respuesta, emita un rechazo temporal (código SMTP 451) dirigido hacia la máquina remota.
+ .
+ Puesto que está usando Exim 4 como su MTA, tiene disponible un script para realizar esta tarea. En un símbolo de sistema de root escriba:
+  # greylistd-setup-exim4 add
+ Quizás necesite ejecutar de nuevo esta orden si en el futuro sobreescribe sus ficheros de configuración (por ejemplo, al actualizar Exim).
+ .
+ Después, antes de que desinstale «greylistd», puede ejecutar:
+  # greylistd-setup-exim4 remove
+ .
+ Para ver más opciones o para ver la ayuda de uso ejecute la orden sin ningún argumento, o consulte la página de manual «greylistd-setup-exim4(8)». Una opción aconsejable para la orden «add» es «-netmask=24».
+ .
+ La razón por la que esta operación no se realiza automáticamente es porque los ficheros de configuración de Exim están etiquetados como «conffiles», por lo que siguiendo las directrices de Debian están completamente bajo su control. Sólo usted puede cambiarlos.
+ .
+ Si prefiere configurar Exim 4 manualmente para usar greylistd, por favor consulte /usr/share/doc/greylistd/README.Debian.
+Description-eu.UTF-8: Exim4-ek konfigurazio gehigarria behar du
+ Greylist-ek eragina izan dezan, zure posta garraio agenteak (MTA) posta jasotzerakoan greylistd-rekin harremanetan ipini, eta erantzunaren arabera, aldiroko ukatze (451 SMTP kodea) bat bidali behar du urruneko ostalarira.
+ .
+ MTA gisa Exim4 erabiltzen duzunez, script bat dago zeregin hau zuregatik egiteko aukera ematen duena. Root gisa, idatzi:
+  # greylistd-setup-exim4 add
+ Aurrerantzean Exim4 konfigurazio fitxategiak eraldatzen badituzu (adibidez bertsio-berritze batetan), komando hau berriz abiarazi beharko duzu.
+ .
+ Beranduago greylist desinstalatu baino lehen, hau exekutatu:
+  # greylistd-setup-exim4 remove
+ .
+ Aukera gehiago edo laguntza ikusteko, exekutatukomandoa aldagairik gabe, edo "greylistd-setup-exim4(8)" manual orrialdea ikusi. "add" komandoarentzat gomendagarri den aukera bat "-netmask=24" da.
+ .
+ Ekintza hau automatikoki ez burutzearen arrazoia Exim-ren konfigurazio fitxategiak "conffiles" bezala markaturik daudela, eta beraz Debian politika dela eta guztiz zure kontrolpean daudela da. Zuk bakarrik eraldatu ditzakezu fitxategi horiek.
+ .
+ Exim4 greylist erabiltzeko eskuz konfiguratu nahigo baduzu, mesedez irakurri /usr/share/doc/greylistd/README.Debian fitxategia.
+Description-fr.UTF-8: Configuration supplémentaire nécessaire pour Exim4
+ Pour que la gestion des listes grises (« greylists ») soit effective, votre agent de transport du courriel (MTA) doit échanger des informations avec greylistd lorsqu'il reçoit du courrier entrant. Selon la réponse obtenue, il pourra envoyer une notification de rejet temporaire à l'hôte distant (code SMTP 451).
+ .
+ Puisque vous utilisez Exim4, un script est disponible pour vous permettre de réaliser cela. Á l'invite du superutilisateur (root), utilisez la commande suivante :
+  # greylistd-setup-exim4 add
+ Si, par la suite, vous modifiez vos fichiers de configuration d'Exim (par exemple lors d'une mise à niveau d'Exim), vous devrez de nouveau lancer cette commande.
+ .
+ Plus tard, avant de désinstaller « greylistd », vous devrez utiliser la commande :
+  # greylistd-setup-exim4 remove
+ .
+ Pour obtenir davantage d'informations sur les options disponibles ou d'aide sur l'utilisation de cette commande, lancez-la sans aucun argument ou consultez la page de manuel « greylistd-setup-exim4(8) ». Il est suggéré d'utiliser l'option « -netmask=24 » avec la commande « add ».
+ .
+ Cette opération n'est pas faite automatiquement parce que les fichiers de configuration d'Exim sont marqués comme étant des fichiers de configuration, ce qui, selon la charte Debian, interdit à un autre paquet de les modifier.
+ .
+ Si vous préférez configurer vous-même Exim4 pour l'utilisation de greylistd, veuillez consulter /usr/share/doc/greylistd/README.Debian.
+Description-it.UTF-8: È necessario modificare la configurazione di Exim 4
+ Per rendere efficace il greylisting è necessario che quando il proprio Mail Transport Agent (MTA) riceve un email possa comunicare con greylistd, e in base alla risposta, respingere temporaneamente il messaggio (risposta SMTP 451) verso la macchine remota.
+ .
+ Poiché si utilizza Exim 4 come MTA, è disponibile uno script che effettua questa operazione. Da root eseguire:
+  # greylistd-setup-exim4 add
+ Se in futuro si sovrascrivono i file di configurazione di Exim (per esempio quando si aggiorna Exim), potrebbe essere necessario rieseguire nuovamente questo comando.
+ .
+ In seguito, prima di disinstallare "greylistd", si deve eseguire:
+  # greylistd-setup-exim4 remove
+ .
+ Per le altre opzioni e l'aiuto su come usarlo, eseguire il comando senza parametri oppure si veda la pagina man  di "greylistd-setup-exim4(8)". Una delle opzioni suggerite per il comando "add" è "-netmask=24".
+ .
+ La ragione per la quale questa operazione non è effettuata automaticamente è che il file di configurazione di Exim è marcato come un "conffiles" e quindi, in base alla policy Debian, è completamente sotto la responsabilità dell'utente. Solo l'utente può modificarlo.
+ .
+ Se si preferisce configurare manualmente Exim 4 per greylistd, si veda /usr/share/doc/greylistd/README.Debian.
+Description-ja.UTF-8: Exim 4 には追加設定が必要です
+ greylisting を有効にするには、メール転送エージェント (MTA) がやってきたメールを受け取っている間に greylistd と通信する必要があり、加えて応答に依存しているので、リモートホストへは一時的な拒否 (451 SMTP コード) を返すようにしなければいけません。
+ .
+ MTA として Exim 4 を利用しているので、この作業を実行するスクリプトが利用可能です。root のプロンプトで、以下のように入力してください:
+  # greylistd-setup-exim4 add
+ 今後 Exim の設定ファイルを上書きする場合 (例えば Exim をアップグレードする際など)、このコマンドを再実行する必要があるでしょう。
+ .
+ その他、"greylistd" をアンインストールする前には以下を実行してください:
+  # greylistd-setup-exim4 remove
+ .
+ 使い方についてのさらなるオプションとヘルプは、引数なしでコマンドを実行するか、"greylistd-setup-exim4(8)" マニュアルページを参照してください。"add" コマンドへのお勧めのオプションの一つは "-netmask=24" です。
+ .
+ この動作が移動的には実行されない理由は、Exim の設定ファイルは "conffiles" とされており、Debian ポリシーによれば全てユーザが管理するものとされています。あなただけが変更できるのです。
+ .
+ Exim 4 を 手動で greylistd 向けに設定したい場合には、/usr/share/doc/greylistd/README.Debian を参照してください。
+Description-nb.UTF-8: Exim 4 trenger mer instilling
+ For at grålisting skal trå i kraft må postbehandligsprogrammet ditt snakke med greylistd mens det mottar innkommende e-post.  Det kommer da an på svaret fra greylistd hvorvidt mottaket skal utsettes (med SMTP-koden "451").
+ .
+ Siden du bruker Exim 4 som postbehandligsprogram er det et verktøy tilgjengelig for å hjelpe deg med denne oppgaven.  Fra kommandolinjen til "root"-brukeren, utfør:
+  # greylistd-setup-exim4 add
+ Om du skriver over Exim's konfigurasjonsfiler i framtiden (f.eks. når du oppgraderer Exim) må du uføre denne kommandoen igjen.
+ .
+ Før du skal fjerne "greylistd", kjører du da:
+  # greylistd-setup-exim4 remove
+ .
+ For å se flere valg og bruksmåter kan du utføre denne kommandoen uten argumenter, eller lese manualen "greylistd-setup-exim4(8)". Et valg som foreslås er "-netmask=24".
+ .
+ Grunnen til at denne operasjonen ikke utføres automatisk er at Exim's konfigurasjonsfiler er markert som "conffiles". Dermed er de i følge Debian's retningslinjer fullstendig under din kontroll.
+ .
+ Om du ønsker å sette opp Exim 4 for greylist på egen hand, kan du finne mer informasjon i /usr/share/doc/greylistd/README.Debian.
+Description-nl.UTF-8: Exim 4 heeft aanvullende configuratie nodig
+ Uw grijze-lijst wordt pas effectief als uw MTA (Mail Transport Agent) met greylistd kan communiceren tijdens het ontvangen van e-mail, om dan afhankelijk van het antwoord een tijdelijke weigering (SMTP-code 451) naar de andere computer te sturen.
+ .
+ Aangezien u Exim 4 gebruikt als uw MTA is er een script beschikbaar waarmee u dit kunt doen. Voer hiervoor als root het commando 'greylistd-setup-exim4 add' uit. Als u in de toekomst uw Exim-configuratie overschrijft (bijvoorbeeld tijdens het opwaarderen van Exim) dient u dit commando wellicht opnieuw uit te voeren.
+ .
+ Alvorens u het pakket 'greylistd' de-installeert  dient u het commando 'greylistd-setup-exim4 remove' uit te voeren.
+ .
+ Meer informatie over opties en hulp betreffende het gebruik vindt u door dit commando uit te voeren zonder argumenten, of in de greylistd-setup-exim4(8) man-pagina. Een mogelijke optie voor het 'add' commando is '-netmask=24'.
+ .
+ Deze operatie wordt niet automatisch uitgevoerd daar de Exim configuratiebestanden 'conffiles' zijn, en Debian Policy dus afdwingt dat deze niet automatisch aangepast mogen worden.
+ .
+ Als u verkiest om de Exim4-configuratie voor greylistd handmatig aan te passen vindt u meer informatie in /usr/share/doc/greylistd/README.Debian .
+Description-no.UTF-8: Exim 4 trenger mer instilling
+ For at grålisting skal trå i kraft må postbehandligsprogrammet ditt snakke med greylistd mens det mottar innkommende e-post.  Det kommer da an på svaret fra greylistd hvorvidt mottaket skal utsettes (med SMTP-koden "451").
+ .
+ Siden du bruker Exim 4 som postbehandligsprogram er det et verktøy tilgjengelig for å hjelpe deg med denne oppgaven.  Fra kommandolinjen til "root"-brukeren, utfør:
+  # greylistd-setup-exim4 add
+ Om du skriver over Exim's konfigurasjonsfiler i framtiden (f.eks. når du oppgraderer Exim) må du uføre denne kommandoen igjen.
+ .
+ Før du skal fjerne "greylistd", kjører du da:
+  # greylistd-setup-exim4 remove
+ .
+ For å se flere valg og bruksmåter kan du utføre denne kommandoen uten argumenter, eller lese manualen "greylistd-setup-exim4(8)". Et valg som foreslås er "-netmask=24".
+ .
+ Grunnen til at denne operasjonen ikke utføres automatisk er at Exim's konfigurasjonsfiler er markert som "conffiles". Dermed er de i følge Debian's retningslinjer fullstendig under din kontroll.
+ .
+ Om du ønsker å sette opp Exim 4 for greylist på egen hand, kan du finne mer informasjon i /usr/share/doc/greylistd/README.Debian.
+Description-pt.UTF-8: Exim 4 precisa de configuração adicional
+ Para que o greylist se torne efectivo, o seu agente de transporte de mail (MTA) precisa falar com o greylistd quando recebe mail; e dependendo da resposta, emitir uma rejeição temporária (código SMTP 451) para a máquina remota.
+ .
+ Como está a usar Exim 4 como seu MTA, um script está disponível para si para executar esta tarefa.  Na linha de comandos como root, escreva:
+  # greylistd-setup-exim4 add
+ Se você reescrever os seus ficheiros de configuração do Exim no futuro (por exemplo ao actualizar o Exim), você pode precisar de voltar a correr este comando.
+ .
+ Mais tarde, antes de desinstalar "greylistd", você vai querer correr:
+  # greylistd-setup-exim4 remove
+ .
+ Para mais opções e ajuda na utilização, corra o comando sem argumentos, ou veja o manual do "greylistd-setup-exim4(8)".  Uma opção sugerida para o comando "add" é "-netmask=24".
+ .
+ A razão porque esta operação não é feita automáticamente é que os ficheiros de configuração do Exim são etiquetados como "conffiles", então pela política da Debian, eles estão completamente sob o seu controlo.  Apenas você pode alterá-los.
+ .
+ Se preferir configurar o Exim 4 para o greylistd à mão, por favor veja  /usr/share/doc/greylistd/README.Debian.
+Description-pt_BR.UTF-8: O Exim 4 necessita de configurações adicionais
+ Para o "greylisting" tornar-se efetivo, seu Agente de Transporte de Mensagens (MTA - Mail Transport Agent) precisa conversar com o greylistd enquanto recebe e-mails; e dependendo da resposta, emitir uma rejeição temporária (código SMTP 451) para a máquina remota.
+ .
+ Desde que você esteja utilizando o Exim 4 como seu MTA, um script está disponível para você realizar esta tarefa. Em um prompt como root, digite:
+  # greylistd-setup-exim4 add
+ Se você sobrescrever seus arquivos de configuração do Exim no futuro (por exemplo, quando atualizar o Exim), você talvez precise re-executar este comando.
+ .
+ No futuro, antes de desinstalar o "greylistd", você precisa executar:
+  # greylistd-setup-exim4 remove
+ .
+ Para mais opções e ajuda sobre utilização, execute o comando sem argumentos, ou veja a página de manual "greylistd-setup-exim4(8)". Uma opção sugerida para o comando "add" é "-netmask=24".
+ .
+ A razão pela qual esta operação não é executada automaticamente é que os arquivos de configuração do Exim estão marcados como "conffiles", então pelo Manual de Políticas Debian ("Debian Policy") eles estão completamente sob seu controle. Apenas você pode alterá-los.
+ .
+ Se você preferir configurar o Exim 4 manualmente para o greylistd, por favor, veja /usr/share/doc/greylistd/README.Debian.
+Description-ru.UTF-8: Для Exim 4 требуется дополнительная настройка
+ Чтобы серые списки заработали нужно настроить ваш агент пересылки почты (MTA) так, чтобы он обращался к greylistd при получении входящей почты, и в зависимости от ответа, выдавал временный отказ (SMTP-код 451) удалённому хосту.
+ .
+ Так как вы используете Exim 4 в качестве MTA, для выполнения этой задачи существует готовый сценарий. С правами суперпользователя введите:
+  # greylistd-setup-exim4 add
+ Если в будущем вы измените файлы настройки Exim (например, при обновлении Exim), вам может потребоваться перезапустить эту команду.
+ .
+ В последствии, перед удалением "greylistd" следует выполнить:
+  # greylistd-setup-exim4 remove
+ .
+ Чтобы ознакомиться с возможными параметрами и справкой, запустите эту команду без аргументов, или обратитесь к справочной странице "greylistd-setup-exim4(8)". Одним из полезных параметров команды "add" является "-netmask=24".
+ .
+ Эта операция не выполняется автоматически, так как файлы настройки Exim помечены как "conffiles", и согласно политике Debian они полностью под вашим контролем. Только вы можете их изменять.
+ .
+ Если вы хотите настроить Exim 4 для работы с greylistd вручную, см. файл /usr/share/doc/greylistd/README.Debian.
+Description-sv.UTF-8: Exim 4 kräver ytterligare konfiguration
+ För en effektiv grålistning, måste din leveransagent för elektronisk post (MTA) tala till greylistd medan inkommande post tas emot och, beroende på svaret, avge en temporär avvisning (SMTP-kod 451) till fjärrvärden.
+ .
+ Eftersom du använder Exim 4 som MTA, finns ett skript tillgängligt för att utföra denna operation.  Skriv i en rootprompt:
+  # greylistd-setup-exim4 add
+ Om du skriver över din konfigurationsfil för Exim i framtiden (till exempel vid uppgradering av Exim), kan du behöva köra detta kommando igen.
+ .
+ Senare, innan du avinstallerar "greylistd", behöver du köra:
+  # greylistd-setup-exim4 remove
+ .
+ För fler val och användningshjälp, kör kommandot utan några argument eller se manualsidan för "greylistd-setpu-exim4(8)".  Ett rekommenderat val för "add"-kommandot är "-netmask=24".
+ .
+ Anledningen till att denna operation inte utförs automatiskt är att Exims konfigurationsfiler betecknas som "conffiler" så enligt Debians policy är de helt under din kontroll. Endast du kan ändra dem.
+ .
+ Om du föredrar att konfigurera Exim 4 för greylistd manuellt, var vänlig se /usr/share/doc/greylistd/README.Debian.
+Description-vi.UTF-8: Trình Exim 4 cần đến cấu hình thêm.
+ Để sử dụng khả năng danh sách màu xám một cách hữu ích, tác nhân truyền thư của bạn cần đến có thể liên lạc với trình nền greylistd trong khi nhận những thư được gửi đến, và (phụ thuộc vào hồi đáp) gửi thông điệp từ chối tạm thời (mã SMTP 451) cho máy ở xa.
+ .
+ Vì bạn đang sử dụng trình Exim 4 là tác nhân truyền thư, có một tập lệnh sẵn sàng để thực hiện công việc này. Tại một dấu nhắc người chủ thì hãy gõ:
+  # greylistd-setup-exim4 add
+ (greylistd thiết lập exim4 thêm)
+ Nếu bạn ghi đè lên tập tin cấu hình Exim 4 trong tương lai (lấy thí dụ, khi nâng cấp trình Exim) thì có lẽ sẽ cần phải chạy lại lệnh này.
+ .
+ Lần sau, trước khi bạn hủy cài đặt trình nền «»greylistd» bạn nên chạy:
+ # greylistd-setup-exim4 remove
+ (greylistd thiết lập exim4 loại bỏ)
+ .
+ Để xem tùy chọn thêm và trợ giúp về cách sử dụng, hãy chạy lệnh ấy không có đối số này, hoặc xem trang hướng dẫn (man) «greylistd-setup-exim4(8)». Một tùy chọn được đệ nghị  cho lệnh «thêm» (add) là «-netmask=24».
+ .
+ Lý do không tự động thực hiện thao tác này là các tập tin cấu hình của Exim 4 được nhãn là «conffiles» (tập tin cấu hình), thì với điều kiện của chính thức Debian, bạn điều khiển hoàn thành những tập tin ấy. Chỉ bạn có thể sửa đổi chúng thôi.
+ .
+ Nếu bạn muốn tự cấu hình trình Exim 4 cho trình greylistd, hãy xem tập tin /usr/share/doc/greylistd/README.Debian.
+
+Template: greylistd/autoconfig_notdone
+Type: note
+Description: Your MTA needs additional configuration
+ For greylisting to become effective, two things must happen:
+  - Your Mail Transport Agent (MTA) needs to talk to greylistd while
+    receiving incoming mail, and depending on the response, issue a
+    temporary rejection (451 SMTP response) to the remote host.
+  - The account under which your MTA runs needs to be added to the
+    "greylist" group.  After this, your MTA needs to be restarted.
+ .
+ Unfortunately, this package supports only Debian's default Exim 4
+ configuration.  Since you seem to be using a different MTA, have a look at
+ the greylistd(8) manual page for some information on communicating with
+ greylistd.
+ .
+ There may also be other greylisting solutions available that suit your MTA
+ better; see the "Links" section at:
+    http://projects.puremagic.com/greylisting/
+Description-cs.UTF-8: Váš poštovní server vyžaduje dodatečné nastavení
+ Aby měl greylistd nějaký efekt, musíte zajistit dvě věci:
+  - Nastavit poštovní server (MTA) tak, aby příchozí poštu předával
+    daemonu greylistd a na základě jeho odpovědi případně vracel
+    vzdálenému počítači SMTP kód 451 (dočasné odmítnutí).
+  - Přidat účet, pod kterým běží MTA, do skupiny "greylist"
+    a následně poštovní server restartovat.
+ .
+ Tento balík podporuje pouze konfiguraci Eximu 4. Protože se zdá, že používáte jiný poštovní server, podívejte se do manuálové stránky greylistd(8), kde naleznete informace o komunikaci s daemonem greylistd.
+ .
+ Také je možné, že pro váš poštovní server existují vhodnější greylistingová řešení -- podívejte se do části "Links" na stránce http://projects.puremagic.com/greylisting/.
+Description-da.UTF-8: Din MTA kræver yderligere konfiguration
+ For at grålistning bliver effektivt, skal to ting ske:
+  - Din posttransportagent (MTA) skal kommunikere med greylistd mens
+    der modtages indkommende post, og afhængig af svaret, udstede en
+    midlertidig afvigelse (451 SMTP-svar) til den eksterne vært.
+  - Kontoen hvorunder din MTA kører skal tilføjes til gruppen
+    »greylist«. Herefter skal din MTA genstartes.
+ .
+ Desværre understøtter denne pakke kun Debians standardkonfiguration til Exim 4. Da du ser ud til at bruge en anden MTA, så se manualsiden til greylistd(9) for yderligere information vedrørende kommunikation med greylistd.
+ .
+ Der kan også være andre grålistningsløsninger tilgængelige som passer bedre til din MTA; se afsnittet »Links« på:
+    http://projects.puremagic.com/greylisting/
+Description-de.UTF-8: Ihr MTA benötigt zusätzliche Konfiguration
+ Damit Greylisting effektiv wird, müssen zwei Dinge geschehen:
+  - Ihr »Mail Transport Agent« (MTA) muss mit Greylistd während des
+    Empfangs von E-Mail sprechen, und abhängig von der Antwort eine
+    vorübergehende Ablehnung (SMTP-Antwort 451) an den entfernten
+    Rechner ausstellen.
+  - Das Konto, unter dem Ihr MTA läuft, muss zu der »greylist«-Gruppe
+    hinzugefügt werden. Danach muss Ihr MTA neu gestartet werden.
+ .
+ Unglücklicherweise unterstützt dieses Paket nur Debians Exim 4 Standardkonfiguration. Da es scheint, dass Sie einen anderen MTA verwenden, schauen Sie in die greylistd(8)-Handbuchseite, um einige Informationen zu der Kommunikation mit Greylistd zu erhalten.
+ .
+ Es könnte auch andere Greylisting-Lösungen geben, die für Ihren MTA besser passen; lesen Sie den »Links«-Abschnitt auf:
+    http://projects.puremagic.com/greylisting/
+Description-es.UTF-8: Su MTA necesita configuración adicional
+ Deben suceder dos cosas para que las listas grises sean efectivas:
+  - Su agente de transporte de correo (MTA) necesita comunicarse con greylistd mientras
+  recibe correo entrante, y dependiendo de la respuesta, se emite un rechazo
+  temporal (código SMTP 451) dirigido hacia la máquina remota.
+ - Se necesita añadir la cuenta bajo la que se ejecuta su MTA al grupo «greylist».
+  Después de esto, es necesario reiniciar su MTA.
+ .
+ Desafortunadamente este paquete sólo soporta la configuración de Exim 4 que viene por omisión en Debian. Puesto que parece que está usando un MTA distinto, si quiere información sobre cómo comunicarse con greylistd véase la página de manual greylistd(8).
+ .
+ Quizás haya otras soluciones de listas grises disponibles que se ajusten mejor a su MTA; consulte la sección «Links» en:
+    http://projects.puremagic.com/greylisting/
+Description-eu.UTF-8: Zure MTAk konfigurazio gehigarria behar du
+ Greylist-ek eragina izan dezan, bi gauza gertatu behar dira:
+  - Zure posta garraio agenteak (MTA) posta jasotzerakoan
+    greylistd-rekin harremanetan jarri eta erantzunaren arabera,
+    aldiroko ukatze (451 SMTP kodea) mezu bat bidali behar dio
+    urruneko ostalariari.
+  - Zure MTA exekutatzen duen kontua "greylist" taldera gehitu
+    behar da. Horren ondoren MTA berrabiarazi egin behar da.
+ .
+ Zoritxarrez, pakete honek Debian-en lehenetsirik dagoen Exim4-aren konfigurazioa bakarrik onartzen du. Zuk dirudienez beste MTA bat erabiltzen duzunez, begiarada bat bota greylistd(8) manual orrialdera greylistd-rekin harremanei buruzko argibide gehiagorako.
+ .
+ Zure MTA-rekin hobe funtzionatzen duten beste irtenbide batzuek egon daitezke, begiratu hurrengo webguneko "links" lotura:
+    http://projects.puremagic.com/greylisting/
+Description-fr.UTF-8: Configuration supplémentaire nécessaire de votre MTA
+ Pour mettre en service les listes grises (« greylists »), deux conditions doivent être remplies :
+  - Votre agent de transport du courriel (MTA) doit échanger des
+    informations avec le démon greylistd lorsqu'il reçoit un nouveau
+    courriel et, selon la réponse, il doit émettre une notification de
+    rejet temporaire à destination de l'hôte distant (réponse SMTP 451) ;
+  - Le compte sous lequel votre MTA s'exécute doit être ajouté au
+    groupe « greylist » et il doit être redémarré.
+ .
+ Ce paquet ne gère automatiquement que la configuration d'Exim4, le MTA par défaut de Debian. Comme vous utilisez un autre MTA, veuillez consulter la page de manuel greylistd(8) afin d'obtenir des informations sur la manière de communiquer avec greylistd.
+ .
+ Il existe peut-être d'autres solutions de gestion des listes grises qui pourraient être plus adaptées à votre MTA ; voir la section « Links » à l'adresse http://projects.puremagic.com/greylisting/.
+Description-it.UTF-8: È necessario modificare la configurazione del MTA
+ Per far funzionare il greylisting si devono verificare due cose:
+  - Al momento della ricezione di un email il proprio Mail Transfer
+    Agent (MTA) deve poter comunicare con greylistd e, in base alla
+    risposta, respingere temporaneamente il messaggio (risposta SMTP
+    451) verso la macchine remota.
+  - L'account con il quale è in esecuzione l'MTA deve appartenere al
+    gruppo "greylist". Infine è necessario riavviare l'MTA.
+ .
+ Sfortunatamente questo pacchetto supporta solo la configurazione di Exim 4, l'MTA predefinito in Debian. Poiché è in uso un MTA diverso si deve consultare la pagina man di greylistd(8) per ulteriori informazioni su come comunicare con greylistd.
+ .
+ Potrebbero esistere altre soluzioni per il greylisting che si integrano meglio con il proprio MTA; si veda la sezione "Links" in:
+    http://projects.puremagic.com/greylisting/
+Description-ja.UTF-8: MTA には追加設定が必要です
+ greylisting を有効にするには、2 つの事柄が前提です:
+  - メール転送エージェント (MTA) が受信メールを受け取っている間、greylistd
+    と通信する必要があり、加えて応答に依存しているので、リモートホストへは
+    一時的な拒否 (451 SMTP コード) を返すようにしなければいけない。
+  - MTA を動作させているアカウントは "greylist" グループに追加されなければ
+    いけない。この設定後、MTA は再起動が必要。
+ .
+ 残念なことに、このパッケージでは Debian の標準 Exim 4 に対する設定のみをサポートしています。他の MTA を使っているようですので、greylistd と通信するための情報については greylistd(8) マニュアルページを参照して下さい。
+ .
+ あなたの使っている MTA により適している、利用可能な他の greylisting ソリューションがあるかもしれません。以下の "Links" セクションを参照してください:
+    http://projects.puremagic.com/greylisting/
+Description-nb.UTF-8: Postbehandligsprogrammet ditt trenger flere instillinger
+ For at grålisting skal trå i kraft må to ting skje:
+  - Postbehandligsprogrammet ditt må snakke med greylistd mens det mottar
+    inkommende meldinger.  Det kommer da an på svaret fra greylistd
+    hvorvidt mottaket skal utsettes (med SMTP-koden "451").
+  - Brukerkontoen som benyttes av postbehandligsprogrammet ditt må legges
+    til i "greylist"-gruppa. Deretter må postbehandligsprogrammet
+    omstartes.
+ .
+ Beklageligvis støtter denne pakken bare Debian's standard Exim 4-oppsett. Siden det virker som du bruker et annet postbehandligsprogram, bør du heller lese manualen "greylistd(8)" for litt informasjon om hvordan du kan kommunisere med greylistd.
+ .
+ Det fins kanskje andre grålistingsløsninger som passer bedre til postbehandligsprogrammet ditt; les mer i under "Links" på:
+     http://projects.puremagic.com/greylisting/
+Description-nl.UTF-8: Uw MTA heeft aanvullende configuratie nodig
+ Opdat uw grijze-lijst actief wordt dienen er twee dingen te gebeuren:
+ - Uw MTA (Mail Transport Agent) dient in staat te zijn om met greylistd te
+   communiceren tijdens het ontvangen van e-mail. Afhankelijk van het antwoord
+   kan dan een tijdelijke weigering (SMTP-code 451) gestuurd worden naar de
+   andere computer.
+ - De gebruiker als wie uw MTA uitgevoerd wordt dient toegevoegd te worden
+   aan de groep 'greylistd'. Eens dat gebeurd is dient uw MTA herstart te worden.
+ .
+ Dit pakket ondersteunt helaas enkel Debians standaardconfiguratie voor Exim 4. U lijkt echter een andere MTA te gebruiken, meer informatie over het communiceren met greylistd vindt u in de man-pagina greylistd(8).
+ .
+ Mogelijk zijn er ook andere grijze-lijst oplossingen beschikbaar, die geschikter zijn voor uw MTA, meer informatie vindt u in de 'Links'-sectie op:
+  http://projects.puremagic.com/greylisting/
+Description-no.UTF-8: Postbehandligsprogrammet ditt trenger flere instillinger
+ For at grålisting skal trå i kraft må to ting skje:
+  - Postbehandligsprogrammet ditt må snakke med greylistd mens det mottar
+    inkommende meldinger.  Det kommer da an på svaret fra greylistd
+    hvorvidt mottaket skal utsettes (med SMTP-koden "451").
+  - Brukerkontoen som benyttes av postbehandligsprogrammet ditt må legges
+    til i "greylist"-gruppa. Deretter må postbehandligsprogrammet
+    omstartes.
+ .
+ Beklageligvis støtter denne pakken bare Debian's standard Exim 4-oppsett. Siden det virker som du bruker et annet postbehandligsprogram, bør du heller lese manualen "greylistd(8)" for litt informasjon om hvordan du kan kommunisere med greylistd.
+ .
+ Det fins kanskje andre grålistingsløsninger som passer bedre til postbehandligsprogrammet ditt; les mer i under "Links" på:
+     http://projects.puremagic.com/greylisting/
+Description-pt.UTF-8: O seu MTA precisa de configuração adicional
+ Para que o greylist se torne efectivo, dua coisas precisam acontecer:
+  - O seu agente de transporte de mail (MTA) precisa falar com o greylistd
+ quando recebe mail; e dependendo da resposta, emitir uma rejeição temporária
+ (código SMTP 451) para a máquina remota
+  - A conta em qual o seu MTA corre precisa ser adicionada ao grupo
+ "greylist".  Depois disto, o seu MTA precisa ser reiniciado.
+ .
+ Infelizmente, este pacote apenas suporta a configuração de omissão do Exim 4 em Debian.  Como parece que você está a usar um MTA diferente, veja a página manual greylistd(8) para alguma informação em comunicar com o greylistd.
+ .
+ Podem existir outras soluções do greylistd disponíveis que sirvam o seu MTA melhor; veja a secção "Links" em:
+    http://projects.puremagic.com/greylisting/
+Description-pt_BR.UTF-8: Seu MTA necessita de configuração adicional
+ Para o "greylisting" tornar-se efetivo, duas coisas devem acontecer:
+  - Seu Agente de Transporte de Mensagens (MTA - Mail Transport Agent)
+    precisa conversar com o greylistd enquanto recebe e-mails, e
+    dependendo da resposta, emitir uma rejeição temporária
+    (resposta SMTP 451) para a máquina remota.
+  - A conta sob a qual seu MTA é executado precisa ser adicionada
+    ao grupo "greylist". Depois disto, seu MTA precisa ser
+    reiniciado.
+ .
+ Infelizmente, este pacote dá suporte apenas às configurações padrão do Exim 4 do Debian. Como você parece estar usando um MTA diferente, dê uma olhada na página de manual greylistd(8) para algumas informações sobre a comunicação com o greylistd.
+ .
+ Pode também haver outras soluções de "greylisting" disponíveis que servem melhor ao seu MTA; olhe a seção "Links" em:
+    http://projects.puremagic.com/greylisting/
+Description-ru.UTF-8: Для вашего MTA требуется дополнительная настройка
+ Чтобы серые списки заработали, нужно две вещи:
+  - Ваш агент пересылки почты (MTA) должен обращаться к greylistd при
+    получении входящей почты, и в зависимости от ответа,
+    выдавать временный отказ (SMTP-код 451) удалённому хосту.
+  - Учётную запись, с которой запущен MTA, нужно добавить в
+    группу "greylist". После этого MTA нужно перезапустить.
+ .
+ К сожалению, этот пакет поддерживает только Debian-настройку по умолчанию для Exim 4. Так как, кажется, вы используете другой MTA, прочитайте в справочной странице greylistd(8) о том, как заставить его взаимодействовать с greylistd.
+ .
+ Также есть несколько других решений для серых списков, которые может быть лучше подойдут для вашего MTA; см. раздел "Links" на странице:
+    http://projects.puremagic.com/greylisting/
+Description-sv.UTF-8: Din MTA behöver ytterligare konfiguration
+ För en effektiv grålistning krävs två saker:
+  - Din leveransagent för elektronisk post (MTA) behöver tala med
+    greylistd medan inkommande post tas emot och, beroende på
+    svaret, avge en tillfällig avvisning (SMTP-svar 451)
+    till fjärrvärden.
+  - Det konto som din MTA kör under behöver läggas till gruppen
+    "greylist".  Efter detta måste din MTA startas om.
+ .
+ Olyckligtvis stöder detta paket enbart Debians standardkonfiguration med Exim 4. Eftersom du verkar använda en annan MTA, studera manualsidan för greylistd(8) för information om hur kommunikation sker med greylistd.
+ .
+ Det kan också finnas andra grålistningslösningar tillgängliga som passar din MTA bättre; se avdelningen "Links" på:
+    http://projects.puremagic.com/greylisting/
+Description-vi.UTF-8: Tác nhân truyền thư của bạn cần có cấu hình thêm.
+ Để sử dụng khả năng danh sách màu xám một cách hữu ích, phải làm hai điều:
+ • Tác nhân truyền thư (MTA) cần phải liên lạc với trình nền greylistd
+ trong khi nhận những thư được gửi đến, và (phụ thuộc vào hồi đáp)
+ gửi một thông điệp từ chối (mà SMTP 451) cho máy ở xa.
+ • Cần phải thêm tài khoản dưới mà có chạy tác nhân truyền thư của bạn,
+ vào nhóm «danh sách màu xám» (greylist).
+ Sau đó, cần phải khởi chạy lại tác nhân truyền thư.
+ .
+ Rất tiếc là gói tin này hỗ trợ chỉ cấu hình Exim 4 mặc định của Debian. Vì hình như bạn đang sử dụng một tác nhân truyền thư khác, hãy xem trang hướng dẫn (man) greylistd(8) để tìm một phần thông tin về liên lạc với trình greylistd.
+ .
+ Cũng có thể có cách khác giải quyết vấn đề sử dụng danh sách màu xám, mà thích hợp với tác nhân truyền thư bạn: hãy xem phần «Links» (liên kết) tại địa chỉ này:
+ • http://projects.puremagic.com/greylisting/

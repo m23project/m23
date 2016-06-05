@@ -93,7 +93,9 @@ if (empty($updateURL))
 						<td>
 							<span class=\"title\">$I18N_update_information</span><br><br>
 							$m23updateInfoText
+							<!--m23customPatchBegin type=del id=BUT_update-->
 							<center><input type=\"submit\" name=\"BUT_update\" value=\"$I18N_update_server\"></center>
+							<!--m23customPatchEnd id=BUT_update-->
 						</td>
 					</tr>
 				");

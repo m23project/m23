@@ -1,0 +1,78 @@
+Template: sslh/inetd_or_standalone
+Type: select
+Choices: from inetd, standalone
+Choices-cs.UTF-8: z inetd, samostatně
+Choices-da.UTF-8: fra inetd, enkeltstående
+Choices-de.UTF-8: von »inetd«, eigenständig
+Choices-es.UTF-8: desde inetd, de manera independiente
+Choices-fr.UTF-8: Depuis inetd, Indépendamment
+Choices-it.UTF-8: da inetd, autonomo
+Choices-ja.UTF-8: inetd から, スタンドアロン
+Choices-nl.UTF-8: vanuit inetd, zelfstandig
+Choices-pt.UTF-8: a partir do inetd, sozinho
+Choices-pt_BR.UTF-8: a partir do inetd, autônomo
+Choices-ru.UTF-8: через inetd, самостоятельно
+Choices-sv.UTF-8: från inetd, fristående
+Choices-vi.UTF-8: từ inetd, độc lập
+Default: standalone
+Description: Run sslh:
+ sslh can be run either as a service from inetd, or as a standalone
+ server. Each choice has its own benefits. With only a few connection
+ per day, it is probably better to run sslh from inetd in
+ order to save resources.
+ .
+ On the other hand, with many connections,
+ sslh should run as a standalone server to avoid spawning a new
+ process for each incoming connection.
+Description-cs.UTF-8: Spouštět sslh:
+ sslh lze spouštět buď jako službu z inetd, nebo jako samostatný server. Každá volba má své výhody. S malým počtem spojení za den je lepší spouštět sslh z inetd, aby jste ušetřili zdroje.
+ .
+ V opačném případě, s mnoha spojeními, by měl sslh běžet jako samostatný server, aby jste zabránili spuštění nového procesu pro každé příchozí spojení.
+Description-da.UTF-8: Kør sslh:
+ sslh kan køres enten som en tjeneste fra inetd, eller som en enkeltstående server. Hvert valg har sine egne fordele. Med få forbindelser per dag, er det sikkert bedre at køre sslh fra inetd for at spare på ressourcerne.
+ .
+ På den anden side, med mange forbindelser, bør sslh køre som en enkeltstående server for at undgå dannelse af en ny proces for hver indkommende forbindelse.
+Description-de.UTF-8: »sslh« ausführen:
+ »sslh« kann entweder als Service von »inetd« oder als eigenständiger Server ausgeführt werden. Jede Auswahl hat ihre eigenen Vorteile. Mit nur wenigen Verbindungen pro Tag ist es wahrscheinlich besser, »sslh« von »inetd« starten zu lassen, um Ressourcen zu sparen.
+ .
+ Andererseits sollte »sslh« bei vielen Verbindungen als eigenständiger Server laufen, um das Erzeugen neuer Prozesse für jede eingehende Verbindung zu vermeiden.
+Description-es.UTF-8: Ejecutar sslh:
+ sslh se puede ejecutar como un servicio desde inetd o como un servidor independiente. Cada opción tiene sus ventajas. Si tiene pocas conexiones al día es probable que prefiera ejecutar sslh desde inetd para ahorrar recursos.
+ .
+ Por otra parte, si tiene que gestionar muchas conexiones, debería ejecutar sslh como un servidor independiente para evitar que se genere un nuevo proceso por cada una de las conexiones entrantes.
+Description-fr.UTF-8: Exécuter sslh :
+ sslh peut être lancé soit en tant que service depuis inetd, soit comme un serveur indépendant. Chaque méthode a ses avantages. Pour quelques connexions par jour, il est suggéré de lancer sslh depuis inetd afin de préserver les ressources du système.
+ .
+ Au contraire, avec un trafic plus important, il est recommandé d'exécuter sslh indépendamment pour éviter de démarrer un nouveau processus pour chaque connexion entrante.
+Description-it.UTF-8: Esegui sslh:
+ sslh può essere eseguito come servizio da inetd oppure come server autonomo. Ogni scelta ha i suoi vantaggi. Se si eseguono poche connessioni al giorno, probabilmente l'esecuzione da inetd è la scelta da preferire, al fine di risparmiare risorse.
+ .
+ D'altro canto, se si eseguono molte connessioni, sslh potrebbe essere eseguito come server indipendente, onde evitare di lanciare un nuovo processo per ogni connessione in ingresso.
+Description-ja.UTF-8: sslh の動作:
+ sslh は inetd から呼び出すサービスとしても、スタンドアロンのサーバとしても動作をさせることができます。どちらの選択肢にもそれぞれの利点があります。1 日に数回しか接続がない場合は、サーバのリソース消費を減らすために sslh を inetd から呼び出す方がおそらく良いでしょう。
+ .
+ 一方、多数の接続がある場合は、各接続に対して新規プロセスを起動するのを避けるため、sslh はスタンドアロンのサーバとして呼び出すべきでしょう。
+Description-nl.UTF-8: Uitvoeren van sslh:
+ sslh kan zowel uitgevoerd worden als een dienst van inetd of als een zelfstandige server. Elke keuze heeft zijn eigen voordelen. Met per dag slechts enkele verbindingen, is het wellicht beter om sslh uit te voeren vanuit inetd om systeembronnen te sparen.
+ .
+ Anderzijds zou sslh bij een groot aantal verbindingen als een zelfstandige server uitgevoerd moeten worden om te vermijden dat de computer bij elke nieuwe inkomende verbinding een nieuw proces zou moeten opstarten.
+Description-pt.UTF-8: Correr o sslh:
+ O sslh pode correr como um serviço a partir do inetd, ou sozinho como servidor. Cada uma das escolhas apresenta os seus benefícios. Com apenas algumas ligações por dia, é provavelmente preferível correr o sslh a partir do inetd de modo a poupar recursos.
+ .
+ Por outro lado, com várias ligações, o sslh deve correr como um servidor impedindo espalhar novos processos para cada ligação que receba.
+Description-pt_BR.UTF-8: Executar o sslh:
+ O sslh pode ser executado como um serviço a partir do inetd ou como um servidor autônomo. Cada escolha tem seus próprios benefícios. Com apenas algumas conexões por dia, provavelmente é melhor executar o sslh a partir do inetd para economizar recursos.
+ .
+ Por outro lado, com muitas conexões, o sslh deveria executar como um servidor autônomo para evitar a criação de um novo processo para cada conexão de entrada.
+Description-ru.UTF-8: Запускать sslh:
+ sslh может запускаться из inetd, либо как самостоятельная служба. Каждый из способов имеет свои преимущества. Если к службе в день подключаются лишь несколько человек, то лучше запускать sslh через inetd, чтобы сэкономить ресурсы.
+ .
+ С другой стороны, если подключений много, то вы наоборот, должны запускать sslh в виде самостоятельной службы, чтобы избежать создания нового процесса при каждом входящем соединении.
+Description-sv.UTF-8: Kör sslh:
+ sslh kan köras antingen som en tjänst från inetd eller som en fristående server. Endera val har sina egna fördelar. Upp till bara ett fåtal anslutningar per dag är det förmodligen bättre att köra sslh från inetd för att spara resurser.
+ .
+ Å andra sidan när antalet anslutningar är flera bör sslh köras som en fristående tjänst för att undvika startande av nya processer för varje inkommande anslutning.
+Description-vi.UTF-8: Chạy sslh:
+ Có thể chạy trình sslh hoặc từ inetd như là một dịch vụ, hoặc như là một trình phục vụ độc lập. Mỗi tùy chọn có lợi ích riêng. Có chỉ vài kết nối mỗi ngày thì rất có thể tốt hơn nếu bạn chạy sslh từ inetd để tiết kiệm tài nguyên.
+ .
+ Mặt khác, có nhiều kết nối thì nên chạy sslh như là một trình phục vụ độc lập, để tránh tạo và thực hiện một tiến trình mới cho mỗi kết nối gửi đến.

@@ -1,0 +1,108 @@
+Template: argus/startup
+Type: select
+Choices: boot, dialup, both, none
+Choices-cs.UTF-8: při zavádění, při vytáčení, oběma způsoby, nikdy
+Choices-da.UTF-8: opstart, opkald, begge, ingen
+Choices-de.UTF-8: Hochfahren, Einwahl, beides, nie
+Choices-es.UTF-8: al arrancar, al conectarse, ambas, nunca
+Choices-eu.UTF-8: sistema abiatzean, konexioan, bietan, batean ere ez
+Choices-fr.UTF-8: Au démarrage, À la connexion PPP, Au démarrage et à la connexion PPP, Pas de lancement
+Choices-gl.UTF-8: arrincar, conexión, ambos, ningún
+Choices-it.UTF-8: avvio di sistema, connessione, entrambi i casi, nessuno
+Choices-ja.UTF-8: システム起動の際, PPP接続の際, 両方, 起動させない
+Choices-nl.UTF-8: opstarten, inbellen, beide, niet
+Choices-pl.UTF-8: rozruch systemu, połączenie wdzwaniane, oba, brak
+Choices-pt.UTF-8: arranque, dialup, ambos, nenhum
+Choices-pt_BR.UTF-8: inicialização, discagem, ambos, nenhuma
+Choices-ru.UTF-8: при включении, по звонку, в обоих случаях, вручную
+Choices-sk.UTF-8: pri štarte, pri vytáčaní spojenia, v oboch prípadoch, nikdy
+Choices-sv.UTF-8: uppstart, fjärranslutning, båda, ingen
+Choices-vi.UTF-8: khởi động, quay số, cả hai, không có
+Choices-zh_CN.UTF-8: 开机启动, 拨号, 启动并拨号, 什么都不做
+Default: boot
+Description: Startup behaviour:
+ It is possible to start argus at boot time, upon initiating a PPP
+ connection, both, or never, which requires user intervention in order to
+ start argus.
+Description-cs.UTF-8: Způsob spouštění:
+ Argus je možné spouštět při zavádění systému, při spuštění PPP spojení, v obou případech nebo nikdy (spouštět jej pak musí uživatel ručně).
+Description-da.UTF-8: Opstartsopførsel:
+ Det er muligt at igangsætte argus ved opstart, ved at initiere en PPP-forbindelse, begge, eller aldrig, hvilket kræver brugerhandling for at igangsætte argus.
+Description-de.UTF-8: Startverhalten:
+ Es ist möglich, Argus beim Hochfahren des Rechners, beim Aufbau einer PPP-Verbindung, in beiden Fällen oder nie zu starten. Dann muss der Benutzer Argus selbst starten.
+Description-es.UTF-8: Opciones para el arranque:
+ Argus se puede iniciar en el arranque del sistema, al inicializar una conexión PPP, en ambas ocasiones o nunca, teniendo que intervenir el usuario para iniciar argus en esta última opción.
+Description-eu.UTF-8: Abiarazteko jokabidea:
+ Sistema abiaraztearekin batera abia daiteke argus, edo PPP konexio bat abiatzean, edo bietan, edo batean ere ez; azken kasuan erabiltzaileak berak abiarazi beharko du argus.
+Description-fr.UTF-8: Méthode de lancement :
+ Argus peut être lancé au démarrage, à l'établissement d'une connexion PPP, à l'un et l'autre ou bien jamais. Dans ce dernier cas, une action de l'utilisateur est nécessaire pour le lancer.
+Description-gl.UTF-8: Comportamento de inicio:
+ É posible iniciar argus ao arrincar o ordenador, ao iniciar unha conexión PPP, ámbolos dous, ou nunca, o que precisa de intervención manual para iniciar argus.
+Description-it.UTF-8: Comportamento all'avvio:
+ Si può avviare argus all'avvio del sistema, al momento di iniziare una connessione PPP, in entrambi i casi, o mai, ciò che richiede l'intervento dell'utente per avviare argus.
+Description-ja.UTF-8: 起動時の動作:
+ argus の起動をいつにするか選んでください。
+  * システム起動時
+  * PPP接続の初期化の間
+  * 両方
+  * 起動させない (argus の起動にはユーザの操作が必要)
+Description-nl.UTF-8: Opstartgedrag:
+ Het is mogelijk om argus te starten bij het opstarten, bij het initiëren van een PPP-verbinding, bij beide of nooit, wat gebruikersinterventie vereist om argus te starten.
+Description-pl.UTF-8: Sposób uruchamiania:
+ Program argus może być uruchamiany w czasie rozruchu systemu, w chwili zainicjowania połączenia PPP, na oba sposoby lub w ogóle. Ten ostatni wybór wymaga ręcznego uruchamiania argus przez użytkownika.
+Description-pt.UTF-8: Comportamento de arranque:
+ É possível iniciar o argus durante o arranque, após o inicio de uma ligação PPP, ambos, ou nunca, que requer a intervenção do utilizador para iniciar o argus.
+Description-pt_BR.UTF-8: Comportamento de inicialização:
+ É possível iniciar o argus na inicialização do sistema, na inicialização de uma conexão PPP, em ambos os casos, ou nunca (nenhuma), o que requer intervenção do usuário para que o argus seja iniciado.
+Description-ru.UTF-8: Способ запуска:
+ Возможно настроить argus на запуск при включении компьютера, при поднятии соединения PPP, в обоих случаях, или никогда, то есть argus будет запускаться пользователем вручную.
+Description-sk.UTF-8: Správanie pri štarte:
+ Je možné spustiť argus pri štarte, pri nadviazaní spojenia PPP, v oboch prípadoch alebo nikdy, čo by vyžadovalo na spustenie argus zásah používateľa.
+Description-sv.UTF-8: Uppstarts procedur:
+ Det är möjligt att starta argus vid uppstart, när en PPP-förbindelse kopplas upp, båda föregående eller inte alls. Väljer du 'ingen' måste du manuellt starta argus för att använda den.
+Description-vi.UTF-8: Ứng xử khởi chạy:
+ Có thể khởi chạy trình argus vào lúc khởi động máy, vào lúc thiết lập một kết nối bằng PPP, vào cả hai lúc đó, hoặc không bao giờ (thì người dùng cần phải khởi chạy argus).
+Description-zh_CN.UTF-8: 启动方式：
+ 可以在开机时启动 argus，紧接着启用 PPP 连接。取决于用户的选择，您可以选择开机启动并拨号或是两者都不选。
+
+Template: argus/overwrite_conffile
+Type: boolean
+Description: Should /etc/default/argus-server be overwritten?
+ If you select this option, the installation script will always overwrite
+ /etc/default/argus-server. Otherwise, you will manage that file yourself.
+Description-cs.UTF-8: Má se /etc/default/argus-server přepsat?
+ Vyberete-li tuto možnost, instalační skript vždy přepíše /etc/default/argus-server. V opačném případě budete soubor spravovat sami.
+Description-da.UTF-8: Skal /etc/default/argus-server overskrives?
+ Hvis du vælger denne indstilling, vil installationsskriptet altid overskrive /etc/default/argus-server. Ellers skal du håndtere filen selv.
+Description-de.UTF-8: Soll die Datei /etc/default/argus-server überschrieben werden?
+ Wenn Sie zustimmen, wird während der Installation die Datei /etc/default/argus-server prinzipiell überschrieben. Andernfalls müssen Sie die Datei selbst verwalten.
+Description-es.UTF-8: ¿Se debería sobrescribir el archivo «/etc/default/argus-server»?
+ El script de instalación siempre sobrescribirá el archivo «/etc/default/argus-server» si selecciona esta opción. Si no la selecciona, entonces usted mismo gestionará ese archivo.
+Description-eu.UTF-8: /etc/default/argus-server gainidatzi nahi duzu?
+ Aukera hau hautatzen baduzu, instalazio script-ak beti gainidatziko du /etc/default/argus-server. Bestela zuk kudeatu beharko duzu fitxategi hori.
+Description-fr.UTF-8: Faut-il écraser le fichier /etc/default/argus-server ?
+ Si vous choisissez cette option, le script d'installation réécrira systématiquement ce fichier. Dans le cas contraire, vous devrez le gérer vous-même.
+Description-gl.UTF-8: ¿Quere sobrescribir /etc/default/argus-server?
+ Se escolle esta opción, o script de instalación sempre ha sobrescribir /etc/default/argus-server. Se non, pode xestionar vostede mesmo o ficheiro.
+Description-it.UTF-8: Sovrascrivere "/etc/default/argus-server"?
+ Se si seleziona questa opzione, lo script di installazione sovrascriverà sempre "/etc/default/argus-server". In caso contrario, si dovrà gestire questo file da sé.
+Description-ja.UTF-8: /etc/default/argus-server を上書きしますか?
+ このオプションを選んだ場合、インストールスクリプトは /etc/default/argus-server を常に上書きします。それ以外の場合はファイルを手動で変更します。
+Description-nl.UTF-8: Moet /etc/default/argus-server overschreven worden?
+ Als u deze optie selecteert, dan zal het installatiescript altijd /etc/default/argus-server overschrijven. Anders zult u dit bestand zelf beheren.
+Description-pl.UTF-8: Czy /etc/default/argus-server powinien być nadpisany?
+ Jeśli wybrana zostanie opcja "tak", to skrypt instalacyjny będzie zawsze nadpisywał /etc/default/argus-server. W przeciwnym wypadku, zarządzanie plikiem pozostanie w gestii użytkownika.
+Description-pt.UTF-8: Deve o /etc/default/argus-server ser reescrito?
+ Se seleccionar esta opção o script de instalação vai sempre reescrever o /etc/default/argus-server. Caso contrário esse ficheiro será gerido por si.
+Description-pt_BR.UTF-8: O arquivo /etc/default/argus-server deve ser sobrescrito?
+ Se você selecionar esta opção, o script de instalação sempre sobrescreverá o arquivo /etc/default/argus-server. Caso contrário, você mesmo gerenciará esse arquivo.
+Description-ru.UTF-8: Перезаписывать /etc/default/argus-server?
+ Если вы ответите утвердительно, то сценарий установки будет всегда перезаписывать /etc/default/argus-server. Иначе, вам придётся управлять этим файлом самостоятельно.
+Description-sk.UTF-8: Má sa /etc/default/argus-server prepísať?
+ Ak vyberiete túto voľbu, inštalačný skript vždy prepíše /etc/default/argus-server. V opačnom prípade budete mať správu tohto súboru na starosti vy.
+Description-sv.UTF-8: Ska /etc/default/argus-server skrivas över?
+ Om du väljer denna inställning kommer installationsskriptet alltid att skriva över /etc/default/argus-server. Om inte får du hantera den filen på egen hand.
+Description-vi.UTF-8: Có nên ghi đè lên « /etc/default/argus-server » không?
+ Bật tùy chọn này thì văn lệnh cài đặt sẽ lúc nào cũng ghi đè lên tập tin « /etc/default/argus-server ». Không thì bạn tự quản lý tập tin đó.
+Description-zh_CN.UTF-8: 是否覆盖/etc/default/argus-server？
+ 如果您选择此选项，安装脚本会覆盖/etc/default/argus-server。否则，您需要自己操作此文件。

@@ -1,0 +1,267 @@
+
+Template: xawtv/makedev
+Type: boolean
+Default: true
+Description: Create video4linux (/dev/video*) special files?
+Description-cs.UTF-8: Vytvořit speciální soubory pro video4linux (/dev/video*)?
+Description-da.UTF-8: Opret video4linux (/dev/video*) enhedsfiler?
+Description-de.UTF-8: Sollen Gerätedateien (/dev/video*) für video4linux erstellt werden?
+Description-es.UTF-8: ¿Crear los ficheros especiales video4linux (/dev/video*)?
+Description-eu.UTF-8: video4linux gailu bereziak (dev/video*) sortu?
+Description-fi.UTF-8: Luodaanko video4linux-laitetiedostot (/dev/video*)?
+Description-fr.UTF-8: Faut-il créer les fichiers spéciaux video4linux (/dev/video*) ?
+Description-gl.UTF-8: ¿Crear os ficheiros especiais de video4linux (/dev/video*)?
+Description-it.UTF-8: Creare i file speciali video4linux (/dev/video*)?
+Description-ja.UTF-8: video4linux (/dev/video*) の特殊ファイルを作成しますか?
+Description-nl.UTF-8: Wilt u de 'video4linux' (/dev/video*) apparaatbestanden aanmaken?
+Description-pt.UTF-8: Criar ficheiros especiais para o video4linux·(/dev/video*)?
+Description-pt_BR.UTF-8: Criar arquivos especiais video4linux (/dev/video*)?
+Description-ru.UTF-8: Создать специальные файлы video4linux (/dev/video*)?
+Description-sv.UTF-8: Skapa video4linux (/dev/video*) specialfiler?
+Description-tr.UTF-8: "video4linux" ozel dosyaları (/dev/video*) oluşturulsun mu?
+Description-vi.UTF-8: Có tạo tập tin video4linux (/dev/video*) đặc biệt không?
+
+Template: xawtv/channel-scan
+Type: boolean
+Default: false
+Description: Scan for TV stations?
+ A list of TV stations found by scanning can be included in the
+ configuration file.
+ .
+ This requires a working bttv driver. If bttv isn't configured correctly, TV
+ stations will not be found.
+ .
+ Channel names will be retrieved from teletext information, which
+ will only work for PAL channels.
+Description-cs.UTF-8: Hledat TV stanice?
+ Seznam nalezených televizních stanic můžete přidat do konfiguračního souboru.
+ .
+ To vyžaduje funkční ovladač bttv. Pokud bttv není nastaven správně, nejspíš se žádné televizní stanice nenaleznou.
+ .
+ Názvy kanálů se zjistí z teletextu, což funguje pouze u kanálů dle normy PAL.
+Description-da.UTF-8: Skan efter TV stationer?
+ En liste over fundne TV stationer kan tilføjes konfigurationsfilen.
+ .
+ Dette kræver en fungerende bttv driver.  Hvis bttv ikke er korrekt konfigureret, så vil TV stationerne ikke blive fundet.
+ .
+ Kanalnavne vil blive hentet fra tekst-tv. Dette vil kun fungere for PAL kanaler.
+Description-de.UTF-8: Soll nach Fernsehsendern gesucht werden?
+ Es kann eine Liste von Fernsehstationen in die Konfiguration aufgenommen werden, die durch automatisches Durchsuchen ermittelt wird.
+ .
+ Dafür ist ein funktionierender BTTV-Treiber erforderlich. Falls BTTV nicht richtig eingerichtet ist, könnte kein Sender gefunden werden.
+ .
+ Die Kanalnamen werden aus den Videotextinformationen entnommen. Dies funktioniert nur für PAL-Kanäle.
+Description-es.UTF-8: ¿Buscar cadenas de televisión?
+ Se puede añadir en el fichero de configuración una lista de las cadenas de televisión encontradas durante la búsqueda.
+ .
+ Esto requiere un controlador bttv que funcione. Si éste no se ha configurado correctamente puede que no se encuentren las cadenas de televisión.
+ .
+ Los nombres de los canales se obtendrán a partir de la información de teletexto, lo cual sólo funciona con el sistema PAL.
+Description-eu.UTF-8: TV kateak bilatu?
+ Bilaketan aurkitutako telebista kateen zerrenda konfigurazio fitxategian gordeko dira.
+ .
+ Hobek egoki instalaturik dagoen bbtv kontragailu behar du. bttv ez badago behar bezala konfiguraturik telebista kateak ez dira aurkituko.
+ .
+ Kate izenak teletestu argibideetatik artzen dira, honek PAL kanaletan bakarrik funtzionatuko du.
+Description-fi.UTF-8: Etsitäänkö tv-kanavia?
+ Lista löydetyistä tv-kanavista voidaan sisällyttää asetustiedostoon.
+ .
+ Tämä vaatii toimivaa bttv-ajuria. Jos bttv:tä ei ole asetettu oikein, tv-kanavia ei löydetä.
+ .
+ Kanavien nimet haetaan teletext-tiedoista, jotka toimivat vain PAL-kanavilla.
+Description-fr.UTF-8: Faut-il rechercher des chaînes de télévision ?
+ Une liste des chaînes de télévision détectées lors de la recherche peut être incluse dans le fichier de configuration.
+ .
+ Cela nécessite un pilote fonctionnel pour bttv. Si bttv n'est pas encore configuré correctement, les chaînes de télévision ne seront sans doute pas trouvées.
+ .
+ Les noms des chaînes seront déterminés d'après le télétexte, ce qui ne fonctionnera qu'avec les chaînes à la norme PAL.
+Description-gl.UTF-8: ¿Buscar canles de TV?
+ Pódese incluír unha lista de canles de televisión atopadas tras unha busca automática.
+ .
+ Isto precisa dun controlador bttv que funcione. Se bttv non está configurado correctamente, non se ha atopar ningunha canle de televisión.
+ .
+ Os nomes das canles hanse extraer da información do teletexto, que só ha funcionar coas canles PAL.
+Description-it.UTF-8: Ricerca dei canali TV?
+ L'elenco dei canali TV trovati con la ricerca può essere inserito nel file di configurazione.
+ .
+ Per effettuare la ricerca è necessario che il driver bttv sia funzionante. Se bttv non è configurato correttamente, i canali TV non possono essere trovati.
+ .
+ I nomi dei canali verranno recuperati dalle informazioni del teletext, disponibile solo per i canali PAL.
+Description-ja.UTF-8: TV 局の一覧をスキャンしますか?
+ スキャンした TV 局一覧情報を設定ファイルに含めることができます。
+ .
+ bttv ドライバが既に動作している必要があります。まだ bttv がきちんと設定されていない場合、TV 局を見つける事ができないかもしれません。
+ .
+ videotext 情報からチャンネル名を取り出します。これは PAL でのみ動作します (日本では NTSC を利用しているので動作しません)。
+Description-nl.UTF-8: TV-zenders zoeken?
+ Als er TV-zenders gevonden worden tijdens het zoeken, dan kunnen die opgenomen worden in het configuratiebestand.
+ .
+ Dit vereist een werkend 'bttv'-stuurprogramma. Als 'bttv' niet correct is geconfigureerd zullen de zenders niet gevonden worden.
+ .
+ Er wordt gebruik gemaakt van teletekstinformatie om de zendernamen te achterhalen, maar dit werkt alleen voor PAL zenders.
+Description-pt.UTF-8: Procurar estações de TV?
+ Uma lista de estações de TV pode ser encontrada pela procura pode ser incluída no ficheiro de configuração.
+ .
+ Esta operação requer um controlador bttv funcional. Se o bttv não estiver correctamente configurado não irá encontrar estações de TV.
+ .
+ Os nomes dos canais podem ser obtidos pela informação do teletexto, o que apenas funciona para canais PAL.
+Description-ru.UTF-8: Найти ТВ-каналы?
+ Список найденных телевизионных каналов можно включить в файл конфигурации.
+ .
+ Для этого требуется работающий драйвер bttv. Если bttv настроен неправильно, то ТВ-каналы найдены не будут.
+ .
+ Названия каналов будут получены из информации телетекста, но это работает только для каналов в кодировке PAL.
+Description-sv.UTF-8: Sök efter TV-stationer?
+ En lista över TV-stationer funna genom sökning kan inkluderas i konfigurationsfilen.
+ .
+ Detta kräver en fungerande bttv-drivrutin.  Om inte bttv är konfigurerad korrekt kan inga TV-stationer hittas.
+ .
+ Kanalnamn kommer hämtas från texttvinformationen, som bara kommer fungera för PAL-kanaler.
+Description-vi.UTF-8: Có quét tìm các kênh TV không?
+ Tìm được thì danh sách các kênh TV nằm trong tập tin cấu hình.
+ .
+ Việc này cần thiết trình điều khiển bttv hoạt động. Chưa cấu hình đúng bttv thì không tìm thấy kênh TV.
+ .
+ Lấy các tên kênh từ thông tin teletext: chỉ hoạt động cho kệnh kiểu PAL.
+
+Template: xawtv/tvnorm
+Type: select
+Choices: PAL, SECAM, NTSC
+Description: TV standard:
+Description-cs.UTF-8: Televizní norma:
+Description-da.UTF-8: TV standard:
+Description-de.UTF-8: Fernsehstandard:
+Description-es.UTF-8: Sistema de televisión:
+Description-eu.UTF-8: TV estandarra:
+Description-fi.UTF-8: tv-standardi:
+Description-fr.UTF-8: Standard TV :
+Description-gl.UTF-8: Norma de TV:
+Description-it.UTF-8: Standard TV:
+Description-ja.UTF-8: TV 放送規格:
+Description-nl.UTF-8: TV standaard:
+Description-pt.UTF-8: Standard TV:
+Description-ru.UTF-8: Телевизионный стандарт:
+Description-sv.UTF-8: TV-standard:
+Description-vi.UTF-8: Tiêu chuẩn TV:
+
+Template: xawtv/build-config
+Type: boolean
+Default: false
+Description: Create a default configuration for xawtv?
+ A system-wide configuration file for xawtv can be created with reasonable
+ default values for the local country.
+ .
+ That file is not required but will simplify software configuration
+ for users.
+Description-cs.UTF-8: Vytvořit počáteční konfiguraci xawtv?
+ Můžete si nechat vytvořit systémový konfigurační soubor xawtv, který bude obsahovat rozumné hodnoty pro vaši zemi.
+ .
+ Tento soubor není vyžadován, ovšem uživatelům zjednoduší nastavení.
+Description-da.UTF-8: Opret en standard konfigurationsfil til xawtv?
+ En hovedkonfigurationsfil til xawtv kan oprettes med fornuftige standardværdier for det aktuelle land.
+ .
+ Denne fil er ikke påkrævet, men vil forenkle opsætningen for brugerne.
+Description-de.UTF-8: Soll eine Standard-Konfiguration für Xawtv erstellt werden?
+ Es kann eine systemweite Konfigurationsdatei für Xawtv erstellt werden, die vernünftige Voreinstellungen für das eigene Land enthält.
+ .
+ Diese Datei muss nicht zwingend vorhanden sein, erleichtert aber den Benutzern die Software-Konfiguration.
+Description-es.UTF-8: ¿Crear una configuración predeterminada para xawtv?
+ Puede crearse un fichero de configuración global de xawtv con valores razonables para su país.
+ .
+ Este fichero no es necesario pero simplificará la configuración del sofware por parte de los usuarios.
+Description-eu.UTF-8: xawtv-rentzat lehenetsiriko konfigurazio bat sortu?
+ Estatu lokalarentzat lehenetsiriko balio erabilgarriez sistema osorako konfigurazio fitxategi bat sortu daiteke.
+ .
+ Fitxategi hau ez da beharrezkoa baina erabiltzaileentzat software konfigurazioa erraztu dezake.
+Description-fi.UTF-8: Luodaanko xawtv:lle oletusasetukset?
+ Ohjelmalle xawtv voidaan luoda järjestelmän laajuinen asetustiedosto järkevillä oletusarvoilla tähän maahan.
+ .
+ Tiedosto ei ole välttämätön, mutta se helpottaa ohjelman käyttäjäasetusten tekemistä.
+Description-fr.UTF-8: Créer une configuration par défaut pour xawtv ?
+ Un fichier de configuration générique pour xawtv peut être créé avec des valeurs par défaut adaptées au pays dans lequel vous résidez.
+ .
+ Ce fichier n'est pas nécessaire mais simplifiera les configurations pour les utilisateurs.
+Description-gl.UTF-8: ¿Crear unha configuración por defecto para xawtv?
+ Pódese crear un ficheiro de configuración global para xawtv con valores por defecto razoables para o país.
+ .
+ Ese ficheiro non é necesario, pero ha simplificar a configuración do software para os usuarios.
+Description-it.UTF-8: Creare un file di configurazione predefinito per xawtv?
+ È possibile creare un file di configurazione per xawtv valido per l'intero sistema utilizzando i valori predefiniti per il proprio paese.
+ .
+ Non è necessario usare questo file però semplifica la configurazione del programma da parte degli utenti.
+Description-ja.UTF-8: xawtv の標準設定を作成しますか?
+ システム全体で利用する xawtv 用設定ファイルを、あなたが住んでいる国にあわせて適切な初期値で作成します。
+ .
+ このファイルは必要ではありませんが、ユーザ設定を簡単にしてくれます。
+Description-nl.UTF-8: Wilt u een standaardconfiguratie voor 'xawtv' aanmaken?
+ U kunt een systeemomvattend 'xawtv' configuratiebestand laten aanmaken met redelijke standaardwaarden voor het land waarin u verblijft.
+ .
+ Dit bestand in niet noodzakelijk, maar vergemakkelijkt het instellen van de programmatuur voor gebruikers.
+Description-pt.UTF-8: Criar uma configuração por omissão para o xawtv?
+ Pode criar um ficheiro de configuração xawtv para todo o sistema com valores por omissão razoáveis para o país onde habita .
+ .
+ Este ficheiro não é necessário, mas pode simplificar a configuração do software
+Description-ru.UTF-8: Создать конфигурацию по умолчанию для xawtv?
+ Можно создать общесистемный конфигурационный файл для xawtv с приемлемыми значениями по умолчанию для вашей страны.
+ .
+ Этот файл необязателен, но упростил бы настройку программного обеспечения для пользователей.
+Description-sv.UTF-8: Skapa en standardkonfiguration för xawtv?
+ Du kan skapa en systembred konfigurationsfil för xawtv med rimliga standardvärden för det land du bor i.
+ .
+ Den filen är inte nödvändig men kommer förenkla programvarukonfiguration för användare.
+Description-vi.UTF-8: Có tạo cấu hình mặc định cho xawtv không?
+ Có thể tạo cho xawtv một tập tin cấu hình toàn hệ thống chứa các giá trị hơi thích hợp với quốc gia đó.
+ .
+ Tập tin này không phải bắt buộc phải dùng, nhưng vẫn còn đơn giản hoá tiến trình cấu hình phần mềm cho người dùng.
+
+Template: xawtv/freqtab
+Type: select
+Choices: us-bcast, us-cable, us-cable-hrc, japan-bcast, japan-cable, europe-west, europe-east, italy, newzealand, australia, ireland, france, china-bcast
+Choices-cs.UTF-8: USA - vysílání, USA - kabel, USA - kabel-hrc, Japonsko - vysílání, Japonsko - kabel, Evropa - západ, Evropa - východ, Itálie, Nový Zéland, Austrálie, Irsko, Francie, Čína - vysílání
+Choices-da.UTF-8: us-bcast, us-kabel, us-kabel-hrc, japan-bcast, japan-kabel, europa-vest, europa-øst, italien, newzealand, australien, irland, frankrig, kina-bcast
+Choices-de.UTF-8: US-Rundfunk, US-Kabel, US-Kabel-HRC, Japan-Rundfunk, Japan-Kabel, West-Europa, Ost-Europa, Italien, Neuseeland, Australien, Irland, Frankreich, China-Rundfunk
+Choices-es.UTF-8: EE.UU. (broadcast), EE.UU. (cable), EE.UU. (cable HRC), Japón (broadcast), Japón (cable), Europa Occidental, Europa Oriental, Italia, Nueva Zelanda, Australia, Irlanda, Francia, China (broadcast)
+Choices-eu.UTF-8: us-bcast, us-cable, us-cable-hrc, japonia-bcast, japonia-cable, europa-medebaldea, europa-ekialdea, italia, zelandaberria, australia, irlanda, frantzia, txina-bcast
+Choices-fi.UTF-8: USA-antenni, USA-kaapeli, USA-kaapeli-hrc, Japani-antenni, Japani-kaapeli, Eurooppa-länsi, Eurooppa-itä, Italia, Uusi-Seelanti, Australia, Irlanti, Ranska, Kiina-antenni
+Choices-fr.UTF-8: USA hertzien, USA câble, USA câble HRC, Japon hertzien, Japon câble, europe occidentale, europe orientale, Italie, Nouvelle-Zélande, Australie, Irlande, France, Chine hertzien
+Choices-gl.UTF-8: EEUU-bcast, EEUU-cable, EEUU-cable-hrc, Xapón-bcast, Xapón-cable, Europa-oeste, Europa-leste, Italia, Nova Celandia, Australia, Irlanda, Francia, China-bcast
+Choices-it.UTF-8: stati uniti-radiodiffusione, stati uniti-via cavo, stati uniti-via cavo hrc, giappone-radiodiffusione, giappone-via cavo, europa occidentale, europa orientale, italia, nuova zelanda, australia, irlanda, francia, cina-radiodiffusione
+Choices-ja.UTF-8: アメリカ (地上波), アメリカ (ケーブルTV), アメリカ (光同軸ケーブルTV), 日本 (地上波), 日本 (ケーブルTV), ヨーロッパ西部, ヨーロッパ東部, イタリア, ニュージーランド, オーストラリア, アイルランド, フランス, 中国 (地上波)
+Choices-nl.UTF-8: VS-ether, VS-kabel, VS-kabel-hdtv, Japan-ether, Japan-kabel, West-Europa, Oost-Europa, Italië, Nieuw-Zeeland, Australië, Ierland, Frankrijk, China-ether
+Choices-pt.UTF-8: us-bcast, us-cable, us-cable-hrc, japan-bcast, japan-cable, europe-west, europe-east, itália, nova zelândia, austrália, irlanda, frança, china-bcast
+Choices-ru.UTF-8: американская эфирная (us-bcast), американская кабельная (us-cable), американская кабельная hrc (us-cable-hrc), японская эфирная (japan-bcast), японская кабельная (japan-cable), западно-европейская (europe-west), восточно-европейская (europe-east), итальянская (italy), новозеландская (newzealand), австралийская (australia), ирландская (ireland), французская (france), китайская эфирная (china-bcast)
+Choices-sv.UTF-8: us-bcast, us-cable, us-cable-hrc, japan-bcast, japan-cable, europe-west, europe-east, italy, newzealand, australia, ireland, france, china-bcast
+Choices-vi.UTF-8: Mỹ-phát_thanh, Mỹ-cáp, Mỹ-cáp-hrc, Nhật-phát_thanh, Nhật-cáp, Tây-Âu, Đông-Âu, Ý, Niu-Xi-Lan, Úc, Ai-len, Pháp, Trung-phát_thanh
+Description: Frequency table to use:
+ A frequency table is a list of TV channel names and numbers with
+ their broadcast frequencies.
+Description-cs.UTF-8: Tabulka frekvencí, která se má použít:
+ Tabulka frekvencí je seznam jmen a čísel televizních kanálů a odpovídajících vysílacích frekvencí.
+Description-da.UTF-8: Frekvenstabel der skal bruges:
+ En frekvenstabel er en liste af kanalnavne og tal med de tilhørende frekvenser.
+Description-de.UTF-8: Frequenz-Tabelle, die verwendet werden soll:
+ Eine Frequenz-Tabelle ist eine Liste der Fernsehsender (Namen und Nummern) mit dazugehörigen Sendefrequenzen.
+Description-es.UTF-8: Tabla de frecuencias a utilizar:
+ Una tabla de frecuencias es una lista de canales de televisión con sus frecuencias de emisión.
+Description-eu.UTF-8: Erabiliko den frekuentzia taula:
+ Frekuentzia taula telebista kate izen eta kanal zenbaki eta haien difusio frekuentzien zerrenda bat da.
+Description-fi.UTF-8: Käytettävä taajuustaulukko:
+ Taajuustaulukko on lista tv-kanavien nimistä ja numeroista yhdistettyinä lähetystaajuuksiin.
+Description-fr.UTF-8: Table des fréquences à utiliser :
+ Une table de fréquences consiste simplement en une liste de numéros ou de noms de chaînes, associés aux fréquences de diffusion correspondantes.
+Description-gl.UTF-8: Táboa de frecuencias a empregar:
+ Unha táboa de frecuencias é unha lista de nomes e números de canles de televisión coas súas frecuencias de emisión.
+Description-it.UTF-8: Tabella delle frequenze da usare:
+ Una tabella delle frequenze è un elenco di nomi e numeri dei canali TV associati alle frequenze su cui trasmettono.
+Description-ja.UTF-8: 利用周波数テーブル:
+ 周波数テーブルは TV チャンネルの名前・数字とチャンネルに対応する放送周波数のリストです。
+Description-nl.UTF-8: Welke frequentietabel wilt u dat er gebruikt wordt?
+ Een frequentietabel is een lijst met zendernamen en nummers, en de bijbehorende frequenties.
+Description-pt.UTF-8: Tabela de frequências a ser utilizada:
+ Uma tabela de frequências é uma lista de nomes e numeros de canais de TV e correspondentes frequências de emissão.
+Description-ru.UTF-8: Используемая таблица частот:
+ Таблица частот -- это просто список имён/номеров ТВ-каналов и соответствующих им эфирных частот.
+Description-sv.UTF-8: Frekvenstabell att använda:
+ En frekvenstabell är en lista över namn/nummer på TV-kanaler och dess respektive sändarfrekvenser.
+Description-vi.UTF-8: Bảng tần số cần dùng:
+ Bảng tần số là danh sách các tên/số kênh TV và tần số phát hành tương ứng.

@@ -81,7 +81,7 @@ include("/m23/inc/i18n/en/m23base.php");
 @$I18N_reset="Annuler";
 @$I18N_rootpassword="Mot de passe du superutilisateur &laquo;root&raquo;";
 @$I18N_save="Enregistrer";
-@$I18N_setup_client="Configurer un poste client"; //test
+@$I18N_setup_client="Configurer un poste client";
 @$I18N_setup="Configuration";
 @$I18N_should_the_client="Est-ce que le poste client";
 @$I18N_size="Taille";
@@ -90,8 +90,6 @@ include("/m23/inc/i18n/en/m23base.php");
 @$I18N_sure="Sûr";
 @$I18N_type="Type";
 @$I18N_userpassword="Mot de passe de l&apos;utilisateur";
-/*1.2*/
-
 @$I18N_waiting_jobs="Travaux à accomplir pour $poste client";
 @$I18N_yes="OUI";
 @$I18N_edit_client="Éditer le poste client";
@@ -110,6 +108,7 @@ include("/m23/inc/i18n/en/m23base.php");
 @$I18N_group_overview="Vue d&apos;ensemble des groupes";
 @$I18N_group_name="Nom de groupe";
 @$I18N_client_amount="Nombre de postes clients";
+
 @$I18N_server="Serveur";
 @$I18N_home="Page d&apos;accueil";
 @$I18N_manage_admins="Gérer les comptes administrateurs";
@@ -122,8 +121,8 @@ include("/m23/inc/i18n/en/m23base.php");
 
 @$I18N_install_plugin="Installer un plugin logiciel";
 @$I18N_plugin_overview="Vue d&apos;ensemble des plugins logiciels";
-@$I18N_cancel_discard="E = Effacer, A = Annuler l&apos;effacement";
 
+@$I18N_cancel_discard="E = Effacer, A = Annuler l&apos;effacement";
 @$I18N_package_name="Nom de paquet";
 @$I18N_version="Version";
 
@@ -179,6 +178,7 @@ include("/m23/inc/i18n/en/m23base.php");
 @$I18N_begin_with_update="Voulez-vous commencer la mise à jour?";
 @$I18N_start_update="Commencer la mise à jour";
 @$I18N_plugin_update_complete="La mise à jour du plugin logiciel est terminée";
+
 @$I18N_pkg_delete_char="E";
 @$I18N_pkg_cancel_char="A";
 @$I18N_pkg_following_packages_are_marked_for="Il y a";
@@ -215,8 +215,6 @@ include("/m23/inc/i18n/en/m23base.php");
 @$I18N_empty="vide";
 @$I18N_not_supported_filesystems="Systèmes de fichiers non supportés";
 
-
-
 @$I18N_partition_information="Informations sur le partitionnement";
 @$I18N_vendor="Fabricant";
 @$I18N_name="Nom";
@@ -238,12 +236,10 @@ include("/m23/inc/i18n/en/m23base.php");
 @$I18N_internal_connection_category="Type de connexion interne";
 @$I18N_external_connection_category="Type de connexion externe";
 
-
 @$I18N_added_to_package_selection="$count paquets ont été ajoutés à la combinaison de paquets $selectionName";
 @$I18N_jobs_added="Les travaux ont été ajoutés";
 @$I18N_installation_complete="L&apos;installation est terminée";
 @$I18N_marked_for_deletion="Sélectionné pour l&apos;effacement";
-
 @$I18N_help="Aide";
 @$I18N_help_could_not_open_help_file="Le fichier d&apos;aide: $helpfile ne peut pas être ouvert";
 
@@ -257,14 +253,11 @@ include("/m23/inc/i18n/en/m23base.php");
 @$I18N_delete_partitions="Effacer des partitions";
 @$I18N_format_partitions="Formater les partitions";
 @$I18N_select_installation_partitions="Choisir la destination de l&apos;installation";
-
 @$I18N_extPartStep1AddPart="Étape suivante (Créer une partition)";
 @$I18N_extPartStep2FormartPart="Étape suivante (Formater les partitions)";
 @$I18N_extPartStep3InstallDest="Étape suivante (Choisir la destination de l&apos;installation)";
-
 @$I18N_no_space_in_range="Une nouvelle partition ne peut être créée dans l&apos;interval choisi. Corrigez les valeurs de début et de fin de votre partition, puis essayez &agrav; nouveau.";
 @$I18N_no_filesystem="aucun système de fichiers";
-
 @$I18N_error_4_pri="4 partitions &laquo;primaires&raquo; existent déja sur votre poste client. &Ccedil;a veut dire qu&apos;aucune partition supplémentaire ne peut être créée. Pour pouvoir créer des partitions supplémentaires, effacez la dernière partition &laquo;primaire&raquo;, puis créez à sa place une partition &laquo;étendue&raquo;. Vous pourrez ensuite créer des partitions &laquo;logiques&raquo; supplémentaires.";
 @$I18N_error_3_pri_1_ext_part="Vous ne pouvez pas créer de partitions &laquo;primaires&raquo; supplémentaires. Si vous avez besoin de plus de partitions, créez à la place des partitions &laquo;logiques&raquo;.";
 @$I18N_error_0_ext_add_log="Vous ne pouvez pas créer une partition &laquo;logique&raquo; parce qu'il n'y a pas de partition &laquo;étendue&raquo;.";
@@ -284,7 +277,9 @@ include("/m23/inc/i18n/en/m23base.php");
 @$I18N_update_information_url="Adresse des informations pour la mise à jour:";
 @$I18N_fetch_update_information="Télécharger les informations pour la mise à jour";
 @$I18N_update_information="Informations pour la mise à jour";
+
 @$I18N_update_server="Mettre à jour le serveur";
+
 @$I18N_manual="Manuel";
 
 //1.2
@@ -331,14 +326,12 @@ include("/m23/inc/i18n/en/m23base.php");
 @$I18N_half_installed="!Installation incomplète!";
 @$I18N_preselected="Préselectionné";
 @$I18N_client_start_rescue="Le système d&apos;urgence du poste client a été lancé";
-@$I18N_change_client_status="Changer l&apos;état du poste client";
 
 //1.4
 @$I18N_report_a_bug="Rapporter une erreur";
 @$I18N_sourceslist_update_error="L&apos;erreur suivante s&apos;est produite pendant la mise à jour de la source de paquets:";
 @$I18N_packageProxy="Serveur proxy des paquets";
 @$I18N_packageProxyIncorrectIP="Erreur dans l&apos;adresse IP du serveur proxy des paquets";
-
 
 //1.5
 @$I18N_updateClient="Mettre à jour le poste client";
@@ -351,6 +344,7 @@ include("/m23/inc/i18n/en/m23base.php");
 @$I18N_repairCriticalStatus="Réparer l&apos;état critique";
 @$I18N_solutionProposal="Proposition de solution";
 @$I18N_repair="Réparer";
+@$I18N_change_client_status="Changer l&apos;état du poste client";
 @$I18N_netRootPwd="Mot de passe du superutilisateur root pour l&apos;image d&apos;amor&ccedil;age";
 @$I18N_change_debug_status="Changer l&apos;état de débogage";
 @$I18N_activate="Activer";
@@ -1193,8 +1187,6 @@ Attention: Si le nom de l&apos;utilisateur et son mot de passe sont encore enreg
 @$I18N_SSLCertCheckEnabled = 'Vérification des certificats SSL activée';
 @$I18N_disableSudoRootLogin = 'Désactiver les connexions root via sudo pour les utilisateurs normaux';
 
-
-
 //14.1
 @$I18N_forenameInvalidOrEmpty = 'Le prénom est vide ou contient des caractères invalides';
 @$I18N_familynameInvalid = 'Le nom contient des caractères invalides';
@@ -1339,4 +1331,14 @@ Attention: Si le nom de l&apos;utilisateur et son mot de passe sont encore enreg
 @$I18N_disabled = 'Désactivé';
 @$I18N_saveAndActivate = 'Sauvegarder et activer';
 @$I18N_firewallRulesDeactivated = 'Les règles du Pare-feu ont été désactivées';
+
+//16.1
+@$I18N_readLoginFromUCSLDAP = "Lecture des données d'identification UCS";
+@$I18N_addNewLoginToUCSLDAP = "Sauvegarde des données d'identification sur UCS";
+@$I18N_authentificationViaUCS = "Authentification via UCS";
+@$I18N_addNewLoginToUCSLDAPError = "Erreur: Les données d'identification ne peuvent être sauvegardées sur UCS.";
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(Peuvent être utilisées par les clients basés sur Debian 8, Ubuntu 14.04, 16.04 et Linux Mint 17.x)';
+
+//16.2
+@$I18N_clientUsesDynamicIP = "Le poste client utilise une adresse IP dynamique (DHCP)";
 ?>

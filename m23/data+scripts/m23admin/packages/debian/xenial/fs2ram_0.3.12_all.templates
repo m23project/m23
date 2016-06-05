@@ -1,0 +1,152 @@
+Template: fs2ram/main_install_type
+Type: select
+Choices: Content-preserving, Structure-preserving, Unconfigured
+Choices-cs.UTF-8: Zachovávání obsahu, Zachovávání struktury, Nenastaveno
+Choices-da.UTF-8: Indholdsbevarende, Strukturbevarende, Ikke konfigureret
+Choices-de.UTF-8: Inhalt erhalten, Struktur erhalten, nicht konfigurieren
+Choices-es.UTF-8: Preservando contenido, Preservando estructura, No configurado
+Choices-fr.UTF-8: Préservation du contenu, Préservation de la structure, Non configuré
+Choices-it.UTF-8: Conservazione dei contenuti, Conservazione della struttura, Non configurato
+Choices-pl.UTF-8: Zachowująca zawartość, Zachowująca strukturę, Nieskonfigurowana
+Choices-pt.UTF-8: Manter Conteúdo, Manter Estrutura, Não configurado
+Choices-ru.UTF-8: С сохранением содержимого, С сохранением структуры, Не настраивать
+Choices-sk.UTF-8: Zachovanie obsahu, Zachovanie štrukúry, Nenakonfigurované
+Choices-sv.UTF-8: Behåll-innehåll, Behåll-struktur, Okonfigurerat
+Default: Content-preserving
+Description: Configuration for fs2ram:
+ Please select the fs2ram configuration that best meets your needs.
+ .
+  * Content-preserving: /var/tmp, /var/cache, and /var/log will be in 
+    RAM, reducing writes to the hard drive, and fs2ram will preserve the
+    contents of these file systems across reboots.
+  * Structure-preserving: /var/tmp, /var/cache, and /var/log will be in
+    RAM, but fs2ram will only preserve their directory structures across
+    reboots, not their (potentially private) contents.
+  * Unconfigured: the fs2ram configuration file will be left empty and
+    must be filled manually.
+Description-cs.UTF-8: Nastavení pro fs2ram:
+ Vyberte si prosím nastavení fs2ram, které nejlépe odpovídá vašim potřebám.
+ .
+  * Zachovávání obsahu: /var/tmp, /var/cache a /var/log budou v RAM,
+    což snižuje zapisování na pevný disk, fs2ram zachová obsah těchto
+    souborových systémů navzdory restartům počítače.
+  * Zachovávání struktury: /var/tmp, /var/cache a /var/log budou v RAM,
+    fs2ram však zachová pouze jejich adresářovou strukturu navzdory
+    restartům počítače, ne jejich (možný osobní) obsah.
+  * Nenastaveno: konfigurační soubory pro fs2ram budou ponechány prázdné
+    a bude nutné je doplnit ručně.
+Description-da.UTF-8: Konfiguration for fs2ram:
+ Vælg venligst konfigurationen for fs2ram som bedst opfylder dine behov.
+ .
+  * Indholdsbevarende: /var/tmp, /var/cache og /var/log vil være i
+    RAM, reducerende skrivninger til harddisken, og fs2ram vil bevare
+    indholdet af disse filsystemer ved genstarter.
+  * Strukturbevarende: /var/tmp, /var/cache og /var/log vil være i
+    RAM, men fs2ram vil kun bevare deres mappestrukturer ved
+    genstarter, ikke deres (potentielt privat) indhold.
+  * Ikke konfigureret: Konfigurationsfilen for fs2ram vil blive efterladt
+    tom og skal udfyldes manuelt.
+Description-de.UTF-8: Konfiguration für fs2ram:
+ Bitte wählen Sie diejenige Konfiguration für fs2ram, die am besten Ihren Bedürfnissen entspricht.
+ .
+  * Inhalt erhalten: /var/tmp, /var/cache und /var/log werden im RAM
+    gehalten, was Schreibzugriffe auf die Festplatte verringert, und
+    fs2ram bewahrt die Inhalte dieser Dateisysteme über Neustarts hinweg.
+  * Struktur erhalten: /var/tmp, /var/cache und /var/log werden im RAM
+    gehalten, aber fs2ram bewahrt nur ihre Verzeichnisstrukturen zwischen
+    Neustarts, nicht deren (möglicherweise privaten) Inhalte.
+  * Nicht konfigurieren: die Konfigurationsdatei für fs2ram wird leer
+    belassen und muss von Hand ausgefüllt werden.
+Description-es.UTF-8: Configuración para fs2ram:
+ Seleccione la configuración de fs2ram que mejor se adapte a sus necesidades.
+ .
+  * Preservando contenido: se mantendrán «/var/tmp», «/var/cache», y «/var/log»
+    en RAM, reduciendo el número de escrituras en el disco duro, y fs2ram 
+    preservará los contenidos de estos sistemas de ficheros entre cada
+    reinicio del sistema.
+  * Preservando estructura: se mantendrán /var/tmp, /var/cache, y /var/log en
+    RAM, pero fs2ram sólo preservará la estructura de directorios entre
+    cada reinicio del sistema y no sus contenidos (potencialmente privados).
+  * No configurado: el archivo de configuración de fs2ram se dejará vacío y
+    deberá rellenarse manualmente.
+Description-fr.UTF-8: Configuration pour fs2ram : 
+ Veuillez choisir la configuration fs2ram la plus adaptée à vos besoins.
+ .
+  - Préservation du contenu : /var/tmp, /var/cache, et /var/log seront chargés
+    en mémoire vive (RAM), ce qui réduira les écritures sur le disque dur, et
+    fs2ram rendra persistant le contenu de ces fichiers après redémarrage.
+  - Préservation de la structure : /var/tmp, /var/cache, et /var/log seront
+    chargés en mémoire vive (RAM), mais fs2ram ne conservera que la structure
+    des répertoires après le redémarrage de la machine, mais pas leur contenu
+    (qui peut être confidentiel).
+  - Non configuré : le fichier de configuration de fs2ram restera vide et
+    devra être complété manuellement.
+Description-it.UTF-8: Configurazione per fs2ram:
+ Selezionare la configurazione di fs2ram che meglio soddisfa le proprie esigenze.
+ .
+  * Conservazione dei contenuti: /var/tmp, /var/cache e /var/log saranno in RAM,
+    riducendo le scritture sul disco fisso e fs2ram preserverà i contenuti di
+    questi file system da un riavvio all'altro.
+  * Conservazione della struttura: /var/tmp, /var/cache e/var/log saranno in RAM,
+    ma fs2ram preserverà solo la loro struttura delle directory tra un riavvio e
+    un altro, non i loro contenuti (potenzialmente privati).
+  * Nessuna configurazione: il file di configurazione di fs2ram verrà lasciato vuoto e
+    dovrà essere compilato a mano.
+Description-pl.UTF-8: Konfiguracja fs2ram:
+ Proszę wybrać konfigurację fs2ram, która najlepiej pasuje do potrzeb użytkownika.
+ .
+  * Zachowująca zawartość: /var/tmp, /var/cache i /var/log będą w RAM-ie,
+    redukując zapis na dysk twardy, a fs2ram będzie przechowywał ich
+    zawartość między kolejnymi uruchomieniami komputera
+  * Zachowująca strukturę: /var/tmp, /var/cache i  /var/log będą w RAM-ie
+    lecz fs2ram będzie zachowywał jedynie ich strukturę katalogów
+    pomiędzy kolejnymi uruchomieniami, nie ich (potencjalnie prywatną)
+    zawartość
+  * Nieskonfigurowana: plik konfiguracyjny fs2ram pozostanie pusty
+    i będzie musiał być wypełniony ręcznie.
+Description-pt.UTF-8: Configuração para o fs2ram:
+ Escolha por favor a configuração do fs2ram que melhor lhe convém.
+ .
+  * Manter Conteúdo: /var/tmp, /var/cache, e /var/log estarão em RAM,
+    reduzindo as escritas no disco, e o fs2ram irá manter o conteúdo
+    destes sistemas de ficheiros entre reboots.
+  * Manter Estrutura: /var/tmp, /var/cache, e /var/log estarão em RAM,
+    mas o fs2ram apenas irá manter a estrutura dos directórios entre
+    reboots, não o seu conteúdo (potenciamente privado).
+  * Não configurado: o ficheiro de configuração do fs2ram ficará vazio
+    e terá que ser preenchido manualmente.
+Description-ru.UTF-8: Конфигурация fs2ram:
+ Выберите конфигурацию fs2ram, которая лучше подходит для ваших задач.
+ .
+  * С сохранением содержимого: /var/tmp, /var/cache и /var/log будут
+    находиться в RAM, сокращается количество операций записи на
+    жёсткий диск, fs2ram сохранит содержимое этих файловых
+    систем между перезагрузками.
+  * С сохранением структуры: /var/tmp, /var/cache и /var/log будут
+    находиться в RAM, но fs2ram сохранит между перезагрузками только
+    структуру каталогов, но не их содержимое (возможно, важное для вас).
+  * Не настраивать: файл настройки fs2ram будет пустым и
+    его нужно заполнить вручную.
+Description-sk.UTF-8: Konfigurácia fs2ram:
+ Prosím, vyberte konfiguráciu fs2ram, ktorá najlepšie vyhovuje vašim potrebám.
+ .
+  * Zachovanie obsahu: /var/tmp, /var/cache a /var/log budú v RAM, čím
+    sa zníži počet zápisov na pevný disk a fs2ram zachová obsah týchto
+    súborov aj po reštarte.
+  * Zachovanie štrukúry: /var/tmp, /var/cache a /var/log budú v RAM, ale
+    fs2ram zachová po reštarte iba ich adresárové štruktúry, nie ich
+    obsah (ktorý môže potenciálne byť súkromný).
+  * Nenakonfigurované: konfiguračný súbor fs2ram sa ponechá prázdny a
+    bude potrebné ho vyplniť ručne.
+Description-sv.UTF-8: Inställningar för fs2ram:
+ Välj den fs2ram-inställning som motsvarar dina behov.
+ .
+  * Behåll-innehåll: /var/tmp, /var/cache och /var/log placeras i RAM
+    vilket undviker skrivningar till hårddisken och fs2ram behåller
+    innehållet även när systemet startar om.
+  * Behåll-struktur: /var/tmp, /var/cache och /var/log placeras i RAM
+    men fs2ram kommer bara att behålla katalogstrukturen när
+    systemet startar om, eventuellt innehåll förloras.
+  * Okonfigurerat: inställningarna för fs2ram lämnas tomt och måste
+    justeras manuellt.
+

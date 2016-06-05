@@ -1,0 +1,175 @@
+Template: distmp3/start-on-boot
+Type: boolean
+Description: Would you like to start distmp3host at boot time?
+ distmp3host, if started at boot time, will accept encoder connections
+ until manually stopped or shutdown is initiated.
+Description-cs.UTF-8: Chcete spustit distmp3host při zavádění?
+ Pokud se distmp3host spustí při zavádění, bude přijímat spojení do doby, než jej ručně vypnete, nebo dokud nevypnete systém.
+Description-da.UTF-8: Ønsker du at igangsætte distmp3host ved opstart?
+ distmp3host, hvis igangsat ved opstart, vil acceptere indkoderforbindelser indtil manuelt stoppet eller nedlukning igangsættes.
+Description-de.UTF-8: Soll distmp3host beim Hochfahren gestartet werden?
+ Wenn distmp3host beim Hochfahren gestartet wurde, nimmt er Encoder-Verbindungen an, bis er manuell gestoppt oder der Rechner heruntergefahren wird.
+Description-es.UTF-8: ¿Le gustaría arrancar distmp3host en el inicio del sistema?
+ Si distmp3host se arranca en el inicio del sistema aceptará conexiones de codificadores hasta que se pare de forma manual o se inicie el script de apagado del sistema.
+Description-fr.UTF-8: Faut-il lancer distmp3host au démarrage du système ?
+ S'il est lancé au démarrage du système, distmp3host acceptera les connexions de l'encodeur jusqu'à ce qu'il soit interrompu, manuellement ou par l'arrêt du système.
+Description-it.UTF-8: Lanciare distmp3host all'avvio?
+ Se lanciato all'avvio, distmp3host accetta le connessioni per la codifica fino a che non viene fermato manualmente o non viene iniziato lo spegnimento.
+Description-ja.UTF-8: システム起動時に distmp3host を開始しますか?
+ distmp3host を起動時に開始すると、手動で停止するかシャットダウンが行われるまでエンコーダーへの接続が許可されます。
+Description-nl.UTF-8: Wilt u distmp3host starten bij het opstarten van het systeem?
+ distmp3host zal, als het bij het opstarten van het systeem wordt gestart, codeerverbindingen accepteren totdat die handmatig wordt gestopt.
+Description-pl.UTF-8: Czy distmp3host ma być uruchamiany w czasie rozruchu?
+ Jeśli distmp3host zostanie uruchomiony w czasie rozruchu, to będzie akceptował połączenia dotyczące kodowania, dopóki nie zostanie ręcznie zatrzymany lub nie zostanie zainicjowane wyłączenie systemu.
+Description-pt.UTF-8: Gostaria de inicializar o distmp3host aquando do início do computador?
+ Se distmp3host for inicializado aquando do carregamento, vai aceitar ligações do encoder até que seja parado manualmente ou incializado o encerramento do computador.
+Description-pt_BR.UTF-8: Você gostaria de iniciar distmp3host durante a inicialização?
+ distmp3host, se iniciado durante a inicialização, vai aceitar conexões de "encoder" até que seja manualmente parado ou que o processo de desligamento seja iniciado.
+Description-ru.UTF-8: Запускать distmp3host во время загрузки машины?
+ После запуска distmp3host во время загрузки машины, он принимает соединения от кодировщика до тех пор, пока не будет остановлен вручную или не начнётся процесс выключения машины.
+Description-sk.UTF-8: Chcete aby bol distmp3host spúšťaný pri štarte systému?
+ distmp3host, ak je spúšťaný pri štarte systému, bude prijímať spojenia kódera, až kým nebude manuálne zastavený alebo nebude inicializované vypnutie.
+Description-sv.UTF-8: Vill du starta distmp3host vid systemet uppstart?
+ Om distmp3host startas vid systemets uppstart och kommer att acceptera anslutningar från kodare tills den manuellt stoppas eller systemet stängs av.
+Description-vi.UTF-8: Bạn có muốn khởi chạy trình distmp3host khi khởi động máy không?
+ Nếu bạn khởi chạy trình distmp3host khi khởi động máy, nó sẽ chấp nhận mọi sự kết nối mã hóa cho đến khi bị ngừng thủ công, hoặc khi tắt máy.
+
+Template: distmp3/nice-level
+Type: string
+Default: 15
+Description: What nice level should distmp3host use by default?
+ distmp3host is meant to be a system service like any other. Hence, it
+ should let other services take precedence, and it is suggested to
+ 'renice' distmp3host when starting it so that other tasks get priority.
+ The default of 15 should be adequate for most situations.
+ Nice values range from 19 (least priority) to -20 (most priority.)
+ .
+ If you would not like to renice distmp3, enter a blank line.
+Description-cs.UTF-8: Jakou úroveň nice má distmp3host používat implicitně?
+ distmp3host se má chovat jako každá jiná systémová služba a proto by měla spíše upřednostňovat ostatní služby, než sebe sama. Doporučujeme při startu nastavit hodnotu nice procesu distmp3host tak, aby měla nižší prioritu, než ostatní procesy. Výchozí hodnota 15 by měla být vhodná pro většinu situací. Nice může nabývat hodnoty z rozsahu 19 (nejmenší priorita) až -20 (největší priorita).
+ .
+ Jestliže nechcete měnit hodnotu nice, ponechte pole prázdné.
+Description-da.UTF-8: Hvilket nice-niveau skal distmp3host bruge som standard?
+ Det er meningen at distmp3host skal være en systemtjeneste som enhver anden. Den skal derfor lade andre tjenester få forrang, og det foreslås at »renice« distmp3host når den startes, så at andre opgaver får prioritet. Standarden på 15 bør være passende for de fleste situationer. Nice-værdier går fra 19 (mindste prioritet) til -20 (højeste prioritet).
+ .
+ Hvis du ikke ønsker at renice distmp3, så indtast en blank linje.
+Description-de.UTF-8: Welche nice-Stufe soll distmp3host standardmäßig verwenden?
+ Distmp3host ist als Systemdienst gedacht, wie jeder andere. Deshalb sollte er auch anderen Diensten den Vortritt lassen und es wird empfohlen, mit 'renice' nach dem Start von distmp3host dafür zu sorgen, dass andere Prozesse zum Zug kommen. Der Standardwert von 15 sollte meistens ausreichen. Nice-Werte reichen von 19 (geringste Priorität) bis -20 (höchste Priorität).
+ .
+ Wenn Sie 'renice' nicht nutzen wollen, lassen Sie die Zeile leer.
+Description-es.UTF-8: ¿Qué nivel «nice» debería utilizar distmp3host por omisión?
+ distmp3host está pensado para ser un servicio de sistema como cualquier otro. Por esto debería ceder la prioridad a otros servicios y, por lo tanto, se recomienda dar un nuevo valor «nice» a distmp3host cuando se inicia para que otras tareas puedan ganar prioridad. El valor por omisión 15 debería ser adecuado para la mayoría de las situaciones. El rango de los valores «nice» van desde 19 (menor prioridad) hasta -20 (mayor prioridad).
+ .
+ Si prefiere no cambiar el valor «nice» de distmp3, introduzca una línea en blanco.
+Description-fr.UTF-8: Niveau de politesse par défaut de distmp3host :
+ Distmp3host est conçu pour être un service système classique. Par conséquent, il doit laisser les autres services prendre la main s'ils en ont besoin. Il est recommandé de changer la valeur de politesse (« nice ») au démarrage de distmp3host afin que les autres tâches soient prioritaires. La valeur par défaut de 15 est adaptée la plupart du temps. Les valeurs de politesse vont de 19 (priorité minimale) à -20 (priorité maximale).
+ .
+ Si vous ne souhaitez pas changer la priorité de distmp3host, laissez la ligne vide.
+Description-it.UTF-8: Quale livello di nice deve usare distmp3host in modo predefinito?
+ distmp3host è pensato per essere un servizio di sistema come ogni altro. Pertanto dovrebbe lasciare che altri servizi abbiano la precedenza e viene suggerito di usare "renice" su distmp3host quando lo si avvia, in modo che altri compiti ottengano la priorità. Il valore predefinito, 15, dovrebbe essere adeguato per la maggior parte delle situazioni. I valori di nice vanno da 19 (priorità minore) a -20 (priorità massima). 
+ .
+ Se non si desidera cambiare il valore di nice di distmp3, inserire una riga vuota.
+Description-ja.UTF-8: 標準で distmp3host が使う nice レベルは何ですか?
+ distmp3host は他同様にシステムサービスとして動作します。従って、他のサービスを優先させる方がよく、他のタスクを優先するためには distmp3host の開始時に 'renice' するのが推奨されています。大抵の場合、標準の 15 が適切でしょう。nice 値は 19 (もっとも優先度が低い) から -20 (最も優先度が高い) までの範囲です。
+ .
+ distmp3 を renice したくない場合は、空行を入力してください。
+Description-nl.UTF-8: Welk 'nice'-niveau moet distmp3host standaard gebruiken?
+ distmp3host is een systeemdienst zoals alle andere. Dus moet het andere diensten laten voorgaan, en is het aangeraden om distmp3host te 'renicen' wanneer het wordt gestart zodat andere taken prioriteit krijgen. In de meeste gevallen moet de standaard 15 volstaan. 'Nice'-waarden bevinden zich in het bereik 19 (laagste prioriteit) tot -20 (hoogste prioriteit).
+ .
+ Als u distmp3 niet wilt 'renicen', geef dan een lege regel in.
+Description-pl.UTF-8: Jakiego poziomu nice ma domyślnie używać distmp3host?
+ distmp3host został zaprojektowany jako zwykła usługa systemowa. Z tego powodu powinien udzielić innym usługom pierwszeństwa; tak więc zaleca się wykonanie "renice" na uruchamiającym się programie distmp3host. Domyślny poziom 15 powinien być odpowiedni w większości zastosowań. Wartości nice zawierają się w granicach od 19 (najniższy priorytet) do -20 (najwyższy priorytet).
+ .
+ Aby nie wykonywać renice distmp3, proszę pozostawić pole puste.
+Description-pt.UTF-8: Que valor de nice gostaria que o distmp3host use por omissão?
+ distmp3host é suposto ser um serviço de sistema como qualquer outro. Portanto, deve deixar outros serviços ter precedencia, e é sugerido que se redefina a prioridade do distmp3host quando se inicia de forma a que outras tarefas tenham prioridade. O valor por omissão de 15 deve ser adequado para a maioria das situações. Valores satisfatórios variam entre 19 (menos prioritário) e -20 (mais prioritário).
+ .
+ Se não gostaria de redefinir a prioridade do distmp3, introduza uma linha em branco.
+Description-pt_BR.UTF-8: Qual nível "nice" deveria ser usado por padrão para distmp3host?
+ distmp3host pretende ser um serviço de sistema como outro qualquer. Portanto, deveria deixar que outros serviços tenham precedência, e é sugerido fazer 'renice' do distmp3host ao iniciá-lo assim outras tarefas terão prioridade. O valor padrão 15 deveria ser adequado para a maioria das situações. O intervalo dos valores de "nice" vai de 19 (prioridade mínima) até -20 (prioridade máxima).
+ .
+ Se você não gostaria de fazer 'renice' do distmp3, informe uma linha em branco.
+Description-ru.UTF-8: Уровень приоритета (nice level) по умолчанию для distmp3host
+ distmp3host является обычной системной службой. Поэтому он должен позволять другим службам иметь больший приоритет, и для это предлагается делать 'renice' (изменение приоритета) для distmp3host во время запуска. Значение по умолчанию 15 подходит в большинстве случаев. Значения лежат в диапазоне от 19 (наименьший приоритет) до -20 (наибольший приоритет).
+ .
+ Если вы не хотите изменять приоритет, то ничего не вводите.
+Description-sk.UTF-8: Akú úroveň priority (nice) má distmp3host predvolene použiť?
+ distmp3host je zamýšľaný ako systémová služba, ako každá iná. Preto musí dovoliť ostatným službám získať prednosť, a je odporúčané zmeniť prioritu (renice) distmp3host pri jeho štarte tak, aby ostatné služby dostali prednosť. Predvolená hodnota 15 by mala byť vhodná vo väčšine prípadov. Hodnoty priority majú rozsah od 19 (najnižšia priorita) po -20 (najvyššia priorita).
+ .
+ Ak nechcete meniť prioritu distmp3, zadajte prázdny riadok.
+Description-sv.UTF-8: Vilken förvald prioritetsnivå för "nice" ska distmp3host använda?
+ distmp3host är menad att vara en systemtjänst precis som alla andra. Därför bör den låta andra tjänster ta systemresurser och de behöver och det föreslås att använda "renice" för distmp3host när den startar så att andra uppgifter får prioritet. Standardvärdet är 15 som bör passa för de flesta situationerna. Prioritetsnivåer sträcker sig från 19 (minst prioritet) till -20 (mest prioritet).
+ .
+ Om du inte vill ändra prioritet för distmp3, ange en blank rad.
+Description-vi.UTF-8: Trình distmp3host sẽ dùng độ ưu tiên truy cập tiềm năng hệ thống nào theo mặc định?
+ Trình distmp3host nên là một dịch vụ hệ thống, thì nên cho phép dịch vụ hệ thống khác có ưu tiên cao hơn. Vì vậy, đệ nghị bạn lập độ ưu tiên 15, để cho phép một số dịch vụ hệ thống khác truy cập tiềm năng hệ thống nhiều hơn. Giá trị ưu tiên truy cập tiềm năng hệ thống (nice value) có trong phạm vị 19 (ưu tiên thấp nhất) đến -20 (ưu tiên cao nhất).
+ .
+ Nếu bạn không muốn lập giá trị ưu tiên vào đây, hãy nhập một dòng rỗng.
+
+Template: distmp3/bad-nice-level
+Type: note
+Description: Invalid nice value!
+ The nice value you specified is not blank, nor is it a valid nice
+ value. Nice values range from 19 (least priority) to -20 (most priority.)
+ .
+ Please try again.
+Description-cs.UTF-8: Neplatná hodnota nice!
+ Zadaná hodnota nice není ani prázdná, ani platná. Nice může nabývat hodnot od 19 (nejmenší priorita) až po -20 (nejvyšší priorita).
+ .
+ Zkuste to prosím znovu.
+Description-da.UTF-8: Ugyldig nice-værdi!
+ Nice-værdien du angav er ikke blank, og det er heller ikke en gyldig nice-værdi. Nice-værdier går fra 19 (mindste prioritet) til -20 (højeste prioritet).
+ .
+ Prøv igen.
+Description-de.UTF-8: Ungültiger nice-Wert!
+ Der nice-Wert, den Sie eingegeben haben, ist weder leer noch ein gültiger nice-Wert. Geben Sie eine Zahl zwischen 19 (geringste Priorität) und -20 (höchste Priorität) ein.
+ .
+ Bitte noch einmal.
+Description-es.UTF-8: ¡Valor «nice» inválido!
+ El valor «nice» que ha especificado no está en blanco, o no es un valor «nice» válido.  El rango de los valores «nice» van desde 19 (menor prioridad) hasta -20 (mayor prioridad).
+ .
+ Por favor, inténtelo de nuevo.
+Description-fr.UTF-8: Valeur de politesse incorrecte
+ La valeur que vous avez entrée pour la politesse n'est pas valable. Elle doit être comprise entre 19 (priorité minimale) et -20 (priorité maximale).
+ .
+ Veuillez choisir une valeur dans cet intervalle.
+Description-it.UTF-8: Valore di nice non valido.
+ Il valore di nice specificato non è vuoto, né è un valore di nice valido. I valori di nice vanno da 19 (priorità minore) a -20 (priorità massima).
+ .
+ Riprovare.
+Description-ja.UTF-8: nice の値が正しくありません!
+ 指定された nice 値は空でなく、正しい値ではありません。nice 値は 19 (もっとも優先度が低い) から -20 (最も優先度が高い) までの範囲です。
+ .
+ もう一度設定してください。
+Description-nl.UTF-8: Ongeldige 'nice'-waarde!
+ De 'nice'-waarde die u hebt aangegeven is niet blanco, noch is het een geldige 'nice'-waarde. 'Nice'-waarden bevinden zich in het bereik 19 (laagste prioriteit) tot -20 (hoogste prioriteit).
+ .
+ Probeer opnieuw.
+Description-pl.UTF-8: Nieprawidłowa wartość nice!
+ Podana wartość nice nie jest pusta, nie jest też prawidłową wartością. Zakres wartości nice to od 19 (najwyższy priorytet) do -20 (najwyższy priorytet).
+ .
+ Proszę spróbować ponownie.
+Description-pt.UTF-8: Valor satisfatório inválido!
+ O valor satisfatório que especificou nem é nulo, nem é um valor satiafatório válido. Valores satisfatórios variam entre 19 (menos prioritário) e -20 (mais prioritário).
+ .
+ Por favor, tente de novo.
+Description-pt_BR.UTF-8: Valor de "nice" inválido!
+ O valor de "nice" que você especificou não está em branco, nem é um valor de "nice" válido. O intervalo dos valores de "nice" vai de 19 (prioridade mínima) até -20 (prioridade máxima).
+ .
+ Por favor, tente novamente.
+Description-ru.UTF-8: Недопустимое значение уровня!
+ Указанное значение уровня не пустое, но содержит недопустимое значение. Значение должно находится в диапазоне от 19 (наименьший приоритет) до -20 (наибольший приоритет).
+ .
+ Попробуйте ещё раз.
+Description-sk.UTF-8: Neplatná hodnoty priority!
+ Hodnota priority, ktorú ste zadali nie je prázdna, ani to nie je platná hodnota priority. Hodnoty priority majú rozsah od 19 (najnižšia priorita) po -20 (najvyššia priorita).
+ .
+ Prosím, skúste znova.
+Description-sv.UTF-8: Ogiltigt prioritetsvärde för "nice"
+ Prioritetsvärdet för "nice" du angav var inte blankt, heller inte ett giltigt värde. Prioritetsvärden sträcker sig från 19 (minst prioritet) till -20 (mest prioritet).
+ .
+ Försök igen.
+Description-vi.UTF-8: • Giá trị ưu tiên không hợp lệ. •
+ Bạn đã nhập một điều không phải rỗng nhưng mà không phải là một giá trị ưu tiên truy cập tiềm năng hệ thống (nice) hợp lệ.  Giá trị ưu tiên loại này có trong phạm vị 19 (ưu tiên thấp nhất) đến -20 (ưu tiên cao nhất).
+ .
+ Hãy thử lại.

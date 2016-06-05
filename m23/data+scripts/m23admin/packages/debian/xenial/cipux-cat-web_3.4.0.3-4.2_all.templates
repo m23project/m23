@@ -1,0 +1,118 @@
+
+Template: cipux-cat-web/reconfigure-webserver
+Type: multiselect
+Choices: apache2, lighttpd
+Choices-ar.UTF-8: apache2, lighttpd
+Choices-cs.UTF-8: apache2, lighttpd
+Choices-da.UTF-8: apache2, lighttpd
+Choices-de.UTF-8: Apache2, Lighttpd
+Choices-es.UTF-8: apache2, lighttpd
+Choices-eu.UTF-8: apache2, lighttpd
+Choices-fi.UTF-8: apache2, lighttpd
+Choices-fr.UTF-8: Apache 2, lighttpd
+Choices-gl.UTF-8: apache2, lighttpd
+Choices-it.UTF-8: apache2, lighttpd
+Choices-ja.UTF-8: apache2, lighttpd
+Choices-pt.UTF-8: apache2, lighttpd
+Choices-ru.UTF-8: apache2, lighttpd
+Choices-sk.UTF-8: apache2, lighttpd
+Choices-sv.UTF-8: apache2, lighttpd
+Choices-ta.UTF-8: அபாசே2, லைட்டிபிடி (lighttpd)
+Default: apache2, lighttpd
+Description: Web server(s) to configure automatically:
+ ${package} supports any web server with CGI enabled, however only
+ Apache 2 and lighttpd can be configured automatically.
+ .
+ Please select the web server(s) that should be configured
+ automatically for ${package}.
+Description-ar.UTF-8: خادم الوب المطلوب تهيئته آلياً:
+ يدعم ${package} أي خادم تُمكّن فيه واجهة CGI، ولكن يمكن حالياً فقط تهيئة Apache 2 و lighttpd آلياً.
+ .
+ الرجاء اختيار خادم الوب الذي يجب أن يقوم ${package} بتهيئته آلياً.
+Description-cs.UTF-8: Webové servery, které se mají nastavit automaticky:
+ ${package} podporuje libovolný webserver s povoleným CGI, ovšem automaticky lze nastavit pouze Apache 2 a lighttpd.
+ .
+ Vyberte prosím webové servery, které se mají automaticky nastavit pro ${package}.
+Description-da.UTF-8: Webserver(e) at sætte op automatisk:
+ ${package} understøtter enhver webserver med CGI aktiveret. Det er dog kun Apache 2 og lighttpd som kan sættes op automatisk.
+ .
+ Angiv den/de webserver(e) som automatisk skal sættes op til ${package}.
+Description-de.UTF-8: Webserver, die automatisch konfiguriert werden sollen:
+ ${package} unterstützt jeden Webserver, der CGI bietet. Allerdings kann nur Apache 2 und Lighttpd automatisch konfiguriert werden.
+ .
+ Bitte wählen Sie den/die Webserver aus, die für ${package} automatisch konfiguriert werden sollen.
+Description-es.UTF-8: Servidores web a reconfigurar automáticamente:
+ ${package} funciona con cualquier servidor web que soporte CGI, sin embargo sólo se configuran automáticamente Apache 2 y lighttpd.
+ .
+ Seleccione el/los servidor/es web que debe/n configurarse automáticamente para ${package}.
+Description-fi.UTF-8: Verkkopalvelimet, joiden asetukset tehdään automaattisesti:
+ ${package} tukee kaikkia verkkopalvelimia, joissa on CGI käytössä, mutta vain Apache 2:n ja lighttpd:n asetukset voidaan tehdä automaattisesti.
+ .
+ Valitse verkkopalvelimet, joiden asetukset tulisi automaattisesti tehdä ${package}iä varten.
+Description-fr.UTF-8: Serveur(s) web à configurer automatiquement :
+ ${package} fonctionne avec n'importe quel serveur web qui gère les CGI. Cependant, seuls Apache 2 et lighttpd peuvent être configurés automatiquement.
+ .
+ Veuillez choisir le(s) serveur(s) Web à configurer automatiquement pour ${package}.
+Description-it.UTF-8: Server web da configurare automaticamente:
+ ${package} può essere usato con qualsiasi server web con CGI attivo, ma questo processo di configurazione automatica funziona solo con Apache 2 e lighttpd.
+ .
+ Selezionare quale/i server web configurare automaticamente per ${package}.
+Description-ja.UTF-8: 自動的に設定するウェブサーバ:
+ ${package} はCGI が有効なサーバであればどれでもサポートていますが、自動的に設定できるのは Apache2 と lighttpd のみです。
+ .
+ ${package} 用に自動的に設定するウェブサーバを選択してください。
+Description-pt.UTF-8: Servidor(es) web a configurar automaticamente:
+ O ${package} suporta qualquer servidor web com CGI activo, no entanto apenas o Apache 2 e lighttpd podem ser automaticamente configurados.
+ .
+ Por favor escolha o(s) servidor(es) web que deve(m) ser automaticamente configurado(s) para o ${package}.
+Description-ru.UTF-8: Веб-сервер(ы), которые нужно настроить автоматически:
+ ${package} работает с любым веб-сервером, поддерживающим CGI, однако автоматическая настройка выполняется только для Apache 2 и lighttpd.
+ .
+ Выберите веб-сервер(ы), которые нужно настроить автоматически под ${package}.
+Description-sk.UTF-8: Nastaviť automaticky nasledovné webové servery:
+ ${package} podporuje akýkoľvek webový server, ktorý podporuje CGI, avšak iba  Apache 2 a lighttpd je možné nastaviť automaticky.
+ .
+ Prosím, vyberte, ktoré webové servery sa majú nastaviť automaticky pre ${package}.
+Description-sv.UTF-8: Webbserver(-rar) att konfigurera automatiskt:
+ ${package} stödjer alla webbservrar med CGI, men det är bara Apache 2 och lighttpd som kan konfigureras automatiskt.
+ .
+ Välj en eller flera webbservrar som ska konfiguras automatiskt för att använda ${package}.
+
+Template: cipux-cat-web/restart-webserver
+Type: boolean
+Default: true
+Description: Should the webserver(s) be restarted now?
+ In order to activate the new configuration, the reconfigured web
+ server(s) have to be restarted.
+Description-ar.UTF-8: هل تريد تشغيل خادم الوب الآن؟
+ لتنشيط التهيئة الجديدة، يجب إعادة تشغيل خادمات الوب التي تمت إعادة تهيئتها.
+Description-cs.UTF-8: Mají se webové servery restartovat nyní?
+ Aby se nové nastavení projevilo, musí se příslušné webové servery restartovat.
+Description-da.UTF-8: Skal webserveren/webserverne genstartes nu?
+ For at aktivere den nye opsætning, skal den/de tilrettede webserver(e) genstartes.
+Description-de.UTF-8: Soll der/die Webserver jetzt automatisch neu gestartet werden?
+ Um die neue Konfiguration zu aktivieren, müssen der/die rekonfigurierten Webserver neu gestartet werden.
+Description-es.UTF-8: ¿Debe/n reiniciarse ahora el/los servidor/es web?
+ El/los servidor/es web debe/n reiniciarse para activar la nueva configuración.
+Description-eu.UTF-8: Web zerbitzaria(k) orain berrabiarazi behar al da?
+ Konfigurazio berria gaitu ahal izateko, birkonfiguratutako web zerbitzaria(k) berrabiarazi egin behar d(ir)a.
+Description-fi.UTF-8: Tulisiko verkkopalvelimet käynnistää uudelleen nyt?
+ Verkkopalvelimet täytyy käynnistää uudelleen uusien asetusten ottamiseksi käyttöön.
+Description-fr.UTF-8: Faut-il redémarrer le(s) serveur(s) web maintenant ?
+ Afin d'activer la nouvelle configuration, le(s) serveur(s) web reconfiguré(s) doi(ven)t être redémarré(s).
+Description-gl.UTF-8: ¿Debería(n) reiniciarse o(s) servidor(es) web?
+ Para activar a nova configuración hai que reiniciar o(s) servidor(es) web reconfigurado(s).
+Description-it.UTF-8: Riavviare il/i server web adesso?
+ Per attivare la nuova configurazione è necessario riavviare il/i server web appena riconfigurato/i.
+Description-ja.UTF-8: 今すぐウェブサーバを再起動しますか?
+ 新規の設定を有効にするには、設定を変更したウェブサーバを再起動する必要があります。
+Description-pt.UTF-8: Deverá o servidor web ser reiniciado agora?
+ De modo a activar a nova configuração, o(s) servidor(es) web reconfigurados terão de ser reiniciados.
+Description-ru.UTF-8: Перезапустить веб-сервер(ы) прямо сейчас?
+ Чтобы новая конфигурация вступила в силу, нужно перезапустить перенастроенный веб-сервер(ы).
+Description-sk.UTF-8: Majú sa webové servery teraz reštartovať?
+ Aby sa aktivovala nové konfigurácia, nastavené webové servery je potrebné reštartovať.
+Description-sv.UTF-8: Ska webbservern(-rarna) startas om nu?
+ De omkonfigurerade webbservrarna måste startas om för att den nya konfigurationen ska aktiveras.
+Description-ta.UTF-8: வலை சேவையகத்தை(கங்களை) மீள் துவக்கவா?
+ புதிய வடிவமைப்பை செயல்படுத்த வடிவமைத்த வலை சேவையகம் (-கங்கள்) மீள் துவக்கப் பட வேண்டும்.

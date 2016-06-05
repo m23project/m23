@@ -30,14 +30,13 @@ function DEBIAN_desktopInstall($desktop)
 
 	include("/m23/inc/i18n/".I18N_m23instLanguage($lang)."/m23inst.php");
 
-	$installDesktopLanguagePackage = $installGnomeLanguagePackage = $installKdeLanguagePackage = false;
+	$installDesktopLanguagePackage = true;
 
 	switch($desktop)
 	{
 		case DEBIAN8DESKTOP_MATE_FULL:
 			$desktopPackages = 'task-mate-desktop';
 			$dialogHeader = $I18N_installingMate;
-			$installDesktopLanguagePackage = true;
 		break;
 
 		case DEBIAN8DESKTOP_MATE_MINIMAL:
@@ -53,36 +52,31 @@ function DEBIAN_desktopInstall($desktop)
 		case DEBIAN8DESKTOP_GNOME_FULL:
 			$desktopPackages = 'task-gnome-desktop';
 			$dialogHeader = $I18N_installing_gnome;
-			$installDesktopLanguagePackage = true;
 		break;
 
 		case DEBIAN8DESKTOP_XFCE_FULL:
 			$desktopPackages = 'task-xfce-desktop';
 			$dialogHeader = $I18N_installing_xfce;
-			$installDesktopLanguagePackage = true;
 		break;
 
 		case DEBIAN8DESKTOP_KDE_FULL:
 			$desktopPackages = "task-kde-desktop kde-l10n-$lV[packagelang]";
 			$dialogHeader = $I18N_installing_kde;
-			$installDesktopLanguagePackage = true;
 		break;
 
 		case DEBIAN8DESKTOP_CINNAMON_FULL:
 			$desktopPackages = 'task-cinnamon-desktop';
 			$dialogHeader = $I18N_installingCinnamon;
-			$installDesktopLanguagePackage = true;
 		break;
 
 		case DEBIAN8DESKTOP_LXDE_FULL:
 			$desktopPackages = 'task-lxde-desktop';
 			$dialogHeader = $I18N_installingLXDE;
-			$installDesktopLanguagePackage = true;
 		break;
 	}
 
 	if ($installDesktopLanguagePackage)
-		CLCFG_installDesktopLanguagePackage($lang, $installKdeLanguagePackage, $installGnomeLanguagePackage);
+		CLCFG_installDesktopLanguagePackage($lang, true, true);
 
 	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $dialogHeader);
 
@@ -241,10 +235,17 @@ function CLCFG_enableLDAPDebian($clientOptions)
 	if ($clientOptions['ldaptype']=="none")
 		return;
 
+	if (HELPER_isExecutedOnUCS())
+	{
+		UCS_enableClientLDAP();
+		return(false);
+	}
+
+
 	$server=LDAP_loadServer($clientOptions['ldapserver']);
 
-	$LDAPhost=$server[host];
-	$baseDN=$server[base];
+	$LDAPhost=$server['host'];
+	$baseDN=$server['base'];
 
 	//exit the function if LDAP host or base DN is empty
 	if (empty($LDAPhost) || empty($baseDN))

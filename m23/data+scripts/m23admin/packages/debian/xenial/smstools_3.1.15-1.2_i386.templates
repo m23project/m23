@@ -1,0 +1,432 @@
+
+Template: smstools/configure
+Type: boolean
+Default: true
+Description: Manage smsd configuration automatically?
+ Reject this option if you want to configure smsd manually.
+Description-cs.UTF-8: Spravovat konfiguraci smsd automaticky?
+ Chcete-li nastavit smsd ručně, tuto možnost odmítněte.
+Description-da.UTF-8: Håndter smsd-konfiguration automatisk?
+ Afvis denne indstilling hvis du ønsker at konfigurere smsd manuelt.
+Description-de.UTF-8: Smsd-Konfiguration automatisch verwalten?
+ Lehnen Sie diese Option ab, falls Sie Smsd manuell verwalten möchten.
+Description-es.UTF-8: ¿Desea administrar la configuración de smsd automáticamente?
+ No elija esta opción si quiere configurar «smsd» manualmente.
+Description-eu.UTF-8: Smsd konfigurazioa automatikoki kudeatu?
+ Aukera hau ezetsi smsd eskuz konfiguratu nahi baduzu.
+Description-fi.UTF-8: Hallinnoidaanko smsd:n asetuksia automaattisesti?
+ Älä valitse tätä vaihtoehtoa, jos haluat tehdä smsd:n asetukset käsin.
+Description-fr.UTF-8: Faut-il gérer automatiquement la configuration de smsd ?
+ Vous devriez refuser cette option si vous préférez configurer smsd vous-même.
+Description-gl.UTF-8: ¿Xestionar automaticamente a configuración de smsd?
+ Rexeite esta opción se quere configurar smsd manualmente.
+Description-it.UTF-8: Gestire la configurazione di smsd automaticamente?
+ Rifiutare questa opzione per configurare smsd manualmente.
+Description-ja.UTF-8: smsd の設定を自動的に行いますか?
+ smsd の設定を手動で行いたい場合はこのオプションを選ばないでください。
+Description-pt.UTF-8: Gerir automaticamente a configuração do smsd?
+ Rejeite esta opção se quiser configurar o smsd manualmente.
+Description-pt_BR.UTF-8: Gerenciar a configuração do smsd automaticamente?
+ Rejeite esta opção se você quer configurar o smsd manualmente.
+Description-ru.UTF-8: Управлять настройкой smsd автоматически?
+ Ответьте отрицательно, если хотите настраивать smsd вручную.
+Description-sv.UTF-8: Ska smsd hanteras automatiskt?
+ Avvisa detta alternativ om du vill ställa in smsd manuellt.
+Description-vi.UTF-8: Tự động quản lý cấu hình smsd không?
+ Từ chối tùy chọn này nếu bạn muốn tự cấu hình smsd.
+
+Template: smstools/eventhandler
+Type: string
+Description: Global event-handler:
+ Please specify an external program or script that will execute,
+ whenever a message is sent or received, or on failures.
+ This is useful for instance when running an email2sms gateway.
+ .
+ Examples of event-handlers are detailed in /usr/share/doc/smstools/examples.
+Description-cs.UTF-8: Obsluha globálních událostí:
+ Zadejte prosím externí program nebo skript, který se spustí pokaždé, když bude přijata nebo odeslána zpráva, případně když nastane chyba. To je užitečné například v případech, kdy chcete provozovat bránu email2sms.
+ .
+ Ukázky skriptů pro obsluhu událostí naleznete v adresáři /usr/share/doc/smstools/examples.
+Description-da.UTF-8: Global hændelseshåndtering:
+ Angiv venligst et eksternt program eller skript som vil køre, når en besked sendes eller modtages, eller ved fejl. Dette er brugbart for eksempel når der køres et email2sms-adgangspunkt.
+ .
+ Eksempler på hændelseshåndteringer kan ses i detaljer i /usr/share/doc/smstools/examples.
+Description-de.UTF-8: Globale Ereignisbehandlung:
+ Bitte geben Sie ein externes Programm oder Skript an, das ausgeführt wird, wann immer eine Nachricht gesendet oder empfangen wurde oder fehlgeschlagen ist. Dies ist z.B. für einen email2sms-Zugang nützlich.
+ .
+ Beispiele für Ereignisbehandlungen sind in /usr/share/doc/smstools/examples enthalten.
+Description-es.UTF-8: Gestor global de eventos:
+ Especifique un programa externo o un script que se ejecutará, cuando se envíe o reciba un mensaje, o en caso de fallo. Esto es bastante útil cuando se está ejecutando una pasarela de correo electrónico a SMS («email2sms»).
+ .
+ Podrá encontrar los ejemplos de los gestores de eventos en el archivo «/usr/share/doc/smstools/examples».
+Description-eu.UTF-8: Gertaera kudeatzaile orokorra:
+ Mesedez ezarri mezu bat bidali, jaso edo erroreetan abiaraziko den kanpo programa edo skript-a. Hau eposta-sms atebide batentzat da erabilgarria adibidez.
+ .
+ Gertaera kudeatzaile adibideak /usr/share/doc/smstools/examples -en zehazturik daude.
+Description-fi.UTF-8: Globaali tapahtumien käsittelijä:
+ Anna ulkoinen ohjelma tai komentosarja, joka suoritetaan aina kun viesti lähetetään tai vastaanotetaan tai nämä epäonnistuvat. Tämä on hyödyllinen esimerkiksi ajettaessa email2sms-yhdyskäytävää.
+ .
+ Esimerkkejä tapahtumien käsittelijöistä on (englanniksi) tiedostossa /usr/share/doc/smstools/examples.
+Description-fr.UTF-8: Gestionnaire global d'événements :
+ Veuillez indiquer le programme ou script externe qui sera exécuté quand un message sera envoyé, reçu, ou en cas d'erreurs. Cette fonctionnalité permet, par exemple, d'utiliser une passerelle courriel vers SMS.
+ .
+ Des exemples de gestion des événements sont proposés dans le répertoire /usr/share/docs/smstools/examples.
+Description-gl.UTF-8: Xestor de eventos global:
+ Indique un programa ou script externo que se ha executar cada vez que se envíe ou recibe unha mensaxe, ou cada vez que haxa un fallo. Isto é útil, por exemplo, ao executar unha pasarela de email a SMS.
+ .
+ Hai varios exemplos de xestores de eventos en /usr/share/doc/smstools/examples.
+Description-it.UTF-8: Gestore globale degli eventi:
+ Specificare un programma esterno o uno script da eseguire alla ricezione o all'invio di un messaggio oppure quando si verifica un errore. Questa opzione è utile se si sta eseguendo un gateway email-sms.
+ .
+ Alcuni esempi di gestori di eventi sono presenti in /usr/share/doc/smstools/examples.
+Description-ja.UTF-8: グローバルイベントハンドラ:
+ メッセージの送受信、問題発生時に実行する外部プログラムあるいはスクリプトを指定してください。これは、例えば email2sms ゲートウェイを動作させている場合に役立ちます。
+ .
+ イベントハンドラの例は /usr/share/doc/smstools/examples に詳しく載っています。
+Description-pt.UTF-8: Handler Global de Eventos:
+ Especifique um programa ou script externo que irá executar sempre que uma mensagem for enviada ou recebida, ou em falhas. É útil quando, p.e., quer correr uma gateway email2sms.
+ .
+ No ficheiro /usr/share/doc/smstoolls/examples existem exemplos detalhados de handlers de eventos.
+Description-pt_BR.UTF-8: Manipulador de evento global:
+ Por favor, especifique um programa externo ou um script que será executado, sempre que uma mensagem é enviada ou recebida, ou em falhas. Isto é útil por exemplo ao executar um gateway de email2sms.
+ .
+ Exemplos de manipuladores de eventos são detalhados em /usr/share/doc/smstools/examples.
+Description-ru.UTF-8: Глобальный обработчик событий (event-handler):
+ Укажите внешнюю программу или скрипт, который будет выполняться при отправке или приёме сообщения, или при ошибках. Это полезно, например, при работающем шлюзе email2sms.
+ .
+ Примеры обработчиков событий даны в /usr/share/doc/smstools/examples.
+Description-sv.UTF-8: Global händelsehanterare:
+ Ange ett externt program eller skript som ska exekveras när ett meddelande är sänt eller mottaget eller vid fel. Detta är användbart när en e-post-till-sms-tjänst körs.
+ .
+ Exempel på händelsehanterare finns i /usr/share/doc/smstools/examples.
+Description-vi.UTF-8: Bộ quản lý sự kiện toàn cục:
+ Hãy xác định chương trình hay văn lệnh sẽ thực hiện khi nào gửi hay nhận được tin nhẳn, hoặc khi gặp lỗi. Có ích, chẳng hạn, khi chạy cổng ra email2sms.
+ .
+ Có các mẫu thí dụ bộ quản lý sự kiện trong « /usr/share/doc/smstools/examples ».
+
+Template: smstools/devicename
+Type: string
+Default: GSM1
+Description: Modem name:
+ Please specify the short name for the modem device. This is a mandatory
+ setting.
+Description-cs.UTF-8: Jméno modemu:
+ Zadejte prosím krátké jméno modemového zařízení. Jedná se o povinný údaj.
+Description-da.UTF-8: Modemnavn:
+ Angiv venligst det korte navn for modemenheden. Dette er en krævet indstilling.
+Description-de.UTF-8: Modem-Name:
+ Bitte geben Sie den Kurznamen für das Modem-Gerät an. Diese Einstellung ist verpflichtend.
+Description-es.UTF-8: Nombre del módem:
+ Especifique un nombre corto para el dispositivo del módem. Este es un valor obligatorio.
+Description-eu.UTF-8: Modem izena:
+ Mesedez idatzi modem gailuren izen laburra. Hau beharrezko ezarpen bat da.
+Description-fi.UTF-8: Modeemin nimi:
+ Anna lyhyt nimi modeemilaitteelle. Tämä on pakollinen asetus.
+Description-fr.UTF-8: Nom du modem :
+ Veuillez choisir un identifiant court pour le modem. Ce paramètre est obligatoire.
+Description-gl.UTF-8: Nome do módem:
+ Indique o nome curto para o dispositivo do módem. Esta é unha opción obrigatoria.
+Description-it.UTF-8: Nome del modem:
+ Specificare un'abbreviazione per il modem. Questa impostazione è obbligatoria.
+Description-ja.UTF-8: モデム名:
+ モデムデバイスの短い名前を指定してください。この設定は必須です。
+Description-pt.UTF-8: Nome do modem:
+ Por favor especifique um nome curto para o dispositivo do modem. É uma configuração obrigatória.
+Description-pt_BR.UTF-8: Nome do modem:
+ Por favor, especifique um nome abreviado para o dispositivo modem. Esta é uma configuração obrigatória.
+Description-ru.UTF-8: Название модема:
+ Укажите короткое имя устройства модема. Это обязательный параметр.
+Description-sv.UTF-8: Modemnamn:
+ Ange kortnamnet på modemet. Detta är en obligatorisk inställning.
+Description-vi.UTF-8: Tên bộ điều giải:
+ Hãy xác định tên ngắn cho thiết bị điều giải. Thiết lập bắt buộc phải đặt.
+
+Template: smstools/devicenode
+Type: select
+Choices: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, Other
+Choices-cs.UTF-8: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, Ostatní
+Choices-da.UTF-8: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, Andet
+Choices-de.UTF-8: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, Andere
+Choices-es.UTF-8: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, Otro
+Choices-eu.UTF-8: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, Besteak
+Choices-fi.UTF-8: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, Muu
+Choices-fr.UTF-8: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, Autre
+Choices-gl.UTF-8: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, Outro
+Choices-it.UTF-8: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, Altro
+Choices-ja.UTF-8: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, その他
+Choices-pt.UTF-8: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, Outro
+Choices-pt_BR.UTF-8: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, Outro
+Choices-ru.UTF-8: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, Другое
+Choices-sv.UTF-8: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, Annan
+Choices-vi.UTF-8: /dev/ttyS0, /dev/ttyS1, /dev/ttyS2, /dev/ttyS3, /dev/ttyS4, Khác
+Description: Modem device:
+ Please specify the modem device. Usually the modem device is
+ /dev/ttyS0 (the first serial port), but your setup may differ;
+ e.g. for a USB device, choose 'Other' and specify the full path of
+ the appropriate device node.
+Description-cs.UTF-8: Modemové zařízení:
+ Zadejte prosím zařízení modemu. Většinou to bývá /dev/ttyS0 pro první COM port, ale vaše nastavení se může lišit. Například pro USB zařízení musíte zvolit „ostatní“ a zadat příslušný uzel zařízení s celou cestou.
+Description-da.UTF-8: Modemenhed:
+ Angiv venligst modemenheden. Normalt er modemenheden /dev/ttyS0 (den første serielport), men din opsætning kan være anderledes; f.eks. for en USB-enhed, vælg »andet« og angiv den fulde stil for den passende enhedsknude.
+Description-de.UTF-8: Modemgerät:
+ Bitte geben Sie das Modemgerät an. Gewöhnlich ist das Modemgerät /dev/ttyS0 (die erste serielle Schnittstelle). Dies kann bei Ihnen allerdings abweichen. Bei USB-Geräten müssen Sie z.B. die Wahl »Andere« treffen und den passenden Geräteknoten mit seinem vollen Pfad angeben.
+Description-es.UTF-8: Dispositivo del módem:
+ Especifique el dispositivo del módem. Normalmente el dispositivo del módem es «/dev/ttyS0» (el primer puerto serie), pero su configuración puede ser diferente, por ejemplo: un dispositivo USB. Elija la opción «Otro» y especifique la ruta completa del nodo del dispositivo correspondiente.
+Description-eu.UTF-8: Modem gailua:
+ Mesedez modem gailua ezarri. Normalean modem gailua /dev/ttyS0 da (lehen serie ataka), baina zure konfigurazioan ezberdina izan daiteke: adib. USB gailu batentzat, 'Besteak' aukeratu eta gailu nodoaren bide osoa ezarri.
+Description-fi.UTF-8: Modeemilaite:
+ Anna modeemilaite. Yleensä modeemilaite on /dev/ttyS0 (ensimmäinen sarjaportti), mutta järjestelmäsi saattaa poiketa tästä. Esimerkiksi USB-laitteen kanssa valitse ”Muu” ja anna asianmukaisen laiteliitännän täysi polku.
+Description-fr.UTF-8: Périphérique du modem :
+ Veuillez indiquer le périphérique où est connecté le modem. Généralement, il s'agit de /dev/ttyS0 (le premier port série), mais votre configuration peut être différente ; par exemple pour un périphérique USB, vous devez choisir « Autre » et préciser le fichier de périphérique avec son chemin d'accès complet.
+Description-gl.UTF-8: Dispositivo do módem:
+ Indique o dispositivo do módem. O dispositivo adoita ser /dev/ttyS0 (o primeiro porto serie), pero a súa configuración pode ser diferente; por exemplo, para un dispositivo USB, escolla "Outro" e indique a ruta completa do nodo do dispositivo axeitado.
+Description-it.UTF-8: Modem:
+ Specificare il percorso del modem. Di solito il dispositivo del modem è  /dev/ttyS0 (la prima porta seriale), ma in base alla configurazione del sistema potrebbe essere diverso. Ad esempio, se viene utilizzato un dispositivo USB, scegliere "Altro" e specificare il percorso completo del dispositivo appropriato.
+Description-ja.UTF-8: モデムデバイス:
+ モデムデバイスを指定してください。通常、モデムデバイスは /dev/ttyS0 (最初のシリアルポート) ですが、別の設定になっているかもしれません。例えば USB デバイスの場合は「その他」を指定して適切なデバイスノードのフルパス (path) を指定してください。
+Description-pt.UTF-8: Dispositivo modem:
+ Defina o dispositivo do modem. Tipicamente é /dev/ttyS0 (a primeira porta série), mas a sua configuração pode ser diferente. Por exemplo para dispositivos USB tem de escolher 'outro' e especificar o caminho completo para o dispositivo apropriado.
+Description-pt_BR.UTF-8: Dispositivo modem:
+ Por favor, especifique o dispositivo modem. Geralmente o dispositivo modem está em /dev/ttyS0 (a primeira porta serial), mas sua instalação pode diferir; e.g. para um dispositivo USB, escolha 'Outro' e especifique o caminho completo para o dispositivo apropriado.
+Description-ru.UTF-8: Модемное устройство:
+ Укажите модемное устройство. Обычно это /dev/ttyS0 (первый последовательный порт), но в вашей системе может быть и другое; например для устройств, подключающихся по USB, выберите 'Другое' и укажите полный путь к соответствующему устройству.
+Description-sv.UTF-8: Modemenhet:
+ Ange enhetsnamnet på modemet. Vanligen är detta /dev/ttyS0 (första serieporten) men det kan variera mellan olika system. För USB-anslutna enheter anger du 'Annan' och sedan den kompletta sökvägen till enheten.
+Description-vi.UTF-8: Thiết bị điều giải:
+ Hãy xác định thiết bị điều giải. Thường là «  /dev/ttyS0 » (cổng nối tiếp thứ nhất), nhưng có lẽ bạn có thiết lập khác, v.d. cho thiết bị USB, chọn « Khác » và ghi rõ đường dẫn đầy đủ của nút thiết bị thích hợp.
+
+Template: smstools/devicenodeother
+Type: string
+Description: Modem device:
+ Please specify an optional extra device for the modem.
+Description-cs.UTF-8: Modemové zařízení:
+ Zadejte prosím vlastní zařízení pro modem.
+Description-da.UTF-8: Modemenhed:
+ Angiv venligst en valgfri ekstra enhed for modemmet.
+Description-de.UTF-8: Modemgerät:
+ Bitte geben Sie ein optionales Extra-Gerät für das Modem an.
+Description-es.UTF-8: Dispositivo del módem:
+ Especifique un dispositivo extra opcional para el módem.
+Description-eu.UTF-8: Modem gailua:
+ Mesedez ezarri aukerako gailu gehigarri bat modemarentzat.
+Description-fi.UTF-8: Modeemilaite:
+ Anna vapaaehtoinen modeemin lisälaite.
+Description-fr.UTF-8: Périphérique du modem :
+ Veuillez indiquer,  si nécessaire, un périphérique supplémentaire pour le modem.
+Description-gl.UTF-8: Dispositivo do módem:
+ Indique un dispositivo extra opcional para o módem.
+Description-it.UTF-8: Modem:
+ Specificare un ulteriore dispositivo per il modem.
+Description-ja.UTF-8: モデムデバイス:
+ モデムに接続する外部機器を指定してください。
+Description-pt.UTF-8: Dispositivo modem:
+ Por favor especifique um dispositivo opcional extra para o modem.
+Description-pt_BR.UTF-8: Dispositivo modem:
+ Por favor, especifique um dispositivo opcional extra para o modem.
+Description-ru.UTF-8: Модемное устройство:
+ Укажите необязательное дополнительное устройство для модема.
+Description-sv.UTF-8: Modemenhet:
+ Ange eventuella extra enheter för modemet.
+Description-vi.UTF-8: Thiết bị điều giải:
+ Hãy xác định một thiết bị thêm tùy chọn cho bộ điều giải.
+
+Template: smstools/devicebaudrate
+Type: select
+Choices: 9600, 19200, 28800, 38400, 115200, Other
+Choices-cs.UTF-8: 9600, 19200, 28800, 38400, 115200, Ostatní
+Choices-da.UTF-8: 9600, 19200, 28800, 38400, 115200, Andet
+Choices-de.UTF-8: 9600, 19200, 28800, 38400, 115200, Andere
+Choices-es.UTF-8: 9600, 19200, 28800, 38400, 115200, Otro
+Choices-eu.UTF-8: 9600, 19200, 28800, 38400, 115200, Besteak
+Choices-fi.UTF-8: 9600, 19200, 28800, 38400, 115200, Muu
+Choices-fr.UTF-8: 9600, 19200, 28800, 38400, 115200, Autre
+Choices-gl.UTF-8: 9600, 19200, 28800, 38400, 115200, Outro
+Choices-it.UTF-8: 9600, 19200, 28800, 38400, 115200, Altro
+Choices-ja.UTF-8: 9600, 19200, 28800, 38400, 115200, その他
+Choices-pt.UTF-8: 9600, 19200, 28800, 38400, 115200, Outro
+Choices-pt_BR.UTF-8: 9600, 19200, 28800, 38400, 115200, Outro
+Choices-ru.UTF-8: 9600, 19200, 28800, 38400, 115200, Другое
+Choices-sv.UTF-8: 9600, 19200, 28800, 38400, 115200, Annan
+Choices-vi.UTF-8: 9600, 19200, 28800, 38400, 115200, Khác
+Default: 19200
+Description: Modem device speed (bps):
+ Most modems work well with a speed of 19200bps, but some modems may
+ require 9600 bps. If your modem does not support any of the baud
+ rates in the list, select 'Other'.
+Description-cs.UTF-8: Rychlost modemu (bps):
+ Většina modemů pracuje spolehlivě s rychlostí 19200 bps, ale některé modemy mohou vyžadovat 9600 bps. Pokud váš modem nepodporuje žádnou z nabízených rychlostí, vyberte „ostatní“.
+Description-da.UTF-8: Enhedshastighed for modemmet (bps):
+ De fleste modem virker godt med en hastighed på 19200 bps, men nogle modemmer kan kræve 9600 bps. Hvis dit modem ikke understøtter nogle af baudhastighederne i listen så vælg »Andet«.
+Description-de.UTF-8: Geschwindigkeit des Modemgeräts (bps):
+ Die meisten Modems funktionieren mit einer Geschwindigkeit von 19200 bps gut, aber einige Modems könnten zur Arbeit 9600 Baud benötigen. Falls Ihr Modem keine der Baudraten aus der Liste unterstützt, müssen Sie »Andere« auswählen.
+Description-es.UTF-8: Velocidad del dispositivo del módem (bps):
+ La mayoría de los módems funcionan bien a una velocidad de 19200 bps, pero algunos módems pueden requerir 9600 bps. Si su módem no es compatible con ninguno de los valores de baudios de la lista, seleccione la opción «Otro».
+Description-eu.UTF-8: Modem gailu abiadura (bps):
+ Modem gehienek 19200bps-eko abiadura erabili dezakete, baina kasu batzuetan 9600 bps-eko abiadura erabili behar da. Zure modem-ak ez badu zerrendaturiko baudio abiadurarik onartzen, 'Besteak' hautatu.
+Description-fi.UTF-8: Modeemin nopeus (bps):
+ Useimmat modeemit toimivat hyvin nopeudella 19200 bps, mutta jotkut saattavat vaatia nopeuden 9600 bps. Jos modeemisi ei tue mitään listassa olevaa nopeutta, valitse ”Muu”.
+Description-fr.UTF-8: Débit du modem (bps) :
+ La plupart des modems fonctionnent bien avec un débit de 19200 bps, mais certains modems nécessitent un débit de 9600 bps. Si votre modem ne gère aucun des débits proposés, vous devriez choisir « Autre » et le préciser ensuite.
+Description-gl.UTF-8: Velocidade do dispositivo do módem (bps):
+ A maioría dos módems traballan ben con velocidades de ata 19200 bps, pero algúns módems precisan de 9600 bps. Se o seu módem non soporta ningunha das velocidades da lista, escolla "Outro".
+Description-it.UTF-8: Velocità del modem (bps):
+ La maggior parte dei modem lavora correttamente alla velocità di 19200bps, ma alcuni richiedono 9600bps. Se il proprio modem non supporta alcuna delle velocità riportate nell'elenco, selezionare "Altro".
+Description-ja.UTF-8: モデムデバイスの速度 (bps):
+ ほとんどのモデムは 19200bps のスピードで問題なく動作しますが、一部のモデムは 9600bps である必要があります。あなたのモデムが、この一覧で表示されている通信速度をサポートしていない場合は「その他」を選んでください。
+Description-pt.UTF-8: Velocidade do dispositivo modem (bps):
+ A maioria dos modems funciona bem com uma velocidade de 19200bps, mas alguns modems precisam de funcionar a 9600bps. Se o seu modem não suportar nenhum dos baudrates na lista, escolha 'Outro'.
+Description-pt_BR.UTF-8: Velocidade do dispositivo modem (bps):
+ A maioria dos modems trabalham bem com uma velocidade de 19200bps, mas alguns modems podem necessitar de 9600bps. Se seu modem não suporta nenhuma das taxas de transmissão na lista, escolha 'Outro'.
+Description-ru.UTF-8: Скорость модема (bps):
+ Большинство модемов хорошо работают на скорости 19200bps, но для некоторых модемов может требоваться 9600 bps. Если ваш модем не поддерживает ни одной скорости из списка, выберите 'Другое'.
+Description-sv.UTF-8: Hastighet för modemet (bps):
+ De flesta modem fungerar utmärkt med hastigheten 19200bps men en del modem kräver 9600bps. Om hastigheten för ditt modem inte finns i listan väljer du 'Annan'.
+Description-vi.UTF-8: Tốc độ thiết bị điều giải (bốt/giây):
+ Phần lớn bộ điều giải chạy được ở tốc độ 19200 bốt/giây nhưng một số bộ điều giải cũ có thể cần thiết 9600 bốt/giây. Bộ điều giải không hỗ trợ tốc độ bốt nào trong danh sách thì chọn mục « Khác ».
+
+Template: smstools/devicebaudrateother
+Type: string
+Description: Modem device speed (bps):
+Description-cs.UTF-8: Rychlost modemu (bps):
+Description-da.UTF-8: Enhedshastighed for modemmet (bps):
+Description-de.UTF-8: Geschwindigkeit des Modemgeräts (bps):
+Description-es.UTF-8: Velocidad del dispositivo del módem (bps):
+Description-eu.UTF-8: Modem gailu abiadura (bps):
+Description-fi.UTF-8: Modeemin nopeus (bps):
+Description-fr.UTF-8: Débit du modem (bps) :
+Description-gl.UTF-8: Velocidade do dispositivo do módem (bps):
+Description-it.UTF-8: Velocità del modem (bps):
+Description-ja.UTF-8: モデムデバイスの速度 (bps):
+Description-pt.UTF-8: Velocidade do dispositivo modem (bps):
+Description-pt_BR.UTF-8: Velocidade do dispositivo modem (bps):
+Description-ru.UTF-8: Скорость модема (bps):
+Description-sv.UTF-8: Hastighet för modemet (bps):
+Description-vi.UTF-8: Tốc độ thiết bị điều giải (bốt/giây):
+
+Template: smstools/deviceincoming
+Type: boolean
+Default: true
+Description: Receive SMS with this device?
+ Please choose whether the device should be used to receive incoming SMS.
+Description-cs.UTF-8: Přijímat SMS pomocí tohoto zařízení?
+ Vyberte prosím, zda má být zařízení používáno k příjmu příchozích SMS.
+Description-da.UTF-8: Modtag SMS med denne enhed?
+ Vælg venligst hvorvidt enheden skal bruges til at modtage indgående SMS.
+Description-de.UTF-8: SMS mit diesem Gerät empfangen?
+ Bitte wählen Sie aus, ob das Gerät zum Empfang von eingehenden SMS verwendet werden soll.
+Description-es.UTF-8: ¿Recibir SMS con este dispositivo?
+ Elija cuando se debería usar el dispositivo para recibir SMS entrantes.
+Description-eu.UTF-8: Gailu honen bidez SMS-ak jaso?
+ Mesedez hautatu gailua SMS-ak jasotzeko erabiliko behar den.
+Description-fi.UTF-8: Otetaanko tällä laitteella vastaan SMS-viestejä?
+ Valitse tulisiko laitetta käyttää tulevien SMS-viestien vastaanottamiseen.
+Description-fr.UTF-8: Faut-il activer la réception des SMS avec ce périphérique ?
+ Veuillez choisir si ce périphérique peut être utilisé pour recevoir des SMS.
+Description-gl.UTF-8: ¿Recibir SMS con este dispositivo?
+ Indique se quere empregar o dispositivo para recibir SMS entrantes.
+Description-it.UTF-8: Ricevere SMS con questo dispositivo?
+ Specificare se il dispositivo deve essere usato per ricevere SMS.
+Description-ja.UTF-8: ショートメッセージ (SMS) をこのデバイスで受信しますか?
+ デバイスを、送信されてくるショートメッセージを受信するのに使うかどうかを選んでください。
+Description-pt.UTF-8: Receber SMS com este dispositivo?
+ Por favor escolha se o dispositivo deve ser usado para receber SMS.
+Description-pt_BR.UTF-8: Receber SMS com este dispositivo?
+ Por favor, escolha se o dispositivo deve ser utilizado para receber os SMS que chegarem.
+Description-ru.UTF-8: Принимать SMS через это устройство?
+ Укажите, нужно ли использовать устройство для приёма входящих SMS.
+Description-sv.UTF-8: Ta emot SMS med denna enhet?
+ Ange om denna enhet ska användas för att ta emot inkommande SMS.
+Description-vi.UTF-8: Nhận SMS bằng thiết bị này không?
+ Hãy chọn có nên sử dụng thiết bị này để nhận SMS gửi đến hay không.
+
+Template: smstools/deviceinit
+Type: string
+Description: Modem initialization string:
+ Please specify the modem initialization command. That may be left empty
+ for most modems. Please consult your modem's manual for more details
+ about its supported commands.
+Description-cs.UTF-8: Inicializační řetězec modemu:
+ Zadejte prosím inicializační příkaz modemu. U většiny modemů jej můžete nechat prázdný. Pro více informací o podporovaných příkazech se podívejte do manuálu ke svému modemu.
+Description-da.UTF-8: Initialiseringstreng for modem:
+ Angiv venligst kommandoen for modeminitialisering. Denne kan efterlades tom for de fleste modemmer. Kig venligst i dit modems manual for yderligere detaljer om modemmets understøttede kommandoer.
+Description-de.UTF-8: Modem-Initialisierungs-Zeichenkette:
+ Bitte geben Sie den Initialisierungs-Befehl für das Modem an. Für die meisten Modems kann dies leer bleiben. Lesen Sie bitte das Handbuch Ihres Modems für weitere Details über seine unterstützten Befehle.
+Description-es.UTF-8: Cadena de inicialización del módem:
+ Especifique la orden de inicialización del módem. Este valor se puede dejar en blanco para la mayoría de los módems. Por favor, consulte el manual de su módem para conocer más detalles sobre las órdenes compatibles.
+Description-eu.UTF-8: Modem abiarazte katea:
+ Mesedez ezarri modem abiarazte komandoa. Hau hutsik utzi daiteke modem gehienentzat. Mesedez begiratu zure modem-aren manuala onartzen dituen komandoei buruz xehetasun gehiagorako.
+Description-fi.UTF-8: Modeemin alustusmerkkijono:
+ Anna modeemin alustuskomento. Tämä voidaan jättää tyhjäksi useimpien modeemien kohdalla. Tarkista modeemin käyttöohjeesta sen tukemien komentojen yksityiskohdat.
+Description-fr.UTF-8: Commande d'initialisation du modem :
+ Veuillez indiquer la commande d'initialisation du modem. La plupart des modems ne nécessitent aucune commande d'initialisation. Veuillez consulter la documentation du modem pour plus d'informations complémentaires sur les commandes qu'il gère.
+Description-gl.UTF-8: Cadea de inicialización do módem:
+ Indique a orde de inicialización do módem. Para a maioría dos módems, esta pode quedar baleira. Consulte o manual do seu módem para ter máis detalles sobre as ordes que soporta.
+Description-it.UTF-8: Stringa di inizializzazione del modem:
+ Specificare il comando di inizializzazione del modem. Per la maggior parte dei modem, questo campo può essere lasciato vuoto. Consultare il manuale del proprio modem per maggiori dettagli sui comandi supportati.
+Description-ja.UTF-8: モデムの初期化文字列:
+ モデムの初期化コマンドを指定してください。ほとんどのモデムでは空のままで構いません。サポートされているコマンドについての詳細は、モデムのマニュアルに従ってください。
+Description-pt.UTF-8: String de Inicialização do Modem:
+ Especifique um comando de inicialização do modem. Pode ser deixado em branco para a maioria dos modems. Por favor consulte o manual do seu modem para mais detalhes sobre os comandos que suporta.
+Description-pt_BR.UTF-8: String de inicialização do modem:
+ Por favor, especifique o comando de inicialização do modem. Que pode ser deixado em branco para a maioria dos modems. Por favor, consulte o manual do modem para mais detalhes sobre os comandos suportados.
+Description-ru.UTF-8: Строка инициализации модема:
+ Введите команду инициализации модема. Это поле можно оставить пустым для большинства модемов. Список поддерживаемых команд можно найти в руководстве по использованию модема.
+Description-sv.UTF-8: Sträng för uppstart av modemet:
+ Ange eventuella kommandon vid uppstarten av modemet. För de flesta modem kan detta lämnas tomt. Läs mer i manualen för ditt modem om tillgängliga kommandon.
+Description-vi.UTF-8: Chuỗi sở khởi bộ điều giải:
+ Hãy xác định lệnh sở khởi bộ điều giải. Có thể bỏ rỗng cho phần lớn bộ điều giải. Xem sổ tay của bộ điều giải để tìm chi tiết về các lệnh đã hỗ trợ.
+
+Template: smstools/devicepin
+Type: password
+Description: SIM device PIN code:
+ If the device's SIM needs a PIN to be unlocked, please enter it here.
+Description-cs.UTF-8: PIN kód SIM karty:
+ Jestliže je SIM karta zařízení chráněná PIN kódem, zadejte jej prosím.
+Description-da.UTF-8: PIN-kode for SIM-enhed:
+ Hvis enhedens SIM kræver en PIN for at blive låst op, så indtast den her.
+Description-de.UTF-8: PIN-Code der Geräte-SIM:
+ Falls die SIM des Geräts eine PIN zum Entsperren benötigt, geben Sie diese bitte hier ein.
+Description-es.UTF-8: Código PIN del dispositivo SIM:
+ Deberá introducir aquí el PIN aquí si la SIM de su dispositivo lo necesita para desbloquearla.
+Description-eu.UTF-8: SIM gailuaren PIN kodea:
+ Gailuaren SIM-ak desblokeatzeko PIN gako bat behar izanez gero, mesedez idatzi ezazu.
+Description-fi.UTF-8: SIM-laitteen PIN-koodi:
+ Jos laitteen SIM tarvitsee PIN-koodin lukituksen avaamiseen, anna se tässä.
+Description-fr.UTF-8: Code PIN du périphérique SIM :
+ Si votre périphérique SIM est verrouillé par un code PIN, vous devriez l'indiquer ici.
+Description-gl.UTF-8: Código PIN da SIM do dispositivo:
+ Se a SIM do dispositivo precisa dun PIN para a desbloquear, introdúzao aquí.
+Description-it.UTF-8: Codice PIN della SIM del dispositivo:
+ Se la SIM del dispositivo necessita di un PIN per essere sbloccata, inserirlo qui.
+Description-ja.UTF-8: SIM デバイスの PIN コード:
+ デバイスの SIM が PIN コードのロックを解除する必要がある場合、ここで入力してください。
+Description-pt.UTF-8: Código PIN do dispositivo SIM:
+ Se o SIM do dispositivo precisar de um PIN para ser desbloqueado, introduza-o aqui.
+Description-pt_BR.UTF-8: Código PIN do dispositivo SIM:
+ Se o SIM do dispositivo precisa de um PIN para ser desbloqueado, por favor informe-o aqui.
+Description-ru.UTF-8: PIN-код для SIM-карты:
+ Если для SIM-карты требуется вводить PIN для разблокировки, то укажите его здесь.
+Description-sv.UTF-8: PIN-kod för SIM:
+ Om SIM-kortet behöver en PIN-kod för att låsas upp ska denna anges här.
+Description-vi.UTF-8: Mã PIN của thiết bị SIM:
+ Thẻ SIM của thiết bị cần thiết mã PIN riêng để bỏ khoá thì nhập vào đây.
+
+Template: smstools/configureanothermodem
+Type: boolean
+Default: false
+Description: Configure another modem?
+Description-cs.UTF-8: Nastavit další modem?
+Description-da.UTF-8: Konfigurer et andet modem?
+Description-de.UTF-8: Ein weiteres Modem konfigurieren?
+Description-es.UTF-8: ¿Desea configurar otro módem?
+Description-eu.UTF-8: Beste modem bat konfiguratu?
+Description-fi.UTF-8: Tehdäänkö toisen modeemin asetukset?
+Description-fr.UTF-8: Faut-il configurer un autre modem ?
+Description-gl.UTF-8: ¿Configurar outro módem?
+Description-it.UTF-8: Configurare un altro modem?
+Description-ja.UTF-8: 別のモデムを設定しますか?
+Description-pt.UTF-8: Configurar outro modem?
+Description-pt_BR.UTF-8: Configurar um outro modem?
+Description-ru.UTF-8: Настроить другой модем?
+Description-sv.UTF-8: Ange inställningar för ett annat modem?
+Description-vi.UTF-8: Cấu hình bộ điều giải thêm nữa không?

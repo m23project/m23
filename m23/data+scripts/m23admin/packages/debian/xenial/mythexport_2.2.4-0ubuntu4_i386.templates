@@ -1,0 +1,57 @@
+Template: mythexport/warn
+Type: note
+Description: Additional install directions
+ MythExport can now be completely setup via the web interface,
+ just browse to http://localhost/mythexport
+ .
+ For more information please visit:
+ .
+ https://help.ubuntu.com/community/MythExport
+
+Template: mythexport/dir
+Type: string
+Default: /var/lib/mythtv/mythexport/
+Description: Export Recordings to:
+ This is where you are currently, or plan to, export your
+ recordings to.
+
+Template: mythexport/user
+Type: string
+Default: mythtv 
+Description:MySQL Admin Account:
+ This information will be used to create a database and user for MythTV.
+ .
+ Unless you have explicitly changed this on the MySQL server, and
+ understand MySQL's privilege system, use the default of 'mythtv' or 'root'.
+
+Template: mythexport/password
+Type: password
+Description:MySQL Admin Password:
+ This information will be used to create a database and user for MythTV.
+
+Template: mythexport/host
+Type: string
+Default: localhost
+Description: MySQL Server Location:
+ On what host does the MySQL server reside:
+
+Template: mythexport/dbname
+Type: string
+Default: mythconverg
+Description: Database which holds MythTV data:
+ Which database holds MythTV data:
+
+Template: mythexport/configs
+Type: note
+Description: Changes in configuration files  
+ MythExport's configuration files have changed,
+ For more information please visit:
+ .
+ https://help.ubuntu.com/community/MythExport
+
+Template: mythexport/mysql_error
+Type: note
+Description: Failed to create or modify database (incorrect MySQL username/password?)
+ Verify /etc/mythtv/mysql.txt then try:
+ .
+ sudo dpkg-reconfigure mythexport

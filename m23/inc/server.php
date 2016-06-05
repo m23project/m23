@@ -4,6 +4,8 @@
  Description: functions for getting information from the server
 $*/
 
+include_once('/m23/inc/ucs.php');
+
 define('SERVER_BACKUP_DIR','/m23/data+scripts/m23admin/serverBackups');
 define('m23adminHtpasswd',"/m23/etc/.htpasswd");
 define('m23phpMyLDAPAdminHtpasswd',"/m23/etc/.phpMyLDAPAdminHtpasswd");
@@ -20,7 +22,7 @@ define('m23RASTunnelScript','/m23/bin/m23RemoteAdministrationServiceOpenTunnel')
 **/
 function SERVER_importGPGPackageSignKey()
 {
-	return(SERVER_runInBackground('SERVER_importGPGPackageSignKey', 'wget -T1 -t1 -q http://m23.sourceforge.net/m23-Sign-Key.asc -O - | gpg --import /dev/stdin', 'root', false));
+	return(SERVER_runInBackground('SERVER_importGPGPackageSignKey', 'gpg --import /m23/bin/m23-Sign-Key.asc', 'root', false));
 }
 
 
@@ -1010,8 +1012,10 @@ function SERVER_addEtcHosts($hostname,$ip)
 {
 	if ($_SESSION['m23Shared']) return(false);
 
+	//m23customPatchBegin type=del id=SERVER_addEtcHostsNoAdd
 	SERVER_addLineToFile("/etc/hosts"," $hostname$","$ip $hostname");
-	
+	//m23customPatchEnd id=SERVER_addEtcHostsNoAdd
+
 	if (file_exists("/etc/backuppc/hosts"))
 		SERVER_addLineToFile("/etc/backuppc/hosts","^$hostname ","$hostname 0 root");
 };
@@ -1029,7 +1033,9 @@ function SERVER_delEtcHosts($hostname)
 {
 	if ($_SESSION['m23Shared']) return(false);
 
+	//m23customPatchBegin type=del id=SERVER_delEtcHostsNoDel
 	SERVER_delLineFromFile("/etc/hosts"," $hostname$");
+	//m23customPatchEnd id=SERVER_delEtcHostsNoDel
 
 	if (file_exists("/etc/backuppc/hosts"))
 		SERVER_delLineFromFile("/etc/backuppc/hosts","^$hostname ");

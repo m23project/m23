@@ -1,0 +1,177 @@
+Template: slashem-common/backup-incompatible
+Type: select
+Choices: abort, backup, purge, ignore
+Choices-cs.UTF-8: přerušit, zazálohovat, smazat, ignorovat
+Choices-da.UTF-8: abort (afbryd), backup (sikkerhedskopier), purge (slet), ignore (ignorer)
+Choices-de.UTF-8: Abbrechen, Sichern, Löschen, Ignorieren
+Choices-es.UTF-8: cancelar, hacer copia de seguridad, eliminar, ignorar
+Choices-eu.UTF-8: utzi, babeskopia, garbitu, ez ikusia egin
+Choices-fi.UTF-8: keskeytä, tee varmuuskopiot, siivoa, ohita
+Choices-fr.UTF-8: Abandonner l'installation, Sauvegarder, Purger, Ignorer
+Choices-gl.UTF-8: abortar, copiar, eliminar, ignorar
+Choices-it.UTF-8: annullare, salvare, eliminare, ignorare
+Choices-ja.UTF-8: 中断する, バックアップする, 完全に削除, 無視する
+Choices-nl.UTF-8: afbreken, reserverkopie maken, wissen, negeren
+Choices-pt.UTF-8: abortar, salvaguardar, eliminar, ignorar
+Choices-ru.UTF-8: прервать установку, сделать резервную копию, вычистить, игнорировать
+Choices-sv.UTF-8: avbryt, säkerhetskopiera, rensa, ignorera
+Choices-vi.UTF-8: hủy bỏ, lưu trữ, tẩy, bỏ qua
+Default: backup
+Description: Should Slash'em back up your old, incompatible save files?
+ You are upgrading from a version of Slashe'em whose save files are not
+ compatible with the version you are upgrading to. You may either have them
+ backed up into /tmp, purge them, ignore this problem completely, or abort
+ this installation and manually handle Slashem's save files.
+ .
+ If you choose to back up, the files will be backed up into a
+ gzip-compressed tar archive in /tmp with a random name starting with
+ 'slash' and ending in '.tar.gz'.
+Description-cs.UTF-8: Má Slash'em zazálohovat staré a nekompatibilní soubory s pozicemi?
+ Přecházíte z verze, jejíž soubory s uloženými pozicemi nejsou kompatibilní s právě instalovanou verzí. Soubory můžete buď zazálohovat do /tmp, smazat, ignorovat, nebo můžete přerušit instalaci a zpracovat tyto soubory ručně.
+ .
+ Zvolíte-li zálohování, budou soubory nejprve zabaleny do tar archivu a poté komprimovány gzipem. Výsledný soubor v adresáři /tmp bude mít náhodné jméno začínající na 'slash' a končící na '.tar.gz'.
+Description-da.UTF-8: Skal Slash'em lave en sikkerhedskopi af dine gamle, inkompatible og gemte spilfiler?
+ Du opgraderer fra en version af Slashe'em, hvis gemte spilfiler ikke er kompatible med versionen, du opgraderer til. Du kan enten lave en sikkerhedskopi af dem i /tmp, slette dem, ignorer dette problem fuldstændigt eller afbryde denne installation og manuelt håndtere Slashems gemte spilfiler.
+ .
+ Hvis du vælger at lave en sikkerhedskopi, vil filerne blive gemt i et gzip-komprimeret tar-arkiv i /tmp med et tilfældigt navn, der starter med »slash« og ender med '.tar.gz'.
+Description-de.UTF-8: Soll Slash'em Ihre alten, inkompatiblen gespeicherten Dateien sichern?
+ Sie führen ein Upgrade von einer Version von Slash'em durch, deren gespeicherte Dateien nicht mit der Version kompatibel sind, die Sie gerade installieren. Sie können diese entweder in /tmp sichern, löschen, das Problem vollständig ignorieren, oder die Installation abbrechen und Slash'ems Dateien manuell verwalten.
+ .
+ Falls Sie sich entscheiden, die Dateien zu sichern, werden sie in ein gzip-komprimiertes tar-Archiv mit zufälligem Namen, der mit »slash« anfängt und in »tar.gz« endet, in /tmp gesichert.
+Description-es.UTF-8: ¿Desea que Slash'em haga una copia de seguridad de sus archivos guardados (antiguos e incompatibles)?
+ Está actualizando desde una versión de Slash'em cuyos archivos guardados no son compatibles con la versión a la que está actualizando. Puede guardar una copia de seguridad en «/tmp», eliminarlos, ignorar este problema completamente, o cancelar esta instalación y manejar manualmente los archivos guardados de Slashem.
+ .
+ Si elige hacer una copia de seguridad, los archivos se guardarán en un archivo tar comprimido con gzip en «/tmp», con un nombre aleatorio que empiece con «slash» y acabe en «.tar.gz».
+Description-eu.UTF-8: Slash'em-ek zure gordetako fitxategi zahar ez bateragarriak gorde behar al ditu?
+ Zure jatorrizko Slash'em-ek gordetako fitxategiak ez dira bertsio-berritzen ari zaren bertsioarekin bateragarriak. Hauek /tmp-en babeskopia egin, garbitu eta arazo hau alde batetara uzteko edo fitxategiak eskuz gordetzeko, instalazioa uzteko aukera duzu.
+ .
+ Babeskopia egitea erabakitzen baduzu gzip bidez konprimituriko tar pakete batetan gordeko dira /tmp-en 'slash'-ez hasi eta 'tar.gz'-rekin amaitzen den ausazko izen batekin gordeko dira.
+Description-fi.UTF-8: Kuinka Slash'emin vanhat, yhteensopimattomat tallennustiedostot käsitellään?
+ Slash'emiä ollaan päivittämässä versiosta, jonka tallennustiedostot eivät ole yhteensopivia version kanssa, johon ollaan päivittämässä. Tiedostot voidaan joko kopioida talteen hakemistoon /tmp, siivota pois, ongelma voidaan ohittaa kokonaan tai asennus voidaan keskeyttää tilanteen hoitamiseksi käsin.
+ .
+ Jos valitset varmuuskopioinnin, tiedostot tallennetaan gzip-pakattuun tar-arkistoon hakemistoon /tmp satunnaiselle nimelle, joka alkaa ”slash” ja loppuu ”.tar.gz”.
+Description-fr.UTF-8: Action sur les anciens fichiers de format incompatible :
+ L'opération en cours est une mise à niveau de Slash'em à partir d'une version dont les fichiers de sauvegarde ne sont pas compatibles avec cette nouvelle version du logiciel. Vous pouvez les sauvegarder dans /tmp, les purger, ignorer complètement ce problème ou bien abandonner cette installation et gérer vous-même les fichiers de sauvegarde de Slash'em.
+ .
+ Si vous choisissez de sauvegarder les fichiers, ils le seront sous forme d'archives tar compressées par gzip. Elles seront créées dans /tmp avec un nom aléatoire commençant par « slash » et se terminant par « .tar.gz ».
+Description-gl.UTF-8: ¿Debe Slash'em gardar as partidas gravadas vellas e incompatibles?
+ Está a se actualizar dunha versión de Slash'em cunhas partidas gravadas que non son compatibles coa versión á que se está a actualizar. Pode copialas a /tmp/, eliminalas, ignorar este problema completamente ou abortar a instalación e xestionar as partidas gravadas de Slash'em á man.
+ .
+ Se escolle copiar, os ficheiros hanse gravar nun arquivo tar comprimido con gzip en /tmp cun nome aleatorio que ha comezar por "slash" e ha rematar en ".tar.gz".
+Description-it.UTF-8: Slash'em deve convervare i vecchi file salvati non più compatibili?
+ È in corso l'aggiornamento da una versione di Slashe'em i cui file salvati non sono compatibili con la versione verso cui si aggiornando. È possibile salvare i file nella directory «/tmp», eliminarli, ignorare completamente questo problema o annullare l'installazione e gestire manualmente i file salvati.
+ .
+ Scegliendo di salvarli, i file saranno inseriti in un archivio compresso con gzip in «/tmp» con un nome casuale che inizia per «slash» e finisce in «.tar.gz».
+Description-ja.UTF-8: 古い、互換性がない Slash'em のセーブファイルを保存しておきますか?
+ アップグレード先のバージョンとはセーブしたファイルの互換性が無いバージョンの Slash'em からアップグレードを行おうとしています。このファイルを /tmp にバックアップするか、削除するか、完全にこの問題を無視するか、あるいは今回のインストールを中断して手動で Slashem のセーブファイルを取り扱うかすると良いでしょう。
+ .
+ バックアップするを選んだ場合は、ファイルは /tmp に 'slash' で始まり '.tar.gz' で終わる名前の gzip 圧縮された tar アーカイブに保存されます。
+Description-nl.UTF-8: Wilt u dat Slash'em reservekopieën maakt van uw oude incompatibele 'save'-bestanden?
+ De 'save'-bestanden van uw huidige Slash'em-versie zijn niet compatibel met de versie waar u naar opwaardeert. U kunt of een reservekopie van deze bestanden maken in /tmp, of deze bestanden wissen, of dit probleem compleet negeren, of deze installatie afbreken en de Slash'em 'save'-bestanden handmatig afhandelen.
+ .
+ Als u ervoor kiest om een reservekopie te maken, wordt er een met gzip gecomprimeerd tar-archief aangemaakt in /tmp, met een willekeurige naam die begint met 'slash' en eindigt op '.tar.gz'.
+Description-pt.UTF-8: Deve o Slash'em salvaguardar os seus ficheiros antigos e incompatíveis?
+ Está a actualizar de uma versão do Slashe'em cujos ficheiros não são compatíveis com a nova versão. Poderá salvaguardá-los em /tmp, eliminá-los, ignorar de todo este problema, ou abortar esta instalação e lidar manualmente com estes ficheiros do Slashem.
+ .
+ Caso escolha salvaguardar, os ficheiros serão guardados num arquivo tar comprimido pelo gzip em /tmp com um nome aleatório começado por 'slash' e acabado por '. tar.gz'.
+Description-ru.UTF-8: Сделать резервную копию старых несовместимых файлов сохранений Slashem?
+ Сейчас производится обновление с версии Slashem, чьи файлы сохранений несовместимы с новой устанавливаемой версией. Можно указать сделать их резервную копию в каталоге /tmp, удалить их, полностью игнорировать эту проблему, или прервать установку и вручную что-то сделать с файлами сохранений Slashem.
+ .
+ При выборе создания резервной копии старые файлы сохранений будут помещены в каталог /tmp в виде tar архива сжатого gzip с произвольным именем, начинающимся на 'slash' и заканчивающимся на '.tar.gz'.
+Description-sv.UTF-8: Ska Slash'em säkerhetskopiera dina gamla, okompatibla sparade filer?
+ Du uppgraderar från en version av Slashe'em vars sparade filer inte är kompatibla med den version du uppgraderar till. Du kan antingen få dom säkerhetskopierade till /tmp, rensa ut dom, ignorera detta problem totalt eller avbryta denna installation och manuellt hantera Slashem's sparade filer.
+ .
+ Om du väljer att säkerhetskopiera kommer filerna att läggas i en gzip-packat tar-arkiv i /tmp med ett slumpat namn som börjar med 'slash' och slutar på '.tar.gz'.
+Description-vi.UTF-8: Bạn có muốn trình Slash'em lưu trữ các tập tin lưu không tương thích cũ không?
+ Lúc này bạn đang nâng cấp từ một phiên bản Slash'em có tập tin lưu không tương thích với phiên bản mới. Như thế thì bạn có thể hoặc lưu trữ chúng vào «/tmp», hoặc tẩy chúng, hoặc bỏ qua vấn đề này hoàn toàn, hoặc hủy bỏ việc cài đặt này và tự quản lý các tập tin lưu của Slash'em.
+ .
+ Nếu bạn chọn lưu trữ thì các tập tin ấy sẽ được lưu trữ vào một kho loại tar được nén bằng gzip trong «/tmp», có một tên ngẫu nhiên bắt đầu với «slash» và kết thức với «.tar.gz».
+
+Template: slashem-common/do-backup
+Type: select
+Choices: abort, backup, purge, ignore
+Choices-cs.UTF-8: přerušit, zazálohovat, smazat, ignorovat
+Choices-da.UTF-8: abort (afbryd), backup (sikkerhedskopier), purge (slet), ignore (ignorer)
+Choices-de.UTF-8: Abbrechen, Sichern, Löschen, Ignorieren
+Choices-es.UTF-8: cancelar, hacer copia de seguridad, eliminar, ignorar
+Choices-eu.UTF-8: utzi, babeskopia, garbitu, ez ikusia egin
+Choices-fi.UTF-8: keskeytä, tee varmuuskopiot, siivoa, ohita
+Choices-fr.UTF-8: Abandonner l'installation, Sauvegarder, Purger, Ignorer
+Choices-gl.UTF-8: abortar, copiar, eliminar, ignorar
+Choices-it.UTF-8: annullare, salvare, eliminare, ignorare
+Choices-ja.UTF-8: 中断する, バックアップする, 完全に削除, 無視する
+Choices-nl.UTF-8: afbreken, reserverkopie maken, wissen, negeren
+Choices-pt.UTF-8: abortar, salvaguardar, eliminar, ignorar
+Choices-ru.UTF-8: прервать установку, сделать резервную копию, вычистить, игнорировать
+Choices-sv.UTF-8: avbryt, säkerhetskopiera, rensa, ignorera
+Choices-vi.UTF-8: hủy bỏ, lưu trữ, tẩy, bỏ qua
+Default: backup
+Description: Should Slash'em back up your old, incompatible save files?
+ You are upgrading from a version of Slashe'em whose save files are not
+ compatible with the version you are upgrading to. You may either have them
+ backed up into /tmp, purge them, ignore this problem completely, or abort
+ this installation and manually handle Slashem's save files.
+ .
+ If you choose to back up, the files will be backed up into a
+ gzip-compressed tar archive in /tmp with a random name starting with
+ 'slash' and ending in '.tar.gz'.
+Description-cs.UTF-8: Má Slash'em zazálohovat staré a nekompatibilní soubory s pozicemi?
+ Přecházíte z verze, jejíž soubory s uloženými pozicemi nejsou kompatibilní s právě instalovanou verzí. Soubory můžete buď zazálohovat do /tmp, smazat, ignorovat, nebo můžete přerušit instalaci a zpracovat tyto soubory ručně.
+ .
+ Zvolíte-li zálohování, budou soubory nejprve zabaleny do tar archivu a poté komprimovány gzipem. Výsledný soubor v adresáři /tmp bude mít náhodné jméno začínající na 'slash' a končící na '.tar.gz'.
+Description-da.UTF-8: Skal Slash'em lave en sikkerhedskopi af dine gamle, inkompatible og gemte spilfiler?
+ Du opgraderer fra en version af Slashe'em, hvis gemte spilfiler ikke er kompatible med versionen, du opgraderer til. Du kan enten lave en sikkerhedskopi af dem i /tmp, slette dem, ignorer dette problem fuldstændigt eller afbryde denne installation og manuelt håndtere Slashems gemte spilfiler.
+ .
+ Hvis du vælger at lave en sikkerhedskopi, vil filerne blive gemt i et gzip-komprimeret tar-arkiv i /tmp med et tilfældigt navn, der starter med »slash« og ender med '.tar.gz'.
+Description-de.UTF-8: Soll Slash'em Ihre alten, inkompatiblen gespeicherten Dateien sichern?
+ Sie führen ein Upgrade von einer Version von Slash'em durch, deren gespeicherte Dateien nicht mit der Version kompatibel sind, die Sie gerade installieren. Sie können diese entweder in /tmp sichern, löschen, das Problem vollständig ignorieren, oder die Installation abbrechen und Slash'ems Dateien manuell verwalten.
+ .
+ Falls Sie sich entscheiden, die Dateien zu sichern, werden sie in ein gzip-komprimiertes tar-Archiv mit zufälligem Namen, der mit »slash« anfängt und in »tar.gz« endet, in /tmp gesichert.
+Description-es.UTF-8: ¿Desea que Slash'em haga una copia de seguridad de sus archivos guardados (antiguos e incompatibles)?
+ Está actualizando desde una versión de Slash'em cuyos archivos guardados no son compatibles con la versión a la que está actualizando. Puede guardar una copia de seguridad en «/tmp», eliminarlos, ignorar este problema completamente, o cancelar esta instalación y manejar manualmente los archivos guardados de Slashem.
+ .
+ Si elige hacer una copia de seguridad, los archivos se guardarán en un archivo tar comprimido con gzip en «/tmp», con un nombre aleatorio que empiece con «slash» y acabe en «.tar.gz».
+Description-eu.UTF-8: Slash'em-ek zure gordetako fitxategi zahar ez bateragarriak gorde behar al ditu?
+ Zure jatorrizko Slash'em-ek gordetako fitxategiak ez dira bertsio-berritzen ari zaren bertsioarekin bateragarriak. Hauek /tmp-en babeskopia egin, garbitu eta arazo hau alde batetara uzteko edo fitxategiak eskuz gordetzeko, instalazioa uzteko aukera duzu.
+ .
+ Babeskopia egitea erabakitzen baduzu gzip bidez konprimituriko tar pakete batetan gordeko dira /tmp-en 'slash'-ez hasi eta 'tar.gz'-rekin amaitzen den ausazko izen batekin gordeko dira.
+Description-fi.UTF-8: Kuinka Slash'emin vanhat, yhteensopimattomat tallennustiedostot käsitellään?
+ Slash'emiä ollaan päivittämässä versiosta, jonka tallennustiedostot eivät ole yhteensopivia version kanssa, johon ollaan päivittämässä. Tiedostot voidaan joko kopioida talteen hakemistoon /tmp, siivota pois, ongelma voidaan ohittaa kokonaan tai asennus voidaan keskeyttää tilanteen hoitamiseksi käsin.
+ .
+ Jos valitset varmuuskopioinnin, tiedostot tallennetaan gzip-pakattuun tar-arkistoon hakemistoon /tmp satunnaiselle nimelle, joka alkaa ”slash” ja loppuu ”.tar.gz”.
+Description-fr.UTF-8: Action sur les anciens fichiers de format incompatible :
+ L'opération en cours est une mise à niveau de Slash'em à partir d'une version dont les fichiers de sauvegarde ne sont pas compatibles avec cette nouvelle version du logiciel. Vous pouvez les sauvegarder dans /tmp, les purger, ignorer complètement ce problème ou bien abandonner cette installation et gérer vous-même les fichiers de sauvegarde de Slash'em.
+ .
+ Si vous choisissez de sauvegarder les fichiers, ils le seront sous forme d'archives tar compressées par gzip. Elles seront créées dans /tmp avec un nom aléatoire commençant par « slash » et se terminant par « .tar.gz ».
+Description-gl.UTF-8: ¿Debe Slash'em gardar as partidas gravadas vellas e incompatibles?
+ Está a se actualizar dunha versión de Slash'em cunhas partidas gravadas que non son compatibles coa versión á que se está a actualizar. Pode copialas a /tmp/, eliminalas, ignorar este problema completamente ou abortar a instalación e xestionar as partidas gravadas de Slash'em á man.
+ .
+ Se escolle copiar, os ficheiros hanse gravar nun arquivo tar comprimido con gzip en /tmp cun nome aleatorio que ha comezar por "slash" e ha rematar en ".tar.gz".
+Description-it.UTF-8: Slash'em deve convervare i vecchi file salvati non più compatibili?
+ È in corso l'aggiornamento da una versione di Slashe'em i cui file salvati non sono compatibili con la versione verso cui si aggiornando. È possibile salvare i file nella directory «/tmp», eliminarli, ignorare completamente questo problema o annullare l'installazione e gestire manualmente i file salvati.
+ .
+ Scegliendo di salvarli, i file saranno inseriti in un archivio compresso con gzip in «/tmp» con un nome casuale che inizia per «slash» e finisce in «.tar.gz».
+Description-ja.UTF-8: 古い、互換性がない Slash'em のセーブファイルを保存しておきますか?
+ アップグレード先のバージョンとはセーブしたファイルの互換性が無いバージョンの Slash'em からアップグレードを行おうとしています。このファイルを /tmp にバックアップするか、削除するか、完全にこの問題を無視するか、あるいは今回のインストールを中断して手動で Slashem のセーブファイルを取り扱うかすると良いでしょう。
+ .
+ バックアップするを選んだ場合は、ファイルは /tmp に 'slash' で始まり '.tar.gz' で終わる名前の gzip 圧縮された tar アーカイブに保存されます。
+Description-nl.UTF-8: Wilt u dat Slash'em reservekopieën maakt van uw oude incompatibele 'save'-bestanden?
+ De 'save'-bestanden van uw huidige Slash'em-versie zijn niet compatibel met de versie waar u naar opwaardeert. U kunt of een reservekopie van deze bestanden maken in /tmp, of deze bestanden wissen, of dit probleem compleet negeren, of deze installatie afbreken en de Slash'em 'save'-bestanden handmatig afhandelen.
+ .
+ Als u ervoor kiest om een reservekopie te maken, wordt er een met gzip gecomprimeerd tar-archief aangemaakt in /tmp, met een willekeurige naam die begint met 'slash' en eindigt op '.tar.gz'.
+Description-pt.UTF-8: Deve o Slash'em salvaguardar os seus ficheiros antigos e incompatíveis?
+ Está a actualizar de uma versão do Slashe'em cujos ficheiros não são compatíveis com a nova versão. Poderá salvaguardá-los em /tmp, eliminá-los, ignorar de todo este problema, ou abortar esta instalação e lidar manualmente com estes ficheiros do Slashem.
+ .
+ Caso escolha salvaguardar, os ficheiros serão guardados num arquivo tar comprimido pelo gzip em /tmp com um nome aleatório começado por 'slash' e acabado por '. tar.gz'.
+Description-ru.UTF-8: Сделать резервную копию старых несовместимых файлов сохранений Slashem?
+ Сейчас производится обновление с версии Slashem, чьи файлы сохранений несовместимы с новой устанавливаемой версией. Можно указать сделать их резервную копию в каталоге /tmp, удалить их, полностью игнорировать эту проблему, или прервать установку и вручную что-то сделать с файлами сохранений Slashem.
+ .
+ При выборе создания резервной копии старые файлы сохранений будут помещены в каталог /tmp в виде tar архива сжатого gzip с произвольным именем, начинающимся на 'slash' и заканчивающимся на '.tar.gz'.
+Description-sv.UTF-8: Ska Slash'em säkerhetskopiera dina gamla, okompatibla sparade filer?
+ Du uppgraderar från en version av Slashe'em vars sparade filer inte är kompatibla med den version du uppgraderar till. Du kan antingen få dom säkerhetskopierade till /tmp, rensa ut dom, ignorera detta problem totalt eller avbryta denna installation och manuellt hantera Slashem's sparade filer.
+ .
+ Om du väljer att säkerhetskopiera kommer filerna att läggas i en gzip-packat tar-arkiv i /tmp med ett slumpat namn som börjar med 'slash' och slutar på '.tar.gz'.
+Description-vi.UTF-8: Bạn có muốn trình Slash'em lưu trữ các tập tin lưu không tương thích cũ không?
+ Lúc này bạn đang nâng cấp từ một phiên bản Slash'em có tập tin lưu không tương thích với phiên bản mới. Như thế thì bạn có thể hoặc lưu trữ chúng vào «/tmp», hoặc tẩy chúng, hoặc bỏ qua vấn đề này hoàn toàn, hoặc hủy bỏ việc cài đặt này và tự quản lý các tập tin lưu của Slash'em.
+ .
+ Nếu bạn chọn lưu trữ thì các tập tin ấy sẽ được lưu trữ vào một kho loại tar được nén bằng gzip trong «/tmp», có một tên ngẫu nhiên bắt đầu với «slash» và kết thức với «.tar.gz».

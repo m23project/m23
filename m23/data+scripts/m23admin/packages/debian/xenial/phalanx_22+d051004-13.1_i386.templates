@@ -1,0 +1,101 @@
+Template: phalanx/learning_file_size
+Type: string
+Default: 32768
+Description: Learning file size (1-999999):
+ The learning file may improve Phalanx strength. Each item in this
+ file uses 8 bytes.
+ .
+ Please specify a number in the range 1-999999. The size may be
+ changed later by reconfiguring the package but this will erase any
+ data the file may then contain.
+Description-cs.UTF-8: Velikost učícího souboru (1-999999):
+ Učící soubor může zvýšit sílu Phalanxu. Každá položka v souboru zabírá 8 bajtů.
+ .
+ Zadejte číslo v rozsahu 1-999999. Velikost můžete změnit kdykoliv později překonfigurováním balíku, ovšem přijdete tak o data v souboru uložená.
+Description-da.UTF-8: Filstørrelse for læringsfil (1-999999):
+ Læringsfilen kan forbedre Phalanx' styrke. Hvert punkt i denne fil bruger 8 byte.
+ .
+ Angiv venligst et tal i intervallet 1-999999. Størrelsen kan ændres senere ved at omkonfigurere pakken, men dette vil slette alle data i filen.
+Description-de.UTF-8: Größe der Lerndatei (1-999999):
+ Die Lerndatei verbessert die Spielstärke von Phalanx. Jeder Eintrag in dieser Datei verwendet 8 Byte.
+ .
+ Sie können eine Größe von 1 bis 999999 auswählen. Die Größe kann später von Ihnen angepasst werden, indem Sie das Paket neu konfigurieren, jedoch gehen dabei alle Inhalte der Datei verloren.
+Description-es.UTF-8: Tamaño del archivo de aprendizaje (1-999999):
+ El archivo de aprendizaje puede mejorar la habilidad de Phalanx. Cada uno de los elementos de este archivo utiliza 8 bytes.
+ .
+ Por favor, especifique un número entre 1 y 999999. Podrá modificar el tamaño si reconfigura el paquete, pero se eliminarán todos los datos que el archivo pudiera contener.
+Description-fr.UTF-8: Taille du fichier d'apprentissage (1-999999) :
+ Le fichier d'apprentissage permet à Phalanx de devenir plus fort. Chaque entrée de ce fichier occupe 8 octets.
+ .
+ Veuillez indiquer un nombre compris entre 1 et 999999. Cette valeur pourra être modifiée par la suite en reconfigurant le paquet mais cela supprimera toutes les données contenues dans le fichier.
+Description-it.UTF-8: Dimensione del file di apprendimento (1-999999):
+ Il file di apprendimento può migliorare la forza di Phalanx. Ogni voce in questo file occupa 8 byte.
+ .
+ Specificare un numero nell'intervallo 1-999999. La dimensione può essere modificata in seguito riconfigurando il pacchetto, ma ciò cancellerà ogni dato eventualmente contenuto nel file in quel momento.
+Description-ja.UTF-8: 学習ファイルのサイズ (1-999999):
+ 学習ファイルは Phalanx の強さを改善します。このファイル中で各項目は 8 バイト使います。
+ .
+ 1-999999 の範囲で数字を指定してください。サイズは後ほどパッケージを再設定すれば変更できますが、ファイルが持っているデータは全て削除されます。
+Description-nl.UTF-8: Grootte van het leerbestand (1-999999):
+ Het leerbestand kan Phalanx sterker maken. Elk item in dit bestand gebruikt 8 bytes.
+ .
+ Gelieve een nummer op te geven in het bereik 1-999999. U kunt de grootte later altijd nog aanpassen door dit pakket te herconfigureren, maar dit wist wel alle data dat dit bestand op dat moment bevat.
+Description-pl.UTF-8: Rozmiar pliku nauki (1-999999):
+ Plik nauki może zwiększyć siłę Phalanx. Każdy wpis w pliku używa 8 bajtów.
+ .
+ Proszę wprowadzić liczbę z zakresu 1-999999. Rozmiar można zmienić później konfigurując pakiet ponownie, lecz usunie to wszystkie już przechowywane w nim dane.
+Description-pt.UTF-8: Tamanho do ficheiro de aprendizagem (1-999999):
+ O ficheiro de aprendizagem pode melhorar a força do Phalanx. Cada item neste ficheiro usa 8 bytes.
+ .
+ Por favor especifique um número no intervalo 1-999999. O tamanho pode ser alterado mais tarde ao reconfigurar o pacote mas isso irá apagar quaisquer dados que o ficheiro possa conter na altura.
+Description-ru.UTF-8: Размер файла обучения (1-999999):
+ Файл обучения может повысить мастерство Phalanx. На каждый элемент в этом файле отводится 8 байт.
+ .
+ Введите число из диапазона 1-999999. Позже размер можно изменить перенастроив пакет, но при этом удаляются все данные из файла.
+Description-sk.UTF-8: Veľkosť učebného súboru (1-999999):
+ Učebný súbor môže zlepšiť silu Phalanx. Každá položka v tomto súbore zaberá 8 bajtov.
+ .
+ Prosím, zadajte číslo v rozsahu 1-999999. Veľkosť možno neskôr zmeniť pomocou rekonfigurácie balíka, čo však vymaže všetky dáta, ktoré súbor obsahuje.
+Description-sv.UTF-8: Storlek på inlärningsfilen (1-999999)
+ Inlärningsfilen kan förbättra Phalanx styrka. Varje inlägg i denna fil använder 8 bytes.
+ .
+ Specificera ett nummer i omfånget 1-999999. Storleken kan ändras senare genom att konfigurera om paketet men det kommer att radera all data som filen då innehåller.
+Description-vi.UTF-8: Kích cỡ tập tin học biết (1-999999):
+ Tập tin học biết có thể tăng sức mạnh của Phalanx. Mọi mục trong tập tin này đều chiếm 8 byte.
+ .
+ Hãy ghi rõ một con số trong phạm vi 1 đến 999999. Cũng có thể sửa đổi kích cỡ về sau bằng cách cấu hình lại gói (dpkg reconfigure phalanx), nhưng mà câu lệnh đó cũng xoá bỏ dữ liệu nào nằm trong tập tin này.
+
+Template: phalanx/learning_file_erase
+Type: boolean
+Default: false
+Description: Really change the size of the learning file and erase its data?
+ You chose to change the size of the learning file used by phalanx
+ for improving its strength.  This will erase all the learned data.
+Description-cs.UTF-8: Opravdu změnit velikost učícího souboru a smazat jeho obsah?
+ Zvolili jste, že chcete změnit velikost učícího souboru, který phalanx používá pro zlepšení své síly. Tímto se smažou všechna naučená data.
+Description-da.UTF-8: Ønsker du at ændre størrelsen på læringsfilen og slette dens data?
+ Du valgte at ændre størrelsen på læringsfilen brugt af phalanx for forbedring af dens styrke. Dette vil slette alle læringsdataene.
+Description-de.UTF-8: Soll die Größe der Lerndatei geändert werden? Dabei geht deren Inhalt verloren.
+ Sie haben angegeben, das Sie die Größe der Lerndatei verändern wollen. Die Lerndatei verbessert die Erfolgsquote von Phalanx. Die Änderung löscht die gesamten erlernten Daten.
+Description-es.UTF-8: ¿Desea modificar el tamaño del archivo de aprendizaje y eliminar sus datos?
+ Ha seleccionado modificar el tamaño del archivo de aprendizaje que utiliza Phalanx para mejorar su habilidad. Se eliminarán todos los datos aprendidos.
+Description-fr.UTF-8: Faut-il vraiment changer la taille du fichier et perdre ses données?
+ Vous avez choisi de modifier la taille du fichier d'apprentissage utilisé par Phalanx pour en améliorer les performances. Cela supprimera toutes les données mémorisées.
+Description-it.UTF-8: Cambiare veramente la dimensione del file di apprendimento e cancellare i suoi dati?
+ Si è scelto di cambiare la dimensione del file di apprendimento usato da phalanx per migliorare la sua forza. Ciò cancellerà tutti i dati appresi.
+Description-ja.UTF-8: 本当に、学習ファイルのサイズを変更してデータを消去しますか?
+ 強さを改善するため、phalanx が使う学習ファイルのサイズ変更を選択しました。これは全ての学習データを削除します。
+Description-nl.UTF-8: Bent u zeker dat u de grootte van het leerbestand wilt aanpassen, en de data erin wilt wissen?
+ U heeft ervoor gekozen om de grootte van het leerbestand dat Phalanx gebruikt om in sterker te worden aan te passen. Dit wist al de geleerde data.
+Description-pl.UTF-8: Czy na pewno zmienić rozmiar pliku nauki i usunąć jego bieżące dane?
+ Wybrano zmianę rozmiaru pliku nauki, używanego przez phalanx w celu zwiększenia jego siły. Usunie to wszystkie już zebrane dane.
+Description-pt.UTF-8: De certeza que quer alterar o tamanho do ficheiro de aprendizagem e apagar os seus dados?
+ Escolheu alterar o tamanho do ficheiro de aprendizagem usado pelo phalanx para melhorar a sua força. Isto irá apagar todos os dados aprendidos.
+Description-ru.UTF-8: Действительно изменить размер файла обучения (сотрутся все имеющиеся в нём данные)?
+ Вы выбрали изменение размера файла обучения, который используется phalanx для повышения мастерства. Эта операция уничтожит все накопленные данные, имеющиеся в файле.
+Description-sk.UTF-8: Naozaj zmeniť veľkosť učebného súboru a vymazať všetky jeho dáta?
+ Zvolili ste zmenu veľkosti učebného súboru, ktorý phalanx používa na zväčšenie svojej sily. Tento krok vymaže všetky naučené dáta.
+Description-sv.UTF-8: Verkligen ändra storleken på inlärningsfilen och radera dess data?
+ Du har valt att ändra storleken på inlärningsfilen som används av phalanx för att förbättra dess styrka.  Detta kommer att radera all inlärt data.
+Description-vi.UTF-8: Thực sự sửa đổi kích cỡ của tập tin học biết và xoá bỏ dữ liệu bên trong không?
+ Bạn đã chọn sửa đổi kích cỡ của tập tin học biết được phalanx sử dụng để tăng sức mạnh. Việc này thì xoá bỏ tất cả dữ liệu đã học biết.

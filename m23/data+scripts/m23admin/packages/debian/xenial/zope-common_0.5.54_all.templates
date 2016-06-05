@@ -1,0 +1,718 @@
+
+Template: shared/zope/restart
+Type: select
+Choices: configuring, end, manually
+Choices-cs.UTF-8: během konfigurace, na konci, ručně
+Choices-da.UTF-8: opsætning, slut, manuelt
+Choices-de.UTF-8: beim Einrichten, am Ende, manuell
+Choices-es.UTF-8: configuración, final, manual
+Choices-fi.UTF-8: asetettaessa, lopussa, manuaalisesti
+Choices-fr.UTF-8: Lors de la configuration, À la fin, Manuellement
+Choices-gl.UTF-8: configuración, remate, manual
+Choices-it.UTF-8: configurazione, alla fine, manualmente
+Choices-ja.UTF-8: 設定中, 最後に, 手動で
+Choices-nl.UTF-8: configuratie, einde, handmatig
+Choices-pt.UTF-8: a configurar, no final, manualmente
+Choices-pt_BR.UTF-8: configurando, final, manualmente
+Choices-ru.UTF-8: после каждого продукта, в конце установки, вручную
+Choices-sv.UTF-8: konfigurering, efteråt, manuellt
+Choices-vi.UTF-8: cấu hình, kết thúc, bằng tay
+Default: end
+Description: Automatic restart of Zope instances:
+ Zope offers an extensible, modular structure that allows for the easy
+ addition of extra components (products) or features. These are
+ provided as packages with names that start with a 'zope-' prefix.
+ Each Zope instance needs to be restarted to use any new add-on.
+ .
+ Please choose the default behavior of Zope instances when Zope needs
+ to be restarted:
+ .
+  - configuring: restart instances after each product configuration;
+  - end:         restart instances only once at the end of the whole
+                 installation/upgrading process;
+  - manually:    no automated restart.
+Description-cs.UTF-8: Automatický restart instancí Zope:
+ Zope má modulární, rozšiřitelnou strukturu, díky které můžete jednoduše přidávat další komponenty (produkty) nebo vlastnosti. Tyto produkty většinou naleznete v balících, jejichž název začíná na „zope-“. Aby mohly instance Zope využívat nové produkty, musí se všechny restartovat.
+ .
+ Vyberte prosím, jak se mají instance Zope chovat v případech, kdy je potřeba je restartovat.
+ .
+  - během konfigurace: instance se restartují při konfiguraci
+                       každého produktu.
+  - na konci:          instance se restartují pouze na konci celého
+                       instalačního/aktualizačního procesu.
+  - ručně:             bez automatického restartu.
+Description-da.UTF-8: Automatisk genstart af Zopeinstanser:
+ Zope tilbyder en modulær struktur, der kan udvides og giver dig let adgang til at tilføje ekstra moduler (produkter) eller funktioner. Disse tilbydes som pakker med navne som starter med præfikset 'zope-'. Hver Zopeinstans kræver en genstart for at bruge nye tilføjelser.
+ .
+ Vælg venligst standardopførslen for Zopeinstanser når Zope har brug for en genstart:
+ .
+  - opsætning: genstart alle forekomster efter hver produktopsætning;
+  - slut:      genstart kun en enkelt gang efter hele installations- 
+               eller opgraderingsprocessen;
+  - manuelt:   ingen automatisk genstart.
+Description-de.UTF-8: Automatischer Neustart von Zope-Instanzen:
+ Zope bietet einen erweiterbaren, modularen Aufbau, der eine leichte Hinzunahme von Zusatzkomponenten (Produkten) oder Funktionen erlaubt. Diese werden in Paketen angeboten, deren Namen mit der Vorsilbe »zope-« beginnt. Jede Zope-Instanz muss neu gestartet werden, um eine neue Ergänzung zu verwenden.
+ .
+ Bitte wählen Sie das Standardverhalten von Zope-Instanzen, wenn Zope neu gestartet werden muss.
+ .
+  * beim Einrichten: Neustart der Instanzen nach jeder Einrichtung
+                     eines Produkts;
+  * am Ende:         Neustart der Instanzen nur einmal am Ende der
+                     gesamten Installation bzw. des Upgrades;
+  * manuell:         kein automatisierter Neustart.
+Description-es.UTF-8: Reinicio automático de las instancias de Zope:
+ Zope ofrece una estructura modular y extensible que permite añadir fácilmente componentes (productos) o características extra. Éstos se proporcionan como paquetes con nombres que empiezan con un prefijo «zope-». Es necesario reiniciar cada instancia de Zope para utilizar cada nuevo añadido.
+ .
+ Por favor, elija el comportamiento predeterminado de las instancias de Zope cuando sea necesario reiniciarlo:
+ .
+  - configuración: reiniciar las instancias después de cada configuración de
+                    producto;
+  - final:         reiniciar las instancias sólo una vez al final del proceso
+                   completo de instalación/actualización;
+  - manual:        sin reinicio automático.
+Description-fi.UTF-8: Zope-instanssien automaattinen uudelleenkäynnistys:
+ Zope tarjoaa laajennettavan moduulisen rakenteen, jonka ansiosta lisäkomponenttien (tuotteiden) ja ominaisuuksien lisääminen on helppoa. Nämä tarjotaan paketteina, joiden nimet alkavat etuliitteellä ”zope-”. Jokainen Zope-instanssi tulee käynnistää uudelleen kunkin uuden lisäosan käyttämiseksi.
+ .
+ Valitse Zope-instanssien oletuskäyttäytyminen, kun Zope tarvitsee käynnistää uudelleen:
+ .
+  - asetettaessa:  käynnistä instanssit uudelleen jokaisen tuotteen
+                   asetusten teon jälkeen
+  - lopussa:       käynnistä instanssit uudelleen kerran koko asennus-
+                   tai päivitysprosessin lopuksi
+  - manuaalisesti: ei automaattista uudelleenkäynnistystä
+Description-fr.UTF-8: Méthode de redémarrage des instances Zope :
+ Zope comporte une structure extensible qui vous permet d'ajouter facilement des parties (produits) ou des fonctionnalités supplémentaires. Chacune d'elles peut généralement être trouvée dans des paquets dont le nom commence par le préfixe « zope- ». Zope a besoin d'être redémarré afin d'utiliser ces nouvelles extensions.
+ .
+ Veuillez choisir le comportement par défaut des instances Zope lorsque celles-ci nécessitent son redémarrage :
+ .
+  - Lors de la configuration : redémarrer les instances après chaque
+                               configuration ;
+  - À la fin                 : redémarrer les instances uniquement
+                               lorsque le processus d'installation ou
+                               de mise à niveau sera terminé ;
+  - Manuellement             : ne pas redémarrer.
+Description-gl.UTF-8: Reinicio automático das instancias de Zope:
+ Zope ofrece unha estructura extensible e modular que permite engadir facilmente compoñentes (productos) ou características extra. Estes fornécense coma paquetes con nomes que comezan co prefixo "zope-". Hai que reiniciar cada instancia de Zope para empregar os novos engadidos.
+ .
+ Escolla o comportamento por defecto das instancias de Zope cando se ten que reiniciar Zope:
+ .
+  - configuración: reiniciar as instancias despois de configurar cada producto;
+  - remate:        reiniciar as instancias só unha vez despois de todo o
+                   proceso de instalación/actualización;
+  - manual:        non facer un reinicio automático.
+Description-ja.UTF-8: Zope インスタンスを自動的に再起動する:
+ Zope はコンポーネント (プロダクト) や機能を簡単に追加できる拡張可能なオブジェクト指向構造となっています。それぞれの製品や機能は、普通は `zope-' で始まる名前のパッケージになっています。新しく追加したアドオンを使うには各 Zope インスタンスの再起動が必要です。
+ .
+ Zope の再起動が必要になった際の Zope インスタンスのデフォルトの動作を選んでください:
+ .
+  - 設定中: 各プロダクトの設定後にインスタンスを再起動します。
+  - 最後に: 全てのインストール・アップグレード作業が終わった際にインスタンス
+    を1回だけ再起動します。
+  - 手動で: 自動的に再起動しません。
+Description-nl.UTF-8: Automatisch herstarten van Zope-diensten:
+ Zope biedt een uitbreidbare en modulaire structuur die het mogelijk maakt om eenvoudig extra componenten (producten) of functionaliteit toe te voegen. Deze worden aangeboden als pakketten waarvan de naam begint met het voorvoegsel 'zope-'. Elke Zope-dienst dient te worden herstart om gebruik te kunnen maken van nieuwe uitbreidingen.
+ .
+ Gelieve het standaardgedrag van Zope-diensten te kiezen als Zope moet worden herstart:
+ .
+  - configuratie: herstart de diensten na elke productconfiguratie.
+  - einde:        herstart de diensten slechts éénmaal op het einde
+                  van het volledige installatie/opwaarderingsproces.
+  - handmatig:    geen automatische herstart.
+Description-pt.UTF-8: Reinício automático de instâncias do Zope:
+ O Zope ofereçe uma estrutura extensível e modular que lhe permite facilmente adicionar componentes extra (produtos) ou funcionalidades. Estas são fornecidas em pacotes cujos nomes começam pelo prefixo `zope-'. Cada instância do Zope precisa de ser reiniciada para que qualquer 'add-on' seja utilizado.
+ .
+ Por favor escolha o comportamento do Zope por omissão para quando as instâncias Zope necessitarem de ser reiniciadas:
+ .
+  - a configurar: reiniciar instâncias depois de cada configuração do produto.
+  - final:          reiniciar instâncias apenas uma vez no final de todo o
+                     processo de instalação/actualização;
+  - manualmente: não reinicia automaticamente.
+Description-ru.UTF-8: Автоматически перезапускать экземпляры Zope:
+ Zope предлагает расширяемую, модульную структуру, которая позволяет легко добавлять дополнительные компоненты (продукты) или возможности. Они упаковываются в пакеты с именами, начинающимися с префикса 'zope-'. После добавления компонента каждый экземпляр Zope требуется перезапустить.
+ .
+ Выберите поведение по умолчанию для экземпляров Zope, когда перезапускать Zope:
+ .
+  - после каждого продукта: перезапуск экземпляров после настройки
+                            каждого продукта;
+  - в конце установки:      перезапуск экземпляров только один раз в конце
+                            всего процесса обновления/установки;
+  - вручную:                не выполнять автоматический перезапуск.
+Description-sv.UTF-8: Automatisk omstart av Zope-instanser:
+ Zope har en omfattande, objektorienterad struktur som enkelt låter dig lägga till extra komponenter (produkter) eller funktioner. Dessa tillhandahålls som paket vars namn startar med "zope-". Varje Zope-instans måste startas om för att använda nya tillägg.
+ .
+ Välj standardbeteendet hos Zope-instanser när Zope behöver startas om:
+ .
+  - konfigurering: starta om instanser efter varje produktkonfigurering;
+  - efteråt      : Starta endast om instanser en gång vid slutet av hela
+                   installations-/uppgraderingsprocessen;
+  - manuellt     : ingen automatisk omstart.
+Description-vi.UTF-8: Tự động khởi chạy lại các tiến trình Zope:
+ Phần mềm Zope cung cấp một cấu trúc kiểu mô-đun có thể mở rộng mà cho phép thêm dễ dàng các thành phần (sản phẩm) và tính năng bổ sung. Các phần bổ sung này được cung cấp trong gói có tên bắt đầu với « zope- ». Mỗi tiến trình Zope cần phải được khởi chạy lại để sử dụng phần bổ sung mới.
+ .
+ Hãy chọn ứng xử mặc định của các tiến trình Zope khi Zope cần phải được khởi chạy lại:
+ .
+  • cấu hình	khởi chạy các tiến trình sau mỗi lần cấu hình sản phẩm
+  • kết thúc	khởi chạy các tiến trình chỉ một lần ở kết thúc toàn
+ 				thủ tục cài đặt/nâng cấp
+  • bằng tay	không tự động khởi chạy lại.
+
+Template: zope-common/remove-instance-without-data
+Type: select
+Choices: abort, remove and continue
+Choices-cs.UTF-8: přerušit, odstranit a pokračovat
+Choices-da.UTF-8: afbryd, fjern og fortsæt
+Choices-de.UTF-8: Abbruch, löschen und weiter
+Choices-es.UTF-8: interrumpir, eliminar y continuar
+Choices-fi.UTF-8: keskeytä, poista ja jatka
+Choices-fr.UTF-8: Abandonner, Supprimer et continuer
+Choices-gl.UTF-8: abortar, eliminar e continuar
+Choices-it.UTF-8: annulla, rimuovi e continua
+Choices-ja.UTF-8: 終了する, 削除して続ける
+Choices-nl.UTF-8: afbreken, verwijderen en verdergaan
+Choices-pt.UTF-8: abortar, remover e continuar
+Choices-pt_BR.UTF-8: abortar, remover e continuar
+Choices-ru.UTF-8: прерваться, удалить и продолжить
+Choices-sv.UTF-8: avbryt, ta bort och fortsätt
+Choices-vi.UTF-8: hủy bỏ, gỡ bỏ và tiếp tục
+Default: remove and continue
+Description: Action on old/incomplete zope instance '${instance}':
+ An old/incomplete ${instance} instance was found in
+ /var/lib/zope${zver}/instance/${instance}, with no Data.fs file.
+ This installation is either incomplete or incompletely removed.
+ .
+ Choosing 'abort' will allow you to inspect the state of the
+ instance.
+ .
+ Choosing 'remove and continue' will remove /var/lib/zope${zver}/instance/${instance}
+ and reinstall ${instance}. Existing log files in
+ /var/log/zope${zver}/${instance} and configuration files in
+ /etc/zope${zver}/${instance} will be preserved.
+Description-cs.UTF-8: Co provést se starší/neúplnou instancí zope „${instance}“:
+ Ve /var/lib/zope${zver}/instance/${instance} byla nalezena starší/neúplná instance zope bez souboru Data.fs. Instalace je buď neúplná, nebo ne zcela odstraněná.
+ .
+ Výběrem „přerušit“ budete moci prozkoumat stav instance.
+ .
+ Výběrem „odstranit a pokračovat“ odstraní /var/lib/zope${zver}/instance/${instance} a znovu nainstaluje ${instance}. Stávající logovací soubory ve /var/log/zope${zver}/${instance} a konfigurační soubory v /etc/zope${zver}/${instance} budou zachovány.
+Description-da.UTF-8: Handling ved gammel/ukomplet zope-instans '${instance}':
+ En gammel/ukomplet ${instance}-instans blev fundet i /var/lib/zope$${zver}/instance/${instance}, uden nogen fil af typen Data.fs. Denne installation er enten ufuldstændig eller ufuldstændigt fjernet.
+ .
+ Valg af 'abort' vil til give dig mulighed for at inspicere status på instansen.
+ .
+ Valg af 'fjern og fortsæt' vil fjerne /var/lib/zope${zver}/instance/${instance} og geninstallere ${instance}. Eksisterende logfiler i /var/log/zope${zver}/${instance} og konfigurationsfiler i /etc/zope${zver}/${instance} vil blive bevaret.
+Description-de.UTF-8: Aktion für alte/unvollständige Zope-Instanz »${instance}«:
+ Eine alte/unvollständige Instanz ${instance} wurde ohne Data.fs-Datei in /var/lib/zope${zver}/instance/${instance} gefunden. Diese Installation ist entweder unvollständig oder wurde nicht vollständig entfernt.
+ .
+ Wählen Sie »Abbruch«, um den Zustand der Instanz zu untersuchen.
+ .
+ Wählen Sie »löschen und weiter«, um /var/lib/zope${zver}/instance/${instance} zu entfernen und ${instance} neu zu installieren. Existierende Protokolldateien in /var/log/zope${zver}/${instance} und Konfigurationsdateien in /etc/zope${zver}/${instance} bleiben erhalten.
+Description-es.UTF-8: Acción sobre la instancia «${instance}» antigua/incompleta de zope:
+ Se ha encontrado una instancia ${instance} antigua/incompleta en «/var/lib/zope${zver}/instance/${instance}», sin archivo «Data.fs». Esta instalación está incompleta, o ha sido eliminada de manera incompleta.
+ .
+ Elegir «interrumpir» le permitirá inspeccionar el estado de la instancia.
+ .
+ Elegir «eliminar y continuar» eliminará «/var/lib/zope${zver}/instance /${instance}» y reinstalará ${instance}. Se mantendrán los archivos de registro que existan en «/var/log/zope${zver}/${instance}» y los archivos de configuración que existan en «/etc/zope${zver}/${instance}».
+Description-fi.UTF-8: Toimintatapa vanhan/epätäydellisen zope-instanssin ”${instance} kanssa:
+ Hakemistosta /var/lib/zope${zver}/instance/${instance} löydettiin vanha tai epätäydellinen instanssi, jolla ei ole Data.fs-tiedostoa. Tämä asennus on joko epätäydellinen tai epätäydellisesti poistettu.
+ .
+ Valitsemalla ”keskeytä” voit tutkia instanssin tilaa. 
+ .
+ Vaihtoehdon ”poista ja jatka” valitseminen poistaa instanssin /var/lib/zope${zver}/instance/${instance} ja asentaa uudelleen instanssin ${instance}. Olemassa olevat lokitiedostot hakemistossa /var/log/zope${zver}/${instance} ja asetustiedostot hakemistossa /etc/zope${zver}/${instance} säilytetään.
+Description-fr.UTF-8: Action sur l'instance Zope « ${instance} » ancienne ou incomplète :
+ Une instance ancienne ou incomplète (« ${instance} ») a été trouvée dans /var/lib/zope${zver}/instance/${instance}, sans fichier de données Data.fs. Cela signifie que l'installation n'a pas été achevée ou que sa suppression n'a pas été terminée.
+ .
+ Choisir l'abandon de l'installation vous permettra d'examiner l'état de cette instance.
+ .
+ Choisir de poursuivre le processus supprimera /var/lib/zope${zver}/instance/{instance} et réinstallera ${instance}. Les journaux situés dans /var/log/zope${zver}/${instance} ainsi que les fichiers de configuration de /etc/zope${zver}/${instance} seront préservés.
+Description-gl.UTF-8: Acción sobre a instancia de Zope antiga/incompleta "${instance}":
+ Atopouse unha instancia antiga/incompleta ${instance} en /var/lib/zope${zver}/instance/${instance}, sen un ficheiro Data.fs. Esta instalación está incompleta ou sen eliminar totalmente.
+ .
+ Se escolle "abortar" ha poder inspeccionar o estado da instancia.
+ .
+ Se escolle "eliminar e continuar" hase eliminar /var/lib/zope${zver}/instance/${instance} e reinstalar ${instance}. Hanse conservar os ficheiros de rexistro existentes en /var/log/zope${zver}/instance/${instance} e os ficheiros de configuración de /etc/zope${zver}/${instance}.
+Description-ja.UTF-8: 古い、あるいは不完全な zope インスタンス '${instance}' への対応:
+ Data.fs が無い状態の、古い・あるいは不完全なインスタンス '${instance}' が /var/lib/zope${zver}/instance/${instance} に見つかりました。インストール作業が不完全か、インストールされたファイルが完全に削除されていません。
+ .
+ 「終了する」を選ぶとインスタンスの状態を確認できます。
+ .
+ 「削除して続ける」を選ぶと、/var/lib/zope${zver}/instance/${instance} を削除して ${instance} を再インストールします。/var/log/zope${zver}/${instance} にあるログファイルと /etc/zope${zver}/${instance} の設定ファイルは保存されます。
+Description-nl.UTF-8: Actie bij verouderde/onvolledige Zope-dienst '${instance}':
+ Er is een verouderde/onvolledige dienst ${instance} zonder Data.fs-bestand gevonden in /var/lib/zope${zver}/instance/${instance}. Deze installatie is onvolledig of onvolledig verwijderd.
+ .
+ Door 'afbreken' te kiezen kunt u de status van de dienst bekijken.
+ .
+ Het kiezen van 'verwijderen en verdergaan' zal /var/lib/zope${zver}/instance/${instance} verwijderen en ${instance} herinstalleren. Bestaande logbestanden in /var/log/zope${zver}/${instance} en de configuratiebestanden in /etc/zope${zver}/${instance} blijven behouden.
+Description-pt.UTF-8: Acção numa antiga/incompleta instância do zope '${instance}':
+ Uma instância ${instance} antiga/incompleta foi encontrada em /var/lib/zope${zver}/instance/${instance} sem o ficheiro Data.fs. Esta instalação está ou incompleta ou incompletamente removida.
+ .
+ Escolher 'abortar' permitir-lhe-á inspeccionar o estado da instância.
+ .
+ Ao escolher 'remover e continuar' será removido /var/lib/zope${zver}/instance/${instance} e reinstaláda ${instance}. Os ficheiros de 'log' existentes em /var/log/zope${zver}/${instance} e os ficheiros de configuração em /etc/zope${zver}/${instance} serão preservados.will be preserved.
+Description-ru.UTF-8: Действие для старого/неполного экземпляра zope '${instance}':
+ Найден старый/неполный экземпляр ${instance} в /var/lib/zope${zver}/instance/${instance}; он не содержит файла Data.fs. Установка выполнена не полностью или не полностью выполнено удаление.
+ .
+ Выберите 'прерваться', чтобы изучить состояние экземпляра.
+ .
+ Выберите 'удалить и продолжить', чтобы удалить /var/lib/zope${zver}/instance/${instance} и переустановить ${instance}. Существующие журнальные файлы в /var/log/zope${zver}/${instance} и файлы настройки в /etc/zope${zver}/${instance} будут сохранены.
+Description-sv.UTF-8: Åtgärd på en gammal/ofullständig zope-instans "${instance}":
+ En gammal/ofullständig ${instance}-instans hittades i /var/lib/zope${zver}/instance/${instance} utan någon Data.fs-fil. Denna installation är antingen ofullständig eller ofullständigt borttagen.
+ .
+ Om du väljer "avbryt" kan du undersöka tillståndet hos instansen.
+ .
+ Väljer du "ta bort" och "fortsätt" kommer /var/lib/zope${zver}/instance/${instance} att tas bort och ${instance} att återinstalleras. Befintliga loggfiler i /var/log/zope${zver}/${instance} och konfigurationsfiler i /etc/zope${zver}/${instance} kommer bevaras.
+Description-vi.UTF-8: Quản lý tiến trình Zope cũ/không hoàn thành « ${instance} »:
+ Một tiến trình cũ hay không hoàn toàn ${instance} được tìm trong thư mục « /var/lib/zope${zver}/instance/${instance} », cũng không có tập tin « Data.fs ». Bản cài đặt này hoặc không hoàn toàn hoặc bị gỡ bỏ hoàn toàn.
+ .
+ Chọn mục « hủy bỏ » thì có thể kiểm tra tình trạng của tiến trình đó.
+ .
+ Chọn mục « gỡ bỏ và tiếp tục » thì gỡ bỏ « /var/lib/zope${zver}/instance/${instance} » và cài đặt lại « ${instance} ». Các tập tin ghi lưu trong thư mục « /var/log/zope${zver}/${instance} » và các tập tin cấu hình trong « /etc/zope${zver}/${instance} » sẽ được bảo tồn.
+
+Template: zope-common/keep-data-on-purge
+Type: boolean
+Default: true
+Description: Keep data for ${instance} on package purge?
+ Purging the data files of a Zope instance on package purge will
+ result in the loss of all data for that instance. These data files
+ are stored in /var/lib/zope${zver}/instance/${instance}.
+Description-cs.UTF-8: Ponechat data ${instance} při vyčištění balíku?
+ Smazání datových souborů instance Zope při vyčištění balíku ze systému znamená, že ztratíte všechna data dané instance Zope. Datové soubory této instance jsou uloženy ve /var/lib/zope${zver}/instance/${instance}.
+Description-da.UTF-8: Behold data for ${instance} når pakken fjernes?
+ Fjernelse af datafiler for en Zopeinstans ved pakkefjernelse vil resultere i tab af alle data for den instans. Disse datafiler er gemt i /var/lib/zope${zver}/instance/${instance}.
+Description-de.UTF-8: Daten von ${instance} beim vollständigen Löschen (purge) des Pakets behalten?
+ Werden die Daten-Dateien einer Zope-Instanz beim vollständigen Löschen des Pakets entfernt, bedeutet das den Verlust aller Daten dieser Zope-Instanz. Diese Daten-Dateien liegen im Verzeichnis /var/lib/zope${zver}/instance/${instance}.
+Description-es.UTF-8: ¿Desea mantener los datos para ${instance} al eliminar completamente el paquete?
+ Eliminar completamente los archivos de datos de una instancia de Zope al eliminar completamente el paquete producirá la pérdida de todos los datos para esa instancia. Estos archivos de datos se almacenan en «/var/lib/zope ${zver}/instance/${instance}».
+Description-fi.UTF-8: Säilytetäänkö instanssin ${instance} tiedot siivottaessa paketti?
+ Zope-instanssin tietotiedostojen poistaminen siivottaessa paketti aiheuttaa kyseisen instanssin kaikkien tietojen katoamisen. Nämä tiedostot ovat tallennettuina hakemistoon /var/lib/zope${zver}/instance/${instance}.
+Description-fr.UTF-8: Conserver les données de l'instance « ${instance} » lors de la purge du paquet ?
+ La suppression définitive des fichiers de données d'une instance Zope conduira à la perte de toutes les données de cette instance. Les fichiers de données de cette instance sont stockés dans /var/lib/zope${zver}/instance/${instance}.
+Description-gl.UTF-8: ¿Conservar os datos de ${instance} ao purgar o paquete?
+ Ao purgar os ficheiros de datos dunha instancia de Zope ao purgar os paquetes, hanse perder tódolos datos desa instancia. Eses ficheiros de datos están armacenados en /var/lib/zope${zver}/instance/${instance}.
+Description-it.UTF-8: Salvataggio dei dati per l'istanza ${instance} dopo la rimozione del pacchetto:
+ La rimozione dei file di dati di un'istanza zope durante la rimozione del pacchetto (purge) causerà la perdita di tutti i dati dell'istanza zope. I file di dati per l'istanza sono memorizzati in /var/lib/zope/${zver}/${instance}.
+Description-ja.UTF-8: パッケージを完全に削除 (purge) する際に ${instance} のデータを保存しますか?
+ パッケージを完全に削除 (purge) する際に Zope インスタンスのデータファイルも purge するとインスタンスの全てのデータを失います。データファイルは /var/lib/zope${zver}/instance/${instance} に保存されています。
+Description-nl.UTF-8: Data voor ${instance} behouden bij wissen (purge) van het pakket?
+ Het wissen (purge) van de databestanden van een Zope-dienst bij het wissen van het pakket resulteert in het verlies van alle data van de Zope-dienst. De databestanden voor deze dienst vindt u in /var/lib/zope${zver}/instance/${instance}.
+Description-pt.UTF-8: Manter a data para ${instance} quando se apagar o pacote?
+ Apagar os ficheiros de data de uma instância zope durante a remoção do pacote resulta na perda de toda a data dessa instância. Esse ficheiro de data são guardados em /var/lib/zope${zver}/instance/${instance}.
+Description-ru.UTF-8: Оставлять данные ${instance} при вычистке пакета?
+ Вычистка файлов данных экземпляра Zope при вычистке пакета приводит к потере всех данных этого экземпляра. Эти файлы данных хранятся в /var/lib/zope${zver}/instance/${instance}.
+Description-sv.UTF-8: Behåll data för ${instance} vid avinstallation av paketet?
+ Utrensning av datafiler vid avinstallation av en Zope-instans kommer resultera i att all data i instansen går förlorad. Dessa datafiler lagras i /var/lib/zope${zver}/instance/${instance}.
+Description-vi.UTF-8: Giữ dữ liệu của « ${instance} » khi tẩy gói không?
+ Khi tẩy gói, nếu bạn cũng chọn tẩy các tập tin dữ liệu của tiến trình, mọi dữ liệu của nó sẽ bị mất hoàn toàn. Các tập tin dữ liệu này nằm trong thư mục « /var/lib/zope${zver}/instance/${instance} ».
+
+Template: zope-common/admin-user
+Type: string
+Default: admin
+Description: Administrative user for '${instance}' Zope instance:
+ Please enter the login name of the administrative user for the
+ '${instance}' Zope instance. Valid names must start with a letter and
+ only include letters and digits.
+ .
+ This will only be used for instance creation. Please use the
+ following command to change the administrative user login name and
+ password at a later time:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <user> <password>
+Description-cs.UTF-8: Správce Zope instance „${instance}“:
+ Zadejte prosím přihlašovací jméno správce Zope instance „${instance}“. Platné jméno musí začínat písmenem, za kterým mohou následovat písmena a číslice.
+ .
+ Toto se použije pouze pro vytvoření instance. Pro pozdější změnu přihlašovacího jména správce (a hesla) můžete použít příkaz:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <uživatel> <heslo>
+Description-da.UTF-8: Administratorbruger for zopeforekomsten '${instance}':
+ Indtast venligst logindnavnet på adminstratorbrugeren for zope-forekomsten '${instance}'. Gyldige navne skal starte med et bogstav og må kun indeholde bogstaver og tal.
+ .
+ Dette vil kun blive brugt til instansoprettelse. Brug venligst den følgende kommando for at ændre den administrative brugers logindnavn og adgangskode på et senere tidspunkt:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <bruger> <adgangskode>
+Description-de.UTF-8: Administrativer Benutzer der Zope-Instanz »${instance}«:
+ Bitte geben Sie den Loginnamen für den administrativen Benutzer der Zope-Instanz »${instance}« ein. Gültige Namen beginnen mit einem Buchstaben, gefolgt von Buchstaben und Zahlen.
+ .
+ Dies wird nur für die Erstellung der Instanz verwendet. Bitte verwenden Sie den folgenden Befehl, um den Loginnamen des administrativen Benutzers und dessen Passwort später zu ändern:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <Benutzer> <Passwort>
+Description-es.UTF-8: Administrador para la instancia «${instance}» de Zope:
+ Por favor, introduzca el nombre de usuario del administrador para la instancia ${instance} de Zope. Los nombres válidos deben empezar con una letra e incluir únicamente letras y dígitos.
+ .
+ Esto se utilizará únicamente para la creación de la instancia. Por favor, utilice la siguiente orden para cambiar el nombre de usuario y la contraseña del administrador en un momento posterior:
+ .
+ «/var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <usuario> <contraseña>»
+Description-fi.UTF-8: Zope-instanssin ”${instance}” pääkäyttäjä:
+ Anna Zope-instanssin ”${instance}” pääkäyttäjän käyttäjätunnus. Validit nimet alkavat kirjaimella ja sisältävät vain kirjaimia ja numeroita.
+ .
+ Tätä käytetään vain instanssin luomiseen. Käytä seuraavaa komentoa vaihtaaksesi pääkäyttäjän käyttäjätunnusta ja salasanaa myöhemmin:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <tunnus> <salasana>
+Description-fr.UTF-8: Administrateur de l'instance Zope « ${instance} » :
+ Veuillez indiquer l'identifiant de l'utilisateur qui administrera l'instance Zope « ${instance} ». Les identifiants valables commencent par une lettre, suivie par d'autres lettres ou chiffres.
+ .
+ Cet identifiant ne sera utilisé que pour la création de l'instance. Veuillez utiliser la commande suivante si vous souhaitez plus tard changer l'identifiant ou le mot de passe de l'administrateur :
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <utilisateur> <motdepasse>
+Description-gl.UTF-8: Usuario administrativo da instancia de Zope "${instance}":
+ Introduza o nome do usuario administrativo da instancia de Zope "${instance}". Os nomes válidos deben comezar cunha letra e só incluír letras e números.
+ .
+ Só se ha empregar para crear a instancia. Empregue a seguinte orde para cambiar o nome e contrasinal do usuario administrativo despois:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <usuario> <contrasinal>
+Description-ja.UTF-8: Zope インスタンス '${instance}' の管理者ユーザ:
+ Zope インスタンス '${instance}' の管理者ユーザを入力してください。適切なユーザ名は文字で始まり、文字列と数字のみで構成されます。
+ .
+ これは、インスタンスの作成のみに使われます。後ほど管理者ユーザ及びパスワードを変更するには、以下のコマンドを入力してください:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <user> <password>
+Description-nl.UTF-8: Beheerder van de Zope-dienst '${instance}':
+ Gelieve de gebruikersnaam van de beheerder van de Zope-dienst '${instance}' op te geven. Een geldige gebruikersnaam begint met een letter en mag alleen uit letters en cijfers bestaan.
+ .
+ Dit wordt enkel gebruikt voor het aanmaken van de dienst. Gebruik het volgende commando om de gebruikersnaam en het wachtwoord van de beheerder op een later moment te wijzigen:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <gebruiker> <wachtwoord>
+Description-pt.UTF-8: Utilizador administrativo para a instância zope '${instance}':
+ Por favor introduza o nome de 'login' do utilizador administrativo para a instância Zope '${instance}'. Um nome válido de utilizador começa por uma letra e apenas inclúi por letras e dígitos.
+ .
+ Isto apenas será usado na criação da instância. Por favor utilize o seguinte comando para alterar o 'login' de utilizador administrativo e palavra-chave mais tarde:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <utilizador> <palavra-chave>
+Description-ru.UTF-8: Управляющий пользователь для экземпляра Zope '${instance}':
+ Введите имя учётной записи управляющего пользователя для экземпляра Zope '${instance}'. Имя должно начинаться с символа, и содержать только символы и цифры.
+ .
+ Это значение будет использоваться только для создания экземпляра. Позже для изменения управляющего пользователя и пароля используйте следующую команду:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <пользователь> <пароль>
+Description-sv.UTF-8: Administratörsanvändare för Zope-instansen "${instance}":
+ Ange en administrationsanvändare för Zope-instansen "${instance}". Giltiga användarnamn börjar med en bokstav och innehåller bara bokstäver och siffror.
+ .
+ Detta kommer endast användas när instanser skapas. Använd följande kommando för att ändra administrationsanvändarnamn och -lösenord vid ett senare tillfälle:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <användare> <lösenord>
+Description-vi.UTF-8: Người dùng quản trị cho tiến trình Zope « ${instance} »:
+ Hãy nhập tên đăng nhập của người dùng quản trị cho tiến trình Zope « '${instance} ». Tên hợp lệ phải bắt đầu với chữ và chứa chỉ chữ và chữ số.
+ .
+ Thông tin này sẽ chỉ được dùng để tạo tiến trình. Hãy dùng lệnh theo đây để thay đổi tên đăng nhập và mật khẩu của người dùng quản trị về sau :
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <tên_người_dùng> <mật_khẩu>
+
+
+Template: zope-common/admin-password
+Type: password
+Description: Password for the administrative user:
+ Please enter a password for the administrative user. The password
+ must not be empty. The password is deleted from the configuration
+ database once the instance is successfully created and cannot be
+ recovered.
+ .
+ This will only be used for instance creation. Please use the
+ following command to change the administrative user login name and
+ password at a later time:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <user> <password>
+Description-cs.UTF-8: Heslo správce:
+ Zadejte prosím heslo pro správce. Heslo nesmí být prázdné. Po úspěšné instalaci bude heslo z konfigurační databáze odstraněno a nebude možno jej obnovit.
+ .
+ Toto se použije pouze pro vytvoření instance. Pro pozdější změnu přihlašovacího jména správce (a hesla) můžete použít příkaz:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <uživatel> <heslo>
+Description-da.UTF-8: Administratorbrugerens adgangskode:
+ Indtast venligst en adgangskode for administratorbrugeren. Adgangskoden må ikke være tom. Adgangskoden vil uigenkaldeligt blive slettet fra opsætningsdatabasen, så snart forekomsten er oprettet.
+ .
+ Dette vil kun blive brugt til instansoprettelse. Brug venligst den følgende kommando for at ændre den administrative brugers logindnavn og adgangskode på et senere tidspunkt:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <bruger> <adgangskode>
+Description-de.UTF-8: Passwort für administrativen Benutzer:
+ Bitte geben Sie ein Passwort für den administrativen Benutzer ein. Das Passwort darf nicht leer sein. Das Passwort wird nach erfolgreichem Erstellen der Instanz aus der Konfigurationsdatenbank gelöscht und kann nicht wiederhergestellt werden.
+ .
+ Dies wird nur für die Erstellung der Instanz verwendet. Bitte verwenden Sie den folgenden Befehl, um den Loginnamen des administrativen Benutzers und dessen Passwort später zu ändern:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <Benutzer> <Passwort>
+Description-es.UTF-8: Contraseña del administrador:
+ Introduzca una contraseña para el administrador. La contraseña no debe dejarse vacía. La contraseña se borra de la base de datos de configuración cuando la instancia ha sido creada con éxito, y no se puede recuperar.
+ .
+ Esto se utilizará únicamente para la creación de la instancia. Por favor, utilice la siguiente orden para cambiar el nombre de usuario y la contraseña del administrador en un momento posterior:
+ .
+ «/var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <usuario> <contraseña>»
+Description-fi.UTF-8: Pääkäyttäjän salasana:
+ Anna pääkäyttäjän salasana. Salasana ei voi olla tyhjä. Salasana poistetaan asetustietokannasta, kun instanssi on onnistuneesti luotu, eikä sitä voida palauttaa.
+ .
+ Tätä käytetään vain instanssin luomiseen. Käytä seuraavaa komentoa vaihtaaksesi pääkäyttäjän käyttäjätunnusta ja salasanaa myöhemmin:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <tunnus> <salasana>
+Description-fr.UTF-8: Mot de passe de l'administrateur :
+ Veuillez choisir un mot de passe pour l'administrateur. Le mot de passe ne doit pas être vide. Il n'est pas conservé dans la base de données de configuration après la création de l'instance.
+ .
+ Cet identifiant ne sera utilisé que pour la création de l'instance. Veuillez utiliser la commande suivante si vous souhaitez plus tard changer l'identifiant ou le mot de passe de l'administrateur :
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <utilisateur> <motdepasse>
+Description-gl.UTF-8: Constrasinal para o usuario administrativo:
+ Introduza un contrasinal para o usuario administrativo. O contrasinal non debe estar baleiro. O contrasinal elimínase da base de datos de configuracións despois de crear con éxito a instancia, e non se pode recuperar.
+ .
+ Só se ha empregar para crear a instancia. Empregue a seguinte orde para cambiar o nome e contrasinal do usuario administrativo despois:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <usuario> <contrasinal>
+Description-ja.UTF-8: 管理者ユーザのパスワード:
+ 管理者ユーザのパスワードを入力してください。パスワードは空ではいけません。このパスワードは一旦インスタンスが無事に作成されると設定データベースから削除され、元には戻せません。
+ .
+ これは、インスタンスの作成のみに使われます。後ほど管理者ユーザ及びパスワードを変更するには、以下のコマンドを入力してください:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <user> <password>
+Description-nl.UTF-8: Wachtwoord voor de beheerder:
+ Gelieve het wachtwoord voor de beheerder op te geven. Dit veld mag niet leeg zijn. Het wachtwoord wordt verwijderd uit de configuratiedatabase zodra de dienst met succes is aangemaakt en kan niet worden hersteld.
+ .
+ Dit wordt enkel gebruikt voor het aanmaken van de dienst. Gebruik het volgende commando om de gebruikersnaam en het wachtwoord van de beheerder op een later moment te wijzigen:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <gebruiker> <wachtwoord>
+Description-pt.UTF-8: Palavra-chave para o utilizador administrativo:
+ Por favor introduza a palavra-chave para o utilizador administrativo. A palavra-chave não deverá estar vazia. A palavra-chave é apagada a partir da base de dados da configuração, assim que a instância seja instalada com sucesso e não pode ser recuperada.
+ .
+ Isto apenas será usado na criação da instância. Por favor utilize o seguinte comando para alterar o 'login' de utilizador administrativo e palavra-chave mais tarde:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <utilizador> <palavra-chave>
+Description-ru.UTF-8: Пароль управляющего пользователя:
+ Введите пароль управляющего пользователя. Пароль не должен быть пустым. Пароль удаляется из базы данных настроек после успешного создания экземпляра и не может быть восстановлен.
+ .
+ Это значение будет использоваться только для создания экземпляра. Позже для изменения управляющего пользователя и пароля используйте следующую команду:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <пользователь> <пароль>
+Description-sv.UTF-8: Lösenord för administrationsanvändaren:
+ Ange ett lösenord för administrationsanvändaren. Lösenordet får inte vara blankt. Lösenordet raderas från konfigurationsdatabasen så fort instansen har skapats ordentligt och kan därefter inte återskapas.
+ .
+ Detta kommer endast användas när instanser skapas. Använd följande kommando för att ändra administrationsanvändarnamn och -lösenord vid ett senare tillfälle:
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <användare> <lösenord>
+Description-vi.UTF-8: Mật khẩu cho người dùng quản trị:
+ Hãy nhập mật khẩu cho người dùng quản trị. Không cho phép mật khẩu trống. Một khi tiến trình được tạo, mật khẩu bị xoá khỏi co sở dữ liệu cấu hình: không thể phục hồi nữa thôi.
+ .
+ Thông tin này sẽ chỉ được dùng để tạo tiến trình. Hãy dùng lệnh theo đây để thay đổi tên đăng nhập và mật khẩu của người dùng quản trị về sau :
+ .
+ /var/lib/zope${zver}/instance/${instance}/bin/zopectl adduser <tên_người_dùng> <mật_khẩu>
+
+Template: zope-common/admin-password-confirmation
+Type: password
+Description: Password confirmation:
+ Please confirm the administrative user's password.
+Description-cs.UTF-8: Potvrzení hesla:
+ Potvrďte prosím heslo pro správce.
+Description-da.UTF-8: Bekræftelse af adgangskode:
+ Bekræft venligst den administrative brugers adgangskode.
+Description-de.UTF-8: Passwort-Bestätigung:
+ Bitte bestätigen Sie das Passwort des administrativen Benutzers.
+Description-es.UTF-8: Confirmación de la contraseña:
+ Confirme la contraseña del administrador.
+Description-fi.UTF-8: Salasanan vahvistus:
+ Vahvista pääkäyttäjän salasana.
+Description-fr.UTF-8: Confirmation du mot de passe :
+ Veuillez confirmer le mot de passe de l'administrateur.
+Description-gl.UTF-8: Confirmación do contrasinal:
+ Confirme o contrasinal do usuario administrativo.
+Description-ja.UTF-8: パスワードの確認:
+ 管理者ユーザのパスワードをもう一度入力してください。
+Description-nl.UTF-8: Wachtwoord ter bevestiging:
+ Gelieve het wachwoord van de beheerder bevestigen.
+Description-pt.UTF-8: Confirme a palavra-chave:
+ Por favor confirme a palavra-chave do utilizador administrativo.
+Description-ru.UTF-8: Пароль ещё раз:
+ Повторите ввод пароля управляющего пользователя.
+Description-sv.UTF-8: Lösenordsbekräftelse:
+ Bekräfta administrationsanvändarens lösenord.
+Description-vi.UTF-8: Xác nhận mật khẩu :
+ Hãy xác nhận mật khẩu của người dùng quản trị.
+
+Template: zope-common/instance-http-port
+Type: string
+Description: HTTP port for this instance:
+ Please enter the HTTP port number for the ${instance} instance.
+ .
+ Other services (e.g. FTP, WebDAV, debug) will be disabled by default.
+ They can be enabled by editing /etc/zope${zver}/${instance}/zope.conf.
+Description-cs.UTF-8: HTTP port této instance:
+ Zadejte prosím číslo HTTP portu pro instanci ${instance}.
+ .
+ Ostatní služby (jako FTP, WebDAV, debug) budou implicitně zakázány. Povolit je můžete úpravou souboru /etc/zope${zver}/${instance}/zope.conf.
+Description-da.UTF-8: HTTP-port til denne instans:
+ Indtast venligst HTTP-portnummeret for instansen ${instance}.
+ .
+ Andre tjenester (f.eks. FTP, WebDAV, debug) bliver som udgangspunkt slået fra. Du kan aktivere dem ved at redigere /etc/zope${zver}/${instance}/zope.conf.
+Description-de.UTF-8: HTTP-Port dieser Instanz:
+ Bitte den HTTP-Port für die Instanz ${instance} eingeben.
+ .
+ Andere Dienste (z. B. FTP, WebDAV, debug) werden standardmäßig deaktiviert. Bearbeiten Sie die Datei /etc/zope${zver}/${instance}/zope.conf, um sie zu aktivieren.
+Description-es.UTF-8: Puerto HTTP para esta instancia:
+ Introduzca el número de puerto HTTP para la instancia ${instance}.
+ .
+ Otros servicios (p. ej. FTP, WebDav, debug) están deshabilitados de manera predeterminada. Pueden activarse editando «/etc/zope${zver}/${instance}/zope.conf».
+Description-fi.UTF-8: Instanssin HTTP-portti:
+ Anna instanssin ${instance} HTTP-portin numero.
+ .
+ Muut palvelut (esim. FTP, WebDAV, debug) passivoidaan oletuksena. Ne voidaan aktivoida muokkaamalla tiedostoa /etc/zope${zver}/${instance}/zope.conf.
+Description-fr.UTF-8: Port HTTP pour cette instance :
+ Veuillez indiquer le numéro de port HTTP pour l'instance « ${instance} ».
+ .
+ Les autres services (p. ex. FTP, WebDAV, debug) sont désactivés par défaut. Vous pouvez les activer en modifiant /etc/zope${zver}/${instance}/zope.conf.
+Description-gl.UTF-8: Porto HTTP para esta instancia:
+ Introduza o número de porto HTTP para a instancia ${instance}.
+ .
+ Os outros servicios (p. ex. FTP, WebDAV, debug) han estar desactivados por defecto. Pódense activar editando /etc/zope${zver}/${instance}/zope.conf.
+Description-it.UTF-8: Porta HTTP per questa istanza:
+ Specificare la porta HTTP per l'istanza ${instance}.
+ .
+ Altri servizi (es. FTP, WebDAV, debug) verranno disattivati. Sarà possibile abilitarli modificando /etc/zope${zver}/${instance}/zope.conf.
+Description-ja.UTF-8: このインスタンスを使う HTTP のポート番号:
+ インスタンス ${instance} で利用する HTTP ポート番号を入力してください。
+ .
+ デフォルトでは他のサービス (例: FTP、WebDAV、debug) は無効にされます。/etc/zope${zver}/${instance}/zope.conf を編集すれば有効にできます。
+Description-nl.UTF-8: HTTP-poort voor deze dienst:
+ Gelieve de HTTP-poort voor de dienst ${instance} op te geven.
+ .
+ Andere diensten (zoals FTP, WebDAV en debug) worden standaard uitgeschakeld. Deze kunnen worden geactiveerd door /etc/zope${zver}/${instance}/zope.conf bij te werken.
+Description-pt.UTF-8: Porta HTTP para esta instância:
+ Por favor introduza o número de porta HTTP para a instância ${instance}.
+ .
+ Outros serviços (ex. FTP, WebDAV, depuramento) serão desactivados por omissão. Poderá activá-los ao editar /etc/zope${zver}/${instance}/zope.conf.
+Description-ru.UTF-8: Порт HTTP для этого экземпляра:
+ Введите номер порта HTTP для экземпляра ${instance}.
+ .
+ Другие службы (например, FTP, WebDAV, debug) будут выключены. Их можно включить отредактировав файл /etc/zope${zver}/${instance}/zope.conf.
+Description-sv.UTF-8: HTTP-port för denna instans:
+ Ange HTTP-porten för instansen ${instance}.
+ .
+ Andra tjänster (såsom FTP, WebDAV, debug) kommer att vara inaktiverade som standard. De kan aktiveras genom att redigera /etc/zope${zver}/${instance}/zope.conf.
+Description-vi.UTF-8: Cổng HTTP cho tiến trình này:
+ Hãy gõ số hiệu cổng HTTP cho tiến trình « ${instance} ».
+ .
+ Các dịch vụ khác (v.d. FTP, WebDAV, gỡ lỗi) sẽ bị tắt theo mặc định. Bạn vẫn có thể bật lại bằng cách chỉnh sửa tập tin cấu hình « /etc/zope${zver}/${instance}/zope.conf ».
+
+Template: zope-common/instance-zeo-port
+Type: string
+Description: TCP port for the ZEO instance:
+ Please enter the TCP port number for the ${instance} ZEO instance.
+Description-cs.UTF-8: TCP port ZEO instance:
+ Zadejte prosím TCP port pro ZEO instanci ${instance}.
+Description-da.UTF-8: TCP-port til ZEO-instansen:
+ Indtast venligst TCP-portnummeret for ZEO-instansen ${instance}.
+Description-de.UTF-8: TCP-Port für die ZEO-Instanz:
+ Bitte den HTTP-Port für die ZEO-Instanz ${instance} eingeben.
+Description-es.UTF-8: Puerto TCP para la instancia de ZEO:
+ Introduzca el número de puerto TCP para la instancia ${instance} de ZEO.
+Description-fi.UTF-8: ZEO-instanssin TCP-portti:
+ Anna ZEO-instanssin ${instance} TCP-portin numero.
+Description-fr.UTF-8: Port TCP pour l'instance ZEO :
+ Veuillez indiquer le numéro de port TCP pour l'instance ZEO « ${instance} ».
+Description-gl.UTF-8: Porto TCP para a instancia ZEO:
+ Introduza o número do porto TCP para a instancia ZEO ${instance}.
+Description-it.UTF-8: Porta TCP per questa istanza:
+ Specificare la porta HTTP per l'istanza ${instance}.
+Description-ja.UTF-8: ZEO インスタンスを使う TCP ポート番号:
+ ZEO インスタンス ${instance} で利用する TCP ポート番号を入力してください。
+Description-nl.UTF-8: TCP-poort voor de ZEO-dienst:
+ Gelieve het TCP-poortnummer voor de ZEO-dienst ${instance} op te geven.
+Description-pt.UTF-8: Porta TCP para a instância ZEO:
+ Por favor introduza o número de porta TCP para a instância ZEO ${instance}.
+Description-ru.UTF-8: Порт TCP для экземпляра ZEO:
+ Введите номер порта TCP для экземпляра ZEO ${instance}.
+Description-sv.UTF-8: TCP-port för ZEO-instansen:
+ Ange TCP-porten för ZEO-instansen ${instance}.
+Description-vi.UTF-8: Cổng TCP cho tiến trình ZEO:
+ Hãy gõ số hiệu cổng TCP cho tiến trình ZEO « ${instance} ».
+
+Template: zope-common/admin-automatic-password
+Type: note
+Description: Automatically generated user and password for this instance
+ No administrative user login name or password were provided for
+ this instance. They have been automatically generated.
+ .
+ For ${instance} Zope${zver} logins, use the following values:
+ .
+  - User     : ${user}
+  - Password : ${password}
+Description-cs.UTF-8: Automaticky vygenerovaný uživatel a heslo v této instanci
+ Pro tuto instanci jste nezadali uživatele ani heslo, tudíž byly tyto hodnoty vygenerovány automaticky.
+ .
+ Pro přihlášení do ${instance} Zope${zver} použijte následující údaje:
+ .
+  - Uživatel : ${user}
+  - Heslo    : ${password}
+Description-da.UTF-8: Automatisk genereret bruger og adgangskode for denne instans
+ Intet administrativt brugerlogindnavn eller adgangskode blev tilbudt til denne instans. De er blevet oprettet automatisk.
+ .
+ For logind til ${instance} Zope${zver}, brug de følgende værdier:
+ .
+  - Bruger      : ${user}
+  - Adgangskode : ${password}
+Description-de.UTF-8: Automatisch erstellter Benutzer und Passwort für diese Instanz
+ Es wurde für diese Instanz kein Loginname für den administrativer Benutzer oder dessen Passwort angegeben, deshalb wurden diese Werte automatisch erstellt.
+ .
+ Für Anmeldungen an ${instance} Zope${zver} verwenden Sie die folgenden Werte:
+ .
+  - Benutzername: ${user}
+  - Passwort    : ${password}
+Description-es.UTF-8: Usuario y contraseña generados automáticamente para esta instancia
+ No se ha proporcionado un nombre de usuario ni una contraseña del administrador para esta instancia. Se han generado automáticamente.
+ .
+ Para iniciar una sesión de ${instance} en Zope${zver}, utilice los siguientes valores:
+ .
+  - Usuario    : ${user}
+  - Contraseña : ${password}
+Description-fi.UTF-8: Tunnus ja salasana luotiin automaattisesti tälle instansille
+ Tälle instanssille ei annettu pääkäyttäjän tunnusta tai salasanaa. Ne luotiin automaattisesti.
+ .
+ Käytä instanssin ${instance} Zope${zver}-kirjautumisissa seuraavia arvoja:
+ .
+  - Tunnus  : ${user}
+  - Salasana: ${password}
+Description-fr.UTF-8: Utilisateur et mot de passe créés automatiquement pour cette instance
+ Aucun utilisateur ou mot de passe n'ont été indiqués pour cette instance. Ils ont été automatiquement créés.
+ .
+ Pour les connexions à l'instance Zope${zver} « ${instance} », veuillez utiliser les valeurs suivantes :
+ .
+  - Utilisateur  : ${user}
+  - Mot de passe : ${password}
+Description-gl.UTF-8: Usuario e contrasinal xerados automaticamente para esta instancia
+ Non se forneceu un nome ou contrasinal para o usuario administrativo desta instancia. Xeráronse automaticamente.
+ .
+ Para as conexións a ${instance} de Zope${zver}, empregue os seguintes valores:
+ .
+  - Usuario     : ${user}
+  - Contrasinal : ${password}
+Description-ja.UTF-8: このインスタンスに対して自動的にユーザとパスワードを生成
+ このインスタンスに対して管理者のログインユーザ名・パスワードが与えられませんでした。これらは自動的に生成されます。
+ .
+  ${instance} Zope${zver} へのログインには、以下の値を使ってください:
+ .
+  - ユーザ　　 : ${user}
+  - パスワード : ${password}
+Description-nl.UTF-8: Automatische generatie van gebruiker en wachtwoord voor deze dienst
+ U hebt geen beheerder of wachtwoord voor deze dienst ingevoerd. Deze zijn automatisch gegenereerd.
+ .
+ Gebruik voor het inloggen in ${instance} Zope${zver} de volgende gegevens:
+ .
+  - Gebruikersnaam : ${user}
+  - Wachtwoord     : ${password}
+Description-pt.UTF-8: Utilizador e palavra-chave criados automaticamente para esta instância
+ Não forneceu um utilizador administrativo nem palavra-chave para esta instância. Assim estes foram automaticamente criados.
+ .
+ Para 'logins' ${instance} Zope${zver}, utilize os seguintes valores:
+ .
+  - Utilizador     : ${user}
+  - Palavra-chave : ${password}
+Description-ru.UTF-8: Автоматические создаваемые пользователь и пароль для этого экземпляра
+ Для данного экземпляра не было указано имя управляющего пользователя или пароль. Они были автоматически сгенерированы.
+ .
+ Для входа в ${instance} Zope${zver}, используйте следующие значения:
+ .
+  - Пользователь : ${user}
+  - Пароль       : ${password}
+Description-sv.UTF-8: Automatiskt genererad användare och lösenord för denna instans
+ Du har inte angett en administrationsanvändare och ett lösenord för denna instans. De har genererats automatiskt.
+ .
+ Använd följande värden för ${instance} Zope${ver}-inloggning:
+ .
+  - Användare: ${user}
+  - Lösenord : ${password}
+Description-vi.UTF-8: Người dùng và mật khẩu được tạo ra tự động cho tiến trình này
+ Bạn chưa cung cấp tên đăng nhập và mật khẩu kiểu quản trị cho tiến trình này. Vậy chúng được tạo ra tự động.
+ .
+ Để đăng nhập vào tiến trình ${instance} Zope${zver}, dùng những giá trị này:
+ .
+  • Người dùng     : ${user}
+  • Mật khẩu : ${password}

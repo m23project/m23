@@ -1,0 +1,166 @@
+Template: phabricator/domain_name
+Type: string
+Default: phabricator.example.com
+Description: Domain name or subdomain name used by phabricator:
+ Phabricator must be installed on an entire domain. You can not install it to a path on an existing domain,
+ like example.com/phabricator/. Instead, install it to an entire domain or subdomain, like phabricator.example.com.
+Description-de.UTF-8: Für Phabricator bestimmte Domain oder Subdomain:
+ Phabricator muss einer Domain zugeordnet sein. Die Mitbenutzung einer bestehenden Domain durch Einrichtung eines Pfades wie example.com/phabricator ist nicht möglich. Richten Sie stattdessen eine gesamte Domain oder eine Subdomain wie phabricator.example.com ein.
+Description-es.UTF-8: Nombre de dominio o de subdominio que usará phabricator:
+ Phabricator debe estar instalado en un dominio completo. No puede instalarlo en una ruta de un dominio existente, como «example.com/
+ phabricator/». En lugar de eso, instálelo en un dominio o subdominio completo, como «phabricator.example.com».
+Description-fr.UTF-8: Nom du domaine ou du sous-domaine utilisé par phabricator:
+ Phabricator doit être installé sur son propre domaine. Vous ne pouvez pas l'installer dans un sous-répertoire d'un domaine existant tel que exemple.com/phabricator/. Vous devez au contraire l'installer sur un domaine ou un sous-domaine entier, comme par exemple phabricator.exemple.com.
+Description-ja.UTF-8: phabricatorが使用するドメイン名、またはサブドメイン名:
+ Phabricatorは、ドメイン全体を使用してインストールする必要があります。example.com/phabricator/とかのあるドメインパスにインストールすることができません。その代わりに、ドメイン全体、またはphabricator.example.comとかのサブドメイン全体を使用してインストールして下さい。
+Description-nl.UTF-8: Door phabricator gebruikte domeinnaam of subdomeinnaam:
+ Phabricator moet op een volledig domein geïnstalleerd worden. U kunt het niet installeren in een pad van een bestaand domein, zoals example.com/phabricator/. Installeer het in plaats daarvan op een volledig domein of subdomein, zoals phabricator.example.com.
+Description-pt.UTF-8: Nome de domínio ou nome de sub-domínio usado pelo phabricator:
+ O phabricator tem de ser instalado num domínio inteiro. Você não pode instala-lo num caminho de um domínio existente, tal como exemplo.com/phabricator/. Em vez disto, instale-o num domínio completo ou sub-domínio, tal como phabricator.exemplo.com.
+
+Template: phabricator/mysql_host
+Type: string
+Default: localhost
+Description: hostname or IP address of the MySQL server:
+ Phabricator is usually installed with the MySQL database on the same host (referred as localhost), but some advanced
+ users might want to put the database on a different host.
+Description-de.UTF-8: Hostname oder IP-Adresse des MySQL-Servers:
+ Üblicherweise befinden sich Phabricator und die MySQL-Datenbank auf dem selben Rechner, wobei der MySQL-Server als »localhost« angesprochen wird. Fortgeschrittene Benutzer können die Datenbank allerdings auch auf einem anderen Hostrechner einrichten.
+Description-es.UTF-8: Nombre de equipo o dirección IP del servidor MySQL:
+ Phabricator se instala habitualmente junto con la base de datos MySQL en el mismo equipo (localhost), pero es posible que algunos usuarios prefieran instalar la base de datos en un equipo diferente.
+Description-fr.UTF-8: Nom d'hôte ou adresse IP du serveur MySQL:
+ Phabricator est généralement installé avec la base de données MySQL sur lamême machine (désignée par localhost), mais certains utilisateurs avancéspourraient vouloir mettre la base de données sur une autre machine.
+Description-ja.UTF-8: MySQLサーバのホスト名またはIPアドレス：
+ Phabricatorは通常、MySQLデータベースと(localhostと呼ばれている)同ホスト上にインストールされていますが、専門家はデータベースを別のホスト上にインストールする可能性があります。
+Description-nl.UTF-8: Computernaam of IP-adres van de MySQL-server:
+ Phabricator wordt gewoonlijk geïnstalleerd met de MySQL database op dezelfde computer (localhost genoemd), maar sommige ervaren gebruikers willen soms dat de database op een andere computer staat.
+Description-pt.UTF-8: nome de máquina ou endereço IP do servidor MySQL:
+ Geralmente o Phabricator é instalado com a base de dados MySQL na mesma máquina (referida como localhost), mas alguns utilizadores avançados podem querer meter a base de dados numa máquina diferente.
+
+Template: phabricator/phabricator_mysql_user
+Type: string
+Description: MySQL administrator account username:
+ Please enter the username of a MySQL account that has enough privileges to create and use phabricator_* databases.
+ .
+ You can create such a user with the following MySQL command:
+ .
+ grant all privileges on `phabricator\_%`.* to 'phabricator'@localhost identified by 'PASSWORD';
+Description-de.UTF-8: Benutzername des MySQL-Administrators:
+ Bitte geben Sie den Benutzernamen eines MySQL-Administrators ein. Er muss die zum Anlegen und zum Benutzen von phabricator_*-Datenbanken nötigen Rechte haben. 
+ .
+ Sie können einen solchen Benutzer mit folgendem MySQL-Befehl anlegen:
+ .
+ grant all privileges on `phabricator\_%`.* to 'phabricator'@localhost identified by 'PASSWORD';
+Description-es.UTF-8: Nombre de usuario para la cuenta de administrador de MySQL.
+ Introduzca el nombre de usuario de una cuenta MySQL que tenga suficientes privilegios para crear y usar las bases de datos «phabricator_*».
+ .
+ Puede crear un usuario de este tipo con la siguiente orden de MySQL:
+ .
+ grant all privileges on `phabricator\_%`.* to 'phabricator'@localhost identified by 'PASSWORD';
+Description-fr.UTF-8: Nom d'utilisateur d'un compte MySQL administrateur:
+ Veuillez entrer le nom d'utilisateur d'un compte MySQL qui a assez de droits pour créer et utiliser des bases de données phabricator_*.
+ .
+ Vous pouvez créer un tel utilisateur avec la commande MySQL suivante:
+ .
+ grant all privileges on `phabricator\_%`.* to 'phabricator'@localhost identified by 'MOTDEPASSE';
+Description-ja.UTF-8: MySQL管理者アカウントのユーザー名:
+ phabricator_*データベースの作成権限のあるMySQLアカウントのユーザー名を入力して下さい。
+ .
+ 次のMySQLコマンドでそのようなユーザーを作成することができます:
+ .
+ grant all privileges on `phabricator\_%`.* to 'phabricator'@localhost identified by '「パースワード」';
+Description-nl.UTF-8: Gebruikersnaam van de MySQL-beheerder:
+ Voer de gebruikersnaam in van een MySQL-account dat over de nodige rechten beschikt om de databases phabricator_* aan te maken en te gebruiken.
+ .
+ Met de volgende MySQL-opdracht kunt u een dergelijke gebruiker aanmaken:
+ .
+ grant all privileges on `phabricator\_%`.* to 'phabricator'@localhost identified by 'WACHTWOORD';
+Description-pt.UTF-8: Nome de utilizador da conta de administrador de MySQL:
+ Por favor indique o nome de utilizador de uma conta MySQL com privilégios suficientes para criar e usar bases de dados phabricator_*.
+ .
+ Você pode cria um utilizador assim com o seguinte comando do MySQL:
+ .
+ grant all privileges on `phabricator\_%`.* to 'phabricator'@localhost identified by 'PASSWORD';
+
+Template: phabricator/phabricator_mysql_pwd
+Type: password
+Description: MySQL administrator account password:
+Description-de.UTF-8: Passwort des MySQL-Administrators:
+Description-es.UTF-8: Contraseña de la cuenta de administrador de MySQL.
+Description-fr.UTF-8: Mot de passe du compte administrateur MySQL :
+Description-ja.UTF-8: MySQL管理者アカウントのパスワード:
+Description-nl.UTF-8: Wachtwoord van de MySQL-beheerder:
+Description-pt.UTF-8: Palavra-passe da conta de administrador do MySQL:
+
+Template: phabricator/pwd_check
+Type: password
+Description: MySQL administrator account password confirmation:
+ Please enter the MySQL administrator account password again for confirmation.
+Description-de.UTF-8: Passwort des MySQL-Administrators bestätigen:
+ Bitte geben Sie zur Bestätigung das Passwort des MySQL-Administrators nochmals ein.
+Description-es.UTF-8: Confirmación de la contraseña de la cuenta de administrador de MySQL:
+ Vuelva a introducir la contraseña de la cuenta de administrador de MySQL para confirmarla.
+Description-fr.UTF-8: Mot de passe du compte administrateur MySQL (confirmation):
+ Veuillez resaisir le mot de passe du compte administrateur MySQL pour le confirmer.
+Description-ja.UTF-8: MySQL管理者アカウントのパスワード(再入力):
+ 確認のため、管理者アカウントのパスワードを再度入力してください。
+Description-nl.UTF-8: Bevestiging van het wachtwoord van de MySQL-beheerder:
+ Voer ter bevestiging het wachtwoord voor de MySQL-beheerder nogmaals in.
+Description-pt.UTF-8: Confirmação da palavra-passe da conta de administrador do MySQL:
+ Por favor insira de novo a palavra-passe da conta de administrador do MySQL para confirmação.
+
+Template: phabricator/password_mismatch
+Type: error
+Description: Password input error
+ The two passwords you entered were not the same. Please try again.
+Description-de.UTF-8: Fehlerhaftes Passwort
+ Die beiden Passwörter stimmten nicht überein. Bitte versuchen Sie es nochmal.
+Description-es.UTF-8: Error al introducir la contraseña.
+ Las dos contraseñas que ha introducido no son iguales. Inténtelo de nuevo.
+Description-fr.UTF-8: Erreur de mot de passe
+ Les deux mots de passe que vous avez saisis ne sont pas identiques. Merci de réessayer.
+Description-ja.UTF-8: パスワード入力エラー
+ 入力した2つのパスワードが同じではありませんでした。もう一度やり直してください。
+Description-nl.UTF-8: Fout bij het invoeren van het wachtwoord
+ De twee ingevoerde wachtwoorden waren niet identiek. Probeer opnieuw.
+Description-pt.UTF-8: Erro na entrada da palavra-passe
+ As duas palavras-passe que inseriu não são iguais. Por favor tente de novo.
+
+Template: phabricator/webserver
+Type: select
+Choices: apache2, nginx, lighttpd, None
+Choices-de.UTF-8: apache2, nginx, lighttpd, Keiner
+Choices-es.UTF-8: apache2, nginx, lighttpd, Ninguno
+Choices-fr.UTF-8: apache2, nginx, lighttpd, Aucun
+Choices-ja.UTF-8: apache2, nginx, lighttpd, なし
+Choices-nl.UTF-8: apache2, nginx, lighttpd, Geen
+Choices-pt.UTF-8: apache2, nginx, lighttpd, Nenhum
+Default: apache2
+Description: Web server:
+ Please select the web server to configure automatically for Phabricator.
+ .
+ Select "None" if you would like to configure the web server manually.
+Description-de.UTF-8: Web server:
+ Bitte wählen Sie den Webserver aus, der für Phabricator automatisch konfiguriert werden soll.
+ .
+ Falls Sie den Web-Server manuell konfigurieren möchten, wählen Sie »Keiner«.
+Description-es.UTF-8: Servidor web:
+ Seleccione el servidor web que se configurará automáticamente para Phabricator.
+ .
+ Seleccione «Ninguno» si prefiere hacer la configuración del servidor manualmente.
+Description-fr.UTF-8: Serveur web:
+ Veuillez choisir le serveur web à configurer automatiquement pour Phabricator.
+ .
+ Choisissez "Aucun" si vous souhaitez configurer le serveur web manuellement.
+Description-ja.UTF-8: Webサーバー：
+ Phabricatorのため、自動的に設定するWebサーバーを選択してください。
+ .
+ 手動でWebサーバーを設定したい場合は、"なし"を選択してください。
+Description-nl.UTF-8: Webserver:
+ Kies de webserver die automatisch ingesteld moet worden voor Phabricator.
+ .
+ Kies "Geen" indien u de webserver manueel wenst in te stellen.
+Description-pt.UTF-8: Servidor Web:
+ Por favor seleccione o servidor web a configurar automaticamente para o Phabricator.
+ .
+ Seleccione "Nenhum" se desejar configurar manualmente o servidor web.

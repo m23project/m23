@@ -1,0 +1,361 @@
+Template: dnet-common/nodename
+Type: string
+Default: linux
+Description: DECnet node name:
+ All nodes on a DECnet network have a node name. This is similar to the IP
+ hostname but can only be a maximum of 6 characters long. It is common that
+ the DECnet name is the same as the IP name (if your machine has one). If you
+ do not know the answer to this question please contact your system
+ administrator.
+Description-cs.UTF-8: Jméno uzlu v síti DECnet:
+ Všechny uzly v síti DECnet mají své jméno. To je podobné jako jméno počítače v IP sítích, avšak je omezeno na maximálně 6 znaků. Běžně se pro DECnet použije stejné jméno jako má počítač v síti založené na protokolu IP (pokud nějaké máte). Nevíte-li co zadat, zeptejte se svého správce systému.
+Description-da.UTF-8: DECnet-knudenavn:
+ Alle knuder på et DECnet-netværk har et knudenavn. Dette svarer til IP-værtsnavnet, men kan kun være maksimalt 6 tegn langt. Det er normalt, at DECnet-navnet er det samme som IP-navnet (hvis din maskine har et). Hvis du ikke kender svaret på dette spørgsmål så kontakt venligst din systemadministrator.
+Description-de.UTF-8: DECnet-Knotenname:
+ Alle Knoten in einem DECnet-Netz haben einen Knotennamen. Dieser ist vergleichbar mit dem Hostnamen in einem IP-Netz, jedoch kann der Knotenname nicht länger als 6 Zeichen sein. Es ist normal, dass der DECnet-Name mit dem IP-Namen identisch ist (falls Ihre Maschine einen hat). Falls Sie die Antwort auf diese Frage nicht wissen, fragen Sie Ihren System-Administrator.
+Description-es.UTF-8: Nombre del nodo DECnet:
+ Todos los nodos de una red DECnet tienen un nombre de nodo. Éste es similar al nombre IP de la máquina, pero sólo puede tener 6 caracteres como máximo. Es normal que el nombre DECnet sea el mismo que el nombre IP (si su máquina tiene uno). Por favor, contacte con el administrador del sistema si no sabe la respuesta a esta pregunta.
+Description-fr.UTF-8: Nom de nœud DECnet :
+ Tous les nœuds d'un réseau DECnet ont un nom. Celui-ci est analogue au nom d'hôte IP mais ne peut comporter que 6 caractères au maximum. Le nom DECnet est usuellement le même que le nom IP (si cette machine en possède un). Si vous ne connaissez pas ce nom, veuillez consulter l'administrateur réseau.
+Description-it.UTF-8: Nome del nodo DECnet:
+ Tutti i nodi di una rete DECnet hanno un nome. È simile al nome host di IP, ma può essere lungo al massimo 6 caratteri. Spesso il nome DECnet è uguale al nome IP (se la macchina ne ha uno). Se non si conosce la risposta a questa domanda, contattare l'amministratore di sistema.
+Description-ja.UTF-8: DECnet のノード名:
+ DECnet ネットワークのすべてのノードは、ノード名を持ちます。これは IP ホスト名に似ていますが、最大長が 6 文字という制限があります。一般的に、DECnet 名は IP 名 (もしマシンがそれを持っているなら) と同じにします。質問の答えがわからなければ、あなたのシステム管理者に問い合わせてください。
+Description-nl.UTF-8: DECnet-knoopnaam:
+ Alle knopen op een DECnet-netwerk hebben een knoopnaam. Dit is vergelijkbaar met de IP-computernaam, maar ze mag slechts 6 karakters lang zijn. Het is gebruikelijk dat de DECnet-naam dezelfde is als de IP-naam (als uw machine er één heeft). Als u het antwoord op deze vraag niet weet, contacteer dan uw systeembeheerder.
+Description-pl.UTF-8: Nazwa węzła DECnet:
+ Wszystkie węzły w sieci DECnet mają nazwę węzła. Jest podobna do nazwy hosta IP, musi mieć jednak długość nie większą niż 6 znaków. Bardzo często nazwa DECnet jest taka sama jak nazwa IP (jeśli ten komputer ją posiada). Jeśli nie wiadomo jak brzmi odpowiedź na to pytanie, proszę się skontaktować z administratorem systemu.
+Description-pt.UTF-8: Nome do nó DECnet:
+ Todos os nós numa rede DECnet têm um nome de nó. É semelhante ao nome de máquina IP mas estão limitados a 6 caracteres. É comum o nome de nó DECnet ser o mesmo do nome IP (se a máquina tiver um nome IP). Se não sabe a resposta a esta questão, por favor contacte o administrador do sistema.
+Description-ru.UTF-8: Имя узла DECnet:
+ У каждого узла в сети DECnet есть имя. Оно похоже на имя узла в сетях IP, но может быть длиной максимум 6 символов. Обычно, имя DECnet делают одинаковым с IP именем (если оно есть у машины). Если вы не знаете что ответить на этот вопрос, обратитесь к системному администратору.
+Description-sk.UTF-8: Meno uzla DECnet:
+ Všetky uzly v sieti DECnet majú meno uzla. Je podobné menu hostiteľa IP, ale môže byť maximálne 6 znakov dlhé. Býva bežné, že meno DECnet je rovnaké ako meno IP (ak váš stroj nejaké má). Ak neviete na túto otázku odpovedať, prosím spojte sa so svojim systémovým administrátorom.
+Description-sv.UTF-8: DECnet nodnamn:
+ Alla noder i ett DECnet-nätverk har ett nodnamn. Det kan liknas vid ett värdnamn i domännamnssystemet men nodnamnen inte vara längre än sex tecken. Det vanligaste är att använda värdnamnet som nodnamn. Har du ingen aning om hur du ska besvara den här frågan ska du kontakta din systemadministratör.
+Description-vi.UTF-8: Tên nút DECnet:
+ Tất cả các nút trên mạng kiểu DECnet có tên nút riêng. Nó tương tự với tên máy IP, nhưng chứa tối đa 6 ký tự. Tên DECnet và tên IP (nếu có) thường là cùng một tên. Nếu bạn chưa biết cách trả lời câu này, hãy liên lạc với quản trị hệ thống.
+
+Template: dnet-common/nodeaddr
+Type: string
+Default: 1.10
+Description: DECnet node address:
+ All nodes on a DECnet network have a node address. This is two numbers
+ separated with a period (e.g. 3.45) where the first number denotes the area
+ and the second is the node within that area.
+ .
+ Do not make up a number here. If you do not know your DECnet node address
+ then ask your system administrator.
+Description-cs.UTF-8: Adresa uzlu v síti DECnet:
+ Všechny uzly na síti DECnet mají svou adresu. Formát adresy jsou dvě čísla oddělená tečkou (např. 3.45), kde první číslo označuje oblast a druhé uzel v dané oblasti.
+ .
+ Adresu DECnet uzlu si nevymýšlejte. Pokud ji neznáte, zeptejte se svého systémového správce.
+Description-da.UTF-8: DECnet-knudeadresse:
+ Alle knuder på et DECnet-netværk har en knudeadresse. Dette er to tal adskilt af et punktum (f.eks. 3.45) hvor det første tal betegner området og det andet er knuden i det område.
+ .
+ Find ikke på et vilkårligt nummer her. Hvis du ikke kender din DECnet-knudeadresse så spørg din systemadministrator.
+Description-de.UTF-8: DECnet-Knotenadresse:
+ Alle Knoten in einem DECnet-Netz haben eine Knotenadresse. Sie besteht aus zwei Zahlen, die durch einen Punkt getrennt sind (z.B. 3.45). Die erste Zahl spezifiziert das Gebiet, die zweite den Knoten innerhalb des Gebiets.
+ .
+ Wählen Sie hier keine beliebige Zahlen. Falls Sie die DECnet-Knotenadresse nicht kennen, sollten Sie Ihren Systemadministrator fragen.
+Description-es.UTF-8: Dirección del nodo DECnet:
+ Todos los nodos de una red DECnet tienen una dirección de nodo. Son dos números separados por un punto (p. ej. 3.45) donde el primer número indica el área y el segundo número es el nodo dentro de ese área.
+ .
+ No ponga aquí cualquier número. Si no conoce la dirección de su nodo DECnet entonces pregunte al administrador del sistema.
+Description-fr.UTF-8: Adresse de nœud DECnet :
+ Tous les nœuds d'un réseau DECnet ont une adresse. Celle-ci est constituée de deux nombres séparés par un point (p. ex. 3.45) où le premier nombre correspond à la zone et le second représente le nœud au sein de cette zone.
+ .
+ N'utilisez pas n'importe quelle valeur ici. Si vous ne connaissez pas l'adresse de nœud DECnet, veuillez consulter l'administrateur réseau.
+Description-it.UTF-8: Indirizzo del nodo DECnet:
+ Tutti i nodi di una rete DECnet hanno un indirizzo. È formato da due numeri separati da un punto (es. 3.45), dove il primo numero indica l'area e il secondo è il nodo all'interno di quell'area.
+ .
+ Non inserire un numero inventato. Se non si conosce l'indirizzo del proprio nodo DECnet chiederlo all'amministratore di sistema.
+Description-ja.UTF-8: DECnet ノードアドレス:
+ DECnet ネットワークのすべてのノードはノードアドレスを持ちます。これは、ピリオドで区切られた 2 つの数 (たとえば 3.45) で、最初の数がエリア、2 番目の数がエリア内のノードを意味します。
+ .
+ この数を適当にでっち上げないでください。DECnet ノードアドレスがわからないときには、あなたのシステム管理者に問い合わせてください。
+Description-nl.UTF-8: DECnet-knoopadres:
+ Alle knopen op een DECnet-netwerk hebben een knoopadres. Dit bestaat uit twee getallen, gescheiden door een punt (b.v. 3.45) waarbij het eerste getal het gebied aangeeft en het tweede de knoop in dat gebied.
+ .
+ Verzin niet zomaar een adres. Als u uw DECnet-knoopadres niet weet, vraag het dan aan uw systeembeheerder.
+Description-pl.UTF-8: Adres węzła DECnet:
+ Wszystkie węzły w sieci DECnet posiadają swoje adresy. Są to dwie liczby rozdzielone kropką (np. 3.45), gdzie pierwsza liczba oznacza obszar, a druga węzeł w danym obszarze.
+ .
+ Proszę nie wymyślać tej liczby. Jeśli nie wiadomo jaki jest adres danego węzła DECnet, proszę zapytać administratora systemu.
+Description-pt.UTF-8: Endereço de nó DECnet:
+ Todos os nós numa rede DECnet têm um endereço de nó. São dois números separados por um ponto final (e.g. 3.45) sendo que o primeiro número indica a área e o segundo indica um nó nessa área.
+ .
+ Não atribua um número ao acaso. Se não souber o endereço do nó DECnet contacte o seu administrador do sistema.
+Description-ru.UTF-8: Адрес узла DECnet:
+ У каждого узла в сети DECnet есть адрес. Он записывается в виде двух чисел, разделённых точкой (например, 3.45), где первое число означает область, а второе — узел в этой области.
+ .
+ Не указывайте произвольное число. Если вы не знаете адрес своего узла DECnet, обратитесь к системному администратору.
+Description-sk.UTF-8: Adresa uzla DECnet:
+ Všetky uzly v sieti DECnet majú adresu uzla. Sú to dve čísla, oddelené bodkou (napr. 3.45), kde prvé číslo udáva oblasť a druhé je uzol v tejto oblasti.
+ .
+ Nevymýšľajte si tu čísla. Ak nepoznáte svoju adresu uzla DECnet, spýtajte sa svojho systémového administrátora.
+Description-sv.UTF-8: DECnet nodadress:
+ Alla noder i ett DECnet-nätverk har en nodadress. Detta är två tal separerade med en punkt (ex. 3.14) där det första talet indikerar en plats och det andra en särskild nod på platsen.
+ .
+ Hitta inte på tal. Om du inte vet vad din DECnet nodadress är ska du fråga system administratören.
+Description-vi.UTF-8: Địa chỉ nút DECnet:
+ Tất cả các nút trên mạng kiểu DECnet có địa chỉ nút riêng. Nó có dạng hai con số định giới bằng dấu chấm (v.d. 3.45) mà con số thứ nhất đại diện vùng và số thứ hai là nút trong vùng đó.
+ .
+ Đừng tạo số nào ở đây. Nếu bạn chưa biết địa chỉ nút DECnet, hãy liên lạc với quản trị hệ thống.
+
+Template: dnet-common/warning
+Type: note
+Description: DECnet startup changes your ethernet hardware address
+ The "setether" program in this package will change the hardware (MAC)
+ address of all ethernet cards in your system (by default) to match the
+ DECnet node address. This is essential for the operation of DECnet and so is
+ not optional. However, if you have more than one ethernet card you may
+ want to edit /etc/default/decnet to alter the list of cards whose hardware
+ addresses are changed.
+ .
+ Be aware that any other machines that have your system's MAC address in
+ their ARP cache may no longer be able to communicate with you via IP
+ protocols until this cache has timed out or been flushed.
+ .
+ The MAC address cannot be changed on-the-fly so you will need to reboot your
+ machine before DECnet can function.
+ .
+ You should also edit /etc/decnet.conf to add the names and addresses of
+ DECnet nodes you want to communicate with.
+Description-cs.UTF-8: Spuštění DECnetu změní vaši ethernetovou hardwarovou adresu
+ Program „setether“ změní hardwarovou (MAC) adresu všech ethernetových karet v systému, aby odpovídaly adrese uzlu DECnet. To je nezbytné pro správné fungování DECnetu a tudíž se musí provést. Pokud však máte více síťových karet, můžete v souboru /etc/default/decnet upravit seznam karet, jejichž hardwarové adresy se mají změnit.
+ .
+ Pamatujte, že okolní počítače, které mají MAC adresu vaší síťové karty uloženu ve své ARP tabulce, s vámi nebudou moci komunikovat přes IP protokoly do té doby, než jim platnost vašeho záznamu v ARP tabulce vyprší, nebo dokud ARP tabulku nevyprázdníte.
+ .
+ MAC adresy nemohou být měněny za běhu a proto budete muset před použitím DECnetu počítač restartovat.
+ .
+ Také byste měli do souboru /etc/decnet.conf přidat jména a adresy DECnet uzlů, se kterými chcete komunikovat.
+Description-da.UTF-8: DECnet-opstart ændrer din ethernets hardwareadresse
+ Programmet »setether« i denne pakke vil ændre hardware-adressen (MAC) for alle ethernetkort i dit system (som standard) for at matche DECnet-knudeadressen. Dette er essentielt for operationen af DECnet og er derfor ikke valgfri. Du vil dog måske, hvis du har mere end et ethernetkort, ønske at redigere /etc/default/decnet for at ændre listen af kort hvis hardwareadresser ændres.
+ .
+ Vær opmærksom på at alle andre maskiner som har dit systems MAC-adresse i deres ARP-mellemlager ikke længere kan kommunikere med dig via IP-protokoller, indtil dette mellemlager har haft tidsudløb eller er blevet renset.
+ .
+ MAC-adressen kan ikke ændres løbende, så du vil skulle genstarte din maskine før DECnet kan fungere.
+ .
+ Du bør også redigere /etc/decnet.conf for at tilføje navnene og adresserne på DECnet-knuder, du ønsker at kommunikere med.
+Description-de.UTF-8: Starten des DECnet verändert die Hardware-Adresse Ihrer Netzwerkkarten
+ Das »setether«-Programm in diesem Paket wird standardmäßig die Hardware-(MAC)-Adressen aller im Rechner installierten Netzwerkkarten ändern, um diese an die Knotenadressen anzupassen. Dies ist wichtig für den Betrieb des DECnet und kann nicht unterbunden werden. Falls Sie allerdings mehr als eine Netzwerkkarte im Rechner installiert haben, dann können Sie die Karten, deren Hardware-Adressen geändert werden sollen, in der Datei /etc/default/decnet angeben.
+ .
+ Beachten Sie, dass Ihr Rechner nicht mit anderen Rechnern über IP kommunizieren kann, solange diese nicht ihren ARP-Cache (Zwischenspeicher für MAC-Adressen) leeren oder er von selbst verfällt.
+ .
+ Die MAC-Adresse kann nicht sofort geändert werden. Sie müssen Ihren Rechner neu starten, um DECnet verwenden zu können.
+ .
+ Sie sollten die Datei /etc/decnet.conf anpassen, und darin die Namen und Adressen der DECnet-Knoten angeben, mit denen Sie kommunizieren wollen.
+Description-es.UTF-8: El arranque de DECnet cambia la dirección hardware de las tarjetas ethernet.
+ El programa «setether» de este paquete cambiará la dirección hardware (MAC) de todas las tarjetas ethernet de su sistema (de forma predeterminada) para que coincidan con la dirección del nodo DECnet. Esto es imprescindible para que DECnet funcione y por lo tanto no es algo opcional. Sin embargo, si tiene más de una tarjeta ethernet quizás quiera editar el archivo «/etc/default/decnet» para alterar la lista de tarjetas a las que se les ha cambiado su dirección hardware.
+ .
+ Tenga en cuenta que cualquier otra máquina que tuviera su dirección MAC en su cache ARP puede que no sea capaz de comunicarse con usted a través de protocolos IP hasta que esta cache se quede obsoleta o se limpie.
+ .
+ La dirección MAC no se puede cambiar «al vuelo» por lo que necesitará reiniciar su máquina antes para que DECnet pueda funcionar.
+ .
+ También debería editar el fichero «/etc/decnet.conf» para añadir los nombres y direcciones de los nodos DECnet con los que se quiere comunicar.
+Description-fr.UTF-8: Modification de l'adresse matérielle Ethernet par le lancement de DECnet
+ Le programme « setether » de ce paquet va, par défaut, changer l'adresse matérielle (ou « adresse MAC ») de toutes les cartes Ethernet du système pour correspondre avec l'adresse de nœud DECnet. Cela est indispensable au bon fonctionnement de DECnet ce qui explique que ce ne soit pas optionnel. Cependant, si plus d'une carte Ethernet est utilisée, vous devriez modifier /etc/default/decnet pour changer la liste des cartes dont l'adresse matérielle sera modifiée.
+ .
+ Tout autre poste qui comporte cette adresse MAC dans son cache ARP ne pourra plus communiquer avec cette machine via les protocoles IP tant que ce cache n'aura pas expiré ou été vidé.
+ .
+ L'adresse matérielle ne peut pas être modifiée à la volée et vous devrez donc redémarrer la machine avant de pouvoir utiliser DECnet.
+ .
+ Vous devriez également modifier /etc/decnet.conf pour y ajouter les noms et adresses des hôtes avec lesquels vous souhaitez communiquer.
+Description-it.UTF-8: L'avvio di DECnet cambia l'indirizzo hardware Ethernet
+ Il programma «setether» in questo pacchetto modificherà l'indirizzo hardware (MAC) di tutte le schede Ethernet nel sistema (in modo predefinito) per farlo corrispondere all'indirizzo del nodo DECnet. Ciò è essenziale per il funzionamento di DECnet e perciò non è una cosa opzionale. Tuttavia, se si ha più di una scheda Ethernet si potrebbe voler modificare /etc/default/decnet per cambiare l'elenco delle schede di cui modificare l'indirizzo hardware.
+ .
+ Notare che qualsiasi altra macchina che abbia l'indirizzo MAC del sistema nella propria cache ARP potrebbe non essere più in grado di comunicare con il sistema attraverso i protocolli IP fino a che tale cache sia scaduta o sia stata azzerata.
+ .
+ L'indirizzo MAC non può essere modificato al volo perciò sarà necessario riavviare la macchina prima che DECnet possa funzionare.
+ .
+ Si dovrebbe anche modificare /etc/decnet.conf per aggiungere i nomi e gli indirizzi dei nodi DECnet con sui si desidera comunicare.
+Description-ja.UTF-8: DECnet スタートアップは、あなたのイーサネットハードウェアアドレスを変更します
+ このパッケージの "setether" プログラムは、あなたのシステムのすべてのイーサネットカードのハードウェア (MAC) アドレスを、DECnet ノードアドレスに適合するよう (デフォルトで) 変更します。これは DECnet の操作において基本であり、随意にすることはできません。ただし、2 つ以上のイーサネットカードを持っているのであれば、ハードウェアアドレスが変更されるカードのリストを調整するために、/etc/default/decnet を編集できます。
+ .
+ ARP キャッシュにあなたのシステムの MAC アドレスを持つほかのマシンは、キャッシュがタイムアウトするかフラッシュされるまで、もうあなたのマシンとは IP プロトコル経由で通信できないかもしれないことに気を付けてください。
+ .
+ MAC アドレスは動的に変更できないので、DECnet を機能させる前にあなたのマシンを再起動する必要があります。
+ .
+ やり取りしたい DECnet ノードの名前とアドレスを追加するために、/etc/decnet.conf も編集すべきです。
+Description-nl.UTF-8: Het opstarten van DECnet wijzigt uw ethernet-hardwareadres
+ Het "setether"-programma in dit pakket zal het hardware- (MAC-) adres van al uw ethernetkaarten in uw systeem (standaard) laten overeenkomen met het DECnet-knoopadres. Dit is essentieel voor de werking van DECnet en is dus niet optioneel. Toch kunt u in /etc/default/decnet de lijst van kaarten wiens hardwareadres moet veranderd worden, wijzigen als u meer dan één ethernetkaart heeft.
+ .
+ Merk op dat andere machines die het MAC-adres van uw systeem in hun ARP-cache hebben, misschien niet langer met u kunnen communiceren via IP-protocols totdat de cache is verlopen of is gewist.
+ .
+ Het MAC-adres kan niet "on-the-fly" gewijzigd worden, dus u zal uw machine moeten herstarten opdat DECnet zou kunnen functioneren.
+ .
+ U dient tevens de namen en adressen van de DECnet knopen waarmee u wilt communiceren aan /etc/decnet.conf toe te voegen.
+Description-pl.UTF-8: DECnet zmieni adresy sprzętowe kart ethernet
+ Program "setether" w tym pakiecie zmieni adresy sprzętowe (MAC) wszystkich kart sieciowych w tym systemie (domyślnie), aby dopasować adresy węzła DECnet. Jest to czynność niezbędna. Można jednak (jeśli posiada się kilka kart ethernetowych) dostosować listę kart, których adresy zostaną zmienione, edytując plik /etc/default/decnet.
+ .
+ Proszę mieć na uwadze, że inne komputery, które mają adres MAC tego systemu w swojej pamięci podręcznej ARP mogą nie móc się połączyć z tym komputerem za pomocą protokołów IP, dopóki pamięć nie wygaśnie lub nie zostanie wyczyszczona.
+ .
+ Adres MAC nie może zostać zmieniony "w locie", konieczne będzie ponowne uruchomienie komputera, zanim DECnet będzie mogło funkcjonować.
+ .
+ Będzie również konieczne dokonanie edycji pliku /etc/decnet.conf, w celu dodania nazw i adresów węzłów DECnet z którymi ma nastąpić komunikacja.
+Description-pt.UTF-8: O arranque DECnet muda o seu endereço de hardware ethernet
+ O programa "setether" neste pacote irá mudar o endereço de hardware (MAC) de todas as placas ethernet no seu sistema (por predefinição) para corresponder ao endereço de nó DECnet. Isto é essencial para a operação da rede DECnet e como tal não é opcional. No entanto, se têm mais de uma placa ethernet pode querer editar /etc/default/decnet para alterar a lista de placas que terão os seus endereços alterados.
+ .
+ Atenção que quaisquer outras máquinas que tenham o endereço MAC do seu sistema na cache ARP podem não conseguir comunicar consigo via protocolos IP até a cache ser limpa ou expirar.
+ .
+ O endereço MAC não pode ser mudado "a quente" portanto têm que reiniciar a máquina antes que a rede DECnet possa funcionar.
+ .
+ Deve também editar /etc/decnet.conf para acrescentar os nomes e endereços dos nós DECnet com os quais quer comunicar.
+Description-ru.UTF-8: Запуск DECnet изменяет ваш аппаратный адрес ethernet
+ Программа "setether" из этого пакета изменит аппаратный адрес (MAC) всех сетевых карт в вашей системе (по умолчанию) на нужный адрес узла DECnet. Это необходимо для работы DECnet и поэтому является обязательным. Однако, если у вас более одной сетевой карты, то вы можете отредактировать список карт в файле /etc/default/decnet, чьи аппаратные адреса будут изменены.
+ .
+ Предупреждаем, что любые машины, у которых в ARP-кэшах есть MAC адрес вашей системы, не смогут больше подключиться к вашей машине по протоколам IP до тех пор, пока не истечёт срок хранения или адрес не будет удалён.
+ .
+ MAC адрес не может быть изменён на лету, поэтому для работы DECnet вам нужно перезагрузить компьютер.
+ .
+ Также вы можете отредактировать файл /etc/decnet.conf, добавив туда имена и адреса узлов DECnet, с которыми нужно взаимодействовать.
+Description-sk.UTF-8: Spustenie DECnet zmení vašu hardvérovú adresu sieťovej karty
+ Program „setether” v tomto balíku zmení hardvérovú (MAC) adresu všetkých sieťových kariet vášho systému (predvolene) aby zodpovedali adrese uzla DECnet. Je to nevyhnutné pre operácie DECnet, a tak táto operácia nie je voliteľná. Avšak, ak máte viac ako jednu sieťovú kartu, môžete upraviť /etc/default/decnet a zmeniť zoznam kariet, ktorých hardvérové adresy sú menené.
+ .
+ Pamätajte, že všetky ostatné stroje, ktoré majú MAC adresu vášho systému vo svojej vyrovnávacej pamäti ARP, nebudú schopné s vašim strojom komunikovať pomocou protokolu IP až kým táto vyrovnávacia pamäť nevyprší alebo nebude vyprázdnená.
+ .
+ Adresu MAC nemožno zmeniť za behu stroja, preto budete musieť svoj stroj reštartovať, aby mohol DECnet fungovať.
+ .
+ Mali by ste tiež upraviť /etc/decnet.conf a pridať do neho mená a adresy uzlov DECnet, s ktorými chcete komunikovať.
+Description-sv.UTF-8: Vid uppstart ändrar DECnet hårdvaruadressen för ditt nätverkskort
+ Programmet "setether" i detta paket kommer att ändra hårdvaruadressen (MAC) för alla ethernetkort i systemet för att matcha DECnet nodadressen. Detta är grundläggande för att få DECnet att fungera och kan inte väljas bort. Om du har mer än ett ethernetkort i systemet kan du dock i redigera filen /etc/default/decnet för att ändra listan med ethernetkort som ändras.
+ .
+ Kom ihåg att andra maskiner som har din MAC i sin ARP-cache kan inte kommunicera med dig över IP-protokoll förrens cachen har nåt sin tidsgräns eller tömts.
+ .
+ MAC-adressen kan inte bytas utan att systemet startas om sådetta måste göras innan DECnet fungerar.
+ .
+ DU bör dessutom redigera /etc/decnet.conf och lägga till namn och adresser för DECnet-noder du vill kommunicera med.
+Description-vi.UTF-8: Việc khởi chạy DECnet thì thay đổi địa chỉ phần cứng Ethernet
+ Chương trình « setether » của gói này sẽ thay đổi địa chỉ phần cứng (MAC) của mọi thẻ Ethernet trong hệ thống của bạn (theo mặc định), để khớp với địa chỉ của nút DECnet. Hành động này là chủ yếu để thao tác DECnet nên không phải tùy chọn. Tuy nhiên, nếu bạn có nhiều thẻ Ethernet, có lẽ bạn muốn sửa đổi tập tin « /etc/default/decnet » để thay đổi danh sách các thẻ có địa chỉ phần cứng bị sửa đổi.
+ .
+ Ghi chú rằng máy khác nào có địa chỉ MAC của hệ thống này trong bộ nhớ tạm ARP thì có lẽ sẽ không còn có thể liên lạc lại với bạn qua giao thức IP cho đến khi bộ nhớ tạm đó đã quá hạn hay bị xóa sạch.
+ .
+ Không thể thay đổi địa chỉ MAC trong khi chạy, vì vậy bạn sẽ cần phải khởi động lại máy để DECnet hoạt động được.
+ .
+ Bạn cũng hãy sửa đổi tập tin «/etc/decnet.conf» để thêm tên và địa chỉ của những cái nút DECnet với mà bạn muốn liên lạc.
+
+Template: dnet-common/configure-action
+Type: select
+Choices: configure now, configure later, skip and leave config as it is
+Default: skip and leave config as it is
+Description: Configure DECnet now:
+ You can configure your system as a DECnet node now or later.
+ If you have already set up your system to use DECnet you can
+ skip this and leave the configuration as it is.
+ .
+ If you choose to configure now this will set up your system.
+ This operation needs to change the MAC address of your network cards,
+ it may work directly or it may require a reboot.
+ Please close all open connections such as ssh sessions and downloads
+ before you continue.
+ .
+ If you opt to configure later you can run this configure step again
+ with: dpkg-reconfigure dnet-common
+ .
+ If you are unsure, select 'configure later' and contact your
+ system administrator.
+Description-cs.UTF-8: Nastavit DECnet nyní:
+ Můžete si vybrat, jestli chcete nastavit svůj systém jako uzel DECnetu nyní, nebo jestli to necháte na později. Pokud jste již svůj systém pro DECnet nastavili, můžete toto nastavení přeskočit.
+ .
+ Rozhodnete-li se nastavit systém nyní, bude potřeba změnit MAC adresy síťových karet, což možná bude fungovat rovnou, ale také může vyžadovat restart. Před pokračováním prosím ukončete všechna otevřená síťová spojení jako např. ssh nebo stahování souborů.
+ .
+ Chcete-li s nastavením počkat na příhodnější čas, můžete pak vyvolat tohoto průvodce příkazem „dpkg-reconfigure dnet-common“.
+ .
+ Pokud si nejste jisti, zvolte „nastavit později“ a kontaktujte svého správce systému.
+Description-da.UTF-8: Konfigurer DECnet nu:
+ Du kan konfigurere dit system som en DECnet-knude nu eller senere. Hvis du allerede har opsat dit system til at bruge DECnet, kan du springe dette punkt over og efterlade din konfiguration som den er.
+ .
+ Hvis du vælger at konfigurere nu, vil denne konfiguration sætte dit system op. Denne handling skal ændre MAC-adressen for dine netværkskort, det vil måske virke direkte eller det kan kræve en genstart. Luk venligst alle åbne forbindelser såsom ssh-sessioner og overførsler før du fortsætter.
+ .
+ Hvis du vælger at konfigurere senere, kan du køre dette konfigurationstrin igen med: dpkg-reconfigure dnet-common
+ .
+ Hvis du er usikker så vælg »configure later« og kontakt din systemadministator.
+Description-de.UTF-8: DECnet jetzt konfigurieren:
+ Sie können Ihr System jetzt oder später als DECnet-Knoten konfigurieren. Falls Sie Ihr System bereits für DECnet eingerichtet haben, können Sie dies überspringen und die Konfiguration beim aktuellen Stand belassen.
+ .
+ Falls Sie sich für die sofortige Konfiguration entscheiden, wird Ihr System eingerichtet. Durch diese Maßnahme müssen die MAC-Adressen aller Netzwerkkarten geändert werden, dies könnte sofort wirksam werden oder erst nach einem Systemneustart. Bitte schließen Sie alle offenen Verbindungen, wie SSH-Sitzungen und laufende Downloads, bevor Sie fortfahren.
+ .
+ Falls Sie sich für eine spätere Konfiguration entscheiden, können Sie diese Konfigurationsschritte erneut mit »dpkg-reconfigure dnet-common« ausführen.
+ .
+ Falls Sie sich unsicher sind, wählen Sie »configure later« und nehmen Sie mit dem Administrator Ihres Systems Kontakt auf.
+Description-es.UTF-8: Configurar DECnet ahora:
+ Puede configurar el sistema como un nodo DECnet ahora o más tarde. Si ya tiene configurado el sistema para utilizar DECnet puede saltarse este paso y dejar la configuración como está.
+ .
+ Si escoge configurarlo ahora, esta operación necesita cambiar la dirección MAC de las tarjetas de red, puede que funcione directamente o que deba reiniciar. Por favor, antes de continuar cierre todas las conexiones abiertas como las sesiones de SSH y las descargas.
+ .
+ Si opta por configurar más tarde, puede realizar la configuración de nuevo ejecutando: dpkg-reconfigure dnet-common
+ .
+ Si no está seguro, escoja «configurar más tarde» y contacte con el administrador del sistema.
+Description-fr.UTF-8: Configuration de DECnet :
+ Ce système peut être configuré pour DECnet maintenant ou plus tard. Si ce système est déjà configuré pour utiliser DECnet, cette étape peut être sautée et la configuration peut être laissée telle quelle.
+ .
+ Dans le cas contraire, le système sera configuré. Cela implique de changer l'adresse MAC des cartes réseau, ce qui peut fonctionner immédiatement ou nécessiter un redémarrage. Vous devriez fermer les connexions ouvertes, notamment les sessions SSH et les téléchargements, avant de continuer.
+ .
+ Si vous choisissez d'effectuer la configuration plus tard, vous devrez utiliser la commande « dpkg-reconfigure dnet-common ».
+ .
+ Dans le cas contraire, vous devriez choisir « configurer plus tard » et contacter l'administrateur système.
+Description-it.UTF-8: Configurare DECnet adesso:
+ Si può configurare il sistema come un nodo DECnet adesso o successivamente. Se si è già impostato il sistema per usare DECnet si può saltare questo passo e lasciare la configurazione come è.
+ .
+ Se si sceglie di fare la configurazione adesso, il sistema verrà impostato. Questa operazione necessita del cambiamento dell'indirizzo MAC delle schede di rete; può funzionare direttamente o può essere necessario riavviare. Prima di continuare chiudere tutte le connessioni aperte, come le sessioni ssh e gli scaricamenti.
+ .
+ Se si sceglie di configurare in un momento successivo, si può rieseguire questo passo di configurazione usando: «dpkg-reconfigure dnet-common».
+ .
+ Se non si è sicuri, scegliere di configurare successivamente e contattare l'amministratore di sistema.
+Description-ja.UTF-8: 今 DECnet を設定する:
+ あなたのシステムを DECnet ノードとして今すぐ設定することも、後でそうすることもできます。すでにシステムを DECnet を使うようにセットアップ済みであれば、この質問は飛ばして、現在の設定のままにしておくことができます。
+ .
+ 今設定することを選ぶと、システムをセットアップします。この操作は、あなたのネットワークカードの MAC アドレスの変更を必要とするので、すぐに稼働するかもしれませんし、再起動を要するかもしれません。続ける前に、ssh セッションやダウンロードなどのすべての開いている接続を閉じてください。
+ .
+ 後で設定することを選んだ場合、次のようにしてこの設定ステップを再度実行できます: dpkg-reconfigure dnet-common
+ .
+ よくわからなければ、'後で設定する' を選び、システム管理者に問い合わせてください。
+Description-nl.UTF-8: DECnet nu configureren:
+ U kunt uw systeem nu of op een later moment configureren als DECnet-knoop. Als u uw systeem al heeft ingesteld voor gebruik van DECnet kunt u deze stap overslaan en de configuratie laten zoals ze is.
+ .
+ Als u ervoor kiest om nu te configureren als dit uw systeem instellen. Deze operatie moet het MAC-adres van al uw netwerkkaarten veranderen, dit werkt ofwel meteen, of vereist een herstart van het systeem. U wordt verzocht om alle openstaande verbindingen zoals ssh-sessies en downloads af te sluiten voordat u verdergaat.
+ .
+ Als u ervoor kiest om later te configureren kunt u deze configuratiestap nogmaals uitvoeren met 'dpkg-reconfigure dnet-common'.
+ .
+ Kies bij twijfel voor 'configure later' (later configureren) en neem contact op met uw systeembeheerder.met uw lokale netwerkbeheerder in verband met dit probleem.
+Description-pl.UTF-8: Konfiguracja DECnet teraz:
+ Można skonfigurować system jako węzeł DECnet w tej chwili lub później. Jeśli system został już skonfigurowany w celu używania DECnet, można pominąć ten krok i pozostawić konfigurację bez zmian.
+ .
+ Opcja wykonania konfiguracji teraz, spowoduje skonfigurowanie systemu, wymagające zmiany adresu MAC kart sieciowych, która może niekiedy wymagać ponownego uruchomienia komputera. Proszę zakończyć wszystkie otwarte połączenia, takie jak sesje ssh i pobierania plików, przed kontynuowaniem.
+ .
+ Jeśli zostanie wybrana opcja późniejszej konfiguracji, można powtórzyć ten krok konfiguracji, wykonując polecenie: dpkg-reconfigure dnet-common.
+ .
+ W przypadku wątpliwości, proszę wybrać opcję późniejszej konfiguracji i skontaktować się z administratorem systemu.
+Description-pt.UTF-8: Configurar DECnet agora:
+ Pode configurar o seu sistema como um nó DECnet agora ou mais tarde. Se já configurou o seu sistema para usar DECnet pode saltar este passo e deixar a configuração como está.
+ .
+ Se escolher configurar agora, irá configurar o seu sistema. Esta operação necessita de alterar o endereço MAC das suas placas de rede, pode funcionar directamente ou pode necessitar de um reboot. Por favor feche todas as ligações abertas tal como sessões ssh e downloads antes de continuar.
+ .
+ Se optar por configurar mais tarde pode correr esta configuração novamente com: dpkg-reconfigure dnet-common
+ .
+ Se não tem a certeza, escolha 'configurar mais tarde' e contacte o seu administrador de sistema.
+Description-ru.UTF-8: Настроить DECnet сейчас:
+ Вы можете настроить свою систему в качестве узла DECnet сейчас или позднее. Если ваша система уже настроена в качестве узла DECnet, то можете пропустить этот шаг и оставить настройку как есть.
+ .
+ Если вы согласитесь выполнить настройку сейчас, то для этой операции необходимо изменить MAC-адрес ваших сетевых карт что, вероятно, потребует перезагрузки. Перед тем как продолжить закройте все открытые соединения, например сеансы ssh, и завершите производимые закачки.
+ .
+ Если вы выберете «настройку позднее», то для повтора настройки используйте команду dpkg-reconfigure dnet-common.
+ .
+ Если не уверены, выберите «настройку позднее» и обратитесь к системному администратору.
+Description-sk.UTF-8: Nastaviť DECnet teraz:
+ Svoj systém môžete ako uzol DECnet nastaviť teraz alebo neskôr. Ak už máte svoj systém nastavený na používanie DECnet, môžete tento krok preskočiť a nechať konfiguráciu nezmenenú tak, ako je.
+ .
+ Ak si zvolíte konfigurovať teraz, váš systém bude nastavený. Táto operácia vyžaduje zmenu adresy MAC vašich sieťových kariet a môže to fungovať priamo alebo to môže vyžadovať reštart. Prosím, zatvorte všetky otvorené spojenia, ako relácie SSH a sťahovania, ešte predtým ako budete pokračovať.
+ .
+ Ak si zvolíte konfigurovať neskôr, môžete tento konfiguračný krok spustiť znova pomocou: dpkg-reconfigure dnet-common
+ .
+ Ak si nie ste istý, vyberte „konfigurovať neskôr” a kontaktujte svojho systémového administrátora.
+Description-sv.UTF-8: Gör inställningar för DECnet nu:
+ Systemet kan göras till en DECnet-nod nu eller senare. Om du redan har applicerat inställningar för att ditt system ska använda DECnet kan du hoppa över detta och låta inställningarna vara som de är.
+ .
+ Väljer du att göra inställningarna nu kommer detta att installeras i ditt system. Denna operation behöver byta MAC-adress på dina nätverkskort, det kan fungera direkt eller behöva en omstart. Stäng alla öppna anslutningar, exempelvis ssh-sessioner och nedladdningar innan du fortsätter.
+ .
+ Väljer du å andra sidan att göra inställningarna senare kan du köra inställningssteget igen med: dpkg-reconfigure dnet-common
+ .
+ Om du är osäker välj "configure later" och kontakta din systemadministratör.

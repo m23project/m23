@@ -1,0 +1,1026 @@
+Template: slapd/no_configuration
+Type: boolean
+Default: false
+Description: Omit OpenLDAP server configuration?
+ If you enable this option, no initial configuration or database will be
+ created for you.
+Description-ca.UTF-8: Voleu ometre la configuració del servidor OpenLDAP?
+ Si desactivau aquesta opció, no es generarà la configuració ni la base de dades inicial.
+Description-cs.UTF-8: Přeskočit nastavení OpenLDAP serveru?
+ Přistoupíte-li na tuto možnost, nevytvoří se databáze ani počáteční nastavení.
+Description-da.UTF-8: Undlad opsætning af OpenLDAP-server?
+ Hvis du aktiverer denne indstilling, vil der ikke blive oprettet en begyndelsesopsætning eller -database for dig.
+Description-de.UTF-8: OpenLDAP-Server-Konfiguration auslassen?
+ Falls Sie diese Option aktivieren, wird keine Startkonfiguration oder Datenbank für Sie erstellt.
+Description-es.UTF-8: ¿Desea omitir la configuración del servidor OpenLDAP?
+ No se creará la configuración ni la base de datos inicial si habilita esta opción.
+Description-eu.UTF-8: Ez konfiguratu OpenLDAP zerbitzaria?
+ Aukera hau gaitzen baduzu, ez da hasierako konfigurazio edo datu-baserik sortuko.
+Description-fi.UTF-8: Ohitetaanko OpenLDAP-palvelimen asetus?
+ Jos valitset tämän vaihtoehdon, asetuksia ja tietokantaa ei luoda.
+Description-fr.UTF-8: Voulez-vous omettre la configuration d'OpenLDAP ?
+ Si vous choisissez cette option, aucune configuration par défaut et aucune base de données ne seront créées.
+Description-gl.UTF-8: Omitir a configuración do servidor OpenLDAP?
+ Se escolle esta opción non se creará ningunha configuración ou base de datos inicial.
+Description-it.UTF-8: Omettere la configurazione del server OpenLDAP?
+ Se si accetta, non verrà creata la configurazione iniziale né il database.
+Description-ja.UTF-8: OpenLDAP サーバの設定を省略しますか?
+ ここで「はい」を選ぶと、初期設定やデータベースは作成されません。
+Description-nl.UTF-8: Wilt u het configureren van de OpenLDAP-server overslaan?
+ Wanneer u deze optie kiest, worden er geen initiële configuratie en database voor u aangemaakt.
+Description-pt.UTF-8: Omitir a configuração do servidor OpenLDAP?
+ Se activar esta opção, não será criada inicialmente uma configuração ou base de dados para si.
+Description-pt_BR.UTF-8: Omitir a configuração do servidor OpenLDAP?
+ Se você habilitar esta opção, nenhuma configuração inicial ou base de dados será criada para você.
+Description-ru.UTF-8: Не выполнять настройку сервера OpenLDAP?
+ Если вы ответите утвердительно, начальная конфигурация или база данных создаваться не будет.
+Description-sk.UTF-8: Vynechať nastavenia servera OpenLDAP?
+ Ak zvolíte túto možnosť, nebude vytvorené počiatočné nastavenie ani databáza.
+Description-sv.UTF-8: Utelämna konfiguration av OpenLDAP-servern?
+ Om du aktiverar det här alternativet kommer ingen initial konfiguration eller databas att skapas åt dig.
+Description-tr.UTF-8: OpenLDAP sunucu yapılandırması atlansın mı?
+ Bu seçeneği seçmeniz durumunda sizin için ne bir ön yapılandırma yapılacak ne de bir veritabanı yaratılacak.
+Description-vi.UTF-8: Bỏ qua bước cấu hình trình phục vụ OpenLDAP?
+ Bật tùy chọn này thì không tạo cho bạn cấu hình hay cơ sở dữ liệu đầu tiên.
+
+Template: slapd/dump_database
+Type: select
+Choices: always, when needed, never
+Choices-ca.UTF-8: sempre, quan sigui necessari, mai
+Choices-cs.UTF-8: vždy, v případě potřeby, nikdy
+Choices-da.UTF-8: altid, når nødvendigt, aldrig
+Choices-de.UTF-8: immer, wenn benötigt, nie
+Choices-es.UTF-8: siempre, cuando se necesite, nunca
+Choices-eu.UTF-8: beti, beharrezkoa denean, inoiz ere ez
+Choices-fi.UTF-8: aina, tarvittaessa, ei koskaan
+Choices-fr.UTF-8: Toujours, Lorsque nécessaire, Jamais
+Choices-gl.UTF-8: sempre, cando se precise, nunca
+Choices-it.UTF-8: sempre, quando necessario, mai
+Choices-ja.UTF-8: 常に, 必要なときに, 行わない
+Choices-nl.UTF-8: altijd, wanneer nodig, nooit
+Choices-pt.UTF-8: sempre, quando necessário, nunca
+Choices-pt_BR.UTF-8: sempre, quando necessário, nunca
+Choices-ru.UTF-8: всегда, только при необходимости, никогда
+Choices-sk.UTF-8: vždy, keď je treba, nikdy
+Choices-sv.UTF-8: alltid , vid behov, aldrig
+Choices-tr.UTF-8: her zaman, gerektiğinde, hiçbir zaman
+Choices-vi.UTF-8: luôn luôn, khi cần thiết, không bao giờ
+Default: when needed
+Description: Dump databases to file on upgrade:
+ Before upgrading to a new version of the OpenLDAP server, the data from
+ your LDAP directories can be dumped into plain text files in the
+ standard LDAP Data Interchange Format.
+ .
+ Selecting "always" will cause the databases to be dumped
+ unconditionally before an upgrade. Selecting "when needed" will only
+ dump the database if the new version is incompatible with the old
+ database format and it needs to be reimported. If you select "never",
+ no dump will be done.
+Description-ca.UTF-8: Bolcar les bases de dades a un fitxer en fer l'actualització:
+ Abans d'actualitzar a una nova versió del servidor OpenLDAP, les dades dels seus directoris LDAP poden desar-se a fitxers de text en el format estàndard d'intercanvi de dades LDAP («LDAP Data Interchange Format»).
+ .
+ Seleccionant «sempre» el bolcat de les bases de dades es farà sense condicions abans de l'actualització. Seleccionant «quan sigui necessari» només es farà el bolcat de les bases de dades si la nova versió és incompatible amb el format anterior de les bases de dades i és necessari re-importar-les. Si seleccionau «mai», no es farà el bolcat.
+Description-cs.UTF-8: Při aktualizaci uložit databáze do souboru:
+ Před aktualizací na novější verzi serveru OpenLDAP se mohou data z LDAP adresářů vyexportovat do textových souborů ve formátu LDAP Data Interchange Format, což je standardizovaný formát pro popis těchto dat.
+ .
+ Výběrem „“vždy“ zajistíte, že se databáze vyexportují do souborů před každou aktualizací. Volba „v případě potřeby“ znamená, že se databáze vyexportují pouze v případě, že je formát nové databáze nekompatibilní s předchozí verzí a tudíž je potřeba data znovu nahrát. Zvolíte-li „nikdy“, data se nebudou exportovat.
+Description-da.UTF-8: Læg databaser i fil ved opgradering:
+ Inden du opgraderer til en ny version af OpenLDAP-serveren, kan dine LDAP-mappers data blive lagt som rene tekstfiler i formatet LDAP Data Interchange.
+ .
+ Angivelse af »altid«, vil få databaserne til at blive dumpet uden betingelser før en opgradering. Valg af »når nødvendigt« vil kun dumpe databasen, hvis den nye version er inkompatibel med det gamle databaseformat, og den skal genimporteres. Hvis du vælger »aldrig«, vil der ikke blive udført en dumpning.
+Description-de.UTF-8: Datenbank beim Upgrade in Datei ausgeben (»dump«):
+ Bevor Sie ein Upgrade auf eine neue Version des OpenLDAP-Servers durchführen, können die Daten Ihres LDAP-Verzeichnisses in reine Text-Dateien im standardisierten »LDAP Data Interchange Format« ausgegeben werden.
+ .
+ Die Auswahl von »immer« führt dazu, dass die Datenbanken bedingungslos vor Upgrades ausgegeben werden. Die Auswahl von »wenn benötigt« führt dazu, dass die Datenbank nur ausgegeben wird, falls die neue Version nicht mit dem alten Datenbankformat kompatibel ist und die Datenbank re-importiert werden muss. Die »nie«-Auswahl führt dazu, dass keine Ausgabe der Daten erfolgt.
+Description-es.UTF-8: Volcar las bases de datos a un fichero al actualizar:
+ Antes de que actualice a una nueva versión del servidor OpenLDAP, se puede volcar la información de sus directorios LDAP en ficheros de texto plano en el formato estandarizado «LDAP Data Interchange Format» (formato de intercambio de datos de LDAP).
+ .
+ Si selecciona «siempre» se volcarán sus bases de datos de forma incondicional antes de cada actualización. Si selecciona «cuando se necesite» sólo se hará un volcado si la nueva versión es incompatible con el formato de la base de datos antigua y la información se debe volver a importar. Si selecciona «nunca» no se hará ningún volcado.
+Description-eu.UTF-8: Irauli datu-baseak fitxategi batetara bertsio-berritzean:
+ OpenLDAP zerbitzariaren bertsio berri batetara bertsio-berritu aurretik, zure LDAP direktorioak testu lau fitxategietara irauliko dira LDAPen datuen elkartrukatzeko formatu estandarra erabiliz.
+ .
+ "Beti" hautatzean, datu-baseak baldintzarik gabe irauliko dira bertsio-berritze baten aurretik. "Beharrezkoa denean" hautatuz, bertsio berria datu-base zaharraren formatuarekin bateragarria ez denean eta berriro inportatu behar denean bakarrik irauliko da datu-basea. "Inoiz ere ez" hautatzen baduzu, inoiz ez da datu-basea irauliko.
+Description-fi.UTF-8: Vedosta tietokannat tiedostoon päivitettäessä:
+ Ennen päivitystä OpenLDAP-palvelimen uuteen versioon, LDAP-hakemistoista voidaan tallentaa vedos standardissa LDAP-tiedonsiirtomuodossa oleviin tekstitiedostoihin.
+ .
+ Valinta ”aina” merkitsee, että tietokannat vedostetaan tilanteesta riippumatta ennen päivitystä. Valinta ”tarvittaessa” merkitsee, että tietokannoista otetaan vedos vain, jos uusi versio ei ole yhteensopiva vanhan tietokantamuodon kanssa ja tiedot tulee tuoda kantaan uudelleen. Valittaessa ”ei koskaan” vedostusta ei tehdä.
+Description-fr.UTF-8: Sauvegarde des bases de données dans un fichier pour la mise à niveau :
+ Avant la mise à niveau du serveur OpenLDAP, les données des annuaires LDAP peuvent être exportées dans des fichiers au format texte LDIF (« LDAP Data Interchange Format » : format d'échange de données LDAP).
+ .
+ Si vous choisissez l'option « Toujours », les données seront systématiquement exportées avant une mise à niveau. Si vous choisissez « Lorsque nécessaire », elles ne seront exportées que lorsque la nouvelle version utilisera un format incompatible avec l'ancienne, ce qui imposera de réimporter les données. Si vous choisissez « Jamais », les données ne seront jamais exportées.
+Description-gl.UTF-8: Envorcar as bases de datos a un ficheiro na actualización:
+ Antes de actualizar a unha nova versión do servidor OpenLDAP, pódense envorcar os datos dos seus directorios LDAP a ficheiros de texto normal no formato estándar LDIF, formato de intercambio de datos LDAP.
+ .
+ A opción «sempre» fará que as bases de datos se envorquen incondicionalmente antes dunha actualización. Se escolle «cando se precise» só se ha envorcar a base de datos se a nova versión é incompatíbel co formato antigo da base de datos e hai que reimportala. Se escolle «nunca» non se ha envorcar a base de datos.
+Description-it.UTF-8: Fare il dump su file dei database prima dell'aggiornamento:
+ Prima dell'aggiornamento a una nuova versione del server OpenLDAP, è possibile fare il dump delle proprie directory LDAP in dei semplici file di testo in formato LDIF (lo standard per lo scambio di dati LDAP).
+ .
+ Selezionando "sempre" il dump dei database verrà effettuato prima di ogni aggiornamento. Con "quando necessario" il dump dei database verrà fatto solo quando la nuova versione è incompatibile con il vecchio formato del database e quindi deve essere reimportato. Infine con "mai" il dump dei database non verrà mai fatto.
+Description-ja.UTF-8: 更新時にデータベースをファイルにダンプ:
+ OpenLDAP サーバの新しいバージョンへの更新の前に、LDAP ディレクトリのデータを、標準 LDAP データ交換フォーマットのプレインテキストファイルにダンプできます。
+ .
+ 「常に」を選ぶと、無条件に更新の前にデータベースをダンプするようになります。「必要なときに」を選ぶと、新しいバージョンが古いデータベースフォーマットと非互換で、再インポートが必要なときに、データベースをダンプします。「行わない」を選ぶと、データベースのダンプを行いません。
+Description-nl.UTF-8: Bij de opwaardering de databases exporteren naar bestand:
+ Vooraleer een opwaardering naar een nieuwe versie van de OpenLDAP-server uitgevoerd wordt, kunnen de data in uw LDAP-catalogi geëxporteerd worden naar een gewoon tekstbestand in LDIF-indeling (dit is het gestandaardiseerde 'LDAP Data Interchange Format').
+ .
+ Wanneer u 'altijd' selecteert, worden de databases voor elke opwaardering onvoorwaardelijk naar een bestand geëxporteerd. Wanneer u 'wanneer nodig' selecteert, worden de databases enkel geëxporteerd wanneer de nieuwe database-indeling incompatibel is met de oude indeling en de data opnieuw geïmporteerd moeten worden. Wanneer u 'nooit' kiest wordt er geen database-export gemaakt.
+Description-pt.UTF-8: Despejar as bases de dados para ficheiro durante a actualização:
+ Antes de actualizar para uma nova versão do servidor OpenLDAP, os dados dos seu directórios LDAP podem ser despejados para ficheiros de texto simples no formato padronizado LDAP Data Interchange Format.
+ .
+ Seleccionar "sempre" fará com as bases de dados sejam despejadas incondicionalmente antes de uma actualização. Seleccionar "quando necessário" irá apenas despejar a base de dados se a nova versão for incompatível com o formato da base de dados antiga e for necessário reimportar-la. Se seleccionar "nunca", não será feito qualquer despejo.
+Description-pt_BR.UTF-8: Descarregar as bases de dados para arquivos na atualização:
+ Antes de atualizar para uma nova versão do servidor OpenLDAP, os dados dos seus diretórios LDAP podem ser descarregados em arquivos texto plano no formato padrão "LDAP Interchange Format" (Formato de Intercâmbio LDAP).
+ .
+ Selecionar "sempre" fará com que as bases de dados sejam descarregadas incondicionalmente antes de atualizar. Selecionar "quando necessário" só descarregará a base de dados se a nova versão for incompatível com o formato da antiga base de dados e tiver que ser importada novamente. Se você selecionar "nunca", nenhum descarregamento será feito.
+Description-ru.UTF-8: При обновлении сохранять данные из базы данных в файл:
+ Перед обновлением до новой версии сервера OpenLDAP данные из ваших каталогов LDAP могут быть сохранены в текстовые файлы в стандартизованном формате обмена данных LDAP.
+ .
+ Если выбрать "всегда", то перед обновлением данные из баз будут обязательно сохранены. Если выбрать "только при необходимости", то база данных будет сохранена, только если новая версия не совместима со старым форматом базы данных и должна быть импортирована повторно. Если выбрать "никогда", то сохранение базы будет пропущено.
+Description-sk.UTF-8: Pri aktualizácii uložiť databázy do súboru:
+ Pred aktualizáciou na novšie verziu servera OpenLDAP môžu byť vaše dáta z adresárov LDAP uložené do textových súborov vo formáte LDAP Data Interchange Format, čo je štandardizovaný formát na popis týchto dát.
+ .
+ Výberom „vždy“ zaistíte, že budú databázy uložené do súborov pred každou aktualizáciou. Voľba „keď je treba“ znamená, že budú databázy uložené len v prípade, že je nová verzia nekompatibilná s formátom starej databázy, a teda bude potrebné opätovné nahratie dát. Ak zvolíte „nikdy“, dáta nebudú ukladané.
+Description-sv.UTF-8: Dumpa databaser till fil vid uppgradering:
+ Innan du uppgraderar till en ny version av OpenLDAP-servern, kan datat från dina LDAP-kataloger dumpas till klartextfiler i standardformatet LDAP Data Interchange Format.
+ .
+ Väljer du "alltid" kommer databaserna alltid att dumpas före en uppgradering. Väljer du "vid behov" kommer databasen bara dumpas om den nya versionen är inkompatibel med det gamla databasformatet och måste återimporteras. Om du väljer "aldrig", kommer ingen dump göras.
+Description-tr.UTF-8: Yükseltme sırasında veritabanlarının dökümü yapılsın mı?:
+ Makineniz yeni OpenLDAP sunucu sürümüne yükseltilmeden önce, LDAP dizinlerindeki verileriniz LDAP Veri Değişimi Biçimi'nde (LDIF) metin dosyalarına yedeklenebilir.
+ .
+ "her zaman" seçimi veritabanlarının yükseltme öncesinde kayıtsız şartsız bir dökümünü sağlayacaktır. "gerektiğinde" seçimi yeni ile eski sürüm arasında veritabanı biçim farklılığı varsa ve bu nedenle yeni veritabanına eski verilerin sonradan alınması gerekirse döküm yapacaktır. "hiçbir zaman" seçeneğini seçerseniz döküm yapılmayacaktır.
+Description-vi.UTF-8: Đổ các cơ sở dữ liệu vào tập tin khi nâng cấp:
+ Trước khi nâng cấp lên phiên bản mới của trình phục vụ OpenLDAP, dữ liệu nằm trong các thư mục LDAP có thể được đổ vào tập tin nhập thô theo định dạng trao đổi dữ liệu LDAP tiêu chuẩn.
+ .
+ Chọn mục “luôn luôn” thì gây ra các cơ sở dữ liệu bị đổ một cách không điều kiện trước khi nâng cấp. Chọn “khi cần thiết” thì chỉ đổ cơ sở dữ liệu nếu phiên bản mới không tương thích với định dạng cơ sở dữ liệu cũ và cần phải nhập lại nó. Còn chọn “không bao giờ” thì không đổ gì.
+
+Template: slapd/dump_database_destdir
+Type: string
+Default: /var/backups/slapd-VERSION
+Description: Directory to use for dumped databases:
+ Please specify the directory where the LDAP databases will be exported.
+ In this directory, several LDIF files will be created which correspond
+ to the search bases located on the server. Make sure you have enough
+ free space on the partition where the directory is located. The first
+ occurrence of the string "VERSION" is replaced with the server version
+ you are upgrading from.
+Description-ca.UTF-8: Directori a fer servir en el bolcat de les bases de dades:
+ Seleccionau el directori d'exportació de les bases de dades LDAP. En aquest directori, es generaran diversos fitxers LDIF que es corresponen amb les bases de dades localitzades en el servidor. Comproveu que hi ha espai lliure suficient a la partició on està ubicat el directori seleccionat. La primer aparició de la cadena «VERSION» serà reemplaçada per la versió del servidor de la qual està actualitzant.
+Description-cs.UTF-8: Adresář pro exportované databáze:
+ Zadejte prosím adresář, do kterého se budou exportovat LDAP databáze. V tomto adresáři se vytvoří několik LDIF souborů odpovídajících kořenům LDAP adresářů na daném serveru. Ujistěte se, že máte na dané oblasti dostatek místa. První výskyt řetězce "VERSION" se nahradí verzí LDAP serveru, ze kterého aktualizujete na novější verzi.
+Description-da.UTF-8: Mappe til de dumpede databaser:
+ Angiv den mappe, LDAP-databasen skal eksporteres til. I denne mappe vil der blive oprettet adskillige LDIF-filer, som svarer til den søgedatabase, der ligger på serveren. Sørg for at du har nok fri plads på den partition, mappen ligger på. Første forekomst af strengen »VERSION« erstattes med den serverversion, du opgraderer fra.
+Description-de.UTF-8: Verzeichnis für Datenbank-Ausgaben (»dumps«):
+ Bitte geben Sie ein Verzeichnis an, in das die Datenbanken exportiert werden. Innerhalb dieses Verzeichnisses werden mehrere LDIF-Dateien erstellt, die zu den im Server befindlichen Suchbasen korrespondieren. Stellen Sie sicher, dass Sie genug freien Platz auf der Partition haben, auf der sich das Verzeichnis befindet. Das erste Auftreten der Zeichenkette »VERSION« wird durch die Server-Version ersetzt, von der aus Sie das Upgrade durchführen.
+Description-es.UTF-8: Directorio donde volcar las bases de datos:
+ Especifique el directorio donde se exportarán las bases de datos de LDAP. En éste se crearán diversos ficheros LDIF que corresponden a las bases de datos ubicadas en el servidor. Asegúrese de que tiene suficiente espacio libre en la partición donde se ubica el directorio. La primera ocurrencia de la cadena «VERSION» se reemplaza con la versión del servidor desde la cual va a actualizar.
+Description-eu.UTF-8: Datu-baseak iraultzean erabiliko den direktorioa:
+ Zehaztu LDAP esportatzeko erabiliko den direktorioa. Direktorio honetan zerbitzariko datu-base ezberdinei dagozkien LDIF fitxategiak sortuko dira. Ziurtatu zaitez direktorioaren partizioan behar duzun bezainbeste leku libre duzula. "VERSION" katearen lehenengo agerpena zerbitzariaren jatorrizko bertsio zenbakiagatik ordeztuko da.
+Description-fi.UTF-8: Tietokantavedosten hakemisto:
+ Anna hakemisto, johon LDAP-tietokannat vedostetaan. Hakemistoon luodaan useita LDIF-tiedostoja, joiden sisältö vastaa palvelimen hakukantoja. Varmista, että valitulla levyosiolla on tarpeeksi vapaata tilaa. Merkkijonon ”VERSION” ensimmäinen esiintymä korvataan päivitettävän palvelimen versionumerolla.
+Description-fr.UTF-8: Répertoire où exporter les bases de données :
+ Veuillez indiquer le répertoire où les bases de données LDAP seront exportées. Plusieurs fichiers LDIF seront créés dans ce répertoire. Ils correspondent aux bases de recherche présentes sur le serveur. Veuillez vérifier que la partition où se trouve ce répertoire comporte suffisamment de place disponible. La première occurrence de « VERSION » dans le nom de ce répertoire sera remplacée par la version d'OpenLDAP utilisée avant la mise à niveau.
+Description-gl.UTF-8: Directorio para as bases de datos envorcadas:
+ Especifique o directorio no que se han exportar as bases de datos LDAP. Neste directorio hanse crear varios ficheiros LDIF que se corresponden coas bases de busca almacenadas no servidor. Asegúrese de ter espazo libre dabondo na partición na que reside o directorio. A primeira aparición da cadea «VERSION» substitúese pola versión do servidor a partires da que se actualiza.
+Description-it.UTF-8: Directory per il dump dei database:
+ Indicare la directory in cui verranno esportati i database LDAP. In questa directory verrà creato un file LDIF per ogni base di ricerca presente sul server. Assicurarsi di avere spazio libero sufficiente sulla partizione che contiene la directory indicata. La prima occorrenza della stringa "VERSION" viene sostituita con la versione del server che si sta aggiornando.
+Description-ja.UTF-8: データベースのダンプに使うディレクトリ:
+ LDAP データベースをエキスポートするディレクトリを指定してください。このディレクトリの中には、サーバ上に配置された検索ベースに関連するいくつかの LDIF ファイルが作成されます。ディレクトリを格納するパーティションに十分な空き領域があることを確認してください。最初に出現する文字列 "VERSION" は、更新対象のサーバのバージョンで置き換えられます。
+Description-nl.UTF-8: Voor database-exports te gebruiken map:
+ Geef de map op waarnaar LDAP-databases geëxporteerd moeten worden. In deze map worden verschillende LDIF-bestanden aangemaakt die overeenkomen met de zoekbasissen op de server. U dient ervoor te zorgen dat u genoeg vrije ruimte heeft op de partitie waar de map zich bevindt. Het eerste voorkomen van de tekst 'VERSION' wordt vervangen door de server-versie vanwaar u opwaardeert.
+Description-pt.UTF-8: Directório a utilizar para bases de dados despejadas:
+ Por favor, especifique o directório para onde as bases de dados LDAP serão exportadas. Dentro deste directório serão criados vários ficheiros LDIF que correspondem às bases de pesquisas localizadas no servidor. Assegure-se que tem espaço livre suficiente na partição onde se encontra o directório. A primeira ocorrência da string "VERSION" é substituída com a versão do servidor que está a actualizar.
+Description-pt_BR.UTF-8: Diretório para descarregar suas bases de dados:
+ Por favor, especifique o diretório onde as bases de dados LDAP serão exportadas. Nesse diretório, vários arquivos LDIF serão criados correspondendo às bases de procura localizadas no servidor. Tenha certeza de ter espaço livre suficiente na partição onde este diretório está localizado. A primeira ocorrência da string "VERSION" é substituída com a versão do servidor a partir da qual você está atualizando.
+Description-ru.UTF-8: Каталог сохранения данных из баз:
+ Укажите каталог, куда будут экспортированы базы данных LDAP. В этом каталоге будет создано несколько файлов LDIF, которые соответствуют поисковым базам, расположенным на сервере. Убедитесь, что у вас достаточно места на разделе, где расположен каталог. Первое появление строки со словом "VERSION" заменяется на версию сервера, с которой производится обновление.
+Description-sk.UTF-8: Adresár pre exportované databázy:
+ Zadajte prosím adresár, kam majú byť uložené databázy LDAP. V tomto adresári bude vytvorených niekoľko súborov LDIF, jeden pre každý koreň adresárov LDAP daného servera. Presvedčte sa, že je na zvolenej oblasti dostatok miesta. Prvý výskyt reťazca „VERSION” bude nahradený verziou servera LDAP, z ktorej aktualizujete.
+Description-sv.UTF-8: Katalog att dumpa databaser i:
+ Ange den katalog dit LDAP-databaser ska exporteras. I denna katalog kommer flera LDIF-filer att skapas som svarar mot sökbaserna på servern. Se till att du har tillräckligt med ledigt utrymme på den partition där katalogen finns. Den första förekomsten av strängen "VERSION" ersätts med den serverversion du uppgraderar från.
+Description-tr.UTF-8: Veritabanı dökümü için kullanılacak dizin:
+ LDAP veritabanlarının dışa aktarımı için bir dizin belirtiniz. Bu dizine sunucuda varolan arama tabanlarına karşılık gelen bir çok LDIF dosyası kaydedilecektir. İlgili dizinin bulunduğu disk bölümünde yeterince boş alan olduğundan emin olunuz. "VERSION" dizgesi ilk görüldüğü yerde yükseltme işleminden önceki sunucu sürümünüzle değiştirilecektir.
+Description-vi.UTF-8: Thư mục dùng để đổ cơ sở dữ liệu:
+ Ghi rõ tên thư mục vào đó cần xuất các cơ sở dữ liệu LDAP. Trong thư mục này thì tạo vài tập tin LDIF tương ứng với những cơ bản tìm kiếm nằm trên máy phục vụ. Hãy kiểm tra xem vẫn có đủ sức chứa trống trong phân vùng đó. Lần đầu tiên gặp chuỗi “VERSION” (phiên bản) thì được thay thế bằng phiên bản từ đó bạn đang nâng cấp.
+
+Template: slapd/move_old_database
+Type: boolean
+Default: true
+Description: Move old database?
+ There are still files in /var/lib/ldap which will probably break
+ the configuration process. If you enable this option, the maintainer
+ scripts will move the old database files out of the way before
+ creating a new database.
+Description-ca.UTF-8: Moure la base de dades anterior?
+ Hi ha fitxers a «/var/lib/ldap» que probablement interrompran el procés de configuració. Si activau aquesta opció, el guió de manteniment mourà els fitxers de les bases de dades anteriors fora del directori anterior abans de generar una nova base de dades.
+Description-cs.UTF-8: Přesunout starou databázi?
+ Ve /var/lib/ldap jsou stále soubory, které pravděpodobně naruší instalační proces. Budete-li souhlasit, instalační skripty před vytvořením nové databáze nejprve přesunou staré databázové soubory na jiné místo.
+Description-da.UTF-8: Flyt gammel database?
+ Der er stadig filer i /var/lib/ldap, som sikkert vil forstyrre opsætningsprocessen. Hvis du aktiverer denne indstilling, vil vedligeholdelsesskriptene flytte de gamle filer, før de opretter en ny database.
+Description-de.UTF-8: Alte Datenbank verschieben?
+ Es sind noch Dateien in /var/lib/ldap, die wahrscheinlich den Konfigurationsprozess durcheinander bringen werden. Wird diese Option aktiviert, dann werden die Betreuerskripte die alten Datenbankdateien beiseite schieben, bevor sie eine neue Datenbank erstellen.
+Description-es.UTF-8: ¿Desea mover la base de datos antigua?
+ Existen ficheros en «/var/lib/ldap» que probablemente interrumpan el proceso de configuración. Si activa esta opción, se moverán los ficheros de las bases de datos antiguas antes de crear una nueva base de datos.
+Description-eu.UTF-8: Aldatu datu-base zaharra lekuz?
+ Konfigurazioko prozesua apur dezaketen fitxategiak daude oraindik /var/lib/ldap direktorioan. Aukera hau gaitzen baduzu mantentzailearen script-ek datu-base zaharreko fitxategiak hortik kenduko ditu datu-base berria sortu aurretik.
+Description-fi.UTF-8: Siirretäänkö vanha tietokanta?
+ Hakemistossa /var/lib/ldap on vielä tiedostoja ja ne luultavasti hajoavat asetusprosessissa. Jos valitset tämän vaihtoehdon, vanhat tietokantatiedostot siirretään syrjään ennen uuden tietokannan luomista.
+Description-fr.UTF-8: Faut-il déplacer l'ancienne base de données ?
+ Des fichiers présents dans /var/lib/ldap vont probablement provoquer l'échec de la procédure de configuration. Si vous choisissez cette option, les scripts de configuration déplaceront les anciens fichiers des bases de données avant de créer une nouvelle base de données.
+Description-gl.UTF-8: Trasladar a base de datos antiga?
+ Aínda hai ficheiros en /var/lib/ldap que probablemente fagan fallar o proceso de configuración. Se activa esta opción, os «scripts» do mantedor apartarán os ficheiros da base de datos antiga antes de crear unha nova base de datos.
+Description-it.UTF-8: Spostare il vecchio database?
+ Ci sono ancora dei file in /var/lib/ldap che potrebbero intralciare il processo di configurazione. Se si accetta, gli script di installazione toglieranno di mezzo i file dei vecchi database prima di creare il nuovo database.
+Description-ja.UTF-8: 古いデータベースを移動しますか?
+ おそらく設定手順を壊すと思われるファイルが、/var/lib/ldap にまだあります。この選択肢で「はい」を選ぶと、メンテナスクリプトは新しいデータベースを作成する前に古いデータベースファイルを別の場所に移動します。
+Description-nl.UTF-8: Wilt u de oude database verplaatsen?
+ Er bevinden zich nog bestanden in /var/lib/ldap die het configuratieproces waarschijnlijk zullen verstoren. Als u voor deze optie kiest, zullen de scripts van de pakketbeheerder de oude databasebestanden wegzetten voordat ze de nieuwe database aanmaken.
+Description-pt.UTF-8: Mover a base de dados antiga?
+ Ainda existem ficheiros em /var/lib/ldap que provavelmente irão parar o processo de configuração. Se activar esta opção, os scripts do maintainer irão mover os ficheiros antigos da base de dados para fora do caminho, antes de criar a nova base de dados.
+Description-pt_BR.UTF-8: Mover a base de dados antiga?
+ Ainda há arquivos em /var/lib/ldap que provavelmente quebrarão o processo de configuração. Se você habilitar esta opção, os scripts do mantenedor moverão os arquivos da antiga base de dados para fora do caminho antes de criar uma nova base de dados.
+Description-ru.UTF-8: Переместить старую базу данных?
+ В каталоге /var/lib/ldap находятся файлы, которые, вероятно, негативно повлияют на процесс настройки. Если вы ответите утвердительно, то сопровождающие сценарии, перед тем как создать новую базу, переместят старые файлы базы данных в другое место.
+Description-sk.UTF-8: Presunúť starú databázu?
+ Vo /var/lib/ldap stále existujú súbory, ktoré pravdepodobne narušia proces nastavenia. Ak zvolíte túto možnosť, inštalačné skripty pred vytvorením novej databázy najprv presunú staré databázové súbory inam.
+Description-sv.UTF-8: Flytta gammal databas?
+ Det finns fortfarande filer i /var/lib/ldap/ som troligen kommer göra att konfigurationsprocessen inte fungerar. Om du aktiverar detta val, kommer administrationsskripten att flytta den gamla databasfilen ur vägen innan en ny databas skapas.
+Description-tr.UTF-8: Eski veritabanı taşınsın mı?
+ /var/lib/ldap dizininde yapılandırma sürecini bozabilecek bazı dosyalar bulunmaktadır. Bu seçeneği seçerseniz, bakımcı betikleri yeni bir veritabanı yaratmadan önce bu eski veritabanı dosyalarını başka bir yere taşıyacaktır.
+Description-vi.UTF-8: Dời cơ sở dữ liệu cũ?
+ Vẫn còn có một số tập tin nằm trong thư mục “/var/lib/ldap” mà rất có thể làm hỏng tiến trình cấu hình. Bật tùy chọn này thì văn lệnh bảo trì chuyển các tập tin cơ sở dữ liệu ra trước khi tạo một cơ sở dữ liệu mới.
+
+Template: slapd/invalid_config
+Type: boolean
+Default: true
+Description: Retry configuration?
+ The configuration you entered is invalid. Make sure that the DNS domain name
+ is syntactically valid, the field for the organization is not left empty and
+ the admin passwords match. If you decide not to retry the configuration the
+ LDAP server will not be set up. Run 'dpkg-reconfigure slapd' if you want to
+ retry later.
+Description-ca.UTF-8: Tornar a intentar la configuració?
+ La configuració que ha introduït no és vàlida. Comproveu que el nom de domini DNS és sintàcticament correcte, que el camp del nom de l'organització està emplenat i que les contrasenyes de l'administrador coincideixen. Si decideix no tornar a intentar la configuració, el servidor LDAP quedarà sense configurar. Executi «dpkg-reconfigure slapd» per tornar a intentar-ho més tard.
+Description-cs.UTF-8: Zopakovat nastavení?
+ Zadané nastavení není platné. Ujistěte se, že máte doménové jméno (DNS) ve správném formátu, že je vyplněné pole pro organizaci a že administrátorská hesla souhlasí. Jestliže znovu nespustíte tohoto průvodce, LDAP server nebude nakonfigurován. Budete-li chtít balík nastavit později, použijte příkaz „dpkg-reconfigure slapd“.
+Description-da.UTF-8: Gentag opsætningen?
+ Den opsætning, du har angivet, er ikke gyldig. Sørg for at DNS-domænenavnet har en gyldig syntaks, at organisationen er udfyldt, og at administrator-adgangskoderne er ens. Hvis du vælger ikke at gentage opsætningen af LDAP-serveren, vil den ikke blive sat op. Kør 'dpkg-reconfigure slapd', hvis du vil prøve igen senere.
+Description-de.UTF-8: Konfiguration erneut versuchen?
+ Die von Ihnen eingegebene Konfiguration ist ungültig. Stellen Sie sicher, dass der DNS-Domainname einer gültigen Syntax folgt, das Feld für die Organisation nicht leer geblieben ist und dass die Administratorpasswörter übereinstimmen. Falls Sie sich entscheiden, die Konfiguration nicht erneut zu versuchen, wird der LDAP-Server nicht eingerichtet. Führen Sie »dpkg-reconfigure slapd« aus, falls Sie die Konfiguration später erneut versuchen wollen.
+Description-es.UTF-8: ¿Desea volver a intentar la configuración?
+ La configuración que ha introducido no es válida. Asegúrese de que el nombre de dominio DNS es válido, que el campo de la organización no está en blanco y que las claves del administrador coinciden. El servidor LDAP quedará sin configurar si decide no volver a intentar la configuración. Ejecute «dpkg-reconfigure slapd» si desea volver a intentarlo más tarde.
+Description-eu.UTF-8: Berriz saiatu konfigurazioa egiten?
+ Zuk sartutako konfigurazioa baliogabea da. Ziurtatu DNSaren domeinu-izena sintaktikoki zuzena dela, erakundeari dagokion eremua ezin da hutsik egon eta LDAPeko administratzailearen pasahitzak berdinak izan behar dira. Konfigurazioa ez berregitea hautatzen baduzu, LDAP zerbitzaria ez da konfiguratuko. Beranduago konfigurazioa egin nahi izanez gero, exekutatu 'dpkg-reconfigure slapd'.
+Description-fr.UTF-8: Faut-il recommencer la configuration ?
+ La configuration que vous avez indiquée n'est pas valable. Veuillez vérifier que le nom de domaine DNS utilise une syntaxe correcte, que « organisation » n'est pas vide et que les mots de passe d'administrateur correspondent. Si vous choisissez de ne pas recommencer la configuration, le serveur LDAP ne sera pas configuré. Si vous voulez recommencer ce processus, utilisez la commande « dpkg-reconfigure slapd ».
+Description-gl.UTF-8: Volver tentar a configuración?
+ A configuración que introduciu non é válida. Asegúrese de que o nome de dominio DNS teña unha sintaxe válida, o campo para a organización non quede baleiro e os contrasinais do administrador coincidan. Se decide non volver tentar a configuración non se ha configurar o servidor LDAP. Execute «dpkg-reconfigure slapd» se quere volver a tentalo noutro momento.
+Description-it.UTF-8: Ripetere la configurazione?
+ La configurazione inserita non è valida. Assicurarsi che il nome di dominio DNS sia sintatticamente corretto, che il campo per il nome dell'organizzazione non sia stato lasciato in bianco e che le password di amministrazione coincidano. Se si decide di non riprovare la configurazione, il server LDAP non verrà impostato. In seguito, per riprovare la configurazione, usare "dpkg-reconfigure slapd".
+Description-ja.UTF-8: 設定を再試行しますか?
+ 入力された設定は無効です。DNS ドメイン名が有効な文法になっていること、組織名のフィールドが空になっていないことと、管理者パスワードが合っていることを確認してください。設定を再試行しないと、LDAP サーバはセットアップされません。あとで再試行するときには、"dpkg-reconfigure slapd" を実行してください。
+Description-nl.UTF-8: Configuratie opnieuw proberen?
+ De door u ingevoerde configuratie is ongeldig. Zorg ervoor dat: de DNS-domeinnaam een geldige syntaxis heeft, het veld voor de organisatie niet leeg is, en de beheerderswachtwoorden overeenkomen. Wanneer u ervoor kiest om de configuratie niet opnieuw te proberen, wordt uw LDAP-server niet ingesteld. U kunt later altijd 'dpkg-reconfigure slapd' uitvoeren om de configuratie opnieuw te proberen.
+Description-pt.UTF-8: Tentar novamente a configuração?
+ A configuração que inseriu é inválida. Assegure-se que o nome do domínio DNS tem uma sintaxe válida, que a organização é preenchida e que as palavras-chave de administrador coincidem. Se decidir não tentar novamente a configuração, o servidor de LDAP não ficará configurado. Corra "dpkg-reconfigure slapd" se quiser tentar novamente mais tarde.
+Description-pt_BR.UTF-8: Tentar novamente a configuração?
+ A configuração que você informou é inválida. Tenha certeza de que o nome de domínio DNS tem uma sintaxe válida, o campo para a organização não foi deixado vazio e as senhas do admin conferem. Se você decidir não tentar novamente a configuração, o servidor LDAP não será configurado. Execute "dpkg-reconfigure slapd" se você quiser tentar novamente mais tarde.
+Description-ru.UTF-8: Повторить настройку?
+ Введённая вами конфигурация неправильна. Убедитесь, что доменное имя DNS записано в правильном формате, что поле названия организации непустое и что пароль администратора верен. Если вы не станете повторять настройку, то сервер LDAP останется не настроенным. Если позднее вы захотите выполнить настройку, запустите команду «dpkg-reconfigure slapd».
+Description-sk.UTF-8: Opakovať nastavenie?
+ Zadali ste neplatné nastavenie. Skontrolujte, či je zadané doménové meno (DNS) v platnom tvare, že je vyplnené pole organizácie a heslá administrátora súhlasia. Ak sa rozhodnete neopakovať nastavenie, ostane server LDAP nenastavený. Ak budete chcieť opakovať nastavenie neskôr, spustite „dpkg-reconfigure slapd”.
+Description-sv.UTF-8: Försöka konfigurera igen?
+ Konfigurationen du angav är ogiltig. Säkerställ att DNS-domännamnet är syntaktiskt giltigt, att organisationsfältet inte lämnats tomt och att administratörslösenorden överensstämmer. Om du väljer att inte försöka konfigurera igen kommer LDAP-servern inte att ha korrekta inställningar. Kör "dpkg-reconfigure slapd" om du vill försöka igen senare.
+Description-tr.UTF-8: Yapılandırma yeniden denensin mi?
+ Girdiğiniz yapılandırma ayarları gecersiz. DNS alan adının sözdizimsel olarak geçerli olduğundan, örgüt adı için ayrılmış alanın boş olmadığından ve yönetici parolalarının uyumlu olduğundan emin olunuz. Yapılandırmayı yeniden denemeyi seçmezseniz LDAP sunucu yapılandırması yapılmayacaktır. Daha sonra 'dpkg-reconfigure slapd' komutunu çalıştırarak yapılandırmayı yeniden deneyebilirsiniz.
+Description-vi.UTF-8: Thử lại cấu hình?
+ Bạn đã nhập một cấu hình không hợp lệ. Hãy kiểm tra lại tên miền DNS có cú pháp đúng, không bỏ trống trường tổ chức, và có hai mật khẩu quản lý trùng nhau. Nếu bạn quyết định không nên thử lại làm bước cấu hình thì không cài đặt trình phục vụ LDAP. Muốn thử lại về sau thì chạy lệnh cấu hình lại “dpkg-reconfigure slapd”.
+
+Template: slapd/domain
+Type: string
+Description: DNS domain name:
+ The DNS domain name is used to construct the base DN of the LDAP directory.
+ For example, 'foo.example.org' will create the directory with
+ 'dc=foo, dc=example, dc=org' as base DN.
+Description-ca.UTF-8: Nom del domini DNS:
+ El nom de domini DNS es fa servir per construir el DN base del directori LDAP. Per exemple, si el vostre nom de domini és «elmeu.domini.org» es generarà el directori amb el DN base «dc=elmeu, dc=domini, dc=org»
+Description-cs.UTF-8: DNS název domény:
+ Název domény se používá pro vytvoření základního DN vašeho LDAP adresáře. Například zadáním „foo.bar.cz“ se vytvoří adresář se základním DN „dc=foo, dc=bar, dc=cz“.
+Description-da.UTF-8: DNS-domænenavn:
+ Domænenavnet bruges til at opbygge basis-DN for din LDAP-mappe. For eksempel vil 'foo.eksempel.org' oprette mappen med 'dc=foo, dc=eksempel, dc=org' som basis-DN.
+Description-de.UTF-8: DNS-Domainname:
+ Der DNS-Domainname wird zur Erzeugung des Basis-DN Ihres LDAP-Verzeichnisses verwendet. Zum Beispiel erstellt »foo.example.org« das Verzeichnis mit der Basis-DN »dc=foo, dc=example, dc=org«.
+Description-es.UTF-8: Introduzca el nombre de dominio DNS:
+ El nombre de dominio DNS se utiliza para construir el DN base del directorio LDAP. Por ejemplo, si introduce «foo.example.org» el directorio se creará con un DN base de «dc=foo, dc=example, dc=org».
+Description-eu.UTF-8: DNSaren domeinu-izena:
+ DNSaren domeinu-izena LDAP direktorioaren DN oinarria eraikitzeko erabiliko da. Adibidez, 'proba.adibide.org' erabiliz DN oinarri gisa 'dc=proba, dc=example, dc=org' edukiarekin sortuko du direktorioa.
+Description-fi.UTF-8: DNS-aluenimi:
+ DNS-aluenimeä käytetään perus-DN:n (erittelevä nimi) luomisessa LDAP-hakemistolle. Esimerkiksi ”foo.esimerkki.fi” luo hakemiston, jonka perus-DN on ”dc=foo, dc=esimerkki, dc=fi”.
+Description-fr.UTF-8: Nom de domaine :
+ Le nom de domaine DNS est utilisé pour établir le nom distinctif de base (« base DN » ou « Distinguished Name ») de l'annuaire LDAP. Par exemple, si vous indiquez « toto.example.org » ici, le nom distinctif de base sera « dc=toto, dc=example, dc=org ».
+Description-gl.UTF-8: Nome de dominio DNS:
+ O nome de dominio DNS emprégase para construír o DN base do directorio LDAP. Por exemplo, «foo.example.org» creará o directorio con «dc=foo, dc=example, dc=org» coma DN base.
+Description-it.UTF-8: Nome di dominio DNS:
+ Il nome DNS di dominio è usato per costruire la base DN della directory LDAP. Per esempio con "pippo.esempio.org" sarà creata una directory con "dc=pippo, dc=esempio, dc=org" come base DN.
+Description-ja.UTF-8: DNS ドメイン名:
+ DNS ドメイン名は LDAP ディレクトリのベース DN を形成するのに使われます。たとえば、'foo.example.org' は、ベース DN として 'dc=foo, dc=example, dc=org' のディレクトリを作成します。
+Description-nl.UTF-8: DNS-domeinnaam:
+ De DNS-domeinnaam wordt gebruikt als de basis-DN van uw LDAP-catalogus. foo.example.org invoeren geeft u de basis-DN dc=foo, dc=example, dc=org.
+Description-pt.UTF-8: Nome do domínio DNS:
+ O nome do domínio DNS é usado para construir o DN base do seu directório LDAP. Por exemplo, 'foo.exemplo.org' irá criar o directório com 'dc=foo,dc=exemplo,dc=org' como DN base.
+Description-pt_BR.UTF-8: Nome do domínio DNS:
+ O nome do domínio DNS é usado para construir a base DN de seu diretório LDAP. Por exemplo, "foo.example.org" criará o diretório com "dc=foo, dc=example, dc=org" como base DN.
+Description-ru.UTF-8: Доменное имя DNS:
+ Доменное имя DNS используется для построения базового DN каталога LDAP. Например, если ввести «foo.bar.org», то это даст базовый DN «dc=foo, dc=bar, dc=org».
+Description-sk.UTF-8: Meno domény (DNS):
+ Meno domény (DNS) je použité na vytvorenie základného DN adresára LDAP. Napríklad, „foo.example.org” vytvorí adresár so základným DN 'dc=foo, dc=example, dc=org'.
+Description-sv.UTF-8: DNS-domännamn:
+ DNS-domännamnet används för att konstruera bas-DN:et för LDAP-katalogen. Till exempel kommer "foo.example.org" att skapa en katalog med "dc=foo, dc=example, dc=org" som bas-DN.
+Description-tr.UTF-8: DNS alan adı:
+ DNS alan adı LDAP dizinin temel DN yapılandırması için kullanılmıştır. Örneğin, 'gecici.example.org' alan adı 'dc=gecici, dc=example, dc=org' temel DN'ye sahip dizini yaratacaktır.
+Description-vi.UTF-8: Tên miền DNS:
+ Tên miền DNS được dùng để cấu trúc tên miền cơ bản của thư mục LDAP. Chẳng hạn, “foo.thí_dụ.org” sẽ tạo thư mục có “dc=foo, dc=thí_dụ, dc=org” là tên miền cơ bản.
+
+Template: shared/organization
+Type: string
+Description: Organization name:
+ Please enter the name of the organization to use in the base DN of your
+ LDAP directory.
+Description-ca.UTF-8: Nom de l'organització:
+ Escriviu el nom de l'organització per fer servir en el DN base del directori LDAP.
+Description-cs.UTF-8: Název organizace:
+ Zadejte prosím jméno organizace, které se použije v základním DN vašeho LDAP adresáře.
+Description-da.UTF-8: Organisationsnavn:
+ Indtast venligst navnet på organisationen som skal bruges i basis-DN'en på din LDAP-mappe.
+Description-de.UTF-8: Name der Organisation:
+ Bitte geben Sie den Namen der Organisation ein, die im Basis-DN Ihres LDAP-Verzeichnisses verwendet werden soll.
+Description-es.UTF-8: Nombre de la organización:
+ Introduzca el nombre de la organización a utilizar en el DN base del directorio LDAP.
+Description-eu.UTF-8: Erakundearen izena:
+ Idatzi LDAP direktorioko DN oinarrian erabiliko den erakundearen izena.
+Description-fi.UTF-8: Organisaation nimi:
+ Anna LDAP-hakemiston perus-DN:ssä käytettävä organisaation nimi.
+Description-fr.UTF-8: Nom d'entité (« organization ») :
+ Veuillez indiquer la valeur qui sera utilisée comme nom d'entité (« organization ») dans le nom distinctif de base de l'annuaire LDAP.
+Description-gl.UTF-8: Nome da organización:
+ Introduza aquí o nome da organización a empregar no DN base do seu directorio LDAP.
+Description-it.UTF-8: Nome dell'organizzazione:
+ Inserire il nome dell'organizzazione da usare nella base DN della propria directory LDAP.
+Description-ja.UTF-8: 組織名:
+ LDAP ディレクトリのベース DN 内で使う組織の名前を入力してください。
+Description-nl.UTF-8: Organisatienaam:
+ Geef op welke organisatienaam gebruikt moet worden in de basis-DN van uw LDAP-catalogus.
+Description-pt.UTF-8: Nome da Organização:
+ Por favor, insira o nome da organização a usar, no DN base do seu directório LDAP.
+Description-pt_BR.UTF-8: Nome da organização:
+ Por favor, informe o nome da organização para usar na base DN de seu diretório LDAP.
+Description-ru.UTF-8: Название организации:
+ Введите название организации для использования в базовом DN каталога LDAP.
+Description-sk.UTF-8: Názov organizácie:
+ Prosím zadajte názov organizácie, ktorý bude použitý v základnom DN vášho adresára LDAP.
+Description-sv.UTF-8: Organisationsnamn:
+ Ange namnet på organisationen som ska användas i bas-DN:et för din LDAP-katalog.
+Description-tr.UTF-8: Örgüt adı:
+ LDAP dizininizin temel DN'si olarak kullanılacak örgüt adını giriniz.
+Description-vi.UTF-8: Tên tổ chức:
+ Hãy nhập tên của tổ chức cần dùng trong tên miền cơ bản của thư mục LDAP.
+
+Template: slapd/password1
+Type: password
+Description: Administrator password:
+ Please enter the password for the admin entry in your LDAP directory.
+Description-ca.UTF-8: Contrasenya de l'administrador:
+ Escriviu la contrasenya per l'accés com administrador al vostre directori LDAP:
+Description-cs.UTF-8: Administrátorské heslo:
+ Zadejte prosím heslo pro administrátorský záznam v LDAP adresáři.
+Description-da.UTF-8: Administratoradgangskode:
+ Angiv administratoropslagets adgangskode i din LDAP-mappe.
+Description-de.UTF-8: Administrator-Passwort:
+ Bitte geben Sie das Passwort für den Administrator-Eintrag in Ihrem LDAP-Verzeichnis ein.
+Description-es.UTF-8: Contraseña del administrador:
+ Introduzca la contraseña para la entrada de administrador de su directorio LDAP.
+Description-eu.UTF-8: Administratzailearen pasahitza:
+ Idatzi LDAP direktorioko administratzailearen sarrerarako pasahitza.
+Description-fi.UTF-8: Ylläpitosalasana:
+ Anna LDAP-hakemiston ylläpitosalasana.
+Description-fr.UTF-8: Mot de passe de l'administrateur :
+ Veuillez indiquer le mot de passe de l'administrateur de l'annuaire LDAP.
+Description-gl.UTF-8: Contrasinal do administrador:
+ Introduza o contrasinal para a entrada do administrador no directorio LDAP.
+Description-it.UTF-8: Password dell'amministratore:
+ Inserire la password per l'amministrazione della propria directory LDAP.
+Description-ja.UTF-8: 管理者のパスワード:
+ あなたの LDAP ディレクトリでの管理者エントリのパスワードを入力してください。
+Description-nl.UTF-8: Beheerderswachtwoord:
+ Wat is het wachtwoord voor de beheerdersingang in uw LDAP-catalogus?
+Description-pt.UTF-8: Palavra-passe do administrador:
+ Por favor, insira a palavra-passe para a entrada admin do seu directório LDAP.
+Description-pt_BR.UTF-8: Senha do administrador:
+ Por favor, informe a senha para a entrada administrativa em seu diretório LDAP.
+Description-ru.UTF-8: Пароль администратора:
+ Введите пароль для записи admin в каталоге LDAP.
+Description-sk.UTF-8: Heslo administrátora:
+ Prosím zadajte heslo administrátora vášho adresára LDAP.
+Description-sv.UTF-8: Administratörslösenord:
+ Ange lösenordet för admin-posten i LDAP-katalogen.
+Description-tr.UTF-8: Yönetici parolası:
+ LDAP dizini yöneticisi için parola giriniz.
+Description-vi.UTF-8: Mật khẩu quản trị:
+ Hãy nhập mật khẩu cho mục nhập quản trị trong thư mục LDAP của bạn.
+
+Template: slapd/password2
+Type: password
+Description: Confirm password:
+ Please enter the admin password for your LDAP directory again to verify
+ that you have typed it correctly.
+Description-ca.UTF-8: Confirmeu la vostra contrasenya:
+ Introduïu de nou la contrasenya d'administrador per al directori LDAP per comprovar que s'ha escrit correctament.
+Description-cs.UTF-8: Potvrzení hesla:
+ Zadejte prosím znovu administrátorské heslo k LDAP adresáři, abyste se ujistili, že jste jej zadali správně.
+Description-da.UTF-8: Bekræft administratoradgangskode:
+ Indtast venligst administratoradgangskoden på din LDAP-mappe igen for at bekræfte, at du har tastet den korrekt.
+Description-de.UTF-8: Passwort bestätigen:
+ Bitte geben Sie das Passwort für den Administrator-Eintrag Ihres LDAP-Verzeichnisses nochmal ein, um sicher zu gehen, dass Sie es richtig eingegeben haben.
+Description-es.UTF-8: Confirme la contraseña:
+ Introduzca de nuevo la misma contraseña de administrador para su directorio LDAP para verificar que la introdujo correctamente.
+Description-eu.UTF-8: Berretsi pasahitza:
+ Idatzi LDAP direktorioko administratzailearen sarrerarako pasahitza berriro ondo idatzi duzula ziurtatzeko.
+Description-fi.UTF-8: Vahvista salasana:
+ Syötä LDAP-hakemiston ylläpitosalasana uudelleen varmistaaksesi, että kirjoitit sen oikein.
+Description-fr.UTF-8: Mot de passe de l'administrateur :
+ Veuillez entrer à nouveau le mot de passe de l'administrateur de l'annuaire LDAP afin de vérifier qu'il a été saisi correctement.
+Description-gl.UTF-8: Confirme o contrasinal:
+ Volva introducir o contrasinal do administrador do seu directorio LDAP para comprobar que o introduciu correctamente.
+Description-it.UTF-8: Conferma della password:
+ Inserire di nuovo la password per l'amministrazione della propria directory LDAP, per verificare che sia stata digitata correttamente.
+Description-ja.UTF-8: パスワードの確認:
+ 正しくタイプしたかの確認のために、先ほど入力したのと同じ LDAP ディレクトリ用の admin のパスワードを再度入力してください。
+Description-nl.UTF-8: Bevestiging wachtwoord:
+ Gelieve het beheerderswachtwoord van uw LDAP-catalogus nogmaals in te tikken (dit om tikfouten tegen te gaan).
+Description-pt.UTF-8: Confirme a palavra-passe:
+ Por favor introduza novamente a palavra-passe de admin do seu directório LDAP, para verificar se a introduziu correctamente.
+Description-pt_BR.UTF-8: Confirme a senha:
+ Por favor, informe novamente a senha para a entrada administrativa de seu diretório LDAP para verificar se você a digitou corretamente.
+Description-ru.UTF-8: Повторите ввод пароля:
+ Введите тот же пароль для admin в каталоге LDAP ещё раз, чтобы убедиться в правильности ввода.
+Description-sk.UTF-8: Overenie hesla:
+ Prosím zadajte znova heslo administrátora vášho adresára LDAP, na overenie, že ste ho napísali správne.
+Description-sv.UTF-8: Bekräfta lösenordet:
+ Ange administratörslösenordet för din LDAP-katalog igen för att verifiera att du har skrivit in det korrekt.
+Description-tr.UTF-8: Parolayı doğrulayınız:
+ LDAP dizini yönetici parolasını tekrar giriniz ve doğru yazdığınızdan emin olunuz.
+Description-vi.UTF-8: Xác nhận mật khẩu:
+ Hãy nhập lại mật khẩu quản trị cho thư mục LDAP, để xác nhận bạn đã gõ đúng.
+
+Template: slapd/password_mismatch
+Type: note
+Description: Password mismatch
+ The two passwords you entered were not the same. Please try again.
+Description-ca.UTF-8: Les contrasenyes no coincideixen
+ Les dues contrasenyes no coincideixen. Tornau a provar-ho.
+Description-cs.UTF-8: Hesla nesouhlasí
+ Zadaná hesla nejsou stejná. Zkuste to znovu.
+Description-da.UTF-8: Adgangskoderne var ikke ens
+ De to adgangskoder, du indtastede, var ikke ens. Prøv igen.
+Description-de.UTF-8: Passwörter stimmen nicht überein
+ Die beiden eingegebenen Passwörter sind nicht gleich. Bitte versuchen Sie es noch einmal.
+Description-es.UTF-8: Las contraseñas no coinciden
+ Las dos contraseñas que ha introducido son distintas. Inténtelo de nuevo.
+Description-eu.UTF-8: Pasahitzak ez dira berdinak
+ Idatzitako bi pasahitzak ez dira berdinak. Saiatu berriro.
+Description-fi.UTF-8: Salasanat eivät täsmää
+ Syöttämäsi kaksi salasanaa eivät olleet sama. Yritä uudelleen.
+Description-fr.UTF-8: Erreur de saisie du mot de passe
+ Les deux mots de passe que vous avez entrés sont différents. Veuillez recommencer.
+Description-gl.UTF-8: Contrasinais distintos
+ Os dous contrasinais que introduciu non son iguais. Volva tentalo.
+Description-it.UTF-8: Le password non coincidono
+ Le due password inserite non sono uguali; si prega di riprovare.
+Description-ja.UTF-8: パスワードが合致しません
+ 2回入力されたパスワードは同じではありません。再度入力してください。
+Description-nl.UTF-8: Wachtwoorden komen niet overeen
+ De twee door u ingevoerde wachtwoorden kwamen niet overeen. Gelieve nogmaals te proberen.
+Description-pt.UTF-8: A palavra-passe não coincide
+ As duas palavra-passe que você introduziu não são iguais. Por favor, tente novamente.
+Description-pt_BR.UTF-8: As senhas não conferem
+ As duas senhas que você informou não foram as mesmas. Por favor, tente novamente.
+Description-ru.UTF-8: Пароли не совпадают
+ Введённые вами пароли не совпадают. Попробуйте ещё раз.
+Description-sk.UTF-8: Heslá nesúhlasia
+ Zadané heslá nie sú rovnaké. Prosím skúste znova.
+Description-sv.UTF-8: Lösenorden matchar inte
+ De två lösenord du har angett var inte lika. Försök igen.
+Description-tr.UTF-8: Parola uyumsuzluğu
+ Girdiğiniz iki parola aynı değil, lütfen tekrar deneyiniz.
+Description-vi.UTF-8: Sai khớp mật khẩu
+ Bạn đã gõ hai mật khẩu khác nhau. Hãy thử lại.
+
+Template: slapd/purge_database
+Type: boolean
+Default: false
+Description: Do you want the database to be removed when slapd is purged?
+Description-ca.UTF-8: Desitjau que s'elimini la base de dades en purgar el paquet slapd?
+Description-cs.UTF-8: Chcete při vyčištění balíku slapd ze systému smazat i databázi?
+Description-da.UTF-8: Ønsker du at databasen bliver fjernet, når slapd bliver afinstalleret?
+Description-de.UTF-8: Soll die Datenbank entfernt werden, wenn slapd vollständig gelöscht wird?
+Description-es.UTF-8: ¿Desea que se borre la base de datos cuando se purgue el paquete slapd?
+Description-eu.UTF-8: Slapd kentzen bada, datu-basea ere ezabatzea nahi duzu?
+Description-fi.UTF-8: Haluatko, että tietokanta poistetaan siivottaessa paketti slapd?
+Description-fr.UTF-8: Faut-il supprimer la base de données lors de la purge du paquet ?
+Description-gl.UTF-8: Quere que se elimine a base de datos ao purgar slapd?
+Description-it.UTF-8: Eliminare il database in caso di rimozione completa di slapd?
+Description-ja.UTF-8: slapd をパージしたときにデータベースを削除しますか?
+Description-nl.UTF-8: Wilt u dat de database verwijderd wordt wanneer slapd gewist wordt?
+Description-pt.UTF-8: Quer que a base de dados seja removida quando o slapd for purgado?
+Description-pt_BR.UTF-8: Você deseja que a base de dados seja removida quando o pacote slapd for expurgado ("purged")?
+Description-ru.UTF-8: Удалять базу данных при вычистке slapd?
+Description-sk.UTF-8: Chcete aby pri odstránení balíka slapd bola odstránená aj databáza?
+Description-sv.UTF-8: Vill du att databasen ska tas bort när slapd rensas bort?
+Description-tr.UTF-8: slapd paketi tamamen kaldırıldığında veritabanının da kaldırılmasını ister misiniz?
+Description-vi.UTF-8: Khi tẩy gói phần mềm slapd, bạn có muốn xóa bỏ cơ sở dữ liệu đi không?
+
+Template: slapd/internal/adminpw
+Type: password
+Description: Encrypted admin password:
+ Internal template, should never be displayed to users.
+
+Template: slapd/internal/generated_adminpw
+Type: password
+Description: Generated admin password:
+ Internal template, should never be displayed to users.
+
+Template: slapd/allow_ldap_v2
+Type: boolean
+Default: false
+Description: Allow LDAPv2 protocol?
+ The obsolete LDAPv2 protocol is disabled by default in slapd. Programs
+ and users should upgrade to LDAPv3.  If you have old programs which
+ can't use LDAPv3, you should select this option and 'allow bind_v2'
+ will be added to your slapd.conf file.
+Description-ca.UTF-8: Desitjau permetre el protocol LDAPv2?
+ El protocol obsolet LDAPv2 està desactivat per defecte a slapd. Els programes i usuaris haurien d'actualitzar-se a LDAPv3.  Si teniu programes antics que no poden fer servir LDAPv3, seleccioneu aquesta opció i s'afegirà l'opció «allow bind_v2» al vostre fitxer de configuració slapd.conf.
+Description-cs.UTF-8: Povolit protokol LDAPv2?
+ Zastaralý protokol LDAPv2 je nyní v slapd implicitně zakázán. Programy i uživatelé by měli přejít na LDAPv3. Máte-li staré programy, které nezvládají LDAPv3, povolte tuto možnost, což do souboru slapd.conf přidá řádek „allow bind_v2“.
+Description-da.UTF-8: Tillad LDAPv2-protokollen?
+ Den forældede LDAPv2-protokol er deaktiveret som standard i slapd. Programmer og brugere bør opgradere til LDAPv3. Hvis du har gamle programmer, som ikke kan bruge LDAPv3, bør du vælgde denne indstilling og 'tillad bind_v2' vil blive tilføjet til din slapd.conf.
+Description-de.UTF-8: LDAPv2-Protokoll erlauben?
+ Das veraltete LDAPv2-Protokoll ist standardmäßig in slapd deaktiviert. Programme und Benutzer sollten ein Upgrade auf LDAPv3 durchführen. Falls Sie alte Programme haben, die LDAPv3 nicht benutzen können, sollten Sie diese Option wählen und »allow bind_v2« wird zu der Datei slapd.conf hinzugefügt.
+Description-es.UTF-8: ¿Desea permitir el protocolo LDAPv2?
+ El protocolo obsoleto LDAPv2 se ha desactivado de manera predeterminada en slapd. Los programas y los usuarios deberían actualizarse a LDAPv3. Debe seleccionar esta opción si aún tiene programas antiguos que no utilicen LDAPv3. Si lo hace, se añadirá la opción «allow bind_v2» al fichero de configuración «slapd.conf».
+Description-eu.UTF-8: Onartu LDAPv2 protokoloa?
+ Lehenespenez slapd-en LDAPv2 protokolo zaharkitua desgaituta dago. Programa eta erabiltzaileak LDAPv3-ra migratu beharko lirateke. Hautatu aukera hau baldin eta LDAPv3 erabili ezin duten programa zaharrak badituzu, eta slapd.conf fitxategiari 'allow bind_v2' gehituko zaio.
+Description-fi.UTF-8: Sallitaanko LDAPv2-yhteyskäytäntö?
+ Vanhentunut LDAPv2-yhteyskäytäntö on slapdissa oletuksena poissa käytöstä. Järjestelmät ja ohjelmat päivittää käyttämään LDAPv3:a. Jos jotkin vanhat ohjelmat eivät voi käyttää LDAPv3-yhteyskäytäntöä, valitse tämä lisätäksesi asetuksen ”allow bind_v2” tiedostoon slapd.conf
+Description-fr.UTF-8: Faut-il autoriser le protocole LDAPv2 ?
+ L'ancien protocole LDAPv2 est désactivé dans slapd. Il est conseillé de migrer les programmes et les utilisateurs vers la version LDAPv3. Si vous utilisez d'anciens programmes qui ne gèrent pas encore LDAPv3, vous devriez choisir cette option, ce qui ajoutera l'option « allow bind_v2 » au fichier slapd.conf.
+Description-gl.UTF-8: Admitir o protocolo LDAPv2?
+ O protocolo obsoleto LDAPv2 está desactivado por defecto en slapd. Os programas e os usuarios deberíanse actualizar a LDAPv3. Se ten programas antigos que non poidan empregar LDAPv3 debería escoller esta opción, que fará que se engada «allow bind_v2» ao ficheiro slapd.conf .
+Description-it.UTF-8: Abilitare il protocollo LDAPv2?
+ Con la configurazione predefinita di slapd il vecchio protocollo LDAPv2 è disabilitato. I programmi e gli utenti dovrebbero aggiornarsi a LDAPv3. Se si usa qualche vecchio programma che non può usare LDAPv3, si dovrebbe accettare in modo da aggiungere "allow bind_v2" al file di configurazione slapd.conf.
+Description-ja.UTF-8: LDAPv2 プロトコルを許可しますか?
+ 時代遅れの LDAPv2 プロトコルは slapd のデフォルトで無効になっています。プログラムおよびユーザは LDAPv3 に更新すべきです。いくつかの古いプログラムが LDAPv3 を利用できないのなら、この選択肢で「はい」を選べば、'allow bind_v2' が slapd.conf に追加されます。
+Description-nl.UTF-8: LDAPv2-protocol toelaten?
+ Het verouderde LDAPv2-protocol is standaard uitgeschakeld in slapd. Programma's en gebruikers dienen op te waarderen naar LDAPv3. Als u oude programma's heeft die geen LDAPv3 aankunnen, dient u deze optie te kiezen (hierdoor wordt 'allow bind_v2' toegevoegd aan uw 'slapd.conf'-bestand).
+Description-pt.UTF-8: Permitir o protocolo LDAPv2?
+ O protocolo obsoleto LDAPv2 está desactivado por pré-definição no slapd. Os programas e utilizadores devem actualizar para LDAPv3. Se tiver programas antigos que não conseguem usar LDAPv3, deverá seleccionar esta opção e será adicionado 'allow bind_v2' ao seu ficheiro slapd.conf.
+Description-pt_BR.UTF-8: Permitir o protocolo LDAPv2?
+ O protocolo obsoleto LDAPv2 é desabilitado por padrão no slapd. Os programas e usuários devem atualizar-se para o LDAPv3. Se você tem programas antigos que não usam LDAPv3, você deve selecionar esta opção e "allow bind_v2" será adicionado ao seu arquivo slapd.conf.
+Description-ru.UTF-8: Включить протокол LDAPv2?
+ По умолчанию в slapd старый протокол LDAPv2 выключен. Клиентские программы нужно обновить до версий с поддержкой LDAPv3. Если у вас есть старые программы, которые не могут использовать LDAPv3, то вы должны ответить утвердительно, и в файл slapd.conf будет добавлена запись «allow bind_v2».
+Description-sk.UTF-8: Povoliť protokol LDAPv2?
+ Zastaraný protokol LDAPv2 je v slapd predvolene zakázaný. Programy a používatelia by mali prejsť na LDAPv3. Ak máte staré programy, ktoré nedokážu používať LDAPv3, mali by ste povoliť túto možnosť a do konfiguračného súboru slapd.conf bude pridaný riadok „allow bind_v2”.
+Description-sv.UTF-8: Tillåt LDAPv2-protokollet?
+ Det inte längre aktuella LDAPv2-protokollet är som standard avaktiverat i slapd. Program och använder ska uppgradera till LDAPv3. Om du har gamla program som inte kan använda LDAPv3, behöver du välja detta vilket gör att "allow bin_v2" läggs till i din slapd.conf-fil.
+Description-tr.UTF-8: LDAPv2 iletişim kuralına izin verilsin mi?
+ Eskimiş LDAPv2 iletişim kuralı slapd yapılandırmasında öntanımlı olarak devre dışı bırakılmıştır. Programlar ve kullanıcılar LDAPv3 iletişim kuralına geçmelidirler. LDAPv3 iletişim kuralına geçemeyecek eski programlarınız varsa slapd.conf dosyasına 'allow bind_v2' satırını ekleyecek olan bu seçeneği seçmelisiniz.
+Description-vi.UTF-8: Cho phép giao thức LDAPv2?
+ Giao thức LDAPv2 (phiên bản 2) cũ bị tắt theo mặc định trong slapd. Các chương trình và người dùng đều nên nâng cấp lên LDAPv3 (phiên bản 3). Có chương trình cũ không thể dùng LDAPv3 thì bạn nên bật tùy chọn này và thêm chuỗi “allow bind_v2” vào tập tin cấu hình “slapd.conf”.
+
+Template: slapd/upgrade_slapcat_failure
+Type: error
+Description: slapcat failure during upgrade
+ An error occurred while upgrading the LDAP directory.
+ .
+ The 'slapcat' program failed while extracting the LDAP directory. This
+ may be caused by an incorrect configuration file (for example, missing
+ 'moduleload' lines to support the backend database).
+ .
+ This failure will cause 'slapadd' to fail later as well. The old database
+ files will be moved to /var/backups. If you want to try this upgrade
+ again, you should move the old database files back into place, fix
+ whatever caused slapcat to fail, and run:
+ .
+  slapcat > ${location}
+ .
+ Then move the database files back to a backup area and then try running
+ slapadd from ${location}.
+Description-ca.UTF-8: ha fallat «slapcat» durant l'actualització
+ S'ha produït un error en l'actualització del directori LDAP.
+ .
+ El programa «slapcat» ha fallat en l'extracció del directori LDAP. Aquest error pot ésser causat per un fitxer de configuració incorrecte (per exemple, per que faltin línies «moduleload» necessàries pel motor de la base de dades)
+ .
+ Aquest error farà que «slapadd» torni a fallar més endavant. Els fitxers de la base de dades anterior es mouran a «/var/backups». Si desitjau tornar a intentar l'actualització, haureu de tornar a moure els fitxers de la base de dades anterior a la seva ubicació inicial, solucionar la causa de l'error i tornar a executar:
+ .
+  slapcat > ${location}
+ .
+ A continuació, tornau els arxius de la base de dades a la zona de seguretat i després intenteu executar «slapadd» des de ${location}.
+Description-cs.UTF-8: slapcat během aktualizace selhal
+ Při pokusu o aktualizaci LDAP adresáře se vyskytla chyba.
+ .
+ Program „slapcat“ selhal. Tuto chybu může způsobit třeba chybný konfigurační soubor. (Například pokud chybí příslušné řádky „moduleload“ pro backend databáze, která uchovává obsah LDAP adresáře.)
+ .
+ Tato chyba později způsobí také selhání příkazu „slapadd“. Staré databázové soubory budou přesunuty do /var/backups. Budete-li chtít později zkusit provést tuto aktualizaci znovu, přesuňte staré databázové soubory zpět na jejich původní místo, spravte příčinu toho, proč slapcat selhal a spusťte:
+ .
+  slapcat > ${location}
+ .
+ Poté přesuňte databázové soubory zpět mezi zálohy a zkuste spustit slapadd z ${location}.
+Description-da.UTF-8: slapcatfejl under opgraderingen
+ Der opstod en fejl under opgradering af din LDAP-mappe.
+ .
+ Programmet 'slapcat' fejlede under udtrækning af LDAP-mappen. Fejlen kan skyldes en fejlbehæftet opsætningsfil (f.eks. kan de korrekte 'moduleloadlinjer' til understøttelse af din motors database mangle).
+ .
+ Denne fejl vil også senere få 'slapadd' til at fejle. De gamle databasefiler er ved at blive flyttet til /var/backups. Hvis du vil forsøge denne opgradering igen, så flyt de gamle databasefiler tilbage, ret den fejl, der fik slapcat til at fejle, og kør:
+ .
+  slapcat > ${location}
+ .
+ Flyt derefter databasefilerne tilbage til et sikkerhedskopiområde, og prøv at køre slapadd fra ${location}.
+Description-de.UTF-8: slapcat-Fehlschlag beim Upgrade
+ Während des Versuchs, ein Upgrade des LDAP-Verzeichnisses durchzuführen, trat ein Fehler auf.
+ .
+ Das Programm »slapcat« schlug beim Versuch, das LDAP-Verzeichnis zu extrahieren, fehl. Dies könnte durch eine inkorrekte Konfigurationsdatei verursacht worden sein (beispielsweise fehlende »moduleload«-Zeilen, um die Backend-Datenbank zu unterstützen).
+ .
+ Dieser Fehlschlag wird später dazu führen, dass auch »slapadd« fehlschlägt. Die alten Datenbankdateien werden jetzt nach /var/backups verschoben. Falls Sie dieses Upgrade erneut versuchen wollen, sollten Sie die alten Datenbankdateien wieder zurück an ihren Platz verschieben, den Grund für den Fehlschlag von slapcat beheben und folgendes ausführen:
+ .
+  slapcat > ${location}
+ .
+ Verschieben Sie dann die Datenbankdateien zurück in den Sicherungsbereich und versuchen Sie, Slapadd von ${location} auszuführen.
+Description-es.UTF-8: fallo de slapcat durante la actualización
+ Se produjo un error mientras se actualizaba su directorio LDAP.
+ .
+ El programa «slapcat» falló mientras extraía el directorio LDAP. Este fallo puede deberse a un fichero de configuración incorrecto (por ejemplo, que falte alguna línea «moduleload» necesaria para el motor del base de datos).
+ .
+ Este fallo hará que también falle «slapadd» más adelante. Se van a mover los ficheros de la base de datos antigua a «/var/backups». Si desea volver a intentar la actualización debe mover los ficheros de la base de datos a su ubicación normal, arreglar lo que hizo que fallara «slapcat» y ejecutar:
+ .
+  slapcat > ${location}
+ .
+ Mueva los ficheros de la base de datos de nuevo al área de la copia de seguridad e intente ejecutar «slapadd» desde «${location}».
+Description-eu.UTF-8: slapcat-ek huts egin du bertsio-berritzean
+ Errorea gertatu da LDAP direktorioa bertsio-berritzean.
+ .
+ 'slapcat' programak huts egin du LDAP direktorioa erauztean. Konfigurazioko fitxategia oker egoteagatik gerta daiteke (adibidez, datu-basearen motorra onartzeko 'moduleload' lerroak falta badira).
+ .
+ Hutsegite honek 'slapdd'-ek lehenago edo beranduago hutsegitea eragingo du. Datu-base zaharra /var/backups karpetara eramango da. Bertsio-berritze hau berriro saiatzea nahi izanez gero, datu-base zaharreko fitxategiak aurreko kokalekura eraman beharko dituzu. Konpondu slapcat-en hutsegitea eragin duena eta exekutatu honako komandoa:
+ .
+  slapcat > ${location}
+ .
+ Ondoren, eraman datu-basearen fitxategiak babeskopiako kokaleku batera, eta saiatu slapadd ${location}(e)tik exekutatzen.
+Description-fr.UTF-8: Échec de slapcat durant la mise à niveau
+ Une erreur s'est produite lors de la mise à niveau de l'annuaire LDAP.
+ .
+ Le programme « slapcat » a échoué en extrayant les données du répertoire LDAP. Cela peut être dû à un fichier de configuration non valable (par exemple l'absence de lignes « moduleload » permettant de gérer les divers types de bases de données).
+ .
+ Cet échec provoquera l'échec ultérieur de « slapadd ». Les anciens fichiers de bases de données seront déplacés dans /var/backups. Si vous souhaitez tenter à nouveau la mise à jour, vous devrez les remettre en place, corriger l'erreur qui a provoqué l'échec de slapcat et utiliser la commande suivante :
+ .
+  slapcat > ${location}
+ .
+ Déplacez ensuite les bases de données vers un emplacement de sauvegarde et tentez d'utiliser la commande « slapadd » depuis ${location}.
+Description-gl.UTF-8: Fallou a execución de slapcat durante a actualización
+ Produciuse un erro ao actualizar o directorio LDAP.
+ .
+ O programa «slapcat» fallou ao extraer o directorio LDAP. Isto pode estar causado por un ficheiro de configuración incorrecto (por exemplo, se non hai liñas «moduleload» para o uso da base de datos).
+ .
+ Este fallo fará que «slapadd» tamén falle. Trasladaranse os ficheiros de base de datos antigos a /var/backups. Se quere volver tentar a actualización, debería mover os ficheiros da base de datos antiga ao seu sitio, arranxar o que fixo que fallara slapcat, e executar:
+ .
+  slapcat > ${location}
+ .
+ Despois volva trasladar os ficheiros da base de datos a unha zona de copias de seguridade e probe a executar slapadd desde ${location}.
+Description-it.UTF-8: Problema con slapcat durante l'aggiornamento
+ Si è verificato un errore durante l'aggiornamento della directory LDAP.
+ .
+ Il programma "slapcat" ha riportato un errore durante l'estrazione della directory LDAP. L'errore potrebbe essere causato da un file di configurazione sbagliato (per esempio, la mancanza delle righe "moduleload" per il supporto al database di backend).
+ .
+ Questo errore provocherà anche il successivo fallimento di "slapadd". I file del vecchio database saranno spostati in /var/backups. Per riprovare l'aggiornamento è necessario riportare i file nella posizione originale, correggere ciò che ha causato il fallimento di slapcat ed eseguire:
+ .
+  slapcat > ${location}
+ .
+ Poi spostare i file del database in un'area di backup e provare a eseguire slapadd da ${location}.
+Description-ja.UTF-8: 更新中に slapcat が失敗
+ LDAP ディレクトリの更新中にエラーが発生しました。
+ .
+ LDAP ディレクトリの展開中に 'slapcat' プログラムが失敗しました。これは不正な設定ファイル (たとえばバックエンドデータベースをサポートするための 'moduleload' 行がないなど) によって引き起こされた可能性があります。
+ .
+ この失敗は、後で 'slapadd' を失敗させることになります。古いデータベースファイルは /var/backups に移動されます。更新を再試行したいのであれば、古いデータベースファイルを元の場所に戻して slapcat が失敗する原因を修正し、次のように実行します:
+ .
+  slapcat > ${location}
+ .
+ そして、データベースファイルをバックアップ領域に戻し、slapadd を ${location} から実行してみます。
+Description-nl.UTF-8: slapcat gaf een fout tijdens de opwaardering
+ Er is een fout opgetreden tijdens het opwaarderen van uw LDAP-catalogus.
+ .
+ Bij het uitpakken van de LDAP-catalogus signaleerde het programma 'slapcat' een fout. Dit kan veroorzaakt worden door een onjuist configuratiebestand (bv. het ontbreken van 'moduleload'-regels voor het ondersteunen van de backenddatabase).
+ .
+ Deze mislukking zorgt ervoor dat 'slapadd' zo meteen ook mislukt. De oude databasebestanden worden verplaatst naar /var/backups . Als u deze opwaardering opnieuw wilt proberen, dient u eerst de oude databasebestanden terug te plaatsen, daarna de oorzaak van het mislukken van slapcat op te lossen, en tenslotte de volgende opdracht uit te voeren:
+ .
+  slapcat > ${location}
+ .
+ Vervolgens verplaatst u de databasebestanden terug naar de reservekopie-map en probeert u slapadd uit te voeren vanaf ${location}.
+Description-pt.UTF-8: Falha do slapcat durante a actualização
+ Ocorreu um erro durante a actualização do directório LDAP.
+ .
+ O programa 'slapcat' falhou enquanto extraía o directório LDAP. Isto pode ter sido causado por um ficheiro de configuração incorrecto (por exemplo, linhas 'moduleload' em falta para suportar o backend da base de dados).
+ .
+ Esta falha irá fazer com que o 'slapadd' falhe também mais tarde. Os ficheiros antigos da base de dados serão movidos para /var/backups. Se quiser tentar novamente esta actualização, deverá mover os ficheiros antigos da base de dados antiga de volta para o seu lugar, corrigir o que possa ter causado a falha do slapcat, e executar:
+ .
+  slapcat > ${location}
+ .
+ Depois mova os ficheiros da base de dados de volta para a área de backup e a seguir tente correr o slapadd a partir de ${location}.
+Description-pt_BR.UTF-8: Falha do slapcat durante a atualização
+ Um erro ocorreu durante a atualização do diretório LDAP.
+ .
+ O programa "slapcat" falhou ao extrair o diretório LDAP. Isso pode ter sido causado por um arquivo de configuração incorreto (por exemplo, se estiverem faltando as linhas "moduleload" para suportar o "backend" da base de dados).
+ .
+ Esta falha fará com que o "slapadd" também falhe posteriormente. Os arquivos da antiga base de dados serão movidos para /var/backups. Se você quer tentar esta atualização novamente, você deve mover os arquivos da antiga base de dados de volta para o local original, corrigir o que quer que tenha causado a falha do slapcat e executar:
+ .
+  slapcat > ${location}
+ .
+ Então mova os arquivos da base de dados de volta para uma área de backup e depois tente executar slapadd a partir de ${location}.
+Description-ru.UTF-8: Ошибка slapcat при обновлении
+ Возникла ошибка при попытке обновления каталога LDAP.
+ .
+ Ошибка возникла при выполнении программы «slapcat», которая пыталась распаковать каталог LDAP. Это могло произойти из-за некорректного файла конфигурации (например, в случае отсутствия строк «moduleload» для вашего типа сервера базы данных).
+ .
+ В дальнейшем, это также вызовет отказ в работе «slapadd». Старые файлы базы данных были перенесены в каталог /var/backups. Если вы хотите попытаться выполнить обновление ещё раз, переместите старые файлы базы данных обратно, исправьте ошибку, вызывающую отказ работы «slapcat» и выполните:
+ .
+  slapcat > ${location}
+ .
+ Переместите файлы базы данных обратно в место хранения резервной копии и затем попытайтесь запустить slapadd из ${location}.
+Description-sk.UTF-8: Zlyhanie slapcat počas aktualizácie
+ Pri aktualizácii adresára LDAP nastala chyba.
+ .
+ Program „slapcat” zlyhal pri práci s adresárom LDAP. Táto chyba môže byť spôsobená chybným konfiguračným súborom (napríklad chýbajúce riadky „moduleload” s podporou backend databázy).
+ .
+ Táto chyba bude mať za následok, že „slapadd” neskôr tiež zlyhá. Súbory starej databázy budú presunuté do /var/backups. Ak budete chcieť skúsiť túto aktualizáciu neskôr znova, mali by ste najprv presunúť súbory starej databázy naspäť, opraviť príčinu zlyhania slapcat a spustiť:
+ .
+  slapcat > ${location}
+ .
+ Potom presuňte súbory databázy späť medzi zálohy a až potom skúste spustiť slapadd z ${location}.
+Description-sv.UTF-8: slapcat-fel vid uppgradering
+ Ett fel inträffade när LDAP-katalogen uppgraderades.
+ .
+ Programmet "slapcat" misslyckades när det extraherade LDAP-katalogen. Detta kan bero på en felaktig konfigurationsfil (till exempel, saknade "moduleload"-rader för att stödja bakändsdatabasen).
+ .
+ Detta fel kommer göra att "slapadd" misslyckas även senare. Den gamla databasen kommer flyttas till /var/backups. Om du vill försöka utföra den här uppgraderingen igen, behöver du flytta tillbaka de gamla databasfilerna, korrigera det som har fått slapcat att misslyckas och köra:
+ .
+  slapcat > ${location}
+ .
+ Flytta sedan tillbaka databasfilerna till ett utrymme för säkerhetskopior och kör slapadd från ${location}.
+Description-tr.UTF-8: Yükseltme sırasında 'slapcat' hatası
+ LDAP dizini yükseltilirken bir hata oluştu.
+ .
+ 'slapcat' programı LDAP dizinini dışa aktarırken başarısız oldu. Buna hatalı bir yapılandırma dosyası neden olmuş olabilir (örneğin, arka uç veritabanlarını desteklemek için gerekli 'moduleload' satırlarının eksik olması gibi).
+ .
+ Bu hata 'slapadd' programının da hata vermesine neden olacaktır. Eski veritabanı dosyaları /var/backups dizinine taşınacaktır. Eğer bu yükseltmeyi yeniden denemek isterseniz, eski veritabanı dosyalarını yerlerine geri almalı, 'slapcat' programının hatasına neden olan her ne ise düzeltmeli ve aşağıdaki komutu çalıştırmalısınız:
+ .
+  slapcat > ${location}
+ .
+ Daha sonra veritabanı dosyalarını bir yedekleme alanına geri taşıyın ve ${location} konumundan 'slapadd' komutunu çalıştırınız.
+Description-vi.UTF-8: slapcat gặp lỗi trong khi nâng cấp
+ Gặp lỗi trong khi nâng cấp thư mục LDAP.
+ .
+ Chương trình “slapcat” bị lỗi trong khi giải nén thư mục LDAP. Có thể do một tập tin cấu hình sai (v.d. thiếu dòng “moduleload” để hỗ trợ cơ sở dữ liệu hậu phương).
+ .
+ Sự thất bại này sẽ cũng gây ra tiến trình “slapadd” thất bại về sau. Các tập tin cơ sở dữ liệu cũ sẽ được di chuyển vào thư mục “/var/backups”. Muốn thử lại tiến trình nâng cấp thì bạn nên di chuyển các tập tin cơ sở dữ liệu cũ về nơi gốc, sửa chữa trường hợp gây ra slapcat bị lỗi, và chạy câu lệnh này:
+ .
+  slapcat > ${location}
+ .
+ Sau đó, hãy di chuyển các tập tin cơ sở dữ liệu sang một vùng sao lưu, và thử chạy trình slapadd từ vị trí “${location}”.
+
+Template: slapd/backend
+Type: select
+Choices: BDB, HDB, MDB
+Default: MDB
+Description: Database backend to use:
+ HDB and BDB use similar storage formats, but HDB adds support for
+ subtree renames. Both support the same configuration options.
+ .
+ The MDB backend is recommended. MDB uses a new storage format and
+ requires less configuration than BDB or HDB.
+ .
+ In any case, you should review the resulting database configuration for
+ your needs. See /usr/share/doc/slapd/README.Debian.gz for more details.
+Description-ca.UTF-8: Motor de base de dades a fer servir:
+ HDB i BDB fan servir formats d'emmagatzematge semblants, però HDB permet fer canvis de nom dels subarbres. Tots dos tenen les mateixes opcions de configuració.
+ .
+ El motor MDB és el recomanat. MDB fa servir un nou format d'emmagatzematge i requereix menys tasques de configuració que BDB o HDB.
+ .
+ En qualsevol cas, heu de revisar la configuració de base de dades resultant per ajustar-la a les vostres necessitats. Consulteu «/usr/share/doc/slapd/README.Debian.gz» per a més detalls.
+Description-cs.UTF-8: Databázový backend:
+ HDB i BDB ukládají data obdobně, ale HDB přidává podporu pro přejmenování podstromů. Oba backendy podporují stejné konfigurační parametry.
+ .
+ Doporučenou volbou je backend MDB. MDB používá nový formát úložiště a vyžaduje méně nastavování než BDB enbo HDB.
+ .
+ Ve všech případech byste měli zkontrolovat, zda nastavení databáze odpovídá vašim potřebám. Více informací naleznete v souboru /usr/share/doc/slapd/README.Debian.gz.
+Description-da.UTF-8: Databasemotor at bruge:
+ HDB og BDB bruger lignende lagerformater, men HDB tilføjer understøttelse af omdøbning af undertræer. Begge understøtter de samme konfigurationsindstillinger.
+ .
+ MDB-motoren anbefales. MDB bruger et nyt lagerformat og kræver mindre konfiguration end BDB eller HDB.
+ .
+ Uanset hvad bør du gennemse databasekonfigurationen for dine behov. Se /usr/share/doc/slapd/README.Debian.gz for yderligere detaljer.
+Description-de.UTF-8: Zu verwendendes Datenbank-Backend:
+ HDB und BDB verwenden ähnliche Speicherformate, aber HDB enthält zusätzlich Unterstützung für Teilbaum-Umbenennungen. Beide unterstützen die gleichen Konfigurationsoptionen.
+ .
+ Das MDB-Backend wird empfohlen. MDB verwendet ein neues Speicherformat und benötigt weniger Konfiguration als BDB oder HDB.
+ .
+ In jedem Fall sollten Sie die erstellte Datenbankkonfiguration im Hinblick auf Ihre Anforderungen prüfen. Lesen Sie /usr/share/doc/slapd/README.Debian.gz für weitere Details.
+Description-es.UTF-8: Motor de base de datos a utilizar:
+ Los motores HDB y BDB utilizan formatos de almacenamiento semejantes, pero HDB permite realizar cambios de nombre de subárboles («subtree renames»). Los dos permiten las mismas opciones de configuración.
+ .
+ Se recomienda utilizar MDB. El motor MDB utiliza un nuevo formato de almacenamiento y requiere menos configuración que BDB o HDB.
+ .
+ En cualquier caso, debe revisar la configuración de la base de datos. Consulte «/usr/share/doc/slapd/README.Debian.gz» para más detalles.
+Description-eu.UTF-8: Datu-basearen motorra:
+ HDB eta BDB motorrek antzeko biltegiratze formatuak erabiltzen dituzte, baina HDB-ek azpizuhaitzak berrizendatzeko euskarria dauka. Biek konfigurazioko aukera berdinak onartzen dituzte.
+ .
+ MDB motorra gomendatzen da. MDB-ek biltegiratze formatu berri bat erabiltzen du, eta BDB edo HDB baino konfigurazio gutxiago eskatzen du.
+ .
+ Edozein kasutan, sortutako datu-basearen konfigurazioa gainbegiratu beharko zenuke zure beharrei erantzuten diela ziurtatzeko. Irakurri /usr/share/doc/slapd/README.Debian.gz xehetasun gehiagorako.
+Description-fr.UTF-8: Module de base de données à utiliser :
+ HDB et BDB utilisent des formats de stockage analogues. Par contre, HDB gère les renommages de sous-arbres. Les deux formats utilisent les mêmes options de configuration.
+ .
+ Le module MDB est recommandé. Il utilise un nouveau format de stockage et est plus simple à configurer que BDB ou HDB.
+ .
+ Quel que soit votre choix, vous devriez vérifier les options de configuration de la base de données. Pour plus d'informations, veuillez consulter le fichier /usr/share/doc/slapd/README.Debian.gz.
+Description-gl.UTF-8: Motor de base de datos a empregar:
+ HDB e BDB empregan formatos de almacenamento semellantes, pero HDB permite ademais o cambio de nome de subárbores. Ámbolos dous permiten usar as mesmas opcións de configuración.
+ .
+ Recoméndase o motor MDB. MDB usa un formato de almacenamento novo e precisa menos configuración que BDB ou HDB.
+ .
+ En calquera caso, debería revisar que a configuración da base de datos se axusta ás súas necesidades. Pode obter máis información en /usr/share/doc/slapd/README.Debian.gz .
+Description-it.UTF-8: Database di backend da usare:
+ HDB e BDB usano un formato di memorizzazione simile ma HDB dispone in più del supporto per rinominare i sottoalberi. Entrambi hanno le stesse opzioni da configurare.
+ .
+ Si raccomanda MDB come backend. MDB usa un formato di memorizzazione nuovo e richiede la configurazione di un minor numero di opzioni rispetto a BDB e HDB.
+ .
+ In ogni caso è necessario rivedere la configurazione del database in base alle proprie necessità. Consultare /usr/share/doc/slapd/README.Debian.gz per maggiori informazioni.
+Description-ja.UTF-8: 利用するデータベースバックエンド:
+ HDB と BDB は似たストレージフォーマットを使いますが、HDB にはサブツリーの名前変更のサポートが加わっています。共に、同じ設定オプションをサポートします。
+ .
+ MDB バックエンドをお勧めします。MDB は新しいストレージフォーマットを採用しており、BDB や HDB よりも少ない設定で済みます。
+ .
+ いずれの場合でも、必要に応じてデータベース設定の結果を再確認すべきです。詳細については /usr/share/doc/slapd/README.Debian.gz を参照してください。
+Description-nl.UTF-8: Welk database-backend wilt u gebruiken?
+ HDB en BDB gebruiken een gelijkaardige opslagindeling, maar HDB ondersteunt ook het hernoemen van deelbomen. Beide ondersteunen dezelfde configuratieopties.
+ .
+ Het MDB-backend is de aanbevolen keuze. MDB maakt gebruik van een nieuw opslagformaat en vraagt minder configuratie dan BDB of HDB.
+ .
+ In elk geval is het een goed idee om te controleren of de resulterende databaseconfiguratie aan uw noden voldoet. Meer informatie vindt u in /usr/share/doc/slapd/README.Debian.gz.
+Description-pt.UTF-8: Backend a usar para a base de dados:
+ HDB e BDB usam formatos similares de armazenamento, mas o HDB adiciona suporte para renomeação de sub-árvores. Ambos suportam as mesmas opções de configuração.
+ .
+ É recomendado o backend MDB. MDB utiliza um novo formato de armazenamento e requer menos configurações do que BDB ou HDB.
+ .
+ Em qualquer caso, deverá rever a configuração da base de dados resultante, para as suas necessidades. Ver /usr/share/doc/slapd/README.Debian.gz para mais detalhes.
+Description-pt_BR.UTF-8: "Backend" de base de dados a ser usado:
+ O HDB e o BDB usam formatos de armazenamento similares, mas o HDB adiciona suporte para renomeação de subárvores. Ambos suportam as mesmas opções de configuração.
+ .
+ O "backend" MDB é recomendado. O MDB usa um novo formato de armazenamento e requer menos configuração que o BDB e o HDB.
+ .
+ Em qualquer caso, você deve revisar a configuração resultante da base de dados para que atenda as suas necessidades. Veja /usr/share/doc/slapd/README.Debian.gz para mais detalhes.
+Description-ru.UTF-8: Используемые серверы баз данных:
+ HDB и BDB используют схожие форматы хранения, но в HDB добавлена поддержка переименования поддеревьев. Оба типа сервера поддерживают одинаковые параметры настройки.
+ .
+ Рекомендуется использовать сервер MDB. MDB использует новый формат хранения и требует меньше настроек чем BDB или HDB.
+ .
+ В любом случае, убедитесь в соответствии получившихся настроек базы данных вашим требованиям. Подробней о настройке смотрите в файле /usr/share/doc/slapd/README.Debian.gz.
+Description-sv.UTF-8: Databasbakända att använda:
+ HDB och BDB använder liknande lagringsformat, men HDB lägger till stöd för namnbyten på underträd. Båda stödjer samma konfigurationsalternativ.
+ .
+ MDB-bakändan är rekommenderad. MDB använder ett nytt lagringsformat och behöver mindre inställningar än BDB eller HDB.
+ .
+ I vilket fall, behöver du se över den resulterande databaskonfigurationen för dina behov. Se /usr/share/doc/slapd/README.Debian.gz för fler detaljer.
+Description-tr.UTF-8: Kullanılacak veritabanı arka ucu:
+ HDB ve BDB benzer depolama biçimleri kullanırlar, fakat HDB alt ağaç yeniden adlandırmalarına olanak tanır. Her ikisi de aynı yapılandırma seçeneklerini desteklerler.
+ .
+ MDB arka ucu önerilir. MDB yeni bir depolama biçimi kullanır ve BDB ya da HDB'ye göre daha az yapılandırma gerektirir.
+ .
+ Her durumda sonuçlanan veritabanı yapılandırmasının gereksinimlerinize uyduğundan emin olmalısınız. Daha fazla bilgi için /usr/share/doc/slapd/README.Debian.gz dosyasını okuyunuz.
+Description-vi.UTF-8: Hậu phương cơ sở dữ liệu cần dùng:
+ HDB và BDB dùng định dạng lưu trữ tương tự nhau, nhưng HDB thêm hỗ trợ để thay đổi tên của cây con. Cả hai hỗ trợ cùng những tùy chọn cấu hình.
+ .
+ Khuyên bạn dùng hậu phương MDB. MDB dùng định dạng lưu trữ mới và phần cấu hình cũng ít hơn là BDB hay HDB.
+ .
+ Trong mỗi trường hợp, bạn nên xem lại cấu hình cơ sở dữ liệu kết quả có thích hợp với nhu cầu của bạn. Xem tài liệu Đọc Đi “/usr/share/doc/slapd/README.DB_CONFIG.gz” để tìm chi tiết.
+
+Template: slapd/unsafe_selfwrite_acl
+Type: note
+Description: Potentially unsafe slapd access control configuration
+ One or more of the configured databases has an access control rule that
+ allows users to modify most of their own attributes. This may be
+ unsafe, depending on how the database is used.
+ .
+ In the case of slapd access rules that begin with "to *", it is
+ recommended to remove any instances of "by self write", so that users
+ are only able to modify specifically allowed attributes.
+ .
+ See /usr/share/doc/slapd/README.Debian.gz for more details.
+Description-ca.UTF-8: Configuració de control d'accés de slpad potencialment insegur
+ Una o més de les bases de dades configurades té una norma de control d'accés que permet als usuaris modificar la major part dels seus atributs. Aquest situació pot ser perillosa, depenent de com s'utilitza la base de dades.
+ .
+ En el cas que les normes d'accés de slpad comencin per "to *", és recomanable eliminar totes les instàncies a "by self write", de manera que els usuaris només puguin modificar els atributs específicament permesos.
+ .
+ Consulteu «/usr/share/doc/slapd/README.Debian.gz» per a més detalls.
+Description-cs.UTF-8: Potenciálně nebezpečné nastavení přístupu slapd
+ Jedna nebo více nakonfigurovaných databází obsahuje pravidlo, které umožňuje uživatelům měnit většinu jejich vlastních atributů. V závislosti na způsobu používání databáze to může být nebezpečné.
+ .
+ V případě přístupových pravidel slapd začínajících „to *“ je doporučeno odstranit výskyty „by self write“, aby uživatelé mohli měnit pouze explicitně povolené atributy.
+ .
+ Více informací naleznete v /usr/share/doc/slapd/README.Debian.gz.
+Description-da.UTF-8: Potentiel usikker slapd-adgangskontrolkonfiguration
+ En eller flere af de konfigurerede databaser har en adgangskontrolregel, som giver brugere mulighed for at ændre deres egne attributter. Dette kan være usikkert, afhængig af hvordan databasen bruges.
+ .
+ I tilfældet med slapd-adgangsregler som begynder med »to *«, anbefales det at fjerne alle instanser af »by self write«, så at brugerne kun kan ændre specifikt tilladte attributter.
+ .
+ Se /usr/share/doc/slapd/README.Debian.gz for yderligere detaljer.
+Description-de.UTF-8: Möglicherweise unsichere Slapd-Zugriffssteuerkonfiguration
+ Eine oder mehrere der konfigurierten Datenbanken hat eine Zugriffssteuerregel, die Benutzern erlaubt, die meisten ihrer eigenen Konfigurationsoptionen zu verändern. Dies kann unsicher sein, abhängig davon, wie die Datenbank verwandt wird.
+ .
+ Im Falle der mit »to *« beginnenden Slapd-Zugriffsregeln, wird empfohlen, alle Instanzen von »by self write« zu entfernen, so dass Benutzer nur in der Lage sind, speziell erlaubte Attribute zu ändern.
+ .
+ Lesen Sie /usr/share/doc/slapd/README.Debian.gz für weitere Details.
+Description-es.UTF-8: Configuración potencialmente insegura en el control de acceso de slapd
+ Una o varias de las bases de datos configuradas contiene una regla de control de acceso que permite a los usuarios modificar la mayoría de sus propios atributos. Esta configuración puede ser insegura dependiendo de cómo se utilice la base de datos.
+ .
+ Se recomienda que elimine cualquier instancia «by self write» en las reglas de acceso de slapd que empiecen con «to *» para que los usuarios sólo puedan modificar los atributos que se hayan permitido expresamente.
+ .
+ Consulte «/usr/share/doc/slapd/README.Debian.gz» para más detalles.
+Description-eu.UTF-8: Potentzialki ez-segurua den slapd atzitzeko kontrolaren konfigurazioa
+ Konfiguratutako datu-base batek (edo gehiagok) erabiltzaileek beraien atributu gehienak aldatzeko baimentzen duen atzipeneko kontrol-arau bat du. Hau ez-segurua izan daiteke, datu-basea nola erabiltzen den arabera.
+ .
+ slapd-ren "to *"-rekin hasten diren atzipen arauen kasuan, "by self write"-ren instantziak kentzea gomendatzen da. Horrela, erabiltzaileek bereziki baimendutako atributuak soilik alda ditzakete.
+ .
+ Irakurri /usr/share/doc/slapd/README.Debian.gz xehetasun gehiagorako.
+Description-fr.UTF-8: Configuration éventuellement peu sûre du contrôle d'accès de slapd
+ Une ou plusieurs des bases de données configurées comportent une règle de contrôle d'accès qui permet aux utilisateurs de modifier un ou plusieurs de leurs propres paramètres. Cela peut être peu sûr, selon la façon dont la base de données est configurée.
+ .
+ Pour les règles d'accès à slapd qui commencent par « to * », il est recommandé de supprimer toute occurrence de « by self write », afin que les utilisateurs ne puissent modifier que des paramètres explicitement autorisés.
+ .
+ Veuillez consulter le fichier /usr/share/doc/slapd/README.Debian.gz pour plus d'informations.
+Description-gl.UTF-8: A configuración de control de acceso de slapd é potencialmente insegura
+ Polo menos unha das bases de datos configuradas ten unha regra de control de acceso que permite aos usuarios modificar a maioría dos atributos. Isto pode ser inseguro dependendo da maneira en que se use a base de datos.
+ .
+ No caso das regras de acceso de «slapd» que comezan con «to *», recoméndaselle eliminar calquera instancia de «by self write», de maneira que os usuarios só poidan modificar os atributos especificamente permitidos.
+ .
+ Pode obter máis información en /usr/share/doc/slapd/README.Debian.gz .
+Description-it.UTF-8: Configurazione degli accessi di slapd potenzialmente non sicura
+ Uno o più dei database configurati hanno una regola di accesso che permette agli utenti di modificare la maggior parte dei propri attributi. Ciò è non sicuro, il livello di pericolosità dipende da qual è l'uso del database.
+ .
+ Se esistono regole di accesso che iniziano con "to *", si raccomanda di togliere tutti i "by self write" in modo che gli utenti possano modificare solo gli attributi a loro consentiti.
+ .
+ Consultare /usr/share/doc/slapd/README.Debian.gz per maggiori informazioni.
+Description-ja.UTF-8: 潜在的に安全でない slapd のアクセス制御設定です
+ 設定されたデータベースには、ユーザに自身の属性のほとんどの変更を許容する 1 つ以上のアクセス制御ルールがあります。これはデータベースの使いようによっては安全でない可能性があります。
+ .
+ "to *" で始まる slapd アクセスルールがある場合、各 "by self write" 記述を削除することをお勧めします。そうすれば、ユーザが変更できるのは明示的に許可された属性のみになります。
+ .
+ 詳細については /usr/share/doc/slapd/README.Debian.gz を参照してください。
+Description-nl.UTF-8: De configuratie van de slapd-toegangscontrole is mogelijk onveilig
+ Een of meer van de geconfigureerde databases gebruikt bij de toegangscontrole een regel die gebruikers toelaat om het grootste deel van hun eigen attributen te wijzigen. Afhankelijk van de wijze waarop de database gebruikt wordt, is dit mogelijk onveilig.
+ .
+ In het geval er slapd-toegangsregels van toepassing zijn die met "to *" beginnen, wordt aanbevolen om elk voorkomen van "by self write" te verwijderen, waardoor gebruikers enkel die attributen kunnen wijzigen waarvoor dit expliciet toegestaan wordt.
+ .
+ Raadpleeg /usr/share/doc/slapd/README.Debian.gz voor meer details.
+Description-pt.UTF-8: Configuração de controlo de acesso ao slapd potencialmente insegura
+ Uma das bases de dados configuradas ou mais  têm uma regra de controlo de acesso que permite os utilizadores modificarem os seus próprios atributos. Isto pode ser inseguro, depende de como a base de dados é utilizada.
+ .
+ No caso das regras de acesso do slapd the começam com " até *", é recomendado que se remova qualquer instância de "by self write", de maneira a que os utilizadores possam modificar especificamente atributos permitidos.
+ .
+ Ver /usr/share/doc/slapd/README.Debian.gz para mais detalhes.
+Description-pt_BR.UTF-8: Configuração de controle de acesso do slapd potencialmente insegura
+ Uma ou mais das bases de dados configuradas tem uma regra de controle de acesso que permite que usuários modifiquem a maioria dos seus próprios atributos. Isso pode ser inseguro, dependendo de como a base de dados é usada.
+ .
+ No caso das regras de acesso do slapd que comecem com "to *", é recomendado remover quaisquer instâncias de "by self write", de modo que os usuários possam modificar somente atributos especificamente permitidos.
+ .
+ Veja /usr/share/doc/slapd/README.Debian.gz para mais detalhes.
+Description-ru.UTF-8: Потенциально небезопасная настройка управления доступом slapd
+ В одной или более базах данных настроено правило контроля доступа, которое позволяет пользователям изменять не только собственные атрибуты. Это может быть небезопасно, в зависимости от использования базы данных.
+ .
+ В случае, когда правила доступа slapd начинаются с «to *», рекомендуется удалять все экземпляры «by self write» для того, чтобы пользователи могли изменять только явно разрешённые атрибуты.
+ .
+ Смотрите подробности в файле /usr/share/doc/slapd/README.Debian.gz.
+Description-sv.UTF-8: Potentiellt osäker rättighetsinställning för slapd
+ En eller flera av de inställda databaserna har rättighetsinställningar som innebär att användare tillåts att ändra de flesta av sina attribut. Detta kan vara osäkert, beroende på hur databasen används.
+ .
+ I fallen där rättighetsinställningarna börjar med "to *" är det rekommenderat att ta bort "by self write" i förekommande fall. Det får till följd att användare bara får justera specifikt tillåtna attribut.
+ .
+ Läs /usr/share/doc/slapd/README.Debian.gz för detaljerad information.
+Description-tr.UTF-8: Olası güvensiz slapd erişim denetimi yapılandırması
+ Yapılandırılmış bir ya da daha fazla veritabanında, kullanıcıların kendilerine ait bir çok özelliği değiştirmesine izin veren bir erişim denetimi kuralı var. Bu durum, veritabanı kullanım şekline bağlı olarak, güvenli olmayabilir.
+ .
+ "to *" ile başlayan slapd erişim kurallarında, kullanıcıların yalnızca değiştirilmesine izin verilmiş özellikleri değiştirebilmeleri için, tüm "by self write" alanlarının kaldırılması önerilir.
+ .
+ Daha fazla bilgi için /usr/share/doc/slapd/README.Debian.gz dosyasını okuyunuz.
+Description-vi.UTF-8: Cấu hình điều khiển truy cập slapd tiềm ẩn sự thiếu an toàn
+ Có một hay hơn cơ sở dữ liệu cấu hình có chứa quy tắc điều khiển truy cập mà nó lại cho phép người dùng sửa đổi phần lớn các thuộc tính mà họ sở hữu. Như vậy là thiếu an toàn, còn tùy thuộc vào cơ sở dữ liệu dùng để làm gì.
+ .
+ Trong trường hợp quy tắc truy cập slapd mà bắt đầu bằng "to *", khuyên bạn nên xóa bỏ mọi thực thể "by self write", như thế người dùng chỉ có thể sửa các thuộc tính cho phép đã chỉ ra.
+ .
+ Đọc /usr/share/doc/slapd/README.Debian.gz để biết thêm chi tiết.

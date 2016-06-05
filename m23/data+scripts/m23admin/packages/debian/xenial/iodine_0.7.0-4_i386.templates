@@ -1,0 +1,90 @@
+Template: iodine/start_daemon
+Type: boolean
+Default: false
+Description: Should iodined (server) start on boot?
+ If you want iodined to be started at boot time you can set this behaviour here.
+Description-cs.UTF-8: Má se iodined (server) spouštět při startu systému?
+ Pokud chcete, aby se iodined spouštěl při startu systému, můžete to nastavit zde.
+Description-da.UTF-8: Skal iodined (server) igangsættes ved opstart?
+ Hvis du ønsker at iodined skal igangsættes ved opstart, kan du angive dette valg her.
+Description-de.UTF-8: Soll der Iodined (Server) beim Systemstart auch gestartet werden?
+ Falls Sie möchten, dass zum Systemstartzeitpunkt auch Iodined gestartet wird, stellen Sie dies hier ein.
+Description-es.UTF-8: ¿Se debería iniciar iodined (servidor) en el arranque?
+ Puede configurar aquí si quiere que iodined se inicie en el arranque.
+Description-fr.UTF-8: Faut-il lancer le démon du serveur Iodine au démarrage ?
+ Veuillez choisir si vous souhaitez lancer le démon du serveur Iodine au démarrage de la machine.
+Description-it.UTF-8: Far partire (il server) iodined all'avvio?
+ Se si desidera che iodined sia fatto partire all'avvio si può impostare tale comportamento qui.
+Description-ja.UTF-8: システム起動時に iodined (サーバ) を開始しますか?
+ システム起動時に iodined を起動させたい場合は、ここでその設定をすることができます。
+Description-nl.UTF-8: Wilt u dat de achtergronddienst 'iodined' gestart wordt tijdens het opstarten van deze machine?
+ Hier geeft u aan of u wilt dat iodined gestart wordt tijdens het opstarten.
+Description-pt.UTF-8: Deverá o iodined (servidor) arrancar no arranque da máquina?
+ Se você quer o iodined seja iniciado com o arranque da máquina, você pode configurar esse comportamento aqui.
+Description-pt_BR.UTF-8: O iodined (servidor) deve ser iniciado na inicialização do sistema?
+ Se você quiser que o iodined seja iniciado na inicialização do sistema, você pode definir esse comportamento aqui.
+Description-ru.UTF-8: Запускать службу iodined (сервер) при включении компьютера?
+ Если вы хотите, чтобы iodined запускался при включении компьютера, ответьте утвердительно.
+Description-sv.UTF-8: Ska iodined (servern) startas vid systemets uppstart?
+ Du kan ange att iodined ska startas vid systemets uppstart här.
+
+Template: iodine/daemon_options
+Type: string
+Description: Options to iodined (server):
+ You need to give the necessary arguments to iodined; see iodined(8) for help.
+ Example: 10.0.0.1 tunnel.mydomain.example
+Description-cs.UTF-8: Možnosti iodined (serveru):
+ Je třeba předat potřebné argumenty pro iodined; nápovědu naleznete v manuálové stránce iodined(8). Příklad: 10.0.0.1 tunel.mojedomena.example
+Description-da.UTF-8: Tilvalg til iodined (server):
+ Du skal angive de nødvendige argumenter til iodined; se iodined(8) for hjælp. Eksempel: 10.0.0.1 tunnel.mitdomæne.example
+Description-de.UTF-8: Optionen für Iodined (Server):
+ Sie müssen die notwendigen Argumente an Iodined übergeben; lesen Sie iodined(8) für Hilfe. Beispiel: 10.0.0.1 tunnel.mydomain.example
+Description-es.UTF-8: Opciones de iodined (servidor):
+ Necesita indicar los parámetros necesarios para iodined, vea iodined(8) para la ayuda. Por ejemplo: 10.0.0.1 tunel.midominio.example
+Description-fr.UTF-8: Options du démon du serveur Iodine :
+ Veuillez indiquer les paramètres à passer au server Iodine (voir la page de manuel iodined(8) pour plus de détails). Par exemple : « 10.0.0.1 tunnel.mydomain.example ».
+Description-it.UTF-8: Opzioni per (il server) iodined:
+ Si devono fornire gli argomenti necessari a iodined; vedere iodined(8) per l'aiuto. Esempio: 10.0.0.1 tunnel.miodominio.example
+Description-ja.UTF-8: iodined (サーバ) のオプション:
+ iodined への必要な引数を指定しなければなりません。詳細は iodined(8) を参照してください。例: 10.0.0.1 tunnel.mydomain.example
+Description-nl.UTF-8: Opties voor iodined:
+ Hier geeft u de argumenten waarmee iodined aangeroepen dient te worden; meer informatie vindt u in de man-pagina iodined(8). Voorbeeld: 10.0.0.1 tunnel.mijndomein.example
+Description-pt.UTF-8: Opções para iodined (servidor):
+ Você precisa indicar os argumentos necessários ao iodined; veja iodined(8) para ajuda. Exemplo: 10.0.0.1 tunnel.meudominio.example
+Description-pt_BR.UTF-8: Opções para o iodined (servidor):
+ Você precisa informar os argumentos necessários para o iodined; veja iodined(8) para obter ajuda. Exemplo: 10.0.0.1 tunel.meudominio.example
+Description-ru.UTF-8: Параметры для iodined (сервера):
+ Вам нужно указать необходимые параметры для iodined; см. iodined(8). Пример: 10.0.0.1 tunnel.mydomain.example
+Description-sv.UTF-8: Alternativ för iodined (servern):
+ Det finns argument som måste anges för iodined, läs mer i manualsidan för iodined(8). Exempelvis: 10.0.0.1 tunnel.mydomain.example
+
+Template: iodine/daemon_password
+Type: password
+Description: Password for iodined (server):
+ Enter the password iodined uses at startup. It has to be used by clients
+ when connecting.
+ This password will be stored in plain text in /etc/default/iodine.
+Description-cs.UTF-8: Heslo k iodined (serveru):
+ Vložte heslo, které iodined používá při startu. Toto heslo pak musí klienti používat při připojování. Heslo bude uloženo jako prostý text v /etc/default/iodine.
+Description-da.UTF-8: Adgangskode for iodined (server):
+ Indtast adgangskoden iodined bruger ved opstart. Den skal bruges af klienter, når de forbinder. Denne adgangskode vil blive gemt i klartekst i /etc/default/iodine.
+Description-de.UTF-8: Passwort für Iodined (Server):
+ Geben Sie das Passwort ein, das Iodined beim Starten verwendet. Es muss von Clients beim Verbindungsaufbau verwendet werden. Dieses Passwort wird im Klartext in /etc/default/iodine gespeichert.
+Description-es.UTF-8: Contraseña de iodined (servidor):
+ Introduzca la contraseña que iodined utiliza al iniciarse. Los clientes la deben utilizar al conectarse. Esta contraseña se almacenará en el archivo de texto «/etc/default/iodine».
+Description-fr.UTF-8: Mot de passe pour le serveur Iodine :
+ Veuillez indiquer le mot de passe qu'utilisera le serveur au démarrage. Il sera utilisé par les clients lorsque ceux-ci se connecteront. Ce mot de passe sera conservé en clair dans /etc/default/iodine.
+Description-it.UTF-8: Password per (il server) iodined:
+ Inserire la password usata da iodined all'avvio. Deve essere usata dai client quando si connettono. Questa password sarà memorizzata come testo in chiaro in /etc/default/iodine.
+Description-ja.UTF-8: iodined (サーバ) のパスワード:
+ iodined が起動時に使うパスワードを入力してください。これは、クライアントが接続する際に使う必要があります。このパスワードは /etc/default/iodine に平文で保存されます。
+Description-nl.UTF-8: Wachtwoord voor iodined:
+ Wat is het door iodined bij het opstarten te gebruiken wachtwoord? Dit wachtwoord dient door clients opgegeven te worden wanneer ze verbinding maken. Dit wachtwoord wordt als onversleutelde tekst opgeslagen in /etc/default/iodine.
+Description-pt.UTF-8: Password para o iodined (servidor):
+ Insira a password que o iodined usa no arranque. Ela terá que ser usada pelos clientes ao estabelecerem ligação. Esta password será guardada em texto simples em /etc/default/iodine.
+Description-pt_BR.UTF-8: Senha para o iodined (servidor):
+ Informe a senha que o iodined usa ao iniciar. Ela deve ser usada pelos clientes ao conectar. Essa senha será armazenada em texto plano em /etc/default/iodine.
+Description-ru.UTF-8: Пароль к iodined (серверу):
+ Введите пароль к iodined, используемый при запуске. Он будет использоваться клиентами для подключения. Этот пароль хранится в нешифрованном виде в файле /etc/default/iodine.
+Description-sv.UTF-8: Lösenord för iodined (servern):
+ Ange lösenordet iodined ska använda vid uppstarten. Det ska användas av klienter som ansluter. Lösenordet kommer att sparas fullt läsbart i filen /etc/default/iodine.

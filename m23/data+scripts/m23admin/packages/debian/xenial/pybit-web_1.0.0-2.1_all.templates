@@ -1,0 +1,229 @@
+Template: pybit-web/rabbitmqhost
+Type: string
+Description: Host machine running RabbitMQ:
+ Please specify the server running RabbitMQ with which the web front-end
+ and the pyBit controller need to communicate, sending the details of the
+ jobs to be built.
+Description-cs.UTF-8: Hostitelský server, na kterém běží RabbitMQ:
+ Zadejte prosím server, na kterém běží RabbitMQ, se kterým potřebuje komunikovat webové rozhraní a pyBit řadič a který bude odesílat údaje o úlohách, které se mají sestavovat.
+Description-da.UTF-8: Værtsmaskine der kører RabbitMQ:
+ Angiv venligst serveren, der kører RabbitMQ, som netbrugerfladen og pyBit-controlleren skal bruge til at kommunikere med ved at sende detaljer om jobbene, der skal bygges.
+Description-de.UTF-8: Host, auf dem RabbitMQ ausgeführt wird:
+ Bitte geben Sie den Server an, auf dem RabbitMQ läuft. Mit diesem müssen die Web-Oberfläche und die PyBit-Steuerung kommunizieren, um die Einzelheiten der Paketbauaufgaben zu senden.
+Description-es.UTF-8: Servidor donde se ejecuta RabbitMQ:
+ Indique el servidor donde se ejecuta RabbitMQ con el que la interfaz web y el controlador pyBit necesitan comunicarse y donde enviarán los detalles de los trabajos que tengan que construirse.
+Description-fr.UTF-8: Machine hôte hébergeant RabbitMQ :
+ Veuillez indiquer le serveur hébergeant RabbitMQ avec lequel le serveur web frontal communiquera, et qui enverra les détails de la tâche à compiler.
+Description-it.UTF-8: Macchina host che esegue RabbitMQ:
+ Specificare il server con in esecuzione RabbitMQ con cui l'interfaccia web e il controllore pyBit devono comunicare, inviando i dettagli sui compiti da compilare.
+Description-ja.UTF-8: RabbitMQ が実行されるマシンのホスト:
+ RabbitMQ が実行されるサーバを指定してください。これはウェブフロントエンドおよび pyBit コントローラが、ビルドされるジョブの詳細を送信する先となります。
+Description-pl.UTF-8: Komputer, na którym działa RabbitMQ:
+ Proszę podać serwer na którym działa RabbitMQ, z którym komunikować ma się interfejs WWW i kontroler pyBit, wysyłając szczegóły zadań do zbudowania.
+Description-pt.UTF-8: Máquina que corre RabbitMQ:
+ Indique por favor o servidor que corre o RabbitMQ com o qual o front-end web e o controlador pyBit necessitam de comunicar, para enviar os detalhes das tarefas a criar.
+Description-ru.UTF-8: Машина с работающим RabbitMQ:
+ Укажите сервер RabbitMQ с веб-интерфейсом и являющимся контроллером pyBit, который будет рассылать клиентам задания на сборку.
+Description-sk.UTF-8: Hostiteľský počítač, kde beží RabbitMQ:
+ Prosím, zadaj, na ktorom serveri beží RabbitMQ s ktorým majú webové rozhranie a radič pyBit komunikovať a odosielať podrobnosti úloh, ktoré sa majú zostaviť.
+Description-sv.UTF-8: Värdmaskin som kör RabbitMQ:
+ Ange servern som kör RabbitMQ som det webbaserade gränssnittet och pyBit-kontrollern ska kommunicera med för att skicka information om jobb som ska utföras.
+
+Template: pybit-web/hostname
+Type: string
+Default: localhost
+Description: Fully qualified hostname for the web front-end:
+ Please specify the host running the web front-end (which will also be
+ running the pyBit controller).
+ .
+ You may choose to use a named Apache virtual host or accept the default
+ if all the pyBit clients also run on this one machine.
+ .
+ The hostname is passed down to the build clients to allow them to post
+ failure messages back to the controller.
+Description-cs.UTF-8: Plně kvalifikovaný název hostitele pro webové rozhraní:
+ Zadejte prosím název hostitele, na kterém běží webové rozhraní (na kterém bude také běžet pyBit řadič).
+ .
+ Můžete se rozhodnout používat jmenného virtuálního hosta Apache, nebo přijmout výchozí nastavení, pokud všichni pyBit klienti běží také na tomto jednom serveru.
+ .
+ Název hostitele je předáván build klientům, to jim umožňuje odesílat zpět řadiči hlášení o selhání.
+Description-da.UTF-8: Fuldt kvalificeret værtsnavn for netbrugerfladen:
+ Angiv venligst værten der kører netbrugerfladen (som også vil køre pyBit-controlleren).
+ .
+ Du kan vælge at bruge en navngivet Apache-virtuel vært eller acceptere standarden, hvis alle pyBit-klienterne også kører på denne ene maskine.
+ .
+ Værtsnavnet sendes videre til byggeklienterne så de kan sende fejlbeskeder tilbage til controlleren.
+Description-de.UTF-8: Voll qualifizierter Hostname für die Web-Oberfläche:
+ Bitte geben Sie den Host an, auf dem die Web-Oberfläche läuft (dort läuft auch die PyBit-Steuerung).
+ .
+ Sie können auswählen, eine genannten virtuellen Apache-Host zu verwenden oder die Vorgabe akzeptieren, wenn alle PyBit-Clients ebenfalls auf diesem Rechner laufen.
+ .
+ Der Hostname wird an die Paketbau-Clients hinuntergereicht, um ihnen die Möglichkeit zu geben, Störungsnachrichten zurück an die Steuerung zu senden.
+Description-es.UTF-8: Nombre del equipo completamente cualificado de la interfaz web:
+ Indique el equipo donde se ejecuta la interfaz web (que también será donde se esté ejecutando el controlador pyBit).
+ .
+ Puede usar un servidor virtual de Apache basado en nombres o aceptar el valor predeterminado si todos los clientes pyBit se ejecutan también en este equipo.
+ .
+ El nombre del equipo se usará en los clientes de compilación para permitirles enviar mensajes de errores al controlador.
+Description-fr.UTF-8: Nom d'hôte pleinement qualifié pour le serveur web frontal :
+ Veuillez indiquer l'hôte hébergeant le serveur web frontal (qui fera également tourner le contrôleur pyBit).
+ .
+ Vous pouvez choisir d'utiliser un hôte virtuel Apache nommé ou accepter la valeur par défaut, si tous les clients pyBit tournent également sur cette machine.
+ .
+ Le nom d'hôte est passé aux clients de compilation les autorisant ainsi à émettre des messages d'échec au contrôleur.
+Description-it.UTF-8: Nome host pienamente qualificato per l'interfaccia web:
+ Specificare l'host con in esecuzione l'interfaccia web (che eseguirà anche il controllore pyBit).
+ .
+ Si può scegliere di usare un host virtuale Apache con nome, o di accettare il valore predefinito se anche tutti i client pyBit sono in esecuzione su questa unica macchina.
+ .
+ Il nome host viene passato ai client di compilazione per permettere loro di inviare messaggi di insuccesso al controllore.
+Description-ja.UTF-8: ウェブフロントエンドの完全修飾ドメイン名:
+ ウェブフロントエンドを実行するホストを指定してください (これは pyBit コントローラも実行することになります)。
+ .
+ Apache のネームバーチャルホストを利用するか、全 pyBit クライアントをこの同一のマシンで実行する場合はデフォルトの受け入れを選択できます。
+ .
+ ホスト名はビルドクライアントに伝えられ、失敗のメッセージをビルドクライアントからコントローラに送ることが可能になります。
+Description-pl.UTF-8: Pełna nazwa domenowa (FQDN) interfejsu WWW:
+ Proszę określić komputer, na którym działa interfejs WWW (który będzie również kontrolerem pyBit).
+ .
+ Można skorzystać z nazwanego wirtualnego hosta Apache lub zaakceptować wartość domyślną, jeśli wszystkie klienty pyBit działają na bieżącym komputerze.
+ .
+ Nazwa jest przekazywana klientom budowania, w celu umożliwienia odsyłania komunikatów o błędach do kontrolera.
+Description-pt.UTF-8: Nome completo do servidor para o front-end web:
+ Indique por favor o servidor que corre o front-end web (que também irá correr o controlador pyBit).
+ .
+ Pode escolher entre usar o virtual host do Apache ou aceitar o valor predefinido se todos os cliente pyBit correrem também nessa máquina.
+ .
+ O nome do servidor será transmitido aos clientes de build para que estes possam emitir mensagens de falha para o controlador.
+Description-ru.UTF-8: Полностью определённое доменное имя машины с веб-интерфейсом:
+ Введите узел, служащий веб-интерфейсом (который также будет выполнять роль контроллера pyBit).
+ .
+ Вы можете использовать именной виртуальный узел Apache или использовать настройку по умолчанию, если все клиенты pyBi также работают на этой машине.
+ .
+ Имя узла передаётся сборочным клиентам, чтобы позволить им передавать сообщения об ошибках обратно контроллеру.
+Description-sk.UTF-8: Plne kvalifikovaný názov hostiteľa pre webové rozhranie:
+ Prosím, uveďte počítač, na ktorom beží webové rozhranie (na ktorom bude tiež bežať radič pyBit).
+ .
+ Môžete použiť pomenovaného virtuálneho hostiteľa Apache alebo prijať predvolenú hodnotu ak všetci klienti pyBit budú tiež bežať na tomto jednom počítači.
+ .
+ Názov hostiteľa sa odovzdá zostavovacím klientom, aby mohli posielať správy o zlyhaní späť radiču.
+Description-sv.UTF-8: Komplett värdnamn för webbgränssnittet:
+ Ange servern som kör webbgränssnittet (som också kommer att köra pyBit-kontrollern).
+ .
+ Du kan ange en namngiven virtuell Apache-värd eller standardvärdet om alla pyBit-klienter också kör på den här maskinen.
+ .
+ Värdnamnet skickas till byggklienterna för att låta dem skicka felmeddelanden tillbaka till kontrollern.
+
+Template: pybit-web/port
+Type: string
+Default: 80
+Description: Port for web front-end:
+ Please specify the port that the web front-end should be available on.
+ If it is serving localhost, it is probably easiest to use port 8080.
+ .
+ If the web front-end is running on a dedicated host or an Apache
+ virtual host, it may be preferable to use port 80.
+Description-cs.UTF-8: Port pro webové rozhraní:
+ Zadejte prosím port, na kterém má být dostupné webové rozhraní. Pokud je obsluhováno z místního serveru, je pravděpodobně nejsnazší použít port 8080.
+ .
+ Pokud webové rozhraní běží na odděleném serveru, nebo na virtuálním hostu Apache, může být vhodnější použít port 80.
+Description-da.UTF-8: Port for netbrugerflade:
+ Angiv venligst porten som netbrugerfladen skal være tilgængelig på. Hvis den betjener localhost, er det sikkert nemmest at bruge port 8080.
+ .
+ Hvis netbrugerfladen kører på en dedikeret vært eller på en Apache-virtuel vært, kan det være at fortrække at bruge port 80.
+Description-de.UTF-8: Port der Web-Oberfläche.
+ Bitte geben Sie den Port an, auf dem die Web-Oberfläche erreichbar sein soll. Falls sie vom lokalen Host bereitgestellt wird, ist es wahrscheinlich am einfachsten, Port 8080 zu benutzen.
+ .
+ Falls die Web-Oberfläche auf einem eigenen Host oder einem virtuellen Apache-Host läuft, ist es wahrscheinlich wünschenswert, Port 80 zu verwenden.
+Description-es.UTF-8: Puerto de la interfaz web:
+ Indique el puerto en el que estará disponible la interfaz web. Si se ejecuta desde localhost, lo más sencillo es usar el puerto 8080.
+ .
+ Si la interfaz web se ejecuta en un equipo dedicado o en un servidor virtual de Apache, es preferible usar el puerto 80.
+Description-fr.UTF-8: Port pour le serveur web frontal : 
+ Veuillez indiquer le port sur lequel le serveur web frontal sera disponible. Si celui-ci est local, il est probablement plus aisé d'utiliser le port 8080.
+ .
+ Si le serveur web frontal tourne sur un hôte dédié ou sur un hôte virtuel Apache, il serait préférable d'utiliser le port 80.
+Description-it.UTF-8: Porta per l'interfaccia web:
+ Specificare la porta su cui sarà disponibile l'interfaccia web. Se serve localhost, probabilmente è più semplice usare la porta 8080.
+ .
+ Se l'interfaccia web è in esecuzione su un host dedicato o un host virtuale Apache, può essere preferibile usare la porta 80.
+Description-ja.UTF-8: ウェブフロントエンド用のポート:
+ ウェブフロントエンドが使用できるポートを指定してください。ローカルホストの場合はおそらくポート 8080 を使うのが最も簡単でしょう。
+ .
+ ウェブフロントエンドが専用サーバや Apache のバーチャルホストで動作する場合は、ポート 80 の使用が望ましいかもしれません。
+Description-pl.UTF-8: Port interfejsu WWW:
+ Proszę podać port, na którym będzie dostępny interfejs WWW. Jeśli będzie on działał na bieżącym komputerze, najłatwiej jest prawdopodobnie użyć portu 8080.
+ .
+ Jeśli interfejs WWW działa na oddzielnym komputerze lub w wirtualnym hoście Apache, lepszym wyborem może być port 80.
+Description-pt.UTF-8: Porto para o front-end web:
+ Indique por favor o porto no qual o front-end web deve estar disponível. Se estiver no localhost, será talvez mais simples usar o porto 8080.
+ .
+ Se o front-end web estiver a ser servido por um servidor dedicado ou um host virtual Apache, pode ser preferível usar o porto 80.
+Description-ru.UTF-8: Порт веб-интерфейса:
+ Укажите порт веб-интерфейса. Если он используется для localhost, то проще всего указать порт 8080.
+ .
+ Если веб-интерфейс работает на выделенном узле или виртуальном узле Apache, то лучше использовать порт 80.
+Description-sk.UTF-8: Port webového rozhrania:
+ Prosím, zadajte port, na ktorom by malo byť k dispozícii webové rozhranie. Ak sa nachádza na lokálnom počítači, je asi najjednoduchšie použiť port 8080.
+ .
+ Ak webové rozhranie beží na vyhradenom počítači alebo na virtuálnom hostiteľovi Apache, môže byť vhodnejšie použiť port 80.
+Description-sv.UTF-8: Port för webbgränssnitt:
+ Ange porten som webbgränssnittet ska göras tillgängligt på. Om localhost används är det troligen enklas att använda port 8080.
+ .
+ Om webbgränssnittet kör på en dedikerad värd eller en virtuell Apache-värd är det troligen bäst att använda port 80.
+
+Template: pybit-web/missinghost
+Type: note
+Description: Missing RabbitMQ hostname!
+ If no RabbitMQ host is specified for the pyBit controller, the build
+ clients will not receive any messages on the queue or build any packages.
+ .
+ Please edit /etc/pybit/web/web.conf after configuration.
+Description-cs.UTF-8: Chybí název hostitele RabbitMQ serveru!
+ Pokud nemá pyBit řadič zadán žádného hostitele RabbitMQ serveru, build klienti neobdrží žádné zprávy ve frontě a nebudou sestavovat žádné balíčky.
+ .
+ Po dokončení nastavování upravte prosím soubor /etc/pybit/web/web.conf.
+Description-da.UTF-8: Manglende RabbitMQ-værtsnavn!
+ Hvis ingen RabbitMQ-vært er angivet for pyBit-controlleren, vil byggeklienterne ikke modtage nogen beskeder på køen eller bygge nogen pakker.
+ .
+ Rediger venligst /etc/pybit/web/web.conf efter konfiguration.
+Description-de.UTF-8: Fehlender RabbitMQ-Hostname!
+ Falls kein RabbitMQ-Host für die PyBit-Steuerung angegeben wurde, werden die Paketbau-Clients keine Nachrichten aus der Warteschlange empfangen und keine Pakete bauen.
+ .
+ Bitte bearbeiten Sie nach der Konfiguration /etc/pybit/web/web.conf.
+Description-es.UTF-8: ¡Falta el nombre del equipo RabbitMQ!
+ Si no ha especificado ningún equipo RabbitMQ para el controlador pyBit, los clientes de compilación no recibirán ningún mensaje en la cola ni construirán ningún paquete.
+ .
+ Edite el archivo «/etc/pybit/web/web.conf» después de la configuración.
+Description-fr.UTF-8: Nom d'hôte pour RabbitMQ manquant !
+ Si aucun hôte RabbitMQ n'est indiqué pour le contrôleur pyBit, les clients de compilation ne recevront aucun message sur la file d'attente ou ne compileront aucun paquet.
+ .
+ Veuillez éditer le fichier /etc/pybit/web/web.conf après la configuration.
+Description-it.UTF-8: Nome host RabbitMQ mancante.
+ Se non viene specificato alcun host RabbitMQ per il controllore pyBit, i client di compilazione non riceveranno alcun messaggio sulla coda né compileranno alcun pacchetto.
+ .
+ Modificare /etc/pybit/web/web.conf dopo la configurazione.
+Description-ja.UTF-8: RabbitMQ ホスト名がありません!
+ pyBit コントローラ用の RabbitMQ ホストが指定されない場合は、キューやパッケージのビルドに関してビルドクライアントがメッセージを受け取ることはありません。
+ .
+ 設定後に /etc/pybit/web/web.conf を編集してください。
+Description-pl.UTF-8: Brak nazwy hosta RabbitMQ!
+ Jeśli nie poda się hosta RabbitMQ kontrolerowi pyBit, to klient budowania nie otrzyma żadnych komunikatów o kolejce, ani nie zbuduje żadnego pakietu.
+ .
+ Proszę dokonać edycji pliku /etc/pybit/web/web.conf po konfiguracji.
+Description-pt.UTF-8: Nome do servidor RabbitMQ em falta!
+ Se não for indicado um servidor RabbitMQ para o controlador pyBit, os clientes de build não receberão quaisquer mensagens na fila de espera ou criarão quaisquer pacotes.
+ .
+ Edite por favor o ficheiro /etc/pybit/web/web.conf após a configuração.
+Description-ru.UTF-8: Не задано имя узла RabbitMQ!
+ Если для контроллера pyBit не задан узел RabbitMQ, то сборочные клиенты не будут принимать сообщения из очереди или собирать пакеты.
+ .
+ Измените /etc/pybit/web/web.conf после настройки.
+Description-sk.UTF-8: Chýba názov počítača s RabbitMQ!
+ Ak nie je uvedený žiadny hostiteľ RabbitMQ radič pyBit, zostavovací klienti nebudú prijímať žiadne správy na fronte ani zostavovať žiadne balíky.
+ .
+ Prosím, po konfigurácii upravte /etc/pybit/web/web.conf.
+Description-sv.UTF-8: RabbitMQ-värdnamn saknas!
+ Om ingen RabbitMQ-värd anges för pyBit-kontrollern kommer byggklienter inte att få några meddelanden om kön eller att bygga några paket.
+ .
+ Redigera /etc/pybit/web/web.conf.

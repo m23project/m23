@@ -1,0 +1,230 @@
+Template: sbnc/start_daemon
+Type: boolean
+Default: true
+Description: Autostart shroudBNC on server boot?
+ shroudBNC (sbnc) can start automatically when the server is booted.
+Description-cs.UTF-8: Automaticky spouštět shroudBNC při zavádění systému?
+ shroudBNC (dbnc) se může spouštět automaticky při zavádění systému.
+Description-da.UTF-8: Igangsæt automatisk shroudBNC ved serveropstart?
+ shroudBNC (sbnc) kan igangsættes automatisk, når serveren startes op.
+Description-de.UTF-8: shroudBNC beim Server-Hochfahren automatisch starten?
+ shroudBNC (sbnc) kann automatisch gestartet werden, wenn der Server hochfährt.
+Description-es.UTF-8: ¿Desea iniciar automáticamente shroudBNC al arrancar el sistema?
+ shroudBNC (sbnc) puede iniciarse automáticamente al arrancar el sistema.
+Description-eu.UTF-8: ShroudBNC automatikoki abiarazi zerbitzaria abiaraztean?
+ shroudBNC (sbnc) automatikoki exekutatu daiteke zerbitzaria abiaraztean.
+Description-fi.UTF-8: Tulisiko shroudBNC käynnistää automaattisesti, kun palvelin käynnistetään?
+ shroudBNC (sbnc) voidaan käynnistää automaattisesti, kun palvelin käynnistetään.
+Description-fr.UTF-8: Faut-il démarrer automatiquement shroudBNC au lancement de la machine ?
+ ShroudBNC (sbnc) peut être démarré automatiquement au lancement de la machine.
+Description-gl.UTF-8: ¿Iniciar shroudBNC co ordenador?
+ shroudBNC (sbnc) pódese iniciar automaticamente ao arrincar o servidor.
+Description-it.UTF-8: Avviare automaticamente shroudBNC all'avvio del server?
+ shroudBNC (sbnc) può essere avviato automaticamente all'avvio del server.
+Description-ja.UTF-8: ブート時に shroudBNC を自動的に起動しますか?
+ shroudBNC (sbnc) はサーバのブート時に自動的に起動することができます。
+Description-pt.UTF-8: Arrancar automaticamente o shroudBNC no arranque do servidor?
+ O shroudBNC (sbnc) pode arrancar automaticamente quando o servidor arranca.
+Description-ru.UTF-8: Запускать shroudBNC при загрузке компьютера?
+ shroudBNC (sbnc) может запускаться автоматически при включении компьютера.
+Description-sv.UTF-8: Vill du att shroudBNC startar automatiskt vid uppstart?
+ shroudBNC (sbnc) kan starta automatiskt vid uppstart av servern.
+Description-vi.UTF-8: Tự động khởi chạy shroudBNC khi khởi động máy phục vụ không?
+ Phần mềm shroudBMC (sbnc) có khả năng tự động khởi chạy khi máy phục vụ khởi động.
+
+Template: sbnc/host
+Type: string
+Default: 0.0.0.0
+Description: IP on which shroudBNC should listen for connections:
+ shroudBNC will only listen for new client connections on the given
+ IP address.
+ .
+ If you choose 0.0.0.0 as address, shroudBNC will listen on all interfaces.
+Description-cs.UTF-8: IP adresa, na které má shroudBNC naslouchat příchozím spojením:
+ shroudBNC bude naslouchat klientským spojením pouze na zadané IP adrese.
+ .
+ Zadáte-li jako adresu 0.0.0.0, bude shroudBNC naslouchat na všech dostupných rozhraních.
+Description-da.UTF-8: IP hvorpå shroudBNC skal lytte efter forbindelser:
+ shroudBNC vil kun lytte for nye klientforbindelser på den angivne IP-adresse.
+ .
+ Hvis du vælger 0.0.0.0 som adresse, så vil schroudBNC lytte på alle grænseflader.
+Description-de.UTF-8: IP auf der shroudBNC auf neue Verbindungen warten soll:
+ shroudBNC wird nur auf der angegebenen IP-Adresse nach neuen Verbindungen suchen.
+ .
+ Falls Sie 0.0.0.0 als Adresse auswählen, wird shroudBNC auf allen Schnittstellen auf Verbindungen warten.
+Description-es.UTF-8: Dirección IP en la que shroudBNC debe escuchar conexiones de clientes:
+ shroudBNC sólo escuchará nuevas conexiones de clientes en la dirección IP especificada.
+ .
+ Si utiliza la dirección 0.0.0.0, shroudBNC escuchará en todas las interfaces.
+Description-eu.UTF-8: ShroudBNC-ek konexioen zain entzun behar duen IP helbidea:
+ shroudBNC-ek bezero berri konexioak emandako IP helbidean bakarrik entzungo ditu.
+ .
+ Helbide bezala 0.0.0.0 hautatzen baduzu shroudBNC-ek interfaze guztiak entzungo ditu.
+Description-fi.UTF-8: IP-osoite, jossa shroudBNC:n tulisi kuunnella yhteydenottoja:
+ shroudBNC kuuntelee vain annettuun IP-osoitteeseen tulevia uusia asiakasyhteyksiä.
+ .
+ Valinnalla 0.0.0.0 shroudBNC kuuntelee kaikkia liitäntöjä.
+Description-fr.UTF-8: Adresse IP sur laquelle shroudBNC sera à l'écoute :
+ Veuillez indiquer l'adresse IP sur laquelle SchroudBNC attendra les connexions des nouveaux clients.
+ .
+ Vous pouvez indiquer « 0.0.0.0 » pour que les connexions puissent être réalisées sur toutes les interfaces actives.
+Description-gl.UTF-8: IP no que shroudBNC debe esperar conexións:
+ shroudBNC só ha esperar novas conexións de clientes no enderezo IP indicado.
+ .
+ Se escolle 0.0.0.0 coma enderezo, shroudBNC ha escoitar en tódalas interfaces.
+Description-it.UTF-8: Indirizzo IP su cui shroudBNC rimane in ascolto per le connessioni:
+ shroudBNC rimarrà in ascolto sull'IP specificato per nuove connessioni da parte dei client.
+ .
+ Se è stato scelto 0.0.0.0 come indirizzo, shroudBNC rimarrà in ascolto su tutte le interfacce.
+Description-ja.UTF-8: shroudBNC が接続を待ち受ける IP アドレス:
+ shroudBNC は指定された IP アドレスへの新しいクライアントの接続だけを待ち受けます。
+ .
+ 0.0.0.0 をアドレスに指定すると shroudBNC は全インターフェイスで待ち受けます。
+Description-pt.UTF-8: IP no qual o shroudBNC deverá escutar por ligações:
+ O shroudBNC irá apenas escutar novas ligações de clientes apenas no endereço IP fornecido.
+ .
+ Se você escolher o endereço 0.0.0.0, o shroudBNC irá escutar em todas as interfaces.
+Description-ru.UTF-8: IP, на котором shroudBNC должен ожидать подключений:
+ shroudBNC будет принимать новые клиентские подключения по указанному IP-адресу.
+ .
+ Если в качестве адреса указать 0.0.0.0, то shroudBNC будет ожидать подключений на всех интерфейсах.
+Description-sv.UTF-8: IP-adress som shroudBNC ska lyssna efter anslutningar på:
+ shroudBNC lyssnar endast efter nya anslutningar på angiven IP-adress.
+ .
+ Om du anger 0.0.0.0 som IP-adress så lyssnar shroudBNC på alla anslutningsvägar.
+Description-vi.UTF-8: Địa chỉ trên đó shroudBNC nên lắng nghe kết nối:
+ shroudBNC sẽ chỉ lắng nghe kết nối trình khách mới trên địa chỉ IP đã cho.
+ .
+ Đặt « 0.0.0.0 » làm địa chỉ thì shroudBNC sẽ lắng nghe trên mọi giao diện.
+
+Template: sbnc/port
+Type: string
+Default: 9000
+Description: TCP/IP port for shroudBNC:
+ shroudBNC will listen on this port for new connections.
+ .
+ Please note that you have to choose a port which is higher than 1023 and
+ which is not used by any other program.
+Description-cs.UTF-8: TCP/IP port shroudBNC:
+ shroudBNC bude na tomto portu naslouchat příchozím spojením.
+ .
+ Vemte prosím na vědomí, že musíte zadat port větší než 1023 a který nekoliduje s jiným programem v systému.
+Description-da.UTF-8: TCP/IP-port for shroudBNC:
+ shroudBNC vil lytte på denne port for nye forbindelser.
+ .
+ Bemærk venligst at du skal vælge en port, som er højere end 1023 og som ikke bruges af et andet program.
+Description-de.UTF-8: TCP/IP-Port für shroudBNC:
+ shroudBNC wird nur auf dem angegebenen Port nach neuen Verbindungen suchen.
+ .
+ Sie muessen einen Port wählen, der höher als 1023 ist und bisher nicht von einem anderem Programm genutzt wird.
+Description-es.UTF-8: Puerto TCP/IP para shroudBNC:
+ shroudBNC escuchará nuevas conexiones en este puerto.
+ .
+ Tenga en cuenta que debe seleccionar un número de puerto superior a 1023 y que no lo esté utilizando ningún otro programa.
+Description-eu.UTF-8: ShroudBNC-ek erabiliko duen TCP/IP ataka:
+ shroudBNC-ek konexio berrien zain ataka hau entzungo du.
+ .
+ Mesedez kontutan artu hautatutako ataka 1023 baino handiago izan behar dela eta ezin duela beste programak erabili.
+Description-fi.UTF-8: shroudBNC:n TCP/IP-portti:
+ shroudBNC kuuntelee uusia yhteydenottoja tässä portissa.
+ .
+ Tämän portin numeron tulee olla suurempi kuin 1023, eikä se saa olla minkään muun ohjelman käytössä.
+Description-fr.UTF-8: Port d'écoute TCP pour shroudBNC :
+ Veuillez indiquer le port TCP sur lequel shroudBNC acceptera les connexions entrantes.
+ .
+ Veuillez noter que le port choisi doit être supérieur à 1023 et ne pas être déjà utilisé par un autre programme.
+Description-gl.UTF-8: Porto TCP/IP para shroudBNC:
+ shroudBNC ha esperar novas conexións neste porto.
+ .
+ Teña en conta que debe escoller un porto superior a 1023 e que ningún outro programa estea a empregar.
+Description-it.UTF-8: Porta TCP/IP per shroudBNC:
+ shroudBNC rimarrà in ascolto su questa porta in attesa di nuove connessioni.
+ .
+ Notare che bisogna scegliere una porta maggiore di 1023, non usata da altri programmi.
+Description-ja.UTF-8: shroudBNC 用の TCP/IP ポート:
+ shroudBNC はこのポートで新しい接続を待ち受けます。
+ .
+ 1024 以上で他のプログラムにより使用されていないポートを選択しなければならないことに注意してください。
+Description-pt.UTF-8: Porto TCP/IP para o shroudBNC:
+ O shroudBNC irá escutar neste porto por novas ligações.
+ .
+ Por favor note que precisa de escolher um porto mais alto que 1023 e que o qual não seja usado por qualquer outro programa.
+Description-ru.UTF-8: Порт TCP/IP для shroudBNC:
+ shroudBNC будет ожидать соединения на указанном порту.
+ .
+ Заметим, что вам нужно указать значение порта более 1023 и не используемый другой программой.
+Description-sv.UTF-8: TCP/IP-port för shroudBNC:
+ shroudBNC lysnar på denna port efter nya anslutningar.
+ .
+ Du måste ange ett portnummer över 1023 och som inte används av något annat program.
+Description-vi.UTF-8: Cổng TCP/IP cho shroudBNC:
+ shroudBNC sẽ dùng cổng này để lắng nghe kết nối mới.
+ .
+ Ghi chú rằng bạn cần phải chọn một cổng >1023 mà không phải được chương trình khác dùng.
+
+Template: sbnc/username
+Type: string
+Description: Username for the first administrative user:
+ shroudBNC needs a first user with administrative rights.
+ Enter here the login name for your administrator.
+Description-cs.UTF-8: Uživatelské jméno prvního správce:
+ shroudBNC vyžaduje prvního uživatele se správcovskými oprávněními. Zadejte zde přihlašovací jméno správce.
+Description-da.UTF-8: Brugernavn for den første administrative bruger:
+ shroudBNC kræver en første bruger med administrative rettigheder. Indtast her logindnavnet for din administrator.
+Description-de.UTF-8: Benutzername für den ersten administrativen Benutzer:
+ shroudBNC benötigt einen ersten Benutzer mit administrativen Rechten.Geben Sie hier den Anmeldenamen fuer Ihren Administrator an.
+Description-es.UTF-8: Nombre del primer usuario administrador:
+ shroudBNC necesita un primer usuario con permisos administrativos. Introduzca el nombre del usuario administrador.
+Description-eu.UTF-8: Hasierako kudeaketa erabiltzailearen erabiltzaile-izena:
+ shroudBNC-ek hasieran kudeaketa baimenak dituen erabiltzaile bat behar du. Mesedez idatzi kudeatzailearen erabiltzaile-izena.
+Description-fi.UTF-8: Ensimmäisen ylläpitokäyttäjän käyttäjätunnus:
+ shroudBNC tarvitsee ensimmäisen ylläpito-oikeudet omaan käyttäjän. Anna ylläpitäjän käyttäjätunnus.
+Description-fr.UTF-8: Identifiant de l'administrateur :
+ Le premier utilisateur créé pour ShroudBNC se voit attribué les privilèges d'administration. Veuillez choisir son identifiant.
+Description-gl.UTF-8: Nome para o primeiro usuario administrativo:
+ shroudBNC precisa dun primeiro usuario con dereitos administrativos. Introduza aquí o nome de usuario para o administrador.
+Description-it.UTF-8: Nome utente per il primo amministratore:
+ shroudBNC necessita di un utente con permessi amministrativi. Inserire qui il nome utente per l'account di amministrazione.
+Description-ja.UTF-8: 最初の管理ユーザのユーザ名:
+ shroudBNC には管理権限を持つ最初のユーザが必要です。管理者のログイン名を入力してください。
+Description-pt.UTF-8: Nome de utilizador do primeiro utilizador administrador:
+ O shroudBNC necessita dum primeiro utilizador com direitos administrativos. Indique aqui o nome de autenticação para o seu administrador.
+Description-ru.UTF-8: Имя администрирующего пользователя:
+ shroudBNC нужно задать первого пользователя с административными правами. Введите имя учётной записи для администратора.
+Description-sv.UTF-8: Användarnamn för administratören:
+ Den första användaren i shroudBNC blir administratör. Ange dess användarnamn här.
+Description-vi.UTF-8: Tên người dùng của người dùng quản trị đầu tiên:
+ shroudBNC cần thiết một người dùng đầu tiên có quyền quản trị. Hãy nhập vào đây tên đăng nhập của quản trị.
+
+Template: sbnc/password
+Type: password
+Description: Password to set for the first user:
+ Enter here your password for your first administrative user account.
+Description-cs.UTF-8: Heslo pro prvního uživatele:
+ Zadejte prosím heslo pro prvního uživatele se správcovskými oprávněními.
+Description-da.UTF-8: Adgangskode for den første bruger:
+ Indtast her din adgangskode for din første administrative brugerkonto.
+Description-de.UTF-8: Passwort für den ersten Benutzer:
+ Geben Sie hier Ihr Passwort für den ersten administrativen Benutzer ein.
+Description-es.UTF-8: Contraseña del primer usuario administrador:
+ Introduzca la contraseña del primer usuario administrador.
+Description-eu.UTF-8: Hasierako erabiltzaileari ezartzeko pasahitza:
+ Idatzi hasierako kudeaketa kontuaren pasahitza.
+Description-fi.UTF-8: Ensimmäisen käyttäjän salasana:
+ Anna ensimmäiselle ylläpitokäyttäjätunnukselle salasana.
+Description-fr.UTF-8: Mot de passe de l'administrateur :
+ Veuillez entrer le mot de passe pour l'administrateur.
+Description-gl.UTF-8: Contrasinal para o primeiro usuario:
+ Introduza aquí o contrasinal para a primeira conta de usuario administrativa.
+Description-it.UTF-8: Password da inserire per il primo utente:
+ Inserire qui la password per il primo account amministrativo.
+Description-ja.UTF-8: 最初のユーザにセットするパスワード:
+ 最初の管理ユーザアカウントのパスワードを入力してください。
+Description-pt.UTF-8: Palavra-passe a definir para o primeiro utilizador:
+ Indique aqui a palavra-passe para a sua primeira conta de utilizador administrador.
+Description-ru.UTF-8: Пароль для первого пользователя:
+ Введите пароль для первой администрирующей учётной записи.
+Description-sv.UTF-8: Lösenord för den första användaren:
+ Ange lösenordet för administratören.
+Description-vi.UTF-8: Mật khẩu cần đặt cho người dùng đầu tiên:
+ Hãy nhập vào đây mật khẩu của tài khoản người dùng quản trị đầu tiên.

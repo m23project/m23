@@ -1,0 +1,260 @@
+Template: pdnsd/conf
+Type: select
+Choices: Use resolvconf, Use root servers, Manual
+Choices-cs.UTF-8: Použít resolvconf, Použít kořenové servery, Ruční
+Choices-da.UTF-8: Brug resolvconf, Brug administratorservere (root), Manuelt
+Choices-de.UTF-8: Resolvconf verwenden, Root-Server verwenden, Manuell
+Choices-es.UTF-8: Utilizar resolvconf, Utilizar servidores raíz, Manual
+Choices-eu.UTF-8: 'resolvconf' erabili, Erro-zerbitzariak erabili, Eskuz
+Choices-fi.UTF-8: Käytä resolvconfia, Käytä juuripalvelimia, Manuaalinen
+Choices-fr.UTF-8: Utiliser resolvconf, Utiliser les serveurs racine, Manuelle
+Choices-gl.UTF-8: Usar resolvconf, Usar os servidores raíz, Manual
+Choices-id.UTF-8: Gunakan resolvconf, Gunakan root servers, Manual
+Choices-it.UTF-8: Usare resolfconf, Usare root server, Manuale
+Choices-ja.UTF-8: resolvconf を使う, root サーバを使う, 手動で変更する
+Choices-nl.UTF-8: resolvconf gebruiken, root-servers gebruiken, handmatig
+Choices-pl.UTF-8: Użyj resolvconf, Użyj serwerów głównych, Ręczna
+Choices-pt.UTF-8: Usar resolvconf, Usar servidores de raiz, Manual
+Choices-pt_BR.UTF-8: Usar resolvconf, Usar servidores raiz, Manual
+Choices-ru.UTF-8: использовать resolvconf, использовать корневые серверы, вручную
+Choices-sk.UTF-8: Použiť resolvconf, Použiť koreňové servery, Ručná
+Choices-sv.UTF-8: Använd resolvconf, Använd rotservrar, Manuell
+Choices-tr.UTF-8: resolvconf kullan, Kök sunucuları kullan, Elle
+Choices-vi.UTF-8: Dùng resolvconf, Dùng trình phục vụ gốc, Tự làm
+Default: Manual
+Description: General type of pdnsd configuration:
+ Please select the pdnsd configuration method that best meets your needs.
+ .
+  - Use resolvconf  : use informations provided by resolvconf.
+  - Use root servers: make pdnsd behave like a caching, recursive DNS
+                      server.
+  - Manual          : completely manual configuration. The pdnsd daemon
+                      will not start until you edit /etc/pdnsd.conf and
+                      /etc/default/pdnsd.
+ .
+ Note: If you already use a DNS server that listens to 127.0.0.1:53,
+ you have to choose "Manual".
+Description-cs.UTF-8: Základní typ konfigurace pdnsd:
+ Vyberte prosím způsob nastavení pdnsd, který nejlépe splňuje vaše požadavky.
+ .
+  - Použít resolvconf      : použije informace poskytnuté resolvconfem.
+  - Použít kořenové servery: pdnsd se bude chovat jako cachující
+                             rekurzivní DNS server.
+  - Ruční                  : zcela ruční nastavení.. Dokud neupravíte
+                             /etc/pdnsd.conf a /etc/default/pdnsd,
+                             daemon pdnsd se nespustí.
+ .
+ Poznámka: Pokud již používáte DNS server, který naslouchá na 127.0.0.1:53, musíte zvolit „Ruční“.
+Description-da.UTF-8: Generel type for pdnsd-konfiguration:
+ Vælg venligst pdnsd-konfigurationsmetoden som bedst møder dine behov.
+ .
+  - Brug resolvconf  : brug informationer tilbudt af resolvconf.
+  - Brug adm.servere : lad pdnsd opføre sig som en mellemlagrende, rekursiv
+                       DNS-server.
+  - Manuelt          : fuldstændig manuel konfiguration. Pdnsd-dæmonen
+                       vil ikke starte før du redigerer /etc/pdnsd.conf og
+                       /etc/default/pdnsd.
+ .
+ Bemærk: Hvis du allerede bruger en DNS-server som lytter på 127.0.0.1:53, så skal du vælge »manuelt«.
+Description-de.UTF-8: Allgemeine Art der pdnsd-Konfiguration:
+ Bitte wählen Sie die pdnsd-Konfigurationsmethode aus, die Ihren Bedürfnissen am besten entspricht.
+ .
+  - Resolvconf verwenden : verwendet Informationen, die von Resolvconf
+                           bereitgestellt werden.
+  - Root-Server verwenden: pdnsd soll sich wie ein zwischenspeichernder
+                           (caching), rekursiver DNS-Server verhalten.
+  - Manuell              : komplett manuelle Konfiguration. Der pdnsd-Daemon
+                           wird nicht starten, bis Sie /etc/pdnsd.conf und
+                           /etc/default/pdnsd bearbeitet haben.
+ .
+ Hinweis: Falls Sie bereits einen DNS-Server verwenden, der unter 127.0.0.1:53 auf Anfragen wartet, wählen Sie »Manuell«.
+Description-es.UTF-8: Tipo de configuración general de pdnsd:
+ Por favor, escoja el método de configuración de pdnsd que mejor se ajuste a sus necesidades.
+ .
+  - Utilizar resolvconf: utiliza la información que proporciona resolvconf.
+  - Utilizar servidores raíz: hace que pdnsd se comporte como un servidor
+                    de DNS con caché y recursivo.
+  - Manual: configuración completamente manual. El demonio pdnsd
+                    no se ejecutará hasta que edite los archivos «/etc/pdnsd.conf» y
+                    «/etc/default/pdnsd».
+ .
+ Aviso: Si ya está usando un servidor de DNS que escucha en «127.0.0.1:53», debe escoger el método «Manual».
+Description-eu.UTF-8: Pdnsd konfigurazio modu orokorra:
+ Mesedez hautatu zure beharrak hobe asetzen dituen konfigurazio mota.
+ .
+  - 'resolvconf' erabili     : resolvconf-ek ematen duen informazioa erabili.
+  - Erro-zerbitzariak erabili: pdnsd behartu ezazu DNS zerbitzari katxedun
+                               errekurtsiboa balitz bezala jokatzera.
+  - Eskuz konfiguratu        : konfigurazio osoa eskuz. Pdnsd deabrua ez da
+                               abiatuko zuk /etc/pdnsd.conf eta /etc/default/pdnsd 
+                               editatu arte.
+ .
+ Oharra: "Eskuz" hautatu behar duzu dagoeneko 127.0.0.1:53entzuten duen DNS zerbitzari bat erabiltzen baduzu.
+Description-fi.UTF-8: pdnsd-asetusten tyyppi:
+ Valitse sinulle parhaiten sopiva pdnsd:n asetustapa.
+ .
+  - Käytä resolvconfia   : Käytetään resolvconfin tarjoamia tietoja
+  - Käytä juuripalvelimia: Laitetaan pdnsd toimimaan kuin varastoiva
+                           rekursiivinen DNS-palvelin
+  - Manuaalinen          : Täysin manuaalinen asetus. pdnsd-taustaohjelma
+                           ei käynnisty ennen kuin muokkaat tiedostoja
+                           /etc/pdnsd.conf ja /etc/default/pdnsd.
+ .
+ Huomautus: Jos käytät jo DNS-palvelinta, joka kuuntelee osoitetta 127.0.0.1:53, sinun tulee valita ”Manuaalinen”.
+Description-fr.UTF-8: Type de configuration pour pdnsd :
+ Veuillez choisir la méthode de configuration de pdnsd qui est la plus adaptée à vos besoins :
+ .
+  - Utiliser resolvconf : utiliser les informations fournies par
+                          le programme resolvconf ;
+  - Utiliser les serveurs racine :
+                          configurer pdnsd en serveur DNS cache et
+                          récursif ;
+  - Manuelle            : configuration entièrement manuelle. Le démon
+                          pdnsd ne démarrera pas tant que vous n'aurez
+                          pas modifié les fichiers /etc/pdnsd.conf
+                          et /etc/default/pdnsd.
+ .
+ Veuillez noter que si vous utilisez déjà un serveur DNS à l'écoute sur 127.0.0.1:53, vous devez choisir la configuration manuelle.
+Description-gl.UTF-8: Tipo xeral de configuración de pdnsd:
+ Escolla o método de configuración de pdnsd que máis se axuste ás súas necesidades.
+ .
+  - Usar resolvconf        : emprega a información que fornece resolvconf.
+  - Usar os servidores raíz: fai que pdnsd funcione coma un servidor DNS
+                             recursivo con caché.
+  - Manual                 : configuración totalmente manual. O servidor pdnsd
+                             non se ha iniciar ata que edite /etc/pdnsd.conf e
+                             /etc/default/pdnsd.
+ .
+ Nota: Se xa emprega un servidor DNS que escoita en 127.0.0.1:53, ten que escoller "Manual".
+Description-id.UTF-8: Pengaturan jenis umum dari pdnsd:
+ Silakan pilih pengaturan terbaik menurut anda dari pdnsd.
+ .
+ - Gunakan resolvconf : gunakan informasi yang disediakan oleh resolvconf.
+ - Gunakan root servers: buat pdnsd bertindak sebagai cache, DNS
+                           rekulsif server.
+ - Manual: Pengaturan manual, Daemon dari pdnsn
+                  tidak akan dimulai sehingga anda menyunting /etc/pdnsd.conf dan
+                  /etc/default/pdnsd.
+ .
+ Catatan: Jika anda sudah menggunakan DNS server yang berjalan di 127.0.0.1:53, anda harus memilih "Manual".
+Description-it.UTF-8: Tipo generale di configurazione di pdnsd:
+ Selezionare il metodo di configurazione di pdnsd desiderato.
+ .
+  - Usare resolvconf  : usa le informazioni fornite da resolvconf.
+  - Usare root server : modifica il comportamento di pdnsd come server
+                         DNS ricorsivo con memoria cache.
+  - Manuale           : configurazione interamente manuale. Il demone
+                        pdnsd verrà avviato solo dopo la modifica dei file
+                        «/etc/pdnsd.conf» e «/etc/default/pdnsd».
+ .
+ Notare che se si sta già utilizzando un server DNS in ascolto su 127.0.0.1:53 è necessario scegliere «Manuale».
+Description-ja.UTF-8: pdnsd 設定の一般的なタイプ:
+ あなたの要望に最も合致する pdnsd の設定方法を選んでください。
+ .
+  - resolvconf を使う : resolvconf の情報を利用する
+  - root サーバを使う : pdnsd の挙動を再帰検索 DNS サーバのようなキャッシュサーバにする
+  - 手動で変更する    : 完全に手動で設定を行う。pdnsd デーモンは設定ファイル
+                      /etc/pdnsd.conf と /etc/default/pdnsd を編集し終わるまで
+                      起動しません。
+ .
+ 注: 既に 127.0.0.1:53 を listen している DNS サーバを使っている場合は、「手動で変更する」を選ぶ必要があります。
+Description-nl.UTF-8: Algemeen type pdnsd-configuratie:
+ Welke configuratiemethode komt het best met uw noden overeen?
+ .
+ - resolvconf gebruiken: gebruik informatie voorzien door resolvconf
+ - root-servers gebruiken: pdnsd gedraagt zich als een recursieve
+                       cache-bijhoudende DNS-server.
+ - handmatig: volledig handmatige configuratie. De pdnsd-
+                       achtergronddienst start pas eens u /etc/pdnsd.conf en
+                       /etc/default/pdnsd aangepast heeft.
+ .
+ Opgelet: als u reeds een DNS-server heeft die luistert op 127.0.0.1:53 dient u 'handmatig' te kiezen.
+Description-pl.UTF-8: Ogólny typ konfiguracji pdnsd:
+ Proszę wybrać metodę konfiguracji pdnsd, która jest najlepiej dopasowana do bieżących potrzeb.
+ .
+  - Użyj resolvconf  : użyj informacji udostępnionych przez resolvconf.
+  - Użyj serwerów gł.: pdnsd będzie zachowywał się jak rekurencyjny,
+                       buforowany serwer DNS.
+  - Ręczna           : konfiguracja całkowicie ręczna. Demon pdnsd nie
+                       uruchomi się, dopóki nie zostaną edytowane pliki:
+                       /etc/pdnsd.conf i /etc/default/pdnsd.
+ .
+ Uwaga: jeśli w użyciu jest już serwer DNS nasłuchujący na 127.0.0.1:53, proszę wybrać "Ręczna".
+Description-pt.UTF-8: Tipo geral da configuração do pdnsd:
+ Por favor escolha o método de configuração do pdnsd que melhor se adequa às suas necessidades.
+ .
+  - Usar resolvconf     : usar a informação do resolvconf.
+  - Usar servidores raíz: fazer com que o pdnsd se comporte como um servidor
+                          de DNS recursivo e com cache.
+  - Manual              : configuração completamente manual. O daemon do pdnsd
+                          não se iniciará até que edite os ficheiros 
+                          /etc/pdnsd.conf e /etc/default/pdnsd.
+ .
+ Nota: Se já tem um servidor DNS que receba pedidos em 127.0.0.1:53, tem de escolher "Manual".
+Description-pt_BR.UTF-8: Tipo geral de configuração do pdnsd:
+ Por favor, selecione o método de configuração do pdnsd que melhor atende suas necessidades.
+ .
+  - Usar resolvconf     : usar informações fornecidas pelo resolvconf.
+  - Usar servidores raiz: fazer o pdnsd se comportar como um servidor
+                          DNS recursivo, com cache.
+  - Manual              : configuração completamente manual. O daemon
+                          pdnsd não iniciará até que você edite
+                          /etc/pdnsd.conf e /etc/default/pdnsd.
+ .
+ Nota: Se você já usa um servidor DNS que escuta em 127.0.0.1:53, você deve escolher "Manual".
+Description-ru.UTF-8: Тип настройки pdnsd:
+ Выберите способ настройки pdnsd, который больше всего вам подходит.
+ .
+  - использовать resolvconf      : использовать данные,
+                                   предоставляемые resolvconf.
+  - использовать корневые серверы: сделать из pdnsd кэширующий,
+                                   рекурсивный DNS сервер.
+  - вручную                      : настройка вручную. Демон pdnsd
+                                   не запустится, пока вы не отредактируете
+                                   файлы /etc/pdnsd.conf и /etc/default/pdnsd.
+ .
+ Замечание: Если у вас уже есть DNS сервер, принимающий запросы с 127.0.0.1:53, то выберите "вручную".
+Description-sk.UTF-8: Všeobecný typ konfigurácie pdnsd:
+ Prosím, vyberte si spôsob konfigurácie pdnsd, ktorý najlepšie vyhovuje vašim potrebám.
+ .
+  - Použiť resolvconf      : použiť informácie, ktoré poskytne resolvconf.
+  - Použiť koreňové servery: aby sa pdnsd behave správal ako cachujúci
+                             rekurzívny DNS server.
+  - Ručná                  : kompletne ručná konfigurácia. Démon pdnsd
+                             sa nespustí pokým neupravíte /etc/pdnsd.conf
+                             a /etc/default/pdnsd.
+ .
+ Pozn.: Ak už používate DNS server, ktorý počúva na 127.0.0.1:53, musíte zvoliť „Ručná“.
+Description-sv.UTF-8: Allmän typ av konfiguration för pdnsd:
+ Välj den konfigurationsmetod för pdnsd som bäst passar dina behov.
+ .
+  - Använd resolvconf : använd information från resolvconf..
+  - Använd rotservrar : gör att pdnsd uppträder som en cachande, rekursiv
+                        DNS-server.
+  - Manuell           : helt manuell konfiguration. pdnsd-demonen
+                        kommer inte att starta tills du redigerar /etc/pdnsd.conf
+                        och /etc/default/pdnsd.
+ .
+ Observera: Om du redan använder en DNS-server som lyssnar på 127.0.0.1:53 så måste du välja "Manuell".
+Description-tr.UTF-8: pdnsd yapılandırmasının genel türü:
+ Lütfen ihtiyaçlarınıza en iyi cevap veren pdnsd yapılandırma yöntemini seçin.
+ .
+  - resolvconf kullan    : resolvconf tarafından sağlanan bilgileri kullan.
+  - Kök sunucuları kullan: pdnsd'nin önbelleklemeli, özyineli bir DNS
+                           sunucusu gibi davranmasını sağla.
+  - Elle                 : Yapılandırmayı tamamen elle yap. pdnsd servisi
+                           siz /etc/pdnsd.conf ve /etc/default/pdnsd dosyalarını
+                           düzenleyene kadar başlatılmayacak.
+ .
+ Not: Eğer zaten 127.0.0.1:53'ü dinleyen bir DNS sunucusu kullanıyorsanız "Elle"yi seçmeniz gereklidir.
+Description-vi.UTF-8: Cấu hình pdnsd kiểu chung:
+ Hãy chọn phương pháp cấu hình pdnsd thích hợp nhất với trường hợp của bạn.
+ .
+  • Dùng resolvconf		dùng thông tin do resolvconf cung cấp.
+  • Dùng trình phục vụ gốc
+ 	làm cho pdnsd chạy như trình phục vụ DNS đệ qui nhớ tạm.
+  • Tự làm				cấu hình hoàn toàn tự làm.
+ 	Trình pdnsd sẽ không khởi chạy nếu bạn đã không chỉnh sửa tập tin
+ 	« /etc/pdnsd.conf » và « /etc/default/pdnsd ».
+ .
+ Ghi chú : nếu bạn đang sử dụng trình phục vụ DNS lắng nghe địa chỉ 127.0.0.1:53, bạn phải chọn mục « Tự làm ».

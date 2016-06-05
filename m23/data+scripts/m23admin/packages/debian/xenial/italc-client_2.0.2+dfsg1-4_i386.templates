@@ -1,0 +1,791 @@
+
+Template: italc-client/last-group-teacher
+Type: string
+Default:
+Description: for internal use
+
+Template: italc-client/last-group-student
+Type: string
+Default:
+Description: for internal use
+
+Template: italc-client/last-group-supporter
+Type: string
+Default:
+Description: for internal use
+
+Template: italc-client/last-group-admin
+Type: string
+Default:
+Description: for internal use
+
+Template: italc-client/create-keypairs
+Type: boolean
+Default: false
+Description: Automatically set up iTALC's role model and create key pairs?
+ iTALC knows four different access roles for iTALC clients (teacher, student,
+ supporter, and administrator).
+ .
+ iTALC manages this role-based client access via SSL keys.
+ .
+ Automatically generated SSL keys will be created in subfolders of
+ /etc/italc/keys.
+Description-cs.UTF-8: Nastavit vzorové role pro iTALC a vytvořit páry klíčů automaticky?
+ iTALC pro své klienty rozeznává čtyři druhy přístupových rolí (teacher, student, supporter a administrator).
+ .
+ iTALC spravuje přístup k těmto klientským rolím pomocí SSL klíčů.
+ .
+ Automaticky vygenerované SSL klíče se uloží do podsložek v /etc/italc/keys.
+Description-da.UTF-8: Opsæt automatisk iTALC's rollemodel og opret nøglepar?
+ iTALC kender fire forskellige adgangsroller for iTALC-klienter (teacher, student, supporter og administrator).
+ .
+ iTALC håndterer denne rollebaseret klientadgang via SSL-nøgler.
+ .
+ Automatisk oprettede SSL-nøgler vil blive oprettet i undermapper af /etc/italc/keys.
+Description-de.UTF-8: Das iTALC-Rollenmodell automatisch einrichten und iTALC-Schlüsselpaare erstellen?
+ iTALC kennt vier verschiedene Zugriffsrollen für iTALC-Clients (Lehrer, Schüler, Helfer, Administrator).
+ .
+ iTALC verwaltet diesen rollenbasierten Client-Zugriff mittels SSL-Schlüssel.
+ .
+ Automatisch generierte SSL-Schlüssel werden in Unterordnern von /etc/italc/keys angelegt.
+Description-es.UTF-8: ¿Desea configurar automáticamente el modo de acceso de iTALC y generar las parejas de claves?
+ iTALC dispone de cuatro modos de acceso diferentes para los clientes (profesor, estudiante, asistente y administrador).
+ .
+ iTALC gestiona este modo de acceso de los clientes mediante claves SSL.
+ .
+ Las claves SSL que se hayan generado de manera automática se crearán en subdirectorios de «/etc/italc/keys».
+Description-fr.UTF-8: Faut-il configurer automatiquement le modèle de rôle d'iTALC et créer des paires de clefs ? 
+ iTALC utilise quatre rôles d'accès différents pour les clients iTALC (teacher, student, supporter et admin).
+ .
+ iTALC gère l'accès au rôle d'un client à l'aide de clefs SSL.
+ .
+ Les clefs SSL seront automatiquement créées dans des sous-répertoires de /etc/italc/keys.
+Description-it.UTF-8: Impostare automaticamente il modello basato su ruoli di iTALC e creare coppie di chiavi?
+ iTALC ha quattro diversi ruoli di accesso per i client iTALC: insegnante, studente, assistente e amministratore.
+ .
+ iTALC gestisce questo accesso dei client basato sui ruoli attraverso chiavi SSL.
+ .
+ Le chiavi SSL generate automaticamente verranno create in sottocartelle di /etc/italc/keys.
+Description-ja.UTF-8: 自動的に iTALC の役割モデルを用意して鍵ペアを作成しますか?
+ iTALC は iTALC クライアントについて4つの異なる役割 (教師、学生、支援者、管理者) を認識します。
+ .
+ iTALC はこの役割ベースの、SSL 鍵を使ったクライアントアクセスを管理します。
+ .
+ 自動的に生成された SSL 鍵はサブディレクトリ /etc/italc/keys に作成されます。
+Description-nl.UTF-8: Automatisch aanmaken van het model van functieprofielen voor iTALC en van de sleutelparen?
+ iTALC onderscheidt vier verschillende profielen van clients die toegang hebben tot iTALC (leerkracht, leerling, ondersteuner en beheerder)
+ .
+ iTALC beheert de op functieprofielen gebaseerde toegang van clients via SSL-sleutels.
+ .
+ Automatisch aangemaakte SSL-sleutels worden in submappen van /etc/italc/keys opgeslagen.
+Description-pt.UTF-8: Definir automaticamente o modelo de perfil do iTALC e criar os pares de chaves?
+ O iTALC conhece quatro perfis de acesso diferentes para clientes iTALC (professor, aluno, assistente e administrador).
+ .
+ O iTALC gere este cliente baseado em perfis através de chaves SSL.
+ .
+ As chaves SSL geradas automaticamente serão criadas nos sub directórios de /etc/italc/keys.
+Description-ru.UTF-8: Настроить ролевую модель iTALC и создать пары ключей автоматически?
+ В iTALC для клиентов доступны четыре различные роли доступа (учитель, студент, поддержка и администратор).
+ .
+ Управление доступом в iTALC основано на ключах SSL.
+ .
+ Автоматически сгенерированные ключи SSL будут созданы в подкаталогах /etc/italc/keys.
+
+Template: italc-client/create-groups-for-roles
+Type: boolean
+Default: true
+Description: Create groups for iTALC roles now?
+ iTALC's role model requires four groups to exist: "teacher", "student",
+ "supporter", and "admin".
+ .
+ If these four groups are not created now, you will be asked to assign
+ existing groups in their place.
+Description-cs.UTF-8: Vytvořit nyní skupiny rolí iTALC?
+ Vzorový model iTALC vyžaduje existenci čtyř skupin: "teacher", "student", "supporter" a "admin".
+ .
+ Pokud tyto čtyři skupiny nyní nevytvoříte, budete požádáni o přiřazení stávajících skupin na svá místa.
+Description-da.UTF-8: Opret grupper for iTALC-roller nu?
+ iTALC's rollemodel kræver fire grupper for at findes: »teacher«, »student«, »supporter«, and »admin«.
+ .
+ Hvis disse fire grupper ikke oprettes nu, vil du blive anmodet om at tildele eksisterende grupper i deres sted.
+Description-de.UTF-8: Gruppen für iTALC-Rollen jetzt erstellen?
+ Für das iTALC-Rollenmodell werden vier Gruppen benötigt: »Lehrer«, »Schüler«, »Helfer«, und »Administrator«.
+ .
+ Wenn diese vier Gruppen jetzt nicht erstellt werden, werden Sie dazu aufgefordert, anstelle dessen existierende Gruppen zuzuordnen.
+Description-es.UTF-8: ¿Desea crear ahora los grupos para los modos de acceso de iTALC?
+ El modo de acceso de iTALC requiere la existencia de cuatro grupos: «profesor», «estudiante», «asistente» y «administrador».
+ .
+ Si no crea estos cuatro grupos ahora, se le pedirá que asigne grupos existentes en su lugar.
+Description-fr.UTF-8: Faut-il créer les groupes pour les rôles iTALC maintenant ?
+ Le modèle de rôle d'iTALC nécessite l'existence de quatre groupes : « teacher » (enseignants), « student » (étudiants), « supporter » (assistance) et « admin » (administrateurs).
+ .
+ Si ces quatre groupes ne sont pas créés maintenant, il vous sera demandé d'assigner des groupes existants à leur place.
+Description-it.UTF-8: Creare gruppi per i ruoli di iTALC adesso?
+ Il modello basato su ruoli di iTALC richiede la presenza di quattro gruppi: «teacher» (insegnante), «student» (studente), «supporter» assistente, «admin» (amministratore).
+ .
+ Se questi quattro gruppi non vengono creati ora, verrà chiesto di assegnare al loro posto dei gruppi esistenti.
+Description-ja.UTF-8: ここで iTALC の役割グループを作成しますか?
+ iTALC の役割モデルでは4つのグループ、「教師」、「学生」、「支援者」、「管理者」が存在する必要があります。
+ .
+ この4つのグループをここで作成しない場合、既存のグループへの割り当てを聞かれることになります。
+Description-nl.UTF-8: Nu groepen aanmaken voor de functieprofielen van iTALC?
+ Het model van functieprofielen van iTALC vereist het bestaan van vier groepen: "leerkracht", "leerling", "ondersteuner" en "beheerder".
+ .
+ Als deze groepen nu niet aangemaakt worden, zal u gevraagd worden om ze in de plaats daarvan aan bestaande groepen te koppelen.
+Description-pt.UTF-8: Criar agora os grupos para os perfis iTALC?
+ O modelo de perfis do iTALC necessita que existam quatro grupos: "professor", "aluno", "assistente" e "admin".
+ .
+ Se estes quatros grupos não forem criados agora, ser-lhe-à pedido para atribuir grupos existentes no seu lugar.
+Description-ru.UTF-8: Создать группы для ролей iTALC?
+ Для ролевой модели iTALC требуется четыре группы: «teacher», «student», «supporter» и «admin».
+ .
+ Если эти четыре группы не создать прямо сейчас, то вас попросят назначить другие существующие группы вместо них.
+
+Template: italc-client/use-existing-groups-for-roles
+Type: boolean
+Default: false
+Description: Use already existing groups for iTALC roles?
+ If groups reflecting the iTALC role model have already been set up
+ (e.g. in the LDAP user/group database) then you can specify those group
+ names on the next screens.
+Description-cs.UTF-8: Použít pro role iTALC stávající skupiny?
+ Pokud již byly nastaveny skupiny, které odráží vzorové role (např. v databázi LDAP user/group), potom na následujících obrazovkách zadejte názvy těchto skupin.
+Description-da.UTF-8: Brug allerede eksisterende grupper for iTALC-roller?
+ Hvis grupper der reflekterer iTALC-rollemodellen allerede er opsat (f.eks. i LDAP bruger/gruppe-databasen) så kan du specificere disse gruppenavne på de næste skærmbilleder.
+Description-de.UTF-8: Bereits existierende Gruppen für das iTALC-Rollenmodell verwenden?
+ Falls bereits Gruppen zur Abbildung des iTALC-Rollenmodells angelegt wurden (z.B. in der LDAP-Benutzerdatenbank), dann können diese Gruppennamen in den nächsten Eingabemasken zugeordnet werden.
+Description-es.UTF-8: ¿Desea utilizar grupos existentes para los modos de acceso de iTALC?
+ Si ya ha configurado grupos que reflejen el modo de acceso de iTALC (p. ej., en una base de datos LDAP de usuario/grupo) puede especificar esos nombres de grupos en los siguientes apartados.
+Description-fr.UTF-8: Faut-il utiliser les groupes existants pour les rôles d'iTALC ? 
+ Si les groupes pour les rôles d'iTALC ont déjà été configurés (p. ex. dans une base de données LDAP), alors vous aurez la possibilité de les indiquer.
+Description-it.UTF-8: Usare gruppi già esistenti per i ruoli di iTALC?
+ Se sono già stati impostati dei gruppi che riflettono il modello a ruoli di iTALC (ad esempio nel database LDAP di utenti/gruppi), allora si possono specificare tali nomi di gruppi nelle schermate successive.
+Description-ja.UTF-8: iTALC クライアントの役割について既に存在するグループを使いますか?
+ iTALC の役割モデルを反映したグループが既に (例えば LDAP ユーザ/グループデータベースに) 用意されている場合、次の画面でそのグループ名を指定することができます。
+Description-nl.UTF-8: Reeds bestaande groepen gebruiken voor de functieprofielen van iTALC?
+ Als er al groepen aangemaakt werden die het functiemodel van iTALC weerspiegelen (bijv. in het LDAP-gegevensbestand van gebruikers/groepen), dan kunt u op de volgende schermen specificeren wat de naam is van die groepen.
+Description-pt.UTF-8: Utilizar grupos já existentes para perfis do iTALC?
+ Se os grupos que refletem os perfis do iTALC já tiverem sido definidos (e.g. na base de dados LDAP de utilizadores/grupos) então poderá especificar esses grupos nos próximos ecrãs.
+Description-ru.UTF-8: Использовать уже существующие группы для ролей iTALC?
+ Если группы, учитывающие ролевую модель iTALC, уже созданы (например, в базе пользователей/групп LDAP), то вы можете указать эти группы на следующих экранах.
+
+Template: italc-client/group-italc-teacher
+Type: string
+Default: italc-teacher
+Description: iTALC teachers role group:
+ Please specify the group name for iTALC teachers.
+ .
+ The teacher role gives basic control over iTALC clients in classrooms.
+ .
+ If you leave this empty, the "root" group will be used.
+Description-cs.UTF-8: Skupina rolí iTALC pro učitele:
+ Zadejte prosím název skupiny pro učitele iTALC.
+ .
+ Role učitel poskytuje základní kontrolu nad klienty iTALC ve třídách.
+ .
+ Ponecháte-li políčko prázdné, použije se skupina "root".
+Description-da.UTF-8: iTALC teachers rollegruppe:
+ Angiv venligst gruppenavnet for iTalC teachers.
+ .
+ Rollen teacher giver grundlæggende kontrol over iTALC-klienter i klasseværelser.
+ .
+ Hvis du efterlader rollen tom, vil gruppen »root« blive brugt.
+Description-de.UTF-8: Gruppe für iTALC-Lehrer:
+ Bitte geben Sie den Gruppennamen für iTALC-Lehrer ein.
+ .
+ Die Lehrer-Rolle ermöglicht grundlegende Steuerung von iTALC-Clients in Klassenräumen.
+ .
+ Wird dieses Feld leer gelassen, dann wird die Gruppe »root« verwendet.
+Description-es.UTF-8: Grupo para el modo profesores de iTALC:
+ Especifique el nombre del grupo para los profesores de iTALC.
+ .
+ El modo profesores proporciona un control básico sobre los clientes iTALC en las clases.
+ .
+ Si deja este campo en blanco se utilizará el grupo «root».
+Description-fr.UTF-8: Groupe pour le rôle « teacher » (enseignants) d'iTALC :
+ Veuillez indiquer le nom du groupe pour les enseignants dans iTALC.
+ .
+ Ce rôle donne un contrôle basique sur les clients iTALC dans les salles de classe.
+ .
+ Le groupe « root » sera utilisé si vous laissez ce champ vide.
+Description-it.UTF-8: Gruppo per il ruolo di insegnante di iTALC:
+ Specificare il nome del gruppo per gli insegnanti in iTALC.
+ .
+ Il ruolo di insegnante dà il controllo di base sui client iTALC nelle classi.
+ .
+ Se si lascia vuoto questo valore, verrà usato il gruppo «root».
+Description-ja.UTF-8: iTALC の「教師」役割グループ:
+ iTALC の「教師」役割グループの名前を指定してください。
+ .
+ 「教師」の役割では教室の iTALC クライアントの基礎的な制御ができるようになります。
+ .
+ これを空白にすると「root」グループが使われます。
+Description-nl.UTF-8: De leerkrachtengroep van iTALC:
+ Geef de naam op voor de groep leerkrachten in iTALC.
+ .
+ De functie van leerkracht heeft op basaal niveau controle over de iTALC-clients in de klassen.
+ .
+ Indien u dit veld leeg laat, zal de groep "root" gebruikt worden.
+Description-pt.UTF-8: Grupo de perfil iTALC de professores:
+ Por favor especifique o nome do grupo iTALC de professores.
+ .
+ O perfil de professor dá controlo básico sobre os clientes iTALC na sala de aulas.
+ .
+ Se deixar em branco, será utilizado o grupo "root".
+Description-ru.UTF-8: Группа для учителей iTALC:
+ Укажите имя группы для учителей iTALC.
+ .
+ Роль учителя даёт базовый контроль над клиентами iTALC в классах.
+ .
+ Если оставить поле пустым, то будет использована группа «root».
+
+Template: italc-client/del-last-group-teacher
+Type: boolean
+Default: false
+Description: Delete the group that was formerly used for this role?
+ The group for the iTALC teacher role has been modified.
+ .
+ Please specify whether the old group should be deleted. If unsure,
+ keep the formerly used group and manually investigate later.
+Description-cs.UTF-8: Smazat skupinu, která se dříve u této role používala?
+ Skupina pro roli iTALC učitel byla změněna.
+ .
+ Zvolte si prosím, zda se má původní role smazat. Nejste-li si jisti, původně používanou roli ponechte a později ji ručně prozkoumejte.
+Description-da.UTF-8: Slet gruppen som tidligere blev brugt for denne rolle?
+ Gruppen for iTALC teacher-rollen er blevet ændret.
+ .
+ Angiv venligst om den gamle gruppe skal slettes. Hvis du er usikker, så bevar den tidligere anvendte gruppe og undersøg det senere manuelt.
+Description-de.UTF-8: Soll die Gruppe, die bislang für diese Rolle verwendet wurde, gelöscht werden?
+ Die Gruppe für die iTALC-Rolle Lehrer wurde geändert.
+ .
+ Bitte legen Sie fest, ob die alte Gruppe gelöscht werden soll. Falls Sie sichnicht sicher sind, behalten Sie die bislang verwendete Gruppe bei und prüfen dies später.
+Description-es.UTF-8: ¿Desea eliminar el grupo que se utilizaba anteriormente para este modo?
+ Se ha modificado el grupo para el modo profesor de iTALC.
+ .
+ Especifique si debe eliminarse el grupo antiguo. Si no está seguro, mantenga el grupo anterior e investigue después.
+Description-fr.UTF-8: Faut-il supprimer le groupe qui était anciennement utilisé pour ce rôle ?
+ Le groupe pour le rôle « teacher » (enseignants) iTALC a été modifié.
+ .
+ Veuillez indiquer si l'ancien groupe doit être supprimé. En cas de doute, vous pouvez garder le groupe initial et étudier le cas plus tard.
+Description-it.UTF-8: Eliminare il gruppo che era usato in precedenza per questo ruolo?
+ Il gruppo per il ruolo di insegnante di iTALC è stato modificato.
+ .
+ Specificare se il vecchio gruppo deve essere eliminato. Se non si è sicuri, mantenere il gruppo usato in precedenza e verificare a mano successivamente.
+Description-ja.UTF-8: この役割で以前利用していたグループを削除しますか?
+ iTALC の「教師」役割のグループが変更されました。
+ .
+ 古いグループを削除するかどうか指定してください。よくわからない場合は以前使われていたグループを維持しておいて手作業により後で調査してください。
+Description-nl.UTF-8: De groep die vroeger voor de functie gebruikt werd, verwijderen?
+ De groep van de functie leerkracht in iTALC is gewijzigd.
+ .
+ Geef aan of de oude groep verwijderd moet worden. Bij twijfel laat u de vroegere groep best bestaan en gaat u de zaak later manueel onderzoeken.
+Description-pt.UTF-8: Apagar o grupo anteriormente utilizado para este perfil?
+ O grupo para o perfil iTALC de professor foi modificado.
+ .
+ Por favor especifique se o antigo grupo deve ser apagado. Caso não tenha a certeza, mantenha o grupo anteriormente utilizado e investigue manualmente depois.
+Description-ru.UTF-8: Удалить группу, которая использовалась для этой роли ранее?
+ Группа для роли учителя iTALC была изменена.
+ .
+ Укажите, нужно ли удалить старую группу. Если не уверены, то не удаляйте и сделайте это вручную позже, при необходимости.
+
+Template: italc-client/group-italc-student
+Type: string
+Default: italc-student
+Description: iTALC students role group:
+ Please specify the group name for iTALC students.
+ .
+ The iTALC client only starts for users who are members of this group.
+ .
+ If you leave this empty, the "root" group will be used.
+Description-cs.UTF-8: Skupina rolí iTALC pro studenty:
+ Zadejte prosím název skupiny pro studenty iTALC.
+ .
+ Klient iTALC se spustí pouze pro uživatele, kteří jsou členy této skupiny.
+ .
+ Ponecháte-li políčko prázdné, použije se skupina "root".
+Description-da.UTF-8: iTALC students rollegruppe:
+ Angiv venligst gruppenavnet for iTALC students.
+ .
+ iTALC-klienten starter kun for brugere som er medlemmer af denne gruppe.
+ .
+ Hvis du efterlader rollen tom, vil gruppen »root« blive brugt.
+Description-de.UTF-8: Gruppe für iTALC-Schüler:
+ Bitte geben Sie den Gruppennamen für iTALC-Schüler ein.
+ .
+ Der iTALC-Client startet nur für Benutzer, die Mitglied dieser Gruppe sind.
+ .
+ Wird dieses Feld leer gelassen, dann wird die Gruppe »root« verwendet.
+Description-es.UTF-8: Grupo para el modo estudiantes de iTALC:
+ Especifique el nombre del grupo para los estudiantes de iTALC.
+ .
+ El cliente de iTALC sólo se inicia para los usuarios que son miembros de este grupo.
+ .
+ Si deja este campo en blanco se utilizará el grupo «root».
+Description-fr.UTF-8: Groupe pour le rôle « student » (étudiants) d'iTALC :
+ Veuillez indiquez le nom du groupe pour les étudiants dans iTALC.
+ .
+ Seuls les utilisateurs membres de ce groupe peuvent lancer iTALC.
+ .
+ Le groupe « root » sera utilisé si vous laissez ce champ vide.
+Description-it.UTF-8: Gruppo per il ruolo di studente di iTALC:
+ Specificare il nome del gruppo per gli studenti in iTALC.
+ .
+ Il client iTALC si avvia solo per gli utenti che sono membri di questo gruppo.
+ .
+ Se si lascia vuoto questo valore, verrà usato il gruppo «root».
+Description-ja.UTF-8: iTALC の「学生」役割グループ:
+ iTALC の「学生」役割グループの名前を指定してください。
+ .
+ iTALC クライアントはこのグループのメンバーであるというだけのユーザとして存在します。
+ .
+ これを空白にすると「root」グループが使われます。
+Description-nl.UTF-8: De studentengroep van iTALC:
+ Geef de naam op voor de groep studenten in iTALC.
+ .
+ Enkel voor gebruikers die tot deze groep behoren start de iTALC-client op.
+ .
+ Indien u dit veld leeg laat, zal de groep "root" gebruikt worden.
+Description-pt.UTF-8: Grupo de perfil iTALC de estudantes:
+ Por favor especifique o nome do grupo iTALC para estudantes.
+ .
+ O cliente iTALC apenas inicia para utilizadores que são membros deste grupo.
+ .
+ Se deixar em branco, será utilizado o grupo "root".
+Description-ru.UTF-8: Группа для студентов iTALC:
+ Укажите имя группы для студентов iTALC.
+ .
+ Клиент iTALC запускается только для пользователей, которые входят в эту группу.
+ .
+ Если оставить поле пустым, то будет использована группа «root».
+
+Template: italc-client/del-last-group-student
+Type: boolean
+Default: false
+Description: Delete the group that was formerly used for this role?
+ The group for the iTALC student role has been modified.
+ .
+ Please specify whether the old group should be deleted. If unsure,
+ keep the formerly used group and manually investigate later.
+Description-cs.UTF-8: Smazat skupinu, která se dříve u této role používala?
+ Skupina pro roli iTALC student byla změněna.
+ .
+ Zvolte si prosím, zda se má původní role smazat. Nejste-li si jisti, původně používanou roli ponechte a později ji ručně prozkoumejte.
+Description-da.UTF-8: Slet gruppen som tidligere blev brugt for denne rolle?
+ Gruppen for iTALC student-rollen er blevet ændret.
+ .
+ Angiv venligst om den gamle gruppe skal slettes. Hvis du er usikker, så bevar den tidligere anvendte gruppe og undersøg det senere manuelt.
+Description-de.UTF-8: Soll die Gruppe, die bislang für diese Rolle verwendet wurde, gelöscht werden?
+ Die Gruppe für die iTALC-Rolle Schüler wurde geändert.
+ .
+ Bitte legen Sie fest, ob die alte Gruppe gelöscht werden soll. Falls Sie sichnicht sicher sind, behalten Sie die bislang verwendete Gruppe bei und prüfen dies später.
+Description-es.UTF-8: ¿Desea eliminar el grupo que se utilizaba anteriormente para este modo?
+ Se ha modificado el grupo para el modo estudiante de iTALC.
+ .
+ Especifique si debe eliminarse el grupo antiguo. Si no está seguro, mantenga el grupo anterior e investigue después.
+Description-fr.UTF-8: Faut-il supprimer le groupe qui était anciennement utilisé pour ce rôle ?
+ Le groupe pour le rôle « student » d'iTALC a été modifié.
+ .
+ Veuillez indiquer si l'ancien groupe doit être supprimé. En cas de doute, vous pouvez garder le groupe initial et étudier le cas plus tard.
+Description-it.UTF-8: Eliminare il gruppo che era usato in precedenza per questo ruolo?
+ Il gruppo per il ruolo di studente di iTALC è stato modificato.
+ .
+ Specificare se il vecchio gruppo deve essere eliminato. Se non si è sicuri, mantenere il gruppo usato in precedenza e verificare a mano successivamente.
+Description-ja.UTF-8: この役割で以前利用していたグループを削除しますか?
+ iTALC の「学生」役割のグループが変更されました。
+ .
+ 古いグループを削除するかどうか指定してください。よくわからない場合は以前使われていたグループを維持しておいて手作業により後で調査してください。
+Description-nl.UTF-8: De groep die vroeger voor de functie gebruikt werd, verwijderen?
+ De groep van de functie student in iTALC is gewijzigd.
+ .
+ Geef aan of de oude groep verwijderd moet worden. Bij twijfel laat u de vroegere groep best bestaan en gaat u de zaak later manueel onderzoeken.
+Description-pt.UTF-8: Apagar o grupo anteriormente utilizado para este perfil?
+ O grupo para o perfil iTALC de estudante foi modificado.
+ .
+ Por favor especifique se o antigo grupo deve ser apagado. Caso não tenha a certeza, mantenha o grupo anteriormente utilizado e investigue manualmente depois.
+Description-ru.UTF-8: Удалить группу, которая использовалась для этой роли ранее?
+ Группа для роли студента iTALC была изменена.
+ .
+ Укажите, нужно ли удалить старую группу. Если не уверены, то не удаляйте и сделайте это вручную позже, при необходимости.
+
+Template: italc-client/group-italc-supporter
+Type: string
+Default: italc-supporter
+Description: iTALC supporters role group:
+ Please specify the group name for iTALC supporters.
+ .
+ The supporter role gives extended control over the iTALC setup on this
+ site and facilitates giving support to iTALC users.
+ .
+ If you leave this empty, the "root" group will be used.
+Description-cs.UTF-8: Skupina rolí iTALC pro poskytovatele podpory:
+ Zadejte prosím název skupiny pro poskytovatele podpory iTALC.
+ .
+ Role poskytovatel podpory poskytuje rozšířenou kontrolu nad nastavením iTALC na tomto webu a umožňuje poskytovat podporu uživatelům iTALC.
+ .
+ Ponecháte-li políčko prázdné, použije se skupina "root".
+Description-da.UTF-8: iTALC supporters rollegruppe:
+ Angiv venligst gruppenavnet for iTALC supporters.
+ .
+ Rollen supporter giver udvidet kontrol over iTALC-opsætningen på denne side og faciliterer understøttelse for iTALC users.
+ .
+ Hvis du efterlader rollen tom, vil gruppen »root« blive brugt.
+Description-de.UTF-8: Gruppe für iTALC-Helfer:
+ Bitte geben Sie den Gruppennamen für iTALC-Helfer ein.
+ .
+ Die Helfer-Rolle erlaubt eine erweiterte Steuerung der iTALC-Installation an diesem Standort und ermöglicht es, iTALC-Benutzer zu unterstützen.
+ .
+ Wird dieses Feld leer gelassen, dann wird die Gruppe »root« verwendet.
+Description-es.UTF-8: Grupo para el modo asistentes de iTALC:
+ Especifique el nombre del grupo para los asistentes de iTALC.
+ .
+ El modo asistente proporciona mayor control sobre la configuración de iTALC en este sitio y facilita la asistencia a los usuarios de iTALC.
+ .
+ Si deja este campo en blanco se utilizará el grupo «root».
+Description-fr.UTF-8: Groupe pour le rôle « supporter » (assistance) d'iTALC :
+ Veuillez indiquer le nom du groupe pour l'assistance dans iTALC.
+ .
+ Ce rôle permet un contrôle étendu sur l'installation iTALC pour ce site et facilite l'assistance aux utilisateurs.
+ .
+ Le groupe « root » sera utilisé si vous laissez ce champ vide.
+Description-it.UTF-8: Gruppo per il ruolo di assistente di iTALC:
+ Specificare il nome del gruppo per gli assistenti in iTALC.
+ .
+ Il ruolo di assistente dà un controllo esteso sull'impostazione di iTALC in questo sito e rende più facile fornire supporto agli utenti di iTALC.
+ .
+ Se si lascia vuoto questo valore, verrà usato il gruppo «root».
+Description-ja.UTF-8: iTALC の「支援者」役割グループ:
+ iTALC の「支援者」役割グループの名前を指定してください。
+ .
+ 「支援者」の役割ではこのサイトの iTALC の準備や iTALC の支援を促進するための拡張された制御ができるようになります。
+ .
+ これを空白にすると「root」グループが使われます。
+Description-nl.UTF-8: De groep ondersteuners in iTALC:
+ Geef de naam op voor de groep ondersteuners in iTALC.
+ .
+ De functie van ondersteuner heeft een uitgebreide controle over de opstelling van iTALC op deze site en geniet van een aantal faciliteiten om gebruikers van iTALC ondersteuning te bieden.
+ .
+ Indien u dit veld leeg laat, zal de groep "root" gebruikt worden.
+Description-pt.UTF-8: Grupo de perfil iTALC de assistentes:
+ Por favor especifique o nome do grupo iTALC para assistentes.
+ .
+ O perfil de assistente dá controlo alargado sobre a instalação iTALC neste local e facilita o suporte aos utilizadores do iTALC.
+ .
+ Se deixar em branco, será utilizado o grupo "root".
+Description-ru.UTF-8: Группа для поддержки iTALC:
+ Укажите имя группы для поддержки iTALC.
+ .
+ Роль поддержки имеет расширенные права в iTALC на этой машине и упрощает оказание поддержки пользователям iTALC.
+ .
+ Если оставить поле пустым, то будет использована группа «root».
+
+Template: italc-client/del-last-group-supporter
+Type: boolean
+Default: false
+Description: Delete the group that was formerly used for this role?
+ The group for the iTALC supporter role has been modified.
+ .
+ Please specify whether the old group should be deleted. If unsure,
+ keep the formerly used group and manually investigate later.
+Description-cs.UTF-8: Smazat skupinu, která se dříve u této role používala?
+ Skupina pro roli iTALC poskytovatel podpory byla změněna.
+ .
+ Zvolte si prosím, zda se má původní role smazat. Nejste-li si jisti, původně používanou roli ponechte a později ji ručně prozkoumejte.
+Description-da.UTF-8: Slet gruppen som tidligere blev brugt for denne rolle?
+ Gruppen for iTALC supporter-rollen er blevet ændret.
+ .
+ Angiv venligst om den gamle gruppe skal slettes. Hvis du er usikker, så bevar den tidligere anvendte gruppe og undersøg det senere manuelt.
+Description-de.UTF-8: Soll die Gruppe, die bislang für diese Rolle verwendet wurde, gelöscht werden?
+ Die Gruppe für die iTALC-Rolle Helfer wurde geändert.
+ .
+ Bitte legen Sie fest, ob die alte Gruppe gelöscht werden soll. Falls Sie sichnicht sicher sind, behalten Sie die bislang verwendete Gruppe bei und prüfen dies später.
+Description-es.UTF-8: ¿Desea eliminar el grupo que se utilizaba anteriormente para este modo?
+ Se ha modificado el grupo para el modo asistente de iTALC.
+ .
+ Especifique si debe eliminarse el grupo antiguo. Si no está seguro, mantenga el grupo anterior e investigue después.
+Description-fr.UTF-8: Faut-il supprimer le groupe qui était anciennement utilisé pour ce rôle ?
+ Le groupe pour le rôle « supporter » d'iTALC a été modifié.
+ .
+ Veuillez indiquer si l'ancien groupe doit être supprimé. En cas de doute, vous pouvez garder le groupe initial et étudier le cas plus tard.
+Description-it.UTF-8: Eliminare il gruppo che era usato in precedenza per questo ruolo?
+ Il gruppo per il ruolo di assistente di iTALC è stato modificato.
+ .
+ Specificare se il vecchio gruppo deve essere eliminato. Se non si è sicuri, mantenere il gruppo usato in precedenza e verificare a mano successivamente.
+Description-ja.UTF-8: この役割で以前利用していたグループを削除しますか?
+ iTALC の「支援者」役割のグループが変更されました。
+ .
+ 古いグループを削除するかどうか指定してください。よくわからない場合は以前使われていたグループを維持しておいて手作業により後で調査してください。
+Description-nl.UTF-8: De groep die vroeger voor de functie gebruikt werd, verwijderen?
+ De groep van de functie ondersteuner in iTALC is gewijzigd.
+ .
+ Geef aan of de oude groep verwijderd moet worden. Bij twijfel laat u de vroegere groep best bestaan en gaat u de zaak later manueel onderzoeken.
+Description-pt.UTF-8: Apagar o grupo anteriormente utilizado para este perfil?
+ O grupo para o perfil de assistente iTALC foi modificado.
+ .
+ Por favor especifique se o antigo grupo deve ser apagado. Caso não tenha a certeza, mantenha o grupo anteriormente utilizado e investigue manualmente depois.
+Description-ru.UTF-8: Удалить группу, которая использовалась для этой роли ранее?
+ Группа для роли поддержки iTALC была изменена.
+ .
+ Укажите, нужно ли удалить старую группу. Если не уверены, то не удаляйте и сделайте это вручную позже, при необходимости.
+
+Template: italc-client/group-italc-admin
+Type: string
+Default: italc-admin
+Description: iTALC administrators role group:
+ Please specify the group name for iTALC administrators.
+ .
+ The administrator role grants full access to the iTALC instance on
+ this site.
+ .
+ If you leave this empty, the "root" group will be used.
+Description-cs.UTF-8: Skupina rolí iTALC pro správce:
+ Zadejte prosím název skupiny pro správce iTALC.
+ .
+ Role správce poskytuje úplný přístup k instanci iTALC na tomto webu.
+ .
+ Ponecháte-li políčko prázdné, použije se skupina "root".
+Description-da.UTF-8: iTALC administrators rollegruppe:
+ Angiv venligst gruppenavnet for iTALC administrators.
+ .
+ Rollen administrator giver fuld adgang til iTALC-instanser på denne side.
+ .
+ Hvis du efterlader rollen tom, vil gruppen »root« blive brugt.
+Description-de.UTF-8: Gruppe für iTALC-Administratoren:
+ Bitte geben Sie den Gruppennamen für iTALC-Administratoren ein.
+ .
+ Die Administratorrolle gewährt Vollzugriff auf die iTALC-Instanz an diesem Standort.
+ .
+ Wird dieses Feld leer gelassen, dann wird die Gruppe »root« verwendet.
+Description-es.UTF-8: Grupo para el modo administradores de iTALC:
+ Especifique el nombre del grupo para los administradores de iTALC.
+ .
+ El modo administrador proporciona acceso total a la instancia de iTALC en este sitio.
+ .
+ Si deja este campo en blanco se utilizará el grupo «root».
+Description-fr.UTF-8: Groupe pour le rôle « admin » (administrateurs) d'iTALC :
+ Veuillez indiquer le nom du groupe pour les administrateurs d'iTALC.
+ .
+ Le rôle d'administrateur accorde un accès total à l'instance d'iTALC pour ce site.
+ .
+ Le groupe « root » sera utilisé si vous laissez ce champ vide.
+Description-it.UTF-8: Gruppo per il ruolo di amministratore di iTALC:
+ Specificare il nome del gruppo per gli amministratori in iTALC.
+ .
+ Il ruolo di amministratore dà un pieno accesso all'istanza di iTALC in questo sito.
+ .
+ Se si lascia vuoto questo valore, verrà usato il gruppo «root».
+Description-ja.UTF-8: iTALC の「管理者」役割グループ:
+ iTALC の「管理者」役割グループの名前を指定してください。
+ .
+ 「管理者」の役割ではこのサイトの iTALC への全面的なアクセス権限が与えられます。
+ .
+ これを空白にすると「root」グループが使われます。
+Description-nl.UTF-8: De groep beheerders in iTALC:
+ Geef de naam op voor de groep beheerders in iTALC.
+ .
+ De functie van beheerder heeft de volle toegang tot het exemplaar van iTALC op deze site.
+ .
+ Indien u dit veld leeg laat, zal de groep "root" gebruikt worden.
+Description-pt.UTF-8: Perfil iTALC de grupo de administradores:
+ Por favor especifique o nome do grupo para os administradores do iTALC.
+ .
+ O perfil de administrador dá acesso completo à instância do iTALC neste local.
+ .
+ Se deixar em branco, será utilizado o grupo "root".
+Description-ru.UTF-8: Группа для администраторов iTALC:
+ Укажите имя группы для администраторов iTALC.
+ .
+ Роль администратора имеет полный доступ к экземпляру iTALC на этой машине.
+ .
+ Если оставить поле пустым, то будет использована группа «root».
+
+Template: italc-client/del-last-group-admin
+Type: boolean
+Default: false
+Description: Delete the group that was formerly used for this role?
+ The group for the iTALC administrator role has been modified.
+ .
+ Please specify whether the old group should be deleted. If unsure,
+ keep the formerly used group and manually investigate later.
+Description-cs.UTF-8: Smazat skupinu, která se dříve u této role používala?
+ Skupina pro roli iTALC správce byla změněna.
+ .
+ Zvolte si prosím, zda se má původní role smazat. Nejste-li si jisti, původně používanou roli ponechte a později ji ručně prozkoumejte.
+Description-da.UTF-8: Slet gruppen som tidligere blev brugt for denne rolle?
+ Gruppen for iTALC administrator-rollen er blevet ændret.
+ .
+ Angiv venligst om den gamle gruppe skal slettes. Hvis du er usikker, så bevar den tidligere anvendte gruppe og undersøg det senere manuelt.
+Description-de.UTF-8: Soll die Gruppe, die bislang für diese Rolle verwendet wurde, gelöscht werden?
+ Die Gruppe für die iTALC-Rolle Administrator wurde geändert.
+ .
+ Bitte legen Sie fest, ob die alte Gruppe gelöscht werden soll. Falls Sie sichnicht sicher sind, behalten Sie die bislang verwendete Gruppe bei und prüfen dies später.
+Description-es.UTF-8: ¿Desea eliminar el grupo que se utilizaba anteriormente para este modo?
+ Se ha modificado el grupo para el modo administrador de iTALC.
+ .
+ Especifique si debe eliminarse el grupo antiguo. Si no está seguro, mantenga el grupo anterior e investigue después.
+Description-fr.UTF-8: Faut-il supprimer le groupe qui était anciennement utilisé pour ce rôle ?
+ Le groupe pour le rôle « admin » d'iTALC a été modifié.
+ .
+ Veuillez indiquer si l'ancien groupe doit être supprimé. En cas de doute, vous pouvez garder le groupe initial et étudier le cas plus tard.
+Description-it.UTF-8: Eliminare il gruppo che era usato in precedenza per questo ruolo?
+ Il gruppo per il ruolo di amministratore di iTALC è stato modificato.
+ .
+ Specificare se il vecchio gruppo deve essere eliminato. Se non si è sicuri, mantenere il gruppo usato in precedenza e verificare a mano successivamente.
+Description-ja.UTF-8: この役割で以前利用していたグループを削除しますか?
+ iTALC の「管理者」役割のグループが変更されました。
+ .
+ 古いグループを削除するかどうか指定してください。よくわからない場合は以前使われていたグループを維持しておいて手作業により後で調査してください。
+Description-nl.UTF-8: De groep die vroeger voor de functie gebruikt werd, verwijderen?
+ De groep van de functie beheerder in iTALC is gewijzigd.
+ .
+ Geef aan of de oude groep verwijderd moet worden. Bij twijfel laat u de vroegere groep best bestaan en gaat u de zaak later manueel onderzoeken.
+Description-pt.UTF-8: Apagar o grupo anteriormente utilizado para este perfil?
+ O grupo para o perfil de administrador de iTALC foi modificado.
+ .
+ Por favor especifique se o antigo grupo deve ser apagado. Caso não tenha a certeza, mantenha o grupo anteriormente utilizado e investigue manualmente depois.
+Description-ru.UTF-8: Удалить группу, которая использовалась для этой роли ранее?
+ Группа для роли администратора iTALC была изменена.
+ .
+ Укажите, нужно ли удалить старую группу. Если не уверены, то не удаляйте и сделайте это вручную позже, при необходимости.
+
+Template: italc-client/no-such-group
+Type: error
+Description: Non-existing group
+ The given group does not exist on this system. You should specify an
+ already existing group.
+Description-da.UTF-8: Ikkeeksisterende gruppe
+ Den angivne gruppe findes ikke på dette system. Du skal specificere en allerede eksisterende gruppe.
+Description-de.UTF-8: Die Gruppe existiert nicht
+ Die angegebene Gruppe existiert nicht auf diesem System. Sie müssen eine bereits existierende Gruppe eingeben.
+Description-es.UTF-8: Grupo inexistente
+ El grupo no existe en el sistema. Debe indicar un grupo que ya exista.
+Description-fr.UTF-8: Groupe inexistant
+ Ce groupe n'existe pas sur ce système. Vous devez indiquer un groupe existant.
+Description-it.UTF-8: Gruppo non esistente
+ In questo sistema non esiste il gruppo specificato. Si deve specificare un gruppo già esistente.
+Description-ja.UTF-8: グループが存在しません
+ 指定されたグループはこのシステムに存在しません。既に存在するグループを指定してください。
+Description-nl.UTF-8: Onbestaande groep
+ De opgegeven groep bestaat niet op dit systeem. Gelieve een al bestaande groep te nemen.
+Description-pt.UTF-8: Grupo não existente
+ O grupo indicado não existe neste sistema. Deve especificar um grupo já existente.
+Description-ru.UTF-8: Группа не существует
+ Указанная группа отсутствует в системе. Вы должны указать существующую группу.
+
+Template: italc-client/key-access-for-groups
+Type: boolean
+Default: true
+Description: Make iTALC's SSL keys accessible to the role model groups?
+ To make the iTALC role model fully functional, the appropriate groups
+ now need to be granted access to the created SSL keys.
+ .
+ If you skip this step, iTALC SSL keys will only be accessible to the
+ super-user "root" and you will have to manually set up file permissions
+ on the keys later.
+Description-cs.UTF-8: Mají být SSL klíče pro iTALC přístupná skupinám ve vzorovém modelu?
+ Aby byl model rolí iTALC zcela funkční, je nyní třeba příslušným skupinám přidělit přístupová práva k vytvořeným SSL klíčům.
+ .
+ Pokud tento krok přeskočíte, SSL klíče iTALC budou přístupná pouze super uživateli "root" a později budete muset ručně nastavit oprávnění pro soubory s klíči.
+Description-da.UTF-8: Gør iTALC's SSL-nøgler tilgængelige for rollemodelgrupperne?
+ For at gøre iTALC-rollemodellen fuld funktionel, skal de passende grupper nu have adgang til de oprettede SSL-nøgler.
+ .
+ Hvis du udelader dette trin, vil iTALC SSL-nøgler kun være tilgængelige for superbrugeren »root« og du skal manuelt opsætte filrettighederne på nøglerne senere.
+Description-de.UTF-8: Soll den Rollenmodellgruppen Zugriff auf iTALCs SSL-Schlüssel gewährt werden?
+ Damit das iTALC-Rollenmodell vollständig funktioniert, muss jetzt noch den zugewiesenen Gruppen Zugriff auf die erstellten SSL-Schlüssel gewährt werden.
+ .
+ Wenn Sie diesen Schritt überspringen, werden die iTALC-SSL-Schlüssel nur für den Superuser »root« zugänglich sein und Sie müssen die Dateirechte der Schlüssel später manuell setzen.
+Description-es.UTF-8: ¿Desea que las claves SSL de iTALC sean accesibles a los grupos de modos de acceso?
+ Para que el modo de acceso de iTALC sea completamente funcional es necesario que los grupos apropiados puedan acceder a las claves SSL generadas.
+ .
+ Si desea omitir este paso, sólo el usuario «root» podrá acceder a las claves SSL de iTALC y tendrá que configurar manualmente los permisos de las claves más adelante.
+Description-fr.UTF-8: Faut-il rendre les clefs SSL d'iTALC accessibles aux groupes de ce rôle ?
+ Afin de rendre le modèle de rôle d'iTALC complètement fonctionnel, les groupes appropriés ont besoin d'obtenir l'accès aux clefs SSL créées.
+ .
+ Si vous sautez cette étape, les clefs SSL d'iTALC ne seront accessibles qu'au superutilisateur « root » et vous devrez configurer plus tard vous-même les permissions sur les fichiers de clefs.
+Description-it.UTF-8: Rendere le chiavi SSL di iTALC accessibili ai gruppi del modello basato su ruoli?
+ Per rendere il modello basato su ruoli di iTALC pienamente funzionale, deve essere ora garantito ai gruppi appropriati l'accesso alle chiavi SSL create.
+ .
+ Se si salta questo passo, le chiavi SSL di iTALC saranno accessibili solo per il super-utente «root» e sarà necessario successivamente impostare a mano i permessi dei file delle chiavi.
+Description-ja.UTF-8: iTALC の SSL 鍵に役割モデルのグループからアクセスできるようにしますか?
+ iTALC の役割モデルが完全に機能するようにするには、作成した SSL 鍵へのアクセス権限をここで適切なグループに与える必要があります。
+ .
+ この段階を飛ばしてしまうと、iTALC の SSL 鍵はスーパーユーザ「root」からのみアクセス可能で、鍵のファイル権限設定を後で手作業により行う必要があります。
+Description-nl.UTF-8: De SSL-sleutels van iTALC toegankelijk maken voor de functiegroepen?
+ Om het model van functiegroepen van iTALC volledig functioneel te maken, moet nu aan de betreffende groepen toegang verleend worden tot de aangemaakte SSL-sleutels.
+ .
+ Indien u deze stap overslaat, zullen de SSL-sleutels van iTALC enkel toegankelijk zijn voor de systeembeheerder "root" en zult u later handmatig de toegangsrechten tot de sleutels moeten instellen.
+Description-pt.UTF-8: Tornar as chaves SSL do iTALC acessíveis aos grupos modelo de perfis?
+ Para tornar o modelo de perfil do iTALC totalmente funcional, tem de ser concedido agora acesso às chaves SSL criadas aos grupos apropriados.
+ .
+ Se saltar este passo, as chaves SSL do iTALC apenas serão acessíveis ao super-utilizador "root" e terá de manualmente configurar as permissões dos ficheiros das chaves posteriormente.
+Description-ru.UTF-8: Сделать ключи SSL iTALC доступными для групп ролевой модели?
+ Для полноценной работы ролевой модели iTALC соответствующим группам сейчас необходимо дать доступ к созданным ключам SSL.
+ .
+ Если вы пропустите этот шаг, то ключи SSL iTALC будут доступны только суперпользователю «root» и  вам позднее нужно будет вручную изменить права на файлы ключей.
+
+Template: italc-client/autostart-on-login
+Type: boolean
+Default: false
+Description: Start the iTALC client on desktop session startup?
+ For the desktop session to be controlled via iTALC, the iTALC client
+ applet needs to be running, listening on a TCP/IP socket for authorized
+ VNC-like connections from the iTALC master application.
+ .
+ It can be configured to start automatically on desktop session startup,
+ but for security reasons this is not the default.
+ .
+ Remember that the iTALC client will only launch for users that are
+ members of the iTALC student group.
+Description-da.UTF-8: Start iTALC-klienten ved skrivebordets sessionsopstart?
+ For at skrivebordssessionen kan kontrolleres via iTALC skal iTALC-klientpanelprogrammet køre, lytte på en TCP/IP-sokkel for autoriserede VNC-lignende forbindelser fra iTALC-masterprogrammet.
+ .
+ Programmet kan konfigureres til at starte autoamtisk ved skrivebordets sessionsopstart, men af sikkerhedsmæssige årsager er dette ikke standard.
+ .
+ Husk at iTALC-klienten kun starter for brugere som er medlemmer af iTALC-studentgruppen.
+Description-de.UTF-8: Den iTALC-Client bei Sitzungsanmeldung starten?
+ Damit eine Desktop-Sitzung durch iTALC gesteuert werden kann, muss das iTALC-Client-Applet gestartet sein. Das Applet öffnet ein TCP/IP-Server-Socket um autorisierte, VNC-ähnliche Verbindungsanfragen von der iTALC-Master-Anwendung entgegenzunehmen.
+ .
+ Hier kann das automatische Starten des iTALC-Clients bei Desktop-Sitzungsanmeldung konfiguriert werden. Aus Sicherheitsgründen ist dies aber nicht die Standardvorgabe.
+ .
+ Nochmal als Erinnerung: Der iTALC-Client startet nur für Benutzer, die Mitglied der iTALC-Schüler-Gruppe sind.
+Description-es.UTF-8: ¿Desea iniciar el cliente iTALC al inicio de sesión en el escritorio?
+ Para poder controlar la sesión en el escritorio a través de iTALC necesita que el applet del cliente iTALC esté en ejecución y atendiendo peticiones de socket TCP/IP para conexiones de tipo VNC autorizadas desde la aplicación principal de iTALC.
+ .
+ Se puede configurar para que se inicie automáticamente al inicio de una sesión de escritorio pero por motivos de seguridad esta no es la opción predeterminada.
+ .
+ Recuerde que el cliente iTALC sólo se iniciará para los usuarios que sean miembros del grupo estudiantes de iTALC.
+Description-fr.UTF-8: Faut-il démarrer le client iTALC au démarrage d'une session de bureau ?
+ Pour qu'une session de bureau puisse être contrôlée à l'aide iTALC, il faut que l'applet client d'iTALC soit déjà lancé et qu'il écoute sur une socket TCP/IP pour des connexions de type VNC autorisées par l'application maître d'iTALC.
+ .
+ Il peut être configuré pour démarrer automatiquement au démarrage de la session de bureau, mais ne l'est pas par défaut pour des raisons de sécurité.
+ .
+ Souvenez-vous que le client iTALC ne peut être démarré que pour des utilisateurs membres du groupe iTALC d'étudiants.
+Description-it.UTF-8: Lanciare il client iTALC all'avvio della sessione desktop?
+ Affinché la sessione desktop possa essere controllata con iTALC, l'applet del client iTALC deve essere in esecuzione e in ascolto su un socket TCP/IP per connessioni autorizzate simili a VNC dall'applicazione iTALC master.
+ .
+ Può essere configurato per partire automaticamente all'avvio della sessione desktop, ma per ragioni di sicurezza non è il comportamento predefinito.
+ .
+ Il client iTALC verrà lanciato solo per gli utenti che sono membri del gruppo degli studenti di iTALC.
+Description-ja.UTF-8: デスクトップセッション開始時に iTALC クライアントを起動しますか?
+ デスクトップセッションを iTALC を経由で制御するためには、iTALC クライアントアプレットが実行されていて、iTALC マスターアプリケーションからの認可されているVNC類似の接続を TCP/IP ソケットで待ち受けている必要があります。
+ .
+ これはデスクトップセッション開始時に自動的に起動するように設定できますが、セキュリティ上の理由によりデフォルトでは自動的に起動しないようになっています。
+ .
+ iTALC クライアントは iTALC 学生グループのメンバーであるユーザの場合にのみ起動することを覚えておいてください。
+Description-nl.UTF-8: De iTALC-client opstarten bij het opstarten van een bureaubladwerksessie?
+ Opdat de bureaubladwerksessie via iTALC gecontroleerd zou kunnen worden, moet de client-toepassing van iTALC actief zijn en op een TCP/IP-socket luisteren naar bevoegde VNC-achtige verbindingen vanuit het centrale iTALC-programma.
+ .
+ De client kan zo ingesteld worden dat hij automatisch opstart bij de start van een bureaubladwerksessie, maar uit veiligheidsoverwegingen is dit niet standaard zo ingesteld.
+ .
+ Denk eraan dat de iTALC-client enkel zal opstarten voor die gebruikers die behoren tot de groep studenten van iTALC.
+Description-pt.UTF-8: Iniciar o cliente iTALC no arranque de sessão do ambiente de trabalho?
+ Para a sessão do ambiente de trabalho ser controlada através do iTALC, a applet do cliente do iTALC tem de estar a correr, à escuta num socket TCP/IP por ligações autorizadas tipo VNC a partir da aplicação mestre iTALC.
+ .
+ Pode ser configurado para arrancar automaticamente no arranque de sessão do ambiente de trabalho, mas por razões de segurança isto não é predefinido.
+ .
+ Recorde que o cliente iTALC apenas irá ser lançado para os utilizadores que são membros do grupo de estudantes iTALC.
+Description-ru.UTF-8: Запускать клиент iTALC при запуске сеанса рабочего стола?
+ Чтобы управлять сеансом рабочего стола через iTALC, должен быть запущен апплет клиента iTALC, который прослушивает сокет TCP/IP, ожидания VNC-подобных соединений от мастер-программы iTALC.
+ .
+ Это можно выполнять автоматически при запуске сеанса рабочего стола, но в целях безопасности по умолчанию это отключено.
+ .
+ Учтите, что клиент iTALC запускается только для пользователей, которые входят в группу студентов iTALC.

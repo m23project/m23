@@ -1,0 +1,181 @@
+
+Template: magnum/register-endpoint
+Type: boolean
+Default: false
+Description: Register Magnum in the Keystone endpoint catalog?
+ Each OpenStack service (each API) should be registered in order to be
+ accessible. This is done using "keystone service-create" and "keystone
+ endpoint-create". This can be done automatically now.
+ .
+ Note that you will need to have an up and running Keystone server on which to
+ connect using the Keystone authentication token.
+Description-da.UTF-8: Registrer Magnum i Keystones slutpunktskatalog?
+ Hver Openstacktjeneste (hver API) skal være registreret for at kunne tilgås. Dette gøres med »keystone service-create« og »keystone endpoint-create«. Dette kan gøres automatiks nu.
+ .
+ Bemærk at du skal have en op og kørende Keystoneserver, som du skal forbinde til med Keystones godkendelsessymbol.
+Description-de.UTF-8: Magnum im Keystone-Endpunktkatalog registrieren?
+ Jeder OpenStack-Dienst (jedes API) sollte registriert werden, damit darauf zugegriffen werden kann. Dies wird mittels »keystone service-create« und »keystone endpoint-create« erreicht und kann nun automatisch erledigt werden.
+ .
+ Beachten Sie, dass Sie einen gestarteten und laufenden Keystone-Server haben müssen, mit dem Sie sich anhand des Keystone-Authentifizierungs-Tokens verbinden.
+Description-es.UTF-8: ¿Desea registrar Magnum en el catálogo de puntos finales de Keystone?
+ Debe registrar cada uno de los servicios OpenStack (cada API) para que sean accesibles. Esto se lleva a cabo mediante las órdenes «keystone service-create» y «keystone endpoint-create». Elija si desea ejecutar estas órdenes ahora.
+ .
+ Tenga en cuenta que necesitará disponer de un servidor Keystone en ejecución al que conectarse utilizando el token de autenticación de Keystone.
+Description-fr.UTF-8: Enregistrer Magnum dans le catalogue de points d'accès de Keystone ?
+ Chaque service OpenStack (chaque API) doit être enregistré pour être accessible. Cela peut être fait en utilisant « keystone service-create » et « keystone endpoint-create ». Cela peut maintenant être fait automatiquement.
+ .
+ Veuillez noter que vous aurez besoin d'avoir un serveur Keystone fonctionnel sur lequel se connecter pour utiliser le jeton d'authentification Keystone.
+Description-it.UTF-8: Registrare Magnum nel catalogo dei punti terminali di Keystone?
+ Ogni servizio OpenStack (ogni API) dovrebbe essere registrato per poter essere accessibile. Ciò viene fatto usando «keystone service-create» e «keystone endpoint-create». Ciò può essere fatto ora automaticamente.
+ .
+ Notare che sarà necessario avere un server Keystone in funzione a cui connettersi usando il token di autenticazione Keystone.
+Description-nl.UTF-8: Magnum registreren in de catalogus van toegangspunten van keystone?
+ Elke OpenStackdienst (elke API) moet geregistreerd worden om toegankelijk te zijn. Dit gebeurt aan de hand van "keystone service-create" en "keystone endpoint-create". Dit kan nu automatisch gedaan worden.
+ .
+ Merk op dat u hiervoor een volledig werkende keystone-server nodig heeft, waarmee een verbinding gemaakt wordt met behulp van het authenticatiebewijs voor Keystone.
+Description-pt.UTF-8: Registar o Magnum no catálogo de pontos finais do Keystone?
+ Cada serviço Openstack (cada API) deve estar registado para que seja acessível. Isto é feito com "keystone service-create" e "keystone endpoint-create". Pode correr estes comandos agora.
+ .
+ Note que irá necessitar de ter um servidor keystone a correr e pronto para receber ligações autenticadas com o token de autenticação Keystone.
+Description-pt_BR.UTF-8: Registrar o Magnum no catálogo de "endpoint" do Keystone?
+ Cada serviço OpenStack (cada API) deve ser registrado para ser acessível. Isso é feito usando "keystone service-create" e "keystone endpoint-create". Isso pode ser feito automaticamente agora.
+ .
+ Note que você precisará ter um servidor Keystone configurado e em execução no qual conectar usando o "token" de autenticação do Keystone.
+Description-ru.UTF-8: Зарегистрировать Magnum в каталоге конечных точек Keystone?
+ Для доступа к службам Openstack (каждому API) их нужно регистрировать. Это выполняется с помощью команды «keystone service-create» и «keystone endpoint-create». Это может быть сделано автоматически прямо сейчас.
+ .
+ Заметим, что у вас должен быть работающий сервер Keystone, к которому будет произведено подключение с помощью токена аутентификации Keystone.
+Description-sv.UTF-8: Ska Magnum registreras i keystones katalog med ändpunkter?
+ Alla OpenStack-tjänster (varje API) ska registreras för att kunna användas. Detta görs med kommandona "keystone service-create" och "keystone endpoint-create". Detta kan göras automatiskt nu.
+ .
+ OBS. Du behöver ha en fungerande keystone-server att ansluta till.
+
+Template: magnum/keystone-ip
+Type: string
+Description: Keystone server IP address:
+ Please enter the IP address of the Keystone server, so that magnum-api can
+ contact Keystone to do the Magnum service and endpoint creation.
+Description-da.UTF-8: IP-adresse for Keystoneserver:
+ Indtast venligst IP-adressen for Keystoneserveren, så at magnum-api kan kontakte Keystone for at udføre Magnumtjenesten og slutpunktsoprettelse.
+Description-de.UTF-8: IP-Adresse des Keystone-Servers:
+ Bitte geben Sie die IP-Adresse des Keystone-Servers an, so dass Magnum-API Keystone kontaktieren kann, um den Magnum-Dienst und den Endpunkt zu erstellen.
+Description-es.UTF-8: Dirección IP del servidor Keystone:
+ Introduzca la dirección IP del servidor Keystone para que magnum-api pueda contactar con Keystone para realizar el servicio Magnum y crear el punto de cierre.
+Description-fr.UTF-8: Adresse IP du serveur Keystone : 
+ Veuillez indiquer l'adresse IP du serveur Keystone, pour que l'API de Magnum puisse contacter Keystone pour établir le service Magnum et créer le point d'accès.
+Description-it.UTF-8: Indirizzo IP del server Keystone:
+ Inserire l'indirizzo IP del server Keystone, in modo che magnum-api possa contattare Keystone per effettuare la creazione del servizio e del punto terminale Magnum.
+Description-nl.UTF-8: IP-adres van de Keystone-server:
+ Gelieve het IP-adres van de Keystone-server op te geven, zodat magnum-api met Keystone kan verbinden om de Magnum-service en het troegangspunt aan te maken.
+Description-pt.UTF-8: Endereço IP do keystone:
+ Indique o endereço IP do seu servidor keystone, de modo a que o magnum-api possa contactar o Keystone para criar o serviço e ponto final Magnum.
+Description-pt_BR.UTF-8: Endereço IP do servidor Keystone:
+ Por favor, informe o endereço IP do servidor Keystone, de forma que o magnum-api possa contatar o Keystone para efetuar a criação do "endpoint" e do serviço Magnum.
+Description-ru.UTF-8: IP-адрес сервера Keystone:
+ Введите IP-адрес сервера Keystone для того, чтобы magnum-api могла подключиться к Keystone для запуска службы Magnum и создания конечной точки.
+Description-sv.UTF-8: IP-adress till Keystone:
+ Ange IP-adressen till din Keystone-server så att magnum-api kan kontakta Keystone för att lägga till Magnum-tjänsten som en ändpunkt.
+
+Template: magnum/keystone-auth-token
+Type: password
+Description: Keystone authentication token:
+ To configure its endpoint in Keystone, magnum-api needs the Keystone
+ authentication token.
+Description-da.UTF-8: Godkendelsessymbol for Keystone:
+ For at konfigurere dets slutpunkt i Keystone, kræver magnum-api Keystones godkendelsessymbol.
+Description-de.UTF-8: Keystone-Authentifizierungs-Token:
+ Magnum-API benötigt das Keystone-Authentifizierungs-Token, um seinen Endpunkt in Keystone zu konfigurieren.
+Description-es.UTF-8: Token de autenticación de Keystone:
+ Para configurar su punto final en Keystone, magnum-api necesita el token de autenticación de Keystone.
+Description-fr.UTF-8: Jeton d'authentification Keystone : 
+ Pour configurer son point d'accès dans Keystone, l'API de Magnum a besoin du jeton d'authentification Keystone.
+Description-it.UTF-8: Token di autenticazione Keystone:
+ Per configurare il proprio punto terminale in Keystone, magnum-api ha bisogno del token di autenticazione Keystone.
+Description-nl.UTF-8: Authenticatiebewijs voor Keystone:
+ Om zijn toegangspunt te kunnen aanmaken in Keystone, heeft magnum-api het authenticatiebewijs voor Keystone nodig.
+Description-pt.UTF-8: Token de Autenticação Keystone:
+ Para configurar o seu ponto final no Keystone, o magnum-api precisa do token de autenticação do Keystone.
+Description-pt_BR.UTF-8: "Token" de autenticação Keystone:
+ Para configurar o seu "endpoint" no Keystone, o magnum-api precisa do "token" de autenticação do Keystone.
+Description-ru.UTF-8: Токен аутентификации Keystone:
+ Для настройки собственной конечной точки в Keystone magnum-api требуется токен аутентификации Keystone.
+Description-sv.UTF-8: Autetiseringsvärde för Keystone:
+ För att lägga till ändpunkt i Keystone behöver magnum-api ett autentiseringsvärde för Keystone.
+
+Template: magnum/endpoint-ip
+Type: string
+Description: Magnum endpoint IP address:
+ Please enter the IP address that will be used to contact Magnum.
+ .
+ This IP address should be accessible from the clients that will use this
+ service, so if you are installing a public cloud, this should be a public
+ IP address.
+Description-da.UTF-8: IP-adresse for Magnums slutpunkt:
+ Indtast venligst IP-adressen som vil blive brugt til at kontakte Magnum.
+ .
+ Denne IP-adresse skal være tilgængelig fra klienterne, som vil bruge denne tjeneste, så hvis du installerer en offentlig sky, skal dette være en offentlig IP-adresse.
+Description-de.UTF-8: IP-Adresse des Magnum-Endpunkts
+ Bitte geben Sie die IP-Adresse ein, die zum Kontaktieren von Magnum benutzt wird.
+ .
+ Auf diese IP-Adresse sollte von den Clients, die diesen Dienst verwenden, zugegriffen werden können, daher sollte sie, falls Sie eine öffentliche Cloud installieren, eine öffentliche IP-Adresse sein.
+Description-es.UTF-8: Dirección IP del punto de cierre de Magnum:
+ Introduzca la dirección IP que se utilizará para contactar con Magnum.
+ .
+ Esta dirección IP debe ser accesible desde los clientes que usarán este servicio, por lo que si está instalando una nube pública, debería ser una dirección IP pública.
+Description-fr.UTF-8: Adresse IP du point d'accès Magnum : 
+ Veuillez indiquer l'adresse IP qui sera utilisée pour contacter Magnum.
+ .
+ Cette adresse IP doit être accessible depuis les clients qui utiliseront ce service, donc si vous installez un nuage public, ce devra être une adresse IP publique.
+Description-it.UTF-8: Indirizzo IP del punto terminale Magnum:
+ Inserire l'indirizzo IP che verrà usato per contattare Magnum.
+ .
+ Questo indirizzo IP dovrebbe essere accessibile dai client che useranno il servizio, perciò se si sta installando una cloud pubblica, questo dovrebbe essere un indirizzo IP pubblico.
+Description-nl.UTF-8: IP-adres van het toegangspunt voor Magnum:
+ Gelieve het IP-adres in te voeren dat gebruikt zal worden om contact te maken met Magnum.
+ .
+ Dit IP-adres moet bereikbaar zijn voor de clients die van deze service gebruik zullen maken. Indien u een openbare cloud installeert, moet dit dus een algemeen bereikbaar IP-adres zijn.
+Description-pt.UTF-8: Endereço IP do ponto final Magnum:
+ Indique o endereço IP que irá ser usado para contactar o Magnum.
+ .
+ Este endereço IP deve ser acessível a partir dos clientes que irão usar este serviço, portanto se está a instalar uma cloud pública, este deve ser um endereço IP público.
+Description-pt_BR.UTF-8: Endereço IP do "endpoint" Magnum:
+ Por favor, informe o endereço IP que será usado para contatar o Magnum.
+ .
+ Esse endereço IP deveria ser acessível a partir dos clientes que usarão esse serviço, assim se você está instalando uma nuvem pública, ele deveria ser um endereço IP público.
+Description-ru.UTF-8: IP-адрес конечной точки Magnum:
+ Введите IP-адрес, который будет использован для подключения к Magnum.
+ .
+ Этот IP-адрес должен быть доступен клиентам, которые будут использовать эту службу, поэтому если вы разворачиваете открытое облако, то это должен быть публичный IP-адрес.
+Description-sv.UTF-8: IP-adress för Magnum-ändpunkt:
+ Ange den IP-adress som ska användas för att kontakta Magnum.
+ .
+ Denna IP-adress ska vara nåbar från klienterna som vill använda den här tjänsten. Om detta är en publik molntjänst så ska det vara en publik IP-adress.
+
+Template: magnum/region-name
+Type: string
+Default: regionOne
+Description: Name of the region to register:
+ OpenStack supports using availability zones, with each region representing
+ a location. Please enter the zone that you wish to use when registering the
+ endpoint.
+Description-da.UTF-8: Navn på regionen der skal registreres:
+ OpenStack understøtter brug af tilgængelighedszoner, hvor hver region repræsenterer et sted. Indtast venligst zonen du ønsker at bruge, når slutpunktet registreres.
+Description-de.UTF-8: Name der Region, die registriert wird:
+ OpenStack unterstützt die Verwendung von Verfügbarkeitszonen, bei der jede Region einen Ort repräsentiert. Bitte geben Sie die Zone, die Sie benutzen möchten, bei der Registrierung des Endpunkts an.
+Description-es.UTF-8: Nombre de la región a registrar:
+ OpenStack puede utilizarse con zonas de disponibilidad, donde cada región representa una ubicación. Introduzca la zona que desea utilizar cuando 
+ registre un punto de cierre.
+Description-fr.UTF-8: Nom de la région à enregistrer : 
+ OpenStack supporte l'utilisation de zones disponibles, avec chaque région représentant un lieu. Veuillez entrer une zone que vous souhaitez utiliser lors de l'enregistrement d'un point d'accès.
+Description-it.UTF-8: Nome della regione da registrare:
+ OpenStack gestisce le zone di disponibilità, con ogni regione che rappresenta una posizione. Inserire la zona che si desidera usare durante la registrazione del punto terminale.
+Description-nl.UTF-8: Naam van de te registreren regio:
+ Openstack ondersteunt het gebruik van zones van beschikbaarheid, waarbij elke regio een locatie vertegenwoordigt. Geef aan welke zone u wenst te gebruiken bij het registreren van het toegangspunt.
+Description-pt.UTF-8: Nome da região a registar:
+ O Openstack pode ser usado com zonas de disponibilidade, com cada região a representar uma localização. Por favor, indique a zona que quer usar ao registar um ponto final.
+Description-pt_BR.UTF-8: Nome da região para registrar:
+ O OpenStack suporta usar zonas de disponibilidade, com cada região representando uma localidade. Por favor, informe a zona que você deseja usar ao registrar o "endpoint".
+Description-ru.UTF-8: Название области для регистрации:
+ Openstack поддерживает разделение на зоны доступности, где каждая область представляет определённое расположение. Введите зону, которую вы хотите использовать при регистрации конечной точки.
+Description-sv.UTF-8: Regionnamn:
+ OpenStack kan användas med tillgänglighetszoner. Varje region representerar en plats. Ange zonen som ska användas när ändpunkten registreras.

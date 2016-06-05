@@ -1,0 +1,617 @@
+Template: sympa/language
+Type: select
+Choices: ${supported_langs}
+Default: en
+Description: Default language for Sympa:
+Description-cs.UTF-8: Výchozí jazyk Sympy:
+Description-da.UTF-8: Standardsprog for Sympa:
+Description-de.UTF-8: Standardsprache für Sympa:
+Description-es.UTF-8: Idioma predeterminado de Sympa:
+Description-eu.UTF-8: Sympa-ren hizkuntza lehenetsia:
+Description-fr.UTF-8: Langue par défaut pour Sympa :
+Description-gl.UTF-8: Idioma por defecto para Sympa:
+Description-it.UTF-8: Lingua predefinita per Sympa:
+Description-ja.UTF-8: Sympa のデフォルト言語:
+Description-nl.UTF-8: Standaardtaal door Sympa:
+Description-pt.UTF-8: Idioma pré-definido para o Sympa:
+Description-pt_BR.UTF-8: Idioma padrão para o Sympa:
+Description-ru.UTF-8: Язык по умолчанию для Sympa:
+Description-sv.UTF-8: Ange standardspråket för Sympa:
+
+Template: sympa/hostname
+Type: string
+Description: Sympa hostname:
+ This is the name of the machine or the alias you will use to reach sympa.
+ .
+ Example:
+ .
+   listhost.cru.fr
+ .
+   Then, you will send your sympa commands to:
+ .
+   sympa@listhost.cru.fr
+Description-cs.UTF-8: Jméno počítače s programem sympa:
+ Toto je jméno počítače, které budete používat pro kontakt s programem sympa.
+ .
+ Příklad:
+ .
+   listhost.cru.fr
+ .
+   Poté budete posílat sympa příkazy na:
+ .
+   sympa@listhost.cru.fr
+Description-da.UTF-8: Værtsnavn for Sympa:
+ Dette er navnet på maskinen eller aliasset, du skal bruge for at nå sympa.
+ .
+ Eksempel:
+ .
+   listhost.cru.fr
+ .
+   Derefter vil du sende dine sympakommandoer til:
+ .
+   sympa@listhost.cru.fr
+Description-de.UTF-8: Sympa-Rechnername:
+ Dies ist der Name des Rechners oder der Alias, über den Sympa erreichbar ist.
+ .
+ Beispiel:
+ .
+   listhost.cru.fr
+ .
+   Dann werden Sympa-Befehle gesandt an:
+ .
+   sympa@listhost.cru.fr
+Description-es.UTF-8: Nombre de la máquina de Sympa:
+ Este es el nombre de la máquina o el alias que se usará para conectar con Sympa.
+ .
+ Por ejemplo:
+ .
+   listhost.cru.fr
+ .
+   Y enviará las órdenes de Sympa a:
+ .
+   sympa@listhost.cru.fr
+Description-eu.UTF-8: Sympa-ren ostalari-izena:
+ Hau sympa atzitzeko erabiliko duzun ordenagailuaren izena edo ezizena da,
+ .
+ Adibidea:
+ .
+   zerrenden.makina.eu
+ .
+   Ondoren, zure sympa komandoak hona bidali ditzakezu:
+ .
+   sympa@zerrenden.makina.eu
+Description-fr.UTF-8: Nom d'hôte du serveur « sympa » :
+ Veuillez indiquer le nom d'hôte de la machine ou de l'alias utilisé pour envoyer des requêtes à Sympa. Par exemple :
+ .
+ Exemple :
+ .
+   listhost.cru.fr
+ .
+ Les commandes de Sympa seront alors envoyées à :
+ .
+   sympa@listhost.cru.fr
+Description-gl.UTF-8: Nome do servidor Sympa:
+ Este é o nome da máquina ou o alias que ha empregar para acceder a sympa.
+ .
+ Exemplo:
+ .
+   listhost.cru.fr
+ .
+ Despois ha poder enviar as ordes de sympa a:
+ .
+   sympa@listhost.cru.fr
+Description-it.UTF-8: Nome host di Sympa:
+ Questo è il nome della macchina o l'alias che verrà usato per raggiungere sympa.
+ .
+ Esempio:
+ .
+   listhost.cru.fr
+ .
+   Poi, i comandi verranno inviati a:
+ .
+   sympa@listhost.cru.fr
+Description-ja.UTF-8: Sympa のホスト名:
+ これは sympa に接続する際に使われるマシンの名前あるいは別名です。
+ .
+ 例:
+ .
+   listhost.example.jp
+ .
+   その場合、sympa コマンドは以下に送られます:
+ .
+   sympa@listhost.example.jp
+Description-nl.UTF-8: Sympa-computernaam:
+ Dit is de naam of het alias van de machine; u gebruikt deze om Sympa te bereiken.
+ .
+ Voorbeeld:
+ .
+   listhost.cru.fr
+ .
+  In dit geval worden sympa-opdrachten gestuurd naar:
+ .
+   sympa@listhost.cru.fr
+Description-pt.UTF-8: Nome da máquina do Sympa:
+ Este é o nome da máquina ou o alias que irá utilizar para chegar ao sympa.
+ .
+ Exemplo:
+ .
+   listhost.cru.fr
+ .
+   Depois, você irá enviar os seus comandos do sympa para:
+ .
+   sympa@listhost.cru.fr
+Description-pt_BR.UTF-8: Nome de máquina ("hostname") do sympa:
+ Esse é o nome da máquina ou o apelido que você usará para atingir o sympa.
+ .
+ Exemplo:
+ .
+   servidorlista.cru.br
+ .
+   E então, você enviará seus comandos sympa para:
+ .
+   sympa@servidorlista.cru.br
+Description-ru.UTF-8: Имя машины с Sympa:
+ Это имя машины или псевдоним, который вы будете использовать, чтобы попасть в sympa.
+ .
+ Пример:
+ .
+   listhost.cru.fr
+ .
+   В этом случае команды sympa нужно посылать на:
+ .
+   sympa@listhost.cru.fr
+Description-sv.UTF-8: Ange värdnamnet för sympa:
+ Detta är namnet på maskinen eller det alias som du vill använda för att nå sympa.
+ .
+ Exempel:
+ .
+   listhost.cru.fr
+ .
+   Sedan kan du skicka dina sympa-kommandon till:
+ .
+   sympa@listhost.cru.fr
+
+Template: sympa/listmaster
+Type: string
+Description: Listmaster email address(es):
+ Listmasters are privileged people who administrate mailing lists (mailing
+ list superusers).
+ .
+ Please give listmasters email addresses separated by commas.
+ .
+ Example:
+ .
+   postmaster@cru.fr, root@home.cru.fr
+Description-cs.UTF-8: E-mailové adresy správců diskusních listů:
+ Správcové diskusních skupin jsou privilegovaní uživatelé, kteří spravují diskusní skupiny (administrátoři konferencí).
+ .
+ Zadejte čárkami oddělené emailové adresy správců.
+ .
+ Příklad:
+ .
+   postmaster@cru.fr, root@home.cru.fr
+Description-da.UTF-8: E-post-adresser for listmaster:
+ Listmastere er priviligerede personer, som administrerer postlister (superbrugere for postlister).
+ .
+ Angiv venligst listmasternes e-post-adresser adskilt med komma.
+ .
+ Eksempel:
+ .
+   postmaster@cru.fr, root@home.cru.fr
+Description-de.UTF-8: E-Mail-Adresse(n) des Listenadministrators:
+ Listenadministratoren sind privilegierte Benutzer, die Mailinglisten verwalten.
+ .
+ Bitte die E-Mail-Adressen der Listenadministratoren durch Kommata getrennt eingeben.
+ .
+ Beispiel:
+ .
+   postmaster@cru.fr, root@home.cru.fr
+Description-es.UTF-8: Dirección/es de correo electrónico del (o los) «listmaster/s»:
+ Los «listmasters» son personas con privilegios de administración sobre las listas de correo.
+ .
+ Introduzca las direcciones de correo electrónico de los «listmasters» separadas por comas.
+ .
+ Por ejemplo:
+ .
+   postmaster@cru.fr, root@home.cru.fr
+Description-eu.UTF-8: Zerrendako arduradunen helbide elektronikoak:
+ Zerrendako arduradunak posta-zerrendak kudeatzeko baimenak dituzten pertsonak dira (posta-zerrendako supererabiltzaileak).
+ .
+ Idatzi zerrendako arduradunen helbide elektronikoak komaz bereiztuta.
+ .
+ Adibidea:
+ .
+   postmaster@makina.eu, root@home.makina.eu
+Description-fr.UTF-8: Adresses électroniques des administrateurs de listes :
+ Un administrateur de listes (« listmaster ») est une personne qui gère le serveur de listes de diffusion.
+ .
+ Les adresses électroniques des administrateurs doivent être séparées par des virgules. Par exemple :
+ .
+ Exemple :
+ .
+   postmaster@cru.fr, root@home.cru.fr
+Description-gl.UTF-8: Enderezo de email do listmaster:
+ Os listmasters son xente con privilexios que administra as listas de correo (superusuarios das listas de correo).
+ .
+ Indique os enderezos de email dos listmasters separados por comas.
+ .
+ Exemplo:
+ .
+   postmaster@cru.fr, root@home.cru.fr
+Description-it.UTF-8: Indirizzo o indirizzi di posta elettronica del listmaster:
+ I listmaster sono utenti privilegiati che amministrano le mailing list (superutenti delle mailing list).
+ .
+ Inserire gli indirizzi di posta elettronica dei listmaster separati da virgole.
+ .
+ Esempio:
+ .
+   postmaster@cru.fr, root@home.cru.fr
+Description-ja.UTF-8: リストマスターのメールアドレス:
+ リストマスターはメーリングリストの管理権限を持った人 (メーリングリストのスーパーユーザ) です。
+ .
+ リストマスターのメールアドレスをコンマで区切って入力してください。
+ .
+ 例:
+ .
+   postmaster@example.jp, root@home.example.jp
+Description-nl.UTF-8: E-mailadressen van de lijstbeheerders:
+ Lijstbeheerders zijn de bevoorrechte mensen die de e-maillijsten beheren (de supergebruikers van de lijst).
+ .
+ Gelieve lijstbeheerder-adressen op te geven gescheiden door komma's.
+ .
+ Voorbeeld:
+ .
+   postmaster@cru.fr, root@home.cru.fr
+Description-pt.UTF-8: Endereço(s) de email dos listmasters?
+ Os listmasters são pessoas privilegiadas que administram listas de correio (mailing lists superusers).
+ .
+ Por favor introduza os endereços de email dos listmasters separados por vírgulas.
+ .
+ Exemplo:
+ .
+   postmaster@cru.fr, root@home.cru.fr
+Description-pt_BR.UTF-8: Endereço(s) de e-mail do(s) listmaster(s):
+ Os listmasters são pessoas privilegiadas que administram listas de discussões (superusuários de listas de discussões).
+ .
+ Por favor, forneça os endereços de e-mail dos listmasters separados por vírgulas.
+ .
+ Exemplo:
+ .
+   postmaster@cru.br, root@home.cru.br
+Description-ru.UTF-8: Почтовые адреса хозяев списков (listmasters):
+ Хозяева списков -- это люди, которые администрируют списки рассылки (суперпользователи списков рассылки).
+ .
+ Задайте почтовые адреса хозяев списков через запятую.
+ .
+ Пример:
+ .
+   postmaster@cru.fr, root@home.cru.fr
+Description-sv.UTF-8: Ange e-postadresserna till listmästarna:
+ Listmästarna är privilegierade folk som administrerar sändlistor (superanvändare för sändlistor).
+ .
+ Ange listmästarnas e-postadresser separerade med kommatecken.
+ .
+ Exempel:
+ .
+   postmaster@cru.fr, root@home.cru.fr
+
+Template: sympa/remove_spool
+Type: boolean
+Default: false
+Description: Should lists home and spool directories be removed?
+ The lists home directory (/var/lib/sympa) contains the mailing lists
+ configurations, mailing list archives and S/MIME user certificates
+ (when sympa is configured for using S/MIME encryption and authentication).
+ The spool directory (/var/spool/sympa) contains various queue directories.
+ .
+ Note that if those directories are empty, they will be automatically
+ removed.
+ .
+ Please choose whether you want to remove lists home and spool directories.
+Description-cs.UTF-8: Mají se odstranit domovské a spool adresáře konferencí?
+ Domovský adresář /var/lib/sympa obsahuje nastavení jednotlivých diskusních skupin, jejich archivy a S/MIME certifikáty uživatelů (pokud je sympa nastavena pro S/MIME šifrování a autentizaci). Spool adresář /var/spool/sympa obsahuje různé adresáře s frontami.
+ .
+ Pokud budou adresáře prázdné, budou automaticky smazány.
+ .
+ Rozhodněte se, zda chcete odstranit domovské a spool adresáře.
+Description-da.UTF-8: Skal listens hjemme- og kømapper fjernes?
+ Listens hjemmemappe (/var/lib/sympa) indeholder konfigurationerne for postlisterne, postlistearkiverne og S/MIME-brugercertifikater (når sympa er konfigureret med brug af S/MIME-kryptering og -godkendelse). Kømappen (/var/spool/sympa) indeholder forskellige datastrukturmapper.
+ .
+ Bemærk at hvis disse mapper er tomme, vil de automatisk blive fjernet.
+ .
+ Vælg venligst om du ønsker at fjerne listers hjemme- og kømapper.
+Description-de.UTF-8: Sollen die Home- und Spoolverzeichnisse der Listen gelöscht werden?
+ Das Home-Verzeichnis der Listen (/var/lib/sympa) enthält die Konfigurationen für die Mailinglisten, die Archive der Mailinglisten und S/MIME-Benutzerzertifikate (wenn Sympa für die Verwendung von S/MIME-Verschlüsselung und Authentifizierung konfiguriert wurde). Das Spool-Verzeichnis /var/spool/sympa enthält verschiedene Queue-Verzeichnisse.
+ .
+ Falls diese Verzeichnisse leer sein sollten, werden sie automatisch entfernt.
+ .
+ Bitte wählen Sie aus, ob Sie die Home- und Spoolverzeichnisse der Listen entfernen wollen.
+Description-es.UTF-8: ¿Se deberían borrar el directorio de inicio y el directorio «spool» de las listas?
+ El directorio de inicio de las listas («/var/lib/sympa») contiene las configuraciones, los archivos y los certificados de usuario S/MIME (cuando symap está configurado para utilizar el cifrado y la autenticación S/MIME) de las listas de correo. El directorio «spool» («/var/spool/sympa») contiene varios directorios con colas.
+ .
+ Tenga en cuenta que si esos directorios están vacíos, se borrarán automáticamente.
+ .
+ Escoja si quiere borrar el directorio de inicio y el directorio «spool».
+Description-eu.UTF-8: Zerrenden direktorio nagusia eta ilararen direktorioak ezabatu behar dira?
+ Zerrenden direktorio nagusiak (/var/lib/sympa) honako edukia du: posta-zerrenden konfigurazioak, posta-zerrenden biltegiak eta S/MIME erabiltzaile-ziurtagiriak (sympa S/MIME enkriptazio eta autentifikazioa erabiltzeko konfiguratuta dagoen kasuetan). Ilararen direktorioan (/var/spool/sympa) hainbat ilara desberdinen direktorioak daude.
+ .
+ Kontutan izan direktorio horiek hutsik badaude automatikoki ezabatuko direla.
+ .
+ Aukeratu zerrenden direktorio nagusia eta ilaren direktorioak ezabatu nahi dituzun ala ez.
+Description-fr.UTF-8: Voulez-vous supprimer les répertoires de listes et de mise en attente ?
+ Le répertoire des listes (/var/lib/sympa) contient la configuration des listes de diffusion, les archives de listes de diffusion ainsi que les certificats S/MIME des utilisateurs (quand sympa est configuré pour utiliser le chiffrement et l'authentification S/MIME). Le répertoire de mise en attente (« spool ») (/var/spool/sympa) contient quant à lui des répertoires de files d'attentes diverses.
+ .
+ Notez que ces répertoires seront automatiquement supprimés s'ils sont vides.
+ .
+ Veuillez choisir si vous voulez supprimer les répertoires de listes et de mise en attente.
+Description-gl.UTF-8: ¿Quere eliminar os directorios inicial e de traballo das listas?
+ O directorio inicial das listas (/var/lib/sympa) contén as configuracións e os arquivos das listas de correo e os certificados de usuario S/MIME (cando sympa está configurado para empregar cifrado e autenticación S/MIME). O directorio de traballo (/var/spool/sympa) contén varios directorios de colas.
+ .
+ Teña en conta que, se eses directorios están baleiros, hanse eliminar automaticamente.
+ .
+ Indique se quere eliminar os directorios inicial e de traballo das listas.
+Description-it.UTF-8: Eliminare le directory home e di spool delle liste?
+ La directory home delle liste (/var/lib/sympa) contiene le configurazioni delle mailing list, gli archivi delle mailing list e i certificati utente S/MIME (quando sympa è stato configurato per usare la cifratura e l'autenticazione S/MIME). La directory di spool (/var/spool/sympa) contiene varie directory con code.
+ .
+ Notare che se tali directory sono vuote, verranno rimosse automaticamente.
+ .
+ Scegliere se si desidera rimuovere le directory home e di spool delle liste.
+Description-ja.UTF-8: メーリングリストのホームディレクトリとスプールディレクトリを削除しますか?
+ メーリングリストのホームディレクトリ (/var/lib/sympa) には、メーリングリストの設定、アーカイブ、(sympa が S/MIME による暗号化ならびに認証を使うように設定されている場合は) S/MIME のユーザ証明書が含まれています。スプールディレクトリ (/var/spool/sympa) には様々なキューディレクトリが含まれています。
+ .
+ これらのディレクトリが空の場合は、自動的に削除されることに注意ください。
+ .
+ メーリングリストのホームディレクトリとスプールディレクトリを削除するかどうかを決めてください。
+Description-nl.UTF-8: Wilt u dat de spool- en thuismappen van de lijsten verwijderd worden?
+ De thuismap van de lijsten (/var/lib/sympa) bevat de e-maillijst-configuraties, de e-maillijst-archieven, en de S/MIME gebruikerscertificaten (wanneer sympa ingesteld is om gebruik te maken van S/MIME encryptie en authenticatie). De spoolmap (/var/spool/sympa) bevat verscheidene wachtrij-mappen.
+ .
+ Merk op dat deze mappen automatisch verwijderd worden indien ze leeg zijn.
+ .
+ Gelieve aan te geven of u wilt dat de thuis- en spoolmappen van de lijsten verwijderd worden.
+Description-pt.UTF-8: Devem ser removidos os directórios home e spool ?
+ O directório home das listas (/var/lib/sympa) contém as configurações das mailing lists, arquivos das mailing lists e certificados s/MIME dos utilizadores (quando o sympa for configurado para utilizar encriptação e autenticação S/MIME). O directório de spool (/var/spool/sympa) tem vários directórios queue.
+ .
+ Note que se esses directórios estão vazios, serão automaticamente removidos.
+ .
+ Por favor escolha se quer remover os directórios de spool e home das listas.
+Description-pt_BR.UTF-8: O diretório home e o diretório de spool das listas devem ser removidos?
+ O diretório home das listas (/var/lib/sympa) contém as configurações das listas de discussões, os arquivos das listas de discussões e certificados S/MIME de usuários (quando o sympa é configurado para usar criptografia S/MIME e autenticação). O diretório de spool (/var/spool/sympa) contém vários diretórios de filas.
+ .
+ Note que caso os diretórios estejam vazios os mesmos serão removidos automaticamente.
+ .
+ Por favor, escolha se você deseja remover o diretório home e o diretório de spool das listas.
+Description-ru.UTF-8: Удалить домашние (home) и рабочие (spool) каталоги списков?
+ Домашний каталог списков (/var/lib/sympa) содержит настройки списков рассылки, архивы списков рассылки и пользовательские сертификаты S/MIME (когда в sympa используется шифрование S/MIME и аутентификация). Рабочий каталог (/var/spool/sympa) содержит различные каталоги очередей.
+ .
+ Обратите внимание, что если эти каталоги пусты, то они будут автоматически удалены.
+ .
+ Укажите, нужно ли удалить домашние и рабочие директории списков.
+Description-sv.UTF-8: Ska listornas hem- och kökataloger tas bort?
+ Listornas hemkatalog (/var/lib/sympa) innehåller konfigurationer för sändlistor och användarnas S/MIME-certifikat (när sympa är konfigurerad till att använda S/MIME-kryptering och autentisering). Kökatalogen (/var/spool/sympa) innehåller olika kökataloger.
+ .
+ Observera att om dessa kataloger är tomma kommer de automatiskt att tas bort.
+ .
+ Välj huruvida du vill ta bort listornas hem- och kökataloger.
+
+Template: wwsympa/wwsympa_url
+Type: string
+Description: URL to access WWSympa:
+Description-cs.UTF-8: URL pro přístup k WWSympa:
+Description-da.UTF-8: Internetadresse som tilgår WWSympa:
+Description-de.UTF-8: URL zum Zugriff auf WWSympa:
+Description-es.UTF-8: URL para acceder a WWSympa:
+Description-eu.UTF-8: URLa WWSympa-ra sarbidetzeko:
+Description-fr.UTF-8: URL d'accès à WWSympa :
+Description-it.UTF-8: URL per accedere a WWSympa:
+Description-ja.UTF-8: WWSympa へのアクセス URL:
+Description-nl.UTF-8: URL waarop WWWSympa beschikbaar is:
+Description-pt.UTF-8: URL para aceder a WWSympa:
+Description-pt_BR.UTF-8: URL para acessar WWSympa:
+Description-ru.UTF-8: URL для доступа к WWSympa:
+Description-sv.UTF-8: URL för att komma åt WWSympa:
+
+Template: wwsympa/webserver_type
+Type: select
+Choices: Apache 2, Other
+Choices-cs.UTF-8: Apache 2, Jiný
+Choices-da.UTF-8: Apache 2, Andet
+Choices-de.UTF-8: Apache 2, anderen
+Choices-es.UTF-8: Apache 2, Otro
+Choices-eu.UTF-8: Apache 2, Bestelakoak
+Choices-fr.UTF-8: Apache 2, Autre
+Choices-gl.UTF-8: Apache 2, Outro
+Choices-it.UTF-8: Apache 2, Altro
+Choices-ja.UTF-8: Apache 2, その他
+Choices-nl.UTF-8: Apache 2, Overige
+Choices-pt.UTF-8: Apache 2, Outro
+Choices-pt_BR.UTF-8: Apache 2, Outro
+Choices-ru.UTF-8: Apache 2, Другой
+Choices-sv.UTF-8: Apache 2, Annan
+Default: Apache 2
+Description: Which Web Server(s) are you running?
+Description-cs.UTF-8: Který webový server používáte?
+Description-da.UTF-8: Hvilke internetservere kører du?
+Description-de.UTF-8: Welche(n) Webserver betreiben Sie?
+Description-es.UTF-8: ¿Qué servidor/es web está ejecutando?
+Description-eu.UTF-8: Zer web zerbitzari exekutatzen ari zara?
+Description-fr.UTF-8: Type de serveur(s) Web :
+Description-gl.UTF-8: ¿Que servidor(es) web está a empregar?
+Description-it.UTF-8: Quale o quali server web sono in esecuzione?
+Description-ja.UTF-8: どのウェブサーバを動作させていますか?
+Description-nl.UTF-8: Welke webserver(s) gebruikt u?
+Description-pt.UTF-8: Que tipo de Servidor(es) Web está a correr?
+Description-pt_BR.UTF-8: Qual(is) servidor(es) Web você está executando?
+Description-ru.UTF-8: Тип используемого веб-сервера?
+Description-sv.UTF-8: Vilken typ av webbserver kör du?
+
+Template: wwsympa/fastcgi
+Type: boolean
+Default: false
+Description: Do you want WWSympa to run with FastCGI?
+ FastCGI is an Apache module that makes WWSympa run much faster. This
+ option will be activated only if the `libapache2-mod-fcgid' package is
+ installed on your system. Please first make sure you installed this
+ package. FastCGI is required for using the Sympa SOAP server.
+Description-cs.UTF-8: Chcete WWSympa spouštět s FastCGI?
+ FastCGI je modul do Apache, se kterým běží WWSympa mnohem rychleji. Tato možnost bude použita pouze v případě, že máte nainstalovaný balík „libapache2-mod-fcgid“. Nejprve se prosím přesvědčte, zda máte tento balík nainstalován. FastCGI je vyžadováno pro používání Sympa SOAP serveru.
+Description-da.UTF-8: Ønsker du at WWSympa skal køre med FastCFI?
+ FastCGI er et Apachemodul, som får WWSympa til at køre meget hurtigere. Denne indstilling vil kun blive aktiveret, hvis pakken »libapache-mod-fastcgi« er installeret på dit system. Sikr dig først, at du har denne pakke installeret. FastCGI er krævet for at kunne bruge Sympas SOAP-server.
+Description-de.UTF-8: Soll WWSympa mit FastCGI ausgeführt werden?
+ FastCGI ist ein Apache-Modul, das WWSympa beschleunigt. Diese Option steht nur zur Auswahl, falls das Paket »libapache2-mod-fcgid« installiert ist. Bitte stellen Sie sicher, dass das Paket installiert ist. FastCGI wird für den Sympa-SOAP-Server benötigt.
+Description-es.UTF-8: ¿Desea ejecutar WWSympa con FastCGI?
+ FastCGI es un módulo de Apache que hace que WWSympa se ejecute mucho más rápido. Esta opción se activará sólo si el paquete «libapache2-mod-fcgid» está instalado en el sistema. Por favor, primero asegúrese de que está instalado este paquete. FastCGI es necesario para utilizar el servidor SOAP de Sympa.
+Description-eu.UTF-8: Nahi duzu WWSympa-k FastCGI erabiltzea?
+ FastCGI Apache-ren modulu bat da, eta horren bitartez WWSympa askoz azkarrago exekutatzea lortzen da. Aukera hau aktibatzeko `libapache2-mod-fcgid' paketea instalatuta egon beharko luke. Ziurtatu zaitez pakete hori instalatuta dagoela. FastCGI beharrezkoa da Sympa SOAP zerbitzaria erabiltzeko.
+Description-fr.UTF-8: Voulez-vous utiliser WWSympa avec FastCGI ?
+ FastCGI est un module Apache qui permet d'exécuter WWSympa plus rapidement. Cette option ne pourra être activée que si le paquet « libapache-mod-fastcgi » est installé sur votre système. Assurez-vous d'abord que vous avez installé ce paquet. FastCGI est indispensable pour utiliser le serveur SOAP Sympa.
+Description-gl.UTF-8: ¿Quere executar WWSympa con FastCGI?
+ FastCGI é un módulo de Apache que fai que WWSympa funcione moito máis rápido. Esta opción ha activarse só se o paquete "libapache2-mod-fcgid" está instalado no sistema. Asegúrese primeiro de ter instalado o paquete. É preciso FastCGI para empregar o servidor SOAP de Sympa.
+Description-it.UTF-8: Eseguire WWSympa con FastCGI?
+ FastCGI è un modulo Apache che fa sì che WWSympa venga eseguito molto più velocemente. Questa opzione verrà attivata solamente se nel sistema è installato il pacchetto "libapache2-mod-fcgid". Assicurarsi prima di avere installato questo pacchetto. FastCGI è necessario per usare il server SOAP Sympa.
+Description-ja.UTF-8: WWSympa で FastCGI を有効にして動作させますか?
+ FastCGI は Apache モジュールで、これを使うことで WWSympa がより速く動作します。このオプションは「libapache2-mod-fcgid」パッケージがシステムにインストールされている時のみ有効にされます。まずこのパッケージをインストールしてあるのを確認ください。FastCGI は Sympa SOAP サーバを使うのに必要です。
+Description-nl.UTF-8: Wilt u dat WWSympa gebruik maakt van FastCGI?
+ FastCGI is een Apachemodule waarmee WWSympa een stuk sneller wordt. Deze optie wordt enkel actief wanneer het 'libapache2-mod-fcgid'-pakket op uw systeem geïnstalleerd is. Gelieve u ervan te verzekeren dat u dit pakket geïnstalleerd heeft. FastCGI is vereist om de Sympa-SOAP-server te kunnen gebruiken.
+Description-pt.UTF-8: Quer que o WWSympa corra com FastCGI?
+ O FastCGI é um módulo do Apache que torna o WWWSympa muito mais rápido. Esta opção será activada apenas se o pacote `libapache2-mod-fcgid' estiver instalado no seu sistema. Por favor primeiro assegure-se que instalou este pacote. O FastCGI é necessário para utilizar o servidor SOAP do Sympa.
+Description-pt_BR.UTF-8: Você deseja que o WWSympa seja executado com o FastCGI?
+ O FastCGI é um módulo do Apache que faz com que o WWSympa seja executado muito mais rápido. Essa opção será ativada somente caso o pacote 'libapache2-mod-fcgid' esteja instalado em seu sistema. Por favor, primeiro certifique-se de que você instalou esse pacote. O FastCGI é requerido para usar o servidor SOAP do Sympa.
+Description-ru.UTF-8: Запускать WWSympa с помощью FastCGI?
+ FastCGI -- это модуль Apache, который позволяет WWSympa работать намного быстрее. Эта опция будет активна только если в вашей системе установлен пакет libapache2-mod-fcgid. Сперва убедитесь, что вы установили этот пакет. FastCGI необходим для использования Sympa SOAP сервера.
+Description-sv.UTF-8: Vill du att WWSympa ska köra med FastCGI?
+ FastCGI är en Apache-modul som gör att WWSympa kör mycket snabbare. Detta alternativ kommer att bli aktivt endast om paketet "libapache2-mod-fcgid" finns installerat på ditt system. Kontrollera att du har paketet installerat. FastCGI krävs för att använda sympas SOAP-server.
+
+Template: sympa/use_soap
+Type: boolean
+Default: false
+Description: Do you want the sympa SOAP server to be used?
+ Sympa SOAP server allows to access a Sympa service from within another
+ program, written in any programming language and on any computer. The SOAP
+ server provides a limited set of high level functions including login,
+ which, lists, subscribe, signoff.
+ .
+ The SOAP server uses libsoap-lite-perl package and a webserver like apache.
+Description-cs.UTF-8: Chcete používat Sympa SOAP server?
+ Sympa SOAP server umožňuje přistupovat k Sympě z jiných programů. Ty mohou být napsány v libovolném jazyce a mohou běžet na libovolném počítači. SOAP server poskytuje omezenou škálu vysokoúrovňových funkcí, jako třeba login, which, lists, subscribe nebo signoff.
+ .
+ SOAP server používá balík libsoap-lite-perl a webový server typu Apache.
+Description-da.UTF-8: Ønsker du at sympas SOAP-server skal bruges?
+ Sympas SOAP-server tillader adgang til en Sympatjeneste fra et andet program, skrevet i ethvert programmeringssprog og på enhver computer. SOAP-serveren tilbyder et begrænset antal højniveaufunktioner som login, which, lists, subscribe, signoff.
+ .
+ SOAP-serveren bruger pakken libsoap-lite-perl og en internetserver som apache.
+Description-de.UTF-8: Soll der Sympa-SOAP-Server verwendet werden?
+ Der Sympa-SOAP-Server erlaubt den Zugriff auf Sympa-Dienste von innerhalb anderer Programme, die in jeder Programmiersprache geschrieben sein können und auf jedem Computer laufen können. Der SOAP-Server stellt eine begrenzte Anzahl von abstrakten Funktionen bereit, darunter login, which, lists, subscribe, signoff.
+ .
+ Der SOAP-Server verwendet das libsoap-lite-perl-Paket und einen Webserver wie Apache.
+Description-es.UTF-8: ¿Desea utilizar el servidor SOAP de Sympa?
+ El servidor SOAP de Sympa permite acceder al servicio de Sympa desde otro programa, escrito en cualquier lenguaje de programación y en cualquier máquina. El servidor SOAP proporciona un conjunto limitado de funciones de alto nivel incluyendo: login, which, lists, subscribe, signoff.
+ .
+ El servidor SOAP utiliza el paquete «libsoap-lite-perl» y un servidor web como apache.
+Description-eu.UTF-8: Nahi duzu Sympa SOAP zerbitzaria erabiltzea?
+ Sympa SOAP zerbitzariak edozer programazio hizkuntza eta edozer ordenagailutik beste programa batzuen bitartez Sympa zerbitzua atzitzeko aukera ematen du. SOAP zerbitzariak maila altuko funtzioen multzo mugatu batez hornitzen du, hala nola 'login', 'which', 'lists', 'subscribe'  eta 'signoff'.
+ .
+ SOAP zerbitzariak 'libsoap-lite-perl' paketea eta apache bezalako web zerbitzari bat erabiltzen du.
+Description-fr.UTF-8: Voulez-vous utiliser le serveur SOAP Sympa ?
+ Le serveur SOAP Sympa permet l'accès au service Sympa depuis un autre programme, quel que soit le langage dans lequel il est écrit et la plateforme sur laquelle il est utilisé. Ce serveur offre un ensemble limité de fonctions de haut niveau, notamment les commandes login, which, lists, subscribe et signoff.
+ .
+ Le serveur SOAP utilise le paquet libsoap-lite-perl et un serveur web comme Apache.
+Description-gl.UTF-8: ¿Quere empregar o servidor SOAP de sympa?
+ O servidor SOAP de Sympa permite acceder a un servizo Sympa desde outro programa, escrito en calquera linguaxe de programación e en calquera ordenador. O servidor SOAP fornece un xogo limitado de funcións de alto nivel, coma a "login", ""which", "lists", "subscribe" e "signoff".
+ .
+ O servidor SOAP emprega o paquete libsoap-lite-perl e un servidor web coma apache.
+Description-it.UTF-8: Usare il server SOAP Sympa?
+ Il server SOAP Sympa permette di accedere a un servizio Sympa dall'interno di un altro programma, scritto in qualsiasi linguaggio di programmazione e su qualsiasi computer. Il server SOAP fornisce un insieme limitato di funzioni di alto livello inclusi login, which, lists, subscribe, signoff.
+ .
+ Il server SOAP usa il pacchetto libsoap-lite-perl e un server web come apache.
+Description-ja.UTF-8: sympa SOAP サーバを利用するようにしますか?
+ Sympa SOAP サーバは、様々な言語で書かれている、どこかのコンピュータにある他のプログラムからの Sympa サービスへのアクセスを許可します。SOAP サーバは login、which、lists、subscribe、signoff を含む限られたセットの高位関数を提供します。
+ .
+ SOAP サーバは「libsoap-lite-perl」パッケージと apache のようなウェブサーバを利用します。
+Description-nl.UTF-8: Wilt u de sympa SOAP-server gebruiken?
+ De sympa SOAP-server laat toe om de sympa-dienst te benaderen van in een ander programma. Dit andere programma kan geschreven zijn in om het even welke taal en kan op gelijk welke computer draaien. De SOAP-server biedt een beperkte set van hoog-niveau-functies aan waaronder 'login, which, lists, subscribe, signoff'.
+ .
+ De SOAP-server maakt gebruik van het 'libsoap-lite-perl'-pakket en een webserver (bv. Apache).
+Description-pt.UTF-8: Quer que seja utilizado o servidor SOAP do Sympa?
+ O servidor SOAP do Sympa permite aceder a um serviço Sympa a partir de outro programa, escrito em qualquer linguagem de programação e em qualquer computador. O servidor SOAP disponibiliza um conjunto limitado de funções de alto nível incluindo login, which, lists, subscribe, signoff.
+ .
+ O servidor SOAP utiliza o pacote libsoap-lite-perl e um servidor web como o apache.
+Description-pt_BR.UTF-8: Você deseja que o servidor SOAP do sympa seja usado?
+ O servidor SOAP do Sympa permite acesso ao serviço Sympa de dentro de outro programa, escrito em qualquer linguagem de programação e em qualquer computador. O servidor SOAP fornece um conjunto limitado de funções de alto nível incluindo login, which, lists, subscribe e signoff.
+ .
+ O servidor SOAP usa o pacote libsoap-lite-perl e um servidor web como o apache.
+Description-ru.UTF-8: Использовать sympa SOAP сервер?
+ Sympa SOAP сервер обеспечивает доступ к сервису Sympa из других программ, написанных на любом языке программирования и с любого компьютера. SOAP сервер предоставляет ограниченный набор функций высокого уровня, включая login, which, lists, subscribe, signoff.
+ .
+ SOAP сервер использует пакет libsoap-lite-perl и веб-сервер типа apache.
+Description-sv.UTF-8: Vill du att sympas SOAP-server ska användas?
+ Sympas SOAP-server tillåter åtokmst till en Sympa-tjänst inifrån ett annat program, skrivet i valfritt programmeringsspråk och på valfri dator. SOAP-servern tillhandahåller en begränsad uppsättning högnivåfunktioner som inkluderar login, which, lists, subscribe, signoff.
+ .
+ SOAP-servern använder paketet libsoap-lite-perl och en webbserver som apache.
+
+Template: wwsympa/remove_spool
+Type: boolean
+Default: false
+Description: Should the web archives and the bounce directory be removed?
+ If you used the default configuration, WWSympa web archives are located in
+ /var/lib/sympa/wwsarchive. The WWSympa bounce directory contains bounces
+ (non-delivery reports) and is set to /var/spool/sympa/wwsbounce by
+ default.
+ .
+ Please choose whether you want to remove the web archives and the bounce
+ directory.
+Description-cs.UTF-8: Mají se smazat webové archivy a adresář s vrácenými příspěvky?
+ Pokud jste použili výchozí nastavení, nachází se webové archivy WWSympy ve /var/lib/sympa/wwsarchive. Adresář s vrácenými příspěvky obsahuje zprávy o nedoručitelných zprávách a implicitně je nastaven na /var/spool/sympa/wwsbounce.
+ .
+ Rozhodněte se, zda chcete odstranit webové archivy a adresář s vrácenými příspěvky.
+Description-da.UTF-8: Skal internetarkiverne og mappen bounce fjernes?
+ Hvis du brugte standardkonfigurationen, er WWSympas internetarkiver placeret i /var/lib/sypa/wwsarchive. WWSympas bouncemappe indeholder retursvar (rapporter om manglende leveringer) og er som standard angivet til /var/spool/sympa/wwsbounce.
+ .
+ Vælg venligst om du ønsker at fjerne internetarkiverne og mappen bounce.
+Description-de.UTF-8: Sollen die Webarchive und das Bounce-Verzeichnis gelöscht werden?
+ WWSympa Webarchive befinden sich in der Standardkonfiguration im Verzeichnis /var/lib/sympa/wwwsarchive. Das Bounceverzeichnis befindet sich in /var/spool/sympa/wwsbounce und enthält Berichte über nicht-erfolgte Zustellungen.
+ .
+ Wählen Sie aus, ob Sie die WWW-Archive und das Verzeichnis für Bounces entfernt haben möchten.
+Description-es.UTF-8: ¿Se deberían borrar los archivos web y el directorio «bounce»?
+ Si utiliza la configuración predeterminada, los archivos web de WWSympa están ubicados en «/var/lib/sympa/wwsarchive». El directorio «bounce» de WWSympa contiene los rebotes (informes no entregados) y está ubicado en «/var/spool/sympa/wwsbounce» de forma predeterminada.
+ .
+ Escoja si quiere borrar los archivos web y el directorio «bounce».
+Description-eu.UTF-8: Web fitxategiak eta errebote-direktorioa ezabatu behar dira?
+ Lehenetsitako konfigurazioa erabiltzen baduzu, WWSympa web fitxategiak /var/lib/sympa/wwsarchive-en kokatuta egongo dira. WWSympa-ren errebote-direktorioak errebotatutako (bidali gabeko) txostenak ditu eta lehenespenez /var/spool/sympa/wwsbounce direktorioan kokatzen da.
+ .
+ Hautatu web fitxategiak eta errebote-direktorioa ezabatu nahi duzun ala ez.
+Description-fr.UTF-8: Supprimer les archives web et le répertoire de rejets lors de la purge de sympa ?
+ Si vous utilisez la configuration par défaut, les archives web de WWSympa se trouvent dans le répertoire /var/lib/sympa/wwsarchive. Le sous-répertoire de rejets (« bounce ») de WWSympa contient quant à lui les comptes-rendus de courriers non délivrés (« bounces »). Son emplacement par défaut est /var/spool/sympa/wwsbounce.
+ .
+ Veuillez choisir si vous souhaitez supprimer les archives web et le sous-répertoire de rejets au moment de l'exécution de « dpkg --purge sympa ».
+Description-gl.UTF-8: ¿Quere eliminar os arquivos da web e o directorio de mensaxes rebotadas?
+ Se empregou a configuración por defecto, os arquivos en web de WWSympa están ubicados en /var/lib/sympa/wwsarchive. O directorio de mensaxes devoltas WWSympa contén mensaxes devoltas e está configurado en /var/spool/sympa/wwsbounce por defecto.
+ .
+ Indique se quere eliminar os arquivos en web e o directorio de mensaxes devoltas.
+Description-it.UTF-8: Eliminare gli archivi web e la directory di bounce?
+ Se è stata usata la configurazione predefinita, gli archivi di WWSympa sono contenuti in /var/lib/sympa/wwsarchive. La directory di bounce di WWSympa contiene i bounce (rapporti sui messaggi non consegnati) ed è impostata in modo predefinito in /var/spool/sympa/wwsbounce.
+ .
+ Scegliere se rimuovere gli archivi web e la directory di bounce.
+Description-ja.UTF-8: ウェブアーカイブディレクトリとバウンスディレクトリを削除しますか?
+ デフォルトの設定を使っている場合は、WWSympa ウェブアーカイブは /var/lib/sympa/wwsarchive にあります。WWSympa バウンスディレクトリはバウンス (配送されなかったという報告) を含んでおり、デフォルトでは /var/spool/sympa/wwsbounce に設定されています。
+ .
+ ウェブアーカイブディレクトリとバウンスディレクトリを削除するかどうかを決めてください。
+Description-nl.UTF-8: Wilt u dat de webarchieven en de terugstuurmap verwijderd worden?
+ Wanneer u gebruik maakt van de standaardconfiguratie bevinden WWSympa webarchieven zich in /var/lib/sympa/wwsarchive. De WWSympa terugstuurmap bevat 'bounces' (niet-afgeleverde berichten) en is standaard in /var/spool/sympa/wwsbounce.
+ .
+ Gelieve aan te geven of u wilt dat de webarchieven en de terugstuurmap verwijderd worden.
+Description-pt.UTF-8: Devem os arquivos web e o directório bounce ser removidos ?
+ Se você utilizou a configuração por omissão, os arquivos web WWSympa estão localizados em /var/lib/sympa/wwsarchive. O directório bounce do WWSympa contém bounces (relatórios não entregues) e está definido por omissão em /var/spool/sympa/wwsbounce.
+ .
+ Por favor escolha se quer remover os arquivos web e o directório bounce.
+Description-pt_BR.UTF-8: Os arquivos web e o diretório de bounces devem ser removidos?
+ Se você usou a configuração padrão, os arquivos web do WWSympa estão localizados em /var/lib/sympa/wwsarchive. O diretório de bounces do WWSympa contém bounces (relatórios de entregas não feitas) e é definido como /var/spool/sympa/wwsbounce por padrão.
+ .
+ Por favor, escolha se você deseja remover os arquivos web e o diretório de bounces.
+Description-ru.UTF-8: Удалить веб-архивы и каталог обратных ответов?
+ Если вы используете настройки по умолчанию, то веб-архивы WWSympa располагаются в /var/lib/sympa/wwsarchive. Каталог обратных ответов (bounce) WWSympa содержит отчеты о недоставке и по умолчанию располагается в /var/spool/sympa/wwsbounce.
+ .
+ Ответьте утвердительно, если хотите удалить веб-архивы и каталог обратных ответов.
+Description-sv.UTF-8: Ska webbarkiven och studskatalogen tas bort?
+ Om du använder standardkonfigurationen kommer WWSympa att finnas i /var/lib/sympa/wwsarchive. Studskatalogen för WWSympa innehåller e-post som studsat (rapporter om icke-levererad e-post) och är som standard inställd till /var/spool/sympa/wwsbounce.
+ .
+ Välj huruvida du vill ta bort webbarkiven och studskatalogen.

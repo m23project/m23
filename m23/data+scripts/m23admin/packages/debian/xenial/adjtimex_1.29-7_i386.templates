@@ -1,0 +1,87 @@
+
+Template: adjtimex/compare_rtc
+Type: boolean
+Default: false
+Description: Run adjtimexconfig when adjtimex is installed or upgraded?
+ The adjtimexconfig script will use adjtimex to find values for the kernel
+ variables "tick" and "frequency" that will make the system clock approximately
+ agree with the hardware clock (also known as the CMOS clock).  It then
+ saves these values in the configuration file /etc/default/adjtimex so the
+ settings will be restored on every boot, when /etc/init.d/adjtimex runs.
+ .
+ The script takes 70 seconds to run, so running it for every upgrade
+ may be a waste of time. Alternatively, you can run adjtimexconfig
+ manually when needed, or determine the kernel variables by using other
+ methods and set them manually in /etc/default/adjtimex.
+Description-cs.UTF-8: Spustit adjtimexconfig po instalaci nebo aktualizaci adjtimex?
+ Skript adjtimexconfig použije adjtimex k nalezení hodnot „tick“ a „frequency“ jádra tak, že nastaví systémové hodiny přibližně na hodnoty těch hardwarových (také známých jako CMOS hodiny). Tyto hodnoty pak uloží do konfiguračního souboru /etc/default/adjtimex, aby mohlo být nastavení obnoveno při každém startu, vždy při spuštění /etc/init.d/adjtimex.
+ .
+ Spuštění skriptu zabere 70 sekund, takže jeho spuštění při každé aktualizaci může být ztrátou času. Volitelně můžete adjtimexconfig spustit podle potřeby také ručně nebo určit proměnné jádra jinými způsoby a nastavit je ručně v souboru /etc/default/adjtimex.
+Description-da.UTF-8: Skal adjtimexconfig køres ved installation eller opgradering?
+ Skriptet adjtimexconfig vil bruge adjtimex til at finde de værdier til kernevariablene "tick" og "frequency", der vil få systemuret til at passe med computerens indbyggede ur (CMOS-uret). Den gemmer derefter værdierne i opsætningsfilen /etc/default/edjtimex, så indstillingerne bliver sat under hver opstart, når skriptet /etC/init.d/adjtimex køres.
+ .
+ Det tager 70 sekunder at køre skriptet, så at køre skriptet ved hver opgradering kan være spild af tid. Alternativt kan du selv køre adjtimexconfig når der er behov, eller finde kernevariablene på en anden måde og sætte dem manuelt i /etc/default/adjtimex.
+Description-de.UTF-8: Adjtimexconfig zur Installation oder Aktualisierung von Adjtimex aufrufen?
+ Das Skript »adjtimexconfig« nutzt Adjtimex, um die Werte der Kernelvariablen »tick« und »frequency« zu finden, damit die Systemuhr ungefähr mit der Rechneruhr (auch bekannt als CMOS-Uhr) übereinstimmt. Das Skript speichert diese Werte in der Konfigurationsdatei /etc/default/adjtimex, sodass die Einstellung bei jedem Systemstart wiederhergestellt wird, wenn /etc/init.d/adjtimex ausgeführt wird.
+ .
+ Das Skript benötigt 70 Sekunden, um durchzulaufen, es bei jeder Aktualisierung laufen zu lassen, dürfte Zeitverschwendung sein. Andererseits können Sie »adjtimexconfig« selbst bei Bedarf starten oder Sie finden die Kernelvariablen auf einem anderen Weg heraus (siehe Handbuchseite von Adjtimex) und speichern die Werte in der Datei /etc/default/adjtimex.
+Description-es.UTF-8: ¿Desea ejecutar adjtimexconfig cuando adjtimex se instale o actualice?
+ El script adjtimexconfig utilizará adjtimex para encontrar los valores de las variables «tick» y «frecuency» del núcleo que harán que el reloj del sistema concuerde aproximadamente con el reloj del hardware (también conocido como reloj CMOS). Entonces, se guardan estos valores en el archivo de configuración «/etc/default/adjtimex» de modo que los valores se restaurarán en cada arranque, cuando el script «/etc/init.d/adjtimex» se ejecute.
+ .
+ El script tarda 70 segundos para ejecutarse, por lo que ejecutarlo en cada actualización puede ser una pérdida de tiempo. De forma alternativa, puede ejecutar manualmente ajdtimexconfig cuando lo necesite, o determinar las variables del núcleo utilizando otros métodos e configurándolas en el archivo «/etc/default/adjtimex».
+Description-eu.UTF-8: Adjtimexconfig exekutatu adjtimex instalatu edo bertsio-berritzean?
+ Adjtimexconfig script-ak adjtimex erabiliko du kerneleko  "tick" eta "frequency" aldagaien balioa aurkitzeko honekin sistema erlojuak hardware erlojuarekin (CMOS ordularia bezala ere ezagutua) bat egingo du. Orduan balio hauek /etc/default/adjtimex konfigurazio fitxategian gordeko ditu Abio bakoitzean balio horiek berrezarri daitezen /etc/init.d/adjtimex exekutatzean.
+ .
+ Script-ak 70 segundu behar ditu exekutatzeko, beraz berau bertsio-berritze bakoitzean exekutatzea denbora galtze bat izan daiteke. Bestela behar duzunean adjtimexconfig eskuz konfiguratu dezakezu edo kernel aldagaiak beste metodo batez atzeman eta /etc/default/adjtimex fitxategian eskuz ipini ditzakezu.
+Description-fi.UTF-8: Tulisiko adjtimexconfig ajaa, kun adjtimex asennetaan tai päivitetään?
+ Komentosarja adjtimexconfig etsii ohjelman adjtimex avulla ytimen muuttujille ”tick” ja ”frequency” arvot, joilla järjestelmän kello näyttää suunnilleen samaa kuin laitteiston kello (CMOS-kello). Se tallentaa nämä arvot asetustiedostoon /etc/default/adjtimex, jolloin ne palautetaan järjestelmän käynnistyessä, kun /etc/init.d/adjtimex ajetaan.
+ .
+ Komentosarjan ajaminen kestää 70 sekuntia, joten sen ajaminen jokaisen päivityksen yhteydessä saattaa olla ajanhukkaa. Voit vaihtoehtoisesti ajaa adjtimexconfigin käsin tarvittaessa tai määrittää ytimen muuttujien arvot muilla keinoin ja asettaa ne käsin tiedostoon /etc/default/adjtimex.
+Description-fr.UTF-8: Faut-il lancer adjtimexconfig lors de l'installation ou de la mise à jour ?
+ Le script adjtimexconfig utilise adjtimex afin de trouver les valeurs appropriées pour les variables du noyau concernant le battement (« tick ») et la fréquence d'horloge. Cela permettra à l'horloge du système d'être à peu près en accord avec l'horloge matérielle (parfois appelée « horloge CMOS »). Ces valeurs seront alors conservées dans le fichier de configuration /etc/default/adjtimex ce qui permettra de les restaurer à chaque démarrage quand /etc/init.d/adjtimex s'exécutera. 
+ .
+ La durée d'exécution du script est de 70 secondes, ce qui peut être vu comme une perte de temps au démarrage. Vous pouvez également utiliser adjtimexconfig vous-même plus tard ou déterminer les valeurs des variables du noyau d'une autre manière. Ces valeurs devront ensuite être placées dans /etc/default/adjtimex.
+Description-gl.UTF-8: Desexa executar adjtimexconfig se instala ou actualiza?
+ O script adjtimexconfig empregará adjtimex para achar valores paras as variábeis do núcleo «tick» e «frequency» que fagan que o reloxo do sistema se corresponda aproximadamente co do hardware (o chamado reloxo da BIOS). Logo garda eses valores no ficheiro de configuración /etc/default/adjtimex de xeito que os valores se restauren en cada arranque, cando se executa /etc/init.d/adjtimex.
+ .
+ O script tarda 70 segundos en executarse, pode que executalo cada vez que se actualice pode ser un desperdicio de tempo. En alternativa, pode executar adjtimexconfig manualmente cando o precise, ou determinar as variábeis do núcleo empregando outros métodos e axustalas manualmente en /etc/default/adjtimex.
+Description-it.UTF-8: Eseguire adjtimexconfig quando adjtimex viene installato o aggiornato?
+ Lo script adjtimexconfig userà adjtimex per trovare i valori delle variabili del kernel «tick» e «frequency» per fare in modo che l'orario del sistema coincida approssimativamente a quello dell'orologio dell'hardware (anche conosciuto come orologio CMOS). Questi valori vengono poi salvati nel file di configurazione «/etc/default/adjtimex», in modo che le impostazioni vengano ripristinate a ogni avvio, quando «/etc/init.d/adjtimex» viene eseguito.
+ .
+ Lo script necessita di 70 secondi per essere eseguito, per cui lanciarlo a ogni aggiornamento potrebbe essere uno spreco di tempo. In alternativa è possibile eseguire manualmente adjtimexconfig quando è necessario, oppure determinare le variabili del kernel usando altri metodi e impostandole manualmente in «/etc/default/adjtimex».
+Description-ja.UTF-8: adjtimexconfig を adjtimex をインストール、あるいはアップグレードした時に実行しますか?
+ adjtimexconfig スクリプトは adjtimex を使用して、システムクロックをハードウェアクロック (CMOS クロックとしても知られています) とおおよそ同期するようにカーネル変数「tick」と「frequency」に与える値を見つけます。そして、この値を設定ファイル /etc/default/adjtimex に保存することで毎回起動時に /etc/init.d/adjtimex が動作する際に設定が復元されます。
+ .
+ スクリプトは動作に 70 秒もかかるのでアップグレードの度に毎回実行するのは時間の無駄です。別解としては adjtimexconfig を後ほど実行する、または他の方法でカーネル変数を決めて、手動で /etc/default/adjtimex への設定を行う、などが可能です。
+Description-nb.UTF-8: Skal adjtimexconfig kjøres når adjtimex installeres eller oppgraderes?
+ Skriptet adjtimexconfig vil bruke adjtimex til å finne verdier for kjerne- variablene «tick» og «frequency» som vil få systemklokka til å gå omtrent lik maskinklokka (også kalt CMOS-klokka). Deretter lagres disse verdiene i oppsettsfila /etc/default/adjtimex, slik at de blir tilbakestilt ved hver oppstart nåt /etc/init.d/adjtimex kjører.
+ .
+ Skriptet tar 70 sekunder å kjøre, så det kan være bortkastet tid å kjøre det ved hver oppgradering. Du kan ellers kjøre adjtimexconfig manuelt når det trengs, eller bestemme kjernevariablene på annen måte og sette dem inn manuelt i /etc/default/adjtimex.
+Description-nl.UTF-8: Wilt u dat adjtimexconfig bij het installeren en opwaarderen wordt gedraaid?
+ Het adjtimexconfig-script zal adjtimex gebruiken om de eigenschappen voor de kernelvariabelen "tick" en "frequency" te vinden. Dit zal er voor zorgen dat de systeemklok gelijk loopt met de hardware-klok (ook bekend onder de naam CMOS-klok). Deze eigenschappen worden opgeslagen in het configuratiebestand /etc/default/adjtimex, dus de instellingen worden bij elke systeemopstartprocedure hersteld als /etc/init.d/adjtimex draait.
+ .
+ Het script doet er 70 seconden over om te draaien. Als alternatief kunt u adjtimexconfig later handmatig draaien, of de kernelvariabelen op een andere manier bepalen en deze zelf in /etc/default/adjtimex zetten.
+Description-no.UTF-8: Skal adjtimexconfig kjøres når adjtimex installeres eller oppgraderes?
+ Skriptet adjtimexconfig vil bruke adjtimex til å finne verdier for kjerne- variablene «tick» og «frequency» som vil få systemklokka til å gå omtrent lik maskinklokka (også kalt CMOS-klokka). Deretter lagres disse verdiene i oppsettsfila /etc/default/adjtimex, slik at de blir tilbakestilt ved hver oppstart nåt /etc/init.d/adjtimex kjører.
+ .
+ Skriptet tar 70 sekunder å kjøre, så det kan være bortkastet tid å kjøre det ved hver oppgradering. Du kan ellers kjøre adjtimexconfig manuelt når det trengs, eller bestemme kjernevariablene på annen måte og sette dem inn manuelt i /etc/default/adjtimex.
+Description-pt.UTF-8: Correr o adjtimexconfig quando o adjtimex é instalado ou actualizado?
+ O script adjtimexconfig irá usar adjtimex para encontrar valores para as variáveis do kernel "tick" e "frequency" que irão tornar o relógio do sistema em concordância com o relógio de hardware (também conhecido por relógio CMOS). Irá então guardar os valores no ficheiro de configuração /etc/default/adjtimex para que as configurações sejam restauradas em cada arranque, quando o /etc/init.d/adjtimex é corrido.
+ .
+ Este script demora 70 segundos a correr, podendo ser um desperdício de tempo corrê-lo em cada actualização. Como alternativa, pode correr o adjtimexconfig manualmente quando necessário, ou determine as variáveis do kernel usando outro método e configure-as manualmente em /etc/default/adjtimex.
+Description-pt_BR.UTF-8: Executar o adjtimexconfig quando o adjtimex for instalado ou atualizado?
+ O script adjtimexconfig usará o adjtimex para encontrar valores para as variáveis "tick" e "frequency" do kernel, que farão o relógio do sistema o mais próximo do relógio do hardware (também conhecido como o relógio da CMOS). Ele então salva estes valores no arquivo de configuração /etc/default/adjtimex, assim as configurações serão restauradas a cada inicialização, quando o /etc/init.d/adjtimex executar.
+ .
+ O script leva 70 segundos para rodar, portanto rodá-lo a cada atualização pode ser um desperdício de tempo. Alternativamente, você pode executar o adjtimexconfig manualmente quando necessário, ou determinar as variáveis de kernel usando outros métodos e configurá-las manualmente em /etc/default/adjtimex.
+Description-ru.UTF-8: Запускать adjtimexconfig при установке или обновлении adjtimex?
+ Сценарий adjtimexconfig использует adjtimex при поиске значений переменных ядра "tick" и "frequency", которые помогают согласовывать системные часы с аппаратными часами (так называемые часы CMOS). Затем он сохраняет эти значения в файл настройки /etc/default/adjtimex для того, чтобы восстанавливать их с помощью сценария /etc/init.d/adjtimex при каждом запуске системы.
+ .
+ Длительность работы сценария -- 70 секунд, поэтому при каждом обновлении будет такая задержка в работе. В качестве альтернативы вы можете запустить adjtimexconfig вручную позже, или определить переменные ядра одним из нескольких других способов (смотрите справочную страницу по adjtimex) и сохранить их в файл /etc/default/adjtimex.
+Description-sv.UTF-8: Ska adjtimexconfig köras efter installation eller uppgradering av adjtimex?
+ Skriptet adjtimexconfig kommer att använda adjtimex för att hitta värden för kärnvariablerna "tick" och "frequency" som gör att systemklockan kommer överens med hårdvaruklockan (också kallad CMOS-klockan).  Den sparar sedan dessa värden i konfigurationsfilen /etc/default/adjtimex så att inställningarna kommer att användas vid varje uppstart, när /etc/init.d/adjtimex körs.
+ .
+ Skriptet tar 70 sekunder att köra vilket innebär att det kan vara slöseri med tid att köra vid varje uppgradering. Alternativt kan du köra adjtimexconfig själv när det behövs eller bestämma variabler för kärnan på andra sätt och ange dessa i /etc/default/adjtimex.
+Description-vi.UTF-8: Chạy adjtimexconfig khi adjtimex được cài đặt hay nâng cấp ?
+ Văn lệnh cấu hình adjtimexconfig thì sử dụng adjtimex để tìm giá trị cho hai biến hạt nhân « tick » và « frequency », để làm cho đồng hồ hệ thống tương ứng xấp xỉ với đồng hồ phần cứng (cũng được gọi như là đồng hồ CMOS). Văn lệnh này lưu các giá trị đó vào tập tin cấu hình « /etc/default/adjtimex », để phục hồi thiết lập khi nào việc khởi động chạy « /etc/init.d/adjtimex ».
+ .
+ Văn lệnh này chạy trong khoảng 70 giây thì có thể là bạn không muốn chạy nó vào mỗi lúc nâng cấp. Bạn cũng có thể chạy adjtimexconfig bằng tay khi cần thiết, hoặc quyết định những biến hạt nhân bằng phương pháp khác và lập bằng tay trong tập tin « /etc/default/adjtimex ».

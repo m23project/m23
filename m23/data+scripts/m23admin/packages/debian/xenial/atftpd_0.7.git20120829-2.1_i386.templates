@@ -1,0 +1,565 @@
+Template: atftpd/use_inetd
+Type: boolean
+Default: true
+Description: Should the server be started by inetd?
+ atftpd can be started by the inetd superserver or as a daemon and handle
+ incoming connections by itself. The latter is only recommend for very high
+ usage server.
+Description-ca.UTF-8: S'hauria d'iniciar el servidor mitjançant inetd?
+ És possible iniciar atftpd mitjançant el superservidor inetd o com a dimoni, deixant que aquest controli les connexions entrants. La darrera opció només es recomana en servidors amb molta càrrega.
+Description-cs.UTF-8: Má se server spouštět přes inetd?
+ atftpd může běžet jako samostatný daemon a sám zpracovávat příchozí požadavky, nebo může být spouštěn z metaserveru inetd. První možnost je doporučená pouze pro velmi vytížené servery.
+Description-da.UTF-8: Skal serveren startes af inetd?
+ atftpd kan startes af inetd superserveren eller som en dæmon, der håndterer indgående forbindelser selv. Sidstnævnte er kun anbefalet for maskiner med meget stort forbrug.
+Description-de.UTF-8: Soll der Server von inetd gestartet werden?
+ atftpd kann durch den Hauptserver inetd oder als Daemon gestartet werden, um so selbst externe Verbindungsaufnahmen zu verwalten. Letzteres ist nur bei sehr stark genutzten Servern empfehlenswert.
+Description-es.UTF-8: ¿El servidor debería arrancarse por medio de inetd?
+ atftpd puede iniciarse por medio del superservidor inetd o como un demonio y manejar las conexiones entrantes por sí mismo. El segundo caso se recomienda sólo para servidores con mucha carga de trabajo.
+Description-fi.UTF-8: Käynnistetäänkö palvelin inetdin avulla?
+ atftp voidaan käynnistää inetd-superpalvelimen avulla tai ajaa itsenäisenä taustaohjelmana, joka käsittelee yhteydenotot itse. Jälkimmäistä suositellaan vain hyvin raskaassa käytössä.
+Description-fr.UTF-8: Faut-il démarrer le serveur via inetd ?
+ Atftpd peut être démarré par le super-serveur inetd ou en serveur indépendant pour qu'il gère lui-même les connexions entrantes. Ce dernier mode n'est recommandé que pour les serveurs fortement sollicités.
+Description-gl.UTF-8: ¿Debería iniciarse o servidor mediante inetd?
+ Pódese iniciar atftpd no superservidor inetd ou pódese iniciar coma un servizo para que xestione as conexións entrantes el só. Só se recomenda isto se se emprega moito o servidor.
+Description-it.UTF-8: Avviare il server per mezzo di inetd?
+ È possibile avviare atftpd per mezzo del superserver inetd oppure come un demone per gestire in modo autonomo le proprie connessioni. La seconda opzione è raccomandata solo per server con un carico elevato.
+Description-ja.UTF-8: inetd をサーバの起動に利用しますか？
+ atftpd は、inetd から起動するか、もしくはデーモンとして動作し接続を自分で処理することもできます。後者は、高負荷のサーバで推奨されます。
+Description-nl.UTF-8: Moet de server door inetd worden gestart?
+ atftpd kan worden gestart door de inetd-superserver of als een achtergronddienst en zelf binnenkomende verbindingen afhandelen. Dit laatste wordt enkel aanbevolen voor een zeer veel gebruikte server.
+Description-pl.UTF-8: Czy serwer ma być uruchamiany przez inetd?
+ atftpd może być uruchamiany przez superserwer inetd lub może pracować jako demon i samemu akceptować połączenia. Drugie rozwiązanie jest zalecane w przypadku intensywnego wykorzystywania.
+Description-pt.UTF-8: Deve o servidor be iniciado pelo inetd?
+ O atftpd pode ser iniciado pelo super-servidor inetd ou como um daemon e lidar com todas as conexões por si próprio. Esta última hipótese é apenas recomendada para um uso intensivo do servidor.
+Description-pt_BR.UTF-8: O servidor deve ser iniciado pelo inetd?
+ O atftpd pode ser iniciado pelo super servidor inetd ou como um daemon e gerenciar conexões de entrada por si próprio. A última opção é recomendada somente para servidores com uma taxa de utilização bem alta.
+Description-ru.UTF-8: Запускать сервер с помощью inetd?
+ atftpd может запускаться с помощью суперсервера inetd или постоянно работать в режиме демона, принимая входящие соединения самостоятельно. Последнее рекомендуется только в случае очень большой нагрузки на сервер.
+Description-sk.UTF-8: Má byť server spúšťaný prostredníctvom inetd?
+ atftpd môže byť spúšťaný pomocou superservera inetd alebo môže bežať ako démon a spracovávať prichádzajúce požiadavky sám. Druhá možnosť je odporúčaná len pre veľmi vyťažený server.
+Description-sv.UTF-8: Ska servern startas via inetd?
+ atftpd kan startas av inetd superserver eller som en daemon och hantera inkommande anslutningar på egen hand. Den senare rekommenderas för de system som kräver hög prestanda.
+Description-vi.UTF-8: inetd có nên khởi chạy trình phục vụ ?
+ atftpd có thể được khởi chạy bởi siêu trình phục vụ inetd, hoặc chạy làm trình nền và tự quản lý các kết nối gửi đến. Sự chọn sau chỉ khuyến khích cho máy phục vụ rất bận.
+
+Template: atftpd/tftpd-timeout
+Type: string
+Default: 300
+Description: Server timeout:
+ How many seconds the main thread waits before exiting.
+Description-ca.UTF-8: Temps d'espera del servidor:
+ Els segons que s'ha d'esperar el fil principal abans d'acabar.
+Description-cs.UTF-8: Časový limit serveru:
+ Kolik sekund má hlavní vlákno čekat, než se ukončí.
+Description-da.UTF-8: Servertidsudløb:
+ Hovr mange sekunder hovedtråden venter før den afslutter.
+Description-de.UTF-8: Server-Limit für Zeitüberschreitung (engl. »server timeout«).
+ Die Zeit in Sekunden, die der Haupt-Thread vor einem Abbruch abwartet.
+Description-es.UTF-8: Tiempo excedido del servidor:
+ Especifique cuantos segundos ha de esperar el hilo principal del programa antes de finalizar.
+Description-fi.UTF-8: Palvelimen aikakatkaisu:
+ Valitse kuinka monta sekuntia ohjelma odottaa ennen kuin se sulkee itsensä.
+Description-fr.UTF-8: Délai d'attente (« timeout ») du serveur :
+ Veuillez indiquer le nombre de secondes pendant lesquelles la connexion principale doit être maintenue avant d'être interrompue.
+Description-gl.UTF-8: Tempo de espera do servidor:
+ Cantos segundos agarda o fío principal antes de saír.
+Description-it.UTF-8: Timeout del server:
+ Quanti secondi attendere la chiusura del thread principale prima di uscire.
+Description-ja.UTF-8: サーバのタイムアウト値 :
+ メインのスレッドを終了するまで何秒待機させるか。
+Description-nl.UTF-8: Server wachttijd:
+ Hoeveel seconden de hoofddraad moet wachten alvorens af te sluiten.
+Description-pl.UTF-8: Limit czasu odpowiedzi na żądania:
+ Ilość sekund oczekiwania głównego wątku zanim zostanie zatrzymany.
+Description-pt.UTF-8: Timeout do servidor:
+ Quantos segundos deve a thread principal esperar antes de sair.
+Description-pt_BR.UTF-8: Timeout do servidor:
+ Quantos segundos a thread principal deve aguardar antes de finalizar.
+Description-ru.UTF-8: Время ожидания сервером:
+ Количество секунд, которые будет ждать главный поток перед выходом.
+Description-sk.UTF-8: Časový limit servera:
+ Koľko sekúnd má hlavné vlákno čakať, kým skončí.
+Description-sv.UTF-8: Tid till avslut:
+ Hur många sekunder huvudtråden väntar innan den avslutas.
+Description-vi.UTF-8: Thời hạn trình phục vụ :
+ Số các giây mạch chính cần đợi trước khi thoát.
+
+Template: atftpd/retry-timeout
+Type: string
+Default: 5
+Description: Retry timeout:
+ How many seconds to wait for a reply before retransmitting a packet.
+Description-ca.UTF-8: Temps d'espera dels reintents:
+ Els segons que s'ha d'esperar una resposta abans de tornar a transmetre un paquet.
+Description-cs.UTF-8: Časový limit opakování:
+ Kolik sekund má server čekat na odpověď, než paket odešle znovu.
+Description-da.UTF-8: Tidsudløb for prøv igen:
+ Hvor mange sekunder skal der ventes på svar, før en pakke gensendes.
+Description-de.UTF-8: Server-Limit für Zeitüberschreitung bei neuerlichem Versuch (engl. »Retry timeout«).
+ Die Zeit in Sekunden, die der Server verstreichen lässt, bevor das zuletzt gesendete Paket erneut übertragen wird.
+Description-es.UTF-8: Tiempo de espera para reintento:
+ Especifique cuantos segundos se ha de esperar una respuesta antes de volver a enviar un paquete.
+Description-fi.UTF-8: Uudelleenyrityksen aikakatkaisu:
+ Valitse montako sekuntia vastausta odotetaan ennen paketin uudelleenlähetystä.
+Description-fr.UTF-8: Délai de relance (« retry timeout ») :
+ Veuillez indiquer le délai d'attente d'une réponse, en secondes, avant la retransmission d'un paquet.
+Description-gl.UTF-8: Tempo de espera para volver tentar:
+ Cantos segundos hai que agardar por unha resposta antes de retransmitir un paquete.
+Description-it.UTF-8: Timeout di ritrasmissione:
+ Quanti secondi attendere una risposta prima di ritrasmettere un pacchetto.
+Description-ja.UTF-8: リトライ時のタイムアウト値 :
+ パケットの再送まで何秒待つか。
+Description-nl.UTF-8: Wachttijd tussen pogingen:
+ Hoeveel seconden atftpd moet wachten op een antwoord alvorens een pakket opnieuw te verzenden.
+Description-pl.UTF-8: Limit czasu potwierdzenia:
+ Ilość sekund oczekiwania na odpowiedź przed ponowną transmisją pakietu.
+Description-pt.UTF-8: Timeout de tentiva:
+ Quantos segundos deve esperar por uma resposta antes de retransmitir um pacote.
+Description-pt_BR.UTF-8: Timeout de nova tentativa:
+ Quantos segundos aguardar por uma resposta antes de retransmitir um pacote.
+Description-ru.UTF-8: Время ожидания перед повтором:
+ Количество секунд, в течении которых нужно ждать ответа перед тем как повторить отправку пакета.
+Description-sk.UTF-8: Časový limit opakovania:
+ Koľko sekúnd má server čakať na odpoveď, kým znova prenesie paket.
+Description-sv.UTF-8: Tid mellan försök:
+ Hur många sekunder vi väntar på ett svar innan vi skickar paketet igen.
+Description-vi.UTF-8: Thời hạn thử lại:
+ Số các giây cần đợi đáp ứng trước khi gửi lại một gói tin nào đó.
+
+Template: atftpd/maxthread
+Type: string
+Default: 100
+Description: Maximum number of threads:
+ Maximum number of concurrent threads that can be running.
+Description-ca.UTF-8: Nombre màxim de fils:
+ Nombre màxim de fils que poden executar-se concurrentment.
+Description-cs.UTF-8: Maximální počet vláken:
+ Maximální počet současně běžících vláken.
+Description-da.UTF-8: Maks antal tråde:
+ Maks antal samtidige tråde der kan køre.
+Description-de.UTF-8: Maximale Thread-Anzahl:
+ Die maximale Anzahl gleichzeitig laufender Threads.
+Description-es.UTF-8: Máximo número de hilos:
+ Máximo número de hilos concurrentes que se puede ejecutar.
+Description-fi.UTF-8: Säikeiden enimmäismäärä:
+ Valitse montako säiettä voi yhtä aikaa olla ajossa.
+Description-fr.UTF-8: Nombre maximal de connexions :
+ Veuillez indiquer le nombre maximal de connexions simultanées.
+Description-gl.UTF-8: Número máximo de fíos:
+ Número máximo de fíos simultaneos que pode haber en execución.
+Description-it.UTF-8: Numero massimo di thread:
+ Numero massimo di thread concorrenti che possono essere in esecuzione.
+Description-ja.UTF-8: 最大スレッド数 :
+ 同時に動作させる最大のスレッド数。
+Description-nl.UTF-8: Maximum aantal draden:
+ Maximum aantal draden die tegelijk kunnen uitvoeren.
+Description-pl.UTF-8: Maksymalna ilość wątków:
+ Maksymalna ilość jednocześnie uruchomionych wątków.
+Description-pt.UTF-8: Número máximo de threads:
+ Número máximo de threads concorrentes que podem estar a correr.
+Description-pt_BR.UTF-8: Número máximo de threads:
+ Número máximo de threads concorrentes que podem estar em execução.
+Description-ru.UTF-8: Максимальное число потоков:
+ Максимальное число одновременно работающих потоков, которые могут быть запущены.
+Description-sk.UTF-8: Maximálny počet vlákien:
+ Maximálny počet súčasne bežiacich vlákien.
+Description-sv.UTF-8: Maximalt antal trådar:
+ Maximalt antal trådar som kan köras parallellt.
+Description-vi.UTF-8: Số tối đa các mạch:
+ Số tối đa các mạch có thể chạy đồng thời.
+
+Template: atftpd/verbosity
+Type: select
+Choices: 7 (LOG_DEBUG), 6 (LOG_INFO), 5 (LOG_NOTICE), 4 (LOG_WARNING), 1 (LOG_ALERT)
+Default: 5 (LOG_NOTICE)
+Description: Verbosity level:
+ Level of logging. 7 logs everything including debug logs. 1 will log only
+ the system critical logs. 5 (LOG_NOTICE) is the default value.
+Description-ca.UTF-8: Nivell de detall:
+ Nivell de registre. «7» ho enregistra tot, incloent missatges de depuració. «1» només enregistrarà els missatges crítics del sistema. «5» (LOG_NOTICE) és el valor predeterminat.
+Description-cs.UTF-8: Míra upovídanosti:
+ 7 zaznamená vše včetně ladicích hlášení. 1 zaznamená pouze kritické záznamy, 5 (LOG_NOTICE) je výchozí hodnota.
+Description-da.UTF-8: Uddybningsniveau:
+ Niveau til logning. 7 logger alt inklusive fejlsøgningslogge. 1 vil kun logge systemkritiske logge. 5 (LOG_NOTICE) er standardværdien.
+Description-de.UTF-8: Niveau der Redseligkeit:
+ Intensität des Protokollierens. 7 protokolliert alles inklusive der »debug«-Meldungen. 1 protokolliert lediglich die systemkritischen Meldungen. 5 (LOG_NOTICE) ist der Standardwert.
+Description-es.UTF-8: Nivel de detalle de los registros:
+ Nivel de registro : 7 lo guarda todo, incluyendo los registros de depuración. 1 grabará sólo los registros críticos del sistema. 5 (LOG_NOTICE) es el valor por omisión.
+Description-fi.UTF-8: Yksityiskohtien määrä lokissa:
+ Valitse lokituksen taso. 7 kirjoittaa lokiin kaiken, mukaan lukien virheidenjäljitysviestit. 1 kirjoittaa lokiin vain järjestelmän kannalta kriittiset viestit. Oletusarvo on 5 (LOG_NOTICE).
+Description-fr.UTF-8: Niveau de détail souhaité :
+ Veuillez choisir le niveau de détail pour les informations enregistrées dans les journaux. « 7 » enregistre des informations de débogage. « 1 » n'enregistre que les informations critiques. La valeur par défaut est « 5 » (LOG_NOTICE).
+Description-gl.UTF-8: Nivel de información:
+ Nivel do rexistro. 7 rexistra todo, incluídos os rexistros de depuración. 1 ha rexistrar só os sucesos críticos. 5 (LOG_NOTICE) é o valor por defecto.
+Description-it.UTF-8: Livello di verbosità:
+ Livello di log. Con 7 è registrato tutto, comprese le voci per il debug. Con 1 sono registrati solo gli eventi critici per il sistema. Il valore predefinito è 5 (LOG_NOTICE).
+Description-ja.UTF-8: 冗長レベル :
+ ログ出力のレベル。7 ではデバッグログを含むすべてのログを出力。1 では、システムの重大なログのみを出力。 5 (LOG_NOTICE) がデフォルト値。
+Description-nl.UTF-8: Woordenrijkheidsniveau (verbosity):
+ Bewaarniveau. 7 bewaart alles, ook debug-berichten. 1 zal enkel de systeemkritieke berichten bewaren. 5 (LOG_NOTICE) is de standaardwaarde.
+Description-pl.UTF-8: Poziom gadatliwości:
+ Poziom rejestrowania. 7 rejestruje wszystko, łącznie z komunikatami diagnostycznymi. 1 będzie rejestrował jedynie wydarzenia krytyczne dla systemu. 5 (LOG_NOTICE) jest wartością domyślną.
+Description-pt.UTF-8: Nível de detalhe:
+ Níveis de detalhe a ser registado. 7 grava tudo incluíndo texto de debug. 1 grava apenas texto crítico de sistema. 5 (LOG_NOTICE) é o valor por omissão.
+Description-pt_BR.UTF-8: Nível de verbosidade:
+ Nível de logging. O nível 7 loga tudo incluindo logs de depuração. O nível 1 logará somente logs críticos do sistema. O nível 5 (LOG_NOTICE) é o valor padrão.
+Description-ru.UTF-8: Уровень детализации:
+ Подробность журнальных сообщений. 7 -- записывается всё, включая отладочные сообщения. 1 -- записываются только системные критические ошибки. По умолчанию установлено 5 (LOG_NOTICE).
+Description-sk.UTF-8: Úroveň výrečnosti:
+ Úroveň zaznamenávania. Úroveň 7 zaznamenáva všetko, vrátane ladiacich informácií. Úroveň 1 zaznamenáva len kritické systémové udalosti. Východisková hodnota je 5 (LOG_NOTICE).
+Description-sv.UTF-8: Förklaringsnivå:
+ Hur informativ loggarna är. 7 loggar allt. 1 loggar bara systemkritiska meddelanden. 5 (LOG_NOTICE) är standardvärdet.
+Description-vi.UTF-8: Cấp chi tiết:
+ Cấp ghi lưu, từ 1 (chỉ ghi lưu những thông điệp tới hạn hệ thống) đến 7 (ghi lưu tất cả, gồm có dữ liệu gỡ rối). 5 (LOG_NOTICE) là giá trị mặc định.
+
+Template: atftpd/timeout
+Type: boolean
+Default: true
+Description: Enable 'timeout' support?
+Description-ca.UTF-8: Voleu activar el suport per a «timeout»?
+Description-cs.UTF-8: Povolit podporu „timeout“?
+Description-da.UTF-8: Aktiver understøttelse af tidsudløb (»timeout«)?
+Description-de.UTF-8: Aktivieren der Zeitüberschreitungs-Unterstützung (engl. »timeout«)?
+Description-es.UTF-8: ¿Habilitar soporte «timeout»?
+Description-fi.UTF-8: Otetaanko aikakatkaisun (timeout) tuki käyttöön?
+Description-fr.UTF-8: Faut-il activer la gestion de l'option TFTP « timeout » ?
+Description-gl.UTF-8: ¿Activar o soporte de "timeout"?
+Description-it.UTF-8: Attivare il supporto per "timeout"?
+Description-ja.UTF-8: 'タイムアウト'を有効にしますか？
+Description-nl.UTF-8: 'timeout'-ondersteuning activeren?
+Description-pl.UTF-8: Włączyć obsługę 'limitu czasu'?
+Description-pt.UTF-8: Activar o suporte de 'timeout' ?
+Description-pt_BR.UTF-8: Habilitar suporte a 'timeout'?
+Description-ru.UTF-8: Включить поддержку 'timeout'?
+Description-sk.UTF-8: Zapnúť podporu „timeout”?
+Description-sv.UTF-8: Aktivera 'timeout' stöd?
+Description-vi.UTF-8: Bật hỗ trợ « timeout » (thời hạn) ?
+
+Template: atftpd/tsize
+Type: boolean
+Default: true
+Description: Enable 'tsize' support?
+Description-ca.UTF-8: Voleu activar el suport per a «tsize»?
+Description-cs.UTF-8: Povolit podporu  „tsize“?
+Description-da.UTF-8: Aktiver understøttelse af »tsize«?
+Description-de.UTF-8: Aktivieren der »tsize«-Unterstützung?
+Description-es.UTF-8: ¿Habilitar soporte «tsize»?
+Description-fi.UTF-8: Otetaanko tiedoston koon kyselyn (tsize) tuki käyttöön?
+Description-fr.UTF-8: Faut-il activer la gestion de l'option TFTP « tsize » ?
+Description-gl.UTF-8: ¿Activar o soporte de "tsize"?
+Description-it.UTF-8: Attivare il supporto per "tsize"?
+Description-ja.UTF-8: 'tsize'を有効にしますか？
+Description-nl.UTF-8: 'tsize'-ondersteuning activeren?
+Description-pl.UTF-8: Włączyć obsługę 'tsize'?
+Description-pt.UTF-8: Activar o suporte de 'tsize' ?
+Description-pt_BR.UTF-8: Habilitar suporte a 'tsize'?
+Description-ru.UTF-8: Включить поддержку 'tsize'?
+Description-sk.UTF-8: Zapnúť podporu „tsize”?
+Description-sv.UTF-8: Aktivera 'tsize' stöd?
+Description-vi.UTF-8: Bật hỗ trợ « tsize » ?
+
+Template: atftpd/blksize
+Type: boolean
+Default: true
+Description: Enable 'block size' support?
+Description-ca.UTF-8: Voleu activar el suport per a «block size»?
+Description-cs.UTF-8: Povolit podporu „block size“?
+Description-da.UTF-8: Aktiver understøttelse af blokstørrelse (»block size«)?
+Description-de.UTF-8: Aktivieren der »block size«-Unterstützung?
+Description-es.UTF-8: ¿Habilitar soporte para «block-size»?
+Description-fi.UTF-8: Otetaanko lohkokoon (block size) määrittelyn tuki käyttöön?
+Description-fr.UTF-8: Faut-il activer la gestion de l'option TFTP « block size » ?
+Description-gl.UTF-8: ¿Activar o soporte de "block size"?
+Description-it.UTF-8: Attivare il supporto per "block size"?
+Description-ja.UTF-8: 'ブロックサイズ'を有効にしますか？
+Description-nl.UTF-8: 'blokgrootte'-ondersteuning activeren?
+Description-pl.UTF-8: Włączyć obsługę 'block size'?
+Description-pt.UTF-8: Activar o suporte de 'block size' ?
+Description-pt_BR.UTF-8: Habilitar suporte a 'tamanho de bloco'?
+Description-ru.UTF-8: Включить поддержку 'block size'?
+Description-sk.UTF-8: Zapnúť podporu „block size”?
+Description-sv.UTF-8: Aktivera 'block size' stöd?
+Description-vi.UTF-8: Bật hỗ trợ « block size » (kích cỡ khối) ?
+
+Template: atftpd/multicast
+Type: boolean
+Default: true
+Description: Enable multicast support?
+Description-ca.UTF-8: Voleu activar el suport multicast?
+Description-cs.UTF-8: Povolit podporu multicastu?
+Description-da.UTF-8: Aktiver understøttelse af »multicast«?
+Description-de.UTF-8: Multicast-Unterstützung aktivieren?
+Description-es.UTF-8: ¿Habilitar soporte «multicast»?
+Description-fi.UTF-8: Otetaanko multicast-lähetysten tuki käyttöön?
+Description-fr.UTF-8: Faut-il activer la gestion de la multidiffusion (« multicast ») ?
+Description-gl.UTF-8: ¿Activar o soporte de multicast?
+Description-it.UTF-8: Attivare il supporto per il multicast?
+Description-ja.UTF-8: マルチキャストを有効にしますか？
+Description-nl.UTF-8: 'Multicast'-ondersteuning activeren?
+Description-pl.UTF-8: Włączyć obsługę multiemisji?
+Description-pt.UTF-8: Activar o suporte multicast?
+Description-pt_BR.UTF-8: Habilitar suporte a multicast?
+Description-ru.UTF-8: Включить поддержку широковещания?
+Description-sk.UTF-8: Zapnúť podporu multicast?
+Description-sv.UTF-8: Aktivera multicast stöd?
+Description-vi.UTF-8: Bật hỗ trợ truyền một-nhiều ?
+
+Template: atftpd/ttl
+Type: string
+Default: 1
+Description: TTL for multicast packets:
+Description-ca.UTF-8: TTL per als paquets multicast:
+Description-cs.UTF-8: TTL pro multicastové pakety:
+Description-da.UTF-8: TTL for multicastpakker:
+Description-de.UTF-8: TTL für Multicast-Pakete:
+Description-es.UTF-8: TTL para paquetes multicast:
+Description-fi.UTF-8: Multicast-pakettien TTL:
+Description-fr.UTF-8: TTL pour les paquets multicast :
+Description-gl.UTF-8: TTL dos paquetes multicast:
+Description-it.UTF-8: TTL per i pacchetti in multicast:
+Description-ja.UTF-8: マルチキャストパケットの TTL 値
+Description-nl.UTF-8: TTL (Time To Level) voor multicast-pakketten:
+Description-pt.UTF-8: TTL para os pacotes multicast:
+Description-pt_BR.UTF-8: TTL para pacotes multicast:
+Description-ru.UTF-8: TTL для широковещательных пакетов:
+Description-sk.UTF-8: TTL multicastových paketov:
+Description-sv.UTF-8: TTL för multicast-paket
+Description-vi.UTF-8: TTL (thời gian bền bỉ) cho gói tin truyền một-nhiều :
+
+Template: atftpd/port
+Type: string
+Default: 69
+Description: Port to listen for tftp request:
+Description-ca.UTF-8: Port on s'han d'escoltar les peticions tftp:
+Description-cs.UTF-8: Port, na kterém se má naslouchat tftp požadavkům:
+Description-da.UTF-8: Port der skal lyttes på for tftp-forespørgsel:
+Description-de.UTF-8: Port, der für tftp-Anfragen überwacht werden soll:
+Description-es.UTF-8: Puerto para escuchar peticiones de tftp:
+Description-fi.UTF-8: Portti, jossa ohjelma kuuntelee tftp-pyyntöjä:
+Description-fr.UTF-8: Port d'écoute pour les requêtes tftp :
+Description-gl.UTF-8: Porto no que esperar peticións tftp:
+Description-it.UTF-8: Porta su cui stare in ascolto di richieste tftp:
+Description-ja.UTF-8: tftp のリクエストを待ち受けるポート番号 :
+Description-nl.UTF-8: Poort waarnaar moet geluisterd worden voor tftp-aanvragen:
+Description-pl.UTF-8: Port nasłuchiwania na żądania tftp:
+Description-pt.UTF-8: Porto de escuta para um pedido tftp:
+Description-pt_BR.UTF-8: Porta na qual ouvir por requisições tftp:
+Description-ru.UTF-8: Номер порта, с которого ожидаются tftp запросы:
+Description-sk.UTF-8: Port, na ktorom má tftp prijímať požiadavky:
+Description-sv.UTF-8: Port för att lyssna på tftp anslutningar:
+Description-vi.UTF-8: Cổng trên đó cần lắng nghe yêu cầu tftp:
+
+Template: atftpd/mcast_port
+Type: string
+Default: 1758
+Description: Port range for multicast file transfer:
+ Multicast transfer will use any available port in a given set. For
+ example, "2000-2003, 3000" allow atftpd to use port 2000 to 2003 and 3000.
+Description-ca.UTF-8: Rang de ports per a la transmissió de fitxers multicast:
+ Les transferències multicast utilitzaran qualsevol port disponible dins un cert rang. Per exemple, «2000-2003, 3000» permet utilitzar els ports entre el 2000 i el 2003, i el 3000.
+Description-cs.UTF-8: Rozsah portů pro hromadný (multicast) přenos souborů:
+ Pro hromadný přenos použijí libovolné porty ze zadané množiny. Například „2000-2003, 3000“ dovolí atftpd použít porty 2000 až 2003 a port 3000.
+Description-da.UTF-8: Portområde for multicast-filoverførsel:
+ Multicastoverførsler vil kun bruge en tilgængelig port i et givent område. F.eks. »2000-2003, 3000« vil tillade aftftpd at bruge port 2000 til 2003, og 3000.
+Description-de.UTF-8: Portbereich für Multicast-Dateiübertragungen:
+ Multicast-Transfers werden jeden verfügbaren Port aus der angegebenen Auswahl verwenden. Die Angabe »2000-2003, 3000« erlaubt atftpd beispielsweise, die Ports 2000 bis 2003 sowie 3000 zu benutzen.
+Description-es.UTF-8: Rango de puertos para transferencia de archivos multicast:
+ Las transferencias multicast usan cualquier puerto disponible entre un rango de puertos asignados. Por ejemplo, «2000-2003, 3000» permite a atftpd utilizar cualquier puerto entre el 2000 al 2003 y el puerto 3000.
+Description-fi.UTF-8: Multicast-tiedostosiirron porttiavaruus:
+ Multicast-siirto käyttää mitä tahansa vapaata porttia annetusta joukosta. Esimerkiksi määrittely ”2000-2003, 3000” sallii atftpd:n käyttää portteja välillä 2000-2003 ja porttia 3000.
+Description-fr.UTF-8: Intervalle de ports pour le transfert de fichiers en multidiffusion :
+ Le transfert de fichiers en multidiffusion (« multicast ») utilisera tout port disponible d'un ensemble donné. Par exemple, « 2000-2003, 3000 » permet à atftpd d'utiliser les ports 2000 à 2003 et 3000.
+Description-gl.UTF-8: Rango de portos para a transferencia de ficheiros multicast:
+ As transferencias multicast han empregar calquera porto dispoñible dun conxunto determinado. Por exemplo, "2000-2003, 3000" permite a atftpd empregar os portos 2000 a 2003 e o porto 3000.
+Description-it.UTF-8: Intervallo di porte per trasferimenti di file in multicast:
+ I trasferimenti in multicast usano tutte le porte disponibili nell'intervallo. Per esempio "2000-2003, 3000" indica a atftpd di usare le porte dalla 2000 alla 2003 e la porta 3000.
+Description-ja.UTF-8: マルチキャスト転送に利用するポート番号の範囲 :
+ マルチキャスト転送は設定された番号のうち利用できるポートを利用します。例えば"2000-2003, 3000"を設定すると、atftpd は、2000 から 2003 と 3000 番を利用します。
+Description-nl.UTF-8: Poortbereik voor multicast-bestandsuitwisseling:
+ Multicast-overdracht zal elke beschikbare poort in een gegeven verzameling gebruiken. Bijvoorbeeld, "2000-2003, 3000" staat atftpd toe om poorten 2000 tot 2003 en 3000 te gebruiken.
+Description-pl.UTF-8: Zakres portów dla multiemisji plików:
+ Multiemisja plików skorzysta z jakiegokolwiek wolnego portu z podanego przedziału. Przykładowo "2000-2003, 3000" pozwoli atftpd użyć portu 3000 oraz portów z przedziału 2000-2003.
+Description-pt.UTF-8: Gama de portos para uma transferência de ficheiros por multicast:
+ A transferência multicast irá usar qualquer porto livre dentro de uma determinada gama.  Por exemplo: "2000-2003, 3000" permitirá o atftpd usar os portos de 2000 a 2004 e o 3000.
+Description-pt_BR.UTF-8: Faixa de portas para transferência de arquivos multicast:
+ Transferências multicast utilizarão quaisquer portas em um dado conjunto. Por exemplo, "2000-2003, 3000" permitirão ao atftpd utilizar as portas 2000 até 2003 e a porta 3000.
+Description-ru.UTF-8: Диапазон портов для широковещательной файловой передачи:
+ При широковещательной передаче будет использоваться любой доступный порт из указанного набора. Например, "2000-2003, 3000" позволяет atftpd использовать порты от 2000 до 2003 и 3000.
+Description-sk.UTF-8: Rozsah portov multicastového prenosu súborov:
+ Multicastový prenos bude používať všetky dostupné porty zo zadanej množiny. Napríklad "2000-2003, 3000" dovolí atftpd používať porty od 2000 do 2003 a 3000.
+Description-sv.UTF-8: Portrymd för multicast-överföringar:
+ Multicast-överföring kommer att använda de tillgängliga portar som angivets. Till exempel, "2000-2003, 3000" kommer atftpd att använda portarna 2000 till 2003 och 3000.
+Description-vi.UTF-8: Phạm vi cổng để truyền một-nhiều :
+ Chức năng truyền một-nhiều sẽ sử dụng bất cứ cổng sẵn sàng nào trong một tập hợp đưa ra. Chẳng hạn, « 2000-2003, 3000 » cho phép atftpd sử dụng các cổng 2000, 2001, 2002, 2003 và 3000.
+
+Template: atftpd/mcast_addr
+Type: string
+Default: 239.239.239.0-255
+Description: Address range for multicast transfer:
+ Multicast transfer will use any available addresses from a given set of
+ addresses. Syntax is "a.b.c.d-d,a.b.c.d,..."
+Description-ca.UTF-8: Rang d'adreces per a la transmissió multicast:
+ Les transferències multicast utilitzaran qualsevol adreça disponible dins un cert rang. La sintaxi és «a.b.c.d-d,a.b.c.d,...».
+Description-cs.UTF-8: Rozsah adres pro hromadné přenosy:
+ Pro hromadný přenos použijí libovolné adresy ze zadané množiny adres. Syntaxe je následující: „a.b.c.d-d,a.b.c.d,...“
+Description-da.UTF-8: Adresseområde for multicast-overførsel:
+ Multicast-overførsler vil bruge tilgængelige adresser fra et givent område af adresser. Syntaksen er »a.b.c.d-d,a.b.c.d,...«
+Description-de.UTF-8: Adressbereich für den Multicast-Transfer:
+ Multicast-Transfers werden jede verfügbare Adresse aus der angegebenen Auswahl verwenden. Die Syntax lautet »a.b.c.d-d,a.b.c.d,...«
+Description-es.UTF-8: Rango de direcciones para transferencia multicast:
+ Las transferencias multicast usarán cualquier dirección disponible de un rango de direcciones asignadas. La sintaxis es «a.b.c.d-d,a.b.c.d,...»
+Description-fi.UTF-8: Multicast-siirtojen osoiteavaruus:
+ Multicast-lähetys käyttää mitä tahansa vapaata osoitetta annetusta joukosta. Syntaksi on ”a.b.c.d-d,a.b.c.d,...”
+Description-fr.UTF-8: Intervalle d'adresses pour le transfert en multidiffusion :
+ Le transfert en multidiffusion va utiliser n'importe quelle adresse disponible d'un ensemble donné. La syntaxe est « a.b.c.d-d,a.b.c.d,... ».
+Description-gl.UTF-8: Rango de enderezos para as transferencias multicast:
+ As transferencias multicast han empregar calquera enderezo dun conxunto dado de enderezos. A sintaxe é "a.b.c.d-d,a.b.c.d,..."
+Description-it.UTF-8: Intervallo di indirizzi per trasferimenti di file in multicast:
+ I trasferimenti in multicast usano tutti gli indirizzi disponibili nell'intervallo specificato. La sintassi da usare è "a.b.c.d-d,a.b.c.d,..."
+Description-ja.UTF-8: マルチキャスト転送先のアドレス範囲:
+ マルチキャスト転送は送信先のアドレスに設定されたアドレスを利用します。設定可能なシンタックスは、"a.b.c.d-d,a.b.c.d,..."です。
+Description-nl.UTF-8: Adresbereik voor multicast-uitwisseling:
+ Multicast-overdracht zal elk beschikbaar adres van een gegeven verzameling adressen gebruiken. De syntax is "a.b.c.d-d,a.b.c.d,..."
+Description-pl.UTF-8: Zakres adresów dla multiemisji:
+ Multiemisja plików skorzysta z jakiegokolwiek adresu spośród podanych. Składnia "a.b.c.d-d,a.b.c.d,..."
+Description-pt.UTF-8: Gama de endereços para a transferência multicast:
+ A transferência multicast irá usar qualquer endereço livre dentro de uma determinada gama.  A sintaxe é: "a.b.c.d-d,a.b.c.d,..."
+Description-pt_BR.UTF-8: Faixa de endereços para transferências multicast:
+ Transferências multicast utilizarão quaisquer endereços disponíveis de um dado conjunto de endereços. A sintaxe é "a.b.c.d-d,a.b.c.d, ..."
+Description-ru.UTF-8: Диапазон адресов для широковещательной передачи:
+ При широковещательной передаче будут использованы любые доступные адреса из заданного набора. Синтаксис -- "a.b.c.d-d,a.b.c.d,..."
+Description-sk.UTF-8: Rozsah adries multicastového prenosu:
+ Multicastový prenos bude používať všetky dostupné adresy zo zadanej množiny adries. Formát je "a.b.c.d-d,a.b.c.d,..."
+Description-sv.UTF-8: Adressrymd för multicast-överföring:
+ Multicast-överföring kommer att använda adresser ur adressrymden som specificeras enligt följande, "a.b.c.d-d,a.b.c.d,..."
+Description-vi.UTF-8: Phạm vị địa chỉ để truyền một-nhiều:
+ Chức năng truyền một-nhiều sẽ sử dụng bất cứ địa chỉ sẵn sàng nào trong một tập hợp đưa ra. Cú pháp là « a.b.c.d-d,a.b.c.d,... ».
+
+Template: atftpd/logtofile
+Type: boolean
+Default: false
+Description: Log to file instead of syslog?
+ If your server does intensive tftp file serving, it is a good idea to 
+ accept here. That will avoid cluttering your syslog with tftpd logs.
+Description-ca.UTF-8: Voleu enregistrar en un fitxer en lloc d'utilitzar syslog?
+ Si el vostre servidor suporta una intensa càrrega de transmissió de fitxers per tftp, seria una bona idea acceptar aquesta opció. Això evitarà emplenar el syslog amb els registres relacionats amb tftpd.
+Description-cs.UTF-8: Nepoužívat pro záznamy syslog, ale samostatný soubor?
+ Pokud bude váš server nabízet tftp soubory mnoha klientům, je dobré tuto možnost povolit, protože se pak záznamy tftpd nebudou míchat se záznamy syslogu.
+Description-da.UTF-8: Log til en fil i stedet for syslog?
+ Hvis din server laver intensiv tftp-fildeling, er det en god ide at svare ja her. Det vil undgå at fylde din syslog for meget op med tftpd-beskeder.
+Description-de.UTF-8: In eine Datei anstatt über syslog protokollieren?
+ Falls Ihr Server viel bzw. oft Dateien mittels tftp bereitstellt, ist es eine gute Idee, hier zuzustimmen. Dadurch wird Ihr syslog nicht mit tftp-Meldungen überladen.
+Description-es.UTF-8: ¿Fichero de registro en lugar de syslog?
+ Si su servidor realiza transferencias intensivas de ficheros mediante tftp, es una buena idea aceptar aquí. Esto evitará que desordene su «syslog» con registros de tftpd.
+Description-fi.UTF-8: Kirjoitetaanko loki tiedostoon syslogin sijaan?
+ Jos palvelimelle tulee paljon tftp-tiedostopyyntöjä, on tämän valitseminen hyvä idea. Tällä vältetään syslogin täyttäminen tftpd:n riveillä.
+Description-fr.UTF-8: Faut-il enregistrer les messages dans un fichier à la place de syslog ?
+ Si votre serveur est utilisé intensivement comme serveur tftp, il est conseillé de choisir cette option. Ceci évitera d'encombrer le journal syslog avec les journaux tftpd.
+Description-gl.UTF-8: ¿Rexistrar nun ficheiro no canto de en syslog?
+ Se o seu servidor serve moitos ficheiros, é unha boa idea aceptar esta opción. Isto ha impedir que se encha o syslog con rexistros de tftpd.
+Description-it.UTF-8: Crare un file di log al posto del syslog?
+ Se il proprio server serve intensivamente dei file via tftp, è consigliabile accettare. Questo evita di fare disordine nel syslog con i log di tftp.
+Description-ja.UTF-8: ログを syslog でなくファイルに書き出しますか？
+ サーバが大量の tftp 転送を行う場合、これを有効にするのはよいアイデアです。tftpd のログによって syslog が乱雑になることがなくなります。
+Description-nl.UTF-8: In bestand bewaren in plaats van in syslog?
+ Als uw server intensieve tftp-bestandsbediening doet, is het een goed idee om hier te aanvaarden. Dit zal voorkomen dat uw syslog een warboel wordt van tftpd-berichten.
+Description-pl.UTF-8: Rejestrować zdarzenia do pliku zamiast do sysloga?
+ Jeśli Twój serwer jest mocno obciążony, aktywacja tej możliwości jest zalecana. Dzięki temu zdarzenia tftpd nie zapchają Twojego sysloga.
+Description-pt.UTF-8: Fazer log para um ficheiro em vez de usar o syslog?
+ Se o seu servidor não faz um uso intensivo de pedidos de ficheiros por tftp é boa ideia aceitar aqui.  Isso irá evitar encher de dados inúteis o log do syslog.
+Description-pt_BR.UTF-8: Logar em arquivos ao invés de syslog?
+ Caso seu servidor sirva tftp intensivamente, é uma boa ideia aceitar essa opção. Isso evitará encher seu syslog com logs do tftpd.
+Description-ru.UTF-8: Сохранять сообщения в файл вместо использования syslog?
+ Если сервер оперирует с большим количеством файлов, лучше ответить утвердительно. Это поможет избежать заполнения syslog системы сообщениями от tftpd.
+Description-sk.UTF-8: Zaznamenávať do súboru, namiesto do syslog?
+ Ak TFTP server intenzívne poskytuje súbory, je dobrým nápadom povoliť túto možnosť. Takto sa vyhnete zaplňovaniu svojho syslog záznamami tftpd.
+Description-sv.UTF-8: Logga till fil istället för syslog?
+ Om din server utför många tftpöverföringar rekomenderas att du väljer detta alternativ för att undvika att fylla syslog med tftpd-information.
+Description-vi.UTF-8: Ghi lưu vào tập tin thay cho syslog ?
+ Nếu máy này có phục vụ rất nhiều tập tin tftp thì khuyên bạn bật tuỳ chọn này. Nó tránh có sổ theo dõi hệ thống (syslog) đầy bản ghi lưu tftpd.
+
+Template: atftpd/logfile
+Type: string
+Default: /var/log/atftpd.log
+Description: Log file:
+ A file where atftpd will write its logs. This file will be made writable for
+ the user 'nobody' and group 'nogroup'.
+Description-ca.UTF-8: Fitxer de registre:
+ El fitxer on atftpd escriurà els seus registres. L'usuari «nobody» i el grup «nogroup» tindran permisos d'escriptura sobre aquest fitxer.
+Description-cs.UTF-8: Soubor pro záznamy:
+ Soubor, do kterého bude atftpd zapisovat své záznamy. Práva souboru budou nastavena tak, aby do něj mohl zapisovat uživatel „nobody“ a skupina „nogroup“.
+Description-da.UTF-8: Logfil:
+ En fil hvor atftpd skriver sine logge. Denne fil vil blive gjort skrivbar for brugeren »nobody« og gruppen »nogroup«.
+Description-de.UTF-8: Logdatei:
+ Eine Datei, in die atftpd seine Log-Meldungen schreibt. Diese Datei wird für den Benutzer »nobody« und die Gruppe »nogroup« mit Schreibzugriff versehen werden.
+Description-es.UTF-8: Fichero de registro:
+ Un fichero en el que tftpd escribirá sus registros. Este fichero se hará escribible al usuario «nobody» y los usuarios del grupo «nogroup».
+Description-fi.UTF-8: Lokitiedosto:
+ Tiedosto, johon atftpd kirjoittaa lokinsa. Käyttäjälle ”nobody” ja ryhmälle ”nogroup” annetaan kirjoitusoikeudet tähän tiedostoon.
+Description-fr.UTF-8: Fichier journal :
+ Veuillez indiquer le fichier dans lequel les informations seront enregistrées. Ce fichier sera modifiable par l'utilisateur « nobody » et le groupe « nogroup ».
+Description-gl.UTF-8: Ficheiro de rexistro:
+ O ficheiro no que atftpd ha gravar os rexistros. Este ficheiro ha ter permisos de escritura para o usuario "nobody" e o grupo "nogroup".
+Description-it.UTF-8: File di log:
+ File su cui atftpd scrive il proprio log; è necessario che su questo file abbiano permessi di scrittura l'utente "noboby" e il gruppo "nogroup".
+Description-ja.UTF-8: ログファイル名 :
+ aftpd がログを書き出すファイルです。このファイルは、'nobody' ユーザと 'nobody' グループに対して書き込み可能な状態で作成されます。
+Description-nl.UTF-8: Logbestand:
+ Een bestand waar atftpd de logboeken in schrijft. Dit bestand zal schrijfbaar gemaakt worden voor gebruiker 'nobody' en groep 'nogroup'.
+Description-pl.UTF-8: Plik zdarzeń:
+ Plik do którego atftpd będzie zapisywał zdarzenia. Plik będzie posiadał uprawnienia do zapisu przez użytkownika 'nobody' i grupę 'nogroup'.
+Description-pt.UTF-8: Ficheiro de log:
+ O ficheiro no qual o atftpd irá gravar os seus logs. Este ficheiro terá as permissões de utilizador 'nobody' e grupo 'nogroup'.
+Description-pt_BR.UTF-8: Arquivo de log:
+ Um arquivo onde o atftpd gravará seus logs. Esse arquivo terá permissão de gravação para o usuário 'nobody' e para o grupo 'nogroup'.
+Description-ru.UTF-8: Файл журнала:
+ Имя файла для сохранения сообщений от atftpd. Этот файл будет создан с правами записи пользователю 'nobody' и группе 'nogroup'.
+Description-sk.UTF-8: Súbor záznamov:
+ Súbor, do ktorého bude atftpd zapisovať svoje záznamy. Tento súbor musí byť zapisovateľný pre používateľa „nobody” a skupinu „nogroup”
+Description-sv.UTF-8: Loggfil:
+ Filen som atftpd skriver sin logg till. Filen kommer att vara skribar av användaren 'nobody' och gruppen 'nogroup'.
+Description-vi.UTF-8: Tập tin theo dõi:
+ Đây là một tập tin vào đó atftpd sẽ ghi lưu thông tin. Tập tin này cấp quyền ghi cho người dùng « nobody » (không ai) và nhóm « nogroup » (không nhóm).
+
+Template: atftpd/basedir
+Type: string
+Default: /srv/tftp
+Description: Base directory:
+ The directory tree from where atftpd can serve files. That directory must
+ be world readable.
+Description-ca.UTF-8: Directori base:
+ El directori des del qual atftpd ha de servir els fitxers. Aquest directori ha de tenir permisos de lectura per a tothom.
+Description-cs.UTF-8: Základní adresář:
+ Adresářový strom, ze kterého atftpd nabízí soubory. Adresář musí být čitelný pro všechny.
+Description-da.UTF-8: Basismappe:
+ Mappetræet hvorfra atftpd kan betjene filer. Denne mappe skal være læsbar af alle.
+Description-de.UTF-8: Basisverzeichnis:
+ Der Verzeichnisbaum, aus dem atftpd Dateien zur Verfügung stellen kann. Dieses Verzeichnis muss für alle Benutzer lesbar sein.
+Description-es.UTF-8: Directorio base:
+ El árbol de directorios desde dónde atftpd servirá los ficheros. Ese directorio debe ser accesible para todos los usuarios.
+Description-fi.UTF-8: Juurihakemisto:
+ Hakemistopuu, josta atftpd voi jakaa tiedostoja. Hakemiston tulee olla kaikkien luettavissa.
+Description-fr.UTF-8: Répertoire racine :
+ Veuillez indiquer le répertoire à partir duquel atftpd sert les fichiers. Ce répertoire doit pouvoir être lu par tous.
+Description-gl.UTF-8: Directorio base:
+ A árbore de directorios desde a que atftpd pode servir ficheiros. Ese directorio ten que ter permisos de lectura para todo o mundo.
+Description-it.UTF-8: Directory di base:
+ L'albero di directory dal quale atftpd può servire i file. Chiunque deve poter leggere in questa directory.
+Description-ja.UTF-8: ベースディレクトリ:
+ aftpd がファイルを提供するディレクトリです。このディレクトリは誰からでも読めるようにする必要があります。
+Description-nl.UTF-8: Basismap:
+ De mapstructuur waar atftpd bestanden kan bedienen. Deze map moet leesbaar zijn voor de wereld.
+Description-pl.UTF-8: Podstawowy katalog:
+ Drzewo katalogów z których atftpd będzie mógł serwować pliki. Katalog musi mieć prawa odczytu dla wszystkich.
+Description-pt.UTF-8: Directório base:
+ O caminho inicial pelo qual o atftpd irá servir os seus ficheiros.  Esse directório deve poder ser lido por qualquer utilizador.
+Description-pt_BR.UTF-8: Diretório base:
+ A árvore de diretórios a partir da qual o atftpd pode servir arquivos. Esse diretório precisa ter permissão de leitura para todos.
+Description-ru.UTF-8: Базовый каталог:
+ Начальный каталог, в котором atftpd работает с файлами. Этот каталог должен быть доступен всем на чтение.
+Description-sk.UTF-8: Základný adresár:
+ Adresárový strom, z ktorého bude atftpd poskytovať súbory. Tento adresár musí byť zapisovateľný pre všetkých.
+Description-sv.UTF-8: Hemkatalog:
+ Katalogträdet med filer som atftpd erbjuder. Katalogen måste vara läsbar av alla.
+Description-vi.UTF-8: Thư mục cơ bản:
+ Đây là cây thư mục từ đó atftpd có thể phục vụ tập tin. Thư mục này phải cấp quyền đọc cho tất cả.

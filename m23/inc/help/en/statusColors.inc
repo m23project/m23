@@ -10,6 +10,7 @@ The color marks the installation status of the client.
 <li><b>white</b>: This is a master client for mass installation from whom the settings are transferred to the other clients.</li>
 <li><b>bug</b>: The bug indicates that the client is in debug mode.</li>
 <!--V1.5 end-->
+<!--V12.4 begin--><li><b>grey</b>: This client is purely virtual and serves to save client properties (IP, client name, MAC), in order to keep them from being used accidentally.</li><!--V12.4 end-->
 </ul>
 
 <!--V1.11 begin--><u>$I18N_jobs</u>

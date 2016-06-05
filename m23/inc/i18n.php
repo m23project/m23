@@ -59,7 +59,9 @@ function I18N_convertToHumanReadableName($lang)
 function I18N_m23instLanguage($shortLanguage)
 {
 	if (strpos(LANGUAGELIST,$shortLanguage) === false)
+//m23customPatchBegin type=change id=I18N_m23instLanguageFallBackLanguage
 		$shortLanguage = 'en';
+//m23customPatchEnd id=I18N_m23instLanguageFallBackLanguage
 
 	return($shortLanguage);
 }

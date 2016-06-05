@@ -1,0 +1,305 @@
+
+Template: kstars-data-extra/kstarsrc-title
+Type: title
+Description: Handling of kstars configuration file
+Description-cs.UTF-8: Manipulace s konfiguračním souborem pro kstars
+Description-da.UTF-8: Håndtering af kstars' konfigurationsfil
+Description-de.UTF-8: Handhabung der Kstars-Konfigurationsdatei
+Description-es.UTF-8: Manejo del fichero de configuración de kstars
+Description-fr.UTF-8: Gestion du fichier de configuration de kstars
+Description-it.UTF-8: Gestione del file di configurazione di kstars
+Description-ja.UTF-8: kstars 設定ファイルの処理
+Description-nl.UTF-8: Verwerking van het configuratiebestand van kstars
+Description-pt.UTF-8: Tratamento do ficheiro de configuração de kstars
+Description-ru.UTF-8: Операции с файлом настройки kstars
+Description-sv.UTF-8: Hantering av kstars inställningsfil
+
+Template: kstars-data-extra/kstarsrc-exists
+Type: select
+Choices: keep, replace (preserving backup), overwrite
+Choices-cs.UTF-8: zachovat, nahradit (se zachováním zálohy), přepsat
+Choices-da.UTF-8: bevar, erstat (en sikkerhedskopi bevares), overskriv
+Choices-de.UTF-8: behalten, ersetzen (Sicherungskopie aufbewahren), überschreiben
+Choices-es.UTF-8: mantener, reemplazar (manteniendo una copia), sobreescribir
+Choices-fr.UTF-8: conserver, remplacer (en préservant la sauvegarde), écraser
+Choices-it.UTF-8: mantieni, sostituisci (mantenendo un backup), sovrascrivi
+Choices-ja.UTF-8: 維持, 置き換え (バックアップとして残す), 上書き
+Choices-nl.UTF-8: houden, vervangen (reservekopie maken), overschrijven
+Choices-pt.UTF-8: manter, substituir (manter cópia de segurança), substituir
+Choices-ru.UTF-8: оставить, заменить (делается резервная копия), перезаписать
+Choices-sv.UTF-8: behåll, ersätt (behåll en säkerhetskopia), skriv över
+Default: keep
+Description: Action for the /etc/kde4/kstarsrc file:
+ A kstars global configuration file already exists.
+ .
+ The package installation process can't modify it, but you can
+ back it up now and create a new one. You will be prompted for
+ options in this file.
+Description-cs.UTF-8: Akce pro soubor /etc/kde4/kstarsrc:
+ Globální konfigurační soubor pro kstars již existuje.
+ .
+ Proces instalace balíčku nemůže soubor upravit, můžete jej však nyní zazálohovat a vytvořit nový. Budete požádáni o vybrání možnosti.
+Description-da.UTF-8: Handling for filen /etc/kde4/kstarsrc:
+ En global konfigurationsfil for kstars findes allerede.
+ .
+ Pakkeinstallationsprocessen kan ikke ændre den, men du kan lave en sikkerhedskopi nu og oprette en ny. Du vil blive spurgt om indstillingerne i denne fil.
+Description-de.UTF-8: Aktion für die Datei /etc/kde4/kstarsrc:
+ Eine globale Kstars-Konfigurationsdatei existiert bereits.
+ .
+ Der Paketinstallationsprozess kann sie nicht verändern, aber Sie können sie nun sichern und eine neue erstellen. Sie werden nach Optionen in dieser Datei gefragt.
+Description-es.UTF-8: Acción sobre el fichero /etc/kde4/kstarsrc:
+ Ya existe un fichero global de configuración de kstars
+ .
+ El proceso de instalación del paquete es capaz de modificarlo, pero usted puede salvarlo y crear uno nuevo ahora. Se le preguntarán las opciones de ese fichero.
+Description-fr.UTF-8: Action à mener pour le fichier /etc/kde4/kstarsrc ?
+ Un fichier de configuration générale de kstars existe déjà.
+ .
+ Le processus d'installation du paquet n'est pas capable de le modifier, mais vous pouvez le sauvegarder maintenant et en créer un nouveau. Des questions sur les options vous seront posées.
+Description-it.UTF-8: Azione per il file /etc/kde4/kstarsrc:
+ Un file di configurazione globale per kstars esiste già.
+ .
+ Il processo di installazione del pacchetto non può modificarlo, ma ora può essere fatto il suo backup e ne può essere creato uno nuovo. Verranno poste domande sulle opzioni in tale file.
+Description-ja.UTF-8: /etc/kde4/kstarsrc の扱い:
+ kstars のグローバルの設定ファイルがすでに存在します。
+ .
+ パッケージのインストールプロセスでは変更することができませんが、ここでバックアップして新しく作成することができます。このファイルの選択肢を質問します。
+Description-nl.UTF-8: Actie die op het bestand /etc/kde4/kstarsrc moet worden toegepast:
+ Er bestaat al een globaal configuratiebestand voor kstars.
+ .
+ Het installatieproces kan dit bestand niet wijzigen, maar u kunt het wel een reservekopie maken en een nieuw bestand aanmaken. Er wordt u zo meteen gevraagd wat u met dit bestand wilt doen.
+Description-pt.UTF-8: Ação para o ficheiro /etc/kde4/kstarsrc:
+ Já existe um ficheiro de configuração global do kstars.
+ .
+ O processo de instalação do pacote não é capaz de o modificar, mas pode fazer uma cópia de segurança agora e criar um novo. Será questionado acerca destas opções.
+Description-ru.UTF-8: Действие с файлом /etc/kde4/kstarsrc:
+ Файл глобальной настройки kstars уже существует.
+ .
+ Процесс установки пакета не может его изменить, но вы можете сделать резервную копию и создать новый.
+Description-sv.UTF-8: Åtgärd för filen /etc/kde4/kstarsrc:
+ En global inställningsfil för kstars finns redan.
+ .
+ Paketinstallationen kan inte ändra den, men du kan göra en säkerhetskopia nu och skapa en ny. Du kommer få frågor om alternativen i filen.
+
+Template: kstars-data-extra/kstarsrc-does-not-exist
+Type: boolean
+Default: true
+Description: Create /etc/kde4/kstarsrc file?
+ There is no kstars global configuration file. 
+ .
+ A configuration file will be needed if user downloads should be
+ disabled, but if not then it is still safe to create one. You will
+ be prompted for options in this file.
+Description-cs.UTF-8: Vytvořit soubor /etc/kde4/kstarsrc?
+ Neexistuje globální konfigurační soubor pro kstars.
+ .
+ Jestliže mají být zakázána uživatelská stahování, bude konfigurační soubor nutný, ale i v případě, že zakázána být nemají, je bezpečnější jej vytvořit. Budete požádáni o vybrání možnosti.
+Description-da.UTF-8: Opret filen /etc/kde4/kstarsrc?
+ Der er ingen global konfigurationsfil for kstars.
+ .
+ En konfigurationsfil er krævet, hvis brugerhentninger skal være deaktiveret, men selvom det ikke er tilfældet, er det stadig uden risiko at oprette en. Du vil blive spurgt om indstillingerne i denne fil.
+Description-de.UTF-8: Datei /etc/kde4/kstarsrc erstellen?
+ Es existiert keine globale Kstars-Konfigurationsdatei.
+ .
+ Falls Benutzer-Downloads deaktiviert sein sollten, wird eine Konfigurationsdatei benötigt, aber auch andernfalls ist es sicher, eine zu erstellen. Sie werden nach Optionen in dieser Datei gefragt.
+Description-es.UTF-8: ¿Crear un fichero /etc/kde4/kstarsrc ?
+ No hay un fichero global de configuración de kstars.
+ .
+ Se requiere un fichero de configuración si se deben deshabilitar las descargas por parte de los usuarios, pero en caso contrario también es seguro crear uno. Se le preguntarán las opciones de ese fichero.
+Description-fr.UTF-8: Créer le fichier /etc/kde4/kstarsrc ?
+ Il n'existe pas de fichier de configuration générale de kstars.
+ .
+ Un fichier de configuration sera nécessaire si le téléchargement pour les utilisateurs devait être désactivé. Même dans le cas contraire, il ne coûte riend'en créer un tout de même. Des questions sur les options de ce fichier vous seront posées.
+Description-it.UTF-8: Creare il file /etc/kde4/kstarsrc?
+ Non esiste un file di configurazione globale per kstars.
+ .
+ Un file di configurazione è necessario se deve essere disabilitato lo scaricamento da parte degli utenti, in caso contrario crearne uno è comunque sicuro. Verranno poste domande sulle opzioni in tale file.
+Description-ja.UTF-8: /etc/kde4/kstarsrc ファイルを作成しますか?
+ kstars のグローバルの設定ファイルはありません。
+ .
+ ユーザのダウンロードを無効にする場合には設定ファイルが必要となりますが、しない場合の新規作成はまだ安全です。このファイルの選択肢を質問します。
+Description-nl.UTF-8: Het bestand /etc/kde4/kstarsrc aanmaken?
+ Er is geen globaal configuratiebestand voor kstars.
+ .
+ Er is een configuratiebestand nodig indien u downloads van gebruikers wilt uitschakelen, maar ook in andere gevallen is het veilig om er één aan te maken. Er wordt u zo meteen gevraagd wat u met dit bestand wilt doen.
+Description-pt.UTF-8: Criar ficheiro /etc/kde4/kstarsrc ?
+ Não existe um ficheiro de configuração global do kstars.
+ .
+ Será necessário um ficheiro de configuração para desabilitar os downloads iniciados pelos utilizadores, mas mesmo que isso não seja necessário é seguro criar um. Será questionado acerca das opções neste ficheiro.
+Description-ru.UTF-8: Создать файл /etc/kde4/kstarsrc?
+ Файл глобальной настройки kstars не существует.
+ .
+ Файл настройки необходим, если нужно отключить загрузку данных пользователями, но даже если этого не требуется, его создание ничему не помешает.
+Description-sv.UTF-8: Skapafilen  /etc/kde4/kstarsrc?
+ Det finns ingen global inställningsfil.
+ .
+ En inställningsfil behövs om hämtning av användardata ska avaktiveras, om inte kan en sådan fil fortfarande skapas. Du kommer få frågor om alternativen i filen.
+
+Template: kstars-data-extra/disable-downloads-title
+Type: title
+Description: Disable or lock data downloads
+Description-cs.UTF-8: Zakázat či uzamknout stahování dat
+Description-da.UTF-8: Deaktiver eller lås datahentninger
+Description-de.UTF-8: Daten-Downloads deaktivieren oder sperren
+Description-es.UTF-8: Deshabilitar o bloquear las descargas de datos
+Description-fr.UTF-8: Désactivation ou blocage du téléchargement de données
+Description-it.UTF-8: Disabilitare o bloccare lo scaricamento dei dati
+Description-ja.UTF-8: データのダウンロードを無効化またはロックする
+Description-nl.UTF-8: Gegevensdownloads uitschakelen of vergrendelen
+Description-pt.UTF-8: Desabilitar ou bloquear download de dados
+Description-ru.UTF-8: Отключить или заблокировать загрузку данных
+Description-sv.UTF-8: Avaktivera eller lås hämtning av data
+
+Template: kstars-data-extra/disable-downloads
+Type: select
+Choices: enable, disable, lock
+Choices-cs.UTF-8: povolit, zakázat, uzamknout
+Choices-da.UTF-8: aktiver, deaktiver, lås
+Choices-de.UTF-8: aktivieren, deaktivieren, sperren
+Choices-es.UTF-8: habilitar, deshabilitar, bloquear
+Choices-fr.UTF-8: activé, désactivé, bloqué
+Choices-it.UTF-8: abilita, disabilita, blocca
+Choices-ja.UTF-8: 有効にする, 無効にする, ロック
+Choices-nl.UTF-8: inschakelen, uitschakelen, vergrendelen
+Choices-pt.UTF-8: habilitar, desabilitar, bloquear
+Choices-ru.UTF-8: включить, отключить, заблокировать
+Choices-sv.UTF-8: aktivera, avaktivera, lås
+Default: lock
+Description: User data downloads for kstars:
+ KStars has a download feature allowing users to download extra data
+ files for their own use. Since packaged catalogs can be handled more
+ efficiently by installing a single central copy, you may wish to
+ restrict the use of this feature.
+ .
+  * enable - users will be able to download data files;
+  * disable - individual users can re-enable data downloads (to
+    download other data files) in their .kstarsrc;
+  * lock - users cannot enable data downloads.
+Description-cs.UTF-8: Uživatelská stahování dat pro kstars:
+ KStars má funkci, která uživatelům umožňuje stahovat dodatečné datové soubory pro jejich vlastní použití. Vzhledem k tomu, že balené katalogy lze zpracovat efektivněji nainstalováním jedné centrální kopie, budete možná chtít používání této funkce omezit.
+ .
+  * povolit - uživatelé budou moci stahovat datové soubory;
+  * zakázat - jednotliví uživatelé si mohou ve svém konfiguračním 
+    souboru .kstarsrc stahování dat znovu povolit (stahovat další datové soubory);
+  * uzamknout - uživatelé si nemohou povolit stahování datových souborů.
+Description-da.UTF-8: Brugerdatahentninger for kstars:
+ KStars har en hentningsfunktion, der tillader brugere at hente ekstra datafiler til eget brug. Da pakkede kataloger kan håndteres mere effektivt ved at installere en enkelt central kopi, ønsker du måske at begrænse brugen af denne funktion.
+ .
+  * aktiver - brugere vil kunne hente datafiler;
+  * deaktiver - individuelle brugere kan genaktivere datahentninger (til
+    at hente andre datafiler) i deres .kstarsrc;
+  * lås - brugere kan ikke aktivere datahentninger.
+Description-de.UTF-8: Benutzerdaten-Downloads für Kstars:
+ Kstars hat eine Download-Funktion, die es Benutzern ermöglicht, zusätzliche Dateien für ihren eigenen Gebrauch herunterzuladen. Da Paketkataloge effizienter durch das Installieren einer einzigen zentralen Kopie gehandhabt werden können, möchten Sie den Gebrauch dieser Funktion möglicherweise einschränken.
+ .
+  * aktivieren - Anwender werden in der Lage sein, Dateien herunterzuladen;
+  * deaktivieren - einzelne Anwender können Daten-Downloads in ihrer .kstarsrc
+    wieder aktivieren (um andere Dateien herunterzuladen);
+  * sperren - Anwender können Daten-Downloads nicht einschalten.
+Description-es.UTF-8: Descargas por parte de los usuarios para kstars:
+ KStars tiene una capacidad de descarga que permite a los usuarios descargar ficheros de datos adicionales para su propio uso. Como los catálogos empaquetados pueden manejar esto de una manera más eficiente instalando una única copia centralizada, podría desear restringir el uso de dicha capacidad.
+ .
+  * habilitar - los usuarios pueden descargar ficheros de datos;
+  * deshabilitar - los usuarios individuales pueden reactivar las
+    descargas de ficheros de datos (para descargar otros ficheros
+    de datos) en sus .kstarsrc ;
+  * bloquear - los usuarios no pueden activar las descargas de datos.
+Description-fr.UTF-8: Téléchargements des données utilisateurs pour kstars :
+ Kstars dispose d'une fonctionnalité autorisant les utilisateurs à télécharger des fichiers de données supplémentaires pour leur usage personnel. Comme les catalogues empaquetés peuvent être manipulés plus efficacement en en installant une copie centrale, vous pouvez préférer empêcher l'utilisation de cette fonctionnalité.
+ .
+ * activé - les utilisateurs pourront télécharger des fichiers de données;
+ * désactivé - les utilisateurs pourront réactiver cette fonctionnalité
+    individuellement (pour télécharger d'autres fichiers de données) dans
+   leur fichier .kstarsrc;
+ * bloqué - les utilisateurs ne pourront pas activer le téléchargement de
+    données.
+Description-it.UTF-8: Scaricamento dei dati per kstars da parte degli utenti:
+ KStars ha una funzionalità di scaricamento che permette agli utenti di scaricare file di dati aggiuntivi per il proprio uso. Dato che i cataloghi impacchettati possono essere gestiti in modo più efficiente installandone un'unica copia centralizzata, può essere preferibile limitare l'uso di questa funzionalità.
+ .
+  * abilita: gli utenti possono scaricare i file dei dati;
+  * disabilita: i singoli utenti possono ri-abilitare nel loro .kstarsrc
+    lo scaricamento di dati (per scaricare altri file di dati);
+  * blocca: gli utenti non possono abilitare lo scaricamento.
+Description-ja.UTF-8: kstars のユーザデータのダウンロード:
+ KStars にはダウンロード機能があり、ユーザは自分で使うデータファイルを余分にダウンロードできます。パッケージされたカタログは中央にまとめてインストールする方が効率的なので、この機能を制限することもできます。
+ .
+  * 有効にする - ユーザはデータファイルをダウンロードすることができます;
+  * 無効にする - 個々のユーザが自分の .kstarsrc により、
+    データのダウンロードを有効化できます (他のデータファイルのダウンロード);
+  * ロック - ユーザはデータのダウンロードを有効化できません。
+Description-nl.UTF-8: Gegevensdownloads van gebruikers voor kstars:
+ KStarts bevat downloadfunctionaliteit waarmee gebruikers extra gegevensbestanden kunnen downloaden voor eigen gebruikt. Omdat de verpakte catalogi efficienter kunnen worden gebruikt door middel van een centrale kopie, wilt u mogelijk het gebruik van deze functionaliteit beperken.
+ .
+  * inschakelen - Gebruikers kunnen gegevensbestanden downloaden.
+  * uitschakelen - Individuele gebruikers kunnnen het downloaden
+    voor zichzelf weer inschakenlen in hun .kstarsrc.
+  * vergrendelen - Gebruikers kunnen gegevensdownloads niet inschakelen.
+Description-pt.UTF-8: Download de dados dos utilizadores para o kstars:
+ O kstars tem uma característica que permite aos utilizadores fazer o download de ficheiros de dados extra para o seu próprio uso. Uma vez que os catálogos empacotados podem ser tratados de modo mais eficiente se forem instalados numa localização central, pode querer restringir o uso desta característica.
+ .
+  * habilitar - os utilizadores poderão fazer o download de ficheiros de
+                 dados;
+  * desabilitar - os utilizadores podem, individualmente, habilitar os
+                  downloads de ficheiros de dados nos seus .kstarsrc;
+  * bloquear - os utilizadores não podem habilitar os downloads.
+Description-ru.UTF-8: Загрузку пользовательских данных kstars:
+ KStars позволяет пользователям загружать дополнительные файлы с данными. Так как каталоги пакета обрабатываются более эффективно при установке одной глобальной копии данных, вы можете захотеть ограничить использование данной возможности.
+ .
+  * включить      - пользователи могут загружать файлы данных;
+  * отключить     - отдельные пользователи могут включить загрузку данных
+    для загрузки других файлов с данными) в своих .kstarsrc;
+  * заблокировать - пользователи не могут включать загрузку данных.
+Description-sv.UTF-8: Hämtning av användardata för kstars:
+ KStars har en funktion som tillåter användarna att hämta extra datafiler. Eftersom paketerade kataloger kan hanteras mer effektivt genom att installera en central kopia kan du avgränsa användningen av den här funktionen.
+ .
+  * aktivera - användare kommer att kunna hämta datafiler.
+  * avaktivera - individuella användare kan återaktivera hämtning av data (för att hämta andra datafiler) i deras .kstarsrc.
+  * lås - användare kan inte aktivera datahämtning.
+
+Template: kstars-data-extra/kstarsrc-saved-title
+Type: title
+Description: Backup of old kstarsrc file
+Description-cs.UTF-8: Záloha původního souboru kstarsrc
+Description-da.UTF-8: Sikkerhedskopi af gammel kstarsrc-fil
+Description-de.UTF-8: Sicherungskopie der alten »kstarsrc«-Datei
+Description-es.UTF-8: Copia del antiguo fichero kstarsrc
+Description-fr.UTF-8: Sauvegarde de l'ancien fichier kstarsrc
+Description-it.UTF-8: Backup del vecchio file kstarsrc
+Description-ja.UTF-8: 古い kstarsrc ファイルのバックアップ
+Description-nl.UTF-8: Reservekopie van het oude kstarsrc-bestand
+Description-pt.UTF-8: Cópia de segurança do antigo ficheiro kstarsrc
+Description-ru.UTF-8: Резервная копия старого файла kstarsrc
+Description-sv.UTF-8: Säkerhetskopia av filen kstarsrc
+
+Template: kstars-data-extra/kstarsrc-saved
+Type: text
+Description: Former kstarsrc file saved
+ The old kstarsrc file has been saved as /etc/kde4/kstarsrc.backup.kstars-data-extra.
+Description-cs.UTF-8: Původní soubor kstarsrc byl uložen
+ Původní soubor kstarsrc byl uložen jako /etc/kde4/kstarsrc.backup.kstars-data-extra.
+Description-da.UTF-8: Tidligere kstarsrc-fil gemt
+ Den gamle kstarsrc-fil er blevet gemt som /etc/kde4/kstarsrc.backup.kstars-data-extra.
+Description-de.UTF-8: Vorherige »kstarsrc«-Datei gesichert
+ Die alte »kstarsrc«-Datei wurde als /etc/kde4/kstarsrc.backup.kstars-data-extra gespeichert.
+Description-es.UTF-8: Anterior fichero kstarsrc salvado
+ El fichero kstarsrc antiguo ha sido salvado en /etc/kde4/kstarsrc.backup.kstars-data-extra .
+Description-fr.UTF-8: Ancien fichier kstatrsrc sauvegardé
+ L'ancien fichier kstarsrc a été sauvegardé en tant que /etc/kde4/kstarsrc.backup.kstars-data-extra.
+Description-it.UTF-8: Il file kstarsrc precedente è stato salvato
+ Il vecchio file kstarsrc è stato salvato come /etc/kde4/kstarsrc.backup.kstars-data-extra.
+Description-ja.UTF-8: 前の kstarsrc ファイルを保存しました
+ 古い kstarsrc ファイルは /etc/kde4/kstarsrc.backup.kstars-data-extraに保存されています。
+Description-nl.UTF-8: Vorige kstarsrc-bestand bewaard
+ Het oude kstarsrc-bestand is bewaard als /etc/kde4/kstarsrc.backup.kstars-data-extra.
+Description-pt.UTF-8: Ficheiro antigo kstarsrc guardado
+ O antigo ficheiro kstarsrc foi guardado como /etc/kde4/kstarsrc.backup.kstars-data-extra.
+Description-ru.UTF-8: Старый файл kstarsrc сохранён
+ Старый файл kstarsrc сохранён под именем /etc/kde4/kstarsrc.backup.kstars-data-extra.
+Description-sv.UTF-8: Filen kstarsrc säkerhetskopierades
+ Filen kstarsrc finns som säkerhetskopia i /etc/kde4/kstarsrc.backup.kstars-data-extra.
+
+Template: kstars-data-extra/kstarsrc-previously-exists
+Type: select
+Choices: unset, previously exists, does not exist
+Default: unset
+Description: for internal use
+ Not shown question to hold some data in the database

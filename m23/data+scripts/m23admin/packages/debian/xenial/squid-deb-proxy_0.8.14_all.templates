@@ -1,0 +1,114 @@
+
+Template: squid-deb-proxy/ppa-enable
+Type: boolean
+Default: false
+Description: Allow PPA access?
+ By default, squid-deb-proxy does not allow access to Personal Package
+ Archive (PPA) repositories on Launchpad.
+ .
+ Choosing this option will whitelist these repositories.
+Description-cs.UTF-8: Povolit přístup do PPA?
+ squid-deb-proxy ve výchozím nastavení nepovoluje na Launchpadu přístup do repositáře s archivem osobních balíčků (Personal Package Archive - PPA).
+ .
+ Zvolení této možnosti přidá tyto repositáře na bílou listinu.
+Description-da.UTF-8: Tillad PPA-adgang?
+ Som standard giver squid-deb-proxy ikke adgang til Personal Package Archive-arkiver (PPA) på Launchpad.
+ .
+ Valg af denne indstilling vil hvidliste disse arkiver.
+Description-de.UTF-8: PPA-Zugriff erlauben?
+ Standardmäßig erlaubt Squid-deb-proxy keinen Zugriff auf persönliche Paketarchivdepots (Personal Package Archive/PPA) auf Launchpad.
+ .
+ Die Auswahl dieser Option wird diese Depots auf eine Liste erlaubter Depots setzen.
+Description-es.UTF-8: ¿Desea permitir el acceso a los PPA?
+ De manera predeterminada, squid-deb-proxy no permite el acceso a los repositorios de Archivos de Paquetes Personales (PPA) de Launchpad.
+ .
+ Si acepta esta opción se permitirá el acceso a estos repositorios.
+Description-fr.UTF-8: Autoriser l'accès aux PPA ?
+ Par défaut, squid-deb-proxy n'autorise pas l'accès aux archives PPA (« Personal Package Archive » : archives personnelles de paquets) de Launchpad.
+ .
+ Si vous choisissez cette option, ces archives seront autorisées.
+Description-it.UTF-8: Permettere l'accesso a PPA?
+ In modo predefinito squid-deb-proxy non permette l'accesso a repository PPA (Personal Package Archive) su Launchpad.
+ .
+ Se si abilita questa opzione, tali repository verranno inseriti nell'elenco di quelli permessi.
+Description-ja.UTF-8: PPA へのアクセスを許可しますか?
+ デフォルトでは、squid-deb-proxy は Launchpad の Personal Package Archive (PPA) リポジトリへのアクセスを許可しません。
+ .
+ このオプションを選択すると PPA リポジトリをホワイトリストとして扱います。
+Description-nl.UTF-8: Toegang verlenen tot PPA?
+ Standaard verleent squid-deb-proxy geen toegang tot de Personal Package Archive (PPA) pakketbronnen op Launchpad.
+ .
+ Kiezen voor deze optie zal deze pakketbronnen vrijgeven.
+Description-pl.UTF-8: Zezwolić na dostęp do PPA?
+ Domyślnie squid-deb-proxy nie zezwala na dostęp do repozytoriów Personal Package Archive (PPA) na platformie Launchpad.
+ .
+ Wybór tej opcji doda je do białej listy.
+Description-ru.UTF-8: Разрешить доступ к PPA?
+ По умолчанию, в squid-deb-proxy запрещён доступ к персональным репозиториям пакетов (Personal Package Archive, PPA) Launchpad.
+ .
+ Ответив утвердительно, доступ к этим репозиториям станет возможен.
+Description-sk.UTF-8: Povoliť prístup k PPA?
+ V predvolenom nastavení squid-deb-proxy neumožňuje prístup k Osobným archívom balíkov (PPA) na Launchpade.
+ .
+ Ak zvolíte túto možnosť, bude tieto zdroje softvéru sa pridajú na bielu listinu.
+Description-sv.UTF-8: Ska PPA-åtkomst tillåtas?
+ Som standard tillåter inte squid-deb-proxy åtkomst till Personal Package Archive (PPA) på Launchpad.
+ .
+ Aktiveras detta val kommer dessa förråda att bli vitlistade.
+
+Template: squid-deb-proxy/acl-disable
+Type: boolean
+Default: false
+Description: Allow unrestricted network access?
+ By default, squid-deb-proxy allows access to the cache from private
+ networks only (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
+ .
+ Choosing this option will allow other IP addresses to access the cache.
+Description-cs.UTF-8: Povolit neomezený síťový přístup?
+ squid-deb-proxy ve výchozím nastavení povoluje přistupovat k vyrovnávací paměti pouze z neveřejných sítí (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
+ .
+ Zvolení této možnosti povolí přistup k vyrovnávací paměti z ostatních IP adres.
+Description-da.UTF-8: Tillad ubegrænset netværksadgang?
+ Som standard giver squid-deb-proxy kun adgang til mellemlageret (cache) fra private netværk (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
+ .
+ Valg af denne indstilling vil give andre IP-adresser adgang til mellemlageret (cache).
+Description-de.UTF-8: Uneingeschränkten Netzwerkzugriff gestatten?
+ Standardmäßig erlaubt Squid-deb-proxy nur privaten Netzwerken (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) den Zugriff auf den Zwischenspeicher.
+ .
+ Die Auswahl dieser Option wird weiteren IP-Adressen den Zugriff auf den Zwischenspeicher gestatten.
+Description-es.UTF-8: ¿Desea permitir el acceso a la red sin restricciones?
+ De manera predeterminada, squid-deb-proxy sólo permite acceder al caché a las redes privadas (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
+ .
+ Si acepta esta opción se permitirá el acceso al caché a todas las direcciones IP.
+Description-fr.UTF-8: Faut-il autoriser un accès sans restriction depuis le réseau ?
+ Par défaut, squid-deb-proxy n'autorise l'accès au cache qu'à partir d'un réseau privé (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
+ .
+ Si vous choisissez cette option, l'accès au cache sera autorisé à toute adresse IP.
+Description-it.UTF-8: Permettere l'accesso non ristretto dalla rete?
+ In modo predefinito squid-deb-proxy permette l'accesso alla cache solamente dalle reti private (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
+ .
+ Se si abilita questa opzione si permetterà ad altri indirizzi IP di accedere alla cache.
+Description-ja.UTF-8: ネットワークアクセスを無制限に許可しますか?
+ デフォルトでは、squid-deb-proxy はキャッシュへのアクセスをプライベートネットワーク (10.0.0.0/8、172.16.0.0/12、192.168.0.0/16) からのみ許可します。
+ .
+ このオプションを選択すると他の IP アドレスからのキャッシュへのアクセスを許可します。
+Description-nl.UTF-8: Onbeperkte netwerktoegang verlenen?
+ Standaard verleent squid-deb-proxy enkel toegang tot de cache aan private netwerken (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
+ .
+ Kiezen voor deze optie zal ook aan andere IP-adressen toelaten om toegang tot de cache te hebben.
+Description-pl.UTF-8: Zezwolić na nieograniczony dostęp sieciowy?
+ Domyślnie squid-deb-proxy zezwala na dostęp do pamięci podręcznej jedynie z sieci prywatnych (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
+ .
+ Wybór tej opcji zezwoli na dostęp do pamięci podręcznej innym adresom IP.
+Description-ru.UTF-8: Разрешить неограниченный сетевой доступ?
+ По умолчанию, к кэшу squid-deb-proxy разрешён доступ только из частных сетей (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
+ .
+ Ответив утвердительно, доступ к кэшу станет возможен и с других IP-адресов.
+Description-sk.UTF-8: Umožniť neobmedzený prístup k sieti?
+ V predvolenom nastavení squid-deb-proxy umožňuje prístup do vyrovnávacej pamäte len zo súkromných sietí (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
+ .
+ Ak zvolíte túto možnosť, umožníte prístup k vyrovnávacej pamäti aj ďalším IP adresám.
+Description-sv.UTF-8: Tillåt obegränsad nätverksåtkomst?
+ Som standard tillåter squid-deb-proxy bara tillgång till cachefiler från privata nätverk (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
+ .
+ Aktiveras detta val kommer andra IP-adresser att kunna ha tillgång till cachefilerna.

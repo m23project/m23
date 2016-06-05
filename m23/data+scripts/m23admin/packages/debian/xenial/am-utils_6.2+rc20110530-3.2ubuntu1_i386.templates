@@ -1,0 +1,1454 @@
+Template: am-utils/import-amd-conf-done
+Type: boolean
+Default: false
+Description: for internal use
+
+Template: am-utils/import-amd-conf
+Type: boolean
+Default: false
+Description: Import old amd configuration?
+ amd package configuration files are available (the "amd" package was
+ the precursor to am-utils)
+ .
+ A mechanism is available to import these files, but it may fail
+ in some cases.
+Description-cs.UTF-8: Importovat staré nastavení amd?
+ Zdá se, že máte v systému konfigurační soubory balíku amd (balík "amd" je předchůdce am-utils).
+ .
+ Existuje způsob, jak tyto soubory naimportovat, ovšem v některých případech může selhat.
+Description-da.UTF-8: Importer gammel amd-konfiguration?
+ Pakkekonfigurationsfiler for amd er tilgængelige (pakken »amd« var forløberen for am-utils).
+ .
+ En mekansime er tilgængelig til at importere disse filer, men den kan fejle i nogle tilfælde.
+Description-de.UTF-8: Importiere die alte Konfiguration von Amd?
+ Die Amd-Paketkonfigurationsdateien sind verfügbar (das »amd«-Paket ist der Vorgänger der am-utils).
+ .
+ Es existiert ein Mechanismus, diese Dateien zu importieren, allerdings könnte dieser in einigen Fällen fehlschlagen.
+Description-es.UTF-8: ¿Desea importar la configuración antigua de amd?
+ Hay disponibles archivos de configuración del paquete amd (el paquete «amd» fue el precursor de am-utils)
+ .
+ Hay disponible un mecanismo para importar estos archivos, pero puede fallar en algunos casos.
+Description-fr.UTF-8: Faut-il importer l'ancienne configuration d'amd ?
+ Il semblerait que des fichiers de configuration d'amd soient présents (le paquet « amd » est le prédécesseur d'am-utils).
+ .
+ Il existe une possibilité pour importer ces fichiers, mais elle peut échouer dans certaines conditions.
+Description-gl.UTF-8: ¿Importar a configuración de amd antiga?
+ Hai ficheiros de configuración do paquete amd dispoñibles (o paquete "amd" foi o precursor de am-utils).
+ .
+ Existe un mecanismo para importar eses ficheiros, pero pode fallar nalgúns casos.
+Description-it.UTF-8: Importare la vecchia configurazione di amd?
+ Sul sistema sono presenti i file di configurazione di amd (il pacchetto "amd" è stato il predecessore di am-utils).
+ .
+ È disponibile un sistema per importare questi file, ma in alcuni casi può non funzionare.
+Description-ja.UTF-8: 古い amd 設定をインポートしますか?
+ amd パッケージ設定ファイルを利用できるようです ("amd" パッケージは am-utils の前駆です)。
+ .
+ これらのファイルをインポートする機構を利用できますが、いくつかの場面では失敗するかもしれません。
+Description-nl.UTF-8: Wilt u de oude amd-configuratie importeren?
+ Er zijn configuratiebestanden van het 'amd'-pakket beschikbaar (dat pakket is een voorganger van am-utils)
+ .
+ Er is een mechanisme beschikbaar om deze bestanden te importeren, al kan dit in sommige gevallen mislukken.
+Description-pt.UTF-8: Importar a antiga configuração amd?
+ os ficheiros de configuração do pacote amd estão disponíveis (o pacote "amd"era o precursor do am-utils
+ .
+ Existe um mecanismo para importar estes ficheiros, mas poderá falhar em alguns casos.
+Description-pt_BR.UTF-8: Importar a configuração amd anterior?
+ Os arquivos de configuração do pacote amd estão disponíveis (o pacote "amd" foi o percursor do am-utils)
+ .
+ Um mecanismo está disponível para importar estes arquivos, mas ele pode falhar em alguns casos.
+Description-ru.UTF-8: Импортировать старую настройку amd?
+ Обнаружены файлы настройки пакета amd (пакет "amd" -- предшественник am-utils)
+ .
+ Есть возможность импортировать эти файлы (но не всегда срабатывает).
+Description-sv.UTF-8: Importera gammal amd-konfiguration?
+ Amd-paketets konfigurationsfiler finns tillgängliga ("amd"-paketet är föregångaren till am-utils)
+ .
+ En mekanism finns tillgänglig för att importera dessa filer, men den kan misslyckas i vissa fall.
+Description-vi.UTF-8: Nhập cấu hình amd cũ không?
+ Có sẵn các tập tin cấu hình gói amd (gói « amd » đi trước « am-utils »)
+ .
+ Có sẵn một cơ chế để nhập các tập tin này, nhưng nó có thể không thành công trong một số trường hợp riêng.
+
+Template: am-utils/log-to-file
+Type: error
+Description: Failed to log to file
+ The old "amd" configuration used to log to a file instead of using syslog.
+ .
+ The "am-utils" package only supports logging to the syslog out of the box.
+ You might want to modify the /etc/am-utils/amd.conf file to enable logging
+ to a file.
+ .
+ This will require manual intervention.
+Description-cs.UTF-8: Logování do souboru selhalo
+ Staré nastavení "amd" používalo místo syslogu logování do souboru.
+ .
+ Balík "am-utils" podporuje ve výchozím nastavení pouze logování přes syslog. Chcete-li zapnout logování do souboru, musíte upravit soubor /etc/am-utils/amd.conf.
+ .
+ To bude vyžadovat ruční zásah.
+Description-da.UTF-8: Kunne ikke logge til fil
+ Den gamle amd-konfiguration brugt for at logge til en fil i stedet for at bruge syslog.
+ .
+ Pakken »am-utils« understøtter kun logning til syslog ud af boksen. Du skal ændre filen /etc/am-utils/amd.conf for at aktivere logning til en fil.
+ .
+ Dette vil kræve manuel intervention.
+Description-de.UTF-8: Protokollieren in eine Datei Datei fehlgeschlagen
+ Die alte »Amd«-Konfiguration protokollierte in eine Datei statt Syslog zu verwenden.
+ .
+ Standardmäßig unterstützt das »am-utils«-Paket nur die Protokollierung mittels Syslog. Sie müssen /etc/am-utils/amd.conf modifizieren, damit Sie in eine Datei protokollieren können.
+ .
+ Hierzu ist ein manueller Eingriff nötig.
+Description-es.UTF-8: No se pudo registrar en un archivo
+ Su configuración antigua de «amd» registraba los sucesos en un archivo en vez de en syslog.
+ .
+ El paquete «am-utils», de forma predeterminada, sólo permite el registro en syslog. Quizás quiera modificar el archivo «/etc/am-utils/amd.conf» para activar el registro en un archivo.
+ .
+ Esto requiere su intervención manual.
+Description-fr.UTF-8: Échec de la journalisation dans un fichier
+ L'installation antérieure d'amd utilisait un fichier plutôt que syslog, pour la journalisation.
+ .
+ Le paquet am-utils ne gère, sans modifications, que la journalisation via syslog. Vous devriez modifier le fichier /etc/am-utils/amd.conf pour activer la journalisation dans un fichier.
+ .
+ Cela nécessitera des modifications que vous devrez réaliser vous-même.
+Description-gl.UTF-8: Non se puido gravar o rexistro nun ficheiro
+ A configuración antiga de "amd" gravaba un rexistro nun ficheiro no canto de empregar syslog.
+ .
+ O paquete "am-utils" só pode facer o rexistro en syslog tal como está configurado por defecto. Pode querer modificar o ficheiro /etc/am-utils/amd.conf para activar o rexistro nun ficheiro.
+ .
+ Isto ha precisar de intervención manual.
+Description-it.UTF-8: Impossibile scrivere il log su file
+ La vecchia configurazione di "amd" prevedeva l'uso di un file di log al posto di syslog.
+ .
+ La configurazione predefinita del pacchetto "am-utils" permette di scrivere il log solo sul syslog. Per abilitare la scrittura del log su un file si deve modificare il file /etc/am-utils/amd.conf .
+ .
+ Questa operazione richiede un intervento manuale.
+Description-ja.UTF-8: ファイルに記録できません
+ syslog を使う代わりに古い "amd" 設定はファイルにログを記録するようになっています。
+ .
+ "am-utils" パッケージは syslog へのログ記録書き出しのみをサポートしています。/etc/am-utils/amd.conf ファイルを変更してファイルへのログ記録を有効にできます。
+ .
+ これには手動調整が必要となります。
+Description-nl.UTF-8: Naar bestand loggen is mislukt
+ De oude 'amd'-configuratie logde naar een bestand i.p.v. syslog te gebruiken.
+ .
+ Het 'am-utils'-pakket ondersteunt standaard alleen logging naar syslog. U kunt /etc/am-utils/amd.conf aanpassen om loggen naar een bestand te activeren.
+ .
+ Dit vereist handmatige interventie.
+Description-pt.UTF-8: Impossível gravar no ficheiro de log.
+ A antiga configuração "amd" costumava gravar os logs para um ficheiro em vez de usar o syslog.
+ .
+ O pacote "am-utils" apenas suporta fazer logs para o syslog assim que é instalado. É possivel que tenha de modificar o ficheiro /etc/am-utils/amd.conf de forma a ser possível escrever os logs num ficheiro.
+ .
+ Isto requer alguma intervenção manual da sua parte.
+Description-pt_BR.UTF-8: Falha ao registrar log para arquivo
+ A antiga configuração do "amd" costumava registrar o log para um arquivo ao invés de usar o syslog.
+ .
+ O pacote "am-utils" suporta apenas o registro de logs para o syslog por padrão. Você pode querer modificar o arquivo /etc/am-utils/amd.conf para habilitar o registro de logs para um arquivo.
+ .
+ Isto irá requerer uma intervenção manual.
+Description-ru.UTF-8: Недоступно ведение журнала в файл
+ В старой настройке "amd" указано вести запись журнала в файл вместо использования syslog.
+ .
+ Установщик пакета "am-utils" позволяет настроить ведение протокола только через syslog. Вы можете самостоятельно включить протоколирование в файл, отредактировав файл /etc/am-utils/amd.conf.
+ .
+ Это выполняется вручную.
+Description-sv.UTF-8: Misslyckades med att logga till fil
+ Din gamla "amd"-konfiguration brukade logga till en fil istället för att använda systemloggen.
+ .
+ Paketet "am-utils" stöder endast loggning till systemloggen vid installationen. För att kunna logga till fil måste du ändra i filen /etc/am-utils/amd.conf.
+ .
+ Det här kräver ett visst manuellt jobb.
+Description-vi.UTF-8: Lỗi đăng nhập vào tập tin
+ Cấu hình « amd » cũ được dùng để đăng nhập vào tập tin thay vào sử dụng bản ghi hệ thống syslog.
+ .
+ Gói « am-utils » được định sẵn để hỗ trợ khả năng ghi lưu chỉ vào bản ghi hệ thống syslog. Bạn có thể chỉnh sửa tập tin cấu hình « /etc/am-utils/amd.conf » để hiệu lực khả năng ghi lưu vào một tập tin nào đó.
+ .
+ Việc này cần thiết bạn tự chỉnh sửa.
+
+Template: am-utils/import-amd-failed
+Type: error
+Description: Automatic import of amd's configuration failed
+ Unfortunately, the automatic import of the old amd configuration failed.
+ .
+ Please review your am-utils configuration.
+Description-cs.UTF-8: Automatický import konfigurace amd selhal.
+ Bohužel, automatický import staré konfigurace balíku amd selhal.
+ .
+ Zkontrolujete prosím nastavení balíku am-utils.
+Description-da.UTF-8: Automatisk import af amd's konfiguration fejlede
+ Desværre så fejlede den automatiske import af den gamle amd-konfiguration.
+ .
+ Gennemgå venligst din konfiguration for am-utils.
+Description-de.UTF-8: Automatisches Importieren der Konfiguration von Amd fehlgeschlagen
+ Unglücklicherweise ist das automatische Importieren der alten Amd-Konfiguration fehlgeschlagen.
+ .
+ Bitte schauen Sie sich Ihre am-utils Konfiguration an.
+Description-es.UTF-8: Falló la importación automática de amd.
+ Desafortunadamente, la importación automática de la configuración antigua de amd falló.
+ .
+ Revise la configuración de am-utils.
+Description-fr.UTF-8: Échec de l'importation automatique de la configuration
+ L'importation automatique de l'ancienne configuration d'amd a échoué.
+ .
+ Veuillez vérifier la configuration d'am-utils.
+Description-gl.UTF-8: A importación automática da configuración de amd fallou
+ Por desgraza, a importación automática da configuración antiga de amd fallou.
+ .
+ Revise a configuración de am-utils.
+Description-it.UTF-8: Fallita l'importazione automatica della configurazione di amd
+ Purtroppo è fallita l'importazione automatica della vecchia configurazione di amd.
+ .
+ Verificare la propria configurazione di am-utils.
+Description-ja.UTF-8: amd の設定の自動インポートに失敗しました
+ 残念ながら、古い amd 設定の自動インポートに失敗しました。
+ .
+ あなたの am-utils 設定を再調査してください。
+Description-nl.UTF-8: De automatische import van amd's configuratie is mislukt
+ Spijtig genoeg is de automatische import van de oude amd-configuratie mislukt.
+ .
+ Gelieve uw am-utils configuratie te controleren.
+Description-pt.UTF-8: A importação automática da configuração amd falhou.
+ Infelizmente foi impossível importar automaticamente antigo sistema amd.
+ .
+ Por favor reveja a sua configuração de am-utils.
+Description-pt_BR.UTF-8: A importação automática da configuração do amd falhou
+ Infelizmente, a importação automática da antiga configuração do amd falhou.
+ .
+ Por favor, revise sua configuração do am-utils.
+Description-ru.UTF-8: Не удалось автоматически импортировать настройки amd
+ К сожалению, не удалось автоматически импортировать старые настройки amd.
+ .
+ Проверьте настройки am-utils.
+Description-sv.UTF-8: Automatisk importering av amds konfiguration misslyckades
+ Tyvärr misslyckades den automatiska importeringen av den gamla amd-konfigurationen.
+ .
+ Granska din konfiguration av am-utils.
+Description-vi.UTF-8: Lỗi nhập tự động cấu hình của amd
+ Tiếc là việc nhập khẩu tự động cấu hình amd cũ bị lỗi.
+ .
+ Hãy xem lại cấu hình « am-utils ».
+
+Template: am-utils/use-nis
+Type: boolean
+Default: false
+Description: Is the amd master map propagated through NIS?
+ At large sites the automounter tables (called 'maps') may be available
+ through the "Network Information Service", or NIS for short (formerly known
+ as "Yellow pages").  This is the recommended way of using the automounter
+ on client systems.
+ .
+ The master map contains the list of mount points to be managed by amd.
+ This master map can be propagated through NIS or can be a file. Whatever
+ answer you choose here does not prevent amd from retrieving the other maps
+ via NIS.
+ .
+ Only the *master* map is concerned here.
+Description-cs.UTF-8: Je hlavní mapa amd distribuována přes NIS?
+ Na větších sítích se mohou tabulky automounteru (nazývané mapy) distribuovat přes NIS (Network Information Service, dříve známý jako Yellow Pages), což je preferovaný způsob používání automounteru na klientských systémech.
+ .
+ Hlavní mapa obsahuje seznam přípojných bodů, které mají být spravovány přes amd. Hlavní mapa může být obyčejný soubor, nebo se může distribuovat přes NIS. Ať zde odpovíte jakkoliv, nezabráníte amd, aby přes NIS stahovalo ostatní mapy.
+ .
+ Toto se nyní týká pouze *hlavní* mapy.
+Description-da.UTF-8: Er amd-overkortet viderestillet via NIS?
+ På store sider kan tabellerne for automatisk montering (kaldet »kort«) være tilgængelige via »Network Information Service« der forkortes NIS (tidligere kendt som »Yellow pages« (gule sider). Dette er den anbefalede måde at bruge den automatiske montering for klientsystemer.
+ .
+ Overkortet indeholder listen af monteringspunkter, som skal håndteres af amd. Dette overkort kan viderestilles via NIS eller kan være en fil. Uanset dit valg her så forhindrer det ikke amd i at hente de andre kort via NIS.
+ .
+ Kun *overkortet* er i spil her.
+Description-de.UTF-8: Wird die Amd Master Map über NIS verteilt?
+ In großen Umgebungen werden die automounter-Tabellen (genannt »Maps«) möglicherweise über den »Network Information Service«, oder kurz NIS (früher bekannt als »Yellow Pages«) verteilt. Dies ist die empfohlene Art, den Automounter auf den Client-Systemen einzusetzen.
+ .
+ Die Master Map enthält die Listen der Einhängepunkte, die von Amd verwaltet werden sollen. Diese Master Map kann über NIS verteilt werden oder eine Datei sein. Unabhängig davon, was Sie hier auswählen, wird Amd nicht daran gehindert andere Maps über NIS abzurufen.
+ .
+ Nur die *Master* Map ist hiervon betroffen.
+Description-es.UTF-8: ¿Desea propagar el mapa maestro a través de NIS?
+ En sitios grandes las tablas del automontador (llamadas «mapas») pueden estar disponibles a través del «Servicio de Información de Red», (NIS para acortar, también conocido como «Páginas Amarillas»). Esta es la forma recomendada para utilizar el automontador en sistemas clientes.
+ .
+ El mapa maestro contiene una lista de puntos de montaje que maneja amd. Este mapa maestro se puede propagar a través de NIS o puede ser un archivo. Su elección no impide a amd para recuperar el resto de los mapas a través de NIS.
+ .
+ Aquí sólo interesa el mapa *maestro*.
+Description-fr.UTF-8: La carte principale (« master map ») d'amd est-elle diffusée via NIS ?
+ Sur les sites importants, les tables de montage automatique (appelées « cartes ») peuvent être diffusées via NIS (« Network Information System »), précédemment appelées « Pages Jaunes ». Il s'agit de la méthode recommandée pour utiliser l'auto-monteur sur les systèmes clients.
+ .
+ La carte principale contient la liste des points de montage gérés par amd. Cette carte principale peut être propagée par NIS ou peut être un simple fichier. Quel que soit le choix effectué, rien n'empêche amd de récupérer les autres cartes par NIS.
+ .
+ Seule la carte *principale* est concernée ici.
+Description-gl.UTF-8: ¿Propágase o mapa mestre de amd mediante NIS?
+ En sitios grandes, as táboas de automontaxe (chamadas "mapas") pódense poñer dispoñibles mediante NIS. Esta é a maneira recomendada de empregar a automontaxe nos sistemas clientes.
+ .
+ O mapa mestre contén a lista de puntos de montaxe que debe xestionar amd. Este mapa mestre pódese propagar mediante NIS ou pode estar nun ficheiro. Resposte o que resposte aquí, non se ha impedir que amd poida obter os outros mapas mediante NIS.
+ .
+ Só o mapa *mestre* é o que nos importa aquí.
+Description-it.UTF-8: La mappa master di amd è propagata tramite NIS?
+ Nelle installazioni più grandi le tabelle di mount automatico (chiamate "mappe") possono essere pubblicate tramite NIS (Network Information Service, in passato conosciuto come "Yellow Pages"). Questo è il metodo di mount automatico raccomandato sui sistemi client.
+ .
+ La mappa master contiene l'elenco dei punti di mount che devono essere gestiti da amd, questa mappa master può essere propagata attraverso NIS oppure può risiedere in un file. Qualsiasi sia la risposta data adesso amd rimane in grado di ricevere altre mappe via NIS.
+ .
+ Adesso viene presa in considerazione solo la mappa master.
+Description-ja.UTF-8: amd マスターマップは NIS を使って伝播されますか?
+ 大きなサイトでは、オートマウンタテーブル ('maps' と呼ばれる) を "Network Information Services" (あるいは短く NIS、俗に "Yellow pages" としても知られる) を通して利用可能です。これはオートマウンタをクライアントシステムで使うときに推奨される方法です。
+ .
+ マスターマップは amd で管理されるマウントポイントのリストを含みます。このマスターマップは NIS またはファイル経由で伝播することができます。ここで何を答えても、amd が NIS 経由でほかのマップを取得するのを妨げることにはなりません。
+ .
+ ここで関係するのは *マスター* マップだけです。
+Description-nl.UTF-8: Wordt de amd-meester-map verspreidd via NIS?
+ Op grote installaties kan het zijn dat de automounter-tabellen (de zogenaamde 'mappen')  beschikbaar zijn via 'Network Information Service' (kortweg NIS, en vroeger ook bekend als 'Yellow Pages'). Dit is de aangeraden manier om automounter te gebruiken op clientsystemen.
+ .
+ De meester-map bevat de lijst van door amd beheerde aankoppelpunten. Deze meester-map kan verspreid worden via NIS, of kan een bestand zijn. Het antwoord dat u hier kiest, is niet van invloed op het ophalen van andere mappen via NIS.
+ .
+ Het betreft hier enkel de *meester* map.
+Description-pt.UTF-8: É o amd master map prograpado atravéz de NIS ?
+ Em sites grandes as tabelas do automounter (conhecidas como 'maps') podem-se encontrar através do "Network Information Service" ou NIS para encurtar (antigamente conhecido como "Yellow pages"). Esta é a forma recomendada de usar o automounter em sistemas clientes.
+ .
+ O master map contém uma lista de pontos de montagem para serem geridos pelo amd. Este master map pode ser propagado através do NIS ou pode ser um ficheiro.  Qualquer que seja a sua escolha isto não impede o amd de obter outros maps por NIS.
+ .
+ Apenas o mapa *master* diz respeito aqui.
+Description-pt_BR.UTF-8: O mapa mestre do amd é propagado através de NIS?
+ Em grandes sites as tabelas de "automontagem" (chamadas 'mapas') podem estar disponíveis através do "Network Information Service" ("Serviço de Informação de Rede"), ou NIS para encurtar (anteriormente conhecido como "Yellow pages" -- "Páginas Amarelas"). Esta é a maneira recomendada de usar a "automontagem" em sistemas clientes.
+ .
+ O mapa mestre contém a lista de pontos de montagem a serem gerenciados pelo amd. Este mapa mestre pode ser propagado através de NIS ou pode ser um arquivo. Qualquer resposta que você escolha aqui não impede o amd de obter os outros mapas via NIS.
+ .
+ Apenas o mapa *mestre* está em questão aqui.
+Description-ru.UTF-8: Основная таблица соответствий amd распространяется через NIS?
+ На больших площадках таблицы программы автоматического монтирования (называемые 'таблицами соответствий (maps)') могут быть доступны через "сетевую информационную службу" (NIS), также известную как "Yellow pages"). Это рекомендуемый способ использования программы автоматического монтирования на клиентских системах.
+ .
+ В основной таблице соответствий (master map) содержится список точек монтирования, который будет управляться amd. Основная таблица соответствий может распространяться через NIS или может храниться в виде файла. Как бы вы не ответили, это не остановит amd от получения других таблиц через NIS.
+ .
+ Это относится только к *основной* таблице соответствий.
+Description-sv.UTF-8: Distribueras amds huvudkarta via NIS?
+ På större nätverk kan automatiska monteringstabeller (kallade "kartor") distribueras via "Network Information Service", eller NIS kort och gott (tidigare känt som "Yellow pages"). Detta är det rekommenderade sättet att använda den automatiska monteraren på klientsystem.
+ .
+ Huvudkartan innehåller en lista av monteringspunkter som ska skötas av amd. Denna huvudkarta kan distribueras via NIS eller kan vara en fil. Varken "ja" eller "nej" hindrar amd från att hämta andra kartor via NIS.
+ .
+ Endast *huvud*-kartan är av intresse här.
+Description-vi.UTF-8: Sơ đồ chủ (master map) của « amd » đã được truyền bá thông qua NIS chưa?
+ Trên nơi Mạng lớn, những bảng gắn kết tự động (được gọi là « sơ đồ » [map]) có thể sẵn sàng thông qua dịch vụ thông tin mạng (NIS), được gọi trước là các trang màu vàng (Yellow Pages). Đây là phương pháp khuyên khích sử dụng bộ gắn kết tự động trên hệ thống khách.
+ .
+ Sơ đồ chủ chứa danh sách các điểm lắp sẽ được quản lý bởi « amd ». Sơ đồ chủ này có thể được truyền bá thông qua NIS, hoặc có thể là một tập tin. Sự chọn của bạn ở đây không ngăn cản « amd » lấy các sơ đồ khác thông qua NIS.
+ .
+ Ở đây chỉ nói về sơ đồ _chủ_.
+
+Template: am-utils/nis-master-map
+Type: string
+Default: amd.master
+Description: Name of the master map:
+ The master map is the map containing amd's startup arguments and refers to
+ other maps.
+ .
+ It's generally called "amd.master".
+Description-cs.UTF-8: Název hlavní mapy:
+ Hlavní mapa je mapa obsahující startovací argumenty amd a odkazy na další mapy.
+ .
+ Obvykle se nazývá "amd.master".
+Description-da.UTF-8: Navn for overkort:
+ Overkortet er kortet der indeholder amd's opstartsargumenter og referer til andre kort.
+ .
+ Det kaldes normalt for »amd.master«.
+Description-de.UTF-8: Name der NIS-Master Map:
+ Die Master Map enthält die Start-Argumente von Amd und bezieht sich auch auf andere Maps.
+ .
+ Sie heißt normalerweise »amd.master«.
+Description-es.UTF-8: Nombre del mapa maestro:
+ El mapa maestro es un mapa que contiene parámetros de inicio de amd y referencias a otros mapas.
+ .
+ Generalmente se llama «amd.master».
+Description-fr.UTF-8: Nom de la carte principale :
+ La carte principale est la carte qui contient les options de démarrage d'amd et qui fait référence aux autres cartes.
+ .
+ Elle est généralement appelée « amd.master ».
+Description-gl.UTF-8: Nome do mapa mestre:
+ O mapa mestre é o mapa que contén os argumentos de inicio de amd e se refire a outros mapas.
+ .
+ Adoita chamarse "amd.master".
+Description-it.UTF-8: Nome della mappa master:
+ La mappa master è la mappa che contiene i parametri d'avvio per amd e i riferimenti alle altre mappe.
+ .
+ Solitamente è chiamata "amd.master".
+Description-ja.UTF-8: マスターマップの名前:
+ マスターマップは、amd のスタートアップ引数とほかのマップへの参照を含むマップです。
+ .
+ 一般的にこれは、"amd.master" と呼ばれます。
+Description-nl.UTF-8: Naam van de meester-map:
+ De meester-map is de map die amd's opstart-argumenten en referenties naar andere mappen bevat.
+ .
+ Meestal wordt deze 'amd.master' genoemd.
+Description-pt.UTF-8: Qual o nome do master map:
+ O master map é o mapa que contém os argumentos que iniciam o amd e que se referem a outros maps.
+ .
+ É normalmente chamado "amd.master".
+Description-pt_BR.UTF-8: Nome do mapa mestre:
+ O mapa mestre é o mapa que contém os argumentos de inicialização do amd e referências para outros mapas.
+ .
+ Ele é geralmente chamado "amd.master".
+Description-ru.UTF-8: Имя основной таблицы соответствий:
+ Основная таблица соответствий -- это таблица, содержащая параметры запуска amd и указывающая на другие таблицы.
+ .
+ Обычно её называют "amd.master".
+Description-sv.UTF-8: Namnet på huvudkartan:
+ Huvudkartan är den karta som innehåller amds uppstartsargument och refererar till andra kartor.
+ .
+ Den kallas vanligtvis "amd.master".
+Description-vi.UTF-8: Tên sơ đồ chủ :
+ Sơ đồ chủ là sơ đồ chức các đối số khởi chạy của « amd », và tham chiếu đến các sơ đồ khác.
+ .
+ Nó thường được gọi là « amd.master ».
+
+Template: am-utils/nis-master-map-key-style
+Type: select
+Choices: config, onekey, mountpoint, custom
+Choices-cs.UTF-8: config, onekey, mountpoint, vlastní
+Choices-da.UTF-8: konfiguration, onekey, monteringspunkt, custom
+Choices-de.UTF-8: Konfiguration, Onekey, Einhängepunkt, angepasst
+Choices-es.UTF-8: configuración, clave única, punto de montaje, personalizado
+Choices-fr.UTF-8: configuration, une seule clé, point de montage, personnalisé
+Choices-gl.UTF-8: config, unhaclave, puntomontaxe, personalizado
+Choices-it.UTF-8: config, onekey, mountpoint, custom
+Choices-ja.UTF-8: 設定, 1キー, マウントポイント, カスタム
+Choices-nl.UTF-8: config, een-sleutel, aankoppelpunt, aangepast
+Choices-pt.UTF-8: config, onekey, mountpoint, personalizado
+Choices-pt_BR.UTF-8: configuração, uma-chave, ponto-de-montagem, personalizado
+Choices-ru.UTF-8: config, onekey, mountpoint, custom
+Choices-sv.UTF-8: konfiguration, ennyckel, monteringspunkt, anpassad
+Choices-vi.UTF-8: cấu hình, khóa đơn, điểm lắp, riêng
+Default: onekey
+Description: Master map style:
+ The Amd master map can be of different styles:
+ .
+ With the `config' style, every key in the master map specifies a different
+ configuration. You might have different configurations depending on which
+ OS is booted, or on what the machine's purpose is. The value associated
+ with each key is the list of mountpoints and maps to be used with this
+ configuration.
+ .
+ Example map:
+ .
+  linux   /home amd.home /boot amd.boot -cache:=all
+  freebsd /home amd.home /usr/sys amd.usr-sys
+ .
+ You will need to specify which key to use.
+ .
+ The `onekey' style is the same as `config' except there is only one single
+ configuration. No key needs to be specified.
+ .
+ With the `mountpoint' style, every key in the master map is the mount
+ point and the value is the map name to be used for this mount point, plus
+ some options if needed. This is the default map style for FreeBSD.
+ .
+ Example map:
+ .
+  /home amd.home
+  /boot amd.boot -cache:=all
+ .
+ With the `custom' style, you will be prompted for a command to extract the
+ master map which will be run everytime amd starts.
+Description-cs.UTF-8: Styl hlavní mapy:
+ Hlavní mapa amd může mít několik podob:
+ .
+ Styl `config' znamená, že každý klíč v hlavním souboru zadává různou konfiguraci. Můžete tak mít různé konfigurace v závislosti na zavedeném operačním systému, nebo podle druhu určení počítače. Hodnota asociovaná s každým klíčem je seznam přípojných bodů a map, které se mají v této konfiguraci použít.
+ .
+ Ukázková mapa:
+ .
+  linux   /home amd.home /boot amd.boot -cache:=all
+  freebsd /home amd.home /usr/sys amd.usr-sys
+ .
+ Musíte zadat klíč, který se má použít.
+ .
+ Styl `onekey' je stejný jako `config', ale je zde pouze jediná konfigurace. Není třeba zadávat žádný klíč.
+ .
+ Ve stylu `mountpoint' je každý klíč v hlavní mapě přípojným bodem a hodnota je jméno mapy, která se má pro daný přípojný bod použít (plus podle potřeby další parametry). Toto je výchozí styl pro FreeBSD.
+ .
+ Ukázková mapa:
+ .
+  /home amd.home
+  /boot amd.boot -cache:=all
+ .
+ Se stylem `vlastní' budete dotázáni na příkaz, kterým získáte hlavní mapu. Tento příkaz bude spuštěn při každém startu amd.
+Description-da.UTF-8: Metode for overkort:
+ Overkortet for Amd kan være udformet forskelligt:
+ .
+ Med metoden »config« så angiver hver nøgle i overkortet en anden konfiguration. Du har måske forskellige konfigurationer afhængig af hvilket operativsystem der er opstartet, eller på hvad maskinens formål er. Værdien forbundet med hver nøgle er listen for monteringspunkter og kort som skal bruges med denne konfiguration.
+ .
+ Eksempelkort:
+ .
+  linux   /home amd.home /boot amd.boot -cache:=all
+  freebsd /home amd.home /usr/sys amd.usr-sys
+ .
+ Du skal angive hvilken nøgle der skal bruges.
+ .
+ Metoden »onekey« er den samme som »config« med undtagelse af, at der kun er en enkel konfiguration. Ingen nøgler kræver at blive angivet.
+ .
+ Med metoden »mountpoint« er hver nøgle i overkortet monteringspunktet og værdien er kortnavnet, der skal bruges for dette monteringspunkt, plus nogle tilvalg hvis krævet. Dette er standardkortmetoden for FreeBSD.
+ .
+ Eksempelkort:
+ .
+  /home amd.home
+  /boot amd.boot -cache:=all
+ .
+ Med metoden »custom« vil du blive spurgt om en kommando til at udtrække overkortet som vil køre hver gang amd starter.
+Description-de.UTF-8: Aufbau der Master Map:
+ Die Amd Master Map kann verschieden aufgebaut sein:
+ .
+ In dem »config«-Aufbau spezifiziert jeder Schlüssel in der Master Map eine andere Konfiguration. Sie haben vielleicht verschiedene Konfigurationen, abhängig von dem gebooteten Betriebssystem, oder abhängig vom Zweck des Rechners. Der Wert, der mit jedem Schlüssel verbunden ist, ist die Liste der Einhängepunkte und Maps, die mit dieser Konfiguration verwendet werden.
+ .
+ Beispiel Map:
+ .
+  linux   /home amd.home /boot amd.boot -cache:=all
+  freebsd /home amd.home /usr/sys amd.usr-sys
+ .
+ Sie müssen angeben, welcher Schlüssel verwendet werden soll.
+ .
+ Der »onekey«-Aufbau ist der gleiche wie der »config«-Aufbau, mit der Ausnahme, dass es nur eine Konfiguration gibt. Es müssen keine Schlüssel spezifiziert werden.
+ .
+ Bei dem »Einhängepunkt«-Aufbau ist jeder Schlüssel in der Master Map der Einhängepunkt und der Wert ist der Name der Map, der für diesen Einhängepunkt verwendet wird, ergänzt um einige Optionen, sofern benötigt. Dies ist der Standard Map-Aufbau für FreeBSD.
+ .
+ Beispiel Map:
+ .
+  /home amd.home
+  /boot amd.boot -cache:=all
+ .
+ Bei dem »angepassten«-Aufbau werden Sie nach einem Befehl gefragt, der die Master Map extrahiert und der bei jedem Start von Amd ausgeführt werden wird.
+Description-es.UTF-8: Tipo de mapa maestro:
+ El mapa maestro de amd puede ser de diferentes tipos:
+ .
+ Con el tipo «configuración», cualquier clave en el mapa maestro especifica una configuración diferente. Puede tener diferentes configuraciones dependiendo de que sistema operativo arranque, o cual sea el trabajo que desempeña la máquina. Los valores asociados con cada clave son la lista de puntos de montaje y mapas que se usan con esa configuración.
+ .
+ Mapa de ejemplo:
+ .
+  linux   /home amd.home /boot amd.boot -cache:=all
+  freebsd /home amd.home /usr/sys amd.usr-sys
+ .
+ Este tipo necesita que especifique la clave a utilizar.
+ .
+ El tipo «clave única» es igual que el tipo «configuración» excepto que sólo hay una configuración. No necesita especificar la clave a utilizar.
+ .
+ El tipo «punto de montaje» cualquier clave en el mapa maestro es un punto de montaje y el valor es el nombre de mapa a utilizar para ese punto de montaje además de algunas opciones si se necesitan. Este es el tipo de mapa predeterminado para FreeBSD.
+ .
+ Mapa de ejemplo:
+ .
+  /home amd.home
+  /boot amd.boot -cache:=all
+ .
+ El tipo «personalizado» le pedirá una orden para extraer el mapa maestro que se ejecutará cada vez que se inicie amd.
+Description-fr.UTF-8: Format de la carte principale :
+ La carte principale d'amd peut avoir plusieurs formats différents :
+ .
+ Dans le format « configuration », chaque clé de la carte principale indique une configuration différente. Vous pouvez utiliser différentes configurations selon le système d'exploitation qui est démarré ou l'utilisation de la machine. La valeur associée à chaque clé est la liste des points de montage et des cartes qui sont utilisés avec cette configuration.
+ .
+ Exemple de carte :
+ .
+  linux   /home amd.home /boot amd.boot -cache:=all
+  freebsd /home amd.home /usr/sys amd.usr-sys
+ .
+ Vous devrez indiquer quelle clé doit être utilisée.
+ .
+ Le format « une seule clé » est identique au format « configuration » avec une seule configuration. Vous n'aurez aucune clé à indiquer.
+ .
+ Dans le format « point de montage », chaque clé de la carte principale indique le point de montage et la valeur associée est le nom de la carte à utiliser pour ce point de montage, avec éventuellement certaines options. Il s'agit du format par défaut des cartes pour FreeBSD.
+ .
+ Exemple de carte :
+ .
+  /home amd.home
+  /boot amd.boot -cache:=all
+ .
+ Avec le format « personnalisé », vous devrez indiquer la commande destinée à extraire la carte principale. Cette commande sera exécutée à chaque démarrage d'amd.
+Description-gl.UTF-8: Estilo do mapa mestre:
+ O mapa mestre de Amd pode estar en diferentes estilos:
+ .
+ Co estilo "config" cada clave do mapa mestre especifica unha configuración diferente. Pode ter diferentes configuracións dependendo do sistema operativo que se inicie ou a finalidade de cada máquina. O valor asociado con cada clave é a lista de puntos de montaxe e mapas a empregar con esta configuración.
+ .
+ Mapa de exemplo:
+ .
+  linux   /home amd.home /boot amd.boot -cache:=all
+  freebsd /home amd.home /usr/sys amd.usr-sys
+ .
+ Ha ter que indicar que clave quere empregar.
+ .
+ O estilo "unhaclave" é o mesmo que "config", só que hai unha soa configuración. Non é necesario especificar unha clave.
+ .
+ Co estilo "puntomontaxe", cada clave do mapa mestre é o punto de montaxe, e o valor é o nome do mapa a empregar para ese punto de montaxe, xunto coas opcións que sexan necesarias. Este é o estilo de mapa por defecto de FreeBSD.
+ .
+ Mapa de exemplo:
+ .
+  /home amd.home
+  /boot amd.boot -cache:=all
+ .
+ Co estilo "personalizado", háselle solicitar unha orde para extraer o mapa mestre que se ha executar cada vez que se inicie amd.
+Description-it.UTF-8: Stile della mappa master:
+ La mappa master per Amd può essere in diversi stili:
+ .
+ Con lo stile "config" ogni chiave nella mappa master specifica una configurazione diversa. Si possono avere più configurazioni in base a quale S.O. viene avviato oppure dal compito della macchina. Il valore associato a ogni chiave è l'elenco dei punti di mount e le mappe da usare con questa configurazione.
+ .
+ Mappa di esempio:
+ .
+  linux   /home amd.home /boot amd.boot -cache:=all
+  freebsd /home amd.home /usr/sys amd.usr-sys
+ .
+ È necessario specificare quale chiave usare.
+ .
+ Lo stile "onekey" è simile allo stile "config" ma contiene solo una configurazione, di conseguenza non è necessario specificare la chiave.
+ .
+ Con lo stile "mountpoint" ogni chiave nella mappa master è un punto di mount e il valore è il nome della mappa da usare per quel punto di mount più altre opzioni, se necessarie. Questo è lo stile predefinito per FreeBSD.
+ .
+ Mappa di esempio:
+ .
+  /home amd.home
+  /boot amd.boot -cache:=all
+ .
+ aCon lo stile "custom" viene richiesto l'inserimento di un comando che viene eseguito a ogni avvio di amd per estrarre la mappa master.
+Description-ja.UTF-8: マスターマップのスタイル:
+ amd マスターマップは異なるスタイルにできます:
+ .
+ `設定' スタイルでは、マスターマップの各キーが異なる設定を指定します。OS がブートしたとき、あるいはまたはマシンの目的に応じて依存する、異なる設定を持つことができます。各キーに関連付けられた値は、マウントポイントと、この設定が使われるマップのリストです。
+ .
+ マップの例:
+ .
+  linux   /home amd.home /boot amd.boot -cache:=all
+  freebsd /home amd.home /usr/sys amd.usr-sys
+ .
+ 利用するキーを指定する必要があります。
+ .
+ `1キー' スタイルは、単一の設定のみがあることを除き、`設定' スタイルと同じです。キーを指定する必要はありません。
+ .
+ `マウントポイント' スタイルでは、マスターマップの各キーは、マウントポイントと、このマウントポイントで使われるマップ名の値、加えて必要であればいくつかのオプションです。これは FreeBSD でのデフォルトのマップスタイルです。
+ .
+ マップの例:
+ .
+  /home amd.home
+  /boot amd.boot -cache:=all
+ .
+ `カスタム' スタイルでは、amd の起動のたびに毎回実行される、マスターマップを入手するためのコマンドを尋ねられます。
+Description-nl.UTF-8: Stijl van de meester-map:
+ De Amd-meester-map kan verschillende stijlen hebben:
+ .
+ Met de 'config'-stijl geeft elke sleutel in de meester-map een andere configuratie op. U kunt verschillende configuraties hebben afhankelijk van het opgestarte OS, of het doel van de machine. Met elke sleutel geassocieerde waarde is een lijst van aankoppelpunten en mappen die met deze configuratie gebruikt moeten worden.
+ .
+ Voorbeeldmap:
+ .
+  linux   /home amd.home /boot amd.boot -cache:=all
+  freebsd /home amd.home /usr/sys amd.usr-sys
+ .
+ U zult moeten aangeven welke sleutel gebruikt moet worden.
+ .
+ De 'een-sleutel'-stijl is hetzelfde als de 'config'-stijl met het verschil dat er slechts één configuratie is. Er dienen dan geen sleutels opgegeven te worden.
+ .
+ Bij de 'aankoppelpunt'-stijl is elke sleutel in de meester-map en aankoppelpunt, waarbij de waarde van de sleutel de naam van de te gebruiken map voor dat aankoppelpunt is, met aanvullend eventueel de nodige opties. Dit is de standaard mapstijl op FreeBSD.
+ .
+ Voorbeeldmap:
+ .
+  /home amd.home
+  /boot amd.boot -cache:=all
+ .
+ Bij de 'aangepast'-stijl wordt u gevraagd om een commando op te geven dat de meester-map teruggeeft, dit commando wordt dan uitgevoert telkens amd gestart wordt.
+Description-pt.UTF-8: Qual o estilo do master map ?
+ O master map amd pode ter diferentes estilos:
+ .
+ Com o estilo `config' todas as chaves no master map especificam um tipo diferente de sistema. Pode ter diferentes sistemas dependendo de qual o SO que é carregado ou do propósito da máquina.  O valor associado com cada chave é uma lista de mountpoints e maps para serem usados pela sua escolha.
+ .
+ Map de exemplo:
+ .
+  linux   /home amd.home /boot amd.boot -cache:=all
+  freebsd /home amd.home /usr/sys amd.usr-sys
+ .
+ Tem de especificar qual a chave a usar.
+ .
+ O estilo `onekey' é o mesmo que o `config' excepto que existe apenas um tipo de sistema configurado. Não precisam ser especificadas nenhumas chaves.
+ .
+ Com o estilo `mountpoint' todas as chaves no master map são o ponto de montagem e o valor é o nome do map a ser usado por esse ponto de montagem, mais algumas escolhas se forem precisas. Este é o tipo de mapa por omissão para o FreeBSD.
+ .
+ Map de exemplo:
+ .
+  /home amd.home
+  /boot amd.boot -cache:=all
+ .
+ Com o estilo `personalizado' irá ser questionado por um comando extra para extraír o master map o qual será usado sempre que o amd iniciar.
+Description-pt_BR.UTF-8: Estilo do mapa mestre:
+ O mapa mestre do Amd pode ter diferentes estilos:
+ .
+ Com o estilo 'configuração', cada chave no mapa mestre especifica uma configuração diferente. Você terá configurações diferentes dependendo do sistema operacional inicializado ou de qual é o propósito da máquina. O valor associado com cada chave é a lista de pontos de montagem e mapas a serem usados com esta configuração.
+ .
+ Mapa exemplo:
+ .
+  linux   /home amd.home /boot amd.boot -cache:=all
+  freebsd /home amd.home /usr/sys amd.usr-sys
+ .
+ Você precisará especificar qual chave usar.
+ .
+ O estilo 'uma chave' é o mesmo que o 'configuração' exceto que existe somente uma única configuração. Nenhuma chave precisa ser especificada.
+ .
+ Com o estilo 'ponto de montagem', cada chave no mapa mestre é o ponto de montagem e o valor é o nome do mapa a ser usado para este ponto de montagem, mais algumas opções se necessárias. Este é o estilo de mapa padrão para o FreeBSD.
+ .
+ Mapa exemplo:
+ .
+  /home amd.home
+  /boot amd.boot -cache:=all
+ .
+ Com o estilo 'personalizado', você será questionado por um comando para extrair o mapa mestre que será executado toda vez que o amd iniciar.
+Description-ru.UTF-8: Модель основной таблицы соответствий:
+ Основная таблица соответствий amd может быть различных моделей:
+ .
+ В модели `config' каждый ключ в основной таблице соответствий представляет отдельную конфигурацию. У вас могут быть различные конфигурации, в зависимости от того, какая ОС загружена, или для какой машины она предназначена. Значение, связанное с каждым ключом, представляет собой список точек монтирования и таблиц, используемых в этой конфигурации.
+ .
+ Пример таблицы:
+ .
+  linux   /home amd.home /boot amd.boot -cache:=all
+  freebsd /home amd.home /usr/sys amd.usr-sys
+ .
+ Вам нужно указать, какой ключ использовать.
+ .
+ Модель `onekey' почти такая же как и `config', за исключением того, что есть только одна конфигурация. Ключ указывать не нужно.
+ .
+ В модели `mountpoint' каждый ключ в основной таблице соответствий является точкой монтирования, а значение -- именем таблицы, которая будет использоваться для этой точки монтирования, плюс, при необходимости, параметры. Эта модель используется по умолчанию в FreeBSD.
+ .
+ Пример таблицы:
+ .
+  /home amd.home
+  /boot amd.boot -cache:=all
+ .
+ В модели `custom' вам предложат ввести команду для извлечения основной таблице соответствий, которая будет выполняться каждый раз при запуске amd.
+Description-sv.UTF-8: Huvudkartans typ:
+ Amds huvudkarta kan vara ett av flera alternativ:
+ .
+ Med alternativet "konfiguration" anger varje nyckel i huvudkartan de olika konfigurationerna. Du kan ha olika konfigurationer beroende på vilket operativsystem som är startat, eller beroende på vad maskinens syfte är. Värdet som associeras med varje nyckel är en lista av monteringspunkter och kartor som skall användas med den här konfigurationen.
+ .
+ Exempelkarta:
+ .
+  linux   /home amd.home /boot amd.boot -cache:=all
+  freebsd /home amd.home /usr/sys amd.usr-sys
+ .
+ Du måste ange vilken nyckel du ska använda.
+ .
+ Alternativet "ennyckel" är som "konfiguration" förutom att det endast finns en enda konfiguration. Någon nyckel behöver inte anges.
+ .
+ Med alternativet "monteringspunkt" kommer varje nyckel i huvudkartan att vara monteringspunkten och värdet är kartnamnet som skall användas för den monteringspunkten, samt flaggor om så behövs. Detta är standardkarttypen för FreeBSD.
+ .
+ Exempelkarta:
+ .
+  /home amd.home
+  /boot amd.boot -cache:=all
+ .
+ Med alternativet "anpassad" kommer du bli frågad efter ett kommando för att extrahera huvudkartan vilket kommer köras varje gång amd startas.
+Description-vi.UTF-8: Kiểu dáng sơ đồ chủ :
+ Sơ đồ chủ « amd » có thể có kiểu dáng khác nhau :
+ .
+ Dùng kiểu dáng « cấu hình », mỗi khoá trong sơ đồ chủ có xác định một cấu hình riêng. Bạn có thể tạo những cấu hình khác nhau, phụ thuộc vào hệ điều hành được khởi động, hoặc vào mục đích của máy tính. Giá trị được tương ứng với mỗi khoá là danh sách các điểm lắp và các sơ đồ cần dùng với cấu hình này.
+ .
+ Sơ đồ ví dụ :
+ .
+  linux   /home amd.home /boot amd.boot -cache:=all
+  freebsd /home amd.home /usr/sys amd.usr-sys
+ .
+ Bạn cần ghi rõ khoá nào cần dùng.
+ .
+ Kiểu dạng « khóa đơn » là cùng một kiểu dạng với điều « cấu hình », trừ chỉ có một cấu hình . Không cần phải ghi rõ khoá nào.
+ .
+ Dùng kiểu dạng « điểm lắp », mỗi khoá trong sơ đồ chủ là điểm lắp, và giá trị là tên sơ đồ cần dùng cho điểm lắp này, cộng với một số tùy chọn nếu cần. Đây là kiểu dáng sơ đồ mặc định cho FreeBSD.
+ .
+ Sơ đồ ví dụ :
+ .
+  /home amd.home
+  /boot amd.boot -cache:=all
+ .
+ Dùng kiểu dạng « riêng », bạn sẽ được nhắc nhập lệnh để rút sơ đồ chủ, mà sẽ được chạy mỗi lần khởi chạy « amd ».
+
+Template: am-utils/nis-key
+Type: string
+Default: default
+Description: NIS key to use for this system:
+ The key is typically the name of the os ("linux" for example), or a
+ description of this computer's usage ("marketing", "r&d", etc).
+Description-cs.UTF-8: NIS klíč pro použití na tomto systému:
+ Klíč je obvykle jméno operačního systému (například "linux") nebo popis využití daného počítače ("marketing", "vývoj", atd.).
+Description-da.UTF-8: NIS-nøgle at bruge for dette system:
+ Nøglen er typisk navnet for operativsystemet (for eksempel »linux«), eller en beskrivelse af denne computers brug (»marketing«, »r&d« etc.).
+Description-de.UTF-8: NIS-Schlüssel, der für dieses System verwendet werden soll:
+ Der Schlüssel ist typischerweise der Name des Betriebssystems (zum Beispiel »linux«), oder eine Beschreibung des Einsatzzwecks des Computers (»vertrieb«, »f&e«, usw.).
+Description-es.UTF-8: La clave de NIS a utilizar para este sistema:
+ La clave es normalmente un nombre de sistema operativo («linux» por ejemplo), o una descripción del uso que se le dará al ordenador («marketing», «i+d», etc).
+Description-fr.UTF-8: Clé NIS à utiliser pour ce système :
+ La clé est en général le nom du système d'exploitation (par exemple « linux ») ou une description de l'utilisation principale de l'ordinateur (« ventes », « recherche », etc.).
+Description-gl.UTF-8: Clave NIS a empregar neste sistema:
+ A clave adoita ser o nome do sistema operativo ("linux", por exemplo), ou unha descrición da finalidade do ordenador ("ventas", "contabilidade", etc).
+Description-it.UTF-8: Chiave NIS da usare per questo sistema:
+ La chiave è tipicamente il nome del s.o. (per esempio "linux") oppure la descrizione di come viene usato il computer ("marketing", "r&d", ecc).
+Description-ja.UTF-8: このシステムで使われる NIS キー:
+ キーは、一般的に OS の名前 (たとえば "linux") またはこのコンピュータの用途の説明 ("marketing"、"r&d' など) です。
+Description-nl.UTF-8: Voor dit systeem te gebruiken NIS-sleutel:
+ Typische sleutels zijn de naam van het OS (bv. 'linux'), of een beschrijving van waarvoor de computer dient (bv. 'marketing', of 'R&D').
+Description-pt.UTF-8: Que chave NIS deve ser usado para este sistema?
+ A chave é tipicamente o nome do SO ("linux" por exemplo) ou uma sinopse do uso do computador ("marketing", "r&d", etc).
+Description-pt_BR.UTF-8: Chave NIS para usar neste sistema:
+ A chave é tipicamente o nome do sistema operacional ("linux" por exemplo), ou uma descrição do uso deste computador ("marketing", "r&d", etc).
+Description-ru.UTF-8: Ключ NIS, используемый для этой системы:
+ Обычно, ключом является название операционной системы (например, "linux"), или описание для чего используется данный компьютер ("marketing", "r&d" и т.д.).
+Description-sv.UTF-8: NIS-nyckel som ska användas för det här systemet:
+ Nyckeln är vanligtvis namnet på operativsystemet (t.ex. "linux"), eller en beskrivning av den här datorns användningsområde ("marknadsföring", "utveckling" etc).
+Description-vi.UTF-8: Khoá NIS cần dùng cho hệ thống này:
+ Khoá thường là tên của hệ điều hành (v.d. « linux »), hoặc mô tả cách sử dụng máy tính (« đi học », « tạo đồ họa » v.v.).
+
+Template: am-utils/nis-custom
+Type: string
+Default: echo "/amd-is-misconfigured /usr/share/am-utils/amd.net"
+Description: Command to run to extract the master map:
+ Please enter a shell command to run when amd starts up. This command
+ should print a valid list of amd command line maps on stdout.
+Description-cs.UTF-8: Příkaz pro získání hlavní mapy:
+ Zadejte shellový příkaz, který se má spouštět při startu amd. Tento příkaz by měl na standardní výstup vytisknout platný seznam map amd pro příkazový řádek.
+Description-da.UTF-8: Kommando at køre til at udtrække overkortet:
+ Indtast venligst en skalkommando at køre når amd starter op. Denne kommando skal udskrive en gyldig liste over amd-kommandolinjekort på standardud.
+Description-de.UTF-8: Auszuführender Befehl, um die Master Map zu extrahieren:
+ Bitte geben Sie den Shell-Befehl ein, der ausgeführt werden soll, wenn Amd startet. Dieser Befehl sollte eine gültige Befehlszeile (command line) für Amd auf Stdout ausgeben.
+Description-es.UTF-8: Orden a ejecutar para extraer el mapa maestro:
+ Introduzca una orden de la consola para ejecutar cuando se inicie amd. Esta orden debería imprimir en la salida estándar una lista válida de mapas de amd de la línea de órdenes.
+Description-fr.UTF-8: Commande d'extraction de la carte principale :
+ Veuillez indiquer une commande shell à exécuter au démarrage d'amd. Cette commande doit afficher sur la sortie standard une liste valide de commandes pour amd.
+Description-gl.UTF-8: Orde a executar para extraer o mapa mestre:
+ Introduza unha orde a executar ao iniciar amd. Esta orde debería producir unha lista válida de mapas de liña de ordes de amd na saída estándar.
+Description-it.UTF-8: Comando da eseguire per estrarre la mappa master:
+ Inserire un comando della shell da eseguire all'avvio di amd. Questo comando deve scrivere sullo stdout una sequenza di comandi per amd che compongono una mappa valida.
+Description-ja.UTF-8: マスターマップを展開するのに実行するコマンド:
+ amd がスタートアップしたときに実行するシェルコマンドを入力してください。このコマンドは、amd コマンド行マップの有効なリストを標準出力に出力できなければなりません。
+Description-nl.UTF-8: Bestand dat de meester-map teruggeeft:
+ Geef hier het shell-commando aan dat uitgevoerd moet worden tijdens het opstarten van amd. Dit commando dient een geldige lijst van amd-commandoregel-mappen terug te geven op stdout.
+Description-pt.UTF-8: Que comando deve ser executado para extrair o master map?
+ Por favor introduza um comando válido para correr quando o amd iniciar. Este comando deve imprimir uma linha de comando com uma lista válida para o amd no stdout.
+Description-pt_BR.UTF-8: Comando para executar para extrair o mapa mestre:
+ Por favor, informe um comando "shell" para executar quando o amd iniciar. Este comando deverá imprimir uma lista válida dos mapas de linha de comando do amd na saída padrão (stdout).
+Description-ru.UTF-8: Команда, которую нужно запустить за извлечения основной таблицы соответствий:
+ Введите команду оболочки, которая будет выполняться при запуске amd. Эта команда должна выдавать корректный список командных строк amd из таблиц на стандартный вывод.
+Description-sv.UTF-8: Kommando som ska köras för att extrahera huvudkartan:
+ Ange ett skalkommando som ska köras när amd startar upp. Det här kommandot ska skriva ut en giltig lista av kommandoradskartor för amd på standard ut.
+Description-vi.UTF-8: Lệnh cần chạy để rút sơ đồ chủ :
+ Hãy nhập một lệnh trình bao cần chạy khi « amd » khởi chạy. Lệnh này nên in ra một danh sách hợp lệ các sơ đồ dòng lệnh « amd » ra thiết bị xuất chuẩn.
+
+Template: am-utils/map-net
+Type: boolean
+Default: true
+Description: Use the 'net' map?
+ Amd can be configured to use the net map. With this map, one can access
+ all the filesystems exported via NFS from a particular host by looking
+ under:
+    /net/<HOSTNAME>/<FILESYSTEM>
+ .
+ While convenient, this can result in mounting a lot of filesystems
+ simultaneously.
+Description-cs.UTF-8: Použít mapu net?
+ Amd může používat mapu net. S touto mapou můžete přistupovat na všechny souborové systémy exportované z konkrétního počítače přes NFS následovně:
+     /net/<POČÍTAČ>/<SOUBOROVÝSYSTÉM>
+ .
+ Ačkoliv to je pohodlné, můžete tím způsobit připojení mnoha souborových systémů najednou.
+Description-da.UTF-8: Brug kortet »net«?
+ Amd kan konfigureres til at bruge kortet net. Med dette kort kan du tilgå alle filsystemerne eksporteret via NFS fra en specifik vært ved at kigge under:
+    /net/<VÆRTSNAVN>/<FILSYSTEM>
+ .
+ Selvom det er en god funktionalitet, så kan det resultere i montering af en masse filsystemer på samme tid.
+Description-de.UTF-8: Die »Net«-Map verwenden?
+ Amd kann so konfiguriert werden, dass es die Net-Map verwendet. Mit dieser Map kann auf Dateisysteme zugegriffen werden, die von einem bestimmten Host via NFS exportiert werden:
+    /net/<HOSTNAME>/<FILESYSTEM>
+ .
+ Dies ist zwar bequem, kann aber zum simultanen Einhängen von vielen Dateisystemen führen.
+Description-es.UTF-8: ¿Desea utilizar el mapa de «red»?
+ Amd puede configurarse para utilizar el mapa de red. Con este mapa puede acceder a cualquiera de los sistemas de archivos exportados a través de NFS desde un servidor en concreto mirando en:
+    «/net/<SERVIDOR>/<SISTEMA_DE_ARCHIVOS>»
+ .
+ Aunque conveniente, esto puede resultar en montar muchos sistemas de archivos simultáneamente.
+Description-fr.UTF-8: Faut-il utiliser la carte réseau (« net map ») ?
+ Amd peut utiliser une carte réseau. Avec cette carte, tous les systèmes de fichiers d'un hôte donné exportés par NFS sont accessibles via un chemin de la forme suivante :
+  /net/<HÔTE>/<SYSTÈME DE FICHIERS>
+ .
+ Bien que cela soit pratique, cela peut provoquer le montage de nombreux systèmes de fichiers au même moment.
+Description-gl.UTF-8: ¿Empregar o mapa "net"?
+ Pódese configurar para empregar o mapa "net". Con este mapa, pódese acceder a tódolos sistemas de ficheiros exportados por NFS dun servidor determinado buscando en:
+    /net/<SERVIDOR>/<SISTEMAFICHEIROS>
+ .
+ Aínda que é cómodo, pode facer que queden montados moitos sistemas de ficheiros ao mesmo tempo.
+Description-it.UTF-8: Usare la mappa "net"?
+ È possibile configurare amd per usare la mappa "net". Con questa mappa si può accedere a tutti i filesystem esportati via NFS da un host particolare andando a leggere in:
+    /net/<NOMEHOST>/<FILESYSTEM>
+ .
+ Anche se comodo, questo può comportare il mount simultaneo di molti filesystem.
+Description-ja.UTF-8: 'net' マップを使いますか?
+ amd で net マップを使うように設定できます。このマップでは、ユーザは、各ホストから NFS 経由でエキスポートされているすべてのファイルシステムに次のように見える形でアクセスできます:
+    /net/<ホスト名>/<ファイルシステム>
+ .
+ 都合のよいことに、これは同時にたくさんのファイルシステムのマウントを行うことになります。
+Description-nl.UTF-8: Wilt u de 'net'-map gebruiken?
+ Amd kan ingesteld worden om de 'net'-map te gebruiken. Met ddeze map kunnen alle bestandssystemen van een bepaalde computer geëxporteerd worden via NFS door te kijken onder:
+   /net/<HOSTNAME>/<FILESYSTEM>
+ .
+ Dit is handig maar kan resulteren in het simultaan aankoppelen van een hele berg bestandssystemen.
+Description-pt.UTF-8: Usar o 'net' map ?
+ O amd pode ser configurado para usar o net map. Com este map qualquer um pode aceder aos sistemas de ficheiros exportados via NFS de um host em particular olhando apenas para:
+    /net/<HOSTNAME>/<FILESYSTEM>
+ .
+ embora conveniente, isto pode resultar no mount de muitos sistemas de ficheiros em simultâneo.
+Description-pt_BR.UTF-8: Usar o mapa 'net'?
+ O Amd pode ser configurado para usar o mapa net. Com este mapa, é possível acessar todos os sistemas de arquivos exportados via NFS a partir de uma máquina em particular olhando sob:
+    /net/<NOME_DA_MÁQUINA>/<SISTEMA_DE_ARQUIVOS>
+ .
+ Enquanto for conveniente, isto pode resultar na montagem de muitos sistemas de arquivos simultaneamente.
+Description-ru.UTF-8: Использовать таблицу 'net'?
+ Amd можно указать использовать таблицу net. С помощью этой таблицы можно обратиться ко всем файловым системам, экспортируемым по NFS с определённого хоста, который указывается как:
+    /net/<ИМЯ_ХОСТА>/<ФАЙЛОВАЯ_СИСТЕМА>
+ .
+ В результате это может привести к монтированию большого количества файловых систем одновременно (хотя указывать удобно).
+Description-sv.UTF-8: Använd "net"-kartan?
+ Amd kan konfigureras att använda nätkartan. Med den här kartan kan man komma åt alla filsystem som exporteras via NFS från en viss värd genom att titta under:
+    /net/<VÄRDNAMN>/<FILSYSTEM>
+ .
+ Den är behändig men kan resultera i att massor av filsystem monteras samtidigt.
+Description-vi.UTF-8: Dùng sơ đồ « net » không?
+ « amd » có thể được cấu hình để sử dụng sơ đồ « net ». Dùng sơ đồ này, bạn có thể truy cập mọi hệ thống tập tin được xuất khẩu thông qua NIS từ một máy nào đó, bằng cách tra cứu :
+    /net/<TÊN_MÁY>/<HỆ_THỐNG_TẬP_TIN>
+ .
+ Khi tiện, khả năng này có thể gây ra gắn kết nhiều hệ thống tập tin đồng thời.
+
+Template: am-utils/map-home
+Type: boolean
+Default: false
+Description: Use the passwd map?
+ A map for automounting of home directories on /home.
+ .
+ If you use the following system for the home directories of
+ your users, then you will not need to do any configuration, because amd
+ provides a special "passwd" map type for this case. Amd will break the
+ string
+ .
+  /anydir/[dom1[/...]/]domN/login
+ .
+ to:
+ .
+  rfs:=/anydir/domN
+  rhost:=domN[[....].dom1]
+  sublink:=login
+ .
+ If your home directories do *not* follow this pattern, you should not enable
+ this feature.
+Description-cs.UTF-8: Použít mapu passwd?
+ Mapa pro automatické připojování domovských adresářů do /home.
+ .
+ Použijete-li pro domovské adresáře svých uživatelů následující systém, nebudete muset provádět další nastavení, protože amd poskytuje pro tento případ speciální typ mapy "passwd". Amd rozdělí řetězec
+ .
+  /nějakýadresář/[dom1[/...]/]domN/login
+ .
+ na:
+ .
+  rfs:=/nějakýadresář/domN
+  rhost:=domN[[....].dom1]
+  sublink:=login
+ .
+ Pokud vaše domovské adresáře neodpovídají uvedenému vzoru, neměli byste tuto vlastnost povolit.
+Description-da.UTF-8: Brug kortet passwd?
+ Et kort for automatisk montering af hjemmemapper på /home.
+ .
+ Hvis du bruger det følgende system for hjemmemapper for dine brugere, så skal du ikke udføre nogen konfiguration, da amd tilbyder en speciel korttype »passwd« for dette tilfælde. Amd vil ødelægge strengen.
+ .
+  /anydir/[dom1[/...]/]domN/login
+ .
+ til:
+ .
+  rfs:=/anydir/domN
+  rhost:=domN[[....].dom1]
+  sublink:=login
+ .
+ Hvis dine hjemmemapper ikke følger dette mønster, så skal du ikke aktivere denne funktion.
+Description-de.UTF-8: Soll die passwd-Map verwendet werden?
+ Eine Map zum automatischen Einhängen der Home-Verzeichnisse auf /home.
+ .
+ Falls Sie das folgende System für die Home-Verzeichnisse Ihrer Benutzer verwenden, dann müssen Sie keine Konfiguration vornehmen, da Amd einen speziellen »passwd«-Map-Typ für diesen Fall bereitstellt. Amd wird die Zeichenkette
+ .
+  /anydir/[dom1[/...]/]domN/login
+ .
+ zerlegen in:
+ .
+   rfs:=/anydir/domN
+   rhost:=domN[[....].dom1]
+   sublink:=login
+ .
+ Falls Ihre Home-Verzeichnisse *nicht* diesem Muster folgen, sollten Sie diese Funktion nicht aktivieren.
+Description-es.UTF-8: ¿Desea utilizar el mapa de contraseñas («passwd»)?
+ Un mapa para automontar los directorios de los usuarios en «/home».
+ .
+ Si utiliza el siguiente sistema para los directorios de los usuarios, entonces no necesitará realizar ninguna configuración, porque amd proporciona un tipo de mapa especial de contraseñas («passwd») para este caso. Amd romperá la cadena
+ .
+  /cualquierdirectorio/[dom1[/...]/]domN/nombredeentrada
+ .
+ en:
+ .
+  rfs:=/cualquierdirectorio/domN
+  rhost:=domN[[....].dom1]
+  sublink:=nombredeentrada
+ .
+ Si los directorios de los usuarios *no* siguen este patrón, no debería activar esta característica.
+Description-fr.UTF-8: Faut-il utiliser la carte passwd ?
+ Carte de montage automatique des répertoires personnels sur /home.
+ .
+ Si vous utilisez le système suivant pour les répertoires personnels des utilisateurs, vous n'aurez pas besoin de configuration spécifique, car amd fournit une carte « passwd » spéciale pour ce cas. La chaîne suivante :
+ .
+  /répertoire/[dom1[/...]/]domN/identifiant
+ .
+ sera découpée en :
+ .
+  rfs:=/répertoire/domN
+  rhost:=domN[[....].dom1]
+  sublink:=identifiant
+ .
+ Si les répertoires personnels ne respectent pas ce format, vous ne devriez pas activer cette option.
+Description-gl.UTF-8: ¿Empregar o mapa "passwd"?
+ Un mapa para automontar os directorios iniciais en /home.
+ .
+ Se emprega o seguinte sistema para os directorios iniciais dos seus usuarios, non ha ter que configurar nada, xa que amd fornece un tipo de mapa "passwd" especial para este caso. Amd ha dividir a cadea
+ .
+  /directorio/[dom1[/...]/]domN/usuario
+ .
+ en:
+ .
+  rfs:=/directorio/domN
+  rhost:=domN[[...].dom1]
+  sublink:=usuario
+ .
+ Se os seus directorios iniciais *non* seguen este patrón, non debería activar esta característica.
+Description-it.UTF-8: Usare la mappa "passwd"?
+ Una mappa per montare automaticamente le directory home su /home.
+ .
+ Se si usa questo sistema per le directory home degli utenti, non è necessario effettuare altre configurazioni perché in questo caso amd fornisce una mappatura speciale di nome "passwd". Amd spezza la stringa
+ .
+  /qualsiasidirectory/[dom1[/...]/]domN/login
+ .
+ in:
+ .
+  rfs:=/qualsiasidirectory/domN
+  rhost:=domN[[....].dom1]
+  sublink:=login
+ .
+ Se le proprie directory home *non* seguono questo schema, non attivare questa funzionalità.
+Description-ja.UTF-8: passwd マップを使いますか?
+ ホームディレクトリを /home にオートマウントするマップ。
+ .
+ あなたのユーザのホームディレクトリを以下のシステムで使うのであれば、その設定の必要はありません。この場合は特別な "passwd" マップ形式を amd は提供するからです。amd は以下の文字列を切ります。
+ .
+  /anydir/[dom1[/...]/]domN/login
+ .
+ 送り先:
+ .
+  rfs:=/anydir/domN
+  rhost:=domN[[....].dom1]
+  sublink:=login
+ .
+ あなたのホームディレクトリがこのパターンに従って *いない* 場合は、この機能を有効にすべきではありません。
+Description-nl.UTF-8: Wilt u de 'passwd'-map gebruiken?
+ Een map voor het automatisch aankoppelen van thuismappen op /home .
+ .
+ Als u het volgende systeem gebruikt voor de thuismappen van uw gebruikers dient u verder niets in te stellen omdat amd voor deze situatie de speciale 'passwd'-map voorziet. Amd zal de string
+ .
+  /eenmap/[dom1[/...]/]domN/gebruiker
+ .
+ opbreken in:
+ .
+  rfs:=/eenmap/domN
+  rhost:=domN[[....].dom1]
+  sublink:=gebruiker
+ .
+ Als uw thuismappen dit patroon *niet* volgen, kunt u dit best niet gebruiken.
+Description-pt.UTF-8: Usar o passwd map ?
+ Um ficheiro map para o automouting dos directórios home em /home
+ .
+ Se usar o seguinte sistema para os directórios da home dos seus utilizadores, então não será preciso fazer nenhuma configuração, pois o pacote amd fornece um "passwd" map especial para este caso. O amd irá quebrar a string
+ .
+  /qq-dir/[dom1[/...]/]domN/login
+ .
+ para:
+ .
+  rfs:=/qq-dir/domN
+  rhost:=domN[[....].dom1]
+  sublink:=login
+ .
+ Se os seus directórios da home *não* seguirem este padrão, não deve activar esta função.
+Description-pt_BR.UTF-8: Usar o mapa passwd?
+ Um mapa para montagem automática dos diretórios "home" em /home.
+ .
+ Se você usar o seguinte sistema para os diretórios "home" de seus usuários, então você não precisará fazer nenhuma configuração, porque o amd fornece um tipo especial de mapa "passwd" para este caso. O Amd quebrará a sequência de caracteres
+ .
+  /qualquerdir/[dom1[/...]/]domN/login
+ .
+ para:
+ .
+  rfs:=/qualquerdir/domN
+  rhost:=domN[[....].dom1]
+  sublink:=login
+ .
+ Se seus diretórios "home" *não* seguem este padrão, você não deve habilitar este recurso.
+Description-ru.UTF-8: Использовать таблицу passwd?
+ Таблица автоматического монтирования домашних каталогов в /home.
+ .
+ Если вы используете следующую систему ведения домашних каталогов пользователей, то вам не нужно вообще что-то настраивать, так как amd предоставляется специальную таблицу "passwd" для такого случая. Amd разделит строку
+ .
+  /каталог/[dom1[/...]/]domN/login
+ .
+ на:
+ .
+  rfs:=/каталог/domN
+  rhost:=domN[[....].dom1]
+  sublink:=login
+ .
+ Если у вас для домашних каталогов используется *другой* шаблон, то не используйте данное свойство.
+Description-sv.UTF-8: Använd passwd-kartan?
+ En karta för automatisk montering av hemkataloger på /home.
+ .
+ Om du använder följande system för hemkatalogerna för dina användare, behöver du inte göra någon konfiguration därför att amd tillhandahåller en speciell "passwd"-karta för det här fallet. Amd kommer att bryta strängen
+ .
+  /någonkatalog/[dom1[/...]/]domN/inloggningsnamn
+ .
+ till:
+ .
+  rfs:=/anydir/domN
+  rhost:=domN[[....].dom1]
+  sublink:=login
+ .
+ Om dina hemkataloger *inte* följer det här mönstret bör du inte aktivera den här funktionen.
+Description-vi.UTF-8: Dùng sơ đồ « passwd » không?
+ Sơ đồ gắn kết tự động các thư mục gốc vào « /home ».
+ .
+ Nếu bạn sử dụng hệ thống sau cho thư mục gốc của mỗi người dùng, do đó bạn sẽ không cần cấu hình gì, vì « amd » cung cấp một kiểu sơ đồ « passwd » đặc biệt cho trường hợp này. « amd » sẽ phân tích chuỗi
+ .
+  /anydir/[dom1[/...]/]domN/login
+ .
+ thành:
+ .
+  rfs:=/anydir/domN
+  rhost:=domN[[....].dom1]
+  sublink:=login
+ .
+ Nếu những thư mục gốc trên máy tính của bạn _không_ theo mẫu này, bạn không nên bật tính năng này.
+
+Template: am-utils/map-others
+Type: string
+Description: Other maps to use:
+ If you need to use other maps, enter them here.
+ .
+ A map entry requires the two following elements:
+   1. A mount point (where the map will be mounted and accessed)
+   2. The name of a map, in a text file, DBM file, or the name of a
+      NIS map.
+ .
+ For example, if you have a text map in /etc/am-utils/amd.test to be
+ mounted on /foo and a NIS map called amd.other to be mounted on /bar, then
+ you should enter:
+ .
+  /foo /etc/am-utils/amd.test /bar amd.other
+Description-cs.UTF-8: Které další mapy použít:
+ Chcete-li použít jiné mapy, zadejte je zde.
+ .
+ Záznam vyžaduje následující dvě části:
+   1. Přípojný bod (kde bude mapa připojena a používána)
+   2. Jméno mapy v textovém souboru, DBM souboru, nebo název
+      NIS mapy.
+ .
+ Například máte-li textovou mapu v /etc/am-utils/amd.test, která se má připojit pod /foo a NIS mapu nazvanou amd.other, která se má připojit pod /bar, pak byste měli zadat:
+ .
+  /foo /etc/am-utils/amd.test /bar amd.other
+Description-da.UTF-8: Andre kort at bruge:
+ Hvis du har brug for at bruge andre kort, så indtast dem her.
+ .
+ Et kortpunkt kræver de to følgende elementer:
+  1. Et monteringspunkt (hvor kortet vil blive monteret og tilgået)
+  2. Navnet på et kort, i en tekstfil, DBM-fil eller navnet på
+     et NIS-kort.
+ .
+ For eksempel, hvis du har et tekstkort i /etc/am-utils/amd.test som skal monteres på /foo og et NIS-kort kaldet amd.other til montering på /bar, så skal du indtaste:
+ .
+  /foo /etc/am-utils/amd.test /bar amd.other
+Description-de.UTF-8: Anderen zu verwendende Maps:
+ Falls Sie noch andere Maps verwenden müssen, geben Sie diese hier ein.
+ .
+ Typischerweise benötigt ein Map-Eintrag folgende zwei Elemente:
+   1. Ein Einhängepunkt (wo die Map eingehängt und darauf zugegriffen wird)
+   2. Den Namen der Map, in einer Textdatei, DBM-Datei, oder den
+      Name der NIS-Map.
+ .
+ Wenn Sie zum Beispiel eine Text-Map in /etc/am-utils/amd.test haben, die nach /foo eingehängt wird und die NIS-Map amd.other heißt und nach /bar eingehängt wird, sollten Sie folgendes eingeben:
+ .
+  /foo /etc/am-utils/amd.test /bar amd.other
+Description-es.UTF-8: Otros mapas a utilizar:
+ Si necesita utilizar otros mapas, puede introducirlos aquí.
+ .
+ Una entrada de mapa necesita los dos siguientes elementos:
+   1. Un punto de montaje (donde el mapa se montará y accederá)
+   2. El nombre del mapa, en un archivo de texto, archivo DBM, o el nombre
+      de un mapa NIS.
+ .
+ Por ejemplo, si tiene un mapa de texto en «/etc/am-utils/amd.test» para montarlo en «/foo» y un mapa NIS llamado «amd.otro» para montarlo en «/bar», debería escribir:
+ .
+  /foo /etc/am-utils/amd.test /bar amd.otro
+Description-fr.UTF-8: Autres types de cartes à utiliser :
+ Si vous avez besoin d'autres types de cartes, vous pouvez les indiquer ici.
+ .
+ Typiquement, une entrée de carte doit comporter les deux éléments suivants :
+  - un point de montage où la carte sera montée et où elle
+    sera accessible ;
+  - le nom de la carte dans un fichier texte ou DBM ou le nom
+    de la carte NIS.
+ .
+ Par exemple, si vous voulez utiliser une carte en format texte appelée /etc/am-utils/amd.test pour des montages sur /toto et une carte NIS appelée amd.other pour des montages sur /titi, vous devez alors indiquer :
+ .
+  /toto /etc/am-utils/amd.test /titi amd.other
+Description-gl.UTF-8: Outros mapas a empregar:
+ Se precisa de empregar outros mapas, introdúzaos aquí.
+ .
+ Unha entrada de mapa precisa dos dous seguintes elementos:
+   1. Un punto de montaxe (no que se ha montar e acceder ao mapa)
+   2. O nome dun mapa nun ficheiro de texto, ficheiro DBM ou o nome
+      dun mapa NIS.
+ .
+ Por exemplo, se ten un mapa de texto en /etc/am-utils/amd.proba para montar en /foo e un mapa NIS chamado amd.outra para montar en /bar, debería introducir:
+ .
+  /foo /etc/am-utils/amd.proba /bar amd.outra
+Description-it.UTF-8: Altre mappe da usare:
+ Se si ha bisogno di usare altre mappe, inserire adesso il loro nome.
+ .
+ Per ogni mappa sono necessari:
+   1. Un punto di mount (cioè dove viene montata e da dove si accede
+      alla mappa);
+   2. Il nome di una mappa, in un file di testo, un file DBM o il
+      nome di una mappa NIS.
+ .
+ Per esempio, se si dispone di una mappa testuale in /etc/am-utils/amd.test da montare su /foo e di una mappa NIS chiamata amd.other da montare su /bar allora si deve inserire:
+ .
+  /foo /etc/am-utils/amd.test /bar amd.other
+Description-ja.UTF-8: 利用したいその他のマップ:
+ その他のマップを使う必要があるなら、ここにそれらを入力してください。
+ .
+ マップエントリは次の 2 つの要素を必要とします:
+   1. マウントポイント (マウントおよびアクセスされるマップの場所)
+   2. テキストファイルあるいは DBM ファイルでのマップの名前、
+      または NIS マップの名前。
+ .
+ たとえば、/foo にマウントされる /etc/am-utils/amd.test テキストマップと、/bar にマウントされる amd.other と呼ばれる NIS マップを持っている場合、次のように入力します:
+ .
+  /foo /etc/am-utils/amd.test /bar amd.other
+Description-nl.UTF-8: Verdere te gebruiken mappen:
+ Als u meer mappen wilt gebruikken, geef deze dan hier op.
+ .
+ Een map-ingang vereist de volgende twee elementen:
+  1. Een aankoppelpunt (waar de map aangekoppeld en binnen
+     gegaan wordt)
+  2. De naam van de map, in een tekstbestand, DBM-bestand of
+     de naam van een NIS-map.
+ .
+ Als u bijvoorbeeld een tekst-map heeft in /etc/am-utils/amd.test die aangekoppeld dient te worden op /foo en een NIs-map met de naam amd.other die aangekoppeld moet worden op /bar, dan dient u het volgende op te geven:
+ .
+  /foo /etc/am-utils/amd.test /bar amd.other
+Description-pt.UTF-8: Que outros mapas devem ser usados ?
+ Se necessita de usar outros tipos de map pode introduzi-los aqui.
+ .
+ Tipicamente uma entrada de map requer os seguinte dois elementos
+   1. Um ponto de montagem (onde o map será montado e acedido)
+   2. O nome do map, num ficheiro de texto, ficheiro DBM, ou o nome de
+      map NIS.
+ .
+ Por exemplo se tiver um text map em /etc/am-utils/amd.test para ser montado em /foo e o map NIS se chamar amd.other para ser montado em /bar então deverá introduzir:
+ .
+  /foo /etc/am-utils/amd.test /bar amd.other
+Description-pt_BR.UTF-8: Outros mapas a serem usados:
+ Se você precisa usar outros mapas, informe-os aqui.
+ .
+ Uma entrada de mapa requer os dois seguintes elementos:
+   1. Um ponto de montagem (onde o mapa será montado e acessado)
+   2. O nome de um mapa, em um arquivo texto, arquivo DBM, ou o nome
+      de um mapa NIS.
+ .
+ Por exemplo, se você tem um mapa texto em /etc/am-utils/amd.test a ser montado em /foo e um mapa NIS chamado amd.other a ser montado em /bar, você deverá informar:
+ .
+  /foo /etc/am-utils/amd.test /bar amd.other
+Description-ru.UTF-8: Другие используемые таблицы:
+ Если вам нужны другие таблицы, то укажите их здесь.
+ .
+ Запись в таблице состоит из двух элементов:
+   1. Точка монтирования (где будет смонтирована и доступна таблица)
+   2. Имя таблицы -- текстового файла, файла DBM, или имя
+      таблицы NIS.
+ .
+ Например, если есть таблица в текстовом файле /etc/am-utils/amd.test для монтирования в /foo, и таблица NIS, называемая amd.other, для монтирования в /bar, то вы должны ввести:
+ .
+  /foo /etc/am-utils/amd.test /bar amd.other
+Description-sv.UTF-8: Andra kartor som ska användas:
+ Om du behöver använda andra typer av kartor kan du ange dem här.
+ .
+ Normalt kräver en kartpost följande två element:
+   1. En monteringspunkt (där kartan kommer monteras och kommas åt)
+   2. Namnet på kartan, i en textfil, DBM-fil, eller namnet på en
+      NIS-karta
+ .
+ Till exempel, om du har en textkarta i /etc/am-utils/amd.test som ska monteras på /foo och en NIS-karta vid namn amd.other som ska monteras i /bar, ska du ange:
+ .
+  /foo /etc/am-utils/amd.test /bar amd.other
+Description-vi.UTF-8: Sơ đồ khác cần dùng:
+ Nếu bạn cần phải sử dụng sơ đồ nào khác, hãy nhập chúng vào đây.
+ .
+ Một mục nhập sơ đồ cần phải chứa hai phần:
+ • một điểm lắp (nơi sơ đồ sẽ được lắp và truy cập)
+ • tên của sơ đồ (theo tập tin văn bản, tập tin cơ sở dữ liệu DBM, hay tên sơ đồ NIS).
+ .
+ Chẳng hạn, nếu bạn có một sơ đồ văn bản trong « /etc/am-utils/amd.test » sẽ gắn kết vào « /phu », và một sơ đồ NIS tên « amd.other » sẽ gắn kết vào « /ba », thì bạn nên nhập:
+ .
+  /phu /etc/am-utils/amd.test /ba amd.other
+
+Template: am-utils/clustername
+Type: string
+Description: Cluster name to use:
+ A map entry can use the '\${cluster}' selector, to identify a machine as
+ belonging to a particular cluster.  
+ .
+ If you use that facility, set the cluster name here.  If you leave it
+ blank, amd will use the DNS domain name instead.
+Description-cs.UTF-8: Jméno klastru:
+ Záznam může používat selektor '\${cluster}', díky čemuž je možno identifikovat počítač jako součást konkrétního klastru.
+ .
+ Jestliže tuto možnost využíváte, zadejte zde jméno klastru. Ponecháte-li pole prázdné, použije amd místo toho doménové jméno.
+Description-da.UTF-8: Klyngenavn at bruge:
+ Et kortpunkt kan bruge udvælgeren »\${cluster}«, til at identificere en maskine som tilhørende en specifik klynge.
+ .
+ Hvis du bruger den facilitet, så angiv klyngenavnet her. Hvis du lader den være blank så vil amd bruge DNS-domænenavnet i stedet for.
+Description-de.UTF-8: Zu verwendender Cluster-Name:
+ Ein Map-Eintrag kann den »\${cluster}«-Selektor verwenden, um eine Maschine als zu einem bestimmten Cluster zugehörig zu markieren.
+ .
+ Falls Sie diese Einrichtung benutzen, stellen Sie den Cluster-Namen hier ein. Falls Sie dies leer lassen wird Amd stattdessen den Domain-Namen verwenden.
+Description-es.UTF-8: Nombre del cluster a utilizar:
+ Una entrada en el mapa puede utilizar el selector «\${cluster}», para identificar una máquina como miembro de un cluster en concreto.
+ .
+ Si utiliza esta funcionalidad, asigne el nombre del cluster aquí. Si lo deja en blanco, amd utilizará en su lugar el nombre del dominio de DNS.
+Description-fr.UTF-8: Nom de grappe (« cluster ») à utiliser :
+ Une entrée de carte peut utiliser le sélecteur ${cluster} qui permet d'identifier la machine comme membre d'une grappe donnée.
+ .
+ Si vous utilisez cette fonctionnalité, veuillez indiquer le nom de la grappe ici. Si vous laissez ce champ vide, le nom de domaine DNS sera utilisé à la place.
+Description-gl.UTF-8: Nome de clúster a empregar:
+ Unha entrada de mapa pode empregar o selector "\${cluster}" para identificar unha máquina pertencente a un determinado clúster.
+ .
+ Se emprega esa posibilidade, estabreza aquí o nome do clúster. Se o deixa en branco, hase empregar o nome de dominio DNS.
+Description-it.UTF-8: Nome del cluster da usare:
+ In una voce di mappa è possibile usare "\${cluster}" come selettore, questo per identificare una macchina appartenente a un particolare cluster.
+ .
+ Se si usa questa funzionalità, impostare il nome del cluster. Se si lascia in bianco allora amd usa il nome di dominio dal DNS.
+Description-ja.UTF-8: 利用したいクラスタ名:
+ 個別のクラスタに属するマシンを識別するために、マップエントリは '\${cluster}' セレクタを利用できます。
+ .
+ このファシリティを使うのであれば、ここでクラスタ名を設定してください。空のままにすると、amd は代わりに DNS ドメイン名を使います。
+Description-nl.UTF-8: Te gebruiken clusternaam:
+ Een map-ingang kan de '\${cluster}'-selector gebruiken om aan te geven dat een machine tot een bepaalde cluster behoort.
+ .
+ Als u van deze mogelijkheid gebruik maakt dient u de cluster naam hier in te stellen. Als u dit leeg laat zal amd de DNS-domeinnaam gebruiken.
+Description-pt.UTF-8: Nome do clusters a utilizar:
+ A entrada do map pode usar o selector '\${cluster}', para identificar a máquina como pertencendo a um cluster em particular.
+ .
+ Se utilizar esse sistema, coloque o nome do cluster aqui.  Se o deixar em branco o amd irá usar o nome do domínio do DNS.
+Description-pt_BR.UTF-8: Nome do cluster a ser usado:
+ Uma entrada de mapa pode usar o seletor '\${cluster}', para identificar uma máquina como pertencendo a um cluster particular.
+ .
+ Se você usa essa facilidade, defina o nome do cluster aqui. Se você deixá-lo em branco, o amd usará o nome do domínio DNS em seu lugar.
+Description-ru.UTF-8: Имя используемого кластера:
+ В записи таблицы может использоваться селектор '\${кластер}' для того, чтобы указать, что машина принадлежит определённому кластеру.
+ .
+ Если вы используете эту возможность, то укажите здесь имя кластера. Если оставить поле пустым, то amd будет использовать доменное имя DNS.
+Description-sv.UTF-8: Klusternamn att använda:
+ En kartpost kan använda "\${cluster}"-väljare för att identifiera en maskin som medlem av ett specifikt kluster.
+ .
+ Om du använder den faciliteten, ställ in klusternamnet här. Om du lämnar den blank kommer amd att använda DNS-domännamnet istället.
+Description-vi.UTF-8: Tên chùm cần dùng:
+ Một mục nhập sơ đồ có thể sử dụng bộ chọn « \${cluster} », để nhận diện một máy thuộc về một chùm (cluster) riêng.
+ .
+ Nếu bạn sử dụng khả năng đó, hãy đặt tên chùm ở đây. Còn nếu bạn bỏ trống trường này, « amd » sẽ sử dụng tên miền DNS thay thế.
+
+Template: am-utils/rpc-localhost
+Type: error
+Description: Cannot contact RPC service on localhost
+ Access to localhost's amd RPC service is denied!  am-utils will not work
+ until you take manual action to rectify this.
+ .
+ Please fix your /etc/hosts.allow and /etc/hosts.deny files and grant access to
+ the amd service for localhost. This is typically done by inserting the
+ following line to /etc/hosts.allow:
+ .
+ amd: localhost
+Description-cs.UTF-8: Nemohu kontaktovat službu RPC na lokálním počítači
+ Přístup k lokální RPC službě amd byl odepřen! Dokud to nenapravíte, am-utils nebude fungovat.
+ .
+ Opravte prosím své soubory /etc/hosts.allow a /etc/hosts.deny a povolte přístup ke službě amd na lokálním počítači. To se typicky provede přidáním následujícího řádku do /etc/hosts.allow:
+ .
+ amd: localhost
+Description-da.UTF-8: Kan ikke kontakte RPC-tjeneste på localhost
+ Adgang til localhosts amd RPC-tjeneste er nægtet! am-utils vil ikke virke før du udfører en manuel handling for at rette dette.
+ .
+ Ret venligst dine filer /etc/hosts.allow og /etc/hosts.deny og tildel adgang til amd-tjenesten for localhost. Dette gøres typisk ved at indsætte den følgende linje i /etc/hosts.allow:
+ .
+ amd: localhost
+Description-de.UTF-8: Kann den RPC-Dienst auf localhost nicht erreichen
+ Der Zugriff auf den Amd RPC-Dienst auf localhost wurde verweigert! am-utils wird nicht funktionieren, bis Sie dies manuell behoben haben.
+ .
+ Bitte korrigieren Sie Ihre /etc/hosts.allow- und /etc/hosts.deny-Dateien und geben Sie dem Amd-Dienst Zugriff auf localhost. Dies passiert typischerweise, indem Sie die folgende Zeile zu /etc/hosts.allow hinzufügen:
+ .
+ amd: localhost
+Description-es.UTF-8: No se ha podido contactar con el servicio de RPC en «localhost»
+ ¡Se ha denegado el acceso del servicio de RPC de amd de «localhost»! Las am-utils no funcionarán hasta que rectifique esto manualmente.
+ .
+ Corrija los archivos «/etc/hosts.allow» y «/etc/hosts.deny» y permita a «localhost» el acceso al servicio de amd. Esto, normalmente, se hace insertando la siguiente línea al archivo «/etc/hosts.allow»:
+ .
+ amd: localhost
+Description-fr.UTF-8: Impossible de contacter le service RPC sur l'hôte local
+ L'accès au service RPC d'amd sur l'hôte local (« localhost ») a été refusé. Les utilitaires d'am-utils ne fonctionneront pas tant que cela ne sera pas corrigé.
+ .
+ Vous devriez corriger les fichiers /etc/hosts.allow et /etc/hosts.deny et autoriser le service amd à accéder à l'hôte local. La méthode usuelle pour cela est d'ajouter la ligne suivante dans /etc/hosts.allow :
+ .
+ amd: localhost
+Description-gl.UTF-8: Non se pode comunicar co servizo RPC de localhost
+ Denegouse o acceso ao servizo RPC de amd de localhost. am-utils non ha funcionar ata que rectifique iso manualmente.
+ .
+ Arranxe os ficheiros /etc/hosts.allow e /etc/hosts.deny para otorgar acceso ao servizo amd para localhost. Isto adoita facerse inserindo a seguinte liña no ficheiro /etc/hosts.allow:
+ .
+ amd: localhost
+Description-it.UTF-8: Impossibile contattare il servizio RPC su localhost
+ Non è possibile accedere al servizio RPC di amd da localhost. am-utils non può funzionare fino a quando non si interviene manualmente per risolvere questo problema.
+ .
+ Correggere i file /etc/hosts.allow e /etc/hosts.deny per concedere l'accesso al servizio amd da localhost. Questo tipicamente si fa inserendo la seguente riga in /etc/hosts.allow:
+ .
+ amd: localhost
+Description-ja.UTF-8: ローカルホストの RPC サービスと交信できません
+ ローカルホストの amd RPC サービスへのアクセスが拒否されました! am-utils はあなたがこれを手動で修正する作業を行うまで動作しません。
+ .
+ あなたの /etc/hosts.allow と /etc/hosts.deny ファイルを修正し、ローカルホストの amd サービスへのアクセスを許可するようにしてください。これは通常、/etc/hosts.allow に次の行を挿入することで行えます:
+ .
+ amd: localhost
+Description-nl.UTF-8: De RPC-dienst op localhost is niet te bereiken
+ Toegang tot de amd-RPC-dienst op localhost is geweigerd! am-utils zal pas werken wanneer u dit handmatig gecorrigeerd heeft.
+ .
+ Gelieve uw /etc/hosts.allow en /etc/hosts.deny bestanden in te stellen om toegang tot de amd-diendst open te stellen voor localhost. Dit doet u normaal door de volgende regel toe te voegen aan /etc/hosts.allow:
+ .
+ amd: localhost
+Description-pt.UTF-8: Foi impossível contactar o serviço RPC no localhost
+ Aacesso ao serviço RPC do amd no localhost foi negado!  o am-utils não irá funcionar até existir uma acção manual da sua parte para rectificar isto.
+ .
+ Por favor edite os ficheiros /etc/hosts.allow e /etc/hosts.deny de forma aconceder acesso ao serviço amd para o localhost. Isto é tipicamente feito inserindo a seguinte linha no /etc/hosts.allow:
+ .
+ amd: localhost
+Description-pt_BR.UTF-8: Não foi possível contatar o serviço RPC em localhost
+ O acesso ao serviço RPC amd do localhost foi negado! O am-utils não funcionará até que você tome uma ação manual para retificar isto.
+ .
+ Por favor, conserte seus arquivos /etc/hosts.allow e /etc/hosts.deny e permita acesso ao serviço amd para o localhost. Tipicamente, isto é feito inserindo a seguinte linha em /etc/hosts.allow:
+ .
+ amd: localhost
+Description-ru.UTF-8: Невозможно подключиться к службе RPC на localhost
+ Доступ к службе RPC на localhost для amd запрещён! am-utils не будет работать, пока вы вручную не исправите это.
+ .
+ Исправьте файлы /etc/hosts.allow и /etc/hosts.deny, и разрешите доступ службе amd на localhost. Обычно это можно сделать, добавив следующую строку в /etc/hosts.allow:
+ .
+ amd: localhost
+Description-sv.UTF-8: Kan inte kontakta RPC-tjänsten på localhost
+ Tillgång till localhost:s RPC-tjänst för amd nekades! am-utils kommer inte att fungera förrän du har manuellt rättat till det här.
+ .
+ Rätta till dina filer /etc/hosts.allow och /etc/hosts.deny, och ge åtkomst till amd-tjänsten för localhost. Vanligtvis gör man det här genom att infoga följande rad i /etc/hosts.allow:
+ .
+ amd: localhost
+Description-vi.UTF-8: Không thể liên lạc với dịch vụ RPC trên máy cục bộ (localhost)
+ Truy cập vào dịch vụ RPC « amd » của máy cục bộ bị từ chối. « am-utils » sẽ không hoạt động được nếu bạn không tự sửa chữa trường hợp này.
+ .
+ Hãy sửa chữa các tập tin « etc/hosts.allow » (các máy được chấp nhận) và « /etc/hosts.deny » (các máy bị từ chối) để cho phép máy cục bộ (localhost) truy cập dịch vụ « amd ». Thường làm việc này bằng cách chèn dòng sau vào « /etc/hosts.allow »:
+ .
+ amd: localhost
+

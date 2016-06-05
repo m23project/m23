@@ -1,0 +1,51 @@
+Template: selinux/install
+Type: note
+Description: SELinux install
+ SELinux has been installed on this system, but has not been enabled.
+ You will need to update your bootloader (probably by adding
+ 'apparmor.enabled=0 selinux=1' to the defoptions line in
+ /boot/grub/menu.lst, and then running update-grub) and then reboot to
+ activate SELinux.
+
+Template: selinux/updategrub
+Type: boolean
+Default: true
+Description: Add SELinux to GRUB configuration?
+ To enable SELinux, GRUB must pass the correct options to the kernel.
+ Should this script automatically add the proper entries to your bootloader?
+
+Template: selinux/enforcement
+Type: select
+Choices: Use Config File, Enforcing, Permissive
+Default: Use Config File
+Description: Choose SELinux Enforcement.
+ By default, SELinux enforcement is specified in /etc/selinux/config.
+ This can be overridden by a kernel option.  What enforcement behavior
+ should be used?
+
+Template: selinux/grub
+Type: string
+Description: Select GRUB menu file
+ Which GRUB menu file should be modified?  This file will be updated with
+ the new SELinux settings.
+
+Template: selinux/defopt
+Type: string
+Description: Review kernel options.
+ The following string will be passed to your kernel by the bootloader.
+ Review it and make changes as necessary before it is applied.
+
+Template: selinux/uninstall
+Type: note
+Description: SELinux uninstall
+ SELinux has been removed from this system.  Do not forget to remove
+ it from your bootloader (probably by modifying the defoptions line in
+ /boot/grub/menu.lst, and then running update-grub), and then reboot
+ to deactivate SELinux.
+
+Template: selinux/reboot
+Type: note
+Description: Reboot needed to finish configuration.
+ This system needs to be rebooted so that the changes to SELinux will
+ go into effect.
+

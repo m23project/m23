@@ -1,0 +1,142 @@
+Template: auctex/doauto
+Type: select
+Choices: Background, Foreground, None
+Choices-cs.UTF-8: Pozadí, Popředí, Žádný
+Choices-da.UTF-8: Baggrund, Forgrund, Ingen
+Choices-de.UTF-8: Hintergrund, Vordergrund, Nichts
+Choices-es.UTF-8: Segundo plano, Primer plano, Ninguno
+Choices-eu.UTF-8: Atzeko planoa, Aurrean, Batez
+Choices-fi.UTF-8: Taustalla, Edustalla, Ei mikään
+Choices-fr.UTF-8: Arrière-plan, Premier plan, Aucun
+Choices-gl.UTF-8: Fondo, Primeiro plano, Ningún
+Choices-it.UTF-8: Sottofondo, Primo piano, Nessuno
+Choices-ja.UTF-8: バックグラウンドで実行, フォアグラウンドで実行, 実行しない
+Choices-ko.UTF-8: 배경, 전경, 없음
+Choices-nl.UTF-8: Achtergrond, Voorgrond, Geen
+Choices-pl.UTF-8: tło, pierwszy plan, brak
+Choices-pt.UTF-8: Segundo plano, Primeiro plano, Nenhum
+Choices-pt_BR.UTF-8: Segundo plano, Primeiro plano, Nenhum
+Choices-ru.UTF-8: фоновый, оперативный, не выполнять
+Choices-sk.UTF-8: Pozadie, Popredie, Žiadne
+Choices-sv.UTF-8: Bakgrund, Förgrund, Inget
+Choices-vi.UTF-8: Nền, Cảnh gần, Không có
+Default: Background
+Description: (La)TeX macros parsing mode:
+ To improve the performance of AUCTeX, every currently installed TeX macro
+ package and LaTeX style file will be parsed.
+ .
+ This may take a lot of time, so it should probably be done in the
+ background.  You may also choose to have it done in the foreground, or to
+ skip that step.
+ .
+ The cached data gets automatically updated via dpkg triggers, so that
+ no specific action is required whenever you install new (La)TeX packages or
+ remove old ones.
+ .
+ This update can be run manually at any moment by running
+ 'update-auctex-elisp'.
+Description-cs.UTF-8: Režim zpracování (La)TeXových maker:
+ Pro zlepšení výkonu AUCTeXu se předzpracují všechny nainstalované TeXové balíky s makry a LaTeXové soubory se styly.
+ .
+ Zpracování může trvat poměrně dlouho, takže je rozumné to provést na pozadí. Nic vám však nebrání nechat zpracování běžet na popředí, případně je zcela přeskočit.
+ .
+ O aktualizaci předzpracovaných dat se postará dpkg, takže se při instalaci nových nebo rušení starých (La)TeXových balíků nemusíte o nic starat.
+ .
+ Data můžete kdykoliv aktualizovat i ručně spuštěním „update-auctex-elisp“.
+Description-da.UTF-8: Fortolkningstilstand for (La)TeX-makroer:
+ For at forbedre ydelsen på AUCTeX, vil alle aktuelt installerede TeX-makropakker og filer med LaTeX-stil blive fortolket.
+ .
+ Dette kan tage lang tid, så det skal nok udføres i baggrunden. Du kan også vælge at gøre det i forgrunden eller springe det trin over.
+ .
+ De mellemlagrede data bliver automatisk opdateret via dpkg-udløsere, så at ingen specifikke handlinger er krævet, når du installerer nye (La)TeX-pakker eller fjerner gamle.
+ .
+ Denne opdatering kan udføres manuelt på ethvert tidspunkt ved at køre »update-auctex-elisp«.
+Description-de.UTF-8: Auswertungsmodus für (La)Tex-Makros
+ Zur Beschleunigung von AUCTeX wird jedes derzeit installierte TeX-Makro-Paket und jede LaTeX-Style-Datei ausgewertet werden.
+ .
+ Das kann eine Weile dauern, daher wird die Bearbeitung im Hintergrund empfohlen. Sie kann allerdings auch im Vordergrund erfolgen oder übersprungen werden.
+ .
+ Die zwischengespeicherten Daten werden automatisch mittels Triggern von Dpkg aktualisiert, so dass bei der Installation von neuen (La)TeX-Paketen oder der Entfernung alter keine weiteren Aktionen notwendig sind.
+ .
+ Die Aktualisierung kann jederzeit von Hand durch Aufruf von »update-auctex-elisp« erfolgen.
+Description-es.UTF-8: Modo de interpretación de las macros (La)TeX:
+ Para mejorar el rendimiento de AUCTeX se analizará cada paquete de macros TeX y cada fichero de estilos LaTeX instalado en su sistema.
+ .
+ Este paso puede tardar mucho tiempo, por lo que probablemente debería realizarse en segundo plano. También puede elegir hacerlo en primer plano u omitirlo por completo.
+ .
+ Los datos almacenados se actualizan de forma automática mediante disparadores («triggers») de dpkg, por lo que no es necesario realizar ninguna labor específica cuando instale nuevos paquetes de (La)TeX o desinstale los antiguos.
+ .
+ Puede ejecutar manualmente esta actualización mediante la orden «update-auctex-elisp».
+Description-fr.UTF-8: Mode d'analyse des macros (La)TeX :
+ Afin d'améliorer les performances d'AUCTeX, tous les paquets de macros TeX installés ainsi que tous les fichiers de style de LaTeX seront analysés.
+ .
+ Cela risque de prendre beaucoup de temps, il est donc préférable de le faire en arrière-plan. Toutefois, vous pouvez aussi choisir de le faire au premier plan ou encore sauter complètement cette étape.
+ .
+ Les données en cache sont automatiquement mises à jour à l'aide des actions différées (« triggers ») de dpkg. Ainsi aucune action spécifique n'est nécessaire quand vous installez de nouveaux paquets (La)TeX ou lorsque vous en supprimerez des anciens.
+ .
+ Vous pouvez à tout moment les mettre à jour vous-même en exécutant la commande « update-auctex-elisp ».
+Description-it.UTF-8: Modalità di scansione delle macro per (La)TeX:
+ Per migliorare le prestazioni di AUCTeX, tutti i pacchetti di macro per TeX e gli archivi di stile per LaTeX attualmente installati saranno scanditi.
+ .
+ Questa operazione potrebbe richiedere molto tempo ed è quindi probabilmente preferibile eseguirla in sottofondo.  Si può anche scegliere di eseguirla in primo piano o di non eseguirla affatto.
+ .
+ Le informazioni raccolte vengono aggiornate automaticamente per mezzo di trigger di dpkg, perciò non è necessario compiere alcuna azione particolare al momento dell'installazione o della rimozione di pacchetti aggiuntivi per (La)TeX.
+ .
+ Questo aggiornamento può essere compiuto manualmente in ogni momento lanciando 'update-auctex-elisp'.
+Description-ja.UTF-8: (La)TeX マクロの解析モード:
+ AUCTeX のパフォーマンスを改善するために、インストール済みの全ての TeX マクロパッケージと LaTeX スタイルファイルを解析します。
+ .
+ これには非常に時間がかかりますので、おそらくはバックグラウンドで実行すべきでしょう。なお、フォアグラウンドで実行することも、解析を行わないことも選択できます。
+ .
+ キャッシュしたデータの更新は dpkg のトリガにより自動的に行われるので、通常は新しい (La)TeX パッケージを入れたり、古いパッケージを削除したとしても特別必要な作業はありません。
+ .
+ これは、いつでも 'update-auctex-elisp' を手動で実行すれば更新できます。
+Description-nl.UTF-8: Modus voor het ontleden van (La)TeX-macros:
+ Om de prestaties van AUCTeX te verbeteren wordt ieder TeX-macropakket en LaTeX-stijlbestand dat momenteel is geïnstalleerd nu ontleed.
+ .
+ Dit kan veel tijd kosten: het verdient dus de voorkeur om dit in de achtergrond te laten doen. U kunt ook kiezen dit op de voorgrond te laten doen of om deze stap over te slaan.
+ .
+ De cache word automatisch bijgewerkt door middel van dpkg-triggers, zodat u geen extra actie hoeft te ondernemen wanneer u nieuwe (La)TeX-pakketten installeert of oude verwijdert.
+ .
+ U kunt op elk moment handmatig bijwerken door 'update-auctex-elisp' uit te voeren.
+Description-pl.UTF-8: Tryb parsowania makr (La)TeX:
+ W celu poprawienia wydajności AUCTeX, każdy zainstalowany obecnie pakiet makr TeX i plik stylów LaTeX będzie przetworzony.
+ .
+ Zajmie to dużo czasu, więc prawdopodobnie powinno być przetworzone w tle. Można wybrać również przetwarzanie na pierwszym planie lub pominięcie tego kroku.
+ .
+ Dane magazynu podręcznego są automatycznie aktualizowane przez wyzwalacze dpkg, tak więc nie ma potrzeby wykonywania dodatkowych działać przy instalowaniu nowych pakietów (La)TeX lub usuwaniu starych.
+ .
+ Ta aktualizacja może zostać wykonana w dowolnym momencie, przez wywołanie "update-auctex-elisp".
+Description-pt.UTF-8: Modo de análise de macros do (La)TeX:
+ Para optimizar o desempenho do AUCTeX, todos os pacotes de macros do TeX e todos os ficheiros de estilo do LaTeX instalados serão analisados.
+ .
+ Este processo poderá demorar algum tempo, pelo que provavelmente deverá ser executado em segundo plano. Também poderá escolher executá-lo em primeiro plano, ou até saltar o processo de análise.
+ .
+ Os dados em cache são automaticamente actualizados através de triggers do dpkg, de modo que não é necessária nenhuma ação específica quando se instalam ou removem pacotes (La)TeX.
+ .
+ Esta actualização pode ser corrida a qualquer momento de uma forma manual correndo o programa 'update-auctex-elisp'.
+Description-ru.UTF-8: Режим анализа макросов (La)TeX:
+ Для увеличения производительности AUCTeX, каждый уже установленный макропакет TeX и файл стилей LaTeX будет проанализирован.
+ .
+ Это может занять много времени, поэтому, вероятно, должно выполняться в фоновом режиме. Также, вы можете выполнять это в оперативном режиме, или вообще не выполнять анализ.
+ .
+ Кешируемые данные обновляются автоматически с помощью механизма триггеров dpkg, поэтому вам не нужно что-либо делать при установке новых пакетов (La)TeX или удалении старых.
+ .
+ Данное обновление может быть выполнено вручную в любой момент по команде 'update-auctex-elisp'.
+Description-sk.UTF-8: Režim spracovanie makier (La)TeX-u:
+ Aby sa zvýšil výkon AUCTeX-u, každné momentálne nainštalované makro TeX-u a súbor štýlu LaTeX-u sa spracuje.
+ .
+ To môže dlho trvať, preto by ste to zrejme mali nechať bežať na pozadá. Tiež sa môžete rozhodnúť spustiť na popredí alebo tento krok preskočiť.
+ .
+ Dáta vo vyrovnávacej pamäti sa automaticky aktualizujú prostredníctvom spúšťačov dpkg, preto nie je potrebné nič zvláštne robiť, keď nainštalujete nové balíky (La)TeX-u  alebo odstránite staré.
+ .
+ Túto aktualizáciu je možné kedykoľvek spustiť ručne príkazom „update-auctex-elisp“.
+Description-sv.UTF-8: (La)TeX macro-avläsnings-läge:
+ För att förbättra funktionerna i AUCTeX så kommer alla installerade TeX macro-paket och LaTeX stilfiler att processas.
+ .
+ Detta kan ta väldigt lång tid så det är troligen bäst om det görs i bakgrunden. Du kan också välja att göra det i förgrunden eller hoppa över steget.
+ .
+ Den lagrade datan uppdateras automatiskt via dpkg-utlösare, inga övriga åtgärder behövs eftersom detta utförs varje gång ett nytt (La)TeX-paket installeras eller ett gammalt tas bort.
+ .
+ Detta kan göras manuellt genom att köra 'update-auctex-elisp'.
+

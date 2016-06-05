@@ -1,0 +1,58 @@
+Template: multipath-tools-boot/scsi_id
+Type: note
+Description: The location of the getuid callout has changed
+ Your /etc/multipath.conf still has a getuid_callout pointing to /sbin/scsi_id
+ but the binary has moved to /lib/udev/scsi_id in udev 0.113-1. Please update
+ your configuration. This is best done by removing the getuid_callout option
+ entirely.
+ .
+ Don't forget to update your initramfs after these changes. Otherwise your
+ system might not boot from multipath.
+Description-cs.UTF-8: Změnilo se umístění getuid callout
+ Soubor /etc/multipath.conf v parametru  „getuid_callout“ odkazuje na  /sbin/scsi_id. Tento soubor se v udev verze 0.113 a vyšší přesunul do /lib/udev/scsi_id. Prosím aktualizujte Váš konfigurační soubor. Nejjednodušší cestou pro aktualizaci je odstranění parametru getuid_callout ze souboru /etc/multipath.conf.
+ .
+ Nezapomeňte po provedené změně aktualizovat initramfs. V opačném případě se nemusí podařit start systému z multipath zařízení.
+Description-da.UTF-8: Lokationen af getuid callout er blevet ændret
+ Din /etc/multipath.conf har stadig en getuid_callout, der peger på /sbin/scsi_id men den binære fil er flyttet til /lib/udev/scsi_id i udev 0.113-1. Opdater venligst din konfiguration. Dette gøres bedst ved at fjerne indstillingen getuid_callout fuldstændig.
+ .
+ Glem ikke at opdatere din initramfs efter disse ændringer. Ellers vil dit system måske ikke starte op fra multipath.
+Description-de.UTF-8: Der Ort des Getuid-Callouts ist geändert worden
+ In Ihrer /etc/multipath.conf weist ein getuid_callout auf /sbin/scsi_id, das Programm wurde aber in Udev 0.113-1 nach /lib/udev/scsi_id verschoben. Bitte aktualisieren Sie Ihre Konfiguration. Dies erfolgt am besten durch das komplette Entfernen der Option getuid_callout.
+ .
+ Vergessen Sie nicht, nach dieser Änderung Ihr Initramfs zu aktualisieren. Andernfalls könnte Ihr System nicht vom Multipath aus starten.
+Description-es.UTF-8: Ha cambiado el lugar del «getuid callout»
+ Su archivo «/etc/multipath.conf» todavía tiene un campo «getuid_callout» apuntando a «/sbin/scsi_id», pero en udev 0.113-1 el binario se ha trasladado a «/lib/udev/scsi_id». Actualice su configuración. La mejor mejor manera de hacerlo es eliminar completamente la opción «getuid_callout».
+ .
+ No olvide actualizar su initramfs tras estos cambios. De otro modo su sistema podría no arrancar desde multipath.
+Description-fr.UTF-8: Modification de la valeur du champ « getuid_callout »
+ Dans le fichier /etc/multipath.conf la valeur actuelle du champ « getuid_callout » est toujours /sbin/scsi_id mais l'adresse de l'exécutable est /lib/udev/scsi_id dans udev 0.113-1. Il est impératif de modifier le fichier de configuration. La solution suggérée est la suppression de cette option.
+ .
+ Veuillez noter que vous devrez mettre à jour le système de fichiers initial en mémoire (« initramfs ») après ces changements. En l'absence de cette action, le système pourrait refuser de démarrer depuis un périphérique multichemins (« multipath »).
+Description-it.UTF-8: La posizione di getuid_callout è cambiata
+ Il file /etc/multipath.conf nel sistema ha ancora un getuid_callout che punta a /sbin/scsi_id, ma il binario è stato spostato in /lib/udev/scsi_id con udev 0.113-1. Aggiornare la propria configurazione; il modo migliore per farlo è quello di rimuovere del tutto l'opzione getuid_callout.
+ .
+ Non dimenticarsi di aggiornare il proprio initramfs dopo queste modifiche, altrimenti il sistema potrebbe non avviarsi da multipath.
+Description-ja.UTF-8: getuid callout の位置が変更されました
+ /etc/multipath.conf には /sbin/scsi_id をさしている getuid_callout がありますが、バイナリは udev 0.113-1 で /lib/udeb/scsi_id に移動しました。設定を更新してください。完全に getuid_callout オプションを削除するのが一番良い方法です。
+ .
+ この変更を行った後で initramfs をアップデートするのを忘れないようにしてください。そうしないと、システムはマルチパスから起動しなくなります。
+Description-nl.UTF-8: De locatie van de getuid-callout is gewijzigd.
+ In uw /etc/multipath.conf staat nog steeds een getuid_callout die verwijst naar /sbin/scsi_id, maar het programma is verplaatst naar /lib/udev/scsi_id in udev 0.113-1. U dient uw configuratie bij te werken. U kunt het best de optie getuid_callout helemaal weghalen.
+ .
+ Vergeet niet om uw initramfs bij te werken na deze wijzigingen. Anders kan uw computer mogelijk niet vanaf multipath opstarten.
+Description-pt.UTF-8: A localização de 'getuid callout' mudou
+ O seu /etc/multipath.conf ainda tem o getuid_callout a apontar para /sbin/scsi_id mas o binário foi movido para /lib/udev/scsi_id no udev 0.113-1. Por favor actualize a sua configuração. Isto fica melhor se remover completamente a opção getuid_callout.
+ .
+ Não se esqueça de actualizar o seu initramfs após estas alterações. De outra maneira o seu sistema pode não arrancar a partir do multipath.
+Description-pt_BR.UTF-8: A localização da chamada getuid foi modificada
+ Seu /etc/multipath.conf ainda tem uma opção getuid_callout apontando para /sbin/scsi_id, mas o binário foi movido para /lib/udev/scsi_id no udev 0.113-1. Por favor, atualize sua configuração. Isso é feito da melhor forma removendo a opção getuid_callout inteiramente.
+ .
+ Não se esqueça de atualizar seu initramfs depois dessas mudanças. Do contrário seu sistema pode não inicializar pelo multipath.
+Description-ru.UTF-8: Изменилось расположение getuid callout
+ В имеющемся файле /etc/multipath.conf параметр getuid_callout указывает на /sbin/scsi_id, но этот двоичный файл был перемещён в /lib/udev/scsi_id (пакет udev, версия 0.113-1). Обновите вашу настройку. Лучше всего вообще удалить параметр getuid_callout.
+ .
+ Не забудьте обновить initramfs после изменения. Иначе система может не загрузиться с помощью многоканального доступа.
+Description-sv.UTF-8: Sökvägen till getuid-utanropet har ändrats
+ Din /etc/multipath.conf har fortfarande en getuid_callout som pekar på /sbin/scsi_id men binären har flyttats till /lib/udev/scsi_id i udev 0.113-1. Uppdatera din konfiguration. Detta görs bäst genom att ta bort getuid_callout-valet helt och hållet.
+ .
+ Glöm inte att uppdatera din initramfs efter dessa ändringar. Annars kanske inte ditt system startar upp från multipath.

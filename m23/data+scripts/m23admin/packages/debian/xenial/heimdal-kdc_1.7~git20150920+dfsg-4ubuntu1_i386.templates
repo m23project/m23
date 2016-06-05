@@ -1,0 +1,111 @@
+Template: heimdal/realm
+Type: string
+Description: Local realm name:
+ Please enter the name of the local Kerberos realm. 
+ .
+ Using the uppercase domain name is common. For instance, if the host
+ name is host.example.org, then the realm will become EXAMPLE.ORG. The
+ default for this host is ${default_realm}.
+Description-cs.UTF-8: Místní název oblasti:
+ Zadejte prosím jméno místní oblasti Kerberos.
+ .
+ Heimdal požaduje jméno místní oblasti. Tím je obvykle vaše doménové jméno zadané velkými písmeny. Např.: pokud je název vašeho počítače: host.example.com, pak se vaší oblastí stane EXAMPLE.COM. Výchozí hodnotou pro váš počítač je: ${default_realm}.
+Description-da.UTF-8: Lokalt områdenavn:
+ Indtast venligst navnet på det lokale Kerberos-rige.
+ .
+ Brug af store bogstaver i domænenavnet er udbredt. Hvis dit værtsnavn for eksempel er maskine.org.dk, vil dit område blive til ORG.DK. Standardværdien for denne vært er ${default_realm}.
+Description-de.UTF-8: Ihr lokaler Realm-Name:
+ Bitte geben Sie den Namen des lokalen Kerberos-Realms ein.
+ .
+ Es ist üblich, den großgeschriebenen Domänennamen zu verwenden. Wenn z. B. der Rechnername »host.example.org« lautet, dann ist Ihr Realm-Name »EXAMPLE.ORG«. Die Standardeinstellung für diesen Rechner ist ${default_realm}.
+Description-es.UTF-8: Nombre del reino local:
+ Por favor, introduzca el nombre del reino local de Kerberos.
+ .
+ El nombre del dominio suele estar en mayúsculas. Por ejemplo. si el nombre de su máquina es maquina.ejemplo.org, entonces su dominio será EJEMPLO.ORG. El dominio predeterminado para su máquina es ${default_realm}.
+Description-fi.UTF-8: Paikallinen aluenimi:
+ Anna paikallinen Kerberos-aluenimi.
+ .
+ Verkkoaluenimen kirjoittaminen isolla on yleistä. Jos koneen verkkonimi on esimerkiksi kone.esimerkki.org, tulee aluenimeksi ESIMERKKI.ORG. Oletusarvo tälle koneelle on ${default_realm}.
+Description-fr.UTF-8: Nom de l'aire (« realm ») locale :
+ Veuillez indiquer le nom de l'aire Kerberos locale.
+ .
+ Le nom de l'aire (« realm ») est généralement le nom de domaine, en lettres majuscules. Par exemple, si le nom d'hôte est « host.example.com », alors le nom de l'aire sera « EXAMPLE.COM ». La valeur par défaut pour cet hôte est « ${default_realm} ».
+Description-gl.UTF-8: Nome do reino local:
+ Introduza o nome do reino Kerberos local.
+ .
+ Adóitase empregar o nome de dominio en maiúsculas. Por exemplo, se o nome da máquina é host.example.org, o reino ha ser EXAMPLE.ORG. O valor por defecto para esta máquina é ${default_realm}.
+Description-it.UTF-8: Nome del realm locale:
+ Inserire il nome del realm Kerberos locale.
+ .
+ L'uso di nomi di dominio in maiuscolo è molto comune. Per esempio, se il nome host è host.esempio.org allora il realm diventa ESEMPIO.ORG. Il valore predefinito per questo host è ${default_realm}.
+Description-ja.UTF-8: ローカルレルム名:
+ ローカルの Kerberos レルム名を入力してください。
+ .
+ 大文字のドメイン名を使うのが一般的です。たとえばもしホスト名が host.example.org なら、レルムは EXAMPLE.ORG となります。このホストのデフォルトは、${default_realm} です。
+Description-nl.UTF-8: Naam van het lokale autoriteitsgebied:
+ Gelieve de naam van het locale autoriteitsgebeid (realm) aan te geven.
+ .
+ Het is gebruikelijk om uw domeinnaam in hoofdletters te gebruiken. Als uw computernaam bijvoorbeeld host.example.org is, dan zal uw autoriteitsgebied EXAMPLE.ORG zijn. De standaardwaarde voor uw computer is ${default_realm}.
+Description-pt.UTF-8: Nome local do realm:
+ Introduza o nome do realm Kerberos local.
+ .
+ O nome do domínio em maiúsculas é prática usual. Assim, se o nome for host.example.org, então o realm será EXAMPLE.ORG. O valor por omissão para este host é ${default_realm}.
+Description-pt_BR.UTF-8: Nome do realm local:
+ Por favor, informe o nome do realm Kerberos local.
+ .
+ Usar o nome do domínio em letras maiúsculas é comum. Por exemplo, se o nome da máquina é host.example.org, então o realm será EXAMPLE.ORG. O padrão para este host é ${default_realm}.
+Description-ru.UTF-8: Имя локальной области:
+ Введите имя локальной области Kerberos.
+ .
+ Обычно используется доменное имя, написанное прописными буквами. Например, если имя хоста host.example.org, то областью будет EXAMPLE.ORG. Областью по умолчанию для этого хоста является ${default_realm}.
+Description-sv.UTF-8: Namn på lokala sfären:
+ Ange namnet på den lokala Kerberos-sfären.
+ .
+ Vanligen används versala domännamn. Exempelvis om ditt värdnamn är example.com, då är din sfär EXAMPLE.COM. Som standard är det ${default_realm} för ditt värdnamn.
+Description-tr.UTF-8: Yerel bölge adı:
+ Lütfen yerel Kerberos bölgesinin adını girin.
+ .
+ Büyük harflerden oluşan alan adı kullanımı yaygındır. Örneğin, ana makine adının host.example.org olduğu bir durumda bölge adı EXAMPLE.ORG olur. Bu makine için öntanımlı bölge adı ${default_realm} şeklindedir.
+Description-vi.UTF-8: Tên địa hạt cục bộ :
+ Hãy gõ tên của địa hạt (realm) Kerberos cục bộ.
+ .
+ Thường là tên miền (domain name) theo chữ hoa. Chẳng hạn, nếu tên máy là « máy.vnoss.org » thì địa hạt là « VNOSS.ORG ». Giá trị mặc định cho máy này là « ${default_realm} ».
+
+Template: heimdal-kdc/password
+Type: password
+Description: KDC password:
+ Heimdal can encrypt the key distribution center (KDC) data with
+ a password. A hashed representation of this password will be stored
+ in /var/lib/heimdal-kdc/m-key.
+Description-cs.UTF-8: Heslo KDC:
+ Heimdal může šifrovat data KDC (key distribution center) pomocí hesla. Hashovaná verze hesla bude uložena ve /var/lib/heimdal-kdc/m-key.
+Description-da.UTF-8: KDC-adgangskode:
+ Heimdal kan kryptere KDC-dataene (Key Distribution Center) med en adgangskode. En sløret udgave af denne adgangskode vil blive gemt i /var/lib/heimdal-kdc/m-key.
+Description-de.UTF-8: KDC-Passwort:
+ Heimdal kann die Daten des zentralen Schlüsselverteilers (key distribution center - KDC) mit einem Passwort verschlüsseln. Ein Hash-Wert davon wird in der Datei /var/lib/heimdal-kdc/m-key abgelegt.
+Description-es.UTF-8: Contraseña de KDC:
+ Heimdal puede cifrar los datos de la clave de distribución central (KDC) con una contraseña. El resultado de una función resumen se almacenará en «/var/lib/heimdal-kdc/m-key».
+Description-fi.UTF-8: KDC-salasana:
+ Heimdal voi salata avaintenjakokeskuksen (KDC) tiedot salasanalla. Tämän salasanan tiivistetty esitys tallennetaan tiedostoon /var/lib/heimdal-kdc/m-key.
+Description-fr.UTF-8: Mot de passe de centre de distribution de clés (KDC) :
+ Heimdal peut chiffrer les données du centre de distribution de clés (KDC : « Key Distribution Center ») avec un mot de passe. Une représentation hachée de ce mot de passe sera enregistrée dans « /var/lib/heimdal-kdc/m-key ».
+Description-gl.UTF-8: Contrasinal do KDC:
+ Heimdal pode cifrar os datos do centro de distribución de claves (KDC) cun contrasinal. Hase gardar unha representación numérica deste contrasinal en /var/lib/heimdal-kdc/m-key.
+Description-it.UTF-8: Password per KDC:
+ Heimdal può cifrare i dati del centro di distribuzione delle chiavi (KDC) con una password. In /var/lib/heimdal-kdc/m-key viene memorizzato un hash della password.
+Description-ja.UTF-8: KDC のパスワード:
+ Heimdal は鍵配布センター (KDC) データをパスワードで暗号化できます。このパスワードのハッシュ化された表現が /var/lib/heimdal-kdc/m-key に格納されます。
+Description-nl.UTF-8: KDC-wachtwoord:
+ Heimdal kan de gegevens van het KDC (key distribution center; sleuteldistributiecentrum) versleutelen met een wachtwoord. Een gehashte representatie van dit wachtwoord zal worden bewaard in /var/lib/heimdal-kdc/m-key.
+Description-pt.UTF-8: Password KDC:
+ O Heimdal pode encriptar os dados do centro de distribuição de chaves (KDC) com uma palavra-chave. A representação hash será armazenada em /var/lib/heimdal-kdc/m-key.
+Description-pt_BR.UTF-8: Senha KDC:
+ Heimdal pode criptografar os dados do centro de distribuição de chaves (KDC -- key distribution center) com uma senha. Uma representação em hash desta senha será armazenada em /var/lib/heimdal-kdc/m-key.
+Description-ru.UTF-8: Пароль KDC:
+ Heimdal может зашифровать данные центра распределения ключей (KDC) с помощью пароля. Хешированное представление этого пароля будет сохранено в файле /var/lib/heimdal-kdc/m-key.
+Description-sv.UTF-8: Lösenord för KDC:
+ Heimdal kan kryptera KDC-datan med ett lösenord. En hashad variant kommer att lagras i /var/lib/heimdal-kdc/m-key.
+Description-tr.UTF-8: KDC parolası:
+ Heimdal anahtar dağıtım merkezi (KDC) verisini parola kullanarak şifreleyebilir. Bu parolanın karılmış hali /var/lib/heimdal-kdc/m-key konumunda saklanır.
+Description-vi.UTF-8: Mật khẩu KDC:
+ Trình heimdal có thể mật mã hóa dư liệu KDC (trung tâm phát hành khoá) bằng mật khẩu. Sự đại diện băm của mật khẩu này sẽ được lưu vào « /var/lib/heimdal-kdc/m-key ».

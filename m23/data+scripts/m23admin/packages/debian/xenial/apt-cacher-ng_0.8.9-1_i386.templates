@@ -1,0 +1,563 @@
+
+Template: apt-cacher-ng/gentargetmode
+Type: select
+Choices: Set up once, Set up now and update later, No automated setup
+Choices-cs.UTF-8: Nastavit jednou, Nastavit nyní a průběžně aktualizovat, Nenastavovat automaticky
+Choices-da.UTF-8: Opsæt for en gang, Opsæt nu og opdater senere, Ingen automatisk opsætning
+Choices-de.UTF-8: Nur einmalig einrichten, Jetzt einrichten und später aktualisieren, Keine automatische Konfiguration
+Choices-es.UTF-8: Configurar sólo una vez, Configurar ahora y actualizar después, No configurar automáticamente
+Choices-eu.UTF-8: Konfiguratu behin, Konfiguratu orain eta eguneratu geroago, Ez konfiguratu automatikoki
+Choices-fi.UTF-8: Tee asetukset kerran, Tee asetukset nyt ja päivitä myöhemmin, Ei automattista asetusten tekoa
+Choices-fr.UTF-8: Configurer une seule fois, Configurer maintenant et mettre à jour plus tard, Pas de configuration automatique
+Choices-gl.UTF-8: Configurar unha vez, Configurar agora e actualizar máis tarde, Sen configuración automática
+Choices-it.UTF-8: Impostare una volta, Impostare ora e aggiornare successivamente, Nessuna impostazione automatica
+Choices-ja.UTF-8: 一旦設定する, すぐに設定を行い、更新は後ほど行う, 自動的な設定を行わない
+Choices-nl.UTF-8: Eenmalig instellen, Nu instellen en later bijwerken, Niet automatisch instellen
+Choices-pl.UTF-8: Skonfiguruj jednorazowo, Skonfiguruj teraz i aktualizuj później, Brak automatycznej konfiguracji
+Choices-pt.UTF-8: Configurar uma vez, Configurar agora e actualizar mais tarde, Sem configuração automática
+Choices-pt_BR.UTF-8: Configurar uma vez, Configurar agora e atualizar depois, Sem configuração automatizada
+Choices-ru.UTF-8: Настроить один раз, Настроить сейчас и позже обновлять, Не настраивать автоматически
+Choices-sv.UTF-8: Ställ in en gång, Ställ in nu och uppdatera senare, Ingen automatisk inställning
+Choices-vi.UTF-8: Thiết lập một lần, Thiết lập ngay và cập nhật sau, Không tự động thiết lập
+Default: Set up once
+Description: Automatic remapping of client requests:
+ Apt-Cacher NG can download packages from repositories other than those
+ requested by the clients. This allows it to cache content effectively,
+ and makes it easy for an administrator to switch to another mirror later.
+ The URL remapping can be set up automatically, using a configuration
+ based on the current state of /etc/apt/sources.list.
+ .
+ Please specify whether the remapping should be configured once now, or
+ reconfigured on every update of Apt-Cacher NG (modifying the
+ configuration files each time), or left unconfigured.
+ .
+ Selecting "No automated setup" will leave the existing configuration
+ unchanged. It will need to be updated manually.
+Description-cs.UTF-8: Automatické přesměrování klientských požadavků:
+ Apt-Cacher NG umí stahovat balíky i z jiných repositářů, než které si vyžádali klienti. To umožňuje efektivní používání lokální mezipaměti a také to správcům umožňuje jednoduše měnit používané zrcadlo. Přepisování URL je možné nastavit automaticky na základě aktuálního obsahu /etc/apt/sources.list.
+ .
+ Vyberte si, zda se má přesměrování nastavit pouze jednou (nyní), při každé aktualizaci Apt-Cacher NG, nebo ponechat nenastavené.
+ .
+ Možnost „Nenastavovat automaticky“ ponechá stávající nastavení nedotčeno a budete je muset upravit ručně.
+Description-da.UTF-8: Automatisk viderenoversættelse af klientforespørgsler:
+ Apt-Cacher NG kan hente pakker fra arkiver, udover dem der anmodes om fra klienter. Dette tillader programmet at mellemlagre indhold effektivt, og gør det nemt for en administrator at skifte til et andet spejl senere. Den nye adresse kan opsættes automatisk, med brug af en konfiguration baseret på den nuværende tilstand for /etc/apt/sources.list.
+ .
+ Angiv venligst om den nye adresse skal konfigureres nu, eller konfigureres ved hver opdatering af Apt-Cacher NG (hvilket ændrer konfigurationsfilerne hver gang) eller efterlades uden konfiguration.
+ .
+ Valg af »Ingen automatisk opsætning« vil bevare den eksisterende konfiguration uændret. Den vil skulle opdateres manuelt.
+Description-de.UTF-8: Automatische Umleitung der Client-Anfragen:
+ Apt-Cacher NG kann Pakete von anderen Depots beziehen als von denen, die in Client-Aufrufen angegeben wurden. Dadurch kann der Cache effektiver arbeiten, außerdem kann nachträglich einfacher auf andere Spiegelserver umgestellt werden. Diese URL-Abbildung kann jetzt automatisch eingerichtet werden, unter Berücksichtigung des aktuellen Inhalts von /etc/apt/sources.list.
+ .
+ Bitte auswählen, ob die URL-Abbildung jetzt einmalig, oder bei jeder Aktualisierung von Apt-Cacher NG (Konfiguration wird jedes Mal angepasst), oder gar nicht konfiguriert werden soll.
+ .
+ Die Auswahl von »Keine automatische Konfiguration« lässt bestehende Konfigurationsdateien unverändert. Diese müssen dann per Hand gepflegt werden.
+Description-es.UTF-8: Remapeo automático de las peticiones de clientes:
+ Apt-Cacher NG puede descargar paquetes desde otros repositorios distintos a los solicitados por los clientes. Esto le permite almacenar el contenido eficientemente y facilitar al administrador cambiar a otra réplica más adelante. Se puede configurar automáticamente el remapeo de URLs utilizando una configuración basada en el estado actual del archivo «/etc/apt/sources.list».
+ .
+ Indique si se debe configurar el remapeo sólo una vez ahora, si se debe reconfigurar cada vez que se actualice Apt-Cacher NG (modificando los archivos de configuración cada vez) o si se debe dejar sin configurar.
+ .
+ Si selecciona «No configurar automáticamente» no se modificará la configuración existente. Necesitará actualizarla manualmente.
+Description-eu.UTF-8: Bezero eskaeren birmapatze automatikoa:
+ Bezeroek eskatu ez dituzten biltegietatik Apt-Cacher NG aplikazioak paketeak deskarga ditzake. Honek edukia cache eraginkorrago batean gordetzea baimentzen du, eta administratzaileek beranduago beste ispilu batera aldatzea errazten du. URLak birmapatzea automatikoki egin daiteke, uneko /etc/apt/sources.list egoera oinarritzat duen konfigurazioa erabilita.
+ .
+ Zehaztu birmapatzea behin konfiguratu behar den orain, edo Apt-Cacher NG eguneratze bakoitzean birkonfiguratu behar den (aldi bakoitzean konfigurazio fitxategiak aldatuz), edo konfiguratu gabe utzi.
+ .
+ "Ez konfiguratu automatikoki" hautatuz dagoen konfigurazioa aldatu gabe utziko du. Eskuz eraldatu beharko duzu.
+Description-fr.UTF-8: Redirection automatique des requêtes :
+ Apt-Cacher NG peut télécharger des paquets depuis d'autres dépôts que ceux demandés par les clients. Cela permet de mettre les données en cache efficacement et facilite la tâche de l'administrateur lors d'un changement ultérieur de miroir. La redirection d'URL peut être configurée automatiquement en reprenant des éléments de l'état courant de /etc/apt/sources.list.
+ .
+ Veuillez indiquer si la redirection doit être configurée une seule fois maintenant, ou bien lors de chaque mise à jour de Apt-Cacher NG (les fichiers de configuration seront modifiés à chaque fois), ou encore laissée non configurée.
+ .
+ Le choix « Pas de configuration automatique » conserve la configuration existante. Vous devrez alors la mettre à jour vous-même.
+Description-it.UTF-8: Riscrittura automatica delle richieste dei client:
+ Apt-Cacher NG può scaricare i pacchetti da repository diversi da quelli richiesti dai client. Questo consente di memorizzare localmente il contenuto in maniera efficace e facilita agli amministratori un eventuale successivo passaggio a un altro mirror. La riscrittura degli URL può essere impostata automaticamente usando una configurazione basata sullo stato attuale di /etc/apt/sources.list.
+ .
+ Specificare se la riscrittura deve essere configurata una volta sola ora o riconfigurata ad ogni aggiornamento di Apt-Cacher NG (modificando ogni volta i file di configurazione), oppure lasciata non configurata.
+ .
+ Selezionando «Nessuna impostazione automatica» si lascerà la configurazione attuale invariata. Dovrà essere aggiornata manualmente.
+Description-ja.UTF-8: クライアントからのリクエストを自動的に書き換え:
+ Apt-Cacher NG は、クライアントから要求された以外のリポジトリからパッケージをダウンロードできます。これによってコンテンツを効率よくキャッシュでき、管理者が後ほど別のミラーに切り替えるのを容易にします。URL 書き換えを自動的に処理して現状の /etc/apt/sources.list を元にした設定を利用できます。
+ .
+ 書き換えをここで設定するか、Apt-Cacher NG の更新ごとに再設定する (設定ファイルを毎回変更する) か、あるいは変更せずそのまま残すか指定してください。
+ .
+ 「自動的な設定を行わない」を選ぶと既存の設定を変更しません。手動での更新が必要になります。
+Description-nl.UTF-8: Automatisch omschakelen van client-verzoeken:
+ Apt-Cacher NG kan pakketten ophalen van een andere pakketbron dan die waar de client om vraagt. Hierdoor kan inhoud op een effectieve manier gecached worden. Het maakt het voor een beheerder ook makkelijk om later naar een andere spiegelserver over te schakelen. Omschakelen van URL's kan geautomatiseerd worden aan de hand van een configuratie die op de huidige inhoud van /etc/apt/sources.list gebaseerd wordt.
+ .
+ Gelieve te specificeren of de omschakeling eenmalig en nu geconfigureerd moet worden, ofwel bij elke bijwerking van Apt-Cacher NG opnieuw (de configuratiebestanden worden dan telkens aangepast), ofwel niet.
+ .
+ Indien u "Niet automatisch instellen" kiest zal de bestaande configuratie met rust worden gelaten. U dient deze dan handmatig bij te werken.
+Description-pl.UTF-8: Automatyczne przepisywanie żądań klientów:
+ Apt-Cacher NG może pobierać pakiety z repozytoriów innych niż żądane przez klientów. Pozwala to na efektywne buforowanie treści, a dodatkowo ułatwia administratorowi przejście na inny serwer lustrzany w razie potrzeby. Przepisywanie URL-i może być skonfigurowane automatycznie, w oparciu o bieżący stan pliku /etc/apt/sources.list.
+ .
+ Proszę wybrać, czy przepisywanie ma być: skonfigurowane jednokrotnie teraz, konfigurowane przy każdej aktualizacji Apt-Cacher NG (modyfikując za każdy razem pliki konfiguracyjne) czy też pozostawione nieskonfigurowane.
+ .
+ Wybranie opcji "Brak automatycznej konfiguracji" pozostawi istniejącą konfigurację bez zmian. Konieczne będzie dokonanie ręcznych zmian.
+Description-pt.UTF-8: Remapeamento automático de pedidos de clientes:
+ O Apt-Cacher NG pode fazer o download de pacotes de repositórios além dos pedidos pelos clientes. Isto permite fazer a cache de conteúdos mais eficientemente e facilita a mudança posterior de mirror por parte de um administrador. O mapeamento de URL pode ser configurado automaticamente, através duma configuração baseada no estado actual do /etc/apt/sources.list.
+ .
+ Por favor, indique se quer configurar o mapeamento agora, reconfigurá-lo de cada vez que actualiza o Apt-Cacher NG (modificando sempre os ficheiros de configuração), ou deixar por configurar.
+ .
+ Seleccionar "Sem actualização automática" deixará a configuração actual intacta. Necessitará de ser actualizada manualmente.
+Description-pt_BR.UTF-8: Remapeamento automático das requisições dos clientes:
+ O Apt-Cacher NG pode baixar pacotes de repositórios diferentes daqueles requisitados pelos clientes. Isso permite fazer cache de conteúdo de forma eficaz, e torna a troca para outros repositórios mais fácil para o administrador. O remapeamento de URL pode ser configurado automaticamente, usando uma configuração baseada no estado atual de /etc/apt/sources.list.
+ .
+ Por favor, especifique se o remapeamento deverá ser configurado apenas uma vez agora, ou reconfigurado a cada atualização do Apt-Cacher NG (modificando os arquivos de configuração cada vez), ou deixado desconfigurado.
+ .
+ Selecionar "Sem configuração automatizada" deixará inalterada a configuração existente. Ela precisará ser atualizada manualmente.
+Description-ru.UTF-8: Автоматическое переназначение клиентских запросов:
+ Apt-Cacher NG может скачивать пакеты из репозиториев, отличных от запрашиваемых клиентами. Это позволяет эффективней кэшировать данные, и легко изменять сервер-зеркало, если потребуется. Это переназначение может быть настроено автоматически, исходя из актуального содержания файла /etc/apt/sources.list.
+ .
+ Выбирайте, когда настройка переназначение URL будет происходить: однократно (сейчас), после каждого обновления Apt-Cacher NG (позже переписывает конфигурацию), или никогда.
+ .
+ При выборе «Не настраивать автоматически» существующая настройка не изменится. В этом случае обновления нужно будет делать вручную.
+Description-sv.UTF-8: Automatisk ommappning av klientfrågor:
+ Apt-Cacher NG kan ladda ner paket från arkiv utöver de som klienterna frågat om. Detta gör att den kan cacha innehåll effektivt och gör det enkelt för en administratör att byta till en annan spegel vid ett senare tillfälle. Justeringen av sökvägar kan aktiveras automatiskt genom att basera inställningarna på nuvarande läge i filen /etc/apt/sources.list.
+ .
+ Ange om sökvägs-justeringen ska aktiveras en gång för alla nu, om den ska kunna justeras vid varje uppdatering av Apt-Cacher NG (modifierar inställningsfilen varje gång) eller om den ska lämnas utan inställning.
+ .
+ Väljer du "Ingen automatisk inställning" kommer den existerande konfigurationen lämnas oförändrad. Den kommer behöva uppdateras manuellt.
+
+Template: apt-cacher-ng/bindaddress
+Type: string
+Default: keep
+Description: Listening address(es) for Apt-Cacher NG:
+ Please specify the local addresses that Apt-Cacher NG should listen on
+ (multiple entries must be separated by spaces).
+ .
+ Each entry must be an IP address or hostname associated with a local
+ network interface. Generic protocol-specific addresses are also
+ supported, such as 0.0.0.0 for listening on all IPv4-enabled interfaces.
+ .
+ If this field is left empty, Apt-Cacher NG will listen on all
+ interfaces, with all supported protocols.
+ .
+ The special word "keep" keeps the value from the current (or default)
+ configuration unchanged.
+Description-cs.UTF-8: Adresy, na kterých má Apt-Cacher NG naslouchat:
+ Zadejte lokální adresy, na kterých má Apt-Cacher NG naslouchat (adresy musí být odděleny mezerami).
+ .
+ Každý záznam musí být IP adresou nebo jménem počítače svázaným s lokálním síťovým rozhraním. Podporovány jsou i obecné adresy jako např. 0.0.0.0 pro naslouchání na všech rozhraních s IPv4.
+ .
+ Ponecháte-li prázdné, bude Apt-Cacher NG naslouchat na všech rozhraních všemi podporovanými protokoly.
+ .
+ Speciální slovo „keep“ ponechá hodnotu ze současného (nebo výchozího) nastavení.
+Description-da.UTF-8: Lytteadresser for Apt-Cacher NG:
+ Angiv venligst de lokale adresser som Apt-Cacher NG skal lytte på (flere poster skal være adskilt af mellemrum).
+ .
+ Hvert punkt skal være en IP-adresse eller værtsnavn associeret med en lokal netværksgrænseflade. Generiske protokolspecifikke adresser er også understøttet, såsom 0.0.0.0 for lytning på alle IPv4-aktiverede grænseflader.
+ .
+ Hvis dette felt efterlades tomt, vil Apt-Cacher NG lytte på alle grænserflader med alle understøttede protokoller.
+ .
+ Det specielle ord »keep« bevarer værdien fra den nuværende (eller standard) konfiguration uændret.
+Description-de.UTF-8: Mit Apt-Cacher NG verbundene Adresse(n):
+ Verbindung annehmende Adressen oder Rechnernamen, mehrere Einträge sind mit Leerzeichen zu trennen.
+ .
+ Jeder Eintrag entspricht einer Adresse (IP oder Computername), hinter der eine lokale Netzwerkschnittstelle steht. Generische protokollspezifische Adressen werden ebenfalls unterstützt, wie 0.0.0.0 als Beschreibung sämtlicher IPv4-Schnittstellen.
+ .
+ Ein leerer Eintrag bedeutet alle Schnittstellen und Protokolle.
+ .
+ Das besondere Schlüsselwort "keep" lässt die derzeitige Einstellung (beziehungsweise Standardeinstellung) unverändert.
+Description-es.UTF-8: Dirección(es) en la(s) que escuchará Apt-Cacher NG:
+ Indique la(s) dirección(es) local(es) en la(s) que debe escuchar Apt-Cacher NG (debe separar las direcciones con espacios).
+ .
+ Cada elemento debe ser una dirección IP o nombre de equipo asociado a una interfaz de red local. También se permiten direcciones genéricas específicas a cada protocolo, como 0.0.0.0 para escuchar en todas las interfaces IPv4 activadas.
+ .
+ Si deja este campo vacío Apt-Cacher NG escuchará en todas las interfaces en todos los protocolos con los que es compatible.
+ .
+ El valor especial «keep» mantendrá el valor actual de la configuración (o el predeterminado).
+Description-eu.UTF-8: Apt-Cacher NG-rako entzungai dauden helbideak:
+ Zehaztu Apt-Cacher NG entzun behar dituen helbide lokalak. (sarrera aniztuak zuriuneekin banandu behar dira)
+ .
+ Sarrera bakoitza Ip helbide edo sare lokaleko interfaze batekin  elkartutako ostalari-izena izan behar du. Protokolo-zehatzen helbide generikoak ere onartzen dira, adibidez 0.0.0.0 IPv4-gaitutako interfaze guztietan entzuteko.
+ .
+ Eremu hau hutsik utziz gero, 'Apt-Cacher NG'-ek  interfaze guztietan entzungo du (onartutako protokolo guztiekin).
+ .
+ "keep" hitz bereziak uneko (edo lehenetsia den) konfigurazioaren balioa aldatu gabe uzten du.
+Description-fr.UTF-8: Adresse(s) d'écoute pour Apt-Cacher NG :
+ Veuillez indiquer les adresses locales qu'Apt-Cacher NG doit écouter (liste d'adresses séparées par des espaces).
+ .
+ Chaque entrée doit être ou bien une adresse IP, ou bien un nom d'hôte associé à une interface sur le réseau local. Les adresses génériques définies par un protocole sont acceptées, par exemple 0.0.0.0 pour écouter sur toutes les interfaces compatibles IPv4.
+ .
+ Si ce champ est laissé vide, Apt-Cacher NG écoutera sur toutes les interfaces, avec tous les protocoles pris en charge.
+ .
+ Le mot-clef « keep » conserve inchangée la valeur issue de la configuration actuelle (ou par défaut).
+Description-it.UTF-8: Indirizzi di ascolto di Apt-Cacher NG:
+ Specificare gli indirizzi locali su cui Apt-Cacher NG deve restare in ascolto (se più di uno devono essere separati da spazi).
+ .
+ Ogni voce deve essere un indirizzo IP o nome host associato con un'interfaccia di rete locale. Sono permessi anche indirizzi generici specifici di un protocollo, come 0.0.0.0 per restare in ascolto su tutte le interfacce IPv4.
+ .
+ Se questo campo viene lasciato vuoto, Apt-Cacher NG resterà in ascolto su tutte le interfacce con tutti i protocolli supportati.
+ .
+ La parola speciale «keep» mantiene immutato il valore della configurazione attuale (o predefinita).
+Description-ja.UTF-8: Apt-Cacher NG の待ち受けアドレス:
+ Apt-Cacher NG が待ち受けるローカルアドレス一覧を指定してください (複数指定する場合は空白で区切ってください)。
+ .
+ 各項目はローカルネットワークインターフェイスに関連付けられているIPアドレスまたはホスト名でないといけません。プロトコル特有のアドレスを包括するアドレスもサポートしています。例えば 0.0.0.0 では IPv4 が有効化されている全インターフェイスを待ち受けます。
+ .
+ 空白にした場合は Apt-Cacher NG は全インターフェイスで、サポートしている全プロトコルについて待ち受けます。
+ .
+ 「keep」という特別な語をここで使うと現在の設定値 (またはデフォルト値) を維持し、設定値を変更しません。
+Description-nl.UTF-8: Op welke adressen moet Apt-Cacher NG luisteren:
+ Vermeld de lokale adressen waarop Apt-Cacher NG moet luisteren (meerdere elementen worden door spaties gescheiden).
+ .
+ Elk element moet een IP-adres of een computernaam zijn, gekoppeld aan een lokale netwerkinterface. Generische protocolspecifieke adressen worden ook ondersteund, zoals 0.0.0.0 om Apt-Cacher NG te doen luisteren op alle IPv4-compatibele interfaces.
+ .
+ Als dit veld leeg blijft, luistert Apt-Cacher NG op alle interfaces met alle ondersteunde protocollen.
+ .
+ Het speciale woord "keep" laat de waarde van de huidige (of de standaard-) configuratie ongemoeid.
+Description-pl.UTF-8: Adresy Apt-Cacher NG do nasłuchu:
+ Proszę podać lokalny adres, na którym Apt-Cacher NG powinien nasłuchiwać (kolejne adresy należy oddzielić spacjami).
+ .
+ Każdy wpis musi być adresem IP lub nazwą hosta powiązaną z lokalnym interfejsem sieciowym. Obsługiwane są również ogólne adresy (w zależności od protokołu) np. adres 0.0.0.0 spowoduje nasłuchiwanie na wszystkich interfejsach korzystających z IPv4.
+ .
+ Jeśli pozostawi się to pole puste, to Apt-Cacher NG będzie nasłuchiwał na wszystkich interfejsach, korzystając ze wszystkich obsługiwanych protokołów.
+ .
+ Specjalne słowo "keep" zachowuje wartość bieżącej (lub domyślnej) konfiguracji, nie zmieniając niczego.
+Description-pt.UTF-8: Endereço(s) de escuta para o Apt-Cacher NG:
+ Indique por favor os endereços locais que o Apt-Cacher NG deve escutar (endereços múltiplos devem ser separados por espaços).
+ .
+ Cada entrada tem que ser um endereço IP ou nome de máquina associado com uma interface de rede local. Endereços genéricos específicos de protocolo são também suportados, como por exemplo 0.0.0.0 para interfaces com IPv4.
+ .
+ Se este campo for deixado vazio, o Apt-Cacher NG irá escutar em todos os interfaces, em todos os protocolos suportados.
+ .
+ A palavra especial "keep" mantém o valor da configuração actual (ou valor por omissão) intocado.
+Description-pt_BR.UTF-8: Endereço(s) de escuta para o Apt-Cacher NG:
+ Por favor, especifique os endereços locais que o Apt-Cacher NG deverá escutar (múltiplas entradas devem ser separadas por espaços).
+ .
+ Cada entrada deve ser um endereço IP ou nome de máquina associados a uma interface de rede local. Endereços genéricos específicos a protocolos também são suportados, tais como 0.0.0.0 para escutar em todas as interfaces habilitadas para IPv4.
+ .
+ Se esse campo for deixado vazio, o Apt-Cacher NG escutará em todas as interfaces, com todos os protocolos suportados.
+ .
+ A palavra especial "keep" mantém inalterado o valor da configuração atual (ou padrão).
+Description-ru.UTF-8: Прослушиваемыe адрес(а) для Apt-Cacher NG:
+ Укажите адреса или имена узлов, на которых нужно выполнять прослушивание; несколько элементов нужно разделять пробелами.
+ .
+ Каждый элемент должен быть адресом (IP или именем узла), который связан с локальным сетевым интерфейсом. Поддерживаются обобщённые адреса протоколов, например 0.0.0.0 служит для прослушивания на всех интерфейсах с включённым IPv4.
+ .
+ Если ничего не указывать (по умолчанию), то прослушивание ведётся на всех интерфейсах и по всем протоколам.
+ .
+ Специальное слово «keep» служит для сохранения текущего (или по умолчанию) значения настройки.
+Description-sv.UTF-8: Adress(er) som Apt-Cacher NG lyssnar på:
+ Ange den lokala adress som Apt-Cacher NG ska lyssna på (separera adresser med mellanslag).
+ .
+ De avgivna IP-adresserna eller värdnamnen måste knytas till ett lokalt nätverksgränssnitt. Generella protokollspecifika adresser stöds också, exempelvis 0.0.0.0 för att lyssna på alla IPv4-kapabla gränssnitt.
+ .
+ Om detta fält lämnas tomt kommer Apt-Cacher NG att lyssna på alla gränssnitt med alla protokoll som stöds.
+ .
+ Specialordet "keep" lämnar nuvarande inställning utan justering.
+
+Template: apt-cacher-ng/port
+Type: string
+Default: keep
+Description: Listening TCP port:
+ Please specify the TCP port that Apt-Cacher NG should listen on for
+ incoming HTTP (proxy) requests. The default value is port 3142, but it
+ can be set to 9999 to emulate apt-proxy.
+ .
+ If this field is left empty, the value from the current configuration
+ remains unchanged.
+Description-cs.UTF-8: TCP port:
+ Zadejte TCP port, na kterém má Apt-Cacher NG naslouchat příchozím HTTP požadavkům. Výchozí port je 3142, ale pro emulaci apt-proxy můžete použít hodnotu 9999.
+ .
+ Ponecháte-li prázdné, použije se hodnota ze současného nastavení.
+Description-da.UTF-8: Lyttende TCP-port:
+ Angiv venligst TCP-porten som Apt-Cacher NG skal lytte på ved indgående HTTP-forespørgsler (proxy). Standardværdien er port 3142, men den kan sættes til 9999 for at emulere apt-proxy.
+ .
+ Hvis dette felt efterlades tomt, forbliver værdien fra den nuværende konfiguration uændret.
+Description-de.UTF-8: Verbindungen annehmender TCP-Port:
+ Konfiguriert den TCP-Port, auf dem Apt-Cacher NG die hereinkommenden (Proxy-)HTTP-Anfragen annimmt. Standard ist 3142, kann auch auf 9999 gesetzt werden, um apt-proxy zu emulieren.
+ .
+ Ein leerer Eintrag lässt die derzeitige Konfiguration unverändert.
+Description-es.UTF-8: Puerto TCP en el que escuchar:
+ Indique el puerto TCP en el que Apt-Cacher NG debe atender peticiones HTTP (proxy) entrantes. El puerto 3142 es el predeterminado, pero puede utilizar el puerto 9999 para emular apt-proxy.
+ .
+ Si deja este campo vacío no se modificará el valor actual de laconfiguración.
+Description-eu.UTF-8: TCP ataka entzuteko:
+ Zehaztu Apt-Cacher NG entzun behar duen TCP ataka sarrerako HTTP (proxya) eskaerentzako. Balio lehenetsia: 3141 ataka da, baina 9999 gisa ezar daiteke apt-proxy emulatzeko.
+ .
+ Eremu hau hutsik  utziz gero, uneko konfigurazioren balioa aldaketarik gabe utziko da.
+Description-fr.UTF-8: Port d'écoute TCP :
+ Veuillez indiquer le port TCP sur lequel Apt-Cacher NG doit être à l'écoute des requêtes HTTP (proxy) entrantes. La valeur par défaut est le port 3142, mais on peut indiquer 9999 pour émuler apt-proxy.
+ .
+ Si ce champ est laissé vide, la valeur issue de la configuration courante est conservée.
+Description-it.UTF-8: Porta TCP di ascolto:
+ Specificare la porta TCP su cui Apt-Cacher NG deve restare in ascolto per richieste HTTP (proxy) in entrata. Il valore predefinito è la porta 3142, ma può essere impostato a 9999 per emulare apt-proxy.
+ .
+ Se questo campo viene lasciato vuoto, il valore della configurazione attuale rimane immutato.
+Description-ja.UTF-8: 待ち受ける TCP ポート:
+ 入ってくる HTTP (プロキシ) リクエストを Apt-Cacher NG が待ち受ける TCP ポートを指定してください。デフォルト値はポート 3142 ですが、9999 をセットして apt-proxy をエミュレートすることもできます。
+ .
+ 空白にした場合は現在の設定が変更されずそのまま残ります。
+Description-nl.UTF-8: Luisteren op TCP-poort:
+ Vermeld de TCP-poort waarop Apt-Cacher NG moet luisteren naar binnenkomende HTTP- (proxy) verzoeken. De standaardwaarde is poort 3142, maar u kunt de waarde 9999 instellen om apt-proxy te emuleren.
+ .
+ Indien dit veld leeg blijft, blijft de waarde van de huidige configuratie ongewijzigd behouden.
+Description-pl.UTF-8: Port TCP do nasłuchu:
+ Proszę podać port TCP, na którym Apt-Cacher NG powinien nasłuchiwać przychodzących żądań HTTP (pośredniczących). Domyślną wartością jest port 3142, lecz można ustawić również 9999, aby emulować apt-proxy.
+ .
+ Jeśli pozostawi się to pole puste, wartość z bieżącej konfiguracji nie zmieni się.
+Description-pt.UTF-8: Porto TCP de escuta:
+ Indique por favor, o porto TCP onde o Apt-Cacher NG deve escutar por pedidos HTTP (proxy). O valor pré-definido é 3142, mas pode ser definido para 9999 para emular o apt-proxy.
+ .
+ Se este campo for deixado vazio, o valor da configuração actual permanece inalterado.
+Description-pt_BR.UTF-8: Porta TCP de escuta:
+ Por favor, especifique a porta TCP que o Apt-Cacher NG deverá escutar para requisições HTTP (proxy) de entrada. O valor padrão é a porta 3142, mas ela pode ser configurada para 9999 para emular o apt-proxy.
+ .
+ Se esse campo for deixado vazio, o valor da configuração atual permanecerá inalterado.
+Description-ru.UTF-8: Прослушиваемый порт TCP:
+ Укажите порт TCP, на котором Apt-Cacher NG должен принимать входящие запросы HTTP (прокси). По умолчанию используется порт 3142; для эмуляции apt-proxy можно указать значение 9999.
+ .
+ Если ничего не указывать, то текущее значение настройки не изменяется.
+Description-sv.UTF-8: TCP-port att lyssna på:
+ Ange den TCP-port som Apt-Cacher NG ska lyssna på för att hitta inkommande HTTP-förfrågningar. Standardvärdet för port är 3142 men kan också sättas till 9999 för att emulera apt-proxy.
+ .
+ Om detta fält lämnas blankt kommer värdet från nuvarande inställning att lämnas oförändrad.
+
+Template: apt-cacher-ng/cachedir
+Type: string
+Default: keep
+Description: Top-level directory for package cache:
+ The main cache storage directory should be located on a file system without
+ file name restrictions.
+ .
+ If this field is left empty, the value from the current configuration
+ remains unchanged or is set to the default of /var/cache/apt-cacher-ng.
+Description-cs.UTF-8: Hlavní adresář pro cache balíků:
+ Hlavní adresář pro uchovávání cache balíků by měl být umístěn na souborovém systému, který neomezuje názvy souborů.
+ .
+ Ponecháte-li prázdné, použije se hodnota ze stávajícího nastavení, nebo výchozí hodnota /var/cache/apt-cacher-ng.
+Description-da.UTF-8: Topniveaumappe for pakkemellemlager:
+ Hovedmappen for mellemlageret bør være placeret på et filsystem uden filnavnsbegrænsninger.
+ .
+ Hvis dette felt efterlades tomt, forbliver værdien fra den nuværende konfiguration uændret eller angives som standarden for /var/cache/apt-cacher-ng.
+Description-de.UTF-8: Oberstes Verzeichnis des Paket-Caches:
+ Das Hauptverzeichnis des Paket-Caches sollte auf einem Dateisystem ohne Beschränkungen bezüglich der Dateinamen liegen.
+ .
+ Eine leere Eingabe lässt die derzeitige Konfiguration unverändert (gegebenenfalls auf dem Standardverzeichnis /var/cache/apt-cacher-ng ).
+Description-es.UTF-8: Directorio raíz para el caché de paquetes:
+ El directorio principal para el almacenamiento del caché debería ubicarse en un sistema de archivos que no posea restricciones sobre los nombres de archivos.
+ .
+ Si deja este campo vacío se mantendrá el valor acual de la configuración o se utilizará el valor predeterminado: «/var/cache/apt-cacher-ng».
+Description-eu.UTF-8: Goi mailako direktorioa paketeen cacherako:
+ Cache nagusiaren biltegiaren direktorioa fitxategi-izenean murriztapenik ez duen fitxategi-sistema batean kokatu beharko da.
+ .
+ Eremu hau hutsik utziz gero, uneko konfigurazioko balioa aldatu gabe utziko da, '/var/cache/apt-cacher-ng'-eko balio lehenetsiarekin ezarriko da.
+Description-fr.UTF-8: Répertoire racine pour le cache des paquets :
+ Le répertoire de stockage du cache principal devrait résider sur un système de fichiers exempt de restrictions quant au nommage des fichiers.
+ .
+ Si ce champ est laissé vide, la valeur issue de la configuration courante est conservée ou bien remplacée par la valeur par défaut /var/cache/apt-cacher-ng.
+Description-it.UTF-8: Directory di più alto livello per la cache dei pacchetti:
+ La directory principale di archiviazione della cache dovrebbe essere posizionata in un file system senza restrizioni sui nomi dei file.
+ .
+ Se questo campo viene lasciato vuoto, il valore della configurazione attuale rimane immutato o viene impostato al valore predefinito di /var/cache/apt-cacher-ng.
+Description-ja.UTF-8: パッケージキャッシュの最上位ディレクトリ:
+ キャッシュを置く主となるディレクトリはファイル名の制限がないファイルシステムに配置するようにしてください。
+ .
+ 空白にした場合は現在の設定が変更されずそのまま残るか /var/cache/apt-cacher-ng のデフォルト値をセットされます。
+Description-nl.UTF-8: Hoofdmap van de pakkettencache: 
+ De hoofdmap waarin de cache opgeslagen wordt moet zich op een bestandssysteem bevinden waarvoor geen restricties gelden op het gebied van bestandsnamen.
+ .
+ Als u dit veld leeg laat, wordt de waarde van de huidige configuratie niet gewijzigd of wordt ze ingesteld op de standaard, nl. /var/cache/apt-cacher-ng.
+Description-pl.UTF-8: Katalog najwyższego poziomu dla bufora pakietów:
+ Główny katalog magazynu podręcznego powinien być położony na systemie plików nieposiadającym ograniczeń w nazwach plików.
+ .
+ Jeśli pozostawi się to pole puste, wartość z bieżącej konfiguracji nie zmieni się lub pozostanie wartością domyślną, czyli /var/cache/apt-cacher-ng.
+Description-pt.UTF-8: Directório raiz para a cache de pacotes:
+ O directório principal para guardar a cache deve estar num sistema de ficheiros sem restrições no nome dos ficheiros.
+ .
+ Se este campo for deixado em branco, o valor configurado actualmente permanece inalterado ou conforme o que estiver definido em /var/cache/apt-cacher-ng.
+Description-pt_BR.UTF-8: Diretório de nível superior para cache de pacotes:
+ O diretório principal de armazenamento de cache deverá ser localizado em um sistema de arquivos sem restrições nos nomes de arquivos.
+ .
+ Se esse campo for deixado vazio, o valor da configuração atual permanecerá inalterado ou será definido para o padrão de /var/cache/apt-cacher-ng.
+Description-ru.UTF-8: Каталоге верхнего уровня кэша пакетов:
+ Каталог главного кэша хранилища пакетов должен располагаться в файловой системе без ограничений на имена файлов.
+ .
+ Если ничего не указывать, то текущее значение настройки не изменяется или по умолчанию устанавливается значение каталога /var/cache/apt-cacher-ng.
+Description-sv.UTF-8: Sökväg för paket-cache:
+ Sökvägen för lagring av paket-cachen ska vara på ett filsystem utan restriktioner för filnamnen.
+ .
+ Om detta fält lämnas blankt kommer nuvarande inställningar att behållas eller sättas till standardvärdet /var/cache/apt-cacher-ng.
+
+Template: apt-cacher-ng/proxy
+Type: string
+Default: keep
+Description: Proxy to use for downloads:
+ Please specify the proxy server to use for downloads.
+ .
+ Username and password for the proxy server can be included here following the
+ user:pass@host:port scheme. However, please check the documentation for limitations.
+ .
+ If this field is left empty, Apt-Cacher NG will not use any proxy
+ server.
+ .
+ The special word "keep" keeps the value from the current (or default)
+ configuration unchanged.
+Description-cs.UTF-8: Proxy pro stahování:
+ Zadejte proxy server pro stahování.
+ .
+ Případné uživatelské jméno a heslo k proxy serveru můžete zadat ve tvaru uživatel:heslo@počítač:port. Podrobnosti a omezení tohoto přístupu naleznete v dokumentaci.
+ .
+ Ponecháte-li prázdné, Apt-Cacher NG nebude používat žádný proxy server.
+ .
+ Speciální slovo „keep“ ponechá hodnotu ze současného (nebo výchozího) nastavení.
+Description-da.UTF-8: Denne proxy skal bruges for hentninger:
+ Angiv venligst proxyserveren der skal bruges for hentninger.
+ .
+ Brugernavn og adgangskode for proxyserveren kan inkluderes her med syntaksen bruger:adgangskode@vært:port. Husk dog at kontrollere dokumentationen for begrænsninger.
+ .
+ Hvis dette felt efterlades tomt, vil Apt-Cacher NG ikke bruge en proxyserver.
+ .
+ Det specielle ord »keep« bevarer værdien fra den nuværende (eller standard) konfiguration uændret.
+Description-de.UTF-8: Proxy für das Herunterladen:
+ Proxy für das Herunterladen:
+ .
+ Benutzername und Passwort für den Proxy-Server können hier nach dem Muster benutzer:passwort@rechner:port übergeben werden, das Handbuch enthält jedoch auch Informationen über mögliche Einschränkungen.
+ .
+ Ein leerer Eintrag hier bedeutet Zugriff ohne Proxy.
+ .
+ Das besondere Schlüsselwort "keep" lässt die derzeitige Einstellung (beziehungsweise Standardeinstellung) unverändert.
+Description-es.UTF-8: Proxy a utilizar para descargas:
+ Indique el servidor proxy que se va utilizar para las descargas.
+ .
+ Puede incluir el nombre de usuario y la contraseña para el servidor proxy utilizando el esquema «usuario:contraseña@equipo:puerto». Revise la documentación para saber sobre sus limitaciones.
+ .
+ Si deja este campo vacío Apt-Cacher NG no utilizará ningún servidor proxy.
+ .
+ El valor especial «keep» mantendrá el valor actual de la configuración (o el predeterminado).
+Description-eu.UTF-8: Proxya deskargetan erabiltzeko:
+ Zehaztu deskargentzako erabiliko duten proxy-zerbitzaria.
+ .
+ Proxy zerbitzarirako erabiltzaile-izena eta pasahitza hemen gehi daiteke 'erabiltzailea:pasahitza@ostalaria:ataka' eskema erabilita. Hala ere, irakurri dokumentazioa mugak ezagutzeko.
+ .
+ Eremu hau hutsik utziz gero, 'Apt-Cacher NG'-ek ez du proxy-zerbitzaririk erabiliko.
+ .
+ "keep" hitz bereziak uneko (edo lehenetsia den) konfigurazioaren balioa aldatu gabe uzten du.
+Description-fr.UTF-8: Serveur mandataire (« proxy ») à utiliser pour les téléchargements :
+ Veuillez indiquer le serveur mandataire à utiliser pour les téléchargements.
+ .
+ L'identifiant et le mot de passe pour le serveur mandataire peuvent figurer ici en suivant la convention syntaxique identifiant:motdepasse@serveur:port. Cependant, veuillez consulter la documentation quant aux limitations de cette méthode.
+ .
+ Si ce champ est laissé vide, Apt-Cacher NG n'utilisera pas de serveur mandataire (« proxy »).
+ .
+ Le mot-clef « keep » conserve inchangée la valeur issue de la configuration actuelle (ou par défaut).
+Description-it.UTF-8: Proxy da usare per gli scaricamenti:
+ Specificare il server proxy da usare per gli scaricamenti.
+ .
+ Il nome utente e la password per il server proxy possono essere inclusi qui seguendo lo schema utente:password@host:porta. Tuttavia controllare la documentazione per alcune limitazioni.
+ .
+ Se questo campo viene lasciato vuoto, Apt-Cacher NG non userà alcun server proxy.
+ .
+ La parola speciale «keep» mantiene immutato il valore della configurazione attuale (o predefinita).
+Description-ja.UTF-8: ダウンロードで利用するプロキシ:
+ ダウンロードに利用するプロキシサーバを指定してください。
+ .
+ プロキシサーバのユーザ名やパスワードは「ユーザ:パスワード@ホスト:ポート」の形式で同時に指定できますが、制限事項についてマニュアルを参照してください。
+ .
+ 空白にした場合、Apt-Cacher NG はプロキシサーバを利用しません。
+ .
+ 「keep」という特別な語をここで使うと現在の設定値 (またはデフォルト値) を維持し、設定値を変更しません。
+Description-nl.UTF-8: Bij het downloaden te gebruiken proxy:
+ Vermeld de proxyserver die bij het downloaden gebruikt moet worden.
+ .
+ De gebruikersnaam en het wachtwoord voor de proxyserver kunnen hier toegevoegd worden volgens het schema gebruikersnaam:wachtwoord@computer:poort. Raadpleeg evenwel ook de documentatie voor de geldende beperkingen.
+ .
+ Bij een leeg veld zal Apt-Cacher NG geen enkele proxyserver gebruiken.
+ .
+ Het speciale woord "keep" laat de waarde van de huidige (of de standaard-) configuratie ongemoeid.
+Description-pl.UTF-8: Serwer pośredniczący do pobierań:
+ Proszę podać serwer pośredniczący, który będzie używany do pobierań.
+ .
+ Nazwę użytkownika i hasło serwera pośredniczącego można podać w postaci uzytkownik:haslo@adres:port. Proszę sprawdzić dokumentację, aby zapoznać się z istniejącymi ograniczeniami.
+ .
+ Jeśli pozostawi się to pole puste, to Apt-Cacher NG nie będzie używał żadnych serwerów pośredniczących.
+ .
+ Specjalne słowo "keep" zachowuje wartość bieżącej (lub domyślnej) konfiguracji, nie zmieniając niczego.
+Description-pt.UTF-8: Proxy a usar para downloads:
+ Indique por favor o servidor proxy a usar para downloads.
+ .
+ Nome de utilizador e password para o servidor proxy podem ser incluídos aqui de acordo com o esquema user:pass@host:port. No entanto, verifique por favor a documentação para saber as limitações.
+ .
+ Se este campo ficar vazio, o Apt-Cacher NG não usará um servidor proxy.
+ .
+ A palavra especial "keep" mantém o valor da configuração actual (ou valor por omissão) intocado.
+Description-pt_BR.UTF-8: Proxy a ser utilizado para downloads:
+ Por favor, especifique o servidor proxy a ser utilizado para downloads.
+ .
+ Nome de usuário e senha para o servidor proxy podem ser incluídos aqui seguindo o esquema usuário:senha@máquina:porta. No entanto, por favor, verifique a documentação para limitações.
+ .
+ Se esse campo for deixado vazio, o Apt-Cacher NG não usará nenhum servidor proxy.
+ .
+ A palavra especial "keep" mantém inalterado o valor da configuração atual (ou padrão).
+Description-ru.UTF-8: Прокси, используемый для скачивания:
+ Пожалуйста укажите прокси, используемый для скачивания:
+ .
+ Имя пользователя и пароль прокси-сервера можно указать в виде схемы пользователь:пароль@узел:порт, но смотрите описание ограничений в руководстве. Если ничего не указывать, то используется непосредственное соединение.
+ .
+ Если не указано, Apt-Cacher NG не будет использовать других прокси.
+ .
+ Специальное слово «keep» служит для сохранения текущего (или по умолчанию) значения настройки.
+Description-sv.UTF-8: Proxy som ska användas för nedladdning:
+ Ange den proxyserver som ska användas vid nedladdningar.
+ .
+ Användarnamn och lösenord för proxyservern kan inkluderas här genom schemat användare:lösenord@värd:port. De restriktioner som finns kan studeras i dokumentationen.
+ .
+ Om detta fält lämnas blankt kommer Apt-Cacher NG inte att använda en proxyserver.
+ .
+ Specialordet "keep" lämnar nuvarande inställning utan justering.
+
+Template: apt-cacher-ng/tunnelenable
+Type: boolean
+Default: false
+Description: Allow HTTP tunnels through Apt-Cacher NG?
+ Apt-Cacher NG can be configured to allow users to create HTTP tunnels,
+ which can be used to access remote servers that might otherwise be
+ blocked by (for instance) a firewall filtering HTTPS connections.
+ .
+ This feature is usually disabled for security reasons; enable it only for
+ trusted LAN environments.
+Description-cs.UTF-8: Povolit HTTP tunely skrze Apt-Cacher NG?
+ Apt-Cacher NG se dá nastavit tak, aby uživatelům umožnil vytváření HTTP tunelů, skrze které lze přistupovat k serverům, které mohou být jinak blokované (například firewallem filtrujícím HTTPS spojení).
+ .
+ Tato vlastnost bývá obvykle z bezpečnostních důvodů vypnutá. Povolte ji pouze na důvěryhodných lokálních sítích.
+Description-da.UTF-8: Tillad HTTP-tunneler via Apt-Cacher NG?
+ Apt-Cacher NG kan konfigureres til at brugerne kan oprette HTTP-tunnelser, som kan bruges til at tilgå eksterne servere, som ellers kan blokeres af (for eksempel) en brandmur, der filtrerer HTTP-forbindelser.
+ .
+ Denne funktion er normalt deaktiveret af sikkerhedsmæssige årsager; aktiver den kun for troværdige LAN-miljøer.
+Description-de.UTF-8: HTTP-Tunnel für Apt-Cacher NG erlauben?
+ In der Konfiguration von Apt-Cacher NG kann dem Benutzer der Aufbau von Verbindungen über HTTP-Tunnel erlaubt werden; dies ist für Zugriffe auf ferne Server nützlich, die ansonsten (beispielsweise) aufgrund von Firewalls zur Filterung von HTTPS-Verbindungen nicht erreichbar wären.
+ .
+ Diese Funktionalität wird normalerweise aus Sicherheitsgründen deaktiviert; aktivieren Sie sie nur in LAN-Umgebungen, denen Sie vertrauen.
+Description-eu.UTF-8: 'Apt-Cacher NG' bidezko HTTP tunelak baimendu?
+ Erabiltzaileei HTTP tunelak sortzea baimentzeko konfigura daiteke Apt-Cacher NG.Adibidez, HTTPS konexioak iragazten dituen suebaki batek blokeatuta eduki ditzakeen urruneko zerbitzarietara sarbidetzeko erabil daiteke.
+ .
+ Eginbide hau desgaituta egon ohi da segurtasuneko arrazoiak direla eta. Soilik LAN ingurumen fidagarrietan gaitu.
+Description-fr.UTF-8: Faut-il autoriser la création de tunnels HTTP par Apt-Cacher NG ?
+ Apt-Cacher NG peut être configuré de façon à autoriser la création de tunnels HTTP, lesquels peuvent être utilisés pour accéder par exemple à des serveurs distants situés derrière un pare-feu filtrant les connexions HTTPS.
+ .
+ Cette fonctionnalité est habituellement désactivée pour des raisons de sécurité, ne l'utilisez que dans des environnements réseau dignes de confiance.
+Description-it.UTF-8: Permettere tunnel HTTP attraverso Apt-Cacher NG?
+ Apt-Cacher NG può essere configurato per permettere agli utenti di creare tunnel HTTP i quali possono essere usati per accedere a server remoti che altrimenti potrebbero essere bloccati, ad esempio, da un firewall che filtra le connessioni
+ .
+ Questa funzionalità è solitamente disabilitata per ragioni di sicurezza; abilitarla solo per ambienti LAN fidati.
+Description-nl.UTF-8: HTTP-tunnels via Apt-Cacher NG toelaten?
+ Apt-Cacher NG kan ingesteld worden om gebruikers toe te laten een HTTP-tunnel te creëren die gebruikt kan worden om verbinding te maken met externe servers die anders geblokkeerd zouden kunnen worden door (bijvoorbeeld) een firewall die HTTPS-verbindingen filtert.
+ .
+ Uit veiligheidsoverwegingen is deze functionaliteit meestal gedeactiveerd. Activeer ze enkel in te vertrouwen LAN-omgevingen.
+Description-pl.UTF-8: Pozwolić na tunele HTTP przez Apt-Cacher NG?
+ Można skonfigurować Apt-Cacher NG, aby pozwalał użytkownikom tworzyć tunele HTTP. Można je wykorzystać do uzyskania dostępu do zdalnych serwerów, które w innej sytuacji mogłyby być blokowane np. przez firewall filtrujący połączenia HTTPS.
+ .
+ Ta funkcja jest zwykle wyłączona ze względów bezpieczeństwa. Włączaj ją tylko w zaufanych środowiskach LAN.
+Description-pt_BR.UTF-8: Permitir túneis HTTP através do Apt-Cacher NG?
+ O Apt-Cacher NG pode ser configurado para permitir que os usuários criem túneis HTTP, os quais podem ser usados para acessar servidores remotos que de outra forma poderiam estar bloqueados, por exemplo, por um firewall filtrando conexões HTTPS.
+ .
+ Geralmente, essa funcionalidade é desabilitada por razões de segurança; habilite-a somente para ambientes LAN confiáveis.
+Description-ru.UTF-8: Разрешить туннелирование HTTP через Apt-Cacher NG?
+ В Apt-Cacher NG можно разрешить пользователям создавать туннели HTTP, которые можно использовать для доступа к удалённым серверам (недоступным по другим протоколам (например) из-за фильтрации соединений HTTPS на межсетевых экранах.
+ .
+ Обычно, это возможность отключена в целях безопасности; включайте её только в доверенных средах LAN.
+Description-sv.UTF-8: HTTP-tunnlar tillåtas genom Apt-Cacher NG?
+ Apt-Cacher NG kan ställas in så att användare kan skapa HTTP-tunnlar, dessa kan användas för att komma åt fjärrservrar som annars skulle vara utom räckhåll exempelvis genom att en brandvägg filtrerar bort HTTPS-anslutningar.
+ .
+ Denna funktion är avstängd av säkerhetsskäl, aktivera den endast för betrodda miljöer i interna nätverk.

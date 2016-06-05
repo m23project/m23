@@ -1,0 +1,112 @@
+Template: beep/suid_option
+Type: select
+Choices: usable for all, usable for group audio, usable only for root
+Choices-ca.UTF-8: utilitzable per tothom, utilitzable pel grup audio, utilitzable només per l'usuari root
+Choices-cs.UTF-8: použitelný pro všechny, použitelný pro skupinu audio, použitelný pouze pro uživatele root
+Choices-da.UTF-8: brugbar for alle, brugbar for gruppen audio, kun brugbar for administrator (root)
+Choices-de.UTF-8: für alle benutzbar, für Gruppe audio benutzbar, nur für root benutzbar
+Choices-es.UTF-8: utilizable por todos, utilizable por el grupo «audio», utilizable por «root»
+Choices-eu.UTF-8: denentzat erabilgarri, audio taldearentzat erabilgarri, root-entzat bakarrik erabilgarri
+Choices-fi.UTF-8: kaikkien käyttöön, ryhmän audio käyttöön, vain pääkäyttäjän käyttöön
+Choices-fr.UTF-8: Utilisable par tous, Utilisable seulement par les membres du groupe « audio », Réservé au superutilisateur
+Choices-gl.UTF-8: utilizable por todos, utilizable polo grupo audio, utilizable só polo administrador
+Choices-it.UTF-8: utilizzabile da tutti, utilizzabile dal gruppo audio, utillizzabile solamente da root
+Choices-ja.UTF-8: 全ユーザが使えるようにする, audio グループだけが実行できるようにする, root だけが使えるようにする
+Choices-nl.UTF-8: te gebruiken door iedereen, te gebruiken door groep audio, alleen te gebruiken door root
+Choices-pl.UTF-8: dla wszystkich, dla grupy audio, tylko dla roota
+Choices-pt.UTF-8: utilizável para todos, utilizável para o grupo audio, utilizável para o root
+Choices-pt_BR.UTF-8: usável por todos, usável pelo grupo audio, usável somente pelo root
+Choices-ro.UTF-8: utilizabil pentru toți, utilizabil pentru grupul audio, utilizabil doar de root
+Choices-ru.UTF-8: использовать всем, использовать группе audio, использовать только суперпользователю
+Choices-sv.UTF-8: körbar för all, körbar för gruppen "audio", körbar endast för root-användaren.
+Choices-vi.UTF-8: sử dụng được cho tất cả, sử dụng được cho nhóm audio, sử dụng được chỉ cho root
+Default: suid root with only group audio executable
+Description: Install beep as:
+ beep must be run as root since it needs to access the speaker hardware.
+ There are several possibilities to make the program usable:  Either only
+ for root (no suid bit at all), executable only by users of the group
+ audio, or usable for all.
+ .
+ Since each program set as suid root can be a security risk this is not done
+ by default.  However, the program is quite small (~150 lines of code), so it
+ is fairly easy to verify the safety of the code yourself, if you don't
+ trust the package maintainer's judgement.
+Description-ca.UTF-8: Instal·la el beep:
+ S'ha d'executar beep com a root ja que necessita accedir a l'altaveu de l'ordinador. Hi ha diverses possibilitats per fer el programa usable: que només el pugui utilitzar l'usuari root (sense el bit de suid), que només sigui executable pels usuaris del grup «audio», o que sigui executable per tothom.
+ .
+ Com que qualsevol programa amb el suid root pot suposar un risc per a la seguretat del sistema, no s'utilitza per defecte. Tot i això, el programa és petit (unes 150 línies) i és prou fàcil verificar-ne la seguretat del codi, si és que no confieu en el criteri del mantenidor del paquet.
+Description-cs.UTF-8: Instalovat beep jako:
+ beep musí běžet pod uživatelem root, protože vyžaduje přístup ke zvukovému hardwaru. Existuje několik možností, jak toho dosáhnout: buď bude použitelný jen pro uživatele root (bez suid bitu), spustitelný uživateli skupiny audio, nebo jej budou moci používat všichni.
+ .
+ Protože je každý suid root program bezpečnostním rizikem, je lepší suid bit nenastavovat. Tento program je však velmi malý (~150 řádků kódu), takže pokud nevěříte autorovi, můžete si celkem jednoduše bezpečnost kódu prostudovat sami.
+Description-da.UTF-8: Installer beep som:
+ beep skal køre som administrator (root), da den kræver adgang til højtalerne. Der er flere muligheder for at gøre programmet brugbart: Enten kun for root (ingen suid bit overhovedet), kun kørbar for brugere i gruppen audio, eller brugbar for alle.
+ .
+ Da alle programmer angivet som suid root kan udgøre en sikkerhedsmæssig risiko gøres dette ikke som standard. Programmet er dog meget lille (~150 kodelinjer), så det er ret nemt at verificere koden selv, hvis du ikke stoler på pakkevedligeholderens vurdering.
+Description-de.UTF-8: beep installieren als:
+ beep muss als root ausgeführt werden, da es auf den Lautsprecher zugreifen muss. Es gibt mehrere Möglichkeiten, das Programm benutzbar zu machen: Entweder nur für root (gar kein suid), benutzbar von den Mitgliedern der Gruppe audio, oder für alle benutzbar.
+ .
+ Da jedes Programm, das suid root gesetzt ist, ein potentielles Sicherheitsproblem sein kann, wird dies nicht automatisch durchgeführt. Das Programm ist jedoch recht kurz (~150 Zeilen Code) und kann daher von Ihnen sehr leicht überprüft werden, falls Sie der Einschätzung des Paketbetreuers nicht vertrauen.
+Description-es.UTF-8: Instalar beep como:
+ El programa beep debe ejecutarse como «root» porque necesita acceder al hardware del altavoz. No obstante, existen varias posibilidades para usar el programa: que lo use sólo «root» (sin «bit suid»), los usuarios que pertenezcan al grupo «audio», o todos.
+ .
+ Ya que cualquier programa con el «bit suid» puede suponer un riesgo de seguridad, esta elección no se realiza de manera predeterminada. Sin embargo, el programa es bastante pequeño (aproximadamente unas 150 líneas de código) y, por lo tanto, si no confía en el juicio del responsable del paquete, usted mismo podría verificar con bastante facilidad la seguridad del código.
+Description-eu.UTF-8: Instalatu beep honela:
+ bepp root gisa exekutatu behar da bozgorailu hardwarea atzitu behar bait du. Aukera ezberdinak dauden programa erabilgarri egiteko:  Edo root-entzat bakarrik (suid bit gabe), audio taldeko erabiltzaileentzat bakarrik erabilgarri edo denentzat erabilgarri.
+ .
+ Suid bit-a ezarririk duen edozein programa segurtasun ahulune bat izan daitekeenez ez da lehenespen bezala egingo.  Hala ere programa nahiko txikia denez (150 kode lerro inguru), beraz nahiko erraza da kodearen segurtasuna zure kabuz egiaztatzea ez bazara pakete mantentzelariaren erabakietaz fidatzen.
+Description-fi.UTF-8: Asenna beep:
+ Ohjelmaa beep täytyy ajaa pääkäyttäjänä, koska sen täytyy voida käyttää koneen kaiutinta. Ohjelma voidaan asentaa useammalla tavalla: kaikkien käyttöön (suid root), vain ryhmän audio käyttöön (suid root ryhmälle audio) tai vain pääkäyttäjän käyttöön.
+ .
+ Koska mikä tahansa suid-bitin kanssa asennettu ohjelma voi olla tietoturvariski, sitä ei oletuksena aseteta. Koska ohjelma kuitenkin on melko pieni (noin 150 riviä koodia), sen turvallisuus on melko helppo tarkistaa tarvittaessa itse.
+Description-fr.UTF-8: Installer beep de sorte qu'il soit :
+ Le programme beep doit posséder les privilèges du superutilisateur pour pouvoir accéder au haut-parleur. Cela est possible de plusieurs façons : soit permettre de le lancer avec les privilèges du superutilisateur (« setuid root ») par tous ou uniquement par les membres du groupe « audio », soit réserver l'exécution du programme au superutilisateur.
+ .
+ Tout programme qui s'exécute avec les privilèges du superutilisateur peut présenter un risque pour la sécurité du système. Toutefois, ce programme est vraiment petit (environ 150 lignes de code) et il est relativement facile de vérifier par vous-même que le code est sûr, en cas de doute.
+Description-gl.UTF-8: Instalar beep coma:
+ Débese executar "beep" coma administrador, xa que precisa de acceder ao hardware do altoparlante. Hai varias posibilidades para facer o programa utilizable: só para o administrador (sen bit suid en absoluto), executable só polos usuarios do grupo "audio", ou utilizable por todos.
+ .
+ Xa que os programas "suid root" poden ser riscos de seguridade, isto non se fai por defecto. Nembargantes, o programa é bastante pequeno (unhas 150 liñas de código), así que é bastante doado verificar vostede mesmo a seguridade do código, se non confía no xuízo do mantedor do paquete.
+Description-it.UTF-8: Installare beep come:
+ beep deve essere eseguito come root dato che ha l'esigenza di accedere all'hardware degli altoparlanti. Ci sono diverse possibilità per rendere il programma fruibile: o solamente a root (non si usa affatto il bit suid), o solamente agli utenti del gruppo audio, oppure a tutti.
+ .
+ Dal momento che ogni programma con suid root può essere un rischio per la sicurezza, questo non viene abilitato in modo predefinito. Comunque, il programma è abbastanza piccolo (circa 150 righe di codice) perciò è abbastanza facile verificare da soli la sicurezza del codice, qualora non ci si fidasse del giudizio del manutentore del pacchetto.
+Description-ja.UTF-8: beep のインストール時設定について:
+ スピーカーのハードウェアにアクセスする必要があるので beep は root として実行しなければなりません。プログラムを使うためにやり方がいくつかあります: root のみにする (suid を全く使わないようにする) 、audio グループ所属のユーザだけが使えるようにする、誰でも使えるようにする、のどれかです。
+ .
+ 各プログラムを root に suid するのはセキュリティリスクになるので、デフォルトではこの方法は採りません。しかしながら、このプログラムは非常に小さいので (150行程度のコードです)、パッケージメンテナの判断を信用しない場合、あなた自身でコードの安全性を確認するのはとても簡単です。
+Description-nl.UTF-8: Beep installeren als:
+ beep dient als root te draaien omdat het toegang nodig heeft tot de luidsprekerhardware. Er zijn verschillende mogelijkheden om het programma bruikbaar te maken: ofwel enkel voor root (geen suid bit), enkel uitvoerbaar door gebruikers in de groep audio, of bruikbaar voor iedereen.
+ .
+ Omdat elk suid-root-programma een veiligheidsrisico is, wordt dit niet standaard gedaan. Het programma is vrij klein (~150 regels code), dus kan redelijk makkelijk om zelf geverifieerd worden, indien u het oordeel van de pakketbeheerder niet vertrouwt.
+Description-pl.UTF-8: Zainstaluj beep:
+ Program beep musi działać jako root, ponieważ wymaga dostępu do fizycznego brzęczyka. Jest kilka możliwości działania programu: albo tylko dla roota (bez atrybutu suid), albo dla użytkowników należących do grupy audio, albo dla wszystkich.
+ .
+ Każdy program działający z suid root może stanowić zagrożenie bezpieczeństwa, dlatego ta opcja wymaga dokonania wyboru przez użytkownika. Jednak ponieważ program jest niewielki (ok. 150 wierszy kodu), można łatwo zweryfikować bezpieczeństwo kodu samodzielnie, jeśli użytkownik ma wątpliwości co do osądu opiekuna pakietu.
+Description-pt.UTF-8: Instalar beep como:
+ O beep tem de ser executado como root já que necessita de acesso ao hardware do altifalante. Existem várias possibilidades de tornar o programa utilizável:  Quer apenas para o root (sem o bit suid), executável apenas para utilizadores do grupo audio, ou utilizável para todos.
+ .
+ Já que cada programa como suid root pode ser um risco de segurança isto não é feito por omissão.  No entanto, o programa é bastante pequeno (~150 linhas de código), por isso é bastante fácil verificar por você mesmo a segurança do código, se não acreditar no julgamento do 'maintainer' do pacote.
+Description-pt_BR.UTF-8: Instalar beep como:
+ O beep deve ser executado como root, uma vez que o mesmo precisa acessar o hardware do alto-falante ("speaker"). Existem diversas possibilidades para tornar o programa usável: somente pelo root (sem suid), executável somente pelos usuários do grupo audio ou usável por todos.
+ .
+ Como cada programa que é configurado para ser executado com suid root pode ser um risco de segurança isto não é feito por padrão. Porém, o programa é bastante pequeno (aproximadamente 150 linhas de código) e é muito fácil verificar a segurança do código você mesmo, se você não confia no julgamento do mantenedor do pacote.
+Description-ro.UTF-8: Se instalează beep astfel încât este:
+ beep trebuie să ruleze ca root deoarece are nevoie să acceseze componentele legate de difuzor. Există mai multe posibilități pentru a face programul utilizabil: Fie doar pentru root (fără bitul suid), executabil doar de către utilizatorii grupului audio sau utilizabil pentru toți.
+ .
+ Deoarece orice program instalat cu suid root poate reprezenta un risc din punct de vedere al securității, acest lucru nu se face în mod implicit. Totuși acest program este mic (aproximativ 150 de linii de cod), deci o verificare a  codului, din punctul de vedere al securității, este destul de ușor de realizat, dacă nu aveți încredere în judecata responsabilului pachetului.
+Description-ru.UTF-8: Разрешить beep:
+ Для работы программе beep нужно иметь права суперпользователя, так как ей нужен доступ к динамику. Поэтому есть несколько вариантов установки, при которых: её будет использовать только суперпользователь (не устанавливать бит suid), её будут использовать все из группы audio, или её сможет использовать любой.
+ .
+ Программы, у которых установлен suid root, являются потенциально уязвимыми, поэтому suid-бит по умолчанию не устанавливается. Однако, программа исключительно мала (~150 строк кода), и безопасность её кода очень легко проверить самостоятельно, если не вы доверяете сопровождающему.
+Description-sv.UTF-8: Installera beep som:
+ beep måste köras som root eftersom den behöver åtkomst till högtalarhårdvaran. Det finns flera sätt att göra programmet användbart:  Antingen endast för root (ingen suid-bit alls), körbar endast för användare i gruppen "audio" eller körbar för alla.
+ .
+ Eftersom de program som är suid root kan vara en säkerhetsrisk kommer detta inte göras som standard.  Programmet är ganska litet (~150 rader kod) och är lätt att validera säkerheten i koden om du inte litar på mitt omdöme.
+Description-vi.UTF-8: Cài đặt beep là:
+ beep phải chạy là người chủ (root) vì nó cần phải truy cập đến phần cứng loa. Có vài tùy chọn đặt quyển truy cập:
+  • chỉ cho người chủ sử dụng (không có bit suid)
+  • chỉ cho các người dùng của nhóm audio sử dụng
+  • cho mọi người sử dụng.
+ .
+ Vì mỗi chương trình đặt là suid root thì có thể rủi ro bảo mật, việc này không phải được làm theo mặc định. Tuy nhiên, chương trình hơi nhỏ (~150 dòng mã) cũng hơi dễ kiểm tra mã an toàn hay không, nếu bạn không tùy theo ý kiến của nhà duy trì gói phần mềm.

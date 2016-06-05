@@ -1,0 +1,51 @@
+Template: dpkg-cross/default-arch
+Type: select
+Choices: None, alpha, amd64, arm, armeb, armel, armhf, hppa, i386, ia64, m68k, mips, mipsel, powerpc, s390, sparc
+Choices-cs.UTF-8: Žádná, alpha, amd64, arm, armeb, armel, armhf, hppa, i386, ia64, m68k, mips, mipsel, powerpc, s390, sparc
+Choices-da.UTF-8: Ingen, alpha, amd64, arm, armeb, armel, armhf, hppa, i386, ia64, m68k, mips, mipsel, powerpc, s390, sparc
+Choices-de.UTF-8: Keine, alpha, amd64, arm, armeb, armel, armhf, hppa, i386, ia64, m68k, mips, mipsel, powerpc, s390, sparc
+Choices-es.UTF-8: Ninguna, alpha, amd64, arm, armeb, armel, armhf, hppa, i386, ia64, m68k, mips, mipsel, powerpc, s390, sparc
+Choices-fr.UTF-8: Aucune, alpha, amd64, arm, armeb, armel, armhf, hppa, i386, ia64, m68k, mips, mipsel, powerpc, s390, sparc
+Choices-it.UTF-8: Nessuna, alpha, amd64, arm, armeb, armel, armhf, hppa, i386, ia64, m68k, mips, mipsel, powerpc, s390, sparc
+Choices-ja.UTF-8: なし, alpha, amd64, arm, armeb, armel, armhf, hppa, i386, ia64, m68k, mips, mipsel, powerpc, s390, sparc
+Choices-ka.UTF-8: არაფერი, alpha, amd64, arm, armeb, armel, armhf, hppa, i386, ia64, m68k, mips, mipsel, powerpc, s390, sparc
+Choices-nl.UTF-8: Geen, alpha, amd64, arm, armeb, armel, armhf, hppa, i386, ia64, m68k, mips, mipsel, powerpc, s390, sparc
+Choices-pt.UTF-8: Nenhuma, alpha, amd64, arm, armeb, armel, armhf, hppa, i386, ia64, m68k, mips, mipsel, powerpc, s390, sparc
+Choices-pt_BR.UTF-8: Nenhuma, alpha, amd64, arm, armeb, armel, armhf, hppa, i386, ia64, m68k, mips, mipsel, powerpc, s390, sparc
+Choices-ru.UTF-8: Нет предпочтений, alpha, amd64, arm, armeb, armel, armhf, hppa, i386, ia64, m68k, mips, mipsel, powerpc, s390, sparc
+Choices-sv.UTF-8: Ingen, alpha, amd64, arm, armeb, armel, armhf, hppa, i386, ia64, m68k, mips, mipsel, powerpc, s390, sparc
+Choices-uk.UTF-8: Ніякої, alpha, amd64, arm, armeb, armel, armhf, hppa, i386, ia64, m68k, mips, mipsel, powerpc, s390, sparc
+Default: None
+Description: Default cross-building architecture:
+ If this machine is typically cross-building for one main architecture,
+ you can select that architecture here to save specifying it again when
+ running dpkg-cross, apt-cross or emdebian-tools. Select 'None' to have
+ no default.
+Description-cs.UTF-8: Výchozí architektura pro křížovou kompilaci:
+ Pokud tento počítač většinou používáte pro křížovou kompilaci pro jednu konkrétní architekturu, můžete ji zde zadat a ušetřit si psaní při spouštění dpkg-cross, apt-cross nebo emdebian-tools. Jestliže nechcete zadávat výchozí architekturu, zvolte "Žádná".
+Description-da.UTF-8: Standardarkitektur for krydsbygning:
+ Hvis denne maskine typisk krydsbygger for en hovedarkitektur, så kan du vælge den arkitektur her for at spare specificeringen af den igen, når du kører dpkg-cross, apt-cross eller emdebian-tools. Vælg »Ingen« for ikke at have en standard.
+Description-de.UTF-8: Standard Cross-Bau-Architektur:
+ Falls diese Maschine typischerweise für eine Hauptarchitektur (cross-)baut, können Sie diese Architektur hier auswählen, damit Sie diese nicht erneut angeben müssen, wenn Sie dpkg-cross, apt-cross oder emdebian-tools ausführen. Wählen Sie »Keine« für die Standardeinstellung.
+Description-es.UTF-8: Arquitectura predeterminada para la compilación cruzada:
+ Si esta máquina normalmente sólo realiza compilaciones cruzadas para una arquitectura principal, puede seleccionar esa arquitectura para ahorrarse el especificarla cada vez que ejecute «dpkg-cross», «apt-cross» o «emdebian-tools». Elija «ninguna» si no tiene una arquitectura predeterminada.
+Description-fr.UTF-8: Architecture par défaut pour la compilation croisée :
+ Si cette machine effectue des compilations croisées plus particulièrement pour une architecture donnée, vous pouvez choisir cette architecture afin d'éviter d'avoir à l'indiquer à l'exécution de dpkg-cross, apt-cross ou emdebian-tools. Si vous choisissez « Aucune », aucune architecture par défaut ne sera définie.
+Description-it.UTF-8: Architettura di cross-compilazione predefinita:
+ Se su questa macchina si effettua tipicamente la cross-compilazione su una architettura in particolare, è possibile selezionare adesso quella architettura in modo da non doverla poi specificare ogni volta che si usa dpkg-cross, apt-cross o emdebian-tools. Selezionare "Nessuna" se non vi vuole avere una architettura predefinita.
+Description-ja.UTF-8: デフォルトのクロスビルドアーキテクチャ:
+ このマシンでクロスビルドするアーキテクチャが主に特定の 1 つに限られている場合、そのアーキテクチャをここで選択して、dpkg-cross や apt-cross、emdebian-tools を実行する際にあらためて指定せずに済むようにできます。デフォルトを与えない場合は「なし」を選択してください。
+Description-ka.UTF-8: cross-building-ის სტანდარტული არქიტექტურა:
+ თუ ეს კომპიუტერი ძირითადად ერთ მთავარ არქიტექტურაზე cross-building-ისათვის გამოიყენება, შეგიძლიათ ამოირჩიოთ იგი აქ, რათა ყოველ ჯერზე მითითება აღარ მოგიწიოთ dpkg-cross, apt-cross ან emdebian-tools ბრძანებების გაშვებისას. ამოირჩიეთ „არაფერი“, თუ არ გსურთ ნაგულისხმევად რომელიმეს დაყენება.
+Description-nl.UTF-8: Architectuur waarvoor standaard te cross-builden:
+ Als deze machine meestal gebruikt wordt om te 'cross-builden' naar één architectuur kunt u deze hier selecteren zodat u dit niet bij iedere aanroep van dpkg-cross, apt-cross en emdebian-tools dient te doen. Selecteer 'Geen' als u geen standaard-architectuur wilt instellen.
+Description-pt.UTF-8: Arquitectura por omissão para a criação de pacotes para outra arquitectura:
+ Se esta máquina é usada para a criação de pacotes para uma outra arquitectura específica, pode seleccioná-la aqui para evitar especificá-la novamente quando executar dpkg-cross, apt-cross ou emdebian-tools. Escolha 'Nenhuma' para não ter arquitectura por omissão.
+Description-pt_BR.UTF-8: Arquitetura cross-building padrão:
+ Se esta máquina faz tipicamente cross-building para uma arquitetura principal, você pode selecionar essa arquitetura aqui, para não ter que especificar novamente quando estiver rodando dpkg-cross, apt-cross ou emdebian-tools. Selecione 'Nenhuma' para não ter padrão.
+Description-ru.UTF-8: Архитектура по умолчанию для перекрёстной сборки:
+ Если эта машина обычно используется для сборки под одну основную архитектуру, то вы можете указать её, и это будет учтено при работе pkg-cross, apt-cross или emdebian-tools. Выберите 'Нет предпочтений', если машина используется для сборки под разные архитектуры.
+Description-sv.UTF-8: Standardarkitektur för krossbyggnation:
+ Om den här maskinen typiskt används för att bygga för en huvudarkitektur, kan du välja den arkitekturen här för att slippa ange den igen när du kör dpkg-cross, apt-cross eller emdebian-tools. Välj 'Ingen' för att inte ha något standardval.
+Description-uk.UTF-8: Архітектура за замовчуванням:
+ Якщо це машина переважно використовується для крос-збірки наодну арахітектуру, то можна зробити, щоб це значення зберігалосьпри кожному запуску програми. Якщо ж ні, виберіть "Ніякої".

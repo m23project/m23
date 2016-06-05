@@ -1,0 +1,118 @@
+
+Template: nethack-common/recover-setgid
+Type: boolean
+Default: true
+Description: Use setgid bit with NetHack's recover utility?
+ The "recover" program in the package nethack-common is traditionally
+ installed with the "setgid" bit set, so that all users can use it to
+ recover their own save files after a crash (with "games" group
+ privileges). This is a potential source of security problems.
+ .
+ This package includes a script that runs during system boot, invoking
+ recover on any broken save files it finds. This makes it less likely
+ that users will need to run it themselves, so the default is to install
+ recover without the special permission bits required for that.
+ .
+ If you choose this option, unprivileged users will be able to run "recover".
+Description-cs.UTF-8: Nastavit SGID bit u nástroje recover hry NetHack?
+ Program "recover" v balíčku nethack-common je tradičně instalován s nastaveným SGID bitem, aby jej mohli po pádu NetHacku použít pro obnovu svých uložených souborů všichni uživatelé (s právy skupiny "games"). Je to ale potenciální zdroj bezpečnostních problémů.
+ .
+ Tento balíček obsahuje skript pro obnovu všech poškozených uložených souborů, který se spouští při startu systému. To snižuje pravděpodobnost toho, že jej uživatelé budou muset spouštět sami, takže výchozí je instalovat program recover bez pro to potřebných speciálních práv.
+ .
+ Pokud tuto možnost zvolíte, neprivilegovaní uživatelé budou moci "recover" spouštět.
+Description-da.UTF-8: Brug setgid bit med NetHacks gendannelsesredskab?
+ Gendannelsesprogrammet i pakken nethack-common er traditionelt installeret med »setgid«-bitten slået til, så alle brugere kan bruge den til at gendanne deres egne save-filer efter et nedbrud (med privilegier til »games«-gruppen). Dette er en potentiel kilde til sikkerhedsproblemer.
+ .
+ Denne pakke inkluderer et skript, som kører under systemopstart, og som starter gendannelse af alle ødelagte save-filer, den finder. Dette gør det mindre sandsynligt at brugere selv vil køre dem, så standarden er at installere gendannelse uden de specielle tilladelsesbit krævet for dette.
+ .
+ Hvis du vælger denne indstilling vil upriviligerede brugere kunne køre gendannelse (»recover«).
+Description-de.UTF-8: Setgid-Bit für NetHacks »recover«-Hilfswerkzeug verwenden?
+ Das Programm »recover« im Paket nethack-common wird traditionell mit gesetztem »setgid«-Bit installiert, so dass es alle Benutzer (mit den Privilegien der Gruppe »games«) für die Wiederherstellung ihrer eigenen, gespeicherten Dateien nach einem Absturz verwenden können. Dies ist eine mögliche Quelle für Sicherheitsprobleme.
+ .
+ Dieses Paket enthält ein Skript, das während des Systemstarts läuft und »recover« auf jede gefundene defekte Speicherdatei anwendet. Dies reduziert die Wahrscheinlichkeit, dass Benutzer selbst »recover« ausführen müssen, daher wird »recover« standardmäßig ohne die hierzu notwendigen besonderen Rechte-Bits installiert.
+ .
+ Falls Sie diese Option auswählen, können nicht-privilegierte Benutzer »recover« ausführen.
+Description-es.UTF-8: ¿Desea utilizar el bit setgid para la herramienta «recover»?
+ El programa «recover» del paquete «nethack-common» se instala habitualmente con el bit «setgid» fijado. De esta forma todos los usuarios pueden utilizarlo para recuperar sus propias partidas después de un error (con los privilegios del grupo «games»). Esto puede ser, sin embargo, una fuente potencial de problemas de seguridad.
+ .
+ Este paquete incluye un programa que se ejecuta en el arranque del sistema y que ejecuta «recover» sobre cualquier partida dañada que encuentre. Esto hace más improbable que los usuarios tengan que ejecutarlos ellos mismos, por lo que por omisión la herramienta «recover» se instala sin los permisos especiales necesarios para hacer lo anterior.
+ .
+ Los usuarios no privilegiados podrán ejecutar «recover» si escoge esta opción.
+Description-eu.UTF-8: Erabili setgid bit-a NetHack-en berreskuratze tresnarekin?
+ Nethack-common paketeko "recover" (berreskuratu) programa "setgid" bit-a ezarrita duela instalatu ohi da, horrela erabiltzaile guztiek programa hau erabil dezakete kraskadura baten ostean beraien gordetako fitxategiak berreskuratzeko ("games" taldeko pribilegioekin). Honek segurtasuneko arazoak sor ditzake.
+ .
+ Pakete honek script bat dauka sistema abiatzean exekutatzen dena, aurkitzen duen gordetako fitxategi hondatu bakoitzean "recover"-i deituz. Honela, erabiltzaileek ez daukate zer exekutatu beharrik beraien kasa, eta ondorioz, lehenespenez "recover"  baimen bereziko bit-ik gabe instalatzen da.
+ .
+ Aukera hau hautatzen baduzu, pribilegiorik gabeko erabiltzaileek "recover" (berreskuratu) exekutatu ahal izango dute.
+Description-fi.UTF-8: Tulisiko NetHackin palautustyökalu recover asentaa asetuksella setgid?
+ Paketin nethack-common ohjelma ”recover” on perinteisesti asennettu asetuksella ”setgid”, jotta kaikki käyttäjät voivat korjata tallennustiedostonsa järjestelmän kaatumisen jälkeen (ryhmän ”games” oikeuksilla). On mahdollista, että tämä on tietoturvariski.
+ .
+ Tässä paketissa on järjestelmän käynnistyksen yhteydessä ajettava komentosarja, joka korjaa kaikki löytämänsä rikkoutuneet tallennnustiedostot. Tästä syystä on epätodennäköisempää, että käyttäjien tarvitsisi ajaa ohjelmaa itse, joten oletuksena recover asennetaan ilman erityisoikeuksia.
+ .
+ Jos valitset tämän vaihtoehdon, tavalliset käyttäjät voivat ajaa ohjelman ”recover”.
+Description-fr.UTF-8: Faut-il exécuter recover avec les privilèges du groupe « games » ?
+ Le programme « recover » du paquet nethack-common est généralement installé avec le bit segid positionné. Ainsi, tous les utilisateurs appartenant au groupe « games » pourront l'utiliser pour récupérer leurs fichiers de sauvegarde après un plantage. Ce réglage comporte toutefois un risque de sécurité potentiel.
+ .
+ Ce paquet fournit un script qui est exécuté au démarrage du système. Il appelle l'outil de récupération sur tout fichier de sauvegarde corrompu trouvé. Comme il est peu probable que les utilisateurs doivent l'exécuter eux-mêmes, recover est par défaut installé normalement.
+ .
+ Si vous choisissez cette option, les utilisateurs sans privilège pourront exécuter « recover ».
+Description-gl.UTF-8: Desexa empregar o bit setgid coa utilidade de recuperación de NetHack?
+ O programa «recover» do paquete nethack-common instálase tradicionalmente co bit «setgid» activado, de tal xeito que todos os usuarios podan empregalo para recuperar os seus proprios ficheiros gardatos tras dun peche inesperado (con privilexios do grupo «games»). Esta é unha fonte potencial de problemas de seguranza.
+ .
+ Este paquete inclúe un script que se executa durante o inicio do sistema e que invoca a «recover» en calquera ficheiro gardado e estragado que atope, o que fai que sexa menos probábel que os usuarios deben executalo por si mesmos. Polo tanto, o predeterminado é instalar recover sen os bits de permisos especiais requiridos para isto.
+ .
+ Se escolle esta opción, os usuarios sen privilexios poderán executar «recover».
+Description-it.UTF-8: Usare setgid con l'utilità di ripristino di NetHack?
+ Normalmente il programma di ripristino nel pacchetto nethack-common  viene installato con l'opzione «setgid», in modo che tutti gli utenti possano usarlo per recuperare tutti i propri file salvati dopo un crash (con i privilegi del gruppo «games»). Questo però è una fonte di potenziali problemi di sicurezza.
+ .
+ Questo pacchetto include uno script che viene eseguito all'avvio del sistema e che ripristina qualsiasi file salvato danneggiato trovato. Questo rende più improbabile che gli utenti necessitino di usare tale opzione, per cui in modalità predefinita viene installata l'utilità di ripristino senza i permessi speciali richiesti.
+ .
+ Se si sceglie questa opzione, gli utenti senza privilegi potranno eseguire l'utilità di ripristino.
+Description-ja.UTF-8: NetHack の recover ユーティリティに setgid ビットを適用しますか?
+ nethack-common パッケージの "recover" プログラムは、慣習的に ("games" グループ権限付きの) "setgid" ビットをセットしてインストールされます。これにより、すべてのユーザが自身のセーブファイルをクラッシュ後に復旧するのに利用できます。これは、セキュリティ問題の潜在的原因となり得ます。
+ .
+ このパッケージは、システム起動中に、何らかのセーブファイルを発見したときにその復旧を実行するスクリプトを含んでいます。これにより、ユーザが自身でそれを実行する必要性はあまりなくなるので、デフォルトでは recover はその実行に必要な特権ビットはなしでインストールされます。
+ .
+ この選択肢で「はい」と答えると、権限のないユーザも "recover" を実行できるようになります。
+Description-nl.UTF-8: De setgid-bit instellen voor NetHack's hulpprogramma recover?
+ Het programma "recover" uit het pakket nethack-common werd van oorsprong geïnstalleerd met de "setgid"-bit ingesteld, zodat alle gebruikers het kunnen gebruiken om hun eigen spelbestanden na een crash te herstellen (met de privileges van de "games"-groep). Dit is mogelijke bron van beveiligingsproblemen.
+ .
+ Dit pakket bevat een script dat tijdens de systeemstart wordt uitgevoerd. Dit script roept recover aan op alle corrupte spelbestanden die het kan vinden. Hierdoor is de kans kleiner dat gebruikers dit zelf moeten uitvoeren, en daarom is het standaard om recover zonder de benodigde speciale permissiebits te installeren.
+ .
+ Als u voor deze optie kiest kunnen normale gebruikers "recover" uitvoeren.
+Description-pl.UTF-8: Ustawić atrybut setgid dla narzędzia odzyskiwania NetHack?
+ Program "recover" w pakiecie nethack-common jest tradycyjnie instalowany z ustawionym atrybutem "setgid", co pozwala wszystkim użytkownikom na odzyskanie ich własnych plików zapisu po awarii (z uprawnieniami grupy "games"). Jest to potencjalne źródło problemów z bezpieczeństwem.
+ .
+ Pakiet zawiera skrypt, który jest jest wykonywany podczas uruchamiania systemu i odzyskuje wszystkie uszkodzone pliki zapisu jakie znajdzie. Powoduje to, że jest mniej prawdopodobne, aby użytkownik musiał go uruchomić samodzielnie, dlatego domyślną opcją jest zainstalowanie programu odzyskującego bez specjalnych uprawnień.
+ .
+ Jeśli ta opcja zostanie wybrana, nieuprzywilejowani użytkownicy będą mogli uruchomić program "recover".
+Description-pt.UTF-8: Usar o bit setgid com o utilitário de recuperação do NetHack?
+ O programa "recover" no pacote nethack-common é tradicionalmente instalado com o bit "setgid" activado, para que todos os utilizadores possam recuperar os seus próprios ficheiros de salvaguarda após um bloqueio (com privilégios do grupo "games"). Esta é uma potencial fonte de problemas de segurança.
+ .
+ Este pacote inclui um script que corre durante o arranque do sistema, invocando "recover" em qualquer ficheiro de salvaguarda que encontre. Isto torna menos provável a necessidade dos utilizadores o correrem por si, assim por omissão instala-se o "recover" sem os bits especiais de permissões requeridas.
+ .
+ Se escolher esta opção, utilizadores sem privilégios poderão correr "recover".
+Description-ru.UTF-8: Включить на файле recover из NetHack бит setgid?
+ Программа 'recover' находится в пакете nethack-common и, обычно, устанавливается с включённым битом "setgid" (с привилегиями группы "games") для того, чтобы все пользователи могли восстанавливать свои файлы сохранённых игр после падения. Но это потенциальный источник проблем с безопасностью.
+ .
+ В этом пакете есть сценарий, выполняемый при включении компьютера; он вызывает recover и восстанавливает все испорченные файлы сохранения игры, которые найдёт. При этом отпадает необходимость самостоятельного запуска пользователями утилиты восстановления, поэтому по умолчанию recover устанавливается без специальных битов, повышающих права.
+ .
+ Если вы ответите утвердительно, то все бесправные пользователи смогут запускать "recover".
+Description-sv.UTF-8: Ska setgid användas för NetHacks återställningsmekanism?
+ Återställningsprogrammet i paketet nethack-common installeras vanligen med "setgid" så att alla användare kan använda det för att återställa sina egna spelfiler (som ägs av gruppen "games") efter en krasch. Detta är en potentiell källa till säkerhetsproblem.
+ .
+ Detta paket inkluderar ett skript som körs vid systemets uppstart, detta kommer att försöka återställa alla trasiga användarfiler som den hittar. Detta gör det mindre troligt att användare själva behöver köra återställningen, därför är standardvärdet att installera återställningen utan det speciella läget som krävs för att användare själva ska kunna köra återställningen.
+ .
+ Om du aktiverar detta alternativ kan användare utan särskilda rättigheter köra "recover".
+Description-vi.UTF-8: Dùng bit « setgid » với tiện ích phục hồi của NetHack ?
+ Chương trình phục hồi « recover » trong gói « nethack-common » thường được cài đặt với bit « setgid » được đặt, để mọi người dùng có quyền truy cập của nhóm « games » có thể phục hồi các tập tin lưu sau khi phần mềm sụp đổ. Tuy nhiên, trường hợp này cũng có thể rủi ro bảo mật.
+ .
+ Gói này bao gồm một văn lệnh mà chạy trong khi hệ thống khởi động, gọi chương trình phục hồi « recover » đối với bất cứ tập tin lưu bị hỏng nào được tìm. Văn lệnh này làm cho người dùng rất ít có thể cần tự chạy chương trình này, thì giá trị mặc định là cài đặt « recover » mà không có các bit quyền hạn đặc biệt được yêu cầu cho đó.
+ .
+ Bật tùy chọn này thì các người dùng không có quyền đặc biệt cũng có thể chạy « recover ».
+Description-zh_TW.UTF-8: 替 NetHack 的修復工具設定 setgid bit？
+ 包含於 nethack-common 套件中的 "recover" 程式許傳統上是安裝成有 "setgid" 位元的，這樣所有屬於 "games" 群組的使用者都可以在程式崩潰後用它來修復自己的存檔。而這可能帶來潛在的安全問題。
+ .
+ 此套件包含了一個腳本，於系統啟動時執行 recover 修復找到的破損存檔。因此使用者很少需要自已執行 recover 程式，也不需要替 recover 設定特殊權限。
+ .
+ 如果您選擇此選項，無特殊權限的使用者也可以執行 "recover" 程式。

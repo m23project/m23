@@ -25,6 +25,7 @@ function run($id)
 		$aptCommand="upgrade";
 	echo("
 export DEBIAN_FRONTEND=noninteractive
+apt-get update
 apt-get --force-yes -y $aptCommand\n");
 
 	/* =====> */ MSR_statusBarIncCommand(100);

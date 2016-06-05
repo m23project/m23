@@ -39,7 +39,7 @@ chown -R $apacheUser /m23 2> /dev/null
 chgrp -R $apacheGroup /m23 2> /dev/null
 chmod 755 /m23/dhcp 2> /dev/null
 
-chown m23-vbox /m23/vms/vbox -R
+chown m23-vbox /m23/vms/vbox -R 2> /dev/null
 
 #set mysql permission
 # chown -R mysql /m23/db 2> /dev/null

@@ -1,0 +1,345 @@
+
+Template: mariadb-server-10.0/really_downgrade
+Type: boolean
+Default: false
+Description: Really proceed with downgrade?
+ A file named /var/lib/mysql/debian-*.flag exists on this system.
+ .
+ Such a file is an indication that a mariadb-server package with a higher
+ version has been installed previously.
+ .
+ There is no guarantee that the version you're currently installing
+ will be able to use the current databases.
+Description-cs.UTF-8: Opravdu pokračovat v degradaci?
+ V systému existuje soubor /var/lib/mysql/debian-*.flag.
+ .
+ To znamená, že již byl dříve nainstalován balík mariadb-server s vyšší verzí.
+ .
+ Neexistuje žádná záruka, že momentálně instalovaná verze bude umět pracovat se stávajícími databázemi.
+Description-da.UTF-8: Ønsker du virkelig at fortsætte nedgraderingen?
+ Der er en fil med navnet /var/lib/mysql/debian-*.flag på dette system.
+ .
+ Sådan en fil tyder på, at der tidligere har været installeret en højere version af pakken mariadb-server.
+ .
+ Det kan ikke garanteres, at den version, du er ved at installere, kan benytte data fra de eksisterende databaser.
+Description-de.UTF-8: Möchten Sie wirklich eine ältere Version einspielen?
+ Auf diesem System existiert eine Datei mit dem Namen /var/lib/mysql/debian-*.flag.
+ .
+ Diese Datei ist ein Hinweis darauf, dass früher ein MariaDB-Server-Paket mit einer höheren Version installiert wurde.
+ .
+ Es kann nicht garantiert werden, dass die gegenwärtig zu installierende Version dessen Datenbanken benutzen kann.
+Description-es.UTF-8: ¿Desea realmente continuar con la desactualización?
+ Existe un archivo con el nombre /var/lib/mysql/debian-*.flag en este sistema.
+ .
+ Este fichero indica que se instaló previamente una versión superior del paquete mariadb-server.
+ .
+ No se puede garantizar que la versión que está instalando pueda usar la base de datos actual.
+Description-fr.UTF-8: Faut-il vraiment revenir à la version précédente ?
+ Un fichier /var/lib/mysql/debian-*.flag est présent sur ce système.
+ .
+ Cela indique qu'une version plus récente du paquet mariadb-server a été précédemment installée.
+ .
+ Il n'est pas garanti que cette version puisse en utiliser les bases de données.
+Description-it.UTF-8: Procedere realmente con l'abbassamento di versione?
+ Su questo sistema esiste un file con nome /var/lib/mysql/debian-*.flag.
+ .
+ Quel file indica che in precedenza è stata installata una versione superiore del pacchetto mariadb-server.
+ .
+ Non è garantito che la versione che sta per essere installata sia in grado di usare i database presenti.
+Description-ja.UTF-8: 本当にダウングレードを実行しますか?
+ このシステムには  /var/lib/mysql/debian-*.flag という名前のファイルが存在しています。
+ .
+ このファイルが意味するのは、以前により新しいバージョンの mariadb-server パッケージがインストールされていたことを示します。
+ .
+ このデータベースを現在インストールしようとしているバージョンで使えるかどうかは保証できません。
+Description-nl.UTF-8: Wilt u echt een oude versie herstellen?
+ Er bestaat een bestand genaamd /var/lib/mysql/debian-*.flag op dit systeem.
+ .
+ Zulk een bestand geeft aan dat er eerder een pakket mariadb-server met een hogere versie is geĩnstalleerd.
+ .
+ Er is geen garantie dat de versie die u op dit moment installeert de huidige databases kan gebruiken.
+Description-pt.UTF-8: Deseja mesmo continuar com o downgrade?
+ Existe um ficheiro chamado /var/lib/mysql/debian-*.flag neste sistema.
+ .
+ Tal ficheiro significa que anteriormente já foi instalado um pacote mariadb-server com um número de versão superior.
+ .
+ Não existe nenhuma garantia que a versão que está actualmente a instalar seja capaz de utilizar as actuais bases de dados.
+Description-pt_BR.UTF-8: Realmente proceder com o rebaixamento de versão?
+ Um arquivo de nome /var/lib/mysql/debian-*.flag existe no sistema.
+ .
+ A presença de um arquivo como este é uma indicação de que um pacote mariadb-server com um número de versão mais alto já foi instalado anteriormente.
+ .
+ Não há garantias de que a versão que você está instalando no momento conseguirá utilizar as bases de dados existentes.
+Description-ru.UTF-8: Действительно установить более старую версию?
+ В системе найден файл /var/lib/mysql/debian-*.flag.
+ .
+ Это означает, что ранее уже был установлен пакет mariadb-server более новой версии.
+ .
+ Нет гарантий, что версия, которая устанавливается сейчас, будет способна работать с имеющимися базами данных.
+Description-sv.UTF-8: Vill du verkligen genomföra nedgraderingen?
+ En fil med namnet /var/lib/mysql/debian-*.flag hittades i systemet.
+ .
+ En sådan fil är en indikation på att paketet mariadb-server med ett högre versionsnummer har installerats tidigare.
+ .
+ Det finns ingen garanti för att den version som du håller på att installera kommer att kunna använda de aktuella databaserna.
+Description-tr.UTF-8: Sürüm düşürme işlemine gerçekten başlansın mı?
+ Bu sistemde /var/lib/mysql/debian-*.flag adlı bir dosya bulunmaktadır.
+ .
+ Böyle bir dosyanın varlığı daha yüksek sürümde bir mariadb-server paketinin önceden kurulu olduğunu gösterir.
+ .
+ Kurmakta olduğunuz sürümün var olan veritabanlarını kullanabileceğinin garantisi yoktur.
+
+Template: mariadb-server-10.0/nis_warning
+Type: note
+Description: Important note for NIS/YP users
+ Using MariaDB under NIS/YP requires a mysql user account to be added on
+ the local system with:
+ .
+  adduser --system --group --home /var/lib/mysql mysql
+ .
+ You should also check the permissions and ownership of the
+ /var/lib/mysql directory:
+ .
+  /var/lib/mysql: drwxr-xr-x   mysql    mysql
+Description-cs.UTF-8: Důležitá poznámka pro uživatele NIS/YP
+ Používání MariaDB pod NIS/YP vyžaduje, aby byl účet mysql uživatele přidán na lokálním systému příkazem:
+ .
+  adduser --system --group --home /var/lib/mysql mysql
+ .
+ Také byste měli zkontrolovat vlastníka a oprávnění adresáře /var/lib/mysql:
+ .
+  /var/lib/mysql: drwxr-xr-x   mysql    mysql
+Description-da.UTF-8: Vigtig oplysning til NIS/YP-brugere
+ Brug af MariaDB under NIS/YP kræver, at en mysql-brugerkonto tilføjes på det lokale system med:
+ .
+  adduser --system --group --home /var/lib/mysql mysql
+ .
+ Du bør også kontrollere filrettighederne og ejerskabet af mappen /var/lib/mysql:
+ .
+  /var/lib/mysql: drwxr-xr-x   mysql    mysql
+Description-de.UTF-8: Wichtige Anmerkung für NIS/YP-Benutzer!
+ Falls MariaDB mit NIS/YP genutzt wird, muss ein »mysql«-Benutzerkonto auf dem lokalen System hinzugefügt werden mit:
+ .
+  adduser --system --group --home /var/lib/mysql mysql
+ .
+ Sie sollten außerdem Besitzer und Zugriffsrechte des Verzeichnisses /var/lib/mysql überprüfen:
+ .
+  /var/lib/mysql: drwxr-xr-x   mysql    mysql
+Description-es.UTF-8: Nota importante para los usuarios de NIS/YP
+ Para utilizar MariaDB bajo NIS/YP es necesario añadir una cuenta de usuario mysql en el sistema local con:
+ .
+  adduser --system --group --home /var/lib/mysql mysql
+ .
+ También debería comprobar los permisos y el propietario del directorio /var/lib/mysql:
+ .
+  /var/lib/mysql: drwxr-xr-x   mysql    mysql
+Description-fr.UTF-8: Note importante pour les utilisateurs NIS/YP
+ L'utilisation de MariaDB avec NIS/YP impose l'ajout d'un compte local « mysql » avec la commande :
+ .
+  adduser --system --group --home /var/lib/mysql mysql
+ .
+ Vous devez également vérifier le propriétaire et les permissions du répertoire /var/lib/mysql :
+ .
+  /var/lib/mysql: drwxr-xr-x   mysql    mysql
+Description-it.UTF-8: Nota importante per gli utenti NIS/YP
+ Per usare MariaDB con NIS/YP è necessario aggiungere al sistema un account utente locale con nome mysql con:
+ .
+  adduser --system --group --home /var/lib/mysql mysql
+ .
+ Inoltre è opportuno verificare i permessi e la proprietà della directory /var/lib/mysql:
+ .
+  /var/lib/mysql: drwxr-xr-x   mysql    mysql
+Description-ja.UTF-8: NIS/YP ユーザへの重要な注意
+ NIS/YP 配下で MariaDB を使うにはローカルのシステムに mysql のユーザアカウントを追加するのが必要です。
+ .
+  adduser --system --group --home /var/lib/mysql mysql
+ .
+ /var/lib/mysql の所有者権限をチェックする必要もあります。
+ .
+  /var/lib/mysql: drwxr-xr-x   mysql    mysql
+Description-nl.UTF-8: Belangrijke opmerking voor gebruikers van NIS/YP
+ Het gebruik van MariaDB onder NIS/YP vereist dat een mysql gebruikersaccount wordt toegevoegd aan het lokale systeem met:
+ .
+  adduser --system --group --home /var/lib/mysql mysql
+ .
+ U moet ook controleren wie eigenaar is en wat de gebruikersrechten zijn van de map /var/lib/mysql:
+ .
+  /var/lib/mysql: drwxr-xr-x   mysql    mysql
+Description-pt.UTF-8: Nota importante para os utilizadores de NIS/YP
+ Utilizar MariaDB com NIS/YP necessita de uma conta de utilizador de mysql para ser acrescentada ao sistema local com:
+ .
+  adduser --system --group --home /var/lib/mysql mysql
+ .
+ Deve também verificar as permissões e o dono do directório /var/lib/mysql:
+ .
+  /var/lib/mysql: drwxr-xr-x   mysql    mysql
+Description-pt_BR.UTF-8: Aviso importante para usuários NIS/YP
+ Usar o MariaDB sob NIS/YP requer que uma conta de usuário mysql seja adicionada ao sistema local com:
+ .
+  adduser --system --group --home /var/lib/mysql mysql
+ .
+ Você deverá também verificar as permissões e o dono do diretório /var/lib/mysql:
+ .
+  /var/lib/mysql: drwxr-xr-x   mysql    mysql
+Description-ru.UTF-8: Важное замечание для пользователей NIS/YP
+ Использование MariaDB в NIS/YP требует добавления учётной записи mysql в локальную систему с:
+ .
+  adduser --system --group --home /var/lib/mysql mysql
+ .
+ Также проверьте права доступа и владельца каталога /var/lib/mysql:
+ .
+  /var/lib/mysql: drwxr-xr-x   mysql    mysql
+Description-sv.UTF-8: Viktig information för NIS/YP-användare
+ För att kunna använda MariaDB under NIS/YP måste ett användarkonto för mysql läggas till i systemet.
+ .
+  adduser --system --group --home /var/lib/mysql mysql
+ .
+ Du bör också kontrollera rättigheterna och ägaren av katalogen /var/lib/mysql.
+ .
+  /var/lib/mysql: drwxr-xr-x   mysql    mysql
+Description-tr.UTF-8: NIS/YP kullanıcıları için önemli not
+ MariaDB'nin NIS/YP ile kullanılması için yerel sisteme aşağıdaki komut çalıştırılarak mysql kullanıcı hesabının eklenmesi gereklidir:
+ .
+  adduser --system --group --home /var/lib/mysql mysql
+ .
+ /var/lib/mysql dizininin sahiplik ve izin ayarlarını da gözden geçirmelisiniz:
+ .
+  /var/lib/mysql: drwxr-xr-x   mysql    mysql
+
+Template: mariadb-server-10.0/postrm_remove_databases
+Type: boolean
+Default: false
+Description: Remove all MariaDB databases?
+ The /var/lib/mysql directory which contains the MariaDB databases is about
+ to be removed.
+ .
+ If you're removing the MariaDB package in order to later install a more
+ recent version or if a different mariadb-server package is already
+ using it, the data should be kept.
+Description-ar.UTF-8: إزالة جميع قواعد بيانات MariaDB؟
+ الدليل /var/lib/mysql الذي يحتوي قواعد بيانات MariaDB ستتم إزالته.
+ .
+ إن كنت تقوم بإزالة حزمة MariaDB كي تقوم لاحقاً بتثبيت نسخة أحدث أو إن كانت حزمة mariadb-server مختلفة تستخدمها، فيجب إبقاء البيانات.
+Description-cs.UTF-8: Odstranit všechny MariaDB databáze?
+ Adresář /var/lib/mysql, ve kterém se nachází MariaDB databáze, bude odstraněn.
+ .
+ Jestliže odstraňujete balík MariaDB za účelem instalace novější verze MariaDB, nebo pokud tato data souběžně využívá jiný balík mariadb-server, měli byste data ponechat.
+Description-da.UTF-8: Fjern alle MariaDB-databaser?
+ Mappen /var/lib/mysql, der indeholder MariaDB-databaserne, er ved at blive fjernet.
+ .
+ Hvis du fjerner MariaDB-pakken for senere at installere en nyere version, eller hvis en anden mariadb-server-pakke allerede benytter den, bør dataene bevares.
+Description-de.UTF-8: Alle MariaDB-Datenbanken entfernen?
+ Das Verzeichnis /var/lib/mysql mit den MariaDB-Datenbanken soll entfernt werden.
+ .
+ Falls geplant ist, das MariaDB-Paket zu entfernen, um lediglich eine höhere Version zu installieren oder ein anderes mariadb-server-Paket die Daten benutzt, sollten diese beibehalten werden.
+Description-es.UTF-8: ¿Desea eliminar todas las bases de datos MariaDB?
+ El directorio /var/lib/mysql contiene bases de datos MariaDB que van a eliminarse.
+ .
+ Debería mantener los datos si tiene planificado instalar una versión de MariaDB más reciente o si hay un paquete «mariadb-server» distinto que los está utilizando.
+Description-eu.UTF-8: Ezabatu MariaDB datubase guztiak?
+ MariaDB datubaseak dituen /var/lib/mysql direktorioa ezabatua izango da.
+ .
+ MariaDB paketea beranduago bertsio berriago bat instalatzeko kentzen ari bazara, edo beste mariadb-server pakete bat berau erabiltzen ari bada, datuak mantendu egin beharko lirateke.
+Description-fr.UTF-8: Faut-il supprimer toutes les bases de données MariaDB ?
+ Le répertoire /var/lib/mysql qui contient les bases de données de MariaDB va être supprimé.
+ .
+ Si vous retirez le paquet MariaDB en vue d'en installer une version plus récente ou si un autre paquet mariadb-server les utilise déjà, vous devriez les conserver.
+Description-gl.UTF-8: ¿Eliminar tódalas bases de datos de MariaDB?
+ Hase eliminar o directorio /var/lib/mysql, que contén as bases de datos de MariaDB.
+ .
+ Se está a eliminar o paquete MariaDB para instalar despois unha versión máis recente ou se xa hai un paquete mariadb-server diferente a empregalo, debería conservar os datos.
+Description-it.UTF-8: Eliminare tutti i database MariaDB?
+ La directory /var/lib/mysql che contiene i database di MariaDB sta per essere eliminata.
+ .
+ Se si rimuove il pacchetto MariaDB per poi installare una versione più recente oppure se sono già in uso da un altro pacchetto mariadb-server, i dati non devono essere eliminati.
+Description-ja.UTF-8: すべての MariaDB データベースを削除しますか?
+ MariaDB データベースを含んでいるディレクトリ /var/lib/mysql を削除しようとしています。
+ .
+ 後でより新しいバージョンのものをインストールしようとするために MariaDB パッケージを削除しようとしている、あるいは別の mariadb-server パッケージを既に使っている場合、データは保持する必要があります。
+Description-nl.UTF-8: Wilt u alle MariaDB-databases verwijderen?
+ De map /var/lib/mysql die de MariaDB-databases bevat staat op het punt om verwijderd te worden.
+ .
+ Als u het MariaDB-pakket verwijdert om later een meer recente versie te installeren of als een ander mariadb-serverpakket het al gebruikt, zou de data behouden moeten worden.
+Description-pt.UTF-8: Remover todas as bases de dados MariaDB?
+ O directório /var/lib/mysql que contém as bases de dados MariaDB está prestes a ser removido.
+ .
+ Se está a remover o pacote MariaDB de forma a posteriormente instalar uma versão mais recente ou se um pacote mariadb-server já o está a utilizar, então os dados devem ser mantidos.
+Description-pt_BR.UTF-8: Remover todas as bases de dados do MariaDB?
+ O diretório /var/lib/mysql, o qual contém as bases de dados do MariaDB, está prestes a ser removido.
+ .
+ Caso você esteja removendo o pacote MariaDB para posteriormente instalar uma versão mais recente ou, caso uma versão diferente do pacote mariadb-server esteja sendo utilizada, os dados deverão ser mantidos.
+Description-ru.UTF-8: Удалить все базы данных MariaDB?
+ Запрос на удаление каталога /var/lib/mysql, содержащий базы данных MariaDB.
+ .
+ Если вы удаляете пакет MariaDB для установки более новой версии MariaDB, или есть другие пакеты mariadb-server, использующие этот каталог, то данные лучше сохранить.
+Description-sv.UTF-8: Ta bort alla MariaDB-databaser?
+ Katalogen /var/lib/mysql som innehåller MariaDB-databaser kommer att tas bort.
+ .
+ Om avinstallationen av MariaDB-paketet görs för att senare kunna installera en nyare version eller om en annan mariadb-server redan använder filerna ska de inte raderas.
+Description-tr.UTF-8: Tüm MariaDB veritabanları kaldırılsın mı?
+ MariaDB veritabanlarını barındıran /var/lib/mysql dizini kaldırılmak üzere
+ .
+ Eğer MariaDB paketini daha sonra güncel bir sürümünü kurmak üzere kaldırıyorsanız ya da veritabanlarınıza başka bir mariadb-server paketi ile erişiyorsanız, veritabanlarınızı kaldırmamalısınız.
+
+Template: mariadb-server/oneway_migration
+Type: boolean
+Default: true
+Description: Really migrate to MariaDB?
+ MariaDB is a drop-in replacement for MySQL. It will use your current
+ configuration file (my.cnf) and current databases.
+ .
+ Note that MariaDB has some enhanced features, which do not exist in MySQL
+ and thus migration back to MySQL might not always work, at least not as
+ automatically as migrating from MySQL to MariaDB.
+Description-cs.UTF-8: Opravdu migrovat na MariaDB?
+ MariaDB je přímá náhrada MySQL. Použije váš současný konfigurační soubor (my.cnf) a databáze.
+ .
+ MariaDB má některé pokročilé vlastnosti, které v MySQL neexistují a tudíž návrat zpět k MySQL nemusí fungovat (alespoň ne tak autoamticky, jako migrace z MySQL na MariaDB).
+Description-da.UTF-8: Migrer til MariaDB?
+ MariaDB er en direkte erstatning for MySQL. Den vil bruge din nuværende konfigurationsfil (my.cnf) og nuværende databaser.
+ .
+ Bemærk at MariaDB har nogle forbedrede funktioner, som ikke findes i MySQL og migrering tilbage til MySQL vil derfor ikke altid fungere, i det mindste ikke ligeså automatisk som at migrere fra MySQL til MariaDB.
+Description-de.UTF-8: Möchten Sie wirklich auf MariaDB migrieren?
+ MariaDB ist ein einspielbarer Ersatz für MySQL. Es wird Ihre aktuelle Konfigurationsdatei (my.cnf) und Ihre aktuellen Datenbanken verwenden.
+ .
+ Beachten Sie, dass MariaDB über einige erweiterte Funktionalitäten verfügt, die es in MySQL nicht gibt. Eine Rückmigration klappt daher nicht immer, zumindest nicht automatisch wie das Migrieren von MySQL auf MariaDB.
+Description-es.UTF-8: ¿Realmente desea migrar a MariaDB?
+ MariaDB es un reemplazo de MySQL. Utilizará su archivo de configuración actual (my.cnf) y sus bases de datos actuales.
+ .
+ Tenga en cuenta que MariaDB tiene algunas funcionalidades avanzadas que no existen en MySQL. Por ello, la marcha atrás a MySQL no siempre funcionará o, al menos, no será tan automática como la migración de MySQL a MariaDB.
+Description-fr.UTF-8: Souhaitez-vous migrer vers MariaDB ?
+ MariaDB remplace à l'identique MySQL. Le fichier de configuration actuel (my.cnf) ainsi que les bases de données existantes seront utilisés.
+ .
+ Veuillez noter que MariaDB fournit des fonctionnalités améliorées qui n'existent pas dans MySQL ce qui peut interdire un retour ultérieur à MySQL, tout au moins de manière moins automatique que la migration de MySQL vers MariaDB.
+Description-it.UTF-8: Migrare a MariaDB?
+ MariaDB è un perfetto sostituto per MySQL. Utilizzerà l'attuale file di configurazione (my.cnf) e i database presenti.
+ .
+ Notare che MariaDB dispone di alcune funzionalità avanzate che non esistono in MySQL, di conseguenza non sempre funziona la migrazione all'indietro verso MySQL, o almeno non è automatica come la migrazione da MySQL a MariaDB.
+Description-ja.UTF-8: 本当に MariaDB に移行しますか?
+ MariaDB は MySQL をそのまま置き換えられる代替です。現在の設定ファイル (my.cnf) と現在のデータベースを利用します。
+ .
+ MariaDB には MySQL に存在していない機能の拡張がいくらか存在し、そのため MySQL に再び移行する場合は、MySQL から MariaDB への移行のような自動での移行が常にできるとは限りません。
+Description-nl.UTF-8: Wilt u echt overschakelen op MariaDB?
+ MariaDB is een volwaardige vervanger voor MySQL. Het zal de bestaande configuratiebestanden (my.cnf) en de bestaande databases gebruiken.
+ .
+ Merk op dat MariaDB een aantal uitbreidingen heeft die niet bestaan in MySQL. Daardoor zal terug overschakelen op MySQL niet altijd lukken, of althans niet even automatisch als overschakelen van MySQL op MariaDB.
+Description-pt.UTF-8: Realmente migrar para MariaDB?
+ MariaDB é um substituto para MySQL. Irá utilizar o seu ficheiro actual de configuração (my.cnf) e bases de dados.
+ .
+ Note que MariaDB tem algumas funcionalidades melhoradas, as quais não existem em MySQL e por isso a migração de volta para MySQL poderá nem sempre funcionar, pelo menos não automaticamente como a migração de MySQL para MariaDB.
+Description-pt_BR.UTF-8: Realmente migrar para o MariaDB?
+ O MariaDB é um substituto para o MySQL. Ele usará o seu arquivo de configuração atual (my.cnf) e os bancos de dados atuais.
+ .
+ Note que o MariaDB tem algumas características melhoradas, que não existem no MySQL e, portanto, migrar de volta para o MySQL pode nem sempre funcionar, pelo menos não tão automaticamente quanto migrar do MySQL para o MariaDB.
+Description-ru.UTF-8: Хотите перейти на MariaDB?
+ MariaDB — современная замена MySQL. Будет использован ваш файл настроек (my.cnf) и имеющиеся базы данных.
+ .
+ Заметим, что MariaDB имеет дополнительные возможности, которые отсутствуют в MySQL, и поэтому обратный переход на MySQL не всегда может быть выполнен, по крайней мере, не в автоматическом режиме как с MySQL на MariaDB.
+Description-sv.UTF-8: Ska migreringen till MariaDB fortsätta?
+ MariaDB är en ersättare för MySQL som helt och hållet fyller platsen efter MySQL. Den kommer att använda din nuvarande inställningsfil (my.cnf) och nuvarande databaser.
+ .
+ Observera att det finns ett antal förbättrade funktioner som inte finns i MySQL, att gå tillbaka till MySQL är därför inte garanterat fungerande. Åtminstone med samma automatik som från MySQL till MariaDB.
+Description-tr.UTF-8: MariaDB geçişi gerçekten yapılsın mı?
+ MariaDB, MySQL yerine birebir geçebilen bir pakettir. Varolan yapılandırma dosyanızı (my.cnf) ve veritabanlarınızı kullanacaktır.
+ .
+ MariaDB, MySQL'de olmayan ve daha gelişmiş özelliklere sahip olduğundan, MySQL'e geri dönüş her zaman işlemeyebilir ya da en azından MySQL'den MariaDB'ye geçiş kadar kolay ve kendiliğinden olmayabilir.

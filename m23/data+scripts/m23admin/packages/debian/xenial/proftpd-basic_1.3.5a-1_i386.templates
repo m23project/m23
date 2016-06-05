@@ -1,0 +1,116 @@
+
+Template: shared/proftpd/inetd_or_standalone
+Type: select
+Choices: from inetd, standalone
+Choices-cs.UTF-8: z inetd, samostatně
+Choices-da.UTF-8: fra inetd, uafhængig
+Choices-de.UTF-8: von Inetd, Servermodus
+Choices-es.UTF-8: desde inetd, independiente
+Choices-eu.UTF-8: inetd bidez, bakarka
+Choices-fi.UTF-8: inetdistä, itsenäisenä
+Choices-fr.UTF-8: Depuis inetd, Indépendamment
+Choices-gl.UTF-8: desde inetd, autónomo
+Choices-id.UTF-8: dari inetd, mandiri
+Choices-it.UTF-8: da inetd, autonomo
+Choices-ja.UTF-8: inetd 経由, スタンドアロン
+Choices-nb.UTF-8: fra inetd, frittstående
+Choices-nl.UTF-8: via inetd, losstaand
+Choices-no.UTF-8: fra inetd, frittstående
+Choices-pt.UTF-8: a partir do inetd, em modo solitário
+Choices-pt_BR.UTF-8: a partir do inetd, autônomo
+Choices-ru.UTF-8: через inetd, самостоятельно
+Choices-sk.UTF-8: z inetd, samostatne
+Choices-sv.UTF-8: genom inetd, ensamstående
+Choices-tr.UTF-8: inetd'den, kendibaşına
+Choices-vi.UTF-8: từ inetd, độc lập
+Default: standalone
+Description: Run proftpd:
+ ProFTPD can be run either as a service from inetd, or as a standalone
+ server. Each choice has its own benefits. With only a few FTP
+ connections per day, it is probably better to run ProFTPD from inetd in
+ order to save resources.
+ .
+ On the other hand, with higher traffic,
+ ProFTPD should run as a standalone server to avoid spawning a new
+ process for each incoming connection.
+Description-cs.UTF-8: Spouštět proftpd:
+ ProFTPD může běžet buď jako služba z inetd, nebo jako samostatný server. Obě možnosti mají svoje výhody. Při několika ftp spojeních za den je lepší spouštět ProFTPD z inetd, což ušetří zdroje.
+ .
+ Naopak při větším provozu by měl ProFTPD běžet jako samostatná služba, aby se při každém příchozím spojení nemusel spouštět nový proces.
+Description-da.UTF-8: Kør proftpd:
+ ProFTPD kan køre enten som en tjeneste fra inetd, eller som en uafhængig server. Hvert valg har deres fordele. Hvis du kun har et par ftp-forbindelser om dagen, så er det måske bedre at køre ProFTPD fra inetd for at spare på ressourcerne.
+ .
+ På den anden side, med højere trafik, skal ProFTPD køre som en uafhængig server for at undgå kørsel af en ny proces for hver indgående forbindelse.
+Description-de.UTF-8: Proftpd starten:
+ ProFTPD kann entweder als Dienst über Inetd oder als eigener Server gestartet werden. Jede der beiden Startarten hat ihre Vorteile. Falls Sie nur wenige FTP-Verbindungen täglich erwarten, dann ist es wahrscheinlich sinnvoller, ProFTPD mittels Inetd zu starten, um Ressourcen zu schonen.
+ .
+ Andererseits sollte ProFTPD als eigener Server betrieben werden, falls Sie viel Verkehr erwarten, um das Starten neuer Prozesse für jede eingehende Verbindung zu vermeiden.
+Description-es.UTF-8: Ejecutar proftpd:
+ ProFTPD puede ejecutarse como un servicio desde inetd o como un servidor independiente. Ambas opciones tienen sus ventajas. Si sólo recibe unas pocas conexiones FTP diarias, probablemente sea mejor ejecutar ProFTPD desde inetd para ahorrar recursos.
+ .
+ Por otro lado, con más tráfico, ProFTPD debería ejecutarse como un servidor independiente para evitar crear un proceso nuevo por cada conexión entrante.
+Description-eu.UTF-8: proftpd exekutatu:
+ ProFTPD inetd bidezko zerbitzu bat edo bakarkako zerbitzari bezala exekutatu daiteke, Aukera bakoitzak bere onurak ditu. Eguneko FTP konexio gutxi badituzu, hobe da ziurrenik ProFTPD inetd biez exekutatzea errekurtso gutxiago erabiltzeko.
+ .
+ Beste aldetik, trafiko handi bat baduzu, ProFTPD bakarka exekutatu beharko zenuke konexio bakoitzean ez prozesu berriak sortu ez daitezen.
+Description-fi.UTF-8: Aja proftpd:
+ ProFTPD voidaan ajaa joko palveluna inetdistä tai itsenäisenä palvelimena. Molemmilla vaihtoehdoilla on hyvät puolensa. Jos FTP-yhteyksiä on vain muutamia päivässä, on luultavasti parempi ajaa ProFTPD inetdistä resurssien säästämiseksi.
+ .
+ Toisaalta suuremmilla liikennemäärillä ProFTPD kannattaa ajaa itsenäisenä palvelimena, koska tällöin vältetään uuden prosessin luominen kullekin yhteydelle.
+Description-fr.UTF-8: Lancement de proftpd :
+ ProFTPD peut être lancé soit en tant que service depuis inetd, soit comme un serveur indépendant. Chaque méthode a ses avantages. Pour quelques connexions par jour, il est suggéré de lancer ProFTPD depuis inetd afin de préserver les ressources du système.
+ .
+ Au contraire, avec un trafic plus important, il est recommandé d'exécuter ProFTPD indépendamment pour éviter de démarrer un nouveau processus pour chaque connexion entrante.
+Description-gl.UTF-8: Executar proftpd:
+ ProFTPD pode executarse coma un servizo de inetd ou coma un servidor autónomo. Cada posibilidade ten as súas avantaxes. Con só unhas poucas conexións por FTP diarias, seguramente sexa mellor executar ProFTPD desde inetd para aforrar recursos.
+ .
+ Por outro lado, con máis tráfico, ProFTPD debería funcionar coma un servidor autónomo para non ter que crear un novo proceso por cada conexión entrante.
+Description-id.UTF-8: Jalankan proftpd:
+ ProFTPD dapat beroperasi sebagai layanan dari inetd atau sebagai suatu server mandiri. Setiap pilihan memiliki keuntungan masing-masing. Jika koneksi FTP sangat sedikit per harinya, lebih baik menjalankan ProFTPD dari inetd untuk menghemat sumber daya komputer/server.
+ .
+ Namun apabila lalu lintas FTP sangat tinggi, ProFTPD sebaiknya dioperasikan sebagai suatu server mandiri untuk menghindari pembukaan proses baru setiap ada sambungan FTP yang masuk.
+Description-ja.UTF-8: proftpd の起動方法:
+ ProFTPD は、inetd 経由のサービスとして実行することもできますし、 スタンドアローンのサーバとしても実行できます。どちらにもそれぞれ利点があります。1日に数回の ftp アクセスしかない場合は、資源を節約するために ProFTPD を inetd から起動するのが良いかも知れません。
+ .
+ 一方、頻繁なアクセスがある場合は、接続ごとに新規プロセスが生成されるのを避けるため、ProFTPD をスタンドアロンサーバとして動作させるべきです。
+Description-nb.UTF-8: Kjør proftpd:
+ ProFTPD kan kjøres enten som en tjeneste fra inetd, eller som en frittstående tjener. Hvert valg har sine fordeler. Hvis det bare er noen få FTP-tilkoblinger om dagen, er det antakelig bedre å kjøre ProFTPD fra inetd for å spare ressurser.
+ .
+ På den annen side, med høyere trafikk bør ProFTPD kjøre som en frittstående tjener for å unngå å starte en ny prosess for hver innkommende tilkobling.
+Description-nl.UTF-8: ProFTPD uitvoeren:
+ ProFTPD kan als een losstaande server, of als een dienst via inetd gedraaid worden. Elke keuze heeft z'n eigen voordelen. Als u relatief weinig ftp-verbindingen per dag binnenkrijgt is het waarschijnlijk aan te raden om ProFTPD via inetd te draaien daar dit systeembronnen spaart.
+ .
+ Als u daarentegen relatief veel verkeer heeft, draait u ProFTPD beter als een losstaande server, daar u dan vermijd dat er voor elke binnenkomende verbinding een proces afgesplitst wordt.
+Description-no.UTF-8: Kjør proftpd:
+ ProFTPD kan kjøres enten som en tjeneste fra inetd, eller som en frittstående tjener. Hvert valg har sine fordeler. Hvis det bare er noen få FTP-tilkoblinger om dagen, er det antakelig bedre å kjøre ProFTPD fra inetd for å spare ressurser.
+ .
+ På den annen side, med høyere trafikk bør ProFTPD kjøre som en frittstående tjener for å unngå å starte en ny prosess for hver innkommende tilkobling.
+Description-pt.UTF-8: Correr o proftpd:
+ O ProFTPD pode ser corrido tanto como um serviço do inetd, bem como um servidor solitário. Cada escolha tem os seus benefícios. Se tem apenas algumas ligações ftp por dia, é provavelmente melhor correr o proftpd pelo inetd para poupar recursos.
+ .
+ Por outro lado, com mais trafego, o ProFTPD deve ser iniciado como um servidor solitário para evitar a criação de novos processos para cada ligação.
+Description-pt_BR.UTF-8: Executar o proftpd:
+ O ProFTPD pode ser executado como um serviço a partir do inetd ou como um servidor autônomo. Cada escolha tem seus próprios benefícios. Com apenas algumas conexões FTP por dia, provavelmente é melhor executar o ProFTPD a partir do inetd para economizar recursos.
+ .
+ Por outro lado, com um alto tráfego, o ProFTPD deveria executar como um servidor autônomo para evitar a criação de um novo processo para cada conexão de entrada.
+Description-ru.UTF-8: Запуск proftpd:
+ ProFTPD может быть запущен либо как сервис через inetd, либо как самостоятельный сервер. Каждый из способов имеет свои преимущества. Если к ftp-серверу в день подключаются лишь несколько человек, то лучше запускать ProFTPD через inetd, чтобы сэкономить ресурсы.
+ .
+ С другой стороны, если подключений много, то вы наоборот, должны запускать ProFTPD как самостоятельный сервер, чтобы избежать создания нового процесса при каждом входящем соединении.
+Description-sk.UTF-8: Spúšťať proftpd:
+ ProFTPD je možné spúšťať buď ako službu pomocou inetd alebo ako samostatný server. Každá voľba má svoje výhody. Ak máte iba niekoľko ftp spojení za deň, je pre vás pravdepodobne lepšie spúšťať ProFTPD pomocou inetd aby ste šetrili systémové zdroje.
+ .
+ Na druhej strane, pri vyššej premávke by mal byť ProFTPD spustený ako samostatný server, aby nebolo potrebné spúšťať nový proces pre každé prichádzajúce spojenie.
+Description-sv.UTF-8: Kör proftd:
+ ProFTPD kan köras som tjänst genom inetd eller som ensamstående tjänst. De båda alternativen har olika fördelar och nackdelar. Med ett fåtal FTP-anslutningar om dagen så är det förmodligen ett bättre val att köra ProFTPD genom inetd för att spara resurser.
+ .
+ Å andra sidan så bör ProFTPD köras som ensamstående tjänst om du räknar med högtrafik, då slipper du problem med att det skapas en ny process för varje inkommande anslutning.
+Description-tr.UTF-8: 'proftpd'yi çalıştır:
+ ProFTPD bir inetd hizmeti ya da kendibaşına bir sunucu olarak çalıştırılabilir. Her iki seçeneğin de kendilerine özgü yararları vardır. Eğer günde birkaç FTP bağlantısından fazlasını almıyorsanız, ProFTPD'yi inetd'den çalıştırarak sistem kaynaklarını koruyabilirsiniz.
+ .
+ Öte yandan yüksek bir trafikte, gelen her bağlantıda yeni bir işlem oluşturmaktan kaçınmak için ProFTPD kendibaşına bir sunucu olarak çalıştırılmalıdır.
+Description-vi.UTF-8: Chạy proftpd:
+ ProFTPD có thể chạy hoặc như dịch vụ từ inetd, hoặc như trình phục vụ độc lập. Mỗi tùy chọn có lợi riêng. Chỉ có vài kết nối FTP trong mỗi ngày thì rất có thể nên chạy ProFTPD từ inetd để tiết kiệm tài nguyên.
+ .
+ Mặt khác, khi có nhiều kết nối hơn, ProFTPD nên chạy như trình phục vụ độc lập, để tránh cần phải tạo một tiến trình mới cho mỗi kết nối gửi đến.
+

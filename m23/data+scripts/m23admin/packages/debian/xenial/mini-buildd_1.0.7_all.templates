@@ -1,0 +1,339 @@
+
+Template: mini-buildd/purge_warning
+Type: note
+Description: mini-buildd data purge warning
+ You have chosen to purge mini-buildd.
+ .
+ As a consequence, the mini-buildd user will be removed
+ along with all the files it owns, possibly including Debian
+ repositories.
+ .
+ To keep this data, you need to back it up now.
+Description-cs.UTF-8: Varování při odstraňování dat mini-buildd
+ Zvolili jste kompletně odstranit mini-buildd.
+ .
+ To znamená, že bude odstraněn uživatel mini-buildd i se všemi soubory, které vlastní i s případnými repositáři Debianu.
+ .
+ Chcete-li tato data zachovat, je nutné je nyní zálohovat.
+Description-da.UTF-8: Advarsel om datafjernelse for mini-buildd
+ Du har valgt at fjerne mini-buildd.
+ .
+ Som konsekvens vil mini-buildd-brugeren blive fjernet sammen med alle de filer brugeren ejer, inklusiv Debianarkiver.
+ .
+ For at beholde disse data, skal du lave en sikkerhedskopi af dem nu.
+Description-de.UTF-8: Warnung vor dem vollständigen Entfernen aller mini-buildd-Daten
+ Sie möchten mini-buildd vollständig vom Rechner entfernen.
+ .
+ Hierbei wird der mini-buildd-Benutzer gemeinsam mit allen Dateien entfernt, die ihm zugeordnet sind. Dies schließt möglicherweise Debian-Paketdepots ein.
+ .
+ Um diese Daten zu behalten, müssen Sie jetzt eine Sicherheitskopie davon erstellen.
+Description-es.UTF-8: Advertencia sobre purga de datos los de mini-buildd
+ Ha seleccionado purgar mini-buildd.
+ .
+ Como resultado de esta acción, se eliminará el usuario mini-buildd junto con todos los archivos que le pertenecen, entre los que posiblemente se encuentren repositorios Debian.
+ .
+ Para mantener estos datos, debe realizar una copia de seguridad ahora.
+Description-fr.UTF-8: Avertissement de purge des données de mini-buildd
+ Vous avez choisi de purger mini-buildd.
+ .
+ Ce choix implique la suppression de l'identifiant utilisé par mini-buildd ainsi que des fichiers dont il est propriétaire. Cela  peut comprendre les dépôts Debian.
+ .
+ Si vous préférez conserver ces données tout en purgeant le paquet, vous devez en faire une sauvegarde vous-même avant de poursuivre.
+Description-it.UTF-8: Avvertimento di mini-buildd per l'eliminazione completa dei dati
+ Si è scelto di eliminare completamente mini-buildd.
+ .
+ Come conseguenza,  l'utente mini-buildd sarà rimosso insieme a tutti i file che possiede, eventualmente includendo i repository Debian presenti.
+ .
+ Per conservare questi dati, è necessario eseguirne il backup adesso.
+Description-ja.UTF-8: mini-buildd データ完全削除の警告
+ mini-buildd の完全削除を選択しました。
+ .
+ mini-buildd パッケージを削除すると、mini-buildd ユーザと共に mini-buildd ユーザが所有する Debian リポジトリを含む全てのファイルが削除されます。
+ .
+ このデータを保つためにはここでバックアップする必要があります。
+Description-nl.UTF-8: Waarschuwing: opruimen van gegevens van mini-buildd
+ U heeft ervoor gekozen om mini-buildd op te ruimen.
+ .
+ Ten gevolge daarvan zal ook de gebruiker mini-buildd verwijderd worden samen met alle bestanden waarvan hij eigenaar is. Misschien zijn daar ook pakketbronnen van Debian bij.
+ .
+ Om deze gegevens te behouden, moet u er nu een veiligheidskopie van maken.
+Description-pl.UTF-8: Ostrzeżenie o czyszczeniu danych mini-buildd
+ Wybrano wyczyszczenie pakietu mini-buildd.
+ .
+ Zostanie usunięty użytkownik mini-buildd razem z plikami będącymi jego własnością, co może dotyczyć również repozytoriów Debiana.
+ .
+ Aby zachować te dane konieczne jest wykonanie kopii zapasowej.
+Description-pt.UTF-8: aviso de purga de dados do mini-buildd
+ Você escolheu purgar o mini-buildd.
+ .
+ Como consequência, o utilizador do mini-buildd irá ser removido juntamente com todos os ficheiros que lhe pertencem, possivelmente incluindo repositórios Debian.
+ .
+ Para manter estes dados, necessita de fazer uma salvaguarda agora.
+Description-ru.UTF-8: Предупреждение о вычистке данных mini-buildd
+ Вы указали выполнять вычистку mini-buildd.
+ .
+ При вычистке удаляется учётная запись mini-buildd вместе с принадлежащими ей файлами, включая репозитории Debian.
+ .
+ Чтобы сохранить данные, вам нужно сделать их резервную копию прямо сейчас.
+Description-sv.UTF-8: Dataraderings varning för mini-buildd
+ Du har valt att radera mini-buildd.
+ .
+ Detta innebär att mini-buildd-användaren kommer att tas bort tillsammans med alla dess filer, detta kan inkludera eventuella Debian-förråd.
+ .
+ För att behålla dessa data måste du göra en säkerhetskopia nu.
+
+Template: mini-buildd/home
+Type: string
+Default: /var/lib/mini-buildd
+Description: Home path:
+ Please choose the directory where mini-buildd data will be stored.
+ The directory will also be the home directory for the mini-buildd user.
+ .
+ It should have enough space for all the builders and repositories
+ you plan to use.
+Description-cs.UTF-8: Cesta k domovskému adresáři:
+ Zvolte si prosím adresář, kde se budou uchovávat data pro mini-buildd. Adresář bude také domovským adresářem uživatele mini-buildd.
+ .
+ Měl by mít dostatek prostoru pro všechna sestavování a repositáře, které plánujete používat.
+Description-da.UTF-8: Hjemmesti:
+ Vælg venligst mappen hvor mini-buildd-dataene vil blive gemt. Mappen vil også være hjemmemappe for mini-buildd-brugeren.
+ .
+ Den bør have nok plads for alle byggerne og arkiverne, du planlægger at bruge.
+Description-de.UTF-8: Home-Verzeichnis:
+ Bitte wählen Sie ein Verzeichnis aus, in dem die Daten von mini-buildd gespeichert werden. Das Verzeichnis wird als Home-Verzeichnis für den mini-buildd-Benutzer verwendet.
+ .
+ Es sollte genügend Platz für alle Bauprogramme und Depots vorhanden sein, die Sie benutzen wollen.
+Description-es.UTF-8: Ruta del directorio personal («/home»):
+ Seleccione el directorio donde se almacenarán los datos de mini-buildd. Este directorio será el directorio personal («/home») del usuario mini-buildd.
+ .
+ Debe tener suficiente espacio para todos los constructores y repositorios que planea utilizar.
+Description-fr.UTF-8: Chemin du répertoire personnel (« Home ») :
+ Veuillez choisir le dossier dans lequel les données de mini-buildd seront stockées. Le dossier sera également le répertoire personnel pour l'utilisateur mini-buildd.
+ .
+ Il devra avoir assez de place pour tous les compilateurs et dossiers que vous prévoyez d'utiliser.
+Description-it.UTF-8: Percorso Home:
+ Selezionare la directory dove i dati di mini-buildd saranno memorizzati. La directory sarà anche la directory home dell'utente di mini-buildd.
+ .
+ Si dovrebbe avere abbastanza spazio per tutti i builder e repository che si intende utilizzare.
+Description-ja.UTF-8: ホームのパス:
+ mini-buildd のデータを置くディレクトリを選択してください。このディレクトリは mini-buildd ユーザのホームディレクトリにもなります。
+ .
+ 利用予定のビルダーやリポジトリをすべて置くのに十分な空き容量を確保するようにしてください。
+Description-nl.UTF-8: Pad naar de thuismap:
+ Geef aan in welke map de gegevens van mini-buildd opgeslagen zullen worden. Deze map zal ook de thuismap van gebruiker mini-buildd zijn.
+ .
+ Ze moet voldoende opslagruimte bevatten voor alle genereerders en pakketbronnen die u zinnens bent te gebruiken.
+Description-pl.UTF-8: Ścieżka katalogu domowego:
+ Proszę wybrać katalog w którym będą przechowywane dane mini-build. Będzie to jednocześnie katalog domowy użytkownika mini-buildd.
+ .
+ Powinno się przewidzieć odpowiednią ilość miejsca potrzebnego do budowania i przechowywania repozytoriów które zamierza się używać.
+Description-pt.UTF-8: Caminho da Home:
+ Por favor escolha o directório onde os  dados do mini-buildd irão ser guardados. O directório será também o directório home para o utilizador do mini-buildd.
+ .
+ Deverá ter espaço suficiente para todos os compiladores e repositórios que você planeia usar.
+Description-ru.UTF-8: Домашний каталог:
+ Укажите каталог где будут храниться данные mini-buildd. Этот каталог также будет домашним каталогом пользователя mini-buildd.
+ .
+ В нём должно быть достаточно места для всех сборщиков и репозиториев, которые вы планируете использовать.
+Description-sv.UTF-8: Sökväg för hemkatalog:
+ Ange an katalog där mini-buildd-data ska lagras. Katalogen kommer också vara hemkatalog för mini-buildd-användaren.
+ .
+ Den behöver ha plats för alla byggare och förråd som du planerar att använda.
+
+Template: mini-buildd/admin_password
+Type: password
+Description: Administrator password for mini-buildd:
+ Please choose the password for the administrative user of
+ mini-buildd. This password will be used for the "admin" user
+ in mini-buildd's web interface.
+ .
+ If you enter a password, this will also trigger the creation of a
+ local "admin" user.
+ .
+ If you leave this empty, no user creation will happen.
+Description-cs.UTF-8: Heslo správce mini-buildd:
+ Zvolte si prosím heslo pro správce mini-buildd. Toto heslo se bude používat ve webovém rozhraní mini-buildd pro uživatele "admin".
+ .
+ Pokud zadáte heslo, vytvoří se rovněž místní uživatel "admin".
+ .
+ Ponecháte-li políčko prázdné, žádný uživatel se nevytvoří.
+Description-da.UTF-8: Adgangskoden til administratoren for mini-buildd:
+ Vælg venligst adgangskoden for mini-buildd's administrative bruger. Denne adgangskode vil blive brugt for brugeren »admin« i mini-buildd's netgrænseflade.
+ .
+ Hvis du indtaster en adgangskode, så vil det også udløse oprettelsen af en lokal »admin«-bruger.
+ .
+ Hvis du efterlader denne tom vil der ikke ske en brugeroprettelse.
+Description-de.UTF-8: Administratorpasswort für mini-buildd:
+ Bitte wählen Sie ein Passwort für den administrativen Benutzer von mini-buildd aus. Dieses Passwort wird für den Benutzer »admin« in der Weboberfläche von mini-buildd verwendet.
+ .
+ Wenn Sie ein Passwort eingeben, wird dadurch auch die Erstellung eines lokalen Benutzers »admin« ausgelöst.
+ .
+ Wenn Sie dies leer lassen, wird kein Benutzer erstellt.
+Description-es.UTF-8: Contraseña de administración para mini-buildd:
+ Seleccione la contraseña para el usuario de administración de mini-buildd. Se utilizará esta cotraseña para el usuario «admin» en la interfaz web de mini-buildd.
+ .
+ Si introduce una contraseña se creará un usuario «admin» local.
+ .
+ Si deja esto vacío no se creará ningún usuario.
+Description-fr.UTF-8: Mot de passe administrateur pour mini-buildd :
+ Veuillez choisir le mot de passe pour l'administrateur de mini-buildd. Ce mot de passe sera utilisé pour l'utilisateur « admin » dans l'interface wed de mini-buildd.
+ .
+ Si vous entrez un mot de passe, cela déclenchera également la création d'un utilisateur « admin » local.
+ .
+ Si vous laissez ceci vide, aucun utilisateur ne sera créé.
+Description-it.UTF-8: Password dell'amministratore per mini-buildd:
+ Scegliere la password per l'utente amministrativo di mini-buildd. Questa password sarà utilizzata per l'utente «admin» nell'interfaccia web di mini-buildd.
+ .
+ Se si inserisce una password, si attiverà anche la creazione di un utente «admin» locale.
+ .
+ Se si lascia questo campo vuoto, non verrà creato alcun utente.
+Description-ja.UTF-8: mini-buildd 管理者のパスワード:
+ mini-buildd 管理用ユーザのパスワードを選択してください。このパスワードは mini-buildd のウェブインターフェイスの「admin」ユーザ用に利用されます。
+ .
+ パスワードを入力するとローカルの「admin」ユーザ作成もが行われます。
+ .
+ これを空白にした場合はユーザ作成は行われません。
+Description-nl.UTF-8: Beheerderswachtwoord voor mini-buildd:
+ Kies het wachtwoord voor de beheerder van mini-buildd. Dit wachtwoord zal gebruikt worden voor gebruiker "admin" in de webinterface van mini-buildd.
+ .
+ Indien u een wachtwoord ingeeft, zal dit ook tot gevolg hebben dat er lokaal een gebruiker "admin" aangemaakt wordt.
+ .
+ Indien u dit leeg laat, dan wordt er geen gebruiker aangemaakt.
+Description-pl.UTF-8: Hasło administratora mini-buildd:
+ Proszę wybrać hasło administratora mini-buildd. Hasło to będzie używane dla użytkownika "admin" w interfejsie WWW mini-buildd.
+ .
+ Jeśli wprowadzi się hasło, powstanie również lokalny użytkownik "admin".
+ .
+ Jeśli pole pozostanie puste, użytkownik nie zostanie utworzony.
+Description-pt.UTF-8: Palavra passe de administrador para o mini-buildd:
+ Por favor escolha a palavra passe para o utilizador administrativo do mini-buildd. Esta palavra passe será usada para o utilizador "admin" na interface web do "mini-buildd".
+ .
+ Se inserir uma palavra passe, isto irá também accionar a criação de um utilizador "admin" local.
+ .
+ Se deixar isto em vazio, não será criado nenhum utilizador.
+Description-ru.UTF-8: Пароль администратора mini-buildd:
+ Введите пароль административного пользователя mini-buildd. Этот пароль будет действовать для пользователя «admin» в веб-интерфейсе mini-buildd.
+ .
+ Если вы введёте пароль, то также будет создан локальный пользователь «admin».
+ .
+ Если ничего не вводить, то пользователь создан не будет.
+Description-sv.UTF-8: Administrativt lösenord för mini-buildd:
+ Ange lösenord för mini-buildd-användaren.Detta lösenord kommer att användas för "admin"-användaren i mini-buildds webbgränsnsitt.
+ .
+ Anges ett lösenord innebär det att en lokal "admin"-användare kommer att skapas.
+ .
+ Lämnas detta tomt kommer ingen användare att skapas.
+
+Template: mini-buildd/options
+Type: string
+Default: --verbose
+Description: Extra options:
+ Please add any mini-buildd command line options you would like to use
+ ("mini-buildd --help" gives a list of available options).
+ .
+ The only options really recommended for use here are "-v"/"--verbose"
+ to increase the log level or "-q"/"--quiet" to decrease it.
+Description-cs.UTF-8: Dodatečné volby:
+ Zadejte prosím všechny volby na příkazové řádce pro mini-buildd, které chcete používat (příkaz "mini-buildd --help" poskytuje seznam dostupných voleb).
+ .
+ Jediné volby, jejichž použití se na tomto místě skutečně doporučuje, jsou "-v"/"--verbose" ke zvýšení úrovně protokolování nebo "-q"/"--quiet" k jejímu snížení.
+Description-da.UTF-8: Ekstra tilvalg:
+ Tilføj venligst eventuelle kommandolinjetilvalg for mini-buildd du ønsker at bruge (»mini-buildd --help« viser en list over tilgængelige tilvalg).
+ .
+ De eneste tilvalg som reelt anbefales her er »-v"/"--verbose« til at øge logniveauet eller »-q"/"--quiet« for at sænke det.
+Description-de.UTF-8: Zusätzliche Optionen:
+ Bitte geben Sie alle Optionen für die Befehlszeile an, die Sie verwenden möchten (»mini-buildd --help« zeigt eine Liste der verfügbaren Optionen).
+ .
+ Die einzigen Optionen, die hier wirklich zur Verwendung empfohlen werden, sind »-v«/»--verbose«, um den Umfang der Statusmeldungen zu erhöhen und »-q«/»--quiet«, um ihn zu verringern.
+Description-es.UTF-8: Opciones adicionales:
+ Agregue las opciones que desea utilizar durante la ejecución de mini-buildd («mini-buildd --help» proporciona una lista de las opciones disponibles).
+ .
+ Las únicas opciones recomendadas para introducir aquí son «-v»/«--verbose» para aumentar el nibel de detalle de los registros o «-q»/«--quiet» para reducirla.
+Description-fr.UTF-8: Options supplémentaires :
+ Veuillez ajouter toutes les commandes optionnelles de mini-buildd que vous voudriez utiliser (« mini-buildd --help » donne une liste des options disponibles).
+ .
+ Les seules options réellement recommandées ici sont « -v « / »--verbose » pour augmenter la verbosité des logs ou « -q « / » --quiet » pour la diminuer.
+Description-it.UTF-8: Opzioni aggiuntive:
+ Si aggiunga una qualsiasi opzione per la riga di comando per mini-buildd che si vuole utilizzare («mini-buildd --help» fornisce un elenco delle opzioni disponibili).
+ .
+  Le uniche vere opzioni consigliate da utilizzare qui sono «-v»/« --verbose» per incrementare il livello di log o «-q»/« --quiet» per decrementarlo.
+Description-ja.UTF-8: 追加オプション:
+ 利用したい mini-buildd のコマンドラインオプションがあればここで追加してください (「mini-buildd --help」で利用できるオプション一覧を得られます)。
+ .
+ ここでの指定を実際に推奨するオプションはログレベルを増加させる「-v」や「--verbose」、または減少させる「-q」や「--quiet」だけです。
+Description-nl.UTF-8: Extra opties:
+ Geef eventuele commandolijnopties op die u met mini-buildd wilt gebruiken ("mini-buildd --help" toont een lijst van beschikbare opties).
+ .
+ De enige opties die hier echt aanbevolen worden, zijn "-v"/"--verbose" om het log-niveau te verhogen of "-q"/"--quiet" om het te verlagen.
+Description-pl.UTF-8: Dodatkowe opcje:
+ Można tu dodać opcje wiersza poleceń mini-buildd (polecenie "mini-buildd --help" wypisze dostępne możliwości).
+ .
+ Jedyną rzeczywiście zalecaną tu opcją jest "-v" lub "--verbose" aby zwiększyć ilość wypisywanych informacji lub "-q" albo "quiet" aby ją zmniejszyć.
+Description-pt.UTF-8: Opções extra:
+ Por favor adicione quaisquer opções de linha do comandos do mini-buildd que deseje usar ("mini-buildd --help" dá uma lista de opções disponíveis).
+ .
+ As únicas opções realmente recomendadas de usar são "-v"/"--verbose" para aumentar o nível de relatório ou "-q"/"--quiet" para o diminuir.
+Description-ru.UTF-8: Дополнительные параметры:
+ Укажите любые параметры командной строки mini-buildd, которые нужно использовать (команда «mini-buildd --help» выдаст возможные параметры).
+ .
+ Рекомендуется использовать только параметры «-v»/«--verbose» для повышения детализации журнала или «-q»/«--quiet» для уменьшения детализации.
+Description-sv.UTF-8: Extra alternativ:
+ Lägg till de kommandoradsflaggor för mini-buildd som du vill använda ("mini-buildd --help" visar en lista med möjliga alternativ).
+ .
+ De alternativ som rekommenderas är "-v"/"--verbose" för att öka mängden loggning eller "-q"/"--quiet" för att minska den.
+
+Template: mini-buildd/note
+Type: note
+Description: Configuration of mini-buildd complete
+ Unless you changed the defaults, you should now be able to visit the
+ new home of the local mini-buildd instance at http://localhost:8066.
+ .
+ A good starting point is the online manual named "Quickstart".
+Description-cs.UTF-8: Nastavení mini-buildd dokončeno
+ Dokud nezměníte výchozí nastavení, měli byste nyní  mít možnost navštívit na adrese http://localhost:8066 nový domovský adresář mini-buildd instance.
+ .
+ Dobrým výchozím bodem je online příručka s názvem "Quickstart".
+Description-da.UTF-8: Konfigurationen af mini-buildd er færdig
+ Med mindre du ændrede standarderne, så bør du nu kunne besøge det nye hjem for den lokale mini-buildd-instans på http://localhost:8066.
+ .
+ Et godt startsted er manualen navngivet »Quickstart«.
+Description-de.UTF-8: Konfiguration von mini-buildd abgeschlossen
+ Sofern Sie die Voreinstellungen nicht geändert haben, sollten Sie nun die Weboberfläche der lokalen mini-buildd-Instanz unter http://localhost:8066 ansehen können.
+ .
+ Ein guter Einstieg ist das Online-Handbuch unter dem Punkt »Quickstart«.
+Description-es.UTF-8: Se completó la configuración de mini-buildd
+ A menos que haya modificado los valores predeterminados, debería poder acceder a la nueva interfaz de la instancia local de mini-buildd en «http://localhost:8066».
+ .
+ Un buen punto de partida es el manual en línea llamado «Quickstart».
+Description-fr.UTF-8: La configuration de mini-buildd est terminée.
+ À moins que vous ne modifiez les valeurs par défaut, vous devriez pouvoir vous rendre sur la nouvelle page d'accueil de l'instance mini-buildd à l'adresse http://localhost:8066.
+ .
+ Un bon point de départ est le manuel en ligne nommé « Quickstart ».
+Description-it.UTF-8: Configurazione di mini-buildd completata
+ A meno che si siano modificate le impostazioni predefinite, si dovrebbe essere in grado di accedere all'istanza locale di mini-buildd all'indirizzo http://localhost:8066.
+ .
+ Un buon punto di partenza è il manuale online intitolato «Quickstart».
+Description-ja.UTF-8: mini-buildd の設定が完了しました
+ デフォルトを変更していなければこれで http://localhost:8066 にあるローカル mini-buildd の新しいホームに行けるはずです。
+ .
+ 良い開始点としてオンラインマニュアルの「クイックスタート」があります。
+Description-nl.UTF-8: Instellen van mini-buildd voltooid
+ Tenzij u niet de standaardinstellingen gevolgd heeft, zou u nu in staat moeten zijn om de nieuwe thuismap van het lokale exemplaar van mini-buildd te vinden op http://localhost:8066.
+ .
+ Een goed beginpunt is de online-handleiding "Quickstart".
+Description-pl.UTF-8: Zakończono konfigurację mini-buildd.
+ Jeśli nie zmieniono opcji domyślnych, powinno dać się otworzyć stronę startową lokalnej instancji mini-buildd pod adresem http://localhost:8066.
+ .
+ Dobrym punktem startowym jest dostępny na stronie podręcznik "Quickstart".
+Description-pt.UTF-8: Configuração do mini-buildd completa
+ A menos que você modifique as predefinições, deverá agora ser capaz de visitar a nova home da instância local do mini-buildd em http://localhost:8066.
+ .
+ Um bom ponto de partida é o manual online chamado "Quickstart".
+Description-ru.UTF-8: Настройка mini-buildd выполнена
+ Если вы не меняли настройки по умолчанию, то теперь можете войти на домашний локальный экземпляр mini-buildd по адресу http://localhost:8066.
+ .
+ Для начала рекомендуем прочесть онлайн руководство «Quickstart».
+Description-sv.UTF-8: mini-buildd redo att användas
+ Så länge du inte ändrade standardvärdena så ska du nu kunna besöka din lokala mini-buildd-instans på http://localhost:8066.
+ .
+ En bra startplats är onlinemanualen kallad "Quickstart".

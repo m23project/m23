@@ -1,0 +1,184 @@
+
+Template: zaqar/register-endpoint
+Type: boolean
+Default: false
+Description: Register Zaqar in the Keystone endpoint catalog?
+ Each OpenStack service (each API) should be registered in order to be
+ accessible. This is done using "keystone service-create" and "keystone
+ endpoint-create". This can be done automatically now.
+ .
+ Note that you will need to have an up and running Keystone server on which to
+ connect using the Keystone authentication token.
+Description-cs.UTF-8: Zaregistrovat Zaqar v katalogu koncových bodů keystone?
+ Aby byla každá služba Openstack (každé API) přístupná, musí být zaregistrována. To se provádí pomocí příkazů "keystone service-create" a "keystone endpoint-create". Zvolte si, zda-li se tyto příkazy mají nyní spustit.
+ .
+ Berte na vědomí, že musíte mít běžící server keystone, na který se lze připojit pomocí ověřovacího klíče pro Keystone.
+Description-da.UTF-8: Registrer Zaqar i Keystones slutpunktskatalog?
+ Hver OpenStack-tjeneste (hver API) skal registreres for at være tilgængelig. Dette gøres med »keystone service-create« og »keystone endpoint-create«. Dette kan udføres automatisk nu.
+ .
+ Bemærk at du skal have en op og kørende Keystoneserver, som du kan forbinde til med Keystones godkendelsessymbol.
+Description-de.UTF-8: Zaqar im Keystone-Endpunktkatalog registrieren?
+ Jeder OpenStack-Dienst (jedes API) sollte registriert werden, damit darauf zugegriffen werden kann. Dies wird mittels »keystone service-create« und »keystone endpoint-create« erreicht und kann nun automatisch erledigt werden.
+ .
+ Beachten Sie, dass Sie einen gestarteten und laufenden Keystone-Server haben müssen, mit dem Sie sich anhand des Keystone-Authentifizierungs-Tokens verbinden.
+Description-es.UTF-8: ¿Desea registrar Zaqar en el catálogo de puntos finales de Keystone?
+ Debe registrar cada uno de los servicios OpenStack (cada API) para que sean accesibles. Esto se lleva a cabo mediante las órdenes «keystone service-create» y «keystone endpoint-create». Puede hacerlo ahora automáticamente.
+ .
+ Tenga en cuenta que necesitará disponer de un servidor Keystone en ejecución al que conectarse utilizando el token de autenticación de Keystone.
+Description-fr.UTF-8: Enregistrer Zaqar dans le catalogue de points d'accès Keystone ?
+ Chaque service OpenStack (chaque API) doit être enregistré pour être accessible. Cela peut être fait en utilisant « keystone service-create » et « keystone endpoint-create ». Cela peut être fait automatiquement maintenant.
+ .
+ Veuillez noter que vous aurez besoin d'un serveur Keystone fonctionnel sur lequel se connecter pour utiliser le jeton d'authentification Keystone.
+Description-it.UTF-8: Registrare Zaqar nel catalogo di punti terminali keystone?
+ Ogni servizio OpenStack (ogni API) dovrebbe essere registrato per poter essere accessibile. Ciò viene fatto usando «keystone service-create» e «keystone endpoint-create». Scegliere se si desidera eseguire ora questi comandi.
+ .
+ Notare che sarà necessario avere un server keystone in funzione a cui connettersi usando il token di autorizzazione Keystone.
+Description-ja.UTF-8: Zaqar を Keystone の端末リストに登録しますか?
+ OpenStack のサービスごと (API ごと) に、アクセスできるようにするため登録すべきです。「keystone service-create」と「keystone endpoint-create」を使って登録することができます。ここで自動的に行うことができます。
+ .
+ Keystone 認証文字列を使って接続する先の Keystone サーバが必要なことに注意してください。
+Description-pt.UTF-8: Registar o Zaqar no catálogo de "endpoint" do Keystone?
+ Cada serviço do OpenStack (cada API) deve ser registado de modo a ser acessível. Isto é feito usado "keystone service-create" e "keystone endpoint-create". Isto pode ser feito automaticamente agora.
+ .
+ Note que irá precisar de ter um servidor Keystone a funcionar no qual ligar usando o sinal de autenticação do Keystone.
+Description-ru.UTF-8: Зарегистрировать Zaqar в каталоге конечных точек Keystone?
+ Для доступа к службам Openstack (каждому API) их нужно регистрировать. Это выполняется с помощью команды «keystone service-create» и «keystone endpoint-create». Это может быть сделано автоматически прямо сейчас.
+ .
+ Заметим, что у вас должен быть работающий сервер Keystone, к которому будет произведено подключение с использованием токена аутентификации Keystone.
+Description-sv.UTF-8: Ska Zaqar registreras i keystones katalog med ändpunkter?
+ Alla OpenStack-tjänster (varje API) ska registreras för att kunna användas. Detta görs med kommandona "keystone service-create" och "keystone endpoint-create". Detta kan göras automatiskt nu.
+ .
+ OBS. Du behöver ha en fungerande keystone-server att ansluta till.
+
+Template: zaqar/keystone-ip
+Type: string
+Description: Keystone server IP address:
+ Please enter the IP address of the Keystone server, so that zaqar-server can
+ contact Keystone to do the Zaqar service and endpoint creation.
+Description-cs.UTF-8: IP adresa serveru keystone:
+ Zadejte IP adresu serveru keystone, aby se mohlo zaqar-api spojit s Keystone a provozovat službu Zaqar a vytvářet koncové body.
+Description-da.UTF-8: IP-adresse for Keystoneserver:
+ Indtast IP-adressen for din Keystoneserver, så at zaqar-server kan kontakte Keystone for at udføre Zaqartjenesten og slutpunktsoprettelse.
+Description-de.UTF-8: IP-Adresse des Keystone-Servers:
+ Bitte geben Sie die IP-Adresse des Keystone-Servers an, so dass zaqar-server Keystone kontaktieren kann, um den Zaqar-Dienst und den Endpunkt zu erstellen.
+Description-es.UTF-8: Dirección IP del servidor Keystone:
+ Introduzca la dirección IP del servidor Keystone para que zaqar-server pueda contactar con Keystone para realizar el servicio Zaqar y crear el punto final.
+Description-fr.UTF-8: Adresse IP du serveur Keystone : 
+ Veuillez indiquer l'adresse IP du serveur Keystone, pour que zaqar-server puisse contacter Keystone pour établir le service Zaqar et créer le point d'accès.
+Description-it.UTF-8: Indirizzo IP di Keystone:
+ Inserire l'indirizzo IP del proprio server keystone, in modo che zaqar-server possa contattare Keystone per effettuare la creazione del servizio e del punto terminale Zaqar.
+Description-ja.UTF-8: Keystone サーバの IP アドレス:
+ Keystone サーバの IP アドレスを入力してください。それにより zaqar-server は Keystone と通信し、Zaqar サービスや端末の作成ができるようになります。
+Description-pt.UTF-8: Endereço IP do servidor do Keystone:
+ Por favor indique o endereço IP do servidor Keystone, para que o zaqar-server possa contactar o Keystone para fazer o serviço Zaqar e a criação do "endpoint".
+Description-ru.UTF-8: IP-адрес сервера Keystone:
+ Введите IP-адрес сервера Keystone для того, чтобы zaqar-server могла подключиться к Keystone для запуска службы Zaqar и создания конечной точки.
+Description-sv.UTF-8: IP-adress till Keystone:
+ Ange IP-adressen till din keystone-server så att zaqar-server kan kontakta Keystone för att lägga till Zaqar-tjänsten som en ändpunkt.
+
+Template: zaqar/keystone-auth-token
+Type: password
+Description: Keystone authentication token:
+ To configure its endpoint in Keystone, zaqar-server needs the Keystone
+ authentication token.
+Description-cs.UTF-8: Autentizační klíč pro Keystone:
+ Aby mohlo zaqar-server nastavit v Keystone svůj koncový bod, potřebuje autentizační klíč pro Keystone.
+Description-da.UTF-8: Godkendelsessymbol for Keystone:
+ For at konfigurere sit slutpunkt i Keystone skal zaqar-server bruge Keystones godkendelsessymbol.
+Description-de.UTF-8: Keystone-Authentifizierungs-Token:
+ zaqar-server benötigt das Keystone-Authentifizierungs-Token, um seinen Endpunkt in Keystone zu konfigurieren.
+Description-es.UTF-8: Token de autenticación de Keystone:
+ Para configurar su punto final en Keystone, zaqar-server necesita el token de autenticación de Keystone.
+Description-fr.UTF-8: Jeton d'authentification Keystone : 
+ Pour configurer son point d'accès dans Keystone, zaqar-server a besoin du jeton d'authentification Keystone.
+Description-it.UTF-8: Token di autenticazione Keystone:
+ Per configurare il proprio punto terminale in Keystone, zaqar-server ha bisogno del token di autenticazione Keystone.
+Description-ja.UTF-8: Keystone 認証文字列:
+ Keystone で端末を設定するには、zaqar-server は Keystone 認証文字列を必要とします。
+Description-nl.UTF-8: Legitimatiebewijs voor Keystone:
+ Om zijn toegangspunt in Keystone te kunnen aanmaken, heeft zaqar-server het legitimatiebewijs voor Keystone nodig.
+Description-pt.UTF-8: Sinal de autenticação do Keystone:
+ Para configurar o seu endpoint no Keystone, o zaqar-server precisa do sinal de autenticação do Keystone.
+Description-ru.UTF-8: Токен аутентификации Keystone:
+ Для настройки собственной конечной точки в Keystone zaqar-server требуется токен аутентификации Keystone.
+Description-sv.UTF-8: Autetiseringsvärde för Keystone:
+ För att lägga till ändpunkt i Keystone behöver zaqar-server ett autentiseringsvärde för Keystone.
+
+Template: zaqar/endpoint-ip
+Type: string
+Description: Zaqar endpoint IP address:
+ Please enter the IP address that will be used to contact Zaqar.
+ .
+ This IP address should be accessible from the clients that will use this
+ service, so if you are installing a public cloud, this should be a public
+ IP address.
+Description-cs.UTF-8: IP adresa koncového bodu Zaqar:
+ Zadejte IP adresu, která se bude používat ke spojení s Zaqar (např: IP adresa koncového bodu Zaqar).
+ .
+ Tato IP adresa musí být přístupná z klientů, kteří budou tuto službu používat, takže pokud instalujete veřejný cloud, musí to být veřejná IP adresa.
+Description-da.UTF-8: IP-adresse for Zaqarslutpunkt:
+ Indtast IP-adressen som vil blive brugt til at kontakter Zaqar.
+ .
+ Denne IP-adresse skal være tilgængelig fra klienterne som vil bruge denne tjeneste, så hvis du installerer en offentlig sky, skal dette være en offentlig IP-adresse.
+Description-de.UTF-8: IP-Adresse des Zaqar-Endpunkts:
+ Bitte geben Sie die IP-Adresse ein, die zum Kontaktieren von Zaqar benutzt wird.
+ .
+ Auf diese IP-Adresse sollte von den Clients, die diesen Dienst verwenden, zugegriffen werden können, daher sollte sie, falls Sie eine öffentliche Cloud installieren, eine öffentliche IP-Adresse sein.
+Description-es.UTF-8: Dirección IP del punto final de Zaqar:
+ Introduzca la dirección IP que se utilizará para contactar con Zaqar.
+ .
+ Esta dirección IP debe ser accesible desde los clientes que usarán este servicio, por lo que si está instalando una nube pública, debería ser una dirección IP pública.
+Description-fr.UTF-8: Adresse IP du point d'accès Zaqar : 
+ Veuillez indiquer l'adresse IP qui sera utilisée pour contacter Zaqar.
+ .
+ Cette adresse IP doit être accessible depuis les clients qui utiliseront ce service, donc si vous installez un nuage public, ce devra être une adresse IP publique.
+Description-it.UTF-8: Indirizzo IP del punto terminale Zaqar:
+ Inserire l'indirizzo IP che verrà usato per contattare Zaqar (es.: l'indirizzo IP del punto terminale Zaqar).
+ .
+ Questo indirizzo IP dovrebbe essere accessibile dai client che useranno il servizio, perciò se si sta installando una cloud pubblica, questo dovrebbe essere un indirizzo IP pubblico.
+Description-ja.UTF-8: Zaqar 端末の IP アドレス:
+ Zaqar への通信に利用する IP アドレスを入力してください。
+ .
+ この IP アドレスはこのサービスを利用するクライアントからアクセスできないといけないので、パブリッククラウドをインストールしている場合、これは公開 IP アドレスを使うようにしてください。
+Description-pt.UTF-8: Endereço IP endpoint do Zaqar:
+ Por favor indique o endereço IP que será usado para contactar o Zaqar.
+ .
+ Este endereço IP deve ser acessível a partir dos clientes que vão usar este serviço, portanto se está a instalar uma "cloud" pública, este deve ser um endereço IP público.
+Description-ru.UTF-8: IP-адрес конечной точки Zaqar:
+ Введите IP-адрес, который будет использован для подключения к Zaqar.
+ .
+ Этот IP-адрес должен быть доступен клиентам, которые будут использовать эту службу, поэтому если вы разворачиваете открытое облако, то это должен быть публичный IP-адрес.
+Description-sv.UTF-8: IP-adress för Zaqar-ändpunkt:
+ Ange den IP-adress som ska användas för att kontakta Zaqar.
+ .
+ Denna IP-adress ska vara nåbar från klienterna som vill använda den här tjänsten. Om detta är en publik molntjänst så ska det vara en publik IP-adress.
+
+Template: zaqar/region-name
+Type: string
+Default: regionOne
+Description: Name of the region to register:
+ OpenStack supports using availability zones, with each region representing
+ a location. Please enter the zone that you wish to use when registering the
+ endpoint.
+Description-cs.UTF-8: Název registrované oblasti:
+ Openstack lze využívat pomocí oblastí dostupnosti, přičemž každá oblast představuje místo. Zadejte prosím oblast, kterou chcete použít při registraci koncového bodu.
+Description-da.UTF-8: Navn på regionen der skal registreres:
+ OpenStack understøtter at bruge tilgængelighedszoner, hvor hver region repræsenterer et sted. Indtast venligst zonen, som du ønsker at bruge, når du registrerer slutpunktet.
+Description-de.UTF-8: Name der Region, die registriert wird:
+ OpenStack unterstützt die Verwendung von Verfügbarkeitszonen, bei der jede Region einen Ort repräsentiert. Bitte geben Sie die Zone, die Sie benutzen möchten, bei der Registrierung des Endpunkts an.
+Description-es.UTF-8: Nombre de la región a registrar:
+ OpenStack puede utilizarse con zonas de disponibilidad, donde cada región representa una ubicación. Introduzca la zona que desea utilizar cuando registre el punto final.
+Description-fr.UTF-8: Nom de la région à enregistrer :
+ OpenStack prend en charge l'utilisation de zones disponibles, avec chaque région représentant un lieu. Veuillez entrer une zone que vous souhaitez utiliser lors de l'enregistrement d'un point d'accès.
+Description-it.UTF-8: Nome della regione da registrare:
+ OpenStack può essere usato utilizzando le zone di disponibilità, con ogni regione che rappresenta una posizione. Inserire la zona che si desidera usare durante la registrazione del punto terminale.
+Description-ja.UTF-8: 登録する領域の名前:
+ OpenStack は位置を示す各領域による利用可能区分を利用することができます。端末の登録時に利用したい区分を入力してください。
+Description-nl.UTF-8: Naam van de registratieregio:
+ OpenStack ondersteunt het gebruik van zones van beschikbaarheid, waarbij elke regio een locatie vertegenwoordigt. Gelieve aan te geven welke zone u wenst te gebruiken bij het registreren van het toegangspunt.
+Description-pt.UTF-8: Nome da região a registar:
+ O OpenStack suporta usar zonas de disponibilidade, com cada região a representar um local. Por favor indique a zona que deseja usar ao registar o endpoint.
+Description-ru.UTF-8: Название области для регистрации:
+ Openstack поддерживает разделение на зоны доступности, где каждая область представляет определённое расположение. Введите зону, которую вы хотите использовать при регистрации конечной точки.
+Description-sv.UTF-8: Regionnamn:
+ OpenStack kan användas med tillgänglighetszoner. Varje region representerar en plats. Ange zonen som ska användas när ändpunkten registreras.

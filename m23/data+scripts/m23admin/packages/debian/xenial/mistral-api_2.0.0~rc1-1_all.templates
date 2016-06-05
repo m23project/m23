@@ -1,0 +1,85 @@
+
+Template: mistral/register-endpoint
+Type: boolean
+Default: false
+Description: Register Mistral in the Keystone endpoint catalog?
+ Each OpenStack service (each API) should be registered in order to be
+ accessible. This is done using "keystone service-create" and "keystone
+ endpoint-create". This can be done automatically now.
+ .
+ Note that you will need to have an up and running Keystone server on which to
+ connect using the Keystone authentication token.
+Description-nl.UTF-8: Mistral registreren in de catalogus van toegangspunten van Keystone?
+ Elke OpenStack-service (elke API) moet geregistreerd zijn om toegankelijk te zijn. Dit gebeurt aan de hand van "keystone service-create" en "keystone endpoint-create". Dit kan nu automatisch uitgevoerd worden.
+ .
+ Merk op dat u een volledig functionele Keystone-server nodig heeft waarmee u verbinding kunt maken met behulp van het legitimatiebewijs voor Keystone.
+Description-pt.UTF-8: Registar o Mistral no catálogo de "endpoint" do Keystone?
+ Cada serviço do OpenStack (cada API) deve ser registado de modo a ser acessível. Isto é feito usado "keystone service-create" e "keystone endpoint-create". Isto pode ser feito automaticamente agora.
+ .
+ Note que irá precisar de ter um servidor Keystone a funcionar no qual ligar usando o sinal de autenticação do Keystone.
+
+Template: mistral/keystone-ip
+Type: string
+Description: Keystone server IP address:
+ Please enter the IP address of the Keystone server, so that mistral-api can
+ contact Keystone to do the Mistral service and endpoint creation.
+Description-nl.UTF-8: IP-adres van de Keystone-server:
+ Gelieve het IP-adres van de Keystone-server op te geven, zodat mistral-api Keystone kan contacteren om de Mistral-dienst en het toegangspunt aan te maken.
+Description-pt.UTF-8: Endereço IP do servidor do Keystone:
+ Por favor indique o endereço IP do servidor Keystone, para que o mistral-api possa contactar o Keystone para fazer o serviço Mistral e a criação do "endpoint".
+
+Template: mistral/keystone-auth-token
+Type: password
+Description: Keystone authentication token:
+ To configure its endpoint in Keystone, mistral-api needs the Keystone
+ authentication token.
+Description-nl.UTF-8: Legitimatiebewijs voor Keystone:
+ Om zijn toegangspunt in Keystone te kunnen aanmaken, heeft mistral-api het legitimatiebewijs voor Keystone nodig.
+Description-pt.UTF-8: Sinal de autenticação do Keystone:
+ Para configurar o seu endpoint no Keystone, o mistral-api precisa do sinal de autenticação do Keystone.
+
+Template: mistral/endpoint-ip
+Type: string
+Description: Mistral endpoint IP address:
+ Please enter the IP address that will be used to contact Mistral.
+ .
+ This IP address should be accessible from the clients that will use this
+ service, so if you are installing a public cloud, this should be a public
+ IP address.
+Description-nl.UTF-8: IP-adres van het toegangspunt van Mistral:
+ Gelieve het IP-adres op te geven dat gebruikt zal worden om verbinding te maken met Mistral.
+ .
+ Dit IP-adres moet bereikbaar zijn vanaf de clients die van deze service gebruik zullen maken. Indien u een openbare cloud installeert, moet dit dus een algemeen bereikbaar IP-adres zijn.
+Description-pt.UTF-8: Endereço IP endpoint do Mistral:
+ Por favor indique o endereço IP que será usado para contactar o Mistral.
+ .
+ Este endereço IP deve ser acessível a partir dos clientes que vão usar este serviço, portanto se está a instalar uma "cloud" pública, este deve ser um endereço IP público.
+
+Template: mistral/region-name
+Type: string
+Default: regionOne
+Description: Name of the region to register:
+ OpenStack supports using availability zones, with each region representing
+ a location. Please enter the zone that you wish to use when registering the
+ endpoint.
+Description-da.UTF-8: Navn på regionen der skal registreres:
+ OpenStack understøtter brug af tilgængelighedszoner, hvor hver region repræsenterer et sted. Indtast venligst zonen du ønsker at bruge, når slutpunktet registreres.
+Description-de.UTF-8: Name der Region, die registriert wird:
+ OpenStack unterstützt die Verwendung von Verfügbarkeitszonen, bei der jede Region einen Ort repräsentiert. Bitte geben Sie die Zone, die Sie benutzen möchten, bei der Registrierung des Endpunkts an.
+Description-es.UTF-8: Nombre de la región a registrar:
+ OpenStack puede utilizarse con zonas de disponibilidad, donde cada región representa una ubicación. Introduzca la zona que desea utilizar cuando 
+ registre un punto de cierre.
+Description-fr.UTF-8: Nom de la région à enregistrer : 
+ OpenStack gère l'utilisation de zones disponibles, avec chaque région représentant un lieu. Veuillez entrer une zone que vous souhaitez utiliser lors de l'enregistrement d'un point d'accès.
+Description-it.UTF-8: Nome della regione da registrare:
+ OpenStack gestisce le zone di disponibilità, con ogni regione che rappresenta una posizione. Inserire la zona che si desidera usare durante la registrazione del punto terminale.
+Description-nl.UTF-8: Naam van de registratieregio:
+ OpenStack ondersteunt het gebruik van zones van beschikbaarheid, waarbij elke regio een locatie vertegenwoordigt. Gelieve aan te geven welke zone u wenst te gebruiken bij het registreren van het toegangspunt.
+Description-pt.UTF-8: Nome da região a registar:
+ O OpenStack suporta usar zonas de disponibilidade, com cada região a representar um local. Por favor indique a zona que deseja usar ao registar o endpoint.
+Description-pt_BR.UTF-8: Nome da região para registrar:
+ O OpenStack suporta usar zonas de disponibilidade, com cada região representando uma localidade. Por favor, informe a zona que você deseja usar ao registrar o "endpoint".
+Description-ru.UTF-8: Название области для регистрации:
+ Openstack поддерживает разделение на зоны доступности, где каждая область представляет определённое расположение. Введите зону, которую вы хотите использовать при регистрации конечной точки.
+Description-sv.UTF-8: Regionnamn:
+ OpenStack kan användas med tillgänglighetszoner. Varje region representerar en plats. Ange zonen som ska användas när ändpunkten registreras.

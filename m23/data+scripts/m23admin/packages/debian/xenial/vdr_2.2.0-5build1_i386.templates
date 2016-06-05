@@ -1,0 +1,76 @@
+Template: vdr/select_dvb_card
+Type: select
+Choices: Satellite, Terrestrial, Cable
+Choices-cs.UTF-8: Satelitní, Pozemní, Kabelová
+Choices-da.UTF-8: Satellit, Terrestrisk, Kabel
+Choices-de.UTF-8: Satellit, Terrestrisch, Kabel
+Choices-es.UTF-8: Satélite, Terrestre, Cable
+Choices-fr.UTF-8: Satellite, Terrestre, Câble
+Choices-gl.UTF-8: Satélite, Terrestre, Cable
+Choices-it.UTF-8: Satellite, Terrestre, Cavo
+Choices-ja.UTF-8: 衛星放送, 地上デジタル放送, ケーブル放送
+Choices-nl.UTF-8: Satelliet, Aards, Kabel
+Choices-pt.UTF-8: Satélite, Terrestre, Cabo
+Choices-ru.UTF-8: Спутниковая, Эфирная, Кабельная
+Choices-sv.UTF-8: Satellit, Marksänd, Kabel
+Default: Satellite
+Description: DVB card type:
+ VDR needs to know your DVB card type to work correctly.
+ Using your selection, a channels.conf file will be installed to /var/lib/vdr. 
+ You may have to change this file depending on your setup.
+Description-cs.UTF-8: Typ DVB karty:
+ VDR musí znát typ vaší DVB karty. Na základě vaší odpovědi se do /var/lib/vdr nainstaluje soubor channels.conf. Tento soubor můžete později upravit dle svých potřeb.
+Description-da.UTF-8: DVB-korttype:
+ VDR skal kende din DVB-korttype for at fungere korrekt. Filen channels.conf vil med dine valg blive installeret i /var/lib/vdr. Du skal måske ændre denne fil afhængig af din opsætning.
+Description-de.UTF-8: DVB-Karten-Typ:
+ VDR muss den Typ Ihrer DVB-Karte kennen, um korrekt zu funktionieren. Mit Hilfe ihrer Auswahl wird eine channels.conf-Datei in /var/lib/vdr installiert.  Eventuell werden Sie diese Datei an Ihre Umgebung anpassen müssen.
+Description-es.UTF-8: Tipo de tarjeta DVB:
+ VDR necesita saber el tipo de la tarjeta DVB para funcionar correctamente. Utilizando su selección, se instalará un archivo «channels.conf» en «/var/lib/vdr». Puede que necesite cambiar este archivo dependiendo de su configuración.
+Description-fr.UTF-8: Type de carte DVB :
+ VDR a besoin de connaître le type de votre carte DVB pour fonctionner correctement. Un fichier channels.conf correspondant au type que vous choisirez sera installé dans le répertoire /var/lib/vdr. En fonction de votre configuration, il est possible que vous ayez besoin de modifier ce fichier par la suite.
+Description-gl.UTF-8: Tipo de tarxeta de TV dixital:
+ VDR precisa de coñecer o tipo de tarxeta de TV dixital para funcionar correctamente. Segundo o que escolla, hase instalar un ficheiro channels.conf en /var/lib/vdr. Pode ter que modificar este ficheiro dependendo da súa configuración.
+Description-it.UTF-8: Tipo di scheda DVB:
+ Per funzionare correttamente è necessario indicare a VDR il tipo di scheda DVB. In base a questa scelta verrà creato un file channels.conf che verrà installato in /var/lib/vdr. Potrebbe essere necessario adattare questo file al sistema in uso.
+Description-ja.UTF-8: DVB カードの種類:
+ VDR は正常に動作するために DVB カードの種類を知っている必要があります。ここでの選択を元にして、/var/lib/vdr に channels.conf ファイルがインストールされます。設定によってはこのファイルを変更する必要があるかもしれません。
+Description-nl.UTF-8: DVB-kaarttype:
+ VDR moet uw DVB-kaarttype weten om correct te werken. Gebruikmakend van uw selectie, zal een channels.conf-bestand worden geïnstalleerd in /var/lib/vdr. U moet dit bestand misschien aanpassen afhankelijk van uw configuratie.
+Description-pt.UTF-8: Tipo de placa DVB:
+ O VDR precisa de saber qual o tipo da sua placa DVB para funcionar correctamente. Usando a sua escolha, o ficheiro channels.conf irá ser instalado para /var/lib/vdr. Poderá ter que modificar este ficheiro dependendo da sua configuração.
+Description-ru.UTF-8: Тип карты DVB:
+ Для корректной работы VDR требуется указать тип карты DVB. На основе вашего выбора в каталог /var/lib/vdr будет помещён подходящий файл channels.conf. В зависимости от установки вам может потребоваться изменить этот файл.
+Description-sv.UTF-8: DVB-korttyp:
+ VDR behöver veta om din DVB-korttyp för att fungera korrekt. Baserat på ditt val kommer en channels.conf fil att installeras i /var/lib/vdr.  Du kanske måste ändra i denna fil beroende på din konfiguration.
+
+Template: vdr/create_video_dir
+Type: boolean
+Default: false
+Description: Create /var/lib/video?
+ By default VDR is configured to use /var/lib/video to store recordings.
+ You can either create this directory now, or change this behavior later 
+ by modifying the VIDEO_DIR variable in /etc/default/vdr.
+Description-cs.UTF-8: Vytvořit /var/lib/video?
+ Implicitně je VDR nastaveno pro ukládání nahrávek do /var/lib/video. Tento adresář se nyní může vytvořit automaticky. Jeho umístění můžete později upravit změnou proměnné VIDEO_DIR v souboru /etc/default/vdr.
+Description-da.UTF-8: Opret /var/lib/video?
+ Som standard er VDR konfigureret til at bruge /var/lib/video til at gemme optagelser. Du kan enten oprette denne mappe nu, eller ændre denne opførsel senere ved at ændre variablen VIDEO_DIR i /etc/default/vdr.
+Description-de.UTF-8: Soll /var/lib/video erstellt werden?
+ Standardmäßig ist VDR so konfiguriert, dass Aufnahmen in /var/lib/video gespeichert werden. Sie können dieses Verzeichnis entweder jetzt erstellen, oder diese Konfiguration später ändern, indem Sie die Variable VIDEO_DIR in /etc/default/vdr anpassen.
+Description-es.UTF-8: ¿Desea crear «/var/lib/video»?
+ VDR se configura por omisión para utilizar «/var/lib/video» para almacenar las grabaciones. Puede crear ahora este directorio, o cambiar más tarde este comportamiento modificando la variable VIDEO_DIR en «/etc/default/vdr».
+Description-fr.UTF-8: Créer le répertoire /var/lib/video ?
+ Par défaut, VDR sauvegarde les enregistrements dans le répertoire /var/lib/video. Vous pouvez changer ce répertoire en modifiant la variable VIDEO_DIR dans le fichier /etc/default/vdr, ou créer ce répertoire maintenant.
+Description-gl.UTF-8: ¿Crear /var/lib/video?
+ Por defecto, VDR está configurado para empregar /var/lib/video para armacenar as gravacións. Pode crear este directorio agora, ou cambiar este comportamento máis adiante modificando a variable VIDEO_DIR en /etc/default/vdr.
+Description-it.UTF-8: Creare /var/lib/video?
+ Con la configurazione predefinita, VDR usa /var/lib/video per memorizzare le registrazioni. È possibile creare questa directory adesso oppure cambiare questo comportamento modificando la variabile VIDEO_DIR in /etc/default/vdr.
+Description-ja.UTF-8: /var/lib/video を作成しますか?
+ デフォルトでは VDR は録画を保存するのに /var/lib/video を使うように設定されています。このディレクトリをすぐに作成する、あるいは後ほど /etc/default/vdr 内の VIDEO_DIR 変数の設定にて、保存するディレクトリの指定を変更できます。
+Description-nl.UTF-8: /var/lib/video aanmaken?
+ Standaard is VDR geconfigureerd om /var/lib/video te gebruiken om opnames te bewaren. U kunt deze map nu aanmaken of dit gedrag later wijzigen door de VIDEO_DIR-variabele aan te passen in /etc/default/vdr.
+Description-pt.UTF-8: Criar /var/lib/video?
+ Por omissão o VDR é configurado para usar o /var/lib/video para guardar as gravações. Poderá tanto criar agora este directório, ou modificar este comportamento mais tarde modificando a variável VIDEO_DIR em /etc/default/vdr.
+Description-ru.UTF-8: Создать /var/lib/video?
+ По умолчанию для хранения записей VDR использует /var/lib/video. Вы можете создать этот каталог сейчас, или изменить эту настройку позже, отредактировав значение переменной VIDEO_DIR в /etc/default/vdr.
+Description-sv.UTF-8: Skapa /var/lib/video?
+ Som standard är VDR konfigurerad att använda /var/lib/video för att lagra inspelningar. Du kan antingen skapa denna mapp nu eller ändra detta senare  genom att modifiera variabeln VIDEO_DIR i /etc/default/vdr.

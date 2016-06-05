@@ -1,0 +1,212 @@
+
+Template: sheepdog/start
+Type: boolean
+Default: false
+Description: Automatically start the sheepdog service?
+ Please choose whether the sheepdog service should start automatically
+ when the system is booted.
+Description-cs.UTF-8: Spouštět službu sheepdog automaticky?
+ Zvolte si prosím, zda se má služba sheepdog automaticky spouštět při zavádění systému.
+Description-da.UTF-8: Start automatisk tjenesten sheepdog?
+ Vælg venligst hvorvidt tjenesten sheepdog skal starte automatisk når systemet startes op.
+Description-de.UTF-8: Sheepdog-Dienst automatisch starten?
+ Bitte wählen Sie, ob der Sheepdog-Dienst automatisch beim Hochfahren des Systems gestartet werden soll.
+Description-es.UTF-8: ¿Desea que el servicio sheepdog se inicie automáticamente?
+ Elija si el servicio sheepdog se debe iniciar automáticamente al arrancar el sistema.
+Description-fr.UTF-8: Faut-il démarrer automatiquement le service sheepdog ?
+ Veuillez choisir si le service sheepdog doit démarrer automatiquement au lancement du système.
+Description-gl.UTF-8: Iniciar o servizo «sheepog» automaticamente?
+ Escolla se o servizo «sheepdog» debe iniciarse automaticamente cando arranque o sistema.
+Description-it.UTF-8: Avviare il servizio sheepdog automaticamente?
+ Scegliere se il servizio sheepdog deve essere fatto partire automaticamente all'avvio del sistema.
+Description-ja.UTF-8: sheepdog サービスを自動的に開始しますか?
+ システムの起動時に sheepdog サービスを自動的に開始するかどうか決めてください。
+Description-nl.UTF-8: De sheepdog-dienst automatisch opstarten?
+ Gelieve aan te geven of de sheepdog-dienst automatisch moet starten bij het opstarten van de computer.
+Description-pl.UTF-8: Uruchamiać usługę sheepdog automatycznie?
+ Proszę wybrać, czy usługa sheepdog ma być uruchamiana automatycznie, w trakcie rozruchu systemu.
+Description-pt.UTF-8: Iniciar o serviço sheepdog automaticamente?
+ Indique por favor se o serviço sheepdog deve ser iniciado automaticamente ao iniciar o sistema.
+Description-ru.UTF-8: Запускать службу sheepdog автоматически?
+ Укажите, должна ли служба sheepdog запускаться автоматически при загрузке системы.
+Description-sv.UTF-8: Ska sheepdog-tjänsten startas automatiskt?
+ Ange om tjänsten sheepdog ska startas automatiskt vid systemets uppstart.
+Description-zh_CN.UTF-8: 是否自动启动 sheepdog 服务？
+ 选择系统启动时是否自动启动 sheepdog 服务。
+
+Template: sheepdog/daemon_args
+Type: string
+Default:
+Description: Arguments for the sheepdog daemon:
+ Please choose the command line arguments that should be passed to the
+ sheepdog daemon. If no argument is given, the default behavior is to
+ start on port 7000, using the corosync driver.
+ .
+ Available options include:
+   -p, --port              specify the TCP port to listen to
+   -l, --loglevel          specify the level of logging detail
+   -d, --debug             include debug messages in the log
+   -D, --directio          use direct I/O when accessing the object store
+   -z, --zone              specify the zone ID
+   -c, --cluster           specify the cluster driver
+ More information can be found in the sheep(8) manual page.
+Description-cs.UTF-8: Volby pro démona sheepdog:
+ Zadejte prosím volby pro příkazový řádek, které se mají předat démonu sheepdog. Nezadáte-li žádnou volbu, sheepdog se bude spouštět ve výchozím stavu na portu 7000 a bude používat ovladač corosync.
+ .
+ Možné volby zahrnují:
+   -p, --port              určuje TCP port, na kterém se bude naslouchat
+   -l, --loglevel          určuje úroveň zaznamenávaných informací
+   -d, --debug             do záznamu zahrne ladicí zprávy
+   -D, --directio          při přístupu k objektu store použije přímo I/O
+   -z, --zone              určuje ID zóny
+   -c, --cluster           určuje ovladač clusteru
+ Více informací naleznete v manuálové stránce sheep(8).
+Description-da.UTF-8: Parametre for dæmonen sheepdog:
+ Vælg venligst kommandolinjeparametrene, som skal sendes til dæmonen sheepdog. Hvis ingen parametre angives er standarden at starte på port 7000, med driveren corosync.
+ .
+ Tilgængelige tilvalg inkluderer:
+   -p, --port              angiv TCP-porten der skal lyttes på
+   -l, --loglevel          angiv loggens detaljeniveau
+   -d, --debug             inkluder fejlsøgningsbeskeder i loggen
+   -D, --directio          brug direkte I/O når objektlageret tilgås
+   -z, --zone              angiv zone-id
+   -c, --cluster           angiv klyngedriveren
+ Yderligere information kan findes på manualsiden sheep(8).
+Description-de.UTF-8: Argumente für den Sheepdog-Daemon:
+ Bitte wählen Sie die Befehlszeilenargumente, die an den Sheepdog-Daemon übergeben werden sollen. Falls kein Argument angegeben wird, startet er standardmäßig auf Port 7000 und verwendet den Corosync-Treiber.
+ .
+ Die verfügbaren Optionen umfassen:
+   -p, --port              gibt den TCP-Port an, auf dem auf eine Verbindung
+                           gewartet wird
+   -l, --loglevel          gibt die Detailstufe der Protokollierung an
+   -d, --debug             lässt Debug-Meldungen in das Protokoll einfließen
+   -D, --directio          verwendet beim Zugriff auf den Objektspeicher
+                           direkte E/A
+   -z, --zone              gibt die Zonenkennung an
+   -c, --cluster           gibt den Cluster-Treiber an
+ Weitere Informationen finden Sie in der Handbuchseite sheep(8).
+Description-es.UTF-8: Opciones para el demonio sheepdog:
+ Seleccione las opciones para el inicio en línea de órdenes del demonio sheepdog. Si no proporciona ninguna opción, se utilizará el comportamiento predeterminado (el servicio se iniciará en el puerto 7000 y utilizará el controlador corosync).
+ .
+ Opciones disponibles:
+   -p, --port              especificar el puerto TCP de escucha
+   -l, --loglevel          especificar el nivel de detalle del registro
+   -d, --debug             incluir los mensajes de depuración en el registro
+   -D, --directio          utilizar E/S directa para acceder al almacén de objetos
+   -z, --zone              especificar el identificador (ID) de la zona
+   -c, --cluster           especificar el controlador del cluster
+ Puede obtener más información en la página del manual de sheep(8).
+Description-fr.UTF-8: Paramètres pour le démon sheepdog :
+ Veuillez sélectionner les paramètres de ligne de commande qui doivent être passés au démon sheepdog. Si aucun paramètre n'est donné, le comportement par défaut est de démarrer sur le port 7000, en utilisant le pilote corosync.
+ .
+ Les options disponibles sont :
+   -p, --port           indique le port TCP sur lequel écouter ;
+   -l, --loglevel       indique le niveau de détails de la journalisation ;
+   -d, --debug          inclut les messages de débogage dans les journaux
+                        du système ;
+   -D, --directio       utilise des entrées/sorties directes lors de l'accès
+                        à l'objet stockage ;
+   -z, --zone           indique l'identifiant de zone ;
+   -c, --cluster        indique le pilote de groupe (« cluster »).
+ Vous pouvez trouver plus d'informations dans la page de manuel de sheep(8).
+Description-gl.UTF-8: Parámetros para o servizo «sheepdog»:
+ Escolla os parámetros da liña de orde que se pasarán ao servizo «sheepdog». Se non indica ningún parámetro, o comportamento por omisión é iniciarse no porto 7000, usando o controlador «corosync».
+ .
+ As opcións dispoñíbeis inclúen:
+   -p, --port              indica o porto TCP no que escoitar
+   -l, --loglevel          indica o nivel de detalle do rexistro
+   -d, --debug             incluír mensaxes de depuración no rexistro
+   -D, --directio          usar I/O directo ao acceder ao almacén de obxectos
+   -z, --zone              indica o ID de zona
+   -c, --cluster           indica o controlador do clúster
+ Pode atopar  máis información na páxina do manual de sheep(8).
+Description-it.UTF-8: Argomenti per il demone sheepdog:
+ Scegliere gli argomenti per la riga di comando che devono essere passati al demone sheepdog. Se non viene specificato alcun argomento, il comportamento predefinito è di avviarlo sulla porta 7000 usando il driver corosync.
+ .
+ Le opzioni disponibili includono:
+   -p, --port              specifica la porta TCP su cui rimanere in ascolto
+   -l, --loglevel          specifica il livello di dettaglio del registro
+   -d, --debug             include i messaggi di debug nel registro
+   -D, --directio          usa l'I/O diretto quando accede all'archivio degli oggetti
+   -z, --zone              specifica l'ID di zona
+   -c, --cluster           specifica il driver per il cluster
+ Ulteriori informazioni si possono trovare nella pagina di manuale sheep(8).
+Description-ja.UTF-8: sheepdog デーモンに渡す引数:
+ sheepdog デーモンに渡すコマンドライン引数を選択してください。引数を与えない場合のデフォルトの挙動は、ポート 7000 で corosync ドライバを利用して開始します。
+ .
+ 利用可能なオプションには以下のようなものがあります:
+   -p, --port       待ち受ける TCP ポートを指定します
+   -l, --loglevel   どの程度詳細にログに記録するかを指定します
+   -d, --debug      ログにデバッグ用メッセージを記録します
+   -D, --directio   オブジェクトストアへのアクセスにダイレクト I/O を使います
+   -z, --zone       ゾーン ID を指定します
+   -c, --cluster    クラスタドライバを指定します
+ sheep(8) マニュアルページにさらなる情報があります。
+Description-nl.UTF-8: Argumenten voor de sheepdog-achtergronddienst:
+ Gelieve de argumenten op te geven die als argumenten aan de commandolijn meegegeven moeten worden aan de sheepdog-achtergronddienst. Het standaardgedrag is om te starten op poort 7000 met het corosync stuurprogramma.
+ .
+ Beschikbare opties zijn:
+   -p, --port              TCP poort waarop geluisterd wordt
+   -l, --loglevel          hoe gedetailleerd het logboek is
+   -d, --debug             afluisterberichten opnemen in het logboek
+   -D, --directio          aanspreken van de objectenruimte via direct I/O
+   -z, --zone              specificeert het zone-ID
+   -c, --cluster           specificeert het cluster-stuurprogramma
+ Meer informatie is te vinden in de man-pagina sheep(8).
+Description-pl.UTF-8: Argumenty do demona sheepdog:
+ Proszę wprowadzić argumenty wiersza polecenia, które zostaną przekazane demonowi sheepdog. Jeśli nie poda się żadnych, to uruchomi się on na porcie 7000, korzystając ze sterownika corosync.
+ .
+ Dostępne są między innymi:
+   -p, --port            określa port TCP do nasłuchu
+   -l, --loglevel        określa poziom detali dziennika
+   -d, --debug           dołącza wiadomości debugowania do dziennika
+   -D, --directio        używa bezpośredniego wejścia/wyjścia
+                         przy dostępie do przech. obiektu
+   -z, --zone            określa identyfikator strefy
+   -c, --cluster         określa sterownik klastra
+ Więcej informacji zawiera strona podręcznika sheep(8).
+Description-pt.UTF-8: Argumentos para o daemon sheepdog:
+ Indique por favor os argumentos da linha de comandos que devem ser passados para o daemon sheepdog. Se não forem indicados argumentos, o comportamento predefinido é iniciar no porto 7000 e usar o driver corosync.
+ .
+ As opções disponíveis incluem:
+   -p, --port              indique o porto TCP no qual escutar
+   -l, --loglevel          indique o nível de detalhe dos registos
+   -d, --debug             incluir mensagem de debug no registo
+   -D, --directio          usar I/O directo no acesso aos objectos
+   -z, --zone              indicar o ID de zona
+   -c, --cluster           indicar o driver do cluster
+ Mais informação pode ser encontrada na página do manual sheep(8).
+Description-ru.UTF-8: Параметры службы sheepdog:
+ Введите параметры командной строки, которые нужно передать службе sheepdog. Если параметры не указывать, то по умолчанию используется порт 7000 и драйвер corosync.
+ .
+ Возможные параметры:
+   -p, --port              прослушиваемый порт TCP
+   -l, --loglevel          степень детализации протоколирования
+   -d, --debug             добавлять сообщения отладки в журнал
+   -D, --directio          использовать непосредственный ввод-вывод
+                           при доступе к хранилищу объектов
+   -z, --zone              идентификатор зоны
+   -c, --cluster           драйвер кластера
+ Подробная информация о параметрах приведена в справочной странице sheep(8).
+Description-sv.UTF-8: Argument till sheepdog-tjänsten:
+ Ange de kommandoradsargument som ska skickas till sheepdog-tjänsten. Om inga argument anges kommer standardbeteendet att användas, nämligen att drivrutinen corosync används och tjänsten använder port 7000.
+ .
+ Tillgängliga alternativ inkluderar:
+   -p, --port              ange vilken TCP port som ska lyssnas på
+   -l, --loglevel          ange detaljnivån för loggningen
+   -d, --debug             inkludera felsökningsmeddelanden i loggen
+   -D, --directio          använd direkt I/O vid kommunikation med objektlagret
+   -z, --zone              ange zone ID
+   -c, --cluster           ange klusterdrivrutin
+ Mer information kan hittas i manualsidan sheep(8).
+Description-zh_CN.UTF-8: sheepdog 进程的参数：
+ 请选择传递给 sheepdog 守护进程的命令行参数。如果没有给定参数，默认行为是监听 7000 端口，使用的集群启动为 corosync。
+ .
+ 可用的选项包括：
+   -p, --port              指定要监听的 TCP 端口
+   -l, --loglevel          指定日志详细程度
+   -d, --debug             在日志中包含调试信息
+   -D, --directio          访问存储对象时，使用直接 I/O
+   -z, --zone              制定 zone ID
+   -c, --cluster           指定集群驱动
+ 更多信息请查阅 sheep(8) 手册页。

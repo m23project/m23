@@ -1,0 +1,618 @@
+Template: logtool/manual
+Type: boolean
+Default: true
+Description: Manual configuration of logtool's database?
+ Logtool needs a database with regular expressions that describe logfile
+ entries that should be ignored, or considered less important. You can
+ write this database manually, or use the very flexible database in the
+ package logcheck-database for this purpose.
+ .
+ If you choose to use logcheck-database and already added values to the
+ files in /etc/logtool, these files will be replaced by symbolic links in
+ the logcheck database (although backups will be preserved). Make sure this
+ is not unwanted behaviour.
+ .
+ Reply positively to manually write a database, or negatively to use the
+ database from the package "logcheck-database".
+ .
+ Note: since logtool does not depend on this database (but instead
+ Recommends it), the default answer to this question is to manually
+ configure the database.
+Description-cs.UTF-8: Ruční nastavení databáze logtoolu?
+ Logtool vyžaduje databázi s regulárními výrazy, která popisuje záznamy, jež mají být ignorovány, nebo považovány za méně důležité. Tuto databázi si můžete napsat ručně, nebo můžete pro tyto účely využít šikovnou databázi z balíčku logcheck-database.
+ .
+ Zvolíte-li použití logcheck-database a přitom jste již zadali údaje do souborů v /etc/logtool, budou tyto soubory nahrazeny symbolickými odkazy (ovšem zálohy budou zachovány). Ujistěte se, že to je požadované chování.
+ .
+ Pro ruční vytvoření databáze odpovězte kladně, pro použití databáze z balíčku "logcheck-database" odpovězte záporně.
+ .
+ Poznámka: protože logtool na balíčku s databází nezávisí (pouze jej doporučuje), je přednastavena odpověď pro ruční vytvoření databáze.
+Description-da.UTF-8: Manuel konfiguration af logtools database?
+ Logtool kr??ver en database med regul??re udtryk, som beskriver logfilepunkter, som skal ignoreres eller anses for v??rende mindre vigtige. Du kan skrive denne database manuelt, eller bruge den meget fleksible database i pakken logcheck-database til dette form??l.
+ .
+ Hvis du v??lger at bruge logcheck-database og allerede har tilf??jet v??rdier til filerne i /etc/logtool, vil disse filer blive erstattet af symbolske henvisninger i logcheckdatabasen (selvom sikkerhedskopier vil blive gemt). V??r sikker p??, at dette ikke er en u??nsket opf??rsel.
+ .
+ Svar positivt for manuelt at skrive en database, eller negativt for at bruge databasen fra pakken ??logcheck-database??.
+ .
+ Bem??rk: Da logtool ikke afh??nger af denne database (men i stedet for anbefaler den), er standardsvaret til dette sp??rgsm??l at konfigurere databasen manuelt.
+Description-de.UTF-8: Logtool-Datenbank manuell konfigurieren?
+ Logtool benötigt eine Datenbank mit regulären Ausdrücken. Diese regulären Ausdrücke beschreiben die Einträge der Protokolldatei, die ignoriert werden sollen oder nicht so wichtig sind. Sie können diese Datenbank manuell anlegen oder die sehr flexible Datenbank im Paket logcheck-database dafür verwenden.
+ .
+ Wenn Sie sich für logcheck-database entscheiden und bereits Einträge zu den Dateien in /etc/logtool hinzugefügt haben, dann werden diese Dateien durch symbolische Links zur logcheck-Datenbank ersetzt (Sicherheitskopien werden trotzdem erstellt). Vergewissern Sie sich, dass Sie dies wirklich wollen.
+ .
+ Antworten Sie positiv, um die Datenbank manuell einzurichten, oder negativ, um die Datenbank des Paketes »logcheck-database« zu verwenden.
+ .
+ Anmerkung: Da das Logtool-Paket nicht von dieser Datenbank abhängt (es wird nur zur Installation empfohlen), ist die vorgegebene Standardantwort auf diese Frage, die Datenbank manuell zu konfigurieren.
+Description-es.UTF-8: ¿Desea configurar manualmente la base de datos de logtool?
+ Logtool necesita una base de datos con expresiones regulares que describen las entradas en el registro a ignorar, o considerados de menor importancia. Puede modificar esta base de datos directamente, o usar para ello la flexible base de datos del paquete logcheck-database.
+ .
+ Si decide usar logcheck-database pero ya añadió valores a los ficheros en «/etc/logtool», estos ficheros se reemplazarán con enlaces simbólicos en la base de datos de logcheck (aunque se conservarán las copias de seguridad). Asegúrese de que este no es un comportamiento no deseado.
+ .
+ Responda afirmativamente para modificar una base de datos manualmente, o negativamente para usar la base de datos del paquete logcheck-database.
+ .
+ Nota: ya que logtool no depende de esta base de datos (sino que lo Recomienda), la respuesta predefinida a esta pregunta es configurar manualmente la base de datos.
+Description-eu.UTF-8: Logtool datu-basearen eskuzko konfigurazioa gaitu?
+ Logtool-ek adierazpen erregularren datu-basea behar du, zein sarrerari garrantzi gutxiago eman edo deuseztu jakiteko. Datu-basea eskuz idatz dezakezu edo erabilpen honetarako pentsatua eta oso malgua den 'logcheck-database' paketea erabili.
+ .
+ 'logcheck-database' erabiltzea erabakitzen baduzu eta dagoeneko balioak gehituta baditu /etc/logtool fitxategian, fitxategi hauek ezabatu egingo dira logcheck datubasean esteka sinbolikoak erabiliz (babeskopiak mantendu egingo dira). Ziurta ezazu hau portaera onargarria dela.
+ .
+ Baiezko erantzuna eman datub-basea eskuz idazteko. Bestela, eman ezezko erantzuna "logcheck-database" paketeak dakarren datu-basea erabiltzeko.
+ .
+ Oharra: logtool-ek ez duenez datu-base honen mendekotasunik  (baina gomendatzen du), galdera honen erantzun lehenetsia datu-basea eskuz konfiguratzea da.
+Description-fr.UTF-8: Voulez-vous configurer vous-même la base de données de logtool ?
+ Logtool utilise une base de données qui décrit par des expressions rationnelles les éléments à ignorer ou moins importants, dans les journaux. Vous pouvez créer vous-même cette base de données ou bien utiliser la base très flexible du paquet « logcheck-database ».
+ .
+ Si vous choisissez la base de données du paquet logcheck-database, les éventuels fichiers de configuration présents dans /etc/logtool seront remplacés par des liens symboliques vers la base logcheck (toutefois, les fichiers seront sauvegardés). Veuillez vérifier que ce comportement vous convient.
+ .
+ Choisissez cette option si vous préférez créer vous-même la base de données. Sinon, la base de données du paquet logcheck-database sera utilisée.
+ .
+ Note : comme ce paquet ne dépend pas de cette base de données (il se contente de la recommander), le choix par défaut est la création « manuelle » de la base de données.
+Description-gl.UTF-8: ¿Configuración manual da base de datos de logtool?
+ Logtool precisa dunha base de datos con expresións regulares que describen entradas de rexistro que se deben ignorar ou considerar menos importantes. Pode escribir esta base de datos manualmente ou pode empregar para esta finalidade a base de datos flexible que hai no paquete logcheck-database.
+ .
+ Se escolle empregar logcheck-database e xa engadiu valores aos ficheiros de /etc/logtool, hanse substituír eses ficheiros por ligazóns simbólicas na base de datos de logcheck (aínda que se han conservar copias de seguridade). Asegúrese de que quere este comportamento.
+ .
+ Responda afirmativamente para gravar unha base de datos manualmente, ou negativamente para empregar a base de datos do paquete "logcheck-database".
+ .
+ Nota: como logtool non depende desta base de datos (senón que a recomenda), a resposta por defecto a esta pregunta é configurar manualmente a base de datos.
+Description-it.UTF-8: Configurazione manuale del database di logtool?
+ Logtool necessita di un database con le espressioni regolari che determinano quali voci devono essere ignorate o considerate meno importanti. Si può scrivere questo database manualmente oppure utilizzare il database contenuto nel pacchetto logcheck-database che è molto flessibile e specifico per questo scopo.
+ .
+ Se si sceglie di usare logcheck-database e si sono già aggiunti dei valori ai file in /etc/logtool questi file verranno sostituiti da dei link simbolici al database logcheck (saranno comunque conservata una copia di backup). Assicurarsi che questo comportamento sia quello desiderato.
+ .
+ Accettare per scrivere manualmente il database, oppure rifiutare per usare il database contenuto nel pacchetto "logcheck-database".
+ .
+ Nota: dato che logtool non dipende da questo database (ma lo raccomanda), la risposta predefinita a questa domanda è la configurazione manuale del database.
+Description-ja.UTF-8: logtool データベースを手動で設定しますか?
+ logtool は、無視すべき、あるいはあまり重要でないと考えるログファイルエントリを表現した正規表現のデータベースを必要とします。このデータベースは手動で記述することも、logcheck-database パッケージ内のとても柔軟なデータベースを利用することもできます。
+ .
+ logcheck-database の利用を選び、すでに /etc/logtool ファイルに値を設定している場合、(バックアップは保存されますが) ファイルは logcheck データベースへのシンボリックリンクに置き換えられます。この動作が期待したものであるのを確認してください。
+ .
+ 手動でデータベースを記述する場合、「はい」を選び、"logcheck-database" パッケージのデータベースを利用する場合は「いいえ」を選びます。
+ .
+ 注意: logtool はこのパッケージに依存しなくなった (代わりに推奨 (recommend) になった) ので、この質問に対するデフォルトの答えは「手動でデータベースを設定する」になります。
+Description-nb.UTF-8: Manuelt oppsett av databasen til logtool?
+ Logtool trenger en database med regulære uttrykk som beskriver innslag som skal ignoreres i loggfiler, eller betraktes siom mindre viktige. Du kan skrive denne databasen manuelt, eller bruke den svært fleksible databasen i pakka logcheck-database til dette formålet.
+ .
+ Hvis du velger å bruke logcheck-database og allerede har lagt til verdier i filene i /etc/logtool, så blir disse filene erstattet av symbolske lenker i logcheck-databasen (selv om sikkerhetskopier blir beholdt). Se etter at dette ikke er uønsket oppførsel.
+ .
+ Svar positivt for å skrive en database manuelt, eller negativt for å bruke databasen fra pakka «logcheck-database».
+ .
+ Merk; siden logtool ikke avhenger av denne databasen (men i stedet Anbefaler den), så er standardsvaret å sette opp databasen manuelt.
+Description-nl.UTF-8: Logtool-database handmatig configureren?
+ Logtool heeft een database nodig met reguliere expressies die logfile-ingangen beschrijven die genegeerd moeten worden, of als minder belangrijk beschouwd moeten worden. U kunt deze database handmatig schrijven, of hiervoor de zeer flexibele database in het pakket logcheck-database gebruiken.
+ .
+ Als u er voor kiest om logcheck-database te gebruiken en u hebt al waarden aan de bestanden in /etc/logtool toegevoegd, dan zullen deze waarden vervangen worden door symbolische links naar de logcheck-database (hoewel backups zullen gemaakt worden van de bestaande bestanden). Zorg er voor dat u dit zeker wilt.
+ .
+ Antwoord positief om handmatig een database te schrijven, of negatief om de database van het package "logcheck" te gebruiken.
+ .
+ Opmerking: omdat logtool niet afhangt van deze database (ze wordt enkel in de "Recommends" header genoemd), is het standaard-antwoord op deze vraag om de database handmatig te configureren.
+Description-no.UTF-8: Manuelt oppsett av databasen til logtool?
+ Logtool trenger en database med regulære uttrykk som beskriver innslag som skal ignoreres i loggfiler, eller betraktes siom mindre viktige. Du kan skrive denne databasen manuelt, eller bruke den svært fleksible databasen i pakka logcheck-database til dette formålet.
+ .
+ Hvis du velger å bruke logcheck-database og allerede har lagt til verdier i filene i /etc/logtool, så blir disse filene erstattet av symbolske lenker i logcheck-databasen (selv om sikkerhetskopier blir beholdt). Se etter at dette ikke er uønsket oppførsel.
+ .
+ Svar positivt for å skrive en database manuelt, eller negativt for å bruke databasen fra pakka «logcheck-database».
+ .
+ Merk; siden logtool ikke avhenger av denne databasen (men i stedet Anbefaler den), så er standardsvaret å sette opp databasen manuelt.
+Description-pt.UTF-8: Configurar manualmente a base de dados do logtool?
+ O logtool necessita de uma base de dados com suporte a expressões regulares que descrevam as entradas do ficheiro de registo que devem ser ignoradas, ou consideradas menos importantes. Poderá escrever esta base de dados manualmente, ou usar a base de dados muito flexível que se encontra no pacote logcheck-database para esse fim.
+ .
+ Se decidir utilizar o logcheck-database e já tiver acrescentado valores aos ficheiros em /etc/logtool, esses ficheiros serão substituidos por atalhos simbólicos na base de dados do logcheck (embora os backups serão salvaguardados). Certifique-se que este comportamento não é indesejado.
+ .
+ Responda positivamente para escrever manualmente na base de dados, ou negativamente para utilizar a base de dados do pacote "logcheck-database".
+ .
+ Nota: como o logtool não depende desta base de dados (em vez disso recomenda-a), a resposta por omissão a esta questão é configurar manualmente a base de dados.
+Description-pt_BR.UTF-8: Configuração manual da base de dados do logtool ?
+ O logtool precisa de uma base de dados com expressões regulares que descrevam entradas em arquivos de logs que devem ser ignoradas ou consideradas menos importantes. Você pode gravar essa base de dados manualmente ou utilizar a flexível base de dados fornecida pelo pacote logcheck-database para essa finalidade.
+ .
+ Caso você opte por utilizar a base de dados do pacote logcheck-database e já tenha adicionado valores nos arquivos localizados em /etc/logtool, esses arquivos serão substituídos por ligações simbólicas na base de dados do logcheck (porém cópias de segurança serão preservadas). Certifique-se de que esse não seja um comportamento indesejado.
+ .
+ Responda positivamente para criar uma base de dados manualmente ou negativamente para utilizar uma base de dados do pacote "logcheck-database".
+ .
+ Nota : uma vez que o logtool não depende dessa base de dados (ele somente recomenda a mesma), a resposta padrão para esta pergunta é configurar manualmente a base de dados.
+Description-ro.UTF-8: Configurare manuală a bazei de date folosită de logtool?
+ Logtool are nevoie de o bază de date cu expresiile regulate care descriu intrările din fișierele jurnal ce trebuie ignorate, sau considerate mai puțin importante. Puteți să scrieți această bază de date manual sau puteți folosi baza de date, de altfel foarte flexibilă, din pachetul logcheck-database.
+ .
+ Dacă alegeți să folosiți logcheck-database dar ați adăugat deja valori în fișierele din /etc/logtool, aceste fișiere vor fi înlocuite cu legături simbolice în baza de date logcheck (totuși se vor păstra și copii de siguranță). Asigurați-vă că acesta este comportamentul dorit.
+ .
+ Acceptați dacă vreți să scrieți manual o bază de date sau refuzați dacă vreți să utilizați baza de date din pachetul "logcheck-database"
+ .
+ Notă: deoarece logtool nu depinde de această bază de date (dar o recomandă), răspunsul implicit la această întrebare este de a configura manual baza de date.
+Description-ru.UTF-8: Настроить базу данных logtool вручную?
+ Для работы logtool требуется база данных регулярных выражений, описывающая журнальные записи, которые должны игнорироваться или не считаться важными. Вы можете создать эту базу вручную или использовать для этих целей очень гибкую базу данных из пакета logcheck-database.
+ .
+ Если вы выберете использование logcheck-database, но ранее уже добавляли значения в файлы из каталога /etc/logtool, то эти файлы будут заменены символическими ссылками на базу данных logcheck (но будет сделана резервная копия). Подумайте, действительно ли вы этого хотите.
+ .
+ Ответьте утвердительно, если будете составлять базу данных вручную или отрицательно, чтобы использовать базу данных из пакета "logcheck-database".
+ .
+ Замечание: так как пакет logtool не зависит от этой базы данных (но Рекомендует её), ответом по умолчанию является настройка базы данных вручную.
+Description-sv.UTF-8: Manuell konfiguration av logtool-databasen?
+ Logtool behöver en databas med reguljära uttryck som beskriver loggfilernas poster som ska ignoreras eller anses som mindre viktiga. Du kan skriva denna databas manuellt eller använda den mycket flexibla databasen i paketet logcheck-database för detta ändamål.
+ .
+ Om du väljer att använda logcheck-database och redan har lagt till värden till filerna i /etc/logtool kommer dessa filer att ersättas av symboliska länkar i logcheck-databasen (även om säkerhetskopior kommer att behållas). Gör klart för dig att detta är vad du vill.
+ .
+ Svara "ja" för att manuellt skriva en databas eller "nej" för att använda databasen från paketet "logcheck-database".
+ .
+ Notera: eftersom logtool inte är beroende av denna databas (men rekommenderar den) kommer standardsvaret för denna fråga att vara att manuellt konfigurera databasen.
+Description-tr.UTF-8: logtool'un veritabanı elle yapılandırılsın mı?
+ Logtool, görmezden gelinmesi ya da daha önemsiz sayılması gereken günlük dosyası girdilerini tanımlayan düzenli ifadeleri içeren bir veritabanına ihtiyaç duyar. Bu iş için kendi veritabanınızı yazabilir ya da logcheck-database paketindeki oldukça esnek veritabanını kullanabilirsiniz.
+ .
+ Eğer logcheck-database paketini kullanmayı seçmiş ve /etc/logtool dosyasına daha önceden değerler eklemişseniz, bu dosyalar veritabanında sembolik bağlantılarla değiştirilecek (ama yedekleri korunacak). Bunu istediğinizden emin olun.
+ .
+ Bu soruya, kendi veritabanınızı yazacaksanız olumlu, "logcheck-database" paketindeki veritabanını kullanacaksanız olumsuz yanıt verin.
+ .
+ Not: logtool bu veritabanı paketine bağımlı değildir (onu önerir), bu nedenle öntanımlı yanıt veritabanını elle yapılandırmaktır.
+Description-vi.UTF-8: Bạn có muốn tự cấu hình cơ sở dữ liệu của trình logtool không?
+ Trình logtool (công cụ ghi lưu) cần thiết một cơ sở dữ liệu chứa các biểu thức chính quy diễn tả mục nhập cần bỏ qua, hay cần suy tính ít quan trọng hơn. Bạn có khả năng tự ghi cơ sở dữ liệu này, hoặc có thể sử dụng cơ sở dữ liệu rất dẻo được cung cấp trong gói « logcheck-database » cho mức đích này.
+ .
+ Nếu bạn chọn sử dụng « logcheck-database » và đã thêm một số giá trị vào những tập tin trong thư mục </etc/logtool>, các tập tin này sẽ được thay thế bằng liên kết tượng trưng (sẽ vẫn còn giữ mọi bản lưu trữ). Hãy kiểm tra bạn muốn làm như thế.
+ .
+ Hãy chấp nhận để tự ghi một cơ sở dữ liệu, hay từ chối để sử dụng cơ sở dữ liệu có sẵn trong gói « logcheck-database ».
+ .
+ Ghi chú : vì trình logtool không phụ thuộc vào cơ sở dữ liệu này (chỉ Đề nghị nó), trả lời mặc định là tự cấu hình cơ sở dữ liệu.
+Description-zh_CN.UTF-8: 手动配置 logtool 的数据库？
+ Logtool 需要一个带有正则表达式的数据库，用来存放需要被忽略或者被认为不那么重要的日志文件。您可以手动编写这个数据库，或使用 logcheck-database 包中的非常具有可扩展性的数据库实现这个目的。
+ .
+ 如果选择使用 logcheck-database 并且已经在 /etc/logtool 文件中添加了值，这些文件将被 logcheck 数据库中的符号链接替换(尽管如此最好还是进行备份)。确定，这正是您想要的行为。
+ .
+ 回答正数为手动编写数据库，负数表示使用 "logcheck-database" 的数据库。
+ .
+ 注意：因为 logtool 不依赖于此数据库(而是推荐)，此问题默认的答案是手动配置数据库。
+
+Template: logtool/ignore-start
+Type: select
+Choices: paranoid, server, workstation
+Default: paranoid
+Description: Ignored template
+ No longer used template (although its value is read for upgrade purposes),
+ no need to translate it.
+
+Template: logtool/use-level
+Type: boolean
+Default: true
+Description: Do you want to use the '${level}' level regular expressions?
+ The database in the logcheck-database package defines three levels:
+ paranoid, server, and workstation; and it also has a database for cracking,
+ violations, and ignored violations ('violations-ignore'). Logcheck allows you
+ to pick one of the levels, and ignores the rest.
+ .
+ Logtool, on the other hand, can use multiple databases, which either
+ specify lines that should be completely excluded from output
+ (/etc/logtool/exclude) or lines that should be given a specific color
+ (green, yellow, blue, magenta, cyan, brightcyan). There is also the
+ possibility to not create an exclude file, and use an 'include' style of
+ file instead; its use is not recommended. Last but not least, files that
+ are not excluded from output but that do not match any other regular
+ expression are colored red.
+ .
+ If you want to map the '${level}' level database of regular expressions to
+ one of the above specified options, then answer positively to this
+ question.
+Description-cs.UTF-8: Chcete použít regulární výrazy úrovně '${level}'?
+ Databáze v balíčku logcheck-database definuje tři úrovně: paranoidní (paranoid), server a pracovní stanice (workstation). Dále obsahuje databázi pro crackování, narušení a ignorovaná narušení ('violations-ignore'). Logcheck vám umožní vybrat některou z těchto úrovní a zbytek ignorovat.
+ .
+ Na druhou stranu Logtool může používat více databází, které buď definují řádky, které se mají z výstupu úplně vyřadit (/etc/logtool/exclude), nebo řádky, které se mají zobrazit zadanou barvou (zelenou, žlutou, modrou, purpurovou, azurovou, jasnou azurovou). Také máte možnost nevytvářet vyřazovací soubor, ale místo toho použít styl souboru 'zahrnout' (to však není doporučeno). Soubory, které nejsou vyřazeny z výstupu, ale také se neshodují se zadanými regulárními výrazy, budou zobrazeny červeně.
+ .
+ Jestliže chcete přiřadit úroveň regulárních výrazů '${level}' k některé z výše uvedených voleb, odpovězte na tuto otázku kladně.
+Description-da.UTF-8: ??nsker du at bruge de regul??re udtryk p?? niveauet '${level}'?
+ Databasen i pakken logcheck-database definerer tre niveauer: paranoid, server og workstations; og den har ogs?? en database for cracking, violations, og ignored violations ('violations-ignore'). Logcheck tillader dig at v??lge en af niveauerne og ignorere resten.
+ .
+ Logtool, p?? den anden side, kan bruge flere databaser, som enten angiver linjer som skal fuldst??ndig udelukkes fra uddata (/etc/logtool/exclude) eller linjer, som skal gives en specifik farve (gr??n, gul, bl??, magenta, cyan, lysecyan). Der er ogs?? muligheden for at oprette en ekskluderingsfil, og bruge en 'inklusiv' stil p?? filer i steden for; brugen af denne anbefales ikke. Sidst men ikke mindst, filer som ikke ekskluderes fra uddata men ikke svarer overens med noget andet regul??rt udtr??k farves r??de.
+ .
+ Hvis du ??nsker at forbinde niveaudatabasen '${level}' over regul??re udtryk med en af de ovenst??ende angive indstillinger, s?? svar positivt p?? dette sp??rgsm??l.
+Description-de.UTF-8: Wollen Sie die regulären Ausdrücke des Niveaus »${level}« verwenden?
+ Die Datenbank im Paket logcheck-database definiert drei Niveaus: paranoid, server und workstation. Außerdem besitzt es eine Datenbank für cracking, violations (»Verletzungen«) und violations-ignore (»ignorierte Verletzungen«). Logcheck bietet Ihnen die Möglichkeit, ein Niveau zu wählen und den Rest zu ignorieren.
+ .
+ Logtool wiederum kann auch verschiedene Datenbanken verwenden, die entweder festlegen wie Zeilen aussehen, die vollständig von der Ausgabe ausgeschlossen werden sollen (/etc/logtool/exclude) oder aber wie Zeilen aussehen, die mit einer bestimmten Farbe dargestellt werden sollen (Grün, Gelb, Blau, Magenta, Cyan, Hell-Cyan). Es existiert auch die Möglichkeit, keine »ausschließende« (engl. »exclude«) Datei zu erstellen, sondern stattdessen einen »einschließenden« (engl. »include«) Stil zu verwenden. Das wird jedoch nicht empfohlen. Letztendlich ist noch wichtig, dass Dateien, die nicht von der Ausgabe ausgeschlossen werden, aber auch auf keinen anderen regulären Ausdruck zutreffen, rot eingefärbt werden.
+ .
+ Wenn Sie der Niveau-Datenbank »${level}«, bestehend aus bestimmten regulären Ausdrücken, eine der oben angegebenen Aktionen zuweisen wollen, dann stimmen Sie hier zu.
+Description-es.UTF-8: ¿Desea usar las expresiones regulares de nivel «${level}»?
+ La base de datos en el paquete logcheck-database define tres niveles: «paranoid» (paranoico), «server» (servidor) y «workstation» (terminal de trabajo); también tiene una base de datos para «cracking», y violaciones ignoradas («violations-ignore»). Logcheck permite usar uno de estos niveles e ignorar el resto.
+ .
+ Además, logtool puede usar varias bases de datos que pueden especificar o bien las líneas a ignorar en la salida («/etc/logtool/exclude»), o bien aquellas que se deben resaltar con un color específico: «green», «yellow», «blue», «magenta», «cyan», o «brightcyan» (verde, amarillo, azul, magenta, cian, cian resaltado). También cabe la posibilidad de no crear un fichero de exclusión («exclude»), sino uno de inclusión («include»), aunque ésto no se recomienda. Por último, los ficheros que no se excluyen de la salida pero que no coinciden con ninguna otra expresión regular aparecerán en rojo.
+ .
+ Responda afirmativamente a esta elección si desea estructurar la base de datos de expresiones regulares de nivel «${level}» con una de las opciones  especificadas anteriormente.
+Description-eu.UTF-8: '${level}' mailako adierazpen erregularrak erabili nahi dituzu?
+ 'logcheck-database' paketeak dakarren datu-baseak hiru maila definitzen ditu: paranoid (paranoikoa), server (zerbitzaria) eta workstation (lan estazioa). Honetaz gain, cracking (),violations (bortxaketak) eta violations-ignore (ez ikusitako bortxaketak) datu-baseak ditu. Logcheck-ek aukera ematen du maila bat aukeratzeko eta besteak ekiditeko.
+ .
+ Beste alde batetik, logtool-ek hainbat datu-base erabil ditzake, irteeratik guztiz kanpoan utzi beharreko lerroak zehazten dituztenak (/etc/logtool/exclude) edo kolore jakin bat eman behar zaien lerroak (berdea, horia, urdina, magenta, cyana, cyan argia) zehazten dituztenak. 'exclude' fitxategia ez sortzeko aukera ere badago, eta haren ordez 'include' erako fitxategi bat erabiltzea; hau ordea ez da gomendagarria. Azkenik, irteeratik baztertuta ez egoteaz gain adierazpen erregularrekin bat ez datozten fitxategiei kolore gorria ematen zaie.
+ .
+ '${level}' mailako adierazpen erregularren datu-basea goian zehaztu diren aukeretako batekin egokitu nahi baduzu, baiezko erantzuna eman galdera honetan.
+Description-fr.UTF-8: Voulez-vous utiliser les expressions rationnelles du niveau ${level} ?
+ La base de données de logcheck-database définit trois niveaux : paranoid (paranoïaque), server (serveur), et workstation (station de travail) ; le paquet fournit également une base de données cracking (pour les alertes), violations (pour les violations), et violations-ignore (permettant d'ignorer certaines violations). Logcheck permet de choisir un de ces niveaux et d'ignorer les autres.
+ .
+ Logtool peut utiliser plusieurs bases de données, qui spécifient soit les lignes devant être exclues (/etc/logtool/exclude), soit les lignes devant être mises en évidence (en vert, jaune, bleu, magenta, cyan, cyan clair). Il est aussi possible de ne conserver que les entrées correspondant à des règles « d'inclusion ». Ce n'est toutefois pas recommandé. Enfin, notez que les lignes ne correspondant à aucune expression rationnelle seront colorées en rouge.
+ .
+ Si vous souhaitez faire correspondre les expressions rationnelles de niveau ${level} à l'un des choix possibles, choisissez cette option.
+Description-gl.UTF-8: ¿Quere empregar as expresións regulares de nivel "${level}"?
+ A base de datos do paquete logcheck-database define tres niveis: "paranoid" (paranoico), "server" (servidor) e "workstation" (estación de traballo). Tamén ten unha base de datos "cracking" (para ataques), "violations" (violacións de acceso) e "violations-ignore" (violacións de acceso a ignorar). Logcheck permítelle escoller un dos niveis e ignora o resto.
+ .
+ Pola outra banda, logtool pode empregar varias bases de datos, que poden especificar liñas que se deben excluír totalmente da saída (/etc/logtool/exclude) e liñas ás que se debe dar unha cor determinada (verde, marelo, azul, maxenta, cian, cian brillante). Tamén hai a posibilidade de non crear un ficheiro de exclusións e empregar un estilo de ficheiro de "inclusión"; non se recomenda isto. Por último, os ficheiros que non se exclúen da saída pero non encaixan con ningunha outra expresión regular coloréanse de vermello.
+ .
+ Se quere mapear a base de datos de expresións regulares de nivel "${level}" a unha das opcións indicadas enriba, resposte afirmativamente a esta pregunta.
+Description-it.UTF-8: Si vogliono usare le espressioni regolari di livello "${level}"?
+ Il database nel pacchetto logcheck-database definisce tre livelli: "paranoid", "server" e "workstation"; inoltre contiene database per intrusioni ("cracking"), violazioni ("violations") e violazioni da ignorare ("violations-ignore"). Logcheck consente di scegliere uno di questi livelli e ignorare gli altri.
+ .
+ Logtool può anche usare più database, ognuno dei quali specifica le righe che devono essere completamente escluse dall'output (/etc/logtool/exclude) o le che righe devono avere un certo colore (verde, giallo, blu, magenta, ciano, ciano chiaro). È anche possibile non creare un file di esclusione e usare al suo posto un file di inclusione, questa modalità non è consigliata. Infine, le righe che non sono escluse dall'output ma che non soddisfano nessuna espressione regolare sono colorate di rosso.
+ .
+ Se si vuole associare le espressioni regolari del livello "${level}" a una delle opzioni specificate in precedenza rispondere positivamente a questa domanda.
+Description-ja.UTF-8: '${level}' レベルの正規表現を利用しますか?
+ logcheck-database パッケージ内のデータベースは 3 つのレベルを定義しています:paranoia、server、workstation です。そして cracking、violations、ignored violations ('violations-ignore') 用のデータベースを持ちます。Logcheck では 1 つだけを選び、残りを無視します。
+ .
+ 一方 logtool では、それぞれ完全に出力から除外された行 (/etc/logtool/exclude) か、特定の色 (緑、黄色、青、マゼンタ、シアン、ブライトシアン) が与えられた行を指定している複数のデータベースを扱えます。除外するファイルを作らず、代わりに 'include' 方式のファイルを使うことも可能です。ただし、この設定はお勧めできません。最後にいま一つ大事なことですが、出力から除外されなかったにもかかわらずどの正規表現にマッチしなかったファイルは赤く色が付けられます。
+ .
+ 正規表現の '${level}' レベルデータベースを上に挙げたオプションのひとつにマップしたい場合、この質問に明確に答えてください。
+Description-nb.UTF-8: V il du bruke de regulære uttrykkene på nivå '${level}'?
+ Databasen i pakka logcheck-database definerer tre nivåer: paranoid, server (tjener) og workstation (arbeidsstasjon), og den har også en database for inntrenging («cracking»), overtredelser («violations»)  og ignorerte overtredelser («violations-ignore». Med logcheck kan du velge ett av nivåene og ignorere resten.
+ .
+ Logtool, derimot, kan bruke flere databaser, som enten oppgir linjer som skal utelates helt fra utdata (/etc/logtool/exclude) eller linjer som skal få en bestemt farge (grønn, gul,blå, magentarød, cyanblå, lys cyanblå). Det er også mulig å la være å lage en exclude-fil og bruke en «include»-stil i stedet, men dette er ikke anbefalt. Sist, men ikke minst, filer som ikke er utelatt fra utdata men ikke stemmer med noen andre regulære uttrykk blir farget røde.
+ .
+ Hvis du vil avbilde «${level}»-databasen med regulære uttrykk til et av  de valgene som er oppgitt ovenfor, så svar positivt på dette spørsmålet.
+Description-nl.UTF-8: Wilt u de reguliere expressies op '${level}' niveau gebruiken?
+ De database in het logcheck-database pakket definieert drie niveaus: paranoid, server, en workstation; en het heeft ook een database voor cracking, violations, en violations-ignore. Logcheck geeft u de mogelijkheid om er één te kiezen, en negeert de rest.
+ .
+ Logtool daarentegen is in staat om verschillende databases te gebruiken, die ofwel regels specifiëren dewelke hetzij compleet uit de uitvoer geweerd worden (/etc/logtool/exclude), hetzij een bepaalde kleur aan de uitgevoerde regels geven (groen, geel, blauw, magenta, cyaan, of lichtcyaan). Daarnaast is er de mogelijkheid om geen exclude-bestand te gebruiken, maar in de plaats daarvan een 'include' bestand aan te maken. Het gebruik hiervan wordt niet aangeraden.
+ .
+ Als u het ${level}-niveau met reguliere expressies aan één van de hierboven gespecifieerde opties wilt toekennen, antwoord dan positief op deze vraag.
+Description-no.UTF-8: V il du bruke de regulære uttrykkene på nivå '${level}'?
+ Databasen i pakka logcheck-database definerer tre nivåer: paranoid, server (tjener) og workstation (arbeidsstasjon), og den har også en database for inntrenging («cracking»), overtredelser («violations»)  og ignorerte overtredelser («violations-ignore». Med logcheck kan du velge ett av nivåene og ignorere resten.
+ .
+ Logtool, derimot, kan bruke flere databaser, som enten oppgir linjer som skal utelates helt fra utdata (/etc/logtool/exclude) eller linjer som skal få en bestemt farge (grønn, gul,blå, magentarød, cyanblå, lys cyanblå). Det er også mulig å la være å lage en exclude-fil og bruke en «include»-stil i stedet, men dette er ikke anbefalt. Sist, men ikke minst, filer som ikke er utelatt fra utdata men ikke stemmer med noen andre regulære uttrykk blir farget røde.
+ .
+ Hvis du vil avbilde «${level}»-databasen med regulære uttrykk til et av  de valgene som er oppgitt ovenfor, så svar positivt på dette spørsmålet.
+Description-pt.UTF-8: Deseja usar expressões regulares de nível '${level}'?
+ A base de dados no pacote logcheck-database define três níveis: 'paranoid', 'server' e 'workstation'; e possui também uma base de dados para 'cracking', 'violations' e 'violations' ignoradas ('violations-ignore'). O logcheck permite que escolha um dos níveis e ignora o resto.
+ .
+ O logtool, por outro lado, pode utilizar várias bases de dados, que podem quer especificar linhas a serem completamente excluídas da saída (/etc/logtool/exclude) ou linhas que devem ser assinaladas com uma cor específica (verde, amarelo, azul, magenta, ciano, ciano claro). Existe até a possibilidade de não criar um ficheiro de exclusão, e usar um ficheiro de estilo 'include'; o seu uso não é recomendado. Por último, os ficheiros que não sejam excluídos da saída mas que não coincidem com nenhuma outra expressão regular são pintados a cor vermelha.
+ .
+ Se quiser mapear a base de dados de nível '${level}' de expressões regulares para uma das opções especificadas anteriormente, então responda positivamente a esta questão.
+Description-pt_BR.UTF-8: Você deseja utilizar expressões regulares do nível '${level} ?
+ A base de dados fornecida pelo pacote logcheck-database define três níveis : paranóia (paranoid), servidor (server) e estação (workstation). A mesma também possui uma base de dados para cracking, violações (violations) e violações ignoradas ('violations-ignore'). O logcheck lhe permite optar por um dos níveis e ignorar o restante.
+ .
+ O logtool, porém, pode utilizar múltiplas bases de dados, as quais especificam linhas que devem ser completamente excluídas de sua saída (/etc/logtool/exclude) ou linhas que devem ser marcadas com uma cor especial (verde, amarelo, azul, magenta, ciano, ciano-claro). Existe também a possibilidade de não criar um arquivo de exclusões e utilizar um estilo de arquivo de inclusão, mas o uso do mesmo não é recomendado. E, por último mas não o bastante, arquivos que não são excluídos da saída do logtool mas que não casem com quaisquer outras expressões regulares são coloridos em vermelho.
+ .
+ Caso você queira mapear a base de dados de expressões regulares nível '${level}' para uma das opções anteriores, responda posivitamente a esta pergunta.
+Description-ro.UTF-8: Doriți să folosiți expresii regulate de nivelul '${level}'?
+ Baza de date din pachetul logcheck-package definește trei nivele:paranoid (paranoic), server, și workstation (stație de lucrul); și include o bază de date pentru cracking (spargeri), violations (încălcări) și ignored violations ('violations-ignore') (ignorări ale încălcărilor). Logcheck vă permite să alegeți unul din aceste nivele și le ignoră pe celelalate. 
+ .
+ Logtool poate folosi mai multe baze de date, care fie precizează linii care trebuie excluse complet din rezultat (/etc/logtool/exclude) fie linii care trebuie trebuie colorate (în verde, galben, albastru, violet, turcoaz, turcoaz deschis). Există și posibilitatea să nu creeze un fișier de excluderi și să se creeze un fișier de includeri; acest mod de utilizare nu este recomandat. Fișierele care nu sunt excluse din rezultat dar care nu se potrivesc cu nici o altă expresie regulată sunt colorate în roșu.
+ .
+ Dacă doriți să stabiliți o legătură între nivelul '${level}' al bazei de date cu expresii regulate și una din opțiunile de mai sus atunci răspundeți afirmativ la această întrebare.
+Description-ru.UTF-8: Использовать уровень регулярных выражений '${level}' ?
+ В базе данных из пакета logcheck-database определено три уровня: параноидный ('paranoid'), серверный ('server') и рабочих станций ('workstation'), а также есть база данных взломов ('cracking'), нарушений ('violations') и игнорируемых нарушений ('violations-ignore'). Logcheck позволяет выбрать один из уровней и игнорировать остальные.
+ .
+ Кроме это, logtool может использовать сразу несколько баз данных, в которых можно указать, какие строки нужно полностью исключать из вывода (/etc/logtool/exclude) или строки, которым нужно назначить определённый цвет (зелёный, жёлтый, синий, малиновый, циан, brightcyan). Также есть возможность не создавать файл exclude, а вместо него использовать стиль файла 'include', но это не рекомендуется. И последнее, но не менее важное: строки, которые не исключены из вывода, но не подходят ни под одно регулярное выражение, выводятся красным.
+ .
+ Ответьте утвердительно, если вы хотите сопоставить базу данных регулярных выражений уровня '${level}' с одним из указанных выше действий.
+Description-sv.UTF-8: Vill du använda nivån "${level}" av reguljära uttryck?
+ Databasen i paketet logcheck-database definierar tre nivåer: paranoid, server och workstation och har även en databas för cracking, violations (överträdelser) och ignorerade överträdelser ("violations-ignore"). Logcheck låter dig välja en av dessa nivåer och ignorerar resten.
+ .
+ Logtool däremot kan hantera multipla databaser som antingen specificerar rader som bör vara totalt exkluderade från utdata (/etc/logtool/exclude) eller rader som bör anges med en specifik färg (grön, gul, blå, lila, turkos, ljusturkos). Det finns också möjligheten att inte skapa en fil för exkluderingar och använda en "inkluderingsvariant" som fil istället; dess användning är inte rekommenderad. Till sist, filer som inte är exkluderade från utdata men som inte matchar något annat reguljärt uttryck är färgade i rött.
+ .
+ Om du vill koppla databasnivån "${level}" av reguljära uttryck mot en av de ovanstående inställningarna, svara "ja" på denna fråga.
+Description-tr.UTF-8: Düzenli ifadeler için '${level}'. düzeyi kullanmak istiyor musunuz?
+ logcheck-database paketindeki veritabanı üç düzey tanımlar: paranoyak (paranoid), sunucu (server) ve iş istasyonu (workstation). Bu paket ayrıca zorla girme (cracking), ihlâller (violations) ve görmezden gelinen ihlâller (violations-ignore) için de veritabanları içerir. Logcheck üç düzeyden birini seçmenize izin verir ve geri kalanları görmezden gelir.
+ .
+ Diğer taraftan Logtool, satırların çıktıdan hariç tutulmasını (/etc/logtool/exclude), ya da belirli bir renkte (yeşil, sarı, mavi, macenta, siyan, parlak siyan) verilmesini belirleyen birden fazla veritabanını kullanabilir. Hariç tutma yerine dahil etme dosyaları oluşturmak da mümkündür (ama önerilmez). Son olarak; çıktıdan hariç tutulmayan ama herhangi bir düzenli ifadeyle de eşleşmeyen satırlar kırmızı olarak renklendirilir.
+ .
+ Eğer '${level}'. düzey düzenli ifade veritabanını yukarıdaki seçeneklerden birine eşlemek istiyorsanız bu soruya olumlu yanıt verin.
+Description-vi.UTF-8: Bạn có muốn sở dụng biểu thức chính quy cấp « ${level} » không?
+ Cơ sở dữ liệu trong gói « logcheck-database » xác định ba cấp: paranoid (rất cẩn thận), server (máy phục vụ) và workstation (máy trạm), và cũng có một cơ sở dữ liệu về cracking (hỏng sự bảo mật của hệ thống), violations (sự vi phạm) và violations-ignore (sự vi phạm bị bỏ qua). Trình Logcheck cho bạn khả năng chọn một của những cấp này, rồi bỏ qua các điều còn lại.
+ .
+ Mặt khác, trình logtool có khả năng sử dụng nhiều cơ sở dữ liệu mà hoặc ghi rõ những dòng nên được loại trừ hoàn thành ra dữ liệu xuất (</etc/logtool/exclude>) hoặc những dòng nên được tô màu riêng (màu xanh lá cây, màu vàng, màu xanh dương, màu đỏ tươi, màu xanh lông mòng và màu xanh lông mòng sáng). Cũng có thể tránh tạo một tập tin loại trừ (exclude), và sử dụng một tập tin kiểu « bao gồm » (include) thay thế, nhưng mà không đề nghị bạn làm như thế. Cuối cùng, nhưng mà không phải ít nhất, sẽ tô màu đỏ mọi tập tin không phải bị loại trừ ra dữ liệu xuất nhưng mà không khớp với biểu thức chính quy khác.
+ .
+ Nếu bạn muốn ảnh xạ cơ sở dữ liệu biểu thức chính quy cấp « ${level} » với một của những tùy chọn được xác định bên trên, hãy chấp nhận ở đây.
+Description-zh_CN.UTF-8: 想要使用 '${level}' 级别的正则表达式吗？
+ Logcheck-database 包中的数据库定义了三个级别：paranoid, server, 和 workstation；并且还有一个用于 cracking, violations, and ignored violations ('violations-ignore') 的数据库。Logcheck 允许您从这些级别中选择一个，并忽略其它的。
+ .
+ Logtool，另一方面，可以使用多个数据库，这些数据库既可以指定要从输出中完全排除的行(/etc/logtool/exclude) 或者需要指定特定的颜色(green, yellow, blue, magenta, cyan, brightcyan)。也可以不创建一个 exclude 文件，而使用 'include' 的文件代替；不推荐这么使用。最后，但并非最不重要的，没有从输出中排除，且没有匹配任何其它正则表达式的文件，显示为红色。
+ .
+ 如果想要影射正则表达式的 '${level}' 级别数据库为上述选项中的一种，给这个问题回答一个负数。
+
+Template: logtool/map-level-to-file
+Type: select
+Choices: exclude, include, green, yellow, blue, magenta, cyan, brightcyan
+Choices-cs.UTF-8: vyřadit, zahrnout, zelená, žlutá, modrá, purpurová, azurová, jasně azurová
+Choices-da.UTF-8: ekskluder, inkluder, gr??n, gul, bl??, magenta, cyan, lysecyan
+Choices-de.UTF-8: Ausschließend, Einschließend, Grün, Gelb, Blau, Magenta, Cyan, Hell-Cyan
+Choices-es.UTF-8: exclude, include, green, yellow, blue, magenta, cyan, brightcyan
+Choices-eu.UTF-8: kanpoan utzi, sartu, berdea, horia, urdina, magenta, cyana, cyan argia
+Choices-fr.UTF-8: exclusion, inclusion, vert, jaune, bleu, magenta, cyan, cyan clair
+Choices-gl.UTF-8: excluír, incluír, verde, marelo, azul, maxenta, cian, cian brillante
+Choices-it.UTF-8: escludi, includi, verde, giallo, blu, magneta, ciano, ciano chiaro
+Choices-ja.UTF-8: exclude, include, グリーン, イエロー, ブルー, マゼンタ, シアン, ブライトシアン
+Choices-nb.UTF-8: utelat, ta med, grønn, gul, blå, magentarød, cyanblå, lys cyanblå
+Choices-nl.UTF-8: uitsluiten, insluiten, groen, geel, blauw, magenta, cyaan, lichtcyaan
+Choices-no.UTF-8: utelat, ta med, grønn, gul, blå, magentarød, cyanblå, lys cyanblå
+Choices-pt.UTF-8: excluir, incluir, verde, amarelo, azul, magenta, ciano, ciano claro
+Choices-pt_BR.UTF-8: excluir, incluir, verde, amarelo, azul, magenta, ciano, ciano-claro
+Choices-ro.UTF-8: exclude, include, verde, galben, albastru, violet, turcoaz, turcoaz-deschis
+Choices-ru.UTF-8: exclude, include, зелёный, жёлтый, синий, малиновый, циан, brightcyan
+Choices-sv.UTF-8: exkludera, inkludera, grön, gul, blå, lila, turkos, ljusturkos
+Choices-tr.UTF-8: hariç tut, dahil et, yeşil, sarı, mavi, macenta, siyan, parlak siyan
+Choices-vi.UTF-8: loại trừ, bao gồm, màu xanh lá cây, màu vàng, màu xanh dương, màu đỏ tươi, màu xanh lông mòng, màu xanh lông mòng sáng
+Choices-zh_CN.UTF-8: exclude, include, green, yellow, blue, magenta, cyan, brightcyan
+Description: What do you want the ${level} level of regular expressions to do?
+ Please specify what you want to do with a line if it matches at least one
+ of the regular expressions in the ${level} level database. You have the
+ following options (note that regular expressions are matched on a
+ line-per-line basis):
+ .
+  * exclude: discard matching lines
+  * include: discard all but matching lines. Not recommended. Note that
+    this is mutually exclusive with 'exclude'.
+  * green, yellow, blue, magenta, cyan, brightcyan: give matching lines
+    the specified color.
+ .
+ Note that each option can be specified for only one of paranoid,
+ server, or workstation.
+Description-cs.UTF-8: Co má úroveň regulárních výrazů ${level} provádět?
+ Zadejte prosím, co chcete provést s řádkem, který se shoduje s nejméně jedním regulárním výrazem v databázi úrovně ${level}. K dispozici máte následující možnosti (regulární výrazy se porovnávají vůči jednotlivým řádkům):
+ .
+  * vyřadit: zahodí shodující se řádek
+  * zahrnout: kromě shodujících se řádků zahodí všechny ostatní.
+    Nedoporučuje se. Je neslučitelné s 'vyřadit'.
+  * zelená, žlutá, modrá, purpurová, azurová, jasně azurová:
+    přiřadí shodujícím se řádkům zadanou barvu.
+ .
+ Každou možnost můžete zadat pouze jedenkrát, a to buď pro úroveň paranoidní, server nebo pro pracovní stanici.
+Description-da.UTF-8: Hvad ??nsker du at niveauet af regul??re udtryk p?? ${level} skal g??re?
+ Angiv venligst hvad du ??nsker at g??re med en linje, hvis den svarer overens med mindst et af de regul??re udtryk i niveaudatabasen ${level}. Du har de f??lgende indstillingsmuligheder (bem??rk at regul??re udtryk sammenlignes p?? et linje-per-linje grundlag):
+ .
+  * ekskluder (exclude): fjern ens linjer
+  * inkluder (include): fjern alle linjer der ikke er ens. Anbefales ikke.
+    Bem??rk at dette er uforeneligt med 'exclude'.
+  * gr??n (green), gul (yellow), bl?? (blue), magenta, cyan, lysecyan (brightcyan:
+    giv ens linjer den angivne farve.
+ .
+ Bem??rk at hvert tilvalg kun kan angives en gang for enten paranoid, server eller workstation.
+Description-de.UTF-8: Welche Aktion wollen Sie dem Niveau »${level}«, bestehend aus bestimmten regulären Ausdrücken, zuweisen?
+ Bitte geben Sie an, was mit einer Zeile geschehen soll, auf die wenigstens ein regulärer Ausdruck in der Niveau-Datenbank ${level} zutrifft. Folgende Aktionen stehen zur Auswahl (beachten Sie, dass das Zutreffen regulärer Ausdrücke für jede Zeile einzeln entschieden wird):
+ .
+  * Ausschließend: verwerfe zutreffende Zeilen
+  * Einschließend: verwerfe alle nicht zutreffenden Zeilen.
+                   Wird nicht empfohlen. Beachten Sie, dass das
+                   das genaue Gegenteil von »ausschließend« ist.
+  * Grün, Gelb, Blau, Magenta, Cyan, Hell-Cyan: stelle zutreffende Zeilen
+                   in dieser Farbe dar.
+ .
+ Beachten Sie, dass jede Aktion nur einmal für entweder paranoid, server oder workstation ausgewählt werden kann.
+Description-es.UTF-8: ¿Qué desea que haga el nivel de expresiones regulares «${level}»?
+ Especifique que desea hacer con una línea si coincide con al menos una de las expresiones regulares en el nivel «${level}» de la base de datos. Dispone de las siguientes opciones (tenga en cuenta que las expresiones regulares se comparan línea por línea).
+ .
+  * exclude (excluir): Descartar líneas coincidentes
+  * include (incluir): Descartar todas las líneas menos las coincidentes.
+    No recomendado. Tenga en cuenta que es mutuamente excluyente con
+    «exclude».
+  * green, yellow, blue, magenta, cyan, brightcyan: Resaltar las líneas
+    coincidentes con el color especificado.
+ .
+ Tenga en cuenta que cada opción sólo se puede definir para uno de los niveles «paranoid», «server» o «workstation».
+Description-eu.UTF-8: ${level} mailako adierazpen erregularrak zer egitea nahi duzu?
+ Adierazi zer egin nahi duzun lerro batekin ${level} mailako datu-basean bat datorrenean gutxienez adierazpen erregularretako batekin. Honako aukerak dituzu erabilgarri (kontuan hartu lerroz lerro parekatzen direla):
+ .
+  * exclude: kanpoan utzi bat datozen lerroak
+  * include: baztertu denak, bat datozen lerroak salbu. Ez da gomendagarria.
+                 Kontuan hartu hau bateraezina dela 'exclude'-rekin.
+  * berdea, horia, urdina, magenta, cyana, cyan argia: aplikatu zehaztutako
+                 kolorea bat datozen lerroei
+ .
+ .
+ Kontuan izan aukera bakoitza maila batentzako bakarrik (paranoid, server eta workstation) zehatz daitekeela.
+Description-fr.UTF-8: Mise en évidence des expressions rationnelles de niveau ${level} :
+ Choisissez le comportement à adopter lorsqu'une ligne correspond à l'une des expressions rationnelles de la base de données de niveau ${level}. Veuillez noter que les correspondances se font ligne par ligne. Les choix suivants sont possibles :
+ .
+  - exclusion        : ne pas tenir compte des lignes correspondantes ;
+  - inclusion        : ne tenir compte que des lignes correspondantes.
+                       Ce choix, non recommandé, ne peut pas être
+                       combiné avec l'exclusion ;
+  - vert, jaune
+    bleu, magenta
+    cyan, cyan clair : colorer les lignes sélectionnées.
+ .
+ Chaque option ne peut être spécifiée qu'une fois pour l'un des niveaux « paranoid (paranoïaque) », « server (serveur) » et « workstation (station de travail) ».
+Description-gl.UTF-8: ¿Que quere que faga o nivel "${level}" de expresións regulares?
+ Indique que quere facer cunha liña se coincide con alomenos unha das expresións regulares na base de datos do nivel "${level}". Ten as seguintes opcións (teña en conta que as expresións regulares compróbanse liña a liña):
+ .
+  * excluír: omitir as liñas coincidentes
+  * incluír: omitir as liñas que non coincidan. Non se recomenda.
+    Teña en conta que non se pode usar ao mesmo tempo que "exclude".
+  * verde, marelo, azul, maxenta, cian, cian brillante: dá a cor
+    indicada ás liñas que coincidan.
+ .
+ Teña en conta que só se pode especificar cada opción para un só dos valores "paranoid", "server" ou "workstation".
+Description-it.UTF-8: Cosa si vuole fare con le espressioni regolari di livello ${level}?
+ Specificare cosa si vuole fare con una riga che verifica almeno una delle espressioni regolari nel database per il livello ${level}. Si può scegliere fra le seguenti opzioni (notare che le espressioni regolari sono confrontate riga per riga):
+ .
+  * escludi: ignora le righe che verificano l'espressione regolare.
+  * includi: ignora tutto tranne le righe che verificano
+    l'espressione regolare (non raccomandato). Notare che questo è
+    mutuamente esclusivo con "escludi".
+  * verde, giallo, blu, magenta, ciano, ciano chiaro: assegna il colore
+    specificato alle righe che verificano l'espressione regolare.
+ .
+ Ogni opzione può essere specificata per solo uno fra "paranoid", "server" o "workstation".
+Description-ja.UTF-8: ${level} レベルの正規表現についてどのようにしますか?
+  ${level} レベルデータベース中の正規表現のうち少なくとも 1 つにマッチした行があった場合、どのように対処したいかを指定してください。対処には以下のオプションがあります (正規表現は行ごとにマッチするのに注意してください):
+ .
+  * exclude: 一致した行を破棄する
+  * include: 一致した行以外を全て破棄する。非推奨。
+    これは 'exclude' と相互に排他的なのに注意。
+  * グリーン, イエロー, ブルー, マゼンタ, シアン, ブライトシアン:
+    一致した行を指定した色で表示する。
+ .
+ それぞれ paranoia、server、workstation に対し、オプションの指定ができるのは 1 度だけであるのに注意してください。
+Description-nb.UTF-8: Hva vil du at de regulære uttrykkene på nivå «${level}» skal gjøre?
+ Oppgi hva du vil gjøre med en logglinje hvis den stemmer med minst én av de regulære uttrykkene i ${level}-databasen. Du har følgende muligheter (merk at regulære uttrykk treffer linje for linje):
+ .
+ * utelat: utelat linjer som passer
+ * ta med: ta med bare linjer som passer og kast andre. Ikke anbefalt.
+    Merk at «utelat» og «ta med» gjensidig utelukker hverandre.
+ * grønn, gul. blå. magentarød, cyanblå, lys cyanblå: linjer som passer
+    får den oppgitte fargen.
+ .
+ Merk at hvert valg kan oppgis bare for én av paranoid, tjener eller arbeidsstasjon.
+Description-nl.UTF-8: Wat wilt u doen met het ${level} niveau reguliere expressies?
+ Gelieve op te geven wat u met een regel wilt doen wanneer ze met tenminste één van de reguliere expressies in het ${level}-niveau overeenkomt. U hebt de volgende opties (merk op dat reguliere expressies regel per regel vergeleken worden):
+ .
+  * uitsluiten: de overeenkomende regel weggooien
+  * insluiten: alles behalve overeenkomende regels uitsluiten. Dit wordt
+    niet aangeraden. Merk op dat u slechts één van uitsluiten of
+    insluiten kunt gebruiken.
+  * groen, geel, blauw, magenta, cyaan, lichtcyaan: ken de opgegeven
+    kleur toe aan regels die overeenkomen.
+ .
+ Merk op dat elke optie slechts één keer gegeven kan worden voor hetzij paranoid, hetzij server, hetzij werkstation.
+Description-no.UTF-8: Hva vil du at de regulære uttrykkene på nivå «${level}» skal gjøre?
+ Oppgi hva du vil gjøre med en logglinje hvis den stemmer med minst én av de regulære uttrykkene i ${level}-databasen. Du har følgende muligheter (merk at regulære uttrykk treffer linje for linje):
+ .
+ * utelat: utelat linjer som passer
+ * ta med: ta med bare linjer som passer og kast andre. Ikke anbefalt.
+    Merk at «utelat» og «ta med» gjensidig utelukker hverandre.
+ * grønn, gul. blå. magentarød, cyanblå, lys cyanblå: linjer som passer
+    får den oppgitte fargen.
+ .
+ Merk at hvert valg kan oppgis bare for én av paranoid, tjener eller arbeidsstasjon.
+Description-pt.UTF-8: O que deseja que o nível ${level} de expressões regulares faça?
+ Por favor especifique o que pretende fazer com uma linha que coincida com pelo menos uma das expressões regulares da base de dados de nível ${level}. Tem as seguintes opções (note que as expressões regulares fazem correspondências linha a linha):
+ .
+  * excluir: descartam as linhas coincidentes
+  * incluir: descartam todas menos as linhas coincidentes. Não é recomendado.
+    Note que isto é mutuamente exclusivo com o 'excluir'.
+  * verde, amarelo, azul, magenta, ciano, ciano claro: dão as cores 
+    especificadas ás linhas coincidentes.
+ .
+ Note que cada opção pode ser específica para apenas um de 'paranoid', 'server', ou 'workstation'.
+Description-pt_BR.UTF-8: O que você deseja que o nível de expressões regulares ${level} faça ?
+ Por favor, especifique o que você deseja fazer com uma linha caso a mesma case com pelo menos uma das expressões regulares na base de dados de nível ${level}. Você possui as seguintes opções (note que expressões regulares são checadas em uma base de linha por linha):
+ .
+  * excluir: descarta as linhas que casarem
+  * incluir: descarta todas as linhas menos aquelas que casarem. Não 
+    recomendado. Note que isso é mutualmente exclusivo à opção 'excluir'.
+  * verde, amarelo, azul, magenta, ciano, ciano-claro : atribui a cor 
+    especificada a linhas que casarem.
+ .
+ Note que cada opção pode ser especificada somente uma única vez para paranóia, servidor ou estação.
+Description-ro.UTF-8: Ce doriți să facă nivelul ${level} de expresii regulate?
+ Alegeți ce trebuie să se întâmple cu o linie dacă aceasta se potrivește cu cel puțin o expresie regulată din nivelul ${level} al bazei de date. Puteți alege din următoarele variante (a se reține că expresiile regulate sunt verificate pe fiecare linie în parte):
+ .
+  * exclude: renunță la liniile care verifică această expresie
+  * include: renunță la toate linile mai puțin cele care verifică această regulă. Nu este recomandată.A se reține că 
+    acest lucru este mutual exclusiv cu 'exclude'.
+  * verde, galben, albastru, violet, turcoaz, turcoaz deschis: colorează liniile
+    care verifică regula expresia în culoarea respectivă.
+ .
+ A se reține că fiecare opțiune poate fi specificată doar pentru unul din modurile: paranoid, server sau workstation.
+Description-ru.UTF-8: Что делать со строками подпадающими под уровень ${level}?
+ Укажите, что нужно делать со строкой, если она подходит под одно из регулярный выражений базы данных уровня ${level}. Можно сделать следующее (заметим, что поиск совпадений с регулярными выражениями выполняется построчно):
+ .
+  * exclude: отбрасывать совпавшие строки
+  * include: отбрасывать всё, кроме совпавших строк. Не рекомендуется.
+    Заметим, что это взаимоисключающее 'exclude'.
+  * зелёный, жёлтый, синий, малиновый, циан, brightcyan: окрашивать
+    совпадающие строки в определённый цвет.
+ .
+ Заметим, что каждое действие может быть задано только раз для paranoid, server или workstation.
+Description-sv.UTF-8: Vad vill du att nivån "${level}" av reguljära uttryck ska göra?
+ Vänligen ange vad du vill göra om en rad som matchar åtminstone ett av de reguljära uttrycken i databasnivån ${level}. Du har följande inställningar (notera att reguljära uttryck matchas på en rad-för-rad basis):
+ .
+  * exkludera: kasta matchade rader
+  * inkludera: kasta alla utom matchande rader. Rekommenderas inte. Notera att
+    detta är ömsesidigt exklusivt med "exkludera".
+  * grön, gul, blå, lila, turkos, ljusturkos: ge matchande rader
+    den angivna färgen.
+ .
+ Notera att varje inställning kan specificeras för endast en av paranoid, server eller workstation.
+Description-tr.UTF-8: ${level}. düzey düzenli ifadelerin ne yapmasını istersiniz?
+ Bir satır ${level}. düzey veritabanındaki düzenli ifadelerden en az biriyle eşleşirse bu satırla ne yapmak istediğinizi belirtin. Seçenekleriniz şunlar (düzenli ifadelerin satır temelinde eşleştiğini unutmayın):
+ .
+  * hariç tut: eşleşen satırları eler.
+  * dahil et: eşleşmeyen satırları eler. Kullanımı önerilmez. Hariç tutma
+    veya dahil etme seçeneklerinden sadece birini seçebilirsiniz.
+  * yeşil, sarı, mavi, macenta, siyan, parlak siyan: eşleşen satırları
+    belirli bir renkte gösterir.
+ .
+ Her seçeneğin paranoyak, sunucu ya da iş istasyonu değerlerinden sadece biri için tayin edileceğini unutmayın.
+Description-vi.UTF-8: Bạn có muốn cấp « ${level} » của biểu thức chính quy làm gì vậy?
+ Hãy ghi rõ bạn muốn làm gì với dòng nào khớp với ít nhất một của những biểu thức chính quy trong cơ sở dữ liệu cấp « ${level} ». Bạn có những tùy chọn theo đây (ghi chú rằng biểu thức chính quy được khớp theo mỗi dòng):
+ .
+ • loại trừ		hủy mọi dòng khớp
+ • bao gồm 	hủy mọi dòng không khớp (không đề nghị; loại từ lẫn nhau với « loại trừ »
+ • màu xanh lá cây, màu vàng, màu xanh nước biển, màu đỏ tươi, màu xanh lông mòng, màu xanh lông mòng sáng: tô màu mỗi dòng khớp bằng màu đã xác định.
+ .
+ Hãy ghi chú rằng mỗi tùy chọn có thể được xác định chỉ cho một của những điều paranoid (rất cẩn thận), server (máy phục vụ) hoặc workstation (máy trạm) thôi.
+Description-zh_CN.UTF-8: 想要正则表达式的 ${level} 级别做什么？
+ 请指定如果一行匹配 ${level} 中的最少一个正则表达式时，想要对它做什么。您有如下选项(注意，正则表达式以行为单位匹配)：
+ .
+  * exclude：忽略匹配行
+  * include: 忽略除了匹配行之外的所有。不推荐。注意，这与 'exclude' 互斥。
+  * green, yellow, blue, magenta, cyan, brightcyan：为匹配行指定颜色。
+ .
+ 注意，每个选项只可以设定为 paranoid，server 或 workstation 中的一个。
+
+Template: logtool/error-multiple
+Type: error
+Description: Please do not select an action more than once
+ You have selected the action ${action} for at least ${level1} and
+ ${level2}. This is invalid; please either select a unique action for each
+ level, or go back and choose not to use a certain level.
+Description-cs.UTF-8: Prosíme, nevybírejte akci více než jednou
+ Minimálně pro úrovně ${level1} a ${level2} jste vybrali stejnou akci ${action}. To není povoleno. Zadejte prosím pro každou úroveň jedinečnou akci, nebo se vraťte zpět a zvolte, že danou úroveň nechcete používat.
+Description-da.UTF-8: V??lg ikke en handling mere end en gang
+ Du har valgt handlingen ${action} for mindst ${level1} og ${level2}. Dette er ugyldigt; v??lg venligst enten en unik handling for hvert niveau eller g?? tilbage og v??lg ikke at bruge et bestemt niveau.
+Description-de.UTF-8: Bitte wählen Sie eine Aktion nicht häufiger als einmal aus
+ Sie haben die Aktion ${action} für wenigstens ${level1} und ${level2} gewählt. Das ist nicht zulässig. Bitte wählen Sie entweder eine eindeutige Aktion für jedes Niveau, oder gehen Sie zurück und entscheiden Sie sich dafür kein bestimmtes Niveau zu verwenden.
+Description-es.UTF-8: No seleccione una acción más de una vez.
+ Ha seleccionado la acción «${action}» para al menos «${level1}» y «${level2}». Esto es incorrecto; seleccione una acción única para cada nivel, o vuelva atrás y escoja no usar un nivel en particular.
+Description-eu.UTF-8: Ez hautatu ekintza bat behin baino gehiagotan
+ ${action} eragiketa gutxienez ${level1} eta ${level2} mailetarako hautatu duzu. Hori baliogabea da. Hautatu eragiketa bat maila bakoitzerako edo joan atzera eta hautatu mailetako bat ez erabiltzea.
+Description-fr.UTF-8: Veuillez éviter de choisir une action plus d'une fois.
+ Vous avez choisi l'action ${action} au moins pour les niveaux ${level1} et ${level2}. Ce choix n'est pas valable ; veuillez choisir une action unique pour chaque niveau, ou revenez en arrière et choisissez de ne pas utiliser un des niveaux.
+Description-gl.UTF-8: Non escolla unha acción máis dunha vez
+ Escolleu a acción ${action} para, alomenos, os niveis "${level1}" e "${level2}". Isto non é válido; escolla unha soa acción para cada nivel, ou volte e escolla non empregar un dos niveis.
+Description-it.UTF-8: Non scegliere un'azione più di una volta
+ Si è associato l'azione ${action} almeno a ${level1} e ${level2}. Questo non è corretto, scegliere un unico livello per ciascuna azione oppure tornare indietro e scegliere di non usare un certo livello.
+Description-ja.UTF-8: アクションを選ぶのは１度のみにしてください。
+ 少なくとも ${level1} と ${level2} に対して ${action} というアクションを選んでいます。これは正しくありません; それぞれのレベルに対し、1 つのアクションを選ぶか、質問に戻ってそのレベルを選ばないようにしてください。
+Description-nb.UTF-8: Ikke velg en handling mer enn én gang.
+ Du har valgt handlingen ${action} for minst ${level1} og ${level2}. Dette er ikke gyldig, velg enten en entydig handling for hvert nivå, eller gå tilbake og velg å ikke bruke ett bestemt nivå.
+Description-nl.UTF-8: Gelieve geen actie meer dan één keer te selecteren
+ U hebt de actie ${action} voor ten minste ${level1} en ${level2} geselecteerd. Dit is ongeldig; gelieve hetzij een unieke actie voor elk niveau te selecteren, hetzij terug te gaan en een bepaald niveau niet te selecteren.
+Description-no.UTF-8: Ikke velg en handling mer enn én gang.
+ Du har valgt handlingen ${action} for minst ${level1} og ${level2}. Dette er ikke gyldig, velg enten en entydig handling for hvert nivå, eller gå tilbake og velg å ikke bruke ett bestemt nivå.
+Description-pt.UTF-8: Por favor não seleccione mais do que uma opção de cada vez
+ Seleccionou a acção ${action} para pelo menos ${level1} e ${level2}. Isto é inválido; por favor seleccione uma acção única para cada nível, ou volte atrás e escolha não usar um determinado nível.
+Description-pt_BR.UTF-8: Por favor, não selecione uma ação mais de uma vez
+ Você selecionou a ação ${action} para pelo menos ${level1} e ${level2}. Isto não é válido. Por favor, selecione uma única ação cada nível ou volte e opte por não utilizar um dos níveis.
+Description-ro.UTF-8: Nu alegeți o acțiune de mai multe ori
+ Ați ales acțiunea ${action} pentru cel puțin nivelele ${level1} și ${level2}. Acest lucru nu este permis, fie alegeți o acțiune unică pentru fiecare nivel fie alegeți șă nu utilizați un anumit nivel.
+Description-ru.UTF-8: Не выбирайте одно действие несколько раз
+ Вы выбрали действие ${action} для ${level1} и ${level2}. Это не разрешается; выберите для каждого уровня уникальное действие или вернитесь и отключите использование одного из уровней.
+Description-sv.UTF-8: Välj inte en åtgärd mer än en gång
+ Du har valt åtgärden ${action} för åtminstone ${level1} och ${level2}. Detta är ogiltigt; vänligen välj antingen en unik åtgärd för varje nivå eller gå tillbaka och välj att inte använda en viss nivå.
+Description-tr.UTF-8: Lütfen bir eylemi birden fazla kez seçmeyin.
+ ${action} eylemini en azından ${level1}. ve ${level2}. düzeyler için seçtiniz. Bu geçersiz bir seçimdir. Ya her düzey için ayrı bir eylem seçin, ya da geri dönüp belirli bir düzey kullanmamayı tercih edin.
+Description-vi.UTF-8: Đừng chọn hành động nào nhiều lần.
+ Bạn đã chọn gán hành động « ${action} » cho ít nhất cấp « ${level1} » và « ${level2} ». Làm như thế không hợp lệ : hãy hoặc chọn một hành động duy nhất cho mỗi cấp, hoặc đi lùi và bỏ chon sử dụng một cấp nào đó.
+Description-zh_CN.UTF-8: 请不要多次选择一个动作
+ 您已经至少为 ${level1} 和 ${level2} 选择了 ${action} 动作。这是非法的；请为每个级别选择一个单独的动作，或者返回选择不使用某个级别。

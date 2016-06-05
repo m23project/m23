@@ -1,0 +1,1274 @@
+Template: dokuwiki/system/configure-webserver
+Type: multiselect
+Choices: apache2, lighttpd
+Choices-cs.UTF-8: apache2, lighttpd
+Choices-da.UTF-8: apache2, lighttpd
+Choices-de.UTF-8: apache2, lighttpd
+Choices-es.UTF-8: apache2, lighttpd
+Choices-eu.UTF-8: apache2, lighttpd
+Choices-fr.UTF-8: Apache 2, Lighttpd
+Choices-gl.UTF-8: apache2, lighttpd
+Choices-it.UTF-8: apache2, lighttpd
+Choices-ja.UTF-8: apache2, lighttpd
+Choices-nl.UTF-8: apache2, lighttpd
+Choices-pl.UTF-8: apache2, lighttpd
+Choices-pt.UTF-8: apache2, lighttpd
+Choices-ru.UTF-8: apache2, lighttpd
+Choices-sv.UTF-8: apache2, lighttpd
+Choices-vi.UTF-8: apache2, lighttpd
+Default: apache2
+Description: Web server(s) to configure automatically:
+ DokuWiki runs on any web server supporting PHP, but only listed
+ web servers can be configured automatically.
+ .
+ Please select the web server(s) that should be configured
+ automatically for DokuWiki.
+Description-cs.UTF-8: Webové servery, které se mají nastavit automaticky:
+ DokuWiki běží na libovolném webovém serveru s podporou PHP, ale automatické nastavení funguje pouze s uvedenými webovými servery.
+ .
+ Vyberte webové servery, které se mají automaticky nastavit pro běh DokuWiki.
+Description-da.UTF-8: Internetservere der skal konfigureres automatisk:
+ DokuWiki kører på enhver internetserver, der understøtter PHP, men kun de viste internetservere kan konfigureres automatisk.
+ .
+ Vælg venligst de internetservere som skal konfigureres automatisk for DokuWiki.
+Description-de.UTF-8: Automatisch einzurichtende(r) Webserver:
+ DokuWiki läuft auf jedem Webserver, der PHP unterstützt, aber nur die hier aufgeführten können automatisch eingerichtet werden.
+ .
+ Bitte wählen Sie den oder die Webserver aus, die automatisch für DokuWiki eingerichtet werden sollen.
+Description-es.UTF-8: Servidor/es web a configurar automáticamente:
+ Puede ejecutar DokuWiki sobre cualquier servidor web que permita utilizar PHP, pero sólo se pueden configurar automáticamente los servidores web enumerados.
+ .
+ Escoja el/los servidor/es web que se deberían configurar automáticamente para DokuWiki.
+Description-eu.UTF-8: Web-zerbitzariak automatikoki konfiguratzeko:
+ DokuWiki-k PHP euskarria duen edozer web-zerbitzari mota onartzen du, baina zerrendatutako web-zerbitzariak soilik konfigura daiteke automatikoki.
+ .
+ Hautatu web-zerbitzariak DokuWiki-rentzako automatikoki konfiguratzeko.
+Description-fr.UTF-8: Serveur(s) web à configurer automatiquement :
+ DokuWiki fonctionne avec n'importe quel serveur qui gère PHP, mais seuls ceux indiqués ici peuvent être configurés automatiquement.
+ .
+ Veuillez choisir le (ou les) serveur(s) web à configurer automatiquement pour Dokuwiki.
+Description-gl.UTF-8: Servidor(es) web que configurar de forma automática:
+ DokuWiki executase en calquera servidor web que admita PHP, mais só os servidores web listados poden configurarse de forma automática.
+ .
+ Seleccione o(s) servidor(es) web que debe(n) ser configurado(s) automaticamente para DokuWiki.
+Description-it.UTF-8: Server web da configurare automaticamente:
+ DokuWiki può essere eseguito su qualsiasi server web che supporti PHP, tuttavia è possibile configurare automaticamente solo i server web elencati.
+ .
+ Selezionare i server web che dovranno essere configurati automaticamente per DokuWiki.
+Description-ja.UTF-8: 自動的に設定するウェブサーバ:
+ DokuWiki は PHP をサポートするウェブサーバであれば動作しますが、一覧にあるサーバだけが自動的に設定が可能です。
+ .
+ DokuWiki の設定を自動的に行うウェブサーバを選んでください。
+Description-nl.UTF-8: Webservers die automatisch geconfigureerd moeten worden:
+ DokuWiki draait op elke webserver die PHP ondersteunt, maar alleen de onderstaande webservers kunnen automatisch worden geconfigureerd.
+ .
+ Geef alstublieft aan welke webservers automatisch voor DokuWiki geconfigureerd moeten worden.
+Description-pl.UTF-8: Serwer(y) WWW do automatycznej konfiguracji:
+ DokuWiki może działać na dowolnym serwerze obsługującym PHP, lecz jedynie wymienione serwery można skonfigurować automatycznie.
+ .
+ Proszę wybrać serwery WWW do automatycznej konfiguracji z DokuWiki.
+Description-pt.UTF-8: Servidor(es) web a configurar automaticamente:
+ O DokuWiki corre em qualquer servidor web que suporte PHP, mas apenas servidores web existentes na lista podem ser automaticamente configurados.
+ .
+ Por favor seleccione o(s) servidor(es) web que deverá ser configurado automaticamente para o DokuWiki.
+Description-ru.UTF-8: Веб-серверы для автоматической настройки:
+ DokuWiki работает с любым веб-сервером, поддерживающим PHP, однако автоматическая настройка выполняется только для серверов из списка.
+ .
+ Выберите веб-сервер(ы), которые нужно настроить автоматически под DokuWiki.
+Description-sv.UTF-8: Webbservrar att utföra inställningar på automatiskt:
+ Dokuwiki kan köras på vilken webbserver som helst som har stöd för PHP men endast de nedan listade webbservrarna kan få inställningar utförda automatiskt.
+ .
+ Ange vilken/vilka webbserver/webbservrar som ska få inställningar för DokuWiki utförda automatiskt.
+Description-vi.UTF-8: Những trình phục vụ Web cần tự động cấu hình:
+ DokuWiki chạy với bất cứ trình phục vụ nào cũng hỗ trợ PHP, nhưng mà chỉ những trình phục vụ Web được liệt kê ở đây có khả năng được tự động cấu hình.
+ .
+ Hãy chọn những trình phục vụ Web nên được tự động cấu hình cho DokuWiki.
+
+Template: dokuwiki/system/restart-webserver
+Type: boolean
+Default: true
+Description: Should the web server(s) be restarted now?
+ In order to activate the new configuration, the reconfigured web
+ server(s) have to be restarted.
+Description-cs.UTF-8: Mají se nyní webové servery restartovat?
+ Aby se nové nastavení projevilo, je třeba webové servery restartovat.
+Description-da.UTF-8: Skal internetserverne genstartes nu?
+ For at aktivere den nye konfiguration, skal de rekonfigurerede internetservere genstartes.
+Description-de.UTF-8: Webserver jetzt neu starten?
+ Damit die neuen Einstellungen greifen können, müssen alle umkonfigurierten Webserver neu gestartet werden.
+Description-es.UTF-8: ¿Desea reiniciar el/los servidor/es web ahora?
+ Para poder activar la nueva configuración, se tiene/n que reiniciar el/los servidor/es web reconfigurado/s.
+Description-eu.UTF-8: Web-zerbitzariak orain berrabiarazi behar dira?
+ Konfigurazio berria aktibatzeko, birkonfiguratutako web-zerbitzariak berrabiarazi egin behar dira.
+Description-fr.UTF-8: Faut-il redémarrer le (ou les) serveur(s) web maintenant ?
+ Afin d'activer la nouvelle configuration, le (ou les) serveur(s) web doivent être redémarrés.
+Description-gl.UTF-8: Reiniciar agora o(s) servidor(es)?
+ Para activar a nova configuración, o(s) servidor(es) web configurado(s) debe(n) ser(en) reiniciado(s).
+Description-it.UTF-8: Riavviare ora i server web?
+ Al fine di attivare la nuova configurazione, i server web riconfigurati devono essere riavviati.
+Description-ja.UTF-8: すぐにウェブサーバを再起動しますか?
+ 新規の設定を有効にするには、設定を変更したウェブサーバを再起動する必要があります。
+Description-nl.UTF-8: Webserver(s) nu herstarten?
+ Om de nieuwe configuratie te activeren moeten de opnieuw ingestelde webserver(s) worden herstart.
+Description-pl.UTF-8: Czy serwer(y) mają być zrestartowane?
+ W celu aktywowania nowej konfiguracji, konieczne jest zrestartowanie serwera (serwerów) WWW.
+Description-pt.UTF-8: Deve o(s) servidor(es) web ser reiniciado agora?
+ Para activar a nova configuração, o(s) servidor(s) web reconfigurado deve ser reiniciado.
+Description-ru.UTF-8: Перезапустить веб-сервер(ы) прямо сейчас?
+ Чтобы новые настройки вступили в силу, нужно перезапустить перенастроенный веб-сервер(ы).
+Description-sv.UTF-8: Ska webbservrar startas om nu?
+ För att aktivera de nya inställningarna måste den eller de webbservrar med ändringar startas om.
+Description-vi.UTF-8: Những trình phục vụ Web nên được khởi chạy lại ngay bây giờ không?
+ Để kích hoạt cấu hình mới thì cần khởi chạy lại những trình phục vụ Web được cấu hình lại.
+
+Template: dokuwiki/system/documentroot
+Type: string
+Default: /dokuwiki
+Description: Wiki location:
+ Specify the directory below the server's document root from which
+ DokuWiki should be accessible.
+Description-cs.UTF-8: Umístění wiki:
+ Zadejte adresář pod kořenovým adresářem dokumentů, ve kterém má být DokuWiki dostupná.
+Description-da.UTF-8: Wikiplacering:
+ Angiv mappen under serverens dokumentrod hvorfra DokuWiki skal kunne tilgås.
+Description-de.UTF-8: Wiki-Speicherort:
+ Bitte das Verzeichnis unterhalb des »Dokument-Root« des Webservers eingeben, in dem DokuWiki erreichbar sein soll.
+Description-es.UTF-8: Ubicación del wiki:
+ Indique el directorio bajo la raíz del servidor web donde DokuWiki debería estar accesible.
+Description-eu.UTF-8: Wiki kokalekua:
+ Zerbitzariko dokumentuen erroaren pean dagoen direktorioa zehaztu, DokuWiki-katzitu ahal dezakena.
+Description-fr.UTF-8: Emplacement du wiki :
+ Veuillez indiquer le répertoire, dans l'arborescence du serveur web, qui sera la racine de Dokuwiki.
+Description-gl.UTF-8: Localización do wiki:
+ Especifique o directorio de documentos do servidor, baixo raíz, desde o que DokuWiki debe ser accesíbel.
+Description-it.UTF-8: Posizione del Wiki:
+ Specificare la directory sotto la radice dei documenti del server da cui DokuWiki dovrà essere accessibile.
+Description-ja.UTF-8: Wiki の場所:
+ DokuWiki がアクセス可能なサーバのドキュメントルート配下のディレクトリを指定してください。
+Description-nl.UTF-8: Wiki-locatie: 
+ Geef aan vanuit welke map onder de hoofddocumentmap van de server DokuWiki bereikbaar moet zijn.
+Description-pl.UTF-8: Położenie wiki:
+ Proszę podać katalog poniżej głównego katalogu serwera z którego dostępny ma być DokuWiki.
+Description-pt.UTF-8: Local do Wiki:
+ Especifique o directório abaixo da raiz de documentos do servidor a partir do qual o DokuWiki deve ser acessível.
+Description-ru.UTF-8: Расположение вики:
+ Укажите каталог ниже корня документов сервера, из которого будет доступна DokuWiki.
+Description-sv.UTF-8: Wiki-plats:
+ Ange katalognamn nedanför webbserverns dokumentrot som DokuWiki ska bli tillgänglig från.
+Description-vi.UTF-8: Vị trí Wiki:
+ Bên dưới hãy ghi rõ gốc tài liệu của trình phục vụ, từ đó DokuWiki nên cho phép truy cập.
+
+Template: dokuwiki/system/accessible
+Type: select
+Default: localhost only
+Description: Authorized network:
+ Wikis normally provide open access to their content, allowing anyone
+ to modify it. Alternatively, access can be restricted by IP address.
+ .
+ If you select "localhost only", only people on the local host (the machine
+ the wiki is running on) will be able to connect. "local network" will
+ allow people on machines in a local network (which you will need to
+ specify) to talk to the wiki. "global" will allow anyone, anywhere, to
+ connect to the wiki.
+ .
+ The default is for site security, but more permissive settings should
+ be safe unless you have a particular need for privacy.
+Description-cs.UTF-8: Autorizovaná síť:
+ Wiki obvykle umožňují volný přístup k informacím v nich uložených a kdokoliv je tak může měnit. Pokud chcete, můžete přístup omezit jen určeným IP adresám.
+ .
+ Vyberete-li „pouze tento počítač“, budou se moci připojit pouze uživatelé z tohoto počítače (na kterém běží wiki). Volba „místní síť“ umožní přístup uživatelům z počítačů umístěných v místní síti (budete ji muset zadat). Poslední možnost povolí připojení k wiki komukoliv odkudkoliv.
+ .
+ Výchozí možnost je zvolena s ohledem na zabezpečení počítače, ale pokud nevyžadujete speciální soukromí, mělo by být i volnější nastavení bezpečné.
+Description-da.UTF-8: Autoriseret netværk:
+ Wikier tilbyder normalt åben adgang til deres indhold. En tilladelse der giver alle mulighed for at rette i den. Alternativt kan adgang begrænses via IP-adresser.
+ .
+ Hvis du vælger »kun lokalvært«, kan kun folk på den lokale vært (maskinen som wikien kører på) forbinde til wikien. »lokalt netværk« vil tillade folk på maskiner i det lokale netværk (som du skal angive) at snakke med wikien. »Alle« vil tillade enhver, overalt, at forbinde til wikien.
+ .
+ Standarden er for sidesikkerhed, men mere løse indstillinger bør være sikre, med mindre du har et specielt behov for privatliv.
+Description-de.UTF-8: Zugelassenes Netzwerk:
+ Wikis bieten normalerweise offenen Zugang zu ihrem Inhalt und erlauben jedem, ihn zu ändern. Der Zugang kann aber auch auf der Basis der IP-Adresse eingeschränkt werden.
+ .
+ Wenn Sie »nur lokaler Rechner« wählen, können sich nur Benutzer verbinden, die direkt an dem Rechner arbeiten, auf dem das Wiki läuft. »Lokales Netzwerk« erlaubt es, von den Rechnern des lokalen Netzwerks (das Sie angeben müssen) mit dem Wiki zu arbeiten. »Alle« bedeutet, dass sich jeder von überall mit dem Wiki verbinden kann.
+ .
+ Die Voreinstellung dient der Sicherheit der Site, aber offenere Einstellungen sind auch sicher, solange Sie keine besonderen Anforderungen an Geheimhaltung haben.
+Description-es.UTF-8: Red autorizada:
+ Normalmente, los wikis proporcionan acceso abierto a su contenido, permitiendo a cualquiera editarlo. Sin embargo, puede restringir el acceso por dirección IP.
+ .
+ Si selecciona «sólo la máquina local», sólo se podrán conectar quienes lo hagan desde la máquina local (la máquina en la que se está ejecutando el wiki). Si selecciona «red local» se permitirá la conexión con el wiki a quienes lo hagan desde la red local (la cual debe especificar). Si selecciona «global» se permitirá la conexión con el wiki a cualquier persona desde cualquier lugar.
+ .
+ El valor predeterminado es el más seguro, pero una configuración más permisiva debería ser igualmente segura a menos que tenga una necesidad concreta de privacidad.
+Description-eu.UTF-8: Sare baimendua:
+ Wiki-ek normaleak beren edukietara sarbide irekia hornitzen dute, edonork aldatzea baimenduz. Horren ordez, sarbidetza IP helbidearen bidez murriz daiteke.
+ .
+ 'ostalari-lokala bakarrik' hautatzen baduzu, makina lokaleko (wikia abiarazirik duen makina) erabiltzaileak bakarrik konektatu ahal izango dira. 'sare lokala' erabiliz, sare lokaleko beste makinei sarrera baimenduko zaie (sare lokala ezarri beharko duzu). 'orokorra' erabiliz, sarrera edonori edonondik baimenduko zaio.
+ .
+ Lehenestia gunearen segurtasunerako izan arren, baimen gehiago eskaintzen duen ezarpen bat ere segurua izan daiteke (pribatutasunaren behar berezi bat ez baduzu bederen).
+Description-fr.UTF-8: Réseau autorisé :
+ Les wikis fournissent un accès libre à leur contenu, permettant à quiconque de le modifier. Néanmoins leur accès peut être restreint par adresses IP.
+ .
+ Le choix « hôte local seul » restreint la connexion aux utilisateurs locaux. Alternativement, « réseau local » permet la connexion aux personnes du réseau local (qu'il vous incombe de spécifier) et « sans restriction » permet à tout le monde de se connecter.
+ .
+ La valeur par défaut est très restrictive pour garantir la sécurité du site mais des valeurs plus permissives sont sûres sauf si vous avez des besoins particuliers en termes de vie privée.
+Description-gl.UTF-8: Rede autorizada:
+ Os wikis adoitan ofrecer libre acceso ao seu contido, o que permite que calquera poida modificalo. Por outra parte, o acceso pode seren restrinxido por enderezos IP.
+ .
+ Se escolle «só localhost», só a xente que empregue a máquina na que está a funcionar o Wiki poderá conectarse a el. «rede local» permitirá que os usuarios das máquinas dunha rede local (que terá que especificar) se conecten ao Wiki. «global» permitirá a todos, en calquera lugar, conectarse ao Wiki.
+ .
+ O valor predeterminado é para a seguranza do sitio, mais unha configuración máis permisiva pode ser segura a non ser que haxa unha necesidade concreta de salvagarda da intimidade.
+Description-it.UTF-8: Rete autorizzata:
+ Normalmente i Wiki consentono il libero accesso al loro contenuto e permettono a chiunque di modificarlo. Alternativamente è possibile restringere l'accesso per indirizzo IP.
+ .
+ Se si sceglie «solo host locale», la connessione sarà consentita solo dall'host locale (la macchina su cui il Wiki è in esecuzione). Se si sceglie «rete locale», l'accesso sarà consentito agli utenti delle macchine che si trovano nella rete locale (che dovrà essere specificata). Se invece si sceglie «globale», l'accesso sarà consentito a chiunque da qualsiasi luogo.
+ .
+ Il valore predefinito è per motivi di sicurezza del sito, ma anche delle impostazioni più permissive dovrebbero essere sicure, a meno di avere un bisogno particolare di riservatezza.
+Description-ja.UTF-8: 認証済みネットワーク:
+ 通常、Wiki はコンテンツへのアクセスをオープンにしており、誰でも変更できるようにしています。一方、アクセスを IP アドレスで制限することもできます。
+ .
+ 「ローカルホストのみ」を選択すると、ローカルホスト (Wiki が実行されているマシン) のユーザのみが接続できるようになります。「ローカルネットワーク」では、ローカルネットワーク (その範囲は指定する必要があります。) にあるマシンのユーザが Wiki とやりとりできます。「グローバル」を選択すれば、誰でもどこからでも Wiki に接続できます。
+ .
+ デフォルト値はサイトのセキュリティを考えてのものですが、特に機密を要するのでなければより緩やかな設定でも安全です。
+Description-nl.UTF-8: Geautoriseerd netwerk:
+ Wiki's maken normaal gesproken hun inhoud vrij toegankelijk, waardoor iedereen hem kan wijzigen. Het is ook mogelijk om toegang te beperken op basis van IP-adres.
+ .
+ Als u 'enkel localhost' selecteert mogen enkel mensen op de machine waar de wiki op draait verbinding maken. Als u 'lokaal netwerk' kiest mogen alle machines op het lokale netwerk (dit dient u te specificeren) verbinding maken met de wiki. Als u 'globaal' kiest mag iedereen, van overal verbinding maken met de wiki.
+ .
+ De standaard is gekozen vanwege veiligheidsredenen, maar een ruimere instelling moet ook veilig zijn tenzij privacy erg belangrijk is
+Description-pl.UTF-8: Autoryzowana sieć:
+ Dostęp do zawartości wiki jest zwykle otwarty dla każdego. Można jednak ograniczyć go wg adresu IP.
+ .
+ Jeśli wybierze się "tylko ten komputer", to połączyć będą mogły się wyłącznie osoby z komputera lokalnego (na którym działa wiki). "Sieć lokalna" pozwoli na dostęp do wiki z komputerów w sieci lokalnej (którą trzeba będzie określić), natomiast "dostęp globalny" zezwoli na osiągnięcie wiki bez ograniczeń.
+ .
+ Domyślny wybór zapewnia bezpieczeństwo, lecz bardziej liberalne ustawienia również powinny być bezpieczne, chyba że istnieją szczególne wymagania odnośnie prywatności.
+Description-pt.UTF-8: Rede autorizada:
+ Os wikis normalmente fornecem acesso aberto ao seu conteúdo, permitindo que qualquer pessoa o possa modificar. Alternativamente, o acesso pode ser restrito ao endereço IP.
+ .
+ Se seleccionar 'apenas máquina local', apenas pessoas a trabalhar na máquina local (a máquina em que o Wiki está a correr) se poderão ligar.  A opção 'rede local ' permitirá pessoas em máquinas da rede local (que terá de especificar) comunicar com o Wiki.  A opção 'global' permitirá a qualquer pessoa em qualquer local, ligar-se ao Wiki.
+ .
+ A predefinição consiste na segurança do site, no entanto definições mais permissivas deverão ser seguras a não ser que necessite de um nível de segurança particular.
+Description-ru.UTF-8: Возможен доступ:
+ В вики, обычно, не ограничивают доступ к информации, и она может изменяться кем угодно. Но можно ограничить доступ к сайту на основе IP-адресов.
+ .
+ Если вы выберете «только с localhost», то подключаться можно будет только с localhost (компьютер, на котором работает вики). Выбор «из локальной сети» позволит подключаться к вики людям из локальной сети (которую нужно будет указать). Выбор «отовсюду» позволит подключиться к вики из любого места.
+ .
+ В целях безопасности есть доступ только с локальной машины, но если в вики не хранится какая-нибудь конфиденциальная информация, откройте доступ к вики отовсюду.
+Description-sv.UTF-8: Behörigt nätverk:
+ Wikisystem tillåter vanligen öppen tillgång till deras innehåll, detta innebär att alla kan förändra det. Alternativet kan vara att hantera restriktioner på IP-adress-nivå.
+ .
+ Om du väljer "endast lokal värd" kommer endast personer på det lokala värdsystemet (maskinen som wikin kör på) att kunna ansluta. "lokalt nätverk" tillåter personer på maskiner i det lokala nätverket (vilket du behöver ange) att prata med wikin. "globalt" tillåter alla, var som helst, att ansluta till wikin.
+ .
+ Standardvärdet är för säkerhet på webbplatsen men en mer tillåtande inställning är säker så länge du inte har särskilda behov för skydd.
+Description-vi.UTF-8: Mạng cho phép:
+ Wiki bình thường cho phép mọi người truy cập đến nội dung (thì có quyền sửa đổi). Cũng có thể hạn chế quyền truy cập theo địa chỉ IP.
+ .
+ Nếu bạn chọn mục « chỉ máy cục bộ » thì chỉ những người trên máy cục bộ (máy trên đó Wiki đang chạy) có quyền kết nối. Mục « mạng cục bộ » sẽ cho phép những người trên mạng nội (mà bạn cần phải ghi rõ) liên lạc với Wiki. Mục « toàn cục » sẽ cho phép mọi người ở mọi nơi đều có quyền kết nối đến Wiki này.
+ .
+ Mặc định là bảo vệ địa chỉ Web, nhưng mà thiết lập cho phép hơn nên an toàn nếu bạn không yêu cầu sự riêng tư.
+Choices: localhost only, local network, global
+Choices-cs.UTF-8: pouze tento počítač, místní síť, kdokoliv
+Choices-da.UTF-8: kun lokalvært, lokalt netværk, alle
+Choices-de.UTF-8: nur lokaler Rechner, lokales Netzwerk, alle
+Choices-es.UTF-8: sólo la máquina local, red local, global
+Choices-eu.UTF-8: ostalari-lokala bakarrik, sare lokala, orokorra
+Choices-fr.UTF-8: hôte local seulement, réseau local, sans restriction
+Choices-gl.UTF-8: só localhost, rede local, global
+Choices-it.UTF-8: solo host locale, rete locale, globale
+Choices-ja.UTF-8: ローカルホストのみ, ローカルネットワーク, グローバル
+Choices-nl.UTF-8: enkel localhost, lokaal netwerk, globaal
+Choices-pl.UTF-8: tylko ten komputer, sieć lokalna, dostęp globalny
+Choices-pt.UTF-8: apenas localhost, rede local, global
+Choices-ru.UTF-8: только с localhost, из локальной сети, отовсюду
+Choices-sv.UTF-8: endast lokal värd, lokalt nätverk, global
+Choices-vi.UTF-8: chỉ máy cục bộ, mạng cục bộ, toàn cục
+
+Template: dokuwiki/system/localnet
+Type: string
+Default: 10.0.0.0/24
+Description: Local network:
+ The specification of your local network should either be
+ an IP network in CIDR format (x.x.x.x/y) or a domain specification (like
+ .example.com).
+ .
+ Anyone who matches this specification will be given full and complete
+ access to DokuWiki's content.
+Description-cs.UTF-8: Místní síť:
+ Jak je definována vaše místní síť? Můžete ji zadat jako rozsah IP adres v CIDR tvaru (x.x.x.x/y) nebo jako doménu (jako .example.com).
+ .
+ Kdokoliv kdo splňuje zadaná kritéria bude mít plný přístup k obsahu DokuWiki.
+Description-da.UTF-8: Lokalt netværk:
+ Specifikationerne på dit lokale netværk skal enten være et IP-netværk i CIDR-format (x.x.x.x/y) eller en domænespecifikation (såsom .example.com).
+ .
+ Enhver som svarer til denne specifikation vil få fuld adgang til indholdet i DokuWiki.
+Description-de.UTF-8: Lokales Netzwerk:
+ Die Angabe Ihres lokalen Netzwerks sollte eine IP-Netzwerkadresse im CIDR-Format (x.x.x.x/y) oder ein Domänenname (wie .example.com) sein.
+ .
+ Jeder, der die unten eingegebene Vorgabe erfüllt, erhält vollständigen Zugang zu DokuWikis Inhalt.
+Description-es.UTF-8: Red local:
+ Puede definir su red local mediante una dirección IP en formato CIDR (x.x.x.x/y) o usando un dominio (como «.example.com»).
+ .
+ Cualquier equipo con estos parámtros tendrá acceso total y completo al contenido de DokuWiki.
+Description-eu.UTF-8: Sare lokala:
+ Sare lokalaren ezarpena CIDR formatuko (x.x.x.x/y) IP helbide bat edo domeinu bat (adibidez .niredomeinua.com) zehaztuz egin behar da.
+ .
+ Zehaztapenarekin bat datorren edozeini emango zaio erabateko sarbidetza DokuWiki-ra.
+Description-fr.UTF-8: Réseau local :
+ Veuillez indiquer le réseau local, soit avec le format CIDR (x.x.x.x/y), soit sous forme de domaine (tel que « example.com »).
+ .
+ Toute adresse répondant à ce critère aura un accès complet au contenu de Dokuwiki.
+Description-gl.UTF-8: Rede local:
+ A especificación da rede local debe ser unha rede IP en formato CIDR (x.x.x.x/y) ou unha especificación de dominio (como .dominio.com).
+ .
+ Quen queira que cumpra esta especificación disporá de acceso total ao contido do DokuWiki.
+Description-it.UTF-8: Rete locale:
+ La rete locale deve essere specificata o come rete IP in formato CIDR (x.x.x.x/y), o come nome di dominio (come .example.com).
+ .
+ Chiunque corrisponda al valore specificato otterrà l'accesso completo e totale al contenuto di DokuWiki.
+Description-ja.UTF-8: ローカルネットワーク:
+ ローカルネットワークの指定には、CIDR 形式の IP ネットワーク (x.x.x.x/y) またはドメイン (.example.com など) の指定を用いてください。
+ .
+ 指定にマッチするアクセス元であれば誰でも、DokuWiki のコンテンツに対する完全なアクセス権が与えられます。
+Description-nl.UTF-8: Lokaal netwerk:
+ De specificatie van uw lokale netwerk dient of een IP-netwerk in CIDR-formaat te zijn (x.x.x.x/y), of een domeinspecificatie (zoals .example.com)
+ .
+ Iedereen die binnen de specificatie valt krijgt volledige toegang tot de inhoud van de DokuWiki.
+Description-pl.UTF-8: Sieć lokalna:
+ Proszę określić sieć lokalną jako sieć IP w formacie CIDR (x.x.x.x/y) albo w postaci domeny (np. .example.com).
+ .
+ Każdy komputer który będzie pasował do tej wartości będzie miał pełny dostęp do zawartości DokuWiki.
+Description-pt.UTF-8: Rede local:
+ A especificação da sua rede local deverá ser, ou uma rede de IP no formato CIDR (x.x.x.x/y), ou uma especificação de domínio (tal como .exemplo.com).
+ .
+ Qualquer pessoa que reúna as condições das especificações atrás enumeradas terá acesso total e completo ao DokuWiki.
+Description-ru.UTF-8: Локальная сеть:
+ IP-адрес локальной сети можно указывать в CIDR формате (x.x.x.x/y) или в доменной форме (например, .mydomain.com).
+ .
+ Все с адресов, которые подпадают под указанное ниже значение, получат полный доступ к содержимому DokuWiki.
+Description-sv.UTF-8: Lokalt nätverk:
+ Ange antingen ett IP-nätverk i CIDR-format (x.x.x.x/y) eller en domänspecifikation (såsom .mindomän.se) för att identifiera det lokala nätverket.
+ .
+ Alla som matchar specifikationen som anges nedan kommer att ges fullständig tillgång till innehållet i DokuWiki:n.
+Description-vi.UTF-8: Mạng cục bộ :
+ Mạng cục bộ nên được ghi rõ là một mạng IP theo định dạng CIDR (x.x.x.x/y) hay một đặc tả miền (v.d. miền_mình.com).
+ .
+ Mọi người đủ điều kiện của đặc tả này thì có quyền truy cập hoàn toàn đến nội dung của DokuWiki.
+
+Template: dokuwiki/system/purgepages
+Type: boolean
+Default: false
+Description: Purge pages on package removal?
+ By default, DokuWiki stores all its pages in a file database in
+ /var/lib/dokuwiki.
+ .
+ Accepting this option will leave you with a tidier system when the
+ DokuWiki package is removed, but may cause information loss if you have an
+ operational wiki that gets removed.
+Description-cs.UTF-8: Smazat stránky při odstranění balíku?
+ DokuWiki implicitně ukládá všechny své stránky v souborové databázi ve /var/lib/dokuwiki.
+ .
+ Přijetím této možnosti sice budete mít po odstranění DokuWiki „uklizenější“ systém, ale můžete tak nechtěně přijít o data, která se ve wiki za tu dobu nashromáždí.
+Description-da.UTF-8: Fjern sider ved pakkefjernelse?
+ Som standard gemmer DokuWiki alle sine sider i en fildatabase i /var/lib/dokuwiki.
+ .
+ Accept af denne indstilling vil efterlade et mere opryddet system, når DokuWiki-pakken fjernes, men kan medføre at du mister information, hvis du har en igangværende wiki som fjernes.
+Description-de.UTF-8: Seiten beim vollständigen Entfernen des Pakets löschen?
+ Standardmäßig speichert DokuWiki alle seine Seiten in einer Datei-Datenbank im Verzeichnis /var/lib/dokuwiki.
+ .
+ Wenn Sie zustimmen, haben Sie ein aufgeräumteres System, falls das Paket DokuWiki vollständig entfernt wird, aber es können Informationen verloren gehen, wenn Sie ein Wiki löschen, das noch benutzt wird.
+Description-es.UTF-8: ¿Desea purgar las páginas al eliminar el paquete?
+ De manera predeterminada, DokuWiki almacena todas sus páginas en una base de datos en el archivo «/var/lib/dokuwiki».
+ .
+ Si acepta esta opción su sistema quedará más limpio cuando elimine el paquete DokuWiki, pero puede que pierda información si se elimina un wiki operativo.
+Description-eu.UTF-8: Orriak ezabatu paketea kentzean?
+ Lehenespenez Dokuwiki-k bere orrialde guztiak datu-base batean gordetzen ditu (/var/lib/dokuwiki direktorioan).
+ .
+ Aukera hau onartzean sistema garbiagoa geldituko da DokuWiki paketea kentzean, baina datu galera sor dezake exekutatzen ari den wiki bat kentzen bada.
+Description-fr.UTF-8: Faut-il purger les pages à la suppression du paquet ?
+ Par défaut, Dokuwiki enregistre toutes ses pages dans une base de données située dans « /var/lib/dokuwiki ».
+ .
+ En choisissant cette option, le système sera complètement nettoyé à la suppression de Dokuwiki mais cela risque de causer une perte de données si un Wiki opérationnel est supprimé.
+Description-gl.UTF-8: Purgar as páxinas ao eliminar o paquete?
+ De xeito predeterminado, DokuWiki almacena todas as súas páxinas en ficheiros en /var/lib/dokuwiki.
+ .
+ Se acepta esta opción ha quedar cun sistema máis limpo ao retirar o paquete DokuWiki, mais pode causar perda de información se retira un wiki operativo.
+Description-it.UTF-8: Eliminare le pagine alla rimozione del pacchetto?
+ In modo predefinito DokuWiki memorizza tutte le pagine in un file di database che si trova in «/var/lib/dokuwiki».
+ .
+ Se si accetta questa opzione si disporrà di un sistema più ordinato in caso di rimozione del pacchetto DokuWiki, ma si potrebbe anche avere una perdita d'informazioni se si ha un Wiki produttivo che viene rimosso.
+Description-ja.UTF-8: パッケージを削除する際にページを消去しますか?
+ DokuWiki はデフォルトでは、/var/lib/dokuwiki のファイルデータベースにすべてのページを保存します。
+ .
+ このオプションを有効にすると、DokuWiki のパッケージを削除したときに綺麗なシステムが残ります。しかし、誤って Wiki を削除するような操作をしてしまうと情報の損失が生じるでしょう。
+Description-nl.UTF-8: Wilt u de wiki-pagina's wissen bij het verwijderen van het pakket?
+ Standaard slaat DokuWiki de wiki-pagina's op in bestanden in /var/lib/dokuwiki.
+ .
+ Aanvaarden van deze optie geeft een opgeruimder systeem wanneer het DokuWiki-pakket verwijderd wordt, maar kan dataverlies veroorzaken als u een operationele wiki heeft die verwijderd wordt.
+Description-pl.UTF-8: Wyczyścić strony przy usunięciu pakietu?
+ Domyślnie, DokuWiki przechowuje wszystkie swoje strony w pliku bazy danych w /var/lib/dokuwiki.
+ .
+ Zaakceptowanie tej opcji pozostawi w systemie większy porządek po usunięciu DokuWiki, lecz może spowodować utratę danych, jeśli w systemie istnieje działająca wiki.
+Description-pt.UTF-8: Eliminar páginas na remoção de pacotes?
+ Por predefinição o DokuWiki armazena todas as suas páginas numa base de dados de ficheiros em /var/lib/dokuwiki.
+ .
+ Ao aceitar esta opção ficará com um sistema mais leve (pequeno) quando o pacote do DokuWiki for removido, mas pode causar perda de informação se possuir um Wiki operacional que seja removido.
+Description-ru.UTF-8: Вычистить страницы при удалении пакета?
+ По умолчанию, DokuWiki хранит все страницы в файловой базе данных в каталоге /var/lib/dokuwiki.
+ .
+ При утвердительном ответе удаление пакета DokuWiki приведёт к полной вычистке её из системы, в результате чего можно потерять нужные, наработанные в вики данные.
+Description-sv.UTF-8: Rensa ut sidor när paketet tas bort?
+ Som standard lagrar DokuWiki alla sina sidor i en fildatabas i /var/lib/dokuwiki.
+ .
+ Acceptera detta alternativ och du får ett mer städat system när DokuWiki-paketet är borttaget men kan orsaka att information går förlorad om du har en operativ Wiki som blir borttagen.
+Description-vi.UTF-8: Bỏ gói thì cũng tẩy mọi trang không?
+ Mặc định là DokuWiki lưu tất cả các trang vào một cơ sở dữ liệu tập tin trong thư mục « /var/lib/dokuwiki ».
+ .
+ Bật tùy chọn này thì hệ thống đẹp hơn khi gói DokuWiki bị gỡ bỏ, nhưng cũng có thể gây ra thông tin bị mất nếu một Wiki hoạt động bị gỡ bỏ.
+
+Template: dokuwiki/system/writeconf
+Type: boolean
+Default: false
+Description: Make the configuration web-writeable?
+ DokuWiki includes a web-based configuration interface. To be usable, it
+ requires the web server to have write permission to the configuration
+ directory.
+ .
+ Accepting this option will give the web server write permissions on the
+ configuration directory and files.
+ .
+ The configuration files will still be readable and editable by hand
+ regardless of whether or not you accept this option.
+Description-cs.UTF-8: Povolit změnu konfigurace z webu?
+ DokuWiki obsahuje webové konfigurační rozhraní. Aby ho bylo možno používat, je potřeba, aby měl webový server práva zápisu do adresáře s konfigurací.
+ .
+ Přijetím této možnosti udělíte webovému serveru oprávnění k zápisu do adresáře s konfigurací a všem souborům tam umístěným.
+ .
+ Bez ohledu na to, jak zde odpovíte, budete stále moci konfigurační soubory číst a měnit ručně.
+Description-da.UTF-8: Gør konfigurationen skrivbar på internettet?
+ DokuWiki inkluderer en internetbaseret konfigurationsgrænseflade. For at være brugbar, kræver den, at internetserveren har skriverettighed til konfigurationsmappen.
+ .
+ Accept af denne indstilling vil give internetserveren skriverettigheder på konfigurationsmappen og -filerne.
+ .
+ Konfigurationsfilerne vil være læsbare og kan redigeres manuelt, uanset om du accepterer denne indstilling eller ej.
+Description-de.UTF-8: Einstellungen für den Webserver schreibbar machen?
+ DokuWiki bringt eine web-basierte Konfigurationsoberfläche mit. Damit sie funktioniert, benötigt der Webserver Schreibrechte auf das Konfigurationsverzeichnis.
+ .
+ Wenn Sie hier zustimmen, erhält der Webserver Schreibrechte auf Konfigarionsverzeichnis und -dateien.
+ .
+ Die Konfigurationsdateien bleiben lesbar und manuell änderbar, gleichgültig, welche Auswahl Sie treffen.
+Description-es.UTF-8: ¿Desea otorgar permisos de escritura sobre la configuración al servidor web?
+ DokuWiki incluye una interfaz de configuración basada en la web. Para que se pueda utilizar, necesita que el servidor web tenga permisos de escritura sobre el directorio de configuración.
+ .
+ Al aceptar esta opción dará permisos de escritura al servidor web sobre el directorio y los archivos de configuración.
+ .
+ Podrá leer y editar los archivos de configuración a mano, independientemente de si aceptó o no esta opción.
+Description-eu.UTF-8: Konfigurazioa web bidez idazgarria egin?
+ DokuWiki-ak web bidez konfiguratzeko interfazea dauka. Hau erabiltzeko, web-zerbitzariak konfigurazioko direktorioan idazteko baimena behar du.
+ .
+ Aukera hau onartzean web-zerbitzariari konfigurazioko direktorio eta fitxategietan idazteko baimenak emango zaizkio.
+ .
+ Konfigurazioko fitxategiak eskuz irakur eta edita daitezke, berdin izanik aukera hau onartzen duzun edo ez.
+Description-fr.UTF-8: La configuration doit-elle être modifiable depuis l'interface web ?
+ La configuration de Dokuwiki se fait via une interface web. Pour l'utiliser, il faut que le serveur web ait les permissions d'écriture sur ce répertoire.
+ .
+ En acceptant cette option, le serveur web aura les droits d'écriture sur le répertoire et les fichiers de configuration.
+ .
+ Les fichiers de configuration seront toujours lisibles et modifiables par vous-même, quelque soit le choix effectué ici.
+Description-gl.UTF-8: Facer que a configuración se poida escribir en web?
+ DokuWiki inclúe unha interface de configuración baseada en web. Para ser utilizábel, requírese que o servidor web teña permiso de escritura no directorio de configuración.
+ .
+ Se acepta esta opción daralle ao servidor web, permisos de escritura no directorio de configuración e nos ficheiros.
+ .
+ Os ficheiros de configuración aínda poderán seren lidos e editados manualmente, independentemente de se está ou non aceptada esta opción.
+Description-it.UTF-8: Rendere la configurazione scrivibile dal web?
+ DokuWiki include un'interfaccia di configurazione basata sul web. Affinché sia possibile utilizzarla, è necessario fornire al server web i permessi di scrittura sulla directory della configurazione.
+ .
+ Se si accetta questa opzione si daranno al server web i permessi di scrittura sulla directory e sui file di configurazione.
+ .
+ Indipendentemente dall'accettazione di questa opzione, i file di configurazione saranno comunque modificabili manualmente e leggibili.
+Description-ja.UTF-8: 設定をウェブから変更可能にしますか?
+ DokuWiki はウェブベースの管理画面を持っています。使えるようにするには、ウェブサーバが設定ディレクトリへの書き込み権限を持つ必要があります。
+ .
+ このオプションを有効にすると、ウェブサーバへ設定ディレクトリ・ファイルへの書き込み権限を与えます。
+ .
+ このオプションを有効にするか否かに関わらず、設定ファイルの手動での読み書きはこれまで通り可能です。
+Description-nl.UTF-8: Moet de configuratie schrijfbaar zijn vanaf het web?
+ DokuWiki bevat een webinterface voor de configuratie. Om deze te gebruiken moet de webserver kunnen schrijven naar de configuratiemap.
+ .
+ Als u deze optie accepteert krijgt de webserver schrijfrechten op de configuratiemap en -bestanden.
+ .
+ De configuratiebestanden blijven handmatig leesbaar en te bewerken onafhankelijk van wat u hier kiest.
+Description-pl.UTF-8: Utworzyć konfigurację jako zapisywalną z sieci?
+ DokuWiki zawiera interfejs WWW służący do konfiguracji. Aby działał poprawnie, wymagane są prawa zapisu do katalogu konfiguracyjnego przez serwer WWW.
+ .
+ Zaakceptowanie tej opcji spowoduje nadanie serwerowi WWW uprawnień do zapisu katalogu oraz plików konfiguracyjnych.
+ .
+ Pliki konfiguracyjne będą wciąż odczytywalne i edytowalne ręcznie, niezależnie od wybranej teraz opcji.
+Description-pt.UTF-8: Permitir a escrita da configuração pela web?
+ O DokuWiki incluí uma interface baseada na web para configuração. Para ser utilizada requer que o servidor web possua permissões de escrita no directório da configuração.
+ .
+ Ao aceitar esta opção dará permissões de escrita no servidor web ao directório e ficheiros de configuração.
+ .
+ Os ficheiros de configuração continuarão com acessos de leitura e escrita manual, independente de aceitar ou não esta opção.
+Description-ru.UTF-8: Разрешить изменять настройки через веб?
+ У DokuWiki есть интерфейс настройки через веб. Чтобы его использовать нужно дать права веб-серверу на запись в каталог настройки.
+ .
+ Если ответить утвердительно, то веб-сервер получит права на запись в каталог с файлами настроек.
+ .
+ Файлы настроек останутся доступны на чтение и запись вручную, независимо от ответа на данный вопрос.
+Description-sv.UTF-8: Ska inställningarna vara skrivbara för webbserverns användare?
+ DokuWiki innehåller ett webbaserat gränssnitt för att manipulera inställningar. För att det ska fungera måste webbservern kunna skriva till katalogen med inställningar.
+ .
+ Genom att ange detta val kommer webbservern att få tillåtelse att skriva i inställningskatalogen och dess filer.
+ .
+ Inställningsfilerna kommer att vara ändå vara läs- och redigeringsbara för hand oberoende om detta alternativ aktiveras eller ej.
+Description-vi.UTF-8: Đặt cấu hình cho phép ghi trên Web ?
+ DokuWiki gồm có một giao diện cấu hình dựa vào Web. Để sử dụng được, nó yêu cầu trình phục vụ Web có quyền ghi vào thư mục cấu hình.
+ .
+ Bật tùy chọn này thì gán cho trình phục vụ Web có quyền ghi nhớ vào thư mục cấu hình và tất cả các tập tin bên trong.
+ .
+ Các tập tin cấu hình vẫn còn cho phép đọc và viết bằng tay, bất chấp bạn bật tuỳ chọn này.
+
+Template: dokuwiki/system/writeplugins
+Type: boolean
+Default: false
+Description: Make the plugins directory web-writeable?
+ DokuWiki includes a web-based plugin installation interface. To be usable,
+ it requires the web server to have write permission to the plugins directory.
+ .
+ Accepting this option will give the web server write permissions to the
+ plugins directory.
+ .
+ Plugins can still be installed by hand regardless of whether or not you
+ accept this option.
+Description-cs.UTF-8: Povolit zápis do adresáře s moduly z webu?
+ DokuWiki obsahuje webové rozhraní pro instalaci rozšiřujících modulů. Aby ho bylo možno používat, je potřeba, aby měl webový server práva zápisu do adresáře se zásuvnými moduly.
+ .
+ Přijetím této možnosti udělíte webovému serveru oprávnění k zápisu do adresáře se zásuvnými moduly.
+ .
+ Bez ohledu na to, jak zde odpovíte, budete stále moci moduly instalovat ručně.
+Description-da.UTF-8: Gør udvidelsesmodulets mappe internetskrivbart?
+ DokuWiki inkluderer en grænseflade til en internetbaseret udvidelsesmodulinstallation. For at være brugbar, kræver det at internetserveren har skriverettigheder til udvidelsesmodulmappen.
+ .
+ Accept af denne indstilling vil give internetserveren skriverettigheder til udvidelsesmodulmappen.
+ .
+ Udvidelsesmoduler kan stadig blive installeret manuelt, uanset om du accepterer denne indstilling eller ej.
+Description-de.UTF-8: Verzeichnis der Plugins für den Webserver schreibbar machen?
+ DokuWiki bringt eine web-basierte Konfigurationsoberfläche mit. Damit sie funktioniert, benötigt der Webserver Schreibrechte auf das Plugins-Verzeichnis.
+ .
+ Wenn Sie hier zustimmen, erhält der Webserver Schreibrechte auf das Plugins-Verzeichnis.
+ .
+ Plugins können weiterhin manuell installiert werden, gleichgültig, welche Auswahl Sie treffen.
+Description-es.UTF-8: ¿Desea permitir la escritura en el directorio de complementos desde la web?
+ DokuWiki incluye una interfaz de instalación de complementos basada en la web. Para que se pueda utilizar, necesita que el servidor web tenga permisos de escritura sobre el directorio de complementos.
+ .
+ Al aceptar esta opción dará permisos de escritura al servidor web sobre el directorio de complementos.
+ .
+ Podrá instalar complementos a mano, independientemente de si acepta o no esta opción.
+Description-eu.UTF-8: Pluginen direktorioa web bidez idazgarria egin?
+ DokuWiki-ak web bidez pluginak instalatzeko interfazea dauka. Hau erabiltzeko, web-zerbitzariak pluginen direktorioan idazteko baimena behar du.
+ .
+ Aukera hau onartzean web-zerbitzariari pluginen direktorioan idazteko baimenak emango zaizkio.
+ .
+ Pluginak eskuz instala daitezke, berdin izanik aukera hau onartzen duzun edo ez.
+Description-fr.UTF-8: Faut-il que le répertoire des greffons soit accessible en écriture ?
+ L'installation des greffons dans Dokuwiki se fait via une interface web. Pour l'utiliser, il faut que le serveur web ait les droits d'écriture sur ce répertoire.
+ .
+ En acceptant cette option, le serveur web aura les droits d'écriture sur ce répertoire.
+ .
+ Les greffons pourront toujours être installés par vous-même quelque soit la décision prise ici.
+Description-gl.UTF-8: Facer que o directorio de engadidos se poida escribir en web?
+ DokuWiki inclúe unha interface de instalación de engadidos baseada en web. Para ser utilizábel, requírese que o servidor web teña permiso de escritura no directorio de configuración.
+ .
+ Se acepta esta opción daralle ao servidor web, permisos de escritura no directorio de engadidos.
+ .
+ Os engadidos aínda poderán seren instalados manualmente, independentemente de se está ou non aceptada esta opción.
+Description-it.UTF-8: Rendere la directory dei plugin scrivibile dal web?
+ DokuWiki include un'interfaccia d'installazione dei plugin basata sul web. Affinché sia possibile utilizzarla, è necessario fornire al server web i permessi di scrittura sulla directory dei plugin.
+ .
+ Se si accetta questa opzione si daranno al server web i permessi di scrittura sulla directory dei plugin.
+ .
+ Indipendentemente dall'accettazione di questa opzione, è sempre possibile installare manualmente i plugin.
+Description-ja.UTF-8: プラグインのディレクトリをウェブから書き込み可能にしますか?
+ DokuWiki はウェブベースのプラグインインストール画面を持っています。これを使うには、ウェブサーバがプラグインディレクトリへの書き込み権限を持っている必要があります。
+ .
+ このオプションを有効にすると、ウェブサーバへプラグインディレクトリへの書き込み権限を与えます。
+ .
+ このオプションを有効にするか否かに関わらず、プラグインの手動でのインストールはこれまで通り可能です。
+Description-nl.UTF-8: Moet de uitbreidingenmap schrijfbaar zijn vanaf het web?
+ DokuWiki bevat een webinterface voor de installatie van uitbreidingen. Om deze te gebruiken moet de webserver kunnen schrijven naar de uitbreidingenmap.
+ .
+ Als u deze optie accepteert krijgt de webserver schrijftoegang tot de uitbreidingenmap.
+ .
+ Uitbreidingen kunnen nog steeds handmatig worden geïnstalleerd onafhankelijk van wat u hier kiest.
+Description-pl.UTF-8: Utworzyć katalog wtyczek jako zapisywalny z sieci?
+ DokuWiki zawiera interfejs WWW służący do instalacji wtyczek. Aby działał poprawnie, wymagane są prawa zapisu do katalogu wtyczek przez serwer WWW.
+ .
+ Zaakceptowanie tej opcji spowoduje nadanie serwerowi WWW uprawnień do zapisu do katalogu wtyczek.
+ .
+ Wtyczki będą wciąż instalowalne ręcznie, niezależnie od wybranej teraz opcji.
+Description-pt.UTF-8: Dar permissões de escrita ao directório dos plugins pela web?
+ O DokuWiki inclui uma interface de instalação de plugins baseada em web. Para ser utilizável, o servidor web requer permissões de escrita no directório dos plugins.
+ .
+ Ao aceitar esta opção dará permissões de escrita no servidor web ao directório dos plugins.
+ .
+ Os plugins continuam a poder ser instalados manualmente independentemente de aceitar ou não esta opção.
+Description-ru.UTF-8: Разрешить доступ к каталогу с модулями через веб?
+ У DokuWiki есть интерфейс установки модулей через веб. Чтобы его использовать нужно дать права веб-серверу на запись в каталог модулей.
+ .
+ Если ответить утвердительно, то веб-сервер получит права на запись в каталог с модулями.
+ .
+ Модули по-прежнему можно будет устанавливать вручную, независимо от ответа на данный вопрос.
+Description-sv.UTF-8: Ska katalogen för instick vara skrivbar av webbservern?
+ Dokuwiki innehåller ett webbaserat gränssnitt för att installera instick. För att det ska fungera måste webbservern kunna skriva till katalogen med instick.
+ .
+ Genom att ange detta val kommer webbservern att få tillåtelse att skriva i katalogen för instick.
+ .
+ Instick kan ändå installeras för hand oberoende om detta alternativ aktiveras eller ej.
+Description-vi.UTF-8: Đặt thư mục phần bổ sung cho phép ghi trên Web ?
+ DokuWiki gồm có một giao diện Web cài đặt phần bổ sung. Để sử dụng được, nó yêu cầu trình phục vụ Web có quyền ghi vào thư mục phần bổ sung.
+ .
+ Bật tùy chọn này thì gán cho trình phục vụ Web có quyền ghi nhớ vào thư mục phần bổ sung.
+ .
+ Vẫn có khả năng cài đặt phần bổ sung bằng tay, bất chấp bạn bật tuỳ chọn này.
+
+Template: dokuwiki/wiki/title
+Type: string
+Default: Debian DokuWiki
+Description: Wiki title:
+ The wiki title will be displayed in the upper right corner of the default
+ template and on the browser window title.
+Description-cs.UTF-8: Název wiki:
+ Název wiki bude zobrazen v pravém horním rohu výchozí šablony a v titulku prohlížeče.
+Description-da.UTF-8: Wikititel:
+ Wikititlen vil blive vist i det øvre højre hjørne af standardskabelonen og i browservinduetitlen.
+Description-de.UTF-8: Wiki-Titel:
+ Der Wiki-Titel wird in der oberen rechten Ecke der Standardschablone und in der Titelleiste des Webbrowsers angezeigt.
+Description-es.UTF-8: Título del wiki:
+ El título del wiki se mostrará en la esquina superior derecha de la plantilla predeterminada y en el título de la ventana del navegador web.
+Description-eu.UTF-8: Wiki-aren titulua:
+ Txantiloi lehenetsiaren goi-eskuineko ertzean eta arakatzailearen leihoko tituluan bistaratuko den Wiki-aren titulua.
+Description-fr.UTF-8: Titre du wiki :
+ Le titre du wiki peut être affiché dans le coin supérieur droit du gabarit par défaut et sur la barre de titre du navigateur.
+Description-gl.UTF-8: Título do wiki:
+ O título do wiki mostrarase no canto superior dereito do modelo predeterminado e no título da xanela do navegador.
+Description-it.UTF-8: Titolo del Wiki:
+ Il titolo del Wiki verrà mostrato nell'angolo in alto a destra del modello predefinito e nel titolo della finestra del browser.
+Description-ja.UTF-8: Wiki のタイトル:
+ wiki のタイトルは、デフォルトテンプレートの右上の角とブラウザのウィンドウタイトルに表示されます。
+Description-nl.UTF-8: Naam van de wiki:
+ De naam van de wiki is zichtbaar in de rechterbovenhoek van het standaard template en in de titelbalk van de webbrowser.
+Description-pl.UTF-8: Tytuł wiki:
+ Tytuł wiki będzie wyświetlany w prawym górnym rogu domyślnego szablonu i w pasku tytułowym przeglądarki.
+Description-pt.UTF-8: Título do Wiki:
+ O título do wiki pode ser visualizado no canto superior direito do template predefinido e no título da janela do browser.
+Description-ru.UTF-8: Заголовок вики:
+ Заголовок вики будет показан в верхнем правом углу шаблона по умолчанию и в заголовке окна браузера.
+Description-sv.UTF-8: Wikititel:
+ Wikititeln kan visas i övre högra hörnet på standardmallen och i webbläsarens titelrad.
+Description-vi.UTF-8: Tựa đề Wiki:
+ Tựa đề của Wiki thì được hiển thị ở góc trên bên phải của mẫu mặc định, và trên thanh tựa đề của trình duyệt.
+
+Template: dokuwiki/wiki/license
+Type: select
+Choices: CC0 "No Rights Reserved", CC Attribution, CC Attribution-ShareAlike, GNU Free Documentation Licence, CC Attribution-NonCommercial, CC Attribution-NonCommercial-ShareAlike
+Choices-cs.UTF-8: CC0 „Žádná práva vyhrazena“, CC Uveďte autora, CC Uveďte autora-Zachovejte licenci, GNU Free Documentation Licence, CC Uveďte autora-Neužívejte dílo komerčně, CC Uveďte autora-Neužívejte dílo komerčně-Zachovejte licenci
+Choices-da.UTF-8: CC0 »No Rights Reserved«, CC Attribution, CC Attribution-ShareAlike, GNU Free Dobumentation Licence, CC Attribution-NonCommercial, CC Attribution-NonCommercial-ShareAlike
+Choices-de.UTF-8: CC0 »No Rights Reserved«, CC Attribution, CC Attribution-ShareAlike, GNU Free Documentation License, CC Attribution-NonCommercial, CC Attribution-NonCommercial-ShareAlike
+Choices-es.UTF-8: CC0 «Sin derechos de autor», CC Reconocimiento, CC Reconocimiento-CompartirIgual, Licencia de documentación libre de GNU, CC Reconocimiento-NoComercial, CC Reconocimiento-NoComercial-CompartirIgual
+Choices-eu.UTF-8: CC0 "Eskubideak Gorde Gabe", CC Aitortu, CC Aitortu-PartekatuBerdin, GNUren Dokumentazio Librearen Lizentzia, CC Aitortu-EzKomertziala, CC Aitortu-Ezkomertziala-PartekatuBerdin
+Choices-fr.UTF-8: CCO « Aucun droit réservé », CC Attribution, CC Attribution - Partage des conditions initiales à l'identique, Licence de documentation libre GNU, CC Attribution - Pas d'utilisation commerciale, CC Attribution - Pas d'utilisation commerciale - Partage des conditions initiales à l'identique
+Choices-it.UTF-8: CC0 "Nessun diritto riservato", CC Attribuzione, CC Attribuzione - Condividi allo stesso modo, GNU Free Documentation License, CC Attribuzione - Non commerciale, CC Attribuzione - Non commerciale - Condividi allo stesso modo
+Choices-ja.UTF-8: CC0 "No Rights Reserved", CC 表示, CC 表示—継承, GNU フリー文書利用許諾契約書, CC 表示—非営利, CC 表示—非営利—継承
+Choices-nl.UTF-8: CC0 Public Domain, CC-Naamsvermelding, CC-Naamsvermelding-GelijkDelen, GNU Free Documentation License, CC-Naamsvermelding-NietCommercieel, CC-Naamsvermelding-NietCommercieel-GelijkDelen
+Choices-pl.UTF-8: CC0 "No Rights Reserved", CC Attribution, CC Attribution-ShareAlike, GNU Free Documentation Licence, CC Attribution-NonCommercial, CC Attribution-NonCommercial-ShareAlike
+Choices-pt.UTF-8: CC0 "No Rights Reserved", CC Attribution, CC Attribution-ShareAlike, GNU Licença de Documentação Livre, CC Attribution-NonCommercial, CC Attribution-NonCommercial-ShareAlike
+Choices-ru.UTF-8: CC0 «No Rights Reserved», CC Attribution, CC Attribution-ShareAlike, GNU Free Dobumentation Licence, CC Attribution-NonCommercial, CC Attribution-NonCommercial-ShareAlike
+Choices-sv.UTF-8: CC0 "Inga rättigheter reserverade", CC Erkännande, CC Erkännande Dela lika, GNU Free Dobumentation Licence, CC Erkännande Icke kommersiell, CC Erkännande Icke kommersiell Dela lika
+Choices-C: cc-zero, cc-by, cc-by-sa, gnufdl, cc-by-nc, cc-by-nc-sa
+Default: cc-by-sa
+Description: Wiki license:
+ Please choose the license you want to apply to your wiki content. If none of
+ these licenses suits your needs, you will be able to add your own to the file
+ /etc/dokuwiki/license.php and to refer it in the main configuration file
+ /etc/dokuwiki/local.php when the installation is finished.
+ .
+ Creative Commons "No Rights Reserved" is designed to waive as many rights as
+ legally possible.
+ .
+ CC Attribution is a permissive license that only requires licensees to
+ give credit to the author.
+ .
+ CC Attribution-ShareAlike and GNU Free Documentation License are
+ copyleft-based free licenses (requiring modifications to be released under
+ similar terms).
+ .
+ CC Attribution-NonCommercial and CC Attribution-Noncommercial-ShareAlike
+ are non-free licenses, in that they forbid commercial use.
+Description-cs.UTF-8: Licence wiki:
+ Zvolte prosím licenci, kterou chcete použít pro obsah wiki. Jestliže vám žádná z nabízených licencí nevyhovuje, můžete si po dokončení instalace přidat vlastní licenci do souboru /etc/dokuwiki/license.php a odkázat se na ni z hlavního konfiguračního souboru /etc/dokuwiki/local.php.
+ .
+ Creative Commons „Žádná práva vyhrazena“ slouží pro zřeknutí se všech práv, kterých se lze legálně vzdát.
+ .
+ CC Uveďte autora je tolerantní licence, která pro užití díla vyžaduje pouze uvedení autora.
+ .
+ CC Uveďte autora-Zachovejte licenci a GNU Free Documentation License jsou svobodné licence vyžadující, aby byly úpravy takto licencovaných děl uvolněny pod stejnými podmínkami.
+ .
+ CC Uveďte autora-Neužívejte dílo komerčně a CC Uveďte autora-Neužívejte dílo komerčně-Zachovejte licenci jsou nesvobodné licence, protože zakazují komerční využití.
+Description-da.UTF-8: Wikilicens:
+ Vælg venligst licensen du ønsker at anvende på din wikis indhold. Hvis ingen af disse licenser passer til dine behov, så kan du tilføje din egen i filen /etc/dokuwiki/license.php og referere til den i hovedkonfigurationsfilen /etc/dokuwiki/local.php når installationen er færdig.
+ .
+ Creative Commons »No Rights Reserved« er designet for at frafalde så mange rettigheder som muligt indenfor lovens rammer.
+ .
+ CC Attribution is a permissive license that only requires licensees to give credit to the author.CC Attribution er en liberal licens, som kun kræver at bevillingshavere krediterer forfatteren.
+ .
+ CC Attribution-ShareAlike og GNU Free Documentation License er copyleft-baserede frie licenser (der kræver at ændringer udgives under lignende betingelser).
+ .
+ CC Attribution-NonCommercial og CC Attribution-Noncommercial-ShareAlike er licenser, der ikke er frie forstået på den måde, at de forbyder kommerciel udnyttelse.
+Description-de.UTF-8: Wiki-Lizenz:
+ Bitte wählen Sie die Lizenz, die Sie für den Inhalt Ihres Wikis verwenden möchten. Falls keine dieser Lizenzen Ihren Bedürfnissen genügt, können Sie Ihre eigene zur Datei /etc/dokuwiki/license.php hinzufügen und in der Haupt-Konfigurationsdatei /etc/dokuwiki/local.php darauf verweisen, sobald die Installation abgeschlossen ist.
+ .
+ Creative Commons CC0 »No Rights Reserved« wurde entwickelt, um so viele Rechte wie rechtlich erlaubt auszuschließen.
+ .
+ CC Attribution ist eine freizügige Lizenz, die vom Lizenznehmer lediglich erfordert, dem Autor Anerkennung für seine Arbeit zu zollen.
+ .
+ CC Attribution-ShareAlike und GNU Free Documentation License sind Copyleft-basierte, freie Lizenzen (sie erfordern, dass Änderungen unter ähnlichen Bedingungen veröffentlicht werden).
+ .
+ CC Attribution-NonCommercial und CC Attribution-Noncommercial-ShareAlike sind nicht-freie Lizenzen, die kommerzielle Nutzung verbieten.
+Description-es.UTF-8: Licencia del wiki:
+ Seleccione la licencia que desea aplicar al contenido de su wiki. Si ninguna de estas licencias se ajusta a sus necesidades, podrá agregar la que desea en el archivo «/etc/dokuwiki/license.php» y hacer referencia a ella en el archivo de configuración principal «/etc/dokuwiki/local.php» cuando finalice la instalación.
+ .
+ La licencia Creative Commons «Sin derechos de autor» se diseñó para renunciar a todos los derechos posibles legalmente.
+ .
+ CC Reconocimiento es una licencia permisiva que sólo requiere que los licenciatarios reconozcan el crédito del autor.
+ .
+ CC Reconocimiento-CompartirIgual y la Licencia de documentación libre de GNU son licencias basadas en el «copyleft» (requieren que las modificaciones sean publicadas en términos similares).
+ .
+ CC Reconocimiento-NoComercial y Reconocimiento-NoComercial-CompartirIgual no son licencias libres, ya que prohíben el uso comercial.
+Description-fr.UTF-8: Licence du wiki :
+ Veuillez choisir la licence à utiliser pour le contenu du wiki. Si aucune de ces licences ne répond à vos besoins, vous pouvez ajouter votre propre licence au fichier « /etc/dokuwiki/license.php » et l'indiquer dans le fichier de configuration principal « /etc/dokuwiki/local.php » au terme de l'installation.
+ .
+ La licence CC « Aucun droit réservé » est conçue pour renoncer au maximum de droits qu'il est légalement possible.
+ .
+ La licence CC Attribution est une licence permissive qui ne requiert aux licences que de reconnaître l'auteur.
+ .
+ La licence CC « Attribution - Partage des conditions initiales à l'identique » (CC Attribution-ShareAlike) et la licence de documentation libre GNU sont des licences de libre diffusion (« copyleft ») (qui requiert que les modifications soient publiées sous des termes similaires).
+ .
+ Les licences CC « Attribution - Pas d'utilisation commerciale » (CC Attribution-NonCommercial) et « Attribution - Pas d'utilisation commerciale - Partage des conditions initiales à l'identique » sont des licences interdisant un usage commercial.
+Description-it.UTF-8: Licenza del Wiki:
+ Scegliere la licenza da applicare al contenuto del Wiki. Se nessuna delle licenze è adatta, se ne potrà aggiungere una al file «/etc/dokuwiki/license.php» e fare riferimento ad essa nel file principale di configurazione «/etc/dokuwiki/local.php» quando l'installazione è terminata.
+ .
+ Creative Commons "Nessun diritto riservato" è strutturata per rinunciare al maggior numero legalmente possibile di diritti.
+ .
+ CC Attribuzione è una licenza permissiva che richiede ai licenziatari solo di citare l'autore.
+ .
+ CC Attribuzione - Condividi allo stesso modo e GNU Free Documentation License sono licenze libere basate sul copyleft (richiedono che le modifiche siano rilasciate con condizioni simili).
+ .
+ CC Attribuzione - Non commerciale e CC Attribuzione - Non commerciale - Condividi allo stesso modo sono licenze non libere in quanto proibiscono l'uso commerciale.
+Description-ja.UTF-8: Wiki のライセンス:
+ この wiki の内容に適用したいライセンスを選択してください。必要とするライセンスが一覧にない場合はインストール完了時にファイル /etc/dokuwiki/license.php に必要なライセンスを追加し、主設定ファイル /etc/dokuwiki/local.php からそれを参照させることができます。
+ .
+ Creative Commons "No Rights Reserved" は、法律的に有効な限り権利を放棄するように設計されています。
+ .
+ CC 表示 は、ライセンシーには著者のクレジットを行なう必要があるだけの寛大なライセンスです。
+ .
+ CC 表示—継承 と GNU フリー文書利用許諾契約書 はコピーレフトをベースとしたフリーなライセンスです (変更は同様の条項の下でライセンスされる必要があります)。
+ .
+ CC 表示—非営利 および CC 表示—非営利—継承 は、フリーでは無いライセンスです。商業利用が禁止されています。
+Description-nl.UTF-8: Licentie van de wiki:
+ Gelieve te kiezen welke licentie van toepassing zal zijn op de inhoud van uw wiki. Indien geen enkele licentie beantwoordt aan uw behoeften, kunt u na het beëindigen van de installatie uw eigen licentie toevoegen in het bestand /etc/dokuwiki/license.php en er in het primaire configuratiebestand /etc/dokuwiki/local.php naar verwijzen.
+ .
+ De CC0 Public Domain Verklaring heeft als doel om afstand te doen van zoveel mogelijk rechten als wettelijk mogelijk is.
+ .
+ CC-Naamsvermelding is een ruime licentie die van de licentiegebruikers alleen eist dat ze de auteur vermelden.
+ .
+ CC-Naamsvermelding-GelijkDelen en de GNU Free Document License zijn op copyleft gebaseerde vrije licenties (die eisen dat veranderingen onder soortgelijke voorwaarden worden vrijgegeven).
+ .
+ CC-Naamsvermelding-NietCommercieel en CC-Naamsvermelding-NietCommercieel-GelijkDelen zijn niet-vrije licenties, in de zin dat ze gebruik voor commerciële doeleinden verbieden.
+Description-pl.UTF-8: Licencja wiki:
+ Proszę wybrać licencję, którą będzie objęta zawartość wiki. Jeśli żadna nie odpowiada potrzebom, można dodać swoją licencję do pliku /etc/dokuwiki/license.php i wskazać ją w głównym pliku konfiguracyjnym /etc/dokuwiki/local.php po zakończeniu instalacji.
+ .
+ Licencja Creative Commons "No Rights Reserved" znosi tak wiele praw, na ile pozwalają przepisy.
+ .
+ CC Attribution jest liberalną licencją wymagającą od licencjobiorcy tylko podania autora.
+ .
+ CC Attribution-ShareAlike oraz GNU Free Documentation License są wolnymi licencjami typu copyleft (wymagają udostępnienia modyfikacji na podobnych warunkach).
+ .
+ CC Attribution-NonCommercial oraz CC Attribution-Noncommercial-ShareAlike są niewolnymi licencjami, które zabraniają wykorzystania komercyjnego.
+Description-ru.UTF-8: Лицензия вики:
+ Выберите лицензию для содержимого вики. Если ни одна из представленных лицензий вам не подходит, то добавьте свою в файл /etc/dokuwiki/license.php и укажите его в главном файле настройки /etc/dokuwiki/local.php после завершения установки.
+ .
+ Лицензия Creative Commons «No Rights Reserved» подразумевает максимальный отказ от всех авторских прав на произведение.
+ .
+ Лицензия CC Attribution требует только упоминание авторства использованной работы.
+ .
+ Свободные лицензии CC Attribution-ShareAlike и GNU Free Documentation License на основе copyleft требуют, чтобы изменённые произведения распространялись на условиях этой же лицензии.
+ .
+ Лицензии CC Attribution-NonCommercial и CC Attribution-Noncommercial-ShareAlike являются несвободными в той части, что запрещают коммерческое использование.
+Description-sv.UTF-8: Wikilicens:
+ Ange vilken license som ska användas för innehållet på din wiki. Om ingen av dessa licenser passar dig kan du lägga till din egen i filen /etc/dokuwiki/license.php och referera till den i inställningsfilen /etc/dokuwiki/local.php när installationen är klar.
+ .
+ Creative Commons "inga rättigheter reserverade" är designad för att ge upp så många rättigheter som är möjligt enligt lagen.
+ .
+ CC Erkännande är en tillåtande licens som endast kräver att licenstagaren ger ett erkännande till upphovsmannen.
+ .
+ CC Erkännande Dela lika och GNU Free Documentation License är copyleft-baserade fria licenser (som kräver att modifieringar görs tillgängligt med liknande villkor).
+ .
+ CC Erkännande Icke kommersiell och CC Erkännande Icke kommersiell Dela lika är inte fria licenser i och med att de förbjuder kommersiellt användande.
+
+Template: dokuwiki/wiki/acl
+Type: boolean
+Default: true
+Description: Enable ACL?
+ Enable this to use an Access Control List for restricting what the users of
+ your wiki may do.
+ .
+ This is a recommended setting because without ACL support you will not have
+ access to the administration features of DokuWiki.
+Description-cs.UTF-8: Povolit ACL?
+ Chcete-li omezit, co mohou uživatelé vaší wiki provádět, tuto volbu povolte.
+ .
+ Toto je doporučené nastavení, protože bez podpory ACL nebudete mít přístup se správcovské konzoli DokuWiki.
+Description-da.UTF-8: Aktiver ACL?
+ Aktiver denne for at bruge en Access Control List (adgangskontrolliste) til at begrænse hvad brugerne af din wiki må udføre.
+ .
+ Dette er en anbefalet indstilling, da du uden ACL-understøttelse ikke vil have adgang til de administrative funktioner i DokuWiki.
+Description-de.UTF-8: ACL aktivieren?
+ Wenn Sie dies aktivieren, wird eine Access-Control-List (ACL) verwendet, um einschränken zu können, was die Benutzer Ihres Wikis dürfen.
+ .
+ Diese Einstellung wird empfohlen, da Sie ohne Unterstützung für eine Access-Control-List keinen Zugriff auf die Administrationsfunktionen von DokuWiki haben werden.
+Description-es.UTF-8: ¿Desea activar la lista de control de acceso (ACL)?
+ Si activa esta opción podrá utilizar una lista de control de acceso para restringir qué pueden hacer los usuarios del wiki.
+ .
+ Se recomienda activar esta opción porque sin ella no tendrá acceso a las funciones de administración de DokuWiki.
+Description-eu.UTF-8: Gaitu ACLa?
+ Gaitu hau Sarbideko Kontrol Zerrenda (Access Control List edo ACL) bat erabiltzeko zure wiki-ko erabiltzaileek zer egin dezaketen mugatzeko.
+ .
+ Hau gomendagarria da ACL euskarririk gabe ez baituzu DokuWiki-a administratzeko sarbidetzarik edukiko.
+Description-fr.UTF-8: Faut-il activer les ACL ?
+ L'activation des ACL permet de restreindre les possibilités des utilisateurs du wiki.
+ .
+ L'activation des ACL est recommandée car elle est indispensable pour accéder au panneau d'administration de Dokuwiki.
+Description-gl.UTF-8: Activar a ACL?
+ Activar esta opción para utilizar unha «lista de control de acceso» (ACL) para limitar o que poden facer os usuarios do wiki.
+ .
+ Esta é unha opción recomendada, xa que sen a asistencia da ACL non terá acceso ás funcións de administración de DokuWiki.
+Description-it.UTF-8: Abilitare ACL?
+ Accettare questa opzione per utilizzare un ACL (Access Control List) per restringere i permessi degli utenti del Wiki.
+ .
+ È un'impostazione consigliata, in quanto senza il supporto di ACL non si avrà l'accesso alle funzionalità di amministrazione di DokuWiki.
+Description-ja.UTF-8: ACL を有効にしますか?
+ これを有効にすると、どの wiki ユーザが何ができるかを制限するためのアクセスコントロールリストを使用します。
+ .
+ ACL サポート無しでは DokuWiki の管理者機能へはアクセスできなくなるので、これは有効にすることをお勧めします。
+Description-nl.UTF-8: Toegangsbeheer activeren?
+ Activeer dit om een toegangsbeheerinstellingen te gebruiken die gebruikers beperken in wat ze op uw wiki mogen doen.
+ .
+ Deze instelling wordt aangeraden omdat u zonder toegangsbeheerinstellingen geen toegang heeft tot de beheerdersfuncties van DokuWiki.
+Description-pl.UTF-8: Włączyć ACL?
+ Odpowiedź pozytywna włącza listy kontroli dostępu (ACL), które ograniczają dostępne działania użytkowników wiki.
+ .
+ Jest to ustawienie zalecane, ponieważ bez obsługi ACL nie będzie możliwy dostęp do funkcji administracyjnych DokuWiki.
+Description-pt.UTF-8: Activar ACL?
+ Active esta opção para usar uma lista de controlo de acessos (ACL) de modo a restringir as acções que os utilizadores podem efectuar.
+ .
+ Esta opção é a recomendada pois sem o suporte ACL não terá acesso às funcionalidades de administração do DokuWiki.
+Description-ru.UTF-8: Включить ACL?
+ Ответьте утвердительно, если хотите использовать списки контроля доступа (ACL) для ограничения возможностей пользователей в вики.
+ .
+ Рекомендуется ответить утвердительно, так как без поддержки списков контроля у вас не будет доступа к административным возможностям DokuWiki.
+Description-sv.UTF-8: Aktivera ACL?
+ Aktivera detta för att använda en lista för åtkomstkontoll(ACL) för att hantera vad användarna av wikin kan göra.
+ .
+ Detta är en rekomenderad inställning eftersom avsaknaden av ACL-support innebär att administrationen av DokuWiki inte kan utföras.
+Description-vi.UTF-8: Bật ACL ?
+ Hãy hiệu lực tuỳ chọn này để sử dụng một Danh sách Điều khiển Truy cập (Access Control List) mà hạn chế quyền truy cập của những người dùng Wiki này.
+ .
+ Đây là một thiết lập khuyến khích: không có thì không có truy cập đến các tính năng quản lý của DokuWiki.
+
+Template: dokuwiki/wiki/superuser
+Type: string
+Default: admin
+Description: Administrator username:
+ Please enter a name for the administrator account, which will be able to
+ manage DokuWiki's configuration and create new wiki users. The username
+ should be composed of lowercase ASCII letters only.
+ .
+ If this field is left blank, no administrator account will be created now.
+Description-cs.UTF-8: Uživatelské jméno správce:
+ Zadejte prosím jméno správcovského účtu, který bude moci spravovat nastavení DokuWiki a zakládat nové wiki uživatele. Uživatelské jméno by se mělo skládat pouze z malých ASCII písmen.
+ .
+ Ponecháte-li prázdné, správcovský účet se nyní nevytvoří.
+Description-da.UTF-8: Administartorbrugernavn:
+ Indtast venligst et navn for administratorkontoen, som vil være i stand til at håndtere DokuWikis konfiguration og oprette nye wikibrugere. Brugernavnet må kun bestå af små ASCII-bostaver.
+ .
+ Hvis dette felt ikke er udfyldt, vil ingen administratorkonto blive oprettet nu.
+Description-de.UTF-8: Benutzername des Administrators:
+ Bitte geben Sie einen Namen für den Administratorzugang ein, der die DokuWiki-Konfiguration verwalten und neue Wiki-Benutzer anlegen kann. Der Benutzername sollte nur aus Kleinbuchstaben aus dem ASCII-Zeichensatz bestehen.
+ .
+ Falls Sie dieses Feld leer lassen, wird jetzt kein Administratorzugang erstellt.
+Description-es.UTF-8: Nombre de usuario del administrador:
+ Introduzca un nombre para la cuenta del administrador, la cual podrá gestionar la configuración de DokuWiki y crear nuevos usuarios del wiki. El nombre de usuario debería tener sólo letras ASCII minúsculas.
+ .
+ Si deja este campo en blanco, no se creará ahora ninguna cuenta de administrador.
+Description-eu.UTF-8: Administratzailearen erabiltzaile-izena:
+ DokuWiki-a konfiguratu eta wiki erabiltzaile berriak kudeatzeaz arduratuko den administratzailearen kontuarentzako izen bat sartu. erabiltzaile-izenak letra minuskulaz osatuta egon behar du ASCII kodeketan.
+ .
+ Eremu hau hutsik uzten bada, ez da administratzailearen konturik sortuko orain.
+Description-fr.UTF-8: Identifiant de l'administrateur :
+ Veuillez indiquer le nom du compte de l'administrateur qui pourra gérer la configuration de Dokuwiki et créer des nouveaux utilisateurs. Cet identifiant ne doit comporter que des caractères ASCII minuscules.
+ .
+ Si vous laissez ce champ vide, aucun compte administrateur ne sera créé.
+Description-gl.UTF-8: Nome de usuario do administrador
+ Introduza un nome para a conta de administrador, que será quen de administrar a configuración de DokuWiki e crear novos usuarios do wiki. O nome de usuario debe estar formado só por letras minúsculas ASCII.
+ .
+ Se deixa baleiro este campo, non se creará agora unha conta de administrador.
+Description-it.UTF-8: Nome utente dell'amministratore:
+ Inserire un nome utente per l'account dell'amministratore, il quale potrà gestire la configurazione di DokuWiki e creare nuovi utenti del Wiki. Il nome utente deve essere composto solo da caratteri ASCII minuscoli.
+ .
+ Se questo campo viene lasciato vuoto non verrà creato, al momento, alcun account di amministratore.
+Description-ja.UTF-8: 管理者のユーザ名:
+ 管理者アカウントの名前を入力してください。これは DokuWiki の設定を管理し、新規の wiki ユーザを作成できるアカウントです。ユーザ名は小文字の ASCII 文字列のみで構成されている必要があります。
+ .
+ この欄が空白のままの場合、ここで管理者アカウントは作成されません。
+Description-nl.UTF-8: Gebruikersnaam van de beheerder:
+ Gelieve een naam voor het beheerdersaccount in te voeren. Deze kan de configuratie van DokuWiki beheren en nieuwe wiki-gebruikers aanmaken. De gebruikersnaam mag enkel kleine letters uit de ASCII-tekenset bevatten.
+ .
+ Als u dit veld leeg laat wordt er nu geen beheerdersaccount aangemaakt.
+Description-pl.UTF-8: Nazwa użytkownika administrator:
+ Proszę podać nazwę konta administratora, który będzie mógł zarządzać konfiguracją programu DokuWiki i tworzyć nowych użytkowników. Nazwa użytkownika powinna składać się jedynie ze małych liter ASCII.
+ .
+ Jeśli pole zostanie pozostawione puste, w tej chwili nie powstanie konto administratora.
+Description-pt.UTF-8: Nome de utilizador administrador:
+ Por favor introduza um nome para a conta de administrador, este poderá gerir a configuração do DokuWiki e criar novos utilizadores do wiki. O nome de utilizador deverá conter apenas caracteres ASCII minúsculos.
+ .
+ Se o campo for deixado em branco, nenhuma conta de administrador será criada agora.
+Description-ru.UTF-8: Имя администратора:
+ Введите имя учётной записи администратора, который сможет управлять настройкой DokuWiki и создавать новых пользователей вики. Имя пользователя должно состоять только из строчных букв в кодировке ASCII.
+ .
+ Если оставить поле пустым, то учётной записи администратора создано не будет.
+Description-sv.UTF-8: Användarnamn för administratör:
+ Ange namn på administrationskontot som ska hantera inställningarna för DokuWiki samt lägga till nya användare. Användarnamnet får endast innehålla gemena ASCII-tecken (a-z).
+ .
+ Om detta fält lämnas tomt kommer inget administratörskonto att skapas nu.
+Description-vi.UTF-8: Tên người dùng quản lý:
+ Hãy gõ một tên người dùng cho tài khoản quản lý (tài khoản có khả năng quản lý cấu hình DokuWiki và tạo người dùng wiki mới). Tên người dùng này nên chứa chỉ chữ thường ASCII thôi.
+ .
+ Bỏ trống trường này thì không tạo tài khoản quản lý vào lúc này.
+
+Template: dokuwiki/wiki/fullname
+Type: string
+Default: DokuWiki Administrator
+Description: Administrator real name:
+ Please enter the full name associated with the wiki administrator account.
+ This name will be stored in the wiki password file as an informative
+ field, and will be displayed with the wiki page changes made by the
+ administrator account.
+Description-cs.UTF-8: Skutečné jméno správce:
+ Zadejte prosím celé jméno přiřazené ke správcovskému wiki účtu. Toto jméno bude uloženo v souboru wiki hesel v informativním poli a bude se zobrazovat na stránkách u změn, které provede správce.
+Description-da.UTF-8: Rigtigt navn for administrator:
+ Indtast venligst det fulde navn associeret med wikiadministratorkontoen. Dette navn vil blive gemt i wikiadgangskodefilen som et informationsfelt, og vil blive vist på wikisiden for sideændringer foretaget med administratorkontoen.
+Description-de.UTF-8: Echter Name des Administrators:
+ Bitte geben Sie den vollständigen Namen ein, der zu dem Administratorzugang gehört. Dieser Name wird in der Wiki-Passwortdatei als informatives Feld abgespeichert und bei den Änderungen an den Wiki-Seiten angezeigt, die durch den Administator durchgeführt wurden.
+Description-es.UTF-8: Nombre real del administrador:
+ Introduzca el nombre completo asociado a la cuenta del administrador del wiki. Este nombre se almacenará en el archivo de contraseñas del wiki como un campo informativo y se mostrará en los cambios de las páginas del wiki realizados por la cuenta del administrador.
+Description-eu.UTF-8: Administratzailearen benetako izena:
+ Sartu wiki-ko administratzailearen izen osoa. Izen hau wiki-aren pasahitzen fitxategian gordeko da informazioko eremu gisa, eta administratzailearen kontuak aldatutako wiki-ko orrialdeekin bistaratuko da.
+Description-fr.UTF-8: Nom et prénom de l'administrateur :
+ Veuillez indiquer le nom et le prénom de l'administrateur. Ces données seront enregistrées dans le fichier de mots de passe du wiki comme champ informatif et seront affichées dans les pages du wiki modifiées par l'administrateur.
+Description-gl.UTF-8: Nome real do administrador
+ Introduza o nome completo asociado á conta do administrador do wiki. Este nome almacenase no ficheiro de contrasinais do wiki como un campo informativo, e mostrarase cos cambios na paxina wiki feitos pola conta do administrador.
+Description-it.UTF-8: Nome reale dell'amministratore:
+ Inserire il nome completo associato all'account dell'amministratore del Wiki. Questo nome verrà memorizzato nel file delle password del Wiki come campo informativo e verrà mostrato nelle pagine Wiki modificate dall'account dell'amministratore.
+Description-ja.UTF-8: 管理者の本名:
+ wiki の管理者アカウントに対応するフルネームを入力してください。この名前は wiki のパスワードファイルに情報欄に保存され、管理者アカウントによって作成された wiki ページの変更の際に表示されます。
+Description-nl.UTF-8: Echte naam van de beheerder:
+ Gelieve de volledige naam die bij het beheerdersaccount hoort in te voeren. Deze naam word als extra informatie in het wachtwoordbestand van de wiki opgeslagen en wordt getoond bij de paginawijzigingen die het beheerdersaccount maakt.
+Description-pl.UTF-8: Wyświetlana nazwa administratora:
+ Proszę podać pełną nazwę związaną z kontem administratora wiki. Nazwa będzie przechowywana w pliku haseł wiki jako pole informacyjne, będzie też wyświetlana przy zmianach na stronach wiki dokonanych z konta administratora.
+Description-pt.UTF-8: Nome real do administrador:
+ Por favor introduza o nome completo associado à conta de administrador do wiki. Este nome será armazenado no ficheiro das palavras-chave do wiki como num campo informativo, será visualizado junto com as alterações na página do wiki efectuadas pela conta de administração.
+Description-ru.UTF-8: Реальное имя администратора:
+ Введите полное имя администратора, имеющего доступ к учётной записи администратора вики. Это имя будет сохранено в файле паролей вики в информационном поле, и будет показываться в изменениях страниц вики, которые были сделаны под учётной запись администратора.
+Description-sv.UTF-8: Fullständigt namn för administratör:
+ Ange komplett namn associerat med wikins administratörskonto. Detta namn kommer att lagras i wikins lösenordsfil som ett informationsfält och används vid uppdatering av wikisidor med hjälp av administratörskontot.
+Description-vi.UTF-8: Họ tên thật của quản trị:
+ Hãy gõ họ tên thật tương ứng với tài khoản quản lý wiki. Họ tên này sẽ được cất giữ trong tập tin mật khẩu của wiki như là một trường kiểu thông tin, và được hiển thị cùng với thay đổi nào được làm trên trang wiki bởi tài khoản quản lý.
+
+Template: dokuwiki/wiki/email
+Type: string
+Default: webmaster@localhost
+Description: Administrator email address:
+ Please enter the email address associated with the wiki administrator account.
+ This address will be stored in the wiki password file, and may be used
+ to get a new administrator password if you lose the original.
+Description-cs.UTF-8: E-mailová adresa správce:
+ Zadejte prosím e-mailovou adresu přiřazenou ke správcovskému wiki účtu. Tato adresa bude uložena v souboru wiki hesel a dá se použít k získání nového správcovského hesla v případě, že ho zapomenete.
+Description-da.UTF-8: E-post-adresse for administrator:
+ Indtast venligst e-post-adressen associeret med kontoen for wikiadministratoren. Denne adresse vil blive gemt i wikiadgangskodefilen, og kan bruges til at indhente en ny administratoradgangskode såfremt du mister den oprindelige.
+Description-de.UTF-8: E-Mail-Adresse des Administrators:
+ Bitte geben Sie die E-Mail-Adresse ein, die zu dem Administratorzugang gehört. Diese Adresse wird in der Wiki-Passwortdatei abgespeichert und kann genutzt werden, um ein neues Administratorpasswort zu erhalten, falls das Original-Passwort verloren/vergessen wurde.
+Description-es.UTF-8: Dirección de correo electrónico del administrador:
+ Introduzca la dirección de correo electrónico asociada a la cuenta del administrador del wiki. Esta dirección se almacenará en el archivo de contraseñas del wiki y se utilizará para obtener una contraseña nueva para el administrador si éste la pierde.
+Description-eu.UTF-8: Administratzailearen helb. elektronikoa:
+ Sartu wiki-ko administratzailearen helbide elektronikoa, Izen hau wiki-aren pasahitzen fitxategian gordeko da, eta administratzailearen jatorrizko pasahitza galtzen denean berri bat lortzeko erabiliko da.
+Description-fr.UTF-8: Adresse électronique de l'administrateur :
+ Veuillez indiquer l'adresse électronique de l'administrateur. Celle-ci sera enregistrée dans le fichier de mots de passe et permet d'obtenir un nouveau mot de passe si l'original est oublié.
+Description-gl.UTF-8: Enderezo de correo do administrador
+ Introduza o enderezo de correo electrónico asociado á conta do administrador do wiki. Este enderezo almacenarase no ficheiro de contrasinais do wiki, e pode ser utilizado para obter un novo contrasinal de administrador se perde o orixinal.
+Description-it.UTF-8: Indirizzo email dell'amministratore:
+ Inserire l'indirizzo di posta elettronica associato all'account dell'amministratore del Wiki. Questo indirizzo verrà memorizzato nel file delle password del Wiki e potrà essere utilizzato per ottenere una nuova password dell'amministratore in caso di smarrimento dell'originale.
+Description-ja.UTF-8: 管理者メールアドレス:
+ wiki の管理者アカウントに対応するメールアドレスを入力してください。このアドレスは wiki のパスワードファイルに保存され、元々の管理者パスワードをなくした際に新しいパスワードを得る際に使われます。
+Description-nl.UTF-8: E-mailadres van de beheerder:
+ Gelieve het e-mailadres dat bij het beheerdersaccount hoort, op te geven. Dit adres wordt in het wachtwoordbestand van de wiki opgeslagen en kan gebruikt worden om een nieuw beheerderswachtwoord op te vragen wanneer u dat vergeten bent.
+Description-pl.UTF-8: Adres poczty elektronicznej administratora:
+ Proszę podać adres poczty elektronicznej związany z kontem administratora wiki. Adres będzie przechowywany w pliku haseł wiki i można go będzie użyć do otrzymania nowego hasła administratora w przypadku zapomnienia starego.
+Description-pt.UTF-8: Endereço email do administrador:
+ Por favor introduza o endereço de email associado à conta do administrador do wiki. Este endereço será armazenado no ficheiro das palavras-chave do wiki e pode ser utilizado para obter a palavra-chave do administrador se perder a original.
+Description-ru.UTF-8: Адрес эл.почты администратора:
+ Введите адрес электронной почты, который будет привязан к учётной записи администратора. Этот адрес будет храниться в файле паролей вики и может быть использован для получения нового пароля администратора, если потеряется старый.
+Description-sv.UTF-8: E-post-adress för administratör:
+ Ange e-post-adress för administrtörskontot. Denna adress kommer att lagras i wikins lösenordsfil och kan komma att användas för att få ut ett nytt lösenord om det tidigare lösenordet glöms bort.
+Description-vi.UTF-8: Địa chỉ thư của quản trị:
+ Hãy gõ địa chỉ thư điện tử tương ứng với tài khoản quản lý wiki. Địa chỉ này sẽ được cất giữ trong tập tin mật khẩu của wiki, và có thể được sử dụng để lấy một mật khẩu quản lý mới nếu bạn mất cái gốc.
+
+Template: dokuwiki/wiki/password
+Type: password
+Description: Administrator password:
+ Please choose a password for the wiki administrator.
+Description-cs.UTF-8: Heslo správce:
+ Vymyslete si prosím heslo pro správce wiki.
+Description-da.UTF-8: Administratoradgangskode:
+ Vælg venligst en adgangskode for wikiadministratoren.
+Description-de.UTF-8: Passwort des Administrators:
+ Bitte geben Sie ein Passwort für den Wiki-Administrator ein.
+Description-es.UTF-8: Contraseña del administrador:
+ Escoja una contraseña para el administrador del wiki.
+Description-eu.UTF-8: Administratzailearen pasahitza:
+ Aukeratu pasahitz bat wiki-ko administratzailearentzako.
+Description-fr.UTF-8: Mot de passe de l'administrateur :
+ Veuillez choisir un mot de passe pour l'administrateur.
+Description-gl.UTF-8: Contrasinal do administrador
+ Escolla un contrasinal para o administrador do wiki:
+Description-it.UTF-8: Password dell'amministratore:
+ Scegliere una password per l'amministratore del Wiki.
+Description-ja.UTF-8: 管理者パスワード:
+ wiki の管理者用パスワードを指定してください。
+Description-nl.UTF-8: Wachtwoord voor de beheerder:
+ Gelieve een wachtwoord voor het beheerdersaccount van de wiki te kiezen.
+Description-pl.UTF-8: Hasło administratora:
+ Proszę wybrać hasło administratora wiki.
+Description-pt.UTF-8: Palavra-chave do administrador:
+ Por favor escolha uma palavra-chave para o administrador do wiki.
+Description-ru.UTF-8: Пароль администратора:
+ Введите пароль администратора вики.
+Description-sv.UTF-8: Lösenord för administratör:
+ Ange ett lösenord för wikiadministratören.
+Description-vi.UTF-8: Mật khẩu quản lý:
+ Hãy chọn một mật khẩu thích hợp với quyền quản lý wiki.
+
+Template: dokuwiki/wiki/confirm
+Type: password
+Description: Re-enter password to verify:
+ Please enter the same "admin" password again to verify
+ you have typed it correctly.
+Description-cs.UTF-8: Zopakujte heslo pro ověření:
+ Zadejte prosím heslo pro správce ještě jednou, abyste se ujistili, že jste ho zadali správně.
+Description-da.UTF-8: Genindtast adgangskode for at verificere:
+ Indtast venligst den samme »adminadgangskode« igen for at verificere din indtastning.
+Description-de.UTF-8: Passwort zur Kontrolle erneut eingeben:
+ Bitte geben Sie das gleiche Administrator-Passwort erneut ein, um sicherzustellen, dass Sie sich nicht vertippt haben.
+Description-es.UTF-8: Vuelva a introducir la contraseña para comprobarla:
+ Introduzca la misma contraseña de «administración» para comprobar que la ha escrito correctamente.
+Description-eu.UTF-8: Berretsi pasahitza:
+ Sartu berriro administratzailearen pasahitza ongi idatzi duzula egiaztatzeko.
+Description-fr.UTF-8: Confirmation du mot de passe :
+ Veuillez indiquer le même mot de passe pour l'administrateur, pour vérification.
+Description-gl.UTF-8: Escriba de novo o contrasinal para verificalo:
+ Escriba de novo o mesmo contrasinal de «administrador» para comprobar que foi escrito correctamente.
+Description-it.UTF-8: Inserire nuovamente la password per verifica:
+ Inserire nuovamente la medesima password dell'amministratore, per poter verificare che sia stata digitata correttamente.
+Description-ja.UTF-8: 確認のためパスワードを再入力:
+ 正しくパスワードが入力されているのを確認するため、同じ「admin」パスワードをもう一度入力してください。
+Description-nl.UTF-8: Voer ter controle het wachtwoord nogmaals in:
+ Gelieve hetzelfde beheerderswachtwoord nogmaals in te voegen om te controleren dat u geen typefout hebt gemaakt.
+Description-pl.UTF-8: Proszę wprowadzić hasło ponownie:
+ Proszę wprowadzić to samo hasło dla administratora ponownie, aby sprawdzić, czy zostało wpisane poprawnie.
+Description-pt.UTF-8: Reintroduza a palavra-chave para verificação:
+ Por favor introduza a mesma palavra-chave "admin" de novo para verificar que a digitou correctamente.
+Description-ru.UTF-8: Введите пароль ещё раз для проверки:
+ Введите тот же «административный» пароль ещё раз, для проверки правильности ввода.
+Description-sv.UTF-8: Upprepa lösenordet:
+ Ange samma "admin"-lösenord igen för att kontrollera att det skrevs in korrekt.
+Description-vi.UTF-8: Gõ lại mật khẩu để xác nhân:
+ Hãy gõ lại cùng một mật khẩu « quản lý » để xác nhân bạn đã gõ đúng.
+
+Template: dokuwiki/wiki/failpass
+Type: error
+Description: Password input error
+ The two passwords you entered were not the same. Please try again.
+Description-cs.UTF-8: Chyba při zadávání hesla
+ Zadaná hesla nesouhlasí. Zkuste to prosím znovu.
+Description-da.UTF-8: Inddatafejl for adgangskode
+ De to adgangskode, du indtastede, var ikke ens. Forsøg venligst igen.
+Description-de.UTF-8: Passwort-Eingabefehler
+ Die beiden Passwörter, die Sie eingegeben haben, sind nicht identisch. Bitte versuchen Sie es erneut.
+Description-es.UTF-8: Se ha producido un error al introducir la contraseña
+ Las dos contraseñas que ha introducido no son iguales. Inténtelo nuevamente.
+Description-eu.UTF-8: Errorea pasahitzan
+ Sartutako pasahitzak ez dira berdina. Saiatu berriro.
+Description-fr.UTF-8: Erreur de mot de passe
+ Les deux mots de passe sont différents. Veuillez recommencer.
+Description-gl.UTF-8: Hai un erro no contrasinal introducido
+ Os dous contrasinais que escribiu non son iguais. Tenteo de novo.
+Description-it.UTF-8: Errore d'immissione della password
+ Le due password inserite non sono identiche. Riprovare.
+Description-ja.UTF-8: パスワード入力エラー
+ 入力した 2 つのパスワードが一致しません。もう一度入力してください。
+Description-nl.UTF-8: Invoerfout bij wachtwoord
+ De twee door u ingevoerde wachtwoorden waren niet gelijk. Probeer nogmaals.
+Description-pl.UTF-8: Błąd wprowadzania hasła
+ Dwa hasła, które zostały wprowadzone, nie są identyczne. Proszę spróbować ponownie.
+Description-pt.UTF-8: Erro na entrada da palavra-chave
+ As duas palavra-chave que introduziu não coincidem. Por favor volte a tentar.
+Description-ru.UTF-8: Ошибка ввода пароля
+ Два введённых пароля не совпали. Попробуйте ещё раз.
+Description-sv.UTF-8: Fel vid inmatning av lösenord
+ De två lösenorden som angavs stämde inte överrens. Vänligen försök igen.
+Description-vi.UTF-8: Lỗi gõ mật khẩu
+ Bạn đã gõ hai mật khẩu không trùng nhau. Hãy thử lại.
+
+Template: dokuwiki/wiki/policy
+Type: select
+Default: public
+Description: Initial ACL policy:
+ Please select what initial ACL configuration should be set up to match
+ the intended usage of this wiki:
+  "open":   both readable and writeable for anonymous users;
+  "public": readable for anonymous users, writeable for registered users;
+  "closed": readable and writeable for registered users only.
+ .
+ This is only an initial setup; you will be able to adjust the ACL rules later.
+Description-cs.UTF-8: Úvodní ACL politika:
+ Vyberte prosím počáteční politiku ACL pravidel, která nejlépe vystihuje zamýšlené použití této wiki:
+  "otevřená": anonymní uživatelé mohou číst i zapisovat;
+  "veřejná":  anonymní uživatelé mohou číst, registrovaní i zapisovat;
+  "uzavřená": čtení nebo zápis je povolen pouze registrovaným uživatelům.
+ .
+ Toto je pouze počáteční nastavení, ACL pravidla si později budete moci upravit dle požadavků.
+Description-da.UTF-8: Oprindelig ACL-politik:
+ Vælg venligst hvilken oprindelig ACL-konfiguration som skal sættes op så den svarer til den forventede brug af denne wiki:
+  »åben«:     både skrivebeskyttet og ikkeskrivebeskyttet for anonyme brugere;
+  »offentlig: skrivebeskyttet for anonyme brugere, ikkeskrivebeskyttet for registrerede brugere;
+  »lukket«:   skrivebeskyttet og ikkeskrivebeskyttet kun for registrerede brugere.
+ .
+ Dette er kun en oprindelig opsætning; du vil kunne justere ACL-reglerne senere.
+Description-de.UTF-8: Anfängliche ACL-Richtlinie:
+ Bitte wählen Sie aus, welche anfängliche ACL-Konfiguration, die für die beabsichtigte Nutzung des Wikis passend ist, eingestellt werden soll:
+  »offen«:       sowohl lesbar wie auch schreibbar für anonyme Benutzer;
+  »öffentlich«:  lesbar für anonyme Benutzer, schreibbar nur für registrierte
+                 Benutzer;
+  »geschlossen«: lesbar und schreibbar nur für registrierte Benutzer.
+ .
+ Dies ist nur eine anfängliche Einstellung, Sie können die ACL-Regeln später noch anpassen.
+Description-es.UTF-8: Política inicial de la ACL:
+ Seleccione qué configuración inicial debería tener la ACL dependiendo del uso que le vaya a dar a este wiki:
+  «abierta»: permisos de lectura y de escritura para los usuarios anónimos.
+  «pública»: permisos de lectura para los usuarios anónimos y de escritura para los registrados.
+  «cerrada»: permisos de lectura y escritura sólo para usuarios registrados.
+ .
+ Esto sólo es una configuración inicial, podrá ajustar las reglas de la ACL más tarde.
+Description-eu.UTF-8: Hasierako ACL arauak:
+ Hautau ACLaren hasierako konfigurazioa wiki honen erabilerarekin bat etortzeko:
+  "irekia": erabiltzaile anonimoek bai irakurri bai idatz dezakete;
+  "publikoa": erabiltzaile anonimoek soilik irakur dezakete; harpidetutakoek baita idatzi ere;
+  "itxia": harpidetutako erabiltzaileek soilik irakur eta idatz dezakete.
+ .
+ Hau ashierako konfigurazioa da; beranduago doi ditzakezu ACL arauak.
+Description-fr.UTF-8: Politique initiale des ACL :
+ Veuillez choisir la politique initiale des ACL en fonction de l'usage de ce wiki :
+  « ouvert » : lecture et écriture pour tout le monde ;
+  « public » : lecture pour tous, écriture pour les utilisateurs inscrits ;
+  « fermé » : lecture et écriture seulement pour les utilisateurs inscrits.
+ .
+ Cette configuration initiale des ACL pourra être ajustée plus tard.
+Description-gl.UTF-8: Política inicial da ACL:
+ Seleccione a configuración inicial da ACL que debe ser estabelecida para que coincida co uso previsto deste wiki:
+  «aberto»: tanto de lectura como de escritura para os usuarios anónimos;
+  «público»: lectura para os usuarios anónimos, permisos de escritura para usuarios rexistrados;
+  «pechado»: lectura e escritura só para usuarios rexistrados.
+ .
+ Esta é só unha configuración inicial, vostede será quen de axustar as regras da ACL máis adiante.
+Description-it.UTF-8: Politica iniziale di ACL:
+ Scegliere la configurazione iniziale di ACL che dovrà essere impostata per l'uso del Wiki:
+  «aperta»:   gli utenti anonimi possono leggere e scrivere;
+  «pubblica»: gli utenti anonimi possono solo leggere, gli utenti registrati possono anche scrivere;
+  «chiusa»:   solo gli utenti registrati possono leggere e scrivere.
+ .
+ Si tratta solo di un'impostazione iniziale; le regole di ACL possono comunque essere modificate in un secondo tempo.
+Description-ja.UTF-8: 初期 ACL ポリシー:
+ この wiki の使い方に最も合っている初期 ACL 設定を選んでください
+ 「オープン」: 匿名ユーザが読み書きとも可能;
+ 「一般公開」: 匿名ユーザが読み取り可能、登録ユーザが書き込み可能;
+ 「限定公開」: 登録ユーザのみが読み書き可能
+ .
+ これは単なる初期設定です: 後ほど ACL のルールを調整することができます。
+Description-nl.UTF-8: Initiële toegangsbeheerbeleid:
+ Gelieve aan te geven wat de initiële toegangsbeheerinstellingen moeten zijn, afhankelijk van hoe u de wiki wilt gebruiken:
+  "open":     lees- en schrijfbaar voor anonieme gebruikers;
+  "publiek":  leesbaar voor anonieme gebruikers, schrijfbaar voor geregistreerde gebruikers;
+  "gesloten": enkel lees- en schrijfbaar voor geregistreerde gebruikers.
+ .
+ Dit is enkel de begininstelling; u kan de toegangsinstellingen later nog aanpassen.
+Description-pl.UTF-8: Początkowe zasady ACL:
+ Proszę wybrać początkową konfigurację ACL dopasowaną do
+ przewidywanego użycia tej wiki:
+  "otwarta":   do odczytu i zapisu przez anonimowych użytkowników;
+  "publiczna": do odczytu przez anonimowych, a do zapisu przez
+               zarejestrowanych użytkowników;
+  "zamknięta": do odczytu i zapisu przez zarejestrowanych użytkowników.
+ .
+ Jest to jedynie początkowe ustawienie. Zasady ACL można później zmienić.
+Description-pt.UTF-8: Politica inicial ACL:
+ Por favor seleccione a configuração inicial ACL que deverá ser definida para responder ao uso pretendido deste wiki:
+  "aberto":   ambos com permissões de leitura e escrita para utilizadores anónimos;
+  "público":  permissões de leitura para utilizadores anónimos, permissões de escrita para utilizadores registados;
+  "fechado": permissões de leitura e escrita para utilizadores registados apenas.
+ .
+ Esta é apenas uma configuração inicial, poderá ajustar as regras ACL mais tarde.
+Description-ru.UTF-8: Начальная политика ACL:
+ Укажите какой должна быть первоначальная настройка ACL, чтобы соответствовать целям вики:
+  «открытая»:  анонимные пользователи могут читать и писать;
+  «публичная»: анонимные пользователи могут читать,
+               писать могут только зарегистрированные пользователи;
+  «закрытая»:  читать и писать могут только зарегистрированные пользователи.
+ .
+ Это только для первоначальной настройки; позже вы сможете подправить правила ACL.
+Description-sv.UTF-8: ACL-regel:
+ Ange vilken ACL-typ som ska användas till att börja med. ACL-inställningen ska överrensstämma med det tänka användandet av den här wikin:
+  "öppen":   både läsbar och redigerbar för anonyma användare
+  "publik": läsbar för anonyma användare, redigerbar för registrerade användare
+  "stängd": läs- och redigerbar endast för registrerade användare.
+ .
+ Detta är endast ett första steg i inställningar; du kan justera ACL-reglerna senare.
+Description-vi.UTF-8: Chính sách ACL đầu tiên:
+ Hãy chọn cấu hình ACL đầu tiên nào nên được thiết lập để tương ứng với cách sử dụng dự định cho wiki này:
+  • mở    — gán quyền đọc và viết cho người dùng đặc danh
+  • công — gán quyền đọc cho người dùng đặc danh, gán quyền ghi chỉ cho người dùng đã đăng ký
+  • đóng — gán quyền đọc và viết chỉ cho người dùng đã đăng ký
+ .
+ Đây chỉ là một bước đầu tiên: bạn có thể điều chỉnh các quy tắc ACL về sau.
+Choices: open, public, closed
+Choices-cs.UTF-8: otevřená, veřejná, uzavřená
+Choices-da.UTF-8: åben, offentlig, lukket
+Choices-de.UTF-8: offen, öffentlich, geschlossen
+Choices-es.UTF-8: abierta, pública, cerrada
+Choices-eu.UTF-8: irekia, publikoa, itxia
+Choices-fr.UTF-8: ouvert, public, fermé
+Choices-gl.UTF-8: aberto, público, pechado
+Choices-it.UTF-8: aperta, pubblica, chiusa
+Choices-ja.UTF-8: オープン, 一般公開, 限定公開
+Choices-nl.UTF-8: open, publiek, gesloten
+Choices-pl.UTF-8: otwarta, publiczna, zamknięta
+Choices-pt.UTF-8: aberto, público, fechado
+Choices-ru.UTF-8: открытая, публичная, закрытая
+Choices-sv.UTF-8: öppen, publik, stängd
+Choices-vi.UTF-8: mở, công, đóng

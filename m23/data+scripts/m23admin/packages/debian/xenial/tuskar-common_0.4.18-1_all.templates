@@ -1,0 +1,256 @@
+
+Template: tuskar/configure_db
+Type: boolean
+Default: false
+Description: Set up a database for Tuskar?
+ No database has been set up for tuskar to use. Before continuing, you
+ should make sure you have the following information:
+ .
+  * the type of database that you want to use;
+  * the database server hostname (that server must allow TCP connections from
+    this machine);
+  * a username and password to access the database.
+ .
+ If some of these requirements are missing, do not choose this option and run
+ with regular SQLite support.
+ .
+ You can change this setting later on by running "dpkg-reconfigure -plow
+ tuskar-common".
+Description-de.UTF-8: Soll eine Datenbank für Tuskar angelegt werden?
+ Es wurde noch keine Datenbank für Tuskar angelegt. Bevor Sie fortsetzen, sollten Sie sicherstellen, dass Sie über die folgenden Informationen verfügen:
+ .
+  * den Typ der zu verwendenden Datenbank;
+  * den Rechnernamen des Datenbankservers (der Server muss TCP-Verbindungen
+    von diesem Rechner aus erlauben);
+  * einen Benutzernamen und ein Passwort zum Zugriff auf die Datenbank.
+ .
+ Falls eine dieser Voraussetzungen fehlt, wählen Sie diese Option nicht und benutzen Sie die reguläre SQLite-Unterstützung.
+ .
+ Sie können diese Einstellung später mit dem Befehl »dpkg-reconfigure -plow tuskar-common« ändern.
+Description-fr.UTF-8: Faut-il paramétrer une base de données pour Tuskar ?
+ Aucune base de données n'a été paramétrée pour Tuskar. Avant de poursuivre, vous devriez vous assurer d'avoir les informations suivantes :
+ .
+  - Le type de base de données que vous souhaitez utiliser ;
+  - le nom d'hôte du serveur de base de données (ce serveur
+    doit accepter les connexions TCP depuis cette machine) ;
+  - un nom d'utilisateur et un mot de passe pour accéder à
+    cette base de données.     
+ .
+ Si certains de ces prérequis sont manquants, ignorez cette option et exécutez l'application avec le support SQLite normal.
+ .
+ Vous pouvez modifier ce réglage plus tard en lançant « dpkg-reconfigure -plow tuskar-common ».
+Description-it.UTF-8: Impostare un database per Tuskar?
+ Non è stato impostato alcun database per essere usato da tuskar. Prima di continuare assicurarsi di avere le seguenti informazioni:
+ .
+  * il tipo di database che si desidera usare;
+  * il nome host del server di database (che deve permettere le connessioni
+    TCP da questa macchina);
+  * un nome utente e una password per accedere al database.
+ .
+ Se non si ha uno o più di questi requisiti, non scegliere questa opzione ed eseguire con il regolare supporto per SQLite.
+ .
+ È possibile cambiare questa impostazione successivamente eseguendo «dpkg-reconfigure -plow tuskar-common».
+Description-nl.UTF-8: Een database opzetten voor Tuskar?
+ Er is geen database opgezet voor gebruik door tuskar. Voor u doorgaat moet u beschikken over de volgende informatie:
+ .
+  * het type database dat u wenst te gebruiken;
+  * de computernaam van de database-server (die server moet
+    TCP-verbindingen vanaf deze computer accepteren);
+  * een gebruikersnaam en wachtwoord voor toegang tot de database.
+ .
+ Indien sommige van deze gegevens ontbreken, moet u deze optie niet kiezen en de toepassing gebruiken met gewone SQLite-ondersteuning.
+ .
+ U kunt deze instelling later wijzigen door het uitvoeren van "dpkg-reconfigure -plow tuskar-common".
+Description-pt.UTF-8: Configurar uma base de dados para o Tuskar?
+ Nenhuma base de dados foi configurada para o tuskar utilizar. Antes de continuar, deve certificar-se que tem a seguinte informação:
+ .
+  * o tipo de base de dados que deseja usar;
+  * o nome de máquina do servidor da base de dados (esse servidor deve permitir ligações TCP a partir
+    desta máquina);
+  * um nome de utilizador e palavra passe para acesso à base de dados.
+ .
+ Se algum deste requerimentos estiver em falta, não escolha esta opção e corra com suporte SQLite regular.
+ .
+ Você pode alterar esta definição mais tarde ao correr "dpkg-reconfigure -plow tuskar-common".
+Description-pt_BR.UTF-8: Configurar um banco de dados para o Tuskar?
+ Nenhum banco de dados foi configurado para ser usado com o tuskar. Antes de continuar, você deve se certificar que você tem as seguintes informações:
+ .
+  * o tipo de banco de dados que você quer usar;
+  * o nome de máquina do servidor de banco de dados (tal servidor deve
+    permitir conexões TCP a partir deste computador);
+  * um usuário e uma senha para acessar o banco de dados.
+ .
+ Se algum desses requisitos estiver faltando, rejeite essa opção e execute com suporte regular ao SQLite.
+ .
+ Você pode mudar essa configuração depois, executando "dpkg-reconfigure -plow tuskar-common".
+
+Template: tuskar/auth-host
+Type: string
+Default: 127.0.0.1
+Description: Authentication server hostname:
+ Please specify the hostname of the authentication server for Tuskar.
+ Typically this is also the hostname of the OpenStack Identity Service
+ (Keystone).
+Description-de.UTF-8: Rechername des Authentifizierungsservers:
+ Bitte geben Sie den Rechnernamen des Authentifizierungsservers für Tuskar an. Typischerweise ist dies auch der Rechnername des OpenStack-Identitätsdienstes (Keystone).
+Description-fr.UTF-8: Nom d'hôte du serveur d'authentification :
+ Veuillez indiquer le nom d'hôte du serveur d'authentification pour Tuskar. En général, il s'agit du nom d'hôte du Service d'Identité OpenStack (Keystone).
+Description-it.UTF-8: Nome host del server di autenticazione:
+ Specificare il nome host del server di autenticazione per Tuskar. Tipicamente, è anche il nome host dell'OpenStack Identity Service (Keystone).
+Description-nl.UTF-8: Computernaam van de authenticatieserver:
+ Geef de computernaam van de authenticatieserver voor Tuskar op. Meestal is dit ook de computernaam van de OpenStack Identiteitsdienst (Keystone).
+Description-pt.UTF-8: Nome de máquina do servidor de autenticação:
+ Por favor especifique o nome de máquina do servidor de autenticação para o Tuskar. Tipicamente este é também o nome de máquina do Serviço de Identidade OpenStack (Keystone).
+Description-pt_BR.UTF-8: Nome de máquina do servidor de autenticação:
+ Por favor, especifique o nome de máquina do seu servidor de autenticação para o Tuskar. Tipicamente, esse é também o nome de máquina do Serviço de Identidade do OpenStack (Keystone).
+
+Template: tuskar/admin-tenant-name
+Type: string
+Default: admin
+Description: Authentication server tenant name:
+ Please specify the authentication server tenant name.
+Description-de.UTF-8: Tenant-Name des Authentifizierungsservers:
+ Bitte geben Sie den für den Authentifizierungsserver zu verwendenden Tenant-Namen an.
+Description-fr.UTF-8: Nom d'espace client du serveur d'authentification :
+ Veuillez indiquer le nom d'espace client du serveur d'authentification.
+Description-it.UTF-8: Nome del locatario («tenant») per il server di autenticazione:
+ Specificare il nome del «locatario» («tenant») per il server di autenticazione.
+Description-nl.UTF-8: Naam van de clientruimte (tenant) van de authenticatieserver:
+ Geef de naam op van de clientruimte (tenant) van de authenticatieserver.
+Description-pt.UTF-8: Nome tenant do servidor de autenticação:
+ Por favor especifique o nome tenant do servidor de autenticação.
+Description-pt_BR.UTF-8: Nome de locatário ("tenant") do servidor de autenticação:
+ Por favor, especifique o nome de locatário ("tenant") do servidor de autenticação.
+
+Template: tuskar/admin-user
+Type: string
+Default: admin
+Description: Authentication server username:
+ Please specify the username to use with the authentication server.
+Description-de.UTF-8: Benutzername des Authentifizierungsservers:
+ Bitte geben Sie den für den Authentifizierungsserver zu verwendenden Benutzernamen an.
+Description-fr.UTF-8: Nom d'utilisateur du serveur d'authentification :
+ Veuillez indiquer le nom d'utilisateur à utiliser sur le serveur d'authentification.
+Description-it.UTF-8: Nome utente per il server di autenticazione:
+ Specificare il nome utente da usare con il server di autenticazione.
+Description-nl.UTF-8: Gebruikersnaam voor de authenticatieserver:
+ Geef de gebruikersnaam op voor gebruik op de authenticatieserver.
+Description-pt.UTF-8: Nome de utilizador do servidor de autenticação:
+ Por favor especifique o nome de utilizador a usar com o servidor de autenticação.
+Description-pt_BR.UTF-8: Nome de usuário do servidor de autenticação:
+ Por favor, especifique o nome de usuário para usar com o servidor de autenticação.
+
+Template: tuskar/admin-password
+Type: password
+Description: Authentication server password:
+ Please specify the password to use with the authentication server.
+Description-de.UTF-8: Passwort des Authentifizierungsservers:
+ Bitte geben Sie das für den Authentifizierungsserver zu verwendende Passwort an.
+Description-fr.UTF-8: Mot de passe du serveur d'authentification :
+ Veuillez indiquer le mot de passe à utiliser sur le serveur d'authentification.
+Description-it.UTF-8: Password per il server di autenticazione:
+ Specificare la password da usare con il server di autenticazione.
+Description-nl.UTF-8: Wachtwoord voor de authenticatieserver:
+ Geef het wachtwoord op voor gebruik op de authenticatieserver.
+Description-pt.UTF-8: Palavra passe do servidor de autenticação:
+ Por favor especifique a palavra passe a usar com o servidor de autenticação:
+Description-pt_BR.UTF-8: Senha do servidor de autenticação:
+ Por favor, especifique a senha para usar com o servidor de autenticação.
+
+Template: tuskar/rabbit_host
+Type: string
+Default: localhost
+Description: IP address of your RabbitMQ host:
+ In order to interoperate with other components of OpenStack, this package
+ needs to connect to a central RabbitMQ server.
+ .
+ Please specify the IP address of that server.
+Description-de.UTF-8: IP-Adresse Ihres RabbitMQ-Rechners:
+ Um mit anderen Komponenten von OpenStack zusammenarbeiten zu können, muss sich dieses Paket mit einem zentralen RabbitMQ-Server verbinden.
+ .
+ Bitte geben Sie die IP-Adresse dieses Servers an.
+Description-fr.UTF-8: Adresse IP de votre hôte RabbitMQ :
+ Afin de pouvoir interagir avec d'autres composants d'OpenStack, ce paquet doit se connecter à un serveur centralisé RabbitMQ.
+ .
+ Veuillez indiquer l'adresse IP de ce serveur.
+Description-it.UTF-8: Indirizzo IP dell'host RabbitMQ:
+ Per poter funzionare insieme agli altri componenti di OpenStack, questo pacchetto deve connettersi al server RabbitMQ centrale.
+ .
+ Inserire l'indirizzo IP di tale server.
+Description-nl.UTF-8: IP-adres van uw RabbitMQ-computer:
+ Om te kunnen samenwerken met andere componenten van OpenStack, moet dit pakket verbinding kunnen maken met een centrale RabbitMQ-server.
+ .
+ Geef het IP-adres op van die server.
+Description-pt.UTF-8: Endereço IP da sua máquina RabbitMQ:
+ De modo a inter-operar com outros componentes do OpenStack, este pacote precisa de se ligar a um servidor RabbitMQ central.
+ .
+ Por favor especifique o endereço IP desse servidor.
+Description-pt_BR.UTF-8: Endereço IP da sua máquina RabbitMQ:
+ Para interoperar com outros componentes do Openstack, esse pacote precisa se conectar a um servidor RabbitMQ central.
+ .
+ Por favor, especifique o endereço IP de tal servidor.
+
+Template: tuskar/rabbit_userid
+Type: string
+Default: guest
+Description: Username for connection to the RabbitMQ server:
+ In order to interoperate with other components of OpenStack, this package
+ needs to connect to a central RabbitMQ server.
+ .
+ Please specify the username used to connect to the RabbitMQ server.
+Description-de.UTF-8: Benutzername für die Verbindung zum RabbitMQ-Server:
+ Um mit anderen Komponenten von OpenStack zusammenarbeiten zu können, muss sich dieses Paket mit einem zentralen RabbitMQ-Server verbinden.
+ .
+ Bitte geben Sie den für die Verbindung zum RabbitMQ-Server zu verwendenden Benutzernamen an.
+Description-fr.UTF-8: Nom d'utilisateur pour la connexion au serveur RabbitMQ :
+ Afin de pouvoir interagir avec d'autres composants d'OpenStack, ce paquet doit se connecter à un serveur centralisé RabbitMQ.
+ .
+ Veuillez indiquer le nom d'utilisateur à utiliser pour se connecter au serveur RabbitMQ.
+Description-it.UTF-8: Nome utente per la connessione al server RabbitMQ:
+ Per poter funzionare insieme agli altri componenti di OpenStack, questo pacchetto deve connettersi al server RabbitMQ centrale.
+ .
+ Specificare il nome utente da usare per connettersi al server RabbitMQ.
+Description-nl.UTF-8: Gebruikersnaam voor de verbinding met de RabbitMQ-server:
+ Om te kunnen samenwerken met andere componenten van OpenStack, moet dit pakket verbinding kunnen maken met een centrale RabbitMQ-server.
+ .
+ Geef de gebruikersnaam op die u nodig heeft om verbinding te maken met de RabbitMQ-server.
+Description-pt.UTF-8: Nome de utilizador para ligação ao servidor RabbitMQ:
+ De modo a inter-operar com outros componentes do OpenStack, este pacote precisa de se ligar a um servidor RabbitMQ central.
+ .
+ Por favor especifique o nome de utilizador usado para ligar ao servidor RabbitMQ.
+Description-pt_BR.UTF-8: Nome de usuário para conexão ao servidor RabbitMQ:
+ Para interoperar com outros componentes do Openstack, esse pacote precisa se conectar a um servidor RabbitMQ central.
+ .
+ Por favor, especifique o nome de usuário usado para conectar ao servidor RabbitMQ.
+
+Template: tuskar/rabbit_password
+Type: password
+Description: Password for connection to the RabbitMQ server: 
+ In order to interoperate with other components of OpenStack, this package
+ needs to connect to a central RabbitMQ server.
+ .
+ Please specify the password used to connect to the RabbitMQ server.
+Description-de.UTF-8: Passwort für die Verbindung zum RabbitMQ-Server:
+ Um mit anderen Komponenten von OpenStack zusammenarbeiten zu können, muss sich dieses Paket mit einem zentralen RabbitMQ-Server verbinden.
+ .
+ Bitte geben Sie das für die Verbindung zum RabbitMQ-Server zu verwendende Passwort an.
+Description-fr.UTF-8: Mot de passe pour la connexion au serveur RabbitMQ :
+ Afin de pouvoir interagir avec d'autres composants d'OpenStack, ce paquet doit se connecter à un serveur centralisé RabbitMQ.
+ .
+ Veuillez indiquer le mot de passe à utiliser pour se connecter au serveur RabbitMQ.
+Description-it.UTF-8: Password per la connessione al server RabbitMQ:
+ Per poter funzionare insieme agli altri componenti di OpenStack, questo pacchetto deve connettersi al server RabbitMQ centrale.
+ .
+ Specificare la password da usare per connettersi al server RabbitMQ.
+Description-nl.UTF-8: Wachtwoord voor de verbinding met de RabbitMQ-server:
+ Om te kunnen samenwerken met andere componenten van OpenStack, moet dit pakket verbinding kunnen maken met een centrale RabbitMQ-server.
+ .
+ Gelieve het wachtwoord op te geven dat u nodig heeft om verbinding te maken met de RabbitMQ-server.
+Description-pt.UTF-8: Palavra passe para ligação ao servidor RabbitMQ:
+ De modo a inter-operar com outros componentes do OpenStack, este pacote precisa de se ligar a um servidor RabbitMQ central.
+ .
+ Por favor especifique a palavra passe usada para ligar ao servidor RabbitMQ.
+Description-pt_BR.UTF-8: Senha para conexão ao servidor RabbitMQ:
+ Para interoperar com outros componentes do Openstack, esse pacote precisa se conectar a um servidor RabbitMQ central.
+ .
+ Por favor, especifique a senha usada para conectar ao servidor RabbitMQ.

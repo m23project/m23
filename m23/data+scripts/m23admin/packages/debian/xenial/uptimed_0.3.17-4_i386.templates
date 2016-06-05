@@ -1,0 +1,258 @@
+
+Template: uptimed/interval
+Type: string
+Default: 600
+Description: Delay between database updates (seconds):
+ Uptimed will update its database regularly so that the uptime
+ doesn't get lost in case of a system crash. You can set how frequently
+ this will happen (use higher values if you want to avoid disk activity,
+ for instance on a laptop).
+Description-cs.UTF-8: Pauza mezi aktualizacemi databáze (sekundy):
+ Aby se v případě spadnutí systému neztratil údaj o době běhu, aktualizuje uptimed svou databázi každých n sekund. Nyní můžete za n dosadit konkrétní číslo. Chcete-li se vyhnout zbytečné diskové aktivitě (třeba na notebooku), použijte vyšší hodnotu.
+Description-da.UTF-8: Forsinkelse mellem databaseopdateringer (sekunder):
+ Uptimed vil opdatere sin database løbende, så oppetiden ikke tabes i tilfælde af et systemnedbrud. Du kan angive hvor ofte dette skal ske (benyt højere værdier, hvis du vil hindre diskaktivitet, f.eks. på en bærbar).
+Description-de.UTF-8: Verzögerung zwischen Datenbank-Aktualisierungen (Sekunden):
+ Uptimed wird regelmäßig seine Datenbank aktualisieren, damit bei einem Systemabsturz die Uptime nicht verlorengeht. Sie können hier einstellen, wie oft dies geschieht (nehmen Sie einen höheren Wert, wenn Sie Festplattenaktivität vermeiden wollen, z.B. auf einem Laptop).
+Description-es.UTF-8: ¿Cada cuántos segundos se debe actualizar la base de datos?
+ «Uptimed» actualizará su base de datos cada n segundos de modo que no se pierda el tiempo de funcionamiento en caso de que el sistema colapse. Puede definir la frecuencia de actualización (use valores altos si desea evitar actividad del disco, por ejemplo, en una portátil). Un valor predeterminado razonable puede ser 60 segundos.
+Description-fr.UTF-8: Délai (en secondes) entre deux mises à jour de la base de données :
+ Uptimed mettra sa base de données à jour régulièrement de façon à ce que la durée de fonctionnement ne soit pas perdue lors d'une défaillance générale de votre système. Vous pouvez définir cet intervalle ici (l'utilisation d'une valeur élevée permet d'éviter une activité disque trop importante, pour un portable par exemple).
+Description-it.UTF-8: Intervallo tra gli aggiornamenti del database (in secondi):
+ Il demone uptimed aggiorna il proprio database regolarmente in modo da non perdere le informazioni in caso di blocchi del sistema. È possibile modificare la frequenza con cui deve essere fatta questa operazione (usare un valore più elevato per limitare l'attività sul disco, per esempio sui portatili).
+Description-ja.UTF-8: データベースの更新間隔 (秒):
+ uptimed はデータベースを定期的に更新するようになっているので、システムクラッシュの際に uptime は失われません。どの程度頻繁にこの更新を行うかを設定できます (例えばノートやモバイルなどで、ディスクアクセスを避けたい場合は大きい値を使ってください)。
+Description-nl.UTF-8: Om de hoeveel seconden moet de database bijgewerkt worden?
+ Uptimed werkt zijn database regelmatig bij zodat bij een systeemcrash de uptime-gegevens niet verloren gaan. U kunt de frequentie van het bijwerken instellen (gebruik hogere waarden indien u de schijfactiviteit wil beperken, b.v. op een laptop).
+Description-pl.UTF-8: Odstępy między uaktualnieniami bazy danych (w sekundach):
+ Uptimed będzie regularnie aktualizował swoją bazę danych, dzięki czemu czasy uptime nie będą tracone w przypadku załamania systemu. Można określić częstotliwość tej operacji (proszę użyć wyższych wartości, aby ograniczyć aktywność dysku np. w przypadku laptopów).
+Description-pt.UTF-8: Intervalo entre actualizações da base de dados (segundos):
+ O Uptimed actualizará a sua base de dados regularmente para que o uptime não se perca no caso de um crash do sistema. Pode indicar a frequência destas actualizações (use valores altos para evitar actividade do disco, por exemplo num portátil).
+Description-ru.UTF-8: Задержка между обновлениями базы данных (секунды):
+ Для того, что не потерять количество непрерывно отработанного машиной времени в случае сбоя системы, uptimed регулярно обновляет базу данных. Вы можете указать как часто это должно происходить (используйте большие значения, если хотите сократить число обращений к диску, например, на ноутбуках).
+Description-sk.UTF-8: Oneskorenie medzi aktualizáciami databázy (v sekundách):
+ Uptimed bude pravidelne aktualizovať svoju databázu, aby sa informácia o dobe behu nestratila v prípade havárie systému. Môžete nastaviť ako často sa to bude diať (použite vyššie hodnoty ak sa chcete vyhnúť diskovej aktivite, napr. na notebooku).
+Description-sv.UTF-8: Tid mellan databasuppdateringar (sekunder):
+ Uptimed kommer att uppdatera sin databas regelbundet sekund så att upptiden inte förloras om systemet kraschar. Du kan ställa in hur frekvent detta ska vara (använd högre värden om du vill undvika diskaktivitet, till exempel på en bärbar dator).
+
+Template: uptimed/maxrecords
+Type: string
+Default: 50
+Description: Number of records that should be kept:
+ On systems that reboot frequently, you will get a
+ fairly large list of uptime records pretty soon. To avoid this, uptimed
+ will only keep the n highest uptimes. You may want to limit this to a
+ lower value if you want to get emails each time a record is broken or
+ if you reboot your machine often.
+Description-cs.UTF-8: Počet záznamů, které se mají uchovávat:
+ Na systémech, které se restartují často, získáte poměrně rychle velmi dlouhý seznam záznamů. Abyste tomu předešli, můžete omezit počet uchovávaných záznamů na n nejvyšších. Chcete-li dostávat poštu pokaždé, kdy zlomíte rekord, nebo pokud často restartujete, zadejte nižší hodnotu.
+Description-da.UTF-8: Hvor mange rekorder skal huskes?
+ På systemer, der genstarter ofte, får du hurtigt samlet en ret lang liste med oppetids-rekorder. For at undgå dette, vil uptimed kun bevare de n længste oppetider. Du kan begrænse dette til et lavere antal, hvis du ønsker at få tilsendt beskeder hver gang en rekord bliver brudt eller du ofte genstarter din maskine.
+Description-de.UTF-8: Anzahl der Aufzeichnungen, die gespeichert werden sollen:
+ Auf Systemen, die häufig neu gestartet werden, bekommen Sie sehr schnell eine ziemlich lange Liste mit uptime-Aufzeichnungen. Um das zu vermeiden, wird Uptimed nur die n höchsten Uptimes behalten. Falls Sie Mails erhalten möchten, wenn eine Aufzeichnung beschädigt ist, oder wenn Sie Ihren Rechner häufig neu starten, sollten Sie dies auf einen niedrigeren Wert setzen.
+Description-es.UTF-8: Número de registros que desea mantener:
+ En sistemas que se reinician con frecuencia (como las PCs de escritorio), obtendrá una gran cantidad de registros bastante pronto. Para evitar esto, «uptimed» sólo mantendrá los n tiempos más altos. Podría querer definir un valor menor si desea recibir correos cada vez que se rompe un récord o si reinicia su máquina a menudo. 10 es un valor aceptable.
+Description-fr.UTF-8: Nombre d'enregistrements à conserver :
+ Sur des systèmes qui redémarrent fréquemment, vous obtiendrez rapidement une liste conséquente d'enregistrements. Afin d'éviter cela, uptimed conservera uniquement les n durées les plus élevées. Vous pourriez abaisser cette valeur si vous désirez recevoir un courriel à chaque fois qu'un record est battu  ou si vous redémarrez souvent la machine.
+Description-it.UTF-8: Numero di registrazioni da memorizzare:
+ Su sistemi che vengono riavviati frequentemente il numero di registrazioni può crescere velocemente. Per evitarlo uptimed memorizza solo gli n tempi di attività più lunghi. È possibile abbassare il numero di registrazioni per ricevere delle email quando viene battuto un record oppure se la macchina viene riavviata molto spesso. 10 è un buon valore.
+Description-ja.UTF-8: 保持する履歴の数:
+ 頻繁に再起動をするシステムの場合、すぐにものすごく長い uptime の記録を保持することになります。これを避けるには、uptimed がもっとも長い n 個の uptime の履歴のみを保持するようにします。記録が更新された際、あるいはマシンを再起動する際など頻繁にメールを受け取りたい場合はこれを低い値にしておくと良いでしょう。
+Description-nl.UTF-8: Hoeveel records moeten bewaard worden?
+ Op systemen die regelmatig opgestart worden, zal de lijst met uptime-records snel aangroeien. Om dit te vermijden zal uptimed enkel de n hoogste uptimes behouden. Indien u e-mails wenst te ontvangen wanneer een record gebroken wordt, is het aangeraden deze waarde laag te houden.
+Description-pl.UTF-8: Liczba przechowywanych wpisów:
+ W systemach, które są często uruchamiane, można dość szybko uzyskać całkiem dużą listę wpisów uptime. Aby temu zapobiec, uptimed może przechowywać jedynie n największych czasów uptime.  Można ustawić tę wartość na mniejszą liczbę, w przypadku skonfigurowania uptimed w celu otrzymywania wiadomości przy pobiciu rekordu lub jeśli komputer jest często uruchamiany ponownie.
+Description-pt.UTF-8: Número de registos a serem mantidos:
+ Em sistemas que reiniciam frequentemente, vai obter uma lista razoavelmente grande de registos de uptime rapidamente. Para evitar isto, o uptimed vai manter apenas os n uptimes mais altos. Pode querer baixar este limite se quiser receber e-mail cada vez que um recorde é batido ou se reinicia o sistema frequentemente.
+Description-ru.UTF-8: Количество хранимых рекордов:
+ На часто перезагружаемых машинах очень быстро создаётся довольно большой список рекордов непрерывной работы. Чтобы этого избежать, uptimed будет сохранять только самые длительные значения периодов непрерывной работы. Вы можете ограничить его указав минимальное значение, если хотите получать эл. сообщения каждый раз когда установлен новый рекорд или машина перезагружается слишком часто.
+Description-sk.UTF-8: Počet záznamov, záznamov ktorý sa má udržiavať:
+ Na systémoch, ktoré sa často reštartujú dosiahnete čoskoro pomerne veľké množstvo záznamov o dobe behu. Aby ste sa tomu vyhli, uptimed bude udržiavať iba n najvyšších časov behu. Možno túto hodnotu budete chcieť zmenšiť ak chcete dostať email pri každom prelomení rekordu alebo často reštartujete svoj počítač.
+Description-sv.UTF-8: Hur många poster ska behållas:
+ På system som frekvent startas om kommer du inom kort får en ganska stor lista på upptidsposter. För att förhindra detta kommer uptimed endast att hålla de n högsta upptiderna. Du kanske vill begränsa detta till ett lägre värde om du vill få e-post varje gång ett rekord uppnås eller ofta startar om din dator.
+
+Template: uptimed/mail/do_mail
+Type: select
+Choices: Never, Record, Milestone, Both
+Choices-ca.UTF-8: Never, Record, Milestone, Both
+Choices-cs.UTF-8: Nikdy, Rekord, Milník, Oboje
+Choices-da.UTF-8: Aldrig, Rekord, Milepæl, Begge
+Choices-de.UTF-8: Nie, Aufzeichnung, Meilenstein, Beides
+Choices-es.UTF-8: nunca, récord, hito, ambos
+Choices-fr.UTF-8: Jamais, Record, Jalon, Les deux
+Choices-gl.UTF-8: Nunca, Récord, Obxectivo, Ambos
+Choices-it.UTF-8: Nessuno, Record, Pietre miliari, Entrambi
+Choices-ja.UTF-8: 送らない, 記録更新時, マイルストーン到達時, 両方
+Choices-nl.UTF-8: Nooit, Record, Mijlpaal, Beide
+Choices-pl.UTF-8: nigdy, rekord, kamień milowy, oba
+Choices-pt.UTF-8: Nunca, Recorde, Marco, Ambos
+Choices-pt_BR.UTF-8: Nunca, Recorde, Marco, Ambos
+Choices-ru.UTF-8: никогда не отправлять, установлен новый рекорд, наступает контрольной срок, в обоих случаях
+Choices-sk.UTF-8: Nikdy, Rekord, Míľnik, Oba
+Choices-sv.UTF-8: Aldrig, Rekord, Milstolpe, Båda
+Choices-vi.UTF-8: Never, Record, Milestone, Both
+Default: Never
+Description: Send mails if a milestone or record is reached:
+ Uptimed can be configured to send a mail each time a record is broken or a
+ "milestone" is reached. You can choose whether you:
+ .
+  * never want to receive these mails;
+  * want to be notified only when a record is broken;
+  * would like to know about milestones;
+  * are interested in both.
+Description-cs.UTF-8: Zasílat poštu při dosažení milníku nebo rekordu:
+ uptimed můžete nastavit tak, aby poštou zasílal hlášení pokaždé, kdy je prolomen rekord, nebo pokud je dosažen „milník“. Můžete si vybrat, zda:
+ .
+  * nikdy nechcete dostávat tuto poštu
+  * chcete být upozorněni pouze pokud je zlomen rekord
+  * chcete vědět o milnících
+  * vás zajímají oboje hodnoty
+Description-da.UTF-8: Send beskeder hvis en milepæl eller rekord bliver nået:
+ Uptimed kan sættes op så den sender en besked hver gang en rekord bliver brudt eller en »milepæl« nås. Du kan vælge om du:
+ .
+  * aldrig vil modtage disse breve
+  * kun vil have besked når en rekord brydes
+  * vil have besked om milepæle
+  * er interesseret i begge dele
+Description-de.UTF-8: Mails senden bei Erreichen eines Meilensteins oder bei beschädigter Aufzeichnung:
+ Uptimed kann konfiguriert werden, eine Mail zu schicken, wenn eine Aufzeichnung beschädigt ist oder ein »Meilenstein« erreicht wurde. Sie können wählen, ob Sie:
+ .
+  * niemals Mails erhalten möchten;
+  * nur bei beschädigten Aufzeichnungen benachrichtigt werden möchten;
+  * nur über erreichte Meilensteine informiert werden möchten;
+  * an beidem interessiert sind.
+Description-es.UTF-8: ¿Enviar correos si se alcanza un hito o un récord?
+ Se puede configurar «Uptimed» para enviar un correo cada vez que se rompe un récord o se alcanza un hito. Puede elegir entre:
+ .
+  - nunca recibir estos correos
+  - recibir notificaciones únicamente cuando se rompe un récord
+  - conocer cuando se alcanzan hitos
+  - recibir notificaciones en ambos casos
+Description-fr.UTF-8: Envoi de courriels si un jalon ou un record est atteint :
+ Uptimed peut être configuré pour envoyer un courriel à chaque fois qu'un record est battu ou qu'un jalon (« milestone ») est atteint. Vous pouvez choisir :
+ .
+  - de ne jamais recevoir ces courriels ;
+  - d'être averti uniquement si un record est battu ;
+  - d'être averti uniquement lors du passage des jalons ;
+  - d'être averti dans les deux cas.
+Description-it.UTF-8: Inviare email quando è raggiunta una pietra miliare o un record:
+ È possibile configurare uptimed per inviare una email ogni volta che viene battuto un record o viene superata una "pietra miliare". Scegliere gli eventi a cui si è interessati:
+ .
+  * Nessuno: le email non sono spedite
+  * Record: è notificato solo quando è battuto un record
+  * Pietre miliari: solo quando è superata una pietra miliare
+  * Entrambi: interessano entrambi gli eventi
+Description-ja.UTF-8: マイルストーン到達時や記録更新時にメールを送るかどうか:
+ uptimed はそれぞれ記録が破られた時、あるいは「マイルストーン」に達した時にメールを送るように設定できます。以下から選択してください:
+ .
+  * このメールを受け取らない
+  * 記録更新時に通知してもらいたい
+  * マイルストーンに到達したかどうかを知りたい
+  * 両方に興味がある
+Description-nl.UTF-8: Wanneer moet uptimed een e-mail sturen?
+ U kunt uptimed configureren om een e-mail te sturen telkens een record gebroken of een mijlpaal bereikt is. U kunt kiezen of u:
+ .
+  * nooit deze e-mails wenst te ontvangen
+  * op de hoogte gebracht wil worden indien er een record gebroken is
+  * bereikte mijlpalen wenst te weten
+  * beide wenst te ontvangen
+Description-pl.UTF-8: Wysyłanie wiadomości poczty elektronicznej, gdy osiągnięty zostanie kamień milowy lub rekord:
+ Uptimed może zostać skonfigurowany w celu wysyłania wiadomości poczty elektronicznej gdy zostanie pobity rekord lub osiągnięty kolejny kamień milowy. Można wybrać:
+ .
+  * nigdy nie otrzymywać takich wiadomości,
+  * otrzymywać powiadomienie tylko po pobiciu rekordu,
+  * otrzymywać powiadomienie po przekroczeniu kamienia milowego,
+  * otrzymywać powiadomienie w obu przypadkach.
+Description-pt.UTF-8: Enviar email se um marco ou recorde for atingido:
+ O uptimed pode ser configurado para enviar um email de cada vez que um recorde for batido ou um "marco" atingido. Pode escolher se:
+ .
+  * nunca quer receber estes emails
+  * quer ser notificado apenas quando um recorde for atingido
+  * quer saber dos marcos
+  * está interessado em ambos
+Description-ru.UTF-8: Критерий отправки сообщений:
+ Uptimed можно настроить на отправку почты каждый раз, когда установлен новый рекорд или наступает «контрольной срок». Вы можете:
+ .
+  * никогда не отправлять сообщения
+  * отправлять сообщения, только когда установлен рекорд
+  * отправлять сообщения, только когда наступает контрольный срок
+  * отправлять сообщения в обоих случаях
+Description-sk.UTF-8: Poslať emaily pri dosiahnutí míľnika alebo rekordu:
+ Uptimed možno nastaviť, aby poslal email po každom prelomení rekordu alebo dosiahnutí „míľnika“. Môžete si zvoliť, či:
+ .
+  * nechcete nikdy dostávať tieto emaily
+  * chcete byť upozornený iba pri prelomení rekordu
+  * by ste chceli vedieť o míľnikoch
+  * zaujímajú vas oba prípady
+Description-sv.UTF-8: Skicka e-post om en milstolpe eller ett rekord uppnås:
+ Uptimed kan konfigureras för att skicka ett e-postmeddelande varje gång ett rekord slås eller en "milstolpe" uppnås. Du kan välja om du
+ .
+  - vill aldrig ta emot dessa e-postmeddelanden
+  - vill endast informeras när ett rekord slås
+  - vill veta mer om milstolpar
+  - är intresserad av båda två
+
+Template: uptimed/mail/address
+Type: string
+Default: root
+Description: Uptimed email recipient:
+ Since you have chosen to be sent emails, you should specify where to send
+ these mails.
+Description-cs.UTF-8: Příjemce pošty od uptimed:
+ Jelikož jste zvolili, že se má posílat pošta, měli byste zadat, na kterou adresu má být doručována.
+Description-da.UTF-8: E-post-modtager for uptimed:
+ Da du har valgt at sende e-post, så skal du angive hvor disse beskeder skal sendes til.
+Description-de.UTF-8: Uptimed E-Mail-Empfänger:
+ Aufgrund Ihrer Auswahl zum Versand von E-Mails sollten Sie angeben, wohin diese Mails geschickt werden sollen.
+Description-es.UTF-8: Dirección de correo para notificaciones:
+ Puesto que ha elegido que se envíen notificaciones, debe especificar a donde se enviarán los correos.
+Description-fr.UTF-8: Destinataire des courriels d'uptimed :
+ Puisque vous avez choisi de recevoir des courriels, vous devez indiquer le destinataire de ces messages.
+Description-it.UTF-8: Destinatario delle email di uptimed:
+ Poiché è stato scelto di inviare delle email, è necessario specificare a chi spedire questi messaggi.
+Description-ja.UTF-8: Uptimed から送るメールの宛先:
+ メールを送るように選択されたので、そのメールをどこに送るのかここで指定してください。
+Description-nl.UTF-8: Ontvanger van uptimed-e-mail:
+ Aangezien u e-mails wenst te ontvangen moet u het adres waarnaar deze e-mails gestuurd moeten worden specificeren.
+Description-pl.UTF-8: Adresat wiadomości uptimed:
+ Wybrano otrzymywanie wiadomości poczty elektronicznej, więc konieczne jest podanie ich adresata.
+Description-pt.UTF-8: Destinatário do email do uptimed:
+ Uma vez que optou por receber emails, deve indicar para onde enviá-los.
+Description-ru.UTF-8: Получатель почты от uptimed:
+ Так как вы выбрали отправку сообщений, требуется указать кому направлять письма.
+Description-sk.UTF-8: Príjemca emailov uptimed:
+ Pretože ste zvolili, že sa vám majú posielať emaily, mali by ste zadať, kam tieto emaily posielať.
+Description-sv.UTF-8: E-postmottagare för uptimed:
+ I och med att du valt att e-postmeddelanden ska skickas måste du ange en adress dit dessa ska skickas.
+
+Template: uptimed/mail/milestones_info
+Type: note
+Description: Milestone configuration must be done manually
+ The milestones must
+ be configured manually in /etc/uptimed.conf. Since you have chosen to
+ receive emails for milestones you probably want to modify that file.
+Description-cs.UTF-8: Nastavení milníků musíte provést ručně
+ Nastavení milníků musíte provést ručně v souboru /etc/uptimed.conf. Protože jste zvolili, že chcete dostávat zprávy o dosažených milnících, asi byste je měli v souboru nastavit.
+Description-da.UTF-8: Opsætning af milepæle skal foretages manuelt
+ Milepælene skal opsættes manuelt i /etc/uptimed.conf. Da du har valgt at modtage beskeder for milepæle, bør du redigere denne fil.
+Description-de.UTF-8: Meilenstein-Konfiguration muss von Hand erledigt werden
+ Die Meilensteine müssen von Hand in /etc/uptimed.conf konfiguriert werden. Aufgrund Ihrer Auswahl zum Versand von E-Mails bei Erreichen von Meilensteinen möchten Sie diese Datei möglicherweise anpassen.
+Description-es.UTF-8: La configuración de hitos se debe hacer de forma manual
+ Aunque este asistente puede configurar el resto de opciones, los hitos se deben configurar de forma manual en «/etc/uptimed.conf». Debido a que ha elegido recibir correos en caso de que se alcancen hitos, debe editar este fichero.
+Description-fr.UTF-8: Configuration des jalons à faire manuellement
+ Vous devez configurer vous-même les jalons dans /etc/uptimed.conf. Puisque vous avez choisi de recevoir des messages pour les jalons, vous devrez sans doute modifier ce fichier.
+Description-it.UTF-8: Le pietre miliari devono essere configurate manualmente
+ Le pietre miliari devono essere configurate manualmente in /etc/uptimed.conf. Poiché è stato scelto di ricevere delle email al raggiungimento delle pietre miliari probabilmente è opportuno modificare questo file.
+Description-ja.UTF-8: マイルストーンの設定は手作業で行う必要があります
+ 他の設定はすべてここで設定できますが、マイルストーンは /etc/uptimed.conf に手作業で設定する必要があります。マイルストーンに達した場合のメールを送るように設定したので、おそらくファイルを編集した方が良いでしょう。
+Description-nl.UTF-8: De configuratie voor mijlpalen moet handmatig gebeuren
+ De mijlpalen dienen handmatig geconfigureerd te worden in /etc/uptimed.conf. Daar u hebt gekozen om de mijlpalen via e-mails te ontvangen zult u waarschijnlijk dit bestand willen bewerken.
+Description-pl.UTF-8: Konfiguracja kamieni milowych musi zostać wykonana ręcznie
+ Kamienie milowe muszą zostać skonfigurowane ręcznie w /etc/uptimed.conf. Ponieważ wybrano otrzymywanie wiadomości w przypadku przekroczenia kolejnych kamieni milowych, prawdopodobnie powinno się zmodyfikować powyższy plik.
+Description-pt.UTF-8: A configuração dos marcos tem que ser feita manualmente
+ Os marcos têm que ser configurados manualmente em /etc/uptimed.conf. Uma vez que escolheu receber emails acerca dos marcos, deve querer editar esse ficheiro.
+Description-ru.UTF-8: Настройка контрольного срока должна выполняться вручную
+ Контрольные сроки нужно настраивать вручную в файле /etc/uptimed.conf. Так как вы выбрали получение эл. писем при наступлении контрольных сроков, то вам нужно отредактировать данный файл.
+Description-sk.UTF-8: Konfiguráciu míľnika musíte urobiť ručne
+ Míľniky musíte nastaviť ručne v súbore /etc/uptimed.conf. Pretože ste sa rozhodli dostávať emaily o míľnikoch, pravdepodobne budete chcieť uvedený súbor upraviť.
+Description-sv.UTF-8: Konfiguration av milstolpar måste göras manuellt
+ Inställningar för milstolpar måste göras manuellt i /etc/uptimed.conf. Eftersom du har valt att ta emot e-post för milstolpar vill du antagligen redigera den filen.

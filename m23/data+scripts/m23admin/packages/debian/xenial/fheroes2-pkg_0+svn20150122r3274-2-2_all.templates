@@ -1,0 +1,279 @@
+
+Template: fheroes2-pkg/build
+Type: boolean
+Default: true
+Description: Proceed with downloading and compiling ${PKGG}${VER}?
+ The fheroes2 AI is non-free due to a not-for-sale restriction, and
+ some images may also be non-free.
+ .
+ The installation process is therefore about to download the source files
+ from SourceForge, compile them, and install the binary deb package(s)
+ [${PKGG_ALL}].
+ .
+ Please confirm whether you wish this to happen.
+Description-da.UTF-8: Fortsæt med at hente og kompilere ${PKGG}${VER}?
+ Den kunstige intelligens for fheroes2 er ikke fri på grund af en restriktion vedrørende salg, og nogle af billederne kan også have begrænsninger.
+ .
+ Installationsprocessen er derfor ved at hente kildefilerne fra SourceForge, kompilere dem og installere de binære deb-pakker [${PKGG_ALL}].
+ .
+ Bekræft venligst om du ønsker at dette sker.
+Description-de.UTF-8: Mit dem Herunterladen und Kompilieren von ${PKGG}${VER} fortfahren?
+ Das Fheroes2-AI ist aufgrund einer Einschränkung »Nicht zum Verkauf« unfrei und einige Bilder könnten dies ebenfalls sein.
+ .
+ Beim Installationsprozess geht es daher darum, die Quelldateien von SourceForge herunterzuladen, sie zu kompilieren und das oder die binäre Deb-Pakete [${PKGG_ALL}] zu installieren.
+ .
+ Bitte bestätigen Sie, dass Sie dies wünschen.
+Description-fr.UTF-8: Faut-il télécharger puis compiler ${PKGG}${VER} ?
+ Le moteur d'intelligence artificielle ainsi que certaines images de fheroes2 ne sont pas libres à cause d'une restriction sur la vente.
+ .
+ Le processus d'installation va télécharger les fichiers sources depuis SourceForge, les compiler, puis installer le(s) paquet(s) deb [${PKGG_ALL}].
+ .
+ Veuillez confirmer que c'est bien ce que vous souhaitez.
+Description-nl.UTF-8: Voortgaan met downloaden en samenstellen van ${PKGG}${VER}?
+ De AI van fheroes2 is niet vrij omwille van de beperking dat het niet verkocht mag worden, en het is ook mogelijk dat sommige afbeeldingen niet vrij zijn.
+ .
+ Daarom zal het installatieproces de broncodebestanden downloaden van SourceForge, ze compileren en de binaire deb-pakketten [${PKGG_ALL}] installeren.
+ .
+ Gelieve te bevestigen dat u dit wel degelijk wilt.
+Description-pt.UTF-8: Prosseguir com o download e compilação do ${PKGG}${VER}?
+ A IA do fheroes2 é não-livre devido a uma restrição não-para-venda, e algumas imagens podem também ser não-livres.
+ .
+ Então, o que o processo de instalação faz é descarregar os ficheiros fonte de SourceForge, compilá-los, e instalar os pacote(s) binários deb [${PKGG_ALL}].
+ .
+ Por favor confirme que deseja que isto aconteça.
+Description-ru.UTF-8: Продолжить, выполняя загрузку и компиляцию ${PKGG}${VER}?
+ Из-за ограничений на продажу fheroes2 AI является не свободным, а также могут быть несвободными и некоторые изображения.
+ .
+ В следствии этого, процесс установки загружает файлы исходного кода с SourceForge, компилирует их и устанавливает двоичный пакеты deb [${PKGG_ALL}].
+ .
+ Подтвердите, что хотите, чтобы всё это выполнилось.
+Description-sv.UTF-8: Vill du ladda ned och bygga ${PKGG}${VER}?
+ fheroes2 AI är inte fritt eftersom det inte får säljas, dessutom kan en del bilder vara icke-fria.
+ .
+ Installationsprocessen kommer därför att hämta källkodsfilerna från SourceForge, bygga dessa och installera deb-paket [${PKGG_ALL}].
+ .
+ Ange om du vill att detta ska genomföras.
+
+Template: fheroes2-pkg/first-install
+Type: note
+Description:
+ The fheroes2 AI is non-free due to a not-for-sale restriction, and
+ some images may also be non-free.
+ .
+ The installation process is therefore about to download the source files
+ from SourceForge, compile them, and install the binary deb package(s)
+ [${PKGG_ALL}].
+ .
+ Please remember to run "sudo dpkg-reconfigure ${PKGI}"
+ to build and install guest package(s) for the first time.
+Description-da.UTF-8:
+ Den kunstige intelligens for fheroes2 er ikke fri på grund af en restriktion vedrørende salg, og nogle af billederne kan også have begrænsninger.
+ .
+ Installationsprocessen er derfor ved at hente kildefilerne fra SourceForge, kompilere dem og installere de binære deb-pakker [${PKGG_ALL}].
+ .
+ Husk at køre »sudo dpkg-reconfigure ${PKGI}« for at bygge og installere gæstepakker for den første gang.
+Description-de.UTF-8:
+ Das Fheroes2-AI ist aufgrund einer Einschränkung »Nicht zum Verkauf« unfrei und einige Bilder könnten dies ebenfalls sein.
+ .
+ Beim Installationsprozess geht es daher darum, die Quelldateien von SourceForge herunterzuladen, sie zu kompilieren und das oder die binäre Deb-Pakete [${PKGG_ALL}] zu installieren.
+ .
+ Bitte denken Sie daran, »sudo dpkg-reconfigure ${PKGI}« auszuführen, um zum ersten Mal die Gastpakete zu bauen und zu installieren.
+Description-fr.UTF-8:
+ Le moteur d'intelligence artificielle ainsi que certaines images de fheroes2 ne sont pas libres à cause d'une restriction sur la vente.
+ .
+ Le processus d'installation va télécharger les fichiers sources depuis SourceForge, les compiler, puis installer le(s) paquet(s) deb [${PKGG_ALL}].
+ .
+ Veuillez noter qu'il vous faudra lancer « sudo dpkg-reconfigure ${PKGI} » pour compiler et installer le(s) paquet(s) invité(s) pour la première fois.
+Description-nl.UTF-8:
+ De AI van fheroes2 is niet vrij omwille van de beperking dat het niet verkocht mag worden, en het is ook mogelijk dat sommige afbeeldingen niet vrij zijn.
+ .
+ Daarom zal het installatieproces de broncodebestanden downloaden van SourceForge, ze compileren en de binaire deb-pakketten [${PKGG_ALL}] installeren.
+ .
+ Denk eraan om "sudo dpkg-reconfigure ${PKGI}" uit te voeren om gastpakketten voor de eerste maal te bouwen en te installeren.
+Description-pt.UTF-8:
+ A IA do fheroes2 é não-livre devido a uma restrição não-para-venda, e algumas imagens podem também ser não-livres.
+ .
+ Então, o que o processo de instalação faz é descarregar os ficheiros fonte de SourceForge, compilá-los, e instalar os pacote(s) binários deb [${PKGG_ALL}].
+ .
+ Por favor lembre-se de correr "sudo dpkg-reconfigure ${PKGI}" para compilar e instalar pacote(s) convidado pela primeira vez.
+Description-ru.UTF-8:
+ Из-за ограничений на продажу fheroes2 AI является не свободным, а также могут быть несвободными и некоторые изображения.
+ .
+ В следствии этого, процесс установки загружает файлы исходного кода с SourceForge, компилирует их и устанавливает двоичный пакеты deb [${PKGG_ALL}].
+ .
+ Не забудьте, что для сборки и установки гостевого пакета один раз нужно выполнить «sudo dpkg-reconfigure ${PKGI}».
+Description-sv.UTF-8:
+ fheroes2 AI är inte fritt eftersom det inte får säljas, dessutom kan en del bilder vara icke-fria.
+ .
+ Installationsprocessen kommer därför att hämta källkodsfilerna från SourceForge, bygga dessa och installera deb-paket [${PKGG_ALL}].
+ .
+ Kom ihåg att köra "sudo dpkg-reconfigure ${PKGI}" för att bygga och installera gästpaket(en) första gången.
+
+Template: fheroes2-pkg/title_b-i
+Type: title
+Description: Build and install ${PKGG}${VER}
+Description-cs.UTF-8: Sestavit a nainstalovat ${PKGG}${VER}
+Description-da.UTF-8: Byg og installer ${PKGG}${VER}
+Description-de.UTF-8: ${PKGG}${VER} bauen und installieren
+Description-es.UTF-8: Construir e instalar ${PKGG}${VER}
+Description-fr.UTF-8: Compiler et installer ${PKGG}${VER}
+Description-it.UTF-8: Compilare e installare ${PKGG}${VER}
+Description-ja.UTF-8: ${PKGG}${VER} のビルド及びインストール
+Description-nl.UTF-8: Bouwen en installeren van ${PKGG}${VER}
+Description-pl.UTF-8: Budowanie i instalacja ${PKGG}${VER}
+Description-pt.UTF-8: Compilar e instalar ${PKGG}${VER}
+Description-ru.UTF-8: Сборка и установка ${PKGG}${VER}
+Description-sv.UTF-8: Bygg och installera ${PKGG}${VER}
+
+Template: fheroes2-pkg/title_u
+Type: title
+Description: Upgrades available for guest package(s)
+Description-cs.UTF-8: Dostupné aktualizace hostujících balíčků
+Description-da.UTF-8: Opgraderinger tilgængelige for gæstepakker
+Description-de.UTF-8: Upgrade für Gastpaket(e) verfügbar
+Description-es.UTF-8: Actualizaciones disponibles para el/los paquete/s invitado/s
+Description-fr.UTF-8: Mises à jour disponibles pour le(s) paquet(s) invité(s)
+Description-it.UTF-8: Aggiornamenti disponibili per i pacchetti ospiti
+Description-ja.UTF-8: ゲストパッケージのアップグレードが利用できるようになっています
+Description-nl.UTF-8: Er zijn opwaarderingen beschikbaar voor gastpakketten.
+Description-pl.UTF-8: Dostępne są aktualizacje do pakietów dodatkowych.
+Description-pt.UTF-8: Actualizações disponíveis para pacote(s) convidado
+Description-ru.UTF-8: Для гостевого пакета доступны обновления
+Description-sv.UTF-8: Uppgraderingar för gästpaket(en)
+
+Template: fheroes2-pkg/upgrade
+Type: note
+Description:
+ An update to guest package(s) [${PKGG_ALL}] version ${VER} is available
+ but automatic upgrade is disabled.
+ .
+ Please remember to run "sudo dpkg-reconfigure ${PKGI}" to build and
+ install guest package(s) or consider installing the APT post-invoke hook.
+Description-cs.UTF-8:
+ Je dostupná aktualizace hostujících balíčků [${PKGG_ALL}] verze ${VER}, aleautomatické aktualizování je zakázáno.
+ .
+ Nezapomeňte prosím k sestavení a instalaci hostujících balíčků spustit příkaz "sudo dpkg-reconfigure ${PKGI}", nebo zvažte instalaci APT háčku post-invoke.
+Description-da.UTF-8:
+ En opdatering til gæstepakkerne [${PKGG_ALL}] version ${VER} er tilgængelig men automatisk opgradering er deaktiveret.
+ .
+ Husk at køre »sudo dpkg-reconfigure ${PKGI}« for at bygge og installere gæstepakker eller overvej at installere APT post-invoke-krogen.
+Description-de.UTF-8:
+ Für die Gastpakete [${PKGG_ALL}] Version ${VER} ist eine Aktualisierung verfügbar, das automatische Durchführen von Upgrades ist jedoch deaktiviert.
+ .
+ Bitte denken Sie daran, »sudo dpkg-reconfigure ${PKGI}« auszuführen, um Gastpakete zu bauen und zu installieren oder ziehen Sie die Installation des APT-»post-invoke«-Hooks in Betracht.
+Description-es.UTF-8:
+ Se encuentra disponible una actualización del/de los paquete/s invitado/s [${PKGG_ALL}] a la versión ${VER} pero las actualizaciones automáticas están desactivadas.
+ .
+ No se olvide de ejecutar «sudo dpkg-reconfigure ${PKGI}» para construir e instalar el/los paquete/s invitado/s o considere la instalación del disparador posterior a la ejecución de APT.
+Description-fr.UTF-8:
+ Une mise à jour pour le(s) paquet(s) invité(s) [${PKGG_ALL}] version ${VER} est disponible mais la mise à jour automatique est désactivée.
+ .
+ Veuillez noter qu'il vous faudra lancer « sudo dpkg-reconfigure ${PKGI} » pour compiler et installer le(s) paquet(s) invité(s) ou installer le déclencheur post-appel (« post-invoke hook ») d'APT.
+Description-it.UTF-8:
+ È disponibile un aggiornamento alla versione ${VER} per pacchetti ospiti [${PKGG_ALL}], ma l'aggiornamento automatico è disabilitato.
+ .
+ Ricordarsi di eseguire «sudo dpkg-reconfigure ${PKGI}» per compilare e installare pacchetti ospiti o prendere in considerazione l'installazione dell'hook post-invoke di APT.
+Description-ja.UTF-8:
+ ゲストパッケージ [${PKGG_ALL}] バージョン ${VER} の更新が利用できますが自動化でのアップグレードは無効化されています。
+ .
+ 忘れずに「sudo dpkg-reconfigure ${PKGI}」を実行してゲストパッケージをビルド、インストールするか、APT post-invoke フックのインストールを検討してください。
+Description-nl.UTF-8:
+ Er zijn bijwerkingen beschikbaar voor gastpakketten [${PKGG_ALL}] versie ${VER}, maar de automatische opwaardering ervan is uitgeschakeld.
+ .
+ Denk eraan om "sudo dpkg-reconfigure ${PKGI}" uit te voeren om gastpakketten te bouwen en te installeren, of overweeg om de APT-uitbreiding post-invoke te installeren.
+Description-pl.UTF-8:
+ Dostępne są aktualizacje do pakietów dodatkowych [${PKGG_ALL}] wersja ${VER}, lecz wyłączono aktualizacje automatyczną.
+ .
+ Proszę pamiętać o wykonaniu polecenia "sudo dpkg-reconfigure ${PKGI}" w celu zbudowania i instalacji pakietów dodatkowych lub rozważyć zainstalowanie skryptu poinstalacyjnego APT-a.
+Description-pt.UTF-8:
+ Está disponível uma actualização para pacote(s) convidado [${PKGG_ALL}] versão ${VER} mas a actualização automática está desactivada.
+ .
+ Por favor lembre-se de correr "sudo dpkg-reconfigure ${PKGI}" para compilar e instalar o pacote(s) convidado ou considere instalar o hook post-invoke do APT.
+Description-ru.UTF-8:
+ Доступен новый гостевой пакет [${PKGG_ALL}] версии ${VER}, но автоматическое обновление отключено.
+ .
+ Не забудьте, что для сборки и установки гостевого пакета один раз нужно выполнить «sudo dpkg-reconfigure ${PKGI}» или можно установить послеоперационный обработчик APT.
+Description-sv.UTF-8:
+ En uppdatering för gästpaket(en) [${PKGG_ALL}] version ${VER} finns tillgänglig men automatiska uppgraderingar är avaktiverade.
+ .
+ Kom ihåg att köra "sudo dpkg-reconfigure ${PKGI}" för att bygga och installera gästpaket(en) eller överväg att installera APT:s utökning för automatisk installation.
+
+Template: fheroes2-pkg/post-invoke_hook-install
+Type: boolean
+Default: true
+Description: Install APT post-invoke hook?
+ If activated, the APT post-invoke hook takes care of future automatic
+ upgrades of guest package(s) on host package upgrade. When an update
+ is available, the hook will attempt to download and build the package(s),
+ and (if "apt-get check" reports no errors) install them with "dpkg -i".
+ .
+ Alternatively, guest package(s) can be built by manual invocation of
+ "dpkg-reconfigure ${PKGI}".
+Description-da.UTF-8: Installer APT post-invoke-krogen?
+ Hvis aktiveret, så tager APT post-invoke-krogen sig af fremtidige automatiske opgraderingen af gæstepakker ved pakkeopgradering af værten. Når en opdatering er tilgængelig, vil krogen forsøge at hente og bygge pakkerne og (hvis »apt-get check« ikke rapporterer fejl) installere dem med »dpkg -i«.
+ .
+ Alternativt kan gæstepakker bygges ved manuelt at igangsætte »dpkg-reconfigure ${PKGI}«.
+Description-de.UTF-8: Den APT-»post-invoke«-Hook installieren?
+ Ist er aktiviert, kümmert sich der APT-»post-invoke«-Hook beim Upgrade von Host-Paketen automatisch auch um künftige Upgrades für die Gastpakete. Wenn eine Aktualisierung verfügbar ist, wird der Hook versuchen, die Pakete herunterzuladen, zu bauen und (falls »apt-get check« keine Fehler meldet) sie mit »dpkg -i« zu installieren.
+ .
+ Alternativ können das oder die Gastpaket(e) durch den manuellen Aufruf von »dpkg-reconfigure ${PKGI}« gebaut werden.
+Description-fr.UTF-8: Faut-il installer le déclencheur post-appel d'APT ?
+ S'il est activé, le déclencheur post-appel (« post-invoke hook ») d'APT s'occupera des mises à jour automatiques futures du(es) paquet(s) invité(s) lors de la mise à jour du paquet sur l'hôte. Lorsqu'une mise à jour est disponible, le déclencheur essaiera de télécharger puis de compiler le(s) paquet(s), et, si la commande « apt-get check » ne retourne pas d'erreurs, les installera avec « dpkg -i ».
+ .
+ Sinon, le(s) paquet(s) invité(s) peuvent être compilés en exécutant manuellement la commande « dpkg-reconfigure ${PKGI} ».
+Description-nl.UTF-8: De APT-uitbreiding post-invoke installeren?
+ Indien ze geactiveerd werd, zal in geval van een bijwerking van een pakket, de APT-uitbreiding post-invoke op deze computer toekomstige automatische opwaarderingen van gastpakketten voor zijn rekening nemen. Als een bijwerking beschikbaar is, zal de uitbreiding proberen om het pakket te downloaden en te bouwen en met behulp van het commando "dpkg -i" te installeren (op voorwaarde dat "apt-get check" geen melding maakt van fouten).
+ .
+ Een alternatieve manier is om gastpakketten manueel te bouwen door het uitvoeren van het commando "dpkg-reconfigure ${PKGI}".
+Description-pt.UTF-8: Instalar o hook post-invoke do APT?
+ Se activado, o hook post-invoke do APT cuida das actualizações automáticas futuras de pacote(s) convidado nas actualizações do pacote anfitrião. Quando está disponível uma actualização, o hook irá tentar descarregar e compilar o pacote(s), e (se "apt-get check" reportar nenhum erro) instala-o com "dpkg -i".
+ .
+ Em alternativa, os pacote(s) convidados podem ser compilados por invocação manual de "dpkg-reconfigure ${PKGI}".
+Description-ru.UTF-8: Установить послеоперационный обработчик APT (post-invoke hook)?
+ Если включён, то при обновлении основного пакета послеоперационный обработчик APT выполняет будущие обновления гостевого пакета автоматически. Если есть обновление, то обработчик попытается скачать и собрать пакет, и (если «apt-get check» выполнится без ошибок) установить его с помощью «dpkg -i».
+ .
+ Или же гостевые пакеты можно собрать вручную, запустив «dpkg-reconfigure ${PKGI}».
+Description-sv.UTF-8: Installera APT:s utökning för automatisk installation?
+ Om detta aktiveras kommer utökningen för APT att ta hand om framtida automatiska uppgraderingar av gästpaket(en) vid uppgraderingar av värden. När en uppdatering är tillgänglig kommer utökningen att försöka installera och bygga paket(en) och (om "apt-get check" inte rapporterar några fel) installera dem med "dpkg -i".
+ .
+ Alternativt kan gästpaket(en) byggas manuellt med "dpkg-reconfigure ${PKGI}".
+
+Template: fheroes2-pkg/post-invoke_hook-remove
+Type: boolean
+Default: false
+Description: Remove APT post-invoke hook?
+ If activated, the APT post-invoke hook takes care of future automatic
+ upgrades of guest package(s) on host package upgrade. When an update
+ is available, the hook will attempt to download and build the package(s),
+ and (if "apt-get check" reports no errors) install them with "dpkg -i".
+ .
+ Alternatively, guest package(s) can be built by manual invocation of
+ "dpkg-reconfigure ${PKGI}".
+Description-da.UTF-8: Fjern ATP post-invoke-krogen?
+ Hvis aktiveret, så tager APT post-invoke-krogen sig af fremtidige automatiske opgraderingen af gæstepakker ved pakkeopgradering af værten. Når en opdatering er tilgængelig, vil krogen forsøge at hente og bygge pakkerne og (hvis »apt-get check« ikke rapporterer fejl) installere dem med »dpkg -i«.
+ .
+ Alternativt kan gæstepakker bygges ved manuelt at igangsætte »dpkg-reconfigure ${PKGI}«.
+Description-de.UTF-8: APT-»post-invoke«-Hook entfernen?
+ Ist er aktiviert, kümmert sich der APT-»post-invoke«-Hook beim Upgrade von Host-Paketen automatisch auch um künftige Upgrades für die Gastpakete. Wenn eine Aktualisierung verfügbar ist, wird der Hook versuchen, die Pakete herunterzuladen, zu bauen und (falls »apt-get check« keine Fehler meldet) sie mit »dpkg -i« zu installieren.
+ .
+ Alternativ können das oder die Gastpaket(e) durch den manuellen Aufruf von »dpkg-reconfigure ${PKGI}« gebaut werden.
+Description-fr.UTF-8: Faut-il supprimer le déclencheur post-appel d'APT ?
+ S'il est activé, le déclencheur post-appel (« post-invoke hook ») d'APT s'occupera des mises à jour automatiques futures du(es) paquet(s) invité(s) lors de la mise à jour du paquet sur l'hôte. Lorsqu'une mise à jour est disponible, le déclencheur essaiera de télécharger puis de compiler le(s) paquet(s), et, si la commande « apt-get check » ne retourne pas d'erreurs, les installera avec « dpkg -i ».
+ .
+ Sinon, le(s) paquet(s) invité(s) peuvent être compilés en exécutant manuellement la commande « dpkg-reconfigure ${PKGI} ».
+Description-nl.UTF-8: De APT-uitbreiding post-invoke verwijderen?
+ Indien ze geactiveerd werd, zal in geval van een bijwerking van een pakket, de APT-uitbreiding post-invoke op deze computer toekomstige automatische opwaarderingen van gastpakketten voor zijn rekening nemen. Als een bijwerking beschikbaar is, zal de uitbreiding proberen om het pakket te downloaden en te bouwen en met behulp van het commando "dpkg -i" te installeren (op voorwaarde dat "apt-get check" geen melding maakt van fouten).
+ .
+ Een alternatieve manier is om gastpakketten manueel te bouwen door het uitvoeren van het commando "dpkg-reconfigure ${PKGI}".
+Description-pt.UTF-8: Remover o hook post-invoke do APT?
+ Se activado, o hook post-invoke do APT cuida das actualizações automáticas futuras de pacote(s) convidado nas actualizações do pacote anfitrião. Quando está disponível uma actualização, o hook irá tentar descarregar e compilar o pacote(s), e (se "apt-get check" reportar nenhum erro) instala-o com "dpkg -i".
+ .
+ Em alternativa, os pacote(s) convidados podem ser compilados por invocação manual de "dpkg-reconfigure ${PKGI}".
+Description-ru.UTF-8: Удалить послеоперационный обработчик APT?
+ Если включён, то при обновлении основного пакета послеоперационный обработчик APT выполняет будущие обновления гостевого пакета автоматически. Если есть обновление, то обработчик попытается скачать и собрать пакет, и (если «apt-get check» выполнится без ошибок) установить его с помощью «dpkg -i».
+ .
+ Или же гостевые пакеты можно собрать вручную, запустив «dpkg-reconfigure ${PKGI}».
+Description-sv.UTF-8: Ta bort APT:s utökning för automatisk installation?
+ Om detta aktiveras kommer utökningen för APT att ta hand om framtida automatiska uppgraderingar av gästpaket(en) vid uppgraderingar av värden. När en uppdatering är tillgänglig kommer utökningen att försöka installera och bygga paket(en) och (om "apt-get check" inte rapporterar några fel) installera dem med "dpkg -i".
+ .
+ Alternativt kan gästpaket(en) byggas manuellt med "dpkg-reconfigure ${PKGI}".

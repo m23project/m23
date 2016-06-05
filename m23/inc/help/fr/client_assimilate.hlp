@@ -5,6 +5,9 @@ Avec m23, vous pouvez administrer des systèmes Debian préexistants dans votre pa
 <LI><b>$I18N_ip:</b> L'adresse IP (eventuellement temporaire) du poste client.</LI>
 <!--begin v1.17--><LI><b>$I18N_UbuntuUserIfUbuntuSystem:</b> Le nom de du compte utilisateur, préexistant sur l'ordinateur à intégrer, pouvant être accédé par SSH. Ce compte devant être capable d'exécuter sur le poste client des commandes avec les privilèges superutilisateur (root) en utilisant sudo avec le même mot de pase. Cette option est uniquement nécessaire sur des systèmes Ubuntu ou lorsque la connexion avec les privilèges superutilisateur «root» est désactivée.</LI>
 <LI><b>$I18N_rootPasswordOrUbuntuUserPassword:</b> Mot de passe actuel du superutilisateur «root» sur le poste client (pour Debian) ou le mot de passe de l'utilisateur habilité à administrer le poste client (pour Ubuntu). Bien sûr, ce champs peut être laissé vide, si vous préférez une intégration manuelle.</LI><!--end v1.17--></ul>
+<!--begin v16.2--><LI><b>$I18N_clientUsesDynamicIP</b>: Crochez ici si la machine à intégrer re&ccedil;oit ses paramètres du réseau par DHCP.</LI>
+<!--end v16.2--></ul>
+
 Ensuite, cliquez sur <i>«$I18N_assimilate»</i>. L'intégration se déroule en tâche de fond.
 
 <u>Notez</u>
@@ -15,4 +18,4 @@ Si aucun démon SSH n'est actif sur le poste client, vous avez également la possi
 <code>cd /tmp; wget http://&lt;serverIP&gt;/work.php -O work.php; sh work.php</code>
 
 <u>Intégrer des systèmes Ubuntu</u>
-En général, les systèmes Ubuntu se laissent intégrer uniquement manuellement, après l'installation standard, le compte «root» est désactivé et aucun démon SSH n'est actif. Vous devez donc lancer une console en tant que superutilisateur «root» ou équivalent (sudo) sur l'ordinateur Ubuntu et commencer l'intégration manuellement.
+En général, les systèmes Ubuntu se laissent intégrer uniquement manuellement, après l'installation standard, <!--begin v1.17le compte «root» est désactivé et end v1.17-->aucun démon SSH n'est actif. Vous devez donc lancer une console en tant que superutilisateur «root» ou équivalent (sudo) sur l'ordinateur Ubuntu et commencer l'intégration manuellement.

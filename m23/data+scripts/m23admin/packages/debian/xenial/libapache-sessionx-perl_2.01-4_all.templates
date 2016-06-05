@@ -1,0 +1,1212 @@
+Template: libapache-sessionx-perl/priv_keys
+Type: string
+Description: For internal use only
+ Keys used to find configured stores.
+
+Template: libapache-sessionx-perl/action
+Type: select
+Choices: Finished, Add New, ${stores}
+Choices-cs.UTF-8: Hotovo, Přidat novou, ${stores}
+Choices-da.UTF-8: Færdig, Tilføj ny, ${stores}
+Choices-de.UTF-8: Beendet, Neue hinzufügen, ${stores}
+Choices-es.UTF-8: Terminado, Añadir nuevo, ${stores}
+Choices-eu.UTF-8: Amaituta, Gehitu berria, ${stores}
+Choices-fr.UTF-8: Terminer, Ajouter nouveau, ${stores}
+Choices-it.UTF-8: Finished (terminato), Add New (aggiungere nuovo), ${stores}
+Choices-ja.UTF-8: 完了, 新規追加, ${stores}
+Choices-nl.UTF-8: Klaar, Nieuwe toevoegen, ${stores}
+Choices-pt.UTF-8: Terminado, Adicionar Novo, ${stores}
+Choices-ru.UTF-8: Закончено, Добавить новый, ${stores}
+Choices-sv.UTF-8: Färdig, Lägg till ny, ${stores}
+Choices-vi.UTF-8: Hoàn tất, Thêm mới, ${stores}
+Choices-zh_TW.UTF-8: 完成, 新增, ${stores}
+Default: Finished
+Description: Action:
+ Choose "Add New" to add a new session storage method, or choose an already
+ configured store to modify or delete it.
+ .
+ Choose "Finished" when done.
+Description-cs.UTF-8: Akce:
+ Pro přidání nové metody ukládání relace zvolte "Přidat novou", nebo zvolte již nastavené úložiště pro jeho úpravu či mazání.
+ .
+ Zvolte "Hotovo" pro ukončení.
+Description-da.UTF-8: Handling:
+ Vælg »Tilføj ny« for at tilføje en ny sessionslagermetode eller vælg et allerede konfigureret lager at ændre eller slet det.
+ .
+ Vælg »Færdig« når udført.
+Description-de.UTF-8: Aktion:
+ Wählen Sie »Neue hinzufügen« um eine neue Sitzungsspeichermethode hinzuzufügen oder wählen Sie einen bereits konfigurierten Speicherplatz aus, um diesen anzupassen oder zu löschen.
+ .
+ Wählen Sie »Beendet« aus, wenn Sie fertig sind.
+Description-es.UTF-8: Acción:
+ Seleccione «Añadir nuevo» para añadir un nuevo método de almacenamiento de sesión, o seleccione un almacen ya configurado modificarlo o eliminarlo.
+ .
+ Seleccione «Terminado» cuando finalice.
+Description-eu.UTF-8: Ekintza:
+ "Gehitu berria" hautatu saio biltegiratze metodo berri bat gehitzeko, edo hautatu konfiguratuetariko biltegietako bat berau editatu edo ezabatzeko.
+ .
+ Hautatu "Amaituta" eginda dagoenean.
+Description-fr.UTF-8: Action :
+ Choisissez « Ajouter Nouveau » pour ajouter une nouvelle méthode d'enregistrement, ou choisissez un dépôt déjà configuré pour le modifier ou l'effacer.
+ .
+ Choisir « Terminer » lorsque vous avez terminé.
+Description-it.UTF-8: Azione:
+ Scegliere «Add New» per aggiungere un nuovo metodo di memorizzazione della sessione, oppure scegliere una memorizzazione già configurata per modificarla o cancellarla.
+ .
+ Scegliere «Finished» una volta terminato.
+Description-ja.UTF-8: 動作:
+ 「新規追加」を選んで新しいセッション保存方法を追加するか、既に設定したストアの変更あるいは削除を選んでください。
+ .
+ 終了したら「完了」を選んでください。
+Description-nl.UTF-8: Actie:
+ Kies 'Nieuwe Toevoegen' om een nieuwe sessie-opslagmethode toe te voegen, of kies een reeds ingestelde opslag om deze te wijzigen of te verwijderen.
+ .
+ Kies 'Klaar' als u klaar bent.
+Description-pt.UTF-8: Acção:
+ Escolha "Adicionar Novo" para adicionar um novo método de armazenamento uma sessão, ou escolher um repositório já configurado para modificar ou apagar.
+ .
+ Escolha "Terminado" quando acabar.
+Description-ru.UTF-8: Действие:
+ Выберите "Добавить новый" для добавления нового метода хранения сеансов, или выберите уже настроенное хранилище для его изменения или удаления.
+ .
+ После завершения работы выберите "Закончено".
+Description-sv.UTF-8: Åtgärd:
+ Välj "Lägg till ny" för att lägga till en ny metod för att lagra sessioner eller välj en redan konfigurerad lagring att modifiera eller ta bort.
+ .
+ Välj "Färdig" när du är klar.
+Description-vi.UTF-8: Hành động:
+ Hãy chọn « Thêm mới » để thêm một phương pháp lưu trữ phiên chạy mới, hoặc chọn một kho lưu đã cấu hình để sửa đổi hay xoá nó.
+ .
+ Hãy chọn « Hoàn tất » một khi làm xong.
+Description-zh_TW.UTF-8: 動作：
+ 選擇 "新增" 增加新的儲存方法，或是選擇已經設定好的儲存方法來修改或刪除。
+ .
+ 當設定完成，請選擇 "完成"。
+
+Template: libapache-sessionx-perl/store_action
+Type: select
+Choices: Modify, Delete
+Choices-cs.UTF-8: Upravit, Smazat
+Choices-da.UTF-8: Ændr, Slet
+Choices-de.UTF-8: Anpassen, Löschen
+Choices-es.UTF-8: Modificar, Eliminar
+Choices-eu.UTF-8: Aldatu, Ezabatu
+Choices-fr.UTF-8: Modifier, Effacer
+Choices-it.UTF-8: Modify (modificare), Delete (cancellare)
+Choices-ja.UTF-8: 修正, 削除
+Choices-nl.UTF-8: Aanpassen, Verwijderen
+Choices-pt.UTF-8: Modificar, Apagar
+Choices-ru.UTF-8: Изменить, Удалить
+Choices-sv.UTF-8: Modifiera, Ta bort
+Choices-vi.UTF-8: Sửa, Xóa
+Choices-zh_TW.UTF-8: 修改, 刪除
+Default: Modify
+Description: Action to perform on ${store}:
+Description-cs.UTF-8: Kterou akci vykonat na ${store}:
+Description-da.UTF-8: Handling at udføre på ${store}:
+Description-de.UTF-8: Aktion, die mit ${store} durchgeführt werden soll:
+Description-es.UTF-8: Acción para llevar a cabo en ${store}:
+Description-eu.UTF-8: ${store}-en burutzeko ekintza:
+Description-fr.UTF-8: Action à exécuter sur ${store} :
+Description-it.UTF-8: Azione da eseguire su ${store}:
+Description-ja.UTF-8: ${store} で実行する動作:
+Description-nl.UTF-8: Actie die op ${store} uitgevoerd moet worden:
+Description-pt.UTF-8: Acção a realizar em ${store}:
+Description-ru.UTF-8: Что сделать со ${store}:
+Description-sv.UTF-8: Åtgärd att göra på ${store}:
+Description-vi.UTF-8: Hành động cần thực hiện với ${store}:
+Description-zh_TW.UTF-8: 對 ${store} 進行操作：
+
+Template: libapache-sessionx-perl/store_type
+Type: select
+Choices: File, FileFile, DB_File, Mysql, MysqlMysql, Oracle, Sybase, Postgres
+Description: Session storage method:
+ Please select the storage method you wish to use:
+  File:       File-based, using semaphores for locking.
+  FileFile:   File-based, using lockfiles.
+  DB_File:    DBM file storage, using lockfiles.
+  Mysql:      MySQL storage, using semaphores for locking.
+  MysqlMysql: MySQL storage, using MySQL for locking.
+  Oracle:     Oracle storage and locking.
+  Sybase:     Sybase storage and locking.
+  Postgres:   PostgreSQL storage and locking.
+ .
+ The file-based methods are the simplest to configure, but don't scale to
+ the needs of a high-volume site.
+ .
+ Semaphore locking is faster than file-based locking, but cannot be shared
+ between multiple hosts; in such a situation, you probably should be using
+ one of the database backends anyway.
+Description-cs.UTF-8: Metoda uložení relace:
+ Zvolte metodu uložení dat:
+  File:       Založena na souborech, pro uzamčení používá ukazatele.
+  FileFile:   Založena na souborech, používá soubory se zámky.
+  DB_File:    Uložení v souborech DBM, používá soubory se zámky.
+  Mysql:      Databáze MySQL, pro uzamčení používá semafory.
+  MysqlMysql: Databáze MySQL, pro uzamčení používá MySQL.
+  Oracle:     Databáze Oracle s uzamčením.
+  Sybase:     Databáze Sybase s uzamčením.
+  Postgres:   Databáze PostgreSQL s uzamčením.
+ .
+ Metody založené na souborech jsou velmi jednoduché pro nastavení, ale nepokryjí potřeby rozsáhlých sítí.
+ .
+ Uzamčení pomocí semaforů je rychlejší než zamykání založené na souborech, ale nemůže být sdíleno mezi více počítači; v takových situacích je lepší použít přímo některé rozhraní databáze.
+Description-da.UTF-8: Sessionslagermetode:
+ Vælg venligst lagermetode du ønsker at bruge:
+  File:       Filbaseret, der bruger semaforer for låsning.
+  FileFile:   Filbaseret, der bruger låsefiler.
+  DB_File:    DBM-fillager, der bruger låsefiler.
+  Mysql:      MySQL-lager, der bruger semaforer for låsning.
+  MysqlMysql: MySQL-lager, der bruger MySQL for låsning.
+  Oracle:     Oraclelager og låsning.
+  Sybase:     Sybaselager og låsning.
+  Postgres:   PostgreSQL-lager og låsning.
+ .
+ De filbaserede metoder er de nemmeste at konfigurere, men skalerer ikke til behovet for sider med stor volume.
+ .
+ Semaforlåsning er hurtigere end filbaseret låsning, men kan ikke deles mellem flere værter; i sådan en situation skal dog du sikkert alligevel bruge en af databasemotorerne.
+Description-de.UTF-8: Sitzungsspeichermethode:
+ Bitte wählen Sie die Speichermethode aus, die Sie benutzen möchten:
+  File:       Dateibasiert, verwendet Semaphoren zum Sperren.
+  FileFile:   Dateibasiert, verwendet Sperrdateien.
+  DB_File:    DBM-Dateispeicherung, verwendet Sperrdateien.
+  Mysql:      MySQL-Speicherung, verwendet Semaphoren zum Sperren.
+  MysqlMysql: MySQL-Speicherung, verwendet MySQL zum Sperren.
+  Oracle:     Oracle-Speicherung und locken.
+  Sybase:     Sybase-Speicherung und locken.
+  Postgres:   PostgreSQL-Speicherung und locken.
+ .
+ Die dateibasierten Methoden sind am einfachsten zu konfigurieren, aber skalieren nicht bis zu den Anforderungen von Sites mit hohem Datenvolumen.
+ .
+ Semaphore-Sperren ist schneller als dateibasiertes Sperren, kann aber nicht von mehreren Hosts gemeinsam genutzt werden; in diesen Situationen sollten Sie aber sowieso die Verwendung eines der Datenbank-Backends in Betracht ziehen.
+Description-es.UTF-8: Método de almacenamiento de sesión:
+ Por favor, seleccione el método de almacenamiento de sesión que desea usar:
+  File:       Basado en archivos, usa semáforos para el bloqueo.
+  FileFile:   Basado en archivos, usa archivos de bloqueo.
+  DB_File:    Almacenamiento de archivos DBM, usa archivos de bloqueo.
+  Mysql:      Almacenamiento MySQL, usa semáforos para el bloqueo.
+  MysqlMysql: Almacenamiento MySQL, usa MySQL para el bloqueo.
+  Oracle:     Almacenamiento y bloqueo de Oracle.
+  Sybase:     Almacenamiento y bloqueo de Sybase.
+  Postgres:   Almacenamiento y bloqueo de PostgreSQL.
+ .
+ El método basado en archivos es el más fácil de configurar, pero no escala para las necesidades de un sitio de gran volumen.
+ .
+ El bloqueo por semáforos es más rápido que el bloqueo basado en archivos, pero no se puede compartir entre varios equipos; en esta situación, probablemente deba usar uno de los sistemas de la base de datos.
+Description-eu.UTF-8: Saio biltegiratze metodoa:
+ Mesedez hautatu erabili nahi duzun biltegiratze metodoa:
+  Fitxategia: Fitxategian-oinarritakoa, semaforoak erabili blokeoentzat.
+  FitxFitx:   Fitxategian-oinarritakoa, blokeo fitxategiak erabiliaz.
+  DB_Fitx:    DBM fitxategi biltegiratzea, blokeo fitxategiak erabiliaz.
+  Mysql:      MySQL biltegiratzea, semaforoak erabili blokeoentzat.
+  MysqlMysql: MySQL biltegiratzea, MySQL erabili blokeoentzat.
+  Oracle:     Oracle biltegiratze eta blokeoak.
+  Sybase:     Sybase biltegiratze eta blokeoak.
+  Postgres:   PostgreSQL biltegiratze eta blokeoak.
+ .
+ Fitxategietan-oinarritutako metodoak dira konfiguratzeko errazenak, baina ez dituzte bolumen handiko guneen beharrak asetzen.
+ .
+ Semaforo bidezko blokeoak azkarragoak dira fitxategietan-oinarritutakoak baino, baina ezin dira ostalari ezberdinen artean partekatu, kasu horietan seguruenik datu-baseetan oinarritutako bat erabili beharko zenuke.
+Description-fr.UTF-8: Méthode d'enregistrement de la session :
+ Veuillez choisir la méthode d'enregistrement désirée :
+  File :       Basée sur un fichier, utilisation de fichiers de sémaphores
+               pour le verrouillage ;
+  FileFile :   Basée sur un fichier, utilisation de fichiers de
+               verrouillage ;
+  File_DB :    Enregistrement par fichier DBM, utilisation de
+               fichiers de verrouillage ;
+  Mysql :      Enregistrement Mysql, utilisation de sémaphores
+               pour le verrouillage ;
+  MysqlMysql : Enregistrement Mysql, utilisation de Mysql pour le verrouillage ;
+  Oracle :     Enregistrement et verrouillage Oracle ;
+  Sybase :     Enregistrement et verrouillage Sybase ;
+  Postgres :   Enregistrement et verrouillage Postgres.
+ .
+ Les méthodes basées sur des fichiers sont les plus simples à configurer mais ne s'étendent pas aux besoins de site ayant de gros volumes.
+ .
+ Le verrouillage par sémaphores est plus rapide que le verrouillage basé sur les fichiers, mais il ne peut être partagé entre plusieurs hôtes ; dans de telles situations, vous devriez probablement utiliser l'une des facilités (« backends ») offertes par la base de données.
+Description-it.UTF-8: Metodo di memorizzazione della sessione:
+ Scegliere il metodo di memorizzazione desiderato:
+  File:       basato su file, con uso dei semafori per il blocco.
+  FileFile:   basato su file, con uso dei file di blocco.
+  DB_File:    memorizzazione su file DBM, con uso dei file di blocco.
+  Mysql:      memorizzazione in MySQL, con uso dei semafori per il blocco.
+  MysqlMysql: memorizzazione in MySQL, con uso di MySQL per il blocco.
+  Oracle:     memorizzazione e blocco tramite Oracle.
+  Sybase:     memorizzazione e blocco tramite Sybase.
+  Postgres:   memorizzazione e blocco tramite PostgreSQL.
+ .
+ I metodi basati sui file sono i più semplici da configurare, ma non si adattano ai bisogni di un sito con alti volumi.
+ .
+ I blocchi mediante semaforo sono più veloci di quelli basati sui file, ma non possono essere condivisi fra più host; in tale situazione probabilmente sarà più conveniente optare per un blocco basato su database.
+Description-ja.UTF-8: セッションの保存方法:
+ 利用したい保存方法を選んでください:
+  File:       ファイルベース、ロックにセマフォを使う
+  FileFile:   ファイルベース、ロックファイルを使う
+  DB_File:    DBM ファイルストレージ、ロックファイルを使う
+  Mysql:      MySQL ストレージ、ロックにセマフォを使う
+  MysqlMysql: MySQL ストレージ、ロックに MySQL を使う
+  Oracle:     Oracle ストレージとロック
+  Sybase:     Sybase ストレージとロック
+  Postgres:   PostgreSQL ストレージとロック
+ .
+ ファイルベースの方法は設定が一番単純ですが、高負荷サイトで必要な規模までスケールしません。
+ .
+ セマフォでのロックはファイルベースのロックよりも速いですが、複数ホスト間での共有が出来ません: その場合は、おそらくバックエンドのデータベースの一つを使わねばならないでしょう。
+Description-nl.UTF-8: Sessie-opslagmethode:
+ Welke opslagmethode wilt u gebruiken?
+  File:       Bestandsgebaseerd, gebruikt semaforen voor vergrendeling.
+  FileFile:   Bestandsgebaseerd, gebruikt vergrendelingsbestanden.
+  DB_File:    DBM-opslag, gebruikt vergrendelingsbestanden.
+  Mysql:      MySQL-opslag, gebruikt semaforen voor vergrendeling.
+  MysqlMysql: MySQL-opslag, gebruikt MySQL voor vergrendeling.
+  Oracle:     Oracle-opslag en vergrendeling.
+  Sybase:     Sybase-opslag en vergrendeling.
+  Postgres:   PostgreSQL-opslag en vergrendeling
+ .
+ De bestandsgebaseerde methodes zijn het makkelijkst in te stellen, maar schalen niet voor sites met hoge volumes.
+ .
+ Semafoorvergrendeling is sneller dan vergrendelingsbestanden maar kan niet gedeeld worden tussen verschillende computers; maar in die situatie kunt u toch beter één van de database-backends gebruiken.
+Description-pt.UTF-8: Método de armazenamento da sessão:
+ Por favor escolha o método de armazenamento que deseja usar:
+  File: Baseado em ficheiros, usando semáforos para locking.
+  FileFile: Baseado em ficheiros, usando ficheiros de lock.
+  DB_File:  Armazenamento de ficheiros DBM, usando ficheiros de lock.
+  Mysql: Armazenamento MySQL, usando semáforos para locking.
+  MysqlMysql: Armazenamento MySQL, usando MySQL para locking.
+  Oracle: Armazenamento e locking do oracle.
+  Sybase: Armazenamento e locking do Sybase.
+  Postgres: Armazenamento e locking do PostgreSQL.
+ .
+ Os métodos baseados em ficheiros são os mais simples de configurar, mas não escalam bem às necessidades de um sítio com muito tráfego.
+ .
+ Locking por semáforos é mais rápido que locking baseado em ficheiros, mas não pode ser partilhado por várias máquinas; em tal situação, provavelmente devia estar a usar um dos backends com base de dados.
+Description-ru.UTF-8: Метод хранения сеансов:
+ Выберите метод хранения, который хотите использовать:
+  File:       В файле и с семафорами для блокировки.
+  FileFile:   В файле и с файлами блокировки.
+  DB_File:    В файле формата DBM и файлами блокировки.
+  Mysql:      В БД MySQL и с семафорами для блокировки.
+  MysqlMysql: В БД и блокировками MySQL.
+  Oracle:     В БД и блокировками Oracle.
+  Sybase:     В БД и блокировками Sybase.
+  Postgres:   В БД и блокировками PostgreSQL.
+ .
+ Хранение в файле просто настраивать, но этот метод не масштабируется для работы на сильно нагруженных сайтах.
+ .
+ Семафорная блокировка работает быстрее чем файловая, но не может распределяться между несколькими машинами; в этой ситуации лучше использовать одну из СУБД.
+Description-sv.UTF-8: Metod för lagring av session:
+ Välj den metod för lagring du önskar använda:
+  File:       Filbaserad, använder semaforer för låsning.
+  FileFile:   Filbaserad, använder låsningsfiler.
+  DB_File:    DBM-fillagring, använder låsningsfiler.
+  Mysql:      MySQL-lagring, använder semaforer för låsning.
+  MysqlMysql: MySQL-lagring, använder MySQL för låsning.
+  Oracle:     Oracle-lagring och låsning.
+  Sybase:     Sybase-lagring och låsning.
+  Postgres:   PostgreSQL-lagring och låsning.
+ .
+ De filbaserade metoderna är enklast att konfigurera men skalar inte så bra för platser med hög belastning.
+ .
+ Låsning med semaforer är snabbare än filbaserad låsning men kan inte delas mellan flera värdar, i en sådan situation bör du kanske använda en av databasens bakdelar ändå.
+Description-vi.UTF-8: Phương pháp lưu trữ phiên chạy:
+ Hãy chọn phương pháp lưu trữ bạn muốn sử dụng:
+  • File:       	Dựa vào tập tin, dùng cờ hiệu để khóa.
+  • FileFile:   	Dựa vào tập tin, dùng tập tin khóa.
+  • DB_File:   	Lưu trữ cơ sở dữ liệu quản lý, dùng tập tin khóa.
+  • Mysql:      	Lưu trữ MySQL, dùng cờ hiệu để khóa.
+  • MysqlMysql: Dự trữ và khóa bằng MySQL.
+  • Oracle:     	Dự trữ và khóa bằng Oracle.
+  • Sybase:     	Dự trữ và khóa bằng Sybase.
+  • Postgres:   	Dự trữ và khóa bằng PostgreSQL.
+ .
+ Những phương pháp dựa vào tập tin là dễ cấu hình nhất, nhưng không mở rộng được để quản lý nơi Mạng rất bận.
+ .
+ Việc khóa bằng cờ hiệu (semaphore locking) chạy nhanh hơn việc khóa dựa vào tập tin, nhưng mà không thể được dùng chung bởi nhiều máy khác nhau; trong trường hợp như vậy, khuyên bạn sử dụng hậu phương kiểu co sở dữ liệu.
+Description-zh_TW.UTF-8: Session 儲存方法：
+ 請選擇您想要使用的儲存方法：
+  File:       基於檔案的，使用 semaphores 做鎖定。
+  FileFile:   基於檔案的，使用檔案鎖。
+  DB_File:    基於 DBM 的，使用檔案鎖。
+  Mysql：     使用 MySQL，使用 semaphores 做鎖定。
+  MysqlMysql: 使用 MySQL，使用 MySQL 做鎖定。
+  Orcale：    使用 Orcale 儲存與鎖定。
+  Sybase：    使用 Sybase 儲存與鎖定。
+  Postgres：  使用 PostgreSQL 儲存與鎖定。
+ .
+ 以檔案為基礎的方式最容易設定，但是無法使用在高流量的網站上。
+ .
+ Semaphore 鎖比檔案鎖快，但是無法在多個 host 間分享；在這種情況下，你應該要 使用資料庫為基礎的後端。
+
+Template: libapache-sessionx-perl/store_name
+Type: string
+Description: Store name:
+ Please choose the name you will use when referring to this storage method.
+Description-cs.UTF-8: Jméno úložiště:
+ Zvolte prosím jméno, které se použije pro označení této úložné metody.
+Description-da.UTF-8: Lagernavn:
+ Vælg venligst navnet du ønsker at bruge, når du refererer til denne lagermetode.
+Description-de.UTF-8: Name der Speichermethode:
+ Bitte wählen Sie den Namen aus, den Sie beim Bezug auf diese Speichermethode verwenden werden.
+Description-es.UTF-8: Nombre de almacenamiento:
+ Por favor, elija el nombre que usará cuando use este método de almacenamiento.
+Description-eu.UTF-8: Biltegi izena:
+ Mesedez hautatu biltegiratze metodo honi erreferentzia egiteko erabili nahi duzun izena.
+Description-fr.UTF-8: Nom du dépôt :
+ Veuillez indiquer le nom que vous utiliserez lorsque vous vous référerez à cette méthode d'enregistrement.
+Description-it.UTF-8: Nome della memorizzazione:
+ Scegliere il nome che si intende usare per riferirsi a questo metodo di memorizzazione.
+Description-ja.UTF-8: 保存名:
+ この保存方法を利用する際に使う名前を選んでください。
+Description-nl.UTF-8: Opslag-naam:
+ Wat is de naam die u wilt gebruiken om naar deze opslagmethode te verwijzen?
+Description-pt.UTF-8: Nome do armazém:
+ Por favor escolha o nome que irá usar quando se referenciar a este método de armazenamento.
+Description-ru.UTF-8: Название для хранилища:
+ Введите название, которое вы будете использовать для указания на этот метод хранения.
+Description-sv.UTF-8: Lagringsnamn:
+ Ange namnet du kommer använda när du refererar till denna lagringsmetod.
+Description-vi.UTF-8: Tên kho lưu :
+ Hãy chọn tên bạn sẽ sử dụng khi nói đến phương pháp lưu trữ này.
+Description-zh_TW.UTF-8: 命名儲存空間：
+ 請替您要使用的儲存方法命名。
+
+Template: libapache-sessionx-perl/store_file_directory
+Type: string
+Description: File storage directory:
+ Please choose the directory in which to store session data. Each
+ session will be a new file in this directory.
+Description-cs.UTF-8: Adresář úložiště souborů:
+ Zvolte prosím adresář, do kterého se mají uložit data relace. Každá relace bude novým souborem v tomto adresáři.
+Description-da.UTF-8: Mappe for fillager:
+ Vælg venligst mappen hvori der skal gemmes sessionsdata. Hver session vil være en ny fil i denne mappe.
+Description-de.UTF-8: Datei-Speicherverzeichnis:
+ Bitte wählen Sie das Verzeichnis aus, in dem Sitzungsdaten gespeichert werden. Jede Sitzung wird eine neue Datei in diesem Verzeichnis.
+Description-es.UTF-8: Directorio de almacenamiento:
+ Por favor, elija el diccionario en el que va a almacenar los datos de la sesión. Cada sesión se incluirá en un nuevo archivo en este directorio.
+Description-eu.UTF-8: Fitxategi biltegiratze direktorioa:
+ Mesedez hautatu saio datuak biltegiratzeko direktorioa. Saio bakoitzak fitxategi berri bat edukiko direktorio horretan.
+Description-fr.UTF-8: Répertoire des enregistrements de fichier :
+ Veuillez indiquer le répertoire d'enregistrement des données de la session. Chaque session sera représentée par un nouveau fichier dans ce répertoire.
+Description-it.UTF-8: Directory di memorizzazione dei file:
+ Scegliere la directory nella quale saranno memorizzati i dati della sessione. Ogni sessione sarà un nuovo file in questa directory.
+Description-ja.UTF-8: ファイル保存ディレクトリ:
+ セッションデータが保存されるディレクトリを指定してください。各セッションは、このディレクトリ内の新規ファイルになります。
+Description-nl.UTF-8: Map voor bestandopslag:
+ In welke map wilt u de sessiedata opslaan? Voor elke sessie wordt een nieuw bestand in deze map aangemaakt.
+Description-pt.UTF-8: Directório para armazém de ficheiros:
+ Por favor escolha o directório onde guardar dados da sessão. Cada sessão será um ficheiro novo nesse directório.
+Description-ru.UTF-8: Каталог файлового хранилища:
+ Укажите каталог, в котором будут храниться данные сеансов. Каждый сеанс будет записываться в новый файл в этом каталоге.
+Description-sv.UTF-8: Katalog för lagring av filer:
+ Katalog i vilken sessionsdata ska lagras. Varje session kommer att vara en ny fil i denna katalog.
+Description-vi.UTF-8: Thư mục lưu trữ tập tin:
+ Hãy chọn thư mục sẽ chứa các dữ liệu phiên chạy. Mỗi phiên chạy sẽ tạo một tập tin mới trong thư mục này.
+Description-zh_TW.UTF-8: 檔案儲存目錄：
+ 請選擇您要用來儲存 session 資料的目錄。每一個 session 會是一個新檔案。
+
+Template: libapache-sessionx-perl/store_file_lockdirectory
+Type: string
+Description: Lockfile storage directory:
+ Please choose the directory in which to store session locks. Each
+ lock is a new file in this directory.
+ .
+ The filenames are chosen such that they will not conflict with session
+ data, so you may repeat a file storage directory here.
+Description-cs.UTF-8: Adresář úložiště zámků souborů:
+ Zvolte prosím adresář, ve kterém se mají uložit zámky relace. Každý zámek bude uložen v novém souboru tohoto adresáře.
+ .
+ Jména souborů jsou volena tak, aby nedocházelo ke konfliktům s daty relací, takže můžete zvolit stejný adresář jako ten, kde ukládáte soubory.
+Description-da.UTF-8: Lagermappe for låsefil:
+ Vælg venligst mappen hvori sessionslås skal gemmes. Hver lås er en ny fil i denne mappe.
+ .
+ Filnavnene vælges således at de ikke vil være i konflikt med sessionsdata, så du kan gentage en fillagermappe her.
+Description-de.UTF-8: Sperrdatei-Speicherverzeichnis:
+ Bitte wählen Sie das Verzeichnis aus, in dem Sitzungssperren gespeichert werden. Jede Sperre wird eine neue Datei in diesem Verzeichnis.
+ .
+ Die Dateinamen werden so ausgewählt, dass Sie nicht mit Sitzungsdaten in Konflikt stehen, daher können Sie hier auch das Datei-Speicherverzeichnis erneut angeben.
+Description-es.UTF-8: Directorio del archivo de bloqueo del almacenamiento:
+ Por favor, elija el directorio en el que se van a almacenar los archivos de bloqueo de sesión. Cada archivo de bloqueo es un nuevo archivo en este directorio.
+ .
+ Los nombres de los archivos se eligen para que no creen conflicto con los datos de sesión, por lo que aquí puede repetir un directorio de almacenamiento de archivos.
+Description-eu.UTF-8: Blokeo-fitxategi biltegiratze direktorioa:
+ Mesedez hautatu saio blokeoak biltegiratzeko direktorioa. Blokeo bakoitzak fitxategi berri bat edukiko direktorio horretan.
+ .
+ Fitxategi-izenak saio datuarekin ez elkar jotzeko moduan hautatzen dira, beraz hemen biltegiratze direktorio berdina erabili dezakezu.
+Description-fr.UTF-8: Répertoire d'enregistrement des fichiers de verrouillage :
+ Veuillez choisir le répertoire de stockage des verrous de la session. Chaque verrou est représenté par un nouveau fichier dans ce répertoire.
+ .
+ Les noms des fichiers sont choisis de telle sorte qu'ils n'entrent pas en conflit avec les données de la session, ainsi vous pourrez réutiliser un répertoire de fichier de verrouillage.
+Description-it.UTF-8: Directory del file di blocco della memorizzazione:
+ Scegliere la directory nella quale saranno memorizzati i blocchi della sessione. Ogni blocco sarà un nuovo file in questa directory.
+ .
+ I nomi dei file sono scelti in modo da non entrare in conflitto con i dati della sessione, per cui qui è possibile ripetere una directory di memorizzazione dei file.
+Description-ja.UTF-8: ロックファイル保存ディレクトリ:
+ セッションのロックが保存されるディレクトリを指定してください。各ロックは、このディレクトリ内の新規ファイルになります。
+ .
+ この場合に選択されたファイル名はセッションデータとは衝突しないので、ファイル保存ディレクトリを繰り返し入力しても構いません。
+Description-nl.UTF-8: Map voor opslag van vergrendelingsbestanden:
+ In welke map wilt u de sessie-vergrendelingen opslaan? Elke vergrendeling maakt een nieuw bestand aan in deze map.
+ .
+ De bestandsnamen zijn zo gekozen dat ze geen conflict opleveren met uw sessie-data, u kunt hier dus dezelfde map gebruiken.
+Description-pt.UTF-8: Directório para guardar ficheiros de lock:
+ Por favor escolha o directório onde guardar locks de sessões. Cada lock será um ficheiro novo neste directório.
+ .
+ Os nomes dos ficheiros são escolhidos para que não entrem em conflito com os dados da sessão, pelo que pode repetir o directório de armazenamento de ficheiros aqui.
+Description-ru.UTF-8: Каталог для файлов блокировок:
+ Укажите каталог, в котором будут храниться блокировки сеансов. Каждая блокировка будет записываться в новый файл в этом каталоге.
+ .
+ Имена файлов выбраны такими, чтобы не было конфликта с данными сеансов, поэтому вы можете указать тот же каталог что и для хранения файлов.
+Description-sv.UTF-8: Katalog för lagring av låsningsfiler:
+ Katalog där lagring av sessionslås sker. Varje lås är en ny fil i denna katalog.
+ .
+ Filnamnen väljs så att de inte hamnar i konflikt med sessionsdata, så du kan upprepa en fillagringskatalog här.
+Description-vi.UTF-8: Thư mục lưu trữ tập tin khoá:
+ Hãy chọn thư mục sẽ chứa các sự khoá phiên chạy. Mỗi sự khoá tạo một tập tin mới trong thư mục này.
+ .
+ Các tên tập tin được chọn để tránh xung đột với dữ liệu phiên chạy, vì vậy bạn có khả năng lặp lại một thư mục lưu trữ tập tin ở đây.
+Description-zh_TW.UTF-8: 檔案鎖儲存目錄：
+ 請選擇您要用來儲存檔案鎖的目錄。每一個檔案鎖會是一個新檔案。
+ .
+ 檔案名稱不會和已有的 session 資料衝突，所以您可以重複利用同一個目錄。
+
+Template: libapache-sessionx-perl/store_dbfile_filename
+Type: string
+Description: Database file:
+ Please enter the DBM file used to store sessions.
+Description-cs.UTF-8: Databázový soubor:
+ Zadejte prosím soubor DBM používaný pro uložení relací.
+Description-da.UTF-8: Databasefil:
+ Indtast venligst DBM-filen brugt til at gemme sessioner.
+Description-de.UTF-8: Datenbankdatei
+ Bitte geben Sie die DBM-Datei ein, die zum Speichern der Sitzungen verwendet wird.
+Description-es.UTF-8: Archivo de la base de datos:
+ Por favor, introduzca el nombre del archivo DBM usado en las sesiones de almacenamiento.
+Description-eu.UTF-8: Datu-base fitxategia:
+ Mesedez hautatu saioak biltegiratzeko erabiliko den DBM fitxategia.
+Description-fr.UTF-8: Fichier de base de données :
+ Veuillez indquer le fichier DBM qui sera utilisé pour enregistrer les sessions :
+Description-it.UTF-8: File del database:
+ Inserire il nome del file DBM che sarà utilizzato per memorizzare le sessioni.
+Description-ja.UTF-8: データベースファイル:
+ セッションを保存するのに使う DBM ファイルを入力してください。
+Description-nl.UTF-8: Databasebestand:
+ Welk DBM-bestand wordt gebruikt om uw sessies op te slaan?
+Description-pt.UTF-8: Ficheiro com a base de dados:
+ Por favor introduza o ficheiro DBM a usar para guardar sessões.
+Description-ru.UTF-8: Файл базы данных:
+ Введите имя файла DBM, используемого для хранения сеансов.
+Description-sv.UTF-8: Databasfil:
+ DBM-fil för lagring av sessioner.
+Description-vi.UTF-8: Tập tin co sở dữ liệu :
+ Hãy nhập tên tập tin co sở dữ liệu được dùng để lưu trữ phiên chạy.
+Description-zh_TW.UTF-8: 資料庫檔案：
+ 請輸入要用來儲存 session 資料的 DBM 檔案。
+
+Template: libapache-sessionx-perl/store_mysql_datasource
+Type: string
+Default: dbi:mysql:sessions
+Description: MySQL data source:
+ Please choose the MySQL data source used for storing session data, in
+ the form of a Perl DBI DSN (see the DBI manpage).
+ .
+ The general form is "dbi:mysql:<database>". See the DBD::mysql manpage for
+ more details.
+Description-cs.UTF-8: Zdroj dat MySQL:
+ Zvolte prosím zdroj dat PostgreSQL použitý pro uložení dat relace a to ve formě perlového DBI DSN (podívejte se na manuálovou stránku DBI).
+ .
+ Obecný tvar je "dbi:mysql:<databáze>". Pro více informací se podívejte na manuálovou stránku DBD::mysql.
+Description-da.UTF-8: MySQL-datakilde:
+ Vælg venligst MySQL-datakilden brugt for lagring af sessionsdata, i form af en Perl DBI DSN (se DBI-manualsiden).
+ .
+ Den generelle form er »dbi:mysql:<database>«. Se DBD::mysql-manualsiden for yderligere detaljer.
+Description-de.UTF-8: MySQL-Datenquelle:
+ Bitte wählen Sie die MySQL-Datenquelle aus, die zum Speichern von Sitzungsdaten verwendet wird. Verwenden Sie hierzu die Form einer Perl DBI-DSN (siehe DBI-Handbuchseite).
+ .
+ Die allgemeine Form ist »dbi:mysql:<datenbank>«. Lesen Sie die DBD::mysql-Handbuchseite für weitere Details.
+Description-es.UTF-8: Fuente de datos de MySQL:
+ Por favor, elija la fuente de datos de MySQL usada para almacenar los datos de la sesión, en un formato de Perl DBI DSN (vea la página del manual DBI).
+ .
+ La forma general es «dbi:mysql:<base de datos>». Vea la página del manual de DBD::mysql para más detalles.
+Description-eu.UTF-8: MySQL datu jatorria:
+ Mesedez hautatu saio datuak biltegiratzeko erabiliko den MySQL jatorria, Perl DBI DSN formatuan (ikusi DBI manual-orria).
+ .
+ Formatu orokorra "dbi:mysql:<database>" da. Ikusi DBD::mysql manual-orria xehetasunetarako.
+Description-fr.UTF-8: Source de données MySQL :
+ Veuillez indiquer la source de données MySQL qui sera utilisée pour enregistrer les données de la session, sous la forme d'une base de données Perl DBI DSN (veuillez consulter la page du manuel de DBI).
+ .
+ La forme générale est « dbi:mysql:<base de données> ». Veuillez consulter la page du manuel DBD::mysql pour davantage d'informations.
+Description-it.UTF-8: Origine dei dati MySQL:
+ Inserire l'origine dei dati MySQL che sarà utilizzata per memorizzare i dati di sessione, utilizzando la forma di un Perl DBI DSN (vedere le pagine di manuale di DBI).
+ .
+ La forma normale è «dbi:mysql:<database>». Vedere le pagine di manuale di DBD::mysql per maggiori dettagli.
+Description-ja.UTF-8: MySQL データソース:
+ セッションデータの保存に使う MySQL データソースを、Perl DBI DSN 形式で指定してください (DBI マニュアルページを参照)。
+ .
+ 通常の形式は「dbi:mysql:<database>」です。詳細は DBD::mysql のマニュアルページを参照してください。
+Description-nl.UTF-8: MySQL-databron:
+ Welke MySQL-databron wordt gebruikt om uw sessiedata op te slaan (geef dit aan in Perl DBI DSN formaat, zie de DBI-man-pagina voor details)?
+ .
+ De algemene vorm is 'dbi:mysql:<database>'. Meer informatie vindt u in de DBD::mysql man-pagina.
+Description-pt.UTF-8: Fonte de dados MySQL:
+ Por favor escolha a fonte de dados MySQL usada para guardar dados de sessão, na forma de um DBI DSN Perl (ver a página do manual DBI).
+ .
+ A forma geral é "dbi:mysql:<base_de_dados>". Ver a página do manual DBD::mysql para mais detalhes.
+Description-ru.UTF-8: Источник данных MySQL:
+ Укажите источник данных MySQL, используемый для хранения данных сеансов, в формате Perl DBI DSN (см. справочную страницу DBI).
+ .
+ Общий вид "dbi:mysql:<бд>". Подробней см. справочную страницу DBD::mysql.
+Description-sv.UTF-8: MySQL-datakälla:
+ Väl MySQL-datakälla som används för lagring av sessionsdata i form av Perl DBI DSN (se manualsidan för DBI).
+ .
+ Den allmänna formen är "dbi:mysql:<databas>". Se manualsidan för DBD::mysql för fler detaljer.
+Description-vi.UTF-8: Nguồn dữ liệu MySQL:
+ Hãy chọn nguồn dữ liệu kiểu MySQL được dùng để lưu trữ dữ liệu phiên chạy, có dạng DBI DSN kiểu Perl (xem trang hướng dẫn DBI).
+ .
+ Dạng thức chung là « dbi:mysql:<cơ sở dữ liệu> ». Xem trang hướng dẫn của mô-đun Perl « DBD::mysql » để tìm chi tiết.
+Description-zh_TW.UTF-8: MySQL 資料來源：
+ 請選擇您要使用的 MySQL 資料來源，您可以使用 Perl DBI DSN 格式 (參見 DBImanpage)。
+ .
+ 通用格式為 "dbi:mysql:<database>"。更多細節請參考 DBD::mysql manpage。
+
+Template: libapache-sessionx-perl/store_mysql_username
+Type: string
+Description: MySQL username:
+ Please enter the username used to access the session database. If
+ left blank, the current user's login will be used.
+Description-cs.UTF-8: Jméno uživatele MySQL:
+ Zadejte prosím Jméno uživatele použité pro přístup k relaci databáze. Pokud ho necháte prázdné, bude použito uživatelské jméno nynějšího uživatele.
+Description-da.UTF-8: MySQL-brugernavn:
+ Indtast venligst brugernavnet for adgang til sessionsdatabasen. Hvis efterladt blank så vil den aktuelle brugers logind blive brugt.
+Description-de.UTF-8: MySQL-Benutzername:
+ Bitte geben Sie den Benutzernamen an, der zum Zugriff auf die Sitzungsdatenbank verwendet wird. Bleibt dieser leer, wird der Login des aktuellen Benutzers verwendet.
+Description-es.UTF-8: Usuario de MySQL:
+ Por favor, introduzca el nombre de usuario usado para acceder a la sesión de la base de datos. Si se deja en blanco, se utilizará el nombre del usuario actual.
+Description-eu.UTF-8: MySQL erabiltzaile-izena:
+ Mesedez zehaztu saio datu-basea atzitzeko erabili behar den erabiltzaile-izena. Zurian utziaz gero uneko erabiltzailearen izena erabiliko da.
+Description-fr.UTF-8: Identifiant MySQL :
+ Veuillez indiquer l'identifiant qui sera utilisé pour accéder à la base de données de la session. S'il est omis, le nom d'utilisateur actuel sera utilisé.
+Description-it.UTF-8: Nome utente di MySQL:
+ Inserire il nome utente che sarà utilizzato per accedere al database di sessione. Se non viene inserito alcun valore, sarà utilizzato il login dell'utente attuale.
+Description-ja.UTF-8: MySQL ユーザ名:
+ セッションデータベースへのアクセスに使うユーザ名を入力してください。空白のままにすると、現在のユーザログイン名が使われます。
+Description-nl.UTF-8: MysQL-gebruikersnaam:
+ Wat is de gebruikersnaam om toegang te verkrijgen tot de database? Als u dit leeg laat wordt de naam van de momenteel aangemelde gebruiker gebruikt.
+Description-pt.UTF-8: Nome de utilizador MySQL:
+ Por favor introduza o nome de utilizador usado para aceder à base de dados de sessões. Se for deixado em branco, será usado o utilizador corrente.
+Description-ru.UTF-8: Имя пользователя MySQL:
+ Введите имя пользователя, используемого для доступа к базе данных сеансов. Если оставить поле пустым, то будет использовано имя учётной записи текущего пользователя.
+Description-sv.UTF-8: MySQL-användarnamn:
+ Ange användarnamnet som används för att tillgå sessionsdatabasen. Om lämnad blank kommer nuvarande användare att användas.
+Description-vi.UTF-8: Tên người dùng MySQL:
+ Hãy nhập tên người dùng được dùng để truy cập co sở dữ liệu phiên chạy. Nếu trường này được bỏ trống, tên đăng nhập của người dùng hiện thời hoạt động sẽ được dùng.
+Description-zh_TW.UTF-8: MySQL 使用者名稱：
+ 請輸入用來存取 session 資料庫的使用者名稱。如果空白的話，會使用目前的使用者。
+
+Template: libapache-sessionx-perl/store_mysql_password
+Type: password
+Description: MySQL password:
+ Please enter the password used to access the session database. May be
+ left blank if no password is needed.
+Description-cs.UTF-8: Heslo uživatele MySQL:
+ Zadejte prosím heslo použité pro přístup k relaci databáze. Necháte-li ho prázdné, nebude heslo potřeba.
+Description-da.UTF-8: MySQL-adgangskode:
+ Indtast venligst adgangskoden brugt til at tilgå sessionsdatabasen. Kan efterlades blank hvis en adgangskode ikke er krævet.
+Description-de.UTF-8: MySQL-Passwort:
+ Bitte geben Sie das Passwort an, das zum Zugriff auf die Sitzungsdatenbank verwendet wird. Kann leer bleiben, falls kein Passwort benötigt wird.
+Description-es.UTF-8: Contraseña de MySQL:
+ Por favor, introduzca la contraseña usada para acceder a la sesión de la base de datos. Se puede dejar en blanco si no se necesita contraseña.
+Description-eu.UTF-8: MySQL pasahitza:
+ Mesedez zehaztu saio datu-basea atzitzeko erabili behar den pasahitza. Zurian utzi pasahitza behar ez bada.
+Description-fr.UTF-8: Mot de passe MySQL :
+ Veuillez indiquer le mot de passe qui sera utilisé pour accéder à la base de données de la session. Il peut être omis si aucun mot de passe n'est nécessaire.
+Description-it.UTF-8: Password di MySQL:
+ Inserire la password che sarà utilizzata per accedere al database di sessione. Se nessuna password è necessaria, lasciare vuoto.
+Description-ja.UTF-8: MySQL パスワード:
+ セッションデータベースへのアクセスに使うパスワードを入力してください。パスワードが必要ない場合は空のままで構いません。
+Description-nl.UTF-8: MySQL-wachtwoord:
+ Wat is het wachtwoord om toegang te verkrijgen tot de sessiedatabase? Als er geen wachtwoord nodig is kunt u dit leeg laten.
+Description-pt.UTF-8: Palavra chave do MySQL:
+ Por favor introduza a palavra-chave usada para aceder à base de dados de sessões. Pode ser deixado em branco se não for necessária nenhuma palavra-chave.
+Description-ru.UTF-8: Пароль к MySQL:
+ Введите пароль, используемый для доступа к базе данных сеансов. Если пароль не используется, то можно ничего не вводить.
+Description-sv.UTF-8: MySQL-lösenord:
+ Ange lösenordet som används för att tillgå sessionsdatabasen. Kan lämnas blankt om inget lösenord behövs.
+Description-vi.UTF-8: Mật khẩu MySQL:
+ Hãy nhập mật khẩu được dùng để truy cập co sở dữ liệu phiên chạy. Có thể bỏ trống trường này nếu không cần mật khẩu.
+Description-zh_TW.UTF-8: MySQL 密碼：
+ 請輸入用來存取 session 資料庫的密碼。如果不需密碼則空白。
+
+Template: libapache-sessionx-perl/store_mysql_lockdatasource
+Type: string
+Default: dbi:mysql:sessions
+Description: MySQL lock data source:
+ Please enter the MySQL data source used for locking, in the form of a
+ Perl DBI DSN (see the DBI manpage). Locking is performed using
+ MySQL's GET_LOCK and RELEASE_LOCK functions.
+ .
+ The general form is "dbi:mysql:<database>". See the DBD::mysql manpage for
+ more details.
+ .
+ You will almost certainly want to use the same value you used for the
+ session data.
+Description-cs.UTF-8: Zdroj zamčení dat MySQL:
+ Zadejte prosím zdroj dat MySQL použitý pro uzamčení je ve formě perlového DBI DSN (podívejte se na manuálovou stránku DBI). Uzamčení je provedeno pomocí funkcí MySQL - GET_LOCK a RELEASE_LOCK.
+ .
+ Obecný tvar je "dbi:mysql:<databáze>". Pro více informací se podívejte na manuálovou stránku DBD::mysql.
+ .
+ Téměř jistě budete chtít použít stejnou hodnotu jako jste použili pro data relace.
+Description-da.UTF-8: Datakilde for MySQL-lås:
+ Indtast venligst MySQL-datakilden brugt for låsning, i form af et Perl DBI DSN (se DBI-manualsiden). Låsning gøres af MySQL's GET_LOCK- og RELEASE_LOCK-funktioner.
+ .
+ Den generelle form er »dbi:mysql:<database>«. Se DBD::mysql-manualsiden for yderligere detaljer.
+ .
+ Du vil næsten sikkert ønske at bruge den samme værdi, du brugte for sessionsdataene.
+Description-de.UTF-8: MySQL Sperr-Datenquelle:
+ Bitte geben Sie die MySQL-Datenquelle ein, die zum Sperren verwendet wird. Verwenden Sie die Form einer Perl DBI-DSN (siehe DBI-Handbuchseite). Sperren wird mittels der MySQL-Funktionen GET_LOCK und RELEASE_LOCK durchgeführt.
+ .
+ Die allgemeine Form ist »dbi:mysql:<datenbank>«. Lesen Sie die DBD::mysql-Handbuchseite für weitere Details.
+ .
+ Höchstwahrscheinlich werden Sie die gleichen Werte wie auch für die Sitzungsdaten verwenden.
+Description-es.UTF-8: Fuente de datos del bloqueo de MySQL:
+ Por favor, introduzca la fuente de datos de MySQL usada para el bloqueo, en el formato de Perl DBI DSN (vea la página de ayuda de DBI). El bloqueo se realiza utilizando las funciones de MySQL «GET_LOCK» y «RELEASE_LOCK».
+ .
+ La forma general es «dbi:mysql:<base de datos>». Vea la página del manual de DBD::mysql para más detalles.
+ .
+ Querrá, casi seguro, usar el mismo valor que utilizó para los datos de sesión.
+Description-eu.UTF-8: MySQL blokeo datu jatorria:
+ Mesedez hautatu blokeoak biltegiratzeko erabiliko den MySQL jatorria, Perl DBI DSN formatuan (ikusi DBI manual-orria).. Blokeoak MySQL's GET_LOCK eta RELEASE_LOCK funtzioak erabiliaz egingo dira.
+ .
+ Formatu orokorra "dbi:mysql:<database>" da. Ikusi DBD::mysql manual-orria xehetasunetarako.
+ .
+ Ziurrenik saio datuentzat erabilitako balio berdina erabili nahiko duzu.
+Description-fr.UTF-8: Source de données de verrouillage MySQL :
+ Veuillez indiquez la source de données MySQL qui sera utilisée pour le verrouillage, sous la forme d'une base de données Perl DBI DSN (veuillez consulter la page de manuel DBI). Le verrouillage est réalisé en utilisant les fonctions MySQL GET_LOCK et RELEASE_LOCK.
+ .
+ La forme générale est « dbi:mysql:<base de données> ». Veuillez consulter la page du manuel DBD::mysql pour davantage d'informations.
+ .
+ Il est conseillé d'utiliser la même valeur que celle utilisée pour les données de session.
+Description-it.UTF-8: Origine dei dati di blocco di MySQL:
+ Inserire l'origine dei dati di MySQL che sarà utilizzata per i blocchi, utilizzando la forma di un Perl DBI DSN (vedere le pagine di manuale di DBI). I blocchi vengono effettuati usando le funzioni di MySQL «GET_LOCK» e «RELEASE_LOCK».
+ .
+ La forma normale è «dbi:mysql:<database>». Vedere le pagine di manuale di DBD::mysql per maggiori dettagli.
+ .
+ Quasi certamente si opterà per l'uso degli stessi valori utilizzati per i dati della sessione.
+Description-ja.UTF-8: MySQL ロックのデータソース:
+ ロックに使う MySQL データソースを、Perl DBI DSN 形式で指定してください (DBI マニュアルページを参照)。ロックは MySQL の GET_LOCK 関数と RELEASE_LOCK 関数を使って実行されます。
+ .
+ 通常の形式は「dbi:mysql:<database>」です。詳細は DBD::mysql のマニュアルページを参照してください。
+ .
+ おそらくはセッションデータに使ったのと同じ値を使いたいことでしょう。
+Description-nl.UTF-8: MySQL-databron voor de vergrendeling:
+ Welke MySQL-databron wordt gebruikt voor vergrendeling (geef dit aan in Perl DBI DSN formaat, zie de DBI-man-pagina voor details)? Vergrendeling wordt gedaan via de GET_LOCK en RELEASE_LOCK functies van MySQL.
+ .
+ De algemene vorm is 'dbi:mysql:<database>'. Meer informatie vindt u in de DBD::mysql man-pagina.
+ .
+ In bijna alle gevallen kunt u hier best dezelfde databasebron gebruiken als voor de sessiedata.
+Description-pt.UTF-8: Fonte de dados de locking MySQL:
+ Por favor introduza a fonte de dados MySQL usado para locks, na forma de um DBI DSN Perl (ver a página do manual DBI). Os locks são conseguidos usando as funções GET_LOCK e RELEASE_LOCK do MySQL.
+ .
+ A forma geral é "dbi:mysql:<base_de_dados>". Ver a página do manual DBD::mysql para mais detalhes.
+ .
+ Quase de certeza que deseja usar o mesmo valor que usou para os dados de sessão.
+Description-ru.UTF-8: Источник блокировок данных MySQL:
+ Введите источник данных MySQL, используемый под блокировки, в виде Perl DBI DSN (см. справочную страницу DBI). Блокировки выполняются с помощью функций MySQL GET_LOCK и RELEASE_LOCK.
+ .
+ Общий вид "dbi:mysql:<бд>". Подробней см. справочную страницу DBD::mysql.
+ .
+ Скорее всего, вы захотите использовать то же значение что и для данных сеансов.
+Description-sv.UTF-8: MySQL-datakälla för låsning:
+ Ange MySQL-datakällan som används för låsning, i form av Perl DBI DSN (se manualsidan för DBI). Låsning görs med MySQLs GET_LOCK- och RELEASE_LOCK-funktioner.
+ .
+ Den allmänna formen är "dbi:mysql:<databas>". Se manualsidan för DBD::mysql för fler detaljer.
+ .
+ Du vill nästan säkert använda samma värde som det du använder för sessionsdata.
+Description-vi.UTF-8: Nguồn dữ liệu khoá MySQL:
+ Hãy nhập nguồn dữ liệu MySQL được dùng để khoá, có dạng DBI DSN kiểu Perl (xem trang hướng dẫn DBI). Việc khoá được thực hiện bằng hai hàm « GET_LOCK » (lấy khoá) và « RELEASE_LOCK » (buông khoá) của MySQL.
+ .
+ Dạng thức chung là « dbi:mysql:<cơ sở dữ liệu> ». Xem trang hướng dẫn của mô-đun Perl « DBD::mysql » để tìm chi tiết.
+ .
+ Gần chắc chắn là bạn cần sử dụng cùng một giá trị với điều được dùng cho dữ liệu phiên chạy.
+Description-zh_TW.UTF-8: MySQL 鎖定資料來源：
+ 請輸入用來鎖定 MySQL 資料的來源，您可以使用 Perl DBI DSN 格式 (參見 DBImanpage)。鎖定是透過 MySQL 的 GET_LOCK 與 RELEASE_LOCK 方法。
+ .
+ 通用格式為 "dbi:mysql:<database>"。更多細節請參考 DBD::mysql manpage。
+ .
+ 您一般應該會想要使用與 session 資料相同的來源。
+
+Template: libapache-sessionx-perl/store_mysql_lockusername
+Type: string
+Description: MySQL username for locking:
+ Please enter the username used to access the database for locking. If
+ left blank, the current user's login will be used.
+Description-cs.UTF-8: Jméno uživatele MySQL použité pro zamykání:
+ Zadejte prosím jméno uživatele použité pro přístup k relaci databáze. Pokud ho necháte prázdné, bude použito uživatelské jméno nynějšího uživatele.
+Description-da.UTF-8: MysQL-brugernavn for låsning:
+ Indtast venligst brugernavnet brugt til at tilgå databasen for låsning. Hvis efterladt blank vil den aktuelle brugers logind blive brugt.
+Description-de.UTF-8: MySQL-Benutzername für das Sperren:
+ Bitte geben Sie den Benutzernamen ein, der für den Zugriff auf das Datenbank-Sperren verwendet wird. Bleibt dieser leer, wird der Login des aktuellen Benutzers verwendet.
+Description-es.UTF-8: Usuario de MySQL para el bloqueo:
+ Por favor, introduzca el nombre de usuario empleado para acceder a la base de datos para el bloqueo. Si se deja en blanco, se utilizará el nombre del usuario actual.
+Description-eu.UTF-8: Blokeoen MySQL erabiltzaile-izena:
+ Mesedez zehaztu blokeoen datu-basea atzitzeko erabili behar den erabiltzaile-izena. Zurian utziaz gero uneko erabiltzailearen izena erabiliko da.
+Description-fr.UTF-8: Identifiant MySQL à utiliser pour le verrouillage :
+ Veuillez indiquer l'identifiant qui sera utilisé pour accéder à la base de données de la session. S'il est omis, le nom d'utilisateur actuel sera utilisé.
+Description-it.UTF-8: Nome utente di MySQL per i blocchi:
+ Inserire il nome utente che sarà utilizzato per accedere al database per i blocchi. Se non viene inserito alcun valore, sarà utilizzato il login dell'utente attuale.
+Description-ja.UTF-8: ロックに使う MySQL ユーザ名:
+ ロック用データベースへのアクセスに使うユーザ名を入力してください。空白のままにすると、現在のユーザログイン名が使われます。
+Description-nl.UTF-8: MySQL-gebruikersnaam voor de vergrendelingsdatabase:
+ Wat is de gebruikersnaam om toegang te verkrijgen tot de database met de vergrendelingsgegevens? Als u dit leeg laat wordt de naam van de momenteel aangemelde gebruiker gebruikt.
+Description-pt.UTF-8: Nome de utilizador MySQL para locking:
+ Por favor introduza o nome de utilizador usado para aceder à base de dados usada para obter locks. Se for deixado em branco será usado o nome do utilizador corrente.
+Description-ru.UTF-8: Имя пользователя MySQL для блокировок:
+ Введите имя пользователя, используемого для доступа к базе данных блокировок. Если оставить поле пустым, то будет использовано имя учётной записи текущего пользователя.
+Description-sv.UTF-8: MySQL-användarnamn för låsning:
+ Ange användarnamnet som används för att låsa databasen. Om det lämnas blankt kommer nuvarande användare att användas.
+Description-vi.UTF-8: Tên người dùng MySQL để khoá:
+ Hãy nhập tên người dùng được dùng để truy cập co sở dữ liệu phiên chạy. Nếu trường này được bỏ trống, tên đăng nhập của người dùng hiện thời hoạt động sẽ được dùng.
+Description-zh_TW.UTF-8: MySQL 鎖定用使用者名稱：
+ 請輸入您用來存取資料庫鎖定的使用者名稱。如果留下空白，則會使用目前的使用者。
+
+Template: libapache-sessionx-perl/store_mysql_lockpassword
+Type: password
+Description: MySQL password for locking:
+ Please enter the password used to access the database for
+ locking. May be left blank if no password is needed.
+Description-cs.UTF-8: Heslo uživatele MySQL pro zamykání:
+ Zadejte prosím Heslo použité pro přístup k relaci databáze. Necháte-li ho prázdné, nebude heslo potřeba.
+Description-da.UTF-8: MySQL-adgangskode for låsning:
+ Indtast venligst adgangskoden brugt til at tilgå databasen for låsning. Kan efterlades blank hvis en adgangskode ikke er krævet.
+Description-de.UTF-8: MySQL-Passwort zum Sperren:
+ Bitte geben Sie das Passwort ein, das zum Zugriff auf die Datenbank zum Sperren verwendet wird. Falls kein Passwort benötigt wird, kann dies leer bleiben.
+Description-es.UTF-8: Contraseña para el bloqueo de MySQL:
+ Por favor, introduzca la contraseña utilizada para acceder a la base de datos para el bloqueo. Se puede dejar en blanco si no se necesita contraseña.
+Description-eu.UTF-8: Blokeoen MySQL pasahitza:
+ Mesedez zehaztu blokeo datu-basea atzitzeko erabili behar den pasahitza. Zurian utzi pasahitza behar ez bada.
+Description-fr.UTF-8: Mot de passe MySQL à utiliser pour le verrouillage :
+ Veuillez indiquer le mot de passe qui sera utilisé pour accéder à la base de données de la session. Il peut être omis si aucun mot de passe n'est nécessaire.
+Description-it.UTF-8: Password di MySQL per i blocchi:
+ Inserire la password che sarà utilizzata per accedere al database per i blocchi. Se nessuna password è necessaria, lasciare vuoto.
+Description-ja.UTF-8: ロックに使う MySQL のパスワード:
+ ロック用データベースへのアクセスに使うパスワードを入力してください。パスワードが必要ない場合は空のままで構いません。
+Description-nl.UTF-8: MySQL-wachtwoord voor de vergrendelingsdatabase:
+ Wat is het wachtwoord om toegang te verkrijgen tot de vergrendelingsdatabase? Als er geen wachtwoord nodig is kunt u dit leeg laten.
+Description-pt.UTF-8: Palavra-chave do MySQL para locking:
+ Por favor introduza a palavra-chave usada para aceder à base de dados de locking. Pode ser deixado em branco se não for necessária nenhuma palavra-chave.
+Description-ru.UTF-8: Пароль к БД блокировок MySQL:
+ Введите пароль, используемый для доступа к базе данных блокировок. Если пароль не используется, то можно ничего не вводить.
+Description-sv.UTF-8: MySQL-lösenord för låsning:
+ Ange lösenordet som används för att låsa databasen. Kan lämnas blankt om inget lösenord behövs.
+Description-vi.UTF-8: Mật khẩu MySQL để khoá:
+ Hãy nhập mật khẩu được dùng để truy cập co sở dữ liệu phiên chạy. Có thể bỏ trống trường này nếu không cần mật khẩu.
+Description-zh_TW.UTF-8: MySQL 鎖定用密碼：
+ 請輸入您用來存取資料庫鎖定的密碼。如果不需密碼則空白。
+
+Template: libapache-sessionx-perl/store_oracle_datasource
+Type: string
+Default: dbi:Oracle:sessions
+Description: Oracle data source:
+ Please enter the Oracle data source used for storing session data, in
+ the form of a Perl DBI DSN (see the DBI manpage). The general
+ form is "dbi:Oracle:<database>". See the DBD::Oracle manpage for more
+ details.
+Description-cs.UTF-8: Zdroj dat Oracle:
+ Zadejte prosím zdroj dat Oracle použitý pro uložení dat relace a to ve formě perlového DBI DSN (podívejte se na manuálovou stránku DBI). Obecný tvar vypadá takto: "dbi:Oracle:<database>". Pro více informací se podívejte na manuálovou stránku DBD::Oracle.
+Description-da.UTF-8: Datakilde for Oracle:
+ Indtast venligst datakilden for Oracle for lagring af sessionsdata, i form af en Perl DBI DSN (se DBI-manualsiden). Den generelle form er »dbi:Oracle:<database>«. Se DBD::Oracle-manualsiden for yderligere detaljer.
+Description-de.UTF-8: Oracle-Datenquelle:
+ Bitte wählen Sie die Oracle-Datenquelle aus, die zum Speichern von Sitzungsdaten verwendet wird. Verwenden Sie hierzu die Form einer Perl DBI-DSN (siehe DBI-Handbuchseite). Die allgemeine Form ist »dbi:Oracle:<datenbank>«. Lesen Sie die DBD::Oracle-Handbuchseite für weitere Details.
+Description-es.UTF-8: Fuente de los datos de Oracle:
+ Por favor, introduzca la fuente de datos de Oracle usada para el almacenamiento de los datos de sesión, en el formato de Perl DBI DSN (vea la página de ayuda de DBI). La forma general es «dbi:Oracle:<base de datos>». Vea la página del manual de DBD::Oracle para más detalles.
+Description-eu.UTF-8: Oracle datu jatorria
+ Mesedez hautatu saio datuak biltegiratzeko erabiliko den Oracle datu jatorria, Perl DBI DSN formatuan (ikusi DBI manual-orria). Formatu orokorra "dbi:Oracle:<database>" da. ikusi DBD::Oracle manual-orria xehetasun gehiagorako.
+Description-fr.UTF-8: Source de données Oracle :
+ Veuillez indiquer la source de données Oracle qui sera utilisée pour enregistrer les données de session, sous la forme d'une base de données Perl DBI DSN (veuillez consulter la page du manuel de DBI).
+Description-it.UTF-8: Origine dei dati Oracle:
+ Inserire l'origine dei dati Oracle che sarà utilizzata per memorizzare i dati di sessione, utilizzando la forma di un Perl DBI DSN (vedere le pagine di manuale di DBI). La forma normale è «dbi:Oracle:<database>». Vedere le pagine di manuale di DBD::Oracle per maggiori dettagli.
+Description-ja.UTF-8: Oracle データソース:
+ セッションデータの保存に使う Oracle データソースを、Perl DBI DSN 形式で指定してください (DBI マニュアルページを参照)。通常の形式は「dbi:Oracle:<database>」です。詳細は DBD::Oracle のマニュアルページを参照してください。
+Description-nl.UTF-8: Oracle-databron:
+ Welke Oracle-databron wordt gebruikt voor de sessiedata (geef dit aan in Perl DBI DSN formaat, zie de DBI-man-pagina voor details)? De algemene vorm is 'dbi:Oracle:<database>'. Meer informatie vindt u in de DBD::Oracle man-pagina.
+Description-pt.UTF-8: Fonte de dados Oracle:
+ Por favor introduza a fonte de dados Oracle usada para guardar dados de sessão, na forma de uma DBI DSN Perl (veja a página do manual DBI). A forma geral é "dbi:Oracle:<base_de_dados>". Veja a página do manual DBD::Oracle para mais detalhes.
+Description-ru.UTF-8: Источник данных Oracle:
+ Укажите источник данных Oracle, используемый для хранения данных сеансов, в формате Perl DBI DSN (см. справочную страницу DBI). Общий вид "dbi:Oracle:<бд>". Подробней см. справочную страницу DBD::Oracle.
+Description-sv.UTF-8: Oracle-datakälla:
+ Ange Oracle-datakällan som används för lagring av sessionsdata, i form av Perl DBI DSN (se manualsidan för DBI). Den allmänna formen är "dbi:Oracle:<databas>". Se manualsidan för DBD::Oracle för fler detaljer.
+Description-vi.UTF-8: Nguồn dữ liệu Oracle:
+ Hãy chọn nguồn dữ liệu kiểu Oracle được dùng để lưu trữ dữ liệu phiên chạy, có dạng DBI DSN kiểu Perl (xem trang hướng dẫn DBI). Dạng thức chung là « dbi:Oracle:<cơ sở dữ liệu> ». Xem trang hướng dẫn của mô-đun Perl « DBD::Oracle » để tìm chi tiết.
+Description-zh_TW.UTF-8: Oracle 資料來源：
+ 請選擇您要使用的 Oracle 資料來源，您可以使用 Perl DBI DSN 格式 (參見 DBImanpage)。通用格式為 "dbi:Oracle:<database>"。更多細節請參考 DBD::Oraclemanpage。
+
+Template: libapache-sessionx-perl/store_oracle_username
+Type: string
+Description: Oracle username:
+ Please enter the username used to access the session database. If
+ left blank, the current user's login will be used.
+Description-cs.UTF-8: Jméno uživatele Oracle:
+ Zadejte prosím Jméno uživatele použité pro přístup k relaci databáze. Pokud ho necháte prázdné, bude použito uživatelské jméno nynějšího uživatele.
+Description-da.UTF-8: Brugernavn for Oracle:
+ Indtast venligst brugernavnet for adgang til sessionsdatabasen. Hvis efterladt blank så vil den aktuelle brugers logind blive brugt.
+Description-de.UTF-8: Oracle-Benutzername:
+ Bitte geben Sie den Benutzernamen an, der zum Zugriff auf die Sitzungsdatenbank verwendet wird. Bleibt dieser leer, wird der Login des aktuellen Benutzers verwendet.
+Description-es.UTF-8: Nombre de usuario de Oracle:
+ Por favor, introduzca el nombre de usuario usado para acceder a la sesión de la base de datos. Si se deja en blanco, se utilizará el nombre del usuario actual.
+Description-eu.UTF-8: Oracle erabiltzaile-izena:
+ Mesedez zehaztu saio datu-basea atzitzeko erabili behar den erabiltzaile-izena. Zurian utziaz gero uneko erabiltzailearen izena erabiliko da.
+Description-fr.UTF-8: Identifiant Oracle :
+ Veuillez indiquer l'identifiant qui sera utilisé pour accéder à la base de données de la session. S'il est omis, le nom d'utilisateur actuel sera utilisé.
+Description-it.UTF-8: Nome utente di Oracle:
+ Inserire il nome utente che sarà utilizzato per accedere al database di sessione. Se non viene inserito alcun valore, sarà utilizzato il login dell'utente attuale.
+Description-ja.UTF-8: Oracle ユーザ名:
+ セッションデータベースへのアクセスに使うユーザ名を入力してください。空白のままにすると、現在のユーザログイン名が使われます。
+Description-nl.UTF-8: Oracle-gebruikersnaam:
+ Wat is de gebruikersnaam om toegang te verkrijgen tot de database? Als u dit leeg laat wordt de naam van de momenteel aangemelde gebruiker gebruikt.
+Description-pt.UTF-8: Nome de utilizador Oracle:
+ Por favor introduza o nome de utilizador usado para aceder à base de dados de sessões. Se for deixado em branco, será usado o utilizador corrente.
+Description-ru.UTF-8: Имя пользователя Oracle:
+ Введите имя пользователя, используемого для доступа к базе данных сеансов. Если оставить поле пустым, то будет использовано имя учётной записи текущего пользователя.
+Description-sv.UTF-8: Oracle-användarnamn:
+ Ange användarnamnet som används för att tillgå sessionsdatabasen. Om lämnad blank kommer nuvarande användare att användas.
+Description-vi.UTF-8: Tên người dùng Oracle:
+ Hãy nhập tên người dùng được dùng để truy cập co sở dữ liệu phiên chạy. Nếu trường này được bỏ trống, tên đăng nhập của người dùng hiện thời hoạt động sẽ được dùng.
+Description-zh_TW.UTF-8: Oracle 使用者名稱：
+ 請輸入用來存取 session 資料庫的使用者名稱。如果空白的話，會使用目前的使用者。
+
+Template: libapache-sessionx-perl/store_oracle_password
+Type: password
+Description: Oracle password:
+ Please enter the password used to access the session database. May be left blank if no
+ password is needed.
+Description-cs.UTF-8: Heslo uživatele Oracle:
+ Zadejte prosím heslo použité pro přístup k relaci databáze. Necháte-li ho prázdné, nebude heslo potřeba.
+Description-da.UTF-8: Adgangskode for Oracle:
+ Indtast venligst adgangskoden brugt til at tilgå sessionsdatabasen. Kan efterlades blank hvis en adgangskode ikke er krævet.
+Description-de.UTF-8: Oracle-Passwort:
+ Bitte geben Sie das Passwort an, das zum Zugriff auf die Sitzungsdatenbank verwendet wird. Kann leer bleiben, falls kein Passwort benötigt wird.
+Description-es.UTF-8: Contraseña de Oracle:
+ Por favor, introduzca la contraseña usada para acceder a la sesión de la base de datos. Se puede dejar en blanco si no se necesita contraseña.
+Description-eu.UTF-8: Oracle pasahitza:
+ Mesedez zehaztu saio datu-basea atzitzeko erabili behar den pasahitza. Zurian utzi pasahitza behar ez bada.
+Description-fr.UTF-8: Mot de passe Oracle :
+ Veuillez indiquer le mot de passe qui sera utilisé pour accéder à la base de données de la session. Il peut être omis si aucun mot de passe n'est nécessaire.
+Description-it.UTF-8: Password di Oracle:
+ Inserire la password che sarà utilizzata per accedere al database di sessione. Se nessuna password è necessaria, lasciare vuoto.
+Description-ja.UTF-8: Oracle パスワード:
+ セッションデータベースへのアクセスに使うパスワードを入力してください。パスワードが必要ない場合は空のままで構いません。
+Description-nl.UTF-8: Oracle-wachtwoord:
+ Wat is het wachtwoord om toegang te verkrijgen tot de sessiedatabase? Als er geen wachtwoord nodig is kunt u dit leeg laten.
+Description-pt.UTF-8: Palavra-chave do Oracle:
+ Por favor introduza a palavra-chave usada para aceder à base de dados de sessões. Pode ser deixado em branco se não for necessária nenhuma palavra-chave.
+Description-ru.UTF-8: Пароль к Oracle:
+ Введите пароль, используемый для доступа к базе данных сеансов. Если пароль не используется, то можно ничего не вводить.
+Description-sv.UTF-8: Oracle-lösenord:
+ Ange lösenordet som används för att tillgå sessionsdatabasen. Kan lämnas blankt om inget lösenord behövs.
+Description-vi.UTF-8: Mật khẩu Oracle:
+ Hãy nhập mật khẩu được dùng để truy cập co sở dữ liệu phiên chạy. Có thể bỏ trống trường này nếu không cần mật khẩu.
+Description-zh_TW.UTF-8: Oracle 密碼：
+ 請輸入用來存取 session 資料庫的密碼。如果不需密碼則空白。
+
+Template: libapache-sessionx-perl/store_sybase_datasource
+Type: string
+Default: dbi:Sybase:database=sessions
+Description: Sybase data source:
+ Please enter the Sybase data source used for storing session data, in
+ the form of a Perl DBI DSN (see the DBI manpage).
+ .
+ The general form is "dbi:Sybase:database=<database>;server=<server>". See
+ the DBD::Sybase manpage for more details.
+Description-cs.UTF-8: Zdroj dat Sybase:
+ Zadejte prosím zdroj dat Sybase použitý pro uložení dat relace a to ve formě Perlového DBI DSN (podívejte se na manuálovou stránku DBI).
+ .
+ Obecný tvar je "dbi:Sybase:database=<databáze>;server=<server>". Pro více informací se podívejte na manuálovou stránku DBD::Sybase.
+Description-da.UTF-8: Datakilde for Sybase:
+ Indtast venligst datakilden for Sybase for lagring af sessionsdata, i form af en Perl DBI DSN (se DBI-manualsiden).
+ .
+ Den generelle form er »dbi:Sybase:database=<database>;server=<server>«. Se DBD::Sybase-manualsiden for yderligere detaljer.
+Description-de.UTF-8: Sybase-Datenquelle:
+ Bitte wählen Sie die Sybase-Datenquelle aus, die zum Speichern von Sitzungsdaten verwendet wird. Verwenden Sie hierzu die Form einer Perl DBI-DSN (siehe DBI-Handbuchseite).
+ .
+ Die allgemeine Form ist »dbi:Sybase:database=<datenbank>;server=<server>«. Lesen Sie die DBD::Sybase-Handbuchseite für weitere Details.
+Description-es.UTF-8: Fuente de datos de Sybase:
+ Por favor, introduzca la fuente de datos de Sybase usada para almacenar los datos de sesión, en un formato de Perl DBI DSN (vea la página del manual DBI)
+ .
+ La forma general es «dbi:Sybase:database=<base de datos>;server=<servidor>». Vea la página de ayuda de DBD::Sybase para más detalles.
+Description-eu.UTF-8: Sybase datu jatorria:
+ Mesedez hautatu saio datuak biltegiratzeko erabiliko den Sybase datu jatorria, Perl DBI DSN formatuan (ikusi DBI manual-orria).
+ .
+ Formatu orokorra "dbi:Sybase:database=<database>;server=<server>" da. Begiratu DBD::Sybase manual-orrialdea xehetasun gehiagorako.
+Description-fr.UTF-8: Source de données Sybase :
+ Veuillez indiquer la source de données Sybase qui sera utilisée pour enregistrer les données de session, sous la forme d'une base de données Perl DBI DSN (veuillez consulter la page du manuel de DBI).
+ .
+ La forme générale est « dbi:Sybase:base de données=<base de données>;serveur=<serveur> ». Veuillez consulter la page de manuel du DBD::Sybase pour davantage d'informations.
+Description-it.UTF-8: Origine dei dati Sybase:
+ Inserire l'origine dei dati Sybase che sarà utilizzata per memorizzare i dati di sessione, utilizzando la forma di un Perl DBI DSN (vedere le pagine di manuale di DBI).
+ .
+ La forma normale è «dbi:Sybase:database=<database>;server=<server>». Vedere le pagine di manuale di DBD::Sybase per maggiori dettagli.
+Description-ja.UTF-8: Sybase データソース:
+ セッションデータの保存に使う Sybase データソースを、Perl DBI DSN 形式で指定してください (DBI マニュアルページを参照)。
+ .
+ 通常の形式は「dbi:Sybase:database=<database>;server=<server>」です。詳細は DBD::Sybase のマニュアルページを参照してください。
+Description-nl.UTF-8: Sybase-databron:
+ Welke Sybase-databron wordt gebruikt voor de sessiedata (geef dit aan in Perl DBI DSN formaat, zie de DBI-man-pagina voor details)?
+ .
+ De algemene vorm is 'dbi:Sybase:database=<database>;server=<server>'. Meer informatie vindt u in de DBD::Sybase man-pagina.
+Description-pt.UTF-8: Fonte de dados Sybase:
+ Por favor introduza a fonte de dados Sybase usada para guardar dados de sessão, na forma de um DBI DSN Perl (veja a página do manual DBI).
+ .
+ A forma geral é "dbi:Sybase:database=<base_de_dados>;server=<servidor>". Veja a página do manual DBD::Sybase para mais detalhes.
+Description-ru.UTF-8: Источник данных Sybase:
+ Укажите источник данных Sybase, используемый для хранения данных сеансов, в формате Perl DBI DSN (см. справочную страницу DBI).
+ .
+ Общий вид: "dbi:Sybase:database=<бд>;server=<сервер>". Подробней см. справочную страницу DBD::Sybase.
+Description-sv.UTF-8: Sybase-datakälla:
+ Ange Sybase-datakällan som används för lagring av sessionsdata, i form av Perl DBI DSN (se manualsidan för DBI).
+ .
+ Den allmänna formen är "dbi:Sybase:database=<databas>;server=<server>". Se manualsidan för DBD::Sybase för fler detaljer.
+Description-vi.UTF-8: Nguồn dữ liệu Sybase:
+ Hãy nhập nguồn dữ liệu kiểu Sybase được dùng để lưu trữ dữ liệu phiên chạy, có dạng DBI DSN kiểu Perl (xem trang hướng dẫn DBI).
+ .
+ Dạng thức chung là « dbi:Sybase:database=<co sở dữ liệu>;server=<máy phục vụ> ». Xem trang hướng dẫn của mô-đun Perl « DBD::Sybase » để tìm chi tiết.
+Description-zh_TW.UTF-8: Sybase 資料來源：
+ 請選擇您要使用的 Sybase 資料來源，您可以使用 Perl DBI DSN 格式 (參見 DBImanpage)。
+ .
+ 通用格式為 "dbi:Sybase:database=<database>;server=<server>"。更多細節請參考 DBD::Sybase manpage。
+
+Template: libapache-sessionx-perl/store_sybase_username
+Type: string
+Description: Sybase username:
+ Please enter the username used to access the session database. If
+ left blank, the current user's login will be used.
+Description-cs.UTF-8: Jméno uživatele Sybase:
+ Zadejte prosím Jméno uživatele použité pro přístup k relaci databáze. Pokud ho necháte prázdné, bude použito uživatelské jméno nynějšího uživatele.
+Description-da.UTF-8: Brugernavn for Sybase:
+ Indtast venligst brugernavnet for adgang til sessionsdatabasen. Hvis efterladt blank så vil den aktuelle brugers logind blive brugt.
+Description-de.UTF-8: Sybase-Benutzername:
+ Bitte geben Sie den Benutzernamen an, der zum Zugriff auf die Sitzungsdatenbank verwendet wird. Bleibt dieser leer, wird der Login des aktuellen Benutzers verwendet.
+Description-es.UTF-8: Usuario de Sybase:
+ Por favor, introduzca el nombre de usuario usado para acceder a la sesión de la base de datos. Si se deja en blanco, se utilizará el nombre del usuario actual.
+Description-eu.UTF-8: Sybase erabiltzaile-izena:
+ Mesedez zehaztu saio datu-basea atzitzeko erabili behar den erabiltzaile-izena. Zurian utziaz gero uneko erabiltzailearen izena erabiliko da.
+Description-fr.UTF-8: Identifiant Sybase :
+ Veuillez indiquer l'identifiant qui sera utilisé pour accéder à la base de données de la session. S'il est omis, le nom d'utilisateur actuel sera utilisé.
+Description-it.UTF-8: Nome utente di Sybase:
+ Inserire il nome utente che sarà utilizzato per accedere al database di sessione. Se non viene inserito alcun valore, sarà utilizzato il login dell'utente attuale.
+Description-ja.UTF-8: Sybase ユーザ名:
+ セッションデータベースへのアクセスに使うユーザ名を入力してください。空白のままにすると、現在のユーザログイン名が使われます。
+Description-nl.UTF-8: Sybase-gebruikersnaam:
+ Wat is de gebruikersnaam om toegang te verkrijgen tot de database? Als u dit leeg laat wordt de naam van de momenteel aangemelde gebruiker gebruikt.
+Description-pt.UTF-8: Nome de utilizador Sybase:
+ Por favor introduza o nome de utilizador usado para aceder à base de dados de sessões. Se for deixado em branco, será usado o utilizador corrente.
+Description-ru.UTF-8: Имя пользователя Sybase:
+ Введите имя пользователя, используемого для доступа к базе данных сеансов. Если оставить поле пустым, то будет использовано имя учётной записи текущего пользователя.
+Description-sv.UTF-8: Sybase-användarnamn:
+ Ange användarnamnet som används för att tillgå sessionsdatabasen. Om lämnad blank kommer nuvarande användare att användas.
+Description-vi.UTF-8: Tên người dùng Sybase:
+ Hãy nhập tên người dùng được dùng để truy cập co sở dữ liệu phiên chạy. Nếu trường này được bỏ trống, tên đăng nhập của người dùng hiện thời hoạt động sẽ được dùng.
+Description-zh_TW.UTF-8: Sybase 使用者名稱：
+ 請輸入用來存取 session 資料庫的使用者名稱。如果空白的話，會使用目前的使用者。
+
+Template: libapache-sessionx-perl/store_sybase_password
+Type: password
+Description: Sybase password:
+ Please enter the password used to access the session database. May be
+ left blank if no password is needed.
+Description-cs.UTF-8: Heslo uživatele Sybase:
+ Zadejte prosím heslo použité pro přístup k relaci databáze. Necháte-li ho prázdné, nebude heslo potřeba.
+Description-da.UTF-8: Adgangskode for Sybase
+ Indtast venligst adgangskoden brugt til at tilgå sessionsdatabasen. Kan efterlades blank hvis en adgangskode ikke er krævet.
+Description-de.UTF-8: Sybase-Passwort:
+ Bitte geben Sie das Passwort an, das zum Zugriff auf die Sitzungsdatenbank verwendet wird. Kann leer bleiben, falls kein Passwort benötigt wird.
+Description-es.UTF-8: Contraseña de Sybase:
+ Por favor, introduzca la contraseña usada para acceder a la sesión de la base de datos. Se puede dejar en blanco si no se necesita contraseña.
+Description-eu.UTF-8: Sybase pasahitza:
+ Mesedez zehaztu saio datu-basea atzitzeko erabili behar den pasahitza. Zurian utzi pasahitza behar ez bada.
+Description-fr.UTF-8: Mot de passe Sybase :
+ Veuillez indiquer le mot de passe qui sera utilisé pour accéder à la base de données de la session. Il peut être omis si aucun mot de passe n'est nécessaire.
+Description-it.UTF-8: Password di Sybase:
+ Inserire la password che sarà utilizzata per accedere al database di sessione. Se nessuna password è necessaria, lasciare vuoto.
+Description-ja.UTF-8: Sybase パスワード:
+ セッションデータベースへのアクセスに使うパスワードを入力してください。パスワードが必要ない場合は空のままで構いません。
+Description-nl.UTF-8: Sybase-wachtwoord:
+ Wat is het wachtwoord om toegang te verkrijgen tot de sessiedatabase? Als er geen wachtwoord nodig is kunt u dit leeg laten.
+Description-pt.UTF-8: Palavra-chave do Sybase:
+ Por favor introduza a palavra-chave usada para aceder à base de dados de sessões. Pode ser deixado em branco se não for necessária nenhuma palavra-chave.
+Description-ru.UTF-8: Пароль к Sybase:
+ Введите пароль, используемый для доступа к базе данных сеансов. Если пароль не используется, то можно ничего не вводить.
+Description-sv.UTF-8: Sybase-lösenord:
+ Ange lösenordet som används för att tillgå sessionsdatabasen. Kan lämnas blankt om inget lösenord behövs.
+Description-vi.UTF-8: Mật khẩu Sybase:
+ Hãy nhập mật khẩu được dùng để truy cập co sở dữ liệu phiên chạy. Có thể bỏ trống trường này nếu không cần mật khẩu.
+Description-zh_TW.UTF-8: Sybase 密碼：
+ 請輸入用來存取 session 資料庫的密碼。如果不需密碼則空白。
+
+Template: libapache-sessionx-perl/store_postgres_datasource
+Type: string
+Default: dbi:Pg:dbname=sessions
+Description: PostgreSQL data source:
+ Please enter the PostgreSQL data source used for storing session
+ data, in the form of a Perl DBI DSN (see the DBI manpage).
+ .
+ The general form is "dbi:Pg:dbname=<database>;host=<server>". See the
+ DBD::Pg manpage for more details.
+Description-cs.UTF-8: Zdroj dat PostgreSQL:
+ Zadejte prosím zdroj dat PostgreSQL použitý pro uložení dat relace a to ve formě perlového DBI DSN (podívejte se na manuálovou stránku DBI).
+ .
+ Obecný tvar je "dbi:Pg:dbname=<databáze>;host=<server>". Pro více informací se podívejte na manuálovou stránku DBD::Pg.
+Description-da.UTF-8: PostgreSQL-datakilde:
+ Indtast venligst PostgreSQL-datakilden brugt for lagring af sessionsdata, i form af en Perl DBI DSN (se DBI-manualsiden).
+ .
+ Den generelle form er »dbi:Pg:dbname=<database>;host=<server>«. Se DBD::Pg-manualsiden for yderligere detaljer.
+Description-de.UTF-8: PostgreSQL-Datenquelle:
+ Bitte wählen Sie die PostgreSQL-Datenquelle aus, die zum Speichern von Sitzungsdaten verwendet wird. Verwenden Sie hierzu die Form einer Perl DBI-DSN (siehe DBI-Handbuchseite).
+ .
+ Die allgemeine Form ist »dbi:Pg:dbname=<datenbank>;host=<server>«. Lesen Sie die DBD::Pg-Handbuchseite für weitere Details.
+Description-es.UTF-8: Fuente de datos de PostgreSQL:
+ Por favor, introduzca la fuente de datos de PostgreSQL usada para almacenar los datos de sesión, en un formato de Perl DBI DSN (vea la página del manual DBI)
+ .
+ La forma general es «dbi:Pg:dbname=<base de datos>;host=<servidor>». Vea la página de ayuda de DBD::Pg para más detalles.
+Description-eu.UTF-8: PostgreSQL datu jatorria:
+ Mesedez hautatu saio datuak biltegiratzeko erabiliko den PostgreSQL datu jatorria, Perl DBI DSN formatuan (ikusi DBI manual-orria).
+ .
+ Formatu orokorra "dbi:Pg:dbname=<database>;host=<server>" da. Ikusi DBD::Pg manual orria xehetasun gehigorako.
+Description-fr.UTF-8: Source de données PostgreSQL :
+ Veuillez indiquer la source de données PostgreSQL qui sera utilisée pour enregistrer les données de la session, sous la forme d'une base de données Perl DBI DSN (veuillez consulter la page du manuel de DBI).
+ .
+ La forme générale est « dbi:Pg:nom de la base de données=<base de données>;hôte=<serveur> ». Veuillez consulter la page du manuel de DBD::Pg pour davantage d'informations.
+Description-it.UTF-8: Origine dei dati PostgreSQL:
+ Inserire l'origine dei dati PostgreSQL che sarà utilizzata per memorizzare i dati di sessione, utilizzando la forma di un Perl DBI DSN (vedere le pagine di manuale di DBI).
+ .
+ La forma normale è «dbi:Pg:dbname=<database>;host=<server>». Vedere le pagine di manuale di DBD::Pg per maggiori dettagli.
+Description-ja.UTF-8: PostgreSQL データソース:
+ セッションデータの保存に使う PostgreSQL データソースを、Perl DBI DSN 形式で指定してください (DBI マニュアルページを参照)。
+ .
+ 通常の形式は「dbi:Pg:dbname=<database>;host=<server>」です。詳細については DBD::Pg のマニュアルページを参照してください。
+Description-nl.UTF-8: PostgreSQL-databron:
+ Welke PostgreSQL-databron wordt gebruikt voor de sessiedata (geef dit aan in Perl DBI DSN formaat, zie de DBI-man-pagina voor details)?
+ .
+ De algemene vorm is 'dbi:Pg:dbname=<database>;host=<server>'. Meer informatie vindt u in de DBD::PG man-pagina.
+Description-pt.UTF-8: Fonte de dados PostgreSQL:
+ Por favor introduza a fonte de dados PostgreSQL usada para guardar dados de sessão, na forma de um DBI DSN Perl (veja a página do manual DBI).
+ .
+ A forma geral é "dbi:Pg:dbname=<base_de_dados>;host=<servidor>". Veja a página do manual DBD::Pg para mais detalhes.
+Description-ru.UTF-8: Источник данных PostgreSQL:
+ Укажите источник данных PostgreSQL, используемый для хранения данных сеансов, в формате Perl DBI DSN (см. справочную страницу DBI).
+ .
+ Общий вид: "dbi:Pg:dbname=<бд>;host=<сервер>". Подробней см. справочную страницу DBD::Pg.
+Description-sv.UTF-8: PostgreSQL-datakälla:
+ Ange PostgreSQL-datakällan som används för lagring av sessionsdata, i form av Perl DBI DSN (se manualsidan för DBI).
+ .
+ Den allmänna formen är "dbi:Pg:dbname=<databas>;host=<server>". Se manualsidan för DBD::Pg för fler detaljer.
+Description-vi.UTF-8: Nguồn dữ liệu PostgreSQL:
+ Hãy nhập nguồn dữ liệu kiểu PostgreSQL được dùng để lưu trữ dữ liệu phiên chạy, có dạng DBI DSN kiểu Perl (xem trang hướng dẫn DBI).
+ .
+ Dạng thức chung là « dbi:Pg:dbname=<co sở dữ liệu>;host=<máy phục vụ> ». Xem trang hướng dẫn của mô-đun Perl « DBD::Pg » để tìm chi tiết.
+Description-zh_TW.UTF-8: PostgreSQL 資料來源：
+ 請選擇您要使用的 PostgreSQL 資料來源，您可以使用 Perl DBI DSN 格式 (參見 DBImanpage)。
+ .
+ 通用格式為 "dbi:Pg:dbname=<database>;host=<server>"。更多細節請參考 DBD::Pg manpage。
+
+Template: libapache-sessionx-perl/store_postgres_username
+Type: string
+Description: PostgreSQL username:
+ Please enter the username used to access the session database. If left blank, the current
+ user's login will be used.
+Description-cs.UTF-8: Jméno uživatele PostgreSQL:
+ Zadejte prosím Jméno uživatele použité pro přístup k relaci databáze. Pokud ho necháte prázdné, bude použito uživatelské jméno nynějšího uživatele.
+Description-da.UTF-8: PostgreSQL-brugernavn:
+ Indtast venligst brugernavnet for adgang til sessionsdatabasen. Hvis efterladt blank så vil den aktuelle brugers logind blive brugt.
+Description-de.UTF-8: PostgreSQL-Benutzername:
+ Bitte geben Sie den Benutzernamen an, der zum Zugriff auf die Sitzungsdatenbank verwendet wird. Bleibt dieser leer, wird der Login des aktuellen Benutzers verwendet.
+Description-es.UTF-8: Usuario de PostgreSQL:
+ Por favor, introduzca el nombre de usuario usado para acceder a la sesión de la base de datos. Si se deja en blanco, se utilizará el nombre del usuario actual.
+Description-eu.UTF-8: PostgreSQL erabiltzaile-izena:
+ Mesedez zehaztu saio datu-basea atzitzeko erabili behar den erabiltzaile-izena. Zurian utziaz gero uneko erabiltzailearen izena erabiliko da.
+Description-fr.UTF-8: Identifiant PostgreSQL :
+ Veuillez indiquer l'identifiant qui sera utilisé pour accéder à la base de données de la session. S'il est omis, le nom d'utilisateur actuel sera utilisé.
+Description-it.UTF-8: Nome utente di PostgreSQL:
+ Inserire il nome utente che sarà utilizzato per accedere al database di sessione. Se non viene inserito alcun valore, sarà utilizzato il login dell'utente attuale.
+Description-ja.UTF-8: PostgreSQL ユーザ名:
+ セッションデータベースへのアクセスに使うユーザ名を入力してください。空白のままにすると、現在のユーザログイン名が使われます。
+Description-nl.UTF-8: PostgreSQL-gebruikersnaam
+ Wat is de gebruikersnaam om toegang te verkrijgen tot de database? Als u dit leeg laat wordt de naam van de momenteel aangemelde gebruiker gebruikt.
+Description-pt.UTF-8: Nome de utilizador PostgreSQL:
+ Por favor introduza o nome de utilizador usado para aceder à base de dados de sessões. Se for deixado em branco, será usado o utilizador corrente.
+Description-ru.UTF-8: Имя пользователя PostgreSQL:
+ Введите имя пользователя, используемого для доступа к базе данных сеансов. Если оставить поле пустым, то будет использовано имя учётной записи текущего пользователя.
+Description-sv.UTF-8: PostgreSQL-användarnamn:
+ Ange användarnamnet som används för att tillgå sessionsdatabasen. Om lämnad blank kommer nuvarande användare att användas.
+Description-vi.UTF-8: Tên người dùng PostgreSQL:
+ Hãy nhập tên người dùng được dùng để truy cập co sở dữ liệu phiên chạy. Nếu trường này được bỏ trống, tên đăng nhập của người dùng hiện thời hoạt động sẽ được dùng.
+Description-zh_TW.UTF-8: PostgreSQL 使用者名稱：
+ 請輸入用來存取 session 資料庫的使用者名稱。如果空白的話，會使用目前的使用者。
+
+Template: libapache-sessionx-perl/store_postgres_password
+Type: password
+Description: PostgreSQL password:
+ Please enter the password used to access the session database. May be
+ left blank if no password is needed.
+Description-cs.UTF-8: Heslo uživatele PostgreSQL:
+ Zadejte prosím heslo použité pro přístup k relaci databáze. Necháte-li ho prázdné, nebude heslo potřeba.
+Description-da.UTF-8: PostgreSQL-adgangskode:
+ Indtast venligst adgangskoden brugt til at tilgå sessionsdatabasen. Kan efterlades blank hvis en adgangskode ikke er krævet.
+Description-de.UTF-8: PostgreSQL-Passwort:
+ Bitte geben Sie das Passwort an, das zum Zugriff auf die Sitzungsdatenbank verwendet wird. Kann leer bleiben, falls kein Passwort benötigt wird.
+Description-es.UTF-8: Contraseña de PostrgreSQL:
+ Por favor, introduzca la contraseña usada para acceder a la sesión de la base de datos. Se puede dejar en blanco si no se necesita contraseña.
+Description-eu.UTF-8: PostgreSQL pasahitza
+ Mesedez zehaztu saio datu-basea atzitzeko erabili behar den pasahitza. Zurian utzi pasahitza behar ez bada.
+Description-fr.UTF-8: Mot de passe PostgreSQL :
+ Veuillez indiquer le mot de passe qui sera utilisé pour accéder à la base de données de la session. Il peut être omis si aucun mot de passe n'est nécessaire.
+Description-it.UTF-8: Password di PostgreSQL:
+ Inserire la password che sarà utilizzata per accedere al database di sessione. Se nessuna password è necessaria, lasciare vuoto.
+Description-ja.UTF-8: PostgreSQL パスワード:
+ セッションデータベースへのアクセスに使うパスワードを入力してください。パスワードが必要ない場合は空のままで構いません。
+Description-nl.UTF-8: PostgreSQL-wachtwoord:
+ Wat is het wachtwoord om toegang te verkrijgen tot de sessiedatabase? Als er geen wachtwoord nodig is kunt u dit leeg laten.
+Description-pt.UTF-8: Palavra-chave do PostgreSQL:
+ Por favor introduza a palavra-chave usada para aceder à base de dados de sessões. Pode ser deixado em branco se não for necessária nenhuma palavra-chave.
+Description-ru.UTF-8: Пароль к PostgreSQL:
+ Введите пароль, используемый для доступа к базе данных сеансов. Если пароль не используется, то можно ничего не вводить.
+Description-sv.UTF-8: PostgreSQL-lösenord:
+ Ange lösenordet som används för att tillgå sessionsdatabasen. Kan lämnas blankt om inget lösenord behövs.
+Description-vi.UTF-8: Mật khẩu PostgreSQL:
+ Hãy nhập mật khẩu được dùng để truy cập co sở dữ liệu phiên chạy. Có thể bỏ trống trường này nếu không cần mật khẩu.
+Description-zh_TW.UTF-8: PostgreSQL 密碼：
+ 請輸入用來存取 session 資料庫的密碼。如果不需密碼則空白。
+
+Template: libapache-sessionx-perl/default_store
+Type: select
+Choices: ${stores}
+Description: Default storage method:
+ Please choose the storage method that will be used by default if you
+ don't specify a particular storage method at run time.
+Description-cs.UTF-8: Výchozí metoda uložení:
+ Zvolte prosím metodu uchování dat, která bude použita jako výchozí, pokud nevyberete konkrétní metodu uchování dat za běhu aplikace.
+Description-da.UTF-8: Standardlagermetode:
+ Vælg venligst lagermetoden som vil blive brugt som standard, hvis du ikke angiver en specifik lagermetode ved kørselstid.
+Description-de.UTF-8: Standard-Speichermethode:
+ Bitte wählen Sie die Speichermethode aus, die standardmäßig verwendet wird, falls Sie nicht eine bestimmte Speichermethode zur Laufzeit auswählen.
+Description-es.UTF-8: Método de almacenamiento predeterminado:
+ Por favor, escoja el método de almacenamiento que usará de forma predeterminada si no especifica un método concreto de almacenamiento en tiempo de ejecución.
+Description-eu.UTF-8: Lehenetsitako biltegiratze metodoa:
+ Mesedez hautatu exekuzio denboran biltegiratze metodo zehatz bat ezartzen ez baduzu lehenespen bezala erabiliko den biltegiratze metodoa.
+Description-fr.UTF-8: Méthode d'enregistrement par défaut :
+ Veuillez indiquer la méthode d'enregistrement qui sera utilisée par défaut si vous ne précisez pas de méthode d'enregistrement particulière lors de l'exécution.
+Description-it.UTF-8: Metodo di memorizzazione predefinito:
+ Scegliere il metodo di memorizzazione che sarà utilizzato in modo predefinito se non verrà specificato un particolare metodo di memorizzazione durante l'esecuzione.
+Description-ja.UTF-8: デフォルトの保存方法:
+ 実行時に特定の保存方法を指定しない場合に、デフォルトで使われる保存方法を選んでください。
+Description-nl.UTF-8: Standaard opslagmethode:
+ Welke opslagmethode wilt u standaard gebruiken wanneer er geen specifieke opslagmethode aangegeven wordt bij het uitvoeren?
+Description-pt.UTF-8: Método de armazenamento por omissão:
+ Por favor escolha o método de armazenamento que será usado por omissão caso não especifique um método em particular quando correr o programa.
+Description-ru.UTF-8: Метод хранения по умолчанию:
+ Выберите метод хранения, который будет использоваться по умолчанию, если вы не укажите какой-то определённый метод хранения во время выполнения.
+Description-sv.UTF-8: Standardmetod för lagring:
+ Ange lagringsmetoden som ska användas som standard om du inte anger en särskild lagringsmetod vid körning.
+Description-vi.UTF-8: Phương pháp lưu trữ mặc định:
+ Hãy chọn phương pháp lưu trữ sẽ được dùng theo mặc định nếu bạn không xác định một phương pháp lưu trữ riêng vào lúc chạy.
+Description-zh_TW.UTF-8: 預設儲存方法：
+ 請選擇預設的儲存方法，每次執行時若未指定方法則會使用預設的方法。

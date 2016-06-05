@@ -1,0 +1,168 @@
+Template: clamsmtp/addusergroup
+Type: boolean
+Default: true
+Description: Add a clamsmtp system user and group?
+ New installations of clamsmtp install with a system user and group of
+ "clamsmtp".  The "clamav" user is added to the clamsmtp group to
+ allow the clamav-daemon process to view the quarantine directory.  If
+ this option is set, the installation process will also update the ownership
+ and permissions of the quarantine and run directories.
+Description-ca.UTF-8: Voleu afegir un usuari i grup del sistema «clamsmtp»?
+ Les noves instal·lacions de clamsmtp es configuren amb un usuari i grup del sistema, «clamsmtp». L'usuari «clamav» s'afegeix a aquest grup per tal de permetre l'accés del procés «clamav-daemon» al directori de quarantena. Si activeu aquesta opció, el procés d'instal·lació també actualitzarà el propietari i els permisos dels directoris de quarantena i execució.
+Description-cs.UTF-8: Přidat systémového uživatele a skupinu clamsmtp?
+ Nové instalace clamsmtp se instalují pod systémového uživatele a skupinu „clamsmtp“. Uživatel „clamav“ je přidán do skupiny clamsmtp, což umožní procesu clamav-daemon, aby viděl do adresáře s karanténou. Odpovíte-li na otázku kladně, instalační proces také upraví vlastnictví a přístupová oprávnění ke karanténě a některým adresářům.
+Description-da.UTF-8: Tilføj en systembruger og -gruppe for clamsmtp?
+ Nye installationer af clamsmtp installeres med en systembruger og -gruppe »clamsmtp«. Brugeren »clamav« tilføjes til gruppen clamsmtp så at clamav-daemon-processen kan vise karantænemappen. Hvis denne indstilling er angivet, så vil installationsprocessen også opdatere ejerskab og rettigheder for karantænen og køre mapper.
+Description-de.UTF-8: Einen Clamsmtp-Systembenutzer und -gruppe hinzufügen?
+ Neue Installationen von Clamsmtp werden mit einem Systembenutzer und -gruppe »clamsmtp« installiert. Der »clamav«-Benutzer wird der clamsmtp-Gruppe hinzugefügt, damit der Clamav-Daemonprozess das Quarantäne-Verzeichnis einsehen kann. Falls diese Option gesetzt ist, wird der Installationsprozess auch den Eigentümer und die Rechte des Quarantäne- und Run-Verzeichnisses aktualisieren.
+Description-es.UTF-8: ¿Desea añadir el usuario y grupo del sistema «clamsmtp»?
+ Las instalaciones nuevas de clamsmtp añaden el usuario y grupo del sistema «clamsmtp». El usuario «clamav» se añade al grupo «clamsmtp» para permitir que el proceso clamav-daemon pueda ver el directorio de cuarentena. De activar esta opción, el proceso de instalación actualizará también el propietario y los permisos de los directorios de cuarentena y ejecución.
+Description-fr.UTF-8: Faut-il ajouter l'identifiant et le groupe système « clamsmtp » ?
+ Une nouvelle installation de clamsmtp crée l'identifiant système et le groupe « clamsmtp ». L'identifiant « clamav » est ajouté au groupe « clamsmtp » pour permettre au service clamav d'accéder au répertoire de quarantaine. Si vous choisissez cette option, le processus d'installation mettra également à jour le propriétaire et les autorisations des répertoires de quarantaine et d'exécution.
+Description-gl.UTF-8: Desexa engadir un usuario e grupo clamsmtp?
+ As novas instalacións de clamsmtp empregan un usuario e grupo «clamsmtp». O usuario «clamav» engádese ao grupo «clamsmtp» para permitirlle ao proceso clamav-daemon consultar o directorio de corentena. Se escolle esta opción o proceso de instalación tamén ha actualizar a propiedade e permisos dos directorios de corentena e execución.
+Description-it.UTF-8: Aggiungere un utente e un gruppo di sistema per clamsmtp?
+ Le nuove installazioni di clamsmtp vengono create con un utente e un gruppo di sistema chiamati «clamsmtp». L'utente «clamav» viene aggiunto al gruppo clamsmtp per permettere al processo clamav-daemon di visualizzare la directory di quarantena. Se questa opzione viene impostata, il processo di installazione aggiornerà anche la proprietà e i permessi delle directory di quarantena e di esecuzione.
+Description-ja.UTF-8: システムユーザおよびグループ として clamsmtp を追加しますか?
+ 新たな clamsmtp のインストールでは、「clamsmtp」というシステムユーザおよびグループでのインストールを行います。clamav-daemon プロセスが隔離ディレクトリを参照可能なように「clamav」ユーザが clamsmtp グループに追加されます。このオプションが設定されると、インストール中に隔離ディレクトリと動作ディレクトリの所有者と権限の更新も行います。
+Description-nl.UTF-8: Wilt u dat er een gebruiker en groep 'clamsmtp' wordt toegevoegd op dit systeem?
+ Nieuwe installaties van clamsmtp installeren met de gebruiker en groep 'clamsmtp' als eigenaar. Om de clamav-achtergronddienst toe te laten om de quarantainemap in te kijken wordt de 'clamav' gebruiker toegevoegd aan de groep 'clamsmtp'. Wanneer u deze optie kiest zal het installatieproces ook de eigenaar en rechten van de quarantaine- en run-mappen bijwerken.
+Description-pt.UTF-8: Adicionar um utilizador e um grupo clamsmtp?
+ Instalações novas do clamsmtp instalam com um utilizador de sistema e um grupo "clamsmtp". O utilizador "clamav" é adicionado ao grupo clamsmtp para permitir que o processo clamav-daemon veja o directório de quarentena. Se esta activar esta opção, o processo de instalação também irá actualizar as informações de dono e permissões dos directórios de quarentena e de execução.
+Description-ru.UTF-8: Добавить системного пользователя и группу clamsmtp?
+ Новые установки clamsmtp создают системного пользователя и группу "clamsmtp". Пользователь "clamav" добавляется в группу clamsmtp, чтобы разрешить процессу clamav-daemon просмотр каталога quarantine. Если вы ответите утвердительно, то процесс установки также обновит права доступа и владельца каталогов quarantine и run.
+Description-sv.UTF-8: Lägg till en systemanvändare och grupp för clamsmtp?
+ Nya installationer av clamsmtp installeras med systemanvändaren och gruppen "clamsmtp".  Användaren "clamav" läggs till i gruppen clamsmtp för att tillåta att processen clamav-daemon kan se i karantänmappen.  Om detta alternativ aktiveras kommer installationen även att uppdatera ägarskapet och rättigheterna till karantän- och körmapparna.Om du svarar jag på denna fråga kommer installationen även att uppdatera ägarskap och rättigheter på karantänen och mappen där PID-filen skrivs.
+Description-vi.UTF-8: Thêm vào hệ thống người dùng và nhóm « clamsmtp » ?
+ Mỗi bản cài đặt clamsmtp mới thì cài đặt vào hệ thống dưới người dùng và nhóm « clamsmtp ». Người dùng « clamav » được thêm vào nhóm « clamsmtp » để cho phép tiến trình clamav-daemon xem thư mục quarantine. Bật tùy chọn này thì tiến trình cài đặt cũng cập nhật quyền sở hữu và quyền truy cập đến các thư mục « quarantine » và « run ».
+
+Template: clamsmtp/do-fixperms
+Type: boolean
+Default: false
+Description: Fix directory permissions?
+ clamsmtpd needs read and write permissions to the virus spool directory,
+ and the run directory in which its PID file is created.  Additionally, the
+ Clam AV daemon must have read access to the spool directory to scan for
+ viruses.
+ .
+ The post-installation script can fix the permissions and ownership of these
+ two directories.  It will consult the /etc/clamsmtpd.conf and
+ /etc/default/clamsmtp files for the administratively assigned TempDirectory,
+ PidFile, User, and Group variables, and then update the two directories
+ appropriately.
+ .
+ Be sure to check directory permissions after running the init script with the
+ parameters 'start' or 'restart'.
+Description-ca.UTF-8: Voleu arreglar els permisos del directori?
+ clamsmtpd necessita permisos de lectura i escriptura al directori de gestió de cues de virus i al directori d'execució («run»), on es crea el seu fitxer PID. Addicionalment, el dimoni Clam AV ha de tenir accés de lectura al directori de gestió de cues per tal d'escanejar en busca de virus.
+ .
+ L'script de post-instal·lació pot arreglar els permisos i el propietari d'aquests dos directoris. Es consultaran els fitxers /etc/clamsmtpd.conf i /etc/default/clamsmtp per a comprovar les variables «TempDirectory», «PidFile», «User», i «Group», i aleshores s'actualitzaran els dos directoris com correspongui.
+ .
+ Assegureu-vos de comprovar els permisos dels directoris després d'executar l'script d'init amb els paràmetres «start» i «restart».
+Description-cs.UTF-8: Opravit práva k adresářům?
+ clamsmtpd vyžaduje práva pro čtení a zápis do virového spool adresáře a do adresáře, kam si ukládá soubor s PID. Dále musí mít Clam AV daemon čtenářský přístup do spool adresáře, aby zde mohl hledat viry.
+ .
+ Poinstalační skript může opravit práva a vlastnictví těchto dvou adresářů. Skript se podívá do souborů /etc/clamsmtpd.conf a /etc/default/clamsmtp, odkud zjistí hodnoty proměnných TempDirectory, PidFile, User a Group a poté příslušně upraví oba adresáře.
+ .
+ Po spuštění init skriptu s parametrem „start“ nebo „restart“ nezapomeňte zkontrolovat oprávnění k adresářům.
+Description-da.UTF-8: Ret mapperettigheder?
+ clamsmtp skal bruge læse- og skriverettigheder til puljemappen med vira, og kørselsmappen hvor dens PID-fil oprettes. Yderligere skal Clam AV-dæmonen have læseadgang til puljemappen for at skanne vira.
+ .
+ Skriptet, der køres efter installation, kan rette rettighederne og ejerskab for disse to mapper. Skriptet vil konsultere filerne /etc/clamsmtpd.conf og /etc/default/ for de administrativt tildelte variabler TempDirectory, PidFile, User og Group, og så opdatere de to mapper tilsvarende.
+ .
+ Husk at kontrollere mapperettighederne efter kørsel af init-skriptet med parametrene »start« eller »restart«.
+Description-de.UTF-8: Verzeichnisrechte korrigieren?
+ Clamsmtpd benötigt Lese- und Schreibrechte für das Virus-Spool-Verzeichnis und das run-Verzeichnis, in dem seine PID-Datei erstellt wird. Zusätzlich benötigt der Clam-AV-Daemon für die Virenprüfung Lesezugriff auf das Spool-Verzeichnis.
+ .
+ Das Post-Installations-Skript kann die Rechte und Eigentümer dieser zwei Verzeichnisse korrigieren. Es wird die administrativ zugewiesenen Variablen TempDirectory, PidFile, Benutzer und Gruppe aus den Dateien /etc/clamsmtpd.conf und /etc/default/clamsmtp entnehmen und dann die zwei Verzeichnisse entsprechend aktualisieren.
+ .
+ Überprüfen Sie die Verzeichnisrechte, nachdem Sie die Kommandos »start« oder »restart« für das init-Skript verwendet haben.
+Description-es.UTF-8: ¿Desea arreglar los permisos del directorio?
+ clamsmtpd precisa permisos de lectura y escritura en el directorio de la cola («spool») de virus, y en el directorio en el cual crea su fichero PID. Además, el demonio de Clam AV precisa permisos de lectura en el directorio de la cola para realizar un análisis en busca de virus.
+ .
+ El script de post-instalación puede arreglar los permisos y el propietario de estos dos directorios. Consultará los ficheros «/etc/clamsmtpd.conf» y «/etc/default/clamsmtp» en busca de las variables «TempDirectory», «PidFile», «User» y «Group», designadas por el administrador, para después actualizar ambos directorios apropiadamente.
+ .
+ Revise los permisos del directorio después de ejecutar el script de arranque («init») con los parámetros «start» o «restart».
+Description-fr.UTF-8: Faut-il corriger les autorisations sur le répertoire ?
+ Clamsmtp doit avoir accès en lecture et écriture au répertoire de cache des virus, ainsi qu'au répertoire d'exécution « run » où le fichier PID (fichier d'identification de processus) est créé. De plus, le démon Clam AV doit aussi avoir accès en lecture à ce même répertoire de cache afin d'y examiner les fichiers à la recherche de virus.
+ .
+ Veuillez confirmer si le script de post-installation doit vérifier et corriger les autorisations et le propriétaire de ces deux répertoires. Les fichiers /etc/clamsmtpd.conf et /etc/default/clamsmtp seront consultés afin d'utiliser les variables administratives « TempDirectory », « PidFile », « User » et « Group » puis les deux répertoires seront corrigés.
+ .
+ N'oubliez pas de vérifier les permissions du répertoire après l'exécution du script d'initialisation avec le paramètre « start » ou « restart ».
+Description-it.UTF-8: Correggere i permessi delle directory?
+ clamsmtpd deve avere i permessi di lettura e scrittura per la directory dello spool dei virus e per la directory di esecuzione in cui viene creato il suo file PID. In aggiunta, il demone Clam AV deve avere accesso in lettura alla directory di spool per la ricerca anti-virus.
+ .
+ Lo script di post-installazione può correggere i permessi e la proprietà di queste due directory. Consulterà i file /etc/clamsmtpd.conf e /etc/default/ di clamsmtp per le variabili TempDirectory, PidFile, User e Group assegnate dall'amministratore e poi aggiornerà le due directory in modo appropriato.
+ .
+ Assicurarsi di controllare i permessi delle directory dopo aver eseguito lo script init con i parametri «start» o «restart».
+Description-ja.UTF-8: ディレクトリの権限を修正しますか?
+ clamsmtp は、スプールのディレクトリと PID が生成される動作ディレクトリに読み書きできる権限を必要とします。加えて Clam AV デーモンは、ファイルをウィルススキャンするために同じスプールディレクトリの読み取り権限が必要です。
+ .
+ post-installation スクリプトによって、これら 2 つのディレクトリの権限と所有者を修正できます。/etc/clamsmtpd.conf で TempDirectory 変数、PidFile 変数、User 変数、Group 変数が管理のために割り当てられるので、2 つのディレクトリを適切に更新してください。
+ .
+ init スクリプトに 'start' あるいは 'restart' パラメータを付けて実行した後で、ディレクトリの権限を必ず確認してください。
+Description-nl.UTF-8: Wilt u de maprechten bijwerken?
+ Clamsmtpd heeft lees- en schrijfrechten nodig op de virus-spoolmap, en op de run-map waarin het PID-bestand aangemaakt wordt. Verder heeft de Clam AV-achtergronddienst leesrechten nodig in de spoolmap om naar virussen te scannen.
+ .
+ Het post-installatiescript kan de de rechten en de eigenaar van deze twee mappen aanpassen. De bestanden /etc/clamsmtpd.conf en /etc/default/clamsmtp worden nagekeken om de door de beheerder bepaalde TempDirectory, PidFile, User, en Group variabelen te bepalen; de twee mappen worden overeenkomstig bijgewerkt.
+ .
+ Vergeet niet om de rechten van de mappen te controleren na het uitvoeren van het initscript met de parameters 'start' of 'restart'.
+Description-pt.UTF-8: Corrigir as permissões dos directórios?
+ O clamsmtpd necessita de permissões de escrita e leitura no directório de spool de virus, e no directório run no qual o seu ficheiro de PID é criado. Também o daemon Clam AV tem de ter acesso de leitura ao directório de spool para procurar por virus.
+ .
+ O script pós-instalação pode corrigir as permissões e a propriedade destes dois directórios. Irá consultar os ficheiros /etc/clamsmtpd.conf e /etc/default/clamsmtp para obter as variáveis atribuídas administrativamente TempDirectory, PidFile, User e Group, e actualizará apropriadamente os dois directórios.
+ .
+ Verifique as permissões do directório após correr o script 'init' com os parâmetros 'start' ou 'restart'.
+Description-ru.UTF-8: Исправить права доступа каталогов?
+ clamsmtpd нужны права на чтение и запись в каталог хранения вирусов и каталог run, в котором создается PID файл. Также, служба Clam AV должна иметь доступ на чтение к каталогу хранения, чтобы искать вирусы.
+ .
+ Послеустановочный сценарий может исправить права доступа и владельца двух этих каталогов. Он прочитает файлы /etc/clamsmtpd.conf и /etc/default/clamsmtp и, в соответствии с указанными там переменными TempDirectory, PidFile, User и Group, обновит два этих каталога.
+ .
+ Проверьте права на каталог после работы сценария запуска с параметрами start или restart.
+Description-sv.UTF-8: Fixa till mapprättigheterna?
+ clamsmtpd behöver läs- och skrivrättigheter till virus-spoolmappen och kunna köra från den mapp där dess PID-fil är skapad.  ClamAV-daemonen måste också ha läsrättighet till spoolmappen för att skanna efter virus.
+ .
+ Skriptet som körs efter installationen kan sätta rättigheterna och ägarskapet för dessa två mappar. I filerna /etc/clamsmtpd.conf och /etc/default/clamsmtp läser skriptet de administrativt tilldelade variablerna TempDirectory, PidFile, User, och Group för att sedan uppdatera de två mapparna.
+ .
+ Kontrollera rättigheterna för mappen efter att skriptet har körts med parametrarna "start" eller "restart".
+Description-vi.UTF-8: Sửa chữa các quyền hạn thư mục ?
+ Trình nền clamsmptd yêu cầu quyền đọc và ghi vào thư mục ống chỉ vi-rút và thư mục « run » trong đó tập tin PID riêng được tạo. Hơn nữa, trình nền Clam AV phải có quyền đọc vào thư mục ống chỉ, để quét tìm vi-rút.
+ .
+ Văn lệnh cuối cùng cài đặt có khả năng sửa chữa quyền hạn và quyền sơ hữu của hai thư mục này. Nó sẽ quét hai tập tin « /etc/clamsmtpd.conf » và « /etc/default/clamsmtp » tìm các biến « TempDirectory » (thư mục tạm thời), « PidFile » (tập tin PID), « User » (người dùng), và « Group » (nhóm), sau đó cập nhật thích hợp hai thư mục đó.
+ .
+ Hãy kiểm tra lại các quyền truy cập đến thư mục, sau khi chạy văn lệnh sơ khởi với tham số « start » hay « restart ».
+
+Template: clamsmtp/purge
+Type: boolean
+Default: true
+Description: Purge spool directory on --purge?
+ The virus spool directory may contain quarantined viruses that can be removed
+ automatically when purging the package.
+Description-ca.UTF-8: Voleu esborrar del tot el directori de gestió de cues en fer «--purge»?
+ El directori de gestió de cues pot contenir virus en quarantena que es poden esborrar automàticament quan elimineu el paquet.
+Description-cs.UTF-8: Smazat spool adresář při odstranění balíku s volbou --purge?
+ Virový spool adresář může obsahovat viry v karanténě, které je možno při odstranění balíku ze systému smazat.
+Description-da.UTF-8: Tøm puljemappe med --purge?
+ Puljemappen for vira kan indeholde karantæneramte vira, som kan fjernes automatisk når pakken afinstalleres.
+Description-de.UTF-8: Bei --purge das Spool-Verzeichnis vollständig löschen?
+ Das Virus-Spool-Verzeichnis könnte Viren in Quarantäne enthalten. Diese können beim vollständigen Löschen des Paketes automatisch entfernt werden.
+Description-es.UTF-8: ¿Desea purgar el directorio de la cola al usar «--purge»?
+ El directorio de la cola de virus puede contener virus en cuarentena que se pueden eliminar automáticamente al purgar el paquete.
+Description-fr.UTF-8: Faut-il purger le répertoire de cache si le paquet est désinstallé avec l'option « --purge » ?
+ Le répertoire de cache pourrait contenir des virus en quarantaine. Veuillez choisir si ces fichiers doivent être supprimés lorsque le paquet est purgé.
+Description-gl.UTF-8: Desexa borrar o directorio de traballo ao purgar o paquete?
+ O directorio de fila de virus pode conter virus en corentena que se poden eliminar automaticamente cando se purga o paquete.
+Description-it.UTF-8: Svuotare la directory di spool quando viene usato --purge?
+ La directory di spool dei virus può contenere virus in quarantena che possono essere rimossi automaticamente quando viene eliminato completamente il pacchetto.
+Description-ja.UTF-8: --purge を指定した際にスプールのディレクトリを完全に削除しますか?
+ 隔離されたウィルスが含まれているかもしれないウィルススプールディレクトリは、パッケージを完全削除 (purge) する際に自動的に削除できます。
+Description-nl.UTF-8: De spoolmap wissen bij het wissen van dit pakket?
+ De virus-spoolmap kan virussen in quarantaine bevatten die automatisch worden verwijderd bij het wissen ('purge') van het pakket.
+Description-pt.UTF-8: Apagar o directório de spool aquando de um --purge?
+ O directório de spool de vírus pode conter vírus em quarentena que podem ser removidos automaticamente na operação de purge ao pacote.
+Description-ru.UTF-8: Очистить каталог хранения при --purge?
+ В каталоге хранения вирусов могут содержаться файлы с вирусами в карантине, которые могут быть автоматически удалены при вычистке пакета.
+Description-sv.UTF-8: Rensa spool-mappen vid --purge ?
+ Spool-mappen för virus kan innehålla virus i karantän som kan tas bort automatiskt när paketet tas bort.
+Description-vi.UTF-8: Tẩy thư mục ống chỉ khi tẩy (--purge) ?
+ Thư mục ống chỉ vi-rút có thể chứa vi-rút được kiểm dịch mà cũng gỡ bỏ được khi tẩy gói phần mềm.

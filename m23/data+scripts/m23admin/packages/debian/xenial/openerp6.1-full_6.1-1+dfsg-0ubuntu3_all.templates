@@ -1,0 +1,35 @@
+Template: openerp6.1-full/install_type
+Type: select
+Choices: local, remote
+Default: local
+Description: What's the location of your PostgreSQL server? [local|remote]
+ The openerp6.1-full package needs to configure your OpenERP settings depending on PostgreSQL server.
+
+Template: openerp6.1-full/install_host
+Type: string
+Description: Hostname for your PostgreSQL server
+ The openerp6.1-full package needs to configure your PostgreSQL hostname.
+
+Template: openerp6.1-full/install_user
+Type: string 
+Description: Username for your PostgreSQL server
+ The openerp6.1-full package needs to configure your PostgreSQL user.
+
+Template: openerp6.1-full/install_password
+Type: password
+Description: Password for your PostgreSQL server
+ The openerp6.1-full package needs to configure your PostgreSQL password.
+
+Template: openerp6.1-full/install_port
+Type: string
+Default: 5432
+Description: Port for your PostgreSQL server [5432]
+ The openerp6.1-full package needs to configure your PostgreSQL port.
+
+Template: openerp6.1-full/remove_user
+Type: boolean
+Default: true
+Description: Do you want to remove the OpenERP PostgreSQL User?
+ The openerp6.1-full package needs to remove your OpenERP PostgreSQL user.
+ .
+ This will remove the openerp user that was previously created in your PostgreSQL server.

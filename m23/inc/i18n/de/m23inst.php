@@ -71,4 +71,8 @@ $I18N_installing_elementary_desktop = 'Elementary OS Desktop wird installiert';
 
 //15.2
 $I18N_installing_gnome="Gnome Desktop wird installiert";
+
+//16.2
+$I18N_installingEduBuntuGnome='Edubuntu-Desktop wird installiert';
+$I18N_installingLMythbuntu='Mythbuntu wird installiert';
 ?>

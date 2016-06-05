@@ -1,0 +1,322 @@
+Template: xfonts-traditional/generate
+Type: boolean
+Default: true
+Description: Generate traditional versions of fonts?
+ xfonts-traditional can automatically generate traditional versions
+ (with foundry "Trad" instead of "Misc") of all fonts for which it has
+ an idea about the glyphs.  (Currently this is versions of 6x13, aka
+ "fixed".)
+ .
+ But you may prefer not to do this automatically, and would rather
+ just have the tool installed.
+Description-cs.UTF-8: Vytvořit tradiční verze písem?
+ Pomocí xfonts-traditional je možné automaticky vytvořit tradiční verze (s obtékáním "Trad" namísto "Misc") všech písem u kterých je zřejmé, že je to potřeba. V současnosti to znamená verze 6x13, známé také jako "fixed".
+ .
+ Můžete však dát přednost tomu, aby se nástroj jen nainstaloval a automaticky je nevytvářel.
+Description-da.UTF-8: Opret traditionelle versioner for skrifttyper?
+ Med xfonts-traditional er det muligt automatisk at oprette traditionelle versioner (med foundry »Trad« i stedet for »Misc«) for alle skrifttyper, hvor det fremgår klart, hvad der skal gøres. Aktuelt betyder dette versioner på 6x13, også kendt som »fixed«.
+ .
+ Men du foretrækker måske bare at installere værktøjet og ikke udføre dette automatisk.
+Description-de.UTF-8: Traditionelle Versionen von Schriften erzeugen?
+ Mit Xfonts-traditional ist es möglich, automatisch traditionelle Versionen (mit der Einstellung »Trad« anstelle von »Misc«) von allen Schriften zu erzeugen, bei denen klar ist, was getan werden muss. Aktuell bedeutet dies Versionen von 6x13, die auch als »fixed« bekannt sind.
+ .
+ Aber vielleicht ziehen Sie es vor, das Werkzeug installiert zu haben, ohne dies automatisch zu tun.
+Description-fr.UTF-8: Faut-il créer des versions traditionnelles des polices ?
+ Avec xfonts-traditional, il est possible de créer automatiquement des versions traditionnelles (avec la fonderie « Trad » à la place de « Misc ») de toutes les polices pour lesquelles ce qui doit être fait est clairement défini. Actuellement cela concerne les versions de 6x13, également connues comme « fixed ».
+ .
+ Vous pourriez préférer que cette création ne soit pas automatique et simplement disposer de l'outil nécessaire.
+Description-it.UTF-8: Generare versioni tradizionali dei tipi di carattere?
+ Con xfonts-traditional è possibile generare automaticamente versioni tradizionali (con foundry «Trad» invece di «Misc») di tutti i tipi di carattere per i quali sia chiaro ciò che deve essere fatto. Attualmente ciò significa versioni 6x13, nota anche come «spaziatura fissa».
+ .
+ Però si può preferire non farlo automaticamente ma avere solamente lo strumento installato.
+Description-ja.UTF-8: 昔のバージョンのフォントを生成しますか?
+ xfonts-traditional は形を把握している全フォントの昔のバージョン (「Misc」ではなく「Trad」) を自動的に生成することができます。  (これは現在 6x13 のバージョン、別名「等幅フォント」です。)
+ .
+ しかしこれを自動的に行うのは好みの別れるところで、ツールのインストールに留めたいかもしれません。
+Description-nl.UTF-8: Traditionele versies van de lettertypes aanmaken?
+ Met xfonts-traditional is het mogelijk om automatisch traditionele versies (met foundry "Trad" in plaats van "Misc") van alle lettertypes waarvan duidelijk is hoe dit kan worden gedaan. Op dit moment betreft dit veries van 6x13, ook bekend als "fixed".
+ .
+ Maar mogelijk wilt u alleen het hulpprogramma geïnstalleerd hebben en dit niet automatisch laten doen.
+Description-pl.UTF-8: Utworzyć tradycyjne wersje fontów?
+ Program xfonts-traditional może wygenerować w sposób automatyczny tradycyjne wersje (z ustawionym edytorem "Trad" zamiast "Misc") wszystkich czcionek, dla których jest jasne, co powinno zostać wykonane. Obecnie uwzględnione są wersje 6x13, znane również jako "fixed".
+ .
+ Istnieje również możliwość zainstalowania tego narzędzia, bez automatycznego generowania fontów.
+Description-pt.UTF-8: Gerar versões tradicionais de tipos de letra?
+ Com xfonts-traditional é possível gerar automaticamente versões tradicionais (com foundry "Trad" em vez de "Misc") de todos os tipos de letra onde tenha que ser feito. Actualmente isto quer dizer versões de 6x13, também conhecidas como "fixed". 
+ .
+ Mas pode preferir apenas ter a ferramenta instalada e não fazer isto automaticamente.
+Description-ru.UTF-8: Сгенерировать традиционные версии шрифтов?
+ С помощью пакета xfonts-traditional можно автоматически сгенерировать традиционные версии (с помощью преобразователя «Trad» вместо «Misc») всех шрифтов, где ясно что нужно сделать. В настоящее время создаются версии 6x13, также известные как «fixed».
+ .
+ Но вы можете просто установить данный инструмент и ничего не генерировать автоматически.
+Description-sv.UTF-8: Skapa traditionell version av teckensnitten?
+ Med xfonts-traditional är det möjligt att automatiskt skapa traditionell version (med valet "Trad" istället för "Misc") av alla teckensnitt där det är helt uppenbart vad som behövs för att utföra det. Förnärvarande innebär det alla versioner av 6x13, även känd som "fixed".
+ .
+ Men du kan föredra att bara ha verktyget installerat och vill inte göra detta automatiskt.
+
+Template: xfonts-traditional/reconfigure-xterm
+Type: boolean
+Default: false
+Description: Configure xterm to use traditional fonts?
+ You can have the xterm default UTF-8 font changed to the traditional
+ version.
+ .
+ If you approve, I will edit /etc/X11/app-default/XTerm for you, and
+ save your old file as XTerm.backup.not-trad.  (Note that this is a
+ conffile so you may get prompts from dpkg about it in the future.)
+ .
+ Alternatively, if you do not want me to change the default, I will
+ generate the file XTerm.trad, but it will not be used.
+ .
+ To revert the change, simply change the key "*VT100.utf8Fonts.font"
+ back from "-trad-..." to "-misc-...", or rename the old file back
+ into place.
+Description-cs.UTF-8: Nastavit xterm k používání tradičního písma?
+ Výchozí UTF-8 písmo v xterm můžete změnit na tradiční verzi.
+ .
+ Zvolení této možnosti upraví /etc/X11/app-defaults/XTerm, obsah původního souboru bude zachován v XTerm.backup.not-trad. Protože je to konfigurační soubor, dpkg o něj může v budoucnu požádat.
+ .
+ V případě, že nechcete změnit výchozí písmo, vytvoří se soubor XTerm.trad, ale nebude se používat.
+ .
+ Pro vrácení změn jednoduše změňte klíč "*VT100.utf8Fonts.font" z "-trad-..." zpět na "-misc-...", nebo původní soubor přejmenujte zpět na původní název.
+Description-da.UTF-8: Konfigurer xterm til at bruge traditionelle skrifttyper?
+ Du kan ændre xterm UTF-8 standardskriften til den traditionelle version.
+ .
+ Valg af denne indstilling vil ændre /etc/X11/app-defaults/XTerm, den gamle fil gemmes som XTerm.backup.not-trad. Da dette er en konfigurationsfil, kan du blive spurgt fra dpkg om den i fremtiden.
+ .
+ Alternativt vil XTerm.trad, hvis du ikke ønsker at ændre standarden, blive oprettet men ikke brugt.
+ .
+ For at omgøre ændringen, så ret nøglen »*VT100.utf8Fonts.font« tilbage fra »-trad-...« til »-misc-...«, eller omdøb den gamle fil tilbage på plads.
+Description-de.UTF-8: Xterm konfigurieren, um traditionelle Schrift zu verwenden?
+ Sie können die Standard-UTF-8-Schrift von Xterm in die traditionelle Version ändern.
+ .
+ Die Auswahl dieser Option wird /etc/X11/app-defaults/XTerm verändern und die alte Datei als XTerm.backup.not-trad aufheben. Da dies eine Konfigurationsdatei ist, könnte es sein, dass Sie in Zukunft diesbezügliche Fragen von Dpkg erhalten.
+ .
+ Alternativ, wenn Sie die Vorgabe nicht ändern möchten, wird XTerm.trad erstellt aber nicht benutzt.
+ .
+ Um die Änderung zurückzunehmen, ändern Sie einfach den Schlüssel »*VT100.utf8Fonts.font« zurück von »-trad-…« in »-misc-…« oder benennen die alte Datei an dieser Stelle wieder um.
+Description-fr.UTF-8: Configurer xterm pour utiliser les polices traditionnelles ?
+ Il est possible de changer la police UTF-8 par défaut de xterm pour la version traditionnelle.
+ .
+ Choisir cette option modifiera le fichier /etc/X11/app-defaults/XTerm, tout en préservant les anciens fichiers en tant que XTerm.backup.not-trad. Comme il s'agit d'un fichier de configuration, il se peut que dpkg vous pose des questions à l'avenir.
+ .
+ Alternativement, si vous ne changez pas la valeur par défaut, XTerm.trad sera créé, mais non utilisé.
+ .
+ Pour annuler les changements, il suffit de modifier la clé « *VT100.utf8Fonts.font » de « -trad-... » vers « -misc-... », ou redonner son nom d'origine à l'ancien fichier.
+Description-it.UTF-8: Configurare xterm per usare il tipo di carattere tradizionale?
+ Si può cambiare il tipo di carattere UTF-8 predefinito di xterm nella versione tradizionale.
+ .
+ Se si sceglie questa opzione /etc/X11/app-defaults/XTerm verrà modificato, preservando il vecchio file come XTerm.backup.not-trad. Dato che questo è un file di configurazione, è possibile che dpkg in futuro ponga domande su di esso.
+ .
+ In alternativa, se non si desidera modificare il carattere predefinito, XTerm.trad verrà creato ma non usato.
+ .
+ Per annullare il cambiamento, rimodificare semplicemente la chiave «*VT100.utf8Fonts.font» da «-trad-...» a «-misc-...» oppure rinominare il vecchio file nuovamente al suo posto.
+Description-ja.UTF-8: 昔のフォントを使うように xterm を設定しますか?
+ xterm のデフォルトの UTF-8 フォントを昔のバージョンに変更させることもできます。
+ .
+ 承認した場合は、/etc/X11/app-default/XTerm を変更し、古いファイルを XTerm.backup.not-trad に保存します。(これは設定ファイルなので、将来 dpkg がこれについて何か聞いてくるかもしれません。)
+ .
+ また、デフォルトは変えたくないという場合は XTerm.trad ファイルを生成しますがこれは使用されません。
+ .
+ この変更を戻すには、単にキー「*VT100.utf8Fonts.font」を「-trad-...」から「-misc-...」に戻すか、古いファイルを改名して元に戻します。
+Description-nl.UTF-8: Xterm configureren om een traditioneel lettertype te gebruiken?
+ U kunt het standaard UTF-8-lettertype van xterm aanpassen naar de traditionele versie.
+ .
+ Als u voor deze optie kiest dan zal /etc/X11/app-defaults/XTerm worden aangepast, het oude bestand wordt bewaard als XTerm.backup.not-trad. Aangezien dit een configuratiebestand is kan dpkg u hier in de toekomst naar vragen.
+ .
+ Wanneer u de standaardwaarde niet wilt aanpassen zal XTerm.trad worden aangemaakt maar niet gebruikt worden.
+ .
+ U kunt de verandering terugdraaien door de sleutel "*VT100.utf8Fonts.font" terug te zetten van "-trad-..." naar "-misc-...", of door het oude bestand terug te zetten.
+Description-pl.UTF-8: Skonfigurować xterm w celu używania tradycyjnych fontów?
+ Można zmienić domyślny font UTF-8 xterma na wersję tradycyjną.
+ .
+ Wybranie tej opcji spowoduje zmodyfikowanie pliku /etc/X11/app-defaults/XTerm, zachowując stary pod nazwą XTerm.backup.not-trad. Ponieważ jest to plik konfiguracyjny, dpkg może w przyszłości wyświetlać związane z nim zapytania.
+ .
+ Można również nie zmieniać wartości domyślnej, XTerm.trad zostanie wtedy utworzony, ale nie będzie używany.
+ .
+ Aby cofnąć zmianę, należy zmienić z powrotem klucz "*VT100.utf8Fonts.font" z "-trad-..." na "-misc-..." lub przenieść stary plik pod swoją pierwotną nazwę.
+Description-pt.UTF-8: Configurar o xterm para utilizar a font tradicional?
+ Pode ter o tipo de letra UTF-8 predefinido do xterm alterado para a versão tradicional.
+ .
+ Escolher esta opção irá modificar /etc/X11/app-defaults/XTerm, preservando o antigo ficheiro como XTerm.backup.not-trad. Como é um ficheiro de configuração, poderá, no futuro, ser questionado pelo dpkg.
+ .
+ Em alternativa, se não quiser alterar o predefinido, o XTerm.trad será criado mas não será utilizado.
+ .
+ Para reverter a alteração, simplesmente altere a chave "*VT100.utf8Fonts.font" de volta para "-trad-..." para "-misc-...", ou renomeia o antigo ficheiro de novo para o seu local.
+Description-ru.UTF-8: Включить в xterm использование традиционного шрифта?
+ Вы можете изменить настройку xterm по умолчанию, использующую шрифт UTF-8, на традиционную версию.
+ .
+ После утвердительного ответа будет изменён файл /etc/X11/app-defaults/XTerm, его старая версия будет сохранена под именем XTerm.backup.not-trad. Так как это файл настройки, dpkg может спросить вас о нём в будущем.
+ .
+ В противном случае, если вы не хотите изменять настройки по умолчанию, будет создан (но не задействован) файл XTerm.trad.
+ .
+ Чтобы отменить изменение просто исправьте значение ключа «*VT100.utf8Fonts.font» с «"-trad-…» обратно на «-misc-…», или верните старый файл на прежнее место.
+Description-sv.UTF-8: Ska xterm ställas in för att använda traditionella teckensnitt?
+ Du kan få xterm att använda teckensnitt av traditionell version som standard UTF-8-teckensnitt.
+ .
+ Väljs detta val kommer /etc/X11/app-defaults/XTerm att modifieras, den gamla filen kommer att sparas som XTerm.backup.not-trad. Eftersom detta är en inställningsfil kan du få frågor om den från dpkg i framtiden.
+ .
+ Alternativt, om du inte vill ändra standardvalet, kommer XTerm.trad att skapas men inte användas.
+ .
+ För att återställa ändringarna behöver nyckeln "*VT100.utf8Fonts.font" ändras från "-trad-..."  till "-misc-..." eller flytta om filerna så att den gamla används igen.
+
+Template: xfonts-traditional/remap-fixed
+Type: boolean
+Default: false
+Description: Configure system to use traditional "fixed"?
+ I can remap the font alias "fixed" to the traditional version.
+ .
+ If you approve, I will edit /etc/X11/fonts/misc/xfonts-base.alias for
+ you, and save your old file as xfonts-base.alias.backup.not-trad.
+ (Note that this is a conffile, so you may get prompts from dpkg about
+ it in the future.)
+ .
+ Alternatively, if you do not want me to change the default, I will
+ generate xfonts-base-alias.trad for you to do what you like with.
+ .
+ To revert this change, simply change the alias "fixed" back from
+ "-trad-..."  to "-misc-...", or rename the old file back into place.
+Description-cs.UTF-8: Nastavit systém k používání tradičního písma "fixed"?
+ Alias písma "fixed" lze přemapovat na tradiční verzi.
+ .
+ Zvolení této možnosti upraví /etc/X11/fonts/misc/xfonts-base.alias, obsah původního souboru bude zachován v xfonts-base.alias.backup.not-trad. Protože je to konfigurační soubor, dpkg o něj může v budoucnu požádat.
+ .
+ V případě, že nechcete změnit výchozí písmo, vytvoří se soubor xfonts-base-alias, ale nebude se používat.
+ .
+ Pro vrácení změn jednoduše změňte alias z "-trad-..." zpět na "-misc-...", nebo původní soubor přejmenujte zpět na původní název.
+Description-da.UTF-8: Konfigurer systemet til at bruge traditionel »fixed«?
+ Skriftaliasset »fixed« kan genoversættes til den traditionelle version.
+ .
+ Valg af denne indstilling vil ændre /etc/X11/fonts/misc/xfonts-base.alias, bevare den gamle fil som xfonts-base-alias.backup.not-trad. Da dette er en konfigurationsfil, kan du blive spurgt fra dpkg om den i fremtiden.
+ .
+ Alternativt, hvis du ikke ønsker at ændre standarde, så vil xfonts-base-alias.trad blive oprettet men ikke brugt.
+ .
+ For at omgøre ændringen, så ret aliasset »fixed« tilbage fra »-trad-...« til »-misc-...«, eller omdøb den gamle fil tilbage på plads.
+Description-de.UTF-8: System konfigurieren, um traditionelles »fixed« zu verwenden?
+ Der Schriftalias »fixed« kann wieder auf die traditionelle Version abgebildet werden.
+ .
+ Die Auswahl dieser Version wird /etc/X11/fonts/misc/xfonts-base.alias verändern und die alte Datei als xfonts-base.alias.backup.not-trad aufheben. Da dies eine Konfigurationsdatei ist, könnte es sein, dass Sie in Zukunft diesbezügliche Fragen von Dpkg erhalten.
+ .
+ Alternativ, wenn Sie die Vorgabe ändern nicht möchten, wird xfonts-base-alias.trad erstellt aber nicht benutzt.
+ .
+ Um die Änderung zurückzunehmen, ändern Sie einfach den Alias »fixed« zurück von »-trad-…« in »-misc-…« oder benennen die alte Datei an dieser Stelle wieder um.
+Description-fr.UTF-8: Faut-il configurer le système pour utiliser la police « fixed » traditionnelle ?
+ La police « fixed » peut être redirigée vers la version traditionnelle.
+ .
+ Choisir cette option modifiera le fichier /etc/X11/fonts/misc/xfonts-base.alias, tout en préservant les anciens fichiers en tant que xfonts-base.alias.backup.not-trad. Comme il s'agit d'un fichier de configuration, il se peut que dpkg vous pose des questions à l'avenir.
+ .
+ Alternativement, si vous ne changez pas la valeur par défaut,  xfonts-base-alias.trad sera créé, mais non utilisé.
+ .
+ Pour annuler les changements, il suffit de modifier l'alias « fixed » de « -trad-... » vers « -misc-... », ou redonner son nom d'origine à l'ancien fichier.
+Description-it.UTF-8: Configurare il sistema per usare il tradizionale «a spaziatura fissa»?
+ L'alias per il tipo di carattere «fixed» (a spaziatura fissa) può essere rimappato alla versione tradizionale.
+ .
+ Se si sceglie questa opzione /etc/X11/fonts/misc/xfonts-base.alias, verrà modificato, preservando il vecchio file come xfonts-base.alias.backup.not-trad. Dato che questo è un file di configurazione, è possibile che dpkg in futuro ponga domande su di esso.
+ .
+ In alternativa, se non si desidera modificare l'alias predefinito, xfonts-base-alias.trad verrà creato ma non usato.
+ .
+ Per annullare il cambiamento, rimodificare semplicemente l'alias «fixed» da «-trad-...» a «-misc-...» oppure rinominare il vecchio file nuovamente al suo posto.
+Description-ja.UTF-8: 昔の「等幅フォント」を使うようにシステムを設定しますか?
+ フォントの別名「fixed」を昔のバージョンを参照するようにできます。
+ .
+ 承認した場合は、/etc/X11/fonts/misc/xfonts-base.alias を変更し、古いファイルを xfonts-base.alias.backup.not-trad に保存します。(これは設定ファイルなので、将来 dpkg がこれについて何か聞いてくるかもしれません。)
+ .
+ また、デフォルトは変えたくないという場合は自由にできる xfonts-base-alias.trad ファイルを生成します。
+ .
+ この変更を戻すには、単に別名「fixed」を「-trad-...」から「-misc-...」に戻すか、古いファイルを改名して元に戻します。
+Description-nl.UTF-8: Het systeem configueren om de tranditionele "fixed" te gebruiken?
+ De lettertype-alias "fixed" kan naar de traditionele versie worden doorgewezen.
+ .
+ Als u voor deze optie kiest dan zal /etc/X11/fonts/misc/xfonts-base.alias worden aangepast, het oude bestand wordt bewaard als xfonts-base.alias.backup.not-trad. Aangezien dit een configuratiebestand is kan dpkg u hier in de toekomst naar vragen.
+ .
+ Wanneer u de standaardwaarde niet wilt aanpassen zal xfonts-base-alias worden aangemaakt maar niet gebruikt worden.
+ .
+ U kunt de verandering terugdraaien door de alias "fixed" terug te zetten van "-trad-..." naar "-misc-...", of door het oude bestand terug te zetten.
+Description-pl.UTF-8: Skonfigurować system w celu używania tradycyjnych fontów "fixed"?
+ Alias fontów "fixed" może zostać zmieniony na wersję tradycyjną.
+ .
+ Wybranie tej opcji zmodyfikuje /etc/X11/fonts/misc/xfonts-base.alias, zachowując stary plik pod nazwą xfonts-base.alias.backup.not-trad. Ponieważ jest to plik konfiguracyjny, dpkg może w przyszłości wyświetlać związane z nim zapytania.
+ .
+ Można również nie zmieniać wartości domyślnej, xfonts-base-alias.trad zostanie wtedy utworzony, ale nie będzie używany.
+ .
+ Aby cofnąć zmianę, należy zmienić z powrotem alias "fixed" z "-trad-..." na "-misc-..." lub przenieść stary plik pod swoją pierwotną nazwę.
+Description-pt.UTF-8: Configurar o sistema para utilizar o tradicional "fixed"?
+ O alias "fixed" pode ser remapeado para a versão tradicional.
+ .
+ Escolher esta opção irá modificar /etc/X11/fonts/misc/xfonts-base.alias, preservando o antigo ficheiro como xfonts-base.alias.backup.not-trad. Como isto é um ficheiro de configuração, no futuro, poderá ser questionado pelo dpkg.
+ .
+ Em alternativa, se não quiser alterar o predefinido, será criado o xfonts-base-alias.trad mas não será utilizado.
+ .
+ Para reverter a alteração, simplesmente altere, de novo, o alias "fixed" de "-trad-..." para "-misc-...", ou renomeie o antigo ficheiro de novo para o local.
+Description-ru.UTF-8: Включить в системе использование традиционного «fixed»?
+ Псевдоним шрифта «fixed» может указывать на традиционную версию.
+ .
+ После утвердительного ответа будет изменён файл /etc/X11/fonts/misc/xfonts-base.alias, его старая версия будет сохранена под именем xfonts-base.alias.backup.not-trad. Так как это файл настройки, dpkg может спросить о нём в будущем.
+ .
+ В противном случае, если вы не хотите изменять настройки по умолчанию, будет создан (но не задействован файл xfonts-base-alias.trad.
+ .
+ Чтобы отменить изменение просто исправьте значение ключа «fixed» с «"-trad-…» обратно на «-misc-…», или верните старый файл на прежнее место.
+Description-sv.UTF-8: Ska systemet ställas in för att använda traditinell "fixed"?
+ Teckensnittsaliaset "fixed" kan pekas om till traditionell version.
+ .
+ Genom att välja detta alternativ kommer filen /etc/X11/fonts/misc/xfonts-base.alias att redigeras, den gamla filen kommer att bevaras som xfonts-base.alias.backup.not-trad. Eftersom detta är en inställningsfil kan du få frågor om den från dpkg i framtiden.
+ .
+ Alternativt, om du inte vill ändra standardvalet, kommer xfonts-base-alias.trad att skapas men inte användas.
+ .
+ För att återställa ändringarna behöver aliaset "fixed" ändras från "-trad-..."  till "-misc-..." eller flytta om filerna så att den gamla används igen.
+
+Template: xfonts-traditional/confirm-break-remove
+Type: boolean
+Default: false
+Description: Remove xfonts-traditional, breaking "fixed" and your X server?
+ Removing xfonts-traditional would break your X server by removing "fixed".
+ .
+ You should not remove xfonts-traditional while "fixed" refers to one
+ of its fonts.  You probably want to check the differences between the
+ various /etc/X11/fonts/misc/xfonts-base.alias*, reconcile any changes,
+ and then run "update-fonts-alias misc".  After that you can retry the
+ removal.
+Description-cs.UTF-8: Odstranit xfonts-traditional, poškodit "fixed" a X server?
+ Odstranění xfonts-traditional by poškodilo X server tím, že by se odstranilo "fixed".
+ .
+ Jestliže "fixed" odkazuje na jedno z písem, neměli byste odstraňovat xfonts-traditional. Nejprve musíte zkontrolovat rozdíly mezi jednotlivými soubory /etc/X11/fonts/misc/xfonts-base.alias*, sladit všechny změny, a potom spustit "update-fonts-alias misc".
+Description-da.UTF-8: Fjern xfonts-traditional, hvilket ødelægger »fixed« og X-serveren?
+ Fjernelse af xfonts-traditional vil ødelægge X-serveren ved at fjerne »fixed«.
+ .
+ Du bør ikke fjerne xfonts-traditional mens »fixed« refererer til en af dets skrifttyper. Du skal først kontrollere forskellene mellem de forskellige /etc/X11/fonts/misc/xfonts-base-alias*, genoverveje ændringerne og så køre »update-fonts-alias misc«.
+Description-de.UTF-8: Xfonts-traditional entfernen, »fixed« und den X-Server beschädigen?
+ Xfonts-traditional zu entfernen würde den X-Server durch Entfernen von »fixed« beschädigen.
+ .
+ Sie sollten Xfonts-traditional nicht entfernen, während sich »fixed« auf eine seiner Schriften bezieht. Zuerst müssen Sie die Unterschiede zwischen den verschiedenen /etc/X11/fonts/misc/xfonts-base.alias* prüfen, alle Änderungen abstimmen und dann »update-fonts-alias misc« ausführen.
+Description-fr.UTF-8: Faut-il supprimer xfonts-traditional et changer la police « fixed » et le serveur X ?
+ La suppression de xfonts-traditional va endommager le serveur X en supprimant la police « fixed ».
+ .
+ Vous ne devriez pas supprimer xfonts-traditional tant que « fixed » est un lien vers l'une de ses polices. Vous devez d'abord analyser les différences entre les différentes versions de /etc/X11/fonts/misc/xfonts-base.alias*, consolider les éventuels changements, et exécuter « update-fonts-alias misc ».
+Description-it.UTF-8: Rimovere xfonts-traditional, rendendo difettosi «fixed» e il server X?
+ La rimozione di xfonts-traditional renderà difettoso il server X poiché rimuove «fixed».
+ .
+ Non si dovrebbe rimuovere xfonts-traditional quando «fixed» fa riferimento ad uno dei suoi tipi di carattere. È necessario prima controllare le differenze tra i vari /etc/X11/fonts/misc/xfonts-base.alias*, riconciliare qualsiasi modifica e poi eseguire «update-fonts-alias misc».
+Description-ja.UTF-8: xfonts-traditional を削除して「fixed」と X サーバを壊しますか?
+ xfonts-traditional の削除によって「fixed」が削除され、X サーバが壊れます。
+ .
+ xfonts-traditional フォントのどれかを「fixed」が参照している間はパッケージを削除すべきではありません。/etc/X11/fonts/misc/xfonts-base.alias* の違いを確認した上で移行の調整を行ってから「update-fonts-alias misc」を実行してください。削除はその後でできます。
+Description-nl.UTF-8: xfonts-traditional verwijderen, "fixed" en de X-server stukmaken?
+ Het verwijderen van xfonts-traditional zal door het verwijderen van "fixed" de X-server stukmaken.
+ .
+ U hoort xfonts-traditional niet te verwijderen terwijl "fixed" nog naar één van zijn lettertypes verwijst. U dient /etc/X11/fonts/misc/xfonts-base.alias* op verschillen te controleren, eventuele veranderingen over te zetten en dan "update-fonts-alias misc" uit te voeren.
+Description-pl.UTF-8: Usunąć xfonts-traditional, psując fonty "fixed" i serwer X?
+ Usunięcie xfonts-traditional może spowodować problemy z serwerem X przez usunięcie fontów "fixed".
+ .
+ Proszę nie usuwać xfonts-traditional jeśli fonty "fixed" odnoszą się do jednego z ich fontów. Należy najpierw sprawdzić różnice pomiędzy różnymi /etc/X11/fonts/misc/xfonts-base.alias*, uzgodnić wszystkie zmiany i wykonać polecenie "update-fonts-alias misc".
+Description-pt.UTF-8: Remover xfonts-traditional, estragando "fixed" e o servidor X?
+ Remover xfonts-traditional iria estragar o servidor X ao remover "fixed".
+ .
+ Não deverá remover xfonts-traditional enquanto "fixed" se referir a uma das suas fonts. Primeiro tem de verificar as diferenças entre os vários /etc/X11/fonts/misc/xfonts-base.alias*, reconcilie as alterações, e corra "update-fonts-alias misc".
+Description-ru.UTF-8: Удалить xfonts-traditional, поломав «fixed» и X-сервер?
+ Удаление пакета xfonts-traditional поломает X-сервер из-за удаления «fixed».
+ .
+ Вы не должны удалять пакет xfonts-traditional, так как шрифт «fixed» ссылается на один из его шрифтов. Сначала проверьте различия между разными файлами /etc/X11/fonts/misc/xfonts-base.alias*, сверьте все изменения, а затем запустите «update-fonts-alias misc».
+Description-sv.UTF-8: Ska xfonts-traditional tas bort, och trasa sönder "fixed" och X-servern?
+ Tas xfonts-traditional kommer X-servern troligen att tasas sönder i och med raderingen av "fixed".
+ .
+ Du ska inte ta bort xfonts-traditional när "fixed" pekar på något av dess teckensnitt. Först behöver du ta reda på skillnaderna mellan de olika inställningarna /etc/X11/fonts/misc/xfonts-base.alias*, justera ändringarna och kör sedan "update-fonts-alias misc".

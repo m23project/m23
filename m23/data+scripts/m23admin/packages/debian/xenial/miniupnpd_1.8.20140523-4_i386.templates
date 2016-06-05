@@ -1,0 +1,108 @@
+
+Template: miniupnpd/start_daemon
+Type: boolean
+Default: false
+Description: Start the MiniUPnP daemon automatically?
+ Choose this option if the MiniUPnP daemon should start automatically,
+ now and at boot time.
+Description-cs.UTF-8: Spouštět daemona MiniUPnP automaticky?
+ Tuto možnost vyberte, pokud se má daemon MiniUPnP nyní automaticky spustit a spouštět při zavádění systému.
+Description-da.UTF-8: Start MiniUPnP-dæmonen op automatisk?
+ Vælg denne indstilling hvis MiniUPnP-dæmonen skal starte op automatisk, nu og ved opstartstidspunktet.
+Description-de.UTF-8: Den MiniUPnP-Daemon automatisch starten?
+ Wählen Sie diese Option, falls der MiniUPnP-Daemon jetzt und beim Hochfahren des Rechners automatisch gestartet werden soll.
+Description-es.UTF-8: ¿Desea iniciar el demonio MiniUPnP automáticamente?
+ Seleccione esta opción si desea que el demonio MiniUPnP se inicie automáticamente, ahora y en el arranque del equipo.
+Description-fr.UTF-8: Faut-il démarrer le démon MiniUPnP automatiquement ?
+ Choisissez cette option si vous voulez que le démon MiniUPnP démarre automatiquement, maintenant et à chaque démarrage du système.
+Description-it.UTF-8: Avviare il demone MiniUPnP automaticamente?
+ Scegliere questa opzione se il demone MiniUPnP deve essere avviato automaticamente, adesso e all'avvio.
+Description-ja.UTF-8: MiniUPnP デーモンを自動的に開始しますか?
+ 今ここで、またブート時に MiniUPnP デーモンを自動的に開始させる場合は選択してください。
+Description-pt.UTF-8: Iniciar o daemon do MiniUPnP automaticamente?
+ Escolha esta opção se o daemon do MiniUPnP deve iniciar automaticamente, agora e durante o arranque do sistema.
+Description-ru.UTF-8: Запускать службу MiniUPnP автоматически?
+ Ответьте утвердительно, если хотите, чтобы служба MiniUPnP запускалась автоматически при включении машины и начала работу прямо сейчас.
+Description-sv.UTF-8: Ska MiniUPnP-tjänsten starta automatiskt?
+ Ange detta alternativ om MiniUPnP-tjänsten ska starta automatiskt nu och vid systemets uppstart.
+
+Template: miniupnpd/listen
+Type: string
+Description: LAN IP address to listen on for UPnP queries:
+ The MiniUPnP daemon will listen for requests on the local network. Please
+ enter the IP address it should listen on.
+Description-cs.UTF-8: IP adresa v síti LAN, na které se má naslouchat UPnP dotazům:
+ Daemon MiniUPnP bude naslouchat dotazům na místní síti. Zadejte prosím IP adresu, na které má naslouchat.
+Description-da.UTF-8: LAN IP-adresse til at lytte på efter UPnP-forespørgsler:
+ MiniUPnP-dæmonen vil lytte efter forespørgsler på det lokale netværk. Indtast venligst adressen den skal lytte på.
+Description-de.UTF-8: LAN-IP-Adresse, an der auf UPnP-Anfragen gewartet werden soll:
+ Der MiniUPnP-Daemon wird auf Anfragen aus dem lokalen Netzwerk warten. Bitte geben Sie die IP-Adresse an, auf der er Anfragen annehmen soll.
+Description-es.UTF-8: Dirección IP de la red local donde se escucharán las consultas UPnP:
+ El demonio MiniUPnP escuchará consultas en la red local. Introduzca la dirección IP que debería utilizarse para escuchar estas peticiones.
+Description-fr.UTF-8: Adresse IP à écouter pour les requêtes UPnP :
+ Le démon MiniUPnp sera à l'écoute de requêtes sur le réseau local. Veuillez indiquer l'adresse IP sur laquelle il écoutera.
+Description-it.UTF-8: Indirizzo IP nella LAN sul quale restare in ascolto per richieste UPnP:
+ Il demone MiniUPnP resterà in ascolto per le richieste sulla rete locale. Inserire l'indirizzo IP su cui deve restare in ascolto.
+Description-ja.UTF-8: UPnP クエリーを待ち受けるLAN IPアドレス:
+ MiniUPnP デーモンはローカルネットワークでリクエストを待ち受けます。待ち受けるIPアドレスを入力してください。
+Description-pt.UTF-8: Endereço IP de LAN a escutar por pedidos UPnP:
+ O daemon do MiniUPnP irá escutar por pedidos na rede local. Por favor indique o endereço IP que ele deve escutar.
+Description-ru.UTF-8: IP-адрес LAN, на котором ожидать запросы UPnP:
+ Служба MiniUPnP будет ожидать запросы из локальной сети. Введите IP-адрес, на который они будут поступать.
+Description-sv.UTF-8: LAN IP-adress som ska bevakas för UPnP-frågor: 
+ MiniUPnP-tjänsten lyssnar efter förfrågningar på det lokala nätverket. Ange IP-adressen som den ska lyssna på.
+
+Template: miniupnpd/iface
+Type: string
+Description: External WAN network interface to open ports on:
+ The MiniUPnP daemon will listen on a specific IP address on the local
+ network, then open ports on the WAN interface. Please enter the name of
+ the WAN network interface on which the MiniUPnP daemon should perform
+ port forwarding.
+Description-cs.UTF-8: Vnější WAN rozhraní, na kterém se mají otevřít porty:
+ Daemon MiniUPnP bude naslouchat na určité IP adrese v místní síti, potom otevře porty na WAN rozhraní. Zadejte prosím název síťového rozhraní WAN, na kterém má daemon MiniUPnP provést přesměrování portů.
+Description-da.UTF-8: Ekstern WAN-netværksgrænseflade til at åbne porte på:
+ MiniUPnP-dæmonen vil lytte på en specifik IP-adresse på det lokale netværk, og så åbne porte på WAN-grænsefladen. Indtast venligst navnet på WAN-netværksgrænsefladen hvor MiniUPnP-dæmonen skal udføre portvideresendelse.
+Description-de.UTF-8: Externe WAN-Netzwerkschnittstelle, auf der Ports geöffnet werden sollen:
+ Der MiniUPnP-Daemon wird auf Anfragen auf einer bestimmten IP-Adresse im lokalen Netzwerk warten und dann Ports auf der WAN-Schnittstelle öffnen. Bitte geben Sie den Namen der WAN-Netzwerkschnittstelle an, auf die der MiniUPnP-Daemon Port-Weiterleitung durchführen soll.
+Description-es.UTF-8: Interfaz de red externa («WAN») donde abrir los puertos:
+ El demonio MiniUPnP escuchará en una dirección IP específica de la red local y abrirá los puertos en la interfaz externa («WAN»). Introduzca el nombre de la interfaz de red externa («WAN») donde el demonio MiniUPnP debería realizar la redirección de puertos.puertos.
+Description-fr.UTF-8: Interface réseau WAN sur laquelle il faut ouvrir des ports :
+ Le démon MiniUPnP écoutera sur une adresse IP spécifique du réseau local, puis ouvrira certains ports sur l'interface WAN. Veuillez indiquer le nom de l'interface de réseau WAN sur laquelle le démon MiniUPnP mettra en place des redirections de ports.
+Description-it.UTF-8: Interfaccia di rete WAN esterna su cui aprire le porte:
+ Il demone MiniUPnP resterà in ascolto su un indirizzo IP specifico sulla rete locale, poi aprirà porte sull'interfaccia WAN. Inserire il nome dell'interfaccia di rete WAN verso la quale il demone MiniUPnP deve fare il ridirezionamento delle porte.
+Description-ja.UTF-8: ポートを開く外部 WAN ネットワークインターフェイス:
+ MiniUPnP デーモンはローカルネットワーク上の特定のIPアドレスを待ち受け、WAN インターフェイス上のポートを開きます。MiniUPnP デーモンがポート転送を行う WAN ネットワークインターフェイスの名前を入力してください。
+Description-pt.UTF-8: Interface de rede WAN externa para abrir portos em:
+ O daemon do MiniUPnP irá escutar num endereço IP específico na rede local, e depois abrir portos na interface da WAN. Por favor indique o nome da interface de rede WAN no qual o daemon do MiniUPnP deverá executar o reencaminhamento de portos.
+Description-ru.UTF-8: Интерфейс внешней сети WAN для открытия портов:
+ Служба MiniUPnP прослушивает определённый IP-адрес в локальной сети, а затем открывает порты на интерфейсе WAN. Введите имя сетевого интерфейса WAN, на котором служба MiniUPnP должна выполнять проброс портов.
+Description-sv.UTF-8: Externt WAN-nätverksgränssnitt att öppna portar på:
+ MiniUPnP-tjänsten lyssnar på en specifik IP-adress på det lokala nätverket och öppnar sedan portar på WAN-gränssnittet. Ange namnet på det WAN-nätverksgränssnitt som MiniUPnP-tjänsten ska vidarebefodra portar på.
+
+Template: miniupnpd/ip6script
+Type: boolean
+Default: false
+Description: Enable IPv6 firewall chain?
+ Please specify whether the MiniUPnP daemon should run its
+ ip6tables script on startup to initialize the IPv6 firewall chain.
+Description-cs.UTF-8: Povolit IPv6 řetězec ve firewallu?
+ Zvolte si prosím, zda má daemon MiniUPnP při spouštění k zavedení IPv6 řetězce ve firewallu spustit vlastní skript ip6tables.
+Description-da.UTF-8: Aktiver IPv6-brandmurskæde?
+ Specificer venligst om MiniUPnP-dæmonen skal køre sit ip6tables-skript ved opstart for at initialisere IPv6-brandmurskæden.
+Description-de.UTF-8: IPv6-Firewall-Regelkette aktivieren?
+ Bitte geben Sie an, ob der MiniUPnP-Daemon beim Starten sein Skript »ip6tables« ausführen soll, um die IPv6-Firewall-Regelkette zu aktivieren.
+Description-es.UTF-8: ¿Desea activar la cadena IPv6 del cortafuegos?
+ Especifique si el demonio MiniUPnP debe ejecutar su script de ip6tables al arrancar para inicializar la cadena IPv6 del cortafuegos.
+Description-fr.UTF-8: Faut-il activer la chaîne de pare-feu IPv6 ?
+ Veuillez indiquer si le démon MiniUPnP doit exécuter ses scripts ip6tables au démarrage pour initialiser la chaîne de pare-feu IPv6.
+Description-it.UTF-8: Abilitare una catena IPv6 nel firewall?
+ Specificare se il demone MiniUPnP debba eseguire il suo script ip6tables all'avvio per inizializzare la catena IPv6 nel firewall.
+Description-ja.UTF-8: IPv6 ファイアウォールチェインを有効にしますか?
+ MiniUPnP デーモン開始時に ip6tables スクリプトを実行して IPv6 ファイアウォールチェインを初期化するかどうか指定してください。
+Description-pt.UTF-8: Activar a cadeia de firewall IPv6?
+ Por favor especifique se o daemon do MiniUPnP deverá correr o seu script ip6tables no arranque do sistema para inicializar a cadeia de firewall IPv6.
+Description-ru.UTF-8: Включить цепочку IPv6 на межсетевом экране?
+ Укажите, должна ли служба MiniUPnP запускать свой сценарий ip6tables при запуске для инициализации цепочки IPv6 на межсетевом экране.
+Description-sv.UTF-8: Aktivera brandväggskedjan för IPv6?
+ Ange om MiniUPnP-tjänsten ska köra sitt ip6tables-skript vid uppstart för att initiera brandväggskedjan för IPv6.

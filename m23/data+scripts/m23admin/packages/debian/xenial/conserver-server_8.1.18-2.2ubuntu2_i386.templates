@@ -1,0 +1,189 @@
+Template: conserver-server/port
+Type: string
+Default: 3109
+Description: The master port number for the conserver server:
+ Set the TCP port for the master process to listen on for clients. This may
+ be either a port number or a service name. The original port number for
+ conserver is 782, must be higher than 1024 if running as non-root.
+Description-cs.UTF-8: Hlavní číslo portu pro server conserver:
+ Nastavte TCP port pro hlavní proces, na kterém se bude naslouchat klientům. Toto může být buď číslo portu nebo název služby. Původní číslo portu pro conserver je 782, ale pokud jej nespouštíte jako root, musíte použít vyšší číslo portu než 1024.
+Description-da.UTF-8: Indtast hovedportnummeret for conserver-serveren:
+ Angiv den TCP-port som hovedprocessen (master) skal lytte efter klienter på. Dette kan være enten en port eller navnet på en tjeneste. Den oprindelige port for conserver er 782. Det skal være højere end 1024 hvis conserver ikke køres som root.
+Description-de.UTF-8: Hauptportnummer des Conserver-Servers:
+ Setzt den TCP-Port, auf dem der Hauptprozess auf Clients lauschen soll. Dies kann entweder eine Portnummer oder ein Servicename sein. Die ursprüngliche Portnummer für Conserver ist 782; sie muss höher als 1024 sein, falls er nicht mit root-Rechten läuft.
+Description-es.UTF-8: Número del puerto maestro del servidor conserver:
+ Especifique el puerto TCP del proceso maestro en el que escuchará las conexiones con los clientes. Puede ser un número de puerto o el nombre de un servicio. El número de puerto original de conserver es 782, pero debe ser superior a 1024 si se ejecuta como usuario sin privilegios.
+Description-eu.UTF-8: Conserver zerbitzariaren ataka nagusiaren zenbakia:
+ Ezarri bezeroak itxoiten dituen prozesu nagusiaren TCP ataka. Ataka zenbaki bat edo zerbitzu izen bat izan behar da. Conserver-en jatorrizko ataka zenbakia 782 da, 1024 baina handiagoa izan behar da ez-root gisa exekutatzeko.
+Description-fi.UTF-8: conserver-palvelimen pääportti:
+ Aseta TCP-portti, jossa pääprosessi kuuntelee asiakkaita. Tämä voi olla joko portin numero tai palvelun nimi. conserverin alkuperäinen portin numero on 782, mutta sen tulee olla suurempi kuin 1024, jos sitä ei ajeta pääkäyttäjänä.
+Description-fr.UTF-8: Numéro du port maître pour le serveur « conserver » :
+ Veuillez choisir le port TCP sur lequel le processus maître sera à l'écoute. Vous pouvez indiquer un numéro de port ou un nom de service.
+Description-gl.UTF-8: Número de porto mestre para o servidor conserver:
+ Estabreza o porto TCP para que o proceso mestre escoite á espera de clientes. Pode ser un número de porto ou un nome de servizo. O número de porto orixinal de conserver é 782, e debe ser maior de 1024 se non se executa coma administrador.
+Description-it.UTF-8: Numero di porta master del server di conserver:
+ Impostare la porta TCP su cui il processo master si porrà in ascolto. Può essere un numero di porta oppure il nome di un servizio. La porta, che è la 782 in modo predefinito, deve essere superiore a 1024 se conserver non viene eseguito come utente root.
+Description-nl.UTF-8: Geef het hoofd-poortnummer voor de conserver-server:
+ Geef de TCP-poort waarop het hoofdproces moet luisteren naar clients. Dit is ofwel een poortnummer ofwel een naam van een dienst. Het oorspronkelijke poortnummer voor conserver is 782, maar het moet hoger zijn dan 1024 als het proces draait als niet-root.
+Description-pt.UTF-8: Número de porta principal para o servidor conserver:
+ Defina a porta TCP de escuta do processo principal para os clientes. Esta pode ser um número de porta ou um nome de serviço. O número de porta original para o conserver é 782, tem que ser maior que 1024 se correr como não-root.
+Description-pt_BR.UTF-8: Número da porta mestre para o servidor conserver:
+ Configure a porta TCP para o processo mestre escutar por clientes. Isto pode ser o número da porta ou um nome de serviço. O número da porta original para o conserver é 782, deve ser maior que 1024 se executado como não-root.
+Description-ru.UTF-8: Номер порта мастер сервера conserver:
+ Укажите порт TCP мастер процесса, к которому подключаются клиенты. Можно указывать номер порта или имя сервиса. Порт по умолчанию для conserver равен 782; если запускать без прав суперпользователя, порт должен быть больше чем 1024.
+Description-sv.UTF-8: Huvudportnumret för conserverdemonens maskin:
+ Ange TCP-porten som huvudprocessen ska lyssna efter klienter på. Det kan antingen vara ett nummer eller ett tjänstenamn. Det ursrprungliga numret för conserver är 782. Om demonen inte körs som root måste numret vara större än 1024.
+
+Template: conserver-server/base_port
+Type: string
+Description: The base port number for the conserver children:
+ Set the base port for children to listen on. Each child starts looking for
+ free ports at this port number and working upward, trying a maximum number
+ of ports equal to twice the maximum number of groups. If no free ports are
+ available in that range, conserver exits. By default, conserver lets the
+ operating system choose a free port.
+ Empty input selects the default.
+ (Conserver forks a child for each group of consoles it must manage and
+ assigns each process a port number to listen on.)
+Description-cs.UTF-8: Základní číslo portu pro potomky conserveru:
+ Nastavte základní port, na kterém budou naslouchat potomci. Každý potomek začne hledat nové porty na zadaném čísle portu a pokračuje směrem vzůru až do dvojnásobku maximálního počtu skupin. Pokud nejsou v tomto rozsahu nalezeny žádné volné porty, conserver skončí. V základním nastavení nechá conserver výběr volného portu na operačním systému. Nezadáte-li nic, použije se výchozí nastavení (conserver vytvoří potomka pro každou skupinu konzolí které musí spravovat a každému procesu přiřadí číslo portu, na kterém má naslouchat).
+Description-da.UTF-8: Baseportnummeret for conserver-underprocessen:
+ Angiv baseporten for underprocesser der skal lyttes på. Hver underproces starter med at kigge efter frie porte ved dette portnummer og arbejder opad. Der prøves maksimalt antallet af porte lig med dobbelt så meget som det maksimale tilladte grupper. Hvis ingen frie porte er tilgængelige i det område, afslutter conserver. Som standard lader conserver operativsystemet vælge en fri port. Hvis du ikke skriver noget her, vælges standarden. (Conserver opretter underprocesser for hver enkel gruppe af consoles som skal håndteres og tildeler hver process sin egen port at lytte på.)
+Description-de.UTF-8: Basis-Portnummer der Conserver-Kinder:
+ Setzt die Basis-Portnummer, an der die Kinder lauschen sollen. Jedes Kind beginnt an dieser Portnummer mit der Suche nach einem freien Port und arbeitet sich nach oben. Hierbei werden maximal doppelt so viele Ports versucht wie Gruppen existieren. Falls in diesem Bereich keine freien Ports existieren, beendet sich Conserver. Standardmäßig lässt Conserver das Betriebssystem einen freien Port auswählen. Leere Eingabe wählt die Standardeinstellung (Conserver spaltet für jede Konsolen-Gruppe die es verwalten muss ein Kind ab und weist jedem Prozess eine Portnummer zu, auf der er lauschen soll).
+Description-es.UTF-8: Número de puerto base para los hijos de conserver:
+ Especifique el puerto base en el que escucharán los hijos. Cada uno de los hijos busca puertos disponibles a partir de este número de puerto y continua buscando hasta que alcanza un número de puertos que es igual al doble del número máximo de grupos. Si no encuentra puertos disponibles en ese rango, conserver se cierra. De manera predeterminada, conserver permite al sistema operativo seleccionar un puerto disponible. Si deja este campo en blanco, se selecciona el modo predeterminado (conserver crea un proceso hijo por cada grupo de consoles que tiene que gestionar y asigna a cada proceso un número de puerto en el que escucharán).
+Description-eu.UTF-8: Conserver semearen oinarri ataka zenbakia:
+ Semeak entzuteko oinarri ataka ezarri. Seme bakoitza ataka libreen bila ataka zenbaki honetatik hasiko da gero goraka joateko talde kopuruaren ataka kopuru bikoitza probatzen. Tartean ez bada ataka librerik aurkitzen conserver irten egingo da. Lehenespen gisa conserver-ek sistema eragileari uzten dio ataka libre bat hautatzen. Sarrera hutsak lehenespena onartzen du (Conserver-ek seme bat sortu eta entzuteko ataka zenbaki bat ezartzen du kudeatu behar duen kontsola talde bakoitzarentzat.)
+Description-fi.UTF-8: Perusportti conserverin lapsille:
+ Anna perusportti, jota lapset kuuntelevat. Jokainen lapsi etsii vapaata porttia alkaen tästä numerosta ja jatkaen ylöspäin. Enimmillään kokeillaan kaksi kertaa ryhmien enimmäismäärän verran portteja. Jos tällä alueella ei ole vapaita portteja, conserver lopetetaan. Oletuksena conserver antaa käyttöjärjestelmän valita vapaan portin. Tämä oletusarvo voidaan valita jättämällä kenttä tyhjäksi. (Conserver haarauttaa lapsiprosessin jokaista hallinnoimaansa konsoliryhmää varten ja antaa jokaiselle prosessille kuunneltavan portin.)
+Description-fr.UTF-8: Numéro du port de base pour les processus fils « conserver » :
+ Veuillez choisir le port de base sur lequel les fils écouteront. Chaque fils cherchera des ports libres à partir de ce numéro de port, en essayant au maximum un nombre de ports égal à deux fois le nombre maximal de groupes. Si aucun port n'est disponible dans cette plage, « conserver » s'arrête. Par défaut, « conserver » laisse le système d'exploitation choisir un port libre. La valeur par défaut sera utilisée si vous laissez ce champ libre. « conserver » crée un fils pour chaque groupe de consoles qu'il doit administrer et assigne à chaque processus un numéro de port sur lequel écouter.
+Description-gl.UTF-8: Número de porto base para os fillos de conserver:
+ Estabreza o porto base para que os fillos escoiten. Cada fillo comeza a buscar portos libres neste número de porto e vai subindo, tentando un número máximo de portos igual ao dobre do número máximo de grupos. Se non hai portos libres nese rango, conserver sae. Se se deixa en branco escóllese o valor por defecto. Conserver executa un proceso fillo por cada grupo de consolas que ten que xestionar, e asigna a cada proceso un número de porto no que escoitar.
+Description-it.UTF-8: Numero di porta di base per i figli di conserver:
+ Conserver genera un figlio per ogni gruppo di console che deve gestire e assegna a ogni processo un numero di porta su cui porsi in ascolto. Impostare la porta di base a partire dalla quale i figli si porranno in ascolto. Ogni figlio inizia a cercare le porte libere a partire da questo numero, provando un numero massimo di porte pari a due volte il numero massimo di gruppi. Se non viene trovata alcuna porta libera in quell'ambito, conserver terminerà. In modo predefinito conserver lascia che il sistema operativo scelga una porta libera. Se si lascia vuoto questo campo, verrà scelta la porta predefinita.
+Description-nl.UTF-8: Geef het basis-poortnummer voor de conserver-kinderen:
+ Geef de basispoort waarop kinderen moeten luisteren. Elk kind begint te zoeken naar vrije poorten vanaf dit poortnummer en hoger. Het probeert een een aantal poorten tot tweemaal het maximale aantal groepen. Als er geen vrije poorten beschikbaar zijn in dit bereik, dan stopt conserver. Standaard laat conserver het besturingssysteem een vrije poort kiezen. Geen invoer selecteert de standaard. (Conserver forkt een kind voor elke groep consoles die het moet beheren en geeft aan elk proces een poortnummer om op te luisteren.)
+Description-pt.UTF-8: Número de porta de base para os processos filhos do conserver:
+ Defina o número de porta base de escuta para os processos filhos. Cada processo inicia a procura por portas livres a partir deste número de porta e, a partir daqui para a frente, tentar um número máximo de portas equivale a duas vezes o número máximos de grupos. Se não estiverem disponíveis portas livres naquele intervalo, o conserver termina. Por omissão, o conserver permite que o sistema operativo escolha outra porta livre. Uma entrada em branco selecciona a omissão (o Conserver gerá um sub-processo para cada grupo de consolas que tem que gerir e atribui a cada processo um número de porta para escutar)
+Description-pt_BR.UTF-8: Número da porta base para os filhos do conserver:
+ Configure a porta base para os filhos escutarem. Cada filho inicia procurando por portas livres a partir deste número de porta e subindo, tentando um número máximo de portas igual ao dobro do número máximo de grupos. Se não há portas livres disponíveis neste intervalo, o conserver encerrará. Por padrão, o conserver deixa o sistema operacional escolher uma porta livre. Deixar em branco seleciona o padrão. (Conserver cria - "fork" - um filho para cada grupo de consoles que ele tem que gerenciar e atribui a cada processo um número de porta para escutar).
+Description-ru.UTF-8: Базовый номер порта потомков conserver:
+ Укажите базовый порт, который должны слушать потомки. Каждый потомок начинает искать свободные порты с этого номера и увеличивает его, пытаясь найти максимальное число свободных портов, равное удвоенному максимальному числу групп. Если свободных портов такого диапазона нет, то conserver завершает работу. По умолчанию (если ничего не вводить) conserver позволяет операционной системе выбирать свободный порт. (Conserver порождает потомка для каждой группы консолей, которой нужно управлять и назначает каждому процессу номер порта, который нужно прослушивать.)
+Description-sv.UTF-8: Första portnumret för underprocesser till conserver:
+ Anger det första portnumer som underprocesser lyssnar på. Varje ny process börjar leta ledia portnummer från detta nummer och går uppåt tills den når maxnumret som är lika med antal grupper*2. Conserverdemonen avbryter om det inte finns lediga portar i det området. Normalt låter conserver operativsystemet välja en ledig port, detta är vad som händer om fältet är tomt. (Conserver startar en ny process för varje grupp av terminaler den ska sköta och ger varje process ett portnummer att lyssna på.
+
+Template: conserver-server/listen_address
+Type: string
+Description: The listen address (defaults to all addresses if empty):
+ Set the address to listen on.  This allows conserver to bind to a
+ particular IP address (like `127.0.0.1') instead of all interfaces. The
+ default is to bind to all interfaces.
+Description-cs.UTF-8: Adresa pro naslouchání (pokud je prázdná, použije výchozí pro všechny):
+ Zadejte adresu, na které má conserver naslouchat.  To umožňuje conserveru se navázat na konkrétní IP adresu (jako `127.0.0.1') místo poslouchání na všech rozhraních. Výchozí je naslouchat na všech rozraních.
+Description-da.UTF-8: Adressen der skal lyttes på (hvis tom, alle adresser):
+ Angiv adressen der skal lyttes på. Dette tillader conserver at lytte på en bestemt IP-adresse (f.eks. `127.0.0.1') i steden for på alle grænseflader. Standarden er at binde til alle grænseflader.
+Description-de.UTF-8: Die Adresse, auf der gelauscht werden soll (falls leer wird auf allen Adressen gelauscht):
+ Stellt die Adressen ein, auf denen gelauscht werden soll. Dies erlaubt es Conserver, sich auf eine spezielle IP-Adresse (wie »127.0.0.1«) statt auf alle Schnittstellen zu binden. Standardmäßig bindet er sich an alle Schnittstellen.
+Description-es.UTF-8: Dirección donde escuchará (si se deja en blanco, escuchará en todas las direcciones):
+ Especifique la dirección donde escuchará. Esto permite a conserver asociar una dirección IP determinada (como «127.0.0.1») en lugar de todas las interfaces. La opción predeterminada es que se asocie a todas las interfaces.
+Description-eu.UTF-8: Entzuteko helbidea (helbide guztiak erabiliko dira hutsa utziaz gero):
+ Entzuteko helbidea ezarri.  Honek conserver-en IP helbide zehatz batera (`127.0.0.1' bezalakoak) lotzeko aukera ematen du interfaze guztiak entzun ordez. Lehenetsia interfaze guztietara lotzea da.
+Description-fi.UTF-8: Kuunneltava osoite (oletuksena kaikki, jos tyhjä):
+ Anna osoite, jota kuunnellaan. Tällä conserver voidaan asettaa kuuntelemaan tiettyä IP-osoitetta (kuten ”127.0.0.1”) kaikkien liitäntöjen sijaan. Oletuksena kuunnellaan kaikkia liitäntöjä.
+Description-fr.UTF-8: Adresse d'écoute (toutes si champ vide) :
+ Veuillez choisir l'adresse sur laquelle écouter. « conserver » sera alors à l'écoute sur une seule adresse IP (telle que « 127.0.0.1 ») et non sur toutes les interfaces. Par défaut il sera à l'écoute sur toutes les interfaces.
+Description-gl.UTF-8: O enderezo no que escoitar (se se deixa baleiro, tódolos enderezos):
+ Estabreza o enderezo no que escoitar. Isto fai que conserver quede ligado a un enderezo IP determinado (tal coma "127.0.0.1") no canto de tódalas interfaces. Por defecto lígase a tódalas interfaces.
+Description-it.UTF-8: Indirizzo di ascolto (lasciare vuoto per tutti gli indirizzi):
+ Impostare l'indirizzo su cui porsi in ascolto. Questo consentirà a conserver di collegarsi a un indirizzo IP specifico (come per esempio «127.0.0.1») anziché a tutte le interfacce. In modo predefinito, conserver si collega a tutte le interfacce.
+Description-nl.UTF-8: Het adres waarop geluisterd moet worden (alle adressen als geen invoer):
+ Geef het adres om op te luisteren. Dit laat toe om conserver te verbinden aan een bepaald IP-adres (zoals `127.0.0.1') in plaats van alle interfaces. De standaard is om te verbinden met alle interfaces.
+Description-pt.UTF-8: Endereços para escutar (se deixado em branco o valor por omissão será todos)
+ Define o endereço para escutar.  Isto permite que o conserver se ligue a um endereço IP particular (como `127.0.0.1') em vez de todas as interfaces. A omissão é ligar-se a todas as interfaces.
+Description-pt_BR.UTF-8: O endereço para escutar (se vazio, o padrão será todos os endereços):
+ Defina o endereço no qual escutar. Isto permite ao conserver vincular-se a um endereço IP em particular (como '127.0.0.1') ao invés de todas as interfaces. O padrão é vincular-se a todas as interfaces.
+Description-ru.UTF-8: Прослушиваемый адрес (если ничего не вводить, выполняется прослушивание на всех адресах):
+ Введите прослушиваемый адрес. Это позволит conserver привязаться только к определённому IP-адресу (например `127.0.0.1'), а не ко всем интерфейсам. По умолчанию выполняется привязка ко всем интерфейсам.
+Description-sv.UTF-8: Adressen som demonen lyssnar på (alla adresser om tomt):
+ Detta sätter den adress som conserverdemonen lyssnar på. Det gör det möjligt att binda till en specifik ip-adress (exempelvis 127.0.0.1) i stället för binad till alla tillgängliga 'interface'.
+
+Template: conserver-server/run_as_root
+Type: boolean
+Default: false
+Description: Should conserver run as root?
+ Conserver can be configured to run as root or as 'conservr'. It is not
+ possible to use the shadow password if running as non-root in
+ conserver.passwd. (See the manual for conserver.passwd for more details.)
+Description-cs.UTF-8: Má se conserver spouštět jako root?
+ Conserver může být nakonfigurován tak, aby se spouštěl pod uživatelem root, nebo jako 'conservr'. Pokud není conserver spuštěn jako root, není možné v passwd conserveru používat stínové heslo. (Pro více informací se podívejte na manuálové stránky conserver.passwd)
+Description-da.UTF-8: Skal conserver køre som root?
+ Conserver kan sættes op til at køre som root eller 'conservr'. Det er ikke muligt at bruge skyggeadgangskoder, hvis der ikke køres som root i conserver.passwd. (Se conserver.passwd-manualen for flere detaljer.)
+Description-de.UTF-8: Soll Conserver unter Root laufen?
+ Conserver kann so konfiguriert werden, dass er unter »root« oder unter »conservr« laufen kann. Es ist nicht möglich, die Shadow-Passwörter in conserver.passwd zu verwenden, falls Conserver nicht unter root läuft (lesen Sie das Handbuch für conserver.passwd für weitere Details).
+Description-es.UTF-8: ¿Se debe ejecutar conserver como usuario root?
+ Puede configurar conserver para que se ejecute como usuario root o como usuario «conservr». No se puede utilizar la contraseña shadow si se ejecuta como usuario sin privilegios en conserver.passwd (consulte el manual de conserver.passwd para obtener más información).
+Description-eu.UTF-8: Conserver root gisa exekutatu behar al da?
+ Conserver root gisa edo 'conservr' gisa exekutatzeko konfiguratu daiteke. Ez da posible itzalpeko pasahitzak erabiltzea conserver pasahitzean ez-root gisa exekutatzen bada. (Ikusi conserver.passwd manuala xehetasun gehiagorako.)
+Description-fi.UTF-8: Tulisiko conserver ajaa pääkäyttäjänä?
+ conserver voidaan ajaa pääkäyttäjänä tai käyttäjänä ”conservr”. Varjosalasanoja ei voida käyttää tiedostossa conserver.passwd, jos ohjelmaa ei ajeta pääkäyttäjänä. (Lisätietoja löytyy conserver.passwd:n ohjeista.)
+Description-fr.UTF-8: Souhaitez-vous que « conserver » s'exécute en tant que superutilisateur ?
+ Le logiciel « conserver » peut être configuré pour s'exécuter avec les privilèges du superutilisateur ou ceux de « conserver ». Il n'est pas possible d'utiliser les mots de passe cachés (« shadow passwords ») avec « conserver » s'il ne s'exécute pas en tant que superutilisateur. Veuillez consulter le manuel de conserver.passwd pour plus de détails.
+Description-gl.UTF-8: ¿Quere que conserver se execute coma administrador?
+ Pódese configurar conserver para funcionar coma administrador ou coma o usuario "conservr". Non é posible empregar os contrasinais "shadow" se non se executa coma administrador en conserver.passwd. Consulte a páxina de manual de conserver.passwd para máis detalles.
+Description-it.UTF-8: Eseguire conserver come utente root?
+ Conserver può venire configurato in modo da essere eseguito come utente root oppure come «conservr». Non è possibile utilizzare la password shadow in conserver.passwd se non viene eseguito come utente root. Per maggiori informazioni consultare il manuale di conserver.passwd.
+Description-nl.UTF-8: Moet conserver als root worden gedraaid?
+ Conserver kan geconfigureerd worden om als root of als 'conservr' te draaien. Het is niet mogelijk om het schaduwwachtwoord in conserver.passwd te gebruiken als het draait als niet-root. (Zie de manpagina van conserver.passwd voor meer details.)
+Description-pt.UTF-8: Deverá o conserver correr como root?
+ O Conserver pode ser configurado para correr como root ou como 'conservr'. Não é possível usar o shadow password se correr o conserver como não-root em conserver.passwd. (Veja o manual para o conserver.passwd para mais detalhes).
+Description-pt_BR.UTF-8: O conserver deveria ser executado como root?
+ O conserver pode ser configurado para ser executado como root ou como 'conservr'. Não é possível usar uma senha shadow se estiver sendo executado como não-root em conserver.passwd. (Veja o manual do conserver.passwd para mais detalhes).
+Description-ru.UTF-8: Запускать conserver с правами суперпользователя?
+ Conserver можно настроить на работу с правами суперпользователя или пользователя 'conservr'. При работе без прав суперпользователя невозможно использовать теневые пароли в файле conserver.passwd. (Подробней смотрите в руководстве по conserver.passwd.)
+Description-sv.UTF-8: Ska conserver köras som root?
+ Conserver kan konfigureras att köra som root eller som användaren 'conservr'. Det är inte möjligt för den att använda 'shadow'-databasens lösenord när den kör som annan användade än root. (Se manualen för conserver.passwd för närmare detaljer.)
+
+Template: conserver-server/upgrade_800_flag
+Type: boolean
+Default: true
+Description: Convert conserver.cf and conserver.passwd to new format?
+ Protocol and file format has changed!
+ The client/server protocol has been rearchitected. You *MUST* use an 8.0.1
+ client with an 8.0.1 server.  No combination of client/server will work
+ with pre-8.0.0 code.
+ The config file format for both conserver.cf and conserver.passwd has been
+ changed, read /usr/share/doc/conserver-server/README.Debian for more
+ details.
+ The /etc/conserver/conserver.cf and /etc/conserver/conserver.passwd will be
+ converted to the new format and the old will be renamed with .OLD as suffix.
+ Check the files after the conversion!
+Description-cs.UTF-8: Převést conserver.cf a conserver.passwd na nový formát?
+ Protokol a formát souboru se změnil! Klient/server protokol byl přebudován. MUSÍTE použít klienta 8.0.1 se serverem 8.0.1. Jiná kombinace klienta/serveru nebude pracovat s kódem před 8.0.0. Konfigurační soubor formátu pro oba conserver.cf a conserver.passwd byl změněn. Přečtěte si prosím /usr/share/doc/conserver-server/README.Debian pro další informace. Soubory /etc/conserver/conserver.cf a /etc/conserver/conserver.passwd budou převedeny na nový formát. Staré soubory budou přejmenovány s příponou .OLD. Zkontrolujte prosím změněné soubory!
+Description-da.UTF-8: Konverter conserver.cf og conserver.passwd til nyt format?
+ Protokol og filformat er ændret! Klient/server protokollen har fået en ny arkitektur. Du *SKAL* bruge en 8.0.1-klient med en 8.0.1-server. Ingen kombination af klient/server vil virke med før-8.0.0 kode. Opsætningsfilformatet for både conserver.cf og conserver.passwd er blevet ændret. Læs /usr/share/doc/conserver-server/README.Debian for flere detaljer. /etc/conserver/conserver.cf og /etc/conserver/conserver.passwd vil blive konverteret til det nye format. De gamle filer vil blive omdøbt med .OLD som endelse. Du bør tjekke filerne efter konverteringen!
+Description-de.UTF-8: Konvertiere conserver.cf und conserver.passwd in das neue Format?
+ Protokoll- und Datei-Format haben sich geändert! Das Client-Server-Protokoll wurde neu strukturiert. Sie *MÜSSEN* einen 8.0.1-Client mit einem 8.0.1-Server verwenden. Keine Kombination von Client/Server wird mit pre-8.0.0-Code funktionieren. Das Konfigurationsdateiformat wurde sowohl für conserver.cf als auch für conserver.passwd geändert, bitte lesen Sie /usr/share/doc/conserver-server/README.Debian für weitere Details./etc/conserver/conserver.cfund /etc/conserver/conserver.passwd werden in das neue Format konvertiert, die alte Datei bekommt die Endung .OLD. Bitte überprüfen Sie die Dateien nach der Konvertierung!
+Description-es.UTF-8: ¿Desea convertir conserver.cf y conserver.passwd al nuevo formato?
+ ¡El protocolo y el formato de archivo han cambiado! Se ha rediseñado el protocolo cliente/servidor. *DEBE* utilizar un cliente 8.0.1 con un servidor 8.0.1, ya que ninguna otra combinación de cliente/servidor funcionará con el código anterior (8.0.0). El formato del archivo de configuración de conserver.cf y conserver.passwd ha cambiado, consulte «/usr/share/doc/conserver-server/README.Debian» para obtener más información. Se convertirán al nuevo formato tanto «/etc/conserver/conserver.cf» como «/etc/conserver/conserver.passwd» y los archivos antiguos se renombrarán con el sufijo .OLD. ¡Revise los archivos tras la conversión!
+Description-eu.UTF-8: Bihurtu conserver.cf eta conserver.passwd formatu berrira?
+ Protokolo eta fitxategi formatua aldatu egin dira. Bezero/zerbitzari protokoloa berregin egin da. 8.0.1 bezero bat erabili *BEHAR* duzu 8.0.1 zerbitzariarekin.  Bezero/zerbitzari nahasketarik ez da onartzen 8.0.0 aurreko kodearekin. Bai conserver.cf eta bai conserver.passwd fitxategien formatua aldatu egin da, ikusi /usr/share/doc/conserver-server/README.Debian xehetasun gehiagorako. /etc/conserver/conserver.cf eta /etc/conserver/conserver.passwd fitxategiak formatu  berrira aldatuko dira eta fitxategi zaharrak .OLD atzizkiarekin berrizendatuko dira. Egiaztatu fitxategiak bihurketa ondoren!
+Description-fi.UTF-8: Muunnetaanko conserver.cf ja conserver.passwd uuteen muotoon?
+ Yhteyskäytäntö ja tiedostomuoto ovat muuttuneet! Asiakkaan ja palvelimen välinen yhteyskäytäntö on suunniteltu uudelleen. Palvelimen version 8.0.1 kanssa *TÄYTYY* käyttää version 8.0.1 asiakasta. Mitkään aiemmat asiakas- tai palvelinversiot eivät toimi. Asetustiedostojen conserver.cf ja conserver.passwd muoto on muuttunut. Lisätietoja löytyy tiedostosta /usr/share/doc/conserver-server/README.Debian. Tiedostot /etc/conserver/conserver.cf ja /etc/conserver/conserver.passwd voidaan nyt muuntaa uuteen muotoon. Vanhojen versioiden nimien perään lisätään pääte ”.OLD”. Tarkista tiedostot muunnoksen jälkeen!
+Description-fr.UTF-8: Faut-il convertir conserver.cf et conserver.passwd au nouveau format ?
+ Le protocole et le format de fichier ont changé. Le protocole client/serveur a subi des modifications d'architecture. Vous *DEVEZ* utiliser un client 8.0.1 avec un serveur 8.0.1. Aucune combinaison de client/serveur ne fonctionnera avec les versions antérieures à la version 8.0.0. Les formats du fichier de configuration de conserver.cf et conserver.passwd ont changé et vous devez lire /usr/share/doc/conserver-server/README.Debian pour plus de détails. Si vous choisissez cette option, les fichiers /etc/conserver/conserver.cf et /etc/conserver/conserver.passwd seront convertis vers le nouveau format. Les anciens fichiers seront renommés avec le suffixe .OLD. Veuillez vérifier les fichiers après la conversion.
+Description-gl.UTF-8: ¿Convertir conserver.cf e conserver.passwd ao novo formato?
+ Os formatos do protocolo e dos ficheiros cambiaron. Redeseñouse o protocolo cliente/servidor. Debe empregar un cliente 8.0.1 cun servidor 8.0.1. Ningunha combinación de cliente/servidor ha funcionar co código anterior a 8.0.0. O formato dos ficheiros de configuración conserver.cf e conserver.passwd tamén cambiou; consulte /usr/share/doc/conserver-server/README.Debian para máis detalles. Hanse convertir os ficheiros /etc/conserver/conserver.cf e /etc/conserver/conserver.passwd ao novo formato, e os ficheiros antigos hanse conservar con .OLD engadido ao seu nome. Verifique os ficheiros despois da conversión.
+Description-it.UTF-8: Convertire conserver.cf e conserver.passwd al nuovo formato?
+ Il protocollo e il formato del file sono stati modificati. Il protocollo client-server è stato ridisegnato, per cui è necessario utilizzare un client 8.0.1 con un server 8.0.1, in quanto combinazioni client-server con versioni precedenti la 8.0.0 non funzioneranno. Il formato del file di configurazione di conserver.cf e di conserver.passwd è stato cambiato, per maggiori informazioni consultare la documentazione in «/usr/share/doc/conserver-server/README.Debian». I file «/etc/conserver/conserver.cf» e «/etc/conserver/conserver.passwd» verranno convertiti al nuovo formato, mentre i vecchi file verranno rinominati con un suffisso OLD. Controllare i file dopo la conversione.
+Description-nl.UTF-8: Converteer conserver.cf en conserver.passwd naar het nieuwe formaat?
+ Protocol en bestandsformaat zijn gewijzigd! Het client/server-protocol is opnieuw ontworpen. U *MOET* een 8.0.1-client gebruiken met een 8.0.1-server. Een client/server-combinatie met pre-8.0.0-code zal niet werken. Het bestandsformaat van de configuratiebestanden conserver.cf en conserver.passwd is gewijzigd, lees /usr/share/doc/conserver-server/README.Debian voor meer details. Door bevestigend te antwoorden zal getracht worden /etc/conserver/conserver.cf en /etc/conserver/conserver.passwd te converteren naar het nieuwe formaat. De oude bestanden zullen hernoemd worden met een .OLD-suffix. Controleer de bestanden na de conversie!
+Description-pt.UTF-8: Converter o conserver.cf e conserver.passwd para um novo formato?
+ O protocolo e o formato de ficheiro foram alterados! O protocolo cliente/servidor foi re-arquitectado. *TERÁ* que usar um cliente 8.0.1 com o servidor 8.0.1.  Nenhuma combinação de cliente/servidor irá funcionar com código pre-8.0.0. O formato do ficheiro de configuração para ambos os conserver.cf e conserver.passwd foi modificado, leia /usr/share/doc/conserver-server/README.Debian para mais detalhes. O /etc/conserver/conserver.cf e /etc/conserver/conserver.passwd será convertida para o novo formato, a versão antiga será renomeada com o sufixo .OLD. Verifique os ficheiros após a conversão!
+Description-pt_BR.UTF-8: Converter o conserver.cf e conserver.passwd para o novo formato?
+ O protocolo e o formato do arquivo mudaram! O protocolo cliente/servidor foi rearquitetado. Você *DEVE* usar um cliente 8.0.1 com um servidor 8.0.1. Nenhuma combinação de cliente/servidor funcionará com códigos pré-8.0.0. O formato do arquivo de configuração para ambos conserver.cf e conserver.passwd foram alterados, leia /usr/share/doc/conserver-server/README.Debian para mais detalhes. O /etc/conserver/conserver.cf e /etc/conserver/conserver.passwd serão convertidos para o novo formato e os antigos serão renomeados com o sufixo .OLD. Cheque os arquivos após a conversão!
+Description-ru.UTF-8: Преобразовать файлы conserver.cf и conserver.passwd в новый формат?
+ Изменён протокол и форматы файлов! Был пересмотрен клиент/серверный протокол. Вы *ДОЛЖНЫ* использовать клиента версии 8.0.1 с сервером версии 8.0.1. Эти версии клиента и сервера не будут работать с версиями до pre-8.0.0. Был изменён формат конфигурационных файлов conserver.cf и conserver.passwd, подробней об этом написано в /usr/share/doc/conserver-server/README.Debian. Файлы /etc/conserver/conserver.cf и /etc/conserver/conserver.passwd будут преобразованы в новый формат, а их оригиналы будут сохранены под тем ми же именами с суффиксом .OLD. Проверьте правильность файлов после преобразования!
+Description-sv.UTF-8: Omvandla conserver.cf och conserver.passwd till det nya formatet?
+ Protokoll och filformat har ändrats! Klient-serverprotokollet har gjorts om helt. Du *måste* använda en 8.0.1-klient mot en 8.0.1-server. Ingen annan kombination av klient/server kommer att fungera tillsammans med versioner före 8.0.0. Konfigureringsfilerna conserver.cf och conserver.passwd har båda nytt format, läs /usr/share/doc/conserver-server/README.Debian för mer detaljer. Om du anger 'Yes' kommer jag att försöka omvandla /etc/conserver/conserver.cf och /etc/conserver/conserver.passwd till det nya formatet, de ursprungliga filerna döps om med 'OLD' som suffix. Kontrollera filerna efter konverteringen!

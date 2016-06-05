@@ -1,0 +1,321 @@
+Template: fwlogwatch/realtime
+Type: boolean
+Default: false
+Description: Would you like fwlogwatch as a daemon (realtime mode)?
+ Running fwlogwatch as a daemon will let fwlogwatch act (i.e. adding new
+ firewall rules) against active 'attacks', or warn you (i.e. sending email)
+ about them. It could also run a web server to access fwlogwatch's current
+ status.
+Description-cs.UTF-8: Chcete fwlogwatch spouštět jako daemon (v reálném čase)?
+ Spouštění fwlogwatch jako daemona mu umožní reagovat na aktivní „útoky“ (např. přidáním nových pravidel do firewallu), nebo vás alespoň varovat (např. zasláním emailu). Také může spustit webový server, který slouží pro přístup k aktuálnímu stavu daemona fwlogwatch.
+Description-da.UTF-8: Ønsker du at fwlogwatch skal være en dæmon (realtidstilstand)?
+ Kørsel af fwlogwatch som en dæmon vil lade fwlogwatch handle (det vil sige tilføje nye brandmursregler) mod aktive »angreb«, eller advare dig (det vil sige sende e-post) om dem. Programmet kan også køre en internetservere for at kunne tilgå fwlogwatchs aktuelle status.
+Description-de.UTF-8: Möchten Sie Fwlogwatch als Daemon starten (Echtzeit-Modus)?
+ Wenn Fwlogwatch als Daemon läuft, dann kann es gegen momentane Angriffe vorgehen (d.h. neue Firewall-Regeln hinzufügen) oder Sie vor diesen warnen (d.h. Ihnen eine E-Mail zuschicken). Es könnte sogar ein Webserver ausführen, über den Sie den aktuellen Status von Fwlogwatch in Erfahrung bringen können.
+Description-es.UTF-8: ¿Desea ejecutar fwlogwatch como un demonio (modo tiempo real)?
+ Ejecutarlo como un demonio permite que fwlogwatch actúe (p.ej. añadiendo nuevas reglas al cortafuegos) contra un «ataque», o notifique (p. ej. enviando un correo) acerca de él. También podrá ejecutar un servidor web para acceder al estado actual de fwlogwatch.
+Description-fr.UTF-8: Utiliser fwlogwatch en tant que démon (exécution en temps réel) ?
+ L'exécution de fwlogwatch en tant que démon lui permet d'agir contre d'éventuelles attaques (en ajoutant une règle au coupe-feu), ou de vous prévenir de celles-ci (en envoyant un courriel). Il peut aussi fournir une interface web afin d'y afficher son état courant.
+Description-it.UTF-8: Si vuole fwlogwatch come demone (modalità in tempo reale)?
+ L'uso di fwlogwatch come demone consente a fwlogwatch di reagire contro gli attacchi (per esempio aggiungendo nuove regole al firewall) oppure di segnalarli (inviando email). Inoltre può anche fare da web server, questo permette di accedere allo stato attuale di fwlogwatch.
+Description-ja.UTF-8: fwlogwatch をデーモンとして動作させますか? (リアルタイムモード) 
+ fwlogwatch をデーモンとして動作させると、アクティブな「攻撃」に対して作動する (例: 新しいファイアウォールのルールを追加する) か、警告を行う (例: メールを送信する) ことができます。fwlogwatch の現在のステータスを表示する web サーバとして動作させることも可能です。
+Description-nl.UTF-8: Wilt u fwlogwatch als achtergronddienst draaien (realtime modus)?
+ Door fwlogwatch als achtergronddienst te draaien kan deze reageren op 'actieve aanvallen' (door bv. nieuwe firewall-regels in te stellen), of u hierover waarschuwen (door bv. email te sturen). Het is ook mogelijk om een webserver te draaien die toegang geeft tot de huidige status van fwlogwatch.
+Description-pt.UTF-8: Deseja que o fwlogwatch seja um deamon (modo de tempo real)?
+ Correr o fwlogwatch como um deamon irá permitir que actue (adicionando novas regras à firewall) contra 'ataques' activos, ou avisá-lo (enviando emails) acerca deles. Também pode correr um servidor Web para aceder ao corrente estado do fwlogwatch.
+Description-ru.UTF-8: Запускать fwlogwatch как службу (режим работы в реальном времени)?
+ Запуск fwlogwatch в виде службы позволит отражать (добавлять новые правила межсетевого экрана) активные 'атаки', или предупреждать вас (по почте) о них. Также может быть включен веб-сервер для просмотра состояния fwlogwatch.
+Description-sk.UTF-8: Má fwlogwatch vystupovať ako démon (režim realtime)?
+ Spúšťanie fwlogwatch ako démona umožní, aby reagoval (tj. pridával nové pravidlá firewallu) na aktívne „útoky” alebo vás na nich upozorňoval (tj. posielal email). Okrem toho spúšťa aj webový server na prístup k aktuálnemu stavu fwlogwatch.
+Description-sv.UTF-8: Vill du att fwlogwatch ska köras som en demon (realtidsläge)?
+ Att köra fwlogwatch som en demon tilllåter fwlogwatch att agera (exempelvis att lägga till nya brandväggsregler) mot aktiva "attacker" eller larma dig (exempelvis skicka e-post) om dem. Den kan också köra en webbserver för att tillgå fwlogwatch:s nuvarande status.
+Description-vi.UTF-8: fwlogwatch nên chạy làm trình nền (chế độ thời thật) ?
+ Chạy fwlogwatch như là một trình nền thì cho phép fwlogwatch bảo vệ hệ thống một cách hiệu hữu hơn (bằng cách thêm quy tắc tường lửa bổ sung), hoặc cảnh báo bạn (bằng cách gửi thư) về bị tấn công. Nó cũng có thể chạy một trình phục vụ Web để truy cập đến trạng thái hiện thời của fwlogwatch.
+
+Template: fwlogwatch/respond
+Type: select
+Choices: no, yes (iptables), yes (ipchains), yes (other)
+Choices-cs.UTF-8: ne, ano (iptables), ano (ipchains), ano (jiné)
+Choices-da.UTF-8: nej, ja (iptables), ja (ipchains), ja (andet)
+Choices-de.UTF-8: Nein, Ja (iptables), Ja (ipchains), Ja (anderes)
+Choices-es.UTF-8: no, sí (iptables), sí (ipchains), sí (otro)
+Choices-fr.UTF-8: non, oui (iptables), oui (ipchains), oui (autre)
+Choices-it.UTF-8: no, sì (iptables), sì (ipchains), sì (altro)
+Choices-ja.UTF-8: いいえ, はい (iptables), はい (ipchains), はい (その他)
+Choices-nl.UTF-8: nee, ja (iptables), ja (ipchains), ja (anders)
+Choices-pt.UTF-8: não, sim (iptables), sim (ipchains), sim (outro)
+Choices-ru.UTF-8: нет, да (iptables), да (ipchains), да (другое)
+Choices-sk.UTF-8: nie, áno (iptables), áno (ipchains), áno (iné)
+Choices-sv.UTF-8: nej, ja (iptables), ja (ipchains), ja (annat)
+Choices-vi.UTF-8: không, có (bảng IP), có (dây IP), có (khác)
+Default: no
+Description: Add new firewall rules (or take another action) in case of alert?
+ Don't use this option unless you know what you're doing. Doing so could
+ expose your system to a Denial of Service attack. i.e. spoofed packets
+ could be made to look like coming from your DNS. Adding a rule to block
+ packets from your DNS won't be good ;-)
+ .
+ In case of choosing 'other', you'll have to edit
+ '/etc/fwlogwatch/fwlw_respond' to meet your requirements.
+Description-cs.UTF-8: Přidat v případě poplachu nová pravidla do firewallu (nebo provést jinou akci)?
+ Pokud přesně nevíte, co děláte, raději tuto volbu nepoužívejte. Mohli byste se totiž potkat s útokem typu odepření služby (DoS), kdy by se například podvržené pakety tvářily, že přicházejí z vašeho DNS serveru. Přidání pravidla, které by zablokovalo pakety z vašeho DNS serveru, by asi nebylo to nejlepší řešení ;-)
+ .
+ Vyberete-li „jiné“, budete muset upravit soubor /etc/fwlogwatch/fwlw_respond dle svých požadavků.
+Description-da.UTF-8: Tilføj ny brandmursregler (eller foretag anden handling) i tilfælde af alarm?
+ Brug ikke denne indstilling med mindre du ved, hvad du gør. Dette kan udsætte dit system for et angreb af typen Denial of Service. Det vil sige falske pakker kan udgive sig for at komme fra din DNS. Tilføjelse af en regel, der blokerer pakker fra din DNS, vil ikke være smart ;-)
+ .
+ I tilfælde af at du vælger »andet«, vil du skulle redigere »/etc/fwlogwatch/fwlw_respond«, for at imødekomme dine krav.
+Description-de.UTF-8: Bei Alarm neue Firewall-Regeln hinzufügen (oder andere Aktion durchführen)?
+ Nutzen Sie die Option nur, wenn Sie genau wissen, was Sie tun. Stimmen Sie zu, dann könnten Sie dadurch Ihr System der Gefahr einer eines Diensteverweigerungsangriffs (»Denial of Service attack«) aussetzen, d.h. gefälschte Pakete könnten so erstellt werden, dass sie so aussehen, als kämen sie von Ihrem DNS. Eine Regel hinzuzufügen, die Pakete Ihres DNS sperrt, wäre nicht gut ;-)
+ .
+ Falls Sie »anderes« wählen, müssen Sie die Datei »/etc/fwlogwatch/fwlw_respond« an Ihre Anforderungen anpassen müssen.
+Description-es.UTF-8: ¿Desea añadir nuevas reglas de cortafuegos (o realizar otra operación) en caso de alerta?
+ No use esta opción si no sabe lo que hace. Hacerlo podría exponer su sistema a un ataque de Denegación de Servicio. p.ej. podrían llegar paquetes manipulados que parecen provenir de su DNS. Sería perjudicial añadir una regla que bloquee paquetes desde su DNS ;-)
+ .
+ En caso de elegir «otro», deberá editar «/etc/fwlogwatch/fwlw_respond»
+ para adecuarlo a sus necesidades.
+Description-fr.UTF-8: Ajout d'une règle au coupe-feu (ou autre action) en cas d'alerte ?
+ Ne choisissez cette option que si vous savez ce que vous faites. Vous risquez d'exposer votre système à des attaques par déni de service, par exemple l'envoi de paquets modifiés pour donner l'impression qu'ils viennent de votre serveur de noms. Cela aurait pour effet l'ajout d'une règle bloquant votre propre serveur de noms.
+ .
+ Si vous choisissez « autre », il vous faudra modifier vous même le fichier '/etc/fwlogwatch/fwlw_respond' selon vos besoins.
+Description-it.UTF-8: Aggiungere nuove regole al firewall (o prendere altre contromisure) in caso d'allarme?
+ Non usare questa opzione se non si conosce esattamente ciò che si sta facendo, infatti si rischia di esporre il proprio sistema a attacchi di tipo "Denial of Service". Per esempio, i pacchetti ritoccati potrebbero apparire come provenienti dal proprio DNS però aggiungere una regola che blocca i pacchetti dal DNS non è consigliabile ;-)
+ .
+ Rispondendo "altro" è necessario modificare "/etc/fwlogwatch/fwlw_respond" in modo da adattarlo alle proprie necessità.
+Description-ja.UTF-8: 警告の場合は新たにファイアウォールのルールを追加 (または他の動作を行うように) しますか?
+ このオプションは自分が何をしているかを把握した上で利用してください。この設定を行うと、あなたのシステムをサービス不能攻撃 (DoS attack) に晒すことができるのです。たとえば詐称されたパケットは、利用している DNS サーバから来ているようにみえるようにすることができます。DNS サーバからのパケットをブロックするルールを加えるのはいい考えではありません ;-)
+ .
+ 「その他」を選んだ場合、目的に合うように '/etc/fwlogwatch/fwlw_respond' を編集する必要が出るでしょう。
+Description-nl.UTF-8: Wilt u nieuwe firewall-regels toevoegen (of andere acties uitvoeren) in geval van een alarmmelding?
+ Gebruik deze optie enkel als u weet wat u doet, deze optie opent namelijk de mogelijkheid voor een 'Denial of Service'-aanval: 'spoofed' pakketten kunnen zich bijvoorbeeld voordoen als vanaf uw DNS afkomstig. Een regel toevoegen die uw DNS blokkeert is echter geen goed idee ;-) .
+ .
+ Als u 'anders' kiest dient u /etc/fwlogwatch/fwlw_respond aan te passen aan uw eisen.
+Description-pt.UTF-8: Adicionar novas regras na firewall (ou tomar outra acção) em caso de alerta?
+ Não use esta opção a menos que saiba o que está a fazer. Fazendo-o pode expor o seu sistema a um ataque de negação de serviço (DoS). Pacotes disfarçados podem propositadamente parecer vindos do seu DNS. Adicionando uma regra a bloquear pacotes vindos do seu DNS não será bom ;-)
+ .
+ No caso de escolher 'outro', você terá que editar o '/etc/fwlogwatch/fwlw_respond' para o adaptar aos seus requerimentos.
+Description-ru.UTF-8: Добавлять новые правила в межсетевой экран (или выполнять другое действие) в случае опасности?
+ Не используйте, если не знаете что делаете. Этим вы можете прервать нормальную работу системы, например поддельные пакеты могут выглядеть как исходящие от вашего DNS. Добавление правила заблокирует пакеты от вашего DNS, что не очень хорошо ;-)
+ .
+ В случае выбора 'другое', вам нужно отредактировать файл '/etc/fwlogwatch/fwlw_respond' в соответствии с вашими задачами.
+Description-sk.UTF-8: Pridať nové pravidlá firewallu (alebo vykonať inú akciu) v prípade upozornenia?
+ Nepoužívajte túto voľbu, pokiaľ neviete čo robíte. Môžete tým vystaviť svoj systém útoku Denial of Service. Napr. môže byť zaplavený paketmi, ktoré sú upravené aby vyzerali ako keby pochádzali z vášho DNS. Pridanie pravidla, ktoré blokuje pakety z vášho DNS nebude to pravé, čo chcete ;-)
+ .
+ Ak zvolíte „áno (iné)”, budete musieť upraviť „/etc/fwlogwatch/fwlw_respond” tak, aby vyhovoval vašim potrebám.
+Description-sv.UTF-8: Lägga till nya brandväggsregler (eller vidta andra åtgärder) vid larm?
+ Använd inte denna funktion om du inte vet vad du gör. Det kan göra att ditt system utsätts för ett tjänsteangrepp (DoS), alltså falska paket som ser ut att komma från din DNS-server. Att lägga till en regel som blockerar paket från din DNS-server är inte bra ;-)
+ .
+ Om du väljer "annat" måste du redigera "/etc/fwlogwatch/fwlw_respond" för att passa dina krav.
+Description-vi.UTF-8: Thêm quy tắc tường lửa mới (hoặc làm một hành động khác) khi báo động ?
+ Không được sử dụng tuỳ chọn này trừ khi biết mình đang làm gì. Làm như vậy có thể rủi ro bị tấn công DDOS (dịch vụ bị từ chối), tức là các gói tin giả hình như đến từ DNS của bạn. Thêm một quy tắc để chặn các gói tin từ DNS mình thì không phải là một ý kiến tốt. ;-)
+ .
+ Chọn mục « khác » thì bạn cần phải chỉnh sửa tập tin « /etc/fwlogwatch/fwlw_respond » để thích hợp với nhu cầu của mình.
+
+Template: fwlogwatch/notify
+Type: select
+Choices: no, yes (mail), yes (other)
+Choices-cs.UTF-8: ne, ano (pošta), ano (jiné)
+Choices-da.UTF-8: nej, ja (e-post), ja (andet)
+Choices-de.UTF-8: Nein, Ja (E-Mail), Ja (anderes)
+Choices-es.UTF-8: no, sí (correo), sí (otro)
+Choices-fr.UTF-8: non, oui (courriel), oui (autre)
+Choices-it.UTF-8: no, sì (mail), sì (altro)
+Choices-ja.UTF-8: いいえ, はい (メールで), はい (その他)
+Choices-nl.UTF-8: nee, ja (e-mail), ja (anders)
+Choices-pt.UTF-8: não, sim (mail), sim (outro)
+Choices-ru.UTF-8: нет, да (по почте), да (другое)
+Choices-sk.UTF-8: nie, áno (email), áno (iné)
+Choices-sv.UTF-8: nej, ja (e-post), ja (annat)
+Choices-vi.UTF-8: không, có (thư), có (khác)
+Default: no
+Description: Send alerts by mail or other ways?
+ This option will make fwlogwatch send you alerts by email or other ways.
+ You may wish to adjust 'alert_threshold' in
+ '/etc/fwlogwatch/fwlogwatch.config' to avoid getting too many warnings.
+ .
+ In case of choosing 'other', you'll have to edit
+ '/etc/fwlogwatch/fwlw_notify' to meet your requirements.
+Description-cs.UTF-8: Zasílat poplachy pomocí pošty, nebo jiným způsobem?
+ Touto volbou nastavíte, zda vám má fwlogwatch zasílat poplachy poštou, nebo jinými cestami. Pravděpodobně budete chtít upravit volbu „alert_threshold“ v souboru „/etc/fwlogwatch/fwlogwatch.config“, kde si můžete nastavit práh důležitosti, abyste nebyli zahlceni hromadou neškodných varování.
+ .
+ Vyberete-li „jinak“, budete muset upravit soubor „/etc/fwlogwatch/fwlw_notify“ dle svých požadavků.
+Description-da.UTF-8: Send alarmer med e-post eller anden måde?
+ Denne indstilling vil få fwlogwatch til at sende alarmer som e-post eller på anden måde. Du vil måske ønske at justere »alert_threshold« i »/etc/fwlogwatch/fwlogwatch.config« for at undgå for mange advarsler.
+ .
+ I tilfælde af at du vælger »andet«, vil du skulle redigere »/etc/fwlogwatch/fwlw_notify« for at imødekomme dine krav.
+Description-de.UTF-8: Sollen Alarmmeldungen per E-Mail oder auf anderem Wege versandt werden?
+ Diese Option veranlasst Fwlogwatch Alarmmeldungen per E-Mail oder auf anderem Wege zu versenden. Eventuell möchten Sie in der Datei »/etc/fwlogwatch/fwlogwatch.config« den Wert für »alert_threshold« anpassen, um nicht zu viele Warnungen zu erhalten.
+ .
+ Falls Sie »anderes« wählen, müssen Sie die Datei »/etc/fwlogwatch/fwlw_notify« an Ihre Anforderungen anpassen müssen.
+Description-es.UTF-8: ¿Desea que se envíen alertas por correo u otros medios?
+ Esta opción hará que fwlogwatch envíe alertas por correo u otros medios. Puede que necesite ajustar «alert_threshold» en «/etc/fwlogwatch/fwlogwatch.config» para evitar recibir demasiadas alertas.
+ .
+ En caso de que elija «otro», deberá editar «/etc/fwlogwatch/fwlw_notify» para adecuarlo a sus necesidades.
+Description-fr.UTF-8: Envoi d'alertes par courriel ou par une autre méthode ?
+ Cette option active l'envoi par fwlogwatch des alertes par courriel ou autres méthodes. Le réglage du seuil d'alerte (« alert_threshold ») se fait dans le fichier '/etc/fwlogwatch/fwlogwatch.config' pour limiter le nombre d'alertes envoyées.
+ .
+ Si vous choisissez « autre », il vous faudra modifier le fichier '/etc/fwlogwatch/fwlw_notify' pour l'adapter à vos besoins.
+Description-it.UTF-8: Inviare avvisi via email o in altri modi?
+ Questa opzione permette a fwlogwatch di inviare allarmi via email o in altri modi. Per evitare l'invio di troppi avvisi si può modificare il valore di "alert_threshold" in "/etc/fwlogwatch/fwlogwatch.config".
+ .
+ Rispondendo "altro" è necessario modificare "/etc/fwlogwatch/fwlw_notify" in modo da adattarlo alle proprie necessità.
+Description-ja.UTF-8: メール、またはその他の手段で警告を送信しますか?
+ このオプションを選ぶと fwlogwatch はメールやその他の手段で警告を送るようになります。大量の警告を受け取るのを避けるため、'/etc/fwlogwatch/fwlogwatch.config' で 'alert_threshold' を調整したくなるでしょう。
+ .
+ 「その他」を選んだ場合、目的に合うように '/etc/fwlogwatch/fwlw_notify' を編集する必要が出るでしょう。
+Description-nl.UTF-8: Wilt u alarmmeldingen via e-mail of op een andere manier versturen?
+ Deze optie zorgt ervoor dat u (per e-mail of op een andere manier) alarmmeldingen doorgestuurd krijgt van fwlogwatch. Om te vermijden dat u te veel alarmmeldingen krijgt kunt u de optie 'alert_threshold' in /etc/fwlogwatch/fwlogwatch.config aanpassen.
+ .
+ Als u 'anders' kiest dient u /etc/fwlogwatch/fwlw_notify aan te passen aan uw eisen.
+Description-pt.UTF-8: Enviar alertas por mail ou de outras maneiras?
+ Esta opção irá fazer o fwlogwatch enviar-lhe alertas por email ou outra forma. Talvez deseje ajustar o 'alert_threshold' em '/etc/fwlogwatch/fwlogwatch.config' para evitar receber demasiados avisos.
+ .
+ No caso de escolher 'outro', você terá que editar o '/etc/fwlogwatch/fwlw_notify' para o adaptar aos seus requerimentos.
+Description-ru.UTF-8: Отправлять сообщения об опасности по почте или другим способом?
+ Здесь вы можете выбрать, будет ли fwlogwatch отправлять сообщения об опасности по почте или другими способами. Чтобы избежать большого количества предупреждений, можно отредактировать значение 'alert_threshold' в '/etc/fwlogwatch/fwlogwatch.config'.
+ .
+ В случае выбора 'другое', вам нужно отредактировать файл '/etc/fwlogwatch/fwlw_notify' в соответствии с вашими задачами.
+Description-sk.UTF-8: Posielať upozornenia emailom alebo inak?
+ Táto voľba nastaví fwlogwatch tak, aby posielal upozornenia emailom alebo iným spôsobom. Asi budete chcieť prispôsobiť voľbu „alert_threshold” v súbore „/etc/fwlogwatch/fwlogwatch.config”, aby ste predišli príliš častým upozorneniam.
+ .
+ Ak zvolíte „áno (iné)”, budete musieť upraviť „/etc/fwlogwatch/fwlw_notify” tak, aby vyhovoval vašim potrebám.
+Description-sv.UTF-8: Skicka larm via e-post eller annat sätt?
+ Detta val kommer göra att fwlogwatch skickar dig larm via e-post eller andra sätt. Du kan vilja justera "alert_threshold" i "/etc/fwlogwatch/fwlogwatch.config" för att undvika att få för många larm.
+ .
+ Om du väljer "annat" måste du redigera "/etc/fwlogwatch/fwlw_notify" för att passa dina krav.
+Description-vi.UTF-8: Gửi báo động trong thư, hay bằng cách khác ?
+ Tuỳ chọn này thì làm cho fwlogwatch gửi báo động cho bạn qua thư điện tử hoặc bằng cách khác. Có thể là bạn muốn điều chỉnh giá trị « alert_threshold » (ngưỡng báo động) trong tập tin cấu hình « /etc/fwlogwatch/fwlogwatch.config » để tránh nhận quá nhiều cảnh báo.
+ .
+ Chọn mục « khác » thì bạn cần phải chỉnh sửa tập tin « /etc/fwlogwatch/fwlw_notify » để thích hợp với nhu cầu của mình.
+
+Template: fwlogwatch/email
+Type: string
+Default: root@localhost
+Description: Email address to send the alerts to:
+Description-cs.UTF-8: Emailová adresa, na kterou mají zasílat varování:
+Description-da.UTF-8: E-post-adresse som alarmer skal sendes til:
+Description-de.UTF-8: E-Mail-Adresse, an die die Alarmmeldungen geschickt werden sollen:
+Description-es.UTF-8: Dirección de correo donde enviar las alertas:
+Description-fr.UTF-8: Adresse électronique pour l'envoi des alertes :
+Description-it.UTF-8: Indirzzo email a cui inviare gli avvisi:
+Description-ja.UTF-8: 警告送付先のメールアドレス:
+Description-nl.UTF-8: E-mailadres waar de alarmmeldingen naartoe gestuurd dienen te worden.
+Description-pt.UTF-8: Endereço de Email para onde enviar os alertas:
+Description-ru.UTF-8: Адрес электронной почты, на который отсылать предупреждения:
+Description-sk.UTF-8: Emailová adresa na posielanie upozornení:
+Description-sv.UTF-8: E-postadress att skicka larmen till:
+Description-vi.UTF-8: Gửi báo động cho địa chỉ thư này:
+
+Template: fwlogwatch/cron_email
+Type: string
+Default: none
+Description: Email address to send daily reports on firewall events:
+ If you want a daily cron job to send you an email with a report of the
+ day's log entries, just type the address where you want the email to be
+ sent.
+ .
+ If you don't want these emails, just set the field to 'none' (without
+ quotes).
+Description-cs.UTF-8: Emailová adresa, na kterou posílat denní hlášení o událostech na firewallu:
+ Chcete-li, aby vám cronová úloha zasílala denní hlášení o zaznamenaných akcích, napište zde emailovou adresu, na kterou se má hlášení zasílat.
+ .
+ Nechcete-li tyto emaily dostávat, napište do pole „none“ (bez uvozovek).
+Description-da.UTF-8: E-post-adresse som daglige rapporter om brandmursbegivenheder skal sendes til:
+ Hvis du ønsker et dagligt cronjob skal sende en e-post med en rapport over dagens logpunkter så indtast adressen, som du ønsker, at e-posten skal sendes til.
+ .
+ Hvis du ikke ønsker denne form for e-post, så sæt feltet til »ingen« (uden citationstegn).
+Description-de.UTF-8: E-Mail-Adresse, an die tägliche Berichte über Firewall-Vorkommnisse geschickt werden sollen:
+ Wenn Sie wollen, dass ein täglich laufender Cron-Job Ihnen eine E-Mail mit einem Bericht über die Protokolleinträge des Tages zuschickt, dann geben Sie hier die Adresse an, an die diese E-Mail gesandt werden soll.
+ .
+ Wenn Sie diese E-Mails nicht wollen, geben Sie bitte »none« ein (ohne Anführungszeichen).
+Description-es.UTF-8: Dirección de correo donde enviar informes diarios sobre eventos del cortafuegos:
+ Si quiere que una tarea diaria de cron le envíe un correo con un informe sobre los registros del cortafuegos, escriba la dirección a la que se debeenviar el correo.
+ .
+ Si no desea recibir estos correos, escriba «none» (sin las comillas) en este campo.
+Description-fr.UTF-8: Adresse électronique d'envoi des rapports journaliers des événements du coupe-feu :
+ Pour qu'une tâche périodique de cron envoie, par courriel, le rapport journalier des événements enregistrés, vous devez indiquer l'adresse de destination.
+ .
+ Pour ne pas recevoir de courriel, indiquer « none » (sans les guillemets).
+Description-it.UTF-8: Indirizzo email a cui inviare i rapporti giornalieri con gli eventi del firewall:
+ Se si vuole usare un job quotidiano di cron per inviare via email un resoconto delle registrazioni nel log della giornata, inserire l'indirizzo email a cui devono essere inviate le email.
+ .
+ Se non si vogliono queste email, impostare il campo a "nessuno" (senza le virgolette).
+Description-ja.UTF-8: ファイアウォールで起こったイベントの日次レポートを送る先のメールアドレス:
+ 日々の cron の動作によって、その日のログ記録のレポートをメールで送るようにしたい場合、送り先に指定したいメールアドレスを入力してください。
+ .
+ このようなメールを受け取りたくない場合は、ここには単に none と設定して下さい。
+Description-nl.UTF-8: E-mailadres waar de dagelijkse rapporten over firewall-gebeurtenissen naartoe gestuurd dienen te worden.
+ Als u per e-mail een dagelijks rapport wilt krijgen met de log-ingangen van die dag, dient u hier het adres aan te geven waar dit rapport naartoe gestuurd moet worden.
+ .
+ Als u deze e-mails niet wilt, voer hier dan 'geen' in (zonder de ').
+Description-pt.UTF-8: Endereço de Email para envio de relatórios diários de eventos na firewall:
+ Se desejar que uma tarefa agendada lhe envie diariamente um email com um relatório diário de entradas, escreva o endereço para onde deseja que o email seja enviado.
+ .
+ Se você não deseja estes emails, então insira no campo 'none' (sem as aspas).
+Description-ru.UTF-8: Адрес электронной почты, на который отсылать ежедневные отчёты о событиях на межсетевом экране:
+ Если вы хотите ежедневно получать отчёт по журналу событий межсетевого экрана, введите адрес электронной почты.
+ .
+ Если это ненужно, введите none.
+Description-sk.UTF-8: Emailová adresa na posielanie denných hlásení o udalostiach firewallu:
+ Ak chcete dostávať denný súhrn položiek záznamu (spracovaný úlohou cronu), jednoducho zadajte adresu, na ktorú má byť email posielaný.
+ .
+ Ak nechcete dostávať tieto emaily, jednoducho nastavte pole na hodnotu „none” (bez úvodzoviek).
+Description-sv.UTF-8: E-postadress att skicka dagliga rapporter till om brandväggshändelser:
+ Om du vill att ett dagligt cron-jobb ska skicka dig ett e-postmeddelande med en rapport om dagens loggposter, ange då adressen du vill att meddelandet ska skickas till.
+ .
+ Om du inte vill ha dessa meddelanden, sätt bara fältet till "none" (utan citattecken).
+Description-vi.UTF-8: Hằng ngày gửi thông báo về sự kiện tường lửa cho địa chỉ thư này:
+ Có muốn lập một công việc định kỳ (cron) hằng ngày gửi cho bạn một thư thông báo về các mục nhập sổ theo dõi vào ngày đó thì chỉ gõ địa chỉ thư điện tử nên nhận các thư đó.
+ .
+ Không muốn thì nhập chuỗi « none » (không có).
+
+Template: fwlogwatch/cron_parameters
+Type: string
+Default: -p -d -O ta -t -e -l 1d
+Description: fwlogwatch parameters to use in the cron job:
+ If you do not know what these mean, it's safe to leave the defaults.
+Description-cs.UTF-8: Parametry programu fwlogwatch, které se mají použít v cronové úloze:
+ Pokud nevíte, co tyto přepínače znamenají, je bezpečné ponechat výchozí nastavení.
+Description-da.UTF-8: fwlogwatchparametre der skal bruges i cronjobbet:
+ Hvis du ikke ved hvad disse betyder, er det sikkert at bruge standarderne.
+Description-de.UTF-8: Fwlogwatch-Optionen, die für den Cron-Job verwendet werden sollen:
+ Wenn Sie nicht wissen, was diese bedeuten, dann ist es am sichersten, wenn Sie die vorgegebenen Optionen so belassen.
+Description-es.UTF-8: Parámetros de fwlogwatch a usar en la tarea de cron:
+ Si no sabe qué significan, use los valores predeterminados.
+Description-fr.UTF-8: Paramètres pour fwlogwatch dans la tâche périodoque :
+ En cas de doute, laissez les paramètres par défaut.
+Description-it.UTF-8: Parametri di fwlogwatch da usare nel job di cron:
+ Se non si capisce di cosa si sta parlando, lasciare i valori predefiniti.
+Description-ja.UTF-8: cron ジョブで利用する fwlogwatch のパラメータ:
+ これらが何を意味しているのかを理解してない場合、デフォルトのままにしておくのが安全です。
+Description-nl.UTF-8: Welke parameters wilt u fwlogwatch meegeven in de cron-taak?
+ Als u niet weet wat deze parameters betekenen, kunt u best de standaardwaarden laten staan.
+Description-pt.UTF-8: Parâmetros do fwlogwatch a usar na rotina agendada (cron):
+ Se você não sabe o que isto quer dizer, é seguro deixar os valores de omissão.
+Description-ru.UTF-8: Параметры к fwlogwatch, используемые в задании cron:
+ Если не понимаете, что это значит, оставьте значения по умолчанию.
+Description-sk.UTF-8: Parametre fwlogwatch, použité v úlohe cronu:
+ Ak neviete, čo to znamená, radšej ponechajte predvolené hodnoty.
+Description-sv.UTF-8: Parametrar för fwlogwatch att använda i cron-jobbet:
+ Om du inte vet vad detta betyder, kan du tryggt lämna kvar det förvalda värdet.
+Description-vi.UTF-8: Các tham số fwlogwatch cần dùng trong công việc định kỳ:
+ Không hiểu thì để lại giá trị mặc định.
+
+Template: fwlogwatch/buildconfig
+Type: boolean
+Default: true
+Description: Rebuild configuration file from debconf's values?
+Description-cs.UTF-8: Sestavit konfigurační soubor z hodnot v debconfu?
+Description-da.UTF-8: Genbyg konfigurationsfil fra debconfs værdier?
+Description-de.UTF-8: Konfigurationsdatei aus den Debconf-Werten neu erstellen?
+Description-es.UTF-8: ¿Desea reconstruir el fichero de configuración utilizando los valores de debconf?
+Description-fr.UTF-8: Recréer le fichier de configuration avec les paramètres de debconf ?
+Description-it.UTF-8: Ricreare il file di configurazione usando i valori di debconf?
+Description-ja.UTF-8: debconf で与えられた値を元に設定ファイルを再構築しますか?
+Description-nl.UTF-8: Wilt u dat het configuratiebestand opnieuw opgebouwd wordt op basis van de debconf-waarden?
+Description-pt.UTF-8: Reconstruir o ficheiro de configuração pelos valores do debconf?
+Description-ru.UTF-8: Перестроить файл настройки из данных debconf?
+Description-sk.UTF-8: Prebudovať konfiguračný súbor na základe hodnôt z Debconf?
+Description-sv.UTF-8: Bygga om konfigurationsfilen med värden från debconf?
+Description-vi.UTF-8: Xây dựng lại tập tin cấu hình từ các giá trị của debconf ?

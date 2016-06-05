@@ -143,6 +143,8 @@
 			<a href=\"index.php?page=clientsoverview&orderBy=name&direction=desc&action=$action\&searchLine=$searchLine\"><img src=\"/gfx/downArrow.png\" border=0></a>
 		</span>
 	</td>
+	<!-- m23customPatchBegin type=change id=additionalColumnHeadings-->
+	<!-- m23customPatchEnd id=additionalColumnHeadings-->
 	<td align=\"center\"><span class=\"subhighlight\">$I18N_group</span></td>
 	<td></td>
 	<td align=\"center\"><span class=\"subhighlight\">$I18N_packages</span></td>
@@ -222,6 +224,8 @@
 			<td align=\"left\">$htmlStatus</td>
 			<td><a href=\"index.php?page=clientdetails&client=".$data['client']."&id=".$data['id']."\">$data[client]</a></td>
 			<td>");
+//m23customPatchBegin type=change id=additionalColumnsDisplayCode
+//m23customPatchEnd id=additionalColumnsDisplayCode
 
 				GRP_showClientGroups($data['client'],true);
 

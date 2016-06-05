@@ -1,0 +1,142 @@
+
+Template: racoon/config_mode
+Type: select
+Choices: direct, racoon-tool
+Choices-cs.UTF-8: přímo, racoon-tool
+Choices-da.UTF-8: direkte, racoon-tool
+Choices-de.UTF-8: direkt, Racoon-Tool
+Choices-es.UTF-8: directo, racoon-tool
+Choices-eu.UTF-8: zuzena, racoon-tool bidez
+Choices-fi.UTF-8: suora, racoon-tool
+Choices-fr.UTF-8: Modification directe, Utilisation de racoon-tool
+Choices-gl.UTF-8: directo, racoon-tool
+Choices-it.UTF-8: diretto, racoon-tool
+Choices-ja.UTF-8: 直接, racoon-tool
+Choices-nl.UTF-8: direct, racoon-tool
+Choices-pl.UTF-8: bezpośrednia, racoon-tool
+Choices-pt.UTF-8: directo, raccon-tool
+Choices-pt_BR.UTF-8: direta, racoon-tool
+Choices-ru.UTF-8: вручную, racoon-tool
+Choices-sk.UTF-8: priamo, racoon-tool
+Choices-sv.UTF-8: direkt, racoon-tool
+Choices-vi.UTF-8: trực tiếp, racoon-tool
+Default: direct
+Description: Configuration mode for racoon IKE daemon:
+ Racoon can be configured either directly, by editing
+ /etc/racoon/racoon.conf, or using the racoon-tool administrative front end.
+ .
+ Use of the "direct" method is strongly recommended if you want to use all
+ the racoon examples on the Net, and if you want to use the full
+ racoon feature set. You will have to directly edit /etc/racoon/racoon.conf
+ and possibly manually set up the Security Policy Database via setkey.
+ .
+ Racoon-tool has been updated for racoon 0.8.0, and is for use in basic
+ configuration setups. It gives the benefit of managing the SPD along with the
+ IKE that strongSwan offers. IPv6, transport/tunnel mode (ESP/AH), PSK/X509
+ auth, and basic "anonymous" VPN server are supported.
+ .
+ More information is available in /usr/share/doc/racoon/README.Debian.
+Description-cs.UTF-8: Způsob nastavení racoon IKE daemona:
+ racoon můžete nastavit buď přímou úpravou souboru /etc/racoon/racoon.conf, nebo použitím administračního rozhraní racoon-tool.
+ .
+ „Přímý“ způsob se doporučuje v případě, že chcete využít všechny příklady z Internetu, nebo pokud chcete využít racoon naplno. Budete ovšem muset upravovat /etc/racoon/racoon.conf ručně a možná také ručně pomocí setkey nastavit Security Policy Database (SPD).
+ .
+ Racoon-tool byl aktualizován pro racoon verze 0.8.0 a slouží pro základní nastavení. Výhodou je, že umí spravovat SPD i IKE ze strongSwanu. Podporuje IPv6, transportní/tunelovací režim (ESP/AH), autentizaci PSK/X509 a základní „anonymní“ VPN server.
+ .
+ Více informací naleznete v /usr/share/doc/racoon/README.Debian.
+Description-da.UTF-8: Konfigurationstilstand for racoon IKE-dæmon:
+ Racoon kan konfigureres enten direkte, ved redigering af /etc/racoon/racoon.conf, eller med brug af den administrative brugerflade til racoon-tool.
+ .
+ Brug af metoden »direkte« anbefales, hvis du ønsker at bruge alle racooneksemplerne på nettet, og hvis du ønsker at bruge det fulde funktionssæt for racoon. Du skal direkte redigere /etc/racoon/racoon.conf og muligvis manuelt opsætte Security Policy Database (database for sikkerhedspolitik) via setkey.
+ .
+ Racoon-tool er blevet opdateret for racoon 0.8.0, og skal bruges i de grundlæggende konfigurationsopsætninger. Værktøjer giver mulighed for at håndtere SPD'en sammen med IKE'en som strongSwan tilbyder. IPv6, transport/tunnel tilstand (ESP/AH), PSK/X509 auth og grundlæggende »anonym« VPN-server er understøttet.
+ .
+ Yderligere information er tilgængelig i /usr/share/doc/racoon/README.Debian.
+Description-de.UTF-8: Art der Einrichtung des Racoon-IKE-Daemons:
+ Racoon kann entweder direkt durch Bearbeitung von /etc/racoon/racoon.conf oder über die administrative Oberfläche von Racoon-Tool konfiguriert werden.
+ .
+ Die Verwendung der »direkten« Methode wird dringend empfohlen, wenn Sie die vielen Racoon-Beispiele aus dem Netz verwenden und alle Fähigkeiten von Racoon ausreizen wollen. Sie werden /etc/racoon/racoon.conf direkt bearbeiten und möglicherweise die Sicherheitsrichtlinien-Datenbank (Security Policy Database) via Setkey per Hand aufsetzen müssen.
+ .
+ Racoon-Tool wurde für Racoon 0.8.0 auf den neuesten Stand gebracht und ist für die Verwendung in Basiskonfigurationen. Es hat den Vorzug, die SPD zusammen mit dem von strongSwan angebotenen IKE zu verwalten. IPv6, Transport/Tunnel-Modus (ESP/AH), PSK/X509-Authentifizierung und einfacher »anonymer« VPN-Server werden unterstützt.
+ .
+ Weitere Informationen finden Sie in /usr/share/doc/racoon/README.Debian.
+Description-es.UTF-8: Modo de configuración para el demonio IKE de racoon:
+ Se puede configurar racoon de dos formas distintas: editando directamente el fichero «/etc/racoon/racoon.conf» o utilizando la interfaz de administración «racoon-tool».
+ .
+ Se recomienda encarecidamente el método «direct» si quiere utilizar todos los ejemplos de racoon disponibles en la red, y si desea utilizar el conjunto completo de funcionalidades. Tendrá que editar directamente «/etc/racoon/racoon.conf» y seguramente deba configurar manualmente la Base de datos de la Política de Seguridad con «setkey».
+ .
+ Se ha actualizado «acoon-tool» para la versión 0.8.0 de racoon y se ha de utilizar para conjuntos de configuración básicos. Esta herramienta tiene como beneficio la gestión de SPF junto con el IKE que ofrece strongSwam. También incluye soporte para las funcionalidades de IPv6, modo de transporte/túnel (ESP/AH), autenticación PSK/X509, y el servidor VPN «anónimo».
+ .
+ Tiene más información disponible en «/usr/share/doc/racoon/README.Debian».
+Description-fr.UTF-8: Mode de configuration pour le démon IKE racoon :
+ Racoon peut être configuré de deux façons, soit en modifiant directement le fichier /etc/racoon/racoon.conf, soit en utilisant l'outil d'administration racoon-tool.
+ .
+ Il est recommandé d'utiliser la méthode « directe » afin de pouvoir bénéficier des exemples d'utilisation de Racoon disponibles sur l'Internet et pour utiliser toutes les fonctionnalités de Racoon. Vous devrez alors modifier /etc/racoon/racoon.conf et éventuellement créer la base de données de politiques de sécurité avec setkey.
+ .
+ Racoon-tool a été mis à jour pour Racoon 0.8.0 et permet de créer des configurations de base. Il a l'avantage de gérer la base de données de politiques de sécurité en même temps que le protocole d'échange de clés (IKE) fourni par strongSwan. Il gère IPv6, le mode transport/tunnel (ESP/AH), l'authentification à clé pré-partagée PSK/X509 et un VPN « anonyme » simple.
+ .
+ Plus d'informations sont disponibles dans le fichier /usr/share/doc/racoon/README.Debian.
+Description-it.UTF-8: Modalità di configurazione del demone IKE racoon:
+ Racoon può essere configurato direttamente, andando a modificare /etc/racoon/racoon.conf, oppure usando l'interfaccia d'amministrazione racoon-tool.
+ .
+ L'uso del metodo "diretto" è fortemente raccomandato se si vogliono usare tutti gli esempi disponibili in rete e se si vogliono usare tutte le funzionalità di racoon. Sarà necessario modificare direttamente /etc/racoon/racoon.conf e probabilmente impostare manualmente il Security Policy Database con setkey.
+ .
+ Racoon-tool è stato aggiornato per racoon 0.8.0 e può essere usato per fare delle configurazioni di base. Ha il pregio di gestire il SPD con IKE offerto da strongSwan. Supporta IPv6, la modalità trasporto/tunnel (ESP/AH), l'autenticazione PSK/X509 e server VPN "anonimi" di base.
+ .
+ Maggiori informazioni sono disponibili in /usr/share/doc/racoon/README.Debian.
+Description-ja.UTF-8: racoon IKE デーモンの設定方法:
+ racoon は /etc/racoon/racoon.conf を直接編集するか racoon-tool 管理用フロントエンドを利用することにより設定可能です。
+ .
+ インターネット上にある racoon 使用例を全て使いたい、あるいは racoon の機能群を全て利用したい場合は「直接」設定する方法を強く勧めます。/etc/racoon/racoon.conf を直接編集する必要があります。setkey を経由して手作業でセキュリティポリシーデータベースを用意することも必要となるかもしれません。
+ .
+ Racoon-tool が racoon 0.8.0 用に更新され、基礎的な設定に利用するようになっています。これにより strongSwan が提供する IKE と共に SPD を管理できる利点がもたらされています。IPv6 や転送/トンネルモード (ESP/AH)、PSK/X509 認証、基本的な「匿名」VPN サーバをサポートしています。
+ .
+ さらなる情報が /usr/share/doc/racoon/README.Debian にあります。
+Description-nl.UTF-8: Configuratiemodus voor de racoon IKE-achtergronddienst:
+ Racoon kan ingesteld worden, ofwel door het configuratiebestand /etc/racoon/racoon.conf direct aan te passen, ofwel via het administratieve programma racoon-tool.
+ .
+ De directe methode wordt sterk aanbevolen als u alle racoon voorbeelden op het net wilt gebruiken, en als u de volledige mogelijkheden van racoon wilt gebruiken. U moet dan direct /etc/racoon/racoon.conf wijzigen, en mogelijk handmatig de Security Policy Database opzetten met behulp van setkey.
+ .
+ Racoon-tool is bijgewerkt voor racoon 0.8.0, en is bedoeld voor gebruik in basale configuraties. Het heeft het voordeel dat de Security Policy Database wordt beheerd samen met de IKE (Internet Key Exchange) die strongSwan biedt. IPv6, transport/tunnel mode (ESP/AH), PSK/X509 authenticatie en basic "anonymous" VPN server worden ondersteund.
+ .
+ Meer informatie is te vinden in /usr/share/doc/racoon/README.Debian.
+Description-pl.UTF-8: Tryb konfiguracji do demona IKE racoon:
+ Racoon może zostać skonfigurowane bezpośrednio, za pomocą edycji pliku /etc/racoon/racoon.conf lub używając interfejsu administracyjnego racoon-tool.
+ .
+ Użycie metody bezpośredniej jest zalecane, jeśli chce się używać wszystkich przykładów racoon z sieci i aby wykorzystać pełne możliwości racoon. Konieczne będzie bezpośrednie edytowanie pliku /etc/racoon/racoon.conf i prawdopodobnie ręczna konfiguracja Security Policy Database za pomocą setkey.
+ .
+ Racoon-tool zostało zaktualizowane do racoon w wersji 0.8.0 i przydaje się w prostych konfiguracjach. Daje zaletę zarządzania SPD razem z IKE, które oferuje strongSwan. Obsługiwane są: IPv6, tryb transport/tunel (ESP/AH), autoryzacja PSK/X509 i prosty serwer "anonimowy" VPN.
+ .
+ Więcej informacji znajduje się w pliku /usr/share/doc/racoon/README.Debian.
+Description-pt.UTF-8: Modo de configuração para o daemon racoon IKE:
+ O racoon pode ser configurado ou directamente, ao editar /etc/racoon/racoon.conf, ou usando o front-end administrativo racoon-tool.
+ .
+ O uso do método directo é "fortemente" recomendado se você deseja usar todos os exemplos do racoon da Net, e se deseja usar o conjunto total de funcionalidades do racoon. Você terá que editar directamente /etc/racoon/racoon.conf e possivelmente ter que definir manualmente a Base de Dados de Politicas de Segurança via setkey.
+ .
+ O racoon-tool foi actualizado para o racoon 0.8.0, e é usado para definir configurações básicas. Oferece o benefício de gerir o SPD juntamente com a IKE que o strongSwan oferece. são suportados IPv6, modo de transporte em túnel (ESP/AH), autenticação PSK/X509, e servidor VPN "anonimo" básico.
+ .
+ Mais informações estão disponíveis em /usr/share/doc/racoon/README.Debian.
+Description-ru.UTF-8: Способ настройки службы racoon IKE:
+ Службу racoon можно настраивать двумя способами: правкой /etc/racoon/racoon.conf вручную и при помощи управляющей оболочки racoon-tool.
+ .
+ Если вы хотите использовать все примеры racoon для Net, или задействовать все возможности racoon, то настоятельно рекомендуется использовать «ручной» способ. Для этого отредактируйте файл /etc/racoon/racoon.conf и, возможно, вручную настройте базу данных политики безопасности через setkey.
+ .
+ Программа Racoon-tool была обновлена в racoon 0.8.0, ей можно пользоваться для создания несложных конфигураций. Вместе с IKE, которую предлагает strongSwan, она удобна в управлении SPD. Поддерживается настройка IPv6, режим пересылки/туннелирования (ESP/AH), аутентификация PSK/X509 и базовый «анонимный» сервер VPN.
+ .
+ Дополнительную информацию можно найти в файле /usr/share/doc/racoon/README.Debian.
+Description-sk.UTF-8: Režim konfigurácie démona IKE racoon:
+ Racoon je možné nakonfigurovať buď priamo, úpravou /etc/racoon/racoon.conf alebo použitím správcovského rozhrania racoon-tool.
+ .
+ Dôrazne sa odporúča použiť spôsob „priamo“ ak chcete používať všetk príklade racoon z internetu a ak chcete používať kompletnú sadu vlastností racoon. Budete musieť priamo upraviť /etc/racoon/racoon.conf a možno aj nastaviť Databázu bezpečnostných politík prostredníctvom setkey.
+ .
+ Racoon-tool bol aktualizovaný na racoon 0.8.0 a slúži na použitie na nastavenie základných konfigurácií. Jeho výhodou je správa SPD spolu s IDE, ktorý ponúka strongSwan. Podporované je IPv6, režim transport/tunel (ESP/AH), overenie totožnosti PSK/X509 a základný „anonýmný“ VPN server.
+ .
+ Ďalšie informácie sú dostupné v súbore /usr/share/doc/racoon/README.Debian.
+Description-sv.UTF-8: Konfigurationsläge för IKE-demonen racoon:
+ Racoon kan konfigureras genom att direkt redigera /etc/racoon/racoon.conf eller genom att använda administrationsverktyget racoon-tool.
+ .
+ Användning av metoden "direkt" rekomenderas starkt om du vill använda alla racoon-exempel på på nätet och om du vill alla racoons möjligheter. Du behöver då redigera /etc/racoon/racoon.conf manuellt och eventuellt manuellt installera Security Policy Database (SPD) via "setkey".
+ .
+ Racoon-tool har uppdaterats för racoon 0.8.0 och kan användas för enklare installtationer. Det drar nytta av hanteringen av SPD tillsammans med IKE som StrongSwan erbjuder. IPv6, transport-/tunnel-läga (ESP/AH), PSK-/X509-autentisering och enkel "anonym" VPN-server stöds.
+ .
+ Ytterligare information finns att läsa i /usr/share/doc/racoon/README.Debian.

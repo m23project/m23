@@ -1,0 +1,37 @@
+Template: popa3d/standalone
+Type: boolean
+Default: true
+Description: Run popa3d in standalone mode?
+ In standalone mode, popa3d will become a daemon, accepting connections on
+ the pop3 port (110/tcp) and forking child processes to handle them. This
+ has lower overhead than starting popa3d from an inetd equivalent and is
+ thus useful on busy servers to reduce load. See popa3d(8) for more
+ details.
+Description-cs.UTF-8: Spustit popa3d v samostatném režimu?
+ V samostatném režimu se z popa3d stane daemon, který přijímá spojení na pop3 portu (110/tcp) a obsluhuje je svými potomky. Samostatný režim má nižší režii než spouštění popa3d z inetd a tudíž je užitečný na velmi zatížených serverech. Více viz popa3d(8).
+Description-da.UTF-8: Kør popa3d i tilstanden uafhængig?
+ I tilstanden uafhængig, vil popa3d blive en dæmon, der accepterer forbindelser på pop3-porten (110/tcp) og forgrener underprocesser for at håndtere dem. Dette har lavere overhead end ved at starte popa3d fra en inetd-ækvivalent og er derfor brugbar på travle servere for at reducere belastningen. Se popa3d(8) for yderligere detaljer.
+Description-de.UTF-8: popa3d als Daemon starten?
+ Wenn popa3d als Daemon gestartet wird, dann wird er Verbindungen auf Port 110/tcp annehmen und die Verbindungen an Child-Prozesse weitergeben. Diese Startart verursacht weniger Belastung für den Rechner und ist daher für Rechner mit hoher Belastung empfohlen. In der popa3d(8)-Manpage stehen weitere Details zu diesem Thema.
+Description-es.UTF-8: ¿Desea que pop3d se ejecute de forma independiente?
+ Si se ejecuta de forma independiente, popa3d se iniciará como demonio, aceptará conexiones en el puerto pop3 (110/tcp) y creará procesos hijo para poder gestionarlas. Con este sistema se obtiene una menor sobrecarga que iniciando popa3d desde el inetd equivalente y por lo tanto puede resultar útil en servidores con mayor actividad para reducir la carga de trabajo. Consulte popa3d(8) para obtener más información.
+Description-fr.UTF-8: Utiliser popa3d en mode autonome ?
+ En mode autonome, popa3d fonctionne en tant que démon. Il accepte les connexions sur le port pop3 (110/tcp) et démarre des processus fils pour les gérer. Le besoin en ressources est plus faible que lorsqu'il est lancé via inetd ou un logiciel équivalent, ce qui permet de réduire l'impact sur un serveur chargé. Voir popa3d(8) pour plus d'informations.
+Description-it.UTF-8: Eseguire popa3d in modalità standalone?
+ In modalità standalone, popa3d diventa un demone che accetta connessioni sulla porta pop3 (110/tcp) e che effettua il fork in processi figli per gestirle. Questo comporta un sovraccarico minore rispetto a quando popa3d viene attivato da inetd o equivalenti e quindi è utile sui server molto occupati per ridurre il carico. Consultare popa3d(8) per maggiori dettagli.
+Description-ja.UTF-8: スタンドアローンで popa3d を実行しますか?
+ スタンドアローンでは、 popa3d はデーモンとして動作し、 pop3 のポート (110/tcp) で接続を受け付けた後、これらを取り扱うために子プロセスをフォークします。これは popa3d を inetd などから起動するのに比べて低いオーバーヘッドであり、混雑するサーバでは負荷を減少するのに有用です。より詳細は popa3d(8) を参照してください。
+Description-nl.UTF-8: Wilt u popa3d in losstaande modus draaien?
+ In losstaande modus is popa3d een daemon die verbindingen aanvaart op de pop3 poort (110/tcp) en voor elke verbinding afhandelt in een kindprocessen. Dit produceert minderoverlast dan het opstarten van popa3d vanuit inetd, en verlaagt dus de belasting op de server. Zie popa3d(8) voor meer details.
+Description-pl.UTF-8: Czy uruchomić popa3d w trybie samodzielnym (nie z inetd)?
+ W trybie samodzielnym popa3d staje się demonem (nasłuchuje na porcie usługi pop3 (110/tcp) a następnie w razie potrzeby rozwidla procesy by obsłużyć połączenia). Powoduje to zazwyczaj mniejszy koszt obsłużenia połączenia w porównaniu z każdorazowym startowaniem popa3d z równoważnika inetd. Metoda ta jest zalecana przy silnie obciążonych serwerach. Przeczytaj stronę popa3d(8) podręcznika aby otrzymać więcej informacji na ten temat.
+Description-pt.UTF-8: Correr o popa3d em modo 'standalone'?
+ Em modo 'standalone', o popa3d irá tornar-se num processo independente (daemon), aceitando ligações no porto pop3 (110/tcp) e sustendo processos filhos para as controlar. Isto tem uma sobrecarga menor do que arrancar o popa3d de um equivalente inetd e mais útil em servidores muito ocupados para reduzir a carga. Veja popa3d(8) para mais detalhes.
+Description-pt_BR.UTF-8: Executar popa3d em modo standalone ?
+ Em modo standalone o popa3d irá se tornar um daemon, aceitando conexões na porta pop3 (110/tcp) e faz fork de processos filhos para gerenciar as conexões. Esse método consome menos recursos do que o método de iniciar o popa3d a partir de um equivalente do inetd e portanto é o método mais útil em servidores que recebem muitas requisições, reduzindo a carga do mesmo. Consulte a página de manual do popa3d(8) para maiores detalhes.
+Description-ru.UTF-8: Запустить popa3d в отдельном режиме?
+ В отдельном режиме popa3d представляет собой демон, принимающий соединения на порту pop3 (110/tcp) и создающий дочерние процессы для их обработки. Это менее накладно, чем запуск popa3d из клона inetd, и лучше для загруженных серверов. См. подробности в странице руководства popa3d(8).
+Description-sv.UTF-8: Köra popa3d i fristående läge?
+ I fristående läge körs popa3d som en daemon och accepterar inkommande anslutningar på POP3-porten (110/tcp) och delar upp sig i barnprocesser för att hantera detta. Det har en lågt resursutnyttjade och är användbart för belastade servrar för att reducera lasten. Se popa3d(8) för flera detaljer.
+Description-vi.UTF-8: Chạy trình popa3d trong chế độ độc lập không?
+ Trong chế độ độc lập, trình popa3d sẽ trở thành một trình nền (dæmon), chấp nhận sự kết nối trên cổng pop3 (110/tcp) và tạo tiến trình con để quản lý chúng. Tùy chọn này dùng ít tiềm năng hệ thống hơn việc khởi chạy popa3d từ một trình tương đương inetd; vì vậy nó có ích trên máy phục vụ rất bận, để giảm trọng tải. Hãy xem trang hướng dẫn (man) «popa3d(8)» để đọc chi tiết.

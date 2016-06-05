@@ -1,0 +1,135 @@
+Template: msmtp/sysconfig
+Type: boolean
+Default: false
+Description: Create a system wide configuration file?
+ msmtp has a sendmail emulation mode which allow to create a default
+ system account that can be used by any user.
+Description-cs.UTF-8: Vytvořit systémový konfigurační soubor?
+ msmtp obsahuje režim emulace sendmailu, který umožňuje vytvořit výchozí systémový účet, který pak může využívat libovolný uživatel.
+Description-da.UTF-8: Opret en konfigurationsfil for hele systemet?
+ msmtp har en emuleringtilstand for sendmail som tillader at oprette en standardkonto for systemet, som kan bruges af alle brugere.
+Description-de.UTF-8: Soll eine systemweite Konfigurationsdatei erstellt werden?
+ msmtp verfügt über einen sendmail-Emulationsmodus, welcher es erlaubt, ein Standard-Systemkonto anzulegen, das von jedem Benutzer verwendet werden kann.
+Description-es.UTF-8: ¿Crear un archivo de configuración por omisión para todo el sistema?
+ msmtp provee un modo de emulación de sendmail el cual permite crear una cuenta por omisión que puede ser utilizada por cualquier usuario.
+Description-fr.UTF-8: Faut-il créer un fichier de configuration pour l'ensemble du système ?
+ Msmtp comporte un mode d'émulation de sendmail permettant de créer un compte système par défaut qui peut servir à tout utilisateur.
+Description-it.UTF-8: Creare un file di configurazione per l'intero sistema?
+ msmtp dispone di una modalità in cui emula sendmail, questa modalità permette di creare un account di sistema predefinito che può essere usato da ogni utenti.
+Description-ja.UTF-8: システム全体に対する設定ファイルを作成しますか?
+ msmtp には、どのユーザでも利用できるデフォルトのシステムアカウントを作れる sendmail のエミュレーション機能があります。
+Description-nl.UTF-8: Wilt u dat er een systeemwijd configuratiebestand aangemaakt wordt?
+ msmtp bevat een sendmail-emulatie-modus die toelaat een standaard systeemacount aan te maken die door elke gebruiker gebruikt kan worden.
+Description-pt.UTF-8: Criar um ficheiro de configuração geral do sistema?
+ O msmtp possui um modo emulado de envio de mail, que permite a criação duma conta de omissão do sistema que pode ser utilizada por qualquer utilizador.
+Description-ru.UTF-8: Создать системный файл настройки?
+ В msmtp есть режим эмуляции sendmail, который позволяет создавать системную учётную запись по умолчанию, используемую любым пользователем.
+Description-sv.UTF-8: Ska en global inställningsfil för systemet skapas?
+ msmtp har ett läge som innebär att sendmail emuleras, detta innebär att systemkonto skapas som kan användas av alla systemets användare.
+
+Template: msmtp/host
+Type: string
+Description: SMTP server hostname:
+Description-cs.UTF-8: Jméno počítače se SMTP serverem:
+Description-da.UTF-8: Værtsnavn for SMTP-server:
+Description-de.UTF-8: SMTP-Servername:
+Description-es.UTF-8: Nombre del servidor SMTP:
+Description-fr.UTF-8: Nom d'hôte du serveur SMTP :
+Description-it.UTF-8: Nome host del server SMTP:
+Description-ja.UTF-8: SMTP サーバのホスト名:
+Description-nl.UTF-8: STMP-servernaam:
+Description-pt.UTF-8: Nome da máquina servidora SMTP:
+Description-ru.UTF-8: Имя хоста сервера SMTP:
+Description-sv.UTF-8: Värdnamn för SMTP-server:
+
+
+Template: msmtp/port
+Type: string
+Default: 25
+Description: SMTP port number:
+Description-cs.UTF-8: Číslo SMTP portu:
+Description-da.UTF-8: SMTP-portnummer:
+Description-de.UTF-8: SMTP-Portnummer:
+Description-es.UTF-8: Número del puerto SMTP:
+Description-fr.UTF-8: Numéro de port SMTP :
+Description-it.UTF-8: Numero della porta SMTP:
+Description-ja.UTF-8: SMTP のポート番号:
+Description-nl.UTF-8: SMTP-poortnumer:
+Description-pt.UTF-8: Número do porto SMTP:
+Description-ru.UTF-8: Номер порта SMTP:
+Description-sv.UTF-8: Portnummer för SMTP:
+
+
+Template: msmtp/auto_from
+Type: boolean
+Default: true
+Description: Generate an envelope-from address?
+ msmtp can generate an envelope-from address based on the login name and the
+ "maildomain" configuration variable.
+Description-cs.UTF-8: Vytvořit adresu pro From na obálce?
+ msmtp může vytvářet adresy pro pole From na obálce podle uživatelského jména a konfigurační proměnné "maildomain".
+Description-da.UTF-8: Opret en kuvert-fra adresse?
+ msmtp kan oprette en kuvert-fra adresse baseret på logindnavnet og konfigurationsvariablen »maildomain«.
+Description-de.UTF-8: Erstelle eine envelope-from-Adresse?
+ msmtp kann eine envelope-from-Adresse anhand des Anmeldenamens in Verbindung mit der Konfigurationsvariable »maildomain« erstellen.
+Description-es.UTF-8: ¿Generar un remitente?
+ msmtp puede generar un remitente basado en el nombre de usuario y la variable de configuración ««maildomain»».
+Description-fr.UTF-8: Faut-il créer une adresse « envelope-from » ?
+ Msmtp peut créer une adresse « envelope-from » à partir de l'identifiant de l'utilisateur et de la variable de configuration « maildomain ».
+Description-it.UTF-8: Generare l'indirizzo del mittente?
+ msmtp può generare l'indirizzo del mittente basandosi sul nome di login e sulla variabile di configurazione "maildomain".
+Description-ja.UTF-8: envelope-from アドレスを生成しますか?
+ msmtp は、ログイン名と"maildomain" 設定変数に基づく envelope-from アドレスを生成できます。
+Description-nl.UTF-8: Wilt u een 'envelope-from'-adres aanmaken?
+ msmtp kan een 'envelope-from'-adres aanmaken op basis van de gebruikersnaam en de 'maildomain' configuratievariabele.
+Description-pt.UTF-8: Gerar um endereço de envelope 'De'?
+ O msmtp pode gerar um endereço de envelope 'De' baseado no nome de utilizador e na variável de configuração "maildomain".
+Description-ru.UTF-8: Генерировать адрес envelope-from?
+ msmtp может создать адрес envelope-from на основе регистрационного имени и настроечной переменной "maildomain".
+Description-sv.UTF-8: Ska en envelope-from-adress skapas?
+ msmtp kan skapa en envelope-from-adress som baseras på inloggningsnamnet och "e-post-domänen" från inställningarna.
+
+Template: msmtp/maildomain
+Type: string
+Description: Domain to use for the envelope-from address:
+Description-cs.UTF-8: Doména, kterou použít pro From na obálce:
+Description-da.UTF-8: Domænse at bruge for kuvert-fra adressen:
+Description-de.UTF-8: Domain, welche für die envelope-from-Adresse benutzt wird:
+Description-es.UTF-8: Dominio a usar en el remitente:
+Description-fr.UTF-8: Domaine à utiliser pour l'adresse « envelope-from » :
+Description-it.UTF-8: Dominio da usare per l'indirizzo del mittente:
+Description-ja.UTF-8: envelope-from アドレスに使用するドメイン名:
+Description-nl.UTF-8: Voor het 'envelope-from'-adres te gebruiken domein:
+Description-pt.UTF-8: Domínio a utilizar para o endereço de envelope 'De':
+Description-ru.UTF-8: Домен для адреса envelope-from:
+Description-sv.UTF-8: Domän som ska användas för envelope-from-adressen:
+
+
+Template: msmtp/tls
+Type: boolean
+Default: false
+Description: Use TLS to encrypt connection?
+ Connection to remote hosts can be encrypted using TLS. This option should be
+ enabled if the remote server supports such connections.
+Description-cs.UTF-8: Použít TLS pro šifrování spojení?
+ Spojení ke vzdáleným počítačům může být šifrováno pomocí TLS. Pokud vzdálený počítač taková spojení podporuje, měli byste tuto možnost povolit.
+Description-da.UTF-8: Brug TLS til at kryptere forbindelsen?
+ Forbindelsen til eksterne værter kan krypteres med TLS. Denne indstilling bør aktiveres, hvis den eksterne server understøtter sådanne forbindelser.
+Description-de.UTF-8: Soll TLS zum Verschlüsseln der Verbindung verwendet werden?
+ Verbindungen zu entfernten Rechnern können mit TLS verschlüsselt werden. Diese Option sollte aktiviert werden, falls die Gegenstelle solche Verbindungen unterstützt.
+Description-es.UTF-8: ¿Usar TLS para cifrar la conexión?
+ La conexión a un servidor remoto puede cifrarse por medio de TLS. Habilite esta opción si el servidor remoto la soporta.
+Description-fr.UTF-8: Faut-il utiliser TLS pour chiffrer la connexion ?
+ La connexion à un hôte distant peut être chiffrée en utilisant le protocole TLS (« Transport Layer Security », anciennement nommé « Secure Socket Layer » ou SSL). Vous devriez vérifier que le serveur distant accepte ce type de connexion avant de choisir cette option.
+Description-it.UTF-8: Utilizzare TLS per cifrare la connessione?
+ La connessione agli host remoti può essere cifrata usando TLS. Si dovrebbe attivare questa opzione se il server remoto supporta connessioni di questo tipo.
+Description-ja.UTF-8: 暗号化接続に TLS を利用しますか?
+ リモートホストへの接続は TLS を使って暗号化できます。リモートのサーバがこの様な機能をサポートしているのであれば、このオプションを有効にすべきです。
+Description-nl.UTF-8: Wilt u de verbinding versleutelen met TLS?
+ Verbindingen naar andere computers kunnen versleuteld worden met TLS. Als de andere computer zo'n verbindingen ondersteund is dit de beste keuze.
+Description-pt.UTF-8: Usar TLS para encriptar a ligação?
+ A ligação a máquinas remotas pode ser encriptada usando TLS. Esta opção deverá ser activada se o servidor remoto suportar este tipo de ligações.
+Description-ru.UTF-8: Использовать TLS для шифрования соединения?
+ Соединение с удалёнными хостами может шифроваться с помощью TLS. Ответьте утвердительно, если удалённый сервер поддерживает такие соединения.
+Description-sv.UTF-8: Ska TLS användas för att kryptera anslutningen?
+ Anslutningar till fjärrsystem kan ske krypterat genom att använda TLS. Detta alternativ ska vara aktiverat om fjärrsystemet har stöd för sådana anslutningar.

@@ -1,0 +1,493 @@
+Template: qpsmtpd/startup_enabled
+Type: boolean
+Default: false
+Description: Enable qpsmtpd startup at boot time?
+ Because most MTAs in Debian listen on one or all network interfaces by
+ default, when first installed qpsmtpd cannot normally be started.
+ .
+ Before enabling qpsmtpd, you must first configure your local MTA not to
+ bind to the SMTP TCP port on at least one interface.  The most common
+ approach is to leave your MTA listening on the loopback interface
+ (127.0.0.1), with qpsmtpd listening on the external interface. 
+ Instructions for configuring common MTAs to work with qpsmtpd can be found
+ after installation in /usr/share/doc/qpsmtpd/README.Debian.
+ .
+ Once you have adjusted your MTA configuration, you can enable qpsmtpd by
+ restarting this configuration, by running 'dpkg-reconfigure qpsmtpd'.
+Description-cs.UTF-8: Povolit spouštění qpsmtpd při zavádění systému?
+ Protože většina poštovních serverů v Debianu implicitně naslouchá na jednom nebo všech síťových rozhraních, nebude se qpsmtpd moci normálně spustit.
+ .
+ Před povolením qpsmtpd musíte nastavit svůj lokální poštovní server, aby se nevázal na TCP port SMTP alespoň na jednom rozhraní. Nejběžnější postup je nechat stávající server poslouchat na lokální smyčce (127.0.0.1) a navázat qpsmtpd na externí rozhraní. Návod pro nastavení většiny poštovních serverů tak, aby pracovaly s qpsmtpd, naleznete po instalaci v souboru /usr/share/doc/qpsmtpd/README.Debian.
+ .
+ Až upravíte konfiguraci svého stávajícího poštovního serveru, můžete povolit qpsmtpd znovuspuštěním této konfigurace příkazem „dpkg-reconfigure qpsmtpd“.
+Description-da.UTF-8: Aktiver qpsmtpd ved systemets opstart?
+ Da de fleste MTA'er i Debian lytter på en eller alle netværksgrænseflader som standard, kan qpsmtpd normalt ikke starte, når programmet lige er installeret.
+ .
+ Inden du aktiverer qpsmtpd, skal du konfigurere din lokale MTA så den ikke binder til SMTP TCP-porten på mindst en netværksflade. Den gængse metode er at lade din MTA lytte på loopback-grænsefladen (127.0.0.1) og qpsmtpd lytter på den eksterne grænseflade. Instruktioner for konfiguration af gængse MTA'er så de fungerer med qpsmtpd kan findes efter installationen i /usr/share/doc/qpsmtpd/README.Debian.
+ .
+ Når du har justeret din MTA-konfiguration kan du aktivere qpsmtpd ved at genstarte denne konfiguration ved at køre »dpkg-reconfigure qpsmtpd«.
+Description-de.UTF-8: Qpsmtpd beim Booten starten?
+ Da standardmäßig die meisten MTAs in Debian auf einer oder allen Netzschnittstellen auf Anfragen warten, kann Qpsmtpd nach der Erstinstallation normalerweise nicht starten.
+ .
+ Bevor Sie Qpsmtpd aktivieren, müssen Sie zuerst Ihren lokalen MTA so konfigurieren, dass er sich zumindestens auf einer Schnittstelle nicht an den SMTP-TCP-Port bindet. Der häufigste Ansatz ist, Ihren MTA an der Loopback-Schnittstelle (127.0.0.1) auf Anfragen warten zu lassen, während Qpsmtpd auf der externen Schnittstelle wartet. Anleitungen, wie verbreitete MTAs so konfiguriert werden, dass sie mit Qpsmtpd zusammen arbeiten, können nach der Installation in /usr/share/doc/qpsmtpd/README.Debian gefunden werden.
+ .
+ Sobald Sie Ihre MTA-Konfiguration angepasst haben, können Sie Qpsmtpd aktivieren, indem Sie diese Konfiguration durch Aufruf von »dpkg-reconfigure qpsmtpd« erneut starten.
+Description-es.UTF-8: ¿Desea que qpsmtpd se inicie en el arranque?
+ Ya que la mayoría de los agentes de transporte de correo (MTA) de Debian escuchan por una o todas las interfaces de red de forma predeterminada, cuando se instale qpsmtpd por primera vez normalmente no se podrá iniciar.
+ .
+ Antes de habilitar qpsmtpd, primero debe configurar el MTA local para que no se asocie al puerto TCP de SMTP en al menos una interfaz. La práctica más común es dejar que el MTA escuche por la interfaz del bucle local o «loopback» (127.0.0.1), y que qpsmtpd escuche por la interfaz externa. Tras la instalación, podrá encontrar instrucciones sobre como configurar los MTA más comunes para que funcionen con qpsmtpd en el archivo «/usr/share/doc/qpsmtpd/README.Debian».
+ .
+ Una vez haya preparado la configuración del MTA, puede habilitar qpsmtpd reiniciando esta configuración ejecutando «dpkg-reconfigure qpsmtpd».
+Description-fr.UTF-8: Faut-il activer qpsmtpd au démarrage ?
+ La plupart des agents de transport de courrier (MTA) de Debian écoutent une ou toutes les interfaces réseau par défaut. En conséquence, qpsmtpd ne peut être démarré normalement lors de l'installation initiale.
+ .
+ Avant d'activer qpsmtpd, vous devez d'abord configurer votre agent de transport local afin qu'il ne se lie pas au port TCP de SMTP sur au moins une interface. La démarche la plus courante est de le laisser à l'écoute sur l'interface de bouclage (127.0.0.1), avec qpsmtpd à l'écoute sur l'interface externe. Des instructions sur la manière de configurer les agents de transport courants en parallèle avec qpsmtpd peuvent être trouvées, après l'installation, dans /usr/share/doc/qpsmtpd/README.Debian.
+ .
+ Une fois la configuration de votre agent de transport de courrier mise au point, vous pouvez activer qpsmtpd en relançant cette configuration avec la commande « dpkg-reconfigure qpsmtpd ».
+Description-it.UTF-8: Abilitare l'esecuzione di qpsmtpd all'avvio?
+ Dato che la maggior parte degli MTA in Debian resta in ascolto in modo predefinito su una o tutte le interfacce di rete, normalmente non è possibile avviare qpsmtpd appena installato.
+ .
+ Prima di abilitare qpsmtpd, è necessario configurare il proprio MTA locale in modo che non faccia il bind alla porta TCP SMTP di almeno un'interfaccia. La soluzione più comune è lasciare il proprio MTA in ascolto sull'interfaccia di loopback (127.0.0.1), con qpsmtpd in ascolto sull'interfaccia esterna. Le istruzioni per configurare gli MTA comuni in modo da funzionare insieme a qpsmtpd possono essere trovate, dopo l'installazione, in /usr/share/doc/qpsmtpd/README.Debian.
+ .
+ Una volta corretta la configurazione del proprio MTA, si può abilitare qpsmtpd riavviando questa configurazione, eseguendo «dpkg-reconfigure qpsmtpd».
+Description-ja.UTF-8: ブート時に qpsmtpd を開始させますか?
+ Debian のほとんどの MTA はネットワークインターフェイスを一つまたは全部、デフォルトで待ち受けるため、qpsmtpd を最初にインストールしたときには通常開始させることができません。
+ .
+ qpsmtpd を有効にする前にまず、ローカル MTA が少なくとも一つのインターフェイスの SMTP TCP ポートを待ち受けしないように設定する必要があります。最も一般的なのは、MTA にはループバックインターフェイス (127.0.0.1) を待ち受けさせ、qpsmtpd には外部インターフェイスを待ち受けさせる方法です。一般的な MTA を qpsmtpd と連携させるように設定する手順は、インストール後、/usr/share/doc/qpsmtpd/README.Debian に置かれます。
+ .
+ MTA 設定の調整が済めば、「dpkg-reconfigure qpsmtpd」を実行することでこの設定を再開し、qpsmtpd を有効化することができます。
+Description-pt.UTF-8: Activar o qpsmtpd no arranque?
+ Porque a maioria dos MTAs em Debian escutam em uma ou todas as interfaces por predefinição, o qpsmtpd quando instalado pela primeira vez não pode ser iniciado normalmente.
+ .
+ Antes de activar o qpsmtpd, deve primeiro configurar o seu MTA local para não se associar com a porta SMTP TCP de pelo menos uma interface. A melhor aproximação passa por deixar o seu MTA a escutar na interface de loopback (127.0.0.1), com o qpsmtpd a escutar na interface externa. Podem ser encontradas instruções para configurar os MTAs mais comuns após a instalação em /usr/share/doc/qpsmtpd/README.Debian. 
+ .
+ Após ter ajustado a configuração do seu MTA, pode activar o qpsmtpd ao reiniciar esta configuração, executando 'dpkg-reconfigure qpsmtpd'.
+Description-ru.UTF-8: Запускать qpsmtpd при включении компьютера?
+ Так как по умолчанию большинство MTA в Debian прослушивают один или все сетевые интерфейсы, после установки qpsmtpd не сможет нормально запуститься.
+ .
+ Перед тем как включить qpsmtpd, сначала вы должны настроить свой локальный MTA так, чтобы он не подключался к порту SMTP TCP хотя бы на одном интерфейсе. Часто для этого указывают MTA прослушивать интерфейс обратной петли (loopback, 127.0.0.1), а qpsmtpd будет прослушивать внешний интерфейс. Инструкции по совместной настройке распространённых MTA и qpsmtpd можно найти после установки в файле /usr/share/doc/qpsmtpd/README.Debian.
+ .
+ После того, как вы исправили настройки MTA, можете включить qpsmtpd, выполнив повторную настройку командой 'dpkg-reconfigure qpsmtpd'.
+Description-sk.UTF-8: Zapnúť spúšťanie qpsmtpd pri štarte systému?
+ Pretože väčšina MTA v Debiane predvolene prijíma spojenia na jednom alebo všetkých sieťových rozhraniach, nemožno pri prvej inštalácii bežne qpsmtpd spustiť.
+ .
+ Pred zapnutím qpsmtpd, musíte najprv nastaviť svoj lokálny MTA tak, aby nechal voľný TCP port pre SMTP aspoň na jednom rozhraní. Bežným riešením je nechať svoj MTA prijímal spojenia na rozhraní loopback (127.0.0.1), pričom qpsmtpd bude prijímať spojenia na externom rozhraní. Inštrukcie na nastavenie bežných MTA tak, aby pracovali spolu s qpsmtpd môžete po inštalácii nájsť v /usr/share/doc/qpsmtpd/README.Debian.
+ .
+ Po prispôsobení nastavenia svojho MTA, môžete zapnúť qpsmtpd opätovným spustením tejto konfigurácie pomocou „dpkg-reconfigure qpsmtpd”.
+Description-sv.UTF-8: Aktivera qpsmtpd vid systemets uppstart?
+ Eftersom de flesta MTA:er i Debian lyssnar på ett eller alla nätverksgränssnitt som standard kan qpsmtpd normalt inte starta när den är nyinstallerad.
+ .
+ Innan du aktiverar qpsmtpd måste du konfigurera din lokala MTA så den inte binder till SMTP TCP-porten på åtminstone ett nätverksgränssnitt. Det vanligaste sättet är att lämna din MTA att lyssna på loopback-gränssnittet (127.0.0.1) och qpsmtpd lyssnar på det externa gränssnittet. Instruktioner för att konfigurera vanliga MTA:er så de fungerar med qpsmtpd kan hittas efter installationen i /usr/share/doc/qpsmtpd/README.Debian.
+ .
+ När du har justerat din MTA-konfiguration kan du aktivera qpsmtpd genom att starta om denna konfiguration genom att köra "dpkg-reconfigure qpsmtpd".
+
+Template: qpsmtpd/server_type
+Type: select
+Choices: forkserver, prefork
+Default: forkserver
+Description: Qpsmtpd server type:
+ Qpsmtpd supports two process models for handling connections.  The
+ 'forkserver' model uses a single process when idle, and forks new processes
+ to handle connections.  This uses less memory but slightly reduces
+ server throughput.  The 'prefork' model keeps a pool of idle processes
+ available to handle new connections, offering slightly better performance
+ at the cost of more memory.
+Description-cs.UTF-8: Typ qpsmtpd serveru:
+ Qpsmtpd může obsloužit příchozí spojení dvěma způsoby. Model „forkserver“ používá v době nečinnosti jediný proces a nové procesy vytváří až v okamžiku příchozích spojení, což má mírně větší režii (trošku snižuje propustnost serveru), ale zato používá méně paměti. Oproti tomu model „prefork“ si udržuje stálou zásobu volných procesů, které okamžitě mohou zpracovat příchozí spojení a nabídnout tak o něco lepší výkon na úkor vyššího použití paměti.
+Description-da.UTF-8: Servertype for qpsmtpd:
+ Qpsmtpd understøtter to procesmodeller for håndtering af forbindelser. Modellen »forkserver« bruger en enkel proces når ledig og forgrener nye processer til at håndtere forbindelser. Dette bruger mindre hukommelse men reducerer lidt på servergennemløbet. Modellen »prefork« indeholder en pulje af ledige processer tilgængelige for håndtering af nye forbindelser, hvilket giver en lidt bedre ydelse på bekostning af større hukommelsesforbrug.
+Description-de.UTF-8: Qpsmtpd-Servertyp:
+ Qpsmtpd unterstützt zwei Prozessmodelle für den Umgang mit Verbindungen. Das Modell »forkserver« verwendet im Leerlauf einen einzelnen Prozess und erzeugt neue Prozesse, um Verbindungen zu bedienen. Dies verbraucht weniger Speicher, reduziert aber leicht den Serverdurchsatz. Das Modell »prefork« hält ein Reservoir an Prozessen im Leerlauf vor, um neue Verbindungen zu bedienen. Damit wird eine leicht bessere Leistung auf Kosten von mehr Speicher ermöglicht.
+Description-es.UTF-8: Tipo de servidor Qpsmtpd
+ Qpsmtpd permite utilizar dos modelos de proceso para la gestión de la conexiones. El modelo «forkserver» utiliza un único proceso cuando está ocioso, y crea nuevos procesos para gestionar las conexiones. Esto utiliza menos memoria pero reduce ligeramente el rendimiento del servidor. El modelo «prefork» mantiene un conjunto de procesos ociosos disponibles para gestionar las nuevas conexiones, ofreciendo un rendimiento algo mejor a costa de más memoria.
+Description-fr.UTF-8: Type de serveur qpsmtpd :
+ Le démon qsmtpd propose deux méthodes différentes de gestion des connexions. Avec la méthode « forkserver », un seul processus est actif en permanence et de nouveaux processus sont créés pour gérer les connexions entrantes. Cette méthode utilise moins de mémoire et réduit légèrement la charge du serveur. La méthode « prefork » garde plusieurs processus inactifs disponibles pour gérer les nouvelles connexions, offrant de meilleures performances au prix de davantage de mémoire utilisée.
+Description-it.UTF-8: Tipo di server qpsmtpd:
+ qpsmtpd gestisce due modelli per i processi per gestire le connessioni. Il modello "forkserver" usa un unico processo quando inattivo e fa il fork di nuovi processi per gestire le connessioni; usa meno memoria ma riduce leggermente il flusso dati del server. Il modello "prefork" mantiene un pool di processi inattivi disponibili per gestire le nuove connessioni, offrendo prestazioni leggermente migliori a spese di un maggior uso di memoria.
+Description-ja.UTF-8: qpsmtpd サーバの種類:
+ qpsmtpd は接続の処理に2つの処理型をサポートしています。「forkserver」型では待機時には単一のプロセスを使い、新しいプロセスを分岐 (fork) して接続を処理します。これはメモリ使用量は少なくなりますがサーバの処理能力がわずかに低下します。「prefork」型では新しい接続の処理に利用できる待機プロセスをある程度維持し、メモリを多く使いますがその代わりに性能はわずかに向上します。
+Description-pt.UTF-8: Tipo de servidor Qpsmtpd:
+ O Qpsmtpd suporta 2 modelos de processos para lidar com as ligações. O modelo 'forkserver' que utiliza um único processo quando inactivo e cria novos processos para lidar com as ligações. Isto usa menos memória, mas reduz ligeiramente a performance do servidor. O modelo 'prefork' mantém um grupo de processos inactivos e disponíveis para lidar com novas ligações, oferecendo uma performance ligeiramente melhor à custa de utilizar mais memória.
+Description-ru.UTF-8: Тип сервера Qpsmtpd:
+ В Qpsmtpd поддерживает две типа обработки подключений. В типе forkserver используется один ожидающий процесс, а для обработки поступивших соединений порождаются новые. Это позволяет экономнее расходовать память, но уменьшает производительность. В типе prefork создаётся сразу несколько ожидающих новых соединений процессов, что улучшает производительность, но расходует больше памяти.
+Description-sk.UTF-8: Typ servera Qpsmtpd:
+ Qpsmtpd podporuje, na spracovanie spojení, dva modely spracovania. Model „forkserver” používa pri nečinnosti jeden proces a na spracovanie spojení forkuje nový proces. Takto používa menej pamäte, ale mierne znižuje priepustnosť servera. Model „prefork” necháva dostupných niekoľko nečinných procesov na spracovanie nových spojení, čím ponúka lepší výkon za cenu väčšej spotreby pamäte.
+Description-sv.UTF-8: Servertyp för Qpsmtpd:
+ Qpsmtpd har stöd för två typer av processmodeller för att hantera anslutningar. Modellen "forkserver" innebär att en enda process skapar nya processer som hanterar inkommande anslutningr. Denna metod använder mindre minne men resulterar i något lägre hastighet för genomströmningen. Modellen "prefork" skapar en pool med väntande processer som hanterar inkommande processer, denna metod ger något snabbare genomströmningshastighet men kostar å andra sidan minne.
+
+Template: qpsmtpd/listen_interfaces
+Type: string
+Default: unset
+Description: Addresses on which to listen for incoming SMTP connections:
+ Enter one or more of your local IP addresses, separated by spaces, on
+ which qpsmtpd should listen for incoming SMTP connections.  If you leave
+ this setting empty, qpsmtpd will listen on all interfaces available at
+ startup time.
+ .
+ If you intend to use qpsmtpd to spool deliveries from remote hosts into a
+ local MTA, you may wish to have qpsmtpd listen on all external interfaces,
+ while leaving your local MTA listening on the loopback device (127.0.0.1).
+ .
+ For each interface you may optionally specify a port to listen on instead
+ of the default port 25; do this by appending :<port> to the interface, as
+ in "127.0.0.1:2526".
+Description-cs.UTF-8: Adresa, na které se má naslouchat příchozím SMTP spojením:
+ Zadejte mezerami oddělený seznam místních IP adres, na kterých má qpsmtpd naslouchat příchozím SMTP spojením. Ponecháte-li pole prázdné, qpsmtpd bude naslouchat na všech rozhraních dostupných při jeho spuštění.
+ .
+ Chcete-li použít qpsmtpd pro předávání přijaté pošty místnímu poštovnímu serveru, budete pravděpodobně chtít, aby qpsmtpd naslouchal na všech externích rozhraních, zatímco místní poštovní server necháte naslouchat pouze na lokální smyčce (127.0.0.1).
+ .
+ Místo standardního portu 25 můžete ke každému rozhraní volitelně zadat port, na kterém má qpsmtpd naslouchat. Stačí k rozhraní přidat :<port>, například „127.0.0.1:2526“.
+Description-da.UTF-8: Adresser som skal lytte efter indgående SMTP-forbindelser:
+ Indtast en eller flere af dine lokale IP-adresser, adskilt med mellemrum, som qpsmtpd skal lytte på efter indgående SMTP-forbindelser. Hvis du efterlader denne indstilling tom, vil qpsmtpd lytte på alle tilgængelige grænseflader på opstartstidspunktet.
+ .
+ Hvis du forventer at bruge qpsmtpd for puljeleverancer fra eksterne værter til en lokal MTA, så vil du måske foretrække at lade qpsmtpd lytte på alle eksterne grænseflader, mens din lokale MTA lytter på loopback-enheden (127.0.0.1).
+ .
+ For hver grænseflade kan du valgfrit angive en port at lytte på i stedet for standardporten 25; gør dette ved at tilføje :<port> til grænsefladen, som i »127.0.0.1:2526«.
+Description-de.UTF-8: Adressen, auf denen auf eingehende SMTP-Verbindungen gewartet werden soll:
+ Geben Sie durch Leerzeichen getrennt eine oder mehrere Ihrer lokalen IP-Adressen an, auf denen Qpsmtpd auf eingehende SMTP-Verbindungen warten soll. Falls Sie diese Einstellung leer lassen, wird Qpsmtpd auf allen Schnittstellen warten, die zum Startzeitpunkt verfügbar sind.
+ .
+ Falls Sie planen, Qpsmtpd zum Zwischenlagern (»spoolen«) von Auslieferungen entfernter Rechner an einen lokalen MTA zu verwenden, könnte es in Ihrem Sinne sein, Qpsmtpd auf allen externen Schnittstellen warten zu lassen, während Ihr lokaler MTA auf dem Loopback-Gerät (127.0.0.1) wartet.
+ .
+ Für jede Schnittstelle können Sie optional einen Port, an den auf Anfragen gewartet werden soll (statt des Standardports 25), angegeben werden. Fügen Sie hierzu :<Port> zu der Schnittstelle hinzu, wie in »127.0.0.1:2526«.
+Description-es.UTF-8: Direcciones en las que escuchar las conexiones SMTP entrantes:
+ Introduzca una o más direcciones IP locales, separadas por espacios, por las que qpsmtpd debería escuchar las conexiones SMTP entrantes. Si deja esta opción en blanco, qpsmtpd escuchará en todas las interfaces disponibles en el momento del inicio.
+ .
+ Si pretende utilizar qpsmtpd para poner en espera las entregas de máquinas remotas a un MTA local, quizás desee que qpsmtpd escuche en todas las interfaces externas, y dejar al MTA local escuchando en la interfaz de bucle local o «loopback» (127.0.0.1).
+ .
+ Para cada interfaz puede indicar, de forma opcional, un puerto en el que escuchar en lugar del puerto predeterminado (el 25), para realizar esto añada «:PUERTO» a la interfaz, por ejemplo: «127.0.0.1:2526».
+Description-fr.UTF-8: Adresses où qpsmtpd sera à l'écoute des connexions SMTP entrantes :
+ Veuillez entrer une ou plusieurs adresses IP locales, séparées par des espaces, pour lesquelles qpsmtpd sera à l'écoute pour les connexions SMTP entrantes. Si vous laissez cette option vide, qpsmtpd écoutera toutes les interfaces disponibles lors du démarrage.
+ .
+ Si vous souhaitez utiliser qpsmtpd pour mettre en attente la distribution pour des hôtes distants dans votre agent de transport local, vous devriez laisser qpsmtpd écouter toutes les interfaces externes et laisser votre agent de transport local écouter l'interface de bouclage (127.0.0.1).
+ .
+ Pour chaque interface, le port d'écoute (25 par défaut) peut être modifié en ajoutant :<port> au nom de l'interface. Exemple : « 127.0.0.1:2526 ».
+Description-it.UTF-8: Indirizzi su cui rimanere in ascolto per connessioni SMTP in entrata:
+ Inserire uno o più indirizzi IP locali, separati da spazi, su cui qpsmtpd deve rimanere in ascolto per connessioni SMTP in entrata. Se si lascia vuoto, qpsmtpd resterà in ascolto su tutte le interfacce disponibili all'avvio.
+ .
+ Se si pensa di usare qpsmtpd per accodare i messaggi consegnati da host remoti in un MTA locale, si può avere qpsmtpd in ascolto su tutte le interfacce esterne e lasciare l'MTA locale in ascolto sul device loopback (127.0.0.1).
+ .
+ Per ciascuna interfaccia si può, opzionalmente, specificare una porta su cui restare in ascolto invece della porta 25 predefinita; per farlo aggiungere :<porta> dopo l'interfaccia, come in «127.0.0.1:2526».
+Description-ja.UTF-8: 入ってくる SMTP 接続を待ち受けるアドレス:
+ 入ってくる SMTP 接続を qpsmtpd が待ち受けるローカル IP アドレスを空白で区切って入力してください。この設定を空白にすると qpsmtpd 開始時に利用可能な全インターフェイスを待ち受けます。
+ .
+ qpsmtpd をリモートホストからローカル MTA への配送に利用したい場合は、qpsmtpd に外部との全インターフェイスを待ち受けさせ、ローカル MTA にはループバックデバイス (127.0.0.1) を待ち受けさせると良いかもしれません。
+ .
+ 各インターフェイスでデフォルトポートの 25 の代わりに待ち受けるポートをオプションで指定することもできます。「127.0.0.1:2526」の形式で :<ポート> をインターフェイスに追記してください。
+Description-pt.UTF-8: Endereços a escutar por ligações SMTP recebidas:
+ Insira um ou mais dos seus endereços IP locais, separados por espaços, onde o qpsmtpd deve escutar por ligações SMTP.  Se deixar esta opção vazia, o qpsmtpd irá escutar em todos os interfaces disponíveis durante o arranque.
+ .
+ Se tencionar usar o qpsmtpd para fazer entregas a partir de máquinas remotas para um MTA local, poderá desejar que o qpsmtpd escute em todos os interfaces externos, enquanto que o seu MTA local escutará no dispositivo loopback (127.0.0.1).
+ .
+ Para cada interface, pode opcionalmente especificar um porto a escutar em vez do porto 25 predefinido; faça isto acrescentando :<porto> ao interface, como em "127.0.0.1:2526".
+Description-ru.UTF-8: Адреса, которые прослушиваются в ожидании входящих SMTP подключений:
+ Введите один или более локальных IP-адресов через пробел, на которые qpsmtpd должен принимать входящие SMTP подключения. Если оставить поле пустым, то qpsmtpd будет прослушивать все интерфейсы, доступные при запуске.
+ .
+ Если вы намереваетесь использовать qpsmtpd для передачи почты с удалённых хостов локальному MTA, то лучше указать qpsmtpd прослушивать все внешние интерфейсы, а локальный MTA должен прослушивать устройство обратной петли (loopback, 127.0.0.1).
+ .
+ Для каждого интерфейса дополнительно вы можете указать прослушиваемый порт (вместо используемого порта по умолчанию -- 25); для этого добавьте :<номер_порта> к интерфейсу, например "127.0.0.1:2526".
+Description-sk.UTF-8: Adresy, na ktorých prijímať prichádzajúce spojenia SMTP:
+ Zadajte jednu alebo viac lokálnych adries IP, oddelených medzerami, na ktorých má qpsmtpd prijímať prichádzajúce spojenia SMTP. Ak necháte toto nastavenie prázdne, qpsmtpd bude prijímať spojenia na všetkých rozhraniach, dostupných pri štarte.
+ .
+ Ak zamýšľate použiť qpsmtpd na zviazané doručovanie zo vzdialených strojov do lokálnej MTA, možno budete chcieť aby qpsmtpd prijímal spojenia na všetkých externých rozhraniach, zatiaľ čo lokálny MTA bude prijímať len na rozhraní loopback (127.0.0.1).
+ .
+ Pre každé rozhranie môžete voliteľne definovať aj číslo portu, na ktorom bude prijímať spojenia, namiesto predvoleného portu 25; pridaním :<port> k rozhraniu, napríklad „127.0.0.1:2526”.
+Description-sv.UTF-8: Adresser som ska lyssnas på efter inkommande SMTP-anslutningar:
+ En eller flera av dina lokala IP-adresser, separerade med mellanslag, för vilka qpsmtpd bör lyssna på efter inkommande SMTP-anslutningar. Om du lämnar denna inställning blank kommer qpsmtpd att lyssna på alla nätverksgränssnitt som är tillgängliga vid uppstart.
+ .
+ Om du tänker använda qpsmtpd för spool-leveranser från fjärrvärdar mot en lokal MTA kanske du vill ha qpsmtpd att lyssna på alla externa gränssnitt och lämnar din lokala MTA att lyssna på loopback-enheten (127.0.0.1).
+ .
+ För varje gränssnitt kan du ange en port att lyssna på om du inte vill att standardporten 25 ska användas. Detta görs genom att lägga till :<port> på gränssnittet, exempelvis "127.0.0.1:2526".
+
+Template: qpsmtpd/queue_plugin
+Type: select
+Choices: exim, postfix, qmail, proxy, maildir, none
+Description: Queueing method for accepted mail:
+ Select the method for queueing mail once it's been delivered via SMTP.  If
+ you deliver your mail locally, choose the method corresponding to the
+ installed MTA (the installer will try to pick the correct default.)
+ .
+ Select "proxy" if you'd like qpsmtpd to act as an SMTP proxy for another
+ MTA (local or remote).  You will then be prompted to enter a destination
+ host.
+ .
+ Select "maildir" to have qpsmtpd deliver into a local maildir-format spool
+ instead of queueing it for delivery (e.g. if you're setting up a
+ spamtrap.)
+ .
+ If you select "none," no queueing will be done at all, unless you manually
+ configure it yourself by editing /etc/qpsmtpd/plugins.
+Description-cs.UTF-8: Způsob doručování přijaté pošty:
+ Vyberte způsob, jakým se bude zacházet s poštou po přijetí přes SMTP. Pokud doručujete poštu místně, zvolte metodu odpovídající instalovanému poštovnímu serveru (instalátor se pokusí vybrat vhodné výchozí nastavení).
+ .
+ Pokud se má qpsmtpd chovat jako SMTP proxy pro jiné poštovní servery (místní nebo vzdálené), vyberte „proxy“. Následně budete dotázáni na zadání jména cílového počítače.
+ .
+ Možnost „maildir“ vyberte v případě, že má qpsmtpd doručovat do lokálních schránek ve formátu maildir místo toho, aby poštu zařadil do fronty na předání dále (např. pokud připravujete past na spam).
+ .
+ Zvolíte-li „none“, nebude se provádět žádné řazení do front (pokud to ovšem nenastavíte ručně v /etc/qpsmtpd/plugins).
+Description-da.UTF-8: Kømetode for accepteret post:
+ Vælg metoden for post i kø når den er blevet leveret via SMTP. Hvis du leverer din post lokalt, så vælg metoden der svarer til den installerede MTA (installationsprogrammet vil forsøge at vælge den korrekte standard).
+ .
+ Vælg »proxy« hvis du ønsker, at qpsmtpd skal fungere som en SMTP-proxy for en anden MTA (lokal eller ekstern). Du vil blive spurgt om en destinationsvært.
+ .
+ Vælg »maildir« for at qpsmtpd skal leverere til en lokal pulje i maildir-format i stedet for at sætte i kø (f.eks. hvis du opsætter en spamfælde).
+ .
+ Hvis du vælger »none« vil der ikke blive udført kø, medmindre du manuelt konfigurerer den ved at redigere /etc/qpsmtpd/plugins.
+Description-de.UTF-8: Warteschlangenmethode für akzeptierte E-Mail:
+ Wählen Sie die Methode aus, die zum Einreihen von E-Mail in die Warteschlangen verwendet werden soll, sobald diese per SMTP angeliefert wurden. Falls Sie Ihre E-Mail lokal zustellen, wählen Sie die Methode, die zu Ihrem installierten MTA gehört (das Installationsprogramm wird versuchen, den korrekten Standardwert auszuwählen).
+ .
+ Wählen Sie »proxy«, falls Sie möchten, dass Qpsmtpd als Proxy für einen anderen MTA (lokal oder entfernt) agiert. Sie werden aufgefordert, einen Zielrechner auszuwählen.
+ .
+ Wählen Sie »maildir«, damit Qpsmtpd in ein lokales Zwischenlager im Maildir-Format ausliefert, anstatt in eine Warteschlange einzustellen (z.B. falls Sie eine Spamfalle aufsetzen).
+ .
+ Falls Sie »none« auswählen, erfolgt kein Einstellen in Warteschlangen, falls Sie es nicht manuell durch Änderung der Datei /etc/qpsmtpd/plugins einstellen.
+Description-es.UTF-8: Método de puesta en espera para el correo aceptado:
+ Escoja el método para formar las colas de correo una vez haya sido entregado mediante SMTP. Si entrega el correo localmente, elija el método correspondiente al MTA instalado (el instalador intentará escoger el método adecuado de forma predeterminada).
+ .
+ Escoja «proxy» si quiere que qpsmtpd actúe como un proxy de SMTP para otro MTA (local o remoto). Se le pedirá que introduzca una máquina destino.
+ .
+ Escoja «maildir» para que qpsmtpd entregue a una cola local en formato maildir en vez de ponerlo en la cola de entrega (por ejemplo: si está configurando un filtro de correo basura).
+ .
+ Si escoge «ninguno», no se formará ninguna cola, salvo que la configure manualmente editando el archivo «/etc/qpsmtpd/plugins».
+Description-fr.UTF-8: Méthode de mise en attente pour le courrier accepté :
+ Veuillez choisir la méthode de mise en attente du courrier une fois qu'il a été distribué via SMTP. Si vous distribuez votre courrier localement, choisissez la méthode correspondant à l'agent de transport installé (l'installateur essaiera de choisir la méthode adaptée).
+ .
+ Veuillez choisir « proxy » si vous désirez que qpsmtpd agisse comme un serveur mandataire SMTP pour un autre agent de transport (local ou distant). L'hôte de destination vous sera alors demandé.
+ .
+ Veuillez choisir « maildir » pour que qpsmtpd place le courrier dans une file d'attente locale au format maildir, plutôt que de le mettre en attente (p. ex. si vous installez un piège à pourriel).
+ .
+ Si vous choisissez « none », aucune mise en attente ne sera faite, à moins que vous ne la configuriez vous-même en modifiant /etc/qpsmtpd/plugins.
+Description-it.UTF-8: Metodo per accodare la posta accettata:
+ Selezionare il metodo con cui accodare la posta una volta che è stata consegnata via SMTP. Se si consegna la posta localmente, scegliere il metodo che corrisponde all'MTA installato (l'installatore cerca di scegliere il valore predefinito corretto).
+ .
+ Selezionare «proxy» per far sì che qpsmtpd agisca da proxy SMTP per un altro MTA (locale o remoto). Verrà chiesto di inserire un host di destinazione.
+ .
+ Selezionare «maildir» per far sì che qpsmtpd consegni la posta in uno spool locale in formato maildir, invece di accodarlo per la consegna (ad esempio, se si sta impostando una trappola per spam).
+ .
+ Se si seleziona «none», non verrà fatto alcun accodamento, a meno che non lo si configuri a mano modificando /etc/qpsmtpd/plugins.
+Description-ja.UTF-8: 受け付けたメールをキューに送る方法:
+ SMTP を経由して配送された後のメールをキューに送る方法を選択してください。メールをローカルに配送する場合、インストールされている MTA に対応する方法 (インストーラは正しいデフォルトを選ぶように努めますが) を選択してください。
+ .
+ qpsmtpd に別の MTA (ローカルまたはリモート) 用の SMTP プロキシとして動作させたい場合は「proxy」を選択してください。そうすると宛先ホストの入力を求められます。
+ .
+ キューに送り配送する代わりにローカルの maildir 形式のスプールに qpsmtpd により配送させる (例えば spam 用に罠を仕掛ける場合) には「maildir」を選択してください。
+ .
+ 「none」を選択すると自分で /etc/qpsmtpd/plugins を編集して手作業により設定しない限りキューには全く送られません。
+Description-pt.UTF-8: Método de fila de espera para mail aceite:
+ Seleccione o método de fila de espera para o mail entregue via SMTP. Se entregar o seu mail localmente, escolha o método correspondente ao do MTA instalado (o instalador irá tentar escolher a predefinição correcta.)
+ .
+ Seleccione "proxy" se preferir que o qpsmtp funcione como um proxy SMTP para outro MTA (local ou remoto). Depois será pedido para inserir uma máquina de destino.
+ .
+ Seleccione "maildir" para ter o qpsmtp a entregar localmente numa fila local de formato maildir em vez de colocar em fila de espera para entrega (ex. se está a preparar uma spamtrap.)
+ .
+ Se seleccionar "none,", não será criada uma fila de espera, a não ser que você a configure manualmente, editando o ficheiro /etc/qpsmtpd/plugins.
+Description-ru.UTF-8: Метод работы очереди для принятой почты:
+ Выберите метод работы почтовой очереди, которая используется после принятия почты по SMTP. Если вы доставляете почту локально, выберите метод, соответствующий установленному MTA (установщик попытается определить нужный).
+ .
+ Выберите "proxy", если хотите, чтобы qpsmtpd работал в качестве SMTP-прокси для другого MTA (локального или удалённого). Затем вам предложат ввести хост отправки.
+ .
+ Выберите "maildir", чтобы qpsmtpd выполнял доставку в локальное хранилище (spool) в формате maildir, а не ставил в очередь для доставки (например, если у вас настроен spamtrap).
+ .
+ Если вы выберете "none", то очередь будет отключена совсем до тех пор, пока вы вручную не отредактируете /etc/qpsmtpd/plugins.
+Description-sk.UTF-8: Metóda zaraďovania prijatých emailov do radu:
+ Vyberte metódu, akou budú emaily zaraďované do radu, po ich doručení cez SMTP. Ak doručujete emaily lokálne, zvoľte metódu korešpondujúcu s nainštalovaným MTA (inštalátor sa pokúsi zistiť správnu.)
+ .
+ Vyberte „proxy” ak má qpsmtpd vystupovať ako SMTP proxy pre iný MTA (lokálny alebo vzdialený). Potom budete vyzvaný na zadanie cieľového stroja.
+ .
+ Vyberte „maildir”, ak má qpsmtpd doručovať do lokálneho úložiska vo formáte maildir, namiesto zaraďovania do radu na doručenie (napr. ak nastavujte spamtrap.)
+ .
+ Ak vyberiete „none” nebude vykonávané zaraďovanie do radu, kým to sám manuálne nenastavíte úpravou /etc/qpsmtpd/plugins.
+Description-sv.UTF-8: Kömetod för accepterad post:
+ Välj metoden för att köa post när den har levererats via SMTP.  Om du levererar din post lokalt, välj metoden som passar den installerade MTA:n (installeraren kommer som standard att försöka hitta den korrekta.)
+ .
+ Välj "proxy" om du vill att qpsmtpd ska fungera som en SMTP-proxy för en annan MTA (lokal eller fjärr).  Du kommer då att bli tillfrågad att välja en destinationsvärd.
+ .
+ Välj "maildir" för att qpsmtpd ska leverera till en lokal spool i maildir-format istället för att köa de för leverans (exempelvis om du satt upp ett spamfilter.)
+ .
+ Om du väljer "none" kommer ingen kö att hanteras alls om du inte manuellt konfigurerat den själv genom att redigera /etc/qpsmtpd/plugins.
+
+Template: qpsmtpd/queue_smtp_proxy_destination
+Type: string
+Default: localhost
+Description: Destination host/port for SMTP proxy delivery:
+ To have qpsmtpd act as an SMTP proxy for another host, supply the hostname
+ or IP address of that host here.  You can optionally add a port number
+ after a colon, such as "localhost:25".
+Description-cs.UTF-8: Cílový počítač/port pro doručení ze SMTP proxy:
+ Aby se qpsmtpd choval jako SMTP proxy pro jiný počítač, zadejte jméno nebo IP adresu daného počítače. Volitelně můžete za dvojtečku přidat číslo portu, např. „localhost:25“.
+Description-da.UTF-8: Destinationsvært/-port for SMTP proxy-leverance:
+ For at qpsmtpd skal fungere som en SMTP-proxy for en anden vært skal du angive værtsnavnet eller IP-adressen for den vært her. Du kan valgfrit angive et portnummer efter et kolon, såsom »localhost:25«.
+Description-de.UTF-8: Ziel-Rechner/-Port für Proxy-Zustellung:
+ Damit Qpsmtpd als ein SMTP-Proxy für einen anderen Rechner agiert, geben Sie den Rechnernamen oder die IP-Adresse dieses Rechners hier an. Sie können optional eine Portnummer nach einem Doppelpunkt hinzufügen, wie in »localhost:25«.
+Description-es.UTF-8: Máquina/puerto de destino para la entrega del proxy de SMTP:
+ Para que qpsmtpd actúe como proxy de SMTP para otra máquina, proporcione el nombre o dirección IP de esa máquina. Opcionalmente puede añadir un número de puerto tras el carácter de dos puntos, tal que así «localhost:25».
+Description-fr.UTF-8: Hôte/port de destination pour la distribution du proxy SMTP :
+ Afin que qpsmtp agisse comme un serveur mandataire SMTP pour un autre hôte, entrez le nom d'hôte ou l'adresse IP de cet hôte. Vous pouvez aussi indiquer un numéro de port après un double-point, par exemple « localhost:25 ».
+Description-it.UTF-8: Host/porta di destinazione per la consegna del proxy SMTP:
+ Per far sì che qpsmtpd agisca da proxy SMTP per un altro host, inserire qui il nome host o l'indirizzo IP di quell'host. Si può opzionalmente aggiungere un numero di porta preceduto da due punti, come in «localhost:25».
+Description-ja.UTF-8: SMTP プロキシ配送の宛先ホスト/ポート:
+ qpsmtpd を別のホストの SMTP プロキシとして動作させるには、そのホストのホスト名または IP アドレスをここで提示してください。オプションで「localhost:25」のようにコロンの後にポート番号を追加することもできます。
+Description-pt.UTF-8: Destino máquina/porta para a entrega no proxy SMTP:
+ Para ter o qpsmtpd a funcionar para outra máquina como um proxy SMTP, forneça aqui o nome ou endereço IP dessa máquina. Pode, opcionalmente, adicionar depois dos dois pontos um numero de porta, como por exemplo "localhost:25".
+Description-ru.UTF-8: Хост/порт для отправки при SMTP-прокси:
+ Если qpsmtpd работает как SMTP-прокси, то нужно указать имя или IP-адрес хоста назначения. Также можно добавить номер порта через двоеточие, например "localhost:25".
+Description-sk.UTF-8: Cieľový stroj/port na doručovanie SMTP proxy:
+ Aby qpsmtpd vystupoval ako SMTP proxy pre iný stroj, zadajte tu meno alebo adresu IP tohoto stroja. Voliteľne môžete za dvojbodkou pridať číslo portu, napríklad „localhost:25”.
+Description-sv.UTF-8: Destinationsvärd/-port för SMTP-proxyleveranser:
+ För att qpsmtpd ska fungera som en SMTP-proxy för en annan värd måste du ange värdnamnet eller IP-adressen för den värden här.  Du kan valfritt ange ett portnummer efter ett kolon, såsom "localhost:25".
+
+Template: qpsmtpd/queue_maildir_destination
+Type: string
+Default: /var/spool/qpsmtpd/Maildir
+Description: Destination Maildir for maildir-type delivery:
+ To have qpsmtpd deliver received mail into a local maildir-format spool,
+ enter a location for that maildir.  A maildir will be created in that
+ location if it does not exist already.
+Description-cs.UTF-8: Cílový Maildir adresář pro doručení do lokální schránky:
+ Aby qpsmtpd doručoval přijatou poštu do lokální schránky typu maildir, musíte zadat umístění schránky. Pokud ještě zadaný adresář neexistuje, bude vytvořen.
+Description-da.UTF-8: Destinationsmappe for leverancer af maildir-typen:
+ For at qpsmtpd skal leverere modtaget post til en lokal kø i maildir-formatet, så vælg en mappe for denne maildir. En maildir bliver oprettet i mappen hvis den ikke allerede findes.
+Description-de.UTF-8: Ziel-Maildir für Maildir-artige Zustellung:
+ Damit Qpsmtpd empfangene E-Mails in ein lokales Zwischenlager im Maildir-Format ausliefert, wählen Sie einen Ort für dieses Maildir aus. Ein Maildir wird an dieser Stelle erstellt, falls es noch nicht existiert.
+Description-es.UTF-8: Directorio de correo de destino para la entrega de tipo maildir:
+ Para que qpsmtpd entregue el correo recibido a una cola local en formato maildir, introduzca una ubicación para ese directorio de correo. Si no existe, se creará un directorio de correo en esa ubicación.
+Description-fr.UTF-8: Répertoire Maildir pour une distribution de type maildir :
+ Afin que qpsmtpd distribue le courrier reçu dans un spool local au format maildir, veuillez choisir un répertoire de destination. Il sera créé s'il n'existe pas déjà.
+Description-it.UTF-8: Maildir di destinazione per la consegna di tipo maildir:
+ Per far sì che qpsmtpd consegni la posta ricevuta in uno spool locale in formato maildir, inserire la posizione di tale maildir. Se non esiste già una maildir in quella posizione ne verrà creata una.
+Description-ja.UTF-8: maildir 形式への配送用の宛先 Maildir:
+ qpsmtpd が受け取ったメールをローカルの maildir 形式のスプールに配送させる場合は、maildir の位置を入力してください。その位置に maildir が存在していない場合は作成されます。
+Description-pt.UTF-8: Maildir de destino para entregas do tipo maildir:
+ Para ter o qpsmtpd a entregar mail recebido numa fila local de formato maildir, necessita indicar a localização para essa maildir.  Caso ainda não exista, será criada uma maildir nessa localização.
+Description-ru.UTF-8: Расположение Maildir при доставке в maildir:
+ Если qpsmtpd доставляет принятую почту в локальное хранилище в формате maildir, то нужно указать расположение maildir. Если maildir там ещё нет, то он будет создан.
+Description-sk.UTF-8: Cieľový Maildir na doručovanie typu maildir:
+ Aby qpsmtpd doručoval prijaté emaily do lokálneho úložiska vo formáte maildir, zadajte umiestnenie tohoto maildir. V tomto umiestnení bude bude vytvorený maildir, ak ešte neexistuje.
+Description-sv.UTF-8: Destinationskatalog för leveranser av maildir-typ:
+ För att qpsmtpd ska leverera mottagen post till en lokal kö i maildir-format, välj en katalog för detta maildir. Ett maildir kommer att skapas i katalogen om det inte redan finns.
+
+Template: qpsmtpd/queue_none_confirm
+Type: boolean
+Description: Proceed without a queueing plugin selected?
+ By selecting "none" as a queueing plugin, you have disabled local queueing
+ of inbound mail.  This will prevent any mail being spooled by qpsmtpd
+ until you manually configure a queueing method.  Any hosts attempting to
+ deliver mail to you will receive 4xx soft-failure messages until then, at
+ the potential cost of wasted bandwidth and eventual bouncing of possibly
+ legitimate mail.
+ .
+ To configure queueing manually, edit /etc/qpsmtpd/plugins and select one
+ of the queueing methods listed there.  If you didn't see your installed
+ MTA in the list and aren't sure what to do, pick "Cancel" here and
+ select the SMTP proxy method instead, configuring it to proxy into your
+ MTA on a suitable local address/port.
+Description-cs.UTF-8: Pokračovat bez modulu pro řazení do front?
+ Výběrem „none“ jste zakázali řazení příchozí pošty do front, což efektivně zamezilo přijímání pošty do té doby, než v qpsmtpd nenastavíte způsob řazení do front. Do té doby obdrží počítače, snažící se vám doručit poštu, jemné chybové hlášky typu 4xx. Je to ovšem na úkor potenciálně vyplýtvaného přenosového pásma a zbytečného vracení legitimní pošty.
+ .
+ Pro ruční nastavení řazení do front upravte /etc/qpsmtpd/plugins a vyberte některou z dostupných metod. Pokud v seznamu nevidíte váš nainstalovaný poštovní server a nejste si jisti dalším postupem, zvolte zde „Zrušit“ a místo toho vyberte metodu SMTP proxy, kterou nastavíte tak, aby pracovala s vaším poštovním serverem na vhodné místní adrese/portu.
+Description-da.UTF-8: Fortsæt uden et valgt tilføjelsesprogram for køhåndtering?
+ Ved at vælge »none« som et tilføjelsesprogram for køhåndtering har du deaktiveret lokal køhåndtering for indgående post. Dette vil forhindre at post bliver sat i kø af qpsmtpd, til du manuelt konfigurerer en kømetode. Alle værter som forsøger at leverere post til dig vil modtage 4xx-fejlmeddelelser, med risko for at spilde båndbredde og eventuel afvisning af legitim post.
+ .
+ Hvis du vil konfigurere køhåndtering manuelt, så rediger /etc/qpsmtpd/og vælg en af kømetoderne vist der. Hvis du ikke ser din installerede MTA i listen og du ikke er sikker på hvad du skal gøre, så vælg »Cancel« her og vælg SMTP proxy-metoden i stedet for, konfigurer den til at proxy ind i din MTA på en egnet lokal adresse/port.
+Description-de.UTF-8: Fortfahren ohne Auswahl einer Warteschlangen-Erweiterung?
+ Indem Sie »none« für die Warteschlangen-Erweiterung ausgewählt haben, haben Sie das lokale Einstellen in eine Warteschlange für eingehende E-Mail deaktiviert. Damit wird keine E-Mail von Qpsmtpd zwischengelagert, bis Sie manuell eine Warteschlangenmethode konfigurieren. Jeder Rechner, der versucht, E-Mails an Sie zuzustellen, wird bis dahin nicht schwerwiegendene 4xx-Fehler erhalten. Damit wird möglicherweise Bandbreite verschwendet und schließlich wird möglicherweise legitime E-Mail zurückgewiesen.
+ .
+ Um die Warteschlange manuell zu konfigurieren, bearbeiten Sie /etc/qpsmtpd/plugins und wählen Sie eine der dort aufgeführten Warteschlangenmethoden aus. Falls Sie Ihren installierten MTA nicht in der Liste gesehen haben und sich nicht sicher sind, was Sie tun sollen, wählen Sie hier »Abbruch« und stattdessen die SMTP-Proxy-Methode. Konfigurieren Sie Qpsmtpd dann so, dass es Proxy für Ihren lokalen MTA auf einer geeigneten lokalen Adresse/Port-Kombination ist.
+Description-es.UTF-8: ¿Desea continuar sin escoger un complemento de puesta en espera?
+ Al seleccionar «ninguno» como complemento de puesta en espera, ha deshabilitado la puesta en espera del correo recibido. Esto impedirá que qpsmtpd ponga en espera los mensajes hasta que configure manualmente algún método de puesta en espera. Hasta entonces, las máquinas que intenten entregarle correo recibirán mensajes de error 4xx, con el potencial coste de ancho de banda desperdiciado y con rechazos eventuales de mensajes posiblemente legítimos.
+ .
+ Para configurar manualmente la puesta en espera, edite «/etc/qpsmtpd/plugins» y seleccione uno de los métodos listados ahí. Si  el MTA que tiene instalado no aparece en la lista y no está seguro de qué hacer, escoja «Cancelar» aquí y seleccione en su lugar el método de proxy SMTP, configurándolo para que haga de proxy de su MTA en una dirección local y puerto adecuados.
+Description-fr.UTF-8: Faut-il continuer sans un greffon de mise en attente ?
+ Vous avez choisi « none » comme greffon de mise en attente (« queuing »), ce qui désactive la mise en attente du courrier arrivé. Cela empêchera le courrier d'être mis en attente par qpsmtpd jusqu'à ce que vous configuriez vous-même une méthode de mise en attente. Tout hôte qui tentera de vous distribuer du courrier recevra un message d'erreur 4xx tant que ce ne sera pas fait, ce qui gaspille de la bande passante et risque un rejet des courriers légitimes.
+ .
+ Pour configurer la mise en attente vous-même, veuillez modifier /etc/qpsmtpd/plugins et choisir une des méthodes possibles. Si votre agent de transport n'y est pas présent et que vous ne savez pas quoi choisir, ne continuez pas ici et choisissez la méthode du serveur mandataire SMTP en le configurant pour qu'il mandate votre agent de transport sur une adresse et un port local adéquat.
+Description-it.UTF-8: Procedere senza aver selezionato un plugin di accodamento?
+ Avendo selezionato «none» come plugin di accodamento, è stato disabilitato l'accodamento locale della posta in entrata. Questo impedirà l'accodamento di qualsiasi messaggio di posta da parte di qpsmtpd fino a che non verrà configurato a mano un metodo di accodamento. Fino ad allora, qualsiasi host che tenti di consegnare posta al sistema riceverà un messaggio di errore temporaneo 4xx, con il rischio potenziale di sprecare banda e il possibile rimbalzo di posta potenzialmente legittima.
+ .
+ Per configurare a mano l'accodamento, modificare /etc/qpsmtpd/plugins e selezionare uno dei metodi di accodamento lì elencati. Se il proprio MTA non era presente nell'elenco e non si sa cosa fare, scegliere qui «Annulla» e selezionare invece il metodo per proxy SMTP, configurandolo per fare da proxy per il proprio MTA locale su un indirizzo/porta locale adatto.
+Description-ja.UTF-8: キューに送るプラグインを選択せずに続行しますか?
+ キューに送るプラグインに「none」を選択すると入ってくるメールをローカルのキューに送らなくなります。手作業によりキューに送る方法を設定するまで qpsmtpd はメールを一切スプールに送らなくなります。それまでこのホストにメールを配送しようとしたあらゆるホストが 4xx soft-failure メッセージを受け取ることとなり、無駄にした帯域の潜在的コストが発生し、最終的には正当なメールをバウンスさせる可能性もあります。
+ .
+ キューに送る方法を手作業により設定するには、/etc/qpsmtpd/plugins を編集してキューに送る方法を一つ選択してください。インストールされている MTA が一覧になく何をしたらいいのかよくわからない場合はここで「Cancel」を選び、代わりに SMTP プロキシの方法を選択して、適切なローカルのアドレス/ポートで MTA 用プロキシとして設定してください。
+Description-pt.UTF-8: Prosseguir sem ter seleccionado um plugin para fila de espera ?
+ Seleccionando "none" como um plugin de fila de espera, terá desactivado a fila de espera local do mail que entra. Isto impedirá o qpsmtpd de colocar qualquer mail em fila de espera até que você configure manualmente o método de fila de espera. Qualquer máquina que tente entregar mail a você, irá entretanto receber mensagens 4xx soft-failure, com um potencial custo de desperdício de largura de banda e eventuais saltos de mail legítimo.
+ .
+ Para configurar manualmente a fila de espera, edite /etc/qpsmtpd/plugins e seleccione um dos métodos de fila de espera ai listados. Se não viu o seu MTA na lista e não têm a certeza qual escolher, escolha "Cancel" aqui e seleccione o método proxy SMTP, configurando-o para fazer proxy do seu MTA, num endereço local válido endereço/porta.
+Description-ru.UTF-8: Продолжить без выбранного модуля работы очереди?
+ Выбрав "none" в качестве модуля очереди, вы выключаете локальную очередь входящей почты. В следствии этого, qpsmtpd перестаёт принимать почту до тех пор, пока вы не настроите метод обработки очереди вручную. Любой хост, пытающийся доставить вам почту, получит сообщение о временной ошибке 4xx, что приведёт к бесполезной загрузке канала и неполучению, возможно, нужной почты.
+ .
+ Чтобы настроить очередь вручную, отредактируйте /etc/qpsmtpd/plugins и выберите один из описанных здесь методов работы с очередью. Если вы не видите установленного MTA в списке и не уверены в своих действиях, нажмите "Нет" и выберите метод SMTP прокси, настроив его передавать почту вашему MTA на подходящий локальный адрес/порт.
+Description-sk.UTF-8: Pokračovať bez zvoleného zásuvného modulu zaraďovania do radu?
+ Vybratím zásuvného modulu doručovania „none” ste vypli lokálne zaraďovanie do radu prichádzajúcich emailov. Táto voľba bude brániť qpsmtpd uchovávať emaily, kým manuálne nenastavíte metódu zaraďovania do radu. Každý stroj, ktorý sa vám pokúsi doručiť mail, bude dovtedy dostávať správy 4xx soft-failure, za cenu premrhanej šírky pásma a prípadného odmietnutia legitímnych emailov.
+ .
+ Na manuálne nastavenie zaraďovania do radu, upravte /etc/qpsmtpd/plugins a zvoľte jednu z metód zaraďovania do radu, ktoré sú tu vypísané. Ak v zozname nevidíte svoj nainštalovaný MTA a nie ste si istý čo urobiť, vyberte tu „Zrušiť” a vyberte namiesto toho metódu SMTP proxy, nastavte preposielanie do svojho MTA na vhodnej lokálnej adrese/porte.
+Description-sv.UTF-8: Fortsätt utan ett valt insticksprogram för köhantering?
+ Genom att välja "none" som ett insticksprogram för köhantering har du stängt av lokal köhantering av inkommande post. Detta kommer att förhindra att post blir köad av qpsmtpd tills du manuellt konfigurerat en kömetod. Alla värdar som försöker att leverera post till dig kommer att ta emot 4xx-felmeddelanden till dess, med risk för förslösad bandbredd och eventuella studsar av möjligen riktig post.
+ .
+ Om du vill konfigurera köhantering manuellt, kan du redigera /etc/qpsmtpd/plugins och välja en av de kömetoder som listas där.  Om du inte ser din installerade MTA i listan och inte är säker vad du ska göra, välj "Avbryt" här och välj metoden SMTP-proxy istället, för att sedan konfigurera den till att använda en proxy mot din MTA på en passande lokal address/port.
+
+Template: qpsmtpd/rcpthosts
+Type: string
+Default: unset
+Description: Destination domain(s) to accept mail for (blank for none):
+ Enter a list of domain name(s) for which qpsmtpd should accept mail,
+ separated by spaces.  This list should include any hostname or domain name
+ for which you intend to accept delivery locally, as well as any recipient
+ domains for which you intend to act as a mail relay.  In general, if you
+ intend to spool received mail into a local MTA, this list should be the
+ same as used for that MTA (the installer will attempt to extract that
+ setting as a default.)
+ .
+ If you prefer to manage this list manually, leave the entry blank and edit
+ the file /etc/qpsmtpd/rcpthosts.
+Description-cs.UTF-8: Cílové domény, pro které přijímat poštu (prázdné pro žádné):
+ Zadejte mezerami oddělený seznam doménových jmen, pro které má qpsmtpd přijímat poštu. Seznam by měl obsahovat všechna jména počítačů nebo jména domén, pro které chcete lokálně přijímat poštu, nebo pro které se chcete chovat jako poštovní relay. Obecně řečeno, pokud plánujete předávat doručenou poštu lokálnímu poštovnímu serveru, měl by být tento seznam shodný se seznamem v daném poštovním serveru (instalační skript se pokusí tento seznam zjistit automaticky a nabídnout ho jako výchozí možnost).
+ .
+ Jestliže byste raději seznam spravovali ručně, ponechte pole prázdné a upravte soubor /etc/qpsmtpd/rcpthosts.
+Description-da.UTF-8: Destinationsdomæner at acceptere post for (blank for ingen):
+ Indtast en liste af domænenavne som qpsmtpd skal acceptere post fra, adskilt med mellemrum. Denne liste skal inkludere alle værtsnavne eller domænenavne, som du forventer skal acceptere lokal levering, samt eventuelle modtagerdomæner for hvilke du forventer at fungere som et postrelæ. Hvis du forventer generelt at bruge pulje for modtaget post i en lokal MTA, så skal denne liste være den samme som brugt for den MTA (installationsprogrammet vil forsøge at udtrække den indstilling som en standard).
+ .
+ Hvis du foretrækker at håndtere denne liste manuelt, så efterlad punktet blankt og rediger filen /etc/qpsmtpd/rcpthosts.
+Description-de.UTF-8: Ziel-Domäne(n), für die E-Mail akzeptiert wird (leer für keine):
+ Geben Sie eine durch Leerzeichen getrennte Liste von Domänen-Namen an, für die Qpsmtpd E-Mail akzeptieren soll. Diese Liste sollte alle Rechner- oder Domänennamen beinhalten, für die Sie lokale Zustellung akzeptieren wollen, sowie alle Empfänger-Domänen, für die Sie als E-Mail-Weiterleitung (»Relay«) auftreten wollen. Falls Sie vor haben, empfangene E-Mail für einen lokalen MTA zwischenzulagern, sollte diese Liste im Allgemeinen identisch zu der bei diesem MTA verwendeten Liste sein (das Installationsprogramm versucht, diese Einstellung als Voreinstellung zu extrahieren).
+ .
+ Falls Sie diese Liste lieber manuell verwalten möchten, lassen Sie den Eintrag leer und bearbeiten Sie die Datei /etc/qpsmtpd/rcpthosts.
+Description-es.UTF-8: Dominio(s) de destino para los que aceptar correo (déjelo en blanco para ninguno).
+ Introduzca una lista de nombre(s) de dominio para los que qpsmtpd debería aceptar correo, separados por espacios. Esta lista debería incluir todos los nombres de máquinas o de dominios para los que tenga intención de aceptar entregas localmente, así como todos los dominios receptores para los que tenga intención de actuar como retransmisor de correo. En general, si pretende poner en espera el correo recibido en un MTA local, esta lista debería ser la misma que la utilizada para ese MTA (el instalador intentará extraer esas opciones como predefinidas).
+ .
+ Si prefiere gestionar esta lista manualmente, deje este campo en blanco y edite el archivo «/etc/qpsmtpd/rcpthosts».
+Description-fr.UTF-8: Veuillez choisir un ou plusieurs domaines de destination qui acceptent le courrier. Laissez vide pour aucun.
+ Veuillez entrer une liste de noms de domaines pour lesquels qpsmtpd acceptera le courrier, séparé par des espaces. Cette liste devrait inclure tout nom d'hôte ou nom de domaine pour lesquels vous avez l'intention d'accepter la distribution de courrier local, ainsi que tous les domaines récipiendaires pour lesquels vous allez agir comme un relais de courrier. En général, si vous avez l'intention de mettre en attente le courrier reçu dans un agent de transport local, cette liste devrait être la même que celle utilisée pour cet agent de transport (l'installateur essaiera d'extraire par défaut ce réglage).
+ .
+ Si vous préférez gérer cette liste vous-même, laissez-la vide et modifiez le fichier /etc/qpsmtpd/rcpthosts.
+Description-it.UTF-8: Domini di destinazione per cui accettare la posta (vuoto per nessuno):
+ Inserire un elenco di nomi di dominio, separati da spazi, per i quali qpsmtpd deve accettare la posta. Questo elenco dovrebbe includere ogni nome di host o nome di dominio per i quali si desidera accettare la consegna in locale, così come ogni dominio di destinazione per il quale si vuole fare da relay di posta. In generale, se si desidera accodare la posta ricevuta in un MTA locale, questo elenco dovrebbe essere uguale a quello usato nell'MTA (l'installatore cercherà di estrarre quell'impostazione come predefinita).
+ .
+ Se si preferisce gestire questo elenco a mano, lasciare il campo vuoto e modificare il file /etc/qpsmtpd/rcpthosts.
+Description-ja.UTF-8: 受け入れるメールの対象ドメイン (受け入れない場合は空白):
+ qpsmtpd が受け付けるメールのドメイン名一覧を空白で区切って入力してください。これにはローカル配送用に受け入れるホスト名やドメイン名やメールを中継させる宛先のドメインを全て列挙してください。一般的に、受け取ったメールをローカル MTA に回す場合は MTA 側で利用されている設定と同一になるはずです (インストーラはデフォルトでこの設定の抽出を試みます)。
+ .
+ このリストを手作業により管理したい場合はこれを空白にしてファイル /etc/qpsmtpd/rcpthosts を編集してください。
+Description-pt.UTF-8: Domínio(s) de destino para aceitar mail (deixar em branco para nenhum):
+ Insira uma lista com nome(s) de domínio, separados por espaços, para os quais o qpsmtpd deve aceitar mail. Esta lista deverá incluir qualquer máquina ou domínio para o qual tenciona aceitar mail para entregar localmente, assim como qualquer domínio para o qual queira actuar como relay de mail. Em geral, se tenciona colocar em fila de espera num MTA local, esta lista deverá ser a mesma usada para esse MTA (o instalador tentará extrair essas opções como predefinição.)
+ .
+ Se preferir gerir manualmente esta lista, deixe em branco e edite o ficheiro /etc/qpsmtpd/rcpthosts.
+Description-ru.UTF-8: Домены, для которых принимается почта (пусто, если нет):
+ Введите список доменных имён через пробел, для которых qpsmtpd должен принимать почту. Список должен содержать все имена хостов или доменов, для которых вы хотите принимать почту локально, а также все домены получателей, которые нужно обслуживать в качестве почтового релея. В общем, если вы собираетесь передавать почту локальному MTA, этот список должен быть таким же что и у MTA (по умолчанию, установщик попытается определить эту настройку).
+ .
+ Если хотите управлять списком вручную, ничего не вводите и отредактируйте файл /etc/qpsmtpd/rcpthosts.
+Description-sk.UTF-8: Cieľová doména(y) prijímaných emailov (prázdne pre žiadnu):
+ Zadajte zoznam doménových mien, pre ktoré má qpsmtpd prijímať emaily, oddelené medzerami. Tento zoznam by mal zahŕňať všetky mená strojov alebo doménové mená, pre ktoré zamýšľate akceptovať lokálne doručenie, ako aj všetky domény prijímateľov, pre ktoré má poskytovať prenos (relay) pošty. Vo všeobecnosti, ak zamýšľate prenášať prijaté emaily do lokálneho MTA, tento zoznam by mal byť rovnaký, ako ten v MTA (inštalátor sa predvolene pokúsi zistiť toto nastavenie.)
+ .
+ Ak dávate prednosť spravovaniu tohoto zoznamu manuálne, nechajte túto položku prázdnu a upravte súbor /etc/qpsmtpd/rcpthosts.
+Description-sv.UTF-8: Destinationsdomän(er) att acceptera post för (blank för ingen):
+ Ange en lista av domännamn för vilka qpsmtpd ska acceptera post för, separera med mellanslag. Denna lista bör inkludera alla värdnamn eller domännamn för vilka du tänker acceptera lokala leveranser och även de mottagardomäner för vilka du tänker fungera som ett relä.  Om du tänker rent allmänt att spool-hantera mottagen post mot en lokal MTA bör denna lista vara samma som används för den MTA:n (installeraren kommer att plocka ut den inställningen som standard.)
+ .
+ Om du föredrar att hantera denna lista manuellt, lämna detta fält blankt och redigera filen /etc/qpsmtpd/rcpthosts.
+
+Template: qpsmtpd/pre094_checkplugin_warning
+Type: note
+Description: Incompatible upstream naming of check_* plugins
+ As of 0.94, qpsmtpd renamed the check_* plugins to updated verisons which
+ lack the check_ prefix in their names.  Wrappers re-enabling the old names
+ are shipped in this release, but will be removed in the future; see
+ /usr/share/doc/qpsmtpd/plugins/README.check_plugins for upgrade instructions.

@@ -1,0 +1,565 @@
+
+Template: pluxml/system/webservers
+Type: multiselect
+Choices: apache2, lighttpd
+Choices-cs.UTF-8: apache2, lighttpd
+Choices-da.UTF-8: apache2, lighttpd
+Choices-de.UTF-8: Apache2, Lighttpd
+Choices-es.UTF-8: apache2, lighttpd
+Choices-fr.UTF-8: Apache 2, Lighttpd
+Choices-it.UTF-8: apache2, lighttpd
+Choices-ja.UTF-8: apache2, lighttpd
+Choices-pl.UTF-8: apache2, lighttpd
+Choices-pt.UTF-8: apache2, lighttpd
+Choices-ru.UTF-8: apache2, lighttpd
+Choices-sv.UTF-8: apache2, lighttpd
+Default: apache2
+Description: Web servers to configure:
+ PluXml can run on any web server supporting PHP, but only listed web servers
+ can be configured automatically by this package.
+ .
+ Please select the web servers that should be configured for PluXml.
+ .
+ Note that you will have to make sure a PHP interpreter is enabled for the
+ web server.
+Description-cs.UTF-8: Přenastavit webový server:
+ PluXml lze spustit na jakémkoli webovém serveru, který podporuje PHP, ale pouze uvedené webové servery mohou být balíčkem automaticky nastaveny.
+ .
+ Vyberte si prosím webový server, který se má pro PluXml nastavit.
+ .
+ Berte na vědomí, že si musíte být jisti, že je na webovém serveru povolen interpreter PHP.
+Description-da.UTF-8: Netservere der skal konfigureres:
+ PluXml kan køre på enhver netserver, der understøtter PHP, men kun oplistede netservere kan konfigureres automatisk af denne pakke.
+ .
+ Vælg venligst netserverne som skal konfigureres for PluXml.
+ .
+ Bemærk at du skal sikre dig, at en PHP-fortolker er aktiveret for netserveren.
+Description-de.UTF-8: Webserver, die konfiguriert werden sollen:
+ PluXml kann auf jedem Webserver ausgeführt werden, der PHP unterstützt, aber nur aufgeführte Webserver können automatisch durch dieses Paket konfiguriert werden.
+ .
+ Bitte wählen Sie die Webserver, die für PluXml konfiguriert werden sollen.
+ .
+ Beachten Sie, dass Sie sicherstellen müssen, dass der PHP-Interpreter für den Webserver aktiviert ist.
+Description-es.UTF-8: Servidores web a configurar:
+ Puede ejecutar PluXml en cualquier servidor web compatible con PHP, pero este paquete sólo puede configurar automáticamente los servidores enumerados.
+ .
+ Seleccione los servidores que se deben configurar para PluXml.
+ .
+ Tenga en cuenta que deberá asegurarse que el servidor web tenga habilitado un intérprete PHP.
+Description-fr.UTF-8: Serveurs Web à configurer :
+ PluXml peut tourner sur n'importe quel serveur web qui gère le PHP, mais seuls les serveurs web cités peuvent être automatiquement configurés par ce paquet.
+ .
+ Veuillez choisir les serveurs web qui doivent être configurés pour PluXml.
+ .
+ Veuillez noter que vous devrez vous assurer qu'un interpréteur PHP est configuré pour ce serveur web.
+Description-it.UTF-8: Server web da configurare:
+ PluXml può essere eseguito su qualsiasi server web che gestisce PHP, ma solo i server web elencati possono essere configurati automaticamente da questo pacchetto.
+ .
+ Selezionare i server web che devono essere configurati per PluXml.
+ .
+ Si noti che è necessario assicurarsi che sia abilitato un interprete PHP per il server web.
+Description-ja.UTF-8: 設定するウェブサーバ:
+ PluXml は PHP に対応している任意のウェブサーバで動作しますが、このパッケージにより自動的に設定できるのは一覧にあるウェブサーバだけです。
+ .
+ PluXml 用に設定するウェブサーバを選択してください。
+ .
+ ウェブサーバで PHP インタープリタの利用が有効化されていることを確認する必要があることに注意してください。
+Description-pl.UTF-8: Serwery WWW do skonfigurowania:
+ PluXml może działać na dowolnym serwerze obsługującym PHP, lecz jedynie wymienione serwery mogą być skonfigurowane automatycznie przez ten pakiet.
+ .
+ Proszę wybrać serwery WWW, które mają być skonfigurowane do współpracy z PluXml.
+ .
+ Proszę zauważyć, że trzeba będzie się upewnić, czy interpreter PHP jest włączony na danym serwerze WWW.
+Description-pt.UTF-8: Servidores web a configurar:
+ O PluXml pode correr em qualquer servidor que suporte PHP, mas apenas os servidores web da lista podem ser configurados automaticamente por este pacote.
+ .
+ Por favor seleccione os servidores web que devem ser configurados para o PluXml.
+ .
+ Note que precisa de certificar que está activo um interpretador de PHP para o servidor web.
+Description-ru.UTF-8: Веб-серверы для настройки:
+ PluXml работает с любым веб-сервером, поддерживающим PHP, однако автоматическая настройка этого пакета возможна только для серверов из списка.
+ .
+ Выберите веб-серверы, которые нужно настроить для PluXml.
+ .
+ Заметим, что вам нужно проверить, что интерпретатор PHP включён для этого веб-сервера.
+Description-sv.UTF-8: Webbservrar att ställa in automatiskt:
+ PluXml kan köra på vilken webbserver som helst som stöder PHP men bara de uppräknade webbservrarna kan ställas in automatiskt av detta paket.
+ .
+ Ange webbservern som ska ställas in automatiskt för PluXml.
+ .
+ Observera att du behöver säkerställa att PHP-tolken är aktiverad för webbservern.
+
+Template: pluxml/system/reload-webserver
+Type: boolean
+Default: true
+Description: Should the web server(s) be reloaded?
+ To activate the configuration for PluXml, the web server(s) have to be
+ reloaded.
+ .
+ Accepting this option will reload the web server(s) when the installation is
+ complete, otherwise you will have to do that yourself.
+Description-cs.UTF-8: Má se webový server restartovat?
+ K aktivaci nastavení pro PluXml je třeba restartovat webový server.
+ .
+ Přijetí této možnosti po dokončení instalace restartuje webový server, v opačném případě jej budete muset restartovat sami.
+Description-da.UTF-8: Skal netserverne genindlæses?
+ For at aktivere konfigurationen for PluXml, så skal netserverne genindlæses.
+ .
+ Accept af denne indstilling vil genindlæse netserveren, når installationen er færdig, ellers skal du gøre det selv.
+Description-de.UTF-8: Sollen die Webserver neu geladen werden?
+ Um die Konfiguration für PluXml zu aktivieren, müssen die Webserver neu geladen werden.
+ .
+ Wird diese Option akzeptiert, werden die Webserver nach Abschluss der Installation neu geladen, andernfalls müssen Sie dies selbst tun.
+Description-es.UTF-8: ¿Desea recargar la configuración del/de los los servidor/es web seleccionado/s?
+ Debe volver a cargar el/los servidor/es web para activar la configuración de PluXml.
+ .
+ Si acepta esta opción el/los servidor/es web seleccionado/s volverá/n a cargar su/s configuración/es cuando finalice la instalación, de lo contrario deberá hacerlo de forma manual.
+Description-fr.UTF-8: Faut-il relancer le(s) serveur(s) web ?
+ Pour activer cette configuration pour PluXml, il est nécessaire de redémarrer le(s) serveur(s).
+ .
+ En acceptant cette option le(s) serveur(s) web seront relancés lorsque l'installation sera terminée, sinon vous devrez le faire vous-même.
+Description-it.UTF-8: Ricaricare i server web?
+ Per attivare la configurazione per PluXml, i server web devono essere ricaricati.
+ .
+ Se si accetta questa opzione, i server web saranno ricaricati ad installazione completata, altrimenti sarà necessario farlo a mano.
+Description-ja.UTF-8: ウェブサーバをリロードしますか?
+ PluXml 用の設定を有効にするにはウェブサーバをリロードする必要があります。
+ .
+ このオプションを受け入れるとパッケージのインストール完了時にウェブサーバをリロードします。受け入れない場合は読み込ませる操作を自分で行う必要があります。
+Description-pl.UTF-8: Czy serwer(y) mają być przeładowane?
+ Aby aktywować konfigurację PluXml konieczne jest przeładowanie wybranych serwerów WWW.
+ .
+ Zaakceptowanie tej opcji spowoduje przeładowanie serwerów WWW po zakończeniu instalacji, odmowa będzie wymagała wykonania tego samodzielnie.
+Description-pt.UTF-8: Devem os servidores (ou servidor) web serem reiniciados?
+ Para activar a configuração para PluXml, os servidores web têm de ser reiniciados.
+ .
+ Aceitar esta opção irá reiniciar os servidores web quando a instalação estiver completa, caso contrário terá que ser você a fazê-lo.
+Description-ru.UTF-8: Перезапустить веб-сервер(ы)?
+ Чтобы настройки PluXml вступили в силу, нужно перезапустить перенастроенный веб-сервер(ы).
+ .
+ Если вы ответите утвердительно, то веб-сервер(ы) будет перезапущен после завершения установки, в противном случае вам нужно выполнить перезапуск самостоятельно.
+Description-sv.UTF-8: Ska webbservern (webbservrarna) laddas om?
+ För att aktivera inställningarna för PluXml måste webbservern laddas om.
+ .
+ Genom att ange detta kommer webbservern att laddas om när installationen är klar, annars måste du göra det själv.
+
+Template: pluxml/system/purgedata
+Type: boolean
+Default: false
+Description: Purge blog data on package removal?
+ PluXml will store all blog data in /var/lib/pluxml.
+ .
+ Accepting this option will remove all blog data when this package is
+ purged, which will leave you with a tidy system but may cause data loss if you
+ purge an operational blog.
+Description-cs.UTF-8: Vyprázdnit při odstranění balíčku data blogu?
+ PluXml uchovává data blogu ve /var/lib/pluxml.
+ .
+ Přijetí této možnosti při úplném odstranění balíčku odstraní všechna data blogu. což vám zanechá pročištěný systém, ale v případě, že odstraníte funkční blog, může dojít ke ztrátě dat.
+Description-da.UTF-8: Afinstaller blogdata ved pakkefjernelse?
+ PluXml vil lagre alle blogdata i /var/lib/pluxml.
+ .
+ Accept af denne indstilling vil fjerne alle blogdata når denne pakke afinstalleres, hvilket vil give dig et ordnet system, men kan medføre datatab hvis du afinstallerer en fungerende blog.
+Description-de.UTF-8: Sollen die Blog-Daten beim Entfernen des Pakets vollständig gelöscht werden?
+ PluXml wird alle Blog-Daten in /var/lib/pluxml speichern.
+ .
+ Wird diese Option akzeptiert, werden alle Blog-Daten gelöscht, wenn das Paket vollständig entfernt wird. Dies wird Ihnen ein sauberes System zurücklassen, kann aber zu Datenverlust führen, falls Sie ein einsatzbereites Blog löschen.
+Description-es.UTF-8: ¿Desea purgar los datos del blog cuando elimine el paquete?
+ PluXml almacenará todos los datos del blog en «/var/lib/pluxml».
+ .
+ Si acepta esta opción se eliminarán todos los datos del blog cuando purgue este paquete, lo que dejará su sistema limpio pero podría causarle pérdida de datos si purga un blog en funcionamiento.
+Description-fr.UTF-8: Faut-il purger les données du blog lors de la suppression du paquet ?
+ PluXml enregistre toutes les données de blog dans /var/lib/pluxml.
+ .
+ Si vous choisissez cette option, toutes les données de blog seront supprimées lors de la suppression du paquet, ce qui vous laissera un système nettoyé mais qui peut entraîner une perte de données si vous purgez un blog en production.
+Description-it.UTF-8: Eliminare i dati del blog alla rimozione del pacchetto?
+ PluXml memorizza tutti i dati del blog in /var/lib/pluxml.
+ .
+ Se si accetta questa opzione tutti i dati del blog verranno rimossi quando questo pacchetto verrà completamente eliminato; ciò lascerà un sistema pulito ma potrebbe causare una perdita di dati se si elimina un blog operativo.
+Description-ja.UTF-8: パッケージを削除する時にブログのデータを完全削除しますか?
+ PluXml はブログのデータを全て /var/lib/pluxml に保存します。
+ .
+ このオプションを受け入れるとこのパッケージを完全削除する時にブログのデータが全て削除され、システムの整理にはなりますが、運営しているブログを完全削除するとデータ消失を引き起こすかもしれません。
+Description-pl.UTF-8: Wyczyścić dane bloga przy usuwaniu pakietu?
+ PluXml przechowuje wszystkie dane bloga w /var/lib/pluxml.
+ .
+ Zaakceptowanie tej opcji spowoduje usunięcie wszystkich danych bloga przy czyszczeniu tego pakietu, co wprawdzie pozostawi porządek w systemie, lecz może spowodować utratę danych, jeśli czyszczony będzie działający blog.
+Description-pt.UTF-8: Purgar os dados de blog ao remover o pacote?
+ PluXml irá armazenar todos os dados de blog em /var/lib/pluxml.
+ .
+ Aceitar esta opção irá remover todos os dados de blog quando o pacote for purgado, o que irá deixá-lo com um sistema limpo mas pode causar perdas de dados se você purgar um blog operacional.
+Description-ru.UTF-8: Вычистить данные блога при удалении пакета?
+ PluXml хранит все данные блога в /var/lib/pluxml.
+ .
+ Если вы ответите утвердительно, то при вычистке этого пакета все данные блога будут удалены, что, возможно, нежелательно.
+Description-sv.UTF-8: Ska bloggdata tas bort när paketet tas bort?
+ PluXml kommer att lagra all bloggdata i /var/lib/pluxml.
+ .
+ Genom att ange detta alternativ så kommer all bloggdata att tas bort när detta paket tas bort. Detta leder till ett renare system men kan också leda tlll att data går förlorad från en fungerande blogg.
+
+Template: pluxml/system/writeconf
+Type: boolean
+Default: false
+Description: Allow editing the configuration files from the web interface?
+ PluXml includes a web-based configuration interface that allows the user to
+ change blog settings, including the list of registered users. To be usable, it
+ requires the web server to have write permission to the configuration files.
+ .
+ Accepting this option will give the web server write permissions to the
+ configuration files. These files will still be readable and editable by hand
+ regardless of whether or not you accept this option.
+Description-cs.UTF-8: Umožnit upravování konfiguračních souborů z webového rozhraní?
+ PluXml obsahuje webové konfigurační rozhraní, které uživateli umožňuje měnit nastavení blogu, včetně seznamu zaregistrovaných uživatelů. Aby jej bylo možné používat, je třeba, aby měl webový server oprávnění k zápisu do konfiguračních souborů.
+ .
+ Přijetí této možnosti poskytne webovému serveru oprávnění k zápisu do konfiguračních souborů. Soubory bude stále možné číst a ručně upravovat, bez ohledu na to, zda tuto možnost přijmete, či nikoli.
+Description-da.UTF-8: Tillad redigering af konfigurationsfilerne fra netgrænsefladen?
+ PluXml inkluderer en netbaseret konfigurationsgrænseflade, som giver brugeren mulighed for at ændre blogindstillinger, inklusiv listen over registrerede brugere. For at kunne bruges kræver det, at netserveren har skriverettighed til konfigurationen.
+ .
+ Accept af denne indstilling vil give netserveren skriverettigheder til konfigurationsfilerne. Disse filer vil stadig kunne læses og redigeres manuelt, uanset om du accepterer denne indstilling.
+Description-de.UTF-8: Soll das Bearbeiten der Konfigurationsdateien über die Web-Oberfläche gestattet werden?
+ PluXml enthält eine Web-basierte Konfigurationsschnittstelle, die dem Benutzer das Ändern von Blog-Einstellungen ermöglicht, einschließlich der Liste registrierter Benutzer. Damit dies verwendbar wird, ist es erforderlich, dass der Webserver Schreibrechte für die Konfigurationsdateien besitzt.
+ .
+ Wird diese Option akzeptiert, werden dem Webserver Schreibrechte für die Konfigurationsdateien eingeräumt. Diese Dateien werden immer noch lesbar und manuell änderbar sein, unabhängig davon, ob Sie diese Option akzeptieren.
+Description-es.UTF-8: ¿Desea permitir editar los archivos de configuración desde la interfaz web?
+ PluXml incluye una interfaz de configuración web que le permite al usuario cambiar las preferencias del blog, incluyendo la lista de usuarios registrados. Para que ésta funcione, es necesario que el servidor web posea permisos de escritura sobre los archivos de configuración.
+ .
+ Si acepta esta opción, el servidor web tendrá permisos de escritura en los archivos de configuración. Podrá leer y modificar estos archivos de forma manual sin importar su elección.
+Description-fr.UTF-8: Autoriser la modification des fichiers de configuration depuis l'interface web ?
+ PluXml inclut une interface type web qui autorise l'utilisateur à modifier les réglages du blog, y compris la liste des utilisateurs enregistrés. Pour être utilisable, le serveur web doit avoir les droits d'écriture dans les fichiers de configuration.
+ .
+ Si vous choisissez cette option, le serveur web aura les droits d'écriture dans les fichiers de configuration. Ces fichiers seront toujours lisibles et modifiables manuellement quelque soit votre choix.
+Description-it.UTF-8: Permettere la modifica dei file di configurazione dall'interfaccia web?
+ PluXml include un'interfaccia di configurazione basata sul web che permette all'utente di modificare le impostazioni del blog, incluso l'elenco degli utenti registrati. Per essere utilizzabile è necessario che il server web abbia i permessi di scrittura per i file di configurazione.
+ .
+ Se si accetta questa opzione, il server web otterrà i permessi di scrittura per i file di configurazione. Questi file saranno comunque leggibili e modificabili a mano, indipendentemente dal fatto che si accetti o meno questa opzione.
+Description-ja.UTF-8: ウェブインターフェイスからの設定ファイルの編集を許可しますか?
+ PluXml にはウェブベースの設定インターフェイスがあり、登録済みユーザ一覧等のブログ設定をユーザが変更できるようになっています。これを使えるようにするには設定ファイルへの書き込み権限をウェブサーバに持たせる必要があります。
+ .
+ このオプションを受け入れると設定ファイルへの書き込み権限をウェブサーバに与えます。このオプションの選択を問わず、設定ファイルの読み込みや手作業による編集は可能です。
+Description-pl.UTF-8: Zezwolić na edytowanie plików konfiguracyjnych z interfejsu WWW?
+ PluXml zawiera interfejs WWW służący do konfiguracji, w którym można zmienić ustawienia bloga, w tym listę zarejestrowanych użytkowników. Aby działał poprawnie, wymagane są prawa zapisu do plików konfiguracyjnych przez serwer WWW.
+ .
+ Zaakceptowanie tej opcji spowoduje nadanie serwerowi WWW uprawnień do zapisu plików konfiguracyjnych. Pliki te będą wciąż odczytywalne i edytowalne ręcznie, niezależnie od wybranej teraz opcji.
+Description-pt.UTF-8: Permitir a edição de ficheiros de configuração a partir da interface web?
+ PluXml inclui uma interface de configuração baseada em web que permite ao utilizador alterar definições do blog, incluindo a lista dos utilizadores registados. Para ser utilizável, requer que o servidor web tenha permissão de escrita nos ficheiros de configuração.
+ .
+ Aceitar esta opção irá dar ao servidor web permissão de escrita nos ficheiros de configuração. Estes ficheiros continuarão a poder ser lidos e editados à mão independentemente de você aceitar ou não esta opção.
+Description-ru.UTF-8: Разрешить изменять файлы настройки из веб-интерфейса?
+ PluXml имеет веб-интерфейс для настройки, который позволяет пользователю изменять настройки блога, включая список зарегистрированных пользователей. Для работы интерфейса требуется, чтобы веб-сервер имел право на запись в файлы настройки.
+ .
+ Если вы ответите утвердительно, то веб-сервер получит право на запись в файлы настройки. Эти файлы останутся доступны на чтение и запись вручную, независимо от ответа на данный вопрос.
+Description-sv.UTF-8: Ska redigering av inställningsfiler kunna göras från webbgränssnittet?
+ PluXml innehåller ett webbaserat gränssnitt för att ändra inställningar för bloggen, inklusive listan med registrerade användare. För att vara användbar måste webbservern ha skrivrättighet till inställningsfilerna.
+ .
+ Genom att ange detta alternativ kommer webbservern att tilldelas skrivrättighet till inställningsfilerna. Dessa filer kommer att vara läsbara och redigeringsbara manuellt oavsett svaret på denna fråga.
+
+Template: pluxml/blog/lang
+Type: select
+Choices: German, English, Spanish, French, Italian, Dutch, Polish, Portuguese, Romanian, Russian
+Choices-cs.UTF-8: Němčina, Angličtina, Španělština, Francouzština, Italština, Holandština, Polština, Portugalština, Rumunština, Ruština
+Choices-da.UTF-8: Tysk, Engelsk, Spansk, Fransk, Italiensk, Hollandsk, Polsk, Portugisisk, Rumænsk, Russisk
+Choices-de.UTF-8: Deutsch, Englisch, Spanisch, Französisch, Italienisch, Niederländisch, Polnisch, Portugiesisch, Rumänisch, Russisch
+Choices-es.UTF-8: Alemán, Inglés, Español, Francés, Italiano, Neerlandés, Polaco, Portugués, Rumano, Ruso
+Choices-fr.UTF-8: allemand, anglais, espagnol, français, italien, néerlandais, polonais, portugais, roumain, russe
+Choices-it.UTF-8: Tedesco, Inglese, Spagnolo, Francese, Italiano, Olandese, Polacco, Portoghese, Romeno, Russo
+Choices-ja.UTF-8: ドイツ語, 英語, スペイン語, フランス語, イタリア語, オランダ語, ポーランド語, ポルトガル語, ルーマニア語, ロシア語
+Choices-pl.UTF-8: niemiecki, angielski, hiszpański, francuski, włoski, niderlandzki, polski, portugalski, rumuński, rosyjski
+Choices-pt.UTF-8: Alemão (German), Inglês (English), Espanhol (Spanish), Francês (French), Italiano (Italian), Holandês (Dutch), Polaco (Polish), Português (Portuguese), Romeno (Romanian), Russo (Russian)
+Choices-ru.UTF-8: немецкий, английский, испанский, французский, итальянский, голландский, польский, португальский, румынский, русский
+Choices-sv.UTF-8: Tyska, Engelska, Spanska, Franska, Italienska, Holländska, Polska, Portugisiska, Rumänska, Ryska
+Choices-C: de, en, es, fr, it, nl, pl, pt, ro, ru
+Default: en
+Default-cs.UTF-8: en
+Default-da.UTF-8: en
+Default-de.UTF-8: de
+Default-fr.UTF-8: fr
+Default-it.UTF-8: it
+Default-ja.UTF-8: en
+Default-pl.UTF-8: pl
+Default-pt.UTF-8: pt
+Default-ru.UTF-8: ru
+Default-sv.UTF-8: en
+Description: Blog default language:
+ Please choose the default language of this blog, which will be used for the
+ public pages.
+ .
+ Registered blog contributors will be able to choose their language for the
+ administration pages.
+Description-cs.UTF-8: Výchozí jazyk blogu:
+ Zvolte si prosím výchozí jazyk blogu, který se použije u veřejných stránek.
+ .
+ Zaregistrovaní přispěvatelé blogu si budou moci pro správcovské stránky zvolit svůj jazyk.
+Description-da.UTF-8: Standardsprog for blog:
+ Vælg venligst standardsproget for denne blog, som vil blive brug for de offentlige sider.
+ .
+ Registrerede blogbidragydere vil kunne vælge deres eget sprog for administrationssiderne.
+Description-de.UTF-8: Standardsprache des Blogs:
+ Bitte wählen Sie die Standardsprache dieses Blogs. Sie wird für die öffentlich zugänglichen Seiten benutzt.
+ .
+ Registrierte Blogger werden in der Lage sein, ihre Sprache für die Verwaltungsseiten zu wählen.
+Description-es.UTF-8: Idioma predeterminado del blog:
+ Seleccione el idioma predeterminado para este blog que se utilizará en las páginas públicas.
+ .
+ Los colaboradores registrados en el blog podrán seleccionar su propio idioma para las páginas de administración.
+Description-fr.UTF-8: Langue par défaut du blog :
+ Veuillez choisir la langue par défaut de ce blog, qui sera utilisée pour les pages publiques.
+ .
+ Les contributeurs enregistrés dans le blog pourront choisir leur langue pour les pages d'administration.
+Description-it.UTF-8: Lingua predefinita per il blog:
+ Scegliere la lingua predefinita di questo blog, che verrà usata per le pagine pubbliche.
+ .
+ Gli utenti registrati che contribuiscono al blog potranno scegliere la propria lingua preferita per le pagine amministrative.
+Description-ja.UTF-8: ブログのデフォルト言語:
+ このブログの公開されるページで利用されるデフォルトの言語を選択してください。
+ .
+ 登録済のブログ投稿者は管理ページ用の言語を選択できます。
+Description-pl.UTF-8: Domyślny język bloga:
+ Proszę wybrać domyślny język bloga, który będzie używany do stron dostępnych publicznie.
+ .
+ Zarejestrowani użytkownicy bloga będą mogli wybrać swój język do stron związanych z administracją.
+Description-pt.UTF-8: Linguagem predefinida do blog:
+ Por favor escolha a linguagem predefinida para este blog, a qual será usada para as páginas públicas.
+ .
+ Os contribuidores registados do blog são capazes de escolher a sua linguagem para as páginas de administração.
+Description-ru.UTF-8: Язык по умолчанию в блоге:
+ Выберите язык по умолчанию для этого блога, который будет использоваться на открытых страницах.
+ .
+ Зарегистрированные авторы блога могут выбрать свой язык для страниц управления.
+Description-sv.UTF-8: Standardspråk för bloggen:
+ Välj standardspråk för denna blogg. Det kommer användas för publika sidor.
+ .
+ Registrerade användare kommer att kunna välja språk för administrationssidorna.
+
+Template: pluxml/blog/title
+Type: string
+Default: PluXml
+Description: Blog title:
+ Please choose a title for this blog. It will be displayed at the top of each
+ page and in the browser window title.
+Description-cs.UTF-8: Titulek blogu:
+ Zvolte si prosím titulek blogu. Ten se bude zobrazovat nahoře na každé stránce a v titulku okna prohlížeče.
+Description-da.UTF-8: Blogtitel:
+ Vælg venligst en titel for denne blog. Den vil blive vist øverst på hver side og i vinduestitlen for browseren.
+Description-de.UTF-8: Blog-Titel:
+ Bitte wählen Sie einen Titel für diesen Blog. Er wird auf jeder Seite oben und im Fenstertitel des Browsers angezeigt.
+Description-es.UTF-8: Título del blog:
+ Seleccione un título para este blog. Se mostrará en la cabecera de cada página y en el título de la ventana del navegador.
+Description-fr.UTF-8: Titre du blog :
+ Veuillez choisir un titre pour ce blog. Il sera affiché en haut de chaque page et dans la barre de titre du navigateur.
+Description-it.UTF-8: Titolo del blog:
+ Scegliere un titolo questo blog. Verrà visualizzato in cima ad ogni pagina e nel titolo della finestra del browser.
+Description-ja.UTF-8: ブログの題名:
+ このブログの題名を選択してください。これは各ページ上部とブラウザウィンドウのタイトルに表示されます。
+Description-pl.UTF-8: Tytuł bloga:
+ Proszę wybrać tytuł tego bloga. Będzie wyświetlany na górze każdej strony i w pasku tytułowym przeglądarki.
+Description-pt.UTF-8: Título do blog:
+ Por favor escolha um título para este blog. Será visível no topo de cada página e no título da janela do navegador.
+Description-ru.UTF-8: Название блога:
+ Укажите название блога. Оно будет отображаться вверху каждой страницы и в заголовке окна браузера.
+Description-sv.UTF-8: Bloggtitel:
+ Ange en titel för denna blogg. Visas längst upp på varje sida och i webbläsarens fönstertitel.
+
+Template: pluxml/blog/description
+Type: string
+Default: Blog or CMS, XML powered!
+Default-cs.UTF-8: Blog or CMS, XML powered !
+Default-da.UTF-8: Blog eller CMS, XML-drevet!
+Default-de.UTF-8: Blog oder CMS, mit XML betrieben!
+Default-es.UTF-8: Blog o Cms en Xml !
+Default-fr.UTF-8: Blog ou CMS à l'Xml !
+Default-it.UTF-8: Blog o Cms, XML powered!
+Default-ja.UTF-8: Blog or CMS, XML powered!
+Default-pl.UTF-8: Blog or CMS, XML powered!
+Default-pt.UTF-8: Blog ou CMS em Xml !
+Default-ru.UTF-8: Блог или CMS, с возможностями XML!
+Default-sv.UTF-8: Blogg eller CMS, XML-baserad!
+Description: Blog description or subtitle:
+ Please choose a short description for this blog. It will be displayed as a
+ subtitle at the top of each page and in the browser window title.
+Description-cs.UTF-8: Popis blogu či podtitulek:
+ Zadejte prosím stručný popis blogu. Ten se bude zobrazovat jako podtitulek nahoře na každé stránce a v titulku okna prohlížeče.
+Description-da.UTF-8: Blogbeskrivelse eller undertekst:
+ Vælg venligst en kort beskrivelse for denne blog. Den vil blive vist som en undertekst øverst på hver side og i vinduestitlen for browseren.
+Description-de.UTF-8: Blog-Beschreibung oder Untertitel:
+ Bitte wählen Sie eine kurze Beschreibung für diesen Blog. Er wird als Untertitel auf jeder Seite oben und im Fenstertitel des Browsers angezeigt.
+Description-es.UTF-8: Descripción o subtítulo del blog:
+ Introduzca una descripción corta para este blog. Se mostrará como un subtítulo en la cabecera de cada página y en el título de la ventana del navegador.
+Description-fr.UTF-8: Description du blog ou sous-titre :
+ Veuillez choisir une courte description pour ce blog. Il sera affiché en tant que sous-titre en haut de chaque page et dans la barre de titre du navigateur.
+Description-it.UTF-8: Descrizione o sottotitolo del blog:
+ Scegliere una descrizione breve per questo blog. Verrà visualizzata come sottotitolo in cima ad ogni pagina e nel titolo della finestra del browser.
+Description-ja.UTF-8: ブログの説明または副題:
+ このブログの簡単な説明を選択してください。これは各ページ上部とブラウザウィンドウのタイトルに表示されます。
+Description-pl.UTF-8: Opis lub podtytuł bloga:
+ Proszę wybrać krótki opis tego bloga. Będzie wyświetlany na górze każdej strony jako podtytuł i w pasku tytułowym przeglądarki.
+Description-pt.UTF-8: Descrição ou legenda do blog:
+ Por favor escolha uma descrição curta para este blog. Será visível como uma legenda no topo de cada página e no título da janela do navegador.
+Description-ru.UTF-8: Описание блога или подзаголовок:
+ Введите короткое описание блога. Оно будет отображаться как подзаголовок вверху каждой страницы и в заголовке окна браузера.
+Description-sv.UTF-8: Beskrivning eller undertitel för blogg:
+ Ange en kort beskrivning för den här bloggen. Den kommer att visas som en undertitel längst upp på varhe sida och i webbläsarens fönstertitel.
+
+Template: pluxml/blog/name
+Type: string
+Default: PluXml Administrator
+Description: Administrator real name:
+ Please enter the real name associated with the blog administrator account.
+ .
+ This name will be displayed for articles written with the administrator
+ account.
+Description-cs.UTF-8: Skutečné jméno správce:
+ Zadejte prosím skutečné jméno přiřazené k účtu správce blogu.
+ .
+ Toto jméno se bude zobrazovat u článků napsaných se správcovským účtem.
+Description-da.UTF-8: Administratorens rigtige navn:
+ Indtast venligst det rigtige navn forbundet med blogadministratorens konto.
+ .
+ Dette navn vil blive vist for atikler skrevet med administratorens konto.
+Description-de.UTF-8: Richtiger Name des Administrators:
+ Bitte geben Sie den richtigen Namen an, der zum Administratorkonto des Blogs gehört.
+ .
+ Dieser Name wird bei Artikeln angezeigt, die mit dem Administratorkonto geschrieben wurden.
+Description-es.UTF-8: Nombre real del administrador:
+ Introduzca el nombre real asociado con la cuenta de administración del blog.
+ .
+ Se mostrará este nombre en los artículos escritos con la cuenta del administrador.
+Description-fr.UTF-8: Nom réel de l'administrateur :
+ Veuillez entrer le nom réel associé avec le compte administrateur du blog.
+ .
+ Ce nom sera affiché dans les articles écrits avec le compte de l'administrateur.
+Description-it.UTF-8: Nome reale dell'amministratore:
+ Inserire il nome reale associato all'account dell'amministratore del blog.
+ .
+ Questo nome verrà visualizzato per gli articoli scritti con l'account di amministratore.
+Description-ja.UTF-8: 管理者の実名:
+ ブログ管理者アカウントに使われる実名を入力してください。
+ .
+ この名前は管理者アカウントで書かれた記事に表示されます。
+Description-pl.UTF-8: Wyświetlana nazwa administratora:
+ Proszę wprowadzić wyświetlaną nazwę związaną z kontem administratora bloga.
+ .
+ Ta nazwa będzie wyświetlana przy artykułach napisanych z konta administratora.
+Description-pt.UTF-8: Nome real do administrador:
+ Por favor indique o nome real associado à conta de administrador do blog.
+ .
+ Este nome irá ser mostrado para artigos escritos com a conta do administrador.
+Description-ru.UTF-8: Реальное имя администратора:
+ Введите настоящее имя, связанное с учётной записью администратора блога.
+ .
+ Это имя будет отображаться в статьях, написанных из-под учётной записи администратора.
+Description-sv.UTF-8: Riktigt namn för administratören:
+ Ange det riktiga namnet som ska sättas på bloggens administrationskonto.
+ .
+ Namnet kommer att visas vid artiklar författade med administrationskontot.
+
+Template: pluxml/blog/login
+Type: string
+Default: admin
+Description: Administrator username:
+ Please enter a name for the administrator account, which will be used to manage
+ PluXml's configuration, users, and content. The username should only
+ contain lowercase ASCII letters.
+Description-cs.UTF-8: Uživatelské jméno správce:
+ Zadejte prosím název správcovského účtu, který se bude používat ke správě nastavení PluXml, uživatelů a obsahu. Uživatelské jméno musí obsahovat pouze malé ASCII znaky.
+Description-da.UTF-8: Administratorens brugernavn:
+ Indtast venligst et navn for administratorkontoen, som vil blive brugt til at håndtere PluXmls konfiguration, brugere og indhold. Brugernavnet bør kun indeholde små ASCII-bogstaver.
+Description-de.UTF-8: Benutzername des Administrators:
+ Bitte geben Sie einen Namen für das Administratorkonto an, der zum Verwalten der Konfiguration, der Benutzer und des Inhalts von PluXml benutzt wird.
+Description-es.UTF-8: Nombre del usuario administrador:
+ Introduzca un nombre para la cuenta de administración, que se utilizará para gestionar la configuración, los usuarios y el contenido de PluXml. El nombre de usuario debe estar compuestos sólo por letras ASCII minúsculas.
+Description-fr.UTF-8: Identifiant de l'administrateur :
+ Veuillez entrer un identifiant pour pour le compte administrateur, qui sera utilisé pour la gestion de la configuration, des utilisateurs et du contenu de PluXml. Cet identifiant ne doit contenir que des lettres minuscules ASCII.
+Description-it.UTF-8: Nome utente dell'amministratore:
+ Inserire un nome per l'account dell'amministratore che verrà usato per gestire la configurazione, gli utenti e i contenuti di PluXml. Il nome utente deve contenere solamente lettere ASCII minuscole.
+Description-ja.UTF-8: 管理ユーザ名:
+ 管理者アカウントの名前を入力してください。このアカウントは PluXml の設定やユーザ、内容の管理に利用されます。ユーザ名は ASCII の小文字だけで構成してください。
+Description-pl.UTF-8: Nazwa użytkownika administrator:
+ Proszę wprowadzić nazwę konta administratora, która będzie używana do zarządzania konfiguracją, użytkownikami i zawartością PluXml. Nazwa powinna składać się wyłącznie z małych liter ASCII.
+Description-pt.UTF-8: Nome de utilizador do administrador:
+ Por favor indique o nome da conta de administrador, o qual será usado para gerir a configuração, utilizadores e conteúdos do PluXml. O nome de utilizador deverá apenas conter letras ASCII minúsculas.
+Description-ru.UTF-8: Имя пользователя администратора:
+ Введите имя учётной записи администратора, которое будет использоваться для управления настройкой PluXml, пользователями и содержимым. Имя пользователя должно состоять только из строчных букв ASCII.
+Description-sv.UTF-8: Användarnamn för administrationskonto:
+ Ange namnet för administrationskontot som kommer att användas för att hantera PluXmls inställningar, användare och innehåll. Användarnamnet får bara innehålla små ASCII-bokstäver.
+
+Template: pluxml/blog/password
+Type: password
+Description: Administrator password:
+ Please choose a password for the blog administrator account.
+Description-cs.UTF-8: Heslo správce:
+ Zadejte prosím heslo pro účet správce blogu.
+Description-da.UTF-8: Administratorens adgangskode:
+ Vælg venligst en adgangskode for blogadministratorens konto.
+Description-de.UTF-8: Administratorpasswort:
+ Bitte wählen Sie ein Passwort für das Administratorkonto des Blogs.
+Description-es.UTF-8: Contraseña del administrador:
+ Introduzca una contraseña para la cuenta de administración del blog.
+Description-fr.UTF-8: Mot de passe de l'administrateur :
+ Veuillez choisir un mot de passe pour le compte d'administration du blog.
+Description-it.UTF-8: Password dell'amministratore:
+ Scegliere una password per l'account dell'amministratore del blog.
+Description-ja.UTF-8: 管理者パスワード:
+ ブログ管理者アカウントのパスワードを選択してください。
+Description-pl.UTF-8: Hasło administratora:
+ Proszę wybrać hasło dla konta administratora bloga.
+Description-pt.UTF-8: Palavra passe do administrador:
+ Por favor escolha a palavra passe para a conta de administrador do blog.
+Description-ru.UTF-8: Пароль администратора:
+ Введите пароль учётной записи администратора блога.
+Description-sv.UTF-8: LÖsenord för administrationskontot:
+ Ange lösenordet för bloggens administrationskonto:
+
+Template: pluxml/blog/confirm
+Type: password
+Description: Confirm password:
+ Please enter the same password again to verify that you have
+ typed it correctly.
+Description-cs.UTF-8: Znovu zadejte heslo:
+ Zadejte prosím znovu stejné heslo pro ověření, že jste jej napsali správně.
+Description-da.UTF-8: Bekræft adgangskode:
+ Indtast venligst den samme adgangskode igen for at verificere at du har indtastet den korrekt.
+Description-de.UTF-8: Passwortbestätigung:
+ Bitte geben Sie dasselbe Passwort erneut ein, um zu prüfen, ob Sie es korrekt eintippt haben.
+Description-es.UTF-8: Confirme la contraseña:
+ Introduzca la misma contraseña nuevamente para verificar que la introdujo correctamente.
+Description-fr.UTF-8: Confirmation du mot de passe :
+ Veuillez entrer le mot de passe à nouveau pour vérifier que vous l'avez tapé correctement.
+Description-it.UTF-8: Conferma password:
+ Inserire nuovamente la stessa password per verificare di averla digitata correttamente.
+Description-ja.UTF-8: パスワードの確認:
+ 正しく打ち込まれたことを検証するため、同一のパスワードを再び入力してください。
+Description-pl.UTF-8: Proszę potwierdzić hasło:
+ Proszę wprowadzić to samo hasło ponownie, aby sprawdzić, czy zostało wpisane poprawnie.
+Description-pt.UTF-8: Confirme a palavra passe:
+ Por favor indique a mesma palavra passe de novo para verificar se a escreveu correctamente.
+Description-ru.UTF-8: Повторите пароль:
+ Введите тот же самый пароль для  ещё раз, чтобы убедиться в правильности ввода.
+Description-sv.UTF-8: Upprepa lösenordet:
+ Ange samma lösenord igen för att bekräfta att du skrev in det korrekt.
+
+Template: pluxml/blog/failpass
+Type: error
+Description: Password input error
+ The two passwords you entered were not the same. Please try again.
+Description-cs.UTF-8: Chyba při zadávání hesla
+ Zadaná hesla nejsou stejná. Zkuste to prosím znovu.
+Description-da.UTF-8: Indtastningfejl for adgangskode
+ De to indtastede adgangskoder var forskellige. Prøv igen.
+Description-de.UTF-8: Fehler bei der Passworteingabe
+ Die beiden Passwörter, die Sie eingegeben haben, waren nicht identisch. Bitte versuchen Sie es erneut.
+Description-es.UTF-8: Error al introducir la contraseña
+ Las dos contraseñas introducidas no coinciden. Inténtelo nuevamente.
+Description-fr.UTF-8: Erreur de saisie du mot de passe
+ Les deux mots de passe entrés ne correspondent pas. Veuillez essayer à nouveau.
+Description-it.UTF-8: Errore nell'inserimento della password
+ Le due password inserite non sono uguali. Riprovare.
+Description-ja.UTF-8: パスワード入力エラー
+ 入力された2つのパスワードが一致しません。入力し直してください。
+Description-pl.UTF-8: Błąd wprowadzania hasła
+ Dwa hasła, które zostały wprowadzone, nie są identyczne. Proszę spróbować ponownie.
+Description-pt.UTF-8: Erro na entrada da palavra passe
+ As duas palavras passe que indicou não eram iguais. Por favor tente de novo.
+Description-ru.UTF-8: Ошибка ввода пароля
+ Введённые вами пароли не совпадают. Попробуйте ещё раз.
+Description-sv.UTF-8: Fel vid inmatning av lösenord
+ De båda lösenorden du angav stämde inte överrens. Försök igen.

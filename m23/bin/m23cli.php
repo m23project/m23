@@ -10,6 +10,7 @@
 	include('/m23/inc/remotevar.php');
 	include('/m23/inc/client.php');
 	include('/m23/inc/distr.php');
+	include("/m23/inc/preferences.php");
 	include('/m23/inc/sourceslist.php');
 	include_once('/m23/inc/messageReceive.php');
 	include('/m23/inc/packages.php');

@@ -1,0 +1,484 @@
+
+Template: nbd-client/no-auto-config
+Type: error
+Description: AUTO_GEN is set to "n" in /etc/nbd-client
+ The /etc/nbd-client file contains a line that sets the AUTO_GEN variable
+ to "n". The file will therefore not be regenerated automatically.
+ .
+ If that's wrong, remove the line and call "dpkg-reconfigure nbd-client"
+ afterwards.
+Description-cs.UTF-8: Volba AUTO_GEN je v /etc/nbd-client nastavena na „n“
+ V souboru /etc/nbd-client se nachází řádek, který nastavuje proměnnou AUTO_GEN na hodnotu „n“. To znamená, že nechcete, aby se soubor obnovoval automaticky.
+ .
+ Pokud to je špatně, odstraňte příslušný řádek a poté spusťte „dpkg-reconfigure nbd-client“.
+Description-da.UTF-8: AUTO_GEN er angivet til »n« i /etc/nbd-client
+ /etc/nbd-client-filen indeholder en linje som angiver AUTO_GEN-variablen for »n«. Filen vil derfor ikke blive oprettet automatisk.
+ .
+ Hvis dette er forkert, så fjern linjen og kald »dpkg-reconfigure nbd-client« efterfølgende.
+Description-de.UTF-8: AUTO_GEN ist in /etc/nbd-client auf »n« gesetzt.
+ Die Datei /etc/nbd-client enthält eine Zeile, in der die Variable AUTO_GEN auf »n« gesetzt wird. Die Datei wird daher nicht automatisch erneuert.
+ .
+ Falls das falsch ist, entfernen Sie die Zeile und rufen danach »dpkg-reconfigure nbd-client« auf.
+Description-es.UTF-8: AUTO_GEN está establecido a «n» en «/etc/nbd-client»
+ El archivo «/etc/nbd-client» contiene una línea que establece la variable AUTO_GEN a «n». Por tanto, el archivo no se regenerará automáticamente.
+ .
+ Si no es correcto, elimine esa línea y ejecute «dpkg-reconfigure nbd-client» después.
+Description-fi.UTF-8: Asetuksen AUTO_GEN arvo on ”n” tiedostossa /etc/nbd-client
+ Tiedostossa /etc/nbd-client on rivi, jolla muuttujalle AUTO_GEN asetetaan arvo ”n”. Tästä syystä tiedostoa ei luoda automaattisesti uudelleen.
+ .
+ Jos asetus on väärä, poista se ja aja sen jälkeen komento ”dpkg-reconfigure nbd-client”.
+Description-fr.UTF-8: Variable AUTO_GEN égale à « n » dans /etc/nbd-client
+ Le fichier /etc/nbd-client comporte une ligne qui définit la variable AUTO_GEN à « n ». Le fichier ne sera donc pas recréé automatiquement.
+ .
+ Si ce n'est pas le cas, supprimez ou commentez la ligne, puis relancez ensuite «  dpkg-reconfigure nbd-client ».
+Description-it.UTF-8: AUTO_GEN è impostata a «n» in /etc/nbd-client
+ Il file /etc/nbd-client contiene una riga che imposta la variabile AUTO_GEN a «n». Il file perciò non verrà rigenerato automaticamente.
+ .
+ Se ciò è sbagliato, rimuovere la riga e successivamente invocare «dpkg-reconfigure nbd-client».
+Description-ja.UTF-8: AUTO_GEN が /etc/nbd-client で「n」をセットされています。
+ /etc/nbd-client ファイルに AUTO_GEN 変数に「n」をセットする行があります。したがってファイルは自動的に再生成されません。
+ .
+ それでは良くないという場合は当該行を削除してから「dpkg-reconfigure nbd-client」を呼び出してください。
+Description-nl.UTF-8: /etc/nbd-client heeft AUTO_GEN op "n" staan
+ Het bestand /etc/nbd-client bevat een regel die de variabele 'AUTO_GEN' op "n" zet. Het bestand zal daarom niet automatisch geregenereerd worden.
+ .
+ Als dat onjuist is, verwijder dan deze regel en roep later "dpkg-reconfigure nbd-client" aan.
+Description-pt.UTF-8: AUTO_GEN está definido para "n" no /etc/nbd-client
+ O ficheiro /etc/nbd-client contém uma linha que define a variável AUTO_GEN para "n". Por isto o ficheiro não será regenerado automaticamente.
+ .
+ Se isto está errado, remova a linha e depois chame "dpkg-reconfigure nbd-client".
+Description-ru.UTF-8: Значение переменной AUTO_GEN равно «n» в /etc/nbd-client
+ Файл /etc/nbd-client содержит строку, которая устанавливает переменную AUTO_GEN в значение «n». Из-за этого регенерация файла не будет выполнена автоматически.
+ .
+ Если это неправильно, удалите строку и запустите «dpkg-reconfigure nbd-client».
+Description-sv.UTF-8: AUTO_GEN är satt till  "n" i /etc/nbd-client.
+ Filen /etc/nbd-client innehåller en rad som sätter variabeln AUTO_GEN till "n". På grund av detta kommer filen inte att återskapas automatiskt.
+ .
+ Om detta är fel, ta bort raden och kör sedan "dpkg-reconfigure nbd-client" igen.
+Description-vi.UTF-8: « AUTO_GEN » được đặt thành « n » trong « /etc/nbd-client »
+ Tập tin ứng dụng khách NBD « /etc/nbd-client » chứa một dòng mà đặt biến tự động tạo « AUTO_GEN » thành « n » (không). Vì thế tập tin này sẽ không được tự động tạo lại.
+ .
+ Nếu trường hợp này không đúng, bạn hãy gỡ bỏ dòng này và sau đó chạy lệnh cấu hình lại « dpkg-reconfigure nbd-client ».
+
+Template: nbd-client/port-used
+Type: error
+Description: A port has been selected for export ${number}
+ The file /etc/nbd-client configures an NBD export by way of a port
+ number. This method of connecting to an NBD export is no longer
+ supported as of NBD 3.10.
+ .
+ Please migrate the configuration so it uses name-based exports, rather
+ than port-based ones.
+Description-cs.UTF-8: Pro export ${number} byl zadán port
+ Soubor /etc/nbd-client definuje NBD export pomocí čísla portu. Tento způsob připojení k NBD exportu již není od verze NBD 3.10 podporován.
+ .
+ Upravte prosím nastavení, aby místo portů používalo exporty definované pomocí jmen.
+Description-da.UTF-8: En port er blevet valg for eksport ${number}
+ Filen /etc/nbd-client konfigurerer en NBD-eksport via et portnummer. Denne metode for forbindelse til en NBD-eksport er ikke understøttet fra og med NBD 3.10.
+ .
+ Migrer venligst konfigurationen så den bruger navnebaseret eksport, frem for portbaserede.
+Description-de.UTF-8: Für Export ${number} wurde ein Port ausgewählt
+ Die Datei /etc/nbd-client konfiguriert einen NBD-Export über eine Portnummer. Diese Methode zum Verbinden mit einem NBD-Export wird nicht länger von NBD unterstützt.
+ .
+ Bitte migrieren Sie die Konfiguration so, dass sie namensbasierte Exporte anstelle von portbasierten verwendet.
+Description-es.UTF-8: Ha seleccionado un puerto para el recurso de exportación ${number}
+ El archivo «/etc/nbd-client» tiene una configuración para un recurso de exportación NBD que utiliza un número de puerto. Desde la versión 3.10 ya no se admite este sistema para conectarse a un recurso de exportación NBD.
+ .
+ Tiene que migrar la configuración para utilizar recursos de exportaciones basados en nombres en lugar de puertos.
+Description-fr.UTF-8: Export ${number} défini par numéro de port
+ Le fichier /etc/nbd-client comporte la configuration d'un export NBD via un numéro de port. Cette méthode de connexion n'est plus gérée à partir de NBD 3.10.
+ .
+ Veuillez modifier cette configuration afin d'utiliser des exports basés sur des noms, plutôt que sur des numéros de ports.
+Description-nl.UTF-8: Een poort is geselecteerd voor export ${number}
+ Het bestand /etc/nbd-client configureert een NBD-export via een poortnummer. Deze methode van verbinden met een NBD-export wordt niet langer ondersteund sinds NBD 3.10.
+ .
+ Gelieve de configuratie te migreren naar naam-gebaseerde in plaats van poort-gebaseerde exports.
+Description-pt.UTF-8: Um porto foi seleccionado para exportar ${number}
+ O ficheiro /etc/nbd-client configura uma exportação NBD pelo método de um número de porto. Este método de ligação a uma exportação NBD não é mais suportado a partir do NBD 3.10.
+ .
+ Por favor migre a configuração para que passe a usar exportações baseadas em nomes, em vez de baseadas em portos.
+Description-ru.UTF-8: Для экспорта используется порт (${number})
+ В файле /etc/nbd-client настраивается экспорт NBD номером порта. Такой метод подключения к экспорту NBD не поддерживается, начиная с NBD 3.10.
+ .
+ Исправьте настройку так, чтобы в ней упоминался экспорт по имени, а не по порту.
+
+Template: nbd-client/number
+Type: string
+Default: 0
+Description: Number of nbd-client connections to use:
+ nbd-client can handle multiple concurrent connections. Please specify the
+ number of connections you'd like this configuration script to set up.
+ .
+ Note that if something has already been specified in /etc/nbd-client, the
+ current configuration will be used as defaults in these dialogs.
+Description-cs.UTF-8: Počet nbd-client spojení, která chcete použít:
+ nbd-client může obsluhovat více souběžných spojení. Zadejte počet spojení, která má tento konfigurační skript nastavit.
+ .
+ Poznamenejme, že něco již bylo v /etc/nbd-client nastaveno a tak se aktuální nastavení přednastaví jako výchozí odpovědi na tyto otázky.
+Description-da.UTF-8: Antallet af nbd-client-forbindelser der skal bruges:
+ nbd-client kan håntere flere samtidige forbindelser. Angiv venligst antallet af forbindelser som du ønsker, at dette konfigurationsskript skal sætte op.
+ .
+ Bemærk at hvis noget allerede er blevet angivet i /etc/nbd-client, så vil den aktuelle konfiguration blive brugt som standard i disse dialoger.
+Description-de.UTF-8: Anzahl der zu benutzenden NBD-Client-Verbindungen:
+ NBD-Client kann mehrere gleichzeitige Verbindungen handhaben. Bitte geben Sie die Anzahl der Verbindungen an, die dieses Konfigurationsskript einrichten soll.
+ .
+ Beachten Sie, dass die aktuelle Konfiguration als Standardeinstellung in diesen Dialogen verwendet wird, falls bereits etwas in /etc/nbd-client angegeben wurde.
+Description-es.UTF-8: Número de conexiones que ndb-client va a utilizar:
+ nbd-client puede gestionar varias conexiones concurrentes. Indique el número de conexiones que le gustaría configurar mediante este script.
+ .
+ Tenga en cuenta que si ya se ha especificado algo en «/etc/nbd-client», se utilizará la configuración actual como predeterminada en estos diálogos.
+Description-fi.UTF-8: nbd-client-yhteyksien määrä:
+ nbd-client voi hallita useampia yhtäaikaisia yhteyksiä. Anna haluttu yhteyksien määrä.
+ .
+ Jos tiedostossa /etc/nbd-client on jo asetettu jokin määrä, se annetaan oletusarvona tässä kentässä.
+Description-fr.UTF-8: Nombre de connexions nbd-client à utiliser :
+ Le programme nbd-client peut gérer plusieurs connexions simultanées. Veuillez indiquer le nombre de connexions que cet outil de configuration doit mettre en place.
+ .
+ Veuillez noter que si un paramétrage existe dans /etc/nbd-client, l'outil de configuration le prendra comme valeur par défaut dans ce qui suit.
+Description-it.UTF-8: Numero di connessioni nbd-client da usare:
+ nbd-client può gestire più connessioni concorrenti. Specificare il numero di connessioni che deve essere impostato da questo script di configurazione..
+ .
+ Notare che se qualcosa è già stato specificato in /etc/nbd-client, la configurazione attuale verrà usata come valore predefinito in questi dialoghi.
+Description-ja.UTF-8: 利用する nbd-client 接続の数:
+ nbd-client は同時接続を複数処理できます。この設定スクリプトに用意させたい接続数を指定してください。
+ .
+ /etc/nbd-client で既に何か指定されている場合、ここで表示されるダイアログでは現在の設定がデフォルトとして使われることに注意してください。
+Description-nl.UTF-8: Aantal te gebruiken nbd-client-verbindingen:
+ nbd-client kan verscheidene verbindingen tegelijkertijd afhandelen. Hoeveel verbindingen moet dit configuratiescript instellen?
+ .
+ Merk op dat indien /etc/nbd-client reeds informatie bevat, dat dan de huidige configuratie gebruikt zal worden voor de standaardwaarden in deze dialogen.
+Description-pt.UTF-8: Numero de ligações nbd-client a usar:
+ O nbd-client pode lidar com várias ligações em simultâneo. Por favor, indique o número de ligações que deseja que este script prepare.
+ .
+ Note que se alguma coisa já estiver especificada em /etc/nbd-client, a configuração existente será usada como valores pre-definidos nestes diálogos.
+Description-ru.UTF-8: Количество соединений, используемых nbd-client:
+ nbd-client может работать через несколько одновременных подключений. Укажите количество подключений, которые нужно задать.
+ .
+ Заметим, что если оно уже задано в /etc/nbd-client, но имеющееся значение будет использовано как значение по умолчанию для этого вопроса.
+Description-sv.UTF-8: Ange hur många nbd-client-anslutningar som sak användas:
+ nbd-cleint kan hantera flera samtidiga anslutningar. Ange hur många anslutningar du vill att den här inställningsproceduren ska starta.
+ .
+ Kom ihåg att om det redan finns ett värde i /etc/nbd-cleint så kommer det värdet att användas som standardvärde i dessa fält.
+Description-vi.UTF-8: Số các kết nối ndb-client cần dùng:
+ Ứng dụng khách nbd-client có khả năng quản lý nhiều sự kết nối chạy đồng thời. Hãy ghi rõ số các kết nối bạn muốn văn lệnh cấu hình này thiết lập.
+ .
+ Ghi chú rằng nếu cái gì đã được ghi rõ trong tập tin « /etc/nbd-client », cấu hình hiện thời sẽ được dùng làm mặc định trong các hộp thoại này.
+
+Template: nbd-client/type
+Type: select
+Choices: swap, filesystem, raw
+Choices-ca.UTF-8: swap, filesystem, raw
+Choices-cs.UTF-8: swap, souborový systém, raw
+Choices-da.UTF-8: swap, filsystem, raw
+Choices-de.UTF-8: Swap, Dateisystem, unbearbeitet
+Choices-es.UTF-8: intercambio, sistema de archivos, en bruto
+Choices-fi.UTF-8: näennäismuisti, tiedostojärjestelmä, raaka
+Choices-fr.UTF-8: zone d'échange (« swap »), système de fichiers, données brutes
+Choices-it.UTF-8: swap, filesystem, raw
+Choices-ja.UTF-8: swap、filesystem、raw
+Choices-nl.UTF-8: swap, bestandssysteem, geen configuratie
+Choices-pt.UTF-8: swap, sistema de ficheiros, raw
+Choices-pt_BR.UTF-8: swap, filesystem, raw
+Choices-ru.UTF-8: пространство подкачки, файловая система, неразмеченное устройство (raw)
+Choices-sv.UTF-8: växlingsfil, filsystem, rådata
+Choices-vi.UTF-8: trao đổi, hệ thống tập tin, thô
+Default: raw
+Description: Intended use of the network block device number ${number}:
+ The network block device can serve multiple purposes. One of the most
+ interesting is to provide swap space over the network for diskless clients,
+ but you can store a filesystem on it, or do other things with it for which
+ a block device is interesting.
+ .
+ If you intend to use the network block device as a swap device, choose
+ "swap". If you intend to use it as a filesystem, add a line to /etc/fstab,
+ give it the option "_netdev" (else init will try to mount it before it's
+ usable), and choose "filesystem". For all other purposes, choose "raw".
+ The only thing the nbd-client boot script will do then is start an
+ nbd-client process; you will have to set it up manually.
+Description-cs.UTF-8: Zamýšlené použití síťového blokového zařízení číslo ${number}:
+ Síťové blokové zařízení může sloužit několika účelům. Jedním z těch zajímavějších je poskytování odkládacího prostoru (swapu) bezdiskovým stanicím, ale také na něm můžete zřídit souborový systém, nebo s ním provádět jiné užitečné věci, pro které je potřeba blokové zařízení.
+ .
+ Plánujete-li používat síťové blokové zařízení jako odkládací prostor, vyberte „swap“. Chcete-li zařízení používat jako souborový systém, přidejte do /etc/fstab příslušný řádek (nezapomeňte použít parametr „_netdev“, protože init by se je pokusil připojit ještě než by bylo použitelné) a vyberte „souborový systém“. Pro všechny ostatní případy zvolte „raw“. Jedinou věcí, kterou zaváděcí skript nbd-client udělá, je spuštění procesu nbd-client; nastavit jej budete muset ručně.
+Description-da.UTF-8: Forventet brug af enhedsnummer for netværksblok ${number}:
+ Netværksblokenheden kan betjene flere formål. En af de mest interessante er at tilbyde swapplads over netværket for diskløse klienter, men du kan gemme et filsystem på den, eller udføre andre ting hvor en blokenhed er interessant.
+ .
+ Hvis du forventer at bruge netværksblokenheden som en swapenhed, så vælg »swap«. Hvis du forventer at bruge den som et filsystem, så tilføj en linje til /etc/fstab, giv det indstillingen »_netdev« (ellers vil init forsøge at montere den før den er brugbar), og vælg »filsystem«. For alle andre formål, så vælg »raw«. Den eneste ting som opstartsskriptet for nbd-client så vil udføre er at starte en nbd-client-proces; du vil skulle sætte den op manuelt.
+Description-de.UTF-8: Geplante Benutzung von »Network Block Device« Nummer ${number}:
+ Das »Network Block Device« kann vielen Zwecken dienen. Einer der interessantesten ist es, Swap-Bereiche über das Netz für plattenlose Clients bereitzustellen, aber Sie können auch ein Dateisystem auf ihm ablegen oder andere Dinge tun, für die ein Block-Gerät interessant ist.
+ .
+ Falls Sie das »Network Block Device« als Swap-Gerät nutzen möchten, wählen Sie »Swap«. Falls Sie es als Dateisystem nutzen möchten, fügen Sie eine Zeile zur /etc/fstab mit der Option »_netdev« hinzu (sonst versucht init, sie einzuhängen, bevor es benutzbar ist) und wählen hier »Dateisystem«. Für alle anderen Zwecke wählen Sie »unbearbeitet«. Dann wird das NBD-Client-Bootskript lediglich den NBD-Client-Prozess starten; Sie müssen die Einrichtung dann manuell durchführen.
+Description-es.UTF-8: Tipo de uso para el dispositivo de bloques en red número ${number}:
+ Un dispositivo de bloques en red puede servir para varios propósitos. Uno de los más interesantes es el de proporcionar un espacio de intercambio a través de la red para clientes ligeros (sin disco duro), pero sobre los que puede almacenar un sistema de archivos así como para hacer otras cosas para las cuales un dispositivos de bloques puede resultar interesante.
+ .
+ Si quiere utilizar un dispositivo de bloques en red como dispositivo de intercambio, seleccione «intercambio». Si quiere usarlo como sistema de archivos, añada una línea en «/etc/fstab», incluya la opción «_netdev» (de lo contrario init intentará montarlo antes de que se pueda utilizar) y seleccione «sistema de archivos». Para cualquier otro propósito, seleccione «en bruto». Lo único que hará el script de inicio de nbd-client es ejecutar nbd-client por lo que tendrá que configurarlo de forma manual.
+Description-fi.UTF-8: Verkkolohkolaitteen numero ${number} tarkoitettu käyttötapa:
+ Verkkolohkolaitetta (Network block device) voidaan käyttää moneen tarkoitukseen. Yksi mielenkiintoisimmista on näennäismuistin tarjoaminen levyttömille asiakkaille verkon yli, mutta sille voidaan myös tallentaa tiedostojärjestelmä tai sitä voidaan käyttää muilla lohkolaitteille ominaisilla tavoilla.
+ .
+ Jos aiot käyttää verkkolohkolaitetta näennäismuistilaitteena, valitse ”näennäismuisti”. Jos aiot käyttää sitä tiedostojärjestelmänä, lisää rivi tiedostoon /etc/fstab, lisää sille valitsin ”_netdev” (muuten init yrittää liittää sen ennen kuin se on käytettävissä) ja valitse ”tiedostojärjestelmä”. Kaikissa muissa tilanteissa valitse ”raaka”. Tällöin nbd-clientin käynnistyskomentosarja käynnistää ainoastaan nbd-client-prosessin ja kaikki muu täytyy tehdä käsin.
+Description-fr.UTF-8: Utilisation prévue pour le périphérique bloc réseau (numéro ${number}) :
+ Un périphérique bloc en réseau (« network block device ») peut avoir plusieurs utilisations. Une des plus intéressantes est de l'utiliser comme zone d'échange pour les clients sans disque. Vous pouvez également y placer un système de fichiers ou encore trouver d'autres utilisations pour lesquelles un périphérique de bloc est nécessaire.
+ .
+ Si vous avez l'intention d'utiliser le périphérique de bloc en réseau comme zone d'échange (« swap »), veuillez choisir « zone d'échange ». Si vous souhaitez y placer un système de fichiers, ajoutez une ligne au fichier /etc/fstab avec l'option « _netdev » (sinon les scripts d'initialisation du système chercheront à monter le système de fichiers avant qu'il ne soit utilisable) et choisissez « système de fichiers ».. Pour toutes les autres utilisations, choisissez « données brutes » : la seule action du script de démarrage de nbd-client sera alors de lancer un processus nbd-client, la configuration du périphérique restant alors à votre charge.
+Description-it.UTF-8: Destinazione d'uso del device a blocchi di rete numero ${numero}:
+ Il device a blocchi di rete può avere diversi scopi. Uno dei più interessanti è quello di fornire spazio di swap in rete per client senza dischi, ma si può memorizzare un file system su di esso o farvi altre cose per cui è utile un device a blocchi.
+ .
+ Se si progetta di usare il device a blocchi di rete come device di swap, scegliere «swap». Se si pensa di usarlo come un file system, aggiungere una riga in /etc/fstab, con l'opzione «_netdev» (altrimenti verrà tentato di montarlo prima che sia utilizzabile) e scegliere «filesystem». Per tutti gli altri scopi scegliere «raw»; in questo caso la sola cosa che lo script di avvio di nbd-client farà è di avviare un processo nbd-client che dovrà essere configurato manualmente.
+Description-ja.UTF-8: ネットワークブロックデバイス番号 ${number} の使用目的:
+ ネットワークブロックデバイスは多目的に使えます。最も面白いものの一つがネットワーク越しにディスクレスクライアント用の swap 空間を提供することですが、そのブロックデバイス上にファイルシステムを格納できる等、他のことをしてみるのも興味深いものです。
+ .
+ ネットワークブロックデバイスを swap デバイスとして使う場合は「swap」を選択してください。ファイルシステムとして使う場合は /etc/fstab に行を追加してオプション「_netdev」を与え (これをしないと使えるようになる前に init がマウントを試みます)、「filesystem」を選択してください。それ以外の目的の場合は全て「raw」を選択してください。nbd-client ブートスクリプトが行うのは nbd-client プロセスを開始させることだけです。その準備は手作業で行う必要があります。
+Description-nl.UTF-8: Gebruik van netwerkblokapparaat nummer ${number}:
+ Het netwerkblokapparaat kan voor verschillende doelen gebruikt worden. Eén van de meest interessante is om swapruimte via het netwerk aan te bieden aan computers zonder harde schijf, maar u kunt er ook een bestandssysteem op plaatsen, of er andere zaken mee doen waar een blokapparaatbestand interessant voor kan zijn.
+ .
+ Als u van plan bent om het als swapapparaat te gebruiken, kies dan "swap". Bent u van plan om dit als bestandssysteem te gebruiken, voeg dan een regel toe aan /etc/fstab, geef het de optie "_netdev" (als u dat niet doet dan zal init proberen het bestandssysteem aan te koppelen voordat deze bruikbaar is), en kies "bestandssysteem". Voor alle andere doelen kiest u "geen configuratie". Het enige dat het nbd-client opstartscript dan zal doen is het starten van een nbd-client proces; u zult alle andere zaken handmatig moeten instellen.
+Description-pt.UTF-8: Utilização pretendida do dispositivo de bloco de rede número ${number}:
+ O dispositivo de bloco de rede pode servir para vários propósitos. Um dos mais interessantes é o de disponibilizar um espaço de memória virtual para clientes sem disco, mas você pode armazenar um sistema de ficheiros nele, ou usá-lo para outras coisas em que um dispositivo de bloco seja útil.
+ .
+ Se você pretende usar o dispositivo de bloco de rede como uma memória virtual, escolha "swap". Se pretende usá-lo como um sistema de ficheiros, adicione uma linha em /etc/fstab, dando a opção "_netdev" (ou então o sistema tentará montá-lo antes de estar preparado), e escolha "sistema de ficheiros". Para qualquer outro propósito, escolha "raw". A única coisa que o script de arranque do nbd-client fará depois será arrancar o processo nbd-client; você terá que configurá-lo manualmente.
+Description-ru.UTF-8: Как будет использоваться сетевое блочное устройство под номером ${number}:
+ Сетевое блочное устройство можно использовать в разных целях. Одной из наиболее интересных является использование в качестве сетевого пространства подкачки для бездисковых клиентов, но вы может создать на нём файловую систему, или задействовать его как-то иначе, как обычно используют блочные устройства.
+ .
+ Если вы хотите использовать сетевое блочное устройство в качестве устройства для пространства подкачки, выберите «пространство подкачки». Если вы хотите использовать на нём файловую систему, добавьте в строку /etc/fstab параметр «_netdev» (иначе init попытается смонтировать его до того как это станет возможным), и выберите «файловая система». Для всех других целей, выберите «неразмеченное устройство». В этом случае сценарий загрузки nbd-client только запустит процесс nbd-client; всё остальное вам нужно настроить вручную.
+Description-sv.UTF-8: Användningsområde för nät-blockenhet ${number}:
+ Nät-blockenheten kan ha olika avsikter. En av de mest intressanta är att agera växlingsfil över nätverket för disklösa klienter, men du kan ha ett filsystem på den eller göra något annat som kräver en blockenhet.
+ .
+ Om du ska använda nät-blockenheten som växlingsutrymme ange "växlingsfil". Om du ska använda den som ett filsystem lägger du till en rad i /etc/fstab och ange alternativet "_netdev" (annars kommer init att försöka montera den innan det är möjligt) och ange "filsystem" nedan. För alla övriga användningsområden ange "rådata" nedan. Det enda som uppstartsskriptet för nbd-client då kan göra är att starta nbd-client-processen, övriga delar måste du göra själv.
+Description-vi.UTF-8: Sử dụng dự định của thiết bị khối mạng số ${number}:
+ Thiết bị khối mạng có khả năng đáp ứng nhiều mục đích. Một của những mục đích hay nhất là cung cấp vùng nhớ trao đổi (swap space) qua mạng cho các ứng dụng khách không có đĩa, nhưng mà bạn cũng có thể cất giữ một hệ thống tập tin trên nó, hoặc làm một số việc khác cho chúng một thiết bị khối có ích.
+ .
+ Nếu bạn định sử dụng thiết bị khối mạng như là:
+  • thiết bị bộ nhớ trao đổi		hãy chọn mục « trao đổi »
+  • hệ thống tập tin			thêm một dòng vào « /etc/fstab »,
+ 	đặt cho nó tuỳ chọn « _netdev » (không thì init sẽ thử gắn nó trước khi có ích)
+ 	và chọn mục « hệ thống tập tin »
+  • mục đích khác nào		chọn mục « thô »:
+ 	văn lệnh khởi động nbd-client sẽ chỉ khởi chạy một tiến trình nbd-client,
+ 	bạn vẫn còn cần tự thiết lập nó.
+
+Template: nbd-client/host
+Type: string
+Description: Hostname of the server (number: ${number})?
+ Please enter the network name or IP address of the machine on which
+ the nbd-server process is running.
+Description-cs.UTF-8: Jméno serveru (číslo ${number})?
+ Zadejte síťové jméno nebo IP adresu počítače, na kterém běží nbd-server.
+Description-da.UTF-8: Værtsnavn for serveren (nummer: ${number})?
+ Indtast venligst netværksnavnet eller IP-adressen for maskine hvorpå nbd-server-processen kører.
+Description-de.UTF-8: Rechnername des Servers (Nummer: ${number})?
+ Bitte geben Sie den Netzwerknamen oder die IP-Adresse der Maschine an, auf dem der NBD-Server-Prozess läuft.
+Description-es.UTF-8: ¿Cuál es el nombre de equipo del servidor (número: ${number})?
+ Introduzca el nombre de la red o la dirección IP del equipo donde se está ejecutando el proceso nbd-server.
+Description-fi.UTF-8: Palvelimen numero ${number} verkkonimi:
+ Anna sen koneen verkkonimi tai IP-osoite, jolla nbd-server-prosessia ajetaan.
+Description-fr.UTF-8: Nom du serveur (numéro : ${number}) :
+ Veuillez indiquer le nom d'hôte ou l'adresse IP du serveur où est utilisé nbd-server.
+Description-it.UTF-8: Nome host del server (numero: ${number})?
+ Inserire il nome di rete o l'indirizzo IP della macchina su cui è in esecuzione il processo nbd-server.
+Description-ja.UTF-8: サーバ (番号: ${number}) のホスト名?
+ nbd-server プロセスが動作しているマシンのネットワーク名かIPアドレスを入力してください。
+Description-nl.UTF-8: Computernaam van de server (nummer: ${number})?
+ Gelieve de netwerknaam of het IP-adres van de machine waarop de nbd-server draait, in te geven.
+Description-pt.UTF-8: Nome da máquina do servidor (número: ${number})?
+ Por favor indique o nome de rede ou o endereço IP da máquina na qual corre o processo nbd-server.
+Description-ru.UTF-8: Имя узла сервера (номер: ${number})?
+ Введите сетевое имя или IP-адрес машины, на которой запущен процесс nbd-server.
+Description-sv.UTF-8: Värdnamn för servern (nummer: ${number})?
+ Ange nätverksnamn eller IP-adress för maskinen som kör nbd-servern.
+Description-vi.UTF-8: Tên máy của máy phục vụ (số : ${number}):
+ Hãy gõ tên mạng hay địa chỉ IP của máy trên đó tiến trình phục vụ nbd-server đang chạy.
+
+Template: nbd-client/port
+Type: string
+Description: Name for NBD export (number: ${number})?
+ Please enter the NBD export name needed to access nbd-server. The name
+ entered here should match an existing export on the server.
+ .
+ Note that as of NBD 3.10, connecting to an NBD export using the older
+ port-based negotiation protocol is no longer supported.
+Description-cs.UTF-8: Jméno NBD exportu (číslo ${number})?
+ Zadejte prosím jméno NBD exportu, ke kterému se chce připojit. Toto jméno by již mělo na serveru existovat.
+ .
+ NBD od verze 3.10 již nepodporuje připojení k NBD exportům používajícím starší protokol založený na číslech portů.
+Description-da.UTF-8: Navn for NBD-eksport (nummer: ${number})?
+ Indtast venligst NBD-eksportnavnet krævet for at tilgå nbd-server. Navnet indtastet her skal matche en eksisterende eksport på serveren.
+ .
+ Bemærk at fra NBD 3.10, er forbindelse til en NBD-eksport via den ældre port-baserede forhandlingsprotokol ikke længere understøttet.
+Description-de.UTF-8: Name für NBD-Export (Nummer: ${number})?
+ Bitte geben Sie den für den Zugriff auf den NBD-Server nötigen NBD-Exportnamen ein. Der hier eingegebene Name sollte einem existierenden Export auf dem Server entsprechen.
+ .
+ Beachten Sie, dass seit NBD 3.10 das Verbinden mit einem NBD-Export mittels altem portbasierten Übertragungsprotokoll nicht länger unterstützt wird.
+Description-es.UTF-8: ¿Cuál es el nombre del recurso de exportación NBD (número: ${number})?
+ Introduzca el nombre del recurso de exportación NBD que se necesita para acceder a nbd-server. Este nombre debe coincidir con un recurso de exportación existente en el servidor.
+ .
+ Tenga en cuenta que a partir de NBD 3.10 ya no se admiten conexiones a un recurso de exportación NBD que utilicen el protocolo de negociación anterior basado en puertos.
+Description-fr.UTF-8: Nom de l'export NBD (numéro : ${number}) :
+ Veuillez indiquer le nom d'export NBD à utiliser pour accéder au serveur NBD. Ce nom doit correspondre à celui d'un export NBD sur le serveur.
+ .
+ Veuillez noter qu'à partir de NBD 3.10, la connexion à un export NBD via l'ancien protocole de négociation basé sur des numéros de ports n'est plus gérée.
+Description-nl.UTF-8: Naam van de nbd-export (nummer: ${number})?
+ Gelieve de NBD exportnaam in te geven die nodig is om verbinding te maken met nbd-server. De naam die hier ingegeven wordt, moet overeenkomen met een bestaande export op de server.
+ .
+ Merk op dat sinds NBD 3.10 het maken van een verbinding met een NBD-export via het oudere poort-gebaseerde protocol niet langer ondersteund wordt.
+Description-pt.UTF-8: Nome para exportação NBD (número: ${number})?
+ Por favor indique o nome de exportação NBD necessário para aceder ao nbd-server. O nome indicado deve coincidir a uma exportação existente no servidor.
+ .
+ Note que a partir do NBD 3.10, já não é suportada a ligação a uma exportação NBD usando o antigo protocolo baseado em porto.
+Description-ru.UTF-8: Имя для экспорта NBD (номер: ${number})?
+ Укажите имя экспорта NBD, необходимое для доступа к nbd-server. Указываемое имя должно совпадать с существующим экспортом на сервере.
+ .
+ Заметим, что начиная с NBD 3.10, подключение к экспорту NBD через устаревший формат протокола на основе порта больше не поддерживается.
+
+Template: nbd-client/device
+Type: string
+Description: /dev entry for this nbd-client (number: ${number})?
+ Every nbd-client process needs to be associated with a /dev entry with
+ major number 43. Please enter the name of the /dev entry you want to use for
+ this nbd-client. Note that this needs to be the full path to that entry,
+ not just the last part.
+ .
+ If the /dev entry specified does not exist, it will be created with minor
+ number ${number}.
+Description-cs.UTF-8: Záznam v /dev pro tohoto klienta (číslo ${number})?
+ Každý proces nbd-client se musí svázat se záznamem v /dev majícím jako hlavní číslo 43. Zadejte jméno záznamu v /dev, které chcete použít pro tohoto nbd-clienta. Musí se jednat o absolutní cestu k danému záznamu, ne pouze jeho poslední část.
+ .
+ Pokud zadané zařízení v /dev neexistuje, bude vytvořeno s vedlejším číslem ${number}.
+Description-da.UTF-8: /dev-punkt for denne nbd-client (nummer: ${number})?
+ Hver nbd-client-proces skal associeres med et /dev-punkt med hovednummer 43 (major number). Indtast venligst navnet for /dev-punktet du ønsker at bruge for denne nbd-client. Bemærk at dette skal være den fulde sti til det punkt, ikke kun den sidste del.
+ .
+ Hvis det angivne /dev-punkt ikke findes, så vil det blive oprettet med undernummeret (minor number) ${number}.
+Description-de.UTF-8: /dev-Eintrag für diesen NBD-Client (Nummer: ${number})?
+ Jeder NBD-Client-Prozess muss mit einem /dev-Eintrag mit der Major-Nummer 43 assoziiert sein. Bitte geben Sie den Namen des /dev-Eintrags, den Sie für diesen NBD-Client verwenden möchten, ein. Beachten Sie, dass der vollständige Pfad und nicht nur der letzte Teil zum Eintrag gebraucht wird.
+ .
+ Falls der angegebene /dev-Eintrag nicht existiert, wird dieser mit der Minor-Nummer ${number} erstellt.
+Description-es.UTF-8: ¿Cuál es la entrada en «/dev» para este nbd-client (número: ${number})?
+ Cada proceso nbd-client necesita asociarse con una entrada en «/dev» que tenga un número principal de 43. Introduzca el nombre de la entrada en «/dev» que desea utilizar con este nbd-client. Tenga en cuenta que necesita especificar la ruta completa, no sólo la última parte.
+ .
+ Si la entrada especificada en «/dev» no existe, se creará con el número menor ${number}.
+Description-fr.UTF-8: Nom de périphérique, dans /dev, pour ce client NBD (numéro : ${number}) :
+ Chaque processus nbd-client doit être associé à un fichier de périphérique, dans /dev, de numéro majeur 43. Veuillez indiquer le nom du périphérique que doit utiliser ce processus nbd-client. Veuillez indiquer le chemin complet et pas seulement la dernière partie.
+ .
+ Si vous indiquez un périphérique qui n'existe pas, il sera créé avec le numéro mineur ${number}.
+Description-it.UTF-8: Voce /dev per questo nbd-client (numero: ${number})?
+ Ogni processo nbd-client ha bisogno di essere associato ad una voce in /dev con numero primario 43. Inserire il nome della voce /dev da usare per questo nbd-client. Notare che deve essere il percorso completo per tale voce, non solamente l'ultima parte.
+ .
+ Se la voce /dev specificata non esiste, verrà creata con numero secondario ${number}.
+Description-ja.UTF-8: この nbd-client 用の /dev エントリ (番号: ${number})?
+ 各 nbd-client プロセスはメジャー番号43を使った /dev エントリと結びつける必要があります。この nbd-client 用に使いたい /dev エントリの名前を入力してください。これはエントリの末尾だけではなくパス全体である必要があることに注意してください。
+ .
+ 指定された /dev エントリが存在しない場合はマイナー番号 ${number} を使って作成されます。
+Description-nl.UTF-8: /dev-ingang voor deze nbd-client (nummer: ${nummer})?
+ Elk nbd-client-proces moet geassocieerd worden met een /dev ingang met major nummer 43. Gelieve de naam van de /dev-ingang op te geven die u wilt gebruiken voor deze nbd-client. Merk op dat hier het volledige pad naar die ingang bedoeld wordt, en niet slechts het laatste deel.
+ .
+ Wanneer deze ingang nog niet bestaat, zal hij aangemaakt worden met minor nummer ${number}
+Description-pt.UTF-8: Entrada /dev para este cliente nbd (número: ${number})?
+ Cada processo nbd-client precisa ser associado a uma entrada /dev com o número maior 43. Por favor indique o nome da entrada /dev que você quer usar com este cliente nbd. Note que é preciso indicar o caminho completo da entrada, e não apenas a sua parte final.
+ .
+ Se a entrada /dev indicada não existir, ela será criada com o número menor ${number}.
+Description-ru.UTF-8: Элемент /dev для данного nbd-client (номер: ${number})?
+ Каждому процессу nbd-client должен быть поставлен в соответствие элемент в каталоге /dev со старшим номером устройства 43. Введите имя элемента /dev, который вы хотите использовать для данного nbd-client. Заметим, что нужно указывать полный путь, а не только последнюю часть.
+ .
+ Если элемент /dev не существует, то он будет создан с младшим номером ${number}.
+Description-sv.UTF-8: /dev-namn för denna nbd-client (nummer: ${number})?
+ Alla nbd-client-processer måste ha ett /dev-namn med major-nummer 43. Ange /dev-namnet för denna nbd-client. Observera att detta måste vara den kompletta sökvägen inte bara den sista biten.
+ .
+ Om ett ickeexisterande /dev-namn anges kommer det att skapas med minor-nummer ${number}
+Description-vi.UTF-8: Mục nhập « /dev » cho nbd-client này (số : ${number}):
+ Mỗi tiến trình nbd-client phải liên quan đến một mục nhập « /dev » với con số chủ (major number) 43. Hãy nhập tên của mục nhập « /dev » bạn muốn sử dụng cho ứng dụng khách nbd-client này. Ghi chú rằng giá trị này cần phải là đường dẫn đầy đủ tới mục nhập đó, không phải chỉ phần cuối cùng.
+ .
+ Nếu bạn ghi rõ một mục nhập « /dev » chưa tồn tại, nó sẽ được tạo với số phụ (minor number) ${number}.
+
+Template: nbd-client/killall
+Type: boolean
+Default: true
+Description: Disconnect all NBD devices on "stop"?
+ When the nbd-client init script is called to stop the nbd-client service,
+ there are two things that can be done: either it can disconnect all
+ nbd-client devices (which are assumed not to be in use), or it can
+ disconnect only those nbd-client devices that it knows about in its
+ config file.
+ .
+ The default (and the traditional behavior) is to disconnect all
+ nbd-client devices. If the root device or other critical file systems
+ are on NBD this will cause data loss and should not be accepted.
+Description-cs.UTF-8: Odpojit všechna NBD zařízení při „stop“?
+ Když je init skript nbd-client zavolán, aby zastavil službu nbd-client, může zareagovat dvěma způsoby. Buď odpojí všechna zařízení nbd-clienta (o kterých se předpokládá, že se již nepoužívají), nebo odpojí pouze ta zařízení, která má uvedena ve svém konfiguračním souboru.
+ .
+ Výchozí (a tradiční) chování je odpojit všechna zařízení nbd-clienta. Pokud však na NBD provozujete kritické souborové systémy (např. kořenový souborový systém), pak je výchozí chování nevhodné a může způsobit ztrátu dat; v takovém případě raději tuto možnost zamítněte.
+Description-da.UTF-8: Frakobl alle NBD-enheder med »stop«?
+ Når init-skriptet for nbd-client kaldes for at stoppe tjenesten for nbd-client så er der to ting, der kan gøres: enten kan den frakoble alle nbd-client-enheder (som antages ikke at være i brug), eller den kan kun frakoble de nbd-client-enheder som den kender til i sin konfigurationsfil.
+ .
+ Standarden (og den traditionelle opførsel) er at frakoble alle nbd-client-enheder. Hvis rodenheden eller andre kritiske filsystemer er på NBD, så vil dette medføre datatab og bør ikke accepteres.
+Description-de.UTF-8: Bei »stop« die Verbindungen zu allen NBD-Geräten trennen?
+ Wenn das Initskript von NBD-Client aufgerufen wird, um den NBD-Client-Dienst zu stoppen, können zwei Dinge geschehen: entweder kann es alle NBD-Client-Geräte trennen (von denen vorausgesetzt wird, dass sie gerade nicht benutzt werden) oder es kann nur die NBD-Client-Geräte trennen, über die es in seiner Konfigurationsdatei Bescheid weiß.
+ .
+ Der Standard (und das übliche Verhalten) ist es, die Verbindung zu allen NBD-Client-Geräten zu trennen. Falls das Wurzelgerät oder andere kritische Dateisysteme auf NBD liegen, wird dies zu Datenverlust führen und sollte nicht akzeptiert werden.
+Description-es.UTF-8: ¿Desea desconectar todos los dispositivos NBD al «detener»?
+ Cuando se ejecuta el script de inicio de nbd-client para detener el servicio nbd-client, se puede hacer dos cosas: desconectar todos los dispositivos nbd-client (se asume que no están en uso), o se puede desconectar solamente los dispositivos nbd-client reconocidos por el archivo de configuración.
+ .
+ La opción predeterminada (y el comportamiento tradicional) es desconectar todos los dispositivos nbd-client. Si el dispositivo raíz o cualquier otro sistema de archivos crítico se encuentran en NBD esto causará una pérdida de datos, por lo que debería rechazar esta opción.
+Description-fi.UTF-8: Irrotetaanko kaikki NBD-laitteet komennolla ”stop”?
+ Kun nbd-client-palvelu pysäytetään kutsumalla init-komentosarjaa ”nbd-client”, se voi toimia kahdella eri tavalla: se voi joko irrottaa kaikki nbd-client-laitteet (joiden oletetaan olevan poissa käytöstä) tai se voi irrottaa vain ne nbd-client-laitteet, jotka on mainittu sen asetustiedostossa.
+ .
+ Oletus (ja perinteinen toimintatapa) on kaikkien nbd-client-laitteiden irrotus. Jos juurilaite tai jokin muu kriittinen tiedostojärjestelmä on liitetty NBD:n avulla, tämä aiheuttaa tietojen häviämistä, eikä tätä vaihtoehtoa tulisi valita.
+Description-fr.UTF-8: Déconnecter tous les périphériques NBD avec l'action « stop » ?
+ Lorsque le script d'initialisation du client NBD est appelé pour arrêter le service client de NBD, deux actions sont possibles : soit déconnecter tous les périphériques clients NBD (qui sont supposés ne pas être utilisés), soit ne déconnecter que ceux qui sont déclarés dans le fichier de configuration.
+ .
+ Le comportement par défaut (qui est le comportement traditionnel) est de déconnecter tous les périphériques clients. Si le système de fichiers racine ou d'autres systèmes de fichiers critiques utilisent NBD, cela peut provoquer une perte de données et vous devriez alors refuser cette option.
+Description-it.UTF-8: Disconnettere tutti i device NBD in caso di «stop»?
+ Quando lo script init di nbd-client viene invocato per fermare il servizio nbd-client, ci sono due cose che possono essere fatte: può disconnettere tutti i device nbd-client (che si presume non siano in uso) oppure può disconnettere solo quei device nbd-client di cui è al corrente dal suo file di configurazione.
+ .
+ Il comportamento predefinito (e quello tradizionale) è quello di disconnettere tutti i device nbd-client. Se il device root o altri file system critici sono su NBD, ciò causerà perdita di dati e non deve essere permesso.
+Description-ja.UTF-8: 「stop」時に全 NBD デバイスを切断しますか?
+ nbd-client init スクリプトを呼び出して nbd-client サービスを停止するときの方法は2つあります: nbd-client デバイスを (使用中ではないという前提で) 全て切断するか、設定ファイルに書かれている nbd-client デバイスだけを切断するか。
+ .
+ デフォルト (従来の挙動でもあります) では nbd-client デバイスを全て切断します。root デバイスその他の重要なファイルシステムが NBD 上にある場合はデータ消失を引き起こすため受け入れてはいけません。
+Description-nl.UTF-8: Alle NBD-apparaten afsluiten bij "stop"?
+ Wanneer het nbd-client initscript uitgevoerd wordt om de nbd-client service te stoppen, zijn er twee dingen die gedaan kunnen worden: ofwel kan het script alle nbd-client apparaten stoppen (waarbij er vanuit gegaan wordt dat ze niet in gebruik zijn), ofwel kan het enkel die apparaten stoppen waarvan het weet heeft via de configuratie.
+ .
+ Het standaard (en historisch) gedrag is om alle nbd-client verbindingen te verbreken. Als het root-apparaat of een ander kritiek bestandssysteem zich op een NBD bevindt, dan zal dit verlies van gegevens tot gevolg hebben en dus moet deze optie dan niet geaccepteerd worden.
+Description-pt.UTF-8: Desligar todos os dispositivos NBD no "stop"?
+ Quando o script init do nbd-client é chamado para parar o serviço nbd-client, há duas coisas que pode fazer: ou pode desligar todos os dispositivos nbd-client, ou pode desligar apenas aqueles dispositivos nbd-client que conhece pelo seu ficheiro de configuração.
+ .
+ A predefinição (e o comportamento tradicional) é desligar todos os dispositivos nbd-client. Se o dispositivo de raiz ou qualquer outro sistema de ficheiros crítico estão em NBD isto irá causar perdas de dados e não deverá ser aceite.
+Description-ru.UTF-8: Отсоединять все устройства NBD по команде «stop»?
+ Когда сценарий начальной загрузки nbd-client вызывается для остановки службы nbd-client, то есть два варианта, что он может сделать: отключить все подсоединённые nbd-client устройства (предполагается, что они не используются), или отключить только те устройства nbd-client, которые указаны в его файле настройки.
+ .
+ По умолчанию (исторически сложилось) отключаются все устройства nbd-client. Если устройство с корневой или другой критически важной файловой системой расположено на NBD, то это приведёт к потере данных и неприемлемо.
+Description-sv.UTF-8: Koppla bort alla nbd-enheter vid "stopp"?
+ När initskriptet för nbd-cleint körs för att stanna nbd-client-tjänsten finns det två lägen. Antingen kan alla nbd-client-enhter (som verkar oanvända) kopplas bort eller så kan den koppla bort de som beskrivs i inställningsfilen.
+ .
+ Standardvägen (och traditionellt beteende) är att koppla bort alla nbd-client-enheter. Om root-enheten eller andra kritiska filsystem finns på NBD kommer detta innebära dataförlust och ska inte nyttjas.
+Description-vi.UTF-8: Ngắt kết nối mọi thiết bị NBD khi « dừng » ?
+ Khi văn lệnh sơ khởi nbd-client được gọi để dừng chạy dịch vụ nbd-client, có hai hành động có thể làm: hoặc ngắt kết nối tất cả các thiết bị nbd-client (giả sử chúng hiện thời không được dùng), hoặc ngắt kết nối chỉ những thiết bị nbd-client nó biết được do tập tin cấu hình.
+ .
+ Ứng xử mặc định (và truyền thống) là ngắt tất cả các thiết bị nbd-client. Nếu thiết bị gốc hay hệ thống chủ yếu khác nằm trên NDB, ứng xử này sẽ gây ra dữ liệu bị mất thì không nên được chấp nhận.
+
+Template: nbd-client/extra
+Type: string
+Description: Extra parameters (number: ${number})
+ If you wish to add any extra parameters to nbd-client, then please
+ enter them here.
+Description-cs.UTF-8: Speciální parametry (číslo ${number})
+ Chcete-li zadat nbd-klientu dodatečné parametry, zadejte je prosím zde.
+Description-da.UTF-8: Ekstra parametre (nummer: ${number})
+ Hvis du ønsker at tilføje ekstra parametre til nbd-client, så tilføj dem venligst her.
+Description-de.UTF-8: Zusätzliche Parameter (Nummer: ${number})
+ Falls Sie NBD-Client irgendwelche zusätzlichen Parameter hinzufügen möchten, geben Sie diese hier ein.
+Description-es.UTF-8: Parámetros adicionales (número: ${number})
+ Si quiere añadir parámetros adicionales a nbd-client, puede introducirlos aquí.
+Description-fr.UTF-8: Paramètres additionnels (numéro : ${number}) :
+ S'il est nécessaire d'utiliser des options supplémentaires avec nbd-client, il est possible de les indiquer ici.
+Description-it.UTF-8: Parametri aggiuntivi (numero: ${numero})
+ Se si desidera aggiungere dei parametri aggiuntivi per nbd-client, inserirli qui.
+Description-ja.UTF-8: 追加パラメータ (番号: ${number})
+ nbd-client にパラメータを何か追加したい場合はここで入力してください。
+Description-nl.UTF-8: Extra opties (nummer: ${number})?
+ Indien u extra opties aan nbd-client wenst mee te geven, gelieve ze dan hier op te geven.
+Description-pt.UTF-8: Parâmetros extra (número: ${number})?
+ Se deseja adicionar quaisquer parâmetros extra ao nbd-client, então por favor insira-os aqui.
+Description-ru.UTF-8: Дополнительные параметры (номер: ${number})
+ Если вы хотите указать дополнительные параметры nbd-client, то введите их здесь.
+Description-sv.UTF-8: Extra parametrar (nummer: ${number})
+ Om du vill skicka några extra flaggor till nbd-client ska dessa anges här.
+Description-vi.UTF-8: Các tham số bổ sung (số : ${number})
+ Muốn thêm tham số vào ứng dụng khách nbd-client thì nhập vào đây.

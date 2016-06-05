@@ -16,6 +16,11 @@ Solutions:
 <h3>The other DHCP server CANNOT be deactivated</h3>
 In this case you need to adjust the configuration of the other DHCP server manually and set up a TFTP server if necessary. Have a look into the documentation of your DHCP and TFTP servers for correct configuration.
 
+<!-- v16.1 begin-->
+<h4>Configuring DHCP servers dynamically</h4>
+Each time the network boot status of a client is changed (activated / deactivated), the script <i>"/m23/bin/externalDHCPControl.sh"</i> is called. You can adapt this script according to your needs in order to dynamically configure an existing DHCP server. More information can be found in the comments inside the script file.
+<!-- v16.1 end-->
+
 <!-- v13.2 begin-->
 <h4>ISC DHCP server</h4>
 If the other DHCP server is the <a href="http://www.isc.org/downloads/dhcp/">ISC DHCP server</a>, you can use it in place of the m23 DHCP server.

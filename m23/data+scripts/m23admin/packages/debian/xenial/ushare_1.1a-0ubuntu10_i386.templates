@@ -1,0 +1,27 @@
+Template: ushare/name
+Type: string
+Default: uShare
+Description: uShare's name:
+ Set UPnP friendly name. This is the name of this computer shares, 
+ seen by UPnP clients.
+Description-fr.UTF-8: Nom de uShare :
+ Défini le nom UPnP. Ceci est le nom de partage de cet ordinateur, tel qu'il sera vu par les clients UPnP.
+
+Template: ushare/iface
+Type: select
+Choices: ${ifaces}
+Default: eth0
+Description: Network interface:
+ Set network interface to use for sharing the content.
+ If your interface is not on the list, please edit the file
+ "${configfile}" manualy.
+Description-fr.UTF-8: Interface réseau :
+ Défini l'interface réseau à utiliser pour partager le contenu. Si votre interface n'apparaît pas dans la liste, merci d'éditer le fichier "${configfile}" manuellement.
+
+Template: ushare/share
+Type: string
+Default:
+Description: Shared directories:
+ Set the directories to share with uShare.
+Description-fr.UTF-8: Répertoires à partager :
+ Défini les répertoires à partager par uShare.

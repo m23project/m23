@@ -76,7 +76,9 @@
 @$I18N_pending_jobs="Anstehende Jobs";
 @$I18N_preferences="Voreinstellung";
 @$I18N_recover_client="Client wiederherstellen";
+//m23customPatchBegin type=change id=I18N_recover
 @$I18N_recover="Wiederherstellen";
+//m23customPatchEnd id=I18N_recover
 @$I18N_refresh="Aktualisieren";
 @$I18N_reset="Zurücksetzen";
 @$I18N_rootpassword="Root-Paßwort";
@@ -217,8 +219,6 @@
 @$I18N_empty="leer";
 @$I18N_not_supported_filesystems="Nicht unterstützte Dateisysteme ";
 
-
-
 @$I18N_partition_information="Partitionierungsinformation";
 @$I18N_vendor="Hersteller";
 @$I18N_name="Name";
@@ -240,7 +240,6 @@
 @$I18N_internal_connection_category="interne Verbindungsart";
 @$I18N_external_connection_category="externe Verbindungsart";
 
-
 @$I18N_added_to_package_selection=" Pakete wurden der Paketauswahl $selectionName hinzugefügt";
 @$I18N_jobs_added="Aufträge wurden zugewiesen";
 @$I18N_installation_complete="Installation abgeschlossen";
@@ -259,7 +258,6 @@
 @$I18N_delete_partitions="Partitionen löschen";
 @$I18N_format_partitions="Partitionen formatieren";
 @$I18N_select_installation_partitions="Installationsziel wählen";
-
 
 @$I18N_extPartStep1AddPart="Nächster Schritt (Partitionen anlegen)";
 @$I18N_extPartStep2FormartPart="Nächster Schritt (Partitionen formatieren)";
@@ -1342,4 +1340,14 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_disabled = 'Deaktiviert';
 @$I18N_saveAndActivate = 'Speichern und aktivieren';
 @$I18N_firewallRulesDeactivated = 'Firewall-Regeln deaktiviert';
+
+//16.1
+@$I18N_readLoginFromUCSLDAP = "Anmeldungsdaten vom UCS lesen.";
+@$I18N_addNewLoginToUCSLDAP = "Anmeldungsdaten auf UCS speichern.";
+@$I18N_authentificationViaUCS = "Anmeldung über UCS";
+@$I18N_addNewLoginToUCSLDAPError = "Fehler beim Speichern der Anmeldungsdaten auf UCS.";
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(nutzbar auf Clients mit Debian 8, Ubuntu 14.04, 16.04 und Linux Mint 17.x)';
+
+//16.2
+@$I18N_clientUsesDynamicIP = "Der Client verwendet eine dynamische IP (DHCP)";
 ?>

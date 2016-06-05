@@ -1,0 +1,1221 @@
+Template: cvsd/rootjail
+Type: string
+Default: /var/lib/cvsd
+Description: Location of chroot jail:
+ cvsd can run in a chroot jail. This is the preferred method of
+ operation. Specify the location of the chroot jail. If you make this
+ 'none' no chroot jail will be created and used.
+ A chroot file hierarchy will be created in the specified location.
+Description-cs.UTF-8: Umístění chroot vězení:
+ cvsd může běžet v tzv. chroot vězení (chroot jail). Toto je preferovaný způsob provozu. Zadejte umístění chroot vězení. Pokud zadáte 'none', žádné vězení vytvořeno a používáno nebude. Na zadaném umístění bude vytvořena chroot souborová hierarchie.
+Description-da.UTF-8: Placering af chroot-fængsel:
+ cvsd kan køre i et chroot-fængsel. Dette er den bedste måde at køre den på. Angiv placeringen af chroot-fængslet. Hvis du skriver 'none', vil der ikke blive oprettet eller benyttet noget chroot-fængsel. Der vil blive oprettet et chroot-filhieraki under den angivne placering.
+Description-de.UTF-8: Position des Chroot Jail:
+ Cvsd kann in einem chrooted Jail laufen. Das ist die Methode der Wahl. Legen Sie einen Ort für das Chroot-Gefängnis fest. Falls Sie »none« sagen, wird kein Chroot-Jail erstellt und benutzt. Eine Chroot-Dateihierarchie wird an dem festgelegten Ort erstellt.
+Description-es.UTF-8: Ubicación de la cárcel «chroot»:
+ cvsd se puede ejecutar en una cárcel «chroot». Este es el mejor método de ejecución. Especifique la ubicación de la cárcel «chroot». Si escoge «ninguna» no se creará ninguna cárcel «chroot». Se creará una jerarquía de ficheros en la ubicación especificada.
+Description-fr.UTF-8: Emplacement de l'environnement fermé d'exécution (« chroot jail ») :
+ Cvsd peut s'exécuter dans un environnement fermé. Cette méthode de fonctionnement est conseillée. Veuillez indiquer l'emplacement de l'environnement fermé d'exécution. Si vous indiquez la valeur « none », aucun environnement fermé ne sera créé ni utilisé. Une hiérarchie de fichiers adaptée aux environnement fermés sera créée à l'emplacement indiqué.
+Description-it.UTF-8: Posizione della gabbia chroot:
+ cvsd può essere eseguito in una gabbia chroot. Questo è il metodo di funzionamento preferito. Specificare la posizione della gabbia chroot. Se si inserisce «none», non verrà creata né utilizzata alcuna gabbia chroot. Una gerarchia di file chroot verrà creata nella posizione specificata.
+Description-ja.UTF-8: chroot jail の位置:
+ cvsd は chroot jail 内で実行できます。これは、運用方法に依存します。chroot jail の位置を指定してください。ここで 'none' を指定した場合、chroot jail は作成・使用されません。chroot でのファイル配置が指定された位置に作成されます。
+Description-nl.UTF-8: Plaats van de chroot gevangenis:
+ cvsd kan in een chroot gevangenis gestart worden. Dit is de geprefereerde manier van operatie. Specificeer hier de plaats van de chroot gevangenis. Door dit op 'none' te zetten wordt het gebruik van een chroot gevangenis uitgeschakeld en zal deze niet worden aangemaakt. Als hier een pad gedefinieerd is, zal daar een chroot gevangenis opgezet worden.
+Description-pt.UTF-8: Localização da cadeia chroot:
+ O cvsd pode correr numa cadeia chroot. Este é o método preferencial de operação. Especifique a localização da cadeia chroot. Se escolher 'nenhum' não será criada nem usada nenhuma cadeia chroot. A hierarquia de chroot será criada na localização especificada.
+Description-pt_BR.UTF-8: Localização da jaula Chroot:
+ O cvsd pode ser executado em uma jaula chroot. Esse é o método preferido de operação. Caso você informe 'none' nenhuma jaula chroot será criada e usada. Um hierarquia de arquivos chroot será criada na localização especificada.
+Description-ru.UTF-8: Расположение каталога для chroot:
+ cvsd может быть запущен в ограниченном окружении chroot. Это предпочтительный метод работы. Укажите каталог для chroot. Если ввести 'none', то окружение chroot не будет создано и задействовано. В указанном расположении будет создано дерево каталогов chroot.
+Description-sv.UTF-8: Plats för chroot-jail:
+ cvsd kan köras i ett chroot-jail, detta är dessutom den rekomenderade metoden. Specificera platsen för chroot-jail:et. Om du anger 'none' kommer inget chroot-jail att skapas eller användas. I övriga fall skapas en filhieraki på den angivna platsen.
+Description-vi.UTF-8: Vị trí của tù gốc khác:
+ Trình nền (dæmon) cvs(d) có thể chạy trong một tù gốc khác nào đó. Đây là phương pháp thao tác ưa thích. Hãy ghi rõ vị trí của tù đổi gốc. Nếu bạn lập «none» (không có) thì sẽ không tạo hay dùng tù đổi gốc nào; sẽ tạo một cây tập tin đổi gốc tại vị trí đã ghi rõ.
+ .
+ [Chú thích dịch: Tù gốc khác (tiếng Anh: chroot jail) là một thư mục gốc tạm, thường được tạo để cho phép người dùng truy cập thư mục ấy qua FTP hay HTTP. Dù thư mục ấy có các tập tin gốc cần thiết, người dùng không thể truy cập tập tin gốc nào ở ngoại thư mục ấy: thì «tù» gốc khác. :) ]
+
+Template: cvsd/maxconnections
+Type: string
+Default: 10
+Description: The maximum number of connections that can be handled:
+ It is possible to specify a maximum number of connections that cvsd
+ can handle simultaneously. Specifying 0 (zero) will put no limit to
+ the number of connections.
+Description-cs.UTF-8: Maximální počet spojení, která mohou být obsloužena:
+ Je možné zadat maximální počet spojení, která může cvsd obsloužit zároveň. 0 (nula) znamená žádný limit na počet spojení.
+Description-da.UTF-8: Det maksimale antal forbindelser, der kan håndteres:
+ Det er muligt at begrænse det maksimale antal forbindelser, cvsd kan håndteres samtidigt. En grænse på 0 (nul) deaktiverer begrænsningen på antallet af forbindelser.
+Description-de.UTF-8: Höchstzahl der verwalteten Verbindungen:
+ Es ist möglich, eine Höchstzahl der Verbindungen anzugeben, die cvsd gleichzeitig verwalten kann. Die Angabe 0 (Null) bedeutet keine Begrenzung für die Anzahl der Verbindungen.
+Description-es.UTF-8: El número máximo de conexiones que se pueden gestionar:
+ Es posible especificar el número máximo de conexiones que cvsd puede manejar simultáneamente. Si se especifica el valor 0 (cero) no se pondrán límites al número de conexiones.
+Description-fr.UTF-8: Nombre maximal de connexions gérées :
+ Vous pouvez indiquer un nombre maximal de connexions qui seront gérées simultanément par cvsd. Si vous indiquez une valeur nulle, le nombre de connexions ne sera pas limité.
+Description-it.UTF-8: Numero massimo di connessioni che possono essere gestite:
+ È possibile specificare un numero massimo di connessioni che cvsd può gestire contemporaneamente. Specificare 0 (zero) fara sì che non vi siano limiti al numero di connessioni.
+Description-ja.UTF-8: 取扱いできる最大コネクション数:
+ 同時に取り扱うことの出来る最大コネクション数を指定できます。0 を指定するとコネクション数には制限がかからなくなります。
+Description-nl.UTF-8: Het maximum aantal verbindingen dat tegelijkertijd kan worden afgehandeld:
+ Het is mogelijk om een maximum aantal verbindingen op te geven dat cvsd tegelijkertijd kan afhandelen. Door 0 (nul) op te geven wordt het aantal verbindingen niet beperkt.
+Description-pt.UTF-8: Número máximo de ligações que podem ser geridas:
+ É possível especificar um número máximo de ligações a serem geridas pelo cvsd simultaneamente. Especificar 0 (zero) não coloca limite no número de ligações.
+Description-pt_BR.UTF-8: O número máximo de conexões que podem ser gerenciadas:
+ É possível especificar um número máximo de conexões que o cvsd pode gerenciar simultaneamente. Especificar 0 (zero) não irá estabelecer limites para o número de conexões.
+Description-ru.UTF-8: Максимальное количество обрабатываемых подключений:
+ Есть возможность задать максимальное количество подключений, которые cvsd будет обрабатывать одновременно. Значение 0 (ноль) указывает на снятие ограничений на количество подключений.
+Description-sv.UTF-8: Maximalt antal anslutningar som kan hanteras:
+ Det är möjligt att begränsa det maximala antalet anslutningar som cvsd kan hantera samtidigt. Genom att ange 0 (noll) avaktiveras taket och oändligt många anslutningar tillåts.
+Description-vi.UTF-8: Số kết nối cần quản lý tối đa
+ Có thể ghi rõ số kết nối tối đa mà trình cvsd có thể quản ý đồng thời. Ghi rõ số không (0) sẽ không giới hạn số ấy.
+
+Template: cvsd/nice
+Type: string
+Default: 1
+Description: Nice value cvsd should run at:
+ cvsd can be run at reduced priority so it will not take up too
+ many resources, especially if a user specifies a -z option to cvs.
+ The priority can also be increased (negative value here).
+Description-cs.UTF-8: Hodnota nice, se kterou má cvsd běžet:
+ cvsd může běžet se sníženou prioritou, takže nebude spotřebovávat příliš mnoho prostředků, zvláště když uživatel zadá volbu -z u cvs. Priorita může být také zvýšena (zde záporná hodnota).
+Description-da.UTF-8: Procesprioritet ('nice'-værdi), cvsd skal køre under:
+ cvsd kan køre under reduceret prioritet, så den ikke vil lægge beslag på for mange ressourcer. Specielt hvis en bruger angiver '-z'-tilvalget til cvs. Prioriteten kan også øges (med en negativ værdi).
+Description-de.UTF-8: Der Nice-Wert mit dem CVSD laufen soll:
+ CVSD kann mit verringerter Priorität laufen, so dass es nicht zu viele Ressourcen abfordert, insbesondere falls ein User eine »-z«-Option für CVS festlegt. Die Priorität kann auch erhöht werden (mit einem negativen Wert).
+Description-es.UTF-8: Valor «nice» con el que se debe ejecutar cvsd:
+ cvsd se puede ejecutar con una prioridad reducida para que no use muchos recursos, especialmente si un usuario le introduce la opción -z a cvs. La prioridad puede también incrementarse (introduciendo aquí un valor negativo).
+Description-fr.UTF-8: Valeur de politesse (« nice ») du processus cvsd :
+ Il est possible de diminuer la priorité de cvsd afin de ne pas consommer trop de ressources, notamment quand un utilisateur se sert de l'option « -z » de cvs. La priorité peut également être augmentée (indiquez alors une valeur négative).
+Description-it.UTF-8: Valore di nice con cui deve essere eseguito cvsd:
+ cvsd può essere eseguito con una priorità ridotta così da non occupare troppe risorse, specialmente se un utente specifica per cvs l'opzione -z. La priorità può anche essere aumentata (usando qui un valore negativo).
+Description-ja.UTF-8: cvsd を動作させる際の nice 値:
+ 優先度を落として動作させることが可能で、特にユーザが cvs に -z オプションを指定した場合、大量のリソースを消費させないようにできます。優先度は上げることも可能です (負の値を入れてください)。
+Description-nl.UTF-8: De nice waarde waarmee cvsd zal werken:
+ De prioriteit die cvsd krijgt kan verlaagd worden zodat het niet te veel middelen van de server kan gebruiken, bijvoorbeeld als de gebruiker een -z optie meegeeft aan cvs. De prioriteit kan ook verhoogd worden door hier een negatieve waarde op te geven.
+Description-pt.UTF-8: Valor óptimo com que o cvsd deve correr:
+ O cvsd pode ser corrido com prioridade reduzida de forma a não ocupar demasiados recursos, especialmente se um utilizador especificar a opção -z ao cvs. A prioridade também pode ser aumentada (introduzir um valor negativo para isso).
+Description-pt_BR.UTF-8: Valor de nice sob o qual o cvsd deve ser executado:
+ O cvsd pode ser executado sob uma prioridade reduzida de maneira que o mesmo não consuma muitos recursos, especialmente caso um usuário especifique uma opção -z para o cvs. A prioridade pode também ser aumentada (valor negativo aqui).
+Description-ru.UTF-8: Приоритет работы cvsd:
+ cvsd можно запустить с пониженным приоритетом для того, чтобы он не использовал слишком много ресурсов, особенно когда пользователи указывают клиенту cvs параметр -z. Также приоритет можно наоборот увеличить (указав отрицательное значение).
+Description-sv.UTF-8: Nice-värde som cvsd ska köras med:
+ cvsd kan köras med reducerad prioritet för att inte ta upp för mycket resurser, framförallt om en användare utför operation med -z som växel. Prioriteringen kan också ökas (genom att ange ett negativt värde).
+Description-vi.UTF-8: Ưu tiên chạy cvsd:
+ Có thể chạy trình cvsd với ưu tiên đã giảm, để ngăn cản nó chiếm hữu tiềm năng hệ thống, nhất là nếu một người dùng lập tùy chọn -z cho cvs. Cũng có thể tăng ưu tiên ấy: ở đây có giá trị âm.
+ .
+ [Chú thích dịch: độ ưu tiên truy cập tiềm năng (tiếng Anh: nice value, nice).]
+
+Template: cvsd/umask
+Type: string
+Default: 027
+Description: Umask cvsd should run at:
+ Specify the umask cvsd and cvs should use when creating files.
+ .
+ The umask should be specified as an octal value and represents
+ the permissions that should be taken away when creating a file
+ (e.g. using 027 will create files with mode 640 or rw-r-----).
+Description-cs.UTF-8: Maska práv, kterou má cvsd používat:
+ Zadejte masku práv, kterou mají cvsd a cvs používat při vytváření souborů:
+ .
+ Maska práv by měla být zadána jako hodnota v osmičkové soustavě a reprezentuje práva, která mají být odebrána při vytváření souboru (např. použití masky 027 bude vytvářet soubory s právy 640 neboli rw-r-----).
+Description-da.UTF-8: Umaske, cvsd skal køre med:
+ Angiv den umaske, cvsd og cvs skal benytter ved oprettelse af filer.
+ .
+ Umasken skal angives som en oktal værdi og repræsenterer de tilladelser, der skal fjernes ved oprettelse af en fil (f.eks. vil 027 oprette filer med rettighederne 640 eller rw-r-----).
+Description-de.UTF-8: Umask die CVSD benutzen soll:
+ Setzen Sie die umask, die cvsd und cvs benutzen sollen, wenn neue Dateien angelegt werden.
+ .
+ Die umask sollte als oktaler Wert angegeben werden und die Rechte angeben, die bei den erzeugten Dateien entfernt werden sollen (zum Beispiel hat der Wert 027 bei Dateien den Mode 640 oder rw-r----- zur Folge).
+Description-es.UTF-8: Máscara «umask» con la que se debe ejecutar cvsd:
+ Especifique la máscara «umask» que cvsd y cvs deben usar al crear ficheros.
+ .
+ La máscara «umask» se debe especificar como un valor octal y representa los permisos que se deben quitar al crear un fichero (por ejemplo, usando 027 se crearán ficheros con los permisos 640 ó rw-r-----).
+Description-fr.UTF-8: Masque de création de fichiers (« umask ») utilisé par cvsd :
+ Veuillez indiquer le masque de création de fichiers que cvsd et cvs utiliseront.
+ .
+ Cette valeur doit être indiquée en mode octal et représente les permissions qui sont retirées lors de la création d'un fichier (p. ex., si vous indiquez 027, les fichiers seront créés avec les permissions 640 en octal, soit « rw-r----- »).
+Description-it.UTF-8: Umask con cui deve essere eseguito cvsd:
+ Specificare l'umask che cvsd e cvs devono usare quando creano file.
+ .
+ L'umask dovrebbe essere specificata come valore ottale e rappresenta i permessi che devono essere rimossi quando si crea un file (es., usando 027 si creano file con permessi 640 o rw-r-----).
+Description-ja.UTF-8: cvsd が動作する際の mask 値:
+ cvsd と cvs がファイルを作成する際の umask 値を指定してください。
+ .
+ umask はオクテット値で指定される必要があり、ファイルが作成される際に引かれる権限を表します (例: 027 と指定するとファイルはモード 640、つまり rw-r----- で作成されます)。
+Description-nl.UTF-8: De umask waarmee cvsd zal werken:
+ Specificeer hier de umask die cvsd en het cvs proces gebruiken om nieuwe files aan te maken.
+ .
+ De umask moet opgegeven worden als een octaal getal en geeft de permissies aan die verwijderd moeten worden bij het aanmaken van een nieuwe file (bijvoorbeeld bij een umask van 027 worden files aangemaak met permissies 640 of rw-r-----).
+Description-pt.UTF-8: Umask com que o cvsd deve correr:
+ Especifique a umask com que o cvsd e o cvs devem criar ficheiros.
+ .
+ A umask deve ser especificada como um valor em octal e representa as permissões que devem ser tiradas quando se cria um ficheiro (por exemplo usar 027 vai criar ficheiros com modo 640 ou rw-r-----).
+Description-pt_BR.UTF-8: Valor de nice sob o qual o cvsd deve ser executado:
+ Especifique a umask que o cvsd e o cvs devem usar na criação de arquivos.
+ .
+ A umask deverá ser especificada como um valor octal e representará as permissões que deverão ser subtraídas na criação de um arquivo (por exemplo, usando uma umask de 027 os arquivos serão criados com o modo 640 ou rw-r-----).
+Description-ru.UTF-8: Umask, которую использует cvsd:
+ Укажите значение umask для cvsd и cvs, которое должно использоваться при создании файлов.
+ .
+ Значение umask нужно указывать в восьмеричной системе счисления и оно должно представлять права, которые нужно убрать у создаваемых файлов (например, при значении 027 происходит создание файлов с правами 640 или rw-r-----).
+Description-sv.UTF-8: Umask som cvsd ska köra med:
+ Ange umasken som cvsd och cvs ska använda när filer skapas.
+ .
+ Umask ska anges som ett oktalt värde som representerar de rättigheter som ska tas bort när filer skapas (ex. används 027 för att skapa filer med rättigheten 640, rw-r-----).
+Description-vi.UTF-8: Bất mặt na chạy cvsd:
+ Hãy ghi rõ bất mặt nạ mà trình cvsd và cvs nên dùng khi tạo tập tin.
+ .
+ Phải ghi rõ bất mặt nạ là giá trị bát phân. Nó tiêu biểu các quyền truy cập sẽ bị loại bỏ khi tạo một tập tin nào đó (v.d. dùng giá trị 027 sẽ tạo tập tin có chế độ 640 hay rw-r-----).
+ .
+ [Chú thích dịch: bất mặt nạ: (tiếng Anh: umask) lệnh Unix giống như chmod, trừ nó loại bỏ quyền truy cập, dùng giá trị bát phân.]
+
+Template: cvsd/listen
+Type: string
+Default: * 2401
+Description: Address and port on which cvsd will listen:
+ With the first argument you can specify the address cvsd should listen on.
+ The '*' address specifies that cvsd should listen on all addresses.
+ You can specify a IPv4 address, IPv6 address, a hostname or '*'.
+ .
+ The second argument is the service name (e.g. cvspserver) or port number
+ (default 2401) cvsd will listen on.
+ .
+ The address and port should be separated by a space and you can specify multiple
+ address-port combinations by separating them with spaces.
+Description-cs.UTF-8: Adresa a port, na kterém bude cvsd naslouchat:
+ Jako první argument můžete zadat adresu, na které má cvsd naslouchat. Adresa '*' znamená, že má cvsd naslouchat na všech adresách. Můžete zadat IPv4 adresu, IPv6 adresu, hostitelské jméno nebo '*'.
+ .
+ Druhý argument je jméno služby (např. cvspserver) nebo číslo portu (výchozí je 2401), na kterém bude cvsd naslouchat.
+ .
+ Adresa a port by měly být odděleny mezerou a můžete zadat více kombinací adresa-port oddělených mezerami.
+Description-da.UTF-8: Adresse og port, hvorpå cvsd skal lytte:
+ Med det første parameter kan du angive den adresse, cvsd skal lytte på. Adressen '*' angiver at cvsd skal lytte på alle adresser. Du kan enten angive en IPv4- eller IPv6-adresse, et værtsnavn eller '*'.
+ .
+ Det andet parameter er et servicenavn (f.eks. 'cvspserver') eller portnummer (standardporten er 2401), som cvsd vil lytte på.
+ .
+ Adressen og porten skal adskilles af mellemrum, og du kan angive adskillige kombinationer af adresser og porte ved at adskille dem med mellemrum.
+Description-de.UTF-8: Adresse und Port an dem CVSD lauschen soll:
+ Mit dem ersten Argument können Sie die Adresse festlegen, an der CVSD lauschen soll. Die Adresse »*« legt das Lauschen an allen Adressen fest. Sie können eine IPv4- oder IPv6-Adresse, einen Hostnamen oder »*« angeben.
+ .
+ Das zweite Argument ist der Dienst-Name (z.B. cvspserver) oder die Portnummer (Standard 2401) an der CVSD lauschen soll.
+ .
+ Adresse und Port sollten mit Leerzeichen abgetrennt werden, es können mehrere Adress-Port-Kombinationen Leerzeichen-separiert angegeben werden.
+Description-es.UTF-8: Dirección y puerto en la que cvsd escuchará:
+ Con el primer argumento puede especificar la dirección en la que debe escuchar cvsd. La dirección «*» indica que cvsd debe escuchar en todas las direcciones. Puede especificar una dirección IPv4, IPv6, un nombre de máquina o «*».
+ .
+ El segundo argumento es el nombre del servicio (por ejemplo, cvspserver) o el número de puerto (2401 por omisión) en el que cvsd escuchará.
+ .
+ La dirección y el puerto deben estar separados por un espacio y puede especificar múltiples combinaciones dirección-puerto separándolas con espacios.
+Description-fr.UTF-8: Adresse et port d'écoute de cvsd :
+ Le premier argument indique l'adresse d'écoute de cvsd. Si vous indiquez « * », le démon sera à l'écoute sur toutes les adresses. Vous pouvez indiquer une adresse IPv4, une adresse IPv6, un nom d'hôte ou « * ».
+ .
+ Le second argument est le nom du service (p. ex. « cvspserver ») ou le numéro de port (2401 par défaut) où cvsd sera à l'écoute.
+ .
+ L'adresse et le port doivent être séparés par un espace. Vous pouvez indiquer plusieurs combinaisons d'adresses et de ports en les séparant également par des espaces.
+Description-it.UTF-8: Indirizzo e porta su cui deve rimanere in ascolto cvsd:
+ Il primo argomento permette di specificare l'indirizzo su cui cvsd deve restare in ascolto. Un indirizzo «*» indica che cvsd deve essere in ascolto su tutti gli indirizzi. Si può specificare un indirizzo IPv4, un indirizzo IPv6, un nome host o «*».
+ .
+ Il secondo argomento è il nome del servizio (es. cvspserver) o il numero di porta (predefinito 2401) sui cui cvsd resterà in ascolto.
+ .
+ L'indirizzo e la porta dovrebbero essere separati da uno spazio ed è possibile specificare più combinazioni indirizzo-porta separandole con spazi.
+Description-ja.UTF-8: cvsd が使用するIP アドレスとポート番号:
+ 最初の項目では cvsd が使用するアドレスを指定できます。'*' と指定すると cvsd は全てのアドレスで listen します。アドレスは IPv4, IPv6, ホスト名, '*' を使って指定可能です。
+ .
+ 次の項目は cvsd が listen するサービス名 (例: cvspserver) または ポート番号 (デフォルト値は 2401) です。
+ .
+ IP アドレスとポート番号は空白で区切られます。複数の IP アドレスとポート番号の組み合わせを空白で区切ることで指定可能です。
+Description-nl.UTF-8: Het adres en de poort waarop cvsd verbindingen accepteert:
+ Met het eerste argument kan worden opgegeven op welk adres cvsd naar inkomende verbindingen moet luisteren. Het '*' adres kan gebruikt worden om aan te geven dat cvsd op alle adressen moet luisteren. Je kunt een IPv4 adres, een IPv6 adres, de naam van het systeem of '*' opgeven.
+ .
+ Het tweede argument is de naam van de service (bijvoorbeeld cvspserver) of een poort nummer (standaard 2401) waar cvsd op zal luisteren.
+ .
+ Het adres en de poort moeten door een spatie gescheiden worden en er kunnen meerdere adres/poort combinaties gespecificeerd worden door deze met spaties te scheiden.
+Description-pt.UTF-8: Endereço e porta na qual o cvsd vai ouvir:
+ Com o primeiro argumento pode especificar o endereço onde o cvsd deve ouvir. O endereço '*' especifica que o cvsd deve ouvir em todos os endereços. Pode especificar um endereço IPv4, IPv6, um hostname ou '*'.
+ .
+ O segundo argumento é o nome de serviço (p.e. cvspserver) ou número da porta (2401 por omissão) em que o cvsd vai ouvir.
+ .
+ O endereço e a porta devem ser separados por um espaço e poderá especificar várias combinações endereço-porta separando-as com espaços.
+Description-pt_BR.UTF-8: Endereço e porta na qual o cvsd irá escutar:
+ Com o primeiro argumento você pode especificar o endereço que o cvsd irá escutar. O endereço '*' especifica que o cvsd deverá escutar em todos os endereços. Você pode especificar um endereço IPv4, um endereço IPv6, o nome de um host ou '*'.
+ .
+ O segundo argumento é o nome do serviço (por exemplo, cvspserver) ou número de porta (o padrão é 2401) na qual o cvsd irá escutar.
+ .
+ O endereço e porta devem ser separados por um espaço e você pode especificar múltiplas combinações endereço-porta separando-os por espaços.
+Description-ru.UTF-8: Адрес и порт, прослушиваемый cvsd:
+ В первом параметре вы можете указать адрес, который должен прослушивать cvsd. Адрес '*' указывает, что cvsd должен ожидать запросов на любой адрес. Вы можете ввести адрес в формате IPv4, IPv6, имени хоста или '*'.
+ .
+ Вторым параметром задаётся имя службы (например, cvspserver) или номер порта (по умолчанию 2401), который прослушивает cvsd.
+ .
+ Адрес и порт должны разделяться пробелом; вы можете указать несколько комбинаций адрес-порт, также разделяя их пробелами.
+Description-sv.UTF-8: Adress och port som cvsd ska lyssna på:
+ Den första delen av alternativet anger adressen som cvsd ska lyssna på. Används '*' lyssnar cvsd på alla adresser. Här kan IPv4, IPv6, värdnamn eller '*' anges.
+ .
+ Den andra delen av alternativet anger tjänstenamnet (ex. cvspserver) eller portnummer (2401 är standardvärdet) som cvsd ska lyssna på.
+ .
+ Separera adress och port med mellanslag. Flera kombinationer av adresser och portnummer kan anges, separera kombinationerna med mellanslag.
+Description-vi.UTF-8: Địa chỉ và cổng nơi trình cvsd sẽ lắng nghe:
+ Đối số thứ nhất có thể ghi rõ địa chỉ nơi trình cvsd nên lắng nghe trên nó. Địa chỉ «*» thì ghi rõ trình cvsd nên lắng nghe trên mọi địa chỉ. Bạn có thể ghi rõ một địa chỉ IPv4, mệt địa chỉ IPv6, một tên máy hay «*» .
+ .
+ Đối số thứ hai là tên dịch vụ (v.d. máy_chủ_cvsp) hoặc sổ hiệu cổng (mặc định 2401) nơi trình cvsd sẽ lắng nghe trên nó.
+ .
+ Háy định giới địa chỉ và cổng bằng một dấu cách, và bạn có thể ghi rõ nhiều cặp địa chỉ-cổng bằng cách định giới chúng bằng dấu cách.
+
+Template: cvsd/repositories
+Type: string
+Default: /demo:/myrepos
+Description: Repositories to serve:
+ The whole idea of cvsd is to serve repositories. Specify a colon ':'
+ separated list of repositories to serve. The location of these repositories
+ is relative to the specified chroot jail (${rootjail}) and should start with a '/'.
+ .
+ The repositories here should be initialized by hand with something like
+ 'cvs -d ${rootjail}/myrepos init' after which passwords can be set with
+ 'cvsd-passwd ${rootjail}/myrepos anonymous'. See the file
+ /usr/share/doc/cvsd/README.gz for details on creating repositories.
+Description-cs.UTF-8: Repozitáře k obsluhování:
+ Celá myšlenka cvsd je obsluhovat repozitáře. Zadejte seznam repozitářů oddělených dvojtečkou ':', které se mají obsluhovat. Umístění těchto repozitářů je relativní vzhledem k zadanému chroot vězení (${rootjail}) a mělo by začínat s '/'.
+ .
+ Zde zadané repozitáře by měly být ručně inicializovány pomocí něčeho jako 'cvs -d ${rootjail}/myrepos init', po čemž mohou být nastavena hesla pomocí 'cvsd-passwd ${rootjail}/myrepos anonymous'. Na detaily k vytváření repozitářů se podívejte do souboru /usr/share/doc/cvsd/README.gz.
+Description-da.UTF-8: Cvs-samlinger, der skal tilbydes:
+ Hele idéen med cvsd er at tilbyde cvs-samlinger ('repositories'). Angiv en liste over de cvs-samlinger, der skal tilbydes adskilt af koloner (':'). Cvs-samlingernes placering skal angives relativt til det angivne chroot-fængsel og starte med '/'.
+ .
+ Disse cvs-samlinger skal initialiseres manuelt med f.eks. 'cvs -d ${rootjail}/minsamling init', hvorefter adgangskoderne kan angives med 'cvsd-passwd ${rootjail}/minsamling anonymous'. Se filen /usr/share/doc/cvsd/README.gz for detaljer om oprettelse af cvs-samlinger.
+Description-de.UTF-8: Zu betreuende Repositorys:
+ Die gesamte Idee von CVSD ist es, Repositorys zu betreuen. Legen Sie eine Doppelpunkt-separierte Liste von zu betreuenden Repositorys fest. Der Ort dieser Repositorys liegt relativ zum angegebenen Chroot-Jail (${rootjail}) und sollte mit »/« beginnen.
+ .
+ Die Repositorys hier sollten von Hand durch etwas wie »cvs -d ${rootjail}/myrepos init« initialisiert werden, wonach dann mit »cvsd-passwd ${rootjail}/myrepos anonymous« die Passworte gesetzt werden können. Siehe /usr/share/doc/cvsd/README.gz bezüglich Details zur Erstellung von Repositorys.
+Description-es.UTF-8: Repositorios a servir:
+ La idea de cvsd es la de servir repositorios. Especifique una lista de los repositorios que quiere servir separados por dos puntos «:». La ubicación de estos repositorios es relativa a la cárcel chroot especificada (${rootjail}) y debe empezar con una «/».
+ .
+ Los repositorios aquí indicados deben inicializarse más tarde manualmente con algo como «cvs -d ${rootjail}/myrepos init», sus contraseñas pueden establecerse con «cvsd-passwd ${rootjail}/myrepos anonymous». Si quiere detalles sobre como crear repositorios mire el fichero /usr/share/doc/cvsd/README.gz.
+Description-fr.UTF-8: Dépôts CVS servis :
+ L'objectif de cvsd est de mettre à disposition des dépôts CVS. Veuillez indiquer ici les dépôts qui seront accessibles (séparés par un caractère deux-points « : »). L'emplacement de ces dépôts doit être relatif à celui de l'environnement fermé d'exécution (${rootjail}) et doit commencer par le caractère « / ».
+ .
+ Vous devez vous-même initialiser les dépôts que vous indiquez ici, par exemple avec la commande « cvs -d ${rootjail}/mondépôt init ». Après cela, des mots de passe doivent être établis avec la commande « cvs-passwd ${rootjail}/mondépôt anonymous ». Veuillez consulter le fichier /usr/share/doc/cvsd/README.gz pour plus d'informations sur la création de dépôts.
+Description-it.UTF-8: Repository da servire:
+ L'idea di base di cvsd è di servire repository. Specificare un elenco di repository da servire separati da due punti «:». La posizione di questi repository è relativa rispetto alla gabbia chroot specificata (${rootjail}) e dovrebbe iniziare con un carattere «/».
+ .
+ I repository indicati qui dovrebbero essere inizializzati a mano con un comando simile a «cvs -d ${rootjail}/mieirepo init» dopo il quale si possono impostare le password con «cvsd-passwd ${rootjail}/mieirepo anonymous». Vedere il file /usr/share/doc/cvsd/README.gz per i dettagli sulla creazione di repository.
+Description-ja.UTF-8: 提供されるリポジトリ:
+ cvsd が意図する所はリポジトリの提供です。提供するリポジトリのリストをコロン ':' で区切って指定してください。これらのリポジトリの位置は chroot jail の指定 (${rootjail}) に関連し、'/' で始める必要があります
+ .
+ ここでのリポジトリは、'cvsd-passwd ${rootjail}/myrepos anonymous' としてパスワードを設定した後に 'cvs -d ${rootjail}/myrepos init' のように手動で初期化される必要があります。リポジトリ作成についての詳細は /usr/share/doc/cvsd/README.gz ファイルを参照してください。
+Description-nl.UTF-8: De repositories die bediend worden:
+ Het hele idee van cvsd is om cvs repositories te bedienen. Geef een lijst van repository namen op gescheiden door dubbele punten (:). De namen van de repositories moeten relatief zijn ten opzichte van de chroot gevangenis (${rootjail}) en moeten met een '/' beginnen.
+ .
+ De opgegeven repositories moeten met de hand geïnitialiseerd worden met zoiets als 'cvs -d ${rootjail}/myrepos init', waarna een wachtwoord gezet kan worden met 'cvsd-passwd ${rootjail}/myrepos anonymous'. Lees de file /usr/share/doc/cvsd/README.gz voor meer gevens over het aanmaken van repositories.
+Description-pt.UTF-8: Repositórios a servir:
+ A ideia do cvsd é servir repositórios. Especifique uma lista, separada por dois pontos ':', com os repositórios a servir. A localização dos repositórios é relativa à cadeia chroot especificada (${rootjail}) e deve começar com uma '/'.
+ .
+ Estes repositórios devem ser inicializados à mão com algo do género 'cvs -d ${rootjail}/myrepos init' depois podem especificar-se palavras-chave com 'cvsd-passwd ${rootjail}/myrepos anonymous'. Veja o ficheiro /usr/share/doc/cvsd/README.gz para detalhes sobre como criar repositórios.
+Description-pt_BR.UTF-8: Repositórios a serem servidos:
+ A idéia do cvsd é servir repositórios. Especifique uma lista separada por dois pontos ':' de repositórios a serem servidos. A localização desses repositórios é relativa a raíz da jaula chroot especificada (${rootjail}) e deve iniciar com uma '/'.
+ .
+ Os repositórios aqui devem ser inicializados manualmente com um comando como 'cvs -d ${rootjail}/myrepos init' e logo após senhas poderão ser definidas com um comando como 'cvsd-passwd ${rootjail}/myrepos anomymous'. Consulte o arquivo /usr/share/doc/cvsd/README.gz para maiores detalhes sobre a criação de repositórios.
+Description-ru.UTF-8: Обслуживаемые репозитории:
+ Задачей cvsd является обслуживание репозиториев. Введите обслуживаемые репозитории через двоеточие ':'. Расположение репозиториев указывается относительно заданного каталога chroot (${rootjail}) и должно начинаться с '/'.
+ .
+ Репозитории должны быть инициализированы вручную, например, командой 'cvs -d ${rootjail}/myrepos init'; также к ним можно установить пароль с помощью 'cvsd-passwd ${rootjail}/myrepos anonymous'. Подробней о создании репозиториев см. в файле /usr/share/doc/cvsd/README.gz.
+Description-sv.UTF-8: Förråd som ska tillhandahållas:
+ Grundfunktionen i cvsd är att tillhandahålla förråd. Ange en kolonseparerad lista med förråd som ska tillhandahållas. Platsen för dessa förråd är relativ till ditt chroot-jail (${rootjail}) och ska börja med '/'.
+ .
+ Förråden startas manuellt genom exempelvis 'cvs -d ${rootjail]/myrepos init' för att lösenord sedan ska sättas med 'cvsd-passwd ${rootjail}/myrepos anonymous'. Läs mer i filen /usr/share/doc/cvsd/README.gz för närmare instruktioner om hur förråden skapas.
+Description-vi.UTF-8: Cần cung cấp cho những kho nào:
+ Mục đích hoàn thành của trình cvsd là cung cấp dịch vụ cho kho. Hãy ghi rõ một danh sách định giới bằng dấu hai chấm «:» các kho cần dịch vụ được cung cấp. Vị trí của mỗi kho tương đối so với tù gốc khác đã ghi rõ (${rootjail}) và nên bắt đầu với một sổ chéo «/».
+ .
+ Hãy tự khởi động mỗi kho ở đây dùng một lệnh như:
+ cvs -d ${rootjail}/tên_kho init
+ Sau đó thì có thể lập mật khẩu cho mỗi kho, dùng lệnh:
+ cvsd-passwd ${rootjail}/tên_kho anonymous
+ Hãy xem tập tin /usr/share/doc/cvsd/README.gz để tìm chi tiết về tạo kho.
+
+Template: cvsd/limits
+Type: multiselect
+Choices: coredumpsize, cputime, datasize, filesize, memorylocked, openfiles, maxproc, memoryuse, stacksize, virtmem
+Choices-cs.UTF-8: velikost core souboru, procesorový čas, velikost dat, velikost souboru, uzamčená paměť, otevřené soubory, maximum procesů, využití paměti, velikost zásobníku, virtuální paměť
+Choices-da.UTF-8: coredump-størrelse, cpu-tid, datastørrelse, filstørrelse, låst hukommelse, åbne filer, max processer, hukomelsesforbrug, stakstørrelse, virtuel huk.
+Choices-de.UTF-8: Core-Dump Größe, CPU-Zeit, Größe des Datensegmentes, Dateigröße, Größe des gesperrten Speichers, Anzahl offener Dateien, Anzahl von Prozessen, Größe des Speichers, Stapel-Größe, Größe des virtuellen Speichers
+Choices-es.UTF-8: tamaño del volcado de memoria, tiempo de procesador, tamaño de los datos, tamaño de fichero, memoria bloqueda, número máximo de ficheros abiertos, número máximo de procesos, uso de memoria, tamaño de la pila, memoria virtual
+Choices-fr.UTF-8: Taille des vidages mémoire, Temps processeur, Taille du segment de données, Taille de fichier, Mémoire verrouillée, Nombre de fichiers ouverts, Nombre maximal de processus, Mémoire résidente utilisée, Taille de la pile, Mémoire virtuelle
+Choices-it.UTF-8: dimensione coredump, tempo CPU, dimensione dati, dimensione file, memoria bloccata, file aperti, max processi, uso memoria, dimensione stack, memoria virtuale
+Choices-ja.UTF-8: コアダンプのサイズ, cputime, データサイズ, ファイルサイズ, 予約メモリ, オープンするファイル数, 最大プロセス数, 利用メモリ, スタックサイズ:, 仮想メモリ
+Choices-nl.UTF-8: coredump afmeting, processortijd, data-afmeting, bestandsafmeting, gelocked geheugen, open files, aantal processen, geheugengebruik, stapelafmeting, virtueel geheugen
+Choices-pt.UTF-8: tamanho_do_coredump, tempo_de_cpu, tamanho_dos_dados, tamanho_de_ficheiro, memoria_bloqueada, ficheiros_abertos, maximo_processos, uso_de_memoria, tamanho_de_pilha, memoria_virtual
+Choices-pt_BR.UTF-8: Tamanho de coredumps, Tempo de CPU, Tamanho de dados, Tamanho de arquivos, Memória bloqueada, Número de arquivos abertos, Número de processos, Uso de memória, Tamanho de pilha, Memória virtual
+Choices-ru.UTF-8: coredumpsize, cputime, datasize, filesize, memorylocked, openfiles, maxproc, memoryuse, stacksize, virtmem
+Choices-sv.UTF-8: Storlek för kärndumpning, CPU-tid, Datastorlek, Filstorlek, Minneslås, Öppna filer, Maximalt antal processer, Minnesanvändning, Stackstorlek, Virtuellt minne
+Choices-vi.UTF-8: cỡ_đổ_lõi, thời_cpu, cỡ_dữ_liệu, cỡ_tập_tin, nhớ_bị_khóa, tập_tin_mở, số_tt_tối_đa, chiếm_nhớ, cỡ_đống, nhớ_ảo
+Description: Resources of pserver processes to limit:
+ The pserver wrapper can be configured to limit the resource usage that
+ a pserver process can have. These resource limits will be set on each
+ pserver process and not on the wrapper.
+ .
+ Choose from the list the resources that you want to limit.
+ You will be asked to specify limits about every resource you selected here.
+ .
+ Note that not all resources may be available on all systems and that
+ resources may be system and kernel specific so use these with caution.
+ The results of exceeding the set limits may also be system specific
+ but will most likely stop the cvs process and close the connection
+ (may be problematic with write access to cvs repository).
+Description-cs.UTF-8: Vyberte zdroje procesů pserveru, které se mají omezit:
+ Spouštěcí program pserveru může být nastaven na omezení využití zdrojů, které může mít proces pserveru. Tyto limity zdrojů budou aplikovány na každý proces pserveru a ne na spouštěcí program.
+ .
+ Vyberte ze seznamu zdroje, které chcete omezit. Budete tázáni k zadání limitů pro každý zdroj, který zde vyberete.
+ .
+ Uvědomte si, že ne všechny zdroje mohou být dostupné na všech systémech a že zdroje mohou být systémově nebo jaderně specifické, takže používejte tato omezení opatrně. Následky překročení nastavených limitů také mohou být systémově specifické, ale nejpravděpodobněji se ukončí proces cvs a zavřou se spojení (může být problematické s přístupem s právy zápisu do cvs repozitáře).
+Description-da.UTF-8: Angiv de af pserver-processens ressourcer, der skal begrænses:
+ pserver-indpakningen kan sættes op til at begrænse det ressourceforbrug, en pserver-proces tillades at optage. Disse ressourcebegrænsninger angives for hver enkelt pserver-proces.
+ .
+ Vælg på listen herunder, hvilke ressourcer du vil begrænse. Du vil blive bedt om at angive grænser for alle de ressourcer, du angiver her.
+ .
+ Bemærk at ikke alle ressourcer findes på alle systemer, og at ressourcer kan være system- og kernespecifikke, så brug dem med varsomhed. Det kan også variere fra system til system, hvad der sker hvis en ressource overskrides, men det vil sandsynligvis medføre at cvs-processen stoppes og lukker forbindelsen (hvilket kan være problematisk ved skriveadgang til en cvs-samling).
+Description-de.UTF-8: Wählen Sie die zu limitierenden Ressourcen für pserver-Prozesse aus:
+ Der pserver-Wrapper kann mit Ressourcen-Limitierung für die pserver-Prozesse konfiguriert werden. Diese Ressourcen-Limitierungen werden auf jeden pserver-Prozess angewendet und nicht auf den Wrapper.
+ .
+ Wählen Sie die zu limitierenden Ressourcen aus der Liste aus. Sie werden nach den Limits für jede von Ihnen ausgewählte Ressource gefragt.
+ .
+ Beachten Sie, dass nicht alle Ressourcen auf allen Systemen vorhanden sind und dass Ressourcen System- und Kernel-spezifisch sein können, weshalb Sie mit Vorsicht vorgehen sollten. Die Folgen von Limit-Überschreitungen können ebenfalls System-spezifisch variieren, werden aber höchstwahrscheinlich den CVS-Prozess stoppen und die Verbindung schließen (könnte problematisch bezüglich Schreibzugriffen auf das CVS-Repository sein).
+Description-es.UTF-8: Seleccione los recursos de los procesos de pserver que desea limitar:
+ El envoltorio pserver puede configurarse para limitar el uso de recursos que un proceso pserver puede tener. Estos límites se establecerán en cada proceso pserver y no en el envoltorio.
+ .
+ Escoja de la lista de recursos que quiera limitar. Se le pedirá que especifique los límites para cada recurso que seleccione aquí.
+ .
+ Tenga en cuenta que no todos los recursos pueden estar disponibles en todos los sistemas y que los recursos pueden ser específicos del sistema y del núcleo, así que use esto con precaución. Los resultados de exceder los límites establecidos pueden ser también específicos del sistema pero probablemente se parará el proceso cvs y se cerrará la conexión (puede ser problemático si el repositorio cvs tiene accesos de escritura).
+Description-fr.UTF-8: Ressources des processus pserver à limiter :
+ L'enveloppe (« wrapper ») de pserver peut limiter l'utilisation des ressources utilisées par un processus pserver. Ces limites de ressources seront mises en place sur chaque processus pserver, pas sur l'enveloppe elle-même.
+ .
+ Veuillez choisir les ressources à limiter à partir de la liste. Vous aurez à indiquer des limites pour chaque ressource choisie ici.
+ .
+ Veuillez noter que toutes ces ressources ne sont pas forcément disponibles sur tous les systèmes, certaines pouvant dépendre du noyau ou du système. Utilisez donc cela avec précaution. Les conséquences d'un dépassement des limites de ressources peuvent également dépendre du système : en général, le processus cvs sera interrompu et la connexion fermée (ce qui peut poser des problèmes s'il s'agit d'un accès en écriture vers le dépôt CVS).
+Description-it.UTF-8: Risorse dei processi pserver da limitare:
+ Il wrapper pserver può essere configurato per limitare l'uso di risorse da parte di un processo pserver. Questi limiti di risorsa saranno impostati per ciascun processo pserver e non per il wrapper.
+ .
+ Scegliere dall'elenco le risorse che si desidera vengano limitate. Verrà chiesto di specificare limiti per ciascuna delle risorse selezionate qui.
+ .
+ Notare che è possibile che non tutte le risorse siano disponibili su tutti i sistemi e che risorse siano specifiche del sistema e del kernel, perciò usarle con cautela. Il risultato di un superamento dei limiti impostati può anch'esso essere specifico per il sistema, ma molto probabilmente verrà fermato il processo cvs e verrà chiusa la connessione (può essere un problema in caso di accesso in scrittura ad un repository cvs).
+Description-ja.UTF-8: pserver プロセスが制限を受けるリソースを選択してください:
+ pserver プロセスが利用するリソースの量を制限するように pserver ラッパーを設定できます。これらのリソースに対する制限は pserver の個々のプロセスに対してであって、ラッパーに対してではありません。
+ .
+ 制限したいリソースをリストから選んでください。ここで選択したリソース全てについてどのように制限をするのかを質問されます。
+ .
+ 全てのリソースがあらゆるシステムで利用可能ではないこと、リソースはシステムとカーネルに左右されるものだということを理解し、注意して設定してください。設定した制限を超過した結果もシステムに左右されますが、ほとんどの場合は cvs のプロセスを止めて接続が切断されます (cvs リポジトリへの書き込み動作が問題になるかもしれません)。
+Description-nl.UTF-8: Selecteer de middelen die beperkt moeten worden:
+ De pserver omhulsel kan geconfigureerd worden de hoeveelheid gebruikte middelen die het pserver proces gebruikt te beperken. Deze beperkingen worden op alle pserver processen gezet en niet op het omhulsel.
+ .
+ Kies uit de lijst met systeemmiddelen degenen die beperkt moeten worden. Van alle middelen zal gevraagd worden om een limiet op te geven.
+ .
+ Let op, niet alle beperkingen hoeven op alle systemen beschikbaar te zijn aangezien ze afhankelijk zijn van de kernel en het systeem.Het resultaat van het overtreden van de limieten kan ook systeem specifiek zijn, maar zal waarschijnlijk het cvs proces stoppen en de verbinding verbreken (dit kan problemen opleveren als er naar de repository geschreven wordt).
+Description-pt.UTF-8: Escolha os recursos a limitar:
+ O embrulho do pserver pode ser configurado para limitar o uso de recursos que um processo pserver pode ter. Estes recursos serão impostos a cada processo do pserver e não no embrulho.
+ .
+ Escolha da lista de recursos quais quer limitar. Ser-lhe-ão perguntados limites específicos acerca de cada recurso que escolher.
+ .
+ Note que nem todos recursos podem estar disponíveis em todos os sistemas e que os recursos podem ser específicos ao sistema e ao kernel, portanto use com precaução. Os resultados de exceder os limites especificados também podem ser específicos ao sistema mas irão com grande probabilidade parar o processo de cvs e fechar a ligação (o que pode colocar problemas com acesso de escrita ao repositório cvs).
+Description-pt_BR.UTF-8: Selecione os recursos a serem limitados para processos pserver:
+ O wrapper pserver pode ser configurado de modo a limitar o uso de recursos de um processo pserver. Esses limites de recursos serão definidos em cada processo pserver e não no wrapper.
+ .
+ Escolha na listagem os recursos que você deseja limitar. Você será questionado sobre limites relativos a cada recurso que você selecionar aqui.
+ .
+ Note que nem todos os recursos podem estar disponíveis em todos os sistemas e que recursos podem ser específicos para um sistema ou kernel, portanto, use-os com cuidado. Os resultados de exceder os limites definidos podem também ser específicos de cada sistema mas provavelmente exceder os recursos limitados provocará a parada do processo cvs e o fechamento das conexões (pode ser problemático com acessos de escrita ao repositório cvs).
+Description-ru.UTF-8: Ограничиваемые ресурсы у процессов pserver:
+ У надстройки pserver можно ограничить потребляемые ей ресурсы. Эти ресурсы можно указать для каждого процесса pserver и не только для надстройки.
+ .
+ Выберите из списка ресурсы, которые вы хотите ограничить. Вас попросят указать пределы по каждому выбранному ресурсу.
+ .
+ Заметим, что не все ресурсы могут быть доступны; это может зависеть от самой системы и ядра, поэтому используйте с осторожностью. Результаты превышения ограничений также зависят от системы, но, вероятнее всего, будет остановлен процесс cvs и закрыто соединение (что может создать проблему, если осуществлялась запись в репозиторий cvs).
+Description-sv.UTF-8: Resurser som ska begränsas för pserver:
+ Pserver kan ställas in att använda en begränsad mängd resurser. Dessa resurstak ställs in för varje pserverprocess självt.
+ .
+ Markera de resurser i listan som du vill begränsa. Du kommer att ombes att ange begränsningar för varje resurs som väljs här.
+ .
+ Kom ihåg att inte alla resurser finns tillgängliga i alla system och dessutom kan vara beroende av kärna eller andra systeminställningar. Använd dessa inställningar med stor försiktighet. Vad som inträffar om en begränsning uppnås beror på systemet men förmodligen kommer CVS-processen att stoppas och stänga anslutningen (vilket kan påverka skrivning till förråden).
+Description-vi.UTF-8: Hãy chọn giới hạn tiềm năng nào của tiến trình pserver:
+ Có thể cấu hình lớp bọc pserver để giới hạn cách chiếm hữu tiềm năng hệ thống của một tiến trình pserver nào đó. Sẽ lập giới hạn tiềm năng với mỗi tiến trình pserver, không phải với lớp bọc.
+ .
+ [Chú thích dịch: lớp bọc, bao bọc, bộ bao bọc (tiếng Anh: wrapper) là giao diện giữa trình gọi và mã đã bao, để cho phép truy cập hay bảo vệ mã.]
+ .
+ Hãy chọn trong danh sách này mỗi tiềm năng mà bạn muốn giới hạn. Sẽ yêu cầu bạn ghi rõ giới hạn cho mỗi tiềm năng bạn chọn ở đây.
+ .
+ Ghi chú rằng không phải tất cả tiềm năng có sẵn sàng trong mọi hệ thống, cũng rằng một số tiềm năng có lẽ đặc trưng cho hệ thống và hạt nhân thì hãy sử dụng cẩn thận. Kết quả vượt quá những giới hạn đã lập có lẽ cũng đặc trưng cho hệ thống, nhưng mà rất có thể ngừng tiến trình cvs và đóng kết nối (có lẽ còn phải bàn khi có quyền ghi vào kho cvs).
+
+Template: cvsd/limit_coredumpsize
+Type: string
+Default: 0
+Description: Maximum file size of a core dump:
+ Set this to 0 (zero) (should be the system default) to prevent core dumps.
+ Otherwise this limits the size of core dumps to the specified value.
+ .
+ This value may be specified with a suffix of 'b' (bytes), 'k'
+ (1024 bytes) or 'm' (1024*1024 bytes), where 'k' is the default.
+Description-cs.UTF-8: Maximální velikost souboru výpisu paměti (core dump):
+ Nastavte na 0 (nula) (mělo by být v systému výchozí) pro zamezení výpisů paměti. Jinak je to omezení velikosti výpisů paměti na zadanou hodnotu.
+ .
+ Tato hodnota může být zadána s příponou 'b' (bytů), 'k' (1024 bytů) nebo 'm' (1024*1024 bytů), kde 'k' je výchozí.
+Description-da.UTF-8: Maksimal filstørrelse på core-fil:
+ Set denne til 0 (nul) (hvilket oftest er systemets standardværdi) for at undgå core-filer (en slags fejlsporingsfiler). Ellers begrænser den angivne værdi størrelsen af core-filer til den angivne værdi.
+ .
+ Denne værdi kan angives med et tal efterfulgt af enhedsangivelsen 'b' for byte, 'k' for kilobyte eller 'm' for megabyte. Hvis enheden ikke angives, antages kilobyte.
+Description-de.UTF-8: Maximale Größe einer Core-Dump-Datei:
+ Setzen Sie das auf 0 (Null) (sollte die System-Voreinstellung sein), um Core-Dumps zu verhindern. Ansonsten begrenzt dies die Größe von Core-Dumps auf den festgelegten Wert.
+ .
+ Dieser Wert kann mit einem Anhängsel von »b« (bytes), »k« (1024 bytes) oder »m« (1024*1024 bytes) festgelegt werden, wobei »k« voreingestellt ist.
+Description-es.UTF-8: Tamaño máximo del fichero de volcado de memoria:
+ Ajuste esto a 0 (cero) (debe ser el valor por omisión del sistema) para prevenir volcados de memoria. De otro modo esto limitaría el tamaño de los volcados de memoria al valor especificado.
+ .
+ Este valor puede ser especificado con un sufijo de «b» (bytes), «k» (1024 bytes), o «m» (1024*1024 bytes), donde «k» es el sufijo por omisión.
+Description-fr.UTF-8: Taille maximale d'un vidage mémoire (« core dump ») :
+ Indiquez une valeur nulle ici (ce qui est usuellement la valeur par défaut du système) pour empêcher les vidages mémoire. Une autre valeur sera la limite maximale de taille d'un vidage mémoire.
+ .
+ Elle peut être indiquée avec un suffixe « b » (octets), « k » (1024 octets) ou « m » (1024*1024 octets). Le suffixe par défaut est « k ».
+Description-it.UTF-8: Dimensione massima del file di un core dump:
+ Impostare a 0 (zero) (che dovrebbe essere il valore predefinito di sistema) per evitare i core dump. Altrimenti limita la dimensione dei core dump al valore specificato.
+ .
+ Questo valore può essere specificato con un suffisso «b» (byte), «k» (1024 byte) o «m» (1024*1024 byte), con «k» come valore predefinito.
+Description-ja.UTF-8: core dump 時の最大ファイルサイズ:
+ この値を 0 (システム標準) に設定すると core dump を吐き出しません。それ以外の場合はここで core dump を指定した値で制限します。
+ .
+ この値は 'b' (bytes)、'k' (1024 bytes)、 'm' (1024*1024 bytes) のいずれかを語尾に付けて表され、'k' がデフォルトです。
+Description-nl.UTF-8: Maximum afmeting core file:
+ Zet dit op 0 (nul) (zou de standaard systeemwaarde moeten zijn) om te voorkomen dat coredumps worden opgeslagen. Andere waarden beperken de omvang van de core file.
+ .
+ Deze waarde kan afgesloten worden met een 'b' (bytes), 'k' (1024 bytes) of 'm' (1024*1024 bytes), waarbij 'k' wordt aangenomen als niets gespecificeerd is.
+Description-pt.UTF-8: Tamanho máximo de um core dump:
+ Especifique 0 (zero) (deve ser o valor por omissão do sistema) para prevenir core dumps. De outra forma isto limita o tamanho dos core dumps ao valor especificado.
+ .
+ Este valor pode ser especificado com um sufixo 'b' (bytes), 'k' (1024 bytes) ou 'm' (1024*1024 bytes), dos quais 'k' é o valor por omissão.
+Description-pt_BR.UTF-8: Tamanho máximo de arquivo de um coredump:
+ Define esse valor para 0 (zero) (deve ser o padrão so sistema) para evitar core dumps. Caso um valor diferente de zero seja informado, esse valor limitará o tamanho de core dumps para o valor especificado.
+ .
+ Esse valor pode ser especificado com um sufixo de 'b' (bytes), 'k' (1024 bytes) ou 'm' (1024*1024 bytes), onde 'k' é o padrão.
+Description-ru.UTF-8: Максимальный размер файла дампа процесса:
+ Введите 0 (ноль) (должно быть в системе по умолчанию), чтобы не сохранять дампы процессов. Иначе укажите предельный размер дампа.
+ .
+ В значении можно указать суффикс 'b' (в байтах), 'k' (в 1024 байт) или 'm' (в 1024*1024 байтах), по умолчанию используется 'k'.
+Description-sv.UTF-8: Maximal storlek för kärndumpning:
+ Ange 0 (noll) (vilket borde vara systemstandard) här för att undvika att kärndumpning. I övriga fall begränsar detta storleken på kärndumpningar till det angivna värdet.
+ .
+ Värdet kan ha suffixen 'b' (för byte), 'k (för 1024 bytes) eller 'm' (för 1024*1024 bytes). 'k' är standardvärdet.
+Description-vi.UTF-8: Kích thước tập tin tối đa của kết quả đổ lõi.
+ Hãy lập giá trị số không (0) (nên là mặc định hệ thống) để tránh đổ lõi. Không thì, tùy chọn này giới hạn kích thước của kết quả việc đổ lõi xuống giá trị đã ghi rõ.
+ .
+ Có thể ghi rõ giá trị này dùng hấu tố:
+ b - byte
+ k - kb - 1024 byte
+ m - mb - 1024*1024 byte
+ Mặc định là «k».
+
+Template: cvsd/limit_cputime
+Type: string
+Default: 1:00
+Description: Maximum amount of cpu time consumed:
+ This limits the number of cpu seconds the cvs process can use.
+ This will prevent too much cpu time from being allocated to a single connection.
+ .
+ This value can be formatted as 'mm:ss' or have a 'm' or 's'
+ suffix where 's' is default.
+Description-cs.UTF-8: Maximální množství spotřebovaného procesorového času:
+ Toto omezuje množství sekund, po které může proces cvs využívat procesor. Zamezuje přidělení příliš mnoha procesorového času jednomu spojení.
+ .
+ Tato hodnota může být formátována jako 'mm:ss' nebo může mít příponu 'm' nebo 's', kde 's' je výchozí.
+Description-da.UTF-8: Øvre grænse for forbrug af cpu-tid:
+ Dette begrænser antallet af cpu-sekunder, en proces kan bruge. Dette kan forhindre at der allokeres for meget cpu-tid til en enkelt forbindelse.
+ .
+ Denne værdi kan have formatet 'mm:ss' eller et tal efterfulgt af 'm' for minutter eller 's' for sekunder, eller blot antallet af sekunder som et rent tal.
+Description-de.UTF-8: Höchstmenge für verbrauchte CPU-Zeit:
+ Dies limitiert die Menge an CPU-Sekunden, die der CVS-Prozess nutzen kann. Das verhindert, dass zu viel CPU-Zeit für eine einzelne Verbindung verbraucht wird.
+ .
+ Dieser Wert kann als »mm:ss« formatiert werden oder ein »m«- oder »s«-Suffix haben, wobei »s« die Voreinstellung ist.
+Description-es.UTF-8: Cantidad máxima de tiempo de cpu consumido:
+ Esto limita el número de segundos de procesador que el proceso cvs puede utilizar. Esto evitará que se asigne mucho tiempo de procesador a una sola conexión.
+ .
+ Este valor puede formatearse como «mm:ss» o tener un sufijo «m» o «s», donde «s» es el sufijo por omisión.
+Description-fr.UTF-8: Temps processeur maximal consommé :
+ Cette valeur limite le nombre de secondes d'utilisation du processeur par le processus cvs. Cela permet d'éviter d'allouer trop de temps processeur à une connexion donnée.
+ .
+ Cette valeur peut être indiquée sous la forme « mm:ss » ou avoir un suffixe « m » ou « s ». Le suffixe par défaut est « s ».
+Description-it.UTF-8: Quantità massima di tempo di CPU occupato:
+ Limita il numero di secondi di CPU che il processo cvs può usare. Questo eviterà l'assegnazione di troppo tempo CPU ad una singola connessione.
+ .
+ Questo valore può essere formattato come «mm:ss» oppure avere un suffisso «m» o «s», con «s» come valore predefinito.
+Description-ja.UTF-8: cpu time の最大消費量:
+ これは、cvs のプロセスが使える cputimeの量を制限します。これにより cputime が 1 つの接続に対して大量に割り当てられ過ぎるのを防ぎます。
+ .
+ この値は 'mm:ss' という形式、または 'm' か 's' を語尾に付け、's' が付くのがデフォルトの形式で表現できます。
+Description-nl.UTF-8: Maximale cputijd die verbruikt mag worden:
+ Dit beperkt het aantal seconden dat het cvs proces op de cpu mag doorbrengen. Dit voorkomt dat er te veel tijd wordt besteed voor een enkele verbinding.
+ .
+ Deze waarde kan geschreven worden als 'mm:ss' of afgesloten worden met een 'm' of een 's', waarbij 's' aangenomen wordt als niets gespecificeerd is.
+Description-pt.UTF-8: Tempo máximo de cpu consumido:
+ Limita o número de segundos que o processo cvs pode usar o cpu. Irá prevenir que uma ligação use demasiado tempo de cpu.
+ .
+ Este valor pode ser formatado como 'mm:ss' ou ter um sufixo 'm' ou 's' em que 's' é o valor por omissão.
+Description-pt_BR.UTF-8: Quantidade máxima de segundos de tempo de cpu consumidos:
+ Essa opção limita a quantidade de segundos de cpu que o processo cvs pode usar. Isso evitará que muito tempo de cpu seja alocado para uma única conexão.
+ .
+ Esse valor pode ser formatada como 'mm:ss' ou possuir um sufix 'm' ou 's' onde 's' é padrão.
+Description-ru.UTF-8: Максимальное количество потребляемого процессорного времени:
+ Здесь задаётся предел на используемое процессом cvs число секунд выполнения на процессоре. Это предотвращает использование процессора одним соединением длительное время.
+ .
+ Значение может указываться в виде 'мм:сс' или иметь суффикс 'm' или 's'; по умолчанию используется 's'.
+Description-sv.UTF-8: Maximal mängd CPU-tid som kan användas:
+ Detta begränsar antalet CPU-sekunder som cvs-processen kan använda. Detta förhindrar att för mycket CPU-tid allokeras till en enskild anslutning.
+ .
+ Värdet kan skrivas som 'mm:ss' eller ha 'm' eller 's' som suffix. 's' är standardvärdet.
+Description-vi.UTF-8: Thời gian cpu đã chiếm hữu tối đa:
+ Tùy chọn này giới hạn số giây của đơn vị xử lý trung tâm (cpu) mà tiến trình cvs có dùng được. Sẽ ngăn cản gán thời gian cpu nhiều quá với một kết nối riêng lẻ.
+ .
+ Có thể định dạng giá trị này như «pp:gg», hoặc có hậu tố «p» hay «g» mà «g» là mặc định. (p: phút; g: giây)
+
+Template: cvsd/limit_datasize
+Type: string
+Default: 10m
+Description: Maximum size of program's data segment:
+ This limits the amount of memory the cvs program can use. This
+ specific item limits the size of the data segment.
+ .
+ This value may be specified with a suffix of 'b' (bytes), 'k'
+ (1024 bytes) or 'm' (1024*1024 bytes), where 'k' is the default.
+Description-cs.UTF-8: Maximální velikost datového segmentu programu:
+ Toto omezuje množství paměti, kterou může program cvs používat. Tato konkrétní možnost omezuje velikost datového segmentu.
+ .
+ Tato hodnota může být zadána s příponou 'b' (bytů), 'k' (1024 bytů) nebo 'm' (1024*1024 bytů), kde 'k' je výchozí.
+Description-da.UTF-8: Maksimal størrelse på program-datasegment:
+ Dette begrænser den mængde hukommelse, et cvs-program kan bruge. Dette punkt begrænser størrelsen af datasegmentet.
+ .
+ Denne værdi kan angives med et tal efterfulgt af enhedsangivelsen 'b' for byte, 'k' for kilobyte eller 'm' for megabyte. Hvis enheden ikke angives, antages kilobyte.
+Description-de.UTF-8: Maximale Größe des Datensegmentes des Programmes:
+ Dies limitiert die Menge an Speicher, den das CVS-Programm belegen darf. Dieser spezielle Punkt limitiert die Größe des Datensegmentes.
+ .
+ Dieser Wert kann mit einem Anhängsel von »b« (bytes), »k« (1024 bytes) oder »m« (1024*1024 bytes) festgelegt werden, wobei »k« voreingestellt ist.
+Description-es.UTF-8: Tamaño máximo del segmento de datos del programa:
+ Esto limita la cantidad de memoria que el programa cvs puede usar. Este elemento específico limita el tamaño del segmento de datos.
+ .
+ Este valor puede ser especificado con un sufijo de «b» (bytes), «k» (1024 bytes), o «m» (1024*1024 bytes), donde «k» es el sufijo por omisión.
+Description-fr.UTF-8: Taille maximale du segment de données du programme :
+ Cette valeur limite la quantité de mémoire que le programme cvs peut utiliser. Elle limite la taille du segment de données.
+ .
+ Elle peut être indiquée avec un suffixe « b » (octets), « k » (1024 octets) ou « m » (1024*1024 octets). Le suffixe par défaut est « k ».
+Description-it.UTF-8: Dimensione massima dei segmenti di dati del programma:
+ Limita la quantità di memoria che il programma cvs può usare. Questa specifica voce limita la dimensione dei segmenti dei dati.
+ .
+ Questo valore può essere specificato con un suffisso «b» (byte), «k» (1024 byte) o «m» (1024*1024 byte), con «k» come valore predefinito.
+Description-ja.UTF-8: プログラムのデータセグメントの最大サイズ:
+ これは、cvs プログラムが使えるメモリ量を制限します。これでデータセグメントのサイズを制限する項目を指定します。
+ .
+ この値は 'b' (bytes)、'k' (1024 bytes)、 'm' (1024*1024 bytes) のいずれかを語尾に付けて表され、'k' がデフォルトです。
+Description-nl.UTF-8: Maximum afmeting van het data segment:
+ Dit beperkt de hoeveelheid geheugen dat het cvs programma kan gebruiken. Deze specifieke instelling beperkt de afmeting van het data segment.
+ .
+ Deze waarde kan afgesloten worden met een 'b' (bytes), 'k' (1024 bytes) of 'm' (1024*1024 bytes), waarbij 'k' wordt aangenomen als niets gespecificeerd is.
+Description-pt.UTF-8: Tamanho máximo do segmento de dados do programa:
+ Limita a quantidade de memória que o cvs pode usar. Este item específico limita o tamanho do segmento de dados.
+ .
+ Este valor pode ser especificado com um sufixo 'b' (bytes), 'k' (1024 bytes) ou 'm' (1024*1024 bytes), dos quais 'k' é o valor por omissão.
+Description-pt_BR.UTF-8: Tamanho máximo dos segmentos de dados do programa:
+ Essa opção limita a quantidade de memória que o programa cvs pode usar. Esse item específico limita o tamanho do segmento de dados.
+ .
+ Esse valor pode ser especificado com um sufixo de 'b' (bytes), 'k' (1024 bytes) ou 'm' (1024*1024 bytes), onde 'k' é o padrão.
+Description-ru.UTF-8: Максимальный размер сегмента данных программы:
+ Это значение ограничивает количество памяти, которое может использовать программа cvs. Оно указывает предельный размер сегмента данных.
+ .
+ В значении можно указать суффикс 'b' (в байтах), 'k' (в 1024 байт) или 'm' (в 1024*1024 байтах), по умолчанию используется 'k'.
+Description-sv.UTF-8: Maximal storlek för programmets datasegment:
+ Begränsar mängden minne som cvs-program kan använsa. Detta alternativ begränsar storleken på datasegmentet.
+ .
+ Värdet kan ha suffixen 'b' (för byte), 'k (för 1024 bytes) eller 'm' (för 1024*1024 bytes). 'k' är standardvärdet.
+Description-vi.UTF-8: Kích thước đoạn dữ liệu chương trình tối đa:
+ Tùy chọn này giới hạn số lượng bộ nhớ mà chương trình cvs có dùng được. Mục riêng này giới hạn kích thước đoạn dữ liệu.
+ .
+ Có thể ghi rõ giá trị này dùng hấu tố:
+ b - byte
+ k - kb - 1024 byte
+ m - mb - 1024*1024 byte
+ Mặc định là «k».
+
+Template: cvsd/limit_filesize
+Type: string
+Default: 1m
+Description: Maximum size of files created:
+ This limits the maximum size of a file created by cvs.
+ Note that the cvs pserver process needs to be able to create
+ lock files and possibly write history or other files so
+ don't set this to 0 (zero).
+ .
+ This value may be specified with a suffix of 'b' (bytes), 'k'
+ (1024 bytes) or 'm' (1024*1024 bytes), where 'k' is the default.
+Description-cs.UTF-8: Maximální velikost vytvářených souborů:
+ Toto omezuje maximální velikost souboru vytvořeného cvs. Proces cvs pserveru potřebuje mít možnost vytvářet soubory zámku a možná historie zápisu nebo jiných souborů, takže to nenastavujte na 0 (nulu).
+ .
+ Tato hodnota může být zadána s příponou 'b' (bytů), 'k' (1024 bytů) nebo 'm' (1024*1024 bytů), kde 'k' je výchozí.
+Description-da.UTF-8: Maksimal størrelse af oprettede filer:
+ Dette begrænser den maksimale størrelse af filer, der oprettes af cvs. Bemærk at cvs's pserver-proces skal kunne oprette låsefiler og eventuelt skrive historikfiler eller andre filer, så sæt ikke værdien til nul.
+ .
+ Denne værdi kan angives med et tal efterfulgt af enhedsangivelsen 'b' for byte, 'k' for kilobyte eller 'm' for megabyte. Hvis enheden ikke angives, antages kilobyte.
+Description-de.UTF-8: Maximal-Größe der erstellten Dateien:
+ Dies limitiert die maximale Größe der von CVS erstellten Dateien. Beachten Sie, dass der CVS-pserver-Prozess in der Lage sein muss, Lock-Files und evntl. auch Historys und andere Dateien zu erstellen, so dass Sie den Wert nicht auf 0 (Null) setzen sollten.
+ .
+ Dieser Wert kann mit einem Anhängsel von »b« (bytes), »k« (1024 bytes) oder »m« (1024*1024 bytes) festgelegt werden, wobei »k« voreingestellt ist.
+Description-es.UTF-8: Tamaño máximo de los ficheros creados:
+ Esto limita el tamaño máximo de un fichero creado por cvs. Tenga en cuenta que el proceso cvs pserver necesita poder crear ficheros de bloqueo y probablemente escribir históricos u otros ficheros así que no ponga este valor a 0 (cero).
+ .
+ Este valor puede ser especificado con un sufijo de «b» (bytes), «k» (1024 bytes), o «m» (1024*1024 bytes), donde «k» es el sufijo por omisión.
+Description-fr.UTF-8: Taille maximale des fichiers créés :
+ Cette valeur limite la taille des fichiers créés par cvs. Veuillez noter que le processus pserver de cvs doit pouvoir créer des fichiers de verrouillage et éventuellement des fichiers d'historique ou autres. N'indiquez donc pas une valeur nulle.
+ .
+ Elle peut être indiquée avec un suffixe « b » (octets), « k » (1024 octets) ou « m » (1024*1024 octets). Le suffixe par défaut est « k ».
+Description-it.UTF-8: Dimensione massima dei file creati:
+ Limita la dimensione massima di un file creato da cvs. Notare che il processo cvs pserver deve poter creare file di lock e probabilmente scrivere file di cronologia e altri file, perciò non impostare questo valore a 0 (zero).
+ .
+ Questo valore può essere specificato con un suffisso «b» (byte), «k» (1024 byte) o «m» (1024*1024 byte), con «k» come valore predefinito.
+Description-ja.UTF-8: 作成ファイルの最大サイズ:
+ これは、cvs によって作成されるファイルの最大サイズを制限します。cvs pserver プロセスはロックファイルを作り、履歴やその他のファイルを書き込める必要があるので、これを 0 には設定しないでください。
+ .
+ この値は 'b' (bytes)、'k' (1024 bytes)、 'm' (1024*1024 bytes) のいずれかを語尾に付けて表され、'k' がデフォルトです。
+Description-nl.UTF-8: Maximale bestandsafmeting:
+ Dit beperkt de grootte van files die door cvs wordt aangemaakt. Let op, het moet voor het cvs pserver proces mogelijk zijn om lock files en geschiedenis files aan te maken dus het is onverstandig dit op 0 (nul) te zetten.
+ .
+ Deze waarde kan afgesloten worden met een 'b' (bytes), 'k' (1024 bytes) of 'm' (1024*1024 bytes), waarbij 'k' wordt aangenomen als niets gespecificeerd is.
+Description-pt.UTF-8: Tamanho máximo dos ficheiros criados:
+ Limita o tamanho máximo de um ficheiro criado pelo cvs. Note que o processo pserver do cvs necessita de poder criar ficheiros de lock e possivelmente criar ficheiros de histórico ou por outras razões, portanto não limite a 0 (zero).
+ .
+ Este valor pode ser especificado com um sufixo 'b' (bytes), 'k' (1024 bytes) ou 'm' (1024*1024 bytes), dos quais 'k' é o valor por omissão.
+Description-pt_BR.UTF-8: Tamanho máximo dos arquivos criados:
+ Essa opção limita o tamanho máximo de um arquivo criado pelo cvs. Note que o proceso cvs pserver precisa ser capaz de criar arquivos de bloqueio (lock) e possivelmente gravar históricos de outros arquivos, portanto não defina esse valor para 0 (zero).
+ .
+ Esse valor pode ser especificado com um sufixo de 'b' (bytes), 'k' (1024 bytes) ou 'm' (1024*1024 bytes), onde 'k' é o padrão.
+Description-ru.UTF-8: Максимальный размер создаваемых файлов:
+ Это значение ограничивает максимальный размер файлов, создаваемых cvs. Заметим, что процессу cvs pserver необходимо иметь возможность создания блокировочных файлов и записи истории или других файлов, поэтому не указывайте 0 (ноль).
+ .
+ В значении можно указать суффикс 'b' (в байтах), 'k' (в 1024 байт) или 'm' (в 1024*1024 байтах), по умолчанию используется 'k'.
+Description-sv.UTF-8: Maximal storlek för skapade filer:
+ Detta begränsar storleken på filer som skapas av cvs. Kom ihåg att processen för cvs-pserver måste kunna skapa låsningsfiler och skriva historikfiler eller andra filer så ange inte 0 (noll) här.
+ .
+ Värdet kan ha suffixen 'b' (för byte), 'k (för 1024 bytes) eller 'm' (för 1024*1024 bytes). 'k' är standardvärdet.
+Description-vi.UTF-8: Kích thước tập tin đã tạo tối đa:
+ Tùy chọn này giới hạn kích thước tối đa của mọi tập tin do trình cvs tạo. Ghi chú rằng tiến trình pserver cvs cần phải có khả năng tạo tập tin khóa (lockfiles) và có lẽ cần phải khả năng ghi lịch sử hay tập tin khác, thì đừng lập giá trị này xuống số không (0).
+ .
+ Có thể ghi rõ giá trị này dùng hấu tố:
+ b - byte
+ k - kb - 1024 byte
+ m - mb - 1024*1024 byte
+ Mặc định là «k».
+
+Template: cvsd/limit_memorylocked
+Type: string
+Default: 10m
+Description: Maximum amount of locked memory:
+ This limits the amount of memory the cvs process may lock.
+ cvs probably doesn't need to lock any memory at all.
+ .
+ This value may be specified with a suffix of 'b' (bytes), 'k'
+ (1024 bytes) or 'm' (1024*1024 bytes), where 'k' is the default.
+Description-cs.UTF-8: Maximální množství uzamčené paměti:
+ Toto omezuje množství paměti, kterou může proces cvs uzamčít. cvs pravděpodobně vůbec nepotřebuje nějakou paměť uzamykat.
+ .
+ Tato hodnota může být zadána s příponou 'b' (bytů), 'k' (1024 bytů) nebo 'm' (1024*1024 bytů), kde 'k' je výchozí.
+Description-da.UTF-8: Maksimal mængde låst hukommelse:
+ Dette begrænser den mængde hukommelse, en cvs-proces kan låse. cvs har sandsynligvis slet ikke brug for at låse nogen hukommelse.
+ .
+ Denne værdi kan angives med et tal efterfulgt af enhedsangivelsen 'b' for byte, 'k' for kilobyte eller 'm' for megabyte. Hvis enheden ikke angives, antages kilobyte.
+Description-de.UTF-8: Maximal-Menge des gesperrten Speichers:
+ Dies limitiert die Menge des Speichers, den der CVS-Prozess sperren kann. CVS muss vermutlich überhaupt keinen Speicher sperren.
+ .
+ Dieser Wert kann mit einem Anhängsel von »b« (bytes), »k« (1024 bytes) oder »m« (1024*1024 bytes) festgelegt werden, wobei »k« voreingestellt ist.
+Description-es.UTF-8: Cantidad máxima de memoria bloqueada:
+ Esto limita la cantidad de memoria que el proceso cvs puede bloquear. cvs probablemente no necesite nunca bloquear memoria.
+ .
+ Este valor puede ser especificado con un sufijo de «b» (bytes), «k» (1024 bytes), o «m» (1024*1024 bytes), donde «k» es el sufijo por omisión.
+Description-fr.UTF-8: Quantité maximale de mémoire verrouillée :
+ Cette valeur limite la quantité de mémoire que le processus cvs peut verrouiller. Cvs n'a probablement pas du tout besoin de verrouiller la mémoire.
+ .
+ Elle peut être indiquée avec un suffixe « b » (octets), « k » (1024 octets) ou « m » (1024*1024 octets). Le suffixe par défaut est « k ».
+Description-it.UTF-8: Quantità massima di memoria bloccata:
+ Limita la quantità di memoria che il processo cvs può bloccare. cvs probabilmente non ha bisogno di bloccare affatto della memoria.
+ .
+ Questo valore può essere specificato con un suffisso «b» (byte), «k» (1024 byte) o «m» (1024*1024 byte), con «k» come valore predefinito.
+Description-ja.UTF-8: 予約メモリの最大量:
+ これは、cvs のプロセスが予約するメモリ量を制限します。おそらく cvs は予約メモリを全く必要とはしません。
+ .
+ この値は 'b' (bytes)、'k' (1024 bytes)、 'm' (1024*1024 bytes) のいずれかを語尾に付けて表され、'k' がデフォルトです。
+Description-nl.UTF-8: Maximum hoeveelheid vastgehouden geheugen:
+ Dit beperkt de hoeveelheid geheugen dat cvs kan vasthouden. Het cvs proces hoeft waarschijnlijk helemaal geen geheugen vast te houden.
+ .
+ Deze waarde kan afgesloten worden met een 'b' (bytes), 'k' (1024 bytes) of 'm' (1024*1024 bytes), waarbij 'k' wordt aangenomen als niets gespecificeerd is.
+Description-pt.UTF-8: Quantidade máxima de memória bloqueada:
+ Limita a quantidade máxima de memória que o processo cvs pode bloquear. O cvs provavelmente não precisa de bloquear qualquer memória.
+ .
+ Este valor pode ser especificado com um sufixo 'b' (bytes), 'k' (1024 bytes) ou 'm' (1024*1024 bytes), dos quais 'k' é o valor por omissão.
+Description-pt_BR.UTF-8: Quantidade máxima de mémoria bloqueada (locked):
+ Esse parâmetro limita a quantidade de memória que um processo cvs pode bloquear. O cvs provavelmente não precisa bloquear memória alguma.
+ .
+ Esse valor pode ser especificado com um sufixo de 'b' (bytes), 'k' (1024 bytes) ou 'm' (1024*1024 bytes), onde 'k' é o padrão.
+Description-ru.UTF-8: Максимальное количество блокируемой памяти:
+ Это значение ограничивает количество памяти, которое может быть заблокировано процессом cvs. cvs, вероятно, ненужно совсем блокировать память.
+ .
+ В значении можно указать суффикс 'b' (в байтах), 'k' (в 1024 байт) или 'm' (в 1024*1024 байтах), по умолчанию используется 'k'.
+Description-sv.UTF-8: Maximal mängd låst minne:
+ Begränsar mängden minne som cvs-processen kan låsa. cvs behöver troligen inte låsa minne alls.
+ .
+ Värdet kan ha suffixen 'b' (för byte), 'k (för 1024 bytes) eller 'm' (för 1024*1024 bytes). 'k' är standardvärdet.
+Description-vi.UTF-8: Số lượng bộ nhớ đã khóa tối đa:
+ Tùy chọn này giới hạn số lượng bộ nhớ mà tiến trình cvs có khóa được. Rất có thể là trình cvs không cần phải khóa bộ nhớ nào cả.
+ .
+ Có thể ghi rõ giá trị này dùng hấu tố:
+ b - byte
+ k - kb - 1024 byte
+ m - mb - 1024*1024 byte
+ Mặc định là «k».
+
+Template: cvsd/limit_openfiles
+Type: string
+Default: 1024
+Description: Maximum number of open files:
+ This limits the number of files and connections that the cvs
+ process can have open at a single moment. The cvs process needs
+ to access quite a few files so don't set this too low.
+Description-cs.UTF-8: Maximální počet otevřených souborů:
+ Toto omezuje množství souborů a spojení, které může mít proces cvs otevřené v jednom momentu. Proces cvs potřebuje přistupovat k několika málo souborům, takže to nenastavujte příliš nízké.
+Description-da.UTF-8: Maksimalt antal åbne filer:
+ Dette begrænser antallet af filer og forbindelser, en cvs-proces kan holde åbne ad gangen. cvs-processen har brug for at tilgå ganske mange filer, så sæt ikke værdien for lavt.
+Description-de.UTF-8: Maximale Anzahl an offenen Dateien:
+ Dies limitiert die Anzahl von Dateien und Verbindungen, die der CVS-Prozess gleichzeitig aufweisen darf. Der CVS-Prozess muss auf einige Dateien zugreifen können, daher setzen Sie das nicht zu niedrig.
+Description-es.UTF-8: Número máximo de ficheros abiertos:
+ Esto limita el número de ficheros y conexiones que el proceso cvs puede tener abiertos en un momento. El proceso cvs necesita acceder a algunos ficheros, por lo que es conveniente que este valor no sea muy bajo.
+Description-fr.UTF-8: Nombre maximal de fichiers ouverts :
+ Cette valeur limite le nombre de fichiers et de connexions ouverts simultanément par le processus cvs. Ce processus doit accéder à un nombre non négligeable de fichiers : évitez donc de placer cette limite trop bas.
+Description-it.UTF-8: Numero massimo di file aperti:
+ Limita il numero di file e di connessioni che il processo cvs può avere aperti in un dato momento. Il processo cvs deve accedere a svariati file perciò non impostare un valore troppo basso.
+Description-ja.UTF-8: オープンするファイルの最大数:
+ これは、cvs のプロセスが 1 回にオープンできるファイル数と接続数を制限します。cvs のプロセスは、極めて多くのファイルにアクセスする必要があるので、あまり小さな値に設定しないようにしてください。
+Description-nl.UTF-8: Maximum aantal open bestanden:
+ Dit beperkt de hoeveelheid bestanden en verbindingen dat het cvs proces tegelijk open kan hebben. Het cvs proces opent een flink aantal files dus deze waarde moet niet te laag gezet worden.
+Description-pt.UTF-8: Número máximo de ficheiros abertos:
+ Limita o número de ficheiros e ligações que o processo cvs pode ter abertos num dado momento. O processo cvs precisa de aceder a uns quantos ficheiros portanto não especifique um limite baixo demais.
+Description-pt_BR.UTF-8: Número máximo de arquivos abertos:
+ Esse parâmetro limita q quantidade de arquivos e conexões que o processo cvs pode ter abertos ao mesmo tempo. O processo cvs precisa acessar diversos arquivos portanto não define esse valor para um número muito baixo.
+Description-ru.UTF-8: Максимальное количество открытых файлов:
+ Это значение ограничивает число файлов и подключений, которое процесс cvs может держать открытыми в каждый момент времени. Процессу cvs требуется доступ к нескольким файлам, поэтому не слишком занижайте значение.
+Description-sv.UTF-8: Maximalt antal öppna filer:
+ Detta begränsar antalet filer och anslutningar som cvs-processen kan ha öppna vid varje givet tillfälle. cvs-processen behöver kunna ha en hel del filer öppna samtidigt så sätt inte värdet för lågt.
+Description-vi.UTF-8: Số tập tin đã mở tối đa:
+ Tùy chọn này giới hạn số tập tin và kết nối đều mà tiến trình cvs có thể giữ mở đồng thời. Tiến trình cvs cần phải truy cập nhiều tập tin thì đừng lập giá trị này thấp quá.
+
+Template: cvsd/limit_maxproc
+Type: string
+Default: 20
+Description: Maximum number of processes:
+ This limits the maximum number of processes that a single user may have.
+ cvs may need to spawn additional processes to run scripts or do subtasks
+ so don't set this too low.
+Description-cs.UTF-8: Maximální počet procesů:
+ Toto omezuje maximální počet procesů, které může mít jeden uživatel. cvs může potřebovat vytvořit další procesy pro spuštění skriptů nebo podúloh, takže to nenastavujte příliš nízké.
+Description-da.UTF-8: Maksimalt antal processer:
+ Dette begrænser antallet af processer, en enkelt bruger kan have. cvs kan have brug for at starte yderligere processer for at udføre skripter eller underopgaver, så sæt den ikke for lavt.
+Description-de.UTF-8: Höchstanzahl von Prozessen:
+ Dies begrenzt die Höchstanzahl von Prozessen, die ein einzelner User haben darf. CVS muss eventuell zusätzliche Prozesse erzeugen für Skripte oder Unteraufgaben, daher sollten Sie dies nicht zu niedrig festlegen.
+Description-es.UTF-8: Número máximo de procesos:
+ Esto limita el número máximo de procesos que un solo usuario puede tener. cvs puede necesitar el lanzamiento de procesos adicionales para ejecutar scripts o para hacer subtareas, por lo que es conveniente que este valor no sea muy bajo.
+Description-fr.UTF-8: Nombre maximal de processus :
+ Cette valeur limite le nombre de processus simultanés d'un utilisateur donné. Cvs doit pouvoir lancer des processus supplémentaires pour exécuter des scripts ou des sous-tâches : ne placez donc pas cette limite trop bas.
+Description-it.UTF-8: Numero massimo di processi:
+ Limita il numero massimo di processi che un singolo utente può avere. cvs può aver bisogno di generare processi aggiuntivi per eseguire script o sotto-compiti, perciò non impostare un valore troppo basso.
+Description-ja.UTF-8: 最大プロセス数:
+ これは、1 人のユーザが保持するプロセスの最大数を制限します。cvs は、スクリプトやサブタスクを実行する際に追加のプロセスを起動する必要があるので、あまり低く設定しないようにしてください。
+Description-nl.UTF-8: Maximum aantal processen:
+ Dit beperkt het aantal processen dat een enkele gebruiker op het susteem mag hebben. Het is waarschijnlijk dat cvs een aantal processen opstart om bijvoorbeeld scripts te draaien of subtaken af te handelen dus deze waarde moet niet te laag gezet worden.
+Description-pt.UTF-8: Número máximo de processos:
+ Isto limita o número máximo de processos que um só utilizador pode ter. O cvs pode precisar de lançar processos adicionais para correr scripts ou fazer outras tarefas pelo que não deve especificar um limite baixo demais.
+Description-pt_BR.UTF-8: Número máximo de processos:
+ Esse parâmetro limita o número máximo de processos que um único usuário pode ter. O cvs precisa disparar processos adicionais para executar scripts ou realizar subtarefas, portanto não defina esse valor para um valor muito baixo.
+Description-ru.UTF-8: Максимальное число процессов:
+ Это значение ограничивает максимальное число процессов, выделяемых отдельному пользователю. cvs нужно создавать дополнительные процессы для запуска сценариев или выполнения подзадач, поэтому не слишком занижайте значение.
+Description-sv.UTF-8: Maximalt antal processer:
+ Begränsar det maximala antalet processer som en ensam användare kan ha. cvs måste starta extraprocesser för att köra skript och underuppgifter så sätt ine värdet för lågt.
+Description-vi.UTF-8: Số tiến trình tối đa:
+ Tùy chọn này giới hạn số tiến trình tối đa mà một người dùng đơn có thẻ chạy. Trình cvs có lẽ cần phải tạo một số tiến trình thêm để chạy tập lệnh hay thực hiện cộng việc con thì đừng lập giá trị này thấp quá.
+
+Template: cvsd/limit_memoryuse
+Type: string
+Default: 10m
+Description: Maximum size of resident memory:
+ This specifies the amount of physical memory a process may have.
+ .
+ This value may be specified with a suffix of 'b' (bytes), 'k'
+ (1024 bytes) or 'm' (1024*1024 bytes), where 'k' is the default.
+Description-cs.UTF-8: Maximální velikost využité paměti:
+ Toto určuje množství fyzické paměti, kterou může proces mít.
+ .
+ Tato hodnota může být zadána s příponou 'b' (bytů), 'k' (1024 bytů) nebo 'm' (1024*1024 bytů), kde 'k' je výchozí.
+Description-da.UTF-8: Maksimal størrelse for fysisk hukommelse:
+ Dette begrænser mængden af fysisk hukommelse, en proces kan lægge beslag på.
+ .
+ Denne værdi kan angives med et tal efterfulgt af enhedsangivelsen 'b' for byte, 'k' for kilobyte eller 'm' for megabyte. Hvis enheden ikke angives, antages kilobyte.
+Description-de.UTF-8: Maximale Größe des besetzten Speichers:
+ Dies legt die Menge von physikalischem Speicher fest, die ein Prozess haben darf.
+ .
+ Dieser Wert kann mit einem Anhängsel von »b« (bytes), »k« (1024 bytes) oder »m« (1024*1024 bytes) festgelegt werden, wobei »k« voreingestellt ist.
+Description-es.UTF-8: Tamaño máximo de la memoria residente:
+ Esto especifica la cantidad de memoria física que un proceso puede tener.
+ .
+ Este valor puede ser especificado con un sufijo de «b» (bytes), «k» (1024 bytes), o «m» (1024*1024 bytes), donde «k» es el sufijo por omisión.
+Description-fr.UTF-8: Taille maximale de la mémoire résidente :
+ Cette valeur limite la quantité de mémoire physique utilisée par un processus.
+ .
+ Elle peut être indiquée avec un suffixe « b » (octets), « k » (1024 octets) ou « m » (1024*1024 octets). Le suffixe par défaut est « k ».
+Description-it.UTF-8: Dimensione massima della memoria residente:
+ Specifica la quantità di memoria fisica che un processo può avere.
+ .
+ Questo valore può essere specificato con un suffisso «b» (byte), «k» (1024 byte) o «m» (1024*1024 byte), con «k» come valore predefinito.
+Description-ja.UTF-8: 内蔵メモリの最大サイズ:
+ プロセスあたりの物理メモリ量を指定します。
+ .
+ この値は 'b' (bytes)、'k' (1024 bytes)、 'm' (1024*1024 bytes) のいずれかを語尾に付けて表され、'k' がデフォルトです。
+Description-nl.UTF-8: Maximale hoeveelheid fisiek geheugengebruik:
+ Dit beperkt de hoeveelheid fysiek geheugen dat een proces kan gebruiken.
+ .
+ Deze waarde kan afgesloten worden met een 'b' (bytes), 'k' (1024 bytes) of 'm' (1024*1024 bytes), waarbij 'k' wordt aangenomen als niets gespecificeerd is.
+Description-pt.UTF-8: Tamanho máximo de memória residente:
+ Especifica a quantidade de memória física que um processo pode ter.
+ .
+ Este valor pode ser especificado com um sufixo 'b' (bytes), 'k' (1024 bytes) ou 'm' (1024*1024 bytes), dos quais 'k' é o valor por omissão.
+Description-pt_BR.UTF-8: Tamanho máximo de memória residente:
+ Esse parâmetro especifica a quantidade de memória física que um processo pode ter.
+ .
+ Esse valor pode ser especificado com um sufixo de 'b' (bytes), 'k' (1024 bytes) ou 'm' (1024*1024 bytes), onde 'k' é o padrão.
+Description-ru.UTF-8: Максимальное количество резидентной памяти:
+ Это значение задаёт количество физической памяти, которое может иметь процесс.
+ .
+ В значении можно указать суффикс 'b' (в байтах), 'k' (в 1024 байт) или 'm' (в 1024*1024 байтах), по умолчанию используется 'k'.
+Description-sv.UTF-8: Maximal mängd fysiskt minne:
+ Anger mängden fysiskt minne en process kan ha:
+ .
+ Värdet kan ha suffixen 'b' (för byte), 'k (för 1024 bytes) eller 'm' (för 1024*1024 bytes). 'k' är standardvärdet.
+Description-vi.UTF-8: Kích thước bộ nhớ cục bộ tối đa:
+ Tùy chọn này giới hạn số lượng bộ nhớ vật lý mà một tiến trình nào đó có lẽ dùng.
+ .
+ Có thể ghi rõ giá trị này dùng hấu tố:
+ b - byte
+ k - kb - 1024 byte
+ m - mb - 1024*1024 byte
+ Mặc định là «k».
+
+Template: cvsd/limit_stacksize
+Type: string
+Default: 10m
+Description: Maximum stack size:
+ This limits the size of the stack.
+ .
+ This value may be specified with a suffix of 'b' (bytes), 'k'
+ (1024 bytes) or 'm' (1024*1024 bytes), where 'k' is the default.
+Description-cs.UTF-8: Maximální velikost zásobníku:
+ Toto omezuje velikost zásobníku.
+ .
+ Tato hodnota může být zadána s příponou 'b' (bytů), 'k' (1024 bytů) nebo 'm' (1024*1024 bytů), kde 'k' je výchozí.
+Description-da.UTF-8: Maksimal stakstørrelse:
+ Dette begrænser stakkens størrelse.
+ .
+ Denne værdi kan angives med et tal efterfulgt af enhedsangivelsen 'b' for byte, 'k' for kilobyte eller 'm' for megabyte. Hvis enheden ikke angives, antages kilobyte.
+Description-de.UTF-8: Maximale Stapel-Größe:
+ Dies beschränkt die Größe des Stapels.
+ .
+ Dieser Wert kann mit einem Anhängsel von »b« (bytes), »k« (1024 bytes) oder »m« (1024*1024 bytes) festgelegt werden, wobei »k« voreingestellt ist.
+Description-es.UTF-8: Tamaño máximo de la pila:
+ Esto limita el tamaño de la pila.
+ .
+ Este valor puede ser especificado con un sufijo de «b» (bytes), «k» (1024 bytes), o «m» (1024*1024 bytes), donde «k» es el sufijo por omisión.
+Description-fr.UTF-8: Taille maximale de pile :
+ Cette valeur limite la taille de la pile (« stack »).
+ .
+ Elle peut être indiquée avec un suffixe « b » (octets), « k » (1024 octets) ou « m » (1024*1024 octets). Le suffixe par défaut est « k ».
+Description-it.UTF-8: Dimensione massima dello stack:
+ Limita la dimensione dello stack.
+ .
+ Questo valore può essere specificato con un suffisso «b» (byte), «k» (1024 byte) o «m» (1024*1024 byte), con «k» come valore predefinito.
+Description-ja.UTF-8: 最大スタックサイズ:
+ これはスタックサイズを制限します。
+ .
+ この値は 'b' (bytes)、'k' (1024 bytes)、 'm' (1024*1024 bytes) のいずれかを語尾に付けて表され、'k' がデフォルトです。
+Description-nl.UTF-8: Maximale stapel afmeting:
+ Dit beperkt de afmeting van de stapel.
+ .
+ Deze waarde kan afgesloten worden met een 'b' (bytes), 'k' (1024 bytes) of 'm' (1024*1024 bytes), waarbij 'k' wordt aangenomen als niets gespecificeerd is.
+Description-pt.UTF-8: Tamanho máximo da pilha:
+ Limita o tamanho da pilha de execução.
+ .
+ Este valor pode ser especificado com um sufixo 'b' (bytes), 'k' (1024 bytes) ou 'm' (1024*1024 bytes), dos quais 'k' é o valor por omissão.
+Description-pt_BR.UTF-8: Tamanho máximo de pilha:
+ Esse parâmetro limita o tamanho da pilha.
+ .
+ Esse valor pode ser especificado com um sufixo de 'b' (bytes), 'k' (1024 bytes) ou 'm' (1024*1024 bytes), onde 'k' é o padrão.
+Description-ru.UTF-8: Максимальный размер стека:
+ Это значение ограничивает размер стека.
+ .
+ В значении можно указать суффикс 'b' (в байтах), 'k' (в 1024 байт) или 'm' (в 1024*1024 байтах), по умолчанию используется 'k'.
+Description-sv.UTF-8: Maximal storlek för stacken:
+ Begränsar storleken på stacken.
+ .
+ Värdet kan ha suffixen 'b' (för byte), 'k (för 1024 bytes) eller 'm' (för 1024*1024 bytes). 'k' är standardvärdet.
+Description-vi.UTF-8: Kích thước đống tối đa:
+ Tùy chọn này giới hạn kích thước đống.
+ .
+ Có thể ghi rõ giá trị này dùng hấu tố:
+ b - byte
+ k - kb - 1024 byte
+ m - mb - 1024*1024 byte
+ Mặc định là «k».
+
+Template: cvsd/limit_virtmem
+Type: string
+Default: 10m
+Description: Maximum amount of virtual memory allocated:
+ This limits the total amount of virtual memory a process may have allocated.
+ .
+ This value may be specified with a suffix of 'b' (bytes), 'k'
+ (1024 bytes) or 'm' (1024*1024 bytes), where 'k' is the default.
+Description-cs.UTF-8: Maximální množství alokované virtuální paměti:
+ Toto omezuje celkové množství virtuální paměti, kterou může mít proces alokovanou.
+ .
+ Tato hodnota může být zadána s příponou 'b' (bytů), 'k' (1024 bytů) nebo 'm' (1024*1024 bytů), kde 'k' je výchozí.
+Description-da.UTF-8: Maksimal mængde virtuel hukommelse:
+ Dette begrænser den totale mængde virtuel hukommelse, en proces kan lægge beslag på.
+ .
+ Denne værdi kan angives med et tal efterfulgt af enhedsangivelsen 'b' for byte, 'k' for kilobyte eller 'm' for megabyte. Hvis enheden ikke angives, antages kilobyte.
+Description-de.UTF-8: Maximale Belegung des virtuellen Speichers:
+ Dies limitiert die totale Menge des virtuellen Speichers, den ein Prozess belegen darf.
+ .
+ Dieser Wert kann mit einem Anhängsel von »b« (bytes), »k« (1024 bytes) oder »m« (1024*1024 bytes) festgelegt werden, wobei »k« voreingestellt ist.
+Description-es.UTF-8: Cantidad máxima de memoria virtual asignada:
+ Esto limita la cantidad total de memoria virtual que un proceso puede tener asignada.
+ .
+ Este valor puede ser especificado con un sufijo de «b» (bytes), «k» (1024 bytes), o «m» (1024*1024 bytes), donde «k» es el sufijo por omisión.
+Description-fr.UTF-8: Taille maximale de mémoire virtuelle allouée :
+ Cette valeur limite la taille de la mémoire virtuelle qui peut être allouée par un processus.
+ .
+ Elle peut être indiquée avec un suffixe « b » (octets), « k » (1024 octets) ou « m » (1024*1024 octets). Le suffixe par défaut est « k ».
+Description-it.UTF-8: Quantità massima di memoria virtuale allocata:
+ Limita la quantità totale di memoria virtuale che può essere allocata per un processo.
+ .
+ Questo valore può essere specificato con un suffisso «b» (byte), «k» (1024 byte) o «m» (1024*1024 byte), con «k» come valore predefinito.
+Description-ja.UTF-8: 仮想メモリの最大割当量:
+ これは、プロセスが割り当てられる仮想メモリの総計を制限します。
+ .
+ この値は 'b' (bytes)、'k' (1024 bytes)、 'm' (1024*1024 bytes) のいずれかを語尾に付けて表され、'k' がデフォルトです。
+Description-nl.UTF-8: Maximale hoeveelheid virtueel geheugen in gebruik:
+ Dit beperkt de hoeveelheid virtueel geheugen dat een proces kan gebruiken.
+ .
+ Deze waarde kan afgesloten worden met een 'b' (bytes), 'k' (1024 bytes) of 'm' (1024*1024 bytes), waarbij 'k' wordt aangenomen als niets gespecificeerd is.
+Description-pt.UTF-8: Quantidade máxima de memória virtual alocada:
+ Limita a quantidade máxima de memória virtual que um processo pode ter alocada.
+ .
+ Este valor pode ser especificado com um sufixo 'b' (bytes), 'k' (1024 bytes) ou 'm' (1024*1024 bytes), dos quais 'k' é o valor por omissão.
+Description-pt_BR.UTF-8: Quantidade máxima de memória virtual alocada:
+ Esse parâmetro limita q quantidade total de memória virtual alocada que um processo pode ter.
+ .
+ Esse valor pode ser especificado com um sufixo de 'b' (bytes), 'k' (1024 bytes) ou 'm' (1024*1024 bytes), onde 'k' é o padrão.
+Description-ru.UTF-8: Максимальное количество выделяемой виртуальной памяти:
+ Это значение ограничивает общее количество виртуальной памяти, которое может быть выделено процессу.
+ .
+ В значении можно указать суффикс 'b' (в байтах), 'k' (в 1024 байт) или 'm' (в 1024*1024 байтах), по умолчанию используется 'k'.
+Description-sv.UTF-8: Maximal mängd allokerat virtuellt minne:
+ Begränsar den totala mängden virtuellt minne en process kan allokera.
+ .
+ Värdet kan ha suffixen 'b' (för byte), 'k (för 1024 bytes) eller 'm' (för 1024*1024 bytes). 'k' är standardvärdet.
+Description-vi.UTF-8: Số lượng bộ nhớ ảo đã cấp phát tối đa:
+ Tùy chọn này giới hạn số lượng bộ nhớ ảo tối đa cho một tiến trình nào đó được cấp phát.
+ .
+ Có thể ghi rõ giá trị này dùng hấu tố:
+ b - byte
+ k - kb - 1024 byte
+ m - mb - 1024*1024 byte
+ Mặc định là «k».
+
+Template: cvsd/limit_pthreads
+Type: string
+Default: 20
+Description: Maximum number of threads:
+ This limits the number of threads that a single process may have.
+ .
+ This is not available under Linux so it is not in the list
+ for cvsd/limits. If Hurd has it it may be useful.
+Description-cs.UTF-8: Maximální počet vláken:
+ Toto omezuje počet vláken, která může mít jeden proces.
+ .
+ Toto není pod Linuxem dostupné, takže to není na seznamu pro cvsd/limits. Pokud to Hurd má, může to být užitečné.
+Description-da.UTF-8: Maksimalt antal tråde:
+ Dette begrænser antallet af tråde, en enkelt proces kan have.
+ .
+ Dette findes ikke under Linux, og er dermed ikke med i listen over cvsd-begrænsninger. Hvis Hurd har det, kan det måske vise sig nyttigt.
+Description-de.UTF-8: Maximale Anzahl von Threads:
+ Dies beschränkt die Anzahl von Threads die ein einzelner Prozess haben darf.
+ .
+ Dies steht unter Linux nicht zur Verfügung, daher befindet es sich nicht in der Liste für cvsd/limits. Falls Hurd das hat, kann es brauchbar sein.
+Description-es.UTF-8: Número máximo de hilos:
+ Esto limita el número de hilos que un solo proceso puede tener.
+ .
+ Esto no está disponible bajo Linux por lo que no está en la lista para cvsd/limits. Si Hurd lo tiene puede ser útil.
+Description-fr.UTF-8: Nombre maximal de tâches (« threads ») :
+ Cette valeur limite le nombre maximal de tâches d'un processus donné.
+ .
+ Ce type de limitation n'est pas possible sous Linux. C'est pourquoi elle n'est pas dans la liste de cvsd/limits. Elle est placée ici au cas où elle serait utile pour Hurd.
+Description-it.UTF-8: Numero massimo di thread:
+ Limita il numero di thread che un singolo processo può avere.
+ .
+ Non è disponibile in Linux perciò non è nell'elenco per i limiti di cvsd. Se esiste in Hurd, potrebbe essere utile.
+Description-ja.UTF-8: 最大スレッド数:
+ これは 1 プロセッサあたりのスレッド数を制限します。
+ .
+ この数は Linux 上では有効にならないので、cvsd/limits のリスト上にはありません。Hurd を使ってるという場合は有用です。
+Description-nl.UTF-8: Maximum aantal threads:
+ Dit beperkt het aantel threads dat een proces kan hebben.
+ .
+ Deze beperking is niet mogelijk onder Linux dus komt hij niet voor in de lijst. Als Hurd de beperking wel kent kan hij bruikbaar zijn.
+Description-pt.UTF-8: Número máximo de threads:
+ Limita o número máximo de threads que um só processo pode ter.
+ .
+ Não está disponível em Linux pelo que não está na lista de limites do cvsd. Se o Hurd o tiver, poderá ser útil.
+Description-pt_BR.UTF-8: Número máximo de threads:
+ Esse parâmetro limita o número de threads que um processo único pode ter.
+ .
+ Isso não está disponível sob o Linux portanto não está na lista para o cvsd/limites. Caso o Hurd possua isso, o mesmo pode ser útil.
+Description-ru.UTF-8: Максимальное число потоков:
+ Максимальное количество потоков, которое может иметь один процесс.
+ .
+ Это недоступно в Linux, поэтому не указывайте в списке для cvsd/limits. Может быть полезно в Hurd.
+Description-sv.UTF-8: Maximalt antal trådar:
+ Begränsar antalet trådar som en enskild process kan ha.
+ .
+ Detta är inte tillgängligt i Linux och finns därför inte med i listan över cvsdbegränsningar. Om Hurd har det kan det vara användbart.
+Description-vi.UTF-8: Số mạch tối đa:
+ Tùy chọn này giới hạn số mạch (thread) mà một tiến trình riêng lẻ có tạo được.
+ .
+ Tùy chọn này không sẵn sàng trong hệ điều hành Linux, thì nó không phải trong danh sách cho cvsd/giới hạn. Nếu Hurd có thì có lẽ hữu ích.
+
+Template: cvsd/remove_chroot
+Type: boolean
+Default: false
+Description: Remove chroot jail containing repositories?
+ The following directory is configured as a chroot jail for cvsd:
+   ${rootjail}
+ You may choose to remove the chroot jail but you will also lose all the
+ repositories inside the chroot jail. If you have not backed up your
+ repositories you want to keep do not remove it now and manually remove
+ it later once your repositories are safe.
+ .
+ If you do choose to remove the chroot directory, all directories under
+ it will be removed, even if they are on another file system.
+ .
+ If you choose to keep the chroot jail please note that the cvsd user and
+ group will be removed so uid and gid file information may no longer be
+ consistent.
+Description-cs.UTF-8: Ostranit chroot vězení obsahující repozitáře?
+ Následující adresář je zkonfigurován jako chroot vězení pro cvsd:
+   ${rootjail}
+ Můžete zvolit odstranění chroot vězení, ale tím také ztratíte všechny repozitáře v něm. Pokud nemáte repozitáře, které chcete uchovat, zálohované, nyní jej neodstraňujte a odstraňte jej ručně až budete mít repozitáře zálohované.
+ .
+ Pokud zvolíte odstranění chroot adresáře, všechny adresáře pod ním budou odstraněny, i když jsou na jiném souborovém systému.
+ .
+ Pokud zvolíte zachovat chroot vězení, vězte, že uživatel a skupina cvsd budou odstraněni, takže informace o vlastníkovi a skupině souboru nemusí být nadále konzistentní.
+Description-da.UTF-8: Fjern chroot-fængsel med cvs-samlinger?
+ Følgende mappe er sat op som chroot-fængsel for cvsd:
+   ${rootjail}
+ Du kan vælge at fjerne chroot-fængslet, men du vil samtidig miste alle cvs-samlingerne i chroot-fængslet. Hvis du ikke har sikkerhedskopieret de cvs-samlinger, du vil bevare, skal du ikke fjerne dem nu. Du kan da selv fjerne dem, når cvs-samlingerne er sikrede.
+ .
+ Hvis du vælger at fjerne chroot-mappen, vil alle dens undermapper også blive fjernet selvom de måtte ligge på et andet filsystem.
+ .
+ Hvis du vælger at beholde chroot-fængslet, skal du være klar over at både brugeren og gruppen 'cvsd' bliver fjernet, således at filernes uid- og gid-oplysninger ikke længere er gyldige.
+Description-de.UTF-8: Chroot jail mit Repositorys entfernen?
+ Das folgende Verzeichnis ist als ein chroot jail für CVSD konfiguriert:
+   ${rootjail}
+ Sie können das Entfernen des chroot jail veranlassen, werden dabei aber alle darin enthaltenen Repositorys verlieren. Falls Sie noch keine Sicherungs-Kopien der Repositorys angelegt haben, die Sie behalten möchten, sollten Sie chroot jail nicht jetzt sondern später von Hand entfernen, sobald Sie Ihre Repositorys gesichert haben.
+ .
+ Falls Sie sich zum Entfernen des chroot-Verzeichnisses entschieden haben, werden alle Unterverzeichnisse mitgelöscht, auch wenn diese auf einem anderen Dateisystem liegen.
+ .
+ Falls Sie sich für den Erhalt des chroot jail entscheiden, beachten Sie bitte, dass der CVSD-User und die CVSD-Gruppe entfernt werden, so dass die UID- und GID-Datei-Attribute nicht mehr konsistent sind.
+Description-es.UTF-8: ¿Desea eliminar la cárcel «chroot» que contiene los repositorios?
+ El siguiente directorio está configurado como una cárcel «chroot» para cvsd:
+  ${rootjail}
+ Puede escoger eliminar la cárcel «chroot», pero también perderá todos los repositorios que estén dentro de ella. Si no ha hecho copia de seguridad de los repositorios que quiere conservar no los elimine ahora, elimínelos manualmente más tarde cuando sus repositorios estén seguros.
+ .
+ Si escoge eliminar el directorio chroot, todos los directorios que se encuentren debajo de éste serán eliminados, incluso si se encuentran en otro sistema de ficheros.
+ .
+ Por favor, si escoge mantener la cárcel chroot tenga en cuenta que el usuario y el grupo cvsd se eliminarán, por tanto la información del «uid» y del «gid» de los ficheros puede que no sea consistente por más tiempo.
+Description-fr.UTF-8: Faut-il supprimer l'environnement fermé contenant les dépôts ?
+ Le répertoire suivant est un environnement fermé d'exécution (« chroot jail ») pour cvsd :
+  ${rootjail}
+ Vous pouvez supprimer l'environnement fermé mais cela supprimera également les dépôts qu'il contient. Si vous n'avez pas sauvegardé vos dépôts, vous pouvez les conserver pour l'instant, puis les supprimer vous-même plus tard une fois qu'ils auront été sauvegardés.
+ .
+ Si vous choisissez de supprimer l'environnement fermé, tous les répertoires qu'il contient seront supprimés, même s'ils sont situés sur un autre système de fichiers.
+ .
+ Si vous choisissez de conserver l'environnement fermé, veuillez noter que l'utilisateur et le groupe cvsd seront malgré tout supprimés : les informations de groupe et d'utilisateur propriétaires des fichiers deviendront alors incohérentes.
+Description-it.UTF-8: Rimuovere la gabbia chroot contenente repository?
+ La directory seguente è configurata come gabbia chroot per cvsd:
+   ${rootjail}
+ Si può scegliere di rimuovere la gabbia chroot, ma andranno persi anche tutti i repository all'interno della gabbia chroot. Se non è stato fatto un backup di tutti i repository è bene non rimuoverla adesso e farlo manualmente in seguito quando tutti i repository sono al sicuro.
+ .
+ Se si sceglie di rimuovere la directory chroot, tutte le directory che essa contiene saranno rimosse, anche se sono su un altro file system.
+ .
+ Se si sceglie di mantenere la gabbia chroot notare che l'utente e il gruppo cvsd saranno rimossi perciò le informazioni su uid e gid dei file potrebbero non essere più coerenti.
+Description-ja.UTF-8: リポジトリを含んでいる chroot jail を削除しますか?
+ 以下のディレクトリが cvsd の chroot jail として設定されています:
+   ${rootjail}
+ chroot jail を削除するのを選んだのかもしれませんが、chroot jail 内のすべてのリポジトリも失うことになります。保持しておきたいリポジトリをバックアップしていなかった場合、ここで削除するのではなく、後ほど一旦リポジトリを安全な状態にした上で手動で削除してください。
+ .
+ chroot ディレクトリを削除するのを選んだ場合、その下にある全てのディレクトリは他のファイルシステム上にあったとしても削除されます。
+ .
+ chroot jail を残しておくのを選んだ場合、cvsd ユーザ・グループが削除されるのでファイルの uid と gid 情報が有効ではなくなるのに注意してください。
+Description-nl.UTF-8: Verwijder de chroot gevangenis inclusief repositories?
+ De volgende directory is geconfigureerd als chroot gevangenis:
+   ${rootjail}
+ Je kunt er voor kiezen om de chroot gevangenis te verwijderen, maar alle repositories in de chroot gevangenis zullen ook verwijderd worden. Als je de repositories die je wilt behouden nog niet veilig hebt gesteld moet je het nu niet verwijderen en dit later met de hand doen.
+ .
+ Ale je er voor kiest om de chroot gevangenis te verwijderen, worden alle directories er onder (zelfs als deze op een andere schijf bevinden) verwijderd.
+ .
+ Als je er voor kiest om je chroot gevangenis te behouden, let dan op dat de cvsd gebruiker en groep niet meer beschikbaar zijn en de eigenaar en groupsinformatie van de files niet meer consistent hoeft te zijn.
+Description-pt.UTF-8: Remover a cadeia chroot que contem os repositórios?
+ O seguinte directório está configurado como sendo uma cadeia chroot para o cvsd:
+   ${rootjail}
+ Pode escolher remover a cadeia chroot mas também irá perder todos os repositórios dentro dela. Se não salvaguardou os seus repositórios provavelmente não o quererá remover agora mas sim removê-lo mais tarde quando os repositórios estiverem a salvo.
+ .
+ Se escolher remover o directório de chroot, todos os subdirectórios serão removidos, mesmo que estejam noutro sistema de ficheiros.
+ .
+ Se escolher manter a cadeia chroot note que os utilizador e grupo cvsd serão removidos pelo que a informação de uid e gid no ficheiro podem perder consistência.
+Description-pt_BR.UTF-8: Remover a jaula chroot que contém os respositórios ?
+ O diretório a seguir está configurado como uma jaula chroot para o cvsd:
+   ${rootjail}
+ Você pode optar por remover a jaula chroot mas, nesse caso, irá também perder todos os repositórios dentro da jaula. Caso você ainda não tenha feito uma cópia de segurança (backup) dos respositórios que você deseja manter não remova a jaula agora. Faça isso manualmente posteriormente quando seus repositórios estiverem seguros.
+ .
+ Caso você opte por remover o diretório chroot, todos os diretórios sob esse diretório serão removidos, mesmo caso tais diretórios estejam em outro sistema de arquivos.
+ .
+ Caso você opte por manter a jaula chroot, por favor note que o usuário e o grupo cvsd serão removidos, assim a informação de uid e gid dos arquivos pode não estar mais consistente.
+Description-ru.UTF-8: Удалить окружение chroot с репозиториями?
+ Следующий каталог использовался как ограниченное окружение chroot для cvsd:
+   ${rootjail}
+ Вы можете указать удалить каталог окружения chroot, но при этом потеряете все репозитории, находящиеся внутри. Если вы не делали резервных копий и хотите оставить репозитории, то не удаляйте каталог сейчас, а сделайте это вручную позже, когда перенесёте репозитории.
+ .
+ Если вы выберете удаление каталога окружения chroot, то все его подкаталоги будут удалены, даже если они находятся в другой файловой системе.
+ .
+ Если вы оставите каталог окружения chroot, то заметьте, что пользователь и группа cvsd будут удалены, поэтому файловая информация об uid и gid может больше не соответствовать действительности.
+Description-sv.UTF-8: Ta bort chroot-jail med förråd?
+ Följande katalog är inställd som chroot-jail för cvsd:
+  ${rootjail}
+ Du kan ta bort chroot-jail:et men du kommer då även att förlora alla förråd som finns i det. Om du inte har tagit säkerhetskopior av dina förråd kan det vara en god idé att låta dessa ligga kvar och ta bort de manuellt vid ett senare tillfälle.
+ .
+ Om du väljer att ta bort chroot-katalogen kommer även alla kataloger under den att tas bort, även om de tillhör ett annat filsystem.
+ .
+ Om du väljer att behålla chroot-jail:et är det viktigt att minnas att användaren och gruppen för CVSD kommer att tas bort så UID och GID för filerna kommer att vara felaktigt.
+Description-vi.UTF-8: Loại bỏ tù gốc khác chứa khó không?
+ Đã cấu hình thư mục theo đây như là tù gốc khác cho cvsd:
+   ${rootjail}
+ Bạn có thể chọn loại bỏ tù gốc khác ấy, nhưng mà hành động ấy sẽ cũng mất các kho ở trong nó. Nếu bạn chưa lưu trữ các kho muốn giữ thì đừng loại bỏ thư mụcvào lúc này: hãy tự loại bỏ nó chỉ khi các kho của bạn là an toàn.
+ .
+ [Chú thích dịch: Tù gốc khác (tiếng Anh: chroot jail) là một thư mục gốc tạm, thường được tạo để cho phép người dùng truy cập thư mục ấy qua FTP hay HTTP. Dù thư mục ấy có các tập tin gốc cần thiết, người dùng không thể truy cập tập tin gốc nào ở ngoại thư mục ấy: thì «tù» gốc khác. :) ]
+ .
+ Nếu bạn có chọn loại bỏ thư mục gốc khác thì mọi thư mục dưới nó sẽ bị loại bỏ, dù nếu nó trong hệ thống tập tin khác.
+ .
+ Nếu bạn chọn giữ tù gốc khác thì hãy ghi chú rằng vẫn còn sẽ loại bỏ người dùng và nhóm của cvsd. Như thế thì thông tin tập tin UID và GID sẽ không còn hợp nhất lại.
+ .
+ [Chú thích dịch:
+ UID - User ID - mã nhận diện người dùng
+ GID - Group ID - mã nhận diện nhóm]

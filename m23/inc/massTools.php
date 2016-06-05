@@ -153,7 +153,10 @@ function MASS_showFileHandDialog($EGKparams)
 **/
 function MASS_propertyKeys()
 {
-	return(array('client','office','group','login','forename','familyname','email','mac','ip','netmask','gateway','dns1','dns2','firstlogin','rootlogin','addNewLocalLogin','ldaptype','userID','groupID','ldapserver','nfshomeserver','timeZone','getSystemtimeByNTP'));
+	return(array('client','office','group','login','forename','familyname','email',
+	//m23customPatchBegin type=change id=MASS_propertyKeysAdditionalKeys
+	//m23customPatchEnd id=MASS_propertyKeysAdditionalKeys
+'mac','ip','netmask','gateway','dns1','dns2','firstlogin','rootlogin','addNewLocalLogin','ldaptype','userID','groupID','ldapserver','nfshomeserver','timeZone','getSystemtimeByNTP'));
 
 };
 
@@ -218,6 +221,8 @@ function MASS_keyToI18N($key)
 			case "forename": return($I18N_forename);
 			case "familyname": return($I18N_familyname);
 			case "ip": return($I18N_ip);
+	//m23customPatchBegin type=change id=MASS_keyToI18NAdditionalTranslations
+	//m23customPatchEnd id=MASS_keyToI18NAdditionalTranslations
 			case "netmask": return($I18N_netmask);
 			case "gateway": return($I18N_gateway);
 			case "firstlogin": return($I18N_first_login);
@@ -258,6 +263,8 @@ function MASS_I18NTokey($i18n)
 			case $I18N_forename: return("forename");
 			case $I18N_familyname: return("familyname");
 			case $I18N_ip: return("ip");
+	//m23customPatchBegin type=change id=MASS_I18NTokeyAdditionalBackTranslations
+	//m23customPatchEnd id=MASS_I18NTokeyAdditionalBackTranslations
 			case $I18N_netmask: return("netmask");
 			case $I18N_gateway: return("gateway");
 			case $I18N_first_login: return("firstlogin");
@@ -1148,6 +1155,8 @@ function MASS_showOverview($EGKparams)
 	$client=$_GET['client'];
 
 	$allGroups=GRP_listGroups();
+	//m23customPatchBegin type=change id=MASS_showOverviewLoadAdditionalArray
+	//m23customPatchEnd id=MASS_showOverviewLoadAdditionalArray
 	$allldapServers=LDAP_listServers();
 	$allTimeZones=HELPER_getTimeZones();
 
@@ -1256,7 +1265,9 @@ function MASS_showOverview($EGKparams)
 				$ips = MASS_ipGenerator($generateAmount,$EGKparams['ipRanges'],$EGKparams['ipPing']=="y");
 			else
 				$ips = MASS_getAllFromFile("ip",$EGKparams,$generateAmount,$fromDBFile);
-	
+
+	//m23customPatchBegin type=change id=MASS_showOverviewLoadAdditionalGeneratorsLoaders
+	//m23customPatchEnd id=MASS_showOverviewLoadAdditionalGeneratorsLoaders
 
 			//NETMASK
 			if ($EGKparams['netmask']=="k")
@@ -1420,6 +1431,8 @@ function MASS_showOverview($EGKparams)
 					$emails[$i]=$_POST["ED_email$i"];
 					$macs[$i]=$_POST["ED_mac$i"];
 					$ips[$i]=$_POST["ED_ip$i"];
+					//m23customPatchBegin type=change id=MASS_showOverviewAssignAdditionalPOST
+					//m23customPatchEnd id=MASS_showOverviewAssignAdditionalPOST
 					$netmasks[$i]=$_POST["ED_netmask$i"];
 					$gateways[$i]=$_POST["ED_gateway$i"];
 					$dns1s[$i]=$_POST["ED_dns1$i"];
@@ -1466,6 +1479,8 @@ function MASS_showOverview($EGKparams)
 	$emailLength = MASS_getLongestLength($emails,$generateAmount,25);
 	$macLength = MASS_getLongestLength($macs,$generateAmount,25);
 	$ipLength = MASS_getLongestLength($ips,$generateAmount,15);
+	//m23customPatchBegin type=change id=MASS_showOverviewAdditionalLength
+	//m23customPatchEnd id=MASS_showOverviewAdditionalLength
 	$netmaskLength = MASS_getLongestLength($netmasks,$generateAmount,25);
 	$gatewayLength = MASS_getLongestLength($gateways,$generateAmount,25);
 	$dns1Length = MASS_getLongestLength($dns1s,$generateAmount,15);
@@ -1501,12 +1516,16 @@ function MASS_showOverview($EGKparams)
 			<td>
 				<INPUT type=\"text\" name=\"ED_email$i\" size=\"$emailLength\" maxlength=\"255\" value=\"".$emails[$i]."\">
 			</td>
+			<!--m23customPatchBegin type=change id=MASS_showOverviewHTMLFormularInsertAfterED_email-->
+			<!--m23customPatchEnd id=MASS_showOverviewHTMLFormularInsertAfterED_email-->
 			<td>
 				<INPUT type=\"text\" name=\"ED_mac$i\" size=\"$macLength\" maxlength=\"255\" value=\"".$macs[$i]."\">
 			</td>
 			<td>
 				<INPUT type=\"text\" name=\"ED_ip$i\" size=\"$ipLength\" maxlength=\"255\" value=\"".$ips[$i]."\">
 			</td>
+			<!--m23customPatchBegin type=change id=MASS_showOverviewHTMLFormularInsertAfterED_ip-->
+			<!--m23customPatchEnd id=MASS_showOverviewHTMLFormularInsertAfterED_ip-->
 			<td>
 				<INPUT type=\"text\" name=\"ED_netmask$i\" size=\"$netmaskLength\" maxlength=\"255\" value=\"".$netmasks[$i]."\">
 			</td>
@@ -1650,6 +1669,8 @@ function MASS_startInstall($EGKparams)
 		$alldata['email']		= trim($_POST["ED_email$i"]);
 		$alldata['mac']			= trim($_POST["ED_mac$i"]);
 		$alldata['ip']			= trim($_POST["ED_ip$i"]);
+		//m23customPatchBegin type=change id=MASS_startInstallAssignAdditionalPOST
+		//m23customPatchEnd id=MASS_startInstallAssignAdditionalPOST
 		$alldata['netmask']		= trim($_POST["ED_netmask$i"]);
 		$alldata['gateway'] 	= trim($_POST["ED_gateway$i"]);
 		$alldata['dns1'] 		= trim($_POST["ED_dns1$i"]);

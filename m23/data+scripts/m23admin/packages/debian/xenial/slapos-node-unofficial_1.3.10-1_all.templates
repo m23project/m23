@@ -1,0 +1,198 @@
+
+Template: shared/slapos/master_url
+Type: string
+Description: SlapOS master node URL:
+Description-cs.UTF-8: URL hlavního uzlu SlapOS:
+Description-da.UTF-8: SlapOS' adresse for overknude:
+Description-de.UTF-8: URL des SlapOS-Masterknotens:
+Description-es.UTF-8: URL del nodo maestro de SlapOS:
+Description-fr.UTF-8: Adresse du nœud maître SlapOS :
+Description-it.UTF-8: URL del nodo master di SlapOS:
+Description-ja.UTF-8: SlapOS のマスターノード URL:
+Description-nl.UTF-8: SlapOS hoofdknoop-URL:
+Description-pl.UTF-8: URL głównego węzła SlapOS:
+Description-pt.UTF-8: URL do nó principal do SlapOS:
+Description-ru.UTF-8: URL главного узла SlapOS:
+Description-sv.UTF-8: URL till SlapOS huvudnod:
+
+Template: shared/slapos/master_url_with_ssl_note
+Type: note
+Description: Master node key and certificate mandatory
+ You used an HTTPS URL for the SlapOS master node, so the corresponding
+ certificate must be placed in /etc/slapos/ssl/slapos.crt, and the key
+ in /etc/slapos/ssl/slapos.key, readable only to root.
+Description-cs.UTF-8: Klíč hlavního uzlu a certifikát je povinný
+ Pro hlavní uzel SlapOS jste použili URL s HTTPS, takže v /etc/slapos/ssl/slapos.crt musí být umístěn příslušný certifikát a v /etc/slapos/ssl/slapos.key klíč, čitelný pouze uživatelem root.
+Description-da.UTF-8: Nøgle for overknude og certifikat er krævet
+ Du brugte en HTTPS URL for SlapOS' overknude, så det tilsvarende certifikat skal placeres i /etc/slapos/ssl/slapos.crt, og nøglen i /etc/slapos/ssl/slapos.key, kun læsbart for administrator (root).
+Description-de.UTF-8: Pflichtschlüssel und -zertifikat des Masterknotens
+ Sie haben eine HTTPS-URL für den SlapOS-Masterknoten verwandt, daher muss das zugehörige Zertifikat in /etc/slapos/ssl/slapos.crt und der Schlüssel nur für Root lesbar in /etc/slapos/ssl/slapos.key platziert werden.
+Description-es.UTF-8: La clave y el certificado del nodo maestro son obligatorios
+ Ha utilizado una URL con HTTPS para el nodo maestro de SlapOS, de modo que se deben instalar el certificado correspondiente en «/etc/slapos/ssl/slapos.crt», y la clave en «/etc/slapos/ssl/slapos.key». Estos ficheros deberían estar configurados con acceso de lectura sólo para el administrador.
+Description-fr.UTF-8: Clé et certificat obligatoires pour le nœud maître
+ Une adresse HTTPS a été choisie pour le nœud maître de SlapOS. Dans ce cas, le certificat correspondant doit être mis dans /etc/slapos/ssl/slapos.crt, et la clé dans /etc/slapos/ssl/slapos.key uniquement lisible par le superutilisateur.
+Description-it.UTF-8: Chiave e certificato obbligatori per il nodo master
+ È stato usato un URL HTTPS per il nodo master di SlapOS, perciò il certificato corrispondente deve essere messo in /etc/slapos/ssl/slapos.crt e la chiave in /etc/slapos/ssl/slapos.key, entrambi leggibili solo da root.
+Description-ja.UTF-8: マスターノード鍵と証明書が必須です
+ HTTPS URL をマスターノードとして入力したので、対応する鍵と証明書を /etc/slapos/ssl/slapos.key と /etc/slapos/ssl/slapos.crt に置いて、root のみが読み取れるようにしておく必要があります。
+Description-nl.UTF-8: Sleutel en certificaat van de hoofdknoop verplicht
+ U heeft een HTTPS-URL opgegeven voor de SlapOS hoofdknoop; het bijbehorende certificaat moet in /etc/slapos/ssl/slapos.crt worden gezet en de sleutel in /etc/slapos/ssl/slapos.key. De sleutel mag alleen leesbaar zijn voor de beheerder.
+Description-pl.UTF-8: Klucz i certyfikat głównego węzła jest obowiązkowy
+ Używany jest URL HTTPS do głównego węzła SlapOS, w związku z czym odpowiedni certyfikat musi zostać umieszczony w /etc/slapos/ssl/slapos.crt, a klucz w etc/slapos/ssl/slapos.key (do odczytu tylko dla roota).
+Description-pt.UTF-8: Chave e certificado obrigatório do nó principal
+ Usou um URL HTTPS para o nó principal do SlapOS, deste modo o certificado correspondente deverá ser colocado em /etc/slapos/ssl/slapos.crt, e a chave em /etc/slapos/ssl/slapos.key, com acesso de leitura apenas ao root.
+Description-ru.UTF-8: Сертификат и ключ главного узла
+ Для доступа к главному узлу SlapOS используется HTTPS URL, поэтому в /etc/slapos/ssl/slapos.crt должен быть соответствующий сертификат, а в /etc/slapos/ssl/slapos.key — ключ (доступны только root).
+Description-sv.UTF-8: Huvudnod-nyckel och certifikat behövs
+ Du använde en HTTPS URL för SlapOS huvudnod, motsvarande certifikat måste placeras i /etc/slapos/ssl/slapos.crt och nyckeln i /etc/slapos/ssl/slapos.key, dessa ska endast vara läsbara av root.
+
+Template: slapos-node-unofficial/computer_id
+Type: string
+Description: SlapOS computer ID:
+ Please specify a unique identifier for this SlapOS node.
+Description-cs.UTF-8: ID počítače SlapOS:
+ Zadejte prosím unikátní identifikátor pro tento uzel SlapOS.
+Description-da.UTF-8: Computer-id for SlapOS:
+ Angiv venligst en unik identifikator for denne SlapOS-knude.
+Description-de.UTF-8: SlapOS-Rechnerkennzahl:
+ Bitte geben Sie einen eindeutigen Bezeichner für diesen SlapOS-Knoten an.
+Description-es.UTF-8: Identificador de la máquina de SlapOS:
+ Introduzca el identificador único para este nodo de SlapOS.
+Description-fr.UTF-8: Identifiant de la machine SlapOS :
+ Veuillez indiquer un identifiant unique pour ce nœud SlapOS.
+Description-it.UTF-8: ID del computer SlapOS:
+ Specificare un identificatore univoco per questo nodo SlapOS.
+Description-ja.UTF-8: SlapOS コンピュータ ID:
+ この SlapOS ノード用の一意の識別子を指定してください。
+Description-nl.UTF-8: SlapOS computer-ID:
+ Geeft een unieke naam op voor deze SlapOS knoop.
+Description-pl.UTF-8: Identyfikator komputera SlapOS:
+ Proszę podać unikalny identyfikator dla tego węzła SlapOS.
+Description-pt.UTF-8: ID do computador SlapOS:
+ Por favor especifique um identificador único para este nó SlapOS.
+Description-ru.UTF-8: Идентификатор компьютера SlapOS:
+ Введите уникальный идентификатор этого узла SlapOS.
+Description-sv.UTF-8: SlapOS dator-ID:
+ Ange en unik identifiering för denna SlapOS-nod.
+
+Template: slapos-node-unofficial/software_root
+Type: string
+Description: Software Releases root directory:
+ If you intend to use this package only for development, then
+ /var/lib/slapos/software is a sensible choice, however, when using a master
+ with network cache, it is highly recommended to use the same path on all the
+ nodes, for example /opt/slapgrid.
+Description-cs.UTF-8: Kořenový adresář pro vydávání softwaru:
+ Pokud tento balíček zamýšlíte využívat pouze pro vývoj, pak je rozumnou volbou /var/lib/slapos/software. Při používání nadřazeného uzlu se síťovou mezipamětí, se však silně doporučuje používat na všech uzlech stejnou cestu, například /opt/slapgrid.
+Description-da.UTF-8: Rodmappe for programudgivelser:
+ Hvis du kun skal bruge denne pakke for udvikling, så er /var/lib/slapos/et rimeligt valg. Når der bruges en master med netværksmellemlager, er det dog stærkt anbefalingsværdigt at bruge den samme sti på alle knuderne; for eksempel /opt/slapgrid.
+Description-de.UTF-8: Wurzelverzeichnis der Softwareveröffentlichung:
+ Falls Sie beabsichtigen, dieses Paket nur zum Entwickeln zu benutzen, dann ist /var/lib/slapos/software eine vernünfige Wahl, wenn Sie jedoch einen Hauptrechner mit Netzwerkzwischenspeicher benutzen, ist es sehr empfehlenswert, auf allen Knoten den gleichen Pfad zu verwenden, beispielsweise /opt/slapgrid.
+Description-es.UTF-8: Directorio raíz de las «distribuciones de programas»:
+ La opción «/var/lib/slapos/software» es apropiada si desea utilizar este paquete sólamente para desarrollo. Sin embargo, en el caso de utilizar un nodo maestro con caché de red es altamente recomendable utilizar la misma ruta en todos los nodos. Como, por ejemplo: «/opt/slapgrid».
+Description-fr.UTF-8: Répertoire racine des publications de logiciels :
+ Si ce paquet n'est utilisé qu'en développement, le répertoire  /var/lib/slapos/software est un choix adapté. Cependant, si un serveur maître est utilisé avec un cache réseau, il est fortement recommandé d'utiliser le même chemin sur tous les noeuds, par exemple /opt/slapgri.
+Description-it.UTF-8: Directory root per i rilasci software:
+ Se si ha intenzione di usare questo pacchetto solo per fare sviluppo, allora /var/lib/slapos/software è una scelta sensata; tuttavia, quando si una un master con una cache di rete è fortemente raccomandato l'uso dello stesso percorso su tutti i nodi, per esempio /opt/slapgrid.
+Description-ja.UTF-8: ソフトウェアリリースのルートディレクトリ:
+ このパッケージを開発目的でのみ利用する予定であれば /var/lib/slapos/software が賢明な選択ですが、マスターをネットワークのキャッシュと共に利用する場合は全ノードで同一のパス、例えば /opt/slapgrid を利用することを強く勧めます。
+Description-nl.UTF-8: Hoofdmap van de software-uitgaves:
+ Als u van plan bent dit pakket alleen voor ontwikkeling te gebruiken, dan is /var/lib/slapos/software een verstandige keus. Als u echter een hoofdknoop met netwerkcache wilt gebruiken, dan wordt ten zeerste aanbevolen om hetzelfde pad te gebruiken op alle knopen, bijvoorbeeld /opt/slapgrid.
+Description-pl.UTF-8: Główny katalog Software Releases:
+ Jeśli ten pakiet będzie używany tylko w celach deweloperskich, to dobrym wyborem będzie katalog /var/lib/slapos/software. Jeśli jednak używany jest główny z sieciową pamięcią podręczną, to zaleca się ustawienie takiej samej ścieżki dla wszystkich węzłów (np. /opt/slapgrid).
+Description-pt.UTF-8: Directório raiz de 'Sotfware Releases'
+ Se pretender usar este pacote apenas para desenvolvimento, o directório /var/lib/slapos/software será uma escolha plausível, no entanto, quando usa um 'master' como cache da rede, é altamente recomendado que use o mesmo caminho para todos os nós, por exemplo /opt/slapgrid.
+Description-ru.UTF-8: Корневой каталог версий ПО:
+ Если вы хотите использовать этот пакет только для разработки, то подходящим значением для ПО будет /var/lib/slapos/, однако при использовании главного узла с сетевым кэшем рекомендуется использовать одинаковый путь на всех узлах, например /opt/slapgrid.
+Description-sv.UTF-8: Rotkatalog för mjukvaruutgåvor:
+ Om detta paket endast ska användas för utveckling kan /var/lib/slapos/software vara ett vettig val. Används å andra sidan en huvudsaklig nätverkscache är det starkt rekomenderat att använda samma sökväg på alla noderna. Exempelvis /opt/slapgrid.
+
+Template: slapos-node-unofficial/partition_amount
+Type: string
+Description: Number of Computer Partitions on this computer:
+ A Computer Partition (CP) is an instance of a Software Release
+ (SR). You can now define how many instances will be available on this
+ computer.
+ .
+ Note that the Software Releases will be stored in
+ /var/lib/slapos/software/, whereas the Computer Partition will be
+ stored in /var/lib/slapos/instance/.
+Description-cs.UTF-8: Počet oddílů počítače na tomto počítači:
+ Oddíl počítače (CP) je instancí verze softwaru (SR). Nyní můžete určit, kolik instancí bude na tomto počítači dostupných.
+ .
+ Vezměte na vědomí, že se verze softwaru budou ukládat do /var/lib/slapos/software/, zatímco oddíly počítače do /var/lib/slapos/instance/.
+Description-da.UTF-8: Antal computerpartitioner på denne computer:
+ En computerpartition (CP) er en instans af en programudgivelse (SR). Du kan nu definere hvor mange instanser, som vil være tilgængelige på denne computer.
+ .
+ Bemærk at programudgivelser vil blive gemt i /var/lib/slapos/software/, hvorimod computerpartitionen vil blive gemt i /var/lib/slapos/instance/.
+Description-de.UTF-8: Anzahl der »Computer Partitionen« auf diesem Rechner:
+ Eine »Computer Partition« (CP) ist eine Instanz eines »Software-Releases« (SR). Sie können nun festlegen, wie viele Instanzen auf diesem Rechner verfügbar sein werden.
+ .
+ Beachten Sie, dass das »Software Release« in /var/lib/slapos/software/ gespeichert wird, während die »Computer-Partition« in /var/lib/slapos/instance/ gespeichert wird.
+Description-es.UTF-8: Número de «particiones de equipo» en este equipo:
+ Una «partición de equipo» («Computer Partition» o CP) es una instancia de una «distribución del programa» («Software Release» o SR). Puede definir cuántas instancias estarán disponibles en este equipo.
+ .
+ Tenga en cuenta que las «distribuciones del programa» se almacenan en «/var/lib/slapos/software/», mientras que las «particiones de equipo» se almacenarán en «/var/lib/slapos/instance/».
+Description-fr.UTF-8: Nombre de « Partitions Ordinateur » présentes sur cette machine :
+ Une « Partition Ordinateur » (PO) est une instance correspondant à une « Version de Logiciel » (VL).  Vous pouvez désormais définir combien d'instances seront disponibles sur cet ordinateur.
+ .
+ Veuillez noter que les « Versions de Logiciels » seront stockées dans /var/lib/slapos/software/, tandis que les « Partitions d'Ordinateur » seront stockées dans /var/lib/slapos/instance/.
+Description-it.UTF-8: Numero delle partizioni computer in questo computer:
+ Una partizione computer (CP) è un'istanza di un rilascio software (SR). È possibile definire ora quante istanze saranno disponibili su questo computer.
+ .
+ Notare che i rilasci software (SR) saranno memorizzati in /var/lib/slapos/software/, mentre le partizioni computer (CP) saranno memorizzate in /var/lib/slapos/instance/.
+Description-ja.UTF-8: このコンピューター上のコンピューターパーティション数:
+ コンピューターパーティション (CP) は、ソフトウェアリリース (SR) のインスタンスです。このコンピューター上でいくつのインスタンスが利用可能かをここで定義できます。
+ .
+ ソフトウェアリリースは /var/lib/slapos/software/ に、そしてコンピューターパーティションは /var/lib/slapos/instance/ に保存されます。
+Description-nl.UTF-8: Het aantal computerpartities op deze computer:
+ Een computerpartitie (Computer Partition, CP) is een instantie van een software-uitgave (Software Release, SR). U kunt nu aangeven hoeveel instanties beschikbaar zullen zijn op deze computer.
+ .
+ De software-uitgaves worden opgeslagen in /var/lib/slapos/software/ en de computerpartities in /var/lib/slapos/instance/.
+Description-pl.UTF-8: Liczba Computer Partition na tym komputerze:
+ Computer Partition (CP) jest instancją Software Release (SR). Można określić jak wiele instancji będzie dostępnych na tym komputerze.
+ .
+ Proszę zauważyć, że Software Release będą przechowywane w /var/lib/slapos/software/, a Computer Partition w /var/lib/slapos/instance/.
+Description-pt.UTF-8: Número de Partições de Computador neste computador:
+ Uma 'Computer Partition' (CP) é uma instância de uma 'Software Release' (SR). Pode definir o número de instâncias que estarão disponíveis neste computador.
+ .
+ Note que as Software Releases serão armazenadas em /var/lib/slapos/software/, enquanto que a Computer Partition será armazenada em /var/lib/slapos/instance/.
+Description-ru.UTF-8: Количество Computer Partition на этом компьютере:
+ Computer Partition (CP) — это экземпляр Software Release (SR). Сейчас вы можете указать сколько экземпляров будет доступно на этом компьютере.
+ .
+ Заметим, что Software Release будут храниться в /var/lib/slapos/software/, а Computer Partition будет храниться в /var/lib/slapos/instance/.
+Description-sv.UTF-8: Antal datorpartitioner på denna dator:
+ En datorpartition (CP) är en instans av en mjukvaruutgåva (SR). Du kan nu ange hur många instanser du vill ska vara tillgängliga på denna dator.
+ .
+ Kom ihåg att mjukvaruutgåvor kommer att lagras i /var/lib/slapos/software/, datorpartitioner lagras i /var/lib/slapos/instance/.
+
+Template: slapos-node-unofficial/ipv4_local_network
+Type: string
+Default: 10.0.0.0/16
+Description: Local IPv4 network to be used for Computer Partitions:
+ Every Computer Partition must have an address on the same IPv4 network.
+ Please specify a network in CIDR notation (e.g.: 192.0.2.0/24).
+Description-cs.UTF-8: Místní IPv4 síť, která se má použít pro oddíly počítače:
+ Každý oddíl počítače musí mít adresu ve stejné IPv4 síti. Zadejte prosím adresu sítě v CIDR zápisu (např.: 192.0.2.0/24).
+Description-da.UTF-8: Lokalt IPv4-netværk som skal bruges for computerpartitioner:
+ Alle computerpartitioner skal have en adresse på det samme IPv4-netværk. Angiv venligst et netværk i CIDR-notation (det vil sige: 192.0.2.0/24).
+Description-de.UTF-8: Lokales IPv4-Netzwerk, das für »Computer Partitionen« benutzt wird:
+ Jede »Computer Partition« muss eine Adresse im gleichen IPv4-Netzwerk haben. Bitte geben Sie ein Netzwerk in CIDR-Notation an (z.B 192.0.2.0/24).
+Description-es.UTF-8: Red local IPv4 que se utilizará para las «particiones de equipo»:
+ Cada «partición de equipo» debe tener una dirección en la misma red IPv4. Introduzca una red utilizando la notación CIDR (por ejemplo: 192.0.2.0/24).
+Description-fr.UTF-8: Réseau IPV4 à utiliser pour les « Partitions d'Ordinateur » :
+ Chaque « Partition d'Ordinateur » doit avoir une adresse sur le même réseau IPV4. Veuillez indiquer un réseau avec la notation CIDR (ex: 192.168.2.0/24).
+Description-it.UTF-8: Rete IPv4 locale da usare per le partizioni computer (CP):
+ Ogni partizione computer (CP) deve avere un indirizzo sulla stessa rete IPv4. Specificare una rete in notazione CIDR (es.: 192.0.2.0/24).
+Description-ja.UTF-8: コンピューターパーティションに使うローカル IPv4 ネットワーク:
+ すべてのコンピューターパーティションは同じ IPv4 ネットワーク上のアドレスを持つ必要があります。ネットワークを CIDR 記法で指定してください (例: 192.0.2.0/24)
+Description-nl.UTF-8: Lokaal IPv4-netwerk voor de computerpartities:
+ Elke computerpartitie moet een IP-adres in hetzelfde IPv4-netwerk hebben. Geef een netwerk in CIDR-notatie op (bv. 192.0.2.0/24).
+Description-pl.UTF-8: Lokalna sieć IPv4 używana do Computer Partition:
+ Każda Computer Partition musi posiadać adres w tej samej sieci IPv4. Proszę podać sieć w notacji CIDR (np 192.0.2.0/24).
+Description-pt.UTF-8: Rede IPv4 local a ser usada pelas 'Computer Partitions':
+ Todas as 'Computer Partition' necessitam de ter um endereço na mesma rede IPv4. Por favor especifique uma rede com notação CIDR (p.e.: 192.0.2.0/24).
+Description-ru.UTF-8: Локальная сеть IPv4, которая будет использована на Computer Partition:
+ Все Computer Partition должны иметь адреса из одной сети IPv4. Укажите адрес сети в формате CIDR (например: 192.0.2.0/24).
+Description-sv.UTF-8: Lokalt IPv4-nätverk som ska användas för datorpartitioner:
+ Varje datorpartition måste ha en adress på samma IPv4-nätverk. Ange ett nätverk med CIDR-notation (ex. 192.0.2.0/24).

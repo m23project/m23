@@ -1,0 +1,310 @@
+Template: metche/email
+Type: string
+Default: root@localhost
+Description: E-mail address receiving metche reports:
+ metche monitors "system state" changes.  An hour after the last change has
+ been recorded an e-mail report is sent describing changes made to:
+  - files inside the watched directory (/etc by default),
+  - user maintained changelog file(s) (if configured to do so),
+  - the list of installed Debian packages (if configured to do so).
+ .
+ Please enter the e-mail that should receive these reports.  It typically
+ corresponds to the alias or mailing-list used by system administrators for
+ this computer.
+ .
+ Note: by default, metche does not send detailed diffs describing file
+ changes as this can leak confidential information.  If you want to use
+ this feature, you are strongly encouraged to turn on GPG encryption at the
+ same time. See the metche(8) man page and the configuration file for more
+ details.
+Description-cs.UTF-8: Emailová adresa, na kterou budou posílány zprávy metche:
+ metche monitoruje změny "stavu systému". Hodinu poté, co jsou zaznamenány poslední změny, je poslána zpráva popisující změny zaměřená na:
+  - soubory uvnitř sledovaného adresáře (výchozí hodnotou je /etc),
+  - uživatelem spravovaný soubor(y) changelog (je-li nastaveno),
+  - seznam instalovaných balíčků Debianu (je-li nastaveno).
+ .
+ Zadejte prosím emailovou adresu, na kterou budou tyto zprávy posílány. Obvykle se používá jméno nebo adresář používaný pro administrátora tohoto počítače.
+ .
+ Poznámka: ve výchozím nastavení metche neposílá detailní rozdíly popisující změny souboru, protože by tak mohlo dojít k úniku důvěrných informací. Pokud si přejete použít tuto vlastnost, silně doporučujeme zapnout šifrování GPG. Pro další informace se podívejte na konfigurační soubor a manuálovou stránku metche(8).
+Description-da.UTF-8: E-post-adresse som modtager metcherapporter:
+ metche overvåger ændringer af typen »systemtilstand«. En time efter den sidste ændring er blevet optaget sendes en e-post-rapport, der beskriver ændringer lavet til:
+  - filer inden i den overvågede mappe (/etc som standard),
+  - brugervedligeholdte ændringslogfiler (hvis konfigureret til at lave dem),
+  - listen over installerede Debianpakker (hvis konfigureret til at vise den).
+ .
+ Indtast venligst e-posten som skal modtage disse rapporter. Det svarer typisk til aliaset eller postlisten brugt af systemadministratorer for denne computer.
+ .
+ Bemærk: Som standard, sender metche ikke detaljerede differ, der beskriver filændringer, da dette kan lække fortrolig information. Hvis du ønsker at bruge denne funktion, så opfordres du stærkt til at bruge GPG-kryptering på samme tidspunkt. Se manualsiden metche(8) og konfigurationsfilen for yderligere detaljer.
+Description-de.UTF-8: E-Mail-Adresse, unter der Metche-Berichte empfangen werden:
+ Metche überwacht Änderungen des »Systemzustandes«. Eine Stunde, nachdem die letzte Änderung aufgezeichnet wurde, wird ein Bericht per E-Mail versandt, der die folgenden Änderungen beschreibt:
+  - Dateien innerhalb überwachter Verzeichnisse (standardmäßig /etc)
+  - benutzerverwaltete Changelog-Datei(en) (falls entsprechend konfiguriert)
+  - die Liste der installierten Debian-Pakete (falls entsprechend konfiguriert)
+ .
+ Bitte geben Sie die E-Mail-Adresse ein, unter der diese Berichte empfangen werden sollen. Diese ist typischerweise der Alias oder die Mailingliste, die vom Administrator für diesen Computer verwendet wird.
+ .
+ Hinweis: Standardmäßig verschickt Metche keine detaillierten Diffs, die die Dateiänderungen beschreiben, da hierbei vertrauliche Informationen bekannt werden könnten. Falls Sie die Funktionalität benutzen möchten, wird Ihnen nachdrücklich empfohlen, ebenfalls GPG-Verschlüsselung zu aktivieren. Lesen Sie die Handbuchseite von metche(8) und die Konfigurationsdatei für weitere Details.
+Description-es.UTF-8: Dirección de correo electrónico para recibir los informes de metche:
+ metche monitoriza los cambios del «estado del sistema». Una hora después del último cambio que se ha registrado se manda un correo electrónico describiendo los cambios realizados en:
+  - Los archivos dentro del directorio vigilado (de forma predeterminada es «/etc»).
+  - Archivo(s) de registro de cambios mantenido(s) por el usuario (si está configurado para hacerlo).
+  - La lista de paquetes Debian instalados (si está configurado para hacerlo).
+ .
+ Introduzca la dirección de correo electrónico que recibirá estos informes. Normalmente, se corresponde con el seudónimo («alias») o la lista de correo usada por los administradores del sistema de esta máquina.
+ .
+ Aviso: De forma predeterminada, metche no envía «diffs» describiendo los cambios de los archivos ya que esto puede provocar fugas de información confidencial. Si quiere utilizar esta funcionalidad, se le pide encarecidamente que también active el cifrado GPG. Para más detalles vea la página del manual metche(8) y el archivo de configuración.
+Description-fr.UTF-8: Adresse électronique qui recevra les rapports de metche :
+ Metche surveille les changements d'« état système ». Une heure après l'enregistrement du dernier changement, un rapport est envoyé par courriel ; il décrit les modifications :
+  - des fichiers dans les répertoires surveillés (/etc par défaut) ;
+  - des journaux de modifications (« changelog ») gérés par
+    l'utilisateur (si configuré ainsi) ;
+  - de la liste des paquets Debian installés (si configuré ainsi).
+ .
+ Veuillez indiquer l'adresse électronique qui recevra ces rapports. Cela correspond généralement à l'alias ou à la liste de diffusion utilisé par les administrateurs de cette machine.
+ .
+ Note : par défaut, metche n'envoie pas de détail des différences entre les versions successives des fichiers puisque des informations confidentielles peuvent en être tirées. Si vous voulez utiliser cette fonctionnalité, l'utilisation simultanée du chiffrement GPG est vivement recommandée. Veuillez consulter la page de manuel metche(8) et le fichier de configuration pour plus de détails.
+Description-gl.UTF-8: Enderezo de correo onde se reciben os informes de metche:
+ metche vixía as mudanzas no «estado do sistema». Unha hora despois de que se rexistre a última modificación envíase un informe por correo onde se describen as modificacións que se fixesen en:
+  - ficheiros no directorio vixiado (por omisión /etc),
+  - ficheiros de rexistro de modificacións mantidos polo usuario (se o configurou),
+  - a lista de paquetes de Debian instalados (se o configurou).
+ .
+ Indique o correo que debe recibir estes informes. Tipicamente correspóndese co alcume ou rolda de correo empregada polos administradores do sistema para este ordenador.
+ .
+ Nota: por omisión metche non envía ficheiros de diferenzas detallados onde se describen as diferenzas e isto pode filtrar información confidencial. Se desexa empregar esta funcionalidade recoméndase activar a cifraxe GPG á vez. Para máis detalles consulte a páxina de manual de metche(8) e o ficheiro de configuración.
+Description-it.UTF-8: Indirizzo di posta elettronica del destinatario dei rapporti di metche:
+ metche monitora le modifiche allo stato del sistema. Un'ora dopo che l'ultima modifica è stata osservata viene inviato un rapporto per posta elettronica, il quale descrive le modifiche apportate a:
+  - file all'interno della directory monitorata (in modo predefinito «/etc»),
+  - registri delle modifiche mantenuti dall'utente (se così configurato),
+  - l'elenco dei pacchetti Debian installati (se così configurato).
+ .
+ Inserire l'indirizzo di posta elettronica che dovrà ricevere questi rapporti. Tipicamente corrisponde all'alias o alla lista di distribuzione utilizzato dagli amministratori del sistema per questo computer.
+ .
+ Notare che in modo predefinito metche non invia dei file diff dettagliati con la descrizione delle modifiche ai file, in quanto questo potrebbe causare una fuoriuscita di dati confidenziali. Se si desidera questa funzionalità è raccomandata la contemporanea abilitazione della cifratura GPG. Per maggiori dettagli consultare il manuale di metche(8).
+Description-ja.UTF-8: metche の報告を受け取るメールアドレス:
+ metche は「システム状態」の変更を監視します。以下に最後の変更が記録されてから1時間後にその変更内容について記載したメールによる報告が送られます:
+  - 監視対象ディレクトリ (デフォルトで /etc) 内にあるファイル
+  - ユーザが保守する変更記録ファイル (監視するように設定した場合)
+  - インストール済み Debian パッケージ一覧 (監視するように設定した場合)
+ .
+ 報告を受け取るメールアドレスを入力してください。標準的にはこのコンピュータのシステム管理者用の別名やメーリングリストにあたるものを入力します。
+ .
+ 注意: デフォルトでは、機密情報漏洩の可能性があるため metche はファイルの変更を記載した詳細な差分を送りません。この機能を使いたい場合は同時に GPG により暗号化することを強く勧めます。さらなる詳細については metche(8) man ページや設定ファイルを見てください。
+Description-nl.UTF-8: E-mailadres waarop de rapporten van metche toekomen:
+ metche volgt wijzigingen in de "systeemtoestand" op. Een uur nadat de laatste wijziging werd opgetekend, wordt een e-mailrapport verzonden met een beschrijving van de veranderingen aan:
+  - bestanden in de opgevolgde map (standaard /etc),
+  - door gebruikers bijgehouden logbestanden met veranderingen (indien zo ingesteld),
+  - de lijst van geïnstalleerde Debian-pakketten (indien zo ingesteld).
+ .
+ Gelieve het e-mailadres op te geven dat deze rapporten zal ontvangen. Meestal komt dit overeen met de alias of de mailinglijst die systeembeheerders voor deze computer gebruiken.
+ .
+ Merk op dat metche standaard geen gedetailleerde diffs verstuurt met de beschrijving van de veranderingen aan bestanden, aangezien daardoor confidentiële informatie kan lekken. Indien u dergelijke functionaliteit wel wenst, raden we u sterk aan om in dat geval gebruik te maken van GPG-encryptie. Raadpleeg de man-pagina's van metche(8) en het configuratiebestand voor meer details.
+Description-pt.UTF-8: Endereço de email para receber os relatórios do metche:
+ metche monitoriza mudanças de "estado do sistema". Uma hora depois da última modificação ter sido registada um relatório é enviado por email a descrever as alterações feitas a:
+  - ficheiros dentro da directoria observada (/etc por omissão),
+  - ficheiro(s) de changelog mantido(s) pelo utilizador (se configurado para tal),
+  - a lista de pacotes Debian instalados (se configurado para tal).
+ .
+ Por favor insira o e-mail que deve receber estes relatórios. Tipicamente corresponde a um alias ou mailing-list usada pelos administradores do sistema para este computador.
+ .
+ Nota: por omissão, metche não envia diffs detalhados a descrever alterações ao ficheiro visto que isto pode levar a fuga de informação confidencial. Se quiser usar esta feature, é fortemente encorajado ao mesmo tempo a ligar a encriptação GPG. Veja a página do manual metche(8) e o ficheiro de configuração para mais detalhes.
+Description-ru.UTF-8: Адрес эл.почты для получения отчётов metche:
+ metche отслеживает изменения "состояния системы". Спустя час после записи последнего изменения, по электронной почте посылается отчёт об изменениях:
+  - файлы в отслеживаемом каталоге (по умолчанию в /etc),
+  - отслеживаемые пользователем файлы changelog (если настроено),
+  - список установленных пакетов Debian (если настроено).
+ .
+ Введите адрес эл.почты, на который будут отправляться эти отчёты. Обычно, это псевдоним или список рассылки, используемый системными администраторами данного компьютера.
+ .
+ Замечание: по умолчанию, metche не посылает подробные сравнения описываемого файла, так как это может привести к утечке информации. Если вы хотите использовать данную возможность, то настоятельно рекомендуется включить шифрование GPG. Подробней, см. в справочной странице metche(8) и файле настройки.
+Description-sv.UTF-8: E-post-adress som ska ta emot rapporter från metche:
+ metche övervakar förändringar av "systemets tillstånd". En timme efter att en förändring har genomförts skickas en rapport per e-post med en sammanfattning av ändringarna i:
+  - filer i övervakad(e) katalog(er) (/etc i standardutförandet),
+  - användarens versionsloggar (om detta anges i inställningarna),
+  - listan över installerade Debianpaket (om detta anges i inställningarna).
+ .
+ Ange e-post-adressen som ska ta emot dessa rapporter. Vanligtvis ett alias eller en sändlista för systemets administratörer.
+ .
+ OBS: I standardutförandet skickar metche inte detaljerade diff-filer för förändringarna eftersom detta kan läcka hemlig information. Om denna funktion önskas bör den kombineras med GPG-kryptering, läs mer i manualsidan metche(8) om hur detta aktiveras.
+Description-vi.UTF-8: Địa chỉ thư nên nhận thông báo metche:
+ Metche theo dõi các thay đổi về « tình trạng hệ thống ». Một giờ sau khi ghi lưu thay đổi cuối cùng thì nó gửi một thư thông báo mà diễn tả những thay đổi được làm trong:
+  • tập tin nào bên trong thư mục đang theo dõi (mặc định là « /etc »)
+  • tập tin theo dõi thay đổi (changelog) nào do người dùng bảo tồn (nếu được hiệu lực)
+  • danh sách các gói Debian đã cài đặt (nếu được hiệu lực)
+ .
+ Hãy gõ địa chỉ thư điện tử nên nhận thư thông báo như vậy. Địa chỉ này bình thường tương ứng với bí danh hay hộp thư chung được dùng bởi quản trị hệ thống cho máy tính này.
+ .
+ Ghi chú : mặc định là Metche không gửi bản khác biệt (diff) chi tiết về tập tin đã thay đổi, vì thông tin này có thể là không công bố. Muốn sử dụng tính năng này thì rất khuyên bạn cũng hiệu lực mật mã GPG. Xem trang hướng dẫn metche(8) và tập tin cấu hình để tìm thêm chi tiết.
+
+Template: metche/changelog/type
+Type: select
+Default: No changelog monitoring
+Choices: Single changelog file, Multiple changelog files, No changelog monitoring
+Choices-cs.UTF-8: Jeden soubor changelog, Více souborů changelog, Bez sledování changelogu
+Choices-da.UTF-8: En ændringslogfil, Flere ændringslogfiler, Ingen ændringslogovervågning
+Choices-de.UTF-8: Einzelne Changelog-Datei, Mehrere Changelog-Dateien, Keine Changelog-Überwachung
+Choices-es.UTF-8: Archivo único de registro de cambios, Varios archivos de registro de cambios, Sin monitorización de registro de cambios
+Choices-fr.UTF-8: Journal de modifications unique, Journaux de modifications multiples, Aucune surveillance de journal de modifications
+Choices-gl.UTF-8: Un só ficheiro de rexistro de modificacións, Múltiplos ficheiros de rexistro de modificacións, Sen vixilancia do rexistro de modificacións
+Choices-it.UTF-8: File singolo di registro delle modifiche, File multipli di registri delle modifiche, Nessun monitoraggio del registro delle modifiche
+Choices-ja.UTF-8: 単一の変更記録ファイル, 複数の変更記録ファイル, 変更記録の監視はしない
+Choices-nl.UTF-8: Een enkel logbestand met veranderingen, Meerdere logbestanden met veranderingen, Logbestanden met veranderingen niet opvolgen
+Choices-pt.UTF-8: Ficheiro único de changelog, Ficheiros múltiplos de changelog, Não monitorização do changelog
+Choices-ru.UTF-8: Один файл changelog, Несколько файлов changelog, Не следить за changelog
+Choices-sv.UTF-8: Ensam versionsloggfil, Flera versionsloggfiler, Ingen övervakning av versionsloggfiler
+Choices-vi.UTF-8: Tập tin changelog đơn, Nhiều tập tin changelog, Không theo dõi changelog
+Description: Changelog monitoring type:
+ metche can monitor one or more changelogs written by the system
+ administrators.
+ .
+ These changelogs should contain comments describing the changes made to
+ the system.  The easiest way to organize these comments is to put them all
+ together in one file.
+ .
+ Another possibility is to have a subdirectory for each administrative task
+ with a file named "Changelog".  This way, you can store source code or
+ configuration examples along with the documentation on how they have been
+ used.
+Description-cs.UTF-8: Typ sledování changelogu:
+ metche může sledovat jeden nebo více changelogů napsaných systémovými administrátory.
+ .
+ Tyto seznamy změn mohou obsahovat komentáře popisující změny provedené systémem. Nejjednodušší cestou pro uspořádání těchto komentářů je umístit je všechny do jednoho souboru.
+ .
+ Další možností je vytvořit pro každou administrativní úlohu podadresář spolu se souborem pojmenovaným "Changelog". Takto můžete uchovávat zdrojové kódy a příklady s konfigurací společně s použitou dokumentací.
+Description-da.UTF-8: Ændringslogovervågningstype:
+ metche kan overvåge en eller flere ændringslog skrevet af systemadministratorerne.
+ .
+ Disse ændringslog skal indeholde kommentarer, der beskriver ændringerne foretaget på systemet. Den nemmeste måde at organisere disse kommentarer på er at placere dem sammen i en fil.
+ .
+ En anden mulighed er at have en undermappe for hver administrativ opgave med en fil navngivet »Changelog« (ændringslog). På denne måde kan du gemme kildekode eller konfigurationseksempler, sammen med dokumentationen på hvordan de er blevet brugt.
+Description-de.UTF-8: Arten der Changelog-Überwachung
+ Metche kann eine oder mehrere vom Systemadministrator geschriebene Changelogs überwachen.
+ .
+ Diese Changelogs sollten Kommentare enthalten, die die durchgeführten Änderungen am System beschreiben. Die einfachste Art, diese Kommentare zu organisieren, besteht darin, sie alle in eine einzige Datei zu schreiben.
+ .
+ Eine andere Möglichkeit besteht darin, für jede administrative Aufgabe ein Unterverzeichnis mit einer Datei »Changelog« anzulegen. Auf diese Art können Sie Quellcode oder Konfigurationsbeispiele zusammen mit der Dokumentation, wie diese benutzt wurden, ablegen.
+Description-es.UTF-8: Tipo de monitorización de registro de cambios:
+ metche puede monitorizar uno o más registros de cambios escritos por los administradores del sistema.
+ .
+ Estos registros de cambios deberían contener comentarios describiendo los cambios realizados al sistema. La forma más fácil de organizar estos comentarios es colocarlos juntos en un archivo.
+ .
+ Otra posibilidad es tener un subdirectorio para cada tarea administrativa con un archivo llamado «Changelog». De esta forma, puede almacenar el código fuente o los archivos de ejemplos de configuración junto a la documentación sobre cómo se han usado.
+Description-fr.UTF-8: Type de surveillance de journal de modifications :
+ Metche peut surveiller un ou plusieurs journaux de modifications maintenus par les administrateurs système.
+ .
+ Ces journaux de modifications devraient contenir des commentaires décrivant les modifications appliquées au système. Le plus simple pour organiser ces commentaires est de tous les rassembler en un seul fichier.
+ .
+ Une autre possibilité est d'avoir un sous-répertoire pour chaque tâche administrative, avec un fichier « Changelog ». De cette manière, vous pouvez conserver du code source ou des exemples de configuration en même temps que la documentation concernant leur utilisation.
+Description-gl.UTF-8: Tipo de vixilancia do rexistro de modificacións:
+ metche pode vixiar un ou máis rexistros de modificacións escritor polos administradores do sistema.
+ .
+ Estes rexistros do sistema deben conter comentarios que describan as modificacións que se fixesen no sistema. O xeito máis sinxelo de organizar estes comentarios é poñelos xuntos nun só ficheiro.
+ .
+ Outra posibilidade é ter un subdirectorio para cada tarefa administrativa cun ficheiro chamado «Changelog». Deste xeito pode gardar código fonte ou exemplos de configuración xunto coa documentación que describe como se utilizaron.
+Description-it.UTF-8: Tipo di monitoraggio del registro delle modifiche:
+ metche può monitorare uno o più registri delle modifiche scritti dall'amministratore del sistema.
+ .
+ Questi registri delle modifiche dovrebbero contenere dei commenti che descrivono le modifiche apportate al sistema. Il modo più pratico per organizzarli è di metterli tutti insieme in un singolo file.
+ .
+ Altrimenti si può avere una sottodirectory per ogni compito amministrativo con un file denominato «Changelog». In questo modo è possibile memorizzare del codice sorgente o degli esempi di configurazione insieme alla documentazione sul modo in cui questi sono stati utilizzati.
+Description-ja.UTF-8: 変更記録監視タイプ:
+ metche はシステム管理者により書かれる変更記録を監視することができます。
+ .
+ 変更記録にはシステムに行った変更についての説明を記録します。この記録の最も簡単なまとめ方は一つのファイルに全て記載していく方法です。
+ .
+ 他に、管理タスク毎にサブディレクトリを作ってそれぞれに「Changelog」というファイルを持たせる方法があります。こうすると、ソースコードや設定例をこれまでの使い方について述べた資料とともに保存できます。
+Description-nl.UTF-8: Type opvolging van logbestanden met veranderingen
+ metche kan de opvolging verzekeren van een of meerdere logbestanden met veranderingen die de systeembeheerders opgeschreven hebben.
+ .
+ Deze logbestanden met veranderingen zouden commentaar moeten bevatten over de gemaakte veranderingen aan het systeem. De gemakkelijkste manier om met deze commentaren om te gaan is ze allemaal in een bestand te plaatsen.
+ .
+ Een andere mogelijkheid is om voor elke beheerstaak een aparte onderliggende map te maken met daarin een bestand met de naam "Changelog". Op die manier kunt u broncode bewaren of voorbeelden van configuraties samen met documentatie over de manier waarop ze toegepast werden.
+Description-pt.UTF-8: Tipo de monitorização do changelog:
+ metche pode monitorizar um ou mais changelogs escritos pelos administradores do sistema.
+ .
+ Estes changelogs devem conter comentários a descrever as modificações feitas no sistema. A maneira mais fácil de organizar estes comentários é juntando-os todos num ficheiro.
+ .
+ Outra possibilidade é ter uma subdirectoria para cada task administrativa com um ficheiro nomeado "Changelog". Desta maneira, pode guardar código fonte ou exemplos de configuração juntamente com a documentação de como eles foram usados.
+Description-ru.UTF-8: Режим слежения за changelog:
+ metche может отслеживать один или более файлов changelog, составляемых системными администраторами.
+ .
+ Эти файлы changelog должны содержать комментарии, описывающие изменения, производимые в системе. Самый простой способ ведения таких комментариев, это записывать их в один файл.
+ .
+ Другим способом является создание подкаталога для каждой задачи администрирования с файлом с именем "Changelog". Таким образом, вы можете хранить исходный код или файлы примеров вместе с документацией о том, как их использовать.
+Description-sv.UTF-8: Typ av övervakning för versionslogg:
+ metche kan övervaka en eller flera versionsloggar som systemadminstratörerna använder.
+ .
+ Dessa versionsloggfiler ska innehålla kommentarer om genomförda förändringar i systemet. Enklaste sättet att organisera dessa kommentarer är att lägga dem i en fil.
+ .
+ Ett annat sätt att hantera detta är med en katalog för varje uppgift som i sin tur innehållet en fil med namnet "Changelog". På detta sätt kan källkod och exempel på inställningar förvaras tillsammans med dokumentationen för hur de har använts.
+Description-vi.UTF-8: Kiểu theo dõi changelog:
+ Metche có khả năng theo dõi một hay nhiều tập tin theo dõi thay đổi (changelog) được ghi nhớ bởi quản trị hệ thống.
+ .
+ Changelog như vậy nên chứa ghi chú về thay đổi được làm trong hệ thống. Phương pháp dễ nhất tổ chức các ghi chú này là tập hợp trong cùng một tập tin.
+ .
+ Cũng có thể bảo tồn một thư mục con cho mỗi công việc quản trị mà chứa một tập tin « Changelog ». Trong thư mục đó, bạn cũng có thể lưu trữ mã nguồn, mẫu cấu hình và tài liệu hướng dẫn.
+
+Template: metche/changelog/file
+Type: string
+Default: /root/Changelog
+Description: Changelog file to be monitored:
+ This option sets the path of the changelog file to be monitored.
+Description-cs.UTF-8: Sledovaný soubor:
+ Touto volbou nastavíte cestu ke sledovanému souboru.
+Description-da.UTF-8: Ændringsfillog der skal overvåges:
+ Denne indstilling angiver stien på ændringslogfilen, der skal overvåges.
+Description-de.UTF-8: Changelog-Datei, die überwacht werden soll:
+ Diese Option stellt den Pfad zu der zu überwachenden Changelog-Datei ein.
+Description-es.UTF-8: Archivo de registro de cambios a monitorizar:
+ Esta opción configura la ruta del archivo de registro de cambios a monitorizar.
+Description-fr.UTF-8: Journal de modifications à surveiller :
+ Cette option spécifie le chemin du journal de modifications à surveiller.
+Description-gl.UTF-8: Ficheiro de rexistro de modificacións para vixiar:
+ Esta opción define a rota do ficheiro de rexistro de modificacións que se vai vixiar.
+Description-it.UTF-8: File di registro delle modifiche da monitorare:
+ Questa opzione imposta il percorso del file di registro delle modifiche che deve essere monitorato.
+Description-ja.UTF-8: 監視する変更記録ファイル:
+ このオプションでは監視する変更記録ファイルのパスをセットします。
+Description-nl.UTF-8: Changelog-bestand dat opgevolgd moet worden:
+ Met deze optie geeft u het pad op naar het op te volgen logbestand met veranderingen.
+Description-pt.UTF-8: Ficheiro changelog a ser monitorizado:
+ Esta opção coloca o caminho do ficheiro changelog a ser monitorizado.
+Description-ru.UTF-8: Отслеживаемый файл Changelog:
+ Этот параметр определяет путь к отслеживаемому файлу changelog.
+Description-sv.UTF-8: Versionsloggfil som ska övervakas:
+ Detta alternativ anger sökvägen till versionsloggfilen som ska övervakas.
+Description-vi.UTF-8: Tập tin Changelog cần theo dõi:
+ Tuỳ chọn này lập đường dẫn đến tập tin theo dõi thay đổi (Changelog) cần theo dõi.
+
+Template: metche/changelog/directory
+Type: string
+Default: /root/changelogs
+Description: Changelog directory to be monitored:
+ This option sets the path to the root directory containing the Changelogs.
+ Each "Changelog" file should be in a sub-directory of this directory.
+Description-cs.UTF-8: Sledovaný adresář:
+ Tato volba nastaví cestu do kořenového adresáře obsahujícího soubory změn. Všechny soubory "Changelog" by měly být v podadresáři tohoto adresáře.
+Description-da.UTF-8: Ændringslogmappe der skal overvåges:
+ Denne indstilling angiver stien til rootmappen, der indeholder ændringslog. Hver »Changelogfil« (ændringslog) skal være i en undermappe til denne mappe.
+Description-de.UTF-8: Changelog-Verzeichnis, das überwacht werden soll:
+ Diese Option stellt den Pfad zu dem Wurzelverzeichnis ein, das die Changelogs enthält. Jede »Changelog«-Datei sollte in einem Unterverzeichnis dieses Verzeichnisses liegen.
+Description-es.UTF-8: Directorio de los registros de cambios a monitorizar:
+ Esta opción configura la ruta del directorio raíz que contiene los registros de cambios. Cada archivo «Changelog» debería estar en un subdirectorio de este directorio.
+Description-fr.UTF-8: Répertoire de journaux de modifications à surveiller :
+ Cette option spécifie le chemin du répertoire principal contenant les journaux de modifications. Chaque fichier « Changelog » devrait se situer dans un sous-répertoire de ce répertoire.
+Description-gl.UTF-8: Directorio de rexistro de modificacións para vixiar:
+ Esta opción define a rota do directorio raíz que contén os rexistros de modificacións. Cada ficheiro «Changelog» debe estar nun subdirectorio deste.
+Description-it.UTF-8: Directory dei registri delle modifiche da monitorare:
+ Questa opzione imposta il percorso della directory radice che contiene i file di registri delle modifiche. Ogni file «Changelog» dovrebbe essere in una sottodirectory di questa directory.
+Description-ja.UTF-8: 監視する変更記録のディレクトリ:
+ このオプションでは変更記録が置かれる起点となるディレクトリのパスをセットします。「Changelog」ファイルはそれぞれこのディレクトリのサブディレクトリに置かれることになります。
+Description-nl.UTF-8: Changelog-map die opgevolgd moet worden:
+ Met deze optie geeft u het pad op naar de hoofdmap voor de "Changelog"-bestanden. Elk "Changelog"-bestand zou zich in een aparte map onder deze map moeten bevinden.
+Description-pt.UTF-8: Directoria do changelog a ser monitorizado:
+ Esta opção coloca o caminho para a directoria root que contem os Changelogs. Cada ficheiro "Changelog" deve estar numa sub-directoria desta directoria.
+Description-ru.UTF-8: Отслеживаемый каталог Changelog:
+ Этот параметр определяет путь к корневому каталогу, содержащему файлы Changelog. В каждом подкаталоге данного каталога должен быть файл "Changelog".
+Description-sv.UTF-8: Katalog med versionloggfiler som ska övervakas:
+ Detta alternativ anger sökvägen till en katalog med flera versionsloggfiler. Varje "Changelog"-fil ska placeras i en underkatalog till denna katalog.
+Description-vi.UTF-8: Thư mục Changelog cần theo dõi:
+ Tuỳ chọn này lập đường dẫn đến thư mục chứa các tập tin theo dõi thay đổi. Mỗi tập tin « Changelog » nên nằm trong một thư mục con của thư mục này.

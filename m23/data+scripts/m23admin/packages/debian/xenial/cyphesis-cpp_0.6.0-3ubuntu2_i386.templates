@@ -1,0 +1,285 @@
+Template: cyphesis-cpp/postgresql/note
+Type: note
+Description: Configuration note
+ In order to use cyphesis-cpp you must have access to a postgresql server.
+ The server does not have to be installed on the same host as cyphesis-cpp
+ but it has to be reachable over a network and you have to have access to it.
+ .
+ For further configuration information please read
+ /usr/share/doc/cyphesis-cpp/README.Debian.
+Description-cs.UTF-8: Konfigurační poznámka
+ Pro používání cyphesis-cpp musíte mít přístup k serveru postgresql. Server nemusí být nainstalován na stejném počítači jako cyphesis-cpp, ale musí být dostupný přes síť a je třeba na něj mít přístup.
+ .
+ Pro další konfigurační informace si prosím přečtěte /usr/share/doc/cyphesis-cpp/README.Debian.
+Description-da.UTF-8: Konfigurationsbemærkning
+ For at bruge cyphesis-cpp skal du have adgang til en postgresql-server. Serveren skal ikke være installeret på den samme vært som cyphesis-cpp, men den skal kunne nås over et netværk og du skal have adgang til den.
+ .
+ For yderligere konfigurationsinformation så læs venligst /ursr/share/doc/cyphesis-cpp/README.Debian.
+Description-de.UTF-8: Konfigurationshinweis
+ Um cyphesis-cpp benutzen zu können, müssen Sie Zugriff auf einen PostgreSQL-Server haben. Dieser Server muss nicht auf dem selben Rechner wie cyphesis-cpp installiert sein, er muss nur über das Netzwerk erreichbar sein und Sie müssen Zugriffsrechte auf ihm besitzen.
+ .
+ Für weitere Informationen lesen Sie bitte die Datei /usr/share/doc/cyphesis-cpp/README.Debian.
+Description-es.UTF-8: Nota sobre la configuración
+ Para poder usar cyphesis-cpp debe tener acceso a un servidor postgresql. No es necesario que el servidor esté instalado en la misma máquina que cyphesis-cpp, pero tiene que ser accesible a través de la red y debe tener acceso al mismo.
+ .
+ Consulte «/usr/share/doc/cyphesis-cpp/README.Debian» para más información sobre la configuración.
+Description-fr.UTF-8: Note de configuration
+ Pour pouvoir utiliser cyphesis-cpp, vous devez pouvoir accéder à un serveur PostgreSQL. Le serveur ne doit pas nécessairement fonctionner sur le même hôte que cyphesis-cpp, mais doit pouvoir être accessible via le réseau. Vous devez être autorisé à y accéder.
+ .
+ Veuillez consulter le fichier /usr/share/doc/cyphesis-cpp/README.Debian pour obtenir plus d'informations à propos de la configuration.
+Description-it.UTF-8: Nota di configurazione
+ Per poter usare cyphesis-cpp è richiesto l'accesso ad un server postgresql. Il server non deve necessariamente essere installato sullo stesso host di cyphesis-cpp, ma deve essere raggiungibile attraverso una rete e si deve poter accedere ad esso.
+ .
+ Per ulteriori informazioni sulla configurazione leggere /usr/share/doc/cyphesis-cpp/README.Debian.
+Description-ja.UTF-8: 設定の際の注意点について
+ cyphesis-cpp を使うには postgresql サーバにアクセスする必要があります。サーバは cyphesis-cpp と同じホストにインストールする必要はありませんが、接続可能なネットワークに存在していてアクセスが可能である必要があります。
+ .
+ 設定の詳細な情報については /usr/share/doc/cyphesis-cpp/README.Debian を参照してください。
+Description-nl.UTF-8: Configuratie-opmerking
+ Om cyphesis-cpp te gebruiken, moet u toegang hebben tot een postgresql-server. Deze server hoeft niet geïnstalleerd te zijn op dezelfde computer als cyphesis-cpp, maar hij moet bereikbaar zijn over het netwerk en u moet er toegang toe hebben.
+ .
+ Lees voor verdere configuratie-informatie /usr/share/doc/cyphesis-cpp/README.Debian.
+Description-pl.UTF-8: Uwaga nt. konfiguracji
+ Do korzystania z cyphesis-cpp konieczny jest dostęp do serwera postgresql. Serwer nie musi być zainstalowany na tym samym komputerze co cyphesis-cpp, lecz musi być osiągalny w sieci i dostępny dla użytkownika.
+ .
+ Więcej informacji o konfiguracji można znaleźć w pliku /usr/share/doc/cyphesis-cpp/README.Debian.
+Description-pt.UTF-8: Nota de configuração
+ Para poder utilizar o cyphesis-cpp você precisa ter acesso a um servidor postgresql. O servidor não precisa estar instalado na mesma máquina que o cyphesis-cpp mas precisa ser acessível por uma rede e você precisa ter acesso a ele.
+ .
+ Para mais informação sobre configuração, por favor leia /usr/share/doc/cyphesis-cpp/README.Debian.
+Description-ru.UTF-8: Замечание по настройке
+ Чтобы использовать cyphesis-cpp, вам нужен доступ к серверу postgresql. Сервер не будет установлен на той же машине что и cyphesis-cpp, но должен быть доступен по сети.
+ .
+ Дальнейшую информацию по настройке смотрите в /usr/share/doc/cyphesis-cpp/README.Debian.
+Description-sv.UTF-8: Konfigurationsnotering
+ FÃ¶r att anvÃ¤nda cyphesis-cpp mÃ¥ste du ha tillgÃ¥ng till en PostgreSQL-server. Servern mÃ¥ste inte vara installerad pÃ¥ samma vÃ¤rd som cyphesis-cpp men den mÃ¥ste vara nÃ¥bar Ã¶ver ett nÃ¤tverk och du mÃ¥ste ha tillgÃ¥ng till den.
+ .
+ FÃ¶r mer information om konfigurationen, vÃ¤nligen lÃ¤s /usr/share/doc/cyphesis-cpp/README.Debian.
+Description-vi.UTF-8: Ghi chú cấu hình
+ Để sử dụng trình cyphesis-cpp thì cần truy cập đến một trình phục vụ PostgreSQL. Trình phục vụ này không cần phải được cài đặt trong cùng một máy với cyphesis-cpp, nhưng mà phải có thể tới nó qua mạng, và bạn phải có khả năng truy cập đến nó.
+ .
+ Để tìm thêm thông tin cấu hình, xem tập tin Đọc Đi « /usr/share/doc/cyphesis-cpp/README.Debian » .
+
+Template: cyphesis-cpp/postgresql/local_server
+Type: boolean
+Default: true
+Description: Use a local postgresql server?
+ Cyphesis-cpp can use a local postgresql server over unix sockets instead
+ over a network. The database server doesn't need to listen to the network then.
+ This is recommended for local usage as it's thought to be more secure.
+Description-cs.UTF-8: Použít místní server postgresql?
+ Cyphesis-cpp může využít ke spojení s místním serverem postgresql místo sítě unixové sockety. Databázový server pak nemusí poslouchat na síti, což je pro místní použití doporučená možnost, protože je považována za bezpečnější.
+Description-da.UTF-8: Brug en lokal postgresql-server?
+ Cyphesis-cpp kan bruge en lokal postgresql-server over Unix-sokler i stedet for over et netværk. Databaseserveren skal ikke nødvendigvis lytte på netværket i dette tilfælde. Dette anbefales for lokal brug, da det anses for at være mere sikkert.
+Description-de.UTF-8: Lokalen PostgreSQL-Server benutzen?
+ Cyphesis-cpp kann auf einen lokalen PostgreSQL-Server über UNIX-Sockets statt über das Netzwerk zugreifen. Der Datenbankserver braucht dann nicht am Netzwerk auf Anfragen zu warten. Dies wird für lokale Benutzung empfohlen, weil es als sicherer angesehen wird.
+Description-es.UTF-8: ¿Desea utilizar un servidor postgresql local?
+ Cyphesis-cpp puede utilizar un servidor postgresql local mediante zócalos («sockets») unix en lugar de la red. En este caso el servidor no necesitará estar escuchando en la red. Esto es recomendable para uso local, ya que se lo considera más seguro.
+Description-fr.UTF-8: Faut-il utiliser un serveur PostgreSQL local ?
+ Cyphesis-cpp peut utiliser un serveur PostgreSQL local par l'intermédiaire de sockets Unix plutôt que via le réseau. Le serveur de bases de données ne doit alors pas nécessairement être à l'écoute sur le réseau. Ce mode de fonctionnement est recommandé pour une utilisation locale car il est reconnu comme plus sûr.
+Description-it.UTF-8: Usare un server postgresql locale?
+ cyphesis-cpp può usare un server postgresql locale usando i socket UNIX invece della rete. In questo caso il server di database non deve rimanere in ascolto sulla rete. Ciò viene raccomandato per l'uso locale perché è considerato più sicuro.
+Description-ja.UTF-8: ローカルの postgresql サーバを利用しますか?
+ cyphesis-cpp は、ネットワーク経由ではなく unix ソケットを使ってローカルの postgresql サーバを使うことができます。その場合、データベースサーバはネットワークに対して listen する必要はありません。よりセキュアなので、これがローカルでの利用にはお勧めです。
+Description-nl.UTF-8: Een lokale postgresql-server gebruiken?
+ Cyphesis-cpp kan een lokale postgresql-server gebruiken over unix-sockets in plaats van over het netwerk. De databaseserver moet dan niet naar het netwerk luisteren. Dit wordt aanbevolen voor lokaal gebruik omdat algemeen aangenomen wordt dat dit veiliger is.
+Description-pl.UTF-8: Użyć lokalnego serwera postgresql?
+ Cyphesis-cpp może korzystać z lokalnego serwera postgresql przez gniazda uniksowe zamiast poprzez sieć. Serwer bazy danych nie musi wówczas prowadzić nasłuchu sieciowego. Jest to zalecane ustawienie przy serwerze lokalnym, jako że jest bezpieczniejsze.
+Description-pt.UTF-8: Usar um servidor postgresql local?
+ O Cyphesis-cpp pode usar um servidor postgresql local sobre sockets unix em vez de em rede. Então o servidor de base de dados não precisa de escutar a rede. Isto é recomendado para utilização local porque entende-se que seja mais seguro.
+Description-ru.UTF-8: Использовать локальный сервер postgresql?
+ Cyphesis-cpp может использовать локальный сервер postgresql через сокеты unix, а не через сеть. Поэтому серверу БД не требуется принимать запросы из сети. Рекомендуем использовать локальный сервер, так как это более безопасно.
+Description-sv.UTF-8: AnvÃ¤nda en lokal PostgreSQL-server?
+ Cyphesis-cpp kan anvÃ¤nda en lokal PostgreSQL-server fÃ¶r Unix-sockets istÃ¤llet fÃ¶r Ã¶ver ett nÃ¤tverk. Databasservern behÃ¶ver dÃ¥ inte lyssna pÃ¥ nÃ¤tverket. Det Ã¤r rekommenderat fÃ¶r lokal anvÃ¤ndning eftersom det Ã¤r tÃ¤nkt att vara sÃ¤krare.
+Description-vi.UTF-8: Dùng trình phục vụ PostgreSQL cục bộ ?
+ Trình cyphesis-cpp có khả năng sử dụng một trình phục vụ PostgreSQL cục bộ qua ổ cắm UNIX thay vào qua mạng. Trong trường hợp đó, trình phục vụ cơ sở dữ liệu không cần lắng nghe trên mạng. Không cần liên lạc với máy phục vụ bên ngoài thì khuyên bạn sử dụng tuỳ chọn bảo mật hơn này.
+
+Template: cyphesis-cpp/postgresql/server
+Type: string
+Default: localhost
+Description: Database server:
+ The host on which the postgresql database server is located. This will be
+ used by cyphesis-cpp to store its internal data.
+Description-cs.UTF-8: Databázový server:
+ Počítač s databázovým serverem postgresql. Cyphesis-cpp jej používá k uložení svých vnitřních dat.
+Description-da.UTF-8: Databaseserver:
+ Værten som postgresql-databaseserveren er placeret på. Dette vil blive brugt af cyphesis-cpp til at lagre sine interne data.
+Description-de.UTF-8: Datenbankserver:
+ Der Rechner, auf dem sich der PostgreSQL-Datenbankserver befindet. Dieser wird von cyphesis-cpp zum Speichern interner Daten verwendet.
+Description-es.UTF-8: Servidor de base de datos:
+ Equipo en el que se encuentra el servidor de base de datos postgresql. cyphesis-cpp lo utilizará para almacenar sus datos internos.
+Description-fr.UTF-8: Serveur de bases de données :
+ Veuillez indiquer l'hôte du serveur de bases de données PostgreSQL où seront conservées les données internes de cyphesis-cpp.
+Description-it.UTF-8: Server di database:
+ L'host su cui è posizionato il server di database postgresql. Verrà usato da cyphesis-cpp per archiviare i suoi dati interni.
+Description-ja.UTF-8: データベースサーバ:
+ postgresql データベースサーバが置かれているホストです。cyphesis-cpp が内部データを保存するのに使います。
+Description-nl.UTF-8: Databaseserver:
+ De computer waarop zich de postgresql-databaseserver bevindt en die door cyphesis-cpp gebruikt zal worden om interne gegevens op te slaan.
+Description-pl.UTF-8: Serwer bazy danych:
+ Host na którym zainstalowany jest serwer bazy danych postgresql. Będzie używany przez cyphesis-cpp do przechowywania jego wewnętrznych danych.
+Description-pt.UTF-8: Servidor da base de dados:
+ A máquina onde está localizado o servidor de base de dados postgresql. Isto será usado pelo cyphesis-cpp para guardar os seus dados internos.
+Description-ru.UTF-8: Сервер баз данных:
+ Узел, на котором находится сервер баз данных postgresql. Он будет использоваться cyphesis-cpp для хранения внутренних данных.
+Description-sv.UTF-8: Databasserver:
+ VÃ¤rden pÃ¥ vilken PostgreSQL-databasen Ã¤r placerad. Denna kommer att anvÃ¤ndas av cyphesis-cpp fÃ¶r att lagra dess interna data.
+
+Template: cyphesis-cpp/postgresql/database
+Type: string
+Default: cyphesis
+Description: Database name:
+ The database name cyphesis-cpp should use on the database server.
+Description-cs.UTF-8: Jméno databáze:
+ Jméno databáze cyphesis-cpp na databázovém serveru.
+Description-da.UTF-8: Databasenavn:
+ Databasenavnet som cyphesis-cpp skal bruge på databaseserveren.
+Description-de.UTF-8: Datenbankname:
+ Der Name der Datenbank, die cyphesis-cpp auf dem Datenbankserver benutzen soll.
+Description-es.UTF-8: Nombre de la base de datos:
+ Nombre de la base de datos que cyphesis-cpp utilizará en el servidor de base de datos.
+Description-fr.UTF-8: Nom de la base de données :
+ Veuillez indiquer le nom de la base de données où cyphesis-cpp conservera ses informations.
+Description-it.UTF-8: Nome del database:
+ Il nome del dabase che cyphesis-cpp deve usare nel server di database.
+Description-ja.UTF-8: データベース名:
+ データベースサーバで cyphesis-cpp が使うデータベース名です。
+Description-nl.UTF-8: Naam van de databank:
+ De naam van de databank die cyphesis-cpp moet gebruiken op de databaseserver.
+Description-pl.UTF-8: Nazwa bazy danych:
+ Nazwa bazy danych jaką cyphesis-cpp ma użyć na serwerze bazy danych.
+Description-pt.UTF-8: Nome da base de dados:
+ O nome da base de dados que o cyphesis-cpp deverá usar no servidor de base de dados.
+Description-ru.UTF-8: Имя базы данных:
+ Имя базы данных, которое cyphesis-cpp будет использовать на сервере БД.
+Description-sv.UTF-8: Databasnamn:
+ Databasnamnet som cyphesis-cpp ska anvÃ¤nda pÃ¥ databasservern.
+
+Template: cyphesis-cpp/postgresql/username
+Type: string
+Default: cyphesis
+Description: Database user:
+ Please type in the username for the database server
+Description-cs.UTF-8: Uživatel databáze:
+ Zadejte prosím uživatelské jméno pro databázový server
+Description-da.UTF-8: Databasebruger:
+ Indtast venligst brugernavnet for databaseserveren
+Description-de.UTF-8: Datenbankbenutzer:
+ Name des Benutzers für den Datenbankzugriff
+Description-es.UTF-8: Usuario de la base de datos:
+ Introduzca el nombre de usuario para el servidor de base de datos
+Description-fr.UTF-8: Propriétaire de la base de données :
+ Veuillez indiquer le nom du propriétaire de la base de données de cyphesis-cpp.
+Description-it.UTF-8: Utente del database:
+ Inserire il nome utente per il server di database
+Description-ja.UTF-8: データベースユーザ:
+ データベースサーバのユーザ名を入力してください。
+Description-nl.UTF-8: Databankgebruiker:
+ Geef de gebruikersnaam voor de databaseserver
+Description-pl.UTF-8: Użytkownik bazy danych:
+ Proszę wprowadzić nazwę użytkownika serwera bazy danych
+Description-pt.UTF-8: Utilizador da base de dados:
+ Por favor escreva o nome de utilizador do servidor da base de dados.
+Description-ru.UTF-8: Пользователь БД:
+ Введите имя пользователя сервера БД.
+Description-sv.UTF-8: DatabasanvÃ¤ndare:
+ Ange anvÃ¤ndarnamnet fÃ¶r databasservern
+Description-vi.UTF-8: Người dùng cơ sở dữ liệu :
+ Hãy gõ tên người dùng cho trình phục vụ cơ sở dữ liệu
+
+Template: cyphesis-cpp/postgresql/password
+Type: password
+Description: Password:
+ Please type in the password to use to access the database server
+Description-cs.UTF-8: Heslo:
+ Zadejte prosím heslo pro přístup k databázovému serveru
+Description-da.UTF-8: Adgangskode:
+ Indtast venligst adgangskoden der skal bruges for at tilgå databaseserveren
+Description-de.UTF-8: Passwort:
+ Passwort des Benutzers für den Datenbankzugriff
+Description-es.UTF-8: Contraseña:
+ Introduzca la contraseña para acceder al servidor de base de datos
+Description-fr.UTF-8: Mot de passe du propriétaire de la base de données :
+ Veuillez indiquez le mot de passe de l'utilisateur propriétaire de le base de données.
+Description-it.UTF-8: Password:
+ Inserire la password da usare per accedere al server di database
+Description-ja.UTF-8: パスワード:
+ データベースサーバにアクセスする際に利用するパスワードを入力してください。
+Description-nl.UTF-8: Wachtwoord:
+ Geef het wachtwoord om toegang te krijgen tot de databaseserver
+Description-pl.UTF-8: Hasło:
+ Proszę wprowadzić hasło do serwera bazy danych
+Description-pt.UTF-8: Palavra passe:
+ Por favor escreva a palavra-passe a usar ao aceder ao servidor da base de dados.
+Description-ru.UTF-8: Пароль:
+ Введите пароль для доступа к серверу БД.
+Description-sv.UTF-8: LÃ¶senord:
+ Ange lÃ¶senordet att anvÃ¤ndas fÃ¶r tillgÃ¥ng till databasservern
+Description-vi.UTF-8: Mật khẩu :
+ Hãy gõ mật khẩu được dùng để truy cập đến máy phục vụ cơ sở dữ liệu.
+
+Template: cyphesis-cpp/usemetaserver
+Type: boolean
+Default: false
+Description: Register with the WorldForge metaserver?
+ Cyphesis-cpp can use the metaserver of the WorldForge project to announce
+ itself to the world. Players will detect your server automatically when
+ starting their client.
+Description-cs.UTF-8: Registrovat se pomocí metaserveru WorldForge?
+ Cyphesis-cpp může pro oznamování do světa použít metaserver z projektu Worldforge. Hráči pak naleznou váš server automaticky hned při spuštění svých klientů.
+Description-da.UTF-8: Registrer med WorldForge-metaserveren?
+ Cyphesis-cpp kan bruge metaserveren for WorldForge-projektet til at annoncere sig selv for verdenen. Spillere vil detektere din server automatisk når de starter deres klient.
+Description-de.UTF-8: Auf dem WorldForge-Metaserver registrieren?
+ Cyphesis-cpp kann sich beim Metaserver des Worldforge-Projektes anmelden, um sich der Welt bekannt zu machen. Spieler werden dann Ihren Server automatisch entdecken, wenn sie ihren Client starten.
+Description-es.UTF-8: ¿Desea registrarse con el metaservidor WorldForge?
+ Cyphesis-cpp puede utilizar el metaservidor del proyecto Worldforge para anunciarse al mundo. Los jugadores detectarán su servidor automáticamente cuando inicien sus clientes.
+Description-fr.UTF-8: Faut-il s'enregistrer sur le méta-serveur WorldForge ?
+ Cyphesis-cpp peut utiliser le meta-serveur du projet Worldforge pour s'annoncer publiquement. Les joueurs détecteront automatiquement votre serveur lors du démarrage de leur client.
+Description-it.UTF-8: Registrarsi nel metaserver di WorldForge?
+ cyphesis-cpp può usare il metaserver del progetto WorldForge per annunciare se stesso all'esterno. I giocatori rileveranno automaticamente questo server quando avvieranno il loro client.
+Description-ja.UTF-8: WorldForge metaserver に登録しますか?
+ cyphesis-cpp は、自身を世界へアナウンスするために Worldforge プロジェクトの metaserver を使えます。プレイヤーは、クライアント起動時に自動的に貴方のサーバを認識するようになります。
+Description-nl.UTF-8: U melden bij de metaserver van WorldForge?
+ Cyphesis-cpp kan de metaserver van het Worldforge-project gebruiken om zich bekend te maken op het netwerk. Spelers zullen uw server automatisch detecteren wanneer ze hun client starten.
+Description-pl.UTF-8: Zarejestrować się w metaserwerze WorldForge?
+ Cyphesis-cpp może korzystać z metaserwera projektu WorldForge do rozgłaszania informacji o sobie. Gracze wykryją ten serwer automatycznie po uruchomieniu ich klientów.
+Description-pt.UTF-8: Registar com o meta-servidor WorldForge?
+ O Cyphesis-cpp pode usar o 'metaserver' do projecto WorldForge para se anunciar ao mundo. Os jogadores irão detectar o seu servidor automaticamente quando arrancarem os seus clientes.
+Description-ru.UTF-8: Зарегистрироваться с помощью метасервера WorldForge?
+ Cyphesis-cpp может использовать метасервер проекта WorldForge для объявления о себе в мире. Игроки смогут обнаруживать ваш сервер автоматически при запуске клиента.
+Description-sv.UTF-8: Registrera mot metaservern fÃ¶r WorldForge?
+ Cyphesis-cpp kan anvÃ¤nda metaservern fÃ¶r WorldForge-projektet fÃ¶r att informera om sig sjÃ¤lv fÃ¶r vÃ¤rlden. Spelare kommer att hitta din server automatiskt nÃ¤r de startar sin klient.
+
+Template: cyphesis-cpp/autostart
+Type: boolean
+Default: false
+Description: Automatically start the Cyphesis server on boot?
+ Cyphesis-cpp can start automatically when your computer boots. However,
+ unless you're running a dedicated server, this is probably not the
+ behavior you are looking for. By default, you will need to manually
+ start Cyphesis-cpp from the command line so that it does not run when
+ it is not needed. 
+Description-cs.UTF-8: Spustit server Cyphesis automaticky po startu počítače?
+ Cyphesis-cpp je možno spouštět automaticky při startu počítače. Samozřemě, pokud zrovna neprovozujete server k tomu určený, pravděpodobně to nebudete chtít zapnout. Ve výchozím nastaví je třeba Cyphesis-cpp spustit přímo z příkazové řádky a pokud to není nutné program tedy neběží.
+Description-da.UTF-8: Start automatisk Cyphesis-serveren ved opstart?
+ Cyphesis-cpp kan starte automatisk når din computer opstartes. Det er dog sikkert ikke den opførsel du er på udkig efter, med mindre at du kører en dedikeret server. Som standard skal du starte Cyphesis-cpp manuelt fra kommandolinjen, så programmet ikke kører, når der ikke er brug for det.
+Description-de.UTF-8: Cyphesis-Server automatisch beim Systemstart aufrufen?
+ Cyphesis-cpp kann automatisch aufgerufen werden, wenn der Rechner startet. Allerdings ist das möglicherweise nicht das erwünschte Verhalten, es sei denn, Sie nutzen einen dedizierten Server. Standardmäßig müssen Sie cyphesis-cpp manuell auf der Befehlszeile starten, so dass der Server nur dann läuft, wenn er benötigt wird.
+Description-es.UTF-8: ¿Desea iniciar el servidor Cyphesis automáticamente al arrancar el equipo?
+ Cyphesis-cpp puede iniciarse automáticamente cuando arranque el equipo. Sin embargo, a menos que esté ejecutando un servidor dedicado, probablemente no sea el comportamiendo que desee. De forma predeterminada deberá iniciar Cyphesis-cpp manualmente para que no esté ejecutando cuando no es necesario.
+Description-fr.UTF-8: Faut-il démarrer cyphesis-cpp au lancement du système ?
+ Il est possible de démarrer Cyphesis-cpp au lancement du système. Cependant, à moins d'une utilisation en tant que serveur dédié, c'est rarement le comportement recherché. Si vous ne choisissez pas cette option, Cyphesis-cpp devra être démarré manuellement en ligne de commande afin de n'être exécuté que lorsqu'il est utile.
+Description-it.UTF-8: Avviare automaticamente il server Cyphesis all'avvio?
+ cyphesis-cpp può avviarsi automaticamente quando viene avviato il computer. Tuttavia, a meno che non si stia eseguendo un server dedicato, questo probabilmente non è il comportamento desiderato. In modo predefinito è necessario avviare manualmente cyphesis-cpp dalla riga di comando in modo che non sia in esecuzione quando non è necessario.
+Description-ja.UTF-8: ブート時に Cyphesis サーバを自動的に起動させますか?
+ Cyphesis-cpp はコンピュータのブート時に自動的に開始できます。しかし、実行しているのが専用サーバでもなければこれは恐らく望む挙動ではないでしょう。デフォルトではコマンドラインから手作業により Cyphesis-cpp を起動させる必要があり、必要なく実行するようにはなっていません。
+Description-nl.UTF-8: Bij het opstarten van de computer de Cyphesis-server automatisch starten?
+ Cyphesis-cpp kan automatisch gestart worden bij het opstarten van de computer. Maar tenzij het een gereserveerde server betreft, is dit wellicht niet het gewenste gedrag. Standaard moet u Cyphesis-cpp handmatig opstarten vanaf de commandolijn, zodat het niet onnodig actief is.
+Description-pl.UTF-8: Uruchomić serwer Cyphesis automatycznie przy rozruchu systemu?
+ Cyphesis-cpp może uruchamiać się automatycznie przy rozruchu systemu. Jeśli jednak nie prowadzi się specjalnego serwera, to takie działanie prawdopodobnie nie jest pożądane. Domyślnie konieczne jest ręczne uruchamianie Cyphesis-cpp z wiersza poleceń. W ten sposób serwer nie działa gdy nie ma takiej potrzeby.
+Description-pt.UTF-8: Arrancar automaticamente o servidor Cyphesis no arranque da máquina?
+ O Cyphesis-cpp pode arrancar automaticamente quando o seu computador arranca. No entanto, a menos que você esteja a correr um servidor dedicado, este não é provavelmente o comportamento que lhe interessa. Por predefinição, você precisa de iniciar manualmente o Cyphesis-cpp a partir da linha de comandos para que ele não trabalhe quando não é preciso.
+Description-ru.UTF-8: Запускать сервер Cyphesis при загрузке автоматически?
+ Cyphesis-cpp может запускаться автоматически при включении компьютера. Однако, если вы запускаете его не на отдельном сервере, то лучше этого не делать. По умолчанию вы должны запускать cyphesis-cpp вручную из командной строки, чтобы он не работал, когда не нужен.
+Description-sv.UTF-8: Starta Cyphesis-servern automatiskt vid uppstart?
+ Cyphesis-cpp kan starta automatiskt vid uppstart av din dator. Detta Ã¤r dock troligen inte det Ã¶nskade beteendet om du inte kÃ¶r en dedikerad server. Standardbeteendet Ã¤r att du mÃ¥ste starta Cyphesis-cpp frÃ¥n kommandoraden sÃ¥ att det inte kÃ¶rs fÃ¶rutom dÃ¥ det behÃ¶vs.

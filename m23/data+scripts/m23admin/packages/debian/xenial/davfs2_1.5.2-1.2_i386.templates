@@ -1,0 +1,442 @@
+
+Template: davfs2/suid_file
+Type: boolean
+Default: false
+Description: Should unprivileged users be allowed to mount WebDAV resources?
+ The file /sbin/mount.davfs must have the SUID bit set if you want to allow
+ unprivileged (non-root) users to mount WebDAV resources.
+ .
+ If you do not choose this option, only root will be allowed to mount WebDAV
+ resources. This can later be changed by running 'dpkg-reconfigure davfs2'.
+Description-cs.UTF-8: Povolit neprivilegovaným uživatelům mountovat zdroje WebDAV?
+ Chcete-li povolit připojování webdav zdrojů i běžným uživatelům, musí mít soubor /sbin/mount.davfs nastavený SUID bit.
+ .
+ Pokud tuto možnost nevyberete, bude pouze rootovi povoleno mountovatzdroje WebDAV. Později to může být změněno spuštěním 'dpkg-reconfigure·davfs2'.
+Description-da.UTF-8: Skal upriviligerede brugere have tilladelse til at montere WebDAV-ressourcer?
+ Filen /sbin/mount.davfs skal have SUID bit-sættet, hvis du ønsker at tillade upriviligerede (ikke-root) brugere at montere WebDAV-ressourcer.
+ .
+ Hvis du ikke vælger denne indstilling, vil kun administrator (root) have tilladelse til at montere WebDAV-ressourcer. Dette kan senere ændres ved at køre »dpkg-reconfigure davfs2«.
+Description-de.UTF-8: Soll unprivilegierten Benutzern erlaubt werden, WebDAV-Ressourcen einzubinden?
+ Die Datei /sbin/mount.davfs muss das SUID-Bit gesetzt haben, falls Sie unprivilegierten (nicht root) Benutzern erlauben möchten, WebDAV-Ressourcen einzubinden.
+ .
+ Falls Sie diese Option nicht wählen, wird es nur root erlaubt sein, WebDAV-Ressourcen einzubinden. Dies kann zu einem späteren Zeitpunkt durch Aufruf von »dpkg-reconfigure davfs2« geändert werden.
+Description-es.UTF-8: ¿Se debería permitir que los usuarios sin privilegios puedan montar recursos WebDAV?
+ El archivo «/sbin/mount.davfs» debe tener activo el bit SUID si quiere que los usuarios sin privilegios de administrador puedan montar recursos WebDAV.
+ .
+ Si no escoge esta opción, sólo el administrador («root») podrá montar recursos WebDAV. Puede cambiar esta elección más tarde, ejecutando la orden «dpkg-reconfigure davfs2».
+Description-fi.UTF-8: Tulisiko tavallisilla käyttäjillä olla oikeus liittää WedDAV-resursseja?
+ Tiedoston /sbin/mount.davfs SUID-bitin tulee olla asetettuna, jos tavallisille käyttäjille halutaan sallia mahdollisuus liittää WebDAV-resursseja.
+ .
+ Jos et valitse tätä vaihtoehtoa, vain pääkäyttäjät voivat liittää WebDAV-resursseja. Tätä voidaan myöhemmin muuttaa ajamalla ”dpkg-reconfigure davfs2”.
+Description-fr.UTF-8: Autoriser les utilisateurs non privilégiés à monter des ressources WebDAV ?
+ Le fichier /sbin/mount.davfs doit avoir le bit SUID positionné pour permettre aux utilisateurs non privilégiés de monter des ressources WebDAV.
+ .
+ Si vous ne choisissez pas cette option, seul le superutilisateur pourra monter des ressources WebDAV. Il sera toujours possible de modifier ce choix plus tard avec la commande « dpkg-reconfigure davfs2 ».
+Description-gl.UTF-8: ¿Os usuarios non privilexiados deben poder montar recursos WebDAV?
+ O ficheiro /sbin/mount.davfs debe ter o bit SUIT establecido se quere permitir aos usuarios non privilexiados montar recursos WebDAV.
+ .
+ Se non escolle esta opción, só o administrador ha poder montar recursos WebDAV. Isto pódese cambiar máis tarde executando "dpkg-reconfigure davfs2".
+Description-it.UTF-8: Permettere agli utenti non privilegiati di montare risorse WebDAV?
+ Il file /sbin/mount.davfs deve avere il bit SUID impostato se si desidera permettere agli utenti non privilegiati (non root) di montare risorse WebDAV.
+ .
+ Se non si sceglie questa opzione, solo l'utente root avrà il permesso di montare risorse WebDAV. Questa impostazione può essere modificata successivamente eseguendo «dpkg-reconfigure davfs2».
+Description-ja.UTF-8: root 以外のユーザが WebDAV リソースをマウント可能にしますか?
+ 特権を持たない (root 以外の) ユーザによる WebDAV リソースのマウントを許可する場合は、ファイル /sbin/mount.davfs に SUID ビットを設定しなければなりません。
+ .
+ この選択肢を選ばない場合は、root だけが WebDAV リソースをマウントできます。この動作は後から 'dpkg-reconfigure davfs2' を実行することで変更できます。
+Description-nl.UTF-8: Wilt u niet-bevoorrechte gebruikers toelaten om WebDAV-bronnen aan te koppelen?
+ Het bestand /sbin/mount/davfs dient de SUID-bit actief te hebben als u niet-bevoorrecthe gebruikers toe wilt laten om WebDAV-bronnen aan te koppelen.
+ .
+ Als u niet voor deze optie kiest kan enkel 'root' WebDAV-bronnen aankoppelen. U kunt deze instelling later altijd veranderen via het commando 'dpkg-reconfigure davfs2'.
+Description-pt.UTF-8: Deve ser permitido a utilizadores não privilegiados montar recursos WebDAV?
+ O ficheiro /sbin/mount.davfs tem de ter o bit SUID activado se quer permitir que utilizadores não previligiados (não-root) possam montar recursos WebDAV.
+ .
+ Se não escolher esta opção, apenas ao root será permitido montar recursos WebDAV. Pode alterar esta situação mais tarde correndo 'dpkg-reconfigure davfs2'.
+Description-pt_BR.UTF-8: Usuários sem privilégios podem montar recursos WebDAV?
+ O arquivo /sbin/mount.davfs deve ter o bit SUID habilitado se você quiser permitir que usuários sem privilégios (não-root) montem recursos WebDAV.
+ .
+ Se você não escolher esta opção somente o usuário root poderá montar recursos WebDAV. Isto pode ser modificado mais tarde executando 'dpkg-reconfigure davfs2'.
+Description-ru.UTF-8: Разрешить монтирование ресурсов WebDAV непривилегированным пользователям ?
+ Чтобы разрешить монтирование ресурсов WebDAV непривилегированным (не имеющих суперпользовательских прав root) пользователям на файл /sbin/mount.davfs должен быть установлен SUID бит.
+ .
+ Если вы откажитесь, то только пользователь root сможет монтировать ресурсы WebDAV. Данную настройку можно изменить позже запустив команду 'dpkg-reconfigure davfs2'.
+Description-sv.UTF-8: Ska vanliga användare tillåtas att montera WebDAV-resurser?
+ Filen /sbin/mount.davfs måste ha SUID-biten satt om du vill tillåta vanliga användare (icke-root) att montera WebDAV-resurser.
+ .
+ Om du inte väljer det här alternativet kommer endast root att tillåtas att montera WebDAV-resurser. Det här kan ändras senare genom att köra "dpkg-reconfigure davfs2".
+Description-ta.UTF-8: WebDAV மூலங்களை உரிமையில்லா பயனர்கள் ஏற்ற அனுமதிக்க வேண்டுமா?
+ WebDAV மூலங்களை உரிமையில்லா பயனர்கள் (ரூட் இல்லாத) ஏற்ற அனுமதிக்க வேண்டுமாயின் /sbin/mount.davfs கோப்பில் SUID பிட்டை அமைத்திருக்க வேண்டும்.
+ .
+ இந்த தேர்வை நிராகரித்தால் ரூட் மட்டுமே WebDAV மூலங்களை ஏற்ற அனுமதிக்கப் படுவார். இதை தேவையானால்  'dpkg-reconfigure davfs2' கட்டளையை இயக்கி பின்னால் மாற்றிக் கொள்ளலாம்.
+Description-vi.UTF-8: Người dùng không có quyền đặc biệt nên có quyền lắp tài nguyên WebDAV không?
+ Tập tin « /sbin/mount.davfs » phải có bit SUID được lập nếu bạn muốn cho phép người dùng không có quyền đặc biệt (người dùng khác người chủ) gắn kết tài nguyên WebDAV.
+ .
+ Bạn không bật tùy chọn này thì chỉ người chủ (root) có quyền gắn kết tài nguyên WebDAV. Cũng có khả năng thay đổi trường hợp này vào lúc sau, bằng cách chạy lệnh cấu hình lại « dpkg-reconfigure davfs2 ».
+
+Template: davfs2/user_name
+Type: string
+Default: davfs2
+Description: User running the mount.davfs daemon:
+ Once the davfs resource has been mounted, the daemon will drop the
+ root privileges and will run with an unprivileged user ID.
+ .
+ Please choose which login name should be used by the daemon.
+Description-cs.UTF-8: Uživatel pod kterým běží démon mount.davfs:
+ Jakmile je zdroj davfs namountován, shodí démon rootovská privilegiaa běží pod neprivilegovaným uživatelským ID.
+ .
+ Vyberte prosím přihlašovací jméno, které má být démonem používáno.
+Description-da.UTF-8: Bruger der kører dæmonen mount.davfs:
+ Når først davfs-ressourcen er blevet monteret, vil dæmonen droppe administratorprivilegier og vil køre med en upriviligeret bruger-id.
+ .
+ Vælg venligst hvilket logindnavn der skal bruges af dæmonen.
+Description-de.UTF-8: Benutzer, der den mount.davfs-Daemon ausführt:
+ Sobald die davfs-Ressource eingebunden wurde, wird der Daemon die root-Privilegien abgeben und mit einer unprivilegierten Benutzerkennung laufen.
+ .
+ Bitte wählen Sie, welcher Benutzername vom Daemon verwendet werden soll.
+Description-es.UTF-8: Usuario que ejecutará el demonio mount.davfs:
+ Una vez que davfs haya montado el recurso, el demonio se despojará de los privilegios de administrador («root») y se ejecutará con un ID de un usuario sin privilegios.
+ .
+ Por favor, escoja el nombre de usuario que utilizará el demonio.
+Description-fi.UTF-8: Taustaohjelmaa mount.davfs ajava käyttäjä:
+ Kun davfs-resurssi on liitetty, taustaohjelma tiputtaa pääkäyttäjäoikeudet ja käyttää tavallista käyttäjätunnusta.
+ .
+ Valitse mitä tunnusta taustaohjelman tulisi käyttää.
+Description-fr.UTF-8: Identifiant qui exécutera le démon mount.davfs :
+ Lorsque la ressource WebDAV aura été montée, le démon abandonnera les privilèges du superutilisateur et utilisera les privilèges d'un utilisateur ordinaire.
+ .
+ Veuillez choisir l'identifiant à utiliser pour cela.
+Description-gl.UTF-8: Usuario que executa o servizo mount.davfs:
+ Despois de montar o recurso davfs, o servizo ha perder os seus privilexios de administrador e ha funcionar cun ID de usuario non privilexiado.
+ .
+ Escolla o usuario que debe empregar o servizo.
+Description-it.UTF-8: Utente con cui eseguire il demone mount.davfs:
+ Una volta che una risorsa davfs è stata montata, il demone abbandona i privilegi di root e viene eseguito con un ID utente non privilegiato.
+ .
+ Scegliere il nome di login che deve essere usato dal demone.
+Description-ja.UTF-8: mount.davfs デーモンを実行するユーザ:
+ 一旦 davfs リソースがマウントされると、デーモンは root 特権を落として非特権ユーザ ID で動作します。
+ .
+ デーモンが利用するログイン名を指定してください。
+Description-nl.UTF-8: Gebruiker als wie de 'mount.davfs'-achtergronddienst draait:
+ Eens de davfs-bron aangekoppeld is zal de achtergronddienst de root-rechten laten vallen en verder gaan met een niet-bevoorrechte gebruikers-ID.
+ .
+ Welke gebruikersnaam dient door de achtergronddienst gebruikt te worden?
+Description-pt.UTF-8: Utilizador que corre o daemon mount.davfs:
+ Uma vez montado o recurso davfs, o daemon irá renunciar os privilégios root e correr com um utilizador não privilegiado.
+ .
+ Por favor escolha o nome do utilizador a ser usado pelo daemon.
+Description-pt_BR.UTF-8: Usuário que executa o daemon mount.davfs:
+ Depois que o recurso davfs for montado, o daemon dispensará os privilégios de root e executará com um ID de usuário sem privilégios.
+ .
+ Por favor, escolha qual nome de usuário deverá ser usado pelo daemon.
+Description-ru.UTF-8: Пользователь, с правами которого должен работать демон mount.davfs:
+ После того как ресурс davfs смонтирован, демон понижает свои права суперпользователя и будет работать с правами непривилегированного пользователя.
+ .
+ Введите имя пользователя, которое должно быть использовано демоном для этого.
+Description-sv.UTF-8: Användare som ska köra mount.davfs-demonen:
+ När davfs-resursen har monterats kommer demonen att släppa root-privilegierna och köra med ett vanligt användar-id.
+ .
+ Välj vilket inloggningsnamn som ska användas av demonen.
+Description-ta.UTF-8: mount.davfs கிங்கரனை இயக்கும் பயனர்
+ davfs மூலங்கள் ஏற்றப்பட்டதும் இந்த கிங்கரன் ரூட் உரிமையை விட்டு விட்டு உரிமையில்லாப் பயனர் அடையாளத்துடன் இயங்கும்.
+ .
+ கிங்கரன் பயன் படுத்த வேண்டிய உள்நுழை பெயரை தேர்ந்தெடுக்கவும்.
+Description-vi.UTF-8: Người dùng chạy trình nền « mount.davfs »:
+ Một khi tài nguyên davfs được gắn kết thì trình nền bỏ quyền người chủ, sau đó chạy với ID người dùng không có quyền đặc biệt.
+ .
+ Hãy chọn trình nền nên đăng nhập dưới tên nào.
+
+Template: davfs2/group_name
+Type: string
+Default: davfs2
+Description: Group for users who will be allowed to mount WebDAV resources:
+ Mounting WebDAV resources creates a file in
+ /var/run/mount.davfs. This directory will be owned by the group
+ specified here.
+Description-cs.UTF-8: Skupina pro uživatele, kteří budou mít dovoleno mountovat zdroje WebDAV.
+ Mountování zdrojů WebDAV vytváří soubor ve /var/run/mount.davfs.Tento adresář bude vlastněný zde zadanou skupinou.
+Description-da.UTF-8: Gruppe af brugere som vil have tilladelse til at montere WebDAV-ressourcer:
+ Montering af WebDAV-ressourcer opretter en fil i /var/run/mount.davfs. Denne mappe vil blive ejet af gruppen angivet her.
+Description-de.UTF-8: Gruppe für Benutzer, die WebDAV-Ressourcen einbinden können werden:
+ Das Einbinden von WebDAV-Ressourcen erzeugt eine Datei in /var/run/mount.davfs. Dieses Verzeichnis wird der Gruppe, die hier angegeben wurde, gehören.
+Description-es.UTF-8: Grupo de usuarios que podrán montar recursos WebDAV:
+ Al montar recursos WebDAV se crea un archivo en «/var/run/mount.davfs». Este directorio pertenecerá al grupo especificado aquí.
+Description-fi.UTF-8: Käyttäjäryhmä, jonka sallitaan liittää WebDAV-resursseja:
+ WebDAV-resurssien liittäminen luo tiedoston /var/run/mount.davfs. Tässä määritettävä ryhmä omistaa kyseisen tiedoston.
+Description-fr.UTF-8: Groupe d'utilisateurs autorisés à monter des ressources WebDAV :
+ Le montage d'une ressource WebDAV créera un fichier dans le répertoire /var/run/mount.davfs dont le propriétaire sera le groupe indiqué ici.
+Description-gl.UTF-8: Grupo dos usuarios aos que se permite montar recursos WebDAV:
+ Ao montar recursos WebDAV créase un ficheiro en /var/run/mount.davfs. Este directorio ha pertencer ao grupo que se indique aquí.
+Description-it.UTF-8: Gruppo per gli utenti a cui sarà permesso montare risorse WebDAV:
+ Il montaggio di risorse WebDAV crea un file in /var/run/mount.davfs. Questa directory sarà di proprietà del gruppo specificato qui.
+Description-ja.UTF-8: WebDAV リソースをマウント可能ににするユーザのグループ:
+ WebDAV リソースをマウントすると /var/run/mount.davfs にファイルを作ります。このディレクトリはここで指定したユーザが所有者になります。
+Description-nl.UTF-8: Groep van gebruikers die WebDAV-bronnen mogen aankoppelen:
+ Het aankoppelen van WebDAV-bronnen maakt een bestand aan in /var/run/mount.davfs . De hier opgegeven groep wordt de eigenaar van deze map.
+Description-pt.UTF-8: Grupo dos utilizadores a quem será permitido montar recursos WebDAV:
+ Montar um recurso WebDAV cria um ficheiro em /var/run/mount.davfs. Este directório terá como dono o grupo especificado aqui.
+Description-pt_BR.UTF-8: Grupo para usuários que poderão montar recursos WebDAV:
+ Montar recursos WebDAV cria um arquivo em /var/run/mount.davfs. Este diretório será de propriedade do grupo especificado aqui.
+Description-ru.UTF-8: Группа пользователей, которой разрешено монтировать ресурсы WebDAV:
+ При монтировании ресурсов WebDAV создаётся файл в каталоге /var/run/mount.davfs. Этот каталог будет принадлежать указанной здесь группе.
+Description-sv.UTF-8: Grupp för användare som ska tillåtas att montera WebDAV-resurser:
+ Montering av WebDAV-resurser skapar en fil i /var/run/mount.davfs. Den här katalogen kommer att ägas av gruppen som anges här.
+Description-ta.UTF-8: WebDAV மூலங்களை ஏற்ற அனுமதிக்கப் பட்ட பயனர்களுக்கான குழு:
+ WebDAV மூலங்களை ஏற்றுவது /var/run/mount.davfs அடைவில் ஒரு கோப்பை உருவாக்கும். இங்கு குறிக்கப்பட்ட குழு இந்த அடைவுக்கு உரிமை பெற்று இருக்கும்.
+Description-vi.UTF-8: Nhóm cho người dùng sẽ có quyền lắp tài nguyên WebDAV:
+ Việc gắn kết tài nguyên WebDAV thì tạo tập tin trong « /var/run/mount.davfs ». Thư mục này được sở hữu bởi nhóm được ghi rõ ở đây.
+
+Template: davfs2/new_user
+Type: boolean
+Default: true
+Description: Do you want to create a new user?
+ The "${user_name}" user does not exist on the system and will be
+ created if you choose this option.
+Description-cs.UTF-8: Chcete vytvořit nového uživatele?
+ Uživatel "${user_name}" v systému neexistuje. Odpovíte-li kladně, bude vytvořen.
+Description-da.UTF-8: Ønsker du at oprette en ny bruger?
+ Brugeren »${user_name}« findes ikke på systemet og vil blive oprettet, hvis du vælger denne indstilling.
+Description-de.UTF-8: Möchten Sie einen neuen Benutzer anlegen?
+ Der Benutzer »${user_name}« existiert auf diesem System nicht und wird angelegt, falls Sie diese Option wählen.
+Description-es.UTF-8: ¿Desea crear este nuevo usuario?
+ El usuario «${user_name}» no existe en el sistema, se creará si confirma esta pregunta.
+Description-fi.UTF-8: Haluatko luoda uuden käyttäjän?
+ Järjestelmässä ei ole käyttäjää ”${user_name}” ja sellainen luodaan, jos valitset tämän vaihtoehdon.
+Description-fr.UTF-8: Faut-il créer un nouvel identifiant ?
+ L'identifiant « ${user_name} » n'existe pas sur le système. Si vous choisissez cette option, il sera créé.
+Description-gl.UTF-8: ¿Quere crear un novo usuario?
+ O usuario "${user_name}" non existe no sistema e hase crear se escolle esta opción.
+Description-it.UTF-8: Creare un nuovo utente?
+ L'utente "${user_name}" non esiste nel sistema; se viene scelta questa opzione verrà creato.
+Description-ja.UTF-8: 新しいユーザを作成しますか?
+ ユーザ「${user_name}」はシステムに存在しておらず、この選択肢を選ぶと作成されます。
+Description-nl.UTF-8: Wilt u een nieuwe gebruiker aanmaken?
+ De gebruiker '${user_name}' bestaat niet op dit systeem, maar zal aangemaakt worden als u voor deze optie kiest.
+Description-pt.UTF-8: Deseja criar um novo utilizador?
+ O utilizador "${user_name}" não existe no sistema e será criado se escolher esta opção.
+Description-pt_BR.UTF-8: Você deseja criar um novo usuário?
+ O usuário "${user_name}" não existe no sistema e será criado se você escolher esta opção.
+Description-ru.UTF-8: Создать нового пользователя?
+ Пользователь "${user_name}" не существует в системе и будет создан, если вы ответите утвердительно.
+Description-sv.UTF-8: Vill du skapa en ny användare?
+ Användaren "${user_name}" finns inte på systemet och kommer att skapas om du väljer det här alternativet.
+Description-ta.UTF-8: நீங்கள் புதிய பயனரை உருவாக்க விரும்புகிறீர்களா?
+ பெயர் "${user_name}"  கணினியில் இல்லை; நீங்கள் தேர்வு செய்தால் அது உருவாக்கப் படும்.
+Description-vi.UTF-8: Bạn có muốn tạo người dùng mới không?
+ Tên người dùng « ${user_name} » không tồn tại trên hệ thống này nên sẽ được tạo nếu bạn bật tùy chọn này.
+
+Template: davfs2/new_group
+Type: boolean
+Default: true
+Description: Do you want to create a new group?
+ The "${group_name}" group does not exist on the system and will be
+ created if you choose this option.
+Description-cs.UTF-8: Chcete vytvořit tuto novou skupinu?
+ Skupina "${group_name}" v systému neexistuje. Odpovíte-li kladně, bude vytvořena.
+Description-da.UTF-8: Ønsker du at oprette en ny gruppe?
+ Gruppen »${group_name}« findes ikke på systemet og vil blive oprettet, hvis du vælger denne indstilling.
+Description-de.UTF-8: Möchten Sie eine neue Gruppe anlegen?
+ Die Gruppe »${group_name}« existiert auf diesem System nicht und wird angelegt, falls Sie diese Option wählen.
+Description-es.UTF-8: ¿Deseea crear este nuevo grupo?
+ El grupo "${group_name}" no existe en el sistema, se creará si confirma esta pregunta.
+Description-fi.UTF-8: Haluatko luoda uuden ryhmän?
+ Järjestelmässä ei ole ryhmää ”${group_name}” ja sellainen luodaan, jos valitset tämän vaihtoehdon.
+Description-fr.UTF-8: Faut-il créer un nouveau groupe ?
+ Le groupe « ${group_name} » n'existe pas sur le système. Si vous choisissez cette option, il sera créé.
+Description-gl.UTF-8: ¿Quere crear un novo grupo?
+ O grupo "${group_name}" non existe no sistema e hase crear se escolle esta opción.
+Description-it.UTF-8: Creare un nuovo gruppo?
+ Il gruppo "${group_name}" non esiste nel sistema; se viene scelta questa opzione verrà creato.
+Description-ja.UTF-8: 新しいグループを作成しますか?
+ グループ 「${group_name}」はシステムに存在しておらず、この選択肢を選ぶと作成されます。
+Description-nl.UTF-8: Wilt u een nieuwe groep aanmaken?
+ De groep '${group_name}' bestaat niet op dit systeem, maar zal aangemaakt worden als u voor deze optie kiest
+Description-pt.UTF-8: Deseja criar um grupo novo?
+ O grupo "${group_name}" não existe no sistema e será criado se escolher esta opção.
+Description-pt_BR.UTF-8: Você deseja criar um novo grupo?
+ O grupo "${group_name}" não existe no sistema e será criado se você escolher esta opção.
+Description-ru.UTF-8: Создать новую группу ?
+ Группа "${group_name}" не существует в системе и будет создана, если вы ответите утвердительно.
+Description-sv.UTF-8: Vill du skapa en ny grupp?
+ Gruppen "${group_name}" finns inte på det här systemet och kommer att skapas om du väljer det här alternativet.
+Description-ta.UTF-8: நீங்கள் புதிய குழுவை உருவாக்க விரும்புகிறீர்களா?
+ பெயர் "${group_name}"  கணினியில் இல்லை; நீங்கள் தேர்வு செய்தால் அது உருவாக்கப் படும்.
+Description-vi.UTF-8: Bạn có muốn tạo nhóm mới không?
+ Tên nhóm « ${group_name} » không tồn tại trên hệ thống này nên sẽ được tạo nếu bạn bật tùy chọn này.
+
+Template: davfs2/non_root_users_confimed
+Type: note
+Description: Unprivileged users allowed to mount WebDAV resources
+ The "${group_name}" group and the "${user_name}" user will be used by
+ davfs2. All users who should be granted the right to mount WebDAV
+ resources should be added to the group "${group_name}" using the
+ following command:
+ .
+ adduser <username> ${group_name}
+ .
+ The following should also be added to /etc/fstab:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ Additional options are available. Please read the mount.davfs man page
+ for more information.
+Description-cs.UTF-8: Neprivilegovaní uživatelé, kteří mají povoleno mountovat zdroje WebDAV
+ Davfs2 bude používat skupinu "${group_name}"·a uživatele·"${user_name}".Všichni uživatelé, kterým má být zaručeno právo mountovat zdroje WebDAVby měli být přidáni do skupiny "${group_name}" pomocí tohoto příkazu:
+ .
+ adduser <username> ${group_name}
+ .
+ Následující by mělo být rovněž přidáno do /etc/fstab:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ Dodatečné volby jsou možné. Nahlédněte, prosím, do manuálové stránkymount.davfs pro další informace.
+Description-da.UTF-8: Upriviligerede brugere med tilladelse til at montere WebDAV-ressourcer
+ Gruppen »${group_name}« og brugeren »${user_name}« vil blive brugt af davfs2. Alle brugere, som skal have ret til at montere WebDAV-ressourcer, skal tilføjes til gruppen »${group_name}« med den følgende kommando:
+ .
+ adduser <username> ${group_name}
+ .
+ Det følgende bør også tilføjes til /etc/fstab:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ Yderligere indstillinger er tilgængelige. Læs venligst manualsiden for mount.davfs for yderligere information.
+Description-de.UTF-8: Unprivilegierte Benutzer, denen erlaubt ist, WebDAV-Ressourcen einzubinden
+ Die Gruppe ${group_name} und der Benutzer ${user_name} werden von davfs2 verwendet. Alle Benutzer, denen das Recht, WebDAV-Ressourcen einzubinden, gewährt werden soll, sollten zu der Gruppe ${group_name} mittels des folgenden Befehls hinzugefügt werden:
+ .
+ adduser <username> ${group_name}
+ .
+ Das folgende sollte auch zu /etc/fstab hinzugefügt werden:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ Zusätzliche Optionen sind verfügbar. Bitte lesen Sie die Handbuchseite von mount.devfs für mehr Informationen.
+Description-es.UTF-8: Los usuarios sin privilegios pueden montar recursos WebDAV
+ Davfs2 utilizará el grupo «${group_name}» y el usuario «${user_name}». Todos los usuarios que deban tener permisos para montar recursos WebDAV se deberían añadir al grupo «${group_name}» utilizando la siguiente orden:
+ .
+ adduser <username> ${group_name}
+ .
+ Esto también se debería agregar al archivo «/etc/fstab»:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ Existen más opciones disponibles. Para más información lea la página del manual de mount.davfs.
+Description-fi.UTF-8: Tavalliset käyttäjät saavat liittää WebDAV-resursseja
+ Ohjelma davfs2 käyttää ryhmää ”${group_name}" ja käyttäjää "${user_name}". Kaikki käyttäjät, joilla tulisi olla oikeus liittää WebDAV-resursseja, tulisi lisätä ryhmään ”${group_name}” käyttäen seuraavaa komentoa:
+ .
+ adduser <username> ${group_name}
+ .
+ Lisäksi tiedostoon /etc/fstab tulisi lisätä seuraavaa:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ Tietoja saatavilla olevista lisäasetuksista löytyy mount.davfs:n man-ohjesivulta.
+Description-fr.UTF-8: Ressources WebDAV montables par des utilisateurs non privilégiés
+ Le groupe « ${group_name} » et l'utilisateur « ${user_name} » seront utilisés par davfs2. Tous les utilisateurs que vous voulez autoriser à monter des ressources WebDAV doivent être ajoutés au groupe « ${group_name} » avec la commande :
+ .
+ adduser <username> ${group_name}
+ .
+ La ligne suivante doit être ajoutée au fichier /etc/fstab :
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ Des options supplémentaires peuvent être utilisées le cas échéant. Veuillez consulter la page de manuel de mount.davfs pour plus d'informations.
+Description-gl.UTF-8: Usuarios non privilexiados aos que se permite montar recursos WebDAV
+ Davfs2 ha empregar o grupo "${group_name}" e o usuario "${user_name}". Tódolos usuarios aos que se lle queira dar permiso para montar recursos WebDAV deberían engadirse ao grupo "${group_name}" empregando a seguinte orde:
+ .
+ adduser <username> ${group_name}
+ .
+ Debe engadirse o seguinte a /etc/fstab:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ Hai máis opcións dispoñibles. Consulte a páxina de manual mount.davfs para máis información.
+Description-it.UTF-8: Utenti non privilegiati a cui è permesso montare risorse WebDAV
+ davfs2 userà il gruppo "${group_name}" e l'utente "${user_name}". Tutti gli utenti a cui deve essere garantito il permesso di montare risorse WebDAV devono essere aggiunti al gruppo "${group_name}" usando il comando seguente:
+ .
+ adduser <username> ${group_name}
+ .
+ Quanto segue dovrebbe essere inoltre aggiunto a /etc/fstab:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ Sono disponibili opzioni aggiuntive. Per maggiori informazioni leggere la pagina di manuale di mount.davfs.
+Description-ja.UTF-8: root 以外のユーザが WebDAV リソースをマウント可能です
+ 「${group_name}」グループと「${user_name}」ユーザが davfs2 に利用されます。WebDAV リソースをマウントする権利を移譲されるすべてのユーザは以下のコマンドを使用して「${group_name}」グループに追加されている必要があります。
+ .
+ adduser <username> ${group_name}
+ .
+ 以下が /etc/fstab に追加されます:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ オプションには、他にも指定可能なものがあります。詳細については mount.davfs の man ページを確認してください。
+Description-nl.UTF-8: Niet-bevoorrechte gebruikers wordt nu toegelaten om WebDAV-bronnen aankoppelen.
+ De groep '${group_name}' en de gebruiker '${user_name}' zullen door davfs2 gebruikt worden. Alle gebruikers die WebDAV-bronnen moeten kunnen aankoppelen dienen lid te zijn van de groep '${group_name}'. U kunt dit instellen via het commando: 
+ .
+ adduser <username> ${group_name}
+ .
+ Het volgende dient toegevoegd te worden aan /etc/fstab:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ Er zijn aanvullende opties beschikbaar. Meer informatie hierover vindt u in de man-pagina 'mount.davfs'.
+Description-pt.UTF-8: Utilizadores não privilegiados com permissões para montar recursos WebDAV
+ O grupo "${group_name}" e o utilizador "${user_name}"  serão usados pelo davfs2. A todos os utilizadores a quem queira ser dado o direito de montar recursos WebDAV devem ser adicionados ao grupo "${group_name}" usando o seguinte comando:
+ .
+ adduser <username> ${group_name}
+ .
+ Deve ser adicionado o seguinte ao /etc/fstab:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ Há mais opções disponíveis. Por favor leia a página do manual do mount.davfs para obter mais informação.
+Description-pt_BR.UTF-8: Usuários sem privilégios que podem montar recursos WebDAV
+ O grupo "${group_name}" e o usuário "${user_name}" serão usados pelo davfs2. Todos os usuários que podem ter direitos para montar recursos WebDAV devem ser adicionados ao grupo "${group_name}" usando o seguinte comando:
+ .
+ adduser <username> ${group_name}
+ .
+ A informação a seguir também deve ser adicionada ao /etc/fstab:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ Opções adicionais estão disponíveis. Por favor, leia a página de manual do mount.davfs para mais informações.
+Description-ru.UTF-8: Непривилегированным пользователям разрешено монтирование ресурсов WebDAV
+ Пакетом davfs2 будет использоваться группа "${group_name}" и пользователь "${user_name}". Всех пользователей, которым нужно разрешить монтирование ресурсов WebDAV, нужно добавить в группу "${group_name}" с помощью команды:
+ .
+ adduser <username> ${group_name}
+ .
+ Также нужно добавить в файл /etc/fstab:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ Дополнительные параметры описаны в странице руководства mount.davfs.
+Description-sv.UTF-8: Vanliga användare som tillåtas att montera WebDAV-resurser
+ Gruppen "${group_name}" och användaren "${user_name}" kommer att användas av davfs2. Alla användare som ska tillåtas att montera WebDAV-resurser ska läggas till i gruppen "${group_name}" med hjälp av följande kommando:
+ .
+ adduser <username> ${group_name}
+ .
+ Följande bör även läggas till i /etc/fstab:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ Ytterligare alternativ finns tillgängliga. Läs manualsidan för mount.davfs för mer information.
+Description-ta.UTF-8: WebDAV மூலங்களை ஏற்ற அனுமதிக்கப் பட்ட ரூட் அல்லா பயனர்கள்
+ குழு "${group_name}" மற்றும் பயனர் "${user_name}" davfs2 ஆல் பயன்படுத்தப் படும். பின்வரும் கட்டளையை பயன்படுத்தி WebDAV மூலங்களை ஏற்ற அனுமதிக்கப் பட்ட ரூட் அல்லா பயனர்கள் அனைவரும் "${group_name}" குழுவில் சேர்க்கப்பட வேண்டும்.
+ .
+ adduser <username> ${group_name}
+ .
+ பின் வருவதை /etc/fstab இல் சேர்க்க வேண்டும்:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ கூடுதல் தேர்வுகள் இருப்பில் உள்ளன. மேல் விவரங்களுக்கு mount.davfs கையேட்டை பார்க்கவும்.
+Description-vi.UTF-8: Người dùng không có quyền đặc biệt vẫn có quyền lắp tài nguyên WebDAV
+ Nhóm « ${group_name} » và người dùng « ${user_name} » sẽ được dùng bởi davfs2. Tất cả các người dùng nên có quyền gắn kết tài nguyên WebDAV nên được thêm vào nhóm « ${group_name} » bằng lệnh này:
+ .
+ adduser <username> ${group_name}
+ .
+ Thông tin theo đây cũng nên được thêm vào tập tin « /etc/fstab »:
+ .
+ https://webdav.example.org/path  /mnt  davfs  rw,user,noauto  0  0
+ .
+ Cũng có sẵn một số tùy chọn thêm. Xem trang hướng dẫn « mount.davfs » để tìm thêm thông tin.

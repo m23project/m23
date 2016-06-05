@@ -1,0 +1,108 @@
+Template: muse/muse-setuid
+Type: boolean
+Default: false
+Description: Do you want MusE to run with superuser rights?
+ For good timing, MusE needs to set the real time clock (/dev/rtc) to a
+ higher clock rate, and raise its scheduling priority. Usually, only the
+ root user is allowed to do so. MusE can be installed "suid-root", so
+ that it always runs with superuser capabilities. This is convenient, but
+ programming errors in MusE likely present a hazard for system security in
+ this setup.
+ .
+ File /usr/share/doc/muse/README.Debian summarizes several more secure
+ methods to meet the timing requirements, but they all require manual
+ configuration.
+ .
+ If you intend to use MusE for timing-sensitive recordings, and security
+ is of no concern on this computer, opt for the suid-root installation
+ by giving an affirmative answer to this question. Deny if unsure.
+Description-ar.UTF-8: أتريد تشغيل MusE بصلاحيات المستخدم الخارق؟
+ للحصول على توقيت جيّد، يحتاج MusE لأن يضبط الساعة (/dev/rtc) بتوقيتذي مُعدّل أعلى، وإعطاءها أوليّة جدولة أعلى. ولكي يقوم بهذا، يجب الحصول على صلاحية المستخدم root. ويمكن تثبيت MuseE بوضع "suid-root" كي يتمكندائماً من العمل بصلاحيات المستخدم الخارق. ومع أي هذا هو الحل المناسب، إلا أن المشاكل البرمجيّة في MusE قد تتسبّب باختراق أمين النظام في حالة هذا الإعداد.
+ .
+ يُلخّص الملف /usr/share/doc/muse/README.Debian العديد من الطرق الآمنة الإضافية التي تمكنك من ضبط متطلبات التوقيت، إلا أن جميعها يتطلب التهيئة اليدويّة.
+ .
+ إن كنت تنوي استخدام MusE للتسجيلات المتأثرة بالوقت، ولا تهتم لأمور الأمن الخاص بهذا الجهاز، فالأفضل لك التثبيت بإعداد suid-root بإعطاء جواب بالموافقة لهذا السؤال وارفض ذلك إن لم تكن متأكداً.
+Description-cs.UTF-8: Chcete spouštět MusE se superuživatelskými právy?
+ Pro lepší časování potřebuje MusE nastavit hodiny reálného času (/dev/rtc) na vyšší frekvenci a zvýšit jejich prioritu v plánovači. To může obvykle provést pouze uživatel root. MusE může být instalováno jako suid-root, takže bude vždy spouštěno s uživatelskými právy. To je sice pohodlné, ale protože MusE zajisté obsahuje programátorské chyby, může to z pohledu bezpečnosti systému představovat značné riziko.
+ .
+ Soubor /usr/share/doc/muse/README.Debian popisuje několik bezpečnějších způsobů, jak dostát požadavkům na časování, ale ty vyžadují ruční nastavení.
+ .
+ Plánujete-li použít MusE pro nahrávky, u kterých je přesné časování nezbytné a bezpečnost tohoto počítače vás nezajímá, odpovězte kladně, což povolí instalaci jako suid-root. Pokud si nejste jisti, otázku zamítněte.
+Description-da.UTF-8: Ønsker du at MusE skal køre med superbruger-rettigheder?
+ For at opnå den bedst mulige timing, skal MusE indstille realtidsuret (/dev/rtc) til at benytte en højere frekvens samt øge sin egen kørselsprioritet. Normalt har kun root-brugeren lov til at gøre dette. MusE kan installeres "suid-root", så den altid køres med superbruger-rettigheder. Dette er en nem løsning, men programfejl i MuSE kan udgøre en sikkerhedsrisiko i en sådan opsætning.
+ .
+ Filen /usr/share/doc/muse/README.Debian opsummerer adskillige mere sikre måder at opfylde timingkravene, men de kræver alle manuel opsætning.
+ .
+ Hvis du ønsker at benytte MusE til indspillinger, hvor timingen er kritisk, og du er opmærksom på sikkerheden på denne computer, bør du gå efter en suid-root installation ved at acceptere dette spørgsmål. Afvis, hvis du er usikker.
+Description-de.UTF-8: Soll MusE mit Administratorrechten laufen?
+ Für bestes Timing muss MusE einige Systemeinstellungen verändern, die für gewöhnlich nur dem Administrator zugänglich sind. MusE kann "suid-root" installiert werden und läuft dann stets mit Administratorrechten. Das ist bequem, aber Programmierfehler in MusE gefährden dann die Sicherheit des gesamten Systems.
+ .
+ Es gibt auch mehrere sichere Methoden, um die Timinganforderungen zu erfüllen. Sie sind in der Datei /usr/share/doc/muse/README.Debian zusammengefasst, müssen jedoch alle noch von Hand konfiguriert werden.
+ .
+ Wenn Sie MusE für Timing-kritische Aufnahmen einsetzen wollen und Sicherheitsbedenken auf diesem Computer keine Rolle spielen, dann sollten Sie die suid-root-Installation wählen, indem Sie diese Frage bejahen. Nein ist die sichere Antwort.
+Description-es.UTF-8: ¿Desea ejecutar MusE con permisos de superusuario?
+ Para una buena temporización, MusE necesita que el reloj de tiempo real (/dev/rtc) tenga una frecuencia superior, y una prioridad de planificación más alta. Normalmente, sólo a «root» se le permite hacerlo. MusE se puede instalar con capacidades de superusuario, así siempre puede ejecutarse con funciones de superusuario. Esto es aconsejable, pero con esta configuración, los errores de programación de MusE son un riesgo de seguridad para el sistema.
+ .
+ El fichero «/usr/share/doc/muse/README.Debian» expone varios métodos más seguros para cumplir con los requisitos de temporización, aunque necesitan configuración manual.
+ .
+ Si piensa usar MusE para registros sensibles al tiempo, y la seguridad no le preocupa en este ordenador, seleccione la instalación «suid-root» respondiendo afirmativamente. Rechace si no está seguro.
+Description-eu.UTF-8: Nahi al duzu MusE supererabiltzaile baimenekin exekutatzea?
+ Abiadura ona izateko. MusE-k denbora errealeko erlojua (/dev/rtc) erloju abiadura handiago batetara ezarri behar du, honela bere lehentasuna handitzeko. Normalean root erabiltzaileak bakarrik egin dezake hau. MusE "suid-root" gisa instalatu daiteke honela beti supererabiltzaile aukerekin exekutatzeko. Hau gomendagarria da, baina MusE-k izan ditzaken segurtasun erroreek sistemaren segurtasunean zulo bat suposa dezakete konfigurazio honekin.
+ .
+ /usr/share/doc/muse/README.Debian fitxategiak erloju behar horiek asetzeko beste zenbait modu seguruago laburtzen ditu, baina kasu horiek eskuzko konfigurazioa behar dute.
+ .
+ MusE erlojuari-sentikor diren grabaketan erabili nahi baduzu, eta segurtasuna ez bada garrantzitsua suid-root gisa instalatzeagatik hautatu dezakezu galdera honi baiezko erantzuna emanaz. Ezeztatu ziur ez bazaude.
+Description-fi.UTF-8: Tulisiko MusE ajaa pääkäyttäjäoikeuksilla?
+ Hyvää ajastusta varten MusEn täytyy asettaa järjestelmän kello (/dev/rtc) käyttämään suurempaa taajuutta ja nostaa sen vuorotusprioriteettia. Yleensä vain pääkäyttäjä voi tehdä tämän. MusE voidaan asentaa asetuksella ”suid-root”, jolloin se ajetaan aina pääkäyttäjäoikeuksilla. Tämä on kätevää, mutta MusEn ohjelmointivirheet voivat vaarantaa järjestelmän tietoturvan.
+ .
+ Tiedostossa /usr/share/doc/muse/README.Debian on esitetty muutamia turvallisempia keinoja ajastusvaatimusten täyttämiseksi, mutta ne kaikki vaativat asetusten muokkaamista käsin.
+ .
+ Jos MusEa aiotaan käyttää ajastusherkkiin nauhoituksiin, eikä tietoturva ole tärkeää tällä koneella, käytä suid-root-asennusta valitsemalla tämä vaihtoehto. Jos olet epävarma, älä valitse tätä.
+Description-fr.UTF-8: Faut-il lancer MusE avec les privilèges du superutilisateur ?
+ Pour une bonne synchronisation, MusE doit augmenter la fréquence de l'horloge temps réel (/dev/rtc) ainsi que sa priorité. En général, seul le superutilisateur possède les autorisations nécessaires. MusE peut être installé avec le bit suid positionné, pour s'exécuter avec les privilèges du superutilisateur. Ce choix est pratique, mais pourrait compromettre la sécurité de ce système.
+ .
+ Le fichier /usr/share/doc/muse/README.Debian indique différentes méthodes plus sûres pour répondre aux fortes contraintes de temps, mais elles nécessitent toutes une configuration manuelle.
+ .
+ Si vous souhaitez utiliser MusE pour des enregistrements à fortes contraintes de temps, et si la sécurité n'est pas importante sur ce système, choisissez l'installation avec les privilèges du superutilisateur. Dans le doute, ne la choisissez pas.
+Description-it.UTF-8: Si vuole eseguire MusE con diritti di superutente?
+ Per una buona sincronizzazione, MusE deve impostare l'orologio in tempo reale (/dev/rtc) ad una frequenza maggiore e incrementarne la priorità. Normalmente questa operazione è permessa solo all'utente root. MusE può essere installato "suid-root", in modo da essere sempre eseguito con diritti di superutente. Questo è comodo, ma errori di programmazione di MusE potrebbero rappresentare un rischio di sicurezza per questo sistema.
+ .
+ Il file /usr/share/doc/muse/README.Debian contiene diversi modi più sicuri per soddisfare le esigenze di sincronizzazione, ma questi richiedono una configurazione manuale.
+ .
+ Se si intende usare MusE per registrazioni in cui la sincronizzazione è importante, e se la sicurezza non è un problema in questo computer, si opti per l'installazione "suid-root" rispondendo affermativamente a questa domanda. Se non si è sicuri, rispondere negativamente.
+Description-ja.UTF-8: MusE を管理者権限で動作させますか?
+ タイミングをキッチリ合わせるには、MusE はリアルタイムクロック (/dev/rtc) をより高いクロックレートに設定し、MusE のスケジューリングの優先度を高める必要があります。大抵、root ユーザのみがこのような操作を許されています。MusE は "suid-root" に設定してインストールできるので、常に管理者権限で動作させることができます。この設定は楽ではありますが、MusE にプログラムエラーがあった場合はシステムのセキュリティに重大な問題を引き起こします。
+ .
+ /usr/share/doc/muse/README.Debian ファイルには、タイミングを合わせるためのよりセキュアな方法がいくつかまとめられていますが、これらは全て手動での設定が必要になります。
+ .
+ タイミングが重要なレコーディングに MusE を使いたい場合で、このコンピュータ上ではセキュリティのことを気にしなくても良いのであれば、この質問に「はい」と答えて root に suid してインストールしてください。そうでなければ拒否してください。
+Description-nl.UTF-8: Wilt u MusE uitvoeren met beheerdersrechten?
+ Voor goede timing dient MusE de 'real time'-klok (/etc/rtc) in te stellen op een hogere kloksnelheid, en zijn planningsprioriteit te verhogen. Meestal mag enkel de gebruiker root dit. MusE kan geïnstalleerd worden met de SUID-bit ingesteld voor root, waardoor het altijd met beheerdersrechten draait. Dit is handig maar betekent wel dat eventuele programmeerfouten in MusE een veiligheidsrisico voor uw systeembeveiliging opleveren. 
+ .
+ In /usr/share/doc/myse/README.Debian worden verschillende veiliger methodes samengevat om de timing-vereisten te bereiken. Deze vereisen echter allemaal handmatige aanpassingen.
+ .
+ Als u van plan bent om MusE te gebruiken voor timing-gevoelige opnames, en als beveiliging op deze computer niet van belang is, kies dan voor de installatie met de suid-bit ingesteld. Als u twijfelt sla dit dan af.
+Description-pt.UTF-8: Deseja que MusE corra com privilégios de super-utilizador?
+ Para uma boa sincronização, MusE necessita de colocar o relógio de tempo real (/dev/rtc) para uma taxa de pulso mais elevada, e aumentar a sua prioridade. Normalmente apenas o utilizador root possui permissões para o fazer. MusE pode ser instalado com "suid-root", para que corra sempre com capacidades de super-utilizador. É conveniente que o faça, mas erros de programação no MusE poderão apresentar um risco de segurança para o sistema com esta configuração.
+ .
+ O ficheiro /usr/share/doc/muse/README.Debian sumariza diversos métodos mais seguros para preencher os requisitos de temporização, mas todos necessitam de uma configuração manual.
+ .
+ Se possui o intuito de utilizar MusE para gravações temporizadas, e se a segurança não for uma preocupação para este computador, opte pela instalação com suid-root ao dar uma resposta afirmativa a esta questão. Negue se não tem a certeza.
+Description-ru.UTF-8: Запускать MusE с правами суперпользователя?
+ Для улучшения синхронизации, MusE требуется настраивать частоту часов реального времени (/dev/rtc), и увеличивать приоритет выполнения. Обычно, это разрешается делать только пользователю root. MusE можно установить как "suid-root" для того, чтобы она всегда выполнялась с правами суперпользователя. Это удобно, но при такой установке вероятные ошибки MusE могут ухудшить безопасность системы.
+ .
+ В файле /usr/share/doc/muse/README.Debian описаны несколько более безопасных методов установки синхронизации, но все они требуют ручной настройки.
+ .
+ Если вы хотите использовать MusE для чувствительной к синхронизации записи, и безопасность не очень важна на этом компьютере, выберите установку с suid-root. Если не уверены, ответьте отрицательно.
+Description-sv.UTF-8: Vill du att MusE ska köras med superuser-rättigheter?
+ För bra timing behöver MusE sätta den riktiga klockan (/dev/rtc) till en högre klockfrekvens och höja sin prioritet vid schemaläggning. Vanligtvis kan endast root-användaren göra detta. MusE kan installeras "suid root" så att den alltid körs med superuser-rättigheter. Med en sådan inställning kan vanliga användare också ändra på klockfrekvensen. Om det skulle förekomma fel i MusE så kan detta dock innebära en säkerhetsrisk.
+ .
+ I filen /usr/share/doc/muse/README.Debian finns korta beskrivningar av säkra metoder för att uppfylla kraven på timing, alla kräver dock manuella inställningar.
+ .
+ Om du vill använda MusE för tidskänsliga inspelningar och inte är orolig för säkerhetsrisker kan du använda suid-root genom att svara ja här. Om du är osäker, svara nej.
+Description-vi.UTF-8: Bạn có muốn chạy MusE với quyền truy cập của siêu người dùng không?
+ Để đếm thời gian cho đúng, phần mềm MusE cần phải lập đồng hồ thời gian thật (/dev/rtc) thành một tỷ lệ đồng hồ cao hơn, và tăng mức ưu tiên định thời của nó. Bình thường, chỉ người dùng chủ (root) được phép làm như thế. MusE có thể được cài đặt một cách « setuid root » để chạy lúc nào cũng có quyền truy cập của siêu người dùng. Thiết lập này thuận lợi, nhưng MusE chứa một số lỗi lập trinh mà rất có thể rủi ro bảo mật hệ thống nếu MusE có quyền truy cập đặc biệt.
+ .
+ Tập tin Đọc Đi « /usr/share/doc/muse/README.Debian » tóm tắt vài phương pháp bảo mật bổ sung để thoả điều kiện cần thiết về đếm thời gian, nhưng tất cả các chúng cũng yêu cầu bạn tự cấu hình.
+ .
+ Nếu bạn định sử dụng MusE để thu dữ liệu phản ứng thời gian, và máy tính này vẫn bảo mật hoàn toàn (v.d. một máy tính không bao giờ có kết nối bên ngoài) thì bạn có thể chọn cài đặt suid-root bằng cách chấp nhận tùy chọn này. Không thì từ chối.

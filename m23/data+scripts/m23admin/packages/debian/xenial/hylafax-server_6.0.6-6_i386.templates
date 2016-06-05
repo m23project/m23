@@ -1,0 +1,86 @@
+Template: hylafax-server/start_now
+Type: boolean
+Default: true
+Description: Start the HylaFAX daemon now?
+ Hylafax is already configured and may be started now. If you specify to
+ start it later manually, remember to change the value of RUN_HYLAFAX
+ in /etc/default/hylafax.
+Description-bg.UTF-8: Стартиране на HylaFAX демона още сега?
+ Hylafax вече е настроена и може да бъде стартирана. Ако по-късно я настроите да се стартира ръчно, не забравяйте да промените стойността на RUN_HYLAFAX в /etc/default/hylafax.
+Description-cs.UTF-8: Spustit nyní daemon HylaFAX?
+ Hylafax je již nastaven a tak ho můžete spustit. Pokud zvolíte ruční spuštění, nezapomeňte v souboru /etc/default/hylafax změnit hodnotu RUN_HYLAFAX.
+Description-da.UTF-8: Start HylaFAX-dæmonen nu?
+ Hylafax er allerede konfigureret og kan startes nu. Hvis du angiver en senere manuel opstart så husk at ændre værdien for RUN_HYLAFAX i /etc/default/hylafax.
+Description-de.UTF-8: Soll der HylaFAX-Dienst jetzt gestartet werden?
+ Hylafax wurde bereits eingerichtet und kann jetzt gestartet werden. Falls Sie angeben hylafax später von Hand zu starten, so denken Sie bitte daran den Wert von RUN_HYLAFAX in /etc/default/hylafax zu verändern.
+Description-es.UTF-8: ¿Desea iniciar el demonio HylaFAX ahora?
+ Hylafax ya está configurado y se puede iniciar ahora. Si prefiere iniciarlo manualmente más tarde, recuerde cambiar el valor de RUN_HYLAFAX en el archivo «/etc/default/hylafax».
+Description-fi.UTF-8: Tulisiko HylaFAX-taustaohjelma käynnistää nyt?
+ Hylafaxin asetukset on jo tehty ja se voidaan käynnistää nyt. Jos päätät käynnistää sen myöhemmin käsin, muista vaihtaa muuttujan RUN_HYLAFAX arvo tiedostosta /etc/default/hylafax.
+Description-fr.UTF-8: Faut-il démarrer le démon hylafax maintenant ?
+ Hylafax est déjà configuré et peut être démarré maintenant. Si vous prévoyez de le lancer vous-même, vous devrez modifier la valeur RUN_HYLAFAX dans le fichier /etc/default/hylafax.
+Description-gl.UTF-8: ¿Iniciar agora o servizo HylaFAX?
+ Hylafax xa está configurado e pódese iniciar agora. Se indica que quere inicialo manualmente máis tarde, lembre cambiar o valor de RUN_HYLAFAX en /etc/default/hylafax.
+Description-id.UTF-8: Jalankan daemon HylaFAX sekarang?
+ Hylafax telah diatur dan mungkin sudah dijalankan. Jika anda menghendaki menjalankannya secara manual, ingat untuk mengubah harga RUN_HYLAFAX di /etc/default/hylafax.
+Description-it.UTF-8: Eseguire il server HylaFAX adesso?
+ Hylafax è già configurato e può essere eseguito adesso. Se si preferisce farlo manualmente, ricordarsi di cambiare il valore di RUN_HYLAFAX in /etc/default/hylafax.
+Description-ja.UTF-8: HylaFAX デーモンをすぐに起動しますか?
+ hylafax の設定が完了しており、すぐに起動できます。後ほど手動で起動したい場合は /etc/default/hylafax の値を変更するのを忘れないでください。
+Description-nl.UTF-8: De HylaFAX-achtergronddienst nu starten?
+ Hylafax is reeds geconfigureerd en kan nu gestart worden. Als u aangeeft het later handmatig te willen starten, vergeet dan niet de waarde van RUN_HYLAFAX in /etc/default/hylafax te wijzigen.
+Description-pl.UTF-8: Uruchomić teraz demona HylaFAX?
+ Hylafax został skonfigurowany i może być teraz uruchomiony. W przypadku wybrania późniejszego, ręcznego uruchomienia, proszę pamiętać o zmianie wartości RUN_HYLAFAX w /etc/default/hylafax.
+Description-pt.UTF-8: Arrancar o deamon HylaFAX agora?
+ O Hylafax já está configurado e pode ser arrancado agora. Se você especificar arrancá-lo mais tarde manualmente, lembre-se de alterar o valor de RUN_HYLAFAX em /etc/default/hylafax.
+Description-pt_BR.UTF-8: Iniciar o daemon HylaFAX agora?
+ O Hylafax já está configurado e pode ser iniciado agora. Caso você especifique que o mesmo deva ser iniciado depois manualmente, lembre-se de mudar o valor RUN_HYLAFAX em /etc/default/hylafax.
+Description-ru.UTF-8: Запустить HylaFAX сейчас?
+ Hylafax уже настроен и может быть запущен. Если вы хотите запустить его позже вручную, не забудьте изменить значение RUN_HYLAFAX в файле /etc/default/hylafax.
+Description-sv.UTF-8: Starta HylaFAX-demonen nu?
+ Hylafax är redan konfigurerad och kan startas nu. Om du angivit att starta den manuellt senare, tänk på att ändra värdet för RUN_HYLAFAX i /etc/default/hylafax.
+Description-vi.UTF-8: Khởi chạy trình nền (dæmon) HylaFAX ngay bao giờ không?
+ Trình hylafax đã được cấu hình thì có thể được khởi chạy ngay bây giờ. Nếu bạn chọn tự khởi chạy nó lần sau, hãy nhớ sửa đổi giá trị của « RUN_HYLAFAX » trong tập tin </etc/default/hylafax>.
+
+Template: hylafax-server/setup_failed
+Type: error
+Description: Hylafax setup failed
+ While installing hylafax a script called 'faxsetup' failed.
+ This can be caused by many reasons and cannot be fixed automatically
+ so the hylafax-server package is now unconfigured. Please fix the
+ problem, run 'faxsetup -server' as root and reconfigure hylafax-server
+ manually.
+Description-cs.UTF-8: Nastavení Hylafaxu selhalo
+ Během istalace hylafaxu došlo k selhání skriptu 'faxsetup'. K tomu mohlo dojít z řady důvodů. Protože se chybu nepodařilo automaticky odstranit, zůstal balíček hylafax-server nenastaven. Opravte prosím problém spuštěním 'faxsetup -server' s právy uživatele root a nastavte hylafax-server ručně.
+Description-da.UTF-8: Hylafaxopsætning fejlede
+ Under installation af hylafax fejlede et skript med navnet »faxsetup«. Dette kan skyldes mange årsager og kan ikke rettes automatisk, så pakken hylafax-server er nu ikke konfigureret. Ret venligst dette problem og kør så »faxsetup-server« som administrator (root) og omkonfigurer hylafax-server manuelt.
+Description-de.UTF-8: Hylafax-Konfiguration fehlgeschlagen
+ Während der Installation von hylafax ist das Skript »faxsetup« fehlgeschlagen. Das kann verschiedene Ursachen haben, und kann nicht automatisch behoben werden, weshalb das Paket hylafax-server nun unkonfiguriert bleibt. Bitte beheben Sie das Problem, indem Sie »faxsetup-server« als root aufrufen und hylafax-server manuell neu konfigurieren.
+Description-es.UTF-8: La configuración de Hylafax falló
+ Mientras se estaba instalando hylafax, un script llamado «faxsetup» falló. Esto se puede deber a muchas razones y no se puede arreglar automáticamente de modo que el paquete hylafax-server ahora está sin configurar. Por favor, arregle el problema, ejecute «faxsetup -server» como administrador («root») y reconfigure manualmente hylafax-server.
+Description-fi.UTF-8: Hylafaxin asetusten teko epäonnistui
+ Komentosarjan ”faxsetup” ajo epäonnistui asennettaessa hylafaxia. Tämä voi johtua monista eri syistä, eikä tilannetta voida korjata automaattisesti, joten paketin hylafax-server asetuksia ei ole tehty. Korjaa ongelma, aja pääkäyttäjänä komento ”faxsetup-server” ja tee paketin hylafax-server asetukset käsin.
+Description-fr.UTF-8: Échec de la configuration d'hylafax
+ Lors de l'installation d'hylafax, le script « faxsetup » a échoué. Cela peut être causé par différentes raisons et ne peut pas être corrigé automatiquement ; c'est pourquoi le paquet hylafax-server est maintenant non configuré. Veuillez corriger le problème, exécuter « faxsetup-server » avec les privilèges du superutilisateur et reconfigurer vous-même hylafax-server.
+Description-gl.UTF-8: A configuración de hylafax fallou
+ Mentres se instalaba hylafax, un script chamado "faxsetup" fallou. Isto pode estar causado por varios motivos, e non se pode arranxar automaticamente, así que o paquete hylafax-server está sen configurar. Arranxe o problema, execute "faxsetup -server" coma administrador e reconfigure hylafax-server manualmente.
+Description-id.UTF-8: Setup Hylafax gagal
+ Skrip bernama 'faxsetup' gagal dijalankan ketika memasang hylafax. Ini dapat disebabkan beberapa hal dan tidak dapat diperbaiki secara otomatis jadi paket hylafax-server sekarang tidak diatur. mohon perbaiki masalahnya, jalankan 'faxsetup -server' sebagai root dan atur ulang hylafax-server secara manual.
+Description-it.UTF-8: Configurazione di Hylafax fallita
+ Durante l'installazione di hylafax, uno script chiamato 'faxsetup' non ha funzionato. Questo può essere dovuto a parecchi motivi a non può essere corretto in maniera automatica, quindi il pacchetto hylafax-server non è stato configurato. Risolvere il problema, eseguire "faxsetup -server" come root e poi riconfigurare hylafax-server a mano.
+Description-ja.UTF-8: hylafax の設定が失敗しました
+ hylafax のインストール中に 'faxsetup' スクリプトが失敗しました。この失敗にはいくつもの理由が考えられ、自動的には修復出来ません。そのため、hylafax-server パッケージはまだ設定が終わっていません。問題を修正の上、root ユーザで手動で 'faxsetup -server' を実行して hylafax-server を再設定を行ってください。
+Description-nl.UTF-8: Installatie van Hylafax is mislukt
+ Tijdens de installatie van Hylafax, is het script 'faxsetup' fout gelopen. Dit kan verschillende oorzaken hebben en kan niet automatisch worden hersteld. Hierdoor blijft het pakket hylafax-server ongeconfigureerd. U dient, na de oorzaak van het probleem verholpen te hebben, als root het script 'faxsetup-server' uit te voeren en vervolgens hylafax-server handmatig te laten herconfigureren.
+Description-pl.UTF-8: Konfiguracja Hylafax nie powiodła się
+ Podczas instalowania pakietu hylafax, zawiódł skrypt o nazwie "faxsetup". Może mieć to wiele przyczyn i nie może zostać naprawione automatyczne, dlatego pakiet hylafax-server jest obecnie nieskonfigurowany. Proszę naprawić ten problem przez wykonanie polecenie "faxsetup -server" jako root i ręczną rekonfigurację pakietu hylafax-server.
+Description-pt.UTF-8: Configuração do Hylafax falhou.
+ Durante a instalação do Hylafax, um script chamado 'faxsetup' falhou. Isto pode ser causado por muitas razões e não pode ser resolvido automaticamente, então o pacote hylafax-server está por configurar. Por favor, corrija o problema, corra 'faxsetup-server' como root e reconfigure o hylafax-server manualmente.
+Description-pt_BR.UTF-8: Configuração do Hylafax falhou
+ Enquanto estava instalando o hylafax um script chamado 'faxsetup' falhou. Isto pode ser causado por várias razões e não pode ser corrigido automaticamente portanto o pacote hylafax-server não está configurado. Por favor, corrija o problema, execute 'faxsetup -server' como root e configure o hylafax-server manualmente.
+Description-ru.UTF-8: Не удалось настроить Hylafax
+ Во время установки hylafax сценарий 'faxsetup' завершился с ошибкой. Это могло произойти по многим причинам и не может быть исправлено автоматически, поэтому пакет hylafax-server остаётся ненастроенным. Исправьте ошибку, запустите 'faxsetup -server' с правами суперпользователя и выполните повторную настройку hylafax-server вручную.
+Description-sv.UTF-8: Konfiguration av hylafax misslyckades
+ Under installationen av hylafax misslyckades ett skript kallat "faxsetup". Detta kan ha orsakats av flera anledningar och kan inte rättas till automatiskt så nu är hylafax-server-paketet ej konfigurerat. Rätta till problemet, kör "faxsetup -server" som root och konfigurera om hylafax-server manuellt.
+Description-vi.UTF-8: Việc thiết lập hylafax bị lỗi
+ Trong khi cài đặt hylafax, một tập lệnh tên « faxsetup » (thiết lập điện thư) bị lỗi. Trường hợp có thể do nhiều lý do, và không có khả năng sửa tự động nên gói hylafax chưa cấu hình. Vui lòng sửa vấn đề này, chạy tiến trình « faxsetup-server » (trình phục vụ thiết lập điện thư) với tư cách người chủ (root) để tự cấu hình hylafax-server.

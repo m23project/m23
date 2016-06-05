@@ -1,0 +1,505 @@
+Template: apt-build/build_dir
+Type: string
+Default: /var/cache/apt-build/build
+Description: Directory used by apt-build to download and build packages:
+Description-ca.UTF-8: Directori que utilitzarà apt-build per descarregar i construir els paquets:
+Description-cs.UTF-8: Adresář používaný apt-buildem pro stahování a sestavování balíků:
+Description-da.UTF-8: Mappe brugt af apt-build til at hente og bygge pakker:
+Description-de.UTF-8: Verzeichnis, das Apt-build zum Herunterladen und Bauen von Paketen nutzt:
+Description-el.UTF-8: Κατάλογος όπου θα γίνεται η μεταφόρτωση και δημιουργία των πακέτων από το apt-build;
+Description-es.UTF-8: ¿Qué directorio desea que apt-build utilice para descargar y construir los paquetes?
+Description-fr.UTF-8: Emplacement où apt-build téléchargera et construira les paquets :
+Description-gl.UTF-8: Directorio que apt-build emprega para descargar e compilar paquetes:
+Description-it.UTF-8: Directory in cui apt-build scarica e compila i pacchetti:
+Description-ja.UTF-8: apt-build がパッケージのダウンロードとビルドを行うのに使うディレクトリ:
+Description-nl.UTF-8: Map gebruikt door apt-build om pakketten op te halen en te bouwen:
+Description-pl.UTF-8: Katalog używany przez apt-build do pobierania i budowania pakietów:
+Description-pt.UTF-8: Directório utilizado pelo apt-build para 'download' e criação de pacotes:
+Description-pt_BR.UTF-8: Diretório utilizado pelo apt-build para baixar e construir pacotes:
+Description-ru.UTF-8: Каталог, в который apt-build должен загружать и собирать пакеты:
+Description-sk.UTF-8: Adresár, ktorý apt-build používa pre stiahnutie a zostavenie balíkov:
+Description-sv.UTF-8: Katalog som apt-build ska använda för att hämta och bygga paket:
+Description-tr.UTF-8: 'apt-build'ın paketleri indirmek ve derlemek için kullanacağı dizin:
+Description-vi.UTF-8: Thư mục được apt-build dùng để tải về và xây dựng gói:
+
+Template: apt-build/repository_dir
+Type: string
+Default: /var/cache/apt-build/repository
+Description: Directory used to store packages built by apt-build:
+Description-ca.UTF-8: Directori utilitzat per emmagatzemar els paquets construïts per apt-build:
+Description-cs.UTF-8: Adresář pro ukládání balíků sestavených apt-buildem:
+Description-da.UTF-8: Mappe der skal bruges til at gemme pakker bygget af apt-build:
+Description-de.UTF-8: Verzeichnis zum Speichern mittels Apt-build gebauter Pakete:
+Description-el.UTF-8: Κατάλογος όπου θα αποθηκευτούν τα πακέτα που δημιουργήθηκαν από το apt-build:
+Description-es.UTF-8: ¿Qué directorio desea utilizar para almacenar los paquetes construidos por apt-build?
+Description-fr.UTF-8: Emplacement où apt-build entreposera les paquets construits :
+Description-gl.UTF-8: Directorio que se emprega para armacenar os paquetes compilados por apt-build:
+Description-it.UTF-8: Directory in cui sono salvati i pacchetti compilati da apt-build:
+Description-ja.UTF-8: apt-build によってビルドされたパッケージを格納するディレクトリ:
+Description-nl.UTF-8: Map gebruikt om pakketten gebouwd door apt-build te bewaren:
+Description-pl.UTF-8: Katalog używany do przechowywanie pakietów budowanych przez apt-build:
+Description-pt.UTF-8: Directório utilizado para guardar os pacotes criados pelo apt-build:
+Description-pt_BR.UTF-8: Diretório utilizado para armazenar pacotes construídos pelo apt-build:
+Description-ru.UTF-8: Каталог, в который apt-build должен сохранять собранные пакеты:
+Description-sk.UTF-8: Adresár, ktorý apt-build používa uloženie balíkov, ktoré zostavil:
+Description-sv.UTF-8: Katalog som apt-build ska spara bygga paket:
+Description-tr.UTF-8: 'apt-build' tarafından derlenmiş paketlerin saklanacağı dizin:
+Description-vi.UTF-8: Thư mục được dùng để cất giữ gói được apt-build xây dựng:
+
+Template: apt-build/add_to_sourceslist
+Type: boolean
+Default: true
+Description: Add apt-build repository to sources.list?
+ In order to install built package via APT, you must add a line like this
+ to your sources.list:
+   deb file:${repo} apt-build main
+Description-ca.UTF-8: Voleu afegir el repositori d'apt-build al sources.list?
+ Per instal·lar amb APT els paquets que construïu, heu d'afegir com aquesta al vostre sources.list:
+   deb file:${repo} apt-build main
+Description-cs.UTF-8: Přidat repositář apt-build do sources.list?
+ Aby bylo možné instalovat sestavené balíky pomocí APT, musíte do sources.list přidat řádek podobný tomuto:
+   deb file:${repo} apt-build main
+Description-da.UTF-8: Tilføj arkivet apt-build til sources.list?
+ For at installere byggede pakker via APT, skal du tilføje en linje som denne til din sources.list:
+   deb file:${repo} apt-build main
+Description-de.UTF-8: Das Paketdepot von Apt-build der Datei /etc/sources.list hinzufügen?
+ Um die gebauten Pakete mit APT zu installieren, müssen Sie so eine Zeile Ihrer Datei sources.list hinzufügen:
+   deb file:${repo} apt-build main
+Description-el.UTF-8: Θέλετε να προστεθεί το apt-build ως καταχώρηση στο αρχείο πηγών sources.list;
+ Για να μπορείτε να εγκαθιστάτε πακέτα μέσω του apt θα πρέπει να προσθέσετε μια γραμμή όπως την παρακάτω στο αρχείο sources.list:
+   deb file:${repo} apt-build main
+Description-es.UTF-8: ¿Añadir el repositorio de apt-build a sources.list?
+ Para poder instalar mediante APT los paquetes que construya, tiene que añadir una línea como esta a su fichero sources.list:
+   deb file:${repo} apt-build main
+Description-fr.UTF-8: Faut-il ajouter le dépôt d'apt-build au fichier sources.list ?
+ Pour qu'apt puisse installer le paquet construit, vous devez ajouter une ligne comme celle-ci dans votre fichier sources.list :
+   deb file:${repo} apt-build main
+Description-gl.UTF-8: ¿Engadir o repositorio de apt-build a sources.list?
+ Para instalar o paquete compilado mediante APT, debe engadir unha liña coma esta ao seu ficheiro sources.list:
+   deb file:${repo} apt-build main
+Description-it.UTF-8: Aggiungere il repository di apt-build in sources.list?
+ Per poter installare con apt i pacchetti compilati, occorre aggiungere al proprio file sources.list una riga simile a:
+   deb file:${repo} apt-build main
+Description-ja.UTF-8: apt-build のリポジトリを sources.list に追加しますか?
+ ビルドしたパッケージを APT 経由でインストールするためには、sources.list に次のような行を追加する必要があります:
+   deb file:${repo} apt-build main
+Description-nl.UTF-8: apt-build bibliotheek (repository) toevoegen aan sources.list?
+ Om gebouwde pakketten te installeren via APT, moet u een regel zoals deze toevoegen aan uw sources.list:
+   deb file:${repo} apt-build main
+Description-pl.UTF-8: Dodać repozytorium apt-build do sources.list?
+ Aby zainstalować pakiet za pomocą APT-a, należy dodać wiersz podobny do poniższego, do sources.list:
+   deb file:${repo} apt-build main
+Description-pt.UTF-8: Adicionar o repositório apt-build ao ficheiro sources.list?
+ Para que possa instalar o pacote já compilado via APT, terá que adicionar uma linha como esta ao ficheiro sources.list:
+   deb file:${repo} apt-build main
+Description-pt_BR.UTF-8: Adicionar o repositório apt-build ao arquivo sources.list?
+ Para poder instalar os pacotes construídos usando o APT, é necessário adicionar uma linha como esta em seu arquivo sources.list:
+   deb file:${repo} apt-build main
+Description-ru.UTF-8: Добавить репозиторий apt-build в sources.list?
+ Чтобы установить собранный пакет с помощью APT, вы должны добавить в файл sources.list примерно такую строку:
+   deb file:${repo} apt-build main
+Description-sk.UTF-8: Pridať apt-build repozitár do sources.list?
+ Aby ste mohli nainštalovať balík zostavený pomocou APT, musíte pridať do svojho sources.list takýto riadok:
+   deb file:${repo} apt-build main
+Description-sv.UTF-8: Lägga till apt-builds förråd till sources.list?
+ För att installera byggda paket via APT måste du lägga till en rad som denna till din sources.list:
+   deb file:${repo} apt-build main
+Description-tr.UTF-8: 'apt-build' deposu sources.list'e eklensin mi?
+ Paketleri APT ile kurabilmek için aşağıdaki satırları sources.list'e eklemelisiniz:
+   deb file:${repo} apt-build main
+Description-vi.UTF-8: Thêm kho apt-build vào sources.list (danh sách các nguồn) không?
+ Để cài đặt gói đã xây dựng bằng APT, bạn phải thêm một dòng như điều này vào tập tin sources.list (danh sách các nguồn):
+   deb file:${repo} apt-build main
+
+Template: apt-build/olevel
+Type: select
+Choices: Light, Medium, Strong
+Choices-ca.UTF-8: Baix, Mig, Agressiu
+Choices-cs.UTF-8: Lehká, Střední, Silná
+Choices-da.UTF-8: Let, Mellem, Stærk
+Choices-de.UTF-8: Gering, Mittel, Hoch
+Choices-el.UTF-8: Χαμηλό, Μέτριο, Υψηλό
+Choices-es.UTF-8: Escaso, Medio, Agresivo
+Choices-fr.UTF-8: Simple, Intermédiaire, Élevé
+Choices-gl.UTF-8: Lixeiro, Medio, Forte
+Choices-it.UTF-8: Semplice, Intermedio, Elevato
+Choices-ja.UTF-8: 弱, 標準, 強
+Choices-nl.UTF-8: Zwak, Gemiddeld, Sterk
+Choices-pl.UTF-8: niski, średni, wysoki
+Choices-pt.UTF-8: Leve, Média, Forte
+Choices-pt_BR.UTF-8: Leve, Médio, Forte
+Choices-ru.UTF-8: Облегченная, Средняя, Усиленная
+Choices-sk.UTF-8: ľahká, stredná, silná
+Choices-sv.UTF-8: Lätt, Medium, Stark
+Choices-tr.UTF-8: Hafif, Orta, Ağır
+Choices-vi.UTF-8: Nhẹ, Vừa, Mạnh
+Default: Medium
+Description: Optimization level:
+ These are equivalent to -O1, -O2 and -O3. Optimization level is time
+ dependant. The higher optimization level you choose, more time will be
+ required for compiling, but the faster your programs will be.
+ Warning: Strong optimization may lead to stability problems.
+Description-ca.UTF-8: Nivell d'optimització:
+ Són equivalents a -O1, -O2 y -O3. Els nivells d'optimització depenen del temps. Com més nivell d'optimització escolliu, més temps necessitareu per compilar, però més ràpids seran els programes que compileu. Avís: La optimització Agressiva pot comportar problemes d'estabilitat.
+Description-cs.UTF-8: Úroveň optimalizace:
+ Tyto jsou ekvivalentní s -O1, -O2 a -O3. Úroveň optimalizace je časově závislá. Čím vyšší úroveň optimalizace zvolíte, tím více času bude pro překlad potřeba, ale tím rychlejší vaše programy budou. Upozornění: Silná optimalizace může vést k problémům se stabilitou.
+Description-da.UTF-8: Optimeringsniveau:
+ Disse er lig med -01, -02 og -03. Optimeringsniveauet er tidsafhængigt. Jo højere niveau du vælger, jo mere tid vil kompilering tage, men jo hurtigere vil dine programmer køre. Advarsel: Stærk optimering kan føre til stabilitetsproblemer.
+Description-de.UTF-8: Grad der Optimierung:
+ Das entspricht den Parametern »-O1«, »-O2« und »-O3«. Optimierungsstufen sind zeitabhängig. Je stärker Sie Ihr Paket optimieren, desto länger dauert die Kompilierung, aber umso schneller wird Ihr Programm arbeiten. Achtung: Starke Optimierung kann zu Instabilitäten führen.
+Description-el.UTF-8: Επίπεδο βελτιστοποίησης:
+ Αυτά είναι ισοδύναμα του -O1, -O2 και -O3. Το επίπεδο βελτιστοποίησης εξαρτάται από το χρόνο - για την ακρίβεια, όσο αυξάνετε το επίπεδο βελτιστοποίησης τόσο μεγαλύτερος θα είναι ο χρόνος μεταγλώττισης του αρχείου αλλά τόσο ταχύτερα θα είναι τα προγράμματά σας. Προσοχή: Η ισχυρή βελτιστοποίηση μπορεί να οδηγήσει σε προβλήματα σταθερότητας.
+Description-es.UTF-8: ¿Qué nivel de optimización quiere?
+ Son equivalentes a -O1, -O2 y -O3. Los niveles de optimización son dependientes del tiempo, de hecho, cuanto más quiera optimizar, más tiempo se necesitará para compilar, pero más rápidos serán sus programas. Aviso: Optimizaciones agresivas conducen a problemas de estabilidad.
+Description-fr.UTF-8: Niveau d'optimisation :
+ Ces niveaux d'optimisation correspondent à -O1, -O2 et -O3. L'optimisation prend du temps ; plus vous optimisez votre construction, plus longue sera la compilation, mais plus vos programmes seront rapides. Attention : l'optimisation « élevée » peut conduire à des problèmes de stabilité.
+Description-gl.UTF-8: Nivel de optimización:
+ Estes son equivalentes a -O1, -O2 e -O3. O nivel de optimización depende do tempo. A máis optimización, ha ser necesario máis tempo para compilar, pero os programas han ser máis rápidos. Aviso: as altas optimizacións poden conlevar problemas de estabilidades.
+Description-it.UTF-8: Livello di ottimizzazione:
+ Le scelte corrispondono ai livelli di ottimizzazione -O1, -O2 e -O3. Il livello di ottimizzazione è in relazione al tempo: infatti, a una maggiore ottimizzazione corrisponde un tempo di compilazione più lungo; in compenso, i programmi saranno più veloci. Attenzione: ottimizzazioni elevate possono provocare problemi di stabilità.
+Description-ja.UTF-8: 最適化レベル:
+ これらは -O1、-O2、-O3 にそれぞれ相当します。最適化レベルは時間と関係します。つまり、高い最適化レベルを選ぶほど、コンパイルにはより多くの時間がかかりますが、プログラムはより速く動作するようになります。注意: 強い最適化は安定性に問題を引き起こすかもしれません。
+Description-nl.UTF-8: Optimalisatieniveau:
+ Deze zijn equivalent met -O1, -O2 en -O3. Een optimalisatieniveau is tijdsafhankelijk. Hoe hoger het optimalisatieniveau dat u kiest, hoe meer tijd er nodig zal zijn voor de compilatie, maar hoe sneller uw programma's zullen zijn. Waarschuwing: sterke optimalisatie kan leiden tot stabiliteitsproblemen.
+Description-pl.UTF-8: Poziom optymalizacji:
+ Jest to odpowiednik opcji -O1, -O2 i -O3. Poziom optymalizacji jest zależny od czasu. Lepsza optymalizacja zabiera więcej czasu na kompilację, ale za to programy będą działały szybciej. Ostrzeżenie: Wysoki poziom optymalizacji może powodować problemy ze stabilnością.
+Description-pt.UTF-8: Nível de optimização:
+ Estas são equivalentes a -01, -02 e -03. O nível de optimização é dependente do tempo. Quanto maior o nível de optimização que escolher, maior o tempo necessário para a compilação, mas tornará os programas mais rápidos. Atenção: Optimização forte pode levar a problemas de estabilidade.
+Description-pt_BR.UTF-8: Nível de otimização:
+ Esses níveis são equivalentes às opções -O1, -O2 e -O3. O nível de otimização é dependente de tempo. Quanto maior o nível de otimização que você escolher, mais tempo será necessário para a compilação terminar, mas seus programas ficarão mais rápidos. Aviso: otimização forte pode levar a problemas de estabilidade.
+Description-ru.UTF-8: Уровень оптимизации:
+ Они эквивалентны -O1, -O2 и -O3. Уровень оптимизации влияет на время.Чем больший уровень оптимизации вы зададите, тем больше времени потребуется на компиляцию, но тем быстрее будут работать программы. Предупреждение: Усиленная оптимизация может привести к нестабильной работе программы.
+Description-sk.UTF-8: Úroveň optimalizácie:
+ Tieto zodpovedajú -O1, -O2 a -O3. Od úrovne optimalizácie závisí aj čas. Čím vyššiu úroveň optimalizácie zvolíte, tým viac času bude potrebného na kompiláciu, ale aj vaše programy budú rýchlejšie. Upozornenie: Silná optimalizácia môže viesť k problémom so stabilitou.
+Description-sv.UTF-8: Optimeringsnivå:
+ Dessa motsvarar -O1, -O2 and -O3. Optimeringsnivåer är tidskrävande. Ju högre optimeringsnivå du väljer, ju mer tid går åt att kompilera men dina program kommer att köra fortare. Varning: Stark optimering kan leda till stabilitetsproblem.
+Description-tr.UTF-8: Eniyileme düzeyi:
+ Bu değerler  -O1, -O2 ve -O3'e denk gelir. Eniyileme düzeyi zamana bağlıdır. Ne kadar ağır bir eniyileme düzeyi seçerseniz programların derlenmesi o kadar uzun sürer, ama derlenmiş programlar da o kadar hızlı çalışır. Uyarı: Ağır eniyileme kararlılık sorunlarına yol açabilir.
+Description-vi.UTF-8: Cấp tối ưu hóa:
+ Ba cấp này bằng -O1, -O2 và -O3. Cấp tối ưu hoá phụ thuộc vào thời gian. Càng cao cấp tối ưu hoá được chọn, càng lâu cần thiết để biên dịch, còn càng nhanh chương trình sẽ chạy. Cảnh giác: sự tối ưu hoá mạnh có thể gây ra vấn đề ổn định.
+
+Template: apt-build/arch_intel
+Type: select
+Choices: generic, native, i386, i486, i586, pentium, pentium-mmx, pentiumpro, i686, pentium2, pentium3, pentium3m, pentium-m, pentium4, pentium4m, prescott, nocona, core2, corei7, corei7-avx, core-avx-i, atom
+Default: native
+Description: Architecture:
+ If your architecture is not here, choose one and edit your configuration
+ file (/etc/apt/apt-build.conf) by hand, and please do a wishlist bugreport.
+Description-ca.UTF-8: Arquitectura:
+ Si la vostra arquitectura no és ací, escolliu una qualsevol i editeu el fitxer de configuració (/etc/apt/apt-build.conf) a ma, i reporteu l'error. (whislist)
+Description-cs.UTF-8: Architektura:
+ Pokud zde vaše architektura není, vyberte nějakou a upravte konfigurační soubor (/etc/apt/apt-build.conf) ručně. Poté nám prosím zašlete hlášení o chybě se závažností wishlist.
+Description-da.UTF-8: Arkitektur:
+ Hvis din arkitektur ikke er her, vælg en og rediger manuelt din opsætningsfil (/etc/apt/apt-build.conf), og opret en fejlrapport imod denne pakke (wishlist).
+Description-de.UTF-8: Rechnerarchitektur:
+ Wenn Ihre Rechnerarchitektur hier nicht aufgelistet ist, wählen Sie irgendeine aus, ändern die Konfigurationsdatei (/etc/apt/apt-build.conf) per Hand und schreiben bitte einen Fehlerbericht (wishlist).
+Description-el.UTF-8: Αρχιτεκτονική: 
+ Αν η αρχιτεκτονική σας δεν εμφανίζεται, επιλέξτε μια και επεξεργαστείτε το αρχείο ρυθμίσεων (/etc/apt/apt-build.conf) χειροκίνητα και σας παρακαλούμε να συμπληρώσετε μια αναφορά σφάλματος. (ως wishlist)
+Description-es.UTF-8: Arquitectura:
+ Si su arquitectura no está aquí, seleccione una y edite su archivo de configuración (/etc/apt/apt-build.conf) a mano, y envíe, por favor, un informe de fallo con severidad «wishlist».
+Description-fr.UTF-8: Architecture :
+ Si votre architecture n'est pas présente, choisissez-en une, puis modifiez le fichier de configuration (/etc/apt/apt-build.conf) vous-même, et remplissez un rapport de bogue (de sévérité « wishlist »).
+Description-gl.UTF-8: Arquitectura:
+ Se a súa arquitectura non figura aquí, escolla unha e edite o seu ficheiro de configuración (/etc/apt/apt-build.conf) á man, e envíe un informe de erro "wishlist".
+Description-it.UTF-8: Architettura:
+ Se la propria architettura non è riportata si deve sceglierne una qualunque e modificare a mano il file di configurazione (/etc/apt/apt-build.conf); infine, inviare una segnalazione di bug (wishlist).
+Description-ja.UTF-8: アーキテクチャ:
+ お使いのアーキテクチャがここにない場合、とりあえずどれか 1 つを選び、設定ファイル (/etc/apt/apt-build.conf) を手で編集してください。それから、wishlist としてバグ報告をしてください。
+Description-nl.UTF-8: Architectuur:
+ Als uw architectuur hier niet tussen staat, kies er dan toch één en wijzig uw configuratiebestand (/etc/apt/apt-build.conf) handmatig, en stuur a.u.b. een foutrapport. (wishlist)
+Description-pl.UTF-8: Architektura:
+ Jeśli nie ma tutaj używanej architektury, należy wybrać właściwą i zedytować plik konfiguracyjny (/etc/apt/apt-build.conf) ręcznie. Prosimy także o wysłanie raportu o błędzie, z priorytetem "wishlist".
+Description-pt.UTF-8: Arquitectura:
+ Se a sua arquitectura não estiver presente, escolha uma e edite manualmente o seu ficheiro de configuração (/etc/apt/apt-build.conf), e envie por favor um relatório de sugestão.
+Description-pt_BR.UTF-8: Arquitetura:
+ Caso sua arquitetura não esteja listada aqui, escolha uma e edite seu arquivo de configuração (/etc/apt/apt-build.conf) manualmente e, por favor, envie um relatório de problemas (bug) com a prioridade "lista de desejos" (wishlist).
+Description-ru.UTF-8: Архитектура:
+ Если вашей архитектуры здесь нет, выберите любую и отредактируйте файл настроек(/etc/apt/apt-build.conf) вручную, и пришлите, пожалуйста, сообщение об ошибке (в список пожеланий).
+Description-sk.UTF-8: Architektúra:
+ Ak sa tu vaša architektúra nenachádza, niektorú zvoľte a upravte konfiguračný súbor (/etc/apt/apt-build.conf) ručne. Prosím, pošlite tiež oznámenie o chybe úrovne želanie (wishlist).
+Description-sv.UTF-8: Arkitektur:
+ Om din arkitektur inte finns med här, välj en och redigera din konfigurationsfil (/etc/apt/apt-build.conf) för hand, och skicka gärna en felrapport till oss (som wishlist).
+Description-tr.UTF-8: Mimari:
+ Eğer mimariniz burada listelenmediyse, listelenen mimarilerden herhangi birini seçin ve daha sonra apt-build'in yapılandırma dosyasını (/etc/apt/apt-build.conf) uygun biçimde düzenleyin. Ayrıca lütfen istek türünde bir hata raporu göndermeyi de düşünün.
+Description-vi.UTF-8: Kiến trúc:
+ Nếu kiến trúc của bạn không nằm trong danh sách này, hãy chọn một điều và tự sửa đổi tập tin cấu hình (/etc/apt/apt-build.conf); cũng xin hãy thông báo lỗi đó (với kiểu wishlist).
+
+Template: apt-build/arch_amd
+Type: select
+Choices: native, k6, k6-2, k6-3, athlon, athlon-tbird, athlon-4, athlon-xp, athlon-mp, k8, opteron, athlon64, athlon-fx, i8-sse3, opteron-sse3, athlon64-sse3, amdfam10, barcelona, bdver1, btver1
+Default: native
+Description: Architecture:
+ If your architecture is not here, choose one and edit your configuration
+ file (/etc/apt/apt-build.conf) by hand, and please do a wishlist bugreport.
+Description-ca.UTF-8: Arquitectura:
+ Si la vostra arquitectura no és ací, escolliu una qualsevol i editeu el fitxer de configuració (/etc/apt/apt-build.conf) a ma, i reporteu l'error. (whislist)
+Description-cs.UTF-8: Architektura:
+ Pokud zde vaše architektura není, vyberte nějakou a upravte konfigurační soubor (/etc/apt/apt-build.conf) ručně. Poté nám prosím zašlete hlášení o chybě se závažností wishlist.
+Description-da.UTF-8: Arkitektur:
+ Hvis din arkitektur ikke er her, vælg en og rediger manuelt din opsætningsfil (/etc/apt/apt-build.conf), og opret en fejlrapport imod denne pakke (wishlist).
+Description-de.UTF-8: Rechnerarchitektur:
+ Wenn Ihre Rechnerarchitektur hier nicht aufgelistet ist, wählen Sie irgendeine aus, ändern die Konfigurationsdatei (/etc/apt/apt-build.conf) per Hand und schreiben bitte einen Fehlerbericht (wishlist).
+Description-el.UTF-8: Αρχιτεκτονική: 
+ Αν η αρχιτεκτονική σας δεν εμφανίζεται, επιλέξτε μια και επεξεργαστείτε το αρχείο ρυθμίσεων (/etc/apt/apt-build.conf) χειροκίνητα και σας παρακαλούμε να συμπληρώσετε μια αναφορά σφάλματος. (ως wishlist)
+Description-es.UTF-8: Arquitectura:
+ Si su arquitectura no está aquí, seleccione una y edite su archivo de configuración (/etc/apt/apt-build.conf) a mano, y envíe, por favor, un informe de fallo con severidad «wishlist».
+Description-fr.UTF-8: Architecture :
+ Si votre architecture n'est pas présente, choisissez-en une, puis modifiez le fichier de configuration (/etc/apt/apt-build.conf) vous-même, et remplissez un rapport de bogue (de sévérité « wishlist »).
+Description-gl.UTF-8: Arquitectura:
+ Se a súa arquitectura non figura aquí, escolla unha e edite o seu ficheiro de configuración (/etc/apt/apt-build.conf) á man, e envíe un informe de erro "wishlist".
+Description-it.UTF-8: Architettura:
+ Se la propria architettura non è riportata si deve sceglierne una qualunque e modificare a mano il file di configurazione (/etc/apt/apt-build.conf); infine, inviare una segnalazione di bug (wishlist).
+Description-ja.UTF-8: アーキテクチャ:
+ お使いのアーキテクチャがここにない場合、とりあえずどれか 1 つを選び、設定ファイル (/etc/apt/apt-build.conf) を手で編集してください。それから、wishlist としてバグ報告をしてください。
+Description-nl.UTF-8: Architectuur:
+ Als uw architectuur hier niet tussen staat, kies er dan toch één en wijzig uw configuratiebestand (/etc/apt/apt-build.conf) handmatig, en stuur a.u.b. een foutrapport. (wishlist)
+Description-pl.UTF-8: Architektura:
+ Jeśli nie ma tutaj używanej architektury, należy wybrać właściwą i zedytować plik konfiguracyjny (/etc/apt/apt-build.conf) ręcznie. Prosimy także o wysłanie raportu o błędzie, z priorytetem "wishlist".
+Description-pt.UTF-8: Arquitectura:
+ Se a sua arquitectura não estiver presente, escolha uma e edite manualmente o seu ficheiro de configuração (/etc/apt/apt-build.conf), e envie por favor um relatório de sugestão.
+Description-pt_BR.UTF-8: Arquitetura:
+ Caso sua arquitetura não esteja listada aqui, escolha uma e edite seu arquivo de configuração (/etc/apt/apt-build.conf) manualmente e, por favor, envie um relatório de problemas (bug) com a prioridade "lista de desejos" (wishlist).
+Description-ru.UTF-8: Архитектура:
+ Если вашей архитектуры здесь нет, выберите любую и отредактируйте файл настроек(/etc/apt/apt-build.conf) вручную, и пришлите, пожалуйста, сообщение об ошибке (в список пожеланий).
+Description-sk.UTF-8: Architektúra:
+ Ak sa tu vaša architektúra nenachádza, niektorú zvoľte a upravte konfiguračný súbor (/etc/apt/apt-build.conf) ručne. Prosím, pošlite tiež oznámenie o chybe úrovne želanie (wishlist).
+Description-sv.UTF-8: Arkitektur:
+ Om din arkitektur inte finns med här, välj en och redigera din konfigurationsfil (/etc/apt/apt-build.conf) för hand, och skicka gärna en felrapport till oss (som wishlist).
+Description-tr.UTF-8: Mimari:
+ Eğer mimariniz burada listelenmediyse, listelenen mimarilerden herhangi birini seçin ve daha sonra apt-build'in yapılandırma dosyasını (/etc/apt/apt-build.conf) uygun biçimde düzenleyin. Ayrıca lütfen istek türünde bir hata raporu göndermeyi de düşünün.
+Description-vi.UTF-8: Kiến trúc:
+ Nếu kiến trúc của bạn không nằm trong danh sách này, hãy chọn một điều và tự sửa đổi tập tin cấu hình (/etc/apt/apt-build.conf); cũng xin hãy thông báo lỗi đó (với kiểu wishlist).
+
+Template: apt-build/arch_amd64
+Type: select
+Choices: native, nocona, core2, corei7, corei7-avx, core-avx-i, atom, k8, opteron, athlon64, athlon-fx, k8-sse3, opteron-sse3, athlon64-sse3, amdfam10, barcelona, bdver1, btver1
+Default: native
+Description: Architecture:
+ If your architecture is not here, choose one and edit your configuration
+ file (/etc/apt/apt-build.conf) by hand, and please do a wishlist bugreport.
+Description-ca.UTF-8: Arquitectura:
+ Si la vostra arquitectura no és ací, escolliu una qualsevol i editeu el fitxer de configuració (/etc/apt/apt-build.conf) a ma, i reporteu l'error. (whislist)
+Description-cs.UTF-8: Architektura:
+ Pokud zde vaše architektura není, vyberte nějakou a upravte konfigurační soubor (/etc/apt/apt-build.conf) ručně. Poté nám prosím zašlete hlášení o chybě se závažností wishlist.
+Description-da.UTF-8: Arkitektur:
+ Hvis din arkitektur ikke er her, vælg en og rediger manuelt din opsætningsfil (/etc/apt/apt-build.conf), og opret en fejlrapport imod denne pakke (wishlist).
+Description-de.UTF-8: Rechnerarchitektur:
+ Wenn Ihre Rechnerarchitektur hier nicht aufgelistet ist, wählen Sie irgendeine aus, ändern die Konfigurationsdatei (/etc/apt/apt-build.conf) per Hand und schreiben bitte einen Fehlerbericht (wishlist).
+Description-el.UTF-8: Αρχιτεκτονική: 
+ Αν η αρχιτεκτονική σας δεν εμφανίζεται, επιλέξτε μια και επεξεργαστείτε το αρχείο ρυθμίσεων (/etc/apt/apt-build.conf) χειροκίνητα και σας παρακαλούμε να συμπληρώσετε μια αναφορά σφάλματος. (ως wishlist)
+Description-es.UTF-8: Arquitectura:
+ Si su arquitectura no está aquí, seleccione una y edite su archivo de configuración (/etc/apt/apt-build.conf) a mano, y envíe, por favor, un informe de fallo con severidad «wishlist».
+Description-fr.UTF-8: Architecture :
+ Si votre architecture n'est pas présente, choisissez-en une, puis modifiez le fichier de configuration (/etc/apt/apt-build.conf) vous-même, et remplissez un rapport de bogue (de sévérité « wishlist »).
+Description-gl.UTF-8: Arquitectura:
+ Se a súa arquitectura non figura aquí, escolla unha e edite o seu ficheiro de configuración (/etc/apt/apt-build.conf) á man, e envíe un informe de erro "wishlist".
+Description-it.UTF-8: Architettura:
+ Se la propria architettura non è riportata si deve sceglierne una qualunque e modificare a mano il file di configurazione (/etc/apt/apt-build.conf); infine, inviare una segnalazione di bug (wishlist).
+Description-ja.UTF-8: アーキテクチャ:
+ お使いのアーキテクチャがここにない場合、とりあえずどれか 1 つを選び、設定ファイル (/etc/apt/apt-build.conf) を手で編集してください。それから、wishlist としてバグ報告をしてください。
+Description-nl.UTF-8: Architectuur:
+ Als uw architectuur hier niet tussen staat, kies er dan toch één en wijzig uw configuratiebestand (/etc/apt/apt-build.conf) handmatig, en stuur a.u.b. een foutrapport. (wishlist)
+Description-pl.UTF-8: Architektura:
+ Jeśli nie ma tutaj używanej architektury, należy wybrać właściwą i zedytować plik konfiguracyjny (/etc/apt/apt-build.conf) ręcznie. Prosimy także o wysłanie raportu o błędzie, z priorytetem "wishlist".
+Description-pt.UTF-8: Arquitectura:
+ Se a sua arquitectura não estiver presente, escolha uma e edite manualmente o seu ficheiro de configuração (/etc/apt/apt-build.conf), e envie por favor um relatório de sugestão.
+Description-pt_BR.UTF-8: Arquitetura:
+ Caso sua arquitetura não esteja listada aqui, escolha uma e edite seu arquivo de configuração (/etc/apt/apt-build.conf) manualmente e, por favor, envie um relatório de problemas (bug) com a prioridade "lista de desejos" (wishlist).
+Description-ru.UTF-8: Архитектура:
+ Если вашей архитектуры здесь нет, выберите любую и отредактируйте файл настроек(/etc/apt/apt-build.conf) вручную, и пришлите, пожалуйста, сообщение об ошибке (в список пожеланий).
+Description-sk.UTF-8: Architektúra:
+ Ak sa tu vaša architektúra nenachádza, niektorú zvoľte a upravte konfiguračný súbor (/etc/apt/apt-build.conf) ručne. Prosím, pošlite tiež oznámenie o chybe úrovne želanie (wishlist).
+Description-sv.UTF-8: Arkitektur:
+ Om din arkitektur inte finns med här, välj en och redigera din konfigurationsfil (/etc/apt/apt-build.conf) för hand, och skicka gärna en felrapport till oss (som wishlist).
+Description-tr.UTF-8: Mimari:
+ Eğer mimariniz burada listelenmediyse, listelenen mimarilerden herhangi birini seçin ve daha sonra apt-build'in yapılandırma dosyasını (/etc/apt/apt-build.conf) uygun biçimde düzenleyin. Ayrıca lütfen istek türünde bir hata raporu göndermeyi de düşünün.
+Description-vi.UTF-8: Kiến trúc:
+ Nếu kiến trúc của bạn không nằm trong danh sách này, hãy chọn một điều và tự sửa đổi tập tin cấu hình (/etc/apt/apt-build.conf); cũng xin hãy thông báo lỗi đó (với kiểu wishlist).
+
+Template: apt-build/arch_sparc
+Type: select
+Choices: native, v7, v8, sparclite, sparclet, v9, cypress, supersparc, hypersparc, leon, f930, f934, sparclite86x, tsc701, ultrasparc, ultrasparc3, niagara, niagara2, niagara3, niagara4
+Default: native
+Description: Architecture:
+ If your architecture is not here, choose one and edit your configuration
+ file (/etc/apt/apt-build.conf) by hand, and please do a wishlist bugreport.
+Description-ca.UTF-8: Arquitectura:
+ Si la vostra arquitectura no és ací, escolliu una qualsevol i editeu el fitxer de configuració (/etc/apt/apt-build.conf) a ma, i reporteu l'error. (whislist)
+Description-cs.UTF-8: Architektura:
+ Pokud zde vaše architektura není, vyberte nějakou a upravte konfigurační soubor (/etc/apt/apt-build.conf) ručně. Poté nám prosím zašlete hlášení o chybě se závažností wishlist.
+Description-da.UTF-8: Arkitektur:
+ Hvis din arkitektur ikke er her, vælg en og rediger manuelt din opsætningsfil (/etc/apt/apt-build.conf), og opret en fejlrapport imod denne pakke (wishlist).
+Description-de.UTF-8: Rechnerarchitektur:
+ Wenn Ihre Rechnerarchitektur hier nicht aufgelistet ist, wählen Sie irgendeine aus, ändern die Konfigurationsdatei (/etc/apt/apt-build.conf) per Hand und schreiben bitte einen Fehlerbericht (wishlist).
+Description-el.UTF-8: Αρχιτεκτονική: 
+ Αν η αρχιτεκτονική σας δεν εμφανίζεται, επιλέξτε μια και επεξεργαστείτε το αρχείο ρυθμίσεων (/etc/apt/apt-build.conf) χειροκίνητα και σας παρακαλούμε να συμπληρώσετε μια αναφορά σφάλματος. (ως wishlist)
+Description-es.UTF-8: Arquitectura:
+ Si su arquitectura no está aquí, seleccione una y edite su archivo de configuración (/etc/apt/apt-build.conf) a mano, y envíe, por favor, un informe de fallo con severidad «wishlist».
+Description-fr.UTF-8: Architecture :
+ Si votre architecture n'est pas présente, choisissez-en une, puis modifiez le fichier de configuration (/etc/apt/apt-build.conf) vous-même, et remplissez un rapport de bogue (de sévérité « wishlist »).
+Description-gl.UTF-8: Arquitectura:
+ Se a súa arquitectura non figura aquí, escolla unha e edite o seu ficheiro de configuración (/etc/apt/apt-build.conf) á man, e envíe un informe de erro "wishlist".
+Description-it.UTF-8: Architettura:
+ Se la propria architettura non è riportata si deve sceglierne una qualunque e modificare a mano il file di configurazione (/etc/apt/apt-build.conf); infine, inviare una segnalazione di bug (wishlist).
+Description-ja.UTF-8: アーキテクチャ:
+ お使いのアーキテクチャがここにない場合、とりあえずどれか 1 つを選び、設定ファイル (/etc/apt/apt-build.conf) を手で編集してください。それから、wishlist としてバグ報告をしてください。
+Description-nl.UTF-8: Architectuur:
+ Als uw architectuur hier niet tussen staat, kies er dan toch één en wijzig uw configuratiebestand (/etc/apt/apt-build.conf) handmatig, en stuur a.u.b. een foutrapport. (wishlist)
+Description-pl.UTF-8: Architektura:
+ Jeśli nie ma tutaj używanej architektury, należy wybrać właściwą i zedytować plik konfiguracyjny (/etc/apt/apt-build.conf) ręcznie. Prosimy także o wysłanie raportu o błędzie, z priorytetem "wishlist".
+Description-pt.UTF-8: Arquitectura:
+ Se a sua arquitectura não estiver presente, escolha uma e edite manualmente o seu ficheiro de configuração (/etc/apt/apt-build.conf), e envie por favor um relatório de sugestão.
+Description-pt_BR.UTF-8: Arquitetura:
+ Caso sua arquitetura não esteja listada aqui, escolha uma e edite seu arquivo de configuração (/etc/apt/apt-build.conf) manualmente e, por favor, envie um relatório de problemas (bug) com a prioridade "lista de desejos" (wishlist).
+Description-ru.UTF-8: Архитектура:
+ Если вашей архитектуры здесь нет, выберите любую и отредактируйте файл настроек(/etc/apt/apt-build.conf) вручную, и пришлите, пожалуйста, сообщение об ошибке (в список пожеланий).
+Description-sk.UTF-8: Architektúra:
+ Ak sa tu vaša architektúra nenachádza, niektorú zvoľte a upravte konfiguračný súbor (/etc/apt/apt-build.conf) ručne. Prosím, pošlite tiež oznámenie o chybe úrovne želanie (wishlist).
+Description-sv.UTF-8: Arkitektur:
+ Om din arkitektur inte finns med här, välj en och redigera din konfigurationsfil (/etc/apt/apt-build.conf) för hand, och skicka gärna en felrapport till oss (som wishlist).
+Description-tr.UTF-8: Mimari:
+ Eğer mimariniz burada listelenmediyse, listelenen mimarilerden herhangi birini seçin ve daha sonra apt-build'in yapılandırma dosyasını (/etc/apt/apt-build.conf) uygun biçimde düzenleyin. Ayrıca lütfen istek türünde bir hata raporu göndermeyi de düşünün.
+Description-vi.UTF-8: Kiến trúc:
+ Nếu kiến trúc của bạn không nằm trong danh sách này, hãy chọn một điều và tự sửa đổi tập tin cấu hình (/etc/apt/apt-build.conf); cũng xin hãy thông báo lỗi đó (với kiểu wishlist).
+
+Template: apt-build/arch_arm
+Type: select
+Choices: native, armv2, armv2a, armv3, armv3m, armv4, armv4t, armv5, armv5t, armv5te, armv6, armv6j, armv6t2, armv6zk, armv6-m, armv7, armv7-a, armv7-r, armv7-m, iwmmxt, iwmmxt2, ep9312
+Default: native
+Description: Architecture:
+ If your architecture is not here, choose one and edit your configuration
+ file (/etc/apt/apt-build.conf) by hand, and please do a wishlist bugreport.
+Description-ca.UTF-8: Arquitectura:
+ Si la vostra arquitectura no és ací, escolliu una qualsevol i editeu el fitxer de configuració (/etc/apt/apt-build.conf) a ma, i reporteu l'error. (whislist)
+Description-cs.UTF-8: Architektura:
+ Pokud zde vaše architektura není, vyberte nějakou a upravte konfigurační soubor (/etc/apt/apt-build.conf) ručně. Poté nám prosím zašlete hlášení o chybě se závažností wishlist.
+Description-da.UTF-8: Arkitektur:
+ Hvis din arkitektur ikke er her, vælg en og rediger manuelt din opsætningsfil (/etc/apt/apt-build.conf), og opret en fejlrapport imod denne pakke (wishlist).
+Description-de.UTF-8: Rechnerarchitektur:
+ Wenn Ihre Rechnerarchitektur hier nicht aufgelistet ist, wählen Sie irgendeine aus, ändern die Konfigurationsdatei (/etc/apt/apt-build.conf) per Hand und schreiben bitte einen Fehlerbericht (wishlist).
+Description-el.UTF-8: Αρχιτεκτονική: 
+ Αν η αρχιτεκτονική σας δεν εμφανίζεται, επιλέξτε μια και επεξεργαστείτε το αρχείο ρυθμίσεων (/etc/apt/apt-build.conf) χειροκίνητα και σας παρακαλούμε να συμπληρώσετε μια αναφορά σφάλματος. (ως wishlist)
+Description-es.UTF-8: Arquitectura:
+ Si su arquitectura no está aquí, seleccione una y edite su archivo de configuración (/etc/apt/apt-build.conf) a mano, y envíe, por favor, un informe de fallo con severidad «wishlist».
+Description-fr.UTF-8: Architecture :
+ Si votre architecture n'est pas présente, choisissez-en une, puis modifiez le fichier de configuration (/etc/apt/apt-build.conf) vous-même, et remplissez un rapport de bogue (de sévérité « wishlist »).
+Description-gl.UTF-8: Arquitectura:
+ Se a súa arquitectura non figura aquí, escolla unha e edite o seu ficheiro de configuración (/etc/apt/apt-build.conf) á man, e envíe un informe de erro "wishlist".
+Description-it.UTF-8: Architettura:
+ Se la propria architettura non è riportata si deve sceglierne una qualunque e modificare a mano il file di configurazione (/etc/apt/apt-build.conf); infine, inviare una segnalazione di bug (wishlist).
+Description-ja.UTF-8: アーキテクチャ:
+ お使いのアーキテクチャがここにない場合、とりあえずどれか 1 つを選び、設定ファイル (/etc/apt/apt-build.conf) を手で編集してください。それから、wishlist としてバグ報告をしてください。
+Description-nl.UTF-8: Architectuur:
+ Als uw architectuur hier niet tussen staat, kies er dan toch één en wijzig uw configuratiebestand (/etc/apt/apt-build.conf) handmatig, en stuur a.u.b. een foutrapport. (wishlist)
+Description-pl.UTF-8: Architektura:
+ Jeśli nie ma tutaj używanej architektury, należy wybrać właściwą i zedytować plik konfiguracyjny (/etc/apt/apt-build.conf) ręcznie. Prosimy także o wysłanie raportu o błędzie, z priorytetem "wishlist".
+Description-pt.UTF-8: Arquitectura:
+ Se a sua arquitectura não estiver presente, escolha uma e edite manualmente o seu ficheiro de configuração (/etc/apt/apt-build.conf), e envie por favor um relatório de sugestão.
+Description-pt_BR.UTF-8: Arquitetura:
+ Caso sua arquitetura não esteja listada aqui, escolha uma e edite seu arquivo de configuração (/etc/apt/apt-build.conf) manualmente e, por favor, envie um relatório de problemas (bug) com a prioridade "lista de desejos" (wishlist).
+Description-ru.UTF-8: Архитектура:
+ Если вашей архитектуры здесь нет, выберите любую и отредактируйте файл настроек(/etc/apt/apt-build.conf) вручную, и пришлите, пожалуйста, сообщение об ошибке (в список пожеланий).
+Description-sk.UTF-8: Architektúra:
+ Ak sa tu vaša architektúra nenachádza, niektorú zvoľte a upravte konfiguračný súbor (/etc/apt/apt-build.conf) ručne. Prosím, pošlite tiež oznámenie o chybe úrovne želanie (wishlist).
+Description-sv.UTF-8: Arkitektur:
+ Om din arkitektur inte finns med här, välj en och redigera din konfigurationsfil (/etc/apt/apt-build.conf) för hand, och skicka gärna en felrapport till oss (som wishlist).
+Description-tr.UTF-8: Mimari:
+ Eğer mimariniz burada listelenmediyse, listelenen mimarilerden herhangi birini seçin ve daha sonra apt-build'in yapılandırma dosyasını (/etc/apt/apt-build.conf) uygun biçimde düzenleyin. Ayrıca lütfen istek türünde bir hata raporu göndermeyi de düşünün.
+Description-vi.UTF-8: Kiến trúc:
+ Nếu kiến trúc của bạn không nằm trong danh sách này, hãy chọn một điều và tự sửa đổi tập tin cấu hình (/etc/apt/apt-build.conf); cũng xin hãy thông báo lỗi đó (với kiểu wishlist).
+
+Template: apt-build/arch_alpha
+Type: select
+Choices: native, ev4, ev5, ev56, pca56, ev6, ev67
+Default: native
+Description: Architecture:
+ If your architecture is not here, choose one and edit your configuration
+ file (/etc/apt/apt-build.conf) by hand, and please do a wishlist bugreport.
+Description-ca.UTF-8: Arquitectura:
+ Si la vostra arquitectura no és ací, escolliu una qualsevol i editeu el fitxer de configuració (/etc/apt/apt-build.conf) a ma, i reporteu l'error. (whislist)
+Description-cs.UTF-8: Architektura:
+ Pokud zde vaše architektura není, vyberte nějakou a upravte konfigurační soubor (/etc/apt/apt-build.conf) ručně. Poté nám prosím zašlete hlášení o chybě se závažností wishlist.
+Description-da.UTF-8: Arkitektur:
+ Hvis din arkitektur ikke er her, vælg en og rediger manuelt din opsætningsfil (/etc/apt/apt-build.conf), og opret en fejlrapport imod denne pakke (wishlist).
+Description-de.UTF-8: Rechnerarchitektur:
+ Wenn Ihre Rechnerarchitektur hier nicht aufgelistet ist, wählen Sie irgendeine aus, ändern die Konfigurationsdatei (/etc/apt/apt-build.conf) per Hand und schreiben bitte einen Fehlerbericht (wishlist).
+Description-el.UTF-8: Αρχιτεκτονική: 
+ Αν η αρχιτεκτονική σας δεν εμφανίζεται, επιλέξτε μια και επεξεργαστείτε το αρχείο ρυθμίσεων (/etc/apt/apt-build.conf) χειροκίνητα και σας παρακαλούμε να συμπληρώσετε μια αναφορά σφάλματος. (ως wishlist)
+Description-es.UTF-8: Arquitectura:
+ Si su arquitectura no está aquí, seleccione una y edite su archivo de configuración (/etc/apt/apt-build.conf) a mano, y envíe, por favor, un informe de fallo con severidad «wishlist».
+Description-fr.UTF-8: Architecture :
+ Si votre architecture n'est pas présente, choisissez-en une, puis modifiez le fichier de configuration (/etc/apt/apt-build.conf) vous-même, et remplissez un rapport de bogue (de sévérité « wishlist »).
+Description-gl.UTF-8: Arquitectura:
+ Se a súa arquitectura non figura aquí, escolla unha e edite o seu ficheiro de configuración (/etc/apt/apt-build.conf) á man, e envíe un informe de erro "wishlist".
+Description-it.UTF-8: Architettura:
+ Se la propria architettura non è riportata si deve sceglierne una qualunque e modificare a mano il file di configurazione (/etc/apt/apt-build.conf); infine, inviare una segnalazione di bug (wishlist).
+Description-ja.UTF-8: アーキテクチャ:
+ お使いのアーキテクチャがここにない場合、とりあえずどれか 1 つを選び、設定ファイル (/etc/apt/apt-build.conf) を手で編集してください。それから、wishlist としてバグ報告をしてください。
+Description-nl.UTF-8: Architectuur:
+ Als uw architectuur hier niet tussen staat, kies er dan toch één en wijzig uw configuratiebestand (/etc/apt/apt-build.conf) handmatig, en stuur a.u.b. een foutrapport. (wishlist)
+Description-pl.UTF-8: Architektura:
+ Jeśli nie ma tutaj używanej architektury, należy wybrać właściwą i zedytować plik konfiguracyjny (/etc/apt/apt-build.conf) ręcznie. Prosimy także o wysłanie raportu o błędzie, z priorytetem "wishlist".
+Description-pt.UTF-8: Arquitectura:
+ Se a sua arquitectura não estiver presente, escolha uma e edite manualmente o seu ficheiro de configuração (/etc/apt/apt-build.conf), e envie por favor um relatório de sugestão.
+Description-pt_BR.UTF-8: Arquitetura:
+ Caso sua arquitetura não esteja listada aqui, escolha uma e edite seu arquivo de configuração (/etc/apt/apt-build.conf) manualmente e, por favor, envie um relatório de problemas (bug) com a prioridade "lista de desejos" (wishlist).
+Description-ru.UTF-8: Архитектура:
+ Если вашей архитектуры здесь нет, выберите любую и отредактируйте файл настроек(/etc/apt/apt-build.conf) вручную, и пришлите, пожалуйста, сообщение об ошибке (в список пожеланий).
+Description-sk.UTF-8: Architektúra:
+ Ak sa tu vaša architektúra nenachádza, niektorú zvoľte a upravte konfiguračný súbor (/etc/apt/apt-build.conf) ručne. Prosím, pošlite tiež oznámenie o chybe úrovne želanie (wishlist).
+Description-sv.UTF-8: Arkitektur:
+ Om din arkitektur inte finns med här, välj en och redigera din konfigurationsfil (/etc/apt/apt-build.conf) för hand, och skicka gärna en felrapport till oss (som wishlist).
+Description-tr.UTF-8: Mimari:
+ Eğer mimariniz burada listelenmediyse, listelenen mimarilerden herhangi birini seçin ve daha sonra apt-build'in yapılandırma dosyasını (/etc/apt/apt-build.conf) uygun biçimde düzenleyin. Ayrıca lütfen istek türünde bir hata raporu göndermeyi de düşünün.
+Description-vi.UTF-8: Kiến trúc:
+ Nếu kiến trúc của bạn không nằm trong danh sách này, hãy chọn một điều và tự sửa đổi tập tin cấu hình (/etc/apt/apt-build.conf); cũng xin hãy thông báo lỗi đó (với kiểu wishlist).
+
+Template: apt-build/options
+Type: string
+Description: Options to add to gcc:
+Description-ca.UTF-8: Opcions per passar-li al gcc:
+Description-cs.UTF-8: Volby, které předat gcc:
+Description-da.UTF-8: Indstillinger der skal tilføjes til gcc:
+Description-de.UTF-8: Zusätzliche Optionen für GCC:
+Description-el.UTF-8: Ποίες επιλογές θέλετε να προσθέσετε στο gcc;
+Description-es.UTF-8: ¿Qué opciones adicionales quiere pasarle a gcc?
+Description-fr.UTF-8: Options à utiliser avec gcc :
+Description-gl.UTF-8: Opcións a engadir a gcc:
+Description-it.UTF-8: Ulteriori opzioni da passare a gcc:
+Description-ja.UTF-8: gcc に付加したいオプション:
+Description-nl.UTF-8: Met gcc mee te geven opties:
+Description-pl.UTF-8: Opcje przekazywane do gcc:
+Description-pt.UTF-8: Opções a adicionar ao gcc:
+Description-pt_BR.UTF-8: Opções a serem adicionadas ao gcc:
+Description-ru.UTF-8: Дополнительные параметры для gcc:
+Description-sk.UTF-8: Voľby, ktoré sa pošlú gcc:
+Description-sv.UTF-8: Flaggor att skicka till gcc:
+Description-tr.UTF-8: 'gcc'ye eklenecek seçenekler:
+Description-vi.UTF-8: Tùy chọn cần thêm vào « gcc »:
+
+Template: apt-build/make_options
+Type: string
+Description: Options to add to make:
+Description-ca.UTF-8: Opcions per passar-li al make:
+Description-cs.UTF-8: Volby, které předat make:
+Description-da.UTF-8: Indstilinger der skal tilføjes til make:
+Description-de.UTF-8: Zusätzliche Optionen für Make:
+Description-el.UTF-8: Επιλογές που θα προστεθούν στο make:
+Description-es.UTF-8: ¿Qué opciones adicionales quiere pasarle a make?
+Description-fr.UTF-8: Options à utiliser avec make :
+Description-gl.UTF-8: Opcións a engadir a make:
+Description-it.UTF-8: Ulteriori opzioni da passare a make:
+Description-ja.UTF-8: make に付加したいオプション:
+Description-nl.UTF-8: Met make mee te geven opties:
+Description-pl.UTF-8: Opcje przekazywane do make:
+Description-pt.UTF-8: Opções a adicionar ao make:
+Description-pt_BR.UTF-8: Opções a serem adicionadas ao make:
+Description-ru.UTF-8: Дополнительные параметры для make:
+Description-sk.UTF-8: Voľby, ktoré sa pošlú make:
+Description-sv.UTF-8: Flaggor att skicka till make:
+Description-tr.UTF-8: 'make'e eklenecek seçenekler:
+Description-vi.UTF-8: Tùy chọn cần thêm vào « make »:
+
+Template: apt-build/archtype
+Type: string
+Description: for internal use

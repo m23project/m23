@@ -1,0 +1,80 @@
+Template: libtowitoko2/port
+Type: select
+Choices: ttyS0, ttyS1, ttyS2, ttyS3, USB
+Choices-cs.UTF-8: ttyS0, ttyS1, ttyS2, ttyS3, USB
+Choices-da.UTF-8: ttyS0, ttyS1, ttyS2, ttyS3, USB
+Choices-de.UTF-8: ttyS0, ttyS1, ttyS2, ttyS3, USB
+Choices-es.UTF-8: ttyS0, ttyS1, ttyS2, ttyS3, USB
+Choices-fr.UTF-8: ttyS0, ttyS1, ttyS2, ttyS3, USB
+Choices-it.UTF-8: ttyS0, ttyS1, ttyS2, ttyS3, USB
+Choices-ja.UTF-8: ttyS0, ttyS1, ttyS2, ttyS3, USB
+Choices-nl.UTF-8: ttyS0, ttyS1, ttyS2, ttyS3, USB
+Choices-pl.UTF-8: ttyS0, ttyS1, ttyS2, ttyS3, USB
+Choices-pt.UTF-8: ttyS0, ttyS1, ttyS2, ttyS3, USB
+Choices-ru.UTF-8: ttyS0, ttyS1, ttyS2, ttyS3, USB
+Choices-sk.UTF-8: ttyS0, ttyS1, ttyS2, ttyS3, USB
+Choices-sv.UTF-8: ttyS0, ttyS1, ttyS2, ttyS3, USB
+Choices-vi.UTF-8: ttyS0, ttyS1, ttyS2, ttyS3, USB
+Description: On which serial port is connected the smart card reader?
+ PCSC needs to know on which serial port the reader is connected. This
+ information is stored in the file /etc/reader.conf.
+ .
+ You should not edit this file directly but create or modify a file in
+ /etc/reader.conf.d/ and use update-reader.conf(8) to regenerate
+ /etc/reader.conf.
+Description-cs.UTF-8: Ke kterému sériovému portu je připojena čtečka karet?
+ PCSC musí vědět, ke kterému sériovému portu je čtečka připojena. Tato informace se ukládá do souboru /etc/reader.conf.
+ .
+ Tento soubor byste neměli měnit přímo, ale měli byste vytvořit nebo upravit soubor v adresáři /etc/reader.conf.d/ a příkazem update-reader.conf(8) vygenerovat nový /etc/reader.conf.
+Description-da.UTF-8: På hvilken serielport er smartkortlæseren forbundet?
+ PCSC har brug for at vide på hvilken serielport læseren er forbundet. Denne information gemmes i filen /etc/reader.conf.
+ .
+ Du bør ikke redigere filen direkte men oprette eller ændre en fil i /etc/reader.conf.d/ og bruge update-reader.conf(8) for at gendanne /etc/reader.conf.
+Description-de.UTF-8: Mit welcher seriellen Schnittstelle ist der Chipkarten-Leser verbunden?
+ PCSC muss wissen, mit welcher seriellen Schnittstelle der Leser verbunden ist. Diese Information wird in der Datei /etc/reader.conf gespeichert.
+ .
+ Sie sollten diese Datei nicht direkt ändern, statt dessen sollte eine Datei in /etc/reader.conf.d/ erzeugt bzw. verändert werden und daraus dann über update-reader.conf(8) die Datei /etc/reader.conf neu generiert werden.
+Description-es.UTF-8: ¿En qué puerto está instalado el lector de tarjetas inteligentes?
+ PCSC necesita conocer el el puerto serie en el que el lector está conectado. Esta información será almacenada en el archivo /etc/reader.conf.
+ .
+ Este fichero no debe ser editado directamente, sino que se debe crear o modificar un fichero en el directorio /etc/reader.conf.d/ y ejecutar update-reader.conf(8) para regenerar /etc/reader.conf.
+Description-fr.UTF-8: Sur quel port série le lecteur de carte à puce est-il connecté ?
+ PCSC doit savoir sur quel port série se trouve le lecteur de carte à puce. Cette information est conservée dans le fichier /etc/reader.conf.
+ .
+ Vous ne devez pas modifier directement ce fichier mais créer ou modifier un fichier dans /etc/reader.conf.d/ et utiliser update-reader.conf(8) pour régénérer /etc/reader.conf.
+Description-it.UTF-8: Selezionare la porta seriale alla quale il lettore di smart card è collegato.
+ È necessario indicare a PCSC a quale porta seriale il lettore è collegato. Questa informazione viene memorizzata nel file «/etc/reader.conf».
+ .
+ Non si dovrebbe modificare direttamente questo file, bensì creare o modificare un file in «/etc/reader.conf.d/» e utilizzare «update-reader.conf(8)» per rigenerare «/etc/reader.conf».
+Description-ja.UTF-8: スマートカードリーダが接続されているシリアルポートはどれですか?
+ PCSC はどのシリアルポートにリーダが接続されているかを知っている必要があります。この情報は /etc/reader.conf ファイルに保存されます。
+ .
+ このファイルを直接編集するのではなく、/etc/reader.conf.d/ にファイルを作成／編集して update-reader.conf(8) を使って /etc/reader.conf を再生成してください。
+Description-nl.UTF-8: Op welke seriële poort is de smartcard-lezer aangesloten?
+ PCSC moet weten op welke seriële poort de lezer is aangesloten. Deze informatie wordt bewaard in het bestand /etc/reader.conf.
+ .
+ U mag dit bestand niet rechtstreeks wijzigen; maak een bestand aan in /etc/reader.conf.d/ of wijzig dit en gebruik update-reader.conf(8) om /etc/reader.conf opnieuw te genereren.
+Description-pl.UTF-8: Do którego portu szeregowego jest podłączony czytnik kart smart card?
+ PSCS musi znać port szeregowy, do którego podłączony jest czytnik. Ta informacja jest przechowywana w pliku /etc/reader.conf.
+ .
+ Nie należy edytować tego pliku bezpośrednio, lecz stworzyć lub zmodyfikować plik w /etc/reader.conf.d/ i użyć update-reader.conf(8) do ponownego wygenerowania /etc/reader.conf.
+Description-pt.UTF-8: Em qual porta série está ligado o leitor de 'smart card'?
+ O PCSC precisa de saber em qual porta série o leitor está ligado. Esta informação é guardada no ficheiro /etc/reader.conf.
+ .
+ Não deve editar este ficheiro directamente mas criar ou modificar um ficheiro em /etc/reader.conf.d/ e usar update-reader.conf(8) para recriar o /etc/reader.conf.
+Description-ru.UTF-8: На какой последовательный порт подключен smart card reader?
+ PCSC нужно знать к какому последовательному порту подключен считыватель. Эта информация хранится в файле /etc/reader.conf.
+ .
+ Вы не должны редактировать этот файл напрямую, но создайте или исправьте файл в /etc/reader.conf.d/ и используйте update-reader.conf(8) для перегенерации /etc/reader.conf.
+Description-sk.UTF-8: Na ktorom sériovom porte je pripojená čítačka smart card?
+ PCSC potrebuje vedieť, na ktorom sériovom porte je pripojená čítačka. Táto informácie je uložená v súbore /etc/reader.conf.
+ .
+ Nemali by ste tento súbor upravovať priamo, ale vytvoriť alebo zmeniť súbor v adresári /etc/reader.conf.d/ a použiť update-reader.conf(8) na opätovné vytvorenie /etc/reader.conf.
+Description-sv.UTF-8: På vilken seriellport är smartkortsläsaren inkopplad?
+ PCSC behöver veta vilken seriellport som läsaren är inkopplad i. Denna information kommer att sparas i filen /etc/reader.conf.
+ .
+ Du ska inte ändra i denna fil direkt utan skapa eller modifiera filen/filer i /etc/reader.conf.d/ och använda kommandot 'update-reader.conf'(8) för att generera /etc/reader.conf.
+Description-vi.UTF-8: Máy đọc thẻ thông mình có kết nối đến cổng nối tiếp nào?
+ PCSC cần biết cổng nối tiếp nào có máy đọc kết nối đến nó. Thông tin này được lưu vào tập tin « /etc/reader.conf ».
+ .
+ Bạn không nên hiệu chỉnh tập tin này một cách trực tiếp, thay vào đó hãy tạo hoặc sửa đổi một tập tin trong « /etc/reader.conf.d/ » và dùng « update-reader.conf(8) » để tạo ra lại tập tin « /etc/reader.conf ».

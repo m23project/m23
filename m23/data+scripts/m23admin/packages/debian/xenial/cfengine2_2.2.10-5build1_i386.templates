@@ -1,0 +1,212 @@
+Template: cfengine2/run_cfexecd
+Type: boolean
+Default: false
+Description: Start cfexecd at boot-time?
+ cfexecd is a scheduler that periodically runs cfagent, the program that
+ actually does the work.
+ .
+ If you invoke cfagent by hand or choose to run it from cron instead, you
+ may not require this.
+Description-bg.UTF-8: Стартиране на cfexecd при зареждане на системата?
+ cfexecd е диспечер, прериодично изпълняващ cfagent — програмата, която върши работата.
+ .
+ Това не е необходимо ако предпочитате да изпълнявате cfagent на ръка или чрез cron.
+Description-ca.UTF-8: Voleu executar cfexecd cada cop que arrenqui la màquina?
+ cfexecd és una planificador que executa de forma periòdica cfagent, el programa que realment fa el treball.
+ .
+ Si executeu cfagent a mà o fent servir el cron, podrieu no necessitar açò.
+Description-cs.UTF-8: Spustit cfexecd při startu?
+ cfexecd je plánovač, který pravidelně spouští cfagent, program vykonávající vlastní práci.
+ .
+ Jestliže vyvoláte cfagent ručně nebo ho spustíte pomocí cronu, možná to nebudete potřebovat.
+Description-da.UTF-8: Start cfexecd på opstartstidspunktet?
+ cfexecd er en planlægger som periodisk kører cfagent, programmet som reelt udfører arbejdet.
+ .
+ Hvis du fremkalder cfagent manuelt eller vælger at køre den fra cron i steden for, kræves denne måske ikke.
+Description-de.UTF-8: Soll cfexecd beim Hochfahren gestartet werden?
+ Cfexecd ist ein Steuerprogramm, welches periodisch Cfagent ausführt. Cfagent erledigt die eigentliche Arbeit.
+ .
+ Falls Sie Cfagent von Hand aufrufen oder es stattdessen vom cron ausführen, dann könnten Sie dies nicht benötigen.
+Description-es.UTF-8: ¿Quiere arrancar cfexecd en el inicio del sistema?
+ cfexecd es un programador que ejecuta cfagent periódicamente, el programa que realmente hace el trabajo.
+ .
+ No necesita esto si ejecuta cfagent manualmente o si escoge ejecutarlo a través de cron.
+Description-fr.UTF-8: Faut-il lancer cfexecd au démarrage ?
+ cfexecd est un programmateur qui lance périodiquement cfagend, le programme qui réalise réellement le travail.
+ .
+ Si vous lancez cfagent vous-même ou si vous préférez le lancer via « cron », vous n'en avez pas besoin.
+Description-gl.UTF-8: ¿Iniciar cfexecd co ordenador?
+ cfexecd é un planificador que executa periodicamente cfagent, o programa que realmente fai o traballo.
+ .
+ Se executa cfagent á man ou o executa mediante cron, pode non precisar disto.
+Description-ja.UTF-8: システム起動時に cfexecd を起動しますか?
+ cfexecd は、実際の動作を行う cfagent を定期的に起動するスケジューラです。
+ .
+ 手動、または代わりに cron から cfagent を起動する事を選んだ場合、これは不要です。
+Description-nl.UTF-8: cfexecd bij het opstarten starten?
+ cfexecd is een planner die periodiek cfagent, het programma dat het eigenlijke werk doet, aanroept.
+ .
+ Dit is niet nodig indien u verkiest om cfagent handmatig of via cron aan te roepen.
+Description-pt.UTF-8: Iniciar cfexecd no arranque?
+ cfexecd é um programa que periodicamente executa o cfagent, o programa que realmente faz o trabalho.
+ .
+ Se executar o cfagent manualmente ou criar uma regra para o cron, pode não precisar disto.
+Description-pt_BR.UTF-8: Iniciar o cfexecd no tempo de inicialização ?
+ O cfexecd é um agendador que periodicamente executa o cfagent, o programa que na verdade faz o trabalho pesado.
+ .
+ Caso você inoque o cfagent manualmente ou opte por executá-lo a partir do cron você não precisará disso.
+Description-ru.UTF-8: Запускать cfexecd при включении компьютера?
+ cfexecd -- это планировщик, который периодически запускает cfagent -- программу, которая на самом деле выполняется всю работу.
+ .
+ Если вы запускаете cfagent вручную или из cron, ответьте отрицательно.
+Description-sv.UTF-8: Starta cfexecd vid systemets uppstart?
+ cfexecd är en schemaläggare som regelbundet kör cfagent, programmet som faktiskt gör jobbet.
+ .
+ Om du startar cfagent manuellt eller väljer att köra det från cron istället behöver du inte kräva detta.
+Description-tr.UTF-8: cfexecd açılış sırasında başlatılsın mı?
+ cfexecd, cfagent'ı periyodik olarak çalıştıran bir zamanlayıcı programdır.
+ .
+ Eğer cfagent programını elle veya cron ile çalıştırmak isterseniz, buna ihtiyacınız yok.
+Description-vi.UTF-8: Khởi chạy trình cfexecd vào lúc khởi động máy không?
+ Trình nền cfexecd là một trình định thời mà chạy theo định kỷ trình cfagent mà thật làm công việc.
+ .
+ Nếu bạn tự gọi trình cfagent, hoặc chọn chạy nó từ trình cron (định kỷ) thay thế, bạn có lẽ sẽ không cần trình định thời này.
+
+Template: cfengine2/run_cfservd
+Type: boolean
+Default: false
+Description: Start cfservd at boot-time?
+ cfservd manages file-serving to remote cfagent processes.
+ .
+ It also provides a facility for remote hosts (after authenticating) to ask
+ cfservd to run cfagent.
+Description-bg.UTF-8: Стартиране на cfservd при зареждане на системата?
+ cfservd отговаря за сервирането на файлове към отдалечените cfagent процеси.
+ .
+ Предлага и възможност на отдалечените хостове да изискват стартирането на cfagent (след оторизация).
+Description-ca.UTF-8: Voleu executar cfservd a l'arrancar la màquina ?
+ cfservd gestiona el servei de fitxers a processos remots de cfagent.
+ .
+ Per maquines remotes,també dona la facilitat de preguntar a cfservd de executar cfagent (desprès de autenticar-se).
+Description-cs.UTF-8: Spustit cfservd při spuštění systému?
+ cfservd řídí souborovou službu pomocí vzdálených procesů cfagent.
+ .
+ Má také výhody pro vzdálené přístupy (po ověření) - cfservd se zeptá zda spustit cfagent.
+Description-da.UTF-8: Start cfservd på opstartstidspunktet?
+ cfservd håndterer filbetjening til eksterne cfagentprocesser.
+ .
+ Den tilbyder også en facilitet til eksterne værter (efter godkendelse), så de kan anmode cfservd om at køre cfagent.
+Description-de.UTF-8: Soll Cfservd beim Hochfahren gestartet werden?
+ Cfservd ist ein Datei-Server für nicht-lokale Cfagent-Prozesse.
+ .
+ Für nicht-lokale Rechner stellt es außerdem (nach Authentifizierung) eine Möglichkeit zur Verfügung, Cfservd darum zu bitten, Cfagent auszuführen.
+Description-es.UTF-8: ¿Quiere arrancar cfservd en el inicio del sistema?
+ cfservd gestiona el servicio de ficheros a procesos cfagent remotos.
+ .
+ También provee a las máquinas remotas (después de autenticarse) de la capacidad de pedir a cfservd que ejecute cfagent.
+Description-fr.UTF-8: Faut-il lancer cfservd au démarrage ?
+ cfservd gère le partage des fichiers pour les processus distants cfagent.
+ .
+ Il fournit également aux hôtes distants (après authentification) la possibilité de demander à cfservd le lancement de cfagent.
+Description-ja.UTF-8: システム起動時に cfservd を起動しますか?
+ cfservd はリモートの cfagent プロセスへのファイル提供を担当します。
+ .
+ これはリモートホストに対して (認証後に) cfagent を動作させるかどうかを cfservd に確認する機能も提供します。
+Description-nl.UTF-8: cfservd bij het opstarten starten?
+ cfservd staat in voor het aanbieden van bestanden aan cfagent-processen op andere computers.
+ .
+ Daarnaast verzorgt het een dienst waarmee andere computers (na authenticatie) cfservd kunnen vragen om cfagent uit te voeren.
+Description-pt.UTF-8: Iniciar cfservd no arranque?
+ cfservd gere o serviço de ficheiros para processos remotos do cfagent.
+ .
+ Fornece também uma funcionalidade para que máquinas remotas (após autenticação) possam iniciar o cfagent através do cfservd.
+Description-pt_BR.UTF-8: Iniciar o cfservd em tempo de inicialização ?
+ O cfservd gerencia servir arquivos para processos cfagent remotos.
+ .
+ O cfservd também fornece uma facilidade para hosts remotos (depois de autenticados) requisitarem ao cfservd a execução do cfagent.
+Description-ru.UTF-8: Запускать cfservd при включении компьютера?
+ cfservd выполняет операции с файлами для удалённых процессов cfagent.
+ .
+ Также он позволяет удалённым хостам (после аутентификации) запросить cfservd запуск cfagent.
+Description-sv.UTF-8: Starta cfservd vid systemets uppstart?
+ cfservd hanterar filtjänsten för cfagent-processer på fjärrsystem.
+ .
+ Den ger också en möjligheten för fjärrsystem (efter autentisering) att fråga cfservd att köra cfagent.
+Description-tr.UTF-8: cfservd açılış sırasında başlatılsın mı?
+ cfservd, uzaktaki cfagent süreçleri için dosya sunucusu olarak hizmet eder.
+ .
+ Ayrıca, uzaktaki makineler için (kimlik denetiminden sonra), cfservd programına cfagent programını çalıştırma isteği gönderebilir.
+Description-vi.UTF-8: Khởi chạy trình cfservd vào lúc khởi động máy không?
+ Trình nền cfservd quản lý cách phục vụ tập tin cho tiến trình cfagent ở xa.
+ .
+ Nó cũng cung cấp khả năng cho phép máy từ xa (sau khi xác thực) yêu cầu trình nền cfservd chạy trình cfagent.
+
+Template: cfengine2/run_cfenvd
+Type: boolean
+Default: false
+Description: Start cfenvd at boot-time?
+ cfenvd monitors the system environment (disk usage, run queue length etc.)
+ and notes the mean and standard deviation for each.
+ .
+ Information gathered here is easily available to cfagent, and can be
+ output using cfenvgraph.
+Description-bg.UTF-8: Стартиране на cfenvd при зареждане на системата?
+ cfenvd наблюдава някои параметри на системата (използвано дисково пространство, активни процеси и т.н.) и изчислява средните стойности и отклоненията.
+ .
+ Събраната информация е достъпна за cfagent и може да се използва от cfenvgraph.
+Description-ca.UTF-8: Voleu executar cfenvd a l'arrancar la màquina?
+ cfenvd monitora l'entorn del sistema (ús de disc,longitud de la cua d'execució etc) i anota la mitjana i la desviació estandard per cadascún.
+ .
+ La informació reunida ací està fàcilment disponible pel cfagent, i es pot veure usant cfenvgraph.
+Description-cs.UTF-8: Spustit cfenvd při spuštění systému?
+ cfenvd monitoruje systémové prostředí (využití disku, délku front atd.) a zaznamenává průměrné a standardní odchylky.
+ .
+ Získané informace jsou snadno přístupné cfagentu a mohou být vykresleny pomocí cfenvgraph.
+Description-da.UTF-8: Start cfenvd på opstartstidspunktet?
+ cfenvd overvåger systemmiljøet (diskforbrug, længde på kørselskø etc.) og noterer middel- og standardafvigelse for hver.
+ .
+ Information indsamlet her er let tilgængelig for cfagent, og kan blive uddata med brug af cfenvgraph.
+Description-de.UTF-8: Soll Cfenvd beim Hochfahren gestartet werden?
+ Cfenvd beobachtet ihre Systemumgebung - Plattennutzung, Länge der Prozesswarteschlange (run queue length) usw. - und notiert jeweils den Durchschnitt und die Standard-Abweichung.
+ .
+ Hier zusammengetragene Informationen sind für cfagent problemlos verfügbar, und können mittels Cfenvgraph ausgegeben werden.
+Description-es.UTF-8: ¿Quiere arrancar cfenvd en el inicio del sistema?
+ cfenvd comprueba el entorno del sistema (uso del disco, longitud de las colas de ejecución, etc.) y toma nota de las medias y de las desviaciones estándares de cada componente.
+ .
+ La información aquí reunida está disponible para cfagent y puede ser mostrada usando cfenvgraph.
+Description-fr.UTF-8: Faut-il lancer cfenvd au démarrage ?
+ cfenvd surveille l'environnement du système (utilisation des disques, vérification de la longueur de la file d'attente, etc.) et note la moyenne et l'écart-type de chacun des paramètres.
+ .
+ Les informations recueillies ici peuvent être facilement accédées par cfagent et représentées graphiquement par cfenvgraph.
+Description-ja.UTF-8: システム起動時に cfenvd を起動させますか?
+ cfenvd はシステムの動作環境 (ディスクの使用量や run queue の長さなど) を監視し、それぞれの値と標準偏差を記録します。
+ .
+ ここで収集した情報は容易に cfagent で利用でき、cfenvgraph を利用して出力可能です。
+Description-nl.UTF-8: cfenvd bij het opstarten starten?
+ cfenvd controleert de systeemomgeving (harde-schijf-gebruik, run-queue-lengte, etc.) en houd gemiddelde en standaard afwijking voor elk bij.
+ .
+ De hier verzamelde informatie is beschikbaar voor cfagent, en kan uitgelezen worden met behulp van cfenvgraph.
+Description-pt.UTF-8: Iniciar o cfenvd no arranque?
+ cfenvd monitoriza o ambiente do sistema (utilização do disco, tamanho da fila de espera do processador, etc.) e calcula a média e o desvio padrão de cada um dos indicadores.
+ .
+ A informação obtida aqui está disponível para o cfagent, e pode ser mostrada com o cfenvgraph.
+Description-pt_BR.UTF-8: Iniciar o cfenvd em tempo de inicialização ?
+ O cfenvd monitora o ambiente de sistema (uso de disco, tamanho da fila de execução, etc.) e nota o desvio médio e padrão para cada um deles.
+ .
+ A informação obtida aqui é facilmente disponibilizável para o cfagent e pode ser consultada através do uso do cfenvgraph.
+Description-ru.UTF-8: Запускать cfenvd при включении компьютера?
+ cfenvd следит за системным окружением (использование диска, длина очереди выполнения и т.д.) и отмечает среднее и стандартное отклонение каждого параметра.
+ .
+ Собранная информация легко доступна cfagent, и может быть показана с помощью cfenvgraph.
+Description-sv.UTF-8: Starta cfenvd vid systemets uppstart?
+ cfenvd undersöker systemets miljö (diskanvändning, kör kölängder etc) och noterar användning och standardavvikelser för dessa.
+ .
+ Information som samlas in här är lätt tillgänglig för cfagent och kan hämtas ut med cfenvgraph.
+Description-tr.UTF-8: xfevnd açılış sırasında başlatılsın mı?
+ cfenvd, sistem ortamını (disk kullanımı, çalışma kuyruk uzunluğu gibi) izler ve bu büyüklüklerin ortalama ve standart sapmalarını kaydeder.
+ .
+ Burada toplanan bilgiler cfagent tarafından kolayca kullanılabilir ve cfenvgraph tarafından çıktısı alınabilir.
+Description-vi.UTF-8: Khởi chạy trình cfenvd vào lúc khởi động máy không?
+ Trình cfenvd theo dõi môi trường hệ thống (cách sử dụng chỗ trên đĩa, độ dài hàng đợi chạy v.v.), và ghi lưu thống kê (độ lệch trung bình và chuẩn) cho mỗi trường hợp.
+ .
+ Các tin tức này sẵn sàng một cách dễ dàng cho trình cfagent, và có thể được xuất dùng trình cfenvgraph.

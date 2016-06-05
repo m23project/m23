@@ -3,6 +3,14 @@
 <?php
 	HTML_showFormHeader();
 	HTML_setPage('serverSettings');
+	
+	if (HELPER_isExecutedOnUCS())
+	{
+		$disabledByUCSBegin = '<!--';
+		$disabledByUCSEnd = '--!>';
+	}
+	else
+		$disabledByUCSBegin = $disabledByUCSEnd = '';
 ?>
 
 <a name="system"></a>
@@ -12,12 +20,14 @@
 	<div class="subtable_shadow">
 	<table align="center" class="subtable" cellspacing="10">
 		<tr>
+			<?= $disabledByUCSBegin ?>
 			<td align="center">
 				<a href="index.php?page=update">
 					<img src="/gfx/update.png" border="0"><br>
 					<?PHP echo($I18N_update);?>
 				</a>
 			</td>
+			<?= $disabledByUCSEnd ?>
 			<td align="center">
 				<a href="index.php?page=htaccess">
 					<img src="/gfx/admin.png" border="0"><br>
@@ -57,6 +67,7 @@
 					<?PHP echo($I18N_manageImageFiles);?>
 				</a>
 			</td>
+			<?= $disabledByUCSBegin ?>
 			<td align="center">
 				<a href="index.php?page=ipManagement">
 					<img src="/gfx/ipmanagement.png" border="0"><br>
@@ -79,6 +90,7 @@
 					</a>
 				</td>');
 			?>
+			<?= $disabledByUCSEnd ?>
 		<tr>
 		</tr>
 			<td align="center">
@@ -113,12 +125,14 @@
 					<?= $I18N_cloudFunctionsCS?>
 				</a>
 			</td>
+			<?= $disabledByUCSBegin ?>
 			<td align="center">
 				<a href="index.php?page=firewall">
 					<img src="/gfx/firewall.png" border="0"><br>
 					<?= $I18N_firewallSetting?>
 				</a>
 			</td>
+			<?= $disabledByUCSEnd ?>
 		</tr>
 	</table>
 	</div>

@@ -1,0 +1,149 @@
+Template: havp/loopback_mount
+Type: boolean
+Default: true
+Description: Do you want to create a loopback spool file system?
+ HAVP strictly requires the file system where it stores its temporary files
+ during scanning to support mandatory locking. Many of the standard Linux
+ file systems support this, but do not enable it by default. 
+ .
+ To use HAVP, you can either mount the file system that contains
+ /var/spool/havp with the option "mand", or create a loopback file system that
+ is mounted at /var/spool/havp only for HAVP.
+ .
+ If you are in doubt, you should accept this option to create a
+ loopback spool file system.
+Description-cs.UTF-8: Chcete vytvořit souborový systém pro frontu na lokální smyčce?
+ HAVP striktně vyžaduje, aby souborový systém, na který si během prohledávání ukládá dočasné soubory, podporoval vynucené zamykání. Mnoho standardních linuxových souborových systémů to sice podporuje, ale standardně to nebývá zapnuto.
+ .
+ Abyste mohli HAVP používat, musíte buď připojit souborový systém, který obsahuje /var/spool/havp s parametrem "mand", nebo můžete vytvořit souborový systém připojený na lokální smyčce jako /var/spool/havp, který bude sloužit jenom pro HAVP.
+ .
+ Jste-li na pochybách, měli byste odpovědět kladně a vytvořit souborový systém pro frontu souborů na lokální smyčce.
+Description-da.UTF-8: Ønsker du at oprette et spoolfilsystem af typen loopback?
+ HAVP kræver strengt, at filsystemet, hvor programmet gemmer sine midlertidige filer under skanning, understøtter krævet låsning. De fleste Linuxfilsystemer, som er standard, understøtter dette, men aktiverer det ikke som standard.
+ .
+ For at bruge HAVP, kan du enten montere filsystemet, som indeholder /var/spool/havp med indstillingen »mand«, eller oprette et filsystem af typen loopback som monteres på /var/spool/havp kun for HAVP.
+ .
+ Hvis du er i tvivl, bør du acceptere denne indstilling og oprette et spoolfilsystem af typen loopback.
+Description-de.UTF-8: Möchten Sie ein Spool-Dateisystem via Loopback erstellen?
+ HAVP benötigt zwingend, dass das Dateisystem, in dem es seine temporären Dateien während des Scannens speichert, verbindliches Sperren (»mandatory locking«) unterstützt. Viele der Standard-Linux-Dateisysteme unterstützen dies, aber aktivieren es standardmäßig nicht.
+ .
+ Um HAVP zu verwenden, können Sie das Dateisystem, das /var/spool/havp enthält, entweder mit der Option »mand« einhängen, oder ein Loopback-Dateisystem erstellen, das nur für HAVP unter /var/spool/havp eingehängt wird.
+ .
+ Falls Sie unsicher sind, sollten Sie dieser Option zustimmen und ein Loopback-Spool-Dateisystem erstellen.
+Description-es.UTF-8: ¿Desea crear un sistema de archivos de bucle?
+ HAVP requiere que el sistema de archivos donde se almacenan los archivos temporales que se van a analizar permita el uso de bloqueos obligatorios. La mayor parte de los sistemas de archivos estándar de Linux lo permiten pero no lo activan de manera predeterminada.
+ .
+ Para utilizar HAVP puede montar el sistema de archivos donde se encuentra «/var/spool/havp» con la opción «mand» o bien crear un sistema de archivos de bucle sólo para HAVP y montarlo en «/var/spool/havp».
+ .
+ Si no está seguro, debería aceptar esta opción para crear un sistema de archivos de bucle.
+Description-fi.UTF-8: Luodaanko takaisinkytketty tiedostojärjestelmä?
+ HAVP ehdottomasti vaatii, että tiedostojärjestelmä, johon se tallentaa väliaikaistiedostonsa skannauksen aikana, tukee pakottavaa lukitsemista. Useat Linuxin perustiedostojärjestelmistä tukevat tätä, mutta eivät käytä sitä oletuksena.
+ .
+ Käyttääksesi HAVPia voit joko liittää hakemiston /var/spool/havp sisältävän tiedostojärjestelmän valinnan ”mand” kanssa tai luoda HAVPin käyttöön takaisinkytketyn tiedostojärjestelmän, joka liitetään kohtaan /var/spool/havp.
+ .
+ Jos olet epävarma, valitse tämä, jolloin takaisinkytketty tiedostojärjestelmä luodaan.
+Description-fr.UTF-8: Créer un système de fichiers en boucle pour la file d'attente ?
+ Havp a besoin que le système de fichiers utilisé pour écrire les fichiers temporaires lors des analyses gère le verrouillage forcé (« mandatory locking »). La plupart des systèmes de fichiers standards sous Linux le gèrent mais sans l'activer par défaut.
+ .
+ Pour utiliser Havp, vous pouvez soit monter le système de fichiers qui contient /var/spool/havp avec l'option « mand », soit créer un système de fichier en boucle (« loopback ») spécialement pour havp et le monter sur /var/spool/havp.
+ .
+ Dans le doute, acceptez cette option afin de créer un système de fichiers en boucle.
+Description-gl.UTF-8: ¿Quere crear un sistema de ficheiros loopback de traballo?
+ HAVP precisa de que o sistema de ficheiros no que armacena os ficheiros temporais durante a busca de virus teña soporte de bloqueos obrigatorios. Moitos sistemas de ficheiros estándar de Linux teñen soporte para isto, pero non o activan por defecto.
+ .
+ Para empregar HAVP, pode montar coa opción "mand" o sistema de ficheiros que contén /var/spool/havp, ou pode crear un sistema de ficheiros "loopback" (armacenado nun ficheiro) montado en /var/spool/havp só para HAVP.
+ .
+ Se ten dúbidas, debería aceptar esta opción para crear un sistema de ficheiros loopback de traballo.
+Description-it.UTF-8: Creare un file system di accodamento loopback?
+ HAVP necessita che il file system su cui memorizza i propri dati temporanei durante le scansioni supporti il blocco vincolante. Molti dei file system standard di Linux lo supportano, ma non lo abilitano in modo predefinito.
+ .
+ Per poter utilizzare HAVP è necessario o montare il file system che contiene «/var/spool/havp» con l'opzione «mand», o creare un file system loopback che viene montato in «/var/spool/havp» solo per HAVP.
+ .
+ In caso di dubbio, accettare la creazione del file system di accodamento loopback.
+Description-ja.UTF-8: ループバックスプールファイルシステムを作成しますか?
+ HAVP は、強制ロックを行うためにスキャン中の一時ファイルを保存するファイルシステムを必ず必要とします。通常の Linux のファイルシステムの多くはこれをサポートしていますが、デフォルトでは有効にされていません。
+ .
+ HAVP を使うには、/var/spool/havp を含むファイルシステム「mand」オプションを付けてマウントするか、/var/spool/havp に HAVP 専用にマウントされるループバックファイルシステムを作成します。
+ .
+ よく分からない場合は、ループバックスプールファイルシステムを作成するこのオプションを選んでください。
+Description-ml.UTF-8: ലൂപ്പ്ബാക്ക്  സ്പൂള്‍ ഫയല്‍ സിസ്റ്റം സൃഷ്ടിക്കാന്‍ നിങ്ങള്‍ ആഗ്രഹിക്കുന്നുണ്ടോ? 
+ ഹാവ്പി(HAVP)ക്ക്  നിര്‍ബന്ധിത ലോക്കിങ് പിന്തുണക്കുന്നതിനായി  സ്കാനിങ്ങ് നടക്കുന്ന  സമയത്ത് അതിന്റെ  താത്ക്കാലിക ഫയലുകള്‍ശേഖരിക്കുന്ന ഫയല്‍ സിസ്റ്റം അത്യാവശ്യമാണ്. പല സ്റ്റാന്‍ഡേര്‍ഡ് ലിനക്സ് ഫയല്‍ സിസ്റ്റങ്ങളും ഇതിനെ പിന്തുണക്കുന്നുണ്ടെങ്കിലും സ്വതേ ഇത് പ്രാവര്‍ത്തികമാക്കുന്നില്ല.
+ .
+ ഹാവ്പി(HAVP) ഉപയോഗിക്കാന്‍, നിങ്ങള്‍ക്ക്  /var/spool/havp അടങ്ങുന്ന ഫയല്‍ സിസ്റ്റം " mand" എന്ന ഐച്ഛികം വച്ച് മൌണ്ട് ചെയ്യുകയോ /var/spool/havp ല്‍ ഹാവ്പി(HAVP) ക്കുവേണ്ടി മാത്രം മൌണ്ട്  ചെയ്തിട്ടുള്ള ലൂപ്പ്ബാക്ക് ഫയല്‍ സിസ്റ്റം സൃഷ്ടിക്കുകയോ ചെയ്യാം.
+ .
+ നിങ്ങള്‍ക്ക് സംശയം ഉണ്ടെങ്കില്‍, ലൂപ്പ്ബാക്ക്  സ്പൂള്‍ ഫയല്‍ സിസ്റ്റം സൃഷ്ടിക്കാനായി ഈ ഐച്ഛികം അംഗീകരിക്കുക.
+Description-nl.UTF-8: Wilt u een loopback-bestandssysteem aanmaken?
+ HAVP vereist strikt een bestandssysteem waar het tijdens het scannen tijdelijke bestanden kan opslaan om ze verplicht vergrendelen te ondersteunen. Veel van de standaard Linux-bestandssystemen ondersteunen dit wel maar schakelen dit niet standaard in.
+ .
+ Om HAVP te gebruiken kunt u of het bestandssysteem dat /var/spool/havp bevat aankoppelen met de optie 'mand', of enkel voor HAVP een loopback-bestandssysteem aanmaken dat aangekoppeld is op /var/spool/havp .
+ .
+ Als u twijfelt kunt u best deze optie (om het loopback-bestandssysteem aan te maken) aanvaarden.
+Description-pt.UTF-8: Deseja criar um sistema de ficheiros de spool loopback?
+ O HAVP necessita estritamente do sistema de ficheiros onde guarda os seus ficheiros temporários durante a procura para suportar o acesso exclusivo mandatário. Muitos dos sistemas de ficheiros standard em Linux suportam isto, mas não está activo por omissão.
+ .
+ Para utilizar o HAVP, você pode montar o sistema de ficheiros que contém /var/spool/havp com a opção "mand", ou criar um sistema de ficheiros loopback que está montado em /var/spool/havp apenas para o HAVP.
+ .
+ Em caso de dúvida, você deve aceitar esta opção para criar um sistema de ficheiros de spool loopback.
+Description-pt_BR.UTF-8: Você deseja criar um sistema de arquivos de loopback spool?
+ O HAPV requer estritamente que o sistema de arquivos onde ele armazena seus arquivos temporários durante a varredura suporte bloqueios mandatórios.Alguns dos sistemas de arquivos padrão do gnu/Linux suportam isso, porém não o habilitam por padrão.
+ .
+ Para usar o HAPV, você pode montar o sistema de arquivos que contém /var/spool/havp com a opção "mand", ou crar um sistema de arquivos de loopback que é montado em /var/spool/havp apenas para o HAPV.
+ .
+ Se você está em dúvida, você deve aceitar esta opção para criar um sistema de arquivos de loopback spool.
+Description-ru.UTF-8: Создать файловую систему loopback под буфер?
+ Для HAVP требуется файловая система с поддержкой обязательной блокировки для хранения временных файлов при сканировании. Многие стандартные файловые системы Linux поддерживают это свойство, но по умолчанию оно выключено.
+ .
+ Чтобы использовать HAVP, вы можете смонтировать файловую систему, содержащую /var/spool/havp, с параметром "mand", или создать файловую систему loopback только для HAVP и смонтировать её в /var/spool/havp.
+ .
+ Если вы не знаете что делать, согласитесь на создание файловой системы loopback.
+Description-sv.UTF-8: Vill du skapa ett loopback-filsystem för spoolning?
+ HAVP kräver att filsystemet där temporära filer sparas vid scanning kan hantera låsningar. Många av de vanliga linux-filsystemen klarar detta men aktiverar det inte som standard.
+ .
+ För att använda HAVP så kan du antingen montera filsystemet som innehållet /var/spool/havp med inställningen "mand" eller skapa ett loopback-filsystem som monteras på /var/spool/havp och som endast kan användas av HAVP.
+ .
+ Om du är osäker så ska du välja det här alternativet och skapa ett loopback-filsystem.
+Description-ta.UTF-8: சுற்றி மீளும் உருளை கோப்பு அமைப்பு ஒன்று உருவாக்க வேண்டுமா?
+ ஹெஏவிபி(HAVP) க்கு அதன் தற்காலிக கோப்புகளை வருடலின் போது சேமிக்கும் கோப்பு அமைப்பு கட்டாயமாக பூட்டும் ஆதரவு உள்ளதாக இருக்க வேண்டும். பல லீனக்ஸ் கோப்பு அமைப்புகள் இதை ஆதரித்தாலும் இதை முன்னிருப்பாக செயல் படுத்துவதில்லை.
+ .
+ ஹெஏவிபி(HAVP) பயன்படுத்த நீங்கள் "mand" தேர்வால் /var/spool/havp கோப்புள்ள கோப்பு அமைப்பை ஏற்றலாம், அல்லது ஹெஏவிபி(HAVP) க்கு மட்டுமான /var/spool/havp இல் ஏற்றப்பட்ட சுற்றி மீளும் உருளை கோப்பு அமைப்பு ஒன்றை உருவாக்கலாம்.
+ .
+ நீங்கள் நிச்சயமாக இல்லாத போது இந்த தேர்வை ஒப்புக்கொண்டு சுற்றி மீளும் உருளை கோப்பு அமைப்பு உருவாக்கலாம்.
+
+Template: havp/loopback_size
+Type: string
+Default: 100
+Description: Loopback file system size:
+ Please enter the size (in megabytes) of the loopback file system to
+ be created.
+Description-cs.UTF-8: Velikost souborového systému na lokální smyčce:
+ Zadejte prosím velikost (v megabajtech) souborového systému na lokální smyčce, který se má vytvořit.
+Description-da.UTF-8: Størrelse på filsystem af typen loopback:
+ Indtast venligst størrelsen (i megabyte) på filsystemet af typen loopback, der skal oprettes.
+Description-de.UTF-8: Größe des Loopback-Dateisystems:
+ Bitte geben Sie die Größe (in Megabytes) des Loopback-Dateisystems an, das erstellt werden soll.
+Description-es.UTF-8: Tamaño del sistema de archivos de bucle:
+ Por favor, introduzca el tamaño (en megabytes) del sistema de archivos de bucle que se va a crear.
+Description-fi.UTF-8: Takaisinkytketyn tiedostojärjestelmän koko:
+ Anna luotavan takaisinkytketyn tiedostojärjestelmän koko megatavuina.
+Description-fr.UTF-8: Taille du système de fichiers en boucle :
+ Veuillez indiquer la taille (en méga-octets) du système de fichiers en boucle qui doit être créé.
+Description-gl.UTF-8: Tamaño do sistema de ficheiros loopback:
+ Introduza o tamaño (en megabytes) do sistema de ficheiros loopback a crear.
+Description-it.UTF-8: Dimensione del file system loopback:
+ Inserire la dimensione, in MB, del file system loopback che deve essere creato.
+Description-ja.UTF-8: ループバックファイルシステムのサイズ:
+ 作成するループバックファイルシステムのサイズを入力してください (MB で)。
+Description-ml.UTF-8: ലൂപ്പ്ബാക്ക് ഫയല്‍ സിസ്റ്റത്തിന്റെ  വലിപ്പം:
+ ദയവായി ഉണ്ടാക്കേണ്ട  ലൂപ്പ്ബാക്ക് ഫയല്‍ സിസ്റ്റത്തിന്റെ  വലിപ്പം (മെഗാൂബൈറ്റില്‍) നല്‍കുക.
+Description-nl.UTF-8: Grootte van het loopback-bestandssysteem:
+ Wat is de grootte (in megabytes) van het aan te maken loopback-bestandssysteem?
+Description-pt.UTF-8: Tamanho do sistema de ficheiros loopback:
+ Por favor introduza o tamanho (em megabytes) do sistema de ficheiros de loopback a ser criado.
+Description-pt_BR.UTF-8: Tamanho do sistema de arquivos de loopback:
+ Por favor informe o tamanho (em megabytes) do sistema de arquivos de loopback a ser criado.
+Description-ru.UTF-8: Размер файловой системы Loopback:
+ Введите размер (в мегабайтах) создаваемой файловой системы loopback.
+Description-sv.UTF-8: Storlek på loopback-filsystemet:
+ Ange storleken för loopback-filsystemet (i megabyte).
+Description-ta.UTF-8: சுற்றி மீளும் உருளை கோப்பு அமைப்பின் அளவு:
+ சுற்றி மீளும் உருளை கோப்பு அமைப்பு உருவாக்க அதன் அளவை குறிப்பிடுக.

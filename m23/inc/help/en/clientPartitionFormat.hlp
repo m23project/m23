@@ -55,10 +55,10 @@ If you choose a file system which is not supported by the distribution of the cl
 <u>Hint for RAIDs and partitions</u>
 The Linux kernel accesses the software RAIDs via <i>"multi devices"</i>. These RAID drives behave like partitions and cannot be partitioned further. This limitation is made by m23 to accomplish backwards compatibility to older Linux kernels.
 
-helpInclude("os_on_RAID_hint.inc");<!-- from RAID_add.hlp end-->
+<!-- V1.12 begin -->helpInclude("os_on_RAID_hint.inc");<!-- V1.12 end --><!-- from RAID_add.hlp end-->
 
 <b>$I18N_installationAndSwapPartition</b>
 A partition for installing the operating system and a partition for swapping have to be selected to make the m23 client installable. Choose the partitions at <i>"$I18N_installationPartition"</i> and <i>"$I18N_swapPartition"</i> and then click on <i>"$I18N_select"</i>.
 
 <b>$I18N_defineMountpoints</b>
-<!-- from fdisk-extended3.hlp-->If you need additional mountpoints, you can define them under <i>"$I18N_defineMountpoints"</i>. Enter the partition, the mountpoint and the required parameters into the appropriate input fields and click on <i>"$I18N_add"</i>. These informations correspond to those which you can find in the file <b>/etc/fstab</b>. You can see mountpoints which are already defined in the table under the input lines.<!-- from fdisk-extended3.hlp end--> To delete a mount point simply click on <i>"$I18N_delete"</i> after the mount point to remove.
+<!-- from fdisk-extended3.hlp--><!-- V1.12 begin -->If you need additional mountpoints, you can define them under <i>"$I18N_defineMountpoints"</i>. Enter the partition, the mountpoint and the required parameters into the appropriate input fields and click on <i>"$I18N_add"</i>. These informations correspond to those which you can find in the file <b>/etc/fstab</b>. You can see mountpoints which are already defined in the table under the input lines.<!-- V1.12 end --><!-- from fdisk-extended3.hlp end--> To delete a mount point simply click on <i>"$I18N_delete"</i> after the mount point to remove.

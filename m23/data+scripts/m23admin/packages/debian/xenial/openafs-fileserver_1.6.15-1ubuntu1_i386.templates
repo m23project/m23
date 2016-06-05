@@ -1,0 +1,74 @@
+Template: openafs-fileserver/thiscell
+Type: string
+Description: Cell this server serves files for:
+ AFS fileservers belong to a cell.  They have the key for that cell's
+ Kerberos service and serve volumes into that cell.  Normally, this cell is
+ the same cell as the workstation's client belongs to.
+Description-cs.UTF-8: Buňka, které bude tento server poskytovat soubory:
+ Souborové servery AFS náleží buňce. Servery mají klíč ke službě Kerberos dané buňky a v rámci buňky nabízejí souborové svazky. Tato buňka je obvykle shodná s buňkou, ke které patří klient na pracovní stanici.
+Description-da.UTF-8: Celle som denne server betjener filer for:
+ AFS-filservere tilhører en celle. De har nøglen for den celles Kerberostjeneste og betjener arkiver i den celle. Normalt er denne celle den samme celle som arbejdsstationens klient hører til.
+Description-de.UTF-8: Zelle, für die dieser Server Dateien ausliefert:
+ AFS-Dateiserver gehören zu einer Zelle. Die Server haben den Schlüssel für den Kerberos-Dienst der Zelle und stellen Speicherplatz für die Zelle bereit. Normalerweise ist die Zelle identisch mit der des Clients.
+Description-es.UTF-8: Celda para los archivos de este servidor:
+ Los servidores de archivos de AFS forman parte de una celda. Poseen una clave para la celda del servicio Kerberos y proporciona la capacidad de las celdas. Normalmente, esta celda es la misma que la celda a la que la máquina cliente  pertenece.
+Description-fr.UTF-8: Cellule pour laquelle ce serveur est un serveur de fichiers :
+ Les serveurs de fichiers AFS appartiennent à une cellule. Ils possèdent la clé pour le service Kerberos de cette cellule et y mettent à disposition des volumes. Normalement, cette cellule est la même que celle à laquelle appartient le client.
+Description-gl.UTF-8: Cela para a que este servidor serve ficheiros:
+ Os servidores de ficheiros AFS pertencen a celas. Teñen a clave do servizo Kerberos desa cela e serven volumes na cela. Normalmente, esta cela é a mesma cela á que pertence o cliente da estación de traballo.
+Description-it.UTF-8: Cella per la quale questo server serve i file:
+ I server di file AFS appartengono ad una cella. Hanno la chiave per il servizio Kerberos di tale cella e servono i volumi in quella cella. Normalmente, questa cella è la stessa cella a cui appartiene il client della macchina.
+Description-ja.UTF-8: このサーバがファイルを提供するセル:
+ AFS のファイルサーバ群は一つのセルに属しています。このファイルサーバ群は、セルの Kerberos サービスについての鍵を持っており、ボリュームをこれらのセルに提供します。通常、このセルはワークステーションのクライアントが属しているのと同じセルです。
+Description-nl.UTF-8: Cellen waarvoor deze server bestanden aanbiedt:
+ AFS-bestandsservers maken deel uit van een cel. Ze beschikken over de sleutel voor de Kerberos-dienst van die cel, en bedienen die cel met schijven. Die cel is normaliter dezelfde als die waartoe de client op het werkstation behoort.
+Description-pt.UTF-8: Célula para a qual este servidor serve ficheiros:
+ Os servidores de ficheiros AFS pertencem a uma célula.  Estes têm a chave para o serviço Kerberos dessa célula e volumes a servir nessa célula.  Normalmente, esta célula é a mesma célula a que pertence o cliente da estação de trabalho.
+Description-pt_BR.UTF-8: Célula para a qual este servidor serve arquivos:
+ Servidores de arquivo AFS pertencem à uma célula. Eles possuem a chave para cada serviço Kerberos da célula e servem volumes dentro dessa célula. Normalmente, essa célula é a mesma célula da qual a estação de trabalho faz parte.
+Description-ru.UTF-8: Ячейка, для которой работает сервер:
+ Файловые серверы AFS принадлежат ячейке. У них есть ключ для службы Kerberos их ячейки, и они обслуживают тома этой ячейки. Обычно, эта ячейка совпадает с ячейкой, которой принадлежит клиент рабочей станции.
+Description-sv.UTF-8: Namn på cellen som denna server tillhandahåller filer för:
+ AFS-filservrar tillhör en cell. De har en nyckel till cellens Kerberostjänst och tillhandahåller volymer i den cellen. Vanligen är denna cell samma cell som arbetsstationens klient tillhör.
+Description-vi.UTF-8: Ô cho đó trình phục vụ tập tin:
+ Mọi trình phục vụ tập tin AFS thuộc một ô nào đó. Trình ấy có khóa của dịch vụ Kerberos của ô này, và phục vụ khối đĩa vào ô này. Bình thường, ô này là cùng một ô với ô sở hữu trình khách của máy trạm này.
+Description-zh_CN.UTF-8: 这台文件服务器所在的单元:
+ AFS 文件服务器属于一个单元.  它们有该单元的 Kerberos 服务密钥并且为该单元提供卷服务. 正常情况下, 这个单元跟工作站上的客户端属于的那个单元是同一个.
+
+Template: openafs-fileserver/alpha-broken
+Type: note
+Description: OpenAFS file server probably does not work!
+ You are running the OpenAFS file server package on an alpha.  This
+ probably doesn't work; the DES code is flaky on the alpha, along with the
+ threaded file server.  Likely, the fileserver will simply fail to start,
+ but if it does load, data corruption may result.  You have been warned.
+Description-cs.UTF-8: Souborový server OpenAFS pravděpodobně nepracuje!
+ Souborový server OpenAFS běží na Aplha systému, což pravděpodobně nebude fungovat; DES kód se ve spojení s vlákny na souborovém serveru chová podivně. Souborový server nejpravděpodobněji vůbec nespustí nespustí, ale pokud naběhne, může dojít ke ztrátě dat. Byli jste varováni.
+Description-da.UTF-8: OpenAFS-filserver virker sandsynligvis ikke!
+ Du kører OpenAFS-filserverpakken på en alfa. Dette virker sandsynligvis ikke; DES-koden er utroværdig i alfa, sammen med den tråede filserver. Højst sandsynligt vil filserveren slet ikke starte op, men hvis den kommer op, kan ødelæggelse af data blive resultatet. Du er advaret.
+Description-de.UTF-8: Der OpenAFS-Dateiserver wird wahrscheinlich nicht funktionieren!
+ Sie benutzen den OpenAFS-Dateiserver auf einer Alpha-Maschine. Das funktioniert wahrscheinlich nicht; der DES-Code und dazu der Dateiserver im Thread-Modus sind unter Alpha fehlerhaft. Wahrscheinlich wird der Dateiserver einfach nicht starten, aber wenn er gestartet wird, könnte Datenverlust die Folge sein. Sie wurden gewarnt.
+Description-es.UTF-8: ¡Es probable que el servidor de archivos OpenAFS no funcione!
+ Está ejecutando el paquete OpenAFS como servidor de archivos sobre la arquitectura alpha. Es probable que no funcione, el código DES es muy inestable cuando se ejecuta sobre alpha, así como los hilos del servidor de archivos. Lo más probable es que el servidor de archivos simplemente falle al iniciarlo, pero si carga, puede corromper los datos. Ha sido advertido.
+Description-fr.UTF-8: Serveur de fichiers OpenAFS probablement défaillant
+ Vous utilisez le paquet du serveur de fichier OpenAFS sur une plateforme alpha. Cela ne fonctionne probablement pas ; le code DES est défectueux sur ces plateformes de même que le serveur de fichiers à processus légers. Il est probable que le serveur refusera tout simplement de démarrer. Cependant, s'il démarre quand même, des corruptions de données peuvent avoir lieu.
+Description-gl.UTF-8: O servidor de ficheiros OpenAFS probablemente non funcione
+ Está a executar o paquete servidor de ficheiros OpenAFS nun Alpha. Probablemente isto non funcione; o código DES ten fallos no Alpha, igual que o servidor de ficheiros con fíos. O máis probable é que o servidor de ficheiros non se inicie, pero se se inicia, pódese causar corrupción de datos.
+Description-it.UTF-8: Il server di file OpenAFS probabilmente non funziona!
+ Si sta eseguendo il pacchetto del server di file OpenAFS su una macchina alpha. Ciò probabilmente non funziona; il codice DES è carente in alpha, così come il server di file con thread. Probabilmente il server di file semplicemente non riuscirà ad avviarsi, ma se viene caricato può causare la corruzione di dati. Ritenersi avvertiti.
+Description-ja.UTF-8: OpenAFS ファイルサーバは恐らく動作しません!
+ OpenAFS ファイルサーバを alpha アーキテクチャ上で動作させています。これは恐らく動作しません。DES コードは alpha 上で、加えてスレッドで動作するファイルサーバでは怪しげなものです。最もありえるのはファイルサーバは起動せず、もし動作したとしてもデータの損傷が起こるであろうということです。警告しました。
+Description-nl.UTF-8: De OpenAFS bestandsserver werkt waarschijnlijk niet!
+ U draait het OpenAFS bestandsserver pakket op een alpha. Dit werkt waarschijnlijk niet; de DES-code is onbetrouwbaar op alpha, evenals de 'threaded' bestandsserver. Naar alle waarschijnlijkheid zal de bestandsserver niet eens opstarten, maar als hij toch start kan gegevensbeschadiging het gevolg zijn. U bent gewaarschuwd.
+Description-pt.UTF-8: O servidor de ficheiros AFS provavelmente não funciona!
+ Você está a correr o pacote do servidor de ficheiros OpenAFS num alpha.  Isto provavelmente não funciona; o código DES tem problemas em alpha, além do servidor de ficheiros com 'threads'. Provavelmente, o servidor de ficheiros irá simplesmente falhar o arranque, mas se carregar, pode resultar em corrupção de dados.  Você foi avisado.
+Description-pt_BR.UTF-8: Servidor de arquivos OpenAFS provavelmente não funciona!
+ Você está executando o pacote do servidor de arquivos OpenAFS em uma máquina Alpha. Isso provavelmente não funciona. O código DES, em conjunto com o servidor de arquivos com suporte a threads, é problemático em máquinas Alpha. Provavelmente, o servidor de arquivos simplesmente falhará ao iniciar, mas se ele iniciar, pode resultar em corrupção de dados. Você foi avisado.
+Description-ru.UTF-8: Вероятно, файловый сервер OpenAFS не работает!
+ Вы работаете с пакетом файлового сервера OpenAFS на архитектуре alpha. Скорее всего, он не работает; код DES часто отказывает на alpha, тоже случается и с потоковым файловым сервером. Вероятно, файловый сервер просто не запустится, но если это даже произойдёт, то в результате это может повредить данные. Это было предупреждение.
+Description-sv.UTF-8: Filservern OpenAFS fungerar troligen inte!
+ Du kör OpenAFS filservern på en Alpha. Det kommer förmodligen inte att fungera då DES-koden i kombination med den trådade filservern är instabil. Förmodligen kommer filservern helt enkelt att vägra starta, om den laddar så kan data skadas. Nu har du fått varningen, det är ditt beslut.
+Description-vi.UTF-8: Rất có thể là trình phục vụ tập tin OpenAFS không hoạt động.
+ Bạn có chạy gói tin trình phục vụ tập tin OpenAFS trên một anfa. Rất có thể là nó không hoạt động vì mã DES bị lỗi trên anfa, cũng với trình phục vụ tập tin theo mạch. Rất có thể là trình phục vụ tập tin sẽ không khởi chạy, nhưng mà nếu nó có phải khởi chạy thì dữ liệu có thể bị hỏng. Bạn đã nhận một cảnh báo rồi.
+Description-zh_CN.UTF-8: OpenAFS 文件服务器可能不会工作!
+ 您正在一台 alpha 机上运行 OpenAFS 文件服务器包.  这可能不会工作; alpha 下的随线程文件服务器带的 DES 代码很奇怪. 文件服务器很可能简单地直接启动失败, 但如果它确实起来了, 数据错乱也有可能发生. 您将被警告这点.

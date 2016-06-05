@@ -1,0 +1,129 @@
+Template: ldap-account-manager/config-webserver
+Type: multiselect
+Choices: apache2
+Default: apache2
+Description: Web server configuration:
+ LDAP Account Manager supports any webserver that supports PHP5, but this
+ automatic configuration process only supports Apache2.
+ If you choose to configure Apache2 then LAM can be accessed at http(s)://localhost/lam
+Description-ca.UTF-8: Configuració del servidor Web
+ LDAP Account Manager suporta qualsevol servidor web que disposi de PHP5 però aquest procés de configuració automàtic només funciona amb Apache2. Si esculls configurar Apache2, llavors LAM serà accessible des de http(s)://localhost/lam
+Description-cs.UTF-8: Nastavení webového serveru:
+ LDAP Account Manager podporuje libovolný webový server, pod kterým běží PHP5, avšak automatické nastavení umí pouze ve spojení se Apache2. Zvolíte-li nastavení Apache2, LAM bude přístupný na adrese http(s)://localhost/lam.
+Description-da.UTF-8: Konfiguration af internetserver:
+ LDAP Account Manager understøtter alle internetservere som understøtter PHP5, men denne automatiske konfigurationsproces understøtter kun Apache2. Hvis du vælger at konfigurere Apache2, så kan LAM tilgås på http(s)://localhost/lam
+Description-de.UTF-8: Konfiguration des Webservers:
+ LDAP Account Manager unterstützt alle Webserver mit PHP5-Unterstützung, aber diese automatische Konfiguration funktioniert nur mit Apache2. Nach der Auswahl von Apache2 kann LAM unter http(s)://localhost/lam erreicht werden.
+Description-es.UTF-8: Configuración del servidor web:
+ El gestor de cuentas LDAP es compatible con cualquier servidor web que permita usar PHP5, pero este proceso automático de configuración sólo es compatible con Apache2. Si escoge configurar Apache2, podrá acceder a LAM desde «http(s)://localhost/lam».
+Description-fr.UTF-8: Configuration du serveur web :
+ LDAP Account Manager s'occupe de tous les serveurs web qui gérent PHP5, mais ce processus de configuration ne fonctionne qu'avec Apache2. Si vous choisissez de configurer Apache2, vous pourrez accéder à LAM via l'adresse http(s)://localhost/lam.
+Description-hu.UTF-8: Web szolgáltató beállítás:
+ Az LDAP Account Manager bármely PHP5-képes webszervert támogat, de az automatikus beállítási művelet csak az Apache2-ben támogatott. Ha az Apache2 beállítását választja, akkor a LAM-ot a http(s)://localhost/lam címen érheti el.
+Description-it.UTF-8: Configurazione del server web:
+ LDAP Account Manager può essere usato su qualsiasi server web con PHP5 ma questo processo di configurazione automatica supporta solo Apache2. Se si sceglie di configurare Apache2, si potrà accedere a LAM da http(s)://localhost/lam
+Description-ja.UTF-8: ウェブサーバの設定:
+ LDAP Account Manager は PHP5 をサポートする全てのウェブサーバーに対応してますが、この自動構成は Apache2 にのみ対応しています。もしも Apache(2) の構成を選択した場合は、LAMは http(s)://localhost/lam でアクセスできます。
+Description-nl.UTF-8: Webserverconfiguratie:
+ LDAP Account Manager ondersteund alle webservers die PHP5 ondersteunen, dit automatische configuratieproces ondersteund alleen Apache2.  Als u ervoor kiest om de automatische configuratie uit te voeren wordt LAM beschikbaar op http(s)://localhost/lam.
+Description-pl.UTF-8: Konfiguracja serwera WWW:
+ LDAP Account Manager obsługuje wszystkie serwery WWW obsługujące PHP5, ale automatyczny proces konfiguracji jest dostępny jedynie dla Apache2. Jeśli ta opcja zostanie wybrana, LAM będzie dostępny pod adresem http(s)://localhost/lam.
+Description-pt.UTF-8: Configuração do servidor web:
+ O Gestor de Contas LDAP (LAM) suporta qualquer servidor web que suporte PHP5, mas este processo de configuração automático suporta apenas Apache2. Se escolher configurar o Apache2, o LAM pode ser acedido em http(s)://localhost/lam
+Description-ru.UTF-8: Настраиваемый веб-сервер:
+ LDAP Account Manager работает с любым веб-сервером, поддерживающим PHP5, однако автоматическая настройка может быть выполнена только для Apache2. Если выбрать настройку Apache2, то LAM будет доступен по адресу: http(s)://localhost/lam
+Description-sk.UTF-8: Nastavenie webového servera:
+ LDAP Account Manager podporuje každý webový server, ktorý podporuje PHP5, ale automatické nastavenie dokáže len v spojení s Apache2. Ak zvolíte nastavenie Apache2, LAM bude prístupný na adrese http(s)://localhost/lam.
+Description-sv.UTF-8: Webbserverkonfiguration:
+ LDAP Account Manager har stöd för de webbservrar som har stöd för PHP5 men den här automatiska konfigurationsprocessen har endast stöd för Apache2. Om du väljer att konfigurera Apache2 kan LAM nås på http(s)://localhost/lam
+Description-vi.UTF-8: Cấu hình phục vụ Web:
+ Bộ Quản lý Tài khoản LDAP hỗ trợ cùng những trình phục vụ Web cũng hỗ trợ PHP5, nhưng mà tiến trình tự động cấu hình này chỉ hỗ trợ Apache2. Nếu bạn chọn cấu hình Apache2 thì Bộ Quản lý Tài khoản LDAP có thể được truy cập ở địa chỉ « http(s)://localhost/lam ».
+Description-zh_CN.UTF-8: Web服务器配置:
+ LDAP帐号管理软件可以运行在任何支持PHP5的Web服务器平台上,但是仅在Apache2上支持自动配置处理.如果您选用Apache2,LAM可以通过http(s)://localhost/lam来访问.
+
+Template: ldap-account-manager/alias
+Type: string
+Default: lam
+Description: Alias name:
+ LAM will add an alias to your httpd.conf which allows you to
+ access LAM at http(s)://localhost/lam. You may select an alias other than
+ "lam".
+Description-ca.UTF-8: Nom d'àlies:
+ LAM afegirà un alias al teu httpd.conf que et permetrà accedir a LAM mitjançant l'adreça http(s)://localhost/lam. També pots escollir un àlies diferent de "lam".
+Description-cs.UTF-8: Alias:
+ LAM přidá do vašeho httpd.conf alias, který vám umožní přistupovat k LAM přes adresu http(s)://localhost/lam. Můžete zadat i jiný alias než „lam“.
+Description-da.UTF-8: Aliasnavn:
+ LAM vil tilføje et alias til din httpd.conf, hvilket gør det muligt for dig at tilgå LAM på http(s)://localhost/lam. Du kan vælge et andet alias end »lam«.
+Description-de.UTF-8: Aliasname:
+ LAM wird der httpd.conf einen Alias hinzufügen, der es erlaubt LAM über http(s)://localhost/lam zu erreichen. Wenn Sie einen anderen Alias als "lam" wünschen, können Sie ihn hier angeben.
+Description-es.UTF-8: Alias:
+ LAM añadirá un alias a su archivo «httpd.conf», que le permitirá acceder a LAM desde «http(s)://localhost/lam». Puede elegir un alias distinto a «lam».
+Description-fr.UTF-8: Alias :
+ LAM ajoute un alias au fichier httpd.conf, ce qui permet d'accéder à LAM à l'adresse http(s)://localhost/lam. Si vous désirez un alias différent de « lam », veuillez l'indiquer ici.
+Description-hu.UTF-8: Alias:
+ A LAM egy aliast rak a httpd.conf fájlodba, és így elérheted a LAM-ot a http(s)://localhost/lam címen. Választhatsz másik aliast a "lam" helyett.
+Description-it.UTF-8: Nome alias:
+ LAM aggiunge un alias in httpd.conf che permette di accedere a LAM da http(s)://localhost/lam. È possibile scegliere un alias diverso da "lam".
+Description-ja.UTF-8: エイリアス名:
+ LAM は http(s)://localhost/lam として LAM にアクセスできるように、httpd.conf にエイリアス名を追加します。"lam" 以外のエイリアス名も選べます。
+Description-nl.UTF-8: Aliasnaam:
+ LAM voegt een alias toe aan uw httpd.conf, waardoor LAM toegankelijk wordt via http(s)://localhost/lam. U kunt ook een ander alias dan 'lam' kiezen.
+Description-pl.UTF-8: Nazwa aliasu:
+ LAM doda alias do pliku httpd.conf, który umożliwi dostęp do LAM-a pod adresem http(s)://localhost/lam. Można również wybrać inny alias niż "lam".
+Description-pt.UTF-8: Nome alternativo (alias):
+ O LAM irá adicionar um nome alternativo (alias) ao seu httpd.conf, que lhe permite aceder ao LAM através de http(s)://localhost/lam. Pode escolher um nome alternativo (alias) que não seja "lam".
+Description-pt_BR.UTF-8: Nome do apelido ("alias"):
+ LAM vai adicionar um apelido ("alias") ao seu httpd.conf que permitirá que você acesse o LAM em http(s)://localhost/lam. Você pode selecionar um outro apelido ("alias") que não seja "lam".
+Description-ru.UTF-8: Псевдоним:
+ Для доступа к LAM по адресу: http(s)://localhost/lam в httpd.conf будет добавлен псевдоним. Вы можете выбрать другой псевдоним вместо "lam".
+Description-sk.UTF-8: Meno aliasu:
+ LAM pridá do vášho httpd.conf alias, pomocou ktorého budete môcť pristupovať k LAM na adrese http(s)://localhost/lam. Môžete zadať aj iný alias ako „lam“.
+Description-sv.UTF-8: Aliasnamn:
+ LAM kommer att lägga till ett alias till din httpd.conf som låter dig komma åt LAM på http(s)://localhost/lam. Du kan välja ett annat alias än "lam".
+Description-vi.UTF-8: Tên bí danh:
+ BQT sẽ thêm một bí danh vào tập tin cấu hình « httpd.conf » của bạn, để cho phép bạn truy cập đến BQT ở địa chỉ « http(s)://localhost/lam ». Bạn cũng có thể chọn bí danh khác với « lam » (v.d. « bqt »).
+Description-zh_CN.UTF-8: Alias名字:
+ LAM会在httpd.conf中增加一个alias,用来配置http(s)://localhost/lam来访问LAM.可以选择"lam"以外的alias名字.
+
+Template: ldap-account-manager/restart-webserver
+Type: boolean
+Default: true
+Description: Would you like to restart your webserver(s) now?
+ Your webserver(s) need to be restarted in order to apply the changes.
+Description-ca.UTF-8: Vols reiniciar el servidor web ara mateix?
+ El servidor web necessita ser reiniciat per poder aplicar els canvis.
+Description-cs.UTF-8: Chcete nyní restartovat svůj webový server (servery)?
+ Aby se vaše nové nastavení aktivovalo, musí se webové servery restartovat.
+Description-da.UTF-8: Ønsker du at genstarte dine internetservere nu?
+ Dine internetservere skal genstartes før at ændringerne træder i kraft.
+Description-de.UTF-8: Soll(en) der/die Webserver jetzt neugestartet werden?
+ Sie müssen ihre(n) Webserver neustarten um die Änderungen zu übernehmen.
+Description-es.UTF-8: ¿Desea reiniciar ahora su(s) servidor(es) web?
+ Su(s) servidor(es) web necesitan reiniciarse para que se apliquen los cambios.
+Description-fr.UTF-8: Faut-il redémarrer le(s) serveur(s) web maintenant ?
+ Le(s) serveur(s) web doivent être redémarrés afin que les changements soient appliqués.
+Description-hu.UTF-8: Szeretnéd most újraindítani a webszervert?
+ A webszerveredet újra kell indítanod a változások érvénybe léptetéséhez.
+Description-it.UTF-8: Si vuole riavviare il/i server web adesso?
+ Per applicare le modifiche è necessario riavviare il/i server web.
+Description-ja.UTF-8: 今すぐウェブサーバを再起動しますか?
+ 変更を適用するためにウェブサーバを再起動する必要があります。
+Description-nl.UTF-8: Wilt u uw webserver(s) nu herstarten?
+ Uw webserver(s) dienen herstart te worden om de veranderingen toe te passen.
+Description-pl.UTF-8: Czy zrestartować serwer(y) WWW w tej chwili?
+ Serwer(y) WWW powinny zostać zrestartowane w celu zastosowania zmian.
+Description-pt.UTF-8: Reiniciar o(s) seu(s) servidor(es) web agora?
+ O(s) seu(s) servidor(es) web necessitam de ser reiniciados para aplicar as alterações.
+Description-pt_BR.UTF-8: Você gostaria de reiniciar seu(s) servidor(es) web agora?
+ Seu(s) servidor(es) web precisa(m) ser reiniciado(s) para que as alterações façam efeito.
+Description-ru.UTF-8: Перезапустить веб-сервер(ы) прямо сейчас?
+ Чтобы активировать новые настройки, нужно перезапустить веб-сервер(ы).
+Description-sk.UTF-8: Chcete teraz reštartovať svoj webový server(y)?
+ Aby bolo vaše nové nastavenie aktivované, treba reštartovať webový server(y).
+Description-sv.UTF-8: Vill du starta om din webbserver nu?
+ Din webbserver behöver startas om för att ändringarna ska bli aktiva.
+Description-vi.UTF-8: Vậy bạn có muốn khởi chạy (các) trình phục vụ Web ngay bây giờ không?
+ Cần phải khởi chạy lại (các) trình phục vụ Web, để áp dụng các thay đổi.
+Description-zh_CN.UTF-8: 现在重启web服务器吗?
+ 为使修改生效,需要重启web服务器.
+

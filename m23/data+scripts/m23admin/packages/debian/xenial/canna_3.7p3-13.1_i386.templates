@@ -1,0 +1,253 @@
+
+Template: canna/run_cannaserver
+Type: boolean
+Default: true
+Description: Should the Canna server run automatically?
+ This package contains the Canna server and server-related
+ utilities. If you are only interested in these utilities,
+ you can disable the Canna server now.
+Description-cs.UTF-8: Má se Canna server spouštět automaticky?
+ Tento balík obsahuje Canna server a nástroje s ním spojené. Pokud vás zajímají pouze nástroje, můžete nyní server zakázat.
+Description-da.UTF-8: Skal Cannaserveren køre automatisk?
+ Denne pakke indeholder Cannaserveren og serverforbundne værktøjer. Hvis du kun er interesseret i disse værktøjer, kan du deaktivere Cannaserveren nu.
+Description-de.UTF-8: Canna-Server automatisch starten?
+ Dieses Paket enthält den Canna-Server und Server-Werkzeuge. Wenn Sie nur an diesen Werkzeugen interessiert sind, können Sie den Canna-Server jetzt deaktivieren.
+Description-es.UTF-8: ¿Se debería ejecutar el servidor de Canna automáticamente?
+ Este paquete contiene el servidor de Canna y algunas herramientas relacionadas con el servidor. Si sólo está interesado en estas herramientas, puede desactivar el servidor de Canna.
+Description-eu.UTF-8: Canna zerbitzaria automatikoki exekutatu behar da?
+ Pakete hau Canna zerbitzariak eta zerbitzariaren utilitate osagarriek osatzen dute. Utilitateetan soilik interesaturik bazaude, Canna zerbitzaria desgaitu dezakezu orain.
+Description-fi.UTF-8: Tulisiko Canna-palvelin käynnistää automaattisesti?
+ Tämä paketti sisältää Canna-palvelimen ja siihen liittyviä työkaluja. Jos haluat käyttää vain kyseisiä työkaluja, voit poistaa Canna-palvelimen käytöstä tässä.
+Description-fr.UTF-8: Faut-il lancer le serveur Canna automatiquement ?
+ Ce paquet inclut le serveur Canna et les utilitaires qui l'accompagnent. Si seuls ceux-ci vous intéressent, vous pouvez désactiver le serveur ici.
+Description-gl.UTF-8: Debe executarse automaticamente o servidor Canna ?
+ Este paquete contén o servidor Canna e utilidades relacionadas co servidor. Se só está interesado nesas utilidades, agora pode desactivar o servidor Canna.
+Description-it.UTF-8: Eseguire automaticamente il server Canna?
+ Questo pacchetto contiene il server Canna e le relative utilità. Se si è interessati solo alle utilità è possibile disattivare ora il server Canna.
+Description-ja.UTF-8: 自動的にかんなサーバを実行しますか?
+ このパッケージはかんなサーバとサーバに関係したユーティリティを含んでいます。もし、ユーティリティにのみ興味があるのであれば、かんなサーバが起動するのをここで無効にすることができます。
+Description-nl.UTF-8: De Canna-server automatisch uitvoeren?
+ Dit pakket bevat de Canna-server en servergerelateerde hulpprogramma's. Als u enkel geïnteresseerd bent in deze hulpprogramma's, dan kunt u nu de Canna-server uitschakelen.
+Description-pt.UTF-8: Deverá o servidor Canna correr automaticamente?
+ Este pacote contém o servidor Canna e utilitários relacionados. Se está só interessado nos utilitários, pode desactivar o servidor Canna agora.
+Description-ru.UTF-8: Запускать сервер Canna автоматически?
+ Данный пакет содержит сервер Canna и серверные утилиты. Если вам требуются только утилиты, то вы можете сейчас отключить сервер Canna.
+Description-sv.UTF-8: Ska Canna-servern starta automatiskt?
+ Detta paket innehåller Canna-servern och server-relaterade verktyg. Om du bara är intresserad av dessa verktyg kan du stänga av Canna-servern här.
+Description-vi.UTF-8: Trình phục vụ Canna nên tự động chạy ?
+ Gói này chứa trình phục vụ Canna, và một số tiện ích liên quan đến trình phục vụ đó. Chỉ muốn sử dụng những tiện ích này thì bạn có thể tắt trình phục vụ Canna ngay bây giờ.
+
+
+Template: canna/run_with_inet
+Type: boolean
+Default: false
+Description: Should the Canna server run in network mode?
+ By default the Canna server will run without support for network
+ connections, and will only accept connections on UNIX domain sockets,
+ from clients running on the same host.
+ .
+ If you choose this option, network support will be activated, and the
+ Canna server will accept connections on TCP sockets from clients that
+ may be on remote hosts. Some clients (such as egg and yc-el) require
+ this mode even if they run on the local host.
+Description-cs.UTF-8: Má se Canna server spouštět v síťovém režimu?
+ Ve výchozím nastavení se Canna server spouští bez podpory síťových spojení a přijímá pouze spojení na unixových socketech, tj. pouze od klientů na tomto počítači.
+ .
+ Zvolíte-li tuto možnost, aktivuje se síťová část a Canna server bude moci přijímat spojení přes TCP sockety od klientů na jiných počítačích. Někteří klienti jako „egg“ a „ys-el“ vyžadují tento režim i v případech, kdy běží na stejném počítači jako Canna server.
+Description-da.UTF-8: Skal Cannaserveren køre i netværkstilstand?
+ Som standard vil Cannaserveren køre uden understøttelse af netværksforbindelser, og vil kun acceptere forbindelser på UNIX-domænesokler, fra klienter som kører på den samme vært.
+ .
+ Hvis du vælger denne indstilling, vil netværksunderstøttelse blive aktiveret, og Cannaserveren vil acceptere forbindelser på TCP-sokler fra klienter, som er på eksterne værter. Nogle klienter (såsom egg og yc-el) kræver denne tilstand, selvom de kører på den lokale vært.
+Description-de.UTF-8: Canna-Server im Netzwerkmodus betreiben? 
+ Normalerweise wird der Canna-Server ohne Unterstützung für Netzwerkverbindungen betrieben und nimmt Verbindungen nur über UNIX-Domain-Sockets von Clients an, die auf dem selben Rechner laufen.
+ .
+ Wenn Sie hier zustimmen, wird die Netzwerkunterstützung eingeschaltet und der Canna-Server nimmt Verbindungen über TCP-Sockets auch von Clients an, die auf entfernten Rechnern laufen. Einige Clients (wie Egg und Yc-el) benötigen diesen Modus, auch wenn sie auf dem selben Rechner laufen.
+Description-es.UTF-8: ¿Se debería ejecutar el servidor de Canna en modo de red?
+ De forma predeterminada, el servidor de Canna se ejecutará sin soporte para las conexiones de red, y sólo aceptará conexiones de «sockets» del dominio de UNIX, de clientes que se ejecuten en la misma máquina.
+ .
+ Si escoge esta opción, se activará el soporte de red, y el servidor de Canna aceptará las conexiones en «sockets» TCP de clientes que podrán estar en máquinas remotas. Algunos clientes (como egg e yc-el) necesitan este modo incluso si se están ejecutando en la máquina local.
+Description-eu.UTF-8: Canna zerbitzaria sareko moduan exekutatu?
+ Lehenetsi gisa Canna zerbitzariak ez du sareko konexiorik onartzen, eta ostalari berean exekutatzen diren bezeroen  UNIX domeinuko socketen konexioak soilik onartzen ditu.
+ .
+ Aukera hau hautatzen baduzu, sareko euskarria aktibatuko da, eta Canna zerbitzariak TCP socket-eko konexioak onartuko ditu urruneko ostalarietako bezeroetatik. Bezero batzuk ('egg' eta 'yc-el' bezalakoak) modu hau eskatzen dute nahiz eta haiek lokaleko ostalarian exekutatzen egon.
+Description-fi.UTF-8: Tulisiko Canna-palvelinta ajaa verkkotilassa?
+ Canna-palvelin ei oletuksena tue verkkoyhteyksiä vaan hyväksyy vain samalta koneelta UNIX-pistokkeiden kautta tulevat yhteydet.
+ .
+ Jos valitset tämän vaihtoehdon, verkkotuki otetaan käyttöön ja Canna-palvelin hyväksyy myös TCP-yhteydet asiakkailta, jotka saattavat olla toisilla koneilla. Jotkin asiakkaat (kuten egg ja yc-el) vaativat tämän tilan, vaikka niitä ajettaisiin samalla koneella.
+Description-fr.UTF-8: Faut-il démarrer le serveur Canna en mode réseau ?
+ Par défaut, le serveur Canna sera exécuté sans gestion des connexions réseau et n'acceptera de connexion que sur des « sockets » de domaine Unix. Il ne sera alors utilisable que par des clients exécutés sur la même machine.
+ .
+ Si vous choisissez cette option, la gestion des connexions réseau sera activée et le serveur Canna acceptera des connexions TCP depuis des clients éventuellement utilisés sur des hôtes distants. Certains clients, comme egg et yc-el, ont besoin de ce mode même pour fonctionner en local.
+Description-gl.UTF-8: Debe executarse o servidor Canna no modo en rede?
+ Por omisión, o servidor Canna executarase sen soporte para conexións en rede, e só aceptará conexións en sockets UNIX do dominio, de clientes que se estean a executar na mesma máquina.
+ .
+ Se escolle esta opción activarase o soporte de rede e o servidor Canna aceptará conexións en sockets TCP de clientes que poden estar en máquinas remotas. Algúns clientes (como egg e yc-el) precisan deste modo aínda que se executen na mesma máquina.
+Description-it.UTF-8: Eseguire il server Canna in modalità di rete?
+ In modo predefinito il server Canna viene eseguito senza il supporto per le connessioni di rete e accetterà connessioni sui socket di dominio UNIX da client che risiedono nel medesimo host.
+ .
+ Se si sceglie questa opzione il supporto di rete verrà abilitato e il server Canna accetterà connessioni sui socket TCP da client che possono risiedere in host remoti. Alcuni client, come per esempio egg e yc-el, richiedono questa modalità anche se vengono eseguiti sull'host locale.
+Description-ja.UTF-8: かんなサーバをネットワークモードで動作させるようにしますか?
+ デフォルトではかんなサーバはネットワーク接続のサポートを無しで動作し、同じホスト上で動作しているクライアントからの UNIX ドメイン接続のみを受け付けます。
+ .
+ この選択肢を選んだ場合、ネットワークサポートが有効になり、かんなサーバはリモートにあるであろうクライアントからの TCP ソケット接続を受け入れるようになります。(egg や yc-el のような) いくつかのクライアントは同じホスト上で動作していてもこのモードを必要とします。
+Description-nl.UTF-8: De Canna-server in networkmodus uitvoeren?
+ Standaard wordt de Canna-server uitgevoerd zonder ondersteuning voor netwerkverbindingen en zal alleen verbindingen accepteren op UNX-domeinsockets van clients die op dezelfde computer worden uitgevoerd.
+ .
+ Als u voor deze optie kiest zal de netwerkondersteuning worden ingeschakeld en zal de Canna-server verbindingen accepteren op TCP-sockets van clients die mogelijk op andere computers worden uitgevoerd. Voor sommige clients (zoals egg en yc-el) is deze modus nodig, ook al worden ze op de lokale computer uitgevoerd.
+Description-pt.UTF-8: Deverá o servidor Canna correr em modo de rede?
+ Por predefinição, o servidor Canna correrá sem suporte para ligações de rede, e irá somente aceitar ligações de 'sockets' de domínio UNIX, a partir de clientes que corram na mesma máquina.
+ .
+ Se escolher esta opção, o suporte de rede será activado, e o servidor Cannairá aceitar ligações nas 'sockets' TCP a partir de clientes que possam  estar em máquinas remotas. Alguns clientes (tais como egg e yc-el) necessitam deste modo mesmo que corram na máquina local.
+Description-ru.UTF-8: Запускать сервер Canna в сетевом режиме?
+ По умолчанию сервер Canna будет запущен без поддержки сетевых соединений и будет позволять соединения только через доменные сокеты UNIX от клиентов работающих на этом же хосте.
+ .
+ Если вы ответите утвердительно, будет включена поддержка сети и сервер Canna будет позволять соединения через TCP сокеты от клиентов, которые могут быть на удалённых хостах. Для некоторых клиентов (таких как egg и yc-el) требуется этот режим даже при работе на локальном хосте.
+Description-sv.UTF-8: Ska Canna-servern köras i nätverksläge?
+ Standardinställningen är att Canna-servern körs utan stöd för nätverksanslutningar och kommer bara att acceptera anslutningar via UNIX-domänsockets från klienter som körs på samma värd.
+ .
+ Om du väljer detta alternativ kommer nätverksstödet att aktiveras och Canna-servern kan du ta emot anslutningar på TCP-sockets från klienter som kan finnas på fjärrvärdar. Vissa klienter (som ex. egg och yc-el) kräver detta läge även om de körs på samma värd.
+Description-vi.UTF-8: Trình phục vụ Canna nên chạy trong chế độ mạng ?
+ Mặc định là trình phục vụ Canna chạy mà không hỗ trợ kết nối mạng, và chỉ chấp nhận kết nối trên ổ cắm miền UNIX, từ ứng dụng khách chạy trên cùng một máy.
+ .
+ Bật tùy chọn này thì kích hoạt hỗ trợ chạy mạng, và trình phục vụ Canna chấp nhận kết nối trên ổ cắm TCP từ ứng dụng khách có thể nằm trên máy ở xa. Một số ứng dụng khách nào đó (v.d. egg và yc-el) cũng yêu cầu chế độ này dù khi chạy trên máy cục bộ.
+
+
+Template: canna/manage_allow_hosts_with_debconf
+Type: boolean
+Default: true
+Description: Manage /etc/hosts.canna automatically?
+ The /etc/hosts.canna file lists hosts allowed to connect to the
+ Canna server.
+ .
+ You should not accept this option if you prefer managing the
+ file's contents manually.
+Description-cs.UTF-8: Spravovat /etc/hosts.canna automaticky?
+ Soubor /etc/hosts.canna obsahuje seznam počítačů, které se mohou připojit k tomuto Canna serveru.
+ .
+ Přejete-li si spravovat obsah souboru ručně, měli byste tuto možnost odmítnout.
+Description-da.UTF-8: Håndtere /etc/hosts.canna automatisk?
+ Filen /etc/hosts.canna viser værter, som har lov til at forbinde til Cannaserveren.
+ .
+ Du skal ikke acceptere denne indstilling, hvis du foretrækker at håndtere filens indhold manuelt.
+Description-de.UTF-8: Die Datei /etc/hosts.canna automatisch verwalten?
+ In der Datei /etc/hosts.canna werden Rechner aufgelistet, die sich mit dem Canna-Server verbinden dürfen.
+ .
+ Lehnen Sie hier ab, wenn Sie den Inhalt der Datei selbst bestimmen wollen.
+Description-es.UTF-8: ¿Desea gestionar «/etc/hosts.canna» automáticamente?
+ El archivo «/etc/hosts.canna» contiene las máquinas que pueden conectar con el servidor de Canna.
+ .
+ No debería aceptar esta opción si prefiere gestionar manualmente los contenidos de los archivos.
+Description-eu.UTF-8: Kudeatu /etc/hosts.canna automatikoki?
+ Zerbizari honetara konekta daitezkeen ostalariak zerrendatzen ditu /etc/hosts.canna fitxategiak.
+ .
+ Ez zenuke aukera hau hautatu behar fitxategiaren edukia eskuz kudeatzea nahi baduzu.
+Description-fi.UTF-8: Hallinnoidaanko tiedostoa /etc/hosts.canna automaattisesti?
+ Tiedosto /etc/hosts.canna sisältää luettelon koneista, joilta Canna-palvelimeen saa ottaa yhteyden.
+ .
+ Älä valitse tätä vaihtoehtoa, jos haluat hallinnoida tiedoston sisältöä käsin.
+Description-fr.UTF-8: Faut-il gérer /etc/hosts.canna avec automatiquement ?
+ Le fichier /etc/hosts.canna gère les autorisations de connexion des hôtes distants au serveur Canna.
+ .
+ Vous ne devriez pas choisir cette option si vous préférez gérer vous-même le contenu de ce fichier.
+Description-gl.UTF-8: Desexa xestionar automaticamente /etc/hosts.canna?
+ O ficheiro /etc/hosts.canna contén a listaxe das máquinas que se poden conectar ao servidor Canna.
+ .
+ Non debería aceptar esta opción se prefire xestionar manualmente o contido do ficheiro.
+Description-it.UTF-8: Gestire automaticamente «/etc/hosts.canna»?
+ Il file «/etc/hosts.canna» contiene un elenco degli host che possono connettersi al server Canna.
+ .
+ Non si dovrebbe accettare questa opzione se si preferisce gestire manualmente il contenuto del file.
+Description-ja.UTF-8: /etc/hosts.canna を自動的に管理しますか?
+ /etc/hosts.canna ファイルはどのホストがこのかんなサーバに接続できるかを制御するリストです。
+ .
+ ファイルの内容を手動で扱いたいた場合はこの選択肢を選ばないでください。
+Description-nl.UTF-8: /etc/hosts.canna automatisch beheren?
+ Het bestand /etc/hosts.canna bepaalt welke computers verbinding mogen maken met de Canna-server.
+ .
+ Kies niet voor deze optie als u de inhoud van het bestand handmatig wilt beheren.
+Description-pt.UTF-8: Gerir o /etc/hosts.canna automaticamente?
+ O ficheiro /etc/hosts.canna enumera as máquinas com permissão para se ligarem ao servidor Canna.
+ .
+ Não deve aceitar esta opção se preferir gerir os conteúdos do ficheiromanualmente.
+Description-ru.UTF-8: Управлять файлом /etc/hosts.canna автоматически?
+ В файле /etc/hosts.canna указываются хосты, которые могут подключаться к серверу Canna.
+ .
+ Вы не должны разрешать этот параметр, если предпочитаете редактировать файл вручную.
+Description-sv.UTF-8: Hantera /etc/hosts.canna med automatiskt?
+ Filen /etc/hosts.canna kontrollerar vilka värdar som kan ansluta till denna Canna-server.
+ .
+ Du ska inte välja detta alternativ om du föredrar att hantera filens innehåll manuellt.
+Description-vi.UTF-8: Tự động quản lý « /etc/hosts.canna » ?
+ Tập tin « /etc/hosts.canna » liệt kê những máy được phép kết nối đến trình phục vụ Canna.
+ .
+ Không nên bật tuỳ chọn này nếu bạn thích tự quản lý nội dung của tập tin đó.
+
+
+Template: canna/allow_hosts
+Type: string
+Default: unix localhost
+Description: Hosts allowed to connect to this Canna server:
+ Please enter the names of the hosts allowed to connect to this Canna server,
+ separated by spaces.
+ .
+ You can use "unix" to allow access via UNIX domain sockets.
+Description-cs.UTF-8: Počítače oprávněné přistupovat k tomuto Canna serveru:
+ Zadejte mezerami oddělený seznam počítačů oprávněných přistupovat k tomuto Canna serveru.
+ .
+ Pro povolení přístupu přes unixové sockety můžete použít „unix“.
+Description-da.UTF-8: Værter med tilladelse til at forbinde til denne Cannaserver:
+ Indtast venligst navnene på værterne som har lov til at forbinde til denne Cannaserver, adskilt af mellemrum.
+ .
+ Du kan bruge »unix« til at tillade adgang via UNIX-domænesokler.
+Description-de.UTF-8: Rechner, die sich mit diesem Canna-Server verbinden dürfen:
+ Bitte geben Sie durch Leerzeichen getrennt die Namen der Rechner ein, die sich mit diesem Canna-Server verbinden dürfen.
+ .
+ Benutzen Sie »unix«, um den Zugriff über UNIX-Domain-Sockets zu gestatten.
+Description-es.UTF-8: Máquinas que pueden conectarse con este servidor de Canna:
+ Introduzca los nombres de las máquinas a las que se les permite conectar con este servidor de Canna, separándolas con espacios.
+ .
+ Puede utilizar «unix» para permitir el acceso mediante los «sockets» de dominio de UNIX.
+Description-eu.UTF-8: Baimendutako ostalariak Canna zerbitzari honekin konektatzeko:
+ Idatzi Canna zerbitzariarekin konektatzeko baimena duten ostalarien izenak, zuriunez bereiztuz.
+ .
+ "unix" erabil dezakezu UNIX domeinuko socket-en bidez sarbidea baimentzeko.
+Description-fi.UTF-8: Koneet, joilta tähän Canna-palvelimeen saa ottaa yhteyden:
+ Anna välilyönnein eroteltuina kaikkien niiden koneiden nimet, joilta Canna-palvelimeen saa ottaa yhteyden.
+ .
+ Valinta ”unix” sallii yhteydet UNIXin pistokkeiden kautta.
+Description-fr.UTF-8: Hôtes autorisés à se connecter à ce serveur :
+ Veuillez indiquer les noms d'hôtes autorisés à se connecter à ce serveur Canna, séparés par des espaces.
+ .
+ Vous pouvez utiliser « unix » pour autoriser l'accès par les « sockets » de domaine UNIX.
+Description-gl.UTF-8: Máquinas ás que se lles permite conectar con este servidor Canna:
+ Introduza os nomes das máquinas ás que se permite conectar a este servidor Canna, separados por espazos.
+ .
+ Empregue «unix» para permitir o acceso mediante sockets de dominio UNIX.
+Description-it.UTF-8: Host che possono connettersi a questo server Canna:
+ Inserire i nomi, separati da spazi, degli host che possono connettersi a questo server Canna.
+ .
+ È possibile usare «unix» per permettere l'accesso tramite socket di dominio UNIX.
+Description-ja.UTF-8: このかんなサーバに接続できるホスト名:
+ このかんなサーバに接続を許可するホストの名前をスペースで区切って入力してください。
+ .
+ 「unix」を選んで UNIX ドメインソケット経由アクセスを使うことも可能です。
+Description-nl.UTF-8: Computers die verbinding mogen maken met deze Canna-server:
+ Geef de namen op van de compters die verbinding mogen maken met deze Canna-server, scheid de namen met spaties.
+ .
+ U kunt "unix" gebruiken om toegang via UNIX-domeinsockets toe te staan.
+Description-pt.UTF-8: Máquinas com permissão para se ligarem a este servidor Canna:
+ Por favor introduza os nomes das máquinas com permissão para se ligarem a este servidor Canna, separados por espaços.
+ .
+ Pode usar "unix" para permitir o acesso via 'sockets' de domínio UNIX.
+Description-ru.UTF-8: Хосты которым разрешено подключаться к этому серверу Canna:
+ Введите через пробел имена хостов, с которых разрешено подключаться к серверу Canna.
+ .
+ Вы можете использовать "unix" для разрешения доступа через доменные сокеты UNIX.
+Description-sv.UTF-8: Ange namnen på de värdar som tillåts ansluta till denna Canna-server:
+ Ange namnen på de värdar som tillåts ansluta till denna Canna-server, avskilj med mellanslag.
+ .
+ Du kan använda "unix" för att tillåta tillgång via UNIX-domänsockets.
+Description-vi.UTF-8: Các máy được phép kết nối đến trình phục vụ Canna này:
+ Hãy gõ danh sách các máy được phép kết nối đến trình phục vụ Canna này, định giới bằng dấu cách.
+ .
+ Cũng có thể sử dụng « unix » để cho phép truy cập thông qua ổ cắm miền UNIX.

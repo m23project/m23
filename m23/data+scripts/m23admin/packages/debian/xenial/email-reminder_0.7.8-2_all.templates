@@ -1,0 +1,328 @@
+Template: email-reminder/send_reminders
+Type: boolean
+Default: true
+Description: Run daily email-reminder cronjob?
+ By default, email-reminder checks once a day for reminders that need
+ to be sent out.
+Description-cs.UTF-8: Spouštět denní cronovou úlohu email-reminderu?
+ email-reminder standardně jednou denně zkontroluje, zda existují upomínky, které je třeba rozeslat.
+Description-da.UTF-8: Kør dagligt cronjob for email-reminder?
+ Som standard kontrollerer email-reminder en gang om dagen for huskesedler som skal udsendes.
+Description-de.UTF-8: Täglichen Email-reminder-Cronjob ausführen?
+ Standardmäßig überprüft Email-reminder einmal täglich auf Erinnerungen, die versandt werden müssen.
+Description-es.UTF-8: ¿Desea ejecutar email-reminder como una tarea diaria de cron?
+ De forma predeterminada, email-reminder busca una vez al día recordatorios que se tienen que enviar.
+Description-eu.UTF-8: Exekutatu egunero email-reminder cron-lana?
+ Lehenespen gisa, 'email-reminder'ek egunean behin arakatzen ditu bidali behar diren gogorarazleak.
+Description-fi.UTF-8: Ajetaanko päivittäinen email-reminderin cron-työ?
+ Oletuksena email-reminder tarkistaa päivittäin löytyykö muistutuksia, jotka tulisi lähettää.
+Description-fr.UTF-8: Faut-il exécuter la tâche quotidienne de cron pour email-reminder ?
+ Par défaut, email-reminder vérifie chaque jour s'il est nécessaire d'envoyer des rappels par courriel.
+Description-gl.UTF-8: Desexa executar a tarefa diaria de cron de email-reminder?
+ Por omisión, email-reminder fai unha comprobación diaria dos lembretes que hai que enviar.
+Description-id.UTF-8: Jalankan pengingat email setiap hari pada pekerjaan cron?
+ Secara default, pengingat-email akan memeriksa sekali dalam sehari untuk pengriman
+Description-it.UTF-8: Eseguire giornalmente le attività di cron per email-reminder?
+ In modo predefinito email-reminder controlla una volta al giorno i promemoria che devono essere inviati.
+Description-ja.UTF-8: cronjob で毎日 email-reminder を実行しますか?
+ デフォルトでは、email-reminder は送る必要のある通知を 1 日に 1 度確認します。
+Description-ka.UTF-8: გსურთ ყოველდღიური ელფოსტის შეხსენების cronjob-ის გამოძახევა?
+ სტანდარტულად, ელფოსტის შეხსენების პროგრამა დღეში ერთხელ ამოწმებს გასაგზავნ შეხსენებებს.
+Description-nl.UTF-8: Dagelijks een crontaak voor email-reminder uitvoeren?
+ Standaard controleert email-reminder eens per dag of er herinneringen verzonden moeten worden.
+Description-pt.UTF-8: Correr diariamente a rotina agendada (cron) do email-reminder?
+ Por prédefinição, o email-reminder verifica uma vez por dia que 'lembretes' precisam ser enviados.
+Description-ru.UTF-8: Запускать email-reminder как ежедневное задание cron?
+ По умолчанию, email-reminder один раз в день проверяет какие напоминания надо послать.
+Description-sv.UTF-8: VIll du köra cronjobbet för email-reminder dagligen?
+ Standardläget är att email-reminder söker efter påminnelse som ska skickas ut en gång om dagen.
+Description-vi.UTF-8: Chạy công việc định kỳ email-reminder hàng ngày không?
+ Mặc định là phần mềm email-reminder kiểm tra một lần mỗi ngày có lời nhắc nhở cần gửi đi.
+Description-zh_CN.UTF-8: 执行email-reminder每日的cron任务
+ email-reminder默认每天检查一次需要发送的提醒
+
+Template: email-reminder/smtp_server
+Type: string
+Default: localhost
+Description: SMTP server:
+ Specify the address of the outgoing mail server that email-reminder
+ should use to send its emails.
+Description-cs.UTF-8: SMTP server:
+ Zadejte adresu poštovního serveru, který má email-reminder používat pro odesílání pošty.
+Description-da.UTF-8: SMTP-server:
+ Angiv adressen for udgående postserver som email-reminder skal bruge for at sende sin post.
+Description-de.UTF-8: SMTP-Server:
+ Geben Sie die Adresse des ausgehenden E-Mail-Servers an, den Email-reminder für den Versand seiner E-Mails verwenden soll.
+Description-es.UTF-8: Servidor SMTP:
+ Especifique la dirección del servidor de correo electrónico saliente que email-reminder debería utilizar para enviar los correos electrónicos.
+Description-eu.UTF-8: SMTP zerbitzaria:
+ Zehaztu irteerako posta-zerbitzariaren helbidea 'email-reminder'ek bere posta elektronikoak bidaltzean erabiltzeko.
+Description-fi.UTF-8: SMTP-palvelin:
+ Anna lähtevän sähköpostin palvelin, jota email-reminderin tulisi käyttää sähköpostiensa lähettämiseen.
+Description-fr.UTF-8: Serveur SMTP :
+ Veuillez indiquer l'adresse du serveur qu'email-reminder devrait utiliser pour l'envoi des courriels.
+Description-gl.UTF-8: Servidor SMTP:
+ Indique o enderezo do servidor de correo saínte que email-reminder debe empregar para enviar os correos electrónicos.
+Description-id.UTF-8: Server SMTP:
+ Masukkan alamat keluaran server surat yang digunakan pengingat-email untuk mengirimkan email
+Description-it.UTF-8: Server SMTP:
+ Specificare l'indirizzo del server per la posta in uscita che email-reminder utilizzerà per l'invio dei suoi promemoria.
+Description-ja.UTF-8: SMTP サーバ:
+ email-reminder がメール送信に使うべきメールサーバのアドレスを指定してください。
+Description-ka.UTF-8: SMTP სერვერი:
+ მიუთითეთ გამავალი სერვერის მისამართი, რომელსაც ელფოსტის შეხსენების პროგრამა გამოიყენებს.
+Description-nl.UTF-8: SMTP-server:
+ Geef het adres op van de server voor uitgaande mail die door email-reminder gebruikt moet worden om zijn berichten te versturen.
+Description-pt.UTF-8: Servidor SMTP:
+ Especifique o endereço do servidor de envio de mail que o email-reminder deverá usar para enviar os seus emails.
+Description-ru.UTF-8: SMTP-сервер:
+ Введите адрес сервера исходящей почты, который должен использоваться в email-reminder для отправки писем.
+Description-sv.UTF-8: SMTP-server:
+ Specificera adressen för utgående e-post som email-reminder ska använda för att skicka e-post.
+Description-vi.UTF-8: Máy phục vụ SMTP:
+ Hãy ghi rõ địa chỉ của máy phục vụ thư tín gửi đi mà email-reminder nên dùng để gửi thư.
+Description-zh_CN.UTF-8: SMTP服务器:
+ 指定email-reminder用以发送邮件的邮件服务器的地址
+
+Template: email-reminder/smtp_username
+Type: string
+Default:
+Description: SMTP username:
+ If the outgoing mail server requires a username, enter it here.
+ .
+ Leave this blank if the SMTP server doesn't require authentication.
+Description-cs.UTF-8: SMTP uživatel:
+ Pokud server pro odchozí poštu vyžaduje uživatelské jméno, zadejte se zde.
+ .
+ Jestliže SMTP server nevyžaduje autentizaci, ponechte prázdné.
+Description-da.UTF-8: SMTP-brugernavn:
+ Hvis den udgående postserver kræver et brugernavn, så indtast det her.
+ .
+ Efterlad denne blank hvis SMTP-serveren ikke kræver godkendelse.
+Description-de.UTF-8: SMTP-Benutzername:
+ Falls der ausgehende E-Mail-Server einen Benutzernamen benötigt, geben Sie diesen hier ein.
+ .
+ Lassen Sie dies leer, falls der SMTP-Server keine Authentifizierung benötigt.
+Description-es.UTF-8: Nombre de usuario de SMTP:
+ Si el servidor de correo electrónico saliente requiere un nombre de usuario, introdúzcalo aquí.
+ .
+ Si el servidor SMTP no requiere autenticación deje este campo en blanco.
+Description-eu.UTF-8: SMTP erabiltzaile-izena:
+ Irteerako posta-zerbitzariak erabiltzaile-izena behar izanez gero, idatzi hemen.
+ .
+ Hutsik utzi ezazu SMTP zerbitzariak autentifikaziorik eskatzen ez badu.
+Description-fi.UTF-8: SMTP-käyttäjätunnus:
+ Jos lähtevän postin palvelin vaatii käyttäjätunnuksen, anna se tässä.
+ .
+ Jätä kenttä tyhjäksi, jos SMTP-palvelin ei vaadi tunnistautumista.
+Description-fr.UTF-8: Identifiant SMTP :
+ Si le serveur SMTP a besoin d'un identifiant, veuillez l'indiquer ici.
+ .
+ Ce champ peut être laissé vide si le serveur SMTP n'impose pas d'authentification.
+Description-gl.UTF-8: Usuario de SMTP:
+ Se o servidor de correo saínte precisa dun nome de usuario, introdúzao aquí.
+ .
+ Déixeo baleiro se o servidor SMTP non precisa de autenticación.
+Description-id.UTF-8: Nama pengguna SMTP:
+ Jika server keluaran server surat membutuhkan nama pengguna, masukkan disini.
+ .
+ Biarkan kosong bila server SMTP tidak membutuhkan otentifikasi.
+Description-it.UTF-8: Nome utente SMTP:
+ Se il server per la posta in uscita richiede un nome utente, inserirlo qui.
+ .
+ Lasciare vuoto se il server SMTP non richiede l'autenticazione.
+Description-ja.UTF-8: SMTP ユーザ名:
+ メール送信にユーザ名が必要な場合はここで入力してください。
+ .
+ SMTP サーバでの認証が不要な場合はこれを空白にしてください。
+Description-ka.UTF-8: SMTP მომხმარებლის სახელი:
+ თუ ფოსტის გამავავალ სერვერს მომხმარებლის სახელი ჭირდება, მიუთითეთ აქ.
+ .
+ დატოვეთ ცარიელი, თუ SMTP სერვერს ავთენტიფიკაცია არ ჭირდება.
+Description-nl.UTF-8: SMTP-gebruikersnaam:
+ Indien de server voor uitgaande mail een gebruikersnaam nodig heeft, geeft u die hier in.
+ .
+ Vul hier niets in, indien de SMTP-server geen authenticatie nodig heeft.
+Description-pt.UTF-8: Nome de utilizador SMTP:
+ Se o servidor de envio de mail necessitar de um nome de utilizador, indique-o aqui.
+ .
+ Deixe este campo vazio se o servidor SMTP não necessitar de autenticação.
+Description-ru.UTF-8: Имя пользователя SMTP:
+ Если для отправки почты сервер исходящей почты требует ввода имени пользователя, то введите его здесь.
+ .
+ Оставьте поле пустым, если SMTP-сервер не требует аутентификации.
+Description-sv.UTF-8: Användarnamn för SMTP:
+ Om servern för utgående e-post kräver ett användarnamn så anger du det här:
+ .
+ Lämna detta fält tom om den SMTP-servern inte kräver inloggning.
+Description-vi.UTF-8: Tên người dùng SMTP:
+ Máy phục vụ thư tín gửi đi có yêu cầu tên người dùng thì nhập nó vào đây.
+ .
+ Không thì bỏ trống trường này.
+Description-zh_CN.UTF-8: SMTP用户名:
+ 如果发送邮件服务器需要用户名，在这里输入。
+ .
+ 如果SMTP服务器不需要认证，留空此域。
+
+Template: email-reminder/smtp_password
+Type: password
+Default:
+Description: SMTP password:
+ If the outgoing mail server requires a password, enter it here.
+ .
+ Leave this blank if the SMTP server doesn't require authentication.
+Description-cs.UTF-8: SMTP heslo:
+ Pokud server pro odchozí poštu vyžaduje heslo, zadejte je zde.
+ .
+ Jestliže SMTP server nevyžaduje autentizaci, ponechte prázdné.
+Description-da.UTF-8: SMTP-adgangskode:
+ Hvis den udgående postserver kræver en adgangskode, så indtast den her.
+ .
+ Efterlad denne blank hvis SMTP-serveren ikke kræver godkendelse.
+Description-de.UTF-8: SMTP-Passwort:
+ Falls der ausgehende E-Mal-Server ein Passwort benötigt, geben Sie dieses hier ein.
+ .
+ Lassen Sie dies leer, falls der SMTP-Server keine Authentifizierung benötigt.
+Description-es.UTF-8: Contraseña de SMTP:
+ Si el servidor de correo electrónico saliente requiere una contraseña, introdúzcala aquí.
+ .
+ Si el servidor SMTP no requiere autenticación deje este campo en blanco.
+Description-eu.UTF-8: SMTP pasahitza:
+ Irteerako posta-zerbitzariak pasahitza behar badu, idatzi berau hemen.
+ .
+ Hutsik utzi ezazu SMTP zerbitzariak autentifikaziorik eskatzen ez badu.
+Description-fi.UTF-8: SMTP-salasana:
+ Jos lähtevän postin palvelin vaatii salasanan, anna se tässä.
+ .
+ Jätä kenttä tyhjäksi, jos SMTP-palvelin ei vaadi tunnistautumista.
+Description-fr.UTF-8: Mot de passe SMTP :
+ Si le serveur SMTP a besoin d'un mot de passe, veuillez l'indiquer ici.
+ .
+ Ce champ peut être laissé vide si le serveur SMTP n'impose pas d'authentification.
+Description-gl.UTF-8: Contrasinal de SMTP:
+ Se o servidor de correo saínte precisa dun contrasinal, introdúzao aquí.
+ .
+ Déixeo baleiro se o servidor SMTP non precisa de autenticación.
+Description-id.UTF-8: Katasandi SMTP:
+ Jika server keluaran server surat membutuhkan kata kunci, masukkan disini.
+ .
+ Biarkan kosong bila server SMTP tidak membutuhkan otentifikasi.
+Description-it.UTF-8: Password SMTP:
+ Se il server per la posta in uscita richiede una password, inserirla qui.
+ .
+ Lasciare vuoto se il server SMTP non richiede l'autenticazione.
+Description-ja.UTF-8: SMTP パスワード:
+ メール送信にパスワードが必要な場合はここで入力してください。
+ .
+ SMTP サーバでの認証が不要な場合はこれを空白にしてください。
+Description-ka.UTF-8: SMTP პაროლი:
+ თუ ფოსტის გამავავალ სერვერს პაროლი ჭირდება, მიუთითეთ აქ.
+ .
+ დატოვეთ ცარიელი, თუ SMTP სერვერს ავთენტიფიკაცია არ ჭირდება.
+Description-nl.UTF-8: SMTP-wachtwoord:
+ Indien de server voor uitgaande mail een wachtwoord nodig heeft, geeft u dat hier in.
+ .
+ Vul hier niets in, indien de SMTP-server geen authenticatie nodig heeft.
+Description-pt.UTF-8: Palavra-passe SMTP:
+ Se o servidor de envio de mail necessitar de palavra-passe, indique-a aqui.
+ .
+ Deixe este campo vazio se o servidor SMTP não necessitar de autenticação.
+Description-ru.UTF-8: Пароль к SMTP:
+ Если для отправки почты сервер исходящей почты требует пароль, то введите его здесь.
+ .
+ Оставьте поле пустым, если SMTP-сервер не требует аутентификации.
+Description-sv.UTF-8: SMTP-lösenord
+ Om den utgående servern för e-post kräver ett lösenord så anger du det här:
+ .
+ Lämna detta fält tom om den SMTP-servern inte kräver inloggning.
+Description-vi.UTF-8: Mật khẩu SMTP:
+ Máy phục vụ thư tín gửi đi có yêu cầu mật khẩu thì nhập nó vào đây.
+ .
+ Không thì bỏ trống trường này.
+Description-zh_CN.UTF-8: SMTP密码:
+ 如果发送服务器需要密码，在这里输入。
+ .
+ 如果SMTP服务器不需要认证，留空此域。
+
+Template: email-reminder/smtp_ssl
+Type: boolean
+Default: false
+Description: Connect to the SMTP server using SSL?
+ If the SMTP server supports SSL and you choose this option, data
+ exchanged with it will be encrypted.
+Description-cs.UTF-8: Připojit se k SMTP serveru pomocí SSL?
+ Pokud SMTP server podporuje SSL, budou při povolení této volby všechna přenášená data šifrována.
+Description-da.UTF-8: Forbind til SMTP-serveren med brug af SSL?
+ Hvis SMTP-serveren understøtter SSL, og du vælger denne indstilling, så vil data udvekslet med den blive krypteret.
+Description-de.UTF-8: Mittels SSL mit dem SMTP-Server verbinden?
+ Falls der SMTP-Server SSL unterstützt und Sie diese Option auswählen, werden die mit dem Server ausgetauschten Daten verschlüsselt.
+Description-es.UTF-8: ¿Desea conectar al servidor SMTP utilizando SSL?
+ Si el servidor SMTP permite utilizar SSL y elije esta opción, la información intercambiada con él estará cifrada.
+Description-eu.UTF-8: Konektatu SMTP zerbitzarira SSL erabiliz?
+ SMTP zerbitzariak SSL onartzen badu, eta zuk aukera hau aukeratzen baduzu, datuak zifratuta trukatuko zerbitzariarekin.
+Description-fi.UTF-8: Käytetäänkö SSL:ää otettaessa yhteyttä SMTP-palvelimeen?
+ Jos SMTP-palvelin tukee SSL:ää ja valitset tämän vaihtoehdon, palvelimen kanssa vaihdetut tiedot salataan.
+Description-fr.UTF-8: Utiliser SSL pour la connexion au serveur SMTP ?
+ Si le serveur SMTP peut utiliser SSL et que vous choisissez cette option, les données échangées avec lui seront chiffrées.
+Description-gl.UTF-8: Desexa conectar co servidor SMTP empregando SSL?
+ Se o servidor SMTP soporta SSL e escolle esta opción, os datos que se comuniquen serán cifrados.
+Description-id.UTF-8: Terhubung ke server smtp dengan SSL?
+ Jika server SMTP mendukung SSL dan anda ingin memilih opsi ini, pertukaran data dengan nya akan di enkripsi
+Description-it.UTF-8: Collegarsi al server SMTP usando SSL?
+ Se il server SMTP supporta SSL e si sceglie questa opzione, i dati scambiati con il server verranno cifrati.
+Description-ja.UTF-8: SSL を使って SMTP サーバに接続しますか?
+ SMTP サーバが SSL に対応していてこれを選択した場合は、データのやりとりが暗号化されます。
+Description-nl.UTF-8: SSL gebruiken om contact maken met de SMTP-server?
+ Indien u voor deze optie kiest en de SMTP-server SSL ondersteunt, zal de gegevensuitwisseling ermee versleuteld gebeuren.
+Description-pt.UTF-8: Ligar ao servidor SMTP  utilizando SSL?
+ Se o servidor SMTP suportar SSL e você escolher esta opção, os dados transferidos serão encriptados.
+Description-ru.UTF-8: Подключаться к SMTP-серверу, используя SSL?
+ Если SMTP-сервер поддерживает SSL и вы ответите утвердительно, то обмен данными будет проводиться в зашифрованном виде.
+Description-sv.UTF-8: Ska anslutningar till SMTP-servern göras med hjälp av SSL?
+ Om SMTP-servern har stöd för SSL och du anger detta alternativ kommer all data att utbytas krypterat.
+Description-vi.UTF-8: Kết nối tới máy phục vụ SMTP dùng SSL ?
+ Bật tùy chọn này thì và máy phục vụ SMTP có phải hỗ trợ tuỳ chọn này thì mọi dữ liệu được trao đổi với nó cũng được mật mã.
+
+Template: email-reminder/mail_from
+Type: string
+Default: root@localhost
+Description: Reminder mails originating address:
+ Reminder emails will appear to come from this address. The default
+ should work unless the SMTP server requires routable domains in
+ source addresses.
+Description-cs.UTF-8: Odchozí adresa upomínacích mailů:
+ Upomínací emaily se budou tvářit, že přichází z této adresy. Pokud SMTP server nevyžaduje ve zdrojových adresách směrovatelné adresy, měla by fungovat výchozí hodnota.
+Description-da.UTF-8: Oprindelsesadresse for huskeseddelpost:
+ Huskeseddelpost vil fremstå som om, den kommer fra denne adresse. Standarden bør virke med mindre SMTP-serveren kræver domæner der kan rutes (routable domains) i kildeadresser.
+Description-de.UTF-8: Absenderadresse der Erinnerungs-E-Mails:
+ Die Erinnerungs-E-Mails werden von dieser Adresse zu kommen scheinen. Die Voreinstellung sollte funktionieren, es sei denn, der SMTP-Server benötigt routebare Domänen in Quell-Adressen.
+Description-es.UTF-8: Dirección del emisor de los correos electrónicos de los recordatorios:
+ Los correos electrónicos de los recordatorios parecerán llegar desde esta dirección. El valor predeterminado debería funcionar a menos que el servidor SMTP requiera dominios enrutables de las direcciones de origen.
+Description-eu.UTF-8: Gogorazle mezuen jatorrizko helbidea:
+ Gogorazle mezuak helbide honetatik bidaliak izan diren antza emango du. Lehenespenak funtzionatu beharko luke SMTP zerbitzariak ez badu jatorriko helbidea bideragarria izatea behartzen.
+Description-fi.UTF-8: Muistutussähköpostien lähettäjäosoite:
+ Muistutusviestit näyttävät tulevan tästä osoitteesta. Oletusarvon tulisi toimia, ellei SMTP-palvelin vaadi lähettäjäosoitteiden verkkonimien olevan reitittyviä.
+Description-fr.UTF-8: Adresse origine des courriels envoyés :
+ Les courriels envoyés par email-reminder sembleront provenir de l'adresse configurée ici. Certains serveurs SMTP imposent que cette adresse soit valable.
+Description-gl.UTF-8: Enderezo de orixe dos lembretes:
+ Os correos electrónicos con lembrete han semellar procedentes deste enderezo. O valor predeterminado debería funcionar a non ser que o servidor SMTP precise de dominios funcionais nos enderezos de orixe.
+Description-id.UTF-8: Ingatkan alamat asli surat:
+ Ingatkan email akan datang melalui alamat ini. Secara defaukt akan bekerja jika server SMTP tidak membutuhkan routing domain di alamat tujuan
+Description-it.UTF-8: Indirizzo del mittente di email-reminder:
+ I promemoria di email-reminder useranno questo indirizzo come mittente. Il valore predefinito dovrebbe funzionare, a meno che il server SMTP richieda dei domini indirizzabili nell'indirizzo del mittente.
+Description-ja.UTF-8: 通知メールの送信元アドレス:
+ 通知メールはこのアドレスから来るようになります。元のアドレスのドメインがルータブルであることを SMTP サーバが要件としていなければデフォルトでいいはずです。
+Description-ka.UTF-8: შეხსენების ელფოსტების გამომგზავნის მისამართი:
+ შეხსენების ელფოსტის გამომგზავნად აქ მითითებული მისამართი გამოჩნდება. როგორც წესი, ნაგულისხმევი პარამეტრი იმუშავებს, თუ SMTP სერვერი გამგზავნის მისამართად დაბრუნებად დომენს არ საჭიროებს.
+Description-nl.UTF-8: Adres van de afzender van de herinneringsberichten:
+ De herinneringsberichten zullen van dit adres afkomstig lijken. Meestal zal wat hier standaard voorgesteld wordt, werken, tenzij het voor de SMTP-server nodig is dat het afzenderadres een routeerbaar domein is.
+Description-pt.UTF-8: Endereço de origem dos mails lembretes (remetente):
+ Os mails lembretes irão aparentar virem deste endereço. A predefinição deverá funcionar a não ser que o servidor SMTP necessite de domínios de encaminhamento nos endereços de remetente.
+Description-ru.UTF-8: Адрес электронной почты, от которого будут отправляться напоминания.
+ Письма-напоминания будут приходить с указанного здесь адреса. Значение по умолчанию должно работать, если SMTP-сервер не требует маршрутизируемых доменов в адресах-источниках.
+Description-sv.UTF-8: Från-adress för påminnelsemeddelandena:
+ Påminnelsemeddelandena kommer att vara avsända från den här adressen. Standardinställningen ska fungera så länge SMTP-severn inte kräver att avsändaradressen är känd.
+Description-vi.UTF-8: Địa chỉ gửi của thư nhắc nhở :
+ Các thư điện tử nhắc nhở sẽ hình như đến từ địa chỉ này. Giá trị mặc định nên hoạt động được nếu máy phục vụ SMTP không yêu cầu địa chỉ nguồn chứa miền tới đó có thể định tuyến.
+Description-zh_CN.UTF-8: 提醒邮件的发送地址:
+ 提醒邮件被显示从这个地址发出。默认设置应该可以工作除非SMTP服务器要求源地址是可路由的域名。

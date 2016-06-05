@@ -52,9 +52,9 @@
 		</td>
 
 		<td align="right">
-<!-- 			<img src="head/tux.png"> -->
-<!-- 				<a href="http://tassiedevil.com.au/" target="_blank"><img src="/gfx/tuz.png"></a> -->
+<!--m23customPatchBegin type=change id=tuxLogo-->
 			<img src="/gfx/sweet-tux.png">
+<!--m23customPatchEnd id=tuxLogo-->
 		</td>
 	</tr>
 </table>

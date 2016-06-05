@@ -1,0 +1,86 @@
+Template: pdsh/setuidroot
+Type: boolean
+Default: false
+Description: Should the pdsh binary be installed setuid root?
+ The pdsh program can be installed setuid root, so that it will run with
+ the permissions of the 'root' user.
+ .
+ This is required for non-root accounts to use the rsh remote-command method 
+ of pdsh.  However, enabling this could be a security risk.
+ .
+ In short, unless you know what you are doing or have a very controlled
+ user base, you should not enable this feature.  If you choose not to enable
+ setuid root, then you can still use pdsh through tools like sudo or with
+ the ssh remote-command module.
+Description-cs.UTF-8: Má se pdsh nainstalovat jako setuid root?
+ Program pdsh může být nainstalován jako setuid root, což znamená, že se bude spouštět s oprávněními uživatele 'root'.
+ .
+ To je potřeba proto, aby mohli běžní uživatelé používat vzdálené spouštění příkazů pomocí rsh. Povolení této možnosti však představuje bezpečnostní riziko.
+ .
+ Zkrátka, pokud nevíte, co děláte, nebo nemáte dostatečně kontrolované uživatele, měli byste odpovědět záporně a používat pdsh pomocí nástrojů typu sudo nebo pomocí vzdáleného spouštění příkazů přes ssh.
+Description-da.UTF-8: Skal den binære fil pdsh installeres setuid root?
+ Programmet pdsh kan installeres setuid root, så at programemt vil køre med rettighederne for brugeren »root«.
+ .
+ Dette er krævet for ikke-root-konti for at bruge metoden rsh remote-command i pdsh. Aktivering af denne kan dog udgøre en sikkerhedsmæssig risiko.
+ .
+ Kort fortalt, så skal du vide hvad du laver eller have en meget kontrolleret brugerskare før du aktiverer denne funktion. Hvis du vælger ikke at aktivere setuid root, så kan du stadig bruge pdsh via værktøjer som sudo eller med modulet ssh remote-command.
+Description-de.UTF-8: Soll das Pdsh-Programm setuid root installiert werden?
+ Das Pdsh-Programm kann setuid root installiert werden, so dass es mit den Rechten des »root«-Benutzers läuft.
+ .
+ Dies wird benötigt, damit nicht-root-Konten die remote-command-Methode der Pdsh verwenden können. Allerdings könnte die Aktivierung ein Sicherheitsrisiko darstellen.
+ .
+ Kurzgefasst, falls Sie nicht genau wissen, was Sie machen oder falls Sie keine sehr kontrollierte Benutzerschaft haben, sollten sie diese Funktionalität nicht aktivieren. Falls Sie sich entscheiden, setuid root nicht zu aktivieren, können Sie Pdsh immer noch über Werkzeuge wie Sudo oder mit dem Ssh-remote-command-Modul verwenden.
+Description-es.UTF-8: ¿Desea instalar el binario pdsh con el bit «setuid» del «root»?
+ El programa pdsh se puede instalar con el bit «setuid» del «root» habilitado, pero entonces se ejecutará con los permisos del usuario «root».
+ .
+ Esto es necesario para que el resto de cuentas además del usuario «root» puedan usar el método de órdenes remotas rsh de pdsh. Sin embargo, habilitar esto podría suponer un riesgo de seguridad.
+ .
+ En resumen, salvo que sepa lo que está haciendo o tenga una base de usuarios muy controlada, no debería habilitar esta característica. Si decide no habilitar el bit «setuid» del «root», seguirá pudiendo utilizar pdsh mediante herramientas como sudo o con el módulo de órdenes remotas ssh.
+Description-fr.UTF-8: Faut-il installer le binaire pdsh « setuid root » ?
+ Le programme pdsh peut être installé avec le bit « setuid root » positionné, ce qui permettra son exécution avec les permissions du superutilisateur.
+ .
+ Ceci est nécessaire pour les comptes autres que celui du superutilisateur afin d'utiliser la méthode rsh de contrôle à distance de pdsh. Cependant, l'activation de cette fonctionnalité peut être un risque.
+ .
+ En résumé, sauf si vous savez ce que vous faites ou que vos utilisateurs sont très surveillés, vous devriez refuser ici. Si vous choisissez de ne pas positionner le bit « setuid root », vous pourrez toujours utiliser pdsh à travers des outils tels que sudo ou avec le module de contrôle à distance de ssh.
+Description-it.UTF-8: Installare il binario pdsh come setuid root?
+ Il programma pdsh può essere installato con setuid root in modo che venga eseguito con i permessi dell'utente «root».
+ .
+ Ciò è necessario affinché gli account non root possano usare il metodo rsh come comando remoto per pdsh. Abilitare questa opzione, tuttavia, potrebbe essere un rischio per la sicurezza.
+ .
+ In breve, a meno che non si sappia ciò che si sta facendo o non si controllino molto i propri utenti, non si dovrebbe abilitare questa funzionalità. Se si sceglie di non abilitare l'impostazione di setuid root, si può comunque usare pdsh attraverso strumenti come sudo o con il modulo per comando remoto ssh.
+Description-ja.UTF-8: pdsh-rsh バイナリを root に setuid しますか?
+ pdsh プログラムは root に setuid してインストールできるので、'root' ユーザの権限で動作させられます。
+ .
+ これは root ではないアカウントで pdsh の rsh リモートコマンド機能を使うのに必要です。しかし、これを有効にするとセキュリティリスクを招く可能性があります。
+ .
+ 端的に言うと、自分が何をしているのかを判っているか、ユーザがきちんと教育されている層ではない限り、この機能を有効にするべきではありません。root に setuid するのを有効にしない場合であっても、その際は sudo のようなツールを使う、あるいは ssh のリモートコマンド機能と共に使うことで、pdsh を利用できます。
+Description-nl.UTF-8: Wilt u dat het binair bestand 'pdsh' met de setuid-bit voor root actief wordt geïnstalleerd?
+ Het programma 'pdsh' kan met de setuid-bit voor root actief worden geïnstalleerd, hierdoor draait het met de rechten van 'root'.
+ .
+ Dit is vereist om niet-root-gebruikers toe te laten de rsh 'remote-command'-methode van pdsh te gebruiken. Dit activeren kan echter een veiligheidsrisico zijn.
+ .
+ Dit betekend dat u deze feature best enkel activeert wanneer u een heel gecontroleerde gebruikersgroep heeft. Als u ervoor kiest om de setuid-bit niet te activeren kunt u pdsh nog steeds gebruiken via hulpprogramma's zoals sudo of via de ssh 'remote-command'-module.
+Description-pt.UTF-8: Deverá o binário pdsh ser instalado com setuid root?
+ O programa pdsh pode ser instalado com setuid root para que possa funcionar com as permissões do utilizador root.
+ .
+ Isto é necessário para contas não-root puderem usar o método de comando remoto do pdsh. Contudo activando esta opção pode ser um risco à segurança.
+ .
+ Em resumo, a menos que saiba o que está a fazer ou tenha uma base de utilizadores bem controlada você não deve activar esta função. Se escolher não activar setuid root então você ainda pode usar o pdsh através de ferramentas como o sudo ou com o módulo de comandos remotos do ssh.
+Description-ru.UTF-8: Установить на запускаемый файл pdsh setuid бит?
+ Программа pdsh может быть установлена с включённым setuid битом для того, чтобы она запускалась с правами пользователя 'root'.
+ .
+ Это требуется для обычных учётных записей для использования метода удалённых команд rsh. Однако включение suid бита может уменьшить безопасность системы.
+ .
+ Если вы не понимаете что это или вам приходится часто отслеживать действия пользователей, то лучше не разрешать установку suid бита. С выключенным setuid битом вы всё равно сможете использовать pdsh через утилиты типа sudo или модуля удалённых команд ssh.
+Description-sv.UTF-8: Ska binären pdsh-rsh installeras setuid root?
+ Programmet pdsh kan installeras setuid root så att det kommer att köras med rättigheterna för "root"-användaren.
+ .
+ Detta krävs för att vanliga användare ska kunna använda rsh-metoden remote-command för pdsh. Hur som helst, aktivera detta kan vara en säkerhetsrisk.
+ .
+ Kortfattat, om du inte vet vad du gör eller har en mycket kontrollerad användarbas bör du inte aktivera denna funktion. Om du väljer att inte aktivera setuid root kan du fortfarande använda pdsh genom verktyg såsom sudo med ssh-modulen remote-command.
+Description-vi.UTF-8: Có nên cài đặt tập tin nhị phân <pdsd-rsh> với tư cách « setuid root » không?
+ Có thể cài đặt chương trình pdsh với tư cách setuid root, để chạy nó với quyền của người chủ.
+ .
+ Tùy chọn setuid root cần thiết để cho tài khoản không phải của người chủ có dùng được phương pháp lệnh từ xa của trình pdsh. Tuy nhiên, việc hiệu lực tùy chọn này có thể rủi ro bảo mật.
+ .
+ Tóm lại, trừ bạn biết làm gì, hoặc có cơ bản người dùng được điều khiển chặt chẽ, đừng hiệu lực tính năng này. Như thệ thì, bạn vẫn còn có thể sử dụng trình pdsh bằng công cụ như sudo hoặc bằng mô-đun lệnh từ xa ssh.

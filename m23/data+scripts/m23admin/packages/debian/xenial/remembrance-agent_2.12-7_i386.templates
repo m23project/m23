@@ -1,0 +1,63 @@
+Template: remembrance-agent/index-dir
+Type: string
+Description: Directories to index:
+ In order to work, the Remembrance Agent needs to build a database of
+ documents of interest. Please introduce the directories (and/or files) to
+ be indexed separated by spaces, afterwards the database will be made. If
+ you do not select any directories (default) the database will not be made.
+ For more info look at /usr/share/doc/remembrance-agent.
+Description-cs.UTF-8: Adresáře, které se mají indexovat:
+ Aby mohl pracovat, musí si Remembrance Agent vytvořit databázi zajímavých dokumentů. Zadejte mezerami oddělený seznam adresářů (a/nebo souborů), které se mají zaindexovat do databáze. Nevyberete-li žádné adresáře, databáze se nevytvoří. Více informací naleznete v /usr/share/doc/remembrance-agent.
+Description-da.UTF-8: Mapper at indeksere:
+ For at virke skal Remembrance Agenten bygge en database af interessedokumenter. Introducer venligst mapperne (og/eller filer) til at blive indekseret adskilt af mellemrum, efterfølgende vil databasen blive lavet. Hvis du ikke vælger nogen mapper (standard) vil databasen ikke blive lavet. For yderligere information så se /usr/share/doc/remembrance-agent.
+Description-de.UTF-8: Zu indexierende Verzeichnisse:
+ Um funktionieren zu können, muss der Remembrance Agent eine Datenbank über relevante Dokumente erstellen. Bitte geben Sie die Verzeichnisse, die indexiert werden sollen, durch Leerzeichen getrennt ein; anschließend wird die Datenbank erzeugt. Wenn Sie keine Verzeichnisse angeben (Voreinstellung), wird keine Datenbank erstellt. Nähere Informationen finden Sie unter /usr/share/doc/remembrance-agent.
+Description-es.UTF-8: Directorios a indexar:
+ Para que Remembrance Agent funcione se debe construir una base de datos de documentos de interés. Por favor indique los directorios (y/o ficheros) que deben ser indexados separándolos por espacios. Una vez hecho ésto la base de datos se construirá. Si no selecciona directorios (por omisión) la base de datos no será construida. Para más información consulte /usr/share/doc/remembrance-agent.
+Description-fr.UTF-8: Répertoires à indexer :
+ Afin de fonctionner correctement, l'agent de remémoration (« Remembrance Agent ») a besoin de constituer une base de données des documents intéressants. Veuillez indiquer les répertoires à indexer, séparés par des espaces, après quoi la base de données sera construite. Si vous ne choisissez pas de répertoires (par défaut), la base de données ne sera pas construite. Pour plus d'informations, veuillez consulter /usr/share/doc/remembrance-agent.
+Description-ja.UTF-8: インデックスを生成するディレクトリ:
+ 動作のためには、Remembrance Agent は興味のあるドキュメントのデータベースを生成する必要があります。インデックスを作成するディレクトリ (やファイル) をスペースで区切って指定してください。そうすればデータベースが生成されます。どのディレクトリも指定しない場合 (デフォルト)、データベースは生成されません。より詳細な情報については /usr/share/doc/remembrance-agent を参照してください。
+Description-nl.UTF-8: Te indexeren mappen:
+ Om te werken dient de Remembrance-agent een database van interessante documenten op te bouwen. Welke mappen (en/of bestanden) wilt u laten indexeren voor de database? Hier kunt u de gewenste mappen invoeren gescheiden door spaties. Als u geen mappen selecteert (standaardwaarde) wordt er geen database aangemaakt. Meer informatie vindt u in /usr/share/doc/remembrance-agent .
+Description-pt.UTF-8: Directórios a indexar:
+ Para que funcione, o Remembrance Agent precisa de construir uma base de dados de documentos de interesse. Por favor introduza os directórios (e/ou ficheiros) a serem indexados separados por espaços, depois disso a base de dados irá ser criada. Se não selecionar nenhum directório (por omissão) a base de dados não será criada. Para mais informação veja /usr/share/doc/remembrance-agent.
+Description-ru.UTF-8: Индексируемые каталоги:
+ Для работы Remembrance Agent требуется построить базу данных интересующих документов. Укажите каталоги (и/или файлы), которые должны быть проиндексированы, через пробел; после чего будет создана база данных. Если вы ничего не укажите (по умолчанию), то база данных создана не будет. Подробней см. /usr/share/doc/remembrance-agent.
+Description-sv.UTF-8: Kataloger att indexera:
+ För att detta ska fungera, behöver Remembrance Agent bygga en databas över intressanta dokument. Ange de kataloger (och/eller filer) som ska indexeras, separera med blanksteg och sedan kommer databasen att skapas. Om du inte väljer några kataloger (standard), kommer inte databasen att skapas. För mer information, se /usr/share/doc/remembrance-agent.
+Description-vi.UTF-8: Các thư mục cần chỉ mục:
+ Để hoạt động được, Tác nhân Nhớ cần xây dựng một cơ sở dữ liệu các tài liệu liên quan. Hãy giới thiệu những thư mục/tập tin cần chỉ mục, định giới bằng dấu cách; sau đó cơ sở dữ liệu được tạo. Không chọn gì (mặc định) thì cơ sở dữ liệu không được tạo. Để tìm thêm thông tin thì xem tài liệu nằm trong thư mục « /usr/share/doc/remembrance-agent ».
+
+Template: remembrance-agent/exclude-dir
+Type: string
+Description: Directories to exclude from the index:
+ You can exclude sensitive directories from being indexed by ra-index if
+ you want. Only three directories can be given here. NOTE: If you are
+ installing on a multiuser environment where each user may want to have
+ their personal index, DO NOT index user directories (that is /home) as
+ root since there are no mechanisms to prevent users from invading other's
+ privacy. Instead, all users can run 'ra-index' in order to build their own
+ databases.
+Description-cs.UTF-8: Adresáře, které se mají vynechat z indexování:
+ Pokud chcete, můžete z indexování programem ra-index vynechat citlivé adresáře. Můžete zadat maximálně tři adresáře. POZNÁMKA: Instalujete-li ve víceuživatelském prostředí, kde bude mít každý uživatel svůj osobní index, NEINDEXUJTE pod rootem adresáře uživatelů (tj. /home), protože tak nemůžete zabránit zasahování do soukromí jednotlivých uživatelů. Uživatelé si mohou vytvořit své vlastní databáze příkazem 'ra-index'.
+Description-da.UTF-8: Mapper at ekskludere fra indekset:
+ Du kan ekskludere følsomme mapper fra at blive indekseret af ra-index, hvis du ønsker det. Kun tre mapper kan angives her. BEMÆRK: Hvis du installerer på et flerbrugermiljø, hvor hver bruger måske ønsker at have deres personlige indeks, så indekser IKKE brugermapper (det vil sige /home) som administrator, da der ikke er nogen mekanisme til at forhindre brugere fra at invadere andres privatliv. I stedet for kan alle brugere køre »ra-index« for at bygge deres egne databaser.
+Description-de.UTF-8: Vom Indexieren auszuschließende Verzeichnisse:
+ Wenn Sie möchten, können Sie Verzeichnisse mit empfindlichen Daten von der Indexierung durch »ra-index« ausschließen. Es können hier maximal drei Verzeichnisse angegeben werden. HINWEIS: Falls Sie Remembrance Agent auf einem Mehrbenutzersystem installieren, auf dem jeder Nutzer seinen eigenen Index benötigen könnte, indexieren Sie NICHT das komplette User-Verzeichnis (also /home), da keine Mechanismen existieren, zu verhindern, dass Benutzer die Privatsphäre anderer verletzen. Stattdessen können alle Benutzer »ra-index« selbst ausführen, um ihre eigenen Datenbanken zu erstellen.
+Description-es.UTF-8: Directorios que deberían excluirse del índice:
+ Puede excluir directorios sensibles para que no sean indexados por ra-index si lo desea. Aquí sólo se pueden indicar tres directorios. Observación: Si está uste instalando este programa en un entorno multi-usuario donde cada usuario quiere tener su índice persona, NO indexe los directorios de los usuarios (esto es, /home) como superusuario dado que no hay mecanismos para impedir que algunos usuarios violen la privacidad de otros. En su lugar, todos los usuarios pueden utilizar «ra-index» para construir sus propias bases de datos.
+Description-fr.UTF-8: Répertoires exclus de l'index :
+ Si vous le souhaitez, vous pouvez éviter que des répertoires précis soient indexés par ra-index. Seuls trois répertoires peuvent être indiqués ici. Note : si vous faites une installation dans un environnement multi-utilisateurs où chaque utilisateur peut souhaiter posséder son propre index, l'indexation des répertoires personnels des utilisateurs (dans /home) ne doit pas être faite par le super-utilisateur. Cela aurait pour conséquence de permettre à chacun d'avoir un accès aux données des autres utilisateurs. Au lieu de cela, chaque utilisateur peut exécuter « ra-index » afin de construire sa propre bases de données.
+Description-ja.UTF-8: インデックスの生成から外すディレクトリ:
+ ra-index によるインデックスの生成について、特定のディレクトリを除外することも可能です。ここではディレクトリ 3 つまでが指定可能です。付記: 個々のユーザが個人的にインデックスを持つようなマルチユーザ環境でインストールしている場合、他人のプライバシーに対する侵害を防ぐ手段がないため、root としてユーザディレクトリ (つまり /home) をインデックスの生成を「しない」ようにしてください。それ以外の場合は、全てのユーザが自分自身のデータベースを生成するために 'ra-index' を実行できます。
+Description-nl.UTF-8: Van de index buiten te sluiten mappen:
+ Mappen met gevoelige inhoud kunnen van indexering door de ra-index uitgesloten worden. Hier kunt u maximaal drie mappen opgeven. OPGELET: als u installeert op een systeem met meerdere gebruikers waar het mogelijk is dat elke gebruiker z'n eigen persoonlijke index heeft indexeer de gebruikersmappen (/home) dan NIET als root aangezien er geen mechanisme ingebouwd is om de gebruikers privacy tegen elkaar te beschermen. De gebruikers kunnen zelf 'ra-index' uitvoeren om hun eigen databases op te bouwen.
+Description-pt.UTF-8: Directórios a excluir da indexação:
+ Pode excluir directórios sensíveis de serem indexados pelo ra-index se assim o desejar. Somente três directórios podem ser dados aqui. NOTA: Se está a instalar num ambiente de vários utilizadores onde cada utilizador poderá querer ter o seu index pessoal, NÃO indexe directórios de utilizador (isto é /home) como raíz uma vez que não existem mecanismos para prevenir utilizadores de invadir a privacidade de outros utilizadores. Em vez disso, todos os utilizadores podem correr o 'ra-index' para criar as suas próprias bases de dados.
+Description-ru.UTF-8: Каталоги, исключаемые из индексации:
+ Вы можете исключить определённые каталоги из индексирования ra-index. Здесь можно указать только три каталога. ЗАМЕЧАНИЕ: Если вы работаете в многопользовательском окружении, где каждый пользователь может захотеть работать со своей базой индексирования, НЕ ИНДЕКСИРУЙТЕ пользовательские каталоги (в /home) от root, так как не предусмотрено механизма предотвращения нарушения пользовательской конфиденциальности. Вместо этого, каждый пользователь может запустить 'ra-index' для создания своих собственных баз данных.
+Description-sv.UTF-8: Kataloger att undanta från indexet:
+ Du kan, om du vill, undanta känsliga kataloger från att indexeras av ra-index. Bara tre kataloger kan anges här. OBSERVERA: Om du installerar på ett fleranvändarsystem där varje användare vill ha sina egna personliga index, ska du INTE indexera användarnas kataloger (som finns i /home) som root eftersom det inte finns en mekanism som förhindrar användare att inkräkta på integriteten. Istället kan alla användare köra "ra-index" för att bygga sina egna databaser.
+Description-vi.UTF-8: Các thư mục cần loại trừ ra chỉ mục:
+ Vẫn còn có khả năng loại trừ những thư mục nhạy cảm ra việc chỉ mục của ra-index, nếu bạn muốn. Có thể xác định chỉ ba thư mục. GHI CHÚ : nếu bạn đang cài đặt vào môi trường đa người dùng nơi mỗi người dùng có thể muốn tạo chỉ mục riêng, ĐỪNG chỉ mục các thư mục người dùng (tức là « /home ») với tư cách là người chủ, vì không có cơ chế ngăn cản người dùng xâm phạm sự riêng tư củ người dùng khác. Thay vào đó, mỗi người dùng có khả năng chạy lệnh « ra-index » để xây dựng cơ sở dữ liệu riêng.

@@ -1,0 +1,83 @@
+Template: phpgacl/apache
+Type: select
+Choices: Apache, Apache2, Apache-SSL, All, None
+Choices-cs.UTF-8: Apache, Apache2, Apache-SSL, Všechny, Žádná
+Choices-da.UTF-8: Apache, Apache2, Apache-SSL, Alle, Ingen
+Choices-de.UTF-8: Apache, Apache2, Apache-SSL, Alle, Keine
+Choices-es.UTF-8: Apache, Apache2, Apache-SSL, Todos, Ninguno
+Choices-fr.UTF-8: Apache, Apache2, Apache-SSL, Toutes, Aucune
+Choices-nl.UTF-8: Apache, Apache2, Apache-SSL, Alle, Geen
+Choices-pt.UTF-8: Apache, Apache2, Apache-SSL, Todos, Nenhum
+Choices-ru.UTF-8: Apache, Apache2, Apache-SSL, Все, Ни одной
+Choices-sv.UTF-8: Apache, Apache2, Apache-SSL, Alla, Ingen
+Default: All
+Description: Version(s) of Apache to configure automatically:
+ phpGACL requires a few things to be set up in your web server
+ configuration in order for the front end to function properly.
+ .
+ The Debian packaged version can usually automatically configure apache by
+ dropping a symlink into the /etc/APACHE-SERVER/conf.d directory.
+ Select "None" if you aren't running apache or you would prefer to set up
+ the web server yourself. If you select a version to configure, all
+ configuration changes will also be removed when the package is purged.
+Description-cs.UTF-8: Verze Apache, kterou chcete nakonfigurovat automaticky:
+ phpGACL vyžaduje nastavení několika parametrů v konfiguraci vašeho webového serveru.
+ .
+ Verze zabalená v Debianu umí automaticky nastavit varianty Apache tak, že do adresáře /etc/KONKRETNI-APACHE-SERVER/conf.d přidá symbolický odkaz. Pokud nepoužíváte Apache, nebo pokud si chcete webový server nastavit ručně, zamítněte. Odpovíte-li kladně, veškeré změny, které se nyní provedou, budou zase při vyčištění balíku vráceny zpět.
+Description-da.UTF-8: Versioner af Apache der automatisk skal konfigureres:
+ phpGACL kr??ver ops??tning af nogle f?? ting i din internetserveres konfiguration for at gr??nsefladen fungerer korrekt.
+ .
+ Den Debianpakkede version kan normalt automatisk konfigurere apache ved at smide en symbolsk henvisning i /etc/APACHE-SERVER/conf.d-mappen. V??lg ??Ingen?? hvis du ikke k??rer apache eller selv ??nsker at ops??tte internetserveren.Hvis du v??lger at konfigurere en version, vil alle konfigurations??ndringer ogs?? blive fjernet n??r pakken fjernes.
+Description-de.UTF-8: Apache-Version(en), die automatisch konfiguriert werden sollen:
+ Für phpGACL müssen einige Dinge in Ihrer Webserver-Konfiguration eingerichtet werden, damit die Oberfläche richtig funktioniert.
+ .
+ Die von Debian paketierte Version kann normalerweise Apache automatisch konfigurieren, indem ein Symlink in das /etc/APACHE-SERVER/conf.d-Verzeichnis abgelegt wird. Wählen Sie »Keine« falls Sie Apache nicht betreiben oder bevorzugen, den Webserver selbst einzurichten. Falls Sie eine Version zum konfigurieren auswählen werden alle Konfigurationsänderungen auch entfernt, wenn Sie das Paket vollständig entfernen.
+Description-es.UTF-8: Versión/es de Apache a configurar automáticamente:
+ phpGACL necesita modificar algunas cosas de la configuración de su servidor web para poder funcionar correctamente.
+ .
+ Normalmente, la versión del paquete Debian puede configurar automáticamente apache creando un enlace simbólico en el directorio «/etc/SERVIDOR-APACHE/conf.d». Responda «Ninguno» si usted no está usando apache o si prefiere configurar el servidor web por usted mismo. Si indica una versión a configurar en respuesta a esta pregunta, se eliminarán los cambios que se realicen cuando se purge el paquete.
+Description-fr.UTF-8: Version(s) d'Apache à configurer automatiquement :
+ Pour fonctionner correctement, phpGACL a besoin d'effectuer quelques modifications dans la configuration du serveur web.
+ .
+ Le paquet peut généralement configurer automatiquement Apache en créant un lien symbolique dans le répertoire /etc/APACHE-SERVER/conf.d. Choisissez « Aucune » si vous n'utilisez pas Apache ou si vous préférez configurer le serveur web vous-même. Si vous choisissez une ou plusieurs versions d'Apache, tous les changements de configuration seront supprimés lors de la purge du paquet.
+Description-nl.UTF-8: Automatisch te herconfigureren Apache versie(s):
+ Opdat het phpGACL-frontend juist zou functioneren dienen er enkele dingen ingesteld te worden in de configuratie van uw webserver.
+ .
+ De door Debian verpakte versie kan apache gewoonlijk automatisch herconfigureren door een symbolische link aan te maken in de map /etc/APACHE-SERVER/conf.d . Selecteer 'Geen' als u verkiest om de webserver zelf in te stellen, of als u geen apache gebruikt. Als u een apache-versie kiest om in te stellen worden alle configuratie-aanpassingen verwijderd bij het wissen van dit pakket.
+Description-pt.UTF-8: Versão(ões) do Apache para configurar automaticamente:
+ O phpGACL necessita que sejam configuradas algumas coisas na configuração do seu servidor Web para que o frontend possa funcionar correctamente.
+ .
+ A versão empacotada Debian normalmente pode configurar automaticamente o apache deixando um link simbólico no directório /etc/APACHE-SERVER/conf.d.  Seleccione "Nenhum" se não está a usar o apache ou se preferir configurar você mesmo o servidor Web. Se você seleccionar uma versão para configurar, todas as alterações de configuração serão também removidas quando o pacote for purgado.
+Description-ru.UTF-8: Версия(и) Apache для автоматической настройки:
+ Для правильной работы интерфейса phpGACL нужно настроить несколько параметров в вашем веб-сервере.
+ .
+ Версия Debian может, обычно, автоматически настроить apache, поместив символическую ссылку в каталог /etc/APACHE-SERVER/conf.d. Выберите "Ни одной", если у вас нет работающего apache или вы хотите выполнить настройку веб-сервера самостоятельно. Если вы выберете версию для настройки, все изменения в конфигурации будут удалены при вычистке пакета.
+Description-sv.UTF-8: Apache-version(er) som ska ställas in automatiskt:
+ phpgACL kräver att en del inställningar i din webbserver är på-/avslagna för att gränssnittet ska fungera korrekt.
+ .
+ Debianpaketet kan ställa in apache automatiskt genom att lägga en symlänk i katalogen /etc/APACHE-SERVER/conf.d. Välj "Ingen" om du inte kör en apache-server eller om du hellre vill ställa in webbservern själv. Om du väljer att ställa in en apache-server så kommer dessutom alla inställningar att tas bort när paketet tas bort.
+
+Template: phpgacl/conffile_changed
+Type: note
+Description: Obsolete configuration file
+ Your system has an obsolete configuration file
+ (/etc/phpgacl/phpgacl.conf.php). Please, review the new configuration file
+ (/etc/phpgacl/gacl.ini.php) and remove the obsolete one.
+Description-cs.UTF-8: Zastaralý konfigurační soubor
+ Váš systém obsahuje zastaralý konfigurační soubor /etc/phpgacl/phpgacl.conf.php). Zkontrolujte prosím nastavení v novém konfiguračním souboru /etc/phpgacl/gacl.ini.php a poté starý soubor smažte.
+Description-da.UTF-8: For??ldet konfigurationsfil
+ Dit system har en for??ldet konfigurationsfil (/etc/phpgacl/phpgacl.conf.php). Gennemse venligst den nye konfigurationsfil (/etc/phpgacl/gacl.ini.php) og fjern den for??ldede.
+Description-de.UTF-8: Veraltete Konfigurationsdatei
+ Auf Ihrem System befindet sich eine veraltete Konfigurationsdatei (/etc/phpgacl/phpgacl.conf.php). Bitte prüfen Sie die neue Konfigurationsdatei (/etc/phpgacl/gacl.ini.php) und entfernen Sie die veraltete.
+Description-es.UTF-8: Fichero de configuración obsoleto
+ Su sistema tiene un fichero de configuración obsoleto («/etc/phpgacl/phpgacl.conf.php»). Debe revisar el nuevo fichero de configuración («/etc/phpgacl/gacl.ini.php») y eliminar el obsoleto.
+Description-fr.UTF-8: Fichier de configuration obsolète
+ Une version obsolète du fichier de configuration (/etc/phpgacl/phpgacl.conf.php) a été détectée. Vous devriez vérifier le nouveau fichier de configuration (/etc/phpgacl/gacl.ini.php) et supprimer l'ancien.
+Description-nl.UTF-8: Verouderd configuratiebestand
+ Uw systeem heeft een verouderd configuratiebestand (/etc/phpgacl/phpgacl.conf.php). Gelieve het nieuwe configuratiebestand (/etc/phpgacl.ini.php) na te kijken en het verouderde bestand te verwijderen.
+Description-pt.UTF-8: Ficheiro de configuração obsoleto
+ O seu sistema tem um ficheiro de configuração obsoleto (/etc/phpgacl/phpgacl.conf.php). Por favor, reveja o novo ficheiro de configuração (/etc/phpgacl/gacl.ini.php) e remova o obsoleto.
+Description-ru.UTF-8: Устаревший файл настройки
+ В системе обнаружен устаревший файл настройки (/etc/phpgacl/phpgacl.conf.php). Внимательно просмотрите новый файл настройки (/etc/phpgacl/gacl.ini.php) и удалите старый.
+Description-sv.UTF-8: Gammal inställningsfil
+ Ditt system har en gammal inställningsfil (/etc/phpgacl/phpgacl.conf.php). Kontrollera innehållet i den nya inställningsfilen (/etc/phpgacl/gacl.ini.php) och radera sedan den gamla.

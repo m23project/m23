@@ -1,0 +1,28 @@
+Template: sbox-dtc/conf_use_dtc_dtcgrp
+Type: boolean
+Default: true
+Description: Use dtc:dtcgrp for the sbox binary?
+ Under Debian, apache runs under www-data:www-data. This is ok if running only
+ apache, but if using sbox-dtc together with the DTC control panel, you need to
+ have sbox chown to dtc:dtcgrp. In that case, you want create the dtc user and
+ dtcgrp group, and chown the sbox binary to dtc:dtcgrp, otherwise you don't.
+Description-cs.UTF-8: Použít pro binárku sboxu dtc:dtcgrp?
+ V Debianu jsou apache spoušteni jako www-data:www-data. To je v pořádku, pokud ovšem máte spuštěného pouze apache. Jestliže používáte sbox-dtc společně s DTC control panelem, musíte změnit vlastníka programu sbox na dtc:dtcgrp. Pokud tedy potřebujete, vytvoře uživatele dtc a skupinu dtcgrp a změňte vlastníka binárky sbox na dtc:dtcgrp.
+Description-da.UTF-8: Brug dtc:dtcgrp til den binære sbox?
+ Under Debian kører apache under www-data:www.data. Det er okay, hvis der kun køres apache, men hvis sbox-dtc bruges sammen med panelprogrammet DTC control, skal du have sbox chown til dtc:dtcgrp. I det tilfælde vil du skulle oprette dtc-brugeren og dtcgrp-gruppen, og chown den binære sbox til dtc:dtcgrp, ellers ikke.
+Description-de.UTF-8: dtc:dtcgrp für das sbox-Programm verwenden?
+ Unter Debian läuft apache als www-data:www-data. Dies ist in Ordnung, falls nur Apache benutzt wird. Aber wenn sbox-dtc zusammen mit dem DTC Control Panel verwendet wird, muss sbox dtc:dtcgrp gehören. In diesem Fall sollten Sie den Benutzer dtc und die Gruppe dtcgrp anlegen und dtc:dtcgrp als Eigentümer für sbox verwenden, anderenfalls nicht.
+Description-es.UTF-8: ¿Desea usar los permisos de «dtc:dtcgrp» para el binario sbox?
+ En Debian, apache se ejecuta con los permisos de «www-data:www-data». Esto está bien si sólo se ejecuta apache, pero si se usa sbox-dtc junto con el panel de control DTC, necesitará cambiar el propietario y el grupo de sbox a «dtc:dtcgrp». En ese caso, debe crear el usuario dtc y el grupo dtcgrp, y cambiar el propietario y el grupo del binario sbox a «dtc:dtcgrp», de lo contrario no necesitará realizar estas operaciones.
+Description-fr.UTF-8: Faut-il utiliser dtc:dtcgrp pour l'exécutable sbox ?
+ Sous Debian, apache fonctionne avec les privilèges de l'utilisateur www-data et du groupe de même nom. Ceci est correct si seul apache fonctionne, mais si sbx-dtc est utilisé conjointement avec le panneau de contrôle de DTC, il faudra changer le propriétaire en dtc:dtcgrp. Dans ce cas, il vous faudra créer l'utilisateur dtc et le groupe dtcgrp, et modifier le propriétaire de l'exécutable sbox en dtc:dtcgrp.
+Description-ja.UTF-8: sbox のバイナリを dtc:dtcgrp にして使いますか?
+ Debian では、apache は www.data:www-data 配下で動作します。apache のみを動かすのであればこれは問題ないですが、DTC コントロールパネルと共に sbox-dtc を使う場合は、sbox を dtc:dtcgrp に chown する必要があります。この場合、dtc ユーザと dtcgrp グループを作り、sbox バイナリを dtc:dtcgrp にchown したいでしょう。そうしないと、sbox は使えません。
+Description-nl.UTF-8: Wilt u dtc:dtcgrp als eigenaar voor het binair bestand sbox gebruiken?
+ In Debian draaien apache als gebruiker en groep www-data. Dit is prima als u enkel apache gebruikt, maar wanneer u sbox-dtc samen met het DTC-controlepaneel gebruikt dient u geëigend te zijn door gebruiker dtc en groep dtcgrp. In dat geval dient dus eerst een gebruiker dtc en een groep dtcgrp aangemaakt te worden, en vervolgens dient het eigenschap van het binair bestand sbox omgezet te worden naar deze gebruiker en groep (via chown).
+Description-pt.UTF-8: Usar dtc:dtcgrp para o binário sbox?
+ Em Debian, o apache corre sob www-data:www-data. Isto está bem se correr só o apache, mas se usar o sbox-dtc em conjunto com o painel de controle DTC, você precisa de ter o dono:grupo (chown) do sbox regulado para dtc:dtcgrp. Nesse caso você vai querer criar o utilizador 'dtc' e o grupo 'dtcgrp', e mudar dono:grupo do binário sbox para dtc:dtcgrp, caso contrário não o faça.
+Description-ru.UTF-8: Использовать dtc:dtcgrp для исполняемого файла sbox?
+ В Debian, apache запущены с правами www-data:www-data. Это нормально, если работает только apache, но если он используется sbox-dtc вместе с панелью управления DTC, то у sbox должны быть права dtc:dtcgrp. В этом случае, создайте пользователя dtc и группу dtcgrp, и назначьте исполняемому файлу sbox права доступа dtc:dtcgrp.
+Description-sv.UTF-8: Ska dtc:dtcgrp användas för sbox binären?
+ I Debian körs apache med användare och grupp www-data. Om du bara kör apache är detta helt okej men och du kör sbox-dtc tillsammans med DTC kontrollpanelen så måste sbox vara inställd på dtc:dtcgrp.I det fallet vill du skapa användaren dtc och gruppen dtcgrp samt ändra inställningen på sbox-binären - i övriga fall vill du inte göra detta.

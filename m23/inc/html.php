@@ -677,6 +677,7 @@ echo('
 **/
 function HTML_esel()
 {
+//m23customPatchBegin type=del id=HTML_eselDeactivate
 echo('
 <div id="esel" onMouseOver="eselShow();">
 	<div id="eselinhalt" width="100%" height="100%" align="left" style="display:none" >
@@ -708,6 +709,7 @@ echo('
 	}
 </script>
 ');
+//m23customPatchEnd id=HTML_eselDeactivate
 }
 
 
@@ -1749,11 +1751,14 @@ function HTML_input($htmlName, $htmlValue = false, $size=20, $maxlength=255, $ty
 **/
 function array_makeFirst(&$arr,$first)
 {
-	$out[array_search($first, $arr)] = $first;
-	foreach ($arr as $key => $val)
-		$out[$key] = $val;
-		
-	$arr = $out;
+	if (!is_null($first))
+	{
+		$out[array_search($first, $arr)] = $first;
+		foreach ($arr as $key => $val)
+			$out[$key] = $val;
+			
+		$arr = $out;
+	}
 };
 
 

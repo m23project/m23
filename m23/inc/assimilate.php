@@ -20,9 +20,10 @@ function ASSI_showClientAddDialog()
 	$ip = HTML_input('ED_ip', false, 17, 17);
 	$password = HTML_input('ED_password', false, 16, 40);
 	$user = HTML_input('ED_user', false, 16, 40);
+	$clientUsesDynamicIP = HTML_checkBox('CB_dynamicIP', '', false);
 
 	if (HTML_submit('BUT_save',$I18N_assimilate))
-		ASSI_addClient($clientName, $ip, $password, $user);
+		ASSI_addClient($clientName, $ip, $password, $user, $clientUsesDynamicIP);
 
 	HTML_showTableHeader();
 	HTML_showFormHeader();
@@ -32,6 +33,7 @@ function ASSI_showClientAddDialog()
 	HTML_showTableRow($I18N_ip, ED_ip." ($I18N_eg 192.168.0.5)");
 	HTML_showTableRow($I18N_UbuntuUserIfUbuntuSystem, ED_user);
 	HTML_showTableRow($I18N_rootPasswordOrUbuntuUserPassword, ED_password);
+	HTML_showTableRow($I18N_clientUsesDynamicIP, CB_dynamicIP);
 	HTML_showTableRow('',BUT_save);
 
 	HTML_showFormEnd();
@@ -43,20 +45,22 @@ function ASSI_showClientAddDialog()
 
 
 /**
-**name ASSI_addClient($client,$ip)
+**name ASSI_addClient($client, $ip, $password, $ubuntuUser, $clientUsesDynamicIP)
 **description Adds needed data for assimilating a client.
 **parameter client: name of the client
 **parameter ip: IP of the client
 **parameter password: root password on Debian systems or combines user/root password on Ubuntu systems
 **parameter ubuntuuser: name of the Ubuntu user or empty if a Debian system is meant.
+**parameter clientUsesDynamicIP: if set to true, the client uses a dynamic IP address
 **/
-function ASSI_addClient($client,$ip,$password,$ubuntuUser)
+function ASSI_addClient($client, $ip, $password, $ubuntuUser, $clientUsesDynamicIP)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	$data['client'] = $client;
 	$data['ip'] = $ip;
 	$data['newgroup'] = "default";
 	$data['rootpassword'] = $password;
+	$data['clientUsesDynamicIP'] = $clientUsesDynamicIP;
 
 	$err = CLIENT_addClient($data,"",CLIENT_ADD_TYPE_assimilate,false);
 
@@ -135,6 +139,8 @@ function ASSI_prepareClient()
 		CLCFG_setAuthorized_keys(getServerIP(),"/packages/baseSys/authorized_keys");
 
 		CLCFG_writeM23fetchjob();
+
+		MSR_doesClientUseDynIPCommand();
 
 		ASSI_addUbuntuRoot();
 

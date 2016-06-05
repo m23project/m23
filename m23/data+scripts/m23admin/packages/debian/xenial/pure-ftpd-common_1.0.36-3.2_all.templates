@@ -1,0 +1,369 @@
+Template: pure-ftpd/standalone-or-inetd
+Type: select
+Choices: inetd, standalone
+Choices-cs.UTF-8: inetd, samostatně
+Choices-da.UTF-8: inetd, alenestående
+Choices-de.UTF-8: inetd, Daemon
+Choices-es.UTF-8: inetd, standalone
+Choices-eu.UTF-8: inetd, bakarka
+Choices-fi.UTF-8: inetd, itsenäinen
+Choices-fr.UTF-8: Inetd, Serveur autonome
+Choices-gl.UTF-8: inetd, autónomo
+Choices-it.UTF-8: inetd, standalone
+Choices-ja.UTF-8: inetd, スタンドアロン
+Choices-nl.UTF-8: inetd, op-zichzelf-staand
+Choices-pt.UTF-8: inetd, isolado
+Choices-pt_BR.UTF-8: inetd, autônomo
+Choices-ru.UTF-8: из inetd, как автономную службу
+Choices-sv.UTF-8: inetd, självstående
+Choices-vi.UTF-8: inetd, độc lập
+Default: standalone
+Description: Run pure-ftpd from inetd or as a standalone server:
+ Pure-ftpd can be run from inetd or as a standalone daemon. Using inetd is
+ a suitable option for small ftp servers because the inetd super-server
+ will only launch pure-ftpd to handle incoming connections. Standalone
+ operation is more efficient for busy ftp sites.
+ .
+ Keep in mind that a few options only work in standalone mode, such as
+ limiting connections per-IP and binding the server to a specific IP
+ address.
+Description-cs.UTF-8: Spouštět pure-ftpd z inetd nebo jako samostatný server:
+ Pure-ftpd může běžet jako samostatný démon, nebo se může spouštět z inetd. Spouštění přes inetd je vhodné pro malé ftp servery, protože se bude pure-ftpd spouštět jenom při příchodu spojení. Pro hodně zatížené ftp servery je efektivnější samostatný démon.
+ .
+ Pamatujte, že některé vlastnosti pracují pouze v samostatném režimu - např. navázání serveru na konkrétní IP adresu nebo omezování spojení podle IP adres.
+Description-da.UTF-8: Kør pure-ftpd fra inetd eller som en alenestående server:
+ Pure-ftpd kan køres fra inetd eller som en alenestående dæmon. Brug af inetd er et egnet tilvalg for små ftp-servere, da inetd superserveren kun vil opstarte pure-ftpd til at håndtere indgående forbindelser. Alenestående handling er mere effektivt for travle ftp-sider.
+ .
+ Husk at nogle få indstillinger kun virker i alenestående tilstand, såsom begrænsning af antal forbindelser per IP og binding af serveren til en specifik IP-adresse.
+Description-de.UTF-8: Pure-ftpd über inetd oder als eigenen Daemon starten:
+ Pure-ftpd kann über inetd oder als eigener Daemon gestartet werden. Die Verwendung von inetd ist für kleinere FTP-Server geeignet, da der Super-Server inetd nur dann pure-ftpd starten wird, wenn auch Anfragen für pure-ftpd vorliegen. Ein eigener Daemon hingegen arbeitet bei stark ausgelasteten FTP-Sites effizienter.
+ .
+ Beachten Sie bitte, dass einige Optionen nur mit einem Daemon funktionieren. Dazu zählt u.a. die Verbindungs-Begrenzung auf IP-Basis oder das Binden des Servers an eine bestimmte IP-Adresse.
+Description-es.UTF-8: Ejecutar pure-ftpd desde inetd, o como un servidor independiente (standalone):
+ Pure-ftpd puede ejecutarse desde inetd o como un demonio independiente (standalone). Usar inetd es una opción conveniente para servidores ftp pequeños, porque el super-servidor inetd solo arrancará pure-ftpd para manejar conexiones entrantes. La ejecución independiente es más eficiente para sitios ftp con mucho tráfico.
+ .
+ Tenga en cuenta que unas pocas opciones sólo funcionan en el modo independiente, como la limitación de conexiones por IP, o la vinculación del servidor a una dirección IP específica.
+Description-eu.UTF-8: Exekutatu pure-ftpd inetd bidez edo bakarkako zerbitzari gisa.
+ Pure-ftpd inetd bidez edo bakarkako deabru bat bezala abiarazi daiteke. Inetd erabiltzea aukera on bat izan daiteke ftp zerbitzari txikientzat inetd super-zerbitzariak konexioak daudenean bakarrik abiaraziko du pure-ftpd. Bakarkako deabru gisa efizientzia handiagokoa da lan-karga handiko ftp guneentzat.
+ .
+ Kontutan izan aukera apur batzuek bakarkako moduan bakarrik funtzionatuko dutela, IP bakoitzaren konexioak mugatu eta zerbitzaria IP zehatz batetara lotzea adibidez.
+Description-fi.UTF-8: Ohjelman pure-ftpd ajotapa:
+ Pure-ftpd voidaan ajaa joko inetdistä tai itsenäisenä taustaohjelmana. Pienillä FTP-palvelimilla inetd on hyvä valinta, koska tällöin pure-ftpd käynnistetään vain tulevan yhteyden käsittelemiseksi. Itsenäinen toiminta sopii paremmin vilkkaille FTP-sivuille.
+ .
+ Jotkin valitsimet toimivat vain itsenäisessä tilassa, esimerkiksi IP-osoitekohtainen yhteyksien määrän rajoittaminen ja tietyn IP-osoitteen kuunteleminen.
+Description-fr.UTF-8: Méthode de lancement de pure-ftpd :
+ Pure-ftpd peut être lancé depuis inetd ou comme un démon autonome. Inetd est un choix adapté pour les petits serveurs FTP car le superserveur inetd lancera pure-ftpd uniquement pour traiter les connexions entrantes. Le mode autonome est plus efficace pour les sites FTP fortement chargés.
+ .
+ Gardez à l'esprit que quelques options ne fonctionnent qu'en mode autonome, comme la limitation des connexions selon l'IP et l'attachement du serveur à une adresse IP spécifique.
+Description-gl.UTF-8: Executar pure-ftpd desde inetd ou coma un servidor autónomo:
+ Pódese executar pure-ftpd desde inetd ou coma un servizo autónomo. Empregar inetd é unha opción axeitada para servidores ftp pequenos, xa que o superservidor inetd só ha lanzar pure-ftpd para xestionar as conexións entrantes. A operación autónoma é máis eficiente para sitios ftp grandes.
+ .
+ Teña en conta que algunhas opcións só funcionan en modo autónomo, tales coma limitar as conexións por IP e ligar o servidor a un enderezo IP determinado.
+Description-it.UTF-8: Avviare pure-ftpd da inetd oppure come un server standalone:
+ Pure-ftpd può essere avviato da inetd oppure come un demone a se stante. L'uso con inetd è adatto per piccoli server ftp perché inetd, il server supervisore, lancia pure-ftpd solo quando deve gestire delle connessioni entranti. La modalità standalone è adatta a siti ftp con molto traffico.
+ .
+ Nota: alcune opzioni funzionano solo nella modalità standalone, per esempio la limitazione delle connessioni per IP e il binding del server a uno specifico indirizzo IP.
+Description-ja.UTF-8: pure-ftpd を inetd 経由かスタンドアロンのデーモンのどちらで動作させるか:
+ pure-ftpd は inetd 経由かスタンドアロンのデーモンとして実行することが可能です。inetd スーパーサーバは接続が来た時のみ pure-ftpd を起動するので inetd の利用は小規模な ftp サーバには適しているオプションです。スタンドアロンでの運用は混雑する ftp サイトの場合、より効果を発揮します。
+ .
+ オプションのうちのいくつか (IP アドレスごとの接続数制限や特定の IP アドレスにサーバをバインドさせる機能など) はスタンドアローンモードでのみ有効なことに注意してください。
+Description-nl.UTF-8: Wilt u pure-ftpd draaien via inetd of als een op-zichzelf-staande server?
+ Pure-ftpd kan gedraait worden via inetd, of als een op zichzelf staande achtergronddienst. Gebruik van inetd is een geschikte optie voor kleine ftp-servers omdat de pure-ftpd dan enkel gestart wordt (door de inetd super-server) om inkomende verbindingen af te handelen. Een op zichzelf staande achtergronddienst is efficiënter voor drukke ftp-sites.
+ .
+ Houd er hierbij rekening mee dat er enkele opties zijn die enkel werken in de 'op-zichzelf-staand'-modus (zoals het per IP beperken van verbindingen en het vastzetten van de server op een specifiek IP-adres).
+Description-pt.UTF-8: Executar pure-ftpd a partir do inetd ou como servidor isolado:
+ Pure-ftpd pode ser executado a partir do inetd ou como um deamon isolado. Usaro inetd é uma opção adequada para servidores ftp de pequena dimensão porque o super--servidor inetd só executará o pure-ftpd para tratar das ligações de entrada. A operação como servidor isolado é mais eficiente para servidores ftp com muito tráfego.
+ .
+ Atenção que algumas opções só funcionam em modo isolado, tais como limitar as ligações por IP e atribuir o servidor a um enderço IP específico.
+Description-pt_BR.UTF-8: Executar o pure-ftpd a partir do inetd ou como um servidor autônomo:
+ O pure-ftpd pode ser executado a partir do inetd ou como um daemon autônomo. Usar inetd é adequado para pequenos servidores ftp porque o inetd super server somente vai lançar o pure-ftpd para manipular conexões de entrada. Operação autônoma é mais eficiente para servidores ftp ocupados.
+ .
+ Tenha em mente que algumas opções só funcionam em modo autônomo, como limitar conexões por IP e vincular o servidor a um endereço IP específico.
+Description-ru.UTF-8: Запускать pure-ftpd:
+ Pure-ftpd может быть запущен из inetd или как автономная служба. Работа через inetd подходит для маленьких ftp серверов, так как супер-сервер inetd будет запускать pure-ftpd только при возникновении подключения. Автономная работа более эффективна для нагруженных ftp машин.
+ .
+ Учтите, что некоторые настройки работают только при запуске в автономном режиме, например ограничение соединений по IP или привязка сервера к определённому IP-адресу.
+Description-sv.UTF-8: Köra pure-ftpd från inetd eller som en fristående tjänst?
+ Pure-ftpd kan köras från inetd eller som en fristående demon. Att använda inetd är en lämplig lösning för mindre ftpservrar därför att inetd kommer bara att starta pure-ftpd för att hantera inkommande anslutningar. Det fristående läget är mer effektivt för ftpservrar med hög belastning.
+ .
+ Tänk på att vissa inställningar bara fungerar i det fristående läget såsom begränsningar av anslutningar per IP-address och att binda servern till en specifik IP-address.
+Description-vi.UTF-8: Chạy pure-ftpd từ inetd hoặc chạy nó là trình phục vụ độc lập:
+ Pure-ftpd chạy được từ trình nền inetd hoặc là một trình nền độc lập. Dùng inetd là một tùy chọn thích hợp với máy phục vụ FTP nhỏ, vì siêu trình phục vụ inetd sẽ chỉ khởi chạy pure-ftpd để xử lý kết nối gửi đến. Thao tác độc lập cũng hữu hiệu hơn cho địa chỉ FTP bận.
+ .
+ Ghi nhớ rằng vài tùy chọn chỉ hoạt động ở chế độ độc lập, v.d. hạn chế kết nối theo địa chỉ IP, và tổ hợp trình phục vụ với một địa chỉ IP nào đó.
+
+Template: pure-ftpd/ftpwho-setuid
+Type: boolean
+Default: false
+Description: Do you want pure-ftpwho to be installed setuid root?
+ The pure-ftpwho program only works with root privileges. Since it's a
+ fairly trivial program, this poses little security risk. Still, it is only
+ recommended that you install any program setuid root if you need it.
+ .
+ You can always change your mind later by reconfiguring this package with
+ "dpkg-reconfigure pure-ftpd-common".
+Description-cs.UTF-8: Chcete nainstalovat pure-ftpwho jako setuid root?
+ Program pure-ftpwho pracuje pouze s rootovskými právy. protože se jedná o celkem triviální program, představuje to minimální bezpečnostní riziko. Platí ovšem letitá pravda, že byste měli nastavovat setuid root pouze pokud to opravdu potřebujete.
+ .
+ Pokud se kdykoliv později rozhodnete jinak, můžete znovu spustit nastavení balíku příkazem "dpkg-reconfigure pure-ftpd-common".
+Description-da.UTF-8: Ønsker du, at pure-ftpwho skal installeres setuid root?
+ Programmet pure-ftpwho virker kun med rodprivilegier. Da det er et ret simpelt program, udgør dette kun en lille sikkerhedsrisiko. Det er dog stadig kun anbefalet at installere et program som setuid root, hvis du har brug for det.
+ .
+ Du kan altid skifte mening senere ved at rekonfigurere denne pakke med »dpkg-reconfigure pure-ftpd-common«.
+Description-de.UTF-8: Möchten Sie, dass pure-ftpwho setuid-root installiert wird?
+ Das Programm pure-ftpwho funktioniert nur mit root-Rechten. Da es sich dabei um ein ziemlich einfaches Programm handelt, stellt das ein geringes Sicherheitsrisiko dar. Dennoch wird empfohlen, ein Programm nur dann setuid-root zu installieren, wenn Sie dies auch wirklich benötigen.
+ .
+ Sollten Sie Ihre Meinung später ändern, können Sie das Paket mit »dpkg-reconfigure pure-ftpd-common« neu konfigurieren.
+Description-es.UTF-8: ¿Desea instalar pure-ftpwho con el bit «setuid» de root activado?
+ El programa pure-ftpwho sólo funciona con privilegios de administrador. Puesto que es un programa bastante trivial, esto supone un riesgo bajo de seguridad. Aun así, sólo se recomienda la instalación de un programa con privilegios de administrador si es necesario.
+ .
+ Puede cambiar de opinión más tarde y reconfigurar este paquete con «dpkg-reconfigure pure-ftpd-common».
+Description-eu.UTF-8: Nahi al duzu pure-ftpwho setuid root gisa instalatzea?
+ Pure-ftpwho programak root pribilegioez bakarrik funtzionatzen du. Nahiz hau programa xumea den segurtasun arrisku bat izan daiteke konfigurazio hau. Beraz setuid root gisa behar dituzun programak bakarrik instalatzea gomendatzen da.
+ .
+ Zure aukera beti beranduago alda dezakezu "dpkg-reconfigure pure-ftpd-common" erabiliaz.
+Description-fi.UTF-8: Tulisiko pure-ftpwho asentaa asetuksella setuid root?
+ Ohjelma pure-ftpwho toimii vain pääkäyttäjäoikeuksilla. Koska se on melko yksinkertainen ohjelma, sen aiheuttamat tietoturvariskit ovat pieniä. Tästä huolimatta on suositeltavaa asentaa pääkäyttäjäoikeuksilla ajettavaksi (setuid root) vain ne ohjelmat, joita tarvitaan.
+ .
+ Asetusta voidaan muuttaa myöhemmin ajamalla komento ”dpkg-reconfigure pure-ftpd-common”.
+Description-fr.UTF-8: Pure-ftpwho doit-il s'exécuter avec les droits du superutilisateur ?
+ Le programme pure-ftpwho ne fonctionne qu'avec les droits du superutilisateur. Comme il s'agit d'un programme sans originalité, cela ne pose guère de problème de sécurité. Néanmoins, il est toujours recommandé de n'installer des programmes « setuid root » que si vous en avez besoin.
+ .
+ Vous pouvez toujours changer d'avis plus tard et reconfigurer ce paquet avec « dpkg-reconfigure pure-ftpd-common ».
+Description-gl.UTF-8: ¿Quere instalar pure-ftpwho con "setuid" root?
+ O programa pure-ftpwho só funciona con privilexios de administrador. Como é un programa bastante trivial, isto presenta pouco risco de seguridade. Aínda así, recoméndase que instale os programas con "setuid" root só se o precisa.
+ .
+ Sempre pode cambiar de idea máis tarde e reconfigurar o paquete coa orde "dpkg-reconfigure pure-ftpd-common".
+Description-it.UTF-8: Si vuole che pure-ftpwho sia installato con il setuid root?
+ Il programma pure-ftpwho funziona solo se possiede i privilegi di root. Dato che è un programma molto semplice, espone un rischio per la sicurezza molto piccolo. In ogni caso, si raccomanda l'installazione di programmi con setuid root solo quando necessario.
+ .
+ In seguito è comunque possibile cambiare questa scelta riconfigurando questo pacchetto con "dpkg-reconfigure pure-ftpd-common".
+Description-ja.UTF-8: pure-ftpwho を root に setuid してインストールしますか?
+ pure-ftpwho プログラムは root 権限でのみ動作します。これはあまり重要ではないプログラムなことに加え、root に setuid するソフトをインストールするのでセキュリティ上のリスクが多少増えることになります。(root に setuid されたプログラムをインストールするのは本当に必要な時だけにしましょう) 
+ .
+ 後で気が変わった際にいつでも "dpkg-reconfigure pure-ftpd-common" とすることでこのパッケージを再設定可能です。
+Description-nl.UTF-8: Wilt u pure-ftpwho installeren met de setuid-bit voor root ingesteld?
+ Het programma pure-ftpwho vereist root-rechten. Aangezien dit een nogal triviaal programma is, is het beveiligingsrisico beperkt. Het blijft echter aan te raden om dit programma enkel setuid-root te installeren als u het ook nodig heeft.
+ .
+ U kunt later altijd van gedachten veranderen en het pakket herconfigureren via het commando 'dpkg-reconfigure pure-ftpd-common'.
+Description-pt.UTF-8: Quer instalar pure-ftpwho como setuid root ?
+ O programa pure-ftpwho apenas funciona com privilégios de root. Uma vez que é um programa simples, isto coloca poucos riscos de segurança. No entanto, érecomendado que apenas se instalem programas como setuid root se realmente forem necessários.
+ .
+ Pode sempre mudar de ideias mais tarde ao reconfigurar este pacote com "dpkg-reconfigure pure-ftp-common".
+Description-pt_BR.UTF-8: Você quer que o pure-ftpwho seja instalado com setuid root?
+ O programa pure-ftpwho somente funciona com privilégios de root. Como é um programa bastante trivial, isto representa um risco de segurança pequeno. Ainda assim, é recomendado que você somente instale qualquer programa com setuid root se você dele precisar.
+ .
+ Você sempre pode modificar sua opção depois pela reconfiguração deste pacote com "dpkg-reconfigure pure-ftpd-common".
+Description-ru.UTF-8: Установить pure-ftpwho с включённым setuid root?
+ Программа pure-ftpwho работает только имея права суперпользователя. Так как это достаточно простая программа, такая установка не несёт большой угрозы. Но всё же рекомендуется устанавливать любую программу с setuid root, если это действительно нужно.
+ .
+ Вы всегда можете изменить настройку позже, перенастроив пакет с помощью команды "dpkg-reconfigure pure-ftpd-common".
+Description-sv.UTF-8: Vill du att pure-ftpwho ska installeras setuid root?
+ Programmet pure-ftpwho fungerar bara med root-rättigheter. Eftersom det är ett hyffsat simpelt program utgör det en liten säkerhetsrisk. Fortfarande är det bara rekommenderat att du installerar program med setuid root om du behöver det.
+ .
+ Du kan alltid ändra dig senare genom att konfigurera om detta paket med "dpkg-reconfigure pure-ftpd-common".
+Description-vi.UTF-8: Bạn có muốn cài đặt pure-ftpwho là setuid root không?
+ Chương trình pure-ftpwho chỉ chạy với quyền người chủ (root). Vì nó là một chương trình hơi không quan trọng, trường hợp này ít rủi ro bảo mật. Tuy nhiên, vẫn còn khuyên bạn chỉ cài đặt phần mềm là setuid root nếu cần thiết.
+ .
+ Luôn luôn có thể thay đổi ý muốn sau này bằng cách cấu hình lại gói này dùng câu lệnh « dpkg-reconfigure pure-ftpd-common ».
+
+Template: pure-ftpd/config-obsolete-note
+Type: note
+Description: Your installation uses an obsolete configuration method
+ Older versions of the pure-ftpd debian package used command-line options
+ specified in /etc/default/pure-ftpd. This has been changed because there
+ was no easy way to use these options when the daemon was spawned from
+ inetd.
+ .
+ Pure-ftpd now uses the /etc/pure-ftpd.conf file (via pure-config.pl) for
+ configuration in either standalone or inetd mode. You should check that
+ any customization you've made in the /etc/default/pure-ftpd OPTIONS are
+ reflected in /etc/pure-ftpd.conf, as it is not possible for the moment
+ to use a way to do this automatically that would work for all cases.
+ You can then delete the unused OPTIONS line to avoid seeing this message
+ in the future.
+Description-cs.UTF-8: Vaše instalace používá zastaralé nastavení
+ Starší verze balíku pure-ftpd měly uloženy parametry z příkazového řádku v souboru /etc/default/pure-ftpd. To již neplatí, protože neexistoval jednoduchý způsob, jak tyto parametry dostat do programu, pokud byl spouštěn z inetd.
+ .
+ Pure-ftpd nyní pro konfiguraci používá soubor /etc/pure-ftpd.conf (skrze pure-config.pl). Měli byste zkontrolovat, zda jsou všechny úpravy souboru /etc/default/pure-ftpd sekce OPTIONS přeneseny do /etc/pure-ftpd.conf. Momentálně totiž není možné ošetřit všechny případy, které mohou při převodu nastat. Abyste se této hlášky v budoucnu zbavili, můžete nepotřebný řádek OPTIONS smazat.
+Description-da.UTF-8: Din installation bruger en forældet konfigurationsmetode
+ Ældre versioner af debianpakken pure-ftpd brugte kommandlinjetilvalg angivet i /etc/default/pure-ftpd. Dette er blevet ændret, da der ikke var nogen nem måde at bruge disse tilvalg, når dæmonen udgik fra inetd.
+ .
+ Pure-ftpd bruger nu filen /etc/pure-ftpd-conf (med pure-config.pl) for konfiguration i enten alenestående eller inetd-tilstand. Du bør kontrollere at alle tilpasninger, du har lavet i /etc/default/pure-ftpd OPTIONS, er afspejlet i /etc/pure-ftpd.conf, da det i øjeblikket ikke er muligt at bruge en måde, som kan gøre dette automatisk og virke i alle tilfælde. Du kan efterfølgende så slette den ubrugte OPTIONS-linje for at undgå at se denne besked i fremtiden.
+Description-de.UTF-8: Ihre Installation verwendet eine veraltete Konfigurationsmethode
+ Ältere Versionen des Debian-Paketes pure-ftpd verwendeten Kommandozeilen-Optionen, die in /etc/default/pure-ftpd niedergeschrieben waren. Das wurde nun geändert, da es keine einfache Möglichkeit gab, diese Optionen zu verwenden, wenn pure-ftpd von inetd gestartet wurde.
+ .
+ Pure-ftpd verwendet nun sowohl im Daemon- als auch im inetd-Modus die Datei /etc/pure-ftpd.conf (mittels pure-config.pl) zur Konfiguration. Sie sollten überprüfen, ob alle Veränderungen, die Sie an der OPTIONS-Variable in /etc/default/pure-ftpd vorgenommen haben, nun auch in /etc/pure-ftpd.conf vorkommen. Leider gibt es zurzeit keine automatische Anpassung, die in allen Fällen funktionieren würde. Nach der manuellen Anpassung können Sie die OPTIONS-Zeile löschen, um zu verhindern, dass Sie diese Nachricht in Zukunft erneut sehen.
+Description-es.UTF-8: Su instalación utiliza un método de configuración obsoleto
+ Las versiones antiguas del paquete pure-ftpd de debian utilizaban opciones de línea de órdenes especificadas en «/etc/default/pure-ftpd». Esto se ha cambiado porque no había una manera fácil de usar estas opciones cuando el demonio arrancaba desde inetd.
+ .
+ Pure-ftpd utiliza ahora el archivo «/etc/pure-ftpd.conf» (via «pure-config.pl») para la configuración, tanto en modo independiente como si utiliza inetd. Debería asegurarse de que cualquier cambio que haya realizado en la línea OPTIONS de «/etc/default/pure-ftpd» se ve reflejado en «/etc/pure-ftpd.conf», ya que no es posible por ahora un modo de hacerlo automáticamente que funcione en todos los casos. Después puede borrar la línea OPTIONS no utilizada para que este mensaje no se muestre de nuevo.
+Description-eu.UTF-8: Zure instalazioak zaharkituriko konfigurazio metodo bat erabiltzen du
+ Pure-ftpd debian paketearen bertsio zaharrek komando lerroko aukerak /etc/default/pure-ftpd fitxategian ezartzen dituzte. Hau aldatua izan da ez dago aukera horiek erabiltzeko modu errazik deabrua inetd bidez abiaraztean.
+ .
+ Pure-ftpdek orain /etc/pure-ftpd.conf fitxategia erabiltzen du (pure-config.pl bidez) konfiguraziorako bai bakarka bai inetd bidez erabiltzean. Egiaztatu egin beharko zenuke /etc/default/pure-ftpd aukeretan egindako edozein pertsonalizazio /etc/pure-ftpd.conf fitxategian isladatzen dela, orinagoz ez dagoenez horrek kasu guztietan funtzionatzen duen modu bat erabiltzea. Orduan erabili gabeko OPTIONS lerroa ezabatu dezakezu mezu hau aurrerantzean agertzea saihesteko.
+Description-fi.UTF-8: Käytössä oleva asennus käyttää vanhentunutta asetustapaa
+ Vanhemmat Debian-paketin pure-ftpd versiot käyttivät tiedostossa /etc/default/pure-ftpd määriteltyjä komentorivivalitsimia. Tätä muutettiin, koska näitä valitsimia ei saataisi käyttöön, kun taustaohjelma käynnistetään inetdistä.
+ .
+ Nykyään pure-ftpd käyttää asetustiedostoa /etc/pure-ftpd.conf (luodaan ohjelmalla pure-config.pl) itsenäisessä ja inetd-tilassa. Varmista, että tiedoston /etc/default/pure-ftpd OPTIONS-riville tehdyt muutokset näkyvät tiedostossa /etc/pure-ftpd.conf. Tätä tarkistusta ei voida kaikissa tilanteissa tehdä automaattisesti. Tarkistuksen jälkeen OPTIONS-rivi voidaan poistaa, jolloin tätä viestiä ei enää näytetä tulevaisuudessa.
+Description-fr.UTF-8: Méthode de configuration obsolète
+ Les anciennes versions du paquet Debian pure-ftpd utilisaient des options en ligne de commande spécifiées dans /etc/default/pure-ftpd. Ceci a été changé car il n'y avait aucune manière simple d'utiliser ces options lorsque le démon était lancé par inetd.
+ .
+ Pure-ftpd utilise dorénavant le fichier /etc/pure-ftpd.conf (via pure-config.pl) pour configurer aussi bien le mode autonome que le mode inetd. Vous devriez vérifier que toutes les modifications que vous avez effectuées dans /etc/default/pure-ftpd OPTIONS sont bien présentes dans /etc/pure-ftpd.conf puisqu'il est pour l'instant impossible d'utiliser une méthode qui fonctionnerait dans tous les cas pour faire ceci automatiquement. Vous pouvez ensuite supprimer la ligne OPTIONS pour éviter l'apparition de ce message à l'avenir.
+Description-gl.UTF-8: A súa instalación emprega un método de configuración obsoleto
+ As versións antigas do paquete Debiann pure-ftpd empregaban opcións de liña de ordes especificadas en /etc/default/pure-ftpd. Isto cambiouse porque non había unha maneira doada de empregar esas opcións cando se lanzaba o servizo desde inetd.
+ .
+ Pure-ftpd agora emprega o ficheiro /etc/pure-ftpd.conf (mediante pure-config.pl) para a configuración tanto en modo autónomo coma inetd. Debería asegurarse de que as personalizacións que faga na liña OPTIONS de /etc/default/pure-ftpd se reflictan en /etc/pure-ftpd.conf, xa que de momento non hai unha maneira de facelo automaticamente e que funcione en tódolos casos. Despois ha poder eliminar a liña OPTIONS para non volver ver esta mensaxe no futuro.
+Description-it.UTF-8: L'attuale installazione usa una modalità di configurazione obsoleta
+ Nelle versioni più vecchie del pacchetto Debian pure-ftpd le opzioni da usare erano specificate nella riga di comando in /etc/default/pure-ftpd. Questa modalità è stata cambiata perché non era possibile usare queste opzioni quando si separa il demone da inetd.
+ .
+ Adesso pure-ftpd utilizza come file di configurazione /etc/pure-ftpd.conf (attraverso pure-config.pl) in entrambe le modalità standalone e inetd. Si deve verificare se tutte le personalizzazioni fatte nella riga OPTIONS di /etc/default/pure-ftpd sono state riportate in /etc/pure-ftpd.conf, infatti ancora non esiste un modo per effettuare l'importazione che funziona in qualsiasi caso. Dopo la verifica si può cancellare la riga OPTIONS per evitare che in futuro sia nuovamente visualizzato questo messaggio.
+Description-ja.UTF-8: 過去のインストールでは既に廃止された設定方法を使用しています
+ 過去のバージョンの pure-ftpd Debian パッケージではコマンドラインオプションを /etc/default/pure-ftpd で指定していました。この方式だと inted 経由でデーモンを呼び出す場合にオプションを指定しづらいため、現在は変更されています。
+ .
+ pure-ftpd は現在、スタンドアロンと inetd 経由のどちらでも (pure-config.pl によって作成された) /etc/pure-ftpd.conf ファイルを設定として利用しています。/etc/default/pure-ftpd の OPTIONS で指定したカスタマイズが /etc/pure-ftpd.conf に反映されているか確認してください。これは、あらゆるケースで動作する設定ファイルを自動的に作成するのは現状では不可能なためです。OPTIONS は使用されないので削除してしまってかまいません。削除すれば今後はこのメッセージが表示されません。
+Description-nl.UTF-8: Uw installatie gebruikt een verouderde configuratiemethode
+ Oudere versies van het 'pure-ftpd'-pakket maakten gebruik van in /etc/default/pure-ftpd opgegeven commando-regel opties. Dit is veranderd omdat er geen goede methode was om deze opties te gebruiken wanneer de achtergronddienst door inetd opgestart werd.
+ .
+ Pure-ftpd gebruikt nu het bestand /etc/pure-ftpd.conf voor configuratie (via pure-config.pl) in beide modussen (op-zichzelf-staand en inetd). U kunt best nagaan of alle aanpassingen die gemaakt heeft aan de 'OPTIONS'-regel in /etc/default/pure-ftpd weergegeven zijn in /etc/pure-ftpd.conf; dit omdat de automatische conversie op dit moment niet in alle gevallen werkt. U kunt de niet langer gebruikte 'OPTIONS'-regel daarna verwijderen om te voorkomen dat u dit bericht in de toekomst weer te zien krijgt.
+Description-pt.UTF-8: A sua instalação usa um método de configuração obsoleto
+ Versões mais antigas do pacote debian pure-ftpd usavam opções de linha de comandos especificadas em /etc/default/pure-ftpd. Isto foi mudado pois não havia forma fácil de usar estas opções ao lançar o programa via inetd.
+ .
+ Pure-ftpd usa agora o ficheiro /etc/pure-ftpd.conf (via pure-config.pl) paraconfiguração quer em modo inetd quer em modo isolado. Deve verificar que qualquer alteração que tenha feito em /etc/default/pure-ftpd OPTIONS sejam reflectidas em /etc/pure-ftpd.conf, uma vez que não é possível, neste momento, fazer isto de forma automática que sirva para todos os casos. Pode depois apagar a linha OPTIONS não usada para evitar ver esta mensagem.
+Description-pt_BR.UTF-8: Sua instalação usa um método obsoleto de configuração
+ Versões antigas do pacote debian pure-ftpd usam opções de linha de comando especificadas em /etc/default/pure-ftpd. Isso foi modificado porque não havia nenhuma maneira fácil para usar estas opções quando o daemon era iniciado a partir do inetd.
+ .
+ Agora o pure-ftpd usa o arquivo /etc/pure-ftpd.conf (via pure-config.pl) para configuração tanto no modo autônomo como no modo inetd. Você deve verificar que qualquer personalização que você tenha feito em /etc/default/pure-ftpd OPTIONS é refletida em /etc/pure-ftpd.conf, pois não é possível no momento usar uma maneira de fazer isso automaticamente e que atenda todos os casos. Você pode então apagar a linha OPTIONS não mais usada para evitar de ver esta mensagem no futuro.
+Description-ru.UTF-8: Установленная версия использует устаревший метод настройки
+ Старые версии debian пакета pure-ftpd указывали параметры командной строки в файле /etc/default/pure-ftpd. Такое поведение было изменено, так как не существовало лёгкого способа использовать эти параметры, когда служба запускалась из inetd.
+ .
+ Для настройки в автономном режиме или inetd в pure-ftpd теперь используется файл /etc/pure-ftpd.conf (через pure-config.pl). Проверьте, что все ваши ручные изменения из параметра OPTIONS (/etc/default/pure-ftpd) перенесены в /etc/pure-ftpd.conf, так как на данный момент невозможно сделать это автоматически. Позже вы можете удалить неиспользуемую строку OPTIONS, чтобы не видеть это сообщения в будущем.
+Description-sv.UTF-8: Din installation använder en föråldrad konfigurationsmetod
+ Äldre version av Debian-paketet pure-ftpd använde kommandoradsinställningar specifierade i /etc/default/pure-ftpd. Detta har ändrats därför att det fanns inget lätt sätt att använda dessa inställningar när demonen startades upp från inetd.
+ .
+ Pure-ftpd använder nu filen /etc/pure-ftpd.conf (via pure-config.pl) för konfiguration i antingen fristående eller inetd-läget. Du bör kontrollera att alla anpassningar du har gjort i /etc/default/pure-ftpd OPTIONS finns med i /etc/pure-ftpd.conf eftersom det inte är möjligt för närvarande att använda ett sätt att göra detta automatiskt som fungerar för alla. Du kan ta bort den oanvända OPTIONS-raden för att förhindra att se detta meddelande igen.
+Description-vi.UTF-8: Bản cài đặt này dùng một phương pháp cấu hình quá cũ
+ Phiên bản gói pure-ftpd cũ đã dùng các tùy chọn dòng lệnh đưa ra trong tập tin « /etc/default/pure-ftpd ». Trường hợp này đã thay đổi vì không dễ dùng tùy chọn này khi trình nền được khởi tạo từ inetd.
+ .
+ Pure-ftpd lúc bây giờ sử dụng tập tin cấu hình « /etc/pure-ftpd.conf » (thông qua « pure-config.pl ») để cấu hình ở chế độ hoặc độc lập hoặc inetd. Có nên kiểm tra bất cứ sự sửa đổi nào bạn đã làm trong các TÙY CHỌN (OPTIONS) « /etc/default/pure-ftpd » cũng phản hồi trong « /etc/pure-ftpd.conf », vì chưa tìm một phương pháp tự động hữu hiệu trong mọi trường hợp. Sau đó thì bạn có thể xoá dòng TÙY CHỌN không dùng để tránh xem thông điệp này lần nữa.
+
+Template: pure-ftpd/saved-inetd-config
+Type: note
+Description: Your old pure-ftpd configuration from inetd.conf has been saved
+ You are upgrading an old version of the pure-ftpd debian package that
+ caused any configuration that was in /etc/inetd.conf to be lost.  Your old
+ configuration has been saved in /etc/inetd.conf-pureftpd.
+Description-cs.UTF-8: Vaše staré nastavení pure-ftpd z inetd.conf bylo uloženo
+ Přecházíte ze staré verze balíku pure-ftpd, což znamená, že veškeré nastavení ze souboru /etc/inetd.conf bude smazáno. Vaše staré nastavení bylo uloženo do /etc/inetd.conf-pureftpd.
+Description-da.UTF-8: Din gamle konfiguration for pure-ftpd fra inetd.conf er blevet gemt
+ Du opgraderer en gammel version af debianpakken pure-ftpd, som medførte at såfremt der var en konfiguration i /etc/inetd.conf, så gik den tabt. Din gamle konfiguration er blevet gemt i /etc/inetd.conf-pureftpd.
+Description-de.UTF-8: Ihre alte »pure-ftpd«-Konfiguration aus der inetd.conf wurde gespeichert.
+ Sie aktualisieren eine ältere Version des Debian-Paketes pure-ftpd, die dafür verantwortlich war, dass alle Einstellungen in der /etc/inetd.conf verloren gingen. Ihre alten Einstellungen wurden in /etc/inetd.conf-pureftpd gespeichert.
+Description-es.UTF-8: Se ha guardado la configuración antigua de inetd.conf para pure-ftpd
+ Está actualizando una versión antigua del paquete debian pure-ftpd, lo que ha causado la pérdida de cualquier configuración que hubiese en el archivo «/etc/inetd.conf». Su configuración antigua se ha guardado en «/etc/inetd.conf-pureftpd».
+Description-eu.UTF-8: Zure inetd-eko pure-ftpd konfigurazio zaharra gordea izan da
+ /etc/inetd.conf fitxategian zegoen edozein konfigurazio galtzea eragiten duen pure-ftpd debian pakete batetatik bertsio-berritzen ari zara.  Zure konfigurazio zaharra /etc/inetd.conf-pureftpd fitxategian gordea izan da.
+Description-fi.UTF-8: Vanhat pure-ftpd:n asetukset tiedostosta inetd.conf on tallennettu
+ Olet päivittämässä vanhasta pure-ftpd:n Debian-paketista, jonka takia kaikki tiedostossa /etc/inetd.conf olleet asetukset hävisivät. Vanhat asetukset on tallennettu tiedostoon /etc/inetd.conf-pureftpd.
+Description-fr.UTF-8: Sauvegarde de l'ancienne configuration de pure-ftpd à partir d'inetd.conf
+ Vous mettez à jour une ancienne version du paquet Debian pure-ftpd ayant provoqué la perte de la configuration contenue dans /etc/inetd.conf. Votre ancienne configuration a été sauvegardée dans /etc/inetd.conf-pureftpd.
+Description-gl.UTF-8: Gardouse a configuración de pure-ftpd antiga procedente de inetd.conf
+ Está a actualizar unha versión antiga do paquete Debian pure-ftpd que fixo que se perdera a configuración que había en /etc/inetd.conf. Gravouse a configuración antiga en /etc/inetd.conf-pureftpd.
+Description-it.UTF-8: La precedente configurazione di pure-ftpd in inetd.conf è stata salvata
+ Si sta aggiornando una vecchia versione del pacchetto Debian di pure-ftpd che comporta la perdita della configurazione in /etc/inetd.conf. La vecchia configurazione è stata salvata in /etc/inetd.conf-pureftpd.
+Description-ja.UTF-8: inetd.conf に対して行った pure-ftpd の過去の設定は保存されました
+ 古いバージョンの pure-ftpd Debianパッケージをアップグレードすることにより /etc/inetd.conf にあった過去のあらゆる設定は消去されます。過去の設定は /etc/inetd.conf-pureftpd へ保存されます。
+Description-nl.UTF-8: Uw oude pure-ftpd-configuratie uit inetd.conf is opgeslagen
+ U waardeert op van een oude versie van het 'pure-ftpd'-pakket waardoor de configuratie in /etc/inetd.conf verloren gaat. Uw oude configuratie wordt opgeslagen als /etc/inetd.conf-pureftpd .
+Description-pt.UTF-8: A sua antiga configuração do pure-ftpd do inetd.conf foi guardada
+ Está a actualizar uma versão antiga do pacote debian de pure-ftpd que causou a perda de configuração existente em /etc/inetd.conf. A sua configuração antiga foi guardada em /etc/inetd.conf-pureftpd.
+Description-pt_BR.UTF-8: Sua configuração antiga do pure-ftpd do inetd.conf foi salva
+ Você está atualizando uma versão antiga do pacote debian pure-ftpd que pode causar a perda de qualquer configuração que estava no /etc/inetd.conf. Sua antiga configuração foi salva em /etc/inetd.conf-pureftpd.
+Description-ru.UTF-8: Сохранены старые настройки pure-ftpd из inetd.conf
+ При обновление старой версии пакета debian pure-ftpd все настройки из /etc/inetd.conf будут потеряны. Старая настройка сохранена в файле /etc/inetd.conf-pureftpd.
+Description-sv.UTF-8: Din gamla konfiguration för pure-ftpd från inetd.conf har sparats
+ Du uppgraderar från en äldre version av Debian-paketet pure-ftpd som orsakade att konfigurationen som fanns i /etc/inetd.conf förlorades. Din gamla konfiguration har sparats i /etc/inetd.conf-pureftpd.
+Description-vi.UTF-8: Cấu hình pure-ftpd cũ (từ inetd.conf) đã được lưu
+ Bạn đang nâng cấp một phiên bản cũ của gói Debian pure-ftpd mà gây ra bất cứ cấu hình nào nằm trong « /etc/inetd.conf » bị mất. Cấu hình cũ đã được lưu vào « /etc/inetd.conf-pureftpd ».
+
+Template: pure-ftpd/minuid
+Type: note
+Description: Default MinUID value has been changed to 1000
+ The default value for the -u flag stored in /etc/pure-ftpd/conf/MinUID has
+ been changed from 100 to 1000 in order to comply with the Debian policy.
+ This may break your Pure-FTPd setup if you are using virtual users with an
+ uid below 1000.
+Description-cs.UTF-8: Výchozí hodnota MinUID se zvýšila na 1000
+ Výchozí hodnota pro příznak -u uložená v /etc/pure-ftpd/conf/MinUID se v souladu s politikou Debianu zvýšila ze 100 na 1000. Pokud používáte virtuální uživatele s uid menším než 1000, je možné, že Pure-FTPd nebude pracovat správně.
+Description-da.UTF-8: Standard MinUID-værdi er blevet ændret til 1000
+ Standardværdien for flaget -u gemt i /etc/pure-ftpd/conf/MinUID er blevet ændret fra 100 til 1000 for at overholde Debianpolitikken. Dette kan ødelægge din Pure-FTPd-opsætning, hvis du bruger virtuelle brugere med en uid under 1000.
+Description-de.UTF-8: MinUID-Standardwert wurde auf 1000 geändert
+ Der Standardwert für die Option »-u«, der in /etc/pure-ftpd/conf/MinUID gespeichert wird, wurde von 100 auf 1000 geändert, um der Debian-Policy zu entsprechen. Das kann dafür sorgen, dass Ihre bisherige Pure-FTPd-Einrichtung nicht mehr korrekt funktioniert, sofern Sie virtuelle Server mit einer Benutzer-ID (uid) unter 1000 verwenden.
+Description-es.UTF-8: El valor predeterminado para MinUID ha sido cambiado a 1000
+ El valor predeterminado para el parámetro -u almacenado en «/etc/pure-ftpd/conf/MinUID» ha cambiado de 100 a 1000 para cumplir con la normativa de Debian. Esto puede romper su configuración de Pure-FTPd si está utilizando usuarios virtuales con un uid (identificador de usuario) menor que 1000.
+Description-eu.UTF-8: Lehenetsiriko MinUID balioa 1000 bezala ezarri da
+ /etc/pure-ftpd/conf/MinUID fitxategian gordetako -u banderaren balioa 100etik 1000ra aldatua izan da Debian segurtasun politika betetzeko. Honek 1000tik beherako erabiltzaile birtualak erabiltzen badituzu Pure-FTPd hondatuko du.
+Description-fi.UTF-8: MinUID:n oletusarvoksi on vaihdettu 1000
+ Valitsimen -u tiedostoon /etc/pure-ftpd/conf/MinUID tallennettu oletusarvo on vaihdettu arvosta 100 arvoon 1000 Debianin sääntöjen noudattamiseksi. Tämä saattaa rikkoa pure-ftpd:n toiminnan, jos käytössä on virtuaalisia käyttäjiä, joiden UID on pienempi kuin 1000.
+Description-fr.UTF-8: Valeur par défaut MinUID établie à 1000
+ La valeur par défaut destinée à l'option -u et conservée dans /etc/pure-ftpd/conf/MinUID a été changée de 100 en 1000 afin de se conformer à la charte Debian. Cela peut perturber la configuration de Pure-FTPd si vous avez des utilisateurs virtuels dont l'UID est inférieur à 1000.
+Description-gl.UTF-8: O valor de MinUID por defecto cambiouse a 1000
+ O valor por defecto para o modificador -u armacenado en /etc/pure-ftpd/conf/MinUID cambiouse de 100 a 1000 para cumprir coa política de Debian. Isto pode romper a configuración de Pure-FTPd se emprega usuarios virtuais cun UID inferior a 1000.
+Description-it.UTF-8: Il valore predefinito di MinUID è stato modificato in 1000
+ Il valore predefinito dell'opzione -u, memorizzato in /etc/pure-ftpd/conf/MinUID, è passato da 100 a 1000 in modo da essere conforme alla policy Debian. Questo potrebbe compromettere l'attuale configurazione di Pure-FTPd nel caso si utilizzino degli utenti virtuali con uid inferiore a 1000.
+Description-ja.UTF-8: MinUID の最小値は 1000 に変更されました。
+ Debian ポリシーに準拠するため、-u フラグのデフォルト値 (/etc/pure-ftpd/conf/MinUID に保存されます) は 100 から 1000 に変更されました。UID が 1000 以下の仮想ユーザを利用していた場合、この変更によって pure-ftpd が動かなくなるかもしれません。
+Description-nl.UTF-8: De standaard minimum UID-waarde is veranderd naar 1000
+ De standaardwaarde voor de '-u'-vlag in /etc/pure-ftpd/conf/MinUID is veranderd van 100 naar 1000 om zo te voldoen aan het Debian-beleid. Als u virtuele gebruikers heeft met een uid die lager is dan 1000 kan dit uw Pure-FTPd opzet breken.
+Description-pt.UTF-8: O valor MinUID por omissão foi mudado para 1000
+ O valor por omissão para a opção -u guardado em /etc/pure-ftpd/conf/MinUID foi alterado de 100 para 1000 para estar de acordo com a política Debian. Isto pode afectar a sua configuração do Pure-FTPd se usar utilizadores virtuais com uid menor que 1000.
+Description-pt_BR.UTF-8: Valor MinUID padrão foi modificado para 1000
+ O valor padrão para a opção -u armazenado em /etc/pure-ftpd/conf/MinUID foi modificado de 100 para 1000 a fim de cumprir a política Debian. Isto pode quebrar sua configuração do Pure-FTPd se você está usando usuários virtuais com um uid abaixo de 1000.
+Description-ru.UTF-8: Значение по умолчанию для MinUID теперь равно 1000
+ Чтобы соответствовать политике Debian значение по умолчанию для параметра -u, хранящееся в /etc/pure-ftpd/conf/MinUID, было изменено с 100 на 1000. Это может повредить настройку Pure-FTPd, если вы настроили виртуальных пользователей с uid менее 1000.
+Description-sv.UTF-8: Standardvärdet för MinUID har ändrats till 1000
+ Standardvärdet för -u flaggan som lagras i /etc/pure-ftpd/conf/MinUID har ändrats från 100 till 1000 för att rätta sig efter Debian's policy. Detta kan bryta dina Pure-FTPd inställningar om du använder virtuella användare med ett uid längre än 1000.
+Description-vi.UTF-8: Giá trị MinUID mặc định đã được thay đổi thành 1000
+ Giá trị mặc định cho cờ « -u » được lưu trong « /etc/pure-ftpd/conf/MinUID » đã được thay đổi từ 100 thành 1000, để tuân theo chính sách Debian. Trường hợp này có thể phá vỡ thiết lập Pure-FTPd nếu bạn có người dùng ảo với UID dưới 1000.
+
+Template: pure-ftpd/virtualchroot
+Type: boolean
+Default: false
+Description: Enable virtual chroots ?
+ Chrooted users are usually restricted to their home directory.
+ With virtual chroots symbolic links are always followed, even if they are
+ pointing to directories not located in the user's home directory. 
+ This is useful for having shared directories like a symbolic link
+ to /var/incoming in every home directory.
+Description-cs.UTF-8: Povolit virtuální chroot?
+ Chrootovaní uživatelé jsou obvykle omezeni na svůj domovský adresář. Ve virtuálním chrootu však mohou uživatelé následovat i symbolické odkazy odkazující mimo domovský adresář. To je výhodné například pro umístění odkazů na sdílené adresáře typu /var/incoming do každého domovského adresáře.
+Description-da.UTF-8: Aktivere virtuel chroot'er?
+ Chrootede brugere er normalt begrænset til deres hjemmemappe. Med virtuelle chroot'er bliver symbolske henvisninger altid fulgt, også selv om de peger på mapper, som ikke er placeret i brugerens hjemmemappe. Dette er brugbart til at have delte mapper såsom en symbolsk henvisning til /var/incoming i alle hjemmemapper.
+Description-de.UTF-8: Virtuelle »chroots« aktivieren?
+ Benutzer innerhalb eines »chroots« haben normalerweise keinen Zugriff auf Dateien außerhalb ihres Home-Verzeichnisses. Mit virtuellen »chroots« können Benutzer symbolischen Links sogar dann folgen, wenn diese auf Verzeichnisse außerhalb des Home-Verzeichnisses des Benutzers verweisen. Das ist für gemeinsam genutzte Verzeichnisse nützlich, wie beispielsweise ein symbolischer Link aus jedem Home-Verzeichnis auf /var/incoming.
+Description-es.UTF-8: ¿Desea activar las jaulas «chroot» virtuales?
+ Los usuarios en un entorno «chroot» están normalmente restringidos a su directorio de usuario. Con las jaulas «chroot» virtuales, siempre se siguen los enlaces simbólicos, incluso si dirigen a directorios situados fuera del directorio del usuario. Esto es útil para tener directorios compartidos como un enlace simbólico a «/var/incoming/» en cada directorio de usuario.
+Description-eu.UTF-8: Chroot birtualak onartu ?
+ Chroot egindako erabiltzaileak normalean bere etxe direktoriora mugaturik daude. Chroot birtualak erabiliaz lotura sinbolikoak errespetatzen dira nahiz erabiltzailearen etxetik kanpora lotzen badute. Hau erabilgarri da etxe direktorio bakoitzean adibidez /var/incoming-era lotura sinboliko baten bidez partekatutako karpetak edukitzeko.
+Description-fi.UTF-8: Käytetäänkö virtuaalisia chrooteja?
+ Käyttäjät, jotka luodaan chrootin kanssa rajoitetaan yleensä omaan kotihakemistoonsa. Virtuaalisten chrootien kanssa symbolisia linkkejä seurataan aina, myös jos ne osoittavat muualle kuin käyttäjän kotihakemistoon. Tämän avulla voidaan luoda jaettuja hakemistoja, esimerkiksi jokaiseen kotihakemistoon voidaan laittaa symbolinen linkki hakemistoon /var/incoming.
+Description-fr.UTF-8: Faut-il activer les environnement fermés (« chroots ») virtuels ?
+ Dans les environnements fermés d'exécution (« chroot »), les utilisateurs sont en général cantonnés dans leur répertoire personnel. Avec les environnements fermés virtuels, les liens symboliques sont toujours suivis, même s'ils pointent vers un emplacement situé en dehors du répertoire personnel de l'utilisateur. Ceci est pratique pour utiliser des répertoires partagés comme un lien symbolique vers /var/incoming dans chaque répertoire utilisateur.
+Description-gl.UTF-8: ¿Activar os chroots virtuais?
+ Os usuarios con chroot adoitan estar restrinxidos ao seu directorio inicial. Cos chroots virtuais sempre se siguen as ligazóns simbólicas, incluso se apuntan a directorios situados fóra do directorio inicial do usuario. Isto é útil para ter directorios compartidos coma unha ligazón simbólica a /var/incoming en cada directorio inicial.
+Description-it.UTF-8: Attivare le chroot virtuali?
+ Solitamente gli utenti in chroot non possono uscire dalla propria directory home. Con le chroot virtuali i link simbolici vengono sempre seguiti, anche se puntano a directory fuori dalla directory home dell'utente. Questo è utile per avere delle directory condivise, per esempio un link a /var/incoming in ogni directory home.
+Description-ja.UTF-8: 仮想 chroot を有効にしますか?
+ chroot されたユーザは通常ホームディレクトリに隔離されます。仮想 chroot では、ユーザのホームディレクトリ内に配置されていないディレクトリを指していても、シンボリックリンクは常に繋がっています。これは、各ホームディレクトリ内で /var/incoming へのシンボリックリンクを張って共有ディレクトリを保持する、というような場合に有用です。
+Description-nl.UTF-8: Wilt u virtuele chroot's activeren?
+ Ge-chroot-te gebruikers zijn gewoonlijk beperkt tot hun thuismap. Met virtuele chroot's worden symbolische koppelingen altijd gevolgd, zelfs als ze wijzen naar mappen die zich niet in de gebruiker z'n thuismap bevinden.
+Description-pt.UTF-8: Activar chroots virtuais ?
+ Utilizadores em chroot estão habitualmente restringidos ao respectivo directório raiz. Com chroots virtuais ligações simbólicas são sempre seguidas mesmo que apontem para fora do directório raiz do utilizador. Isto é útil parater directórios partilhados, tais como uma ligação simbólica para /var/incoming em cada directório raiz.
+Description-pt_BR.UTF-8: Habilitar chroots virtuais?
+ Usuários em chroot normalmente são restritos aos seus diretórios home. Com chroots virtuais links simbólicos sempre são seguidos, mesmo que eles apontem para diretórios que não estejam localizados no diretório home do usuário. Isto é útil para ter diretórios compartilhados, como um link simbólico para /var/incoming em todos diretórios home.
+Description-ru.UTF-8: Включить виртуальные корневые каталоги (chroots)?
+ Пользователи с настроенными корневыми каталогами (chroot), обычно, ограничены своим домашним каталогом. При включённых виртуальных корневых каталогах можно переходить по символическим ссылкам, даже если они указывают на каталоги, расположенные не пользовательских домашних каталогах. Это полезно, если имеется общий каталог, например /var/incoming, на который указывает символическая ссылка из каждого домашнего каталога.
+Description-sv.UTF-8: Aktivera virtuella chroot-miljöer?
+ Chroot'ade användare är normalt tvingade till sina hem-mappar. Med virtuella chroot följs alltid symboliska länkar även om de pekar till mappar som inte finns i användarens hem-mapp.  Detta är användbart om man har delade mappar som en symbolisk länk till /var/incoming i varje hem-mapp.
+Description-vi.UTF-8: Bật chroot ảo không?
+ Người dùng nằm trong chroot thì thường bị hạn chế thành thư mục chính của mình. Đối với chroot ảo, lúc nào cũng theo liên kết tượng trưng, thậm chí nếu nó chỉ tới một thư mục không nằm trong thư mục chính đó. Trường hợp này hữu ích khi có thư mục dùng chung, v.d. mỗi thư mục chính chứa một liên kết tượng trưng tới « /var/incoming ».

@@ -1,0 +1,14 @@
+Template: splatd/uri
+Type: string
+Description: URI of LDAP server:
+ This URI typically will be the same as would be found in your
+ /etc/ldap/ldap.conf file as the URI setting. For example, to connect with
+ SSL to an LDAP server at directory.example.com,
+ ldaps://directory.example.com would be your URI.
+
+Template: splatd/basedn
+Type: string
+Description: Default search base:
+ This is the Base DN, which is typically the same as the BASE setting in
+ /etc/ldap/ldap.conf. For example, this could be something like
+ dc=example,dc=com for the domain example.com.

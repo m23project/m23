@@ -1,0 +1,308 @@
+
+Template: nodm/enabled
+Type: boolean
+Default: false
+Description: Start nodm on boot?
+ Designed for embedded or kiosk systems, nodm starts an X session
+ for a user without asking for authentication. On regular
+ machines, this has security implications and is therefore disabled
+ by default.
+ .
+ You should enable nodm only if you need autologin on this machine.
+Description-cs.UTF-8: Spustit nodm při startu počítače?
+ nodm může spustit sezení X nějakého uživatele bez nutnosti zadání přihlašovacích údajů, to se může hodit především na vestavěných a kiosk počítačích. Na ostatních zařízeních to může být bezpečnostním rizikem a tak je to ve výchozím nastavení vypnuto.
+ .
+ Chcete-li používat automatické přihlášení, zvolte pouze nodm.
+Description-da.UTF-8: Start nodm ved opstart?
+ Designet til indlejrede eller kiosksystemer, nodm starter en X-session for en bruger uden at spørge efter bekræftelse for ægthed. På normale maskiner har dette sikkerhedsimplikationer og er derfor deaktiveret som standard.
+ .
+ Du bør kun aktivere nodm, hvis du har brug for automatisk logind på denne maskine.
+Description-de.UTF-8: Soll Nodm beim Booten gestartet werden?
+ Nodm startet ein X-Sitzung ohne Authentisierung für den Benutzer, da es für Embedded- bzw. Kiosk-Systeme entwickelt wurde. Auf normalen Systemen hat das Auswirkungen auf die Sicherheit und ist deshalb standardmäßig deaktiviert.
+ .
+ Sie sollten Nodm nur aktivieren, falls Sie automatisiertes Anmelden auf diesem System benötigen.
+Description-es.UTF-8: ¿Desea iniciar nodm en el arranque?
+ Diseñado para sistemas integrados o en modo kiosco, nodm inicia una sesión de X para un usuario sin pedir autenticación. Esto tiene implicaciones de seguridad en máquinas normales, por lo que está deshabilitado de forma predeterminada.
+ .
+ Sólo debe activar nodm si necesita acceso automático («autologin») en esta máquina.
+Description-fi.UTF-8: Käynnistetäänkö nodm käynnistettäessä järjestelmä?
+ Koska nodm on suunniteltu sulautettuihin ja kioskijärjestelmiin, se käynnistää X-istunnon ilman tunnistautumista. Tavallisilla koneilla tämä on tietoturvariski ja siksi ohjelma on oletuksena poissa käytöstä.
+ .
+ nodm tulisi ottaa käyttöön vain, jos koneella tarvitaan automaattista kirjautumista.
+Description-fr.UTF-8: Faut-il lancer nodm au démarrage ?
+ Conçu pour les systèmes embarqués ou les bornes interactives, nodm démarre une session X pour un utilisateur sans demander d'authentification. Dans un environnement standard, cela a des conséquences sur la sécurité du système et ce choix est donc désactivé par défaut.
+ .
+ Vous devriez activer nodm seulement si vous avez besoin d'authentification automatique sur cette machine.
+Description-gl.UTF-8: Desexa iniciar nodm ao arrincar?
+ Nodm inicia unha sexión X para un usuario sen pedir autenticación. Foi deseñado para sistemas incorporados e kiosk, en máquinas normais iso ten problemas de seguridade polo que por omisión está desactivado.
+ .
+ Só debería activar nodm se precisa facer un acceso automático nesta máquina.
+Description-it.UTF-8: Eseguire nodm all'avvio?
+ Nodm, che è stato concepito per sistemi integrati o kiosk, avvia una sessione di X per un determinato utente senza chiedere l'autenticazione. Su sistemi normali questa funzionalità ha conseguenze in tema di sicurezza e pertanto in modo predefinito è disattivata.
+ .
+ Si dovrebbe abilitare nodm solo se si necessita di un accesso automatico su questa macchina.
+Description-nl.UTF-8: Nodm opstarten bij de systeemstart?
+ Nodm is ontworpen voor embedded of kioskomgevingen en start daarom een X-sessie voor een gebruiker zonder om inloggegevens te vragen. Op normale computers heeft dit gevolgen voor de beveiliging en is daarom standaard uitgeschakeld.
+ .
+ U moet nodm alleen activeren als u automatisch inloggen wilt inschakelen op deze computer.
+Description-pt.UTF-8: Iniciar o nodm no arranque da máquina?
+ Designado para sistemas embebidos ou kiosk, o nodm arranca uma sessão X para um utilizador sem perguntar por autenticação. Em máquinas regulares isto tem implicações de segurança e devido a isso vem desactivado por predefinição.
+ .
+ Você deve activar o nodm apenas se necessita de autenticação automática nesta máquina.
+Description-pt_BR.UTF-8: Iniciar o nodm na inicialização do sistema?
+ Projetado para sistemas embarcados ou quiosques, o nodm inicia uma sessão X para um usuário sem pedir autenticação. Em máquinas comuns isso tem implicações na segurança e portanto é desabilitado por padrão.
+ .
+ Você deve habilitar o nodm somente se precisar de login automático nesta máquina.
+Description-ru.UTF-8: Запускать nodm при загрузке операционной системы?
+ Разработанное для встроенных систем или терминалов, nodm запускает X-сеанс пользователя без запроса аутентификации. На обычных машинах это приводит к проблемам с безопасностью и поэтому по умолчанию служба не запускается.
+ .
+ Включайте nodm только, если вам действительно нужен автоматический вход на эту машину.
+Description-sk.UTF-8: Spúšťať nodm pri zavedení?
+ Navrhnutý pre zahrnuté (embedded) alebo kioskové systémy, nodm spúšťa reláciu X používateľa bez výzvy na autentifikáciu. Na bežných strojoch to je bezpečnostné riziko a preto je predvolene vypnutý.
+ .
+ nodm by ste mali zapnúť, len ak potrebujte na tomto stroji automatické prihlásenie.
+Description-sv.UTF-8: Ska nodm startas under systemets uppstart?
+ Nodm är designat för att användas på inbäddade system eller kioskdatorer, nodm startar en X-session utan att först fråga användaren om användarnamn och lösenord. På vanliga maskiner är detta en klar säkerhetsfara och är därför avaktiverat som standard.
+ .
+ Nodm ska endast aktiveras om du behöver automatisk inloggning på denna maskin.
+
+Template: nodm/user
+Type: string
+Default: root
+Description: User to start a session for:
+ Please enter the login name of the user that will automatically be logged into X by nodm.
+Description-cs.UTF-8: Uživatel, pod kterým se spustí sezení:
+ Zadejte prosím přihlašovací jméno uživatele, který bude automaticky přihlášen do X pomocí nodm.
+Description-da.UTF-8: Bruger at starte en session for:
+ Indtast venligst logindnavnet for brugeren som automatisk vil blive logget ind i X af nodm.
+Description-de.UTF-8: Benutzer für den die Sitzung gestartet werden soll:
+ Bitte geben Sie den Anmeldenamen des Benutzers an, der automatisch durch Nodm an X angemeldet werden soll.
+Description-es.UTF-8: Usuario con el que iniciar una sesión:
+ Introduzca el nombre de acceso del usuario con el que se iniciará automáticamente la sesión de X por nodm.
+Description-fi.UTF-8: Käyttäjä, jolle istunto avataan:
+ Anna käyttäjätunnus, joka kirjataan automaattisesti sisään X-istuntoon nodm:n avulla.
+Description-fr.UTF-8: Identifiant à utiliser pour la session ouverte automatiquement :
+ Veuillez indiquer l'identifiant de l'utilisateur dont la session sera ouverte automatiquement par nodm.
+Description-gl.UTF-8: Usuario co que iniciar unha sesión:
+ Indique o nome de usuario co que acceder automaticamente ás X con nodm.
+Description-it.UTF-8: Utente per il quale iniziare la sessione:
+ Inserire il nome dell'utente per il quale nodm eseguirà automaticamente l'accesso a X.
+Description-nl.UTF-8: Gebruiker waarvoor een sessie moet worden gestart:
+ Wat is de inlognaam van de gebruiker die door nodm automatisch moet worden aangemeld in X?
+Description-pt.UTF-8: Utilizador pelo qual se inicia uma sessão:
+ Por favor indique o nome de login do utilizador que irá ser automaticamente autenticado no X pelo nodm.
+Description-pt_BR.UTF-8: Usuário para o qual iniciar uma sessão:
+ Por favor, informe o nome de login do usuário que será logado automaticamente no X pelo nodm.
+Description-ru.UTF-8: Пользователь, для которого запускается сеанс:
+ Введите имя учётной записи пользователя, под которым будет осуществляться вход в X с помощью nodm.
+Description-sk.UTF-8: Používateľ, ktorého relácia má byť spustená:
+ Prosím, zadajte prihlasovacie meno používateľa, ktorý bude pomocou nodm automaticky prihlásený do X.
+Description-sv.UTF-8: Användare som sessionen ska startas för:
+ Ange namnet på användaren som ska loggas in automatiskt i X av nodm.
+
+Template: nodm/first_vt
+Type: string
+Default: 7
+Description: Lowest numbered vt on which X may start:
+ nodm needs to find a free virtual terminal on which to start the X server.
+ .
+ Since X and getty get to conflict, this parameter will specify the lowest
+ numbered virtual terminal on which to start the search.
+ .
+ This value should be set to one higher than the highest numbered virtual
+ terminal on which a getty may start.
+Description-cs.UTF-8: Nejnižší číslo vt, na kterém je možno spustit X:
+ nodm potřebuje najít volný virtuální terminál, na kterém může spustit server X.
+ .
+ Protože si X a getty navzájem odporují, tento parametr určí nejnižší číslo virtuálního terminálu, na kterém bude zahájeno hledání.
+ .
+ Tato hodnota by měla být o jedničku vyšší než nejvyšší číslovaný virtuální terminál, na kterém může být getty spuštěn.
+Description-da.UTF-8: Lavest nummereret vt hvorpå X må starte:
+ nodm har brug for at finde en ledig virtuel terminal, hvorpå den kan starte X-serveren.
+ .
+ Da X og getty er i konflikt, vil denne parameter angive den lavest nummerede virtuelle terminal, hvorpå søgningen skal starte.
+ .
+ Denne værdi bør angives til en højere end den højest nummerede virtuelle terminal, hvorpå en getty må starte.
+Description-de.UTF-8: Virtuelles Terminal mit der niedrigsten Nummer, in dem X starten darf:
+ Nodm muss ein freies, virtuelles Terminal (vt) finden, auf dem der X-Server gestartet werden kann.
+ .
+ Wegen des Konflikts zwischen X und Getty gibt dieser Parameter die niedrigste Nummer des virtuellen Terminals an, ab dem mit der Suche begonnen wird.
+ .
+ Dieser Wert sollte um eins höher sein als die höchste Nummer des virtuellen Terminals, in dem Getty starten darf.
+Description-es.UTF-8: Terminal virtual con el número más bajo en el que se puede iniciar X:
+ nodm necesita encontrar una terminal virtual libre en la que iniciar el servidor de X.
+ .
+ Debido a que X y getty entran en conflicto, este parámetro definirá la terminal virtual de menor número a partir del cual iniciar la búsqueda.
+ .
+ Este valor se debería definir con el número a continuación de la terminal virtual de mayor número en el cual puede que se inicie getty.
+Description-fi.UTF-8: Pienimmän virtuaalipäätteen numero, jossa X voidaan käynnistää:
+ nodm tarvitsee vapaan virtuaalipäätteen X-palvelimen käynnistykseen.
+ .
+ Koska X ja getty saattavat häiritä toisiaan, tämä parametri kertoo pienimmän virtuaalipäätteen numeron, josta etsintä aloitetaan.
+ .
+ Tämän numeron tulisi olla yhtä suurempi kuin suurin sellaisen virtuaalipäätteen numero, jossa getty saatetaan käynnistää.
+Description-fr.UTF-8: Premier terminal virtuel disponible où X peut être lancé :
+ Il est nécessaire d'utiliser un terminal virtuel disponible pour que nodm puisse y lancer X.
+ .
+ Comme X et getty peuvent entrer en conflit, ce paramètre permet d'indiquer à partir de quel terminal virtuel nodm doit commencer cette recherche.
+ .
+ Il est suggéré d'utiliser une valeur supérieure d'une unité au nombre de terminaux virtuels où getty est utilisé.
+Description-it.UTF-8: Numero inferiore del terminale virtuale a cui X può essere avviato:
+ nodm deve trovare un terminale virtuale libero da cui può avviare il server X.
+ .
+ Poiché X e getty vanno in conflitto, questo parametro specificherà il numero inferiore di terminale virtuale da cui iniziare la ricerca.
+ .
+ Questo valore dovrebbe essere superiore al numero massimo di terminale virtuale in cui getty può essere avviato.
+Description-nl.UTF-8: Laagst-genummerde vt waarop X mag opstarten:
+ Nodm heeft een vrije virtuele terminal nodig om de X-server op te starten.
+ .
+ Aangezien X en getty elkaar in de weg zitten, bepaalt deze parameter de laagst-genummerde virtuele terminal waarvanaf wordt gezocht.
+ .
+ Deze waarde dient één hoger te zijn dan de hoogst-genummerde virtuele terminal waarop mogelijk een getty wordt opgestart.
+Description-pt.UTF-8: O vt com o número mais baixo onde o X pode arrancar:
+ O nodm precisa de encontrar um terminal virtual livre onde arrancar o servidor X.
+ .
+ Como o X e o getty entram em conflito, este parâmetro irá especificar o número mais baixo de terminal virtual onde iniciar a busca.
+ .
+ Este valor deve ser regulado para um número acima do terminal virtual com a numeração mais alta no qual o getty pode arrancar.
+Description-pt_BR.UTF-8: Número de vt mais baixo no qual o X pode iniciar:
+ O nodm precisa encontrar um terminal virtual livre no qual iniciar o servidor X.
+ .
+ Como o X e o getty conflitam, esse parâmetro especificará o terminal virtual de número mais baixo no qual iniciar a procura.
+ .
+ Esse valor deve ser ajustado para o terminal virtual seguinte ao maior terminal virtual no qual um getty possa iniciar.
+Description-ru.UTF-8: Минимальный номер vt, на котором можно запускать X:
+ nodm требуется найти свободный виртуальный терминал для запуска X-сервера.
+ .
+ Так как X и getty конфликтуют, этим параметром задаётся самый маленький номер виртуального терминала, с которого надо начинать поиск.
+ .
+ Это значение должно быть больше на единицу, чем последний номер виртуального терминала, на котором может запускаться getty.
+Description-sk.UTF-8: Najmenšie číslo VT, na ktorom môže byť spustené X:
+ nodm potrebuje nájsť voľný virtuálny terminál, na ktorom môže spustiť X server.
+ .
+ Keďže X a getty sa dostávajú do konfliktu, tento parameter udáva najmenšie číslo virtuálneho terminálu, na ktorom má začať hľadanie.
+ .
+ Táto hodnota by mala byť vyššia ako je najvyššie číslo virtuálneho terminálu, na ktorom môže byť spustené getty.
+Description-sv.UTF-8: Lägsta numrerad vt som X får starta på:
+ nodm behöver hitta en ledig virtuell terminal att starta X-servern på.
+ .
+ Eftersom X och getty kan hamna i konflikt används denna parameter för att bestämma den lägsta numrerade virtuella terminalen sökningen ska börja på.
+ .
+ Värdet ska alltid vara ett högre än det högsta värdet för virtuell terminal som getty får starta på.
+
+Template: nodm/x_options
+Type: string
+Default: -nolisten tcp
+Description: Options for the X server:
+ Please enter the options to pass to the X server when starting it.
+ .
+ If no vtN option is used, nodm will perform automatic vt allocation.
+Description-cs.UTF-8: Volby X serveru:
+ Zadejte prosím volby předávané X serveru při jeho spuštění.
+ .
+ If no vtN option is used, nodm will perform automatic vt allocation.
+Description-da.UTF-8: Indstillinger for X-serveren:
+ Indtast venligst indstillingerne der skal videresendes til X-serveren, når den startes.
+ .
+ If no vtN option is used, nodm will perform automatic vt allocation.
+Description-de.UTF-8: Optionen für den X-Server:
+ Bitte geben Sie die Optionen an, die an den X-Server zum Starten übergeben werden.
+ .
+ If no vtN option is used, nodm will perform automatic vt allocation.
+Description-es.UTF-8: Opciones para el servidor de X:
+ Introduzca las opciones que entregar al servidor X durante su inicio.
+ .
+ If no vtN option is used, nodm will perform automatic vt allocation.
+Description-fr.UTF-8: Options pour le serveur X :
+ Veuillez indiquer les options à utiliser avec le serveur X quand il est lancé.
+ .
+ If no vtN option is used, nodm will perform automatic vt allocation.
+Description-nl.UTF-8: Opties voor de X-server:
+ Welke opties moeten er aan de X-server worden meegegeven wanneer deze wordt opgestart?
+ .
+ If no vtN option is used, nodm will perform automatic vt allocation.
+Description-pt.UTF-8: Opções para o servidor X:
+ Por favor introduza as opções a passar ao servidor X quando o inicia.
+ .
+ If no vtN option is used, nodm will perform automatic vt allocation.
+Description-pt_BR.UTF-8: Opções para o servidor X:
+ Por favor, informe as opções para passar ao servidor X ao iniciá-lo.
+ .
+ If no vtN option is used, nodm will perform automatic vt allocation.
+Description-ru.UTF-8: Параметры для X-сервера:
+ Введите параметры, которые должны быть переданы X-серверу при запуске.
+ .
+ If no vtN option is used, nodm will perform automatic vt allocation.
+Description-sk.UTF-8: Voľby pre server X:
+ Prosím, zadajte voľby, ktoré budú poslané serveru X pri jeho spustení.
+ .
+ If no vtN option is used, nodm will perform automatic vt allocation.
+Description-sv.UTF-8: Alternativ för X-servern:
+ Ange flaggor som ska skickas till X-servern när den startas.
+ .
+ If no vtN option is used, nodm will perform automatic vt allocation.
+
+Template: nodm/min_session_time
+Type: string
+Default: 60
+Description: Minimum time (in seconds) for a session to be considered OK:
+ If an X session will run for less than this time in seconds, nodm will wait an
+ amount of time before restarting the session. The waiting time will grow
+ until a session lasts longer than this amount.
+Description-cs.UTF-8: Minimální čas (v sekundách), který bude považován za OK:
+ Pokud bude sezení X spuštěno po dobu menší než je tento čas, nodm automaticky restartuje sezení. To se bude opakovat dokud vše nenaskočí v pořádku.
+Description-da.UTF-8: Minimum tid (i sekunder) for at en session anses for at være o.k.:
+ Hvis en X-session vil køre i mindre end dette tidspunkt i sekunder, vil nodm vente et tidsrum før genstart af sessionen. Ventetiden vil øges indtil en session varer længere end dette tidsrum.
+Description-de.UTF-8: Mindestzeit (in Sekunden) für eine Sitzung, um als »In Ordnung« zu gelten:
+ Falls eine X-Sitzung kürzer als diese Zeit in Sekunden existiert, wird Nodm eine gewisse Zeit warten, bevor die Sitzung erneut gestartet wird. Die Wartezeit verlängert sich bis eine Sitzung länger als dieser Wert existiert.
+Description-es.UTF-8: Tiempo mínimo (en segundos) para que la sesión se considere correcta:
+ Si una sesión de X se ejecuta durante menos tiempo que éste, nodm esperará un lapso de tiempo antes de reiniciar la sesión. El tiempo de espera aumentará hasta que una sesión dure más tiempo que este lapso.
+Description-fi.UTF-8: Istunnon vähimmäispituus (sekunteina):
+ Jos istunto on lyhyempi kuin tässä annettu vähimmäispituus, nodm odottaa jonkin aikaa ennen uuden istunnon käynnistämistä. Odotusaika kasvaa kunnes istunto on tätä vähimmäisaikaa pidempi.
+Description-fr.UTF-8: Durée minimale (en secondes) d'une session opérationnelle :
+ Si une session X se referme après une durée plus courte qu'une valeur prédéterminée, nodm attendra un certain temps avant de la redémarrer. Ce temps d'attente augmentera progressivement tant qu'une session n'aura pas duré suffisamment longtemps pour être considérée comme opérationnelle.
+Description-gl.UTF-8: Tempo mínimo (en segundos) para que unha sesión se considere OK:
+ Se unha sesión X se vai executar durante menos que este tempo en segundos, nodm agardará un tempo antes de reiniciar a sesión. O tempo de agarda aumentará até que unha sesión dure máis que  esta cantidade.
+Description-it.UTF-8: Tempo minimo (in secondi) affinché una sessione venga considerata OK:
+ Se una sessione di X viene eseguita per meno di questo tempo minimo, nodm attenderà un certo lasso di tempo prima di riavviare la sessione. Tale tempo di attesa aumenterà finché una sessione non durerà più del tempo minimo.
+Description-nl.UTF-8: Kortste tijd (in seconden) voor een sessie die nog in orde is:
+ Als een X-sessie korter duurt dan deze tijd in seconden, dan zal nodm enige tijd wachten voordat de sessie wordt herstart. De wachttijd zal toenemen totdat er een sessie is die langer duurt.
+Description-pt.UTF-8: Tempo mínimo (em segundos) para uma sessão ser considerada OK:
+ Se uma sessão X corre durante menos que este tempo em segundos, o nodm irá esperar um certo tempo antes de reiniciar a sessão. O tempo de espera irá aumentar até que uma sessão dure mais que esta quantidade de tempo.
+Description-pt_BR.UTF-8: Tempo mínimo (em segundos) para uma sessão ser considerada OK:
+ Se uma sessão X executar por menos do que este período de tempo em segundos, o nodm aguardará por um certo tempo antes de reiniciar a sessão. O tempo de espera aumentará até que uma sessão dure mais do que este período de tempo.
+Description-ru.UTF-8: Минимальная длительность (в секундах) сеанса, которая считается нормальной:
+ Если X-сеанс завершится менее чем за указанное здесь число секунд, то nodm выдержит паузу перед тем как запускать его снова. Время ожидания будет увеличиваться пока сеанс не будет отрабатывать больше указанного времени.
+Description-sk.UTF-8: Minimálny čas (v sekundách) relácie, aby bola považovaná za OK:
+ Ak bude relácia X spustená kratšie ako tento čas, nodm určitý čas počká pred reštartovaním relácie. Čas čakania bude narastať, až kým nebude relácia trvať dlhšie ako je zadaný čas.
+Description-sv.UTF-8: Minsta tid (i sekunder) för att en session ska anses fungera korrekt:
+ Om en X-session kör kortare tid än detta (räknat i sekunder) kommer nodm att vänta en stund innan sessionen startas på nytt. Tiden som nodm väntar kommer att öka tills en session körs minst lika länge som anges här.
+
+Template: nodm/xsession
+Type: string
+Default: /etc/X11/Xsession
+Description: X session to use:
+ Please choose the name of the X session script to use with nodm.
+Description-cs.UTF-8: Používané sezení X:
+ Zadejte prosím jméno skriptu sezení X používaného spolu s nodm.
+Description-da.UTF-8: X-session at bruge:
+ Vælg venligst navnet på X-sessionsskriptet der skal bruges med nodm.
+Description-de.UTF-8: Zu benutzende X-Sitzung:
+ Bitte wählen Sie den Namen des X-Sitzung-Skripts, welches Nodm nutzen soll.
+Description-es.UTF-8: Sesión de X a usar:
+ Seleccione el nombre del script de sesión de X a utilizar con nodm.
+Description-fr.UTF-8: Session X à utiliser :
+ Veuillez indiquer le nom du script de session X à utiliser avec nodm.
+Description-nl.UTF-8: Te gebruiken X-sessie:
+ Wat is de naam van het X-sessie-script op dat nodm moet gebruiken?
+Description-pt.UTF-8: Sessão X a usar:
+ Por favor escolha o nome do script da sessão do X para utilizar com o nodm.
+Description-pt_BR.UTF-8: Sessão X a usar:
+ Por favor, escolha o nome do script de sessão X para usar com o nodm.
+Description-ru.UTF-8: Используемый X-сеанс:
+ Укажите имя сценария X-сеанса для использования с nodm.
+Description-sk.UTF-8: Relácia X:
+ Prosím, vyberte meno skriptu relácie X, ktorý má nodm použiť.
+Description-sv.UTF-8: X-session som ska användas:
+ Ange namnet på det X-session-skript som ska användas tillsammans med nodm.
+

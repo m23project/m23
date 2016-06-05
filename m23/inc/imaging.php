@@ -471,6 +471,9 @@ function IMG_getImageFormatSelection($selname,$types,$showType)
 function IMG_serverCreate($transport,$destfile,$port)
 {
 	$fullpath=IMGSTOREDIR.$destfile;
+	
+	if (HELPER_isExecutedOnUCS())
+		UCS_openFirewallPort($port);
 
 	switch ($transport)
 	{

@@ -1,0 +1,305 @@
+
+Template: sqwebmail/calendarmode
+Type: select
+Choices: local, net, disabled
+Choices-cs.UTF-8: místní, síť, vypnuto
+Choices-da.UTF-8: lokal, net, deaktiveret
+Choices-de.UTF-8: Lokal, Netzwerk, Deaktiviert
+Choices-es.UTF-8: local, red, desactivado
+Choices-eu.UTF-8: lokala, sarea, ezgaitua
+Choices-fi.UTF-8: paikallinen, verkko, passivoitu
+Choices-fr.UTF-8: Local, Réseau, Désactivé
+Choices-gl.UTF-8: local, rede, desactivadas
+Choices-it.UTF-8: locale, rete, disabilitata
+Choices-ja.UTF-8: ローカル, ネットワーク, 無効にする
+Choices-nl.UTF-8: lokaal, netwerk, gedeactiveerd
+Choices-pt.UTF-8: local, rede, desligado
+Choices-ru.UTF-8: локальный, сетевой, отключён
+Choices-sv.UTF-8: lokalt, nätverk, avstängd
+Choices-tr.UTF-8: yerel, ağ, etkisiz
+Choices-vi.UTF-8: cục bộ, mạng, bị tắt
+Default: local
+Description: Calendaring mode:
+ Please specify if you would like to enable calendaring in 'local' mode,
+ enable groupware or 'net' mode or disable it.
+ The courier-pcp package is required to use the groupware mode.
+ .
+ Local mode adds very little overhead over a disabled calendaring
+ mode. On the other hand, groupware mode is less resources-friendly and
+ requires a separate daemon process to be run.
+ .
+ For more information, please refer to /usr/share/doc/sqwebmail/PCP.html.
+Description-cs.UTF-8: Mód kalendáře:
+ Určete prosím, zda chcete povolit kalendář v místním módu (zvolte místní), skupinovém módu (zvolte síť) nebo nepovolit (zvolte vypnuto). Pro používání skupinového módu potřebujete nainstalovat balíček courier-pcp.
+ .
+ místní mód je o trochu náročnější na systém než jeho úplné vypnutí. Na druhou stranu, skupinový mód využívá zdroje rozumně a vyžaduje spuštění samostatného procesu.
+ .
+ Pro více informací si přečtěte /usr/share/doc/sqwebmail/PCP.html.
+Description-da.UTF-8: Kalendertilstand:
+ Angiv venligst hvis du ønsker at aktivere kalendertilstand i tilstanden »lokal«, aktivere tilstandene groupware eller »net« eller deaktivere den. Pakken courier-pcp er krævet for at bruge tilstanden groupware.
+ .
+ Lokal tilstand tilføjer meget lidt ekstraforbrug i forhold til en deaktiveret kalendertilstand. På den anden side, er tilstanden groupware mindre ressourcevenlig og kræver en adskilt dæmonproces for at køre.
+ .
+ For yderligere information, se venligst /usr/share/doc/sqwebmail/PCP.html.
+Description-de.UTF-8: Kalenderfunktion:
+ Bitte wählen Sie, ob Sie die Kalenderfunktion im Lokal-Modus, im Groupware-Modus oder im Netzwerk-Modus aktivieren oder ob Sie die Kalenderfunktion überhaupt nicht verwenden möchten (»Deaktiviert«). Zur Verwendung des Groupware-Modus' wird das Paket courier-pcp benötigt.
+ .
+ Der Lokal-Modus erzeugt sehr wenig Overhead im Vergleich zur deaktiverten Kalenderfunktion. Der Groupware-Modus jedoch ist weniger ressourcen-freundlich und benötigt einen eigenen Daemon-Prozess.
+ .
+ Für mehr Informationen lesen Sie bitte /usr/share/doc/sqwebmail/PCP.html.
+Description-es.UTF-8: Modo del calendario:
+ Por favor, especifique si querría activar el modo de calendario en «local», activar el modo de trabajo en grupo o el modo en «red» o desactivarlo. Se necesita el paquete courier-pcp para el modo de trabajo en grupo.
+ .
+ El modo «local» añade una pequeña sobrecarga sobre un modo de calendario desactivado. Por otra parte, el modo de trabajo en grupo es menos amigable y requiere un demonio a parte para ejecutarse.
+ .
+ Para más información, consulte «/usr/share/doc/sqwebmail/PCP.html».
+Description-eu.UTF-8: Egutegi modua:
+ Mesedez ezarri egutegia modu 'lokal'-ean, talde-lan onarpena edo 'sare' moduan edo ezgaitu nahi duzun. Courier-pcp paketea beharrezkoa da talde-lan modua onartzeko.
+ .
+ Modu lokalak oso lan-karga txikia gehitzen du egutegia ezgaitzearekin alderatuz. Beste aldean talde-lan modua errekurtso behar handiagoa du eta bereiziriko deabru bat behar du funtzionatzeko.
+ .
+ Argibide gehiagorako, mesedez irakurri /usr/share/doc/sqwebmail/PCP.html.
+Description-fi.UTF-8: Kalenteritila:
+ Valitse haluatko aktivoida kalenteritilan ”paikallinen”, groupware tai ”verkko”, vai passivoida sen. groupware-tilan käyttö vaatii paketin courier-pcp.
+ .
+ Paikallinen tila käyttää resursseja vain hieman enemmän kuin passivointi. Toisaalta groupware-tila käyttää enemmän resursseja ja vaatii toimiakseen erillisen taustaprosessin.
+ .
+ Lisätietoja (englanniksi) löytyy tiedostosta /usr/share/doc/sqwebmail/PCP.html.
+Description-fr.UTF-8: Mode de gestion du calendrier (« Calendaring ») :
+ Veuillez indiquer si vous souhaitez activer la gestion de calendrier en mode local, en mode travail de groupe (choisissez alors « Réseau ») ou la désactiver. Pour pouvoir utiliser le mode de travail de groupe, vous devez installer le paquet courier-pcp.
+ .
+ Le mode local est relativement peu coûteux en ressources par rapport au fonctionnement sans gestion de calendrier. Par contre, le mode travail de groupe utilise nettement plus les ressources du serveur et utilise un processus en tâche de fond lancé séparément.
+ .
+ Veuillez consulter le fichier /usr/share/doc/sqwebmail/PCP.html pour plus d'informations.
+Description-gl.UTF-8: Modo das axendas:
+ Indique se quere activar as axendas en modo "local", activar o modo groupware our "rede", ou desactivalas. É necesario o paquete courier-pcp para empregar o modo groupware.
+ .
+ O modo local ten moi pouco impacto respecto do modo de axendas desactivadas. Por outro lado, o modo groupware é menos respectuoso dos recursos e precisa de executar un servizo adicional.
+ .
+ Para máis información consulte o ficheiro /usr/share/doc/sqwebmail/PCP.html.
+Description-it.UTF-8: Modalità di inserimento nel calendario:
+ Specificare se si vuole abilitare l'inserimento nel calendario in modalità "locale", in modalità groupware o "rete" oppure se disabilitarla. Per usare la modalità groupware è necessario installare il pacchetto courier-pcp.
+ .
+ La modalità locale aggiunge un piccolo sovraccarico rispetto a quando è disabilitata. D'altro canto la modalità groupware richiede più risorse e l'esecuzione di un demone dedicato.
+ .
+ Per maggiori informazioni, fare riferimento a /usr/share/doc/sqwebmail/PCP.html.
+Description-ja.UTF-8: カレンダー機能:
+ 「ローカル」モードでカレンダー機能を有効にするか、グループウェア機能を有効にするか、「ネットワーク」モードを選ぶか、それとも「無効にする」かを決めてください。グループウェア機能を使うには、courier-pcp パッケージをインストールする必要があります。
+ .
+ ローカルモードでは、カレンダー機能を無効にした場合と比較して少しだけオーバーヘッドがあります。一方で、グループウェア機能はサーバ資源がより必要で、デーモンプロセスを分離して動作させる必要があります。
+ .
+ より詳細については、/usr/share/doc/sqwebmail/PCP.html を参照してください。
+Description-nl.UTF-8: Kalendermodus:
+ Hier geeft u aan of u de kalenderfunctie geactiveerd wilt, en zo ja in welke modus ('lokaal', of 'netwerk' voor de groupware-modus) . Het pakket 'courier-pcp' dient geïnstalleerd te zijn om de kalenderfunctie in de groupware-modus te kunnen gebruiken.
+ .
+ De lokale modus heeft maar heel overhead (in vergelijking met geen kalendermodus gebruiken). De groupware-modus daarentegen heeft meer overhead en vereist een aparte achtergronddienst.
+ .
+ Voor meer informatie, zie /usr/share/doc/sqwebmail/PCP.html.
+Description-pt.UTF-8: Modo do calendário:
+ Por favor especifique se quer ligar o calendário em modo local, escolha o modo groupware ou o modo rede para o desabilitar. Para utilizar o modo groupware é necessário instalar o pacote courier-pcp.
+ .
+ O modo local acrescenta pouquíssimos recursos adicionais comparado com o modo de calendário desabilitado. Por outro lado, o modo groupware necessita de mais recursos e de um processo daemon em separado para correr.
+ .
+ Para mais informação, por favor veja /usr/share/doc/sqwebmail/PCP.html.
+Description-ru.UTF-8: Календарный режим:
+ Укажите, хотите ли вы запускать календарь в режиме 'локальный', групповом режиме 'сетевой' или не запускать его вовсе. Чтобы воспользоваться групповым режимом, нужно установить пакет courier-pcp.
+ .
+ Локальный режим создаёт очень малую нагрузку, по сравнению с отключённым календарём. Групповой режим более требователен к ресурсам, и требует запуска отдельного процесса сервиса.
+ .
+ Подробности в /usr/share/doc/sqwebmail/PCP.html.
+Description-sv.UTF-8: Aktivera kalender:
+ Specificera om du vill aktivera kalendern i lokalt läge (välj lokalt), groupwareläget (välj nätverk) eller inte alls (välj avstängd). Paketet courier-pcp krävs för att kunna använda groupwareläget.
+ .
+ Lokalt läge kräver väldigt lite overhead jämfört med att inte använda kalendern alls. Å andra sidan kräver groupwareläget en hel del serverresurser och att en separat demonprocess körs.
+ .
+ För mer information, se /usr/share/doc/sqwebmail/PCP.html.
+Description-tr.UTF-8: Takvim modu:
+ Lütfen takvimlendirmeyi etkinleştirmek için 'yerel kip' modu, grup kipi (yada 'ağ' modu) veya etkisiz seçeneklerinden birini seçin. Grup kipini kullanmak için courier-pcp paketini kurmanız gerekir.
+ .
+ Yerel kip takvimlendirmeye göre çok az iş gerektirir, fakat grup kipi biraz daha fazla ek sunucu kaynağı gerektirir. Eğer grup kipini seçerseniz, ayrı bir sunucu süreci çalıştırılacaktır.
+ .
+ Daha fazla bilgi için, lütfen /usr/share/doc/sqwebmail/PCP.html'ye bakın.
+Description-vi.UTF-8: Chế độ ghi lịch:
+ Hãy ghi rõ nếu bạn muốn hiệu lực khả năng ghi lịch ở chế độ « cục bộ », hiệu lực phần nhóm (groupware) hay chế độ « mạng », hoặc tắt khả năng này. Gói « courier-pcp » cần thiết để sử dụng chế độ phần nhóm.
+ .
+ Chế độ cục bộ cũng cần thiết ít tài nguyên hơn chế độ ghi lịch bị tắt. Mặt khác, chế độ phần nhóm chiếm nhiều tài nguyên hơn và cần thiết một tiến trình nền riêng để chạy.
+ .
+ Để tìm thêm thông tin, xem tập tin « /usr/share/doc/sqwebmail/PCP.html ».
+
+Template: sqwebmail/dictionary
+Type: select
+Choices: ${DICTS}
+Default: default
+Description: Ispell dictionary:
+ SqWebMail allows you to spellcheck your emails. Please select an
+ appropriate dictionary for ispell.
+Description-cs.UTF-8: Slovník Ispell:
+ SqWebMail umožňuje kontrolu pravopisu vašich emailů. Vyberte si prosím odpovídající slovník pro ispell.
+Description-da.UTF-8: Ispell-ordbog:
+ SqWebMail tillader dig at udføre stavekontrol i din e-post. Vælg en egnet ordbog til ispell.
+Description-de.UTF-8: Ispell-Wörterbuch:
+ SqWebMail ermöglicht eine Rechtschreibprüfung der E-Mails. Bitte wählen Sie ein passendes Wörterbuch aus.
+Description-es.UTF-8: Diccionario de ispell:
+ SqWebMail le permite repasar la ortografía de sus correos electrónicos. Por favor, elija el diccionario que quiera usar con ispell.
+Description-eu.UTF-8: Ispell hiztegia:
+ SqWebMail-ek zure eposten egiaztapen ortografikoa egitekoaukera ematen dizu. Mesedez hautatu ispell-ek erabiltzeko hiztegia.
+Description-fi.UTF-8: Ispell-sanakirja:
+ SqWebMail mahdollistaa sähköpostien oikeinkirjoituksen tarkistamisen. Valitse sopiva ispellin sanakirja.
+Description-fr.UTF-8: Dictionnaire pour ispell :
+ SqWebMail permet la vérification orthographique des courriels. Veuillez choisir le dictionnaire qu'utilisera ispell.
+Description-gl.UTF-8: Diccionario de ispell:
+ SqWebMail permítelle realizar revisións ortográficas dos seus emails. Escolla un dicionario axeitado para ispell.
+Description-it.UTF-8: Dizionario ispell:
+ SqWebMail consente di controllare l'ortografia delle email. Scegliere il dizionario per ispell da usare.
+Description-ja.UTF-8: ispell 辞書:
+ SqWebMail ではメールのスペルチェックができます。ispell 用の適切な辞書を選んでください。
+Description-nl.UTF-8: Ispell-woordenboek:
+ Het is mogelijk om met SqWebMail uw e-mails te controleren op spelfouten. Gelieve een geschikt ispell-woordenboek te kiezen
+Description-pt.UTF-8: Dicionário Ispell:
+ SqWebMail permite-lhe verificar os erros ortográficos nos seus emails. Por favor escolha um dicionário apropriado para o ispell.
+Description-ru.UTF-8: Словарь Ispell:
+ SqWebMail позволяет проверять орфографию в ваших письмах. Выберите соответствующий словарь для Ispell.
+Description-sv.UTF-8: Ispell-ordlista:
+ SqWebMail kan kontrollera stavningen i e-postmeddelanden. Välj en lämplig ordlista för ispell.
+Description-tr.UTF-8: Ispell sözlüğü:
+ SqWebMail e-postalarınıza yazım denetimi yapmanızı sağlar. Lütfen ispell için uygun bir sözlük seçin.
+Description-vi.UTF-8: Từ điển Ispell:
+ Phần mềm SqWebMail cho phép kiểm tra chính tả trong thư. Hãy chọn một từ điển thích hợp cho trình Ispell.
+
+Template: sqwebmail/install-www
+Type: select
+Choices: symlink, copy, custom
+Choices-cs.UTF-8: symbolický odkaz, kopírovat, uživatelská
+Choices-da.UTF-8: symlink, kopi, tilpasset
+Choices-de.UTF-8: Symbolischer Link, Kopie, Benutzerdefiniert
+Choices-es.UTF-8: enlace simbólico, copia, personalizar
+Choices-eu.UTF-8: lotura-sinbolikoa, kopiatu, pertsonalizatua
+Choices-fi.UTF-8: symboliset linkit, kopiot, mukautettu
+Choices-fr.UTF-8: Lien symbolique, Copie, Aucune
+Choices-gl.UTF-8: ligar, copiar, personalizado
+Choices-it.UTF-8: collegamento simbolico, copia, personalizzato
+Choices-ja.UTF-8: シンボリックリンク, コピーする, 手動で行う
+Choices-nl.UTF-8: symbolische koppeling, kopiëren, aangepast
+Choices-pt.UTF-8: symlink, copiar, personalizado
+Choices-pt_BR.UTF-8: ligação simbólica, cópia, personalizada
+Choices-ru.UTF-8: сим. ссылка, копировать, самостоятельно
+Choices-sv.UTF-8: symbolisk länk, kopia, egendefinierad
+Choices-tr.UTF-8: sembolik bağla, kopyala, özel
+Choices-vi.UTF-8: liên kết mềm, chép, riêng
+Default: symlink
+Description: Installation method for HTML documents and images:
+ The HTML documents and images in /usr/share/sqwebmail can be made
+ accessible at /var/www/sqwebmail via a symbolic link; or by being
+ copied directly into a directory there; or not at all.
+ .
+ The 'copy' option is recommended for security reasons. However, if
+ 'FollowSymLinks' or 'SymLinksIfOwnerMatch' are already enabled in
+ Apache configuration, the first option can be considered. The last
+ option needs manual actions to configure the web server.
+ .
+ Please note that /var/www/sqwebmail will be removed if this package is
+ purged unless the 'custom' option is chosen.
+Description-cs.UTF-8: Instalační metoda dokumentů HTML a obrázků:
+ K dokumentům HTML a obrázkům umístěným  v /usr/share/sqwebmail je možno přistupovat pomocí symbolického odkazu /var/www/sqwebmail; nebo je přímo nakopírovat do tohoto adresáře; nebo nedělat nic.
+ .
+ Volba 'kopírovat' se doporučuje především z bezpečnostních důvodů. Samozřejmě, pokud je v konfiguračních souborech Apache povolena volba 'FollowSymLinks' nebo 'SymLinksIfOwnerMatch', pak můžete zvolit první možnost. Poslední možnost vyžaduje ruční zásah a konfiguraci ze strany uživatele.
+ .
+ Uvědomte si prosím, že adresář /var/www/sqwebmail bude smazán při odstranění balíčku, ledaže byste zvolili možnost 'vlastní'.
+Description-da.UTF-8: Installationsmetode til HTML-dokumenter og billeder:
+ HTML-dokumenterne og billeder i /usr/share/sqwebmail kan gøres tilgængelige på /var/www/sqwebmail via en symbolsk henvisning (symlink); eller ved at blive kopieret direkte ind i en mappe der; eller slet ikke.
+ .
+ Indstillingen »kopi« (copy) anbefales af sikkerhedsmæssige årsager. Hvis »FollowSymLinks« eller »SymLinksIfOwnerMatch« allerede er aktiveret i Apachekonfigurationen, kan den første indstilling overvejes. Den sidste indstilling kræver manuelle handlinger for at konfigure internetserveren.
+ .
+ Bemærk venligst at /var/www/sqwebmail vil blive fjernet hvis denne pakke afinstalleres med mindre indstillingen »tilpasset« (custom) vælges.
+Description-de.UTF-8: Installationsmethode für HTML-Dokumente und Grafiken:
+ Die HTML-Dokumente und Grafiken in /usr/share/sqwebmail können über einen symbolischen Link in /var/www/sqwebmail verfügbar gemacht werden oder indem sie direkt in ein Verzeichnis dort kopiert werden; Sie können sie jetzt auch überhaupt nicht verfügbar machen.
+ .
+ Die Auswahl »Kopie« ist aus Sicherheitsgründen empfehlenswert. Falls jedoch »FollowSymLinks« oder »SymLinksIfOwnerMatch« in der Apache-Konfiguration bereits aktiviert ist, könnte auch die erste Möglichkeit in Betracht kommen. Die letzte Option erfordert manuelles Eingreifen zur Konfiguration des Web-Servers.
+ .
+ Bitte beachten Sie, dass /var/www/sqwebmail gelöscht wird, wenn dieses Paket später einmal komplett entfernt wird (außer wenn Sie jetzt »Benutzerdefiniert« wählen).
+Description-es.UTF-8: Método de instalación de los documentos HTML y las imágenes:
+ Los documentos HTML y las imágenes en «/usr/share/sqwebmail» se pueden hacer accesibles en «/var/www/sqwebmail» mediante un enlace simbólico, o copiándose directamente en el directorio, o sin hacer nada.
+ .
+ Se recomienda la opción «copiar» por razones de seguridad. Sin embargo, si «FollowSymLinks» o «SymLinksIfOwnerMatch» están activados en la configuración de Apache, la primera opción se puede considerar. La última opción necesita acciones manuales para configurar el servidor web.
+ .
+ Si elimina este paquete «/var/www/sqwebmail» será borrado, a menos que la opción «personalizar» esté elegida.
+Description-eu.UTF-8: HTML dokumentu eta irudien instalazio metodoa:
+ /usr/share/sqwebmail-eko  HTML dokumentu eta irudiak eskuragarri egin daitezke /var/www/sqwebmail-en lotura sinboliko bidez; edo zuzenean horko direktorio batetan kopiatzen; edo ez egin.
+ .
+ Segurtasun arrazoiak medio 'kopiatu' aukera gomendatzen da. Hala ere Apache konfigurazioan dagoeneko 'FollowSymLinks' edo 'SymLinksIfOwnerMatch' gaiturik badaude lehen aukera kontsideratu daiteke. Azken aukerak web zerbitzaria konfiguratzeko eskuz zerbait egitea behar du.
+ .
+ Mesedez kontutan hartu /var/www/sqwebmail ezabatu izango dela paketea garbitzen bada 'pertsonalizatua' aukera hautatzen ez bada.
+Description-fi.UTF-8: HTML-dokumenttien ja kuvien asennusmenetelmä:
+ Hakemistossa /usr/share/sqwebmail olevat HTML-dokumentit ja kuvat voidaan laittaa saataville hakemistoon /var/www/sqwebmail symbolisilla linkeillä tai kopioimalla, tai niitä voidaan olla laittamatta saataville.
+ .
+ Vaihtoehtoa ”kopiot” suositellaan turvallisuussyistä. Jos Apachen asetuksissa ovat kuitenkin jo asetukset ”FollowSymLinks” ja ”SymLinksIfOwnerMatch” aktivoituina, ensimmäistä vaihtoehtoa voidaan harkita. Viimeinen vaihtoehto vaatii verkkopalvelimen asetusten tekemistä käsin.
+ .
+ Hakemisto /var/www/sqwebmail poistetaan, jos tämä paketti siivotaan, ellei vaihtoehtoa ”mukautettu” ole valittu.
+Description-fr.UTF-8: Méthode d'installation des documents et images HTML :
+ Les documents HTML et les images placés dans /usr/share/sqwebmail peut être rendus accessibles via un lien symbolique /var/www/sqwebmail, copiés à cet emplacement ou ne pas être accessibles du tout.
+ .
+ L'option « Copie » est recommandée pour des raisons de sécurité. Cependant si les options « FollowSymLinks » ou « SymLinksIfOwnerMatch » sont activées dans la configuration d'Apache, l'option « Lien symbolique » peut être choisie. La dernière option impose une configuration manuelle du serveur web.
+ .
+ Veuillez noter que /var/www/sqwebmail sera supprimé si le paquet est purgé, sauf si l'option « custom » est choisie.
+Description-gl.UTF-8: Método de instalación para os documentos HTML e as imaxes:
+ Os documentos HTML e as imaxes de /usr/share/sqwebmail pódense facer accesibles en /var/www/sqwebmail mediante unha ligazón simbólica, ou copiándoas directamente a un directorio de alí, ou non os deixar accesibles en absoluto.
+ .
+ Recoméndase a opción "copiar" por motivos de seguridade. Nembargantes, se as opcións "FollowSymLinks" ou "SymLinksIfOwnerMatch" xa están activadas na configuración de Apache, pódese considerar a primeira opción. A derradeira opción precisa de accións manuais para configurar o servidor web.
+ .
+ Teña en conta que se ha eliminar /var/www/sqwebmail se purga o paquete a menos que escolla "personalizado".
+Description-it.UTF-8: Metodo per l'installazione dei documenti HTML e delle immagini:
+ I documenti HTML e le immagini in /usr/share/sqwebmail possono essere resi accessibili da /var/www/sqwebmail tramite un collegamento simbolico o copiandoli direttamente nella directory; oppure possono essere lasciarti non accessibili.
+ .
+ L'opzione "copia" è quella raccomandata per ragioni di sicurezza. Comunque, se nella configurazione di Apache sono già attivi "FollowSymLinks" o "SymLinksIfOwnerMatch", si può prendere in considerazione anche la prima opzione. L'ultima opzione richiede delle azioni manuali sulla configurazione del server web.
+ .
+ Notare che /var/www/sqwebmail viene eliminata quando questo pacchetto viene completamente rimosso tranne se è stata scelta l'opzione "personalizzato".
+Description-ja.UTF-8: HTML ドキュメントと画像の設定方法:
+ /usr/share/sqwebmail 中の HTML ドキュメントと画像を、/var/www/sqwebmail へのシンボリックリンク経由でアクセス可能にするか、ディレクトリに直接コピーする、あるいは全く何もしないかを選んでください。
+ .
+ セキュリティ上の理由から「コピーする」がおすすめです。しかし、すでに Apache の設定で FollowSymLinks か SymLinksIfOwnerMatch を有効にしていれば、最初の方法を選ぶのも良いかもしれません。最後のを選ぶと web サーバを手動で設定することになります。
+ .
+ 「カスタム」を選んでいたとしても、パッケージが完全に削除 (purge) されると /var/www/sqwebmail が削除されるのに注意してください。
+Description-nl.UTF-8: Installatiemethode voor HTML-documenten en afbeeldingen:
+ De HTML-documenten en afbeeldingen in /usr/share/sqwebmail kunnen toegankelijk gemaakt worden onder /var/www/sqwebmail (via een symbolische koppeling, of door ze daar te kopiëren), of niet beschikbaar gemaakt.
+ .
+ De 'kopiëren'-optie is om beveiligingsredenen aanbevolen. Als u in uw Apache-configuratie echter reeds de 'FollowSymLinks' of 'SymLInksIfOwnerMatch' geactiveerd heeft is de eerste optie te overwegen. De laatste optie vereist dat u de webserver handmatig instelt.
+ .
+ Opgelet: tenzij u 'aangepast' heeft gekozen zal /var/www/sqwebmail verwijderd worden wanneer dit pakket gewist wordt.
+Description-pt.UTF-8: Método de instalação para documentos HTML e imagens:
+ Os documentos HTML e as imagens em /usr/share/sqwebmail podem ser tornados acessíveis em /var/www/sqwebmail através de um link simbólico; ou sendo copiados directamente para um directório lá; ou não o ser.
+ .
+ A opção 'copiar' é recomendada por razões de segurança. No entanto, se 'FollowSymLinks' ou 'SymLinksIfOwnerMatch' já estiverem activados na configuração do Apache, pode ser considerada a primeira opção. A última opção necessita de acções manuais para configurar o servidor web.
+ .
+ Por favor note que /var/www/sqwebmail irá ser removido se este pacote for purgado excepto se for escolhida a opção 'personalizado'.
+Description-ru.UTF-8: Метод установки для HTML-документов и изображений:
+ Для HTML-документов и изображений в /usr/share/sqwebmail может быть сделан доступ в /var/www/sqwebmail по символической ссылке, копированием каталога или не сделан вовсе.
+ .
+ Вариант копирования рекомендуется по соображениям безопасности. Но если 'FollowSymLinks' или 'SymLinksIfOwnerMatch' уже разрешены в настройках Apache, то может подойти и первый вариант. Последний вариант требует дополнительных действий по настройке веб-сервера.
+ .
+ Обратите внимание, что каталог /var/www/sqwebmail будет удалён, если этот пакет вычищается и не был выбран вариант 'самостоятельно'.
+Description-sv.UTF-8: Installationsmetod för HTML-dokument och bilder:
+ HTML-dokumenten och bilderna i /usr/share/sqwebmail kan göras åtkomliga på /var/www/sqwebmail via en symbolisk länk; eller genom att kopieras direkt till katalogen; eller inte alls.
+ .
+ Valet "kopia" rekommenderas av säkerhetsskäl. Men om "FollowSymLinks" eller "SymLinksIfOwnerMatch" redan har aktiverats i Apaches konfiguration, kan det första valet övervägas. Det sista valet kräver en manuell insats för att konfigurera webbservern.
+ .
+ Notera att /var/www/sqwebmail kommer att tas bort om detta paket rensas såvida du inte väljer "egendefinierat".
+Description-tr.UTF-8: HTML dokümanları ve resimler için kurulum metodu:
+ /usr/share/sqwebmail içindeki HTML dokümanları ve resimler bir sembolik bağ ile /var/www/sqwebmail içinde de erişilebilir hale getirilebilir; yada sadece bu dizine kopyalanabilir; herhangi birşey yapılmadan da bırakılabilir.
+ .
+ Güvenlik sebebi ile 'kopyala' (copy) seçeneği tavsiye edilir. Bunun yanında, eğer 'FollowSymLinks' yada 'SymLinksIfOwnerMatch' Apache yapılandırılmasında halihazırda etkin kılınmış ise, ilk seçenek dikkate elınabilir. Son seçenek web sunucusunun yapılandırılmasında elle yapılması gereken işler çıkarabilir.
+ .
+ Kurulumda 'özel'i seçmiş olmanız durumu hariç, bu paket kaldırılırken /var/www/sqwebmail'in silineceğini unutmayın.
+Description-vi.UTF-8: Phương pháp cài đặt các tài liệu HTML và ảnh:
+ Cũng có thể truy cập các tài liệu HTML và ảnh đều nằm trong thư mục « /usr/share/sqwebmail » ở « /var/www/sqwebmail »:
+  • thông qua một liên kết tượng trưng
+  • bằng cách được sao chép trực tiếp vào đó
+  • hay không.
+ .
+ Tùy chọn « chép » khuyến khích vì lý do bảo mật. Tuy nhiên, nếu mục « FollowSymLinks » (theo các liên kết tượng trưng) hay « SymLinksIfOwnerMatch » (các liên kết tượng trưng nếu người sở hữu có khớp) đã được hiệu lực trong cấu hình Apache, cũng có thể sử dụng tùy chọn thứ nhất. Tùy chọn thứ ba cần thiết bạn tự cấu hình trình phục vụ Web.
+ .
+ Ghi chú : không bật tùy chọn « riêng » thì « /var/www/sqwebmail » sẽ bị gỡ bỏ nếu gói này bị tẩy.
+
+Template: sqwebmail/install-www-backup
+Type: string
+Description: for internal use
+

@@ -1,0 +1,134 @@
+
+Template: watchdog/run
+Type: boolean
+Default: true
+Description: Start watchdog at boot time?
+ Please specify whether watchdog should be started as part of the boot
+ process. This can be changed later by editing /etc/default/watchdog.
+Description-cs.UTF-8: Spustit watchdog při zavádění systému?
+ Vyberte si, zda se má watchdog spouštět během zavádění systému. Své rozhodnutí můžete později změnit úpravou souboru /etc/default/watchdog.
+Description-da.UTF-8: Igangsæt watchdog ved opstart?
+ Angiv venligst hvorvidt watchdog skal igangsættes som en del af opstartsprocessen. Dette kan ændres senere ved at redigere /etc/default/watchdog.
+Description-de.UTF-8: Watchdog im Bootprozess starten?
+ Bitte geben Sie an, ob Watchdog als Teil des Bootprozesses gestartet werden soll. Dies kann später in der Datei /etc/default/watchdog geändert werden.
+Description-es.UTF-8: ¿Desea cargar «watchdog» al inicio del sistema?
+ Especifique si se debe iniciar watchdog como parte del proceso de carga del sistema. Puuede cambiar más adelante esto luego editando el archivo /etc/default/watchdog.
+Description-fi.UTF-8: Käynnistetäänkö watchdog käynnistettäessä tietokone?
+ Valitse tulisiko watchdog käynnistää osana tietokoneen käynnistystä. Tätä asetusta voidaan muuttaa myöhemmin muokkaamalla tiedostoa /etc/default/watchdog.
+Description-fr.UTF-8: Faut-il lancer watchdog au démarrage ?
+ Veuillez indiquer si vous désirez démarrer watchdog à l'amorçage de l'ordinateur. Vous pourrez changer ce comportement plus tard en modifiant le fichier /etc/default/watchdog.
+Description-gl.UTF-8: ¿Iniciar watchdog co ordenador?
+ Indique se quere que watchdog se inicie coma unha parte do proceso de inicio do sistema. Isto pódese cambiar máis tarde editando /etc/default/watchdog.
+Description-it.UTF-8: Far partire watchdog all'avvio?
+ Specificare se watchdog debba essere fatto partire come parte del processo di avvio. Questa impostazione può essere cambiata in un secondo momento modificando /etc/default/watchdog.
+Description-ja.UTF-8: システム起動時に watchdog を開始しますか?
+ 起動プロセスの一部として watchdog を起動させるかどうか指定してください。この指定は、/etc/default/watchdog を編集して後から変更することも可能です。
+Description-nl.UTF-8: watchdog starten tijdens opstarten van het systeem?
+ Gelieve aan te geven of watchdog gestart dient te worden tijdens het opstarten van het systeem. Dit kan later aangepast worden door /etc/default/watchdog te wijzigen.
+Description-pt.UTF-8: Iniciar o watchdog durante o arranque?
+ Especifique se quer que o watchdog arranque com parte do processo de arranque. Pode no entanto alterar esta opção editando o ficheiro /etc/default/watchdog.
+Description-pt_BR.UTF-8: Iniciar o watchdog na inicialização do sistema?
+ Por favor, especifique se o watchdog deverá ser iniciado como parte do processo de inicialização do sistema. Isso pode ser alterado mais tarde editando o arquivo /etc/default/watchdog.
+Description-ru.UTF-8: Запускать watchdog при загрузке системы?
+ Укажите, нужно ли запускать watchdog в процессе загрузки системы. Это можно изменить позже отредактировав файл /etc/default/watchdog.
+Description-sv.UTF-8: Ska watchdog startas vid systemets uppstart?
+ Ange om watchdog ska startas vid systemets uppstart. Detta kan ändras senare genom att redigera /etc/default/watchdog.
+Description-vi.UTF-8: Khởi chạy watchdog vào lúc khởi động không?
+ Hãy xác định có nên khởi chạy watchdog trong tiến trình khởi động hay không. Vẫn còn có thể sửa đổi sau trong tập tin « /etc/default/watchdog ».
+
+Template: watchdog/run_keepalive
+Type: boolean
+Default: true
+Description: Start wd_keepalive after stopping watchdog?
+ Please specify whether stopping watchdog should start wd_keepalive to keep on
+ triggering the watchdog device. This can be changed later by editing
+ /etc/default/watchdog.
+Description-da.UTF-8: Start wd_keepalive efter stop af watchdog?
+ Angiv venligst hvorvidt stop af watchdog skal starte wd_keepalive for fortsat at udløse watchdog-enheden. Dette kan ændres senere ved at redigere /etc/default/watchdog.
+Description-de.UTF-8: Wd_keepalive nach Beendigung von Watchdog starten?
+ Bitte geben Sie an, ob wd_keepalive beim Beenden von Watchdog gestartet werden soll, um das Watchdog-Device weiterhin zu beschreiben. Dies kann später in der Datei /etc/default/watchdog geändert werden.
+Description-fr.UTF-8: Faut-il lancer wd_keepalive après l'arrêt de watchdog ?
+ Veuillez indiquer si wd_keepalive doit être lancé après l'arrêt de watchdog, afin de garder le périphérique watchdog actif. Vous pourrez changer ce comportement plus tard en modifiant le fichier /etc/default/watchdog.
+Description-it.UTF-8: Far partire wd_keepalive dopo l'arresto di watchdog?
+ Specificare se all'arresto di watchdog debba essere avviato wd_keepalive per continuare a far scattare l'avvio del dispositivo watchdog. Questa impostazione può essere cambiata in un secondo momento modificando /etc/default/watchdog.
+Description-pt_BR.UTF-8: Iniciar o wd_keepalive depois de parar o watchdog?
+ Por favor, especifique se ao parar o watchdog deve-se iniciar o wd_keepalive para continuar disparando o dispositivo watchdog. Isso pode ser alterado mais tarde editando o arquivo /etc/default/watchdog.
+
+Template: watchdog/restart
+Type: boolean
+Default: false
+Description: Restart watchdog on upgrades?
+ If the kernel is configured with the CONFIG_WATCHDOG_NOWAYOUT option
+ (which is not the default setting), restarting watchdog will cause a
+ spurious reboot (the kernel will assume that the watchdog daemon
+ crashed).
+Description-cs.UTF-8: Restartovat watchdog při aktualizaci?
+ Pokud je jádro sestaveno s parametrem CONFIG_WATCHDOG_NOWAYOUT (což není výchozí nastavení), restart watchdogu způsobí zbytečný restart počítače, protože si jádro Bude myslet, že daemon watchdogu havaroval.
+Description-da.UTF-8: Genstart watchdog ved opgraderinger?
+ Hvis kernen er konfigureret med tilvalget CONFIG_WATCHDOG_NOWAYOUT (som ikke er standardindstillingen) vil genstart af watchdog medføre en falsk genstart (kernen vil antage at watchdog-dæmonen brød ned).
+Description-de.UTF-8: Watchdog nach einem Upgrade neu starten?
+ Falls der Kernel mit der Option CONFIG_WATCHDOG_NOWAYOUT konfiguriert wurde (was nicht die Standardeinstellung ist), führt der Neustart von Watchdog zum Neustart des Systems, weil der Kernel denkt, der Watchdog-Prozess wäre abgestürzt.
+Description-es.UTF-8: ¿Desea reiniciar «watchdog» en las actualizaciones?
+ Si el kernel esta configurado con la opción CONFIG_WATCHDOG_NOWAYOUT (que no es la opción por omisión), reiniciar watchdog causará un reinicio momentáneo (el kernel asumirá que el demonio de watchdog ha colisionado.)
+Description-fi.UTF-8: Käynnistetäänkö watchdog uudelleen päivitysten yhteydessä?
+ Jos ydin on käännetty asetuksen CONFIG_WATCHDOG_NOWAYOUT kanssa (mikä ei ole oletusasetus), watchdogin käynnistäminen uudelleen aiheuttaa tarpeettoman tietokoneen uudelleenkäynnistyksen (ydin olettaa watchdog-taustaohjelman kaatuneen).
+Description-fr.UTF-8: Faut-il redémarrer watchdog lors des mises à jour ?
+ Si le noyau est configuré avec l'option CONFIG_WATCHDOG_NOWAYOUT (ce qui n'est pas l'option par défaut), le redémarrage de watchdog causera un réamorçage indésirable (le noyau pensera que le démon s'est brutalement arrêté).
+Description-gl.UTF-8: ¿Reiniciar watchdog ao actualizalo?
+ Se o núcleo está configurado coa opción CONFIG_WATCHDOG_NOWAYOUT (que non é a opción por defecto), reiniciar watchdog ha facer que se reinicie o sistema (o núcleo ha supoñer que o servizo watchdog fallou).
+Description-it.UTF-8: Riavviare watchdog in caso di aggiornamenti?
+ Se il kernel è configurato con l'opzione CONFIG_WATCHDOG_NOWAYOUT (che non è l'impostazione predefinita), il riavvio di watchdog causerà un riavvio spurio (il kernel penserà che il demone watchdog sia andato in crash).
+Description-ja.UTF-8: アップグレード時に watchdog を再起動しますか?
+ カーネルが CONFIG_WATCHDOG_NOWAYOUT オプションを有効にして設定されている場合 (デフォルトでは設定されていません)、watchdog を再起動するとシステムが誤って再起動してしまいます (watchdog デーモンがクラッシュしたとカーネルが考えるためです)。
+Description-nl.UTF-8: watchdog herstarten bij opwaarderingen?
+ Indien uw kernel is geconfigureerd met de optie 'CONFIG_WATCHDOG_NOWAYOUT', zal het herstarten van watchdog ten onrechte een herstart van uw computer veroorzaken (de kernel zal aannemen dat de watchdog-achtergronddienst is vastgelopen).
+Description-pt.UTF-8: Reiniciar o watchdog após actualizações?
+ Se o kernel está configurado com a opção CONFIG_WATCHDOG_NOWAYOUT (que não está escolhido por omissão), reiniciar o watchdog irá causar uma reinicialização estranha (o kernel irá assumir que o daemon do watchdog bloqueou).
+Description-pt_BR.UTF-8: Reiniciar o watchdog nas atualizações?
+ Se o kernel estiver configurado com a opção CONFIG_WATCHDOG_NOWAYOUT (que não é a configuração padrão), reiniciar o watchdog causará uma reinicialização espúria do sistema (o kernel assumirá que o daemon watchdog travou).
+Description-ru.UTF-8: Перезапустить watchdog при обновлении?
+ Если в ядре включена опция CONFIG_WATCHDOG_NOWAYOUT (что не является настройкой по умолчанию), перезапуск watchdog приведёт к перезагрузке машины (ядро предположило, что демон watchdog завершился некорректно).
+Description-sv.UTF-8: Ska watchdog startas om vid uppgraderingar?
+ Om kärnan har alternativet CONFIG_WATCHDOG_NOWAYOUT aktiverat (vilket inte är standard) så kan en omstart av watchdog initera en oönskad omstart av systemet (eftersom kärnan i så fall kan anta att watchdog-tjönsten kraschade).
+Description-vi.UTF-8: Khởi chạy lại watchdog khi nâng cấp không?
+ Nếu hạt nhân được cấu hình với tùy chọn « CONFIG_WATCHDOG_NOWAYOUT » (mà không phải thiết lập mặc định), việc khởi chạy lại watchdog sẽ gây ra tiến trình khởi động lại giả (hạt nhân sẽ giả sử trình nền watchdog đã sụp đổ).
+
+Template: watchdog/module
+Type: string
+Default: none
+Description: Watchdog module to preload:
+ Please choose which watchdog module should be preloaded before
+ starting watchdog. The 'softdog' module should be suited for all
+ installations. Enter 'none' if you don't want the script to load
+ a module.
+Description-cs.UTF-8: Modul watchdogu, který se má nahrát:
+ Vyberte prosím, který modul watchdogu se má nahrát ještě před spuštěním watchdogu. Modul „softdog“ je vhodný pro všechny instalace. Nechcete-li, aby skript nahrál modul, zadejte „none“.
+Description-da.UTF-8: Watchdog-modul at præindlæse:
+ Vælg venligst hvilket watchdog-modul der skal præindlæses før start af watchdog. Modulet »softdog« bør være egnet for alle installationer. Indtast »none« (ingen) hvis du ikke ønsker, at skriptet skal indlæse et modul.
+Description-de.UTF-8: Watchdog-Modul, das vorgeladen werden soll:
+ Bitte wählen Sie aus, welches Modul vor dem Start des Servers geladen werden soll. Das Modul »softdog« sollte für alle Installationen geeignet sein. Falls kein Modul geladen werden soll, bitte »none« eingeben.
+Description-es.UTF-8: Módulo de watchdog a precargar:
+ Seleccione que módulo de watchdog se cargará antes de iniciar watchdog. El módulo «softdog» se adaptará a todas las instalaciones. Ingrese «none» si no desea el guión para cargar un módulo.
+Description-fi.UTF-8: Ennakkoon ladattava watchdog-moduuli:
+ Valitse mikä watchdog-moduuli tulisi ladata ennen watchdogin käynnistämistä. Moduulin ”softdog” tulisi sopia kaikkiin asennuksiin. Valitse ”none”, jos et haluat ladata mitään moduulia.
+Description-fr.UTF-8: Module watchdog à précharger :
+ Veuillez choisir le module watchdog qui doit être préchargé avant de lancer watchdog. Le module « softdog » est adapté à toutes les situations. Vous pouvez indiquer « none » si vous ne souhaitez pas précharger de module.
+Description-gl.UTF-8: Módulo de watchdog a precargar:
+ Indique que modulo de watchdog se debe precargar antes de iniciar watchdig. O módulo "softdog" é válido para tódalas instalacións. Introduza "none" se non quere que o script cargue ningún módulo.
+Description-it.UTF-8: Modulo di watchdog da precaricare:
+ Specificare quale modulo di watchdog debba essere precaricato prima dell'avvio di watchdog. Il modulo «softdog» dovrebbe essere adatto per tutte le installazioni. Inserire «none» se non si desidera che lo script carichi un modulo.
+Description-ja.UTF-8: 先にロードしておく watchdog モジュール:
+ どの watchdog モジュールを watchdog の起動前に先にロードしておく必要があるかを選択してください。「softdog」モジュールはどのようなインストール状況でも問題はありません。モジュールをロードするスクリプトが必要で無い場合は「none」と入力してください。
+Description-nl.UTF-8: Voor te laden watchdog-module:
+ Welke watchdog-module moeten worden geladen voordat watchdog wordt opgestart? De 'softdog'-module is geschikt voor de meeste installaties. Kies 'none' als u wilt dat het script geen module laadt.
+Description-pt.UTF-8: Módulo watchdog para pré-carregar:
+ Por favor escolha qual o módulo watchdog que deve ser pré-carregado antes de iniciar o watchdog. O módulo 'softdog' deve ser adequado para todas as instalações. Introduza 'none' se não quiser que o script carregue um módulo.
+Description-pt_BR.UTF-8: Módulo watchdog para carregar previamente:
+ Por favor, escolha qual módulo watchdog deve ser carregado antes de iniciar o watchdog. O módulo "softdog" deveria ser adequado para todas as instalações. Informe "none" se você quiser que o script não carregue nenhum módulo.
+Description-ru.UTF-8: Модули, загружаемые перед watchdog:
+ Укажите модули, которые нужно загрузить перед запуском watchdog. Модуль 'softdog' обычно подходит для всех случаев. Введите 'none', если не хотите, чтобы сценарий загружал модуль.
+Description-sv.UTF-8: Watchdog-moduler som ska förladdas:
+ Ange vilka watchdog-moduler som ska förladdas innan watchdog startas. Modulen 'softdog' passar de flesta installationerna. Ange 'none' om du inte vill att skriptet ska ladda någon modul.
+Description-vi.UTF-8: Mô-đun watchdog cần nạp sẵn:
+ Hãy chọn mô-đun watchdog nào cần nạp sẵn trước khi khởi chạy watchdog. Mô-đun « softdog » nên thích hợp với mọi bản cài đặt. Nhập vào « none » (không có) nếu bạn không muốn văn lệnh nạp mô-đun.
+

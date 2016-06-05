@@ -1,0 +1,210 @@
+Template: fiaif/enable_initd
+Type: boolean
+Default: true
+Description: Enable the fiaif init.d script?
+ FIAIF init.d setup is completely optional, but is highly recommended.
+ If you accept here, the package will create init.d runlevel
+ symlinks to FIAIF. This allows FIAIF to be started automatically at
+ every boot.
+ .
+ Note that fiaif will not start until you edited the configuration file
+ /etc/fiaif/fiaif.conf, set DONT_START to zero, and reboot. So if you
+ install fiaif for the first time, it is safe to accept here. If you
+ have already set DONT_START to zero from an earlier installation, fiaif
+ will be started after the next reboot.
+ .
+ Refuse here to not allow the package to create the runlevel
+ symlinks. Existing symlinks to FIAIF will be removed.
+Description-cs.UTF-8: Povolit init.d skript fiaif?
+ Startovací skript FIAIF je zcela volitelný, avšak velmi doporučovaný. Povolíte-li tuto možnost, balík vytvoří symbolické odkazy v příslušném runlevelu a FIAIF se tak bude spouštět při každém startu systému.
+ .
+ fiaif se nespustí dokud neupravíte konfigurační soubor /etc/fiaif/fiaif.conf a nenastavíte DONT_START na nulu a nerestartujete. Takže pokud instalujete fiaif poprvé, je bezpečné zde souhlasit. Pokud jste již při dřívější instalaci nastavili DONT_START na nulu, spustí se fiaif po příštím restartu.
+ .
+ Jestliže nechcete, aby balíček vytvořil v runlevelech symbolické odkazy, zamítněte. Stávající symbolické odkazy na FIAIF budou smazány.
+Description-da.UTF-8: Aktivér FIAIF init.d-skript?
+ Opsætning af FIAIF init.d er helt frivillig, men anbefales kraftigt. Hvis du accepterer her, vil pakken oprette symbolske lænker til FIAIF. Det gør at FIAIF bliver startet under hver opstart af computeren.
+ .
+ Bemærk at fiaif ikke vil starte før du har redigeret opsætningsfilen /etc/fiaif/fiaif.conf, sat DONT_START til nul og genstartet. Så hvis du installerer fiaif for første gang, kan du bare acceptere her. Hvis du allerede har sat DONT_START til nul under en tidligere installation, vil fiaif blive startet under næste opstart af computeren.
+ .
+ Afvis her for at forhindre pakken i at oprette de symbolske runlevel-lænker.Eksisterende lænker til FIAIF vil blive slettet.
+Description-de.UTF-8: Das fiaif init.d Skript aktivieren?
+ Das FIAIF init.d Setup zwar ist vollständig optional, aber stark empfohlen. Wenn sie die Frage bejahen, wird das Paket symbolische init.d Runlevel Verknüpfungen zu FIAIF generieren. Dies erlaubt FIAIF, automatisch beim Hochfahren zu starten.
+ .
+ Beachten Sie, daß fiaif nicht startet bis Sie die Konfigurationsdatei /etc/fiaif/fiaif.conf editiert, DONT_START auf Null gesetzt und neu gestartet haben. Falls Sie also fiaif zum ersten mal installieren, ist es sicher, an dieser Stelle zu akzeptieren. Falls Sie DONT_START schon nach einer früheren Installation auf Null gesetzt haben, wird fiaif nach dem nächsten Neustart gestartet werden.
+ .
+ Verneinen sie die Frage, um es dem Paket zu verbieten, die symbolischen Links für den Runlevel zu erzeugen. Existierende symbolische Links nach FIAIF werden entfernt.
+Description-es.UTF-8: ¿Desea activar el programa de init.d de fiaif?
+ La instalación en init.d de FIAIF es totalmente opcional, pero es muy recomendable. Si responde afirmativamente aquí, el paquete creará enlaces simbólicos a FIAIF en el nivel de ejecución de init.d. Esto permitirá que FIAF pueda iniciarse automáticamente en cada arranque del sistema.
+ .
+ Tenga en cuenta que fiaif no arrancará hasta que edite el fichero de configuración «/etc/fiaif/fiaif.conf», establezca DONT_START a cero y reinicie. Por lo que si es la primera vez que instala fiaif lo mejor es contestar afirmativamente aquí. Si ya tiene DONT_START a cero debido a una instalación previa, fiaif se arrancará después del siguiente inicio del sistema.
+ .
+ Conteste negativamente aquí si no desea que el paquete cree los enlaces simbólicos en el nivel de ejecución. Se eliminarán los enlaces simbólicos a FIAIF existentes.
+Description-eu.UTF-8: Gaitu fiaif initd. script-a?
+ FIAIF init.d konfigurazioa aukerakoa da baina oso gomendagarria. Hemen onartuaz gero paketeak init.d exekuzio-maila lotura sinbolikoak sortuko ditu FIAIF-rentzat. Honek abio bakoitzean FIAIF automatikoki exekutatzeko aukera ematen du.
+ .
+ Kontutan izan fiaif ez dela abiaraziko /etc/fiaif/fiaif.con fitxategia editatu eta DONT_START zero bezala ezarri eta berrabiarazi arte. Beraz  fiaif lehenengo aldiz konfiguratzen ari bazara segurua da hemen baiezkoa ematea. Dagoeneko DONT_START zero bezala ezarririk baduzu, fiaif hurrengo abioan exekutatuko da.
+ .
+ Ezezkoa eman ez baduzu paketeak exekuzio-maila loturak sortzerik nahi. Aurretik FIAIF-ren egon litezken loturak ezabatu egingo dira.
+Description-fr.UTF-8: Mettre en service le script de démarrage de fiaif dans /etc/init.d ?
+ Lancer FIAIF par le script installé dans /etc/init.d est totalement optionnel mais fortement recommandé. Si vous l'acceptez, les liens appropriés vers le script de lancement de FIAIF seront créés dans les répertoires de chacun des niveaux de fonctionnement (« runlevels »). Cela permettra alors à FIAIF d'être lancé au démarrage du système.
+ .
+ Veuillez noter que FIAIF ne démarrera pas tant que vous n'aurez pas modifié le fichier /etc/fiaif/fiaif.conf, placé DONT_START à 0 et redémarré le système. En conséquence, si vous l'installez pour la première fois, vous pouvez sans problème choisir cette option. Si vous avez déjà placé DONT_START à 0 lors d'une précédente installation, FIAIF se lancera au prochain démarrage du système.
+ .
+ Si vous ne choisissez pas cette option, ces liens ne seront pas créés et d'éventuels liens existants seront supprimés.
+Description-it.UTF-8: Abilitare lo script init.d di fiaif?
+ L'impostazione dello script init.d di fiaif è totalmente facoltativa, ma è altamente raccomandata. Se si risponde positivamente, il pacchetto creerà il collegamento simbolico del runlevel allo script init.d di fiaif. Questo farà sì che fiaif venga eseguito aumaticamente all'avvio del sistema.
+ .
+ Notare che fiaif non si avvierà finché il valore di DONT_START nel file di configurazione "/etc/fiaif/fiaif.conf" non sarà stato impostato a zero e il sistema non sarà stato riavviato. Pertanto, se si installa fiaif per la prima volta, è sicuro rispondere positivamente. Se si è già impostato il valore di DONT_START a zero da un'installazione precedente, fiaif sarà eseguito al prossimo riavvio del sistema.
+ .
+ Rispondere negativamente per non permettere al pacchetto di creare il collegamento simbolico del runlevel. I collegamenti simbolici esistenti a fiaif saranno rimossi.
+Description-ja.UTF-8: fiaif の init.d スクリプトを有効にしますか?
+ FIAIF の init.d スクリプトの準備は完全にオプションではありますが強く勧めます。ここで有効化を受け入れるとパッケージは init.d の runlevel に FIAIF へのシンボリックリンクを作成します。それにより FIAIF をブートのたびに自動的に開始させることができます。
+ .
+ fiaif は設定ファイル /etc/fiaif/fiaif.conf を編集して DONT_START に0をセットして再起動するまで開始しないことに注意してください。そのため、fiaif を初めてインストールする際はここで受け入れるのは安全です。以前にインストールしたとき既に DONT_START に0をセットしている場合は次回の再起動以後 fiaif は開始します。
+ .
+ パッケージに runlevel からのシンボリックリンクを作成させないようにするにはここで拒否してください。FIAIF への既存のシンボリックリンクは削除されます。
+Description-nl.UTF-8: Het init.d-script van fiaif aanschakelen?
+ Het instellen van init.d voor FIAIF is volledig optioneel, maar wordt sterk aanbevolen. Wanneer u hier toestemt, dan kan FIAIF automatisch worden gestart bij het opstarten van de computer; hiertoe worden er symbolische koppelingen aangemaakt die verwijzen naar het opstartscript /etc/init.d/fiaif.
+ .
+ Merk op dat fiaif niet zal starten totdat u het configuratiebestand /etc/fiaif/fiaif.conf heeft aangepast, zet DONT_START op nul, en herstart. Dus als u fiaif voor de eerste keer installeerd, dan is het veilig om hier toe te stemmen. Als u DONT_START al op nul heeft gezet bij een vorige installatie, dan zal fiaif worden gestart na de volgende herstart.
+ .
+ Weiger hier als u het pakket niet wilt toelaten om de runlevel-symbolische koppelingen aan te maken. Bestaande symbolische koppelingen naar FIAIF zullen worden verwijderd.
+Description-pt.UTF-8: Activar o script init.d do fiaif?
+ A configuração init.d do FIAIF é completamente opcional, mas é altamente recomendada. Se você aceitar aqui, o pacote irá criar links simbólicos no 'runlevel' do init.d para o FIAIF. Isto permite que o FIAIF arranque automáticamente a cada arranque da máquina.
+ .
+ Note que o fiaif não irá arrancar até que você edite o ficheiro de configuração /etc/fiaif/fiaif.conf, defina DONT_START para zero, e reinicie. Então se você instalar o fiaif pela primeira vez, é seguro aceitar aqui. Se você já tinha definido o DONT_START para zero numa instalação anterior, o fiaif irá arrancar após a próxima reiniciação da máquina.
+ .
+ Recuse aqui para não permitir ao pacote criar links simbólicos no 'runlevel'. Links simbólicos do FIAIF existentes serão removidos.
+Description-pt_BR.UTF-8: Habilitar o script init.d do fiaif?
+ A configuração do init.d para o FIAIF é completamente opcional, mas altamente recomendada. Se você aceitar esta opção, o pacote criará os links simbólicos dos níveis de execução init.d para o FIAIF. Isto permite que o FIAIF seja iniciado automaticamente a cada inicialização do computador.
+ .
+ Note que o fiaif não iniciará até que você edite o arquivo de configuração /etc/fiaif/fiaif.conf, ajuste DONT_START para zero, e reinicialize o computador. Assim, se você está instalando o fiaif pela primeira vez, é seguro aceitar esta opção. Se você já ajustou DONT_START para zero em uma instalação anterior, o fiaif será iniciado após a próxima reinicialização.
+ .
+ Recuse esta opção para não permitir que o pacote crie os links simbólicos dos níveis de execução. Links simbólicos existentes para o FIAIF serão removidos.
+Description-ru.UTF-8: Запускать сценарий fiaif из init.d при включении компьютера?
+ Настройка FIAIF init.d необязательна, но настоятельно рекомендуется. Если ответить утвердительно, то будут созданы символические ссылки в уровнях запуска на сценарий в init.d. Это позволит FIAIF запускаться автоматически при каждом включении компьютера.
+ .
+ Заметим, что fiaif не запустится, пока вы не отредактируете файл настройки /etc/fiaif/fiaif.conf, не установите DONT_START в ноль и не перезагрузитесь. Поэтому, если это первая установка fiaif, то можно спокойно дать утвердительный ответ. Если вы уже редактировали значение DONT_START раньше, fiaif запустится на следующей перезагрузке.
+ .
+ Ответьте отрицательно, чтобы символические ссылки не создавались. Существующие символические ссылки для FIAIF будут удалены.
+Description-sv.UTF-8: Aktivera fiaif:s init.d-skript?
+ FIAIF:s init.d-inställning är helt valfri men rekommenderas varmt. Om du accepterar här kommer paketet att skapa körtidslänkar under init.d åt FIAIF. Det låter FIAIF att startas automatiskt vid varje systemuppstart.
+ .
+ Notera att fiaif inte kommer att starta innan du redigerat konfigurationsfilen /etc/fiaif/fiaif.conf och satt DONT_START till noll, sedan startat om. Om du installerade fiaif för första gången är det säkert att acceptera här. Om du redan har satt DONT_START till noll från en tidigare installation kommer fiaif att startas efter nästa omstart.
+ .
+ Vägra här för att inte tillåta att paketet skapar körtidslänkarna. Existerande symlänkar till FIAIF kommer att tas bort.
+Description-vi.UTF-8: Hiệu lực tập lệnh «init.d» của trình fiaif không?
+ Tùy chọn hoàn thành để thiết lập init.d của FIAIF, nhưng mà khuyến khích nó nhiều. Nếu bạn chấp nhận tùy chọn này, gói tin sẽ tạo một số liên kết tượng trưng tại cấp chạy init.d đến FIAIF. Hành động này cho phép tự động khởi chạy FIAIF vào mọi lúc khởi động máy này.
+ .
+ Hãy ghi chú rằng trình fiaif sẽ không khởi chạy cho đến bạn sửa đổi tập tin cấu hình «/etc/fiaif/fiaif.conf», lập «DONT_START» (đừng khởi chạy) thành số không, rồi khởi động máy lại. Nếu bạn đã lập «DONT_START» thành số không trong một lần cài đặt trước, sẽ khởi chạy trình fiaif sau khi khởi động máy lại.
+ .
+ Nếu bạn từ chối tại đây, gói tin sẽ không tạo những liên kết cấp chạy ấy. Nó sẽ loại bỏ liên kết tượng trưng đã có nào.
+
+Template: fiaif/enable_cron
+Type: boolean
+Default: true
+Description: Send daily firewall log mail?
+ The fiaif-scan utility can be run as a cron job to send a
+ daily firewall log to the site administrator.
+ Do you want to run a daily script to send firewall log per mail?
+Description-cs.UTF-8: Zasílat denní hlášení o firewallu?
+ Komponenta fiaif-scan se může spouštět jako cronová úloha a denně zasílat administrátorovi seznam událostí z firewallu. Chcete, aby se tento skript spouštěl každý den a posílal emailová hlášení?
+Description-da.UTF-8: Send et daglig brev med brandmurs-loggen?
+ Fiaif-scan er et værktøj, som kan køres automatisk som et cron-job og sende en daglig brandmurs-log til administratoren. Vil du have, at der dagligt køres et skript, der sender brandmurs-loggen via e-post?
+Description-de.UTF-8: Tägliche Firewall Logmail schicken?
+ Das fiaif-scan Programm kann in einem Cronjob gestartet werden, der täglich ein Firewall Logmail an den Administrator schickt. Wollen sie dieses Log täglich per Mail schicken lassen?
+Description-es.UTF-8: ¿Desea que se le envíe un correo diario con el registro del cortafuegos?
+ La utilidad fiaif-scan puede ejecutarse como una tarea periódica para que envíe un registro diario del cortafuegos al administrador del sistema. ¿Desea ejecutar un programa diariamente para enviar el registro del cortafuegos por correo?
+Description-eu.UTF-8: Eguneroko suebaki erregistro fitxategia posta bidali?
+ Fiaif-scan lanabesa cron lan bat bezala exekutatu daiteke egunero suebakiaren erregistro fitxategia kudeatzaileari bidaltzeko. Nahi al duzu egunero script-a exekutatzeko erregistro fitxategia postaz bidaltzeko?
+Description-fr.UTF-8: Envoyer quotidiennement le journal du pare-feu ?
+ L'utilitaire fiaif-scan peut servir dans une tâche quotidienne de cron pour envoyer le journal du pare-feu à l'administrateur du site. Veuilez indiquer si vous souhaitez la mise en service d'un tel envoi quotidien.
+Description-it.UTF-8: Inviare rapporti giornalieri del firewall?
+ L'utilità fiaif-scan può essere eseguita come un job di cron per inviare un rapporto giornaliero del firewall all'amministratore del sito. Si desidera eseguire uno script giornaliero per inviare un rapporto del firewall per mail?
+Description-ja.UTF-8: ファイアウォールのログを毎日メールで送りますか?
+ fiaif-scan ユーティリティを cron ジョブとして実行し、日ごとのファイアウォールログをサイト管理者に送ることができます。日次スクリプトを実行してファイアウォーのログをメールで送りますか?
+Description-nl.UTF-8: Dagelijkse firewall-logmail versturen?
+ Het fiaif-scanhulpmiddel kan worden uitgevoerd als een cronjob om dagelijks een firewall-logboek te versturen naar de sitebeheerder. Wilt u een dagelijks script uitvoeren om firewall-logboeken te versturen per e-mail?
+Description-pt.UTF-8: Enviar relatório da firewall por mail diáriamente?
+ O utilitário fiaif-scan pode ser corrido como uma rotina diária (cron)para enviar um relatório da firewall diário para o administrador do site. Deseja correr um script diário para enviar o relatório da firewall por mail?
+Description-pt_BR.UTF-8: Enviar diariamente e-mail com log do firewall?
+ O utilitário fiaif-scan pode ser executado como uma tarefa do cron para enviar diariamente um log do firewall para o administrador do site. Você quer executar um script diário para enviar o log do firewall por e-mail?
+Description-ru.UTF-8: Посылать по почте журнал межсетевого экрана ежедневно?
+ Можно настроить утилиту fiaif-scan в задании cron так, чтобы ежедневно администратору компьютера отправлялся журнал работы межсетевого экрана.
+Description-sv.UTF-8: Skicka daglig e-post med brandväggsloggar?
+ Verktyget fiaif-scan kan köras som ett cronjobb för att skicka en daglig brandväggslogg till systemadministratören. Vill du köra ett dagligt skript för att skicka brandväggsloggen via e-post?
+Description-vi.UTF-8: Gởi thư chứa bản ghi bức tường lửa hàng ngày không?
+ Tiện ích «fiaif-scan» có thể chạy là một công việc định kỷ (cron) để gởi một bản ghi bức tường lửa hàng ngày cho quản trị nơi Mạng này. Bạn có muốn chạy một tập lệnh hàng ngày để gởi bản ghi bức tường lửa qua thư không?
+
+Template: fiaif/cron_logfile
+Type: note
+Description: fiaif-scan logfile location
+ The standard logfile location of fiaif-scan is /var/log/syslog. If
+ your system uses a non-standard system logfile location you have to
+ adjust the /etc/cron.daily/fiaif-scan script to use the custom logfile.
+Description-cs.UTF-8: Umístění logovacího souboru fiaif-scan
+ Výchozí umístění logovacího souboru fiaif-scan je /var/log/syslog. Pokud váš systém používá nestandardní umístění logů, musíte příslušně upravit skript /etc/cron.daily/fiaif-scan, aby používal odpovídající soubor.
+Description-da.UTF-8: Placering af fiaif-scans logfil
+ Standardplaceringen for fiaif-scans logfil er /var/log/syslog. Hvis dit system bruger en anden placering af system-logfilen, skal du rette skriptet /etc/cron.daily/fiaif-scan, så det bruger denne logfil.
+Description-de.UTF-8: Ort der fiaif-scan Logdatei
+ Die Standard-Logdatei von fiaif-scan ist /var/log/syslog. Wenn ihr System eine andere Logdatei benutzt, müssen Sie das Skript unter /etc/cron.daily/fiaif-scan auf ihre spezifische Logdatei anpassen.
+Description-es.UTF-8: Ubicación del fichero de registro de fiaif-scan
+ La ubicación estándar del fichero de registro de fiaif-scan es «/var/log/syslog». Si su sistema usa una ubicación no estándar para el fichero de registro del sistema, entonces tiene que ajustar el programa «/etc/cron.daily/fiaif-scan» para que use el fichero de registro personalizado.
+Description-eu.UTF-8: fiaif-scan erregistro fitxategiaren kokapena
+ Fiaif-scan-ren erregistro fitxategiaren kokapen estandarra /var/log/syslog da. Zure sistemak estandarra ez den sistema erregistro fitxategi bat erabiltzen badu /etc/cron.daily/fiaif-scan script-a fitxategi pertsonalizatua erabiltzeko doitu beharko duzu.
+Description-fr.UTF-8: Emplacement du fichier de journalisation de fiaif-scan
+ L'emplacement habituel du fichier de journalisation de fiaif-scan est /var/log/syslog. Si votre système utilise un emplacement différent pour ce fichier, vous devez adapter le fichier /etc/cron.daily/fiaif-scan pour y indiquer le nom de ce fichier de journalisation.
+Description-it.UTF-8: Posizione del file di rapporto di fiaif-scan
+ La posizione standard del file di rapporto di fiaif-scan è "/var/log/syslog". Se il proprio sistema utilizza una locazione non standard dei file di registro sarà necessario adattare lo script "/etc/cron.daily/fiaif-scan" per utilizzare il file di rapporto personalizzato.
+Description-ja.UTF-8: fiaif-scan ログファイルの位置
+ fiaif-scan の標準的なログファイルの位置は /var/log/syslog です。標準的ではない位置にシステムログファイルを置いているシステムではそれに合わせて /etc/cron.daily/fiaif-scan スクリプトを調整し、そのファイルを使うようにする必要があります。
+Description-nl.UTF-8: Lokatie van het logboekbestand fiaif-scan
+ De standaard logboekbestandlokatie van fiaif-scan is /var/log/syslog. Als uw systeem een niet-standaard logboekbestandlokatie gebruikt, dan moet u het script /etc/cron.daily/fiaif-scan aanpassen aan het aangepaste logboekbestand.
+Description-pt.UTF-8: Localização do ficheiro relatório do fiaif-scan
+ A localização standard do ficheiro relatório do fiaif-scan é /var/log/syslog. Seu o seu sistema usa um sistema não standard de localização de relatórios, você tem que ajustar o script /etc/cron.daily/fiaif-scan para usar o ficheiro de relatórios personalizado.
+Description-pt_BR.UTF-8: Localização do arquivo de log do fiaif-scan
+ O local padrão do arquivo de log do fiaif-scan é /var/log/syslog. Se o seu sistema usa um local não padrão para os arquivos de log do sistema, você deve ajustar o script /etc/cron.daily/fiaif-scan para usar o arquivo de log personalizado.
+Description-ru.UTF-8: Расположение файла журнала fiaif-scan
+ Стандартным файлом журнала для fiaif-scan является /var/log/syslog. Если в системе используется другой файл журнала, то нужно исправить сценарий /etc/cron.daily/fiaif-scan, указав нужный.
+Description-sv.UTF-8: Plats för fiaif-scans loggfil
+ Standardplatsen för loggfilen för fiaif-scan är /var/log/syslog. Om ditt system använder en icke-standardplats för loggfilen kan du justera det i skriptet /etc/cron.daily/fiaif-scan för att använda den anpassade loggfilen.
+Description-vi.UTF-8: Vị trí tập tin bản ghi «fiaif-scan»
+ Vị trí chuẩn cho tập tin bản ghi của trình «fiaif-scan» là «/var/log/syslog». Nếu hệ thống bạn dùng một vị trí không chuẩn cho bản ghi hệ thống, bạn cần phải điều chỉnh tập lệnh «/etc/cron.daily/fiaif-scan» để dùng tập tin bản ghi tự chọn.
+
+Template: fiaif/warning
+Type: note
+Description: Attention when using FIAIF
+ Beware. The tools can easily be misused, causing enormous amounts of grief
+ by completely cripple network access to a computer system. It is not
+ terribly uncommon for a remote system administrator to accidentally lock
+ themself out of a system hundreds or thousands of miles away. One can even
+ manage to lock himself out of a computer whose keyboard is under his
+ fingers. Please, use due caution.
+Description-cs.UTF-8: Opatrnost při používání FIAIF
+ Buďte opatrní. Nástroje se dají jednoduše zneužít, což může způsobit spousty smutku nebo zlosti nad nefunkčím přístupem k nějakému počítači. Není až tak neobvyklé, že si vzdáleně pracující administrátor pod sebou uřízne větev a vzdálený server leží stovky nebo tisíce kilometrů daleko. Človek se dokonce může odříznout i od počítače, u jehož klávesnice zrovna sedí, takže prosím, používejte nástroje s rozvahou.
+Description-da.UTF-8: Bemærk når du bruger FIAIF
+ Bemærk. Dette værktøj kan let blive misbrugt og give anledning til store frustrationer ved helt at ødelægge netværksadgang til en computer. Det er ikke ualmindeligt at system-administratorer ved et uheld lukker sig selv ude fra maskinen flere hundrede eller tusinde kilometer væk. Man kan endda lukke sig selv ude fra den maskine, hvis tastatur ligger lige under ens næse. Brug dette program med varsomhed.
+Description-de.UTF-8: Achtung beim Benutzen von FIAIF
+ Obacht. Diese Werkzeuge können leicht derart missbraucht werden, dass sie großen Kummer durch einen komplett verstümmelten Netzwerkzugriff eines Computersystems auslösen können. Es ist nicht sehr ungewöhnlich für einen entfernten Administrator, sich aus Versehen selber von einem hunderte oder tausende Kilometer entfernten System auszusperren. Man kann es sogar fertigbringen, sich von einem Rechner auszusperren, dessen Tastatur sich einem gerade unter den Fingern befindet. Bitte gehen Sie entsprechend vorsichtig vor.
+Description-es.UTF-8: Tenga cuidado al usar FIAIF
+ ¡Cuidado! Es muy fácil que estas herramientas se utilicen incorrectamente y provoquen problemas graves por inhabilitar completamente el acceso remoto a un sistema. Muchos administradores de sistemas se han bloqueado sin querer de sistemas que estaban a cientos o miles de kilómetros de distancia. Uno puede incluso llegar a bloquearse el acceso a un sistema en cuya consola está trabajando. Por favor, tome las debidas precauciones para evitar estos problemas.
+Description-eu.UTF-8: Kontu eduki FIAIF erabiltzean
+ Kontuz! Erraza da lanabes hauek oker erabiltzeagatik arazo larriak sortzea ordengailura urruneko sarrera guztiz desgaitzean. Ez da guztiz arraroa urruneko sistemen kudeatzaileak istripuz kudeaketa blokeatuaz ehunka edo milaka kilometroetara dagoen ordenagailuetan blokeatzea. Gerta daiteke teklatua eskuez ukitzen dagoen sistema batetarako kontsola sarrera desgaitzea ere. Mesedez erabili arreta handiaz.
+Description-fr.UTF-8: Attention en utilisant FIAIF
+ Attention : il est très facile de mal utiliser ces outils et cela peut générer énormément de frustrations en perturbant totalement l'accès réseau d'un système informatique. Il n'est pas très exceptionnel qu'un administrateur de système distant verrouille accidentellement son accès à un système situé à des centaines ou des milliers de kilomètres. Il est même possible, les doigts sur le clavier, de verrouiller son propre accès au système. Utilisez donc ces outils avec précaution.
+Description-it.UTF-8: Attenzione quando si usa fiaif
+ Attenzione. Gli strumenti possono facilmente essere utilizzati in modo errato, causando con ciò molti dispiaceri, disabilitando l'accesso via rete a un computer. Non è molto raro che un amministratore di sistema si chiuda accidentalmente fuori da un sistema distante migliaia di chilometri. Ci si può perfino chiudere fuori da un sistema la cui tastiera è sotto le proprie dita. Usare la massima cautela.
+Description-ja.UTF-8: FIAIF 使用時の注意
+ 注意してください。このツールは簡単に誤用し、コンピュータシステムへのネットワークアクセスが完全に使えなくなり、非常に厄介な状況を引き起こす可能性があります。リモートのシステム管理者がシステムから何百あるいは何千キロも離れた場所から誤って自らを締め出してしまうことはそれほど珍しいことではありません。キーボードを手にしているコンピュータから締め出してしまう可能性すらあります。注意を怠ることのないようにしてください。
+Description-nl.UTF-8: Aandacht bij gebruik van FIAIF
+ Pas op. De hulpmiddelen kunnen gemakkelijk worden misbruikt. Dit veroorzaakt enorme hoeveelheden frustratie door compleet ontoegankelijke netwerktoegang naar een computersysteem. Het is niet zo ongewoon voor een systeembeheerder op afstand om zichzelf per ongeluk buiten te sluiten van een systeem dat honderden of duizenden kilometers ver is. Men kan zich zelfs buitensluiten van een computer wiens toetsenbord zich onder zijn vingers bevindt. Gebruik dit dus met de nodige voorzichtigheid.
+Description-pt.UTF-8: Atenção ao utilizar o FIAIF
+ Cuidado. As ferramentas são facilmente mal utilizadas, causando enormes chatices ao paralisar completamente o acesso à rede a um sistema de computador. Não é fora do comum um administrador remoto de sistema bloquear-se acidentalmente a centenas ou milhares de quilómetros de distância. É igualmente possível alguém bloquear-se a si próprio num computador cujo teclado está debaixo dos seus dedos. Por favor use com cuidado.
+Description-pt_BR.UTF-8: Atenção ao usar o FIAIF
+ Cuidado. As ferramentas podem ser facilmente usadas de forma incorreta, causando enorme quantidade de desespero por impedir completamente o acesso via rede ao sistema computacional. Não é terrivelmente incomum para um administrador de sistemas remoto acidentalmente ficar sem acesso a um sistema a centenas ou milhares de quilômetros de distância. Pode-se até mesmo conseguir ficar sem acesso a um computador cujo teclado está sob os seus dedos. Por favor, tenha o devido cuidado.
+Description-ru.UTF-8: Внимательность при работе с FIAIF
+ Осторожно. Инструменты можно легко использовать неправильно, что приведёт громадным неприятностям, полностью заблокировав сетевой доступ к компьютерной системе. Особенно ужасно, если при этом система находится от вас за сотню или тысячу километров. Хотя можно даже заблокировать компьютер, клавиатура которого находится прямо перед вами. Используйте с осторожностью.
+Description-sv.UTF-8: Att tänka på vid användning av FIAIF
+ Varning: Verktygen kan lätt användas på fel sätt och orsaka enorma problem genom att totalt haverera nätverkstillgången till ett datorsystem. Det är inte helt ovanligt att en administratör på ett fjärrsystem av misstag låser sig ute ur ett system, tusentals mil bort. Man kan till och med låsa sig ute ur datorn vars tangentbord är under ens fingrar. Snälla, använd med försiktighet.
+Description-vi.UTF-8: ••• Hãy cẩn thận khi sử dụng FIAIF •••
+ Hãy cẩn thận: có thể dễ dàng sử dụng những công cụ này một cách không đúng, thì hỏng hoàn thành truy cập mạng vào một hế thống máy tính. Không phải ít khi có một quản trị hế thống từ xa tình nguyện cờ khóa mình ra một hệ thống cách đó xa quá. Ngay cả có thể khóa mình ra một máy tính tại chỗ bạn. Hãy cẩn thận.

@@ -1,0 +1,159 @@
+Template: mythtv-status/host
+Type: string
+Default: localhost
+Description: MythTV backend to check:
+ The MythTV backend to check, you only need to change this if you want to check
+ a different host.
+Description-cs.UTF-8: Backend MythTV ke kontrole:
+ Backend MythTV ke kontrole, mění se pouze pokud chcete zkontrolovat jiný počítač.
+Description-da.UTF-8: MythTV-motor der skal kontrolleres:
+ MythTV-motoren der skal kontrolleres, du skal kun ændre dette, hvis du ønsker at kontrollere en anden vært.
+Description-de.UTF-8: Zu prüfendes MythTV-Backend:
+ Das zu prüfende MythTV-Backend. Sie müssen dies nur ändern, falls Sie einen anderen Rechner prüfen wollen.
+Description-es.UTF-8: Módulo de MythTV a comprobar:
+ El módulo de MythTV a comprobar. Sólo necesita cambiar esto si desea comprobar otro sistema.
+Description-eu.UTF-8: Arakatzeko MythTV interfazea:
+ Arakatzeko MythTV interfazea, hau beste ostalari batetara konektatu nahi baduzu bakarrik aldatu behar duzu.
+Description-fr.UTF-8: Système MythTV à examiner :
+ Le système MythTV à examiner. Vous n'avez à changer la valeur par défaut que si vous désirer examiner un autre hôte.
+Description-ja.UTF-8: MythTV のバックエンドの確認:
+ MythTV のバックエンドの確認です。別のホストを確認したい場合のみ、これを変更する必要があります。
+Description-nl.UTF-8: Te controleren MythTV-backend:
+ Geef aan welk MythTV-backend gecontroleerd moet worden. U hoeft dit alleen te wijzigigen als u een andere computer wilt controleren.
+Description-pt.UTF-8: Backend do MythTV para verificar:
+ O backend do MythTV para verificar, você apenas precisa alterar isto se desejar verificar uma máquina diferente.
+Description-ru.UTF-8: Проверяемая серверная часть MythTV:
+ Здесь указывается проверяемая серверная часть (backend) MythTV; требует изменения только в случае, если вы хотите проверять другой компьютер.
+Description-sv.UTF-8: Värdnamn för MythTV-bakdel som ska kontrolleras:
+ Om du vill köra MtyhTV-bakdelen på ett annat system behöver du ange värdnamnet nedan.
+
+Template: mythtv-status/enable
+Type: boolean
+Default: true
+Description: Update the system MOTD?
+ Whether the Message of the Day should be updated on system boot and on a
+ regular basis.
+ .
+ To adjust how often the MOTD is updated, edit /etc/cron.d/mythtv-status.
+Description-cs.UTF-8: Aktualizovat systémovou MOTD?
+ Zda se má pravidelně aktualizovat MOTD (Message of the Day = zpráva dne) při startu systému.
+ .
+ Pro nastavení jak často se má MOTD aktualizovat upravte /etc/cron.d/mythtv-status.
+Description-da.UTF-8: Opdater Dagens besked for systemet?
+ Hvorvidt Dagens besked skal opdateres ved systemopstart og løbende.
+ .
+ For at justere hvor ofte Dagens besked opdateres, så rediger /etc/cron.d/mythtv-status.
+Description-de.UTF-8: Die MOTD des Systems aktualisieren?
+ Entscheiden Sie, ob die Nachricht des Tages (»Message of the Day«) beim Systemstart und auf regelmäßiger Basis aktualisiert werden soll.
+ .
+ Bearbeiten Sie die Datei /etc/cron.d/mythtv-status, um einzustellen, wie oft die MOTD aktualisiert werden soll.
+Description-es.UTF-8: ¿Desea actualizar el mensaje del día del sistema?
+ Si el mensaje del día se debería actualizar al iniciar el sistema y de forma regular.
+ .
+ Edite «/etc/cron.d/mythtv-status» para definir la regularidad de las actualizaciones de mensajes del día.
+Description-eu.UTF-8: Bertsio-berritu sistema MOTD-a?
+ Eguneko mezua sistema abioan edo oinarri erregular batetan aldatu behar den.
+ .
+ MOTD noiz eguneratu behar den doitzeko, /etc/cron.d/mythtv-status editatu.
+Description-fr.UTF-8: Mettre à jour le MOTD du système ?
+ Mise à jour du message du jour du système lors du démarrage et sur une base régulière.
+ .
+ Pour changer la fréquence de mise à jour du message du jour, modifier le fichier /etc/cron.d/mythtv-status.
+Description-ja.UTF-8: system の MOTD を更新しますか?
+ システム起動時および定期的に、今日のお知らせ (Message of the Day) を更新するかどうかです。
+ .
+ どのぐらいの頻度で MOTD を更新するかについては、/etc/cron.d/mythtv-status を編集してください。
+Description-nl.UTF-8: De MOTD van het systeem bijwerken?
+ Geef aan of het "bericht van de dag" (MOTD) bijgewerkt moet worden bij de systeemstart en op reguliere basis.
+ .
+ Bewerk /etc/cron.d/mythtv-status om te wijzigen hoe vaak de MOTD wordt bijgewerkt.
+Description-pt.UTF-8: Actualizar o sistema MOTD?
+ Se a Mensagem do Dia deverá ser actualizada no arranque da máquina e numa base regular.
+ .
+ Para ajustar a frequência de actualização do MOTD, edite /etc/cron.d/mythtv-status.
+Description-ru.UTF-8: Обновлять системный MOTD?
+ Здесь можно указать, нужно ли обновлять Сообщение Для регулярно и при загрузке системы.
+ .
+ Для настройки частоты обновления MOTD, отредактируйте /etc/cron.d/mythtv-status.
+Description-sv.UTF-8: Ska systemets MOTD uppdateras?
+ Ange om Message of the Day ska uppdateras vid systemets uppstart och med jämna mellanrum under drift.
+ .
+ För att ändra hur ofta MOTD uppdateras redigera filen /etc/cron.d/mythtv-status.
+
+Template: mythtv-status/email
+Type: string
+Default: none
+Description: Send email status to:
+ Status emails can be sent on a daily basis.
+ .
+ By default an email is only sent if there are alerts.  You must have
+ the MythTV Perl API installed for conflict alerts to be generated.
+ .
+ To disable set the email address to "none".  To specify multiple email
+ addresses, seperate them with a comma.
+Description-cs.UTF-8: Poslat stavový email na:
+ Email se stavem je možno posílat pravidelně každý den.
+ .
+ Ve výchozím nastavení je email posílán pouze v případě nějakého problému. Pro generování upozornění o konfliktech je potřeba nainstalovat také API MythTV Perl.
+ .
+ Pro vypnutí zasílání zpráv nastavte emailovou adresu na „none“. Více adres oddělte pomocí čárky.
+Description-da.UTF-8: Send e-post-status til:
+ Status-e-post kan sendes dagligt.
+ .
+ Som standard sendes en e-post kun hvis der er alarmer. Du skal have MythTV Perl API'en installeret for at konfliktalarmer bliver oprettet.
+ .
+ For at deaktivere så angiv e-post-adressen til »none« (ingen). For at angive flere e-post-adresser så adskil dem med et komma.
+Description-de.UTF-8: Verschicke E-Mail-Status an:
+ Es können tägliche Status-E-Mails versendet werden.
+ .
+ Standardmäßig wird nur bei Störungen eine E-Mail versandt. Damit bei Konflikten Warnungen erzeugt werden, müssen Sie das MythTV-Perl-API installiert haben.
+ .
+ Zum Deaktivieren setzen Sie die E-Mail-Adresse auf »none«. Mehrere E-Mail-Adressen werden durch Kommata getrennt.
+Description-es.UTF-8: Enviar correo electrónico de estado a:
+ Se pueden enviar correos electrónicos de estado diariamente.
+ .
+ Por omisión, sólo si envía un correo electrónico en caso de alerta. Debe tener la API de Perl de MythTV instalado para la generación de alertas de conflictos.
+ .
+ Para desactivarlo, defina la dirección de correo electrónico como «none». Separe las direcciones de correo electrónico con comas en caso de definir varias.
+Description-eu.UTF-8: Bidali egoera posta:
+ Egoera postak eguneroko oinarrian bidali daitezke
+ .
+ Lehenespenez postak alertak daudenean bakarrik bidaltzen dira. MythTV Perl APIa instalaturik izan behar duzu elkar-jotze alertak sortzeko.
+ .
+ Desgaitzeko ezarri eposta helbidea "none" gisa. Posta helbide anitz ezartzeko gakoz bidez bereizi itzazu.
+Description-fr.UTF-8: Envoyer le status à :
+ Un courriel de status peut être envoyé quotidiennement.
+ .
+ Un message n'est envoyé que s'il y a un conflit dans l'horaire. Le module Perl MythTV doit être installé pour utiliser cette fonction.
+ .
+ Pour désactiver cette fonction, entrez l'adresse "none". Pour spécifiez plus d'une adresse, séparez-les par des virgules.
+Description-ja.UTF-8: ステータスを以下にメールする:
+ ステータスのメールは毎日送ることができます。
+ .
+ デフォルトではメールは警告がある場合にのみ送られます。番組の衝突警告を生成するには、MythTV Perl API がインストール済みであることが必要です。
+ .
+ メールアドレスを無効にするには「none」を設定してください。複数のメールアドレスを指定するにはコンマで区切ってください。
+Description-nl.UTF-8: Stuur een e-mail met de status naar:
+ Status-e-mails kunnen dagelijks verstuurd worden.
+ .
+ Standaard wordt er alleen een e-mail verstuurd als er meldingen zijn. Conflictmeldingen worden alleen aangemaakt als u de  MythTV-Perl-API heeft geinstalleerd.
+ .
+ Vul als e-mailadres "none" in om dit uit te schakelen. U kunt ook meerdere e-mailadressen opgeven door ze te scheidinge met een komma.
+Description-pt.UTF-8: Enviar email de estado para:
+ Emails de estado podem ser enviados diariamente.
+ .
+ Por pré-definição, um email é enviado apenas se existir um alerta. Você precisa ter a API MythTV Perl instalada para os alertas de conflito serem gerados.
+ .
+ Para desactivar regule o endereço de email para "none". Para especificar endereços de email múltiplos, separe-os com uma vírgula.
+Description-ru.UTF-8: Отправка данных о состоянии на эл. почту:
+ Состояние можно отправлять ежедневно по электронной почте.
+ .
+ По умолчанию письма отправляются только при возникновении проблем. Для предупреждений о конфликтах вам требуется установить MythTV Perl API.
+ .
+ Для выключения вместо адреса укажите "none". Несколько адресов эл. почты можно задавать через запятую.
+Description-sv.UTF-8: Skicka e-post med statusmeddelande till:
+ E-post-meddealnden och status för systemet kan skickas dagligen.
+ .
+ Standardinställningen är att e-post endast skickas om varningar förekommer. Du måste ha MythTV Perl API installerad för att kunna känna av konfliktvarningar.
+ .
+ För att inaktivera funktionen anger du "non" som e-post-adress. Separera flera adresser med kommatecken.

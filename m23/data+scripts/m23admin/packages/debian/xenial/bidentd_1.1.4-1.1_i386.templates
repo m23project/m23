@@ -1,0 +1,242 @@
+Template: bidentd/loglevel
+Type: select
+Choices: Be very quiet, Be quiet, Log all requests, Be somewhat verbose, Be quite verbose, Be really verbose, Manual config
+Choices-ca.UTF-8: Molt silenciós, Silenciós, Registra totes les peticions , Una mica detallat, Força detallat, Molt detallat, Configuració manual
+Choices-cs.UTF-8: Velmi tichý, Tichý, Všechny požadavky, O něco upovídanější, Dost upovídaný, Velmi upovídaný, Ruční nastavení
+Choices-da.UTF-8: Vær meget stille, Vær stille, Log alle forespørgsler, Vær lidt uddybende, Vær ret så uddybende, Uddyb alt, Manuel konfiguration
+Choices-de.UTF-8: Sehr zurückhaltend, Zurückhaltend, Alle Anfragen, Etwas gesprächig, Ziemlich gesprächig, Sehr gesprächig, Manuelle Einstellung
+Choices-es.UTF-8: Muy silencioso, Silencioso, Registrar todas las peticiones, Algo prolijo, Bastante prolijo, Muy prolijo, Configuración manual
+Choices-fr.UTF-8: Très silencieux, Silencieux, Tout journaliser, Un peu bavard, Assez bavard, Très bavard, Configuration manuelle
+Choices-it.UTF-8: Molto silenzioso, Silenzioso, Registra tutte le richieste, Un po' prolisso, Piuttosto prolisso, Molto prolisso, Configurazione manuale
+Choices-nl.UTF-8: Wees zeer stil, Wees stil, Log alle aanvragen, Wees nogal woordenrijk, Wees meer woordenrijk, Wees zeer woordenrijk, Handmatige configuratie
+Choices-pl.UTF-8: Bądź bardzo cichy, Bądź cichy, Zapisuj wszystkie żądania, Bądź dość szczegółowy, Bądź całkiem szczegółowy, Bądź bardzo szczegółowy, Konfiguracja ręczna
+Choices-pt.UTF-8: Sem qualquer 'output', Pouco 'output', Relatar todos os pedidos, Algum 'output', Pouco 'Output', 'Output' normal, Configurar manualmente
+Choices-pt_BR.UTF-8: Seja muito quieto, Seja quieto, Logar todas as requisições, Seja um pouco verboso, Seja bastante verboso, Seja realmente verboso, Configuração manual
+Choices-ru.UTF-8: ничего, только ошибки, все запросы, подробности, больше подробностей, всё, ручная настройка
+Choices-sk.UTF-8: Byť úplne tichý, Byť tichý, Zaznamenať všetky požiadavky, Trocha veľavravný, Celkom veľavravný, Naozaj veľavravný, Manuálne nastavenie
+Choices-sv.UTF-8: Väldigt tyst, Tyst, Logga alla, Lite informativ, Lite mer informativ, Riktigt informativ, Manuell konfig
+Choices-vi.UTF-8: Ghi lưu rất ít, Ghi lưu hơi ít, Ghi lưu mọi yêu cầu, Ghi lưu một số chi tiết, Ghi lưu chi tiết, Ghi lưu gần mọi gì, Tự cấu hình
+Default: Log all requests
+Description: Logging level for bidentd:
+ Bisqwit's IDENT Daemon can emit various amounts of information to the
+ daemon facility of the system logs.
+ .
+ The choices have the following meaning:
+   "Be very quiet"        Log nothing
+   "Be quiet"             Log only errors
+   "Log all requests"     Log all requests (can generate lots of noise)
+   "Be somewhat verbose"  Log a little more than with "log all requests"
+   "Be quite verbose"     Log even more than "be somewhat verbose"
+   "Be really verbose"    Log very much (will generate lots of noise)
+   "Manual config"        Do not touch inetd.conf
+ .
+ You should choose "Log all requests" unless you know you need one of the 
+ other choices. The verbose options are mostly useful for debugging.
+Description-ca.UTF-8: Trieu el nivell de registre pel bidentd
+ El dimoni IDENT de Bisqwit pot emetre diferents quantitats d'informació dels registres del sistema.
+ .
+ Les opcions tenen els següents significats:
+   «Molt Silenciós»               No fa cap tipus de registre
+   «Silenciós»                    Només registra els errors
+   «Registra totes les peticions» Registra totes les peticions (pot
+                                  generar bastant soroll)
+   «Una mica detallat»            Registra una mica més que «Registra
+                                  totes les peticions»
+   «Força detallat»               Fa una mica més de registre que «Amb 
+                                  un poc de detall»
+   «Molt detallat»                Registra molt (generarà molt soroll)
+   «Configuració Manual»          No modifica inetd.conf
+ .
+ Heu de triar «Registra totes les peticions» a no ser que sapigueu que necessiteu alguna de les altres opcions. Les opcions de registre són útils per depurar.
+Description-cs.UTF-8: Vyberte si úroveň logování pro bidentd
+ Bisqwitův INED Daemon umí do systémových logů chrlit různé množství informací.
+ .
+ Volby mají následující význam:
+   "Velmi tichý"         Nezaznamenává nic
+   "Tichý"               Zaznamenává pouze chyby
+   "Všechny požadavky"   Zaznamenává všechny požadavky (může vytvořit šum)
+   "O něco upovídanější" Zaznamenává víc než "všechny požadavky"
+   "Dost upovídaný"      Zaznamenává ještě víc než předchozí možnost
+   "Velmi upovídaný"     Zaznamenává téměř vše (se spoustou inf. šumu)
+   "Ruční nastavení"     Nezmění inetd.conf
+ .
+ Pokud nevíte, že potřebujete některou z jiných voleb, vyberte "Všechny požadavky". Upovídanější varianty jsou většinou užitečné pro ladění.
+Description-da.UTF-8: Logniveau for bidentd:
+ Bisqwits IDENT-dæmon kan udsende forskelligt niveau af information til dæmonfaciliteten for systemloggene.
+ .
+ Valgene har den følgende betydning:
+   »Vær meget stille«       Log ingenting
+   »Vær stille«             Log kun fejl
+   »Log alle forespørgsler« Log alle forespørgsler (kan skabe en masse støj)
+   »Vær lidt uddybende«     Log en smule mere end med »log alle forespørgsler«
+   »Vær ret så uddybende«   Log endnu mere end »Vær lidt uddybende«
+   »Uddyb alt«              Log meget (vil oprette en masse støj)
+   »Manuel konfiguration«   Rør ikke inetd.conf
+ .
+ Du bør vælge »Log alle forespørgsler« medmindre du ved, at du skal bruge en af de andre valgmuligheder. De uddybende tilvalg er mest beregnet for fejlsøgning.
+Description-de.UTF-8: Protokollierungsart für bidentd
+ Bisqwit's IDENT Daemon kann unterschiedlich viele Informationen über den Dienst in die System-Protokolldateien schreiben.
+ .
+ Die Auswahl bedeutet:
+   "Sehr zurückhaltend"     Nichts protokollieren
+   "Zurückhaltend"          Nur Fehler protokollieren
+   "Alle Anfragen"          Alle Anfragen protokollieren (Das kann viele Meldungen erzeugen.)
+   "Etwas gesprächig"       Etwas mehr als "Alle Anfragen" protokollieren
+   "Ziemlich gesprächig"    Noch mehr als "Etwas gesprächig" protokollieren
+   "Sehr gesprächig"        Sehr viel protokollieren (Das wird sehr viele Meldungen erzeugen.)
+   "Manuelle Einstellung"   Die Datei inetd.conf unverändert lassen.
+ .
+ Sie sollten "Alle Anfragen" auswählen, wenn Sie keine der anderen Möglichkeiten benötigen. Die gesprächigen Stufen sind meistens für die Fehlersuche nötig.
+Description-es.UTF-8: Nivel de registro de bidentd:
+ El daemon IDENT de Bisqwit puede emitir diferentes cantidades de información al daemon de registros del sistema.
+ .
+ Las opciones que tiene son las siguientes:
+   Muy siencioso		No registrar nada
+   Silencioso			Registrar sólo los errores
+   Registrar todas las peticiones	Registrar todas las peticiones (puede
+ 				generar mucho ruido)
+   Algo prolijo			Registrar un poco más que Registrar todas
+ 				las peticiones
+   Bastante Prolijo		Registrar aún más que Algo prolijo
+   Muy prolijo			Registrar mucho más (generará mucho ruido)
+   Configuración manual		No tocar inetd.conf
+ .
+ Debería escoger Registrar todas las peticiones salvo que sepa que necesita alguna de las otras opciones. Las opciones prolijas son útiles principalmente para depuración.
+Description-fr.UTF-8: Veuillez choisir le niveau de journalisation du démon ident de Bisqwit
+ Le démon ident de Bisqwit peut envoyer des quantités variables d'information au démon de journalisation du système, dans la catégorie « daemon ». 
+ .
+ Les choix sont les suivants :
+  - Très silencieux  : rien n'est envoyé ;
+  - Silencieux       : journalisation des seules erreurs ;
+  - Tout journaliser : journalisation de chaque requête (cela peut
+                       être assez bavard) ;
+  - Un peu bavard    : journalisation légèrement plus importante
+                       que « Tout journaliser » ;
+  - Assez bavard     : journalisation encore plus importante ;
+  - Très bavard      : très importante journalisation (et envoi
+                       d'une grande quantité d'informations) ;
+  - Config. manuelle : pas de modification d'inetd.conf.
+ .
+ Vous devriez choisir « Tout journaliser » à moins d'être certain d'avoir besoin d'un réglage différent. Les options « bavardes » sont essentiellement nécessaires pour le débogage.
+Description-it.UTF-8: Livello di registrazione per bidentd:
+ Il demone IDENT di Bisqwit può produrre una quantità variabile di informazioni per il demone dei registri di sistema.
+ .
+ Le scelte hanno i seguenti significati:
+   "Molto silenzioso"             Non registra nulla
+   "Silenzioso"                   Registra solo gli errori
+   "Registra tutte le richieste"  Registra tutte le richieste (può generare molto rumore)
+   "Un po' prolisso"              Registra un po' più di "Registra tutte le richieste"
+   "Piuttosto prolisso"           Registra ancora di più di "Un po' prolisso"
+   "Molto prolisso"               Registra molto (genera molto rumore)
+   "Configurazione manuale"       inetd.conf non viene toccato
+ .
+ Si dovrebbe scegliere "Registra tutte le richieste" a meno di non essere sicuri che sia necessaria una delle altre scelte. Le opzioni prolisse sono utili sopratutto per il debug.
+Description-nl.UTF-8: Kies het logniveau voor de identd van Bisqwit
+ De IDENT Daemon van Bisqwit kan verschillende hoeveelheden informatie uitsturen naar de achtergronddienst van de systeemlogs.
+ .
+ De keuzes hebben de volgende betekenis:
+  "Wees zeer stil"              Niets loggen
+  "Wees stil"                   Enkel fouten loggen
+  "Log alle aanvragen"          Log alle aanvragen (kan veel lawaai genereren)
+  "Wees nogal woordenrijk"      Log een beetje meer dan met "Log alle aanvragen"
+  "Wees meer woordenrijk"       Log nog meer dan "Wees nogal woordenrijk"
+  "Wees zeer woordenrijk"       Log zeer veel (zal veel lawaai genereren)
+  "Handmatige configuratie"     Raak inetd.conf niet aan
+ .
+ U moet "Log alle aanvragen" kiezen behalve als u weet dat u een andere keuze nodig hebt. De woordenrijke opties zijn meestal te gebruiken voor het debuggen.
+Description-pl.UTF-8: Poziom logów bitentd:
+ Demon IDENT Bisqwit może wypisywać różną ilość informacji do demona odpowiadającego za dzienniki systemowe.
+ .
+ Oto wyjaśnienie poszczególnych możliwych wyborów:
+   "Bądź bardzo cichy"         Nie wypisuj niczego
+   "Bądź cichy"                Wypisuj tylko błędy
+   "Zapisuj wszystkie żądania" Wypisuj wszystkie żądania (może tworzyć
+                               sporo szumu)
+   "Bądź dość szczegółowy"     Wypisuj nieco więcej niż powyżej
+   "Bądź całkiem szczegółowy"  Wypisuj jeszcze więcej niż powyżej
+   "Bądź bardzo szczegółowy"   Wypisuj bardzo dużo (tworzy dużo szumu)
+   "Konfiguracja ręczna"       Nie dotykaj inetd.conf
+ .
+ Powinno się wybrać "Zapisuj wszystkie żądania", chyba że wiadomo który wybór będzie odpowiedniejszy. Opcje z opisem "szczegółowy" służą głównie do debugowania.
+Description-pt.UTF-8: Escolha o nível de relatório para o bidentd
+ O 'Bisqwit's IDENT Daemon' pode emitir algum volume de informação para o 'daemon' dos relatórios de sistema.
+ .
+ As escolhas têm que ter o seguinte significado:
+   "Sem qualquer 'output'"        Não reportar nada
+   "Pouco 'output'"             Reportar apenas erros
+   "Relatar todos os pedidos"     Reportar todos os pedidos (pode gerar muito ruído)
+   "Algum 'output'"  Reportar um pouco mais do que "Relatar todos os pedidos"
+   "Pouco 'Output'"     Reportar ainda mais do que  "Algum 'output'"
+   "'Output' normal"    Reportar bastante (irá gerar muito ruído)
+   "Configurar manualmente"        Não tocar no inetd.conf
+ .
+ Deve escolher "Relatar todos os pedidos" a não ser que necessite de outra opção. As opções mais descritivas são normalmente utilizadas para depuração.
+Description-pt_BR.UTF-8: Nível de logging para o bidentd:
+ O Daemon IDENT do Bisqwit pode emitir uma grande quantidade de informação para a 'facility' daemon dos logs de sistema.
+ .
+ As opções têm os seguintes significados:
+   "Seja muito quieto"           Não loga nada
+   "Seja quieto"                 Loga somente erros
+   "Logar todas as requisições"  Loga todas as requisições (pode
+                                 gerar muito ruído)
+   "Seja um pouco verboso"       Loga um pouco mais que "Logar todas
+                                 as requisições"
+   "Seja bastante verboso"       Loga ainda mais que "Seja um pouco
+                                 verboso"
+   "Seja realmente verboso"      Loga muito mesmo (gerará um monte de
+                                 ruído)
+   "Configuração manual"         Não toca no inetd.conf
+ .
+ Você deverá escolher "Logar todas as requisições" a menos que você saiba que você precisa de uma das outras opções. As opções verbosas são em sua maioria para depuração.
+Description-ru.UTF-8: Уровень протоколирования в bidentd:
+ Служба Bisqwit IDENT может выдать разное количество информации как объект "служба" в системные журналы.
+ .
+ Возможные варианты:
+   "ничего"              Ничего не протоколировать
+   "только ошибки"       Протоколировать только ошибки
+   "все запросы"         Протоколировать все запросы (может быть много)
+   "подробности"         Чуть больше чем "все запросы"
+   "больше подробностей" Больше чем в "подробности"
+   "всё"                 Протоколировать всё (очень много информации)
+   "ручная настройка"    Не изменять inetd.conf
+ .
+ Вы должны выбрать "все запросы", если не видите необходимости в других вариантах. Подробности, обычно, полезны при отладке.
+Description-sk.UTF-8: Úrovne zaznamenávania pre bidentd:
+ Démon IDENT od Bisqwit môže generovať rôzne množstvo informácií do úrovne daemon systémového záznamu.
+ .
+ Jednotlivé voľby majú nasledujúci význam:
+   "Byť úplne tichý"               Nezaznamenávať nič
+   "Byť tichý"                     Zaznamenávať len chyby
+   "Záznam všetkých požiadaviek"   Zaznamenávať všetky požiadavky (môže generovať veľa šumu)
+   "Trocha veľavravný"             Zaznamenávať trocha viac ako pri "Záznam všetkých požiadaviek"
+   "Celkom veľavravný"             Zaznamenávať ešte viac ako pri "Trocha veľavravný"
+   "Naozaj veľavravný"             Zaznamenávať veľmi veľa (bude generovať veľa šumu)
+   "Manuálne nastavenie"           Nezasahovať do inetd.conf
+ .
+ Mali by ste zvoliť "Zaznamenať všetky požiadavky", pokiaľ si nie ste istý, že potrebujete niektorú z ostatných volieb. Veľavravné možnosti sú väčšinou vhodné len na ladenie.
+Description-sv.UTF-8: Välj en loggningsnivå för bidentd
+ Bisqwit's IDENT Daemon kan ge olika mängder information till daemonsektionen av systemloggarna.
+ .
+ Valen har följande betydelser:
+   "Väldigt tyst"        Logga inget
+   "Tyst"                Logga bara fel
+   "Logga alla"          Logga alla förfrågningar (kan generera mycket oljud)
+   "Lite informativ"     Loggar lite mer än med "log all requests"
+   "Lite mer informativ" Logga ännu mer än "be somewhat verbose"
+   "Riktigt informativ"  Logga väldigt mycket (kommer att generera mycket oljud)
+   "Manuell konfig"      Rör inte inetd.conf
+ .
+ Du bör välja "Logga all" om du inte behöver någon av de andra valen. De informativa valen är mest användbara för debuggning.
+Description-vi.UTF-8: Hãy chọn mức độ ghi lưu cho trình bidentd
+ Trình nền (dæmon) IDENT của Bisqwit có thể xuất vài mức độ thông tin vào khả năng trình nền của những bản ghi hệ thống.
+ .
+ Những tùy chọn có nhữnh lời nghĩa này:
+ • Đừng ghi lưu gì			đừng ghi lưu dữ liệu nào vào tập tin.
+ • Ghi lưu hơi ít			ghi lưu chỉ lỗi vào tập tin.
+ • Ghi lưu mọi yêu cầu		ghi lưu mọi yêu cầu (có thể tạo ra nhiều dữ liệu)
+ • Ghi lưu một số chi tiết	ghi lưu một ít thông tin hơn mức độ trước
+ • Ghi lưu chi tiết			ghi lưu chi tiết (mức độ cao hơn lại)
+ • Ghi lưu gần mọi gì		ghi lưu rất nhiều thông tin (sẽ tạo ra rất nhiều dữ liệu)
+ • Tự cấu hình				đừng sửa đổi tập tin «inetd.conf».
+ .
+ Bạn nên chọn «Ghi lưu mọi yêu cầu» trừ bạn cần sử dụng một của những tùy chọn khác. Những tủy chọn cao hơn thường được dùng để gỡ lỗi.

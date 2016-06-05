@@ -1,0 +1,60 @@
+
+Template: whatmaps/enable_service_restarts
+Type: boolean
+Default: false
+Description: Automatically restart services after library security updates?
+ Services need to be restarted to benefit from updates of shared libraries they
+ depend on. Otherwise they remain vulnerable to security bugs fixed in these
+ updates.
+ .
+ Automatic service restarts are only done if APT fetched the library from a
+ source providing security updates. This also affects packages installed
+ via "unattended-upgrades".
+Description-cs.UTF-8: Restartovat automaticky služby po bezpečnostních aktualizacích knihovny?
+ Aby služby využívaly aktualizace sdílených knihoven na kterých závisí, je třeba je restartovat. V opačném případě zůstanou zranitelné vůči bezpečnostním chybám, které tyto aktualizace opravují.
+ .
+ Automatické restartování služeb se provádí pouze tehdy, když API obdrží knihovnu ze zdroje poskytujícího bezpečnostní aktualizace. To se vztahuje také na balíčky nainstalované přes "unattended-upgrades".
+Description-da.UTF-8: Automatisk genstart tjenester efter bibliotekssikkerhedsopdateringer?
+ Tjenester skal genstartes for at drage fordel af opdateringer af delte biblioteker, de afhænger af. Ellers forbliver de sårbare over for sikkerhedsrelaterede fejl rettet i disse opdateringer.
+ .
+ Automatisk tjenestegenstart udføres kun hvis APT hentede biblioteket fra en kilde, der leverer sikkerhedsopdateringer. Dette påvirker også pakker installeret via »unattended-upgrades«.
+Description-de.UTF-8: Sollen die Dienste nach den Sicherheitsaktualisierungen der Bibliotheken automatisch neu gestartet werden?
+ Dienste müssen neu gestartet werden, damit ihnen die Aktualisierungen der gemeinsam benutzen Bibliotheken zugute kommen, von denen sie abhängen. Andernfalls bleiben sie für sicherheitskritische Fehler verwundbar, die in diesen Aktualisierungen behoben wurden.
+ .
+ Dienste werden nur dann automatisch neu gestartet, wenn APT die Bibliothek von einer Quelle bezogen hat, die Sicherheitsaktualisierungen bereitstellt. Dies betrifft auch Pakete, die per »unattended-upgrades« installiert wurden.
+Description-es.UTF-8: ¿Desea reiniciar los servicios automáticamente luego de realizar las actualizaciones de seguridad de las bibliotecas?
+ Es necesario reiniciar los servicios para que se apliquen las actualizaciones de las bibliotecas compartidas en las que dependen. De lo contrario, seguirán siendo vulnerables a los errores de seguridad corregidos en dichas actualizaciones.
+ .
+ Sólo se reiniciarán automáticamente los servicios si APT descargó la biblioteca desde una fuente que proporciona actualizaciones de seguridad. Esto también afecta los paquetes instalados a través de «unattended-upgrades».
+Description-fr.UTF-8: Redémarrer les services après les mises à jour de sécurité des bibliothèques ?
+ Les services doivent être redémarrés pour bénéficier des mises à jour des bibliothèques partagées dont ils dépendent. Dans le cas contraire, ils restent vulnérables aux bogues de sécurité corrigés par ces mises à jour.
+ .
+ Le redémarrage automatique des services ne se produit que si APT récupère les bibliothèques d'une source offrant des mises à jour de sécurité. Cela affecte aussi les paquets installés par l'intermédiaire d'« unattended-upgrades ».
+Description-it.UTF-8: Riavviare automaticamente i servizi dopo gli aggiornamenti di sicurezza delle librerie?
+ I servizi devono essere riavviati per poter trarre beneficio dagli aggiornamenti delle librerie condivise da cui dipendono. Altrimenti rimangono vulnerabili ai problemi di sicurezza risolti in quegli aggiornamenti.
+ .
+ I riavvii automatici vengono fatti solamente se APT ha scaricato la libreria da una fonte che fornisce aggiornamenti di sicurezza. Ciò vale anche per i pacchetti installati usando «unattended-upgrades».
+Description-ja.UTF-8: ライブラリのセキュリティ更新後自動的にサービスを再起動しますか?
+ サービスが依存している共有ライブラリの更新を反映させるためにはサービスを再起動する必要があります。それまではこの更新で修正されたセキュリティバグに対して脆弱なままです。
+ .
+ サービスの自動化での再起動はセキュリティ更新を提供するソースからAPTがライブラリを取得した場合にのみ行われます。これは「unattended-upgrades」経由でインストールされたパッケージにも影響します。
+Description-pl.UTF-8: Czy automatycznie restartować usługi po aktualizacjach bezpieczeństwa bibliotek?
+ Usługi muszą być uruchomione ponownie, aby skorzystać z aktualizacji bibliotek współdzielonych. W innym przypadku pozostaną narażone na błędy związane z bezpieczeństwem, które zostały poprawione w tych aktualizacjach.
+ .
+ Automatyczny restart usług ma miejsce jedynie wtedy, gdy APT pobiera biblioteki ze źródła zapewniającego poprawki bezpieczeństwa. Dotyczy to również pakietów instalowanych za pomocą "unattended-upgrades" (automatycznych aktualizacji).
+Description-pt.UTF-8: Reiniciar automaticamente os serviços após actualizações de segurança das bibliotecas?
+ Os serviços necessitam de ser reiniciados de modo a beneficiarem de actualizações das bibliotecas partilhadas das quais dependem. Caso contrário ficam vulneráveis a erros de segurança corrigidos nestas actualizações.
+ .
+ Reinicializações automáticas do serviço são apenas executadas se APT obteve a biblioteca de uma fonte que forneça actualizações de segurança. Isto também afecta pacotes instalados via "unattended-upgrades".
+Description-pt_BR.UTF-8: Reiniciar serviços automaticamente após atualizações de segurança em bibliotecas?
+ Os serviços precisam ser reiniciados para se beneficiarem das atualizações de bibliotecas compartilhadas das quais eles dependem. Caso contrário, eles permanecerão vulneráveis aos bugs de segurança que foram corrigidos nessas atualizações.
+ .
+ Reinícios automáticos de serviços somente são feitos se o APT obtiver a biblioteca de uma fonte que forneça atualizações de segurança. Isso também afeta pacotes instalados via "unattended-upgrades".
+Description-ru.UTF-8: Перезапускать службы автоматически после обновлений безопасности библиотек?
+ Чтобы обновления динамических библиотек начали действовать, необходимо перезапустить службы, которые их используют. В противном случае дефекты безопасности останутся неисправленными.
+ .
+ Автоматическая служба выполняет перезапуск только, если APT получает библиотеку из источника, предоставляющего обновления безопасности. Это также относится к пакетам, установленным через «unattended-upgrades».
+Description-sv.UTF-8: Ska tjänster startas om automatiskt efter säkerhetsuppdateringar för bibliotek?
+ Tjänster behöver startas om för att dra nytta av uppdateringar av delade bibliotek som de är beroende av. Annars kan tjänsterna fortsätta vara sårbara för säkerhetsfel som lösts i dessa uppdateringar.
+ .
+ Automatiska omstarter av tjänster görs bara om APT hämtar biblioteket från en källa som tillhandahåller säkerhetsuppdateringar. Detta påverkar också paket installerade voa "unattended-upgrades".

@@ -1,0 +1,66 @@
+Template: shared/news/server
+Type: string
+Description: What news server should be used for reading and posting news?
+ knews is configured to read news via an NNTP connection, and needs to know
+ the fully-qualified host name of the server (such as news.example.com). If
+ you have a local news spool, you should consider installing some NNTP
+ server like inn2; in that case, enter "localhost" as your news server.
+Description-cs.UTF-8: Který server chcete použít pro čtení a posílání příspěvků?
+ knews je nastaven, že čte příspěvky přes NNTP spojení a potřebuje znát plně kvalifikované doménové jméno serveru (jako je news.proklad.cz). Máte-li lokální spool s příspěvky, měli byste zvážit instalaci NNTP serveru (např. inn2) a zde zadat jako jméno news serveru "localhost".
+Description-da.UTF-8: Hvilken nyheds-server skal bruges til nyhedsgrupper?
+ knews er konfigureret til at læse nyhedsgrupper via en NNTP-forbindelse, og skal bruge den komplette adresse på serveren (såsom news.example.com). Hvis du har en lokal news-spool, bør du overveje at installere en NNTP-server såsom inn2; i så fald skal du skrive "localhost" som din nyheds-server.
+Description-de.UTF-8: Welcher Server soll benutzt werden?
+ knews wird konfiguriert, News über eine NNTP-Verbindung zu lesen und muss den vollständigen Rechnernamen des Servers wissen (zum Beispiel news.beispiel.de). Wenn Sie einen lokalen News-Spool haben, sollten Sie wahrscheinlich irgendeinen NNTP-Server wie inn2 installieren. In diesem Fall geben Sie "localhost" als Ihren News-Server an.
+Description-es.UTF-8: ¿Qué servidor de noticias debe usarse para leer y publicar noticias?
+ Knews está configurado para leer noticias a través de una conexión NNTP, y necesita saber el nombre de dominio completo del servidor (algo como noticias.ejemplo.com). Si tiene una cola de noticias local debería considerar la instalación de algún servidor NNTP como inn2; en ese caso, introduzca «localhost» como su servidor de noticias.
+Description-fr.UTF-8: Nom du serveur de nouvelles utilisé :
+ Knews est configuré pour lire les nouvelles via une connexion NNTP, et doit connaître le nom complètement qualifié du serveur de nouvelles (par exemple news.exemple.com). Si vous avez un répertoire local pour les nouvelles, vous devriez installer un serveur NNTP tel que inn2 ; dans ce cas, indiquez « localhost » comme serveur de nouvelles.
+Description-it.UTF-8: Quale server di newsgroup deve essere usato per leggere e inviare i messaggi?
+ knews è configurato per leggere i newsgroup attraverso una connessione NNTP e ha bisogno di sapere il nome host pienamente qualificato del server (come news.example.com). Se si ha uno spool di messaggi locale, si dovrebbe considerare l'installazione di un qualche server NNTP come inn2; in quel caso inserire «localhost» come server di newsgroup.
+Description-ja.UTF-8: どの news サーバを news を読み書きするのに利用しますか?
+ knews は NNTP 接続経由で news を読むように設定されているので、(news.example.com のように) サーバの完全修飾ドメイン名 (FQDN) を知る必要があります。ローカルに news のスプールを持っている場合は、inn2 のような NNTP サーバをインストールしていると考えられます。この場合、news サーバとして "localhost" と入力してください。
+Description-nl.UTF-8: Welke nieuwsserver wilt u gebruiken voor het lezen en verzenden van nieuwsberichten?
+ knews is geconfigureerd om nieuwsberichten te lezen via een NNTP-verbinding en moet de volledige computernaam van de server kennen (bijvoorbeeld news.example.com). Als u beschikt over een lokale nieuws-spool, kunt u overwegen om een NNTP-server zoals inn2 te installeren; in dat geval moet u "localhost" als uw nieuwsserver ingeven.
+Description-pt.UTF-8: Que servidor de notícias deve ser usado para ler e colocar notícias?
+ O knews está preparado para ler notícias através de uma ligação NNTP, e precisa de saber o nome de domínio completamente qualificado do servidor (por exemplo noticias.exemplo.com). Se tem uma spool local de notícias, devia considerar instalar um servidor de NNTP como o inn2; nesse caso use "localhost" como o seu servidor de notícias.
+Description-pt_BR.UTF-8: Qual servidor de notícias deve ser usado para leitura e postagem de notícias ?
+  O knews está configurado para ler notícias através de uma conexão NNTP, e precisa conhecer o nome de host totalmente qualificado (como news.exemplo.com). Caso você possua um spool de notícias local, você deverá considerar instalar alguns servidores NNTP como o inn2. Nesse caso, informe "localhost" como seu servidor de notícias.
+Description-ru.UTF-8: Сервер для получения и отправки новостей:
+ knews работает с новостями по протоколу NNTP, для чего требуется знать полностью определённое доменное имя сервера (например, news.example.com). Если у вас почта хранится локально на диске, попробуйте установить один из NNTP-серверов, например, inn2; в этом случае введите "localhost" в качестве сервера новостей.
+Description-sv.UTF-8: Vilken news-server ska användas för att läsa och posta nyheter?
+ knews är konfigurerad att läsa news via en NNTP-anslutning och behöver veta det fullt kvalificerade värdnamnet för servern (såsom news.exampel.se). Om du har en lokal news-spool kan du installera en NNTP-server såsom inn2, i det fallet, ange "localhost" som din news-server.
+Description-vi.UTF-8: Để đọc và đóng góp tin tức, bạn sẽ sử dụng máy phục vụ tin tức nào?
+ Trình knews được cấu hình để đọc tin tức bằng kết nối NNTP, thì cần biết tên miền khả năng đầy đủ (FQDN) của máy phục vụ ấy (v.d. news.thí_dụ.com). Nếu bạn có một ống chỉ tin tức địa phương, đệ nghị bạn cài đặt một trình phục vụ NNTP như «inn2»: trong trường hợp ấy, hãy nhập «localhost» (máy địa phương) là máy phục vụ tin tức của bạn.
+
+Template: knews/mail-name
+Type: string
+Description: What is your system's mail name?
+ Please enter the 'mail name' of your system. This is the hostname portion
+ of the address to be shown on outgoing news and mail messages, and is used
+ by many packages.
+Description-cs.UTF-8: Jaké je poštovní jméno systému?
+ Zadejte poštovní jméno svého systému. To je název počítače a zároveň část adresy za zavináčem, která se bude zobrazovat na odchozích zprávách.
+Description-da.UTF-8: Hvad er dit systems post-navn?
+ Venligst, skriv 'post-navnet' på dit system. Det er værtsnavn-delen af adressen som vises på udgående nyhedsgruppe og e-mail beskeder. Denne indstilling bliver brug af mange pakker.
+Description-de.UTF-8: Was ist der Mailname Ihres Systems?
+ Bitte geben Sie den 'Mailnamen' Ihres Systems an. Dieser ist der erste Teil des Rechnernamens, die bei abgeschickten News- und Mailmeldungen verwendet werden und wird von mehreren Paketen verwendet.
+Description-es.UTF-8: ¿Cuál es el nombre de correo de su sistema?
+ Por favor, introduzca el nombre de correo de su sistema. Éste será parte de la dirección que se mostrará en las noticias y mensajes de correo salientes y lo usan muchos paquetes.
+Description-fr.UTF-8: Nom de votre système de courrier :
+ Veuillez indiquer le nom de courrier de votre système. C'est la partie de l'adresse correspondant au nom d'hôte qui est affichée sur les nouvelles et les courriels envoyés, et elle est utilisée par de nombreux paquets.
+Description-it.UTF-8: Qual è il nome di posta del sistema?
+ Inserire il «nome di posta» del sistema. Questa è la porzione del nome host dell'indirizzo che deve essere mostrato nei messaggi in uscita per i newsgroup e per la posta ed è usato da molti pacchetti.
+Description-ja.UTF-8: システムのメール名は何ですか?
+ システムの 'メール名' を入力してください。これは、外部へ送信される news やメールに表示されるアドレスのホスト名部分で、多くのパッケージによって使われています。
+Description-nl.UTF-8: Wat is de mail-naam van uw systeem?
+ Geef de 'mail-naam' van uw systeem. Dit is het eerste deel (de computernaam) van het adres dat in uitgaande nieuws- en email-berichten getoond moet worden, en wordt gebruikt door een groot aantal pakketten.
+Description-pt.UTF-8: Qual é o nome do mail do seu sistema?
+ Por favor introduza o 'nome do mail' do seu sistema. Trata-se da parte de host nos endereços email a aparecer em mensagens para fora de notícias ou email, e é usado por muitos pacotes.
+Description-pt_BR.UTF-8: Qual o nome de mensagens de seu sistema ?
+ Por favor, informe o 'nome de mensagens' de seu sistema. O 'nome de mensagens' é a porção nome de máquina do endereço a ser exibido em notícias e mensagens enviadas e é usado por muitos pacotes.
+Description-ru.UTF-8: Почтовое имя вашей системы:
+ Введите 'почтовое имя' вашей системы. Имеется в виду часть имени хоста в адресе, показываемая в исходящих почтовых сообщениях и новостях; используется во многих пакетах.
+Description-sv.UTF-8: Vad är ditt systems e-postnamn?
+ Ange 'mail name' för ditt system. Detta är värdnamnet i addressen som visas på utgående nyheter och e-postmeddelanden och användas av många paket.
+Description-vi.UTF-8: Hệ thống bạn có tên thư tín nào?
+ Hãy nhập tên thư tín (mail name) của hệ thống bạn. Giá trị này là phần tên máy của địa chỉ sẽ được hiển thị trong cả thông điệp tin tức lẫn thư điện tử đều gởi đi. Hơn nữa, nhiều gói tin dùng nó.

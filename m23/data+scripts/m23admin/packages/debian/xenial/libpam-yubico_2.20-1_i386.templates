@@ -1,0 +1,89 @@
+
+Template: libpam-yubico/module_args
+Type: string
+Default: mode=client try_first_pass id=N key=K
+Description: Parameters for Yubico PAM:
+ The Yubico PAM module supports two modes of operation: online
+ validation of YubiKey OTPs or offline validation of YubiKey HMAC-SHA-1
+ responses to challenges.
+ .
+ The default is online validation, and for that to work you need to get
+ a free API key at https://upgrade.yubico.com/getapikey/ and
+ enter the key id as "id=NNNN" and the base64 secret as "key=...".
+ .
+ All the available parameters for the Yubico PAM module are described
+ in /usr/share/doc/libpam-yubico/README.gz. To avoid accidental
+ lock-outs the module will not be active until it is enabled with the
+ "pam-auth-update" command.
+Description-cs.UTF-8: Parametry pro Yubico PAM:
+ Modul Yubico PAM podporuje dva provozní režimy, které zpracovávají požadavky: online ověřování YubiKey OTP nebo offline ověřování YubiKey HMAC-SHA-1.
+ .
+ Výchozí je online ověřování a k tomu, aby fungovalo, potřebujete klíč k API, který zdarma získáte na https://upgrade.yubico.com/getapikey/ a který zadáte jako "id=NNNN" a neveřejnou část v kódování base64 jako "key=...".
+ .
+ Všechny dostupné parametry pro modul Yubico PAM jsou popsány v souboru /usr/share/doc/libpam-yubico/README.gz. Aby se předešlo náhodnému uzamykání, modul nebude aktivní, dokud nebude povolen pomocí příkazu "pam-auth-update".
+Description-da.UTF-8: Parametre for Yubico PAM:
+ Yubico PAM-modulet understøtter to tilstande for operation: Validering på internettet af YubiKey OTP'er eller frakoblet validering af YubiKey HMAC-SHA-1-svar på udfordringer.
+ .
+ Standarden er validering på internettet og for at dette virker, skal du have en fri API-nøgle fra https://upgrade.yubico.com/getapikey/ og indtaste nøgle-id'et som »id=NNNN« og base64-hemmeligheden som »key=...«.
+ .
+ Alle de tilgængelige parametre for Yubico PAM-modulet er beskrevet i /usr/share/doc/libpam-yubico/README.gz. For at undgå tilfældige udelukkelser vil modulet ikke være aktivt, før det er aktiveret med kommandoen »pam-auth-update«.
+Description-de.UTF-8: Parameter für Yubico PAM:
+ Das Modul Yubico PAM unterstützt zwei Betriebsmodi: Online-Überprüfung des YubiKey-Einmalpassworts oder Offline-Überprüfung der YubiKey-HMAC-SHA-1-Antworten auf Aufforderungen.
+ .
+ Standard ist die Online-Überprüfung. Damit sie funktioniert, müssen Sie einen kostenlosen API-Schlüssel von https://upgrade.yubico.com/getapikey/ beziehen und die Schlüsselkennzahl als »id=NNNN« sowie den Base64-Schlüssel als »key=…« eingeben.
+ .
+ Alle verfügbaren Parameter für das Yubico-PAM-Modul sind in /usr/share/doc/libpam-yubico/README.gz beschrieben. Um versehentliches Aussperren zu vermeiden, wird das Modul nicht aktiv, bis es mit dem Befehl »pam-auth-update« eingeschaltet wird.
+Description-es.UTF-8: Parámetros para Yubico PAM:
+ El módulo Yubico PAM permite dos modos de operación: validación en línea de las contraseñas de un sólo uso (OTP) de Yubikey o validación fuera de línea de las respuestas Yubikey a desafíos con el algoritmo HMAC-SHA-1.
+ .
+ El modo predeterminado utiliza el sistema de validación en línea y para que funcione necesita obtener una clave API gratuita, disponible en «https://upgrade.yubico.com/getapikey/», e introducir el identificador de la clave en la forma «id=NNNN» y la clave secreta en base64 como «key=...».
+ .
+ Todos los parámetros disponibles para el módulo Yubico PAM se describen en el archivo «/usr/share/doc/libpam-yubico/README.gz». Para evitar que accidentalmente los usuarios no puedan acceder al sistema, el módulo no se activará hasta que ejecute la orden «pam-auth-update».
+Description-fr.UTF-8: Paramètres pour Yubico PAM :
+ Le module PAM Yubico propose 2 modes de fonctionnement : une validation en ligne des mots de passe à usage unique (OTP : « One-Time Password ») Yubikey ou une validation hors-ligne.
+ .
+ La valeur par défaut est une validation en ligne. Pour la faire fonctionner, il est nécessaire d'obtenir une clé gratuite pour l'API, à l'adresse https://upgrade.yubico.com/getapikey/, de l'indiquer sous la forme « id=NNNN » et d'indiquer le mot de passe Base64 sous la forme « key=... ».
+ .
+ Tous les paramètres disponibles pour Yubico PAM sont décrits dans /usr/share/doc/libpam-yubico/README.gz. Afin d'éviter des blocages accidentels, le module ne sera pas actif tant qu'il n'aura pas été activé avec la commande « pam-auth-update ».
+Description-it.UTF-8: Parametri per il modulo PAM Yubico:
+ Il modulo PAM Yubico supporta due modalità operative: autenticazione online delle YubiKey OTP o autenticazione offline di YubiKey HMAC-SHA-1 con funzionalità challenge response.
+ .
+ La modalità predefinita è l'autenticazione online e perché funzioni è necessario ottenere una chiave API gratuita all'indirizzo https://upgrade.yubico.com/getapikey/ e inserire l'identificativo della chiave nel formato «id=NNNN» e la chiave di sessione in base64 come «key=...».
+ .
+ Tutti i parametri disponibili per il modulo Yubico PAM sono descritti in /usr/share/doc/libpam-yubico/README.gz. Per evitare che l'utente sia chiuso accidentalmente fuori dal proprio sistema, il modulo PAM Yubico rimarrà inattivo finché non abilitato con il comando «pam-auth-update».
+Description-ja.UTF-8: Yubico PAM 用のパラメータ:
+ Yubico PAM モジュールは 2 つのモードの操作に対応しています: YubiKey OTP のオンライン検証とチャレンジ用の YubiKey HMAC-SHA-1 レスポンスのオフライン検証です。
+ .
+ デフォルトはオンライン検証で、これを機能させるためにはフリー API キーを https://upgrade.yubico.com/getapikey/ で取得して、鍵の id を「id=NNNN」、base64 化した鍵を「key=...」の形式で入力する必要があります。
+ .
+ Yubico PAM モジュールで利用可能な全パラメータについては /usr/share/doc/libpam-yubico/README.gz で説明されています。事故によるロックアウトを避けるため、モジュールは「pam-auth-update」コマンドで有効化されるまでは機能しません。
+Description-nl.UTF-8: Parameters voor Yubico PAM:
+ De Yubico PAM-module kan op twee verschillende manieren werken: Online controle van Yubikey OTP's of offline controle van YubiKey HMAC-SHA-1-antwoorden op uitdagingen.
+ .
+ De standaard is online controle, om dit te laten werken dient u een gratis API-sleutel op te halen van https://upgrade.yubico.com/getapikey/ en het sleutel-ID op te geven als "id=NNN" en het base64-geheim als "key=...".
+ .
+ Alle beschikbare parameters voor de Yubico PAM-module worden beschreven in /usr/share/doc/libpam-yubico/README.gz. Om onopzettelijke uitsluiting te voorkomen zal de module niet actief zijn totdat u deze activeert met het commando "pam-auth-update".
+Description-pl.UTF-8: Parametry do Yubico PAM:
+ Moduł Yubico PAM obsługuje dwa typy działania: walidacja online za pomocą OTP YubiKey lub walidacja offline odpowiedzi na pytania za pomocą HMAC-SHA-1 YubiKey (uwierzytelnianie typu challenge-response).
+ .
+ Domyślną opcją jest walidacja online, do której należy pobrać darmowy klucz API z https://upgrade.yubico.com/getapikey/ i wpisać identyfikator klucza jako "id=NNNN" oraz sekret base64 jako "key=...".
+ .
+ Wszystkie dostępne parametry do modułu Yubico PAM są opisane w /usr/share/doc/libpam-yubico/README.gz. Aby zapobiec przypadkowemu zablokowaniu użytkownika, moduł nie będzie aktywny, dopóki nie zostanie włączony poleceniem "pam-auth-update".
+Description-pt.UTF-8: Parâmetros para Yubico PAM:
+ O módulo PAM Yubico suporta dois modos de operação: validação online de Yubikey OTPs ou validação offline de respostas a desafios YubiKey HMAC-SHA-1.
+ .
+ A predefinição é a validação online, para funcionar necessita obter uma chave da API (são livres) em https://upgrade.yubico.com/getapikey/ e introduzir a chave de identificação como "id=NNNN" e o segredo base64 como "key=...".
+ .
+ Todos os parâmetros disponíveis para o módulo PaM Yubico estão descritos em /usr/share/doc/libpam-yubico/README.gz. Para evitar bloquear acidentalmente do sistema, o módulo PAM Yubico não estará activo até ser activado com o comando "pam-auth-update".
+Description-ru.UTF-8: Параметры для Yubico PAM:
+ Модуль Yubico PAM поддерживает два режима работы: интерактивную проверку (online validation) YubiKey OTP или автономную проверку (offline validation) ответов YubiKey HMAC-SHA-1 на запросы.
+ .
+ По умолчанию используется интерактивная проверка. Для этого вам нужно получить свободный ключ API со страницы https://upgrade.yubico.com/getapikey/ и ввести id ключа в виде «id=NNNN» и секрет base64 в виде «key=…».
+ .
+ Все возможные параметры модуля Yubico PAM описаны в /usr/share/doc/libpam-yubico/README.gz. Чтобы избежать случайной блокировки, модуль не активируется, пока не будет включён командой «pam-auth-update».
+Description-sv.UTF-8: Parametrar för Yubico PAM:
+ Yubico PAM-modulen har stöd för två lägen; uppkopplad verifiering av YubiKey OTP eller nedkopplad validering av YubiKey HMAC-SHA-1 fråga-svar.
+ .
+ Standard är den uppkopplade valideringen och för att det ska fungera måste du hämta en gratis API-nyckel från https://upgrade.yubico.com/getapikey/ och ange key id på formen "id=NNNN" och den base64-kodade hemligheten som "key=...".
+ .
+ Alla tillgängliga parametrar för Yubico PAM-modulen beskrivs i /usr/share/doc/libpam-yubico/README.gz. För att undvika oförutsedda utlåsningar så kommer modulen inte vara aktiv innan den aktiveras med kommandot "pam-auth-update".

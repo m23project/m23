@@ -74,8 +74,8 @@
 			$release=SRCLST_getValue($sourcename,"release");
 			$step = 1;
 		};
-	
-	if (isset($_POST['BUT_refresh']) || isset($_POST['BUT_step2A']) || isset($_POST['BUT_step2B']))
+
+	if (isset($_POST['BUT_refresh']) || isset($_POST['BUT_saveHSGSingleUbu']) || isset($_POST['BUT_saveHSGMultiUbu']) || isset($_POST['BUT_saveHSGSingleDeb']) || isset($_POST['BUT_saveHSGMultiDeb']))
 		{
 			$step = 2;
 			CAPTURE_captureAll($step,"select client distribution");
@@ -123,6 +123,9 @@
 			$options = CLCFG_addDistributionSpecificOptions($options);
 
 			CLIENT_setAllOptions($client,$options);
+
+			if (HELPER_isExecutedOnUCS())
+				UCS_setClientDistrAndRelease($client, $distr, $release);
 
 			DISTR_startInstall($client,$desktop,$instPart,$swapPart);
 

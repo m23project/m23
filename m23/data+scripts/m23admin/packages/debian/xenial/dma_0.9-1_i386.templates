@@ -1,0 +1,111 @@
+Template: dma/mailname
+Type: string
+Description: System mail name:
+ The 'mail name' is the domain name used to 'qualify' mail addresses
+ without a domain name.
+ .
+ This name will also be used by other programs. It should be the
+ single, fully qualified domain name (FQDN).
+ .
+ Thus, if a mail address on the local host is foo@example.org,
+ the correct value for this option would be example.org.
+Description-bg.UTF-8: Пощенско име на системата:
+ Пощенското име се използва за допълване на пощенски адреси без домейн.
+ .
+ Това име ще бъде използвано и от други програми и трябва да бъде пълно име на домейн (FQDN - Fully Qualified Domain Name).
+ .
+ Например, ако даден пощенски адрес на този компютър е foo@example.org, то правилното пощенско име е example.org.
+Description-cs.UTF-8: Název mailového systému:
+ 'název mailu' je doménové jméno použité k 'označení' mailových adres bez doménového jména.
+ .
+ Toto jméno budou také používat ostatní programy. Jednoduše to má být fully qualified domain name (FQDN).
+ .
+ Takže, jestliže je mailová adresa lokálního hosta foo@example.org správná, hodnota pro toto nastavení by byla example.org.
+Description-da.UTF-8: Systemets postnavn:
+ »Postnavnet« er domænenavnet brugt til at »kvalificere« postadresser uden et domænenavne.
+ .
+ Dette navn vil også blive brugt af andre programmer. Det skal være et enkelt, fuldt kvalificeret domænenavn (FQDN).
+ .
+ Så hvis en postadresse på den lokale vært er foo@eksempel.org, er den korrekte værdi for denne indstilling eksempel.org.
+Description-de.UTF-8: E-Mail-Name des Systems:
+ Der »E-Mail-Name« ist der Domainname, der für die »Vervollständigung« von E-Mail-Adressen ohne Domainnamen verwandt wird.
+ .
+ Dieser Name wird auch von anderen Programmen verwandt. Er sollte der einzelne, voll-qualifizierte Domainname (FQDN) sein.
+ .
+ Falls daher die E-Mail-Adresse des lokalen Rechners »foo@example.org« lautete, wäre der korrekte Wert für diese Option »example.org«.
+Description-es.UTF-8: Nombre del sistema de correo:
+ El «nombre del sistema de correo» es el nombre del dominio utilizado para «habilitar» las direcciones de correo sin un nombre de dominio.
+ .
+ Este nombre también lo utilizarán otros programas. Debería ser el único nombre de dominio completamente calificado (FQDN).
+ .
+ Así, cuando una dirección de correo de la máquina local sea «algo@ejemplo.org», el valor correcto de esta opción será «ejemplo.org».
+Description-eu.UTF-8: Sistemaren posta izena:
+ 'Posta izena' domeinu izenik ez duten mezuak kualifikatzeko erabiliko den domeinu izena da.
+ .
+ Izen hau beste programa batzuek ere erabiliko dute. Berau guztiz kualifikatutako domeinu izen (FQDN) bat izan beharko zen.
+ .
+ Honela, ostalari lokaleko posta helbide bat zerbait@adibide.org bada, aukera honetako balio zuzena adibide.org izango litzateke.
+Description-fi.UTF-8: Järjestelmän postinimi:
+ Postinimi on verkkoaluenimi, joka lisätään postiosoitteisiin, jos verkkoaluenimi puuttuu.
+ .
+ Tätä nimeä käyttävät myös muut ohjelmat. Sen tulisi olla yksi, täydellinen verkkotunnus (FQDN).
+ .
+ Jos järjestelmässä on esimerkiksi sähköpostiosoite foo@example.org, on tämän asetuksen oikea arvo example.org.
+Description-fr.UTF-8: Nom de courriel du système :
+ Le nom de courriel (« mail name ») est le nom de domaine qui sert à compléter les adresses électroniques qui n'en comportent pas.
+ .
+ Ce nom sera également utilisé par d'autres programmes. Il doit correspondre au domaine unique et complètement qualifié (FQDN).
+ .
+ Par exemple, si une adresse électronique locale est foo@example.org, la valeur appropriée pour cette option sera « example.org ».
+Description-ja.UTF-8: システムのメール名:
+ 「メール名」は、ドメイン名を抜いたメールアドレスを「修飾する」ドメイン名です。
+ .
+ この名前は他のプログラムからも使われます。単一の完全修飾ドメイン名 (FQDN) である必要があります。
+ .
+ つまり、ローカルホストのメールアドレスが foo@example.org の場合、このオプションの正しい値は example.org になります。
+Description-pt.UTF-8: Nome do sistema de mail:
+ O 'nome de mail' é o nome de domínio utilizado para 'qualificar' endereços de mail sem um nome de domínio.
+ .
+ Este nome irá também ser usado por outros programas. Deverá ser o nome de domínio singular totalmente qualificado (FQDN).
+ .
+ Deste modo, se um endereço de email na máquina local é foo@exemplo.org, o valor correcto para esta opção deverá ser exemplo.org.
+Description-ru.UTF-8: Почтовое имя системы:
+ 'Почтовое имя' -- это доменное имя, используемое для 'уточнения' почтовых адресов, у которых не указано доменное имя.
+ .
+ Также это имя будет использовано другими программами. Нужно указать одно, полностью определённое имя домена (FQDN).
+ .
+ То есть, если почтовый адрес на локальной машине -- foo@example.org, то правильным значением здесь будет example.org.
+Description-sv.UTF-8: Systemets namn:
+ Systemets namn är domännamnet som används för att expandera e-post-adresser som inte har domännamn.
+ .
+ Detta namn kommer också att användas av andra program. Det ska vara hela det kompletta domännamnet (FQDN).
+ .
+ Alltså, om e-post-adressen för det lokala systemet är foo@example.org så anger du example.org här.
+
+Template: dma/relayhost
+Type: string
+Description: Smarthost:
+ Please enter the IP address or the host name of a mail server that
+ this system should use as outgoing smarthost. If no smarthost is
+ specified, dma will try to deliver all messages by itself.
+Description-bg.UTF-8: Smarthost:
+ Въведете IP адрес или име на пощенски сървър (smarthost), който да се използва за изпращане на изходящата поща.  Ако това поле е празно, dma ще се опита да достави съобщенията направо до получателите им.
+Description-cs.UTF-8: Smarthost:
+ Vložte prosím IP adresu nebo název hostitele poštovního serveru, které má tento systém použít jako odchozího smarthosta. Není-li zvolen smarthost, dma se pokusí doručit všechny zprávy sám.
+Description-da.UTF-8: Smartvært:
+ Indtast venligst IP-adressen eller værtsnavnet for en postserver som dette system skal bruge som udgående smartvært. Hvis ingen smartvært er angivet, så vil dma forsøge at levere alle beskeder selv.
+Description-de.UTF-8: Smarthost:
+ Bitte geben Sie die IP-Adresse oder den Rechnernamen des E-Mailservers an, den dieses System als ausgehenden Smarthost verwenden soll. Falls kein Smarthost angegeben ist, wird Dma versuchen, alle Nachrichten selbst auszuliefern.
+Description-es.UTF-8: «Smarthost»:
+ Introduzca la dirección IP o el nombre de la máquina del servidor de correo que este sistema debería utilizar como «smarthost» saliente. Si no se especifica ningún «smarthost», dma intentará entregar los mensajes por su cuenta.
+Description-fr.UTF-8: Nom réseau ou adresse IP du système smarthost :
+ Veuillez indiquer l'adresse IP ou le nom d'hôte du serveur qui sera le serveur de courriels sortant pour ce système. Si aucun nom n'est indiqué, dma essaiera de livrer tous les messages lui-même.
+Description-ja.UTF-8: スマートホスト:
+ このシステムが外部配送用スマートホストに使うメールサーバの IP アドレスあるいはホスト名を入力してください。スマートホストが指定されない場合、dma はすべてのメッセージを自身で配送しようとします。
+Description-pt.UTF-8: Smarthost:
+ Por favor indique o endereço IP ou o nome de máquina dum servidor de mail que este sistema deverá usar como o smarthost de saída. Se nenhum smarthost for especificado, o dma irá ele próprio tentar entregar todas as mensagens.
+Description-ru.UTF-8: Отправляющий сервер (smarthost):
+ Введите IP-адрес или имя узла почтового сервера, через который эта система должна отправлять всю почту. Если ничего не указано, то dma будет пытаться отправить все сообщения самостоятельно.
+Description-sv.UTF-8: Smarthost:
+ Ange IP-adress eller värdnamn för en e-post-server som ska användas som utgående smarthost. Om ingen smarthost specificeras kommer dma att försöka leverera alla meddelanden själv.
+

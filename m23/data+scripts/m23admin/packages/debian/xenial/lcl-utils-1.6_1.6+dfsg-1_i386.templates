@@ -1,0 +1,112 @@
+Template: lcl-utils-1.6/rename_cfg
+Type: boolean
+Default: true
+Description: Rename "/etc/lazarus" to "/etc/lazarus.bak"?
+ The Lazarus suite now supports keeping multiple versions installed
+ at the same time and using the alternatives system to set proper
+ defaults. Normally, the latest version of any component is used.
+ .
+ To use the alternatives system on the system-wide configuration
+ of the Lazarus suite, /etc/lazarus needs to be under control of the
+ alternatives system. Currently there is a real directory at
+ /etc/lazarus, probably from a previous installation. In order to
+ start using the alternatives system on the configuration you must
+ accept renaming "/etc/lazarus". If you don't, you will need to
+ review the configuration on every version update of Lazarus as,
+ unfortunately, the configuration files are not always
+ backward-compatible. Also switching between different versions
+ might need more intervention.
+ .
+ If you have made changes to your configuration files, you will
+ probably need to review them and apply them to all versioned
+ configurations, as they will not automatically propagate.
+Description-cs.UTF-8: Přejmenovat "/etc/lazarus" na "/etc/lazarus.bak"?
+ Sada Lazarus nyní umožňuje mít nainstalováno několikero verzí současně a ke správnému výchozímu nastavení používá systém alternativ. Za běžných okolností se používá poslední verze každé z komponent.
+ .
+ Aby se systém alternativ mohl používat k celosystémovému nastavení sady Lazarus, musí být adresář /etc/lazarus pod správou systému alternativ. Nyní existuje skutečný adresář /etc/lazarus, který pravděpodobně pochází z předchozí instalace. V případě, že se má k nastavování používat systém alternativ, budete muset přijmout přejmenování adresáře "/etc/lazarus". Nepřijmete-li, budete muset při aktualizaci u každé z verzí Lazarus kontrolovat nastavení, konfigurační soubory bohužel nejsou vždy zpětně kompatibilní. Také přepínání mezi různými verzemi může vyžadovat větší zásah.
+ .
+ Pokud jste v konfiguračních souborech provedli změny, budete je pravděpodobně muset zkontrolovat a provést u nastavení všech verzí, protože se automaticky nepromítnou.
+Description-da.UTF-8: Omdøb »/etc/lazarus« til »/etc/lazarus.bak«?
+ Programpakken Lazarus understøtter nu at holde flere versioner installeret på samme tid og brug af alternativets system til at angive gode standarder. Normalt bruges den seneste version af alle komponenter.
+ .
+ For at bruge det alternatives system på konfigurationen for hele systemet for programpakken Lazarus skal /etc/lazarus være under kontrol af det alternatives system. Aktuelt er der en reel mappe på /etc/lazarus, sikkert fra en tidligere installation. For at starte med det alternatives system på konfigurationen skal du acceptere omdøbelse af »/etc/lazarus«. Hvis du ikke accepterer skal du gennemgå konfigurationen på alle versionsopdateringer for Lazarus, da konfigurationsfilerne ikke altid er bagud kompatible. Skift mellem forskellige versioner kan også kræve indblanding.
+ .
+ Hvis du har udført ændringer på dine konfigurationsfiler, så skal du gennemgå dem og bruge dem på alle versionerede konfigurationer, da de ikke automatisk sendes videre.
+Description-de.UTF-8: »/etc/lazarus« in »/etc/lazarus.bak« umbenennen?
+ Die Lazarus-Suite unterstützt es jetzt, mehrere Versionen zur selben Zeit installiert zu haben und verwendet das Alternatives-System, um korrekte Standardwerte zu setzen. Normalerweise wird die neueste Version jeder Komponente benutzt.
+ .
+ Um das alternatives-System mit der systemweiten Konfiguration der Lazarus-Suite zu nutzen, muss /etc/lazarus unter der Kontrolle des Alternatives-System stehen. Derzeit existiert ein echtes Verzeichnis mit Namen /etc/lazarus, möglicherweise von einer früheren Installation. Um mit der Verwendung des Alternatives-Systems für diese Konfiguration zu beginnen, müssen Sie zustimmen, dass »/etc/lazarus« umbenannt wird. Falls Sie nicht zustimmen, müssen Sie die Konfiguration bei jeder Versionsaktualisierung der Lazarus-Suite kontrollieren, da die Konfigurationsdateien unglücklicherweise nicht immer abwärtskompatibel sind. Auch für das Wechseln zwischen verschiedenen Versionen könnte mehr manuelles Eingreifen nötig sein.
+ .
+ Falls Sie Änderungen an Ihren Konfigurationsdateien durchgeführt haben, müssen Sie sie unter Umständen kontrollieren und all diese Änderungen in alle versionsabhängigen Konfigurationen einpflegen, da sie nicht automatisch übertragen werden.
+Description-es.UTF-8: ¿Desea renombrar «/etc/lazarus» a «/etc/lazarus.bak»?
+ La serie Lazarus permite ahora la instalación simultánea de múltiples versiones al mismo tiempo y utiliza el sistema de alternativas para definir la configuración por omisión más adecuada. Habitualmente se utiliza la última versión de cualquiera de los componentes.
+ .
+ Para poder utilizar el sistema de alternativas en la configuración global del sistema de la serie Lazarus, es necesario que el fichero «/etc/lazarus» esté bajo el control del sistema de alternativas. Actualmente hay un directorio real en «/etc/lazarus», probablemente debido a alguna instalación previa. Para poder empezar a utilizar el sistema de alternativas en la configuración debe aceptar el cambio de nombre de «/etc/lazarus». Si no lo hace, tendrá que revisar la configuración después de cada actualización de Lazarus. Esto es necesario porque los archivos de configuración no siempre son compatibles con las versiones anteriores. El cambio entre versiones distintas puede necesitar de más intervención.
+ .
+ Si ha realizado los cambios a sus archivos de configuración, es posible que tenga que revisarlos y aplicarlos a las distintas versiones de la configuración dado que los cambios no se propagarán automáticamente.
+Description-fr.UTF-8: Faut-il renommer « /etc/lazarus » en « /etc/lazarus.bak » ?
+ L'ensemble Lazarus permet maintenant de faire cohabiter plusieurs versions en même temps, et d'utiliser le système d'alternatives pour définir les composants par défaut adéquats. Normalement, la dernière version de chaque composant est utilisée.
+ .
+ Pour utiliser le système d'alternatives de la configuration système de l'ensemble Lazarus, "/etc/lazarus" doit être sous le contrôle du système d'alternatives. Actuellement, "/etc/lazarus" est un répertoire provenant sans doute d'une installation précédente. Afin de commencer à utiliser le système d'alternatives de la configuration, vous devez accepter de renommer "/etc/lazarus". Si vous ne le faites pas, vous devrez contrôler la configuration à chaque mise à jour de version de Lazarus parce que les fichiers de configuration ne sont malheureusement pas toujours rétrocompatibles. Ainsi, une intervention risque d'être nécessaire lors du passage d'une version à une autre.
+ .
+ Si des modifications aux fichiers de configuration ont été réalisées, vous devrez sans doute les contrôler et les appliquer aux configurations de toutes les versions puisqu'elles ne seront pas automatiquement propagées.
+Description-hu.UTF-8: "/etc/lazarus" átnevezése erre: "/etc/lazarus.bak"?
+ A Lazarus csomag támogatja, hogy különböző változatok legyenek egy időben telepítve, alternatív beállítások rendszerét használva a megfelelő alapértelmezések érdekében. Általában, a komponensek legújabb változata van használatban.
+ .
+ Az Lazarus csomag alternatív beállítások rendszerének az egész rendszerre kiterjedő használatához a /etc/lazarus könyvtárat az alternatív beállítások rendszerének kell kezelni. Jelenleg létezik egy valódi /etc/lazarus könyvtár, valószínűleg egy korábbi telepítésből. Ahhoz, hogy elkezdhesse használni az alternatív beállítások rendszerét, jóvá kell hagynia a "/etc/lazarus" átnevezését. Ha nem teszi, minden alkalommal felül kell vizsgálnia a beállításokat amikor Lazarus változat frissítve lesz, mivel a beállítási fájlok nem mindig visszafelé-kompatibilisek. Ezenkívül a különböző változatok közötti váltáskor további beavatkozásokra lehet szükség.
+ .
+ Ha módosította a konfigurációs fájlokat, akkor valószínűleg szükség lesz azok felülvizsgálatára és a megfelelő változathoz igazítására, mert ez nem történik meg automatikusan.
+Description-it.UTF-8: Rinominare «/etc/lazarus» in «/etc/lazarus.bak»?
+ La suite Lazarus permette ora di mantenere più versioni installate contemporaneamente e di usare il sistema di alternative per impostare impostazioni predefinite appropriate. Normalmente viene usata la versione più recente di ciascun componente.
+ .
+ Per usare il sistema di alternative per la configurazione a livello di sistema della suite Lazarus, /etc/lazarus deve essere sotto il controllo del sistema di alternative. Attualmente esiste una vera directory in /etc/lazarus, probabilmente creata da un'installazione precedente. Per poter iniziare ad usare il sistema di alternative sulla configurazione è necessario accettare di rinominare «/etc/lazarus». Se non lo si fa, sarà necessario rivedere la configurazione ad ogni aggiornamento di versione di Lazarus dato che, purtroppo, i file di configurazione non sono sempre compatibili all'indietro. Anche per il passaggio tra versioni differenti può essere necessario un intervento.
+ .
+ Se sono stati fatti cambiamenti ai file di configurazione sarà probabilmente necessario rivederli e applicarli a tutte le configurazioni con numero di versione, dato che non verranno automaticamente propagati.
+Description-ja.UTF-8: "/etc/lazarus" を "/etc/lazarus.bak" にリネームしますか?
+ Lazarus スイートは同時に複数バージョンをインストールして個別の設定による代替システムとしての使用方法をサポートするようになりました。通常、コンポーネントは最新版のものが使われます。
+ .
+ Lazarus スイートのシステムワイドな設定で代替システムを使用する場合、/etc/lazarus が代替システムの制御下に置かれる必要があります。現在、恐らく以前のインストールによりディレクトリの実体が /etc/lazarus にあります。この設定で代替システムの使用を開始するには "/etc/lazarus" のリネームを受け入れなければなりません。受け入れない場合は Lazarus のバージョンが更新されるたびに設定を見直す必要があります。これは残念ながら設定ファイルが常に後方互換とは限らないためです。また、バージョンの差を越えて切り替える場合、さらなる介入が必要となる可能性があります。
+ .
+ 設定ファイルに変更を加えた場合、変更が自動的に全体に取り入れられるわけではないので、恐らく見直した上でそれぞれ個別に適用していく必要があります。
+Description-nl.UTF-8: Hernoem "/etc/lazarus" naar "/etc/lazarus.bak"?
+ De Lazarus-suite ondersteunt het nu dat meerdere versies simultaan geïnstalleerd zijn. Om de juiste standaard in te stellen wordt gebruik gemaakt van het alternatieven-systeem. Onder normale omstandigheden wordt de laatste versie van ieder onderdeel gebruikt.
+ .
+ Als u het alternatieven-systeem wilt gebruiken voor de systeembrede configuratie van de Lazarus-suite, dan is het noodzakelijk dat "/etc/lazarus" onder controle is van het alternatieven-systeem. Op dit moment is /etc/lazarus een map, waarschijnlijk van een vorige installatie. U zult het hernoemen van "/etc/lazarus" moeten accepteren als u wilt starten met het gebruik van het alternatieven-systeem voor de configuratie. Als u dat niet doet, zult u de configuratie bij iedere update van Lararus opnieuw moeten beoordelen omdat de configuratiebestanden helaas niet altijd achterwaarts verenigbaar zijn. Ook het wisselen tussen verschillende versies vereist dan mogelijk meer interventie.
+ .
+ Als u wijzigingen hebt gemaakt in de configuratiebestanden, dan zult u deze waarschijnlijk moeten beoordelen en toe moeten passen op alle versies van de configuratie omdat de wijzigingen niet automatisch worden doorgegeven.
+Description-pl.UTF-8: Zmienić nazwę "/etc/lazarus" na "/etc/lazarus.bak"?
+ Zestaw Lazarus obsługuje teraz instalację kilku wersji równolegle i używanie systemu alternatyw do ustawienia prawidłowej wersji domyślnej. Zwykle używana jest najnowsza wersja danego komponentu.
+ .
+ Aby używać systemu alternatyw w konfiguracji systemowej zestawu Lazarus, /etc/lazarus musi znaleźć się pod kontrolą systemu alternatyw. Obecnie znajduje się w tym miejscu katalog /etc/lazarus, pochodzący prawdopodobnie z poprzedniej instalacji. Aby zacząć używać systemu alternatyw, konieczne jest zaakceptowanie zmiany nazwy "/etc/lazarus". W przeciwnym wypadku, konieczne będzie samodzielne przejrzenie konfiguracji po każdej aktualizacji Lazarusa, ponieważ - niestety - pliki konfiguracyjne nie są zawsze kompatybilne wstecznie. Także przechodzenie pomiędzy poszczególnymi wersjami może wymagać większej interwencji.
+ .
+ Jeśli dokonano zmian w swoich plikach konfiguracyjnych, konieczne będzie przeglądnięcie ich i zaaplikowanie ich do wszystkich konfiguracji dla poszczególnych wersji, gdyż nie rozpropagują się automatycznie.
+Description-pt.UTF-8: Renomear "/etc/lazarus" para "/etc/lazarus.bak"?
+ O conjunto Lazarus suporta agora manter várias versões instaladas ao mesmo tempo e a utilização de um sistema de alternativas para definir predefinições adequadas. Normalmente é utilizada a última versão de qualquer componente.
+ .
+ Para utilizar o sistema de alternativas numa configuração do conjunto Lazarus abrangente a todo o sistema, o ficheiro /etc/lazarus necessita de estar sobre o controlo do sistema de alternativas. Actualmente existe um directório real em /etc/lazarus, provavelmente oriundo de uma instalação anterior. Para usar o sistema de alternativas na configuração terá que aceitar a mudança de nome de "/etc/lazarus". Se não o fizer terá que rever a configuração de todas as actualizações do lazarus, infelizmente os ficheiros de configuração não são sempre retro-compatíveis. Do mesmo modo alternar entre versões diferentes pode necessitar de intervenção adicional.
+ .
+ Se alterou os ficheiros de configuração terá que provavelmente revê-los e aplicá-los a todas as configurações das versões, já que estes não se auto-propagam.
+Description-pt_BR.UTF-8: Renomear "/etc/lazarus" para "/etc/lazarus.bak"?
+ A suíte Lazarus agora tem suporte a manter múltiplas versões instaladas ao mesmo tempo e a usar o sistema de alternativas para definir padrões apropriados. Normalmente, a versão mais recente de cada componente é usada.
+ .
+ Para usar o sistema de alternativas na configuração da suíte Lazarus com abrangência em todo o sistema, /etc/lazarus precisa estar sob o controle do sistema de alternativas. Atualmente, existe um diretório real em /etc/lazarus, provavelmente de uma instalação anterior. A fim de iniciar o uso do sistema de alternativas na configuração, você deve aceitar renomear "/etc/lazarus". Caso você não faça isso, você precisará revisar a configuração a cada atualização de versão do Lazarus pois, infelizmente, os arquivos de configuração nem sempre são compatíveis com versões anteriores. Além disso, trocar entre versões diferentes pode precisar de mais intervenção.
+ .
+ Caso você tenha feito alterações nos seus arquivos de configuração, você provavelmente precisará revisá-las e aplicá-las a todas as configurações versionadas, pois elas não serão propagadas automaticamente.
+Description-ru.UTF-8: Переименовать «/etc/lazarus» в «/etc/lazarus.bak»?
+ Комплект Lazarus теперь поддерживает возможность присутствия в системе нескольких версий одновременно и использует систему альтернатив для задания параметров по умолчанию. Обычно используются самые новые версии компонентов.
+ .
+ Чтобы использовать систему альтернатив для общесистемных параметров комплекта Lazarus, /etc/lazarus должен находиться под её управлением. Сейчас /etc/lazarus является каталогом, вероятно, оставшимся от предыдущей установки. Чтобы начать использовать систему альтернатив, следует разрешить переименование «/etc/lazarus». Если вы откажетесь, вам потребуется самостоятельно следить за файлами параметров при каждом обновлении Lazarus, так как они не всегда обратно совместимы. Кроме того, переключение между версиями может потребовать больше ручных действий.
+ .
+ Если вы вносили изменения в файлы параметров, то вам, вероятно, понадобится внести их в файлы параметров для всех версий, так как они не вносятся автоматически.
+Description-sk.UTF-8: Premenovať „/etc/lazarus” na „/etc/lazarus.bak”?
+ Sada Lazarus teraz podporuje udržiavanie viacero nainštalovaných verzií naraz a nastavenie vhodnej predvolenej verzie pomocou systému alternatív. Normálne je použitá najnovšia verzia každého komponentu.
+ .
+ Na použitie systému alternatív pre systémovú konfiguráciu sady Lazarus, musí byť /etc/lazarus pod správou systému alternatív. Momentálne existuje reálny adresár /etc/lazarus, pravdepodobne z predchádzajúcej inštalácie. Pred začatím používania konfigurácie pomocou systému alternatív musíte potvrdiť premenovanie „/etc/lazarus”. Ak to neurobíte, budete musieť skontrolovať svoju konfiguráciu pri každej aktualizácii verzie Lazarus, pretože, nanešťastie, konfiguračné súbory nie sú vždy spätne kompatibilné. Rovnako tak prepínanie medzi rôznymi verziami môže vyžadovať viac zásahov.
+ .
+ Ak ste  vo svojich konfiguračných súboroch urobili nejaké zmeny, pravdepodobne ich budete musieť skontrolovať a aplikovať manuálne do všetkých konfigurácií, pretože nebudú prenesené automaticky.
+Description-sv.UTF-8: Ska "/etc/lazarus" sparas som "/etc/lazarus.bak"?
+ Lazarus-sviten har nu stöd för att ha flera versioner installerade samtidigt genom att använda alternativsystemet för att ställa in korrekt standardversion. Vanligen är standardversionen den senaste versionen av varje komponent.
+ .
+ För att använda alternativsystemet för systeminställningarna 
+ .
+ Om du gjort ändringar i konfigurationsfilerna vill du troligen gå igenom dem och säkerställa att de finns kvar i de individuella versionerna eftersom dessa ändringar vanligen inte propagerar.

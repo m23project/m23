@@ -193,7 +193,7 @@ function dbConnect()
 		else
 			$dbName="m23";
 
-		DB_setConnection(mysqli_connect("localhost","m23dbuser","m23secret", $dbName));
+		DB_setConnection(mysqli_connect("localhost", "m23dbuser", "m23secret", $dbName));
 
 		if (!DB_isConnectionValid())
 			die ("Could not connect to database server!");
@@ -254,7 +254,19 @@ function getServerNetmask()
 {
 	for ($ethNr = 0; $ethNr < 10; $ethNr++)
 	{
-		$netmask = exec('LC_ALL="C"; sudo /sbin/ifconfig eth'.$ethNr.' | sed "s/  /\n/g" | grep "^Mask" | cut -d":" -f2');
+		if (HELPER_isExecutedOnUCS())
+			$netmask = exec('sudo ucr get interfaces/eth'.$ethNr.'/netmask');
+		else
+			$netmask = exec('LC_ALL="C"; sudo /sbin/ifconfig eth'.$ethNr.' | sed "s/  /\n/g" | grep "^Mask" | cut -d":" -f2');
+
+		if (isset($netmask{6}))
+			break;
+	}
+	
+	if (HELPER_isExecutedOnUCS() && !isset($netmask{6}))
+	for ($brNr = 0; $brNr < 10; $brNr++)
+	{
+		$netmask = exec('sudo ucr get interfaces/br'.$brNr.'/netmask');
 		if (isset($netmask{6}))
 			break;
 	}
@@ -286,7 +298,7 @@ function getServerNetwork()
 **/
 function getDNSServers()
 {
-	exec("sudo grep nameserver /etc/resolv.conf | cut -d' ' -f2",$nameservers);
+	exec("sudo cat /etc/resolv.conf | grep nameserver | tr -s '[:blank:]' | head -n 1 | cut -d' ' -f2",$nameservers);
 	if (!isset($nameservers[0]))
 		$nameservers[0] = '85.88.19.10';
 

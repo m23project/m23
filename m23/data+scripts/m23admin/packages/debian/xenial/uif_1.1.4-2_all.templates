@@ -1,0 +1,313 @@
+Template: uif/conf_method
+Type: select
+Choices: don't touch, workstation
+Choices-ca.UTF-8: no ho toqueu, estació de treball
+Choices-cs.UTF-8: ponechat, pracovní stanice
+Choices-da.UTF-8: rør ikke, arbejdsstation
+Choices-de.UTF-8: nicht ändern, Arbeitsstation
+Choices-es.UTF-8: no tocar, estación de trabajo
+Choices-eu.UTF-8: ez ukitu, lanpostua
+Choices-fi.UTF-8: manuaalinen, työpöytä
+Choices-fr.UTF-8: ne pas modifier, station de travail
+Choices-gl.UTF-8: non tocar, estación de traballo
+Choices-it.UTF-8: «Don't touch», «workstation»
+Choices-ja.UTF-8: 触らない, ワークステーション
+Choices-nl.UTF-8: niet aanraken, werkstation
+Choices-pt.UTF-8: não mexer, estação de trabalho
+Choices-ru.UTF-8: не менять, рабочая станция
+Choices-sv.UTF-8: rör inte, arbetsstation
+Choices-vi.UTF-8: đừng làm gì, máy trạm
+Default: don't touch
+Description: Firewall configuration method
+ The firewall can be initialized using debconf, or using information
+ you manually put into /etc/uif/uif.conf.
+Description-ca.UTF-8: Mètode de configuració del tallafocs
+ El tallafocs es pot inicialitzar utilitzant el debconf o utilitzant la informació introduïda manualment al fitxer /etc/uif/uif.conf.
+Description-cs.UTF-8: Způsob nastavení firewallu
+ Firewall může být nastaven buď přes debconf nebo ruční úpravou souboru /etc/uif/uif.conf.
+Description-da.UTF-8: Konfigurationsmetode for brandmur (firewall)
+ Brandmuren (firewall) kan initialiseres med brug af debconf, eller brug af information du manuelt indsætter i /etc/uif/uif.conf.
+Description-de.UTF-8: Firewall Konfigurationsmethode
+ Die Firewall kann entweder über Debconf, oder manuell über die Konfigurationsdatei /etc/uif/uif.conf eingestellt werden.
+Description-es.UTF-8: Método de configuración del cortafuegos
+ El cortafuegos se puede iniciar usando debconf, o usando la información que ponga manualmente en «/etc/uif/uif.conf».
+Description-eu.UTF-8: Suebaki konfigurazio metodoa
+ Suebakia debconf erabiliaz abiarazi daiteke, edo eskuz /etc/uif/uif.conf fitxategian ipini duzun informazioa erabiliaz.
+Description-fi.UTF-8: Palomuurin asetustyyppi:
+ Palomuuri voidaan alustaa käyttäen debconfia tai muokkaamalla käsin tiedostoa /etc/uif/uif.conf.
+Description-fr.UTF-8: Méthode de configuration du pare-feu :
+ Le pare-feu (« firewall ») peut être configuré automatiquement ou en modifiant directement le fichier de configuration /etc/uif/uif.conf.
+Description-gl.UTF-8: Método para a configuración da devasa
+ Pódese inicializar a devasa empregando debconf, ou empregando información escrita á man en /etc/uif/uif.conf.
+Description-it.UTF-8: Metodo di configurazione del firewall
+ Il firewall può essere inizializzato utilizzando debconf o utilizzando le informazioni che vengono inserite manualmente dall'utente in «/etc/uif/uif.conf».
+Description-ja.UTF-8: ファイアウォール設定方法
+ ファイアウォールは debconf を使って、あるいは /etc/uif/uif.conf に手作業で書き込んだ情報を元に初期設定できます。
+Description-nl.UTF-8: Methode voor het instellen van de firewall
+ De firewall kan met behulp van debconf geïnitialiseerd worden, of via informatie die u handmatig in het bestand /etc/uif/uif.conf invoert.
+Description-pt.UTF-8: Método de configuração da firewall
+ A Firewall pode ser inicializada usando o debconf, ou usando informação introduzida por si em /etc/uif/uif.conf.
+Description-ru.UTF-8: Тип настройки межсетевого экрана
+ Настройка межсетевого экрана может быть выполнена с помощью debconf или ручного редактирования файла /etc/uif/uif.conf.
+Description-sv.UTF-8: Metod för konfigurering av brandväggen
+ Brandväggen kan initieras via debconf eller om du manuellt matar in information i /etc/uif/uif.conf.
+Description-vi.UTF-8: Phương pháp cấu hình bức tường lửa
+ Có thể sơ khởi bức tường lửa dùng debconf, hoặc dùng thông tin bạn tự ghi vào tập tin « /etc/uif/uif.conf ».
+
+Template: uif/trusted
+Type: string
+Description: Enter trusted hosts and/or networks:
+ In workstation mode, you can specify some hosts or networks to be
+ globally trusted. All incoming traffic coming from there will be
+ allowed. Multiple entries have to be separate with spaces.
+ .
+ Example: 10.1.0.0/16 trust.mydomain.com 192.168.1.55
+Description-cs.UTF-8: Zadejte důvěryhodné počítače a/nebo sítě:
+ V režimu pracovní stanice můžete zadat některé počítače nebo sítě, kterým důvěřujete. Veškerý příchozí provoz z těchto míst bude povolen. Jednotlivé položky oddělte mezerami.
+ .
+ Příklad: 10.1.0.0/16 verim.sve.domene.cz 192.168.1.55
+Description-da.UTF-8: Tillad troværdige værter og/eller netværk:
+ I tilstanden arbejdsstation, kan du angive nogle værter eller netværk som globalt anses som troværdige. Al indgående trafik derfra vil være tilladt. Flere punkter skal være adskilt af mellemrum.
+ .
+ Eksempel: 10.1.0.0/16 trust.mitdomæne.com 192.168.1.55
+Description-de.UTF-8: Eingabe der vertrauenswürdigen Rechner / Netze:
+ Im »Arbeitsstation«-Modus kann eine Liste von Rechnern oder Netzen angegeben werden, die als vertrauenswürdig angesehen werden. Diese haben dann kompletten Zugriff auf die Arbeitsstation. Mehrere Einträge sind durch ein Leerzeichen zu trennen.
+ .
+ Beispiel: 10.1.0.0/16 trust.mydomain.com 192.168.1.55
+Description-es.UTF-8: Introduzca las máquinas y/o redes de confianza:
+ En el modo de estación de trabajo, puede indicar que algunas máquinas o redes sean de absoluta confianza. Se permitirá todo el tráfico procedente de ellas. Si hay varias entradas, deben separarse con espacios.
+ .
+ Ejemplo: 10.1.0.0/16 deconfianza.midominio.com 192.168.1.55
+Description-eu.UTF-8: Sartu konfidantzazko ostalari eta/edo sareak:
+ Lanpostu moduan, orokorki konfidantzazko ostalari edo sareak ezarri ditzakezu. Toki horietatik datorren trafiko guztia onartuko da.  Sarrera ezberdinak zuriunez bereizi behar dira.
+ .
+ Adibidea: 10.1.0.0/16 konfidantza.niredomeinua.com 192.168.1.55
+Description-fi.UTF-8: Luotetut koneet ja verkot:
+ Työpöytätilassa voidaan määrittää joitain luotettavia koneita tai verkkoja. Kaikki näiltä tälle koneelle tuleva liikenne sallitaan. Useampia koneita tai verkkoja voidaan listata välilyönnein eroteltuina.
+ .
+ Esimerkki: 10.1.0.0/16 luotettava.esimerkki.fi 192.168.1.55
+Description-fr.UTF-8: Hôtes ou réseaux de confiance :
+ En mode « station de travail », vous pouvez indiquer plusieurs hôtes ou réseaux auxquels vous faites entièrement confiance. Tout le trafic en provenance de ces hôtes sera autorisé. Les entrées multiples doivent être séparées par des espaces.
+ .
+ Exemple : 10.1.0.0/16 confiance.mondomaine.com 192.168.1.55
+Description-gl.UTF-8: Introduza as máquinas e/ou redes de confianza:
+ No modo de estación de traballo, pode indicar algunhas máquinas ou redes nas que se ha confiar. Hase admitir todo o tráfico procedente de alí. Para introducir varios valores, sepáreos mediante espazos.
+ .
+ Por exemplo: 10.1.0.0/16 confio.dominio.com 192.168.1.55
+Description-it.UTF-8: Inserire gli host e/o le reti fidati:
+ In modalità «workstation» è possibile specificare taluni host o reti globalmente fidati. Tutto il traffico in entrata da questi sarà sempre permesso. Molteplici valori devono essere separati da spaziature.
+ .
+ Per esempio: «10.1.0.0/16 trust.miodominio.com 192.168.1.55»
+Description-ja.UTF-8: 信頼するホストやネットワークを入力してください:
+ ワークステーションモードでは、全体的に信頼するホストやネットワークを指定できます。そこからのトラフィックはすべて許可されます。エントリを複数入力する場合は、スペースで区切ってください。
+ .
+ 例: 10.1.0.0/16 trust.mydomain.com 192.168.1.55
+Description-nl.UTF-8: Geef de computers en/of de netwerken op die vertrouwd mogen worden:
+ In werkstationmodus kunt u een aantal computers of netwerken opgeven die algemeen vertrouwd mogen worden. Alle inkomend verkeer dat daarvan afkomstig is, zal toegelaten worden. Meerdere items van elkaar scheiden met witruimte.
+ .
+ Bijvoorbeeld: 10.1.0.0/16 vertrouw.mijndomein.com 192.168.1.55
+Description-pt.UTF-8: Introduza as máquinas e/ou redes de confiança:
+ No modo estação de trabalho, pode especificar algumas máquinas ou redes como sendo confiadas globalmente. Todo o tráfego vindo deles será permitido. Separe as várias entradas por espaços.
+ .
+ Exemplo: 10.1.0.0/16 dominio.confiado.com 192.168.1.55
+Description-ru.UTF-8: Введите доверительные хосты и/или сети:
+ В режиме "рабочая станция", вы можете указать несколько хостов или сетей, которым вы полностью доверяете. С них будет разрешён весь входящий трафик. Несколько значений должны разделяться пробелами.
+ .
+ Пример: 10.1.0.0/16 trust.mydomain.com 192.168.1.55
+Description-sv.UTF-8: Ange pålitliga värdar och/eller nätverk:
+ I läget för arbetsstation kan du ange några värdsystem eller nätverk som globalt ska vara pålitliga. All inkommande trafik som kommer därifrån kommer att tillåtas. Multipla poster måste separeras med mellanslag.
+ .
+ Exempel: 10.1.0.0/16 lita.mindomain.se 192.168.1.55
+Description-vi.UTF-8: Nhập các máy/mạng đáng tin:
+ Trong chế độ máy trạm, bạn có thể xác định một số máy hay mạng sẽ được tin cây toàn cục. Sau đó thì tất cả giao thông đến từ đó sẽ được phép. Nhiều mục phải định giới bằng dấu cách.
+ .
+ Ví dụ : 10.1.0.0/16 people.vnoss.org 192.168.1.55
+
+Template: uif/pings
+Type: boolean
+Default: true
+Description: Do you want your host to be reachable via ping?
+ Normally an Internet host should be reachable with pings. Choosing no here
+ will disable pings which might be somewhat confusing when analyzing
+ network problems.
+Description-ca.UTF-8: Voleu que el vostre servidor respongui via el ping?
+ Normalment els ordinador d'Internet haurien de respondre via ping. Si escolliu no, s'inhabilitarà el ping i pot induir a confusions en l'anàlisi de problemes de xarxa.
+Description-cs.UTF-8: Chcete, aby byl počítač dosažitelný přes ping?
+ Normálně by všechny počítače na Internetu měly být dostupné přes ping. Pokud zde odpovíte ne, pingy zakážete, což vás může zmást později při analýze síťových problémů.
+Description-da.UTF-8: Ønsker du, at din vært skal svare på pingforespørgsler?
+ Normalt skal en internetvært kunne tilgås med ping'er. Valg af nej her vil deaktivere ping'er, hvilket kan være noget forvirrende, når netværksproblemer skal analyseres.
+Description-de.UTF-8: Soll der Rechner via ping erreichbar sein?
+ Normalerweise sollte ein Rechner im Netz via ping erreichbar sein. Falls Sie dies ausschalten möchten, beachten Sie dies bei der Suche nach Netzproblemen.
+Description-es.UTF-8: ¿Desea que su máquina responda a los «ping»?
+ Normalmente, una máquina de Internet debería responder a los «ping». Si elige «No» se deshabilitarán los «ping», lo que podría causar confusión al analizar los problemas de red.
+Description-eu.UTF-8: Zure ostalaria ping bidez eskuragarri izatea nahi duzu?
+ Normalean Internet ostalari bat ping bidez eskuratu ahal izan beharko zen. Hemen ez hautatuaz ping-a ezgaituko da sare arazoak analizatzean gauzak zaildu ditzakeena.
+Description-fi.UTF-8: Tulisiko koneen vastata pingiin?
+ Yleensä Internetissä olevien koneiden tulisi vastata pingiin. Jos tätä ei valita, pingeihin ei vastata, mikä saattaa aiheuttaa sekaannusta selvitettäessä verkko-ongelmia.
+Description-fr.UTF-8: Souhaitez-vous que cet hôte réponde aux pings ?
+ Normalement, la réponse aux « pings » devrait être activée. La désactivation de cette option peut conduire à des confusions lors de l'analyse de problèmes réseau.
+Description-gl.UTF-8: ¿Quere que se poida alcanzar a súa máquina mediante ping?
+ Normalmente deberíase poder alcanzar unha máquina conectada a Internet mediante ping. Se escolle "non" aquí hanse desactivar os pings, o que pode causar confusión ao analizar problemas na rede.
+Description-it.UTF-8: Si desidera che il proprio host sia raggiungibile via ping?
+ Normalmente un host internet dovrebbe essere raggiungibile via ping. Se si sceglie di no, i ping saranno disabilitati; questo potrebbe creare confusioni quando si analizzano problemi della rete.
+Description-ja.UTF-8: ホストを ping が到達可能にしますか?
+ 通常、インターネットホストは ping が到達可能であるべきです。ここで no を選択すると ping を無効にするため、ネットワーク問題の分析の際にやや混乱が生まれるかもしれません。
+Description-nl.UTF-8: Wilt u uw computer bereikbaar laten zijn via ping?
+ Normaal gezien zou een met het Internet verbonden computer bereikbaar moeten zijn met pings. Hier neen kiezen zal pingen uitschakelen, hetgeen enigszins verwarrend kan zijn bij het onderzoeken van netwerkproblemen.
+Description-pt.UTF-8: Deseja que o seu computador responda a ping?
+ Normalmente uma máquina na Internet deve responder a pings. Escolher não aqui irá desactivar pings o que pode ser um pouco confuso quando estiver a analisar problemas de rede.
+Description-ru.UTF-8: Разрешить ответы хоста на ping?
+ Обычно, хосты в интернет должны быть доступны по ping. При отрицательном ответе реакция хоста на ping будет заблокирована, что может затруднить анализ в случае проблем с сетью.
+Description-sv.UTF-8: Vill du att ditt värdsystem ska vara nåbar via ping?
+ Normalt är ett värdsystem på Internet nåbar med ping. Välja nej här kommer att stänga av ping som dock kan vara förvirrande vid analyser av nätverksproblem.
+Description-vi.UTF-8: Bạn có muốn cho tín hiệu ping tới máy của mình không?
+ Bình thường, một máy Internet nên cho tín hiệu ping tới được. Không bật tùy chọn này thì tắt nhận tín hiệu ping mà có thể gây ra tình trạng lộn xộn khi phân tích vấn đề chạy mạng.
+
+Template: uif/traceroute
+Type: boolean
+Default: true
+Description: Do you want your host to react to traceroutes?
+ Normally an Internet host should react to traceroutes. Choosing no here
+ will disable this, which might be somewhat confusing when analyzing
+ network problems.
+Description-ca.UTF-8: Voleu que l'ordinador reaccioni al traceroute?
+ Normalment un ordinador d'Internet hauria de reaccionar al traceroute. Si escolliu no, s'inhabilitarà i pot induir a confusions en l'anàlisi de problemes de xarxa.
+Description-cs.UTF-8: Chcete, aby počítač odpovídal na „sledovače cesty“?
+ Normálně by všechny počítače na Internetu měly odpovídat na požadavky o sledování cesty (traceroute). Pokud zde odpovíte ne, váš počítač nebude odpovídat na tyto požadavky, ovšem později vás to může zmást při analýze síťových problémů.
+Description-da.UTF-8: Skal din vært reagere på tracerouter?
+ Normalt skal en internetvært reagere på tracerouter. Valg af nej her vil deaktivere dette, hvilket kan være noget forvirrende når netværksproblemer skal analyseres.
+Description-de.UTF-8: Soll der Rechner traceroutes beantworten?
+ Normalerweise sollte ein Rechner im Netz auf traceroutes reagieren. Falls Sie dies ausschalten möchten, beachten Sie dies bei der Suche nach Netzproblemen.
+Description-es.UTF-8: ¿Desea que su máquina reaccione a los «traceroute»?
+ Normalmente, una máquina de Internet debería reaccionar a los «traceroute». Si elige «No» se deshabilitarán, lo que podría causar confusión al analizar problemas de red.
+Description-eu.UTF-8: Zure ostalariak traceroute erabiltzeko aukera izatea nahi duzu?
+ Normalean Internet ostalari batek tracerouteri jaramon egin beharko zion. Hemen ez hautatuaz hau ezgaituko da sare arazoak analizatzean gauzak zaildu ditzakeena.
+Description-fi.UTF-8: Tulisiko koneen reagoida tracerouteen?
+ Yleensä Internetissä olevien koneiden tulisi reagoida tracerouteen. Jos tätä ei valita, tracerouteen ei reagoida, mikä saattaa aiheuttaa sekaannusta selvitettäessä verkko-ongelmia.
+Description-fr.UTF-8: Souhaitez-vous que cet hôte réponde à « traceroute » ?
+ Normalement, la réponse à « traceroute » devrait être activée. La désactivation de cette option peut conduire à des confusions lors de l'analyse de problèmes réseau.
+Description-gl.UTF-8: ¿Quere que a súa máquina reaccione aos traceroutes?
+ Normalmente, unha máquina en Internet debería reaccionar a traceroutes. Se escolle "non" aquí ha desactivalo, o que pode levar a confusións ao analizar problemas na rede.
+Description-it.UTF-8: Si desidera che il proprio host reagisca a traceroute?
+ Normalmente un host internet dovrebbe reagire a traceroute. Se si sceglie di no, le reazioni a traceroute saranno disabilitate; questo potrebbe creare confusioni quando si analizzano problemi della rete.
+Description-ja.UTF-8: ホストを traceroute に反応するようにしますか?
+ 通常、インターネットホストは traceroute に反応するべきです。ここで no を選択するとこれを無効にするため、ネットワーク問題の分析の際にやや混乱が生まれるかもしれません。
+Description-nl.UTF-8: Wilt u dat uw computer reageert op traceroutes?
+ Normaal gezien zou een met het Internet verbonden computer moeten reageren op traceroutes. Hier neen kiezen zal dit uitschakelen, hetgeen enigszins verwarrend kan zijn bij het onderzoeken van netwerkproblemen.
+Description-pt.UTF-8: Deseja que o seu computador reaja a traceroutes?
+ Normalmente uma máquina na Internet deve reagir a traceroutes. Escolher não aqui irá desactivar esta resposta, o que pode ser um pouco confuso quando estiver a analisar problemas de rede.
+Description-ru.UTF-8: Разрешить ответы хоста на traceroute?
+ Обычно, хосты в интернет должны реагировать на traceroute. При отрицательном ответе реакция хоста на traceroute будет заблокирована, что может затруднить анализ в случае проблем с сетью.
+Description-sv.UTF-8: Vill du att ditt värdsystem ska reagera på "traceroute"?
+ Normalt reagerar ett värdsystem på Internet på traceroute. Välja nej här kommer att stänga av det som dock kan vara förvirrande vi analyser av nätverksproblem.
+Description-vi.UTF-8: Bạn có muốn máy này đáp ứng việc tìm đường không?
+ Bình thường, một máy Internet nên đáp ứng tiến trình tìm đường (traceroute). Không bật tùy chọn này thì tắt khả năng này, mà có thể gây ra tình trạng lộn xộn khi phân tích vấn đề chạy mạng.
+
+Template: uif/workstation
+Type: note
+Description: Firewall for simple workstation setups
+ Warning: This configuration provides a very simple firewall setup which is
+ only able to trust certain hosts and configure global ping / traceroute
+ behaviour.
+ .
+ If you need a more specific setup, use /etc/uif/uif.conf as a template and
+ choose "don't touch" next time.
+Description-cs.UTF-8: Jednoduchý firewall pro pracovní stanice
+ Varování: toto nastavení poskytuje velmi jednoduchý firewall, který umí pouze důvěřovat určitým počítačům a dokáže globálně změnit chování ohledně ping / traceroute požadavků.
+ .
+ Potřebujete-li přesnější nastavení, použijte soubor /etc/uif/uif.conf jako vzor a příště vyberte možnost „ponechat“.
+Description-da.UTF-8: Brandmur (firewall) for simple arbejdsstationsopsætninger
+ Advarsel: Denne konfiguration tilbyder en meget simpel brandmursopsætning som kun er i stand til at stole på bestemte værter og konfigurere global ping-/tracerouteopførsel.
+ .
+ Hvis du har brug for en mere specifik opsætning, så brug /etc/uif/uif.conf som en skabelon og vælg »rør ikke« næste gang.
+Description-de.UTF-8: Firewall für einfache Arbeitsstationen
+ Achtung: Diese Konfiguration stellt eine recht einfache Firewall zur Verfügung. Beachten Sie, dass dieses Vorgehen keine gut geplante Firewall ersetzen kann und nur die Möglichkeit bietet, einzelnen Rechnern/Netzen einen kompletten Zugriff zu gewähren.
+ .
+ Falls ein spezielleres Setup gewünscht ist, sollten Sie die Datei /etc/uif/uif.conf als Vorlage und beim nächsten Mal »nicht ändern« wählen.
+Description-es.UTF-8: Cortafuegos para estaciones de trabajo sencillas
+ Advertencia: Esta configuración proporciona un cortafuegos muy sencillo, que sólo es capaz de confiar en algunas máquinas y configurar el comportamiento global ante «ping»/«traceroute».
+ .
+ Si necesita una configuración mas específica, use el archivo «/etc/uif/uif.conf» como plantilla y seleccione «no tocar» la próxima vez.
+Description-eu.UTF-8: Lanpostu soiletarako suebaki konfigurazioak
+ Abisua: Konfigurazio honek zenbait ostalariz fidatu eta ping / traceroute portamoldea ezartzen duen oso suebaki konfigurazio sinple bat sortzen du.
+ .
+ Konfigurazio zehatzago bat behar baduzu, erabili /etc/uif/uif.conf txantiloi gisa eta hautatu "ez ukitu" hurrengo aldian.
+Description-fi.UTF-8: Palomuuri yksinkertaisille työpöytäasennuksille
+ Varoitus: Tämä asetusprosessi tuottaa erittäin yksinkertaiset palomuuriasetukset, joissa voidaan vain asettaa jotkin koneet luotetuiksi ja asettaa yleinen pingin ja tracerouten toimintatapa.
+ .
+ Yksityiskohtaisempia asetuksia voidaan tarvittaessa tehdä käyttäen tiedostoa /etc/uif/uif.conf pohjana. Tällöin ensi kerralla tulisi valita ”manuaalinen”.
+Description-fr.UTF-8: Pare-feu pour les simples stations de travail
+ Veuillez noter que cette configuration est une mise en œuvre simple d'un pare-feu avec comme seules possibilités le choix de certains hôtes de confiance et le réglage du comportement global pour ping/traceroute.
+ .
+ Si vous avez besoin d'une configuration plus avancée, utilisez /etc/uif/uif.conf comme modèle et choisissez l'option « ne pas modifier » la prochaine fois.
+Description-gl.UTF-8: Devasa para configuracións simples de estación de traballo
+ Aviso: Esta configuración fornece unha devasa moi simple que só pode confiar nalgunhas máquinas e configurar o comportamento global de ping/traceroute.
+ .
+ Se precisa dunha configuración máis específica, empregue /etc/uif/uif.conf coma patrón e escolla "non tocar" a próxima vez.
+Description-it.UTF-8: Impostazioni del firewall per postazioni semplici
+ Attenzione: questa configurazione fornisce un'impostazione del firewall molto semplice che può solo accordare fiducia a certi host e configurare comportamenti globali relativi a ping e traceroute.
+ .
+ Se occorre un'impostazione più specifica, utilizzare «/etc/uif/uif.conf» come modello e scegliere l'opzione «don't touch» la prossima volta.
+Description-ja.UTF-8: 単純なワークステーション用設定によるファイアウォール
+ 警告: この設定が提供するのは非常に単純なファイアウォールで、できることは特定のホストを信頼することと全体的な ping / traceroute の動作の設定だけです。
+ .
+ もっと具体的な設定が必要な場合は、/etc/uif/uif.conf をテンプレートとして使い、次回は「触らない」を選択してください。
+Description-nl.UTF-8: Een firewallopstelling voor een eenvoudig werkstation
+ Waarschuwing: deze configuratie stelt een heel eenvoudige firewallopstelling in, die enkel in staat is sommige computers te vertrouwen en een globaal gedrag in te stellen in verband met ping / traceroute.
+ .
+ Indien u een meer specifiek opzet wilt, gebruik dan /etc/uif/uif.conf als model en kies de volgende keer voor "niet aanraken".
+Description-pt.UTF-8: Firewall para configurações simples de estações de trabalho
+ Aviso: Esta configuração disponibiliza uma configuração de firewall muito simples que apenas é capaz de confiar em determinadas máquinas e configurar o comportamento global aquando de um ping ou traceroute.
+ .
+ Se precisa de uma configuração mais específica, use /etc/uif/uif.conf como um modelo e escolha "não mexer" da próxima vez.
+Description-ru.UTF-8: Межсетевой экран для рабочих станций с простыми требованиями
+ Предупреждение: здесь выполняется очень простая настройка межсетевого экрана, при которой задаются доверительные хосты и общее поведение для ping / traceroute.
+ .
+ Если вам требуется более специализированная настройка, используйте /etc/uif/uif.conf в качестве шаблона, и в следующий раз выберите "не менять".
+Description-sv.UTF-8: Brandvägg för enkla konfigurationer av arbetsstationer.
+ Varning: Denna konfiguration ger en väldigt enkel konfiguration av brandväggen som bara kan lita på vissa värdar och konfigurera ett globalt beteende för ping och traceroute.
+ .
+ Om du behöver en mer specifik konfiguration, använd /etc/uif/uif.conf som en mall och välj "rör inte" nästa gång.
+Description-vi.UTF-8: Bức tường lửa cho thiết lập máy trạm đơn giản
+ Cảnh báo : cấu hình này cung cấp một thiết lập bức tường lửa rất đơn giản mà chỉ có khả năng tin cây một số máy nào đó, và cấu hình ứng xử ping/tìm đường toàn cục.
+ .
+ Nếu bạn cần thiết lập đặc biệt hơn, hãy dùng tập tin cấu hình « /etc/uif/uif.conf » làm mẫu, và chọn « Đừng làm gì » lần kế tiếp.
+
+Template: uif/error
+Type: error
+Description: Error in list of trusted hosts
+ Please check the hosts / networks you entered. One or more entries are not
+ correct, contain no resolvable hosts, valid IP-addresses, valid network
+ definitions or masks.
+Description-ca.UTF-8: S'ha produït un error en la llista d'ordinadors de confiança
+ Comproveu els ordinadors/xarxes que heu introduït. Una o més entrades no són correctes perquè contenen ordinadors que no es poden resoldre, adreces d'IP no vàlides o definicions de la xarxa o màscares no vàlides.
+Description-cs.UTF-8: Chyba v seznamu důvěryhodných počítačů
+ Prosíme, zkontrolujte seznam zadaných počítačů / sítí. Jeden nebo více záznamů nejsou správné, neobsahují přeložitelné jméno, platnou IP adresu, platnou definici sítě nebo masky.
+Description-da.UTF-8: Fejl i liste over troværdige værter
+ Undersøg venligst værterne/netværkene du indtastede. En eller flere punkter er ikke korrekt, indeholder ingen opløselige værter, gyldige IP-adresser, gyldige netværksdefinitioner eller masker.
+Description-de.UTF-8: Fehler in der Liste der vertrauenswürdigen Rechnern
+ Überprüfen Sie bitte Ihre Eingaben. Ein oder mehrer Einträge enthalten entweder einen nicht auflösbaren Rechnernamen, eine ungültige Netz-/IP-Adresse oder Netzmaske.
+Description-es.UTF-8: Error en la lista de las máquinas de confianza
+ Compruebe las máquinas y/o redes que ha introducido. Hay al menos una entrada que no es correcta, que contiene máquinas que no se pueden resolver, o que contiene direcciones IP, definiciones de red o máscaras de red no válidas.
+Description-eu.UTF-8: Errorea konfidantzazko ostalari zerrendan
+ Mesedez egiaztatu idatzitako ostalari / sareak. Sarrera bat edo gehiago ez dira zuzenak, ebatzi ezin diren, IP-helbide, sare edo maskara okerra duten ostalariak ditu.
+Description-fi.UTF-8: Virhe luotettujen koneiden listassa
+ Tarkista syötetyt koneet ja verkot. Yksi tai useampi kohta sisältää nimiä, joita ei voida selvittää, epäkelpoja IP-osoitteita tai virheellisiä verkkomääritteitä tai -peitteitä.
+Description-fr.UTF-8: Erreur dans la liste des hôtes de confiance
+ Veuillez vérifier les hôtes et les réseaux indiqués. Une ou plusieurs entrées sont incorrectes, ne peuvent être résolues, contiennent des adresses réseau non valables ou des définitions ou des masques de réseau non valables.
+Description-gl.UTF-8: Erro na lista de máquinas de confianza
+ Comprobe as máquinas / redes que introduciu. Unha ou máis entradas non son correctas, conteñen nomes que non se poden resolver, enderezos IP non válidos, definicións de rede non válidas ou máscaras de rede non válidas.
+Description-it.UTF-8: Errore nell'elenco di host fidati
+ Controllare gli host e le reti inseriti. Uno o più valori non sono corretti, contengono host non risolvibili, indirizzi IP non validi, definizioni di rete o di maschere non valide.
+Description-ja.UTF-8: 信頼するホスト一覧に誤りがあります
+ 入力したホストやネットワークを確認してください。解決可能なホスト、有効な IP アドレス、有効なネットワーク定義またはマスクのない不正なエントリがあります。
+Description-nl.UTF-8: Fout in de lijst met te vertrouwen computers
+ Gelieve de reeks computers / netwerken die u opgaf te controleren. Een of meer elementen zijn niet correct, bevatten niet-opzoekbare computers, ongeldige IP-adressen, ongeldige netwerkdefinities of -maskeringen.
+Description-pt.UTF-8: Erro na lista de máquinas confiadas
+ Por favor verifique as máquinass / redes que introduziu. Uma ou mais entradas não estão corrrectas, contêm máquinas não resolúveis (por dns), endereços IP inválidos ou definições de rede ou máscaras inválidas.
+Description-ru.UTF-8: Ошибка в списке доверительных хостов
+ Проверьте введённые хосты/сети. Одна или более записей неверны, содержат неразрешимые имена хостов, неправильные IP-адреса, подсети или маски.
+Description-sv.UTF-8: Fel i listan av pålitliga värdar
+ Kontrollera värdnamnen/nätverken som du angav. En eller flera av dessa är felaktigt angiven, har inga värdar som kan slås upp, innehålle inga IP-adresser, korrekta nätverksdefinitioner eller nätmasker.
+Description-vi.UTF-8: Gặp lỗi trong danh sách các máy đáng tin.
+ Hãy kiểm tra xem bạn đã nhập các máy/mạng đúng. Một hay nhiều mục nhập không phải là đúng, không chứa máy có thể quyết định, địa chỉ IP hợp lệ, lời xác định mạng hợp lệ hay mặt nạ.

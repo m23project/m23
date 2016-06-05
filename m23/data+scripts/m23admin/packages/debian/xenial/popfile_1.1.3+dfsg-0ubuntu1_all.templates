@@ -1,0 +1,109 @@
+Template: popfile/backupcorpus
+Type: boolean
+Default: true
+Description: Do you wish to backup popfile's internal data?
+ Popfile has changed the way it stores its internal data.  It will
+ automatically upgrade from previous versions, but if you ever want to
+ downgrade you will need a backup of your old data.
+ .
+ A backup of your current data will be done in
+ /var/lib/popfile/backup-<version>.tar.gz. You will only need this if you
+ wish to downgrade.
+Description-cs.UTF-8: Chcete zálohovat interní data popfile?
+ Popfile změnil způsob, jakým ukládá svá vnitřní data. Převod na novější verzi proběhne automaticky, ale kdybyste se někdy chtěli vrátit k předchozí verzi, musíte mít zálohu svých starých dat.
+ .
+ Záloha aktuálních dat se uloží do souboru /var/lib/popfile/backup-<verze>.tar.gz. Tento soubor budete potřebouvat pouze při degradaci na předchozí verze.
+Description-es.UTF-8: ¿Desea guardar una copia de los datos internos?
+ Popfile a cambiado la forma en que almacena sus datos internos. El programa actualizará los datos en forma automática, pero si alguna vez necesita volver a una versión anterior deberá contar con una copia de los datos anteriores.
+ .
+ Una copia de su corpus actual será almacenada en /var/lib/popfile/backup-<versión>.tar.gz. Solo necesita dicha copia si desea volver a una versión anterior del programa.
+Description-fr.UTF-8: Faut-il sauvegarder les données internes de popfile ?
+ La méthode de stockage des données internes a changé dans popfile. La mise à jour depuis les anciennes versions sera automatique, mais si vous souhaitez revenir à la version antérieure, vous aurez besoin de vos anciennes données.
+ .
+ Une sauvegarde des données actuelles va être réalisée dans /var/lib/popfile/backup-<version>.tar.gz. Elles ne seront nécessaires que si vous revenez à la version antérieure.
+Description-ja.UTF-8: popfile の内部データをバックアップしますか?
+ popfile は内部データの保存方法を変更しました。以前のバージョンから自動的にアップグレードが行われますが、ダウングレードも行いたいという場合、以前のデータのバックアップが必要となります。
+ .
+ 現在のデータのバックアップは、/var/lib/popfile/backup-<version>.tar.gz へ行われます。これは、ダウングレードを行いたい際のみ必要です。
+Description-sv.UTF-8: Önskar du att säkerhetskopiera popfiles interna data?
+ Popfile har ändrat sättet att lagra sin interna data. Den kommer att automatiskt uppgradas från föregående versioner men om du någon gång vill nedgradera behöver du en säkerhetskopia av ditt gamla data.
+ .
+ En säkerhetskopia av din nuvarande data kommer att göras i /var/lib/popfile/backup-<version>.tar.gz. Du kommer endast behöva denna om du önskar nedgradera.
+Description-vi.UTF-8: Bạn có muốn lưu trữ các dữ liệu nội bộ của trình popfile không?
+ Trình popfile đã thay đổi cách lưu dữ liệu nội bộ. Nó sẽ tự động nâng cấp từ phiên bản trước, nhưng mà nếu lúc sau bạn muốn hạ cấp thì sẽ cần một bản sao của các dữ liệu cũ.
+ .
+ Các dữ liệu hiện thời của bạn sẽ được lưu trữ vào «/var/lib/popfile/backup-<phiên_bản>.tar.gz». Tập tin này cần thiết chỉ nếu bạn muốn hạ cấp thôi.
+
+Template: popfile/uiport
+Type: string
+Default: 7070
+Description: Web UI Port:
+ This is the port on which popfile's web UI will listen.
+Description-cs.UTF-8: Port webového rozhraní:
+ Na tomto portu bude naslouchat webové rozhraní popfile.
+Description-es.UTF-8: Puerto de la Interfaz Web:
+ Este es el puerto donde encontrará la interfaz web.
+Description-fr.UTF-8: Port de l'interface utilisateur web :
+ Veuillez indiquer le port où le serveur de l'interface web de popfile sera à l'écoute.
+Description-ja.UTF-8: Web ユーザインターフェイスのポート番号:
+ これは popfile の web ユーザインターフェイスが listen するポート番号です。
+Description-sv.UTF-8: Port för webbgränssnitt:
+ Detta är porten på vilken popfiles webbgränssnitt lyssnar på.
+Description-vi.UTF-8: Cổng UI Mạng:
+ Giá trị này là cổng mà giao diện người dùng (UI) Mạng của trình popfile sẽ lắng nghe trên nó.
+
+Template: popfile/uilocal
+Type: boolean
+Default: true
+Description: Web UI accepts only local connections?
+ Disabling the web UI for non local connections will increase security.
+ If you decide to let popfile accept non local connections remember to set a
+ password (in the security part of the web UI) as soon as possible.
+Description-cs.UTF-8: Má webové rozhraní přijímat pouze místní spojení?
+ Zakázáním webového rozhraní pro vzdálená spojení se zvýší bezpečnost. Rozhodnete-li se přijímat i vzdálená spojení, nezapomeňte co nejrychleji nastavit heslo (ve webovém rozhraní v části bezpečnost).
+Description-es.UTF-8: ¿La interfaz acepta solo conexiones locales?
+ Deshabilitar la interfaz web para conexiones no locales mejorará la seguridad. Si desea permitir el acceso recuerde configurar una clave de acceso (en la sección de seguridad de la interfaz web) lo más pronto posible.
+Description-fr.UTF-8: Souhaitez-vous limiter l'interface web aux connexions locales ?
+ Pour améliorer la sécurité, vous pouvez désactiver l'interface web pour les connexions non locales. Si vous autorisez les connexions autres que locales, vous devez établir un mot de passe dès que possible (dans la partie « Securité » ou « Security » de l'interface web).
+Description-ja.UTF-8: web ユーザインターフェイスは local からの接続のみを受け付けますか?
+ web ユーザインターフェイスに対して local 以外からの接続を無効にすると、セキュリティが高まります。popfile に local 以外からの接続を許可すると決めた場合、(web ユーザインターフェイスの「セキュリティ」より) すぐにパスワードをセットするのを忘れないで下さい。
+Description-sv.UTF-8: Ska webbgränssnittet endast tillåta lokala anslutningar?
+ Stänga av webbgränssnittet för icke-lokala anslutningar förbättrar säkerheten. Om du väljer att låta popfile ta emot icke-lokala anslutningar bör du komma i håg att sätta ett lösenord (i säkerhetsdelen av webbgränssnittet) så snart som möjligt.
+Description-vi.UTF-8: UI Mạng chấp nhận chỉ sự kết nối địa phương không?
+ An toàn hơn khi không cho phép giao diện người dùng (UI) Mạng chấp nhận sự kết nối từ xa. Nếu bạn quyết định cho phép trình popfile chấp nhận sự kết nối không phải địa phương thì hãy ghi nhớ lập một mật khẩu (trong phần bảo mật của giao diện người dùng Mạng) càng sớm càng có thể.
+
+Template: popfile/popport
+Type: string
+Default: 7071
+Description: POP Proxy Port:
+ This is the port on which popfile's POP proxy will listen.
+Description-cs.UTF-8: Port POP proxy:
+ Na tomto portu bude naslouchat popfile POP proxy.
+Description-es.UTF-8: Puerto del Proxy POP:
+ Este es el puerto donde popfile atiendo el proxy de POP.
+Description-fr.UTF-8: Port du mandataire POP :
+ Veuillez indiquer le port où le mandataire POP sera à l'écoute.
+Description-ja.UTF-8: POP プロキシのポート番号:
+ これは popfile の POP プロキシが listen するポート番号です。
+Description-sv.UTF-8: Port för POP-proxy:
+ Detta är porten på vilken popfiles POP-proxy lyssnar på.
+Description-vi.UTF-8: Cổng ủy nhiệm POP:
+ Giá trị này là cổng mà trình ủy nhiệm POP của popfile sẽ lắng nghe trên nó.
+
+Template: popfile/poplocal
+Type: boolean
+Default: true
+Description: POP proxy accepts only local connections?
+ Disabling the POP proxy for non local connections will increase security.
+Description-cs.UTF-8: Má POP proxy přijímat pouze místní spojení?
+ Zakázáním POP proxy pro vzdálená spojení se zvýší bezpečnost.
+Description-es.UTF-8: ¿El proxy POP acepta solo conexiones locales?
+ Deshabilitar el proxy POP para conexiones no locales mejorará la seguridad.
+Description-fr.UTF-8: Souhaitez-vous limiter le mandataire POP aux connexions locales ?
+ Pour améliorer la sécurité, vous pouvez désactiver le mandataire POP pour les connexions non locales.
+Description-ja.UTF-8: POP プロキシは local からの接続のみを受け付けますか?
+ POP プロキシに対して local 以外からの接続を無効にすると、セキュリティが高まります。
+Description-sv.UTF-8: Ska POP-proxyn endast tillåta lokala anslutningar?
+ Stänga av POP-proxyn för icke-lokala anslutningar förbättrar säkerheten.
+Description-vi.UTF-8: Ủy nhiệm POP chấp nhận chỉ sự kết nối địa phương không?
+ An toàn hơn khi không cho phép trình ủy nhiệm POP chấp nhận sự kết nối từ xa.

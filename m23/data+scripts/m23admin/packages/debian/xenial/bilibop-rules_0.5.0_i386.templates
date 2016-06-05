@@ -1,0 +1,808 @@
+
+Template: bilibop-rules/on-live-system
+Type: boolean
+Default: false
+Description: Do you intend to install bilibop-rules on a Live System ?
+ Some bilibop-rules settings can be useful on non-volatile Operating Systems,
+ when running from a removable and writable media (USB sticks, external HDD
+ or SD cards); but they are currently useless or even harmful for LiveCD or
+ LiveUSB systems.
+ .
+ If you choose this option, no other question will be asked; bilibop udev
+ rules will be applied but nothing else will be modified on your system.
+ Note that in that case, this package is overkill and you should probably
+ replace it by the lighter but as much as efficient bilibop-udev package.
+Description-de.UTF-8: Planen Sie, Bilibop-rules auf einem Live-System zu installieren?
+ Einige Einstellungen von Bilibop-rules können auf nichtflüchtigen Betriebssystemen nützlich sein, wenn sie von entfern- und beschreibbaren Medien (USB-Sticks, externen Festplatten oder SD-Karten) laufen, aber sie sind derzeit nutzlos oder sogar schädlich für Live-CDs oder Live-USB-Systeme.
+ .
+ Falls Sie diese Option wählen, wird keine weitere Frage gestellt. Die Bilibop-Udev-Regeln werden angewandt, ansonsten wird jedoch nichts auf Ihrem System verändert. Beachten Sie, dass dieses Paket in diesem Fall zu viel des Guten ist. Sie sollten es wohl durch das kleinere aber genauso leistungsfähige Paket Bilibop-udev ersetzen.
+Description-es.UTF-8: ¿Va a instalar bilibop-rules en un sistema «Live»?
+ Algunos de los ajustes de bilibop-rules pueden resultar útiles en sistemas operativos persistentes cuando se ejecutan desde un dispositivo removible y grabable (llaves USB, discos duros externos o tarjetas SD) pero resultan completamente inútiles o incluso perjudiciales en sistemas LiveCD o LiveUSB.
+ .
+ Si elige esta opción no se le harán más preguntas, se aplicarán las reglas udev de bilibop pero no se modificará nada más en su sistema. Tenga en cuenta que en este caso este paquete resulta excesivo y probablemente debería reemplazarlo por otro más ligero pero igual de eficiente como el paquete bilibop-udev.
+Description-fr.UTF-8: Avez-vous l'intention d'installer bilibop-rules sur un système Live ?
+ Certains paramètrages de bilibop-rules peuvent être utiles sur des systèmes non-voloatiles tournant depuis un périphérique amovible (clefs USB, Disques Durs externes ou cartes SD); mais ils sont généralement inutiles, voire nuisibles sur des systèmes LiveCD ou LiveUSB.
+ .
+ Si vous choisissez cette option, aucune autre question ne sera posée; les règles udev de bilibop seront appliquées mais rien d'autre ne sera modifié sur votre système. Notez que dans ce cas, ce paquet excède vos besoins et vous devriez probablement le remplacer par le paquet bilibop-udev, plus léger mais tout aussi efficace.
+Description-it.UTF-8: Si ha intenzione di installare bilibop-rules su un sistema Live?
+ Alcune impostazioni di bilibop-rules possono essere utili su sistemi operativi non volatili, quando in esecuzione da un supporto rimovibile e scrivibile (pennine USB, hard-disc esterni o schede SD); sono però attualmente inutili, o persino pericolose, per sistemi LiveCD o LiveUSB.
+ .
+ Se si sceglie questa opzione, non verranno poste altre domande; le regole udev di bilibop saranno applicate, ma nient'altro sarà modificato sul sistema. Notare che in tale caso, questo pacchetto è sovradimensionato e si dovrebbe probabilmente sostituirlo con il pacchetto bilibop-udev, più leggero ma altrettanto efficiente.
+Description-ja.UTF-8: bilibop-rules を Live システムにインストールしようとしていますか?
+ 一部の bilibop-rules 設定は不揮発性のオペレーティングシステム上で、脱着可能で書き込み可能なメディア (USB メモリや外部 HDD、SD カード等) から実行した場合に有用ですが、現在 LiveCD や LiveUSB システムでは無意味、あるいは有害でさえあるかもしれません。
+ .
+ このオプションを選択した場合、他の質問は行われません。bilibop udev 規則が適用されますが、他には一切システムを変更しません。その場合このパッケージを使うのはやりすぎで、もっと軽く効率的な bilibop-udev パッケージに恐らく置き換えるべきだということに注意してください。
+Description-nl.UTF-8: Bent u van plan om bilibop-rules op een Livesysteem te installeren?
+ Sommige instellingen van bilibop-rules kunnen nuttig zijn op niet-volatiele besturingssystemen die opereren vanaf een verwijderbaar medium waarop geschreven kan worden (USB-sticks, externe harde schijven of SD-kaarten), maar momenteel zijn ze nutteloos of zelfs schadelijk voor LiveCD- of LiveUSB-systemen.
+ .
+ Indien u voor deze optie kiest, zal er geen enkele andere vraag gesteld worden. De udev-regels van bilibop zullen toegepast worden, maar aan uw systeem zal geen enkele andere wijziging aangebracht worden. Merk op dat in dat geval dit pakket overkill is en u het wellicht beter zou vervangen door het lichtere maar even efficiënte pakket bilibop-udev.
+Description-pt.UTF-8: Pretende instalar bilibop-rules num Sistema Live?
+ Algumas definições do bilibop-rules pode ser úteis em Sistemas Operativos não-voláteis, quando correm a partir de uma media amovível e possível de escrita (canetas USB, HDD externo ou cartões SD); mas são presentemente inúteis e até prejudiciais para sistemas LiveCD ou LiveUSB.
+ .
+ Se escolher esta opção, não lhe serão feitas mais perguntas; as regras de udev do bilibop serão aplicadas mas mais nada será modificado no seu sistema. Note que nesse caso, este pacote é exagerado e você deverá provavelmente substituí-lo pelo mais leve mas também eficiente pacote bilibop-udev.
+Description-ru.UTF-8: Установить bilibop-rules в Live System?
+ Некоторые настройки bilibop-rules могут быть полезны в неизменяющихся операционных системах, когда они работают с переносных и доступных на запись носителей (флешки USB, внешние HDD или карты SD); но в настоящее время они бесполезны или даже вредны для систем LiveCD или LiveUSB.
+ .
+ Если вы ответите утвердительно, то больше вопросов задано не будет; будут применены правила udev из пакета bilibop, и больше никаких изменений в системе делаться не будет. Заметим, что в этом случае данный пакет слишком громоздок и, вероятно, его лучше заменить на  более лёгкий и эффективный пакет bilibop-udev.
+
+Template: bilibop-rules/bilibop_rules_generator/customize
+Type: boolean
+Default: false
+Description: Do you want to use custom bilibop rules and build them now ?
+ If tens of removable media are plugged on the computer your system boots
+ from, bilibop udev rules can significantly increase boot time. This can be
+ avoided by using custom udev rules, which are specific to the device your
+ system is installed on.
+ .
+ That said, if this device can boot from different hardware port types (as
+ USB/Firewire, USB/eSATA, USB/MMC/SD, etc.), you should check the resulting
+ rules by booting your system on the alternative port type, and if necessary
+ by running 'dpkg-reconfigure bilibop-rules' again with proper options, or
+ even by editing '/etc/udev/rules.d/66-bilibop.rules'.
+Description-de.UTF-8: Möchten Sie eigene Bilibop-Regeln verwenden und diese nun bauen?
+ Falls dutzende Wechselmedien an den Computer angeschlossen sind, von dem Ihr System hochfährt, können Bilibop-Udev-Regeln die Startzeit erheblich verlängern. Dies kann durch eigene Bilibop-Udev-Regeln verhindert werden, die speziell zu dem Gerät gehören, auf dem Ihr System installiert ist.
+ .
+ Abgesehen davon, falls dieses Gerät von unterschiedlichen Hardware-Anschlusstypen starten kann (wie USB/Firewire, USB/eSATA, USB/MMC/SD, etc.), sollten Sie die resultierenden Regeln prüfen, indem Sie Ihr System auf dem alternativen Anschlusstyp hochfahren und falls nötig erneut »dpkg-reconfigure bilibop-rules« mit korrekten Optionen ausführen oder sogar »/etc/udev/rules.d/66-bilibop.rules« bearbeiten.
+Description-es.UTF-8: ¿Desea utilizar reglas bilibop personalizadas y construirlas ahora?
+ Si tiene conectados varios dispositivos removibles en el equipo desde donde inicia el sistema, las reglas udev de bilibop pueden incrementar significativamente el tiempo de inicio. Para evitar esto puede utilizar reglas udev personalizadas que son específicas para el dispositivo donde se encuentra instalado el sistema.
+ .
+ Dicho eso, si el dispositivo puede iniciarse desde distintos tipos de puerto (como USB/Firewire, USB/eSATA, USB/MMC/SD, etc.) debería comprobar las reglas generadas e iniciar el sistema desde uno de los tipos de puerto alternativos y si fuera necesario, ejecutar «dpkg-reconfigure bilibop-rules» de nuevo con las opciones adecuadas o incluso editar el archivo «/etc/udev/rules.d/66-bilibop.rules».
+Description-fr.UTF-8: Voulez-vous utiliser des règles bilibop sur mesure et les construire maintenant ?
+ Si de nombreux périphériques amovibles sont connectés sur l'ordinateur depuis lequel votre système démarre, les règles udev de bilibop peuvent augmenter significativement la durée du démarrage. Cela peut être évité en utilisant des règles sur mesure, spécifiques au périphérique sur lequel votre système est installé.
+ .
+ Cela dit, si ce périphérique peut être démarré depuis différents types de ports (USB/Firewire, USB/eSATA, USB/SD/MMC, etc), vous devriez plutôt construire ces règles manuellement (en éxécutant '/usr/share/bilibop/bilibop_rules_generator' avec les options adéquates, en vérifiant si elles fonctionnent en toutes situations, et en éditant '/etc/udev/rules.d/66-bilibop.rules' si nécessaire).
+Description-it.UTF-8: Usare le regole bilipop personalizzate e crearle ora?
+ Se nel computer da cui si avvia il sistema vengono inserite decine di supporti rimovibili, le regole udev di bilibop possono aumentare considerevolmente il tempo di avvio. Ciò può essere evitato usando regole udev personalizzate che sono specifiche per il dispositivo su cui è installato il proprio sistema.
+ .
+ Detto questo, se tale dispositivo può fare l'avvio da diversi tipi di porte hardware (come USB/Firewire, USB/eSATA, USB/MMC/SD, ecc.), controllare le regole risultanti avviando il sistema sul tipo alternativo di porta e, se necessario, eseguendo nuovamente «dpkg-reconfigure bilibop-rules» con le opzioni appropriate o anche modificando «/etc/udev/rules.d/66-bilibop.rules».
+Description-ja.UTF-8: 独自の bilibop 規則を使ってここでビルドしますか?
+ システムをブートするコンピュータに多くの脱着可能メディアが接続されている場合、bilibop udev 規則が原因でブートにかかる時間が著しく増加する可能性があります。これはシステムがインストールされている機器について専用の udev 規則を使って避けることができます。
+ .
+ これはこの機器が異なる種類のハードウェアポート (USB/Firewire や USB/eSATA、USB/MMC/SD 等) からブートできる場合、別のポートからシステムをブートしてできた規則を、必要であれば適切なオプションを付けて「dpkg-reconfigure bilibop-rules」を再び実行、あるいは「/etc/udev/rules.d/66-bilibop.rules」を編集することで確認すべきだということです。
+Description-nl.UTF-8: Wilt u gebruik maken van aangepaste bilibop-regels en ze nu opbouwen?
+ Indien er een groot aantal verwijderbare media gekoppeld is aan de computer waarvan uw systeem opstart, kunnen de udev-regels van bilibop de duur van het opstarten aanzienlijk verlengen. U kunt dit vermijden door aangepaste udev-regels te gebruiken, die specifiek zijn voor het apparaat waarop uw systeem geïnstalleerd staat.
+ .
+ Dit gezegd zijnde, zou u, in het geval dit apparaat vanaf verschillende types hardwarepoorten (zoals USB/Firewire, USB/eSATA, USB/MMC/SD, enz.) kan opstarten, de uiteindelijke regels moeten uittesten door uw systeem op te starten vanaf verschillende poorttypes. Indien nodig, kunt u 'dpkg-reconfigure bilibop-rules' opnieuw uitvoeren met meer aangepaste opties of eventueel zelfs het bestand '/etc/udev/rules.d/66-bilibop.rules' rechtstreeks bewerken.
+Description-pt.UTF-8: Deseja usar regras do bilibop personalizadas e construí-las agora?
+ Se existirem itens de media amovível ligados ao computador de onde o seu sistema arranca, as regras udev do bilibop podem aumentar significativamente o tempo de arranque. Isto pode ser evitado ao usar regras udev personalizadas, as quais são específicas para o dispositivo onde o seu sistema está instalado.
+ .
+ Quer isto dizer, se este dispositivo poder arrancar a partir tipos de porto de hardware diferentes (como USB/Firewire, USB/eSATA, USB/MMC/SD, etc.), você deve verificar as regras resultantes ao arrancar o seu sistema no tipo de porto alternativo, e se necessário ao correr de novo 'dpkg-reconfigure bilibop-rules' com as opções apropriadas, ou até mesmo editar '/etc/udev/rules.d/66-bilibop.rules'.
+Description-ru.UTF-8: Использовать индивидуальные правила bilibop и собрать их сейчас?
+ Если к компьютеру подключено много переносных носителей, то правила udev из пакета bilibop могут значительно увеличить время запуска машины. Этого можно избежать с помощью индивидуальных правил udev, которые описывают устройство, на которое установлена система.
+ .
+ Однако, если это устройство может подключаться к портам разных аппаратных типов (USB/Firewire, USB/eSATA, USB/MMC/SD и т. д.), то вы должны проверить получившиеся правила, загрузив систему с порта альтернативного типа, и, если необходимо, ещё раз запустить «dpkg-reconfigure bilibop-rules» с правильными параметрами, или даже отредактировать «/etc/udev/rules.d/66-bilibop.rules».
+
+Template: bilibop-rules/bilibop_rules_generator/overwrite
+Type: select
+Choices: keep existing custom rules, rebuild custom rules, remove custom rules
+Choices-de.UTF-8: existierende eigene Regeln behalten, erneut eigene Regeln bauen, eigene Regeln entfernen
+Choices-es.UTF-8: mantener las reglas personalizadas existentes, reconstruir las reglas personalizadas, eliminar las reglas personalizadas
+Choices-fr.UTF-8: conserver les règles personnelles existantes, reconstruire les règles personnelles, supprimer les règles personnelles
+Choices-it.UTF-8: mantenere le regole personalizzate esistenti, ricreare le regole personalizzate, rimuovere le regole personalizzate
+Choices-ja.UTF-8: 既存の独自規則を維持, 独自規則を再ビルド, 独自規則を削除
+Choices-nl.UTF-8: de bestaande aangepaste regels behouden, de aangepaste regels opnieuw opbouwen, de aangepaste regels verwijderen
+Choices-pt.UTF-8: manter as regras personalizadas existentes, reconstruir regras personalizadas, remover as regras personalizadas
+Choices-ru.UTF-8: сохранить существующие индивидуальные правила, пересобрать индивидуальные правила, удалить индивидуальные правила
+Choices-C: keep, rebuild, remove
+Default: keep
+Description: What do you want to do with your custom rules ?
+ The file '/etc/udev/rules.d/66-bilibop.rules' exists. It is specific to the
+ drive on which your system is installed and overrides the one, more generic,
+ that is provided by the bilibop-rules package (in '/lib/udev/rules.d').
+ .
+ If the device hosting the running system is able to boot from different
+ hardware port types (USB/Firewire, USB/eSATA, USB/MMC/SD-card, etc.), you
+ should boot it from the alternative port type and check if your custom rules
+ work fine in all cases. In the doubt, you should remove the custom rules
+ file.
+Description-de.UTF-8: Was möchten Sie mit Ihren eigenen Regeln tun?
+ Die Datei »/etc/udev/rules.d/66-bilibop.rules« existiert. Sie ist charakteristisch für das Laufwerk, auf dem Ihr System installiert ist und setzt die allgemeinere Regel außer Kraft, die vom Paket Bilibop-rules (in »/lib/udev/rules.d«) bereitgestellt wird.
+ .
+ Falls das Gerät, das das laufende System beherbergt, von verschiedenen Hardware-Anschlusstypen (USB/Firewire, USB/eSATA, USB/MMC/SD-Karte, etc.) hochfahren kann, sollten Sie es von dem alternativen Anschlusstyp starten und prüfen, ob Ihre eigenen Regeln in allen Fällen korrekt funktionieren. Im Zweifel sollten Sie die Datei mit den eigenen Regeln entfernen.
+Description-es.UTF-8: ¿Qué desea hacer con las reglas personalizadas?
+ Actualmente existe el archivo «/etc/udev/rules.d/66-bilibop.rules». Este archivo es específico para el dispositivo donde se encuentra instalado el sistema y reemplaza al que proporciona el paquete bilibop-rules en «/lib/udev/rules.d» que es más genérico.
+ .
+ Si el dispositivo donde se va a instalar el sistema «Live» puede iniciarse desde distintos tipos de puerto (USB/Firewire, USB/eSATA, USB/MC/tarjeta SD), etc.) debería iniciarlo desde un puerto alternativo y comprobar si las reglas personalizadas funcionan bien en todos los casos. Si tiene alguna duda, debería eliminar el archivo de reglas personalizadas.
+Description-fr.UTF-8: Que voulez-vous faire de vos règles sur mesure ?
+ Le fichier '/etc/udev/rules.d/66-bilibop.rules' existe. Il est spécifique au périphérique sur lequel votre système est installé et surcharge celui, plus générique, qui est fourni par le paquet bilibop-rules (dans '/lib/udev/rules.d').
+ .
+ Si le périphérique qui héberge le système en cours d'éxécution est capable de démarrer depuis différents types de ports (USB/Firewire, USB/eSATA, USB/SD, etc.), vous devriez le démarrer depuis le type de port alternatif et vérifier si vos règles sur mesure fonctionnent correctement dans tous les cas. Dans le doute, vous devriez supprimer le fichier de règles personnelles.
+Description-it.UTF-8: Cosa si desidera fare con le regole personalizzate?
+ Il file «/etc/udev/rules.d/66-bilibop.rules» esiste. È specifico per l'unità su cui è installato il sistema e sovrascrive quello, più generico, che è fornito dal pacchetto bilibop-rules (in «/lib/udev/rules.d»).
+ .
+ Se il dispositivo che ospita il sistema in esecuzione è in grado di avviarsi da diversi tipi di porte hardware (USB/Firewire, USB/eSATA, USB/MMC/SD-card, ecc.), lo si dovrebbe avviare dal tipo di porta alternativo e controllare che le regole personalizzate funzionino bene in tutti i casi. Se in dubbio, rimuovere il file delle regole personalizzate.
+Description-ja.UTF-8: 独自規則をどうしますか?
+ ファイル「/etc/udev/rules.d/66-bilibop.rules」が存在します。これはシステムがインストールされているドライブに特有の規則で、bilibop-rules パッケージにより提供される、(「/lib/udev/rules.d」にある) もっと一般的なものを上書きします。
+ .
+ 実行しているシステムのホストとなっている機器が異なる種類のハードウェアポート (USB/Firewire や USB/eSATA、USB/MMC/SDカード等) からブートできる場合、別の種類のポートからブートして、作成した独自規則があらゆる状況でうまく動作するか確認すべきです。疑わしい場合は独自規則を削除すべきです。
+Description-nl.UTF-8: Wat wilt u met uw aangepaste regels doen?
+ Het bestand '/etc/udev/rules.d/66-bilibop.rules' bestaat reeds. Het is specifiek voor de schijf waarop uw systeem geïnstalleerd is en heeft voorrang op het meer generieke bestand (in '/lib/udev/rules.d') dat meegeleverd wordt met het pakket bilibop-rules.
+ .
+ Indien het apparaat waarop het actieve besturingssysteem staat, vanaf verschillende types hardwarepoorten (USB/Firewire, USB/eSATA, USB/MMC/SD-card, enz.) kan opstarten, zou u het moeten opstarten vanaf een ander poorttype en nagaan of uw aangepaste regels in alle gevallen goed werken. Bij twijfel zou u het bestand met de aangepaste regels moeten verwijderen.
+Description-pt.UTF-8: O que deseja fazer com as suas regras personalizadas?
+ O ficheiro '/etc/udev/rules.d/66-bilibop.rules' existe. é específico para a drive no qual o seu sistema esta instalado e sobrepõe-se ao mais genérico que é fornecido pelo pacote bilibop-rules (em '/lib/udev/rules.d').
+ .
+ Se o dispositivo que alberga o sistema que está em funcionamento é capaz de arrancar a partir de tipos de portos de hardware diferentes (USB/Firewire, USB/eSATA, USB/MMC/SD-card, etc.), você deve arrancá-lo a partir do tipo de porto alternativo e verificar se as suas regras personalizadas funcionam bem em todos os casos. Em caso de dúvidas, deverá remover o ficheiro de regras personalizadas.
+Description-ru.UTF-8: Что сделать с индивидуальными правилами?
+ Файл «/etc/udev/rules.d/66-bilibop.rules» существует. В нём описывается устройство, на которое установлена ваша система и это заменяет другое более общее правило, которое предоставляется пакетом bilibop-rules (в «/lib/udev/rules.d»).
+ .
+ Если устройство, на котором запущена система, может подключаться к портам разных аппаратных типов (USB/Firewire, USB/eSATA, USB/MMC/SD и т. д.), то вы должны загрузить его с порта альтернативного типа и проверить, что индивидуальные правила работают во всех случаях. Если это не так, то удалите файл с индивидуальными правилами.
+
+Template: bilibop-rules/bilibop_rules_generator/options
+Type: string
+Description: Options to pass to the bilibop rules generator:
+ Possible options you can pass to the bilibop rules generator are the
+ followings:
+ .
+  -a vendor,model
+  -a manufacturer,product,serial
+  -e ID_VENDOR,ID_MODEL,ID_SERIAL_SHORT
+  -e ID_SERIAL
+ .
+ The two first ones cannot be mixed; for example, '-a model,serial' is not a
+ valid option; use '-a model -e ID_SERIAL' instead. In the doubt, you should
+ probably set it to an empty string (defaults to
+ '-a manufacturer,product,serial').
+Description-de.UTF-8: Optionen, die an den Bilibop-Regelgenerator übergeben werden:
+ Es ist möglich, die folgenden Optionen an den Bilibop-Regelgenerator zu übergeben:
+ .
+  -a vendor,model
+  -a manufacturer,product,serial
+  -e ID_VENDOR,ID_MODEL,ID_SERIAL_SHORT
+  -e ID_SERIAL
+ .
+ Die beiden ersten können nicht vermischt werden. »-a Modell,Seriennummer« ist zum Beispiel keine gültige Option, benutzen Sie stattdessen »-a Modell -e SERIENNUMMER«. Im Zweifelsfall sollten Sie sie vielleicht auf eine leere Zeichenkette setzen (Voreinstellung ist »-a Hersteller,Produkt,Seriennummer«).
+Description-es.UTF-8: Opciones a pasar al generador de reglas bilibop:
+ Puede pasar las siguientes opciones al generador de reglas bilibop:
+ .
+  -a vendor,model
+  -a manufacturer,product,serial
+  -e ID_VENDOR,ID_MODEL,ID_SERIAL_SHORT
+  -e ID_SERIAL
+ .
+ No puede mezclar las dos primeras; p. ej., «-a model,serial» no es una opción válida, use «-a model -e ID_SERIAL» en su lugar. Si tiene dudas, debería definir una cadena en blanco (preestablecida en «-a manufacturer,product,serial»).
+Description-fr.UTF-8: Options à passer au générateur de règles bilibop :
+ Les options possibles à passer au générateur de règles bilibop sont les suivantes :
+ .
+  -a vendor,model
+  -a manufacturer,product,serial
+  -e ID_VENDOR,ID_MODEL,ID_SERIAL_SHORT
+  -e ID_SERIAL
+ .
+ Les deux premières ne peuvent pas être mixées; par exemple, '-a model,serial' n'est pas une option valide; utilisez plutôt '-a model -e ID_SERIAL'. Dans le doute, vous devriez probablement laisser ce champ vide (qui équivaut à '-a manufacturer,product,serial')
+Description-it.UTF-8: Opzioni da passare al generatore di regole di bilipop:
+ Le opzioni che è possibile passare al generatore di regole di bilibop sono le seguenti:
+ .
+  -a vendor,model
+  -a manufacturer,product,serial
+  -e ID_VENDOR,ID_MODEL,ID_SERIAL_SHORT
+  -e ID_SERIAL
+ .
+ Le prime due non possono essere usate insieme; per esempio, «-a model,serial» non è un'opzione valida, usare invece «-a model -e ID_SERIAL». Se in dubbio, probabilmente si dovrebbe impostarla ad una stringa vuota (usa il valore predefinito «-a manufacturer,product,serial»).
+Description-ja.UTF-8: bilibop 規則生成器に渡すオプション:
+ bilibop 規則生成器に渡せるオプションは以下の通りです:
+ .
+  -a vendor,model
+  -a manufacturer,product,serial
+  -e ID_VENDOR,ID_MODEL,ID_SERIAL_SHORT
+  -e ID_SERIAL
+ .
+ 最初の2つを1つに合わせることはできません。例えば「-a model,serial」は正しいオプションではありません。代わりに「-a model -e ID_SERIAL」とします。迷ったときは恐らく空白文字列をセットすべきです (デフォルトは「-a manufacturer,product,serial」です)。
+Description-nl.UTF-8: Opties die meegegeven moeten worden voor het aanmaken van de bilibop-regels:
+ Mogelijke opties die u kunt meegeven voor het aanmaken van de bilibop-regels zijn de volgende:
+ .
+  -a vendor,model
+  -a manufacturer,product,serial
+  -e ID_VENDOR,ID_MODEL,ID_SERIAL_SHORT
+  -e ID_SERIAL
+ .
+ De eerste twee kunnen niet vermengd worden. De optie '-a model,serial' is bijvoorbeeld ongeldig. Gebruik in de plaats daarvan '-a model -e ID_SERIAL'. Bij twijfel zou u dit wellicht leeg moeten laten (dan wordt de standaardinstelling '-a manufacturer,product,serial' gebruikt).
+Description-pt.UTF-8: Opções a passar ao gerador de regras do bilibop:
+ As opções possíveis que você pode passar a gerador de regras do bilibop são as seguintes:
+ .
+  -a vendor,model
+  -a manufacturer,product,serial
+  -e ID_VENDOR,ID_MODEL,ID_SERIAL_SHORT
+  -e ID_SERIAL
+ .
+ As duas primeiras não podem ser misturadas; por exemplo, '-a model,serial' não é uma opção válida; ao invés use '-a model -e ID_SERIAL'. Em caso de dúvidas, deverá provavelmente definir uma string vazia (por predefinição fica '-a manufacturer,product,serial').
+Description-ru.UTF-8: Параметры, передаваемые генератору правил bilibop:
+ Параметры, которые можно передать генератору правил bilibop:
+ .
+  -a vendor,model
+  -a manufacturer,product,serial
+  -e ID_VENDOR,ID_MODEL,ID_SERIAL_SHORT
+  -e ID_SERIAL
+ .
+ Два первых нельзя указывать вместе; например, «-a model,serial» некорректно; используйте вместо этого «-a model -e ID_SERIAL». Если сомневаетесь, то лучше указать пустую строку (по умолчанию используется «-a manufacturer,product,serial»).
+
+Template: bilibop-rules/bilibop_rules_generator/bad_options
+Type: error
+Description: Options given to the bilibop rules generator seem to be invalid.
+ You can go back by hitting the <Escape> key and then modify the options.
+ Otherwise, the custom rules file '/etc/udev/rules.d/66-bilibop.rules' will
+ not be written.
+Description-de.UTF-8: An den Bilibop-Regelgenerator übergebene Regeln scheinen ungültig zu sein.
+ Sie können durch Drücken der Taste <Escape> zurückgehen und dann die Optionen ändern. Andernfalls wird die eigene Regeldatei »/etc/udev/rules.d/66-bilibop.rules« nicht geschrieben.
+Description-es.UTF-8: Parece que las opciones que ha pasado al generador de reglas bilibop no son válidas.
+ Puede volver atrás pulsando la tecla <Escape> y modificar las opciones. De lo contrario no se guardará el archivo de reglas personalizado «/etc/udev/rules.d/66-bilibop.rules».
+Description-fr.UTF-8: Les options données au générateur de règles bilibop semblent invalides.
+ Vous pouvez revenir en arrière avec la touche <Echappe> et modifier les options. Autrement, le fichier de règles sur mesure '/etc/udev/rules.d/66-bilibop.rules' ne sera pas écrit.
+Description-it.UTF-8: Le opzioni fornite al generatore di regole di bilibop sembrano essere non valide.
+ Si può tornare indietro premendo il tasto <Esc> e poi modificare le opzioni. Altrimenti il file delle regole presonalizzate «/etc/udev/rules.d/66-bilibop.rules» non verrà scritto.
+Description-ja.UTF-8: bilibop 規則生成器に渡したオプションが正しくないようです。
+ <Esc> キーを押して戻り、オプションを変更してください。変更しない場合は独自規則ファイル「/etc/udev/rules.d/66-bilibop.rules」は書き込まれません。
+Description-nl.UTF-8: De opties die u meegegeven heeft voor het aanmaken van de bikibop-regels blijken niet geldig te zijn.
+ U kunt terugkeren met de <Escape>-toets en dan de opties wijzigen. In het andere geval wordt er geen bestand '/etc/udev/rules.d/66-bilibop.rules' met aangepaste regels aangemaakt.
+Description-pt.UTF-8: As opções fornecidas ao gerador de regras do bilibop parecem ser inválidas.
+ Você pode regressar ao carregar na tecla <Escape> e depois modificar as opções. Caso contrário, o ficheiro de regras personalizadas '/etc/udev/rules.d/66-bilibop.rules' não será escrito.
+Description-ru.UTF-8: Параметры, переданные генератору правил bilibop, некорректны.
+ Вы можете вернуться, нажав  клавишу <Escape>, и исправить параметры. В противном случае файл с индивидуальными правилами «/etc/udev/rules.d/66-bilibop.rules» записан не будет.
+
+Template: bilibop-rules/belongs_to_floppy_group/custom_rules_error
+Type: error
+Description: The following device(s) still belong to floppy group:
+ ${DEVICE}
+ .
+ You should rewrite or remove your custom rules file:
+ .
+ /etc/udev/rules.d/66-bilibop.rules
+Description-de.UTF-8: Die folgenden Geräte gehören immer noch zur Floppy-Gruppe:
+ ${DEVICE}
+ .
+ Sie sollten Ihre eigene Regeldatei neu schreiben oder entfernen:
+ .
+ /etc/udev/rules.d/66-bilibop.rules
+Description-es.UTF-8: El/los siguiente/s dispositivo/s todavía pertenece/n al grupo floppy:
+ ${DEVICE}
+ .
+ Debería editar o eliminar el archivo de reglas personalizadas:
+ .
+ /etc/udev/rules.d/66-bilibop.rules
+Description-fr.UTF-8: Le(s) périphérique(s) suivant(s) appartiennent encore au groupe 'floppy' :
+ ${DEVICE}
+ .
+ Vous devriez récrire ou supprimer votre fichier de règles sur mesure :
+ .
+ /etc/udev/rules.d/66-bilibop.rules
+Description-it.UTF-8: I seguenti device appartengono ancora al gruppo floppy:
+ ${DEVICE}
+ .
+ Si dovrebbe riscrivere o rimuovere il proprio file di regole personalizzate:
+ .
+ /etc/udev/rules.d/66-bilibop.rules
+Description-ja.UTF-8: 以下の機器はまだフロッピーグループに属しています:
+ ${DEVICE}
+ .
+ 以下の独自規則ファイルを書き換えるか削除すべきです:
+ .
+ /etc/udev/rules.d/66-bilibop.rules
+Description-nl.UTF-8: De volgende apparaten behoren nog steeds tot de floppy-groep:
+ ${DEVICE}
+ .
+ U zou uw bestand met aangepaste regels moeten herschrijven of wissen:
+ .
+ /etc/udev/rules.d/66-bilibop.rules
+Description-pt.UTF-8: Os seguintes dispositivo(s) ainda pertencem ao grupo floppy:
+ ${DEVICE}
+ .
+ Você deve reescrever ou remover o seu ficheiro de regras personalizadas:
+ .
+ /etc/udev/rules.d/66-bilibop.rules
+Description-ru.UTF-8: Следующие устройства всё ещё входят в группу floppy:
+ ${DEVICE}
+ .
+ Вы должны переписать или удалить свой файл индивидуальных правил:
+ .
+ /etc/udev/rules.d/66-bilibop.rules
+
+Template: bilibop-rules/belongs_to_floppy_group/internal_error
+Type: error
+Description: Internal error
+ The following device(s) still belong to floppy group:
+ .
+ ${DEVICE}
+ .
+ You should send a bug report to the maintainer of the package.
+Description-de.UTF-8: Interner Fehler
+ Die folgenden Geräte gehören immer noch zur Floppy-Gruppe:
+ .
+ ${DEVICE}
+ .
+ Sie sollten einen Fehlerbericht an den Betreuer des Pakets senden.
+Description-es.UTF-8: Error intero
+ El/los siguiente/s dispositivo/s todavía pertenece/n al grupo floppy:
+ .
+ ${DEVICE}
+ .
+ Debería enviar un informe de fallos al encargado del paquete.
+Description-fr.UTF-8: Erreur interne
+ Le(s) périphérique(s) suivant(s) appartiennent encore au groupe 'floppy' :
+ .
+ ${DEVICE}
+ .
+ Vous devriez envoyer un rapport de bogue au responsable du paquet.
+Description-it.UTF-8: Errore interno
+ I seguenti device appartengono ancora al gruppo floppy:
+ .
+ ${DEVICE}
+ .
+ Si dovrebbe inviare una segnalazione di bug al manutentore del pacchetto.
+Description-ja.UTF-8: 内部エラー
+ 以下の機器はまだフロッピーグループに属しています:
+ .
+ ${DEVICE}
+ .
+ パッケージのメンテナにバグ報告を送ってください。
+Description-nl.UTF-8: Interne fout
+ De volgende apparaten behoren nog steeds tot de floppy-groep:
+ .
+ ${DEVICE}
+ .
+ U zou een bugrapport moeten opsturen naar de pakketbeheerder.
+Description-pt.UTF-8: Erro interno
+ Os seguintes dispositivo(s) ainda pertencem ao grupo floppy:
+ .
+ ${DEVICE}
+ .
+ Você deve enviar um relatório de bug para o responsável do pacote.
+Description-ru.UTF-8: Внутренняя ошибка
+ Следующие устройства всё ещё входят в группу floppy:
+ .
+ ${DEVICE}
+ .
+ Отправьте сообщение об ошибке сопровождающему пакета.
+
+Template: bilibop-rules/grub_device_map_manager
+Type: select
+Choices: the existing one, a static device map (not recommended), a static fake device map, a dynamic fake device map, a dynamically updated device map
+Choices-de.UTF-8: das existierende, eine statische Device Map (Gerätenamenzuordnungsdatei\, nicht empfohlen), eine statische Pseudo-Device-Map, eine dynamische Pseudo-Device-Map, eine dynamisch aktualisierte Device Map
+Choices-es.UTF-8: el actual, un mapa de dispositivos estático (opción no recomendada), un mapa de dispositivos estático falso, un mapa de dispositivos dinámico falso, un mapa de dispositivos actualizado dinámicamente
+Choices-fr.UTF-8: le fichier existant, un fichier statique (non recommandé), un fichier statique avec un contenu falsifié, un fichier dynamique avec un contenu falsifié, un fichier mis à jour dynamiquement
+Choices-it.UTF-8: quella esistente, una mappa di device statica (non raccomandato), una falsa mappa di device statica, una falsa mappa di device dinamica, una mappa di device aggiornata dinamicamente
+Choices-ja.UTF-8: 既存のデバイスマップを選択, 静的デバイスマップ (非推奨), 静的、偽デバイスマップ, 動的、偽デバイスマップ, 動的に更新したデバイスマップ
+Choices-nl.UTF-8: het bestaande, een statisch apparatenoverzicht (niet aanbevolen), een statisch pseudo-overzicht van apparaten, een dynamisch pseudo-overzicht van apparaten, een apparatenoverzicht dat dynamisch bijgewerkt wordt
+Choices-pt.UTF-8: o existente, um mapa de dispositivos estático (não recomendado), um mapa de dispositivos falso estático, um mapa de dispositivos falso dinâmico, um mapa de dispositivos actualizado dinamicamente
+Choices-ru.UTF-8: существующий, статическая карта устройств (не рекомендуется), статическая фиктивная карта устройств, динамическая фиктивная карта устройств, динамическая обновляемая карта устройств
+Choices-C: keep, static, fake, dynamic, ondemand
+Default: keep
+Description: What kind of GRUB device map do you want to use ?
+ The '/boot/grub/device.map' file can store obsolete information. In some cases,
+ this can lead to failures when the GRUB bootloader menu is updated. To avoid
+ that, it is possible to replace the device map by a fake one, mapping only
+ the physical drive hosting your system; or by a link to a temporary file,
+ which may be created either at boot time with a fake content, or on demand
+ with an updated content.
+ .
+ If your external system is embedded on a device able to boot from different
+ hardware port types (USB/Firewire, USB/eSATA, USB/MMC/SD, etc.), it is not
+ recommended to use a static device map. The dynamic fake device map should
+ work in all cases.
+Description-de.UTF-8: Welche Art einer GRUB-Device-Map möchten Sie benutzen?
+ Die Datei »/boot/grub/device.map« kann veraltete Informationen speichern. In einigen Fällen kann dies zu Ausfällen führen, wenn das GRUB-Bootloader-Menü aktualisiert wird. Um das zu verhindern, ist es möglich, die Device Map durch eine Pseudo-Device-Map zu ersetzen, die nur das physische Laufwerk zuordnet, das Ihr System beherbergt oder durch Verweis auf eine temporäre Datei, die entweder beim Systemstart mit Pseudo-Inhalt oder auf Anfrage mit einem aktualisierten Inhalt erstellt wird.
+ .
+ Falls Ihr externes System in ein Gerät eingebettet ist, das von verschiedenen Hardware-Anschlusstypen (USB/Firewire, USB/eSATA, USB/MMC/SD, etc.) hochfahren kann, wird die Verwendung einer statischen Device Map nicht empfohlen. Die dynamische Pseudo-Device-Map sollte auf jeden Fall funktionieren.
+Description-es.UTF-8: ¿Qué tipo de mapa de dispositivos de GRUB desea usar?
+ El archivo «/boot/grub/device.map» puede contener información obsoleta. En algunos casos esto puede generar fallos cuando se actualiza el menú del cargador de arranque de GRUB. Para evitar esto puede reemplazar el mapa de dispositivos por uno falso y mapear sólo el dispositivo físico donde se encuentra instalado el sistema o también puede crear un enlace a un archivo temporal que debería crearse al iniciar el sistema con contenido falso o bien bajo demanda con contenido actualizado.
+ .
+ Si el sistema externo se encuentra integrado en un dispositivo que puede iniciarse desde distintos tipos de puerto (USB/Firewire, USB/eSATA, USB/MMC/SD, etc.), no se recomienda usar un mapa de dispositivos estático. Un mapa de dispositivos dinámico falso debería funcionar en todos los casos.
+Description-fr.UTF-8: Quel genre de carte des périphériques voulez-vous que GRUB utilise ?
+ Le fichier '/boot/grub/device.map' peut stocker des informations obsolètes. Dans certains cas, cela peut conduire à des échecs lors de la mise à jour du menu du chargeur de démarrage GRUB. Pour éviter cela, il est possible de modifier la carte des périphériques (device map) en ne tenant compte que du disque physique hébergeant votre système; ou de la remplacer par un lien symbolique vers un fichier temporaire, lequel peut être créé au démarrage avec un contenu falsifié, ou à la demande avec un contenu à jour.
+ .
+ Si votre système externe est embarqué sur un périphérique capable de démarrer depuis différents ports matériels (USB/Firewire, USB/eSATA, USB/MMC/SD, etc.), il n'est pas recommandé d'utiliser un plan statique. Le faux plan dynamique devrait fonctionner dans tous les cas.
+Description-it.UTF-8: Quale tipo di mappa di device di GRUB usare?
+ Il file «/boot/grub/device.map» può archiviare informazioni obsolete. In alcuni casi ciò può portare a problemi quando il menu del bootloader GRUB viene aggiornato. Per evitare ciò, è possibile sostituire la mappa di device con una falsa che mappa solo l'unità fisica che ospita il proprio sistema, oppure con un collegamento ad un file temporaneo che può essere creato all'avvio con un contenuto falso o a richiesta con un contenuto aggiornato.
+ .
+ Se il sistema esterno è incorporato in un dispositivo capace di avviarsi da diversi tipi di porte hardware (USB/Firewire, USB/eSATA, USB/MMC/SD, ecc.) l'uso di una mappa di device statica non è raccomandato. La falsa mappa di device dinamica dovrebbe funzionare in tutti i casi.
+Description-ja.UTF-8: どの種類の GRUB デバイスマップを使いますか?
+ 「/boot/grub/device.map」ファイルには古くなった情報を残しておくことができます。状況によってはこれが GRUB ブートローダのメニュー更新時の失敗につながる可能性があります。それを避けるため、システムのホストとなっている実際のドライブの割り当てだけを記述した、偽のデバイスマップに置き換える、あるいは一時ファイルをブート時に偽の内容によりまたは更新した内容をオンデマンドにより作成し、その一時ファイルへのリンクを作成することができます。
+ .
+ 外部システムが異なる種類のハードウェアポート (USB/Firewire や USB/eSATA、USB/MMC/SD 等) からブートできるデバイスに組み込まれている場合、静的デバイスマップを使うことは勧めません。どの場合でも動的な偽のデバイスマップが機能するはずです。
+Description-nl.UTF-8: Welk soort GRUB-apparatenoverzicht (GRUB device map) wilt u gebruiken?
+ Het bestand '/boot/grub/device.map' kan verouderde informatie bevatten. In sommige gevallen kan dit aanleiding geven tot fouten als het menu van de GRUB-opstartlader bijgewerkt wordt. Om dit te vermijden kan het apparatenoverzicht (device map) vervangen worden door een pseudo-overzicht, waarin enkel de fysieke schijf waarop uw systeem staat, opgenomen is, ofwel kan er een koppeling gemaakt worden naar een tijdelijk bestand, dat ofwel bij de start van de computer gemaakt wordt en pseudo-inhoud bevat, ofwel op aanvraag gemaakt wordt met een bijgewerkte inhoud.
+ .
+ Indien uw extern systeem ingebed is in een apparaat dat vanaf verschillende types hardwarepoorten (USB/Firewire, USB/eSATA, USB/MMC/SD, enz.) opgestart kan worden, is het niet aanbevolen om een statisch apparatenoverzicht te gebruiken. Het dynamisch pseudo-overzicht van apparaten zou in alle gevallen moeten werken.
+Description-pt.UTF-8: Que tipo de mapa de dispositivos do GRUB deseja usar?
+ O ficheiro '/boot/grub/device.map' pode armazenar informação obsoleta. Em alguns casos, isto pode levar a falhas quando o menu bootloader do GRUB é actualizado. Para evitar isso, é possível substituir o mapa de dispositivos por um outro falso, que mapeia apenas a drive física que alberga o seu sistema; ou por um link para um ficheiro temporário, o qual pode ser criado ou durante o arranque com um conteúdo falso, ou a pedido com um conteúdo actualizado.
+ .
+ Se o seu sistema externo está embebido num dispositivo capaz de arrancar a partir de diferentes tipos de portos de hardware (USB/Firewire, USB/eSATA, USB/MMC/SD, etc.), não é recomendado usar um mapa de dispositivos estático. O mapa de dispositivos falso e dinâmico deverá funcionar em todos os casos.
+Description-ru.UTF-8: Тип карты устройств GRUB:
+ Файл «/boot/grub/device.map» может содержать устаревшую информацию. В некоторых случаях это может приводить к ошибкам при обновлении меню системного загрузчика GRUB. Чтобы этого избежать возможно заменить карту устройств фиктивной, отражающей только физическое устройство хостящей системы — или сделав ссылку на временный файл, который можно создавать с фиктивным содержимым при загрузке системы или по требованию с обновлённым содержимым.
+ .
+ Если внешняя система установлена на устройстве, способном подключаться к аппаратным портам различных типов (USB/Firewire, USB/eSATA, USB/MMC/SD и т. д.), то не рекомендуется использовать статическую карту устройств. Динамическая фиктивная карта устройств будет работать во всех случаях.
+
+Template: bilibop-rules/make_unpersistent_rules
+Type: select
+Choices: keep them in their current state, make unpersistent cd rules only, make unpersistent net rules only, make unpersistent rules for all (recommended), make persistent rules for all
+Choices-de.UTF-8: sie in ihrem aktuellen Status belassen, nur flüchtige CD-Regeln erstellen, nur flüchtige Netzregeln erstellen, flüchtige Regeln für alles erstellen (empfohlen), beständige Regeln für alles erstellen
+Choices-es.UTF-8: mantenerlas en su estado actual, generar sólo las reglas de CD volátiles, generar sólo las reglas de red volátiles, generar las reglas volátiles para todos (opción recomendada), generar las reglas persistentes para todos
+Choices-fr.UTF-8: les conserver en l'état, rendre volatiles uniquement les règles 'cd', rendre volatiles uniquement les règles 'net', rendre toutes les règles volatiles (recommandé), rendre toutes les règles persistantes
+Choices-it.UTF-8: mantenerle nel loro stato attuale, creare regole non persistenti solo per i CD, creare regole non persistenti solo per la rete, creare regole non persistenti per tutto (raccomandato), creare regole persistenti per tutto
+Choices-ja.UTF-8: 現在の状態を維持, cd 規則だけを維持しないようにする, net 規則だけを維持しないようにする, 規則を全て維持しないようにする (推奨), 規則を全て維持するようにする
+Choices-nl.UTF-8: behoud ze in hun huidige toestand, maak niet-persistente regels enkel voor cd-apparaten, maak niet-persistente regels enkel voor netwerk-apparaten, maak niet-persistente regels voor alle apparaten (aanbevolen), maak persistente regels voor alle apparaten
+Choices-pt.UTF-8: manter-los no seu estado actual, criar apenas regras de cd não persistentes, criar apenas regras de rede não persistentes, criar regras não persistentes para todos (recomendado), criar regras persistentes para todos
+Choices-ru.UTF-8: оставить их в текущем состоянии, сделать только непостоянные правила cd, сделать только непостоянные правила net, сделать непостоянные правила для всего (рекомендуется), сделать постоянные правила для всего
+Choices-C: keep, cd, net, all, none
+Default: keep
+Description: What persistent rules do you want to make unpersistent ?
+ Some udev rules files can store information about components of the computer
+ your system is plugged on:
+ .
+  /etc/udev/rules.d/70-persistent-cd.rules
+  /etc/udev/rules.d/70-persistent-net.rules
+ .
+ These files are cumulative and can store obsolete information, possibly
+ leading to unexpected behaviour of your network manager or CD burner
+ application. It is possible to replace them by symlinks to temporary files
+ to keep them always up to date. Note that it is possible to do or undo that
+ at any time by running
+ .
+  dpkg-reconfigure bilibop-rules
+Description-de.UTF-8: Welche beständigen Regeln möchten Sie in flüchtige umwandeln?
+ Einige Udev-Regeldateien können Informationen über Bestandteile des Rechners speichern, an den Ihr System angeschlossen ist:
+ .
+  /etc/udev/rules.d/70-persistent-cd.rules
+  /etc/udev/rules.d/70-persistent-net.rules
+ .
+ Diese Dateien sind anwachsend und können veraltete Informationen enthalten. Dies führt möglicherweise zu unerwartetem Verhalten Ihrer Netzwerkverwaltung oder Ihres CD-Brennprogramms. Es ist möglich, sie durch symbolische Verweise auf temporäre Dateien zu ersetzen, um sie immer aktuell zu halten. Beachten Sie, dass Sie dies durch Ausführung jederzeit aktivieren oder rückgängig machen können.
+ .
+  dpkg-reconfigure bilibop-rules
+Description-es.UTF-8: ¿Qué reglas persistentes desea hacer volátiles?
+ Algunos archivos de reglas udev pueden contener información de componentes del equipo donde se encuentra conectado el sistema:
+ .
+  /etc/udev/rules.d/70-persistent-cd.rules
+  /etc/udev/rules.d/70-persistent-net.rules
+ .
+ Estos archivos son acumulativos y pueden contener información obsoleta que llegue a generar un comportamiento inesperado del gestor de red o de la aplicación para la grabación de CD. Puede reemplazarlos por enlaces simbólicos a archivos temporales para mantenerlos siempre actualizados. Tenga en cuenta que puede hacer o deshacer esta opción si ejecuta
+ .
+  dpkg-reconfigure bilibop-rules
+Description-fr.UTF-8: Quelles règles persistantes voulez-vous rendre volatiles ?
+ Certains fichiers de règles udev peuvent stocker des informations concernant le matériel de la machine sur laquelle votre système est connecté :
+ .
+  /etc/udev/rules.d/70-persistent-cd.rules
+  /etc/udev/rules.d/70-persistent-net.rules
+ .
+ Ces fichiers sont cumulatifs et peuvent contenir des informations obsolètes pouvant conduire à un comportement inattendu de votre gestionnaire de connexions ou de votre logiciel de gravure de CD. Il est possible de remplacer ces fichiers par des liens symboliques vers des fichiers temporaires pour les maintenir à jour. Notez qu'il est possible de le faire ou le défaire n'importe quand en lançant
+ .
+  dpkg-reconfigure bilibop-rules
+Description-it.UTF-8: Quali regole persistenti si desidera rendere non persistenti?
+ Alcuni file di regole di udev possono contenere informazioni su componenti del computer a cui è connesso il sistema:
+ .
+  /etc/udev/rules.d/70-persistent-cd.rules
+  /etc/udev/rules.d/70-persistent-net.rules
+ .
+ Questi file sono cumulativi e possono archiviare informazioni obsolete che possono portare a comportamenti inaspettati del gestore di rete o dell'applicazione per la masterizzazione. È possibile sostituirli con collegamenti simbolici a file temporanei per mantenerli sempre aggiornati. Notare che è possibile farlo o annullare ciò che si è fatto in ogni momento eseguendo
+ .
+  dpkg-reconfigure bilibop-rules
+Description-ja.UTF-8: どの規則を維持しないようにしますか?
+ udev 規則ファイルの一部には、システムが接続しているコンピュータの構成要素についての情報を残しておけるものがあります:
+ .
+  /etc/udev/rules.d/70-persistent-cd.rules
+  /etc/udev/rules.d/70-persistent-net.rules
+ .
+ こういった古くなった情報を残しておけるファイルが貯まっていくことで、ネットワーク管理プログラムやCD書き込みアプリケーションの予期しない挙動につながる可能性があります。一時ファイルへのシンボリックリンクに置き換えることで常に最新を保つことができるようになります。以下を実行することでいつでも実行や差し戻しができることに注意してください。
+ .
+  dpkg-reconfigure bilibop-rules
+Description-nl.UTF-8: Welke van de persistente regels wilt u niet-persistent maken?
+ Sommige bestanden met udev-regels kunnen informatie bevatten over componenten van de computer waaraan uw systeem aangekoppeld werd:
+ .
+  /etc/udev/rules.d/70-persistent-cd.rules
+  /etc/udev/rules.d/70-persistent-net.rules
+ .
+ Deze bestanden zijn cumulatief en kunnen verouderde informatie bevatten. Die kan mogelijks leiden tot onverwacht gedrag van het programma dat voor uw netwerkbeheer zorgt of uw CD's brandt. Het is mogelijk om die bestanden te vervangen door symbolische koppelingen naar tijdelijke bestanden, zodat die steeds actueel blijven. Merk op dat u dit op ieder ogenblik kunt instellen of ongedaan maken met het commando
+ .
+  dpkg-reconfigure bilibop-rules
+Description-pt.UTF-8: Quais regras persistentes deseja tornar "não persistentes" ?
+ Alguns ficheiros de regras do udev podem armazenar informação acerca de componentes do computador onde o seu sistema está ligado:
+ .
+  /etc/udev/rules.d/70-persistent-cd.rules
+  /etc/udev/rules.d/70-persistent-net.rules
+ .
+ Estes ficheiros são cumulativos e podem armazenar informação obsoleta, levando possivelmente a comportamentos não esperados das suas aplicações de gestão de rede ou gravação de CD. É possível substituí-los por links simbólicos para ficheiros temporários para os manter sempre actualizados. Note que é possível fazê-lo ou desfazê-lo a qualquer altura ao correr
+ .
+  dpkg-reconfigure bilibop-rules
+Description-ru.UTF-8: Какие постоянные правила вы хотите сделать непостоянными?
+ Некоторые файлы с правилами udev могут содержать информацию о компонентах компьютера, в который вы вставили устройство:
+ .
+  /etc/udev/rules.d/70-persistent-cd.rules
+  /etc/udev/rules.d/70-persistent-net.rules
+ .
+ Эти файлы накапливают информацию и могут содержать устаревшие данные, что может привести к непредсказуемому поведению менеджера сети или программы прожига CD. Чтобы они всегда были актуальными, возможно заменить их символическими ссылками на временные файлы. Заметим, что это можно отменить в любой момент с помощью
+ .
+  dpkg-reconfigure bilibop-rules
+
+Template: bilibop-rules/physical_volumes_filter/system-only
+Type: boolean
+Default: false
+Description: Do you want to hide Physical Volumes your system does not need ?
+ It seems that the drive on which your system is installed contains Logical
+ Volumes. It is possible to set LVM to activate only the Physical Volumes
+ that your system needs. This can mainly avoid name conflicts between the
+ Volumes used by your system and those that could be found on internal or
+ external drives plugged on the same computer.
+ .
+ If you choose to use this feature, this will overwrite '/etc/lvm/lvm.conf',
+ and you should read 'README.Debian' in the documentation of the package.
+ Otherwise, you can do it later with
+ .
+  dpkg-reconfigure -p low bilibop-rules
+Description-de.UTF-8: Möchten Sie die von Ihrem System nicht benötigten physischen Datenträger verstecken?
+ Das Laufwerk, auf dem Ihr System installiert ist, scheint logische Datenträger zu enthalten. Es ist möglich, LVM so einzurichten, dass nur die physischen Datenträger aktiviert werden, die Ihr System benötigt. Hauptsächlich kann dies Namenskonflikte zwischen den Datenträgern, die von Ihrem System benutzt werden, sowie internen und externen, an den selben Rechner angeschlossenen Datenträgern, vermeiden.
+ .
+ Falls Sie diese Funktionalität auswählen, wird dies »/etc/lvm/lvm.conf« außer Kraft setzen und Sie sollten »README.Debian« in der Dokumentation des Pakets lesen. Andernfalls können Sie dies später erledigen.
+ .
+  dpkg-reconfigure -p low bilibop-rules
+Description-es.UTF-8: ¿Desea ocultar los volúmenes físicos que el sistema no necesita?
+ Parece que el dispositivo donde se encuentra instalado el sistema contiene volúmenes lógicos. Puede configurar LVM para que sólo active los volúmenes físicos que el sistema necesite. Esto sirve principalmente para evitar conflictos de nombres entre los volúmenes usados por el sistema y aquéllos que se pueden encontrar en los dispositivos internos o externos conectados en el mismo equipo.
+ .
+ Si decide usar esta opción se reemplazará el archivo «/etc/lvm/lvm.conf» y debería consultar el archivo «README.Debian» disponible en la documentación del paquete. De lo contrario, puede hacerlo más adelante con
+ .
+  dpkg-reconfigure -p low bilibop-rules
+Description-fr.UTF-8: Voulez-vous masquer les Volumes Physiques dont votre système n'a pas besoin ?
+ Il semble que le disque sur lequel votre système est installé contient des Volumes Logiques. Il est possible de paramètrer LVM pour n'activer que les Volumes Physiques dont votre système a besoin. Cela a le principal avantage d'éviter des conflits de nom entre les Volumes utilisés par votre système et ceux qui pourraient se trouver sur d'autres disques connectés à la même machine hôte. 
+ .
+ Si vous choisissez d'utiliser cette fonctionnalité, cela modifiera '/etc/lvm/lvm.conf', et vous devriez lire 'README.Debian' dans la documentation du paquet.  Autrement, vous pouvez le faire plus tard avec
+ .
+  dpkg-reconfigure -p low bilibop-rules
+Description-it.UTF-8: Nascondere i volumi fisici che non sono necessari per il sistema?
+ Sembra che l'unità in cui è installato il sistema contenga dei volumi logici. È possibile impostare LVM per attivare solo i volumi fisici che sono necessari al sistema. Ciò può in particolar modo evitare conflitti di nomi tra i volumi usati dal sistema e quelli che possono essere trovati su unità interne o esterne collegate allo stesso computer.
+ .
+ Se si sceglie questa funzionalità, «/etc/lvm/lvm.conf» verrà sovrascritto e si dovrebbe leggere il file «README.Debian» nella documentazione del pacchetto. Altrimenti lo si può fare successivamente con
+ .
+  dpkg-reconfigure -p low bilibop-rules
+Description-ja.UTF-8: システムに必要のない物理ボリュームを非表示にしますか?
+ システムがインストールされているドライブには論理ボリュームが収録されているようです。システムに必要な物理ボリュームだけを有効化するように LVM を設定することができます。これにより、システムがインストールされているドライブと、同一のコンピュータに接続した内部及び外部ドライブとの間で、利用しているボリュームの名前が競合することを主に避けられます。
+ .
+ この機能の利用を選択すると「/etc/lvm/lvm.conf」を上書きします。パッケージ付属文書の「README.Debian」を読むようにしてください。後で読んでも構いません。
+ .
+  dpkg-reconfigure -p low bilibop-rules
+Description-nl.UTF-8: Wilt u de Fysieke Volumes die uw systeem niet nodig heeft, verborgen houden?
+ Het lijkt erop dat de schijf waarop uw systeem geïnstalleerd staat Logische Volumes bevat. Het is mogelijk om LVM zo in te stellen dat enkel de Fysieke Volumes die uw systeem nodig heeft, geactiveerd worden. Hierdoor kunnen vooral mogelijke naamgevingsconflicten vermeden worden tussen de Volumes die door uw systeem gebruikt worden en die welke gevonden kunnen worden op interne of externe schijven die aan dezelfde computer aangekoppeld zijn.
+ .
+ Indien u kiest om van deze functionaliteit gebruik te maken, zal '/etc/lvm/lvm.conf' overschreven worden. U zou dan in de documentatie van het pakket 'README.Debian' moeten lezen. Anders kunt u dit later doen met het comando
+ .
+  dpkg-reconfigure -p low bilibop-rules
+Description-pt.UTF-8: Deseja esconder os Volumes Físicos que o seu sistema não precisa?
+ Parece que a drive onde o seu sistema está instalado contem Volumes Lógicos. É possível configurar o LVM para activar apenas os Volumes Físicos de que o seu sistema precisa. Isto pode principalmente evitar conflitos de nomes entre os Volumes usados pelo seu sistema e aqueles que poderão ser encontrados em drives internas ou externas ligadas ao mesmo computador.
+ .
+ Se escolher usar esta funcionalidade, isto vai sobrescrever '/etc/lvm/lvm.conf', e você deve ler 'README.Debian' na documentação do pacote. Caso contrário, pode fazê-lo mais tarde com
+ .
+  dpkg-reconfigure -p low bilibop-rules
+Description-ru.UTF-8: Скрыть ненужные физические тома системы?
+ Кажется, что устройство, на которое установлена система, содержит логические тома. Есть возможность указать LVM активировать только нужные системе физические тома. Это, в основном, может помочь избежать конфликта между томами, используемыми вашей системой и теми, которые могут быть обнаружены на внутренних и внешних подключаемых устройствах компьютера.
+ .
+ Если вы ответите утвердительно, то будет заменён «/etc/lvm/lvm.conf», и вам нужно прочитать «README.Debian» из документации к пакету. В противном случае это можно сделать позднее с помощью
+ .
+  dpkg-reconfigure -p low bilibop-rules
+
+Template: bilibop-rules/physical_volumes_filter/filter
+Type: string
+Description: for internal use only
+
+Template: bilibop-rules/physical_volumes_filter/global_filter
+Type: string
+Description: for internal use only
+
+Template: bilibop-rules/physical_volumes_filter/obtain_device_list_from_udev
+Type: string
+Description: for internal use only
+
+Template: bilibop-rules/physical_volumes_filter/without_global_filter/warning
+Type: error
+Description: Physical Volumes Filter will not be applied.
+ Probably due to an error in '66-bilibop.rules', the following device(s) have
+ not been tagged 'BILIBOP' by udev, or have no usable symlink managed by udev:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ This means some variables in '/etc/lvm/lvm.conf' will be left or reset to
+ their initial values:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+Description-de.UTF-8: Filter physicher Datenträger werden nicht angewandt.
+ Möglicherweise aufgrund eines Fehlers in »66-bilibop.rules« wurden die folgenden Geräte nicht durch Udev mit »BILIBOP« markiert oder haben keinen brauchbaren durch Udev verwalteten symbolischen Verweis:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ Dies bedeutet, dass einige Variablen in »/etc/lvm/lvm.conf« auf Ihren Ursprungswerten belassen oder auf diese geändert werden:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+Description-es.UTF-8: No se va a aplicar el filtro de volúmenes físicos.
+ Es posible que debido a un error en el archivo «66-bilibop.rules» udev no haya etiquetado con «BILIBOP» el/los siguiente/s dispositivo/s o que no disponga/n de un enlace simbólico válido gestionado por udev:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ Esto significa que algunas variables del archivo «/etc/lvm/lvm.conf» se mantendrán inalteradas o se restablecerán a sus valores iniciales:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+Description-fr.UTF-8: Le filtre des Volumes Physiques ne sera pas appliqué.
+ Probablement en raison d'une erreur dans '66-bilibop-rules', les périphériques suivants n'ont pas été étiquetés 'BILIBOP' par udev, ou n'ont pas de lien symbolique géré par udev :
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ Cela signifie que certaines variables dans '/etc/lvm/lvm.conf' seront conservées ou réinitialisées à leurs valeurs initiales :
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+Description-it.UTF-8: I filtri dei volumi fisici non saranno applicati.
+ Probabilmente a causa di un errore in «66-bilibop.rules», i seguenti device non sono stati etichettati come «BILIBOP» da udev oppure non hanno un collegamento simbolico utilizzabile gestito da udev:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ Ciò significa che alcune variabili in «/etc/lvm/lvm.conf» saranno lasciate o reimpostate ai loro valori iniziali:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+Description-ja.UTF-8: 物理ボリュームのフィルタは適用されません。
+ 恐らく「66-bilibop.rules」中の誤りのため、以下のデバイスには udev により「BILIBOP」というタグが付けられていないか udev により管理される有効なシンボリックリンクがありません:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ これは「/etc/lvm/lvm.conf」中の設定値の一部がそのままにされるか初期値にリセットされるということです:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+Description-nl.UTF-8: De Filter Fysieke Volumes wordt niet gebruikt.
+ Wellicht ten gevolge van een fout in '66-bilibop.rules' werden de volgende apparaten door udev niet als 'BILIBOP' gemarkeerd, ofwel bestaat er voor hen geen bruikbare symbolische koppeling die door udev beheerd wordt:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ Dit betekent dat sommige variabelen in '/etc/lvm/lvm.conf' onaangeroerd zullen blijven of teruggeplaatst naar hun oorspronkelijke waarde:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+Description-pt.UTF-8: O Filtro de Volumes Físicos não será aplicado.
+ Provavelmente devido a um erro em '66-bilibop.rules', os seguintes dispositivo(s) não foram etiquetados 'BILIBOP' pelo udev, ou não têm um link simbólico utilizável gerido pelo udev:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ Isto significa que algumas variáveis em '/etc/lvm/lvm.conf' serão abandonadas ou reiniciadas para os seus valores iniciais:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+Description-ru.UTF-8: Фильтр физических томов не будет применён.
+ Вероятно из-за ошибки в «66-bilibop.rules» следующие устройства не были помечены udev как «BILIBOP» или не имеют корректных символических ссылок, контролируемых udev:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ Это указывает на некоторые отсутствующие переменные в «/etc/lvm/lvm.conf» или их сброс в первоначальные значения:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+
+Template: bilibop-rules/physical_volumes_filter/with_global_filter/warning
+Type: error
+Description: Physical Volumes Filter will not be applied.
+ Probably due to an error in '66-bilibop.rules', the following device(s) have
+ not been tagged 'BILIBOP' by udev, or have no usable symlink managed by udev:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ This means some variables in '/etc/lvm/lvm.conf' will be left or reset to
+ their initial values:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+  global_filter = ${GLOBAL_FILTER}
+Description-de.UTF-8: Filter physicher Datenträger werden nicht angewandt.
+ Möglicherweise aufgrund eines Fehlers in »66-bilibop.rules« wurden die folgenden Geräte nicht durch Udev mit »BILIBOP« markiert oder haben keinen brauchbaren durch Udev verwalteten symbolischen Verweis:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ Dies bedeutet, dass einige Variablen in »/etc/lvm/lvm.conf« auf Ihren Ursprungswerten belassen oder auf diese geändert werden:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+  global_filter = ${GLOBAL_FILTER}
+Description-es.UTF-8: No se va a aplicar el filtro de volúmenes físicos.
+ Es posible que debido a un error en el archivo «66-bilibop.rules» udev no haya etiquetado con «BILIBOP» el/los siguiente/s dispositivo/s o que no disponga/n de un enlace simbólico válido gestionado por udev:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ Esto significa que algunas variables del archivo «/etc/lvm/lvm.conf» se mantendrán inalteradas o se restablecerán a sus valores iniciales:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+  global_filter = ${GLOBAL_FILTER}
+Description-fr.UTF-8: Le filtre des Volumes Physiques ne sera pas appliqué.
+ Probablement en raison d'une erreur dans '66-bilibop-rules', les périphériques suivants n'ont pas été étiquetés 'BILIBOP' par udev, ou n'ont pas de lien symbolique géré par udev :
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ Cela signifie que certaines variables dans '/etc/lvm/lvm.conf' seront conservées ou réinitialisées à leurs valeurs initiales :
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+  global_filter = ${GLOBAL_FILTER}
+Description-it.UTF-8: I filtri dei volumi fisici non saranno applicati.
+ Probabilmente a causa di un errore in «66-bilibop.rules», i seguenti device non sono stati etichettati come «BILIBOP» da udev oppure non hanno un collegamento simbolico utilizzabile gestito da udev:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ Ciò significa che alcune variabili in «/etc/lvm/lvm.conf» saranno lasciate o reimpostate ai loro valori iniziali:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+  global_filter = ${GLOBAL_FILTER}
+Description-ja.UTF-8: 物理ボリュームのフィルタは適用されません。
+ 恐らく「66-bilibop.rules」中の誤りのため、以下のデバイスには udev により「BILIBOP」というタグが付けられていないか udev により管理される有効なシンボリックリンクがありません:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ これは「/etc/lvm/lvm.conf」中の設定値の一部がそのままにされるか初期値にリセットされるということです:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+  global_filter = ${GLOBAL_FILTER}
+Description-nl.UTF-8: De Filter Fysieke Volumes wordt niet gebruikt.
+ Wellicht ten gevolge van een fout in '66-bilibop.rules' werden de volgende apparaten door udev niet als 'BILIBOP' gemarkeerd, ofwel bestaat er voor hen geen bruikbare symbolische koppeling die door udev beheerd wordt:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ Dit betekent dat sommige variabelen in '/etc/lvm/lvm.conf' onaangeroerd zullen blijven of teruggeplaatst naar hun oorspronkelijke waarde:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+  global_filter = ${GLOBAL_FILTER}
+Description-pt.UTF-8: O Filtro de Volumes Físicos não será aplicado.
+ Provavelmente devido a um erro em '66-bilibop.rules', os seguintes dispositivo(s) não foram etiquetados 'BILIBOP' pelo udev, ou não têm um link simbólico utilizável gerido pelo udev:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ Isto significa que algumas variáveis em '/etc/lvm/lvm.conf' serão abandonadas ou reiniciadas para os seus valores iniciais:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+  global_filter = ${GLOBAL_FILTER}
+Description-ru.UTF-8: Фильтр физических томов не будет применён.
+ Вероятно из-за ошибки в «66-bilibop.rules» следующие устройства не были помечены udev как «BILIBOP» или не имеют корректных символических ссылок, контролируемых udev:
+ .
+  ${UNTAGGED}
+  ${UNLINKED}
+ .
+ Это указывает на некоторые отсутствующие переменные в «/etc/lvm/lvm.conf» или их сброс в первоначальные значения:
+ .
+  obtain_device_list_from_udev = ${FROMUDEV}
+  filter = ${FILTER}
+  global_filter = ${GLOBAL_FILTER}
+

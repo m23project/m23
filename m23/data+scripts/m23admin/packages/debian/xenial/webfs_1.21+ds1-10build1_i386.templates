@@ -1,0 +1,819 @@
+
+Template: webfsd/web_ip
+Type: string
+Description: IP address webfsd should listen to:
+ On a system with multiple IP addresses, webfsd can be configured to
+ listen to only one of them.
+ .
+ If you leave this empty, webfsd will listen to all IP addresses.
+Description-cs.UTF-8: IP adresa, na které má webfsd poslouchat:
+ Na systému s více IP adresami můžete webfsd nastavit tak, aby naslouchal jen na jedné z nich.
+ .
+ Ponecháte-li prázdné, bude webfsd naslouchat na všech IP adresách.
+Description-da.UTF-8: IP-adresse som webfsd skal lytte på:
+ På et system med flere IP-adresser kan webfsd konfigureres til at lytte på kun en af dem.
+ .
+ Hvis du efterlader denne tom, så vil webfsd lytte på alle IP-adresser.
+Description-de.UTF-8: IP-Adresse, an der Webfsd auf Anfragen wartet:
+ Auf einem System mit mehreren IP-Adressen kann Webfsd so konfiguriert werden, dass er nur eine von ihnen abhört.
+ .
+ Wenn Sie hier nichts eintragen, wird an allen IP-Adressen auf Anfragen gewartet.
+Description-es.UTF-8: Dirección IP en la que webfsd debe escuchar:
+ En un sistema con varias direcciones IP, webfsd sólo se puede configurar para escuchar en una de ellas.
+ .
+ Si deja esto en blanco, webfsd escuchará en todas las direcciones IP.
+Description-fr.UTF-8: Adresse IP qu'écoutera webfs : 
+ Sur les systèmes qui utilisent plusieurs adresses IP, webfsd peut être configuré pour n'écouter qu'une seule d'entre elles.
+ .
+ Si vous laissez ce champ vide, webfsd sera à l'écoute sur toutes les adresses IP.
+Description-it.UTF-8: Indirizzo IP su cui webfsd dovrà porsi in ascolto:
+ Su sistemi con più indirizzi IP webfsd può essere configurato in modo da porsi in ascolto su un solo indirizzo.
+ .
+ Se si lascia questo campo vuoto webfsd si porrà in ascolto su tutti gli indirizzi IP.
+Description-ja.UTF-8: webfsd が待ち受ける IP アドレス:
+ IP アドレスが複数あるシステムでは、webfsd がそのうち一つだけを待ち受けるように設定することができます。
+ .
+ これを空欄にすると、webfsd は全 IP アドレスで待ち受けます。
+Description-nb.UTF-8: IP-adresse som webfsd skal lytte på:
+ På et system som har flere IP-adresser kan webfsd settes opp til å lytte på bare en av dem.
+ .
+ Hvis du lar dette være tomt vil webfs lytte på alle IP-adresser.
+Description-nl.UTF-8: IP-adres waarop webfsd dient te luisteren:
+ Op een systeem met meerdere IP-adressen kan webfsd zo worden geconfigureerd dat het maar op één van de adressen luistert.
+ .
+ Wanneer u dit leeg laat zal webfsd op alle IP-adressen luisteren.
+Description-no.UTF-8: IP-adresse som webfsd skal lytte på:
+ På et system som har flere IP-adresser kan webfsd settes opp til å lytte på bare en av dem.
+ .
+ Hvis du lar dette være tomt vil webfs lytte på alle IP-adresser.
+Description-pl.UTF-8: Adres IP na którym będzie nasłuchiwać webfsd:
+ W systemie z wieloma adresami IP, webfsd może być skonfigurowany do nasłuchiwania tylko na jednym z nich.
+ .
+ Jeśli ta wartość nie zostanie podana, webfsd będzie nasłuchiwać na wszystkich adresach IP.
+Description-pt.UTF-8: Endereço IP em que o webfsd deverá escutar:
+ Num sistema com múltiplos endereços IP, o webfsd pode ser configurado para escutar apenas num deles.
+ .
+ Se deixar em branco, o webfsd irá escutar em todos os endereços IP.
+Description-ru.UTF-8: IP-адрес, на который должен принимать запросы webfsd:
+ В системе с нескольким IP-адресами webfsd можно настроить на приём только на одном из них.
+ .
+ Если оставить поле пустым, то будут прослушиваться все IP-адреса.
+Description-sv.UTF-8: IP-adress som webfsd ska lyssna på:
+ På ett system med flera IP-adresser kan webfsd ställas in att lyssna endast på en av dem.
+ .
+ Om du lämnar detta fält tom kommer webfsd att lyssna på alla IP-adresser.
+Description-vi.UTF-8: Địa chỉ IP cho đó webfsd nên lắng nghe:
+ Trên một hệ thống có nhiều địa chỉ IP, cũng có thể cấu hình trình nền webfsd để lắng nghe chỉ một của các địa chỉ đó.
+ .
+ Bỏ trống trường này thì webfsd lắng nghe trên tất cả các địa chỉ.
+
+Template: webfsd/web_timeout
+Type: string
+Description: Timeout for network connections:
+Description-cs.UTF-8: Doba pro vypršení neaktivních síťových spojení:
+Description-da.UTF-8: Tidsudløb for netværksforbindelser:
+Description-de.UTF-8: Zeitbeschränkung (engl. »Timeout«) für Netzwerkverbindungen:
+Description-es.UTF-8: Tiempo de espera para las conexiones de red:
+Description-fi.UTF-8: Verkkoyhteyksien aikakatkaisu:
+Description-fr.UTF-8: Délai maximal d'attente pour les connexions réseau :
+Description-gl.UTF-8: Límite de tempo para as conexións de rede:
+Description-it.UTF-8: Tempo massimo di attesa per le connessioni di rete:
+Description-ja.UTF-8: ネットワーク接続のタイムアウト時間:
+Description-nb.UTF-8: Tidsavbrudd for nettverksforbindelser:
+Description-nl.UTF-8: Timeout voor netwerkverbindingen:
+Description-no.UTF-8: Tidsavbrudd for nettverksforbindelser:
+Description-pl.UTF-8: Timeout dla połączeń sieciowych:
+Description-pt.UTF-8: Tempo limite para as ligações de rede:
+Description-ru.UTF-8: Тайм-аут для сетевых соединений:
+Description-sv.UTF-8: Tidsgräns för nätverksanslutningar:
+Description-vi.UTF-8: Thời hạn kết nối mạng:
+
+Template: webfsd/pending
+Type: string
+Default: no
+Description: for internal use only
+
+Template: webfsd/web_conn
+Type: string
+Description: Number of parallel network connections:
+ For small private networks, the default number of parallel network
+ connections should be fine. This can be increased for larger networks.
+Description-cs.UTF-8: Počet paralelních síťových spojení:
+ Pro menší privátní sítě by měl výchozí počet paralelních síťových spojení stačit. Plánujete-li nasazení na větším serveru, měli byste hodnotu zvýšit.
+Description-da.UTF-8: Antal af parallelle netværksforbindelser:
+ For små private netværk bør standardantallet af parallelle netværksforbindelser være okay. Dette tal kan øges for større netværk.
+Description-de.UTF-8: Anzahl paralleler Netzwerkverbindungen:
+ Für kleine, private Netze sollte der Standardwert für parallele Verbindungen eine gute Wahl sein. Die Anzahl der Verbindungen kann für größere Netze heraufgesetzt werden.
+Description-es.UTF-8: Número de conexiones de red paralelas:
+ Para redes privadas pequeñas, el número predeterminado de conexiones de red paralelas debería ser válido. Este valor se puede incrementar para redes más grandes.
+Description-fr.UTF-8: Nombre de connexions réseaux en parallèle :
+ Pour des réseaux privés simples, la valeur par défaut du nombre de connexions réseau en parallèle devrait être adaptée. Cette valeur peut être augmentée pour des réseaux de taille plus importante.
+Description-it.UTF-8: Numero di connessioni di rete parallele:
+ Il numero predefinito di connessioni di reti parallele dovrebbe essere adeguato per piccole reti private. Questo valore può essere incrementato per reti più grandi.
+Description-ja.UTF-8: ネットワーク同時接続数:
+ 規模の小さいプライベートネットワークでは、ネットワーク同時接続数はデフォルト値でいいはずです。規模の大きなネットワークではこれを増やすこともできます。
+Description-nb.UTF-8: Antall parallelle nettverksforbindelser:
+ Standard antall parallelle nettverksforbindelser er som regel i orden for små private nettverk. Det kan settes høyere for større nettverk.
+Description-nl.UTF-8: Aantal parallelle netwerkverbindingen:
+ Voor kleine privé-netwerken is het standaard aantal parallelle netwerkverbindingen goed. Voor grotere netwerken is een groter aantal beter.
+Description-no.UTF-8: Antall parallelle nettverksforbindelser:
+ Standard antall parallelle nettverksforbindelser er som regel i orden for små private nettverk. Det kan settes høyere for større nettverk.
+Description-pl.UTF-8: Liczba równoczesnych połączeń sieciowych:
+ Dla niewielkich sieci prywatnych domyślna liczba równoczesnych połączeń sieciowych powinnna być wystarczająca. Dla większych sieci można to ustawienie zwiększyć.
+Description-pt.UTF-8: Número de ligações de rede paralelas:
+ Para pequenas redes privadas, o número predefinido de ligações de rede paralelas deve estar bem. Este valor pode ser aumentado para redes maiores.
+Description-ru.UTF-8: Количество параллельных сетевых соединений:
+ Для маленьких закрытых сетей значение количества параллельных сетевых соединений по умолчанию достаточно для работы. Для больших сетей его можно увеличить.
+Description-sv.UTF-8: Antal parallella nätverksanslutningar:
+ För små privata nätverk bör standardvärdet för parallella nätverksanslutningar vara bra. För större nätverk kan detta värde höjas något.
+Description-vi.UTF-8: Tổng số kết nối mạng song song:
+ Đối với mạng riêng nhỏ, số mặc định các kết nối mạng chạy song song nên là tốt. Cũng có thể tăng số này cho mạng lớn hơn.
+
+Template: webfsd/web_dircache
+Type: string
+Description: Directory cache size:
+ Directory listings can be cached by webfsd. By default, the size of
+ the cache is limited to 128 entries. If the web server has
+ very big directory trees, you might want to raise this value.
+Description-cs.UTF-8: Velikost adresářové mezipaměti:
+ Webfsd si uchovává předchozí výpisy adresářů v mezipaměti. Výchozí velikost mezipaměti je 128 záznamů. Jestliže máte opravdu velký adresářový strom, můžete hodnotu zvýšit.
+Description-da.UTF-8: Størrelse for mellemlagermappe:
+ Mappevisninger kan mellemlagres af webfsd. Som standard er størrelsen for mellemlageret begrænset til 128 punkter. Hvis internetserveren har et meget stort mappetræ, så er det måske en god ide at øge denne værdi.
+Description-de.UTF-8: Größe des Zwischenspeichers (Cache) für Verzeichnisinhalte:
+ Webfsd kann erstellte Auflistungen von Verzeichnisinhalten zwischenspeichern. Standardmäßig ist dieser Zwischenspeicher auf 128 Einträge begrenzt. Wenn Sie einen sehr großen Verzeichnisbaum haben, dann sollten Sie diesen Wert erhöhen.
+Description-es.UTF-8: Tamaño de la caché de directorios:
+ webfsd puede mantener listados de directorios en caché. De forma predeterminada, el tamaño de la caché está limitado a 128 entradas. Probablemente quiera incrementar este valor, si tiene un árbol de directorios muy grande.
+Description-fr.UTF-8: Taille du répertoire de cache :
+ Les dernières énumérations de répertoires peuvent être mises en cache par webfsd. Par défaut, la taille de ce cache est limitée à 128 éléments. Si l'arborescence du serveur web est de grande taille, vous devriez augmenter cette valeur.
+Description-it.UTF-8: Dimensioni della cache delle directory:
+ Webfsd può memorizzare in cache l'elenco delle directory. La dimensione predefinita della cache è limitata a 128 voci. Se il server web ha una struttura di directory molto estesa, potrebbe essere opportuno incrementare tale valore.
+Description-ja.UTF-8: ディレクトリキャッシュのサイズ:
+ ディレクトリ内のリストをキャッシュとして webfsd に保持させることができます。デフォルトでは、キャッシュのサイズは 128 エントリに限られています。ウェブサーバに非常に大きなディレクトリツリーがある場合はこの値を大きくしてください。
+Description-nb.UTF-8: Størrelse på hurtiglager for kataloger:
+ webfsd kan holde kataloglister i mellomlager. Standard størrelse for mellomlageret er 128 oppføringer. Hvis nettjeneren har et svært stort katalogtre vil du kanskje øke denne verdien.
+Description-nl.UTF-8: Grootte map-cache:
+ De inhoud van mappen kan worden gecached door webfsd. Standaard is de grootte van de cache beperkt tot 128 elementen. Als de webserver hele grote mapbomen heeft wilt u deze waarde mogelijk hoger instellen.
+Description-no.UTF-8: Størrelse på hurtiglager for kataloger:
+ webfsd kan holde kataloglister i mellomlager. Standard størrelse for mellomlageret er 128 oppføringer. Hvis nettjeneren har et svært stort katalogtre vil du kanskje øke denne verdien.
+Description-pl.UTF-8: Rozmiar pamięci podręcznej katalogów:
+ Listy plików w katalogach mogą być buforowane przez webfsd. Domyślnie rozmiar pamięci podręcznej jest ograniczony do 128 pozycji. Jeśli na serwerze są duże drzewa katalogów, można to ustawienie zwiększyć.
+Description-pt.UTF-8: Dimensão do directório de 'cache':
+ Listagens de directório podem ser guardadas em 'cache' pelo  webfsd. Por predefinição a dimensão da cache está limitada a 128 entradas.  Se tiver uma árvore de directórios muito grande poderá querer aumentar este valor.
+Description-ru.UTF-8: Размер кэша каталогов:
+ webfsd может хранить списки содержимого каталогов в кэше. По умолчанию, размер кэша ограничен 128 записями. Если веб-сервер имеет очень большое дерево каталогов, то можно увеличить это значение.
+Description-sv.UTF-8: Storlek på katalogcache:
+ Webfsd kan komma ihåg kataloglistningar. Som standard är storleken på cachen begränsad till 128 poster. Om webbservern har stora katalogträd, bör du överväga att höja detta värde.
+Description-vi.UTF-8: Kích cỡ bộ nhớ tạm thư mục:
+ Trình nền webfsd có khả năng nhớ tạm các danh sách thư mục. Mặc định là kích cỡ tối đa của bộ nhớ tạm là 128 mục nhập. Nếu máy phục vụ Web có cây thư mục rất lớn nào, bạn có thể muốn tăng giá trị này.
+
+Template: webfsd/web_port
+Type: string
+Description: Incoming port number for webfsd:
+ Please enter the port number for webfsd to listen to. If you leave
+ this blank, the default port (8000) will be used.
+Description-cs.UTF-8: Číslo portu pro webfsd:
+ Zadejte číslo portu, na kterém má webfsd naslouchat. Ponecháte-li prázdné, použije se výchozí port 8000.
+Description-da.UTF-8: Indgående portnummer for webfsd:
+ Indtast venligst portnummeret for webfsd at lytte på. Hvis du efterlader denne blank, så vil standardporten (8000) blive brugt.
+Description-de.UTF-8: Port-Nummer für eingehende Verbindungen:
+ Geben Sie bitte den Port ein, an dem Webfsd auf Anfragen warten soll. Wenn Sie hier nichts eintragen, wird der Standard-Port (8000) verwendet.
+Description-es.UTF-8: Número del puerto entrante para webfsd:
+ Introduzca el número del puerto en el que webfsd escuchará. Si deja esto en blanco, se usará el puerto predeterminado (8000).
+Description-fr.UTF-8: Port d'entrée utilisé par webfsd :
+ Veuillez indiquer le numéro du port sur lequel webfsd sera à l'écoute. Si ce champ est laissé vide, le port par défaut (8000) sera utilisé.
+Description-it.UTF-8: Numero di porta in entrata per webfsd:
+ Inserire il numero della porta su cui webfsd si porrà in ascolto. Se si lascia questo campo vuoto verrà utilizzata la porta predefinita (8000).
+Description-ja.UTF-8: webfsd 用の待ち受けポート番号:
+ webfsd が待ち受けるポート番号を入力してください。これを空白にした場合はデフォルトのポート (8000) が利用されます。
+Description-nb.UTF-8: Innkommende portnummer for webfsd:
+ Oppgi portnummer som webfsd skal lytte på. Hvis du lar dette være tomt, så brukes standardporten (8000).
+Description-nl.UTF-8: Binnenkomend poortnummer webfsd:
+ Op welk poortnummer moet webfsd luisteren? Als u dit leeg laat zal de standaard poort (8000) worden gebruikt.
+Description-no.UTF-8: Innkommende portnummer for webfsd:
+ Oppgi portnummer som webfsd skal lytte på. Hvis du lar dette være tomt, så brukes standardporten (8000).
+Description-pl.UTF-8: Numert portu wejściowego dla webfsd:
+ Proszę podać numer portu na którym będzie nasłuchiwać webfsd. Jeśli ta wartość nie zostanie podana, zostanie użyty port domyślny (8000).
+Description-pt.UTF-8: Número do porto de entrada para o webfsd:
+ Indique por favor o número do porto de escuta para o webfsd. Se deixar em branco, o porto por omissão (8000) será usado.
+Description-ru.UTF-8: Номер входящего порта webfsd:
+ Введите номер порта, который будет прослушивать webfsd. Если оставить поле пустым, то будет использоваться порт по умолчанию (8000).
+Description-sv.UTF-8: Inkommande portnummer för webfsd:
+ Ange portnummer som webfsd ska lyssna på. Om du lämnar detta fält tomt kommer standardporten (8000) att användas.
+Description-vi.UTF-8: Số thứ tự cổng gửi đến cho webfsd:
+ Hãy gõ số thứ tự cổng trên đó webfsd nên lắng nghe. Bỏ trống trường này thì dùng cổng mặc định (8000).
+
+Template: webfsd/web_virtual
+Type: boolean
+Default: false
+Description: Enable virtual hosts?
+ This option allows webfsd to support name-based virtual hosts, taking
+ the directories immediately below the document root as host names.
+Description-cs.UTF-8: Povolit virtuální servery?
+ Touto volbou zapnete ve webfsd podporu pro virtuální servery založené na jménech (name-based virtual hosts). První úroveň adresářů pod kořenem stromu dokumentů pak bude použita jako jména serverů.
+Description-da.UTF-8: Aktivere virtuelle værter?
+ Denne indstilling tillader webfsd at understøtte navnebaserede virtuelle værter, det gøres ved at tage mapper umiddelbart under dokumentroden som værtsnavne.
+Description-de.UTF-8: Virtuelle Server aktivieren?
+ Diese Option ermöglicht Webfsd die Unterstützung von namensbasierten virtuellen Servern. Die Verzeichnisse direkt unterhalb des Dokumenten-Wurzelverzeichnisses werden dann als Servernamen verwendet.
+Description-es.UTF-8: ¿Desea activar los hosts virtuales?
+ Esta opción permite que webfsd pueda usar nombres de hosts virtuales, usando los directorios del primer nivel del directorio raíz de documentos como nombre de máquina.
+Description-fr.UTF-8: Faut-il activer la gestion des hôtes virtuels ?
+ Veuillez choisir si webfsd doit gérer les hôtes virtuels basés sur le nom. Les répertoires qui se trouvent immédiatement sous la racine seront alors considérés comme des hôtes dont le nom sera celui du répertoire.
+Description-it.UTF-8: Abilitare gli host virtuali?
+ Questa opzione consente a webfsd di supportare gli host virtuali basati sul nome, prendendo le directory immediatamente sottostanti la radice del documento come nomi degli host.
+Description-ja.UTF-8: バーチャルホストを有効にしますか?
+ このオプションにより webfsd に名前ベースのバーチャルホストをサポートさせると、ドキュメントルート直下のディレクトリをホスト名として使います。
+Description-nb.UTF-8: Slå på virtuelle verter?
+ Dette valget gjør at webfsd kan støtte navn-basere virtuelle verter. Da vil katalogene straks under dokument-roten bli brukt som vertsnavn.
+Description-nl.UTF-8: Virtual hosts inschakelen?
+ Deze optie laat webfsd naamsgebaseerde 'virtual hosts' ondersteunen, waarbij de mappen direct onder de basismap als computernaam worden gebruikt.
+Description-no.UTF-8: Slå på virtuelle verter?
+ Dette valget gjør at webfsd kan støtte navn-basere virtuelle verter. Da vil katalogene straks under dokument-roten bli brukt som vertsnavn.
+Description-pl.UTF-8: Włączyć hosty wirtualne?
+ Ta opcja włącza wsparcie webfsd dla nazwanych hostów wirtualnych, traktując nazwy katalogów znajdujących się bezpośrednio pod korzeniem dokumentów jako nazwy hostów.
+Description-pt.UTF-8: Activar hosts virtuais?
+ Esta opção permite que o webfsd suporte 'hosts' virtuais baseados em nomes, sendo os directórios de nível imediatamente inferior à raiz dos documentos usados como nomes de 'host'.
+Description-ru.UTF-8: Включить виртуальные хосты?
+ Эта настройка разрешает webfsd поддерживать виртуальные хосты на основе имён, где в качестве имён хостов берутся следующие за корнем документов имена каталогов.
+Description-sv.UTF-8: Aktivera virtuella värdar?
+ Detta alternativ aktiverar stöd för namnbaserade virtuella värdar. Namnen på katalogerna i första nivån under dokumentroten kommer då att användas som värdnamn.
+Description-vi.UTF-8: Bật chạy máy ảo ?
+ Tuỳ chọn này cho phép webfsd hỗ trợ máy ảo dựa vào tên, cũng thấy những thư mục nằm đúng dưới gốc tài liệu như là tên máy.
+
+Template: webfsd/web_root
+Type: string
+Default: /var/www/html
+Description: Document root for webfsd:
+ Webfsd is a lightweight HTTP server for mostly static content. Its
+ most obvious use is to provide HTTP access to an anonymous FTP server.
+ .
+ Please specify the document root for the webfs daemon.
+ .
+ If you leave this field blank, webfsd will not be started at boot time.
+Description-cs.UTF-8: Kořen stromu dokumentů webfsd:
+ Webfsd je lehký HTTP server pro spíše statický obsah. Můžete jej například využít pro zpřístupnění obsahu anonymního FTP serveru přes HTTP.
+ .
+ Zadejte kořen stromu dokumentů pro daemon webfsd, jinými slovy adresář, jehož obsah (včetně podadresářů) se bude exportovat.
+ .
+ Ponecháte-li prázdné, webfsd se nebude spouštět při zavádění systému.
+Description-da.UTF-8: Dokumentrod for webfsd:
+ Webfsd er en letvægts HTTP-server for hovedsagelig statisk indhold. Den mest indlysende brug er at tilbyde HTTP-adgang til en anonym FTP-server.
+ .
+ Angiv venligst dokumentroden for webfs-dæmonen.
+ .
+ Hvis du efterlader dette felt tomt, så vil webfsd ikke blive igangsat ved opstart.
+Description-de.UTF-8: Dokumenten-Wurzelverzeichnis für Webfsd:
+ Webfsd ist ein leichtgewichtiger HTTP-Server für hauptsächlich statischen Inhalt. Seine gebräuchlichste Verwendung ist es, HTTP-Zugriff auf einen anonymen FTP-Server zu gewähren.
+ .
+ Geben Sie bitte ein Dokumenten-Wurzelverzeichnis für den Webfs-Daemon an.
+ .
+ Wenn Sie dieses Feld leer lassen, wird Webfsd beim Hochfahren des Systems nicht gestartet.
+Description-es.UTF-8: Directorio raíz de documentos para webfsd:
+ Webfsd es un servidor ligero de HTTP para contenido estático. Su uso más obvio es para proporcionar acceso HTTP a su servidor de FTP anónimo.
+ .
+ Especifique el directorio raíz de documentos para el demonio webfs.
+ .
+ Si deja este campo en blanco, webfsd no se iniciará en el arranque del sistema.
+Description-fr.UTF-8: Racine de webfsd :
+ Webfsd est un serveur HTTP léger qui ne sert que des fichiers statiques. Vous pouvez par exemple l'utiliser pour fournir un accès HTTP à un serveur FTP anonyme.
+ .
+ Veuillez indiquer l'emplacement de la racine du serveur web de webfs.
+ .
+ Si vous laissez ce champ vide, webfsd ne sera pas lancé au démarrage du système.
+Description-it.UTF-8: Radice del documento per webfsd:
+ Webfsd è un server HTTP leggero per la maggior parte dei contenuti statici il cui più ovvio utilizzo è fornire un accesso HTTP a un server FTP anonimo.
+ .
+ Specificare la radice del documento per il demone webfs.
+ .
+ Se si lascia questo campo vuoto webfsd non verrà avviato all'avvio del sistema.
+Description-ja.UTF-8: webfsd 用のドキュメントルート:
+ webfsd は、主に静的コンテント向けの軽量 HTTP サーバです。最もわかりやすい用途は anonymous FTP サーバへの HTTP アクセスの提供です。
+ .
+ webfs デーモンのドキュメントルートを指定してください。
+ .
+ この欄を空白にしておくとブート時に webfsd は起動しません。
+Description-nb.UTF-8: Dokumentrot for webfsd:
+ webfsd er en lettvekts HTTP-tjener som gir ut for det meste statiske filer. Du kan for eksempel bruke den til å gi HTTP-tilgang til din anonyme FTP-tjener.
+ .
+ Du må oppgi dokument-roten for webfs-daemonen.
+ .
+ Lar du dette være tomt vil webfsd ikke bli startet ved maskinoppstart.
+Description-nl.UTF-8: Basismap voor webfsd:
+ Webfsd is een lichte HTTP-server voor voornamelijk statische bestanden. Het meest voor de hand liggende gebruik is om HTTP-toegang aan te bieden tot een anonieme FTP-server.
+ .
+ Wat is de basismap voor documenten voor de webfs-achtergronddienst?
+ .
+ Als u dit veld leeg laat zal webfsd niet worden opgestart bij de systeemstart.
+Description-no.UTF-8: Dokumentrot for webfsd:
+ webfsd er en lettvekts HTTP-tjener som gir ut for det meste statiske filer. Du kan for eksempel bruke den til å gi HTTP-tilgang til din anonyme FTP-tjener.
+ .
+ Du må oppgi dokument-roten for webfs-daemonen.
+ .
+ Lar du dette være tomt vil webfsd ikke bli startet ved maskinoppstart.
+Description-pl.UTF-8: Korzeń dokumentów dla webfsd:
+ Webfsd jest lekkim serwerem HTTP przeznaczonym głównie dla zawartości statycznej. Najbardziej oczywistym jego użyciem jest umożliwienie dostępu HTTP do anonimowego serwera FTP.
+ .
+ Proszę podać korzeń dokumentów dla daemona webfs.
+ .
+ Jeśli ta wartość nie zostanie podana, webfsd nie będzie włączany podczas uruchamiania systemu.
+Description-pt.UTF-8: Raiz dos documentos para o webfsd:
+ O webfsd é um servidor HTTP leve, principalmente para ficheiros estáticos. A utilização óbvia é fornecer acesso HTTP a um servidor anónimo de FTP.
+ .
+ Por favor indique a raiz dos documentos para o daemon webfs.
+ .
+ Se deixar este campo em branco, o webfsd não será iniciado no arranque.
+Description-ru.UTF-8: Корень документов webfsd:
+ webfsd является легковесным сервером HTTP, который работает только со статичным содержимым. Обычно его используют для предоставления доступа по HTTP к анонимному FTP-серверу.
+ .
+ Укажите корень документов для службы webfs.
+ .
+ Если оставить поле пустым, то webfsd не будет запускаться во время загрузки машины.
+Description-sv.UTF-8: Dokumentrot för webfsd:
+ Webfsd är en lättviktig-HTTP-server för i huvudsak statiska filer.  Dess mest uppenbara användsningsområde är att aktivera HTTP-åtkomst till en anonym FTP-server.
+ .
+ Du behöver ange dokumentroten för webfs-tjänsten.
+ .
+ Om detta fält lämnas tomt kommer webfsd inte att startas vid systemets uppstart.
+Description-vi.UTF-8: Gốc tài liệu cho webfsd:
+ Webfsd là một trình phục vụ HTTP nhẹ nhàng thông thường phục vụ nội dung tĩnh. Hiển nhiên, nó được sử dụng để cung cấp truy cập HTTP đến một máy phục vụ FTP nặc danh.
+ .
+ Hãy ghi rõ gốc tài liệu cho trình nền webfs.
+ .
+ Bỏ trống trường này thì trình nền webfsd không được khởi chạy vào lúc khởi động máy.
+
+Template: webfsd/web_host
+Type: string
+Description: Host name for webfsd:
+ By default, webfsd uses the machine name as host name.
+ .
+ You can specify an alternate host name to be used as an external
+ alias name (for instance "ftp.example.org") instead of the machine's
+ fully qualified domain name.
+Description-cs.UTF-8: Jméno počítače pro webfsd:
+ Implicitně se použije doménové jméno počítače.
+ .
+ Místo plně kvalifikovaného doménového jména počítače můžete zadat alternativní jméno, které se použije jako externí alias (například „ftp.example.org“).
+Description-da.UTF-8: Værtsnavn for webfsd:
+ Som standard bruger webfsd maskinnavnet som værtsnavn.
+ .
+ Du kan angive et alternativt værtsnavn, der kan bruges som et eksternt aliasnavn (for eksempel »ftp.eksempel.org«) i stedet for maskinens fuldt kvalificeret domænenavn.
+Description-de.UTF-8: Rechnername für Webfsd:
+ Als Voreinstellung verwendet Webfsd den Namen des Rechners als Server-Namen.
+ .
+ Sie können einen anderen Server-Namen angeben, der anstelle des vollständigen Domain-Namens als externer Alias (zum Beispiel »ftp.example.org«) verwendet werden soll.
+Description-es.UTF-8: Nombre de la máquina para webfsd:
+ De forma predeterminada, webfsd usa el nombre de la máquina como nombre del host.
+ .
+ Puede especificar un nombre de host alternativo para usarse como un alias externo (por ejemplo «ftp.ejemplo.org») en lugar del nombre completo de la máquina.
+Description-fr.UTF-8: Nom d'hôte utilisé par webfsd :
+ Par défaut, webfsd utilise le nom de la machine comme nom d'hôte.
+ .
+ Vous pouvez choisir un autre nom d'hôte qui sera utilisé comme alias externe (par exemple, « ftp.example.org ») en lieu et place du nom réseau complètement qualifié de cette machine.
+Description-it.UTF-8: Nome host per webfsd:
+ In modo predefinito webfsd utilizza il nome della macchina come nome host.
+ .
+ È possibile specificare un nome host alternativo da utilizzare come nome alias esterno (per esempio «ftp.esempio.org») anziché il nome FQDN (fully qualified domain name) della macchina.
+Description-ja.UTF-8: webfsd 用のホスト名:
+ デフォルトで、webfsd はマシン名をホスト名として使います。
+ .
+ マシンの完全修飾ドメイン名ではなく、外部の別名 (例えば「ftp.example.org」) として利用される別のホスト名を指定することもできます。
+Description-nb.UTF-8: Vertsnavn for webfsd:
+ Som standard bruker webfsd maskinens navn som vertsnavn.
+ .
+ Du kan oppgi et alternativt vertsnavn som skal brukes som et ytre aliasnavn (f.eks. «ftp.example.org») i stedet for maskinens fulle domenenavn.
+Description-nl.UTF-8: Computernaam voor webfsd:
+ Standaard gebruikt webfsd de naam van de machine als computernaam.
+ .
+ U kunt hier een alternatieve computernaam opgeven die zal worden gebruikt als externe aliasnaam (bijvoorbeeld "ftp.example.org") in plaats van de volledige computernaam (FQDN) van de machine.
+Description-no.UTF-8: Vertsnavn for webfsd:
+ Som standard bruker webfsd maskinens navn som vertsnavn.
+ .
+ Du kan oppgi et alternativt vertsnavn som skal brukes som et ytre aliasnavn (f.eks. «ftp.example.org») i stedet for maskinens fulle domenenavn.
+Description-pl.UTF-8: Nazwa hosta dla webfsd:
+ Domyślnie webfsd używa lokalnej nazwy maszyny jako nazwy hosta.
+ .
+ Można podać alternatywną nazwę hosta, używaną jako zewnętrzny alias (na przykład "ftp.example.org") zamiast pełnej kwalifikowanej nazwy domenowej maszyny.
+Description-pt.UTF-8: Nome da máquina para o webfsd:
+ Por predefinição, o webfsd usa o nome da máquina como nome de 'host'.
+ .
+ Pode indicar um nome alternativo para ser usado como um alias externo (por exemplo "ftp.example.org") em vez do nome completamente qualificado da máquina.
+Description-ru.UTF-8: Имя хоста для webfsd:
+ По умолчанию, в качестве имени хоста webfsd использует имя машины.
+ .
+ Вы можете указать другое имя хоста для использования в качестве внешнего псевдонима (например "ftp.example.org") вместо полностью определённого доменного имени машины.
+Description-sv.UTF-8: Värdnamn för webfsd:
+ I standardutförandet använder webfsd maskinens namn som värdnamn.
+ .
+ Du kan ange ett alternativt värdnamn som ska användas som externt aliasnamn (exempelvis "ftp.exemaple.org" istället för maskinens kompletta kvalificerade domännamn.
+Description-vi.UTF-8: Tên máy cho webfsd:
+ Mặc định là trình nền webfsd sử dụng tên máy như là tên máy chủ.
+ .
+ Bạn cũng có thể ghi rõ một tên máy khác để sử dụng như là một tên bí danh bên ngoài (v.d. « ftp.ví_dụ.org ») thay cho tên miền có khả năng đầy đủ.
+
+Template: webfsd/web_user
+Type: string
+Default: www-data
+Description: User running the webfsd daemon:
+Description-cs.UTF-8: Uživatel, pod kterým poběží daemon webfsd:
+Description-da.UTF-8: Bruger der kører webfsd-dæmonen:
+Description-de.UTF-8: Benutzerkennung, unter der der Webfsd-Daemon laufen soll:
+Description-es.UTF-8: Usuario que ejecuta el demonio webfsd:
+Description-fi.UTF-8: Käyttäjätunnus, jolla webfsd-taustaohjelmaa ajetaan:
+Description-fr.UTF-8: Identifiant utilisé pour l'exécution du démon webfsd :
+Description-gl.UTF-8: Usuario que executa o servizo webfsd:
+Description-it.UTF-8: Utente che esegue il demone webfsd:
+Description-ja.UTF-8: webfsd デーモンを実行するユーザ:
+Description-nb.UTF-8: Bruker som kjører webfsd-daemonen:
+Description-nl.UTF-8: Gebruiker als wie de webfsd-achtergronddienst moet draaien:
+Description-no.UTF-8: Bruker som kjører webfsd-daemonen:
+Description-pl.UTF-8: Konto do pracy dla daemona webfsd:
+Description-pt.UTF-8: Utilizador a correr o daemon webfsd:
+Description-ru.UTF-8: Учётная запись, с правами которой работает служба webfsd:
+Description-sv.UTF-8: Användare som kör webfsd-demonen:
+Description-vi.UTF-8: Người dùng chạy trình nền webfsd:
+
+Template: webfsd/web_syslog
+Type: boolean
+Default: false
+Description: Log webfsd events (start, stop, etc.) to syslog?
+Description-cs.UTF-8: Zaznamenávat události webfsd (start, stop, apod.) do syslogu?
+Description-da.UTF-8: Log webfsd-hændelser (start, stop, etc.) til syslog?
+Description-de.UTF-8: Soll der Dienst »syslog« Webfsd-Vorkommnisse (start, stop, usw.) protokollieren?
+Description-es.UTF-8: ¿Desea que webfsd registre los eventos (inicio, parada, ...) en syslog?
+Description-fr.UTF-8: Faut-il enregistrer les événements (démarrage, arrêt, etc.) dans le journal système ?
+Description-it.UTF-8: Registrare gli eventi di webfsd (avvio, interruzione, ecc.) in syslog?
+Description-ja.UTF-8: webfsd のイベント (start や stop など) を syslog に記録しますか?
+Description-nb.UTF-8: Logge webfsd-hendelser (start/stopp/...) til syslog?
+Description-nl.UTF-8: Webfsd gebeurtenissen (start, stop, etc) loggen naar syslog?
+Description-no.UTF-8: Logge webfsd-hendelser (start/stopp/...) til syslog?
+Description-pl.UTF-8: Logować zdarzenia webfsd (start, stop, itp.) przez syslog?
+Description-pt.UTF-8: Registar os eventos do webfsd (iniciar/parar/...) via syslog?
+Description-ru.UTF-8: Записывать события webfsd (запуск, останов, пр.) в syslog?
+Description-sv.UTF-8: Logga webfsd-händelser (start/stopp/...) till syslog?
+Description-vi.UTF-8: Ghi lưu các sự kiện webfsd (khởi/dừng chạy v.v.) vào sổ theo dõi hệ thống ?
+
+Template: webfsd/web_accesslog
+Type: string
+Description: Access log file:
+ Access to webfsd is logged in common log format.
+ .
+ If this field is left empty, no logging of incoming connections will
+ be done.
+Description-cs.UTF-8: Logovací soubor přístupů:
+ Přístup k webfsd je zaznamenáván v běžném logovacím formátu.
+ .
+ Ponecháte-li prázdné, žádná příchozí spojení se logovat nebudou.
+Description-da.UTF-8: Tilgå logfil:
+ Adgang til webfsd er logget i gængs logformat.
+ .
+ Hvis dette felt er efterladt tomt, vil ingen logning af indgående forbindelser blive udført.
+Description-de.UTF-8: Protokolldatei für Zugriffe:
+ Zugriffe auf Webfsd werden im »common log format« protokolliert.
+ .
+ Wenn Sie dieses Feld leer lassen, werden die eingehenden Verbindungen nicht protokolliert.
+Description-es.UTF-8: Archivo del registro de accesos:
+ El acceso a webfsd se registra en un formato común de registro.
+ .
+ Si este campo se deja en blanco, no se registrarán las conexiones entrantes.
+Description-fr.UTF-8: Fichier de journalisation des accès :
+ Les accès à webfsd sont enregistrés dans le format commun de journalisation (« common log format »).
+ .
+ Si ce champ est laissé vide, aucun enregistrement des connexions entrantes ne sera effectué.
+Description-it.UTF-8: File di registro degli accessi:
+ L'accesso a webfsd viene registrato in formato di registro comune.
+ .
+ Se questo campo viene lasciato vuoto non verranno registrate le connessioni in entrata.
+Description-ja.UTF-8: アクセスログファイル:
+ webfsd へのアクセスは一般的なログ形式で記録されます。
+ .
+ これを空白にすると外からの接続は記録されません。
+Description-nb.UTF-8: Fil med tilgangslogg:
+ Tilgang til webfsd logges i et felles loggformat.
+ .
+ HVis dette feltet er tomt blir innkommende tilkoblinger ikke logget.
+Description-nl.UTF-8: Toegangslog-bestand: 
+ Toegang tot webfsd wordt gelogd in de algemene logboekindeling.
+ .
+ Als u dit veld leeg laat zullen binnenkomende verbindingen niet worden gelogd.
+Description-no.UTF-8: Fil med tilgangslogg:
+ Tilgang til webfsd logges i et felles loggformat.
+ .
+ HVis dette feltet er tomt blir innkommende tilkoblinger ikke logget.
+Description-pl.UTF-8: Plik dziennika połączeń:
+ Połączenia z webfsd są zapisywane w typowym formacie logów.
+ .
+ Jeśli ta wartość nie zostanie podana, połączenia z serwerem nie będą logowane.
+Description-pt.UTF-8: Ficheiro de registo (log):
+ O acesso ao webfsd é registado no formato de log comum.
+ .
+ Se o campo for deixado em branco, não serão registadas as ligações de entrada.
+Description-ru.UTF-8: Файл журнала доступа:
+ Доступ к webfsd протоколируется в едином формате журналов.
+ .
+ Если оставить поле пустым, то протоколирования входящих подключений выполняться не будет.
+Description-sv.UTF-8: Åtkomstloggfil:
+ Åtkomst till webfsd loggas i vanligt loggformat.
+ .
+ Om detta fält lämnas tomt kommer ingen loggning av inkommande anslutningar att göras.
+Description-vi.UTF-8: Truy cập tập tin ghi lưu :
+ Truy cập đến webfsd được ghi lưu theo định dạng sổ theo dõi dùng chung.
+ .
+ Bỏ trống trường này thì không theo dõi kết nối gửi đến.
+
+Template: webfsd/web_logbuffering
+Type: boolean
+Default: true
+Description: Should logging be buffered?
+ With buffered logging, entries will be written in chunks, not as soon
+ as they are accepted as client calls.
+Description-cs.UTF-8: Má být logování bufferované?
+ U bufferovaného logování se nebudou záznamy zapisovat okamžitě při přijetí každého klientova požadavku, ale až později po větších celcích.
+Description-da.UTF-8: Skal logning mellemlagres?
+ Med mellemlagret logning, vil punkter blive skrevet i klumper, ikke i samme øjeblik som de accepteres som klientkald.
+Description-de.UTF-8: Soll das Protokoll gepuffert werden?
+ Bei gepufferter Protokollierung werden die Einträge stückweise festgehalten und nicht nach jeder Annahme einer Klient-Anfrage geschrieben.
+Description-es.UTF-8: ¿Se debería usar una caché intermedia al registrar?
+ Al usar una caché intermedia, las entradas se escribirán en bloques, en lugar de escribirse tan pronto sean aceptadas como llamadas del cliente.
+Description-fr.UTF-8: Faut-il activer la mise en tampon (« buffer ») de la journalisation ?
+ Si la mise en tampon, de la journalisation est activée, les entrées de journaux seront écrites par paquets au lieu de l'être dès que les requêtes de clients sont reçues.
+Description-it.UTF-8: Inserire le registrazioni nel buffer?
+ Se le registrazioni vengono inserite nel buffer le voci verranno scritte in pezzi, finché non vengono accettate come chiamate da client.
+Description-ja.UTF-8: ログ出力をバッファ経由させますか?
+ ログ出力をバッファ経由させると、ログはクライアントからの呼び出しを受け付けた時点ではなくある程度まとめて書きこまれます。
+Description-nb.UTF-8: Skal logging bufres?
+ Med bufret logging vil loggoppføringer bli skrevet stykkevis, ikke med en gang de er tatt i mot som klientanrop.
+Description-nl.UTF-8: Moet het loggen worden gebufferd?
+ Bij gebufferd loggen worden regels in blokken weggeschreven, niet zodra ze zijn geaccepteerd als clientbezoeken.
+Description-no.UTF-8: Skal logging bufres?
+ Med bufret logging vil loggoppføringer bli skrevet stykkevis, ikke med en gang de er tatt i mot som klientanrop.
+Description-pl.UTF-8: Buforować logowanie?
+ Przy buforowanym logowaniu połączenia będą zapisywane w blokach, a nie za każdym razem po zaakceptowaniu jako żądanie klienta.
+Description-pt.UTF-8: Deve ser criado um buffer de registo?
+ Com um buffer de registo, as entradas serão escritas em blocos, em vez de imediatamente após serem aceites.
+Description-ru.UTF-8: Буферизировать протоколирование?
+ При буферизации протоколирования, элементы перед записью собираются в блоки, а не пишутся сразу после приёма клиентского подключения.
+Description-sv.UTF-8: Ska loggning köas?
+ Med köad loggning skrivs innehållet till loggen i större delar istället för omedelbart efter konstaterande om korrekta klientanrop.
+Description-vi.UTF-8: Chức năng theo dõi có nên được chuyển hoán đệm không?
+ Khi chuyển hoán đệm chức năng theo dõi, mục nhập được ghi theo đoạn, không phải ngay khi mục nhập đó được chấp nhận dưới dạng cuộc gọi trình khác.
+
+Template: webfsd/web_group
+Type: string
+Default: www-data
+Description: Group running the webfsd daemon:
+Description-cs.UTF-8: Skupina, pod kterou poběží daemon webfsd:
+Description-da.UTF-8: Gruppe der kører webfsd-dæmonen:
+Description-de.UTF-8: Gruppenkennung, unter der der Webfsd-Daemon laufen soll:
+Description-es.UTF-8: Grupo que ejecuta el demonio webfsd:
+Description-fi.UTF-8: Ryhmä, jolla webfsd-taustaohjelmaa ajetaan:
+Description-fr.UTF-8: Groupe utilisé par le démon webfsd :
+Description-gl.UTF-8: Grupo que executa o servizo webfsd:
+Description-it.UTF-8: Gruppo che esegue il demone webfsd:
+Description-ja.UTF-8: webfsd デーモンを実行するグループ:
+Description-nb.UTF-8: Gruppe som kjører webfsd-daemonen:
+Description-nl.UTF-8: Groep als wie de webfsd-achtergronddienst moet draaien:
+Description-no.UTF-8: Gruppe som kjører webfsd-daemonen:
+Description-pl.UTF-8: Grupa do pracy dla daemona webfsd:
+Description-pt.UTF-8: Grupo a correr o daemon webfsd:
+Description-ru.UTF-8: Группа, с правами которой работает служба webfsd:
+Description-sv.UTF-8: Grupp som kör webfsd-demonen:
+Description-vi.UTF-8: Nhóm chạy trình nền webfsd:
+
+Template: webfsd/web_index
+Type: string
+Description: Directory index filename:
+ If webfsd receives a request for a directory, it can optionally look for an
+ index file to be sent to the client. Common names are "index.html" and
+ "default.html".
+ .
+ If you leave this field empty, webfsd will send a directory listing to the
+ client.
+Description-cs.UTF-8: Jméno souboru s obsahem adresáře:
+ Pokud webfsd obdrží požadavek na adresář, může klientovi volitelně místo výpisu adresáře poslat indexový soubor. Běžná jména jsou „index.html“ a „default.html“.
+ .
+ Ponecháte-li prázdné, zašle webfsd klientovi výpis adresáře.
+Description-da.UTF-8: Filnavn for mappeindeks:
+ Hvis webfsd modtager en anmodning for en mappe, så kan den valgfrit kigge efter en indeksfil, som skal sendes til klienten. Gængse navne er »index.html« og »default.html«.
+ .
+ Hvis du efterlader dette felt tomt, så vil webfsd sende en mappevisning til klienten.
+Description-de.UTF-8: Name der Indexdatei für Verzeichnisse:
+ Falls Webfsd eine Anfrage für ein Verzeichnis erhält, kann er wahlweise nach einer Indexdatei suchen, die an den Client gesendet werden soll. Gebräuchliche Namen sind »index.html« und »default.html«.
+ .
+ Wenn Sie dieses Feld leer lassen, wird Webfsd eine Verzeichnisliste an den Client schicken.
+Description-es.UTF-8: Nombre del archivo índice de directorio:
+ Si webfsd recibe una solicitud para un directorio, opcionalmente puede buscar un archivo índice para enviarlo al cliente. Los nombres comunes son «index.html» y «default.html».
+ .
+ Si deja este campo en blanco, webfsd enviará un listado del directorio al cliente.
+Description-fr.UTF-8: Fichier contenant les index des répertoires :
+ Lorsque webfsd reçoit une requête sur un répertoire, il peut de manière optionnelle rechercher un fichier d'index à envoyer au client. Les noms usuels pour de tels fichiers d'index sont « index.html » et « default.html ».
+ .
+ Si vous laissez ce champ vide, webfsd enverra au client une énumération du contenu du répertoire.
+Description-it.UTF-8: Nome della directory del file indice:
+ Webfsd, se riceve una richiesta per una directory, può facoltativamente cercare un file indice da inviare al client. Normalmente i nomi di tali file sono «index.html» oppure «default.html».
+ .
+ Se questo campo viene lasciato vuoto webfsd invierà al client un elenco delle directory.
+Description-ja.UTF-8: ディレクトリインデックスファイルの名前:
+ webfsd がディレクトリに対するリクエストを受け取った場合に、インデックスファイルを探してクライアントに送信するようにすることがオプションで可能です。インデックスファイルとしてよく使用される名前は index.html や default.html です。
+ .
+ これを空白にすると webfsd はディレクトリ内のリストをクライアントに送信するようになります。
+Description-nb.UTF-8: Filnavn for katalogens innholdsfortegnelse:
+ Hvis webfsd får en forespørsel etter en katalog, så kan den se etter en spesiell fil som skal sendes til klienten. Vanlige navn er «index.html» og «default.html».
+ .
+ Hvis du lar dette feltet være tomt vil webfsd sende en innholdslistetil klienten.
+Description-nl.UTF-8: Bestandsnaam van de mapindex:
+ Wanneer webfsd een aanvraag voor een map ontvangt kan deze optioneel een indexbestand naar de client sturen. Standaardnamen zijn "index.html" en "default.html".
+ .
+ Als u dit veld leeg laat zal webfsd de mapinhoud tonen aan de client.
+Description-no.UTF-8: Filnavn for katalogens innholdsfortegnelse:
+ Hvis webfsd får en forespørsel etter en katalog, så kan den se etter en spesiell fil som skal sendes til klienten. Vanlige navn er «index.html» og «default.html».
+ .
+ Hvis du lar dette feltet være tomt vil webfsd sende en innholdslistetil klienten.
+Description-pl.UTF-8: Nazwa domyślnego pliku dla katalogów:
+ Po otrzymaniu żądania dla katalogu, webfsd może opcjonalnie szukać tam domyślnego pliku aby odesłać go jako odpowiedź do klienta. Typowymi nazwami są "index.html" oraz  "default.html".
+ .
+ Jeśli ta wartość nie zostanie podana, webfs będzie wysyłać w odpowiedzi do klienta listę plików w katalogu.
+Description-pt.UTF-8: Nome de ficheiro do índice de directório:
+ Se o webfsd receber um pedido para um directório, pode opcionalmente procurar por um ficheiro de índice que enviará para o cliente.  Nomes comuns são "index.html" e "default.html".
+ .
+ Se deixar este campo em branco, o webfsd irá enviar a listagem de directório para o cliente.
+Description-ru.UTF-8: Имя файла индекса каталога:
+ Если webfsd получает запрос на каталог, то в дополнении он может поискать индексный файл, который будет отправлен клиенту. Обычно используются имена index.html и default.html.
+ .
+ Если оставить поле пустым, то webfsd будет посылать клиенту список файлов в каталоге.
+Description-sv.UTF-8: Filnamn för katalogindex:
+ Om webfsd tar emot en begäran efter en katalog, kan den leta efter en indexfil som ska skickas till klienten. Vanliga namn är "index.html" och "default.html".
+ .
+ Om detta fält lämnas tomt kommer webfsd att skicka en katalogträdslista till klienten.
+Description-vi.UTF-8: Tên tập tin chỉ mục thư mục:
+ Nếu trình nền webfsd nhận một yêu cầu cung cấp một thư mục, nó cũng có khả năng tìm một tập tin chỉ mục cần gửi cho trình khách. Hai tên tập tin thường dùng là « index.html » và « default.html ».
+ .
+ Bỏ trống trường này thì webfsd gửi cho trình khách một danh sách thư mục.
+
+Template: webfsd/web_cgipath
+Type: string
+Description: CGI script catalog:
+ Please specify the location for CGI scripts to be served by webfsd. This
+ path should be located immediately below the document root.
+ .
+ Please specify the full path name, not a relative path. If this
+ field is left empty, CGI scripts will be disabled.
+Description-cs.UTF-8: Umístění CGI skriptů:
+ Zadejte umístění CGI skriptů, které bude webfsd poskytovat. Tato cesta by měla začínat těsně pod kořenem stromu dokumentů.
+ .
+ Cestu zadejte absolutní, ne relativní. Ponecháte-li prázdné, budou CGI skripty zakázány.
+Description-da.UTF-8: CGI-skriptkatalog:
+ Angiv venligst placeringen for CGI-skripter der skal betjenes af webfsd. Denne sti skal placeres umiddelbart under dokumentroden.
+ .
+ Angiv venligst det fulde stinavn, ikke en relativ sti. Hvis dette felt efterlades tomt vil CGI-skripter blive deaktiveret.
+Description-de.UTF-8: Katalog von CGI-Skripten:
+ Geben Sie bitte den Pfad zu den CGI-Skripten an, die Webfsd aufrufen darf. Der Pfad sollte sich unmittelbar unter dem Dokumenten-Wurzelverzeichnis befinden.
+ .
+ Geben Sie bitte den vollständigen Pfad an und keinen relativen. Wenn Sie dieses Feld leer lassen, werden keine CGI-Skripte ausgeführt.
+Description-es.UTF-8: Catálogo de los scripts CGI:
+ Especifique la ubicación de los scripts CGI que webfsd servirá. Esta ruta debería estar ubicada en el primer nivel de la raíz de documentos.
+ .
+ Especifique la ruta completa, no una ruta relativa. Si deja este campo vacío, se desactivarán los scripts CGI.
+Description-fr.UTF-8: Répertoire pour les scripts CGI :
+ Veuillez indiquer l'emplacement des scripts CGI qui seront publiés par webfsd. Ce chemin doit être situé directement sous la racine des documents du serveur web.
+ .
+ Veuillez indiquer un nom de répertoire complet et pas un nom relatif. Si ce champ est laissé vide, les scripts CGI seront désactivés.
+Description-it.UTF-8: Catalogo degli script CGI:
+ Specificare la posizione degli script CGI serviti da webfsd. Questo percorso dovrebbe trovarsi immediatamente sotto la radice del documento.
+ .
+ Specificare il percorso completo e non un percorso relativo. Se questo campo viene lasciato vuoto, gli script CGI verranno disabilitati.
+Description-ja.UTF-8: CGI スクリプト一覧:
+ webfsd により提供する CGI スクリプトの位置を指定してください。このパスはドキュメントルート直下に置かれるべきです。
+ .
+ 相対パスではなく絶対パスで指定してください。これを空白にすると CGI スクリプトは無効になります。
+Description-nb.UTF-8: Katalog for CGI-skripter:
+ Oppgi plasseringen for CGI-skripter som webfsd skal kjøre. Denne stien skal være straks under dokumentroten.
+ .
+ Oppgi fullt stinavn, ikke en relativ sti. Hvis dette feltet er tomt vil CGI-skripter være slått av.
+Description-nl.UTF-8: CGI-scriptcatalogus:
+ Wat is de locatie van CG-scripts die webfsd moet aanbieden? Dit pad moet zich direct onder de basismap bevinden.
+ .
+ Geef geen relatief pad op, maar de volledige padnaam op. Als u dit veld leeg laat zullen CGI-scripts uitgeschakeld worden.
+Description-no.UTF-8: Katalog for CGI-skripter:
+ Oppgi plasseringen for CGI-skripter som webfsd skal kjøre. Denne stien skal være straks under dokumentroten.
+ .
+ Oppgi fullt stinavn, ikke en relativ sti. Hvis dette feltet er tomt vil CGI-skripter være slått av.
+Description-pl.UTF-8: Katalog skryptów CGI:
+ Proszę określić położenie dla skryptów CGI uruchamianych przez webfsd. Ta ścieżka powinna znajdować się bezpośrednio pod korzeniem dokumentów.
+ .
+ Proszę podać pełną ścieżkę, nie ścieżkę względną. Jeśli ta wartość nie zostanie podana, skrypty CGI będą wyłączone.
+Description-pt.UTF-8: Catálogo de scripts CGI:
+ Indique por favor a localização dos scripts CGI a serem servidos pelo webfsd. Este caminho deverá estar localizado num nível imediatamente inferior ao da raiz dos documentos.
+ .
+ Indique por favor um caminho completo, não um relativo. Se este campo for deixado em branco, os scripts CGI serão desactivados.
+Description-ru.UTF-8: Каталог сценариев CGI:
+ Укажите расположение сценариев CGI, которые будут выполняться webfsd. Этот путь должен находиться сразу в корне документов.
+ .
+ Указывайте полный абсолютный путь, а не относительный. Если оставить поле пустым, то выполнение сценариев CGI будет отключено.
+Description-sv.UTF-8: Katalog för CGI-skript:
+ Ange platsen där CGI-skript ska serveras av webfsd. Denna plats ska vara belägen direkt under dokumentroten.
+ .
+ Ange en komplett sökväg, inte en relativ. Om fältet lämnas tomt kommer CGI-skript att avaktiveras.
+Description-vi.UTF-8: Phân loại văn lệnh CGI:
+ Hãy ghi rõ vị trí cho các văn lệnh CGI cần được webfsd phục vụ. Đường dẫn này nên nằm đúng dưới gốc tài liệu.
+ .
+ Hãy ghi rõ tên đường dẫn đầy đủ, không phải một đường dẫn tương đối. Bỏ trống trường này thì các văn lệnh CGI bị tắt.
+
+Template: webfsd/web_extras
+Type: string
+Description: Extra options to include:
+ Please specify any webfsd options you want to use with the main
+ daemon.
+ .
+ For instance, webfsd can run chrooted, provide timed expiration of
+ files, and bind either IPv4 or IPv6 addresses.
+ .
+ See webfsd's manual page for further options and details.
+Description-cs.UTF-8: Dodatečné volby:
+ Zadejte dodatečné volby pro webfsd, se kterými chcete spustit hlavního daemona.
+ .
+ Webfsd například umí běžet v chrootu, řídit expiraci souborů nebo třeba se navázat na adresy typu IPv4 nebo IPv6.
+ .
+ Další volby a více informací naleznete v manuálové stránce webfsd.
+Description-da.UTF-8: Ekstra indstillinger at inkludere:
+ Angiv venligst eventuelle webfsd-indstillinger du ønsker at bruge med hoveddæmonen.
+ .
+ For eksempel kan webfsd køre fængslet (chrooted), tilbyde tidsbestemt udløb for filer og binde enten IPv4- eller IPv6-adresser.
+ .
+ Se webfsd's manualside for yderligere indstillinger og detaljer.
+Description-de.UTF-8: Zusätzliche Optionen:
+ Geben Sie alle Optionen für Webfsd an, die für den Dienst gelten sollen.
+ .
+ Beispielsweise kann Webfsd in einer »chroot«-Umgebung laufen, mit Dateiverfallsdaten umgehen und mit IPv4- oder IPv6-Adressen arbeiten.
+ .
+ Die Handbuchseite zu Webfsd beschreibt weitere Optionen und Einzelheiten.
+Description-es.UTF-8: Opciones adicionales a incluir:
+ Especifique cualquier opción de webfsd que quiere usar con el demonio principal.
+ .
+ Por ejemplo, webfsd se puede ejecutar en una jaula de chroot, proporcionar expiración basada en tiempo de archivos y usar direcciones IPv4 o IPv6.
+ .
+ Para más opciones y detalles, vea el manual de webfsd.
+Description-fr.UTF-8: Options supplémentaires à utiliser :
+ Veuillez indiquer les options de webfsd que vous souhaitez utiliser avec le démon principal.
+ .
+ Par exemple, webfsd peut être utilisé dans un environnement fermé d'exécution (« chroot »), utiliser une expiration temporelle des fichiers ou utiliser à la fois des adresses IPv4 et IPv6.
+ .
+ Veuillez consulter la page de manuel de webfsd pour une explication complète sur les différentes options utilisables.
+Description-it.UTF-8: Opzioni supplementari da includere:
+ Specificare tutte le opzioni webfsd che si desidera utilizzare con il demone principale.
+ .
+ Per esempio webfsd può essere eseguito in chroot, oppure è possibile indicare un tempo di scadenza dei file e collegarsi sia a indirizzi IPv4 che a indirizzi IPv6.
+ .
+ Per ulteriori opzioni e informazioni consultare le pagine del manuale di webfsd.
+Description-ja.UTF-8: 他に追加するオプション:
+ メインのデーモンで使いたい webfsd オプションがあれば指定してください。
+ .
+ 例えば、webfsd は chroot 環境での実行が可能で、時間によるファイルの有効期限、IPv4 や IPv6 アドレスへの対応の設定を提供しています。
+ .
+ さらなるオプションや詳細については webfsd のマニュアルページを見てください。
+Description-nb.UTF-8: Ekstra valg å ta med:
+ Oppgi webfsd-valg du vil bruke med hoved-daemonen.
+ .
+ For eksempel, webfsd kan kjøre under chroot, la filer utløpe på tid, og binde til enten IPv4 eller IPv6-adresser.
+ .
+ Flere detaljer og valg finnes på manualsida til webfsd.
+Description-nl.UTF-8: Extra toe te voegen opties:
+ Geef eventuele aanvullende opties voor webfsd die de hoofdachtergronddienst moet gebruiken.
+ .
+ Webfsd kan bijvoorbeeld in een chroot worden uitgevoerd, aangepaste verlooptijd voor bestanden aanbieden, of binden aan IPv4- of IPv6-adressen.
+ .
+ Zie de man-pagina van webfsd voor meer opties en details.
+Description-no.UTF-8: Ekstra valg å ta med:
+ Oppgi webfsd-valg du vil bruke med hoved-daemonen.
+ .
+ For eksempel, webfsd kan kjøre under chroot, la filer utløpe på tid, og binde til enten IPv4 eller IPv6-adresser.
+ .
+ Flere detaljer og valg finnes på manualsida til webfsd.
+Description-pl.UTF-8: Dodatkowe opcje:
+ Proszę podać opcje wefbsd, które mają być używane przez główny proces daemona.
+ .
+ Na przykład, webfsd może pracować w środowisku chroot, obsługiwać daty ważności plików, oraz używać adresów IPv4 lub IPv6.
+ .
+ Więcej informacji na temat opcji i szczegółów działania można znaleźć na stronie podręcznika webfsd.
+Description-pt.UTF-8: Opções extra a incluir:
+ Indique as opções do webfsd que quer usar com o daemon principal.
+ .
+ Por exemplo, o webfsd pode correr sob uma chroot, fornecer tempo de expiração de ficheiros e agregar-se a endereços IPv4 ou IPv6.
+ .
+ Veja a página de manual do webfsd para mais opções e detalhes.
+Description-ru.UTF-8: Дополнительные параметры:
+ Укажите дополнительные параметры webfsd, которые должна использовать главная часть службы.
+ .
+ Например, webfsd можно запускать в chroot, указать срок доступности файлов, и привязку к адресам IPv4 или IPv6.
+ .
+ Подробней о параметрам смотрите в справочной странице webfsd.
+Description-sv.UTF-8: Ytterligare alternativ att inkludera:
+ Ange ytterligare webfsd-alternativ som du vill använda med huvudtjänsten.
+ .
+ Exempelvis kan webfsd köras chroot:ad, tillhandahålla möjligheten att tidsbegränsa åtkomst till filer samt ställas in att fungera med både IPv4- och IPv6-adresser.
+ .
+ Läs mer i manualsidan för webfsd om ytterligare alternativ och detaljer.
+Description-vi.UTF-8: Tuỳ chọn thêm cần bao gồm:
+ Hãy ghi rõ tuỳ chọn webfsd nào bạn muốn sử dụng với trình nền chính.
+ .
+ Chẳng hạn, webfsd có khả năng chạy được chroot, cung cấp sự hết hạn sử dụng tập tin theo thời gian, và đóng kết địa chỉ hoặc IPv4 hoặc IPv6.
+ .
+ Xem trang hướng dẫn (man webfsd) để tìm các tuỳ chọn và chi tiết khác.

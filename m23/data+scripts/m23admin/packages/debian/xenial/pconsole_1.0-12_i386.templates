@@ -1,0 +1,151 @@
+Template: pconsole/setuid
+Type: boolean
+Default: false
+Description: Do you want /usr/bin/pconsole to be installed SUID root?
+ You are strongly encouraged to leave pconsole without the SUID bit on.
+ .
+ If you are using a multiuser system, setting the SUID bit on pconsole will
+ be a major risk for a breach, since normal users will be able to attach
+ their consoles to a root PTY/TTY and send commands as root.
+ .
+ However, on a single-user system, setting the SUID bit might be a good
+ idea to avoid logging as root user.
+ .
+ If in doubt, you should install it without SUID. If it causes problems
+ you can change your mind later by running: dpkg-reconfigure pconsole
+Description-cs.UTF-8: Chcete nainstalovat /usr/bin/pconsole s nastaveným SUID bitem?
+ Opravdu doporučujeme nechat pconsole bez nastaveného SUID bitu.
+ .
+ Pokud máte víceuživatelský systém, nastavení SUID bitu na pconsole bude závažné bezpečnostní riziko, protože běžný uživatel si bude moci připojit svoji konzoli k rootovskému PTY/TTY a vykonávat příkazy jako root.
+ .
+ V jednouživatelském systému ale může být nastavení SUID bitu užitečné, abyste se nemuseli přihlašovat jako root.
+ .
+ Nejste-li si jisti, měli byste instalovat bez nastaveného SUID bitu. Pokud to bude způsobovat problémy, můžete to později změnit spuštěním: dpkg-reconfigure pconsole.
+Description-da.UTF-8: Ønsker du at /usr/bin/pconsole skal installeres som SUID root?
+ Du anbefales stærkt at efterlade pconsole uden SUID-delen aktiveret.
+ .
+ Hvis du bruger et flerbrugersystem, vil angivelse af SUID-delen på pconsole være en alvorlig sikkerhedsrisiko, da normale brugere vil være i stand til at vedhæfte deres konsoller til en root PTY/TTY og sende kommandoer som administrator (root).
+ .
+ På et system for en enkelt bruger kan angivelse af SUID dog være en god ide for at undgå logind som administratorbruger.
+ .
+ Hvis du er i tvivl, skal du installere den uden SUID. Hvis det giver problemer kan du skifte mening senere ved at køre: dpkg-reconfigure pconsole.
+Description-de.UTF-8: Soll /usr/bin/pconsole SUID-Root installiert werden?
+ Es wird nachdrücklich empfohlen, dass Sie Pconsole ohne aktiviertes SUID-Bit lassen.
+ .
+ Falls Sie ein Mehrbenutzer-System verwenden, wird das Setzen des SUID-Bits für Pconsole ein großes Risiko für einen Sicherheitsbruch sein, da normale Benutzer in der Lage sein werden, ihre Konsolen an ein Root-PTY/TTY anzuhängen und Befehle als Root abzusetzen.
+ .
+ Allerdings mag auf einem Einzelbenutzersystem es eine gute Idee sein, das SUID-Bit zu setzen, um eine Anmeldung als Root-Benutzer zu vermeiden.
+ .
+ Falls Sie in Zweifel sind, sollten Sie ohne SUID installieren. Falls es zu Problemen führt, können Sie später Ihre Meinung ändern, indem Sie »dpkg-reconfigure pconsole« ausführen.
+Description-es.UTF-8: ¿Desea instalar «/usr/bin/pconsole» con el bit «SUID» del «root» activo?
+ Se recomienda encarecidamente no instalar pconsole con el bit «SUID» del «root» activo.
+ .
+ Si está usando un sistema multiusuario, instalar pconsole con el bit «SUID» del «root» activo supone un riesgo importante de intrusión, puesto que los usuarios normales tendrán la posibilidad de vincular sus consolas a una PTY/TTY de administrador («root») y ejecutar órdenes como administrador («root»).
+ .
+ Sin embargo, en un sistema con un único usuario, activar el bit «SUID» puede ser una buena idea para evitar entrar al sistema como administrador («root»).
+ .
+ Si duda, debería instalarlo sin activar el bit «SUID». Si esto le causa problemas, puede cambiarlo más adelante ejecutando «dpkg-reconfigure pconsole»
+Description-eu.UTF-8: /usr/bin/pconsole SUID root bezala instalatu nahi al dituzu?
+ Gogorki gomendatzen da pconsole SUID bit-a ezarri gabe uztea.
+ .
+ Erabiltzaile-anitzeko sistema bat erabiltzen ari bazara, pconsole-n SUID bit-a ezartzea segurtasun arrisku handi bat izan daiteke erabiltzaile arruntak bere kontsola root PTY/TTY batetara eransteko eta root gisa komandoak exekutatzeko gai izango dira eta.
+ .
+ Hala ere erabiltzaile bakarreko sistemetan SUID bit-a ezartzea ideia ona izan daiteke root bezala saioa ez hasteko.
+ .
+ Zalantzarik baduzu instalatu ezazu SUID gabe. Honek arazoak sortzen badizkizu beranduago zure hautapena aldatu ahal izango duzu komando honen bidez: dpkg-reconfigure pconsole
+Description-fi.UTF-8: Tulisiko /usr/bin/pconsole asentaa asetuksella ”SUID root”?
+ On erittäin suositeltavaa jättää pconsolen SUID-bitti pois päältä.
+ .
+ Jos järjestelmällä on useita käyttäjiä, SUID-bitin asettaminen on suuri tietoturvariski, koska tällöin tavalliset käyttäjät voivat ottaa yhteyden pääkäyttäjän päätteeseen ja lähettää komentoja pääkäyttäjäoikeuksilla.
+ .
+ Yhden käyttäjän järjestelmissä SUID-bitin asettaminen saattaa kuitenkin olla hyvä idea, koska tällöin vältetään pääkäyttäjäksi kirjautuminen.
+ .
+ Jos olet epävarma, jätä SUID-asetus pois päältä. Asetusta voidaan muuttaa myöhemmin ajamalla komento ”dpkg-reconfigure pconsole”.
+Description-fr.UTF-8: Souhaitez-vous installer /usr/bin/pconsole « SUID root » ?
+ Il est fortement recommandé de laisser pconsole avec le bit SUID désactivé.
+ .
+ Si vous travaillez sur un système multi-utilisateurs, l'exécution de pconsole avec les droits du super-utilisateur (« SUID root ») constitue un risque majeur, puisque des utilisateurs non privilégiés seront capables d'attacher leur console à un terminal PTY/TTY du super-utilisateur et d'y envoyer des commandes sous son identité.
+ .
+ Cependant, sur un système mono-utilisateur, la mise en place du bit SUID peut être une bonne idée afin d'éviter de se connecter en tant que super-utilisateur.
+ .
+ Dans le doute, vous devriez l'installer sans le bit SUID. Si cela causait des problèmes, vous pourrez changer d'avis ultérieurement en exécutant « dpkg-reconfigure pconsole ».
+Description-gl.UTF-8: ¿Quere instalar /usr/bin/pconsole con SUID root?
+ Recoméndase encarecidamente que non estableza o bit SUID de pconsole.
+ .
+ Se ten un sistema multiusuario, establecer o bit SUID de pconsole pode pór o sistema en risco, xa que os usuarios normais han poder conectar as súas consolas a un PTY/TTY dun administrador e enviar ordes coma administrador.
+ .
+ Nembargantes, nun sistema dun só usuario, establecer o bit SUID pode ser unha boa idea para evitar ter que se conectar como administrador.
+ .
+ Se non está seguro, debería instalalo sen SUID. Se isto causa problemas pode cambialo máis adiante executando "dpkg-reconfigure pconsole".
+Description-it.UTF-8: Installare /usr/bin/pconsole in modalità "SUID root"?
+ Si raccomanda di lasciare pconsole con il bit SUID disattivato.
+ .
+ Se il sistema ha più utenti, l'impostazione del bit SUID su pconsole espone a un grosso rischio dato che gli utenti normali potranno collegare la propria console a un PTY/TTY root e inviare comandi come root.
+ .
+ Su un sistema con un solo utente, l'uso di SUID potrebbe essere una buona idea per evitare l'accesso con l'utente root.
+ .
+ In caso di dubbi, andrebbe installato senza SUID. Se questo causa problemi è possibile modificare successivamente questa impostazione eseguendo "dpkg-reconfigure pconsole".
+Description-ja.UTF-8:  /usr/bin/pconsole を root に SUID してインストールしますか?
+ pconsole を SUID ビットを立てないままにしておくことを強くお勧めします。
+ .
+ 複数のユーザがいるシステムを使っている場合、pconsole に SUID を設定すると、一般ユーザがコンソールを root の PTY/TTY に接続して root としてコマンドを送信することができるので、大きなセキュリティ侵害を引き起こす可能性があります。
+ .
+ ユーザが一人しかいないシステムの場合は、root ユーザとしてログインするのを避けられるので SUID 設定するのは良い考えです。
+ .
+ よく分からない場合は、SUID 無しでインストールしてください。これが問題になって、後で考えを変えた場合は以下を実行してください: dpkg-reconfigure pconsole
+Description-nl.UTF-8: Wilt u /usr/bin/pconsole installeren met de SUID-bit actief voor root?
+ U wordt ten sterkste aangeraden om de SUID-bit niet actief te maken.
+ .
+ Als dit een systeem met meerdere gebruikers is, is het activeren van de SUID-bit op pconsole een groot beveiligingsrisico, daar normale gebruikers hun consoles dan aan een root PTY/TTY kunnen hangen om zo commando's als root te versturen.
+ .
+ Op een systeem met slechts 1 gebruiker daarentegen kan het activeren van de SUID-bit een goed idee zijn, daar dit inloggen als root vermijdt. 
+ .
+ Bij twijfel installeert u best zonder de SUID-bit te activeren. U kunt later altijd van gedachte veranderen via het commando 'dpkg-reconfigure pconsole'.
+Description-pl.UTF-8: Czy /usr/bin/pconsole ma być zainstalowany z SUID root?
+ Usilnie zaleca się pozostawienie pconsole bez ustawionego atrybutu SUID.
+ .
+ Jeśli ten system jest wykorzystywany przez wielu użytkowników, ustawienie atrybutu SUID programowi pconsole będzie stanowiło poważne zagrożenie bezpieczeństwa, ponieważ zwykły użytkownik będzie w stanie podłączyć swoją konsolę do PTY/TTY roota i wykonywać polecenia jako root.
+ .
+ Jeśli jednak z systemu korzysta tylko jeden użytkownik, ustawienie atrybutu SUID może być dobrym rozwiązaniem, eliminującym konieczność logowania się jako root.
+ .
+ W przypadku wątpliwości, należy wybrać instalację bez SUID. W razie ewentualnych problemów, można zmienić to ustawienie później, wykonując polecenie "dpkg-reconfigure pconsole".
+Description-pt.UTF-8: Deseja instalar o /usr/bin/pconsole com 'SUID root'?
+ É-lhe fortemente aconselhado deixar o pconsole sem o bit SUID activo.
+ .
+ Se estiver a usar um sistema multi-utilizador, ao definir o bit SUID no pconsole terá um maior risco de brechas, já que os utilizadores normais serão capazes de anexar as suas consolas a uma consola root PTY/TTY e enviar comandos como root.
+ .
+ No entanto num sistema de utilizador único, definir o bit SUID pode ser uma boa ideia para evitar o logging como utilizador root
+ .
+ Se estiver na dúvida, deverá instalá-lo sem SUID. Se lhe causar problemas pode decidir pelo contrário mais tarde e correr: dpkg-reconfigure pconsole
+Description-pt_BR.UTF-8: Você deseja instalar o /usr/bin/pconsole com SUID root?
+ Você é fortemente encorajado a deixar o pconsole sem o bit SUID ativado.
+ .
+ Se você está usando um sistema multi-usuário, setar o bit SUID no pconsole será um risco principal para uma brecha, já que os usuários normais serão capazes de anexar seus consoles a um console root PTY/TTY e enviar comandos como root.
+ .
+ No entanto, em um sistema com um único usuário, setar o bit SUID pode ser uma boa idéia para evitar o 'logging' como usuário root.
+ .
+ Se estiver em dúvida, você deve instalá-lo sem SUID. Se isso causar problemas, você pode mudar de idéia depois, executando: dpkg-reconfigure pconsole
+Description-ru.UTF-8: Установить на /usr/bin/pconsole SUID-бит?
+ Настоятельно не рекомендуется устанавливать на pconsole SUID-бит.
+ .
+ Если у вас многопользовательская система, установка SUID-бита на pconsole приведёт к появление проблем с безопасностью, так как обычные пользователи смогут подключать свои консоли к суперпользовательской PTY/TTY и отправлять команды от имени суперпользователя.
+ .
+ Однако, на однопользовательской системе установка SUID-бита упростит работу, так как не нужно будет регистрироваться с правами суперпользователя.
+ .
+ Если не знаете что делать, не устанавливайте SUID-бит. В случае проблем, вы можете изменить настройку с помощью команды dpkg-reconfigure pconsole
+Description-sv.UTF-8: Vill du att /usr/bin/pconsole ska installeras SUID root?
+ Det rekommenderas starkt att du lämnar pconsole utan SUID-biten satt.
+ .
+ Om du använder ett multi-användarsystem kan pconsole utgöra en säkerhetsrisk om pconsole har installerats med SUID-biten satt eftersom användare kan koppla upp sin konsoller till en root PTY/TTY och skicka kommandon som root.
+ .
+ Men på ett enanvändarsystem kan SUID-bit vara en bra ide att sätta för att förhindra loggning som root-användaren.
+ .
+ Om du är osäker bör du installera den utan SUID. Om det skapar problem och du ändrar dig senare kan du köra: 'dpkg-reconfigure pconsole'
+Description-vi.UTF-8: Bạn có muốn cài đặt «/usr/bin/pconsole» với tư cách «SUID root» không?
+ Khuyến khích nặng bạn không thêm bit SUID vào trình pconsole, không cài đặt pconsole với tư cách «SUID root».
+ .
+ Nếu bạn có một hệ thống đa người dùng, lập bit SUID trên pconsole sẽ rất rủi ro bảo mật, vì người dùng bình thường sẽ có khả năng gắn bàn giao tiếp mình vào một PTY/TTY chủ rồi gởi lệnh với tư cách người chủ (root).
+ .
+ Tuy nhiên, trong một hệ thống đơn người dùng, lập bit SUID có thể là một ý kiến tốt, để tránh cần phải đăng nhập với tư cách người dùng chủ.
+ .
+ Nếu chưa chắc thì bạn nên cài đặt trình này không có SUID. Lúc sau, nếu bạn thay đổi ý kiến thì có thể cấu hình lại bằng cách chạy lệnh «dpkg-reconfigure pconsole».

@@ -85,8 +85,34 @@ function GRP_getIdByName($groupName)
 		return($line[0]);
 	}
 	else
-	return(false);
-};
+		return(false);
+}
+
+
+
+
+
+/**
+**name GRP_getNameById($groupId)
+**description gets the groupname of an Id
+**parameter groupId: Index of the group
+**returns Group name or false, if no matching group is found.
+**/
+function GRP_getNameById($groupId)
+{
+	if (CHECK_FW(true, CC_groupID, $groupId))
+	{
+		$sql = "SELECT groupname FROM `groups` WHERE id='$groupId'";
+
+		$result = db_query($sql); //FW ok
+
+		$line = mysqli_fetch_row($result);
+
+		return($line[0]);
+	}
+	else
+		return(false);
+}
 
 
 
@@ -154,11 +180,11 @@ function GRP_addClientToGroup($clientName,$groupName)
 	$gid = GRP_getIdByName($groupName);
 
 	if (!empty($cid) && !empty($gid) && !GRP_isClientInGroup($clientName,$groupName))
-		{
-			$sql="INSERT INTO `clientgroups` (`clientid` , `groupid`) VALUES ('$cid', '$gid')";
+	{
+		$sql="INSERT INTO `clientgroups` (`clientid` , `groupid`) VALUES ('$cid', '$gid')";
 
-			db_query($sql); //FW ok
-		};
+		db_query($sql); //FW ok
+	}
 };
 
 
@@ -179,20 +205,40 @@ function GRP_delClientFromGroup($clientName,$groupName="")
 	$addSQL="";
 
 	if (!empty($groupName))
-		{
-			$gid = GRP_getIdByName($groupName);
+	{
+		$gid = GRP_getIdByName($groupName);
 
-			if (!empty($gid))
-				$addSQL="AND groupid='$gid'";
-		};
+		if (!empty($gid))
+			$addSQL="AND groupid='$gid'";
+	}
 
 	if (!empty($cid))
-		{
-			$sql="DELETE FROM `clientgroups` WHERE clientid='$cid' $addSQL";
+	{
+		$sql="DELETE FROM `clientgroups` WHERE clientid='$cid' $addSQL";
 
-			db_query($sql); //FW ok
-		};
-};
+		db_query($sql); //FW ok
+	}
+}
+
+
+
+
+
+/**
+**name GRP_getDescrGroup($group)
+**description Gets the description of a client group.
+**returns Description of the group.
+**/
+function GRP_getDescrGroup($group)
+{
+	CHECK_FW(CC_groupname, $group);
+	$sql="SELECT description FROM `groups` WHERE groupname='$group'";
+	
+	$result = db_query($sql);
+	$group_descr = mysqli_fetch_row($result);
+	
+	return($group_descr[0]);
+}
 
 
 

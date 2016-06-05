@@ -74,6 +74,10 @@ function CLIENT_getNextFreeIp()
 	$CIPRanges = new CIPRanges();
 	$notUse = array_merge($notUse, $CIPRanges->getAllLockedIPsInt());
 
+	// Add the IPs managed (or known) by UCS
+	if (HELPER_isExecutedOnUCS())
+		$notUse = array_merge($notUse, UCS_getUsedIPs());
+
 	//Get all used IPs as longs
 	$res = DB_query("SELECT INET_ATON( ip ) AS intip FROM clients ORDER BY intip");
 	while ($line  = mysqli_fetch_row($res))
@@ -801,7 +805,10 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 	// The value(s) must be set before integration
 	if ($clientAddType == CLIENT_ADD_TYPE_assimilate)
 	{
-		$CClientO->setBootType(CClient::BOOTTYPE_PXE);
+		if ($data['clientUsesDynamicIP'])
+			$CClientO->setBootType(CClient::BOOTTYPE_GPXE);
+		else
+			$CClientO->setBootType(CClient::BOOTTYPE_PXE);
 	}
 
 	if (($clientAddType == CLIENT_ADD_TYPE_add) ||
@@ -860,7 +867,7 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 	if (($clientAddType == CLIENT_ADD_TYPE_add) && ($CClientO->getBootType() != CClient::BOOTTYPE_GPXE))
 		$CClientO->setMAC($data['mac']);
 
-	if ((($clientAddType == CLIENT_ADD_TYPE_add) || ($clientAddType == CLIENT_ADD_TYPE_assimilate)) && ($CClientO->getBootType() != CClient::BOOTTYPE_GPXE))
+	if (($clientAddType == CLIENT_ADD_TYPE_add) || ($clientAddType == CLIENT_ADD_TYPE_assimilate))
 		$CClientO->setIP($data['ip']);
 
 	// Set system in UEFI mode, if UEFI booting is choosen
@@ -888,19 +895,19 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 	$CClientO->setRootPassword($data['rootpassword'], $cryptRootPw);
 	$CClientO->setNetRootPwd();
 
+	if ($clientAddType == CLIENT_ADD_TYPE_add)
+	{
+		//write account to the LDAP server
+		if (($CClientO->getLDAPType()=="write") && (!$defineOnly))
+			$CClientO->addToCredentialsToLDAPServer();
+	}
+
 	//if there is an error message quit with it
 	if ($CClientO->hasErrors())
 	{
 		$err = $CClientO->popErrorMessagesHTML();
 		$CClientO->destroy();
 		return($err);
-	}
-
-	if ($clientAddType == CLIENT_ADD_TYPE_add)
-	{
-		//write account to the LDAP server
-		if (($CClientO->getLDAPType()=="write") && (!$defineOnly))
-			$CClientO->addToCredentialsToLDAPServer();
 	}
 
 	$CClientO->updateModifyDate();
@@ -1807,6 +1814,13 @@ function CLIENT_convertMac($mac, $splitter)
 
 
 
+//m23customPatchBegin type=change id=CLIENT_getIPTSbyName
+//m23customPatchEnd id=CLIENT_getIPTSbyName
+
+
+
+
+
 /**
 **name CLIENT_getIPbyName($clientName)
 **description returns the ip from a selected clientname
@@ -1848,6 +1862,13 @@ function CLIENT_getNamebyIP($ip)
 
 	return($line[0]);
 };
+
+
+
+
+
+//m23customPatchBegin type=change id=CLIENT_getMACTSbyName
+//m23customPatchEnd id=CLIENT_getMACTSbyName
 
 
 
@@ -3036,6 +3057,8 @@ function CLIENT_showAddDialog($addType)
 		case ADDDIALOG_normalAdd:
 			$submitLabel=$I18N_add;
 			$page="addclient";
+			//m23customPatchBegin type=change id=CLIENT_showAddDialogCaseADDDIALOG_normalAdd
+			//m23customPatchEnd id=CLIENT_showAddDialogCaseADDDIALOG_normalAdd
 			break;
 		case ADDDIALOG_defineOnly:
 			$submitLabel=$I18N_define;
@@ -3062,6 +3085,9 @@ function CLIENT_showAddDialog($addType)
 			$params=CLIENT_getParams($_SESSION['clientName']);
 			$options=CLIENT_getAllOptions($_SESSION['clientName']);
 			$installOptions = $options;
+
+			//m23customPatchBegin type=change id=CLIENT_showAddDialogCaseADDDIALOG_changeClient
+			//m23customPatchEnd id=CLIENT_showAddDialogCaseADDDIALOG_changeClient
 
 			//Some settings (e.g. kernel) cannot be changed, if no distribution is choosen
 			if (!isset($options['distr']{1}))
@@ -3093,6 +3119,9 @@ function CLIENT_showAddDialog($addType)
 	HTML_storableInput("ED_eMail", "eMail", $params['eMail'], $installParams['eMail'], 20, 40);
 		CLIENT_addChangeElement("eMail",true);
 
+	//m23customPatchBegin type=change id=CLIENT_showAddDialogAdditionalFormularElementDefinition
+	//m23customPatchEnd id=CLIENT_showAddDialogAdditionalFormularElementDefinition
+
 	if (!$_SESSION['m23Shared'])
 	{
 		if (!empty($_GET['VM_mac'])) $_POST['ED_mac'] = $_GET['VM_mac'];
@@ -3123,7 +3152,12 @@ function CLIENT_showAddDialog($addType)
 		CLIENT_addChangeElement("boottype",true);
 
 	$languageList = I18N_listClientLanguages("", false);
-	$language = HTML_storableSelection("SEL_language", "language", $languageList, SELTYPE_selection, true, empty($params['language']) ? $GLOBALS["m23_language"] : $params['language'], $installParams['language']);
+	// Get the default language, if the dialog was called the 1st time
+	$defaultLang = empty($params['language']) ? $GLOBALS["m23_language"] : $params['language'];
+
+	// Change 'en' => 'uk'
+	$defaultLang = ($defaultLang == 'en') ? 'uk' : $defaultLang;
+	$language = HTML_storableSelection("SEL_language", "language", $languageList, SELTYPE_selection, true, $defaultLang, $installParams['language']);
 		CLIENT_addChangeElement("language");
 
 	//Client group
@@ -3166,7 +3200,11 @@ function CLIENT_showAddDialog($addType)
 		HTML_storableSelection("SEL_ldapserver", "ldapserver", $ldapServerList, SELTYPE_selection, true, empty($options['ldapserver']) ? false : $options['ldapserver'],$installOptions['ldapserver']);
 		HTML_storableInput("ED_userID", "userID", empty($options['userID']) ? LDAP_getNextUserID() : $options['userID'], $installOptions['userID'], 5, 6);
 		HTML_storableInput("ED_groupID", "groupID", empty($options['groupID']) ? LDAP_getNextGroupID() : $options['groupID'], $installOptions['groupID'], 5, 6);
-		$ladpUsageList = array ("none" => $I18N_dontUseLDAP, "read" => $I18N_readLoginFromLDAP, "write" => $I18N_addNewLoginToLDAP);
+		
+		if (HELPER_isExecutedOnUCS())
+			$ladpUsageList = array ("none" => $I18N_dontUseLDAP, "read" => $I18N_readLoginFromUCSLDAP, "write" => $I18N_addNewLoginToUCSLDAP);
+		else
+			$ladpUsageList = array ("none" => $I18N_dontUseLDAP, "read" => $I18N_readLoginFromLDAP, "write" => $I18N_addNewLoginToLDAP);
 		HTML_storableSelection("SEL_ldaptype", "ldaptype", $ladpUsageList, SELTYPE_radio, true, empty($options['ldaptype']) ? "none" : $options['ldaptype'], $installOptions['ldaptype']);
 			CLIENT_addChangeElement("ldap");
 	
@@ -3332,6 +3370,9 @@ if ((($addType == ADDDIALOG_normalAdd) ||
 	($addType == ADDDIALOG_changeClient)) && !$_SESSION['m23Shared'])
 		echo("<tr $oddrow><td>$I18N_mac*</td><td>".ED_mac." ($I18N_eg 009b52a5e121)</td>".RB_change_mac."</tr>
 			<tr $evenrow><td>$I18N_ip*</td><td>".ED_ip." ($I18N_eg 192.168.0.5)</td>".RB_change_ip."</tr>");
+	
+	//m23customPatchBegin type=change id=CLIENT_showAddDialogShowAdditionalFormularElemens
+	//m23customPatchEnd id=CLIENT_showAddDialogShowAdditionalFormularElemens
 
 	if (!$_SESSION['m23Shared'])
 echo("		<tr $oddrow><td>$I18N_netmask*</td><td>".ED_netmask." ($I18N_eg 255.255.255.0)</td>".RB_change_netmask."</tr>
@@ -3351,9 +3392,9 @@ echo("
 	");
 
 
-	if (!$_SESSION['m23Shared'])
+	if (!$_SESSION['m23Shared'] && !HELPER_isExecutedOnUCS())
 echo("
-			<tr><td bgcolor=\"#BBFBA5\" colspan=\"$colspanWithoutRadios\"><center><span class=\"highlight\">LDAP</span></center></td> ".RB_change_ldap."</tr>
+			<tr><td bgcolor=\"#BBFBA5\" colspan=\"$colspanWithoutRadios\"><center><span class=\"highlight\">LDAP</span></center></td></tr>
 			<tr bgcolor=\"#BBFBA5\"><td>$I18N_LDAPUsage</td><td>".SEL_ldaptype."</td></tr>
 			<tr bgcolor=\"#BBFBA5\"><td>$I18N_userID</td><td>".ED_userID."</td></tr>
 			<tr bgcolor=\"#BBFBA5\"><td>$I18N_groupID</td><td>".ED_groupID."</td></tr>
@@ -3363,7 +3404,23 @@ echo("
 
 			<tr><td bgcolor=\"#EF9F74\">$I18N_homeOnNFS</td><td bgcolor=\"#EF9F74\" align=\"right\">".ED_nfshomeserver."<br>($I18N_eg 192.168.1.23:/nfs-homes)</td>".RB_change_nfshomeserver."</tr>
 	");
-	
+
+
+	if (HELPER_isExecutedOnUCS())
+echo("
+			<tr>
+				<td bgcolor=\"#BBFBA5\" colspan=\"$colspanWithoutRadios\">
+					<center>
+						<span class=\"highlight\">$I18N_authentificationViaUCS</span><br>
+						$I18N_readLoginFromUCSLDAPSupportedDistros
+					</center>
+				</td>
+			</tr>
+			<tr bgcolor=\"#BBFBA5\"><td>$I18N_LDAPUsage</td><td>".SEL_ldaptype."</td></tr>
+			<tr bgcolor=\"#BBFBA5\"><td>$I18N_userID</td><td>".ED_userID."</td></tr>
+			<tr bgcolor=\"#BBFBA5\"><td>$I18N_groupID</td><td>".ED_groupID."</td></tr>
+	");
+
 echo("
 			<tr><td colspan=\"$colspan\"><center>".BUT_submit." $HTML_VM_ControlLink</center></td></tr>
 		</table>
@@ -3453,7 +3510,9 @@ function CLIENT_deleteClient($client,$showMsg=false, $deleteVM=false)
 	CHECK_FW(CC_clientname, $client);
 
 	DHCP_activateBoot($client, false);
-// 	DHCP_rmClient($client);
+
+	if (HELPER_isExecutedOnUCS())
+		UCS_delClient($client);
 	
 	//Delete the VM
 	if ($deleteVM) VM_delete($client);
@@ -3646,11 +3705,15 @@ function CLIENT_changeClient()
 					$changeDHCP=true;
 					break;
 				case "mac":
+				//m23customPatchBegin type=change id=CLIENT_changeClientAdditionalCaseMac
+				//m23customPatchEnd id=CLIENT_changeClientAdditionalCaseMac
 					$changeDHCP=true;
 					CHECK_FW(CC_mac, $_SESSION['preferenceSpace'][$elem]);
 					$sql.="`$varname`='".$_SESSION['preferenceSpace'][$elem]."', ";
 					break;
 				case "ip":
+				//m23customPatchBegin type=change id=CLIENT_changeClientAdditionalCaseIp
+				//m23customPatchEnd id=CLIENT_changeClientAdditionalCaseIp
 					//Check, if the new IP is nonused
 					$checker->checkNonusedIP($_SESSION['preferenceSpace'][$elem]);
 					if ($checker->showMessages())
@@ -3660,6 +3723,9 @@ function CLIENT_changeClient()
 					CHECK_FW(CC_ip, $_SESSION['preferenceSpace'][$elem]);
 					$sql.="`$varname`='".$_SESSION['preferenceSpace'][$elem]."', ";
 					break;
+
+				//m23customPatchBegin type=change id=CLIENT_changeClientAdditionalCaseElement
+				//m23customPatchEnd id=CLIENT_changeClientAdditionalCaseElement
 
 				case "proxy":
 					//proxy settings are stored in the "options" row

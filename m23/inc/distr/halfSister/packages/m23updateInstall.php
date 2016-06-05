@@ -18,6 +18,8 @@ function run($id)
 	
 	$arr=explodeAssoc("?#?",$line[1]);
 
+	HS_pkgUpdateCache();
+
 	if ($arr['type']=="complete")
 		HS_pkgFullUpdate();
 	else

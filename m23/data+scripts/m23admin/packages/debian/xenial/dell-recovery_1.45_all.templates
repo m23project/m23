@@ -1,0 +1,563 @@
+Template: dell-recovery/destination
+Type: string
+Default: none
+Description: for internal use; determines whether to generate recovery media
+
+Template: dell-recovery/recovery_type
+Type: string
+Default: dynamic
+Description: for internal use;determines whether to offer the bootstrap 
+ ubiquity plugin to the user. valid: [dynamic, factory, usb, dvd]
+
+Template: dell-recovery/recovery_partition_filesystem
+Type: string
+Default: 0c
+Description: for internal use; determines the filesystem of the recovery partition
+
+Template: dell-recovery/disable-driver-install
+Type: string
+Default:
+Description: for internal use; determines any *-modaliases packages that should be removed
+
+Template: dell-recovery/swap
+Type: string
+Default: dynamic
+Description: for internal use; determines swap behavior; binary enable (true/false) or dynamically determined based on disk size (dynamic)
+
+Template: dell-oobe/user-interface
+Type: string
+Default: dynamic
+Description: for internal use; determines the default UI; (une/ude) or dynamically determined based on LOB/screen rez (dynamic)
+
+Template: dell-recovery/build_start
+Type: text
+Description: Building Dell Recovery Media...
+Description-bg.UTF-8: Изграждане на Dell Recovery Media...
+Description-de.UTF-8: Dell-Wiederherstellungsmedium wird erstellt …
+Description-es.UTF-8: Construyendo disco de recuperación Dell...
+Description-fi.UTF-8: Rakennetaan Dell-palautusmediaa...
+Description-fr.UTF-8: Construction du média DELL de restauration
+Description-gl.UTF-8: Construindo o soporte de Dell Recovery...
+Description-hr.UTF-8: Izgradnja Dell medija oporavka...
+Description-hu.UTF-8: Dell helyreállító adathordozó összeállítása…
+Description-it.UTF-8: Creazione supporto di ripristino Dell...
+Description-lv.UTF-8: Būvē Dell atkopšanas mēdiju...
+Description-pl.UTF-8: Tworzenie nośnika naprawy systemu Dell..
+Description-pt.UTF-8: Construindo a Mídia de recuperação Dell
+Description-pt_BR.UTF-8: Construindo Mídia de Recuperação da Dell...
+Description-ru.UTF-8: Сборка носителя средства восстановления Dell...
+Description-sk.UTF-8: Vytvoriť Dell médium pre obnovu...
+Description-sv.UTF-8: Bygger återställningsmedia för Dell...
+Description-tr.UTF-8: Dell Yedekleme Ortamı Yapılandırılıyor...
+Description-uk.UTF-8: Побудова носія для відновлення Dell...
+Description-zh_CN.UTF-8: 创建 Dell 恢复介质...
+
+Template: dell-recovery/build_progress
+Type: text
+Description: ${MESSAGE} (${PERCENT})...
+
+Template: dell-recovery/burning
+Type: text
+Description: Opening Burner...
+Description-bg.UTF-8: Отваряне на записвачка...
+Description-de.UTF-8: Brenner wird geöffnet …
+Description-es.UTF-8: Abriendo copiador...
+Description-fi.UTF-8: Avataan kirjoittajaa...
+Description-fr.UTF-8: Ouverture du graveur...
+Description-gl.UTF-8: Abrindo a grabadora...
+Description-hr.UTF-8: Otvaranje snimača...
+Description-hu.UTF-8: Író megnyitása…
+Description-it.UTF-8: Apertura masterizzatore...
+Description-lt.UTF-8: Atveriama CD/DVD rašymo programa
+Description-lv.UTF-8: Atver rakstītāju...
+Description-pl.UTF-8: Otwieranie nagrywarki ...
+Description-pt.UTF-8: Abrindo o gravador...
+Description-pt_BR.UTF-8: Abrindo gravador...
+Description-ru.UTF-8: Oткрытие программы записи...
+Description-sk.UTF-8: Otváram napaľovačku...
+Description-sv.UTF-8: Öppnar brännare...
+Description-tr.UTF-8: Yazıcı Açılıyor...
+Description-uk.UTF-8: Відкриття програми запису...
+Description-zh_CN.UTF-8: 打开刻录机...
+
+Template: ubiquity/text/dell_recovery_title
+Type: text
+Description: Dell Recovery
+Description-de.UTF-8: Dell Recovery
+Description-es.UTF-8: Recuperación de Dell
+Description-fi.UTF-8: Dell-palautus
+Description-hu.UTF-8: Dell helyreállító
+Description-it.UTF-8: Ripristino sistemi Dell
+Description-pt_BR.UTF-8: Recuperação Dell
+Description-ru.UTF-8: Средство восстановления Dell
+Description-tr.UTF-8: Dell Yedekleme
+Description-uk.UTF-8: Dell Recovery
+Description-zh_CN.UTF-8: 戴尔系统恢复
+
+Template: ubiquity/text/recovery_type_title
+Type: text
+Description: Recovery Type
+Description-de.UTF-8: Wiederherstellungstyp
+Description-es.UTF-8: Tipo de recuperación
+Description-fi.UTF-8: Palautuksen tyyppi
+Description-gl.UTF-8: Tipo de recuperación
+Description-hr.UTF-8: Vrsta oporavka
+Description-hu.UTF-8: Helyreállítás típusa
+Description-it.UTF-8: Tipo di ripristino
+Description-pt_BR.UTF-8: Tipo de recuperação
+Description-ru.UTF-8: Тип восстановления
+Description-sv.UTF-8: Återställningstyp
+Description-tr.UTF-8: Yedekleme Türü
+Description-uk.UTF-8: Тип відновлення
+Description-zh_CN.UTF-8: 恢复类型
+
+Template: ubiquity/text/bootstrap_information_label
+Type: text
+Description: This Dell Recovery Media can be used to restore the original factory software.
+Description-bg.UTF-8: Този Dell Recovery Media може да бъде използван за възстановаване на оригиналния фабричен софтуер.
+Description-de.UTF-8: Dieses Dell-Wiederherstellungsmedium kann verwendet werden, um die ursprünglich installierte Software wiederherzustellen.
+Description-es.UTF-8: Este disco de recuperación Dell se puede usar para restaurar el software original del fabricante.
+Description-fi.UTF-8: Tätä Dell-palautusmediaa voidaan käyttää tehdasohjelmistojen palauttamiseksi.
+Description-gl.UTF-8: Este soporte de Dell Recovery pode ser usado para restaurar o software orixianl de fábrica.
+Description-hr.UTF-8: Ovaj se Dell medij oporavka može upotrijebiti za vraćanje izvornog tvorničkog softvera.
+Description-hu.UTF-8: Ezen Dell helyreállító adathordozó segítségével visszaállítható az eredeti gyári szoftver.
+Description-it.UTF-8: Questo supporto di ripristino Dell può essere utilizzato per riportare il software alle impostazioni di fabbrica.
+Description-lv.UTF-8: Šis Dell atkopšanas mēdijs var tikt izmantots, lai atjaunotu oriģinālo fabrikas programmatūru.
+Description-pt_BR.UTF-8: Esta Mídia de Recuperação da Dell poderá ser usada para restaurar o software original de fábrica.
+Description-ru.UTF-8: Носитель средства восстановления Dell может использоваться для восстановления первоначальной рабочей среды.
+Description-sv.UTF-8: Detta återställningsmedia för Dell kan användas för att återställa programvara till de ursprungliga fabriksinställningarna.
+Description-tr.UTF-8: Bu Dell Yedekleme Ortamı orjinal fabrika yazılımını geri yüklemede kullanılabilir.
+Description-uk.UTF-8: За допомогою цього носія для відновлення Dell ви зможете відновити початкове програмне забезпечення записане виробником обладнання.
+Description-zh_CN.UTF-8: 此 Dell 还原镜像可以用来恢复到出厂系统。
+
+Template: ubiquity/text/bootstrap_warning_label
+Type: text
+Description: It is recommended you back up all important data before running this tool.
+Description-bg.UTF-8: Препоръчително е да направите резервно копие на всички важни данни преди да пуснете този инструмент.
+Description-de.UTF-8: Sie sollten alle wichtigen Daten sichern, bevor Sie dieses Programm ausführen.
+Description-es.UTF-8: Es importante hacer una copia de seguridad de todos los datos antes de ejecutar esta herramienta.
+Description-fi.UTF-8: Kaikkien tärkeiden tietojen varmuuskopiointi ennen työkalun suorittamista on suositeltavaa.
+Description-gl.UTF-8: É recomendábel facer unha copia de seguridade antes de usar esta ferramenta.
+Description-hr.UTF-8: Preporuka je da prije pokretanja ovog alata napravite sigurnosnu kopiju važnih podataka.
+Description-hu.UTF-8: Az eszköz futtatása előtt ajánlott mentést készíteni minden fontos adatról.
+Description-it.UTF-8: È consigliato effettuare un backup di tutti i dati importanti prima di eseguire questa applicazione.
+Description-lv.UTF-8: Jums tiek rekomendēts rezervēt visus svarīgos datus pirms šī rīka palaišanas.
+Description-pt_BR.UTF-8: É recomendado que você faça um backup de todos os dados importantes antes de executar esta ferramenta.
+Description-ru.UTF-8: Рекомендуется создать резервную копию всех важных данных до запуска этого инструмента.
+Description-sv.UTF-8: Det rekommenderas att du säkerhetskopierar allt viktigt data innan du kör detta verktyg.
+Description-tr.UTF-8: Bu aracı çalıştırmadan tüm önemli bilgilerinizi yedeklemeniz önerilir.
+Description-uk.UTF-8: Перш ніж запускати цей інструмент, будь ласка, створіть резервні копії всіх важливих для вас даних.
+Description-zh_CN.UTF-8: 在运行此工具前，建议备份您所有的重要数据和信息。
+
+Template: ubiquity/text/hdd_recovery
+Type: text
+Description: Restore Linux OS partitions
+Description-bg.UTF-8: Възстановяване на Linux OS дялове
+Description-de.UTF-8: Linux-Betriebssystempartitionen wiederherstellen
+Description-es.UTF-8: Restaurar particiones Linux
+Description-fi.UTF-8: Palauta Linux-käyttöjärjestelmäosiot
+Description-gl.UTF-8: Restaurar as particións do SO Linux
+Description-hr.UTF-8: Vrati particije Linux OS-a
+Description-hu.UTF-8: Linux partíciók helyreállítása
+Description-it.UTF-8: Ripristina le partizioni del sistema operativo Linux
+Description-lv.UTF-8: Atjaunot Linux OS sadaļas
+Description-pt_BR.UTF-8: Restaurar partições dos sistemas linux
+Description-ru.UTF-8: Восстановление разделов Linux
+Description-sv.UTF-8: Återställ partitioner för Linux
+Description-tr.UTF-8: Linux İşletim Sistemine sahip bölümleri geri yükle
+Description-uk.UTF-8: Відновити розділи ОС Linux
+Description-zh_CN.UTF-8: 恢复 Linux 操作系统分区
+
+Template: ubiquity/text/hdd_info
+Type: text
+Description: This will rebuild all OS and swap partitions to factory defaults.
+Description-bg.UTF-8: Това ще изгради наново всички дялове на операционната система и swap дяловете до фабричните.
+Description-de.UTF-8: Stellt alle Betriebssystem- und Swap-Partitionen nach den Vorgaben wieder her.
+Description-es.UTF-8: Esto reconstruirá todos los SO y particiones de intercambio a los predeterminados por el fabricante.
+Description-fi.UTF-8: Tämä rakentaa uudelleen kaikki käyttöjärjestelmä- ja sivutusosiot tehdasoletuksin.
+Description-gl.UTF-8: Isto reconstruirá todas as particións do SO e de intercambio ás predefinidas polo fabricante.
+Description-hr.UTF-8: Ovo će vratiti sve swap particije i particije OS-a u tvorničko stanje.
+Description-hu.UTF-8: Az összes rendszer- és swap partíció visszaállítása a gyári alapértelmezésekre.
+Description-it.UTF-8: Questo riporterà tutte le partizioni del sistema operativo e l'area di swap alle impostazioni di fabbrica predefinite.
+Description-lv.UTF-8: Šis pārbūvēs visas OS un maiņvietas sadaļas pēc fabrikas noklusētajiem iestatījumiem.
+Description-pt_BR.UTF-8: Isso irá reconstruir todo o Sistema e as partições swap para os padrões da fabrica.
+Description-ru.UTF-8: Это позволит собрать все разделы ОС и разделы подкачки в первоначальное состояние.
+Description-sv.UTF-8: Detta kommer att bygga om alla partitioner för operativsystem och växlingsutrymme till fabriksinställningarna.
+Description-tr.UTF-8: Bu işlem tüm işletim sistemi ve takas alanı bölümlerini varsayılan fabrika ayarlarına göre yeniden yapılandıracaktır.
+Description-uk.UTF-8: Буде повернуто типові параметри розмітки розділів ОС та свопінгу.
+Description-zh_CN.UTF-8: 重新建立所有操作系统和 swap 分区回到出厂状态。
+
+Template: ubiquity/text/hdd_warning_label
+Type: text
+Description: WARNING: All personal files and changes will be lost.
+Description-bg.UTF-8: ПРЕДУПРЕЖДЕНИЕ: Всички лични файлове и промени ще бъдат загубени.
+Description-de.UTF-8: WARNUNG: Alle persönlichen Daten und Änderungen werden verloren gehen.
+Description-es.UTF-8: AVISO: Todos los archivos personales y cambios se perderán.
+Description-fi.UTF-8: VAROITUS: Kaikki henkilökohtaiset tiedot ja muutokset hävitetään.
+Description-gl.UTF-8: AVISO: Todos os seus ficheiros e cambios persoais perderanse.
+Description-hr.UTF-8: UPOZORENJE: Sve osobne datoteke i promjene će biti izgubljene.
+Description-hu.UTF-8: FIGYELMEZTETÉS: minden személyes fájl és módosítás elvész.
+Description-it.UTF-8: Attenzione: tutti i file e le modifiche personali verranno persi.
+Description-lv.UTF-8: BRĪDINĀJUMS: Visi peroniskie faili un izmaiņas tiks zaudētas.
+Description-pt_BR.UTF-8: AVISO: Todos os arquivos pessoais e modificações serão perdidas.
+Description-ru.UTF-8: ВНИМАНИЕ: Все личные файлы и изменения будут утеряны.
+Description-sv.UTF-8: VARNING: Alla personliga filer och ändringar kommer att förloras.
+Description-tr.UTF-8: UYARI: Tüm kişisel dosya ve değişiklikleriniz kaybolacak.
+Description-uk.UTF-8: ПОПЕРЕДЖЕННЯ: всі особисті файли та внесені вами до системи зміни буде втрачено.
+Description-zh_CN.UTF-8: 警告： 所有个人文件和设定都会丢失。
+
+Template: ubiquity/text/automated_recovery
+Type: text
+Description: Restore entire hard drive.
+Description-bg.UTF-8: Възстановяване на целия твърд диск
+Description-de.UTF-8: Gesamte Festplatte wiederherstellen.
+Description-es.UTF-8: Restaurar todo el disco duro.
+Description-fi.UTF-8: Palauta koko kiintolevy.
+Description-gl.UTF-8: Restaurar todo o disco ríxido.
+Description-hr.UTF-8: Vrati cijeli tvrdi disk
+Description-hu.UTF-8: Teljes merevlemez visszaállítása.
+Description-it.UTF-8: Ripristina l'intero disco.
+Description-lv.UTF-8: Atjaunot visu cieto disku.
+Description-pt_BR.UTF-8: Restaurar o disco rígido inteiro.
+Description-ru.UTF-8: Восстановить рабочую среду на жёстком диске полностью
+Description-sv.UTF-8: Återställ hela hårddisken.
+Description-tr.UTF-8: Tüm sabit diski geri yükle.
+Description-uk.UTF-8: Відновити весь жорсткий диск.
+Description-zh_CN.UTF-8: 还原整个硬盘
+
+Template: ubiquity/text/automated_info
+Type: text
+Description: This will rebuild all recovery, and OS partitions.
+
+Template: ubiquity/text/automated_warning_label
+Type: text
+Description: WARNING: All personal files and changes will be lost.
+Description-bg.UTF-8: ПРЕДУПРЕЖДЕНИЕ: Всички лични файлове и промени ще бъдат загубени.
+Description-de.UTF-8: WARNUNG: Alle persönlichen Daten und Änderungen werden verloren gehen.
+Description-es.UTF-8: AVISO: Todos los archivos personales y cambios se perderán.
+Description-fi.UTF-8: VAROITUS: Kaikki henkilökohtaiset tiedot ja muutokset hävitetään.
+Description-gl.UTF-8: AVISO: Todos os seus ficheiros e cambios persoais perderanse.
+Description-hr.UTF-8: UPOZORENJE: Sve osobne datoteke i promjene će biti izgubljene.
+Description-hu.UTF-8: FIGYELMEZTETÉS: minden személyes fájl és módosítás elvész.
+Description-it.UTF-8: Attenzione: tutti i file e le modifiche personali verranno persi.
+Description-lv.UTF-8: BRĪDINĀJUMS: Visi peroniskie faili un izmaiņas tiks zaudētas.
+Description-pt_BR.UTF-8: AVISO: Todos os arquivos pessoais e modificações serão perdidas.
+Description-ru.UTF-8: ВНИМАНИЕ: Все личные файлы и изменения будут утеряны.
+Description-sv.UTF-8: VARNING: Alla personliga filer och ändringar kommer att förloras.
+Description-tr.UTF-8: UYARI: Tüm kişisel dosya ve değişiklikleriniz kaybolacak.
+Description-uk.UTF-8: ПОПЕРЕДЖЕННЯ: всі особисті файли та внесені вами до системи зміни буде втрачено.
+Description-zh_CN.UTF-8: 警告： 所有个人文件和设定都会丢失。
+
+Template: ubiquity/text/interactive_recovery
+Type: text
+Description: Restore only Linux OS partition.
+Description-bg.UTF-8: Възстановяване само на Linux OS дял.
+Description-de.UTF-8: Nur Linux-Betriebssystempartition wiederherstellen.
+Description-es.UTF-8: Restaurar sólo la partición Linux
+Description-fi.UTF-8: Palauta vain Linux-käyttöjärjestelmäosio.
+Description-gl.UTF-8: Restaurar só as particións do SO Linux.
+Description-hr.UTF-8: Vrati samo particiju Linux OS-a.
+Description-hu.UTF-8: Csak a Linux rendszerpartíció helyreállítása.
+Description-it.UTF-8: Ripristina solo la partizione Linux.
+Description-lv.UTF-8: Atjaunot tikai Linux OS sadaļu.
+Description-pt_BR.UTF-8: Restaurar apenas a partição do sistema linux.
+Description-ru.UTF-8: Восстановить только раздел Linux OS.
+Description-sv.UTF-8: Återställ endast partition för Linux.
+Description-tr.UTF-8: Sadece Linux İS. bölümünü geri yükle.
+Description-uk.UTF-8: Відновити лише розділ ОС Linux.
+Description-zh_CN.UTF-8: 仅还原 Linux 系统分区。
+
+Template: ubiquity/text/interactive_info
+Type: text
+Description: This option allows you to resize any existing partitions.
+Description-bg.UTF-8: Тази опция ви позволява да промените размера на който и дае съществуващ дял.
+Description-de.UTF-8: Diese Option ermöglicht es Ihnen, die Größen aller bestehenden Partitionen zu ändern.
+Description-es.UTF-8: Esta opción le permite redimensionar cualquier partición existente.
+Description-fi.UTF-8: Tällä valinnalla voidaan muuttaa olemassa olevien osioiden kokoa.
+Description-gl.UTF-8: Esta opción permítelle redimensionar calquera das particións existentes.
+Description-hr.UTF-8: Ova mogućnost vam dopušta promjenu veličine postojećih particija.
+Description-hu.UTF-8: Ez lehetővé teszi a meglévő partíciók átméretezését.
+Description-it.UTF-8: Questa opzione permette di ridimensionare qualsiasi partizione esistente.
+Description-lv.UTF-8: Šī opcija ļaus jums izmainīt izmēru jebkurām eksistējošajām sadaļām.
+Description-pt_BR.UTF-8: Esta opção permite que você redimensione quaisquer partições existentes.
+Description-ru.UTF-8: Эта возможность позволяет вам изменить размер существующих разделов.
+Description-sv.UTF-8: Detta alternativ låter dig ändra storlek på befintliga partitioner.
+Description-tr.UTF-8: Bu seçenek var olan bölümleri yeniden boyutlandırmanıza izin verir.
+Description-uk.UTF-8: За допомогою цього пункту ви зможете змінити розміри будь-якого з поточних розділів.
+Description-zh_CN.UTF-8: 此选项允许您重新分配现有分区大小。
+
+Template: ubiquity/text/genuine_bootstrap_warning_label
+Type: text
+Description: ERROR: This recovery media only functions on Dell and Alienware systems purchased with Ubuntu.
+
+Template: ubiquity/text/status_warning_label
+Type: text
+Description: Building Recovery Partition
+Description-de.UTF-8: Wiederherstellungspartition wird erstellt
+Description-es.UTF-8: Construyendo partición de recuperación
+Description-fi.UTF-8: Rakennetaan palautusosiota
+Description-hu.UTF-8: Helyreállítási partíció építése
+Description-it.UTF-8: Creazione partizione di ripristino
+Description-pt_BR.UTF-8: Construindo a partição de recuperação
+Description-ru.UTF-8: Сборка раздела восстановления
+Description-tr.UTF-8: Yedekleme Bölümü Yapılandırılıyor
+Description-uk.UTF-8: Збирання допоміжного розділу
+Description-zh_CN.UTF-8: 制作还原分区
+
+Template: ubiquity/text/status_info_label
+Type: text
+Description: NOTE: Please be patient, this may take a while.
+Description-bg.UTF-8: БЕЛЕЖКА: Моля бъдете търпеливи, това може да отнеме време.
+Description-de.UTF-8: HINWEIS: Bitte haben Sie Geduld, dies könnte eine Weile dauern.
+Description-es.UTF-8: NOTA: Tenga paciencia, esto llevará un tiempo.
+Description-fi.UTF-8: HUOM: Ole kärsivällinen, toiminnon suorittaminen saattaa kestään pitkään.
+Description-gl.UTF-8: NOTA: Teña paciencia, isto pode lever uns minutos.
+Description-hr.UTF-8: NAPOMENA: Molim budite strpljivi, ovo može potrajati neko vrijeme.
+Description-hu.UTF-8: MEGJEGYZÉS: Legyen türelemmel, a kiinduló lekérés sokáig tarthat.
+Description-it.UTF-8: Nota: attendere, l'operazione potrebbe impiegare alcuni minuti.
+Description-lv.UTF-8: PIEZĪME: Lūdzu, esat pacietīgi, tas aizņems kādu laiku.
+Description-pt_BR.UTF-8: NOTA: Por favor, seja paciente. Isto pode demorar um pouco.
+Description-ru.UTF-8: ПРИМЕЧАНИЕ: Пожалуйста, подождите, это может занять некоторое время.
+Description-sv.UTF-8: OBSERVERA: Var god vänta, detta kan ta en stund.
+Description-tr.UTF-8: NOT: Lütfen sabırlı olun, bu işlem biraz zaman alabilir.
+Description-uk.UTF-8: ЗАУВАЖЕННЯ: будь ласка, зачекайте.
+Description-zh_CN.UTF-8: 注意： 正在运行，请稍候。
+
+Template: ubiquity/text/status_restart_label
+Type: text
+Description: Your system will restart automatically several times.
+Description-de.UTF-8: Ihr Rechner wird automatisch mehrere Male neu starten.
+Description-fi.UTF-8: Järjestelmä käynnistyy automaattisesti uudelleen useita kertoja.
+Description-hu.UTF-8: A rendszer többször is automatikusan újra fog indulni.
+Description-it.UTF-8: Il sistema verrà riavviato automaticamente più volte.
+Description-pt_BR.UTF-8: Seu sistema irá reinicializar várias vezes.
+Description-ru.UTF-8: Система будет перезапущена автоматически несколько раз.
+
+Template: ubiquity/text/recovery_heading_label
+Type: text
+Description: Create Dell Recovery Media
+Description-bg.UTF-8: Създаване на Dell носител за възстановяване
+Description-cs.UTF-8: Vytvořit Dell Recovery Media
+Description-da.UTF-8: Opret Dell Gendannelsesmeide
+Description-de.UTF-8: Erstelle Dell Recovery Medien
+Description-es.UTF-8: Crear medio de recuperación DELL
+Description-fi.UTF-8: Luo Dell-palautusmedia
+Description-fr.UTF-8: Créer le média de restauration Dell
+Description-hu.UTF-8: Dell Recovery Media létrehozása
+Description-it.UTF-8: Crea suppporto di recupero Dell
+Description-ms.UTF-8: Cipta Media Recovery Dell
+Description-nl.UTF-8: Dell herstelmedia aanmaken
+Description-pt.UTF-8: Cria mídia do Dell Recovery
+Description-pt_BR.UTF-8: Criar Mídia de Recuperação Dell
+Description-ru.UTF-8: Создать носитель восстановления Dell
+Description-sk.UTF-8: Vytvoriť Dell Medium pre zotavenie
+Description-sv.UTF-8: Skapa Dell återställningmedia
+Description-tr.UTF-8: Dell Geri Alma Ortamı Oluştur
+Description-uk.UTF-8: Створення носіїв для відновлення систем Dell
+Description-zh_CN.UTF-8: 制作 Dell 恢复光盘
+
+Template: ubiquity/text/recovery_information_label
+Type: text
+Description: Dell Recovery Media can be used to restore your system to the same state as when it was first shipped to you.
+Description-bg.UTF-8: Dell Recovery Media може да се използва за възстановяване на вашата система до същото състояние в което тя ви е била доставена.
+Description-de.UTF-8: Dell-Wiederherstellungsmedien können zum Zurücksetzen Ihres Systems (in den Zustand, in dem es Ihnen geliefert wurde) verwendet werden.
+Description-es.UTF-8: El disco de recuperación Dell se puede usar para restaurar sus sistema al mismo estado que cuando lo adquirió.
+Description-fi.UTF-8: Dell-palautusmedialta järjestelmä voidaan palauttaa samaan tilaan, jossa se oli vastaanottaessasi järjestelmän.
+Description-gl.UTF-8: O soporte de Recuperación de Dell pode usarse para restaurar o seu sistema ao mesmo estado que cando o comprou.
+Description-hr.UTF-8: Dell medij oporavka se može upotrijebiti za vraćanje sustava u prvotno stanje kakvo je bilo kada vam je on bio isporučen.
+Description-hu.UTF-8: A Dell helyreállító adathordozó segítségével rendszere visszaállítható a gyári állapotába.
+Description-it.UTF-8: Il supporto di ripristino Dell può essere utilizzato per ripristinare il sistema allo stato iniziale.
+Description-lv.UTF-8: Dell atkopšanas mēdijs var tikt izmantots, lai atjaunotu jūsu sistēmu tādā stāvoklī, kādā jūs to iegādājāties.
+Description-pt_BR.UTF-8: A Mídia de Recuperação da Dell poderá ser usada para restaurar o seu sistema para o mesmo estado de quando foi enviado para você.
+Description-ru.UTF-8: Диск восстановления Dell может использоваться для восстановления первоначального состояния компьютера.
+Description-sv.UTF-8: Återställningsmedia för Dell kan användas för att återställa din dator till samma tillstånd som den befann sig i när den levererades till dig.
+Description-tr.UTF-8: Dell Yedekleme Ortamı'nı bilgisayarınızı ilk aldığınız günkü durumuna geri getirmek için kullanabilirsiniz.
+Description-uk.UTF-8: Носієм для відновлення Dell можна скористатися для відновлення вашої системи до стану, у якому вам було передано її виробником обладнання.
+Description-zh_CN.UTF-8: Dell 还原盘可以把您的电脑恢复到出厂系统。
+
+Template: ubiquity/text/recovery_warning_label
+Type: text
+Description: It is highly recommended that you generate media and store it in a safe place.
+Description-bg.UTF-8: Силна се препоръчва да генерирате носител и да го съхранявате на безопасно място.
+Description-de.UTF-8: Es wird dringend geraten, ein Wiederherstellungsmedium zu erstellen und an einem sicheren Ort aufzubewahren.
+Description-es.UTF-8: Es muy recomendable que genere un disco y lo guarde en un lugar seguro.
+Description-fi.UTF-8: Median luominen ja sen säilyttäminen turvallisessa paikassa on hyvin suositeltavaa.
+Description-gl.UTF-8: É moi recomendábel que xere un soporte e o almacene nun lugar seguro.
+Description-hr.UTF-8: Preporuka je da generirate medij i spremite ga na sigurno mjesto.
+Description-hu.UTF-8: Ajánlott előállítani az adathordozót, és biztonságos helyen tartani.
+Description-it.UTF-8: È consigliato generare il supporto e conservarlo in un luogo sicuro.
+Description-lv.UTF-8: Ir ļoti ieteicams, ka jūs izveidojiet mēdiju un noglabājiet to drošā vietā.
+Description-pt_BR.UTF-8: É altamente recomendado você criar uma mídia e armazená-la em um lugar seguro.
+Description-ru.UTF-8: Настоятельно рекомендуем вам создать носитель и сохранить его в безопасном месте.
+Description-sv.UTF-8: Det rekommenderas starkt att du genererar ett media och lagrar det på en säker plats.
+Description-tr.UTF-8: Yedekleme ortamı oluşturmanız ve bunu güvenli bir şekilde saklamanız şiddetle önerilir.
+Description-uk.UTF-8: Рекомендуємо вам створити такий носій і зберігати його у безпечному місці.
+Description-zh_CN.UTF-8: 强烈建议您创建还原盘，然后把它存放在安全的地方。
+
+
+Template: ubiquity/text/save_to_usb
+Type: text
+Description: Save recovery media to an external USB flash drive
+Description-bg.UTF-8: Запазване на носителя за възстановяване на външен USB флаш диск
+Description-de.UTF-8: Wiederherstellungsmedium auf einem externen USB-Flash-Laufwerk speichern
+Description-es.UTF-8: Guardar el disco de recuperación en una memoria flash USB externa
+Description-fi.UTF-8: Tallenna palautusmedia ulkoiselle USB-muistivälineelle
+Description-gl.UTF-8: Gardar o soporte de recuperación nunha unidade flash USB externa
+Description-hr.UTF-8: Spremi medij oporavka na vanjsku USB memoriju
+Description-hu.UTF-8: A helyreállító adathordozó mentése külső USB flash kulcsra.
+Description-it.UTF-8: Salvare il supporto di ripristino in una unità flash USB esterna
+Description-lv.UTF-8: Saglabāt atkopšanas mēdiju ārējā USB zibatmiņas diskā
+Description-pt_BR.UTF-8: Salvar mídia de recuperação na unidade flash USB
+Description-ru.UTF-8: Сохранить диск восстановления на USB-накопитель
+Description-sv.UTF-8: Spara återställningsmedia till en extern USB-lagringsenhet
+Description-tr.UTF-8: Yedekleme ortamını harici USB flash belleğe kaydet
+Description-uk.UTF-8: Зберегти носій для відновлення на зовнішньому флеш-диску USB
+Description-zh_CN.UTF-8: 保存恢复盘到外接的 USB 闪存盘
+
+Template: ubiquity/text/usb_warning_label
+Type: text
+Description: Note: This requires a USB flash drive with approximately 2GB free.
+Description-bg.UTF-8: Бележка: Това изисква USB флаш диск с приблизително 2 GB свободно пространство.
+Description-de.UTF-8: HINWEIS: Ein USB-Flash-Laufwerk mit ungefähr 2GB freiem Speicher wird benötigt.
+Description-es.UTF-8: Nota: Requiere un disco flash USB con aproximadamente 2GB libre.
+Description-fi.UTF-8: Huom: Tämä vaatii USB-muistitikun, jolla on noin 2GB vapaata tilaa.
+Description-gl.UTF-8: Nota: Isto require unha unidade flash USB con aproximadamente 2GB libres.
+Description-hr.UTF-8: Napomena: ovo zahtijeva USB memoriju s oko 2 GB slobodnog prostora.
+Description-hu.UTF-8: Megjegyzés: Ehhez egy USB-kulcsra lesz szükség, körülbelül 2 GB szabad hellyel.
+Description-it.UTF-8: Nota: richiede un'unità flash USB con almeno 2GB di spazio libero.
+Description-lv.UTF-8: Piezīme: nepieciešams USB zibatmiņas dzinis ar apmēram 2GB brīvas vietas.
+Description-pt_BR.UTF-8: Nota: Isto requer uma unidade flash USB com aproximadamente 2 GB de espaço livre.
+Description-ru.UTF-8: Примечание: Необходимо использовать USB-флеш с доступным объёмом не менее 2 ГБ.
+Description-sv.UTF-8: Observera: Detta kräver en USB-lagringsenhet med ungefär 2 GB ledigt utrymme.
+Description-tr.UTF-8: Not: Bu işlem tahmini olarak 2 GB boş alanı bulunan USB flash bellek gerektirir.
+Description-uk.UTF-8: Зауваження: на флеш-диску USB має бути приблизно 2 ГБ вільного простору.
+Description-zh_CN.UTF-8: 注意： 需要大约 2G 空间的 USB 驱动盘。
+
+Template: ubiquity/text/save_to_dvd
+Type: text
+Description: Save recovery media to DVD
+Description-bg.UTF-8: Запазване на носителя за възстановяване на DVD
+Description-de.UTF-8: Wiederherstellungsmedium auf DVD speichern
+Description-es.UTF-8: Guardar el disco de recuperación en un DVD
+Description-fi.UTF-8: Tallenna palautusmedia DVD-levylle
+Description-gl.UTF-8: Gardar o soporte de recuperación a un DVD
+Description-hr.UTF-8: Spremi medij oporavka na DVD
+Description-hu.UTF-8: Helyreállító adathordozó mentése DVD-re
+Description-it.UTF-8: Salvare il supporto di ripristino in un DVD
+Description-lv.UTF-8: Saglabāt atkopšanas mēdiju DVD
+Description-pt_BR.UTF-8: Salvar mídia de recuperação no DVD
+Description-ru.UTF-8: Сохранить диск восстановления на DVD
+Description-sv.UTF-8: Spara återställningsmedia till DVD
+Description-tr.UTF-8: Yedekleme ortamını DVD'ye kaydet
+Description-uk.UTF-8: Зберегти носій для відновлення на DVD
+Description-zh_CN.UTF-8: 保存为 DVD 恢复盘
+
+Template: ubiquity/text/dvd_warning_label
+Type: text
+Description: Note: This requires writable DVD media.
+Description-bg.UTF-8: Бележка: Това изисква записваем DVD носител.
+Description-de.UTF-8: HINWEIS: Eine beschreibbare DVD wird benötigt.
+Description-es.UTF-8: Nota: requiere un DVD re-escribible.
+Description-fi.UTF-8: Huom: Tämä vaatii kirjoitettavan DVD-levyn.
+Description-gl.UTF-8: Nota: Isto require un soporte DVD escribíbel.
+Description-hr.UTF-8: Napomena: Ovo zahtijeva zapisivi DVD medij.
+Description-hu.UTF-8: Megjegyzés: Ehhez egy írható DVD-re lesz szükség.
+Description-it.UTF-8: Nota: sono richiesti supporti DVD scrivibili.
+Description-lv.UTF-8: Piezīme: nepieciešams rakstāms DVD mēdijs.
+Description-pt_BR.UTF-8: Nota: Isto requer mídia de DVD gravável.
+Description-ru.UTF-8: Примечаниe: Необходимо использовать записываемый диск DVD.
+Description-sv.UTF-8: Observera: Detta kräver ett skrivbart DVD-media.
+Description-tr.UTF-8: Not: Bu işlem yazdırılabilir bir DVD gerektirir.
+Description-uk.UTF-8: Зауваження: вам знадобиться придатний для запису носій даних DVD.
+Description-zh_CN.UTF-8: 注意：需要可写入的 DVD 光盘。
+
+Template: ubiquity/text/save_to_none
+Type: text
+Description: Don't generate recovery media at this time
+Description-bg.UTF-8: Не генерирай носител за възстановяване по това време
+Description-de.UTF-8: Wiederherstellungsmedium jetzt nicht erstellen
+Description-es.UTF-8: No generar disco de recuperación en este momento
+Description-fi.UTF-8: Älä luo palautusmediaa tällä kertaa
+Description-gl.UTF-8: Non xerar o soporte de recuperación neste momento
+Description-hr.UTF-8: Nemoj sada generirati medij oporavka
+Description-hu.UTF-8: Most nem hozok létre helyreállító adathordozót
+Description-it.UTF-8: Non generare supporti di ripristino in questo momento
+Description-lv.UTF-8: Šoreiz neizveidot atkopšanas mēdiju
+Description-pt_BR.UTF-8: Não criar mídia de recuperação neste momento
+Description-ru.UTF-8: Не создавать диск восстановления сейчас
+Description-sv.UTF-8: Generera inte återställningsmedia för tillfället
+Description-tr.UTF-8: Bu seferlik yedekleme ortamı oluşturma
+Description-uk.UTF-8: Не створювати носія для відновлення цього разу
+Description-zh_CN.UTF-8: 这次不生成恢复盘
+
+Template: ubiquity/text/no_media_warning
+Type: text
+Description: Recovery Media can be generated later by choosing the tool from the System menu.
+Description-bg.UTF-8: Recovery Media може да бъде генериран по-късно като се избере инструмента то менюто Система
+Description-de.UTF-8: Das Wiederherstellungsmedium kann später erstellt werden, indem Sie das Werkzeug im System-Menü wählen.
+Description-es.UTF-8: El disco de recuperación se puede generar después eligiendo la herramienta en el menú Sistema.
+Description-fi.UTF-8: Palautusmedian voi luoda myöhemmin valitsemalla työkalun Järjestelmä-valikosta.
+Description-gl.UTF-8: Pode xerar o soporte de recuperación máis tarde seleccionando a ferramenta no menú do sistema.
+Description-hr.UTF-8: Medij oporavka se može generirati kasnije, odabirom alata iz izbornika Sustav.
+Description-hu.UTF-8: A helyreállító adathordozó később is előállítható az eszköz kiválasztásával a Rendszer menüből.
+Description-it.UTF-8: I supporti di ripristino possono essere generati successivamente scegliendo il programma dal menù Sistema.
+Description-lv.UTF-8: Atkopšanas mēdijs var tikt izveidots vēlāk, izvēloties doto rīku no Sistēmas izvēlnes.
+Description-pt_BR.UTF-8: A mídia de recuperação poderá ser criada depois, escolhendo esta ferramenta a partir do menu Sistema.
+Description-ru.UTF-8: Носитель средства восстановления можно создать позже, выбрав инструмент из системного меню.
+Description-sv.UTF-8: Återställningsmedia kan genereras senare genom att välja verktyget från System-menyn.
+Description-tr.UTF-8: Yedekleme Ortamı sistem menüsünden seçilecek araç yardımıyla daha sonra da oluşturulabilir.
+Description-uk.UTF-8: Носій для відновлення можна створити пізніше. Для цього слід скористатися пунктом відповідного інструменту з меню «Система».
+Description-zh_CN.UTF-8: 可以在“系统”菜单里选择“工具”，稍后再生成恢复盘。
+
+Template: ubiquity/text/genuine_recovery_warning_label
+Type: text
+Description: ERROR: This media is only valid on Dell systems.
+Description-bg.UTF-8: ГРЕШКА: Този носител е валиден само на системи Dell.
+Description-de.UTF-8: FEHLER: Dieses Medium kann nur auf Dell-Systemen verwendet werden.
+Description-es.UTF-8: ERROR: Este disco sólo es válido en sistemas Dell.
+Description-fi.UTF-8: VIRHE: Tämä media on kelvollinen vain Dell-järjestelmissä.
+Description-gl.UTF-8: ERRO: Este soporte só é válido para sistemas Dell.
+Description-hr.UTF-8: GREŠKA: Ovaj je medij važeći samo na Dellovim sustavima.
+Description-hu.UTF-8: HIBA: Ez az adathordozó csak Dell rendszereken érvényes.
+Description-it.UTF-8: Errore: questo supporto può essere utilizzato solo su sistemi Dell.
+Description-lv.UTF-8: KĻŪDA: šis mēdijs ir derīgs tikai Dell sistēmām.
+Description-pt_BR.UTF-8: ERRO: Esta mídia é válida somente nos sistemas Dell.
+Description-ru.UTF-8: ОШИБКА: Этот носитель совместим только с системами Dell.
+Description-sv.UTF-8: FEL: Detta media är endast giltigt på Dell-system.
+Description-tr.UTF-8: Yedekleme Ortamı sistem menüsünden seçilecek araç yardımıyla daha sonra da oluşturulabilir.
+Description-uk.UTF-8: ПОМИЛКА: цим носієм можна скористатися лише у системах виробництва Dell.
+Description-zh_CN.UTF-8: 错误：此光盘只能用于 Dell 系统。
+
+Template: ubiquity/text/eula_heading_label
+Type: text
+Description: Dell End User License Agreement
+Description-bg.UTF-8: Dell Лицензно споразумение с крайния клиент
+Description-de.UTF-8: Dell-Endbenutzer-Lizenzvereinbarung
+Description-es.UTF-8: Acuerdo de licencia de usuario final Dell
+Description-fi.UTF-8: Dellin loppukäyttäjän lisenssiehdot
+Description-hu.UTF-8: Dell végfelhasználói licencszerződés
+Description-it.UTF-8: Accordo di licenza per l'utente finale
+Description-pt_BR.UTF-8: Licença do usuário final Dell
+Description-ru.UTF-8: Лицензионное соглашение конечного пользователя Dell
+Description-tr.UTF-8: Dell Son Kullanıcı Lisans Sözleşmesi
+Description-uk.UTF-8: Ліцензійна угода Dell з кінцевим користувачем
+Description-zh_CN.UTF-8: Dell 最终用户协议
+
+Template: ubiquity/text/accept_button
+Type: text
+Description: I have read and accept these terms.
+Description-it.UTF-8: Ho letto e accetto queste condizioni.
+Description-ru.UTF-8: Я прочитал(а) и принимаю эти условия.
+Description-zh_CN.UTF-8: 我已阅读并接受上述条款
+
+Template: ubiquity/text/99_grub_menu
+Type: text
+Description: Restore #OS# to factory state
+Description-de.UTF-8: Werkszustand von #OS# wiederherstellen
+Description-es.UTF-8: Restaurar #OS# al estado de fábrica
+Description-fi.UTF-8: Palauta #OS# tehdastilaan
+Description-hu.UTF-8: #OS# helyreállítása a gyári állapotra
+Description-it.UTF-8: Ripristinare il sistema operativo alle impostazioni di fabbrica
+Description-pt_BR.UTF-8: Restaurar #OS# para o estado de fábrica
+Description-ru.UTF-8: Восстановить #OS# в первоначальное состояние
+Description-uk.UTF-8: Відновлення #ОС# до початкового стану

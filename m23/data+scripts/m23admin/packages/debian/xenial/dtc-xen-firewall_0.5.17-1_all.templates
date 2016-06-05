@@ -1,0 +1,11 @@
+Template: dtc-xen-firewall/conf_soap_server_allowed_ip
+Type: string
+Default: 0.0.0.0
+Description: DTC-Xen incoming connection IP address:
+ This package will bock all connections incoming connection to the default port
+ of DTC-Xen. Only the IP address of your management server holding the DTC web
+ panel should be allowed, for security reasons. Please enter the IP address of
+ your control panel so it will be allowed to connect.
+ .
+ By default, all IP will be allowed to connect, which might not be what you
+ want as this is quite unsecure.

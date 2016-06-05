@@ -1,0 +1,58 @@
+Template: wims/reconfigure-webserver
+Type: multiselect
+Choices: apache, apache2, apache-ssl, apache-perl
+Default: apache2
+Description: List of web servers to reconfigure automatically:
+ Wims supports Apache, Apache2, Apache-SSL and Apache-Perl.
+Description-cs.UTF-8: Seznam webových serverů pro automatické natavení:
+ Wims podporuje Apache, Apache2, Apache-SSL a Apache-Perl.
+Description-da.UTF-8: Liste af internetservere at rekonfigurere automatisk:
+ Wims underst??tter Apache, Apache2, Apache-SSL og Apache-Perl.
+Description-de.UTF-8: Liste von Webservern, die automatisch rekonfiguriert werden sollen:
+ Wims unterstützt Apache, Apache2, Apache-SSL und Apache-Perl.
+Description-es.UTF-8: Lista de servidores web que reconfigurar automáticamente.
+ WIMS funciona sobre Apache, Apache2, Apache-SSL y Apache-Perl.
+Description-fr.UTF-8: Serveurs web à reconfigurer automatiquement :
+ Wims gère Apache, Apache2, Apache-SSL et Apache-Perl.
+Description-it.UTF-8: Elenco dei server web da riconfigurare automaticamente:
+ Wims supporta Apache, Apache2, Apache-SSL e Apache-Perl.
+Description-ja.UTF-8: 自動的に再設定を行うウェブサーバのリスト:
+ wims は Apache、Apache2、Apache-SSL、Apache-Perl をサポートしています。
+Description-nl.UTF-8: Automatisch te configureren webservers:
+ Wims ondersteund Apache, Apache2, Apache-SSL en Apache-Perl.
+Description-pt.UTF-8: Lista de servidores web para reconfigurar automaticamente:
+ Wims suporta Apache, Apache2, Apache-SSL e Apache-Perl.
+Description-ru.UTF-8: Список веб-серверов для автоматической перенастройки:
+ Wims работает с Apache, Apache2, Apache-SSL и Apache-Perl.
+Description-sv.UTF-8: Lista med webbservrar som ska ställas in automatiskt:
+ Wims stödjer Apache, Apache2, Apache-SSL och Apache-Perl.
+
+Template: wims/restart-webserver
+Type: boolean
+Default: false
+Description: Do you want ${webserver} to be restarted now?
+ Remember that in order to activate the new configuration
+ ${webserver} has to be restarted. You can also restart ${webserver}
+ manually executing /etc/init.d/${webserver} restart
+Description-cs.UTF-8: Přejete si restartovat ${webserver} nyní?
+ Pamatujte, že pro načtení nové konfigurace, je potřeba restartovat ${webserver}. ${webserver} můžete restartovat také ručně zadáním příkazu /etc/init.d/${webserver} restart
+Description-da.UTF-8: ??nsker du at ${webserver} skal genstartes nu?
+ Husk at for at aktivere den nye konfiguration skal ${webserver} genstartes. Du kan ogs?? genstarte ${webserver} manuelt ved at k??re /etc/init.d/${webserver} restart.
+Description-de.UTF-8: Soll ${webserver} jetzt neu gestartet werden?
+ Denken Sie daran, dass ${webserver} neu gestartet werden muss, damit die neue Konfiguration aktiviert wird. Sie können ${webserver} auch manuell neu starten, indem Sie »/etc/init.d/${webserver} restart« ausführen.
+Description-es.UTF-8: ¿Desea reiniciar ${webserver} ahora?
+ Recuerde que para activar la nueva configuración es necesario reiniciar ${webserver}. También puede reiniciar ${webserver} manualmente ejecutando la orden /etc/init.d/${webserver} restart
+Description-fr.UTF-8: Faut-il redémarrer ${webserver} maintenant ?
+ Rappel : pour activer la nouvelle configuration, ${webserver} doit être redémarré. Vous pouvez également redémarrer ${webserver} vous-même avec la commande /etc/init.d/${webserver} restart
+Description-it.UTF-8: Riavviare ${webserver} adesso?
+ Per attivare la nuova configurazione è necessario riavviare ${webserver}. ${webserver} può anche essere riavviato manualmente con il comando "/etc/init.d/${webserver} restart".
+Description-ja.UTF-8: ${webserver} を今すぐ再起動しますか?
+ 新しい設定を有効にするためには ${webserver} を再起動する必要があるのを覚えておいてください。手動で /etc/init.d/${webserver} restart と実行して、${webserver} を再起動することもできます。
+Description-nl.UTF-8: Wilt u dat ${webserver} nu herstart wordt?
+ Vergeet niet dat de nieuwe configuratie pas van kracht wordt eens ${webserver} herstart is. U kunt ${webserver} ook handmatig herstarten door het commando '/etc/init.d/${webserver} restart' uit te voeren.
+Description-pt.UTF-8: Deseja que o ${webserver} seja reiniciado agora?
+ Lembre-se que para a nova configuração ser activada o ${webserver} tem de ser reiniciado. Pode também reiniciar o ${webserver} executando manualmente /etc/init.d/${webserver} restart
+Description-ru.UTF-8: Перезапустить ${webserver} прямо сейчас?
+ Чтобы новые настройки начали действовать, ${webserver} нужно перезапустить. Также вы можете перезапустить ${webserver} вручную, выполнив команду /etc/init.d/${webserver} restart.
+Description-sv.UTF-8: Ska ${webserver} startas om nu?
+ Kom ihåg att ${webserver} måste startas om för att de nya inställningarna ska aktiveras. Du kan också starta om ${webserver} manuellt genom att köra /etc/init.d/${webserver} restart.

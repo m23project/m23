@@ -1,0 +1,1697 @@
+Template: tripwire/upgrade
+Type: boolean
+Default: true
+Description: Do you wish to upgrade?
+ The format of the Tripwire database and configuration files have changed
+ substantially between previous versions and this release.
+ .
+ To ensure your system remains secure, the upgrade process keeps a copy of
+ the old version of Tripwire and the old configuration file along with any
+ old databases that may exist.  You will find a detailed explanation for
+ using the old version of Tripwire in
+ /usr/share/doc/tripwire/README.Debian.
+ .
+ However, as no conversion of the old configuration file and database is
+ attempted, you may prefer not to upgrade.
+ .
+ Due to the way Debian handles configuration files, if you choose to
+ upgrade you must accept the new version of /etc/cron.daily/tripwire for
+ regular reporting to occur.  The cron job associated with the previous
+ version will continue to run regardless.
+Description-cs.UTF-8: Přejete si aktualizovat?
+ Mezi posledními verzemi Tripwire se významným způsobem změnil formát databáze a také konfigurační soubory.
+ .
+ Pro zajištění bezpečnosti vašeho systému bude uchována kopie starého Tripwire, jeho konfigurační soubory a také případné databáze. Podrobný návod pro používání starší verze Tripwire naleznete v souboru /usr/share/doc/tripwire/README.Debian.
+ .
+ Protože se však instalace nepokusí o automatické převedení starého konfiguračního souboru a databáze do nového formátu, budete možná chtít tuto možnost odmítnout.
+ .
+ Kvůli způsobu, jakým Debian spravuje konfigurační soubory, musíte při souhlasu s aktualizací přijmout také novou verzi /etc/cron.daily/tripwire, jinak nebude fungovat pravidelné hlášení. Nicméně stará cronová úloha zůstane stále aktivní.
+Description-da.UTF-8: Ãnsker du at opgradere?
+ Formatet for Tripwires database- og opsÃ¦tningsfiler er Ã¦ndret kraftigt i forhold til tidligere versioner.
+ .
+ For at sikre at dit system forbliver sikkert, bevarer opgraderingsprocessen en kopi af den gamle version af Tripwire og den gamle opsÃ¦tningsfil sammen med eventuelle gamle databaser. Brugen af den gamle version af Tripwire er detaljeret beskrevet i /usr/share/doc/tripwire/README.Debian.
+ .
+ Men da det ikke bliver forsÃ¸gt at konvertere den gamle opsÃ¦tningsfil og database, kan du vÃ¦lge at undlade opgraderingen i stedet.
+ .
+ PÃ¥ grund af den mÃ¥de, Debian hÃ¥ndterer opsÃ¦tningsfiler, skal du acceptere den nye version af /etc/cron.daily/tripwire, hvis du vÃ¦lger at opgradere, for at den periodevise rapportering fortsat kan fungere. Det cron-job, der hÃ¸rer til den tidligere version, vil under alle omstÃ¦ndigheder fortsÃ¦tte med at kÃ¸re.
+Description-de.UTF-8: Möchten Sie das Upgrade durchführen?
+ Die Formate der Tripwire-Datenbank und der Konfigurationsdateien haben sich wesentlich zwischen früheren Versionen und dieser Ausgabe geändert.
+ .
+ Um sicherzustellen, dass Ihr System sicher bleibt, behält der Upgrade-Prozess eine Kopie der alten Version von Tripwire und der alten Konfigurationsdatei zusammen mit etwaigen alten Datenbanken. Sie finden eine ausführliche Erklärung zur Verwendung der alten Version von Tripwire in /usr/share/doc/tripwire/README.Debian.
+ .
+ Da jedoch keine Konvertierung der alten Konfigurationsdatei und Datenbank versucht wird, könnten Sie es vorziehen, kein Upgrade durchzuführen.
+ .
+ Falls Sie sich für das Upgrade entscheiden, müssen Sie aufgrund der Art, wie Debian Konfigurationsdateien behandelt, die neue Version von /etc/cron.daily/tripwire akzeptieren, damit regelmäßige Berichte produziert werden können.Unabhängig davon wird der Cron-Job, der zu vorhergehenden Versionen gehörte, weiterhin laufen.
+Description-es.UTF-8: ¿Desea actualizar?
+ El formato de la base de datos y de los ficheros de configuración de Tripwire han cambiado sustancialmente entre las versiones anteriores y esta versión.
+ .
+ Se guardará una copia de la anterior versión de Tripwire y de los ficheros de configuración obsoletos que pertenezcan a la base de datos que pudiera existir para que su sistema mantenga su nivel de seguridad. Encontrará información detallada sobre el uso de la versión anterior de Tripwire en «/usr/share/doc/tripwire/README.Debian».
+ .
+ En cualquier caso, puede que no desee actualizar debido a que no se realizará la conversión del fichero de configuración anterior y la base de datos.
+ .
+ Si elije actualizar debe utilizar la nueva versión «/etc/cron.daily/tripwire» para que se generen los informes periódicos. Esto se debe a la forma en que Debian gestiona los ficheros de configuración. A pesar de todo, seguirá ejecutándose la tarea de cron asociada a la versión anterior.
+Description-eu.UTF-8: Bertsio-berritzea nahi duzu?
+ Tripwire-ren datu-base eta konfigurazioko fitxategien formatua aldaketa nabarmenak izan ditu aurreko bertsioaren eta unekoaren artean.
+ .
+ Sistemak segurua izaten jarraitzen duela ziurtatzeko, bertsio-berritzeko prozesuak Tripwire-ren bertsio zaharraren kopia bat eta konfigurazioko fitxategi zaharra (existitu daitezkeen hainbat datu-baserekin batera) mantentzen ditu. Tripwire-ren bertsio zaharra erabiltzeko argibide xeheak hemen aurki ditzakezu: /usr/share/doc/tripwire/README.Debian.
+ .
+ Hala ere, konfigurazioko fitxategi eta datu-base zaharraren bihurketarik ez denik egin, agian nahiago duzu ez bertsio-berritzea.
+ .
+ Debian-ek konfigurazioko fitxategiak kudeatzen dituen modua dela eta, bertsio-berritzea aukeratzen baduzu gero /etc/cron.daily/tripwire fitxategiaren bertsio berria onartu behar duzu aldiroko txostenak egiten jarraitu dezan. Aurreko bertsioarekin esleitutako cron ataza exekutatzen jarraituko da.
+Description-fi.UTF-8: Jatketaanko päivitystä?
+ Tripwiren tietokannan ja asetustiedostojen sisältö ovat muuttuneet edellisten versioiden ja tämän julkaisun välillä.
+ .
+ Järjestelmän pysyminen turvallisena varmistetaan ottamalla kopio Tripwiren vanhasta versiosta, vanhasta asetustiedostosta ja mahdollisista vanhoista tietokannoista. Yksityiskohtainen selitys Tripwiren vanhan version käyttämisestä löytyy tiedostosta /usr/share/doc/tripwire/README.Debian.
+ .
+ Koska tarkoituksena on yrittää vanhan asetustiedoston ja tietokannan muuntamista, päivitystä ei ehkä haluta tehdä.
+ .
+ Jos päivitystä jatketaan ja säännöllisen raportoinnin halutaan jatkuvan, täytyy tiedoston /etc/cron.daily/tripwire uusi versio hyväksyä. Tämä johtuu Debianin tavasta käsitellä asetustiedostoja. Edelliseen versioon liittyvän cron-työn ajamista jatketaan joka tapauksessa.
+Description-fr.UTF-8: Souhaitez-vous effectuer la mise à jour ?
+ Le format de la base de données et des fichiers de configuration de Tripwire ont significativement changé depuis la version précédente.
+ .
+ Pour garantir la sécurité de votre système, le processus de mise à jour conserve une copie de l'ancienne version de Tripwire et de ses fichiers de configuration avec toute base de données qui existerait encore. Vous trouverez une explication précise pour utiliser l'ancienne version de Tripwire dans /usr/share/doc/tripwire/README.Debian.
+ .
+ Cependant, comme aucune conversion des anciens fichiers de configuration et de la base de données n'est prévue, vous préférez peut-être refuser la mise à jour.
+ .
+ En raison de la façon dont Debian gère les fichiers de configuration, si vous choisissez de mettre à jour, vous devez accepter la nouvelle version de /etc/cron.daily/tripwire pour que les rapports réguliers puissent s'effectuer. La tâche périodique associée à l'ancienne version continuera de toute manière à fonctionner.
+Description-gl.UTF-8: ¿Quere actualizar?
+ Os formatos da base de datos e ficheiros de configuración de Tripwire cambiaron substancialmente entre as versións antigas e esta versión.
+ .
+ Para se asegurar de que o sistema permaneza seguro, o proceso de actualización conserva unha copia da versión antiga de Tripwire e do seu ficheiro de configuración xunto coas bases de datos antigas que poidan existir. Ha atopar unha explicación detallada para empregar a versión antiga de Tripwire en /usr/share/doc/tripwire/README.Debian.
+ .
+ Nembargantes, como non se tenta converter o ficheiro de configuración antigo nin a súa base de datos, pode preferir non se actualizar.
+ .
+ Debido á maneira en que Debian xestiona os ficheiros de configuración, se quere actualizar ha ter que aceptar a nova versión do ficheiro /etc/cron.daily/tripwire para poder recibir informes periódicos. A tarefa de cron asociada coa versión anterior ha seguir a funcionar, porén.
+Description-it.UTF-8: Si desidera aggiornare?
+ A partire da questa versione, il formato del database di Tripwire e i file di configurazione sono cambiati in modo sostanziale.
+ .
+ Affinché il sistema rimanga sicuro, il processo di aggiornamento mantiene una copia della vecchia versione di Tripwire e del vecchio file di configurazione insieme ai vecchi database esistenti. Per una spiegazione dettagliata sull'uso della vecchia versione di Tripwire consultare la documentazione in «/usr/share/doc/tripwrire/README.Debian».
+ .
+ Ad ogni modo, poiché non viene tentata alcuna conversione del vecchio file di configurazione e del database, è possibile decidere di non aggiornare.
+ .
+ In considerazione del modo in cui Debian tratta i file di configurazione, se si sceglie di aggiornare è necessario accettare la nuova versione di «/etc/cron.daily/tripwire» affinché i rapporti vengano generati regolarmente. Il job di cron associato con la versione precedente continuerà a essere eseguito indipendentemente dall'aggiornamento.
+Description-ja.UTF-8: アップグレードを行いますか?
+ 今回のリリースでは、Tripwire データベースと設定ファイルの形式が以前のバージョンとは異なっています。
+ .
+ システムがセキュアであることを保障するために、アップグレードでは以前のバージョンの Tripwire と存在しているであろうデータベース全て、そして関連する設定ファイルのコピーを保持します。/usr/share/doc/tripwire/README.Debian に以前のバージョンの Tripwire の使い方についての詳細な説明があります。
+ .
+ しかし、以前の設定ファイルとデータベースの変更を行いたくない場合はアップグレードしないほうがいいでしょう。
+ .
+ Debian での設定ファイルの扱い方に従うと、アップグレードを選択した場合は日々のレポートが行われるためには新しいバージョンの /etc/cron.daily/tripwire を許可しなければなりません。以前のバージョンに関連した cron の設定はこれに関係なく動作しつづけます。
+Description-nl.UTF-8: Wilt u opwaarderen?
+ Het formaat van de Tripwire-database en -configuratiebestanden is substantieel gewijzigd vanaf deze release.
+ .
+ Om te verzekeren dat uw systeem veilig blijft, bewaart het opwaarderingsproces een kopie van de oude versie van Tripwire en het oude configuratiebestand naast eventuele oude databases. U vindt een gedetailleerde uitleg over het gebruik van de oude versie van Tripwire in /usr/share/doc/tripwire/README.Debian.
+ .
+ Echter, omdat er geen conversie van het oude configuratiebestand en database wordt geprobeerd, wilt u misschien niet opwaarderen.
+ .
+ Door de manier waarop Debian configuratiebestanden behandelt, moet u de nieuwe versie van /etc/cron.daily/tripwire aanvaarden om regelmatige rapportering te laten plaatsvinden als u kiest om op te waarderen. De cronjob geassocieerd met de vorige versie zal doorgaan met uitvoeren ongeacht uw keuze.
+Description-pl.UTF-8: Przeprowadzić aktualizację?
+ Format bazy danych i plików konfiguracyjnych Tripwire znacznie się zmienił od poprzedniego wydania.
+ .
+ Aby upewnić się, że system pozostanie bezpieczny, proces aktualizacji zachowa kopię starej wersji Tripwire i starego pliku konfiguracyjnego razem ze starymi bazami danych, jeśli takie istnieją. Szczegółowe wyjaśnienie na temat używania starej wersji Tripwire można znaleźć w pliku /usr/share/doc/tripwire/README.Debian.
+ .
+ Ponieważ nie nastąpi konwersja starego pliku konfiguracyjnego i bazy danych, można również zaniechać tej aktualizacji.
+ .
+ Z powodu sposobu obsługi plików konfiguracyjnych przez Debiana, w przypadku aktualizacji, konieczne będzie zaakceptowanie nowej wersji /etc/cron.daily/tripwire, w celu regularnego raportowania. Zadanie crona związane z poprzednią wersją, wciąż będzie działało.
+Description-pt.UTF-8: Deseja actualizar?
+ O formato da base de dados do Tripwire e dos seus ficheiros de configuraÃ§Ã£o foram substancialmente modificados entre as versÃµes anteriores e este lanÃ§amento.
+ .
+ Para assegurar que o seu sistema permanece seguro, o processo de actualizaÃ§Ã£o manterÃ¡ uma cÃ³pia da versÃ£o antiga do Tripwire e do ficheiro de configuraÃ§Ã£o antigo, juntamente com antigas bases de dados que possam existir.  EncontrarÃ¡ uma explicaÃ§Ã£o detalhada de como usar a versÃ£o antiga do Tripwire em /usr/share/doc/tripwire/README.Debian.
+ .
+ Contudo, como nÃ£o Ã© tentada nenhuma conversÃ£o do ficheiro antigo de configuraÃ§Ã£o e da base de dados, pode preferir nÃ£o actualizar.
+ .
+ Devido ao modo como o Debian manipula os ficheiros de configuraÃ§Ã£o, se optar por actualizar para que ocorra o relato regularmente terÃ¡ que aceitar a nova versÃ£o de /etc/cron.daily/tripwire.  A tarefa cron associada Ã  antiga versÃ£o continuarÃ¡ no entanto a correr apesar disso.
+Description-pt_BR.UTF-8: Você deseja atualizar?
+ O formato da base de dados do Tripwire e seus arquivos de configuração mudaram substancialmente entre versões anteriores e esta release.
+ .
+ Para assegurar que seu sistema permaneça seguro, o processo de atualização mantém uma cópia da versão antiga do Tripwire e do arquivo de configuração antigo, junto com antigas bases de dados que possam existir. Você encontrará uma explicação detalhada para usar a versão antiga do Tripwire em /usr/share/doc/tripwire/README.Debian.
+ .
+ Entretanto, como não houve nenhuma tentativa de conversão do arquivo de configuração antigo, nem da base de dados antiga, talvez você prefira não atualizar.
+ .
+ Devido à maneira com que o Debian gerencia arquivos de configuração, caso você opte por atualizar, você deverá aceitar a nova versão do arquivo /etc/cron.daily/tripwire para que os relatórios regulares sejam gerados. O job cron associado com a versão anterior continuará a ser executado independentemente de sua escolha.
+Description-ru.UTF-8: Выполнить обновление?
+ Формат базы данных Tripwire и файлов настроек существенно изменился в этом выпуске по сравнению с предыдущими.
+ .
+ Чтобы система оставалась в безопасности, в процессе обновления будет сделана копия старой версии Tripwire и старого файла настройки вместе с всеми старыми базами данных, которые могут существовать. Подробное объяснение по использованию старой версии Tripwire можно найти в файле /usr/share/doc/tripwire/README.Debian.
+ .
+ Однако, поскольку никаких преобразований старого файла настройки и базы данных не выполняется, вы можете предпочесть не выполнять обновление.
+ .
+ Если вы выберете обновление, то из-за способа работы в Debian с файлами настройки, вы должны принять новую версию /etc/cron.daily/tripwire, служащую для отправки регулярных отчётов. Задание cron, связанное с предыдущей версией, будет продолжать работать по-прежнему.
+Description-sk.UTF-8: Chcete aktualizovať?
+ Formát databázy a konfiguračných súborov Tripwire je v tejto (oproti predošlej) verzii významne zmenený.
+ .
+ Aby váš systém ostal bezpečný, proces aktualizácie zachová kópiu starej verzie Tripwire, jeho konfiguračný súbor,  spolu s databázami. Podrobné vysvetlenie použitia starej verzie Tripwire nájdete v /usr/share/doc/tripwire/README.Debian.
+ .
+ Keďže nie je realizovaná konverzia starého konfiguračného súboru a databázy, asi dáte prednosť nerobiť aktualizáciu.
+ .
+ Kvôli spôsobu, akým Debian spravuje konfiguračné súbory, ak zvolíte aktualizáciu, musíte prijať aj novú verziu /etc/cron.daily/tripwire, ktorý sa stará o pravidelné hlásenie. Stará úloha cron však ostane naďalej aktívna.
+Description-sv.UTF-8: Vill du uppgradera?
+ Formatet för Tripwire-databasen och konfigurationsfilerna har ändrats rejält mellan tidigare versioner och denna utgåva.
+ .
+ För att se till att säkerheten på ditt system inte sänks kommer uppgraderingsprocessen behålla en kopia av den gamla versionen av Tripwire och den gamla konfigurationsfilen tillsammans med alla gamla databaser som kan finnas.  Du kan hitta en detaljerad förklaring om att använda den gamla versionen av Tripwire i /usr/share/doc/tripwire/README.Debian.
+ .
+ Alltså, eftersom inte konversion av den gamla konfigurationsfilen och databasen ska försöka göras kanske du föredrar att inte uppgradera.
+ .
+ På grund av det sätt som Debian hanterar konfigurationsfiler, om du väljer att uppgradera måste du acceptera den nya versionen av /etc/cron.daily/tripwire för att vanlig rapportering ska ske.  Cron-jobbet som kom med föregående version kommer fortfarande att köra oavsett.
+
+Template: tripwire/use-sitekey
+Type: boolean
+Default: true
+Description: Do you wish to create/use your site key passphrase during installation?
+ Tripwire uses a pair of keys to sign various files, thus ensuring their
+ unaltered state.  By accepting here, you will be prompted for the
+ passphrase for the first of those keys, the site key, during the
+ installation.  You are also agreeing to create a site key if one
+ doesn't exist already.  Tripwire uses the site key to sign files that may
+ be common to multiple systems, e.g. the configuration & policy files.  See
+ twfiles(5) for more information.
+ .
+ Unfortunately, due to the Debian installation process, there is a period
+ of time where this passphrase exists in a unencrypted format. Were an
+ attacker to have access to your machine during this period, he could
+ possibly retrieve your passphrase and use it at some later point.
+ .
+ If you would rather not have this exposure, decline here.  You will then
+ need to create a site key, configuration file & policy file by hand.  See
+ twadmin(8) for more information.
+Description-cs.UTF-8: Chcete během instalace vytvořit/použít heslo pro síťový klíč?
+ Tripwire používá pro podepisování nejrůznějších souborů dvojici klíčů, čímž může ověřit jejich nezměněný stav. Budete-li zde souhlasit, budete během instalace dotázáni na heslovou frázi pro první z klíčů, tzv. síťový klíč. Pokud zatím takový klíč neexistuje, současně souhlasíte, aby se vytvořil. Tripwire používá síťový klíč pro podepisování souborů, které mohou být společné pro více systémů, např. konfigurační soubory nebo soubory s politikou. Více informací naleznete v manuálové stránce twfiles(5).
+ .
+ Bohužel, v instalačním procesu se nachází okamžik, kdy je tato fráze umístěna v paměti nezašifrovaná. Pokud by měl v tento okamžik útočník přístup k vašemu počítači, pravděpodobně by mohl frázi získat a později ji zneužít.
+ .
+ Pokud klíč nechcete vytvářet během instalace, zamítněte. Ovšem pak jej budete muset vytvořit ručně a s ním také konfigurační soubor a soubor s politikou. Více informací naleznete v manuálové stránce twadmin(8).
+Description-da.UTF-8: Ãnsker du at oprette/bruge din stednÃ¸gles adgangskode under installationen?
+ Tripwire bruger et nÃ¸glepar til at signere forskellige filer for dermed at sikre deres uÃ¦ndrede tilstand. Ved at acceptere her, vil du blive bedt om adgangskoden for den fÃ¸rste af disse nÃ¸gler, stednÃ¸glen (Â»site keyÂ«), under installationen. Du accepterer ogsÃ¥ oprettelsen af en stednÃ¸gle, hvis den ikke findes i forvejen. Tripwire benytter stednÃ¸glen til at signere filer, der kan vÃ¦re delt mellem flere systemer, f.eks. opsÃ¦tnings- og retningslinjefiler. Se twfiles(5) for flere oplysninger.
+ .
+ DesvÃ¦rre er der, grundet Debians installationsproces, et tidsrum, hvor denne adgangskode vil ligge pÃ¥ maskinen i en ukrypteret udgave. SÃ¥fremt en angriber har adgang til din maskine i dette tidsrum, kan vedkommende muligvis aflÃ¦se din adgangskode til senere brug.
+ .
+ Afvis dette, hvis du hellere er fri for denne eksponering. I sÃ¥ tilfÃ¦lde skal du oprette stednÃ¸glen, opsÃ¦tningsfilen og retningslinjefilen manuelt. Se twadmin(8) for flere oplysninger.
+Description-de.UTF-8: Möchten Sie Ihre Site-Passphrase während der Installation erzeugen/verwenden?
+ Tripwire benutzt ein Paar von Schlüsseln zum Signieren verschiedener Dateien, um deren unveränderten Zustand sicherzustellen. Falls Sie hier akzeptieren, werden Sie nach der Passphrase für den ersten dieser Schlüssel, dem Site-Schlüssel, während der Installation gefragt. Sie stimmen damit auch der Erzeugung eines Site-Schlüssels zu, falls ein solcher noch nicht existiert. Tripwire verwendet den Site-Schlüssel, um Dateien zu signieren, die von verschiedenen Systemen gemeinsam genutzt werden, wie Konfigurations- und Richtliniendateien. Für mehr Informationen, siehe twfiles(5).
+ .
+ Aufgrund des Debian-Installationsprozesses gibt es leider eine Zeitspanne, in der diese Passphrase in einem unverschlüsselten Format existiert. Falls ein Angreifer Zugang zu Ihrem Rechner während dieser Zeit hätte, könnte er Ihre Passphrase möglicherweise abfragen und später verwenden.
+ .
+ Falls Sie dieses Risiko nicht eingehen möchten, lehnen Sie hier ab. Sie müssen dann einen Site-Schlüssel, eine Konfigurations- und Richtliniendatei von Hand erzeugen. Siehe twadmin(8) für mehr Informationen.
+Description-es.UTF-8: ¿Desea crear o usar su clave de sitio durante la instalación?
+ Tripwire utiliza una pareja de claves para firmar varios ficheros, de esta forma se asegura que no se modifiquen. Si acepta aquí, se le pedirá la primera de estas claves durante la instalación, esta es la contraseña de sitio. También da su conformidad con la creación de esta contraseña si no existe aún. Tripwire usa la clave de sitio para firmar los ficheros que son compartidos entre distintos sistemas, p. ej. los ficheros de configuración y de directrices. Para más información consulte la página de manual twfiles(5).
+ .
+ Desafortunadamente, debido al proceso de instalación de Debian, hay un intervalo de tiempo en que existe la clave pero esta no está cifrada. Durante este tiempo, un atacante que tenga acceso a su máquina podría conseguir la contraseña y utilizarla más adelante.
+ .
+ No acepte esta opción si no desea exponerse. Deberá crear los ficheros de contraseña de sitio, de configuración y de directrices manualmente. Para más información consulte twadmin(8).
+Description-eu.UTF-8: Nahi duzu zure guneko gakoaren pasaesaldia sortzea/erabiltzea instalazioan zehar?
+ Tripwire-k gako pare bat erabiltzen ditu fitxategi desberdinak sinatzeko, hauen aldatu gabeko egoera ziurtatzeko.  Hemen onartzen baduzu, gako hauetariko aurrenekoaren (gunearen gakoa) pasaesaldia eskatuko zaizu instalazioan. Gunearen gakorik ez bada existitzen, bat sortzeko adostasuna ere ematen duzu. Tripwire-k gunearen gakoa hainbat sistementzako amankomunak diren fitxategiak sinatzeko erabiltzen ditu, adib. konfigurazio eta politiken fitxategiak. Ikus twfiles(5) argibide gehiagorako.
+ .
+ Zoritxarrez Debian-en instalazioaren prozesua dela eta, denbora bitarte bat dago non pasaesaldia enkriptatu gabeko formatuan dagoen. Denbora horretan, erasotzaile batek ordenagailura sarbidetzen bada, zure pasaesaldia eskuratu eta beranduago asmo maltzurrekin erabil dezake.
+ .
+ Ez baduzu arrisku horren aurrean egoterik nahi, hemen bazter dezakezu. Kasu horretan, gunearen gakoa, konfigurazioko fitxategia eta politiken fitxategia eskuz sortu beharko dituzu. Ikus twadmin(8) informazio gehiagorako.
+Description-fr.UTF-8: Souhaitez-vous créer ou utiliser votre phrase secrète de la clé du site lors de l'installation ?
+ Tripwire utilise une paire de clés pour signer différents fichiers, afin de s'assurer de leur intégrité. En acceptant ici, votre phrase secrète vous sera demandée pour la première des clés, la clé du site, lors de l'installation. Vous serez également invité à créer une clé pour le site s'il n'en existe pas déjà une. Tripwire utilise la clé du site pour signer les fichiers qui peuvent être partagés entre plusieurs systèmes, par exemple les fichiers de configuration et de règles. Consultez twfiles(5) pour plus d'informations.
+ .
+ Malheureusement, en raison du processus d'installation de Debian, il existe un intervalle de temps pendant lequel la phrase secrète existe dans un format non-chiffré. Si un attaquant possède l'accès à votre machine pendant ce laps de temps, il pourrait récupérer votre phrase secrète et l'utiliser plus tard.
+ .
+ Si vous préférez ne pas prendre ce risque, veuillez refuser ici. Vous devrez ensuite créer vous-même une clé de site, des fichiers de configuration et de règles. Consultez twadmin(8) pour plus d'informations.
+Description-ja.UTF-8: インストール中にサイトパスフレーズを作成・使用しますか?
+ Tripwire は鍵ペアを使って各種ファイルに署名を行い、これらのファイルが不変であることを保障します。ここで許可した場合、インストール中にこの鍵ペアの最初の一つ、サイトキーのパスフレーズを入力するためのプロンプトが表示されます。サイトキーがまだ無い場合、ここで作成を行います。Tripwire は、例えば設定・ポリシーファイルなどの複数のシステムに共通のファイルへ署名にサイトキーを利用します。詳細については twfiles(5) を参照してください。
+ .
+ 残念なことに、Debian でのインストールではこの時点ではパスフレーズは暗号化されていない状態で存在しています。この間にマシンへアクセスした攻撃者がパスフレーズを探し当て、後の時点のどこかで利用することが可能となるかもしれません。
+ .
+ このような勧めにはむしろ従いたくないという場合は、ここで拒否をしてください。この場合、サイトキー、設定ファイル、ポリシーファイルを手動で作成する必要があります。詳細については twadmin(8) をご覧ください。
+Description-nl.UTF-8: Wilt u uw sitesleutel-wachtwoord aanmaken/gebruiken tijdens installatie?
+ Tripwire gebruikt één paar sleutels om verschillende bestanden te ondertekenen om hun ongewijzigde toestand te verzekeren. Door hier te aanvaarden, zult u tijdens de installatie gevraagd worden naar het wachtwoord voor de eerste van deze sleutels, de sitesleutel. U aanvaardt ook om een sitesleutel aan te maken als deze nog niet bestaat. Tripwire gebruikt de sitesleutel om bestanden te ondertekenen die gemeenschappelijk kunnen zijn voor meerdere systemen, bijvoorbeeld de configuratie- en beleidsbestanden. Zie twfiles(5) voor meer informatie.
+ .
+ Spijtig genoeg is er door het Debian-installatieproces een tijdsperiode waarin dit wachtwoord in een niet-versleutelde vorm bestaat. Als een indringer toegang zou hebben tot uw machine tijdens deze periode, dan kan het mogelijk achterhaald worden en op een later tijdstip gebruikt worden.
+ .
+ Als u dit risico liever niet loopt, weiger hier dan. U zult dan handmatig een sitesleutel, configuratiebestand en beleidsbestand moeten aanmaken. Zie twadmin(8) voor meer informatie.
+Description-pl.UTF-8: Utworzyć/użyć hasło klucza ogólnego podczas instalacji?
+ Tripwire używa pary kluczy do podpisywania różnych plików, upewniając się, że nie zostały zmienione. Po zaakceptowaniu tego pytania, zostanie wyświetlone pytanie o hasło do pierwszego z tych kluczy, klucza ogólnego ("site key"), podczas instalacji. Jeśli klucz jeszcze nie istnieje, zostanie utworzony. Tripwire używa klucza ogólnego do podpisywania plików, które mogą być dzielone między systemami, np. plików konfiguracji i zasad. Podręcznik twfiles(5) zawiera więcej informacji.
+ .
+ Niestety, z powodu przebiegu instalacji Debiana, przez pewien czas hasło istnieje w formie niezaszyfrowanej. Jeśli atakujący posiada dostęp do bieżącego komputera w tym czasie, istnieje możliwość, że może je pobrać - a później - wykorzystać.
+ .
+ Aby nie narażać się na ryzyko, można wybrać odpowiedź "nie". Konieczne będzie wówczas ręczne utworzenie klucza ogólnego, pliku konfiguracyjnego i pliku zasad. Podręcznik twadmin(8) zawiera więcej informacji.
+Description-pt.UTF-8: Deseja criar/utilizar a sua frase-chave do site durante a instalaÃ§Ã£o?
+ O tripwire utiliza um par de chaves para assinar diversos ficheiros, assegurando assim a sua inalterabilidade.  Ao aceitar, ser-lhe-Ã¡ pedida durante a instalaÃ§Ã£o, a frase-chave para a primeira dessas chaves, a frase-chave do site. EstarÃ¡ tambÃ©m a concordar com a criaÃ§Ã£o de uma chave do site se esta ainda nÃ£o existir.  O tripwire utiliza a chave do site para assinar ficheiros que possam ser comuns a vÃ¡rios sistemas, e.g. os ficheiros de configuraÃ§Ã£o e de polÃ­tica de sistema.  Veja twfiles(5) para mais informaÃ§Ã£o.
+ .
+ Infelizmente, devido ao processo de instalaÃ§Ã£o de Debian, existe um perÃ­odo de tempo em que a frase-chave estÃ¡ num formato nÃ£o encriptado. AlguÃ©m que queira atacar pode ter acesso Ã  sua mÃ¡quina neste perÃ­odo, o que lhe pode permitir o acesso Ã  frase-chave e a sua utilizaÃ§Ã£o mais tarde.
+ .
+ Se preferir nÃ£o ter esta exposiÃ§Ã£o, nÃ£o aceite.  TerÃ¡ entÃ£o que criar manualmente uma chave do site, ficheiro de configuraÃ§Ã£o e ficheiro de polÃ­tica de sistema. Veja twadmin(8) para mais informaÃ§Ã£o.
+Description-pt_BR.UTF-8: Você deseja criar/usar a frase secreta de sua chave de site durante a instalação?
+ O Tripwire utiliza um par de chaves para assinar diversos arquivos, garantindo assim o estado inalterado dos mesmos. Ao aceitar aqui, sua frase secreta lhe será pedida para a primeira destas chaves, a chave de site ("site key"), durante a instalação. Você estará também concordando em criar uma chave de site caso uma ainda não exista. O Tripwire utiliza a chave de site para assinar arquivos que podem ser comuns para diversos sistemas, como, por exemplo, o arquivo de configuração e o arquivo de políticas. Consulte a página de manual twfiles(5) para maiores informações.
+ .
+ Infelizmente, devido ao processo de instalação Debian, existe um período de tempo em que a frase secreta existirá em um formato não-encriptado. Caso um atacante obtenha acesso à sua máquina durante este período, o mesmo poderia possivelmente obter sua frase secreta e usá-la futuramente.
+ .
+ Caso você não queira ter esta exposição, não aceite aqui. Nesse caso, você precisará criar manualmente uma chave de site ("site key"), o arquivo de configuração e o arquivo de políticas. Consulte a página de manual twadmin(8) para maiores informações.
+Description-ru.UTF-8: Создать/использовать ключ узла под паролем во время установки?
+ Tripwire использует пару ключей для подписи различных файлов для контроля их неизменённости. Если вы ответите утвердительно, то вас попросят ввести пароль для первого из этих ключей, ключа узла, во время установки. Этим же ответом вы соглашаетесь на создание ключа узла, если его ранее не было. Tripwire использует ключ узла для подписи файлов, которые могут общими для нескольких систем, например файлы настроек & политики. Подробней смотрите в twfiles(5).
+ .
+ К сожалению, во время процесса установки в Debian, есть период когда пароль существует в нешифрованном виде. Если злоумышленник получит доступ к машине во время этого периода, то он может извлечь ваш пароль и использовать его позже.
+ .
+ Если вы предпочитаете не рисковать, ответьте отрицательно. В этом случае позже вам нужно будет создать ключ узла, файл настройки & политики вручную. Подробней смотрите в twadmin(8).
+Description-sk.UTF-8: Chcete počas inštalácie vytvoriť/použiť heslo svojho kľúča sídla?
+ Tripwire používa na podpísanie rôznych súborov dvojicu kľúčov, čím zaisťuje ich nezmenený stav. Ak budete súhlasiť, budete počas inštalácie vyzvaný na zadanie hesla prvého z týchto kľúčov, kľúč sídla. Zároveň súhlasíte s vytvorením kľúča sídla, ak ešte žiadny neexistuje. Tripwire používa kľúč sídla na podpísanie súborov, ktoré môžu byť spoločné pre viacero systémov, napr. konfiguračné súbory a súbory politiky. Ďalšie podrobnosti nájdete v twfiles(5).
+ .
+ Nanešťastie, počas inštalačného procesu je okamžik, kedy toto heslo existuje v nešifrovanej podobe. Ak má počas tohoto okamžiku k vášmu počítaču prístup útočník, mohol by získať vaše heslo a neskôr ho zneužiť.
+ .
+ Ak sa chcete vyhnúť tomuto riziku, odmietnite túto možnosť. Potom však budete musieť kľúč sídla, konfiguračný súbor a súbor politiky vytvoriť manuálne. Ďalšie informácie nájdete v twadmin(8).
+Description-sv.UTF-8: Vill du skapa/använda lösenordsfrasen för din systemnyckel under installationen?
+ Tripwire använder ett par nycklar för att digitalt signera olika filer, för att vara säker på att dessa filer inte ändrats. Genom att acceptera här kommer du att frågas efter lösenordsfrasen för den första av dessa nycklar, systemnyckeln, under installationen.En systemnyckel kommer att skapas om den inte redan finns. Tripwire använder systemnyckeln för att signera filer som kan vara gemensamma för flera system, såsom konfiguration och policyfiler. Läs twfiles(5) för mer information.
+ .
+ På grund av Debian's installationsprocess finns det en tidsperiod där lösenordsfrasen existerar i en okrypterad form. Om ett intrång skulle ske på din maskin under denna period finns det en möjlighet att din lösenordsfras kommer i orätta händer och använder den vid en senare tidspunkt.
+ .
+ Om du inte önskar denna exponering, vägra här.  Du kommer då att behöver skapa en systemnyckel, konfigurationfil och policyfil på egen hand.  Se twadmin(8) för mer information.
+
+Template: tripwire/use-localkey
+Type: boolean
+Default: true
+Description: Do you wish to create/use your local key passphrase during installation?
+ Tripwire uses a pair of keys to sign various files, thus ensuring their
+ unaltered state.  By accepting here, you will be prompted for the
+ passphrase for the second of those keys, the local key, during the
+ installation.  You are also agreeing to create a local key if one
+ doesn't exist already.  Tripwire uses the local key to sign files that are
+ specific to this system, e.g. the tripwire database. See twfiles(5) for
+ more information.
+ .
+ Unfortunately, due to the Debian installation process, there is a period
+ of time where this passphrase exists in a unencrypted format. Were an
+ attacker to have access to your machine during this period, he could
+ possibly retrieve your passphrase and use it at some later point.
+ .
+ If you would rather not have this exposure, decline here.  You will then
+ need to create a local key file by hand.  See twadmin(8) for more
+ information.
+Description-cs.UTF-8: Chcete během instalace vytvořit/použít heslo pro lokální klíč?
+ Tripwire používá pro podepisování nejrůznějších souborů pár klíčů, čímž může ověřit jejich nezměněný stav. Budete-li zde souhlasit, budete během instalace dotázáni na heslovou frázi pro druhý z klíčů, tzv. lokální klíč. Pokud zatím neexistuje síťový klíč, současně souhlasíte, aby se vytvořil. Tripwire používá lokální klíč pro podepisování souborů, které jsou specifické pro tento systém, např. databáze tripwire. Více informací naleznete v manuálové stránce twfiles(5).
+ .
+ Bohužel, v instalačním procesu se nachází okamžik, kdy je tato fráze umístěna v paměti nezašifrovaná. Pokud by měl v tento okamžik útočník přístup k vašemu počítači, pravděpodobně by mohl frázi získat a později ji zneužít.
+ .
+ Pokud klíč nechcete vytvářet během instalace, zamítněte. Ovšem pak jej budete muset vytvořit ručně. Více informací naleznete v manuálové stránce twadmin(8).
+Description-da.UTF-8: Vil du oprette/bruge din lokale adgangskode under installationen?
+ Tripwire bruger et nÃ¸glepar til at signere forskellige filer for dermed at sikre deres uÃ¦ndrede tilstand. Ved at acceptere her, vil du blive bedt om adgangskoden for den fÃ¸rste af disse nÃ¸gler, den lokale nÃ¸gle, under installationen. Du accepterer ogsÃ¥ oprettelsen af en lokal nÃ¸gle, hvis den ikke findes i forvejen. Tripwire benytter lokalnÃ¸glen til at signere filer, der kan vÃ¦re delt mellem flere systemer, f.eks. opsÃ¦tnings- og rettighedsfiler. Se twfiles(5) for flere oplysninger.
+ .
+ DesvÃ¦rre er der, grundet Debians installationsproces, et tidsrum, hvor denne adgangskode vil ligge pÃ¥ maskinen i en ukrypteret udgave. SÃ¥fremt en angriber har adgang til din maskine i dette tidsrum, kan vedkommende muligvis aflÃ¦se din adgangskode til senere brug.
+ .
+ Afvis dette, hvis du hellere er fri for denne eksponering. I sÃ¥ tilfÃ¦lde skal du oprette en lokal nÃ¸gle manuelt. Se twadmin(8) for flere oplysninger.
+Description-de.UTF-8: Möchten Sie die Passphrase für Ihren lokalen Schlüssel während der Installation erzeugen/verwenden?
+ Tripwire benutzt ein Paar von Schlüsseln zum Signieren verschiedener Dateien, um deren unveränderten Zustand sicherzustellen. Falls Sie hier akzeptieren, werden Sie nach der Passphrase für den zweiten dieser Schlüssel, dem lokalen Schlüssel, während der Installation gefragt. Sie stimmen damit auch der Erzeugung eines lokalen Schlüssels zu, falls ein solcher noch nicht existiert. Tripwire verwendet den lokalen Schlüssel, um Dateien zu signieren, die für dieses System spezifisch sind, wie die Tripwire-Datenbank. Für mehr Informationen, siehe twfiles(5).
+ .
+ Aufgrund des Debian-Installationsprozesses gibt es leider eine Zeitspanne, in der diese Passphrase in einem unverschlüsselten Format existiert. Falls ein Angreifer Zugang zu Ihrem Rechner während dieser Zeit hätte, könnte er Ihre Passphrase möglicherweise abfragen und später verwenden.
+ .
+ Falls Sie dieses Risiko nicht eingehen möchten, lehnen Sie hier ab. Sie müssen dann einen lokalen Schlüssel von Hand erzeugen. Siehe twadmin(8) für mehr Informationen.
+Description-es.UTF-8: ¿Desea crear o usar su clave local durante la instalación?
+ Tripwire utiliza una pareja de claves para firmar varios ficheros, de esta forma se asegura que no se puedan modificar. Si acepta aquí, se le pedirá durante la instalación la contraseña para la segunda clave: la clave local. También da su consentimiento para que se cree una clave local si no existe aún. Tripwire usa la clave local para firmar los ficheros específicos en su sistema, como p. ej. la base de datos de Tripwire. Para más información consulte twfiles(5).
+ .
+ Desafortunadamente, debido al proceso de instalación de Debian, hay un intervalo de tiempo en que existe la clave pero esta no está cifrada. Durante este tiempo, un atacante que tenga acceso a su máquina podría conseguir la contraseña y utilizarla más adelante.
+ .
+ Si prefiere no exponerse, no acepte esta opción. Necesitará crear el fichero de clave local manualmente. Para más información consulte twadmin(8).
+Description-eu.UTF-8: Nahi duzu lokaleko gakoaren pasaesaldia sortu/erabili instalazioan zehar?
+ Tripwire-k gako pare bat erabiltzen du hainbat fitxategi sinatzeko, horrela haien aldatu gabeko egoera ziurtatzeko.  Hemen hori onartuz, gako horietako bigarrenaren (gako lokala) pasaesaldia eskatuko zaizu instalazioan zehar. Lokaleko gakorik ez bada existitzen, bat sortzeko adostasuna ere ematen duzu. Tripwire-k lokaleko gakoa sistema honentzako bereziak diren fitxategiak sinatzeko erabiltzen ditu, adib. tripwire-ren datu-basea. Ikus twfiles(5) argibide gehiagorako.
+ .
+ Zoritxarrez Debian-en instalazioaren prozesua dela eta, denbora bitarte bat dago non pasaesaldia enkriptatu gabeko formatuan dagoen. Denbora horretan, erasotzaile batek ordenagailura sarbidetzen bada, zure pasaesaldia eskuratu eta beranduago asmo maltzurrekin erabil dezake.
+ .
+ Ez baduzu arrisku horren aurrean egoterik nahi, hemen bazter dezakezu. Kasu horretan, lokaleko gakoa eskuz sortu beharko duzu. Ikus twadmin(8) informazio gehiagorako.
+Description-fr.UTF-8: Souhaitez-vous créer ou utiliser votre phrase secrète locale lors de l'installation ?
+ Tripwire utilise une paire de clés pour signer différents fichiers, afin de s'assurer de leur intégrité. En acceptant ici, votre phrase secrète vous sera demandée pour la seconde des clés, la clé locale, lors de l'installation. Vous serez également invité à créer une clé locale s'il n'en existe pas déjà une. Tripwire utilise la clé locale pour signer les fichiers spécifiques à ce système, par exemple la base de données de Tripwire. Consultez twfiles(5) pour plus d'informations.
+ .
+ Malheureusement, en raison du processus d'installation de Debian, il existe un intervalle de temps pendant lequel la phrase secrète existe dans un format non-chiffré. Si un attaquant possède l'accès à votre machine pendant ce laps de temps, il pourrait récupérer votre phrase secrète et l'utiliser plus tard.
+ .
+ Si vous préférez ne pas prendre ce risque, veuillez refuser ici. Vous devrez alors créer vous-même une clé locale. Consultez twadmin(8) pour plus d'informations.
+Description-ja.UTF-8: インストール中にローカルパスフレーズを作成・使用しますか?
+ Tripwire は鍵ペアを使って各種ファイルに署名を行い、これらのファイルが不変であることを保障します。ここで許可した場合、インストール中にこの鍵ペアの次の一つ、ローカルキーのパスフレーズを入力するためのプロンプトが表示されます。ローカルキーがまだ無い場合、ここで作成を行います。Tripwire はこのシステムに特有のファイル、例えば Tripwire のデータベースなどへの署名にローカルキーを利用します。詳細については twfiles(5) を参照してください。
+ .
+ 残念なことに、Debian でのインストールではこの時点ではパスフレーズは暗号化されていない状態で存在しています。この間にマシンへアクセスした攻撃者がパスフレーズを探し当て、後の時点のどこかで利用することが可能となるかもしれません。
+ .
+ このような勧めにはむしろ従いたくないという場合は、ここで拒否をしてください。この場合、サイトキー、設定ファイル、ポリシーファイルを手動で作成する必要があります。詳細については twadmin(8) をご覧ください。
+Description-nl.UTF-8: Wilt u uw lokale sleutelwachtwoord aanmaken/gebruiken tijdens installatie?
+ Tripwire gebruikt één paar sleutels om verschillende bestanden te ondertekenen om hun ongewijzigde toestand te verzekeren. Door hier te aanvaarden, zult u tijdens de installatie gevraagd worden naar het wachtwoord voor de tweede van deze sleutels, de  lokale sleutel. U aanvaardt ook om een lokale sleutel aan te maken als deze nog niet bestaat. Tripwire gebruikt de lokale sleutel om bestanden te ondertekenen die specifiek aan dit systeem zijn, bijvoorbeeld de tripwire-database. Zie twfiles(5) voor meer informatie.
+ .
+ Spijtig genoeg is er door het Debian-installatieproces een tijdsperiode waarin dit wachtwoord in een niet-versleutelde vorm bestaat. Als een indringer toegang zou hebben tot uw machine tijdens deze periode, dan kan het mogelijk achterhaald worden en op een later tijdstip gebruikt worden.
+ .
+ Als u dit risico liever niet loopt, weiger hier dan. U zult dan handmatig een lokale sleutel moeten aanmaken. Zie twadmin(8) voor meer informatie.
+Description-pl.UTF-8: Utworzyć/użyć hasło klucza lokalnego podczas instalacji?
+ Tripwire używa pary kluczy do podpisywania różnych plików, upewniając się, że nie zostały zmienione. Po zaakceptowaniu tego pytania, zostanie wyświetlone pytanie o hasło do drugiego z tych kluczy, klucza lokalnego ("local key"), podczas instalacji. Jeśli klucz jeszcze nie istnieje, zostanie utworzony. Tripwire używa klucza lokalnego do podpisywania plików, które są unikatowe dla tego systemu, np. bazy danych tripwire. Podręcznik twfiles(5) zawiera więcej informacji.
+ .
+ Niestety, z powodu przebiegu instalacji Debiana, przez pewien czas hasło istnieje w formie niezaszyfrowanej. Jeśli atakujący posiada dostęp do bieżącego komputera w tym czasie, istnieje możliwość, że może je pobrać - a później - wykorzystać.
+ .
+ Aby nie narażać się na ryzyko, można wybrać odpowiedź "nie". Konieczne będzie wówczas ręczne utworzenie klucza lokalnego. Podręcznik twadmin(8) zawiera więcej informacji.
+Description-pt.UTF-8: Deseja criar/utilizar a sua frase-chave local durante a instalaÃ§Ã£o?
+ O tripwire utiliza um par de chaves para assinar vÃ¡rios ficheiros, assegurando deste modo de que o seu estado nÃ£o se encontra alterado. Ao aceitar aqui durante a instalaÃ§Ã£o ser-lhe-Ã¡ pedida a frase-chave para a segunda dessas chaves, a chave local.  EstarÃ¡ do mesmo modo a concordar com a criaÃ§Ã£o de uma chave de site local se nÃ£o existir nenhuma.  O tripwire utiliza a chave local para assinar ficheiros especÃ­ficos a este sistema, e.g, a base de dados do tripwire. Veja twfiles(5) para mais informaÃ§Ã£o.
+ .
+ Infelizmente, devido ao processo de instalaÃ§Ã£o de Debian, existe um perÃ­odo de tempo em que a frase-chave estÃ¡ num formato nÃ£o encriptado. AlguÃ©m que queira atacar pode ter acesso Ã  sua mÃ¡quina neste perÃ­odo, o que lhe pode permitir o acesso Ã  frase-chave e a sua utilizaÃ§Ã£o mais tarde.
+ .
+ Se nÃ£o pretender esta exposiÃ§Ã£o, nÃ£o aceite aqui.  TerÃ¡ entÃ£o que criar manualmente uma chave local.  Veja twadmin(8) para mais informaÃ§Ã£o.
+Description-pt_BR.UTF-8: Você deseja criar/usar a frase secreta de sua chave local durante a instalação?
+ O Tripwire utiliza um par de chaves para assinar diversos arquivos, garantindo assim o estado inalterado dos mesmos. Ao aceitar aqui, sua frase secreta lhe será pedida para a segunda destas chaves, a chave local ("local key"), durante a instalação. Você estará também concordando em criar uma chave local caso uma ainda não exista. O Tripwire utiliza a chave local para assinar arquivos específicos para este sistema, como, por exemplo, a base de dados do Tripwire. Consulte a página de manual twfiles(5) para maiores informações.
+ .
+ Infelizmente, devido ao processo de instalação Debian, existe um período de tempo em que a frase secreta existirá em um formato não-encriptado. Caso um atacante obtenha acesso à sua máquina durante este período, o mesmo poderia possivelmente obter sua frase secreta e usá-la futuramente.
+ .
+ Caso você não queira ter esta exposição, não aceite aqui. Nesse caso, você precisará criar manualmente um arquivo de chave local. Consulte a página de manual twadmin(8) para maiores informações.
+Description-ru.UTF-8: Создать/использовать локальный ключ под паролем во время установки?
+ Tripwire использует пару ключей для подписи различных файлов для контроля их неизменённости. Если вы ответите утвердительно, то вас попросят ввести пароль для второго из этих ключей, локального ключа, во время установки. Этим же ответом вы соглашаетесь на создание локального ключа, если его ранее не было. Tripwire использует локальный ключ для подписи файлов, которые используются только этой системой, например файлов базы данных tripwire. Подробней смотрите в twfiles(5).
+ .
+ К сожалению, во время процесса установки в Debian, есть период когда пароль существует в нешифрованном виде. Если злоумышленник получит доступ к машине во время этого периода, то он может извлечь ваш пароль и использовать его позже.
+ .
+ Если вы предпочитаете не рисковать, ответьте отрицательно. В этом случае позже вам нужно будет создать локальный ключ вручную. Подробней смотрите в twadmin(8).
+Description-sk.UTF-8: Chcete počas inštalácie vytvoriť/použiť heslo svojho lokálneho kľúča?
+ Tripwire používa na podpísanie rôznych súborov dvojicu kľúčov, čím zaisťuje ich nezmenený stav. Ak budete s týmto súhlasiť, budete počas inštalácie vyzvaný na zadanie hesla druhého z týchto kľúčov, lokálneho kľúča. Zároveň tiež súhlasíte s vytvorením lokálneho kľúča, ak ešte neexistuje. Tripwire používa lokálny kľúč na podpísanie súborov, ktoré sú špecifické pre tento systém, napr. databáza tripwire. Ďalšie informácie nájdete v twfiles(5).
+ .
+ Nanešťastie, počas inštalačného procesu je okamžik, kedy toto heslo existuje v nešifrovanej podobe. Ak má počas tohoto okamžiku k vášmu počítaču prístup útočník, mohol by získať vaše heslo a neskôr ho zneužiť.
+ .
+ Ak sa chcete vyhnúť tomuto riziku, odmietnite túto možnosť. Potom však budete musieť lokálny kľúč vytvoriť  manuálne. Ďalšie informácie nájdete v twadmin(8).
+Description-sv.UTF-8: Vill du skapa/använda din lösenordsfras för den lokala nyckeln under installationen?
+ Tripwire använder ett par nycklar för att digitalt signera olika filer, för att vara säker på att dessa filer inte ändrats. Genom att acceptera här kommer du att frågas efter lösenordsfrasen för den andra av dessa nycklar, den lokala nyckeln, under installationen. En systemnyckel kommer att skapas om den inte redan finns. Tripwire använder den lokala nyckeln för att signera filer som är specifika för detta system, såsom tripwire-databasen. Läs twfiles(5) för mer information.
+ .
+ På grund av Debian's installationsprocess finns det en tidsperiod där lösenordsfrasen existerar i en okrypterad form. Om ett intrång skulle ske på din maskin under denna period finns det en möjlighet att din lösenordsfras kommer i orätta händer och använder den vid en senare tidspunkt.
+ .
+ Om du inte önskar denna exponering, vägra här.  Du kommer då att behöva skapa en lokal nyckelfil på egen hand.  Se twadmin(8) för mer information.
+
+Template: tripwire/site-passphrase
+Type: password
+Description: Enter site-key passphrase:
+ Tripwire uses two different keys for authentication and encryption of
+ files.  The site key is used to protect files that could be used across
+ several systems.  This includes the policy and configuration files.
+ .
+ You are being prompted for this passphrase either because no site key
+ exists at this time or because you have requested the rebuilding of the
+ policy or configuration files.
+ .
+ Remember this passphrase; it is not stored anywhere!
+Description-cs.UTF-8: Zadejte frázi chránící síťový klíč:
+ Tripwire používá pro autentizaci a šifrování souborů dva různé klíče. Síťový klíč se používá pro ochranu souborů, které mohou být použity na několika systémech. To zahrnuje konfigurační soubor a soubor s politikou.
+ .
+ Na tuto frázi jste dotázáni proto, že buď síťový klíč zatím neexistuje, nebo proto, že jste požádali o znovuvytvoření konfiguračního souboru nebo souboru s politikou.
+ .
+ Tuto frázi si pečlivě zapamatujte, nikde se neukládá!
+Description-da.UTF-8: Angiv stednÃ¸glens adgangskode:
+ Tripwire bruger to forskellige nÃ¸gler til at autentificere og kryptere filer. StednÃ¸glen bruges til at beskytte filer, der kan vÃ¦re delt mellem flere systemer. Dette omfatter bl.a. retningslinje- og opsÃ¦tningsfiler.
+ .
+ Du bliver bedt om denne adgangskode fordi der enten ikke eksisterer nogen stednÃ¸gle endnu, eller fordi du har bedt om at fÃ¥ genopbygget retningslinje- eller opsÃ¦tningsfilerne.
+ .
+ Husk denne adgangskode. Den bliver ikke gemt nogen steder!
+Description-de.UTF-8: Die Passphrase für den Site-Schlüssel eingeben:
+ Tripwire verwendet zwei verschiedene Schlüssel zur Authentifikation und Verschlüsselung von Dateien. Der Site-Schlüssel wird benutzt, um Dateien zu schützen, die über mehrere Systeme hinweg verwendet werden könnten. Dies schließt die Richtlinien- und die Konfigurationsdateien ein.
+ .
+ Sie werden nach dieser Passphrase gefragt, weil entweder kein Site-Schlüssel gegenwärtig existiert oder weil Sie die Neuerzeugung der Richtlinien- und Konfigurationsdateien angefordert haben.
+ .
+ Merken Sie sich diese Passphrase; sie wird nirgends gespeichert!
+Description-es.UTF-8: Introduzca la clave de sitio:
+ Tripwire utiliza dos claves diferentes para los ficheros de autentificación y cifrado. La clave de sitio se usa para proteger los ficheros que se utilizan en más de un sistema. Esto incluye los ficheros de directrices y los de configuración.
+ .
+ Se le pide la clave el sitio bien porque no existe en este momento o porque ha solicitado la regeneración de los ficheros de directrices o de configuración.
+ .
+ Recuerde su contraseña. ¡No se almacenará en ningún lugar!
+Description-eu.UTF-8: Idatzi gunearen gakoaren pasaesaldia:
+ Tripwire-k bi gako desberdin erabiltzen ditu fitxategiak autentifikatu eta enkriptatzeko. Gunearen gakoa hainbat sistemetan zehar erabil daitezkeen fitxategiak babesteko erabiltzen da. Politiken eta konfigurazioko fitxategiak barne.
+ .
+ Pasaesaldia eskatzen ari zaizu unean gunearen gakoa ez delako existitzen, edo politiken edo konfigurazioko fitxategiak berriro eraikitzea eskatu duzulako.
+ .
+ Gogoratu pasaesaldi hau, ez baita inon gordeko!
+Description-fi.UTF-8: Sivustoavaimen salalause::
+ Tripwire käyttää kahta eri avainta tunnistautumiseen ja tiedostojen salaamiseen. Sivustoavainta käytetään sellaisten tiedostojen suojaamiseen, joita voidaan käyttää useammassa järjestelmässä. Sääntö- ja asetustiedostot kuuluvat näihin.
+ .
+ Tätä salalausetta kysytään, koska joko sivustoavainta ei ole olemassa tai sääntö- ja asetustiedostoja on pyydetty luotavaksi uudelleen.
+ .
+ Muista tämä salalause, sitä ei tallenneta selväkielisenä mihinkään!
+Description-fr.UTF-8: Phrase secrète de la clé du site :
+ Tripwire utilise deux clés différentes pour l'authentification et le chiffrage des fichiers. La clé du site est utilisée pour protéger les fichiers qui peuvent être utilisés simultanément par différents systèmes. Ceci comprend les fichiers de configuration et de règles.
+ .
+ Cette phrase secrète vous est demandée car aucune clé de site n'existe pour l'instant ou bien parce que vous avez demandé la reconstruction des fichiers de configuration ou de règles.
+ .
+ Souvenez-vous de cette phrase secrète, elle n'est conservée nulle part.
+Description-it.UTF-8: Inserire la frase segreta del sito:
+ Per l'autentica e la cifratura di file Tripwire utilizza due chiavi differenti. La chiave del sito viene utilizzata per proteggere file che potrebbero essere utilizzati da diversi sistemi, come per esempio i file di policy e di configurazione.
+ .
+ Questa frase segreta viene richiesta o perché non ancora esistente, o perché si è richiesta la rigenerazione dei file di policy o di configurazione.
+ .
+ È necessario ricordarsi questa frase segreta, poiché essa non viene memorizzata da alcuna parte.
+Description-ja.UTF-8: サイトキーパスフレーズを入力してください:
+ Tripwire は認証とファイルの暗号化に二つの異なる鍵を使用します。サイトキーは複数のシステム間で利用されるであろうファイルを保護するために利用します。これにはポリシーファイルと設定ファイルが含まれます。
+ .
+ サイトキーが存在していないか、ポリシーファイルまたは設定ファイルの再構築を行いたいという場合にこのパスフレーズを求められます。
+ .
+ このパスフレーズを忘れないでください。これはどこにも保存されません!
+Description-nl.UTF-8: Geef sitesleutel-wachtwoord:
+ Tripwire gebruikt twee verschillende sleutels voor authenticatie en encryptie van bestanden. De sitesleutel wordt gebruikt om bestanden te beschermen die door verschillende systemen gebruikt kunnen worden. Dit omvat de beleids- en configuratiebestanden.
+ .
+ U wordt gevraagd naar dit wachtwoord omdat er ofwel op dit moment geen sitesleutel bestaat, of omdat u gevraagd hebt de beleids- en configuratiebestanden opnieuw aan te maken.
+ .
+ Onthou dit wachtwoord; het wordt nergens bewaard!
+Description-pl.UTF-8: Proszę wprowadzić hasło klucza ogólnego:
+ Tripwire używa dwóch różnych kluczy do uwierzytelniania i szyfrowania plików. Klucz ogólny ("site key") jest używany do chronienia plików, które mogą być dzielone między różnymi systemami. Obejmuje pliki konfiguracyjne i pliki zasad.
+ .
+ To pytanie jest wyświetlone, ponieważ klucz ogólny nie istnieje lub z powodu żądania przebudowania plików konfiguracyjnych lub plików zasad.
+ .
+ Proszę zapamiętać wprowadzone hasło; nie jest ono nigdzie przechowywane!
+Description-pt.UTF-8: Introduza a frase-chave do site:
+ O tripwire utiliza duas chaves diferentes para autenticar e encriptar os ficheiros.  A chave de site Ã© utilizada para proteger ficheiros que possam ser acedidos atravÃ©s de vÃ¡rios sistemas.  Nestes estÃ£o incluÃ­dos os ficheiros de polÃ­tica de sistema bem como os de configuraÃ§Ã£o.
+ .
+ EstÃ¡-lhe a ser pedida a frase-chave porque nÃ£o existe nesta altura uma chave de site ou porque pediu a reconstruÃ§Ã£o dos ficheiros de polÃ­tica de sistema ou de configuraÃ§Ã£o.
+ .
+ Memorize esta frase-chave; nÃ£o serÃ¡ armazenada em local algum!
+Description-pt_BR.UTF-8: Informe a frase secreta para a chave de site:
+ O Tripwire utiliza duas chaves diferentes para autenticação e encriptação de arquivos. A chave de site ("site key") é usada para proteger arquivos que podem ser usados entre diversos sistemas. Isto inclui os arquivos de configuração e de políticas.
+ .
+ Você está sendo questionado sobre esta frase secreta devido a nenhuma chave de site existir atualmente ou porque você requisitou a reconstrução dos arquivos de política ou de configuração.
+ .
+ Lembre-se desta frase secreta; ela não é armazenada em nenhum local!
+Description-ru.UTF-8: Ввод пароля к ключу узла:
+ Tripwire использует два различных ключа для аутентификации и шифрования файлов. Ключ узла используется для защиты файлов, которые могут использоваться сразу на нескольких системах. К ним относятся файл настроек и политики.
+ .
+ Вам предложат ввести пароль, потому что ключ узла не существует в данный момент, или потому что вы указали пересобрать файл настройки или политики.
+ .
+ Запомните этот пароль -- он нигде не сохраняется!
+Description-sk.UTF-8: Zadajte heslo kľúča sídla:
+ Tripwire používa na overenie a šifrovanie súborov dva rôzne kľúče. Kľúč sídla je použitý na ochranu súborov, ktoré môžu byť použité na viacerých systémoch. To zahŕňa súbory politiky a konfiguračné súbory.
+ .
+ O toto heslo ste boli požiadaný, pretože ešte neexistuje kľúč sídla, alebo pretože ste požiadali o vytvorenie nových súborov politiky a konfiguračných súborov.
+ .
+ Zapamätajte si toto heslo, nie je nikde uložené!
+Description-sv.UTF-8: Ange lösenordsfrasen för systemnyckeln:
+ Tripwire använder två olika nycklar för autentisering och kryptering av filer.  Systemnyckeln används för att skydda filer som kan användas över flera system.  Detta inkluderar policy och konfigurationsfiler.
+ .
+ Du frågas efter denna lösenordsfras antingen för att ingen systemnyckel finns för tillfället eller för att du önskar bygga om policy eller konfigurationsfilerna.
+ .
+ Kom i håg denna lösenordsfras, den sparas ingenstans!
+
+Template: tripwire/site-passphrase-again
+Type: password
+Description: Repeat the site-key passphrase:
+ Please repeat the site pass phrase to be sure you didn't mistype.
+Description-cs.UTF-8: Zopakujte frázi pro síťový klíč:
+ Zopakujte prosím frázi pro síťový klíč, aby jste se ujistili, že jste se nepřeklepli.
+Description-da.UTF-8: Gentag stednÃ¸glens adgangskode:
+ Gentag stednÃ¸glens adgangskode for at sikre, at du ikke har lavet tastefejl.
+Description-de.UTF-8: Die Passphrase des Site-Schlüssels wiederholen:
+ Bitte wiederholen Sie die Passphrase des Site-Schlüssels, um sicherzustellen, dass Sie sich nicht verschrieben haben.
+Description-es.UTF-8: Vuelva a introducir la clave de sitio:
+ Por favor, vuelva a introducir la clave de sitio para comprobar que la ha introducido correctamente.
+Description-eu.UTF-8: Errepikatu gunearen gakoaren pasaesaldia:
+ Errepikatu gunearen pasaesaldia berresteko.
+Description-fi.UTF-8: Toista sivustoavaimen salalause:
+ Syötä sivustoavaimen salalause uudelleen varmistaaksesi, ettet tehnyt kirjoitusvirheitä.
+Description-fr.UTF-8: Confirmation de la phrase secrète de la clé du site :
+ Veuillez confirmer la phrase secrète de la clé du site pour être certain que vous n'avez pas fait d'erreur.
+Description-it.UTF-8: Ripetere la frase segreta del sito:
+ Ripetere la frase segreta del sito, per accertarsi che non vi siano errori di battitura.
+Description-ja.UTF-8: サイトキーパスフレーズを再度入力してください:
+ 間違って入力していないかを確認するため、サイトパスフレーズを繰り返し入力してください。
+Description-nl.UTF-8: Herhaal het sitesleutel-wachtwoord:
+ Herhaal het sitewachtwoord om er zeker van te zijn dat u het niet mistypte.
+Description-pl.UTF-8: Proszę wprowadzić hasło klucza ogólnego ponownie:
+ Ponowne wprowadzenie hasła da pewność, że w haśle nie popełniono literówki.
+Description-pt.UTF-8: Repita a frase-chave do site:
+ Por favor repita a frase chave do site para que nÃ£o haja dÃºvidas que a tenha digitado correctamente.
+Description-pt_BR.UTF-8: Repita a frase secreta da chave de site:
+ Por favor, repita a frase secreta de site para certificar-se de que você não a tenha digitado com erros.
+Description-ru.UTF-8: Повторный ввод пароля к ключу узла:
+ Введите пароль к ключу узла ещё раз, чтобы удостовериться, что вы не ошиблись.
+Description-sk.UTF-8: Zopakujte heslo kľúča sídla:
+ Prosím, zopakujte heslo kľúča sídla, aby ste sa uistili, že ste neurobili preklep.
+Description-sv.UTF-8: Upprepa lösenordsfrasen för systemnyckeln:
+ Vänligen repetera systemlösenordsfrasen för att vara säker att du inte skrev något fel.
+
+Template: tripwire/site-passphrase-incorrect
+Type: boolean
+Default: false
+Description: Your site passphrase is incorrect. Retry operation?
+ The site passphrase you entered is incorrect.  If you think you mistyped
+ it and would like to retry the current operation accept below.  If
+ you can't remember the passphrase, decline below and the tripwire
+ installation process will terminate gracefully.  When you remember the
+ site passphrase continue the installation process by running
+ .
+   dpkg-reconfigure tripwire
+ .
+ as root.
+ .
+ If you have completely forgotten your site passphrase, generate a new
+ site key with a new passphrase by running
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ as root.
+Description-cs.UTF-8: Vaše fráze pro síťový klíč je neplatná. Zkusit znovu?
+ Zadaná fráze pro síťový klíč je neplatná. Pokud si myslíte, že jste se přepsali a chtěli byste frázi zadat znovu, souhlaste. Jestliže si frázi nepamatujete, odmítněte a instalace tripwire se ukončí. Až si na frázi pro síťový klíč vzpomenete, můžete v instalaci pokračovat příkazem
+ .
+   dpkg-reconfigure tripwire
+ .
+ jako uživatel root.
+ .
+ Pokud jste frázi pro síťový klíč zapomněli úplně, vytvořte nový síťový klíč s novou frází příkazem
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ jako uživatel root.
+Description-da.UTF-8: Din adgangskode er forkert. Vil du prÃ¸ve igen?
+ Den sted-adgangskode, du angav, er forkert. Hvis du mener, at du har tastet forkert og vil prÃ¸ve at gentage handlingen, sÃ¥ acceptÃ©r herunder. Hvis du ikke kan huske adgangskoden, sÃ¥ afvis, hvorefter tripwire-installationen vil blive afbrudt. NÃ¥r du kommer i tanker om sted-adgangskoden, kan du fortsÃ¦tte installationsprocessen ved at kÃ¸re
+ .
+   dpkg-reconfigure tripwire
+ .
+ som root.
+ .
+ Hvis du har glemt din sted-adgangskode fuldstÃ¦ndigt, kan du generere en ny stednÃ¸gle med en ny adgangskode ved at kÃ¸re
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ som root.
+Description-de.UTF-8: Ihre Site-Passphrase ist nicht korrekt. Die Operation wiederholen?
+ Die Site-Passphrase, die Sie eingegeben haben, ist nicht korrekt. Falls Sie glauben, dass Sie sich verschrieben haben, und Sie die gegenwärtige Operation wiederholen möchten, akzeptieren Sie unten. Falls Sie sich nicht an die Passphrase erinnern können, lehnen Sie unten ab, und die Tripwire-Installation wird sich geordnet beenden. Wenn Sie sich an die Site-Passphrase erinnern, setzen Sie den Installationsprozess fort, indem Sie
+ .
+   dpkg-reconfigure tripwire
+ .
+ als root aufrufen.
+ .
+ Falls Sie Ihre Site-Passphrase vollständig vergessen haben, generieren Sie einen neuen Site-Schlüssel mit einer neuen Passphrase durch Aufruf von
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ als root aufrufen.
+Description-es.UTF-8: La contraseña de sitio introducida es incorrecta. ¿Desea intentarlo de nuevo?
+ La contraseña de sitio introducida es incorrecta. Si piensa que la tecleó mal y desea repetir la operación acepte esta opción. Si no puede recordar la clave, rechace esta opción y la instalación de Tripwire concluirá correctamente. Continúe con el proceso de instalación cuando recuerde la clave de sitio.
+ .
+  «dpkg-reconfigure tripwire»
+ .
+ como superusuario.
+ .
+ Si ha olvidado por completo la clave de sitio, puede generar una nueva con una nueva contraseña ejecutando
+ .
+    «twadmin -m G -S /etc/tripwire/site.key»
+ .
+ como superusuario.
+Description-eu.UTF-8: Zure gunearen pasaesaldia okerra da. Saiatu berriro eragiketarekin?
+ Idatzitako gunearen pasaesaldia okerra da.  Oker idatzi duzula pentsatzen baduzu eta uneko eragiketa berriro saiatzea nahi baduzu, onartu behean. Ezin baduzu pasaesaldia gogoratu, baztertu behean eta tripwire-ren instalazioko prozesua ondo bukatuko da.  Gunearen pasaesaldia gogoratzen duzunean jarraitu instalazioaren prozesuarekin honakoa 
+ .
+   dpkg-reconfigure tripwire
+ .
+ root gisa exekutatuz.
+ .
+ Gunearen pasaesaldia guztiz ahaztu baduzu, sortu gunearen gako berria pasaesaldi berri batekin honakoa exekutatuz 
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ root gisa exekutatuz.
+Description-fi.UTF-8: Salalause on virheellinen. Yritetäänkö uudelleen?
+ Annettu sivustoavaimen salalause on virheellinen. Jos epäilet tehneesi kirjoitusvirheen ja haluat yrittää uudelleen, valitse tämä. Jos et muista salalausetta, älä valitse tätä. Tällöin tripwiren asennusprosessi lopetetaan. Kun muistat sivustoavaimen salalauseen, jatka asennusprosessia ajamalla:
+ .
+   dpkg-reconfigure tripwire
+ .
+ pääkäyttäjänä.
+ .
+ Jos olet kokonaan unohtanut sivustoavaimen salalauseen, luo uusi sivustoavain uudella salasanalla ajamalla:
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ pääkäyttäjänä.
+Description-fr.UTF-8: Votre phrase secrète de site est incorrecte. Faut-il recommencer l'opération ?
+ La phrase secrète de site que vous avez indiquée est incorrecte. Si vous pensez avoir fait une erreur, acceptez ici afin de ré-essayer. Si vous ne pouvez pas vous souvenir de la phrase secrète, refusez ici et le processus d'installation de Tripwire se terminera normalement. Lorsque vous vous rappellerez la phrase secrète du site, vous pourrez poursuivre le processus d'installation en exécutant :
+ .
+   dpkg-reconfigure tripwire
+ .
+ en tant que super-utilisateur (« root »).
+ .
+ Si vous avez vraiment oublié votre phrase secrète de site, veuillez générer une nouvelle clé de site avec une nouvelle phrase secrète en exécutant :
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ en tant que super-utilisateur (« root »).
+Description-gl.UTF-8: O contrasinal do sitio é incorrecto. ¿Quere volver tentalo?
+ O contrasinal do sitio que introduciu é incorrecto. Se pensa que o escribiu incorrectamente e quere volver tentalo, acepte esta opción. Se non lembra o contrasinal, rexéitea e o proceso de instalación de tripwire ha rematar sen erros. Cando lembre o contrasinal do sitio, continúe o proceso de instalación executando
+ .
+   dpkg-reconfigure tripwire
+ .
+ coma administrador.
+ .
+ Se esqueceu completamente o contrasinal do sitio, xere unha nova clave de sitio cun novo contrasinal executando
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ coma administrador.
+Description-it.UTF-8: La frase segreta del sito non è corretta. Si desidera ritentare?
+ La frase segreta del sito inserita non è corretta. Se si ritiene che vi sia stato un errore di battitura e si desidera ritentare, rispondere affermativamente. Se non si ricorda la frase segreta, rispondere negativamente e il processo d'installazione di Tripwire verrà terminato. Quando si ricorderà la frase segreta del sito si potrà continuare il processo d'installazione eseguendo
+ .
+   dpkg-reconfigure tripwire
+ .
+ come utente root.
+ .
+ Se si è dimenticata completamente la frase segreta del sito, generare una nuova chiave del sito con una nuova frase segreta eseguendo
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ come utente root.
+Description-ja.UTF-8: サイトパスフレーズが正しくありません。入力をやり直しますか?
+ 入力されたサイトパスフレーズが正しくありません。打ち間違いをしたのでもう一度入力を行いたい、という場合は後に「はい」と答えます。パスフレーズを覚えていないという場合、後の質問に「いいえ」と答えることで tripwire のインストール作業を正しい手順で終了します。サイトパスフレーズを思い出した場合は、インストール作業を続行してください。
+ .
+   dpkg-reconfigure tripwire
+ .
+ この作業は root ユーザで行ってください。
+ .
+ サイトパスフレーズを完全に忘れてしまった場合は、以下のようにして新しいサイトキーを新しいパスフレーズと共に生成してください
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ この作業は root ユーザで行ってください。
+Description-nl.UTF-8: Uw sitewachtwoord is verkeerd. Opnieuw proberen?
+ Het sitewachtwoord dat u ingaf, is verkeerd. Als u denkt dat u het verkeerd heeft getypt en opnieuw wilt proberen, aanvaardt dan deze optie. Als u zich het wachtwoord niet meer kunt herinneren, weiger dan deze optie en het installatieproces zal normaal afsluiten. Wanneer u zich het wachtwoord herinnert, voltooi dan het installatieproces door het volgende uit te voeren:
+ .
+   dpkg-reconfigure tripwire
+ .
+ als root.
+ .
+ Als u uw sitewachtwoord volledig vergeten bent, maak dan een nieuwe sitesleutel aan met een nieuw wachtwoord door het volgende uit te voeren:
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ als root.
+Description-pl.UTF-8: Hasło klucza ogólnego jest nieprawidłowe. Spróbować ponownie?
+ Wprowadzone hasło klucza ogólnego jest nieprawidłowe. Można powtórzyć operację wprowadzania hasła, jeśli mogło dojść do literówki. Jeśli zapomniano go, proszę wybrać "nie" i proces instalacji tripwire zostanie przerwany. Gdy hasło się przypomni, można go kontynuować wydając polecenie
+ .
+   dpkg-reconfigure tripwire
+ .
+ jako root.
+ .
+ Jeśli całkowicie zapomniano hasło klucza ogólnego, to nowy klucz ogólny z nowym hasłem można wygenerować za pomocą polecenia
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ jako root.
+Description-pt.UTF-8: A sua palavra chave estÃ¡ incorrecta. Tentar de novo?
+ A frase-chave que introduziu estÃ¡ incorrecta.  Se pensa que a terÃ¡ digitado de modo incorrecto e se quiser voltar a tentar aceite em baixo.  Se nÃ£o se lembrar da frase-chave, nÃ£o aceite e o processo de instalaÃ§Ã£o do tripwire irÃ¡ terminar graciosamente.  Quando se recordar da frase-chave do site, continue o processo de instalaÃ§Ã£o correndo
+ .
+   dpkg-reconfigure tripwire
+ .
+ como root.
+ .
+ Se tiver esquecido completamente a sua frase-chave de site gere uma nova chave de site com uma nova frase-chave correndo
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ como root.
+Description-pt_BR.UTF-8: Sua frase secreta de site está incorreta. Tentar novamente?
+ A frase secreta de site informada está incorreta. Caso você suspeite que tenha errado na digitação da mesma e queira tentar a operação atual novamente, aceite aqui. Caso você não consiga se lembrar da frase secreta, não aceite a oferta a seguir e o processo de instalação do Tripwire será finalizado sem maiores problemas. Quando você se lembrar da frase secreta de site, continue o processo de instalação executando
+ .
+   dpkg-reconfigure tripwire
+ .
+ como root.
+ .
+ Caso você tenha esquecido completamente sua frase secreta de site, gere uma nova chave de site com uma nova frase secreta executando
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ como root.
+Description-ru.UTF-8: Пароль к ключу узла неверен. Повторить операцию?
+ Введённый пароль к ключу узла неверен. Если вы думаете, что ошиблись в наборе и хотите повторить ввод, то ответьте утвердительно. Если вы не помните пароль, то ответьте отрицательно, и процесс установки tripwire нормально завершится. Когда вы вспомните пароль к ключу узла, то для продолжения установки запустите
+ .
+   dpkg-reconfigure tripwire
+ .
+ имея права суперпользователя.
+ .
+ Если вы не можете вспомнить пароль к ключу узла, то сгенерируйте новый ключ узла с новым паролем выполнив команду
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ имея права суперпользователя.
+Description-sk.UTF-8: Vaše heslo kľúča sídla nie je platné. Zopakovať operáciu?
+ Heslo kľúča sídla, ktoré ste zadali, nie je správne. Ak si myslíte, že ste urobili preklep a chcete zopakovať aktuálnu operáciu, súhlaste. Ak si nepamätáte heslo, odmietnite a inštalačný proces tripwire bude čisto ukončený. Keď si spomeniete na heslo kľúča sídla, môžete pokračovať v procese inštalácie pomocou
+ .
+   dpkg-reconfigure tripwire
+ .
+ ako root.
+ .
+ Ak ste úplne zabudli svoje heslo kľúča sídla, vygenerujte nový kľúča sídla s novým heslom pomocou
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ ako root.
+Description-sv.UTF-8: Din systemlösenordsfras är inkorrekt. Försöka igen?
+ Lösenordsfrasen för systemnyckeln är felaktig.  Om du tror att du har skrivit in den fel och vill försöka igen, acceptera nedan.  Om du inte kan komma i håg lösenordsfrasen, neka nedan och installationsprocessen kommer att avslutas. När du kommer i håg systemnyckeln lösenordsfras, fortsätt då med installationsprocessen genom att köra
+ .
+   dpkg-reconfigure tripwire
+ .
+ som root.
+ .
+ Om du har glömt bort lösenordsfrasen för din systemnyckel kan du generera en ny systemnyckel med en ny lösenordsfras genom att köra
+ .
+   twadmin -m G -S /etc/tripwire/site.key
+ .
+ som root.
+
+Template: tripwire/local-passphrase
+Type: password
+Description: Enter local key passphrase:
+ Tripwire uses two different keys for authentication and encryption of
+ files.  The local key is used to protect files specific to the local
+ machine, such as the Tripwire database.  The local key may also be used
+ for signing integrity check reports.
+ .
+ You are being prompted for this passphrase because no local key file
+ currently exists.
+ .
+ Remember this passphrase; it is not stored anywhere!
+Description-cs.UTF-8: Zadejte frázi chránící lokální klíč:
+ Tripwire používá pro autentizaci a šifrování souborů dva různé klíče. Lokální klíč se používá pro ochranu souborů, které jsou specifické pro tento počítač, např. databáze Tripwire. Lokální klíč se používá také pro podepisování zasílaných hlášení.
+ .
+ Na tuto frázi jste dotázáni proto, protože lokální klíč zatím neexistuje.
+ .
+ Tuto frázi si pečlivě zapamatujte, nikde se neukládá!
+Description-da.UTF-8: Angiv lokal nÃ¸gles adgangskode:
+ Tripwire bruger to forskellige nÃ¸gler til at autentificere og kryptere filer. Den lokale nÃ¸gle bruges til at beskytte filer, der er specifikke for den lokale maskine, sÃ¥som Tripwires database. Den lokale nÃ¸gle kan ogsÃ¥ bruges til underskrift af rapporter integritetstjek.
+ .
+ Du bliver bedt om denne adgangskode, fordi der ikke er nogen lokal nÃ¸glefil.
+ .
+ Husk denne adgangskode. Den bliver ikke gemt nogen steder!
+Description-de.UTF-8: Die Passphrase des lokalen Schlüssels eingeben:
+ Tripwire verwendet zwei verschiedene Schlüssel zur Authentifikation und Verschlüsselung von Dateien. Der lokale Schlüssel wird benutzt, um Dateien zu schützen, die für Ihr lokales System spezifisch sind, wie die Tripwire-Datenbank. Der lokale Schlüssel kann auch zur Signierung von Berichten der Integritätsprüfung verwendet werden.
+ .
+ Sie werden nach dieser Passphrase gefragt, da keine lokale Schlüsseldatei gegenwärtig existiert.
+ .
+ Merken Sie sich diese Passphrase; sie wird nirgends gespeichert!
+Description-es.UTF-8: Introduzca su clave local:
+ Tripwire utiliza dos claves diferentes para los ficheros de autentificación y cifrado. La clave local se usa para proteger los ficheros específicos al equipo local, como p.ej, la base de datos de Tripwire. La clave local también se puede utilizar para firmar los informes generados tras las comprobaciones de integridad.
+ .
+ Se le está solicitando esta contraseña porque no existe ningún fichero de clave local.
+ .
+ Recuerde su contraseña. ¡No se almacenará en ningún lugar!
+Description-eu.UTF-8: Idatzi gako lokalaren pasaesaldia:
+ Tripwire-k bi gako desberdin erabiltzen ditu fitxategiak autentifikatu eta enkriptatzeko. Lokaleko gakoa sistema lokaleko bereiziak diren fitxategiak babesteko erabiltzen da, adibidez, Tripwire-ren datu-basea. Lokaleko gakoa integritateari buruzko egiaztaketen txostenak sinatzeko erabiltzen da baita ere.
+ .
+ Pasaesaldia eskatzen ari zaizu unean lokaleko gakoaren fitxategia ez delako existitzen.
+ .
+ Gogoratu pasaesaldi hau, ez baita inon gordeko!
+Description-fi.UTF-8: Enter local key passphrase:
+ Tripwire käyttää kahta eri avainta tunnistautumiseen ja tiedostojen salaamiseen. Paikallista avainta käytetään järjestelmäkohtaisten tiedostojen, esimerkiksi Tripwiren tietokannan, suojaamiseen. Paikallista avainta voidaan myös käyttää eheystarkistusraporttien allekirjoittamiseen.
+ .
+ Tätä salalausetta kysytään, koska paikallista avainta ei ole olemassa.
+ .
+ Muista tämä salalause, sitä ei tallenneta selväkielisenä mihinkään!
+Description-fr.UTF-8: Phrase secrète de la clé locale :
+ Tripwire utilise deux clés différentes pour l'authentification et le chiffrage des fichiers. La clé locale est utilisée pour protéger les fichiers spécifiques à la machine locale, comme la base de données Tripwire. La clé locale peut également être utilisée pour signer les rapports de vérification d'intégrité.
+ .
+ Cette phrase secrète vous est demandée car actuellement, aucune clé locale n'existe.
+ .
+ Souvenez-vous de cette phrase secrète, elle n'est conservée nulle part.
+Description-it.UTF-8: Inserire la frase segreta locale:
+ Per l'autentica e la cifratura di file Tripwire utilizza due chiavi differenti. La chiave locale viene utilizzata per la protezione di file specifici per il sistema locale, come per esempio il database di Tripwire. La chiave locale può anche essere utilizzata per la firma di rapporti di controllo dell'integrità.
+ .
+ Questa frase segreta viene richiesta in quanto attualmente non vi è alcun file di chiave locale.
+ .
+ È necessario ricordarsi questa frase segreta, poiché essa non viene memorizzata da alcuna parte.
+Description-ja.UTF-8: ローカルキーパスフレーズを入力してください:
+ tripwire は認証とファイルの暗号化に対し、二つの異なる鍵を使います。ローカルキーは tripwire のデータベースのような、ローカルマシン特有のファイルを守るために利用されます。ローカルキーは完全性確認のレポートに署名する際にも利用されます。
+ .
+ 現在、ローカルキーファイルが存在していないので、ここでパスフレーズを求められています。
+ .
+ このパスフレーズを忘れないでください。これはどこにも保存されません!
+Description-nl.UTF-8: Geef lokale sleutelwachtwoord:
+ Tripwire gebruikt twee verschillende sleutels voor authenticatie en encryptie van bestanden. De lokale sleutel wordt gebruikt om bestanden te beschermen die specifiek zijn aan de lokale machine. De lokale sleutel kan ook gebruikt worden voor het ondertekenen van integriteitscontrolerapporten.
+ .
+ U wordt gevraagd naar dit wachtwoord omdat er momenteel geen lokale sleutel bestaat.
+ .
+ Onthou dit wachtwoord; het wordt nergens bewaard!
+Description-pl.UTF-8: Proszę wprowadzić hasło klucza lokalnego:
+ Tripwire używa dwóch różnych kluczy do uwierzytelniania i szyfrowania plików. Klucz lokalny używany jest do chronienia plików charakterystycznych komputerowi lokalnemu, takich jak baza danych Tripwire. Klucz lokalny może być również używany do podpisywania raportów sprawdzeń integralności.
+ .
+ To pytanie jest wyświetlone, ponieważ klucz lokalny obecnie nie istnieje.
+ .
+ Proszę zapamiętać wprowadzone hasło; nie jest ono nigdzie przechowywane!
+Description-pt.UTF-8: Introduza a frase-chave local:
+ O Tripwire utiliza duas chaves diferentes para autenticar e encriptar os ficheiros.  A chave local Ã© utilizada para proteger ficheiros especÃ­ficos da mÃ¡quina local, tais como a base de dados do Tripwire.  A chave local pode tambÃ©m ser utilizada para assinar os relatÃ³rios de verificaÃ§Ã£o de integridade.
+ .
+ EstÃ¡ a ser-lhe pedida a frase-chave pelo facto de actualmente nÃ£o existir nenhum ficheiro de chave local.
+ .
+ Memorize esta frase-chave; nÃ£o serÃ¡ armazenada em local algum!
+Description-pt_BR.UTF-8: Informe a frase secreta para a chave local:
+ O Tripwire utiliza duas chaves diferentes para autenticação e encriptação de arquivos. A chave local ("local key") é usada para proteger arquivos específicos da máquina local, como a base de dados do Tripwire. A chave local pode ser usada também para assinar relatórios de checagem de integridade.
+ .
+ Você está sendo questionado sobre a frase secreta devido a nenhuma chave local existir atualmente.
+ .
+ Lembre-se desta frase secreta; ela não é armazenada em nenhum local!
+Description-ru.UTF-8: Ввод пароля к локальному ключу:
+ Tripwire использует два различных ключа для аутентификации и шифрования файлов. Локальный ключ используется для защиты файлов, которые используются только этой системой, например файлы базы данных Tripwire. Локальный ключ также может использоваться в качестве подписи для проверки целостности отчётов.
+ .
+ Вам предложат ввести пароль, потому что локальный ключ не существует в данный момент.
+ .
+ Запомните этот пароль -- он нигде не сохраняется!
+Description-sk.UTF-8: Zadajte heslo lokálneho kľúča:
+ Tripwire používa na overenie a šifrovanie súborov dva rôzne kľúče. Lokálny kľúč je použitý na ochranu súborov, ktoré sú špecifické pre lokálny stroj, napr. databáza Tripwire. Lokálny kľúč možno použiť aj na podpísanie hlásení kontroly integrity.
+ .
+ O toto heslo ste boli požiadaný, pretože momentálne neexistuje lokálny kľúč.
+ .
+ Zapamätajte si toto heslo, nie je nikde uložené!
+Description-sv.UTF-8: Ange lösenordsfras för den lokala nyckeln:
+ Tripwire använder två olika nycklar för autentisering och kryptering av filer.  Den lokala nyckeln används för att skydda filer specifika till den lokala maskinen såsom Tripwire's databas.  Den lokala nyckeln kan också användas för att digitalt signera integritetskontrollrapporter.
+ .
+ Du frågas efter denna lösenordsfras för att det inte finns någon lokal nyckelfil ännu.
+ .
+ Kom i håg denna lösenordsfras, den sparas ingenstans!
+
+Template: tripwire/local-passphrase-again
+Type: password
+Description: Repeat the local key passphrase:
+ Please repeat the local pass phrase to be sure you didn't mistype.
+Description-cs.UTF-8: Zopakujte frázi pro lokální klíč:
+ Zopakujte prosím frázi pro lokální klíč, aby jste se ujistili, že jste se nepřeklepli.
+Description-da.UTF-8: Gentag den lokale nÃ¸gleadgangskode:
+ Gentag den lokale adgangskode for at sikre, at du ikke lavede tastefejl.
+Description-de.UTF-8: Die Passphrase des lokalen Schlüssels wiederholen:
+ Bitte wiederholen Sie die Passphrase des lokalen Schlüssels, um sicherzustellen, dass Sie sich nicht verschrieben haben.
+Description-es.UTF-8: Vuelva a introducir la contraseña para la clave local:
+ Por favor, vuelva a introducir la contraseña para la clave local para comprobar que la ha introducido correctamente.
+Description-eu.UTF-8: Errepikatu lokaleko gakoaren pasaesaldia:
+ Errepikatu lokaleko gakoaren pasaesaldia berresteko.
+Description-fi.UTF-8: Toista paikallisen avaimen salalause:
+ Syötä paikallisen avaimen salalause uudelleen varmistaaksesi, ettet tehnyt kirjoitusvirheitä.
+Description-fr.UTF-8: Confirmation de la phrase secrète pour la clé locale :
+ Veuillez confirmer la phrase secrète de la clé locale pour être certain que vous n'avez pas fait d'erreur.
+Description-it.UTF-8: Ripetere la frase segreta locale:
+ Ripetere la frase segreta locale, per accertarsi che non vi siano errori di battitura.
+Description-ja.UTF-8: ローカルキーパスフレーズを再度入力してください:
+ 間違って入力を行っていないのを確認するため、ローカルパスフレーズを再度入力してください。
+Description-nl.UTF-8: Herhaal lokale sleutelwachtwoord:
+ Herhaal het lokale wachtwoord om er zeker van te zijn dat u het niet mistypte.
+Description-pl.UTF-8: Proszę wprowadzić hasło klucza lokalnego ponownie:
+ Ponowne wprowadzenie hasła da pewność, że w haśle nie popełniono literówki.
+Description-pt.UTF-8: Repita a frase-chave local:
+ Por favor volte a introduzir a frase-chave local para ter a certeza que a digitou correctamente.
+Description-pt_BR.UTF-8: Repita a frase secreta da chave local:
+ Por favor, repita a frase secreta local para certificar-se de que você não a tenha digitado com erros.
+Description-ru.UTF-8: Повторный ввод пароля к локальному ключу:
+ Введите пароль к локальному ключу ещё раз, чтобы удостовериться, что вы не ошиблись.
+Description-sk.UTF-8: Zopakujte heslo lokálneho kľúča:
+ Prosím zopakujte heslo lokálneho kľúča, aby ste sa uistili, že ste neurobili preklep.
+Description-sv.UTF-8: Upprepa lösenordsfrasen för den lokala nyckeln:
+ Upprepa lösenordsfrasen för den lokala nyckeln för att vara säker att du inte skrev fel.
+
+Template: tripwire/local-passphrase-incorrect
+Type: boolean
+Default: false
+Description: Your local passphrase is incorrect. Retry operation?
+ The local passphrase you entered is incorrect.  If you think you mistyped
+ it and would like to retry the current operation accept below.  If
+ you can't remember the passphrase, decline below and the tripwire
+ installation process will terminate gracefully.  When you remember the
+ local passphrase continue the installation process by running
+ .
+   dpkg-reconfigure tripwire
+ .
+ as root.
+ .
+ If you have completely forgotten your local passphrase, generate a new
+ local key with a new passphrase by running
+ .
+   twadmin -m G -L /etc/tripwire/${hostname}-local.key
+ .
+ as root.
+Description-cs.UTF-8: Vaše fráze pro lokální klíč je neplatná. Zkusit znovu?
+ Zadaná fráze pro lokální klíč je neplatná. Pokud si myslíte, že jste se přepsali a chtěli byste frázi zadat znovu, souhlaste. Jestliže si frázi nepamatujete, odmítněte a instalace tripwire se ukončí. Až si na frázi pro místní klíč vzpomenete, můžete v instalaci pokračovat příkazem
+ .
+   dpkg-reconfigure tripwire
+ .
+ jako uživatel root.
+ .
+ Pokud jste frázi pro lokální klíč zapomněli úplně, vytvořte nový lokální klíč s novou frází příkazem
+ .
+   twadmin -m G -L /etc/tripwire/${hostname}-local.key
+ .
+ jako uživatel root.
+Description-da.UTF-8: Din lokale adgangskode er forkert. Gentag handlingen?
+ Den lokale adgangskode, du angav, er forkert. Hvis du mener, at du har tastet forkert og vil prÃ¸ve at gentage handlingen, sÃ¥ acceptÃ©r herunder. Hvis du ikke kan huske adgangskoden, sÃ¥ afvis, hvorefter tripwire-installationen vil blive afbrudt. NÃ¥r du kommer i tanker om den lokale adgangskode, kan du fortsÃ¦tte installationsprocessen ved at kÃ¸re
+ .
+   dpkg-reconfigure tripwire
+ .
+ som root.
+ .
+ Hvis du har glemt din lokale adgangskode fuldstÃ¦ndigt, kan du generere en ny lokal nÃ¸gle med en ny adgangskode ved at kÃ¸re
+ .
+   twadmin -m G -L /etc/tripwire/${hostname}-local.key
+ .
+ som root.
+Description-de.UTF-8: Ihre lokale Passphrase ist nicht korrekt. Die Operation wiederholen?
+ Die lokale Passphrase, die Sie eingegeben haben, ist nicht korrekt. Falls Sie glauben, dass Sie sich verschrieben haben, und Sie die gegenwärtige Operation wiederholen möchten, akzeptieren Sie unten. Falls Sie sich nicht an die Passphrase erinnern können, lehnen Sie unten ab, und die Tripwire-Installation wird sich geordnet beenden. Wenn Sie sich an die lokale Passphrase erinnern, setzen Sie den Installationsprozess fort, indem Sie
+ .
+   dpkg-reconfigure tripwire
+ .
+ als root aufrufen.
+ .
+ Falls Sie Ihre lokale Passphrase vollständig vergessen haben, generieren Sie einen neuen lokalen Schlüssel mit einer neuen Passphrase durch Aufruf von
+ .
+   twadmin -m G -L /etc/tripwire/${hostname}-local.key
+ .
+ als root aufrufen.
+Description-es.UTF-8: La contraseña local introducida es incorrecta. ¿Desea intentarlo de nuevo?
+ La contraseña local introducida es incorrecta. Si piensa que tecleó mal y desea repetir la operación acepte a continuación. Rechace esta opción si no puede recordar la clave, la instalación de Tripwire concluirá correctamente. Continúe con el proceso de instalación cuando recuerde la clave de sitio.
+ .
+  «dpkg-reconfigure tripwire»
+ .
+ como superusuario.
+ .
+ Si ha olvidado completamente su clave local debería generar una nueva clave local ejecutando
+ .
+   twadmin -m G -L /etc/tripwire/${hostname}-local.key
+ .
+ como superusuario.
+Description-eu.UTF-8: Zure pasaesaldi lokala okerra da. Saiatu berriro eragiketarekin?
+ Idatzitako lokalaren pasaesaldia okerra da.  Oker idatzi duzula pentsatzen baduzu eta uneko eragiketa berriro saiatzea nahi baduzu, onartu behean. Ezin baduzu pasaesaldia gogoratu, baztertu behean eta tripwire-ren instalazioko prozesua ondo bukatuko da.  Lokalaren pasaesaldia gogoratzen duzunean jarraitu instalazioaren prozesuarekin honakoa exekutatuz 
+ .
+   dpkg-reconfigure tripwire
+ .
+ root gisa exekutatuz.
+ .
+ Lokalaren pasaesaldia guztiz ahaztu baduzu, sortu lokalaren gako berria pasaesaldi berri batekin honakoa exekutatuz 
+ .
+   twadmin -m G -L /etc/tripwire/${hostname}-local.key
+ .
+ root gisa exekutatuz.
+Description-fr.UTF-8: Votre phrase secrète locale est incorrecte. Faut-il recommencer l'opération ?
+ La phrase secrète locale que vous avez indiquée est incorrecte. Si vous pensez avoir fait une erreur, acceptez ici afin de ré-essayer. Si vous ne pouvez pas vous souvenir de la phrase secrète, refusez ici et le processus d'installation de Tripwire se terminera normalement. Lorsque vous vous rappellerez la phrase secrète locale, vous pourrez poursuivre le processus d'installation en exécutant :
+ .
+   dpkg-reconfigure tripwire
+ .
+ en tant que super-utilisateur (« root »).
+ .
+ Si vous avez vraiment oublié votre phrase secrète locale, veuillez générer une nouvelle clé locale avec une nouvelle phrase secrète en exécutant :
+ .
+   twadmin -m G -L /etc/tripwire/${hostname}-local.key
+ .
+ en tant que super-utilisateur (« root »).
+Description-ja.UTF-8: ローカルパスフレーズが正しくありません。入力をやり直しますか?
+ 入力されたローカルパスフレーズが正しくありません。打ち間違いをしたのでもう一度入力を行いたい、という場合は後に「はい」と答えます。パスフレーズを覚えていないという場合、後の質問に「いいえ」と答えることで tripwire のインストール作業を正しい手順で終了します。ローカルパスフレーズを思い出した場合は、インストール作業を続行してください。
+ .
+   dpkg-reconfigure tripwire
+ .
+ この作業は root ユーザで行ってください。
+ .
+ ローカルパスフレーズを完全に忘れてしまった場合は、以下のようにして新しいローカルキーを新しいパスフレーズと共に生成してください
+ .
+   twadmin -m G -L /etc/tripwire/${hostname}-local.key
+ .
+ この作業は root ユーザで行ってください。
+Description-nl.UTF-8: Uw lokale wachtwoord is verkeerd. Opnieuw proberen?
+ Het lokale wachtwoord dat u ingaf, is verkeerd. Als u denkt dat u het mistypte en opnieuw wilt proberen, aanvaardt dan deze optie. Als u het wachtwoord niet meer kunt herinneren, weiger dan deze optie en het installatieproces zal normaal afsluiten. Wanneer u het wachtwoord herinnert, voltooi dan het installatieproces door het volgende uit te voeren:
+ .
+   dpkg-reconfigure tripwire
+ .
+ als root.
+ .
+ Als u uw lokale wachtwoord volledig vergeten bent, maak dan een nieuwe lokale sleutel aan met een nieuw wachtwoord door het volgende uit te voeren
+ .
+   twadmin -m G -L /etc/tripwire/${hostname}-local.key
+ .
+ als root.
+Description-pl.UTF-8: Hasło klucza lokalnego jest nieprawidłowe. Spróbować ponownie?
+ Wprowadzone hasło klucza lokalnego jest nieprawidłowe. Można powtórzyć operację wprowadzania hasła, jeśli mogło dojść do literówki. Jeśli zapomniano go, proszę wybrać "nie" i proces instalacji tripwire zostanie przerwany. Gdy hasło się przypomni, można go kontynuować wydając polecenie
+ .
+   dpkg-reconfigure tripwire
+ .
+ jako root.
+ .
+ Jeśli całkowicie zapomniano hasło klucza lokalnego, to nowy klucz lokalny z nowym hasłem można wygenerować za pomocą polecenia
+ .
+   twadmin -m G -L /etc/tripwire/${hostname}-local.key
+ .
+ jako root.
+Description-pt.UTF-8: A sua frase-chave local estÃ¡ incorrecta. Tentar de novo?
+ A frase-chave que introduziu estÃ¡ incorrecta.  Se pensa que a terÃ¡ digitado de modo incorrecto e se quiser voltar a tentar aceite em baixo.  Se nÃ£o se lembrar da frase-chave, nÃ£o aceite e o processo de instalaÃ§Ã£o do tripwire irÃ¡ terminar graciosamente.  Quando se recordar da frase-chave de site, continue o processo de instalaÃ§Ã£o correndo
+ .
+   dpkg-reconfigure tripwire
+ .
+ como root.
+ .
+ Se tiver esquecido completamente a sua frase-chave de site gere uma nova chave local com uma nova frase-chave correndo
+ .
+   twadmin -m G -L /etc/tripwire/${hostname}-local.key
+ .
+ como root.
+Description-pt_BR.UTF-8: Sua frase secreta local está incorreta. Tentar novamente?
+ A frase secreta local informada está incorreta. Caso você suspeite que tenha errado na digitação da mesma e queira tentar a operação atual novamente, aceite a oferta a seguir. Caso você não consiga se lembrar da frase secreta, não aceite a oferta a seguir e o processo de instalação do Tripwire será finalizado sem maiores problemas. Quando você se lembrar da frase secreta local, continue o processo de instalação executando
+ .
+   dpkg-reconfigure tripwire
+ .
+ como root.
+ .
+ Caso você tenha esquecido completamente sua frase secreta local, gere uma nova chave local com uma nova frase secreta executando
+ .
+   twadmin -m G -L /etc/tripwire/${hostname}-local.key
+ .
+ como root.
+Description-ru.UTF-8: Пароль к локальному ключу неверен. Повторить операцию?
+ Введённый пароль к локальному ключу неверен. Если вы думаете, что ошиблись в наборе и хотите повторить ввод, то ответьте утвердительно. Если вы не помните пароль, то ответьте отрицательно, и процесс установки tripwire нормально завершится. Когда вы вспомните пароль к локальному ключу, то для продолжения установки запустите
+ .
+   dpkg-reconfigure tripwire
+ .
+ имея права суперпользователя.
+ .
+ Если вы забыли пароль к локальному ключу, то сгенерируйте новый локальный ключ с новым паролем выполнив команду
+ .
+   twadmin -m G -L /etc/tripwire/${hostname}-local.key
+ .
+ имея права суперпользователя.
+Description-sk.UTF-8: Vaše heslo lokálneho kľúča nie je správne. Zopakovať operáciu?
+ Heslo lokálneho kľúča, ktoré ste zadali, nie je správne. Ak si myslíte, že ste urobili preklep a chcete zopakovať aktuálnu operáciu, súhlaste. Ak si nepamätáte heslo, odmietnite a inštalačný proces tripwire bude čisto ukončený. Keď si spomeniete na heslo kľúča sídla, môžete pokračovať v procese inštalácie pomocou
+ .
+   dpkg-reconfigure tripwire
+ .
+ ako root.
+ .
+ Ak ste úplne zabudli svoje heslo lokálneho kľúča, vygenerujte nový lokálny kľúč s novým heslom pomocou
+ .
+   twadmin -m G -L /etc/tripwire/${hostname}-local.key
+ .
+ ako root.
+Description-sv.UTF-8: Din lokala lösenordsfras är felaktig. Försöka igen?
+ Den lokala lösenordsfrasen du angav är felaktig.  Om du tror att du skriv in den fel och önskar försöka igen, acceptera nedan.  Om du inte kan komma i håg lösenordsfrasen, vägra nedan och tripwire's installationsprocess kommer att avslutas.  När du kommer i håg den lokala lösenordsfrasen, fortsätt då installationsprocessen genom att köra
+ .
+   dpkg-reconfigure tripwire
+ .
+ som root.
+ .
+ Om du har glömt bort din lokala lösenordsfras, generera då en ny systemnyckel med en ny lösenordsfras genom att köra
+ .
+   twadmin -m G -L /etc/tripwire/${hostname}-local.key
+ .
+ som root.
+
+Template: tripwire/rebuild-config
+Type: boolean
+Default: true
+Description: Rebuild Tripwire configuration file?
+ Tripwire keeps its configuration in a encrypted database that is
+ generated, by default, from /etc/tripwire/twcfg.txt
+ .
+ Any changes to /etc/tripwire/twcfg.txt, either as a result of a change in
+ this package or due to administrator activity, require the regeneration of
+ the encrypted database before they will take effect.
+ .
+ Selecting this action will result in your being prompted for the site key
+ passphrase during the post-installation process of this package.
+Description-cs.UTF-8: Znovu vytvořit konfigurační soubor Tripwire?
+ Tripwire uchovává svou konfiguraci v zašifrované databázi, která se implicitně generuje z /etc/tripwire/twcfg.txt.
+ .
+ Každá změna do /etc/tripwire/twcfg.txt (ať už změnou v balíku nebo zásahem správce) vyžaduje přegenerování zašifrované databáze. Do té doby se změny neprojeví.
+ .
+ Výběr této akce způsobí, že budete během poinstalační fáze dotázáni na frázi k síťovému klíči.
+Description-da.UTF-8: Genopbyg Tripwires opsÃ¦tningsfil?
+ Tripwire opbevarer sin opsÃ¦tning i en krypteret database, der som udgangspunkt er gerereret fra /etc/tripwire/twcfg.txt
+ .
+ Enhver Ã¦ndring i /etc/tripwire/twcfg.txt, bÃ¥de pÃ¥ grund af Ã¦ndringer i denne pakke eller administratorens aktiviteter, krÃ¦ver at den krypterede database bliver regenereret, fÃ¸r den trÃ¦der i kraft.
+ .
+ Hvis du vÃ¦lger denne handling, vil du blive spurgt om stednÃ¸glens adgangskode under denne pakkes efterinstallations-proces.
+Description-de.UTF-8: Die Tripwire-Konfigurationsdatei neu erzeugen?
+ Tripwire hält seine Konfiguration in einer verschlüsselten Datenbank, die in der Voreinstellung aus /etc/tripwire/twcfg.txt generiert wird.
+ .
+ Jegliche Änderung an /etc/tripwire/twcfg.txt, entweder als Ergebnis einer Änderung in diesem Paket oder aufgrund von Aktivitäten des Administrators, erfordert die Neuerzeugung der verschlüsselten Datenbank, bevor sie aktiv werden.
+ .
+ Die Auswahl dieser Aktion bewirkt, dass Sie während der Post-Installation dieses Paketes nach der Passphrase des Site-Schlüssels gefragt werden.
+Description-es.UTF-8: ¿Desea reconstruir el fichero de configuración de Tripwire?
+ Tripwire guarda su configuración en una base de datos cifrada y generada, por omisión, a partir de «/etc/tripwire/twcfg.txt».
+ .
+ Debe regenerar la base de datos cifrada si se realiza cualquier cambio a «/etc/tripwire/twcfg.txt», bien porque este paquete haya cambiado o bien porque el administrador haya hecho algo. No tendrán efecto los cambios hasta que se regenere.
+ .
+ Si elige está opción se le pedirá la contraseña de la clave de sitio durante el proceso de post-instalación del paquete.
+Description-eu.UTF-8: Eraiki berriro Tripwire-ren konfigurazioko fitxategia?
+ Tripwire-k bere konfigurazioa enkriptatutako datu-base batean gordetzen du, lehenetsi gisa /etc/tripwire/twcfg.txt fitxategitik sortuta.
+ .
+ /etc/tripwire/twcfg.txt fitxategian egiten den edozer aldaketa, pakete honetan aldaketak gertatu direlako, edo administratzailearen ekintzagatik, enkriptatutako datu-basea berriro sortzea eskatzen du aldaketek eragina izan dezaten.
+ .
+ Ekintza hau hautatzean, gunearen gakoaren pasaesaldia eskatuko zaizu pakete honen instalazio ondorengo prozesuan.
+Description-fi.UTF-8: Luodaanko Tripwiren asetustiedosto uudelleen?
+ Tripwire säilyttää asetuksiaan salatussa tietokannassa, joka luodaan oletuksena tiedostosta /etc/tripwire/twcfg.txt.
+ .
+ Jos tiedosto /etc/tripwire/twcfg.txt muuttuu paketin muutosten tai ylläpitäjän toimien takia, täytyy salattu tietokanta luoda uudelleen, ennen kuin muutokset otetaan käyttöön.
+ .
+ Jos valitset tämän, tämän asennusprosessin loppuosassa kysytään sivustoavaimen salalausetta.
+Description-fr.UTF-8: Faut-il reconstruire le fichier de configuration de Tripwire ?
+ Tripwire conserve sa configuration dans une base de données chiffrée qui est générée, par défaut, à partir de /etc/tripwire/twcfg.txt.
+ .
+ Toutes les modifications de /etc/tripwire/twcfg.txt, dues, soit à modification du paquet, soit à l'activité de l'administrateur, nécessitent la régénération de la base de données chiffrée avant qu'elles ne prennent effet.
+ .
+ Choisir cette action aura comme conséquence de vous demander la phrase secrète de la clé du site lors de la post-configuration de ce paquet.
+Description-gl.UTF-8: ¿Reconstruír o ficheiro de configuración de Tripwire?
+ Tripwire conserva a súa configuración nunha base de datos cifrada xerada, por defecto, a partires de /etc/tripwire/twcfg.txt
+ .
+ Os cambios no ficheiro /etc/tripwire/twcfg.txt, sexan resultado dun cambio neste paquete ou da actividade do administrador, precisan de que se rexenere a base de datos cifrada antes de que tomen efecto.
+ .
+ Se escolle esta opción háselle pedir o contrasinal da clave do sitio durante o proceso de post-instalación deste paquete.
+Description-it.UTF-8: Rigenerare il file di configurazione di Tripwire?
+ Tripwire memorizza la propria configurazione in un database cifrato che viene generato, in modo predefinito, da «/etc/tripwire/twcfg.txt»
+ .
+ Ogni modifica a «/etc/tripwire/twcfg.txt», indipendentemente se risultante da una modifica nel pacchetto o da un'attività di amministrazione, richiede la rigenerazione del database cifrato prima di diventare effettiva.
+ .
+ La selezione di questa azione richiederà l'immissione della frase segreta del sito durante il processo post-installazione del pacchetto.
+Description-ja.UTF-8: Tripwire の設定ファイルを再構築しますか?
+ Tripwire は標準で /etc/tripwire/twcfg.txt から生成された暗号化されているデータベースで設定を保持しています。
+ .
+ このパッケージの変更の結果によるものであれ、管理者の作業によるものであれ、/etc/tripwire/twcfg.txt への変更は、有効になる前に暗号化されたデータベースの再生成が必要です。
+ .
+ これを行うと、サイトキーパスフレーズがこのパッケージの post-installation 時に求められます。
+Description-nl.UTF-8: Configuratiebestand van Tripwire opnieuw aanmaken?
+ Tripwire bewaart haar configuratie in een versleutelde database die standaard wordt aangemaakt van /etc/tripwire/twcfg.txt
+ .
+ Alle wijzigingen aan /etc/tripwire/twcfg.txt, ofwel als resultaat van een wijziging in dit pakket of door een activiteit van de beheerder, vereisen dat de versleutelde database opnieuw wordt aangemaakt alvorens de wijzigingen effect hebben.
+ .
+ Deze actie selecteren zal ervoor zorgen dat u gevraagd wordt naar het sitesleutelwachtwoord tijdens het postinstallatieproces van dit pakket.
+Description-pl.UTF-8: Przebudować plik konfiguracyjny Tripwire?
+ Tripwire przechowuje swoją konfiguracje w zaszyfrowanej bazie danych, generowanej domyślnie z /etc/tripwire/twcfg.txt.
+ .
+ Zmiany w pliku /etc/tripwire/twcfg.txt są rezultatem zmian w pakiecie lub aktywności administratora i wymagają ponownego wygenerowania zaszyfrowanej bazy danych, zanim mogą zostać wprowadzone w życie.
+ .
+ Wybranie tego działania spowoduje wyświetlenie pytania o hasło klucza ogólnego podczas procesu poinstalacyjnego pakietu.
+Description-pt.UTF-8: Reconstruir o ficheiro de configuraÃ§Ã£o do Tripwire?
+ O Tripwire mantÃ©m a sua configuraÃ§Ã£o numa base de dados encriptada gerada, por omissÃ£o, a partir de /etc/tripwire/twcfg.txt
+ .
+ Quaisquer modificaÃ§Ãµes a /etc/tripwire/twcfg.txt, seja como resultado de uma alteraÃ§Ã£o deste pacote ou atravÃ©s de actividade do administrador, requer que seja novamente gerada a base de dados encriptada antes que as alteraÃ§Ãµes surtam efeito.
+ .
+ Seleccionar esta opÃ§Ã£o resultarÃ¡ no pedido da frase-chave do site durante o processo pÃ³s-instalaÃ§Ã£o deste pacote.
+Description-pt_BR.UTF-8: Reconstruir arquivo de configuração do Tripwire?
+ O Tripwire mantém sua configuração em uma base de dados encriptada que é gerada, por padrão, a partir do arquivo /etc/tripwire/twcfg.txt
+ .
+ Quaisquer mudanças no arquivo /etc/tripwire/twcfg.txt, seja como resultado de uma mudança neste pacote ou devido a atividades do administrador, requerem que a base de dados encriptada seja regerada antes que as mesmas surtam efeito.
+ .
+ Selecionar esta ação resultará no questionamento da frase secreta de sua chave de site durante o processo de pós-instalação deste pacote.
+Description-ru.UTF-8: Пересобрать файл настройки Tripwire?
+ Tripwire хранит свои настройки в шифрованной базе данных, которая по умолчанию генерируется из файла /etc/tripwire/twcfg.txt
+ .
+ Любые изменения в /etc/tripwire/twcfg.txt, или в результате изменений в пакете, или из-за действий администратора, требуют регенерации шифрованной базы данных перед тем, как они вступят в силу.
+ .
+ Если вы ответите утвердительно, вас попросят ввести пароль к ключу узла на завершающем этапе установки пакета.
+Description-sk.UTF-8: Znova vytvoriť konfiguračný súbor Tripwire?
+ Tripwire si uchováva konfiguráciu v šifrovanej databáze, ktoré je predvolene generovaná z /etc/tripwire/twcfg.txt
+ .
+ Každá zmena v /etc/tripwire/twcfg.txt, či už ako výsledok zmeny tohoto balíka alebo ako výsledok aktivity administrátora, vyžaduje opätovné vygenerovanie šifrovanej databázy, inak sa zmeny neprejavia.
+ .
+ Zvolenie tejto akcie bude mať za následok to, že budete počas poinštalačného procesu tohoto balíka vyzvaný na zadanie hesla kľúča sídla.
+Description-sv.UTF-8: Bygga om Tripwire's konfigurationsfil?
+ Tripwire sparar dess konfiguration i en krypterad databas som är genererad som standard från /etc/tripwire/twcfg.txt
+ .
+ Alla ändringar i /etc/tripwire/twcfg.txt antingen som en ändring i detta paket eller på grund av administratörens aktiviteter kräver att den krypterade databasen genereras om före ändringarna blir aktiva.
+ .
+ Välja denna åtgärd kommer att resultera i att du blir frågad efter lösenordsfrasen för systemnyckeln under efterinstallationsprocessen av detta paket.
+
+Template: tripwire/rebuild-policy
+Type: boolean
+Default: true
+Description: Rebuild Tripwire policy file?
+ Tripwire keeps its policies on what attributes of which files should be
+ monitored in a encrypted database that is generated, by default, from
+ /etc/tripwire/twpol.txt
+ .
+ Any changes to /etc/tripwire/twpol.txt, either as a result of a change in
+ this package or due to administrator activity, require the regeneration of
+ the encrypted database before they will take effect.
+ .
+ Selecting this action will result in your being prompted for the site key
+ passphrase during the post-installation process of this package.
+Description-cs.UTF-8: Znovu vytvořit soubor s politikou Tripwire?
+ Tripwire uchovává své politiky (ohledně toho, které atributy jakých souborů se mají sledovat) v šifrované databázi, která se implicitně generuje z /etc/tripwire/twpol.txt.
+ .
+ Každá změna /etc/tripwire/twpol.txt (ať už způsobená změnou v balíku nebo zásahem správce) vyžaduje přegenerování zašifrované databáze. Do té doby se změny neprojeví.
+ .
+ Výběr této akce způsobí, že budete během poinstalační fáze dotázáni na frázi k síťovému klíči.
+Description-da.UTF-8: Genopbyg Tripwires retningslinjefil?
+ Tripwire opbevarer sine politikker om, hvilke egenskaber for hvilke filer, der skal holdes under observation, i en krypteret database, der som udgangspunkt genereres fra /etc/tripwire/twpol.txt
+ .
+ Enhver Ã¦ndring i /etc/tripwire/twpol.txt, bÃ¥de pÃ¥ grund af Ã¦ndringer i denne pakke eller administratorens aktiviteter, krÃ¦ver at den krypterede database bliver regenereret, fÃ¸r den trÃ¦der i kraft.
+ .
+ Hvis du vÃ¦lger denne handling, vil du blive spurgt om stednÃ¸glens adgangskode under denne pakkes efterinstallations-proces.
+Description-de.UTF-8: Die Tripwire-Richtliniendatei neu erzeugen?
+ Tripwire behält Richtlinien darüber, welche Attribute von welchen Dateien überwacht werden sollen, in einer verschlüsselten Datenbank, die in der Voreinstellung aus /etc/tripwire/twpol.txt generiert wird.
+ .
+ Jegliche Änderungen an /etc/tripwire/twpol.txt, entweder als Ergebnis einer Änderung in diesem Paket oder aufgrund von Aktivitäten des Administrators, erfordert die Neuerzeugung der verschlüsselten Datenbank bevor sie aktiv werden.
+ .
+ Die Auswahl dieser Aktion bewirkt, dass Sie während der Post-Installation dieses Paketes nach der Passphrase des Site-Schlüssels gefragt werden.
+Description-es.UTF-8: ¿Desea reconstruir el fichero de directrices de Tripwire?
+ Tripwire mantiene sus directrices que indican los atributos que se deberían supervisar en los ficheros en la base de datos que se generó, por omisión, a partir de «/etc/tripwire/twpol.txt».
+ .
+ Debe regenerarse la base de datos cifrada tras cualquier cambio en «/etc/tripwire/twcfg.txt», bien como resultado de un cambio en el paquete o bien realizados  por el administrados. Estos cambios no tendrán efecto hasta que la base de datos no se regenere.
+ .
+ Si elige está opción se le pedirá la contraseña de la clave de sitio durante el proceso de post-instalación del paquete.
+Description-eu.UTF-8: Eraiki berriro Tripwire-ren politiken fitxategia?
+ Tripwire-k bere politikak (zer fitxategien zer atributu monitorizatuko diren buruzkoak) enkriptatutako datu-basean, lehenetsi gisa /etc/tripwire/twpol.txt fitxategitik sortutakoa, gordetzen ditu.
+ .
+ /etc/tripwire/twpol.txt fitxategian egiten den edozer aldaketa, pakete honetan aldaketak gertatu direlako, edo administratzailearen ekintzagatik, enkriptatutako datu-basea berriro sortzea eskatzen du aldaketek eragina izan dezaten.
+ .
+ Ekintza hau hautatzean, gunearen gakoaren pasaesaldia eskatuko zaizu pakete honen instalazio ondorengo prozesuan.
+Description-fi.UTF-8: Luodaanko Tripwiren sääntötiedosto uudelleen?
+ Tripwire säilyttää sääntöjä, jotka kertovat mitä tiedostoja sen tulee seurata, salatussa tietokannassa, joka oletuksena luodaan tiedostosta /etc/tripwire/twpol.txt.
+ .
+ Jos tiedosto /etc/tripwire/twpol.txt muuttuu paketin muutosten tai ylläpitäjän toimien takia, tulee salattu tietokanta luoda uudelleen, ennen kuin muutokset otetaan käyttöön.
+ .
+ Jos valitset tämän, tämän asennusprosessin loppuosassa kysytään sivustoavaimen salalausetta.
+Description-fr.UTF-8: Faut-il reconstruire le fichier de règles de Tripwire ?
+ Tripwire conserve les règles indiquant les attributs de fichiers à surveiller dans une base de données chiffrée qui est générée, par défaut, à partir de /etc/tripwire/twpol.txt.
+ .
+ Toutes les modifications de /etc/tripwire/twpol.txt, dues, soit à une modification du paquet, soit à l'activité de l'administrateur, nécessitent la régénération de la base de données chiffrée avant qu'elles ne prennent effet.
+ .
+ Choisir cette action aura comme conséquence de vous demander la phrase secrète de la clé du site lors de la post-configuration de ce paquet.
+Description-gl.UTF-8: ¿Reconstruír o ficheiro de política de Tripwire?
+ Tripwire conserva as súas políticas sobre os atributos a monitorizar de cada ficheiro nunha base de datos cifrada xerada, por defecto, a partires de /etc/tripwire/twpol.txt
+ .
+ Os cambios no ficheiro /etc/tripwire/twpol.txt, sexan resultado dun cambio neste paquete ou da actividade do administrador, precisan de que se rexenere a base de datos cifrada antes de que tomen efecto.
+ .
+ Se escolle esta opción háselle pedir o contrasinal da clave do sitio durante o proceso de post-instalación deste paquete.
+Description-it.UTF-8: Rigenerare il file di policy di Tripwire?
+ Tripwire tiene traccia delle policy sugli attributi di quali file devono essere tenuti sotto controllo in un database cifrato che viene generato, in modo predefinito, da «/etc/tripwire/twpol.txt»
+ .
+ Ogni modifica a «/etc/tripwire/twpol.txt», indipendentemente se risultante da una modifica nel pacchetto o da un'attività di amministrazione, richiede la rigenerazione del database cifrato prima di diventare effettiva.
+ .
+ La selezione di questa azione richiederà l'immissione della frase segreta del sito durante il processo post-installazione del pacchetto.
+Description-ja.UTF-8: Tripwire のポリシーファイルを再構築しますか?
+ Tripwire は、標準では /etc/tripwire/twpol.txt から生成された暗号化されたデータベース内で監視されるべきファイルの属性についてのポリシーを保持しています。
+ .
+ このパッケージの変更の結果によるものであれ、管理者の作業によるものであれ、/etc/tripwire/twpol.txt への変更は、有効になる前に暗号化されたデータベースの再生成が必要です。
+ .
+ これを行うと、サイトキーパスフレーズがこのパッケージの post-installation 時に求められます。
+Description-nl.UTF-8: Beleidsbestand van Tripwire opnieuw aanmaken?
+ Tripwire bewaart haar beleid over welke attributen van welke bestanden nagekeken moeten worden in een versleutelde database die standaard wordt aangemaakt uit /etc/tripwire/twpol.txt
+ .
+ Alle wijzigingen aan /etc/tripwire/twpol.txt, ofwel als resultaat van een wijziging in dit pakket of door een activiteit van de beheerder, vereisen dat de versleutelde database opnieuw wordt aangemaakt alvorens de wijzigingen effect hebben.
+ .
+ Deze actie selecteren zal ervoor zorgen dat u gevraagd wordt naar het sitesleutelwachtwoord tijdens het postinstallatieproces van dit pakket.
+Description-pl.UTF-8: Przebudować plik zasad Tripwire?
+ Tripwire przechowuje swoje zasady dotyczące wyboru plików, których atrybuty powinny być monitorowane, w zaszyfrowanej bazie danych, generowanej domyślnie z /etc/tripwire/twpol.txt.
+ .
+ Zmiany w pliku /etc/tripwire/twpol.txt są rezultatem zmian w pakiecie lub aktywności administratora i wymagają ponownego wygenerowania zaszyfrowanej bazy danych, zanim mogą zostać wprowadzone w życie.
+ .
+ Wybranie tego działania spowoduje wyświetlenie pytania o hasło klucza ogólnego podczas procesu poinstalacyjnego pakietu.
+Description-pt.UTF-8: Reconstruir o ficheiro de polÃ­tica de sistema do Tripwire?
+ O Tripwire mantÃ©m as suas polÃ­ticas de quais atributos de que ficheiros devem ser monitorizados numa base de dados encriptada, que por omissÃ£o, Ã© gerada a partir de /etc/tripwire/twpol.txt
+ .
+ Quaisquer modificaÃ§Ãµes a /etc/tripwire/twpol.txt seja como resultado de uma alteraÃ§Ã£o neste pacote ou atravÃ©s de actividade do administrador, requer uma nova geraÃ§Ã£o da base de dados encriptada para que as alteraÃ§Ãµes surtam efeito.
+ .
+ Seleccionar esta opÃ§Ã£o resultarÃ¡ no pedido da frase-chave do site durante o processo pÃ³s-instalaÃ§Ã£o deste pacote.
+Description-pt_BR.UTF-8: Reconstruir arquivo de políticas do Tripwire?
+ O Tripwire mantém suas políticas sobre quais atributos de quais arquivos devem ser monitorados em uma base de dados encriptada que é gerada, por padrão, a partir do arquivo /etc/tripwire/twpol.txt
+ .
+ Quaisquer mudanças no arquivo /etc/tripwire/twpol.txt, seja como resultado de uma mudança neste pacote ou devido a atividades do administrador, requerem que a base de dados encriptada seja regerada antes que as mesmas surtam efeito.
+ .
+ Selecionar esta ação resultará no questionamento da frase secreta de sua chave de site durante o processo de pós-instalação deste pacote.
+Description-ru.UTF-8: Пересобрать файл политики Tripwire?
+ Tripwire хранит политики от том, какие файлы с какими атрибутами нужно отслеживать, в шифрованной базе данных, которая по умолчанию генерируется из файла /etc/tripwire/twpol.txt
+ .
+ Любые изменения в /etc/tripwire/twpol.txt, или в результате изменений в пакете, или из-за действий администратора, требуют регенерации шифрованной базы данных перед тем, как они вступят в силу.
+ .
+ Если вы ответите утвердительно, вас попросят ввести пароль к ключу узла на завершающем этапе установки пакета.
+Description-sk.UTF-8: Znova vytvoriť súbor politiky Tripwire?
+ Tripwire uchováva svoje politiky o tom, ktoré súbory majú byť monitorované v šifrovanej databáze, ktorá je predvolene generovaná z /etc/tripwire/twpol.txt
+ .
+ Každá zmena v /etc/tripwire/twpol.txt, či už ako výsledok zmeny tohoto balíka alebo ako výsledok aktivity administrátora, vyžaduje opätovné vygenerovanie šifrovanej databázy, inak sa zmeny neprejavia.
+ .
+ Zvolenie tejto akcie bude mať za následok to, že budete počas poinštalačného procesu tohoto balíka vyzvaný na zadanie hesla kľúča sídla.
+Description-sv.UTF-8: Bygga om Tripwire's policy-fil?
+ Tripwire håller dina policys på vilka attribut på vilka filer som ska övervakas i en krypterad databas som genereras, som standard från /etc/tripwire/twpol.txt
+ .
+ Alla ändringar i /etc/tripwire/twpol.txt, antingen som ett result av en ändring i detta paket eller på grund av administratörens aktiviteter, kräver att den krypterade databasen genereras om före de blir aktiva.
+ .
+ Välja denna åtgärd kommer att resultera i att du blir frågad efter lösenordsfrasen för systemnyckeln under efterinstallationsprocessen av detta paket.
+
+Template: tripwire/email-report
+Type: note
+Description: Tripwire no longer emails reports by default
+ Previous versions of Tripwire provided the administrator with the option
+ of emailing the compliance report generated by the daily cron job to a
+ particular address.  This functionality is no longer provided.
+ .
+ Instead, the administrator may choose to mail failures associated with
+ individual rules or sets of rules to one or more accounts, with different
+ rule sets using independent email addresses.
+ .
+ By default, this package does not enable this feature.  Please see the
+ twpolicy(4) man page for details on how to configure this functionality.
+Description-cs.UTF-8: Tripwire již svá hlášení neposílá poštou
+ Dřívější verze Tripwire nabízely správci možnost zasílání denních hlášení generovaných cronovou úlohou na určenou adresu. Tato funkcionalita již není podporována.
+ .
+ Místo toho si správce může zvolit zasílání chyb spojených s jednotlivými pravidly nebo skupinami pravidel na jednu nebo více adres, kde různé skupiny pravidel mohou být zasílány na různé adresy.
+ .
+ Ve výchozím stavu je tato vlastnost v balíku vypnutá. Návod, jak tuto funkcionalitu nastavit, naleznete v manuálové stránce twpolicy(4).
+Description-da.UTF-8: Tripwire udsender som udgangspunkt ikke lÃ¦ngere rapporter med e-post
+ Tidligere versioner af Tripwire gav administratoren mulighed for at fÃ¥ sendt den overensstemmelsesrapporten, der blev genereret af det daglige cron-job til en bestemt e-post adresse. Denne funktionalitet findes ikke mere.
+ .
+ I stedet kan administratoren vÃ¦lge at sende fejl i forbindelse med individuelle regler eller regelsÃ¦t til en eller flere konti med forskellige regelsÃ¦t til forskellige e-post adresser.
+ .
+ Som udgangspunkt aktiverer pakke ikke denne funktion. Se manualsiden twpolicy(4) for detaljer om, hvordan du sÃ¦tter denne funktionalitet op.
+Description-de.UTF-8: Tripwire versendet in der Voreinstellung keine Berichte mehr.
+ Vorherige Versionen von Tripwire stellten dem Administrator die Möglichkeit zur Verfügung, die Übereinstimmungsberichte, die von dem täglichen Cron-Lauf generiert werden, zu einer bestimmten Adresse zu schicken. Diese Funktionalität wird nicht länger angeboten.
+ .
+ Stattdessen kann der Administrator wählen, Fehler, die mit individuellen Regeln oder Sätzen von Regeln assoziiert sind, an ein oder mehrere Konten zu senden. Verschiedene Regelsätze können unabhängige E-Mail-Adressen verwenden.
+ .
+ In der Voreinstellung aktiviert dieses Paket diese Funktion nicht. Bitte lesen Sie die Handbuchseite twpolicy(4) zu Einzelheiten, wie diese Funktionalität einzurichten ist.
+Description-es.UTF-8: Por omisión, Tripwire ya no envía informes por correo electrónico
+ Las versiones anteriores de Tripwire ofrecían la opción de enviar los informes generados diariamente con la tarea del cron al administrador. Ya no se ofrece esta funcionalidad.
+ .
+ En su lugar, el administrador puede decidir que se envíen los errores que se produzcan y asociados a reglas individuales o conjuntos de reglas a una o más cuentas de correo. Con diferentes conjuntos de reglas  para cuentas de correo independientes.
+ .
+ Por omisión, este paquete no activa esta funcionalidad. Consulte la página de manual twpolicy(4) si desea más detalles sobre cómo configurarlo.
+Description-eu.UTF-8: Lehenetsi gisa, Tripwire-k aurrerantzean ez du txostenik bidaliko mezu elektronikoz
+ Tripwire-ren aurreko bertsioak helbide zehatz batetara adostasun txostenak egunero cron lan baten bitartez bidaltzeko aukerarekin banatzen ziren. Funtzionalitate hau ez da aurrerantzean eskainiko.
+ .
+ Horren ordez, administratzaileak aukera dezake banakako arauekin edo bildumekin lotutako erroreak kontu bat edo gehiagotara bidaltzea, arauen multzo desberdinek helbide elektroniko desberdinak erabiliz.
+ .
+ Lehenetsi gisa, pakete honek ez du eginbide hau gaitzen. Ikus twpolicy(4) eskuliburuko orrialdeak eginbide hau nola konfiguratzen den jakiteko.
+Description-fi.UTF-8: Tripwire ei enää lähetä raportteja sähköpostissa oletuksena
+ Aiemmat Tripwiren versiot antoivat ylläpitäjälle mahdollisuuden lähettää päivittäisen cron-työn luoman raportin annettuun sähköpostiosoitteeseen. Tätä toiminnallisuutta ei enää tarjota.
+ .
+ Ylläpitäjä voi sen sijaan valita yksittäisiin sääntöihin tai sääntöjoukkoihin liittyvät virheet lähetettäväksi yhteen tai useampaan osoitteeseen, jotka voidaan määritellä erikseen kullekin säännölle.
+ .
+ Oletuksena tämä ominaisuus ei ole käytössä. man-ohjesivu twpolicy(4) sisältää lisätietoja tämän toiminnallisuuden asettamisesta.
+Description-fr.UTF-8: Suppression de l'envoi par défaut de rapports Tripwire par courriel
+ Les précédentes versions de Tripwire fournissaient à l'administrateur la possibilité d'envoyer, à une adresse de courriel spécifique, les rapports générés par la tâche de cron quotidienne. Désormais, cette fonctionnalité n'existe plus.
+ .
+ À la place, l'administrateur peut choisir d'envoyer les échecs associés à des règles individuelles ou des jeux de règles vers un ou plusieurs comptes, avec différents jeux de règles utilisant des adresses électroniques différentes.
+ .
+ Par défaut, ce paquet n'active pas cette fonctionnalité. Veuillez consulter la page de manuel twpolicy(4) pour obtenir des précisions sur sa configuration.
+Description-gl.UTF-8: Tripwire xa non envía informes por email por defecto
+ As versións antigas de Tripwire dábanlle ao administrador a opción de enviar o informe xerado pola tarefa diaria de cron a un enderezo de email determinado. Esta funcionalidade xa non se fornece.
+ .
+ No seu canto, o administrador pode enviar os fallos asociados con regras individuais ou grupos de regras a unha ou máis contas, facendo que os distintos grupos de regras empreguen enderezos de email independentes.
+ .
+ Por defecto, este paquete non activa esta característica. Consulte a páxina de manual de twpolicy(4) para máis detalles sobre como configurar esta funcionalidade.
+Description-it.UTF-8: In modo predefinito Tripwire non invia più i rapporti per posta elettronica
+ Le versioni precedenti di Tripwire davano all'amministratore la possibilità di inviare il rapporto di conformità generato dal job giornaliero di cron a un indirizzo specifico. Questa funzionalità non viene più offerta.
+ .
+ L'amministratore può, invece, scegliere di inviare per posta elettronica problemi associati a ruoli individuali o a set di ruoli a uno o più account, con l'utilizzo di indirizzi di posta elettronica indipendenti per set di ruoli differenti.
+ .
+ Questa funzionalità non è abilitata in modo predefinito. Per informazioni sulla configurazione di questa funzionalità consultare la pagina man di twpolicy(4).
+Description-ja.UTF-8: Tripwire は標準ではメールでレポートを送らなくなりました
+ 以前のバージョンの Tripwire は、特定のアドレス宛に毎日の cron job によって生成されたコンプライアンスレポートをメールするオプションが設定されていました。この機能はもはや提供されなくなります。
+ .
+ 代わりに管理者は、ルールごと、もしくは複数のルールからなるルールセットごとに対し、関連する失敗を一つまたは複数のアカウントへメールで送信するかどうかを選択できます。それぞれのルールセットには別々のメールアドレスを設定できます。
+ .
+ 標準では、この機能はパッケージでは有効にされていません。どのようにしてこの機能を設定するか、詳細については twpolicy(4) マニュアルページを確認してください。
+Description-nl.UTF-8: Tripwire verstuurt niet langer standaard rapporten per e-mail
+ Vorige versies van Tripwire boden de beheerder de optie van de overeenstemmingsrapporten aangemaakt door het dagelijkse crontaak per e-mail te versturen naar een bepaald adres. Deze functionaliteit wordt niet langer aangeboden.
+ .
+ In plaats hiervan, kan de beheerder kiezen om fouten geassocieerd met individuele regels of verzamelingen van regels naar één of meer accounts te versturen. Er kunnen per regelverzameling verschillende e-mailadressen ingesteld worden.
+ .
+ Standaard wordt deze mogelijkheid niet ingeschakeld. Zie de twpolicy(4)-manpagina voor details om deze functionaliteit te configureren.
+Description-pl.UTF-8: Tripwire nie wysyła domyślnie raportów pocztą elektroniczną
+ Poprzednia wersja Tripwire udostępniała administratorowi możliwość otrzymywania raportów zgodności, tworzonych przez codzienne zadanie crona, na określony adres. Ta funkcja nie jest dłużej dostępna.
+ .
+ W zamian, administrator może wybrać wysyłanie wiadomości o błędach, związanych z indywidualnymi regułami lub zestawami reguł do jednego lub więcej kont, przy czym poszczególne reguły mogą używać niezależnych adresów poczty elektronicznej.
+ .
+ Domyślnie, funkcja ta jest wyłączona. Strona podręcznika twpolicy(4) zawiera szczegóły na temat konfiguracji tej opcji.
+Description-pt.UTF-8: Por omissÃ£o o Tripwire jÃ¡ nÃ£o envia relatÃ³rios
+ As versÃµes anteriores do tripwire forneciam ao administrador a opÃ§Ã£o de envio por email dos relatÃ³rios gerados diariamente pelo cron job diÃ¡rio para um endereÃ§o especÃ­fico.  Esta funcionalidade jÃ¡ nÃ£o Ã© mais fornecida.
+ .
+ Em alternativa, o administrador pode escolher enviar por mail falhas associadas a regras individuais ou conjuntos de regras, a uma ou mais contas de email, com diferentes conjuntos de regras utilizando endereÃ§os de email independentes.
+ .
+ Por omissÃ£o, este pacote nÃ£o activa esta funcionalidade.  Por favor veja a pÃ¡gina do manual twpolicy(4) para mais detalhes em como configurar esta funcionalidade.
+Description-pt_BR.UTF-8: O Tripwire não envia mais relatórios via e-mail por padrão
+ Versões anteriores do Tripwire ofereciam ao administrador a opção de enviar via e-mail o relatório de concordância, gerado pelo job cron diário, para um endereço particular. Esta funcionalidade não é mais oferecida.
+ .
+ Ao invés disso, o administrador pode optar para que as falhas associadas com regras individuais ou conjuntos de regras sejam enviadas via e-mail para uma ou mais contas, com diferentes conjuntos de regras usando endereços de e-mail independentes.
+ .
+ Por padrão, este pacote não habilita este recurso. Por favor, leia a página de manual twpolicy(4) para detalhes sobre como configurar esta funcionalidade.
+Description-ru.UTF-8: По умолчанию, Tripwire больше не посылает отчёты
+ Предыдущие версии Tripwire предоставляли администратору на указанный электронный адрес отчёт о работе, генерируемый ежедневным заданием cron. Эта возможность больше не предоставляется.
+ .
+ Вместо этого, администратор может выбрать что отправлять по почте, назначить отдельные правила или наборы на одну или более учётных записей, указав независимые эл. почтовые адреса для каждого набора правил.
+ .
+ По умолчанию, эта возможность в пакете выключена. О том, как настроить эту возможность, подробно написано в справочной странице twpolicy(4).
+Description-sk.UTF-8: Tripwire už predvolene neposiela svoje hlásenia emailom
+ Predchádzajúce verzie Tripwire poskytovali administrátorovi možnosť posielať emailové hlásenia na zadanú adresu, generované denne pomocou úlohy cron. Táto funkcia už viac nie je poskytovaná.
+ .
+ Namiesto toho si môže administrátor zvoliť posielanie chýb, súvisiacich s individuálnymi pravidlami alebo sadou pravidiel, na jeden alebo viac účtov, s možnosťou nastavenia rôznych sád pravidiel pre rôzne emailové adresy.
+ .
+ Predvolene tento balík túto funkciu nezapína. Prosím, pozrite si manuálovú stránku twpolicy(4) s podrobnosťami o tom, ako túto funkciu nastaviť.
+Description-sv.UTF-8: Tripwire skickar inte längre e-postrapporter som standard
+ Tidigare versioner av Tripwire gav administratören funktionen att skicka compliancerapporter via e-post som genererats av det dagliga cron-jobbet.  Denna funktionalitet erbjuds inte längre.
+ .
+ Istället kan administratören välja att skicka via e-post de individuella regler eller uppsättningar av regler till ett eller flera konton, med olika regeluppsättningar med oberoende e-postaddresser.
+ .
+ Som standard aktiverar inte detta paket den funktionen.  Se manualsidan  twpolicy(4)  för detaljer hur du konfigurerar denna funktionalitet.
+
+Template: tripwire/installed
+Type: note
+Description: Tripwire has been installed
+ The Tripwire binaries are located in /usr/sbin and the database is located
+ in /var/lib/tripwire. It is strongly advised that these locations be
+ stored on write-protected media (e.g. mounted RO floppy). See
+ /usr/share/doc/tripwire/README.Debian for details.
+Description-cs.UTF-8: Tripwire byl nainstalován
+ Binárky Tripwire jsou umístěny v /usr/sbin a databáze se nachází ve /var/lib/tripwire. Důrazně doporučujeme umístit tyto soubory na média chráněná proti zápisu (např. disketa připojená jen pro čtení). Podrobnosti naleznete v souboru /usr/share/doc/tripwire/README.Debian.
+Description-da.UTF-8: Tripwire blev installeret
+ Tripwires programfiler ligger i /usr/sbin og databasen ligger i /var/lib/tripwire. Det anbefales kraftigt at disse omrÃ¥der opbevares pÃ¥ et skrivebeskyttet medie (f.eks. en monteret skrivebeskyttet diskette). Se /usr/share/doc/tripwire/README.Debian for detaljer.
+Description-de.UTF-8: Tripwire wurde installiert.
+ Die Binärdateien von Tripwire befinden sich in /usr/sbin und die Datenbank ist in /var/lib/tripwire. Es wird sehr empfohlen, dass diese Verzeichnisse auf einem schreibgeschützten Medium (z. B. im nur-lesen-Modus eingehängte Diskette) gespeichert werden. Siehe /usr/share/doc/tripwire/README.Debian zu Einzelheiten.
+Description-es.UTF-8: Se ha instalado Tripwire
+ Los binarios de Tripwire están situados en «/usr/sbin» y la base de datos en «/var/lib/tripwire». Es muy recomendable que estas ubicaciones estén protegidas contra escritura (p.ej. disquete montado en modo sólo lectura). Para más información consulte «/usr/share/doc/tripwire/README.Debian».
+Description-eu.UTF-8: Tripwire instalatu da
+ Tripwire-ren bitarrak /usr/sbin direktorioan kokatzen dira, eta datu-basea /var/lib/tripwire-n. Biziki gomendatzen da kokapen horiek idazketen aurka babestutako euskarri batetan egotea (adib soilik irakurteko den muntatutako disko batean). Ikus /usr/share/doc/tripwire/README.Debian xehetasun gehiagorako.
+Description-fi.UTF-8: Tripwire on asennettu
+ Tripwiren binääritiedostot ovat hakemistossa /usr/sbin ja tietokanta hakemistossa /var/lib/tripwire. On erittäin suositeltavaa säilyttää näitä hakemistoja kirjoitussuojatulla medialla (esim. liitetyllä RO-levykkeellä). Katso lisätietoja tiedostosta /usr/share/doc/tripwire/README.Debian.
+Description-fr.UTF-8: Tripwire a été installé
+ Les binaires Tripwire sont situés dans /usr/sbin et la base de données est située dans /var/lib/tripwire. Il est fortement conseillé que ces emplacements soient conservés sur des supports protégés en écriture (p. ex. des disquettes montées en lecture seule). Consultez /usr/share/doc/tripwire/README.Debian pour des précisions.
+Description-gl.UTF-8: Instalouse Tripwire
+ Os binarios de Tripwire están situados en /usr/sbin, e a base de datos reside en /var/lib/tripwire. Recoméndase encarecidamente que eses directorios residan en soportes protexidos contra escritura (por exemplo, un disquete montado en modo de só lectura). Consulte /usr/share/doc/tripwire/README.Debian para máis detalles.
+Description-it.UTF-8: Tripwire è stato installato
+ I binari di Tripwire sono stati installati in «/usr/sbin» e il database si trova in «/var/lib/tripwire». Si raccomanda fortemente di memorizzare queste posizioni su dispositivi di memorizzazione protetti da lettura, come per esempio dischetti RO montati. Per maggiori dettagli consultare «/usr/share/doc/tripwire/README.Debian».
+Description-ja.UTF-8: Tripwire がインストールされます
+ Tripwire の実行ファイルは /usr/sbin に、データベースは /var/lib/tripwire に配置されます。これらは、ライトプロテクト可能なメディアに保存するのを強くお勧めします (例えば readonly にしたフロッピーをマウントして利用します) 。詳細については /usr/share/doc/tripwire/README.Debian を参照してください。
+Description-nl.UTF-8: Tripwire is geïnstalleerd.
+ De uitvoerende bestanden van Tripwire bevinden zich in /usr/sbin en de database in /var/lib/tripwire. Het is sterk aanbevolen dat deze lokaties zich bevinden op schrijfbeveiligde media (bijvoorbeeld RO-gemounte floppy). Zie /usr/share/doc/tripwire/README.Debian voor details.
+Description-pl.UTF-8: Tripwire został zainstalowany
+ Pliki binarne Tripwire są umieszczone w /usr/sbin, a baza danych w /var/lib/tripwire. Zaleca się, aby te lokalizacje znajdowały się na nośniku zabezpieczonym przed zapisem (np. dyskietce zamontowanej RO - tylko do odczytu). Proszę zapoznać się z /usr/share/doc/tripwire/README.Debian, aby dowiedzieć się więcej.
+Description-pt.UTF-8: O Tripwire foi instalado
+ Os binÃ¡rios do Tripwire estÃ£o localizados em /usr/bin e a sua base de dados em /var/lib/tripwire. Ã vivamente recomendado que estes locais sejam armazenados em suporte protegido contra escrita (e.g. disquete montada protegida contra escrita). Veja /usr/share/doc/tripwire/README.Debian para mais detalhes.
+Description-pt_BR.UTF-8: O Tripwire foi instalado
+ Os binários do Tripwire estão localizados em /usr/sbin e a base de dados está localizada em /var/lib/tripwire. É altamente recomendado que estas localizações sejam armazenadas em mídia protegida contra gravações (por exemplo, disquetes montados com acesso somente leitura). Consulte o arquivo /usr/share/doc/tripwire/README.Debian para detalhes.
+Description-ru.UTF-8: Пакет Tripwire установлен
+ Исполняемые файлы Tripwire находятся в каталоге /usr/sbin, а база данных в каталоге /var/lib/tripwire. Настоятельно рекомендуется расположить эти каталоги на носителе с защитой от записи (например, на монтируемой на чтение дискете). Подробности читайте в /usr/share/doc/tripwire/README.Debian.
+Description-sk.UTF-8: Tripwire bol nainštalovaný
+ Binárne súbory Tripwire sú umiestnené v /usr/sbin a databáza je umiestnená vo /var/lib/tripwire. Dôrazne odporúčame aby ste tieto súbory umiestnili na médiu, ktoré je chránené proti zápisu (napr. disketa pripojená len na čítanie). Podrobnosti hľadajte v /usr/share/doc/tripwire/README.Debian.
+Description-sv.UTF-8: Tripwire har blivit installerad
+ Tripwire-binärerna finns i /usr/sbin och databaserna finns i /var/lib/tripwire. Det rekommenderas starkt att dessa platser sparas på ett skrivskyddat media (exempel, monterad diskett utan skrivmöjlighet). Se /usr/share/doc/tripwire/README.Debian för detaljer.
+
+Template: tripwire/broken-passphrase
+Type: note
+Description: Your Tripwire installation may be misconfigured
+ There was a bug in version 2.3.0-1 of this package that resulted in
+ Tripwire's site and local keys being generated without a passphrase.
+ .
+ You are strongly urged to delete both the site key file,
+ /etc/tripwire/site.key, and local key file,
+ /etc/tripwire/${hostname}-local.key, and reconfigure this package using
+ dpkg-reconfigure once you have completed this upgrade.  This will result
+ in new key files and protect the configuration and policy files once the
+ are generated.
+Description-cs.UTF-8: Vaše instalace Tripwire může být nastavená chybně
+ Ve verzi 2.3.0-1 tohoto balíku byla chyba, která způsobila, že síťové i lokální klíče Tripwire byly vytvořeny bez přístupové fráze.
+ .
+ Je důrazně doporučeno smazat oba soubory (/etc/tripwire/site.key a /etc/tripwire/${hostname}-local.key) a po dokončení přechodu na novou verzi znovu spustit konfiguraci tohoto balíku příkazem dpkg-reconfigure. Tím se vytvoří nové soubory s klíči, které již budou chráněny frází a které tak budou chránit konfigurační soubor a soubor s politikou.
+Description-da.UTF-8: Din Tripwire-installation er muligvis sat forkert op
+ Der var en fejl i version 2.3.0-1 af denne pakke, der medfÃ¸rte at Tripwires sted- og lokale nÃ¸gler blev genereret uden en adgangskode.
+ .
+ Du opfordres kraftigt til at slette bÃ¥de stednÃ¸glefilen, /etc/tripwire/site.key, og den lokale nÃ¸glefil, /etc/tripwire/${hostname}-local.key, og genkonfigurere denne pakke med dpkg-reconfigure, sÃ¥ snart du har afsluttet denne opgradering. Det vil medfÃ¸re nye nÃ¸glefiler og beskytte opsÃ¦tningen og retningslinjefilerne, sÃ¥ snart de er genereret.
+Description-de.UTF-8: Ihre Tripwire-Installation könnte falsch konfiguriert sein.
+ Es gab einen Fehler in Version 2.3.0-1 dieses Paketes, der darin resultierte, dass die Site- und lokalen Schlüssel von Tripwire ohne Passphrase generiert wurden.
+ .
+ Sie werden nachdrücklich ermutigt, sowohl die Site-Schlüsseldatei /etc/tripwire/site.key als auch die lokale Schlüsseldatei /etc/tripwire/${hostname}-local.key zu löschen und dieses Paket durch Verwendung von dpkg-reconfigure neu einzurichten, sobald Sie dieses Upgrade abgeschlossen haben. Dies wird in neuen Schlüsseldateien resultieren und die Konfigurations- und Richtliniendateien schützen, sobald diese generiert wurden.
+Description-es.UTF-8: Su instalación de Tripwire puede estar mal configurada
+ Había un fallo en la versión 2.3.0-1 de este paquete que tenía como consecuencia que las claves, tanto local como de sitio, se generaran sin contraseña.
+ .
+ Se le recomienda encarecidamente que borre tanto el fichero de clave de sitio, «/etc/tripwire/site.key», como la de clave local «/etc/tripwire/${hostname}-local.key», y que reconfigure este paquete en cuanto termine la actualización. Esto hará que se generen nuevos ficheros de claves de forma que los ficheros de configuración y directrices estén protegidos cuando se generen.
+Description-eu.UTF-8: Tripwire-ren instalazioa gaizki konfiguratuta egon daiteke
+ Pakete honen 2.3.0-1 bertsioan akats bat zegoen, horren erruz gunearen eta lokaleko gakoak pasaesaldirik gabe sortzen ziren.
+ .
+ Biziki gomendatzen da bai gunearen gakoa (/etc/tripwire/site.key) bai lokaleko gakoa (/etc/tripwire/${hostname}-local.key) ezabatzea, eta pakete hau birkonfiguratzea 'dpkg-reconfigure' erabiliz bertsio-berritzea behin amaitutakoan. Honek gakoen fitxategi berriak sortuko ditu eta konfigurazioko eta politiken fitxategiak babestuko ditu (behin sortuta daudela).
+Description-fi.UTF-8: Asennetun Tripwiren asetukset saattavat olla virheelliset
+ Tämän paketin versiossa 2.3.0-1 oli virhe, jonka takia Tripwiren paikallinen ja sivustoavain luotiin ilman salalausetta.
+ .
+ On erittäin suositeltavaa poistaa sekä sivustoavaintiedosto /etc/tripwire/site.key että paikallisen avaimen tiedosto /etc/tripwire/${hostname}-local.key ja tehdä tämän paketin asetukset uudelleen ohjelmalla dpkg-reconfigure, kun päivitys on valmis. Tällöin luodaan uudet avaintiedostot ja asetus- ja sääntötiedostot ovat suojattuina niiden luomisen jälkeen.
+Description-fr.UTF-8: Votre installation de Tripwire est peut être mal configurée
+ Un bogue de la version 2.3.0-1 de ce paquet a eu comme conséquence de générer les clés locales et du site Tripwire sans phrase secrète.
+ .
+ Vous êtes fortement invité à supprimer le fichier de la clé du site, /etc/tripwire/site.key, et le fichier de la clé locale, /etc/tripwire/${hostname}-local.key, et de reconfigurer ce paquet en utilisant « dpkg-reconfigure » dès que vous aurez terminé cette mise à jour. Ceci aura comme conséquence d'utiliser de nouveau fichiers de clé qui, une fois générés, protégeront les fichiers de configuration et de règles.
+Description-gl.UTF-8: A instalación de Tripwire pode estar mal configurada
+ Había un erro na versión 2.3.0-1 deste paquete que facía que se xeraran as claves de sitio e local de Tripwire sen un contrasinal.
+ .
+ Recoméndase fortemente borrar o ficheiro da clave de sitio, /etc/tripwire/site.key, e o ficheiro da clave local, /etc/tripwire/${hostname}-local.key, e reconfigurar este paquete empregando dpkg-reconfigure despois de completar a actualización. Isto ha facer que se xeren novos ficheiros de clave e os ficheiros de configuración e política queden protexidos despois de quedaren xerados.
+Description-it.UTF-8: L'installazione di Tripwire potrebbe essere mal configurata
+ Nella versione 2.3.0-1 di questo pacchetto vi era un errore a causa del quale le chiavi locali e del sito di Tripwire venivano generate senza una frase segreta.
+ .
+ Si raccomanda fortemente di eliminare sia la chiave del sito, «/etc/tripwire/site.key», sia la chiave locale, «/etc/tripwire/${hostname}-local.key», nonché di riconfigurare il pacchetto eseguendo, una volta completato l'aggiornamento, «dpkg-reconfigure». Questo causerà la generazione di nuovi file di chiavi e proteggerà quindi i file di configurazione e di policy.
+Description-ja.UTF-8: Tripwire のインストールが誤って設定されています
+ このパッケージのバージョン 2.3.0-1 にサイトキーとローカルキーがパスフレーズなしで生成されるというバグがありました。
+ .
+ サイトキー /etc/tripwire/site.key とローカルキー /etc/tripwire/${hostname}-local.key の両方のファイルを削除し、dpkg-reconfigure と実行してこのパッケージの再設定を行い、一旦このアップグレードを完了するのを強くお勧めします。この結果、新しいキーファイルと再度生成された設定とポリシーファイルを保護することになります。
+Description-nl.UTF-8: Uw Tripwire-installatie is misschien verkeerd geconfigureerd
+ Er was een fout in versie 2.3.0-1 van dit pakket. De site- en lokale sleutels van Tripwire werden aangemaakt zonder wachtwoord.
+ .
+ U wordt sterk aangeraden om beide, het sitesleutelbestand, /etc/tripwire/site.key, en het lokale sleutelbestand, /etc/tripwire/${hostname}-local.key, te verwijderen en dit pakket te herconfigureren met dpkg-reconfigure nadat u deze opwaardering heeft voltooid. Dit zal resulteren in nieuwe sleutelbestanden en zal de configuratie- en beleidsbestanden beschermen nadat ze zijn aangemaakt.
+Description-pl.UTF-8: Ta instalacja Tripwire może być źle skonfigurowana
+ Błąd w wersji 2.3.0-1 pakietu spowodował, że klucze ogólne i lokalne były tworzone bez hasła.
+ .
+ Powinno się usunąć oba klucze: ogólny (/etc/tripwire/site.key) i lokalny (/etc/tripwire/${hostname}-local.key) i skonfigurować ten pakiet ponownie, za pomocą dpkg-reconfigure po zakończeniu niniejszej aktualizacji. W ten sposób zostaną utworzone nowe klucze chroniące pliki konfiguracji i zasad.
+Description-pt.UTF-8: A sua instalaÃ§Ã£o do Tripwire pode estar mal configurada
+ Existiu um 'bug' na versÃ£o 2.3.0-1 deste pacote que resulta na criaÃ§Ã£o pelo Tripwire das chaves de site e locais sem uma frase-chave.
+ .
+ Ã-lhe aconselhado a que apague urgentemente tanto o ficheiro de chave de site, /etc/tripwire/site, o ficheiro de chave local /etc/tripwire/${hostname} -local.key, e reconfigure este pacote com dpkg-reconfigure assim que tiver completado esta actualizaÃ§Ã£o.  SerÃ£o assim gerados novos ficheiros de chaves, fornecendo protecÃ§Ã£o Ã  configuraÃ§Ã£o e aos ficheiros de polÃ­tica de sistema assim que estes sejam gerados.
+Description-pt_BR.UTF-8: Sua instalação Tripwire pode estar configurada de forma errada
+ Existia um bug na versão 2.3.0-1 deste pacote que resultou nas chaves de site e chaves locais do Tripwire sendo geradas sem uma frase secreta.
+ .
+ É altamente recomendado que você apague ambos os arquivos de chave de site, /etc/tripwire/site.key, e de chave local, /etc/tripwire/${hostname}-local.key, e reconfigure este pacote usando o dpkg-reconfigure assim que você finalizar esta atualização. Isto fará com que novos arquivos de chaves sejam gerados e protegerá os arquivos de configuração e de políticas assim que os mesmos forem gerados.
+Description-ru.UTF-8: Пакет Tripwire может быть не настроен до конца
+ В версии 2.3.0-1 этого пакета была ошибка, которая приводила к тому, что локальный ключ и ключ узла генерировался без пароля.
+ .
+ Удалите оба файла ключа -- ключ узла /etc/tripwire/site.key и локальный ключ /etc/tripwire/${hostname}-local.key, и перенастройте этот пакет с помощью dpkg-reconfigure после того, как завершите это обновление. Это приведёт к созданию новых файлов ключей и защите файлов настройки и политики.
+Description-sk.UTF-8: Vaša inštalácia Tripwire môže byť nesprávne nastavená
+ Vo verzii balíka 2.3.0-1 bola chyba, ktorá mala za následok, že lokálny kľúč a kľúč sídla Tripwire boli generované bez hesla.
+ .
+ Dôrazne odporúčame aby ste súbory oboch týchto kľúčov zmazali, kľúč sídla je v /etc/tripwire/site.key a lokálny kľúč je v /etc/tripwire/${hostname}-local.key. Po zmazaní kľúčov a dokončení tejto aktualizácie spusťte znova konfiguráciu tohoto balíka pomocou dpkg-reconfigure. Výsledkom budú nové súbory kľúčov a ochrana konfiguračných súborov a súborov politiky, po tom ako budú vygenerované.
+Description-sv.UTF-8: Din installation av Tripwire kan vara felkonfigurerad
+ Det fanns en bugg i version 2.3.0-1 av detta paket som resulterade i att Tripwire's system- och lokalnycklar genererades utan en lösenordsfras.
+ .
+ Du är rekommenderas starkt att ta bort både systemnyckeln, /etc/tripwire/site.key, och den lokala nyckelfilen, /etc/tripwire/${hostname}-local.key, och konfigurera om detta paket med dpkg-reconfigure när du färdigställt denna uppgradering.  Detta vill resultera i nya nyckelfiler och skyddar konfigurations- och policyfilerna när de är genererade.
+
+Template: tripwire/change-in-default-policy
+Type: note
+Description: The default Tripwire policy has changed
+ With release ${release}, the default tripwire policy has changed.  If you
+ accept dpkg's offer to upgrade /etc/tripwire/twpol.txt and have previously
+ chosen to have policy regenerate automatically, the daily tripwire cron
+ job will fail until you update your tripwire database.
+ .
+ To avoid this, either chose not to accept the new version of
+ /etc/tripwire/twpol.txt or update your database to reflect the change in
+ policy by executing
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ as root once you have completed installing this package.  Please see
+ /usr/share/doc/tripwire/README.Debian for more details.
+Description-cs.UTF-8: Výchozí politika Tripwire se změnila
+ S verzí ${release} se změnila výchozí politika tripwire. Přijmete-li nabídku dpkg na aktualizaci /etc/tripwire/twpol.txt a přitom jste dříve vybrali, že se má politika přegenerovávat automaticky, denní cronová úloha tripwire bude selhávat do té doby, než zaktualizujete svou databázi tripwire.
+ .
+ Abyste se tomu vyhnuli, můžete buď vybrat, že nechcete novou verzi /etc/tripwire/twpol.txt, nebo můžete aktualizovat svou databázi, aby odrážela změny v politice. K tomu stačí spustit příkaz
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ po dokončení instalace balíku. Podrobnosti naleznete v souboru /usr/share/doc/tripwire/README.Debian.
+Description-da.UTF-8: Tripwires standardretningslinjer er Ã¦ndret
+ I version ${release} Ã¦ndredes tripwires retningslinjer. Hvis du accepterer dpkg's tilbud om at opgradere /etc/tripwire/twpol.txt og tidligere har valgt at politikken regenereres automatisk, vil det daglige tripwire cron-job fejle indtil du opdaterer din tripwire-database.
+ .
+ For at undgÃ¥ dette kan du enten vÃ¦lge ikke at acceptere den nye version af /etc/tripwire/twpol.txt eller opdatere din database, sÃ¥ den modsvarer de nye retningslinjer ved at udfÃ¸re
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ som root, sÃ¥ snart du har gennemfÃ¸rt installationen af denne pakke. Se /usr/share/doc/tripwire/README.Debian for flere detaljer.
+Description-de.UTF-8: Die voreingestellten Tripwire-Richtlinien haben sich geändert.
+ Mit Release ${release} haben sich die voreingestellten Tripwire-Richtlinien geändert. Falls Sie das Angebot von dpkg akzeptieren, /etc/tripwire/twpol.txt zu aktualisieren, und Sie früher gewählt haben, die Richtlinien automatisch zu regenerieren, wird der tägliche Cron-Lauf für Tripwire fehlschlagen, bis Sie Ihre Tripwire-Datenbank aktualisieren.
+ .
+ Um dies zu vermeiden, akzeptieren Sie entweder die neue Version von /etc/tripwire/twpol.txt nicht, oder aktualisieren Sie Ihre Datenbank, um die Richtlinienänderungen zu berücksichtigen, indem Sie
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ als root aufrufen, sobald Sie die Installation dieses Paketes beendet haben. Bitte lesen Sie /usr/share/doc/tripwire/README.Debian zu mehr Einzelheiten.
+Description-es.UTF-8: Han cambiado las directrices predefinidas de Tripwire
+ En la versión ${release}, han cambiado las directrices predefinidas de tripwire. Si acepta el ofrecimiento de dpkg de actualizar «/etc/tripwire/twpol.txt» y anteriormente había elegido que sus directrices se regenerarán automáticamente, la tarea diaria de tripwire de cron fallará hasta que se actualice la base de datos de tripwire.
+ .
+ Para evitarlo, puede o bien no aceptar la nueva versión de «/etc/tripwire/twpol.txt» o actualizar su base de datos para aplicar los cambios en las directrices ejecutando
+ .
+  «tripwire -m p /etc/tripwire/twpol.txt»
+ .
+ como superusuario una vez ha completado la instalación del paquete. Por favor, para más información consulte «/usr/share/doc/tripwire/README.Debian».
+Description-eu.UTF-8: Tripwire-ren politika lehenetsia aldatu da
+ ${release} bertsioan, tripwire-ren politika lehenetsia aldatu egin da. /etc/tripwire/twpol.txt bertsio-berritzeko dpkg-ren eskaintza onartzen baduzu, eta aurretik politika birsortze automatikoa hautatu baduzu, eguneroko tripwire-ren cron lanak huts egingo du tripwire-ren datu-basea bertsio-berritu arte.
+ .
+ Hau saihesteko, edo ez onartu /etc/tripwire/twpol.txt fitxategiaren bertsio berria edo eguneratu datu-basea politikaren aldaketak ezartzeko honakoa root gisa exekutatuz 
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ pakete honen instalazioa osatu duzunean. Ikus /usr/share/doc/tripwire/README.Debian xehetasun gehiagorako.
+Description-fi.UTF-8: Tripwiren oletussäännöt ovat muuttuneet
+ Julkaisussa ${release} Tripwiren oletussäännöt ovat muuttuneet. Jos /etc/tripwire/twpol.txt päivitetään dpkg:n kysyessä ja aiemmin on valittu sääntöjen automaattinen luonti, Tripwiren päivittäinen cron-työ epäonnistuu kunnes Tripwire-tietokanta päivitetään.
+ .
+ Tämä voidaan välttää joko hylkäämällä uusi tiedoston /etc/tripwire/twpol.txt versio tai päivittämällä tietokanta vastaamaan muuttuneita sääntöjä ajamalla:
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ pääkäyttäjänä, kun tämän paketin asennus on valmis. Lisätietoja löytyy tiedostosta /usr/share/doc/tripwire/README.Debian.
+Description-fr.UTF-8: La règle par défaut de Tripwire a changé
+ Depuis la version ${release}, la règle par défaut de Tripwire a changé. Si vous acceptez que dpkg mette à jour /etc/tripwire/twpol.txt et que vous avez précédemment choisi de régénérer automatiquement la règle, la t��che de cron quotidienne de Tripwire échouera tant que vous n'aurez pas mis à jour votre base de données Tripwire.
+ .
+ Pour éviter cela, choisissez soit de ne pas accepter la nouvelle version de /etc/tripwire/twpol.txt, soit de mettre à jour votre base de données pour prendre en compte les modifications dans la règle en exécutant :
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ en tant que super-utilisateur (« root ») une fois que vous aurez terminé l'installation de ce paquet. Veuillez consulter /usr/share/doc/tripwire/README.Debian pour plus de détails.
+Description-gl.UTF-8: A política por defecto de Tripwire cambiou
+ Na versión ${release}, a política por defecto de tripwire cambiou. Se acepta a oferta de dpkg de actualizar /etc/tripwire/twpol.txt e ten escollido que se rexenere o ficheiro de políticas automaticamente, a tarefa diaria de tripwire ha fallar ata que actualice a base de datos de tripwire.
+ .
+ Para o evitar, escolla non aceptar a nova versión de /etc/tripwire/twpol.txt ou actualice a base de datos para reflectir o cambio na política, executando
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ coma root despois de instalar este paquete. Consulte /usr/share/doc/tripwire/README.Debian para máis detalles.
+Description-it.UTF-8: La policy predefinita di Tripwire è cambiata
+ A partire dal rilascio ${release}, Tripwire ha modificato la propria policy predefinita. Se si accetta che dkpg aggiorni «/etc/tripwire/twpol.txt» e si è in precedenza scelto di rigenerare automaticamente la policy, il job giornaliero di cron non potrà essere eseguito fintanto che il database di Tripwire non sarà stato aggiornato.
+ .
+ Per evitare questa situazione è possibile non accettare la nuova versione di «/etc/tripwire/twpol.txt» oppure aggiornare il database affinché includa le modifiche, eseguendo
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ come utente root, dopo l'installazione di questo pacchetto. Per maggiori informazioni consultare «/usr/share/doc/tripwire/README.Debian».
+Description-ja.UTF-8: 標準の Tripwire ポリシーが変更されました
+ バージョン ${release} のリリースより、Tripwire の標準ポリシーが変更されています。dpkg による /etc/tripwire/twpol.txt のアップグレードの勧めに従い、以前にポリシーの再生成を自動的に行うように選択していた場合、tripwire の毎日の cron ジョブは、tripwire データベースを更新するまで失敗します。
+ .
+ これを避けるには、新しいバージョンの /etc/tripwire/twpol.txt を利用しないのを選ぶか、ポリシーの変更をデータベースに反映するために、以下のように実行して更新を行ってください。
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ root になって、一旦このパッケージのインストールを完了してください。詳細については /usr/share/doc/tripwire/README.Debian を参照してください。
+Description-nl.UTF-8: Het standaard Tripwire-beleid is gewijzigd
+ Met release ${release} is het standaard beleid van tripwire gewijzigd. Als u het aanbod van dpkg aanvaardt om /etc/tripwire/twpol.txt op te waarderen en u heeft vroeger gekozen om het beleid automatisch aan te maken, dan zal de dagelijkse tripwire-crontaak falen totdat u uw tripwire-database bijwerkt.
+ .
+ Om dit te vermijden, kiest u ofwel om de nieuwe versie van /etc/tripwire/twpol.txt niet te aanvaarden of u werkt uw database bij om de wijziging in beleid te reflecteren door het volgende uit te voeren
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ als root nadat u de installatie van dit pakket voltooid heeft. Zie /usr/share/doc/tripwire/README.Debian voor meer details.
+Description-pl.UTF-8: Domyślne zasady Tripwire zmieniły się
+ Od wydania ${release}, domyślne zasady tripwire zmieniły się. Jeśli zaakceptuje się propozycję dpkg zaktualizowania pliku /etc/tripwire/twpol.txt, a wcześniej - automatyczne, ponowne wygenerowanie zasad, codzienne zadanie crona będzie kończyło się niepowodzeniem do czasu zaktualizowania bazy danych tripwire.
+ .
+ Aby uniknąć tej sytuacji, proszę albo nie akceptować nowej wersji pliku /etc/tripwire/twpol.txt lub zaktualizować bazę danych, odnosząc się do zmian w zasadach, wykonując polecenie
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ jako root, po zakończeniu instalacji pakietu. Plik /usr/share/doc/tripwire/README.Debian zawiera więcej informacji na ten temat.
+Description-pt.UTF-8: A polÃ­tica de sistema por omissÃ£o do Tripwire foi alterada
+ Com a versÃ£o ${release}, a polÃ­tica de sistema por omissÃ£o do tripwire foi alterada.  Se aceitar a sugestÃ£o do dpkg para efectuar a actualizaÃ§Ã£o do /etc/tripwire/twpol.txt e se tiver previamente escolhido a opÃ§Ã£o de recriar automaticamente a polÃ­tica de sistema, o cron job diÃ¡rio tripwire irÃ¡ falhar atÃ© que actualize a sua base de dados tripwire.
+ .
+ Para evitar isto, nÃ£o aceite a nova versÃ£o do /etc/tripwire/twpol.txt ou actualize a sua base de dados de modo a que reflicta a modificaÃ§Ã£o na polÃ­tica de sistema executando
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ como root completou a instalaÃ§Ã£o deste pacote.  Para mais detalhes por favor veja /usr/share/doc/tripwire/README.Debian.
+Description-pt_BR.UTF-8: A política padrão do Tripwire mudou
+ Iniciando com a release ${release}, a política padrão do Tripwire mudou. Caso você aceite a oferta do dpkg para atualizar o arquivo /etc/tripwire/twpol.txt e tenha anteriormente optado por ter suas políticas regeradas automaticamente, o job cron diário do Tripwire falhará até que você atualize sua base de dados do Tripwire.
+ .
+ Para evitar isso, não aceite a nova versão do arquivo /etc/tripwire/twpol.txt ou atualize sua base de dados para refletir as mudanças na política executando
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ como root assim que você finalizar a instalação deste pacote. Por favor, consulte o arquivo /usr/share/doc/tripwire/README.Debian para detalhes.
+Description-ru.UTF-8: Политика Tripwire по умолчанию была изменена
+ Начиная с выпуска ${release}, изменилась политика tripwire по умолчанию. Если вы примете предложение dpkg об обновлении /etc/tripwire/twpol.txt, а ранее выбирали автоматическое обновление политики, то ежедневное tripwire задание cron будет завершаться неудачно до тех пор, пока вы не обновите базу данных tripwire.
+ .
+ Чтобы избежать этого, или выберите не принимать новую версию /etc/tripwire/twpol.txt, или обновите базу данных, чтобы применить изменения в политике с помощью команды
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ имея права суперпользователя, после того как завершите установку пакета. Более подробно об этом написано в файле /usr/share/doc/tripwire/README.Debian.
+Description-sk.UTF-8: Predvolená politika Tripwire bola zmenená
+ Od vydania ${release} bola predvolená politika tripwire zmenená. Ak prijmete ponuku dpkg na aktualizáciu /etc/tripwire/twpol.txt a predtým ste zvolili automaticky regenerovať politiku, denná úloha cron bude zlyhávať, až kým nezaktualizujete databázu svojho tripwire.
+ .
+ Aby ste tomu predišli, môžete odmietnuť novú verziu /etc/tripwire/twpol.txt alebo zaktualizovať svoju databázu, aby odrážala zmeny v politike, pomocou
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ ako root, po dokončení inštalácie tohoto balíka. Ďalšie podrobnosti nájdete v /usr/share/doc/tripwire/README.Debian.
+Description-sv.UTF-8: Standardpolicyn för Tripwire har ändrats
+ I utgåvan ${release} har standardpolicyn för tripwire ändrats.  Om du accepterar dpkg's erbjudande att uppgradera  /etc/tripwire/twpol.txt och har tidigare valt att generera om policyn, kommer det dagliga cron-jobbet för tripwire inte att fungera förrän du har uppdaterat din tripwiredatabas.
+ .
+ För att undvika detta, antingen välj att inte acceptera den nya versionen av /etc/tripwire/twpol.txt eller uppdatera din databas för att spegla de ändringar i policyn genom att köra" 
+ .
+   tripwire -m p /etc/tripwire/twpol.txt
+ .
+ som root när du har gjort klart installationen av paketet.  Se /usr/share/doc/tripwire/README.Debian för mer detaljer.

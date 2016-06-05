@@ -1,0 +1,107 @@
+Template: conserver-client/config
+Type: boolean
+Default: true
+Description: Do you want to configure console automatically?
+ Setting this to true will edit /etc/conserver/console.cf
+ and replace CONSERVER_MASTER and CONSERVER_PORT with the
+ configured values in the next questions
+Description-cs.UTF-8: Přejete si nakonfigurovat konzoli automaticky?
+ Nastavením této hodnoty na `true' se upraví /etc/conserver/console.cf, ve kterém se nahradí hodnoty pro CONSERVER_MASTER a CONSERVER_PORT za hodnoty nastavené v následujících otázkách
+Description-da.UTF-8: Ønsker du at konfigurere konsol automatisk?
+ Angivelse af denne til true (sand) vil redigere /etc/conserver/console.cf og erstatte CONSERVER_MASTER og CONSERVER_PORT med de konfigurerede værdier i de næste spørgsmål
+Description-de.UTF-8: Möchten Sie die Konsole automatisch konfigurieren?
+ Wenn Sie dies auf »wahr« setzen, dann wird /etc/conserver/console.cf bearbeitet und CONSERVER_MASTER und CONSERVER_PORT mit den aus den nächsten Fragen konfigurierten Werten ersetzt.
+Description-es.UTF-8: ¿Desea configurar console automáticamente?
+ Si elige esta opción, se modificará el archivo «/etc/conserver/console.cf» y se reemplazarán los valores CONSERVER_MASTER y CONSERVER_PORT con los datos que proporcione en las siguientes preguntas.
+Description-eu.UTF-8: Kontsola automatikoki konfiguratu nahi al duzu?
+ Hau bai bezala ezartzean /etc/conserver/console.cf editatuko da eta CONSERVER_MASTER eta CONSERVER_PORT eremuak hurrengo galderetako erantzunekin ordeztuko dira
+Description-fi.UTF-8: Tulisiko konsolin asetukset tehdä automaattisesti?
+ Jos tämä valitaan, muokataan tiedostoa /etc/conserver/console.cf ja korvataan muuttujien CONSERVER_MASTER ja CONSERVER_PORT arvot seuraavissa kysymyksissä.
+Description-fr.UTF-8: Souhaitez-vous configurer la console automatiquement ?
+ Si vous choisissez cette option, les valeurs CONSERVER_MASTER et CONSERVER_PORT du fichier « /etc/conserver/console.cf » seront remplacées par les réponses aux questions suivantes.
+Description-gl.UTF-8: ¿Quere configurar a consola automaticamente?
+ Se acepta hase modificar o ficheiro /etc/conserver/console.cf, substituindo CONSERVER_MASTER e CONSERVER_PORT polos valores que se configuren nas seguintes preguntas.
+Description-it.UTF-8: Configurare automaticamente la console?
+ Se si risponde affermativamente, «/etc/conserver/console.cf» verrà modificato e i valori di CONSERVER_MASTER e di CONSERVER_PORT verranno sostituiti con quelli inseriti nelle prossime domande
+Description-nl.UTF-8: Wilt u 'console' automatisch configureren?
+ Als u dit bevestigt, zal /etc/conserver/console.cf bewerkt worden om CONSERVER_MASTER en CONSERVER_PORT te vervangen door de waardes die u in de volgende vragen kunt opgeven.
+Description-pt.UTF-8: Deseja configurar a consola automaticamente?
+ Ao responder afirmativamente será editado o /etc/conserver/console.cf e substituirá o CONSERVER_MASTER e CONSERVER_PORT com os valores a configurar nas próximas questões
+Description-pt_BR.UTF-8: Você gostaria de configurar o console automaticamente?
+ Definir este como verdadeiro editará /etc/conserver/console.cf e substituirá CONSERVER_MASTER e CONSERVER_PORT com os valores configurados nas próximas questões
+Description-ru.UTF-8: Настроить консоль автоматически?
+ Если ответить утвердительно, то в файле /etc/conserver/console.cf параметрам CONSERVER_MASTER и CONSERVER_PORT будут присвоены значения, полученные при ответах на последующие вопросы
+Description-sv.UTF-8: Vill du konfigurera console automatiskt?
+ Genom att sätta denna till sant kommer /etc/conserver/console.cf att editeras och ersätta CONSERVER_MASTER och CONSERVER_PORT med de konfigurerade värdena i de följande frågorna
+
+Template: conserver-client/server
+Type: string
+Default: localhost
+Description: Hostname where your conserver server is installed:
+ The conserver hostname is the hostname where the conserver-server
+ package is installed. The client, 'console', will use the hostname 'console'
+ if left empty. The server name can be changed during runtime with
+ the -M option.
+Description-cs.UTF-8: Jméno počítače, na který je server conserver nainstalován:
+ Hostitelské jméno conserveru je jméno počítače, na který je nainstalován balík conserver-server. Pokud ponecháte pole prázdné, použije klient 'console' hostitelské jméno 'console'. Jméno serveru může být změněno za běhu parametrem -M.
+Description-da.UTF-8: Værtsnavn hvor din conserver-server er installeret:
+ Conserverværtsnavnet er værtsnavnet hvor conserver-serverpakken er installeret. Klienten, 'console', vil bruge værtsnavnet 'console' hvis du ikke skriver noget her. Servernavnet kan ændres under kørslen, med tilvalget -M.
+Description-de.UTF-8: Hostnamen des Rechners, auf dem Ihr Conserver-Server installiert ist:
+ Der Conserver-Hostname ist der Hostname des Rechners, auf dem das conserver-server-Paket installiert ist. Der Client »console« wird, wenn nichts anderes angegeben ist, den Hostnamen »console« verwenden. Der Servername kann zur Programmlaufzeit mit der Option -M geändert werden.
+Description-es.UTF-8: Nombre del equipo donde se encuentra instalado el servidor conserver:
+ El nombre del equipo de conserver es el nombre del equipo donde se encuentra instalado el paquete conserver-server. El cliente («console») utilizará como nombre de equipo «console» si deja este campo en blanco. Puede modificar el nombre del servidor con la opción -M durante la ejecución.
+Description-eu.UTF-8: Conserver zerbitzaria instalaturik dagoen ostalari-izena:
+ Conserver ostalari-izena conserver-server paketea instalaturik dagoen makinaren ostalari-izena da. Bezeroak ('console') 'console' erabiliko du ostalari-izen gisa zurian utziaz. Zerbitzari izena aldatu egin daiteke exekuzio bitartean -M aukeraren bidez.
+Description-fi.UTF-8: conserver-palvelimen konenimi:
+ conserverin käyttämä konenimi on sen koneen nimi, jolle paketti conserver-server on asennettu. Asiakas ”console” käyttää konenimeä ”console”, jos kenttä jätetään tyhjäksi. Palvelimen nimi voidaan vaihtaa ajon aikana valitsimella -M.
+Description-fr.UTF-8: Nom de l'hôte où est installé le serveur « conserver » :
+ Veuillez indiquer le nom de l'hôte où est installé le paquet conserver-server. Le client, « console », utilisera le nom d'hôte « console » si ce champ est laissé vide. Le nom du serveur peut être modifié en lançant l'exécution avec l'option -M.
+Description-gl.UTF-8: Nome do servidor no que o servidor conserver está instalado:
+ O nome de conserver é o nome od servidor no que o paquete conserver-server está instalado. O cliente, "console", ha empregar o nome "console" se se deixa baleiro. O nome do servidor pódese cambiar á hora de executalo mediante a opción -M.
+Description-it.UTF-8: Nome host del server su cui conserver è installato:
+ Il nome host di conserver corrisponde a quello del sistema su cui il pacchetto conserver-server è installato. Il client, «console», utilizzerà il nome host «console» a meno che non venga scelto un nome differente. Il nome del server può essere modificato durante l'esecuzione, con l'opzione «-M».
+Description-nl.UTF-8: Naam van de computer waar uw conserver-server is geïnstalleerd:
+ De conserver-computernaam is de naam van de computer waar het 'conserver-server'-pakket is geïnstalleerd. De client, 'console', zal de computernaam 'console' gebruiken als er geen wordt opgegeven. De servernaam kan tijdens uitvoer gewijzigd worden met de '-M'-optie.
+Description-pt.UTF-8: Nome da máquina onde o servidor conserser está instalado:
+ O nome da máquina conserver é o nome da máquina onde o pacote conserver-server está instalado. O cliente 'console' terá o nome da máquina 'console' se este ficar em branco. O nome de servidor pode ser alterado durante a execução com a opção -M.
+Description-pt_BR.UTF-8: Nome da máquina onde o servidor conserver está instalado:
+ O nome da máquina do conserver é o nome da máquina onde o pacote conserver-server está instalado. O cliente, 'console', usará o nome da máquina 'console' se for deixado em branco. O nome do servidor pode ser alterado em tempo de execução com a opção -M.
+Description-ru.UTF-8: Имя хоста, на котором установлен ваш сервер conserver:
+ Это имя хоста, на котором установлен пакет conserver-server. Если ничего не указывать, то клиент 'console' будет использовать имя хоста 'console'. Имя сервера может быть изменено в время выполнения программы опцией -M.
+Description-sv.UTF-8: Maskinens namn där conserver-demonen är installerad:
+ Maskinen där conserver-serverpaketet är installerat. Om detta fält lämnas tomt kommer klientprogrammet ('console') att använda namnet 'console' i stället. Demonens maskinnamn kan ändras med flaggan -M.
+
+Template: conserver-client/port
+Type: string
+Default: 3109
+Description: The server port number to connect to:
+ Set the conserver server port to connect to. This may be either a port
+ number or a service name.
+Description-cs.UTF-8: Serverové číslo portu pro připojení:
+ Nastavte serverový port conserveru, ke kterému se chcete připojovat. Může to být buď číslo portu nebo název služby.
+Description-da.UTF-8: Serverportnummeret der skal forbindes til:
+ Angiv conserver-serverporten der skal forbindes til. Dette kan enten være en port eller et tjenestenavn.
+Description-de.UTF-8: Server-Port, mit dem verbunden werden soll:
+ Setzt den Conserver-Server-Port, mit den verbunden werden soll. Dies kann entweder eine Portnummer oder ein Servicename sein.
+Description-es.UTF-8: Número de puerto del servidor al que conectarse:
+ Especifique el puerto donde escuchará el servidor conserver. Puede ser un número de puerto o el nombre de un servicio.
+Description-eu.UTF-8: Konektatzeko zerbitzari ataka:
+ Zehaztu konektatzeko erabili behar den conserver zerbitzari ataka. Ataka zenbaki bat edo zerbitzu izen bat izan behar da.
+Description-fi.UTF-8: Palvelimen portti, johon yhteys otetaan:
+ Anna conserver-palvelimen portti, johon yhteys otetaan. Tämä voi olla joko portin numero tai palvelun nimi.
+Description-fr.UTF-8: Numéro du port de connexion sur le serveur :
+ Veuillez choisir le port où le serveur est à l'écoute. Vous pouvez indiquer un numéro de port ou un nom de service.
+Description-gl.UTF-8: Número do porto do servidor no que se conectar:
+ Estabreza o porto do servidor conserver ao que se conectar. Pode ser un número de porto ou nome de servizo.
+Description-it.UTF-8: Porta del server a cui collegarsi:
+ Impostare la porta del server a cui collegarsi. Può essere un numero di porta, oppure il nome di un servizio.
+Description-nl.UTF-8: Geef het serverpoortnummer om naar te verbinden:
+ Geef het poortnummer van de conserver-server waarnaar u wilt verbinden. Dit is ofwel een poortnummer, ofwel een naam van een dienst.
+Description-pt.UTF-8: Número da porta no servidor para a ligação a este:
+ Defina a porta em qual o servidor conserver se ligará. Esta pode ser ou um número de porta ou um nome de serviço.
+Description-pt_BR.UTF-8: Número da porta do servidor a conectar:
+ Configure a porta do servidor conserver a conectar. Isto pode ser tanto um número da porta quanto um nome de serviço.
+Description-ru.UTF-8: Номер порта сервера для соединения:
+ Укажите номер порта сервера conserver для соединения. Можно указывать номер порта или имя сервиса.
+Description-sv.UTF-8: Portnumret som klientprogrammet ska kontakta:
+ Ange här det portnummer på servermaskinen som klientprogrammet ('console') ska kontakta. Det kan vara ett tal eller tjänstens namn.

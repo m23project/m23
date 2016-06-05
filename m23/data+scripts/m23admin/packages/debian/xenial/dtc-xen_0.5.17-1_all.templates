@@ -1,0 +1,715 @@
+Template: dtc-xen/conf_soap_login
+Type: string
+Default: dtc-xen
+Description: SOAP server login:
+ Dtc-xen will start it's Python based SOAP server to listen for incoming
+ requests over a TCP socket. A remote application (like the dtc web hosting
+ control panel) can then connect to it in order to start, stop, create and
+ destroy a VPS.
+ .
+ Please enter the login name to connect to the server.
+Description-ar.UTF-8: اسم الدخول لخادم SOAP:
+ سيقوم dtc-xen بتشغيل خادم SOAP الخاص به والمبني بلغة بايثون ليستقبل الطلبات الواردة عبر TCP socket. يمكن للتطبيقات الخارجية (مثل لوحة تحكم dtc لإدارة المواقع) بعدها الاتصال بالخادم لتشغيل، أو إيقاف، أو إنشاء، أو تدمير أي VPS.
+ .
+ الرجاء إدخال اسم المستخدم للاتصال بالخادم.
+Description-cs.UTF-8: Login do SOAP serveru:
+ dtc-xen si naváže SOAP python server, na který se bude moci připojovat klient dtc panel za účelem spuštění, zastavení, vytvoření a zrušení VPS. Jaký login chcete na tomto serveru vytvořit?
+ .
+ Zadejte prosím uživatelské jméno pro připojení k serveru.
+Description-da.UTF-8: Serverlogind for SOAP:
+ Dtc-xen vil starte sin Pythonbaseret SOAP-server for at lytte på indgående forespørgsler over en TCP-sokkel. Et eksternt program (som dtc's internethosting kontrolpanel) kan så forbinde til den for at kunne starte, stoppe, oprette og ødelægge en VPS.
+ .
+ Indtast venligst logindnavnet for at forbinde til serveren.
+Description-de.UTF-8: SOAP-Server-Login:
+ Dtc-xen wird seinen Python-basieren SOAP-Server starten, um auf über ein TCP-Socket eingehende Anfragen zu warten. Eine Anwendung (wie das Dtc-Webhosting-Control-Panel) kann sich dann aus der Ferne mit ihm verbinden, um eine VPS zu starten, stoppen, erzeugen oder zu vernichten.
+ .
+ Bitte geben Sie den Login-Namen für die Verbindung zum Server an.
+Description-es.UTF-8: Nombre de usuario para el servidor SOAP:
+ Dtc-xen ejecutará un servidor SOAP basado en Python para escuchar las peticiones entrantes por una conexión TCP. Una aplicación remota (como el panel de control web de dtc) puede conectarse para ejecutar, parar, crear y/o destruir un VPS.
+ .
+ Introduzca el nombre de usuario para conectar con el servidor.
+Description-fi.UTF-8: SOAP-palvelimen tunnus:
+ Dtc-xen käynnistää Python-pohjaisen SOAP-palvelimen kuuntelemaan TCP-pistokkeen kautta tulevia yhteydenottoja. Toisten koneiden ohjelmat (kuten dtc-verkkopalveluiden ohjauspaneeli) voivat ottaa yhteyden siihen käynnistääkseen, pysäyttääkseen, luodakseen tai tuhotakseen VPS:n.
+ .
+ Anna käyttäjätunnus, jota käytetään otettaessa yhteys palvelimelle.
+Description-fr.UTF-8: Identifiant de connexion sur le serveur SOAP :
+ Le serveur SOAP Python de dtc-xen écoute sur un port TCP. Une application distante (comme le panneau de contrôle de dtc) peut s'y connecter afin de créer, démarrer, arrêter ou détruire un serveur virtuel privé.
+ .
+ Veuillez indiquer l'identifiant de connexion au serveur SOAP.
+Description-gl.UTF-8: Usuario do servidor SOAP:
+ Dtc-xen ha iniciar o seu servidor SOAP baseado en Python para esperar conexións entrantes nun socket TCP. Despois, unha aplicación remota (coma o control de panel de hospedaxe web dtc) hase poder conectar a el para iniciar, deter, crear e destruir VPS.
+ .
+ Introduza o nome do usuario co que se conectar ao servidor.
+Description-it.UTF-8: Nome utente del server SOAP:
+ Dtc-xen avvierà il proprio server SOAP basato su Python e lo porrà in ascolto su un socket TCP. Un'applicazione remota, come per esempio il pannello di controllo di web hosting DTC, vi si potrà collegare per avviare, arrestare, creare e distruggere un VPS (Virtual Private Server).
+ .
+ Inserire il nome utente da utilizzare per collegarsi al server.
+Description-ja.UTF-8: SOAP サーバへのログイン名:
+ dtc-xen は、TCP ソケット越しにやってくるリクエストを listen する Python ベースの SOAP サーバを起動します。これで (dtc ウェブホスティングコントロールパネルのような) リモートアプリケーションが、VPS を起動、停止、作成、破棄するために接続できるようになります。
+ .
+ サーバに接続するログイン名を入力してください。
+Description-pt.UTF-8: Login do servidor SOAP:
+ O dtc-xen irá ligar um servidor SOAP Python para esperar por pedidos via socket TCP. Uma aplicação remota (como o painel de controlo web dtc) pode ligar-se para iniciar, parar, criar ou destruir uma VPS.
+ .
+ Por favor indique o nome de login para se ligar ao servidor.
+Description-pt_BR.UTF-8: Login no servidor SOAP:
+ O dtc-xen vai iniciar o seu servidor SOAP baseado em Python para escutar requisições de entrada sob um socket TCP. Uma aplicação remota (como o painel de controle de hospedagem web do dtc) poderá então conectar-se a ele para iniciar, parar, criar e destruir um VPS.
+ .
+ Por favor, informe o nome de login para conectar-se ao servidor.
+Description-ru.UTF-8: Логин на сервер SOAP:
+ Dtc-xen запустит собственный SOAP-сервер, написанный на Python, который будет ожидать запросы из TCP-сокета. После этого удалённое приложение (например, dtc панель веб-хостинга) сможет подключиться к нему для выполнения различных действий (запуск, остановка, создание и удаление VPS).
+ .
+ Введите имя пользователя для подключения к серверу.
+Description-sk.UTF-8: Prihlasovacie meno k SOAP serveru:
+ Dtc-xen spustí svoj SOAP server založený na Pythone, ktorý bude počúvať požiadavky na TCP sockete. Vzdialená aplikácia (ako riadiaci panel webhostingu dtc) sa potom môže pripojiť a spúšťať, zastavovať, vytvárať a rušiť VPS.
+ .
+ Prosím, zadajte prihlasovacie meno k serveru.
+Description-sv.UTF-8: Inloggning till SOAP-server:
+ Dtc-xen kan starta sin Pythonbaserade SOAP-server för att lyssna på inkommande anrop över en tCp-socket. En extern applikation (exempelvis webbvärdens kontrolpanel i DTC) kan då ansluta till den och starta, stoppa, skapa och avlägsna en VPS.
+ .
+ Ange inloggningsnamnet för den anslutande servern.
+
+Template: dtc-xen/conf_soap_pass
+Type: password
+Description: SOAP server pass:
+ Dtc-xen will generate a .htpasswd file for the login you have just
+ configured.
+ .
+ Please enter the password to use in that file.
+Description-ar.UTF-8: تذكرة مرور خادم SOAP:
+ سيقوم Dtc-xen بتوليد ملف .htpasswd لاسم الدخول الذي قمت بتهيئته الآن.
+ .
+ الرجاء إدخال كلمة السر المراد استخدامها في ذلك الملف.
+Description-cs.UTF-8: Heslo SOAP serveru:
+ Dtc-xen vygeneruje soubor .htpasswd pro účet, který jste právě nakonfigurovali
+ .
+ Zadejte prosím heslo, které se bude používat v tomto souboru.
+Description-da.UTF-8: Serveradgangskode for SOAP:
+ Dtc-xen vil oprette en .htpasswd-fil for logind'et du netop har konfigureret.
+ .
+ Indtast venligst adgangskoden der skal bruges i den fil.
+Description-de.UTF-8: SOAP-Server-Passwort:
+ Dtc-xen wird eine .htpasswd-Datei für den Login, den Sie gerade konfiguriert haben, erstellen.
+ .
+ Bitte geben Sie das Passwort an, das in dieser Datei verwendet werden soll.
+Description-es.UTF-8: Contraseña del servidor SOAP:
+ Dtc-xen generará un archivo «.htpasswd» para los datos de identificación que acaba de configurar.
+ .
+ Introduzca la contraseña a usar en ese archivo.
+Description-fi.UTF-8: SOAP-palvelimen salasana:
+ Dtc-xen luo .htpasswd-tiedoston kirjautumista varten juuri antamistasi tiedoista.
+ .
+ Anna salasana, jota käytetään kyseisessä tiedostossa.
+Description-fr.UTF-8: Mot de passe du serveur SOAP :
+ dtc-xen créera un fichier .htpasswd pour y conserver l'identifiant de connexion configuré.
+ .
+ Veuillez indiquer le mot de passe à conserver dans ce fichier.
+Description-gl.UTF-8: Contrasinal do servidor SOAP:
+ Dtc-xen ha xerar un ficheiro .htpasswd para o nome de usuario que acaba de configurar.
+ .
+ Introduza o contrasinal a empregar nese ficheiro..
+Description-it.UTF-8: Password del server SOAP:
+ Dtc-xen genererà un file .htpasswd per l'accesso che è appena stato configurato.
+ .
+ Inserire la password per accedere a tale file.
+Description-ja.UTF-8: SOAP サーバのパスワード:
+ dtc-xen は先ほど設定したログイン用に .htpasswd ファイルを生成します。
+ .
+ このファイル内で使うパスワードを入力してください。
+Description-ml.UTF-8: സോപ് സേവക അടയാളം:
+ ഡിടിസി-സെന്‍ നിങ്ങള്‍ തൊട്ടു മുന്‍പേ ക്രമീകരിച്ച ലോഗിന് വേണ്ടി ഒരു .htpasswd ഫയല്‍ ഉണ്ടാക്കും.
+ .
+ ദയവായി ആ ഫയലിലുപയോഗിയ്ക്കേണ്ട അടയാളവാക്ക് നല്‍കുക.
+Description-nl.UTF-8: Wachtwoord SOAP-server:
+ Dtc-xen maakt een '.htpasswd'-bestand aan voor de gebruiker die u zojuist aangegeven hebt.
+ .
+ Wat is het wachtwoord dat in dat bestand gebruikt moet worden?
+Description-pt.UTF-8: Palavra-passe do servidor SOAP:
+ O dtc-xen irá gerar um ficheiro .htpasswd para o login que acabou de configurar.
+ .
+ Por favor indique a palavra-passe a usar nesse ficheiro.
+Description-pt_BR.UTF-8: Senha no servidor SOAP:
+ O dtc-xen gerará um arquivo .htpasswd para o login que você acabou de configurar.
+ .
+ Por favor, informe a senha a ser utilizada nesse arquivo.
+Description-ru.UTF-8: Пароль на сервер SOAP:
+ Dtc-xen создаст файл .htpasswd для подключения, которое было настроено ранее.
+ .
+ Введите пароль для использования в этом файле.
+Description-sk.UTF-8: Heslo k SOAP serveru:
+ Dtc-xen vytvorí súbor .htpasswd pre prihlasovacie meno, ktoré ste práve nastavili.
+ .
+ Prosím, zadajte heslo, ktoré sa v tomto súbore použije.
+Description-sv.UTF-8: Lösenord för SOAP-server:
+ Dtc-xen kommer att skapa en .htpasswd-fil för inloggningen som du just har ställt in.
+ .
+ Vänligen ange lösenordet som ska användas i den filen.
+
+Template: dtc-xen/conf_debian_repository
+Type: string
+Default: ftp://ftp.us.debian.org/debian
+Description: Debian repository for VPS creation:
+ Please enter the repository to use for creating the VPS (Virtual Private
+ Server). The current /etc/apt/sources.list file will be copied to the
+ created VPS so the repository you enter here will be used only during
+ the debootstrap stage of the VPS creation.
+Description-ar.UTF-8: مستودع ديبيان لإنشاء VPS:
+ رجاءً أدخل اسم المستودع المطلوب استخدامه لإنشاء VPS (Virtual Private Server). سيتم نسخ الملف الحالي من /etc/apt/sources.list إلى خادم VPS الذي سيتم إنشاءه بحيث يستخدم المستودع الذي حددته فقط أثناء مرحلة debootstrap من إنشاء خادم VPS.
+Description-cs.UTF-8: Repozitář Debianu pro vytvoření VPS:
+ Zadejte prosím repozitář, který se bude používat k vytváření VPS (virtuálních privátních serverů). Aktuální soubor /etc/apt/sources.list bude zkopírován do vytvořených VPS. Repozitář, který zde zadáte se bude používat pouzeběhem debootstrap fáze vytváření VPS.
+Description-da.UTF-8: Debianarkiv for VPS-oprettelse:
+ Indtast venligst arkivet der skal bruges for oprettelse af VPS'en (Virtual Private Server). Den aktuelle fil /etc/apt/sources.list vil blive kopieret til den oprettede VPS så arkivet, du indtaster her, vil kun blive brugt under stadiet debootstrap i VPS-oprettelsen.
+Description-de.UTF-8: Debian-Depot für die VPS-Erstellung:
+ Bitte geben Sie das Depot ein, das für die Erstellung des VPS (Virtual Private Server) verwendet werden soll. Die aktuelle /etc/apt/sources.list-Datei wird in den erstellten VPS kopiert, daher wird das hier angegebene Depot nur während der Debootstrap-Stufe der VPS-Erstellung verwendet.
+Description-es.UTF-8: Repositorio de Debian para la creación del VPS:
+ Introduzca el repositorio que se usará para la creación del VPS («Virtual Private Server», Servidor Privado Virtual, N. de T.). El archivo «/etc/apt/sources.list» se copiará al VPS creado de modo que el repositorio que ha introducido se usará sólo durante la fase de debootstrap para la creación del VPS.
+Description-fi.UTF-8: Debian-varasto VPS:n luontia varten:
+ Anna varasto, jota käytetään VPS:n (Virtual Private Server, virtuaalinen yksityinen palvelin) luontiin. Nykyinen /etc/apt/sources.list kopioidaan luotuun VPS:ään, joten tässä antamaasi varastoa käytetään vain VPS:n luonnin debootstrap-vaiheessa.
+Description-fr.UTF-8: Dépôt Debian pour la création des serveurs virtuels privés :
+ Veuillez indiquer le dépôt Debian à utiliser pour créer les serveurs virtuels privés (VPS). Le fichier /etc/apt/sources.list sera copié dans le VPS créé, donc le choix indiqué ici n'est utilisé que lors de l'étape de création du VPS.
+Description-gl.UTF-8: Repositorio Debian para a creación de VPS:
+ Introduza o repositorio a empregar para crear o VPS (servidor privado virtual). Hase copiar o ficheiro /etc/apt/sources.list actual ao VPS creado, de xeito que o repositorio que introduza aquí só se ha empregar durante a etapa de "debootstrap" da creación do VPS.
+Description-it.UTF-8: Repository Debian per la creazione di VPS:
+ Inserire il repository da utilizzare per la creazione di VPS. Il file «/etc/apt/sources.list» attuale verrà copiato nel VPS creato, per cui il repository inserito verrà utilizzato solo durante la fase di debootstrap della creazione del VPS.
+Description-ja.UTF-8: VPS 作成用の Debian リポジトリ:
+ VPS (バーチャルプライベートサーバ) の作成に使うリポジトリを入力してください。現在の /etc/apt/sources.list ファイルが作成された VPS にコピーされますので、ここであなたが入力したリポジトリは、VPS 作成時の debootstrap の間だけ利用されます。
+Description-nl.UTF-8: Bij het aanmaken van VPS te gebruiken Debian-pakketbron:
+ Welke pakketbron (repository) dient gebruikt te worden bij het aanmaken van de VPS (virtual private server)? De huidige versie van /etc/apt/sources.list wordt gekopieerd naar de aangemaakte VPS, de hier aangegeven pakketbron wordt enkel gebruikt tijdens de debootstrap-fase van de VPS-generatie.
+Description-pt.UTF-8: Repositório Debian para a criação de VPS:
+ Por favor indique o repositório a usar para criar o VPS (Virtual Private Server). O ficheiro /etc/apt/sources.list actual irá ser copiado para o VPS criado portanto o repositório que introduzir aqui será usado apenas durante a fase debootstrap da criação do VPS.
+Description-pt_BR.UTF-8: Repositório Debian para a criação do VPS:
+ Por favor, informe o repositório para usar ao criar o VPS (Servidor Virtual Privado). O arquivo /etc/apt/sources.list atual será copiado para o VPS criado, assim o repositório que você informar aqui será usado somente durante o estágio debootstrap da criação do VPS.
+Description-ru.UTF-8: Репозиторий Debian для создания VPS:
+ Введите репозиторий, который будет использован для создания VPS (Virtual Private Server). В созданный VPS будет скопирован имеющийся файл /etc/apt/sources.list, а введённый здесь репозиторий будет использован только на время стадии debootstrap при создании VPS.
+Description-sk.UTF-8: Zdroj softvéru Debianu na vytvorenie VPS:
+ Prosím, zadajte zdroj softvéru, ktorý sa použije na vytvorenie VPS (Virtuálneho privátneho servera). Aktuálny súbor /etc/apt/sources.list sa skopíruje do vytvoreného VPS, takže zdroj, ktorý tu uvediete sa použije iba vo fáze debootstrap pri vytvorení VPS.
+Description-sv.UTF-8: Debianförråd för att skapa VPS:
+ Ange vilket förråd som ska användas för att skapa VPS:en (Virtuella Privata Servern). Den nuvarande filen /etc/apt/sources.list kommer att kopieas till den nyligen skapade VPS:en så förrådet du anger här kan endast användas vid debootstrap-steget när VPS:en skapas.
+
+Template: dtc-xen/conf_netmask
+Type: string
+Description: Network mask for the VPS:
+ Please enter the network mask to use in the created Virtual Private
+ Server's network settings.
+Description-ar.UTF-8: قناع الشبكة لخادم VPS:
+ الرجاء إدخال رقم قناع الشبكة المراد استخدامه في إعدادات شبكة الخادم الافتراضي الخاص VPS.
+Description-cs.UTF-8: Maska sítě pro VPS:
+ Zadejte prosím masku sítě, která bude použita pro nastavení sítě ve vytvořeném Virtuálním Privátním Serveru.
+Description-da.UTF-8: Netværksmaske for VPS'en:
+ Indtast venligst netværksmasken der skal bruges i den oprettede Virtual Private Servers netværksopsætning.
+Description-de.UTF-8: Netzmaske für den VPS:
+ Bitte geben Sie die Netzmaske ein, die in den Netzeinstellungen des erstellten Virtual Private Servers verwendet werden soll.
+Description-es.UTF-8: Máscara de red del VPS:
+ Introduzca la máscara de red a usar en la configuración de la red del servidor virtual privado (VPS) creado.
+Description-fi.UTF-8: VPS:n verkon peitto:
+ Anna verkon peitto, jota käytetään luodun VPS:n verkkoasetuksissa.
+Description-fr.UTF-8: Masque réseau des VPS :
+ Veuillez indiquer le masque réseau des serveurs virtuels privés (VPS).
+Description-gl.UTF-8: Máscara de rede para o VPS:
+ Introduza a máscara de rede a empregar na configuración de rede do servidor privado virtual creado.
+Description-it.UTF-8: Maschera di rete per il VPS:
+ Inserire la maschera di rete da utilizzare nelle impostazioni di rete del VPS creato.
+Description-ja.UTF-8: VPS 用のネットワークマスク:
+ 作成するバーチャルプライベートサーバのネットワーク設定で使うネットマスクを入力してください。
+Description-ml.UTF-8: വിപിഎസിന് വേണ്ട ശൃംഘലാ മാസ്ക്:
+ ദയവായി സൃഷ്ടിച്ച മായാ സ്വകാര്യ സേവകന്റെ ശൃംഘലാ സജ്ജീകരണങ്ങളിലുപയോഗിയ്ക്കേണ്ട ശൃംഘലാ മാസ്ക് നല്‍കുക.
+Description-nl.UTF-8: Netwerkmasker voor de VPS:
+ Wat is het netwerkmasker dat gebruikt moet worden voor de netwerkinstellingen van de 'Virtual Private Server'?
+Description-pt.UTF-8: Máscara de rede para o VPS:
+ Por favor indique a máscara de rede a usar nas configurações de rede dos Servidores Privados Virtuais criados.
+Description-pt_BR.UTF-8: Máscara de rede para o VPS:
+ Por favor, informe a máscara de rede a ser utilizada nas configurações de rede do Servidor Virtual Privado criado.
+Description-ru.UTF-8: Маска сети для VPS:
+ Введите маску сети, которая будет использована в сетевых настройках созданных Virtual Private Server.
+Description-sk.UTF-8: Maska siete VPS:
+ Prosím, zadajte masku siete, ktorá sa má použiť v nastavení siete VPS.
+Description-sv.UTF-8: Nätverksmask för VPS:en:
+ Ange nätverksmasken som ska användas när den nya Virtuella Privata Serverns nätverksinställningar skapas.
+
+Template: dtc-xen/conf_network
+Type: string
+Description: Network address for the VPS:
+ Please enter the network address to use in the created Virtual Private
+ Server's network settings.
+Description-ar.UTF-8: عنوان الشبكة لخادم VPS:
+ الرجاء إدخال عنوان الشبكة المراد استخدامه في إعدادات شبكة الخادم الافتراضي الخاص VPS.
+Description-cs.UTF-8: Síťová adresa pro VPS:
+ Zadejte prosím síťovou adresu, která bude použita pro nastavení sítě ve vytvořeném Virtuálním Privátním Serveru.
+Description-da.UTF-8: Netværksadresse for VPS'en:
+ Indtast venligst netværksadressen der skal bruges i den oprettede Virtual Private Servers netværksopsætning.
+Description-de.UTF-8: Netzadresse für den VPS:
+ Bitte geben Sie die Netzadresse ein, die in den Netzwerk-Einstellungen des Virtual Private Servers verwendet werden soll.
+Description-es.UTF-8: Dirección de red del VPS:
+ Introduzca la dirección de red a usar en la configuración de red del servidor virtual privado (VPS) creado.
+Description-fi.UTF-8: VPS:n verkko-osoite:
+ Anna verkko-osoite, jota käytetään luodun VPS:n verkko-asetuksissa.
+Description-fr.UTF-8: Adresse réseau des VPS :
+ Veuillez indiquer l'adresse réseau des serveurs virtuels privés (VPS).
+Description-gl.UTF-8: Enderezo de rede para o VPS:
+ Introduza o enderezo de rede a empregar na configuración de rede do servidor privado virtual creado.
+Description-it.UTF-8: Indirizzo di rete del VPS:
+ Inserire l'indirizzo di rete da utilizzare nelle impostazioni di rete del VPS creato.
+Description-ja.UTF-8: VPS 用のネットワークアドレス:
+ 作成するバーチャルプライベートサーバのネットワーク設定で使うネットワークアドレスを入力してください。
+Description-ml.UTF-8: വിപിഎസിന് വേണ്ട ശൃംഘലാ വിലാസം:
+ ദയവായി സൃഷ്ടിച്ച മായാ സ്വകാര്യ സേവകന്റെ ശൃംഘലാ സജ്ജീകരണങ്ങളിലുപയോഗിയ്ക്കേണ്ട ശൃംഘലാ വിലാസം നല്‍കുക.
+Description-nl.UTF-8: Netwerkadres voor de VPS:
+ Wat is het netwerkadres dat gebruikt moet worden voor de netwerkinstellingen van de 'Virtual Private Server'?
+Description-pt.UTF-8: Endereço de rede para o VPS:
+ Por favor indique o endereço de rede para usar na configuração de rede do Servidor Privado Virtual criado.
+Description-pt_BR.UTF-8: Endereço de rede para o VPS:
+ Por favor, informe o endereço de rede a ser utilizado nas configurações de rede do Servidor Virtual Privado criado.
+Description-ru.UTF-8: Сетевой адрес для VPS:
+ Введите сетевой адрес, который будет использован в сетевых настройках созданных Virtual Private Server.
+Description-sk.UTF-8: Sieťová adresa VPS:
+ Prosím, zadajte sieťovú adresu, ktorá sa má použiť v nastavení siete VPS.
+Description-sv.UTF-8: Nätverksadress för VPS:en
+ Ange nätverksadressen som ska användas när den nya Virtuella Privata Serverns nätverksinställningar skapas.
+
+Template: dtc-xen/conf_broadcast
+Type: string
+Description: Broadcast address for the VPS:
+ Please enter the network broadcast address to use in the created
+ Virtual Private Server's network settings.
+Description-ar.UTF-8: عنوان البث لخادم VPS:
+ الرجاء إدخال عنوان البث الشبكي المراد استخدامه في إعدادات شبكة الخادم الافتراضي الخاص VPS.
+Description-cs.UTF-8: Broadcast adresa pro VPS:
+ Zadejte prosím broadcast síťovou adresu, která bude použita pro nastavení sítě ve vytvořeném Virtuálním Privátním Serveru.
+Description-da.UTF-8: Rundsend adresse for VPS'en:
+ Indtast venligst adressen for netværksrundsendelse der skal bruges i den oprettede Virtual Private Servers netværksopsætning.
+Description-de.UTF-8: Broadcast-Adresse für den VPS:
+ Bitte geben Sie die Broadcast-Adresse ein, die in den Netzwerk-Einstellungen des Virtual Private Servers verwendet werden soll.
+Description-es.UTF-8: Dirección de difusión del VPS:
+ Introduzca la dirección de difusión («broadcast») de red a usar en la configuración de red del servidor virtual privado (VPS) creado.
+Description-fi.UTF-8: VPS:n yleislähetysosoite:
+ Anna verkon yleislähetysosoite, jota käytetään VPS:n verkkoasetuksissa.
+Description-fr.UTF-8: Adresse de diffusion des VPS :
+ Veuillez indiquer l'adresse de diffusion des serveurs virtuels privés (VPS).
+Description-gl.UTF-8: Enderezo "broadcast" para o VPS:
+ Introduza o enderezo "broadcast" a empregar na configuración de rede do servidor privado virtual creado.
+Description-it.UTF-8: Indirizzo di broadcast del VPS:
+ Inserire l'indirizzo di broadcast da utilizzare nelle impostazioni di rete del VPS creato.
+Description-ja.UTF-8: VPS 用のブロードキャストアドレス:
+ 作成するバーチャルプライベートサーバのネットワーク設定で使うブロードキャストアドレスを入力してください。
+Description-ml.UTF-8: വിപിഎസിന് വേണ്ട പ്രക്ഷേപണ വിലാസം:
+ ദയവായി സൃഷ്ടിച്ച മായാ സ്വകാര്യ സേവകന്റെ ശൃംഘലാ സജ്ജീകരണങ്ങളിലുപയോഗിയ്ക്കേണ്ട പ്രക്ഷേപണ വിലാസം നല്‍കുക.
+Description-nl.UTF-8: Broadcast-adres voor de VPS:
+ Wat is het netwerk-broadcast-adres dat gebruikt moet worden voor de netwerkinstellingen van de 'Virtual Private Server'?
+Description-pt.UTF-8: Endereço de difusão (Broadcast) para o VPS:
+ Por favor indique o endereço de difusão na rede para usar na configuração de rede do Servidor Privado Virtual criado.
+Description-pt_BR.UTF-8: Endereço de broadcast para o VPS:
+ Por favor, informe o endereço de broadcast a ser utilizado nas configurações do Servidor Virtual Privado criado.
+Description-ru.UTF-8: Широковещательный адрес для VPS:
+ Введите широковещательный адрес, который будет использован в сетевых настройках созданных Virtual Private Server.
+Description-sk.UTF-8: Broadcast adresa VPS:
+ Prosím, zadajte sieťovú broadcast adresu, ktorá sa má použiť v nastavení siete VPS.
+Description-sv.UTF-8: Broadcast-adress för VPS:en:
+ Ange nätverkets broadcast-adress som ska användas när den nya Virtuella Privata Serverns nätverksinställningar skapas.
+
+Template: dtc-xen/conf_gateway
+Type: string
+Description: Gateway address for the VPS:
+ Please enter the network gateway address to use in the created
+ Virtual Private Server's network settings.
+Description-ar.UTF-8: عنوان البوابة لخادم VPS:
+ الرجاء إدخال عنوان البوابة المراد استخدامه في إعدادات شبكة الخادم الافتراضي الخاص VPS.
+Description-cs.UTF-8: Adresa brány pro VPS:
+ Zadejte prosím síťovou adresu brány, která bude použita pro nastavení sítě ve vytvořeném Virtuálním Privátním Serveru.
+Description-da.UTF-8: Adresse for adgangspunkt til VPS'en:
+ Indtast venligst adressen for netværksadgangspunktet der skal bruges i den oprettede Virtual Private Servers netværksopsætning.
+Description-de.UTF-8: Gateway-Adresse für den VPS:
+ Bitte geben Sie die Netz-Gateway-Adresse ein, die in den Netzwerk-Einstellungen des Virtual Private Servers verwendet werden soll.
+Description-es.UTF-8: Dirección de la puerta de enlace del VPS:
+ Introduzca la dirección de la puerta de enlace a usar en la configuración de red del servidor virtual privado (VPS) creado.
+Description-fi.UTF-8: VPS:n yhdyskäytäväosoite:
+ Anna verkon yhdyskäytäväosoite, jota käytetään luodun VPS:n verkkoasetuksissa.
+Description-fr.UTF-8: Passerelle réseau des VPS :
+ Veuillez indiquer l'adresse de la passerelle réseau des serveurs virtuels privés (VPS).
+Description-gl.UTF-8: Enderezo da pasarela para o VPS:
+ Introduza o enderezo da pasarela a empregar na configuración de rede do servidor privado virtual creado.
+Description-it.UTF-8: Indirizzo del gateway del VPS:
+ Inserire l'indirizzo del gateway da utilizzare nelle impostazioni di rete del VPS creato.
+Description-ja.UTF-8: VPS 用のゲートウェイアドレス:
+ 作成するバーチャルプライベートサーバのネットワーク設定で使うゲートウェイアドレスを入力してください。
+Description-ml.UTF-8: വിപിഎസിന് വേണ്ട ഗേയ്റ്റ്‌വേ വിലാസം
+ ദയവായി സൃഷ്ടിച്ച മായാ സ്വകാര്യ സേവകന്റെ ശൃംഘലാ സജ്ജീകരണങ്ങളിലുപയോഗിയ്ക്കേണ്ട ഗേയ്റ്റ്‌വേ വിലാസം നല്‍കുക.
+Description-nl.UTF-8: Router-adres voor de VPS:
+ Wat is het routeradres gebruikt moet worden voor de netwerkinstellingen van de 'Virtual Private Server'?
+Description-pt.UTF-8: Endereço de gateway para o VPS:
+ Por favor indique o endereço de rede gateway a usar na configuração de rede do Servidor Privado Virtual criado.
+Description-pt_BR.UTF-8: Endereço de gateway para o VPS:
+ Por favor, informe o endereço do gateway a ser utilizado nas configurações de rede do Servidor Virtual Privado criado.
+Description-ru.UTF-8: Адрес шлюза для VPS:
+ Введите адрес шлюза, который будет использован в сетевых настройках созданных Virtual Private Server.
+Description-sk.UTF-8: Adresa brány VPS:
+ Prosím, zadajte sieťovú adresu brány, ktorá sa má použiť v nastavení siete VPS.
+Description-sv.UTF-8: Adress till nätsluss (gateway) för VPS:en:
+ Ange nätverkets nätslussadress som ska användas när den nya Virtuella Privata Serverns nätverksinställningar skapas.
+
+Template: dtc-xen/conf_linux_kernel_name
+Type: string
+Description: Xen kernel release name:
+ Please enter the kernel version number as it appears with the
+ 'uname -a' command. 
+ .
+ A kernel domU with that name must be located in /boot (example:
+ vmlinuz-2.6.16.27-xenU) and its corresponding modules must be in
+ /lib/modules.
+Description-ar.UTF-8: اسم إصدار نواة Xen:
+ الرجاء إدخال رقم نسخة النواة كما يظهر عبر الأمر 'uname -a'.
+ .
+ يجب أن يكون هناك نواة تحمل اسم النطاق domU في الدليل /boot. مثلاً: vmlinuz-2.6.16.27-xenU وتكون الوحدات الخاصة بها في /lib/modules.
+Description-cs.UTF-8: Jméno Xen jádra:
+ Zadejte prosím číslo verze jádra, které zjistíta zadáte-li příkaz 'uname -a'.
+ .
+ Jádro domU s tímto jménem se musí nacházet v /boot (např.: vmlinuz-2.6.16.27-xenU) a související moduly musí být v /lib/modules.
+Description-da.UTF-8: Xen-kernens udgivelsesnavn:
+ Indtast venligst kerneversionsnummeret som det fremgår med kommandoen 'uname -a'.
+ .
+ En kerne domU med det navn skal være placeret i /boot (eksempel: vmlinuz-2.6.16.27-xenU) og dens tilsvarende moduler skal være i /lib/moduler.
+Description-de.UTF-8: Veröffentlichungsname des Xen-Kernels:
+ Bitte geben Sie die Kernelversionsnummer ein, wie sie durch den Befehl »uname -a« angezeigt wird.
+ .
+ Ein Kernel domU mit diesem Namen muss sich in /boot befinden (Beispiel: 2.6.16.27-xenU) und die zugehörigen Module müssen in /lib/modules liegen.
+Description-es.UTF-8: Nombre de la versión del núcleo de Xen:
+ Introduzca el número de versión del núcleo que aparece como resultado de ejecutar la orden «uname -a».
+ .
+ Un núcleo domU con ese nombre se ubicará en el directorio «/boot» (por ejemplo: vmlinuz-2.6.16.27-xenU) y sus correspondientes módulos estarán en el directorio «/lib/modules»
+Description-fi.UTF-8: Xen-ytimen julkaisunimi:
+ Anna ytimen versionumero siinä muodossa kuin se tulostuu komennolla ”uname -a”.
+ .
+ Ytimen kyseisen nimisen domUn pitää olla hakemistossa /boot (esimerkiksi: vmlinuz-2.6.16.27-xenU) ja vastaavien moduulien hakemistossa /lib/modules.
+Description-fr.UTF-8: Version du noyau Xen :
+ Veuillez indiquer la version du noyau Xen à utiliser dans le format renvoyé par la commande « uname -a ».
+ .
+ Un noyau « domU » avec ce nom doit être présent dans le répertoire /boot (par exemple, « vmlinuz-2.6.26.27-xenU ») et les modules noyau correspondants doivent se trouver dans /lib/modules.
+Description-gl.UTF-8: Nome da versión do núcleo Xen:
+ Introduza o número de versión do núcleo tal como aparece coa orde "uname -a".
+ .
+ Ten que haber un núcleo domU con ese nome en /boot (por exemplo, vmlinuz-2.6.16.27-xenU) e os seus módulos correspondentes teñen que estar en /lib/modules.
+Description-it.UTF-8: Nome del rilascio del kernel Xen:
+ Inserire il numero di versione del kernel esattamente come appare utilizzando il comando «uname -a».
+ .
+ Un kernel con quel nome deve essere memorizzato in «/boot» (per esempio, «vmlinuz-2.6.16.27-xenU») e i corrispondenti moduli devono trovarsi in «/lib/modules».
+Description-ja.UTF-8: Xen カーネルのリリース名:
+ 'uname -a' コマンドで表示されるカーネルバージョン番号を入力してください。
+ .
+ domU という名前のカーネルは /boot に (例: vmlinuz-2.6.16.27-xenU)、対応するモジュールは /lib/modules に配置する必要があります。
+Description-ml.UTF-8: സെന്‍ കെര്‍ണല്‍ റിലീസ് നാമം:
+ ദയവായി 'uname -a'എന്ന് ആജ്ഞയില്‍ കാണുന്നത് പോലെയുള്ള കെര്‍ണലിന്റെ ലക്ക സംഖ്യ നല്‍കുക.
+ .
+ ആ പേരിലുള്ള ഒരു കെര്‍ണല്‍ domU (ഉദാഹരണം: vmlinuz-2.6.16.27-xenU) /boot ല്‍ കണ്ടുപിടിയ്ക്കാനും അതിന് ചേര്‍ന്ന മൊഡ്യൂളുകള്‍ /lib/modules ല്‍ ഉണ്ടായിരിയ്ക്കുകയും വേണം.
+Description-nl.UTF-8: Naam Xen-kernel-uitgave:
+ Wat is het kernel-versienummer (zoals dit teruggegeven wordt in de uitvoer van het commando 'uname -a')?
+ .
+ Een kernel-domU met deze naam dient zich in de map '/boot' te bevinden (voorbeeld: vmlinuz-2.6.16.27-xenU) en de overeenkomstige modules dienen zich in de map '/lib/modules' te bevinden.
+Description-pt.UTF-8: Nome da versão do Kernel Xen:
+ Por favor indique o número da versão do kernel tal como aparece no comando 'uname -a'.
+ .
+ Um kernel domU com esse nome tem que estar localizado em /boot (exemplo: vmlinuz-2.6.16.27-xenU) e os seus módulos correspondentes em /lib/modules.
+Description-pt_BR.UTF-8: Nome de release do kernel Xen:
+ Por favor, informe o número de versão do kernel na forma que o mesmo é exibido com o comando 'uname -a'.
+ .
+ Um kernel domU com esse nome deve estar localizado em /boot (por exemplo: vmlinuz-2.6.16.27-xenU) e seus módulos correspondentes devem estar em /lib/modules.
+Description-ru.UTF-8: Имя выпуска ядра Xen:
+ Введите номер версии ядра, который доступен по команде 'uname -a'.
+ .
+ Ядро domU с этим именем должно быть в каталоге /boot (пример: vmlinuz-2.6.16.27-xenU), а его модули в каталоге /lib/modules.
+Description-sk.UTF-8: Názov vydania jadra Xen:
+ Prosím, zadajte číslo verzie jadra ako ho vypisuje príkaz „uname -a“.
+ .
+ Jadro domU s týmto názvom sa musí nachádzať v adresári /boot (napr.: vmlinuz-2.6.16.27-xenU) a jeho príslušné moduly musia byť v adresári /lib/modules.
+Description-sv.UTF-8: Xen-kärnans utgåvenamn:
+ Ange kärnans versionsnummer som det visas med kommandot "uname -a".
+ .
+ En domU-kärna med det namnet måste finnas i /boot (exempelvis: vmlinux-2.6.16.27-xenU) och dess kärnmoduler måste finnas i /lib/modules.
+
+Template: dtc-xen/conf_linux_domu_initrd
+Type: string
+Description: Name of the initrd image:
+ Please enter the name of the initrd ram disk image to use when
+ setting-up a Linux Xen startup file. Leave this blank to not
+ setup your domU with a initrd image at all.
+Description-ar.UTF-8: اسم صورة initrd:
+ رجاء أدخل اسم صورة initrd ram التي تريد استخدامها عند إعداد ملف بدء التشغيل للينكس Xen. اترك هذه الخانة فارغة كي لا تعدّ أيّ domU بصورة initrd على الإطلاق.
+Description-cs.UTF-8: Název initrd image:
+ Zadejte prosím název initrd ram disk image, které se bude používat pro nastavování spouštěcího souboru Linux Xen. Ponechte prázdné, pokud se nikdy nemá nastavovat domU initrd image.
+Description-da.UTF-8: Navn på initrd-aftrykket:
+ Indtast venligst navnet på ramdiskaftrykket for initrd der skal bruges når der opsættes en Linux Xen-opstartsfil. Efterlad tom for ikke at opsætte din domU med et initrd-aftryk.
+Description-de.UTF-8: Name des Initrd-Images:
+ Bitte geben Sie den Namen des Initrd-RAM-Platten-Images an, der beim Einrichten einer Linux-Xen-Start-Datei verwandt werden soll. Lassen Sie dies leer, um Ihre domU nicht mit einem Initrd-Images einzurichten.
+Description-es.UTF-8: Nombre de la imagen de initrd:
+ Introduzca el nombre de la imagen ram de disco de initrd para utilizar cuando se configure un archivo de arranque para un Linux Xen. Deje este campo en blanco para no configurar su domU con una imagen initrd.
+Description-fi.UTF-8: initrd-kuvan nimi:
+ Anna initrd ram -levykuva, jota käytetään luotaessa Linux Xen -käynnistystiedosto. Jätä kenttä tyhjäksi, jos domU ei käytä initrd-kuvaa ollenkaan.
+Description-fr.UTF-8: Nom du disque mémoire initial :
+ Veuillez entrer le nom du disque mémoire initial (« initrd ram disk ») à utiliser pour la configuration du fichier de démarrage du noyau Linux Xen. Laissez l'entrée vide si vous ne voulez pas configurer votre domU avec un disque mémoire initial.
+Description-it.UTF-8: Nome dell'immagine initrd:
+ Inserire il nome dell'immagine del disco RAM initrd da utilizzare durante l'installazione di un file di avvio Linux Xen. Se si lascia vuoto questo campo non verrà impostata alcuna immagine initrd.
+Description-ja.UTF-8: initrd イメージの名前:
+ Linux Xen 起動ファイルの設定する際に使う initrd RAM ディスクイメージの名前を入力してください。これを空白のままにすると domU を全く initrd イメージを使わないように設定します。
+Description-pt.UTF-8: Nome da imagem initrd:
+ Indique por favor o nome da imagem initrd a usar quando configurar um ficheiro de arranque Linux Xen. Deixe em branco para configurar o seu domU sem nenhuma imagem initrd.
+Description-pt_BR.UTF-8: Nome da imagem initrd:
+ Por favor, informe o nome da imagem de disco ram initrd para usar quando configurar um arquivo de inicialização Xen Linux. Deixe em branco para não configurar sua domU com nenhuma imagem initrd.
+Description-ru.UTF-8: Имя образа initrd:
+ Введите имя образа initrd ram-диска, который будет использоваться при настройке файла запуска Linux Xen. Если оставить поле пустым, то для domU вообще не будет задан образ initrd.
+Description-sk.UTF-8: Názov obrazu initrd:
+ Prosím, zadajte názov ramdisku initrd, ktorý sa má použiť pri nastavovaní štartovacieho súboru Linux Xen. Toto pole nechajte prázdne ak nechcete vôbec nastaviť domU s obrazom initrd.
+Description-sv.UTF-8: Namn på initrd-avbildningen:
+ Ange namnet på den initrd-ram-disk-avbildning som du vill använda när en Linux Xen startfil installeras. Lämna detta fält tomt för att inte installera din domU med en initrd-avbildning alls.
+
+Template: dtc-xen/conf_lvm_name
+Type: string
+Description: Volume group to create VPS in:
+ Dtc-xen creates physical partitions in an existing LVM volume group
+ .
+ Please enter that volume group name. The volume group size must fit
+ all the virtual machines you will set up later on this server. If
+ you don't want to use LVM (because you don't care if loopback is
+ slower), leave this setting to the default value.
+Description-ar.UTF-8: مجموعة الكتل المراد إنشاء VPS فيها:
+ يقوم Dtc-xen بإنشاء أجزاء في مجموعة كتل LVM الموجودة
+ .
+ رجاءً أدخل اسم مجموعة الكتل. يجب أن يناسب حجم مجموعة الكتل جميع الأجهزة الافتراضية التي ستقوم بإعدادها لاحقاً على هذا لاخادم. إن لم تكن تريد استخدام LVM (لعد اكتراثك لبطء loopback)، اترك القيمة الافتراضية لهذا المتغيّر كما هي.
+Description-cs.UTF-8: Vytvořit VPS ve svazku:
+ Dtc-xen vytvořil fyzický oddíl v existujícím svazku LVM
+ .
+ Zadejte prosím název svazku. Velikost svazku musí odpovídat všem virtuálním strojům, které na tomto serveru nastavíte. Pokud nechcete používat LVM (protože je v určitých situacích pomalejší), ponechte v tomto nastavení výchozí hodnotu.
+Description-da.UTF-8: Diskenhedsgruppe at oprette VPS i:
+ Dtc-xen opretter fysiske partitioner i en eksisterende LVM-diskenhedsgruppe
+ .
+ Indtast venligst det diskenhedsgruppenavn. Diskenhedsgruppens størrelse skal passe til alle de virtuelle maskiner, du senere vil opsætte på denne server. Hvis du ikke ønsker at bruge LVM (fordi du ikke tager hensyn til at loopback er langsommere), så efterlad denne indstilling med dennes standardværdi.
+Description-de.UTF-8: Datenträgergruppe (»volume group«) in der der VPS erstellt werden soll:
+ Dtc-xen erstellt physische Partitionen in einer existierenden LVM-Datenträgergruppe
+ .
+ Bitte geben Sie den Namen der Datenträgergruppe (»volume group«) ein. Die Datenträgergruppe muss hinreichend groß sein, damit alle virtuellen Maschinen, die Sie später auf diesem Server einrichten, hineinpassen. Falls Sie LVM nicht benutzen möchten (da Ihnen egal ist, ob loopback langsamer ist) lassen Sie diese Einstellung auf dem Standardwert.
+Description-es.UTF-8: Grupo del volumen a crear en el VPS:
+ Dtc-xen crea particiones físicas en un grupo de volumen LVM existente.
+ .
+ Introduzca el nombre del grupo del volumen. El tamaño del grupo del volumen debe ajustarse a todas las máquinas virtuales que configurará en este servidor más tarde. Si no quiere usar LVM (porque no le importa si el «loopback» es más lento), deje el valor predeterminado.
+Description-fi.UTF-8: Levynideryhmä, johon VPS luodaan:
+ Dtc-xen luo fyysisiä osioita olemassa olevaan loogiseen levynideryhmään (LVM).
+ .
+ Anna kyseisen levynideryhmän nimi. Kaikkien tälle palvelimelle myöhemmin luotavien virtuaalikoneiden tulee mahtua tämän levynideryhmän tilaan. Jos et halua käyttää LVM:ää (koska et välitä hitaammasta takaisinkytkennästä), jätä asetus oletusarvoon.
+Description-fr.UTF-8: Groupe de volumes où créer les VPS :
+ dtc-xen crée les partitions physiques dans un groupe de volumes existant dans le gestionnaire de volumes logiques (LVM).
+ .
+ Veuillez indiquer le nom du groupe de volumes à utiliser. Il doit avoir une taille suffisante pour contenir tous les serveurs virtuels privés (VPS) qui seront configurés sur ce serveur. Si vous ne voulez pas utiliser LVM (notamment si l'utilisation d'un périphérique de bouclage, plus lent, vous convient), laissez la valeur par défaut.
+Description-gl.UTF-8: Grupo de volumes no que crear VPS:
+ Dtc-xen crea particións físicas nun grupo de volumes LVM existente
+ .
+ Introduza o nome dese grupo de volumes. O tamaño do grupo de volumes debe servir para tódalas máquinas virtuais que vaia configurar máis adiante neste servidor. Se non quere empregar LVM (se non lle importa que os dispositivos "loopback" sexan máis lentos), deixe esta opción no seu valor por defecto.
+Description-it.UTF-8: Gruppo di volumi in cui creare i VPS:
+ Dtc-xen crea delle partizioni fisiche in un gruppo di volumi LVM esistente.
+ .
+ Inserire il nome di quel gruppo di volumi, la cui dimensione deve poter contenere tutte le macchine virtuali che verranno create su questo server. Se non si desidera utilizzare LVM, in quanto non importa se il loopback è più lento, lasciare questa impostazione al valore predefinito.
+Description-ja.UTF-8: VPS が作成されるボリュームグループ:
+ dtc-xen は既存の LVM ボリュームグループ内に物理パーティションを作成します。
+ .
+ ボリュームグループ名を入力してください。ボリュームグループサイズは、後ほどこのサーバ上で設定する全ての仮想マシンに一致する必要があります。(ループバックが遅くなるのを気にしないので) LVM を使いたくない場合、この設定はデフォルト値にしておいてください。
+Description-pt.UTF-8: Grupo de volumes onde criar o VPS:
+ O dtc-xen cria partições físicas num grupo de volumes existente em LVM
+ .
+ Por favor indique o nome do grupo de volumes. O tamanho do grupo de volumes deve ser suficiente para incorporar todas as máquinas virtuais que irá criar mais tarde neste servidor. Se não quiser usar LVM (porque não se importa com o loopback ser mais lento), deixe esta configuração no valor pré definido.
+Description-pt_BR.UTF-8: Grupo de volume no qual criar o VPS:
+ O dtc-xen cria partições físicas em um grupo de volume LVM existente
+ .
+ Por favor, informe o nome desse grupo de volume. O tamanho do grupo de volume deverá ser suficiente para atender todas as máquinas virtuais que você quiser configurar mais tarde neste servidor. Se você não quer usar LVM (porque você não se importa que o loopback seja mais lento), deixe esta configuração com o valor padrão.
+Description-ru.UTF-8: Группа томов, которая будет использована для VPS:
+ Dtc-xen создаёт физические разделы в существующей группе томов LVM
+ .
+ Введите имя группы томов. Размер группы томов должен быть достаточен для всех виртуальных машин, которые вы создадите позже на этом сервере. Если вы не хотите использовать LVM (то есть для вас неважно, что через loopback работает медленнее), оставьте значение по умолчанию.
+Description-sk.UTF-8: V ktorej skupine zväzkov vytvoriť VPS:
+ Dtc-xen vytvorí fyzické diskové oblasti v existujúcej skupine zväzkov LVM
+ .
+ Prosím, zadajte názov tejto skupinu zväzkov. Veľkosť skupiny zväzkov musí byť dostatočná pre všetky virtuálne stroje, ktoré neskôr na tomto serveri vytvoríte. Ak nechcete používať LVM (pretože vám nevadí, že loopback je pomalší), ponechajte predvolenú hodnotu tejto voľby.
+Description-sv.UTF-8: Volymgrupp som VPS:en ska skapas i:
+ Dtc-xen skapar fysiska partitioner i en existerande LVM volymgrupp
+ .
+ Ange volymgruppens namn. Volymgruppens storlek måste ha plats för alla virtuella maskiner som ska skapas i servern. Om du inte vill använda LVM (eftersom du inte bryr dig om att vändslinga (loopback) är långsammare) lämnar du denna inställning i sitt standardvärde.
+
+Template: dtc-xen/conf_info_finish_setup
+Type: note
+Description: How to finish the install
+ To finish the installation, you need to launch
+ /usr/sbin/dtc-xen_finish_install. 
+ .
+ This script will remove port forwarding from the current sshd_config
+ file and add the permission to access the xm console to the group xenusers so
+ that users can login to the physical console.
+ .
+ Please note that the system is currently safe (connections to a
+ physical console as xenXX will be rejected because the /etc/sudoers
+ is not changed), but a basic user won't be able to log into his
+ physical console using ssh.
+Description-ar.UTF-8: كيفية الانتهاء من عملية التثبيت
+ لإتمام التثبيت، يجب أن تقوم بتنفيذ الأمر /usr/sbin/dtc-xen_finish_install
+ .
+ سيقوم هذا النص البرمجي بإلغاء تحويل المنفذ من ملف sshd_config الحالي وإضافة صلاحية للوصول إلى طرفية xm للمجموعة xenusers كي يستطيع المستخدمون تسجيل الدخول عبر الطرفية.
+ .
+ الرجاء ملاحظة أن النظام حالياً آمن (سيتم رفض الاتصال بأي طرفية حيث أن xenXX سيرفض ذلك حيث أن الملف /etc/sudoers لم يتغير)، ولكن لن يستطيع المستخدم العادي تسجيل الدخول إلى أية طرفية باستخدام ssh.
+Description-cs.UTF-8: Jak dokončit instalaci
+ K dokončení instalace je potřeba spustit /usr/sbin/dtc-xen_finish_install.
+ .
+ Tento skript z vašeho sshd_config odebere forwardování portů a skupině xenusers zajistí přístup k xm konzoli, takže uživatelé se budou moci přihlásit k fyzické konzoli.
+ .
+ Vezměte prosím na vědomí, že je systém nyní bezpečný (připojení k fyzické konzoli jako xenXX bude odmítnuto, protože /etc/sudoers nebyl změněn), ani výchozí uživatel se nebude moci přihlásit k jeho fyzické konzoli přez ssh.
+Description-da.UTF-8: Hvordan installationen skal afsluttes
+ For at afslutte installationen, skal du igangsætte /usr/sbin/dtc-xen_finish_install.
+ .
+ Dette skript vil fjerne portvideresendelse fra den aktuelle fil sshd_config og tilføje tilladelse til at tilgå xm-konsollen for gruppen xenusers, så disse brugere kan logge ind på den fysiske konsol.
+ .
+ Bemærk venligst at systemet aktuelt er sikkert (forbindelser til en fysisk konsol som xenXX vil blive afvist da /etc/sudoers ikke er ændret), men en grundlæggende bruger vil ikke være i stand til at logge ind på sin fysiske konsol med brug af ssh.
+Description-de.UTF-8: Wie die Installation beendet werden soll
+ Um die Installation zu beenden, müssen Sie /usr/sbin/dtc-xen_finish_install ausführen.
+ .
+ Dieses Skript wird Port-Weiterleitung aus der aktuellen sshd_config-Datei entfernen und der Gruppe »xenusers« die Erlaubnis für die xm-Konsole erteilen, so dass Benutzer sich an der virtuellen Konsole anmelden können.
+ .
+ Beachten Sie, dass dieses System derzeit sicher ist (Verbindungen zu physischen Konsolen wie xenXX werden abgewiesen, da /etc/sudoers nicht geändert wurde), aber ein einfacher Benutzer kann sich auf seiner physischen Konsole nicht mittels ssh anmelden.
+Description-es.UTF-8: Cómo finalizar la instalación
+ Necesita ejecutar «/usr/sbin/dtc-xen_finish_install» para finalizar la ejecución.
+ .
+ Este script eliminará las redirecciones de puertos del actual archivo «sshd_config» y añadirá los permisos de acceso al grupo xenusers a la consola xm de modo que los usuarios puedan identificarse en la consola física.
+ .
+ Tenga en cuenta que el sistema, actualmente, es seguro (las conexiones a la consola física como xenXX se rechazarán porque no se ha modificado el archivo «/etc/sudoers»), además un usuario básico no podrá conectarse a esta consola física usando ssh.
+Description-fi.UTF-8: Asennuksen päättäminen
+ Päättääksesi asennuksen aja /usr/sbin/dtc-xen_finish_install.
+ .
+ Tämä komentosarja poistaa porttien edelleenohjauksen nykyisestä sshd_config-tiedostosta ja antaa xm-konsolin oikeudet ryhmälle xenusers, jotta käyttäjät voivat kirjautua fyysiselle konsolille.
+ .
+ Järjestelmä on tällä hetkellä turvallinen (yhteydenotot fyysisille konsoleille kuten xenXX hylätään, koska tiedostoa /etc/sudoers ei ole muokattu), mutta tavalliset käyttäjät eivät myöskään voi kirjautua fyysisille konsoleille käyttäen ssh:ta.
+Description-fr.UTF-8: Fin de l'installation
+ Pour terminer l'installation, vous devez lancer le script /usr/sbin/dtc-xen_finish_install.
+ .
+ Ce script supprimera la redirection de port de sshd_config et autorisera le groupe « xenusers » à utiliser le terminal xm afin que les utilisateurs puissent se connecter à la console physique.
+ .
+ Veuillez noter que le système est pour l'instant sûr car aucun utilsateur ne peut se connecter à la console physique en tant qu'utilisateur « xenXX » tant que le fichier /etc/sudoers n'est pas modifié. De plus, un simple utilisateur ne pourra pas se connecter par SSH sur sa console physique.
+Description-gl.UTF-8: Como rematar a instalación
+ Para completar a instalación, ten que executar /usr/sbin/dtc-xen_finish_install.
+ .
+ Este script ha eliminar a redireción de portos do ficheiro sshd_config actual e ha engadir o permiso de acceso á consola xm ao grupo "xenusers" para que os usuarios se poidan conectar na consola física.
+ .
+ Teña en conta que o sistema é seguro actualmente (hanse rexeitar as conexións a unha consola física coma xenXX porque non se modificou o ficheiro /etc/sudoers), pero un usuario básico non se ha poder conectar á súa consola física empregando ssh.
+Description-it.UTF-8: Come finire l'installazione
+ Per finire l'installazione è necessario eseguire «/usr/sbin/dtc-xen_finish_install».
+ .
+ Questo script rimuoverà l'inoltro di porte dal file sshd_config attuale e aggiungerà i permessi per l'accesso alla console xm al gruppo xenusers, in modo che gli utenti possano annunciarsi alla console fisica.
+ .
+ Notare che attualmente il sistema è sicuro, in quanto le connessioni a una console fisica come xenXX verranno rifiutate poiché «/etc/sudoers» non è stato modificato, ma per contro un semplice utente non potrà annunciarsi alla console fisica utilizzando SSH.
+Description-ja.UTF-8: インストール完了の仕方
+ インストールを完了するには、/usr/sbin/dtc-xen_finish_install を起動する必要があります。
+ .
+ このスクリプトは現在の sshd_config ファイルからポート転送を削除し、物理コンソールからユーザがログイン出来るようにxm コンソールへのアクセス許可権を xenusers グループに追加します。
+ .
+ システムは現在安全でありますが (xenXX としての物理コンソールへの接続は /etc/sudoers が変更されていないので拒否されます)、基本ユーザは ssh を使って物理コンソールにログインできないことに注意ください。
+Description-pt.UTF-8: Como terminar a instalação
+ Para terminar a instalação, você precisa de executar o /usr/sbin/dtc-xen_finish_install.
+ .
+ Este script irá remover o reencaminhamento de portos do corrente ficheiro sshd_config e adicionar a permissão de xm console ao grupo xenusers para que os utilizadores se possam ligar à consola física. 
+ .
+ Por favor note que o sistema está neste momento seguro (ligações a uma consola física como xenXX serão recusadas porque o ficheiro /etc/sudoers não foi alterado), mas um utilizador básico não se conseguirá ligar a esta consola física usando ssh.
+Description-pt_BR.UTF-8: Como terminar a instalação
+ Para finalizar a instalação, você precisará executar o /usr/sbin/dtc-xen_finish_install.
+ .
+ Este script removerá o encaminhamento de portas do arquivo de configuração sshd_config atual e adicionará a permissão para acessar o xm console para o grupo xenusers, para que usuários possam se autenticar no console físico.
+ .
+ Por favor, note que o sistema é atualmente seguro (conexões a um console físico como xenXX serão rejeitadas devido ao arquivo /etc/sudoers não ser modificado), mas um usuário básico não conseguirá se autenticar em seu console físico utilizando ssh.
+Description-ru.UTF-8: Как завершить установку
+ Для завершения установки вам нужно запустить /usr/sbin/dtc-xen_finish_install.
+ .
+ Этот сценарий удалит перенаправление порта из имеющегося файла sshd_config и добавит доступ к консоли xm группе xenusers для того, чтобы пользователи могли подключаться с физической консоли.
+ .
+ Заметим, что это система безопасна (подключения к физической консоли как xenXX будут отвергаться, так как файл /etc/sudoers не изменён), а простой пользователь не сможет войти на свою физическую консоль по ssh.
+Description-sk.UTF-8: Ako dokončiť inštaláciu
+ Na dokončenie inštalácie musíte spustiť /usr/sbin/dtc-xen_finish_install.
+ .
+ Tento skript odstráni presmerovanie portov z aktuálneho súboru sshd_config a pridá oprávnenie na prístup ku konzole xm skupine xenusers aby sa títo používatelia mohli prihlásiť k fyzickej konzole.
+ .
+ Pamätajte prosím, že systém je momentálne zabezpečený (pripojenia na fyzickú konzolu ako xenXX budú zamietnuté, pretože nebol zmenený /etc/sudoers), ale základný používateľ sa nebude môcť prihlásiť na svoju fyzickú konzolu prostredníctvom ssh.
+Description-sv.UTF-8: Hur installationen slutförs
+ För att slutföra installationen måste du köra /usr/bin/dtc-xen_finish_install.
+ .
+ Skriptet kommer att ta bort portompekning från den filen sshd_config och lägga till rättighet att ansluta till xm-konsollen för gruppen xenusers så att användare kan logga in i den fysiska konsollen.
+ .
+ Detta är en säkeroperation (anslutningar till den fysiska konsollen som xenXX kommer att avvisas eftersom filen /etc/sudoers inte är redigerad). Men en vanlig användare kan inte logga in sin fysiska konsoll med ssh.
+
+Template: dtc-xen/conf_vps_mountpoint
+Type: string
+Default: /var/lib/dtc-xen/mnt
+Description: VPS mountpoint:
+ In order to do the setup of the VPS it's managing, dtc-xen will mount an LVM
+ device or a file loopback on the dom0 of your Xen server, and then use it as a
+ partition for your VPS. Loopback mounts by default are limited to a small
+ number, and since LVM is also faster to access, it is the much preferred
+ option. This will also be used to automatically set your /etc/fstab mount
+ points so you can do maintenance and mount VPSes with less hassle. Enter the
+ desired path prefix for these mount points.
+Description-ar.UTF-8: نقطة تركيب خادم VPS:
+ كي يستطيع إعداد خادم VPS الذي يديره، سيقوم dtc-xen بتركيب جهاز LVM أو ملف عبر loopback على dom0 من خادم Xen، ومن ثم استخدامه كجزء لخادم VPS. تكون أجزاء loopback المركبة عادة محدودة العدد، وحيث أن LVM أسرع في عملية الوصول أيضاً، فهو الخيار الأمثل. سيتم استخدام LVM أيضاً تلقائياً لتعيين أماكن تركيب الأجزاء في ملف /etc/fstab كي تستطيع القيام بالصيانة وتركيب خوادم VPS المُعدّة دون مشاكل. أدخل بداية المسار المطلوب لأماكن التركيب هذه.
+Description-cs.UTF-8: Přípojný bod VPS
+ Aby bylo možné nastavení VPS spravovat, dtc-xen připojí LVM zařízení nebo svazek souborů do dom0 v Xen serveru a následně jej použije jako oddíl pro VPS. Připojované svazky jsou ve výchozím nastavení omezené na menší počet, protože LVM má rychlejší přístup. Toto je nejupřednostňovanější volba. Tato volba také automaticky nastaví přípojné body v /etc/fstab, takže můžete spravovat a připojovat VPS bez potíží. Zadejte požadovanou cestu, označující tyto přípojné body.
+Description-da.UTF-8: VPS-monteringspunkt:
+ For at kunne opsætte VPS'en den håndterer vil dtc-xen montere en LVM-enhed eller en filloopback på dom0 på din Xenserver, og så bruge den som en partition for din VPS. Loopbackmonteringer er som standard begrænset til et lille antal, og da LVM også er hurtigere at tilgå, er det den foretrukne indstilling. Dette vil også blive brugt til automatisk at opsætte dine monteringspunkter i /etc/fstab, så du kan udføre vedligeholdelse og montere VPS'er med mindre omstændighed. Indtast de ønskede stipræfikser for disse monteringspunkter.
+Description-de.UTF-8: VPS-Einhängepunkt:
+ Um den VPS einzurichten, den es verwalten soll, wird Dtc-xen ein LVM-Gerät oder eine Datei via Loopback im Dom0 Ihres Xen-Servers einhängen und dann dieses als Partition für Ihre VPS verwenden. Standardmäßig können nur wenige Loopback-Einhängungen vorgenommen werden, und da LVM auch im Zugriff schneller ist, wird diese Option deutlich empfohlen. Dies wird auch dazu verwendet, Ihre Einhängepunkte in der /etc/fstab automatisch zu setzen, so dass Wartungen und das Einhängen von VPSen mit weniger Ärger verbunden ist. Geben Sie hier den Pfadpräfix zu diesen Einhängepunkten an.
+Description-es.UTF-8: Punto de montaje del VPS:
+ Para realizar la configuración del VPS, dtc-xen montará un dispositivo LVM o un archivo de «loopback» en el dispositivo dom0 de su servidor Xen, y lo usará como partición para su VPS. De forma predeterminada, los montajes «loopback» están limitados a un pequeño número, y ya que LVM es más rápido para el acceso, esta es la opción preferida. También se usará para configurar automáticamente sus puntos de montaje en el archivo «/etc/fstab», de modo que pueda realizar el mantenimiento y montar VPS más fácilmente. Introduzca el prefijo de la ruta deseada para estos puntos de montaje.
+Description-fi.UTF-8: VPS:n liitoskohta:
+ Tehdäkseen hallinnoimansa VPS:n asetukset dtc-xen liittää LVM:n tai takaisinkytketyn tiedosto-osion Xen-palvelimen dom0:aan ja käyttää sitä sitten VPS:n osiona. Takaisinkytkennän liitäntöjen määrä on oletuksena rajoitettu pieneksi ja koska LVM on lisäksi nopeampi, sen käyttö on erittäin suositeltavaa. Tätä käytetään myös tiedoston /etc/fstab liitoskohtien automaattiseen asettamiseen, jolloin ylläpito ja VPS:ien liittäminen on helpompaa. Anna näiden liitoskohtien polun alkuosa.
+Description-fr.UTF-8: Point de montage des VPS :
+ Veuillez indiquer le point de montage à utiliser. Pour configurer les serveurs virtuels privés (VPS), le dom0 de votre serveur Xen sera monté dans un périphérique LVM ou dans un fichier de bouclage local (« loopback ») par dtc-xen, et il l'utilisera en tant que partition pour vos VPS. Les montages avec un bouclage local sont par défaut limités en nombre, et comme LVM est plus rapide d'accès, il est conseillé d'utiliser cette seconde option. dtx-xen configurera automatiquement les points de montages dans /etc/fstab afin de faciliter la gestion des VPS.
+Description-gl.UTF-8: Punto de montaxe do VPS:
+ Para facer a configuración dos VPS que xestiona, dtc-xen ha montar un dispositivo LVM ou un dispositivo "loopback" no dom0 do servidor Xen, e empregalo coma partición para o VPS. As montaxes "loopback" están limitadas, por defecto, a un número moi reducido, e como LVM tamén é máis rápido, é o método preferido. Tamén se ha empregar para configurar automaticamente os puntos de montaxe de /etc/fstab, para poder facer mantemento e montar VPS con máis facilidade. Introduza o prefixo de ruta desexado para eses puntos de montaxe.
+Description-it.UTF-8: Punto di montaggio del VPS:
+ Per impostare le VPS gestite, dtc-xen monterà un device LVM o un file di loopback nel dom0 del server Xen e in seguito lo utilizzerà come partizione per i VPS. In modo predefinito i montaggi di loopback sono limitati a un numero ridotto e, poiché LVM è più veloce anche nell'accesso, è l'opzione preferita. Questo verrà utilizzato anche per impostare automaticamente i punti di montaggio in «/etc/fstab», in modo che la manutenzione e il montaggio dei VPS possano essere eseguiti agevolmente. Inserire il prefisso del percorso desiderato per questi punti di montaggio.
+Description-ja.UTF-8: VPS のマウントポイント:
+ VPS 管理の設定を行うため、dtc-xen は LVM デバイスをマウント、あるいは Xen サーバ の dom0 上のファイルループバックをマウントし、VPS 用のパーティションとして利用します。ループバックマウントはデフォルトでは小さな数に制限されていますが、LVM はアクセスも早いので、こちらの方が推奨される選択肢です。これは自動的に /etc/fstab マウントポイントを設定するのにも使われるので、労せずに VPS をメンテナンスやマウントできます。これらのマウントポイントのため、希望するパスのプレフィックスを入力してください。
+Description-pt.UTF-8: Ponto de montagem do VPS:
+ Para poder fazer a configuração do VPS que gere, o dtc-xen irá montar um dispositivo LVM ou uma partição ficheiro loopback no 'dom0' do seu servidor Xen, e utilizá-lo como partição para os seus VPS. Pontos de montagem loopback são, por predefinição, limitados a um pequeno número e uma vez que é muito mais rápido aceder à LVM, é preferida esta última. Isto também será usado para automaticamente configurar os seus pontos de montagem no /etc/fstab para que possa proceder a manutenção e montar VPSes mais rápido. Indique aqui o prefixo de caminho (path) para estes pontos de montagem.
+Description-pt_BR.UTF-8: Ponto de montagem para o VPS:
+ Para fazer a configuração do VPS que ele está gerenciando, o dtc-xen montará um dispositivo LVM ou um arquivo de loopback na dom0 do seu servidor Xen e então o usará como uma partição para o seu VPS. Por padrão, montagens em loopback são limitadas a um pequeno número, e como o LVM é também mais rápido para acessar, esta é a opção mais recomendada. Isto será usado também para configurar automaticamente os pontos de montagem no seu /etc/fstab, assim você poderá fazer a manutenção e montar VPS's com menos preocupações. Informe o prefixo do caminho desejado para estes pontos de montagem.
+Description-ru.UTF-8: Точка монтирования VPS:
+ Чтобы выполнить настройку управления VPS, dtc-xen монтирует LVM или раздел из файла обратной петли на dom0 вашего сервера Xen, а затем использует его в качестве раздела для вашего VPS. Так как через интерфейс обратной петли по умолчанию можно смонтировать не так много разделов и через LVM работает быстрее, то это более предпочтительная настройка. Это также будет автоматически добавлено к вашим точкам монтирования в файл /etc/fstab для того, чтобы при обслуживании VPS монтирование не было таким трудным. Введите здесь путь к желаемым точкам монтирования.
+Description-sk.UTF-8: Bod pripojenia VPS:
+ Na nastavenie VPS, ktoré spravuje pripojí dtc-xen zariadenie LVM alebo súbor obrazu (loopback) k dom0 vášho servera Xen a potom ho použije ako diskovú oblasť pre váš VPS. Štandardne je obmedzený počet pripojení obrazov diskov na malú hodnotu a pretože k LVM je rýchlejší prístup, je to dôrazne odporúčaná voľba. Tiež sa použije na automatické nastavenie prípojných bodov /etc/fstab aby ste mohli vykonávať údržbu a pripájať VPS ľahšie. Zadajte požadovanú predponu cesty k týmto bodom pripojenia.
+Description-sv.UTF-8: Monteringspunkt för VPS:
+ För att kunna göra inställningar i VPS:en som hanteras kommer dtc-xen att montera en LVM-enhet eller fil-vändslinga (loopback) på domO för din Xen-server och sedan använda denna som en partition för din VPS. Vändslingemonteringar (loopback) är i standardläget begränsat till ett lågt antal och eftersom LVM ger snabbare tillgång är LVM den rekomenderade metoden. Detta kommer dessutom att användas för att automatiskt ställa in dina monteringspunkter i /etc/fstab så att du kan göra underhåll och montera VPS:er med så lite friktion som möjligt. Ange önskat prefix för sökvägen för monteringspunkterna.
+
+Template: dtc-xen/conf_debian_release
+Type: select
+Choices: etch, lenny, squeeze, wheezy, sid
+Default: squeeze
+Description: Debian os to setup:
+ Select the Debian operating system that you want to have setup when dtc-xen
+ creates a new VM instance with debootstrap.
+Description-ar.UTF-8: نظام تشغيل ديبيان المطلوب إعداده:
+ اختر نظام تشغيل دبيان الذي تريد إعداده عندما يقوم dtc-xen بإنشاء VM جديدة عبر debootstrap.
+Description-cs.UTF-8: Použít nastavení systému Debian:
+ Vyberte operační systím Debian, pokud chcete aby při nastavování nových VM dtc-xen používal debootstrap.
+Description-da.UTF-8: Debian OS at opsætte:
+ Vælg det Debianoperativsystem som, du ønsker, skal sættes op, når dtc-xen opretter en ny VM-instans med debootstrap.
+Description-de.UTF-8: Einzurichtendes Debian-Betriebssystem:
+ Wählen Sie hier das Debian-Betriebssystem aus, das Sie eingerichtet bekommen möchten, wenn Dtc-Xen eine neue VM-Instanz mit Debootstrap erstellt.
+Description-es.UTF-8: Sistema operativo de Debian a configurar:
+ Seleccione el sistema operativo Debian que quiere configurar cuando dtc-xen cree una nueva instancia de VM con debootstrap.
+Description-fi.UTF-8: Asetettava Debian-käyttöjärjestelmä:
+ Valitse Debian-käyttöjärjestelmä, jonka haluat asentaa, kun dtc-xen luo uuden virtuaalikoneen käyttäen debootstrapia.
+Description-fr.UTF-8: Version de Debian à installer :
+ Veuillez choisir la version de Debian que vous voulez utiliser lorsque dtc-xen crée une nouvelle instance d'une machine virtuelle avec debootstrap.
+Description-gl.UTF-8: Versión de Debian a instalar:
+ Escolla a versión de Debian que quere configurar cando dtc-xen cree unha nova instancia de máquina virtual con debootstrap.
+Description-it.UTF-8: SO Debian da impostare:
+ Selezionare il sistema operativo Debian che si desidera impostare quanto dtc-xen crea una nuova istanza di macchina virtuale con deboostrap.
+Description-ja.UTF-8: セットアップする Debian OS:
+ dtc-xen が新しい VM インスタンスを debootstrap で作成する際に設定したい Debian オペレーティングシステムを選択してください
+Description-pt.UTF-8: Sistema operativo Debian para configurar:
+ Seleccione o sistema operativo Debian que quer configurar quando o dtc-xen criar uma nova instância de máquina virtual.
+Description-pt_BR.UTF-8: SO Debian para configurar:
+ Selecione o sistema operacional Debian que você quer que seja configurado quando o dtc-xen criar uma nova instância de VM com o debootstrap.
+Description-ru.UTF-8: Debian ос для настройки:
+ Выберите операционную систему Debian, которая должна настраиваться, когда dtc-xen создаёт новый экземпляр VM с помощью debootstrap.
+Description-sk.UTF-8: Ktorý OS Debian nastaviť:
+ Vyberte, ktorý systém Debian chcete nastaviť, keď dtc-xen vytvorí novú inštanciu VM pomocou debootstrap.
+Description-sv.UTF-8: Debian os som ska installeras:
+ Ange vilket Debian-operativsystem som du vill installera när dtc-xen skapar en ny VM-instans med debootstrap.

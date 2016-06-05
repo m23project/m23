@@ -1,0 +1,151 @@
+
+Template: courier-webadmin/install-cgi
+Type: boolean
+Default: false
+Description: Activate CGI program?
+ To allow courier-webadmin to work out of the box, the CGI
+ program /usr/lib/courier/courier/webmail/webadmin needs to
+ be installed as /usr/lib/cgi-bin/courierwebadmin with the SUID bit set.
+ .
+ This may have serious security implications, because
+ courierwebadmin runs as root. Moreover, that solution is
+ not guaranteed to work,
+ depending on the web server software and its configuration.
+ .
+ If you choose this option and the web server setup is
+ policy-compliant, you can access the administration frontend through
+ http://localhost/cgi-bin/courierwebadmin.
+Description-cs.UTF-8: Aktivovat CGI program?
+ Pro práci courier-webadmin nad rámec možností, potřebujete zkopírovat CGI program z /usr/lib/courier/courier/webmail/webadmin do /usr/lib/cgi-bin/courierwebadmin a nastavit SUID bit.
+ .
+ To může mít vážné bezpečnostní následky, protože courierwebadmin pak běží s právy uživatele root. Kromě toho, toto řešení nemusí v závislosti na nastavení webového serveru vůbec fungovat.
+ .
+ Jestliže budete souhlasit a vaše nastavení serveru je shodné s bezpečnostní politikou Debianu, pak můžete přistoupit k administrátorskému rozhraní přes http://localhost/cgi-bin/courierwebadmin.
+Description-da.UTF-8: Aktiver CGI-program?
+ For at courier-webadmin umiddelbart kan fungere, skal CGI-programmet /usr/lib/courier/courier/webmail/webadmin installeres som /usr/lib/cgi-bin/courierwebadmin med SUID bit angivet.
+ .
+ Dette kan have alvorlige sikkerhedsmæssige implikationer, da courierwebadmin kører som root. Derudover er løsningen ikke sikker på at virke, da den afhænger af softwaren for internetserveren og dennes konfiguration.
+ .
+ Hvis du vælger denne indstilling og internetserverens opsætning er policy-compliant, kan du tilgå administrationens brugergrænseflade via http://localhost/cgi-bin/courierwebadmin.
+Description-de.UTF-8: CGI-Programm aktivieren?
+ Damit courier-webadmin ohne weitere Eingriffe funktionieren kann, ist es erforderlich, das CGI-Programm /usr/lib/courier/courier/webmail/webadmin mit gesetztem SUID-Bit nach /usr/lib/cgi-bin/courierwebadmin zu installieren.
+ .
+ Dies könnte beträchtliche Auswirkungen auf die Sicherheit haben, da courierwebadmin als root läuft. Desweiteren kann nicht garantiert werden, dass diese Lösung funktioniert, abhängig von der Webserver-Software und deren Konfiguration.
+ .
+ Wenn Sie diese Option wählen und Ihre Webserver-Konfiguration der Policy entspricht, können Sie auf das Administrations-Frontend mit der URL http://localhost/cgi-bin/courierwebadmin zugreifen.
+Description-es.UTF-8: ¿Activar el programa CGI?
+ Para permitir a courier-webadmin funcionar sin necesidad de configuración, el programa CGI «/usr/lib/courier/courier/webmail/webadmin» necesita instalarse como «/usr/lib/cgi-bin/courierwebadmin» con el bit de «root» activado.
+ .
+ Esto puede tener serias implicaciones de seguridad, ya que courierwebadmin se ejecutará como «root». Además, esa solución no garantiza que funcione, dependiendo del tipo de servidor web y su configuración.
+ .
+ Si elige esta opción y la configuración del servidor web cumple con la política, puede acceder a la interfaz de administración mediante «http://localhost/cgi-bin/courierwebadmin».
+Description-eu.UTF-8: Aktibatu CGI programa?
+ Courier-webkudeaketak makina lokaletik kanpo funtzionatzeko, /usr/lib/courier/courier/webmail/webadmin CGI programa /usr/lib/cgi-bin/courierwebadmin bezala eta SUID bit-a aktibatuarekin instalatu behar da.
+ .
+ Honek segurtasun inplikazio larriak izan ditzake webkudeaketa root bezala exekutatzen bait da. Gainera ez da ziurtatzen konponbide honek funtzionatuko duela web zerbitzari software eta konfigurazio arabera.
+ .
+ Aukera hau hautatuaz gero eta web zerbitzari konfigurazioak onartzen badu kudeaketa interfazea http://localhost/cgi-bin/courierwebadmin helbidean eskuratu ahal izango duzu.
+Description-fi.UTF-8: Aktivoidaanko CGI-ohjelma?
+ Jotta courier-webadmin toimisi suoraan, CGI-ohjelma /usr/lib/courier/courier/webmail/webadmin tulee asentaa sijaintiin /usr/lib/cgi-bin/courierwebadmin SUID-bitti asetettuna.
+ .
+ Tästä saattaa aiheutua merkittäviä turvariskejä, koska courierwebadmin ajetaan pääkäyttäjänä. Lisäksi ratkaisu ei välttämättä toimi, riippuen verkkopalvelinohjelmasta ja sen asetuksista.
+ .
+ Jos valitset tämän vaihtoehdon ja verkkopalvelimen asetukset ovat säännösten mukaisia, voit käyttää ylläpitokäyttöliittymää osoitteessa http://localhost/cgi-bin/courierwebadmin.
+Description-fr.UTF-8: Faut-il activer le programme CGI ?
+ Pour que courier-webadmin fonctionne sans modifications, il est nécessaire de copier le programme CGI de /usr/lib/courier/courier/webmail/webadmin vers /usr/lib/cgi-bin/courierwebadmin et activer le bit SUID.
+ .
+ Ce choix peut avoir des implications sérieuses sur la sécurité car courierwebadmin s'exécute avec les droits du superutilisateur. Par ailleurs, rien ne garantit que cette solution fonctionne car elle dépend du type de serveur web et de sa configuration.
+ .
+ Si vous choisissez cette option et si la configuration de votre serveur web est conforme à la charte de la distribution, vous pourrez accéder à l'interface d'administration à l'adresse http://localhost/cgi-bin/courierwebadmin.
+Description-gl.UTF-8: ¿Activar o programa CGI?
+ Para permitir que courier-webadmin funcione trala instalación, é necesario instalar o programa CGI /usr/lib/courier/courier/webmail/webadmin en /usr/lib/cgi-bin/courierwebadmin co bit SUID establecido.
+ .
+ Isto pode ter importantes implicacións de seguridade, xa que courierwebadmin ha funcionar coma administrador. Aínda máis, non se pode garantir que esta solución funcione, dependendo do software servidor web e da súa configuración.
+ .
+ Se escolle esta opción e a configuración do servidor web se axusta á política de Debian, ha poder acceder á interface de administración a través de http://localhost/cgi-bin/courierwebadmin.
+Description-it.UTF-8: Attivare il programma CGI?
+ Per permettere a courier-webadmin di funzionare immediatamente, è necessario installare il programma CGI /usr/lib/courier/courier/webmail/webadmin come /usr/lib/cgi-bin/courierwebadmin con il bit SUID attivo.
+ .
+ Questo può avere delle serie conseguenze sulla sicurezza perché courierwebadmin viene eseguito da root. Inoltre non si garantisce che questa soluzione funzioni, perché dipende dal server web in uso e dalla sua configurazione.
+ .
+ Se si sceglie questa opzione e la configurazione del server web è conforme alla policy, sarà possibile accedere all'interfaccia d'amministrazione tramite http://localhost/cgi-bin/courierwebadmin.
+Description-ja.UTF-8: CGI プログラムを有効にしますか?
+ courier-webadmin に手を加えなくて良いようにするには、CGI プログラムである /usr/lib/courier/courier/webmail/webadmin を /usr/lib/cgi-bin/courierwebadmin にコピーして SUID ビットを設定する必要があります。
+ .
+ courierwebadmin は root として動作するので、これには重大なセキュリティ上の問題を起こす可能性があります。何よりも web サーバソフトとその設定に依存するので、動作が保証されません。
+ .
+ ここで「はい」を選び、web サーバの設定が Debian ポリシーに適合している場合、http://localhost/cgi-bin/courierwebadmin から管理用のフロントエンドへアクセスできます。
+Description-nl.UTF-8: Wilt u het CGI-programma activeren?
+ Opdat courier-webadmin meteen na installatie zou werken, dient het CGI-programma /usr/lib/courier/courier/webmail/webadmin geïnstalleerd te worden als /usr/lib/cgi-bin/courierwebadmin met de SUID-bit actief.
+ .
+ Dit kan belangrijke beveiligingsimplicaties hebben omdat courierwebadmin als root draait. Bovendien is er geen garantie dat dit werkt, dit is afhankelijk van de door u gebruikte webserver-software en de configuratie daarvan.
+ .
+ Als u toestemt en uw webserver-opzet voldoet aan het Debian-beleid, kunt u de beheersinterface benaderen op het adres http://localhost/cgi-bin/courierwebadmin.
+Description-pt.UTF-8: Activar o programa CGI?
+ Para permitir que o courier-webadmin funcione "chave-na-mão", o programa CGI /usr/lib/courier/courier/webmail/webadmin tem de ser instalado como /usr/lib/cgi-bin/courierwebadmin com o bit SUID activo.
+ .
+ Isto pode ter sérias implicações de segurança, porque o courierwebadmin corre como root. Além disso, não é garantido que essa solução funcione, dependendo do seu software servidor web e da sua configuração.
+ .
+ Se escolher esta opção e a configuração do seu servidor web está de acordo com as políticas, você pode aceder ao 'frontend' de administração através de http://localhost/cgi-bin/courierwebadmin.
+Description-ru.UTF-8: Активировать CGI-сценарии?
+ Для того, чтобы courier-webadmin работал "из коробки", нужно установить CGI-сценарий /usr/lib/courier/courier/webmail/webadminusr как /usr/lib/cgi-bin/courierwebadmin с установленным SUID-битом.
+ .
+ Это может иметь серьёзные последствия связанные с безопасностью, так как courierwebadmin работает от имени суперпользователя. Более того, работоспособность в таком случае не гарантируется, поскольку зависит от программного обеспечения веб-сервера и его настройки.
+ .
+ Если вы выберете этот параметр и настройка веб-сервера совместима с политикой Debian, то вы можете получить доступ к интерфейсу администратора через http://localhost/cgi-bin/courierwebadmin.
+Description-sv.UTF-8: Aktivera CGI-programmet?
+ För att tillåta courier-webadmin att fungera direkt måste CGI-programmet /usr/lib/courier/courier/webmail/webadmin kopieras till /usr/lib/cgi-bin/courierwebadmin med SUID-biten satt.
+ .
+ Detta kan innebära allvarliga säkerhetsproblem eftersom courierwebadmin kör som root. För det andra är det inte garanterat att fungera beroende på din webbserverprogramvara och dess konfiguration.
+ .
+ Om du godkänner detta val och dina webbserverinställningar följer Debians policy kan du få tillgång till administrationsgränssnittet genom http://localhost/cgi-bin/courierwebadmin.
+Description-tr.UTF-8: CGI Uygulaması etkin kılınsın mı?
+ Courier-webadmin'in dışarıdan çalışabilmesi için /usr/lib/courier/courier/webmail/webadmin CGI uygulamasının /usr/lib/cgi-bin/courierwebadmin dizinine kurulması ve SUID bitinin etkinleştirilmesi gerekmektedir.
+ .
+ Bu ciddi güvenlik problemleri yaratabilir, çünkü courierwebadmin root kullanıcı hakları ile çalışır. Bundan başka, bu çözümün işe yarayacağı garanti değildir, web sunucusu yazılımı ve yapılandırmasına göre farklı durumlar söz konusu olabilir.
+ .
+ Eğer bu seçeneği seçtiyseniz ve web sunucusu yapılandırması politika-uyumlu ise, yönetim arayüzüne http://localhost/cgi-bin/courierwebadmin üzerinden ulaşabilirsiniz.
+Description-vi.UTF-8: Kích hoạt chương trình CGI không?
+ Để cho phép phần mềm « courier-webadmin » hoạt động có sẵn, chương trình CGI « usr/lib/courier/courier/webmail/webadmin » cần phải được cài đặt như là « /usr/lib/cgi-bin/courierwebadmin », cũng đặt bit SUID.
+ .
+ Trường hợp này có thể rủi ro bảo mật, vì courierwebadmin chạy với tư cách người chủ (root). Hơn nữa, giải pháp đó không nhất thiết đúng, phụ thuộc vào phần mềm phục vụ Web và cấu hình của nó.
+ .
+ Bật tùy chọn này và thiết lập trình phục vụ Web tùy theo chính sách thì bạn có quyền truy cập giao diện quản trị ở địa chỉ « http://localhost/cgi-bin/courierwebadmin ».
+
+Template: courier-webadmin/password
+Type: password
+Description: Password for Courier administration:
+ A password is needed to protect access to the Courier administration
+ web interface. Please choose one now.
+Description-cs.UTF-8: Heslo pro administraci Courier:
+ Heslo se používá k ochraně přístupu k administračnímu webovému rozhraní Courier. Nastavte ho prosím.
+Description-da.UTF-8: Adgangskode for Courieradministration:
+ En adgangskode er krævet for at beskytte adgang til Courieradministrationens internetgrænseflade. Vælg venligst en nu.
+Description-de.UTF-8: Passwort zur Courier-Administration:
+ Es wird ein Passwort benötigt, um den Zugriff auf die Courier-Administations-Web-Schnittstelle abzusichern. Bitte wählen Sie eines aus.
+Description-es.UTF-8: Contraseña para la administración de Courier:
+ Se necesita una contraseña para proteger el acceso a la interfaz web de administración de Courier. Por favor, elija una ahora.
+Description-eu.UTF-8: Courier kudeaketarako pasahitza:
+ Pasahitz bat beharrezkoa da Courier kudeaketa web interfazea babesteko. Mesedez hautatu bat orain.
+Description-fi.UTF-8: Courier-ylläpidon salasana:
+ Verkkopohjaisen Courier-ylläpitokäyttöliittymän käytön suojaamiseksi tarvitaan salasana. Valitse sellainen nyt.
+Description-fr.UTF-8: Mot de passe pour l'administration de Courier :
+ Un mot de passe est indispensable pour protéger l'accès à l'interface web d'administration de Courier. Veuillez le choisir maintenant.
+Description-gl.UTF-8: Contrasinal para a administración de Courier:
+ É preciso un contrasinal para protexer o acceso á interface de administración web de Courier. Escolla un contrasinal agora.
+Description-it.UTF-8: Password per l'amministrazione di Courier:
+ Per proteggere l'accesso all'interfaccia d'amministrazione via web di Courier è necessaria una password. Sceglierne una adesso.
+Description-ja.UTF-8: Courier 管理用パスワード:
+ Courier の管理 web 画面へのアクセス制限を行うため、パスワードが必要となります。ここでパスワードを決めてください。
+Description-nl.UTF-8: Beheerderswachtwoord voor Courier:
+ Om de Courier web-beheersinterface te beveiligen is er een wachtwoord vereist. U dient nu een wachtwoord te kiezen.
+Description-pt.UTF-8: Palavra-chave para a Administração do Courier:
+ É necessária uma palavra-chave para proteger o acesso ao interface de administração do Courier, via web. Por favor escolha agora uma.
+Description-ru.UTF-8: Пароль для администратора Courier:
+ Пароль необходим для защиты доступа к администраторскому веб-интерфейсу Courier. Выберите пароль.
+Description-sv.UTF-8: Lösenord för administration av Courier:
+ Ett lösenord behövs för att skydda åtkomsten till webbgränssnittet för konfiguration av Courier. Var vänlig välj ett nu.
+Description-tr.UTF-8: Courier yönetimi için parola:
+ Courier yönetimi web arayüzünü korumak için bir parola gerekiyor. Lütfen şu an bir tane seçin.
+Description-vi.UTF-8: Mật khẩu quản trị Courier:
+ Cần thiết mật khẩu để bảo vệ khả năng truy cập giao diện Web quản trị Courier. Hãy chọn một mật khẩu lập tức.

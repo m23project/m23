@@ -1,0 +1,696 @@
+Template: slbackup/enable
+Type: boolean
+Default: false
+Description: Configure the backup system now?
+ Select this if you want to configure the backup system now.
+ .
+ If you choose to do so, you will get the opportunity to configure one
+ client and the backup server, and a cron job will be configured to start
+ the backup session once a day, on a moment of time of your choice.
+ .
+ To configure more than one backup client, you could either use the
+ Webmin-module provided by the webmin-slbackup package, or you can do this
+ manually in the file /etc/slbackup/slbackup.conf.
+ .
+ If you choose to not configure slbackup now, an example configuration file
+ will be installed, but cron will not be configured to start any backup
+ sessions. To activate backup, you can reconfigure the system by running
+ 'dpkg-reconfigure slbackup' (as root) or manually by editing the
+ /etc/slbackup/slbackup.conf and /etc/cron.d/slbackup files.
+Description-cs.UTF-8: Nastavit nyní zálohovací systém?
+ Vyberte, zda nyní chcete nastavit zálohovací systém.
+ .
+ Budete-li souhlasit, můžete nyní nastavit zálohovací server, jednoho klienta a cronovou úlohu, která jednou denně ve stanovený čas spustí zálohování.
+ .
+ Pro nastavení dalších klientů můžete použít buď modul do Webminu (v balíčku webmin-slbackup), nebo vše můžete nastavit ručně v souboru /etc/slbackup/slbackup.conf.
+ .
+ Jestliže zvolíte, že nyní nechcete slbackup konfigurovat, nainstaluje se sice ukázkový konfigurační soubor, ale žádná cronová úloha se nenaplánuje. Až budete chtít zálohování opravdu používat, můžete buď jako root znovu spustit nastavení balíčku příkazem 'dpkg-reconfigure slbackup', nebo můžete ručně upravit soubory /etc/slbackup/slbackup.conf a /etc/cron.d/slbackup.
+Description-da.UTF-8: Konfigurer sikkerhedskopieringssystemet nu?
+ Vælg denne hvis du ønsker at konfigurere sikkerhedskopieringssystemet nu.
+ .
+ Hvis du vælger at gøre dette, vil du få muligheden for at konfigurere en klient og serveren for sikkerhedskopiering, og et cronjob vil blive konfigureret til at starte sikkerhedskopieringssessionen en gang om dagen; på et tidspunkt du vælger.
+ .
+ For at konfigurere mere end en sikkerhedskopieringsklient, kan du enten bruge Webmin-module tilbudt af pakken webmin-slbackup, eller du kan gøre dette manuelt i filen /etc/slbackup/slbackup.conf.
+ .
+ Hvis du vælger ikke at konfigurere slbackup nu, vil en eksempelkonfigurationsfil blive installeret, men cron vil ikke blive konfigureret til at starte sikkerhedskopieringssessioner. For at aktivere sikkerhedskopiering, kan du rekonfigurere systemet ved at køre 'dpkg-reconfigure slbackup' (som root) eller manuelt ved at redigere filerne /etc/slbackup/slbackup.conf og /etc/cron.d/slbackup.
+Description-de.UTF-8: Das Backup-System jetzt konfigurieren?
+ Wählen Sie dies aus, falls Sie jetzt das Backupsystem konfigurieren wollen.
+ .
+ Falls Sie sich dafür entscheiden, werden Sie die Möglichkeit erhalten, einen Client und den Backup-Server zu konfigurieren, und ein Cronjob wird konfiguriert werden, um die Backupsitzung einmal täglich zu einem Zeitpunkt Ihrer Wahl zu starten.
+ .
+ Um mehr als einen Backupclient zu konfigurieren, können Sie entweder das Webmin-Modul aus dem webmin-slbackup-Paket verwenden oder Sie können dies manuell in der Datei /etc/slbackup/slbackup.conf vornehmen.
+ .
+ Falls Sie sich entscheiden, Slbackup jetzt nicht zu konfigurieren, wird eine Beispieldatei installiert, aber Cron wird nicht konfiguriert, irgendwelche Backupsitzungen zu starten. Um das Backup zu aktivieren, können Sie das System mittels »dpkg-reconfigure slbackup« (als root) oder durch manuelles Bearbeiten der Dateien /etc/slbackup/slbackup.conf und /etc/cron.d/slbackup rekonfigurieren.
+Description-es.UTF-8: ¿Desea configurar el sistema de copias de seguridad ahora?
+ Seleccione esta opción si desea configurar el sistema de copias de seguridad en este momento.
+ .
+ Si selecciona esta opción, tendrá la oportunidad de configurar un cliente y un servidor de copias de seguridad, así como configurar una tarea de cron para iniciar una sesión diaria de copias de seguridad, a la hora que desee.
+ .
+ Para configurar más de un cliente de copias de seguridad puede usar el módulo Webmin, que proporciona el paquete webmin-slbackup, o editar directamente el fichero «/etc/slbackup/slbackup.conf».
+ .
+ Si escoge no configurar slbackup en este momento, se instalará un fichero de configuración de ejemplo, pero no se configurará cron para la ejecución de ninguna sesión de copias de seguridad. Para activar el sistema de copias de seguridad, puede reconfigurar el sistema ejecutando «dpkg-reconfigure slbackup» (como administrador) o editar manualmente los ficheros «/etc/slbackup/slbackup.conf» y «/etc/cron.d/slbackup».
+Description-fr.UTF-8: Faut-il configurer le système de sauvegarde maintenant ?
+ Veuillez choisir si vous souhaitez configurer le système de sauvegarde maintenant.
+ .
+ Vous aurez alors la possibilité de configurer le serveur de sauvegarde et un client. Une tâche périodique de cron sera mise en place pour lancer la session de sauvegarde quotidiennement à l'heure de votre choix.
+ .
+ Pour configurer plus d'un client de sauvegarde, vous pouvez soit utiliser le module pour Webmin fourni dans le paquet webmin-slbackup, soit le faire vous-même en modifiant le fichier /etc/slbackup/slbackup.conf.
+ .
+ Si vous ne configurez pas slbackup maintenant, un fichier de configuration modèle sera mis en place, mais aucune tâche de lancement de session de sauvegarde ne sera créée. Pour activer la sauvegarde, vous pourrez soit utiliser la commande « dpkg-reconfigure slbackup » avec les droits du super-utilisateur, soit modifier ou créer vous-même les fichiers /etc/slbackup/slbackup.conf et /etc/cron.d/slbackup.
+Description-it.UTF-8: Configurare il sistema di backup adesso?
+ Selezionare questa opzione se si desidera configurare adesso il sistema di backup.
+ .
+ Se si sceglie di farlo ora, si avrà l'opportunità di configurare un client e il server di backup; inoltre verrà configurato un compito cron per avviare la sessione di backup una volta al giorno, in un orario a scelta.
+ .
+ Per configurare più di un client di backup, si può usare il modulo Webmin fornito dal pacchetto webmin-slbackup oppure lo si può fare a mano nel file /etc/slbackup/slbackup.conf.
+ .
+ Se si sceglie di non configurare ora slbackup, verrà installato un file di configurazione d'esempio, ma cron non verrà configurato per avviare alcuna sessione di backup. Per attivare il backup, si può riconfigurare il sistema eseguendo «dpkg-reconfigure slbackup» (come root) oppure manualmente modificando i file /etc/slbackup/slbackup.conf e /etc/cron.d/slbackup.
+Description-ja.UTF-8: バックアップシステムをここで設定しますか?
+ バックアップシステムをここで設定するかどうか選択してください。
+ .
+ 設定することを選択した場合、クライアント一つとバックアップサーバを設定する機会が設けられ、cron ジョブがバックアップセッションを一日一度、選択した時刻に開始するように設定されます。
+ .
+ バックアップクライアントを複数設定するには、webmin-slbackup パッケージにより提供される Webmin モジュールを利用するかファイル /etc/slbackup/slbackup.conf を手作業で編集してください。
+ .
+ slbackup をここで設定しないことを選択した場合は設定ファイル例はインストールされますが、バックアップセッションを開始する cron は何も設定されません。「dpkg-reconfigure slbackup」を (root で) 実行するか /etc/slbackup/slbackup.conf と /etc/cron.d/slbackup ファイルを手作業で編集してシステムを再設定することでバックアップを有効化できます。
+Description-nb.UTF-8: Vil du konfigurere backup-systemet nå?
+ Velg dette for å konfigurere backupsystemet nå.
+ .
+ Hvis du velger å gjøre dette vil du få muligheten til å konfigurere en klient og en backup-tjener. En cron-jobb vil bli satt opp til å starte sikkerhetskopieringen en gang om dagen. Tidspunktet kan du bestemme senere i denne installasjonen.
+ .
+ For å sette opp mer enn en backup-klient kan du enten bruke Webmin-modulen som følger med i pakka «webmin-slbackup», eller gjøre det manuelt i fila «/etc/slbackup/slbackup.conf».
+ .
+ Hvis du ikke vil konfigurere slbackup nå vil en eksempel-fil bli installert, men cron blir ikke satt opp til å starte sikkerhetskopieringsøkter automatisk. For å aktivere backup-systemet kan du kan når som helst kjøre «dpkg-reconfigure slbackup» (som brukeren «root»), eller redigere filene «/etc/slbackup/slbackup.conf» og «/etc/cron.d/slbackup» manuelt.
+Description-nl.UTF-8: Wilt u het backup-systeem nu instellen?
+ Selecteer dit als u het backup-systeem nu wilt instellen.
+ .
+ Als u hiervoor kiest krijgt u de mogelijkheid om één client, en de backup-server in te stellen, tevens wordt er een cron-taak ingesteld om de backup-sessie eens per dag te starten op een moment van uw keuze.
+ .
+ Om meer dan één backup-client in te stellen dient u of de Webmin-module voorzien door het pakket 'webmin-slbackup' te gebruiken, of dit handmatig in te stellen in het bestand /etc/slbackup/slbackup.conf.
+ .
+ Als u ervoor kiest om slbackup nu niet in te stellen wordt er een voorbeeld-configuratiebestand geïnstalleerd, maar wordt cron niet ingesteld om een backup-sessie op te starten. Om de backup te activeren kun u het systeem herconfigureren door het commando 'dpkg-reconfigure slbackup' uit te voeren als root, of door de bestanden /etc/slbackup/slbackup.conf en /etc/cron.d/slbackup handmatig aan te passen.
+Description-no.UTF-8: Vil du konfigurere backup-systemet nå?
+ Velg dette for å konfigurere backupsystemet nå.
+ .
+ Hvis du velger å gjøre dette vil du få muligheten til å konfigurere en klient og en backup-tjener. En cron-jobb vil bli satt opp til å starte sikkerhetskopieringen en gang om dagen. Tidspunktet kan du bestemme senere i denne installasjonen.
+ .
+ For å sette opp mer enn en backup-klient kan du enten bruke Webmin-modulen som følger med i pakka «webmin-slbackup», eller gjøre det manuelt i fila «/etc/slbackup/slbackup.conf».
+ .
+ Hvis du ikke vil konfigurere slbackup nå vil en eksempel-fil bli installert, men cron blir ikke satt opp til å starte sikkerhetskopieringsøkter automatisk. For å aktivere backup-systemet kan du kan når som helst kjøre «dpkg-reconfigure slbackup» (som brukeren «root»), eller redigere filene «/etc/slbackup/slbackup.conf» og «/etc/cron.d/slbackup» manuelt.
+Description-pt.UTF-8: Configurar agora o sistema de backup?
+ Seleccione isto se quer configurar agora o sistema de backup.
+ .
+ Se o fizer agora, terá a oportunidade de configurar um cliente e o servidor de backup, e será configurado um trabalho cron para iniciar o backup uma vez por dia, a uma hora à sua escolha.
+ .
+ Para configurar mais de um cliente de backup, pode fazê-lo tanto pelo módulo Webmin do pacote webmin-slbackup, ou pode fazê-lo manualmente no ficheiro /etc/slbackup/slbackup.conf.
+ .
+ Se escolher não configurar agora o slbackup, será instalado um ficheiro de configuração exemplo, mas o cron não será configurado para iniciar nenhuma sessão de backup. Para activar o backup, pode reconfigurar o sistema correndo 'dpkg-reconfigure slbackup' (como root) ou editando manualmente os ficheiros /etc/slbackup/slbackup.conf e /etc/cron.d/slbackup.
+Description-ru.UTF-8: Настроить систему резервного копирования прямо сейчас?
+ Укажите, хотите ли вы настроить систему резервного копирования прямо сейчас?
+ .
+ Если вы ответите утвердительно, то у вас будет возможность настроить клиент и сервер резервного копирования, будет включено задание cron для выполнения резервного копирования один раз в день в заданное вами время.
+ .
+ Для более детальной настройки клиента резервного копирования вы можете использовать Webmin-модуль из пакета webmin-slbackup или отредактировать файл /etc/slbackup/slbackup.conf вручную.
+ .
+ Если вы ответите отрицательно, то будет установлен файл примера с настройкой, а задание cron настроено не будет. Чтобы активировать резервное копирование вы можете перенастроить систему командой 'dpkg-reconfigure slbackup' (запустив с правами root) или отредактировать файлы /etc/slbackup/slbackup.conf и /etc/cron.d/slbackup.
+Description-sv.UTF-8: Konfigurera systemet för säkerhetskopiering nu?
+ Välj denna om du vill konfigurera systemet för säkerhetskopiering nu.
+ .
+ Om du väljer att göra detta kommer du få möjligheten att konfigurera klienten och servern för säkerhetskopiering, ett cron-jobb kommer att konfigureras att starta säkerhetskopieringen en gång per dag, på en tidpunkt du själv väljer.
+ .
+ För att konfigurera fler än en klient kan du antingen använda Webmin-modulen som kommer med paketet webmin-slbackup, eller så kan du göra detta manuellt i filen /etc/slbackup/slbackup.conf.
+ .
+ Om du väljer att inte konfigurera slbackup nu, kommern en exempelkonfigurationsfil att installeras men cron kommer inte att konfigureras för att starta några kopieringssessioner. För att aktivera en kopiering, kan du konfigurera om systemet genom att köra "dpkg-reconfigure slbackup" (som root) eller manuellt genom att redigera filerna /etc/slbackup/slbackup.conf och /etc/cron.d/slbackup.
+Description-vi.UTF-8: Cấu hình hệ thống sao lưu ngay bây giờ ?
+ Muốn cấu hình hệ thống sao lưu ngay bây giờ thì bật tuỳ chọn này.
+ .
+ Bật tùy chọn này thì bạn có dịp cấu hình một ứng dụng khách và trình phục vụ sao lưu, và một công việc định kỳ (cron) sẽ được lập để khởi chạy buổi hợp sao lưu mỗi ngày một lần vào một lúc được bạn chọn.
+ .
+ Để cấu hình nhiều ứng dụng khách sao lưu, bạn có thể sử dụng hoặc mô-đun « webmin-module » được gói webmin-slbackup gói cung cấp, hoặc làm cấu hình bằng tay trong tập tin « /etc/slbackup/slbackup.conf ».
+ .
+ Không cấu hình slbackup ngay bây giờ thì một tập tin cấu hình mẫu sẽ được cài đặt mà công việc định kỳ sẽ không được lập để khởi chạy buổi hợp sao lưu. Để kích hoạt chức năng sao lưu thì bạn có thể cấu hình lại hệ thống bằng cách chạy « dpkg-reconfigure slbackup » (dưới người chủ), hoặc tự cấu hình bằng cách chỉnh sửa hai tập tin « /etc/slbackup/slbackup.conf » và « /etc/cron.d/slbackup ».
+Description-zh_CN.UTF-8: 现在配置备份系统？
+ 如果想现在配置备份系统，请选择此项。
+ .
+ 如果选择这么做，您将可以配置一个客户端以及备份服务器，然后，将配置一个 cron 作业以在每天的您选择的时刻启动一个备份会话。
+ .
+ 要配置多于一个的备份客户端，您既可以使用 webmin-slbackup 包提供的 Webmin-module，或者在 /etc/slbackup/slbackup.conf 文件中手动配置。
+ .
+ 如果您选择现在不配置 slbackup，将安装一个示例配置文件，但是将不配置 cron 以启动任何备份会话。要激活备份，您可以通过运行 'dpkg-reconfigure slbackup' (以 root 身份) 活手动编辑 /etc/slbackup/slbackup.conf 和 /etc/cron.d/slbackup 文件。
+
+Template: slbackup/backuptime
+Type: string
+Default: 01:00
+Description: Start time of the backup session:
+ By default slbackup starts one backup session each day, and here you can
+ choose when to start this session. Enter the time in a HH:MM-format.
+Description-cs.UTF-8: Začátek zálohování:
+ Obvykle se slbackup spouští jednou denně. Nyní si můžete zvolit čas, kdy se má zálohování spustit. Použijte formát HH:MM.
+Description-da.UTF-8: Starttidspunkt på sikkerhedskopieringssessionen:
+ Som standard starter slbackup en sikkerhedskopieringssession hver dag, og her kan du vælge hvornår denne session skal starte. Indtast tidspunktet i et TT:MM-format.
+Description-de.UTF-8: Startzeit für die Backupsitzung:
+ Standardmäßig startet Slbackup eine Sitzung pro Tag, und hier können Sie auswählen, wann diese Sitzung begonnen werden soll. Geben Sie die Zeit im HH:MM-Format an.
+Description-es.UTF-8: Tiempo de inicio de la sesión de copias de seguridad:
+ Por omisión, slbackup inicia una sesión de copia de seguridad cada día, permitiéndole escoger el momento de iniciar esta sesión. Introduzca la hora con el formato «HH:MM».
+Description-fr.UTF-8: Heure de début de la session de sauvegarde :
+ Par défaut, slbackup lance une sauvegarde quotidiennement. L'heure que vous indiquez ici sera l'heure de début de la sauvegarde. Elle doit être indiquée sous la forme HH:MM.
+Description-it.UTF-8: Ora di inizio della sessione di backup:
+ In modo predefinito slbackup avvia una sessione di backup al giorno; qui si può scegliere quando avviarla. Inserire l'orario in formato HH:MM.
+Description-ja.UTF-8: バックアップセッションを開始する時刻:
+ デフォルトで slbackup はバックアップセッションを一日一度開始します。ここでは このセッションをいつ開始するのか選択できます。HH:MM 形式で入力してください。
+Description-nb.UTF-8: Klokkeslett for når sikkerhetskopieringsøkten skal starte:
+ Som standard vil slbackup starte en sikkerhetskopieringsøkt hver dag. Skriv inn når du vil at økten skal starte i formatet HH:MM.
+Description-nl.UTF-8: Starttijd van de backup-sessie:
+ Standaard start slbackup slechts één backup-sessie per dag en kunt u hier aangeven wanneer deze sessie start. Gelieve de tijd aan te geven in HH:MM-formaat.
+Description-no.UTF-8: Klokkeslett for når sikkerhetskopieringsøkten skal starte:
+ Som standard vil slbackup starte en sikkerhetskopieringsøkt hver dag. Skriv inn når du vil at økten skal starte i formatet HH:MM.
+Description-pt.UTF-8: Hora de início da sessão de backup:
+ Por omissão o slbackup inicia uma sessão de backup por dia, e aqui pode escolher quando iniciar esta sessão. Introduza a hora no formato HH:MM.
+Description-ru.UTF-8: Время начала сеанса резервного копирования:
+ По умолчанию slbackup выполняет резервное копирование каждый день, а здесь вы можете указать когда должен начинаться сеанс. Укажите время в формате ЧЧ:ММ.
+Description-sv.UTF-8: Starttid för säkerhetskopieringssessionen:
+ Som standard startar slbackup en säkerhetskopiering varje dag, och här kan du välja när denna session ska startas. Ange tiden i formatet HH:MM.
+Description-vi.UTF-8: Giờ khởi chạy buổi hợp sao lưu :
+ Mặc định là slbackup khởi chạy mỗi ngày một buổi hợp sao lưu, vào lúc bạn lập ở đây. Gõ thời gian theo định dạng « GG:PP » (chu kỳ 24 giờ, giờ và phút có hai chữ số, v.d. « 16:30 » là bốn giờ rưỡi buổi chiều).
+Description-zh_CN.UTF-8: 备份会话的启动时间：
+ 默认上，slbackup 每天启动一次备份会话，现在您可以选择何时启动此会话。以 HH:MM 的格式输入时间。
+
+Template: slbackup/client_name
+Type: string
+Default: localhost
+Description: Name of your client:
+ In slbackup each client has a unique name which identifies it. This name
+ does not necessarily have anything to do with the hostname. Please enter
+ the unique name of the client you want to configure.
+Description-cs.UTF-8: Jméno klienta:
+ V slbackupu má každý klient jedinečné jméno, které jej jednoznačně identifikuje. Toto jméno nemusí mít nic společného se jménem počítače. Zadejte prosím jedinečné jméno klienta, kterého chcete nakonfigurovat.
+Description-da.UTF-8: Navn på din klient:
+ I slbackup har hver klient et unikt navn som identificerer klienten. Dette navn har ikke nødvendigvis noget med værtsnavnet at gøre. Indtast venligst det unikke navn på klienten, du ønsker at konfigurere.
+Description-de.UTF-8: Name Ihres Clients:
+ In Slbackup hat jeder Client eine eindeutigen Namen, der ihn identifiziert. Dieser Name hat nicht notwendigerweise etwas mit dem Hostnamen zu tun. Bitte geben Sie den eindeutigen Namen des Clients ein, den Sie konfigurieren möchten.
+Description-es.UTF-8: Nombre de su cliente:
+ Con slbackup, cada cliente tiene un nombre único que le identifica. Este nombre no tiene porqué guardar relación con el nombre del equipo. Introduzca el nombre único del cliente que desea configurar.
+Description-fr.UTF-8: Nom du client :
+ Dans slbackup, chaque client doit porter un nom unique. Ce nom n'est pas forcément lié au nom d'hôte. Veuillez indiquer le nom unique du client que vous allez configurer.
+Description-it.UTF-8: Nome del proprio client:
+ In slbackup ogni client ha un nome univoco che lo identifica. Questo nome non è necessariamente correlato con il nome host. Inserire il nome univoco del client che si desidera configurare.
+Description-nb.UTF-8: Navnet til klienten:
+ I slbackup har hver klient et eget navn som identifiserer den. Dette navnet trenger ikke å ha noe med vertsnavnet å gjøre. Skriv inn det unike navnet til klienten du vil konfigurere.
+Description-nl.UTF-8: Naam van uw client:
+ Elke client heeft in slbackup een unieke naam die de client identificeert. Deze naam hoeft geen relatie te hebben met de computernaam. Wat is de unieke naam voor de client die u wilt instellen?
+Description-no.UTF-8: Navnet til klienten:
+ I slbackup har hver klient et eget navn som identifiserer den. Dette navnet trenger ikke å ha noe med vertsnavnet å gjøre. Skriv inn det unike navnet til klienten du vil konfigurere.
+Description-pt.UTF-8: Nome do seu cliente:
+ No slbackup cada cliente tem um nome único que o identifica. Este nome não tem necessariamente nada a ver com o nome da máquina. Por favor introduza o nome único do cliente que deseja configurar.
+Description-ru.UTF-8: Имя клиента:
+ В slbackup у каждого клиента есть уникальное имя, по которому он распознаётся. Это имя необязательно должно совпадать с именем хоста. Введите здесь уникальное имя клиента, которого нужно настроить.
+Description-sv.UTF-8: Namnet på din klient:
+ Varje klient i slbackup har ett unikt namn som identifierar dem. Detta namn behöver inte har något att göra med sitt värdnamn. Ange det unika namnet för klienten du vill konfigurera.
+Description-vi.UTF-8: Tên của ứng dụng khách:
+ Đối với slbackup mỗi ứng dụng khách có một tên duy nhất để phân biệt. Tên này không cần nhất thiết tương ứng với tên máy. Hãy gõ tên duy nhất của ứng dụng khách cần cấu hình.
+Description-zh_CN.UTF-8: 您的客户端的名称：
+ 在 slbackup 中，每个客户端都有一个唯一标示它的独特的名称。此名称不需要对主机名进行任何操作。请输入您要配置的客户端的独特的名称。
+
+Template: slbackup/client_type
+Type: select
+Choices: local, extern
+Default: local
+Description: Type of client to configure:
+ This determines what type of client that will be configured now.
+ .
+ If you choose local, the server will back up data from this computer. If
+ you choose extern, the server will back up data from another computer
+ using a SSH connection (this choice assumes that you install SSH and
+ provide a passwordless connection between the user running the backup
+ software on this computer (probably root) and the user running the backup
+ software on the client).
+Description-cs.UTF-8: Typ klienta:
+ Tímto určíte typ klienta, kterého nyní budete konfigurovat.
+ .
+ Vyberete-li 'lokální', server bude zálohovat data z tohoto počítače. Zvolíte-li možnost 'externí', server bude zálohovat data z jiného počítače pomocí SSH spojení. (To předpokládá, že nainstalujete SSH a poskytnete bezheslové spojení mezi lokálním uživatelem, pod kterým běží zálohovací software (pravděpodobně root) a uživatelem, pod kterým běží zálohovací software na klientovi.)
+Description-da.UTF-8: Klienttype der skal konfigureres:
+ Dette afgør hvilken klienttype som vil blive konfigureret nu.
+ .
+ Hvis du vælger lokal, vil serveren lave sikkerhedskopi af data fra denne computer. Hvis du vælger ekstern, vil serveren lave sikkerhedskopi for data på en anden computer ved brug af en SSH-forbindelse (dette valg antager, at du installerer SSH og tilbyder en forbindelse uden adgangskode mellem brugeren der kører sikker,hedskopiprogrammet på denne computer (sikkert root) og brugeren som kører sikkerhedskopiprogrammet på klienten).
+Description-de.UTF-8: Art des zu konfigurierenden Clients:
+ Dies bestimmt, welche Art von Client jetzt konfiguriert wird.
+ .
+ Falls Sie »lokal« wählen, wird der Server Daten von diesem Computer sichern. Falls Sie »extern« wählen, wird der Server Daten von einem anderen Computer über eine SSH-Verbindung sichern (diese Wahl nimmt an, dass Sie SSH installieren und eine passwortfreie Verbindung zwischen dem Benutzer, der die Backup-Software auf diesem Computer betreibt (wahrscheinlich root) und dem Benutzer, der die Backupsoftware auf dem Client betreibt, existiert.).
+Description-es.UTF-8: Tipo de cliente a configurar:
+ Esto define el tipo de cliente que se configurará a continuación.
+ .
+ Si escoge la opción «local», el servidor copiará los datos de este equipo. Si escoge «extern», el servidor copiará los datos de otro equipo mediante una conexión SSH (esta opción presupone que SSH está instalado y que tiene una conexión sin contraseña entre el usuario que ejecuta el programa de copia de seguridad en este equipo, probablemente «root», y el usuario que ejecuta el programa de copia de seguridad en el cliente).
+Description-fr.UTF-8: Type de client à configurer :
+ Ce choix détermine le type de client qui va être configuré.
+ .
+ Si vous choisissez la valeur « local », la sauvegarde concernera les données de cette machine. Si vous choisissez « extern », le serveur sauvegardera les données d'une autre machine via une connexion SSH (sous réserve que SSH soit installé et qu'une connexion sans mot de passe soit possible entre l'utilisateur qui exécute le serveur de sauvegarde sur cette machine - probablement le superutilisateur « root » - et l'utilisateur qui exécute le logiciel de sauvegarde sur le client).
+Description-it.UTF-8: Tipo di client da configurare:
+ Questo determina quale tipo di client verrà configurato adesso.
+ .
+ Se si sceglie locale, il server farà il backup dei dati da questo computer. Se si sceglie esterno, il server farà il backup dei dati da un altro computer usando una connessione SSH (questa scelta presume che si installi SSH e si fornisca una connessione senza password tra l'utente che esegue il software di backup su questo computer (probabilmente root) e l'utente che esegue il software di backup sul client).
+Description-ja.UTF-8: 設定するクライアントの種類:
+ これはここで設定するクライアントの種類を決定します。
+ .
+ local を選択した場合、サーバはこのコンピュータにあるデータからバックアップを行います。extern を選択した場合、サーバは SSH 接続を使って別のコンピュータにあるデータからバックアップを行います(このオプションでは SSH がインストールしてあり、このコンピュータ上でバックアップソフトウェアを実行するユーザ (恐らく root) とクライアント上でバックアップソフトウェアを実行するユーザとの間でパスワード不要の接続が提供されることを前提としています)。
+Description-nb.UTF-8: Type klient å konfigurere:
+ Dette bestemmer hva slags klient som skal bli konfigurert nå.
+ .
+ Velger du «lokal» vil tjeneren ta sikkerthetskopier av denne maskinen. Velger du «ekstern» vil tjeneren ta sikkerhetskopier fra en annen maskin ved hjelp av en SSH-oppkobling (dette alternativet tar utgangspunkt i at du har SSH innstalert og at det er mulig å sette opp en oppkobling uten passord mellom brukeren som kjører backup-programmet på denne maskinen (sannsynligvis brukeren root) og brukeren som kjører backup-programmet på klienten).
+Description-nl.UTF-8: Type te configureren client:
+ Dit bepaald het type van de client die u nu gaat instellen.
+ .
+ Als u 'local' kiest zal de server van de data op deze computer een backup maken. Als u extern kiest maakt de server een backup van de data op een andere computer via een SSH-verbinding (dit neemt aan dat u SSH geïnstalleerd heeft en een wachtwoordloze verbinding tussen de gebruiker als wie de backup-software draait op deze computer (waarschijnlijk root) en de gebruiker als wie de backup-software draait op de client heeft ingesteld).
+Description-no.UTF-8: Type klient å konfigurere:
+ Dette bestemmer hva slags klient som skal bli konfigurert nå.
+ .
+ Velger du «lokal» vil tjeneren ta sikkerthetskopier av denne maskinen. Velger du «ekstern» vil tjeneren ta sikkerhetskopier fra en annen maskin ved hjelp av en SSH-oppkobling (dette alternativet tar utgangspunkt i at du har SSH innstalert og at det er mulig å sette opp en oppkobling uten passord mellom brukeren som kjører backup-programmet på denne maskinen (sannsynligvis brukeren root) og brukeren som kjører backup-programmet på klienten).
+Description-pt.UTF-8: Tipo do cliente a configurar:
+ Isto determina que tipo de cliente será configurado agora.
+ .
+ Se escolher local, o servidor irá guardar os seus dados deste computador. Se escolher externo, o servidor irá guardar os seus dados de outro computador usando uma ligação SSH (esta  escolha assume que instala o SSH e configura uma ligação sem palavra-chave entre o utilizador que corre o software de backup neste computador (provavelmente root) e o utilizador que corre o software de backup no cliente.)
+Description-ru.UTF-8: Тип настраиваемого клиента:
+ Здесь задаётся тип настраиваемого клиента.
+ .
+ Если вы выберете local, то будет настроен клиен на этом компьютере. Если вы выберете extern, то будет настроен клиент на другом компьютере через SSH-соединение (данный выбор предполагает, что вы установите SSH и настроите беспарольное соединение между пользователем, с правами которого работает ПО резервного копирования на этом компьютере (вероятно, root) и пользователем, с правами которого работает ПО резервного копирования на клиенте).
+Description-sv.UTF-8: Typ av klient att konfigurera:
+ Detta bestämmer vilken typ av klient som nu kommer att konfigureras.
+ .
+ Om du väljer lokal, kommer servern att säkerhetskopiera från denna dator. Om du väljer extern kommer servern att säkerhetskopiera data från en annan dator via en SSH-anslutning (detta val antar att du har installerat SSH och kan sätta upp en anslutning utan lösenord mellan användaren som kör programvaran på denna dator (antagligen root) och användare som kör klientens programvara för säkerhetskopiering.)
+Description-vi.UTF-8: Loại khách cần cấu hình:
+ Giá trị này quyết định loại ứng dụng khách cần cấu hình ngay bây giờ.
+ .
+ Tuỳ chọn:
+  • local (cục bộ): máy phục vụ sao lưu dữ liệu từ máy tính này.
+  • extern (viết tắt cho bên ngoài): máy phục vụ sao lưu dữ liệu từ một máy tính khác, dùng kết nối SSH. Sự chọn này giả sử rằng bạn cài đặt SSH và cung cấp một kết nối không yêu cầu mật khẩu giữa người dùng chạy phần mềm sao lưu trên máy tính này (rất có thể là « root ») và người dùng chạy phần mềm sao lưu trên máy khách).
+Description-zh_CN.UTF-8: 要配置的客户端的类型：
+ 这确定将配置何种类型的客户端。
+ .
+ 如果选择本地(local)，服务器将从此计算机备份数据。如果选择外部(extern)，服务器将使用 SSH 连接从启动计算机备份数据(这个选项假设您已经安装了 SSH，并在此计算机上运行备份软件的用户(很可能是 root)和客户端上运行备份软件的用户之间提供一个免口令的连接)。
+
+Template: slbackup/client_address
+Type: string
+Default: localhost
+Description: Client hostname or IP address:
+ You have choosen to configure an external client. Please enter the
+ client's hostname or IP address.
+Description-cs.UTF-8: Jméno klienta nebo IP adresa:
+ Zvolili jste, že budete nastavovat externího klienta. Zadejte prosím jméno tohoto počítače nebo jeho IP adresu.
+Description-da.UTF-8: Klientværtsnavn eller IP-adresse:
+ Du har valgt at konfigurere en ekstern klient. Indtast venligst klientens værtsnavn eller IP-adresse.
+Description-de.UTF-8: Client-Hostname oder IP-Adresse:
+ Sie haben sich entschieden, einen externen Client zu konfigurieren. Bitte geben Sie den Hostname oder die IP-Adresse des Clients ein.
+Description-es.UTF-8: Nombre del sistema cliente o dirección IP:
+ Ha escogido configurar un cliente externo. Introduzca el nombre del sistema cliente o la dirección IP.
+Description-fr.UTF-8: Nom d'hôte ou adresse IP du client :
+ Vous avez choisi de configurer un client externe. Veuillez indiquer le nom d'hôte ou l'adresse IP de ce client.
+Description-it.UTF-8: Nome host o indirizzo IP del client:
+ Si è scelto di configurare un client esterno. Inserire il nome host o l'indirizzo IP del client.
+Description-ja.UTF-8: クライアントのホスト名または IP アドレス:
+ 外部クライアントの設定が選択されました。クライアントのホスト名または IP アドレスを入力してください。
+Description-nb.UTF-8: Klientens vertsnavn eller IP-adresse:
+ Du har valgt å konfigurere en ekstern klient. Skriv inn klientens vertsnavn eller IP-adresse.
+Description-nl.UTF-8: Computernaam of IP-adres van de client:
+ U heeft ervoor gekozen om een externe client in te stellen. Wat is de computernaam of het IP-adres van deze client?
+Description-no.UTF-8: Klientens vertsnavn eller IP-adresse:
+ Du har valgt å konfigurere en ekstern klient. Skriv inn klientens vertsnavn eller IP-adresse.
+Description-pt.UTF-8: Nome da máquina ou endereço IP do cliente:
+ Escolheu configurar um cliente externo. Por favor introduza o nome da máquina ou o endereço IP do cliente.
+Description-ru.UTF-8: Имя клиентского хоста или IP-адрес:
+ Вы выбрали настройку внешнего клиента. Введите имя клиентского хоста или IP-адрес.
+Description-sv.UTF-8: Klientens värdnamn eller IP-adress:
+ Du har valt att konfigurera en extern klient. Ange klientens värdnamn eller IP-adress.
+Description-vi.UTF-8: Tên máy hay địa chỉ IP của khách:
+ Bạn đã chọn cấu hình một khách bên ngoài. Hãy nhập tên máy hoặc địa chỉ IP của khách đó.
+Description-zh_CN.UTF-8: 客户端的主机名或 IP 地址：
+ 您已经选择了配置一个外部客户端。请输入客户端的主机名或 IP 地址。
+
+Template: slbackup/client_user
+Type: string
+Default: root
+Description: User running the backup software on the client:
+ The backup software (rdiff-backup) will also run on the client, and the
+ user that runs it has to have access to all the files that shall be
+ backed up. Enter the username of the user that shall run the backup
+ software on the client.
+Description-cs.UTF-8: Uživatel, pod kterým běží zálohovací software na klientovi:
+ Zálohovací software (rdiff-backup) poběží také na klientovi. Uživatel, pod kterým se bude rdiff-backup spouštět, musí mít přístup ke všem souborům, které se mají zálohovat. Zadejte uživatelské jméno uživatele, pod kterým se má na klientovi spouštět zálohovací software.
+Description-da.UTF-8: Bruger der kører sikkerhedskopiprogrammet på klienten:
+ Sikkerhedskopiprogrammet (rdiff-backup) vil også køre på klienten, og brugeren, som kører det, skal have adgang til alle filer, som skal sikkerhedskopieres. Indtast brugernavnet på brugeren som skal køre sikkerhedskopiprogrammet på klienten.
+Description-de.UTF-8: Benutzer, der die Backupsoftware auf dem Client betreibt:
+ Die Backupsoftware (rdiff-backup) wird auch auf dem Client laufen und der Benutzer, der sie betreibt, muss Zugriff auf alle Dateien haben, die gesichert werden sollen. Geben Sie den Benutzernamen des Benutzers an, der die Backupsoftware auf dem Client betreiben soll.
+Description-es.UTF-8: El usuario que inicia el programa de copia de seguridad en el cliente:
+ El programa de copia de seguridad (rdiff-backup) también se ejecutará en el cliente, y el usuario que lo ejecute debe tener acceso a todos los ficheros que se van a copiar. Introduzca el nombre del usuario que ejecutará el programa de copia de seguridad en el cliente.
+Description-fr.UTF-8: Utilisateur qui exécute le logiciel de sauvegarde sur le client :
+ Le logiciel de sauvegarde (rdiff-backup) fonctionnera également sur chaque client. L'identifiant utilisé pour l'exécuter doit avoir accès à l'ensemble des fichiers qui seront sauvegardés. Veuillez indiquer cet identifiant ici.
+Description-it.UTF-8: Utente che esegue il software di backup sul client:
+ Il software di backup (rdiff-backup) verrà eseguito anche sul client e l'utente che lo esegue deve aver accesso a tutti i file di cui deve essere fatto il backup. Inserire il nome dell'utente che eseguirà il software di backup sul client.
+Description-ja.UTF-8: クライアント上でバックアップソフトウェアを実行するユーザ:
+ バックアップソフトウェア (rdiff-backup) もクライアント上で実行され、その実行ユーザはバックアップ対象の全ファイルにアクセスできる必要があります。クライアント上でバックアップソフトウェアを実行するユーザ名を入力してください。
+Description-nb.UTF-8: Brukeren som kjører backup-programmet på klienten:
+ Backup-programmet (rdiff-backup) vil også kjøres på klienten, og brukeren som kjører det må ha tilgang til alle filene det skal tas sikkerhetskopi av. Skriv inn brukernavnet på den brukeren som skal kjøre backup-programmet på klienten.
+Description-nl.UTF-8: Gebruiker als wie de backup-software op de client draait:
+ De backup-software (rdiff-backup) wordt ook op de client gedraaid. De gebruiker als wie de software draait dient toegang te hebben tot alle bestanden waarvan een backup gemaakt dient te worden. Wat is de gebruikersnaam van de gebruiker als wie de backup-software op de client moet uitgevoerd worden?
+Description-no.UTF-8: Brukeren som kjører backup-programmet på klienten:
+ Backup-programmet (rdiff-backup) vil også kjøres på klienten, og brukeren som kjører det må ha tilgang til alle filene det skal tas sikkerhetskopi av. Skriv inn brukernavnet på den brukeren som skal kjøre backup-programmet på klienten.
+Description-pt.UTF-8: Utilizador a correr o software de backup no cliente:
+ O software de backup (rdiff-backup) também irá correr no cliente, e o utilizador que o corre tem de ter acesso a todos os ficheiros que serão salvaguardados. Introduza o nome do utilizador que irá correr o software de backup no cliente.
+Description-ru.UTF-8: Пользователь, с правами которого работает ПО резервного копирования на клиенте:
+ ПО резервного копирования (rdiff-backup) также будет работать на клиенте, а пользователь, с правами которого он работает, будет иметь доступ ко всем файлам, для которых выполняется резервное копирование. Введите имя пользователя, с правами которого должно работать ПО резервного копирования на клиенте.
+Description-sv.UTF-8: Användaren som kör programvaran för säkerhetskopiering på klienten:
+ Programvaran för säkerhetskopiering (rdiff-backup) kommer också att köras på klienten och användaren som kör den måste ha full tillgång till alla filer som ska kopieras. Ange användarnamnet för den användare som ska köra programvaran på klienten.
+Description-vi.UTF-8: Người dùng chạy phần mềm sao lưu trên máy khách:
+ Phần mềm sao lưu (rdiff-backup) sẽ cũng chạy trên máy khách, và người dùng chạy nó phải có quyền truy cập đến tất cả các tập tin cần sao lưu. Hãy gõ tên người dùng của người dùng sẽ chạy phần mềm sao lưu trên máy khách.
+Description-zh_CN.UTF-8: 客户端上运行备份软件的用户：
+ 备份软件(rdiff-backup)也将在客户端上运行，并且运行备份软件的用户必须对所有要备份的软件有访问权限。请输入将在客户端上运行备份软件的用户的用户名。
+
+Template: slbackup/client_location
+Type: string
+Default: /etc /home /var/backups
+Description: Files and directories to back up:
+ Enter the location of the files and/or directories that you want to back
+ up on the client. Use a whitespace as a delimiter.
+ .
+ Example: /etc /home /var/backups
+Description-cs.UTF-8: Soubory a adresáře pro zálohování:
+ Zadejte umístění souborů a/nebo adresářů, které chcete na klientovi zazálohovat. Jako oddělovač použijte "bílé znaky" (např. mezery).
+ .
+ Příklad: /etc /home /var/backups
+Description-da.UTF-8: Filer og mapper der skal sikkerhedskopieres:
+ Indtast placeringen for filer og/eller mapper som du ønsker at sikkerhedskopiere på klienten. Brug et mellemrum som adskillelsestegn.
+ .
+ Eksempel: /etc /home /var/backups
+Description-de.UTF-8: Dateien und Verzeichnisse, die gesichert werden sollen:
+ Geben Sie den Ort der Dateien und/oder Verzeichnisse an, die Sie auf dem Client sichern wollen. Benutzern Sie Leerzeichen als Trennzeichen.
+ .
+ Beispiel: /etc /home /var/backups
+Description-es.UTF-8: Ficheros y directorios de los que crear una copia:
+ Introduzca la ubicación de los ficheros y/o directorios del cliente de los que desea crear una copia de seguridad. Use espacios en blanco para separarlos.
+ .
+ Ejemplo: /etc /home /var/backups
+Description-fr.UTF-8: Fichiers et répertoires à sauvegarder :
+ Veuillez indiquer l'emplacement des fichiers et répertoires que vous souhaitez sauvegarder sur ce client :
+ .
+ Exemple : « /etc /home /var/backups ».
+Description-it.UTF-8: File e directory di cui fare il backup:
+ Inserire la posizione dei file o delle directory di cui si desidera fare il backup sul client. Usare uno spazio bianco come delimitatore.
+ .
+ Esempio: /etc /home /var/backup
+Description-ja.UTF-8: バックアップするファイルやディレクトリ:
+ クライアント上のバックアップしたいファイルやディレクトリの位置を空白で区切って入力してください。
+ .
+ 例: /etc /home /var/backups
+Description-nb.UTF-8: Filer og mapper som det skal tas sikkerhetskopier av:
+ Skriv inn plasseringen til filer og/eller mapper som det skal tas sikkerhetskopier av på klienten. Bruk mellomrom som skilletegn.
+ .
+ Eksempel: «/etc /home /var/backups»
+Description-nl.UTF-8: Bestanden en mappen waarvan een backup gemaakt moet worden:
+ Hier voert u de locatie in van de bestanden en/of mappen op de client waarvan u een backup wilt maken. Gebruik witruimte als scheiding tussen de verschillende ingangen.
+ .
+ Voorbeeld: /etc /home /var/backups
+Description-no.UTF-8: Filer og mapper som det skal tas sikkerhetskopier av:
+ Skriv inn plasseringen til filer og/eller mapper som det skal tas sikkerhetskopier av på klienten. Bruk mellomrom som skilletegn.
+ .
+ Eksempel: «/etc /home /var/backups»
+Description-pt.UTF-8: Ficheiros e directórios para salvaguardar:
+ Introduza os caminhos para os ficheiros e/ou directórios que deseja salvaguardar no cliente. Utilize espaço em branco como um delimitador.
+ .
+ Exemplo: /etc /home /var/backups
+Description-ru.UTF-8: Файлы и каталоги для резервного копирования:
+ Укажите расположение файлов и/или каталогов, для которых нужно выполнять резервное копирование на клиенте. В качестве разделителя используйте пробельный символ.
+ .
+ Пример: /etc /home /var/backups
+Description-sv.UTF-8: Filer och kataloger att säkerhetskopiera:
+ Ange platsen för de filer och/eller kataloger som du vill säkerhetskopiera på klienten. Använd blanksteg som avgränsare.
+ .
+ Exempel: /etc /home /var/backups
+Description-vi.UTF-8: Các tập tin và thư mục cần sao lưu :
+ Hãy gõ vị trí của những tập tin và/hay thư mục bạn muốn sao lưu từ máy khách. Định giới các giá trị bằng dấu cách.
+ .
+ Thí dụ: /etc /home /var/backups
+Description-zh_CN.UTF-8: 要备份的文件和目录：
+ 输入要在客户端上备份的文件和目录的位置。使用空格作为分隔符。
+ .
+ 示例：/etc /home /var/backups
+
+Template: slbackup/client_keep
+Type: string
+Default: 185
+Description: Time life of backups (in days):
+ slbackup is doing a kind of maintenance before each backup session, where
+ backups that are older than a certain number of days will be deleted. In
+ this dialog you can specify the number of days that you want to keep the
+ backups for this client on the backup server. The default is 185 days
+ (approximately six months).
+ .
+ If you want to keep the backups for this client forever, or want to do the
+ maintenance yourself, 0 days will be treated as infinite.
+Description-cs.UTF-8: Životnost záloh (ve dnech):
+ slbackup provádí před každým zálohováním domácí úklid, kde maže zálohy starší než zadaný počet dnů. Nyní můžete určit, kolik dnů se mají na zálohovacím serveru uchovávat zálohy tohoto klienta. Výchozí hodnota 185 dnů, odpovídá zhruba šesti měsícům.
+ .
+ Jestliže chcete zálohy tohoto klienta uchovat navždy, nebo jestli chcete správu provádět sami, zadejte hodnotu 0, což se zde chápe jako nekonečno.
+Description-da.UTF-8: Livslængde på sikkerhedskopier (i dage):
+ slbackup kører en slags vedligeholdelse før hver sikkerhedskopieringssession, hvor sikkerhedskopier, som er ældre end et bestemt antal dage, vil blive slettet. I denne dialog kan du angive antallet af dage, som du ønsker at beholde sikkerhedskopierne for denne klient i på serveren for sikkerhedskopierne. Standarden er 185 dage (cirka 6 måneder).
+ .
+ Hvis du ønsker at beholde sikkerhedskopierne for denne klient altid, eller ønsker at udføre vedligeholdelsen selv, vil 0 dage blive opfattet som uendeligt.
+Description-de.UTF-8: Lebenszeit der Backups (in Tagen):
+ Slbackup erledigt eine Art von Wartung für jeder Backupsitzung, wobei Backups, die älter als eine bestimmte Anzahl von Tagen sind, gelöscht werden. In diesem Dialog können Sie die Anzahl von Tagen angeben, die Sie Backups von diesem Client auf dem Backup-Server behalten wollen. Der Standardwert ist 185 Tage (rund sechs Monate).
+ .
+ Falls Sie die Backups für die Clients für immer behalten möchten, oder die Wartung selbst übernehmen möchten, wird 0 Tage als unendlich betrachtet.
+Description-es.UTF-8: Tiempo que se guardarán las copias de seguridad (en días):
+ slbackup realiza una sesión de mantenimiento previa a cada sesión de copia de seguridad, borrando las copias de seguridad con una antigüedad superior a unos días determinados. Puede definir en este diálogo el número de días que desea guardar las copias de este cliente en el servidor de copias de seguridad. Por omisión, son 185 días (6 meses aproximadamente).
+ .
+ Si desea guardar las copias de seguridad de este cliente indefinidamente, o desea realizar directamente las tareas de mantenimiento, cero días se tomarán como un valor infinito.
+Description-fr.UTF-8: Durée de vie des sauvegardes (en jours) :
+ Slbackup effectue ses opérations de maintenance avant chaque session de sauvegarde. Les sauvegardes plus anciennes qu'un nombre donné de jours sont effacées. Veuillez indiquer la durée de conservation des sauvegardes de ce client sur le serveur de sauvegarde. La valeur par défaut est de 185 jours, soit environ 6 mois.
+ .
+ Si vous souhaitez conserver indéfiniment les sauvegardes de ce client ou faire la maintenance vous-même, veuillez indiquer une valeur nulle.
+Description-it.UTF-8: Tempo di vita dei backup (in giorni):
+ slbackup esegue una specie di manutenzione prima di ogni sessione di backup, in cui i backup che sono più vecchi di un dato numero di giorni vengono eliminati. È possibile specificare qui il numero di giorni per i quali si desidera conservare i backup per questo client sul server di backup. Il valore predefinito è 185 giorni (circa sei mesi).
+ .
+ Se si desidera conservare i backup per questo client per sempre, o si desidera fare la manutenzione da soli, un valore di 0 giorni viene trattato come infinito.
+Description-ja.UTF-8: バックアップ保存期間 (日数):
+ slbackup は各バックアップセッションの前に保守を行い、一定日数以上過ぎた古いバックアップを削除します。このダイアログではクライアントのバックアップをバックアップサーバ上に残す日数を指定できます。デフォルトは185日 (約6か月) です。
+ .
+ このクライアントのバックアップを恒久的に残したい、あるいは自分で保守したい場合は、これを0日とすると無期限として扱います。
+Description-nb.UTF-8: Livslengde for sikkerhetskopiene (i dager):
+ slbakup utfører litt vedlikehold før hver sikkerhetskopieringsøkt. Her vil sikkerhetskopier som er eldre enn et visst antall dager bli slettet. I denne dialogen kan du angi hvor mange dager sikkerhetskopier fra denne klienten skal ligge på backup-tjeneren. Standard er satt til 185 dager (omtrent seks måneder).
+ .
+ Hvis du vil ta vare på sikkerhetskopiene fra denne klienten evig, eller du vil utføre vedlikeholdet selv, vil 0 dager bli behandlet som evig.
+Description-nl.UTF-8: Maximum leeftijd van backups (in dagen):
+ Slbackup voert voor elke backup-sessie onderhoud uit om er voor te zorgen dat backups die ouder zijn dan een bepaald aantal dagen verwijderd worden. Hier kunt u het aantal dagen waarvoor u de backups van de client op de backup-server wilt bijhouden opgeven. De standaardwaarde is 185 dagen (ongeveer zes maanden).
+ .
+ Als u backups voor deze client voor altijd wilt opslaan, of het onderhoud zelf wilt doen dient u 0 dagen op te geven (dit wordt behandeld als oneindig).
+Description-no.UTF-8: Livslengde for sikkerhetskopiene (i dager):
+ slbakup utfører litt vedlikehold før hver sikkerhetskopieringsøkt. Her vil sikkerhetskopier som er eldre enn et visst antall dager bli slettet. I denne dialogen kan du angi hvor mange dager sikkerhetskopier fra denne klienten skal ligge på backup-tjeneren. Standard er satt til 185 dager (omtrent seks måneder).
+ .
+ Hvis du vil ta vare på sikkerhetskopiene fra denne klienten evig, eller du vil utføre vedlikeholdet selv, vil 0 dager bli behandlet som evig.
+Description-pt.UTF-8: Tempo de vida dos backups (em dias):
+ O slbackup faz alguma manutenção antes de cada sessão de backup, onde backups com mais de um certo número de dias serão apagados. Neste diálogo pode especificar o número de dias que quer manter os backups deste cliente no servidor de backup. Por omissão são 185 dias (aproximadamente seis meses).
+ .
+ Se deseja manter os backups deste cliente para sempre, ou quer fazer essa manutenção você mesmo, 0 dias será tratado como infinito.
+Description-ru.UTF-8: Срок хранения резервных копий (в днях):
+ Перед началом каждого сеанса резервного копирования slbackup выполняет некоторые действия по обслуживанию, удаляя резервные копии, которые хранятся уже более определённого числа дней. Здесь вы можете указать сколько дней нужно хранить резервные копии для этого клиента на сервере резервного копирования. По умолчанию -- 185 дней (приблизительно шесть месяцев).
+ .
+ Если вы хотите хранить резервные копии этого клиента вечно, или хотите сами удалять ненужные, то введите 0.
+Description-sv.UTF-8: Livscykel för säkerhetskopiorna (i dagar):
+ slbackup gör ett sorts underhåll före varje kopieringssession, där kopior som är äldre än en visst antal dagar kommer att tas bort. I denna dialog kan du ange det antal dagar som du vill behålla kopior för denna klient på servern för säkerhetskopior. Standard är 185 dagar (ungefär sex månader).
+ .
+ Om du vill behålla säkerhetskopior på denna klient för alltid, eller vill göra underhållet själv, 0 dagar kommer att behandlas som oändligt.
+Description-vi.UTF-8: Thời gian còn lại của bản sao lưu (theo ngày):
+ slbackup làm sạch trước khi chạy mỗi buổi hợp sao lưu, xoá bỏ bản sao lưu nào cũ hơn một số ngày nào đó. Trong hộp thoại này thì bạn có thể lập số các ngày trong đó bạn muốn giữ lại bản sao lưu cho máy khách này trên máy phục vụ sao lưu. Giá trị mặc định là 185 ngày (khoảng 6 tháng).
+ .
+ Muốn giữ lại bản sao lưu cho máy khách này mà không giới hạn (hoặc muốn làm sạch bằng tay) thì lập 0 ngày (0 = vô hạn).
+Description-zh_CN.UTF-8: 备份的寿命(以天为单位)：
+ slbackup 正在进行每个备份会话之前的一系列维护，此处，老于指定天数的备份将被删除。在此对话框中，您可以指定想要在备份服务器上为此客户端保持备份的天数。默认是 185 天(大约 6 个月)。
+ .
+ 如果想为此客户端永远保持备份，或想自己维护，0 天将被视为无限大。
+
+Template: slbackup/server_type
+Type: select
+Choices: local, extern
+Default: local
+Description: Type of server to configure / connect to:
+ This determines what type of server slbackup will configure.
+ .
+ If you choose local, the backup will be stored on this computer. If you
+ choose extern, the backup will be stored on another computer using a SSH
+ connection (this choice assumes that you install SSH and provide a
+ passwordless connection between the user running the backup software on
+ this computer (probably root) and the user running the backup software on
+ the backup server).
+Description-cs.UTF-8: Typ serveru pro nastavení / připojení:
+ Tímto určíte typ serveru, který budete konfigurovat.
+ .
+ Zvolíte-li 'lokální', záloha bude uložena na tomto počítači. Vyberete-li možnost 'externí', se bude záloha ukládat na jiném počítači skrze SSH spojení. (To předpokládá, že nainstalujete SSH a poskytnete bezheslové spojení mezi lokálním uživatelem, pod kterým běží zálohovací software (pravděpodobně root) a uživatelem, pod kterým běží zálohovací software na serveru.)
+Description-da.UTF-8: Servertype der skal konfigureres/forbindes til:
+ Dette afgør hvilken servertype slbackup vil konfigurere.
+ .
+ Hvis du vælger lokal, vil sikkerhedskopien blive gemt på denne computer. Hvis du vælger ekstern, vil sikkerhedskopien blive gemt på en anden computer med brug af en SSH-forbindelse (dette valg antager, at du installerer SSH og tilbyder en forbindelse uden adgangskode mellem brugeren der kører sikkerhedskopiprogrammet på denne computer (sikkert root) og brugeren som kører sikkerhedskopiprogrammet på klienten).
+Description-de.UTF-8: Art des zu konfigurierenden / zu dem zu verbindenden Servers:
+ Dies bestimmt die Art des Servers, den Slbackup konfigurieren wird.
+ .
+ Falls Sie »lokal« wählen, wird das Backup auf diesem Computer gespeichert. Falls Sie »extern« wählen, wird das Backup auf einem anderen Computer über eine SSH-Verbindung gespeichert (diese Wahl nimmt an, dass Sie SSH installieren und eine passwortfreie Verbindung zwischen dem Benutzer, der die Backup-Software auf diesem Computer betreibt (wahrscheinlich root) und dem Benutzer, der die Backupsoftware auf dem Backup-Server betreibt, existiert.).
+Description-es.UTF-8: Tipo de servidor a configurar a al que conectarse:
+ Esto define qué tipo de servidor configurará slbackup.
+ .
+ Si escoge la opción «local», las copias de seguridad se guardarán en este equipo. Si escoge «extern», el servidor copiará los datos en otro equipo mediante una conexión SSH (esta opción presupone que SSH está instalada y que tiene una conexión sin contraseña entre el usuario que ejecuta el programa de copias de seguridad en este equipo, probablemente «root», y el usuario que ejecuta el programa de copia de seguridad en el servidor de copias de seguridad).
+Description-fr.UTF-8: Type de serveur à configurer ou à utiliser :
+ Veuillez choisir le type de serveur que slbackup va configurer.
+ .
+ Si vous choisissez « local », les sauvegardes seront conservées sur cette machine. Si vous choisissez « extern », les sauvegardes seront transférées sur une autre machine via une connexion SSH. Vous devez alors installer SSH sur la machine distante et mettre en place une connexion sans mot de passe entre l'utilisateur qui exécutera le logiciel de sauvegarde sur cette machine (probablement le superutilisateur « root ») et celui qui l'exécutera sur le serveur de sauvegarde.
+Description-it.UTF-8: Tipo di server da configurare / a cui connettersi:
+ Questo determina il tipo di server che slbackup configurerà.
+ .
+ Se si sceglie locale, il backup verrà memorizzato su questo computer. Se si sceglie esterno, il backup verrà memorizzato su un altro computer usando una connessione SSH (questa scelta presume che si installi SSH e si fornisca una connessione senza password tra l'utente che esegue il software di backup su questo computer (probabilmente root) e l'utente che esegue il software di backup sul server).
+Description-ja.UTF-8: 設定 / 接続するサーバの種類:
+ これは slbackup が設定するサーバの種類を決定します。
+ .
+ local を選択した場合、バックアップはこのコンピュータに保存されます。extern を選択した場合、バックアップは SSH 接続を使って別のコンピュータに保存されます (このオプションでは SSH がインストールしてあり、このコンピュータ上でバックアップソフトウェアを実行するユーザ (恐らく root) とバックアップサーバ上でバックアップソフトウェアを実行するユーザとの間でパスワード不要の接続が提供されることを前提としています)。
+Description-nb.UTF-8: Tjenertype som skal konfigureres / kobles opp til:
+ Dette angir hva slags tjener slbackup skal konfigurere.
+ .
+ Velger du «lokal» vil sikkerhetskopiene bli lagret på denne maskinen. Velger du «ekstern» vil sikkerhetskopiene bli lagret på en annen maskin ved hjelp av en SSH-oppkobling (dette alternativet tar utgangspunkt i at du har SSH innstalert og at det er mulig å sette opp en oppkobling uten passord mellom brukeren som kjører backup-programmet på denne maskinen (sannsynligvis brukeren root) og brukeren som kjører backup-programmet på klienten).
+Description-nl.UTF-8: Type server om in te stellen/verbinding mee te maken:
+ Dit bepaald wat voor server slbackup zal instellen.
+ .
+ Als u 'local' kiest wordt de backup opgeslagen op deze computer. Als u extern kiest wordt de backup opgeslagen op een andere computer via een SSH-verbinding (dit neemt aan dat u SSH geïnstalleerd heeft en een wachtwoordloze verbinding tussen de gebruiker als wie de backup-software draait op deze computer (waarschijnlijk root) en de gebruiker als wie de backup-software draait op backup-server).
+Description-no.UTF-8: Tjenertype som skal konfigureres / kobles opp til:
+ Dette angir hva slags tjener slbackup skal konfigurere.
+ .
+ Velger du «lokal» vil sikkerhetskopiene bli lagret på denne maskinen. Velger du «ekstern» vil sikkerhetskopiene bli lagret på en annen maskin ved hjelp av en SSH-oppkobling (dette alternativet tar utgangspunkt i at du har SSH innstalert og at det er mulig å sette opp en oppkobling uten passord mellom brukeren som kjører backup-programmet på denne maskinen (sannsynligvis brukeren root) og brukeren som kjører backup-programmet på klienten).
+Description-pt.UTF-8: Tipo de servidor a configurar / ligar-se:
+ Isto determina o tipo de servidor que o slbackup irá configurar.
+ .
+ Se escolher local, o backup será guardado neste computador. Se escolher externo, o backup será guardado noutro computador usando uma ligação SSH (esta escolha assume que instala SSH e configura uma ligação sem palavra-chave entre o utilizador que corre o software de backup neste computador (provavelmente root) e o utilizador a correr o software de backup no servidor).
+Description-ru.UTF-8: Тип сервера для настройки/подключения:
+ Здесь определяется тип сервера slbackup, который будет настраиваться.
+ .
+ Если вы выберете local, то будет настроен сервер на этом компьютере. Если вы выберете extern, то будет настроен сервер на другом компьютере через SSH-соединение (данный выбор предполагает, что вы установите SSH и настроите беспарольное соединение между пользователем, с правами которого работает ПО резервного копирования на этом компьютере (вероятно, root) и пользователем, с правами которого работает ПО резервного копирования на сервере).
+Description-sv.UTF-8: Typ av server att konfigurera / ansluta till:
+ Detta bestämmer vilken typ av server som slbackup ska konfigurera.
+ .
+ Om du väljer lokal, kommer kopian att lagras på denna dator. Om du väljer extern, kommer kopian att lagras på en annan dator via en SSH-anslutning (detta val antar att du har installerat SSH och kan sätta upp en anslutning utan lösenord mellan användaren som kör programvaran på denna dator (antagligen root) och användare som kör serverns programvara för säkerhetskopiering.)
+Description-vi.UTF-8: Loại trình phục vụ cần cấu hình / kết nối đến:
+ Giá trị này quyết định loại trình phục vụ nào được slbackup cấu hình.
+ .
+ Tuỳ chọn:
+  • local (cục bộ): bản sao lưu được giữ trên máy tính này.
+  • extern (viết tắt cho bên ngoài): bản sao lưu được giữ trên một máy tính khác, dùng kết nối SSH. Sự chọn này giả sử rằng bạn cài đặt SSH và cung cấp một kết nối không yêu cầu mật khẩu giữa người dùng chạy phần mềm sao lưu trên máy tính này (rất có thể là « root ») và người dùng chạy phần mềm sao lưu trên máy khách).
+Description-zh_CN.UTF-8: 要配置或连接到的服务器的类型：
+ 这确定 slbackup 配置何种类型的服务器。
+ .
+ 如果您选择位置，备份将存储在此计算机上。如果您选择外部，备份将使用 SSH 连接存储在其它计算机上(这个选项假设您已经安装了 SSH，并在此计算机上运行备份软件的用户(很可能是 root)和客户端上运行备份软件的用户之间提供一个免口令的连接)。
+
+Template: slbackup/server_address
+Type: string
+Default: localhost
+Description: Server's hostname or IP address:
+ You have chosen to configure an external backup server. Please enter the
+ backup server's hostname or IP address.
+Description-cs.UTF-8: Jméno nebo IP adresa serveru:
+ Zvolili jste, že budete konfigurovat externí zálohovací server. Zadejte prosím jméno nebo IP adresu zálohovacího serveru.
+Description-da.UTF-8: Servers værtsnavn eller IP-adresse:
+ Du har valgt at konfigurere en ekstern sikkerhedskopiserver. Indtast venligst sikkerhedskopiserverens værtsnavn eller IP-adresse.
+Description-de.UTF-8: Hostname oder IP-Adresse des Servers:
+ Sie haben sich dazu entschieden, einen externen Backupserver zu konfigurieren. Bitte geben Sie den Hostname oder die IP-Adresse des Backupservers an.
+Description-es.UTF-8: Nombre de sistema del servidor o dirección IP:
+ Ha escogido configurar un servidor externo de copia de seguridad. Introduzca el nombre del equipo del servidor de copias de seguridad o la dirección IP.
+Description-fr.UTF-8: Nom d'hôte ou adresse IP du serveur :
+ Vous avez choisi de configurer un serveur externe. Veuillez indiquer le nom d'hôte ou l'adresse IP de ce serveur.
+Description-it.UTF-8: Nome host o indirizzo IP del server:
+ Si è scelto di configurare un server di backup esterno. Inserire il nome host o l'indirizzo IP del server di backup.
+Description-ja.UTF-8: サーバのホスト名または IP アドレス:
+ 外部バックアップサーバの設定が選択されました。バックアップサーバのホスト名または IP アドレスを入力してください。
+Description-nb.UTF-8: Tjenerens vertsnavn eller IP-adresse:
+ Du har valgt å konfigurere en ekstern backup-tjener. Skriv inn backup-tjenerens vertsnavn eller IP-adresse.
+Description-nl.UTF-8: Computernaam of IP-adres van de server:
+ U heeft ervoor gekozen om een externe backup-server in te stellen. Wat is de computernaam of het IP-adres van deze server?
+Description-no.UTF-8: Tjenerens vertsnavn eller IP-adresse:
+ Du har valgt å konfigurere en ekstern backup-tjener. Skriv inn backup-tjenerens vertsnavn eller IP-adresse.
+Description-pt.UTF-8: Nome da máquina ou endereço IP do servidor:
+ Escolheu configurar um servidor de backup externo. Por favor introduza o nome da máquina ou o endereço IP do servidor.
+Description-ru.UTF-8: Имя серверной машины или IP-адрес:
+ Вы выбрали настройку внешнего сервера резервного копирования. Введите имя серверной машины или IP-адрес.
+Description-sv.UTF-8: Serverns värdnamn eller IP-adress:
+ Du har valt att konfigurera en extern server för säkerhetskopiering. Ange värdnamnet eller IP-adressen för den servern.
+Description-vi.UTF-8: Tên máy hay địa chỉ IP của máy phục vụ:
+ Bạn đã chọn cấu hình một máy phục vụ sao lưu bên ngoài. Hãy gõ tên máy hoặc địa chỉ IP của máy phục vụ sao lưu.
+Description-zh_CN.UTF-8: 服务器的主机名或 IP 地址：
+ 您已经选择了配置一个外部备份服务器。请输入备份服务器的主机名或 IP 地址。
+
+Template: slbackup/server_destdir
+Type: string
+Default: /var/lib/slbackup
+Description: Backup location on the server:
+ Enter the location where you want the backups to be stored. slbackup will
+ not create this directory for you. When you create this directory, make
+ sure that you have enough disk space to store all the backups you define.
+Description-cs.UTF-8: Umístění zálohy na serveru:
+ Zadejte umístění, kde se mají skladovat zálohy. O vytvoření adresáře se musíte postarat sami, slbackup se o vytváření nestará. Před tím se ještě ujistěte, že je na oblasti dostatek místa pro uložení všech záloh.
+Description-da.UTF-8: Placering af sikkerhedskopi på serveren:
+ Indtast placeringen hvor du ønsker sikkerhedskopierne skal gemmes. slbackup vil ikke oprette mappen for dig. Når du opretter denne mappe, skal du være sikker på, at du har nok diskplads til, at gemme alle de sikkerhedskopier du definerer.
+Description-de.UTF-8: Backup-Ort auf dem Server:
+ Geben Sie den Ort an, an dem Sie die Backups speichern wollen. Slbackup wird dieses Verzeichnis nicht für Sie erstellen. Wenn Sie dieses Verzeichnis erstellen, stellen Sie sicher, dass Sie genug Plattenplatz haben, um die definierten Backups zu speichern.
+Description-es.UTF-8: Ubicación de las copias de seguridad en el servidor:
+ Introduzca la ubicación dónde desea guardar las copias de seguridad. slbackup no creará el directorio si no existe. Al crear el directorio, asegúrese de que tiene suficiente espacio en el disco para guardar todas las copias de seguridad que defina.
+Description-fr.UTF-8: Emplacement des sauvegardes sur le serveur :
+ Veuillez indiquer l'endroit où seront conservées les sauvegardes. Slbackup ne créera pas ce répertoire automatiquement. Lorsque vous le créer, veuillez vous assurer qu'il aura y une place suffisante pour conserver toutes les sauvegardes que vous définirez.
+Description-it.UTF-8: Posizione di backup sul server:
+ Inserire la posizione in cui si desidera che vengano memorizzati i backup. slbackup non creerà questa directory per conto dell'utente. Quando si crea questa directory, assicurarsi di avere abbastanza spazio su disco per memorizzare tutti i backup definiti.
+Description-ja.UTF-8: サーバ上のバックアップの位置:
+ バックアップを保存したい位置を入力してください。slbackup はこのディレクトリの作成は行いません。このディレクトリを作成する際、ディスクに設定したバックアップをすべて保存するのに十分な空き容量があることを確認してください。
+Description-nb.UTF-8: Plassering av sikkerhetskopiene på tjeneren:
+ Skriv hvor du vil at sikkerhetskopiene skal lagres. slbackup vil ikke lage eventuelle mapper for deg. Når du lager mappen må du passe på at det er nok diskplass til å lagre alle sikkerhetskopieringene du har satt opp.
+Description-nl.UTF-8: Locatie backups op de server:
+ Wat is de locatie waar de backups worden opgeslagen op de server. Slbackup maakt deze map niet voor u aan, dit dient u zelf te doen. Bij het aanmaken van deze map dient u ervoor te zorgen dat er genoeg ruimte is om alle door u gedefinieerde backups op te slaan.
+Description-no.UTF-8: Plassering av sikkerhetskopiene på tjeneren:
+ Skriv hvor du vil at sikkerhetskopiene skal lagres. slbackup vil ikke lage eventuelle mapper for deg. Når du lager mappen må du passe på at det er nok diskplass til å lagre alle sikkerhetskopieringene du har satt opp.
+Description-pt.UTF-8: Localização do backup no servidor:
+ Introduza a localização onde deseja que os backups sejam guardados. O slbackup não irá criar este directório por si. Quando criar este directório certifique-se que tem espaço suficiente em disco para guardar todos os backups que definir.
+Description-ru.UTF-8: Место для хранения резервных копий на сервере:
+ Укажите каталог где будут храниться резервные копии. slbackup не будет создавать этот каталог. При создании этого каталога убедитесь, что на диске достаточно свободного места под резервные копии.
+Description-sv.UTF-8: Plats för säkerhetskopior på servern:
+ Ange platsen där du vill att säkerhetskopiorna ska lagras. slbackup kommer inte att skapa denna katalog åt dig. När du skapar denna katalog, se till att du har tillräckligt med diskutrymme för att lagra alla säkerhetskopior du definierar.
+Description-vi.UTF-8: Vị trí sao lưu trên máy phục vụ :
+ Hãy gõ vị trí vào đó bạn muốn lưu các bản sao lưu. slbackup sẽ không tạo thư mục này cho bạn: bạn cần phải tự tạo nó. Khi tạo thư mục này, kiểm tra lại có đủ sức chứa còn trống trên đĩa để chứa tất cả các bản sao lưu dự định.
+Description-zh_CN.UTF-8: 在服务器上的备份位置：
+ 输入您想要存储备份的位置。slbackup 不会为您创建此目录。当您创建此目录时，确定您有足够的磁盘空间存储您确定的所有备份。
+
+Template: slbackup/server_user
+Type: string
+Default: root
+Description: User running the backup software on the server:
+ The backup software (rdiff-backup) will also run on the server, and the
+ user that runs it has to have access to the location where the files are
+ going to be stored. Enter the username that shall run the backup software
+ on the backup server.
+Description-cs.UTF-8: Uživatel, pod kterým běží zálohovací software na serveru:
+ Zálohovací software (rdiff-backup) poběží také na serveru. Uživatel, pod kterým se bude rdiff-backup spouštět, musí mít přístup k adresáři, do kterého se budou ukládat zálohy. Zadejte uživatelské jméno uživatele, pod kterým se má spouštět zálohovací server.
+Description-da.UTF-8: Bruger der kører sikkerhedskopieringsprogrammet på serveren:
+ Sikkerhedskopieringsprogrammet (rdiff-backup) vil også køre på serveren, og brugeren, som kører det, skal have adgang til placeringen hvor filerne vil blive gemt. Indtast brugernavnet som skal køre sikkerhedskopiprogrammet på sikkerhedskopiserveren.
+Description-de.UTF-8: Benutzer, der die Backupsoftware auf dem Server betreibt:
+ Die Backup-Software (rdiff-backup) wird auch auf dem Server laufen, und der Benutzer, der sie betreibt, muss Zugriff auf den Ort benötigt, an dem die Dateien gespeichert werden. Geben Sie den Benutzernamen an, der die Backup-Software auf dem Backup-Server betreiben wird.
+Description-es.UTF-8: Usuario que ejecuta el programa de copias de seguridad en el servidor:
+ El programa de copias de seguridad (rdiff-backup) también se ejecutará en el servidor, y el usuario que lo inicie debe tener acceso a la ubicación dónde se guardarán los ficheros. Introduzca el nombre del usuario que ejecutará el programa de copias de seguridad en el servidor de copias de seguridad.
+Description-fr.UTF-8: Utilisateur exécutant le logiciel de sauvegarde sur le serveur :
+ Le logiciel de sauvegarde (rdiff-backup) fonctionnera également sur le serveur. L'identifiant utilisé pour l'exécuter doit avoir accès à l'emplacement où les sauvegardes seront conservées. Veuillez indiquer cet identifiant ici.
+Description-it.UTF-8: Utente che esegue il software di backup sul server:
+ Il software di backup (rdiff-backup) verrà eseguito anche sul server e l'utente che lo esegue deve aver accesso alla posizione in cui verranno memorizzati i file. Inserire il nome dell'utente che eseguirà il software di backup sul server di backup.
+Description-ja.UTF-8: サーバ上でバックアップソフトウェアを実行するユーザ:
+ バックアップソフトウェア (rdiff-backup) もサーバ上で実行され、その実行ユーザはバックアップファイルを保存する位置にアクセスできる必要があります。バックアップサーバ上でバックアップソフトウェアを実行するユーザ名を入力してください。
+Description-nb.UTF-8: Brukeren som kjører backup-programmet på tjeneren:
+ Backup-programmet (rdiff-backup) vil også kjøres på tjeneren, og brukeren som kjører det må ha tilgang til stedet der alle sikkerhetskopiene skal lagres. Skriv inn brukernavnet på den brukeren som skal kjøre backup-programmet på backup-tjeneren.
+Description-nl.UTF-8: Gebruiker als wie de backup-software draait op de server:
+ De backup-software (rdiff-backup) wordt ook op de server gedraaid. De gebruiker als wie de software draait dient toegang te hebben tot de locatie waar de backup-bestanden opgeslagen worden. Wat is de gebruikersnaam van de gebruiker als wie de backup-software op de server moet uitgevoerd worden?
+Description-no.UTF-8: Brukeren som kjører backup-programmet på tjeneren:
+ Backup-programmet (rdiff-backup) vil også kjøres på tjeneren, og brukeren som kjører det må ha tilgang til stedet der alle sikkerhetskopiene skal lagres. Skriv inn brukernavnet på den brukeren som skal kjøre backup-programmet på backup-tjeneren.
+Description-pt.UTF-8: Utilizador que corre o software de backup no servidor:
+ O software de backup (rdiff-backup) também irá correr no servidor, e o utilizador que o corre tem de ter acesso à localização onde os ficheiros serão guardados. Introduza o nome do utilizador que irá correr o software de backup no servidor.
+Description-ru.UTF-8: Пользователь, с правами которого работает ПО резервного копирования на сервере:
+ ПО резервного копирования (rdiff-backup) также будет работать на сервере, а пользователь, с правами которого он работает, будет иметь доступ ко всем файлам, которые хранятся. Введите имя пользователя, с правами которого должно работать ПО резервного копирования на сервере резервного копирования.
+Description-sv.UTF-8: Användare som kör programvaran för säkerhetskopiering på servern:
+ Programvaran för säkerhetskopiering (rdiff-backup) kommer också att köras på servern och användaren som kör den måste ha tillgång till platsen där filerna kommer att lagras. Ange användarnamnet som ska köra programvaran på servern.
+Description-vi.UTF-8: Người dùng chạy phần mềm sao lưu trên máy phục vụ :
+ Phần mềm sao lưu (rdiff-backup) sẽ cũng chạy trên máy phục vụ, và người dùng chạy nó có quyền truy cập đến vị trí vào đó lưu các tập tin. Hãy gõ tên người dùng sẽ chạy phần mềm sao lưu trên máy phục vụ sao lưu.
+Description-zh_CN.UTF-8: 服务器上运行的备份软件的用户：
+ 备份软件(rdiff-backup)将运行在服务器上，并且运行备份软件的用户必须对要存储文件的位置有访问权限。请输入将在服务器上运行备份软件的用户名。

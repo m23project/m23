@@ -1,0 +1,375 @@
+Template: dotlrn/db_host
+Type: string
+Default: localhost
+Description: Host running the PostgreSQL server for dotLRN:
+ Please provide the hostname of a remote PostgreSQL server.
+ .
+ You must have already arranged for the administrative
+ account to be able to remotely create databases and grant
+ privileges. 
+Description-ca.UTF-8: Màquina que executa el servidor PostgreSQL per a dotLRN
+ Introduïu el nom de la màquina del servidor remot de PostgreSQL.
+ .
+ Prèviament heu de configurar el compte d'administrador de manera que pugui crear remotament les bases de dades i concedir privilegis.
+Description-cs.UTF-8: Počítač, na kterém běží PostgreSQL server pro dotLRN:
+ Zadejte prosím jméno počítače vzdáleného PostgreSQL serveru.
+ .
+ V tento okamžik již musíte mít nastaven správcovský účet, abyste mohli vzdáleně vytvářet databáze a přidělovat oprávnění.
+Description-da.UTF-8: Værten der kører PostgreSQL-serveren for dotLRN:
+ Angiv værtsnavnet på en ekstern PostgreSQL-server.
+ .
+ Du skal i forvejen have klargjort administrationskontoen, der skal kunne oprette database og tildele rettigheder udefra.
+Description-de.UTF-8: Rechner auf dem der PostgreSQL-Server für dotLRN läuft:
+ Bitte geben Sie den Rechnernamen des PostgreSQL-Servers in der Ferne ein.
+ .
+ Sie müssen bereits einen Administrationszugang auf dem Rechner in der Ferne so eingerichtet haben, dass das Erstellen von Datenbanken und das Einrichten der Zugriffsrechte ermöglicht worden ist.
+Description-es.UTF-8: Máquina que ejecuta el servidor de PostgreSQL para dotLRN:
+ Introduzca el nombre de la máquina del servidor remoto de PostgreSQL.
+ .
+ Debe haber configurado la cuenta de administración de forma que pueda crear de forma remota bases de datos y asignar privilegios.
+Description-fi.UTF-8: Kone, jolla paketin dotLRN PostgreSQL-palvelinta ajetaan:
+ Anna PostgreSQL-etäpalvelimen verkkonimi.
+ .
+ Ylläpitotunnuksen tulee jo olla olemassa, jotta etänä voitaisiin luoda tietokantoja ja antaa oikeuksia.
+Description-fr.UTF-8: Nom d'hôte du serveur PostgreSQL pour dotLRN :
+ Veuillez indiquer le nom d'hôte du serveur PostgreSQL distant.
+ .
+ Un compte possédant des privilèges d'administrateur doit déjà être configuré pour créer une base distante et donner les droits d'accès.
+Description-ja.UTF-8: dotLRN 用の PostgreSQL サーバを動かしているホスト:
+ リモートの PostgreSQL サーバのホスト名を入力してください。
+ .
+ データベースの作成と権限の許可がリモートから可能な管理者アカウントを、あらかじめ用意しておく必要があります。
+Description-nb.UTF-8: Vert som kjører PostgrreSQL-tjener for dotLRN:
+ Oppgi vertsnavnet for en PostgreSQL-tjener på nettverket.
+ .
+ Du må på forhånd ha sørget for at administrator-kontoen kan opprette databaser og tildele privilegier på nettverks-verten.
+Description-nl.UTF-8: Computer waarop de PostgreSQl-server voor dotLRN wordt uitgevoerd:
+ Wat is  computernaam van de (niet-lokale) PostgreSQL-server?
+ .
+ U dient er reeds voor gezorgd te hebben dat de beheerdersaccount in staat is om van op afstand databases aan te maken en rechten toe te kennen.
+Description-no.UTF-8: Vert som kjører PostgrreSQL-tjener for dotLRN:
+ Oppgi vertsnavnet for en PostgreSQL-tjener på nettverket.
+ .
+ Du må på forhånd ha sørget for at administrator-kontoen kan opprette databaser og tildele privilegier på nettverks-verten.
+Description-pt.UTF-8: Máquina que corre o servidor PostgreSQL para o dotLRN:
+ Por favor, indique o nome da máquina de um servidor remoto de base de dados PostgreSQL.
+ .
+ A conta administrativa que permita a criação remota de bases de dados e conceder privilégios já deverá estar criada.
+Description-ru.UTF-8: Машина, на котором запущен сервер PostgreSQL для dotLRN:
+ Укажите имя машины удалённого сервера PostgreSQL.
+ .
+ У вас уже должна быть административная учётная запись, позволяющая удалённо создавать базы данных и назначать права.
+Description-sk.UTF-8: Stroj, na ktorom beží server PostgreSQL balíka dotLRN:
+ Prosím, zadajte názov stroja vzdialeného servera PostgreSQL.
+ .
+ Musíte mať už zariadený správcovský účet, aby ste mohli vytvárať vzdialené databázy a udeľovať práva.
+Description-sv.UTF-8: Värd som kör PostgreSQL-servern för dotLRN:
+ Ange värdnamnet för fjärrservern med PostgreSQL-servern.
+ .
+ Du måste redan ha ställt in så att det administrativa kontot har möjlighet att från ett fjärrsystem kunna skapa databaser och dela ut rättigheter.
+Description-vi.UTF-8: Máy chạy trình phục vụ PostgreSQL cho dotLRN:
+ Hãy cung cấp tên máy của một máy phục vụ PostgreSQL chạy từ xa.
+ .
+ Để có khả năng tạo cơ sở dữ liệu và cấp quyền truy cập một cách từ xa, trước tiên bạn cần phải thiết lập tài khoản quản trị.
+
+Template: dotlrn/dba_name
+Type: string
+Default: postgres
+Description: Database administrator username:
+ Please enter the PostgreSQL administrator username, needed for
+ the database creation.
+Description-ca.UTF-8: Nom de l'usuari administrador de la base de dades:
+ Escriviu el nom d'usuari del administrador de PostgreSQL, necessari per a la generació de la base de dades.
+Description-cs.UTF-8: Uživatelské jméno správce databáze:
+ Zadejte prosím uživatelské jméno správce PostgreSQL. To je potřeba pro vytvoření databáze.
+Description-da.UTF-8: Brugernavn for databaseadministrator:
+ Indtast venligst brugernavnet for PostgreSQL-administratoren, der skal bruges ved databaseoprettelsen.
+Description-de.UTF-8: Benutzername des Datenbank-Administrators:
+ Bitte geben Sie den Benutzernamen des PostgreSQL-Administrators an; er wird für die Erzeugung der Datenbank benötigt.
+Description-es.UTF-8: Nombre del usuario del administrador de la base de datos:
+ Introduzca el nombre del usuario del administrador de PostgreSQL, necesario para la creación de la base de datos.
+Description-fi.UTF-8: Tietokannan ylläpitotunnus:
+ Anna tietokannan luomiseen tarvittava PostgreSQL-ylläpitäjän käyttäjätunnus.
+Description-fr.UTF-8: Identifiant de l'administrateur de la base de données :
+ Veuillez indiquer l'identifiant de l'administrateur de PostgreSQL, nécessaire pour la création de la base de données.
+Description-ja.UTF-8: データベース管理者ユーザ名:
+ データベースの作成に必要な、PostgreSQL の管理者ユーザ名を入力してください。
+Description-nb.UTF-8: Navn på databasens administrator-bruker:
+ Oppgi brukernavnet til PostgreSQL-administratoren, det trengs for å opprette en database.
+Description-nl.UTF-8: Gebruikersnaam van de databasebeheerder:
+ Wat is de gebruikersnaam van de PostgreSQL-beheerder, nodig voor het aanmaken van de database?
+Description-no.UTF-8: Navn på databasens administrator-bruker:
+ Oppgi brukernavnet til PostgreSQL-administratoren, det trengs for å opprette en database.
+Description-pt.UTF-8: Nome de administrador da base de dados:
+ Por favor introduza o nome de utilizador do administrador de PostgreSQL, necessário para a criação da base de dados.
+Description-ru.UTF-8: Имя пользователя администратора базы данных:
+ Введите имя пользователя администратора PostgreSQL, необходимое для создания базы данных.
+Description-sk.UTF-8: Používateľské meno správcu databázy:
+ Prosím, zadajte používateľské meno správcu PostgreSQL potrebné na vytvorenie databázy.
+Description-sv.UTF-8: Användarnamn för databasadministratör:
+ Ange den administrativa användaren för PostgreSQL, behövs för att kunna skapa databasen.
+Description-vi.UTF-8: Tên người dùng quản trị cơ sở dữ liệu:
+ Hãy gõ tên người dùng của quản trị PostgreSQL, cần thiết để tạo cơ sở dữ liệu.
+
+Template: dotlrn/dba_password
+Type: password
+Description: Database administrator password:
+ Please enter the PostgreSQL administrator password, needed for
+ the database creation.
+Description-ca.UTF-8: Contrasenya del administrador de la base de dades:
+ Escriviu la contrasenya del administrador de PostgreSQL, necessari per a la generació de la base de dades.
+Description-cs.UTF-8: Heslo správce databáze:
+ Zadejte prosím heslo správce PostgreSQL. To je potřeba pro vytvoření databáze.
+Description-da.UTF-8: Adgangskode for databaseadministrator:
+ Indtast venligst adgangskoden for PostgreSQL-administratoren, der skal bruges ved databaseoprettelsen.
+Description-de.UTF-8: Passwort des Datenbank-Administrators:
+ Bitte geben Sie das Passwort des PostgreSQL-Administrators an; es wird für die Erzeugung der Datenbank benötigt.
+Description-es.UTF-8: Contraseña del administrador de la base de datos:
+ Introduzca la contraseña del administrador de PostgreSQL, necesaria para la creación de la base de datos.
+Description-fi.UTF-8: Tietokannan ylläpitotunnuksen salasana:
+ Anna tietokannan luomiseen tarvittava PostgresQL-ylläpitäjän käyttäjätunnuksen salasana.
+Description-fr.UTF-8: Mot de passe de l'administrateur du serveur de bases de données :
+ Veuillez indiquer le mot de passe de l'administrateur de PostgreSQL, nécessaire pour la création de la base de données.
+Description-ja.UTF-8: データベース管理者パスワード:
+ データベースの作成に必要な、PostgreSQL の管理者パスワードを入力してください。
+Description-nb.UTF-8: Passord for database-administratoren:
+ Oppgi passordet til PostgreSQL-administratoren, det trengs for å opprette en database.
+Description-nl.UTF-8: Wachtwoord voor de databasebeheerder:
+ Wat is het wachtwoord van de PostgreSQL-beheerder, nodig voor het aanmaken van de database?
+Description-no.UTF-8: Passord for database-administratoren:
+ Oppgi passordet til PostgreSQL-administratoren, det trengs for å opprette en database.
+Description-pt.UTF-8: Palavra-passe do administrador da base de dados:
+ Por favor introduza a palavra-passe do administrador de PostgreSQL, necessária para a criação da base de dados.
+Description-ru.UTF-8: Пароль администратора базы данных:
+ Введите пароль администратора PostgreSQL, необходимый для создания базы данных.
+Description-sk.UTF-8: Heslo správcu databázy:
+ Prosím, zadajte heslo správcu PostgreSQL potrebné na vytvorenie databázy.
+Description-sv.UTF-8: Lösenord för databasadministratör:
+ Ange lösenordet för den administrativa användaren i PostgreSQL, behövs för att kunna skapa databas.
+Description-vi.UTF-8: Mật khẩu quản trị cơ sở dữ liệu:
+ Hãy gõ mật khẩu của quản trị PostgreSQL, cần thiết để tạo cơ sở dữ liệu.
+
+Template: dotlrn/mismatch
+Type: note
+Description: Password mismatch
+ The two passwords you entered were not the same. Please enter a password again.
+Description-ca.UTF-8: Les contrasenyes no coincideixen.
+ Les contrasenyes que heu introduït no coincideixen. Torneu a provar.
+Description-cs.UTF-8: Hesla nesouhlasí
+ Zadaná hesla nesouhlasí. Zkuste je prosím zadat znovu.
+Description-da.UTF-8: Adgangskoder var ikke ens
+ De to adgangskoder, du angav, var ikke ens. Prøv igen.
+Description-de.UTF-8: Passwörter stimmen nicht überein
+ Die beiden eingegebenen Passwörter stimmen nicht überein. Bitte versuchen Sie es noch einmal.
+Description-es.UTF-8: Las contraseñas no coinciden.
+ Las contraseñas que ha introducido no coinciden. Por favor, inténtelo de nuevo.
+Description-fi.UTF-8: Salasanat eivät täsmää
+ Syöttämäsi kaksi salasanaa eivät olleet sama. Kirjoita salasana uudelleen.
+Description-fr.UTF-8: Mots de passe différents
+ Le mot de passe et sa confirmation ne correspondent pas. Veuillez les saisir à nouveau.
+Description-ja.UTF-8: パスワードが合致しません
+ 入力された2つのパスワードが異なります。もう一度パスワードを入力してください。
+Description-nb.UTF-8: Passordene er ikke like
+ De to passordene du oppga var ikke like. Oppgi et passord igjen.
+Description-nl.UTF-8: Wachtwoorden komen niet overeen
+ De twee wachtwoorden die u heeft ingevoerd waren niet gelijk. Voer alstublieft nogmaals een wachtwoord in.
+Description-no.UTF-8: Passordene er ikke like
+ De to passordene du oppga var ikke like. Oppgi et passord igjen.
+Description-pt.UTF-8: As palavras-passe não coincidem
+ As duas palavra-passe não coincidem. Por favor introduza novamente a palavra-passe.
+Description-ru.UTF-8: Пароли не совпадают
+ Пароль и его повторный ввод не совпали. Введите пароли ещё раз.
+Description-sk.UTF-8: Heslá sa nezhodujú
+ Heslá, ktoré ste zadali sa nezhodujú. Prosím, skúste to znova.
+Description-sv.UTF-8: Lösenorden stämmer inte överens.
+ Lösenorden du angav stämde inte överens. Försök igen.
+Description-vi.UTF-8: Hai mật khẩu không trùng
+ Bạn đã gõ hai mật khẩu không trùng nhau. Hãy gõ lại mật khẩu.
+
+Template: dotlrn/dbu_name
+Type: string
+Default: www-data 
+Description: Database username for dotLRN:
+ Please provide a PostgreSQL username for dotLRN to register with the
+ database server.  A PostgreSQL user is not necessarily the same as a
+ system login, especially if the database is on a remote server.
+ .
+ This is the user which will own the database, tables and other
+ objects to be created by this installation.  This user will have
+ complete freedom to insert, change or delete data in the database.
+Description-ca.UTF-8: Nom d'usuari de la base de dades per a dotLRN.
+ Introduïu un nom d'usuari de PostgreSQL per a que dotLRN es registri amb el servidor de base de dades. No és indispensable que l'usuari de PostgreSQL sigui el mateix que el d'entrada al sistema, especialment si la base de dades és a un servidor remot.
+ .
+ Aquest és l'usuari que serà el propietari de la base de dades, taules i altres objectes que seran creats per aquesta instal·lació. Aquest usuari tindrà permisos per inserir, canviar o esborrar dades a la base de dades.
+Description-cs.UTF-8: Databázové uživatelské jméno pro dotLRN:
+ Zadejte prosím uživatelské jméno v DB systému PostgreSQL pro balík dotLRN, které se má zaregistrovat s databázovým serverem. PostgreSQL uživatel nemusí být nutně shodný se systémovým uživatelem, obzvláště pokud se databáze nachází na vzdáleném počítači.
+ .
+ Tento uživatel, bude vlastnit databázi, tabulky a ostatní objekty vytvořené během instalace. Zadaný uživatel bude mít také úplnou kontrolu nad vkládáním, úpravou a mazáním dat v databázi.
+Description-da.UTF-8: Databasebrugernavn for dotLRN:
+ Angiv et PostgreSQL-brugernavn, som dotLRN kan registrere sig som på databaseserveren. En PostgreSQL-bruger er ikke nødvendigvis det samme som et systemlogind, især ikke hvis databasen ligger på en anden maskine.
+ .
+ Det er denne bruger, der kommer til at eje databasen, tabeller og andre objekter, der bliver oprettet under denne installation. Denne bruger vil have fuld mulighed for at indsætte, ændre og slette data i databasen.
+Description-de.UTF-8: Benutzername des Datenbank-Benutzers für dotLRN:
+ Bitte geben Sie einen PostgreSQL-Benutzernamen ein, mit dem sich dotLRN am Datenbank-Server anmelden soll. Ein PostgreSQL-Benutzer ist nicht unbedingt ein System-Anmeldename, insbesondere wenn die Datenbank auf einem Server in der Ferne läuft.
+ .
+ Dieser Benutzer wird der Eigentümer der Datenbank, der Tabellen und anderer Objekte sein, die bei der Installation erzeugt werden. Dieser Benutzer hat alle Rechte, Daten in die Datenbank einzufügen, in ihr zu verändern oder aus ihr zu löschen.
+Description-es.UTF-8: Nombre del usuario de la base de datos para dotLRN:
+ Introduzca el nombre de un usuario de PostgreSQL para que dotLRN se registre con el servidor de la base de datos. El usuario de PostgreSQL no tiene por qué coincidir con un usuario local, en especial si la base de datos está en un servidor remoto.
+ .
+ Éste será el usuario al que pertenecerán la base de datos, las tablas y otros objetos que cree esta instalación. Este usuario debe tener permisos para insertar, cambiar y borrar datos en la base de datos.
+Description-fi.UTF-8: Tietokannan dotLRN-käyttäjätunnus:
+ Anna käyttäjätunnus PostgrSQL-tietokantaan, joka paketin dotLRN tulisi rekisteröidä. PostgreSQL-tietokannan käyttäjätunnus ei välttämättä ole sama kuin järjestelmään kirjauduttaessa käytettävä tunnus, erityisesti jos tietokanta on etäpalvelimella.
+ .
+ Tämä käyttäjätunnus asetetaan asennusprosessin luoman tietokannan, taulujen ja muiden objektien omistajaksi. Käyttäjällä on täydet oikeudet lisätä, muuttaa tai poistaa tietokannan tietoja.
+Description-fr.UTF-8: Identifiant du propriétaire de la base de données de dotLRN :
+ Veuillez indiquer un identifiant de connexion PostgreSQL pour dotLRN sur le serveur de bases de données. L'identifiant PostgreSQL n'est pas nécessairement le même que l'identifiant de connexion Unix, en particulier quand la base de données se trouve sur un serveur distant.
+ .
+ Cet identifiant est celui qui sera le propriétaire de la base de données, des tables et autres objets qui seront créés par cette installation. Il pourra à volonté insérer, changer ou supprimer des données dans la base de données.
+Description-ja.UTF-8: dotLRN のデータベースユーザ名:
+ dotLRN がデータベースサーバに登録するのに使う PostgreSQL ユーザ名を入力してください。特にデータベースがリモートのサーバにある場合はそうですが、PostgreSQL ユーザはシステムログインユーザと同じである必要はありません。
+ .
+ これは、今回のインストールで作成されるデータベース、テーブルその他を所有するユーザです。このユーザはデータベース内でデータの insert、変更、消去を全く自由に行うことができます。
+Description-nb.UTF-8: Database-brukernavn for dotLRN:
+ Oppgi et PostgreSQL-brukernavn som dotLRN skal registrere hos tjeneren. En PostgreSQL-bruker er ikke nødvendigvis det samme som et login-navn på systemet, spesielt om databasen er på en nett-tjener.
+ .
+ Dette er brukeren som kommer til å eie databasen, tabeller og andre objekter som denne installasjonen kommer til å opprette. Denne brukeren får full frihet til å sette inn, endre eller slette data i databasen.
+Description-nl.UTF-8: Database-gebruikersnaam voor dotLRN:
+ Gelieve hier de naam van de PostgreSQL-gebruiker op te geven waarmee dotLRN zich kan registreren bij de databaseserver. Een PostgreSQL-gebruiker heeft niet noodzakelijk een loginnaam op dit systeem (al helemaal zo als de database op een andere computer draait).
+ .
+ Deze gebruiker zal de 'eigenaar' zijn van de database, tabellen en andere objecten die door de installatie aangemaakt worden. Deze gebruiker heeft bijgevolg alle vrijheid om dingen in de database toe te voegen, veranderen, of verwijderen.
+Description-no.UTF-8: Database-brukernavn for dotLRN:
+ Oppgi et PostgreSQL-brukernavn som dotLRN skal registrere hos tjeneren. En PostgreSQL-bruker er ikke nødvendigvis det samme som et login-navn på systemet, spesielt om databasen er på en nett-tjener.
+ .
+ Dette er brukeren som kommer til å eie databasen, tabeller og andre objekter som denne installasjonen kommer til å opprette. Denne brukeren får full frihet til å sette inn, endre eller slette data i databasen.
+Description-pt.UTF-8: Nome do utilizador dono da base de dados para dotLRN:
+ Por favor indique o nome de utilizador de PostgreSQL para o dotLRN se registar com o servidor de bases de dados. Um nome de utilizador de PostgreSQL não é necessariamente o mesmo que o do login do sistema, especialmente se a base de dados estiver num servidor remoto.
+ .
+ Este é o utilizador que irá ser dono da base de dados, tabelas e outros objectos a serem criados por esta instalação. Este utilizador terá total liberdade para inserir, alterar ou apagar dados na base de dados.
+Description-ru.UTF-8: Имя владельца базы данных dotLRN:
+ Укажите имя пользователя в PostgreSQL для dotLRN, чтобы зарегистрироваться на сервере базы данных. Пользователь в PostgreSQL необязательно должен совпадать с учётной записью в системе, особенно если база расположена на удалённом сервере.
+ .
+ Это пользователь будет владельцем базы данных, таблицами и другими объектами, которые будут созданы данной установкой. У этого пользователя будет полная свобода по добавлению, изменению или удалению данных в базе.
+Description-sk.UTF-8: Používateľské meno databázy dotLRN.
+ Prosím, zadajte používateľské meno PostgreSQL balíka dotLRN pre registráciu u databázového servera. Používateľ PostgreSQL nie je nutne rovnaký ako používateľ systému, zvlášť ak sa databáza nachádza na vzdialenom serveri.
+ .
+ Toto je používateľ, ktorý bude vlastníkom databázy, tabuliek a ostatných objektov, ktoré táto inštalácia vytvorí. Tento používateľ bude mať úplnú voľnosť vkladať, meniť a mazať dáta v databáze.
+Description-sv.UTF-8: Användarnamn för databasen som dotLRN ska använda:
+ Ange ett PostgreSQL-användarnamn för dotLRN att registrera mot databasservern. En PostgreSQL-användare är inte nödvändigtvis samma som ett inloggningsnamn i systemet, speciellt om databasen är på en fjärrserver.
+ .
+ Detta är användaren som kommer att äga databasen, tabellerna och andra objekt som skapas av denna installation. Denna användare kommer att ha total frihet att lägga till, ändra och ta bort data i databasen.
+Description-vi.UTF-8: Tên người dùng cơ sở dữ liệu cho dotLRN:
+ Hãy cung cấp một tên người dùng PostgreSQL cho dotLRN đăng ký với máy phục vụ cơ sở dữ liệu. Người dùng PostgreSQL không nhất thiết là trùng với sự đăng nhập hệ thống, đặc biệt nếu cơ sở dữ liêu nằm trên máy phục vụ chạy từ xa.
+ .
+ Đây là người dùng sẽ sở hữu cơ sơ dữ liệu, các bảng và đối tượng đều sẽ được tạo trong việc cài đặt này. Người dùng này sẽ có mọi quyền chèn, thay đổi và xóa dữ liệu trong cơ sở dữ liệu.
+
+Template: dotlrn/dbu_password
+Type: password
+Description: Database owner password:
+ Please enter the password of the dotLRN database owner.
+Description-ca.UTF-8: Contrasenya del propietari de la base de dades:
+ Escriviu la contrasenya del propietari de la base de dades de dotLRN.
+Description-cs.UTF-8: Heslo vlastníka databáze:
+ Zadejte prosím heslo vlastníka databáze dotLRN.
+Description-da.UTF-8: Adgangskode for databasejer:
+ Indtast venligst adgangskoden for dotLRN-databaseejeren.
+Description-de.UTF-8: Passwort des Datenbank-Besitzers:
+ Bitte geben Sie das Passwort des dotLRN-Datenbank-Besitzers an.
+Description-es.UTF-8: Contraseña del dueño de la base de datos:
+ Introduzca la contraseña del dueño de la base de datos de OpenACS.
+Description-fi.UTF-8: Tietokannan omistajan salasana:
+ Anna dotLRN-tietokannan omistajan salasana.
+Description-fr.UTF-8: Mot de passe du propriétaire de la base de données :
+ Veuillez choisir le mot de passe du propriétaire de la base de données de dotLRN.
+Description-ja.UTF-8: データベース所有者のパスワード:
+ dotLRN のデータベース所有者のパスワードを入力してください。
+Description-nb.UTF-8: Passord for database-eieren:
+ Skriv inn passordet til eieren av dotLRN-databasen.
+Description-nl.UTF-8: Wachtwoord van de database-eigenaar:
+ Wat is het wachtwoord voor de dotLRN-database-eigenaar?
+Description-no.UTF-8: Passord for database-eieren:
+ Skriv inn passordet til eieren av dotLRN-databasen.
+Description-pt.UTF-8: Palavra-passe do dono da base de dados:
+ Por favor introduza a palavra-passe do dono da base de dados do dotLRN.
+Description-ru.UTF-8: Пароль владельца базы данных:
+ Введите пароль владельца базы данных dotLRN.
+Description-sk.UTF-8: Heslo vlastníka databázy.
+ Prosím, zadajte heslo vlastníka databázy dotLRN.
+Description-sv.UTF-8: Lösenord för databasägaren:
+ Ange lösenordet för dotLRN databasägare.
+Description-vi.UTF-8: Mật khẩu người sở hữu cơ sở dữ liệu:
+ Hãy gõ mật khẩu của người sở hữu cơ sở dữ liệu dotLRN.
+
+Template: dotlrn/dbu_confirm
+Type: password
+Description: Database owner password confirmation:
+ Please confirm the password of the dotLRN database owner.
+Description-ca.UTF-8: Confirmeu la contrasenya del propietari:
+ Confirmau la contrasenya del propietari de la base de dades de dotLRN.
+Description-cs.UTF-8: Potvrzení hesla vlastníka databáze:
+ Zopakujte prosím heslo vlastníka databáze dotLRN.
+Description-da.UTF-8: Bekræftelse af adgangskoden for databaseejeren:
+ Bekræft venligst adgangskoden for dotLRN-databaseejeren.
+Description-de.UTF-8: Passwort-Bestätigung des Datenbank-Besitzers:
+ Bitte bestätigen Sie das Passwort des dotLRN-Datenbank-Besitzers, um fortzufahren.
+Description-es.UTF-8: Confirmación de la contraseña del dueño de la base de datos:
+ Confirme la contraseña del dueño de la base de datos de dotLRN.
+Description-fi.UTF-8: Tietokannan omistajan salasanan varmistus:
+ Varmista dotLRN-tietokannan omistajan salasana.
+Description-fr.UTF-8: Confirmation du mot de passe du propriétaire de la base de données :
+ Veuillez confirmer le mot de passe du propriétaire de la base de données, de dotLRN pour en vérifier la saisie.
+Description-ja.UTF-8: データベース所有者のパスワード確認:
+ dotLRN のデータベース所有者のパスワードを確認してください。
+Description-nb.UTF-8: Passordbekreftelse for databaseeier:
+ Bekreft passordet til eieren av dotLRN-databasen.
+Description-nl.UTF-8: Wachtwoord van de database-eigenaar (nogmaals ter bevestiging):
+ Bevestig het wachtwoord voor de dotLRN-database-eigenaar.
+Description-no.UTF-8: Passordbekreftelse for databaseeier:
+ Bekreft passordet til eieren av dotLRN-databasen.
+Description-pt.UTF-8: Confirmação da palavra-passe do dono da base de dados:
+ Por favor confirme a palavra-passe do dono da base de dados do dotLRN.
+Description-ru.UTF-8: Подтверждение пароля владельца базы данных:
+ Введите пароль владельца базы данных dotLRN ещё раз.
+Description-sk.UTF-8: Potvrdenie hesla vlastníka databázy:
+ Prosím, potvrďte heslo vlastníka databázy dotLRN.
+Description-sv.UTF-8: Bekräfta lösenord för databasägaren:
+ Upprepa lösenordet för dotLRN databasägare.
+Description-vi.UTF-8: Xác nhận mật khẩu sở hữu cơ sở dữ liệu:
+ Hãy gõ lại mật khẩu của người sở hữu cơ sở dữ liệu dotLRN.
+
+Template: dotlrn/pg_grant_access
+Type: boolean
+Description: Grant PostgreSQL access to the dotLRN user?
+ Please specify whether /etc/postgresql/.../pg_hba.conf should
+ allow the dotLRN user to access the database.
+Description-ca.UTF-8: Voleu concedir a PostgreSQL l'accés a l'usuari dotLRN?
+ Especificau si «/etc/postgresql/.../pg_hba.conf» ha de permetre l'accés a la base de dades a l'usuari dotLRN.
+Description-cs.UTF-8: Povolit uživateli dotLRN přístup do PostgreSQL?
+ Rozhodněte se, zda se má v souboru /etc/postgresql/.../pg_hba.conf povolit uživateli dotLRN přístup do databáze.
+Description-da.UTF-8: Tildel PostgreSQL adgang til dotLRN-brugeren?
+ Angiv venligst hvorvidt /etc/postgresql/.../pg_hba.conf skal tillade dotLRN-brugeren adgang til databasen.
+Description-de.UTF-8: Wollen Sie dem dotLRN-Benutzer Zugriff auf PostgreSQL gewähren?
+ Bitte geben Sie an, ob in /etc/postgresql/.../pg_hba.conf dem dotLRN-Benutzer Zugriff auf die Datenbank gewährt werden soll.
+Description-es.UTF-8: ¿Desea conceder a PostgreSQL acceso al usuario de dotLRN?
+ Especifique si «/etc/postgresql/.../pg_hba.conf» debería permitir al usuario de dotLRN acceder a la base de datos.
+Description-fi.UTF-8: Sallitaanko dotLRN-käyttäjätunnuksen käyttää PostgreSQL:ää?
+ Valitse tulisiko asetustiedostossa /etc/postgresql/.../pg_hba.conf käyttäjälle dotLRN antaa pääsy tietokantaan.
+Description-fr.UTF-8: Faut-il donner accès à PostgreSQL pour l'identifiant de dotLRN ?
+ Veuillez indiquer si /etc/postgresql/.../pg_hba.conf doit autoriser l'identifiant utilisé par dotLRN à accéder à la base de données.
+Description-ja.UTF-8: dotLRN ユーザに対して PostgerSQL へのアクセスを承諾しますか?
+ /etc/postgresql/.../pg_hba.conf で dotLRN ユーザにデータベースへのアクセスを許可するかどうかを指定してください。
+Description-nb.UTF-8: Skal dotLRN-brukeren få tilgang til PostgreSQL?
+ Oppgi om /etc/postgresql/.../pg_hba.conf skal gi dotLRN-brukeren tilgang til databasen.
+Description-nl.UTF-8: PostgreSQL-toegang geven aan de dotLRN-gebruiker?
+ Geeft aan of /etc/postgresql/.../pg_hba.conf de dotLRN-gebruiker toegang tot de database moet geven.
+Description-no.UTF-8: Skal dotLRN-brukeren få tilgang til PostgreSQL?
+ Oppgi om /etc/postgresql/.../pg_hba.conf skal gi dotLRN-brukeren tilgang til databasen.
+Description-pt.UTF-8: Conceder acesso PostgreSQL ao utilizador dotLRN?
+ Por favor especifique se /etc/postgresql/.../pg_hga.conf deve permitir que o utilizador dotLRN aceda à base de dados.
+Description-ru.UTF-8: Предоставить доступ к PostgreSQL для пользователя dotLRN?
+ Укажите нужно ли разрешить доступ в /etc/postgresql/.../pg_hba.conf для пользователя dotLRN к базе данных.
+Description-sk.UTF-8: Udeliť PostgreSQL prístup k používateľovi dotLRN?
+ Prosím, uveďte, či má /etc/postgresql/.../pg_hba.conf umožňovať používateľovi dotLRN prístup do databázy.
+Description-sv.UTF-8: Ska PostgreSQL ge tillgång till dotLRN-användaren?
+ Ange om /etc/postgresql/.../pg_hba.conf ska tillåta att dotLRN-användaren får tillgång till databasen.
+Description-vi.UTF-8: Cấp quyền truy cập đến PostgreSQL cho người dùng dotLRN ?
+ Hãy xác định nếu tập tin cấu hình « /etc/postgresql/.../pg_hba.conf » có nên cho phép người dùng dotLRN truy cập đến cơ sở dữ liệu hay không.

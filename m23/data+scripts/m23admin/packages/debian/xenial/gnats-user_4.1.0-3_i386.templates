@@ -1,0 +1,531 @@
+Template: gnats/site
+Type: string
+Description: What is the name of the GNATS site?
+ This name should be a single word, it is used as a part of the e-mail
+ alias for delivering problem reports.
+Description-cs.UTF-8: Jaké je jméno webu GNATS?
+ Tímto jménem by mělo být jediné slovo, neboť je součástí emailové adresy sloužící pro doručování zpráv o problémech.
+Description-da.UTF-8: Hvad er navnet på GNATS' side?
+ Dette navn skal være et enkelt ord, det bruges som en del af e-post-aliasset for levering af fejlrapporter.
+Description-de.UTF-8: Wie lautet der Name der GNATS-Site?
+ Dieser Name sollte ein einzelnes Wort sein; er wird als Teil vom E-Mail-Alias genutzt, an den Fehlerberichte eingesandt werden.
+Description-es.UTF-8: ¿Cuál es el nombre del sitio GNATS?
+ Este nombre debe ser una sola palabra, se usa como parte del alias del correo electrónico para enviar informes de problemas.
+Description-eu.UTF-8: Zein da GNATS gunearen izena?
+ Izen hau hitz bakarrekoa izan behar da, arazoei buruzko txostenak bidaltzeko eposta ezinezenaren zati bezala erabiliko da.
+Description-fi.UTF-8: GNATS-sivuston nimi:
+ Tämän nimen tulisi olla yksi sana. Sitä käytetään sähköpostialiaksen osana raportoitaessa jakeluongelmia.
+Description-fr.UTF-8: Nom du site GNATS :
+ Le nom de site GNATS devrait être un mot simple ; il est utilisé comme un alias d'adresse pour les rapports sur les incidents de livraison de courrier.
+Description-gl.UTF-8: ¿Cal é o nome do sitio GNATS?
+ Este nome debería ser unha soa palabra. Emprégase no enderezo de email para enviar informes de problemas.
+Description-it.UTF-8: Qual è il nome del sito GNATS?
+ Questo nome dovrebbe essere costituito da un'unica parola; viene usato come parte dell'alias di posta elettronica per inoltrare le segnalazioni dei problemi.
+Description-ja.UTF-8: GNATS が稼動するサイトの名前は何ですか?
+ この名前は単語ひとつで構成される必要があり、問題報告用のメールエイリアスの一部として使われます。
+Description-nl.UTF-8: Wat is de naam van de GNATS-site?
+ Deze naam dient te bestaan uit een enkel woord en wordt gebruikt als een deel van het e-mail-alias bij het afleveren van probleemrapporten.
+Description-pt.UTF-8: Qual o nome to site GNATS?
+ Este nome deverá ser apenas uma única palavra, é utilizado como parte de um endereço email para entregar relatórios de problemas.
+Description-pt_BR.UTF-8: Qual é o nome do site GNATS?
+ Este nome deve ser uma única palavra, é usado como parte do "alias" de e-mail para a entrega de relatórios de problemas.
+Description-ru.UTF-8: Имя сайта GNATS?
+ Это имя состоит из одного слова, оно используется как часть почтового псевдонима для доставки сообщений о проблемах.
+Description-sv.UTF-8: Vad är namnet på GNATS-systemet?
+ Det här namnet ska vara ett enstaka ord, det används som en del av det e-postalias som används för att levereras problemrapporter.
+Description-vi.UTF-8: Nơi Mạng GNATS có tên nào?
+ Tên này nên là một từ riêng lẻ: nó được dùng là phần của biệt hiệu thư điện tử khi thông báo lỗi.
+
+Template: gnats/exim_user_uncomment
+Type: note
+Description: You should enable scripts in the Exim configuration.
+ It seems you have installed Exim, with script handling disabled in its
+ configuration.  If this is so, GNATS will not be able to receive bug
+ reports via e-mail.  I would suggest you to uncomment one of the lines
+ .
+ ${LINES}
+ .
+ in your file ${EXIMCONF}, in the section "system_aliases".
+Description-cs.UTF-8: V konfiguraci Eximu byste měli povolit skripty.
+ Zdá se, že máte nainstalován Exim s vypnutou manipulací se skripty (nastavení naleznete v konfiguraci Eximu). Je-li tomu tak, GNATS nebude schopen přijmout zprávy o chybách skrz email. Doporučuji odkomentovat některý z těchto řádků
+ .
+ ${LINES}
+ .
+ ve vašem souboru ${EXIMCONF}, v sekci "system_aliases".
+Description-da.UTF-8: Du skal aktivere skripter i Eximkonfigurationen.
+ Det ser ud til, at du har installeret Exim, med skripthåndtering deaktiveret i dennes konfiguration. Hvis det er korrekt vil GNATS ikke være i stand til at modtage fejlrapporter via e-post. Jeg vil foreslå, at du fjerner kommentering fra en af linjerne
+ .
+ ${LINES}
+ .
+ i din fil ${EXIMCONF}, i afsnittet »system_aliases«.
+Description-de.UTF-8: Sie sollten Skripte in der Exim-Konfiguration aktivieren.
+ Scheinbar ist Exim installiert und die Verarbeitung von Skripten in der Konfiguration ist deaktiviert. Wenn das so ist, wird es GNATS nicht möglich sein, Fehlerberichte per E-Mail zu empfangen. Es wird empfohlen, dass Sie bei einer dieser Zeilen
+ .
+ ${LINES}
+ .
+ in Ihrer Datei ${EXIMCONF} (Abschnitt »system_aliases«) das Kommentarzeichen entfernen.
+Description-es.UTF-8: Debería habilitar los scripts en la configuración de Exim.
+ Parece que tiene instalado Exim con el manejo de scripts deshabilitado en su configuración. Si esto es así, GNATS no podrá recibir informes de fallos a través de correo electrónico. Se aconseja que descomente una de las líneas
+ .
+ ${LINES}
+ .
+ en su fichero ${EXIMCONF}, en la sección «system_aliases».
+Description-eu.UTF-8: Exim konfigurazioan script-ak gaitu beharko zenituzke.
+ Dirudienez Exim bere konfigurazioan script kudeaketa desgaiturik duela instalaturik duzu.  Hau honela bada GNATS ez da programa-erroreak eposta bidez jasotzeko gai izango.  Hauetako lerro bat deskomentatzea gomendatzen dizugu
+ .
+ ${LINES}
+ .
+ zure ${EXIMCONF} fitxategiko, "system_aliases" atalean.
+Description-fi.UTF-8: Komentosarjat tulisi ottaa käyttöön Eximin asetuksissa.
+ Exim näyttää olevan asennettuna niin, että komentosarjojen käsittely on asetuksissa laitettu pois päältä. Tässä tilanteessa GNATS ei pysty ottamaan sähköpostitse vastaan ilmoituksia ohjelmavirheistä. On suositeltavaa ottaa käyttöön yksi seuraavista riveistä
+ .
+ ${LINES}
+ .
+ tiedoston ${EXIMCONF} osiossa ”system_aliases”.
+Description-fr.UTF-8: Activation nécessaire du traitement des scripts dans la configuration d'Exim
+ Exim semble être installé mais le traitement des scripts semble désactivé dans sa configuration. Si c'est bien le cas, GNATS ne sera pas capable de recevoir les rapports de bogues par messagerie. Il est conseillé de décommenter l'une des lignes suivantes :
+ .
+ ${LINES}
+ .
+ Cette modification doit se faire dans le fichier ${EXIMCONF}, à la section "system_aliases".
+Description-gl.UTF-8: Debería activar os scripts na configuración de Exim.
+ Semella que ten instalado Exim coa xestión de scripts desactivada na configuración. Se é así, GNATS non ha poder recibir informes de erro por email. Suxírese descomentar unha das liñas
+ .
+ ${LINES}
+ .
+ no ficheiro ${EXIMCONF}, na sección "system_aliases".
+Description-it.UTF-8: Si dovrebbero abilitare gli script nella configurazione di Exim.
+ Sembra che Exim sia installato, con la gestione degli script disabilitata nella sua configurazione. Se ciò è vero, GNATS non potrà ricevere le segnalazioni di bug via posta elettronica. È suggerito decommentare una delle righe
+ .
+ ${LINES}
+ .
+ nel proprio file ${EXIMCONF}, nella sezione «system_aliases».
+Description-ja.UTF-8: Exim の設定中でスクリプトを有効にする必要があります。
+ スクリプトの取り扱い機能を無効にした設定で Exim がインストールされているようです。その場合、GNATS はメール経由でバグ報告を受け取れません。以下の行のコメントをはずすのをお勧めします:
+ .
+ ${LINES}
+ .
+ 設定ファイル  ${EXIMCONF} 中の "system_aliases" セクションです。
+Description-nl.UTF-8: In de Exim-configuratie dienen scripts geactiveerd te worden.
+ Het lijkt erop dat u Exim geïnstalleerd heeft met script-afhandeling uitgeschakeld. Als dit zo is zal GNATS geen bugrapporten kunnen ontvangen via e-mail. Het is aan te raden om van één van de volgende regels niet-commentaar te maken
+ .
+ ${LINES}
+ .
+ In het bestand ${EXIMCONF}, in de sectie 'system_aliases'.
+Description-pt.UTF-8: Deverá activar 'scripts' na configuração do Exim.
+ Parece que instalou o Exim com o suporte a 'scripts' desactivado na sua configuração. Se assim for, o GNATS não será capaz de receber relatórios de 'bugs' via e-mail. Sugiro que retire o # a uma das linhas
+ .
+ ${LINES}
+ .
+ no seu ficheiro ${EXIMCONF}, na secção "system_aliases".
+Description-pt_BR.UTF-8: Você deveria habilitar scripts na configuração do Exim.
+ Parece que você tem instalado Exim, com tratamento de script desabilitado em sua configuração. Dessa maneira, GNATS não será capaz de receber relatórios de problemas via e-mail. Eu sugiro que você remova o comentário de uma das linhas
+ .
+ ${LINES}
+ .
+ no seu arquivo ${EXIMCONF}, na seção "system_aliases".
+Description-ru.UTF-8: Вам нужно разрешить выполнение сценариев в конфигурации Exim.
+ У вас установлен Exim, но выполнение сценариев в его конфигурации выключено. При такой настройке GNATS не может получать сообщения об ошибках по почте. Вам нужно раскомментировать одну из строк
+ .
+ ${LINES}
+ .
+ в файле ${EXIMCONF} в секции "system_aliases".
+Description-sv.UTF-8: Du bör aktivera skript i Exim-konfigurationen.
+ Det verkar som du har Exim installerat, med skripthantering inaktiverat i dess konfiguration.  Om det stämmer, kommer GNATS inte att kunna ta emot felrapporter via e-post.  Jag föreslår att du avkommenterar en av raderna 
+ .
+ ${LINES}
+ .
+ i din fil ${EXIMCONF}, i sektionen "system_aliases".
+Description-vi.UTF-8: Bạn nên hiệu lực các văn lệnh trong cấu hình Exim.
+ Hình như bạn đã cài đặt Exim, với khả năng xử lý văn lệnh bị tắt trong cấu hình nó. Nếu có, GNATS sẽ không thể nhận thông báo lỗi qua thư điện tử. Khuyên bạn hủy chú thích một của những dòng 
+ .
+ ${LINES}
+ .
+ trong tập tin ${EXIMCONF} của bạn, trong phần « system_aliases ».
+
+Template: gnats/exim_user_add
+Type: note
+Description: You should enable scripts in the Exim configuration.
+ It seems you have installed Exim, with no script handling enabled in its
+ configuration.  If this is so, GNATS will not be able to receive bug
+ reports via e-mail.  I would suggest you to add the line
+ .
+ user = gnats
+ .
+ to your file ${EXIMCONF}, in the section "system_aliases".
+Description-cs.UTF-8: V konfiguraci Eximu byste měli povolit skripty.
+ Zdá se, že máte nainstalován Exim s vypnutou manipulací se skripty (nastavení naleznete v konfiguraci Eximu). Je-li tomu tak, GNATS nebude schopen přijmout zprávy o chybách skrz email. Doporučuji přidat řádek
+ .
+ user = gnats
+ .
+ do vašeho souboru ${EXIMCONF}, do sekce "system_aliases".
+Description-da.UTF-8: Du skal aktivere skripter i Eximkonfigurationen.
+ Det ser ud til, at du har installeret Exim uden skripthåndtering aktiveret i dennes konfiguration. Hvis det er korrekt vil GNATS ikke være i stand til at modtage fejlrapporter via e-post. Jeg vil foreslå, at du tilføjer linjen
+ .
+ user = gnats
+ .
+ til din fil ${EXIMCONF}, i afsnittet »system_aliases«.
+Description-de.UTF-8: Sie sollten Skripte in der Exim-Konfiguration aktivieren.
+ Scheinbar ist Exim installiert und die Verarbeitung von Skripten in der Konfiguration ist nicht aktiviert. Wenn das so ist, wird es GNATS nicht möglich sein, Fehlerberichte per E-Mail zu empfangen. Es wird empfohlen, dass Sie die Zeile
+ .
+ user = gnats
+ .
+ zu Ihrer Datei ${EXIMCONF} (Abschnitt »system_aliases«) hinzufügen.
+Description-es.UTF-8: Debería habilitar los scripts en la configuración de Exim.
+ Parece que tiene instalado Exim sin manejo de scripts habilitado en su configuración. Si esto es así, GNATS no podrá recibir informes de fallos a través de correo electrónico. Se aconseja que añada la línea
+ .
+ user = gnats
+ .
+ a su fichero ${EXIMCONF}, en la sección «system_aliases».
+Description-eu.UTF-8: Exim konfigurazioan script-ak gaitu beharko zenituzke.
+ Dirudienez Exim bere konfigurazioan script kudeaketa desgaiturik duela instalaturik duzu.  Hau honela bada GNATS ez da programa-erroreak eposta bidez jasotzeko gai izango.  Lerro hau gehitzea gomendatzen dugu:
+ .
+ user = gnats
+ .
+ zure ${EXIMCONF} fitxategiko, "system_aliases" atalean.
+Description-fi.UTF-8: Komentosarjat tulisi ottaa käyttöön Eximin asetuksissa.
+ Exim näyttää olevan asennettuna niin, että komentosarjojen käsittely on asetuksissa laitettu pois päältä. Tässä tilanteessa GNATS ei pysty ottamaan sähköpostitse vastaan ilmoituksia ohjelmavirheistä. On suositeltavaa lisätä rivi
+ .
+ user = gnats
+ .
+ tiedoston ${EXIMCONF} osioon ”system_aliases”.
+Description-fr.UTF-8: Activation nécessaire du traitement des scripts dans la configuration d'Exim
+ Exim semble installé mais le traitement des scripts est désactivé dans sa configuration. Si c'est bien le cas, GNATS ne sera pas capable de recevoir les rapports de bogues par messagerie. Il est conseillé d'ajouter la ligne suivante :
+ .
+ user = gnats
+ .
+ Ce changement doit se faire dans le fichier ${EXIMCONF}, à la section "system_aliases".
+Description-gl.UTF-8: Debería activar os scripts na configuración de Exim.
+ Semella que ten instalado Exim coa xestión de scripts desactivada na configuración. Se é así, GNATS non ha poder recibir informes de erro por email. Suxírese engadir a liña
+ .
+ user = gnats
+ .
+ ao ficheiro ${EXIMCONF}, na sección "system_aliases".
+Description-it.UTF-8: Si dovrebbero abilitare gli script nella configurazione di Exim.
+ Sembra che Exim sia installato, senza l'abilitazione della gestione degli script nella sua configurazione. Se ciò è vero, GNATS non potrà ricevere le segnalazioni di bug via posta elettronica. È suggerito aggiungere la riga
+ .
+ user = gnats
+ .
+ al proprio file ${EXIMCONF}, nella sezione «system_aliases».
+Description-ja.UTF-8: Exim の設定中でスクリプトを有効にする必要があります。
+ スクリプトの取り扱い設定が無効にされた状態で、Exim がインストールされているようです。その場合、GNATS はメール経由でのバグ報告を受け取れなくなってしまいます。以下の行を追加するのをお勧めします。
+ .
+ user = gnats
+ .
+ 追加するのは、ファイル ${EXIMCONF} の "system_aliases" セクションです。
+Description-nl.UTF-8: In de Exim-configuratie dienen scripts geactiveerd te worden.
+ Het lijkt erop dat u Exim geïnstalleerd heeft met script-afhandeling uitgeschakeld. Als dit zo is zal GNATS geen bugrapporten kunnen ontvangen via e-mail. Het is aan te raden om de volgende regel toe te voegen
+ .
+ user = gnats
+ .
+ in het bestand ${EXIMCONF}, in de sectie 'system_aliases'.
+Description-pt.UTF-8: Deverá activar 'scripts' na configuração do Exim.
+ Parece que instalou o Exim com o suporte a 'scripts' activado na sua configuração. Se assim for, o GNATS não será capaz de receber relatórios de 'bugs' via e-mail. Sugiro que adicione a linha
+ .
+ user = gnats
+ .
+ ao ficheiro ${EXIMCONF}, na secção "system_aliases".
+Description-pt_BR.UTF-8: Você deveria habilitar scripts na configuração do Exim.
+ Parece que você tem instalado Exim, sem o tratamento de script habilitado em sua configuração. Dessa maneira, GNATS não será capaz de receber relatórios de problemas via e-mail. Eu sugiro que você adicione a linha
+ .
+ user = gnats
+ .
+ ao seu arquivo ${EXIMCONF}, na seção "system_aliases".
+Description-ru.UTF-8: Вам нужно разрешить выполнение сценариев в конфигурации Exim.
+ У вас установлен Exim, но выполнение сценариев в его конфигурации выключено. При такой настройке GNATS не может получать сообщения об ошибках по почте. Вам нужно добавить строку
+ .
+ user = gnats
+ .
+ в файл ${EXIMCONF} в секцию "system_aliases".
+Description-sv.UTF-8: Du bör aktivera skript i Exim-konfigurationen.
+ Det verkar som du har installerat Exim, utan skripthantering aktiverat i dess konfiguration.  Om detta stämmer, kommer GNATS inte att kunna ta emot felrapporter via e-mail.  Jag föreslår att du lägger till raden
+ .
+ user = gnats
+ .
+ till din fil ${EXIMCONF}, i sektionen "system_aliases".
+Description-vi.UTF-8: Bạn nên hiệu lực các văn lệnh trong cấu hình Exim.
+ Hình như bạn đã cài đặt Exim, với khả năng xử lý văn lệnh bị tắt trong cấu hình nó. Nếu có, GNATS sẽ không thể nhận thông báo lỗi qua thư điện tử. Khuyên bạn thêm dòng 
+ .
+ user = gnats
+ .
+ vào tập tin ${EXIMCONF} của bạn, trong phần « system_aliases ».
+
+Template: gnats/qmail
+Type: note
+Description: You should set up qmail aliases for GNATS.
+ It seems you use qmail as your mail transfer program.  It is recommended
+ to add the following lines into your qmail users/assign file:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-cs.UTF-8: Měli byste nastavit aliasy qmailu pro GNATS.
+ Zdá se, že pro přenos mailů používáte program qmail. Doporučujeme přidat do qmailového souboru uživatelů/přiřazení následující řádky:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-da.UTF-8: Du skal indstille qmail-aliaser for GNATS.
+ Det ser ud til, at du bruger qmail som dit e-post-overførselsprogram. Det anbefales at tilføje de følgende linjer til din qmailbruger/qmailtildelingsfil:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-de.UTF-8: Sie sollten in qmail Aliase für GNATS einrichten.
+ Scheinbar wird qmail als Mail-Transfer-Programm verwendet. Es wird empfohlen, dass Sie die folgenden Zeilen zu Ihrer users/assign-Datei für qmail hinzuzufügen:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-es.UTF-8: Debería configurar los alias qmail para GNATS.
+ Parece que usa qmail como programa de transferencia de correo. Se recomienda añadir las siguientes líneas en el fichero de usuarios/asignación de qmail:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-eu.UTF-8: Zuk qmail ezizenak GNATS-rentzat konfiguratu beharko zenituzke.
+ Dirudienez qmail erabiltzen duzu posta transferentzia programa gisa.  Gomendagarria da hurrengo lerroak gehitzea qmail-ren erabiltzaile/ezarpen fitxategian:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-fi.UTF-8: GNATSia varten tulisi asettaa qmail-aliksia.
+ Sähköpostipalvelimena näyttää olevan qmail. On suositeltavaa lisätä seuraavat rivit qmailin users/assign-tiedostoon:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-fr.UTF-8: Définition des alias qmail pour GNATS
+ Vous semblez utiliser qmail comme agent de transport de courrier. Il est recommandé d'ajouter les lignes suivantes à votre fichier users/assign de qmail :
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-gl.UTF-8: Debería configurar os alias de qmail para GNATS.
+ Semella que emprega qmail coma programa de transferencia de correo. Recoméndase engadir as seguintes liñas ao ficheiro users/assign de qmail:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-it.UTF-8: Si dovrebbero impostare alias di qmail per GNATS.
+ Sembra che il sistema usi qmail come programma di trasferimento della posta. È raccomandato aggiungere le righe seguenti al proprio file users/assign di qmail:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-ja.UTF-8: GNATS 用の qmail エイリアスを設定する必要があります。
+ メール送信プログラムとして qmail を利用しているようです。以下の行を qmail の users/assign ファイルに追加するのをお勧めします:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-nl.UTF-8: U kunt best qmail-aliases aanmaken voor GNATS.
+ U lijkt qmail te gebruiken als e-mail-verstuurder. Het is aangeraden om de volgende regels toe te voegen in uw users/assign bestand van qmail:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-pt.UTF-8: Deverá definir 'gmail aliases' para o GNATS
+ Parece que utiliza o gmail como o seu programa de transferência de mail.  É recomendado que adicione as seguintes linhas ao seu ficheiro gmail users/assign:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-pt_BR.UTF-8: Você precisa configurar os apelidos ("aliases") do qmail para o GNATS.
+ Parece que você usa qmail como seu programa de transferência de e-mail. É recomendado adicionar as seguintes linhas no seu arquivo qmail users/assign:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-ru.UTF-8: Нужно настроить псевдонимы в qmail для GNATS.
+ В качестве программы пересылки почты у вас используется qmail. Рекомендуется добавить следующие строки в файл users/assign для qmail:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-sv.UTF-8: Du bör konfigurera qmail-alias för GNATS.
+ Det verkar som om du använder qmail som ditt posttransporteringsprogram. Det rekommenderas att du lägger till följande rader i din qmail-fil, users/assign:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+Description-vi.UTF-8: Bạn nên thiết lập biệt hiệu qmail cho GNATS.
+ Hình như bạn sử dụng trình qmail là chương trình truyền thư. Vì vậy khuyên bạn thêm vào tập tin qmail « users/assign » những dòng này:
+ .
+  =gnats:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =gnats-admin:gnats:41:41:/var/lib/gnats/gnats-adm:::
+  =bugs:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+  =query-pr:gnats:41:41:/var/lib/gnats/gnats-adm:-:query:
+  =${SITE}-gnats:gnats:41:41:/var/lib/gnats/gnats-adm:-:bugs:
+
+Template: gnats/unknown_mailer
+Type: note
+Description: You should set up GNATS mail aliases.
+ GNATS can be set to receive bug reports and database queries through mail.
+ However, it seems you are using a mailer I am not able to setup myself, so
+ you must do it by hand. The following addresses on localhost and
+ appropriate actions for them should be set up:
+ .
+ gnats: redirect this to GNATS administrator"s address gnats-admin: alias
+ for "gnats" bugs: pipe it to the command "| /usr/lib/gnats/queue-pr -q"
+ query-pr: pipe it to the command "| /usr/lib/gnats/mail-query"
+ ${SITE}-gnats: alias for "bugs"
+Description-cs.UTF-8: Měli byste nastavit mailové aliasy GNATS.
+ GNATS může být nastaven pro přijímání zpráv o chybách a databázových dotazech skrze email. Bohužel to vypadá, že používáte poštovní server, který neumím nastavit sám, takže to budete muset udělat ručně. Měli byste nastavit následující adresy na localhostu a k nim odpovídající akce:
+ .
+ gnats: přesměrování na adresu administrátora GNATS gnats-admin: alias pro "gnats" bugs: přesměrování do příkazu "| /usr/lib/gnats/queue-pr -q" query-pr: přesměrování do příkazu "| /usr/lib/gnats/mail-query" ${SITE}-gnats: alias pro "bugs"
+Description-da.UTF-8: Du skal angive GNATS-post-aliasser.
+ GNATS kan angives til at modtage fejlrapporter og databaseforespørgsler via e-post. Det ser dog ud til, at du bruger en postsender, som jeg ikke selv kan opsætte, så du må gøre det manuelt. De følgende adresser på lokalvært og passende handlinger for dem skal angives:
+ .
+ gnats: Omdirigere dette til GNATS-administrators adresse gnats-admin: alias for »gnatsfejl«: gennemsend (pipe) den til kommandoen »| /usr/lib/gnats/queue-pr -q« query-pr: gennemsend (pipe) den til kommandoen »| /usr/lib/gnats/mail-query« ${SITE}-gnats: alias for »fejl« (bugs)
+Description-de.UTF-8: Sie sollten Mail-Aliase für GNATS einrichten.
+ GNATS kann so eingerichtet werden, dass es Fehlerberichte und Datenbankanfragen per E-Mail empfangen kann. Allerdings verwenden Sie scheinbar ein Mail-Programm, das nicht automatisch passend eingerichtet werden kann, so dass Sie dies manuell erledigen müssen. Die folgenden Adressen auf localhost sowie entsprechende Aktionen für diese Adressen sollten eingerichtet werden:
+ .
+ gnats: an die Adresse des GNATS-Administrators weiterleiten. gnats-admin: Alias für »gnats«. bugs: Weiterleitung (pipe) an das Kommando »| /usr/lib/gnats/queue-pr -q«. query-pr: Weiterleitung (pipe) an das Kommando »| /usr/lib/gnats/mail-query«. ${SITE}-gnats: Alias für »bugs«.
+Description-es.UTF-8: Debería configurar los alias de correo de GNATS.
+ GNATS puede configurarse para recibir informes de fallos y consultas a bases de datos mediante correo electrónico. Sin embargo, parece que está usando un agente de correo que no se puede autoconfigurar, por lo que deberá hacerlo manualmente. Se deben configurar las siguientes direcciones en localhost y realizar las acciones apropiadas:
+ .
+ gnats: redireccione esto a la dirección del administrador de GNATS gnats-admin: alias para «gnats» bugs: lo dirige a la orden «| /usr/lib/gnats/queue-pr -q» query-pr: lo dirige a la orden «| /usr/lib/gnats/mail-query» ${SITE}-gnats: alias para «bugs»
+Description-eu.UTF-8: GNATS ezizen datu-basea konfiguratu behar duzu.
+ GNATS programa-errore txostena eta datu-base galdeketak posta bidez jasotzeko konfiguratu daiteke. Hala ere, dirudienez automatikoki konfiguratu ezin den posta programa bat erabiltzen duzu, beraz zure kabuz egin beharko duzu. Hurrengo helbideak eta dagozkion ekintzak konfiguratu behar dira ostalari lokalean:
+ .
+ gnats: birbidali hau GNATS administratzaile helbidera gnats-admin: "gnats"-ren ezizena bugs: bideratu "| /usr/lib/gnats/queue-pr -q" komandora query-pr: bideratu "| /usr/lib/gnats/mail-query" komandora ${SITE}-gnats: "bugs"-en ezizena
+Description-fi.UTF-8: GNATSia varten tulisi asettaa sähköpostialiaksia.
+ GNATS voidaan asettaa ottamaan vastaan ilmoituksia ohjelmavirheistä ja tietokantakyselyitä sähköpostin kautta. Käytössä näyttää kuitenkin olevan sähköpostijärjestelmä, jonka asetuksia ei voida tässä tehdä, joten ne pitää tehdä käsin. Ohjelmaa varten tulisi tehdä seuraavat osoitteet ja niihin liittyvät toiminnot:
+ .
+  gnats: ohjataan edelleen GNATSin ylläpitäjän osoitteeseen.
+  gnats-admin: osoitteen ”gnats” alias.
+  bugs: putkitetaan komentoon ”| /usr/lib/gnats/queue-pr -q”.
+  query-pr: putkitetaan komentoon ”| /usr/lib/gnats/mail-query”.
+  ${SITE}-gnats: osoitteen ”bugs” alias.
+Description-fr.UTF-8: Définition des alias d'adresse GNATS
+ GNATS peut être paramétré pour recevoir des rapports de bogues et des requêtes de base de données à travers la messagerie. Cependant, vous semblez utiliser un client de courrier dont le paramétrage automatique est impossible. Vous devez donc le faire vous-même. L'adresse suivante sur l'hôte local et les actions appropriées pour le faire doivent être définis.
+ .
+  gnats : redirige ceci vers l'adresse de l'administrateur GNATS
+  gnats-admin : alias pour "gnats"
+  bugs : envoie à la commande "/usr/lib/gnats/queue-pr -q"
+  query-pr : envoie à la commande "usr/lib/gnats/mail-query"
+  ${SITE}-gnats: alias pour "bugs"
+Description-gl.UTF-8: Debería configurar os alias de correo de GNATS.
+ Pódese configurar GNATS para recibir informes de erro e consultas á base de datos por email. Nembargantes, semella que está a empregar un sistema de correo que non se puido configurar automaticamente, así que ha ter que facelo manualmente. Deberíanse configurar os seguintes enderezos no servidor local e as accións axeitadas para eles:
+ .
+ gnats: rediríxao ao enderezo do administrador de GNATS
+ gnats-admin: alias para "gnats"
+ bugs: páseo á orde "| /usr/lib/gnats/queue-pr -q"
+ query-pr: páseo á orde "| /usr/lib/gnats/mail-query"
+ ${SITE}-gnats: alias de "bugs"
+Description-it.UTF-8: Si dovrebbero impostare alias di posta per GNATS.
+ GNATS può essere impostato per ricevere segnalazioni di bug e interrogazioni al database attraverso la posta. Tuttavia, sembra che si stia usando un programma di posta che non può essere impostato automaticamente, perciò deve essere fatto manualmente. Devono essere impostati su localhost gli indirizzi seguenti e le azioni appropriate per essi:
+ .
+ gnats: ridirigerlo all'indirizzo dell'amministratore di GNATS; gnats-admin: alias per «gnats»; bugs: reindirizzarlo con una pipe al comando «| /usr/lib/gnats/queue-pr -q»; query-pr: reindirizzarlo con una pipe al comando «| /usr/lib/gnats/mail-query»; ${SITE}-gnats: alias per «bugs»
+Description-ja.UTF-8: GNATS のメールエイリアスを設定する必要があります。
+ GNATS を、メール経由でバグ報告を受け取り、データベースの検索ができるように設定できます。しかし、あなたが使っているメールソフトはこの作業中に設定できないので、手作業で設定する必要があります。ローカルホスト上の以下のアドレスと、それに対する適切な設定を行ってください:
+ .
+ gnats: GNATS の管理者アドレスに転送 gnats-admin: "gnats" のエイリアス bugs: "| /usr/lib/gnats/queue-pr -q" コマンドにパイプで渡す query-pr: pipe it to the command "| /usr/lib/gnats/mail-query" コマンドにパイプで渡す ${SITE}-gnats: "bugs" のエイリアス
+Description-nl.UTF-8: Het is aan te raden om de GNATS-e-mail-aliassen in te stellen.
+ GNATS kan ingesteld worden om bugrapporten en database-bevragingen te ontvangen via e-mail. U lijkt echter een e-mailprogramma te gebruiken dat dit script niet automatisch kan instellen, u zult dit dus handmatig moeten doen. De volgende adressen en overeenkomstige acties ervoor dienen op localhost ingesteld te worden:
+ .
+ gnats: dit dient omgeleid te worden naar het adres van de GNATS-beheerder
+  gnats-admin: alias for 'gnats'
+ bugs: moet door het commando '| /usr/lib/gnats/queue-pr -q' gesluisd worden.
+ query-pr: moet door het commando '| /usr/lib/gnats/mail-query'  gesluisd worden.
+ ${SITE}-gnats: alias voor "bugs"
+Description-pt.UTF-8: Deverá definir 'gmail aliases'.
+ O GNATS pode ser configurado para receber relatórios de erro e consultas a bases de dados através de mail. No entanto parece que está a usar um 'mailer', que não consigo configurar, deste modo terá que o configurar manualmente. Os seguintes endereços em localhost e as acções apropriadas deverão ser definidas:
+ .
+ gnats: redireccionar para o endereço do administrador do GNATS"s gnats-admin: alias para "gnats" 'bugs': 'pipe' para o comando "| /usr/lib/gnats/queue-pr -q" query-pr: 'pipe' para o comando "| /usr/lib/gnats/mail-query" ${SITE}- gnats: alias para "bugs"
+Description-pt_BR.UTF-8: Você precisa configurar os apelidos ("aliases") de e-mail para o GNATS
+ GNATS pode ser configurado para receber relatórios de problemas e consultas à base de dados por e-mail. No entanto, parece que você está utilizando um sistema de e-mails que eu não posso configurar por conta própria, portanto você deve fazê-lo manualmente. Os seguintes endereços em localhost com as ações apropriadas para eles precisam ser configurados:
+ .
+ gnats: redirecionar para o endereço do administrador GNATS gnats-admin: apelido ("alias") para "gnats" bugs: enviar ("pipe") para o comando "| /usr/lib/gnats/queue-pr -q" query-pr: enviar ("pipe") para o comando "| /usr/lib/gnats/mail-query" ${SITE}-gnats: apelido ("alias") para "bugs"
+Description-ru.UTF-8: Нужно настроить псевдонимы для GNATS.
+ GNATS можно настроить для получения сообщений об ошибках и запросах к базе данных по почте. Однако, в системе установлена программа пересылки почты, для которой нет готовых настроек, поэтому вы должны сделать их самостоятельно. Нужно настроить следующие адреса на localhost и соответствующие действия к ним:
+ .
+  * gnats: переслать на адреса администратора GNATS
+  * gnats-admin: псевдоним для "gnats"
+  * bugs: обработать командой "| /usr/lib/gnats/queue-pr -q"
+  * query-pr: обработать командой "| /usr/lib/gnats/mail-query"
+  * ${SITE}-gnats: псевдоним для "bugs"
+Description-sv.UTF-8: Du bör konfigurera GNATS e-postalias.
+ GNATs kan ställas in att ta emot felrapporter och databasfrågor genom e-post. Dock verkar det som du använder ett e-postprogram som jag inte kan konfigurera själv, så du måste göra det för hand. Följande adresser på localhost och lämpliga åtgärder för dem måste konfigureras:
+ .
+ gnats: omdirigera det här till GNATS-administratörens adress gnats-admin: alias för "gnats"-fel: kör det genom ett rör till kommandot "| /usr/lib/gnats/queue-pr -q" query-pr: kör det genom ett rör till kommandot "| /usr/lib/gnats/mail-query" ${SITE}-gnats: alias för "bugs"
+Description-vi.UTF-8: Bạn nên thiết lập biệt hiệu thư tín GNATS.
+ Có thể thiết lập GNATS để nhận thông báo lỗi và truy vấn cơ sở dữ liệu qua thư. Tuy nhiên, hình như bạn đang sử dụng một trình thư mà trình này không thể thiết lập, vì vậy bạn cần phải tự làm như thế. Bạn nên thiết lập trên localhost (và cũng thiết lập những hành động thích hợp cho chúng) những địa chỉ theo đây:
+ .
+ gnats: chuyển tiếp tới địa chỉ của quản trị GNATS;
+ gnats-admin: biệt hiệu cho các lỗi « gnats »: gửi nó qua ống dẫn tới lệnh:
+ | /usr/lib/gnats/queue-pr -q
+ query-pr: gửi nó qua ống dẫn tới lệnh:
+ | /usr/lib/gnats/mail-query
+ ${SITE}-gnats: biệt hiệu cho « bugs ».
+
+Template: gnats/user_multiple
+Type: error
+Description: Multiple listings of the "gnats" userid were found in ${PASSWDFILE}.
+ You should have only one "gnats" userid in your password file.
+Description-cs.UTF-8: V souboru ${PASSWDFILE} byly nalezeny vícenásobné záznamy uživatele "gnats".
+ Soubor s heslem by měl obsahovat pouze jednoho uživatele "gnats".
+Description-da.UTF-8: Flere oplysninger om »gnats« bruger-id blev fundet i ${PASSWDFILE}.
+ Du skal kun have en »gnats« brugerid i din adgangskodefil.
+Description-de.UTF-8: Mehrere Vorkommen der »gnats«-User-ID in ${PASSWDFILE} gefunden
+ Die »gnats«-User-ID sollte in ${PASSWDFILE} nur einmal vorkommen.
+Description-es.UTF-8: Se han encontrado listados múltiples del identificador de usuario «gnats» en ${PASSWDFILE}.
+ Sólo debe tener un identificador de usuario «gnats» en su fichero de contraseña.
+Description-eu.UTF-8: "gnats" erabiltzailearen id-aren zerrendatze anitz aurkitu dira ${PASSWDFILE} fitxategian.
+ Bakarrik "gnats" erabiltzaile-id bat eduki behar duzu pasahitz fitxategian.
+Description-fi.UTF-8: Käyttäjätunnus ”gnats” on listattu useampaan kertaan tiedostossa ${PASSWDFILE}.
+ Käyttäjätunnus ”gnats” tulisi olla vain kerran salasanatiedostossa.
+Description-fr.UTF-8: Définitions multiples de l'identifiant gnats dans ${PASSWDFILE}
+ Vous ne devriez posséder qu'un seul identifiant « gnats » dans votre fichier de mots de passe.
+Description-gl.UTF-8: Atopáronse varias aparicións do usuario "gnats" en ${PASSWDFILE}.
+ Só debería ter un usuario "gnats" no ficheiro de contrasinais.
+Description-it.UTF-8: Sono state trovate voci multiple per l'ID utente «gnats» in ${PASSWDFILE}.
+ Il file delle password deve contenere un solo ID utente «gnats».
+Description-ja.UTF-8: ${PASSWDFILE} 中に "gnats" userid が複数存在しているのが見つかりました。
+ パスワードファイル中に "gnats" userid は 1 つだけでなければなりません。
+Description-nl.UTF-8: De gebruikers-id 'gnats' kom meerdere keren voor in ${PASSWDFILE}.
+ Er mag maar één 'gnats'-gebruikers-ID voorkomen in uw 'password'-bestand.
+Description-pt.UTF-8: Listas múltiplas do id de utilizador "gnats" foram encontradas em ${PASSWDFILE}.
+ Deverá apenas ter um id de utilizador "gnats" np seu ficheiro de palavra-chave
+Description-pt_BR.UTF-8: Múltiplas entradas do usuário "gnats" foram encontradas em ${PASSWDFILE}.
+ Você deveria ter somente um usuário "gnats" no seu arquivo de senhas.
+Description-ru.UTF-8: В файле ${PASSWDFILE} найдено несколько идентификаторов пользователя "gnats".
+ Должен быть только один идентификатор пользователя "gnats" в файле паролей.
+Description-sv.UTF-8: Flera listningar av användar-id:t "gnats" hittades i ${PASSWDFILE}.
+ Du bör endast ha ett användar-id som heter "gnats" i din lösenordsfil.
+Description-vi.UTF-8: Tìm thấy nhiều mục mã nhận diện người dùng « gnats » trong tập tin mật khẩu ${PASSWDFILE}.
+ Bạn nên có chỉ một mã nhận diện người dùng « gnats » trong tập tin mật khẩu của mình.
+

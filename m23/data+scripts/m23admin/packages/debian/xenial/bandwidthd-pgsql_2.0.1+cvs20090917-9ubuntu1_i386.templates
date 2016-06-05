@@ -1,0 +1,207 @@
+Template: bandwidthd/dev
+Type: select
+Choices: ${interfaces}
+Description: Interface to listen on:
+ Bandwidthd needs to know which interface it should listen for traffic on.
+ Only a single interface can be specified. If you want to listen on all
+ interfaces you should specify the metainterface "any".
+ Running "bandwidthd -l" will list available interfaces.
+Description-cs.UTF-8: Rozhraní, na kterém poslouchat:
+ Bandwidthd potřebuje znát jméno rozhraní, na kterém má naslouchat síťovému provozu. Můžete určit pouze jediné rozhraní. Pokud chcete naslouchat na všech rozhraních, zadejte pseudorozhraní "any". Seznam dostupných rozhraní zobrazíte příkazem "bandwidthd -l".
+Description-da.UTF-8: Grænseflade der skal lyttes på:
+ Bandwidthd har brug for at vide hvilken grænseflade den skal lytte efter trafik på. Kun en grænseflade kan angives. Hvis du ønsker at lytte på alle grænsefalder bør du angive metagrænsefladen »any«. Kørsel af »bandwidthd -l« vil vise alle tilgængelige grænseflader.
+Description-de.UTF-8: Schnittstelle, die beobachtet werden soll:
+ Bandwidthd muss die Schnittstelle kennen, deren Verkehr es beobachten soll. Es kann nur eine einzelne Schnittstelle angegeben werden. Falls Sie auf allen Schnittstellen auf Verkehr warten möchten, müssen Sie die Meta-Schnittstelle »any« angeben. Alle verfügbaren Schnittstellen werden aufgelistet, falls Sie »bandwidthd -l« ausführen.
+Description-es.UTF-8: Interfaz a escuchar:
+ Bandwidthd necesita conocer en que interfaz debería escuchar el tráfico. Sólo se puede especificar una única interfaz. Si quiere escuchar todas las interfaces debería especificar la meta-interfaz «any». Para listar todas las interfaces disponibles ejecute «bandwidthd -l».
+Description-fr.UTF-8: Interface sur laquelle Bandwidthd doit être à l'écoute :
+ Bandwidthd a besoin de connaître l'interface sur laquelle il doit être à l'écoute. Seule une interface peut être spécifiée. Si vous désirez écouter sur toutes les interfaces, il faut utiliser la méta-interface « any ». Veuillez exécuter « bandwidthd -l » afin d'afficher les interfaces disponibles.
+Description-ja.UTF-8: listen するインターフェイス:
+ bandwidthd はどのインターフェイスがトラフィックを listen するのかを知っている必要があります。インターフェイスは一つだけ指定できます。全てのインターフェイスで listen したい場合は擬似インターフェイス「any」を指定してください。「bandwidthd -l」を実行すると利用可能なインターフェイスの一覧を出力します。
+Description-nl.UTF-8: Interface waarop te luisteren:
+ Bandwidthd dient te weten op welke interface geluisterd moet worden voor verkeer. Er kan slechts één interface opgegeven worden. Als u op alle interfaces wilt luisteren dient u hier de meta-interface 'any' op te geven. Het commando 'bandwidthd -l' geeft de beschikbare interfaces weer.
+Description-pt.UTF-8: Interface para analisar o tráfego:
+ O bandwidthd necessita de saber qual o interface sobre o qual deve analisar o tráfego. Apenas pode ser especificado um único interface. Se deseja detectar tráfego em todos os interfaces, deve especificar o metainterface "any". Executar "bandwidthd -l" mostrará uma lista de interfaces disponíveis.
+Description-ru.UTF-8: Прослушиваемый интерфейс:
+ Для bandwidthd требуется указать интерфейс для прослушивания трафика. Это должен быть только один интерфейс. Если вы хотите прослушивать все интерфейсы, то введите "any". Получить список доступных интерфейсов можно по команде "bandwidthd -l".
+Description-sv.UTF-8: Nätverksgränssnitt att lyssna på:
+ BandwidthD behöver veta vilket nätverks-gränssnitt som det skall lyssnas efter trafik på. Endast ett gränssnitt kan anges. Om du vill lyssna efter trafik på alla gränssnitt skall meta-gränssnittet "any" anges.Kör "bandwidthd -l" för att få en lista med tillgängliga gränssnitt.
+
+Template: bandwidthd/subnet
+Type: string
+Description: Subnets to log details about:
+ Bandwidthd can create graphs for one or several ip-subnets. Subnets are
+ specified either in dotted-quad format (192.168.0.0 255.255.0.0) or in
+ CIDR format (192.168.0.0/16) and separated by a comma.
+ Example: 192.168.0.0/16, 10.0.0.0 255.0.0.0, 172.16.1.0/24.
+ If you don't know what to specify then you can use 0.0.0.0/0 but it is
+ strongly discouraged.
+Description-cs.UTF-8: Podsítě, o kterých se budou logovat informace:
+ Bandwidthd může vytvářet grafy pro celou řadu podsítí. Ty jsou určeny buď klasicky (192.168.0.0 255.255.0.0), nebo pomocí formátu CIDR (192.168.0.0/16) a jsou odděleny pomocí čárky. Například: 192.168.0.0/16, 10.0.0.0 255.0.0.0, 172.16.1.0/24. Pokud nevíte co zadat, můžete použít 0.0.0.0/0, což se ale silně nedoporučuje.
+Description-da.UTF-8: Undernet der skal logges detaljer omkring:
+ Bandwidthd kan oprette grafer for en eller flere ip-undernet. Undernet er angivet enten i formatet dotted-quad (192.168.0.0 255.255.0.0) eller i CIDR-format (192.168.0.0/16) og adskilt af et komma. Eksempel: 192.168.0.0/16, 10.0.0.0.255.0.0.0, 172.16.1.0/24. Hvis du ikke ved hvad der skal angives så kan du bruge 0.0.0.0/0 men det frarådes stærkt.
+Description-de.UTF-8: Subnetze, für die Details protokolliert werden:
+ Bandwidthd kann für eine oder mehrere IP-Subnetze Graphen erzeugen. Subnetze werden entweder im Punkt-Quad-Format (192.168.0.0 255.255.0.0) oder im CIDR-Format (192.168.0.0/16) angegeben und durch Kommata getrennt. Beispiel: 192.168.0.0/16, 10.0.0.0 255.0.0.0, 172.16.1.0/24. Falls Sie nichts anzugeben wissen, können Sie 0.0.0.0/0 verwenden, allerdings wird dies nachdrücklich nicht empfohlen.
+Description-es.UTF-8: Subredes a registrar:
+ Bandwidthd puede crear gráficas para una o más subredes. Las subredes se pueden especificar en formato de cuatro puntos (192.168.0.0 255.255.0.0) o en formato CIDR (192.168.0.0/16), y separadas por comas. Por ejemplo: 192.168.0.0/16, 10.0.0.0 255.0.0.0, 172.16.1.0/24. Si no sabe qué poner entonces puede utilizar 0.0.0.0/0, aunque se desaconseja totalmente.
+Description-fr.UTF-8: Sous-réseaux pour lesquels Bandwidthd doit enregistrer des informations :
+ Bandwidthd peut créer des graphiques pour un ou plusieurs sous-réseaux. Ceux-ci sont spécifiés soit sous le format « décimal pointé » (192.168.0.0 255.255.0.0) soit en notation CIDR (192.168.0.0/16) et sont séparés par une virgule. Exemple : 192.168.0.0/16, 10.0.0.0 255.0.0.0, 172.16.1.0/24. Si vous ne savez pas quoi utiliser, vous pouvez indiquer 0.0.0.0/0 mais cela est fortement déconseillé.
+Description-ja.UTF-8: 詳細を記録するサブネット:
+ bandwidthd は 1 つ、あるいは複数の IP サブネットについてグラフを作成できます。サブネットは 4 つの数字をドットで区切った形式 (192.168.0.0 255.255.0.0) か CIDR 形式 (192.168.0.0/16) で指定され、コンマで区切られます。例: 192.168.0.0/16, 10.0.0.0 255.0.0.0, 172.16.1.0/24 となります。何を指定すれば良いのか分からない場合は 0.0.0.0/0 を利用できますが、これは全くお勧めしません。
+Description-nl.UTF-8: Subnets waarvoor details gelogd moeten worden:
+ Bandwidthd kan grafieken voor één of meer ip-subnetten genereren. Subnetten kunnen opgegeven worden in 'dotted-quad'-formaat (192.168.0.0 255.255.0.0) of in CIDR-formaat (192.168.0.0/16) en dienen gescheiden te zijn door komma's. Voorbeeld: 192.168.0.0/16, 10.0.0.0 255.0.0.0, 172.16.1.0/24. Als u niet weet wat hier op te geven kunt u altijd 0.0.0.0/0 gebruiken, al is dit sterk af te raden.
+Description-pt.UTF-8: Guardar detalhes em relatório para as Subnets:
+ O bandwidthd pode criar gráficos para uma ou várias subnets de IPs. As subnets podem ser especificadas tanto num formato de quatro pontos (192.168.0.0 255.255.0.0) ou no formato CIDR (192.168.0.0/16) separados por uma vírgula. Exemplo: 192.168.0.0/16, 10.0.0.0 255.0.0.0, 172.16.1.0/24. Se não sabe o que especificar então pode usar 0.0.0.0/0, mas este é um procedimento altamente desaconselhado.
+Description-ru.UTF-8: Подробно протоколируемые подсети:
+ Bandwidthd может создавать графики для одной или нескольких ip подсетей. Подсети задаются в октетном формате (192.168.0.0 255.255.0.0) или в формате CIDR (192.168.0.0/16) и отделяются запятыми. Пример: 192.168.0.0/16, 10.0.0.0 255.0.0.0, 172.16.1.0/24. Если вы не знаете что указывать, то можете ввести 0.0.0.0/0, но это настоятельно не рекомендуется.
+Description-sv.UTF-8: Subnät att logga detaljer för:
+ Bandwithd kan skapa grafer för ett eller flera ip-subnät. Subnäten specificeras antingen i dotted-quad format (192.168.0.0 255.255.0.0) eller i CIDR-format (192.168.0.0/16) och separeras med ett komma-tecken. Exempel: 192.168.0.0/16, 10.0.0.0 255.0.0.0, 172.16.1.0/24. Om du inte vet vad du skall ange kan du använda 0.0.0.0/0 men det rekommenderas verkligen inte.
+
+Template: bandwidthd/outputcdf
+Type: boolean
+Default: true
+Description: Output CDF data logs?
+ Bandwidthd can log captured traffic information to Common Data File (CDF)
+ logs. These logs are required if you want to keep old information stored
+ between restarts of the bandwidthd daemon. Also see the recovercdf
+ configuration option.
+Description-cs.UTF-8: Vytvářet datové logy typu CDF?
+ Bandwidthd může logovat získané informace o provozu do logů typu CDF (Common Data File). Tyto logy jsou nutné v okamžiku, kdy chcete uchovat staré informace mezi jednotlivými restarty daemona bandwidthd. Podívejte se také na konfigurační volbu recovercdf.
+Description-da.UTF-8: Vis CDF-datalogge?
+ Bandwidthd kan logge optaget trafikinformation til logge for Common Data File (CDF). Disse logge kræves, hvis du ønsker at holde gammel information gemt mellem opstart af bandwidthd-dæmonen. Se også konfigurationsindstillingen til recovercdf.
+Description-de.UTF-8: CDF-Datenprotokolle ausgeben?
+ Bandwidthd kann mitgeschnittene Verkehrsinformationen in Common Data File (CDF)-Protokollen aufzeichnen. Diese Protokolle werden benötigt, falls Sie alte gespeicherte Informationen zwischen Neustarts des Bandwidthd-Daemons erhalten möchten. Beachten Sie hierzu auch die recovercdf-Konfigurationsoption.
+Description-es.UTF-8: ¿Desea crear registros CDF de datos?
+ Bandwidthd puede registrar la información del tráfico capturado en registros CDF («Common Data File»). Estos registros son necesarios si quiere mantener la información antigua almacenada entre reinicios del demonio bandwidthd. Vea también la opción de configuración «recovercdf».
+Description-fr.UTF-8: Faut-il afficher les journaux de données CDF ?
+ Bandwidthd peut enregistrer le trafic capturé dans le format CDF (Common Data File). Ces journaux sont nécessaires si vous désirez garder les anciennes données entre deux redémarrages du démon bandwidthd. Veuillez voir l'option de configuration « recovercdf ».
+Description-ja.UTF-8: CDF データログを出力しますか?
+ bandwidthd は、取得したトラフィック情報を Common Data File (CDF) ログに記録できます。このログは bandwidthd デーモンを再起動する間に以前の情報を保存しておきたい場合に必要です。recovercdf 設定オプションも参照してください。
+Description-nl.UTF-8: Wilt u CDF-datalogs uitvoeren?
+ Bandwidth kan het de onderschepte verkeersinformatie loggen in CDF-formaat (Common Data file). Deze logs zijn vereist als u wilt dat oude informatie opgeslagen wordt tussen herstarts avn de bandwidthd-achtergronddienst. Zie ook de recovercdf configuratie-optie.
+Description-pt.UTF-8: Mostrar os relatórios de dados CDF?
+ O bandwidthd pode guardar a informação de tráfego capturada para relatórios do tipo Common Data File ['Ficheiro de Dados Comuns'] (CDF). Estes relatórios são necessários caso pretenda guardar informação antiga armazenada entre reinícios do daemon bandwidthd. Veja também a opção de configuração do recovercdf.
+Description-ru.UTF-8: Вести журналы данных CDF?
+ Bandwidthd может сохранять информацию о захваченном трафике в журналы Common Data File (CDF). Эти журналы нужны, если вы хотите сохранить данные между перезапусками службы bandwidthd. Также см. настроечный параметр recovercdf.
+Description-sv.UTF-8: Skriv CDF data loggar?
+ Bandwidthd kan logga infångad trafikinformation till Common Data File (CDF)-loggar. Dessa loggar krävs om du vill spara gammal trafikinformation mellan omstarter av bandwidthd-demonen.Se också konfigurationsvalet för recovercdf.
+
+Template: bandwidthd/recovercdf
+Type: boolean
+Default: true
+Description: Recover old data from logs on restart?
+ If old data is going to be outputed in the graphs, it needs to be read
+ when BandwidthD is restarted. Parsing the CDF logs can take quite some
+ time on a slow machine so you might want to disable it, but then you'll
+ lose the information in the graphs after a reboot and similar.... Also make
+ sure the output_cdf config option is enabled.
+Description-cs.UTF-8: Obnovit při restartu stará data z logu?
+ Pokud chcete v grafech zobrazit i stará data, je potřeba je načíst při restartu BandwidthD. Analýza logů CDF může chvíli zabrat a zpomalit počítač, takže ji možná budete chtít vypnout. Tím ale z grafů ztratíte informace při každém restartu atd.... Také se prosím ujistěte, že je zapnutá konfigurační volba output_cdf.
+Description-da.UTF-8: Gendan gamle data fra logge ved genstart?
+ Hvis gamle data skal vises i graferne, så skal de læses når BandwidthD genstartes. Fortolkning af CDF-logge kan tage noget tid på en sløv maskine så du vil måske ønske at slå det fra, men så mister du informationen i graferne efter en genstart og lignende.... Du skal også sikre dig, at konfigurationstilvalget output_cdf er slået til.
+Description-de.UTF-8: Alte Daten aus den Protokollen beim Neustart wiederherstellen?
+ Falls alte Daten in den Graphen ausgegeben werden, müssen diese eingelesen werden, wenn BandwidthD neu gestartet wird. Das Auswerten der CDF-Protokolle kann auf langsamen Maschinen einige Zeit benötigen, daher möchte Sie es eventuell deaktivieren. Allerdings verlieren Sie dann die Informationen in den Graphen nach einem Reboot und ähnlichem... Stellen Sie daher auch sicher, dass die output_cdf-Konfigurationsoption aktiviert ist.
+Description-es.UTF-8: ¿Desea recuperar la información antigua a partir de los registros al reiniciar?
+ Si la información se va a mostrar en los gráficos, se necesita leer cuando se reinicie bandwidthd. Analizar los registros CDF puede tardar algún tiempo en una máquina lenta de modo que podría querer desactivarlo, pero entonces perdería la información de los gráficos después de reiniciar... Asegúrese también de que la opción de configuración «output_cdf» está activa.
+Description-fr.UTF-8: Faut-il récupérer les anciennes données des journaux lors d'un redémarrage ?
+ Si les anciennes données sont utilisées pour les graphiques, elles doivent être lues lors d'un redémarrage de bandwidthd. Ce processus peut prendre du temps sur des machines lentes et vous désirez peut-être désactiver cette fonctionnalité ; sachez qu'en faisant cela vous perdrez ces informations pour les graphiques après un redémarrage. Par conséquent, assurez-vous que l'option de configuration « output_cdf » soit activée.
+Description-ja.UTF-8: 再起動時に古いデータをログから復元しますか?
+ 古いデータをグラフに出力し続ける場合、BandwidthD が再起動される時に読み込む必要があります。遅いマシンで CDF ログを処理するのは少々時間がかかるので無効にすると良いですが、その場合は再起動した場合などにグラフ情報を失います。output_cdf 設定オプションが有効なのも確認してください。
+Description-nl.UTF-8: Wilt u oude datalogs herstellen bij herstarts?
+ Als oude data uitgevoerd moet worden in de grafieken dient deze ingelezen te worden bij het starten van bandwidthd. Parsen van de CDF-logs kan enige tijd in beslag nemen en op een trage machine kan het dan ook aan te raden zijn om dit uit te schakelen, al verliest u dan wel de infroamtie in de grafieken na een herstart... Ook dient u ervoor te zorgen dat de configuratieoptie 'output_cdf' geactiveerd is.
+Description-pt.UTF-8: Recuperar dados antigos a partir de relatórios ao reiniciar?
+ Se se mostrarem dados antigos em gráficos, necessita de ser lido quando o bandwidthd é reiniciado. Analisar os relatórios CDF pode levar bastante tempo num computador lento, por isso pode querer desactivar isto. No entanto, perderá a informação nos gráficos depois de um reinício e em acções semelhantes. Certifique-se também que a opção de configuração output_cdf está activada.
+Description-ru.UTF-8: Восстанавливать данные из журналов при перезапуске?
+ Если для создания графиков нужно использовать старые данные, то BandwidthD должен их прочитать после перезапуска. Анализ журналов CDF на медленной машине займёт какое-то время, поэтому вы можете захотеть выключить его, но при этом вы потеряете информацию на графиках после перезагрузки или при других обстоятельствах... Также убедитесь, что задан параметр output_cdf.
+Description-sv.UTF-8: Återläs gammal data från loggar vid omstart?
+ Om gammal trafikinformation skall finnas i graferna måste det läsas in när BandwidthdD startas om. Att läsa in informationen från CDF-filerna kan ta ganska lång tid på en långsam manskin så du kan vilja slå av detta konfigurationsval, men då förlorar du informationen i graferna efter en omstart om liknande... För att detta skall fungera kontrollera så att output_cdf är påslaget.
+
+Template: bandwidthd/metarefresh
+Type: string
+Description: Graph webpage autorefresh delay (seconds):
+ With this option you can tweak the delay used in the html as "META
+ REFRESH" value. The default is 150 seconds (2.5 minutes). To disable
+ automatic reloads of the webpage enter 0. This way the visitor will have
+ to manually push refresh in his browser to get updated graphs.
+Description-cs.UTF-8: Interval automatické obnovy stránky s grafem (v sekundách):
+ Pomocí této volby můžete změnit zpoždění použité v html značce "META REFRESH". Výchozí je 150 sekund (2,5 minuty). Pro vypnutí těchto automatických obnov stránky zadejte hodnotu 0. Pak bude muset návštěvník stránku aktualizovat ručně.
+Description-da.UTF-8: Automatisk opdateringsforsinkelse for grafinternetside (sekunder):
+ Med dette tilvalg kan du indstille forsinkelsen brugt i html'en under »META REFRESH«. Standarden er 150 sekunder (2,5 minutter). For at deaktivere automatisk genindlæsning af internetsiden indtastes 0. På den måde vil den besøgende manuelt skulle trykke på opdater i sin browser for at hente opdaterede grafer.
+Description-de.UTF-8: Aktualisierungsverzögerung für die Graph-Webseite (in Sekunden):
+ Mit dieser Option können Sie die Verzögerung einstellen, die als HTML »META REFRESH«-Wert eingetragen wird. Der Standardwert beträgt 150 Sekunden (2,5 Minuten). Um das automatische Neuladen der Webseite zu unterbinden, tragen Sie 0 ein. In diesem Fall muss der Besucher die Seite in seinem Browser manuell neu laden, um aktualisierte Graphen zu bekommen.
+Description-es.UTF-8: Intervalo (en segundos) para la actualización automática de la página web de los gráficos:
+ Con esta opción puede ajustar el intervalo utilizado en el campo «META REFRESH» del archivo html. El valor predeterminado es 150 segundos (2.5 minutos). Para desactivar la recarga automática introduzca el valor cero. De este modo el visitante tendrá que actualizar manualmente desde su navegador para obtener los gráficos actualizados.
+Description-fr.UTF-8: Délai de rafraîchissement (en secondes) de la page web du graphique :
+ Cette option permet d'ajuster le délai utilisé dans le fichier HTML comme valeur pour « META REFRESH ». Par défaut il est de 150 secondes (2,5 minutes). Indiquez 0 pour désactiver le rechargement automatique des pages, ce qui forcera le visiteur à recharger lui-même la page afin d'obtenir un graphique à jour.
+Description-ja.UTF-8: グラフウェブページの自動更新間隔 (秒):
+ このオプションで html の「META REFRESH」値で使われる間隔を調整できます。デフォルトは 150 秒 (2.5 分) です。ウェブページの自動リロードを無効にするには 0 を入力してください。こうすると、来訪者が更新されたグラフを見るには手動でブラウザを更新する必要が出てきます。
+Description-nl.UTF-8: Automatisch verversingsinterval voor de grafiek-webpagina (in seconden):
+ Met deze optie kunt u het interval instellen dat in de html-code gebruikt wordt wal waarde voor 'META REFRESH'. De standaardwaarde is 150 seconden (2,5 minuten). Als u automatisch herladen van de webpagina wilt uitschakelen dient u hier 0 aan te geven, bezoekers dienen dan handmatig de pagina te verversen om bijgewerkte grafieken te zien te krijgen.
+Description-pt.UTF-8: Intervalo para actualização automática da página dos gráficos (segundos):
+ Com esta opção pode alterar o intervalo de tempo utilizado no código HTML como valor para o "META REFRESH". A pré-definição é de 150 segundos (2,50 minutos). Para desactivar as actualizações automáticas da página web, insira 0. Assim, o visitante terá de clicar manualmente no botão de actualização do seu browser para obter gráficos actualizados.
+Description-ru.UTF-8: Задержка автоматического обновления графиков на веб-странице (в секундах):
+ Этим параметром можно подстроить задержку, указываемую в html, в "META REFRESH". По умолчанию -- 150 секунд (2.5 минуты). Чтобы выключить автоматическое обновление веб-страницы введите 0. При этом посетитель должен будет вручную запрашивать обновление страницы в браузере для получения обновлённых графиков.
+Description-sv.UTF-8: Automatisk uppdateringsintervall för grafwebbsidan (sekunder):
+ Med detta konfigurationsval kan du ställa in fördröjningen som använges i html-sidornas "META REFRESH"-värde. Standardinställningen är 150 sekunder (2.5 minuter). För att stänga av automatisk omladdning av webbsidorna ange värdet 0. Om detta används måste besökarna manuellt ladda om webbsidan för att se förnyade grafer.
+
+Template: bandwidthd/promisc
+Type: boolean
+Default: false
+Description: Put interface in PROMISC mode?
+ If this option is enabled, all interfaces used to capture traffic
+ information will be put in promiscuous mode. This way traffic thats not
+ routed via the machine running bandwidthd might be trackable anyway.
+ Enabling promiscuous mode will probably not be able to capture any more
+ traffic in a normal switched network. Also rootkit detectors might warn
+ about bandwidthd being a virus if using promiscuous mode. You should
+ probably leave this option disabled.
+Description-cs.UTF-8: Nastavit rozhraní do promiskuitního módu?
+ Pokud povolíte tuto volbu, budou všechna rozhraní nastavená pro snímání informací o provozu přepnuta do promiskuitního módu. V tomto režimu bude možné sledovat i provoz, který není směrován skrz počítač s běžícím bandwidthd. Nicméně povolením promiskuitního módu v běžné přepínané síti pravděpodobně žádné další informace nezískáte. V případě, že tento mód zapnete, mohou některé detektory rootkitů považovat bandwidthd za virus. Pravděpodobně byste měli nechat tuto volbu vypnutou.
+Description-da.UTF-8: Sæt grænsefalde i PROMISC-tilstand?
+ Hvis denne indstilling er aktiveret, vil alle grænseflader brugt til at registrere trafikinformation blive sat i omflakkende tilstand. På denne måde vil trafik som ikke sendes via maskinen der kører bandwidthd stadig kunne være sporbart. Aktivering af omflakkende tilstand vil sandsynligvis ikke være i stand til at registrere mere trafik i et normalt omstillet netværk. Rootkit-detektiver vil måske også advare om at bandwidthd er en virus hvis den bruger omflakkende tilstand. Du skal højst sandsynligt lade denne indstilling være deaktiveret.
+Description-de.UTF-8: Schnittstelle in PROMISC-Modus schalten?
+ Falls diese Option aktiviert ist, werden alle Schnittstellen, die Verkehrsinformationen sammeln, in den »promiscuous«-Modus versetzt. Damit kann unter Umständen auch Verkehr, der nicht über die Maschine, auf der Bandwidthd läuft, geroutet wird, verfolgt werden. In einem normalen Netz mit Switch wird der »promiscuous«-Modus wahrscheinlich keinen zusätzlichen Verkehr sammeln können. Auch könnten Programme zum Erkennen von Rootkits Warnungen melden, dass Bandwidthd ein Virus sei, falls der »promiscuous«-Modus verwendet wird. Sie sollten wahrscheinlich diese Option deaktiviert lassen.
+Description-es.UTF-8: ¿Desea poner la interfaz en modo «PROMISC» (promiscuo)?
+ Si se activa esta opción, todas las interfaces utilizadas para capturar información del tráfico se pondrán en modo promiscuo. De este modo el tráfico que no se dirija a la máquina que ejecuta bandwidthd puede seguirse. Activar el modo promiscuo probablemente no podrá capturar más tráfico que el modo normal en una red con switches. Si utiliza el modo promiscuo, también puede ocurrir que los detectores de «rootkits» avisen que bandwidthd sea un virus. Lo más probable es que debería dejar esta opción desactivada.
+Description-fr.UTF-8: Faut-il mettre une ou plusieurs interface en mode PROMISC ?
+ En activant cette option, toutes les interfaces utilisées pour capturer le trafic seront placées en mode « promiscuous ». Cela permet de suivre le trafic qui ne passe pas par la machine exécutant bandwidthd. Sachez que cette option ne permet pas de capturer le trafic dans un réseau commuté. De plus, les détecteurs de rootkit prendront peut-être alors bandwidthd pour un virus et vous le signaleront. Vous devriez probablement laisser cette option désactivée.
+Description-ja.UTF-8: インターフェイスを PROMISC モードにしますか?
+ このオプションを有効にすると、トラフィック情報をキャプチャするのに使われている全てのインターフェイスは promiscuous モードにされます。こうすると、bandwidthd が動作しているマシンを経由しないトラフィックも同様に追跡が可能になります。通常のスイッチハブが入っているネットワークでは、promiscous モードを有効にしても、さらにトラフィックをキャプチャすることはおそらく不可能でしょう。また、promiscous モードを使っていると、rootkit 検出ソフトが bandwidthd をウィルスとして警告するかもしれません。大抵は、このオプションを無効にしておいた方が良いでしょう。
+Description-nl.UTF-8: Wilt u de interface naar PROMISC-modus omschakelen?
+ Als deze optie geactiveerd is worden alle interfaces waarop verkeer onderschept wordt in promiscue-modus gezet. Op die manier kan verkeer dat niet via de machine waarop bandwithd draait gerout wordt toch onderschept worden. In een normaal netwerk met switches levert het activeren van promiscue modus waarschijnlijk geen extra onderschept verkeer op. Ook kan het zijn dat rootkit-detector-programma's waarschuwingen geven omtrent bandwidthd waneer deze promiscue modus gebruikt. Waarschijnlijk kunt u deze optie best gedeactiveerd laten.
+Description-pt.UTF-8: Colocar o interface no modo PROMISC?
+ Se esta opção estiver activada, todos os interfaces utilizados para a captação da informação de tráfego serão colocados em modo promíscuo. Desta forma, o tráfego que não é direccionado pela máquina a executar o bandwidthd pode ser detectável de qualquer das formas. Ao activar o modo promíscuo, provavelmente não não irá ser capaz de captar mais tráfego numa rede normal 'switched'. Para além disto, detectores de rootkits podem lançar avisos dizendo que o bandwidthd é um vírus se estiver a usar o modo promíscuo. Provavelmente deve deixar esta opção desactivada.
+Description-ru.UTF-8: Перевести интерфейс в режим PROMISC?
+ Если ответить утвердительно, то все интерфейсы, используемые для захвата трафика, будут переведены в неразборчивый режим. В этом режиме bandwidthd получит доступ к трафику, который не предназначен для данной машины. Включение неразборчивого режима в нормальных коммутируемых сетях не добавит много дополнительного трафика. Также инструменты обнаружения руткитов могут выдать предупреждение, что bandwidthd является вирусом. Вероятно, лучше ответить отрицательно.
+Description-sv.UTF-8: Kör nätverksgränssnitten i promiskuöst läge?
+ Om detta konfigurationsdirektiv slås på kommer alla nätverksgränssnitt som används för att fånga in trafikinformation köras i promiskuöst läge. På detta sätt kan trafik som inte skickas via maskinen som kör bandwidthd eventuellt fångas upp ändå. Att slå på detta konfigurationsdirektiv kommer förmodligen inte göra någon skillnad i ett vanligt switchat nätverk. Detekteringsverktyg för rootkit kommer förmodligen också varna att bandwidthd är ett virus när promiskuöst läge används. Du gör förmodligen klokast i att lämna detta avslaget.
+
+Template: bandwidthd-pgsql/sensorid
+Type: string
+Description: This sensors identification string:
+ Each sensor should have an identification string to be able to tell from
+ where the traffic in the PostgreSQL-database was detected on. This
+ option is usually set to the fully qualified hostname of the machine
+ running the bandwidthd sensor. This needs to be a unique string which
+ no other bandwidthd sensor that reports to the same database uses.
+Description-cs.UTF-8: Identifikační řetězec tohoto senzoru:
+ Každý senzor by měl mít nějaký identifikační řetězec, abyste mohli z databáze PostgreSQL rozlišit, na kterém senzoru byl provoz pozorován. Tato volba se obvykle nastavuje na úplný název počítače, na kterém běží senzor bandwidthd. Tento řetězec musí být jedinečný a nesmí tak kolidovat s žádným jiným senzorem, který se používá ve stejné databázi.
+Description-da.UTF-8: Denne sensors identifikationsstreng:
+ Hver sensor skal have en identifikationsstreng for at være i stand til at fortælle hvor trafikken i PostgreSQL-databasen blev registreret. Denne indstilling er normalt angivet som værende det fuldt kvalificeret værtsnavn på maskinen som kører bandwidthd-sensoren. Denne skal være en unik streng forskellig fra alle andre bandwidthd-sensorer som rapporterer til den samme database.
+Description-de.UTF-8: Identifikation dieses Sensors:
+ Jeder Sensor sollte eine Identifikation haben, um zu bestimmen, wo der Verkehr in der PostgreSQL-Datenbank erkannt wurde. Diese Option wird gewöhnlich auf den voll-qualifizierten Rechnernamen der Maschine, die den Bandwidthd-Sensor betreibt, gesetzt. Dies muss eine eindeutige Zeichenkette sein, die von keinem anderen Bandwidthd-Sensor, der an die gleiche Datenbank Berichte abliefert, verwendet wird.
+Description-es.UTF-8: Cadena de identificación de los sensores:
+ Cada sensor debería tener una cadena de identificación para poder indicar dónde se detectó el tráfico de la base de datos PostgreSQL. Esta opción normalmente está configurada con el nombre completo de la máquina que ejecuta el sensor de bandwidthd. Este valor debe ser único y no debe haber otro sensor de bandwidthd que informe en la misma base de datos.
+Description-fr.UTF-8: Chaîne d'identification de cette sonde :
+ Chaque sonde doit avoir une chaîne d'identification afin de pouvoir déterminer la source du trafic dans la base de données PostgreSQL. On indique généralement ici le nom d'hôte complètement qualifié de la machine hébergeant la sonde de bandwidthd. Ce doit être une chaîne unique, qu'aucune autre sonde écrivant dans la même base de données ne doit utiliser.
+Description-ja.UTF-8: このセンサーを識別する文字列:
+ 各センサーは、検出したトラフィックをどこからのものなのかを識別できる文字列を PostgreSQL データベースで持つ必要があります。このオプションは通常 bandwidthd センサーが動作しているマシンの完全修飾ホスト名に設定されます。これは、同じデータベースにレポートをしている別の bandwidthd センサーが使っていない一意な文字列である必要があります。
+Description-nl.UTF-8: De identificatiestring voor deze sensor:
+ elke sensor dient een identificatiestring te heben om te kunnen bijhouden waar het verkeer in de PostgreSQL-database gedetecteerd was. Deze optie wordt gewoonlijk ingesteld op de FQDN (Fully Qualified Domainname) van de machine waarop de bandwithd-sensor draait. Dit dient een unieke string te zijn voor de bandwithd-sensors die dezelfde database gebruiken.
+Description-pt.UTF-8: Linha de identificação deste sensor:
+ Cada sensor deve ter uma linha (string) de identificação capaz de indicar de onde vem o tráfego detectado na base de dados PostgreSQL. Normalmente, esta opção é colocada com o hostname completo da máquina a executar o sensor bandwidthd. Esta string necessita de ser única e para o qual nenhum outro sensor bandwidthd associado à mesma base de dados esteja a usar.
+Description-ru.UTF-8: Идентификационная строка для этого датчика:
+ Каждый датчик должен иметь идентификационную строку, чтобы понимать откуда поступила информация о трафике в базу данных PostgreSQL. Обычно здесь указывают полностью определённое имя машины, на которой запущен датчик. Это должна быть уникальная строка, которая не присвоена ни одному из датчиков bandwidthd, пишущих в одну базу данных.
+Description-sv.UTF-8: Denna sensors identifikations-sträng:
+ Varje sensor skall ha en identifikationssträng för att kunna identifiera på vilken sensor trafiken som sparats i PostgreSQL-databasen fångades in på. Detta konfigurationsdirektiv sätts vanligtvis till den fullständiga  adressen på maskinen som kör bandwidthd-sensorn. Värdet som anges måste vara unikt bland alla sensorer som rapporterar till samma databas.
+

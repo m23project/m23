@@ -1,0 +1,634 @@
+Template: condor/title
+Type: title
+Description: HTCondor configuration
+Description-cs.UTF-8: Nastavení HTCondoru
+Description-da.UTF-8: Konfiguration af HTCondor
+Description-de.UTF-8: HTCondor-Konfiguration
+Description-es.UTF-8: Configuración de condor
+Description-fr.UTF-8: Configuration de HTCondor
+Description-it.UTF-8: Configurazione di HTCondor
+Description-ja.UTF-8: HTCondor の設定
+Description-nl.UTF-8: Instellen van HTCondor
+Description-pl.UTF-8: Konfiguracja HTCondor
+Description-pt.UTF-8: Configuração do HTCondor
+Description-ru.UTF-8: Настройка HTCondor
+Description-sv.UTF-8: Inställningar för HTCondor
+
+Template: condor/wantdebconf
+Type: boolean
+Default: false
+Description: Manage initial HTCondor configuration automatically?
+ The setup for HTCondor can be handled automatically, asking a few questions
+ to create an initial configuration appropriate for a machine that is either
+ a member of an existing pool or a fully functional "Personal HTCondor
+ installation". This generated initial configuration can be further extended
+ later on.
+ .
+ Otherwise, HTCondor will be installed with a default configuration that needs
+ to be customized manually.
+Description-cs.UTF-8: Provést automatické počáteční nastavení HTCondoru?
+ Nastavení HTCondoru je možno provést automaticky za pomoci několika málo otázek a nastavit jej tak, aby počítač fungoval buď jako člen stávající skupiny nebo jako plně funkční "Osobní instalace HTCondoru". Toto výchozí nastavení je možné později libovolně rozšiřovat.
+ .
+ Jinou možností je instalace HTCondoru spolu s výchozím nastavením, které je nutné upravit ručně.
+Description-da.UTF-8: Håndter oprindelig konfiguration af HTCondor automatisk?
+ Opsætningen af HTCondor kan håndteres automatisk med et par få spørgsmål for at oprette en oprindelig konfiguration egnet for en maskine som hverken er medlem af en eksisterende pulje eler en fuld funktionel »Personal HTCondor installation«. Denne oprindelige konfiguration kan senere udvides yderligere.
+ .
+ Ellers vil HTCondor blive installeret med en standardkonfiguration, som skal tilpasses manuelt.
+Description-de.UTF-8: HTCondor-Erstkonfiguration automatisch verwalten?
+ Die Einrichtung von HTCondor kann automatisch vorgenommen werden. Dazu werden ein paar Fragen gestellt, um eine Erstkonfiguration für eine Maschine zu erstellen, die entweder ein Mitglied eines existierenden Pools oder eine voll funktionale »Persönliche HTCondor-Installation« ist. Diese Erstkonfiguration kann später erweitert werden.
+ .
+ Andernfalls wird HTCondor mit einer Vorkonfiguration installiert, die per Hand angepasst werden muss.
+Description-es.UTF-8: ¿Desea administrar la configuración inicial de HTCondor en forma automática?
+ La configuración de HTCondor se puede realizar en forma automática, contestando unas cuantas preguntas para crear una configuración inicial apropiada para una máquina que sea miembro de un conjunto («pool») existente, o para una instalación personal completa y funcional de HTCondor. Esta configuración inicial puede extenderse más adelante.
+ .
+ De otra forma HTCondor se instalará con la configuración predeterminada que necesita ser personalizada en forma manual.
+Description-fr.UTF-8: Faut-il gérer la configuration initiale de HTCondor automatiquement ?
+ La mise en place de HTCondor peut être gérée automatiquement en répondant à quelques questions afin de créer une configuration initiale appropriée pour une machine qui est soit membre d'un groupement (« pool ») existant, soit une « installation personnelle de HTCondor » complètement fonctionnelle. Cette configuration initiale générée peut être par la suite modifiée.
+ .
+ Dans le cas contraire, HTCondor sera installé avec une configuration par défaut qu'il est conseillé d'adapter manuellement.
+Description-it.UTF-8: Gestire la configurazione iniziale di HTCondor in modo automatico?
+ L'impostazione di HTCondor può essere gestita in modo automatico, ponendo alcune domande per creare una configurazione iniziale adatta per una macchina che sia un membro di un pool esistente oppure una "installazione di HTCondor Personalizzata" pienamente funzionante. La configurazione iniziale che viene generata può essere successivamente espansa ulteriormente.
+ .
+ HTCondor viene altrimenti installato con una configurazione predefinita che deve essere personalizzata a mano.
+Description-ja.UTF-8: HTCondor の初期設定を自動的に行いますか?
+ HTCondor の準備は自動的に、いくつか質問して既存の連合 (pool) の一員または全機能を持つ「Personal HTCondor インストール」用のマシン向けに適切な初期設定を作成できます。この生成された初期設定は後でさらに拡張できます。
+ .
+ 自動設定しない場合 HTCondor はデフォルト設定でインストールされ、手作業により調整する必要があります。
+Description-nl.UTF-8: Het initieel instellen van HTCondor automatisch afhandelen?
+ Het instellen van HTCondor kan automatisch afgehandeld worden. Aan de hand van enkele vragen kan een initiële configuratie aangemaakt worden, aangepast voor ofwel een computer die tot een bestaande pool behoort, of voor een volledig functionele "persoonlijke installatie van HTCondor". Deze initieel aangemaakte configuratie kan later uitgebreid worden.
+ .
+ Anders zal HTCondor geïnstalleerd worden met een standaardconfiguratie die handmatig aangepast moet worden.
+Description-pl.UTF-8: Zarządzać pierwotną konfiguracją HTCondor w sposób automatyczny?
+ Ustawienia HTCondor mogą być obsłużone automatycznie, przy czym konieczne będzie odpowiedzenie na kilka pytań w celu utworzenia pierwotnej konfiguracji odpowiedniej do komputera, który jest już członkiem istniejącej puli lub do w pełni funkcjonalnej "osobistej instalacji HTCondor". Konfiguracja ta może być później poszerzona przez użytkownika.
+ .
+ W przeciwnym wypadku HTCondor zostanie zainstalowany z domyślną konfiguracją, która musi zostać ręcznie dopasowana.
+Description-pt.UTF-8: Tratar automaticamente da configuração inicial do HTCondor?
+ A configuração do HTCondor pode ser tratada automaticamente, através de algumas perguntas para criação de uma configuração inicial apropriada a uma máquina que ou é membro de um conjunto já existente ou uma "Instalação Pessoal do HTCondor" totalmente funcional. Esta configuração inicial pode ser ajustada posteriormente.
+ .
+ Caso contrário, o HTCondor será instalado com uma configuração predefinida que necessita de ser ajustada manualmente.
+Description-ru.UTF-8: Выполнить начальную настройку HTCondor автоматически?
+ Начальная настройка HTCondor для машины, которая может быть членом существующего пула или полностью работать в качестве «персональной установки HTCondor», может быть выполнена автоматически на основе ответов на несколько вопросов. Созданная настройка в дальнейшем может быть расширена.
+ .
+ В противном случае HTCondor будет установлен с настройкой по умолчанию, которую требуется доработать вручную.
+Description-sv.UTF-8: Ska initiell inställning av HTCondor utföras automatiskt?
+ Inställningarna för HTCondor kan hanteras automatiskt genom att några frågor ställs för att skapa en initiell konfiguration för en maskin som antingen är medlem i en existerande pool eller fungerar som en "Personlig HTCondor-installation". Den initiella konfiguraitonen kan utökas ytterligare framöver.
+ .
+ Annars kommer HTCondor att intalleras med en standardkonfiguration som måste justeras manuellt.
+
+Template: condor/phonehome
+Type: boolean
+Default: false
+Description: Enable submission of usage statistics?
+ The HTCondor authors politely request that each HTCondor pool sends them periodic
+ updates with basic information about the status of the pool. Updates include
+ only the total number of machines, the number of jobs submitted, the number
+ of machines running jobs, the host name of the central manager, and the name
+ of the pool. These updates help the HTCondor Team see how HTCondor is being used
+ around the world.
+Description-cs.UTF-8: Povolit odesílání statistik využití?
+ Tvůrci HTCondoru jsou rádi za pravidelně zasílané informace o stavu skupin HTCondoru. Tyto informace obsahují pouze celkový počet počítačů, počet odeslaných úloh, počet počítačů s běžícími úkoly, jméno počítače centrálního správce a jméno pole. Obsažené informace pomáhají týmu HTCondor sledovat použití aplikace HTCondor po celém světě.
+Description-da.UTF-8: Aktiver indsendelse af brugsstatistik?
+ Forfatterne af HTCondor anmoder venligst om at hver HTCondorpulje sender dem periodiske opdateringer med basisinformation om status for puljen. Opdateringer inkluderer kun det samlede antal maskiner, antallet af indsendte job, antallet af maskiner der kører job, værtsnavnet for den centrale håndtering og navnet på puljen. Disse opdateringer hjælper HTCondorholdet med at se hvordan HTCondor bliver brugt rundt omkring i verden.
+Description-de.UTF-8: Die Übertragung von Nutzungsstatistiken einschalten?
+ Die HTCondor-Autoren ersuchen höflich, dass jeder HTCondor-Pool ihnen periodische Aktualisierungen mit Grundinformationen über den Zustand des Pools zusendet. Die Aktualisierungen enthalten nur die Gesamtzahl der Maschinen, die Anzahl der übertragenen Aufträge, die Anzahl der Maschinen, die Aufträge ausführt, den Rechnernamen des Zentralverwalters und den Namen des Pools. Diese Aktualisierungen verschaffen dem HTCondor-Team eine Übersicht, wie HTCondor in aller Welt eingesetzt wird.
+Description-es.UTF-8: ¿Desea activar el envío de estadísticas de uso?
+ Los autores de HTCondor solicitan que cada conjunto («pool») de HTCondor envíe actualizaciones periódicas con información básica acerca del estado del conjunto. Las actualizaciones incluyen únicamente el número total de máquinas, el número de trabajos enviados, el número de máquinas ejecutando trabajos, el nombre del equipo del administrador central, y el nombre del conjunto. Estas actualizaciones ayudan al equipo de HTCondor para ver como se utiliza HTCondor alrededor del mundo.
+Description-fr.UTF-8: Faut-il activer l'inscription des statistiques d'utilisation ?
+ Les auteurs de HTCondor suggèrent que chaque groupement de HTCondor leur envoie régulièrement des informations basiques à propos de l'état du groupement. Ces informations incluent le nombre total de machines, le nombre de travaux soumis, le nombre de machines exécutant des travaux, le nom d'hôte du gestionnaire central et le nom du groupement. Elles permettent à l'équipe de HTCondor de savoir comment leur logiciel est utilisé à travers le monde.
+Description-it.UTF-8: Permettere l'invio di statistiche sull'uso?
+ Agli autori di HTCondor farebbe piacere se ogni pool HTCondor inviasse periodicamente degli aggiornamenti con le informazioni di base sullo stato del pool. Gli aggiornamenti includono solo il numero totale di macchine, il numero di compiti sottoposti, il numero di macchine che eseguono compiti, il nome host del gestore centrale e il nome del pool. Questi aggiornamenti aiutano il Team HTCondor a capire come HTCondor venga usato in tutto il mondo.
+Description-ja.UTF-8: 利用状況の統計の提出を有効にしますか?
+ HTCondor 作者は各 HTCondor 連合 (pool) に連合 (pool) の状態についての基本的な情報を定期的に更新して送るようにお願いしています。これに含まれるのはマシン総数、提出したジョブの数、ジョブを実行しているマシンの数、中央管理マシンのホスト名、poolの名前だけです。この情報を更新することは HTCondor チームが HTCondor が世界中でどのように利用されているのかを知る手助けとなります。
+Description-nl.UTF-8: Het indienen van gebruikersstatistieken mogelijk maken?
+ De auteurs van HTCondor verzoeken beleefd om hen periodiek door elke HTCondor-pool updates te laten sturen met basisinformatie over de staat van de pool. Deze updates bevatten enkel informatie over het totale aantal computers, het aantal aangeboden taken, het aantal computers dat taken uitvoert, de naam van de computer die de centrale beheersfunctie vervult en de naam van de pool. Deze updates helpen het HTCondor-team om zich een beeld te vormen van het gebruik van HTCondor overal ter wereld.
+Description-pl.UTF-8: Włączyć wysyłanie statystyk użycia?
+ Autorzy HTCondor uprzejmie proszą każdą pulę HTCondor o wysyłanie regularnych aktualizacji z podstawowymi informacjami o statusie grupy. Aktualizacje zawierają wyłącznie całkowitą liczbę komputerów, liczbę przetworzonych zadań, liczbę komputerów z uruchomionymi zadaniami, nazwę hosta głównego zarządcy i nazwę puli. W ten sposób zespół HTCondor dowiaduje się jak HTCondor jest używany na całym świecie.
+Description-pt.UTF-8: Activar o envio de estatísticas de utilização?
+ Os autores do HTCondor pedem educadamente que cada pool de HTCondor lhes envie periodicamente estatísticas de utilização com informação básica sobre o estado da pool. As actualizações incluem apenas o número total de máquinas, o número de trabalhos submetidos, o nome da máquina central e o nome da pool. Estas actualizações ajudam a Equipa HTCondor a verificar como o HTCondor é usado.
+Description-ru.UTF-8: Включить отправку статистики по использованию?
+ Авторы HTCondor вежливо просят, чтобы каждый пул HTCondor периодически посылал им обновления с общей информацией о состоянии пула. В обновления включается только количество машин, количество отправленных заданий, количество машин, выполняющих задания, имя узла центра управления и имя пула. Эти обновления помогают команде HTCondor наблюдать как HTCondor используется в мире.
+Description-sv.UTF-8: Aktivera sändande av användningsstatistik?
+ HTCondors upphovsmän ber vänligast om att varje HTCondor-pool skickar periodiska uppdateringar med grundläggande information om status för poolen. Uppdateringarna innehåller bara totalt antal maskiner, antal jobb skickade, antal maskiner som kör jobb, värdnamnet på den centrala övervakaren och namnet för poolen. Dessa uppdateringar hjälper utvecklarna bakom HTCondor att se hur HTCondor används.
+
+Template: condor/centralmanager
+Type: string
+Description: Address of the central manager:
+ If this machine is intended to join an existing HTCondor pool, the address of the
+ central manager machine has to be specified. Any address format supported
+ by HTCondor can be used, including macro expressions.
+ .
+ Example: condor-manager.example.org
+Description-cs.UTF-8: Adresa centrálního správce:
+ Pokud chcete, aby se tento počítač přidal do stávající skupiny HTCondor, je potřeba zde zadat adresu centrálního počítače. Přitom můžete použít libovolný formát adresy včetně makro-výrazů.
+ .
+ Příklad: condor-manager.example.org
+Description-da.UTF-8: Adresse for den centrale håndtering:
+ Hvis denne maskine skal sluttes til en eksisterende HTCondorpulje, så skal adressen for den centrale håndtering angives. Alle adresseformater understøttet af HTCondor kan bruges, inklusive makroudtryk.
+ .
+ Eksempel: condor-manager.eksempel.org
+Description-de.UTF-8: Adresse des Zentralverwalters:
+ Wenn diese Maschine einem existierenden HTCondor-Pool beitreten soll, muss die Adresse der zentralen Verwaltungsmaschine angegeben werden. Jedes von HTCondor unterstützte Adressformat kann verwendet werden, einschließlich Makro-Ausdrücken.
+ .
+ Beispiel: condor-manager.example.org
+Description-es.UTF-8: Dirección del administrador central:
+ Si esta máquina se va a unir a un conjunto («pool») HTCondor existente, debe especificar la dirección de la máquina del administrador central. Se puede utilizar cualquier formato de dirección aceptada por HTCondor, incluyendo expresiones macro.
+ .
+ Ejemplo: condor-manager.example.org
+Description-fr.UTF-8: Adresse du gestionnaire central :
+ Si cette machine doit rejoindre un groupement HTCondor existant, il est alors nécessaire d'indiquer l'adresse de la machine faisant office de gestionnaire central. Tout format d'adresse géré par HTCondor peut être utilisé en incluant des macros.
+ .
+ Exemple : condor-manager.example.org
+Description-it.UTF-8: Indirizzo del gestore centrale:
+ Se questa macchina è pensata per essere unita ad un pool HTCondor esistente, deve essere specificato l'indirizzo della macchina con il gestore centrale. Può essere usato qualsiasi formato di indirizzo gestito da HTCondor, incluse le espressioni macro.
+ .
+ Esempio: condor-manager.example.org
+Description-ja.UTF-8: 中央管理マシンのアドレス:
+ このマシンを既存の HTCondor 連合 (pool) に参加させる場合は中央管理マシンのアドレスを指定する必要があります。アドレスには HTCondor でサポートしている任意の形式をマクロ表現も含めて利用できます。
+ .
+ 例: condor-manager.example.org
+Description-nl.UTF-8: Adres van de computer die de centrale beheersfunctie vervult:
+ Indien het de bedoeling is deze machine aan een bestaande pool van HTCondor toe te voegen, moet het adres van de computer, verantwoordelijk voor het centrale beheer, gespecificeerd worden. Elk adresformaat dat door HTCondor ondersteund wordt, mag gebruikt worden, met inbegrip van macro-expressies.
+ .
+ Bijvoorbeeld: condor-manager.voorbeeld.org
+Description-pl.UTF-8: Adres głównego zarządcy:
+ Jeśli ten komputer ma dołączyć do istniejącej puli HTCondor, należy podać adres głównego komputera zarządzającego. Można go podać w dowolnym formacie obsługiwanym przez HTCondor, włącznie z wyrażeniami makr.
+ .
+ Przykład: condor-manager.example.org
+Description-pt.UTF-8: Endereço do gestor central:
+ Se esta máquina é destinada a juntar-se a uma pool HTCondor existente, o endereço da máquina gestora central tem que ser indicado. Qualquer formato de endereço suportado pelo HTCondor pode ser usado, incluindo macros.
+ .
+ Exemplo: condor-manager.example.org
+Description-ru.UTF-8: Адрес центра управления:
+ Для того, чтобы данную машину включить в существующей пул HTCondor, требуется указать адрес машины центра управления. Может быть использован любой формат адреса, поддерживаемый HTCondor, включая выражения с макросами.
+ .
+ Пример: condor-manager.example.org
+Description-sv.UTF-8: Adress till den centrala resursen:
+ Om denna maskin ska anslutas till en existerande HTCondor-pool måste adressen till maskinen med den centrala övervakaren anges. Ett adressformat som stöds av HTCondor kan användas, inklusive macro-uttryck.
+ .
+ Exempel: condor-manager.example.org
+
+Template: condor/daemons
+Type: multiselect
+Choices-C: SCHEDD, STARTD, COLLECTOR:NEGOTIATOR
+Choices: Job submission, Job execution, Central manager
+Choices-cs.UTF-8: Zadávání úloh, Vykonávání úloh, Hlavní správce
+Choices-da.UTF-8: Jobindsendelse, Jobkørsel, Central håndtering
+Choices-de.UTF-8: Auftragsübertragung, Auftragsausführung, Zentralverwalter
+Choices-es.UTF-8: Envío de trabajo, Ejecución de trabajo, Administrador central
+Choices-fr.UTF-8: Soumission de travail, Exécution de travail, Gestionnaire central
+Choices-it.UTF-8: Invio di compiti, Esecuzione di compiti, Gestore centrale
+Choices-ja.UTF-8: ジョブ提出, ジョブ実行, 中央管理マシン
+Choices-nl.UTF-8: Taken aanbieden, Taken uitvoeren, Centraal beheer
+Choices-pl.UTF-8: Wysyłanie zadań, Przetwarzanie zadań, Główny zarządca
+Choices-pt.UTF-8: Submissão de trabalho, Execução de trabalho, Gestor central
+Choices-ru.UTF-8: Отправитель задания, Исполнитель задания, Центр управления
+Choices-sv.UTF-8: Jobb-avsändare, Jobb-utförare, Central resurs
+Default: SCHEDD, STARTD
+Description: Role of this machine in the HTCondor pool:
+ Please specify the intended role or roles of this machine, for which the
+ corresponding daemons will be started automatically.
+ .
+ A machine in a HTCondor pool can have multiple roles. In general there is one
+ central manager and multiple nodes that run jobs. Often the central manager
+ is also the machine from which users submit jobs. However, it is also
+ possible to have multiple machines available for job submission.
+Description-cs.UTF-8: Role počítače ve skupině HTCondor:
+ Zadejte prosím vybranou roli tohoto počítače, pro tuto roli budou později spuštěny odpovídající daemony.
+ .
+ Počítač může mít v poli HTCondor více rolí. Obecně řečeno bývá součástí pole jeden centrální správce a spousta uzlů se spuštěnými úlohami. Centrální počítač bývá také tím počítačem, který rozesílá úlohy. Samozřejmě, že je také možné mít více počítačů rozesílající úlohy.
+Description-da.UTF-8: Rolle for denne maskine i HTCondorpuljen:
+ Angiv venligst den forventede rolle eller roller for denne maskine, som de tilsvarende dæmoner vil blive startet automatisk for.
+ .
+ En maskine i en HTCondorpulje kan have flere roller. Generelt er der en central håndtering og flere knuder som kører job. Ofte er den centrale håndtering også maskinen hvorfra brugere indsender job. Det er også muligt at have flere maskiner tilgængelige for jobindsendelse.
+Description-de.UTF-8: Rolle dieser Maschine im HTCondor-Pool:
+ Bitte geben Sie die Rolle oder Rollen an, die Sie dieser Maschine zuweisen wollen, damit die entsprechenden Daemons automatisch gestartet werden.
+ .
+ Eine Maschine in einem HTCondor-Pool kann mehrere Rollen haben. Im Allgemeinen gibt es einen Zentralverwalter und mehrere Knoten, die Aufträge ausführen. Oft ist der Zentralverwalter auch die Maschine, von der aus die Benutzer Aufträge übertragen. Es ist aber auch möglich, mehrere Maschinen für die Auftrag-Übertragung einzusetzen.
+Description-es.UTF-8: Rol de esta máquina en el conjunto («pool») HTCondor:
+ Especifique el rol o roles para esta máquina, para la cual se habilitarán los demonios correspondientes para que se inicien de forma automática.
+ .
+ Una máquina en el conjunto («pool») condor puede tener múltiples roles. En general hay un administrador central y múltiples equipos ejecutando trabajos. En ocasiones el administrador central es también el equipo desde el cual los usuarios envían trabajos. Sin embargo, es posible tener múltiples máquinas disponibles para el envío de trabajos.
+Description-fr.UTF-8: Rôle de cette machine au sein du groupement HTCondor :
+ Veuillez indiquer le(s) rôle(s) prévu(s) pour cette machine afin que les démons correspondant soient démarrés automatiquement.
+ .
+ Une machine dans un groupement HTCondor peut avoir différents rôles. En général, il y a un gestionnaire central et plusieurs nœuds qui exécutent des travaux. Il arrive souvent que le gestionnaire central soit aussi la machine depuis laquelle les utilisateurs soumettent leurs travaux. Toutefois, il est aussi possible d'avoir plusieurs machines disponibles pour la soumission de travaux.
+Description-it.UTF-8: Ruolo di questa macchina nel pool HTCondor:
+ Specificare il ruolo o i ruoli ai quali è destinata questa macchina, e per i quali verranno avviati automaticamente i demoni corrispondenti.
+ .
+ Una macchina in un pool HTCondor può avere più ruoli. Generalmente c'è un gestore centrale e svariati nodi che eseguono compiti. Spesso il gestore centrale è anche la macchina dalla quale gli utenti inviano i compiti. Tuttavia è anche possibile avere più macchine a disposizione per l'invio di compiti.
+Description-ja.UTF-8: HTCondor 連合 (pool) でのこのマシンの役割:
+ このマシンで予定している役割を指定してください。対応するデーモンは自動的に開始します。
+ .
+ HTCondor 連合 (pool) のマシンには複数の役割を持たせることができます。一般的には中央管理マシンが1台とジョブを実行するノードが複数存在します。中央管理マシンはユーザがジョブを提出するマシンを兼ねることがよくあります。しかし、複数のマシンをジョブ提出用に充てることも可能です。
+Description-nl.UTF-8: Functie van deze computer in de HTCondor-pool:
+ Gelieve de functie(s) op te geven die van deze computer verwacht worden, en waarvoor de overeenkomstige achtergronddiensten automatisch opgestart zullen worden.
+ .
+ Een computer in een HTCondor-pool kan verschillende functies hebben. In het algemeen is er één centrale beheerder en zijn er meerdere knooppunten die taken uitvoeren. Dikwijls is de centrale beheerder ook de computer van waaruit de gebruikers taken aanbieden. Maar het is ook mogelijk om verschillende computers ter beschikking te hebben die taken kunnen aanbieden.
+Description-pl.UTF-8: Rola tego komputera w puli HTCondor:
+ Proszę określić przewidzianą rolę lub role tego komputera, dla których zostaną uruchomione automatycznie odpowiednie demony.
+ .
+ Komputer w puli HTCondor może mieć wiele ról. Z reguły jest to jeden centralny zarządca i wiele węzłów wykonujących zadania. Zarządca jest często również komputerem, z którego użytkownicy pobierają zadania. Można jednak również posiadać wiele komputerów wysyłających zadania.
+Description-pt.UTF-8: Papel desta máquina na pool HTCondor:
+ Indique por favor o papel ou papéis destinados a esta máquina, de modo a que os daemons necessários sejam iniciados automaticamente.
+ .
+ Uma máquina numa pool HTCondor pode ter vários papéis. Geralmente existe um gestor central e vários nós que executam trabalhos. Muitas vezes o gestor central é também a máquina na qual os utilizadores submetem os trabalhos. No entanto, também é possível ter várias máquinas disponíveis para a submissão de trabalhos.
+Description-ru.UTF-8: Роль данной машины в пуле HTCondor:
+ Укажите предназначение данной машины — от этого зависит какие службы будут запускаться автоматически.
+ .
+ Машина в пуле HTCondor может иметь несколько ролей. Обычно, есть центр управления и несколько узлов, которые выполняют работу. Часто машина центра управления также служит для отправки пользовательских заданий. Однако также возможно иметь несколько машин для отправки заданий.
+Description-sv.UTF-8: Roll för den här maskinen i HTCondor-poolen:
+ Ange den eller de roller som den här maskinen kommer att ha, motsvarande tjänster kommer att startas automatiskt.
+ .
+ En maskin i en HTCondor-pool kan ha flera roller. Generellt sett finns det en central övervakare och flera noder som kör jobb. Ofta är den centrala övervakaren också maskinen som används för att skicka jobb. Det är dock möjligt att ha flera maskiner för att skicka ut jobb.
+
+Template: condor/admin
+Type: string
+Default: root@localhost
+Description: Email address of the local HTCondor administrator:
+ The HTCondor administrator will receive error messages if something goes wrong
+ with HTCondor on this machine.
+Description-cs.UTF-8: Emailová adresa správce HTCondor:
+ Pokud se něco pokazí, dostane tento správce HTCondoru zprávu s chybou.
+Description-da.UTF-8: E-post-adresse for den lokale HTCondoradministrator:
+ HTCondoradministratoren vil modtage fejlbeskeder, hvis noget går galt med HTCondor på denne maskine.
+Description-de.UTF-8: E-Mail-Adresse des lokalen HTCondor-Administrators:
+ Der HTCondor-Administrator wird Fehlernachrichten bekommen, wenn auf dieser Maschine etwas mit HTCondor schief läuft.
+Description-es.UTF-8: Dirección de correo electrónico del administrador local de HTCondor:
+ El administrador de HTCondor recibirá mensajes de error si algo va mal con HTCondor o con su máquina.
+Description-fr.UTF-8: Adresse électronique de l'administrateur local de HTCondor :
+ L'administrateur de HTCondor recevra les messages d'erreur en cas de problème avec HTCondor sur cette machine.
+Description-it.UTF-8: Indirizzo di posta elettronica dell'amministratore locale di HTCondor:
+ L'amministratore di HTCondor riceverà i messaggi di errore se qualcosa che ha a che fare con HTCondor va storto su questa macchina.
+Description-ja.UTF-8: ローカル HTCondor 管理者のメールアドレス:
+ この HTCondor 管理者はこのマシンの HTCondor に何か異常があったときにエラーメッセージを受け取ります。
+Description-nl.UTF-8: E-mailadres van de lokale HTCondor-beheerder:
+ Als er iets fout gaat met HTCondor op deze computer, zal de HTCondor-beheerder een foutmelding ontvangen.
+Description-pl.UTF-8: Adres poczty elektronicznej lokalnego administratora HTCondor:
+ Administrator HTCondor będzie otrzymywał wiadomości o błędach, jeśli coś pójdzie nie tak z HTCondorem na tym komputerze.
+Description-pt.UTF-8: Endereço de email do administrador local de HTCondor:
+ O administrador do HTCondor receberá as mensagens de erro no caso de alguma coisa correr mal com o HTCondor nesta máquina.
+Description-ru.UTF-8: Адрес электронной почты локального администратора HTCondor:
+ Администратор HTCondor будет получать сообщения об ошибках, если что-то случится с HTCondor на этой машине.
+Description-sv.UTF-8: E-post-adress till den lokala HTCondor-administratören:
+ HTCondor-administratören kommer att få felmeddelanden när något går fel med HTCondor på den här maskinen.
+
+Template: condor/uiddomain
+Type: string
+Description: user directory domain label:
+ This label is a string that HTCondor uses to decide if a submitting
+ machine and an execute machine share the same directory of user accounts
+ (that is, whether UID 1000 on one machine is the same person as UID 1000
+ on the other). If the labels on the two machines match, HTCondor will run
+ each job under the UID that submitted the job, and send emails about
+ them to user@DOMAIN (using this label as the value of DOMAIN). If not,
+ HTCondor will run all jobs as user "nobody". Leaving it blank will cause
+ HTCondor to run all jobs on this machine as user "nobody".
+ .
+ Any domain format supported by HTCondor can be used, including macro
+ expressions. Example: $(FULL_HOSTNAME)
+Description-cs.UTF-8: Označení domény adresáře uživatelů:
+ Toto označení používá HTCondor ke zjištění zda je odesílatel i vykonavatel úloh součástí stejného adresáře uživatelských účtů (v případ, že je UID 1000 jednoho počítače stejnou osobou jako UID 1000 jiného počítače). Pokud označení dvou počítačů souhlasí, HTCondor spustí všechny úlohy pod UID odesílajícího uživatele a pošle o něm informace na adresu uživatel@DOMÉNA (toto označení použije jako hodnotu DOMÉNY). V opačném případě HTCondor spustí úlohu pod uživatelem "nobody". Necháte-li políčko prázdné, budou všechny úlohy spouštěné pod uživatelem "nobody".
+ .
+ Můžete použít libovolný podporovaný formát včetně makro-výrazů. Např. $(FULL_HOSTNAME)
+Description-da.UTF-8: domæneetiket for brugermappe:
+ Denne etiket er en streng, som HTCondor bruger til at beslutte om en indsendelsesmaskine og en kørselsmaskine deler den samme mappe af brugerkontoer (det vil sige, hvorvidt UID 1000 på en maskine er den samme person som UID 1000 på den anden). Hvis etiketterne på de to maskiner matcher, så vil HTCondor køre hvert job under UID'en som indsendte jobbet og sende e-post om dem til user@DOMAIN (med brug af etiketten som værdien for DOMÆNE). Hvis ikke så vil HTCondor køre alle job som bruger »nobody« (ingen). Et tomt felt vil få HTCondor til at køre alle job på denne maskine med brugeren »nobody« (ingen).
+ .
+ Alle domæneformater understøttet af HTCondor kan bruges, inklusiv makroudtryk. Eksempel: $(FULL_HOSTNAME)
+Description-de.UTF-8: Benutzerverzeichnis-Domain-Bezeichnung:
+ Diese Bezeichnung ist eine Zeichenkette, welche HTCondor zur Entscheidung darüber heranzieht, ob eine Übertragungs- und eine Ausführungs-Maschine das selbe Verzeichnis mit Benutzerkonten teilen (ob UID 1000 auf einer Maschine die selbe Person ist wie UID 1000 auf der anderen). Wenn die Bezeichnungen auf den beiden Maschinen übereinstimmen, wird HTCondor jeden Auftrag unter der UID ausführen, die diesen Auftrag übermittelt hat und E-Mails darüber an Benutzer@DOMAIN verschicken (wobei diese Bezeichnung als Wert für DOMAIN benutzt wird). Falls nicht, wird HTCondor alle Aufträge als Benutzer »nobody« ausführen. Wenn Sie die Bezeichnung leer lassen, wird HTCondor alle Aufträge auf dieser Maschine als »nobody« ausführen.
+ .
+ Jedes von HTCondor unterstütztes Domain-Format kann verwendet werden, einschließlich Makro-Ausdrücken. Beispiel: $(FULL_HOSTNAME)
+Description-es.UTF-8: etiqueta de dominio para el directorio de usuario
+ Esta etiqueta es una cadena que HTCondor utiliza para decidir si la máquina que envía y la máquina que ejecuta comparten el mismo directorio o cuentas de usuario (esto es, cuando UID 1000 en una máquina es la misma persona que UID 1000 en la otra). Si las etiquetas en las dos máquinas coinciden HTCondor ejecutará cada trabajo bajo el UID que envió el trabajo, y enviará correos electrónicos acerca de ellos a user@DOMAIN (utilizando esta etiqueta como el valor de DOMAIN). Si no, HTCondor ejecutará todos los trabajos como el usuario «nobody». Dejar en blanco causará que HTCondor ejecute todos los trabajos en esta máquina como usuario «nobody».
+ .
+ Puede utilizar cualquier formato de dominio soportado por HTCondor, incluyendo expresiones macro. Ejemplo: $(FULL_HOSTNAME)
+Description-fr.UTF-8: Étiquette de domaine du répertoire utilisateur :
+ Cette étiquette est une chaîne de caractères que HTCondor utilise pour décider si une machine qui soumet un travail et une machine qui exécute le travail partagent le même répertoire d'un compte utilisateur (c'est-à-dire si l'UID 1000 d'une machine est la même personne que l'UID 1000 d'une autre machine). Si les étiquettes des deux machines correspondent, HTCondor exécutera chaque travail sous l'UID qui a soumis le travail et enverra un message électronique à l'adresse utilisateur@DOMAINE (en utilisant l'étiquette comme valeur pour DOMAINE). Dans le cas contraire, HTCondor exécutera tous les travaux en tant qu'utilisateur « nobody ». Si vous laissez ce champ vide, HTCondor exécutera tous les travaux en tant qu'utilisateur « nobody ».
+ .
+ Tout format de domaine géré par HTCondor peut être utilisé en incluant des macros. Exemple : $(NOM_DHOTE_COMPLET)
+Description-it.UTF-8: etichetta di dominio della directory utente:
+ Questa etichetta è una stringa che HTCondor usa per decidere se una macchina che invia compiti e una macchina che li esegue condividono la stessa directory di account utente (cioè se l'UID 1000 di una macchina è la stessa persona dell'UID 1000 sull'altra). Se le etichette sulle due macchine corrispondono, HTCondor eseguirà ciascun compito con l'UID di chi ha inviato il compito ed invierà le e-mail relative ad utente@DOMINIO (usando questa etichetta come valore per DOMINIO). In caso contrario, HTCondor eseguirà tutti i compiti come utente "nobody". Se si lascia questo valore in bianco, HTCondor eseguirà tutti i compiti su questa macchina come utente "nobody".
+ .
+ Può essere usato qualsiasi formato gestito da HTCondor, incluse le espressioni macro. Esempio: $(NOMEHOST_COMPLETO)
+Description-ja.UTF-8: ユーザディレクトリドメインラベル:
+ このラベルは、提出しているマシンと実行マシンがユーザアカウントに同一のディレクトリを共有しているか (言い換えればあるマシンの UID 1000 が他方の UID 1000 と同一ユーザかどうか) を HTCondor が判断するのに利用する文字列です。2台のマシンのラベルが一致した場合、HTCondor は各ジョブをジョブを提出した UID で実行し、(このラベルをドメインとして使用して) ユーザ@ドメインにメールを送ります。一致しない場合は HTCondor は全ジョブをユーザ「nobody」で実行します。これを空白にすると HTCondor はこのマシンの全ジョブをユーザ「nobody」で実行することになります。
+ .
+ ドメインには HTCondor でサポートしている任意の形式をマクロ表現も含めて利用できます。例: $(FULL_HOSTNAME)
+Description-nl.UTF-8: domeinlabel van het gebruikersregister:
+ Dit label is een reeks tekens waarvan HTCondor gebruik maakt om uit te maken of een taak aanbiedende computer en een uitvoerende computer met elkaar hetzelfde register van accounts delen (concreet is dit of UID 1000 op de ene computer dezelfde persoon is als UID 1000 op de andere computer). Indien de labels op de beide computers overeenstemmen, zal HTCondor elke taak uitvoeren onder het UID dat de taak aanbood, en e-mails daarover versturen naar user@DOMEIN (en het label gebruiken als de waarde voor DOMEIN). Indien niet, zal HTCondor alle taken als gebruiker "nobody" uitvoeren. Hier niets invullen zal tot gevolg hebben dat HTCondor alle taken op deze computer uitvoert als gebruiker "nobody".
+ .
+ Elk domeinformaat dat door HTCondor ondersteund wordt, kan gebruikt worden, met inbegrip van macro-expressies. Bijvoorbeeld: $(FULL_HOSTNAME)
+Description-pl.UTF-8: Etykieta domeny katalogu użytkownika:
+ Ta etykieta jest łańcuchem, który jest używany przez HTCondor do decydowania czy komputer przesyłający i komputer wykonujący dzielą ten sam katalog kont użytkownika (tj. czy UID 1000 na jednym komputerze jest tym samym użytkownikiem co UID 1000 na innym). Jeśli etykiety na dwóch komputerach pasują, to HTCondor wykona każde zadanie używając UID-u, który przesłał zadanie i wyśle wiadomość elektroniczną o nich na adres użytkownik@DOMENA (używając omawianej etykiety jako wartości DOMENA). Jeśli nie pasują, to HTCondor wykona wszystkie zadania jako użytkownik "nobody". Pozostawienie tego pola pustego, spowoduje wykonywanie przez HTCondor wszystkich zadań na tym komputerze jako użytkownik "nobody".
+ .
+ Można użyć dowolnego formatu domen obsługiwanego przez HTCondor, włącznie z wyrażeniami makr. Przykład: $(FULL_HOSTNAME)
+Description-pt.UTF-8: etiqueta de domínio de directório de utilizador:
+ Esta etiqueta é uma frase que o HTCondor usa para decidir se uma máquina que submete um trabalho e a que o executa partilham o mesmo directório de contas de utilizador (ou seja, se o UID 1000 numa máquina é o mesmo que na outra). Se as etiquetas nas duas máquinas forem correspondentes, o HTCondor irá correr cada trabalho sob o UID que o submeteu, e envia emails sobre ele para o utilizador@DOMINIO (usando a etiqueta como valor para o DOMINIO). Se não, o HTCondor irá correr todos os trabalhos sob o utilizador "nobody". Se ficar em branco, o HTCondor irá correr todos os trabalhos nesta máquina sob o utilizador "nobody".
+ .
+ Qualquer formato de domínio suportado pelo HTCondor pode ser usado, incluindo expressões de macro. Exemplo: $(FULL_HOSTNAME)
+Description-ru.UTF-8: Ярлык-домен каталога пользователей:
+ Данный ярлык представляет собой строку, которую HTCondor использует для принятия решения о том, имеет ли отправляющая машина и исполняющая машина одинаковый каталог пользовательских учётных записей (то есть, принадлежит ли UID 1000 на одной машине тому же человеку с UID 1000 на другой). Если ярлыки на двух машинах совпадают, то HTCondor будет запускать каждое задание с тем же UID, с которым было отправлено задание и посылать электронное сообщение о нём пользователю@ДОМЕН (используя данный ярлык в качестве ДОМЕНА). Если ярлыки не совпадают, то HTCondor будет выполнять все задания с правами пользователя «nobody». Если оставить поле пустым, то HTCondor будет выполнять все задания на этой машине с правами пользователя «nobody».
+ .
+ Можно использовать любой формат, поддерживаемый HTCondor, включая выражения с макросами. Пример: $(FULL_HOSTNAME)
+Description-sv.UTF-8: användarkatalogens domänettikett:
+ Denna ettikett är en sträng som HTCondor använder för att bedöma om en skickande och en utförande maskin delar samma katalog med användarkonton (alltså att UID 1000 på en maskin är samma person som UID 1000 på en annan). Om ettiketterna på de två maskinerna stämmer överrens kommer HTCondor att köra jobben som det UID som skickade jobbet och skicka e-post-meddelanden till användare@DOMÄN (den här ettiketten används som värde för DOMÄN). Om inte kommer HTCondor att köra alla jobb som användaren "nobody". Lämnas fältet tomt kommer HTCondor att köra alla jobb på den här maskinen som användaren "nobody".
+ .
+ Domänformat som HTCondor stöder kan användas, inklusive macro-uttryck. Exempel: $(FULL_HOSTNAME)
+
+Template: condor/filesystemdomain
+Type: string
+Description: File system domain label:
+ This label is an arbitrary string that is used to decide if a submitting
+ machine and an execute machine share the same file system. In a dedicated
+ cluster all machines will most likely use a shared file system and hence
+ should use the same label. If left blank, it will automatically be set to
+ the fully qualified hostname of the local machine, which will prevent
+ HTCondor assuming that any two machines share a file system.
+ .
+ Example: my_shared_volume
+Description-cs.UTF-8: Označení domény souborového systému:
+ Toto označení je libovolný text, který se používá k rozhodnutí zda je odesílatel a vykonavatel součástí stejného souborového systému. V dedikovaném clusteru všechny počítače pravděpodobně používají sdílený souborový systém a tak by měli používat také stejné označení. Necháte-li políčko prázdné, bude automaticky nastaveno na plně kvalifikovaný název místního počítače, což HTCondoru zabrání v tom, aby dva počítače sdílely nějaký souborový systém.
+ .
+ Příklad: můj_sdílený_prostor
+Description-da.UTF-8: Domæneetiket for filsystem:
+ Denne etiket er en arbitrær streng som HTCondor bruger til at beslutte om en indsendelsesmaskine og en kørselsmaskine deler det samme filsystem. I en dedikeret klynge vil alle maskiner højst sandsynlig bruge et delt filsystem og skal dermed bruge den samme etiket. Hvis efterladt tomt, så vil den automatisk blive sat til det fuldt kvalificerede værtsnavn for den lokale maskine, som vil forhindre HTCondor i at antage at to maskiner deler et filsystem.
+ .
+ Eksempel: min_delte_diskenhed
+Description-de.UTF-8: Dateisystem-Domain-Bezeichnung:
+ Diese Bezeichnung ist eine beliebige Zeichenkette, die zur Entscheidung herangezogen wird, ob eine Übertragungs-Maschine und eine Ausführungs-Maschine das selbe Dateisystem gemeinsam nutzen. In einem dedizierten Cluster werden alle Maschinen höchstwahrscheinlich auf ein gemeinsames Dateisystem zugreifen und sollten deshalb dieselbe Bezeichnung verwenden. Wenn Sie dies leer lassen, wird es automatisch auf den vollständigen Rechnernamen der lokalen Maschine gesetzt, weswegen HTCondor nicht annehmen wird, dass irgendein Dateisystem von zwei Maschinen gemeinsam genutzt wird.
+ .
+ Beispiel: mein_gemeinsam_genutztes_laufwerk
+Description-es.UTF-8: Etiqueta de dominio del sistema de archivos:
+ Esta etiqueta es una cadena arbitraria que se utiliza para decidir si la máquina que envía y la máquina que ejecuta comparten el mismo sistema de archivos. En un cluster dedicado lo más probable es que todas las máquinas utilicen un sistema de archivos compartido y por lo tanto utilicen la misma etiqueta. Si se deja en blanco se asignará en forma automática el nombre completo calificado de la máquina local, lo que evitará que HTCondor asuma que dos máquinas comparten un sistema de archivos.
+ .
+ Ejemplo: mi_volumen_compartido
+Description-fr.UTF-8: Étiquette de domaine du système de fichiers :
+ Cette étiquette est une chaîne de caractères aléatoire qui est utilisée pour décider si une machine qui soumet un travail et une machine qui exécute un travail partagent un même système de fichiers. Dans une grappe dédiée de machines, il est fort probable que toutes les machines utilisent un système de fichiers partagé et par conséquent elles devraient utiliser la même étiquette. Si vous laissez ce champ vide, le nom d'hôte complètement qualifié de la machine locale sera utilisé, ce qui empêchera HTCondor de supposer que des machines prises deux à deux partagent le même système de fichiers.
+ .
+ Exemple : mon_volume_partagé
+Description-it.UTF-8: Etichetta di dominio per il file system:
+ Questa etichetta è una stringa arbitraria che viene usata per decidere se una macchina che invia compiti e una macchina che li esegue condividono lo stesso file system. In un cluster dedicato, tutte le macchine useranno molto probabilmente un file system condiviso e pertanto dovrebbero usare la stessa etichetta. Se si lascia questo valore in bianco, verrà automaticamente impostato al nome host pienamente qualificato della macchina locale; ciò evita che HTCondor presuma che due macchine qualsiasi condividano un file system.
+ .
+ Esempio: mio_volume_condiviso
+Description-ja.UTF-8: ファイルシステムドメインラベル:
+ このラベルは任意の文字列で、提出しているマシンと実行マシンが同一のファイルシステムを共有しているか判断するのに利用します。専用クラスタでは全マシンがファイルシステムを共有していることが多いため、同一のラベルを使うべきです。これを空白にすると自動的にローカルマシンの完全修飾ホスト名をセットし、HTCondor はファイルシステムを共有する2台のマシンだとみなさなくなります。
+ .
+ 例: my_shared_volume
+Description-nl.UTF-8: Domeinlabel van het bestandssysteem:
+ Dit label is een willekeurige tekenreeks die gebruikt wordt om uit te maken of een computer die een taak aanbiedt en die welke ze uitvoert hetzelfde bestandssysteem delen. In een gereserveerde cluster is het waarschijnlijk dat alle computers hetzelfde bestandssysteem gebruiken en dus ook hetzelfde label. Indien u hier niets invult, zal de volledige naam (fully qualified hostname) van de computer gebruikt worden, hetgeen zal verhinderen dat HTCondor er vanuit gaat dat twee computers hetzelfde bestandssysteem met elkaar delen.
+ .
+ Bijvoorbeeld: mijn_gedeelde_schijf
+Description-pl.UTF-8: Etykieta domeny systemu plików
+ Ta etykieta jest dowolnym łańcuchem używanym do określenia, czy komputer wysyłający i wykonujący dzielą ten sam system plików. W dedykowanym klastrze, najprawdopodobniej wszystkie komputery będą używały współdzielonego systemu plików i w związku z tym, powinny używać tej samej etykiety. Jeśli pole pozostanie puste, to zostanie automatycznie ustawione na pełną nazwę hosta lokalnego komputera, co zapobiegnie przyjęciu przez HTCondor założenia, że jakiekolwiek dwa komputery dzielą ten sam system plików.
+ .
+ Przykład: my_shared_volume
+Description-pt.UTF-8: Etiqueta de domínio do sistema de ficheiros:
+ Esta etiqueta é uma frase arbitrária que é usada para decidir se uma máquina que submete um trabalho e a máquina que o executa partilham o mesmo sistema de ficheiros. Num cluster dedicado, a maior parte das máquinas usará um sistema de ficheiros partilhado, e portanto, deve usar a mesma etiqueta. Se for deixada em branco, será automaticamente usado o nome completo qualificado da máquina local, o que evitará que o HTCondor assuma que haja máquinas a partilhar sistemas de ficheiros.
+ .
+ Exemplo: volume_partilhado
+Description-ru.UTF-8: Ярлык-домен файловой системы:
+ Данный ярлык представляет собой произвольную строку, которая используется для принятия решения о том, имеет ли отправляющая машина и исполняющая машина общую файловую систему. В выделенных машинных кластерах, вероятнее всего, будет использована общая файловая система и поэтому на всех машинах должен быть одинаковый ярлык. Если оставить поле пустым, то ему будет автоматически присвоено значение полностью определённого доменного имени локальной машины, что заставит HTCondor считать, что общая файловая система не используется.
+ .
+ Пример: my_shared_volume
+Description-sv.UTF-8: Domänettikett för filsystemet:
+ Denna ettikett är en sträng som används för att bedöma om en skickande maskin och en utförande maskin delar samma filsystem. I ett dedikerat kluster kommer troligen alla maskiner att dela filsystem och ska då ha samma ettikett. Om du lämnar detta värde tomt kommer HTCondor automatiskt att sätta det till komplett kvalificerat värdnamn för den lokala maskinen och därmed anse att två maskiner aldrig delar filsystem.
+ .
+ Exempel: min_delade_volym
+
+Template: condor/personal
+Type: boolean
+Default: true
+Description: Perform a "Personal HTCondor installation"?
+ A Personal HTCondor installation is a fully functional HTCondor pool on a single
+ machine. HTCondor will automatically configure and advertise as many slots as
+ it detects CPU cores on this machine. HTCondor daemons will not be available
+ through external network interfaces.
+ .
+ This configuration is not appropriate if this machine is intended to be a
+ member of a pool.
+Description-cs.UTF-8: Provést "Instalaci soukromé verze HTCondoru"?
+ Soukromá (osobní) verze HTCondoru je plně funkční instalací HTCondoru pro jeden počítač. HTCondor přitom automaticky nastaví a zpřístupní všechna jádra procesoru. Daemony HTCondoru budou k dispozici na vnějších síťových rozhraních.
+ .
+ Toto nastavení se nepoužívá pokud chcete použít počítač jako součást pole.
+Description-da.UTF-8: Udfør en »Personlig HTCondorinstallation«?
+ En personlig HTCondorinstallation er en fuld funktionel HTCondorpulje på en enkelt maskine. HTCondor vil automatisk konfigurere og give besked om antal pladser, jævnfør det antal CPU-kerner som detekteres på denne maskine. HTCondordæmoner vil ikke være tilgængelige via eksterne netværksgrænseflader.
+ .
+ Denne konfiguration er ikke passende hvis denne maskine skal være et medlem af en pulje.
+Description-de.UTF-8: »Persönliche HTCondor-Installation« vornehmen?
+ Eine Persönliche HTCondor-Installation ist ein voll funktionaler HTCondor-Pool auf einer einzelnen Maschine. HTCondor wird automatisch so viele Slots konfigurieren und bekanntgeben, wie es CPU-Kerne auf der Maschine vorfinden wird. Die HTCondor-Daemons werden nicht durch externe Netzwerkschnittstellen erreichbar sein.
+ .
+ Diese Konfiguration ist ungeeignet, wenn diese Maschine Teil eines Pools werden soll.
+Description-es.UTF-8: ¿Desea realizar una instalación personal de HTCondor?
+ Una instalación personal de HTCondor es un conjunto («pool») de HTCondor completamente funcional en una sola máquina. HTCondor configurará y anunciará tantas ranuras como núcleos de CPU detecte en esta máquina. Los demonios de HTCondor no estarán disponibles a través de interfaces de red externas.
+ .
+ Esta configuración no es apropiada si se planea utilizar esta máquina como un miembro del conjunto («pool»).
+Description-fr.UTF-8: Faut-il effectuer une « installation personnelle de HTCondor » ?
+ Une « installation personnelle de HTCondor » est un groupement de HTCondor autonome sur une seule machine. HTCondor configurera et annoncera automatiquement autant de créneaux (« slots ») que de cœurs CPU détectés sur cette machine. Les démons de HTCondor ne seront pas disponibles pour des interfaces réseau externes.
+ .
+ Cette configuration n'est pas adaptée si cette machine est prévue pour être membre d'un groupement.
+Description-it.UTF-8: Effettuare una "installazione HTCondor Personalizzata"?
+ Un'installazione HTCondor Personalizzata è un pool HTCondor pienamente funzionante su una singola macchina. HTCondor configurerà e pubblicizzerà automaticamente tanti slot quante CPU rileva sulla macchina. I demoni HTCondor non saranno disponibili attraverso le interfacce di rete esterne.
+ .
+ Questa configurazione non è adatta se questa macchina deve essere un membro di un pool.
+Description-ja.UTF-8: 「Personal HTCondor インストール」を実行しますか?
+ Personal HTCondor インストールは単一のマシン上で全機能を持つ HTCondor 連合 (pool) です。HTCondor は自動的に設定してこのマシン上に検出した CPU コアの数を通知します。HTCondor デーモンを外部ネットワークインターフェイス経由で利用することはできません。
+ .
+ このマシンを連合 (pool) の一員にする場合この設定は不適切です。
+Description-nl.UTF-8: Een "persoonlijke installatie van HTCondor" uitvoeren?
+ Een persoonlijke installatie van HTCondor is een volwaardige HTCondor-pool op één enkele computer. HTCondor zal automatisch evenveel beschikbare ruimtes configureren en aanbieden als er CPU-kernen zijn op deze computer. Er zullen geen HTCondor-achtergronddiensten beschikbaar gesteld worden via externe netwerkinterfaces.
+ .
+ Een dergelijke configuratie is ongeschikt indien het de bedoeling is dat deze computer lid is van een pool.
+Description-pl.UTF-8: Wykonać "osobistą instalację HTCondor"?
+ Osobista instalacja HTCondor jest w pełni działającą pulą HTCondor na jednym komputerze. HTCondor automatycznie skonfiguruje i rozgłosi tyle slotów, ile rdzeni wykryje w procesorze na tym komputerze. Demony HTCondor nie będą dostępne przez zewnętrzne interfejsy sieciowe.
+ .
+ Ta konfiguracja nie jest właściwa, jeśli komputer ma być członkiem puli.
+Description-pt.UTF-8: Executar uma "Instalação Pessoal do HTCondor"?
+ Uma instalação pessoal do HTCondor é uma pool completamente funcional do HTCondor numa única máquina. O HTCondor irá configurar e anunciar automaticamente tantos slots como cores de CPU detectados na máquina. Os daemons HTCondor não estarão disponíveis para as interfaces externas de rede.
+ .
+ Esta configuração não é apropriada se se quiser que esta máquina seja membro de uma pool.
+Description-ru.UTF-8: Выполнить «персональную установку HTCondor»?
+ Персональная установка HTCondor — это полностью работоспособный пул HTCondor, состоящий из одной машины. HTCondor будет автоматически настроен и объявит количество слотов равным количеству обнаруженных процессорных ядер на этой машине. Службы HTCondor будут недоступны на внешних сетевых интерфейсах.
+ .
+ Эта настройка не подходит, если данная машина должна входить в пул.
+Description-sv.UTF-8: Ska en "Personlig HTCondor-intallation" genomföras?
+ En personlig condor-installation är en komplett fungerande HTCondor-pool på en ensam maskin. HTCondor kommer automatiskt att ställa in och avisera antal utrymmen när den läser av processorkärnor på den här maskinen. HTCondor-tjänster kommer inte att vara tillgängliga via externa nätverksgränssnitt.
+ .
+ Denna inställning är inte önskvärd om den här maskinen ska vara medlem i en pool.
+
+Template: condor/reservedmemory
+Type: string
+Description: Amount of physical memory to withhold from HTCondor (in MB):
+ By default, HTCondor considers all the physical memory of a machine as
+ available to be used by HTCondor jobs. If this value is defined,
+ HTCondor subtracts it from the amount of memory it advertises as available.
+ .
+ Example (to reserve 1 GB): 1024
+Description-cs.UTF-8: Množství blokované fyzické paměti (v MB):
+ Ve výchozím nastavení použije HTCondor všechnu fyzickou paměť, která je k dispozici. Pokud určíte tuto hodnotu, nebude toto množství paměti HTCondoru přístupné.
+ .
+ Příklad (pro rezervaci 1 GB) : 1024
+Description-da.UTF-8: Mængden af fysisk hukommelse der skal tilbageholdes fra HTCondor (i MB):
+ Som standard så anser HTCondor al fysisk hukommelse på en maskine som tilgængeligt for HTCondorjob. Hvis denne værdi er defineret, så vil HTCondor fratrække det fra mængden af hukommelse den anser som tilgængelig.
+ .
+ Eksempel (for at reservere 1 GB): 1024
+Description-de.UTF-8: Größe des physischen Speichers, der vor HTCondor freigehalten werden soll (in MB):
+ In der Voreinstellung betrachtet HTCondor den gesamten physischen Speicher als für HTCondor-Aufträge verfügbar. Wenn dieser Wert definiert wird, zieht HTCondor ihn von der Speichermenge ab, den es als verfügbar bekanntgibt.
+ .
+ Beispiel (um ein Gigabyte zu reservieren): 1024
+Description-es.UTF-8: Cantidad de memoria física para asignar a HTCondor (en MB):
+ HTCondor considera por defecto toda la memoria física de una máquina como disponible para ser utilizada para trabajos de HTCondor. Si este valor se define, HTCondor lo restará de la cantidad de memoria indicada como disponible.
+ .
+ Ejemplo (para reservar 1 GB): 1024
+Description-fr.UTF-8: Quantité de mémoire physique à retenir pour HTCondor (en Mo) :
+ HTCondor considère par défaut que toute la mémoire physique d'une machine est disponible pour les travaux HTCondor. Si cette valeur est définie, elle sera soustraite à la quantité de mémoire annoncée comme étant disponible.
+ .
+ Exemple pour réserver 1 Go : 1024
+Description-it.UTF-8: Quantità di memoria fisica da interdire a HTCondor (in MB):
+ In modo predefinito, HTCondor considera tutta la memoria fisica di una macchina come disponibile per essere usata per i suoi compiti. Se viene definito questo valore, HTCondor lo sottrae alla quantità di memoria che pubblicizza come disponibile.
+ .
+ Esempio (per riservare 1 GB): 1024
+Description-ja.UTF-8: HTCondor で使わずに残しておく物理メモリの量 (MB):
+ デフォルトで、HTCondor はそのマシンの物理メモリをすべて利用可能なものだとみなし、HTCondor ジョブで利用します。この値が定義されている場合、HTCondor は利用可能だと通知されたメモリの量からこの量を差し引きます。
+ .
+ 例 (1 GB を確保する場合): 1024
+Description-nl.UTF-8: Hoeveelheid geheugen dat ontzegd moet worden aan HTCondor (in MB):
+ Standaard beschouwt HTCondor al het fysieke geheugen van een computer als beschikbaar voor het uitvoeren van HTCondor-taken. Als deze waarde ingesteld wordt, trekt HTCondor deze waarde af van de hoeveelheid geheugen die het als beschikbaar aanbiedt.
+ .
+ Voorbeeld (om 1 GB te reserveren): 1024
+Description-pl.UTF-8: Ilość pamięci fizycznej ukrytej przed HTCondorem (w MB):
+ Domyślnie, HTCondor będzie mógł skorzystać z całej pamięci fizycznej na tym komputerze do zadań HTCondor. Jeśli zdefiniuje się tę wartość, HTCondor odejmie ją od ilości pamięci jaką uważa za dostępną.
+ .
+ Przykład (aby zarezerwować 1 GB): 1024
+Description-pt.UTF-8: Quantidade de memória física a esconder do HTCondor (em MB):
+ Por predefinição, o HTCondor considera disponível toda a memória física da máquina para usar para os trabalhos. Se este valor estiver definido, o HTCondor subtrai-o do total de memória disponível.
+ .
+ Exemplo (para reservar 1 GB): 1024
+Description-ru.UTF-8: Количество физической памяти, не занимаемой HTCondor (в МБ):
+ По умолчанию, HTCondor считает доступной для заданий всю физическую память машины. Указываемое здесь значение будет вычтено HTCondor из количества памяти объявляемой как доступная.
+ .
+ Пример (резервируется 1ГБ): 1024
+Description-sv.UTF-8: Mängd fysiskt minne att reserveras utanför HTCondor (i MB):
+ Som standard anser HTCondor att allt fysiskt minne är tillgängligt för HTCondor-jobb. Om detta värde är definierat subtraherar HTCondor det från det tillgängliga minnet som annonseras som tillgängligt.
+ .
+ Exempel (för att reservera 1GB): 1024
+
+Template: condor/allowwrite
+Type: string
+Description: Machines with write access to this host:
+ All machines that are to participate in the HTCondor pool need to be listed
+ here. This setting can be a plain comma-separated list, a domain with
+ wildcards, or a macro expression. By default only localhost is allowed to
+ access HTCondor daemons on this machine.
+ .
+ Example: *.condor-pool.example.org
+Description-cs.UTF-8: Počítače s právem zápisu na tento počítač:
+ Zde je potřeba vyjmenovat všechny počítače, které budou součástí skupiny HTCondoru. Toto nastavení může obsahovat seznam počítačů oddělených čárkami, doménou se zástupnými znaky nebo makro-výrazem. Ve výchozím nastavení může k daemonům HTCondoru přistupovat pouze tento počítač.
+ .
+ Příklad: *.condor-pool.example.org
+Description-da.UTF-8: Maskiner med skriveadgang til denne vært:
+ Alle maskiner som skal deltage i HTCondorpuljen skal være nævnt her. Denne indstilling kan være en ren kommaadskilt liste, et domæne med jokertegn eller et makroudtryk. Som standard har kun den lokale vært (localhost) adgang til HTCondordæmoner på denne maskine.
+ .
+ Eksempel: *.condor-pool.eksempel.org
+Description-de.UTF-8: Maschinen mit Schreibzugriff auf diesen Rechner:
+ Alle Maschinen, die am HTCondor-Pool teilnehmen sollen, müssen hier aufgelistet werden. Diese Einstellung kann eine kommaseparierte Liste sein, eine Domain mit Platzhaltern oder ein Makro-Ausdruck. In der Voreinstellung darf nur Localhost auf die HTCondor-Daemons dieser Maschine zugreifen.
+ .
+ Beispiel: *.condor-pool.example.org
+Description-es.UTF-8: Máquinas con acceso de escritura a este equipo:
+ Todas las máquinas que participan en el conjunto («pool») de HTCondor necesitan estar listadas aquí. Esta configuración puede ser un archivo delimitado por comas, un dominio con comodines, o una expresión macro. En forma predeterminada únicamente «localhost» tiene permitido ingresar a los demonios de HTCondor en esta máquina.
+ .
+ Ejemplo: *.condor-pool.example.org
+Description-fr.UTF-8: Machines ayant un accès en écriture sur cet hôte :
+ Toutes les machines qui feront partie d'un groupement HTCondor doivent être indiquées ici. Ce paramétrage peut être une liste simple séparée par des virgules, un domaine avec des caractères génériques (« wildcards ») ou une macro. Par défaut seul l'hôte local a la permission d'accéder aux démons HTCondor de cette machine.
+ .
+ Exemple : *.groupement-condor.example.org
+Description-it.UTF-8: Macchine con accesso in scrittura su questo host:
+ Tutte le macchine che devono partecipare al pool HTCondor devono essere elencate qui. Questa impostazione può essere un semplice elenco separato da virgole, un dominio con metacaratteri o un'espressione macro. In modo predefinito solo localhost ha il permesso di accedere ai demoni HTCondor su questa macchina.
+ .
+ Esempio: *.condor-pool.example.org
+Description-ja.UTF-8: このホストに書き込みできるマシン:
+ HTCondor 連合 (pool) に参加するマシンを全てここに列挙する必要があります。この設定には単純にコンマで区切った一覧やワイルドカードを使ったドメイン表記、マクロ表現を使えます。デフォルトではローカルホストだけがこのマシンの HTCondor デーモンへのアクセスを許可されます。
+ .
+ 例: *.condor-pool.example.org
+Description-nl.UTF-8: Computers die op deze computer schrijftoegang hebben:
+ Alle computers die deel zullen uitmaken van de HTCondor-pool moeten hier opgelijst worden. Deze lijst kan de vorm aannemen van een door komma's gescheiden lijst, een domein met jokertekens of een macro-expressie. Standaard wordt enkel localhost toegestaan om contact te leggen met de HTCondor-achtergronddiensten op deze computer.
+ .
+ Bijvoorbeeld: *.condor-pool.voorbeeld.org
+Description-pl.UTF-8: Komputery z prawem dostępu do tego komputera:
+ Wszystkie komputery będące częścią puli HTCondor muszą tu zostać wymienione. To ustawienie może być prostą listą oddzieloną przecinkami, domeną z wildcardami (wieloznacznikami) lub wyrażeniami makr. Domyślnie, tylko localhost może mieć dostęp do demonów HTCondor na tym komputerze.
+ .
+ Przykład: *.condor-pool.example.org
+Description-pt.UTF-8: Máquinas com acesso de escrita a este servidor:
+ Todas as máquinas que participam numa pool HTCondor necessitas de estar neste ficheiro. Esta definição pode ser uma lista separada por vírgulas, um domínio com caracteres especiais, ou uma expressão de macro. Por predefinição, apenas o localhost tem permissão para aceder aos daemons HTCondor nesta máquina.
+ .
+ Exemplo: *.condor-pool.example.org
+Description-ru.UTF-8: Машины, имеющие право записи на этом узле:
+ Здесь требуется перечислить все машины, которые входят в пул HTCondor. Данная настройка может представлять собой список значений через запятую, домен с маской или выражение с макросами. По умолчанию, только localhost разрешён доступ к службам HTCondor на этой машине.
+ .
+ Пример: *.condor-pool.example.org
+Description-sv.UTF-8: Maskiner med skrivrättighet för den här värden:
+ Alla maskiner som ska vara med i HTCondor-poolen behöver vara listade här. Denna inställning kan vara en kommaseparerad lista, en domän med jokertecken eller ett macro-uttryck. Som standard är bara lokal värd tillåten att komma åt tjänster på denna maskin.
+ .
+ Exempel: *.condor-pool.example.org
+
+Template: condor/startpolicy
+Type: boolean
+Default: false
+Description: Run HTCondor jobs regardless of other machine activity?
+ By default HTCondor only starts jobs when a machine is idle, i.e. no keyboard
+ activity or CPU load for some time. Moreover, it also suspends jobs whenever
+ there is console activity and doesn't continue them until the machine becomes
+ idle again. However, for a dedicated compute node or a Personal HTCondor
+ installation it might be desirable to always start jobs as soon as they are
+ submitted (given that resources are still available), and to run them
+ continuously regardless of other activity on this machine.
+ .
+ If you plan to compose a custom policy it is best to keep HTCondor's default
+ here.
+Description-cs.UTF-8: Používat HTCondor bez ohledu na zatížení počítače?
+ Ve výchozím nastavení spustí HTCondor úlohy pouze pokud počítač nic nedělá, např. není žádná odezva z klávesnice nebo zatížení CPU. Mimo to, také umí uspat procesy jakmile dojde k nějaké aktivitě a později je opět spustit jakmile nemá znovu co dělat. Na druhou stranu ovšem bývá často potřebnější spustit úlohy co nejdříve (jakmile jsou poslány) a případně také současně bez ohledu na zatížení konkrétního počítače.
+ .
+ Pokud chcete provést vlastní nastavení HTCondoru, pak je lepší nechat v tomto kroku výchozí volby.
+Description-da.UTF-8: Kør HTCondorjob uanset anden maskinaktivitet?
+ Som standard starter HTCondor kun job når en maskine er ledig, det vil sige ingen tastaturaktivitet eller CPU-belastning i en periode. Derudover så suspenderer den også job når der er konsolaktivitet og fortsætter ikke disse før maskinen igen bliver ledig. For en dedikeret beregningsknude eller en personlig HTCondorinstallation kan det være ønskværdigt altid at starte job så snart de er indsendt (hvis ressourcerne stadig er tilgængelige), og at køre dem løbende uanset anden aktivitet på denne maskine.
+ .
+ Hvis du planlægger at sammensætte en tilpasset politik, så er det bedst at bevare HTCondors standard her.
+Description-de.UTF-8: HTCondor-Aufträge ohne Rücksicht auf andere Aktivitäten der Maschine durchführen?
+ In der Voreinstellung startet HTCondor Aufträge nur, wenn die Maschine leerläuft,  d. h. einige Zeit lang keine Tastatureingaben oder CPU-Last auftritt. Außerdem setzt es die Aufträge aus, wenn es Aktivitäten auf der Konsole gibt und bearbeitet sie erst weiter, wenn die Maschine wieder leer läuft. Allerdings kann es für einen dedizierten Rechenknoten oder eine Persönliche HTCondor-Installation denkbar sein, Aufträge immer zu starten, sobald sie übermittelt wurden (unter der Voraussetzung, dass die Ressourcen immer noch verfügbar sind) und sie ohne Rücksicht auf andere Aktivitäten auf dieser Maschine zu bearbeiten.
+ .
+ Wenn Sie vorhaben, eine eigene Richtlinie zu erstellen, ist es das Beste, hier HTCondors Voreinstellungen zu verwenden.
+Description-es.UTF-8: Ejecutar trabajos en HTCondor sin importar la actividad en otras máquinas.
+ En forma predeterminada HTCondor únicamente inicia trabajos cuando una máquina está inactiva, es decir, cuando no hay actividad del teclado o carga en el CPU por algún tiempo. Por otra parte, los trabajos se suspenden cuando hay actividad y no los continúa hasta que la máquina está inactiva nuevamente, sin embargo, para un nodo de cómputo dedicado o para una instalación personal de HTCondor podría ser conveniente comenzar los trabajos tan pronto sean enviados (considerando que los recursos estén aún disponibles), y ejecutados en forma continua independientemente de otras actividades en esta máquina.
+ .
+ Si planea redactar una directiva personalizada es mejor mantener la predeterminada por HTCondor aquí.
+Description-fr.UTF-8: Faut-il exécuter les travaux de HTCondor malgré l'activité des autres machines ?
+ Par défaut, HTCondor ne démarre des travaux que si une machine est inoccupée, c'est à dire qu'il n'y a aucune activité du clavier ou de charge du CPU pendant un certain temps. De plus, il suspend un travail quand il détecte de l'activité sur une console et ne continue que quand la machine redevient inoccupée. Toutefois, pour un nœud dédié ou une « installation personnelle de HTCondor  », il peut être souhaitable de toujours débuter un travail dès que soumis (en supposant que les ressources soient encore disponibles) et de l'exécuter en continu indifféremment d'autres activités sur cette machine.
+ .
+ Si vous prévoyez de créer une politique personnalisée, il est préférable de conserver la politique par défaut de HTCondor ici.
+Description-it.UTF-8: Eseguire i compiti HTCondor indipendentemente dalle altre attività della macchina?
+ In modo predefinito, HTCondor avvia i compiti quando una macchina è inattiva, cioè quando per un certo periodo non c'è attività della tastiera o carico sulla CPU. Inoltre sospende i compiti quando c'è attività della tastiera e non li riprende fino a che la macchina non diventa nuovamente inattiva. Tuttavia, per un nodo di calcolo dedicato o un'installazione di HTCondor Personalizzata può essere desiderabile avviare sempre i compiti non appena vengono inviati (ammesso che ci siano ancora risorse disponibili) e di eseguirli in modo continuativo indipendentemente dalle altre attività sulla macchina.
+ .
+ Se si ha in progetto di creare una propria politica personalizzata è meglio mantenere qui il valore predefinito di HTCondor.
+Description-ja.UTF-8: 他のマシンの動作状況を問わず HTCondor ジョブを実行しますか?
+ デフォルトで HTCondor はマシンが待機状態、つまりある程度の時間キーボード入力や CPU 負荷がなかった場合にのみジョブを開始します。さらに、コンソール入力があればジョブを停止し、マシンが再び待機状態になるまで再開されません。しかし、専用の計算ノードや Personal HTCondor インストールでは常に (利用可能なリソースが残っているとして) ジョブが提示され次第開始し、このマシンの他の活動を問わず継続的に実行するのが好ましいかもしれません。
+ .
+ 独自のポリシーを作成する予定であればここでは HTCondor のデフォルトにしておくのが最善でしょう。
+Description-nl.UTF-8: HTCondor-taken uitvoeren ongeacht de andere computeractiviteit?
+ Standaard start HTCondor slechts taken als een computer werkloos is, d.w.z. gedurende enige tijd zonder toetsenbordactiviteit of CPU-belasting. Bovendien onderbreekt hij taken telkens er activiteit is aan de terminal en hervat ze slechts als de computer opnieuw werkloos wordt. Nochtans kan het voor een gereserveerd rekenknooppunt of een persoonlijke installatie van HTCondor aangewezen zijn om steeds taken te starten van zodra ze aangeboden worden (als er nog systeembronnnen beschikbaar zijn) en voort te gaan met de uitvoering ervan ongeacht de andere activiteit op die computer.
+ .
+ Indien u zinnens bent een gepersonaliseerd beleid uit te stippelen, kunt u best de standaardinstelling van HTCondor behouden.
+Description-pl.UTF-8: Uruchamiać zadania HTCondor niezależnie od innej aktywności na komputerze?
+ Domyślnie, HTCondor uruchamia zadania wyłącznie gdy komputer jest bezczynny tzn. nie wykazuje aktywności klawiatury i obciążenia procesora przez jakiś czas. Co więcej, zawiesza wykonywania zadań, gdy tylko wystąpi aktywność w konsoli i nie kontynuuje ich, dopóki komputer nie stanie się z powrotem bezczynny. Jednak przy dedykowanym węźle obliczeniowym lub osobistej instalacji HTCondor, pożądane może być uruchamianie zadań zaraz po ich wysłaniu (zakładając, że zasoby są wciąż dostępne) i wykonywanie ich w sposób ciągły, niezależnie od innej aktywności na tym komputerze.
+ .
+ Jeśli planuje się utworzenie dostosowanych zasad, najlepiej pozostawić tutaj wartość domyślną HTCondor.
+Description-pt.UTF-8: Correr trabalhos HTCondor independentemente da actividade da máquina?
+ Normalmente o HTCondor só inicia trabalhos quando a máquina está com pouca carga, i.e., sem actividade do teclado ou sem carga no CPU. Além do mais suspende os trabalhos assim que houver actividade na consola e não os recupera até que a máquina fique novamente sem carga. No entanto, para um nó dedicado à computação ou uma instalação Pessoal do HTCondor, pode ser desejável iniciar sempre os trabalhos assim que são submetidos (se houver recursos), e corrê-los continuamente sem olhar ao resto da actividade da máquina.
+ .
+ Se planeia criar uma política personalizada é melhor manter aqui as predefinições do HTCondor.
+Description-ru.UTF-8: Выполнять задания HTCondor независимо от другой активности на машине?
+ По умолчанию, HTCondor запускает задания только когда машина простаивает, то есть, когда какое-то время нет активности клавиатуры или нагрузки ЦП. Кроме этого, он также приостанавливает задания при появлении активности на консоли и не продолжает выполнение пока машина снова не станет простаивать. Однако, на выделенном вычислительном узле или при персональной установке HTCondor может быть желательно всегда запускать задания сразу после их поступления (пока есть ресурсы), и выполнять их без перерыва независимо от другой нагрузки на машину.
+ .
+ Если вы планируете составить свою собственную политику, лучше оставить настройку HTCondor по умолчанию.
+Description-sv.UTF-8: Ska HTCondor-jobb utföras oberoende av annan aktivitet på maskinen?
+ Som standard startar HTCondor bara jobb när maskinen är sysslolös, ex. ingen interaktion på tangentbord eller processoranvänding på ett tag. Dessutom stoppas jobb när maskinen börjar användas och fortsätter dem inte innan maskinen blir sysslolös igen. För en dedikerad beräkningsnod eller en Personlig HTCondor-installation kan det vara önskvärt att alltid starta jobb när de skickats (givet att det fortfarande finns resurser till det) och att köra dem oberoende övrig aktivitet på maskinen.
+ .
+ Om en anpassad policy är planerad i dess ställe är det rekomenderat att behålla HTCondors standardvärde här.

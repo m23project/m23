@@ -1,0 +1,44 @@
+Template: squidguard/dbreload
+Type: boolean
+Default: true
+Description: Rebuild Squidguard blacklist database during postinst?
+ Rebuilding the blacklist databases is time consuming and under some
+ circumstances could cause problems.  With the breakout of individual
+ blacklist section packages the time it takes for each package to rebuild
+ will be extensive.  Also it may not be desireable to rebuild these
+ databases on production servers.  You can manually perform a rebuild by
+ running /usr/sbin/update-squidguard.
+Description-cs.UTF-8: Znovu vytvořit databázi Squidguardu během poinstalační fáze?
+ Vytvoření blacklistových databází zabere hodně času a za určitých okolností může způsobit problémy. Také na produkčních serverech nemusí být nové vytvoření databáze žádoucí. Znovuvytvoření databází můžete spustit i ručně příkazem /usr/sbin/update-squidgard.
+Description-da.UTF-8: Genkompiler Squidguards sortlistedatabase under postinst?
+ Genkompilering af sortlistedatabaserne tager undertiden lang tid og kan under nogle omstændigheder forårsage problemer. På grund af breakouten for individuelle sortlisteafsnitspakker kan tiden, det tager for hver pakke at blive genkompileret være omfattende. De er måske heller ikke ønskeligt at genkompilere disse databaser på produktionsservere. Du kan manuelt udføre en genkompilering ved at køre /usr/sbin/update-squidguard.
+Description-de.UTF-8: Squidguards Blacklist-Datenbanken am Ende dieser Installation erneuern?
+ Das Erneuern der Blacklist-Datenbanken ist sehr zeitaufwändig und kann manchmal Probleme verursachen. Durch die Möglichkeit von individuellen Blacklist-Section-Paketen wird es sehr lange dauern, jedes Paket neu zu erstellen. Es könnte auch nicht erwünscht sein, diese Datenbanken auf produktiven Servern zu erneuern. Sie können das Neubauen durch das Kommando /usr/sbin/update-squidguard manuell einleiten.
+Description-es.UTF-8: ¿Desea reconstruir las bases de datos de lista negra de Squidguard en la instalación?
+ La reconstrucción de las bases de datos de lista negra demanda tiempo y podría causar problemas bajo algunas circunstancias. Con la separación en secciones de paquetes individuales de listas negras, el tiempo que se tome para reconstruir cada paquete será extenso. También, puede que no sea apropiado reconstruir estas bases de datos en servidores de producción. Puede reconstruirlas en forma manual invocando «/usr/sbin/update-squigguard».
+Description-eu.UTF-8: Berreraiki Squidguard-en zerrenda beltzen datu-basea instalazioa bukatu ondoren?
+ Zerrenda beltzen datu-basea berreraikitzeak denbora asko darama eta egoera batzuetan arazoak eragin ditzake. Zerrenda beltzeko sekzio bakoitzeko paketea askatzean, pakete bakoitza berriro eraikitzeko behar den denbora oso luzea izan daiteke.Ez da gomendagarria produkzioan dauden zerbitzarietan datu-base hauek berriro eraikitzea. Berreraikitze bat eskuz egiteko exekutatu honako komandoa: usr/sbin/update-squidguard
+Description-fi.UTF-8: Tulisiko Squidguardin mustien listojen tietokanta rakentaa uudelleen asennuksen jälkeen?
+ Mustien listojen tietokannan rakentaminen uudelleen on aikaa vievää ja saattaa joissain tilanteissa aiheuttaa ongelmia. Yksittäisten mustan listan osapakettien irtauduttua kunkin paketin rakentaminen uudelleen kestää kauan. Paketteja ei myöskään välttämättä haluta rakentaa uudelleen tuotantopalvelimilla. Uudelleenrakennus voidaan tehdä käsin ajamalla /usr/sbin/update-squidguard.
+Description-fr.UTF-8: Reconstruire la base de données des listes noires de Squidguard pendant la post-installation ?
+ La reconstruction des bases de données de liste noire prend du temps et peut causer des problèmes dans certaines circonstances. Avec la séparation en section des paquets individuels des listes noires, le temps de reconstruction de chaque paquet sera plus important. Ainsi, il n'est pas souhaitable de reconstruire chaque base de données sur des serveurs en production. Vous pouvez reconstruire vous-même chaque base de données en lançant /usr/sbin/update-squidguard.
+Description-gl.UTF-8: ¿Reconstruír a base de datos de listas negras de Squidguard durante o proceso de post-instalación?
+ Reconstruír a bases de datos de listas negras liva moito tempo e nalgunhas circunstancias pode causar problemas. Coa separación en varios paquetes con seccións de lista negra individuais, o tempo que tome cada paquete en reconstruír pode ser excesivo. Ademáis, pode non ser desexable reconstruír esas bases de datos nos servidores de produción. Pode facer unha reconstrución manual executando "/usr/sbin/update-squidguard".
+Description-it.UTF-8: Rigenerare il database della lista nera di Squidguard durante la fase di post-installazione?
+ La rigenerazione del database della lista nera richiede tempo e in alcune circostanze può causare problemi. Con la suddivisione in pacchetti singoli per le sezioni delle liste nere, il tempo necessario per la rigenerazione per ogni pacchetto sarà lungo. Inoltre può non essere desiderabile rigenerare questi database nei server di produzione. Si può effettuare una rigenerazione manuale eseguendo /usr/sbin/update-squidguard.
+Description-ja.UTF-8: postinst の実行中に Squidguard のブラックリストデータベースを再構築しますか?
+ ブラックリストデータベースの再構築は時間がかかり、特定の状況下では問題を起こす可能性があります。個々のブラックリストが再構築されていなければ、ここでそれぞれのデータベースを再構築するのにかかる時間は膨大なものになるでしょう。また、稼動しているサーバでこれらのパッケージを再構築するのは望ましくないかもしれません。/usr/sbin/update-squidguard を実行する事で手動で再構築することも可能です。
+Description-nl.UTF-8: Wilt u de Squidguard zwarte lijst database opnieuw bouwen tijden het uitvoeren van het 'postinst'-script?
+ Opnieuw bouwen van de zwarte lijst database is een tijdrovend proces, en kan onder sommige omstandigheden problemen veroorzaken. Door het opsplitsen van de individuele zwarte lijst sectie pakketten is de tijd die nodig is om elk pakket opnieuw te bouwen aanzienlijk. Mogelijk is het ook niet gewenst om deze databases opnieuw te bouwen op productie-servers. U kunt het opnieuw bouwen handmatig uitvoeren met het commando '/usr/sbin/update-squidguard'.
+Description-pt.UTF-8: Reconstruir a base de dados de listas negras durante a pos-instalação?
+ Reconstruir as bases de dados das listas negras é consumo de tempo e em algumas circunstâncias pode causar problemas. Com bloqueio de secções individuais dos pacotes de listas negras o tempo que demorará para reconstruir cada pacote poderá ser extenso. Não é desejavel reconstruir estas bases de dados em servidores de produção. Poderá efectuar uma reconstrução manual executando /usr/sbin/update-squidguard.
+Description-pt_BR.UTF-8: Reconstruir o banco de dados de lista negra do Squidguard durante o postinst?
+ Reconstruir os bancos de dados de lista negra consome tempo e em alguns casos pode causar problemas. Com o advento de pacotes individuais de seções de lista negra o tempo necessário para cada pacote ser reconstruído será muito extenso. Também poderá não ser desejável reconstruir esses bancos de dados em servidores em produção. Você pode fazer manualmente a reconstrução executando /usr/sbin/update-squidguard.
+Description-ru.UTF-8: Перестроить базу чёрных списков Squidguard во время работы сценария postinst?
+ Перестройка базы данных чёрных списков требует времени и при некоторых условиях может привести к проблемам. С распределением по индивидуальным секциям чёрных списков пакетов, время перестройки тратится на каждый пакет, что замедляет процесс. Также, нежелательно перестраивать эти базы данных на рабочих серверах. Вы можете запустить пересборку вручную с помощью сценария /usr/sbin/update-squidguard.
+Description-sv.UTF-8: Bygga om Squidguard svartlista-databas efter installationen?
+ Att bygga om svartlist-databaserna är en process som tar lång tid och i vissa fall skapar det problem.  Det är kanske inte önskvärt att bygga om dessa databaser på en produktionsserver.  Du kan manuellt bygga om dessa med kommandot /usr/sbin/update-squidguard.
+Description-tr.UTF-8: Squidguard karalistesi kurulumdan sonra yeniden inşâ edilsin mi?
+ Karalisteleri yeniden inşâ etmek zaman alır ve kimi zaman sorunlara yol açabilir.  Son zamanlarda karaliste bölümüne bir çok paket eklendiğinden her bir paketin karalistesini yeniden inşâ etmek geniş çaplı bir işlemdir.  Ayrıca üretim sunucularında bu veritabanlarını yeniden inşâ etmek pek arzu edilen bir durum değildir. Veritabanlarını elle inşâ etmek için /usr/sbin/update-squidguard komutunu kullanabilirsiniz.
+Description-vi.UTF-8: Xây dụng lại cơ sở dữ liệu danh sách màu đen trong khi tiến trình cuối cùng cài đặt không?
+ Xây dụng lại các cơ sở dữ liệu danh sách màu đèn tiêu phí thời giờ, và trong một số trường hợp có thể gây ra lỗi. Gồm phá mà gói phần danh sách màu đen riêng ra, việc xây dụng lại mỗi gói sẽ mất lâu. Hơn nữa, có lẽ không phải là một ý kiến tốt để xây dụng lại những cơ sở dữ liệu này trên máy bận. Bạn có thể tự xây dụng lại bằng cách chạy lệnh «/usr/sbin/update-squidguard».

@@ -1,0 +1,82 @@
+
+Template: sahara/register-endpoint
+Type: boolean
+Default: false
+Description: Register Sahara in the Keystone endpoint catalog?
+ Each OpenStack service (each API) should be registered in order to be
+ accessible. This is done using "keystone service-create" and "keystone
+ endpoint-create". This can be done automatically now.
+ .
+ Note that you will need to have an up and running Keystone server on which to
+ connect using the Keystone authentication token.
+Description-fr.UTF-8: Enregistrer Sahara dans le catalogue de points d'accès de Keystone ?
+ Chaque service OpenStack (chaque API) doit être enregistré pour être accessible. Cela peut être fait en utilisant « keystone service-create » et « keystone endpoint-create ». Cela peut maintenant être fait automatiquement.
+ .
+ Veuillez noter que vous aurez besoin d'avoir un serveur Keystone fonctionnel sur lequel se connecter pour utiliser le jeton d'authentification Keystone.
+Description-nl.UTF-8: Sahara opnemen in de catalogus van Keystone-toegangspunten?
+ Elke dienst van OpenStack (elke API) moet geregistreerd staan om toegankelijk te zijn. Dit gebeurt met de opdrachten "keystone service-create" en "keystone endpoint-create". Dit kan nu automatisch uitgevoerd worden.
+ .
+ Merk op dat u een volledig functionele Keystone-server nodig heeft waarmee u verbinding kunt maken met behulp van het authenticatiebewijs voor Keystone.
+Description-pt.UTF-8: Registar o Sahara no catálogo de "endpoint" do Keystone?
+ Cada serviço do OpenStack (cada API) deve ser registado de modo a ser acessível. Isto é feito usado "keystone service-create" e "keystone endpoint-create". Isto pode ser feito automaticamente agora.
+ .
+ Note que irá precisar de ter um servidor Keystone a funcionar no qual ligar usando o sinal de autenticação do Keystone.
+
+Template: sahara/keystone-ip
+Type: string
+Description: Keystone server IP address:
+ Please enter the IP address of the Keystone server, so that sahara-api can
+ contact Keystone to do the Sahara service and endpoint creation.
+Description-fr.UTF-8: Adresse IP du serveur Keystone :
+ Veuillez indiquer l'adresse IP du serveur Keystone, pour que l'API de Sahara puisse contacter Keystone pour établir le service Sahara et créer le point d'accès.
+Description-nl.UTF-8: IP-adres van de Keystone-server:
+ Gelieve het IP-adres van de Keystone-server op te geven, zodat sahara-api Keystone kan contacteren om de Sahara-service en het toegangspunt aan te maken.
+Description-pt.UTF-8: Endereço IP do servidor do Keystone:
+ Por favor indique o endereço IP do servidor Keystone, para que o sahara-api possa contactar o Keystone para fazer o serviço Sahara e a criação do "endpoint".
+
+Template: sahara/keystone-auth-token
+Type: password
+Description: Keystone authentication token:
+ To configure its endpoint in Keystone, sahara-api needs the Keystone
+ authentication token.
+Description-fr.UTF-8: Jeton d'authentification Keystone :
+ Pour configurer son point d'accès dans Keystone, l'API de Sahara a besoin du jeton d'authentification Keystone.
+Description-nl.UTF-8: Authenticatiebewijs voor Keystone:
+ Om zijn toegangspunt in Keystone te kunnen aanmaken, heeft sahara-api het authenticatiebewijs voor Keystone nodig.
+Description-pt.UTF-8: Sinal de autenticação do Keystone:
+ Para configurar o seu endpoint no Keystone, o sahara-api precisa do sinal de autenticação do Keystone.
+
+Template: sahara/endpoint-ip
+Type: string
+Description: Sahara endpoint IP address:
+ Please enter the IP address that will be used to contact Sahara.
+ .
+ This IP address should be accessible from the clients that will use this
+ service, so if you are installing a public cloud, this should be a public
+ IP address.
+Description-fr.UTF-8: Adresse IP du point d'accès Sahara :
+ Veuillez indiquer l'adresse IP qui sera utilisée pour contacter Sahara.
+ .
+ L'adresse IP devra être accessible depuis les clients qui utiliseront ce service, donc si vous installez un nuage public ce devra être une adresse IP publique.
+Description-nl.UTF-8: IP-adres van het toegangspunt van Sahara:
+ Gelieve het IP-adres in te voeren dat gebruikt zal worden om contact te maken met Sahara.
+ .
+ Dit IP-adres moet bereikbaar zijn vanaf de clients die van deze service gebruik zullen maken. Indien u een openbare cloud installeert, moet dit dus een algemeen bereikbaar IP-adres zijn.
+Description-pt.UTF-8: Endereço IP endpoint do Sahara:
+ Por favor indique o endereço IP que será usado para contactar o Sahara.
+ .
+ Este endereço IP deve ser acessível a partir dos clientes que vão usar este serviço, portanto se está a instalar uma "cloud" pública, este deve ser um endereço IP público.
+
+Template: sahara/region-name
+Type: string
+Default: regionOne
+Description: Name of the region to register:
+ OpenStack supports using availability zones, with each region representing
+ a location. Please enter the zone that you wish to use when registering the
+ endpoint.
+Description-fr.UTF-8: Nom de la région à enregistrer :
+ OpenStack supporte l'utilisation de zones disponibles, avec chaque région représentant un lieu. Veuillez entrer une zone que vous souhaitez utiliser lors de l'enregistrement d'un point d'accès.
+Description-nl.UTF-8: Naam van de registratieregio:
+ Openstack ondersteunt het gebruik van zones van beschikbaarheid, waarbij elke regio een locatie vertegenwoordigt. Geef aan welke zone u wenst te gebruiken bij het registreren van het toegangspunt.
+Description-pt.UTF-8: Nome da região a registar:
+ O OpenStack suporta usar zonas de disponibilidade, com cada região a representar um local. Por favor indique a zona que deseja usar ao registar o endpoint.

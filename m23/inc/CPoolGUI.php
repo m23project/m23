@@ -63,7 +63,7 @@ class CPoolGUI extends CPool
 				$this->helpPage = 'poolBuilderDownloadStatus';
 				$this->DIALOG_showDownloadStatus();
 				break;
-			};
+			}
 
 			// Decide to copy packages from CD/DVD or download them form the internet
 			case CPoolGUI::POOLDIALOG_COPYDOWNLOADPACKAGES:
@@ -430,7 +430,11 @@ function DIALOG_importDirFiles()
 			<tr>
 				<td>'.SEL_loadDeletePoolname.'</td>
 				<td colspan="2"></td>
-				<td>'.BUT_loadPool.'<br><br>'.BUT_deletePool.'</td>
+				<td>'.BUT_loadPool.'<br><br>
+				<!-- m23customPatchBegin type=del id=BUT_deletePool -->
+				'.BUT_deletePool.'
+				<!-- m23customPatchEnd id=BUT_deletePool -->
+				</td>
 			</tr>
 			<tr><td colspan="4"><span class="title">'.$I18N_usedPool.': '.$this->getPoolName(true).'</span></td></tr>
 			<tr><td colspan="4"><span class="subhighlight">'.$I18N_description.'</span></td></tr>

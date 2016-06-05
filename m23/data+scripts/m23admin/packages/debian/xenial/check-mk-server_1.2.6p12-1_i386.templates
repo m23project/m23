@@ -1,0 +1,8 @@
+Template: check-mk-server/v1.2_upgrade_msg
+Type: note
+Description: Convert or delete RRD graphs
+ The tcp_conn_stats check now also counts sockets in the state BOUND. From that follows that the check now issues one more performance data value.
+ Those who do not use PNP in the "MULTIPLE" mode need either to delete or convert their RRD graphs of those checks.
+ Otherwise they won't be updated anymore.
+ .
+ For further information, please read the migration notes provided upstream: http://mathias-kettner.de/checkmk_migration_notes.html .

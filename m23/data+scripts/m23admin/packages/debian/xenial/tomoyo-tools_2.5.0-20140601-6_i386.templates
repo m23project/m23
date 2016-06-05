@@ -1,0 +1,64 @@
+
+Template: tomoyo-tools/grub
+Type: boolean
+Default: false
+Description: Enable TOMOYO Linux at boot time?
+ Enabling TOMOYO Linux functionality in the running kernel requires an
+ appropriate kernel command line at boot time. This can be configured by
+ setting GRUB_CMDLINE_LINUX="security=tomoyo" in /etc/default/grub and
+ running grub-update.
+ .
+ If you accept here, these actions will be performed automatically and
+ TOMOYO Linux will be enabled at next boot.
+Description-cs.UTF-8: Povolit při zavádění systému TOMOYO Linux?
+ Pro povolení TOMOYO Linuxu je nutné jádru při zavádění předat příslušný parametr. Toho můžete docílit například nastavením GRUB_CMDLINE_LINUX="security=tomoyo" v souboru /etc/default/grub a následným spuštěním příkazu grub-update.
+ .
+ Odpovíte-li zde kladně, provedou se příslušné změny automaticky a TOMOYO Linux bude funkční od příštího restartu.
+Description-da.UTF-8: Aktiver TOMOYO Linux ved opstart?
+ Aktivering af TOMOYO Linux-funktionalitet i den kørende kerne kræver en passende kernekommandolinje ved opstart. Denne kan konfigureres ved at angive GRUB_CMDLINE_LINUX="security=tomoyo" i /etc/default/grub og køre grub-update.
+ .
+ Hvis du accepterer her, så vil disse handlinger blive udført automatisk og TOMOYO Linux vil være aktiveret ved næste opstart.
+Description-de.UTF-8: TOMOYO Linux beim Hochfahren aktivieren?
+ Aktivieren der TOMOYO-Linux-Funktionalität im laufenden Kernel erfordert eine geeignete Kernel-Befehlszeile beim Hochfahren. Dies kann durch Setzen von GRUB_CMDLINE_LINUX="security=tomoyo" in /etc/default/grub und Ausführen von grub-update konfiguriert werden.
+ .
+ Falls Sie hier zustimmen, werden diese Aktionen automatisch durchgeführt und TOMOYO Linux wird beim nächsten Hochfahren aktiviert.
+Description-es.UTF-8: ¿Desea habilitar TOMOYO Linux en el arranque?
+ Para habilitar la funcionalidad de TOMOYO para Linux es necesario configurar la opción correcta de la línea de órdenes del núcleo en el momento del arranque. Esto puede realizarse definiendo «GRUB_CMDLINE_LINUX="security=tomoyo"» en «/etc/default/grub» y ejecutar «grub-update».
+ .
+ Si acepta ahora, estas acciones se harán de forma automática y TOMOYO para Linux quedará habilitado automáticamente en el siguiente arranque.
+Description-fr.UTF-8: Activer TOMOYO Linux au démarrage de la machine ?
+ La mise en oeuvre de TOMOYO Linux dans le noyau utilisé actuellement nécessite une commande adéquate à exécuter au démarrage. Cela peut être configuré en positionnant la valeur GRUB_CMDLINE_LINUX= « security=tomoyo » dans /etc/default/grub/ puis en exécutant « grub-update ».
+ .
+ Si vous choisissez cette option, ces actions seront automatiquement exécutées et TOMOYO Linux sera activé au prochain démarrage.
+Description-it.UTF-8: Abilitare TOMOYO Linux all'avvio?
+ Per abilitare la funzionalità TOMOYO Linux nel kernel in esecuzione è necessario un'appropriata riga di comando per il kernel all'avvio che può essere configurata impostando GRUB_CMDLINE_LINUX="security=tomoyo" in /etc/default/grub ed eseguendo grub-update.
+ .
+ Se si accetta qui questa opzione, queste azioni verranno effettuate automaticamente e TOMOYO Linux sarà abilitato al prossimo avvio.
+Description-ja.UTF-8: ブート時に TOMOYO Linux を有効にしますか?
+ 実行しているカーネルで TOMOYO Linux を機能させるには、ブート時に適切なカーネルコマンドラインが必要です。これは /etc/default/grub に GRUB_CMDLINE_LINUX="security=tomoyo" をセットして grub-update を実行することで設定できます。
+ .
+ 受け入れた場合、この操作は自動的に実行され、TOMOYO Linux は次回ブート時に有効になります。
+Description-nl.UTF-8: TOMOYO Linux activeren bij het opstarten van de computer?
+ Om de functionaliteit van TOMOYO Linux te activeren in de actieve kernel is een passende commandoregel nodig bij het opstarten van de kernel. Dit kan ingesteld worden met de regel GRUB_CMDLINE_LINUX="security=tomoyo" in /etc/default/grub en het uitvoeren van het commando grub-update.
+ .
+ Indien u dit accepteert, zullen deze bewerkingen automatisch uitgevoerd worden en zal TOMOYO Linux geactiveerd worden de volgende keer als u de computer opstart.
+Description-pl.UTF-8: Włączać TOMOYO Linux w trakcie rozruchu?
+ Włączenie funkcji TOMOYO Linux w działającym jądrze, wymaga podania odpowiedniego polecenia do jądra w trakcie rozruchu. Można to uczynić tworząc wpis GRUB_CMDLINE_LINUX="security=tomoyo" w /etc/default/grub i wykonując polecenie grub-update.
+ .
+ Jeśli ta opcja zostanie teraz zaakceptowana, powyższe działania zostaną przeprowadzone automatycznie, a TOMOYO Linux zostanie włączone przy następnym uruchomieniu systemu.
+Description-pt.UTF-8: Ativar o TOMOYO Linux no arranque?
+ Ativar a funcionalidade TOMOYO Linux no kernel requer um argumento da linha de comandos do kernel apropriado. Isto pode ser configurado através da definição de GRUB_CMDLINE_LINUX="security=tomoyo" no /etc/default/grub e executar grub-update.
+ .
+ Se aceitar, estas ações serão automaticamente executadas e o TOMOYO Linux ficará ativo no próximo arranque.
+Description-ru.UTF-8: Включить TOMOYO Linux при загрузке?
+ Для того, чтобы включить функции TOMOYO Linux, при загрузке ядра требуется указать специальный параметр. Это можно сделать вручную, дописав GRUB_CMDLINE_LINUX="security=tomoyo" в файл /etc/default/grub и запустив grub-update.
+ .
+ Если вы ответите утвердительно, то эти действия будут выполнены автоматически и TOMOYO Linux включится при следующей загрузке машины.
+Description-sk.UTF-8: Zapnúť TOMOYO Linux pri štarte systému?
+ Zapnutie funkcií TOMOYO Linux v bežiacom jadre vyžaduje uvedenie príslušnej voľby jadra v čase zavedenia systému. Tú môžete nastaviť uvedením GRUB_CMDLINE_LINUX="security=tomoyo" v /etc/default/grub a spustením grub-update.
+ .
+ Tu môžete prijať automatické vykonanie týchto opercií a zapnutí TOMOYO Linux pri ďalšom štarte systému.
+Description-sv.UTF-8: Ska TOMOYO-linux aktiveras vid systemets uppstart?
+ För att aktivera TOMOYO-linux-funktioner i den aktuella kärnan behövs en korret kommandorad för kärnan vid uppstart. Detta kan skötas automatiskt genom att addera GRUB_CMDLINE_LINUX="security=tomoyo" i /etc/default/grub och därefter köra grub-update.
+ .
+ Om du väljer att aktivera detta nu kommer åtgärden att utföras automatiskt och TOMOYO-linux aktiveras vid nästa uppstart.

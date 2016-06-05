@@ -1,0 +1,206 @@
+Template: aegis/var_lib_aegis_not_local
+Type: note
+Description: /var/lib/aegis not on a local drive
+ Aegis requires that /var/lib/aegis be owned by sys.sys and be set-gid, and
+ group writable.
+ .
+ Your /var/lib/aegis is on a remote partition, most likely an NFS server.
+ This could cause the postinst to fail, since the script may not have
+ permission to change the owner/permissions of the directory on the remote
+ server.
+ .
+ If this happens, change the permissions on the NFS server, or ask the
+ server administrator to do it for you.
+Description-cs.UTF-8: /var/lib/aegis neleží na lokálním disku
+ Aegis vyžaduje, aby byl /var/lib/aegis vlastněn uživatelem a skupinou sys.sys, aby měl nastavený příznak set-gid a aby do něj mohli zapisovat členové skupiny.
+ .
+ Váš /var/lib/aegis leží na vzdálené oblasti, nejpravděpodobněji na NFS serveru. To může způsobit, že poinstalační skript selže, protože na vzdáleném serveru nemusíte mít práva změnit vlastníka/práva adresáře .
+ .
+ Pokud se tak stane, změňte oprávnění na NFS serveru, nebo požádejte správce serveru, aby to pro vás udělal.
+Description-da.UTF-8: /var/lib/aegis er ikke på et lokalt drev
+ Aegis kræver at /var/lib/aegis er ejet af sys.sys, har 'set-gid' sat og er gruppeskrivbar.
+ .
+ Mappen /var/lib/aegis befinder sig på en ekstern partition, højst sandsynligt en NFS-server. Dette kan medføre at postinst fejler, da skriptet måske ikke har rettigheder til at ændre ejer/rettigheder på den eksterne maskine.
+ .
+ Hvis dette sker, så skal du ændre rettighederne på NFS-serveren, eller spørge serveradministratoren om at gøre det for dig.
+Description-de.UTF-8: /var/lib/aegis ist nicht auf einem lokalen Laufwerk
+ Aegis erfordert, dass /var/lib/aegis dem Benutzer »sys« und der Gruppe »sys« gehört, das Set-Gid-Bit gesetzt und für die Gruppe schreibbar ist.
+ .
+ Ihr Verzeichnis /var/lib/aegis ist auf einem entfernten Laufwerk, sehr wahrscheinlich auf einem NFS-Server. Dadurch könnte das Postinst-Skript fehlschlagen, wenn Sie nicht dazu berechtigt sind, den Besitzer und die Zugriffsrechte des Verzeichnisses auf dem entfernten Server zu ändern.
+ .
+ Falls das passiert, ändern Sie die Zugriffsrechte auf dem NFS-Server oder fragen Sie den Administrator des Servers, dies für Sie zu tun.
+Description-es.UTF-8: «/var/lib/aegis» no está en una unidad de disco local
+ Aegis necesita que el propietario del directorio «/var/lib/aegis» sea «sys.sys» y tenga activado el bit «set-gid», y el grupo tenga permisos de escritura.
+ .
+ Su directorio «/var/lib/aegis» está en una partición remota, posiblemente en un servidor NFS. Esto puede causar que la postinstalación falle, ya que el script puede que no tenga permisos para cambiar el propietario y/o los permisos del directorio en el servidor remoto.
+ .
+ Si esto ocurre, cambie los permisos del servidor NFS, o pídale al administrador del servidor que los cambie por usted.
+Description-eu.UTF-8: /var/lib/aegis ez dago gailu lokal batetan
+ Aegis-ek /var/lib/aegis sys.sys jabetzakoa, set-gid ezarria izatea eta taldearentzat idazgarria izatea behar du.
+ .
+ Zure /var/lib/aegis urruneko partizio batetan dago , ziurrenik NFS zerbitzari batetan. Honek instalazioak huts egitea eragin dezake, script-ak agian ez du urruneko zerbitzarian direktorioan jabetza/baimenak aldatzeko eskubiderik.
+ .
+ Hala gertatzen bada aldatu NFS zerbitzarian baimenak, edo eskatu sistema administratzaileari zuretzat egiteko.
+Description-fi.UTF-8: /var/lib/aegis ei ole paikallisella levyllä
+ Aegis vaatii, että hakemiston /var/lib/aegis omistaa sys.sys, ryhmällä on kirjoitusoikeudet ja hakemistolla on asetus set-gid.
+ .
+ Hakemisto /var/lib/aegis on etälevyllä, todennäköisimmin NFS-palvelimella. Tämän takia postinstin ajo saattaa epäonnistua, koska komentosarjalla ei välttämättä ole oikeuksia muuttaa etäpalvelimella olevan hakemiston omistajaa tai oikeuksia.
+ .
+ Jos näin tapahtuu, muuta NFS-palvelimen asetuksia tai pyydä palvelimen ylläpitäjää muuttamaan niitä.
+Description-fr.UTF-8: /var/lib/aegis pas sur un disque local
+ Il est indispensable que le répertoire /var/lib/aegis soit la propriété de sys.sys, que le bit « setgid » soit positionné et que le groupe propriétaire puisse y écrire.
+ .
+ Le répertoire /var/lib/aegis est situé sur une partition distante, très probablement un serveur NFS. Cela peut faire échouer le script de post-installation car il risque de ne pas avoir les droits nécessaires pour modifier les permissions ou le propriétaire du répertoire sur le serveur distant.
+ .
+ Si cela se produit, veuillez modifier les permissions sur le serveur NFS ou demander à son administrateur de faire cette modification pour vous.
+Description-it.UTF-8: /var/lib/aegis non si trova su un drive locale.
+ Aegis richiede che /var/lib/aegis sia di sys.sys, che sia impostato il bit di gid e che sia scrivibile dal gruppo.
+ .
+ /var/lib/aegis si trova su una partizione remota, molto probabilmente un server NFS. Questo potrebbe causare un errore nel postinst, dal momento che lo script può non disporre dei privilegi per cambiare proprietario/permessi della directory sul server remoto.
+ .
+ Se ciò accadesse, cambiare i permessi sul server NFS, oppure richiedere all'amministratore di farlo.
+Description-ja.UTF-8: ローカルドライブに /var/lib/aegis が存在していません
+ aegis は /var/lib/aegis の権限が sys.sys となっているのに加えて set-gid され、グループによる書き込みが可能 (group writable) になるのが必要です。
+ .
+ /var/lib/aegis がリモートのパーティションにあります。大抵の場合は NFS サーバです。スクリプトがリモートサーバ上のディレクトリの所有者・パーミッションを変更する権限を持っていないと、postinst が失敗します。
+ .
+ この場合、NFSサーバ上のパーミッションを変更するか、変更をサーバ管理者に依頼してください。
+Description-pt.UTF-8: /var/lib/aegis não está num disco local
+ O Aegis precisa que o /var/lib/aegis pertença a sys.sys, que tenha a 'set-gid' activa e que o seu grupo possa lá escrever.
+ .
+ O seu /var/lib/aegis encontra-se numa partição remota, muito provavelmente num servidor NFS.  Isto pode ser causar falha do 'postinst', pois o script pode não ter permissão para mudar dono/permissões do directório no servidor remoto.
+ .
+ Se isto acontecer, altere as permissões no servidor NFS ou peça ao administrador do servidor para o fazer por si.
+Description-pt_BR.UTF-8: /var/lib/aegis não está em um disco local.
+ O Aegis requer que /var/lib/aegis seja de propriedade do usuário sys e do grupo sys (sys.sys), esteja com o bit sgid habilitado, e tenha permissão de escrita para o grupo.
+ .
+ Seu diretório /var/lib/aegis está em uma partição remota, provavelmente em um servidor NFS. Isto pode fazer com que o script de pós-instalação do pacote falhe, uma vez que o mesmo pode não ter permissão de modificar o proprietário/permissões do diretório no servidor remoto.
+ .
+ Caso isso aconteça, modifique as permissões no servidor NFS, ou peça ao administrador do servidor para fazê-lo para você.
+Description-ru.UTF-8: /var/lib/aegis находится не на локальном диске
+ Для aegis необходимо, чтобы /var/lib/aegis принадлежал sys.sys с установленным set-gid и разрешением на запись группе.
+ .
+ Каталог /var/lib/aegis находится не на локальном разделе, скорее всего на NFS-сервере. Это может вызвать ошибку сценария postinst, так как невозможно изменить права/владельца каталога на удалённом сервере.
+ .
+ Если это случится, измените права доступа на NFS сервере самостоятельно или попросите администратора.
+Description-sv.UTF-8: /var/lib/aegis finns inte på en lokal enhet.
+ Aegis kräver att /var/lib/aegis ägs av sys.sys och är satt till set-gid och skrivbar för gruppen.
+ .
+ Din /var/lib/aegis finns på en fjärrpartition, antagligen en NFS-server. Detta kan skapa problem för skriptet som körs efter installation eftersom vi kanske inte har rättigheter att ändra ägare/rättigheter på mappen på den fjärrservern.
+ .
+ Om detta inträffar, ändra rättigheterna på NFS-servern eller fråga serveradministratören om denna kan göra det åt dig.
+Description-vi.UTF-8: /var/lib/aegis không nằm trên một đĩa cục bộ
+ Trình aegis cần thiết sys.sys là người sở hữu /var/lib/aegis mà set-gid và cho phép nhóm ghi nó.
+ .
+ /var/lib/aegis của bạn nằm trong một phân vùng ở xa, rất có thể là một máy phục vụ NFS. Trường hợp này có thể gây ra tiến trình cài đặt cuối cùng không chạy được, vì văn lệnh có lẽ không có quyền sửa đổi quyền hạn hay chủ của thư mục trên máy phục vụ ở xa.
+ .
+ Nếu nó xảy ra thì bạn hãy thay đổi quyền truy cập máy chủ NFS, hoặc xin quản trị hệ thống làm như thế.
+Description-zh_TW.UTF-8: /var/lib/aegis 不是在本地磁碟上
+ Aegis 需要 /var/lib/aegis 設定擁有者為 sys.sys 與 set-gid，並開放群組寫入權限。
+ .
+ 您的 /var/lib/aegis 位在遠端，可能是 NFS 伺服器。這會導致 postinst 失敗，因為此腳本沒有權限更改遠端目錄的擁有者與權限設定。
+ .
+ 如果真的失敗了，請手動更改 NFS 伺服器上的權限，或是請該伺服器的管理員幫忙。
+
+Template: aegis/var_lib_not_local
+Type: note
+Description: /var/lib not on a local drive
+ Aegis requires that /var/lib/aegis be owned by sys.sys and be set-gid, and
+ group writable.
+ .
+ Your /var/lib is on a remote partition, most likely an NFS server. This
+ could cause the postinst to fail, since the script may not have permission to
+ change the owner/permissions of the directory on the remote server.
+ .
+ If this happens, change the permissions on the NFS server, or ask the
+ server administrator to do it for you.
+Description-cs.UTF-8: /var/lib neleží na lokálním disku
+ Aegis vyžaduje, aby byl /var/lib/aegis vlastněn uživatelem a skupinou sys.sys, aby měl nastavený příznak set-gid a aby do něj mohli zapisovat členové skupiny.
+ .
+ Váš /var/lib leží na vzdálené oblasti, nejpravděpodobněji na NFS serveru. To může způsobit, že poinstalační skript selže, protože na vzdáleném serveru nemusíte mít práva změnit vlastníka/práva adresáře .
+ .
+ Pokud se tak stane, změňte oprávnění na NFS serveru, nebo požádejte správce serveru, aby to pro vás udělal.
+Description-da.UTF-8: /var/lib er ikke på et lokalt drev
+ Aegis kræver at /var/lib/aegis er ejet af sys.sys, har 'set-gid' sat og er gruppeskrivbar.
+ .
+ Mappen /var/lib befinder sig på en ekstern partition, højst sandsynligt en NFS-server. Dette kan medføre at postinst fejler, da skriptet måske ikke har rettigheder til at ændre ejer/rettigheder på den eksterne maskine.
+ .
+ Hvis dette sker, så skal du ændre rettighederne på NFS-serveren, eller spørge serveradministratoren om at gøre det for dig.
+Description-de.UTF-8: /var/lib ist nicht auf einem lokalen Laufwerk
+ Aegis erfordert, dass /var/lib/aegis dem Benutzer »sys« und der Gruppe »sys« gehört, das Set-Gid-Bit gesetzt und für die Gruppe schreibbar ist.
+ .
+ Ihr Verzeichnis /var/lib ist auf einem entfernten Laufwerk, sehr wahrscheinlich auf einem NFS-Server. Dadurch könnte das Postinst-Skript fehlschlagen, wenn Sie nicht dazu berechtigt sind, den Besitzer und die Zugriffsrechte des Verzeichnisses auf dem entfernten Server zu ändern.
+ .
+ Falls das passiert, ändern Sie die Zugriffsrechte auf dem NFS-Server oder fragen Sie den Administrator des Servers, dies für Sie zu tun.
+Description-es.UTF-8: «/var/lib» no está en una unidad de disco local
+ Aegis necesita que el propietario del directorio «/var/lib/aegis» sea «sys.sys» y tenga activado el bit «set-gid», y el grupo tenga permisos de escritura.
+ .
+ Su directorio «/var/lib» está en una partición remota, posiblemente en un servidor NFS. Esto puede causar que la postinstalación falle, ya que el script puede que no tenga permisos para cambiar el propietario y/o los permisos del directorio en el servidor remoto.
+ .
+ Si esto ocurre, cambie los permisos del servidor NFS, o pídale al administrador del servidor que los cambie por usted.
+Description-eu.UTF-8: /var/lib ez dago gailu lokal batetan
+ Aegis-ek /var/lib/aegis sys.sys jabetzakoa, set-gid ezarria izatea eta taldearentzat idazgarria izatea behar du.
+ .
+ Zure /var/lib urruneko partizio batetan dago , ziurrenik NFS zerbitzari batetan. Honek instalazioak huts egitea eragin dezake, script-ak agian ez du urruneko zerbitzarian direktorioan jabetza/baimenak aldatzeko eskubiderik.
+ .
+ Hala gertatzen bada aldatu NFS zerbitzarian baimenak, edo eskatu sistema administratzaileari zuretzat egiteko.
+Description-fi.UTF-8: /var/lib ei ole paikallisella levyllä
+ Aegis vaatii, että hakemiston /var/lib/aegis omistaa sys.sys, ryhmällä on kirjoitusoikeudet ja hakemistolla on asetus set-gid.
+ .
+ Hakemisto /var/lib on etälevyllä, todennäköisimmin NFS-palvelimella. Tämän takia postinstin ajo saattaa epäonnistua, koska komentosarjalla ei välttämättä ole oikeuksia muuttaa etäpalvelimella olevan hakemiston omistajaa tai oikeuksia.
+ .
+ Jos näin tapahtuu, muuta NFS-palvelimen asetuksia tai pyydä palvelimen ylläpitäjää muuttamaan niitä.
+Description-fr.UTF-8: /var/lib pas sur un disque local
+ Il est indispensable que le répertoire /var/lib/aegis soit la propriété de sys.sys, que le bit « setgid » soit positionné et que le groupe propriétaire puisse y écrire.
+ .
+ Le répertoire /var/lib est situé sur une partition distante, très probablement un serveur NFS. Cela peut faire échouer le script de post-installation car il risque de ne pas avoir les droits nécessaires pour modifier les permissions ou le propriétaire du répertoire sur le serveur distant.
+ .
+ Si cela se produit, veuillez modifier les permissions sur le serveur NFS ou demander à son administrateur de faire cette modification pour vous.
+Description-it.UTF-8: /var/lib non si trova su un drive locale.
+ Aegis richiede che /var/lib/aegis sia di sys.sys, che sia impostato il bit di gid e che sia scrivibile dal gruppo.
+ .
+ /var/lib si trova su una partizione remota, molto probabilmente un server NFS. Questo potrebbe causare un errore nel postinst, dal momento che lo script può non disporre dei privilegi per cambiare proprietario/permessi della directory sul server remoto.
+ .
+ Se ciò accadesse, cambiare i permessi sul server NFS, oppure richiedere all'amministratore di farlo.
+Description-ja.UTF-8: ローカルドライブに /var/lib が存在していません
+ aegis は /var/lib/aegis の権限が sys.sys となっているのに加えて set-gid され、グループによる書き込みが可能 (group writable) になるのが必要です。
+ .
+ /var/lib/aegis がリモートのパーティションにあります。大抵の場合は NFS サーバです。スクリプトがリモートサーバ上のディレクトリの所有者・パーミッションを変更する権限を持っていないと、postinst が失敗します。
+ .
+ この場合、NFSサーバ上のパーミッションを変更するか、変更をサーバ管理者に依頼してください。
+Description-pt.UTF-8: /var/lib não está num disco local
+ O Aegis precisa que o /var/lib/aegis pertença a sys.sys, que tenha a 'set-gid' activa e que o seu grupo possa lá escrever.
+ .
+ O seu /var/lib encontra-se numa partição remota, muito provavelmente num servidor NFS.  Isto pode ser causar falha do 'postinst', pois o script pode não ter permissão para mudar dono/permissões do directório no servidor remoto.
+ .
+ Se isto acontecer, altere as permissões no servidor NFS ou peça ao administrador do servidor para o fazer por si.
+Description-pt_BR.UTF-8: /var/lib não está em um disco local.
+ O Aegis requer que /var/lib/aegis seja de propriedade do usuário sys e do grupo sys (sys.sys), esteja com o bit sgid habilitado, e tenha permissão de escrita para o grupo.
+ .
+ Seu diretório /var/lib está em uma partição remota, provavelmente em um servidor NFS. Isso pode fazer com que o script de pós-instalação do pacote falhe, uma vez que o mesmo pode não ter permissão de modificar o proprietário/permissões do diretório no servidor remoto.
+ .
+ Caso isso aconteça, modifique as permissões no servidor NFS, ou peça ao administrador do servidor para fazê-lo para você.
+Description-ru.UTF-8: /var/lib находится не на локальном диске
+ Для aegis необходимо, чтобы /var/lib/aegis принадлежал sys.sys с установленным set-gid и разрешением на запись группе.
+ .
+ Каталог /var/lib находится не на локальном разделе, скорее всего на NFS-сервере. Это может вызвать ошибку сценария postinst, так как невозможно изменить права/владельца каталога на удалённом сервере.
+ .
+ Если это случится, измените права доступа на NFS сервере самостоятельно или попросите администратора.
+Description-sv.UTF-8: /var/lib finns inte på en lokal enhet.
+ Aegis kräver att /var/lib/aegis ägs av sys.sys och är satt till set-gid och skrivbar för gruppen.
+ .
+ Din /var/lib finns på en fjärrpartition, antagligen en NFS-server. Detta kan skapa problem för skriptet som körs efter installation eftersom vi kanske inte har rättigheter att ändra ägare/rättigheter på mappen på den fjärrservern.
+ .
+ Om detta inträffar, ändra rättigheterna på NFS-servern eller fråga serveradministratören om denna kan göra det åt dig.
+Description-vi.UTF-8: /var/lib không nằm trên một đĩa cục bộ
+ Trình aegis cần thiết sys.sys là người sở hữu /var/lib/aegis mà set-gid và cho phép nhóm ghi nó.
+ .
+ /var/lib của bạn nằm trong một phân vùng ở xa, rất có thể là một máy phục vụ NFS. Trường hợp này có thể gây ra tiến trình cài đặt cuối cùng không chạy được, vì văn lệnh có lẽ không có quyền sửa đổi quyền hạn hay chủ của thư mục trên máy phục vụ ở xa.
+ .
+ Nếu nó xảy ra thì bạn hãy thay đổi quyền truy cập máy chủ NFS, hoặc xin quản trị hệ thống làm như thế.
+Description-zh_TW.UTF-8: /var/lib 不是在本地磁碟上
+ Aegis 需要 /var/lib/aegis 設定擁有者為 sys.sys 與 set-gid，並開放群組寫入權限。
+ .
+ 您的 /var/lib 位在遠端，可能是 NFS 伺服器。這會導致 postinst 失敗，因為此腳本沒有權限更改遠端目錄的擁有者與權限設定。
+ .
+ 如果真的失敗了，請手動更改 NFS 伺服器上的權限，或是請該伺服器的管理員幫忙。

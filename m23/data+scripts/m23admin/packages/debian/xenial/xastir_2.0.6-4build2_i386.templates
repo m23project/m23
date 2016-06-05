@@ -1,0 +1,73 @@
+
+Template: xastir/install-setuid
+Type: boolean
+Default: false
+Description: Should non-superusers be able to use native AX.25 interfaces?
+ Xastir can be installed in a way that allows members of the "xastir-ax25"
+ system group to use a native Linux AX.25 interface from within Xastir.
+ Where available this configuration uses Linux capabilities in order to
+ limit the process's privileges to only those required, falling back on
+ installing the binary setuid where Linux capabilities are not available.
+ .
+ This is recommended over the alternative of running Xastir directly as
+ root, but enabling it may be a security risk, so it is disabled by
+ default. If in doubt, or if you do not intend to use native AX.25
+ interfaces (using a serial TNC or Internet connection instead), it is
+ suggested to leave it disabled.
+ .
+ For more detailed information please see
+ /usr/share/doc/xastir/README.Debian.
+Description-da.UTF-8: Skal andre end superbrugere kunne bruge standardgrænseflader for AX.25?
+ Xastir kan installeres på en måde, som giver medlemmer af systemgruppen »xastir-ax25« mulighed for at bruge en standardgrænseflade for Linux AX.25 inde fra Xastir. Hvor tilgængelig bruger denne konfiguration Linuxfunktioner for at begrænse processernes privilegier til dem krævet, og som reserve installere den binære setuid, hvor Linuxfunktioner ikke er tilgængelige.
+ .
+ Dette anbefales frem for alternativet med at køre Xastir direkte som administrator (root), men aktivering af det kan udgøre en sikkerhedsmæssig risiko, så det er deaktiveret som standard. Hvis i tvivl, eller hvis du ikke skal bruge standardgrænseflader for AX.25 (brug af en seriel TNC eller internetforbindelse i stedet), så anbefales det at holde den deaktiveret.
+ .
+ For yderligere detaljeret information se /usr/share/doc/xastir/README.Debian.
+Description-de.UTF-8: Sollen Nichtsuperuser imstande sein, systemeigene AX.25-Schnittstellen zu verwenden?
+ Xastir kann auf eine Weise installiert werden, die es Mitgliedern der Systemgruppe »xastir-ax25« gestattet, systemeigene Linux-AX.25-Schnittstellen aus Xastir heraus zu benutzen. Wo sie verfügbar sind, verwendet diese Konfiguration Linux-Fähigkeiten, um die Rechte des Prozesses auf das Nötigste zu beschränken und greift auf die Installation von Setuid zurück, falls diese nicht verfügbar sind.
+ .
+ Dies wird gegenüber der Alternative, Xastir direkt als Root auszuführen, empfohlen. Es zu aktivieren kann jedoch ein Sicherheitsrisiko darstellen, weswegen es standardmäſig deaktiviert ist. Falls Sie sich nicht sicher sind oder keine systemeigenen AX.25-Schnittstellen verwenden möchten (weil Sie stattdessen serielles TNC oder eine Internetverbindung benutzen), wird geraten, es deaktiviert zu lassen.
+ .
+ Bitte entnehmen Sie /usr/share/doc/xastir/README.Debian weitere Einzelheiten.
+Description-es.UTF-8: ¿Se debería permitir el uso de interfaces nativas AX.25 a los usuarios sin privilegios de administrador?
+ Puede instalar Xastir para permitir que los miembros del grupo «xastir-ax25» utilicen una interfaz nativa Linux AX.25 en Xastir. En entornos donde esta opción se encuentre disponible, esta configuración utilizará las capacidades de Linux para limitar los privilegios del proceso únicamente a aquéllos que sean necesarios, de lo contrario se instalará el binario con una configuración «setuid» cuando las capacidades de Linux no estén disponibles.
+ .
+ Esta opción es preferible en lugar de ejecutar Xastir directamente como root, pero si se activa puede implicar un riesgo de seguridad, por lo que está desactivada de manera predeterminada. En caso de duda, o si no va a utilizar interfaces nativas AX.25 (p. ej., si va a usar una conexión serie TNC o una conexión a Internet en su lugar), se recomienda dejarlo desactivado.
+ .
+ Para obtener información más detallada consulte «/usr/share/doc/xastir/README.Debian».
+Description-fr.UTF-8: Faut-il autoriser les utilisateurs non privilégiés à utiliser les interfaces AX.25 ?
+ Xastir peut être installé de manière à ce que les membres du groupe système « xastir-ax25 » soient autorisés à utiliser l'interface native Linux AX.25. Lorsque c'est possible, cette configuration se sert des possibilités de Linux pour limiter les privilèges du processus à ceux requis. Sur des systèmes non Linux, les binaires sont installés pour s'exécuter avec les privilèges du superutilisateur (« setuid »).
+ .
+ Cette configuration est recommandée par rapport à l'alternative consistant à exécuter Xastir en tant que superutilisateur (« root »), mais son activation peut introduire un risque de sécurité, par conséquent elle est désactivée par défaut. Dans le doute ou si vous n'avez pas l'intention d'utiliser l'interface native AX.25 (par exemple en utilisant à la place un contrôleur de nœud de terminal en série - « serial TCN » - ou une connection internet), il est conseillé de la laisser désactivée.
+ .
+ Pour davantage d'information, veuillez lire /usr/share/doc/xastir/README.Debian.
+Description-it.UTF-8: Permettere ai non-superutenti di usare le interfacce AX.25 native?
+ Xastir può essere installato in modo da permettere ai membri del gruppo di sistema «xastir-ax25» di usare un'interfaccia nativa Linux AX.25 dall'interno di Xastir. Dove possibile, questa configurazione usa le «capabilities» Linux allo scopo di limitare i privilegi dei processi per usare solo quelli necessari, ripiegando sull'installazione del binario con bit setuid impostato dove le «capabilities» Linux non sono disponibili.
+ .
+ Questa è l'impostazione raccomandata rispetto all'alternativa di eseguire Xastir direttamente come root, ma abilitarla può essere un rischio per la sicurezza perciò è in modo predefinito disabilitata. Se si è in dubbio o non si pensa di usare le interfacce AX.25 native (usando invece una connessione Internet o TNC seriale) è suggerito lasciarla disabilitata.
+ .
+ Per informazioni più dettagliate vedere /usr/share/doc/xastir/README.Debian.
+Description-nl.UTF-8: Moeten niet-geprivilegieerde gebruikers systeemeigen AX.25-interfaces kunnen gebruiken?
+ Xastir kan zodanig geïnstalleerd worden dat leden van de systeemgroep "xastir-ax25" in staat gesteld worden om vanuit Xastir een systeemeigen Linux AX.25-interface te gebruiken. Als de functionaliteit van Linux capabilities beschikbaar is, maakt deze configuratie daarvan gebruik om de privileges van het proces te beperken tot het strikt noodzakelijke. Is die functionaliteit niet aanwezig, dan wordt het uitvoerbaar bestand zodanig geïnstalleerd dat het via setuid steeds met de rechten van systeembeheerder uitgevoerd wordt.
+ .
+ Deze configuratie valt te verkiezen boven het alternatief dat erin bestaat om Xastir rechtstreeks als systeembeheerder uit te voeren. Maar omdat deze configuratie ook veiligheidsrisico's inhoudt, wordt ze standaard niet geactiveerd. Indien u twijfelt, of indien u niet zinnens bent om systeemeigen AX.25-interfaces te gebruiken (maar eerder een seriële TNC of een internetverbinding), raden we aan om ze uitgezet te laten.
+ .
+ Raadpleeg voor meer informatie /usr/share/doc/xastir/README.Debian.
+Description-pt.UTF-8: Deverão os não-super-utilizadores poder usar interfaces nativas AX.25?
+ O xastir pode ser instalado num modo que permite aos membros do grupo de sistema "xastir-ax25" usar uma interface Linux AX.25 nativa de dentro do xastir. Onde disponível, esta configuração usa as capacidades de Linux de modo a limitar os privilégios do processo a apenas aqueles necessários. e recorrendo à instalação do binário setuid onde as capacidades de Linux não estão disponíveis.
+ .
+ Isto é recomendado à alternativa de correr o Xastir directamente como root, mas activa-lo pode ser um risco para a segurança, então vem desactivado por predefinição. Em caso de dúvidas, ou se não pretender usar interfaces AX.25 nativas (usando um TNC série ou ligação à Internet em vez disso), é sugerido que o deixe desactivado.
+ .
+ Para informação mais detalhada por favor veja /usr/share/doc/xastir/README.Debian.
+Description-pt_BR.UTF-8: Deverão não-superusuários serem capazes de usar interfaces AX.25 nativas?
+ O Xastir pode ser instalado de uma maneira que permita a membros do grupo de sistema "xastir-ax25" usar uma interface AX.25 nativa do Linux de dentro do Xastir. Essa configuração usa as "capabilities" do Linux, quando esse recurso estiver disponível, para limitar os privilégios do processo para apenas aqueles necessários e, quando as "capabilities" do Linux não estiverem disponíveis, instala o binário com "setuid" habilitado.
+ .
+ Essa opção é recomendada ao invés da alternativa de executar o Xastir diretamente como root, mas habilitá-la pode ser um risco de segurança, por isso é desabilitada por padrão. Em caso de dúvida, ou se você não pretende usar interfaces AX.25 nativas (usando ao invés disso um TNC serial ou uma conexão Internet), é sugerido deixar essa opção desabilitada.
+ .
+ Para informação mais detalhada, por favor, leia /usr/share/doc/xastir/README.Debian.
+Description-ru.UTF-8: Разрешить использование родных интерфейсов AX.25 непривилегированным пользователям?
+ Xastir может быть установлен таким образом, что члены системной группы «xastir-ax25» смогут использовать родной интерфейс Linux AX.25 в Xastir. При такой настройке где только возможно используются мандаты Linux для ограничения прав процесса до необходимых. При недоступности мандатов Linux выбирайте обычную установку исполняемого файла с setuid.
+ .
+ Это рекомендуемый способ запуска Xastir вместе работы с правами root, но включение может быть небезопасно, поэтому по умолчанию не используется. Если сомневаетесь или не будете использовать родные интерфейсы AX.25 (вместо них будет использоваться последовательное подключение TNC или Интернет), то оставьте выключенным.
+ .
+ Дополнительную информацию можно найти в файле /usr/share/doc/xastir/README.Debian.

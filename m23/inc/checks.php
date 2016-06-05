@@ -575,7 +575,7 @@ function CHECK_letFWDie($dieMessage)
 	foreach (debug_backtrace() as $debug)
 	{
 		if (strpos($debug['function'],"CHECK_") === false)
-			$msg.="\n<li>$debug[function](".implode(",",$debug['args']).")@$debug[file]:$debug[line]</li>";
+			$msg.="\n<li>$debug[function](".var_export($debug['args'],true).")@$debug[file]:$debug[line]</li>";
 	}
 	$msg .= "\n</ol>\n";
 	

@@ -1,0 +1,177 @@
+Template: mason/newrulepolicy
+Type: select
+Choices: accept, reject, deny
+Choices-cs.UTF-8: povolit, odmítnout, zakázat
+Choices-da.UTF-8: accepter, afvis, nægt
+Choices-de.UTF-8: akzeptieren, ablehnen, verweigern
+Choices-es.UTF-8: aceptar, rechazar, denegar
+Choices-eu.UTF-8: onartu, baztertu, ukatu
+Choices-fi.UTF-8: hyväksy, hylkää, estä
+Choices-fr.UTF-8: accepter, rejeter, refuser
+Choices-gl.UTF-8: aceptar, rexeitar, denegar
+Choices-it.UTF-8: accettare, respingere, negare
+Choices-nb.UTF-8: tillat, avvis, nekt
+Choices-nl.UTF-8: aanvaarden, verwerpen, niet toelaten
+Choices-no.UTF-8: tillat, avvis, nekt
+Choices-pt.UTF-8: aceitar, rejeitar, recusar
+Choices-pt_BR.UTF-8: aceitar, rejeitar, negar
+Choices-ru.UTF-8: принимать пакеты, отклонять пакеты, отбрасывать пакеты
+Choices-sv.UTF-8: acceptera, förkasta, neka
+Choices-tr.UTF-8: kabul et, reddet, inkâr et
+Choices-vi.UTF-8: chấp nhận, bác bỏ, từ chối
+Choices-zh_CN.UTF-8: accept(接受), reject(拒绝), deny(禁止)
+Default: accept
+Description: Default action for new firewall rules:
+ The new rule default action specifies how Mason will handle unknown packets, when the firewall is in learning mode.
+ .
+ The "accept" action will allow the packet through.  "Reject" will stop the
+ packet with a rejection reply, while "deny" will drop the packet silently.
+Description-cs.UTF-8: Výchozí akce pro nová pravidla firewallu:
+ Výchozí akce pro nové pravidlo firewallu určuje, jak se bude Mason v učícím režimu chovat k neznámým paketům.
+ .
+ Akce „povolit“ paket propustí, akce „odmítnout“ paket zastaví s odpovědí zamítnuto a akce „zakázat“ paket potichu zahodí.
+Description-da.UTF-8: Standardhandling for nye brandmursregler:
+ Den nye regelstandardhandling angiver hvordan Mason vil håndtere ukendte pakker, når brandmuren er i læretilstand.
+ .
+ Handlingen »accepter« vil lade pakken passere, »afvis« vil stoppe pakken med et afvisningssvar, imens »nægt« vil smide pakken væk uden at melde tilbage.
+Description-de.UTF-8: Standard-Aktion für neue Firewall-Regeln:
+ Die Standard-Aktion für neue Regeln gibt an, wie Mason unbekannte Pakete verarbeitet, wenn sich die Firewall im Lernmodus befindet.
+ .
+ Die Aktion »akzeptieren« wird das Paket annehmen. »ablehnen« wird das Paket mit einer ablehnenden Antwort stoppen, während »verweigern« das Paket ohne Rückmeldung verwirft.
+Description-es.UTF-8: Acción predeterminada para las nuevas reglas del cortafuegos:
+ La nueva acción predeterminada de reglas define cómo gestionará Mason los paquetes desconocidos mientras el cortafuegos esté en el modo de aprendizaje.
+ .
+ La acción «aceptar» dejará pasar el paquete, «rechazar» rechazará el paquete con una respuesta de rechazo, mientras que «denegar» desechará el paquete silenciosamente.
+Description-eu.UTF-8: Ekintza lehenetsia suebakien arau berrientzako:
+ Arau berriaren ekintza lehenetsiak Mason-ek pakete ezezagunak nola kudeatuko dituen zehazten du, suebakia ikasteko moduan dagoenean.
+ .
+ "Onartu" ekintzak paketeari aurrera jarraitze utziko dio. "Baztertu" hautatuz paketea geldituko du baztertu egin dela erantzunez. "Ukatu" erabiltzen bada, paketea jaregingo du erantzunik bidali gabe.
+Description-fi.UTF-8: Uusien palomuurisääntöjen oletustoiminto:
+ Uusien sääntöjen oletustoiminto määrittelee miten Mason käsittelee tuntemattomat paketit, kun palomuuri on opettelutilassa.
+ .
+ Toiminto ”hyväksy” päästää paketit läpi, toiminto ”hylkää” pysäyttää paketit lähettäen viestin hylkäämisestä vastauksena ja ”estä” vain pysäyttää paketit hiljaisesti.
+Description-fr.UTF-8: Action par défaut pour les nouvelles règles du pare-feu :
+ L'action par défaut de la nouvelle règle indique comment Mason gère les paquets inconnus lorsque le pare-feu est en mode apprentissage.
+ .
+ L'action « accepter » laisse passer le paquet, « rejeter » le rejette en émettant une réponse de rejet, enfin « refuser » le rejette silencieusement.
+Description-it.UTF-8: Azione predefinita per nuove regole del firewall:
+ L'azione predefinita per le nuove regole del firewall specifica come Mason tratterà i pacchetti sconosciuti quando il firewall è in modalità di apprendimento.
+ .
+ La scelta «accettare» consentirà la trasmissione del pacchetto, «respingere» arresterà il pacchetto con una risposta di rifiuto, mentre «negare» cestinerà il pacchetto senza alcuna comunicazione.
+Description-nl.UTF-8: Standaardactie voor nieuwe firewall-regels:
+ De nieuw-standaardactie geeft aan hoe Mason zal omgaan met onbekende pakketten wanneer de firewall zich in leermodus bevindt.
+ .
+ De 'aanvaarden'-actie laat het pakket door, 'verwerpen' houdt het pakket tegen en stuurt een overeenkomstig antwoord terug, terwijl 'niet toelaten' het pakket stilletjes weggooit.
+Description-pt.UTF-8: Acção predefinida para as novas regras de firewall:
+ A acção predefinida de nova regra especifica como o Mason irá lidar com pacotes desconhecidos, quando a firewall está em modo de aprendizagem.
+ .
+ A acção "aceitar" irá permitir o pacote continuar. "Rejeitar" irá parar o pacote com uma resposta de rejeição, enquanto que "recusar" irá largar o pacote silenciosamente.
+Description-pt_BR.UTF-8: Ação padrão para novas regras de firewall:
+ A ação padrão para nova regra especifica como o Mason manipulará pacotes desconhecidos quando o firewall estiver no modo de aprendizado.
+ .
+ A ação "aceitar" permitirá passar o pacote. "Rejeitar" parará o pacote com uma resposta de rejeição, enquanto "negar" descartará o pacote silenciosamente.
+Description-ru.UTF-8: Действие по умолчанию для новых правил межсетевого экрана:
+ Действие по умолчанию для нового правила определяет, как Mason будет поступать с неизвестными пакетами при работе межсетевого экрана в режиме обучения.
+ .
+ Действие "принимать" позволяет пропустить пакеты. "Отклонять" -- передача пакета останавливается и посылается ответ об остановке, а "отбрасывать" -- пакет просто выбрасывается и ничего не сообщается.
+Description-sv.UTF-8: Standardåtgärd för nya brandsväggsregler:
+ Standardåtgärden anger hur Mason ska hantera okända paket när brandväggen är i upplärningsläget.
+ .
+ "Acceptera" släpper igenom paketet. "Förkasta" kastar paketet och skickar ett svar medans "neka" kastar paketet utan att informera någon.
+Description-vi.UTF-8: Hành vi mặc định cho các quy tắc bức tường lửa mới:
+ Hành vi mặc định quy tắc mới ghi rõ Mason quản lý gói tin lạ như thế nào khi bức tường lửa ở chế độ luyện.
+ .
+ Hành động « chấp nhận » thì cho phép gói tin đến vào. « Bác bỏ » ngừng gói tin với đáp ứng tương ứng, còn « từ chối » bỏ gói tin mà không xuất thông điệp.
+Description-zh_CN.UTF-8: 新防火墙规则的默认行为：
+ 新规则的默认行为，指定防火墙在学习模式时，Mason 如何处理未知包。
+ .
+ "Accept" 行为将允许包通过。"Reject" 将阻止包，同时带有一个拒绝回应，而 "deny" 将悄悄地丢弃包。
+
+Template: mason/defaultpolicy
+Type: select
+Choices: accept, reject, deny
+Choices-cs.UTF-8: povolit, odmítnout, zakázat
+Choices-da.UTF-8: accepter, afvis, nægt
+Choices-de.UTF-8: akzeptieren, ablehnen, verweigern
+Choices-es.UTF-8: aceptar, rechazar, denegar
+Choices-eu.UTF-8: onartu, baztertu, ukatu
+Choices-fi.UTF-8: hyväksy, hylkää, estä
+Choices-fr.UTF-8: accepter, rejeter, refuser
+Choices-gl.UTF-8: aceptar, rexeitar, denegar
+Choices-it.UTF-8: accettare, respingere, negare
+Choices-nb.UTF-8: tillat, avvis, nekt
+Choices-nl.UTF-8: aanvaarden, verwerpen, niet toelaten
+Choices-no.UTF-8: tillat, avvis, nekt
+Choices-pt.UTF-8: aceitar, rejeitar, recusar
+Choices-pt_BR.UTF-8: aceitar, rejeitar, negar
+Choices-ru.UTF-8: принимать пакеты, отклонять пакеты, отбрасывать пакеты
+Choices-sv.UTF-8: acceptera, förkasta, neka
+Choices-tr.UTF-8: kabul et, reddet, inkâr et
+Choices-vi.UTF-8: chấp nhận, bác bỏ, từ chối
+Choices-zh_CN.UTF-8: accept(接受), reject(拒绝), deny(禁止)
+Default: accept
+Description: Default action for rulesets:
+ The default action specifies how Mason will handle unknown packets, when the firewall is not in learning mode.
+ .
+ Again, "accept" allows the packet through, "reject" drops the packet with
+ a reply, and "deny" silently drops the packet.
+Description-cs.UTF-8: Výchozí akce:
+ Výchozí akce určuje, jak se bude Mason chovat k neznámým paketům při běžné práci (tj. ne v učícím režimu).
+ .
+ Analogicky: „povolit“ paket propustí, „odmítnout“ paket zahodí s odpovědí zamítnuto a „zakázat“ paket zahodí, aniž by o tom dal protistraně vědět.
+Description-da.UTF-8: Standardhandling for regelsæt:
+ Standardhandlingen angiver hvordan Mason vil håndtere ukendte pakker, når brandmuren ikke er i læretilstand.
+ .
+ Igen vil handlingen »accepter« lade pakken passere, »afvis« vil stoppe pakken med et afvisningssvar, mens »nægt« vil smide pakken ud uden at melde tilbage.
+Description-de.UTF-8: Standard-Aktion für Regelsätze:
+ Die Standard-Aktion legt fest, wie Mason unbekannte Pakete behandelt, wenn sich die Firewall nicht im Lernmodus befindet.
+ .
+ Auch hier wird »akzeptieren« das Paket annehmen, »ablehnen« das Paket mit einer ablehnenden Antwort stoppen und »verweigern« das Paket ohne Rückmeldung verwerfen.
+Description-es.UTF-8: Acción predeterminada para el conjunto de reglas:
+ La acción predeterminada define cómo gestionará Mason los paquetes desconocidos mientras el cortafuegos no esté en el modo de aprendizaje.
+ .
+ De nuevo, «aceptar» permite pasar el paquete, «rechazar» rechaza el paquete con una respuesta, y «denegar» rechaza el paquete silenciosamente.
+Description-eu.UTF-8: Arau multzoen ekintza lehenetsia:
+ Arau berriaren ekintza lehenetsiak Mason-ek pakete ezezagunak nola kudeatuko dituen zehazten du, suebakia ikasteko moduan ez dagoenean.
+ .
+ Berriro, "Onartu" ekintzak paketeari aurrera jarraitze utziko dio. "Baztertu" hautatuz paketea geldituko du baztertu egin dela erantzunez. "Ukatu" erabiltzen bada, paketea jaregingo du erantzunik bidali gabe.
+Description-fi.UTF-8: Sääntöjoukkojen oletustoiminto:
+ Oletustoiminto määrittelee miten Mason käsittelee tuntemattomat paketit, kun palomuuri ei ole opettelutilassa.
+ .
+ Jälleen toiminto ”hyväksy” päästää paketit läpi, ”hylkää” pysäyttää paketit lähettäen vastauksen ja ”estä” pysäyttää paketit hiljaisesti.
+Description-fr.UTF-8: Action par défaut pour les jeux de règles :
+ L'action par défaut indique comment Mason gère les paquets inconnu lorsque le pare-feu n'est pas en mode apprentissage.
+ .
+ L'action « accepter » laisse passer le paquet, « rejeter » le rejette en émettant une réponse de rejet et « refuser » le rejette silencieusement.
+Description-it.UTF-8: Azione predefinita per i set di regole:
+ L'azione predefinita specifica come Mason tratterà i pacchetti sconosciuti quando il firewall non è in modalità di apprendimento.
+ .
+ Anche qui, «accettare» consentirà la trasmissione del pacchetto, «respingere» arresterà il pacchetto con una risposta di rifiuto, mentre «negare» cestinerà il pacchetto senza alcuna comunicazione.
+Description-nl.UTF-8: Standaardactie voor regelsets:
+ De standaardactie geeft aan hoe Mason zal omgaan met onbekende pakketten wanneer de firewall zich niet in leermodus bevindt.
+ .
+ Ook hier betekent 'aanvaarden' dat het pakket doorgelaten wordt, 'verwerpen' dat het pakket tegengehouden wordt en een overeenkomstig antwoord teruggestuurd, en 'niet toelaten' dat het pakket stilletjes weggegooid wordt.
+Description-pt.UTF-8: Acção predefinida para o conjunto de regras:
+ A acção predefinida especifica como o Mason irá lidar com pacotes desconhecidos, quando a firewall não está em modo de aprendizagem.
+ .
+ De novo, "aceitar" permite o pacote continuar, "rejeitar" larga o pacote com uma resposta, e "recusar" larga o pacote silenciosamente.
+Description-pt_BR.UTF-8: Ação padrão para conjuntos de regras:
+ A regra padrão especifica como o Mason manipulará pacotes desconhecidos quando o firewall não estiver no modo de aprendizado.
+ .
+ Novamente, "aceitar" permite passar o pacote, "rejeitar" descarta o pacote com uma resposta, e "negar" descarta silenciosamente o pacote.
+Description-ru.UTF-8: Действие по умолчанию для наборов правил:
+ Действие по умолчанию определяет, как Mason будет поступать с неизвестными пакетами при работе межсетевого экрана не в режиме обучения.
+ .
+ Опять же, действие "принимать" позволяет пропустить пакеты. "Отклонять" -- передача пакета останавливается и посылается ответ об остановке, а "отбрасывать" -- пакет просто выбрасывается и ничего не сообщается.
+Description-sv.UTF-8: Standardåtgärd för regeluppsättning:
+ Standardåtgärden anger hur Mason ska hantera okända paket när brandväggen inte är i upplärningsläget.
+ .
+ Igen, "acceptera" släpper igenom paketet, "förkasta" kastar paketet och skickar ett svar och "neka" kastar paketet utan att informera någon.
+Description-vi.UTF-8: Hành vi mặc định cho bộ quy tắc:
+ Hành vi mặc định quy tắc mới ghi rõ Mason quản lý gói tin lạ như thế nào khi bức tường lửa không phải ở chế độ luyện.
+ .
+ Lại có ba tuỳ chọn: « chấp nhận » cho phép gói tin đến vào, « bác bỏ » ngừng gói tin với đáp ứng tương ứng, còn « từ chối » bỏ gói tin mà không xuất thông điệp.
+Description-zh_CN.UTF-8: 规则集的默认行为：
+ 默认行为，指定防火墙不在学习模式时，Mason 如何处理未知包。
+ .
+ 同样，"accept" 行为允许包通过，"reject" 将阻止包，同时带有一个拒绝回应，"deny" 将悄悄地丢弃包。

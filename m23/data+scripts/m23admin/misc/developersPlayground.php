@@ -21,8 +21,15 @@
 	
 
 print("<pre>");
-	print(serialize(PKG_checkBaseSysSignature('jessie', 'amd64')));
+	$argsA = array(0);
+
+	print(HELPER_xargsRecursive('echo', $argsA));
+
+// 	MAIL_sendMail("hauke@pc-kiel.de", "hallo", "aes");
+// 	print(getServerNetwork());
 // 	CLIENT_executeOnClientOrIP('m23deb8amd64', 'm23install', 'echo lala > /tmp/lala; sleep 10');
+
+
 print("</pre>\n");
 	HTML_showTableEnd();
 	HTML_showFormEnd();

@@ -68,9 +68,21 @@ echo('#!/bin/bash
 
 			$error=false;
 			CLIENT_recalculateStatusBar($client);
-			if (UPDATE_running() || (($package == "m23fdiskFormat") && empty($options['release']) && ('halfSister' != $distr)))
+			
+			$waitForFinishedUpdate = UPDATE_running();
+			$waitForSelectionOfDistribution = (($package == "m23fdiskFormat") && empty($options['release']) && ('halfSister' != $distr));
+			$waitForFinishedDownloadOfBaseSys = (!PKG_downloadBaseSysTom23Server($options['release'], $options['arch']));
+
+			if ($waitForFinishedUpdate || $waitForSelectionOfDistribution || $waitForFinishedDownloadOfBaseSys)
 			{
-				echo("sleep 60\n");
+				if ($waitForFinishedUpdate)
+					$waitMsg = 'Finishing of the m23 server update';
+				elseif ($waitForSelectionOfDistribution)
+					$waitMsg = 'Selection of distribution in the m23 webinterface';
+				elseif ($waitForFinishedDownloadOfBaseSys)
+					$waitMsg = 'Finishing of the download of the distribution base system';
+
+				echo("echo Waiting for:\necho $waitMsg\nsleep 60\n");
 				executeNextWork();
 			}
 			else

@@ -1,0 +1,99 @@
+
+Template: spamprobe/db53_upgrade
+Type: note
+Description: Upgrading to Berkeley DB 5.3
+ As of spamprobe 1.4d-12.1, the database format changed
+ to Berkeley DB 5.3 and spamprobe is no longer able to modify
+ databases using an older format.
+ .
+ Since there is no general way to locate all existing databases, no
+ automatic upgrade is attempted. A manual upgrade path using
+ spamprobe export/import is outlined in the 'DATABASE MAINTENANCE' section
+ of the spamprobe(1) manual page.
+ .
+ All spamprobe users on this system should be informed of this change
+ and advised to read the README.Debian file.
+ .
+ To avoid this issue at next Berkeley DB migration, converting to
+ another data file format, like 'hash', is recommended.  See
+ documentation of the -d option in spamprobe(1) man page.
+Description-da.UTF-8: Opgraderer til Berkely DB 5.3
+ Fra og med spamprobe 1.4d-12.1 er databaseformatet ændret til Berkely DB 5.3, og spamprobe er ikke længere i stand til at ændre databaser, der bruger et ældre format.
+ .
+ Eftersom der ikke er en generel metode, man kan bruge, som finder alle eksisterende databaser, så vil jeg ikke forsøge at opgradere automatisk. En manuel opgraderingsmetode ved hjælp af spamprobe eksport/import er beskrevet i afsnittet »DATABASE MAINTENANCE« i manualen spamprobe(1).
+ .
+ Alle spamprobebrugere på dette system bør informeres om denne ændring og rådes til at læse filen README.Debian.
+ .
+ For at undgå dette problem ved næste Berkeley DB-migrering, så anbefales det at konvertere til et andet datafilformat såsom »hash«. Se dokumentationen for tilvalget -d i manualsiden for spamprobe(1).
+Description-de.UTF-8: Upgrade auf Berkeley DB 5.3
+ Mit Spamprobe 1.4d-12.1 änderte sich das Datenbankformat auf Berkeley DB 5.3 und Spamprobe ist nicht mehr in der Lage, Datenbanken in älteren Formaten zu bearbeiten.
+ .
+ Da es keinen allgemeingültigen Weg gibt, um alle existierenden Datenbanken aufzuspüren, wird kein automatisches Upgrade versucht. Ein manueller Upgrade-Pfad mittels export/import von Spamprobe wird im Abschnitt »DATABASE MAINTENANCE« der Handbuchseite von spamprobe(1) skizziert.
+ .
+ Alle Spamprobe-Benutzer auf diesem System sollten über diese Änderung informiert und angehalten werden, die Datei README.Debian zu lesen.
+ .
+ Um dieses Problem bei der nächsten Berkeley-DB-Migration zu vermeiden, wird empfohlen, auf ein anderes Datendateiformat, wie »hash«, zu konvertieren. Lesen Sie die Dokumentation der Option »-d« in der Handbuchseite von spamprobe(1).
+Description-fr.UTF-8: Mise à jour vers Berkeley DB 5.3
+ À partir de la version 1.4d-12.1 de spamprobe, le format de la base de données est devenu le format Berkeley 5.3. Par conséquence, spamprobe ne peut plus modifier les bases de données existantes si elles utilisent un format antérieur.
+ .
+ Comme il n'existe pas de méthode générique pour rechercher toutes les bases de données existantes, aucune mise à jour automatique ne sera tentée. Une procédure manuelle de mise à jour utilisant les fonctions d'import et export de spamprobe est documentée dans la section « DATABASE MAINTENANCE » (maintenance des bases de données) de la page de manuel de spamprobe(1).
+ .
+ Il est nécessaire d'informer tous les utilisateurs de spamprobe sur ce système afin qu'ils consultent le fichier README.Debian.
+ .
+ Pour éviter de recommencer ce processus à chaque changement de version de la base de données Berkeley, il est recommandé d'utiliser un autre format de fichier de données, par exemple « hash ». Vous pouvez consulter la documentation de l'option « -d » dans la page de manuel de spamprobe(1).
+Description-it.UTF-8: Aggiornamento a Berkeley DB 5.3
+ Dalla versione 1.4d-12.1 di spamprobe il formato del database è cambiato in Berkeley DB 5.3 e spamprobe non è più in grado di modificare database nel vecchio formato.
+ .
+ Poiché non esiste un metodo generale che permetta di localizzare tutti i database esistenti, non è nemmeno possibile effettuare un aggiornamento automatico. Nella sezione "MANUTENZIONE DEL DATABASE" della pagina man di spamprobe(1) è descritto come effettuare l'aggiornamento manuale del database tramite le operazioni export/import di spamprobe.
+ .
+ Tutti gli utenti di questo sistema che utilizzano spamprobe devono essere informati di questa modifica e devono essere invitati a leggere il file README.Debian.
+ .
+ Per evitare questo problema al prossima migrazione di Berkeley DB, si raccomanda di passare a un diverso formato per i dati, si raccomanda "hash". Consultare la documentazione dell'opzione -d nella pagina man di spamprobe(1).
+Description-ja.UTF-8: Berkeley DB 5.3 へのアップグレード
+ spamprobe 1.4d-12.1 のリリースより、データベースの形式が Berkeley DB 5.3 に変わりました。これにより、spamprobe が以前の形式を使っているデータベースを変更できなくなっています。
+ .
+ 既存のデータベース全てに対処する一般的な方法が無いので、自動的なアップグレードは行われません。spamprobe のエクスポート・インポートを使った手動でのアップグレードについては、spamprobe(1) マニュアルページの 'DATABASE MAINTENANCE' セクションに概略があります。
+ .
+ このシステムを利用しているすべての spamprobe ユーザに対してこの変更について通知し、README.Debian ファイルを読むように勧める必要があります。
+ .
+ 次回、Berkeley DB の移行時にこの問題を避けるには、'hash' などの他のデータファイル形式への変換をお勧めします。spamprobe(1) man ページ中にある -d オプションのドキュメントを参照してください。
+Description-nl.UTF-8: Opwaarderen naar Berkeley DB 5.3
+ Vanaf de uitgave van spamprobe 1.4d-12.1 is de database-indeling gewijzigd naar Berkeley DB 5.3 en kan spamprobe bestaande databases van een oudere indeling niet meer bewerken.
+ .
+ Aangezien er geen algemene manier is om alle aanwezige databases te vinden, wordt niet geprobeerd deze automatisch bij te werken. U kunt handmatig bijwerken met de export/import-mogelijkheden van spamprobe, zoals geschetst in het hoofdstuk 'DATABASE MAINTENANCE' van de spamprobe(1) manpagina.
+ .
+ Alle gebruikers van spamprobe op dit computersysteem dienen op de hoogte te worden gebracht van deze verandering en aangeraden te worden het bestand README.Debian door te lezen.
+ .
+ Om dit probleem bij de volgende Berkeley DB-migratie te vermijden wordt u aangeraden om over te stappen naar een andere bestandsindeling, zoals 'hash'. Zie de documentatie van de -d optie in de manpagina van spamprobe(1).
+Description-pt.UTF-8: A actualizar para Berkeley DB 5.3
+ A partir do spamprobe 1.4d-12.1, o formato da base de dados mudou para o Berkeley DB 5.3 e o spamprobe já não pode modificar bases de dados de formatos mais antigos.
+ .
+ Uma vez que não existe uma forma geral de localizar todas as bases de dados existentes, não será tentada a actualização automática. Um método manual de actualização através da exportação/importação de spamprobe está delineada na secção 'DATABASE MAINTENANCE' do manual do spamprobe(1).
+ .
+ Todos os utilizadores de spamprobe neste sistema devem ser informados desta modificação e aconselhados a ler o ficheiro README.Debian.
+ .
+ Para evitar este problema numa próxima actualização da Berkeley DB, recomenda-se a conversão para um outro formato de dados como o 'hash'. Veja a documentação da opção -d na página do manual do spamprobe(1).
+Description-pt_BR.UTF-8: Atualizando para Berkeley DB 5.3
+ A partir do spamprobe 1.4d-12.1, o formato do banco de dados mudou para o Berkeley DB 5.3 e o spamprobe não é mais capaz de modificar bancos de dados usando o antigo formato.
+ .
+ Como não há uma forma geral de localizar todos os bancos de dados existentes, não tenta-se realizar uma atualização automática. Um caminho de atualização manual usando exportar/importar do spamprobre é explicado na seção 'DATABASE MAINTENANCE' da página de manual do spamprobe(1).
+ .
+ Todos os usuários do spamprobe neste sistema deveriam ser informados dessa mudança e aconselhados a ler o arquivo README.Debian.
+ .
+ Para evitar essa situação na próxima migração do Berkeley DB, é recomendado converter para um outro formato de arquivo de dados, como 'hash'. Veja a documentação da opção -d na página de manual do spamprobe(1).
+Description-ru.UTF-8: Обновление до Berkeley DB 5.3
+ Начиная с версии spamprobe 1.4d-12.1, формат базы данных был изменён на Berkeley DB 5.3, и поэтому spamprobe больше не может изменять базы данных старого формата.
+ .
+ Так как не существует способа обнаружить все существующие базы, то нет способа автоматического обновления. Схема обновления вручную с помощью spamprobe export/import описана в справочной странице spamprobe(1) в разделе «DATABASE MAINTENANCE».
+ .
+ Все пользователи spamprobe в вашей системе должны быть проинформированы об этом изменении и посоветуйте им прочитать файл README.Debian.
+ .
+ Чтобы избежать этой проблемы при следующем изменении формата Berkeley DB, рекомендуется перейти на другой формат, например на «hash». Смотрите документацию к параметру -d в справочной странице spamprobe(1).
+Description-sv.UTF-8: Uppgraderar till Berkeley DB 5.3
+ Från och med spamprobe 1.4d-12.1 har databasformatet ändrats till Berkeley DB 5.3 och spamprobe kan inte modifiera existerande databaser i äldre format.
+ .
+ Eftersom det inte finns något standardsätt att hitta alla databaser kommer ingen automatisk uppgradering att göras.  En manuell uppgradering med spamprobe's export/import är angiven i manualsidan spamprobe(1) under kapitlet 'DATABASE MAINTENANCE'.
+ .
+ Alla som använder spamprobe på detta systemet bör informeras om förändringen och uppmanas att läsa i filen README.Debian.
+ .
+ För att undvika detta problem nästa gång när Berkeley DB-version  ska uppgraderas rekommenderas att byta dataformat, exempelvis till "hash". Läs om flaggan -d i manualsidan för spamprobe(1) .

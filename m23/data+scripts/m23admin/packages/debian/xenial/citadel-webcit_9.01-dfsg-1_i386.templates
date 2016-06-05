@@ -1,0 +1,177 @@
+Template: citadel/WebcitApacheIntegration
+Type: select
+Choices: Apache2, Internal
+Choices-cs.UTF-8: Apache2, Interní
+Choices-da.UTF-8: Apache2, Intern
+Choices-de.UTF-8: Apache2, Intern
+Choices-es.UTF-8: Apache2, Interno
+Choices-eu.UTF-8: Apache2, Barnekoa
+Choices-fi.UTF-8: Apache2, Sisäinen
+Choices-fr.UTF-8: Apache2, Interne
+Choices-gl.UTF-8: Apache2, Interno
+Choices-it.UTF-8: Apache2, Interno
+Choices-ja.UTF-8: Apache2, 内蔵
+Choices-nl.UTF-8: Apache2, Intern
+Choices-pt.UTF-8: Apache2, Interno
+Choices-ru.UTF-8: Apache2, встроенный
+Choices-sv.UTF-8: Apache2, intern
+Choices-vi.UTF-8: Apache2, Nội bộ
+Default: Internal
+Description: Integration with Apache webservers:
+ If you want Webcit to run alongside with one of your other installed
+ Apache webservers, select it from the list, else use Internal to make
+ Webcit use its own HTTP server facilities.
+Description-cs.UTF-8: Integrace s webovými servery Apache:
+ Chcete-li Webcit používat na některém z instalovaných Apache serverů, vyberte jej ze seznamu. Zvolíte-li možnost „Interní“, použije Webcit svůj vlastní HTTP server.
+Description-da.UTF-8: Integration med Apacheinternetservere:
+ Hvis du ønsker at Webcit skal køre sammen med en af dine andre installerede Apacheinternetservere så vælg den fra listen eller brug Intern for at lade Webcit bruge sine egne HTTP-serverfaciliteter.
+Description-de.UTF-8: Integration mit Apache-Webservern:
+ Falls Sie möchten, dass Webcit parallel zu einem Ihrer anderen installierten Apache-Webserver läuft, wählen Sie diesen von der Liste, andernfalls wählen Sie Intern, damit Webcit seine eigenen HTTP-Servereinrichtungen verwendet.
+Description-es.UTF-8: Integración con los servidores web Apache:
+ Si quiere que Webcit se ejecute con uno de sus otros servidores web Apache instalados, escójalo de la lista o use interno para que Webcit utilice su propio servidor de HTTP.
+Description-eu.UTF-8: Apache web zerbitzariekin integrazioa:
+ Zuk webcit instalaturik duzun Apache web zerbitzarietako batekin batera abiarazi nahi baduzu, hautatu berau zerrendatik, bestela barnekoa erabili Webcit-ek bere HTTP zerbitzariaren aukerak erabiltzeko.
+Description-fi.UTF-8: Integraatio Apachen www-palvelimiin:
+ Jos Webcitiä halutaan halutaan ajaa jonkin asennetun Apachen www-palvelimen kautta, valitse se listasta. Muussa tapauksessa valitse ”Sisäinen” ottaaksesi käyttöön Webcitin omat HTTP-palvelintoiminnot.
+Description-fr.UTF-8: Serveur Apache à configurer pour Webcit :
+ Si vous désirez exécuter Webcit en même temps qu'un des serveurs web Apache déjà installés, veuillez choisir celui-ci dans la liste. « Interne » sélectionnera le serveur HTTP intégré à Webcit.
+Description-gl.UTF-8: Integración cos servidores web Apache:
+ Se quere que Webcit funcione cun dos seus servidores Apache instalados, escóllao na lista, ou escolla Interno para facer que Webcit empregue o seu propio servidor HTTP.
+Description-it.UTF-8: Integrazione con i server web Apache:
+ È possibile eseguire Webcit affianco a uno dei server web Apache già installati selezionandolo dall'elenco oppure selezionare "Interno" per usare le funzioni da server HTTP interne di Webcit.
+Description-ja.UTF-8: Apache ウェブサーバとの統合:
+ 他にインストールされている Apache ウェブサーバの 1 つで Webcit を実行したい場合は一覧から選択してください。そうしない場合は Webcit 内蔵の HTTP サーバ機能を使います。
+Description-nl.UTF-8: Integratie met Apache-webservers:
+ Indien u wilt dat Webcit parallel met een van de andere geïnstalleerde Apache-webservers uitgevoerd wordt, kies die dan uit de lijst. Kies anders Intern, waardoor Webcit gebruik zal maken van zijn eigen HTTP-server-voorzieningen.
+Description-pt.UTF-8: Integração com servidores web Apache:
+ Se desejar que o Webcit corra em paralelo com um dos seus outros servidores web Apache instalados, seleccione-o da lista, ou então escolha Interno para que o Webcit use as suas próprias funcionalidades de servidor HTTP.
+Description-ru.UTF-8: Интеграция с веб-серверами Apache:
+ Если вы хотите, чтобы Webcit использовал один из уже установленных в системе веб-серверов Apache, то выберите это из списка, или же используйте встроенный в Webcit HTTP-сервер.
+Description-sv.UTF-8: Integrera med webservern Apache:
+ Om du vill att Webcit ska köras i en av dina förinstallerade Apache webserverar så väljer du denna från listan. Vill du att Webcit ska använda sin egen HTTP-server så väljer du "intern".
+Description-vi.UTF-8: Hợp nhất với trình phục vụ Apache
+ Muôn WebCIT chạy cùng với một của các trình phục vụ Apache khác đã cài đặt thì chọn nó trong danh sách; không thì chọn « Nội bộ » để làm cho WebCIT dùng chức năng phục vụ HTTP riêng của nó.
+
+Template: citadel/WebcitHttpPort
+Type: string
+Default: 8504
+Description: Webcit HTTP port:
+ Select the port which the plain HTTP Webcit server should listen on.
+ Use port 80 if you don't have another webserver running or enter -1 to disable
+ it.
+Description-cs.UTF-8: HTTP port Webcitu:
+ Zadejte port, na kterém má naslouchat interní HTTP server Webcitu. Neběží-li jiný webový server, použijte port 80. Případně můžete zadat -1 a interní HTTP server zakázat.
+Description-da.UTF-8: HTTP-port for Webcit:
+ Vælg porten som den rene HTTP Webcit-server skal lytte på. Brug port 80 hvis du ikke har en anden internetserver kørende eller indtast -1 for at deaktivere den.
+Description-de.UTF-8: HTTP-Port von Webcit:
+ Wählen Sie den Port, an dem der einfache HTTP-Webcit-Server auf Anfragen warten soll. Benutzen Sie Port 80, falls Sie keinen anderen Webserver betreiben oder -1, um ihn zu deaktivieren.
+Description-es.UTF-8: Puerto HTTP de Webcit:
+ Escoja el puerto en el que el servidor de HTTP de Webcit debería escuchar. Utilice el puerto 80 si no tiene otro servidor web ejecutándose o introduzca -1 para desactivarlo.
+Description-eu.UTF-8: Webcit-en HTTP ataka:
+ Hautatu HTTP Webcit zerbitzari lauak zein ataka entzun behar duen. Erabili 80-a ez baduzu beste web-zerbitzaririk abiarazia edo -1 desgaitzeko.
+Description-fi.UTF-8: Webcitin HTTP-portti:
+ Valitse portti, jota Webcitin tavallisen HTTP-palvelimen tulisi kuunnella. Käytä porttia 80, jos käytössä ei ole muita www-palvelimia. Syötä -1 poistaaksesi palvelimen käytöstä.
+Description-fr.UTF-8: Port HTTP pour Webcit :
+ Veuillez choisir le port d'écoute HTTP pour Webcit. Ne choisissez le port 80 que si aucun serveur web n'est déjà en fonction. Indiquez -1 pour désactiver ce réglage.
+Description-gl.UTF-8: Porto HTTP para Webcit:
+ Escolla o porto no que debe escoitar o servidor HTTP simple de Webcit. Empregue o porto 80 se non ten outro servidor web a funcionar, ou -1 para desactivalo.
+Description-it.UTF-8: Porta HTTP per Webcit:
+ Scegliere la porta su cui il semplice server HTTP di Webcit deve mettersi in ascolto. Usare la porta 80 se non sono presenti altri server web oppure -1 per disabilitarlo.
+Description-ja.UTF-8: Webcit の HTTP ポート:
+ Webcit サーバが通常の HTTP を待ち受けるポートを選択してください。他のウェブサーバが動いていない場合はポート 80、無効にする場合は -1 を入力してください。
+Description-nl.UTF-8: HTTP-poort van Webcit:
+ Kies de poort waarop de autonome HTTP-server van Webcit moet luisteren. Kies poort 80 als er geen andere webserver actief is of vul -1 in indien u dit wilt uitschakelen.
+Description-pt.UTF-8: Porto HTTP Webcit:
+ Seleccione o porto, no qual o servidor HTTP webcit deverá escutar. Seleccione o porto 80 se não possuir mais nenhum servidor web a correr ou insira -1 para desabilitar.
+Description-ru.UTF-8: HTTP-порт Webcit:
+ Выберите порт, на котором простой HTTP Webcit сервер должен принимать запросы. Используйте порт 80, если у вас не запущено другого веб-сервера, или введите -1 для выключения данной возможности.
+Description-sv.UTF-8: Webcit HTTP port:
+ Välj den port som Webcit ska lyssna på, om du inte har någon annan webserver på servern så väljer du lämpligen port 80. För att avaktivera HTTP sätter du portvärdet till -1.
+Description-vi.UTF-8: Cổng HTTP WebCIT
+ Hãy chọn cổng trên đó trình phục vụ HTTP WebCIT nên lắng nghê. Dùng cổng « 80 » nếu bạn không có trình phục vụ Web khác đang chạy, hoặc dùng « -1 » để tắt nó.
+
+Template: citadel/WebcitHttpsPort
+Type: string
+Default: 443
+Description: Webcit HTTPS port:
+ Select the port which the SSL HTTP Webcit server should listen on or enter -1
+ to disable it.
+Description-cs.UTF-8: HTTPS port Webcitu:
+ Zadejte port, na kterém má naslouchat interní SSL HTTP server Webcitu. Případně můžete zadat -1 a interní SSL HTTP server zakázat.
+Description-da.UTF-8: HTTPS-port for Webcit:
+ Vælg porten som SSL HTTP Webcit-serveren skal lytte på eller indtast -1 for at deaktivere den.
+Description-de.UTF-8: HTTPS-Port von Webcit:
+ Wählen Sie den Port, an dem der SSL-HTTP-Webcit-Server auf Anfragen warten soll oder -1, um ihn zu deaktivieren.
+Description-es.UTF-8: Puerto HTTPS de Webcit:
+ Escoja el puerto en el que el servidor de HTTP con SSL de Webcit debería escuchar o introduzca -1 para desactivarlo.
+Description-eu.UTF-8: Webcit HTTPS ataka:
+ Hautatu SSL HTTP Webcit zerbitzariak zein ataka entzun behar duen edo -1 erabili desgaitzeko.
+Description-fi.UTF-8: Webcitin HTTPS-portti:
+ Anna portti, jota Webcitin SSL-suojatun HTTP-palvelimen tulisi kuunnella. Syötä -1 poistaaksesi sen käytöstä.
+Description-fr.UTF-8: Port HTTP pour Webcit :
+ Veuillez choisir le port d'écoute HTTPS pour Webcit. Indiquez -1 pour désactiver ce réglage.
+Description-gl.UTF-8: Porto HTTPS para Webcit:
+ Escolla o porto no que debe escoitar o servidor HTTP SSL de Webcit, ou -1 para desactivalo.
+Description-it.UTF-8: Porta HTTPS per Webcit:
+ Scegliere la porta su cui il server SSL HTTP di Webcit deve mettersi in ascolto oppure -1 per disabilitarlo.
+Description-ja.UTF-8: Webcit の HTTPS ポート:
+ Webcit サーバが HTTP を SSL で待ち受けるポートを選択してください。無効にする場合は -1 を入力してください。
+Description-nl.UTF-8: HTTPS-poort van Webcit:
+ Kies de poort waarop de SSL-HTTP-server van Webcit moet luisteren of vul -1 in indien u dit wilt uitschakelen.
+Description-pt.UTF-8: Porto HTTPS Webcit:
+ Seleccione o porto, no qual o servidor SSL HTTP Webcit deverá escutar ou insira -1 para desabilitar.
+Description-ru.UTF-8: HTTPS-порт Webcit:
+ Выберите порт, на котором SSL HTTP Webcit сервер должен принимать запросы или -1 для выключения данной возможности.
+Description-sv.UTF-8: Webcit HTTPS port:
+ Välj den port som Webcit ska lyssna på för SSL-krypterad HTTP. Sätt portvärdet till -1 för att inaktivera.
+Description-vi.UTF-8: Cổng HTTPS WebCIT
+ Hãy chọn cổng trên đó trình phục vụ HTTP SSL WebCIT nên lắng nghê, hoặc dùng « -1 » để tắt nó.
+
+Template: citadel/WebcitOfferLang
+Type: select
+Choices: User-defined, Danish, German, English, Spanish, French, Italian, Dutch, Brazilian Portuguese
+Choices-cs.UTF-8: Neomezovat, dánština, němčina, angličtina, španělština, francouzština, italština, holandština, brazilská portugalština
+Choices-da.UTF-8: Brugerdefineret, Dansk, Tysk, Engelsk, Spansk, Fransk, Italiensk, Hollandsk, Brasiliansk-portugisisk
+Choices-de.UTF-8: Benutzerdefiniert, Dänisch, Deutsch, Englisch, Spanisch, Französisch, Italienisch, Niederländisch, Brasilianisches portugiesisch
+Choices-es.UTF-8: Definido por el usuario, Danés, Alemán, Inglés, Español, Francés, Italiano, Holandés, Portugués brasileño
+Choices-eu.UTF-8: Erabiltzaileak-ezarririk, Daniera, Alemaniera, Ingelesa, Espainola, Frantsesa, Italiera, Nederlandera, Brasildar Portugesa
+Choices-fi.UTF-8: Käyttäjän määrittelemä, Tanska, Saksa, Englanti, Espanja, Ranska, Italia, Hollanti, Brasilian portugali
+Choices-fr.UTF-8: Choix par l'utilisateur, Danois, Allemand, Anglais, Espagnol, Français, Italien, Néerlandais, Portugais du Brésil
+Choices-gl.UTF-8: Definido polo usuario, Danés, Alemán, Inglés, Castelán, Francés, Italiano, Holandés, Portugués brasileiro
+Choices-it.UTF-8: Definita dall'utente, Danese, Tedesco, Inglese, Spagnolo, Francese, Italiano, Olandese, Portoghese Brasiliano
+Choices-ja.UTF-8: ユーザ指定, デンマーク語, ドイツ語, 英語, スペイン語, フランス語, イタリア語, オランダ語, ブラジルで話されているポルトガル語
+Choices-nl.UTF-8: Gebruikersafhankelijk, Deens, Duits, Engels, Spaans, Frans, Italiaans, Nederlands, Braziliaans Portugees
+Choices-pt.UTF-8: Definido pelo utilizador, Dinamarquês, Alemão, Inglês, Espanhol, Francês, Italiano, Holandês, Português do Brasil
+Choices-ru.UTF-8: выбирается пользователем, датский, немецкий, английский, испанский, французский, итальянский, голландский, бразильский португальский
+Choices-sv.UTF-8: Användardefinierad, Danska, Tyska, Engelska, Spanska, Franska, Italienska, Nederländska, Brasiliansk portugisiska
+Choices-C: UNLIMITED, da_DA, de_DE, en_GB, es_ES, fr_FR, it_IT, nl_NL, pt_BR
+Default: UNLIMITED
+Description: Limit Webcit's login language selection
+ Select language the Webcit server should run in. User-defined leaves this choice
+ to the user at the login prompt. 
+Description-cs.UTF-8: Omezení jazyků, kterými se uživatel může přihlásit do Webcitu
+ Vyberte jazyk, ve kterém má server Webcit komunikovat. Volba „Neomezovat“ ponechá výběr jazyka na uživateli.
+Description-da.UTF-8: Begræns Webcits valg af sprog ved logind
+ Vælg sprog som Webcit-serveren skal køre med. Brugerdefineret overlader dette valg til brugeren ved logind.
+Description-de.UTF-8: Sprachauswahl bei der Anmeldung bei Webcit einschränken
+ Wählen Sie die Sprache, unter der der Webcit-Server laufen soll. Benutzerdefiniert überlässt dem Benutzer bei der Anmeldung die Wahl.
+Description-es.UTF-8: Limite la selección del idioma en la identificación de Webcit
+ Escoja el idioma que el debería usar el servidor de Webcit. La opción «definido por el usuario» deja que el usuario pueda escoger el idioma en la identificación.
+Description-eu.UTF-8: Mugatu Webcit-ren saio hasteko hizkuntz hautapena
+ Hautatu Webcit zerbitzariak exekutatu behar dituen hizkuntzak. Erabiltzaileak-ezarririk erabiltzean hautapena erbailtzaileak saio hasiera egin beharko du.
+Description-fr.UTF-8: Choix de la langue à la connexion :
+ Veuillez choisir la langue affichée par le serveur Webcit. "Choix par l'utilisateur" laisse la possibilité à l'utilisateur de choisir la langue à la connexion.
+Description-gl.UTF-8: Limita as opcións de lingua do acceso a Webcit
+ Escolla a lingua coa que debe executarse o servidor Webcit. «Definido polo usuario» deixa esta escolla para que a falla o usuario ao acceder.
+Description-it.UTF-8: Limite alla scelta della lingua all'accesso a Webcit
+ Selezionare la lingua del server Webcit. Con "Definita dall'utente" si lascia agli utenti la scelta della lingua al momento dell'accesso.
+Description-ja.UTF-8: Webcit ログイン時の言語選択の制限
+ Webcit サーバに追加する言語を選択してください。ユーザ指定の場合はユーザのログインプロンプトで指定できます。
+Description-nl.UTF-8: Beperkingen aan de taalkeuze bij het aanmelden bij Webcit
+ Kies de taal die de Webcit-server gebruikt. Kies gebruikersafhankelijk als u de gebruiker de keuze wilt laten bij de aanmeld-prompt.
+Description-pt.UTF-8: Limitar a selecção de língua do login Webcit
+ Seleccione a língua em que o servidor Webcit deverá correr. 'Definido pelo utilizador' deixa esta opção ao utilizador no login.
+Description-ru.UTF-8: Выбор языка для экрана входа в Webcit
+ Выберите язык, который должен использоваться при работе сервера Webcit. "Выбирается пользователем" означает, что пользователь сможет выбрать нужный язык при входе.
+Description-sv.UTF-8: Begränsa valbara språk vid inloggningen till Webcits
+ Ange språket som Webcitserver ska använda vid körning. Användardefinierad överlåter valet till användaren vid inloggningen.

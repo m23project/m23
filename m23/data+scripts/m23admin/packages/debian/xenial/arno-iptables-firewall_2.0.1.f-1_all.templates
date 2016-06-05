@@ -1,0 +1,1157 @@
+Template: arno-iptables-firewall/title
+Type: title
+description: arno-iptables-firewall configuration
+description-cs.UTF-8: Nastavení balíku arno-iptables-firewall
+description-da.UTF-8: konfiguration af arno-iptables-firewall
+description-de.UTF-8: arno-iptables-firewall Konfiguration
+description-es.UTF-8: Configuración de arno-iptables-firewall
+description-fr.UTF-8: Configuration d'arno-iptables-firewall
+description-it.UTF-8: Configurazione di arno-iptables-firewall
+description-ja.UTF-8: arno-iptables-firewall の設定
+description-nb.UTF-8: Oppsett av arno-iptables-brannmur
+description-nl.UTF-8: Configuratie van arno-iptables-firewall
+description-no.UTF-8: Oppsett av arno-iptables-brannmur
+description-pl.UTF-8: Konfiguracja arno-iptables-firewall
+description-pt.UTF-8: Configuração do arno-iptables-firewall
+description-pt_BR.UTF-8: configuração arno-iptables-firewall
+description-ru.UTF-8: Настройка arno-iptables-firewall
+description-sv.UTF-8: Konfiguration av arno-iptables-firewall
+description-vi.UTF-8: Cấu hình arno-iptables-firewall
+
+Template: arno-iptables-firewall/config-ext-if
+Type: string
+description: External network interfaces:
+ The external network interfaces connect this machine
+ to untrusted networks (e.g. the Internet). The firewall will only permit
+ connections attempts with explicitly allowed source/destination-port
+ combinations on these interfaces. You have to specify all external
+ interfaces (e.g. eth0 and/or ppp0).
+ .
+ For a ppp-interface that doesn't exist yet you can use the wildcard device
+ called "ppp+", but you can only use ppp+ if there aren't any other ppp
+ interfaces!
+ .
+ If no interfaces are specified here, no firewall setup will
+ be performed.
+ .
+ Multiple interfaces should be specified space separated.
+description-cs.UTF-8: Externí síťová rozhraní:
+ Externí síťová rozhraní připojují tento počítač k nedůvěryhodným sítím (např. k Internetu). Na těchto rozhraních povoluje firewall pouze pokusy o spojení s přesně definovanými kombinacemi zdrojových/cílových portů. Nyní musíte zadat všechna externí rozhraní (např. eth0 a/nebo ppp0).
+ .
+ Pro dynamické rozhraní ppp, které ještě neexistuje, můžete použít zástupné zařízení "ppp+", ovšem pouze v případě, že neexistují jiná ppp rozhraní!
+ .
+ Pokud zde neuvedete žádná rozhraní, nastavování firewallu se ukončí.
+ .
+ Více rozhraní můžete zadat tak, že je oddělíte mezerami.
+description-da.UTF-8: Eksterne netværksgrænseflader:
+ De eksterne netværksgrænseflader forbinder denne maskine med utroværdige netværk (f.eks. internettet). Brandmuren vil kun tillade forbindelsesforsøg med eksplicit tilladte portkombinationer for kilde/destination på disse grænseflader. Du skal angive alle eksterne grænseflader (f.eks. eth0 og/eller ppp0).
+ .
+ For en ppp-grænseflade som endnu ikke findes, kan du bruge jokertegnsenheden kaldt »ppp+«, men du kan kun bruge ppp+ hvis der ikke er andre ppp-grænseflader!
+ .
+ Hvis ingen grænseflader er angivet her, så vil der ikke blive udført en brandmursopsætning.
+ .
+ Flere grænseflader skal angives adskilt med mellemrum.
+description-de.UTF-8: Externe Netzwerkschnittstellen:
+ Die externen Netzwerkschnittstellen verbinden dieses System mit unsicheren Netzwerken (z.B. dem Internet). Die Firewall wird nur die Verbindungsanfragen an diesen Schnittstellen zulassen, die explizit erlaubten Quell-/Ziel-Port-Kombinationen entsprechen. Sie müssen alle externen Schnittstellen angeben (z.B. eth0 und/oder ppp0).
+ .
+ Für eine ppp-Schnittstelle die noch nicht existiert, kann der Platzhalter "ppp+" verwendet werden. Dies ist jedoch nur möglich, wenn keine anderen ppp-Schnittstellen vorhanden sind!
+ .
+ Wenn hier keine Schnittstellen angegeben werden, wird keine Firewall-Konfiguration durchgeführt.
+ .
+ Mehrere Schnittstellen müssen mit Leerzeichen getrennt angegeben werden.
+description-es.UTF-8: Interfaces externas de red:
+ Las interfaces externas de red conectan la máquina con redes inseguras (por ejemplo: Internet). El cortafuegos sólo permitirá los intentos de conexión con combinaciones de origen/puerto-destino explícitamente permitidas para estas interfaces. Debe especificar todas las interfaces externas (por ejemplo: eth0 y/o ppp0).
+ .
+ Para una interfaz ppp que todavía no exista, puede utilizar un dispositivo comodín  llamado «ppp+», pero solamente se puede utilizar «ppp+» si no existe ninguna otra interfaz ppp.
+ .
+ Si no se introduce ninguna interfaz aquí, no se realizará ninguna configuración del cortafuegos.
+ .
+ Las interfaces se deben introducir separadas por espacios.
+description-fr.UTF-8: Interfaces réseau externes :
+ Les interfaces réseau externes sont celles qui relient cette machine à des réseaux inconnus (par exemple, l'internet). Le pare-feu n'autorisera que les tentatives de connexion avec des ports source et destination explicitement autorisés sur ces interfaces. Vous devez indiquer toutes les interfaces externes (par exemple eth0 et/ou ppp0).
+ .
+ Pour une interface « ppp » qui n'existe pas encore, vous pouvez utiliser le périphérique « ppp+ », mais vous ne pouvez l'utiliser que si vous ne mentionnez pas d'autres interfaces « ppp » !
+ .
+ Si aucune interface n'est indiquée ici, le pare-feu ne sera pas configuré.
+ .
+ Les interfaces multiples doivent être séparées par des espaces.
+description-it.UTF-8: Interfacce di rete esterne:
+ Le interfacce di rete esterne connettono questa macchina a reti non sicure (per es. Internet). Su queste interfacce, gli unici tentativi di connessione accettati saranno quelli esplicitamente consentiti. Devi specificare tutte le interfacce esterne (per es. eth0 e/o ppp0). 
+ .
+ Per un'interfaccia ppp che non esiste ancora, puoi usare il nome di dispositivo "ppp+", ma soltanto se non sono attive altre interfacce ppp!
+ .
+ Se non specifichi nessuna interfaccia, il firewall non verrà configurato.
+ .
+ Se sono presenti diverse interfacce, devono essere separate da spazi.
+description-ja.UTF-8: 外部ネットワークインターフェイス:
+ 外部ネットワークインターフェイスは、このマシンを信頼していないネットワーク (例えばインターネット) へ接続します。ファイアウォールは、これらのインターフェイス上で明示的に許可された接続元 (source)／接続先 (destination) ポートの組み合わせの接続のみを許可します。すべての外部インターフェイスを指定する必要があります (例: eth0、ppp0 など)。
+ .
+ まだ存在していない ppp インターフェイスについては、「ppp+」のようなワイルドカードデバイスを使えますが、ppp+ を使えるのは他に ppp インターフェイスが存在していない場合のみです!
+ .
+ ここでインターフェイスが何も指定されない場合は、ファイアウォールの設定は行われません。
+ .
+ 複数のインターフェイスは、空白で区切る必要があります。
+description-nb.UTF-8: Grensesnitt mot ytre nett:
+ Grensesnitt mot ytre nett kobler denne maskinen til usikre nettverk (f.eks. Internett). På disse grensesnittene vil brannmuren bare tillate tilkoblingsforsøk fra oppgitte kilde/mål/port-kombinasjoner. Du må oppgi alle ytre grensesnitt (f.eks. eth0 og/eller ppp0).
+ .
+ Du kan bruke jokertegnet «ppp+» for et ppp-grensesnitt som ikke finnes ennå, men du kan bare bruke ppp+ hvis det ikke er noen andre ppp-grensesnitt!
+ .
+ Hvis ingen grensesnitt er oppgitt her, så blir det ikke satt opp noen brannmur.
+ .
+ Bruk mellomrom som skilletegn mellom grensesnittene.
+description-nl.UTF-8: Externe netwerkinterfaces:
+ De externe netwerkinferfaces verbinden deze machine met niet-vertrouwde netwerken (zoals het internet). De firewall zal slechts verbindingspogingen toestaan met expliciet toegestane bron/bestemmings-poortcombinaties op deze interfaces. Specificeer alle externe interfaces (b.v. eth0 en/of ppp0).
+ .
+ Voor een ppp-interface die nog niet bestaat kunt u het wildcard-apparaat "ppp+" gebruiken.  U kunt echter alléén "ppp+" gebruiken als er geen enkele andere ppp-interface is!
+ .
+ Als hier geen interfaces opgegeven zijn, zal er geen firewall ingesteld worden.
+ .
+ Gebruik bij meerdere interfaces een spatie als scheidingsteken.
+description-no.UTF-8: Grensesnitt mot ytre nett:
+ Grensesnitt mot ytre nett kobler denne maskinen til usikre nettverk (f.eks. Internett). På disse grensesnittene vil brannmuren bare tillate tilkoblingsforsøk fra oppgitte kilde/mål/port-kombinasjoner. Du må oppgi alle ytre grensesnitt (f.eks. eth0 og/eller ppp0).
+ .
+ Du kan bruke jokertegnet «ppp+» for et ppp-grensesnitt som ikke finnes ennå, men du kan bare bruke ppp+ hvis det ikke er noen andre ppp-grensesnitt!
+ .
+ Hvis ingen grensesnitt er oppgitt her, så blir det ikke satt opp noen brannmur.
+ .
+ Bruk mellomrom som skilletegn mellom grensesnittene.
+description-pl.UTF-8: Zewnętrzne interfejsy sieciowe:
+ Zewnętrzne interfejsy sieciowe łączą komputer z sieciami niezaufanymi (np. z Internetem). Zapora sieciowa pozwoli na próby połączeń jedynie z podanymi wprost kombinacjami źródeł/portów docelowych w tych interfejsach. Konieczne jest podanie wszystkich zewnętrznych interfejsów (np. eth0 i/lub ppp0).
+ .
+ Jeśli interfejs ppp jeszcze nie istnieje, można użyć maski urządzenia - "ppp+", jednak to ustawienie jest dopuszczalne tylko wówczas, gdy nie istnieją żadne inne interfejsy ppp!
+ .
+ Jeśli nie zostaną określone żadne interfejsy, konfiguracja zapory nie zostanie przeprowadzona.
+ .
+ Można podać wiele interfejsów, oddzielając poszczególne spacją.
+description-pt.UTF-8: Interfaces de rede externas:
+ As interfaces de rede internas ligam esta máquina a redes onde não há confiança (ex. a Internet). A firewall só irá permitir tentativas de ligação a combinações fonte/destino-porto explicitamente permitidas nestas interfaces. Você tem que especificar todas as interfaces externas (ex. eth0 e/ou ppp0).
+ .
+ Para um interface-ppp que ainda não exista, você pode usar o dispositivo variável chamado "ppp+", mas só pode usar ppp+ se não existir mais nenhuma interface ppp!
+ .
+ Se não forem especificadas interfaces aqui, nenhuma configuração de firewall será executada.
+ .
+ Múltiplas interfaces devem ser especificadas separando-as com espaços.
+description-pt_BR.UTF-8: Interfaces de rede externas:
+ As interfaces de rede externas conectam esta máquina a redes não confiáveis (p.ex. a Internet). O firewall permitirá apenas tentativas de conexão com combinações de origem/porta-destino explicitamente autorizadas nestas interfaces. Você tem que especificar todas as interfaces externas (p.ex. eth0 e/ou ppp0).
+ .
+ Para uma interface ppp que ainda não existe você pode usar o dispositivo genérico chamado "ppp+", mas você só pode usar ppp+ se não há nenhuma outra interface ppp!
+ .
+ Se nenhuma interface for especificada aqui, nenhuma configuração de firewall será realizada.
+ .
+ Múltiplas interfaces devem ser especificadas separadas por espaço.
+description-ru.UTF-8: Внешние сетевые интерфейсы:
+ Через внешние сетевые интерфейсы компьютер подключается к недоверительным сетям (например, к интернету). Межсетевой экран будет пропускать только подключения, для которых явно указаны разрешённые на этих интерфейсах комбинации портов источника/приёмника. Вы должны указать все внешние интерфейсы (например, eth0 и/или ppp0).
+ .
+ Для указания несуществующих в данный момент интерфейсов ppp, вы можете использовать шаблон устройства "ppp+", но ppp+ можно использовать, если нет никаких других интерфейсов ppp!
+ .
+ Если интерфейсы не указать, то настройка межсетевого экрана выполняться не будет.
+ .
+ Несколько интерфейсов нужно указывать через пробел.
+description-sv.UTF-8: Externa nätverksgränssnitt:
+ De externa nätverksgränssnitten ansluter denna maskin till icke-pålitliga nätverk (exempelvis Internet). Brandväggen kommer endast att tillåta anslutningsförsök med uttryckligen tillåtna kombinationer av käll-/destinationsport på dessa gränssnitt. Du måste ange alla externa gränssnitt (exempelvis eth0 och/eller ppp0).
+ .
+ För ett ppp-gränssnitt som ännu inte existerar kan du använda jokerenheten kallad "ppp+", men du kan endast använda ppp+ om det inte redan finns några andra ppp-gränssnitt!
+ .
+ Om inga gränssnitt anges här kommer ingen brandväggskonfiguration att genomföras.
+ .
+ Flera gränssnitt måste separeras med blanksteg.
+description-vi.UTF-8: Giao diện mạng bên ngoài:
+ Những giao diện mạng bên ngoài kết nối máy này với mạng không đáng tin (v.d. Mạng). Bức tường lửa sẽ cho phép chỉ những việc cố kết nối mà kết hợp cổng nguồn/đích đã đặt chính xác trên những giao diện này. Bạn sẽ phải xác định mọi giao diện bên ngoài (v.d. eth0 và/hay ppp0).
+ .
+ Đối với giao diện PPP chưa tồn tại, bạn có thể sử dụng thiết bị đại diện tên « ppp+ », nhưng mà chỉ nếu không có giao diện PPP khác nào thôi.
+ .
+ Nếu không có giao diện nào được xác định vào đây, bức tường lửa sẽ không được thiết lập.
+ .
+ Nên xác định nhiều giao diện định giới bằng dấu cách.
+
+Template: arno-iptables-firewall/dynamic-ip
+Type: boolean
+description: Is DHCP used on external interfaces?
+ This machine might use DHCP to dynamically obtain its IP address from
+ your Internet service provider (ISP). This will be almost always the case
+ if you have a non-permanent (e.g. dialup) connection.
+ .
+ If DHCP is not explicitly enabled, the firewall will block all DHCP-related
+ network traffic.
+ .
+ Leave this enabled, if you are unsure.
+description-cs.UTF-8: Používá se na externích rozhraních DHCP?
+ Tento počítač může získávat svou IP adresu od poskytovatele Internetu pomocí DHCP. Pokud nemáte trvalé připojení, bude to pravděpodobně i váš případ.
+ .
+ Pokud není DHCP explicitně povoleno, bude firewall blokovat veškerý síťový provoz s DHCP spojený.
+ .
+ Pokud si nejste jisti, volbu povolte.
+description-da.UTF-8: Bruges DHCP på eksterne grænseflader?
+ Denne maskine bruger måske DHCP til dynamisk at indhente sin IP-adresse fra din internettjenesteleverandør (ISP). Dette vil næsten altid være tilfældet hvis du har en forbindelse (f.eks. en opkaldsforbindelse), der ikke er permanent.
+ .
+ Hvis DHCP ikke eksplicit er aktiveret, så vil brandmuren blokere al DHCP-relateret netværkstrafik.
+ .
+ Efterlad denne aktiveret hvis du er i tvivl.
+description-de.UTF-8: Wird DHCP mit den externen Netzwerkschnittstellen genutzt?
+ Möglicherweise bezieht dieses System seine IP-Adresse dynamisch per DHCP vom Internet-Anbieter (ISP)? Dies ist fast immer der Fall, wenn eine nicht-permanente Verbindung (z.B. Wählverbindung) vorhanden ist.
+ .
+ Wird DHCP nicht explizit aktiviert, blockiert die Firewall jegliche DHCP-Datenpakete.
+ .
+ Wenn Sie sich unsicher sind, lassen Sie dies aktiviert.
+description-es.UTF-8: ¿El servicio DHCP se utiliza en interfaces externas?
+ Esta máquina podría utilizar DHCP para obtener dinámicamente su dirección IP desde el proveedor de servicios de internet (ISP). Éste casi siempre será el caso, si tiene una conexión dinámica (por ejemplo: una conexión de marcado).
+ .
+ Si el servicio DHCP no está activado explícitamente, el cortafuegos bloqueará todo el tráfico de la red relacionado con DHCP.
+ .
+ Deje esto activado, si no está seguro.
+description-fr.UTF-8: Faut-il activer DHCP sur les interfaces externes ?
+ Veuillez indiquer si cette machine obtient ses adresses IP dynamiquement depuis le serveur DHCP de votre fournisseur d'accès à internet (FAI). C'est presque toujours le cas si vous possédez une connexion non-permanente (par exemple, les connexions RTC).
+ .
+ Si DHCP n'est pas activé, le pare-feu bloquera tout le trafic relatif au protocole DHCP.
+ .
+ Dans le doute, vous devriez l'activer.
+description-it.UTF-8: Viene utilizzato il DHCP sulle interfacce di rete esterne?
+ Questa macchina potrebbe utilizzare il DHCP per ottenere dinamicamente il suo indirizzo IP dal tuo Internet Service Provider (ISP). Se utilizzi una connessione non permanente (per es. dialup), allora molto probabilmente è così.
+ .
+ Se l'opzione riguardante il DHCP non è abilitata, allora il firewall bloccherà tutto il traffico di rete relativo al DHCP.
+ .
+ Lascia abilitata questa opzione se non sei sicuro.
+description-ja.UTF-8: 外部インターフェイスで DHCP を使いますか?
+ このマシンはインターネットサービスプロバイダ (ISP) から IP アドレスを動的に取得するのに DHCP を使っているようです。これは、永続的では無い接続 (例: ダイヤルアップ) でしている場合などでは一般的です。
+ .
+ DHCP が明示的に有効になっていない場合、ファイアウォールは DHCP 関連のネットワークトラフィックをブロックします。
+ .
+ よく分からない場合は有効のままにしておいてください。
+description-nb.UTF-8: Brukes DHCP på ytre grensesnitt?
+ Denne maskinen vil kanskje bruke DHCP for å finne en dynamisk IP-adresse fra nettleverandøren (ISP). Dette er nesten alltid tilfelle hvis du har en ikke-permanent forbindelse (f.eks. oppringt).
+ .
+ Hvis DHCP ikke er uttrykkelig slått på, vil brannmuren blokkere all DHCP-trafikk fra/til det ytre nettet.
+ .
+ Er du usikker, så la det stå på.
+description-nl.UTF-8: Wordt DHCP gebruikt op de externe netwerkinterfaces?
+ Deze machine gebruikt mogelijk DHCP om zijn IP-adres dynamisch te verkrijgen van uw internetprovider (ISP)? Dit zal bijna altijd het geval zijn als u een niet-permanente verbinding hebt (zoals inbellen).
+ .
+ Wanneer DHCP niet expliciet is opengesteld zal de firewall al het DHCP-gerelateerde netwerkverkeer blokkeren.
+ .
+ Laat deze optie leeg als u twijfelt.
+description-no.UTF-8: Brukes DHCP på ytre grensesnitt?
+ Denne maskinen vil kanskje bruke DHCP for å finne en dynamisk IP-adresse fra nettleverandøren (ISP). Dette er nesten alltid tilfelle hvis du har en ikke-permanent forbindelse (f.eks. oppringt).
+ .
+ Hvis DHCP ikke er uttrykkelig slått på, vil brannmuren blokkere all DHCP-trafikk fra/til det ytre nettet.
+ .
+ Er du usikker, så la det stå på.
+description-pl.UTF-8: Czy DHCP jest używane w interfejsach zewnętrznych?
+ Komputer może używać DHCP, aby pozyskać adres IP w sposób dynamiczny od dostawcy usług internetowych (ISP). Jest tak prawie zawsze, gdy połączenie z siecią nie jest stałe (np. jest to połączenie wdzwaniane).
+ .
+ Jeśli DHCP nie zostanie teraz włączone, zapora będzie blokować cały ruch związany z DHCP.
+ .
+ W przypadku wątpliwości, proszę pozostawić tę opcje włączoną.
+description-pt.UTF-8: DHCP é usado nas interfaces externas?
+ Esta máquina pode usar DHCP para dinamicamente obter o seu endereço IP do seu provedor de serviço internet (ISP). Isto é quase sempre o caso se você tem uma ligação não-permanente (ex. ligação por marcação).
+ .
+ Se o DHCP não estiver explicitamente activo, a firewall irá bloquear todo o tráfego de rede relacionado com DHCP.
+ .
+ Deixe activado, se não tem certeza.
+description-pt_BR.UTF-8: O DHCP é usado em interfaces externas?
+ Esta máquina pode usar DHCP para obter um IP dinamicamente do seu provedor de serviços de Internet (ISP). Este será na maioria das vezes o caso se você tem uma conexão não permanente (p.ex. linha discada).
+ .
+ Se o DHCP não está explicitamente habilitado, o firewall bloqueará todo o tráfego de rede relacionado ao DHCP.
+ .
+ Deixe isto habilitado, se você está em dúvida.
+description-ru.UTF-8: Разрешить DHCP на внешних интерфейсах?
+ Данный компьютер может использовать DHCP для динамического получения IP-адреса от провайдера интернета (ISP). Это почти всегда верно, если вы используете непостоянное (например, модем с коммутируемым доступом) соединение.
+ .
+ Если использование протокола DHCP не указать, то межсетевой экран будет блокировать весь сетевой обмен по DHCP.
+ .
+ Если не уверены, оставьте включённым.
+description-sv.UTF-8: Används DHCP på externa gränssnitt?
+ Denna maskin kanske använder DHCP för att dynamiskt hämta sin IP-adress från din Internetleverantör (ISP). Detta är nästan alltid fallet om du har en icke-permanent anslutning (exempelvis uppringt modem).
+ .
+ Om DHCP inte uttryckligen är aktiverad, kommer brandväggen att blockera all DHCP-relaterad nätverkstrafik.
+ .
+ Lämna denna aktiverad, om du är osäker.
+description-vi.UTF-8: Có sử dụng DHCP trên giao diện bên ngoài không?
+ Máy này có lẽ sử dụng DHCP để lấy động địa chỉ IP của chính nó từ nhà cung cấp dịch vụ Mạng (ISP) của bạn. Gần luôn làm như thế, nếu bạn có kết nối không chạy luôn, v.d. quay số.
+ .
+ Nếu DHCP không phải được bật dứt khoát, bức tường lửa sẽ chặn toàn bộ viễn thông trên mạng liên quan đến DHCP.
+ .
+ Hãy để lại đã bật, nếu chưa chắc.
+Default: true
+
+Template: arno-iptables-firewall/services-tcp
+Type: string
+description: Open external TCP-ports:
+ The default firewall policy is to deny all incoming traffic on the
+ external interfaces. If this machine provides services to the outside
+ world (e.g. the Internet) they have to be explicitly enabled.
+ .
+ Please specify the TCP-ports numbers associated with the services that
+ shall be accessible from the outside world. Some frequently used ports are: 80
+ (http), 443 (https) or 22 (ssh).
+ .
+ In addition to single port numbers you may also specify port ranges (e.g.
+ 10000:11000). Multiple entries should be entered space separated.
+ .
+ If unsure, leave this empty.
+description-cs.UTF-8: Otevřené externí TCP porty:
+ Výchozí politika firewallu je zakázat veškerý příchozí provoz na externích rozhraních. Jestliže tento počítač nabízí okolnímu světu (např. do Internetu) nějaké služby, musíte je explicitně povolit.
+ .
+ Zadejte prosím čísla TCP portů svázaných se službami, které mají být přístupné z okolního světa. Mezi často používané porty patří 80 (http), 443 (https) nebo 22 (ssh).
+ .
+ Kromě jednotlivých čísel portů můžete také zadat celé rozsahy (např. 10000:11000). Jednotlivé záznamy by měly být odděleny mezerami.
+ .
+ Pokud si nejste jisti, ponechte prázdné.
+description-da.UTF-8: Åbn eksterne TCP-porte:
+ Standardpolitiken for brandmuren er at afvise al indgående trafik på de eksterne grænseflader. Hvis denne maskine tilbyder tjenester til den omkringliggende verden (f.eks. internettet) så skal de være eksplicit aktiveret.
+ .
+ Angiv venligst TCP-portnumrene forbundet med tjenesterne som skal kunne tilgås fra den omkringliggende verden. Nogle ofte brugte porte er: 80 (http), 443 (https) eller 22 (ssh).
+ .
+ Udover enkelte portnumre kan du også angive portintervaller (f.eks. 10000:11000). Flere punkter skal indtastes adskilt af mellemrum.
+ .
+ Hvis usikker, så efterlad tom.
+description-de.UTF-8: Offene externe TCP-Ports:
+ In der voreingestellten Firewall-Konfiguration werden alle eingehenden Verbindungsanfragen an den externen Netzwerkschnittstellen abgelehnt. Wenn dieses System Dienste für die Außenwelt (z.B. das Internet) anbietet, müssen diese explizit aktiviert werden.
+ .
+ Bitte geben Sie alle TCP-Port-Nummern von Diensten an, auf die von außen zugegriffen werden soll. Einige häufig genutzte Ports sind: 80 (http), 443 (https) oder 22 (ssh).
+ .
+ Zusätzlich zu einzelnen Port-Nummern können auch ganze Bereiche angegeben werden (z.B. 10000:11000). Mehrere Einträge müssen mit Leerzeichen getrennt werden.
+ .
+ Wenn Sie sich unsicher sind, tragen Sie hier nichts ein.
+description-es.UTF-8: Puertos TCP externos a abrir:
+ La política predeterminada del cortafuegos es denegar todo el tráfico entrante por las interfaces externas. Si esta máquina proporciona servicios al exterior (por ejemplo: Internet) tiene que activarlos explícitamente.
+ .
+ Especifique los números de los puertos TCP asociados a los servicios que serán accesibles desde el exterior. Algunos de los puertos que se utilizan más frecuentemente son: 80 (HTTP), 443 (HTTPS), 22 (SSH).
+ .
+ Además de los números de los puertos, puede especificar un rango de puertos (por ejemplo: «10000:11000»). Las entradas se deben introducir separadas por espacios.
+ .
+ Si no está seguro, deje esto vacío.
+description-fr.UTF-8: Ports TCP ouverts vers l'extérieur :
+ La politique par défaut du pare-feu est de refuser tout trafic entrant sur les interfaces externes. Si cette machine fournit des services vers l'extérieur (par exemple, l'internet), ils doivent être explicitement autorisés.
+ .
+ Veuillez indiquer les numéros de port TCP associés aux services qui pourront être accessibles depuis l'extérieur. Quelques ports fréquemment utilisés sont : 80 (http), 443 (https) ou 22 (ssh).
+ .
+ Vous pouvez aussi choisir un intervalle de ports (par exemple 10000:11000) à la place d'un numéro de port unique. De multiples entrées doivent être séparées par des espaces.
+ .
+ Dans le doute, vous devriez laisser ce champ vide.
+description-it.UTF-8: Porte TCP aperte sulle interfacce esterne:
+ Le impostazioni predefinite del firewall bloccano tutto il traffico in entrata sulle interfacce esterne. Se questa macchina fornisce servizi verso la rete esterna (per es. Internet), questi devono essere abilitati esplicitamente.
+ .
+ Specifica i numeri delle porte TCP dei servizi che dovranno essere accessibili dalla rete esterna. Alcune porte usate frequentemente sono: 80 (http), 443 (https) o 22 (ssh).
+ .
+ Oltre a singoli numeri di porta, puoi anche specificare intervalli di porte (per es. 10000:11000). Puoi inserire più voci separate tra loro da uno spazio.
+ .
+ Se non sei sicuro, lascia vuoto questo campo.
+description-ja.UTF-8: 外部に開放する TCP ポート:
+ デフォルトのファイアウォールポリシーは、外部インターフェイス上の入ってくるトラフィックすべてを拒否します。このマシンが外部 (例:インターネット) にサービスを提供している場合、明示的に有効にする必要があります。
+ .
+ 外部からアクセス可能にするサービスに関連する TCP ポート番号を指定してください。よく使われるポート: 80 (http)、443 (https)、22 (ssh)
+ .
+ 単一のポート番号に加えて、ポートの範囲を指定することもできます (例: 10000:11000)。複数のエントリは、空白で区切る必要があります。
+ .
+ よく分からない場合は、この欄を空白のままにしておいてください。
+description-nb.UTF-8: Åpne ytre TCP-porter:
+ Standard brannmurpraksis er å avvise all innkommende trafikk på de ytre grensesnittene. Hvis denne maskinen tilbyr tjenester til utenverdenen (f.eks. Internett) så må disse uttrykkelig slås på.
+ .
+ Oppgi TCP portnumre tilordnet de tjenestene som skal være tilgjengelige utenfra. Noen ofte brukte porter er 80 (http), 443 (https) eller 22 (ssh).
+ .
+ I tillegg til portnumre enkeltvis kan du også oppgi intervaller (f.eks.) 10000:11000). Flere oppføringer atskilles med mellomrom.
+ .
+ Er du usikker, så la det være tomt.
+description-nl.UTF-8: Open externe TCP-poorten:
+ Het standaard firewall-beleid blokkeert ieder inkomend verkeer op de externe interfaces.  Als deze machine diensten aanbiedt aan de buitenwereld (zoals het internet), dan zullen deze expliciet moeten worden opengesteld.
+ .
+ Geef de TCP-poortnummers die overeenkomen met de diensten die toegankelijk moeten zijn vanaf de buitenwereld. Een aantal vaak gebruikte poorten zijn: 80 (http), 443 (https) en 22 (ssh).
+ .
+ Naast enkele poortnummers kunt u ook reeksen opgeven (b.v. 10000:11000). Meerdere reeksen dienen door spaties gescheiden te worden.
+ .
+ Laat dit leeg bij twijfel.
+description-no.UTF-8: Åpne ytre TCP-porter:
+ Standard brannmurpraksis er å avvise all innkommende trafikk på de ytre grensesnittene. Hvis denne maskinen tilbyr tjenester til utenverdenen (f.eks. Internett) så må disse uttrykkelig slås på.
+ .
+ Oppgi TCP portnumre tilordnet de tjenestene som skal være tilgjengelige utenfra. Noen ofte brukte porter er 80 (http), 443 (https) eller 22 (ssh).
+ .
+ I tillegg til portnumre enkeltvis kan du også oppgi intervaller (f.eks.) 10000:11000). Flere oppføringer atskilles med mellomrom.
+ .
+ Er du usikker, så la det være tomt.
+description-pl.UTF-8: Otwarte zewnętrzne porty TCP:
+ Domyślne zasady zapory odrzucają cały przychodzący ruch sieciowy w interfejsach zewnętrznych. Jeśli ten komputer udostępnia usługi na zewnątrz (np. do Internetu), muszą zostać one włączone w tym kroku.
+ .
+ Proszę podać numery portów TCP związane z usługami, które powinny być dostępne z zewnątrz. Często używane są porty: 80 (http), 443 (https) lub 22 (ssh).
+ .
+ Oprócz pojedynczych portów, można także określić ich zakresy (np. 10000:11000). Kilka zakresów należy oddzielić spacją.
+ .
+ W przypadku wątpliwości, proszę pozostawić to pole puste.
+description-pt.UTF-8: Portos TCP externos abertos:
+ A politica de omissão da firewall é de negar todo o tráfego de entrada nas interfaces externas. Se esta máquina providencia serviços para o mundo externo (ex: a internet), têm que ser explicitamente activados.
+ .
+ Por favor especifique os números de portos-TCP associados aos serviços que estarão acessíveis ao mundo externo. Alguns portos frequentemente usados são: 80 (http), 443 (https) ou 22 (ssh).
+ .
+ Em adição a números de porto singulares, você também pode especificar alcances de portos (ex. 10000:11000). Múltiplas entradas devem ser indicadas separadas por espaços.
+ .
+ Se tem dúvidas, deixe este campo vazio.
+description-pt_BR.UTF-8: Abrir portas TCP externas:
+ A política padrão do firewall é negar todo o tráfego que chega nas interfaces externas. Se esta máquina fornece serviços para o mundo externo (p.ex. a Internet) eles precisam ser explicitamente habilitados.
+ .
+ Por favor especifique quais os números de portas TCP associados com o serviço que estará acessível para o mundo externo. Algumas portas freqüentemente usadas são: 80 (http), 443 (https) ou 22 (ssh).
+ .
+ Em adição ao números de porta individuais, você também pode especificar intervalos de portas (p.ex. 10000:11000). Múltiplas entradas devem ser informadas separadas por espaço.
+ .
+ Se estiver em dúvida, deixe em branco.
+description-ru.UTF-8: Открытые вовне порты TCP:
+ Политикой по умолчанию в межсетевом экране является блокировка всего входящего трафика с внешних интерфейсов. Если компьютер предоставляет службы для внешнего мира (например, для интернета), то они должны быть явным образом разрешены.
+ .
+ Укажите номера портов TCP для служб, которые должны быть доступны извне. Наиболее часто используемые порты: 80 (http), 443 (https) или 22 (ssh).
+ .
+ Кроме указания одиночных портов, также возможно указывать диапазоны портов (например, 10000:11000). Можно вводить несколько элементов через пробел.
+ .
+ Если не уверены, ничего не вводите.
+description-sv.UTF-8: Öppna externa TCP-portar:
+ Standardbrandväggspolicyn är att vägra all inkommande trafik på de externa gränssnitten. Om denna maskin tillhandahåller tjänster till världen utanför (exempelvis Internet) måste de uttryckligen vara aktiverade.
+ .
+ Ange de TCP-portnummer som associerade med tjänsterna som ska kommas åt från världen utanför. Några frekvent använda portar är: 80 (http), 443 (https) eller 22 (ssh).
+ .
+ I tillägg till enstaka portnummer kan du även ange portintervall (exempelvis 10000:11000). Flera poster måste separeras med blanksteg.
+ .
+ Om du är osäker, lämna denna blank.
+description-vi.UTF-8: Mở cổng TCP bên ngoài:
+ Chính sách bức tường lửa mặc định là từ chối toàn bộ viễn thông trên giao diện bên ngoài. Nếu máy này cung cấp dịch vụ cho người khác bên ngoài (v.d. qua Mạng), mỗi dịch vụ phải được bật dứt khoát.
+ .
+ Vui lòng xác định những số hiệu cổng TCP tương ứng với dịch vụ sẽ cho phép truy cập bên ngoài. Một số cổng thường dụng là 80 (http), 443 (https) or 22 (ssh).
+ .
+ Thêm vào mỗi số hiệu cổng riêng, bạn có thể xác định phạm vị cổng (v.d. 10000:11000). Hãy định giới nhiều mục nhập bằng dấu cách.
+ .
+ Nếu chưa chắc, hãy bỏ trống.
+
+Template: arno-iptables-firewall/services-udp
+Type: string
+description: Open external UDP-ports:
+ The default firewall policy is to deny all incoming traffic on the
+ external interfaces. If this machine provides services for the outside
+ world (e.g. the Internet) they have to be explicitly enabled.
+ .
+ Please specify the UDP-ports numbers associated with the services that
+ shall be accessible from the outside world.
+ .
+ In addition to single port numbers you may also specify port ranges (e.g.
+ 10000:11000). Multiple entries should be entered space separated.
+ .
+ If unsure, leave this empty.
+description-cs.UTF-8: Otevřené externí UDP porty:
+ Výchozí politika firewallu je zakázat veškerý příchozí provoz na externích rozhraních. Jestliže tento počítač nabízí okolnímu světu (např. do Internetu) nějaké služby, musíte je explicitně povolit.
+ .
+ Zadejte prosím čísla TCP portů svázaných se službami, které mají být přístupné z okolního světa.
+ .
+ Kromě jednotlivých čísel portů můžete také zadat celé rozsahy (např. 10000:11000). Jednotlivé záznamy by měly být odděleny mezerami.
+ .
+ Pokud si nejste jisti, ponechte prázdné.
+description-da.UTF-8: Åbn eksterne UDP-porte:
+ Standardpolitikken for brandmuren er at nægte al indgående trafik på eksterne grænseflader. Hvis denne maskine betjener tjenester for den omkringliggende verden (f.eks. internettet) så skal de være eksplicit aktiveret.
+ .
+ Angiv venligst UDP-portnumre associeret med tjenesterne som skal være tilgængelige fra den omkringliggende verden.
+ .
+ Udover enkelte portnumre kan du også angive portintervaller (f.eks. 10000:11000). Flere punkter skal indtastes adskilt af mellemrum.
+ .
+ Hvis usikker, så efterlad tom.
+description-de.UTF-8: Offene externe UDP-Ports:
+ In der voreingestellten Firewall-Konfiguration werden alle eingehenden Verbindungsanfragen an den externen Netzwerkschnittstellen abgelehnt. Wenn dieses System Dienste für die Außenwelt (z.B. das Internet) anbietet, müssen diese explizit aktiviert werden.
+ .
+ Bitte geben Sie alle UDP-Port-Nummern von Diensten an, auf die von außen zugegriffen werden soll.
+ .
+ Zusätzlich zu einzelnen Port-Nummern können auch ganze Bereiche angegeben werden (z.B. 10000:11000). Mehrere Einträge müssen mit Leerzeichen getrennt werden.
+ .
+ Wenn Sie sich unsicher sind, tragen Sie hier nichts ein.
+description-es.UTF-8: Puertos UDP externos a abrir:
+ La política predeterminada del cortafuegos es denegar todo el tráfico entrante por las interfaces externas. Si esta máquina proporciona servicios al exterior (por ejemplo: Internet) tiene que activarlos explícitamente.
+ .
+ Especifique los números de los puertos UDP asociados a los servicios que serán accesibles desde el exterior.
+ .
+ Además de los números de los puertos, puede especificar un rango de puertos (por ejemplo: «10000:11000»). Las entradas se deben introducir separadas por espacios.
+ .
+ Si no está seguro, deje esto vacío.
+description-fr.UTF-8: Ports UDP ouverts vers l'extérieur :
+ La politique par défaut du pare-feu est de refuser tout trafic entrant sur les interfaces externes. Si cette machine fournit des services vers l'extérieur (par exemple, l'internet), ils doivent être explicitement autorisés.
+ .
+ Veuillez indiquer les numéros de ports UDP associés aux services qui pourront être accessibles depuis l'extérieur.
+ .
+ Vous pouvez aussi choisir un intervalle de ports (par exemple 10000:11000) à la place d'un numéro de port unique. De multiples entrées doivent être séparées par des espaces.
+ .
+ Dans le doute, vous devriez laisser ce champ vide.
+description-it.UTF-8: Porte UDP aperte sulle interfacce esterne:
+ Le impostazioni predefinite del firewall bloccano tutto il traffico in entrata sulle interfacce esterne. Se questa macchina fornisce servizi verso la rete esterna (per es. Internet), questi devono essere abilitati esplicitamente.
+ .
+ Specifica i numeri delle porte UDP dei servizi che dovranno essere accessibili dalla rete esterna.
+ .
+ Oltre a singoli numeri di porta, puoi anche specificare intervalli di porte (per es. 10000:11000). Puoi inserire più voci separate tra loro da uno spazio.
+ .
+ Se non sei sicuro, lascia vuoto questo campo.
+description-ja.UTF-8: オープンにする外部 UDP ポート:
+ デフォルトのファイアウォールポリシーは、外部インターフェイス上の入ってくるトラフィックすべてを拒否します。このマシンが外部 (例:インターネット) にサービスを提供している場合、明示的に有効にする必要があります。
+ .
+ 外界からアクセスできるサービスに関連する UDP ポート番号を指定してください。
+ .
+ 単一のポート番号に加えて、ポートの範囲を指定することもできます (例: 10000:11000)。複数のエントリは、空白で区切る必要があります。
+ .
+ よく分からない場合は、この欄を空白のままにしておいてください。
+description-nb.UTF-8: Åpne ytre UDP-porter:
+ Standard brannmurpraksis er å avvise all innkommende trafikk på de ytre grensesnittene. Hvis denne maskinen tilbyr tjenester til utenverdenen (f.eks. Internett) så må disse uttrykkelig slås på.
+ .
+ Oppgi UDP portnumre tilordnet de tjenestene som skal være tilgjengelige utenfra.
+ .
+ I tillegg til portnumre enkeltvis kan du også oppgi intervaller (f.eks.) 10000:11000). Flere oppføringer atskilles med mellomrom.
+ .
+ Er du usikker, så la det være tomt.
+description-nl.UTF-8: Open externe UDP-poorten:
+ Het standaard firewall-beleid blokkeert ieder inkomend verkeer op de externe interfaces.  Als deze machine diensten aanbiedt aan de buitenwereld (zoals het internet), dan zullen deze expliciet moeten worden opengesteld.
+ .
+ Geef de UDP-poortnummers die overeenkomen met de diensten die toegankelijk moeten zijn vanaf de buitenwereld.
+ .
+ Naast enkele poortnummers kunt u ook reeksen opgeven (b.v. 10000:11000). Meerdere reeksen dienen door spaties gescheiden te worden.
+ .
+ Laat dit leeg bij twijfel.
+description-no.UTF-8: Åpne ytre UDP-porter:
+ Standard brannmurpraksis er å avvise all innkommende trafikk på de ytre grensesnittene. Hvis denne maskinen tilbyr tjenester til utenverdenen (f.eks. Internett) så må disse uttrykkelig slås på.
+ .
+ Oppgi UDP portnumre tilordnet de tjenestene som skal være tilgjengelige utenfra.
+ .
+ I tillegg til portnumre enkeltvis kan du også oppgi intervaller (f.eks.) 10000:11000). Flere oppføringer atskilles med mellomrom.
+ .
+ Er du usikker, så la det være tomt.
+description-pl.UTF-8: Otwarte zewnętrzne porty UDP:
+ Domyślne zasady zapory odrzucają cały przychodzący ruch sieciowy w interfejsach zewnętrznych. Jeśli ten komputer udostępnia usługi na zewnątrz (np. do Internetu), muszą zostać one włączone w tym kroku.
+ .
+ Proszę podać numery portów UDP związane z usługami, które powinny być dostępne z zewnątrz.
+ .
+ Oprócz pojedynczych portów, można także określić ich zakresy (np. 10000:11000). Kilka zakresów należy oddzielić spacją.
+ .
+ W przypadku wątpliwości, proszę pozostawić to pole puste.
+description-pt.UTF-8: Portos UDP externos abertos:
+ A politica de omissão da firewall é de negar todo o tráfego de entrada nas interfaces externas. Se esta máquina providencia serviços para o mundo externo (ex: a internet), têm que ser explicitamente activados.
+ .
+ Por favor especifique os números de portos-UDP associados aos serviços que estarão acessíveis ao mundo externo.
+ .
+ Em adição a números de porto singulares, você também pode especificar alcances de portos (ex. 10000:11000). Múltiplas entradas devem ser indicadas separadas por espaços.
+ .
+ Se tem dúvidas, deixe este campo vazio.
+description-pt_BR.UTF-8: Abrir portas UDP externas:
+ A política padrão do firewall é negar todo o tráfego que chega nas interfaces externas. Se esta máquina fornece serviços para o mundo externo (p.ex. a Internet) eles precisam ser explicitamente habilitados.
+ .
+ Por favor especifique quais os números de portas UDP associados com o serviço que estará acessível para o mundo.
+ .
+ Em adição ao números de porta individuais, você também pode especificar intervalos de portas (p.ex. 10000:11000). Múltiplas entradas devem ser informadas separadas por espaço.
+ .
+ Se estiver em dúvida, deixe em branco.
+description-ru.UTF-8: Открытые вовне порты UDP:
+ Политикой по умолчанию в межсетевом экране является блокировка всего входящего трафика с внешних интерфейсов. Если компьютер предоставляет службы для внешнего мира (например, для интернета), то они должны быть явным образом разрешены.
+ .
+ Укажите номера портов UDP для служб, которые должны быть доступны извне.
+ .
+ Кроме указания одиночных портов, также возможно указывать диапазоны портов (например, 10000:11000). Можно вводить несколько элементов через пробел.
+ .
+ Если не уверены, ничего не вводите.
+description-sv.UTF-8: Öppna externa UDP-portar:
+ Standardbrandväggspolicyn är att vägra all inkommande trafik på de externa gränssnitten. Om denna maskin tillhandahåller tjänster för världen utanför (exempelvis Internet) måste de uttryckligen vara aktiverade.
+ .
+ Ange de UDP-portnummer som associerade med tjänsterna som ska kommas åt från världen utanför.
+ .
+ I tillägg till enstaka portnummer kan du även ange portintervall (exempelvis 10000:11000). Flera poster måste separeras med blanksteg.
+ .
+ Om du är osäker, lämna denna blank.
+description-vi.UTF-8: Mở cổng UDP bên ngoài :
+ Chính sách bức tường lửa mặc định là từ chối toàn bộ viễn thông gởi đến trên giao diện bên ngoài. Nếu máy này cung cấp dịch vụ cho người khác bên ngoài (v.d. qua Mạng), mỗi dịch vụ phải được bật dứt khoát.
+ .
+ Vui lòng xác định những số hiệu cổng UDP tương ứng với dịch vụ sẽ cho phép truy cập bên ngoài.
+ .
+ Thêm vào mỗi số hiệu cổng riêng, bạn có thể xác định phạm vị cổng (v.d. 10000:11000). Hãy định giới nhiều mục nhập bằng dấu cách.
+ .
+ Nếu chưa chắc, hãy bỏ trống.
+
+Template: arno-iptables-firewall/restart
+Type: boolean
+description: Should the firewall be (re)started now?
+ For security reasons the new firewall setup is not applied
+ automatically. You might want to perform a manual inspection of the
+ firewall configuration in /etc/arno-iptables-firewall/firewall.conf, especially
+ when upgrading to a new version, as configuration variables might have changed.
+ .
+ In order to later manually apply the new
+ firewall settings before the next reboot, invoke 'invoke-rc.d
+ arno-iptables-firewall start'.
+ .
+ If you do not need manual inspection, the firewall-setup can be applied now.
+description-cs.UTF-8: Má se nyní firewall restartovat?
+ Z bezpečnostních důvodů se nové nastavení firewallu neaplikuje automaticky. Je totiž vhodné, abyste nejprve sami zkontrolovali nastavení firewallu v /etc/arno-iptables-firewall/firewall.conf, protože obzvláště během přechodu na vyšší verzi se mohly změnit konfigurační proměnné.
+ .
+ Abyste později nemuseli s aplikováním nových pravidel firewallu čekat až do příštího restartu počítače, můžete je povolit příkazem 'invoke-rc.d arno-iptables-firewall start'.
+ .
+ Jestliže ruční kontrolu pravidel nevyžadujete, můžete nová pravidla firewallu aplikovat právě teď.
+description-da.UTF-8: Skal brandmuren genstartes nu?
+ Af sikkerhedsmæssige årsager bliver den nye brandmursopsætning ikke anvendt automatisk. Du skal nok udføre en manuel inspektion af brandmurskonfigurationen i /etc/arno-iptables-firewall/firewall.conf, specielt når du opgraderer til en ny version, da konfigurationsvariabler måske har ændret sig.
+ .
+ For senere manuelt at anvende de nye indstillinger for brandmuren før den næste genstart så kør »invoke-rc.d arno-iptables-firewall start«.
+ .
+ Hvis du ikke har behov for manuel inspektion, så kan brandmursopsætningen tilføjes nu.
+description-de.UTF-8: Soll die Firewall jetzt (neu) gestartet werden?
+ Aus Sicherheitsgründen wird die (neue) Firewall-Konfiguration nicht automatisch aktiviert. Eventuell möchten Sie eine manuelle Inspektion der Firewall-Konfiguration in /etc/arno-iptables-firewall/firewall.conf durchführen, insbesondere wenn Sie auf eine neue Version aktualisieren, da sich Konfigurationsvariablen geändert haben könnten.
+ .
+ Wenn Sie die neue Firewall-Konfiguration vor dem nächsten Neustart manuell laden wollen, führen Sie 'invoke-rc.d arno-iptables-firewall start' aus.
+ .
+ Wenn Sie keine manuelle Inspektion wünschen, kann die Firewall-Konfiguration jetzt geladen werden.
+description-es.UTF-8: ¿Desea que el cortafuegos se (re)inicie ahora?
+ Por motivos de seguridad la configuración del nuevo cortafuegos no se aplica automáticamente. Puede que desee realizar una inspección manual de la configuración en el archivo «/etc/arno-iptables-firewall/firewall.conf», especialmente cuando se actualice a una nueva versión, ya que pueden haber cambiado algunas variables de la configuración.
+ .
+ Para aplicar manualmente las configuraciones nuevas del cortafuegos antes del siguiente reinicio, ejecute «invoke-rc.d arno-iptables-firewall start».
+ .
+ Si no necesita revisar las configuraciones manualmente, la configuración del cortafuegos se puede aplicar ahora.
+description-fr.UTF-8: Faut-il (re)démarrer le pare-feu maintenant ?
+ Pour des raisons de sécurité, la nouvelle configuration du pare-feu n'est pas automatiquement mise en oeuvre. Vous voulez probablement réaliser une vérification manuelle du fichier de configuration du pare-feu /etc/arno-iptables-firewall/firewall.conf, en particulier lors d'une mise à jour car les variables de configuration pourraient avoir été modifiées.
+ .
+ Afin d'appliquer ultérieurement la nouvelle configuration avant le redémarrage, utilisez la commande « invoke-rc.d arno-iptables-firewall start ».
+ .
+ Si vous ne souhaitez pas vérifier vous-même la configuration du pare-feu, elle peut être appliqué immédiatement.
+description-it.UTF-8: Il firewall deve essere (ri)avviato ora?
+ Per motivi di sicurezza, la nuova configurazione del firewall non è applicata automaticamente. Potresti volere controllare manualmente la configurazione del firewall in /etc/arno-iptables-firewall/firewall.conf, soprattutto se stai aggiornando a una nuova versione, perché le variabili di configurazione potrebbero essere cambiate.
+ .
+ Per applicare manualmente le nuove impostazioni del firewall prima del prossimo riavvio del sistema, puoi eseguire 'invoke-rc.d arno-iptables-firewall start'.
+ .
+ Se non hai bisogno di controllare manualmente il file di configurazione, le impostazioni del firewall possono essere applicate ora.
+description-ja.UTF-8: すぐにファイアウォールを (再度) 起動しますか?
+ セキュリティ上の理由から、新しいファイアウォール設定は自動的に適用されません。特に新しいバージョンへアップグレードする場合、設定の変数が変わっているかもしれないので、/etc/arno-iptables-firewall/firewall.conf にあるファイアウォール設定の手動検査をするのが良いでしょう。
+ .
+ 後ほど手動で、新しいファイアウォール設定を次回の再起動前に適用するには、「invoke-rc.d arno-iptables-firewall start」を実行してください。
+ .
+ 手動での検査が必要ない場合、ファイアウォール設定をここで適用することができます。
+description-nb.UTF-8: Skal brannmuren (om)startes nå?
+ Av sikkerhetsgrunner blir det nye brannmuroppsettet ikke brukt automatisk. Du bør kanskje undersøke manuelt innstillingene i /etc/arno-iptables-firewall/firewall.conf, spesielt når det oppgraderes til en nyere versjon, siden oppsettsvariabler kan ha blitt endret.
+ .
+ For å bruke de nye brannmurinnstillingene før neste omstart av systemet, kjør «invoke-rc.d arno-iptables-firewall start».
+ .
+ Hvis du ikke trenger å undersøke manuelt, så kan brannmuroppsettet brukes nå.
+description-nl.UTF-8: Moet de firewall nu (opnieuw) gestart worden?
+ Om veiligheidsredenen wordt de nieuwe firewall-configuratie niet automatisch geladen. U wilt mogelijk eerst een handmatige inspectie uitvoeren op de firewall-configuratie in /etc/arno-iptables-firewall/firewall.conf, vooral wanneer er is opgewaardeerd naar een nieuwe versie, omdat er misschien configuratievariabelen zijn veranderd.
+ .
+ Om straks de nieuwe firewall-instellingen handmatig toe te passen voor de volgende herstart voert u 'invoke-rc.d arno-iptables-firewall start' uit.
+ .
+ Wanneer u geen handmatige inspectie wenst uit te voeren kan de firewall-configuratie nu worden toegepast.
+description-no.UTF-8: Skal brannmuren (om)startes nå?
+ Av sikkerhetsgrunner blir det nye brannmuroppsettet ikke brukt automatisk. Du bør kanskje undersøke manuelt innstillingene i /etc/arno-iptables-firewall/firewall.conf, spesielt når det oppgraderes til en nyere versjon, siden oppsettsvariabler kan ha blitt endret.
+ .
+ For å bruke de nye brannmurinnstillingene før neste omstart av systemet, kjør «invoke-rc.d arno-iptables-firewall start».
+ .
+ Hvis du ikke trenger å undersøke manuelt, så kan brannmuroppsettet brukes nå.
+description-pl.UTF-8: Zrestartować teraz zaporę sieciową?
+ Ze względów bezpieczeństwa, nowa konfiguracja zapory nie zostanie włączona automatycznie. Można teraz przeprowadzić ręczne sprawdzenie konfiguracji zapory w pliku /etc/arno-iptables-firewall/firewall.conf, co jest szczególnie polecane w przypadku aktualizacji do nowej wersji, ponieważ zmienne konfiguracyjne mogły się zmienić.
+ .
+ Aby później ręcznie zastosować nowe ustawienia zapory sieciowej jeszcze przed kolejnym, ponownym uruchomieniem komputera, proszę wykonać "invoke-rc.d arno-iptables-firewall start".
+ .
+ Jeśli sprawdzenie konfiguracji nie będzie wykonywane, ustawienia zapory mogą zostać zastosowane już teraz.
+description-pt.UTF-8: Deverá a firewall ser (re)iniciada agora?
+ Por razões de segurança, a nova configuração da firewall não é aplicada automaticamente. Você pode querer inspeccionar manualmente a configuração da firewall em /etc/arno-iptables-firewall/firewall.conf, especialmente quando actualiza para uma nova versão, porque algumas variáveis de configuração podem ter alterado.
+ .
+ Para depois poder aplicar manualmente a nova configuração de firewall antes do próximo reiniciar da máquina, invoque 'invoke-rc.d arno-iptables-firewall start'.
+ .
+ Se você não precisa de inspecção manual, a configuração da firewall pode ser aplicada agora.
+description-pt_BR.UTF-8: O firewall deve ser (re)iniciado agora?
+ Por razões de segurança a nova configuração do firewall não é aplicada automaticamente. Você pode querer realizar uma inspeção manual da configuração do firewall em /etc/arno-iptables-firewall/firewall.conf, especialmente quando atualizando para uma nova versão, pois variáveis de configuração podem ter mudado.
+ .
+ Para posteriormente aplicar manualmente as novas configurações do firewall antes da próxima reinicialização, execute 'invoke-rc.d arno-iptables-firewall start'.
+ .
+ Se você não precisa de inspeção manual, a configuração do firewall pode ser aplicada agora.
+description-ru.UTF-8: Пере(запустить) межсетевой экран прямо сейчас?
+ С целью усиления безопасности новые настройки межсетевого экрана автоматически не применяются. Вы можете захотеть провести осмотр настроек межсетевого экрана в файле /etc/arno-iptables-firewall/firewall.conf, особенно если устанавливаете новую версию, так как настроечные переменные могли измениться.
+ .
+ Позднее, чтобы вручную применить новые настройки межсетевого экрана перед следующей перезагрузкой, запустите 'invoke-rc.d arno-iptables-firewall start'.
+ .
+ Если не хотите проверять настройки, то firewall-setup можно запустить прямо сейчас.
+description-sv.UTF-8: Ska brandväggen startas om nu?
+ Av säkerhetsskäl kommer den nya brandväggskonfigurationen inte att automatiskt verkställas. Du kanske vill genomföra en manuell inspektion av brandväggskonfigurationen i /etc/arno-iptables-firewall/firewall.conf, speciellt vid uppgradering till en ny version eftersom konfigurationsvariabler kan ha ändrats.
+ .
+ För att senare manuellt verkställa de nya brandväggsinställningarna före nästa omstart, kör "invoke-rc.d arno-iptables-firewall start".
+ .
+ Om du inte behöver göra en manuell inspektion kan brandväggskonfigurationen verkställas nu.
+description-vi.UTF-8: Có nên khởi chạy lại bức tường lửa ngay bây giờ không?
+ Vì lý do bảo mật, thiết lập bức tường lửa mới không được áp dụng tự động. Có lẽ bạn muốn xem lại cấu hình bức tường lửa trong </etc/arno-iptables-firewall/firewall.conf>, nhất là khi nâng cấp lên phiên bản mới, vì biến cấu hình có thể thay đổi.
+ .
+ Lúc sau, để tự áp dụng thiết lập bức tường lửa mới trước khi khởi động lại, hãy sử dụng lệnh « invoke-rc.d arno-iptables-firewall start ».
+ .
+ Nếu bạn không muốn tự xem lại, thiết lập bức tường lửa có thể được áp dụng ngay bây giờ.
+Default: true
+
+Template: arno-iptables-firewall/nat
+Type: boolean
+description: Do you want to enable NAT?
+ If the connected internal networks should be able to access the outside
+ world (e.g. the Internet) through the firewall, masquerading (NAT) has
+ to be enabled.
+ .
+ When in doubt, you can safely leave this disabled.
+description-cs.UTF-8: Chcete povolit NAT?
+ Aby mohly vnitřní počítače v síti přistupovat k venkovnímu světu (např. Internetu) skrze tento firewall, musíte povolit maškarádu (NAT, neboli překlad adres).
+ .
+ Jste-li na pochybách, můžete ponechat vypnuté.
+description-da.UTF-8: Ønsker du at aktivere NAT?
+ Hvis de forbundne interne netværk skal kunne tilgå den omkringliggende verden (f.eks. internettet) via brandmuren, så skal masquerading (NAT) være aktiveret.
+ .
+ Hvis i tvivl, så kan du uden problemer efterlade denne deaktiveret.
+description-de.UTF-8: Möchten Sie NAT aktivieren?
+ Wenn das interne Netzwerk auf die Außenwelt (z.B. das Internet) über die Firewall zugreifen können soll, dann muss Masquerading (NAT) aktiviert werden.
+ .
+ Wenn Zweifel bestehen, kann dies deaktiviert bleiben.
+description-es.UTF-8: ¿Desea habilitar NAT?
+ Si las redes internas conectadas deberían tener acceso al exterior (por ejemplo: Internet) a través del cortafuegos, el enmascaramiento (NAT) tiene que estar activo.
+ .
+ Si tiene alguna duda, puede dejar esto deshabilitado con seguridad.
+description-fr.UTF-8: Faut-il activer la traduction d'adresses (NAT) ?
+ Si les réseaux internes connectés doivent être capables d'accéder à l'extérieur (par exemple, l'internet) à travers le pare-feu, la traduction d'adresse (NAT) doit être activée.
+ .
+ Dans le doute, vous pouvez sans danger désactiver cette option.
+description-it.UTF-8: Vuoi abilitare il NAT (Network Address Translation)?
+ Se le macchine appartenenti alla rete interna devono accedere alla rete esterna (per es. Internet) passando attraverso il firewall, allora è necessario abilitare il masquerading (NAT).
+ .
+ Se sei in dubbio, puoi lasciare disabilitata questa opzione.
+description-ja.UTF-8: NAT を有効にしますか?
+ 接続した内部ネットワークを、ファイアウォールを通して外界 (例: インターネット) に接続できるようにしなければならない場合は、IP マスカレード (NAT) を有効にする必要があります。
+ .
+ 不明な場合は、これは無効にしたままでいるのが安全です。
+description-nb.UTF-8: Vil du slå på NAT?
+ Hvis systemer på det interne nettet skal kunne få tilgang til utenverdenen (f.eks. Internett) gjennom brannmuren, så må NAT  (masquerading) slås på.
+ .
+ Er du i tvil kan dette trygt være slått av.
+description-nl.UTF-8: Wilt u NAT instellen?
+ Als de verbonden internet netwerken toegang naar de buitenwereld (b.v. het internet) moeten krijgen via de firewall, dan moet u masquerading (NAT) instellen.
+ .
+ Wanneer u twijfelt is het veilig om dit uitgeschakeld te houden.
+description-no.UTF-8: Vil du slå på NAT?
+ Hvis systemer på det interne nettet skal kunne få tilgang til utenverdenen (f.eks. Internett) gjennom brannmuren, så må NAT  (masquerading) slås på.
+ .
+ Er du i tvil kan dette trygt være slått av.
+description-pl.UTF-8: Włączyć NAT?
+ Jeśli podłączone wewnętrzne sieci powinny mieć dostęp na zewnątrz (np. do Internetu) przez zaporę, powinno się włączyć tzw. maskaradę (NAT).
+ .
+ W przypadku wątpliwości, można bez obaw pozostawić tę opcję wyłączoną.
+description-pt.UTF-8: Você quer activar NAT?
+ Se as redes internas ligadas deverão ser capazes de aceder ao mundo exterior (ex à internet) através da firewall, tem que ser activada a função 'masquerading' (NAT).
+ .
+ Quando em dúvida, você pode seguramente deixar isto desactivado.
+description-pt_BR.UTF-8: Você quer habilitar NAT?
+ Se as redes internas conectadas podem estar aptas a acessar o mundo externo (p.ex. a Internet) através do firewall, mascaramento ("masquerading" - NAT) precisa ser habilitado.
+ .
+ Quando em dúvida, você pode seguramente deixar isto desabilitado.
+description-ru.UTF-8: Включить NAT?
+ Если подключённым внутренним сетям требуется доступ к внешнему миру (например, к интернету) через межсетевой экран, то нужно включить маскарадинг (NAT).
+ .
+ Если сомневаетесь, то оставьте выключенным.
+description-sv.UTF-8: Vill du aktivera NAT?
+ Om de anslutna interna nätverken ska kunna komma åt världen utanför (exempelvis Internet) genom brandväggen, måste maskering (NAT) vara aktiverad.
+ .
+ När du är osäker, kan du med säkerhet lämna denna inaktiverad.
+description-vi.UTF-8: Bạn có muốn bật chạy NAT không?
+ Nếu những mạng nội bộ đã kết nối nên có khả năng truy cập thế giới bên ngoài (v.d. Mạng) qua bức tường lửa, phải hiệu lực khả năng NAT.
+ .
+ Khi chưa chắc, bạn có thể để lại đã tắt một cách an toàn.
+Default: false
+
+Template: arno-iptables-firewall/config-int-if
+Type: string
+description: Internal network interfaces:
+ The internal network interfaces connect this machine
+ to trusted networks (e.g. the office or home LAN). The firewall will permit
+ all connection attempts on these interfaces. If you specify such interfaces,
+ you will be able to permit the internal networks to access the Internet through
+ this host. If there are no such interfaces, leave this empty.
+ .
+ Multiple interfaces should be entered space separated.
+description-cs.UTF-8: Vnitřní síťová rozhraní:
+ Vnitřní síťová rozhraní připojují tento počítač k důvěryhodným sítím (např. k firemní nebo domácí LAN). Firewall na těchto rozhraních povolí všechny pokusy o připojení. Pokud taková rozhraní zadáte, budete pak moci určit, zda se vnitřní sítě mohou připojovat k Internetu přes tento počítač. Jestliže žádná taková rozhraní nemáte, ponechte prázdné.
+ .
+ Více rozhraní můžete zadat tak, že je oddělíte mezerami.
+description-da.UTF-8: Interne netværksgrænseflader:
+ De interne netværksgrænseflader forbinder denne maskine med troværdige netværk (f.eks. kontoret eller hjemme-LAN). Brandmuren vil tillade alle forbindelsesforsøg på disse grænseflader. Hvis du angiver sådanne grænseflader, så vil du kunne tillade at de interne netværk tilgår internettet via denne vært. Hvis der ikke er sådanne grænseflader, så efterlad denne tom.
+ .
+ Flere grænseflader skal indtastes mellemrumsadskilt.
+description-de.UTF-8: Interne Netzwerkschnittstellen:
+ Die internen Netzwerkschnittstellen verbinden dieses System mit vertrauenswürdigen Netzwerken (z.B. Heim- oder Büronetzwerk). Die Firewall wird Zugriffe aus diesen Netzwerken zulassen. Werden solche Schnittstellen angegeben, ist es möglich den Internet-Zugriff für Netzwerke an diesen Schnittstellen zuzulassen. Wenn keine solchen Schnittstellen vorhanden sind, sollte dieses Feld leer bleiben.
+ .
+ Mehrere Schnittstellen müssen mit Leerzeichen getrennt angegeben werden.
+description-es.UTF-8: Interfaces internas de red:
+ Las interfaces internas de red conectan esta máquina con las redes de confianza (por ejemplo: la LAN casera o la de la oficina). El cortafuegos permitirá todos los intentos de conexión a estas interfaces. Si especifica dichas interfaces, podrá permitir que las redes internas tengan acceso a Internet a través de esta máquina. Si no existen estas interfaces, deje esto vacío.
+ .
+ Las interfaces se deben introducir separadas por espacios.
+description-fr.UTF-8: Interfaces réseau internes :
+ Les interfaces réseau internes connectent cette machine à des réseaux sûrs (par exemple, un réseau d'entreprise ou familial). Le pare-feu autorise toutes les connexions sur ces interfaces. Si vous indiquez de telles interfaces, vous autoriserez les réseaux internes à accéder à l'extérieur à travers cet hôte. Si vous n'utilisez pas de telles interfaces, veuillez laisser ce champ vide.
+ .
+ Les interfaces multiples doivent être séparées par des espaces.
+description-it.UTF-8: Interfacce di rete interne:
+ Le interfacce di rete interne connettono questa macchina alle reti sicure (per es. la LAN dell'ufficio o di casa). Il firewall permetterà tutti i tentativi di connessione provenienti da queste interfacce. Se specifichi queste interfacce, potrai permettere alle reti interne di accedere a Internet tramite questa macchina. Se non ci sono interfacce di rete interne, lascia vuoto questo campo.
+ .
+ Se sono presenti diverse interfacce, queste devono essere separate da spazi.
+description-ja.UTF-8: 内部ネットワークインターフェイス:
+ 内部ネットワークインターフェイスは、このマシンを信頼するネットワーク (例: オフィス LAN や家庭内 LAN) に接続します。ファイアウォールはこのインターフェイス上で試みられたすべての接続を許可します。このインターフェイスを指定する場合は、内部ネットワークがこのホストを通じてインターネットにアクセスできるようにします。そのようなインターフェイスが無い場合は、これは空白にしておいてください。
+ .
+ 複数のインターフェイスは、空白で区切って入力する必要があります。
+description-nb.UTF-8: Interne nettverksgrensesnitt:
+ De interne nettverksgrensesnittene forbinder denne maskinen med nettverk den stoler på (f.eks. kontornettet eller hjemmenettet). Brannmuren tillater all tilkobling på disse grensesnittene. Hvis du oppgir slike grensesnitt, så kan du la maskiner på det interne nettet få tilgang til det ytre nettet gjennom denne maskinen.  Er det ingen slike grensesnitt, så la dette være tomt.
+ .
+ Flere grensesnitt atskilles med mellomrom.
+description-nl.UTF-8: Interne netwerkinterface:
+ De interne netwerkinferfaces verbinden deze machine met vertrouwde netwerken (zoals het kantoor- of thuis-LAN). De firewall zal alle verbindingspogingen naar deze interfaces toestaan. Wanneer u zulke interfaces opgeeft, kunt u interne netwerken toestaan het internet te bereiken via deze machine. Geef niets op als er geen van zulke interfaces zijn.
+ .
+ Gebruik bij meerdere interfaces een spatie als scheidingsteken.
+description-no.UTF-8: Interne nettverksgrensesnitt:
+ De interne nettverksgrensesnittene forbinder denne maskinen med nettverk den stoler på (f.eks. kontornettet eller hjemmenettet). Brannmuren tillater all tilkobling på disse grensesnittene. Hvis du oppgir slike grensesnitt, så kan du la maskiner på det interne nettet få tilgang til det ytre nettet gjennom denne maskinen.  Er det ingen slike grensesnitt, så la dette være tomt.
+ .
+ Flere grensesnitt atskilles med mellomrom.
+description-pl.UTF-8: Wewnętrzne interfejsy sieciowe:
+ Wewnętrzne interfejsy sieciowe łączą komputer z sieciami zaufanymi (np. z domową lub biurową siecią LAN). Zapora będzie zezwalała na wszelkie próby połączeń w tych interfejsach. Jeśli tego typu interfejsy zostaną włączone, będzie możliwe zezwolenie im na dostęp do Internetu za pomocą tego komputera. Jeśli nie występują, proszę pozostawić poniższe pole puste.
+ .
+ Można podać wiele interfejsów, oddzielając poszczególne spacją.
+description-pt.UTF-8: Interfaces de rede internas:
+ As interfaces de rede internas ligam esta máquina a redes de confiança (ex. a rede LAN de escritório ou de casa). A firewall irá permitir todas as tentativas de ligação nestas interfaces. Se você especificar quais interfaces, você vai poder permitir às redes internas de aceder à internet através desta máquina. Se não existem tais interfaces, deixe este campo vazio.
+ .
+ Múltiplas interfaces devem ser inseridas separadas por espaços.
+description-pt_BR.UTF-8: Interfaces de rede internas:
+ As interfaces de rede internas conectam esta máquina a redes confiáveis (p.ex. o escritório ou uma rede caseira). O firewall permitirá todas as tentativas de conexão nestas interfaces. Se você especificar tais interfaces, você poderá permitir que redes internas acessem a Internet através desta máquina. Se não há tais interfaces, deixe em branco.
+ .
+ Múltiplas interfaces devem ser informadas separadas por espaço.
+description-ru.UTF-8: Внутренние сетевые интерфейсы:
+ Через внутренние сетевые интерфейсы компьютер подключается к доверительным сетям (например, к офисной или домашней сети). Межсетевой экран будет пропускать все подключения из этих интерфейсов. Если вы укажите интерфейсы, то сможете разрешить доступ из внутренних сетей в интернет через этот компьютер. Если таких интерфейсов нет, то оставьте поле пустым.
+ .
+ Несколько интерфейсов нужно указывать через пробел.
+description-sv.UTF-8: Interna nätverksgränssnitt:
+ De interna nätverksgränssnitten ansluter denna maskin till pålitliga nätverk (exempelvis kontoret eller hemnätverket). Brandväggen kommer att tillåta alla anslutningsförsök på dessa gränssnitt. Om du anger sådan gränssnitt, kommer du kunna tillåta interna nätverk att komma åt Internet genom denna värd. Om det inte finns några sådan gränssnitt, lämna denna blank.
+ .
+ Flera gränssnitt måste separeras med blanksteg.
+description-vi.UTF-8: Giao diện mạng nội bộ :
+ Những giao diện mạng nội bộ kết nối máy này đến mạng đáng tin (v.d. LAN văn phòng hay ở nhà). Bức tường lửa sẽ cho phép mọi việc cố kết nối trên những giao diện này. Nếu bạn xác định giao diện như vậy, bạn sẽ có khả năng cho phép những mạng nội bộ truy cập Mạng qua máy này. Nếu không có giao diện như vậy, hãy bỏ trống.
+ .
+ Hãy định giới bằng dấu cách nhiều giao diện.
+
+Template: arno-iptables-firewall/config-int-net
+Type: string
+description: Internal subnets:
+ You have to specify which subnets are connected to the internal network
+ interfaces. Hosts in the internal networks can connect to all the services on
+ this machine.
+ .
+ Give subnets in CIDR notation (e.g. 192.168.1.0/24). If you have
+ multiple internal networks, they should be space separated.
+description-cs.UTF-8: Vnitřní podsítě:
+ Musíte zadat podsítě, které jsou připojeny k vnitřním síťovým rozhraním. Počítače ve vnitřních sítích se mohou připojit ke všem službám na tomto počítači.
+ .
+ Podsítě zadávejte v notaci CIDR (např. 192.168.1.0/24). Máte-li více vnitřních sítí, oddělte je mezerami.
+description-da.UTF-8: Interne undernet:
+ Du skal angive hvilke undernet der er forbundet til de interne netværksgrænseflader. Værter i det interne netværk kan forbinde til alle tjenesterne på denne maskine.
+ .
+ Angiv undernet i CIDR-notation (f.eks. 192.168.1.0/24). Hvis du har flere interne netværk, så skal de være adskilt af mellemrum.
+description-de.UTF-8: Interne Netzwerke:
+ Sie müssen angeben, welche Sub-Netze mit den internen Netzwerkschnittstellen verbunden sind. Rechner in diesen Netzwerken haben Zugriff auf alle Dienste dieser Maschine.
+ .
+ Bitte geben Sie die Sub-Netze in CIDR-Notation an (z.B. 192.168.129.0/8). Wenn mehrere Sub-Netze angegeben werden, müssen diese durch Leerzeichen getrennt werden.
+description-es.UTF-8: Subredes internas:
+ Tiene que especificar qué subredes están conectadas a las interfaces de redes internas. Los servidores en las redes internas pueden conectar con todos los servicios de esta máquina.
+ .
+ Introduzca las subredes en notación CIDR (por ejemplo: 192.168.1.0/24). Si tiene varias redes internas, debe introducirlas separadas por espacios.
+description-fr.UTF-8: Sous-réseaux internes :
+ Veuillez indiquer les sous-réseaux connectés aux interfaces réseau internes. Les hôtes de ces réseaux internes pourront se connecter à tous les services de cette machine.
+ .
+ Veuillez indiquer les sous-réseaux avec la notation CIDR (par exemple, 192.168.1.0/24). Les entrées multiples doivent être séparés par des espaces.
+description-it.UTF-8: Sottoreti interne:
+ Devi specificare quali sottoreti sono connesse alle interfacce di rete interne. Le macchine appartenenti alle reti interne possono connettersi a tutti i servizi presenti su questa macchina.
+ .
+ Inserisci le sottoreti in notazione CIDR (per es. 192.168.1.0/24). Se hai diverse reti interne, queste devono essere inserite separate da spazi.
+description-ja.UTF-8: 内部サブネット:
+ どのサブネットが内部ネットワークインターフェイスに接続するかを指定する必要があります。内部ネットワーク内のホストは、このマシン上のすべてのサービスに接続できます。
+ .
+ サブネットを CIDR 記法 (例: 192.168.1.0/24) で指定してください。複数の内部ネットワークがある場合は、空白で区切る必要があります。
+description-nb.UTF-8: Interne subnett:
+ Du må oppgi hvilke subnett som er koblet til de interne nettverksgrensesnittene. Verter i de interne nettverkene har tilgang til alle tjenester på denne maskinen.
+ .
+ Oppgi subnett med CIDR-notasjon (f.eks. 192.168.1.0/24). Hvis du har flere interne nettverk må de atskilles med mellomrom.
+description-nl.UTF-8: Interne subnetten:
+ Geef op welke subnetten verbonden zijn met de interne netwerkinterfaces.  Machines in de interne netwerken kunnen verbindingen opzetten met alle diensten op deze machine.
+ .
+ Geef subnetten op in CIDR-notatie (b.v. 192.168.1.0/24). Gebruik een spatie als scheidingsteken wanneer er meerdere interne netwerken zijn.
+description-no.UTF-8: Interne subnett:
+ Du må oppgi hvilke subnett som er koblet til de interne nettverksgrensesnittene. Verter i de interne nettverkene har tilgang til alle tjenester på denne maskinen.
+ .
+ Oppgi subnett med CIDR-notasjon (f.eks. 192.168.1.0/24). Hvis du har flere interne nettverk må de atskilles med mellomrom.
+description-pl.UTF-8: Wewnętrzne podsieci:
+ Można określić, które podsieci są połączone z wewnętrznymi interfejsami sieciowymi. Komputery w sieciach wewnętrznych, mają dostęp do wszystkich usług tego komputera.
+ .
+ Proszę podać podsieci w notacji CIDR (np. 192.168.1.0/24). Kilka podsieci należy oddzielić spacją.
+description-pt.UTF-8: Sub-redes internas:
+ Você tem que especificar quais sub-redes estão ligadas às interfaces de rede interna. As máquinas na rede interna podem ligar a todos os serviços desta máquina.
+ .
+ Indique as sub-redes em notação CIDR (ex. 192.168.1.0/24), se você tem múltiplas redes internas, elas devem ficar separadas por espaços.
+description-pt_BR.UTF-8: Sub-redes internas:
+ Você tem que especificar quais sub-redes estão conectadas nas interfaces de rede internas. Máquinas nas redes internas podem conectar-se a todos os serviços nesta máquina.
+ .
+ Informe sub-redes na notação CIDR (p.ex. 192.168.1.0/24). Se você tem múltiplas redes internas, elas devem ser separadas por espaço.
+description-ru.UTF-8: Внутренние подсети:
+ Вам нужно указать какие внутренние подсети доступны через внутренние сетевые интерфейсы. Компьютеры из внутренних сетей смогут подключаться ко всем службам этой машины.
+ .
+ Подсети задаются в формате CIDR (например, 192.168.1.0/24). Несколько подсетей можно указать через пробел.
+description-sv.UTF-8: Interna subnät:
+ Du måste ange vilka subnät som är anslutna till de interna nätverksgränssnitten. Värdar på de interna nätverken kan ansluta till alla tjänster på denna maskin.
+ .
+ Ange subnät i CIDR-notation (exempelvis 192.168.1.0/24). Om du har flera interna nätverk, bör de separeras med blanksteg.
+description-vi.UTF-8: Mạng phụ nội bộ :
+ Bạn phải xác định những mạng phụ nào được kết nối đến giao diện mạng nội bộ. Máy trên giao diện nội bộ có khả năng kết nối đến mọi dịch vụ trên máy này.
+ .
+ Hãy nhập mạng phụ bằng cách ghi CIDR (v.d. 192.168.1.0/24). Hãy định giới nhiều mạng nội bộ bằng dấu cách.
+
+Template: arno-iptables-firewall/config-int-nat-net
+Type: string
+description: Internal networks with access to external networks:
+ If you want to restrict the access to the external networks, you can specify
+ the allowed internal subnets in CIDR notation (e.g. 192.168.1.0/24). It is
+ also possible to specify single hosts by their IP addresses. If you have
+ multiple internal networks and/or hosts, they should be given space separated.
+ .
+ If you leave this empty, the value is automatically set to equal the internal
+ network. Therefore the WHOLE internal network will have access to the external
+ networks, so be careful to only specify networks that should have access to
+ the outside world.
+ .
+ If you are unsure, leave this empty.
+description-cs.UTF-8: Vnitřní sítě s přístupem k externím sítím:
+ Chcete-li omezit přístup k externím sítím, můžete zadat mezerami oddělený seznam sítí a/nebo počítačů, jimž chcete přístup umožnit. Jednotlivé počítače zadejte pomocí jejich IP adres, u sítí použijte CIDR notaci (např. 192.168.1.0/24).  
+ .
+ Ponecháte-li pole prázdné, hodnota se automaticky nastaví na celou vnitřní síť. To znamená, že VŠECHNY počítače ve vnitřní síti budou mít přístup k externím sítím. Buďte tedy opatrní a zadejte pouze podsítě, kterým chcete přístup povolit.
+ .
+ Pokud si nejste jisti, ponechte prázdné.
+description-da.UTF-8: Interne netværk med adgang til eksterne netværk:
+ Hvis du ønsker at begrænse adgangen til de eksterne netværk, så kan du angive de tilladte undernet i CIDR-notation (f.eks. 192.168.1.0/24). Det er også muligt at angive enkelte værter ved deres IP-adresser. Hvis du har flere interne netværk og/eller værter, så skal de angives adskilt af mellemrum.
+ .
+ Hvis du efterlader denne tom, så sættes værdien automatisk til værdien for det interne netværk. Derfor vil HELE det interne netværk have adgang til det eksterne netværk, så vær forsigtig med kun at angive netværk som skal have adgang til den omkringliggende verden.
+ .
+ Hvis du er usikker, så efterlad denne tom.
+description-de.UTF-8: Internen Netzwerke mit Zugriff auf externe Netzwerke:
+ Wenn Sie den Zugriff auf externe Netzwerke beschränken wollen, geben Sie hier interne Sub-Netze in CIDR-Notation (z.B. 192.168.129.0/8) an, denen der Zugriff ermöglicht werden soll. Es ist auch möglich einzelne Rechner mit ihrer IP-Adresse anzugeben. Mehrere Einträge müssen mit Leerzeichen getrennt angegeben werden.
+ .
+ Bleibt dieser Eintrag leer, wird er automatisch dem internen Netzwerk gleichgesetzt. Dann können ALLE Rechner in den internen Sub-Netzen auf das Internet zugreifen. Achten Sie also darauf, nur die Netze einzutragen, die Zugriff haben sollen.
+ .
+ Wenn Sie sich unsicher sind, tragen Sie hier nichts ein.
+description-es.UTF-8: Redes internas con acceso a redes externas:
+ Si desea restringir el acceso a las redes externas, puede especificar las subredes internas permitidas en notación CIDR (por ejemplo: «192.168.1.0/24»). También puede especificar sólo los servidores por sus direcciones IP. Si tiene varias redes internas y/o servidores, se deben introducir separadas por espacios.
+ .
+ Si deja este valor vacío, el valor se fijará automáticamente para igualar la red interna. Por lo tanto, las redes internas en CONJUNTO tendrán acceso a las redes externas, así que tenga cuidado y especifique sólo las redes que tendrán acceso al exterior.
+ .
+ Si no está seguro, deje esto en blanco.
+description-fr.UTF-8: Réseaux internes autorisés à accéder aux réseaux extérieurs :
+ Si vous voulez restreindre l'accès aux réseaux extérieurs, vous pouvez indiquer les sous-réseaux internes autorisés avec la notation CIDR (par exemple, 192.168.1.0/24). Il est aussi possible d'indiquer des hôtes uniques par leurs adresses IP. Pour choisir plusieurs réseaux internes ou hôtes, vous devez les séparés par des espaces
+ .
+ Si vous laissez ce champ vide, il aura pour valeur le réseau interne. Par conséquent, le réseau interne ENTIER aura accès aux réseaux extérieurs, vous devez donc veillez à indiquer seulement les réseaux qui ont besoin d'un accès au monde extérieur.
+ .
+ Dans le doute, vous devriez laisser ce champ vide.
+description-it.UTF-8: Reti interne con accesso alle reti esterne:
+ Se vuoi restringere l'accesso verso la rete esterna, puoi specificare quali sottoreti interne devono essere abilitate, utilizzando la notazione CIDR (per es. 192.168.1.0/24). E' anche possibile specificare singole macchine utilizzando il loro indirizzo IP. Se hai diverse reti interne e/o macchine, queste devono essere inserite separate da spazi.
+ .
+ Se lasci vuoto questo campo, essa sarà automaticamente impostata uguale alla rete interna. In questo caso l'INTERA rete interna avrà accesso alla rete esterna, quindi fai attenzione a specificare soltanto le reti che devono avere accesso verso l'esterno.
+ .
+ Se non sei sicuro, lascia vuoto questo campo.
+description-ja.UTF-8: 外部ネットワークにアクセスする内部ネットワーク:
+ 外部ネットワークへのアクセスを制限したい場合、許可する内部サブネットを CIDR 記法で指定することができます (例: 192.168.1.0/24)。単一のホストを IP アドレスを指定することも可能です。複数の内部ネットワークや複数のホストがある場合は、空白で区切る必要があります。
+ .
+ これは空白のままにしておくと、内部ネットワークと同じ値が自動的に設定されます。そのため、「すべての」内部ネットワークが外部ネットワークに接続できるようになります。ですので、外部に接続できるネットワークだけを指定するように注意してください。
+ .
+ よく分からない場合は、この欄は空白にしておいてください。
+description-nb.UTF-8: Interne nettverk med tilgang til ytre nettverk:
+ Hvis du vil innskrenke adgangen til de ytre nettverkene kan du oppgi de tillatte indre subnettene med CIDR-notasjon (f.eks. 192.168.1.0/24). Det er også mulig å oppgi enkeltmaskiner ved deres IP-adresser. Er det flere interne nettverk og/eller verter må de atskilles med mellomrom.
+ .
+ Hvis dette er tomt blir det automatisk satt til å være lik det interne nettverket. Derfor får HELE det interne nettverket tilgang til de ytre nettverkene, så pass på at du bare oppgir nettverk som skal ha tilgang til verden utenfor.
+ .
+ Er du usikker, så la dette være tomt.
+description-nl.UTF-8: Interne netwerken met toegang tot externe netwerken:
+ Geef de toegestane interne netwerken in CIDR-notatie (b.v. 192.168.1.0/24) wanneer u toegang tot externe netwerken wilt beperken.  Het is ook mogelijk specifieke machines op te geven door hun IP adres te geven.  Gebruik een spatie als scheidingsteken in geval van meerdere netwerken en/of machines.
+ .
+ Wanneer u dit leeg laat wordt de waarde automatisch op het hele interne netwerk gezet. Dan zal het GEHELE interne netwerk toegang hebben tot de externe netwerken. Let er op dat u enkel die netwerken opgeeft die werkelijk toegang moeten hebben tot de buitenwereld.
+ .
+ Laat dit leeg bij twijfel.
+description-no.UTF-8: Interne nettverk med tilgang til ytre nettverk:
+ Hvis du vil innskrenke adgangen til de ytre nettverkene kan du oppgi de tillatte indre subnettene med CIDR-notasjon (f.eks. 192.168.1.0/24). Det er også mulig å oppgi enkeltmaskiner ved deres IP-adresser. Er det flere interne nettverk og/eller verter må de atskilles med mellomrom.
+ .
+ Hvis dette er tomt blir det automatisk satt til å være lik det interne nettverket. Derfor får HELE det interne nettverket tilgang til de ytre nettverkene, så pass på at du bare oppgir nettverk som skal ha tilgang til verden utenfor.
+ .
+ Er du usikker, så la dette være tomt.
+description-pl.UTF-8: Wewnętrzne sieci z dostępem do sieci zewnętrznych:
+ Aby ograniczyć dostęp do sieci zewnętrznych, można podać podsieci wewnętrzne, które będą miały do nich dostęp. Proszę użyć notacji CIDR (np. 192.168.1.0/24). Można również podać pojedyncze komputery, używając ich adresów IP. Aby podać wiele sieci wewnętrznych i/lub komputerów, proszę oddzielić poszczególne spacją.
+ .
+ Jeśli poniższe pole pozostanie puste, zostanie przyjęta wartość odpowiadająca sieci wewnętrznej. Oznacza to, że CAŁA sieć wewnętrzna będzie miała dostęp do sieci zewnętrznej, tak więc proszę zachować ostrożność i podać jedynie sieci, które rzeczywiście powinny mieć dostęp na zewnątrz.
+ .
+ W przypadku wątpliwości, proszę pozostawić to pole puste.
+description-pt.UTF-8: Redes internas que irão aceder a redes externas:
+ Se você quer restringir o acesso às redes externas, você pode especificar as sub-redes internas com permissão em notação CIDR (ex. 192.168.1.0/24). É também possível especificar máquinas singulares pelo seu endereço IP. Se você tem múltiplas redes internas e/ou máquinas, elas deverão ser indicadas separadas por espaços.
+ .
+ Se você deixar este campo vazio, o valor é automaticamente regulado para igualar a rede interna. Então TODA a rede interna irá ter acesso às redes externas, portanto tenha o cuidado de apenas especificar redes que deverão ter acesso ao mundo externo.
+ .
+ Se não tem certeza, deixe este campo vazio.
+description-pt_BR.UTF-8: Redes internas com acesso a redes externas:
+ Se você quer restringir o acesso a redes externas, você pode especificar as sub-redes internas autorizadas na notação CIDR (por exemplo, 192.168.1.0/24). Também é possível especificar máquinas através de seus endereços IP. Se você tem múltiplas redes internas e/ou máquinas, elas podem ser informadas separadas por espaço.
+ .
+ Se você deixar este campo em branco, o valor é automaticamente definido como sendo o mesmo da rede interna. Sendo assim a rede interna INTEIRA terá acesso a redes externas, portanto tenha o cuidado de especificar apenas as redes que podem acessar o mundo externo.
+ .
+ Se você está em dúvida, deixe em branco.
+description-ru.UTF-8: Внутренние сети, которым разрешён доступ во внешние сети:
+ Если вы хотите ограничить доступ во внешние сети, то можете указать внутренние подсети в формате CIDR (например, 192.168.1.0/24), которым это разрешено. Также можно разрешить доступ отдельным машинам, указав их IP-адреса. Несколько внутренних подсетей или машин можно указать через пробел.
+ .
+ Если оставить поле пустым, то значение автоматически станет равным внутренней сети. По этой причине ВСЕЙ внутренней сети будут доступны внешние сети, так что лучше аккуратно указать сети, которым нужно разрешить доступ к внешнему миру.
+ .
+ Если не уверены, то оставьте поле пустым.
+description-sv.UTF-8: Interna nätverk med tillgång till externa nätverk:
+ Om du vill begränsa tillgången till de externa nätverken, kan du ange de tillåtna interna subnäten i CIDR-notation (exempelvis 192.168.1.0/24). Det är också möjligt att ange enstaka värdar efter deras IP-adresser. Om du har flera interna nätverk och/eller värdar, måste de separeras med blanksteg.
+ .
+ Om du lämnar denna blank, kommer värdet att automatiskt ställas in till samma som det interna nätverket. Därför kommer HELA det interna nätverket att ha åtkomst till de externa nätverken, så var försiktig och ange endast nätverk som ska komma åt världen utanför.
+ .
+ Om du är osäker, lämna denna blank.
+description-vi.UTF-8: Mạng nội bộ có truy cập được mạng bên ngoài :
+ Nếu bạn muốn hạn chế truy cập mạng bên ngoài, bạn có thể xác định những mạng phụ nội bộ được phép bằng cách ghi CIDR (v.d. 192.168.1.0/24). Cũng có thể xác định máy riêng bằng địa chỉ IP. Nếu bạn có nhiều mạng nội bộ và/hay máy, hãy định giới bằng dấu cách.
+ .
+ Nếu bạn bỏ trống, giá trị này được đặt tự động để bằng mạng nội bộ. Như thế thì TOÀN BỘ mạng nội bộ sẽ có truy cập được những mạng bên ngoài, vậy bạn hãy cẩn thận, chỉ xác định mạng nên có truy cập được thế giới bên ngoài.
+ .
+ Nếu chưa chắc, hãy bỏ trống.
+
+Template: arno-iptables-firewall/icmp-echo
+Type: boolean
+description: Should the machine be pingable from the outside world?
+ For increased security the firewall can be setup to ignore ICMP echo
+ requests (pings). While this is generally a good idea (the host seems to
+ be down at a first glance), this is sometimes not useful (e.g. failure
+ diagnostics).
+ .
+ If you are not sure, leave this disabled.
+description-cs.UTF-8: Má být počítač pingnutelný z vnějšího světa?
+ Pro zvýšenou obskurní bezpečnost můžete firewall nastavit tak, aby ignoroval požadavky ICMP echo (ping), což vypadá jako dobrý nápad, protože počítač na první letmý pohled vypadá jako vypnutý, ale často spíš překáží, například při diagnostikování síťových problémů.
+ .
+ Jestliže si nejste jisti, ponechte vypnuto.
+description-da.UTF-8: Skal maskinen kunne pinges fra den omkringliggende verden?
+ For øget sikkerhed kan brandmuren opsættes til at ignorere ICMP echo-forespørgsler (ping). Selvom dette normalt er en god ide (så ser værten ud til at være ned ved første øjekast), så er dette undertiden ikke optimalt f.eks. ved fejldiagnostikker).
+ .
+ Hvis du er usikker, så efterlad denne deaktiveret.
+description-de.UTF-8: Soll dieses System von außen 'pingbar' sein?
+ Um die Sicherheit weiter zu erhöhen, können sogenannte 'pings' (ICMP Echo Requests) ignoriert werden. Obwohl dies generell eine gute Idee ist (auf den ersten Blick sieht es so aus, als würde der Rechner nicht laufen), gibt es Situationen, in denen dieses Verhalten nicht gewünscht ist (z.B. Fehlerdiagnose).
+ .
+ Wenn Sie sich unsicher sind, tragen Sie hier nichts ein.
+description-es.UTF-8: ¿Desea que se le puedan hacer «pings» a la máquina desde el exterior?
+ Para incrementar la seguridad del cortafuegos se puede configurar para que ignore las solicitudes «echo» de ICMP («pings»). Aunque esto generalmente es una buena idea (el servidor parece esta abajo a primera vista), no siempre es útil (por ejemplo: en el diagnóstico de un fallo).
+ .
+ Si no está seguro, deje esto desactivado.
+description-fr.UTF-8: Faut-il autoriser les réponses « ping » vers l'extérieur ?
+ Pour améliorer la sécurité, le pare-feu peut être configuré pour ignorer les requêtes ICMP. Même si c'est en général conseillé, (l'hôte apparaît comme inactif), cela peut parfois être gênant en interdisant des diagnostics rapides.
+ .
+ Dans le doute, vous devriez désactiver cette option.
+description-it.UTF-8: Questa macchina deve rispondere ai tentativi di ping provenienti dalla rete esterna?
+ Per una maggiore sicurezza, il firewall può essere impostato in modo da ignorare le richieste di ping (ICMP echo requests). Generalmente questa è una buona idea (a prima vista la macchina appare all'esterno come non connessa), ma a volte non è ciò che si desidera (per es. durante la verifica di malfunzionamenti).
+ .
+ Se non sei sicuro, lascia vuoto questo campo.
+description-ja.UTF-8: 外部からマシンへ ping が通るようにしますか?
+ セキュリティを高めるため、ファイアウォールで ICMP echo リクエスト (ping) を無視するように設定することができます。これは大抵の場合良い考え (ホストが一見ダウンして居るように見える) ですが、有用ではない場合もあります (例: 診断が失敗する)。
+ .
+ よく分からない場合は、これは無効にしておいてください。
+description-nb.UTF-8: Skal maskinen kunne pinges utenfra?
+ For å øke sikkerheten kan brannmuren stilles inn til å ignorere ICMP ekko-pakker (ping). Oppgi TCP portnumre tilordnet de tjenestene som skal være tilgjengelige utenfra. Vanligvis er dette nyttig (verten ser ut til å være nede ved første øyekast), men ikke alltid (f.eks. ved feilsøking).
+ .
+ Er du usikker, så la det være slått av.
+description-nl.UTF-8: Moet de machine ping-baar zijn vanaf de buitenwereld?
+ Voor extra veiligheid kan de firewal zo ingesteld worden dat ICMP echo-verzoeken (pings) genegeerd worden.  Hoewel dit in het algemeen een goed idee is (de machine lijkt in eerste instantie uit te staan), is dit soms niet wenselijk (b.v. om fouten-diagnose te stellen).
+ .
+ Laat dit uitgeschakeld wanneer u het niet zeker weet.
+description-no.UTF-8: Skal maskinen kunne pinges utenfra?
+ For å øke sikkerheten kan brannmuren stilles inn til å ignorere ICMP ekko-pakker (ping). Oppgi TCP portnumre tilordnet de tjenestene som skal være tilgjengelige utenfra. Vanligvis er dette nyttig (verten ser ut til å være nede ved første øyekast), men ikke alltid (f.eks. ved feilsøking).
+ .
+ Er du usikker, så la det være slått av.
+description-pl.UTF-8: Czy ten komputer powinien odpowiadać na pingi z zewnątrz?
+ Aby zwiększyć poziom bezpieczeństwa, zapora może zostać skonfigurowana tak, aby ignorować zapytania ICMP echo (tzw. pingi). Choć jest to z reguły niezły pomysł (komputer sprawia wrażenie wyłączonego), może być niekiedy również kłopotliwe (np. utrudniać diagnostykę problemów).
+ .
+ W przypadku wątpliwości, proszę pozostawić to pole puste.
+description-pt.UTF-8: Deverá a máquina deixar-se pingar desde o mundo exterior?
+ Para aumento de segurança a firewall pode ser configurada para ignorar pedidos de eco ICMP (pings). Apesar de isto ser geralmente uma boa ideia (a máquina parece estar desligada à primeira vista), isto por vezes não é útil (ex. diagnósticos falhados).
+ .
+ Se não tem certeza, deixe isto desactivado.
+description-pt_BR.UTF-8: A máquina deve aceitar pings do mundo externo?
+ Para aumentar a segurança o firewall pode ser configurado para ignorar requisições "ICMP echo" (pings). Enquanto isto é geralmente uma boa idéia (a máquina parece estar desligada num primeiro momento), algumas vezes isto pode não ser útil (por exemplo, diagnóstico de falhas).
+ .
+ Se você estiver em dúvida, deixe desabilitado.
+description-ru.UTF-8: Должна ли машины откликаться на ping извне?
+ Для повышения безопасности, межсетевой экран может блокировать ICMP echo запросы (ping-и). Обычно, это нормально (машина кажется всем выключенной), но иногда не очень полезно (например, при поиске причины неработоспособности сети).
+ .
+ Если не уверены, оставьте заблокированным.
+description-sv.UTF-8: Ska maskinen vara nåbar via ping från världen utanför?
+ För ökad säkerhet kan brandväggen konfigureras att ignorera ekobegäran via ICMP (ping). Då detta normalt sett är en bra idé (värden verkar vara nere när man först ser den), kan detta inte alltid vara användbart (exempelvis vid feldiagnoser).
+ .
+ Om du inte är säker, lämna denna inaktiverad.
+description-vi.UTF-8: Máy nên nhận tín hiệu ping từ thế giới bên ngoài không?
+ Để bảo mật hơn, có thể thiết lập bức tường lửa để bỏ qua yêu cầu tiếng vọng ECMP (ping). Dù thiết lập thường là ý kiến tốt (đầu tiên máy có vẻ không trực tuyến), thỉng thoảng không có ích (v.d. khi chẩn đoán lỗi).
+ .
+ Nếu chưa chắc, hãy để lại đã tắt.
+Default: false
+
+Template: arno-iptables-firewall/debconf-wanted
+Type: boolean
+description: Do you want to manage the firewall setup with debconf?
+ A basic firewall setup that is suitable for most purposes can be created by
+ answering a few questions. This should be the preferred option for all who are
+ not familiar with firewall-related topics.
+ .
+ If you do not want that, the firewall will not work before you have edited
+ the configuration manually.
+description-cs.UTF-8: Chcete spravovat nastavení firewallu pomocí debconfu?
+ Základní firewall, který se hodí pro většinu situací, můžete vytvořit pomocí několika jednoduchých odpovědí. Kdokoliv, kdo není sběhlý v tématech okolo firewallu, by měl tuto možnost využít.
+ .
+ Odmítnete-li tuto možnost, nebude firewall fungovat, dokud jej nenastavíte ručně.
+description-da.UTF-8: Ønsker du at håndtere brandmursopsætningen med debconf?
+ En grundlæggende brandmursopsætning som er egnet til de fleste formål kan oprettes ved at svare på nogle få spørgsmål. Dette bør være den foretrukne indstilling for alle som ikke er bekendte med brandmursrelaterede emner.
+ .
+ Hvis du ikke ønsker dette, så vil brandmuren ikke virke, før du har redigeret konfigurationen manuelt.
+description-de.UTF-8: Möchten Sie die Firewall-Konfiguration mit Debconf verwalten?
+ Eine einfache Firewall-Konfiguration kann erstellt werden, indem einige wenige Fragen beantwortet werden. Diese Option sollte alle wählen, die nicht mit Firewall-bezogenen Themen vertraut sind.
+ .
+ Wenn Sie dies nicht wünschen, wird die Firewall nicht funktionieren, bis Sie die Konfiguration manuell bearbeitet haben.
+description-es.UTF-8: ¿Desea gestionar la configuración del cortafuegos con debconf?
+ La configuración de un cortafuegos básico, que es conveniente para la mayoría de los propósitos, se puede crear contestando a unas pocas preguntas. Ésta debería ser la opción preferida para todos los que no estén familiarizados con asuntos relacionados a los cortafuegos.
+ .
+ Si no desea esto, el cortafuegos no funcionará hasta que haya editado la configuración manualmente.
+description-fr.UTF-8: Faut-il gérer automatiquement la configuration du pare-feu ?
+ Une configuration simple du pare-feu qui convient pour la plupart des cas peut être créée en répondant à quelques questions. Choisissez cette option  si vous n'êtes pas familier avec la configuration d'un pare-feu.
+ .
+ Sinon le pare-feu ne fonctionnera pas avant que vous n'ayez édité vous-même le fichier de configuration.
+description-it.UTF-8: Vuoi gestire la configurazione del firewall utilizzando debconf?
+ Una configurazione di base del firewall, adatta a molte situazioni, può essere creata rispondendo ad alcune domande. Questa è la scelta consigliata a tutti quelli che non sono familiari con gli argomenti relativi al firewall.
+ .
+ Se non vuoi seguire la procedura, il firewall non funzionerà finché non avrai modificato manualmente la configurazione.
+description-ja.UTF-8: ファイアウォールの設定を debconf で管理しますか?
+ ほとんどの目的に合った基本のファイアウォール設定は、いくつかの質問に答えれば作成することができます。これは、ファイアウォール関連の問題にあまり詳しくない人すべてにお勧めの選択です。
+ .
+ お勧めに従いたくない場合ですが、ファイアウォールは手動で設定を編集するまで動作しません。
+description-nb.UTF-8: Vil du styre brannmuroppsettet med debconf?
+ Du kan svare på noen spørsmål og få laget et enkelt brannmuroppsett som passer de fleste tilfeller. Alle som ikke er kjent med brannmurer bør velge dette.
+ .
+ Hvis det ikke er det du vil, så virker ikke brannmuren før du har redigert innstillingene manuelt.
+description-nl.UTF-8: Wilt u de firewall-configuratie beheren met debconf?
+ Een basale firewall-configuratie, geschikt voor de meeste doeleinden, kan worden aangemaakt door het beantwoorden van een aantal vragen. Dit is de aanbevolen optie voor iedereen die niet bekend is met firewall-gerelateerde onderwerpen.
+ .
+ Als u dat niet wilt, zal de firewal niet werken totdat u de configuratie handmatig heeft aangepast.
+description-no.UTF-8: Vil du styre brannmuroppsettet med debconf?
+ Du kan svare på noen spørsmål og få laget et enkelt brannmuroppsett som passer de fleste tilfeller. Alle som ikke er kjent med brannmurer bør velge dette.
+ .
+ Hvis det ikke er det du vil, så virker ikke brannmuren før du har redigert innstillingene manuelt.
+description-pl.UTF-8: Zarządzać konfiguracją zapory sieciowej używając debconf?
+ Prosta konfiguracja zapory, wystarczająca do większości zastosowań, może zostać utworzona odpowiadając na kilka pytań. Jest to przydatna opcja dla wszystkich tych, którzy nie są obeznani z kwestiami dotyczącymi zapory sieciowej.
+ .
+ W przeciwnym wypadku, zapora nie będzie działać, dopóki konfiguracja nie zostanie wykonana manualnie.
+description-pt.UTF-8: Você deseja gerir a configuração da firewall com o debconf?
+ Uma configuração básica de firewall que é suficiente para a maioria dos propósitos pode ser criada respondendo a algumas perguntas. Esta deve ser a opção preferida para todos que não estão familiarizados com tópicos relacionados com a firewall.
+ .
+ Se você não quer isto, a firewall não irá funcionar antes que você tenha editado a configuração manualmente.
+description-pt_BR.UTF-8: Você gostaria de gerenciar a configuração do firewall com o debconf?
+ Uma configuração básica de firewall que é adequada para a maioria dos casos pode ser criada respondendo algumas questões. Esta deve ser a opção preferida para todos que não estão familiarizados com tópicos relacionados a firewall.
+ .
+ Se você não quer isto, o firewall não funcionará até que você tenha editado a configuração manualmente.
+description-ru.UTF-8: Управлять настройками межсетевого экрана с помощью debconf?
+ Простую настройку межсетевого экрана, подходящую для большинства задач, можно получить ответив на несколько вопросов. Рекомендуется всем, кто не разбирается в межсетевых экранах.
+ .
+ Если ответить отрицательно, то межсетевой экран не заработает пока не будут выполнены настройки вручную.
+description-sv.UTF-8: Vill du hantera brandväggskonfigurationen med debconf?
+ En grundläggande brandväggskonfiguration som är lämplig för de vanligaste ändamålen kan skapas genom att svara på ett antal frågor. Detta bör vara det alternativ som föredras av alla som inte känner till brandväggar.
+ .
+ Om du inte vill det kommer brandväggen inte att fungera förrän du har redigerat konfigurationen manuellt.
+description-vi.UTF-8: Bạn có muốn quản lý tiến trình thiết lập bức tường lửa bằng debconf không?
+ Thiết lập bức tường lửa cơ bản mà thích hợp với phần lớn mục đích có thể được tạo bằng cách trả lời vài câu hỏi. Người nào không quen với chủ đề liên quan đến bức tường lửa nên sử dụng tùy chọn này.
+ .
+ Nếu bạn không chọn làm như thế, bạn phải tự hiệu chỉnh cấu hình để làm cho bức tường lửa hoạt động.
+Default: true
+

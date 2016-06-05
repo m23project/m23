@@ -1,0 +1,77 @@
+Template: util-vserver/postrm_remove_vserver_configs
+Type: boolean
+Default: false
+Description: Remove local Linux-Vserver guest configurations?
+ Choose this option if you want the /etc/vservers directory, containing 
+ your local Linux-Vserver guest configurations, to be removed. If you wish to keep 
+ these configurations, do not choose this option.
+Description-cs.UTF-8: Odstranit konfiguraci lokálních hostů Linux-Vserveru?
+ Tuto možnost povolte, pokud si přejete odstranit adresář /etc/vservers, ve kterém se nachází vaše lokální konfigurace hostů Linux-Vserveru. Chcete-li konfigurace zachovat, volbu zamítněte.
+Description-da.UTF-8: Fjern lokal Linux-Vservers gæstekonfigurationer?
+ Vælg denne indstilling hvis du ønsker, at mappen /etc/vservers (indeholdende din lokale Linux-Vservers gæstekonfigurationer) skal fjernes. Hvis du ønsker at beholde disse konfigurationer, skal du ikke vælge denne indstilling.
+Description-de.UTF-8: Entferne lokale Linux-Vserver Gäste-Konfigurationen?
+ Wählen Sie diese Option, falls Sie möchten, dass das /etc/vservers-Verzeichnis, das Ihre lokalen Linux-Vserver-Gast-Konfigurationen enthält, entfernt werden soll. Falls Sie diese Konfigurationen behalten möchten, wählen Sie diese Option nicht.
+Description-es.UTF-8: ¿Eliminar las configuraciones locales del huésped de linux-vserver?
+ Seleccione está opción si desea que el directorio «/etc/vservers», contenga las configuraciones del huésped local de linux vserver, para eliminarlas. Si desea mantener estas configuraciones, no seleccione esta opción.
+Description-eu.UTF-8: Ezabatu 'Linux-Vserver'-eko gonbidatuaren konfigurazio lokalak?
+ Hautatu aukera hau Vserver-eko gonbidatuaren konfigurazioa duen /etc/vservers direktorioa ezabatzea nahi baduzu. Konfigurazioak mantentzea nahi badituzu ez ezazu aukera hau hautatu.
+Description-fi.UTF-8: Poistetaanko paikalliset Linux-Vserver-vierasasetukset?
+ Valitse tämä vaihtoehto, jos haluat, että Linux-Vserver-vierasasetukset sisältävä hakemisto /etc/vservers poistetaan. Älä valitse tätä, jos haluat säilyttää nämä asetukset.
+Description-fr.UTF-8: Faut-il supprimer les configurations locales des serveurs Linux-Vserver ?
+ Choisissez cette option si vous voulez supprimer le répertoire de configuration /etc/vservers des serveurs Linux-Vserver. Si vous souhaitez garder ces fichiers de configuration, ne choisissez pas cette option.
+Description-id.UTF-8: Buang pengaturan lokal guest Linux-Vserver?
+ Pilih opsi ini jika anda ingin direktory /etc/vservers, yang mengandung pengaturan lokal guest Linux-Vserver, akan dibuang. Jika anda ingin direktori ini tidak dibuang, jangan pilih opsi ini.
+Description-it.UTF-8: Eliminare le configurazioni locali dei guest Linux-Vserver?
+ Accettando, la directory /etc/vservers che contiene le configurazioni locali dei guest Linux-Vserver verrà rimossa. Per mantenere queste configurazioni, non accettare.
+Description-ja.UTF-8: ローカルの Linux-Vserver ゲスト設定を削除しますか?
+ ローカルの Linux-Vserver ゲスト設定を含んでいる /etc/vservers ディレクトリを削除したい場合はこのオプションを選んでください。この設定をそのままにしておきたい場合は、このオプションを選ばないでください。
+Description-nl.UTF-8: Wilt u de lokale Linux-Vserver gastconfiguraties verwijderen?
+ Kies deze optie als u wilt dat de map /etc/vservers (die uw lokale Linux-Vserver gastconfiguraties bevat) verwijderd wordt. Als u deze wilt behouden sla deze optie dan af.
+Description-pl.UTF-8: Usunąć lokalną konfigurację gościa Linux-Vserver?
+ Proszę wybrać tę opcję, aby usunąć katalog /etc/vservers zawierający lokalną konfigurację gościa Linux-Vserver. Aby zachować konfigurację, proszę wybrać "nie".
+Description-pt.UTF-8: Remover as configurações locais do cliente Linux-Vserver?
+ Escolha esta opção, se quiser que o directório /etc/vservers, que contém as suas configurações locais do cliente Linux-Vserver, seja removido. Se desejar manter estas configurações, não escolha esta opção.
+Description-ru.UTF-8: Удалить локальные гостевые настройки Linux-Vserver?
+ Выберите, нужно удалять каталог /etc/vservers, в котором содержатся локальные гостевые настройки Linux-Vserver. Если вы хотите оставить эти настройки, ответьте отрицательно.
+Description-sv.UTF-8: Ska lokala gästinställningar för Linux-Vserver tas bort?
+ Välj detta alternativ om du vill att katalogen /etc/vservers, som innehåller inställningarna för lokala Linux-Vservrar, ska tas bort. Om du vill spara inställningarna så ska du inte välja detta alternativ.
+
+Template: util-vserver/prerm_stop_running_vservers
+Type: boolean
+Default: true
+Description: Stop running Linux-Vserver guests?
+ Running Vserver guests were detected! If you remove util-vserver without 
+ stopping these vservers they will continue to run and you will not be able 
+ to manage them from the host, unless you reinstall util-vserver.  Choose 
+ this option to stop any running Vserver guests now, otherwise they will 
+ continue to run.
+Description-cs.UTF-8: Zastavit běžící hosty Linux-Vserveru?
+ Byli rozpoznáni běžící hosté Vserveru! Odstraníte-li util-vserver aniž byste tyto hosty zastavili, poběží hosté dál, ale nebudete je moci nijak ovládat z hostitelského systému. (Dokud znovu nenainstalujete util-vserver.) Pro zastavení všech běžících hostů Vserveru odpovězte na tuto otázku kladně, protože jinak hosté poběží dál.
+Description-da.UTF-8: Stop kørende Linux-Vservers gæster?
+ Kørende Vserver-gæster blev fundet! Hvis du fjerner util-vserver uden at stoppe disse vservere, så vil de fortsætte med at køre, og du vil ikke kunne håndtere dem fra værten; med mindre du geninstallerer util-vserver. Vælg denne indstilling for at stoppe alle kørende Vserver-gæster nu, ellers vil de fortsætte med at køre.
+Description-de.UTF-8: Laufende Linux-Vserver-Gäste anhalten?
+ Es wurden laufende Vserver-Gäste erkannt! Falls Sie util-vserver entfernen, ohne diese Vserver zu beenden, werden diese weiterlaufen und Sie werden nicht in der Lage sein, sie von diesem Rechner aus zu verwalten, es sei den, Sie installieren util-vserver erneut. Wählen Sie diese Option, um alle laufenden Vserver-Gäste jetzt zu beenden, andernfalls werden sie weiterlaufen.
+Description-es.UTF-8: ¿Detener la ejecución de los huéspedes linux-vserver?
+ Se ha detectado la ejecución de huéspedes vserver!, si elimina el util-vserver sin detener estos vservers, continuarán ejecutándose y no podrá administrarlos desde el equipo, a menos que reinstale util-vserver. Seleccione ahora esta opción para detener cualquier huésped vserver, de lo contrario continuarán ejecutándose.
+Description-eu.UTF-8: Gelditu exekutatzen ari diren 'Linux-Vserver'-eko gonbidatuak?
+ Exekuzioan dauden Vserver-eko gonbidatuak antzeman dira. 'util-vserver' paketea vserver horiek gelditu gabe kentzen baduzu, zerbitzari horiek funtzionatzen jarraituko dute eta ezingo dituzu ostalari honetatik kudeatu util-vserver berriro instalatu arte. Hautatu aukera hau exekutatzen egon liteken edozein vserver orain gelditzeko, bestela exekutatzen jarraituko baitute.
+Description-fi.UTF-8: Pysäytetäänkö Linux-Vserver-vieraat?
+ Vserver-vieraita on parhaillaan ajossa. Jos poistat paketin util-vserver pysäyttämättä näitä vservereitä ensin, ne jäävät ajoon, eikä niitä voida hallita tältä koneelta, ellei pakettia util-vserver asenneta takaisin. Valitse tämä vaihtoehto, jos haluat pysäyttää kaikki ajossa olevat Vserver-vieraat nyt.
+Description-fr.UTF-8: Faut-il arrêter les serveurs Linux-Vserver ?
+ Des serveurs Linux-Vserver actifs ont été détectés. Si vous supprimez util-vserver sans les arrêter, ils continueront à s'exécuter et vous ne pourrez pas les contrôler depuis cet hôte à moins de réinstaller util-vserver. Choisissez cette option pour arrêter tous les serveurs Linux-Vserver actifs à cet instant, sinon ils continueront à s'exécuter.
+Description-id.UTF-8: Hentikan guests Linux-Vserver yang berjalan?
+ Terdeteksi guests Vserver yang berjalan! Jika anda membuang util-server tanpa menghentikan vservers ini maka akan tetap berjalan dan anda tidak akan bisa mengaturnya dari host, kecuali anda memasang ulang util-server. Pilih opsi ini untuk menghentikan apapun guests Vserver yang berjalan, jika tidak mereka akan tetap berjalan.
+Description-it.UTF-8: Fermare i guest Linux-Vserver attivi?
+ Sono stati rilevati dei guest Vserver attivi. Rimuovendo util-vserver senza fermarli, questi vserver continueranno a girare e non sarà più possibile gestirli dall'host fino quando non verrà reinstallato util-vserver. Accettando tutti i guest Vserver attivi verranno fermati, altrimenti rimarranno in esecuzione.
+Description-ja.UTF-8: 動作している Linux-Vserver のゲストを停止しますか?
+ Vserver ゲストが動作しているのが検知されました! この Vserver を停止せずに util-vserver を削除すると、ゲストは動作しつづけることになり、util-vserver を再インストールしない限りホストからの管理ができなくなります。このオプションを選ぶと今すぐに動作している Vserver ゲストを停止します。停止しない場合は、Vserver ゲストは動作し続けます。
+Description-nl.UTF-8: Wilt u de draaiende Linux-Vserver gasten stoppen?
+ Er zijn draaiende Vserver-gasten gedetecteerd! Als u util-vserver verwijdert zonder deze vservers te stoppen, blijven deze draaien maar bent u niet meer in staat om ze vanaf deze computer te beheren (tenzij u util-vserver herinstalleert). Kies deze optie om draaiende Vserver-gasten nu te stoppen, anders blijven ze dus draaien.
+Description-pl.UTF-8: Zatrzymać gości Linux-Vserver?
+ Wykryto działających gości Vserver! Jeśli util-vserver zostanie usunięte bez zatrzymania vserverów, będą one nadal działać, a zarządzanie nimi z tego komputera będzie niemożliwe, aż do czasu ponownej instalacji util-vserver. Proszę wybrać "tak", aby zatrzymać wszystkich uruchomionych gości Vserver, w przeciwnym razie pozostaną uruchomieni.
+Description-pt.UTF-8: Parar os clientes Linux-Vserver em execução?
+ Foram detectados clientes Vserver em execução! Se remover o util-vserver sem parar estes vservers estes irão continuar a correr e você não poderá geri-los a partir do 'anfitrião', a menos que reinstale o util-vserver.  Escolha esta opção para parar agora quaisquer clientes Vserver, caso contrário irão continuar a correr.
+Description-ru.UTF-8: Остановить запущенные гостевые Linux-Vserver-ы?
+ Обнаружены запущенные гостевые Vserver-ы! Если вы удалите util-vserver без остановки данных vserver-ов, то они будут продолжать работать, и вы не сможете управлять ими пока не переустановите util-vserver. Ответьте утвердительно, чтобы остановить все запущенные гостевые Vserver прямо сейчас, иначе они останутся запущенными.
+Description-sv.UTF-8: Ska aktiva Linux-Vserver-gäster stoppas?
+ Det finns Vservrar som körs! Om du tar bort util-vserver utan att först stoppa dessa vservrar kommer de att fortsätta köra utan att du kan hantera dem från denna värd utan att installera util-vserver på nytt. Här kan du välja att stänga av vservrarna nu eller låta de fortsätta att köra utan att du kan hantera dem.

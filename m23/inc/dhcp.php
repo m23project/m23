@@ -235,6 +235,27 @@ function DHCP_bootTypeToNewFormat($bootType)
 
 
 /**
+**name DHCP_runScript($command, $clientName, $ip, $netmask, $mac, $bootType, $gateway)
+**description Runs the script for controlling an external DHCP server.
+**parameter command: 'add' for adding an entry to the DHCP server or 'remove' for removing.
+**parameter clientName: name of the client
+**parameter ip: ip address of the client
+**parameter netmask: netmask for the ip
+**parameter mac: mac addresse of the network card
+**parameter bootType: Parameter can a string: pxe, etherboot, gpxe, none
+**parameter gateway: The gateway for the client.
+**/
+function DHCP_runScript($command, $clientName, $ip='', $netmask='', $mac='', $bootType='', $gateway='')
+{
+	if (file_exists('/m23/bin/externalDHCPControl.sh'))
+		SERVER_runInBackground('DHCP_runScript', "/m23/bin/externalDHCPControl.sh $command $clientName $ip $netmask $mac $bootType $gateway", "root", false);
+}
+
+
+
+
+
+/**
 **name DHCP_addClient($clientName, $ip, $netmask, $mac, $bootType, $gateway, $updateDB = true)
 **description adds a new client to the dhcpd.conf and restarts the dhcpd-server
 **parameter clientName: name of the client
@@ -256,7 +277,9 @@ function DHCP_addClient($clientName, $ip, $netmask, $mac, $bootType, $gateway, $
 
 	$bootType = DHCP_bootTypeToNewFormat($bootType);
 	$broadcast = CLIENT_getBroadcast($ip,$netmask);
-	
+
+	DHCP_runScript('add', $clientName, $ip, $netmask, $mac, $bootType, $gateway);
+
 	/*
 	$dnsmasqConf = '/m23/dhcp/dnsmasq-dhcpd.conf';
 	$dnsmasqTail = '/m23/dhcp/dnsmasq-dhcpd.tail';
@@ -269,8 +292,11 @@ function DHCP_addClient($clientName, $ip, $netmask, $mac, $bootType, $gateway, $
 		case CClient::BOOTTYPE_PXE:
 			//generate command-line to add a line to dhcpd.conf
 			{
-// 				DHCP_addLineToDHCPDConf("subnet $subnet netmask $netmask { host $clientName { hardware ethernet $mac; fixed-address $ip;  filename \\\"pxelinux.0\\\"; } option broadcast-address $broadcast; option routers $gateway; option subnet-mask $netmask;}");
-				DHCP_addLineToDHCPDConf("host $clientName { hardware ethernet $mac; fixed-address $ip;  filename \\\"pxelinux.0\\\"; option broadcast-address $broadcast; option routers $gateway; option subnet-mask $netmask;}");
+				if (HELPER_isExecutedOnUCS())
+					UCS_enableClientPXEBoot($clientName, 'pxelinux.0');
+				else
+					DHCP_addLineToDHCPDConf("host $clientName { hardware ethernet $mac; fixed-address $ip;  filename \\\"pxelinux.0\\\"; option broadcast-address $broadcast; option routers $gateway; option subnet-mask $netmask;}");
+				
 
 				/*
 				#DNSMasq
@@ -286,15 +312,20 @@ function DHCP_addClient($clientName, $ip, $netmask, $mac, $bootType, $gateway, $
 		case CClient::BOOTTYPE_GRUB2EFIX64:
 			//generate command-line to add a line to dhcpd.conf
 			{
-				DHCP_addLineToDHCPDConf("host $clientName { hardware ethernet $mac; fixed-address $ip;  filename \\\"grubnetx64.efi.signed\\\"; option broadcast-address $broadcast; option routers $gateway; option subnet-mask $netmask;}");
+				if (HELPER_isExecutedOnUCS())
+					UCS_enableClientPXEBoot($clientName, 'grubnetx64.efi.signed');
+				else
+					DHCP_addLineToDHCPDConf("host $clientName { hardware ethernet $mac; fixed-address $ip;  filename \\\"grubnetx64.efi.signed\\\"; option broadcast-address $broadcast; option routers $gateway; option subnet-mask $netmask;}");
 			}
 		break;
 
 		case CClient::BOOTTYPE_ETHERBOOT:
 			//generate command-line to add a line to dhcpd.conf
 			{
-// 				DHCP_addLineToDHCPDConf("subnet $subnet netmask $netmask { host $clientName { hardware ethernet $mac; fixed-address $ip;  filename \\\"$ip\\\"; } option broadcast-address $broadcast; option routers $gateway; option subnet-mask $netmask;}");
-				DHCP_addLineToDHCPDConf("host $clientName { hardware ethernet $mac; fixed-address $ip;  filename \\\"$ip\\\"; option broadcast-address $broadcast; option routers $gateway; option subnet-mask $netmask;}");
+				if (HELPER_isExecutedOnUCS())
+					UCS_enableClientPXEBoot($clientName, $ip);
+				else
+					DHCP_addLineToDHCPDConf("host $clientName { hardware ethernet $mac; fixed-address $ip;  filename \\\"$ip\\\"; option broadcast-address $broadcast; option routers $gateway; option subnet-mask $netmask;}");
 			}
 		break;
 
@@ -313,9 +344,8 @@ function DHCP_addClient($clientName, $ip, $netmask, $mac, $bootType, $gateway, $
 		$result=DB_query($sql);
 	}
 
-	//write changes
-	if (!empty($cmd))
-		exec($cmd);
+	if (HELPER_isExecutedOnUCS())
+		return(true);
 
 	DHCP_addSubnetDefinition($subnet, $netmask);
 
@@ -376,16 +406,24 @@ function DHCP_rmClient($clientName)
 {
 	$bootType = CLIENT_getBootType($clientName);
 
+	DHCP_runScript('remove', $clientName);
+
 	if ($bootType == CClient::BOOTTYPE_GPXE)
 		return(true);
 
-	//Delete the line from DHCP server only if it is not gPXE
-	//remove the client from dhcpd.conf
-	$cmd="sudo sed '/host.".trim($clientName)."[^A-Za-z0-9]/Id' ".DHCPD_CONF_FILE." > ".DHCPD_CONF_FILE.".tmp && mv ".DHCPD_CONF_FILE.".tmp ".DHCPD_CONF_FILE." && echo ok";
+	// If run on UCS => The DHCP server is handled via UCS
+	if (HELPER_isExecutedOnUCS())
+		UCS_disableClientPXEBoot($clientName);
+	else
+	{
+		//Delete the line from DHCP server only if it is not gPXE
+		//remove the client from dhcpd.conf
+		$cmd="sudo sed '/host.".trim($clientName)."[^A-Za-z0-9]/Id' ".DHCPD_CONF_FILE." > ".DHCPD_CONF_FILE.".tmp && mv ".DHCPD_CONF_FILE.".tmp ".DHCPD_CONF_FILE." && echo ok";
 
-	//write changes
-	if (exec($cmd) != "ok")
-		return(false);
+		//write changes
+		if (exec($cmd) != "ok")
+			return(false);
+	}
 
 	//Choose remove method by boot type
 	switch ($bootType)
@@ -403,7 +441,10 @@ function DHCP_rmClient($clientName)
 		break;
 	}
 
-	return(DHCP_restartDHCPserver());
+	if (HELPER_isExecutedOnUCS())
+		return(true);
+	else
+		return(DHCP_restartDHCPserver());
 }
 
 
@@ -444,7 +485,7 @@ function DHCP_activateBoot($clientName, $on, $bootType = 'x')
 	VM_activateNetboot($clientName, $on);
 
 	//Check if the current state is different from the desired state
-	if (DHCP_isNetworkBootingActive($clientName) == $on)
+	if ((DHCP_isNetworkBootingActive($clientName) == $on) && !HELPER_isExecutedOnUCS())
 		return(false);
 
 

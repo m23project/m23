@@ -1,0 +1,74 @@
+Template: nap/napping-setuid
+Type: boolean
+Default: false
+Description: Do you want napping to be installed setuid?
+ The napping executable, which is responsible for collecting ping results
+ for nap, can be installed with the set-user-id bit set, so that it will be
+ able to open a raw network socket required to send ping packets.
+ .
+ Enabling this feature may be a security risk, so it is disabled by
+ default. If in doubt, it is suggested that you leave it disabled.
+Description-cs.UTF-8: Chcete napping nainstalovat jako setuid?
+ Program napping je zodpovědný za sbírání ping výsledků pro nap a může být instalován s nastaveným set-user-id bitem, což mu umožní otevřít síťový raw socket vyžadovaný pro odesílání ping paketů.
+ .
+ Povolení této možnosti může představovat bezpečnostní riziko a proto je implicitně vypnutá. Doporučujeme ji i nadále nechat vypnutou.
+Description-da.UTF-8: Ønsker du at napping skal installeres setuid?
+ Den kørbare fil for napping, som er ansvarlig for indsamling af pingresultater for nap, kan installeres med bitsættet for set-user-id, så at programmet kan åbne en rå netværkssokkel krævet for at sende pingpakker.
+ .
+ Aktivering af denne funktion kan udgøre en sikkerhedsmæssig risiko, så funktionen er deaktiveret som standard. Hvis du er i tvivl, så anbefales det, at du efterlader den deaktiveret.
+Description-de.UTF-8: Soll Napping mit Root-Rechten installiert werden?
+ Das Programm »napping«, das Ping-Ergebnisse für Nap sammelt, kann mit Root-Rechten ausgestattet werden, damit es RAW-Netzwerk-Sockets öffnen kann. Diese sind für das Senden von Ping-Paketen notwendig.
+ .
+ Wenn Sie hier zustimmen, könnte das ein Sicherheitsrisiko bedeuten, deshalb ist diese Funktion standardmäßig ausgeschaltet. Wenn Sie sich nicht sicher sind, lassen Sie es deaktiviert.
+Description-es.UTF-8: ¿Desea que «napping» se instale con el bit setuid activado?
+ El ejecutable de «napping», que es el responsable de la recolección de los resultados de ping, puede ser instalado con el bit set-user-id, eso lo habilitará para que pueda abrir un socket de red en bruto, necesaria para enviar paquetes de ping.
+ .
+ Esta característica habilitada puede suponer un riesgo de seguridad, por lo tanto, viene desactivada por omisión. Si está en duda, es sugerente que la deje desactivada.
+Description-fi.UTF-8: Tulisiko napping asentaa asetuksella setuid?
+ Ohjelmatiedosto napping, joka vastaa ping-tulosten keräämisestä napille, voidaan asentaa ajettavaksi pääkäyttäjäoikeuksilla (setuid). Tällöin se voi avata ping-pakettien lähettämiseen tarvittavia verkkopistokkeita.
+ .
+ Tämän ominaisuuden ottaminen käyttöön saattaa olla turvariski, joten se on oletuksena pois käytöstä. Jos olet epävarma, on suositeltavaa olla käyttämättä sitä.
+Description-fr.UTF-8: Napping doit-il s'exécuter avec les droits du superutilisateur ?
+ Le programme napping est chargé de rassembler les résultats des pings pour nap. Il peut-être installé avec le bit « setuid » activé, et sera donc capable d'ouvrir une socket de type « raw » nécessaire à l'envoi de paquets ping.
+ .
+ Cette option peut impliquer des problèmes de sécurité, elle est donc désactivée par défaut. En cas de doute, ne la choisissez pas.
+Description-it.UTF-8: Vuoi installare napping con il permesso setuid?
+ Il programma napping, responsabile della raccolta dei risultati di ping per nap, può essere installato con il permesso set-user-id abilitato, in modo da permettergli di aprire un socket di rete di tipo raw richiesto per inviare i ping.
+ .
+ L'abilitazione di questo permesso potrebbe rappresentare un rischio per la sicurezza del sistema, quindi è disabilitato di default. Nel dubbio si consiglia di lasciarlo disabilitato.
+Description-ja.UTF-8: napping を setuid してインストールしますか?
+ nap の ping の結果を収集する機能を持つ実行可能なファイル、napping は set-user-id ビットを設定してインストールできます。そのため、 napping が ping を送信するために RAW ソケットをオープンできる必要があります。
+ .
+ この機能を有効にするとセキュリティリスクになり得るので、デフォルトでは無効にされています。よく分からない場合は、無効のままにしておくことをお勧めします。
+Description-nl.UTF-8: Wilt u dat 'napping' met de setuid-bit actief wordt geïnstalleerd?
+ Het programma 'napping' (dat verantwoordelijk is voor het vergaren van 'ping'-resultaten voor nap) kan met de setuid-bit actief geïnstalleerd worden. Hierdoor is het in staat om een voor het verzenden van ping-pakketten benodigde 'raw' netwerksocket te openen.
+ .
+ Activeren van deze feature kan een veiligheidsrisico zijn en is dus standaard uitgeschakeld. Als u twijfelt kunt u dit best inactief laten.
+Description-pl.UTF-8: Czy napping ma być zainstalowany z ustawionym setuid?
+ Plik wykonywalny napping, odpowiedzialny za zbieranie wyników polecenia ping dla programu nap, może być zainstalowany z ustawionym bitem set-user-id, dzięki czemu będzie w stanie otwierać surowe gniazda sieciowe, wymagane do wysyłania pakietów ping.
+ .
+ Włączenie tej opcji może stanowić zagrożenie bezpieczeństwa, dlatego jest domyślnie wyłączona. W przypadku wątpliwości, proszę wybrać "nie".
+Description-pt.UTF-8: Deseja que o napping seja instalado com setuid?
+ O executável napping, que é responsável por recolher resultados do ping pelo nap, pode ser instalado com o bit set-user-id activo, para que seja capaz de abrir o socket raw necessário para mandar pacotes ping.
+ .
+ Activar esta opção pode ser um risco de segurança, pelo que por omissão está desactivada. Em dúvida, é sugerido que a deixe desactivada.
+Description-pt_BR.UTF-8: Você quer que o "napping" seja instalado com "setuid" habilitado?
+ O executável napping, que é responsável por coletar os resultados de ping para o nap, pode ser instalado com o bit set-user-id habilitado, de forma a ele ser capaz de abrir um socket raw de rede, requerido para enviar pacotes ping.
+ .
+ Habilitar este recurso pode ser um risco de segurança, portanto ele é desabilitado por padrão. Se estiver em dúvida, é sugerido deixá-lo desabilitado.
+Description-ru.UTF-8: Установить для napping setuid-бит?
+ Исполняемый файл napping, выполняющий обработку результатов ping для nap, может быть установлен с установленным битом set-user-id для того, чтобы он мог открывать сырой сетевой сокет, необходимый для отправки пакетов ping.
+ .
+ Включение данной возможности может быть небезопасно, поэтому она по умолчанию выключена. Если не уверены -- оставьте её выключенной.
+Description-sk.UTF-8: Chcete aby bol napping nainštalovaný so setuid?
+ Spustiteľný súbor, ktorý sa stará o zhromažďovanie výsledkov ping pre nap, môže byť nainštalovaný s nastaveným príznakom set-user-id, takže bude môcť otvárať sieťové sokety, potrebné na posielanie paketov ping.
+ .
+ Zapnutie tejto možnosti môže byť bezpečnostným rizikom, preto je predvolene vypnutá. Ak neviete, čo to znamená, odporúčame ponechať ju vypnutú.
+Description-sv.UTF-8: Vill du att napping ska installeras setuid?
+ Den exekverbara filen napping som är ansvarig för insamlingen av pingsvar för nap kan installeras med set user-id biten aktiverad, då kan programmet kan öppna en rå nätverkssocket som krävs för att skicka pingpaket.
+ .
+ Att aktivera denna funktion kan innebära en säkerhetsrisk så därför är den avstängd som standard. Om du är osäker, lämna den avstängd.
+Description-vi.UTF-8: Có muốn cài đặt napping dưới setuid không?
+ Tập tin thực hiện được napping, mà thu thập các kết quả ping cho trình nap, cũng có thể được cài đặt với bit set-user-id đã đặt, để có quyền mở một cổng mạng thô cần thiết để gửi gói tin ping.
+ .
+ Bật tính năng này thì có thể rủi ro bảo mật, do đó nó bị tắt theo mặc định. Nếu chưa chắc, khuyên bạn để lại nó bị tắt.

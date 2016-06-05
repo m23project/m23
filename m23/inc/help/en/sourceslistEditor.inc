@@ -5,4 +5,12 @@
 	<li><b>Test the package source</b>: After entering a package source list, you should test if all sources are working properly. Simply click on the <i>"Test"</i> button. The package description files will be downloaded and a test report will be shown thereafter. It can take minutes until the report is shown, depending on your internet connection speed and the speed of the used software package servers.</li>
 	<!-- V1.6 add -->
 	<li><b>Select Mirror</b>: If you would like to use a different mirror (the standard server is ftp.debian.org) for the installation of the base system, enter it as follows in a new line of your package source: <code>#mirror: [URL to the packages]</code>. <i>URL to the packages</i> describes the protocol, the hostname or the IP and the directory that contains the packages. A valid URL may look like this: <code>#mirror: http://192.168.7.14/debianCDs</code>.</li><!-- V1.6 add -->
+	<!-- V11.5 begin --><li><b>Create configuration files</b>: Every package sources list offers the option to create additional files (e.g. for package manager configuration). For every file you wish to add, add a new line following this syntax: 
+        <code>#addToFile:[file name with full path to file]###[1. line]###[2. line]</code>.
+        Replace Ersetzen Sie hierbei <i>"[file name with full path to file]"</i> by the correct value (e.g. /etc/apt/preferences). The lines in the output file from the package sources list will be separated by three hash signs (###) instead of linebreaks, as the command to creat a file must be given in a single line.</li>
+        <li><b>Supported file systems</b>: Every distribution offers support for a number of file systems. These can vary from distribution to distribution. Please list the supported file systems in a separate line:
+        <code>#supportedFS: [file system 1], [file system 2], [file system 3]</code>
+        Each line can contain any number of file systems (separated by comma and space) (e.g. <code>#supportedFS: ext2, ext3, ext4, reiserfs</code>).
+        If you select an unsupported file system when formatting a client, the file system will automatically be adapted to one that is supported when the formatting process starts. This fallback file system must be indicated with the line
+        <code>#alternativeFS: [file system]</code> (e.g. <code>#alternativeFS: ext3</code>).</li><!-- V11.5 end -->
 </ul>

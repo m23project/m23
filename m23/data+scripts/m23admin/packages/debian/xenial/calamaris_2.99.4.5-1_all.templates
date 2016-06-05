@@ -1,0 +1,953 @@
+
+Template: calamaris/cache_type
+Type: select
+Choices: auto, squid, squid3
+Choices-ca.UTF-8: auto, squid, squid3
+Choices-cs.UTF-8: auto, squid, squid3
+Choices-da.UTF-8: auto, squid, squid3
+Choices-de.UTF-8: automatisch, Squid, Squid3
+Choices-es.UTF-8: auto, squid, squid3
+Choices-eu.UTF-8: auto, squid, squid3
+Choices-fi.UTF-8: automaattinen, squid, squid3
+Choices-fr.UTF-8: Automatique, Squid, Squid 3
+Choices-gl.UTF-8: auto, squid, squid3
+Choices-it.UTF-8: auto, squid, squid3
+Choices-ja.UTF-8: 自動判別, squid, squid3
+Choices-nl.UTF-8: auto, squid, squid3
+Choices-pt.UTF-8: auto, squid, squid3
+Choices-ru.UTF-8: авто, squid, squid3
+Choices-sv.UTF-8: auto, squid, squid3
+Choices-vi.UTF-8: tự động, squid, squid3
+Default: auto
+Description: Type of proxy log files to analyze:
+ Calamaris is able to process log files from Squid or Squid3. If you choose
+ 'auto' it will look first for Squid log files and then for Squid3 log files.
+ .
+ Choosing 'auto' is recommended when only one proxy is installed.
+ Otherwise, the appropriate setting can be enforced here.
+Description-ca.UTF-8: Tipus d'arxius de registre del proxy per analitzar:
+ Calamaris pot processar fitxers de registre dels programes Squid o Squid3. Si trieu «auto» buscarà primer els fitxers de registre de Squid i després els d'Squid3.
+ .
+ Es recomana seleccionar l'opció «auto» quan només hi ha un «proxy» instal·lat. En altre cas, la configuració adequada es pot fer complir aquí.
+Description-cs.UTF-8: Typ analyzovaných souborů logu:
+ Calamaris je schopen projít logovací soubory Squidu či Squid3e. Pokud zvolíte 'auto', pak se nejprve podívá po logovacích souborech Squidu, pak po logu Squid3e.
+ .
+ Volba 'auto' se doporučuje pouze pokud máte nainstalovánu jednu proxy. Jinak je potřeba zadat odpovídající nastavení.
+Description-da.UTF-8: Type af proxylogfiler at analysere:
+ Calamaris er i stand til at behandle logfiler fra Squid eller Squid3. Hvis du vælger »auto« vil den først kigge efter Squidlogfiler og så efter Squid3-logfiler.
+ .
+ Valg af »auto« anbefales når der kun er installeret en proxy. Ellers kan den passende indstilling blive fremtvunget her.
+Description-de.UTF-8: Art von Proxy-Protokolldateien, die analysiert werden sollen:
+ Calamaris kann die Protokolldateien von Squid und Squid3 analysieren. Falls »automatisch« ausgewählt wird, wird Calamaris zuerst nach Protokolldateien von Squid und dann nach solchen von Squid3 suchen.
+ .
+ Die Wahl von »automatisch« wird empfohlen, wenn nur ein Proxy installiert ist. Andernfalls kann die geeignete Einstellung hier erzwungen werden.
+Description-es.UTF-8: Tipo de archivos de registro de proxy a analizar:
+ Calamaris es capaz de procesar archivos de registro de «Squid» o de «Squid3». Si escoge «auto», el programa buscará primero archivos de registro de «Squid» y luego buscará archivos de «Squid3».
+ .
+ Se recomienda elegir la opción «auto» cuando solamente haya un proxy instalado. Para otros casos puede definir aquí la configuración más adecuada.
+Description-eu.UTF-8: Aztertu behar diren proxy erregistro fitxategi mota:
+ Calamaris 'Squid' eta 'Squid3' erregistro-fitxategiak aztertzeko gai da. 'auto' hautatzen baduzu lehenengo squid erregistro-fitxategiak bilatuko ditu eta ondoren Squid3 erregistro-fitxategiak.
+ .
+ Proxy bakar bat instalaturik dagoenean 'auto' hautatzea gomendatzen da. Bestela beharrezko ezarpenak hemen ipini daitezke.
+Description-fi.UTF-8: Analysoitavien välityspalvelinlokien tyyppi:
+ Calamaris voi käsitellä Squidin tai Squid3in lokitiedostoja. Jos valitset ”automaattinen”, etsitään ensin Squidin lokeja ja sitten Squid3in lokeja.
+ .
+ On suositeltavaa valita ”automaattinen”, jos vain yksi välityspalvelin on asennettuna. Muussa tapauksessa tässä voidaan pakottaa haluttu asetus.
+Description-fr.UTF-8: Types de journaux de mandataires (« proxy ») à analyser :
+ Calamaris peut traiter les journaux de Squid et Squid 3. Si vous choisissez « Automatique », il recherchera d'abord des journaux de Squid puis ceux de Squid 3.
+ .
+ Il est recommandé de choisir « Automatique » si un seul type de mandataire est installé. Dans le cas contraire, le choix approprié peut être effectué ici.
+Description-gl.UTF-8: Tipo de ficheiros de rexistro do proxy a analizar:
+ Calamaris pode procesar os ficheiros de rexistro de Squid ou Squid3. Se escolle "auto" ha buscar primeiro os ficheiros de rexistro de Squid e despois os de Squid3.
+ .
+ Recoméndase escoller "auto" se só ten un proxy instalado. Se non, aquí pode seleccionar a configuración axeitada.
+Description-it.UTF-8: Tipo di file di log del proxy da analizzare:
+ Calamaris è in grado di elaborare i file di log di Squid e Squid3. Con "auto" sono cercati prima i file di log di Squid e poi quelli di Squid3.
+ .
+ La scelta di "auto" è raccomandata quando è installato solo un proxy; negli altri casi è possibile impostare i file di log corretti.
+Description-ja.UTF-8: 分析するプロキシログファイルの種類:
+ Calamaris は Squid や Squid3 からのログファイルを処理できます。「auto」を選んだ場合はまず Squid のログファイルを探してから Squid3 のログファイルを探します。
+ .
+ 一つだけプロキシがインストールされている場合は「auto」を選ぶのがお勧めです。それ以外の場合は、ここで適切な設定を指定する必要があります。
+Description-nl.UTF-8: Welk type proxy-logbestanden wenst u te analyseren?
+ Calamaris kan logbestanden van Squid of Squid3 verwerken. Als u 'auto' kiest zal eerst naar Squid-logbestanden en dan naar Squid3-logbestanden gekeken worden.
+ .
+ Het wordt aangeraden om 'auto' te kiezen als er maar één proxy is geïnstalleerd. In de overige gevallen kunt u hier de juiste instelling afdwingen.
+Description-pt.UTF-8: Tipo de ficheiros de 'log' de proxy a analisar:
+ O Calamaris é capaz de processar ficheiros de 'log' do Squid ou do Squid3. Se escolher 'auto' serão procurados os ficheiros de 'log' do Squid em primeiro lugar e só depois os do Squid3.
+ .
+ Ecolher 'auto' é a opção recomendada quando tem apenas um proxy instalado. Caso contrário, poderá ser especificada aqui a opção correta.
+Description-ru.UTF-8: Тип файлов журнала прокси для анализа:
+ Calamaris умеет обрабатывать файлы журнала от Squid или Squid3. Если вы выберете 'авто', то сначала будет выполнен поиск файлов журнала Squid, а затем Squid3.
+ .
+ Значение 'авто' рекомендуется, если установлен только один прокси. В противном случае, здесь можно установить подходящее значение.
+Description-sv.UTF-8: Typ av proxyloggfiler att analysera:
+ Calamaris kan behandla loggfiler från Squid eller Squid3. Om du väljer "auto" kommer den först att leta efter Squids loggfiler och sedan efter Squid3' loggfiler.
+ .
+ "Auto" rekommenderas när endast en proxy är installerad. Annars kan den lämpliga inställningen framtvingas här.
+Description-vi.UTF-8: Kiểu tập tin ghi lưu ủy nhiệm cần phân tích:
+ Trình Calamaris có khả năng xử lý tập tin ghi lưu từ trình Squid hay Squid3. Nếu bạn chọn mục « tự động », trước tiên nó sẽ tìm tập tin ghi lưu kiểu Squid, rồi tập tin ghi lưu kiểu Squid3.
+ .
+ Khuyên bạn chọn mục « tự động » nếu chỉ có một trình ủy nhiệm được cài đặt. Không thì có thể buộc thiết lập thích hợp ở đây.
+
+Template: calamaris/daily/task
+Type: select
+Choices: nothing, mail, web, both
+Choices-ca.UTF-8: res, correu, web, els dos
+Choices-cs.UTF-8: nic, email, web, oba
+Choices-da.UTF-8: ingen, post, internet, begge
+Choices-de.UTF-8: keine, E-Mail, Web, beide
+Choices-es.UTF-8: nada, correo, web, ambos
+Choices-eu.UTF-8: bat ere ez, posta, web, biak
+Choices-fi.UTF-8: ei mikään, sähköposti, verkko, molemmat
+Choices-fr.UTF-8: Aucune, Courriel, Web, Les deux
+Choices-gl.UTF-8: ningún, correo, web, ambos
+Choices-it.UTF-8: nessuno, mail, web, entrambi
+Choices-ja.UTF-8: 何もしない, メール, ウェブ, 両方
+Choices-nl.UTF-8: geen van beide, e-mail, web, allebei
+Choices-pt.UTF-8: nenhum, mail, web, ambos
+Choices-ru.UTF-8: нет, почта, web, оба
+Choices-sv.UTF-8: ingen, e-post, webb, båda
+Choices-vi.UTF-8: không gì, thư tín, web, cả hai
+Default: mail
+Description: Output method for Calamaris daily analysis reports:
+ The result of the Calamaris analysis can be sent as an email to a
+ specified address or stored as a web page.
+ .
+ Please choose which of these methods you want to use.
+Description-ca.UTF-8: Mètode de comunicació dels informes diaris de Calamaris:
+ El resultat de l'anàlisi de Calamaris pot ésser enviat per correu electrònic a una adreça específica o be emmagatzemat en format de pàgina web.
+ .
+ Escolliu quin d'aquests mètodes voleu utilitzar.
+Description-cs.UTF-8: Výstupní metoda denních analýz Calamaris:
+ Výstup analýzy Calamaris je možno posílat formou emailu na danou adresu nebo ukládat jako webovou stránku.
+ .
+ Zvolte prosím, kterou z těchto metod chcete použít.
+Description-da.UTF-8: Uddatametode for Calamaris' daglige analyserapporter:
+ Resultatet af Calamarisanalysen kan sendes som en e-post til an angivet adresse eller gemmes som en internetside.
+ .
+ Vælg venligst hvilken af disse metoder du ønsker at bruge.
+Description-de.UTF-8: Ausgabemethode für die täglichen Analyseberichte von Calamaris:
+ Die Ergebnisse der von Calamaris durchgeführte Analyse kann als E-Mail an eine angegebene Adresse versandt oder als Webseite gespeichert werden.
+ .
+ Bitte wählen Sie aus, welche dieser Methoden Sie verwenden möchten.
+Description-es.UTF-8: Método de salida de los informes de análisis diario de Calamaris:
+ El resultado del análisis de Calamaris se puede enviar por correo electrónico a una dirección especifica o almacenarlo como una página web.
+ .
+ Elija cuál de éstos métodos desea usar.
+Description-eu.UTF-8: Calamaris-en eguneroko azterketaren irteera metodoa:
+ Calamaris azterketaren emaitzak erabiltzaile jakin bati posta bidez bidali edo web-orrialde bat bezala gorde daitezke.
+ .
+ Mesedez hautatu bi metodo hauetako zein erabili nahi duzun.
+Description-fi.UTF-8: Calamarisin päivittäisten analyysien tulostustapa:
+ Calamarisin analyysien tulokset voidaan lähettää annettuun osoitteeseen sähköpostilla tai tallentaa verkkosivuna.
+ .
+ Valitse mitä näistä tavoista haluat käyttää.
+Description-fr.UTF-8: Méthode de mise à disposition des compte-rendus quotidiens de Calamaris :
+ Les résultats des analyses de Calamaris peuvent être envoyés par courriel à une adresse donnée ou mis à disposition sur une page web.
+ .
+ Veuillez choisir la méthode que vous souhaitez utiliser.
+Description-gl.UTF-8: Método de saída para os informes diarios de análises de Calamaris:
+ O resultado das análises de Calamaris pódese enviar por email ao enderezo que se indique ou pódese armacenar coma unha páxina web.
+ .
+ Escolla cal destes métodos quere empregar.
+Description-it.UTF-8: Metodo di produzione dei report con le analisi giornaliere:
+ Il risultato delle analisi di Calamaris può essere inviato via email a uno specifico indirizzo o salvato come pagina web.
+ .
+ Scegliere fra questi metodi quello che si vuole usare.
+Description-ja.UTF-8: Calamaris の日次分析レポートの出力方法:
+ Calamaris の分析結果は特定のアドレスにメールで送るかウェブページとして保存できます。
+ .
+ どの形式を使いたいかを選んでください。
+Description-nl.UTF-8: Uitvoermethode voor de dagelijkse analyserapporten van Calamaris:
+ De analyseresultaten van Calamaris kunnen in een e-mail naar een door u gespecificeerd adres verzonden worden. Ze kunnen ook als webpagina worden opgeslagen.
+ .
+ Welke van deze methoden wilt u gebruiken?
+Description-pt.UTF-8: Método de envio dos relatórios diários do Calamaris:
+ O resultado da análise do Calamaris pode ser enviado por email para um determinado endereço, ou guardado como uma página web.
+ .
+ Indique por favor qual dos métodos pretende usar.
+Description-ru.UTF-8: Метод вывода ежедневных статистических отчётов Calamaris:
+ Статистический отчёт Calamaris может быть отправлен электронной почтой по указанному адресу или сохранен как web-страница.
+ .
+ Выберите желаемый метод.
+Description-sv.UTF-8: Utskriftsmetod för Calamaris' dagliga analysrapporter:
+ Resultatet av Calamaris' analys kan skickas som e-post till en angiven e-postadress eller lagras som en webbsida.
+ .
+ Välj vilken av dessa metoder du vill använda.
+Description-vi.UTF-8: Phương pháp xuất báo cáo phân tích hàng ngày của Calamaris:
+ Kết quả của chức năng phân tích của Calamaris thì có thể được gửi dạng thư điện tử cho địa chỉ thư đã ghi rõ, hoặc được cất giữ dạng trang Web.
+ .
+ Hãy chọn có nên sử dụng phương pháp nào.
+
+Template: calamaris/daily/mail
+Type: string
+Default: root
+Description: Recipient for daily analysis reports by mail:
+ Please choose the address that should receive daily Calamaris
+ analysis reports.
+ .
+ This setting is only needed if the reports are to be sent by email.
+Description-ca.UTF-8: Destinatari dels informes d'anàlisi diari per correu:
+ Escolliu la direcció que ha de rebre diàriament el informe d'anàlisi Calamaris.
+ .
+ Aquesta opció només és necessària si els informes s'enviaran per correu electrònic.
+Description-cs.UTF-8: Emailová adresa příjemce denních analýz:
+ Zvolte prosím adresu, na kterou se bude posílat denní analýza Calamaris.
+ .
+ Toto nastavení je potřeba pouze v případě, že zprávy posíláte pomocí emailu.
+Description-da.UTF-8: Modtager af daglige analyserapporter via post:
+ Vælg venligst adressen som skal modtage daglige analyserapporter fra Calamaris.
+ .
+ Denne indstilling er kun krævet, hvis rapporterne skal sendes med e-post.
+Description-de.UTF-8: Empfänger der täglichen Analyseberichte per E-Mail:
+ Bitte wählen Sie die Adresse, die die täglichen Analyseberichte von Calamaris erhalten soll.
+ .
+ Diese Einstellung wird nur benötigt, falls die Berichte per E-Mail verschickt werden sollen.
+Description-es.UTF-8: Receptor de los correos electrónicos de los informes de análisis diario:
+ Elija la dirección que debería recibir los informes de análisis diario de Calamaris.
+ .
+ Esta configuración sólo se necesita si los informes se envían por correo electrónico.
+Description-eu.UTF-8: Posta bidez bidalitako txostenak jasoko dituena:
+ Mesedez ezarri eguneroko Calamaris txostenak jasoko dituen helbidea.
+ .
+ Ezarpen hau txostenak postaz bidaltzen diren kasuan bakarrik behar da.
+Description-fi.UTF-8: Päivittäisten analyysien vastaanottajan sähköpostiosoite:
+ Anna osoite, johon päivittäiset Calamarisin analyysit tulisi lähettää.
+ .
+ Tätä asetusta tarvitaan vain, jos raportit lähetetään sähköpostitse.
+Description-fr.UTF-8: Destinataire des compte-rendus quotidiens par courriel :
+ Veuillez choisir l'adresse électronique qui recevra les compte-rendus quotidiens de Calamaris.
+ .
+ Ce réglage n'est utilisé que si les compte-rendus sont envoyés par courrier électronique.
+Description-gl.UTF-8: Destinatario dos emails con informes diarios de análises:
+ Escolla o enderezo que debería recibir os informes diarios coas análises de Calamaris.
+ .
+ Este valor só é necesario se se han enviar os informes por email.
+Description-it.UTF-8: Destinatario dei report con le analisi giornaliere:
+ Inserire l'indirizzo a cui inviare i report di Calamaris con le analisi giornaliere.
+ .
+ Questa impostazione è necessaria solo se i report vengono inviati via email.
+Description-ja.UTF-8: メールによる日次分析レポートの受信者:
+ 毎日の Calamaris の分析レポートを受け取る必要があるアドレスを選んでください。
+ .
+ この設定はレポートがメールによって送られる場合のみ必要です。
+Description-nl.UTF-8: Ontvanger van de dagelijkse analyserapporten:
+ Naar welk adres wilt u dat de dagelijkse analyserapporten van Calamaris worden gestuurd?
+ .
+ Deze instelling is slechts nodig als de rapporten per e-mail verstuurd worden.
+Description-pt.UTF-8: Destinatário dos emails de análise diária:
+ Indique por favor o endereço de email que deve receber diariamente os relatórios do Calamaris.
+ .
+ Esta definição só é necessária se os relatórios forem enviados por email.
+Description-ru.UTF-8: Адресаты ежедневных статистических отчётов:
+ Укажите адреса, на которые должны доставляться ежедневные статистические отчёты Calamaris.
+ .
+ Эта настройка нужна только в том случае, если отчёты будут доставляться по электронной почте.
+Description-sv.UTF-8: Mottagare för dagliga analysrapporter via e-post:
+ Ange den e-postadress som ska ta emot Calamaris' dagliga analysrapporter.
+ .
+ Denna inställning behövs endast om rapporterna ska skickas per e-post.
+Description-vi.UTF-8: Người nhận thư báo cáo phân tích hàng ngày:
+ Hãy chọn địa chỉ nên nhận báo cáo phân tích Calamaris hàng ngày.
+ .
+ Thiết lập này chỉ cần thiết nếu báo cáo sẽ được gửi dạng thư điện tử.
+
+Template: calamaris/daily/html
+Type: string
+Default: /var/www/calamaris/daily/index.html
+Description: Directory for storing HTML daily analysis reports:
+ Please choose the directory where daily Calamaris analysis reports
+ should be stored.
+ .
+ This setting is only needed if the reports are to be generated as
+ HTML.
+Description-ca.UTF-8: Directori d'emmagatzematge dels informes d'anàlisi diari en format HTML:
+ Triï el directori on s'emmagatzemaran diàriament els informes d'anàlisi Calamaris.
+ .
+ Aquesta opció només és necessària si els informes es generaran en format HTML
+Description-cs.UTF-8: Adresář pro ukládaní HTML zpráv s denními analýzami:
+ Zadejte prosím adresář, kde budou uloženy zprávy s denní analýzou Calamaris.
+ .
+ Toto nastavení je potřeba pouze v případě, že zprávy generujete do HTML.
+Description-da.UTF-8: Mappe hvor daglige analyserapporter skal gemmes i formatet HTML:
+ Vælg venligst mappen hvor daglige analyserapporter fra Calamaris skal gemmes.
+ .
+ Denne indstilling er kun krævet, hvis rapporterne skal oprettes som HTML.
+Description-de.UTF-8: Verzeichnis zum Speichern der täglichen HTML-Analyseberichte:
+ Bitte wählen Sie das Verzeichnis, in dem die täglichen Analyseberichte von Calamaris gespeichert werden sollen.
+ .
+ Diese Einstellung wird nur benötigt, falls die Berichte als HTML erstellt werden sollen.
+Description-es.UTF-8: Directorio para almacenar los informes de análisis diario en formato HTML:
+ Elija el directorio en el que se deberían almacenar los informes de análisis diario de Calamaris.
+ .
+ Esta configuración sólo se necesita si los informes se generan en formato HTML.
+Description-eu.UTF-8: Eguneroko azterketa txostena gordetzeko direktorioa:
+ Mesedez ezarri eguneroko Calamaris txostenak gordetzeko erabiliko den direktorioa.
+ .
+ Ezarpen hau txostenak HTML gisa gordetzen diren kasuan bakarrik behar da.
+Description-fi.UTF-8: Hakemisto päivittäisten analyysien tallentamiseen HTML-muodossa:
+ Anna hakemisto, johon Calamarisin päivittäisten analyysien tulokset tulisi tallentaa.
+ .
+ Tätä asetusta tarvitaan vain, jos raportit muokataan HTML-muotoon.
+Description-fr.UTF-8: Répertoire pour les compte-rendus quotidiens en format HTML :
+ Veuillez choisir le répertoire où les compte-rendus quotidiens d'analyse de Calamaris seront conservés.
+ .
+ Ce réglage n'est utilisé que si les compte-rendus sont créés en format HTML.
+Description-gl.UTF-8: Directorio para armacenar os informes diarios de análises en HTML:
+ Escolla o directorio no que se deben armacenar os informes diarios coas análises de Calamaris.
+ .
+ Este valor só é necesario se se han xerar os informes coma HTML.
+Description-it.UTF-8: Directory in cui salvare i report HTML con le analisi giornaliere:
+ Inserire la directory in cui conservare i report con le analisi giornaliere di Calamaris.
+ .
+ Questa impostazione è necessaria solo se i report vengono generati in HTML.
+Description-ja.UTF-8: HTML 日次分析レポートを保存するディレクトリ:
+ 毎日の Calamaris の分析レポートを保存する必要があるディレクトリを選んでください。
+ .
+ この設定はレポートを HTML として出力する場合のみ必要です。
+Description-nl.UTF-8: Map voor de dagelijkse HTML-analyserapporten:
+ In welke map wilt u dat de dagelijkse analyserapporten van Calamaris worden opgeslagen?
+ .
+ Deze instelling is slechts nodig als de rapporten in HTML-indeling worden gegenereerd.
+Description-pt.UTF-8: Directório onde armazenar os relatórios diários em HTML:
+ Indique por favor o directório onde os relatórios diários do Calamaris devem ser guardados.
+ .
+ Esta definição só é necessária se os relatórios forem gerados em HTML.
+Description-ru.UTF-8: Каталог для сохранения ежедневных статистических отчётов в HTML-формате:
+ Укажите каталог, в котором должны сохраняться ежедневные статистические отчёты Calamaris.
+ .
+ Эта настройка нужна только в том случае, если отчёты будут создаваться в HTML-формате (для Web).
+Description-sv.UTF-8: Katalog att lagra dagliga HTML-analysrapporter i:
+ Ange den katalog där Calamaris' dagliga analysrapporter ska lagras.
+ .
+ Denna inställning behövs endast om rapporterna ska genereras som HTML.
+Description-vi.UTF-8: Thư mục sẽ chứa báo cáo phân tích hàng ngày HTML:
+ Hãy chọn thư mục vào đó cần lưu báo cáo phân tích Calamaris hàng ngày.
+ .
+ Thiết lập này chỉ cần thiết nếu báo cáo sẽ được tạo ra dạng mã HTML.
+
+Template: calamaris/daily/title
+Type: string
+Default: Squid daily
+Description: Title of the daily analysis reports:
+ Please choose the text that will be used as a prefix to the title for
+ the daily Calamaris analysis reports.
+Description-ca.UTF-8: Títol dels informes d'anàlisi diària:
+ Triï el text que serà utilitzat com a prefix per al títol dels informes d'anàlisi diaris Calamaris.
+Description-cs.UTF-8: Název zpráv s denní analýzou:
+ Zadejte prosím text, který bude sloužit jako prefix titulku s denní zprávou analýzy Calamaris.
+Description-da.UTF-8: Titel på de daglige analyserapporter:
+ Vælg venligst teksten som vil blive brugt som præfiks for titlen for de daglige analyserapporter fra Calamaris.
+Description-de.UTF-8: Titel der täglichen Analyseberichte:
+ Bitte wählen Sie den Text, der vor den Titel für die täglichen Analyseberichte von Calamaris gestellt werden soll.
+Description-es.UTF-8: Título de los informes de análisis diario:
+ Elija el texto que se usará como prefijo del título de los informes de los análisis diario de Calamaris.
+Description-eu.UTF-8: Eguneroko azterketa txostenaren izenburua:
+ Mesedez ezarri Calamaris eguneroko azterketaren txostenean aurrizki bezala erabiliko den testua.
+Description-fi.UTF-8: Päivittäisen analyysiraportin otsikko:
+ Anna teksti, jota käytetään päivittäisen Calamarisin analyysiraportin otsikon etuliitteenä.
+Description-fr.UTF-8: Titre pour les compte-rendus quotidiens :
+ Veuillez choisir le texte qui sera utilisé comme préfixe du titre des compte-rendus quotidiens d'analyse de Calamaris.
+Description-gl.UTF-8: Título dos informes diarios de análises:
+ Escolla o texto que se ha empregar coma prefixo do título dos informes diarios de análises de Calamaris.
+Description-it.UTF-8: Titolo dei report con le analisi giornaliere:
+ Inserire il testo da usare come prefisso nel titolo dei report con le analisi giornaliere di Calamaris.
+Description-ja.UTF-8: 日次分析レポートのタイトル:
+ 日次 Calamaris 分析レポート用のタイトルのプレフィックスに使われる文章を選んでください。
+Description-nl.UTF-8: Titel voor de dagelijkse analyserapporten:
+ Welke tekst wilt u dat er als prefix wordt gebruikt voor de titel van de dagelijkse analyserapporten van Calamaris?
+Description-pt.UTF-8: Título da análise diária:
+ Indique por favor o texto a ser usado como prefixo do título do relatório diário do Calamaris.
+Description-ru.UTF-8: Название ежедневных статистических отчётов:
+ Введите текст, который будет использоваться как префикс в названии ежедневных статистических отчётов Calamaris.
+Description-sv.UTF-8: Titel för de dagliga analysrapporterna:
+ Ange den text som ska användas som prefix till titeln för Calamaris' dagliga analysrapporter.
+Description-vi.UTF-8: Tên của báo cáo phân tích hàng ngày:
+ Hãy chọn chuỗi cần dùng làm tiền tố cho tựa đề cho báo cáo phân tích Calamaris hàng ngày.
+
+Template: calamaris/weekly/task
+Type: select
+Choices: nothing, mail, web, both
+Choices-ca.UTF-8: res, correu, web, els dos
+Choices-cs.UTF-8: nic, email, web, oba
+Choices-da.UTF-8: ingen, post, internet, begge
+Choices-de.UTF-8: keine, E-Mail, Web, beide
+Choices-es.UTF-8: nada, correo, web, ambos
+Choices-eu.UTF-8: bat ere ez, posta, web, biak
+Choices-fi.UTF-8: ei mikään, sähköposti, verkko, molemmat
+Choices-fr.UTF-8: Aucune, Courriel, Web, Les deux
+Choices-gl.UTF-8: ningún, correo, web, ambos
+Choices-it.UTF-8: nessuno, mail, web, entrambi
+Choices-ja.UTF-8: 何もしない, メール, ウェブ, 両方
+Choices-nl.UTF-8: geen van beide, e-mail, web, allebei
+Choices-pt.UTF-8: nenhum, mail, web, ambos
+Choices-ru.UTF-8: нет, почта, web, оба
+Choices-sv.UTF-8: ingen, e-post, webb, båda
+Choices-vi.UTF-8: không gì, thư tín, web, cả hai
+Default: mail
+Description: Output method for Calamaris weekly analysis reports:
+ The result of the Calamaris analysis can be sent as an email to a
+ specified address or stored as a web page.
+ .
+ Please choose which of these methods you want to use.
+Description-ca.UTF-8: Mètode de comunicació dels informes setmanals de Calamaris:
+ El resultat de l'anàlisi de Calamaris pot ésser enviat per correu electrònic a una adreça específica o be emmagatzemat en format de pàgina web.
+ .
+ Escolliu quin d'aquests mètodes voleu utilitzar.
+Description-cs.UTF-8: Výstupní metoda týdenních analýz Calamaris:
+ Výstup analýzy Calamaris je možno posílat formou emailu na danou adresu nebo ukládat jako webovou stránku.
+ .
+ Zvolte prosím, kterou z těchto metod chcete použít.
+Description-da.UTF-8: Uddatametode for Calamaris' ugentlige analyserapporter:
+ Resultatet af Calamarisanalysen kan sendes som en e-post til an angivet adresse eller gemmes som en internetside.
+ .
+ Vælg venligst hvilken af disse metoder du ønsker at bruge.
+Description-de.UTF-8: Ausgabemethode für die wöchentlichen Analyseberichte von Calamaris:
+ Die Ergebnisse der von Calamaris durchgeführte Analyse kann als E-Mail an eine angegebene Adresse versandt oder als Webseite gespeichert werden.
+ .
+ Bitte wählen Sie aus, welche dieser Methoden Sie verwenden möchten.
+Description-es.UTF-8: Método de salida de los informes de análisis semanal de Calamaris:
+ El resultado del análisis de Calamaris se puede enviar por correo electrónico a una dirección especifica o almacenarlo como una página web.
+ .
+ Elija cuál de éstos métodos desea usar.
+Description-eu.UTF-8: Calamaris asteroko txostenaren irteera metodoa:
+ Calamaris azterketaren emaitzak erabiltzaile jakin bati posta bidez bidali edo web-orrialde bat bezala gorde daitezke.
+ .
+ Mesedez hautatu bi metodo hauetako zein erabili nahi duzun.
+Description-fi.UTF-8: Calamarisin viikottaisten analyysien tulostustapa:
+ Calamarisin analyysien tulokset voidaan lähettää annettuun osoitteeseen sähköpostilla tai tallentaa verkkosivuna.
+ .
+ Valitse mitä näistä tavoista haluat käyttää.
+Description-fr.UTF-8: Méthode de mise à disposition des compte-rendus hebdomadaires de Calamaris :
+ Les résultats des analyses de Calamaris peuvent être envoyés par courriel à une adresse donnée ou mis à disposition sur une page web.
+ .
+ Veuillez choisir la méthode que vous souhaitez utiliser.
+Description-gl.UTF-8: Método de saída para os informes semanais de análises de Calamaris:
+ O resultado das análises de Calamaris pódese enviar por email ao enderezo que se indique ou pódese armacenar coma unha páxina web.
+ .
+ Escolla cal destes métodos quere empregar.
+Description-it.UTF-8: Metodo di produzione dei report con le analisi settimanali:
+ Il risultato delle analisi di Calamaris può essere inviato via email a uno specifico indirizzo o salvato come pagina web.
+ .
+ Scegliere fra questi metodi quello che si vuole usare.
+Description-ja.UTF-8: Calamaris の週次分析レポートの出力方法:
+ Calamaris の分析結果は特定のアドレスにメールで送るかウェブページとして保存できます。
+ .
+ どの形式を使いたいかを選んでください。
+Description-nl.UTF-8: Uitvoermethode voor de wekelijkse analyserapporten van Calamaris:
+ De analyseresultaten van Calamaris kunnen in een e-mail naar een door u gespecificeerd adres verzonden worden. Ze kunnen ook als webpagina worden opgeslagen.
+ .
+ Welke van deze methoden wilt u gebruiken?
+Description-pt.UTF-8: Método de envio dos relatórios semanais do Calamaris:
+ O resultado da análise do Calamaris pode ser enviado por email para um determinado endereço, ou guardado como uma página web.
+ .
+ Indique por favor qual dos métodos pretende usar.
+Description-ru.UTF-8: Метод вывода для еженедельных статистических отчётов Calamaris:
+ Статистический отчёт Calamaris может быть отправлен электронной почтой по указанному адресу или сохранен как web-страница.
+ .
+ Выберите желаемый метод.
+Description-sv.UTF-8: Utskriftsmetod för Calamaris' veckoanalysrapporter:
+ Resultatet av Calamaris' analys kan skickas som e-post till en angiven e-postadress eller lagras som en webbsida.
+ .
+ Välj vilken av dessa metoder du vill använda.
+Description-vi.UTF-8: Phương pháp xuất báo cáo phân tích hàng tuần Calamaris:
+ Kết quả của chức năng phân tích của Calamaris thì có thể được gửi dạng thư điện tử cho địa chỉ thư đã ghi rõ, hoặc được cất giữ dạng trang Web.
+ .
+ Hãy chọn có nên sử dụng phương pháp nào.
+
+Template: calamaris/weekly/mail
+Type: string
+Default: root
+Description: Recipient for weekly analysis reports by mail:
+ Please choose the address that should receive weekly Calamaris
+ analysis reports.
+ .
+ This setting is only needed if the reports are to be sent by email.
+Description-ca.UTF-8: Destinatari dels informes d'anàlisi setmanal per correu:
+ Escolliu la direcció que ha de rebre setmanalment el informe d'anàlisi Calamaris.
+ .
+ Aquesta opció només és necessària si els informes s'enviaran per correu electrònic.
+Description-cs.UTF-8: Email příjemce týdenních analýz:
+ Zadejte prosím adresu, na kterou budou posílány týdenní analýzy Calamaris.
+ .
+ Toto nastavení je potřeba pouze v případě, že zprávy posíláte pomocí emailu.
+Description-da.UTF-8: Modtager af ugentlige analyserapporter via post:
+ Vælg venligst adressen som skal modtage ugentlige analyserapporter fra Calamaris.
+ .
+ Denne indstilling er kun krævet, hvis rapporterne skal sendes med e-post.
+Description-de.UTF-8: Empfänger des wöchentlichen Analyseberichts per E-Mail:
+ Bitte wählen Sie die Adresse, die die wöchentlichen Analyseberichte von Calamaris erhalten soll.
+ .
+ Diese Einstellung wird nur benötigt, falls die Berichte per E-Mail verschickt werden sollen.
+Description-es.UTF-8: Receptor de los correos electrónicos de los informes de análisis semanal:
+ Elija la dirección que debería recibir los informes de análisis semanal de Calamaris.
+ .
+ Esta configuración sólo se necesita si los informes se envían por correo electrónico.
+Description-eu.UTF-8: Posta bidez bidalitako asteroko txostenak jasoko dituena:
+ Mesedez ezarri asteroko Calamaris azterketaren txostenak jasoko dituen helbidea.
+ .
+ Ezarpen hau txostenak postaz bidaltzen diren kasuan bakarrik behar da.
+Description-fi.UTF-8: Viikottaisten analyysien vastaanottajan sähköpostiosoite:
+ Anna osoite, johon viikottaiset Calamarisin analyysit tulisi lähettää.
+ .
+ Tätä asetusta tarvitaan vain, jos raportit lähetetään sähköpostitse.
+Description-fr.UTF-8: Destinataire des compte-rendus hebdomadaires par courriel :
+ Veuillez choisir l'adresse électronique qui recevra les compte-rendus hebdomadaires de Calamaris.
+ .
+ Ce réglage n'est utilisé que si les compte-rendus sont envoyés par courrier électronique.
+Description-gl.UTF-8: Destinatario dos emails con informes semanais de análises:
+ Escolla o enderezo que debería recibir os informes semanais coas análises de Calamaris.
+ .
+ Este valor só é necesario se se han enviar os informes por email.
+Description-it.UTF-8: Destinatario dei report con le analisi settimanali:
+ Inserire l'indirizzo a cui inviare i report con le analisi settimanali di Calamaris.
+ .
+ Questa impostazione è necessaria solo se i report vengono inviati via email.
+Description-ja.UTF-8: メールによる週次分析レポートの受信者:
+ 毎週の Calamaris の分析レポートを受け取る必要があるアドレスを選んでください。
+ .
+ この設定はレポートがメールによって送られる場合のみ必要です。
+Description-nl.UTF-8: Ontvanger van de wekelijkse analyserapporten:
+ Naar welk adres wilt u dat de wekelijkse analyserapporten van Calamaris worden gestuurd?
+ .
+ Deze instelling is slechts nodig als de rapporten per e-mail verstuurd worden.
+Description-pt.UTF-8: Destinatário dos emails de análise semanal:
+ Indique por favor o endereço de email que deve receber semanalmente os relatórios do Calamaris.
+ .
+ Esta definição só é necessária se os relatórios forem enviados por email.
+Description-ru.UTF-8: Адресаты еженедельных статистических отчётов:
+ Укажите адреса, на которые должны доставляться еженедельные статистические отчёты Calamaris.
+ .
+ Эта настройка нужна только в том случае, если отчёты будут доставляться по электронной почте.
+Description-sv.UTF-8: Mottagare för veckoanalysrapporter via e-post:
+ Ange den e-postadress som ska ta emot Calamaris' veckoanalysrapporter.
+ .
+ Denna inställning behövs endast om rapporterna ska skickas per e-post.
+Description-vi.UTF-8: Người nhận thư báo cáo phân tích hàng tuần:
+ Hãy chọn địa chỉ nên nhận báo cáo phân tích Calamaris hàng tuần.
+ .
+ Thiết lập này chỉ cần thiết nếu báo cáo sẽ được gửi dạng thư điện tử.
+
+Template: calamaris/weekly/html
+Type: string
+Default: /var/www/calamaris/weekly/index.html
+Description: Directory for storing HTML weekly analysis reports:
+ Please choose the directory where weekly Calamaris analysis reports
+ should be stored.
+ .
+ This setting is only needed if the reports are to be generated as
+ HTML.
+Description-ca.UTF-8: Directori d'emmagatzematge dels informes d'anàlisi setmanal en format HTML:
+ Triï el directori on s'emmagatzemaran setmanalment els informes d'anàlisi Calamaris.
+ .
+ Aquesta opció només és necessària si els informes es generaran en format HTML
+Description-cs.UTF-8: Adresář pro uložení týdenních analýz ve formátu HTML:
+ Zvolte prosím adresář, kde budou uloženy týdenní analýzy Calamaris.
+ .
+ Toto nastavení je potřeba pouze v případě, že zprávy generujete do HTML.
+Description-da.UTF-8: Mappe hvor ugentlige analyserapporter skal gemmes i HTML:
+ Vælg venligst mappen hvor ugentlige analyserapporter fra Calamaris skal gemmes.
+ .
+ Denne indstilling er kun krævet, hvis rapporterne skal oprettes som HTML.
+Description-de.UTF-8: Verzeichnis zum Speichern der wöchentlichen HTML-Analyseberichte:
+ Bitte wählen Sie das Verzeichnis, in dem die wöchentlichen Analyseberichte von Calamaris gespeichert werden sollen.
+ .
+ Diese Einstellung wird nur benötigt, falls die Berichte als HTML erstellt werden sollen.
+Description-es.UTF-8: Directorio donde almacenar los informes de los análisis semanal en formato HTML:
+ Elija el directorio en el que se deberían almacenar los informes de análisis semanal de Calamaris.
+ .
+ Esta configuración sólo se necesita si los informes se generan en formato HTML.
+Description-eu.UTF-8: Asteroko azterketa txostena gordetzeko direktorioa:
+ Mesedez ezarri asteroko Calamaris azterketaren txostenak gordetzeko erabiliko den direktorioa.
+ .
+ Ezarpen hau txostenak HTML gisa gordetzen diren kasuan bakarrik behar da.
+Description-fi.UTF-8: Hakemisto viikottaisten analyysien tallentamiseen HTML-muodossa:
+ Anna hakemisto, johon Calamarisin viikottaisten analyysien tulokset tulisi tallentaa
+ .
+ Tätä asetusta tarvitaan vain, jos raportit muokataan HTML-muotoon.
+Description-fr.UTF-8: Répertoire pour les compte-rendus hebdomadaires en format HTML :
+ Veuillez choisir le répertoire où les compte-rendus hebdomadaires d'analyse de Calamaris seront conservés.
+ .
+ Ce réglage n'est utilisé que si les compte-rendus sont créés en format HTML.
+Description-gl.UTF-8: Directorio para armacenar os informes semanais de análises en HTML:
+ Escolla o directorio no que se deben armacenar os informes semanais coas análises de Calamaris.
+ .
+ Este valor só é necesario se se han xerar os informes coma HTML.
+Description-it.UTF-8: Directory in cui salvare i report HTML con le analisi settimanali:
+ Inserire la directory in cui conservare i report con le analisi settimanali di Calamaris.
+ .
+ Questa impostazione è necessaria solo se i report vengono generati in HTML.
+Description-ja.UTF-8: HTML 週次分析レポートを保存するディレクトリ:
+ 毎週の Calamaris の分析レポートを保存する必要があるディレクトリを選んでください。
+ .
+ この設定はレポートを HTML として出力する場合のみ必要です。
+Description-nl.UTF-8: Map voor de wekelijkse html analyserapporten:
+ In welke map wilt u dat de wekelijkse analyserapporten van Calamaris worden opgeslagen?
+ .
+ Deze instelling is slechts nodig als de rapporten in HTML-indeling worden gegenereerd.
+Description-pt.UTF-8: Directório onde armazenar os relatórios semanais em HTML:
+ Indique por favor o directório onde os relatórios semanais do Calamaris devem ser guardados.
+ .
+ Esta definição só é necessária se os relatórios forem gerados em HTML.
+Description-ru.UTF-8: Каталог для сохранения еженедельных статистических отчётов в HTML-формате:
+ Укажите каталог, в котором должны сохраняться еженедельные статистические отчёты Calamaris.
+ .
+ Эта настройка нужна только в том случае, если отчёты будут создаваться в HTML-формате (для Web).
+Description-sv.UTF-8: Katalog att lagra veckoanalysrapporter i:
+ Ange den katalog där Calamaris' veckoanalysrapporter ska lagras.
+ .
+ Denna inställning behövs endast om rapporterna ska genereras som HTML.
+Description-vi.UTF-8: Thư mục sẽ chứa báo cáo phân tích hàng tuần HTML:
+ Hãy chọn thư mục vào đó cần lưu báo cáo phân tích Calamaris hàng tuần.
+ .
+ Thiết lập này chỉ cần thiết nếu báo cáo sẽ được tạo ra dạng mã HTML.
+
+Template: calamaris/weekly/title
+Type: string
+Default: Squid weekly
+Description: Title of the weekly analysis reports:
+ Please choose the text that will be used as a prefix to the title for
+ the weekly Calamaris analysis reports.
+Description-ca.UTF-8: Títol dels informes d'anàlisi setmanal:
+ Triï el text que serà utilitzat com a prefix per al títol dels informes d'anàlisi setmanal Calamaris.
+Description-cs.UTF-8: Nadpis zpráv s týdenní analýzou:
+ Zvolte prosím text, který se použije jako prefix titulku týdenních analýz Calamaris.
+Description-da.UTF-8: Titel på de ugentlige analyserapporter:
+ Vælg venligst teksten som vil blive brugt som præfiks for titlen for de ugentlige analyserapporter fra Calamaris.
+Description-de.UTF-8: Titel der wöchentlichen Analyseberichte:
+ Bitte wählen Sie den Text, der vor den Titel für die wöchentlichen Analyseberichte von Calamaris gestellt werden soll.
+Description-es.UTF-8: Título de los informes de análisis semanal:
+ Elija el texto que se usará como prefijo del título de los informes de análisis semanal de Calamaris.
+Description-eu.UTF-8: Asteroko azterketa txostenaren izenburua:
+ Mesedez ezarri Calamaris asteroko azterketaren txostenean aurrizki bezala erabiliko den testua.
+Description-fi.UTF-8: Viikottaisen analyysiraportin otsikko:
+ Anna teksti, jota käytetään viikottaisen Calamarisin analyysiraportin otsikon etuliitteenä.
+Description-fr.UTF-8: Titre pour les compte-rendus hebdomadaires :
+ Veuillez choisir le texte qui sera utilisé comme préfixe du titre des compte-rendus hebdomadaires d'analyse de Calamaris.
+Description-gl.UTF-8: Título dos informes semanais de análises:
+ Escolla o texto que se ha empregar coma prefixo do título dos informes semanais de análises de Calamaris.
+Description-it.UTF-8: Titolo dei report con le analisi settimanali:
+ Inserire il testo da usare come prefisso nel titolo dei report con le analisi settimanali di Calamaris.
+Description-ja.UTF-8: 週次分析レポートのタイトル:
+ 週次 Calamaris 分析レポート用のタイトルのプレフィックスに使われる文章を選んでください。
+Description-nl.UTF-8: Titel van de wekelijkse analyserapporten:
+ Welke tekst wilt u dat er als prefix wordt gebruikt voor de titel van de wekelijkse analyserapporten van Calamaris?
+Description-pt.UTF-8: Título da análise semanal:
+ Indique por favor o texto a ser usado como prefixo do título do relatório semanal do Calamaris.
+Description-ru.UTF-8: Название еженедельных статистических отчётов:
+ Введите текст, который будет использоваться как префикс в названии еженедельных статистических отчётов Calamaris.
+Description-sv.UTF-8: Titel för veckoanalysrapporterna:
+ Ange den text som ska användas som prefix till titeln för Calamaris' veckoanalysrapporter.
+Description-vi.UTF-8: Tên của báo cáo phân tích hàng tuần:
+ Hãy chọn chuỗi cần dùng làm tiền tố cho tựa đề cho báo cáo phân tích Calamaris hàng tuần.
+
+Template: calamaris/monthly/task
+Type: select
+Choices: nothing, mail, web, both
+Choices-ca.UTF-8: res, correu, web, els dos
+Choices-cs.UTF-8: nic, email, web, oba
+Choices-da.UTF-8: ingen, post, internet, begge
+Choices-de.UTF-8: keine, E-Mail, Web, beide
+Choices-es.UTF-8: nada, correo, web, ambos
+Choices-eu.UTF-8: bat ere ez, posta, web, biak
+Choices-fi.UTF-8: ei mikään, sähköposti, verkko, molemmat
+Choices-fr.UTF-8: Aucune, Courriel, Web, Les deux
+Choices-gl.UTF-8: ningún, correo, web, ambos
+Choices-it.UTF-8: nessuno, mail, web, entrambi
+Choices-ja.UTF-8: 何もしない, メール, ウェブ, 両方
+Choices-nl.UTF-8: geen van beide, e-mail, web, allebei
+Choices-pt.UTF-8: nenhum, mail, web, ambos
+Choices-ru.UTF-8: нет, почта, web, оба
+Choices-sv.UTF-8: ingen, e-post, webb, båda
+Choices-vi.UTF-8: không gì, thư tín, web, cả hai
+Default: mail
+Description: Output method for Calamaris monthly analysis reports:
+ The result of the Calamaris analysis can be sent as an email to a
+ specified address or stored as a web page.
+ .
+ Please choose which of these methods you want to use.
+Description-ca.UTF-8: Mètode de comunicació dels informes mensuals de Calamaris:
+ El resultat de l'anàlisi de Calamaris pot ésser enviat per correu electrònic a una adreça específica o be emmagatzemat en format de pàgina web.
+ .
+ Escolliu quin d'aquests mètodes voleu utilitzar.
+Description-cs.UTF-8: Výstupní metoda měsíčních analýz Calamaris:
+ Výstup analýzy Calamaris je možno posílat formou emailu na danou adresu nebo ukládat jako webovou stránku.
+ .
+ Zvolte prosím, kterou z těchto metod chcete použít.
+Description-da.UTF-8: Uddatametode for Calamaris' månedlige analyserapporter:
+ Resultatet af Calamarisanalysen kan sendes som en e-post til an angivet adresse eller gemmes som en internetside.
+ .
+ Vælg venligst hvilken af disse metoder du ønsker at bruge.
+Description-de.UTF-8: Ausgabemethode für die monatlichen Analyseberichte von Calamaris:
+ Die Ergebnisse der von Calamaris durchgeführte Analyse kann als E-Mail an eine angegebene Adresse versandt oder als Webseite gespeichert werden.
+ .
+ Bitte wählen Sie aus, welche dieser Methoden Sie verwenden möchten.
+Description-es.UTF-8: Método de salida para los informes de los análisis mensual de Calamaris:
+ El resultado del análisis de Calamaris se puede enviar por correo electrónico a una dirección especifica o almacenarlo como una página web.
+ .
+ Elija cuál de éstos métodos desea usar.
+Description-eu.UTF-8: Calamaris hilabeteko txostenaren irteera metodoa:
+ Calamaris azterketaren emaitzak erabiltzaile jakin bati posta bidez bidali edo web-orrialde bat bezala gorde daitezke.
+ .
+ Mesedez hautatu bi metodo hauetako zein erabili nahi duzun.
+Description-fi.UTF-8: Calamarisin kuukausittaisten analyysien tulostustapa:
+ Calamarisin analyysien tulokset voidaan lähettää annettuun osoitteeseen sähköpostilla tai tallentaa verkkosivuna.
+ .
+ Valitse mitä näistä tavoista haluat käyttää.
+Description-fr.UTF-8: Méthode de mise à disposition des compte-rendus mensuels de Calamaris :
+ Les résultats des analyses de Calamaris peuvent être envoyés par courriel à une adresse donnée ou mis à disposition sur une page web.
+ .
+ Veuillez choisir la méthode que vous souhaitez utiliser.
+Description-gl.UTF-8: Método de saída para os informes mensuais de análises de Calamaris:
+ O resultado das análises de Calamaris pódese enviar por email ao enderezo que se indique ou pódese armacenar coma unha páxina web.
+ .
+ Escolla cal destes métodos quere empregar.
+Description-it.UTF-8: Metodo di produzione dei report con le analisi mensili:
+ Il risultato delle analisi di Calamaris può essere inviato via email a uno specifico indirizzo o salvato come pagina web.
+ .
+ Scegliere fra questi metodi quello che si vuole usare.
+Description-ja.UTF-8: Calamaris の月次分析レポートの出力方法:
+ Calamaris の分析結果は特定のアドレスにメールで送るかウェブページとして保存できます。
+ .
+ どの形式を使いたいかを選んでください。
+Description-nl.UTF-8: Uitvoermethode voor de maandelijkse analyserapporten van Calamaris:
+ De analyseresultaten van Calamaris kunnen in een e-mail naar een door u gespecificeerd adres verzonden worden. Ze kunnen ook als webpagina worden opgeslagen.
+ .
+ Welke van deze methoden wilt u gebruiken?
+Description-pt.UTF-8: Método de envio dos relatórios mensais do Calamaris:
+ O resultado da análise do Calamaris pode ser enviado por email para um determinado endereço, ou guardado como uma página web.
+ .
+ Indique por favor qual dos métodos pretende usar.
+Description-ru.UTF-8: Метод вывода для ежемесячных статистических отчётов Calamaris:
+ Статистический отчёт Calamaris может быть отправлен электронной почтой по указанному адресу или сохранен как web-страница.
+ .
+ Выберите желаемый метод.
+Description-sv.UTF-8: Utskriftsmetod för Calamaris' månatliga analysrapporter:
+ Resultatet av Calamaris' analys kan skickas som e-post till en angiven e-postadress eller lagras som en webbsida.
+ .
+ Välj vilken av dessa metoder du vill använda.
+Description-vi.UTF-8: Phương pháp xuất báo cáo phân tích hàng tháng Calamaris:
+ Kết quả của chức năng phân tích của Calamaris thì có thể được gửi dạng thư điện tử cho địa chỉ thư đã ghi rõ, hoặc được cất giữ dạng trang Web.
+ .
+ Hãy chọn có nên sử dụng phương pháp nào.
+
+Template: calamaris/monthly/mail
+Type: string
+Default: root
+Description: Recipient for monthly analysis reports by mail:
+ Please choose the address that should receive monthly Calamaris
+ analysis reports.
+ .
+ This setting is only needed if the reports are to be sent by email.
+Description-ca.UTF-8: Destinatari dels informes d'anàlisi mensual per correu:
+ Escolliu la direcció que ha de rebre mensualment el informe d'anàlisi Calamaris.
+ .
+ Aquesta opció només és necessària si els informes s'enviaran per correu electrònic.
+Description-cs.UTF-8: Email příjemce měsíčních analýz:
+ Zadejte prosím adresu, na kterou se budou posílat měsíční analýzy Calamaris.
+ .
+ Toto nastavení je potřeba pouze v případě, že zprávy posíláte pomocí emailu.
+Description-da.UTF-8: Modtager af månedlige analyserapporter via post:
+ Vælg venligst adressen som skal modtage månedlige analyserapporter fra Calamaris.
+ .
+ Denne indstilling er kun krævet, hvis rapporterne skal sendes med e-post.
+Description-de.UTF-8: Empfänger der monatlichen Analyseberichte per E-Mail:
+ Bitte wählen Sie die Adresse, die die monatlichen Analyseberichte von Calamaris erhalten soll.
+ .
+ Diese Einstellung wird nur benötigt, falls die Berichte per E-Mail verschickt werden sollen.
+Description-es.UTF-8: Receptor de los correos electrónicos de los informes de análisis mensual:
+ Elija la dirección que debería recibir los informes de análisis mensual de Calamaris.
+ .
+ Esta configuración sólo se necesita si los informes se envían por correo electrónico.
+Description-eu.UTF-8: Posta bidez bidalitako hilabeteko txostenak jasoko dituena:
+ Mesedez ezarri hilabeteko Calamaris azterketaren txostenak jasoko dituen helbidea.
+ .
+ Ezarpen hau txostenak postaz bidaltzen diren kasuan bakarrik behar da.
+Description-fi.UTF-8: Kuukausittaisten analyysien vastaanottajan sähköpostiosoite:
+ Anna osoite, johon kuukausittaiset Calamarisin analyysit tulisi lähettää.
+ .
+ Tätä asetusta tarvitaan vain, jos raportit lähetetään sähköpostitse.
+Description-fr.UTF-8: Destinataire des compte-rendus mensuels par courriel :
+ Veuillez choisir l'adresse électronique qui recevra les compte-rendus mensuels de Calamaris.
+ .
+ Ce réglage n'est utilisé que si les compte-rendus sont envoyés par courrier électronique.
+Description-gl.UTF-8: Destinatario dos emails con informes mensuais de análises:
+ Escolla o enderezo que debería recibir os informes mensuais coas análises de Calamaris.
+ .
+ Este valor só é necesario se se han enviar os informes por email.
+Description-it.UTF-8: Destinatario dei report con le analisi mensili:
+ Inserire l'indirizzo a cui inviare i report con le analisi settimanali di Calamaris.
+ .
+ Questa impostazione è necessaria solo se i report vengono inviati via email.
+Description-ja.UTF-8: メールによる月次分析レポートの受信者:
+ 毎月の Calamaris の分析レポートを受け取る必要があるアドレスを選んでください。
+ .
+ この設定はレポートがメールによって送られる場合のみ必要です。
+Description-nl.UTF-8: Ontvanger van de maandelijkse analyserapporten:
+ Naar welk adres wilt u dat de maandelijkse analyserapporten van Calamaris worden gestuurd?
+ .
+ Deze instelling is slechts nodig als de rapporten per e-mail verstuurd worden.
+Description-pt.UTF-8: Destinatário dos emails de análise mensal:
+ Indique por favor o endereço de email que deve receber mensalmente os relatórios do Calamaris.
+ .
+ Esta definição só é necessária se os relatórios forem enviados por email.
+Description-ru.UTF-8: Адресаты ежемесячных статистических отчётов:
+ Укажите адреса, на которые должны доставляться ежемесячные статистические отчёты Calamaris.
+ .
+ Эта настройка нужна только в том случае, если отчёты будут доставляться по электронной почте.
+Description-sv.UTF-8: Mottagare för månatliga analysrapporter via e-post:
+ Ange den e-postadress som ska ta emot Calamaris' månatliga analysrapporter.
+ .
+ Denna inställning behövs endast om rapporterna ska skickas per e-post.
+Description-vi.UTF-8: Người nhận thư báo cáo phân tích hàng tháng:
+ Hãy chọn địa chỉ nên nhận báo cáo phân tích Calamaris hàng tháng.
+ .
+ Thiết lập này chỉ cần thiết nếu báo cáo sẽ được gửi dạng thư điện tử.
+
+Template: calamaris/monthly/html
+Type: string
+Default: /var/www/calamaris/monthly/index.html
+Description: Directory for storing HTML monthly analysis reports:
+ Please choose the directory where monthly Calamaris analysis reports
+ should be stored.
+ .
+ This setting is only needed if the reports are to be generated as
+ HTML.
+Description-ca.UTF-8: Directori d'emmagatzematge dels informes d'anàlisi mensual en format HTML:
+ Triï el directori on s'emmagatzemaran mensualment els informes d'anàlisi Calamaris.
+ .
+ Aquesta opció només és necessària si els informes es generaran en format HTML
+Description-cs.UTF-8: Adresář pro uložení měsíčních analýz ve formátu HTML:
+ Zadejte prosím adresář, kde budou uloženy měsíční analýzy Calamaris.
+ .
+ Toto nastavení je potřeba pouze v případě, že zprávy generujete do HTML.
+Description-da.UTF-8: Mappe hvor månedlige analyserapporter skal gemmes i HTML:
+ Vælg venligst mappen hvor månedlige analyserapporter fra Calamaris skal gemmes.
+ .
+ Denne indstilling er kun krævet, hvis rapporterne skal oprettes som HTML.
+Description-de.UTF-8: Verzeichnis zum Speichern der monatlichen HTML-Analyseberichte:
+ Bitte wählen Sie das Verzeichnis, in dem die monatlichen Analyseberichte von Calamaris gespeichert werden sollen.
+ .
+ Diese Einstellung wird nur benötigt, falls die Berichte als HTML erstellt werden sollen.
+Description-es.UTF-8: Directorio para almacenar los informes de análisis mensual en formato HTML:
+ Elija el directorio en el que se deberían almacenar los informes de análisis mensual de Calamaris.
+ .
+ Esta configuración sólo se necesita si los informes se generan en formato HTML.
+Description-eu.UTF-8: Hilabeteko azterketa txostena gordetzeko direktorioa:
+ Mesedez ezarri hilabeteko Calamaris azterketaren txostenak gordetzeko erabiliko den direktorioa.
+ .
+ Ezarpen hau txostenak HTML gisa gordetzen diren kasuan bakarrik behar da.
+Description-fi.UTF-8: Hakemisto kuukausittaisten analyysien tallentamiseen HTML-muodossa:
+ Anna hakemisto, johon Calamarisin kuukausittaisten analyysien tulokset tulisi tallentaa.
+ .
+ Tätä asetusta tarvitaan vain, jos raportit muokataan HTML-muotoon.
+Description-fr.UTF-8: Répertoire pour les compte-rendus mensuels en format HTML :
+ Veuillez choisir le répertoire où les compte-rendus mensuels d'analyse de Calamaris seront conservés.
+ .
+ Ce réglage n'est utilisé que si les compte-rendus sont créés en format HTML.
+Description-gl.UTF-8: Directorio para armacenar os informes mensuais de análises en HTML:
+ Escolla o directorio no que se deben armacenar os informes mensuais coas análises de Calamaris.
+ .
+ Este valor só é necesario se se han xerar os informes coma HTML.
+Description-it.UTF-8: Directory in cui salvare i report HTML con le analisi mensili:
+ Inserire la directory in cui conservare i report con le analisi mensili di Calamaris.
+ .
+ Questa impostazione è necessaria solo se i report vengono generati in HTML.
+Description-ja.UTF-8: HTML 月次分析レポートを保存するディレクトリ:
+ 毎月の Calamaris の分析レポートを保存する必要があるディレクトリを選んでください。
+ .
+ この設定はレポートを HTML として出力する場合のみ必要です。
+Description-nl.UTF-8: Map voor de maandelijkse html analyserapporten:
+ In welke map wilt u dat de maandelijkse analyserapporten van Calamaris worden opgeslagen?
+ .
+ Deze instelling is slechts nodig als de rapporten in HTML-indeling worden gegenereerd.
+Description-pt.UTF-8: Directório onde armazenar os relatórios mensais em HTML:
+ Indique por favor o directório onde os relatórios mensais do Calamaris devem ser guardados.
+ .
+ Esta definição só é necessária se os relatórios forem gerados em HTML.
+Description-ru.UTF-8: Каталог для сохранения ежемесячных статистических отчётов в HTML-формате:
+ Укажите каталог, в котором должны сохраняться ежемесячные статистические отчёты Calamaris.
+ .
+ Эта настройка нужна только в том случае, если отчёты будут создаваться в HTML-формате (для Web).
+Description-sv.UTF-8: Katalog att lagra månatliga HTML-analysrapporter i:
+ Ange den katalog där Calamaris' månatliga analysrapporter ska lagras.
+ .
+ Denna inställning behövs endast om rapporterna ska genereras som HTML.
+Description-vi.UTF-8: Thư mục sẽ chứa báo cáo phân tích hàng tuần HTML:
+ Hãy chọn thư mục vào đó cần lưu báo cáo phân tích Calamaris hàng tháng.
+ .
+ Thiết lập này chỉ cần thiết nếu báo cáo sẽ được tạo ra dạng mã HTML.
+
+Template: calamaris/monthly/title
+Type: string
+Default: Squid monthly
+Description: Title of the monthly analysis reports:
+ Please choose the text that will be used as a prefix to the title for
+ the monthly Calamaris analysis reports.
+Description-ca.UTF-8: Títol dels informes d'anàlisi mensual:
+ Triï el text que serà utilitzat com a prefix per al títol dels informes d'anàlisi mensual Calamaris.
+Description-cs.UTF-8: Nadpis zpráv s měsíční analýzou:
+ Zvolte prosím text, který se použije jako prefix titulku s měsíční analýzou Calamaris.
+Description-da.UTF-8: Titel for de månedlige analyserapporter:
+ Vælg venligst teksten som vil blive brugt som præfiks på titlen for de månedlige analyserapporter fra Calamaris.
+Description-de.UTF-8: Titel der monatlichen Analyseberichte:
+ Bitte wählen Sie den Text, der vor den Titel für die monatlichen Analyseberichte von Calamaris gestellt werden soll.
+Description-es.UTF-8: Título de los informes de análisis mensual:
+ Elija el texto que se usará como prefijo del título de los informes de análisis mensual de Calamaris.
+Description-eu.UTF-8: Hilabeteko azterketa txostenaren izenburua:
+ Mesedez ezarri Calamaris hilabeteko azterketaren txostenean aurrizki bezala erabiliko den testua.
+Description-fi.UTF-8: Kuukausittaisen analyysiraportin otsikko:
+ Anna teksti, jota käytetään kuukausittaisen Calamarisin analyysiraportin otsikon etuliitteenä.
+Description-fr.UTF-8: Titre pour les compte-rendus mensuels :
+ Veuillez choisir le texte qui sera utilisé comme préfixe du titre des compte-rendus mensuels d'analyse de Calamaris.
+Description-gl.UTF-8: Título dos informes mensuais de análises:
+ Escolla o texto que se ha empregar coma prefixo do título dos informes mensuais de análises de Calamaris.
+Description-it.UTF-8: Titolo dei report con le analisi mensili:
+ Inserire il testo da usare come prefisso nel titolo dei report con le analisi mensili di Calamaris.
+Description-ja.UTF-8: 月次分析レポートのタイトル:
+ 月次 Calamaris 分析レポート用のタイトルのプレフィックスに使われる文章を選んでください。
+Description-nl.UTF-8: Titel voor de maandelijkse analyserapporten:
+ Welke tekst wilt u dat er als prefix wordt gebruikt voor de titel van de maandelijkse analyserapporten van Calamaris?
+Description-pt.UTF-8: Título dos relatórios da análise mensal:
+ Indique por favor o texto a ser usado como prefixo do título do relatório mensal do Calamaris.
+Description-ru.UTF-8: Название ежемесячных статистических отчётов:
+ Введите текст, который будет использоваться как префикс в названии ежемесячных статистических отчётов Calamaris.
+Description-sv.UTF-8: Titel för de månatliga analysrapporterna:
+ Ange den text som ska användas som prefix till titeln för Calamaris' månatliga analysrapporter.
+Description-vi.UTF-8: Tên của báo cáo phân tích hàng tháng:
+ Hãy chọn chuỗi cần dùng làm tiền tố cho tựa đề cho báo cáo phân tích Calamaris hàng tháng.
+
+Template: calamaris/cache_file
+Type: string
+Default: access.log
+Description: Names of proxy log files to analyze:
+ Calamaris is supposed to run before the logrotation of the Squid logfiles.
+ If you want to let it run right after the logrotation of Squid (e.g. by
+ adding Calamaris to /etc/logrotate.d/squid), you should change this entry
+ to access.log.1.
+Description-ca.UTF-8: Noms dels fitxers de registre del proxy per analitzar:
+ Se suposa que Calamaris ha de funcionar abans de la rotació dels arxius de registre d'Squid. Si voleu que s'executi immediatament després de la rotació dels arxius de registre d'Squid (p.ex. afegint Calamaris a /etc/logrotate.d/squid), ha de canviar aquesta entrada a «access.log.1».
+Description-cs.UTF-8: Jméno analyzovaných souborů logu:
+ Calamaris předpokládá, že bude spuštěn ještě před rotací logů Squidu. Pokud ho chcete spouštět po vlastní rotaci logů Squidu (např. přidáním Calamaris do /etc/logrotate.d/squid), měli byste změnit tuto volbu na access.log.1.
+Description-da.UTF-8: Navne på proxylogfiler at analysere:
+ Det er meningen, at Calamaris skal køre før logrotationen af Squidlogfilerne. Hvis du ønsker at lade den køre lige efter logrotationen for Squid (det vil sige ved at tilføje Calamaris til /etc/logrotate.d/squid), skal du ændre dette punkt til access.log.1.
+Description-de.UTF-8: Namen der Proxy-Protokolldateien, die analysiert werden sollen:
+ Calamaris soll vor der Logrotation der Protokolldateien von Squid laufen. Falls Sie möchten, dass es direkt nach der Logrotation von Squid läuft (z. B. indem Sie Calamaris zu /etc/logrotate.d/squid hinzufügen), sollten sie diesen Eintrag auf access.log.1 ändern.
+Description-es.UTF-8: Nombre de los archivos de registro del proxy a analizar:
+ Se supone que Calamaris se ejecuta antes de la rotación de los archivos de registro de Squid. Si quiere permitirle que se ejecute justo después de la rotación de Squid (por ejemplo: añadiendo Calamaris a «/etc/logrotate.d/squid») debería cambiar esta entrada a «access.log.1».
+Description-fr.UTF-8: Journaux de mandataires (« proxy ») à analyser :
+ Calamaris est prévu pour être exécuté avant la rotation des journaux de Squid. Si vous souhaitez qu'il s'exécute après cette rotation des journaux (p. ex. en ajoutant Calamaris à /etc/logrotate.d/suid), vous devriez modifier ce réglage pour mettre « access.log.1 ».
+Description-it.UTF-8: Nome dei file di log del proxy da analizzare:
+ Si dovrebbe eseguire Calamaris prima della rotazione dei file di log di Squid. Per eseguire Calamaris dopo la rotazione dei log di Squid (per esempio aggiungendo Calamaris a /etc/logrotate.d/squid), si deve cambiare questo valore in access.log.1.
+Description-ja.UTF-8: 分析するプロキシログファイルの名前:
+ Calamaris は、Squid のログファイルのログローテーションの前に実行されるようになっています。Squid のログローテーション直後に実行するようにしたい場合 (例: /etc/logrotate.d/squid に Calamaris を追加している場合)、このエントリを access.log.1 に変更する必要があります。
+Description-nl.UTF-8: Naam van de te analyzeren proxy-logbestanden:
+ Calamaris hoort uitgevoerd te worden voor de logrotatie van de Squid-logbestanden. Als Calamaris direct na de logrotatie uitgevoerd moet worden (bv. door Calamaris toe te voegen aan /etc/logrotate.d/squid), dan moet u dit veranderen in acces.log.1.
+Description-pt.UTF-8: Nomes dos ficheiros de 'log' de proxy a analisar:
+ É suposto correr o Calamaris antes da rotação de logs do Squid. Se o quiser correr logo após a rotação (e.g. ao adicionar o Calamaris a /etc/logrotate.d/squid), deve alterar esta definição para access.log.1.
+Description-ru.UTF-8: Название файлов журнала прокси для анализа:
+ Calamaris должен запускаться до ротации файлов журнала Squid. Если вы хотите запускать его после (т.е. добавлением Clamaris в /etc/logrotate.d/squid), то измените значение на access.log.1.
+Description-sv.UTF-8: Proxyloggfiler att analysera:
+ Calamaris är tänkt att köras innan loggfilerna för Squid roteras. Om du vill köra direkt efter loggroteringen för Squid (exempelvis genom att lägga till Calamaris till /etc/logrotate.d/squid) så ska filnamnet vara access.log.1.
+

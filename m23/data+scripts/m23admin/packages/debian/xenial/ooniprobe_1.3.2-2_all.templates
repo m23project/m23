@@ -1,0 +1,88 @@
+
+Template: ooniprobe/run-cronjob
+Type: boolean
+Default: false
+Description: Run ooniprobe daily?
+ ooniprobe can be configured to run a set of basic network tests on a daily
+ basis. This will test the current network for signs of surveillance and
+ censorship, and send the results to the main OONI collector through the Tor
+ network.
+ .
+ If you choose this option, a daily cron job will run network tests as the
+ "Debian-ooni" user.
+ .
+ You should be aware that running OONI may break the terms of service of your ISP
+ or be legally questionable in your country. The software will attempt to connect
+ to web services that may be banned, using web censorship circumvention methods
+ such as Tor. The OONI project will publish data submitted by probes, possibly
+ including your IP address or other identifying information. In addition, your
+ use of OONI will be clear to anybody who has access to your computer, and to
+ anybody who can monitor your Internet connection (such as your employer, ISP, or
+ government).
+ .
+ For more information on the risks associated with running ooniprobe, see
+ /usr/share/doc/ooniprobe/RISKS.
+Description-cs.UTF-8: Spouštět ooniprobe denně?
+ ooniprobe lze nastavit tak, aby každý den spouštěl sadu základních testů sítě. Toto bude testovat, zda-li stávající síť nejeví známky sledování a cenzury a přes síť Tor odesílat výsledky na hlavní sběrač OONI.
+ .
+ Pokud tuto možnost zvolíte, bude denní úloha pro cron spouštět testy sítě pod uživatelem "Debian-ooni".
+ .
+ Měli byste si být vědomi toho, že spouštění OONI může porušovat podmínky služby vašeho ISP, nebo může být v rozporu s právními předpisy ve vaší zemi. Tento software se za pomoci technik obcházení cenzury webu pokusí připojit k webovým službám, jako je Tor. Údaje zjištěné sondami projekt OONI pravděpodobně zveřejní i s vaší IP adresou a dalšími identifikačními údaji. Kromě toho bude každému, kdo má přístup k počítači, a každému, kdo může sledovat vaše připojení k Internetu (jako je zaměstnavatel, ISP nebo vláda), zřejmé, že OONI používáte.
+ .
+ Pro více informací o rizicích spojených se spouštěním ooniprobe se podívejte do /usr/share/doc/ooniprobe/RISKS.
+Description-da.UTF-8: Kør ooniprobe dagligt?
+ Ooniprobe kan konfigureres til at køre et sæt af grundlæggende netværkstest på daglig basis. Dette vil teste det nuværende netværk for tegn på overvågning og censur og vil sende resultaterne til OONI's hovedindsamler via netværket Tor.
+ .
+ Hvis du vælger denne indstilling, vil et dagligt cronjob køre netværkstest, som brugeren »Debian-ooni«.
+ .
+ Du skal være opmærksom på, at kørsel af OONI kan overtræde tjenestebetingelserne hos din ISP eller være juridisk tvivlsomt i dit land. Dette program vil forsøge at forbinde til nettjenester, som kan være karantæneramt, via omgåelsesmetoder til netcensur såsom Tor. OONI-projektet vil udgive data indsendt af sonder, der muligvis inkluderer din IP-adresse eller anden identifikationsinformation. Derudover vil din brug af OONI være tydelig for enhver som har adgang til din computer, og for alle som kan overvåge din internetforbindelse (såsom din arbejdsgiver, ISP eller regering).
+ .
+ For yderligere information om risikoerne associeret med kørsel af ooniprobe, se /usr/share/doc/ooniprobe/RISKS.
+Description-de.UTF-8: Soll Ooniprobe täglich ausgeführt werden?
+ Ooniprobe kann so eingerichtet werden, dass es täglich als Zusammenstellung grundlegender Netzwerktests ausgeführt wird. Dies wird das aktuelle Netzwerk auf Anzeichen von Überwachung und Zensur überprüfen und die Ergebnisse über das TOR-Netzwerk zum Haupt-OONI-Sammler senden.
+ .
+ Falls Sie diese Option auswählen, wird ein täglicher Cronjob Netzwerktests als Benutzer »Debian-ooni« ausführen.
+ .
+ Sie sollten sich bewusst sein, dass das Ausführen von OONI gegen die Nutzungsbedingungen Ihres Internetanbieters verstoßen oder in Ihrem Land rechtliche Fragen aufwerfen könnte. Diese Software wird unter Verwendung von Zensurvereitelungsmethoden wie TOR versuchen, sich mit verbotenen Web-Diensten zu verbinden. Das OONI-Projekt wird durch Tests gesendete Daten veröffentlichen, die möglicherweise Ihre IP-Adresse oder andere Informationen zur Identifikation enthalten. Außerdem wird jedem, der Zugriff auf Ihren Rechner hat und jedem, der Ihre Internetverbindung überwacht, klar sein, dass Sie OONI benutzen (wie beispielsweise Ihrem Arbeitgeber, dem Internetanbieter oder der Regierung).
+ .
+ Weitere Informationen über die mit der Ausführung von Ooniprobe verbundenen Risiken finden Sie unter /usr/share/doc/ooniprobe/RISKS.
+Description-es.UTF-8: ¿Desea ejecutar ooniprobe diariamente?
+ Puede configurar ooniprobe para que ejecute un conjunto de pruebas básicas de red todos los días. De esta manera se comprobará la red actual para detectar signos de vigilancia y censura y enviará los resultados al colector principal OONI a través de la red Tor.
+ .
+ Si elige esta opción, una tarea diaria de cron ejecutará pruebas de red con el nombre de usuario «Debian-ooni».
+ .
+ Debe tener en cuenta que la ejecución de OONI puede incumplir los términos de servicio de su proveedor de Internet o puede ser jurídicamente cuestionable en su país. El programa intentará conectarse a servicios web que pueden estar prohibidos, utilizando métodos de evasión de censura web como Tor. El proyecto OONI publicará los datos presentados por sondeos, posiblemente incluyendo su dirección IP u otra información de identificación. Además, el uso que haga de OONI será accesible para cualquiera que tenga acceso a su equipo y que pueda supervisar su conexión a Internet (como su empleador, su proveedor de Internet o el gobierno).
+ .
+ Para obtener más información sobre los riesgos asociados con la ejecución de ooniprobe, consulte /usr/share/doc/ooniprobe/RISKS.
+Description-fr.UTF-8: Faut-il exécuter ooniprobe quotidiennement ?
+ Il est possible de configurer ooniprobe pour exécuter quotidiennement un ensemble de tests réseau de base. Le réseau en cours d'utilisation sera analysé pour détecter des signes de surveillance et de censure, et les résultats seront envoyés au collecteur OONI principal au travers du réseau Tor.
+ .
+ Si vous choisissez cette option, une tâche planifiée quotidienne exécutera les tests réseau avec l'utilisateur « Debian-ooni ».
+ .
+ L'utilisation d'OONI peut violer les conditions d'utilisation de votre FAI, ou être incompatible avec les lois de votre pays. L'application tentera de se connecter à des services web qui peuvent être bannis, grâce à des méthodes de contournement de censure comme Tor. Le projet OONI publiera les données envoyées par les sondes, comme votre adresse IP ou d'autres informations permettant de vous identifier. De plus, votre utilisation d'OONI sera visible par tous ceux qui ont accès à votre ordinateur, ainsi qu'à tous ceux qui peuvent surveiller votre connection à Internet (comme votre employeur, votre FAI, ou votre gouvernement).
+ .
+ Pour plus d'informations sur les risques associés à l'exécution d'ooniprobe, veuillez lire le fichier usr/share/doc/ooniprobe/RISKS.
+Description-pt.UTF-8: Correr o ooniprobe diariamente?
+ O ooniprobe pode ser configurado para correr um conjunto de testes de rede básicos diariamente. Isto irá testar a rede presente por sinais de vigilância e censura, e enviar os resultados para o colector OONI principal através da rede Tor.
+ .
+ Se escolher esta opção, uma rotina cron diária irá correr testes de rede com "Debian-ooni" como utilizador.
+ .
+ Você precisa de saber que correr o OONI pode ir contra os termos de serviço do seu ISP ou pode ser legalmente questionável no seu país. O software irá tentar ligar a servidores web que podem estar banidos, usando métodos de contorno a censuras da web tais como Tor. O projecto OONI irá publicar dados submetidos pelas sondagens, possivelmente incluindo o seu endereço IP ou outra informação de identificação. Adicionalmente, o seu uso do OONI será claro para qualquer pessoa que tenha acesso ao seu computador, e para todos que consigam monitorizar a sua ligação à Internet (tais como a sua entidade patronal, ISP, ou governo).
+ .
+ Para mais informação sobre os riscos associados com a execução do ooniprobe, veja usr/share/doc/ooniprobe/RISKS.
+Description-pt_BR.UTF-8: Executar o ooniprobe diariamente?
+ O ooniprobe pode ser configurado para executar um conjunto de testes de rede básicos diariamente. Isso testará a rede atual em busca de sinais de vigilância e censura, e enviará os resultados ao coletor OONI principal através da rede Tor.
+ .
+ Caso você escolha essa opção, uma tarefa diária do cron executará testes de rede como o usuário "Debian-ooni".
+ .
+ Você deve estar ciente de que executar o OONI pode violar os termos de serviço do seu provedor de serviço de Internet (ISP) ou ser questionável legalmente no seu país. O software tentará conectar a serviços web que podem estar banidos, usando métodos de circundamento tais como o Tor. O projeto OONI publicará dados enviados pelas sondas, possivelmente incluindo o seu endereço IP ou outras informações de identificação. Adicionalmente, o seu uso do OONI será claro para qualquer um que tenha acesso ao seu computador, e para qualquer um que possa monitorar a sua conexão à Internet (tal como o seu empregador, ISP ou governo).
+ .
+ Para mais informação sobre os riscos associados a executar o ooniprobe, veja /usr/share/doc/ooniprobe/RISKS.
+Description-ru.UTF-8: Запускать ooniprobe ежедневно?
+ ooniprobe можно настроить выполняться ежедневно для базовых проверок сети. При этом запускаются тесты поиска признаков слежения за текущей сетью и цензуры, а результаты посылаются в основной коллектор OONI через сеть Tor.
+ .
+ Если ответить положительно, то каждый день из задания cron будут выполняться тесты от имени пользователя «Debian-ooni».
+ .
+ Заметим, что запуск OONI может нарушить соглашение об обслуживании с вашим провайдером или законы вашей страны. ПО будет пытаться подключиться к возможно заблокированным веб-сервисам с помощью методов обхода цензуры, таких как Tor. Проект OONI опубликовывает данные, присылаемые зондами, включая, возможно, ваш IP-адрес или другую, указывающую на вас информацию. То, что вы используете OONI, будет понятно всем, кто имеет доступ к вашему компьютеру, и всем, кто может отслеживать ваше подключение к Интернету (работодатель, провайдер или правительство).
+ .
+ Дополнительную информацию о рисках, связанных с запуском ooniprobe, смотрите в /usr/share/doc/ooniprobe/RISKS.

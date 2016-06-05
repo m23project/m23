@@ -1,0 +1,65 @@
+Template: rssh/chroot_helper_setuid
+Type: boolean
+Default: false
+Description: Do you want rssh_chroot_helper to be installed setuid root?
+ If you plan to use chroot jails for the users using rssh, the program
+ /usr/lib/rssh/rssh_chroot_helper has to be installed setuid root so that
+ it can chroot into the jail when the user connects.  If you are not using
+ chroot jails, it's better to not install setuid root programs you don't
+ need.
+ .
+ If in doubt, install it without setuid root.  If you later decide to use
+ chroot jails, you can change this configuration by running
+ dpkg-reconfigure rssh.
+Description-cs.UTF-8: Přejete si nainstalovat rssh_chroot_helper s setuid uživatele root?
+ Pokud chcete používat vězení chroot i pro ostatní uživatele rssh, je potřeba nainstalovat program /usr/lib/rssh/rssh_chroot_helper s nastaveným setuid uživatele root. Nebudete-li používat vězení chroot, je bezpečnější toto nastavení neprovádět.
+ .
+ Jste-li na pochybách, nainstalujte to bez setuid uživatele root. Jakmile budete chtít později používat vězení chroot, změníte toto nastavení jednoduše spuštěním dpkg-reconfigure rssh.
+Description-da.UTF-8: Ønsker du at rssh_chroot_helper skal installeres som setuid root?
+ Hvis du planlægger at bruge chrootfængsler, for brugerne der bruger rssh, så skal programmet /usr/lib/rssh/rssh_chroot_helper installeres setuid root, så at programmet kan chroote ind i fængslet når brugeren forbinder. Hvis du ikke bruger chrootfængsler, så er det bedre ikke at installere setuid root-programmer, du ikke skal bruge.
+ .
+ Hvis i tvivl, så installer uden setuid root. Hvis du senere beslutter at bruge chrootfængsler, så kan du ændre denne konfiguration ved at køre dpkg-reconfigure rssh.
+Description-de.UTF-8: Möchten Sie, dass rssh_chroot_helper setuid root installiert wird?
+ Falls Sie für Benutzer, die rssh verwenden, eine Chroot-Umgebung planen, muss das Programm /usr/lib/rssh/rssh_chroot_helper setuid root installiert werden, so dass es bei der Verbindungsaufnahme eines Benutzers ein chroot in das Gefängnis (jail) vornehmen kann. Falls Sie keine Chroot-Gefängnisse verwenden, ist es besser, keine setuid root-Programme zu installieren, die Sie nicht benötigen.
+ .
+ Falls Sie sich unsicher sind, installieren Sie es nicht setuid root. Falls Sie sich später dazu entschließen, Chroot-Gefängnisse zu verwenden, können Sie diese Entscheidung ändern, indem Sie »dpkg-reconfigure rssh« ausführen.
+Description-es.UTF-8: ¿Desea que rssh_chroot_helper se instale con el bit SUID de root?
+ Si planea usar jaulas de chroot para los usuarios que usen rssh, el programa «/usr/bin/rssh_chroot_helper» tiene que instalarse con el bit SUID de root habilitado de modo que pueda cambiar a la jaula de chroot cuando el usuario se conecte. Si no está usando jaulas de chroot, es mejor no instalar los programas que no necesite con el SUID de root habilitado.
+ .
+ En caso de duda, se sugiere que instale sin el SUID de root habilitado. Si más tarde decide usar jaulas de chroot, puede cambiar esta configuración ejecutando: «dpkg-reconfigure rssh».
+Description-fr.UTF-8: Faut-il exécuter rssh_chroot_helper avec les privilèges du superutilisateur ?
+ Si vous avez l'intention d'utiliser la fonctionnalité d'environnement fermé d'exécution (« chroot ») pour l'utilisation de rssh, le programme /usr/lib/rssh/rssh_chroot_helper doit s'exécuter avec les privilèges du superutilisateur (« setuid root »). Si vous n'utilisez pas d'environnement fermé d'exécution, cette option est inutile.
+ .
+ Dans le doute, ne choisissez pas cette option. Si elle devenait nécessaire plus tard, vous pourrez changer ce choix avec la commande « dpkg-reconfigure rssh ».
+Description-gl.UTF-8: ¿Quere instalar rssh_chroot_helper con "setuid" root?
+ Se planea empregar gaiolas chroot para os usuarios que executan rssh, o programa /usr/lib/rssh/rssh_chroot_helper ten que estar instalado con "setuid" root para que poida facer "chroot" para dentro da gaiola ao se conectar o usuario. Se non emprega gaiolas chroot, é mellor non instalar programas con "setuid" root dos que non precisa.
+ .
+ Se non está seguro, instáleo sen "setuid" root. Se máis adiante decide empregar gaiolas chroot, pode cambiar esta configuración executando "dpkg-reconfigure prssh".
+Description-it.UTF-8: Si vuole che rssh_chroot_helper sia installato con setuid root?
+ Se si vogliono usare delle gabbie chroot per gli utenti che usano rssh, è necessario che il programma /usr/lib/rssh/rssh_chroot_helper sia installato con setuid root per poter inserire l'utente nella gabbia al momento della connessione. Se non si usano le gabbie chroot, si consiglia di non installare programmi con setuid root.
+ .
+ In caso di dubbi, installare senza setuid root. Se in seguito si decide di usare le gabbie chroot, modificare la configurazione con dpkg-reconfigure rssh.
+Description-ja.UTF-8: rssh_chroot_helper を root に SUID してインストールしますか?
+ rssh を利用するユーザに chroot jail を適用する予定の場合、 /usr/lib/rssh/rssh_chroot_helper プログラムは SUID ビットを root ユーザにセットする必要があります。これで、ユーザが接続する際に jail に chroot 可能になります。chroot jail を使わない場合、必要ないプログラムには root に SUID してインストールしない方が良いでしょう。
+ .
+ よくわからない場合、root に SUID をしないでインストールすることをお勧めします。後から chroot jail を利用しようと考え直した場合は、dpkg-reconfigure rssh を実行することで設定変更が可能です。
+Description-nl.UTF-8: Wilt u rssh_chroot_helper installeren met SUID-bit ingesteld op root?
+ Als u van plan bent om 'chroot'-gevangenissen voor de rssh-gebruikers te gebruiken dient het programma /usr/lib/rssh/rssh_chroot_helper geïnstalleerd te worden met de SUID-bit ingesteld op root. Dit is nodig opdat de gebruik chroot naar de gevangenis te kunnen schakellen bij het inloggen. Als u geen 'chroot'-gevangenissen gebruikt laat u de SUID-bit best gedeactiveerd.
+ .
+ Bij twijfel installeert u best met de SUID-bit gedeactiveerd. Als u later alsnog 'chroot'-gevangenissen wilt gaan gebruiken kunt u dit altijd aanpassen via het commando 'dpkg-reconfigure rssh'.
+Description-pt.UTF-8: Deseja que o rssh_chroot_helper seja instalado com suid root?
+ Se planeia utilizar 'jails chroot' para os utilizadores que utilizam rssh, tem de ser instalado o programa /usr/lib/rssh/rssh_chroot_helper com suid root para que possa fazer chroot para a 'jail' quando o utilizador se ligar.  Se não está a utilizar 'jails chroot', é melhor não instalar programas com suid root que não necessite.
+ .
+ Em caso de dúvida, instale sem suid root.  Se mais tarde decidir utilizar 'jails chroot', você pode alterar esta configuração ao correr dpkg-reconfigure rssh.
+Description-pt_BR.UTF-8: Você deseja que o rssh_chroot_helper seja instalado com "setuid root"?
+ Caso você planeje utilizar jaulas chroot para usuários usando o rssh, o programa /usr/lib/rssh/rssh_chroot_helper precisa ser instalado com "setuid root" para que consiga efetuar chroot para dentro da jaula quando o usuário conectar. Caso você não esteja usando jaulas chroot, é melhor não instalar programas com "setuid root" que você não necessite.
+ .
+ Caso esteja em dúvida, instale-o sem o "setuid root". Caso você decida usar jaulas chroot posteriormente, você poderá mudar essa configuração executando dpkg-reconfigure rssh.
+Description-ru.UTF-8: Установить на rssh_chroot_helper (принадлежит root) бит setuid?
+ Если вы планируете использовать ограничительное chroot-окружение для пользователей rssh, то у программы /usr/lib/rssh/rssh_chroot_helper должен быть установлен бит setuid для того, чтобы она могла заходить в chroot-окружение при подключении пользователя. Если вы не используете ограничительное chroot-окружение, то лучше не устанавливать на программы бит setuid.
+ .
+ Если сомневаетесь, не устанавливайте бит setuid. Если вы захотите использовать ограничительное chroot-окружение позднее, то сможете изменить эту настройку запустив dpkg-reconfigure rssh.
+Description-sv.UTF-8: Vill du att rssh_chroot_helper ska installeras setuid root?
+ Om du planerar att använda chroot-fängelser för användare som använder rssh måste programmet /usr/lib/rssh/rssh_chroot_helper installeras setuid root så att det kan köra chroot in i fängelset när användaren ansluter. Om du väljer att inte använda chroot-fängelser är det bättre att inte installera program som du inte behöver som setuid root. 
+ .
+ Om du är osäker bör du installera det utan setuid root. Om du bestämmer dig senare för att använda chroot-fängelser kan du ändra den här konfigurationen genom att köra dpkg-reconfigure rssh.

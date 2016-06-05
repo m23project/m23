@@ -1,0 +1,65 @@
+
+Template: distributed-net/fullconfig
+Type: boolean
+Default: false
+Description: Run the distributed.net client configuration utility?
+ The distributed.net client needs to be configured before it can be used.
+ While most options have reasonable defaults, you need to specify the e-mail
+ address to which you would like distributed.net to credit any work done by
+ the client. If you are installing the distributed-net package for the first
+ time, then you must configure the client, otherwise the distributed.net client
+ will refuse to start.
+ .
+ When the distributed.net client is run as a daemon (via /etc/init.d/distributed-net),
+ the output will be redirected to /var/log/distributed-net.log. You do not
+ need to set up a log file. Since the init script is controlling the
+ distributed.net client, you should not enable "quiet mode" as that breaks the
+ init script.
+Description-cs.UTF-8: Spustit konfigurační nástroj klienta distributed.net?
+ Klient distributed.net je třeba před použitím třeba nakonfigurovat. Přestože má většina voleb rozumné výchozí nastavení, budete muset zadat e-mailovou adresu, na kterou si budete přát, aby distributed.net zasílal všechny provedené úlohy klienta. Pokud instalujete balíček distributed-net poprvé, pak musíte klienta nakonfigurovat, jinak se klient distributed.net odmítne spustit.
+ .
+ Když klient distributed.ne běží jako démon (přes /etc/init.d/distributed-net), přesměruje se výstup do /var/log/distributed-net.log. Soubor protokolu nemusíte nastavovat. Protože init skript ovládá klienta distributed.net, neměli byste povolovat "quiet mode", protože to přeruší běh init skriptu.
+Description-da.UTF-8: Kør redskabet for konfiguration af distributed.net-klienten?
+ Distributed.net-klienten kræver konfiguration før den kan bruges. De fleste indstillinger har fornuftige standarder, men du skal angive e-postadressen som du ønsker, at distributed.net skal akkreditivere arbejde udført af klienten. Hvis du installerer pakken distributed.net for første gang, så skal du konfigurere klienten, ellers vil distributed.net-klienten nægte at starte.
+ .
+ Når distributed.net-klienten køres som en dæmon (via /etc/init.d/distributed-net), vil resultatet blive sendt til /var/log/distributed-net.log. Du skal ikke opsætte en logfil. Da init-skriptet kontrollerer distributed.net-klienten, skal du ikke aktivere »quiet mode«, da dette afbryder init-skriptet.
+Description-de.UTF-8: Soll das Konfigurationshilfsprogramm des Clients von Distributed.net ausgeführt werden?
+ Der Distributed.net-Client muss vor der Benutzung konfiguriert werden. Obwohl die meisten Optionen vernünftige Voreinstellungen haben, müssen Sie die E-Mail-Adresse angeben, der Distributed.net alle durch den Client verrichtete Arbeit zuschreiben soll. Falls Sie das Paket »distributed-net« zum ersten Mal installieren, müssen Sie den Client konfigurieren, ansonsten wird er sich weigern zu starten.
+ .
+ Wenn der Distributed.net-Client als Daemon ausgeführt wird (mittels /etc/init.d/distributed-net), wird die Ausgabe an /var/log/distributed-net.log weitergeleitet. Sie müssen keine Protokolldatei einrichten. Weil das Init-Skript den Distributed.net-Client steuert, sollten Sie nicht den »stillen Modus« aktivieren, da er das Init-Skript abbricht.
+Description-es.UTF-8: ¿Desea ejecutar la utilidad de configuración del cliente de distributed.net?
+ Necesita configurar el cliente de distributed.net antes de poder usarlo. Aunque la mayoría de las opciones tienen unos valores predeterminados razonables, debe indicar la dirección de correo electrónico donde quiere recibir los créditos de cualquier trabajo que haya realizado con el cliente de distributed.net. Si es la primera vez que va a instalar el paquete de distributed.net, necesita configurar el cliente ya que de lo contrario el cliente de distributed.net no se iniciará.
+ .
+ Cuando el cliente de distributed.net se ejecuta como demonio (a través de «/etc/init.d/distributed-net»), la salida se redirige a «/var/log/distributed-net.log», es decir, no necesita configurar un archivo para el registro de datos. Como el script de inicio controla el cliente de distributed.net, no debe activar el «modo silencioso» ya que rompería el script de inicio.
+Description-fr.UTF-8: Faut-il exécuter l'utilitaire de configuration du client de distributed.net ?
+ Le client de distributed.net doit être configuré avant de pouvoir être utilisé. Bien que la plupart des options ont des valeurs par défaut raisonnables, vous devez néanmoins indiquer une adresse électronique pour que tout travail effectué par le client puisse être crédité par distributed.net. Si c'est la première installation du paquet distributed-net, vous devez configurer le client, sans quoi il refusera de démarrer.
+ .
+ Quand le client de distributed.net est lancé en tant que démon (via /etc/init.d/distributed-net), la sortie est redirigée vers le fichier /var/log/distributed-net.log (qui n'a pas besoin d'être mis en place). Comme le script d'initialisation contrôle le client de distributed.net, vous ne devez pas activer le mode silencieux (quiet mode) puisque cela casse le script d'initialisation.
+Description-it.UTF-8: Eseguire l'utilità di configurazione del client distributed.net?
+ Il client distributed.net deve essere configurato prima di poter essere usato. Sebbene molte opzioni abbiano valori predefiniti ragionevoli, è necessario specificare l'indirizzo di posta elettronica a cui si desidera che distributed.net dia credito per il lavoro svolto dal client. Se si sta installando il pacchetto distributed-net per la prima volta, allora è necessario configurare il client distributed.net, altrimenti esso non si avvierà.
+ .
+ Quando il client distributed.net viene eseguito come demone (attraverso /etc/init.d/distributed-net), l'output viene ridiretto in /var/log/distributed-net.log. Non è necessario impostare un file di log. Dato che lo script init controlla il client distributed.net, non si deve abilitare la modalità «quiet mode» dato che ciò rende mal funzionante lo script init.
+Description-ja.UTF-8: distributed.net クライアント設定ユーティリティを実行しますか?
+ distributed.net クライアントを利用する前に設定する必要があります。ほとんどのオプションでおおよそ適切なデフォルト値をセットしてはいますが、distributed-net でクライアントにより行われた作業の帰属を示したいメールアドレスを指定する必要があります。distributed-net パッケージの初回インストール時の場合はクライアントを設定しないといけません。設定しない場合はクライアントは起動を拒否します。
+ .
+ distributed-net クライアントをデーモンとして (/etc/init.d/distributed-net 経由で) 実行する場合、出力は /var/log/distributed-net.log に転送されます。ログファイルを用意する必要はありません。init スクリプトが distributed.net クライアントを制御するため「quiet mode」を有効にすべきではなく、有効にすると init スクリプトが正常に機能しなくなります。
+Description-nl.UTF-8: De configuratiehulp van de distributed.net-cliënt uitvoeren?
+ De distributed.net-cliënt moet worden ingesteld voordat hij kan worden gebruikt. Voor de meeste opties zijn er redelijke standaardwaarden, maar u dient wel een e-mailadres op te geven die de eer krijgt voor het door de cliënt verrichte werk. Als u het pakket distributed-net voor het eerst installeert moet u de cliënt instellen, anders zal deze weigeren te starten.
+ .
+ Wanneer de distributed.net-cliënt als een achtergronddienst wordt uitgevoerd (via /etc/init.d/distributed-net) zal de uitvoer naar /var/log/distributed-net.log worden gestuurd. U hoeft zelf geen logboek op te zetten. Omdat het init-script de distributed.net-cliënt bestuurd moet u de "quiet mode" (stille modus) niet activeren - dit verstoort het functioneren van het init-script.
+Description-pl.UTF-8: Uruchomić narzędzie konfiguracyjne klienta distributed.net?
+ Przed użyciem klienta distributed.net konieczna jest jego konfiguracja. Co prawda domyślne ustawienia większości opcji powinny być poprawne, należy jednak podać adres poczty elektronicznej którym będzie opatrywana praca wykonana przez klienta dla distributed.net. Przy pierwszej instalacji pakietu konfiguracja jest konieczna, bowiem w przeciwnym razie klient distributed.net odmówi uruchomienia się.
+ .
+ Gdy klient distributed.net działa jako demon (przez /etc/init.d/distributed-net), wyjście będzie przekierowane do /var/log/distributed-net.log. Nie ma więc potrzeby tworzenia pliku dziennika. Klient distributed.net jest kontrolowany przez skrypt init, dlatego nie należy włączać trybu cichego - "quiet mode", ponieważ przez to skrypt init nie zadziała prawidłowo.
+Description-pt.UTF-8: Correr o utilitário de configuração de cliente do distributed.net?
+ O cliente do distributed.net precisa de ser configurado antes de poder ser usado. Mesmo sendo a maioria das opções predefinições razoáveis, você precisa de especificar o endereço de e-mail onde deseja que o distributed.net credite qualquer trabalho feito pelo cliente. Se está a instalar o pacote distributed-net pela primeira vez, então tem de configurar o cliente, caso contrário o cliente do distributed.net irá recusar-se a arrancar.
+ .
+ Quando o cliente do distributed.net é corrido como um daemon (via /etc/init.d/distributed-net), os resultados serão redireccionados para /var/log/distributed-net.log. Você não precisa de configurar um ficheiro de relatório. Como o script de iniciação está a controlar o cliente de distributed.net, você não deve activar o "modo silencioso" (quiet mode) pois isso irá parar o script de iniciação.
+Description-ru.UTF-8: Запустить утилиту настройки клиента distributed.net?
+ Перед использованием клиента distributed.net требуется его настроить. Так как большинству параметров достаточно настроек по умолчанию, вам нужно указать адрес эл. почты, на который будут отправляться сообщения о проделанной клиентом distributed.net работе. Если вы устанавливаете пакет distributed-net впервые, то настройка клиента необходима, в противном случае клиент distributed.net не будет запускаться.
+ .
+ Если клиент distributed.net запускается в виде службы (с помощью /etc/init.d/distributed-net), то вывод будет перенаправлен в /var/log/distributed-net.log. Вам не нужно создавать файл журнала. Так управление клиентом distributed.net выполняется сценарием инициализации, не включайте «quiet mode», так как из-за этого сценарий инициализации перестанет работать.
+Description-tr.UTF-8: distributed.net istemci yapılandırma aracı çalıştırılsın mı?
+ distributed.net istemcisini kullanmadan önce yapılandırmanız gerekmektedir. Çoğu işlem için öntanımlı ayarlar gayet makul olsa da istemcinizin yaptığı işlerin kredilerinin aktarılabilmesi için bir e-posta adresi vermeniz gerekmektedir. distributed.net paketini ilk defa kuruyorsanız istemciyi yapılandırmanız gerekmektedir, aksi takdirde istemcinin çalışması mümkün olmaz.
+ .
+ distributed.net istemcisi (/etc/init.d/distributed-net vasıtasıyla) bir artalan hizmeti olarak çalıştığında çıktısı /var/log/distributed-net.log dosyasına yönlendirilir. Ayrıca bir günlük dosyası ayarlamanıza gerek yoktur. distributed.net istemcisi init betiği tarafından kontrol edildiği için ve "sessiz kip" ("quiet mode") init betiğini bozduğu için sessiz kipi etkinleştiremezsiniz.

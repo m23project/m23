@@ -1,0 +1,103 @@
+Template: desktop-profiles/replace-old-vars
+Type: note
+Description: Global gconf path file needs to be changed!
+ The include directives used by desktop-profiles have changed (in response to
+ bug 309978, see the bug report and corresponding entry in the changelog of
+ version 1.4.6 of this package for details).
+ .
+ To reenable gconf profiles you need to change /etc/gconf/2/path as follows:\n
+ - 'include /var/cache/desktop-profiles/\$(USER)_mandatory.path' should be
+ 'include \$(ENV_MANDATORY_PATH)' and\n
+ - 'include /var/cache/desktop-profiles/\$(USER)_defaults.path' should be
+ 'include \$(ENV_DEFAULTS_PATH)'
+Description-ca.UTF-8: Els fitxers de camins globals de gconf s'han de modificar!
+ Les directives «include» emprades per desktop-profiles han canviat (com a solució a l'informe d'error 309978, per a més detalls vegeu l'informe i les corresponents entrades al registre de canvis de la versió 1.4.6 d'aquest paquet.
+ .
+ Per a reactivar els perfils de gconf haureu de canviar «/etc/gconf/2/path» de la següent forma:\n - «include /var/cache/desktop-profiles/\$(USER)_mandatory.path» ha de ser «include \$(ENV_MANDATORY_PATH)» i\n - «include /var/cache/desktop-profiles/\$(USER)_defaults.path» ha de ser «include \$(ENV_DEFAULTS_PATH)»
+Description-cs.UTF-8: Globální gconf soubor 'path' je třeba upravit!
+ Direktivy include používané desktop-profiles bylo nutno v reakci na chybu 309978 změnit. Podrobnosti o změně naleznete ve zmíněné chybě a v souboru změn pro verzi 1.4.6.
+ .
+ Pro znovupovolení gconf profilů musíte upravit soubor /etc/gconf/2/path:
+ - místo 'include /var/cache/desktop-profiles/\$(USER)_mandatory.path' by mělo být 'include \$(ENV_MANDATORY_PATH)'
+ - a 'include /var/cache/desktop-profiles/\$(USER)_defaults.path' je nutno nahradit za 'include \$(ENV_DEFAULTS_PATH)'
+Description-da.UTF-8: Global gconf-stifil skal ændres!
+ Include-direktiverne brugt af desktop-profiles har ændret sig (som svar på fejl 309978, se fejlrapporten og den tilsvarende post i ændringsloggen for version 1.4.6 for denne pakke for detaljer).
+ .
+ For at genaktivere gconf-profiler skal du ændre /etc/gconf/2/path som vist i det følgende:\n - »include /var/cache/desktop-profiles/\$(USER)_mandatory.path« skal være »include \$(ENV_MANDATORY_PATH)« og\n - »include /var/cache/desktop-profiles/\$(USER)_defaults.path« skal være »include \$(ENV_DEFAULTS_PATH)«
+Description-de.UTF-8: Globale Gconf-Pfad-Datei muss geändert werden!
+ Die include-Direktiven, die von desktop-profiles verwendet werden, haben sich geändert (in Reaktion auf Fehler 309978, siehe Fehlerbericht und den korrespondierenden Eintrag im Changelog von Version 1.4.6 dieses Paketes zu Einzelheiten).
+ .
+ Um die Gconf-Profile zu reaktivieren, müssen Sie die Datei /etc/gconf/2/path wie folgt ändern:
+  - »include /var/cache/desktop-profiles/\$(USER)_mandatory.path« sollte
+    »include \$(ENV_MANDATORY_PATH)« lauten, und
+  - »include /var/cache/desktop-profiles/\$(USER)_defaults.path« sollte
+    »include \$(ENV_DEFAULTS_PATH)« lauten
+Description-es.UTF-8: ¡Es necesario cambiar el fichero global de rutas de gconf!
+ Las directivas de inclusión utilizadas por desktop-profiles han cambiado (en respuesta al fallo 309978, si desea más detalles consulte el informe del fallo y la entrada correspondiente en ell registro de cambios de la versión 1.4.6 de este paquete).
+ .
+ Para reactivar los perfiles gconf necesita cambiar /etc/gconf/2/path de la siguiente manera:
+  - «include /var/cache/desktop-profiles/\$(USER)_mandatory.path» debe ser «include \$(ENV_MANDATORY_PATH)» y
+  - «include /var/cache/desktop-profiles/\$(USER)_defaults.path» debe ser «include \$(ENV_DEFAULTS_PATH)»
+Description-eu.UTF-8: gconf bide orokor fitxategia aldatu egin ebhar da!
+ desktop-profiles-ek erabiltzen dituen araudiak aldatu egin dira (309978 arazo erreporteari so eginez. Xehetasun gehiagorako begiratu pakete honen 1.4.6 bertsioaren changelog fitxategian arazo erreportea begiratu)
+ .
+ Gconf profila berri zgaitzeko /etc/gconf/2/path fitxategi honekla aldatu behar duzu:
+  - 'include /var/cache/desktop-profiles/\$(USER)_mandatory.path'  'include \$(ENV_MANDATORY_PATH)' izan behar da eta  'include /var/cache/desktop-profiles/\$(USER)_defaults.path' 'include \$(ENV_DEFAULTS_PATH)' izan behar da.
+Description-fr.UTF-8: Fichier « path » de gconf modifié pour l'ensemble du système
+ Les directives « include » utilisées par desktop-profiles ont changé en réponse au bogue 309978, pour davantage d'informations, veuillez consulter le rapport de bogue et l'entrée correspondante du fichier changelog pour la version 1.4.6 de ce paquet.
+ .
+ Pour réactiver les profils de gconf, vous devrez modifier /etc/gconf/2/path de la manière suivante :
+  - « include /var/cache/desktop-profiles/\$(USER)_mandatory.path » doit être remplacé par « include \($ENV_MANDATORY_PATH) » ;
+  - « include /var/cache/desktop-profiles/\$(USER)_default.path » doit être remplacé par « include \$(ENV_DEFAULTS_PATH) ».
+Description-gl.UTF-8: É necesario modificar o ficheiro de rutas globais de gconf
+ Cambiáronse as directivas "include" empregadas por desktop-profiles (en resposta ao erro 309978; consulte o informe de erro e a correspondente entrada no rexistro de cambios da versión 1.4.6 do paquete para máis detalles).
+ .
+ Para volver activar os perfís de gconf ten que modificar /etc/gconf/2/path deste xeito:\n - "include /var/cache/desktop-profiles/\$(USER)_mandatory.path" debe ser "include \$(ENV_MANDATORY_PATH)" e\n - "include /var/cache/desktop-profiles/\$(USER)_defaults.path" debe ser "include \$(ENV_DEFAULTS_PATH)"
+Description-it.UTF-8: È necessario procedere alla modifica del percorso del file di configurazione globale.
+ Le direttive «include» utilizzate da desktop-profiles sono state modificate a seguito del bug no. 309978 (per maggiori informazioni si veda la notifica del bug e le voci corrispondenti nel registro delle modifiche della versione 1.4.6 di questo pacchetto).
+ .
+ Per riabilitare i profili gconf è necessario modificare il percorso di «/etc/gconf/2» come segue:\n- «include /var/cache/desktop-profiles/\$(USER)_mandatory.path» deve essere modificato in «include  \$(ENV_MANDATORY_PATH)» e\n- «include /var/cache/desktop-profiles/\$(USER)_defaults.path» deve essere modificato in «include \$(ENV_DEFAULTS_PATH)»
+Description-ja.UTF-8: システム全体での gconf のパスファイルを変更する必要があります!
+ desktop-profiles で使われている include ディレクティブが変更されました (bug 309978 への対応のため。詳細については、このパッケージのバージョン 1.4.6 での対応する changelog エントリを参照してください)。
+ .
+ gconf プロファイルを再度有効にするには /etc/gconf/2/path を以下の様に変更する必要があります:\n - 'include /var/cache/desktop-profiles/\$(USER)_mandatory.path' を 'include \$(ENV_MANDATORY_PATH)' に変更、そして\n - 'include /var/cache/desktop-profiles/\$(USER)_defaults.path' は 'include \$(ENV_DEFAULTS_PATH)' に変更
+Description-nl.UTF-8: Het systeemwijde gconf 'path'-bestand dient aangepast te worden!
+ De door dit pakket gebruikte include-ingangen zijn veranderd (in opvolging van bug #309978, zie het bugrapport, of de overeenkomstige ingang in het changelog van versie 1.4.6 van dit pakket voor meer informatie).
+ .
+ Om gconf-profielen opnieuw te activeren dient u het bestand '/etc/gconf/2/path' als volgt te veranderen:
+  'include /var/cache/desktop-profiles/\$(USER)_mandatory.path' moet worden 'include \$(ENV_MANDATORY_PATH)' en
+  'include /var/cache/desktop-profiles/\$(USER)_defaults.path' moet worden 'include \$(ENV_DEFAULTS_PATH)'
+Description-pl.UTF-8: Globalne ścieżki pliku gconf wymagają zmiany!
+ Dołączone dyrektywy używane przez desktop-profiles uległy zmianie (w związku z błędem 309978, proszę zapoznać się ze zgłoszeniem błędu i odpowiadającym wpisem w dzienniku zmian wersji 1.4.6 tego pakietu, aby dowiedzieć się więcej).
+ .
+ Aby ponownie włączyć profile gconf konieczna jest zmiana /etc/gconf/2/path jak poniżej:\n - 'include /var/cache/desktop-profiles/\$(USER)_mandatory.path' powinno przyjąć postać 'include \$(ENV_MANDATORY_PATH)', a \n - 'include /var/cache/desktop-profiles/\$(USER)_defaults.path' powinno wyglądać następująco 'include \$(ENV_DEFAULTS_PATH)'
+Description-pt.UTF-8: O caminho global do ficheiro gconf precisa de ser alterado!
+ As directivas incluídas e utilizadas pelo desktop-profiles foram modificadas (em resposta ao bug 309978, para mais detalhes veja o relatório do bug e a entrada correspondente no relatório de alterações (changelog) da versão 1.4.6 deste pacote).
+ .
+ Para re-activar os perfis (profiles) do gconf necessita modificar o ficheiro /etc/gconf/2/path do seguinte modo:
+  - 'include /var/cache/desktop-profiles/\$(USER)_mandatory.path' deverá ser 'include \$(ENV_MANDATORY_PATH)' - e 'include /var/cache/desktop-profiles/\$(USER)_defaults.path' deverá ser 'include \$(ENV_DEFAULTS_PATH)'
+Description-pt_BR.UTF-8: O arquivo path global do gconf precisa ser modificado!
+ As diretivas "include" usadas pelo desktop-profiles foram modificadas (em resposta ao bug 309978), veja o relatório de bug e a entrada correspondente no changelog da versão 1.4.6 deste pacote para detalhes).
+ .
+ Para reabilitar os perfis do gconf você precisa mudar /etc/gconf/2/path como segue: - 'include /var/cache/desktop-profiles/\$(USER)_mandatory.path' deve ser 'include \$(ENV_MANDATORY_PATH)' - e 'include /var/cache/desktop-profiles/\$(USER)_defaults.path' deveria ser 'include \$(ENV_DEFAULTS_PATH)'
+Description-ru.UTF-8: Требуется изменить глобальный файл путей gconf!
+ Директивы include, используемые desktop-profiles, были изменены (как следствие ошибки 309978; детали смотрите в сообщении об ошибке и соответствующей записи в changelog версии 1.4.6 этого пакета).
+ .
+ Чтобы реактивировать профили gconf вам нужно изменить /etc/gconf/2/path так:\n - 'include /var/cache/desktop-profiles/\$(USER)_mandatory.path' заменить на 'include \$(ENV_MANDATORY_PATH)' и\n - 'include /var/cache/desktop-profiles/\$(USER)_defaults.path' заменить на \$(ENV_DEFAULTS_PATH)'
+Description-sv.UTF-8: Den globala gconf-filen path behöver ändras!
+ De inkluderade direktiven som används av desktop-profiles har ändrats (som svar på bug 309978, se mer information i buggrapporten och liknande punkt i ändringsloggen för version 1.4.6 av detta paket).
+ .
+ För att återaktivera gconf-profiler behöver du ändra /etc/gconf/2/path enligt följande:
+  - 'include /var/cache/desktop-profiles/\$(USER)_mandatory.path' ska vara  'include \$(ENV_MANDATORY_PATH)' och
+  - 'include /var/cache/desktop-profiles/\$(USER)_defaults.path' ska vara  'include \$(ENV_DEFAULTS_PATH)'
+Description-tr.UTF-8: Genel gconf yol dosyası değiştirilmeli!
+ desktop-profiles'ın kullandığı include yönergeleri 309978 numaralı hatayı gidermek için değiştirildi. Ayrıntılar için bu paketin 1.4.6 sürümünün değişiklik günlüğüne ve hata raporuna bakabilirsiniz.
+ .
+ gconf profillerini yeniden etkinleştirmek için /etc/gconf/2/path dosyasını aşağıdaki gibi değiştirmelisiniz:\n - 'include /var/cache/desktop-profiles/\$(USER)_mandatory.path' 'include \$(ENV_MANDATORY_PATH)' olmalı; ve\n - 'include /var/cache/desktop-profiles/\$(USER)_defaults.path' 'include \$(ENV_DEFAULTS_PATH)' olmalı.
+Description-vi.UTF-8: • Cần phải thay đổi tập tin đường dẫn gconf toàn cục. •
+ Những chỉ thị bao gồm mà desktop-profiles sử dụng đã thay đổi (để sửa Lỗi 309978, xem thông báo lỗi và mục nhập liên quan trong bản ghi thay đổi của phiên bản 1.4.6 của gói này, để tìm chi tiết).
+ .
+ Để bật lại chạy hồ sơ GConf, bạn cần phải thay đổi tập tin đường dẫn </etc/gconf/2/path> như theo đây:
+  •  'include /var/cache/desktop-profiles/\$(USER)_mandatory.path' nên là 'include \$(ENV_MANDATORY_PATH)' và
+  • 'include /var/cache/desktop-profiles/\$(USER)_defaults.path' nên là'include \$(ENV_DEFAULTS_PATH)'
+

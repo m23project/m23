@@ -1,0 +1,654 @@
+Template: netmrg/webserver
+Type: select
+choices: None, Apache2, Apache, Apache-SSL, All
+choices-cs.UTF-8: Žádný, Apache2, Apache, Apache-SSL, Všechny
+choices-da.UTF-8: Ingen, Apache2, Apache, Apache-SSL, Alle
+choices-de.UTF-8: Keiner, Apache2, Apache, Apache-SSL, Alle
+choices-es.UTF-8: Ninguno, Apache2, Apache, Apache-SSL, Todos
+choices-fr.UTF-8: Aucun, Apache2, Apache, Apache-SSL, Tous
+choices-it.UTF-8: Nessuno, Apache2, Apache, Apache-SSL, Tutti
+choices-ja.UTF-8: None, Apache2, Apache, Apache-SSL, All
+choices-nl.UTF-8: Geen, Apache2, Apache, Apache-SSL, allemaal
+choices-pt.UTF-8: Nenhum, Apache2, Apache, Apache-SSL, Todos
+choices-ru.UTF-8: Не настраивать, Apache2, Apache, Apache-SSL, Все
+choices-sv.UTF-8: ingen, Apache2, Apache, Apache-SSL, Alla
+choices-vi.UTF-8: Không có, Apache2, Apache, Apache-SSL, Tất cả
+description: Web server to configure:
+description-cs.UTF-8: Nastavit webový server:
+description-da.UTF-8: Internetserver at konfigure:
+description-de.UTF-8: Zu konfigurierender Web-Server:
+description-es.UTF-8: Servidor web a configurar:
+description-fr.UTF-8: Serveur Web à configurer :
+description-it.UTF-8: Server web da configurare:
+description-ja.UTF-8: 設定するウェブサーバ:
+description-nl.UTF-8: Te configureren webserver(s):
+description-pt.UTF-8: Servidor web a configurar:
+description-ru.UTF-8: Настраиваемый веб-сервер:
+description-sv.UTF-8: Webbserver att ange inställningar för:
+description-vi.UTF-8: Trình phục vụ Mạng cần cấu hình:
+
+Template: netmrg/db/host
+Type: string
+default: localhost
+default-cs.UTF-8: localhost
+default-da.UTF-8: lokalvært
+default-de.UTF-8: localhost
+default-es.UTF-8: Máquina local («localhost»)
+default-fr.UTF-8: localhost
+default-it.UTF-8: localhost
+default-ja.UTF-8: localhost
+default-nl.UTF-8: localhost
+default-pt.UTF-8: máquina local
+default-ru.UTF-8: localhost
+default-sv.UTF-8: localhost
+default-vi.UTF-8: localhost
+description: Host name of the mysql database server:
+description-cs.UTF-8: Jméno počítače s databází mysql:
+description-da.UTF-8: Værtsnavn på mysql-databaseserveren:
+description-de.UTF-8: Name des Rechners auf dem sich der mysql Datenbank-Server befindet:
+description-es.UTF-8: Nombre del servidor de la base de datos mysql:
+description-fr.UTF-8: Nom d'hôte du serveur de bases de données MySQL :
+description-it.UTF-8: Nome host del server di database mysql:
+description-ja.UTF-8: mysql データベースサーバのホスト名:
+description-nl.UTF-8: Computernaam van de mysql-database-server:
+description-pt.UTF-8: Nome de máquina do servidor de base de dados mysql:
+description-ru.UTF-8: Имя хоста сервера баз данных mysql:
+description-sv.UTF-8: värdnamn för mysql-databas-server:
+description-vi.UTF-8: Tên máy của máy phục vụ cơ sở dữ liệu MySQL:
+
+Template: netmrg/db/name
+Type: string
+default: netmrg
+default-cs.UTF-8: netmrg
+default-da.UTF-8: netmrg
+default-de.UTF-8: netmrg
+default-es.UTF-8: netmrg
+default-fr.UTF-8: netmrg
+default-it.UTF-8: netmrg
+default-ja.UTF-8: netmrg
+default-nl.UTF-8: netmrg
+default-pt.UTF-8: netmrg
+default-ru.UTF-8: netmrg
+default-sv.UTF-8: netmrg
+default-vi.UTF-8: netmrg
+description: Name for the database:
+description-cs.UTF-8: Název databáze:
+description-da.UTF-8: Navn på databasen:
+description-de.UTF-8: Name der Datenbank:
+description-es.UTF-8: Nombre de la base de datos:
+description-fr.UTF-8: Nom de la base de données :
+description-it.UTF-8: Nome del database:
+description-ja.UTF-8: データベース名:
+description-nl.UTF-8: Naam voor de database:
+description-pt.UTF-8: Nome para a base de dados:
+description-ru.UTF-8: Имя базы данных:
+description-sv.UTF-8: Namn på databasen:
+description-vi.UTF-8: Tên cho cơ sở dữ liệu :
+
+Template: netmrg/db/exists
+Type: note
+default:
+default-cs.UTF-8:
+default-da.UTF-8:
+default-de.UTF-8:
+default-es.UTF-8:
+default-fr.UTF-8:
+default-it.UTF-8:
+default-ja.UTF-8:
+default-nl.UTF-8:
+default-pt.UTF-8:
+default-ru.UTF-8:
+default-sv.UTF-8:
+default-vi.UTF-8:
+description: The database already exists
+ A simple test revealed that a database with the name "${dbname}"
+ already exists and appears to be a netmrg database. If you really
+ like to use this database then confirm the name in the next step.
+description-cs.UTF-8: Databáze již existuje
+ Jednoduchý test ukázal, že databáze se jménem "${dbname}" již existuje. Pravděpodobně se jedná o databázi netmrg. Pokud si skutečně přejete používat tuto databázi, pak v dalším kroku potvrďte její název.
+description-da.UTF-8: Databasen findes allerede
+ En enkel test afslørede at en database med navnet »${dbname}« allerede findes og synes at være en netmrg-database. Hvis du virkelig ønsker at bruge denne database så bekræft navnet i det næste trin.
+description-de.UTF-8: Die Datenbank existiert bereits
+ Ein einfacher Test deutet darauf hin, dass eine Datenbank mit dem Namen "${dbname}" schon existiert und es sich dabei um eine netmrg Datenbank handelt. Wenn Sie diese Datenbank tatsächlich verwenden wollen, dann bestätigen Sie den Namen im nächsten Schritt.
+description-es.UTF-8: La base de datos ya existe
+ Una simple prueba reveló que ya existe una base de datos con el nombre «${dbname}» y parece ser una base de datos de netmrg. Si realmente quiere utilizar esta base de datos, confirme el nombre en el siguiente paso.
+description-fr.UTF-8: La base de données existe déjà
+ Une base de données nommée « ${dbname} » existe déjà et semble être une base de données de netmrg. Si vous souhaitez utiliser cette base de données, veuillez le confirmer à la prochaine étape.
+description-it.UTF-8: Il database esiste già
+ Un semplice test ha rivelato che esiste già un database con il nome «${dbname}» e sembra essere un database di netmrg. Se si desidera veramente usare questo database allora confermare il nome al prossimo passo.
+description-ja.UTF-8: データベースが存在します
+ 簡単なテストにより、「${dbname}」という名のデータベースが存在し、それが netmrg 用のデータベースらしいことがわかりました。このデータベースを本当に使いたい場合は次の段階で名前を確認してください。
+description-nl.UTF-8: De database bestaat al
+ Een eenvoudige controle heeft aangegeven dat de database met de naam "${dbname}" al bestaat en een database voor netmrg is. Als u deze database echt wilt gebruiken, bevestig de naam dan bij de volgende stap.
+description-pt.UTF-8: A base de dados já existe
+ Um teste simples revelou que uma base de dados com o nome "${dbname}" já existe e parece ser uma base de dados netmrg. Se realmente deseja usar esta base de dados confirme o nome no próximo passo.
+description-ru.UTF-8: База данных уже существует
+ Простой тест показал, что база данных с именем "${dbname}" уже существует и, вероятно, является базой данных netmrg. Если вы действительно хотите использовать данную базу данных, укажите это же имя на следующем шаге.
+description-sv.UTF-8: Databasen existerar redan
+ Ett enkelt test visade att en databas redan existerar med namnet "${dbname}" och det verkar som om det är en ntmrg-databas. Om du verkligen vill använda den här databasen accepterar du bara namnet enligt nedan.
+description-vi.UTF-8: Cơ sở dữ liệu đã có
+ Một cơ sở dữ liệu tên « ${dbname} » đã tồn tại, cũng có vẻ là nó là cơ sở dữ liệu kiểu netmrg. Thật muốn sử dụng cơ sở dữ liệu này thì bạn xác nhận tên trong bước kế tiếp.
+
+Template: netmrg/db/user/name
+Type: string
+default: netmrg
+default-cs.UTF-8: netmrg
+default-da.UTF-8: netmrg
+default-de.UTF-8: netmrg
+default-es.UTF-8: netmrg
+default-fr.UTF-8: netmrg
+default-it.UTF-8: netmrg
+default-ja.UTF-8: netmrg
+default-nl.UTF-8: netmrg
+default-pt.UTF-8: netmrg
+default-ru.UTF-8: netmrg
+default-sv.UTF-8: netmrg
+default-vi.UTF-8: netmrg
+description: Name of the database user:
+ This user will have read/write access to the netmrg database.
+description-cs.UTF-8: Jméno uživatele databáze:
+ Tento uživatel bude mít práva čtení/zápisu k databázi netmrg.
+description-da.UTF-8: Navn på databasebrugeren:
+ Denne bruger vil have læse-/skriveadgang til netmrg-databasen.
+description-de.UTF-8: Name des Datenbank-Benutzer:
+ Dieser Benutzer greift später lesend und schreibend auf die Datenbank zu.
+description-es.UTF-8: Nombre del usuario de la base de datos:
+ Este usuario debe tener acceso de lectura y escritura en la base de datos de netmrg.
+description-fr.UTF-8: Mot de passe de l'utilisateur de la base de données :
+ Veuillez choisir l'identifiant qui aura les droits de lecture et d'écriture sur la base de données de netmrg.
+description-it.UTF-8: Nome dell'utente del database:
+ L'utente avrà accesso in lettura/scrittura al database netmrg.
+description-ja.UTF-8: データベースのユーザ名:
+ このユーザは netmrg データベースへの読み書きアクセスをできることになります。
+description-nl.UTF-8: Naam van de database-gebruiker:
+ Deze gebruiker zal lees- en schrijftoegang hebben tot de database van netmrg.
+description-pt.UTF-8: Nome do utilizador da base de dados:
+ Este utilizador terá acesso de leitura/escrita à base de dados netmrg.
+description-ru.UTF-8: Имя пользователя базы данных:
+ Данный пользователь получит права на чтение/запись базы данных netmrg.
+description-sv.UTF-8: Namn för databasanvändaren:
+ Denna användare kommer att ha läs- och skrivrättighet för ntmrg-databasen.
+description-vi.UTF-8: Tên của người dùng cơ sở dữ liệu :
+ Người dùng này sẽ có quyền đọc/ghi trong cơ sở dữ liệu netmrg.
+
+Template: netmrg/db/user/password
+Type: password
+default: 
+default-cs.UTF-8:
+default-da.UTF-8:
+default-de.UTF-8:
+default-es.UTF-8:
+default-fr.UTF-8:
+default-it.UTF-8:
+default-ja.UTF-8:
+default-nl.UTF-8:
+default-pt.UTF-8:
+default-ru.UTF-8:
+default-sv.UTF-8:
+default-vi.UTF-8:
+description: Password of the database user:
+description-cs.UTF-8: Heslo uživatele databáze:
+description-da.UTF-8: Adgangskode for databasebrugeren:
+description-de.UTF-8: Passwort des Datenbank-Benutzer:
+description-es.UTF-8: Contraseña del usuario de la base de datos:
+description-fr.UTF-8: Mot de passe de l'utilisateur de la base de données :
+description-it.UTF-8: Password dell'utente del database:
+description-ja.UTF-8: データベースユーザのパスワード:
+description-nl.UTF-8: Wachtwoord voor de database-gebruiker:
+description-pt.UTF-8: Palavra-chave do utilizador da base de dados:
+description-ru.UTF-8: Пароль пользователя базы данных:
+description-sv.UTF-8: Lösenird för databasanvändaren:
+description-vi.UTF-8: Mật khẩu của người dùng cơ sở dữ liệu :
+
+Template: netmrg/db/user/password/confirm
+Type: password
+default: 
+default-cs.UTF-8:
+default-da.UTF-8:
+default-de.UTF-8:
+default-es.UTF-8:
+default-fr.UTF-8:
+default-it.UTF-8:
+default-ja.UTF-8:
+default-nl.UTF-8:
+default-pt.UTF-8:
+default-ru.UTF-8:
+default-sv.UTF-8:
+default-vi.UTF-8:
+description: Confirm the password of the database user:
+description-cs.UTF-8: Potvrďte heslo uživatele databáze:
+description-da.UTF-8: Bekræft adgangskoden for databasebrugeren:
+description-de.UTF-8: Bestätigen Sie das Passwort für den Datenbank-Benutzer:
+description-es.UTF-8: Confirme la contraseña del usuario de la base de datos:
+description-fr.UTF-8: Confirmation du mot de passe de l'utilisateur de la base de données :
+description-it.UTF-8: Confermare la password dell'utente del database:
+description-ja.UTF-8: データベースユーザのパスワード確認:
+description-nl.UTF-8: Bevestig het wachtwoord voor de database-gebruiker:
+description-pt.UTF-8: Confirme a palavra-chave do utilizador da base de dados:
+description-ru.UTF-8: Введите пароль пользователя базы данных ещё раз:
+description-sv.UTF-8: Upprepa lösenord för databasanvändaren:
+description-vi.UTF-8: Hãy xác nhận mật khẩu của người dùng cơ sở dữ liệu :
+
+Template: netmrg/db/user/password/mismatch
+Type: text
+default: 
+default-cs.UTF-8:
+default-da.UTF-8:
+default-de.UTF-8:
+default-es.UTF-8:
+default-fr.UTF-8:
+default-it.UTF-8:
+default-ja.UTF-8:
+default-nl.UTF-8:
+default-pt.UTF-8:
+default-ru.UTF-8:
+default-sv.UTF-8:
+default-vi.UTF-8:
+description: Password mismatch
+ The database user passwords you entered didn't match. Please try again.
+description-cs.UTF-8: Hesla nesouhlasí
+ Hesla, která jste zadali nesouhlasí. Zadejte je prosím znovu.
+description-da.UTF-8: Forskellige adgangskoder
+ De brugeradgangskoder, du indtastede for databasen, var ikke ens. Forsøg venligst igen.
+description-de.UTF-8: Passwörter sind ungleich
+ Die beiden Passwörter des Datenbank-Benutzers sind unterschiedlich. Versuchen Sie es nochmal
+description-es.UTF-8: Las contraseñas no coinciden
+ Las contraseñas que introdujo no coinciden. Por favor, inténtelo de nuevo.
+description-fr.UTF-8: Mots de passe différents
+ Les mots de passe pour l'utilisateur de la base de données ne correspondent pas. Veuillez réessayer.
+description-it.UTF-8: Le password non coincidono
+ Le password dell'utente del database che sono state inserite non coincidono. Riprovare.
+description-ja.UTF-8: パスワード不一致
+ 入力されたデータベースシステムユーザのパスワードが一致しません。やり直してください。
+description-nl.UTF-8: Wachtwoorden komen niet overeen
+ De door u ingevoerde wachtwoorden voor de database-gebruiker kwamen niet overeen. Probeer het nog een keer.
+description-pt.UTF-8: A palavra-chave não coincide
+ As palavras-chaves que introduziu não coincidem. Por favor tente outra vez.
+description-ru.UTF-8: Пароли не совпадают
+ Введённые пароли пользователя базы данных не совпали. Попробуйте ещё раз.
+description-sv.UTF-8: Lösenorden stämmer inte överrens
+ Lösenordet för databasanvändaren som du angav stämde inte överrens. Försök igen.
+description-vi.UTF-8: Hai mật khẩu không trùng
+ Bạn đã gõ hai mật khẩu người dùng cơ sở dữ liệu không phải trùng với nhau. Hãy thử lại.
+
+Template: netmrg/db/admin/name
+Type: string
+default:
+default-cs.UTF-8:
+default-da.UTF-8:
+default-de.UTF-8:
+default-es.UTF-8:
+default-fr.UTF-8:
+default-it.UTF-8:
+default-ja.UTF-8:
+default-nl.UTF-8:
+default-pt.UTF-8:
+default-ru.UTF-8:
+default-sv.UTF-8:
+default-vi.UTF-8:
+description: Name of the database system administrator:
+ In order to be able to create the initial database and database user
+ for netmrg, the account name of the database system administrator
+ is needed.
+description-cs.UTF-8: Jméno administrátora databázového systému:
+ Abych (pro program netmrg) mohl vytvořit požadovanou databázi a uživatele databáze, potřebuji znát přihlašovací jméno administrátora databázového systému.
+description-da.UTF-8: Navn på databasens systemadministrator:
+ For at kunne oprette den oprindelige database og databasebruger til netmrg, kræves kontonavnet på databasens systemadministrator.
+description-de.UTF-8: Name des Datenbank-Systemadministrators:
+ Um die initiale Datenbank und den Datenbank-Benutzer von netmrg anzulegen, bedarf es des Anmeldenamens des Datenbank-Systemadministrators.
+description-es.UTF-8: Nombre del administrador del sistema de base de datos:
+ Para poder crear la base de datos y los usuarios iniciales de netmrg, es necesario tener el nombre de la cuenta del administrador del sistema de base de datos.
+description-fr.UTF-8: Mot de passe de l'administrateur du serveur de bases de données:
+ Pour créer la base de données initiale pour netmrg ainsi que son utilisateur, vous devez indiquer l'identifiant de l'administrateur du serveur de bases de données.
+description-it.UTF-8: Nome dell'amministratore di sistema del database:
+ Per poter creare il database e l'utente del database iniziali per netmrg è necessario il nome dell'account dell'amministratore di sistema del database.
+description-ja.UTF-8: データベースシステム管理名:
+ netmrg の初期データベースやデータベースユーザを作成するのにデータベースシステム管理用アカウントの情報が必要です。
+description-nl.UTF-8: Naam van de database-beheerder:
+ Om de initiële database en de database-gebruiker voor netmrg aan te maken is de accountnaam van de database-beheerder nodig.
+description-pt.UTF-8: Nome do administrador da base de dados sistema:
+ Para ser capaz de criar a base de dados inicial e um utilizador da mesma para o netmrg, necessita do nome da conta do administrador da base de dados sistema.
+description-ru.UTF-8: Имя системного администратора баз данных:
+ Для начального создания базы данных и пользователя для netmrg требуется имя учётной записи системного администратора баз данных.
+description-sv.UTF-8: Användarnamn för systemadministratören för databassystemet:
+ För att kunna skapa databasen och databasanvändaren för netmrg måste systemadministratörskontot för databassystemet anges.
+description-vi.UTF-8: Tên của quản trị hệ thống cơ sở dữ liệu :
+ Để có khả năng tạo cơ sở dữ liệu và người dùng đầu tiên cho netmrg, cần thiết tên tài khoản của người dùng quản trị hệ thống cơ sở dữ liệu.
+
+Template: netmrg/db/admin/password
+Type: password
+default: 
+default-cs.UTF-8:
+default-da.UTF-8:
+default-de.UTF-8:
+default-es.UTF-8:
+default-fr.UTF-8:
+default-it.UTF-8:
+default-ja.UTF-8:
+default-nl.UTF-8:
+default-pt.UTF-8:
+default-ru.UTF-8:
+default-sv.UTF-8:
+default-vi.UTF-8:
+description: Password of the database system administrator:
+description-cs.UTF-8: Heslo administrátora databázového systému:
+description-da.UTF-8: Adgangskode på databasens systemadministrator:
+description-de.UTF-8: Passwort des Datenbank-Systemadministrator:
+description-es.UTF-8: Contraseña del administrador del sistema de base de datos:
+description-fr.UTF-8: Mot de passe de l'administrateur du serveur de bases de données :
+description-it.UTF-8: Password dell'amministratore di sistema del database:
+description-ja.UTF-8: データベースシステム管理パスワード:
+description-nl.UTF-8: Wachtwoord voor de database-beheerder:
+description-pt.UTF-8: Palavra-chave do administrador da base de dados sistema:
+description-ru.UTF-8: Пароль системного администратора баз данных:
+description-sv.UTF-8: Lösenord för systemadministratören för databassystemet:
+description-vi.UTF-8: Mật khẩu của quản trị hệ thống cơ sở dữ liệu :
+
+Template: netmrg/web/host
+Type: string
+default:
+default-cs.UTF-8:
+default-da.UTF-8:
+default-de.UTF-8:
+default-es.UTF-8:
+default-fr.UTF-8:
+default-it.UTF-8:
+default-ja.UTF-8:
+default-nl.UTF-8:
+default-pt.UTF-8:
+default-ru.UTF-8:
+default-sv.UTF-8:
+default-vi.UTF-8:
+description: Name of web host:
+ netmrg's user interface is web based. The hostname of the web server
+ is used for URLs within the netmrg web interface. Leaving this
+ entry field empty is usually a good choice.
+description-cs.UTF-8: Jméno webového počítače:
+ Uživatelské rozhraní programu netmrg používá web. Adresy URL webového rozhraní netmrg používají hostitelský název webového serveru. Obvykle stačí ponechat toto políčko prázdné.
+description-da.UTF-8: Navn på internetvært:
+ netmrgs brugergrænseflade er internetbaseret. Værtsnavnet på internetserveren bruges til adresser indenfor netmrgs internetgrænseflade. At efterlade feltet tomt er normalt ikke et godt valgt.
+description-de.UTF-8: Name des Web-Hosts:
+ netmrgs Bedienschnittstelle ist webbasiert. Der Hostname des Webservers wird für URLs innerhalb der Bedienschnittstelle verwendet. In der Regel kann dieses Feld leer gelassen werden.
+description-es.UTF-8: Nombre del servidor web:
+ La interfaz de netmrg se basa en la web. El nombre del servidor web se utiliza para las URL de la interfaz web de netmrg. Normalmente, dejar este campo vacío es una buena opción.
+description-fr.UTF-8: Nom d'hôte de netmrg :
+ Netmrg utilise une interface web. Le nom d'hôte du serveur web déterminera les URL utilisées. Il est conseillé de laisser ce champ vide.
+description-it.UTF-8: Nome dell'host web:
+ L'interfaccia utente di netmrg è basata sul web. Il nome host del server web viene usato per gli URL all'interno dell'interfaccia web di netmrg. Solitamente è una buona idea lasciare questo campo vuoto.
+description-ja.UTF-8: ウェブホスト名:
+ netmrg のユーザインターフェイスはウェブベースです。ウェブサーバのホスト名は netmrg ウェブインターフェイス内の URL に使われます。通常は空白にしておくのがよい選択でしょう。
+description-nl.UTF-8: Computernaam van de webserver:
+ Netmrg heeft een web-based gebruikersinterface. De computernaam van de webserver wordt gebruikt voor URL's in de web-interface van netmrg. Meestal kunt u dit veld leeg laten.
+description-pt.UTF-8: Nome da máquina do servidor web:
+ O interface para o utilizador do netmrg é baseado na web. O nome da máquina servidor web é utilizado para 'URLs' dentro da interface web do netmrg. Deixar esta entrada em branco normalmente é uma boa opção.
+description-ru.UTF-8: Имя веб-хоста:
+ Пользовательский интерфейс netmrg основан на веб. Имя хоста веб-сервера используется для URL-ов в веб-интерфейсе netmrg. Обычно, достаточно оставить поле пустым.
+description-sv.UTF-8: Namn på webbvärd:
+ netmrgs användargränssnitt är webbaserat. Värdnamnet för webbservern används i adresser i netmrgs webbgränssnitt. Att lämna fältet tomt är vanligt ett bra alternativ.
+description-vi.UTF-8: Tên của máy hỗ trợ dịch vụ Mạng:
+ Giao diện người dùng của netmrg dựa vào Mạng. Tên máy của máy phục vụ Mạng được dùng cho địa chỉ URL bên trong giao diện Mạng của netmrg. Thường nên bỏ rỗng trường này.
+
+Template: netmrg/company/name
+Type: string
+default:
+default-cs.UTF-8:
+default-da.UTF-8:
+default-de.UTF-8:
+default-es.UTF-8:
+default-fr.UTF-8:
+default-it.UTF-8:
+default-ja.UTF-8:
+default-nl.UTF-8:
+default-pt.UTF-8:
+default-ru.UTF-8:
+default-sv.UTF-8:
+default-vi.UTF-8:
+description: Name of your company:
+ The web front end of netmrg shows the name of your company in the header
+ of each web page.
+description-cs.UTF-8: Jméno vaší společnosti:
+ Webová aplikace netmrg zobrazuje jméno vaší společnosti v záhlaví každé webové stránky.
+description-da.UTF-8: Navn på dit firma:
+ Internetgrænsefladen på netmrg viser navnet på dit firma i teksthovedet af hver internetside.
+description-de.UTF-8: Name Ihrer Firma:
+ Das Web-Frontend von netmrg zeigt im Kopf jeder Web-Seite ihren Firmennamen an.
+description-es.UTF-8: Nombre de su empresa:
+ La interfaz web de netmrg muestra el nombre de su empresa en la cabecera de cada una de sus páginas.
+description-fr.UTF-8: Nom de l'entreprise :
+ L'interface web de netmrg affiche le nom de l'entreprise dans l'en-tête de chaque page web.
+description-it.UTF-8: Nome della propria azienda:
+ Il frontend web di netmrg mostra il nome dell'azienda nell'intestazione di ogni pagina web.
+description-ja.UTF-8: 企業名:
+ netmrg のウェブフロントエンドでは各ウェブページのヘッダで企業名を表示します。
+description-nl.UTF-8: Naam van uw bedrijf:
+ De web-interface van netmrg toont de naam van uw bedrijf bovenaan elke webpagina.
+description-pt.UTF-8: Nome da sua companhia:
+ O interface de visualização web do netmrg mostra o nome da sua companhia no cabeçalho cada página.
+description-ru.UTF-8: Название вашей компании:
+ В веб-интерфейсе netmrg в заголовке каждой веб-страницы показывается название вашей компании.
+description-sv.UTF-8: Namn på ditt/din företag/organisation:
+ Netmrgs webbgränssnitt visar namnet på ditt/din företag/organisation i sidhuvudet.
+description-vi.UTF-8: Tên của công ty bạn:
+ Giao diện Mạng của netmrg thì hiển thị tên của công ty của bạn trong phần đầu của mỗi trang Mạng.
+
+Template: netmrg/company/link
+Type: string
+default: http://
+default-cs.UTF-8: http://
+default-da.UTF-8: http://
+default-de.UTF-8: http://
+default-es.UTF-8: http://
+default-fr.UTF-8: http://
+default-it.UTF-8: http://
+default-ja.UTF-8: http://
+default-nl.UTF-8: http://
+default-pt.UTF-8: http://
+default-ru.UTF-8: http://
+default-sv.UTF-8: http://
+default-vi.UTF-8: http://
+description: URL of your company's website:
+ Clicking on the company name will follow a link. It is usually
+ the URL pointing to the start page of your company's web site.
+description-cs.UTF-8: Adresa URL webových stránek vaší společnosti:
+ Kliknutím na jméno společnosti přejdete na tento odkaz. Obvykle se zde zadává URL adresa směřující na úvodní webovou stránku vaší společnosti.
+description-da.UTF-8: Adresse på dit firmas internetside:
+ Klik på dit firmanavn vil udløse en henvisning. Det er normalt adressen, som peger på startsiden på dit firmas internetside.
+description-de.UTF-8: URL ihre Firmen-Website:
+ Ein Mausklick auf den Firmennamen verfolgt diesen Link. Es ist für gewöhnlich die URL der Startseite Ihrer Firmen-Website.
+description-es.UTF-8: URL de la página web de su empresa:
+ Pulsar sobre el nombre de la empresa seguirá el enlace. Normalmente, es la URL de la página web de su compañía.
+description-fr.UTF-8: URL du site web de l'entreprise :
+ Veuillez indiquer l'URL qui sera atteinte en cliquant sur le nom l'entreprise.
+description-it.UTF-8: URL del sito web delle proprie aziende:
+ Facendo clic sul nome dell'azienda si segue un collegamento. Solitamente è l'URL che punta alla pagina iniziale del sito web della propria azienda.
+description-ja.UTF-8: 企業ウェブサイトの URL:
+ 企業名をクリックするとリンクをたどります。通常、この URL は企業ウェブサイトの起点となるページを指します。
+description-nl.UTF-8: URL van de website van uw bedrijf:
+ Bij het klikken op de bedrijfsnaam wordt er een link gevolgd. Dit is meestal de URL die wijst naar de startpagina van de website van uw bedrijf.
+description-pt.UTF-8: 'URL' da página web da sua empresa:
+ Ao clicar no nome da companhia será activado o link. Normalmente é o link 'URL' que aponta para a página de início do site da sua companhia.
+description-ru.UTF-8: URL веб-сайта вашей компании:
+ По щелчку на названии компании осуществляется переход по ссылке. Обычно, этот URL указывает на начальную страницу веб-сайта вашей компании.
+description-sv.UTF-8: Adress till företagets/organisationens webbplats:
+ Genom att klicka på företagsnamnet/organisationsnamnet kommer att aktivera en länk, vanligen pekar denna på startsidan på ditt företags/din organisations webbplats.
+description-vi.UTF-8: URL của nơi Mạng của công ty:
+ Việc nhấn vào tên công ty sẽ theo liên kết. Thường là địa chỉ URL chỉ tới trang chính của nơi Mạng của công ty của bạn.
+
+Template: netmrg/postrm
+Type: boolean
+default: true
+default-cs.UTF-8: ano
+default-da.UTF-8: true
+default-de.UTF-8: true
+default-es.UTF-8: verdadero
+default-fr.UTF-8: vrai
+default-it.UTF-8: vero
+default-ja.UTF-8: true
+default-nl.UTF-8: waar
+default-pt.UTF-8: verdadeiro
+default-ru.UTF-8: да
+default-sv.UTF-8: sant
+default-vi.UTF-8: đúng
+description: Delete data after purging software?
+ Purging a package usually removes all data collected by the software
+ including the log files.
+ Choose 'no' if you would like to keep the mysql database and
+ the datafiles even if the netmrg package is purged sometime in the
+ future.
+description-cs.UTF-8: Smazat data po odstranění programu?
+ Odstranění balíčku obvykle odstraní všechna data získaná tímto programem včetně souborů logu. Zvolte 'ne', pokud si přejete zachovat databázi mysql a datové soubory i když někdy v budoucnu odstraníte balíček netmrg.
+description-da.UTF-8: Slet data efter fjernelse af software?
+ Fjernelse af en pakke fjerner normalt alle data indsamlet af programmet inklusive logfilerne. Vælg »nej« hvis du ønsker at beholde mysqldatabasen og datafilerne selv om netmrg-pakken fjernes på et tidspunkt i fremtiden.
+description-de.UTF-8: Sollen die Daten nach dem Löschen der Software auch gelöscht werden?
+ Das vollständige Löschen eines Pakets entfernt für gewöhnlich auch alle gesammelten Daten und die Log-Dateien. Wählen Sie 'nein', wenn Sie die mysql Datenbank und die Datendateien behalten wollen, auch wenn das Paket zu einem späteren Zeitpunkt vollständig gelöscht wird.
+description-es.UTF-8: ¿Desea borrar los datos después de purgar el programa?
+ Al purgar un paquete generalmente se eliminan todos los datos del programa incluyendo los archivos de los registros. Escoja «no» si quiere guardar la base de datos mysql y los archivos de datos, incluso si purga el paquete netmrg en el futuro.
+description-fr.UTF-8: Faut-il effacer les données à la purge du paquet ?
+ La purge d'un paquet supprime toutes les données ainsi que les fichiers journaux créés par le programme. Refusez cette option si vous désirez conserver la base de données MySQL ainsi que les fichiers de données même dans l'éventualité d'une purge future du paquet netmrg.
+description-it.UTF-8: Cancellare i dati dopo l'eliminazione del software?
+ L'eliminazione definitiva di un pacchetto solitamente rimuove tutti i dati raccolti dal software, compresi i file di log. Scegliere «no» se si desidera mantenere il database mysql e i file dei dati anche se il pacchetto netmrg verrà in futuro eliminato.
+description-ja.UTF-8: ソフトウェアを完全削除する際にデータを削除しますか?
+ パッケージを完全削除する場合、通常そのソフトウェアが収集したデータはログファイルも含めて削除されます。将来 netmrg パッケージを完全削除することになったときに mysql データベース及びそのデータファイルを残したい場合はここで「no」を選択してください。
+description-nl.UTF-8: Verwijder gegevens bij het wissen van de software?
+ Het wissen (purge) van een pakket verwijderd meestal alle gegevens die de software heeft verzameld, inclusief logbestanden. Kies 'nee' als u de mysql-database en databestanden wilt bewaren als het pakket netmrg ooit wordt gewist.
+description-pt.UTF-8: Apagar data depois de eliminar o software?
+ Eliminar um pacote normalmente elimina toda a informação recolhida pelo pacote incluindo ficheiros de relatório. Escolha 'não' se preferir manter a base de dados mysql e os ficheiros de data, mesmo que o pacote netmrg seja eliminado um dia mais tarde.
+description-ru.UTF-8: Удалять данные при вычистке?
+ При вычистке пакета, обычно, удаляются все данные, используемые ПО, включая журнальные файлы. Выберите 'Нет', если хотите оставить базу данных mysql и файлы данных, даже если в будущем пакет netmrg будет удалён.
+description-sv.UTF-8: Radera data efter att mjukvaran har tagits bort helt från systemet?
+ När ett paket raderas helt och hållet från ett system tas vanligen all data som samlats ihop av mjukvaran bort, inklusive inställningar och loggar. Välj "nej" här om du vill ha kvar mysqldatabasen och dess datafiler när netmrg eventuellt tas bort i framtiden.
+description-vi.UTF-8: Xoá dữ liệu sau khi tẩy phần mềm không?
+ Việc tẩy gói thường gỡ bỏ mọi dữ liệu do phần mềm thu thập, gồm các tập tin ghi lưu. Hãy chọn « Không » nếu bạn muốn giữ lại cơ sở dữ liệu MySQL, thậm chí nếu gói netmrg bị tẩy vào lúc sau.
+
+Template: netmrg/configuration/note
+Type: note
+default: 
+default-cs.UTF-8:
+default-da.UTF-8:
+default-de.UTF-8:
+default-es.UTF-8:
+default-fr.UTF-8:
+default-it.UTF-8:
+default-ja.UTF-8:
+default-nl.UTF-8:
+default-pt.UTF-8:
+default-ru.UTF-8:
+default-sv.UTF-8:
+default-vi.UTF-8:
+description: Package configuration note
+ The package has been successfully installed and configured. Point your
+ web browser towards http://${site}/netmrg/ and log in as user 'admin'
+ with the password 'nimda'. Make sure to change the password as soon
+ as possible since it is the default password for all netmrg installations.
+description-cs.UTF-8: Konfigurační poznámka balíčku
+ Balíček byl úspěšně nainstalován a nastaven. Ve svém prohlížeči zadejte adresu http://${site}/netmrg/ a přihlaste se jako uživatel 'admin' s heslem 'nimda'. Toto heslo prosím změňte co nejdříve, protože se jedná o výchozí heslo instalace netmrg.
+description-da.UTF-8: Pakkekonfigurationsbemærkning
+ Pakken er blevet installeret og konfigureret. Peg din internetbrowser mod http://${site}/netmrg/ og log ind som bruger »admin« med adgangskoden »nimda«. Husk at ændre adgangskoden hurtigst muligt da det er standardadgangskoden for alle installationer af netmrg.
+description-de.UTF-8: Bemerkung zur Paket-Konfiguration
+ Das Paket wurde erfolgreich installiert und konfiguriert. Besuchen Sie nun mit ihrem Web-Browser die Seite http://${site}/netmrg/ und melden Sie sich als Benutzer 'admin' mit dem Passwort 'nimda' an. Stellen Sie sicher, dass das Passwort so schnell wie möglich geändert wird, weil es das voreingestellte Passwort aller netmrg-Installationen ist.
+description-es.UTF-8: Nota de la configuración del paquete
+ El paquete se ha instalado y configurado correctamente. Dirija su navegador web a «http://${site}/netmrg/» e identifíquese con el usuario «admin» con la contraseña «nimda». Asegúrese de cambiar la contraseña lo antes posible, ya que ésta es la predeterminada en todas las instalaciones de netmrg.
+description-fr.UTF-8: Note sur la configuration du paquet
+ L'installation et la configuration du paquet se sont terminées avec succès. Vous pouvez maintenant pointer votre navigateur sur http://${site}/netmrg/ et vous connecter en tant qu'utilisateur « admin » avec le mot de passe « nimda ». N'oubliez pas de modifier ce mot de passe puisque c'est celui utilisé par défaut par toutes les installations de netmrg.
+description-it.UTF-8: Nota sulla configurazione del pacchetto
+ Il pacchetto è stato installato e configurato con successo. Puntare il proprio browser web su http://${site}/netmrg/ e fare il login come utente «admin» usando la password «nimda». Assicurarsi di cambiare la password appena possibile dato che è la password predefinita per tutte le installazioni di netmrg.
+description-ja.UTF-8: パッケージ設定時の注意
+ パッケージのインストールと設定に成功しました。ウェブブラウザで http://${site}/netmrg/ にアクセスし、ユーザ「admin」、パスワード「nimda」でログインしてください。このパスワードは netmrg をインストールしたときのデフォルトのパスワードなので、できる限り早く変更するようにしてください。
+description-nl.UTF-8: Opmerking bij de pakketconfiguratie
+ Het pakket is met succes geïnstalleerd en geconfigureerd. Bezoek met uw web browser http://${site}/netmrg/ en log als gebruiker 'admin' met wachtwoord 'nimda'. Verander dit wachtwoord zo snel mogelijk, want dit is het standaard wachtwoord voor alle installaties van netmrg!
+description-pt.UTF-8: Nota de configuração do pacote
+ O pacote foi instalado e configurado com sucesso. Aponte o seu cliente web para http://${site}/netmrg/ e entre como um utilizador 'admin' com a palavra-chave 'nimda'. Garanta que a palavra-chave seja modificada o mais depressa possível, já que é a palavra-chave por omissão para todas as instalações netmrg.
+description-ru.UTF-8: Замечание по настройке пакета
+ Пакет был успешно установлен и настроен. Введите в браузере ссылку http://${site}/netmrg/ и войдите под именем 'admin' с паролем 'nimda'. Обязательно измените пароль как можно скорее, так как этот пароль используется для всех установок netmrg.
+description-sv.UTF-8: Anteckning för paketinställningar
+ Paketet har installerats och inställningarna är klara. Ange adressen http://${site}/netmrg/ i din webbläsare och logga in med användaren "admin" och lösenordet "nimda". Byt detta lösenord omedelbart eftersom det är samma standardlösenord för alla netmrginstallationer.
+description-vi.UTF-8: Ghi chú cấu hình gói
+ Gói đã được cài đặt và cấu hình. Chỉ trình duyệt Mạng tới địa chỉ « http://${site}/netmrg/ » rồi đăng nhập với tên người dùng « admin » và mật khẩu « nimda ». Bạn nên thay đổi mật khẩu càng sớm càng có thể, vì nó là mật khẩu mặc định cho mọi bản cài đặt netmrg.
+
+Template: netmrg/db/generation_error
+Type: note
+default: 
+default-cs.UTF-8:
+default-da.UTF-8:
+default-de.UTF-8:
+default-es.UTF-8:
+default-fr.UTF-8:
+default-it.UTF-8:
+default-ja.UTF-8:
+default-nl.UTF-8:
+default-pt.UTF-8:
+default-ru.UTF-8:
+default-sv.UTF-8:
+default-vi.UTF-8:
+description: Error while creating database
+description-cs.UTF-8: Chyba při vytváření databáze
+description-da.UTF-8: Fejl under oprettelse af database
+description-de.UTF-8: Fehler beim Anlegen der Datenbank
+description-es.UTF-8: Error mientras se creaba la base de datos
+description-fr.UTF-8: Erreur lors de la création de la base de données
+description-it.UTF-8: Errore durante la creazione del database
+description-ja.UTF-8: データベース作成でエラーが発生しました
+description-nl.UTF-8: Fout bij het aanmaken van de database
+description-pt.UTF-8: Erro ao criar a base de dados
+description-ru.UTF-8: Ошибка при создании базы данных
+description-sv.UTF-8: Fel när databasen skulle skapas
+description-vi.UTF-8: Gặp lỗi khi tạo cơ sở dữ liệu
+
+Template: netmrg/db/usergen_error
+Type: note
+default: 
+default-cs.UTF-8:
+default-da.UTF-8:
+default-de.UTF-8:
+default-es.UTF-8:
+default-fr.UTF-8:
+default-it.UTF-8:
+default-ja.UTF-8:
+default-nl.UTF-8:
+default-pt.UTF-8:
+default-ru.UTF-8:
+default-sv.UTF-8:
+default-vi.UTF-8:
+description: Error while creating database user
+description-cs.UTF-8: Chyba při vytváření uživatele databáze
+description-da.UTF-8: Fejl under oprettelse af databasebruger
+description-de.UTF-8: Fehler beim Anlegen des Datenbank-Benutzers
+description-es.UTF-8: Error en la creación del usuario de la base de datos
+description-fr.UTF-8: Erreur lors de la création du propriétaire de la base de données
+description-it.UTF-8: Errore durante la creazione dell'utente del database
+description-ja.UTF-8: データベースのユーザ作成でエラーが発生しました
+description-nl.UTF-8: Fout bij het aanmaken van de database-gebruiker
+description-pt.UTF-8: Erro ao criar o utilizador da base de dados
+description-ru.UTF-8: Ошибка при создании пользователя базы данных
+description-sv.UTF-8: Fel när databasanvändaren skulle skapas
+description-vi.UTF-8: Gặp lỗi khi tạo người dùng cơ sở dữ liệu
+
+Template: netmrg/db/tablegen_error
+Type: note
+default: 
+default-cs.UTF-8:
+default-da.UTF-8:
+default-de.UTF-8:
+default-es.UTF-8:
+default-fr.UTF-8:
+default-it.UTF-8:
+default-ja.UTF-8:
+default-nl.UTF-8:
+default-pt.UTF-8:
+default-ru.UTF-8:
+default-sv.UTF-8:
+default-vi.UTF-8:
+description: Error while creating database tables
+description-cs.UTF-8: Chyba při vytváření databázových tabulek
+description-da.UTF-8: Fejl under oprettelse af databasetabeller
+description-de.UTF-8: Fehler beim Anlegen der Datenbank-Tabellen
+description-es.UTF-8: Error en la creación de las tablas de la base datos
+description-fr.UTF-8: Erreur lors de la création des tables de la base de données
+description-it.UTF-8: Errore durante la creazione delle tabelle del database
+description-ja.UTF-8: データベースのテーブル作成でエラーが発生しました
+description-nl.UTF-8: Fout bij het aanmaken van de database-tabellen
+description-pt.UTF-8: Erro ao criar as tabelas da base de dados
+description-ru.UTF-8: Ошибка при создании таблиц базы данных
+description-sv.UTF-8: Fel när tabeller för data skulle skapas
+description-vi.UTF-8: Gặp lỗi khi tạo bảng cơ sở dữ liệu
+

@@ -1,0 +1,386 @@
+Template: openafs-client/cell-info
+Type: string
+Description: DB server host names for your home cell:
+ AFS uses the file /etc/openafs/CellServDB to hold the list of servers that
+ should be contacted to find parts of a cell.  The cell you claim this
+ workstation belongs to is not in that file.  Enter the host names of the
+ database servers separated by spaces. IMPORTANT: If you are creating a new
+ cell and this machine is to be a database server in that cell, only enter
+ this machine's name; add the other servers later after they are
+ functioning. Also, do not enable the AFS client to start at boot on this
+ server until the cell is configured.  When you are ready you can edit
+ /etc/openafs/afs.conf.client to enable the client.
+Description-cs.UTF-8: Jména počítačů s DB serverem vaší domovské buňky:
+ AFS používá k uchovávání seznamu serverů, které mají být kontaktovány při hledání částí buňky, soubor /etc/openafs/CellServDB. Buňka, do které tato stanice patří, není ve zmíněném souboru uvedena. Zadejte mezerami oddělená jména databázových serverů. DŮLEŽITÉ: pokud vytváříte novou buňku a tento počítač bude databázovým serverem této buňky, pak stačí pouze zadat jméno počítače; ostatní servery přidejte později až po jejich zprovoznění. Dokud nebude buňka nastavena, tak na tomto serveru nepovolujte spuštění AFS klienta při startu serveru. Až budete připraveni, můžete klienta povolit úpravou souboru /etc/openafs/afs.conf.client.
+Description-da.UTF-8: DB-serverværtsnavn for din hjemmecelle:
+ AFS bruger filen /etc/openafs/CellServDB, der indeholder listen over servere, som skal kontaktes for at finde dele af en celle. Cellen, du hævder at denne arbejdsstation tilhører, er ikke i denne fil. Indtast værtsnavnene for databaseserverne adskilt af mellemrum. VIGTIGT: Hvis du opretter en ny celle og denne maskine skal være databaseserveren i den celle, så indtast kun den maskines navn; tilføj de andre servere senere når de er oppe og køre. Husk også ikke at aktivere AFS-klienten til igangsættelse ved opstart på denne server før cellen er konfigureret. Når du er klar, kan du redigere /etc/openafs/afs.conf.client for at aktivere klienten.
+Description-de.UTF-8: Hostnamen der Datenbank-Server für Ihre Home-Zelle:
+ AFS benutzt die Datei /etc/openafs/CellServDB für eine Liste von Servern, die angesprochen werden sollen, um Teile einer Zelle zu finden. Die Zelle, von der Sie sagen, diese Workstation gehöre zu ihr, ist nicht in dieser Datei. Geben Sie die Hostnamen der Datenbank-Server ein, getrennt durch Leerzeichen. WICHTIG: Falls Sie eine neue Zelle erstellen und dieser Computer der Datenbank-Server der Zelle sein soll, geben Sie nur den Hostnamen dieses Computers ein; fügen Sie andere Server erst später hinzu, sobald diese funktionieren. Außerdem sollten Sie den AFS-Client auf diesem Server nicht beim Systemboot starten lassen, bevor diese Zelle konfiguriert ist. Wenn Sie soweit sind, können Sie /etc/openafs/afs.conf.client editieren, um den AFS-Client zu aktivieren.
+Description-es.UTF-8: Escriba para la celda de «home» los nombres de los servidores de la base de datos:
+ AFS utiliza el archivo «/etc/openafs/CellServDB» para mantener una lista de los servidores a los que se consultará para encontrar la distintas partes de una celda. La celda que solicita esta estación de trabajo no está incluida en ese archivo. Introduzca los nombres de los servidores de la base de datos separados por espacios. IMPORTANTE: Si está creando una nueva celda y esta máquina es uno de los servidores de la base de datos en esa celda, introduzca sólo el nombre de esta máquina; añada los demás servidores más tarde cuando estén en funcionamiento. Además, no habilite en el arranque el cliente AFS de ese servidor hasta que configure la celda. Cuando esté preparado, edite el archivo «/etc/openafs/afs.conf.client».
+Description-fr.UTF-8: Hôtes serveurs de bases de données pour votre cellule locale (« home cell ») :
+ AFS utilise le fichier /etc/openafs/CellServDB pour conserver la liste des serveurs à contacter pour trouver les constituants d'une cellule. La cellule dont ce poste de travail est censé faire partie n'est pas indiquée dans ce fichier. Veuillez indiquer les noms des serveurs de bases de données, séparés par des espaces. IMPORTANT : si vous créez une nouvelle cellule et que cette machine doit être un serveur de bases de données dans cette cellule, veuillez seulement indiquer le nom de cette machine. N'ajoutez les autres serveurs que plus tard, lorsqu'ils seront opérationnels. Enfin, n'activez pas le client AFS au démarrage tant que cette cellule n'est pas configurée. Quand vous serez prêt, vous pourrez modifier /etc/openafs/afs.conf.client pour mettre en service le client.
+Description-gl.UTF-8: Nomes dos servidores de bases de datos para a cela inicial:
+ AFS emprega o ficheiro /etc/openafs/CellServDB para manter a lista de servidores cos que se hai que comunicar para atopar partes dunha cela. A cela á que di que esta estación de traballo pertence non figura nese ficheiro. Introduza os nomes dos servidores de bases de datos, separados por espazos. IMPORTANTE: Se está a crear unha nova cela e esta máquina ha ser un servidor de bases de datos desa cela, introduza só o nome desta máquina; engada os nomes dos outros servidores despois, cando xa estean a funcionar. Ademáis, non permita que o cliente AFS arrinque no inicio do ordenador ata que a cela estea configurada. Cando estea preparado pode editar o ficheiro /etc/openafs/afs.conf.client para activar o cliente.
+Description-it.UTF-8: Nomi host dei server DB per la propria cella:
+ AFS usa il file /etc/openafs/CellServDB per memorizzare l'elenco dei server che devono essere contattati per trovare le parti di una cella. Si è indicato che questa macchina appartiene ad una cella che però non è in tale file. Inserire i nomi host dei server di database separati da spazi. IMPORTANTE: se si sta creando una nuova cella e questa macchina deve essere un server di database per tale cella, inserire solamente il nome di questa macchina; aggiungere gli altri server successivamente quando saranno in funzione. Inoltre non abilitare l'esecuzione del client AFS all'avvio su questo server fino a che la cella non è configurata. Quando si è pronti, si può modificare /etc/openafs/afs.conf.client per abilitare il client.
+Description-ja.UTF-8: ホームセルの DB サーバホスト名:
+ AFS はセルの各パートを検索するのに使用する確認先サーバのリストを保持するのに /etc/openafs/CellServDB ファイルを使います。あなたがこのワークステーションが属していると指定しているセルは、このファイル上にありません。データベースサーバのホスト名を空白で区切って入力してください。「重要」：新しいセルを作って、このマシンがそのセルでのデータベースサーバになった場合、このマシンの名前のみを入力してください。他のサーバが動作するようになった後で、そのサーバを追加してください。そして、セルが設定されるまで、このサーバでは AFS クライアントを起動時に開始しないようにしてください。設定が完了して準備が整ったら /etc/openafs/afs.conf.client を編集してクライアントを有効にしてください。
+Description-nl.UTF-8: Computernamen van de DB-servers voor de cel waartoe u behoort:
+ AFS houdt in het bestand '/etc/openafs/CellServDB een lijst bij van servers die gecontacteerd moeten worden bij het zoeken naar delen van een cel. De cel waartoe dit werkstation volgens wat u aangaf behoort, is niet terug te vinden in dit bestand. Gelieve dus de computernamen van de databaseservers op te geven, gescheiden met spaties. OPGELET: als u bezig bent een nieuwe cel op te zetten en deze machine als databaseserver voor deze cel zal fungeren dient u hier enkel de naam van deze machine in te geven; u kunt verdere servers dan later toevoegen eens alles functioneert. Zorg er ook voor dat u het opstarten van de AFS-client tijdens het opstarten van de machine niet activeert voordat de cel geconfigureerd is. Zodra u daarmee klaar bent kunt u /etc/openafs/afs.conf.client aanpassen om het automatisch opstarten van de client tijdens de machinestart te activeren.
+Description-pt.UTF-8: Nomes de máquinas dos servidores de bases de dados para a sua célula:
+ O AFS utiliza o ficheiro /etc/openafs/CellServDB para guardar a lista de servidores que devem ser contactados para encontrar partes de uma célula.  A célula que você diz a que esta estação de trabalho pertence não está nesse ficheiro.  Introduza os nomes das máquinas dos servidores de bases de dados separados por espaços. IMPORTANTE: Se está a criar uma nova célula e esta máquina é uma máquina que irá servir a base de dados nessa célula, apenas introduza o nome desta máquina; acrescente depois os outros servidores depois de estes estarem a funcionar. Além disso, não habilite o client AFS para iniciar no arranque neste servidor até que a célula esteja configurada.  Quando você estiver pronto pode editar /etc/openafs/afs.conf.client para habilitar o cliente.
+Description-pt_BR.UTF-8: Nomes de host do servidor DB para sua célula home:
+ O AFS usa o arquivo /etc/openafs/CellServDB para armazenar a lista de servidores que deverão ser contatados para se encontrar partes de uma célula. A célula da qual você afirma que esta estação de trabalho pertence não está nesse arquivo. Informe os nomes de host dos servidores de base de dados separados por espaços. IMPORTANTE: Caso você esteja criando uma nova célula e esta máquina seja um servidor de base de dados nessa célula, apenas informe o nome desta máquina. Adicione os outros servidores posteriormente depois que os mesmos estejam funcionando. Além disso, não habilite o cliente AFS para iniciar durante a inicialização desse servidor até que a célula esteja configurada. Quando você estiver pronto, você poder editar o arquivo /etc/openafs/afs.conf.client para habilitar o cliente.
+Description-ru.UTF-8: Имена машин-серверов БД ячейки:
+ AFS использует файл /etc/openafs/CellServDB для хранения списка серверов, с которыми нужно соединяться при поиске частей ячейки. Ячейка, которой принадлежит данная рабочая станция, указывается не в этом файле. Вводите имена узлов серверов базы данных через пробел. ВАЖНО: если вы создаёте новую ячейку и эта машина является базой данных этой ячейки, то введите здесь только имя данной машины; добавляйте другие серверы по мере ввода их в работу. Также, выключите запуск клиента AFS при загрузке машины пока не будет настроена ячейка. Когда будете готовы, включите клиент, отредактировав файл /etc/openafs/afs.conf.client.
+Description-sv.UTF-8: Värdnamn för DB-server för din hemmacell:
+ AFS använder filer /etc/openafs/CellServDB för att hålla reda på listan av servrar som ska kontaktas för att hitta delar till en cell. Cellen du påstår att den här arbetsstationen tillhör finns inte i den filen. Ange värdnamnet på databasservrar, skilj med mellanslag. VIKTIGT: Om du håller på att skapa en ny cell och denna maskinen ska agera databas för den cellen anger du bara namnet på denna maskinen här. Lägg till de övriga servrarna när de är redo. Du ska heller inte ange att AFS-klienten ska starta vid systemets uppstart förrän cellen är helt konfigurerad. Redigera /etc/openafs/afs.conf.client för att aktivera klienten.
+Description-vi.UTF-8: Các tên máy chạy trình phục vụ cơ sở dữ liệu cho ô chính của bạn:
+ AFS dùng tập tin « /etc/openafs/CellServDB » để chứa danh sách các máy phục vụ nên được liên hệ để tìm phần ô. Bạn đã tuyên bố máy trạm này thuộc một ô không phải trong tập tin ấy. Hãy nhập tên máy của những máy phục vụ cơ sở dữ liệu, định giới bằng dấu cách. QUAN TRỌNG: nếu bạn đang tạo một ô mới, và máy này sẽ là một máy phục vụ cơ sở dữ liệu trong ô ấy, thì bạn hãy nhập chỉ tên máy này thôi. Hãy thêm những máy phục vụ khác lần sau, sau khi chúng hoạt động. Hơn nữa, có thể hiệu lực trình khách AFS khởi chạy khi khởi động máy, chỉ sau khi cấu hình ô ấy. Khi bạn sẵn sàng thì có thể hiệu chỉnh tập tin « /etc/openafs/afs.conf.client » để hiệu lực trình khách ấy.
+Description-zh_CN.UTF-8: 您起始单元的数据库服务器主机名：
+ AFS 使用 /etc/openafs/CellServDB 文件来存放那些在寻找一个单元 (cell) 各部分服务器用来联系的服务器列表. 当前工作站您声称其所在的单元并不在这个文件里. 请以空格分隔输入该单元数据库服务器的主机名. 重要提示: 如果您正在创建一个新单元并且该机将做为此单元的数据库服务器, 那么只输入这台机器的主机名即可; 其他服务器当他们可用时再加入进来. 并且, 直到该单元配置完成之前不要令 AFS 客户端在这台服务器引导时启动. 当您一切就绪以后可以编辑 /etc/openafs/afs.conf 来打开客户端.
+
+Template: openafs-client/thiscell
+Type: string
+Description: AFS cell this workstation belongs to:
+ AFS filespace is organized into cells or administrative domains.
+ Each workstation belongs to one cell.  Usually the cell is the DNS
+ domain name of the site.
+Description-cs.UTF-8: Buňka AFS, ke které náleží tento počítač:
+ Souborový prostor systému AFS je uspořádán do buněk nebo administrativních domén. Každá stanice patří jedné buňce. Obvykle je buňkou doménové jméno skupiny.
+Description-da.UTF-8: AFS-celle denne arbejdsstation tilhører:
+ AFS-filrum er organiseret i celler eller administrative domæner. Hver arbejdsstation tilhører en celle. Normalt er cellen DNS-domænenavnet for siden.
+Description-de.UTF-8: AFS-Zelle, zu der diese Workstation gehört:
+ Der AFS-Dateiraum ist in Zellen bzw. administrativen Domains organisiert. Jede Workstation gehört zu einer Zelle. Normalerweise ist eine Zelle gleich dem DNS Domain-Namen.
+Description-es.UTF-8: La celda AFS de esta máquina pertenece a:
+ El espacio de los archivos AFS se organizará en celdas o dominios administrativos. Cada máquina pertenece a una celda. Generalmente la celda es el servidor de nombres de dominio del sitio.
+Description-fr.UTF-8: Cellule AFS dont ce poste de travail fait partie :
+ L'espace des fichiers AFS est organisé en cellules ou domaines administratifs. Chaque poste de travail appartient à une cellule. Habituellement, la cellule est le nom de domaine du site.
+Description-gl.UTF-8: Cela AFS á que pertence esta estación de traballo:
+ O espazo de ficheiros AFS está organizado en celas ou dominios administrativos. Cada estación de traballo pertence a unha cela. Normalmente a cela está no nome de dominio DNS do sitio.
+Description-it.UTF-8: Cella AFS a cui appartiene questa macchina:
+ Lo spazio dei file AFS è organizzato in celle o domini amministrativi. Ogni macchina appartiene ad una cella. Solitamente la cella è il nome di dominio DNS del sito.
+Description-ja.UTF-8: このワークステーションが所属する AFS セル:
+ AFS ファイル空間はセルや管理ドメインから成ります。各ワークステーションは一つのセルに属します。通常セルはサイトの DNS ドメイン名です。
+Description-nl.UTF-8: Tot welke AFS-cel behoort dit werkstation?
+ Een AFS-bestandsruimte is georganiseerd in cellen of administratieve domeinen. Elk werkstation behoort tot 1 cel. Gewoonlijk is deze cel de DNS-domeinnaam van de site.
+Description-pt.UTF-8: Célula AFS a que esta estação de trabalho pertence:
+ O espaço de ficheiros do AFS é organizado em células ou domínios administrativos. Cada estação de trabalho pertence a uma célula.  Normalmente a célula é o nome de domínio DNS do site.
+Description-pt_BR.UTF-8: Célula AFS à qual esta estação de trabalho pertence:
+ O espaço de arquivo AFS é organizado em células ou domínios administrativos. Cada estação de trabalho pertence a uma célula. Normalmente a célula é o nome de domínio DNS do site.
+Description-ru.UTF-8: Ячейка AFS, которой принадлежит данная рабочая станция:
+ Всё файловое пространство AFS сгруппировано в ячейки или административные домены. Каждая рабочая станция принадлежит определённой ячейке. Обычно, ячейка характеризуется доменным именем DNS данной машины.
+Description-sv.UTF-8: AFS-cell som denna arbetsstation tillhör:
+ Filsystemet i AFS är organiserat i celler eller administrativa domäner. Varje arbetsstation tillhör en cell, cellnamnet är vanligen samma som domännamnet.
+Description-vi.UTF-8: Ô AFS chứa máy trăm này:
+ Khoảng cách tập tin loại AFS được tổ chức ra nhiều ô hay miền quản lý. Mỗi máy trạm thuộc một ô riêng lẻ. Thường ô ấy là tên miền DNS của nơi Mạng ấy.
+Description-zh_CN.UTF-8: 这台工作站所属的 AFS 单元:
+ AFS 文件空间按单元和管理域来组织. 每一台工作站属于一个单元. 单元名是通常是该站点的 DNS 域名.
+
+Template: openafs-client/cachesize
+Type: string
+Default: 50000
+Description: Size of AFS cache in kB:
+ AFS uses an area of the disk to cache remote files for faster
+ access.  This cache will be mounted on /var/cache/openafs.  It is
+ important that the cache not overfill the partition it is located
+ on.  Often, people find it useful to dedicate a partition to their
+ AFS cache.
+Description-cs.UTF-8: Velikost cache AFS v kB:
+ AFS používá určitý prostor na disku pro cachování vzdálených souborů, aby k nim měl rychlejší přístup. Tato cache bude připojena do /var/cache/openafs. Je důležité, aby cache nepřeplnila oblast na které je umístěna. Často je užitečné umístit cache AFS do své vlastní diskové oblasti.
+Description-da.UTF-8: Størrelse på AFS-mellemlager i kB:
+ AFS bruger et område af disken til at mellemlagre eksterne filer for hurtigere adgang. Dette mellemlager vil blive monteret på /var/cache/openafs. Det er vigtigt at mellemlageret ikke overfylder partitionen, som den er placeret på. Ofte finder andre det brugbart at dedikere en partition til deres AFS-mellemlager.
+Description-de.UTF-8: Größe des AFS-Cache in kB:
+ AFS benutzt einen Bereich der Festplatte, um Netzwerk-Dateien zum schnelleren Zugriff zwischenzuspeichern. Dieser Cache wird unter /var/cache/openafs eingehängt werden. Es ist wichtig, dass der Cache nicht die Partition überfüllt, auf dem er sich befindet. Viele Leute finden es nützlich, eine extra Partition für ihren AFS-Cache zu haben.
+Description-es.UTF-8: Tamaño de la caché de AFS en kB:
+ Para mejorar la velocidad de acceso,  AFS utiliza un espacio del disco para la caché de archivos remotos. Esta caché se montará en «/var/cache/openafs». Es importante que la caché no ocupe más que la partición en la que se ubica. Frecuentemente, la gente encuentra útil dedicar una partición a la caché de AFS.
+Description-fr.UTF-8: Taille du cache d'AFS (ko) :
+ AFS utilise une partie du disque pour mettre en cache des fichiers distants et accélérer les accès. Ce cache sera monté sur /var/cache/openafs. Il est important que le cache ne remplisse pas la partition sur laquelle il est situé. De nombreux utilisateurs choisissent de dédier une partition au cache d'AFS.
+Description-gl.UTF-8: Tamaño da caché AFS en kB:
+ AFS emprega unha área do disco para facer unha caché dos ficheiros remotos para un acceso máis rápido. Esta caché hase montar en /var/cache/openafs. É importante que a caché non se faga máis grande que a partición na que está situada. A miúdo é útil adicar unha partición á caché AFS.
+Description-it.UTF-8: Dimensione della cache AFS in kB:
+ AFS usa un'area del disco per mantenere una cache dei file remoti per un accesso più veloce. Questa cache viene montata in /var/cache/openafs. È importante che la cache non riempia troppo la partizione in cui è contenuta. Spesso viene considerato utile dedicare una partizione alla cache AFS.
+Description-ja.UTF-8: AFS キャッシュサイズ (kB):
+ AFS はより速いアクセスを行うために、ディスクの一部をリモートファイルのキャッシュとして使います。このキャッシュは /var/cache/openafs にマウントされます。重要なのはキャッシュが置かれたパーティションを過度に圧迫しない事です。多くの場合、AFS キャッシュを専用のパーティションに割り当てるのが適していることでしょう。
+Description-nl.UTF-8: Grootte van de AFS-cache in kB:
+ AFS gebruikt ruimte op de schijf als cache, zodat toegang tot bestanden op andere systemen sneller werkt. Deze cache wordt aangekoppeld in /var/cache/openafs. Het is belangrijk dat de cache niet groter wordt dan de partitie waarop deze zich bevindt. Vaak is het handig om een partititie te hebben met enkel de AFS-cache.
+Description-pt.UTF-8: Tamanho da cache AFS em kB:
+ O AFS utiliza uma área do disco para fazer cache de ficheiros remotos para um acesso mais rápido.  Esta cache irá ser montada em /var/cache/openafs.  É importante que a cache não encha a partição em que está localizada.  Muitas vezes, algumas pessoas acham útil dedicar uma partição para a sua cache AFS.
+Description-pt_BR.UTF-8: Tamanho do cache AFS em kB:
+ O AFS usa uma área do disco para fazer cache de arquivos remotos para acesso mais rápido. Esse cache será montando em /var/cache/openafs. É importante que o cache não ocupe toda a partição na qual está localizado. Geralmente, as pessoas acham útil dedicar uma partição para seus caches AFS.
+Description-ru.UTF-8: Размер кэша AFS в килобайтах:
+ AFS использует часть диска для кэширования удалённых файлов для ускорения доступа. Этот кэш будет смонтирован в каталог /var/cache/openafs. Очень важно, чтобы кэш не переполнил раздел на котором расположен. Часто пользователи создают отдельный раздел для кэша AFS.
+Description-sv.UTF-8: Storlek på AFS-cache i kB:
+ AFS använder en del av disken för att mellanlagrar fjärrfiler för snabbare tillgång. Denna mellanlagring kommer att monteras som /var/cache/openafs. Det är viktigt att mellanlagringen inte tar större plats än partitionen som den huserar på. Det är vanligt att ha en dedikerad partition för AFS mellanlagring.
+Description-vi.UTF-8: Kích cỡ của bộ nhớ tạm AFS theo kB:
+ AFS dùng một vùng trên đĩa để lưu tạm tập tin từ xa, mà cho phép truy cập nhanh hơn. Bộ nhớ tạm này sẽ được gắn vào « /var/cache/openafs ». Quan trọng là bộ nhớ tạm ấy không vượt quá phân vùng ở. Thường có ích khi dùng một phân vùng chỉ cho bộ nhớ tạm AFS thôi.
+Description-zh_CN.UTF-8: 以 kB 计的 AFS 缓存大小:
+ AFS 使用磁盘的一块区域来缓存远程文件来加速访问. 缓存将被挂载到 /var/cache/openafs. 很重要的一点是不能让该缓存把它所在的分区填满. 通常, 人们发现用独立的分区做 AFS 缓存很有用.
+
+Template: openafs-client/run-client
+Type: boolean
+Default: true
+Description: Run Openafs client now and at boot?
+ Normally, most users who install the openafs-client package expect AFS to
+ be mounted automatically at boot.  However, if you are planning on
+ setting up a new cell or are on a laptop, you may not want it started at
+ boot time.  If you choose not to start AFS at boot, run
+ /etc/init.d/openafs-client force-start to start the client when you wish
+ to run it.
+Description-cs.UTF-8: Spustit klienta Openafs nyní a při zavádění počítače?
+ Běžně většina uživatelů balíčku openafs-client očekává, že bude AFS připojeno automaticky při startu počítače. Samozřejmě, pokud plánujete nastavení nové buňky, nebo používáte laptop, pak byste zřejmě AFS při startu spouštět nechtěli. Zvolíte-li možnost nespouštět AFS při startu počítače, můžete klienta spustit ručně příkazem /etc/init.d/openafs-client force-start.
+Description-da.UTF-8: Kør Openafs-klient nu og ved opstart?
+ Normalt forventer de fleste brugere som installerer pakken openafs-client at AFS monteres automatisk ved opstart. Men hvis du planlægger at opsætte en ny celle eller er på en bærbar, så vil du måske ikke have at den igangsættes ved opstartstidspunktet. Hvis du vælger ikke at igangsætte AFS ved opstart så kør /etc/init.d/openafs-client forece-start for at starte klienten, når du ønsker at køre den.
+Description-de.UTF-8: Soll der Openafs-Client jetzt und beim Systemboot gestartet werden?
+ Normalerweise erwarten Benutzer, die das Paket openafs-client installieren, dass AFS automatisch beim Systemboot eingehängt wird. Falls Sie aber eine neue Zelle erstellen wollen oder einen Laptop benutzen, möchten Sie vielleicht nicht, dass AFS beim Booten mitstartet. In diesem Fall können Sie /etc/init.d/openafs-client force-start ausführen, um den AFS-Client erst zu starten, wenn Sie ihn brauchen.
+Description-es.UTF-8: ¿Desea ejecutar ahora el cliente OpenAFS y en el arranque?
+ Normalmente, la mayoría de los usuarios que instalan el paquete «openafs-client» esperan que se monte automáticamente en el arranque. Sin embargo, si tiene pensado configurar una nueva celda o utiliza un portátil, puede que quiera iniciarlo en el arranque. Si elige no iniciar AFS en el arranque, ejecute «/etc/init.d/openafs-client force-start» para iniciar el cliente cuando lo desee.
+Description-fr.UTF-8: Lancer le client AFS maintenant, puis à chaque démarrage ?
+ La majorité des utilisateurs qui installent le paquet openafs-client s'attendent à ce qu'il soit lancé au démarrage. Cependant, si vous prévoyez de mettre en service une nouvelle cellule ou si vous utilisez un ordinateur portable, vous ne souhaitez peut-être pas le lancer au démarrage. Si vous préférez ne pas le lancer au démarrage, utilisez la commande « /etc/init.d/openafs-client force-start » pour le lancer quand vous en aurez besoin.
+Description-gl.UTF-8: ¿Executar o cliente Openafs agora e no inicio?
+ Normalmente, a maioría dos usuarios que instalan o paquete openafs-client esperan que AFS se monte automaticamente ao arrincar o sistema. Nembargantes, se pretende configurar unha nova cela ou emprega un ordenador portátil, pode que non queira inicialo co sistema. Se prefire non iniciar AFS co sistema, execute /etc/init.d/openafs-client force-start para iniciar o cliente cando o queira executar.
+Description-it.UTF-8: Eseguire il client Openafs ora e all'avvio?
+ Normalmente, la maggior parte degli utenti che installa il pacchetto openafs-client si aspetta che AFS venga automaticamente montato all'avvio. Tuttavia, se si ha intenzione di impostare una nuova cella o se si usa un portatile, si potrebbe non volerlo eseguire all'avvio. Se si sceglie di non eseguire AFS all'avvio, eseguire /etc/init.d/openafs-client force-start per avviare il client al momento desiderato.
+Description-ja.UTF-8: Openafs クライアントを今すぐ、そして起動時に実行しますか?
+ 通常、openafs-client パッケージをインストールしたユーザの大半は起動時に自動的に AFS をマウントすることを期待しています。しかし、新しいセルを設定しようとしている、あるいはノート PC で作業している場合は起動時に開始したくないかもしれません。起動時に AFS を開始しないのを選んだ場合は、実行したくなったときに /etc/init.d/openafs-client force-start を実行してクライアントを開始してください。
+Description-nl.UTF-8: Wilt u de Openafs-client nu en tijdens het opstarten draaien?
+ Gebruikers die het 'openafs-client'-pakket installeren verwachten meestal dat AFS automatisch aangekoppeld wordt tijdens het opstarten. Als u echter van plan bent een nieuwe cel op te zetten, of als deze machine een laptop is, wilt u wellicht niet dat AFS tijdens het opstarten aangekoppeld wordt. U kunt AFS op elk moment starten met het commando '/etc/init.d/openafs-client force-start.
+Description-pt.UTF-8: Correr o cliente Openafs agora e no arranque?
+ Normalmente, a maioria dos utilizadores que instalam o pacote openafs-client esperam que o AFS seja montado automaticamente no arranque.  No entanto, se você está a planear instalar uma nova célula ou está num portátil pode não querer que seja iniciado no arranque.  Se escolher não iniciar o AFS no arranque, corra /etc/init.d/openafs-client force-start para iniciar o cliente quando quiser que este corra.
+Description-pt_BR.UTF-8: Executar o cliente OpenAFS agora e durante a inicialização?
+ Normalmente, a maioria dos usuários que instalam o pacote openafs-client esperam que o AFS seja montado automaticamente durante a inicialização. Porém, caso você esteja planejando configurar uma nova célula ou esteja em um laptop, você pode não desejar que ele seja iniciado automaticamente no momento da inicialização. Caso você opte por não iniciar o AFS durante a inicialização, execute /etc/init.d/openafs-client force-start para iniciar o cliente quando desejar executá-lo.
+Description-ru.UTF-8: Запустить клиент Openafs сейчас и при включении компьютера?
+ Обычно, большинство пользователей, устанавливающих пакет openafs-client, ожидают, что AFS будет монтироваться автоматически при включении компьютера. Однако, если вы планируете настройку новой ячейки или работаете на ноутбуке, то можете не захотеть этого. Если вы укажите не запускать AFS при включении, то по желанию его можно запустить командой /etc/init.d/openafs-client force-start.
+Description-sv.UTF-8: Starta Openafsklienten nu och vid varje uppstart?
+ Vanligen monteras AFS automatiskt vid uppstart men om du håller på att sätta upp en ny cell eller arbetar med en bärbar dator kan det vara en idé att inte starta klienten automatiskt. Om du inte väljer att starta AFS vid uppstart ska du köra /etc/init.d/openafs-client force-start för att starta klienten när du vill ha tillgång till den.
+Description-vi.UTF-8: Chạy trình khách Openafs ngay bây giờ và cũng khi khởi động máy không?
+ Bình thường, phần lớn người dùng cài đặt gói ứng dụng khách « openafs-client » ngờ AFS được gắn kết tự động khi khởi động. Tuy nhiên, nếu bạn định thiết lập một ô mới, hoặc sử dụng máy tính xách tay, bạn có thể không muốn nó được khởi chạy vào lúc khởi động. Nếu bạn chọn không khởi chạy AFS vào lúc khởi động, hãy chạy lệnh ép buộc khởi chạy « /etc/init.d/openafs-client force-start » để khởi chạy ứng dụng khách khi bạn muốn khởi chạy nó.
+Description-zh_CN.UTF-8: 现在就启动 OpenAFS 客户端并且开机启动吗?
+ 通常, 多数安装了 openafs-client 包的用户期望 AFS 在开机后自动挂载. 尽管如此, 如果您正在计划设置一个新单元或者在笔记本电脑上, 您可能不希望它开机自动启动. 如果您选择了开机不启动 AFS, 可以在您需要它启动的时候运行 /etc/init.d/openafs-client force-start
+
+Template: openafs-client/afsdb
+Type: boolean
+Default: true
+Description: Look up AFS cells in DNS?
+ In order to contact an AFS cell, you need the IP addresses of the cell's
+ database servers.  Normally, this information is read from
+ /etc/openafs/CellServDB.  However, if Openafs cannot find a cell in that
+ file, it can use DNS to look for AFSDB records that contain the
+ information.
+Description-cs.UTF-8: Hledat buňky AFS v DNS?
+ Pro kontaktování buňky AFS potřebujete znát IP adresu databázového serveru buňky. Obvykle lze tuto informaci přečíst ze souboru /etc/openafs/CellServDB. Nicméně pokud Openafs nemůže najít buňku v tomto souboru, může použít DNS pro vyhledání AFSDB záznamů, které obsahují požadované informace.
+Description-da.UTF-8: Slå AFS-celler op i DNS?
+ For at kontakte en AFS-celle skal du bruge IP-adressen for cellens databaseservere. Normalt læses denne information fra /etc/openafs/CellServDB. Hvis Openafs ikke kan finde en celle i den fil, så kan programmet dog bruge DNS til at slå AFSDB-poster op, som indeholder informationen.
+Description-de.UTF-8: Sollen AFS-Zellen im DNS nachgeschlagen werden?
+ Um eine AFS-Zelle zu kontaktieren, brauchen Sie die IP-Adressen der Datenbank-Server der Zellen. Normalerweise werden diese Informationen aus der Datei /etc/openafs/CellServDB gelesen. Falls Openafs aber keine Zelle in dieser Datei finden kann, kann auch DNS benutzt werden, um nach AFSDB-Einträgen zu suchen, die diese Information enthalten.
+Description-es.UTF-8: ¿Desea buscar las celdas AFS en el DNS?
+ Para conectar a una celda de AFS, necesita la dirección IP de la celda de los servidores de la base de datos. Normalmente, esta información se encuentra en el archivo «/etc/openafs/CellServDB». Sin embargo, si OpenAFS no encuentra una celda en ese archivo, puede usar el DNS para buscar las copias de los registros de AFSDB que contengan la información.
+Description-fr.UTF-8: Faut-il chercher les cellules AFS dans le DNS ?
+ Afin de contacter une cellule AFS, vous avez besoin des adresses IP de ses serveurs de bases de données. Cette information est normalement extraite de /etc/openafs/CellServDB. Cependant, si OpenAFS ne peut pas trouver de cellule dans ce fichier, il peut utiliser le DNS pour rechercher des enregistrements AFSDB qui fourniront cette information.
+Description-gl.UTF-8: ¿Buscar as celas AFS en DNS?
+ Para se comunicar cunha cela AFS, precisa dos enderezos IP dos servidores de base de datos da cela. Normalmente, esta información lese de /etc/openafs/CellServDB. Nembargantes, se Openafs non pode atopar unha cela nese ficheiro, pode empregar DNS para buscar rexistros AFSDB que conteñan a información.
+Description-it.UTF-8: Cercare le celle AFS in DNS?
+ Per poter contattare una cella AFS, sono necessari gli indirizzi IP dei server di database della cella. Normalmente queste informazioni vengono lette da /etc/openafs/CellServDB. Tuttavia, se Openafs non può trovare una cella in tale file, può usare il DNS per cercare record AFSDB che contengano quelle informazioni.
+Description-ja.UTF-8: AFS セルの検索を DNS で行いますか?
+ AFS セルに接続するためには、セルのデータベースサーバ群の IP アドレスが必要です。通常、この情報は /etc/openafs/CellServDB で参照できます。しかし、Openafs がそのファイル中でセルを見つけられなかった場合、DNS を使ってその情報を含む AFSDB レコードを検索することができます。
+Description-nl.UTF-8: AFS-cellen opzoeken in DNS?
+ Om een AFS-cel te contacteren dient u het IP-adres van de databaseserver voor die cel te hebben. Normaal is deze informatie beschikbaar in /etc/openafs/CellServDB. Openafs biedt de mogelijkheid om de AFSDB-records op te zoeken via DNS wanneer dit bestand niet aanwezig is.
+Description-pt.UTF-8: Procurar por células AFS no DNS?
+ De modo a contactar uma célula AFS, você precisa dos endereços IP dos servidores de bases de dados das células.  Normalmente, esta informação é lida a partir de /etc/openafs/CellServDB.  No entanto, se o Openafs não conseguir encontrar a célula nesse ficheiro, pode utilizar o DNS para procurar por registos AFSDB que contenham esta informação.
+Description-pt_BR.UTF-8: Procurar células AFS no DNS?
+ Para poder contatar uma célula AFS, você precisa dos endereços IP dos servidores de base de dados da célula. Normalmente, essa informação é lida do /etc/openafs/CellServDB. Porém, caso o OpenAFS não possa encontrar uma célula nesse arquivo, ele pode usar o DNS para procurar por registros AFSDB que contenham a informação.
+Description-ru.UTF-8: Искать ячейки AFS в DNS?
+ Чтобы подключиться к ячейке AFS вам нужны IP-адреса серверов базы данных ячейки. Обычно, эта информация берётся из файла /etc/openafs/CellServDB. Однако, если Openafs не может найти ячейку в этом файле, то она может поискать записи AFSDB в DNS, в которых тоже содержится данная информация.
+Description-sv.UTF-8: Slå upp AFS-celler i DNS?
+ För att kontakta en AFS-cell så behöver du IP-adresser till cellens databasservrar. Vanligen kan dessa läsas från /etc/openafs/CellServDB men om cellen inte finns där kan DNS användas för att slå upp AFSDB-poster med korrekt information.
+Description-vi.UTF-8: Tra cứu ô AFS trong DNS không?
+ Để liên hệ một ô AFS, bạn cần có địa chỉ IP của mọi máy phục vụ cơ sở dữ liệu của nó. Bình thường, thông tin này được đọc từ tập tin « /etc/openafs/CellServDB ». Tuy nhiên, nếu trình Openafs không tìm thấy một ô nào đó trong tập tin ấy thì nó có thể dùng DNS (hệ thống tên miền) để tìm mục ghi AFSDB chứa thông tin ấy.
+Description-zh_CN.UTF-8: 要通过 DNS 查询 AFS 单元吗?
+ 为了联系一个 AFS 单元, 您需要该单元的数据库服务器 IP 地址. 正常情况下, 这一信息从 /etc/openafs/CellServDB 读取. 尽管如此, 如果 OpenAFS 无法在这个文件里找到一个单元, 它可以用 DNS 查询包含这一信息的 AFSDB 记录.
+
+Template: openafs-client/crypt
+Type: boolean
+Default: true
+Description: Encrypt authenticated traffic with AFS fileserver?
+ AFS provides a weak form of encryption that can optionally be used between
+ a client and the fileservers.  While this encryption is weaker than DES
+ and thus is not sufficient for highly confidential data, it does provide
+ some confidentiality and is likely to make the job of a casual attacker
+ significantly more difficult.
+Description-cs.UTF-8: Šifrovat autentizovaný provoz se souborovým serverem AFS?
+ AFS poskytuje slabou formu šifrování, která může být nepovinně použita mezi klientem a souborovým serverem. Přestože je toto šifrování slabší než DES a tedy není dostatečné pro velmi důvěrná data, poskytuje určitou formu utajení a určitě tak ztíží práci náhodnému útočníkovi.
+Description-da.UTF-8: Krypter godkendt trafik med AFS-filserver?
+ AFS tilbyder en svag form for kryptering, som valgfrit kan bruges mellem en klient og filserverne. Selv om krypteringen er svagere end DES og derfor ikke er tilstrækkelig for meget fortrolige data, så giver det dog en mindre form for fortrolighed og det vil sandsynligvis gøre jobbet for en vilkårlig angriber markant sværere.
+Description-de.UTF-8: Soll authentifizierter Verkehr mit AFS-Dateiservern verschlüsselt werden?
+ AFS bietet eine schwache Form der Verschlüsselung, die optional zwischen Client und Dateiserver benutzt werden kann. Obwohl diese Verschlüsselung schwächer als DES und daher nicht ausreichend für sehr vertrauliche Daten ist, macht sie einem möglichen Angreifer die Arbeit dennoch deutlich schwerer.
+Description-es.UTF-8: ¿Desea cifrar el tráfico de autenticación con el servidor de archivos AFS? 
+ AFS proporciona un mecanismo de cifrado endeble que se puede utilizar opcionalmente entre el cliente y los servidores de archivos. Aunque este cifrado es más débil que DES y por ello no es suficiente para la mayor confidencialidad de los datos, éste ofrece confidencialidad y hace que para un atacante esporádico el trabajo sea sensiblemente más difícil.
+Description-fr.UTF-8: Faut-il chiffrer le trafic authentifié avec le serveur de fichiers AFS ?
+ AFS offre un mode de chiffrement faible qu'il est possible d'utiliser entre un client et les serveurs de fichiers. Bien que ce chiffrement soit plus faible que DES, et donc insuffisant pour des données hautement confidentielles, il fournit une certaine forme de confidentialité et peut rendre une attaque non préparée nettement plus difficile.
+Description-gl.UTF-8: ¿Cifrar o tráfico autenticado co servidor de ficheiros AFS?
+ AFS fornece unha forma feble de cifrado que se pode empregar, opcionalmente, entre un cliente e os servidores de ficheiros. Aínda que este cifrado é máis feble que DES, e polo tanto non é dabondo para datos altamente confidenciais, si que fornece algunha confidencialidade e seguramente faga o traballo dun potencial atacante significativamente máis complicado.
+Description-it.UTF-8: Cifrare il traffico autenticato con il server di file AFS?
+ AFS fornisce una forma debole di cifratura che può essere usata in modo opzionale tra un client e i server di file. Sebbene questa cifratura sia più debole di DES e perciò non sufficiente per dati altamente confidenziali, fornisce un certo grado di riservatezza ed è probabile che renda il lavoro significativamente più difficile a chi tenti un attacco non mirato.
+Description-ja.UTF-8: AFS ファイルサーバへの認証トラフィックを暗号化しますか?
+ AFS はクライアントとファイルサーバ間で使うこともできる弱い暗号化形式を提供しています。この暗号化は DES よりも弱く、そのため非常に重要なデータを取り扱うには不十分ですが、ある程度の隠匿性は提供しており、技術力の低い攻撃者の作業をかなり難しくするでしょう。
+Description-nl.UTF-8: Wilt u dat geauthenticeerd verkeer met de AFS-bestandsserver versleuteld word?
+ AFS biedt een zwakke encryptievorm aan die optioneel kan gebruikt worden bij de communicatie tussen de client en bestandsservers. Hoewel deze encryptie zwakker is dan DES, en dus niet voldoende is voor zeer vertrouwelijke data, biedt het enige vertrouwelijkheid en plaatst een nonchalante aanvaller voor significante moeilijkheden.
+Description-pt.UTF-8: Encriptar tráfico autenticado com o servidor de ficheiros AFS?
+ O AFS disponibiliza uma forma fraca de encriptação que pode ser utilizada opcionalmente entre um cliente e os servidores de ficheiros. Enquanto que esta encriptação é mais fraca que a DES e por isso não suficiente para dados altamente confidenciais, esta disponibiliza alguma confidencialidade e é provável que torne o trabalho de um casual atacante significativamente mais difícil.
+Description-pt_BR.UTF-8: Encriptar o tráfego autenticado com o servidor de arquivos AFS?
+ O AFS fornece uma forma fraca de encriptação que pode ser opcionalmente usada entre o cliente e os servidor de arquivos. Embora essa encriptação seja mais fraca do que DES e, portanto, não seja suficiente para dados altamente confidenciais, ela fornece alguma confidencialidade e provavelmente torna o trabalho de um atacante casual mais difícil.
+Description-ru.UTF-8: Шифровать обмен с файловым сервером AFS во время аутентификации?
+ AFS предоставляет нестойкое подобие шифрования, которое можно включить для обмена данными между клиентом и файловыми серверами. Хотя это шифрование слабее чем DES и недостаточно для очень конфиденциальных данных, оно всё же обеспечивает некоторую защиту, которая значительно осложнит работу неискушённому атакующему.
+Description-sv.UTF-8: Kryptera autentiseringstrafiken till AFS-filservern?
+ AFS tillhandahåller en svag typ av kryptering som kan användas mellan klienten och filservrarna. Även om denna kryptering är svagare än DES och därmed inte särskilt lämplig för känslig information så kan den förhindra enklare attacker och försvåra vissa steg för en utomstående.
+Description-vi.UTF-8: Mật mã hóa các dữ liệu xác thực truyền với trình phục vụ tập tin AFS không?
+ AFS cung cấp một cách mật mã yếu mà tùy chọn có thể được dùng giữa một trình khách nào đó và những trình phục vụ tập tin khác. Dù cách mặt mã này yếu hơn DES, vì vậy không đủ cho dữ liệu quan trọng, nó có cung cấp một mức độ riêng tư, thì sẽ làm cho người tấn công gặp khó khăn một phần.
+Description-zh_CN.UTF-8: 要加密和 AFS 文件服务器之间的认证通信吗?
+ AFS 提供一种可选的弱加密形式用在客户端和文件服务器之间. 虽然这种加密比 DES 还弱一些, 从而不能适用于那些高度机密数据, 但它确实提供了一定的保密性, 可以令那些偶然的攻击明显地变得困难.
+
+Template: openafs-client/dynroot
+Type: select
+Choices: Yes, Sparse, No
+Choices-cs.UTF-8: Ano, Zřídka, Ne
+Choices-da.UTF-8: Ja, Tynd (sparse), Nej
+Choices-de.UTF-8: Ja, Sparse, Nein
+Choices-es.UTF-8: Sí, Dispersos, No
+Choices-fr.UTF-8: Oui, À la demande, Non
+Choices-it.UTF-8: Sì, Sparse, No
+Choices-ja.UTF-8: はい, Sparse, いいえ
+Choices-nl.UTF-8: Ja, Gespreid, Nee
+Choices-pt.UTF-8: Sim, Escasso, Não
+Choices-pt_BR.UTF-8: Sim, Sparse, Não
+Choices-ru.UTF-8: Да, Частично, Нет
+Choices-sv.UTF-8: Ja, Gles, Nej
+Default: Yes
+Description: Dynamically generate the contents of /afs?
+ /afs generally contains an entry for each cell that a client can talk to.
+ Traditionally, these entries were generated by servers in the client's
+ home cell.  However, OpenAFS clients can generate the contents of /afs
+ dynamically based on the contents of /etc/openafs/CellServDB and DNS.
+ .
+ If you generate /afs dynamically, you may need to create
+ /etc/openafs/CellAlias to include aliases for common cells.  (The syntax
+ of this file is one line per alias, with the cell name, a space, and then
+ the alias for that cell.)
+ .
+ The Sparse option is the same as Yes except that, rather than populating
+ /afs from /etc/openafs/CellServDB immediately, cells other than the local
+ cell will not appear until they are accessed.  Cell aliases as set in the
+ CellAlias file are shown as normal, although they may appear to be
+ dangling links until traversed.
+Description-cs.UTF-8: Vygenerovat obsah /afs dynamicky?
+ /afs obvykle obsahuje záznam pro každou buňku, se kterou může klient hovořit. Tradičně jsou tyto záznamy vytvářeny servery v mateřské buňce klienta. Klienti OpenAFS však mohou generovat obsah adresáře /afs dynamicky na základě souboru /etc/openafs/CellServDB a systému DNS.
+ .
+ Pokud vytváříte /afs dynamicky, možná budete muset vytvořit /etc/openafs/CellAlias pro začlenění aliasů běžných buněk. (Syntaxe tohoto souboru je jeden řádek na alias, který se skládá ze jména buňky, mezery a pak následuje alias pro tuto buňku.)
+ .
+ Volba Zřídka je v podstatě stejná jako Ano s tím rozdílem, že nedojde k okamžitému naplnění / afs z /etc/openafs/CellServDB, vzdálené buňky se přitom nezobrazí až do okamžiku, kdy k nim bude přistupováno. Aliasy buněk, se zobrazí jak je uvedeno v souboru CellAllias, i když může vypadat, že na svůj překlad teprve čekají.
+Description-da.UTF-8: Dynamisk oprette indholdet for /afs?
+ /afs indeholder normalt et punkt for hver celle, som en klient kan snakke med. Traditionelt blev disse punkter oprettet af servere i klientens hjemmecelle. OpenAFS-klienter kan dog oprette indholdet af /afs dynamisk baseret på indholdet af /etc/openafs/CellServDB og DNS.
+ .
+ Hvis du opretter /afs dynamisk så skal du måske oprette /etc/openafs/CellAlias for at inkludere aliasser for gængse celler (syntaksen for denne fil er en linje per alias, med cellenavn, et mellemrum, og så aliasset for den celle).
+ .
+ Tilvalget tynd (sparse) er det samme som Ja, fremfor at befolke /afs fra /etc/openafs/CellServDB øjeblikkeligt, vil celler udover den lokale celle ikke komme frem før de tilgås. Cellealiasser som sat i CellAlias-filen vises som normalt, selvom de kan fremgå som hængende henvisninger indtil gennemgået.
+Description-de.UTF-8: Soll der Inhalt von /afs dynamisch generiert werden?
+ /afs enthält einen Eintrag für jede Zelle, mit der der Client interagieren kann. Normalerweise werden diese Einträge von Servern in der Home-Zelle des Clients generiert. Trotzdem kann aber der OpenAFS-Client den Inhalt von /afs dynamisch anhand der Informationen von /etc/openafs/CellServDB und DNS erstellen.
+ .
+ Wenn Sie /afs dynamisch erstellen lassen, werden Sie vielleicht /etc/openafs/CellAlias erstellen müssen, sodass die Datei Aliase für gebräuchliche Zellen enthält (die Syntax ist: Eine Zeile pro Aliasse, mit Zellenname – Leerzeichen – Alias).
+ .
+ Die Sparse-Option ist dasselbe wie »Ja«, allerdings wird /afs nicht sofort aus der /etc/openafs/CellServDB bestückt, sondern nicht-lokale Zellen werden erst angezeigt, nachdem auf sie zugegriffen wurde. Zell-Aliasse aus der Datei CellAlias werden wie üblich angezeigt, können aber auch als defekte Links erscheinen, bis sie durchlaufen worden sind.
+Description-es.UTF-8: ¿Desea crear dinámicamente los contenidos de «/afs»?
+ Normalmente «/afs» incluye una entrada por cada celda que un cliente solicita. Tradicionalmente, estas entradas las generan los servidores en la celda del «home» del cliente. Sin embargo, los clientes de OpenAFS pueden generar los contenidos de «/afs» dinámicamente basándose en la información del archivo «/etc/openafs/CellServDB» y del DNS.
+ .
+ Si genera dinámicamente «/afs», necesitará crear el archivo «/etc/openafs/CellAlias» para incluir los seudónimos («alias») de las celdas comunes. (La estructura del archivo es un seudónimo por línea, con el nombre de la celda, un espacio, y después el seudónimo para esa celda).
+ .
+ La opción «Dispersos» es la misma que «Sí» salvo que, en lugar de poblar «/afs» inmediatamente con los datos de «/etc/openafs/CellServDB», las celdas que no sean la local no se aparecerán hasta que se accedan. Los apodos de las celdas definidos en el fichero «CellAlias» se muestran de forma normal, pero pueden aparecer como enlaces incompletos hasta que se recorran.
+Description-fr.UTF-8: Faut-il gérer le contenu de /afs dynamiquement ?
+ Le répertoire /afs contient généralement une entrée par cellule accessible à un client donné. Traditionnellement, ces entrées ont été créées par les serveurs dans la cellule locale de chaque client. Cependant, OpenAFS peut gérer dynamiquement le contenu de /afs en se servant de /etc/openafs/CellServDB et du DNS.
+ .
+ Si vous créez /afs de manière dynamique, vous aurez peut-être à créer /etc/openafs/CellAlias pour inclure les alias des cellules communes. Ce fichier comporte une ligne par alias, avec le nom de la cellule, une espace et l'alias utilisé pour la cellule.
+ .
+ L'option « À la demande » est analogue à « Oui » si ce n'est que /afs n'est pas immédiatement peuplé à partir de /etc/openafs/CellServDB : les cellules autres que la cellule locale n'apparaîtront pas tant qu'il n'est pas nécessaire d'y accéder. Les alias de cellules définis dans le fichier CellAlias apparaîtront comme normaux, bien qu'ils puissent temporairement apparaître comme des liens sans cible.
+Description-it.UTF-8: Generare dinamicamente il contenuto di /afs?
+ /afs contiene generalmente una voce per ciascuna cella con cui un client può comunicare. Tradizionalmente queste voci erano generate dai server nella cella a cui appartiene il client. Tuttavia, i client OpenAFS possono generare il contenuto di /afs dinamicamente in base al contenuto di /etc/openafs/CellServDB e DNS.
+ .
+ Se /afs viene generato dinamicamente, può essere necessario creare /etc/openafs/CellAlias per includere alias per le celle comuni. (La sintassi per questo file è una riga per ogni alias, con il nome della cella, uno spazio e poi l'alias di quella cella.)
+ .
+ L'opzione Sparse è uguale a Sì tranne per il fatto che, invece di popolare immediatamente /afs da /etc/openafs/CellServDB, le celle diverse da quella locale non appariranno fino a che non si accederà ad esse. Gli alias per le celle, così come impostati nel file CellAlias, sono mostrati normalmente anche se potrebbero sembrare collegamenti interrotti fino a che non vengono esplorati.
+Description-ja.UTF-8: /afs の内容を動的に生成しますか?
+ /afs は通常クライアントが通信できる各セルのエントリを含んでいます。慣例上、これらのエントリはクライアントのホームセル内にサーバによって生成されています。しかし、OpenAFS クライアントは /afs の内容を /etc/openafs/CellServDB の内容と DNS を元にして動的に生成することができます。
+ .
+ /afs を動的に生成する場合、共通のセルのエイリアスを含むために /etc/openafs/CellAlias を作成する必要があります (このファイルのシンタックスはエイリアスごとに 1 行で、セルの名前・空白・そしてセルのエイリアス、となります)。
+ .
+ 「Sparse」の選択肢は「はい」と同様ですが、直ちに /etc/openafs/CellServDB から /afs を生成するのに対し、こちらの場合はローカルセル以外のセルはアクセスするまで現れません。このセルは走査されるまでぶら下がったリンクのように表示されますが、CellAlias ファイル中で設定されたセルの別名は普通に表示されます。
+Description-nl.UTF-8: Wilt u de inhoud van /afs dynamisch genereren?
+ /afs bevat een ingang voor elke cel waarmee een client kan communiceren. Traditioneel worden deze ingangen aangemaakt door de servers van de cel waartoe de client behoort. OpenAFS-clients zijn echter in staat om de inhoud van /afs dynamisch te genereren, uitgaande van de data in /etc/openafs/CellServDB en DNS.
+ .
+ Als u ervoor kiest om /afs dynamisch te genereren kan het noodzakelijk zijn om /etc/openafs/CellAlias aan te maken met daarin de aliases voor veelgebruikte cellen. (De syntax van dit bestand is 1 regel per alias, waarbij elke regel bestaat uit de naam van een cel gevolgd door een spatie en de alias voor die cel.)
+ .
+ De optie 'Gespreid' is hetzelfde als 'Ja', met dit verschil dat /afs niet onmiddellijk ingevuld wordt met gegevens uit /etc/openafs/CellServDB, maar dat cellen, op uitzondering van de lokale cel, slechts toegevoegd worden op het ogenblik dat er contact mee gemaakt wordt. De aliassen van cellen, zoals die vermeld staan in het bestand CellAlias blijven zichtbaar zoals gewoonlijk, maar kunnen er als een loze symbolische koppeling uitzien tot u de cel gebruikt heeft.
+Description-pt.UTF-8: Gerar dinamicamente o conteúdo de /afs?
+ O /afs geralmente contém uma entrada para cada célula para a qual cada cliente pode falar. Tradicionalmente, estas entradas foram geradas por servidores na célula do cliente.  No entanto, os clientes OpenAFS podem gerar o conteúdo dinamicamente de /afs baseado no conteúdo de /etc/openafs/CellServDB e do DNS.
+ .
+ Se gerar dinamicamente /afs, você pode precisar de criar /etc/openafs/CellAlias para incluir 'aliases' para células usuais.  (A sintaxe para este ficheiro é uma linha por alias, com o nome da célula, um espaço, e depois o alias para essa célula.)
+ .
+ A opção Escasso é o mesmo que a Sim, excepto que em vez de preencher imediatamente /afs a partir de /etc/openafs/CellServDB, as células que não a célula local, não aparecerão até serem acedidas. Os aliases para as células definidas no ficheiro CellAlias são mostradas como normalmente, embora possam parecer ser links pendentes até serem atravessados.
+Description-pt_BR.UTF-8: Gerar dinamicamente o conteúdo do /afs?
+ O /afs geralmente contém uma entrada para cada célula com a qual o cliente pode conversar. Tradicionalmente, essas entradas eram geradas por servidores na célula home do cliente. Porém, clientes OpenAFS podem gerar o conteúdo do /afs dinamicamente baseando-se no conteúdo do /etc/openafs/CellServDB e do DNS.
+ .
+ Caso você gere o /afs dinamicamente, você pode precisar criar o /etc/openafs/CellAlias para incluir apelidos ("aliases") para células comuns. (A sintaxe desse arquivo é uma linha por apelido, com o nome da célula, um espaço e então o apelido para essa célula.)
+ .
+ A opção Sparse é o mesmo que Sim, exceto que, ao invés de preencher o /asf a partir do /etc/openafs/Cellservdb imediatamente, outras células além da local não aparecerão até que sejam acessadas. Apelidos ("aliases") de células como definidos no arquivo CellAlias são mostrados normalmente, embora possam parecer links pendentes e até atravessados.
+Description-ru.UTF-8: Генерировать содержимое /afs динамически?
+ В /afs, в основном, содержатся элементы для каждой ячейки, с которыми работает клиент. Обычно, эти элементы генерируются серверами клиентской домашней ячейки. Однако, клиенты OpenAFS могут генерировать содержимое /afs динамически на основе содержимого /etc/openafs/CellServDB и DNS.
+ .
+ Если вы разрешите генерировать /afs динамически, то вам может потребоваться создать /etc/openafs/CellAlias с псевдонимами часто используемых ячеек. (В файле указываются псевдонимы по одному на строку в формате: имя ячейки, пробел, псевдоним ячейки.)
+ .
+ Значение «Частично» означает что и «Да», за исключением того, что заполнение /afs из /etc/openafs/CellServDB выполняется сразу, все ячейки кроме локальной не появятся до тех пор, пока к ним не будет выполнено обращение. Псевдонимы ячеек задаются в файле CellAlias как обычно, хотя они могут вести себя как подвисшие ссылки (dangling links) пока не будет выполнен обход.
+Description-sv.UTF-8: Skapa innehåll i /afs dynamiskt?
+ /afs innehåller generellt sett en post för varje cell som klienten kan prata med. Dessa poster skapades tidigare av servrar i klientens hemmacell. Numera kan OpenAFS-klienter skapa innehållet i /afs dynamiskt med stöd av innehållet i /etc/openafs/CellServDB eller DNS.
+ .
+ Om /afs skapas dynamiskt så kan du behöva skapa /etc/openafs/CellAlias för de vanligare cellerna. (Direktivet skrivs med ett alias per rad. Cellnamnet, ett mellanslag och alias för den cellen)
+ .
+ Alternativet Gles är samma sak som Ja förutom att celler som inte är lokala inte kommer att dyka upp innan de efterfrågas, till skillnad från att populera cellerna i /afs från etc/openafs/CellServDB direkt. Cell-alias som anges in filen CellAlias visas som vanligt även om de kan visa sig peka på tomhet.
+
+Template: openafs-client/fakestat
+Type: boolean
+Default: true
+Description: Use fakestat to avoid hangs when listing /afs?
+ Because AFS is a global file space, operations on the /afs directory can
+ generate significant network traffic.  If some AFS cells are unavailable
+ then looking at /afs using ls or a graphical file browser may hang your
+ machine for minutes.  AFS has an option to simulate answers to these
+ operations locally to avoid these hangs.  You want this option under most
+ circumstances.
+Description-cs.UTF-8: Použít fakestat pro obejití zatuhnutí při výpisu /afs?
+ Protože je AFS globální souborový prostor, mohou operace na adresáři /afs výrazně zvýšit provoz na síti. Pokud jsou některé buňky AFS nedosažitelné, pak může prohlížení /afs pomocí příkazu ls nebo grafického prohlížeče způsobit zatuhnutí počítače na dobu několika minut. AFS má volbu, která simuluje odpovědi pro tyto operace a tak se snaží vyhnout popsaným výpadkům. Tuto volbu budete chtít použít ve většině případů.
+Description-da.UTF-8: Brug fakestat til at undgå lange svartider (hangs) når der vises /afs?
+ Da AFS er et globalt filrum, kan handlinger på /afs-mappen skabe betydelig netværkstrafik. Hvis nogle AFS-celler er utilgængelige når der kigges på /afs med brug af ls eller en grafisk filbrowser måske optager din maskine i minutter ad gangen, så har AFS en indstilling der kan simulere svaret på disse handlinger lokalt for at undgå disse lange svartider. Du vil som oftest gerne have denne indstilling.
+Description-de.UTF-8: Soll fakestat benutzt werden, um eine Verzögerung beim Auflisten von /afs zu vermeiden?
+ Da AFS ein globaler Dateiraum ist, können Operationen im /afs-Verzeichnis zu großen Netzwerkverkehr führen. Wenn einige AFS-Zellen nicht erreichbar sind, kann das Betrachten von /afs (mit ls oder einem Dateibrowser) zu minutenlangem Aufhängen führen. AFS kann aber Antworten zu solchen Operationen simulieren, um ein Aufhängen zu vermeiden. Die meisten Leute wollen das.
+Description-es.UTF-8: ¿Desea utilizar «fakestat» para evitar que se bloquee al listar «/afs»?
+ Debido a que AFS es un espacio global de archivos, las operaciones en el directorio «/afs» pueden generar un tráfico de red significativo. Si algunas de las celdas de AFS no están disponibles, al mirar «/afs» usando «ls» o un navegador de archivos gráfico podría bloquear varios minutos la máquina. AFS tiene una opción que simula localmente las respuesta a esas operaciones evitando así estas paradas. Debería seleccionar esta opción en la mayoría de los casos.
+Description-fr.UTF-8: Utiliser fakestat pour éviter les erreurs à l'affichage du contenu de /afs ?
+ Comme AFS est un espace global de fichiers, les opérations sur /afs peuvent générer un trafic réseau non négligeable. Si certaines cellules sont indisponibles, l'affichage de /afs avec ls ou avec un gestionnaire de fichiers graphique peut arrêter la machine pour quelques minutes. AFS comporte une option permettant de simuler les réponses à ces requêtes pour éviter ces plantages. Cette option est utile dans la plupart des cas.
+Description-gl.UTF-8: ¿Empregar fakestat para evitar esperas ao ver o listado de /afs?
+ Como AFS é un espazo de ficheiros global, as operacións no directorio /afs poden xerar unha cantidade significativa de tráfico na rede. Se algunhas celas AFS non están dispoñibles, ver o contido de /afs empregando ls ou un navegador gráfico de ficheiros pode facer que a máquina se deteña durante varios minutos. AFS ten unha opción para simular respostas a esas operacións de xeito local para evitar esas esperas. Na maioría dos casos emprégase esta opción.
+Description-it.UTF-8: Usare fakestat per evitare blocchi quando viene elencato il contenuto di /afs?
+ Dato che AFS è uno spazio dei file globale, le operazioni nella directory /afs possono generare un traffico di rete considerevole. Se alcune celle AFS sono non raggiungibili allora, quando si guarda il contenuto di /afs con ls o con un navigatore di file grafico, la macchina può bloccarsi per alcuni minuti. AFS ha un'opzione per simulare in locale le risposte a queste operazioni per evitare questi blocchi. Nella maggior parte delle situazioni è consigliato abilitare questa opzione.
+Description-ja.UTF-8: /afs をリストアップする際にハングアップを避けるため、fakestat を使いますか?
+ AFS は巨大なファイル空間であるため、/afs ディレクトリでの操作は膨大なネットワークトラフィックを生成することがあります。もし、いくつかの AFS セルが利用できなくなり、その際に /afs で ls やグラフィカルなファイルブラウザを実行して参照すると、数分間はマシンがハングアップするでしょう。AFS はこのようなハングアップを避けるため、これらの操作に対してローカルで答えをシミュレートするオプションがあります。多くの場合、このオプションを有効にしておいた方が良いでしょう。
+Description-nl.UTF-8: Wilt u fakestat gebruiken om te voorkomen dat het programma bij het weergeven van de inhoud van /afs zou vastlopen?
+ Omdat AFS een globale bestandsruimte is, kunnen bewerkingen op de '/afs'-map flink wat netwerkverkeer veroorzaken. Wanneer sommige AFS-cellen onbeschikbaar zijn, kan het weergeven van de inhoud van /afs met het commando 'ls' of via een grafische bestandsbrowser er toe leiden dat uw machine gedurende minuten vastloopt. AFS heeft een optie die de antwoorden voor deze operaties lokaal kan simuleren en zo het vastlopen vermijdt. In de meeste omstandigheden doet u er het beste aan deze optie te activeren.
+Description-pt.UTF-8: Utilizar o fakestat para evitar bloqueios ao listar /afs?
+ Devido ao AFS ser um espaço de ficheiros global, as operações no directório /afs podem gerar tráfego de rede significativo.  Se algumas células AFS não estiverem disponíveis então olhar para /afs utilizando o ls ou um explorador de ficheiros gráfico pode bloquear a sua máquina por minutos.  O AFS tem uma opção para simular localmente respostas a essas operações para evitar esses bloqueios.  Você irá querer esta opção na maioria das circunstâncias.
+Description-pt_BR.UTF-8: Usar "fakestat" para evitar travamentos durante a listagem do /afs?
+ Devido ao AFS ser um espaço de arquivos global, operações no diretório /afs podem gerar um tráfego de rede significativo. Caso algumas células AFS não estejam disponíveis, então pesquisar o /afs usando o comando "ls" ou um gerenciador de arquivos gráfico pode travar sua máquina por alguns minutos. O AFS possui uma opção para simular respostas para essas operações localmente para evitar esses travamentos. Você desejará usar essa opção na maioria dos casos.
+Description-ru.UTF-8: Использовать fakestat, чтобы избежать зависаний при просмотре списка содержимого /afs?
+ Так как AFS представляет собой глобальное файловое пространство, операции с каталогом /afs могут создавать значительный сетевой трафик. Если некоторые ячейки AFS недоступны, то просмотр /afs с помощью команды ls или графического файлового обозревателя может приостановить работу машины на несколько минут. В AFS есть возможность симулировать ответы для таких операций, чтобы предотвратить зависания. В большинстве случаев лучше воспользоваться данной возможностью.
+Description-sv.UTF-8: Ska fakestat användas för att undvika problem när /afs listas?
+ Då AFS är ett globalt filutrymme kan operationer på /afs skapa ganska mycket nätverkstrafik. Om några AFS-celler är onåbara så kan ls och grafiska filhanterare låsa maskinen i flera minuter om en eller flera celler är onåbara. AFS kan ställas in att simulera svar från de onåbara cellerna för att undvika låsningar. Det är mycket sällsynt att inte aktivera detta alternativ.
+Description-vi.UTF-8: Dùng « fakestat » (thống kê giả) để tránh hệ thống treo cứng khi liệt kê « /afs » không?
+ Vì AFS là một khoảng cách toàn cục, thao tác trên thư mục « /afs » có thể tạo ra nhiều tải cho mạng. Nếu một số ô AFS không sẵn sàng thì việc xem « /afs » dùng lệnh « ls » (liệt kê) hoặc dùng một trình đồ họa duyệt tập tin thì có thể treo cứng máy bạn trong vòng nhiều phút. AFS tùy chọn có thể mô phỏng trả lời cho thao tác loại này một cách địa phương, để tránh treo cứng hệ thống như thế. Đệ nghi bạn sử dụng tùy chọn này: nó cần thiết trong phần lớn trường hợp.
+Description-zh_CN.UTF-8: 使用 fskestat 来避免对 /afs 列目录时挂起吗?
+ 因为 AFS 是一个公共文件空间, 所以对 /afs 目录的操作能产生明显的网络流量.  如果某些 AFS 单元无法访问, 那么当使用 ls 或者图形界面文件浏览器列 /afs 目录时可能会令您的主机挂起几分钟. AFS 有一个选项可以将这些操作模拟成本机操作从而避免这类挂起.  大多数情况下您都需要这一选项.

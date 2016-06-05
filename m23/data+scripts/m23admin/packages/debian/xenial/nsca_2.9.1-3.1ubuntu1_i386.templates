@@ -1,0 +1,65 @@
+Template: nsca/run-nsca-daemon
+Type: boolean
+Description: Should the nsca daemon be enabled by default?
+ The nsca daemon is the process that handles results service checks sent
+ via send_nsca on remote hosts.  Typically the nsca daemon is only needed
+ on hosts that run the nagios daemon.
+ .
+ If the system on which you are installing nsca also runs the nagios
+ daemon, you should most likely choose this option.  If you are installing
+ nsca on a remote "satellite" system for the purpose of sending service
+ checks to a central nagios host, you should not choose this option.  If
+ you wish to run nsca as a service through inetd/xinetd, you should
+ also not choose this option.
+Description-cs.UTF-8: Má být daemon nsca standardně povolen?
+ Daemon nsca je proces, který zachytává výsledky kontrol služeb poslaných skrz send_nsca na vzdáleném hostiteli. Obvykle je potřeba pouze na počítači se spuštěným daemonem nagios.
+ .
+ Pokud na instalovaném systému běží daemon nagios, pak budete chtít zřejmě zvolit také tuto volbu. Pokud instalujete nsca na vzdáleném "satelitním" systému, který bude pouze odesílat informace o službách na centrální počítač s nagiosem, pak není tato volba potřeba. Pokud si přejete spustit nsca jako službu pomocí inetd/xinetd, pak také nemusíte volit tuto možnost.
+Description-da.UTF-8: Skal nsca-dæmonen være aktiveret som standard?
+ nsca-dæmonen er den proces som håndterer resultattjenestetjek sendt via send_nsca på eksterne værter. Typisk er nsca-dæmonen kun krævet på værter som kører nagios-dæmonen.
+ .
+ Hvis systemet du installerer nsca på også kører nagiosdæmonen, skal du højst sandsynlig vælge denne indstilling. Hvis du installerer nsca på et eksternt »satelitsystem« for at kunne sende tjenestetjek på en central nagiosvært, skal du ikke vælge denne indstilling. Hvis du ønsker at køre nsca som en tjeneste via inetd/xinetd, skal du ikke vælge denne indstilling.
+Description-de.UTF-8: Soll der Nsca-Daemon standardmäßig aktiviert werden?
+ Der Nsca-Daemon ist der Prozess, der die Ergebnisse der Dienste-Überprüfungen, die über send_nsca auf den entfernten Rechnern versandt wurden, verarbeitet. Typischerweise wird der Nsca-Daemon nur auf Rechnern benötigt, auf denen der Nagios-Daemon läuft.
+ .
+ Falls auf dem System, auf dem Sie Nsca installieren, auch der Nagios-Daemon läuft, sollten Sie höchstwahrscheinlich diese Option wählen. Falls Sie Nsca auf einem entfernten »Satelliten«-System zum Zweck des Versands von Diensteprüfungen an einen zentralen Nagios-Rechner installieren, sollten Sie diese Option nicht wählen. Falls Sie Nsca als Dienst über Inetd/Xinetd betreiben möchten, sollten Sie diese Option auch nicht wählen.
+Description-es.UTF-8: ¿Desea habilitar el demonio nsca de manera predeterminada?
+ El demonio nsca es el proceso que maneja los resultados de la comprobación de servicios enviada a máquinas remotas a través de send_nsca. Normalmente sólo se necesita el demonio nsca en máquinas que ejecuten el demonio nagios.
+ .
+ Debería escoger esta opción si el sistema en el que está instalando nsca ejecuta tambien el demonio nagios. No debería escogerla si está instalando nsca en un sistema remoto «satélite» con la intención de enviar comprobaciones de servicios a un servidor central nagios. Tampoco debería escoger esta opción si desea ejecutar nsca como un servicio a través de inetd/xinetd.
+Description-eu.UTF-8: Lehenespen modura nsca deabru gaiturik egon behar da?
+ Nsca deabrua urruneko ostalarietan send_nsca bidez bidalitako zerbitzu egiaztapen emaitzak kudeatzen dituen prozesua da.  Arruntean nsca deabruan nagios deabrua exekutatzen duen ostalarian bakarrik behar da.
+ .
+ Nsca instalatzen ari zaren sisteman dagoeneko nagios instalaturik badago ziurrenik aukera hau onartu beharko zenuke.  Nsca urruneko sistema "satelite" batetan instalatzen ari bazara zerbitzu egiaztapenak nagios zerbitzari bateratu batetara bidaltzeko asmoarekin ez zenuke aukera hau onartu beharko.  Nsca inetd/xinetd bidez zerbitzu bat bezala exekutatu nahi baduzu ere ez zenuke aukera hau onartu beharko.
+Description-fi.UTF-8: Tulisiko nsca-taustaohjelman olla oletuksena käytössä?
+ Taustaohjelma nsca käsittelee send_nsca:n kautta etänä lähetettyjä tulospalvelutarkistuksia. Yleensä nsca-taustaohjelmaa tarvitaan vain nagios-taustaohjelmaa ajavilla koneilla.
+ .
+ Jos tässä järjestelmässä ajetaan myös nagios-taustaohjelmaa, tämä vaihtoehto tulisi mitä luultavimmin valita. Jos nsca:ta ollaan asentamassa ”satelliitti”-järjestelmään, jolta on tarkoituksena lähettää palvelutarkistuksia nagios-koneelle, tai nsca:ta halutaan ajaa palveluna inetdin ja xinetdin kautta, tätä ei tulisi valita.
+Description-fr.UTF-8: Faut-il que le démon nsca soit activé par défaut ?
+ Le démon nsca est le processus qui traite les résultats des requêtes de contrôle de service envoyées via « send_nsca » vers des hôtes distants. Le démon nsca est nécessaire essentiellement sur les machines qui hébergent un démon nagios.
+ .
+ Si le système sur lequel vous installez nsca exécute également le démon nagios, vous devriez choisir cette option. Ne la choisissez pas si vous installez nsca sur un « satellite » distant dans le but de tester les services d'un hôte nagios. Si vous souhaitez exécuter nsca via inetd ou xinetd, ne choisissez pas cette option.
+Description-gl.UTF-8: ¿Debe activarse por defecto o servizo nsca?
+ O servizo nsca é o proceso que xestiona os resultados de comprobacións de servizos enviados de máquinas remotas mediante send_nsca. O servizo nsca adoita ser necesario só en máquinas nas que se executa o servizo nagios.
+ .
+ Se o sistema no que está a instalar nsca tamén executa o servizo nagios, é moi probable que necesite escoller esta opción. Se está a instalar nsca nun sistema "satélite" remoto para enviar comprobacións de servizos a un servidor nagios central, non debería escoller esta opción. Se quere executar nsca coma un servizo mediante inetd/xinetd, tampouco debería escoller esta opción.
+Description-ja.UTF-8: nsca デーモンをデフォルトで有効にしますか?
+ nsca デーモンはリモートホスト上の send_nsca 経由で送られるサービスチェックの結果を管理するプロセスです。概して nsca デーモンは nagios デーモンが動作しているホスト上でのみ必要とされます。
+ .
+ nsca をインストールしているシステム上で nagios デーモンも動作している場合はこのオプションを選ぶと良いでしょう。中央の nagios ホストへサービスチェックを送信するために nsca をリモートの "satellite" システムにインストールしている場合、このオプションは選択しないでください。nsca を inetd/xinetd 経由のサービスとして動作させたい場合も同様にこのオプションを選択しないでください。
+Description-nl.UTF-8: Wilt u dat de nsca-achtergronddienst standaard geactiveerd wordt?
+ De nsca-achtergronddienst is het proces dat de service-checks die via send_nsca op andere computers gestuurd worden afhandelt. Normaal is de nsca-achtergronddienst enkel nodig op computers waar de nagios-achtergronddienst draait. 
+ .
+ Als het systeem waarop u nsca installeert ook de nagios-achtergronddienst draait dient u waarschijnlijk voor deze optie te kiezen. Als u nsca aan het installeren bent op een 'satelliet'-systeem met de bedoeling om service-checks te versturen naar een centrale nagios-server dient u deze optie af te slaan. Ook als u nsca als een dienst wilt draaien via inetd/xinetd dient u deze optie af te slaan.
+Description-pt.UTF-8: Deverá o deamon nsca ser activado por omissão?
+ O daemon nsca é o processo que trabalha resultados de verificações de serviço enviados via 'send_nsca em máquinas remotas. Tipicamente o deamon nsca só é necessário em máquinas onde corre o deamon nagios.
+ .
+ Se o sistema onde você está a instalar nsca também corre o deamon nagios, você deverá certamente escolher esta opção.  Se você está a instalar nsca num sistema "satélite" remoto para o propósito de enviar verificações de serviço para uma máquina central nagios, você não deverá escolher esta opção.  Se você deseja correr nsca como um serviço através de inetd/xinetd, também não deve escolher esta opção.
+Description-ru.UTF-8: Включить по умолчанию службу nsca?
+ Служба nsca -- это процесс, который обрабатывает результаты проверки сервисов, отправляемых send_nsca на удалённые хосты. Обычно служба nsca нужна только на хостах, на которых запущена служба nagios.
+ .
+ Если в системе, на которую вы устанавливаете nsca, также работает служба nagios, то вы определённо должны ответить утвердительно. Если вы устанавливаете nsca на удалённую "вспомогательную" систему, обеспечивающую отправку проверок сервисов на центральный хост nagios, то вы должны ответить отрицательно. Если вы хотите запускать nsca с помощью inetd/xinetd, то вы также должны ответить отрицательно.
+Description-sv.UTF-8: Ska ncsa-tjänsten starta automatiskt?
+ Tjänsten Ncsa hanterar förfrågningar som skickas via send_nsca på fjärrvärdar. Ncsa-tjänsten behöver vanligen bara på system som kör tjänsten Nagios.
+ .
+ Om systemet som du installerar ncsa på också kör nagios-tjänsten så ska du med största sannolikhet aktivera detta alternativ. Om du installerar ncsa på ett "satellitsystem" som ska agera central nagiosvärd dit serviceförfrågningar ska ställas så ska du inte aktivera detta alternativ. Du ska ej heller aktivera detta alternativ om du ska starta tjänsten via inetd/xinetd.

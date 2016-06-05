@@ -1,0 +1,527 @@
+Template: interchange/mode
+Type: select
+Choices: unix mode, internet mode, both
+Choices-cs.UTF-8: unixový režim, internetový režim, oba
+Choices-da.UTF-8: unixtilstand, internettilstand, begge
+Choices-de.UTF-8: Unixmodus, Internetmodus, beide
+Choices-es.UTF-8: modo unix, modo internet, ambos
+Choices-eu.UTF-8: unix modua, internet modua, biak
+Choices-fi.UTF-8: unix-tila, Internet-tila, molemmat
+Choices-fr.UTF-8: Mode UNIX, Mode Internet, Les deux
+Choices-gl.UTF-8: modo unix, modo internet, ambos
+Choices-it.UTF-8: modo Unix, modo Internet, entrambi
+Choices-nl.UTF-8: unix-modus, internet-modus, beide
+Choices-pt.UTF-8: modo unix, modo internet, ambos
+Choices-ru.UTF-8: режим unix, режим интернет, оба
+Choices-sv.UTF-8: unixläge, internetläge, båda
+Choices-vi.UTF-8: chế độ Unix, chế độ Internet, cả hai
+Default: unix mode
+Description: Start mode:
+ Unix mode is is the most secure way to run Interchange, for there is no
+ way for systems on the internet to interact with the Interchange server.
+Description-cs.UTF-8: Režim spuštění:
+ Pro spuštění Interchange je nejbezpečnější unixový režim, protože se k Interchange nemohou připojit počítače z internetu.
+Description-da.UTF-8: Starttilstand:
+ Unixtilstand er den mest sikre metode til at køre Interchange. Med denne metode er der ingen mulighed for, at systemer på internettet kan kommunikere med Interchangeserveren.
+Description-de.UTF-8: Startmodus:
+ Unixmodus ist die sicherste Betriebsart für Interchange, da keine Rechner im Internet mit dem Interchange-Server in Berührung kommen können.
+Description-es.UTF-8: Modo de arranque:
+ El modo unix es el método más seguro de ejecutar Interchange, pero no hay forma de que los sistemas de internet interactúen con el servidor de Interchange.
+Description-eu.UTF-8: Abiarazte modua:
+ Unix modua interchange exekutatzeko seguruena da, honentzat ez dago interneteko sistemek zerbitzariarekin harremanak izateko modu errazik.
+Description-fi.UTF-8: Aloitustila:
+ Unix-tila on turvallisin tapa ajaa Interchangea, koska tällöin internetissä olevilla järjestelmillä ei ole mitään tapaa ottaa yhteyttä Interchange-palvelimeen.
+Description-fr.UTF-8: Mode de démarrage 
+ Le mode UNIX est la façon la plus sûre de lancer Interchange car les systèmes situés sur l'Internet n'ont alors aucune possibilité d'interagir avec le serveur.
+Description-gl.UTF-8: Modo de inicio:
+ O modo Unix é o xeito máis seguro de executar Interchange, xa que non hai forma de que os sistemas de Internet interactúen co servidor Interchange.
+Description-it.UTF-8: Modo di avvio:
+ Il modo Unix è quello più sicuro per eseguire Interchange, in quanto non c'è alcuna possibilità che i sistemi in Internet interagiscano con il server di Interchange.
+Description-nl.UTF-8: Startmodus:
+ Unix-modus is de meest veilige manier om Interchange te draaien aangezien systemen op het internet dan geen contact kunnen maken met de Interchange-server.
+Description-pt.UTF-8: Modo de início:
+ O modo unix é a forma mais segura de correr o Interchange, uma vez que não há formas de sistemas na internet interagirem com o servidor Interchange.
+Description-ru.UTF-8: Режим запуска:
+ Режим Unix -- это самый безопасный способ запуска Interchange, поскольку компьютеры из интернета не смогут взаимодействовать с сервером Interchange.
+Description-sv.UTF-8: Startläge:
+ Unixläge är det säkraste sättet att köra Interchange, eftersom inte finns något sätt för internetanslutna system att interagera med Interchange-servern.
+Description-vi.UTF-8: Chế độ khởi chạy:
+ Chế độ Unix là phương pháp bảo mật nhất để chạy Interchange, vì không cho phép hệ thống trên Internet tương tác với trình phục vụ Interchange.
+
+Template: interchange/user
+Type: string
+Default: interchange
+Description: Username to run the server as:
+ This determines the user for the interchange server and for file
+ permissions. Please note that using another user has serious security
+ implications. Don't choose root, it is not recommended and will be
+ discarded anyway.
+Description-cs.UTF-8: Uživatelské jméno, pod kterým se bude server spouštět:
+ Zde určíte uživatele serveru Interchange; tento uživatel je také důležitý pro nastavení práv k souborům. Pamatujte, že použití jiného uživatele má vážné bezpečnostní důsledky. Použití roota se nedoporučuje a program vám ho zvolit nedovolí.
+Description-da.UTF-8: Brugernavn at køre serveren som:
+ Dette bestemmer brugeren for interchangeserveren og for filrettigheder. Bemærk venligst at brug af en anden bruger har alvorlige sikkerhedsimplikationer. Vælg ikke root, det anbefales ikke og vil blive omgjort alligevel.
+Description-de.UTF-8: Benutzernamen, unter dem der Interchange-Server laufen soll:
+ Hier legen Sie den Benutzer für den Interchange-Server und Dateirechte fest. Wenn Sie einen anderen Benutzer auswählen, kann das zu ernsten Sicherheitsproblemen führen. Bitte nicht »root« auswählen, dies wird nicht empfohlen und würde sowieso ignoriert werden.
+Description-es.UTF-8: Nombre de usuario que ejecutará el servidor:
+ Este valor establece el usuario para el servidor de Interchange y para los permisos de los archivos. Por favor, tenga en cuenta que utilizar otro usuario tiene graves implicaciones de seguridad. No escoja «root», no está recomendado y se descartará de todos modos.
+Description-eu.UTF-8: Zerbitzaria exekutatzeko erabiltzaile-izena:
+ Honek interchange zerbitzariaren eta fitxategi baimenen erabiltzailea ezartzen du. Mesedez kontutan izan beste erabiltzaile bat erabiltzeak segurtasun inplikazio garratzitsuak dituela. Ez hautatu root ez da gomendagarria eta hautatuaz gero baztertua izango da.
+Description-fi.UTF-8: Käyttäjätunnus, jolla palvelinta ajetaan:
+ Tämä määrää Interchange-palvelimen käyttäjän ja tiedostojen omistajan. Toisen käyttäjän valitseminen merkitsee huomattavia turvariskejä. Älä valitse pääkäyttäjää. Sitä ei suositella, eikä kuitenkaan hyväksytä.
+Description-fr.UTF-8: Identifiant qui exécutera le serveur :
+ Veuillez indiquer l'identifiant qui servira à l'exécution du serveur Interchange et qui sera propriétaire des fichiers. Utiliser une valeur différente de la valeur par défaut peut avoir des conséquences importantes sur la sécurité. Ne choisissez pas « root », le superutilisateur, car ce choix déconseillé sera de toute manière refusé.
+Description-gl.UTF-8: Usuario co que executar o servidor:
+ Isto determina o usuario para o servidor interchange e os permisos dos ficheiros. Teña en conta que empregar outro usuario ten serias implicacións de seguridade. Non escolla "root", non se recomenda e hase ignorar de tódolos xeitos.
+Description-it.UTF-8: Nome utente da utilizzare per l'esecuzione del server:
+ Questo determina l'utente per il server Interchange e per i permessi sui file. Notare che l'utilizzo di un altro utente ha serie implicazioni in tema di sicurezza. Non si scelga root: non è raccomandato e comunque la scelta sarà rifiutata.
+Description-nl.UTF-8: Gebruiker als wie de server moet draaien:
+ Als welke gebruiker moet het interchange-serverproces gedraaid worden (belangrijk voor bestandtoegangsrechten). OPGELET: hier een andere gebruiker aangeven heeft serieuze beveiligingsimplicaties. Geef hier nooit 'root' aan, dit is af te raden en wordt genegeerd.
+Description-pt.UTF-8: Nome do utilizador com que correr o servidor:
+ Determina o utilizador usado para correr o servidor interchange e para as permissões de ficheiros. Por favor note que usar outro utilizador tem sérias implicações de segurança. Não escolha root, não é recomendado e será ignorado.
+Description-ru.UTF-8: Имя пользователя, с правами которого запускается сервер:
+ Здесь определяется пользователь-владелец сервера interchange и файлов. Запомните, что использование другого пользователя это серьёзная угроза безопасности. Не выбирайте root, это не рекомендуется и будет отклонено в любом случае.
+Description-sv.UTF-8: Användarnamn att köra servern som:
+ Detta specificerar användaren för interchangeservern och för filrättigheter. Notera att användande av en annan användare påverkar säkerheten allvarligt. Välj inte root, det är inte rekommenderat och kommer att ignoreras.
+Description-vi.UTF-8: Tên người dùng dưới đó cần chạy trình phục vụ :
+ Tùy chọn này quyết định người dùng cho trình phục vụ Interchange và quyền truy cập đến tập tin. Ghi chú rằng sử dụng một người dùng khác ở đây thì rất rủi ro bảo mật. Đừng chọn người chủ (root) vì trong trường hợp này nó không khuyến khích và lúc nào bị hủy.
+
+Template: interchange/createuser
+Type: boolean
+Default: true
+Description: Create the user ${USER}?
+Description-cs.UTF-8: Vytvořit uživatele ${USER}?
+Description-da.UTF-8: Opret brugeren ${USER}?
+Description-de.UTF-8: Benutzer ${USER} anlegen?
+Description-es.UTF-8: ¿Desea crear el usuario ${USER}?
+Description-eu.UTF-8: Sortu ${USER} erabiltzailea?
+Description-fi.UTF-8: Luodaanko käyttäjä ${USER}?
+Description-fr.UTF-8: Faut-il créer l'identifiant ${USER} ?
+Description-gl.UTF-8: ¿Crear o usuario ${USER}?
+Description-it.UTF-8: Creare l'utente ${USER}?
+Description-nl.UTF-8: Wilt u de gebruiker ${USER} aanmaken?
+Description-pt.UTF-8: Criar o utilizador ${USER}?
+Description-ru.UTF-8: Создать пользователя ${USER}?
+Description-sv.UTF-8: Skapa användaren ${USER}?
+Description-vi.UTF-8: Tạo người dùng ${USER} ?
+
+Template: interchange/usernoroot
+Type: error
+Description: Impossible to run interchange as root !
+ You have been warned. Either choose an appropriate user or stay with the
+ default.
+Description-cs.UTF-8: Není možné spustit Interchange jako root!
+ Byli jste varováni. Buď vyberte vhodného uživatele, nebo použijte výchozí hodnotu.
+Description-da.UTF-8: Umuligt at køre interchange som root!
+ Du er blevet advaret. Enten vælg en passende bruger eller vælg standardbrugeren.
+Description-de.UTF-8: Interchange kann nicht als Benutzer root gestartet werden!
+ Sie sind gewarnt worden. Bitte wählen Sie entweder einen geeigneten Benutzer aus oder akzeptieren Sie die Voreinstellung.
+Description-es.UTF-8: ¡No se puede ejecutar Interchange como «root»!
+ Se le ha advertido. Escoja un usuario adecuado o deje el predeterminado.
+Description-eu.UTF-8: Ezinezkoa da interchange root gisa exekutatzea !
+ Oharturik zaude. Edo hautatu erabiltzaile egoki bat edo lehenetsiarekin gelditu.
+Description-fi.UTF-8: Ohjelmaa Interchange ei voida ajaa pääkäyttäjänä!
+ Valitse joko sopiva käyttäjätunnus tai säilytä oletusasetus.
+Description-fr.UTF-8: Impossible d'exécuter Interchange par le superutilisateur
+ Il n'est pas possible (et il serait dangereux pour la sécurité du système) d'exécuter Interchange avec les privilèges du superutilisateur. Veuillez choisir un utilisateur approprié ou conserver la valeur par défaut.
+Description-gl.UTF-8: Non é posible executar interchange coma administrador.
+ Escolla un usuario axeitado ou empregue o valor por defecto.
+Description-it.UTF-8: Impossibile eseguire Interchange come root.
+ Come avvisato, l'esecuzione di Interchange come root non è ammessa. Scegliere un utente appropriato, o alternativamente lasciare l'utente predefinito.
+Description-nl.UTF-8: Het is niet mogelijk om Interchange als gebruiker 'root' te draaien!
+ U bent gewaarschuwd. Als u geen toepasselijke gebruiker kiest wordt de standaardwaarde behouden.
+Description-pt.UTF-8: É impossível correr o interchange como root !
+ Você foi avisado. Ou escolhe um utilizador apropriado ou use o pré-definido.
+Description-ru.UTF-8: Невозможно запустить interchange под root!
+ Вас предупреждали. Либо выберите подходящего пользователя, либо оставьте по умолчанию.
+Description-sv.UTF-8: Omöjligt att köra interchange som root!
+ Du har blivit varnad. Välj antingen en lämplig användare eller använd standardvalet.
+Description-vi.UTF-8: Không thể chạy được Interchange với tư cách người chủ !
+ Người dùng đã được cảnh báo trước. Hoặc chọn một người dùng thích hợp, hoặc để lại giá trị mặc định.
+
+Template: interchange/group
+Type: string
+Default: interchange
+Description: Group name to run the server as:
+ This determines the group for the interchange server and for file
+ permissions. Please note that using another user has serious security
+ implications. Don't choose root, it is not recommended and will be
+ discarded anyway.
+Description-cs.UTF-8: Jméno skupiny, pod kterou se bude server spouštět:
+ Zde určíte skupinu serveru Interchange; tato skupina se také použije pro nastavení oprávnění k souborům. Pamatujte, že použití jiného uživatele má vážné bezpečnostní důsledky. Použití roota se nedoporučuje a program vám ho ani zvolit nedovolí.
+Description-da.UTF-8: Gruppenavn at køre serveren som:
+ Dette bestemmer gruppen til interchangeserveren og filrettigheder. Bemærk venligst at brug af en anden bruger har alvorlige sikkerhedsmæssige implikationer. Vælg ikke root, det anbefales ikke og vil blive omgjort alligevel.
+Description-de.UTF-8: Gruppennamen, unter dem Interchangeserver laufen soll:
+ Hier legen Sie die Benutzergruppe für den Interchange-Server und Dateirechte fest. Wenn Sie eine andere Benutzergruppe auswählen, kann das zu ernsten Sicherheitsprobleme führen. Bitte nicht »root« auswählen, dies wird nicht empfohlen und würde sowieso ignoriert werden.
+Description-es.UTF-8: Nombre del grupo con el que se ejecutará el servidor:
+ Este valor establece el grupo para el servidor de Interchange y para los permisos de los archivos. Por favor, tenga en cuenta que utilizar otro grupo tiene graves implicaciones de seguridad. No escoja «root», no está recomendado y se descartará de todos modos.
+Description-eu.UTF-8: Zerbitzaria exekutatzeko talde izena:
+ Honek interchange zerbitzariaren eta fitxategi baimenen taldea ezartzen du. Mesedez kontutan izan beste talde bat erabiltzeak segurtasun inplikazio garratzitsuak dituela. Ez hautatu root ez da gomendagarria eta hautatuaz gero baztertua izango da.
+Description-fi.UTF-8: Ryhmän nimi, jolla palvelinta ajetaan.
+ Tämä määrää Interchange-palvelimen ryhmän ja tiedostojen ryhmän. Toisen käyttäjän valitseminen merkitsee huomattavia turvariskejä. Älä valitse pääkäyttäjää. Sitä ei suositella, eikä kuitenkaan hyväksytä.
+Description-fr.UTF-8: Groupe qui exécutera le serveur :
+ Veuillez indiquer le groupe qui servira à l'exécution du serveur Interchange et qui sera propriétaire des fichiers. Utiliser une valeur différente de la valeur par défaut peut avoir des conséquences importantes sur la sécurité. Ne choisissez pas « root », le groupe du superutilisateur car ce choix déconseillé sera de toute manière refusé.
+Description-gl.UTF-8: Nome do grupo co que executar o servidor:
+ Isto determina o grupo para o servidor interchange e os permisos dos ficheiros. Teña en conta que empregar outro grupo ten serias implicacións de seguridade. Non escolla "root", non se recomenda e hase ignorar de tódolos xeitos.
+Description-it.UTF-8: Nome del gruppo da utilizzare per l'esecuzione del server:
+ Questo determina il gruppo per il server Interchange e per i permessi sui file. Notare che l'utilizzo di un altro utente ha serie implicazioni in tema di sicurezza. Non si scelga root: non è raccomandato e comunque la scelta sarà rifiutata.
+Description-nl.UTF-8: Groep als wie de server moet draaien:
+ Als welke groep moet het Interchange-serverproces gedraaid worden (belangrijk voor bestandstoegangsrechten). OPGELET: hier een andere groep aangeven heeft serieuze beveiligingsimplicaties. Geef hier nooit 'root' aan, dit is af te raden en wordt genegeerd.
+Description-pt.UTF-8: Nome do grupo para correr o servidor:
+ Determina o grupo para o servidor do interchange e para as permissões dos ficheiros. Por favor note que usar outro utilizador tem sérias implicações de segurança. Não escolha root, não é recomendado e será ignorado.
+Description-ru.UTF-8: Имя группы, под которым запускается сервер:
+ Здесь определяется группа-владелец сервера interchange и файлов. Запомните, что использование другого пользователя это серьёзная угроза безопасности. Не выбирайте root, это не рекомендуется и будет отклонено в любом случае.
+Description-sv.UTF-8: Gruppnamn att köra servern som:
+ Detta specificerar gruppen för interchangeservern och för filrättigheter. Notera att användande av en annan användare påverkar säkerheten allvarligt. Välj inte root, det är inte rekommenderat och kommer att ignoreras.
+Description-vi.UTF-8: Tên nhóm dưới đó cần chạy trình phục vụ :
+ Tùy chọn này quyết định nhóm cho trình phục vụ Interchange và quyền truy cập đến tập tin. Ghi chú rằng sử dụng một người dùng khác ở đây thì rất rủi ro bảo mật. Đừng chọn người chủ (root) vì trong trường hợp này nó không khuyến khích và lúc nào bị hủy.
+
+Template: interchange/groupnoroot
+Type: error
+Description: Impossible to run interchange as root !
+ You have been warned. Either choose an appropriate group or stay with the
+ default.
+Description-cs.UTF-8: Není možné spustit Interchange jako root!
+ Byli jste varováni. Buď vyberte vhodnou skupinu, nebo použijte výchozí hodnotu.
+Description-da.UTF-8: Umuligt at køre interchange som root!
+ Du er blevet advaret. Enten vælg en passende gruppe eller vælg standardgruppen.
+Description-de.UTF-8: Interchange kann nicht als Benutzer root gestartet werden!
+ Sie sind gewarnt worden. Bitte wählen Sie entweder eine geeignete Benutzergruppe aus oder akzeptieren Sie die Voreinstellung.
+Description-es.UTF-8: ¡No se puede ejecutar Interchange como «root»!
+ Se le ha advertido. Escoja un grupo adecuado o deje el predeterminado.
+Description-eu.UTF-8: Ezinezkoa da interchange root gisa exekutatzea !
+ Oharturik zaude. Edo hautatu talde egoki bat edo lehenetsiarekin gelditu.
+Description-fi.UTF-8: Ohjelmaa Interchange ei voida ajaa pääkäyttäjänä!
+ Valitse joko sopiva ryhmä tai säilytä oletusasetus.
+Description-fr.UTF-8: Impossible d'exécuter Interchange par le superutilisateur
+ Il n'est pas possible (et il serait dangereux pour la sécurité du système) d'exécuter Interchange avec les privilèges du groupe du superutilisateur. Veuillez choisir un groupe approprié ou conservez la valeur par défaut.
+Description-gl.UTF-8: Non é posible executar interchange coma administrador.
+ Escolla un grupo axeitado ou empregue o valor por defecto.
+Description-it.UTF-8: Impossibile eseguire Interchange come root.
+ Come avvisato, l'esecuzione di Interchange come root non è ammessa. Scegliere un utente appropriato, o alternativamente lasciare l'utente predefinito.
+Description-nl.UTF-8: Het is niet mogelijk om Interchange als gebruiker 'root' te draaien!
+ U bent gewaarschuwd. Als u geen toepasselijke groep kiest wordt de standaardwaarde behouden.
+Description-pt.UTF-8: É impossível correr o interchange como root !
+ Você foi avisado. Ou escolhe um utilizador apropriado ou use o pré-definido.
+Description-ru.UTF-8: Невозможно запустить interchange под root!
+ Вас предупреждали. Либо выберите подходящую группу, либо оставьте по умолчанию.
+Description-sv.UTF-8: Omöjligt att köra interchange som root!
+ Du har blivit varnad. Välj antingen en lämplig användare eller använd standardvalet.
+Description-vi.UTF-8: Không thể chạy được Interchange với tư cách người chủ !
+ Người dùng đã được cảnh báo trước. Hoặc chọn một nhóm thích hợp, hoặc để lại giá trị mặc định.
+
+Template: interchange/creategroup
+Type: boolean
+Default: true
+Description: Create the group ${GROUP}?
+Description-cs.UTF-8: Vytvořit skupinu ${GROUP}?
+Description-da.UTF-8: Opret gruppen ${GROUP}?
+Description-de.UTF-8: Gruppe ${GROUP} anlegen?
+Description-es.UTF-8: ¿Desea crear el grupo ${GROUP}?
+Description-eu.UTF-8: Sortu ${GROUP} taldea?
+Description-fi.UTF-8: Luodaanko ryhmä ${GROUP}?
+Description-fr.UTF-8: Faut-il créer le groupe ${GROUP} ?
+Description-gl.UTF-8: ¿Crear o grupo ${GROUP}?
+Description-it.UTF-8: Creare il gruppo ${GROUP}?
+Description-nl.UTF-8: Wilt u de groep ${GROUP} aanmaken?
+Description-pt.UTF-8: Criar o grupo ${GROUP}?
+Description-ru.UTF-8: Создать группу ${GROUP}?
+Description-sv.UTF-8: Skapa gruppen ${GROUP}?
+Description-vi.UTF-8: Tạo nhóm ${GROUP} ?
+
+Template: interchange/olduser
+Type: string
+Default: ""
+Description: 
+
+Template: interchange/docroot
+Type: string
+Default: /var/www/shops
+Description: Static HTML files location:
+ Catalog installations need a directory where HTML files can be placed.
+Description-cs.UTF-8: Umístění statických HTML souborů:
+ Instalace katalogu potřebuje adresář, kam je možné umístit HTML soubory.
+Description-da.UTF-8: Placering af statiske HTML-filer:
+ Kataloginstallationer har brug for en mappe hvor HTML-filer kan placeres.
+Description-de.UTF-8: Pfad für statische HTML-Dateien:
+ Kataloginstallationen benötigen ein Verzeichnis für die Ablage von HTML-Dateien.
+Description-es.UTF-8: Ubicación de los archivos HTML estáticos:
+ Las instalaciones de catálogo necesitan un directorio en el que almacenar los archivos HTML.
+Description-eu.UTF-8: HTML fitxategi estatikoen kokalekua:
+ Katalogo instalazioak HTML fitxategiak kokatzeko direktorio bat behar du.
+Description-fi.UTF-8: Staattisten HTML-tiedostojen sijainti:
+ Luetteloiden asennus tarvitsee hakemiston, johon HTML-tiedostot voidaan laittaa.
+Description-fr.UTF-8: Emplacement des fichiers HTML statiques :
+ Les installations de catalogue doivent choisir un répertoire où seront gardées les fichiers HTML.
+Description-gl.UTF-8: Ubicación dos ficheiros HTML estáticos:
+ As instalacións de catálogos precisan dun directorio no que pór os ficheiros HTML.
+Description-it.UTF-8: Posizione dei file HTML statici:
+ Le installazioni di cataloghi necessitano di una directory in cui i file HTML possono essere memorizzati.
+Description-nl.UTF-8: Locatie voor statische HTML-bestanden:
+ Catalogus-installaties hebben een map nodig waar HTML-bestanden neergezet kunnen worden.
+Description-pt.UTF-8: Localização dos ficheiros HTML estáticos:
+ Instalações de catálogo necessitam um directório onde os ficheiros HTML são colocados.
+Description-ru.UTF-8: Каталог для размещения статичных HTML файлов:
+ Установки каталога требуют место, где можно разместить HTML файлы.
+Description-sv.UTF-8: Plats för statiska HTML-filer:
+ Kataloginstallationer behöver en katalog där HTML-filer kan placeras.
+Description-vi.UTF-8: Ví trị tập tin HTML tĩnh:
+ Bản cài đặt phân loại thì cần một thư mục vào đó có thể để tập tin HTML.
+
+Template: interchange/gpghome
+Type: string
+Default: /var/lib/interchange/.gnupg
+Description: Directory for GnuPG public keyring:
+ For enhanced security, credit card information retrieved from customers
+ will be encrypted and mailed to the shop owner instead of storing it on
+ the server.
+ .
+ Please choose the directory Interchange uses for the GnuPG
+ public keyring.
+Description-cs.UTF-8: Adresář pro úschovu veřejných GnuPG klíčů:
+ Pro zvýšení bezpečnosti nebudou informace o kreditních kartách (získané od zákazníků) uloženy na serveru, ale budou zakódovány a poslány vlastníkovi obchodu.
+ .
+ Zvolte prosím adresář, kde budou uloženy veřejné GnuPG klíče nutné pro uživatele programu Interchange.
+Description-da.UTF-8: Mappe til GnuPG's offentlige nøglering:
+ For forbedret sikkerhed vil kreditkortinformation indhentet fra kunder blive krypteret og sendt til butiksejeren frem for at blive gemt på serveren.
+ .
+ Vælg venligst mappen som Interchange bruger til GnuPG's offentlige nøglering.
+Description-de.UTF-8: Verzeichnis für den öffentlichen Schlüsselbund für GnuPG:
+ Zur Erhöhung der Sicherheit werden Kreditkarteninformationen von Kunden verschlüsselt und an den Eigentümer des Ladens per E-Mail versandt, statt auf dem Server gespeichert zu werden.
+ .
+ Bitte wählen Sie das Verzeichnis aus, das GnuPG für den öffentlichen Schlüsselbund verwendet.
+Description-es.UTF-8: Directorio del anillo de claves público de GnuPG:
+ Para mejorar la seguridad, la información de las tarjetas de crédito recibida de los clientes se cifrará y se enviará por correo electrónico al dueño de la tienda en lugar de almacenarla en el servidor.
+ .
+ Escoja el directorio que Interchange utiliza para el anillo de claves público de GnuPG.
+Description-eu.UTF-8: GNUPG gako-eraztun publikoak erabiliko duen direktorioa:
+ Segurtasuna areagotzeko, bezeroetatik jasotzen den kreditu txartel informazioa enkriptatu eta posta bidez denda jabeari bidaliko zaio zerbitzarian gorde ordez.
+ .
+ Mesedez hautatu Interchange zerbitzariak GnuPG gako-eraztun publikorako erabiliko duen direktorioa.
+Description-fi.UTF-8: GnuPG:n julkisen avainrenkaan hakemisto:
+ Turvallisuuden lisäämiseksi asiakkailta pyydetyt luottokorttitiedot salataan ja lähetetään sähköpostina kaupan omistajalle palvelimelle tallentamisen sijaan.
+ .
+ Anna hakemisto, jossa Interchange pitää GnuPG:n julkista avainrengasta.
+Description-fr.UTF-8: Répertoire pour le trousseau de clés publiques de GnuPG :
+ Pour une meilleure sécurité, les informations sur les cartes de crédit envoyées par les clients seront chiffrées et envoyées par courriel au propriétaire du magasin virtuel sans être conservées sur le serveur.
+ .
+ Veuillez choisir le répertoire où Interchange conservera le trousseau de clés publiques GnuPG.
+Description-gl.UTF-8: Directorio para o chaveiro público de GnuPG:
+ Para maior seguridade, a información das tarxetas de crédito obtidas dos usuarios hase cifrar e enviar por correo ao propietario da tenda no canto de armacenala no servidor.
+ .
+ Escolla o directorio que Interchange emprega para o chaveiro público GnuPG.
+Description-it.UTF-8: Directory per la chiave pubblica GnuPG:
+ Per potenziare la sicurezza, le informazioni fornite dai clienti sulle carte di credito non vengono memorizzate sul server, bensì criptate e inviate per posta elettronica al proprietario del negozio.
+ .
+ Scegliere la directory che Interchange userà per la chiave pubblica GnuPG.
+Description-nl.UTF-8: Map voor de publieke GnuPG-sleutelring:
+ Voor verhoogde beveiliging wordt de door klanten aangegeven kredietkaartinformatie versleuteld niet op de server opgeslagen maar per e-mail doorgestuurd naar de winkeleigenaar.
+ .
+ Welke map dient Interchange te gebruiken voor de publieke GnuPG-sleutelring?
+Description-pt.UTF-8: Directório para o porta-chaves público do GnuPG:
+ Para melhorar a segurança, a informação de cartões de crédito obtida dos clientes irá ser cifrada e enviada para o dono da loja em vez de ser guardada no servidor.
+ .
+ Por favor escolha o directório que o Interchange usa para o porta-chaves público GnuPG.
+Description-ru.UTF-8: Каталог для публичных ключей GnuPG:
+ Для повышения безопасности, информация с кредитной карты, полученная от посетителей, будет зашифрована и отправлена по почте владельцу магазина, а не сохранена на сервере.
+ .
+ Выберите каталог, используемый Interchange для хранения публичных ключей GnuPG:
+Description-sv.UTF-8: Katalog för publik GnuPG-nyckelring:
+ För utökad säkerhet, kommer kreditkortsinformation som hämtas från kunder att krypteras och postas till affärsägaren istället för att lagras på servern.
+ .
+ Välj den katalog Interchange ska användas för den publika GnuPG-nyckelringen.
+Description-vi.UTF-8: Thư mục cho vòng chìa khoá công GnuPG:
+ Để tăng cường bảo mật, thông tin về thẻ tín dụng được khách hàng cung cấp sẽ được mật mã hóa và gửi bằng thư cho chủ hàng, thay vào lưu nó trên máy phục vụ.
+ .
+ Hãy chọn thư mục được Interchange sử dụng cho vòng chìa khóa công GnuPG:
+
+Template: interchange/traffic
+Type: select
+Choices: low, high, rpc
+Choices-cs.UTF-8: nízký, vysoký, rpc
+Choices-da.UTF-8: lav, høj, rpc
+Choices-de.UTF-8: niedrig, hoch, rpc
+Choices-es.UTF-8: bajo, alto, rpc
+Choices-eu.UTF-8: baxua, altua, rpc
+Choices-fi.UTF-8: matala, korkea, rpc
+Choices-fr.UTF-8: Bas, Haut, RPC
+Choices-gl.UTF-8: baixo, alto, rpc
+Choices-it.UTF-8: basso, alto, rpc
+Choices-nl.UTF-8: laag, hoog, rpc
+Choices-pt.UTF-8: baixo, alto, rpc
+Choices-ru.UTF-8: low, high, rpc
+Choices-sv.UTF-8: låg, hög, rpc
+Choices-vi.UTF-8: thấp, cao, RPC
+Default: low
+Description: Set of server parameters:
+ You can choose different sets of server parameters. Any store based on the
+ foundation demo will change its behaviour too. If rpc is selected, the
+ Interchange server will run in PreFork mode.
+Description-cs.UTF-8: Parametry spuštění serveru:
+ Můžete zvolit různé skupiny parametrů serveru. Jakýkoliv obchod založený na základě dema tím také změní své chování. Pokud zvolíte rpc, pak se server Interchange spustí v módu PreFork.
+Description-da.UTF-8: Sæt af serverparametre:
+ Du kan vælge forskellige sæt af serverparametre. Alle butikker baseret på grunddemoen vil også ændre sin opførsel. Hvis rpc er valgt, vil Interchangeserveren køre i præforgreningstilstand.
+Description-de.UTF-8: Satz an Serverparametern:
+ Es können verschiedene Gruppen von Serverparametern ausgewählt werden. Jeder Laden, der auf dem Foundation-Demo beruht, ist ebenso betroffen. Bei Auswahl von rpc wird der Interchange-Server im PreFork-Modus gestartet.
+Description-es.UTF-8: Conjunto de parámetros del servidor:
+ Puede escoger entre diferentes conjuntos de parámetros del servidor. Cualquier tienda basada en el ejemplo de la fundación cambiará también su comportamiento. Si se escoge rpc, el servidor de Interchange se ejecutará en el modo «PreFork».
+Description-eu.UTF-8: Zerbitzari parametro bilduma:
+ Zerbitzari parametro bilduma ezberdinen artean hautatu dezakezu. Sortze demostrazioan oinarritutako edoizen dendak bere portamoldea eraldatuko du ere. Rpc hautatzen bada Interchange zerbitzariak PreFork moduan exekutatutako da.
+Description-fi.UTF-8: Palvelimen parametrijoukko:
+ Palvelimelle voidaan valita erilaisia parametrijoukkoja. Kaikkien esimerkkikauppaan perustuvien kauppojen toiminta muuttuu myös. Valinnalla rpc Interchange-palvelin ajetaan PreFork-tilassa.
+Description-fr.UTF-8: Jeu de paramètres du serveur :
+ Veuillez choisir l'un des jeux de paramètres du serveur. Tout magasin construit à partir de la démonstration verra son comportement modifié également. Si « RPC » est choisi, le serveur fonctionnera en mode « PreFork ».
+Description-gl.UTF-8: Conxunto de parámetros do servidor:
+ Pode escoller varios conxuntos de parámetros do servidor. As tendas baseadas na demostración tamén han cambiar o seu comportamento. Se se escolle "rpc", o servidor Interchange hase executar en modo PreFork.
+Description-it.UTF-8: Insieme di parametri del server:
+ È possibile scegliere differenti insiemi di parametri del server. Analogamente, tutti i negozi basati sulla fondazione dimostrativa cambieranno il proprio comportamento. Se si sceglie «rpc», il server Interchange sarà eseguito in modalità «PreFork».
+Description-nl.UTF-8: Parameterset voor de server:
+ U kunt verschillende parametersets kiezen voor de server. Het gedrag van elke op de demo gebaseerde winkel zal hierdoor ook veranderen. Als rpc gekozen wordt zal de Interchange-server draaien in PreFork-modus.
+Description-pt.UTF-8: Escolha os parâmetros do servidor:
+ Pode escolher grupos diferentes de parâmetros. Qualquer loja baseada na demonstração irá também ter o seu comportamento alterado. Se for escolhido rpc, o servidor Interchange irá correr em modo PreFork.
+Description-ru.UTF-8: Набор параметров сервера:
+ Вы можете выбрать различный набор серверных параметров. Любой магазин, основанный на базовой демонстрации, также изменит своё поведение. Если выбран rpc, сервер Interchange будет работать в режиме PreFork.
+Description-sv.UTF-8: Uppsättning med serverparametrar:
+ Du kan välja olika uppsättningar serverparametrar. Varje butik baserad på demon kommer ändra sitt uppförande. Om rpc väljs, kommer Interchange-servern köras i PreFork-läge.
+Description-vi.UTF-8: Bộ tham số trình phục vụ :
+ Bạn có dịp chọn một số bộ tham số khác nhau để chạy trình phục vụ. Do đó hàng nào dựa vào minh hoạ cơ bản sẽ cũng thay đổi hành vi. Nếu chọn RPC thì trình phục vụ Interchange sẽ chạy trong chế độ PreFork.
+
+Template: interchange/full_url
+Type: boolean
+Default: false
+Description: Enable the FullURL directive?
+ This setting determines if the whole URL is considered while checking for
+ the corresponding catalog.
+Description-cs.UTF-8: Povolit volbu FullURL?
+ Tato volba určuje, zda se při kontrole odpovídajícího katalogu bude používat kompletní adresa URL.
+Description-da.UTF-8: Aktiver FullURL-direktivet?
+ Denne indstilling bestemmer om hele adressen medtages, når der tjekkes for det tilsvarende katalog.
+Description-de.UTF-8: FullURL-Direktive aktivieren?
+ Diese Einstellung legt fest, ob die komplette URL für die Auswahl des Katalogs herangezogen wird.
+Description-es.UTF-8: ¿Desea activar la directiva «FullURL»?
+ Este valor establece si se considera la URL completa mientras se comprueba el catálogo correspondiente.
+Description-eu.UTF-8: Gaitu FullURL direktiba?
+ Ezarpen honek dagokion katalogoa arakatzean URL osoa kontutan artzen den ala ez ezartzen du.
+Description-fi.UTF-8: Aktivoidaanko FullURL-määre?
+ Tämä asetus määrää käytetäänkö koko URL:ia tarkistettaessa vastaavaa luetteloa.
+Description-fr.UTF-8: Faut-il activer la directive « FullURL » ?
+ Veuillez choisir si l'URL entière est prise en compte lors de la vérification du catalogue correspondant.
+Description-gl.UTF-8: ¿Activar a directiva FullURL?
+ Esta opción determina se todo o URL se ten en conta ao buscar o catálogo correspondente.
+Description-it.UTF-8: Abilitare la direttiva «FullURL»?
+ Questa impostazione determina se tutto l'URL viene considerato per il controllo del catalogo corrispondente.
+Description-nl.UTF-8: Wilt u de 'FullURL'-instelling activeren?
+ Deze instelling bepaald of de hele URL in beschouwing genomen wordt bij het controleren voor de overeenkomstige catalogus.
+Description-pt.UTF-8: Activar a directiva FullURL?
+ Esta directiva determina se todo o URL é considerado quando à procura do catálogo correspondente.
+Description-ru.UTF-8: Разрешить директиву FullURL?
+ Эта настройка определяет, будет ли изучаться весь URL во время проверки соответствующего каталога.
+Description-sv.UTF-8: Aktivera FullURL-direktivet?
+ Denna inställning avgör huruvida hela URL:en undersöks när motsvarande katalog ska hittas.
+Description-vi.UTF-8: Bật chỉ thị FullURL ?
+ Thiết lập này quyết định nếu toàn bộ địa chỉ URL được tính trong khi kiểm tra có phân loại tương ứng.
+
+Template: interchange/cansoap
+Type: note
+Description: SOAP server not available
+ Because the Perl module SOAP::Lite is not installed, you are unable to run
+ the Interchange SOAP server. To change this, install the libsoap-lite-perl
+ Debian package and run interchangeconfig SOAP=1.
+Description-cs.UTF-8: SOAP server není k dispozici
+ Protože není nainstalován modul Perlu SOAP::Lite, nebudete schopni spustit Interchange SOAP server. Napravit to můžete instalací balíčku libsoap-lite-perl a následným spuštěním interchangeconfig SOAP=1.
+Description-da.UTF-8: SOAP-server ikke tilgængelig
+ Da Perl-modulet SOAP::Lite ikke er installeret, kan du ikke køre Interchange SOAP-serveren. For at ændre dette, installere Debianpakken libsoap-lite-perl og kør interchangeconfig SOAP=1.
+Description-de.UTF-8: SOAP-Server ist nicht verfügbar
+ Da das Perl-Modul SOAP::Lite nicht installiert ist, können Sie den Interchange SOAP-Server nicht ausführen. Um dies zu ändern, installieren Sie das Debian-Paket libsoap-lite-perl und führen sie »interchangeconfig SOAP=1« aus.
+Description-es.UTF-8: Servidor SOAP no disponible
+ No puede ejecutar el servidor SOAP de Interchange, ya que el módulo SOAP::Lite de Perl no está instalado. Para arreglar esto, instale el paquete libsoap-lite-perl de Debian y ejecute «interchangeconfig SOAP=1».
+Description-eu.UTF-8: SOAP zerbitzaria ez dago eskuragarri
+ SOAP__Lite Perl modulua instalaturik ez dagoenez, ezin duzu Interchange SOAP zerbitzaria exekutatu. Hau aldatzeko Debianeko libsoap-lite-perl paketea instalatu eta interchangeconfig SOAP=1 exekutatu.
+Description-fi.UTF-8: SOAP-palvelinta ei ole käytettävissä.
+ Koska Perl-moduuli SOAP::Lite ei ole asennettuna, ei Interchangen SOAP-palvelinta voida ajaa. Tätä voidaan muuttaa asentamalla paketti libsoap-lite-perl ja ajamalla komento interchangeconfig SOAP=1.
+Description-fr.UTF-8: Serveur SOAP indisponible
+ Vous ne pouvez pas utiliser le serveur SOAP d'Interchange car le module Perl SOAP::Lite n'est pas installé. Pour corriger cela, veuillez installer le paquet libsoap-lite-perl et utiliser la commande « interchangeconfig SOAP=1 ».
+Description-gl.UTF-8: O servidor SOAP non está dispoñible
+ Xa que non se instalou o módulo Perl SOAP::Lite, non pode executar o servidor SOAP de Interchange. Para cambialo, instale o paquete Debian libsoap-lite-perl e execute "interchangeconfig SOAP=1".
+Description-it.UTF-8: Server SOAP non disponibile
+ Poiché il modulo Perl SOAP::Lite non è installato, non è possibile eseguire il server SOAP di Interchange. Per modificare questa situazione è necessario installare il pacchetto Debian «libsoap-lite-perl» ed eseguire «interchangeconfig SOAP=1».
+Description-nl.UTF-8: SOAP-server is niet beschikbaar
+ U kunt geen Interchange SOAP-server draaien omdat de Perl-module SOAP::Lite niet geïnstalleerd is. Deze module kunt u installeren via het pakket libsoap-lite-perl, vervolgens dient u nog 'interchangeconfig SOAP=1' uit te voeren.
+Description-pt.UTF-8: Servidor SOAP não disponível
+ Devido ao módulo Perl SOAP::Lite não estar instalado, você não pode correr o servidor SOAP do Interchange. Para modificar isto, instale o pacote Debian libsoap-lite-perl e corra interchangeconfig SOAP=1.
+Description-ru.UTF-8: Недоступен сервер SOAP
+ Так как Perl-модуль SOAP::Lite не установлен, вы не сможете запускать сервер Interchange SOAP. Чтобы это исправить, установите пакет Debian libsoap-lite-perl и запустите команду interchangeconfig SOAP=1.
+Description-sv.UTF-8: SOAP-server inte tillgänglig
+ I och med att Perlmodulen SOAP::Lite inte är installerad kan du inte anävända SOAP-servern för Interchange. Installera Debianpaketet libsoap-lite-perl och kör sedan "interchangeconfig SOAP=1" för att lösa detta.
+Description-vi.UTF-8: Trình phục vụ SOAP không sẵn sàng
+ Vì mô-đun Perl SOAP::Lite chưa được cài đặt, bạn không thể chạy trình phục vụ SOAP của Interchange. Để quyết định vấn đề này, hãy cài đặt gói Debian libsoap-lite-perl, sau đó chạy câu lệnh « interchangeconfig SOAP=1 ».
+
+Template: interchange/soap
+Type: boolean
+Default: false
+Description: Enable the SOAP server?
+ This setting determines if the SOAP server is started or not.
+Description-cs.UTF-8: Povolit server SOAP?
+ Toto nastavení určuje, zda spustit server SOAP či nikoliv.
+Description-da.UTF-8: Aktiver SOAP-serveren?
+ Denne indstilling bestemmer om SOAP-serveren startes eller ej.
+Description-de.UTF-8: SOAP-Server aktivieren?
+ Mit dieser Einstellung entscheiden Sie, ob der SOAP-Server gestartet wird oder nicht.
+Description-es.UTF-8: ¿Desea activar el servidor SOAP?
+ Este valor establece si el servidor SOAP está en ejecución o no.
+Description-eu.UTF-8: Gaitu SOAP zerbitzaria?
+ Ezarpen honek SOAP zerbitzaria abiarazten den edo ez zehazten du.
+Description-fi.UTF-8: Otetaanko SOAP-palvelin käyttöön?
+ Tämä asetus määrittää käynnistetäänkö SOAP-palvelin.
+Description-fr.UTF-8: Faut-il activer le serveur SOAP ?
+ Veuillez choisir si le serveur SOAP sera démarré.
+Description-gl.UTF-8: ¿Activar o servidor SOAP?
+ Esta opción determina se se inicia o servidor SOAP ou non.
+Description-it.UTF-8: Abilitare il server SOAP?
+ Questa impostazione determina se il server SOAP viene avviato o meno.
+Description-nl.UTF-8: Wilt u de SOAP-server activeren?
+ Deze instelling bepaald of de SOAP-server wel of niet gestart wordt.
+Description-pt.UTF-8: Activar o servidor SOAP?
+ Esta definição determina se o servidor SOAP é ou não iniciado.
+Description-ru.UTF-8: Включить сервер SOAP?
+ Данная настройка определяет, будет запускаться сервер SOAP или нет.
+Description-sv.UTF-8: Aktivera SOAP-servern?
+ Denna inställning anger om SOAP-servern är startad eller ej.
+Description-vi.UTF-8: Bật trình phục vụ SOAP ?
+ Thiết lập quyết định nếu trình phục vụ SOAP được khởi chạy hay không.
+
+Template: interchange/robots
+Type: boolean
+Default: true
+Description: Enable robots settings?
+ The Interchange Debian package uses a separate configuration file
+ /etc/interchange/robots.cfg for the directives RobotUA, RobotIP and
+ RobotHost. It is recommended to include these settings so that Interchange can
+ distinguish between robots and ordinary users.
+Description-cs.UTF-8: Povolit nastavení robotů?
+ Debianí balíček Interchange používá pro nastavení RobotUA, RobotIP a RobotHost samostatný konfigurační soubor /etc/interchange/robots.cfg. Doporučujeme zahrnout tato nastavení tak, aby Interchange mohl rozlišit roboty a běžné uživatele.
+Description-da.UTF-8: Aktiver robots opsætning?
+ Debianpakken Interchange bruger en separat konfigurationsfil /etc/interchange/robots.cfg til direktiverne RobotUA, RobotIP og RobotHost. Det anbefales at inkludere denne opsætning så, at Interchange kan skelne mellem robotter og normale brugere.
+Description-de.UTF-8: Robot-Einstellungen aktivieren?
+ Das Interchange-Debian-Paket benutzt eine zusätzliche Konfigurationsdatei /etc/interchange/robots.cfg für die Direktiven RobotUA, RobotIP und RobotHost. Das Einbinden dieser Einstellungen wird empfohlen, damit Interchange zwischen normalen Benutzern und Robots unterscheiden kann.
+Description-es.UTF-8: ¿Desea activar los ajustes de los robots?
+ El paquete Interchange de Debian utiliza un archivo de configuración («/etc/interchange/robots.cfg») diferente para las directivas «RobotUA», «RobotIP» y «RobotHost». Se recomienda incluir estos ajustes para que Interchange pueda diferenciar entre los robots y los usuarios.
+Description-eu.UTF-8: Gaitu robot ezarpenak?
+ Interchange Debian paketeak bereziriko /etc/interchange/robots.cfg konfigurazio fitxategia erabiltzen du RobotUA, RobotIP eta RobotHost direktibentzat. Ezarpen hauek barneratzea gomendagarria da Interchange zerbitzariak errobot eta erabiltzaile arrunten artean bereizi ahal izateko.
+Description-fi.UTF-8: Otetaanko robots-asetukset käyttöön?
+ Interchange-paketti käyttää erillistä asetustiedostoa /etc/interchange/robots.cfg ohjelmien RobotUA, RobotIP ja RobotHost ohjeille. Näiden asetusten ottaminen käyttöön on suositeltavaa, jotta Interchange voi erottaa robotit tavallisista käyttäjistä.
+Description-fr.UTF-8: Faut-il activer les réglages pour les robots ?
+ Le paquet d'Interchange utilise un fichier de configuration distinct /etc/interchange/robots.cfg pour les directives RobotUA, RobotIP et RobotHost. Vous devriez activer ces réglages afin qu'Interchange puisse faire la différence entre les robots et les utilisateurs ordinaires.
+Description-gl.UTF-8: ¿Activar a configuración dos robots?
+ O paquete Debian de Interchange emprega un ficheiro de configuración separado, /etc/interchange/robots.cfg, para as directivas RobotUA, RobotIP e RobotHost. Recoméndase incluír estas opcións para que Interchange poida distinguir entre robots e usuarios normais.
+Description-it.UTF-8: Abilitare le impostazioni robot?
+ Il pacchetto Debian di Interchange usa un file di configurazione separato, «/etc/interchange/robots.cfg», per le direttive RobotUA, RobotIP e RobotHost. Si raccomanda di includere queste impostazioni in modo che Interchange possa distinguere fra robot e utenti ordinari.
+Description-nl.UTF-8: Wilt u de robots-instellingen activeren?
+ Het Interchange-pakket gebruikt een apart configuratiebestand (/etc/interchange/robots.cfg) voor de 'RobotUA', 'RobotIP', en 'RobotHost' instellingen. Het is aangeraden om deze instellingen te 'include'-en; hierdoor kan Interchange onderscheid maken tussen robots en gewone gebruikers.
+Description-pt.UTF-8: Activar a directiva de robots?
+ O pacote Interchange da Debian usa um ficheiro de configuração diferente em /etc/interchange/robots.cfg para as directivas RobotUA, RobotIP e RobotHost. É recomendado que inclua estas directivas para que o Interchange consiga distinguir entre robots e utilizadores normais.
+Description-ru.UTF-8: Разрешить настройки роботов?
+ Пакет Debian Interchange использует отдельный файл настроек /etc/interchange/robots.cfg для директив RobotUA, RobotIP и RobotHost. Рекомендуется подключить эти настройки, чтобы Interchange мог различать роботов и обычных пользователей.
+Description-sv.UTF-8: Aktivera robotinställningar?
+ Debians Interchange-paket använder en separat konfigurationsfil, /etc/interchange/robots.cfg, för direktiven RobotUA, RobotIP och RobotHost. Du rekommenderas att inkludera dessa inställningar så att Interchange kan se skillnad på robotar och vanliga användare.
+Description-vi.UTF-8: Bật thiết lập rô-bốt ?
+ Gói phần mềm Debian Interchange dùng một tập tin cấu hình riêng « /etc/interchange/robots.cfg » cho những chỉ thị RobotUA, RobotIP và RobotHost. Khuyên bạn bao gồm những thiết lập này, để Interchange phân biệt giữa rô-bốt và người dùng bình thường.

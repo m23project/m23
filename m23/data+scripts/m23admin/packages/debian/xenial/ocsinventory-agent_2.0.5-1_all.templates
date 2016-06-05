@@ -1,0 +1,234 @@
+
+Template: ocsinventory-agent/method
+Type: select
+Choices: local, http
+Choices-ar.UTF-8: local, http
+Choices-bg.UTF-8: локално, на сървър
+Choices-cs.UTF-8: lokální, http
+Choices-da.UTF-8: lokal, http
+Choices-de.UTF-8: lokal, HTTP
+Choices-es.UTF-8: local, http
+Choices-fr.UTF-8: Locale, HTTP
+Choices-gl.UTF-8: local, http
+Choices-it.UTF-8: locale, http
+Choices-ja.UTF-8: ローカル, http
+Choices-nl.UTF-8: lokaal, http
+Choices-pl.UTF-8: lokalna, http
+Choices-pt.UTF-8: local, http
+Choices-pt_BR.UTF-8: local, http
+Choices-ro.UTF-8: local, http
+Choices-ru.UTF-8: локальный, http
+Choices-sk.UTF-8: lokálny, http
+Choices-sv.UTF-8: lokal, http
+Choices-vi.UTF-8: cục bộ, http
+Default: local
+Description: Method used to generate the inventory:
+ Choose the 'local' method if you do not have a network connection.
+ .
+ Choose the 'http' method if an OCS Inventory server is set up.
+Description-ar.UTF-8: الطريقة المستخدمة لتوليد المخزون:
+ اختر الطريقة 'local' إن لم يكن لديك اتصال شبكي.
+ .
+ اختر الطريقة 'http' إن كان هناك خادم مخزون OCS Inventory مُعدّ.
+Description-bg.UTF-8: Съхранение на информацията за инвентара:
+ Изберете „локално“ ако нямате връзка с OCS-сървър.
+ .
+ Изберете „на OCS-сървър“ ако имате достъп до инвентарен сървър.
+Description-cs.UTF-8: Způsob vytvoření inventáře:
+ Nejste-li připojeni k síti, zvolte 'lokální'.
+ .
+ Pokud již máte nastaven server OCS Inventory, zvolte 'http'.
+Description-da.UTF-8: Metode brugt til at oprette lageret:
+ Vælg metoden lokal hvis du ikke har en netværksforbindelse.
+ .
+ Vælg metoden http hvis en OCS-lagerserver er sat op.
+Description-de.UTF-8: Methode zum Erstellen der Inventarliste:
+ Wählen Sie die »lokal«-Methode, falls Sie keine Netzverbindung haben.
+ .
+ Wählen Sie die »HTTP«-Methode, falls ein OCS-Inventory-Server eingerichtet ist.
+Description-es.UTF-8: Método usado para generar el inventario:
+ Seleccione el método «local» si no posee una conexión de red.
+ .
+ Seleccione el método «http» si posee un servidor de inventario OCS.
+Description-fr.UTF-8: Méthode de création de l'inventaire :
+ Veuillez choisir la méthode « Locale » pour ne pas utiliser de connexion réseau.
+ .
+ La méthode « HTTP » doit être utilisée si un serveur d'inventaire OCS est configuré.
+Description-gl.UTF-8: Método para xerar o inventario:
+ Escolla o método "local" se non ten unha conexión á rede.
+ .
+ Escolla o método "http" se hai configurado un servidor de OCS Inventory.
+Description-it.UTF-8: Metodo per la generazione dell'inventario:
+ Scegliere "locale" se non si dispone di una connessione di rete.
+ .
+ Scegliere "http" se è attivo un server OCS Inventory.
+Description-ja.UTF-8: インベントリを生成するのに使うメソッド:
+ ネットワーク接続が無い場合は 'local' メソッドを選んでください。
+ .
+ OSC インベントリサーバが設定されている場合は 'http' メソッドを選んでください。
+Description-nl.UTF-8: Bij het inventariseren te gebruiken methode:
+ Als u geen netwerkverbinding heeft kiest u best de methode 'lokaal'.
+ .
+ Als u een OCS-inventaris-server opgezet heeft kies dan de methode 'http'.
+Description-pl.UTF-8: Metoda używana do generowania zestawienia:
+ Proszę wybrać metodę "lokalna", jeśli nie występuje połączenie z siecią.
+ .
+ Proszę wybrać "http", jeśli serwer OCS Inventory jest skonfigurowany.
+Description-pt.UTF-8: Método utilizado para gerar o inventário:
+ Escolha o método 'local' se não tiver uma ligação de rede.
+ .
+ Escolha o método 'http' se tiver instalado um servidor de OCS Inventory.
+Description-pt_BR.UTF-8: Método utilizado para gerar o inventário:
+ Escolha o método 'local' se você não tem uma conexão de rede.
+ .
+ Escolha o método 'http' se um servidor OCS Inventory já está configurado.
+Description-ro.UTF-8: Metoda utilizată pentru a genera inventarul:
+ Alegeți metoda „local” dacă nu sunteți conectați la rețea.
+ .
+ Alegeți metoda „http” dacă este instalat un server OCS Inventory.
+Description-ru.UTF-8: Метод для генерации описи:
+ Выберите метод 'локальный', если не имеете сетевых подключений.
+ .
+ Выберите метод 'http', если имеется сервер OCS Inventory.
+Description-sk.UTF-8: Metóda generovania inventára:
+ Metódu „lokálna” vyberte, ak nemáte sieťové pripojenie.
+ .
+ Metódu „lokálna” vyberte, ak nemáte sieťové pripojenie.
+ Metódu „http” vyberte, ak je nastavený server OCS Inventory.
+Description-sv.UTF-8: Metod som ska användas för att skapa innehållsförteckning:
+ Välj metoden 'lokal' om du inte har en nätverksanslutning.
+ .
+ Välj metoden 'http' om det finns anslutning till en OCS Inventory-server.
+Description-vi.UTF-8: Phương pháp dùng để tạo ra bản kiểm kê:
+ Không có kết nối đến mạng nên chọn phương pháp « cục bộ ».
+ .
+ Đã thiết lập một máy phục vụ Kiểm Kê OCS (OCS Inventory) nên chọn phương pháp « http ».
+
+Template: ocsinventory-agent/server
+Type: string
+Description: OCS Inventory server host name:
+ Please enter the host name of the OCS inventory server.
+Description-ar.UTF-8: اسم خادم مخزون OCS Inventory:
+ الرجاء إدخال اسم المضيف لخادم مخزون OCS Inventory.
+Description-bg.UTF-8: OCS-сървър:
+ Въведете името на хоста, където е инсталиран OCS-сървъра.
+Description-cs.UTF-8: Jméno serveru OCS Inventory:
+ Zadejte prosím jméno počítače, na kterém běží OCS Inventory server.
+Description-da.UTF-8: Serverværtsnavn for OCS-lager:
+ Indtast venligst værtsnavnet på OCS-lagerserveren.
+Description-de.UTF-8: Rechnername des OCS-Inventory-Servers:
+ Bitte geben Sie den Rechnernamen des OCS-Inventory-Servers ein.
+Description-es.UTF-8: Nombre del servidor de inventario OCS:
+ Introduzca el nombre del servidor de inventario OCS.
+Description-fr.UTF-8: Nom d'hôte du serveur d'inventaire OCS :
+ Veuillez indiquer le nom d'hôte du serveur d'inventaire OCS.
+Description-gl.UTF-8: Nome do servidor de OCS Inventory:
+ Introduza o nome do servidor de OCS Inventory.
+Description-it.UTF-8: Nome host con il server OCS Inventory:
+ Inserire il nome dell'host con il server OCS Inventory.
+Description-ja.UTF-8: OCS インベントリサーバのホスト名:
+ OSC インベントリサーバのホスト名を入力してください。
+Description-nl.UTF-8: Computernaam van de OCS-inventaris-server:
+ Wat is de computernaam van de OCS-inventaris-server?
+Description-pl.UTF-8: Nazwa hosta serwera OCS Inventory:
+ Proszę podać nazwę serwera OCS Inventory.
+Description-pt.UTF-8: Nome da máquina do servidor de OCS Inventory:
+ Por favor, introduza o nome da máquina do servidor de OCS Inventory.
+Description-pt_BR.UTF-8: Nome de máquina do servidor OCS Inventory:
+ Por favor, informe o nome de máquina do servidor OCS inventory.
+Description-ro.UTF-8: Numele serverului OCS Inventory:
+ Introduceți numele serverului OCS Inventory.
+Description-ru.UTF-8: Имя хоста сервера OCS Inventory:
+ Введите имя хоста для сервера OCS inventory.
+Description-sk.UTF-8: Meno stroja so serverom OCS Inventory:
+ Prosím zadajte meno hostiteľa servera OCS inventory.
+Description-sv.UTF-8: Värdnamn för OCS Inventory server:
+ Ange värdnamnet för OCS Inventory-servern.
+Description-vi.UTF-8: Tên máy chủ kiểm kê OCS:
+ Hãy nhập tên máy của máy phục vụ kiểm kê OCS.
+
+Template: ocsinventory-agent/tag
+Type: string
+Description: Tag for the generated inventory:
+ Each inventory can have an associated tag. Please enter the tag you would
+ like for the new inventory.
+ .
+ This field can be left blank to continue without setting a new tag for the
+ inventory.
+Description-ar.UTF-8: مسمى المخزون الناتج:
+ يمكن لكل مخزون أن يكون له مسمى معين. الرجاء إدخال المسمى الذي تود استخدامه للمخزون الجديد.
+ .
+ يمكن ترك هذا الحقل فارغاً دون تحديد مسمى للمخزون الجديد.
+Description-bg.UTF-8: Етикет:
+ Всеки инвентар може да има присвоен етикет. Въведете етикета, който искате да се използва с новия инвентар.
+ .
+ Ако не желаете да присвоите етикет, оставете полето празно.
+Description-cs.UTF-8: Značka vytvořeného inventáře:
+ Každý inventář má přidělenu značku. Zadejte značku, kterou chcete použít pro nový inventář.
+ .
+ Toto pole můžete nechat prázdné a novému inventáři tak žádnou značku nepřidělit.
+Description-da.UTF-8: Mærke for det oprettede lager:
+ Hvert lager kan have et associeret mærke. Indtast venligst det mærke du ønsker for dette nye lager.
+ .
+ Dette felt kan efterlades uudfyldt for at fortsætte uden et nyt mærke for lageret.
+Description-de.UTF-8: Markierung (»Tag«) für die erstellte Inventarliste:
+ Jede Inventarliste kann eine zugeordnete Markierung enthalten. Bitte geben Sie die Markierung ein, die Sie für die Inventarliste haben möchten.
+ .
+ Dieses Feld kann leer bleiben, um ohne Setzen einer neuen Markierung für die Inventarliste fortzufahren.
+Description-es.UTF-8: Etiqueta del inventario generado:
+ Cada inventario puede tener una etiqueta asociada. Introduzca la etiqueta a utilizar con el nuevo inventario.
+ .
+ Puede dejar este campo en blanco para continuar sin asignar una nueva etiqueta al inventario.
+Description-fr.UTF-8: Étiquette de l'inventaire créé :
+ Chaque inventaire peut se voir associé une étiquette (« tag »). Veuillez indiquer celle que vous souhaitez utiliser pour l'inventaire de cette machine.
+ .
+ Ce champ peut être laissé vide pour ne pas utiliser d'étiquette avec cet inventaire.
+Description-gl.UTF-8: Etiqueta para o inventario xerado:
+ Cada inventario pode ter unha etiqueta asociada. Introduza a etiqueta que quere para o novo inventario.
+ .
+ Pode deixar este campo baleiro para continuar sen establecer unha nova etiqueta para o inventario.
+Description-it.UTF-8: Etichetta per l'inventario:
+ Ad ogni inventario può essere associata un'etichetta. Inserire l'etichetta che si desidera usare per il nuovo inventario.
+ .
+ Questo campo può essere lasciato in bianco per proseguire senza impostare un'etichetta per l'inventario.
+Description-ja.UTF-8: 生成したインベントリ用のタグ:
+ 各インベントリは関連するタグを持つことができます。新しいインベントリに使いたいタグを入力してください。
+ .
+ この欄を空白のままにしておいて、インベントリに新しいタグを設定しないで進めることもできます。
+Description-nl.UTF-8: Label voor de gegenereerde inventaris:
+ Met elke inventaris kan label geassocieerd worden. Welk label wilt u met de nieuwe inventaris associëren?
+ .
+ Als u geen label wilt instellen voor de inventaris kunt u dit veld gewoon leeg laten.
+Description-pl.UTF-8: Etykiety do wygenerowanego zestawienia:
+ Każde zestawienie może posiadać powiązaną etykietę. Proszę ją podać, jeśli ma zostać użyta dla nowego zestawienia.
+ .
+ Aby nie ustawiać nowej etykiety dla zestawienia, proszę pozostawić pole puste.
+Description-pt.UTF-8: Etiqueta para o inventário gerado:
+ Cada inventário pode ter associado uma etiqueta. Por favor introduza a etiqueta que gostaria de ter para o novo inventário.
+ .
+ Este campo pode ser deixado em branco para continuar sem definir uma nova etiqueta para o inventário.
+Description-pt_BR.UTF-8: Etiqueta para os inventários gerados:
+ Cada inventário pode ter uma etiqueta associada. Por favor, informe a tag que você gostaria para o novo inventário.
+ .
+ Este campo pode ser deixado em branco para continuar sem configurar uma nova etiqueta para o inventário.
+Description-ro.UTF-8: Eticheta pentru inventarul generat:
+ Fiecare inventar poate avea asociată o etichetă. Introduceți eticheta dorită pentru noul inventar.
+ .
+ Puteți continua și fără etichetarea inventarului lăsând liber acest câmp.
+Description-ru.UTF-8: Метка для создаваемой описи:
+ Каждой описи можно присвоить связанную с ней метку. Введите метку для новой описи.
+ .
+ Это поле можно оставить пустым, чтобы не задавать новую метку для описи.
+Description-sk.UTF-8: Značka generovaného inventára:
+ každý inventár môže pripojenú značku. Prosím zadajte značku, ktorá má byť použité v novom inventáre.
+ .
+ Toto pole môže ostať prázdne a v takom prípade nebude nastavená žiadna značka inventára.
+Description-sv.UTF-8: Ettikett för den skapade innehållsförteckningen:
+ Alla innehållsförteckningarna kan ha ettiketter, Ange ettikett som du vill använda för den nya innehållsförteckningen.
+ .
+ Fältet kan lämnas  blankt om ingen ettikett ska sättas på innehållsförteckningen.
+Description-vi.UTF-8: Thẻ cho bản kiểm kê đã tạo ra:
+ Mỗi bản kiểm kê có thể được gán một thẻ. Hãy nhập thẻ thích hợp với bản kiểm kê mới.
+ .
+ Cũng có thể bỏ trống trường này, để tiếp tục mà không lập một thẻ mới cho bản kiểm kê.
+

@@ -1,0 +1,121 @@
+
+Template: solaar/use_plugdev_group
+Type: boolean
+Default: false
+Description: Use plugdev group?
+ Please specify how non-root users should be given access to the Logitech
+ receiver devices.
+ .
+ If systemd or consolekit are in use, they can apply ACLs to make them
+ accessible via Solaar for the user logged in on the current seat. Right
+ now, ${SEAT_DAEMON_STATUS} daemon is running.
+ .
+ If neither of these daemons is in use, or if the receiver should also be
+ accessible for remotely logged in users, it is possible to grant access
+ for members of the "plugdev" system group.
+ .
+ If you do use the "plugdev" group, don't forget to make sure all the
+ appropriate users are members of that group. You can add new members to
+ the group by running, as root:
+     adduser <username> plugdev
+ For the group membership to take effect, the affected users need to log
+ out and back in again.
+Description-cs.UTF-8: Použít skupinu plugdev?
+ Zadejte prosím, jaký má být uživatelům, mimo uživatele root, umožněn přístup k přijímačům Logitech.
+ .
+ Pokud se používá systemd či consolekit, mohou pro uživatele přihlášené k aktuální relaci požadovat oprávnění, aby jim byly zpřístupněné přes Solaar. Nyní jsou spuštěni deamoni ${SEAT_DAEMON_STATUS}.
+ .
+ Pokud se žádný z těchto daemonů nepoužívá, nebo pokud má být přijímač přístupný vzdáleně přihlášeným uživatelům, je možné přidělit oprávnění pro členy systémové skupiny "plugdev".
+ .
+ Pokud použijete skupinu "plugdev", nezapomeňte se přesvědčit, že jsou všichni příslušní uživatelé členy této skupiny. Nové členy do skupiny můžete přidat spuštěním příkazu jako uživatel root:    adduser <username> plugdev
+ Aby se změny u členů skupiny projevily, je třeba příslušné uživatele odhlásit a znovu přihlásit.
+Description-da.UTF-8: Brug plugdev-gruppe?
+ Angiv venligst hvordan brugere, der ikke er administratorer, skal have adgang til Logitech-modtagerenheder.
+ .
+ Hvis systemd eller consolekit er i brug, så kan de anvende ACL'er til at gøre dem tilgængelige via Solaar for brugeren logget ind på det nuværende sæde. Lige nu, kører dæmonen ${SEAT_DAEMON_STATUS}.
+ .
+ Hvis ingen af disse dæmoner er i brug, eller hvis modtageren også skal være tilgængelig for eksternt indloggede brugere, er det muligt at give adgang for medlemmer i systemgruppen »plugdev«.
+ .
+ Hvis du bruger gruppen »plugdev«, så glem ikke at sikre dig, at alle de ønskede brugere er medlemmer af den gruppe. Du kan tilføje nye medlemmer til gruppen ved at køre, som administrator:
+     adduser <brugernavn> plugdev
+ For at gruppemedlemsskabet træder i kraft, skal de påvirkede brugere logge ud og ind igen.
+Description-de.UTF-8: Soll die Gruppe »plugdev« benutzt werden?
+ Bitte geben Sie an, wie Nicht-Root-Benutzern Zugriff auf die Logitech-Empfangsgeräte gewährt werden soll.
+ .
+ Falls Systemd oder Consolekit benutzt werden, können sie ACLs anwenden, um dem Benutzer, der über den aktuellen Platz angemeldet ist, über Solaar Zugriff darauf zu geben. Im Moment läuft der Daemon ${SEAT_DAEMON_STATUS}.
+ .
+ Falls keiner dieser Daemons benutzt wird oder auch aus der Ferne angemeldete Anwender Zugriff auf den Empfänger haben sollen, ist es möglich, Mitgliedern der Systemgruppe »plugdev« Zugriff zu gewähren.
+ .
+ Vergessen Sie nicht, falls Sie die Gruppe »plugdev« verwenden, dass sie sicherstellen müssen, dass alle dazugehörigen Anwender dieser Gruppe angehören müssen. Sie können der Gruppe als Root neue Mitglieder hinzufügen, indem Sie Folgendes ausführen:
+     adduser <Benutzername> plugdev
+ Damit die Gruppenmitgliedschaft wirksam wird, müssen sich die betroffenen Benutzer ab- und wieder anmelden.
+Description-es.UTF-8: ¿Desea utilizar el grupo plugdev?
+ Indique cómo deberían acceder los usuarios sin permisos de administrador a los dispositivos de recepción de Logitech.
+ .
+ Si systemd o consolekit se encuentran en uso pueden aplicar listas de control de acceso (ACL) para que sean accesibles al usuario que haya iniciado la sesión en el equipo a través de Solaar. Actualmente se encuentra en ejecución el demonio ${SEAT_DAEMON_STATUS}.
+ .
+ Si ninguno de estos demonios se encuentra en uso o si el dispositivo de recepción también debería ser accessible para los usuarios que hayan iniciado una sesión remota, puede permitir el acceso a los miembros del grupo del sistema «plugdev».
+ .
+ Si utiliza el grupo «plugdev» asegúrese de que todos los usuarios que lo requieran sean miembros de ese grupo. Puede añadir nuevos miembros al grupo ejecutando como root:
+     adduser <nombre_de_usuario> plugdev
+ Para que la asignación al grupo se aplique correctamente, los usuarios afectados necesitan reiniciar la sesión.
+Description-fr.UTF-8: Voulez-vous utiliser le groupe plugdev ?
+ Veuillez indiquer comment les utilisateurs non privilégiés auront accès au récepteur Logitech.
+ .
+ Si vous utilisez systemd ou consolekit, des listes de contrôle d'accès (« ACL ») permettent à l'utilisateur connecté localement d'y accéder avec Solaar. Actuellement, le démon ${SEAT_DAEMON_STATUS} est en fonctionnement.
+ .
+ Si vous n'utilisez aucun de ces démons ou si des utilisateurs distants doivent aussi accéder au récepteur, il est possible de donner accès aux membres du groupe « plugdev ».
+ .
+ Si vous utilisez le groupe « plugdev », n'oubliez pas de vérifier que tous les utilisateurs concernés appartiennent à ce groupe. De nouveaux membres peuvent être ajoutés au groupe en exécutant, en tant que superutilisateur, la commande :
+     adduser <username> plugdev
+ Pour que la prise en compte de l'appartenance au groupe soit effective, les utilisateurs concernés doivent se déconnecter puis se reconnecter.
+Description-it.UTF-8: Usare il gruppo plugdev?
+ Specificare come debba essere dato l'accesso ai dispositivi ricevitori Logitech agli utenti diversi da root.
+ .
+ Se sono in uso systemd o consolekit, possono applicare ACL per renderli accessibili attraverso Solaar all'utente collegato alla postazione attuale. In questo momento è in esecuzione il demone ${SEAT_DAEMON_STATUS}.
+ .
+ Se nessuno di questi demoni è in uso o se il ricevitore deve essere accessibile anche a chi fa il login remoto, si può consentire l'accesso al gruppo di sistema «plugdev».
+ .
+ Se viene scelto usare il gruppo «plugdev» non ci si dimentichi di controllare che tutti gli utenti appropriati siano membri di tale gruppo. Si possono aggiungere nuovi membri al gruppo eseguendo da root:
+     adduser <username> plugdev
+ Affinché il cambio di appartenenza al gruppo abbia effetto, è necessario che gli utenti interessati facciano il logout e quindi nuovamente il login.
+Description-nl.UTF-8: De plugdev-groep gebruiken?
+ Gelieve te specificeren hoe aan gewone gebruikers toegang tot de Logitech-ontvangers moet gegeven worden.
+ .
+ Indien systemd of consolekit actief zijn, kunnen zij ACL's gebruiken om hen via Solaar toegankelijk te maken voor de gebruiker die momenteel aangemeld is. Momenteel is de achtergronddienst ${SEAT_DAEMON_STATUS} actief.
+ .
+ Indien geen van beide achtergronddiensten actief is, of indien de ontvanger ook toegankelijk zou moeten zijn voor gebruikers die extern aangemeld zijn, is het mogelijk om de toegang te verlenen aan de leden van de systeemgroep "plugdev".
+ .
+ Indien u van de groep "plugdev" gebruik maakt, mag u niet vergeten om na te gaan of alle geëigende gebruikers lid zijn van die groep. U kunt nieuwe leden toevoegen aan de groep door als systeembeheerder het volgende commando te geven:
+     adduser <username> plugdev
+ Het lidmaatschap wordt pas effectief nadat de betreffende gebruiker zich afgemeld en nadien terug aangemeld heeft.
+Description-pt.UTF-8: Utilizar grupo plugdev?
+ Por favor especifique como deve ser dado acesso aos dispositivos de recepção Logitech a utilizadores não-root.
+ .
+ So o systemd ou consolekit estiverem a ser executados, eles podem aplicar ACLs para torná-los acessíveis via Solaar ao utilizador com sessão iniciada no assento actual. Agora mesmo, o daemon ${SEAT_DAEMON_STATUS} está em execução.
+ .
+ Se nenhum destes daemons estiver em execução, ou se o dispositivo de recepção deve também ser acessível a utilizadores com sessões iniciadas remotamente, é possível conceder acesso aos membros do grupo de sistema "plugdev".
+ .
+ Se utilizar o grupo "plugdev", não se esqueça de assegurar que todos os utilizadores adequados são membros desse grupo. Poderá adicionar novos membros ao grupo executando, como root:
+     adduser <username> plugdev
+ Para que a associação dos utilizadores ao grupo entre em vigor, os utilizadores afectados necessitam de sair e voltar a iniciar a sessão.
+Description-pt_BR.UTF-8: Usar grupo plugdev?
+ Por favor, especifique como usuários não-root deveriam obter acesso aos dispositivos do receptor Logitech.
+ .
+ Se o systemd ou o consolekit estão em uso, eles podem aplicar ACLs para torná-los acessíveis via Solaar para o usuário logado no assento ("seat") atual. Exatamente agora, o daemon ${SEAT_DAEMON_STATUS} está em execução.
+ .
+ Se nenhum desses daemons está em uso, ou se o receptor deveria ser acessível também para usuários logados remotamente, é possível dar acesso para membros do grupo de sistema "plugdev".
+ .
+ Se você usa o grupo "plugdev", não esqueça de certificar-se de que todos os usuários apropriados sejam membros desse grupo. Você pode adicionar novos membros ao grupo executando, como root:
+     adduser <nome_do_usuário> plugdev
+ Para efetivamente entrar no grupo, os usuários afetados precisam sair e entrar novamente no sistema.
+Description-ru.UTF-8: Использовать группу plugdev?
+ Выберите как не суперпользователи должны получать доступ к приёмным устройствам Logitech.
+ .
+ Если используется systemd или consolekit, можно применить ACL для того, чтобы сделать устройства доступными через Solaar для пользователя, вошедшего на текущее рабочее место (seat). В данный момент запущена служба ${SEAT_DAEMON_STATUS}.
+ .
+ Если данные службы не используются, или приёмник должен быть также доступен для пользователей, входящим удалённо, то возможно предоставить доступ через членство в системной группе «plugdev».
+ .
+ Если используется группа «plugdev», убедитесь, что только нужные пользователи являются её членами. Вы можете добавить новых членов с помощью (с правами суперпользователя):
+     adduser <имя пользователя> plugdev
+ Чтобы членство вступило в силу, добавленный пользователь должен повторно войти в систему.

@@ -1,0 +1,96 @@
+Template: pioneers-metaserver/ports
+Type: string
+Default: 5560-5569
+Description: Port range for creating new games on the metaserver:
+ The metaserver can create new games, so players don't need to install and
+ run the pioneers server. The ports which are used for these games can be
+ specified. If this field is left empty, the metaserver will disable its
+ game creation functionality.
+ .
+ If the value is not empty, it must be two port numbers, separated by a minus
+ sign.
+Description-da.UTF-8: Portinterval for oprettelse af nye spil på metaserveren:
+ Metaserveren kan oprette nye spil, så spillere ikke skal installere og køre pioneers' server. Portene, som bruges for disse spil, kan angives. Hvis dette felt er tomt, vil metaserveren deaktivere dens funktionalitet for spiloprettelse.
+ .
+ Hvis denne værdi ikke er tom, skal den være to portnumre, adskilt af et minustegn.
+Description-de.UTF-8: Port-Bereich, um neue Spiele auf dem Metaserver zu erstellen:
+ Der Metaserver kann neue Spiele erstellen, daher müssen die Spieler den Pioneers-Server nicht installieren und ausführen. Die für diese Spiele zu verwendenden Ports können angegeben werden. Falls dieses Feld leer bleibt, wird der Metaserver seine Funktionalität zum Erstellen von Spielen deaktivieren.
+ .
+ Falls der Wert nicht leer ist muss er zwei Portnummern, getrennt durch ein Minuszeichen, umfassen.
+Description-en_GB.UTF-8: Port range for creating new games on the metaserver:
+ The metaserver can create new games, so players don't need to install and run the pioneers server. The ports which are used for these games can be specified. If this field is left empty, the metaserver will disable its game creation functionality.
+ .
+ If the value is not empty, it must be two port numbers, separated by a minus sign.
+Description-es.UTF-8: Rango de puertos para crear juegos nuevos en el meta-servidor:
+ El meta-servidor puede crear juegos nuevos, de modo que los jugadores no necesitan instalar y ejecutar el servidor de pioneers. Los puertos que se utilizan para estos juegos se pueden especificar. Si deja este campo en blanco, el meta-servidor desactivará la funcionalidad de creación de juegos.
+ .
+ Si este valor no está vacío, debe ser dos números de puerto, separados por un guión.
+Description-fr.UTF-8: Plage de ports pour la création de nouvelles parties sur le métaserveur :
+ Le métaserveur peut créer de nouvelle parties, ce qui évite aux joueurs d'installer et d'exécuter le serveur de pioneers. Veuillez indiquer les ports qui pourront être utilsiés pour cela. Si vous laissez ce champ vide, la création de nouvelles parties sera désactivée.
+ .
+ Pour que cette valeur soit valable, elle doit comporter deux nombres entiers séparés par un tiret.
+Description-it.UTF-8: Intervallo di porte per creare nuovi giochi sul metaserver:
+ Il metaserver può creare nuovi giochi, quindi i giocatori non necessitano di installare e attivare un server pioneers. Le porte usate per questi giochi possono essere specificate. Lasciando vuoto questo campo, il metaserver diabilita la funzionalità per la creazione dei giochi.
+ .
+ Se questo valore non è vuoto, deve essere i due numeri di porta, separati da un segno meno.
+Description-ja.UTF-8: メタサーバ上で作成された新しいゲームのポート番号の範囲:
+ メタサーバは新しいゲームを作成できるので、プレイヤーは pioneers サーバをインストールして動作させる必要はありません。ポート番号はこれらのゲームを判別するのに使われます。この値が空のままの場合、メタサーバはゲーム作成機能を無効にします。
+ .
+ 値が空でない場合は、二つのポート番号をマイナス記号で区切って入力する必要があります。
+Description-nl.UTF-8: Poorten om te gebruiken voor het starten van nieuwe spellen door de metaserver:
+ De metaserver kan nieuwe spellen starten. Spelers hoeven dan de pioneers server niet te draaien. De poorten die gebruikt worden voor deze spellen kunnen worden ingesteld. Wordt dit veld leeg gelaten, dan zal de metaserver geen spellen opstarten.
+ .
+ Als het veld niet leeg is, moet het twee poortnummers zijn, gescheiden door een minteken.
+
+Template: pioneers-metaserver/name
+Type: string
+Default:
+Description: Server name for created games:
+ In some cases, the name the metaserver uses for itself when creating new
+ games is incorrect. If this field is not left empty, it is used to override
+ the detected hostname.
+Description-da.UTF-8: Servernavn for oprettede spil:
+ I nogle tilfælde er navnet metaserveren bruger for sig selv, når den opretter nye spil ikke korrekt. Hvis dette felt ikke efterlades tomt, bruges det til at overskrive det detekterede værtsnavn.
+Description-de.UTF-8: Servername für erstellte Spiele:
+ In einigen Fällen ist der Name, den der Metaserver für sich beim Erstellen von Spielen verwendet, falsch. Falls dieses Feld nicht leer gelassen wird, überschreibt der Wert den erkannten Namen des Rechners.
+Description-en_GB.UTF-8: Server name for created games:
+ In some cases, the name the metaserver uses for itself when creating new games is incorrect. If this field is not left empty, it is used to override the detected hostname.
+Description-es.UTF-8: El nombre del servidor para los juegos creados:
+ En algunos casos, el nombre que el meta-servidor utiliza para sí mismo cuando crea juegos nuevos es incorrecto. Si no deja este campo vacío, se utilizará para sobrescribir el nombre de la máquina detectado.
+Description-fr.UTF-8: Nom du serveur pour les nouvelles parties :
+ Dans certains cas, le nom utilisé par le métaserveur pour créer de nouvelles parties n'est pas valable. Si ce champ est renseigné, sa valeur remplacera le nom d'hôte pour nommer les nouvelles parties.
+Description-it.UTF-8: Nome server per i giochi:
+ In alcuni casi il nome che il metaserver usa per sé stesso quando crea un nuovo gioco non è corretto. Se questo campo non è vuoto, viene usato al posto del nome host rilevato.
+Description-ja.UTF-8: 作成されたゲームのサーバ名:
+ 時折、メタサーバが新しいゲームを作る際に使う名前が正しくない場合があります。この値が空のままではない場合、検出されたホスト名を上書きするのに使われます。
+Description-nl.UTF-8: Servernaam voor opgestarte spellen:
+ In sommige gevallen is de naam die de metaserver zichzelf geeft bij het starten van nieuwe spellen incorrect. Als dit veld niet leeg is, wordt de waarde gebruikt in plaats van de gedetecteerde computernaam.
+
+Template: pioneers-metaserver/arguments
+Type: string
+Default:
+Description: Extra arguments to pass to the metaserver:
+ These arguments are passed to the metaserver.
+  * --redirect: Redirect clients to another metaserver
+Description-da.UTF-8: Ekstra argumenter at videresende til metaserveren:
+ Disse argumenter videresendes til metaserveren.
+  * --redirect: Videresend klienter til en anden metaserver
+Description-de.UTF-8: Zusätzliche Argumente, die an den Metaserver übergeben werden sollen:
+ Diese Argumente werden an den Metaserver übergeben.
+  * --redirect: Leite Clients an einen anderen Metaserver weiter
+Description-en_GB.UTF-8: Extra arguments to pass to the metaserver:
+ These arguments are passed to the metaserver.
+  * --redirect: Redirect clients to another metaserver
+Description-es.UTF-8: Los argumentos extras para pasar al meta-servidor:
+ Estos argumentos se pasan al meta-servidor.
+  * --redirect: Redirecciona los clientes a otro meta-servidor.
+Description-it.UTF-8: Argomenti aggiuntivi da passare al metaserver:
+ Questi argomenti sono passati al metaserver.
+  * --redirect: redirige i client verso un altro metaserver
+Description-ja.UTF-8: メタサーバに渡す追加引数:
+ 以下の引数がメタサーバに渡されます。二つだけ重要な引数があります:
+  * --syslog-debug: syslog にデバッグ出力を送る
+  * --redirect: 別のメタサーバにクライアントをリダイレクトする
+Description-nl.UTF-8: Extra argumenten voor de metaserver:
+ Deze argumenten worden meegegeven aan de metaserver.
+  * --redirect: Verwijs clients naar een andere metaserver.

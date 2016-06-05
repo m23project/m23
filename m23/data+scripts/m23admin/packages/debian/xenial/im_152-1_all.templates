@@ -1,0 +1,279 @@
+Template: im/rpop
+Type: boolean
+Default: false
+Description: Use setuid imget for RPOP?
+ The RPOP feature is disabled by default. It is an obsolete feature (The
+ RPOP command was used instead of the PASS command to authenticate access
+ to a maildrop. It was removed in RFC 1460). If you prefer, you can use RPOP
+ by setuid imget.
+Description-cs.UTF-8: Použít setuid imget pro RPOP?
+ Vlastnost RPOP je implicitně vypnutá, protože už je dávno překonaná. (Příkaz RPOP se dříve používal pro autentizaci přístupu k maildropu namísto příkazu PASS, ale v RFC 1460 byl odstraněn). Pokud mu přesto dáváte přednost, můžete RPOP používat nastavením setuid bitu na imget.
+Description-da.UTF-8: Brug setuid imget for RPOP?
+ RPOP-funktionen er deaktiveret som standard. Det er en forældet funktion (kommandoen RPOP blev brugt i stedet for PASS til at godkende adgang til en maildrop. Den blev fjernet i RFC 1460). Hvis du foretrækker det, kan du bruge RPOP ved at setuid imget.
+Description-de.UTF-8: Setuid imget für RPOP verwenden?
+ Die RPOP-Funktionalität ist standardmäßig deaktiviert. Es ist eine veraltete Funktionalität (der RPOP-Befehl wurde statt des PASS-Befehls verwendet, um sich bei einer Mailabgabestelle (maildrop) zu authentifizieren. Er wurde in RFC 1460 entfernt). Falls Sie möchten, können Sie RPOP via setuid imget verwenden.
+Description-es.UTF-8: ¿Desea usar setuid imget para RPOP?
+ La característica RPOP está deshabilitada por omisión. Es una característica obsoleta (La orden RPOP se usaba en lugar de la orden PASS para autenticar el acceso a maildrop. Se eliminó en el RFC 1460). Si lo prefiere puede usar RPOP con setuid imget.
+Description-fr.UTF-8: Pour RROP, voulez-vous utiliser imget avec le bit setuid positionné ?
+ Le protocole RPOP est désactivé par défaut. C'est une possibilité obsolète. La commande RPOP était utilisée à la place de la commande PASS pour authentifier l'accès à une boîte aux lettres. Elle a été supprimée par la RFC 1460. Si vous voulez utiliser le protocole RPOP, le bit « set-user-id » sera ajouté aux droits d'imget.
+Description-it.UTF-8: Usare imget con bit setuid per RPOP?
+ La funzionalità RPOP è disabilitata in modo predefinito. È una funzionalità obsoleta. (Il comando RPOP veniva usato al posto del comando PASS per autenticare l'accesso a maildrop. È stato rimosso nella RFC 1460.) Se lo si preferisce si può usare RPOP utilizzando imget con bit setuid.
+Description-ja.UTF-8: RPOP のために setuid imget を使いますか ?
+ RPOP 機能は、デフォルトでは無効になっています。それは廃れた機能です (RPOP コマンドは、メールボックスにアクセスするための認証で PASS コマンドの代りに使われました。それは RFC 1460 で削除されました)。お望みなら、setuid imget によって RPOP が使えます。
+Description-nl.UTF-8: Wilt imget met de SUID-bit actief installeren voor RPOP?
+ Het verouderde RPOP-feature is standaard gedeactiveerd (Het RPOP-commando werd gebruikt in plaats van het PASS-commando voor authenticatie van de toegang bij een e-mailaflevering. Dit is verwijderd in RFC 1460). Als u dit verkiest kunt u RPOP gebruiken door imget te installeren met de suid-bit.
+Description-pt.UTF-8: Utilizar o setuid imget para RPOP?
+ A funcionalidade RPOP por omissão vem desabilitada. É uma funcionalidade obsoleta (o comando RPOP era utilizado em vez do comando PASS para autenticar o acesso a um maildrop. Foi removida na RFC 1460). Se preferir, pode utilizar RPOP através do suid imget.
+Description-pt_BR.UTF-8: Ligar bit setuid no imget para RPOP ?
+ O recurso RPOP está desabilitado por padrão. Trata-se de um recurso obsoleto (o comando RPOP foi usado ao invés do comando PASS para autenticar o acesso para um maildrop. O mesmo foi removido na RFC 1460). Caso prefira, você pode usar RPOP ligando o bit setuid no imget.
+Description-ru.UTF-8: Использовать setuid imget для включения RPOP?
+ По умолчанию поддержка RPOP выключена. Эта устаревшее свойство (Команда RPOP использовалась вместо команды PASS для аутентификации в maildrop. Она удалена в RFC 1460). Если хотите, то можете использовать RPOP, установив setuid бит на imget.
+Description-sv.UTF-8: Använd setuid imget för RPOP?
+ Funktionen RPOP är avstängd som standard. Det är en föråldrad funktion (RPOP-kommandot användes istället för PASS-kommandot för att autentisera tillgång till en maildrop. Den togs bort i RFC 1460). Om du vill kan du använda RPOP genom att sätta setuid på imget.
+Description-vi.UTF-8: Dùng «setuid imget» cho RPOP không?
+ Tính năng RPOP bị tắt theo mặc định. Nó là một tính năng cũ. (Từng dùng lệnh RPOP thay vào lệnh PASS để xác thực truy cập một hộp thẻ thư. Nó bị loại bỏ trong RFC 1460.) Nếu bạn muốn, bạn còn có thể sử dụng RPOP bằng cách «setuid imget».
+
+Template: im/siteconfig_by_hand
+Type: boolean
+Default: false
+Description: Generate /etc/im/SiteConfig by hand?
+ This package normally generates /etc/im/SiteConfig. If you prefer, you can
+ generate /etc/im/SiteConfig by hand.
+Description-cs.UTF-8: Vytvořit /etc/im/SiteConfig ručně?
+ Tento balíček obvykle vytváří soubor /etc/im/SiteConfig. Samozřejmě ho můžete vytvořit také ručně.
+Description-da.UTF-8: Opret /etc/im/SiteConfig manuelt?
+ Denne pakke opretter normalt /etc/im/SiteConfig. Hvis du fortrækker det, kan du oprette /etc/im/SiteConfig manuelt.
+Description-de.UTF-8: /etc/im/SiteConfig von Hand erstellen?
+ Normalerweise wird eine generische /etc/im/SiteConfig von diesem Paket erstellt. Falls Sie möchten, können Sie die Datei /etc/im/SiteConfig von Hand erstellen.
+Description-es.UTF-8: ¿Desea generar /etc/im/SiteConfig manualmente?
+ Usualmente este paquete genera el fichero «/etc/im/SiteConfig». Si lo prefiere, puede generarlo manualmente.
+Description-fr.UTF-8: Voulez-vous créer vous-même /etc/im/SiteConfig ?
+ Normalement, le paquet crée un fichier /etc/im/SiteConfig. Si vous voulez, vous pouvez le créer vous-même.
+Description-it.UTF-8: Generare /etc/im/SiteConfig manualmente?
+ Questo pacchetto normalmente genera /etc/im/SiteConfig. Se lo si preferisce, si può generare /etc/im/SiteConfig manualmente.
+Description-ja.UTF-8: /etc/im/SiteConfig を手作業で作りますか ?
+ 通常はこのパッケージが/etc/im/SiteConfigを生成します。お望みなら、あなたの手作業によって /etc/im/SiteConfig を生成できます。
+Description-nl.UTF-8: Wilt u /etc/im/SiteConfig handmatig aanmaken?
+ Normaal maakt dit pakket het bestand /etc/im/SiteConfig aan. U kunt ervoor kiezen om dit bestand handmatig aan te maken.
+Description-pt.UTF-8: Gerar o /etc/im/SiteConfig manualmente?
+ Este pacote normalmente gera /etc/im/SiteConfig. Se você preferir, pode gerar manualmente o /etc/im/SiteConfig.
+Description-pt_BR.UTF-8: Deseja gerar o arquivo /etc/im/SiteConfig manualmente ?
+ Este pacote normalmente gera o arquivo /etc/im/SiteConfig. Caso você prefira, você pode gerar esse arquivo manualmente.
+Description-ru.UTF-8: Будет ли /etc/im/SiteConfig генерироваться самостоятельно?
+ Обычно файл /etc/im/SiteConfig генерируется данным пакетом. Если хотите, то можете генерировать /etc/im/SiteConfig самостоятельно.
+Description-sv.UTF-8: Generera /etc/im/SiteConfig för hand?
+ Detta paket genererar normalt sett /etc/im/SiteConfig. Om du önskar kan du generera /etc/im/SiteConfig för hand.
+Description-vi.UTF-8: Tự tạo ra «/etc/im/SiteConfig» không?
+ Gói này thường tạo ra «/etc/im/SiteConfig». Nếu bạn muốn, có thể tự tạo ra «/etc/im/SiteConfig».
+
+Template: im/fromdomain
+Type: string
+Description: Default From: domain:
+ In a mail/news header, if a From: field does not have a domain part, imput
+ will add this domain automatically.
+ .
+ If unsure, you can ignore this.
+Description-cs.UTF-8: Výchozí hodnota Od: doména:
+ Pokud není v hlavičce mailu/news_zprávy u položky Od: zadána doménová část, pak bude automaticky připojena tato doména.
+ .
+ Pokud si nejste jisti, pak si tohoto nevšímejte.
+Description-da.UTF-8: Standard Fra:-domæne:
+ I et hoved for post/nyheder, hvis et Fra:-felt ikke har en domænedel, vil imput tilføje dette domæne automatisk.
+ .
+ Hvis du er usikker, kan du ignorere dette.
+Description-de.UTF-8: Standard From:-Domain:
+ Falls ein From:-Feld in den E-Mail-/News-Kopfzeilen keinen Domain-Teil hat, wird Imput diesen automatisch hinzufügen.
+ .
+ Falls Sie sich nicht sicher sind, können Sie dies ignorieren.
+Description-es.UTF-8: Dominio predeterminado para campo «De:»:
+ En la cabecera de un correo/noticia, si un campo De: no tiene una parte de dominio, imput añadirá este dominio automáticamente.
+ .
+ Si no está seguro puede ignorar esto.
+Description-fr.UTF-8: Domaine par défaut pour l'en-tête From:
+ Dans l'en-tête d'un article ou d'un courriel, si le champ From: ne possède pas de partie @domaine, ce domaine sera automatiquement ajouté par imput.
+ .
+ Si vous ne connaissez pas la valeur de ce champ, vous pouvez ignorer cette question.
+Description-it.UTF-8: Dominio «From:» predefinito:
+ In un'intestazione di messaggio di posta o news, se il campo «From:» non ha la parte del dominio, imput aggiungerà automaticamente questo dominio.
+ .
+ Se non si è sicuri si può ignorare questa impostazione.
+Description-ja.UTF-8: デフォルトの From: ドメイン:
+ mail/news ヘッダの From: フィールドにドメイン部分が無い場合、imput がこのドメインを自動的に付加します。
+ .
+ よくわからないなら、入力しなくてもかまいません。
+Description-nl.UTF-8: Standaard 'Van'-domein:
+ In een e-mail- of nieuwskoptekst wordt dit domein automatisch toegevoegd als het 'Van'-veld geen domeingedeelte heeft.
+ .
+ Als u twijfelt kunt u dit negeren.
+Description-pt.UTF-8: 'From', por omissão: domínio:
+ Num cabeçalho de mail/news, se um campo 'From:' não tiver a parte do domínio, o imput irá acrescentar automaticamente este domínio.
+ .
+ Caso não tenha a certeza, pode ignorar isto.
+Description-pt_BR.UTF-8: Domínio From: (De: ) padrão:
+ Em um cabeçalho de mensagem/notícia, caso um campo From: (De: ) não possua a parte do domínio, o imput irá adicionar automaticamente o domínio aqui informado.
+ .
+ Caso não tenha certeza, você pode ignorar essa pergunta.
+Description-ru.UTF-8: Домен по умолчанию для From: :
+ Если поле From: в заголовке сообщений почты/новостей не содержит доменной части, то imput будет добавлять указанный домен автоматически.
+ .
+ Если не уверены, ничего не вводите.
+Description-sv.UTF-8: Förvald domän för Från:
+ Om ett "Från:"-fält inte inkluderar en domän i ett huvud för e-post/nyhetsgruppmeddelanden kan imput lägga till denna domän automatiskt.
+ .
+ Om du är osäker kan du ignorera detta.
+Description-vi.UTF-8: Miền «Từ:» mặc định:
+ Trong phần đầu thư điện tử hay thông điệp tin tức, nếu trường «Từ:» (From:) không có một phần miền (v.d. vnoss.org) thì trình imput sé tự động thêm miền này.
+ .
+ Nếu chưa chắc thì bạn có thể bỏ qua tùy chọn này.
+
+Template: im/todomain
+Type: string
+Description: Default To: domain:
+ In a mail header, if a To: field does not have a domain part, imput will
+ add this domain automatically.
+ .
+ If unsure, you can ignore this.
+Description-cs.UTF-8: Výchozí hodnota Komu: doména:
+ Pokud není v hlavičce mailu u položky Komu: zadána doménová část, pak bude automaticky připojena tato doména.
+ .
+ Pokud si nejste jisti, pak si tohoto nevšímejte.
+Description-da.UTF-8: Standarddomæne for Til:
+ I et posthoved, hvis et Til:-felt ikke har en domænedel, så vil imput tilføje dette domæne automatisk.
+ .
+ Hvis du er usikker, kan du ignorere dette.
+Description-de.UTF-8: Standard To:-Domain:
+ Falls ein To:-Feld in den E-Mail-Kopfzeilen keinen Domain-Teil hat, wird Imput diesen automatisch hinzufügen.
+ .
+ Falls Sie sich nicht sicher sind, können Sie dies ignorieren.
+Description-es.UTF-8: Dominio predeterminado para campo «Para:»:
+ Si un campo Para: no tiene una parte de dominio en la cabecera de un correo, imput añadirá este dominio automáticamente.
+ .
+ Si no está seguro puede ignorar esto.
+Description-fr.UTF-8: Domaine par défaut pour le champ To:
+ Dans l'en-tête d'un courriel, si le champ To: ne possède pas de partie @domaine, ce domaine sera automatiquement ajouté par imput.
+ .
+ Si vous ne connaissez pas la valeur de ce champ, vous pouvez ignorer cette question.
+Description-it.UTF-8: Dominio «To:» predefinito:
+ In un'intestazione di messaggio di posta, se il campo «To:» non ha la parte del dominio, imput aggiungerà automaticamente questo dominio.
+ .
+ Se non si è sicuri si può ignorare questa impostazione.
+Description-ja.UTF-8: デフォルトの To: ドメイン:
+ mail ヘッダの To: フィールドにドメイン部分が無い場合、imput がこのドメインを自動的に付加します。
+ .
+ よくわからないなら、入力しなくてもかまいません。
+Description-nl.UTF-8: Stanaard 'Aan'-domein:
+ In een e-mail-koptekst wordt dit domein automatisch toegevoegd als het 'Aan'-veld geen domeingedeelte heeft.
+ .
+ Als u twijfelt kunt u dit negeren.
+Description-pt.UTF-8: 'To:' por omissão: domínio:
+ Num cabeçalho de mail, se o campo 'To:' não tiver a parte do domínio, o imput irá automaticamente acrescentar este domínio.
+ .
+ Caso não tenha a certeza, pode ignorar isto.
+Description-pt_BR.UTF-8: Domínio To: (Para: ) padrão:
+ Em um cabeçalho de mensagem, caso um campo To: (Para: ) não possua a parte do domínio, o imput irá adicionar automaticamente o domínio aqui informado.
+ .
+ Caso não tenha certeza, você pode ignorar essa pergunta.
+Description-ru.UTF-8: Домен по умолчанию для To: :
+ Если поле To: в заголовке сообщений почты/новостей не содержит доменной части, то imput будет добавлять указанный домен автоматически.
+ .
+ Если не уверены, ничего не вводите.
+Description-sv.UTF-8: Förvald domän för Till:
+ Om ett "Till:"-fält inte inkluderar en domän i ett huvud för e-postmeddelanden kan imput lägga till denna domän automatiskt.
+ .
+ Om du är osäker kan du ignorera detta.
+Description-vi.UTF-8: Miền «Cho:» mặc định:
+ Trong phần đầu thư điện tử hay thông điệp tin tức, nếu trường «Cho:» (To:) không có một phần miền (v.d. vnoss.org) thì trình imput sé tự động thêm miền này.
+ .
+ Nếu chưa chắc thì bạn có thể bỏ qua tùy chọn này.
+
+Template: im/organization
+Type: string
+Description: Organization:
+ In a news header, imput will add an Organization: field automatically.
+ .
+ If unsure, you can ignore this.
+Description-cs.UTF-8: Organizace:
+ V hlavičce news zprávy bude atomaticky přidána položka Organizace.
+ .
+ Pokud si nejste jisti, pak si tohoto nevšímejte.
+Description-da.UTF-8: Organisation:
+ I et nyhedshoved vil imput tilføje et Organisation:-felt automatisk.
+ .
+ Hvis du er usikker, kan du ignorere dette.
+Description-de.UTF-8: Organisation:
+ In News-Kopfzeilen wird Imput das »Organization:«-Feld automatisch hinzufügen.
+ .
+ Falls Sie sich nicht sicher sind, können Sie dies ignorieren.
+Description-es.UTF-8: Organización:
+ En una cabecera de noticia, imput añadirá un campo Organización: automáticamente.
+ .
+ Si no está seguro puede ignorar esto.
+Description-fr.UTF-8: Organisation:
+ Imput ajoutera automatiquement un champ Organization: à l'en-tête des articles.
+ .
+ Si vous ne connaissez pas la valeur de ce champ, vous pouvez ignorer cette question.
+Description-it.UTF-8: Campo «Organization:»
+ In un'intestazione di messaggio news imput aggiungerà automaticamente un campo «Organization:»
+ .
+ Se non si è sicuri si può ignorare questa impostazione.
+Description-ja.UTF-8: 組織・団体 (Organization):
+ news ヘッダに、imput は Organization: フィールドを自動的に付加します。
+ .
+ よくわからないなら、入力しなくてもかまいません。
+Description-nl.UTF-8: Organisatie:
+ In een nieuwskoptekst wordt door imput het 'Organisatie'-veld automatisch toegevoegd.
+ .
+ Als u twijfelt kunt u dit negeren.
+Description-pt.UTF-8: Organização:
+ Num cabeçalho de 'news', o imput irá acrescentar automaticamente um campo 'Organization:'.
+ .
+ Caso não tenha a certeza, pode ignorar isto.
+Description-pt_BR.UTF-8: Organização:
+ Em um cabeçalho de notícias, o imput irá adicionar automaticamente um campo Organization: (Organização: ) .
+ .
+ Caso não tenha certeza, você pode ignorar essa pergunta.
+Description-ru.UTF-8: Организация:
+ В заголовки новостей imput будет автоматически добавлять поле Organization:.
+ .
+ Если не уверены, ничего не вводите.
+Description-sv.UTF-8: Organisation:
+ I ett huvud för nyhetsgruppmeddelande kan imput lägga till ett "Organisation:"-fält automatiskt.
+ .
+ Om du är osäker kan du ignorera detta.
+Description-vi.UTF-8: Tổ chức:
+ Trong một phần đầu của một thông điệp tin tức, trình imput sẽ tự động thêm một trường «Tổ chức» (Organization)
+ .
+ Nếu chưa chắc thì bạn có thể bỏ qua tùy chọn này.
+
+Template: im/use_maildir
+Type: boolean
+Default: false
+Description: Use imget with maildir?
+ A maildir is not used by default. If you prefer, imget can retrieve mails
+ from ~/Maildir/{new,cur}.
+Description-cs.UTF-8: Použít imget spolu s maildirem?
+ Implicitně není maildir používán. Pokud si ho přesto přejete, imget může získávat zprávy z ~/Maildir/{new,cur}.
+Description-da.UTF-8: Brug imget med maildir?
+ En maildir bruges ikke som standard. Hvis du foretrækker det kan imget hente post fra ~/Maildir/{new,cur}.
+Description-de.UTF-8: Imget mit Maildir verwenden?
+ Standardmäßig wird kein Maildir verwendet. Falls Sie dies bevorzugen, kann Imget E-Mail aus ~/Maildir/{new,cur} abholen.
+Description-es.UTF-8: ¿Desea usar imget con maildir?
+ No se utiliza ningún maildir por omisión. Si lo prefiere, imget puede obtener los correos de ~/Maildir/{new,cur}.
+Description-fr.UTF-8: Voulez-vous utiliser le format « maildir » avec imget ?
+ Si vous voulez, imget peut récupérer les courriels dans ~/Maildir/{new,cur}, mais ce n'est pas le format utilisé par défaut.
+Description-it.UTF-8: Usare imget con maildir?
+ In modo predefinito non viene usata una maildir. Se lo si preferisce, imget può recuperare i messaggi di posta da ~/Maildir/{new,cur}.
+Description-ja.UTF-8: imget で maildir を使いますか ?
+ maildir はデフォルトでは使われません。お望みなら、imget で ~/Maildir/{new,cur} からメールを受信できます。
+Description-nl.UTF-8: Wilt u imget met maildir gebruiken?
+ Standaard wordt er geen maildir gebruikt. U kunt ervoor kiezen om imget e-mails van ~/Maildir/{new,cur} te laten ophalen.
+Description-pt.UTF-8: Utilizar o imget com 'maildir'?
+ 'maildir' não é utilizado por omissão. Se preferir, o imget pode obter mails a partir de ~/Maildir/{new,cur}.
+Description-pt_BR.UTF-8: Deseja usar o imget com Maildir ?
+ O formato Maildir não é usado por padrão. Caso você prefira, o imget pode recuperar mensagens de ~/Maildir/{new,cur}.
+Description-ru.UTF-8: Использовать imget с maildir?
+ По умолчанию maildir не используется. Если хотите, imget может забирать почту из ~/Maildir/{new,cur}.
+Description-sv.UTF-8: Använda imget med maildir?
+ Ett maildir används inte som standard. Om du önskar kan imget hämta post från ~/Maildir/{new,cur}.
+Description-vi.UTF-8: Sử dụng trình imget với maildir (thư mục thư) không?
+ Mặc định là không sử dụng một thư mục thư. Nếu bạn muốn, trình imget có thể gọi thư từ:«~/Maildir/{new,cur}»

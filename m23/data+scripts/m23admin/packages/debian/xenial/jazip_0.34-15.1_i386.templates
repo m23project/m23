@@ -1,0 +1,157 @@
+Template: jazip/setup
+Type: note
+Description: Notice for jazip packages users
+ This message is displayed because the configuration file /etc/jazip.conf
+ was not on your system prior to package installation.
+ .
+ The script `/usr/sbin/jazipconfig --non-interactive` was run in an attempt
+ to create a working /etc/jazip.conf configuration file. If this was
+ unsuccessful, run /usr/sbin/jazipconfig again as root without the
+ --non-interactive switch, or consult jazip.conf(5) to create it yourself.
+ .
+ Users must be added to the 'floppy' group to allow access to the jazip
+ program and the devices it manages.  For example, to add user 'joe':
+ .
+ # adduser joe floppy
+ .
+ See /usr/share/doc/jazip/README.Debian for details.
+Description-cs.UTF-8: Poznámka pro uživatele balíku jazip
+ Tato zpráva se zobrazila, protože do instalace balíku na vašem systému neexistoval konfigurační soubor /etc/jazip.conf.
+ .
+ Pro vytvoření funkčního konfiguračního souboru byl spuštěn skript `/usr/sbin/jazipconfig --non-interactive`. Jestliže skript selhal, spusťte jej ručně jako uživatel root, tentokráte bez přepínače --non-interactive, nebo podle manuálové stránky jazip.conf(5) vytvořte konfigurační soubor sami.
+ .
+ Aby mohli uživatelé používat program jazip a zařízení jím spravovaná, musí být součástí skupiny 'floppy'. Například uživatele 'novak' přidáte takto:
+ .
+ # adduser novak floppy
+ .
+ Podrobnosti naleznete v /usr/share/doc/jazip/README.Debian.
+Description-da.UTF-8: Bemærkning til brugere af jazippakker
+ Denne besked vises da konfigurationsfilen /etc/jazip.conf ikke blev fundet på dit system før pakkeinstallation.
+ .
+ Skriptet »/usr/sbin/jazipconfig --non-interactive« blev kørt i et forsøg på at oprette en fungerende konfigurationsfil i /etc/jazip.conf. Hvis dette ikke lykkes, kør /usr/sbin/jazip.conf igen som administrator (root) uden tilvalget --non-interactive, eller konsulter jazip.conf(5) for hjælp til selv at oprette den.
+ .
+ Brugere skal tilføjes til gruppen »floppy« for at få adgang til jazipprogrammet og de enheder den håndterer. For eksempel, for at tilføje bruger »joe«:
+ .
+ # adduser joe floppy
+ .
+ Se /usr/share/doc/jazip/README.Debian for detaljer.
+Description-de.UTF-8: Hinweise für jazip-Benutzer
+ Diese Meldung erscheint, da die Konfigurationsdatei /etc/jazip.conf vor der Paketinstallation nicht vorhanden war.
+ .
+ Das Script 'usr/sbin/jazipconfig --non-interactive' wurde ausgeführt, um eine lauffähige Version der Datei /etc/jazip.conf zu erstellen. Wenn dies fehlschlug, dann starten Sie als root /usr/sbin/jazipconfig erneut, jedoch ohne den Schalter --non-interactive. Weiterhin finden Sie in der Manpage jazip.conf(5) Hinweise zum manuellen Erstellen der Datei.
+ .
+ Benutzer müssen der Gruppe 'floppy' angehören, um mit jazip arbeiten zu können. Zum Bespiel fügen Sie den Benutzer 'joe' zur Gruppe mit folgendem Befehl hinzu:
+ .
+ # adduser joe floppy
+ .
+ In der Datei /usr/share/doc/jazip/README.Debian finden weitere Infos.
+Description-es.UTF-8: Aviso para los usuarios del paquete jazip
+ Este mensaje se muestra debido a que el fichero de configuración «/etc/jazip.conf» no estaba en su sistema antes de la instalación del paquete.
+ .
+ Se ejecutó el script «/usr/sbin/jazipconfig --non-interactive» en un intento de crear un fichero de configuración «/etc/jazip.conf» funcional. Si el script no tuvo éxito, ejecute de nuevo, como administrador (root), «/usr/sbin/jazipconfig» sin la opción «--non-interactive», o consulte «jazip.conf(5)» para crearlo usted mismo.
+ .
+ Se deben añadir los usuarios al grupo «floppy» para permitirles el acceso al programa jazip y a los dispositivos que éste gestiona. Por ejemplo, para añadir el usuario «alicia»:
+ .
+ # adduser alicia floppy
+ .
+ Consulte «/usr/share/doc/jazip/README.Debian» para más detalles.
+Description-eu.UTF-8: Jazip paketeen erabiltzaileentzat oharra
+ Mezu hau zure ordenagailuan pakete instalazioa aurretik /etc/jazip.conf konfigurazio fitxategirik ez zegoelako bistaratzen da.
+ .
+ `/usr/sbin/jazipconfig --non-interactive` exekutatu da /etc/jazip.conf konfigurazio berria sortzeko. Honek funtzionatuko ez balu, exekutatu /usr/sbin/jazipconfig root gisa --non-interactive aldagaia gabe, edo jazip.conf(5) begiratu zure kabuz sortzeko.
+ .
+ Erabiltzaileak 'floppy' taldera gehitu behar dira jazip programa eta kudeatzen dituen gailuak erabiltzea gaitzeko.  Adibidez 'patxi' erabiltzailea gehitzeko:
+ .
+ # adduser patxi floppy
+ .
+ Ikusi /usr/share/doc/jazip/README.Debian xehetasunetarako.
+Description-fi.UTF-8: Huomatus jazip-pakettien käyttäjille
+ Tämä viesti näytetään, koska järjestelmässä ei ollut asetustiedostoa /etc/jazip.conf ennen paketin asennusta.
+ .
+ Komentosarja ”/usr/sbin/jazipconfig --non-interactive” ajettiin tarkoituksena luoda toimiva asetustiedosto /etc/jazip.conf. Tämä epäonnistui, joten komento /usr/sbin/jazipconfig tulisi ajaa uudelleen pääkäyttäjänä ilman valitsinta --non-interactive tiedoston luomiseksi, tai vaihtoehtoisesti luoda se käsin man-ohjesivun jazip-conf(5) avulla.
+ .
+ Käyttäjät tulee lisätä ryhmään ”floppy” käyttöoikeuksien antamiseksi jazip-ohjelmaan ja sen hallinnoimiin laitteisiin. Esimerkiksi käyttäjän ”matti” lisäämiseksi:
+ .
+ # adduser matti floppy
+ .
+ Lisätietoja löytyy tiedostosta /usr/share/doc/jazip/README.Debian.
+Description-fr.UTF-8: Note aux utilisateurs du paquet jazip
+ Ce message vous est présenté car le fichier de configuration /etc/jazip.conf n'existait pas avant l'installation du paquet.
+ .
+ Le script « /usr/sbin/jazipconfig --non-interactive » a été exécuté pour tenter de créer automatiquement le fichier de configuration /etc/jazip.conf.  Si cela a échoué, veuillez exécuter de nouveau /usr/sbin/jazipconfig avec les privilèges du super-utilisateur (root), mais sans l'option « --non-interactive », ou consultez jazip.conf(5) pour le créer vous-même.
+ .
+ Les utilisateurs doivent être ajoutés au groupe « floppy » pour pouvoir se servir du programme jazip et des périphériques qu'il gère. La commande suivante permet de faire cette opération pour l'utilisateur « joe » :
+ .
+  adduser joe floppy
+ .
+ Veuillez consulter /usr/share/doc/jazip/README.Debian pour plus d'informations.
+Description-gl.UTF-8: Aviso para os usuarios dos paquetes de jazip
+ Amósase esta mensaxe porque o ficheiro de configuración /etc/jazip.conf non existía no sistema antes da instalación do paquete.
+ .
+ Executouse o script "/usr/sbin/jazipconfig --non-interactive" para tentar crear un ficheiro de configuración /etc/jazip.conf. Se isto non tivo éxito, execute /usr/sbin/jazipconfig de novo coma administrador sen o argumento --non-interactive, ou consulte jazip.conf(5) para crealo vostede mesmo.
+ .
+ Os usuarios deben estar engadidos ao grupo "floppy" para lles permitir o acceso ao programa jazip e aos dispositivos que xestiona. Por exemplo, para engadir o usuario "pepe":
+ .
+ # adduser pepe floppy
+ .
+ Consulte /usr/share/doc/jazip/README.Debian para máis detalles.
+Description-ja.UTF-8: jazip パッケージユーザへの通知
+ パッケージインストール前に /etc/jazip.conf 設定ファイルがシステム上になかったので、このメッセージが表示されています。
+ .
+ /etc/jazip.conf 設定ファイルの作成を試みるために、'/usr/sbin/jazipconfig --non-interactive' スクリプトが動作しました。失敗したのなら、再度 root ユーザで /usr/sbin/jazipconfig を --non-interactive オプションを外して実行するか、あなた自身でこの設定ファイルを作成するために、jazip.conf(5) を参照してください。
+ .
+ ユーザは、jazip プログラムと管理するデバイスへのアクセスを可能にする 'floppy' グループに加えられる必要があります。例えば、ユーザ 'joe' を加えるには次のように実行します:
+ .
+ # adduser joe floppy
+ .
+ 詳細は /usr/share/doc/jazip/README.Debian を確認してください。
+Description-nl.UTF-8: Opmerking voor jazip gebruikers
+ Dit bericht wordt weergegeven omdat het configuratie bestand /etc/jazip.conf niet aanwezig was op uw systeem alvorens dit pakket te installeren.
+ .
+ Het script `/usr/sbin/jazipconfig --non-interactive` werd uitgevoerd om te proberen een werkend /etc/jazip.conf configuratie bestand aan te maken. Als dit niet succesvol was, voer /usr/sbin/jazipconfig dan opnieuw uit als root zonder de --non-interactive parameter, of raadpleeg jazip.conf(5) om het zelf aan te maken.
+ .
+ Gebruikers dienen toegevoegd te worden aan de 'floppy' groep om toegang te hebben tot het jazip programma en het apparaat dat het beheert. Voorbeeld: om gebruiker 'joe' toe te voegen:
+ .
+ # adduser joe floppy
+ .
+ Zie /usr/share/doc/jazip/README.Debian voor details.
+Description-pt.UTF-8: Nota para os utilizadores dos pacotes jazip
+ Esta mensagem é mostrada porque o ficheiro de configuração /etc/jazip.conf não estava no seu sistema antes da instalação do pacote.
+ .
+ o script `/usr/sbin/jazipconfig --non-interactive` foi executado na tentativa de criar um ficheiro de configuração /etc/jazip.conf que funcione. Caso isto não tenha tido sucesso, execute o /usr/sbin/jazipconfig outra vez, como root, sem o --non-interactive switch, ou consulte o jazip.conf(5) para o criar você mesmo.
+ .
+ Os utilizadores têm de ser adicionados ao grupo 'floppy' para terem acesso ao programa jazip e aos dispositivos que gere. Por exemplo, para adicionar o utilizador 'joe':
+ .
+ # adduser joe floppy
+ .
+ Para mais detalhes veja /usr/share/doc/jazip/README.Debian.
+Description-ru.UTF-8: Заметки для пользователей пакета jazip
+ Это сообщение отображается потому, что не был найден настроечный файл /etc/jazip.conf от предыдущей установки пакета.
+ .
+ Сценарий `/usr/sbin/jazipconfig --non-interactive` был запущен в попытке создать работоспособный настроечный файл /etc/jazip.conf. Если это не удалось, то запустите /usr/sbin/jazipconfig снова от имени пользователя root без ключа --non-interactive или проконсультируйтесь со страницей руководства jazip.conf(5), чтобы создать этот файл самостоятельно.
+ .
+ Пользователи должны быть добавлены в группу 'floppy', чтобы разрешить доступ к программе jazip и устройствам, которые она обслуживает. Например, вот как можно добавить пользователя 'joe':
+ .
+ # adduser joe floppy
+ .
+ См. подробности в файле /usr/share/doc/jazip/README.Debian.
+Description-sv.UTF-8: Information för användare av jazip-paketet
+ Detta meddelande visas för att konfigurationsfilen /etc/jazip.conf inte hittades på ditt system före paketinstallation startades.
+ .
+ Skriptet '/usr/sbin/jazipconfig --non-interactive' kördes för att skapa en fungerande /etc/jazip.conf konfigurationsfil. Om detta inte lyckades, kör /usr/sbin/jazipconfig igen som root utan flaggan --non-interactive eller konsulter manualsidan jazip.conf(5) för att skapa den på egen hand.
+ .
+ Användare måste läggas in i gruppen 'floppy' för att få tillgång till programmet jazip och enheterna den hanterar.  Till exempel, för att lägga till användaren 'bosse':
+ .
+ # adduser bosse floppy
+ .
+ Se /usr/share/doc/jazip/README.Debian för detaljer.
+Description-vi.UTF-8: Thông báo cho mọi người dùng gói tin jazip
+ Hiển thị thông điệp này vì không có tập tin cấu hình «/etc/jazip.conf» trong hệ thống bạn trước khi cài đặt gói tin.
+ .
+ Đã chạy tập lệnh «/usr/sbin/jazipconfig --non-interactive» để cố tạo một tập tin cấu hình «/etc/jazip.conf» hoạt động. Nếu nó không thành công, hãy chạy lại «/usr/sbin/jazipconfig» với tư cách người chủ (root) không có đối số «--non-interactive», hãy xem trang hướng dẫn (man) «jazip.conf(5)» để tìm thông tin về tự tạo nó.
+ .
+ Phải thêm các người dùng vào nhóm «floppy» để cho phép truy cập trình jazip và các thiết bị mà nó quản lý. Lấy thí dụ, để thêm người dùng «Hoa»:
+ .
+ # adduser Hoa floppy
+ .
+ Hãy xem tập tin «/usr/share/doc/jazip/README.Debian» để tìm chi tiết.

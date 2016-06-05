@@ -1,0 +1,187 @@
+
+Template: kismet/install-setuid
+Type: boolean
+Default: true
+Description: Install Kismet "setuid root"?
+ Kismet needs root privileges for some of its functions. However, running it
+ as root ("sudo kismet") is not recommended, since running all of the code
+ with elevated privileges increases the risk of bugs doing system-wide
+ damage. Instead Kismet can be installed with the "setuid" bit set, which
+ will allow it to grant these privileges automatically to the processes that
+ need them, excluding the user interface and packet decoding parts.
+ .
+ Enabling this feature allows users in the "kismet" group to run Kismet
+ (and capture packets, change wireless card state, etc), so only thoroughly
+ trusted users should be granted membership of the group.
+ .
+ For more detailed information, see section 4 of the Kismet README
+ ("Suidroot & Security"), which can be found at
+ /usr/share/doc/kismet/README or "http://www.kismetwireless.net/README".
+Description-cs.UTF-8: Nainstalovat Kismet se "setuid root"?
+ Kismet vyžaduje pro některé své funkce oprávnění uživatele root. Spouštět jej jako root ("sudo kismet") se však nedoporučuje, protože spouštění veškerého kódu s vyšším oprávněním zvyšuje riziko výskytu chyb, které poškodí celý systém. Místo toho lze Kismet nainstalovat s nastaveným bitem "setuid", který tato oprávnění umožní automaticky přidělovat procesům, které je potřebují, s vyjimkou uživatelského rozhraní a částí pro dekódování paketů.
+ .
+ Povolení této vlastnosti umožní uživatelům ve skupině "kismet" spustit Kismet (a zachytávat pakety, měnit stav bezdrátové síťové karty, atd.), takže je třeba členství v této skupině pečlivě zvažovat a udělovat jej pouze důvěryhodným uživatelům.
+ .
+ Pro podrobnější informace se podívejte do sekce 4 ("Suidroot & Security") v README souboru pro Kismet, který naleznete v /usr/share/doc/kismet/README, nebo na "http://www.kismetwireless.net/README".
+Description-da.UTF-8: Installer Kismet »setuid root«?
+ Kismet kræver root-privileiger for nogle af dets funktioner. Kørsel af programmet som root (»sudo kismet«) anbefales ikke, da kørsel af hele koden med hævede privilegier øger risikoen for at fejl medfører systemskade. I stedet kan Kismet installeres med bitsættet »setuid«, som vil tillade programmet at give disse privilegier automatisk til processer, som skal bruge dem ekskluderende brugergrænsefladen og pakkeafkodningsdelene.
+ .
+ Aktivering af denne funktion giver brugere i gruppen »kismet« mulighed for at køre Kismet (og opfange pakker, ændre trådløs korttilstand etc.) så kun absolut troværdige brugere bør få medlemskab i denne gruppe.
+ .
+ For mere detaljeret information så se afsnit 4 i Kismet README (»Suidroot & Security«), som kan findes på /usr/share/doc/kismet/README eller »http://www.kismetwireless.net/README«.
+Description-de.UTF-8: Kismet mit »setuid root« installieren?
+ Für einige seiner Funktionen benötigt Kismet Root-Rechte. Es wird jedoch nicht empfohlen, es als Root auszuführen (»sudo kismet«), da die Ausführung des ganzen Codes mit erhöhten Rechten das Risiko vergrößert, dass Fehler systemweiten Schaden anrichten. Stattdessen kann Kismet mit gesetztem »setuid«-Bit installiert werden, wodurch diese Rechte automatisch dem Prozess gewährt werden, der sie benötigt, ausschließlich der Benutzeroberfläche und Teilen zum Dekodieren von Datenpaketen.
+ .
+ Das Aktivieren dieser Funktionalität ermöglicht Benutzern in der Gruppe »kismet«, Kismet auszuführen (und Datenpakete zu erfassen, den Status von Drahtlosnetzwerkkarten zu ändern, etc.), daher sollte nur völlig vertrauenswürdigen Benutzern die Mitgliedschaft in dieser Gruppe gewährt werden.
+ .
+ Für weitere detaillierte Informationen lesen Sie Abschnitt 4 der Kismet-README-Datei (»Suidroot & Security«). Diese kann unter /usr/share/doc/kismet/README oder »http://www.kismetwireless.net/README« gefunden werden.
+Description-es.UTF-8: ¿Desea instalar Kismet como «setuid root»?
+ Kistmet necesita privilegios de usuario root para algunas de sus funciones. Sin embargo, no se recomienda ejecutarlo como usuario root («sudo kismet») ya que ejecutar todo el código con privilegios de súperusuario aumenta el riesgo de errores que dañen el sistema. En su lugar, se puede instalar Kismet con el bit «setuid» activado, permitiéndole asignar estos privilegios automáticamente a los procesos que lo necesitan, excluyendo la interfaz de usuario y la decodificación de paquetes.
+ .
+ Al activar esta funcionalidad, los usuarios que pertenezcan al grupo «kismet» podrán ejecutar Kismet, capturar paquetes, cambiar el estado del adaptador de red inalámbrico, etc. por lo que sólo debe agregar a dicho grupo usuarios en los que confíe.
+ .
+ Para información más detallada, revise la sección 4 de la documentación de Kismet («Suidroot & Security»), que puede encontrar en /usr/share/doc/kismet/README o «http://www.kismetwireless.net/README».
+Description-fr.UTF-8: Faut-il installer Kismet avec les privilèges du superutilisateur ?
+ Kismet a besoin des privilèges du superutilisateur pour certaines de ses fonctions. Toutefois, l'exécution de Kismet avec des privilèges élevés (« sudo kismet ») n'est pas recommandée puisque cela augmente le risque d'endommager le système. À la place, Kismet peut être installé en fixant le bit « setuid » ce qui permet d'accorder ces privilèges automatiquement aux processus qui les nécessitent en excluant l'interface utilisateur ainsi que les parties de décodage de paquets.
+ .
+ L'activation de cette fonctionnalité permet aux utilisateurs du groupe « kismet » d'exécuter Kismet (avec la capture de paquets, le changement de l'état de la carte wifi, etc.), ce qui permet de restreindre le programme à un groupe particulier d'utilisateurs de confiance.
+ .
+ Pour davantage d'information, veuillez vous référer à la section 4 du fichier README de Kismet (Suidroot et Sécurité) qui se trouve dans le répertoire « /usr/share/doc/kismet/ » ou à l'adresse « http://www.kismetwireless.net/README ».
+Description-gl.UTF-8: Quere instalar Kismet co bit «setuid root»?
+ Kismet precisa privilexios de «root» para algunhas das súas funcións. Ainda así, non se recomenda executalo como «root» («sudo kismet»), xa que executar todo o código con privilexios elevados incrementa o risco de que un fallo cause danos a todo o sistema. En lugar de iso, Kismet pode ser instalado co bit «setuid», o que lle permitirá conceder eses privilexios automaticamente aos procesos que o precisen, excluíndo a interface de usuario e as partes de descodificación de paquetes.
+ .
+ Activar esta funcionalidade permite aos usuarios no grupo «kismet» executar Kismet (e capturar paquetes, cambiar o estado da tarxeta de rede sen fios, etc...), polo que só se deberían engadir a este grupo usuarios de confianza.
+ .
+ Para obter información máis detallada consulte a sección 4 do ficheiro README de Kismet («Suidroot & Security»), que pode atopar en «/usr/share/doc/kismet/README» ou en «http://www.kismetwireless.net/README».
+Description-it.UTF-8: Installare Kismet come «setuid root»?
+ Per alcune delle funzioni di Kismet sono necessari i privilegi di root. Eseguirlo come root («sudo kismet») non è tuttavia raccomandato, dato che eseguire tutto il codice con privilegi elevati aumenta il rischio che un bug possa arrecare danni a tutto il sistema. Kismet può invece essere installato con il bit «setuid» impostato e questo permette di concedere questi privilegi automaticamente ai processi che ne hanno bisogno, escludendo l'interfaccia utente e le componenti di decodifica dei pacchetti.
+ .
+ Abilitando questa funzionalità si permette agli utenti nel gruppo «kismet» di eseguire Kismet (e catturare pacchetti, cambiare lo stato della scheda wireless, ecc.), perciò il gruppo deve avere come membri solo utenti veramente fidati.
+ .
+ Per informazioni più dettagliate, vedere la sezione 4 del file README di Kismet («Suidroot & Security») che può essere reperito in /usr/share/doc/kismet/README o all'indirizzo «http://www.kismetwireless.net/README».
+Description-ja.UTF-8: Kismet を「setuid root」で実行しますか?
+ Kismet は一部の機能に root 権限を必要とします。しかし、全コードを昇格した権限で実行するとバグがシステム全体にダメージを与える危険性が増すため、root で実行 (「sudo kismet」) することは勧めません。代わりに「setuid」ビットをセットして Kismet をインストールすることで、それが必要なプロセスに自動的に権限を与え、ユーザインターフェイスやパケット解読の部分を除外することができます。
+ .
+ この機能を有効にすると「kismet」グループのユーザは Kismet (およびパケットのキャプチャやワイヤレスカードの状態変更など) を実行できるようになるため、全面的に信頼できるユーザだけにこのグループ権を与えるようにしてください。
+ .
+ もっと詳細な情報については、/usr/share/doc/kismet/README または 「http://www.kismetwireless.net/README」にある Kismet README の第 4 節 (「Suidroot & Security」) を見てください。
+Description-pl.UTF-8: Zainstalować Kismet z "setuid root"?
+ Kismet wymaga uprawnień administratora do części ze swoich funkcji. Uruchamianie go jako root ("sudo kismet") nie jest jednak zalecane, ponieważ cały kod będzie dział z podniesionymi uprawnieniami, co zwiększa ryzyko poważnych konsekwencji, wynikłych z potencjalnych błędów programu. Kismet może zostać zainstalowany z ustawionym bitem "setuid", co pozwala na automatyczne przyznanie tych uprawnień wymagającym ich procesom, pomijając interfejs użytkownika i części odpowiedzialne za dekodowanie pakietów.
+ .
+ Włączenie tej opcji pozwoli użytkownikom z grupy "kismet" na uruchamianie programu Kismet (oraz przechwytywanie pakietów, zmianę statusu kart sieciowych itp.), tak więc tylko całkowicie zaufani użytkownicy powinni być dołączeni do tej grupy.
+ .
+ Więcej informacji znajduje się w czwartym rozdziale pliku README Kismet ("Suidroot & Security"), znajdującym się w /usr/share/doc/kismet/README lub "http://www.kismetwireless.net/README" (w języku angielskim).
+Description-pt.UTF-8: Instalar o Kismet com "setuid root"?
+ O Kismet necessita de privilégios de root para algumas das suas funções. No entanto, corrê-lo como root ("sudo kismet") não é recomendado, já que correr o código com privilégios elevados aumenta o risco de bugs fazerem estragos em todo o sistema. Em vez disso o Kismet pode ser instalado com o bit "setuid" definido, que permite atribuir automaticamente esses privilégios aos processos que necessitem deles, excluindo o interface de utilizador e partes da descodificação de pacotes.
+ .
+ Activar esta funcionalidade permite aos utilizadores do grupo "kismet" correrem o Kismet (e capturar pacotes, alterar o estado da placa wireless, etc), por isso apenas deve ser permitida a inclusão no grupo a utilizadores confiáveis.
+ .
+ Para mais informação detalhada, veja a secção 4 do README do Kismet ("Suidroot & Security"), que pode ser encontrado em /usr/share/doc/kismet/README ou em "http://www.kismetwireless.net/README".
+Description-pt_BR.UTF-8: Instalar o Kismet com "setuid root"?
+ O Kismet precisa de privilégios administrativos para algumas de suas funções. Entretanto, executá-lo como root ("sudo kismet") não é recomendado, porque executar todo o código com privilégios elevados aumenta o risco de bugs causarem danos maiores ao sistema. Por outro lado, o Kismet pode ser instalado com o bit "setuid" ativado, que permite execução com privilégios administrativos garantidos automaticamente para os processos que precisarem deles, excluindo a interface de usuário e decodificação de pacotes.
+ .
+ Habilitando esta característica, permite-se aos usuários do grupo "kismet" executar o Kismet (e capturar pacotes, mudar o estado da placa wireless, etc), então somente usuários completamente confiáveis deverão ser membros do grupo.
+ .
+ Para informações mais detalhadas, veja a seção 4 do arquivo README do Kismet ("Suidroot & Security"), que pode ser encontrado em /usr/share/doc/kismet/README ou em "http://www.kismetwireless.net/README".
+Description-ru.UTF-8: Установить Kismet как «setuid root»?
+ Для некоторых функций kismet требуются права root. Однако запускать его от root («sudo kismet») не рекомендуется, так как выполнение всего кода с расширенным правами увеличивает риск повреждения системы. Вместо этого на kismet можно установить бит «setuid», который позволит получить нужные права автоматически процессам, которым это необходимо, исключая части пользовательского интерфейса и декодирования.
+ .
+ Включение данной возможности позволяет пользователям в группе «kismet» запускать kismet (и захватывать пакеты, изменять состояние карты беспроводного интерфейса и т. д.), поэтому в группу следует включать только абсолютно проверенных пользователей.
+ .
+ Дополнительная информация приведена в разделе 4 в файле Kismet README («Suidroot & Security»), который можно найти в /usr/share/doc/kismet/README или «http://www.kismetwireless.net/README».
+Description-sv.UTF-8: Ska Kismet installeras med "setuid root"?
+ Kismet behöver root-rättigheter för några funktioner. Att köra Kismet som root ("sudo kismet") är dock inte rekommenderat eftersom all kod då körs med utökade rättigheter vilket innebär att buggar i koden kan utföra systemöverskridande fel. Istället kan Kismet installeras med biten "setuid" satt, detta tillåter att rättigherna endast nyttjas i de processer som behöver dem, utanför användargränssnittet och avkodningsdelarna.
+ .
+ Aktivering av detta tillåter användare i gruppen "kismet" att köra Kismet (för att spara paket och byta läge på trådlösa nätverkskort etc.), endast användare som det litas på ska vara medlemmar av denna grupp.
+ .
+ För mer information läs sektion 4 i Kismet README ("Suidroot & Security") som hittas på /usr/share/doc/kismet/README eller "http://www.kismetwireless.net/README".
+
+Template: kismet/install-users
+Type: string
+Description: Users to add to the kismet group:
+ Only users in the kismet group are able to use kismet under the setuid
+ model.
+ .
+ Please specify the users to be added to the group, as a
+ space-separated list.
+ .
+ Note that currently logged-in users who are added to a group will
+ typically need to log out and log in again before it is recognized.
+Description-cs.UTF-8: Přidat uživatele do skupiny kismet:
+ U varianty se setuid je umožněno používat kismet pouze uživatelům ve skupině kismet.
+ .
+ Zadejte prosím uživatele, kteří se mají přidat do skupiny, oddělujte je mezerou.
+ .
+ Upozorňujeme, že právě připojení uživatelé, kteří jsou přidáváni do skupiny, bude obvykle třeba odhlásit a po té, co budou rozpoznání znovu přihlásit.
+Description-da.UTF-8: Brugere der skal tilføjes til gruppen kismet:
+ Kun brugere i gruppen kismet kan bruge kismet under setuid-modellen.
+ .
+ Angiv venligst brugerne der skal tilføjes til gruppen, som en mellemrumsadskilt liste.
+ .
+ Bemærk at aktuelt indloggede brugere som tilføjes til en gruppe vil typisk skulle logge ud og logge ind igen før ændringen slår igennem.
+Description-de.UTF-8: Benutzer zur Gruppe »kismet« hinzufügen:
+ Nur Benutzer in der Gruppe »kismet« können Kismet unter dem Setuid-Modell nutzen.
+ .
+ Bitte geben Sie die Benutzer, die der Gruppe hinzugefügt werden sollen, als eine durch Leerzeichen getrennte Liste an.
+ .
+ Beachten Sie, dass derzeit angemeldete Benutzer, die einer Gruppe hinzugefügt werden, sich normalerweise ab- und wieder anmelden müssen, bevor dies erkannt wird.
+Description-es.UTF-8: Usuarios a agregar al grupo kismet:
+ Sólo los usuarios que pertenecen al grupo kismet pueden utlizar kismet cuando se ejecuta en modo setuid.
+ .
+ Especifique los usuarios a agregar al grupo como una lista separada por espacios.
+ .
+ Tenga en cuenta que los usuarios agregados a este grupo que ya hayan iniciado sesión deberán reiniciar la sesión para que se reconozca el cambio.
+Description-fr.UTF-8: Utilisateurs à ajouter au groupe « kismet » :
+ Seuls les utilisateurs membres du groupe « kismet » peuvent utiliser kismet dans le modèle « setuid ».
+ .
+ Veuillez indiquer les utilisateurs qui doivent être ajoutés au groupe (selon une liste séparée par un espace).
+ .
+ Veuillez noter que les utilisateurs actuellement connectés au système et qui sont ajoutés à ce groupe doivent se déconnecter et se reconnecter à nouveau pour pouvoir se servir du programme.
+Description-gl.UTF-8: Usuarios a engadir ao grupo «kismet»:
+ No modelo «setuid» só os usuarios no grupo «kismet» poden usar Kismet.
+ .
+ Especifique mediante unha lista separada por espazos os usuarios que se engadirán ao grupo.
+ .
+ Fíxese en que os usuarios que están actualmente rexistrados no sistema e son engadidos a un grupo, normalmente terán que saír e volver a acceder para que se lles recoñeza.
+Description-it.UTF-8: Utenti da aggiungere al gruppo kismet:
+ Solo gli utenti nel gruppo kismet possono usare kismet se si utilizza setuid.
+ .
+ Specificare gli utenti che devono essere aggiunti al gruppo, in forma di lista separata da spazi.
+ .
+ Notare che gli utenti attualmente connessi che vengono aggiunti ad un gruppo solitamente devono disconnettersi e riconnettersi prima che la modifica abbia effetto.
+Description-ja.UTF-8: kismet グループに追加するユーザ
+ setuid を採用した場合は kismet グループのユーザだけが kismet を使用できます。
+ .
+ グループに追加するユーザを空白で区切ったリスト形式で指定してください。
+ .
+ 現在ログイン中のユーザをグループに追加した場合、それが承認されるには通常ログアウトしてログインし直す必要があることに注意してください。
+Description-pl.UTF-8: Użytkownicy, którzy zostaną dodani do grupy kismet:
+ Jedynie użytkownicy grupy kismet mogą używać programu w trybie setuid
+ .
+ Proszę podać użytkowników, którzy zostaną dodani do tej grupy, oddzielając poszczególnych spacją.
+ .
+ Proszę zauważyć, że użytkownicy, którzy są obecnie zalogowani, będą musi się przelogować, aby ich przynależność do grupy została rozpoznana.
+Description-pt.UTF-8: Utilizadores a acrescentar ao grupo kismet:
+ Apenas os utilizadores do grupo kismet podem utilizar o kismet sob o modelo setuid.
+ .
+ Por favor especifique os utilizadores a serem acrescentados ao grupo, como uma lista separada por espaços.
+ .
+ Note que os utilizadores actualmente identificados no sistema que sejam acrescentados a um grupo tipicamente irão necessitar de fazer logout e login antes de serem reconhecidos.
+Description-pt_BR.UTF-8: Usuários para adicionar no grupo kismet:
+ Somente usuários do grupo kismet estão habilitados para usar o kismet no modo setuid.
+ .
+ Por favor, especifique os usuários que serão adicionados ao grupo, em uma lista separada por espaços.
+ .
+ Note que usuários logados no sistema, que forem adicionados a um grupo, tipicamente precisarão encerrar a sessão e efetuar o login novamente antes que esta modificação seja reconhecida.
+Description-ru.UTF-8: Пользователи, которых нужно добавить в группу kismet:
+ Только пользователи из группы kismet могут использовать kismet в режиме setuid.
+ .
+ Введите список пользователей для добавления в группу через пробел.
+ .
+ Заметим, что находящимся в системе пользователям и добавленным сейчас в группу, нужно выйти из системы и войти заново.
+Description-sv.UTF-8: Användare som ska läggas till i kismet-gruppen:
+ Endast användare i kismet-gruppen kan använda kismet i setuid-modellen.
+ .
+ Ange användarna som ska läggas till i gruppen, separera användarnamn med mellanslag.
+ .
+ Användare som är inloggade och får denna rättighet måste vanligen först logga ut och sedan logga in igen för att den nya grupptillhörigheten ska kännas igen.

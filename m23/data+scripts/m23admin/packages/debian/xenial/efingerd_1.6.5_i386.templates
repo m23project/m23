@@ -1,0 +1,250 @@
+Template: efingerd/allow_files
+Type: boolean
+Default: true
+Description: Permit users to have their own configurable finger replies?
+ You can decide if efingerd honours users' ~/.efingerd files.
+ .
+ If someone from network fingers given user, and the user has ~/.efingerd
+ file readable and executable for efingerd daemon, this file will be
+ executed and its output will be sent to the fingerer.
+ .
+ This can be either desired or not, depending on your system policy. In
+ particular, allowing .efingerd files allows users to cheat about their
+ real identity. However, efingerd can be configured to display users' full
+ names (from passwd) as the first line of the reply, so they cannot hide
+ themselves completely.
+ .
+ There is however a slight security concern: if you allow .efingerd files,
+ these files will be executed under efingerd UID, so malicious users gain
+ access to all files owned by efingerd - this becomes important when you
+ make efingerd to log into some files writable by the daemon, unless you
+ take appropriate precautions.
+ .
+ If you are the only user, or you trust your users, there is no reason to
+ disable .efingerd files (and this is probably a reason you want to install
+ efingerd for). However, if you expect your users to be nasty, you should
+ better think about protecting from them - in particular, if you enable
+ logging, make sure they cannot fiddle with the logfile - this is UP TO
+ YOU.
+Description-cs.UTF-8: Povolit uživatelům jejich vlastní odpovědi pro finger?
+ Můžete se rozhodnout, zda má efingerd brát v potaz uživatelské soubory ~/.efingerd.
+ .
+ Pokud se někdo ze sítě dotáže na nějakého uživatele a tento uživatel má soubor ~/.efingerd čitelný a spustitelný daemonem efingerd, bude soubor spuštěn a jeho výstup předán tázajícímu.
+ .
+ Podle politiky na daném systému to může a nemusí být to, co chcete. Konkrétně tak třeba mohou uživatelé falšovat svou identitu. efingerd proto může být nastaven tak, aby jako první řádek odpovědi zobrazoval celá jména uživatelů (ze souboru passwd).
+ .
+ Dále je tu otázka bezpečnosti: Povolíte-li soubory .efingerd, budou se spouštět pod UID uživatele efingerd, tudíž by mohli zlomyslní uživatelé získat přístup ke všem souborům uživatele efingerd - to začne být důležité v případě, kdy nastavíte efingerd, aby zapisoval logy do souborů zapisovatelných daemonem efingerd.
+ .
+ Pokud jste jediný uživatel, nebo pokud svým uživatelům věříte, není důvod soubory .efingerd zakazovat (protože to je nejspíš vlastnost, kvůli které efingerd instalujete). Nicméně pokud očekáváte od svých uživatelů to nejhorší, měli byste více pouvažovat o bezpečnosti a obzvláště pokud zapnete logování, tak zajistěte, aby s logovacím souborem nemohli provádět nekalé věci - to už je NA VÁS.
+Description-da.UTF-8: Tillad brugere at have deres egne konfigurerbare fingersvar?
+ Du kan beslutte hvorvidt efingerd skal respektere brugers ~/.efingerd-filer.
+ .
+ Hvis nogen fra netværket finger (navn på kommando) en given bruger, og brugeren har ~/.efingerd-filen læsbar og kørbar for efingerd-dæmonen, så vil denne fil blive kørt og resultatet vil blive sendt, til den der kører kommandoen finger.
+ .
+ Denne kan både være ønsket og ikke ønsket, afhængig af din systempolitik. Specielt tillader brugen af .efingerd-filer, at brugere kan snyde omkring deres rigtige identitet. Efingerd kan dog konfigures til at vise brugeres fulde navn (fra passwd) som den første linje i deres svar, så de ikke fuldstændig kan skjule sig.
+ .
+ Der er dog en mindre sikkerhedsmæssig overvejelse: Hvis du tillader .efingerd-filer, så vil disse filer blive kørt under efingerd UID, så ondsindede brugere opnår adgang til alle filer ejet af efingerd - dette bliver vigtigt, når du får efingerd til at logge ind i nogle filer, som er skrivbare af dæmonen, med mindre du foretager passende forholdsregler.
+ .
+ Hvis du er den eneste bruger, eller stoler på dine brugere, så er der ingen grund til at deaktivere .fingerd-filer (og dette er sikkert en årsag til, at du ønsker at installere efingerd). Hvis du derimod forventer at dine brugere kan have onde hensigter, så bør du tænke på at beskytte dig mod dette - specielt, hvis du aktiverer logning, så sikr dig at de ikke kan fifle med logfilen - dette er op til DIG.
+Description-de.UTF-8: Möchten Sie Ihren Benutzern eigene finger-Antworten erlauben?
+ Sie können entscheiden, ob efingerd von Benutzern angelegte ~/.efingerd-Dateien beachten soll.
+ .
+ Wenn jemand aus dem Netz einen Benutzer »fingerd« und der Benutzer eine eigene ~/.efingerd-Datei lesbar und ausführbar für den efingerd-Daemon erstellt hat, wird diese Datei ausgeführt und die Ausgaben an den »Fingernden« geschickt.
+ .
+ Dies kann durchaus erwünscht sein, abhängig von Ihrer Systempolitik. Die .efingerd-Datei erlaubt dem Benutzer die wahre Identität zu verbergen. Es ist jedoch möglich, efingerd so zu konfigurieren, dass der volle Benutzername (aus der passwd) als Antwort zurück geschickt wird, damit können sich die Benutzer nicht vollständig hinter einer anderen Identität verstecken.
+ .
+ Diese Methode hat jedoch kleine Sicherheitsbedenken: Wenn Sie die .efingerd-Dateien erlauben, dann werden diese Dateien unter der UID von efingerd ausgeführt, ein böswilliger Benutzer kann dadurch Zugriff auf alle Dateien erlangen, die efingerd gehören. Dies ist z.B. wichtig, wenn Sie den efingerd-Daemon in für den Daemon schreibbare Protokolldateien schreiben lassen, es sei denn, Sie treffen entsprechende Vorkehrungen.
+ .
+ Wenn Sie der einzige Benutzer des Systems sind oder Ihren Benutzern vertrauen, gibt es keinen Grund .efingerd-Dateien nicht zu erlauben (das ist wahrscheinlich der Grund für die Installation von efingerd). Wenn Sie jedoch annehmen müssen, dass sich Ihre Benutzer unanständig verhalten, sollten Sie über einen Schutz nachdenken - genauer, wenn Sie das Loggen aktivieren, stellen Sie sicher, dass die Benutzer nichts damit anstellen können - es hängt an IHNEN.
+Description-es.UTF-8: ¿Desea permitir que los usuarios tengan sus propias respuestas configurables de finger?
+ Puede decirdir si efingerd debe cumplir con las directrices de los ficheros ~/.efingerd de los usuarios.
+ .
+ Si alguien de la red hace un finger a un usuario y el usuario tiene un fichero ~/.efingerd con permisos de lectura y ejecutable por el demonio efingerd, entonces este fichero se ejecutará y su salida se enviará al emisor del finger.
+ .
+ Esto puede ser deseable o no dependiendo de las normas de su sistema. En concreto permitir los ficheros .efingerd permite a los usuarios mentir sobre su verdadera identidad. Sin embargo, se puede configurar efingerd para mostrar los nombres completos de los usuarios (de passwd) en la primera línea de la respuesta, por lo que no se pueden esconder por completo.
+ .
+ Sin embargo hay una pequeña preocupación en cuanto a la seguridad: si permite los ficheros .efingerd, estos ficheros se ejecutarán bajo el UID de efingerd, por lo que los usuarios maliciosos pueden obtener acceso a todos los ficheros que pertenezcan a efingerd - a no ser que tome precauciones, esto es importante cuando quiere que efingerd lleve un registro en varios ficheros sobre los que el demonio tenga permisos de escritura.
+ .
+ Si es el único usuario o confía en sus usuarios no hay ninguna razón para desactivar los ficheros .efingerd (y probablemente esta es una razón por la que quiere instalar efingerd). Sin embargo, si espera que sus usuarios sean malos debería pensar mejor en protegerse de ellos - en concreto, si activa el registro, esté seguro de que ellos no pueden amañarlo - esta es una decisión QUE USTED DEBE TOMAR.
+Description-fr.UTF-8: Faut-il permettre aux utilisateurs de configurer leur propre sortie de finger ?
+ Cette option permet de décider si efingerd tiendra compte des fichiers « ~/.efingerd » des utilisateurs.
+ .
+ Si quelqu'un sur le réseau lance une requête finger sur un utilisateur qui possède un fichier « ~/.efingerd » lisible et exécutable par le démon efingerd, alors le contenu de ce fichier sera exécuté et la sortie sera envoyée au démon finger.
+ .
+ Cela peut être souhaitable ou non selon la politique de votre système. Veuillez noter qu'autoriser les fichiers « ~/.efingerd » permet à vos utilisateurs de tricher sur leur identité. Néanmoins, vous pouvez configurer efingerd pour afficher le nom complet des utilisateurs (grâce à passwd) sur la première ligne de la réponse, en les empêchant ainsi de se cacher complètement.
+ .
+ Cela induit une petite faille de sécurité : en permettant les fichiers « ~/.efingerd », ceux-ci seront exécutés avec les privilèges de efingerd, ce qui peut permettre à des utilisateurs malveillants d'avoir accès à tous les fichiers appartenant à cet identifiant. Cette faille est plus dangereuse si vous autorisez efingerd à écrire dans certains journaux, à moins de prendre des mesures spécifiques.
+ .
+ Si vous êtes le seul utilisateur ou que vous avez confiance en vos utilisateurs, il n'y a aucune raison de désactiver les fichiers « ~/.efingerd » (et cela est probablement une des raisons pour installer efingerd). Néanmoins, si vous doutez de vos utilisateurs, vous feriez mieux de vous en protéger. En particulier si vous activez la journalisation, veillez à ce que le fichier de journalisation ne puisse pas être corrompu.
+Description-it.UTF-8: Permettere agli utenti di avere delle risposte finger personali configurabili?
+ Si può decidere se efingerd onorerà i file ~/.efingerd degli utenti.
+ .
+ Se qualcuno nella rete usa finger sull'utente specificato e questo ha un file ~/.efingerd leggibile ed eseguibile dal demone efingerd, allora tale file verrà eseguito e il suo output verrà inviato a chi ha fatto la richiesta.
+ .
+ Questo comportamento può essere o meno desiderabile a seconda delle politiche di sistema. In particolare, permettere l'uso di file .efingerd consente agli utenti di mentire riguardo la propria identità. Tuttavia efingerd può essere configurato per mostrare i nomi completi degli utenti (da passwd) come prima riga della risposta, così che non possano nascondersi completamente.
+ .
+ Esiste tuttavia un piccolo problema in termini di sicurezza: se si permette l'uso di file .efingerd, essi verranno eseguiti con l'UID di efingerd perciò gli utenti malintenzionati ottengono accesso a tutti i file con proprietario efingerd; ciò diventa rilevante quando efingerd scrive log in alcuni file scrivibili dal demone, a meno di non prendere le adeguate precauzioni.
+ .
+ Se si è l'unico utente del sistema, o si ha fiducia nei propri utenti, non c'è motivo di disabilitare i file .efingerd (che sono probabilmente una ragione per cui si desidera installare efingerd). Tuttavia, se si pensa che i propri utenti possano comportarsi male, si dovrebbe pensare a come proteggersi da loro; in particolare, se si abilita il log, assicurarsi che non possano manomettere il file di log. Tutto ciò è RESPONSABILITÀ DI CHI STA FACENDO L'INSTALLAZIONE.
+Description-ja.UTF-8: ユーザに自分の finger 応答の設定を許可しますか?
+ efingerd がユーザの ~/.efingerd ファイルに従うかどうか決定できます。
+ .
+ あるユーザを指定してネットワークから誰かが finger を送り、そのユーザの ~/.efingerd ファイルが efingerd デーモンから読み取り、実行可能な場合、このファイルが実行され、その出力が finger 発信者に送られます。
+ .
+ これが望ましいかどうかはシステムのポリシーに依ります。特に、.efingerd ファイルを許可するとユーザが正体をごまかせるようになります。しかし、efingerd は応答の先頭行としてユーザのフルネーム (passwd から取得) を表示するように設定できるため、自力で完全に隠してしまうことはできません。
+ .
+ ただし、これにはわずかながらセキュリティの懸念があります: .efingerd ファイルを許可した場合、そういったファイルは efingerd の UID で実行されるため、悪意のあるユーザが efingerd の所有する全ファイルへのアクセスを獲得します - これは、デーモンにより書き込み可能な一部のファイルに efingerd が記録するようにしている場合、適切な予防措置を採っていない限り重大なことになります。
+ .
+ 自分が唯一のユーザ、あるいはユーザを信頼している場合は、.efingerd ファイルを無効にする理由はありません (また、これが恐らく efingerd をインストールしようと思った理由でしょう)。しかし、ユーザに悪意があることが予期されるのであれば、その防護策について考慮しておいた方が良いでしょう - 特にログ取得を有効にする場合は、そのログファイルをユーザから操作できることのないようにしてください - これは*あなた次第です*。
+Description-nl.UTF-8: Wilt u gebruikers toestaan hun eigen finger-antwoorden in te stellen?
+ Hier beslist u of efingerd de '~/.efingerd'-bestanden van gebruikers respecteert.
+ .
+ Wanneer een gebruiker een voor de efingerd-achtergronddienst lees- en uitvoerbaar '~/.efingerd'-bestand heeft, zal de uitvoer van aanroepen van dit bestand doorgestuurd worden telkens wanneer iemand via finger info over die gebruiker opvraagt.
+ .
+ Afhankelijk van uw systeembeleid kan dit gewenst of ongewenst zijn. Meer bepaald kan het toestaan van '~/.efingerd'-bestanden gebruikers toelaten hun echte identiteit te verbergen. Om te voorkomen dat gebruikers hun identiteit verbergen kan Efingerd ingesteld worden om altijd de volledige naam van de gebruikers (zoals opgegeven in passwd) te laten zien.
+ .
+ Er is een klein beveiligingsrisico: Als u '~/.efingerd'-bestanden toelaat worden deze uitgevoerd met de efingerd-UID, hierdoor kunnen kwaadwillende gebruikers toegang krijgen tot alle bestanden van wie efingerd de eigenaar is. Tenzij u overeenkomstige voorzorgen neemt wordt dit belangrijk wanneer u efingerd laat loggen naar door de achtergronddienst beschrijfbare bestanden.
+ .
+ Als u de enige gebruiker bent, of als u uw gebruikers vertrouwd, is er geen enkele reden om '~/.efingerd'-bestanden uit te schakelen (en dit is waarschijnlijk één van de redenen waarom u efingerd installeert). Als u echter kwaadwillendheid van uw gebruikers verwacht, denkt u beter goed over beveiligen na. Vooral als u loggen activeert, het is aan u om ervoor te zorgen dat uw gebruikers niet met de logbestanden kunnen prutsen.
+Description-pl.UTF-8: Pozwolić użytkownikom na posiadanie własnych, konfigurowalnych odpowiedzi finger?
+ Można zadecydować, czy efingerd ma honorować pliki użytkowników ~/.efingerd.
+ .
+ Jeśli ktoś z sieci wykona finger na użytkowniku, a posiada on plik ~/.efingerd będący odczytywalny i wykonywalny dla demona efingerd, to plik ten zostanie wykonany, a jego wyjście zostanie wysłane do żądającego finger.
+ .
+ Może być to pożądane lub nie - zależnie od zasad systemowych. W szczególności, zezwolenie na pliki .efingerd pozwala użytkownikom fałszować swą rzeczywistą tożsamość. Jednak efingerd może zostać tak skonfigurowany, aby wyświetlał imię i nazwisko (z passwd) jako pierwszy wiersz odpowiedzi, dzięki czemu nie będą mogli się oni całkowicie ukryć.
+ .
+ Występuje tu też pewne ryzyko związane z bezpieczeństwem - jeśli zezwoli się na pliki .efingerd, to będą one wykonane z UID efingerd, co pozwoli złośliwym użytkownikom na uzyskanie dostępu do wszystkich plików będących własnością efingerd - staje się to istotne, jeśli efingerd ma zapisywać logi do plików zapisywalnych dla demona, chyba że przedsiębierze się pewne środki.
+ .
+ Jeśli jest się jedynym użytkownikiem lub ufa się pozostałym, to nie ma powodu aby wyłączać pliki .efingerd (i jest to prawdopodobnie powód dla którego efingerd jest instalowany). W przeciwnym wypadku należy pomyśleć o odpowiednim zabezpieczeniu się - w szczególności, jeśli włączy się zapisywanie dziennika, proszę upewnić się, że pozostałe osoby nie będą mogły go podmienić - jednak jest to zadanie administratora.
+Description-pt.UTF-8: Permitir que os utilizadores tenham as suas respostas ao finger configuráveis?
+ Você pode decidir se o efingerd honra os ficheiros dos utilizadores ~/.efingerd.
+ .
+ Se alguém da rede fizer finger a um dado utilizador, e o utilizador tiver o ficheiro ~/.fingerd legível e executável para o daemon fingerd, este ficheiro será executado  e a sua saída será enviada para quem estiver a fazer finger.
+ .
+ Isto pode ser desejado ou não, dependendo da política do seu sistema. Em particular, permitir ficheiros .efingerd permite aos utilizadores fazer batota acerca da sua verdadeira identidade. No entanto, o efingerd pode ser configurado para mostrar os nomes completos dos utilizadores (a partir de passwd) como a primeira linha da resposta, e assim não se podem esconder completamente.
+ .
+ No entanto existe uma ligeira preocupação de segurança: se permitir ficheiros .efingerd, esses ficheiros serão executados com o UID efingerd, e assim utilizadores mal intencionados poderão ganhar acesso aos ficheiros de que o efingerd é dono - isto torna-se importante quando fizer o efingerd fazer registos para alguns ficheiros que possam ser escritos pelo daemon, a menos que tome as preacauções apropriadas.
+ .
+ Se for o único utilizador, ou confiar nos seus utilizadores, não existe razão para desabilitar os ficheiros .efingerd (e isto é provavelmente uma razão para querer instalar o efingerd). No entanto, se esperar que os seus utiizadores sejam maliciosos, deve pensar melhor acerca de como se proteger deles - em particular, se habilitar os registos, assegure-se que não conseguem mexer no ficheiro dos registos - isto É CONSIGO.
+Description-pt_BR.UTF-8: Permitir que os usuários tenham suas próprias respostas finger configuráveis?
+ Você pode decidir se o efingerd honra os arquivos ~/.efingerd dos usuários.
+ .
+ Se alguém da rede executar um finger em um determinado usuário, e o usuário tiver o arquivo ~/.efingerd legível e executável para o daemon efingerd, este arquivo será executado e sua saída será enviada a quem executou o finger (fingerer).
+ .
+ Isto pode ser desejado ou não, dependendo da política do seu sistema. Em particluar, permitir arquivos .efingerd permite que usuários mintam sobre sua identidade real. Porém, o efingerd pode ser configurado para mostrar o nome completo dos usuários (a partir do passwd) como a primeira linha da resposta, assim usuários não podem esconder-se completamente.
+ .
+ Existe porém uma pequena preocupação de segurança: se você permitir arquivos .efingerd, estes arquivos serão executados sob o UID efingerd, assim usuários maliciosos ganham acesso a todos os arquivos de propriedade do efingerd - isto torna-se importante quando você faz com que o efingerd gere logs em alguns arquivos graváveis pelo daemon, a menos que você tome as precauções apropriadas.
+ .
+ Se você é o único usuário, ou se você confia em seus usuários, não existe razão para desabilitar arquivos .efingerd (e esta é provavelmente uma razão pela qual você quer instalar o efingerd). Porém, se você espera que seus usuários sejam "sujos", você deveria pensar melhor sobre proteger-se deles - em particular, se você habilitar "logging", certifique-se de que eles não podem fraudar o arquivo de log - isto é SUA RESPONSABILIDADE.
+Description-ru.UTF-8: Разрешить пользователям иметь собственные файлы настройки ответов finger?
+ Вы можете выбрать, должен ли efingerd учитывать пользовательские файлы ~/.efingerd.
+ .
+ Если кто-то в сети вызовет finger с определённым пользователем, и у этого пользователя есть файл ~/.efingerd, доступный на чтение и выполнение для службы efingerd, то этот файл будет выполнен и результат выполнения будет отправлен запрашивающему.
+ .
+ Это может быть приемлемо, зависит от ваших правил работы в системе. В частности, файлы .efingerd позволяют пользователям скрыть свою настоящую личность. Однако, в efingerd можно включить вывод полного имени пользователя (из passwd) в первой строке ответа, поэтому они не смогут скрыться полностью.
+ .
+ Однако есть риск нарушения безопасности: если вы разрешите файлы .efingerd, то они будут выполнены с правами UID efingerd, что позволяет зловредным пользователям получить доступ ко всем файлам, принадлежащим efingerd -- это становится важным, если вы позволите efingerd вести журнал.
+ .
+ Если вы единственный пользователь в системе или доверяете своим пользователям, то нет причины отключать файлы .efingerd (и они, вероятно, и есть причина установки efingerd). Однако, если вы думаете, что ваши пользователи могут напакостить, то лучше подумать о защите от них -- в частности, если вы включаете протоколирование, убедитесь, что они не смогут добраться до журналов, -- решать ВАМ.
+Description-sk.UTF-8: Povoliť používateľom používať ich vlastné nastaviteľné odpovede finger?
+ Môžete rozhodnúť, či bude efingerd používať používateľské súbory ~/.efingerd.
+ .
+ Ak niekto zo siete zisťuje daného používateľa, a tento používateľ má súbor ~/.efingerd čitateľný a spustiteľný démonom efingerd, tento súbor bude spustený a jeho výstup bude odoslaný hľadajúcemu.
+ .
+ Toto môže, ale nemusí byť žiadané, v závislosti na systémovej politike. Vo všeobecnosti, povolenie súborov .efingerd poskytuje používateľom možnosť klamať o svojej reálnej identite. Avšak, efingerd môže byť nastavený tak, aby zobrazoval úplné mená používateľov (z passwd) ako prvý riadok odpovede, takže sa používatelia nedokážu úplne skryť.
+ .
+ Existuje však aj malý bezpečnostný problém: ak povolíte súbory .efingerd, tieto súbory môžu byť spúšťané s právami UID efingerd, takže škodliví používatelia môžu získať prístup k všetkým súborom vlastneným efingerd – toto sa môže stať dôležité, keď nastavíte efingerd na zaznamenávanie do nejakých súborov, zapisovateľných pre tohoto démona, pokiaľ neurobíte predbežné opatrenia.
+ .
+ Ak ste len používateľ, alebo dôverujte svojim používateľom, neexistuje dôvod na zakázanie súborov .efingerd (a je to pravdepodobne aj dôvod, kvôli ktorému inštalujete efingerd). Ale ak očakávate, že vaši používatelia budú zlí, mali by ste sa viac zamyslieť nad ochranou pred nimi – vo všeobecnosti, ak povolíte zaznamenávanie, zaistite aby nemohli manipulovať so súborom záznamu *. toto je len na vás.
+Description-sv.UTF-8: Tillåt användarna att ha sina egna konfigurerbara finger-svar?
+ Du kan bestämma om efingerd tillåter användarnas ~/.efingerd
+ .
+ Om någon från nätverket begär finger-information om en angiven användare och användaren har filen ~/.efingerd läsbar och startbar för efingerd-demonen kan denna fil startas och dess utdata skickas till förfrågaren.
+ .
+ Detta kan vara antingen önskat eller inte beroende på din systempolicy. Att tillåta .efingerd-filer tillåter användarna att fuska om deras riktiga identitet. Dock kan efingerd konfigureras att visa användarens hela namn (från passwd) som första rad i svaret så de inte totalt kan gömma sig.
+ .
+ Det är dock en mindre säkerhetsrisk: om du tillåter .efingerd-filer kommer dessa filer att startas under efingerd:s UID så om ondsinta användare tar kontroll över alla filer som ägs av efingerd - blir detta viktigt när du ställer in att efingerd skriver loggfiler till filer skrivbara av demonen, om du inte vidtar lämpliga försiktighetsåtgärder.
+ .
+ Om du är den enda användaren eller om du litar på din användare finns det ingen anledning att stänga av .efingerd-filer (och detta är kanske en anledning du vill installera efinger för). Dock, om du förväntar att dina användare är besvärliga bör du tänka på att skydda dom - speciellt om du aktiverar loggning, se till att de inte kan modifiera loggfilen - detta är UPP TILL DIG.
+Description-vi.UTF-8: Cho phép mọi người dùng có trả lời finger có thể tự cấu hình không?
+ Bạn có thể chọn nếu trình efingerd theo tập tin ~/.efingerd của mọi người dùng, hay không.
+ .
+ Nếu người nào từ mạng finger một người dùng nào đó, và người dùng ấy đã cho phép tập tin ~/.efingerd có quyền ghi và quyền chạy cho trình nền efingerd, thì trình này sẽ thực hiện tập tin ấy và gửi các dữ liệu xuất nó cho người ở ngoại đã finger họ.
+ .
+ Hành động này có thể là tốt hay xấu, phụ thuộc vào chính sách hệ thống bạn. Đặc biệt là cho phép người dùng có tập tin .efingerd riêng cũng cho phép họ nói đối về thực thế thật. Tuy nhiên, có thể cấu hình trình efingerd để hiển thị họ tên của người dùng (từ mật khẩu) là dòng đầu của trả lời, để mà họ không thể ẩn mình hoàn thành.
+ .
+ Cũng rủi ro bảo mật một ít: nếu bạn cho phép người dùng có tập tin .efingerd riêng, thì có thể thực hiện những tập tin ấy dưới UID efingerd, vì vậy người dùng hiểm độc có thể truy cập mọi tập tin mà trình efingerd sở hữu. Rủi ra này trở thành quan trọng khi bạn báo trình efingerd đăng nhập với một số tập tin mà cho phép trình nền quyền ghi, trừ khi bạn phòng ngừa thích hợp.
+ .
+ Nếu bạn là người dùng duy nhất, hoặc nếu bạn tin cây mọi người dùng, thì không cần vô hiệu hóa tập tin .efingerd (và rất có thể là sao bạn muốn cài đặt trình efingerd). Tuy nhiên, nếu bạn không tin cây mọi người dùng thì hãy cẩn thận bảo vệ hệ thống — đặc biệt là, nếu bạn hiệu lực ghi lưu, hãy bảo đảm người dùng không thể sửa đổi tập tin bản ghi. Mọi việc này NHỜ BẠN.
+
+Template: efingerd/show_names
+Type: boolean
+Default: true
+Description: Display users' real names?
+ By default, efingerd displays users real names (from passwd) as the first
+ line of finger reply. You may want to suppress it, but if you allow the
+ use of .efingerd files at the same time, be aware that users can hide
+ their identity for the fingerer.
+ .
+ If in doubt, select this option.
+Description-cs.UTF-8: Zobrazovat skutečná jména uživatelů?
+ efingerd implicitně zobrazuje skutečná jména uživatelů (ze souboru passwd) na prvním řádku odpovědi. Můžete to potlačit, ale pokud současně povolíte používání souborů .efingerd, mohou uživatelé svou identitu před tazatelem skrýt.
+ .
+ Jste-li na pochybách, tuto možnost povolte.
+Description-da.UTF-8: Vis brugernes rigtige navne?
+ Som standard viser efingerd brugernes rigtige navne (fra passwd) som den første linje i svaret fra kommandoen finger. Du har måske et ønske om at undertrykke dette, men vær opmærksom på at brugen af .efingerd-filer på samme tid gør, at brugerne kan skjule deres identitet, for den der kører kommandoen finger.
+ .
+ Hvis du er i tvivl, så vælg denne indstilling.
+Description-de.UTF-8: Die richtigen Namen der Benutzer anzeigen?
+ Standardmäßig zeigt efingerd die echten Benutzernamen (entnommen aus der passwd) in der ersten Zeile der finger-Antwort an. Sie möchten dies vielleicht verhindern, aber wenn Sie zugleich .efingerd-Dateien erlauben, bedenken Sie bitte, dass dann ein Benutzer seine komplette Identität verstecken kann.
+ .
+ Im Zweifelsfall wählen Sie bitte diese Option.
+Description-es.UTF-8: ¿Desea mostrar los nombres reales de los usuarios?
+ Por omisión efingerd muestra los nombres verdaderos de los usuarios (de passwd) en la primera línea de la respuesta de finger. Quizás quiera suprimirlo, pero si a la vez permite el uso de los ficheros .efingerd, tenga en cuenta que los usuarios pueden esconder su identidad al emisor del finger.
+ .
+ Si tiene dudas seleccione esta opción.
+Description-fr.UTF-8: Faut-il afficher les vrais noms des utilisateurs ?
+ Par défaut, efingerd affiche les vrais noms des utilisateurs (d'après le fichier passwd) sur la première ligne de la réponse. Vous pouvez choisir de supprimer cette option. Cependant, si vous autorisez simultanément l'utilisation de  «~/.efingerd », les utilisateurs pourront quand même cacher leur identité au démon finger.
+ .
+ Dans le doute, choisissez cette option.
+Description-it.UTF-8: Mostrare i nomi reali degli utenti?
+ In modo predefinito efingerd mostra i nomi reali degli utenti (da passwd) come prima riga nella risposta finger. Possono essere eliminati, ma se allo stesso tempo si permette l'uso dei file .efingerd, prestare attenzione al fatto che gli utenti possono nascondere la propria identità a chi fa richieste finger.
+ .
+ Se in dubbio, selezionare questa opzione.
+Description-ja.UTF-8: ユーザの本名を表示しますか?
+ デフォルトで efingerd は finger 応答の先頭行で (passwd から) ユーザの本名を表示します。これは抑制することができますが、同時に .efingerd ファイルの使用を許可した場合は、ユーザは finger 発信者に対して正体を隠すことができるということに留意してください。
+ .
+ 疑問がある場合はこれを選択してください。
+Description-nl.UTF-8: Wilt u de 'echte' namen van gebruikers weergeven?
+ Standaard toont efingerd de 'echte' namen van gebruikers (zoals opgegeven in passwd) als de eerste regel van het finger-antwoord. U kunt dit onderdrukken en tegelijkertijd het gebruik van '~/.efingerd'-bestanden toelaten; hou er dan wel rekening mee dat gebruikers hun identiteit van de finger-opvrager kunnen verbergen.
+ .
+ Bij twijfel laat u deze optie best actief.
+Description-pl.UTF-8: Wyświetlać prawdziwe dane użytkowników?
+ Domyślnie, efingerd wyświetla prawdziwe imiona i nazwiska (z passwd) w pierwszym wierszu odpowiedzi finger. Można wyłączyć tę opcję, lecz jeśli pozwoli się równocześnie używać użytkownikom pliki .efingerd, to proszę pamiętać, że będą oni mogli ukryć swą tożsamość.
+ .
+ W przypadku wątpliwości, proszę wybrać "tak".
+Description-pt.UTF-8: Mostrar o nome verdadeiro dos utilizadores?
+ Por omissão, o efingerd mostra o nome verdadeiro dos utilizadores (a partir de passwd) como a primeira linha da resposta ao finger. Pode querer suprimir isto, mas se permitir a utilização de ficheiros .efingerd ao mesmo tempo, tenha em atenção que os utilizadores podem esconder a sua identidade de quem faz o finger.
+ .
+ Em caso de dúvida, escolha esta opção.
+Description-pt_BR.UTF-8: Exibir o nome real dos usuários?
+ Por "default", o efingerd mostra o nome real dos usuários (a partir do passwd) como a primeira linha da resposta finger. Você pode querer suprimir isso, mas se você permitir o uso de arquivos .efingerd ao mesmo tempo, esteja ciente que usuários podem esconder suas identidades para quem executou o finger (fingerer).
+ .
+ Em caso de dúvida, selecione essa opção.
+Description-ru.UTF-8: Показывать настоящие имена пользователей?
+ По умолчанию, efingerd показывает реальные имена пользователей (из passwd) в первой строке ответа finger. Вы можете отключить это, но если вы также разрешите использовать файлы .efingerd, обратите внимание, что пользователи могут скрыть данные о себе.
+ .
+ Если не уверены, ответьте утвердительно.
+Description-sk.UTF-8: Zobraziť skutočné mená používateľov?
+ Predvolene, efingerd zobrazuje reálne používateľské mená (z passwd) ako prvý riadok odpovede finger. Môžete to vypnúť, ale ak zároveň povolíte použitie súborov .efingerd, pamätajte, že používatelia môžu skryť svoju identitu.
+ .
+ Ak neviete čo to znamená, vyberte túto možnosť.
+Description-sv.UTF-8: Visa användarnas riktiga namn?
+ Som standard visar efingerd användarens riktiga namn (från passwd) som första rad i finger-svaret. Du kanske inte vill svara med det men om du tillåter användning av .efingerd-filer samtidigt, tänk på att användarna kan gömma sin identitet från förfrågaren.
+ .
+ Om du är osäker, välj denna funktion.
+Description-vi.UTF-8: Hiển thị tên thật của người dùng không?
+ Mặc định là trình efingerd hiển thị họ tên thật của mọi người dùng (từ mật khẩu) là dòng đầu của trả lời. Có lẽ bạn muốn tắt tùy chọn này, nhưng mà nếu bạn cho phép dùng tập tin .efingerd cùng lúc, hãy ghi chú là người dùng có thể ẩn thực thể để mà người finger không biết.
+ .
+ Nếu chưa chắc thì hãy chọn tùy chọn này.
+

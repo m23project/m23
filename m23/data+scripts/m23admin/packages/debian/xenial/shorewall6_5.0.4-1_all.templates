@@ -1,0 +1,194 @@
+
+Template: shorewall6/dont_restart
+Type: note
+Description: No automatic restart for Shorewall6
+ Shorewall6 will not be restarted automatically after being upgraded,
+ to prevent changes in configuration files causing network outages.
+ .
+ You should check Shorewall6's configuration files and restart it with
+ 'invoke-rc.d shorewall6 restart'.
+Description-cs.UTF-8: Shorewall6 nebude restartován automaticky
+ Po aktualizaci nebude Shorewall6 restartován automaticky, aby případné změny v konfiguračních souborech nezpůsobily výpadky sítě.
+ .
+ Měli byste zkontrolovat konfigurační soubory a poté Shorewall6 restartovat příkazem „invoke-rc.d shorewall6 restart“.
+Description-da.UTF-8: Ingen automatisk genstart for Shorewall6
+ Shorewall6 vil ikke blive genstartet automatisk efter en opgradering, for at forhindre ændringer i konfigurationsfiler der medfører netværksudfald.
+ .
+ Du skal tjekke Shorewall6's konfigurationsfiler og genstarte den med 'invoke-rc.d shorewall6 restart'.
+Description-de.UTF-8: Kein automatischer Neustart von Shorewall6
+ Shorewall6 wird nach der Aktualisierung nicht automatisch neu gestartet, damit Änderungen in den Konfigurationdateien keine Netzwerkunterbrechung verursachen.
+ .
+ Sie sollten Shorewall6's Konfigurationsdateien überprüfen und das Programm mit dem Kommando 'invoke-rc.d shorewall6 restart' neu starten.
+Description-es.UTF-8: No se reiniciará Shorewall6 de forma automática
+ No se reiniciará Shorewall6 de forma automática tras una actualización para impedir que los cambios en los ficheros de configuración causen una desconexión de la red.
+ .
+ Debería comprobar los ficheros de configuración de Shorewall6 y reiniciarlo ejecutando «invoke-rc.d shorewall6 restart».
+Description-eu.UTF-8: Shorewall6 ez da automatikoki berrabiaraziko
+ Shorewall6 ez da automatikoki berrabiaraziko bertsio-berritu ondoren, sare isolamenduak sor ditzakeen konfigurazio aldaketak saihesteko.
+ .
+ Shorewall6 konfigurazioa gainbegiratu eta berau 'invoke-rc.d shorewall6 restart' erabiliaz berrabiarazi beharko zen.
+Description-fr.UTF-8: Pas de redémarrage automatique de Shorewall6
+ Shorewall6 ne sera pas redémarré automatiquement après la mise à jour, afin d'éviter des coupures complètes du réseau à cause des changements affectant les fichiers de configuration.
+ .
+ Vous devriez vérifier les fichiers de configuration de Shorewall6 puis le redémarrer avec la commande « invoke-rc.d shorewall6 restart ».
+Description-id.UTF-8: Tidak ada otomatis hidup-ulang untuk Shorewall6
+ Shorewall6 tidak akan di hidup-ulangkan secara otomatis setelah pemutakhiran, untuk mencegah perubahan pengaturan berkas yang disebabkan pemadaman jaringan
+ .
+ Anda harus memerika pengaturan berkas Shorewall6 dan hidup-ulangkan dengan 'invoke-rc.d shorewall6 restart'.
+Description-ja.UTF-8: Shorewall6 は自動的に再起動されません
+ Shorewall6 は、設定ファイルの変更によってネットワークの停止を引き起こすのを避けるため、アップグレード後に自動的には再起動しません。
+ .
+ Shorewall6 の設定ファイルを確認し、'invoke-rc.d shorewall6 restart' として再起動を行う必要があります。
+Description-nl.UTF-8: Shorewall6 wordt niet automatisch herstart
+ Om te voorkomen dat veranderingen in de configuratiebestanden het netwerk plat leggen wordt Shorewall6 niet automatisch herstart na opwaardering. 
+ .
+ Gelieve Shorewall6's configuratiebestanden te controleren en Shorewall6 vervolgens te herstarten via het commando 'invoke-rc.d shorewall6 restart'.
+Description-pt.UTF-8: Sem reinício automatico para Shorewall6
+ A Shorewall6 não será reiniciada automaticamente depois de ser actualizada, para evitar que as mudanças nos ficheiros de configuração causem perdas de rede.
+ .
+ Deve verificar os ficheiros de configuração da Shorewall6 e reiniciá-la com 'invoke-rc.d shorewall6 restart'.
+Description-pt_BR.UTF-8: Sem reinicialização automática para o Shorewall6
+ O Shorewall6 não será reinicializado automaticamente após ser atualizado, para prevenir que mudanças nos arquivos de configuração causem indisponibilidade da rede.
+ .
+ Você deve checar os arquivos de configuração do Shorewall6 e reinicializá-lo com 'invoke-rc.d shorewall6 restart'.
+Description-ru.UTF-8: Shorewall6 не перезапускается автоматически
+ Shorewall6 не будет автоматически перезапущен после обновления, так как изменение в файлах настроек вызовет перебои в работе сети.
+ .
+ Вы должны самостоятельно проверить файлы настроек Shorewall6 и выполнить перезапуск командой 'invoke-rc.d shorewall6 restart'.
+Description-sv.UTF-8: Ingen automatiskt omstart av Shorewall6
+ Shorewall6 kommer inte att startas om automatiskt efter uppgradering. Detta för att undvika att ändringar i konfigurationen orsakar stopp i nätverket.
+ .
+ Du bör kontrollera konfigurationsfilerna för Shorewall6 och starta om med "invoke-rc.d shorewall6 restart".
+Description-tr.UTF-8: Shorewall6 kendiliğinden başlamayacak
+ Yapılandırma dosyalarındaki değişikliklerin ağ iletişimi kaybına neden olmaması için Shorewall6 yükseltme sonrasında yeniden başlatılmayacak.
+ .
+ Shorewall6'nın yapılandırma dosyalarını incelemeli ve 'invoke-rc.d shorewall6 restart' komutunu çalıştırarak yeniden başlatmalısınız.
+
+Template: shorewall6/major_release
+Type: boolean
+Description: Restart Shorewall6?
+ To avoid the risk of failures and network outages, configuration files
+ should be checked carefully before the firewall is restarted.
+ .
+ Please choose whether you want to restart Shorewall6 immediately.
+Description-cs.UTF-8: Restartovat Shorewall6?
+ Abyste předešli chybám a výpadkům sítě, měli byste konfigurační soubory před restartem firewallu pečlivě zkontrolovat.
+ .
+ Rozhodněte se, zda chcete Shorewall6 restartovat nyní.
+Description-da.UTF-8: Genstart Shorewall6?
+ For at undgå risikoen for fejl og netværksudfald, skal konfigurationsfiler tjekkes omhyggeligt før brandmuren (firewall) genstartes.
+ .
+ Vælg venligst, hvorvidt du ønsker at genstarte Shorewall6 øjeblikkeligt.
+Description-de.UTF-8: Shorewall6 neu starten?
+ Diese Dateien sollten sorgfältig überprüft werden, bevor die Firewall neu gestartet wird, um das Risiko von Fehlern und Netzwerkunterbrechungen zu minimieren.
+ .
+ Bitte stimmen Sie zu, wenn Sie Shorewall6 jetzt neu starten wollen.
+Description-es.UTF-8: ¿Desea reiniciar Shorewall6?
+ Antes de reiniciar el cortafuegos debe comprobar cuidadosamente los ficheros de configuración para evitar fallos y desconexiones de la red.
+ .
+ Escoja si desea reiniciar Shorewall6 de forma inmediata.
+Description-eu.UTF-8: Shorewall6 berrabiarazi?
+ Errore eta sare isolamendu arriskua saihesteko konfigurazio fitxategiak kontu handiaz egiaztatu beharko lirateke suebakia berrabiarazi aurretik.
+ .
+ Mesedez hautatu Shorewall6 orain berrabiarazi nahi duzun ala ez.
+Description-fr.UTF-8: Faut-il redémarrer Shorewall6 ?
+ Afin d'éviter des erreurs et la perte d'accès réseau, vous devriez soigneusement vérifier les fichiers de configuration avant de redémarrer le pare-feu.
+ .
+ Veuillez choisir si vous souhaitez redémarrer Shorewall6 immédiatement.
+Description-id.UTF-8: Hidup-ulangkan Shorewall6
+ Untuk menghindari resiko kegagalan dan pemadaman jaringan, pengaturan berkas harus di cek secara hati-hati sebelum firewall di hidup-ulang kan.
+ .
+ Silakan pilih apakah anda ingin hidup-ulangkan Shorewall6 secepatnya
+Description-ja.UTF-8: Shorewall6 を再起動しますか?
+ 失敗とネットワークの停止のリスクを避けるため、ファイアウォールを再起動する前に設定ファイルは注意深く確認する必要があります。
+ .
+ すぐに Shorewall6 を再起動するかどうかを選んでください。
+Description-nl.UTF-8: Wilt u Shorewall6 herstarten?
+ Om het risico op netwerkfouten en niet-werkend netwerk te vermijden kijkt u deze bestanden liefst zorgvuldig na voor u de firewall herstart.
+ .
+ Hier geeft u aan of u Shorewall6 onmiddellijk wilt herstarten.
+Description-pt.UTF-8: Reiniciar a Shorewall6?
+ Para evitar o risco de falhas e perdas de rede, os ficheiros de configuração devem ser verificados cuidadosamente antes de reiniciar a firewall.
+ .
+ Por favor indique se quer reiniciar a Shorewall6 imediatamente.
+Description-pt_BR.UTF-8: Reinicializar o Shorewall6?
+ Para evitar o risco de falhas e indisponibilidade da rede, os arquivos de configuração devem ser checados cuidadosamente antes do firewall ser reinicializado.
+ .
+ Por favor, escolha se você quer reinicializar o Shorewall6 imediatamente.
+Description-ru.UTF-8: Перезапустить Shorewall6?
+ Чтобы исключить риск отказа и перебоев в работе сети, перед перезапуском межсетевого экрана файлы настройки нужно аккуратно проверить.
+ .
+ Укажите, хотите ли вы перезапустить Shorewall6 прямо сейчас.
+Description-sv.UTF-8: Starta om Shorewall6?
+ För att minimera riskerna för fel och stopp i nätverket ska dessa filer kontrolleras noga innan brandväggen startas om.
+ .
+ Ange om du vill starta om Shorewall6 omedelbart eller ej.
+Description-tr.UTF-8: Shorewall6 yeniden başlatılsın mı?
+ Olası başarısızlıklardan ve ağ iletişimi kaybından kaçınmak için güvenlik duvarı yeniden başlatılmadan önce yapılandırma dosyaları dikkatle incelenmelidir.
+ .
+ Shorewall6'yı şimdi yeniden başlatmak isteyip istemediğinizi belirtiniz.
+
+Template: shorewall6/invalid_config
+Type: error
+Description: Invalid Shorewall6 configuration detected
+ Shorewall6 is configured to restart on upgrades.
+ .
+ However, the current configuration for Shorewall6 is invalid and it
+ will fail to restart. You should fix the program's configuration,
+ then restart it with 'invoke-rc.d shorewall6 restart'.
+Description-cs.UTF-8: Rozpoznána chybná konfigurace Shorewallu6
+ Shorewall6 je nastaven, aby se při aktualizacích restartoval.
+ .
+ Stávající konfigurace Shorewall6u je však chybná a proto se restart nepodaří. Měli byste konfiguraci opravit a poté Shorewall restartovat příkazem „invoke-rc.d shorewall6 restart“.
+Description-da.UTF-8: Ugyldig Shorewall6-konfiguration registreret
+ Shorewall6 er konfigureret til at genstarte ved opgraderinger.
+ .
+ Bemærk dog, at den aktuelle konfiguration for Shorewall6 er ugyldig og den vil ikke kunne genstarte. Du skal rette programmets konfiguration, og så genstarte den med 'invoke-rc.d shorewall6 restart'.
+Description-de.UTF-8: Ungültige Einstellungen bei Shorewall6 gefunden
+ Shorewall6 ist eingerichtet, nach Aktualisierungen neu zu starten.
+ .
+ Die aktuellen Einstellungen von Shorewall6 sind ungültig und sein Neustart wird fehlschlagen. Sie sollten Shorewall6's Einstellungen berichtigen und das Programm mit dem Kommando 'invoke-rc.d shorewall6 restart' neu starten.
+Description-es.UTF-8: Detectada configuración inválida de Shorewall6
+ Se ha configurado Shorewall6 para reiniciarse al actualizarse.
+ .
+ Sin embargo, la configuración actual de Shorewall6 es inválida y si se reinicia fallará. Debería arreglar la configuración del programa y reiniciarlo más adelante con 'invoke-rc.d shorewall6 restart'.
+Description-eu.UTF-8: Okerreko Shorewall6 konfigurazioa atzeman da
+ Shorewall6 bertsio-berritzean berrabiarazteko konfiguraturik dago.
+ .
+ Hala uneko Shorewall6 konfigurazioa baliogabea da eta huts egingo du berrabiarazten bada. Programaren konfigurazioa konpondu beharko duzu eta ondoren 'invoke-rc.d shorewall6 restart' bidez berrabiarazi.
+Description-fr.UTF-8: Configuration non valable pour Shorewall6
+ Shorewall6 est configuré pour redémarrer lors des mises à jour.
+ .
+ Cependant, la configuration actuelle du programme n'est pas valable et il ne redémarrera pas correctement. Vous devriez corriger la configuration du programme et le redémarrer avec la commande « invoke-rc.d shorewall6 restart ».
+Description-id.UTF-8: Terdeteksi pengaturan salah di Shorewall6
+ Shorewall6 diatur untuk hidup-ulang ketika diperbarui
+ .
+ Bagaimanapun juga, pengaturan Shorewall yang ada sekarang salah dan akan gagal ketika hidup-ulang. Anda harus membenarkan pengaturan program, kemudian hidup-ulang dengan 'invoke-rc.d shorewall6 restart'.
+Description-ja.UTF-8: Shorewall6 設定の誤りを発見しました
+ Shorewall6 はアップグレード時に再起動するように設定されています。
+ .
+ しかし、Shorewall6 の現在の設定は正しくなく、再起動に失敗するでしょう。プログラムの設定を修正してから 'invoke-rc.d shorewall6 restart' として再起動する必要があります。
+Description-nl.UTF-8: Ongeldige Shorewall6-configuratie gedetecteerd
+ Shorewall6 is ingesteld om te herstarten na opwaarderingen.
+ .
+ De huidige Shorewall6-configuratie is echter ongeldig en herstarten zal dus mislukken. Eens u de huidige configuratie herstelt heeft kunt u Shorewall6 herstarten via het commando 'invoke-rc.d shorewall6 restart'.
+Description-pt.UTF-8: Detectada uma configuração inválida para a Shorewall6
+ A Shorewall6 está configurada para se reiniciar com actualizações.
+ .
+ No entanto, a configuração actual da Shorewall6 é inválida e irá falhar ao reiniciar. Deverá corrigir a configuração do programa, e depois reiniciá-lo com 'invoke-rc.d shorewall6 restart'.
+Description-pt_BR.UTF-8: Configuração inválida do Shorewall6 detectada
+ O Shorewall6 é configurado para reinicializar em atualizações.
+ .
+ Contudo, a configuração atual do Shorewall6 é inválida e ele falhará em reinicializar. Você deve corrigir a configuração do programa, e então reinicializá-lo com 'invoke-rc.d shorewall6 restart'.
+Description-ru.UTF-8: Обнаружена неправильная настройка Shorewall6
+ Shorewall6 настроен для перезапуска при обновлениях.
+ .
+ Однако, текущая настройка Shorewall6 неправильна, и поэтому перезапуск завершится неудачно. Вы должны исправить настройку программы, а затем перезапустить её с помощью команды 'invoke-rc.d shorewall6 restart'.
+Description-sv.UTF-8: Felaktig Shorewall6-konfiguration upptäckt.
+ Shorewall6 är inställd på att starta om efter uppgraderingar.
+ .
+ Den nuvarande inställningen för Shorewall6 är felaktig och programmet kommer inte starta korrekt. Du bör gå igenom och laga programmets inställningar för att sedan starta om det med "invoke-rc.d shorewall6 restart".
+Description-tr.UTF-8: Geçersiz Shorewall6 yapılandırması algılandı
+ Shorewall6 yükseltmeler sonrasında yeniden başlayacak şekilde yapılandırıldı.
+ .
+ Oysa Shorewall6'nın şu anki yapılandırması geçersiz ve bu nedenle yeniden başlayamayacak. Programın yapılandırmasını düzenleyip 'invoke-rc.d shorewall6 restart' komutunu çalıştırarak yeniden başlatmalısınız.

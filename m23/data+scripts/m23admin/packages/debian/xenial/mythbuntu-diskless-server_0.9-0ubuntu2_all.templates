@@ -1,0 +1,24 @@
+Template: mythbuntu-diskless/create_share 
+Type: boolean
+Default: false
+Description: Enable NFS export for overlay directory?
+ By default, Mythbuntu-diskless uses a NFS share to store any changes
+ made on the clients, eg your LIRC config and other files.
+ .
+ This option adds  /var/cache/mythbuntu-diskless/overlay/
+ to /etc/exports.
+ .
+ Note: this entry will be removed again if you remove this package.
+
+Template: mythbuntu-diskless/share_host
+Type: string
+Default: *
+Description: Hosts allowed to mount the overlay share:
+ Here you can set which hosts can mount the overlay share.
+ See man 5 exports for details.
+ .
+ Default is * which will allow every host to mount the share.
+ This setting is not recommended because it's very insecure.
+ .
+ Example: 192.168.0.0/24
+

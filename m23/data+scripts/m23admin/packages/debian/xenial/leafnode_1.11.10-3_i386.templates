@@ -1,0 +1,461 @@
+
+Template: leafnode/server
+Type: string
+Default: news
+Description: Server to download news from:
+ The name of the news server should be provided by the organization
+ providing you with network access, such as your Internet Service
+ Provider.
+ .
+ This server is generally called "news.<domain>" or "nntp.<domain>"
+ where <domain> is the local domain name.
+Description-cs.UTF-8: Server, ze kterého se budou stahovat zprávy news:
+ Jméno serveru news, které by vám měla dát organizace zajišťující přístup do sítě, je jí zpravidla poskytovatel internetového připojení.
+ .
+ Tento server mívá obecně jméno "news.<doména>" nebo "nntp.<doména>", kde <doména> je místní doménové jméno.
+Description-da.UTF-8: Server der skal hentes nyheder fra:
+ Navnet på nyhedsserveren skal komme fra det firma som giver dig netværksadgang, såsom din internetleverandør.
+ .
+ Denne server kaldes normalt »news.<domain>« eller »nntp.<domain>« hvor <domain> er det lokale domæne navn.
+Description-de.UTF-8: Server, von dem die News heruntergeladen werden sollen:
+ Der Name des News-Servers sollte Ihnen von der Organisation, die Sie mit dem Internetzugang versorgt, z. B. Ihrem Internet Service Provider (ISP), zur Verfügung gestellt werden.
+ .
+ Der Server heißt normalerweise »news.<domain>« oder »nntp.<domain>« wobei <domain> der lokale Domänenname ist.
+Description-es.UTF-8: Servidor desde el que se descargan las noticias:
+ El nombre del servidor de noticias se debería proporcionar por la organización, proporcionándole acceso a la red, así como a su proveedor de servicios de internet (ISP).
+ .
+ Este servidor generalmente se conoce como «news.<dominio>» o «nntp.<dominio>» siendo <dominio> el nombre del dominio local.
+Description-eu.UTF-8: Bertatik berri-taldeak deskargatzeko zerbitzaria:
+ Berri-tade zerbitzariaren izena zuri internet-eko zerbitzua salzen dizun horniztaileak eman beharko lizuke.
+ .
+ Zerbitzari honen izen arruntena "news.>domeinua>" edo "nntp.<domeinua>" izaten da <domeinua> dominu lokala delarik.
+Description-fi.UTF-8: Palvelin, jolta uutiset ladataan:
+ Palveluntarjoajasi tulisi kertoa käytettävän uutispalvelimen nimi.
+ .
+ Palvelimen nimi on yleensä ”news.<verkkoalue>” tai ”nntp.<verkkoalue>”, jossa <verkkoalue> on paikallisen verkkoalueen nimi.
+Description-fr.UTF-8: Serveur de nouvelles à utiliser :
+ Le nom du serveur de nouvelles est généralement obtenu auprès du fournisseur de votre accès réseau, par exemple votre fournisseur d'accès à Internet.
+ .
+ Il est habituellement formé de la façon suivante « news.domaine » ou bien « nntp.domaine » avec comme « domaine » le nom du domaine local.
+Description-gl.UTF-8: Servidor do que descargas as novas:
+ O nome do servidor de novas deberíallo dar a organización que lle fornece o acceso á rede; por exemplo, o seu provedor de Internet.
+ .
+ Este servidor adoita chamarse "news.<dominio>" ou "nttp.<dominio>", onde <dominio> é o nome de dominio local.
+Description-it.UTF-8: Server da cui scaricare i messaggi:
+ Il nome del server dovrebbe essere indicato dall'organizzazione che fornisce l'accesso alla rete, come il proprio Internet Service Provider.
+ .
+ Questo server è generalmente chiamato "news.<dominio>" o "nntp.<dominio>" dove <dominio> è il nome di dominio locale.
+Description-ja.UTF-8: ニュースをダウンロードするサーバ:
+ ニュースサーバの名前は ISP (プロバイダ、Internet Service Provider) 等のネットワークアクセスを提供している組織により提示されます。
+ .
+ このサーバは通常「news.<ドメイン>」や「nntp.<ドメイン>」と呼ばれ、<ドメイン> には提供組織によるドメイン名が入ります。
+Description-nl.UTF-8: Te gebruiken nieuwsserver:
+ De naam van de nieuwsserver krijgt u van de organisatie die uw netwerkverbinding voorziet (meestal is dit uw Internet provider). 
+ .
+ Zo'n server is heet gewoonlijk 'news.<domein>' of 'nntp.<domein>', waarbij <domein> de lokale domeinnaam is.
+Description-pl.UTF-8: Serwer z którego będą pobierane wiadomości:
+ Nazwa serwera grup dyskusyjnych powinna zostać dostarczona przez organizację zapewniającą połączenie z Internetem, taką jak dostawca usług internetowych.
+ .
+ Serwer powinien być z reguły nazwany "news.<domena>" lub "nntp.<domena>", gdzie <domena> jest lokalną nazwą domenową.
+Description-pt.UTF-8: Servidor de onde descarregar noticias (news):
+ O nome do servidor de noticias deve ser disponibilizado pela organização que lhe disponibiliza o acesso à rede, como o seu provedor de serviço de internet.
+ .
+ Este servidor é geralmente chamado "news.<domínio>" ou "nntp.<domínio>" onde <domínio> é o nome de domínio local.
+Description-ru.UTF-8: Сервер для загрузки новостей:
+ Название сервера новостей должно быть предоставлено вашим сетевым провайдером (поставщиком Internet-услуг).
+ .
+ Обычно сервер имеет название вида "news.<домен>" или "nntp.<домен>", где <домен> -- локальное доменное имя.
+Description-sv.UTF-8: Server att hämta diskussionsgrupper från:
+ Namnet på diskussionsgruppsservern ska ha angivits av den organisation som tillhandahåller din nätverksåtkomst, såsom din bredbandsleverantör.
+ .
+ Den här servern heter ofta "news.<domän>" eller "nntp.<domän>" där "<domän>" är det lokala domännamnet.
+Description-vi.UTF-8: Máy phục vụ từ đó cần tải xuống tin tức:
+ Tên của máy phục vụ tin tức nên được cung cấp bởi tổ chức cung cấp truy cập đến mạng, v.d. nhà cũng cung cấp dịch vụ Internet (ISP).
+ .
+ Máy phục vụ này thường có tên như « news.miền » hoặc « nntp:miền », mà « miền » là tên miền cục bộ.
+
+Template: leafnode/tcpd
+Type: boolean
+Default: true
+Description: Enable access controls for Leafnode?
+ If you do not enable some access controls for Leafnode, people everywhere
+ will be able to use the news server which opens opportunities
+ for spamming or resource abuse.
+ .
+ Access controls will prevent computers other than the news server
+ itself reading or posting to newsgroups using the server. If required
+ access can be granted to other computers by editing /etc/hosts.allow.
+Description-cs.UTF-8: Povolit kontrolu přístupu pro Leafnode?
+ Pokud pro leafnode nepovolíte některou kontrolu přístupu, pak bude moci kdokoliv používat váš news server pro věci, jako je posílání spamu či přístup k balíkům dat diskuzních skupin.
+ .
+ Kontrola přístupu zabrání ostatním počítačům odesílat a číst zprávy news prostřednictvím tohoto serveru. Přístup konkrétním počítačům pak snadno povolíte prostřednictvím souboru /etc/hosts.allow.
+Description-da.UTF-8: Aktiver adgangskontrol for Leafnode?
+ Hvis du ikke aktiverer en form for adgangskontrol til Leafnode, vil folk overalt være i stand til at bruge nyhedsserveren, hvilket åbner mulighed for spam og ressourcemisbrug.
+ .
+ Adgangskontrol vil forhindre computere udover selve nyhedsserveren i at læse eller sende post til nyhedsgrupper som bruger serveren. Krævet adgang kan tildeles andre computere ved at redigere /etc/hosts.allow.
+Description-de.UTF-8: Sollen Zugriffskontrollen für Leafnode aktiviert werden?
+ Falls Sie keine Zugriffskontrollen für Leafnode aktivieren, können Menschen von überall her Ihren News-Server verwenden, was ihnen Gelegenheit gibt, Spam zu versenden oder Ressourcen zu missbrauchen.
+ .
+ Zugriffskontrollen hindern alle Computer außer dem News-Server selber daran, News-Gruppen zu lesen oder darin zu posten. Falls nötig kann anderen Computern durch bearbeiten der Datei /etc/hosts.allow Zugriff gewährt werden.
+Description-es.UTF-8: ¿Desea activar los controles de acceso para Leafnode?
+ Si no activa algunos controles de acceso para Leafnode, cualquiera podrá usar su servidor de noticias para enviar publicidad o abusar de sus recursos.
+ .
+ Los controles de acceso evitarán que las máquinas que no sean el servidor de noticias lean o escriban en los grupos de noticias usando el servidor. Si se requiere acceso, se puede obtener editando «/etc/host.allow».
+Description-eu.UTF-8: Leafnode-ren sarrera kontrolak gaitu?
+ Ez baduzu sarrera kontrol batenbat gaitzen, edozein berri-taldea erabili ahal izango du, honek zabor-posta bidaltzaileei errekurtsoez baliatzeko aukera ematen.
+ .
+ Sarrera kontrolak zerbitzaria bera ez den beste edozein ordenagailuk berri-taldeak irakurri edo bidaltzeko aukera ezgaitzen du. Behar izanez gero beste ordenagailuen sarrera /etc/hosts.allow fitxategiaren bidez onartu daiteke.
+Description-fi.UTF-8: Aktivoidaanko Leafnoden yhteyksienhallinta?
+ Jos mitään yhteyksienhallintaa ei käytetä Leafnoden kanssa, kuka tahansa voi käyttää uutispalvelinta, mikä mahdollistaa roskapostituksen ja resurssien varastamisen.
+ .
+ Yhteyksienhallinta estää muita kuin uutispalvelinta itseään lukemasta tai kirjoittamasta palvelimella olevia uutisryhmiä. Tarvittaessa muille koneille voidaan antaa oikeudet muokkaamalla tiedostoa /etc/hosts.allow.
+Description-fr.UTF-8: Faut-il contrôler l'accès à Leafnode ?
+ Si l'accès à Leafnode n'est pas contrôlé, tout le monde pourra utiliser le serveur de nouvelles et publier des messages type pourriel ou abuser des ressources du système.
+ .
+ Le contrôle d'accès permet d'empêcher l'utilisation par des tiers des fonctions de lecture et émission du serveur de nouvelles. Une fois cette fonction activée, les accès sont contrôlés dans le fichier « /etc/hosts.allow ».
+Description-gl.UTF-8: ¿Activar os controles de acceso de Leafnode?
+ Se non activa algúns controles de acceso de Leafnode, todo o mundo ha poder empregar o seu servidor de novas, o que lles ha dar a posibilidade de enviar spam ou abusar dos seus recursos.
+ .
+ Os controles de acceso impiden que os ordenadores distintos do propio servidor de novas poidan ler ou escribir nos grupos de novas empregando o servidor. Se é preciso, pódese conceder acceso a outros ordenadores editando o ficheiro /etc/hosts.allow.
+Description-it.UTF-8: Abilitare i controlli di accesso per Leafnode?
+ Se non si abilita alcun controllo di accesso per Leafnode, chiunque potrà usare il server news, potenzialmente anche per abusare delle risorse oppure per inviare spam.
+ .
+ I controlli di accesso impediranno ai computer che non siano il server news stesso di leggere o inviare messaggi ai gruppi di discussione usando il server. Se richiesto, l'accesso può essere consentito ad altri computer modificando /etc/hosts.allow.
+Description-ja.UTF-8: Leafnode のアクセス制御を有効にしますか?
+ Leafnode のアクセス制御をいくらか有効にしない場合、あらゆる場所から誰もがこのニュースサーバを利用することが可能となり、spam 行為やリソース悪用の機会を与えることになります。
+ .
+ アクセス制御により、ニュースサーバ自体以外のコンピュータがこのサーバを使ってニュースグループを読む、あるいはニュースグループに投稿することを防止します。必要であれば /etc/hosts.allow を編集してコンピュータによるアクセスを許可することができます。
+Description-nl.UTF-8: Wilt u toegangsregels voor Leafnode activeren?
+ Als u geen toegangsregels activeert voor Leafnode, kan iedereen overal uw nieuws-server gebruiken. Dit opent de deur voor misbruik van uw server (voor het versturen van spam of andere kwaadaardig doeleinden).
+ .
+ Toegangsregels zorgen ervoor dat enkel de nieuwsserver zelf de nieuwsgroepen van de server kan lezen en aanvullen. Desgewenst kunt u toegang verlenen aan andere computers door /etc/hosts.allow aan te passen.
+Description-pl.UTF-8: Włączyć kontrolę dostępu do Leafnode?
+ Jeśli kontrola dostępu nie zostanie włączona, serwer grup dyskusyjnych będzie dostępny dla wszystkich, co może doprowadzić do wykorzystywania go do wysyłania spamu i innych problemów.
+ .
+ Kontrola dostępu zapobiegnie czytaniu i wysyłaniu wiadomości przy użyciu serwera innym komputerom niż sam serwer. Dostęp innym komputerom może zostać przyznany przez odpowiednie wpisy w pliku /etc/hosts.allow.
+Description-pt.UTF-8: Activar controlos de acesso para o Leafnode?
+ Se você não activar alguns controles de acesso para o leafnode, pessoas de todo o lado irão poder usar o servidor de 'news' o que abre oportunidades para 'spamming' ou abuso de recursos.
+ .
+ Controles de acesso irão prevenir outros computadores além do próprio servidor de 'news' de ler ou publicar para newsgroups usando o servidor. Se necessário, pode ser garantido acesso a outros computadores editando /etc/hosts.allow.
+Description-ru.UTF-8: Разрешить управление доступом для Leafnode?
+ Если вы не установите некоторый контроль доступа для Leafnode, люди со всего мира смогут использовать ваш сервер новостей, что даёт возможность для отправления спама или злоупотреблениями ресурсами.
+ .
+ Управление доступом предотвратит возможность компьютеров, кроме самого новостного сервера, читать и размещать сообщения новостных групп используя сервер. При необходимости доступ другим компьютерам может быть предоставлен изменением /etc/hosts.allow.
+Description-sv.UTF-8: Aktivera användarkontroll för Leafnode?
+ Om du inte aktiverar någon användarkontroll för Leafnode, kan alla använda din diskussionsgruppsserver vilket öppnar möjligheter för att posta spam och annat resursmissbruk.
+ .
+ Åtkomstkontroller kommer hindra andra datorer än diskussionsgruppsservern själv från att läsa eller posta till diskussionsgrupper med hjälp av servern. Om det behövs, kan åtkomst tillåtas för andra datorer genom att ändra /etc/hosts.allow.
+Description-vi.UTF-8: Bật điều khiển truy cập cho Leafnode không?
+ Nếu bạn không hiệu lực một số điều khiển truy cập cho Leafnode, mọi người đều trên khắp thế giới sẽ có khả năng truy cập đến máy phục vụ tin tức của bạn, mà đưa ra dịp gửi thư rác hoặc lạm dụng tài nguyên.
+ .
+ Điều khiển truy cập sẽ ngăn cản máy tính khác với máy phục vụ tin tức chính nó có quyền đọc hoặc gửi bài tin thông qua máy phục vụ đó. Bạn cũng có thể cho phép mỗi máy tính truy cập bằng cách chỉnh sửa tập tin cho phép máy « /etc/hosts.allow ».
+
+Template: leafnode/network
+Type: select
+Choices: PPP, permanent, none
+Choices-cs.UTF-8: PPP, pevné, žádné
+Choices-da.UTF-8: PPP, permanent, ingen
+Choices-de.UTF-8: PPP, permanent, keine
+Choices-es.UTF-8: PPP, permanente, ninguno
+Choices-eu.UTF-8: PPP, finkoa, bate
+Choices-fi.UTF-8: PPP, pysyvä, ei mitään
+Choices-fr.UTF-8: PPP, Connexion permanente, Aucune connexion
+Choices-gl.UTF-8: PPP, permanente, ningunha
+Choices-it.UTF-8: PPP, permanente, nessuna
+Choices-ja.UTF-8: PPP, 常時, なし
+Choices-nl.UTF-8: PPP, vast, geen
+Choices-pl.UTF-8: PPP, stały, brak
+Choices-pt.UTF-8: PPP, permanente, nenhum
+Choices-ru.UTF-8: PPP, постоянное, нет
+Choices-sv.UTF-8: PPP, permanent, ingen
+Choices-vi.UTF-8: PPP, bền bỉ, không có
+Default: PPP
+Description: Network connection type:
+ The Leafnode package can automatically download news.
+ .
+ The method used for this depends on the network connection type.
+ Scripts provided with the package support two network connection types:
+  - permanent: hourly news downloads;
+  - PPP      : news downloads triggered by dialouts.
+ .
+ Either option will work for a dial-on-demand network connection.
+ .
+ Choosing 'none' will disable automatic news downloads. News
+ can be downloaded manually by running 'fetchnews'.
+Description-cs.UTF-8: Typ síťového připojení:
+ Balíček Leafnode umí automaticky stahovat novinky.
+ .
+ Použitá metoda závisí na typu síťového připojení. Dodávané skripty podporují dva typy připojení do sítě:
+  - pevné: stahování zpráv news každou hodinu;
+  - PPP  : stahování zpráv news při každém připojení.
+ .
+ Pro vytáčené připojení budou fungovat obě volby.
+ .
+ Také můžete zvolit 'žádné', toto nastavení zakáže automatické stahování. Zprávy news také můžete stáhnout ručně spuštěním 'fetchnews'.
+Description-da.UTF-8: Forbindelsestype for netværk:
+ Pakken Leafnode kan automatisk hente nyheder.
+ .
+ Metoden brugt afhænger af forbindelsestype nfor netværket. Skript som kommer med pakken understøtter to netværksforbindelsestyper:
+  - permanent: nyhedshentninger per time;
+  - ppp      : nyhedshentninger udløst af dialouts.
+ .
+ Begge indstillinger vil virke på en opringningsnetværksforbindelse.
+ .
+ Valg af 'ingen' vil deaktivere automatiske nyhedshentninger. Nyheder kan hentes manuelt ved at køre 'fetchnews'.
+Description-de.UTF-8: Typ der Netzwerkverbindung:
+ Das Leafnode-Paket kann automatisch News herunterladen.
+ .
+ Die dafür verwendete Methode hängt vom Typ der Netzwerkverbindung ab. Die zum Paket gehörenden Skripts unterstützen zwei Arten von Netzwerkverbindungen:
+  - permanente: News werden stündlich heruntergeladen;
+  - PPP       : das Herunterladen wird durch den Aufbau der Internetverbindung ausgelöst.
+ .
+ Erfolgt Ihre Interneteinwahl nur bei Bedarf, funktionieren beide Optionen.
+ .
+ Sie können auch »keine« auswählen. Damit wird das automatische Herunterladen von News deaktiviert. Sie können News manuell mit dem Befehl fetchnews herunterladen.
+Description-es.UTF-8: Tipo de conexión de red:
+ El paquete Leafnode puede descargar automáticamente noticias.
+ .
+ El método usado para esto depende del tipo de conexión de la red. Los scripts proporcionados con el paquete permiten usar dos tipos de conexión de red:
+  - permanente: Descargas de noticias cada hora.
+  - PPP      : Descargas de noticias disparadas por las conexiones.
+ .
+ Cada opción funcionará en una conexión de red de conexión bajo demanda.
+ .
+ Eligiendo la opción «ninguno» desactivará automáticamente las descargas de noticias. Las noticias se pueden descargar manualmente ejecutando «fetchnews».
+Description-eu.UTF-8: Sare konexio mota:
+ Leafnode paketeak berri-taldeak automatikoki deskarga ditzake.
+ .
+ Honetarako erabilitako metodoa sare konexioaren arabera aldatzen da. Paketeko Script-ek bi sare konexio mota onartzen dituzte:
+  - finkoa : berri-taldeak ordura deskargatzen dira;
+  - PPP    : Berri-taldeak koenxio markaketaren arabera egingo dira.
+ .
+ Edozein aukerak funtzionatuko du eskaerapeko markatzearekin. 
+ .
+ 'batez' aukeratuaz berri-talde deskarga automatikoa ezgituko da. Berri-taldeak ekuz deskargatu daitezke 'fetchnews' exekutatuaz.
+Description-fi.UTF-8: Verkkoyhteyden tyyppi:
+ Paketti Leafnode voi automaattisesti ladata uutisia.
+ .
+ Käytettävä tapa riippuu verkkoyhteyden tyypistä. Paketin mukana toimitetut komentosarjat tukevat kahdenlaisia verkkoyhteyksiä:
+  - pysyvä: uutisten lataus tunnin välein
+  - PPP:    uutisten lataus avattaessa yhteys
+ .
+ Molemmat vaihtoehdot toimivat tarvittaessa otettavan (dial-on-demand) verkkoyhteyden kanssa.
+ .
+ Valinta ”ei mitään” poistaa automaattisen uutisten latauksen käytöstä. Uutiset voidaan ladata käsin ajamalla komento ”fetchnews”.
+Description-fr.UTF-8: Type de connexion au réseau :
+ Le paquet Leafnode peut automatiquement télécharger des nouvelles.
+ .
+ La méthode utilisée dépend du type de connexion réseau. Le script d'installation du paquet gère deux types de connexion :
+  Connexion permanente : Les téléchargements ont lieu toutes les heures;
+  PPP                  : Les téléchargements ont lieu selon les connexions.
+ .
+ N'importe laquelle des options fonctionnera avec une connexion à la demande « PPP ».
+ .
+ Vous pouvez aussi choisir « Aucune connexion » pour désactiver le téléchargement automatique et télécharger vous-même des nouvelles en utilisant « fetchnews ».
+Description-gl.UTF-8: Tipo de conexión á rede:
+ O paquete Leafnode pode descargar novas automaticamente.
+ .
+ O método empregado para isto depende do tipo de conexión á rede. Os scripts que se fornecen co paquete soportan dous tipos de conexión á rede:
+  - permanente: con descargas de novas cada hora;
+  - PPP       : as descargas de novas fanse cada vez que se conecte.
+ .
+ Calquera das dúas opcións ha funcionar cunha conexión de rede con chamada baixo pedido (dial on demand).
+ .
+ Se escolle "ningunha" hanse desactivar as descargas de novas automaticas. Pódense descargar as novas manualmente executando "fetchnews".
+Description-it.UTF-8: Tipo di connessione:
+ Il pacchetto Leafnode può scaricare automaticamente i messaggi.
+ .
+ La modalità dipende dal tipo di connessione in uso. Gli script forniti con il pacchetto supportano due tipi di connessione:
+  - permanente: scarica i nuovi messaggi ad ogni ora;
+  - PPP : scarica i messaggi all'avvio della connessione.
+ .
+ Entrambe le opzioni funzioneranno per connessioni di rete su richiesta.
+ .
+ Se si sceglie 'nessuna' verrà disabilitato lo scaricamento automatico dei messaggi. Questi potranno essere scaricati manualmente lanciando 'fetchnews'.
+Description-ja.UTF-8: ネットワーク接続の種類:
+ Leafnode パッケージはニュースを自動的にダウンロードできます。
+ .
+ どちらの方法になるかはネットワーク接続の種類によります。パッケージが提供するスクリプトは2種類のネットワーク接続をサポートしています:
+  - 常時: ニュースを1時間に一度ダウンロード
+  - PPP : ダイヤル接続したときにニュースをダウンロード
+ .
+ ダイヤルオンデマンドのネットワーク接続ではどちらも使えます。
+ .
+ 「なし」を選択するとニュースの自動でのダウンロードは無効になります。ニュースは手作業により「fetchnews」を実行することでダウンロードできます。
+Description-nl.UTF-8: Type netwerkverbinding:
+ Het leafnode-pakket kan automatisch nieuwsberichten ophalen.
+ .
+ De hiervoor gebruikte methode hangt af van het type netwerkverbinding. De met het pakket meegeleverde scripts ondersteunen twee types netwerkverbindingen:
+  - vast: nieuws wordt om het uur opgehaald;
+  - ppp : nieuws wordt opgehaald telkens wanneer er ingebeld wordt.
+ .
+ Beide opties werken ook met een inbelverbinding.
+ .
+ Als u 'geen' kiest, wordt het automatisch ophalen van nieuws gedeactiveerd. Nieuws kan handmatig opgehaald worden via het commando 'fetchnews'.
+Description-pl.UTF-8: Typ połączenia sieciowego:
+ Pakiet Leafnode może automatycznie pobierać wiadomości.
+ .
+ Metoda, które zostanie użyta, zależy od typu połączenia sieciowego. Skrypty udostępniane przez pakiet obsługują dwa typy połączeń:
+  - stałe: cogodzinne pobieranie wiadomości,
+  - PPP  : pobieranie wiadomości wyzwalane przez połączenie.
+ .
+ Każda opcja będzie działała w przypadku wdzwanianych połączeń na żądanie.
+ .
+ Wybranie "brak" wyłączy automatyczne pobieranie wiadomości. Można je pobierać ręcznie, używając polecenia "fetchnews".
+Description-pt.UTF-8: Tipo de ligação à rede:
+ O pacote Leafnode pode descarregar 'news' automaticamente.
+ .
+ O método usado para isto depende do tipo de ligação à rede. Os scripts disponibilizados com o pacote suportam dois tipos de ligação à rede:
+  - permanente: downloads horários de noticias;
+  - PPP       : downloads de noticias activados pela ligação (dialouts). 
+ .
+ Qualquer opção irá funcionar para uma ligação à rede 'dial-on-demand'.
+ .
+ Escolhendo 'nenhum' irá desactivar as transferências automáticas de notícias. As 'news' podem ser descarregadas manualmente correndo fetchnews.
+Description-ru.UTF-8: Тип сетевого соединения:
+ Пакет Leafnode может автоматически загружать новости.
+ .
+ Используемый метод зависит от типа сетевого соединения. Скрипты предусмотренные в пакете поддерживают два типа сетевого соединения:
+  - постоянное:         новости загружаются каждый час;
+  - PPP (двухточечное): новости загружаются при соединении.
+ .
+ В сетевом соединении типа предоставление канала по требованию будет работать любая настройка.
+ .
+ При выборе 'нет' автоматическая загрузка новостей будет отключена. Новости можно будет загрузить вручную, запустив 'fetchnews'.
+Description-sv.UTF-8: Nätverksuppkopplingstyp:
+ Leafnode-paketet kan ladda ner diskussionsgrupper automatiskt.
+ .
+ Den metod som används för detta beror på nätverksuppkopplingstypen. Skript som tillhandahålls av paketet stödjer två nätverksuppkopplingstyper:
+  - permanent: ladda ner varje timme;
+  - PPP      : ladda ner vid utringning.
+ .
+ Båda valen kommer fungera för en ring-vid-behov-nätverksuppkoppling.
+ .
+ Väljer du "ingen" kommer automatiska nedladdningar avaktiveras. Diskussionsgrupper kan laddas ner manuellt genom att köra 'fetchnews'.
+Description-vi.UTF-8: Kiểu kết nối mạng:
+ Gói Leafnode có khả năng tự động tải về tin tức.
+ .
+ Phương pháp tải về tin tức thì phụ thuộc vào kiểu kết nối mạng. Gói này có sẵn một số văn lệnh hỗ trợ hai kiểu kết nối mạng:
+  • bền bỉ		tải về tin tức hàng giờ
+  • PPP		chỉ tải về tin tức khi quay số.
+ .
+ Cả hai tùy chọn đều sẽ hoạt động được với kết nối mạng kiểu quay số khi yêu cầu.
+ .
+ Chọn mục « không có » sẽ tắt chức năng tự động tải về tin tức. Bạn cũng có thể tự tải về tin tức bằng cách chạy « fetchnews ».
+
+Template: leafnode/update-groups
+Type: boolean
+Default: true
+Description: Update the list of available groups?
+ Leafnode updates the list of available newsgroups when
+ it checks for new news. No newsgroups will be available until this has
+ happened at least once.
+ .
+ If you choose to update the list of groups immediately,
+ newsgroups will be available to clients as soon as Leafnode has been
+ set up.
+Description-cs.UTF-8: Aktualizovat seznam dostupných skupin?
+ Při kontrole nových zpráv si Leafnode aktualizuje seznam dostupných diskuzních skupin. Dokud tak alespoň jednou neudělá, nebude klientům poskytovat žádné diskuzní skupiny.
+ .
+ Pokud zvolíte možnost aktualizace seznamu skupin během nastavení balíčku, pak budou diskuzní skupiny přístupné pro klienty ihned, jakmile se Leafnode nastaví.
+Description-da.UTF-8: Opdater listen over tilgængelige grupper?
+ Leafnode opdaterer listen over tilgængelige nyhedsgrupper når den tjekker efter nye nyheder. Ingen nyhedsgrupper vil være tilgængelige indtil dette er sket mindst engang.
+ .
+ Hvis du vælger at opdatere listen af grupper med det samme, vil nyhedsgrupper være tilgængelige for klienter så snart Leafnode er blevet sat op.
+Description-de.UTF-8: Soll die Liste verfügbarer Gruppen aktualisiert werden?
+ Leafnode hält die Liste verfügbarer News-Gruppen aktuell, wenn nach neuen Nachrichten gesucht wird. Bevor dies nicht mindestens ein mal geschehen ist werden keine News-Gruppen verfügbar sein.
+ .
+ Falls Sie die Gruppenliste sofort aktualisieren lassen, werden die News-Gruppen für die Clients verfügbar sein, sobald Leafnode fertig eingerichtet ist.
+Description-es.UTF-8: ¿Desea actualizar la lista de grupos disponibles?
+ Leafnode mantiene actualizada la lista de grupos de noticias disponibles cuando comprueba si hay nuevas noticias. No se ofrecerá ningún grupo de noticias a los clientes hasta que se haya realizado esto.
+ .
+ Si elige actualizar la lista de grupos inmediatamente, los grupos de noticias estarán disponibles para los clientes tan pronto como Leafnode se haya configurado.
+Description-eu.UTF-8: Talde erabilgarrien zerrenda eguneratu?
+ Leafnode-k berr-talde erabilgarrien zerrenda eguneratzen du mezu berrien bila arakatzean. HAu behintzat behin getatu arte ez da berri-talde erabilgarririk egongo.
+ .
+ Berri-taldeen zerrenda orain eguneratzea hautatzen baduzu, berri-taldeak erabilgarri egongo dira erabiltzaileentzat leafnode abiarazten den bezain laster.
+Description-fi.UTF-8: Päivitetäänkö saatavilla olevien ryhmien lista?
+ Leafnode päivittää listan saatavilla olevista ryhmistä hakiessaan uusia uutisia. Mitään uutisryhmiä ei ole saatavilla ennen kuin tämä on tehty ainakin kerran.
+ .
+ Jos ryhmälista päivitetään heti, uutisryhmät ovat asiakkaiden käytössä heti kun Leafnode on asennettu.
+Description-fr.UTF-8: Faut-il mettre à jour la liste des forums disponibles ?
+ Leafnode met à jour la liste des forums disponibles lorsqu'il recherche de nouveaux messages. Tant que cela n'est pas fait, aucun forum n'est disponible pour les clients.
+ .
+ Si vous choisissez de mettre à jour la liste des forums pendant la configuration du paquet, les forums seront accessibles aux clients dès que Leafnode aura été configuré.
+Description-gl.UTF-8: ¿Actualizar a lista de grupos dispoñibles?
+ Leafnode actualiza a lista de grupos de novas dispoñibles ao descargar as novas. Non haberá ningún grupo de novas dispoñible ata que o faga alomenos unha vez.
+ .
+ Se decide actualizar a lista de grupos inmediatamente, os grupos de novas han estar dispoñibles aos clientes tan pronto como se configure Leafnode.
+Description-it.UTF-8: Aggiornare la lista dei gruppi disponibili?
+ Leafnode aggiorna la lista dei gruppi di discussione al momento della ricerca dei nuovi messaggi. Nessun gruppo di discussione sarà disponibile finché ciò non sarà stato fatto almeno una volta. 
+ .
+ Se si sceglie di aggiornare subito la lista dei gruppi, questi saranno disponibili ai client non appena terminata la configurazione di Leafnode.
+Description-ja.UTF-8: 利用可能なグループ一覧を更新しますか?
+ Leafnode は新しいニュースを確認するときに利用可能なニュースグループの一覧を更新します。最低でも一度は更新しないとニュースグループは利用可能になりません。
+ .
+ グループ一覧をすぐに更新することを選択すると、Leafnode の準備ができた時点でクライアントからニュースグループを利用できるようになります。
+Description-nl.UTF-8: Wilt u de lijst van beschikbare nieuwsgroepen bijwerken?
+ Leafnode werkt de lijst van beschikbare nieuwsgroepen bij telkens wanneer er nieuws opgehaald wordt. Er zijn dus geen nieuwsgroepen beschikbaar voordat dit minstens éénmaal gebeurd is.
+ .
+ Als u ervoor kiest om de lijst met nieuwsgroepen onmiddellijk bij te werken zullen er nieuwsgroepen beschikbaar zijn voor de clients zodra Leafnode geïnstalleerd is.
+Description-pl.UTF-8: Zaktualizować listę dostępnych grup?
+ Leafnode aktualizuje listę dostępnych grup podczas sprawdzania nowych wiadomości. Dopóki sprawdzenie nie zostanie wykonane choć raz, nie będą dostępne żadne grupy.
+ .
+ Jeśli zostanie wybrana opcja zaktualizowania listy grup w tej chwili, będą one dostępne dla klientów zaraz po zakończeniu konfiguracji Leafnode.
+Description-pt.UTF-8: Actualizar a lista de grupos disponíveis?
+ O Leafnode actualiza a lista de newsgroups disponíveis quando verifica se há novas 'news'. Nenhum newsgroup estará disponível enquanto isto não tiver acontecido pelo menos uma vez.
+ .
+ Se você escolher actualizar a lista de grupos imediatamente, os newsgroups estarão disponíveis aos clientes assim que o Leafnode estiver configurado.
+Description-ru.UTF-8: Обновить список доступных групп?
+ Leafnode обновляет список доступных групп, когда проверяет наличие новых новостей. Никакие новостные группы не будут доступны, если это не сделать хотя бы один раз.
+ .
+ Если вы выберете немедленное обновление списка групп, то новостные группы будут доступны клиентам сразу же после установки Leafnode.
+Description-sv.UTF-8: Vill du uppdatera listan med tillgängliga diskussionsgrupper?
+ Leafnode uppdaterar listan över tillgängliga nyhetsgrupper när den letar efter nya nyheter.  Inga diskussionsgrupper kommer vara tillgängliga förrän detta har gjorts åtminstone en gång.
+ .
+ Om du väljer att uppdatera listan av grupper omedelbart, kommer diskussionsgrupperna bli tillgängliga för klienterna så snart Leafnode har ställts in.
+Description-vi.UTF-8: Cập nhật danh sách các nhóm công bố không?
+ Trình Leafnode cập nhật danh sách các nhóm công bố mỗi lúc nó kiểm tra có tin tức mới chưa. Không có nhóm tin sẵn sàng trước khi hành động này được làm ít nhất một lần.
+ .
+ Bật tùy chọn cập nhật ngay danh sách nhóm tin thì các ứng dụng khách có thể truy cập đến nhóm tin một khi Leafnode được thiết lập.
+
+Template: leafnode/purge
+Type: boolean
+Default: false
+Description: Remove news groups and articles when purging the package?
+ The /var/spool/news directory holds the database of news articles
+ downloaded by Leafnode. Many other news servers also use this
+ directory to store their news database and you may wish to keep it
+ even when removing the leafnode package.
+Description-cs.UTF-8: Odstranit skupiny novinek a články při odstranění balíčku?
+ Adresář /var/spool/news obsahuje databázi news článků stažených prostřednictvím Leafnode. Spousta dalších news serverů také používá tento adresář pro uložení své databáze zpráv a tak byste ho měli zřejmě při odstranění balíčku leafnode zachovat.
+Description-da.UTF-8: Fjern nyhedsgrupper og artikler når pakken ryddes op?
+ Mappen /var/spool/news indeholder databasen over nyhedsartikler som er hentet ned af Leafnode. Mange andre servere bruger også denne mappe til at gemme deres nyhedsdatabase og du vil måske ønske at beholde den selv når du fjerner pakken leafnode.
+Description-de.UTF-8: Sollen die News-Gruppen und Artikel entfernt werden, wenn das Paket vollständig gelöscht wird?
+ Im Verzeichnis /var/spool/news wird die News-Datenbank von Leafnode gespeichert. Viele andere Newsserver nutzen ebenfalls dieses Verzeichnis, um ihre News-Datenbank zu speichern und daher könnte es sein, dass Sie dieses Verzeichnis, auch wenn Sie das Leafnode-Paket löschen, behalten möchten.
+Description-es.UTF-8: ¿Eliminar los grupos y artículos de noticias cuando se elimine el paquete?
+ El directorio «/var/spool/news» contiene la base de datos de los artículos de noticias descargados por Leafnode. Muchos otros servidores de noticias también usan este directorio para almacenar sus bases de datos de noticias y a lo mejor podría querer mantenerlo cuando elimine el paquete leafnode.
+Description-eu.UTF-8: Berri-talde eta artikuluak ezabatu paketea garbitzean?
+ Leafnode-k deskargatzen dituen artikulu berrien datubasea /var/spool/news direktorioan mantentzen da. BEste edozein berri-telade zerbitzarik ere direktorio hori erabiltzen duenez leafnode paketea garbitzean direktorioa mantendu nahi izan dezakezu.
+Description-fi.UTF-8: Poistetaanko uutisryhmät ja artikkelit siivottaessa paketti?
+ Leafnoden lataamat uutisartikkelit ovat tietokannassa hakemistossa /var/spool/news. Myös monet muut uutispalvelimet käyttävät tätä hakemistoa uutistietokantojensa säilyttämiseen ja se saatetaan haluta säilyttää, vaikka paketti leafnode poistetaan.
+Description-fr.UTF-8: Faut-il supprimer les articles et les groupes de nouvelles lors de la purge du paquet ?
+ Le répertoire « /var/spool/news » contient la base de données des articles téléchargés par Leafnode. D'autres serveurs utilisent aussi ce répertoire pour leurs bases de données. Si vous avez remplacé Leafnode par un autre serveur, vous devriez conserver ce répertoire.
+Description-gl.UTF-8: ¿Eliminar os grupos de novas e os artigos ao purgar o paquete?
+ O directorio /var/spool/news contén a base de datos de artigos de novas descargados por Leafnode. Moitos servidores de novas tamén empregan este directorio para armacenar a súa base de datos de novas, polo que pode querer conservalo incluso ao eliminar o paquete leafnode.
+Description-it.UTF-8: Rimuovere i gruppi di discussione e le notizie quando si rimuove completamente il pacchetto?
+ La directory /var/spool/news contiene il database dei messaggi scaricati da Leafnode. Anche altri server news utilizzano questa directory per memorizzare il proprio database e si potrebbe scegliere di mantenerli anche quando si rimuove il pacchetto leafnode.
+Description-ja.UTF-8: パッケージを完全削除するときにニュースグループや記事を削除しますか?
+ Leafnode によりダウンロードされたニュース記事のデータベースは /var/spool/news ディレクトリに置かれます。他の多くのニュースサーバでもこのディレクトリを使ってニュースデータベースを保存しています。leafnode パッケージを削除した場合でもこれを残しておくこともできます。
+Description-nl.UTF-8: Wilt u dat nieuwsgroepen en artikelen verwijderd worden wanneer dit pakket gewist wordt?
+ Net zoals veel andere nieuws-servers slaat Leafnode de opgehaalde nieuwsberichten op in /var/spool/news. Als u Leafnode vervangt door een andere server is het denkelijk dat u deze wilt bewaren, ook al verwijderd u het leafnode-pakket.
+Description-pl.UTF-8: Usunąć grupy dyskusyjne i artykuły podczas czyszczenia pakietu?
+ Katalog /var/spool/news zawiera bazę danych artykułów pobranych przez Leafnode. Wiele innych serwerów grup dyskusyjnych również używa tego katalogu do przechowywania swoich baz danych, dlatego użytkownik może zechcieć zachować katalog, nawet po usunięciu pakietu leafnode.
+Description-pt.UTF-8: Remover grupos de noticias e artigos ao 'purgar' o pacote?
+ O directório /var/spool/news contêm a base de dados de artigos de 'news' puxados pelo Leafnode. Muitos outros servidores de 'news' também usam esta directoria para guardar as suas bases de dados de 'news' e você pode desejar mantê-la mesmo quando remover o pacote leafnode.
+Description-ru.UTF-8: Удалить группы новостей и статьи при вычистке пакета?
+ Директория /var/spool/news содержит базу данных новостных статей, загруженных Leafnode. Многие другие серверы новостей также используют эту директорию для хранения своих баз новостей и вы, возможно, пожелаете оставить эту директорию при удалении пакета Leafnode.
+Description-sv.UTF-8: Ta bort diskussionsgrupperna och artiklarna när paketet rensas bort?
+ Katalogen /var/spool/news innehåller databasen med artiklar som Leafnode har laddat ner. Många andra serverprogram för diskussionsgrupper använder också denna katalog för att spara sina artiklar och du kan tänkas vilja behålla dem även då du tar bort leafnode-paketet.
+Description-vi.UTF-8: Cũng gỡ bỏ các nhóm tin và bài tin khi tẩy gói không?
+ Thư mục « /var/spool/news » chứa cơ sở dữ liệu các bài tin được Leafnode tải về. Nhiều máy phục vụ tin tức khác cũng dùng thư mục này để chứa cơ sở dữ liệu tin tức thì bạn có thể muốn giữ lại nó, ngay cả khi gỡ bỏ gói Leafnode.

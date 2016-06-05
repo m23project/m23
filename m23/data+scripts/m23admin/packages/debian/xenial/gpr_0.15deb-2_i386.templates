@@ -1,0 +1,43 @@
+Template: gpr/divert_lpr
+Type: boolean
+Default: false
+Description: divert lpr with a wrapper that points to gpr?
+ gpr can install a wrapper in place of the command lpr. The wrapper will
+ call the real lpr command if: either it is called from a terminal, or
+ there is no access to an X DISPLAY; otherwise it will call gpr. This
+ wrapper can be useful when printing from graphical programs (such as
+ mozilla or openoffice), so that the users will be able to choose the
+ printer and other printer-related settings.
+Description-ca.UTF-8: voleu desviar l'lpr amb un embolcall que apunti al gpr?
+ el gpr pot instal·lar un embolcall que substitueix l'ordre lpr. L'embolcall cridarà l'ordre lpr real en les següents condicions: si es crida des d'un terminal, si no es pot accedir a una pantalla d'X; en qualsevol altre cas cridarà l'ordre gpr. L'embolcall pot ser útil si imprimiu des d'aplicacions gràfiques (com el mozilla o l'openoffice), ja que els usuaris podran escollir la impressora i d'altres paràmetres d'impressió.
+Description-cs.UTF-8: Obalit lpr skriptem, který ukazuje na gpr?
+ gpr může nainstalovat místo příkazu lpr skript, který bude spouštět skutečné lpr pouze pokud je volán z terminálu nebo pokud nemá přístup k X displeji; v ostatních případech bude spouštět gpr. Tento obalovací skript je užitečný při tisku z grafických programů (jako Mozilla nebo OpenOffice.org), protože uživatelé si tak mohou jednoduše zvolit tiskárnu a jiné parametry spojené s tiskem.
+Description-da.UTF-8: omdiriger lpr med et omslag som peger mod gpr?
+ gpr kan installere et omslag i stedet for kommandoen lpr. Omslaget vil kalde den rigtige lpr-kommando hvis: Enten hvis den kaldes fra en terminal, eller der ingen adgang er til et X DISPLAY; ellers vil den kalde gpr. Dette omslag kan være brugbart, når der udskrives fra grafiske programmer (såsom mozilla eller openoffice), så at brugerne vil være i stand til at vælge printeren og andre udskrivningsmæssige indstillinger.
+Description-de.UTF-8: Kommando lpr nach gpr umleiten?
+ gpr kann ein Programm (wrapper) anstelle des Kommandos lpr setzen. Dieser Wrapper ruft das eigentliche Kommando lpr auf, wenn er von einem Terminal aufgerufen wurde oder keinen Zugang zu einem X-Display hat, ansonsten wird gpr verwendet. Dieser Wrapper kann nützlich sein, wenn man aus grafischen Oberflächen (wie Mozilla oder OpenOffice) heraus drucken will. Dabei kann der Benutzer den Drucker auswählen und Druckereinstellungen vornehmen.
+Description-es.UTF-8: ¿Desea desviar lpr con un envoltorio que apunte hacia gpr?
+ gpr puede instalar un envoltorio que sustituya a la orden lpr. El envoltorio invocará a la orden lpr real si: se llama desde un terminal o si no hay acceso a un PANTALLA X; de otro modo llamará a gpr. Este envoltorio puede ser útil al imprimir desde programas gráficos (tales como mozilla u openoffice), de forma que los usuarios podrán escoger la impresora y otras configuraciones relacionadas con la impresión.
+Description-fi.UTF-8: Korvataanko lrp ohjauskomentosarjalla, joka osoittaa gpr:ään?
+ gpr voi korvata komennon lpr ohjauskomentosarjalla. Tällöin oikeaa lpr-komentoa kutsutaan, jos se ajetaan komentoriviltä tai X-näyttöä ei ole käytettävissä. Muussa tapauksessa kutsutaan gpr:ää. Tästä ohjauskomentosarjasta on hyötyä tulostettaessa graafisista ohjelmista, koska tällöin käyttäjä voi valita tulostimen ja muuttaa tulostusasetuksia.
+Description-fr.UTF-8: Faut-il rediriger les appels à lpr vers gpr ?
+ Gpr peut installer un script de redirection (« wrapper ») à la place de la commande lpr. La véritable commande lpr sera exécutée si la demande d'impression est faite depuis un terminal, ou bien si l'environnement graphique n'est pas disponible. Dans les autres cas, gpr sera utilisé. Ce script de redirection peut être utile lorsque l'impression se fait depuis des programmes de l'environnement graphique (tels que Mozilla ou OpenOffice). Ainsi, les utilisateurs pourront choisir l'imprimante et la régler comme ils le souhaitent.
+Description-it.UTF-8: redireziona le chiamate al comando lpr verso gpr?
+ gpr può installare un programma sostitutivo al posto del comando 'lpr'.
+ Questo sostituto a sua volta chiamerà direttamente 'lpr' se, o viene
+ chiamato da un terminale, oppure se non vi è accesso a un display X.
+ Questo sostituto è utile quando si stampa da un programma 'grafico'
+ (come mozilla o openoffice), cosicché gli utenti possano scegliere
+ la stampante e i setting relativi al momento della stampa.
+Description-ja.UTF-8: lpr を gpr のラッパーで置き換えますか?
+ gpr は lpr コマンドの代わりになるラッパーをインストールできます。ターミナルから呼び出されるか、アクセスできる X DISPLAY が無い場合はラッパーは実際の lpr コマンドを呼び出し、それ以外の場合は gpr を呼びます。このラッパーは (mozilla や openoffice のような) GUI プログラムから印刷する際に役に立ち、ユーザはプリンタやプリンタ関連の設定を選べるようになります。
+Description-nl.UTF-8: lpr omleiden met een wrapper die naar gpr wijst?
+ gpr kan een wrapper installeren die de plaats van het lpr-commando inneemt. De wrapper zal het echte lpr-commando aanroepen als: het wordt aangeroepen vanuit een terminal, of als er geen toegang is tot een X DISPLAY; anders zal het gpr aanroepen. Deze wrapper kan handig zijn waneer geprint wordt vanuit grafische programma's (zoals mozilla of openoffice), zodat de gebruikers de printer en andere printergerelateerde instellingen kunnen kiezen.
+Description-pt.UTF-8: Desviar o lpr com um contornador que aponta para gpr?
+ gpr pode instalar um contornador no lugar do comando lpr. O contornador irá chamar o comando lpr real se: se estiver a ser chamado de um terminal, ou não há acesso a um display X; doutra forma ele irá chamar o gpr. Este contornador pode ser útil quando imprimindo de programas gráficos (como o mozilla ou o openoffice), para que os utilizadores possam escolher a impressora e outras opções relacionadas com a impressora.
+Description-ru.UTF-8: Перевести lpr на обёртку, указывающую на gpr?
+ Пакет gpr может установить обёртку, заменяющую команду lpr. Обёртка будет вызывать реальную команду lpr, если она вызывается из терминала, или недоступен X DISPLAY; иначе будет вызываться gpr. Данная обёртка может пригодиться при печати из программ с графическим интерфейсом (например, mozilla или openoffice), позволяя пользователям выбирать принтер и изменять настройки печати.
+Description-sv.UTF-8: Dirigera lpr med en wrapper som pekar på gpr?
+ gpr kan installera en 'wrapper' framför kommandot lpr. Wrappern kommer att kalla på det riktiga lpr-kommandot om: det kallas upp från en terminal eller det inte finns tillgång till en X-DISPLAY, annars kommer den kalla upp gpr. Denna wrapper kan vara användbar vid utskrifter från grafiska program (såsom mozilla eller openoffice) så att användare kan välja skrivare och andra skrivarrelaterade inställningar.
+Description-vi.UTF-8: làm trệch hớng lpr dùng một bộ bao bọc chỉ tới gpr không?
+ gpr có thể cài đặt một bộ bao bọc trong chỗ lệnh lpr. Bộ bao bọc này sẽ gọi lệnh lpr thật nếu hoặc nó được gọi từ một thiết bị cuối, hoặc nếu không có truy cập BỘ TRÌNH BÀY X; nếu không thì nó sẽ gọi gpr. Bộ bao bọc này có thể hữu ích khi in từ chương trình đồ họa (v.d. Mozilla hay OpenOffice) vì cho phép người dùng chọn máy in và những thiết lập khác liên quan đến máy in.

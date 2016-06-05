@@ -1,0 +1,1576 @@
+Template: backup-manager/backup-repository
+Type: string
+Default: /var/archives
+Description: Archives location:
+ Please enter the name of the directory where backup-manager will
+ store the generated archives.
+ .
+ The size of archives may be rather important so you should store them
+ on a disk with enough available space.
+Description-cs.UTF-8: Umístění archivů:
+ Zadejte prosím jméno adresáře, kam má backup-manager ukládat vygenerované archivy.
+ .
+ Velikost archivů je významným hlediskem, takže byste je měli uložit na disku s dostatkem volného místa.
+Description-da.UTF-8: Arkivernes placering:
+ Indtast venligst navnet på mappen hvor backup-manager skal gemme de oprettede arkiver.
+ .
+ Størrelsen på arkiverne kan være ret så vigtig, så du bør gemme dem på en disk med tilstrækkelig ledig plads.
+Description-de.UTF-8: Archivplatz:
+ Bitte geben Sie den Namen des Verzeichnisses an, in dem backup-manager die erstellten Archive speichern soll.
+ .
+ Die Archive können durchaus ziemlich groß werden, sie sollten daher auf einer Partition mit genügend Platz gespeichert werden.
+Description-el.UTF-8: Τοποθεσία αρχειοθηκών:
+ Παρακαλώ εισάγετε το όνομα του καταλόγου όπου το backup-manager θα αποθηκεύει τις δημιουργούμενες αρχειοθήκες.
+ .
+ Το μέγεθος των αρχειοθηκών μπορεί να είναι σημαντικό, οπότε θα πρέπει να τις αποθηκεύετε σε ένα δίσκο με αρκετό διαθέσιμο χώρο.
+Description-es.UTF-8: Ruta de las copias:
+ Introduzca el nombre del directorio donde backup-manager guardará las copias de seguridad.
+ .
+ El tamaño de las copias puede ser grande, por lo que debería grabarlas en un disco con suficiente espacio disponible.
+Description-eu.UTF-8: Fitxategi kokapena:
+ Mesedez ezarri backup-manager-ek sortutako fitxategiak gordeko diren direktorioaren izena.
+ .
+ Fitxategien tamaina nahiko garrantzitsua da beraz toki aski duen diska batetan gorde beharko dituzu.
+Description-fr.UTF-8: Dépôt des archives :
+ Veuillez indiquer le répertoire où backup-manager sauvegardera les archives.
+ .
+ La taille des archives pourrait devenir importante, il est donc recommandé de choisir un emplacement possédant suffisamment d'espace disponible.
+Description-it.UTF-8: Posizione degli archivi:
+ Inserire il nome della directory nella quale backup-manager memorizzerà gli archivi generati.
+ .
+ La dimensione degli archivi può essere piuttosto imponente quindi li si deve memorizzare in un disco con parecchio spazio libero.
+Description-ja.UTF-8: アーカイブの位置:
+ backup-manager が生成したアーカイブを格納するディレクトリの名前を入力してください。
+ .
+ アーカイブのサイズは大きくなるので、十分な空き容量のあるディスクにそれを格納すべきです。
+Description-nl.UTF-8: Archiefmap:
+ In welke map wilt u de door backup-manager aangemaakte archieven opslaan?
+ .
+ De grootte van de archieven kan significant zijn, u kunt deze dan ook best opslaan op een schijf die voldoende vrije ruimte heeft.
+Description-pt.UTF-8: Local para os arquivos:
+ Introduza o nome da pasta onde o backup-manager irá guardar os ficheiros gerados.
+ .
+ A dimensão dos arquivos pode ser importante, deverá deste modo arquivá-los num disco com capacidade suficiente em espaço disponível.
+Description-pt_BR.UTF-8: Localização dos arquivos:
+ Por favor, informe o nome do diretório onde o backup-manager armazenará os arquivos gerados.
+ .
+ O tamanho dos arquivos pode ser importante e por isso você deverá armazená-los em um disco com espaço suficiente disponível.
+Description-ru.UTF-8: Место для хранения архивов:
+ Введите имя каталога, в который backup-manager будет сохранять создаваемые архивы.
+ .
+ Размеры архивов могут быть довольно разными, поэтому укажите место, где достаточно свободного дискового пространства.
+Description-sv.UTF-8: Plats för arkiven:
+ Ange namnet på den katalog där backup-manager kommer att lagra de genererade arkiven.
+ .
+ Storleken på arkiven kan vara ganska viktigt så du bör lagra dom på en disk med tillräckligt mycket ledig plats.
+Description-vi.UTF-8: Vị trí kho :
+ Hãy nhập tên thư mục nơi trình quản lý sao lưu (backup-manager) sẽ cất giữ các kho đã tạo ra.
+ .
+ Kích cỡ của những kho có thể là quan trọng thì bạn nên cất giữ chúng vào một đĩa có đủ sức chứa còn rảnh.
+
+Template: backup-manager/filetype
+Type: select
+Choices: tar, tar.gz, tar.bz2, tar.lz, zip, dar
+Default: tar.gz
+Description: Archives storage format:
+Description-cs.UTF-8: Formát pro uložení archivů:
+Description-da.UTF-8: Lagerformat for arkiverne:
+Description-de.UTF-8: Wählen Sie das Format der Archivnamen:
+Description-el.UTF-8: Μορφή αποθήκευσης αρχειοθηκών:
+Description-es.UTF-8: Seleccione el formato de las copias:
+Description-eu.UTF-8: Fitxategi biltegiratze formatua:
+Description-fr.UTF-8: Format des archives :
+Description-it.UTF-8: Formato degli archivi:
+Description-ja.UTF-8: アーカイブの格納形式:
+Description-nl.UTF-8: Archief-opslag-formaat :
+Description-pt.UTF-8: Formato de gravação dos arquivos:
+Description-pt_BR.UTF-8: Formato de armazenamento dos arquivos:
+Description-ru.UTF-8: Формат хранения архивов:
+Description-sv.UTF-8: Format för arkivlagring:
+Description-vi.UTF-8: Định dạng cất giữ kho :
+
+Template: backup-manager/dump_symlinks
+Type: boolean
+Default: false
+Description: Follow symlinks?
+ The tar, tar.gz and tar.bz2 filetypes may dereference the symlinks in
+ generated archives.
+ .
+ Enabling this feature will dump the files pointed by symlinks and
+ is likely to generate huge archives.
+Description-cs.UTF-8: Následovat symbolické odkazy?
+ Formáty tar, tar.gz a tar.bz2 mohou v archivech dereferencovat symbolické odkazy.
+ .
+ Povolením této vlastnosti se do archivu uloží i soubory, na které ukazují symbolické odkazy. To ovšem může vytvořit archivy ohromných rozměrů.
+Description-da.UTF-8: Følg symbolske henvisninger?
+ Filtyperne tar, tar.gz og tar.bz2 kan »dereference« de symbolske henvisninger i oprettede arkiver.
+ .
+ Aktivering af denne funktion vil dumpe filerne som symbolske henvisninger peger på og vil sandsynligvis oprette store arkiver.
+Description-de.UTF-8: Symbolischen Links folgen?
+ Beim Generieren der Archive könnten bei den Dateitypen tar, tar.gz und tar.bz2 symbolische Links dereferenziert werden.
+ .
+ Das Aktivieren dieses Features wird durch das Sichern der durch die symbolischen Links referenzierten Dateien wahrscheinlich große Archive erzeugen.
+Description-el.UTF-8: Να ακολουθούνται συμβολικοί σύνδεσμοι;
+ Οι τύποι αρχείων tar, tar.gz και tar.bz2 μπορούν να ακολουθούν τους συμβολικούς συνδέσμους στις δημιουργούμενες αρχειοθήκες.
+ .
+ Η ενεργοποίηση αυτού του χαρακτηριστικού θα αντιγράψει τα περιεχόμενα των αρχείων που δείχνονται από τους συμβολικούς συνδέσμους και είναι πιθανό να δημιουργήσει τεράστιες αρχειοθήκες.
+Description-es.UTF-8: ¿Seguir los enlaces simbólicos?
+ Los ficheros de tipo tar, tar.gz y tar.bz2 pueden guardar el contenido de los enlaces simbólicos en las copias generadas.
+ .
+ Seleccionar esta opción copiará los ficheros enlazados en vez de los enlaces simbólicos, lo que podría generar copias enormes.
+Description-eu.UTF-8: Lotura sinbolikoak jarraitu?
+ Tar, tar.gz eta tar.bz2 fitxategi motek loturak errespetatuko dituzte sortutako fitxategietan.
+ .
+ Aukera hau gaituaz loturek seinalaturiko fitxategiak irauliko dira eta honek fitxategi handiagoak sortuko ditu.
+Description-fr.UTF-8: Suivre les liens symboliques ?
+ Les types de fichier tar, tar.gz et tar.bz2 pourraient perdre les références des liens symboliques dans les archives créées.
+ .
+ L'activation de cette fonctionnalité intégrera les fichiers pointés par les liens symboliques ce qui augmentera la taille des archives créées.
+Description-it.UTF-8: Seguire i link simbolici?
+ I file tar, tar.gz e tar.bz2 possono dereferenziare i link simbolici negli archivi generati.
+ .
+ Abilitare questa opzione vorrà dire includere i file puntati dai link simbolici e genererà probabilmente dei grossi archivi.
+Description-ja.UTF-8: シンボリックリンクに従いますか?
+ tar、tar.gz、tar.bz2 ファイル形式は、生成するアーカイブでシンボリックリンクの参照をたどるようにできます。
+ .
+ この機能を有効にすると、シンボリックリンクによって示されたファイルをダンプし、おそらく巨大なアーカイブを生成することになります。
+Description-nl.UTF-8: Symbolische koppelingen volgen?
+ De tar, tar.gz en tar.bz2 bestandstypes kunnen symbolische koppelingen in aangemaakte archieven vervangend door de verwezen bestanden.
+ .
+ Activeren van deze feature dumpt de bestanden waarnaar deze symbolische koppelingen verwijzen, en kan leiden tot gigantische archieven.
+Description-pt.UTF-8: Seguir os links simbólicos?
+ Os tipos de ficheiro tar, tar.gz e tar.bz2 podem perder as referências aos links simbólicos dos arquivos gerados.
+ .
+ Ao activar esta funcionalidade irá descarregar os ficheiros apontados pelos links simbólicos o que provavelmente irá gerar ficheiros enormes.
+Description-pt_BR.UTF-8: Seguir ligações simbólicas?
+ Os tipos de arquivos tar, tar.gz e tar.gz2 podem desreferenciar as ligações simbólicas nos arquivos gerados.
+ .
+ A habilitação desse recurso fará um dump dos arquivos apontados pelas ligações simbólicas e provavelmente gerará arquivos enormes.
+Description-ru.UTF-8: Переходить по символическим ссылкам?
+ В типах файлов tar, tar.gz и tar.bz2 можно разыменовывать символические ссылки в создаваемых архивах.
+ .
+ При активации этой возможности будут сохраняться не символические ссылки, а сами файлы, на которые они указывают, что, скорее всего, приведёт к созданию огромных архивов.
+Description-sv.UTF-8: Följ symboliska länkar?
+ Filtyperna tar, tar.gz och tar.bz2 kan avlägsna symboliska länkar i genererade arkiv.
+ .
+ Aktivering av denna funktion kommer att dumpa filerna som pekas till av symboliska länkar och det är troligt att detta kommer att generera otroligt stora arkiv.
+Description-vi.UTF-8: Theo liên kết tượng trưng không?
+ Kiểu tập tin tar, tar.gz và tar.bz2 có thể ngắt đường dẫn kết nối của liên kết tượng trưng trong kho đa tạo ra.
+ .
+ Việc hiệu lực tính năng này sẽ đổ các tập tin tới đó chỉ những liên kết tượng trưng, rất có thể sẽ tạo ra kho rất lớn.
+
+Template: backup-manager/blacklist
+Type: string
+Default: /var/archives
+Description: Directories to skip in archives:
+ Please enter a space-separated list of directories which should not be
+ archived.
+Description-cs.UTF-8: Přeskakované adresáře:
+ Zadejte mezerami oddělený seznam adresářů, které se nemají archivovat.
+Description-da.UTF-8: Mapper der skal springes over:
+ Indtast venligst en mellemrumsadskilt liste over mapper, som ikke skal arkiveres.
+Description-de.UTF-8: Bitte geben Sie die Verzeichnisse an, die nicht archiviert werden sollen:
+ Bitte geben Sie eine durch Leerzeichen getrennte Liste jener Verzeichnisse an, die nicht gesichert werden sollen.
+Description-el.UTF-8: Κατάλογοι για παράλειψη από τις αρχειοθήκες:
+ Παρακαλώ εισάγετε μία διαχωρισμένη με διαστήματα λίστα των καταλόγων που δεν πρέπει να αρχειοθετούνται.
+Description-es.UTF-8: Introduzca los directorios que quiere omitir:
+ Por favor, introduzca la lista de directorios, separados por espacio, que no deben ser copiados.
+Description-eu.UTF-8: Fitxategietan albo batetara utziko diren direktorioak:
+ Mesedez ezarri hutsunez bereizita gordeko ez diren direktorioen zerrenda.
+Description-fr.UTF-8: Répertoires à exclure des archives :
+ Veuillez indiquer la liste des répertoires qui ne seront pas archivés, chaque élément séparé par des espaces.
+Description-it.UTF-8: Directory da non inserire negli archivi:
+ Inserire un elenco dei nomi separati da spazi di directory che non vanno incluse negli archivi.
+Description-ja.UTF-8: アーカイブでスキップするディレクトリ:
+ アーカイブすべきではないディレクトリのリストをスペースで区切って入力してください。
+Description-nl.UTF-8: Niet te archiveren mappen:
+ Gelieve een door spaties gescheiden lijst van mappen die niet gearchiveerd moeten worden in te geven.
+Description-pt.UTF-8: Pastas a ignorar nos arquivos:
+ Introduza por favor uma lista de pastas separada por espaços de pastas que não deverão ser arquivadas.
+Description-pt_BR.UTF-8: Diretórios para saltar no arquivamento:
+ Por favor, informe uma lista separada por espaço dos diretórios que não deverão ser arquivados.
+Description-ru.UTF-8: Не включаемые в архивы каталоги:
+ Введите через пробел список каталогов, которые не нужно архивировать.
+Description-sv.UTF-8: Kataloger att hoppa över i arkiven:
+ Ange en lista (separerade med mellanslag) för kataloger som inte ska arkiveras.
+Description-vi.UTF-8: Thư mục cần bỏ qua trong kho :
+ Hãy nhập danh sách định giới bằng dấu cách các thư mục không nên được nén va sao lưu.
+
+Template: backup-manager/name-format
+Type: select
+Choices: long, short
+Choices-cs.UTF-8: dlouhý, krátký
+Choices-da.UTF-8: lang, kort
+Choices-de.UTF-8: lange, kurze
+Choices-el.UTF-8: μακριά, σύντομη
+Choices-es.UTF-8: largo, corto
+Choices-eu.UTF-8: luzea, laburra
+Choices-fr.UTF-8: long, court
+Choices-it.UTF-8: lungo, breve
+Choices-ja.UTF-8: 長い, 短い
+Choices-nl.UTF-8: lang, kort
+Choices-pt.UTF-8: longa, curta
+Choices-pt_BR.UTF-8: longo, curto
+Choices-ru.UTF-8: длинная, короткая
+Choices-sv.UTF-8: lång, kort
+Choices-vi.UTF-8: dài, ngắn
+Default: long
+Description: Archives name format:
+ Files generated by backup-manager may use different file naming
+ conventions.
+ .
+ The long format is "host-full-path-to-directory.tar.gz" while the short
+ format only uses the last directory name. For instance, /home/me
+ would be named me.tar.gz.
+Description-cs.UTF-8: Formát jmen archivů:
+ Soubory vytvořené backup-managerem mohou být pojmenovány různými způsoby.
+ .
+ Dlouhý formát má tvar "počítač-celá-cesta-k-adresáři.tar.gz", zatímco krátký používá pouze jméno posledního adresáře. Například /home/mck by byl pojmenován mck.tar.gz
+Description-da.UTF-8: Arkivernes navneformat:
+ Filer oprettet af backup-manager kan bruge andre konventioner for filnavngivelse.
+ .
+ Det lange format er »hav-fuld-sti-til-mappe.tar.gz« mens det korte format kun bruger det sidste mappenavn. For eksempel vil /hjemme/mig blive navngivet mig.tar.tz.
+Description-de.UTF-8: Wählen Sie das Format der Archivnamen:
+ Von backup-manager erstellte Dateien können verschiedene Dateinamenkonventionen haben.
+ .
+ Das lange Format schaut wie folgt aus: »rechner-ganzer-verzeichnisnamen.tar.gz«.Das kurze Format nimmt dafür nur den letzten Verzeichnisnamen: /home/ich zum Beispiel würde als ich.tar.gz gesichert werden.
+Description-el.UTF-8: Μορφή ονομασίας αρχειοθηκών:
+ Τα αρχεία που δημιουργούνται από το backup-manager μπορούν να χρησιμοποιούν διαφορετικές συμβάσεις ονομασίας.
+ .
+ Η μακριά μορφή είναι "υπολογιστής-πλήρης-διαδρομή-στον-κατάλογο.tar.gz", ενώ η σύντομη μορφή χρησιμοποιεί μόνο το τελευταίο όνομα καταλόγου. Για παράδειγμα, το /home/me θα ονομαζόταν me.tar.gz.
+Description-es.UTF-8: Seleccione el formato del nombre de las copias:
+ Los ficheros generados por backup-manager pueden utilizar diferente nomenclatura.
+ .
+ El formato largo es "máquina-ruta-absoluta-al-directorio.tar.gz", mientras que el formato corto usa el ultimo nombre del directorio. Por ejemplo, /home/yo se guardaría en yo.tar.gz.
+Description-eu.UTF-8: Fitxategi izen formatua:
+ Backup-manager bidez sorturiko fitxategiak izen emate ezberdinak erabili ditzakete.
+ .
+ Formatu luzea "ostalaria-direktoriora-bide-osoa.tar.gz" da, laburrak ordea azken direktorioaren izena bakarrik erabiltzen du. Adibidez, /home/ni ni.tar.gz bezala izendatuko da.
+Description-fr.UTF-8: Format de nommage des archives :
+ Les fichiers générés par backup-manager peuvent être nommés selon deux formats.
+ .
+ Le format long correspond à « hôte-chemin-complet.tar.gz » alors que le format court n'utilise que le nom du répertoire parent. Par exemple /home/me sera nommé me.tar.gz.
+Description-it.UTF-8: Nome del formato degli archivi:
+ I file generati da backup-manager possono avere dei nomi secondo diverse convenzioni.
+ .
+ Il formato lungo è "host-percorso-completo.tar.gz" mentre quello corto usa il solo nome dell'ultima directory. Ad esempio /home/me diventerà me.tar.gz.
+Description-ja.UTF-8: アーカイブ名の形式:
+ backup-manager によって生成されたファイルには、異なるファイル名変換を利用できます。
+ .
+ 長い形式は "ホストの完全パスとディレクトリ.tar.gz"、短い形式は最後のディレクトリ名のみを使います。たとえば /home/me は me.tar.gz という名前になります。
+Description-nl.UTF-8: Formaat van de archiefnamen:
+ De door backup-manager aangemaakte bestanden kunnen verschillende naamgevingsconventies volgen.
+ .
+ Het lang-formaat is 'computer-volledig-pad-naar-de-map.tar.gz', het kort-formaat gebruikt enkel de laatste mapnaam (dus /home/ikke wordt ikke.tar.gz).
+Description-pt.UTF-8: Nome do formato dos arquivos:
+ Os ficheiros gerados pelo backup-manager podem usar convenções de nomeação de ficheiros diferentes.
+ .
+ O formato longo é dado do modo "caminho-completo-para-o-ficheiro.tar.gz", enquanto que o formato curto usa apenas o nome da última pasta. Por exemplo, /home/eu seria o nome de ficheiro eu.tar.gz.
+Description-pt_BR.UTF-8: Formato do nome dos arquivos:
+ Arquivos gerados pelo backup-manager podem utilizar diferentes convenções de nomenclatura de arquivo.
+ .
+ O formato longo é "caminho-completo-para-o-diretorio-no-computador.tar.gz", enquanto o formato curto utiliza somente o nome do último diretório. Por exemplo, /home/eu seria nomeado eu.tar.gz.
+Description-ru.UTF-8: Схема именования архивов:
+ При создании файлов backup-manager может использовать несколько схем именования файлов.
+ .
+ При выборе "длинная" используется схема "полный-путь-к-каталогу.tar.gz", а при выборе "короткая" в имени используется только имя последнего каталога. Например, /home/me будет именоваться как me.tar.gz.
+Description-sv.UTF-8: Arkivens namnformat:
+ Filer som genereras av backup-manager kan använda olika format för filnamn.
+ .
+ Det långa formatet är "värd-full-sökväg-till-katalog.tar.gz" medan det korta formatet bara använder det sista katalognamnet. Till exempel "/home/jag" skulle namnges "jag.tar.gz".
+Description-vi.UTF-8: Định dạng tên kho :
+ Tập tin được tạo ra bởi trình quản lý sao lưu có lẽ sẽ dùng quy ước đặt tên khác nhau.
+ .
+ Định dạng dài là « đường_dẫn_đầy_đủ_từ_máy_đến_thư_mục.tar.gz » còn dạng ngắn chỉ dùng tên thư mục đích. Chẳng hạn, « /chính/tôi » sẽ có tên « tôi.tar.gz ».
+
+Template: backup-manager/time-to-live
+Type: string
+Default: 5
+Description: Age of kept archives (days):
+ Please choose the number of days backup-manager will keep the files
+ before purging them. Combining several directories and a large number of
+ days for keeping them may lead to huge archives.
+Description-cs.UTF-8: Stáří uchovávaných archivů (ve dnech):
+ Zadejte počet dnů, po které má backup-manager uchovávat archivy, než je smaže. Kombinace několika adresářů a velkého počtu dnů pro uchování může vést k obrovským archivům.
+Description-da.UTF-8: Alder for opbevarede arkiver (dage):
+ Vælg venligst antallet af dage backup-manager skal opbevare filerne før de fjernes igen. En kombination af mange mapper og et stort antal dage for opbevaring kan medføre meget store arkiver.
+Description-de.UTF-8: Alter aufzubewahrender Archive (in Tagen):
+ Sie müssen eine Anzahl an Tagen angeben, die backup-manager die Dateien behält bevor sie gelöscht werden. Beachten Sie dabei aber, dass Sie bei einer großen Anzahl an Tagen unter Umständen sehr viele große Archive erhalten.
+Description-el.UTF-8: Ηλικία των διατηρούμενων αρχειοθηκών (ημέρες):
+ Παρακαλώ επιλέξτε τον αριθμό των ημερών που το backup-manager θα κρατάει τα αρχεία πριν τα διαγράψει. Ο συνδυασμός πολλών καταλόγων και μεγάλου αριθμού ημερών διατήρησης μπορεί να οδηγήσει σε τεράστια αποθετήρια.
+Description-es.UTF-8: Edad máxima de las copias (días):
+ Tiene que elegir el número de días durante los que backup-manager conservará las copias antes de borrarlas. Si tiene muchos directorios de los que hacer copia y un número alto de días, podría necesitar mucho espacio disponible.
+Description-eu.UTF-8: Fitxategiak mantentzeko muga (egunak):
+ Mesedez aukeratu backup-manager-rek fitxategiak ezabatu aurretik mantendu behar dituen denbora muga. Direktorio anitz eta egun zenbaki handi bat erabiliaz biltegiratze handia beharko da.
+Description-fr.UTF-8: Durée de vie des archives (jours) :
+ Veuillez choisir le nombre de jours pendant lesquels les fichiers seront conservés. Une combinaison de nombreux répertoires et d'un grand nombre de jours impliquera des archives de grande taille.
+Description-it.UTF-8: Durata degli archivi (giorni):
+ Selezionare il numero di giorni per i quali backup-manager manterrà i file prima di cancellarli. Un numero molto alto, associato a molte directory, richiede un grande spazio per gli archivi.
+Description-ja.UTF-8: アーカイブを保持する世代数 (日):
+ backup-manager がファイルを削除するまでそれを保持する日数を選んでください。複数のディレクトリと大きな日数を組み合わせると、巨大なアーカイブを抱えることになります。
+Description-nl.UTF-8: Hoe lang te archiveren (in dagen):
+ Hoe lang dient backup-manager de bestanden te bewaren alvorens ze te wissen? Combinatie van verschillende mappen en een groot aantal dagen kan tot gigantische archieven leiden.
+Description-pt.UTF-8: Idade dos arquivos guardados (dias):
+ Escolha por favor o número de dias que o backup-manager irá guardar os ficheiros antes de os apagar. Ao combinar diversas pastas e um largo número de dias para guardar poderá criar arquivos de dimensão elevada.
+Description-pt_BR.UTF-8: Idade dos arquivos mantidos (em dias):
+ Por favor, indique o número de dias que o backup-manager deverá manter os arquivos antes de removê-los. Combinar diversos diretórios e um grande número de dias para mantê-los pode levar a arquivos enormes.
+Description-ru.UTF-8: Срок хранения архивов (в днях):
+ Укажите число дней, которое backup-manager должен хранить файлы перед тем как их вычистить. Если имеется несколько архивируемых каталогов и указать большое число дней хранения, то это может привести к огромному количеству архивов.
+Description-sv.UTF-8: Ålder för hållna arkiv (dagar):
+ Ange antalet dagar som backup-manager ska behålla filer före de rensas ut. Kombinationen flera kataloger och ett större antal dagar att behålla dom kan leda till otroligt stora arkiv.
+Description-vi.UTF-8: Thời gian giữ kho (theo ngày):
+ Hãy chọn số ngày trình quản lý sao lưu sẽ giữ các tập tin trước khi tẩy chúng. Việc phối hợp vài thư mục và nhiều ngày có lẽ gây ra kho rất to.
+
+Template: backup-manager/directories
+Type: string
+Default: /etc /home
+Description: Directories to backup:
+ Please enter a space-separated list of all the directories you want
+ to backup.
+ .
+ You should rather enter several subdirectories instead of the
+ parent in order to have more pertinent files in your backup repository.
+ .
+ For instance, "/home/user1 /home/user2 /home/user3" is more appropriate
+ than "/home" alone.
+Description-cs.UTF-8: Zálohované adresáře:
+ Zadejte mezerami oddělený seznam adresářů, které chcete zálohovat.
+ .
+ Někdy je vhodnější zadat několik podadresářů než jeden adresář rodičovský, protože vám to dává jemnější kontrolu nad soubory ve vašem úložišti záloh.
+ .
+ Například "/home/uzivatel1 /home/uzivatel2 /home/uzivatel3" je vhodnější než pouhé "/home".
+Description-da.UTF-8: Mapper der skal laves sikkerhedskopiering af:
+ Indtast venligst en mellemrumsadskilt liste over alle mapper du ønsker at lave sikkerhedskopi af.
+ .
+ Du bør indtaste navne for undermapperne i stedet for hovedmappen for at have bedre referencer til filerne i dit depot over sikkerhedskopier.
+ .
+ For eksempel er »/hjemme/bruger1 /hjemme/bruger2 /hjemme/bruger3« mere passende end »/hjemme« alene.
+Description-de.UTF-8: Verzeichnisse, die gesichert werden sollen:
+ Bitte geben Sie eine durch Leerzeichen getrennte Liste jener Verzeichnisse an, die gesichert werden sollen.
+ .
+ Beachten Sie, dass es besser ist mehrere Unterverzeichnisse anstatt eines einzelnen Oberverzeichnisses anzugeben. Dadurch können Sie eindeutigere Dateien(-namen) in ihrem Backup-Depot erhalten.
+ .
+ Zum Beispiel ist »/home/user1 /home/user2 /home/user3« besser geeignet als nur »/home«.
+Description-el.UTF-8: Κατάλογοι προς λήψη αντιγράφων ασφαλείας:
+ Παρακαλώ εισάγετε μία διαχωρισμένη με διαστήματα λίστα όλων των καταλόγων για τους οποίους θέλετε να κάνετε αντίγραφα ασφαλείας.
+ .
+ Είναι προτιμότερο να εισάγετε αρκετούς υποκαταλόγους αντί για τον κατάλογο-γονέα, έτσι ώστε να έχετε περισσότερο συναφή αρχεία στο αποθετήριό σας 
+ .
+ Για παράδειγμα, "/home/user1 /home/user2 /home/user3" είναι περισσότερο κατάλληλο απ' ότι το "/home" μόνο του.
+Description-es.UTF-8: Directorios de los que hacer copia:
+ Introduzca la lista separada por espacios de todos los directorios de los que quiere hacer copia de seguridad.
+ .
+ Es preferible especificar varios subdirectorios a un directorio padre, para mantener en sus copias sólo ficheros relevantes.
+ .
+ Por ejemplo, "/home/usuario1 /home/usuario2 /home/usuario3" es mejor que solamente "/home".
+Description-eu.UTF-8: Gordeko diren direktorioak:
+ Mesedez ezarri hutsunez bereizirik babes-kopia egin nahi duzun direktorioen izenak.
+ .
+ Zure babes-kopia bilduman behar dituzun fitxategiak bakarrik mantentzeko hobe da azpidirektorioak gordetzea erro direktorioa baino.
+ .
+ Adibidez, "/home/1erabil /home/2erabil /home/3erabil" egokiagoa da "/home" ipintzea baino.
+Description-fr.UTF-8: Répertoires à archiver :
+ Veuillez indiquer la liste des répertoires à archiver (séparés par des espaces).
+ .
+ Il est préférable d'indiquer plusieurs sous-répertoires plutôt que leur répertoire parent afin d'avoir des fichiers plus pertinents dans le dépôt.
+ .
+ Par exemple, « /home/user1 /home/user2 /home/user3 » est plus approprié que « /home » uniquement.
+Description-it.UTF-8: Directory delle quali fare il backup:
+ Inserire una lista di nomi separati da spazi di tutte le directory delle quali si vuole fare il backup.
+ .
+ È preferibile inserire i nomi delle sottodirectory piuttosto che quelli della directory superiore al fine di avere file più pertinenti nel proprio backup.
+ .
+ Ad esempio "/home/utente1 /home/utente2 /home/utente3" è più appropriato del solo "/home".
+Description-ja.UTF-8: バックアップするディレクトリ:
+ バックアップしたいすべてのディレクトリのリストを、スペースで区切って入力してください。
+ .
+ 適切なファイルをバックアップリポジトリに入れるために、親ディレクトリの代わりに複数のサブディレクトリを入力するほうがよいでしょう。
+ .
+ たとえば、"/home/user1 /home/user2 /home/user3" は "/home" だけよりも適切です。
+Description-nl.UTF-8: Te archiveren mappen:
+ Gelieve een door spaties gescheiden lijst van alle mappen die u wilt archiveren op te geven.
+ .
+ Om meer relevante bestanden te hebben in uw archiefmap te krijgen kunt u best verschillende sub-mappen opgeven i.p.v. de bovenliggende map.
+ .
+ Bijvoorbeeld '/home/gebruiker1 /home/gebruiker2 /home/gebruiker3' is beter dan alleen '/home'/.
+Description-pt.UTF-8: Pastas a arquivar (backup):
+ Introduza por favor uma lista separada por espaços de todas as pastas que quer arquivar.
+ .
+ Deverá escolher várias sub-pastas ao invés de escolher a pasta 'mãe', de modo a ter ficheiros mais identificáveis e pertinentes no repositório de arquivo (backup).
+ .
+ Por exemplo, "/home/user1·/home/user2·/home/user3"·é mais apropriado que apenas "/home".
+Description-pt_BR.UTF-8: Diretórios para fazer backup:
+ Por favor, informe uma lista separada por espaço de todos os diretórios que você deseja fazer backup.
+ .
+ Você deverá informar diversos subdiretórios ao invés do diretório pai para obter mais arquivos pertinentes em seu repositório de backup.
+ .
+ Por exemplo, "/home/usuário1 /home/usuário2 /home/usuário3" é mais apropriado que somente "/home" sozinho.
+Description-ru.UTF-8: Каталоги для резервного копирования:
+ Введите имена каталогов через пробел, для которых нужно создавать резервные копии.
+ .
+ Лучше указывать несколько подкаталогов, а не один родительский каталог, чтобы в резервное хранилище попали только нужные файлы.
+ .
+ Например, лучше указать "/home/user1 /home/user2 /home/user3", а не один "/home".
+Description-sv.UTF-8: Mappar att säkerhetskopiera:
+ Ange en lista, separerade med mellanslag, över de kataloger du vill säkerhetskopiera.
+ .
+ Du bör hellre ange flera underkataloger istället för föräldern för att få mer relevanta filer i ditt förråd för säkerhetskopior.
+ .
+ Till exempel "/home/user1 /home/user2 /home/user3" är mer lämplig än bara "/home".
+Description-vi.UTF-8: Thư mục cần sao lưu :
+ Hãy nhập danh sách định giới bằng dấu cách các thư mục mà bạn muốn sao lưu.
+ .
+ Tốt hơn khi bạn nhập vài thư mục con, thay thế một thư mục chính, để có những tập tin thích hợp trong kho sao lưu của mình.
+ .
+ Chẳng hạn, « /chính/ngdùng1 /chính/ngdùng2 /chính/ngdùng3 » là thích hợp hơn chỉ « /chính » riêng lẻ.
+
+Template: backup-manager/burning-enabled
+Type: boolean
+Default: false
+Description: Enable automatic burning?
+ Archives may be burnt on a CDR/CDRW/DVD media.
+ .
+ Using this feature requires a writable media to be present at the running
+ time.
+Description-cs.UTF-8: Povolit automatické vypalování?
+ Archivy mohou být vypáleny na média CDR/CDRW/DVD.
+ .
+ Použití této volby vyžaduje za běhu programu přítomnost zapisovatelného média v mechanice.
+Description-da.UTF-8: Aktivere automatisk brænding?
+ Arkiver kan brændes på et cdr/cdrw/dvd-medie.
+ .
+ Brug af denne funktion kræver, at et skrivbart medie er til rådighed på udførelsestidspunktet.
+Description-de.UTF-8: Wollen Sie automatisches Brennen aktivieren?
+ Archive können auf ein CDR/CDRW/DVD-Medium gebrannt werden.
+ .
+ Das Aktivieren dieses Features erfordert, dass zur Laufzeit ein schreibbares Medium verfügbar ist.
+Description-el.UTF-8: Ενεργοποίηση αυτόματης εγγραφής;
+ Οι αρχειοθήκες μπορούν να εγγραφούν σε μέσα CDR/CDRW/DVD.
+ .
+ Η χρήση αυτού του χαρακτηριστικού απαιτεί την ύπαρξη εγγράψιμου μέσου κατά το χρόνο εκτέλεσης.
+Description-es.UTF-8: ¿Quiere habilitar la grabación automática en CD/DVD?
+ Las copias pueden grabarse en un CDR/CDRW/DVD.
+ .
+ Usar esta opción requiere un disco grabable presente a la hora de ejecutarse.
+Description-eu.UTF-8: Grabaketa automatikoa gaitu?
+ Fitxategia CDR/CDRW/DVD medio batetan gordeko da.
+ .
+ Aukera hau erabiltzeak abiaraztean idazteko medioa grabatzailean sartua egotea behar du.
+Description-fr.UTF-8: Faut-il activer la gravure automatique ?
+ Les archives peuvent être gravées sur des CD-ROM, CD-RW ou DVD.
+ .
+ Les supports à graver doivent être présent au moment de l'exécution.
+Description-it.UTF-8: Abilitare la masterizzazione automatica?
+ Gli archivi possono essere copiati su supporto CD-R/CD-RW/DVD.
+ .
+ L'uso di questa opzione richiede che il supporto sia disponibile al momento del backup.
+Description-ja.UTF-8: 自動 CD 作成を有効にしますか?
+ アーカイブを CDR/CDRW/DVD メディアに書き込むことができます。
+ .
+ この機能を使うには、実行時に書き込み可能メディアが提供されていることが必須です。
+Description-nl.UTF-8: Wilt u automatisch branden activeren?
+ Archieven kunnen naar CDR/CDRW/DVD media gebrand worden.
+ .
+ Dit vereist wel dat een schrijfbaar medium aanwezig is op het moment dat het archief gemaakt wordt.
+Description-pt.UTF-8: Activar a gravação automática?
+ Os arquivos podem ser gravados em CDR/CDRW/DVD.
+ .
+ Esta funcionalidade requer a presença de um suporte com permissão de escrita enquanto o programa corre.
+Description-pt_BR.UTF-8: Habilitar gravação automática?
+ Arquivos podem ser gravados em uma mídia CD-R/CDRW/DVD.
+ .
+ O uso desse recurso requer que uma mídia gravável esteja presente no momento da execução.
+Description-ru.UTF-8: Активировать автоматический прожиг?
+ Архивы могут быть скопированы на носители CDR/CDRW/DVD.
+ .
+ Для использования данной возможности при работе программы должен быть вставлен записываемый носитель.
+Description-sv.UTF-8: Aktivera automatisk bränning?
+ Arkiv kan brännas på ett CDR/CDRW/DVD-media.
+ .
+ Användning av denna funktion kräver ett inmatat skrivbart media vid körning.
+Description-vi.UTF-8: Bật tự động chép ra đĩa không?
+ Có thể chép ra kho vào đĩa CDR/CDRW/DVD.
+ .
+ Khả năng dùng tính năng này cần thiết vật chứa ghi được có sẵn khi chạy.
+
+Template: backup-manager/burning-device
+Type: string
+Default: /dev/cdrom
+Description: Device to use for burning data:
+Description-cs.UTF-8: Zařízení pro vypalování dat:
+Description-da.UTF-8: Enhed at bruge for brænding af data:
+Description-de.UTF-8: Geben Sie das Gerät zum Brennen an:
+Description-el.UTF-8: Συσκευή που θα χρησιμοποιείται για εγγραφή δεδομένων:
+Description-es.UTF-8: Dispositivo usado para grabar los datos:
+Description-eu.UTF-8: Datuak grabatzeko erabiliko den gailua:
+Description-fr.UTF-8: Périphérique de gravure à utiliser :
+Description-it.UTF-8: Device da usare per la masterizzazione:
+Description-ja.UTF-8: データを書き込むのに使うデバイス:
+Description-nl.UTF-8: Voor het branden te gebruiken apparaat:
+Description-pt.UTF-8: Dispositivo a utilizar para gravar a informação:
+Description-pt_BR.UTF-8: Dispositivo a ser utilizado para gravação dos dados:
+Description-ru.UTF-8: Устройство для прожига данных:
+Description-sv.UTF-8: Enhet att använda för att bränna data:
+Description-vi.UTF-8: Thiết bị cần dùng để chép ra dữ liệu :
+
+Template: backup-manager/burning-maxsize
+Type: string
+Default: 650
+Description: Maximum size of your media (MB):
+Description-cs.UTF-8: Maximální velikost média (v MB):
+Description-da.UTF-8: Maksimal størrelse for dit medie (MB):
+Description-de.UTF-8: Maximale Größe der Medien (MB):
+Description-el.UTF-8: Μέγιστο μέγεθος των αποθηκευτικών σας μέσων (MB):
+Description-es.UTF-8: Capacidad máxima de su unidad de grabación (MB):
+Description-eu.UTF-8: Medioaren gehienezko tamaina (MB):
+Description-fr.UTF-8: Taille maximale du support (Mo) :
+Description-it.UTF-8: Dimensione massima del supporto (MB):
+Description-ja.UTF-8: メディアの最大サイズ (MB):
+Description-nl.UTF-8: Maximum grootte van uw media (in MB):
+Description-pt.UTF-8: Dimensão máxima do suporte de média (MB):
+Description-pt_BR.UTF-8: Tamanho máximo de sua mídia (MB):
+Description-ru.UTF-8: Максимальный размер носителя (МБ):
+Description-sv.UTF-8: Maximal storlek för ditt media (MB):
+Description-vi.UTF-8: Cỡ tối đa của vật chứa (theo MB):
+
+Template: backup-manager/burning-method
+Type: select
+Choices: CDRW, CDR, DVD, DVD-RW
+Choices-cs.UTF-8: CDRW, CDR, DVD, DVD-RW
+Choices-da.UTF-8: Cdrw, Cdr, Dvd, Dvd-rw
+Choices-de.UTF-8: CD-RW, CD-R, DVD, DVD-RW
+Choices-el.UTF-8: CDRW, CDR, DVD, DVD-RW
+Choices-es.UTF-8: CDRW, CDR, DVD, DVD-RW
+Choices-eu.UTF-8: CDRW, CDR, DVD, DVD-RW
+Choices-fr.UTF-8: CDRW, CDR, DVD, DVD-RW
+Choices-it.UTF-8: CD-RW, CD-R, DVD, DVD-RW
+Choices-ja.UTF-8: CDRW, CDR, DVD, DVD-RW
+Choices-nl.UTF-8: CDRW, CDR, DVD, DVD-RW
+Choices-pt.UTF-8: CDRW, CDR, DVD, DVD-RW
+Choices-pt_BR.UTF-8: CDRW, CDR, DVD, DVD-RW
+Choices-ru.UTF-8: CDRW, CDR, DVD, DVD-RW
+Choices-sv.UTF-8: CDRW, CDR, DVD, DVD-RW
+Choices-vi.UTF-8: CDRW, CDR, DVD, DVD-RW
+Default: CDRW
+Description: Burning method:
+ When burning data, backup-manager will try to burn the whole archives
+ repository. If it does not fit in the media, it will try to burn only the
+ daily generated archives.
+ .
+ The CDRW/DVD-RW methods will first blank the media and then burn the data.
+ .
+ The CDR/DVD method will only burn the data, assuming that the media is empty
+ (or that the disc does not need formatting, like DVD+RW).
+Description-cs.UTF-8: Způsob pálení:
+ Při vypalování dat se backup-manager pokusí vypálit všechny archivy v úložišti. Pokud se všechny nevejdou na médium, budou vypáleny pouze denně generované archivy.
+ .
+ Metody CDRW/DVD-RW nejprve médium vyprázdní a teprve poté na něj vypálí data.
+ .
+ Metody CDR/DVD předpokládají, že je médium prázdné (nebo že disk nevyžaduje formátování, což je případ DVD+RW) a data pouze vypálí.
+Description-da.UTF-8: Brændemetode:
+ Når der brændes data, så vil backup-manager forsøge at brænde hele arkivdepotet. Hvis det ikke passer til mediet, så vil programmet forsøge kun at brænde de dagligt oprettede arkiver.
+ .
+ Cdrw/dvdrw-metoderne vil først slette mediet og så brænde dataene.
+ .
+ Cdr/dvd-metoden vil kun brænde dataene, under antagelse af at mediet er tomt (eller at disken ikke kræver formatering, såsom dvd-rw).
+Description-de.UTF-8: Brennmethode:
+ Beim Brennen der Daten versucht backup-manager das gesamte Archiv-Depot zu brennen. Falls das nicht auf ein Sicherungsmedium passen sollte wird versucht, nur das täglich generierte Archiv zu sichern.
+ .
+ Die CDRW/DVD-RW-Methoden löschen zuerst das Medium und brennen anschließend die Daten.
+ .
+ Die CDR/DVD-Methode brennt nur die Daten und nimmt an, dass das Sicherungsmedium leer ist (oder nicht formatiert werden muss, wie DVD+RW).
+Description-el.UTF-8: Μέθοδος εγγραφής:
+ Όταν εγγράφει δεδομένα, το backup-manager θα προσπαθήσει να εγγράψει όλο το αποθετήριο των αρχειοθηκών. Εάν αυτό δεν χωράει στα αποθηκευτικά μέσα, θα προσπαθήσει να εγγράψει μόνο τις αρχειοθήκες που δημιουργήθηκαν τη συγκεκριμένη μέρα.
+ .
+ Οι μέθοδοι CDRW/DVD-RW θα αδειάσουν πρώτα τα μέσα και μετά θα εγγράψουν τα δεδομένα.
+ .
+ Η μέθοδος CDR/DVD θα εγγράψει μόνο τα δεδομένα, υποθέτοντας ότι το μέσο είναι άδειο (ή ότι ο δίσκος δεν απαιτεί μορφοποίηση, όπως π.χ. το DVD+RW).
+Description-es.UTF-8: Metodo de grabación:
+ A la hora de grabar los datos, backup-manager tratará de grabar el repositorio de copias completo. Si no encuentra espacio suficiente en el dispositivo intentará grabar sólo las copias generadas diariamente.
+ .
+ El método CDRW/DVD-RW borrará primero el dispositivo y después realizará la grabación de los datos.
+ .
+ El método CDR/DVD sólo grabará los datos, dando por hecho que el disco está vacío (o, en DVD+RW y similares, que no necesita formatearse antes).
+Description-eu.UTF-8: Grabatze metodoa:
+ Datuak grabatzerakoan, backup-manager fitxategi bilduma osoa grabatzen saiatuko da. Berau ez bada medioan sartzen, egunean sortutako fitxategia grabatzen saiatuko da.
+ .
+ CDRW/DVD-RW metodoak lehenik medioa garbitu eta gero datuak gordeko ditu.
+ .
+ CDR/DVD metodoak zuzenean datuak grabatuko ditu, medioa hutsik dagoela (Edo formateatu behar ez dela) aurreikusiz.
+Description-fr.UTF-8: Méthode de gravure :
+ Lors de la gravure, backup-manager va essayer de graver tout le contenu du dépôt. Si le volume est trop important pour le support choisi, seules les archives du jour seront gravées.
+ .
+ Les méthodes « CD-RW » et « DVD » comportent une phase d'effacement du support, suivie d'une phase de gravure.
+ .
+ La méthode « CD-ROM » comporte seulement une phase de gravure, ce qui suppose que le support présent soit vierge (ou que le support ne nécessite pas de formatage, tel que les DVD+RW).
+Description-it.UTF-8: Metodo di masterizzazione:
+ Al momemto della masterizzazione, backup-manager tenterà di masterizzare tutti gli archivi. Se non ci fosse spazio sufficiente sul supporto, verranno masterizzati solo gli archivi giornalieri.
+ .
+ Il metodo CD-RW/DVD-RW cancellerà il contenuto del supporto prima di masterizzare i dati.
+ .
+ Il metodo CD-R/DVD farà la sola masterizzazione, assumendo che il supporto sia vuoto (o che il disco non necessiti di formattazione, come per DVD+RW).
+Description-ja.UTF-8: 書き込む方法:
+ データを書き込む際、backup-manager はすべてのアーカイブリポジトリの書き込みを試行します。メディアに収まらないときには、日々生成されるアーカイブのみの書き込みを試行します。
+ .
+ CDRW/DVD-RW メソッドでは、最初にメディアをブランク化し、それからデータを書き込みます。
+ .
+ CDR/DVD メソッドでは、メディアが空であると仮定して、データの書き込みのみを行います。
+Description-nl.UTF-8: Brandmethode:
+ Backup-manager zal wanneer mogelijk altijd alle archieven branden. Wanneer dit niet op het gebruikte medium past wordt geprobeerd met enkel de dagelijks gegenereerde archieven.
+ .
+ De CDRW/DVD-RW methodes wissen het gebruikte medium voor ze de data branden.
+ .
+ De CDR/DVD methodes nemen aan dat het gebruikte medium leeg is (of dat de schijf niet geformatteerd hoeft te worden zoals bijvoorbeeld DVD+RW).
+Description-pt.UTF-8: Método de gravação:
+ Enquanto grava a informação o backup-manager tentará gravar o repositório dos arquivos completo. Se não couber no suporte de gravação, tentará gravar apenas os ficheiros gerados diariamente.
+ .
+ Os métodos CDRW/DVD-RW apagarão primeiro o suporte e então gravarão a informação.
+ .
+ O método CDR/DVD gravará apenas a informação, assumindo que o suporte está vazio (ou que o disco não necessita de formatação, como DVD+RW).
+Description-pt_BR.UTF-8: Método de gravação:
+ Durante a gravação de dados, o backup-manager tentará gravar todo o repositório de arquivos. Se ele não couber na mídia, o backup-manager tentará gravar somente os arquivos gerados diariamente.
+ .
+ O método CDRW/DVD-RW irá primeiro apagar a mídia e então gravar os dados.
+ .
+ O método CDR/DVD irá somente gravar os dados, assumindo que a mídia esteja vazia (ou que o disco não precise de formatação, como um DVD+RW).
+Description-ru.UTF-8: Метод прожига:
+ При прожиге данных backup-manager попытается прожечь всё хранилище архивов. Если оно не умещается на носитель целиком, то он попытается прожечь только созданные в этот день архивы.
+ .
+ При выборе методов CDRW/DVD-RW сначала выполняется очистка носителя, а затем сам прожиг данных.
+ .
+ При выборе методов CDR/DVD выполняется только прожиг данных и предполагается, что носитель пуст (или что диск не нужно форматировать, если это DVD+RW).
+Description-sv.UTF-8: Brännmetod:
+ När data bränns kommer backup-manager att försöka bränna hela arkivförrådet. Om det inte får plats på mediumet kommer den försöka att bränna endast de dagliga genererade arkiven.
+ .
+ CDRW/DVD-RW-metoden kommer först att radera mediumet och sedan bränna data.
+ .
+ CDR/DVD-metoden kommer endast att bränna data och anta att mediumet är tomt (eller att skivan inte behöver formatters, som DVD+RW).
+Description-vi.UTF-8: Phương pháp chép ra:
+ Khi chép ra dữ liệu vào đĩa, trình quản lý sao lưu sẽ thử chép ra toan bộ kho. Nếu kho quá lớn cho vật chứa, trình này sẽ thử chép ra chỉ những kho đã tạo ra hàng ngày.
+ .
+ Phương pháp CDRW/DVD-RW sẽ làm trắng vật chứa trước hết, rồi chép ra dữ liệu.
+ .
+ Phương pháp CDR/DVD sẽ chỉ chép ra dư liệụ, giả sử vật chứa là trắng (hoặc đĩa không cần được định dạng, như DVD+RW).
+
+Template: backup-manager/want_to_upload
+Type: boolean
+Default: false
+Description: Enable backup-manager's uploading system?
+ Archives may be uploaded to remote hosts using ftp or ssh.
+ .
+ Using this feature requires valid ftp or ssh account on remote hosts.
+Description-cs.UTF-8: Povolit nahrávání archivů na vzdálené počítače?
+ Archivy mohou být nahrány na vzdálený počítač pomocí ftp nebo ssh.
+ .
+ Použití této vlastnosti vyžaduje platný ftp nebo ssh účet na vzdáleném počítači.
+Description-da.UTF-8: Aktivere backup-managers overførselssystem?
+ Arkiver kan overføres til eksterne værter med brug af ftp eller ssh.
+ .
+ Brug af denne funktion kræver gyldig ftp- eller ssh-konto på eksterne værter.
+Description-de.UTF-8: Möchten Sie das Upload-System von backup-manager aktivieren?
+ Archive können auf einen entfernten Rechner via FTP oder SSH hochgeladen werden.
+ .
+ Das Aktivieren dieses Features erfordert einen gültigen FTP- oder SSH-Account am entfernten Rechner.
+Description-el.UTF-8: Να ενεργοποιηθεί το σύστημα ανεβάσματος του backup-manager;
+ Οι αρχειοθήκες μπορούν να ανεβάζονται σε απομακρυσμένους υπολογιστές χρησιμοποιώντας ftp ή ssh.
+ .
+ Η χρήση αυτού του χαρακτηριστικού απαιτεί την ύπαρξη έγκυρων λογαριασμών ftp ή ssh σε απομακρυσμένους υπολογιστές.
+Description-es.UTF-8: ¿Quiere habilitar el sistema de copia remota de backup-manager?
+ Las copias pueden transferirse a equipos remotos usando ftp o ssh.
+ .
+ Esta característica requiere una cuenta ssh o ftp válida de en el otro equipo.
+Description-eu.UTF-8: Backup-manager bidalketa sistema gaitu?
+ Fitxategiak ftp edo ssh bidez bidaliko dira urruneko ostalarira.
+ .
+ Aukera hau erabiltzeko urruneko ostalarian ftp edo ssh kontu bat eduki behar da.
+Description-fr.UTF-8: Faut-il activer le système d'envoi automatique ?
+ Les archives peuvent être téléchargées vers des hôtes distants via FTP ou SSH.
+ .
+ Cette fonctionnalité requiert un compte FTP ou SSH valide sur les hôtes distants.
+Description-it.UTF-8: Abilitare il sistema di caricamento di backup-manager?
+ Gli archivi possono essere caricati su una macchina remota via ftp o ssh.
+ .
+ L'uso di questa opzione richiede un utente ftp o ssh sulla macchina remota.
+Description-ja.UTF-8: backup-manager のアップロードシステムを有効にしますか?
+ アーカイブは、ftp または ssh を使ってリモートホストにアップロードできます。
+ .
+ この機能を使うには、リモートホスト上に有効な ftp または ssh アカウントが必須です。
+Description-nl.UTF-8: Wilt u het upload-systeem van backup-manager activeren?
+ Archieven kunnen naar andere computers ge-upload worden via ftp of ssh.
+ .
+ Gebruik van deze feature vereist een geldige ftp- of ssh-account op een andere computer.
+Description-pt.UTF-8: Activar o sistema de 'upload' do backup-manager?
+ Os arquivos podem ser carregados ('uploaded') para máquinas remotas usando ftp ou ssh.
+ .
+ Esta funcionalidade requer uma conta de ftp ou ssh válida nas máquinas remotas.
+Description-pt_BR.UTF-8: Habilitar o sistema de upload do backup-manager?
+ Arquivos podem ser enviados para máquinas remotas usando ftp ou ssh.
+ .
+ O uso desse recurso requer contas ftp ou ssh válidas nas máquinas remotas.
+Description-ru.UTF-8: Активировать в backup-manager систему закачки?
+ Возможно закачивать архивы на удалённые машины по протоколам ftp или ssh.
+ .
+ Чтобы использовать эту возможность требуется рабочая учётная запись для ftp или ssh на удалённых машинах.
+Description-sv.UTF-8: Aktivera backup-managers uppladdningssystem?
+ Arkiv kan laddas upp till fjärrvärdar med ftp eller ssh.
+ .
+ Användning av denna funktion kräver giltiga ftp eller ssh-konton på fjärrvärdarna.
+Description-vi.UTF-8: Bật hệ thống tải lên của trình quản lý sao lưu không?
+ Có thể tải kho lên máy ở xa, dùng giao thức FTP hay SSH.
+ .
+ Khả năng dùng tính năng này cần thiết tài khoản FTP hay SSH hợp lệ trên máy ở xa.
+
+Template: backup-manager/transfert_mode
+Type: select
+Choices: scp, ftp
+Default: scp
+Description: Transfer mode to use:
+ The "ftp" transfer mode requires a valid FTP account on remote hosts.
+ .
+ The "scp" mode requires a valid SSH account on remote hosts.
+ SSH Key authentication is used to establish the connection.
+Description-cs.UTF-8: Metoda přenosu:
+ Způsob přenosu "ftp" vyžaduje na vzdálených počítačích platný FTP účet.
+ .
+ Způsob přenosu "scp" vyžaduje na vzdálených počítačích platný SSH účet. Pro navázání spojení se používá autentizace pomocí SSH klíčů.
+Description-da.UTF-8: Overførselstilstand at bruge:
+ Overførselstilstanden »ftp« kræver en gyldig FTP-konto på eksterne værter.
+ .
+ Tilstanden »scp« kræver en gyldig SSH-konto på eksterne værter. SSH-nøglegodkendelse bruges til at etablere forbindelsen.
+Description-de.UTF-8: Der zu verwendende Transfermodus:
+ Der »ftp«-Transfermodus erfordert auf dem entfernten Rechner einen gültigen FTP-Account.
+ .
+ Der »scp«-Transfermodus erfordert auf dem entfernten Rechner einen gültigen SSH-Account. Es kommt dabei SSH-Schlüsselauthentifizierung zum Einsatz.
+Description-el.UTF-8: Μέθοδος μεταφοράς που θα χρησιμοποιηθεί:
+ Η μέθοδος μεταφοράς "ftp" απαιτεί έναν έγκυρο λογαριασμό FTP σε απομακρυσμένους υπολογιστές.
+ .
+ Η μέθοδος μεταφοράς "scp" απαιτεί έναν έγκυρο λογαριασμό SSH σε απομακρυσμένους υπολογιστές. Για τη δημιουργία της σύνδεσης χρησιμοποιείται πιστοποίηση SSH κλειδιού.
+Description-es.UTF-8: Modo de transferencia a usar:
+ El modo de transferencia "ftp" requiere una cuenta FTP válida en el otro equipo.
+ .
+ El modo "scp" requiere una cuenta SSH válida en el otro equipo. Para establecer la conexión se usa la autenticación por clave SSH.
+Description-eu.UTF-8: Erabiliko den transferentzia modua:
+ "'ftp" transferentzia metodoak urruneko zerbitzariko baliozko FTP kontu bat behar du.
+ .
+ "'scp" metodoak urruneko zerbitzariko baliozko SSH kontu bat behar du. SSH gako egiaztapena erabiliko da konexioa sortzeko.
+Description-fr.UTF-8: Mode de transfert :
+ Le mode de transfert « ftp » requiert un compte FTP valide sur les hôtes distants.
+ .
+ Le mode de transfert « scp » requiert un compte SSH valide sur les hôtes distants. La connexion est établie avec authentification par clef SSH.
+Description-it.UTF-8: Modalità di trasferimento da usare:
+ Il metodo "ftp" richiede un utente FTP sulla macchina remota.
+ .
+ Il metodo "scp" richiede un account SSH sulla macchina remota. La connessione viene stabilita sfruttando l'autenticazione tramite chiavi SSH.
+Description-ja.UTF-8: 利用する転送モード:
+ "ftp" 転送モードは、リモートホスト上に有効な FTP アカウントを必要とします。
+ .
+ "scp" モードはリモートホスト上に有効な SSH アカウントを必要とします。SSH 鍵認証が接続の確立に使われます。
+Description-nl.UTF-8: Te gebruiken overzet-modus:
+ De 'ftp'-modus vereist een geldige FTP-account op een andere computer.
+ .
+ De 'scp'-modus vereist een geldige SSH-account op een andere computer. Voor het opzetten van de verbinding wordt gebruik gemaakt van SSH-sleutel-authenticatie.
+Description-pt.UTF-8: Modo de transferência a utilizar:
+ O modo de transferância por "ftp" requer uma conta de FTP válida em máquinas remotas.
+ .
+ O modo "scp" requer uma conta SSh válida nas máquinas remotas. A autenticação por chave SSH é utilizada para efectuar a ligação.
+Description-pt_BR.UTF-8: Modo de transferência a ser utilizado:
+ O modo de transferência "ftp" requer uma conta ftp válida em máquinas remotas.
+ .
+ O modo "scp" requer uma conta ssh válida em máquinas remotas. A autenticação de chaves SSH é utilizada para estabelecer a conexão.
+Description-ru.UTF-8: Используемый режим отправки:
+ Для режима отправки "ftp" требуется рабочая учётная запись для FTP на удалённых машинах.
+ .
+ Для режима отправки "scp" требуется рабочая учётная запись для SSH на удалённых машинах. Для установления соединения используется ключ аутентификации SSH.
+Description-sv.UTF-8: Överföringsläge att använda:
+ Överföringsläget "ftp" kräver ett giltigt FTP-konto på fjärrvärdarna.
+ .
+ Överföringsläget "scp" kräver ett giltigt SSH-konto på fjärrvärdarna. För att etablera anslutningen används SSHs nyckelautentisering.
+Description-vi.UTF-8: Chế đô truyền cần dung:
+ Chế độ « FTP » cần thiết một tài khoản FTP hợp lệ trên máy ở xa.
+ .
+ Chế độ « SCP » cần thiết một tài khoản SSH hợp lệ trên máy ở xa. Để thiết lập kết nối, cần thiết xác thực bằng khoá SSH.
+
+Template: backup-manager/upload-hosts
+Type: string
+Description: Remote hosts list:
+ Please enter a space-separated list of hosts (IP or FQDN) where archives will
+ be uploaded.
+Description-cs.UTF-8: Seznam vzdálených počítačů:
+ Zadejte mezerami oddělený seznam počítačů, na které se mají archivy nahrát (můžete zadat IP adresy nebo plně kvalifikovaná doménová jména).
+Description-da.UTF-8: Ekstern værtsliste:
+ Indtast venligst en mellemrumsadskilt liste over værter (IP eller FQDN) hvor arkiver vil blive overført til.
+Description-de.UTF-8: Liste der entfernten Rechner:
+ Bitte geben sie eine durch Leerzeichen getrennte Liste jener Rechner (IP oder FQDN) an, auf die Archive hochgeladen werden sollen.
+Description-el.UTF-8: Λίστα απομακρυσμένων υπολογιστών:
+ Παρακαλώ εισάγετε μία διαχωρισμένη με διαστήματα λίστα όλων των υπολογιστών (IP ή FQDN) όπου θα ανεβάζονται αρχειοθήκες.
+Description-es.UTF-8: Lista de equipos remotos:
+ Introduzca la lista de equipos separados por espacios (IP o FQDN) donde transferir las copias de seguridad.
+Description-eu.UTF-8: Urrunekoa ostalari zerrenda:
+ Mesedez ezarri hutsunez bereizirik fitxategiak bidaliko diren ostalari helbideak (Izen edo IP).
+Description-fr.UTF-8: Liste des hôtes distants :
+ Veuillez indiquer une liste d'hôtes, séparés par des espaces (adresses IP ou noms pleinement qualifiés), où les archives seront envoyées.
+Description-it.UTF-8: Elenco degli host remoti:
+ Inserire un elenco di nomi separati da spazi di host (IP o FQDN) dove caricare gli archivi.
+Description-ja.UTF-8: リモートホストのリスト:
+ アーカイブをアップロードするホスト (IP または FQDN) のリストをスペースで区切って入力してください。
+Description-nl.UTF-8: Lijst van computers waarnaar te uploaden:
+ Gelieve een met spaties gescheiden list van computers op te geven (IP of FQDN) naar waar archieven ge-upload moeten worden.
+Description-pt.UTF-8: Lista de máquinas remotas:
+ Introduza por favor uma lista das máquinas separada por espaços (IP ou FQDN) para onde serão enviados os arquivos.
+Description-pt_BR.UTF-8: Lista de máquinas remotas:
+ Por favor, informe uma lista separada por espaço de máquinas (IP ou FQDN) para onde os arquivos serão enviados.
+Description-ru.UTF-8: Список удалённых машин:
+ Введите через пробел список удалённых машин (в виде IP-адресов или FQDN), куда нужно закачивать архивы.
+Description-sv.UTF-8: Lista på fjärrvärdar:
+ Ange en lista, separerad med mellanslag, av de värdar (IP eller FQDN) där arkiv ska laddas upp.
+Description-vi.UTF-8: Danh sách máy ở xa:
+ Hãy nhập danh sách định giới bằng dấu cách những máy (IP hay FQDN) lên chúng sẽ tải kho.
+
+Template: backup-manager/upload-user-scp
+Type: string
+Default: bmngr
+Description: SSH user's login:
+ For the scp transfer mode to be possible, a SSH account will be used. The SSH login
+ to use is required as well as the path to the private key.
+ .
+ Remote hosts must have the user's public key listed in their authorized_keys files
+ (see ssh-keygen(1) for details).
+Description-cs.UTF-8: Přihlašovací jméno pro SSH:
+ Aby se mohl uskutečnit scp přenos, používá se SSH účet. Je vyžadováno jednak jméno SSH účtu a pak také cesta k privátnímu klíči.
+ .
+ Vzdálené počítače musí mít uživatelův veřejný klíč uveden ve svých souborech authorized_keys (podrobnosti viz ssh-keygen(1)).
+Description-da.UTF-8: SSH-brugers logind:
+ For at scp-overførselstilstanden er mulig, så vil en SSH-konto blive brugt. SSH-logindet der skal bruges er også krævet samt stien til den private nøgle.
+ .
+ Eksterne værter skal have brugerens offentlige nøgle i deres authorized_keys-filer (se ssh-keygen(1) for detaljer).
+Description-de.UTF-8: Geben Sie den Benutzernamen für den SSH-Login an:
+ Um den SCP-Transfer zu ermöglichen, wird ein SSH-Account benutzt. Sowohl der SSH-Login als auch der Pfad zum privaten Schlüssel werden benötigt.
+ .
+ Beachten Sie, dass dieser Benutzer auf dem lokalen Host einen SSH-Schlüssel besitzen muss, und am entfernten Host muss der öffentliche Schlüssel (public key) des Benutzers in der authorized_keys-Datei vorhanden sein (siehe man ssh-keygen für Details).
+Description-el.UTF-8: Όνομα χρήστη SSH:
+ Για να είναι δυνατή η χρήση της μεθόδου μεταφοράς scp, θα χρησιμοποιηθεί ένας λογαριασμός SSH. Απαιτείται το όνομα χρήστη SSH καθώς και η διαδρομή στο ιδιωτικό κλειδί.
+ .
+ Οι απομακρυσμένοι υπολογιστές πρέπει να έχουν το δημόσιο κλειδί του χρήστη στα authorized_keys αρχεία τους (βλ. ssh-keygen(1) για λεπτομέρειες).
+Description-es.UTF-8: Introduzca el usuario SSH:
+ Para poder usar el modo de transferencia scp se necesita una cuenta SSH.Se necesita un usuario SSH así como la ruta de la clave privada.
+ .
+ Los equipos remotos deben tener la clave pública incluida en el fichero authorized_keys del usuario (vea man ssh-keygen(1) para más información).
+Description-eu.UTF-8: SSH erabiltzaile izena:
+ Scp transferentzia metodoa erabiltzeko ssh kontu bat erabili behar da. Horretarako SSH erabiltzailea eta gako pribatuaren bidea behar dira.
+ .
+ Urruneko ostalariak erabiltzailearen gako publikoa bere authorized_keys fitxategian izan behar du (ssh-keygen(1) begiratu xehetasunentzat).
+Description-fr.UTF-8: Identifiant SSH :
+ Pour que le mode de transfert scp soit possible, un compte SSH est nécessaire. Vous devez indiquer l'identifiant du compte SSH à utiliser ainsi que le chemin vers la clef privée.
+ .
+ La clef publique de l'utilisateur doit être présente dans le fichier « authorized_keys » des hôtes distants (voir ssh-keygen(1) pour les détails).
+Description-it.UTF-8: Utente SSH:
+ Per il trasferimento tramite scp verrà usato un account SSH. Sono richiesti il nome dell'account e il percorso della chiave privata.
+ .
+ Le macchine remote devono avere la chiave pubblica elencata nel proprio file authorized_keys (vedere man ssh-keygen per dettagli).
+Description-ja.UTF-8: SSH ユーザのログイン:
+ scp 転送モードを可能にするにあたって、SSH アカウントが使われます。秘密鍵のパスはもちろん、SSH ログインも必要とします。
+ .
+ リモートホストは、その authorized_keys ファイルにユーザの公開鍵を持つ必要があります (詳細については ssh-keygen(1) を参照)。
+Description-nl.UTF-8: SSH-gebruikersnaam:
+ Om de scp-modus te kunnen gebruiken is een SSH-account nodig. Hiervoor dient u de gebruikersnaam, en het pad naar de geheime sleutel op te geven. 
+ .
+ Computers waarnaar ge-upload wordt dienen de publieke sleutel van de gebruiker in hun 'authorized_keys'-bestand te hebben staan (meer informatie vindt u in ssh-keygen(1) ).
+Description-pt.UTF-8: Login SSH do utilizador:
+ Para que seja possível o modo de transferência por scp uma conta de SSH será utilizada. A ligação por conta de SSH é necessária tal como o caminho para a chave privada.
+ .
+ As máquinas remotas têm de ter as chaves públicas do utilizador nos seus ficheiros de chaves autorizadas (veja ssh-keygen(1) para mais detalhes).
+Description-pt_BR.UTF-8: Login SSH do usuário:
+ Para que o modo de transferência scp seja possível, uma conta SSH será usada. O login SSH a ser usado é requerido, bem como o caminho para a chave privada.
+ .
+ Máquinas remotas devem possuir a chave pública do usuário em seus arquivos authorized_keys (consulte ssh-keygen(1) para maiores detalhes).
+Description-ru.UTF-8: Имя пользовательской учётной записи SSH:
+ Для режима отправки scp используется учётная запись SSH. Требуется указать имя пользовательской учётной записи SSH, а также путь к секретному ключу.
+ .
+ Удалённые машины должны иметь пользовательский открытый ключ в их файлах authorized_keys (см. ssh-keygen(1)).
+Description-sv.UTF-8: Användarens inloggningsnamn för SSH:
+ För överföringsläget scp ska vara möjligt måste ett SSH-konto användas. SSH-inloggningsnamnet som ska användas krävs såväl som sökvägen till den privata nyckeln.
+ .
+ Fjärrvärdar måste ha användarens publika nyckel listad i sin fil "authorized_keys" (se ssh-keygen(1) för detaljer).
+Description-vi.UTF-8: Đăng nhập SSH:
+ Một tài khoản SSH sẽ được sử dụng để hiệu lực chế độ truyền SCP. Vì vậy bạn nên cung cấp thông tin đăng nhập SSH và đường dẫn đến khoá riêng.
+ .
+ Máy ở xa phải liệt kê khoá công của người dùng trong tập tin « authorized_keys » (các khoá đã xác thực). Xem ssh-keygen(1) (trang hướng dẫn) để tìm chi tiết.
+
+Template: backup-manager/upload-user-ftp
+Type: string
+Description: FTP user's login:
+ Please enter the FTP user to use for uploading files to remote hosts.
+Description-cs.UTF-8: Přihlašovací jméno pro FTP:
+ Zadejte přihlašovací jméno FTP uživatele, které budete používat pro nahrávání souborů na vzdálené počítače.
+Description-da.UTF-8: FTP-brugers logind:
+ Indtast venligst FTP-brugeren der skal bruges til at overføre filer til eksterne værter.
+Description-de.UTF-8: Geben Sie den Benutzernamen für den FTP-Login an:
+ Geben Sie den FTP-Benutzer für das Hochladen der Archive auf entfernte Rechner an.
+Description-el.UTF-8: Όνομα χρήστη FTP:
+ Παρακαλώ εισάγετε το χρήστη FTP που θα χρησιμοποιηθεί για το ανέβασμα αρχείων σε απομακρυσμένους υπολογιστές.
+Description-es.UTF-8: Introduzca el usuario FTP:
+ Introduzca el usuario FTP usado para transferir los ficheros a los equipos remotos.
+Description-eu.UTF-8: FTP erabiltzaile izena:
+ Ezarri urruneko ostalarira FTP bidalketak erabiliko duen erabiltzailea.
+Description-fr.UTF-8: Utilisateur FTP :
+ Veuillez entrez un identifiant ftp à utiliser pour l'envoi des fichiers sur les hôtes distants.
+Description-it.UTF-8: Utente FTP:
+ Inserire il nome dell'utente FTP da usare per caricare i file sulle macchine remote.
+Description-ja.UTF-8: FTP ユーザのログイン:
+ リモートホストにファイルをアップロードするのに使う FTP ユーザを入力してください。
+Description-nl.UTF-8: FTP-gebruikersnaam:
+ Wat is de FTP-gebruikersnaam waarmee geupload kan worden naar andere computers?
+Description-pt.UTF-8: Conta FTP do utilizador:
+ Introduza por favor a conta de utilizador FTP a utilizar no 'upload' de ficheiros para máquinas remotas.
+Description-pt_BR.UTF-8: Login FTP do usuário:
+ Por favor, informe o usuário FTP a ser utilizado para o envio de arquivos para máquinas remotas.
+Description-ru.UTF-8: Имя пользовательской учётной записи FTP:
+ Введите имя пользовательской учётной записи FTP, которая будет использоваться для закачки файлов на удалённые машины.
+Description-sv.UTF-8: Användarens inloggningsnamn för FTP:
+ Ange FTP-användaren som ska användas för att ladda upp filer till fjärrvärdar.
+Description-vi.UTF-8: Đăng nhập FTP:
+ Hãy nhập người dùng FTP để sử dụng khi tải tập tin lên máy ở xa.
+
+Template: backup-manager/upload-key
+Type: string
+Description: SSH private key file:
+ Despite of the ftp transfer mode, ssh doesn't require a password. The
+ authentication is based on the SSH key.
+ .
+ Don't forget to add the user's public key to the remote host's
+ authorized_keys file (see ssh-keygen(1) for details about ssh key
+ authentication).
+Description-cs.UTF-8: Soubor s privátním SSH klíčem:
+ Na rozdíl od přenosového režimu ftp nevyžadují ssh přenosy heslo. Autentizace je založena na SSH klíči.
+ .
+ Nezapomeňte přidat uživatelův veřejný klíč do souboru authorized_keys na vzdáleném počítači. (Více se o autentizaci pomocí ssh klíčů dozvíte v manuálové stránce ssh-keygen(1).)
+Description-da.UTF-8: SSH-privat nøglefil:
+ På trods af ftp-overførselstilstanden så kræver ssh ikke en adgangskode. Godkendelsen er baseret på SSH-nøglen.
+ .
+ Glem ikke at tilføje brugerens offentlige nøgle til den eksterne værts authorized_keys-fil (se ssh-keygen(1) for detaljer om ssh-nøglegodkendelse).
+Description-de.UTF-8: Private SSH-Schlüsseldatei:
+ Im Gegensatz zum FTP-Transfer-Modus benötigt ssh kein Passwort. Die Authentifizierung funktioniert via SSH-Schlüssel.
+ .
+ Vergessen Sie nicht den öffentlichen Schlüssel (public-key) des Benutzers in der authorized_keys-Datei am entfernten Host einzutragen (siehe ssh-keygen(1) für Details über SSH-Schlüssel-Authentifizierung).
+Description-el.UTF-8: Αρχείο με το ιδιωτικό κλειδί SSH:
+ Παρά τη μέθοδο μεταφοράς ftp, το ssh δεν απαιτεί συνθηματικό. Η πιστοποίηση βασίζεται στο κλειδί SSH.
+ .
+ Μην ξεχάσετε να προσθέσετε το δημόσιο κλειδί του χρήστη στο αρχείο authorized_keys του απομακρυσμένου υπολογιστή (βλ. ssh-keygen(1) για λεπτομέρειες σχετικά με την πιστοποίηση κλειδιού ssh).
+Description-es.UTF-8: Fichero de la clave privada SSH:
+ Al contario que el modo de transferencia ftp, ssh no requiere ninguna contraseña. La autenticación se basa en la clave ssh.
+ .
+ No se olvide de añadir la clave pública del usuario al fichero authorized_keys del equipo remoto (vea ssh-keygen(1) para más información sobre la autenticación con claves ssh).
+Description-eu.UTF-8: SSH gako pribatu fitxategia:
+ Ftp transferentziak ez bezala, ssh sistemak ez du pasahitzik behar. Egiaztapena SSH gakoan oinarritzen da.
+ .
+ Ez ahaztu erabiltzailearen gako publikoa urruneko ostalariaren authorized_keys fitxategian gehitu behar duzula (ssh-keygen (1) begiratu xehetasunetarako).
+Description-fr.UTF-8: Fichier de la clef privée SSH :
+ Contrairement au mode de transfert « ftp », le mode « scp » ne requiert pas de mot de passe. L'authentification est basée sur une clef SSH.
+ .
+ Il est nécessaire d'ajouter la clef publique de l'identifiant dans les fichiers « authorized_keys » des hôtes distants (voir ssh-keygen(1) pour les détails).
+Description-it.UTF-8: File con la chiave privata SSH:
+ Al contrario della modalità ftp, ssh non richiede l'uso di una password. L'autenticazione si basa sulla chiave SSH.
+ .
+ Non si dimentichi di aggiungere la chiave pubblica dell'utente nel file authorized_keys sulla macchina remota (vedere ssh-keygen(1) per dettagli sull'autenticazione con chiavi ssh).
+Description-ja.UTF-8: SSH の秘密鍵ファイル:
+ ftp 転送モードと異なり、ssh はパスワードを必要としません。認証は SSH 鍵ベースで行われます。
+ .
+ リモートホストの authorized_keys ファイルにユーザの公開鍵を追加することを忘れないでください (ssh 鍵認証についての詳細は ssh-keygen (1) を参照)。
+Description-nl.UTF-8: Bestand dat de SSH geheime sleutel bevat:
+ In tegenstelling tot de ftp-modus, vereist de ssh-modus geen wachtwoord, de authenticatie is in plaats daarvan gebaseerd op een SSH-sleutel.
+ .
+ Vergeet niet om de publieke sleutel van de gebruiker toe te voegen aan het 'authorized_keys' bestand op de andere computer (meer informatie over ssh-sleutel-authenticatie vindt u in ssh-keygen(1) ).
+Description-pt.UTF-8: Ficheiro da chave privada SSH:
+ Apesar do modo de transferência ftp, o ssh não requer uma palavra-chave. A autenticação é baseada na chave SSH.
+ .
+ Não se esqueça de adicionar a chave pública de utilizador aos ficheiros de chaves autorizadas nas máquinas remotas (veja ssh-keygen(1) para mais detalhes sobre a autenticação da chave ssh).
+Description-pt_BR.UTF-8: Arquivo de chave SSH privada:
+ Ao contrário do modo de transferência ftp, ssh não requer uma senha. A autenticação é baseada na chave SSH.
+ .
+ Não se esqueça de adicionar a chave pública do usuário no arquivo authorized_keys das máquinas remotas (consulte ssh-keygen(1) para maiores detalhes sobre autenticação através de chaves SSH).
+Description-ru.UTF-8: Файл с секретным ключом SSH:
+ В отличие от режима отправки ftp, в ssh пароль не используется. Аутентификация выполняется на основе SSH-ключа.
+ .
+ Не забудьте добавить пользовательский открытый ключ на удалённые машины в файл authorized_keys (подробности об аутентификации с ssh-ключом смотрите в ssh-keygen(1)).
+Description-sv.UTF-8: Privat nyckelfil för SSH:
+ I motsats till ftp-överföringsläget kräver inte ssh ett lösenord. Autentiseringen är baserad på SSH-nyckeln.
+ .
+ Glöm inte att lägga till användarens publika nyckel till fjärrvärdens fil "authorized_keys" (se ssh-keygen(1) för detaljer om nyckelautentisering i SSH).
+Description-vi.UTF-8: Tập tin khoá riêng SSH:
+ Dù chế độ truyền FTP, SSH không cần thiết mật khẩu. Việc xác thực dựa trên khóa SSH.
+ .
+ Đừng quên thêm khoá công của người dùng vào tập tin « authorized_keys » (các khoá đã xác thực) của máy ở xa. Xem ssh-keygen(1) (trang hướng dẫn) để tìm chi tiết về cách xác thực bằng khoá SSH.
+
+Template: backup-manager/upload-passwd
+Type: password
+Description: FTP user's password:
+ Enter the password of the FTP user to use for uploading files to remote
+ hosts.
+Description-cs.UTF-8: Heslo FTP uživatele:
+ Zadejte heslo FTP uživatele, které se má použít pro nahrávání souborů na vzdálené počítače.
+Description-da.UTF-8: FTP-brugers adgangskode:
+ Indtast adgangskoden for FTP-brugeren der skal bruges for at overføre filer til eksterne værter.
+Description-de.UTF-8: Passwort des FTP-Benutzers:
+ Geben Sie das Passwort des FTP-Benutzers für das Hochladen von Dateien auf entfernte Rechner bekannt.
+Description-el.UTF-8: Συνθηματικό χρήστη FTP:
+ Παρακαλώ εισάγετε το συνθηματικό του χρήστη FTP που θα χρησιμοποιηθεί για το ανέβασμα αρχείων σε απομακρυσμένους υπολογιστές.
+Description-es.UTF-8: Introduzca la contraseña del usuario FTP:
+ Introduzca la contraseña del usuario FTP usado para transferir los ficheros a los equipos remotos.
+Description-eu.UTF-8: FTP erabiltzaile pasahitza:
+ Idatz ezazu urruneko ostalarira fitxategiak bidaltzerakoan erabiliko den FTP erabiltzailearen pasahitza.
+Description-fr.UTF-8: Mot de passe FTP :
+ Veuillez indiquer le mot de passe de l'identifiant FTP à utiliser pour envoyer les fichiers sur les hôtes distant.
+Description-it.UTF-8: Password dell'utente FTP:
+ Inserire la password dell'utente FTP da usare per caricare i file sul sistema remoto.
+Description-ja.UTF-8: FTP ユーザのパスワード:
+ リモートホストへのファイルのアップロードに使う FTP ユーザのパスワードを入力してください。
+Description-nl.UTF-8: Wachtwoord van de FTP-gebruiker:
+ Wat is het wachtwoord van de FTP-gebruiker waarmee bestanden naar andere computers ge-upload worden?
+Description-pt.UTF-8: Palavra-chave da conta de utilizador FTP:
+ Introduza a palavra-chave do utilizador FTP a utilizar para efectuar os 'uploads' para as máquinas remotas.
+Description-pt_BR.UTF-8: Senha do usuário FTP:
+ Informe a senha do usuário FTP a ser utilizado para o envio de arquivos para máquinas remotas.
+Description-ru.UTF-8: Пароль учётной записи FTP:
+ Введите пароль учётной записи FTP, который будет использоваться для закачки файлов на удалённые машины.
+Description-sv.UTF-8: Användarens lösenord för FTP:
+ Ange lösenordet för FTP-användaren som ska användas för att ladda upp filer till fjärrvärdar.
+Description-vi.UTF-8: Mật khẩu người dùng FTP:
+ Hãy nhập mật khẩu của người dùng FTP cần sử dụng khi tải tập tin lên máy ở xa.
+
+Template: backup-manager/upload-dir
+Type: string
+Default: /var/archives/uploads
+Description: Remote host's repository:
+ Please enter where - on the remote hosts - archives should be stored.
+ .
+ If backup-manager is installed on those hosts, it is recommended to use a
+ subdirectory of its archive repository so that even uploaded archives will be purged
+ when needed.
+Description-cs.UTF-8: Úložiště na vzdálených počítačích:
+ Zadejte, kde se na vzdálených počítačích mají uchovávat archivy.
+ .
+ Pokud je na vzdálených počítačích také nainstalován backup-manager, doporučujeme použít nějaký podadresář hlavního úložiště archivů, protože pak budou i tyto archivy mazány podle potřeb.
+Description-da.UTF-8: Ekstern værts arkiv:
+ Indtast venligst hvor - på de eksterne værter - arkiver skal gemmes.
+ .
+ Hvis backup-manager er installeret på disse værter, så anbefales det, at bruge en undermappe af programmets arkivdepot så at også overførte arkiver vil blive afinstalleret, når behovet er der.
+Description-de.UTF-8: Depot des entfernten Rechners:
+ Bitte geben Sie an, wo die Archive auf dem entfernten Rechner gespeichert werden sollen.
+ .
+ Wenn backup-manager auf diesen Rechnern installiert ist, empfiehlt es sich, ein Unterverzeichnis von deren Archiv-Depots zu verwenden, so dass hochgeladene Verzeichnisse bei Bedarf gelöscht werden können.
+Description-el.UTF-8: Αποθετήριο απομακρυσμένου υπολογιστή:
+ Παρακαλώ εισάγετε που - στους απομακρυσμένους υπολογιστές - θα αποθηκεύονται οι αρχειοθήκες.
+ .
+ Εάν το backup-manager είναι εγκατεστημένο σε εκείνους τους υπολογιστές, συνίσταται να χρησιμοποιήσετε έναν υποκατάλογο του αποθετηρίου αρχειοθηκών τους, έτσι ώστε ακόμα και οι ανεβασμένες αρχειοθήκες να διαγράφονται όταν χρειάζεται.
+Description-es.UTF-8: Introduzca el repositorio del equipo remoto:
+ Por favor introduzca donde deben de guardarse las copias de seguridad en el equipo remoto.
+ .
+ Si backup-manager se instala en esos equipos, se recomienda usar un subdirectorio de sus repositorios de copias de seguridad para que también se borren, cuando sea necesario, las copias transferidas.
+Description-eu.UTF-8: Urrunekoa ostalari bilduma:
+ Ezarri hemen non - urruneko ostalarian - gorde behar diren fitxategiak.
+ .
+ Backup-manager ostalari horietan instalaturik badago, bere bildumaren azpidirektorio bat erabiltzea gomendatzen da, fitxategiak behar denean ezabatu ahal izateko.
+Description-fr.UTF-8: Dépôt sur l'hôte distant :
+ Veuillez entrer l'emplacement, sur les hôtes distants, où les archives seront envoyées.
+ .
+ Si backup-manager est installé sur ces hôtes distants, il est recommandé d'utiliser un sous-répertoire de son dépôt d'archives ; ainsi, même les archives téléchargées seront purgées lorsque nécessaire.
+Description-it.UTF-8: Directory nella macchina remota:
+ Inserire il percorso nel quale memorizzare gli archivi nelle macchine remote.
+ .
+ Se backup-manager è installato in questi host sarebbe meglio specificare una sottodirectory del relativo archivio in modo che anche i file caricati vengano rimossi secondo la schedulazione stabilita.
+Description-ja.UTF-8: リモートホストのリポジトリ:
+ アーカイブを格納する、リモートホスト上での場所を入力してください。
+ .
+ backup-manager がこれらのホストにインストールされているなら、そのアーカイブリポジトリのサブディレクトリを使うことを推奨します。これで、アップロードされたアーカイブを必要に応じて削除できます。
+Description-nl.UTF-8: Archiefmap op andere computers:
+ Waar op andere computers dienen de archieven opgeslagen te worden?
+ .
+ Als backup-manager geïnstalleerd is op die andere computers is het aan te raden om een submap van de archiefmap daar te gebruiken zodat ge-uploade archieven indien nodig gewist worden.
+Description-pt.UTF-8: Repositório das máquinas remotas:
+ Introduza o local para onde devem os arquivos ser guardados nas máquinas remotas.
+ .
+ Se o backup-manager está instalado nessas máquinas é recomendado utilizar uma pasta do repositório de arquivos, para deste modo ser possível apagar ('purge') ficheiros carregados quando necessário.
+Description-pt_BR.UTF-8: Repositório nas máquinas remotas:
+ Por favor, informe onde - nas máquinas remotas - os arquivos devem ser armazenados.
+ .
+ Caso o backup-manager esteja instalado nessas máquinas, é recomendado utilizar um subdiretório do seu repositório de arquivos, de forma que mesmo os arquivos enviados sejam removidos quando necessário.
+Description-ru.UTF-8: Хранилище на удалённой машине:
+ Укажите где - на удалённых машинах - должны сохраняться архивы.
+ .
+ Если на этих машинах установлен backup-manager, то рекомендуется указать подкаталог его хранилища архивов для того, чтобы при необходимости вычищались и архивы тоже.
+Description-sv.UTF-8: Fjärrvärdens förråd:
+ Ange var - på fjärrvärdarna - arkiven ska lagras.
+ .
+ Om backup-manager är installerad på dessa värdar är det rekommenderat att använda en underkatalog för dess arkivförråd så att även uppladdade arkiv kommer att rensas vid behov.
+Description-vi.UTF-8: Kho của máy ở xa:
+ Hãy nhập nơi nên cất giữ kho vào máy ở xa.
+ .
+ Nếu trình quản lý sao lưu đả được cài đặt vào máy này, khuyên bạn sử dụng thư mục con của kho sao lưu của nó, để tẩy ngay cả kho đã tải lên, khi cần.
+
+Template: backup-manager/cron_frequency
+Type: select
+Choices: never, daily, weekly, monthly
+Choices-cs.UTF-8: nikdy, denně, týdně, měsíčně
+Choices-da.UTF-8: aldrig, daglig, ugentlig, månedlig
+Choices-de.UTF-8: nie, täglich, wöchentlich, monatlich
+Choices-el.UTF-8: ποτέ, ημερήσια, εβδομαδιαία, μηνιαία
+Choices-es.UTF-8: nunca, diariamente, semanalmente, mensualmente
+Choices-eu.UTF-8: inoiz, egunero, astero, hilero
+Choices-fr.UTF-8: jamais, quotidienne, hebdomadaire, mensuelle
+Choices-it.UTF-8: mai, giornaliero, settimanale, mensile
+Choices-ja.UTF-8: なし, 毎日, 毎週, 毎月
+Choices-nl.UTF-8: nooit, dagelijks, wekelijks, maandelijks
+Choices-pt.UTF-8: nunca, diariamente, semanalmente, mensalmente
+Choices-pt_BR.UTF-8: nunca, diariamente, semanalmente, mensalmente
+Choices-ru.UTF-8: никогда, ежедневно, еженедельно, ежемесячно
+Choices-sv.UTF-8: aldrig, dagligen, veckovis, månadsvis
+Choices-vi.UTF-8: không bao giờ, hàng ngày, hàng tuần, hàng tháng
+Default: never
+Description: CRON frequency:
+ Although backup-manager is designed to make daily archives, it can be run
+ less frequently, like once a week or even once a month.
+ .
+ Note that you can also choose not to run backup-manager at all with CRON.
+Description-cs.UTF-8: Frekvence spouštění z cronu:
+ Přestože byl backup-manager navržen pro vytváření denních archivů, můžete jej spouštět i méně často, třeba jednou týdně nebo jednou měsíčně.
+ .
+ Také máte možnost backup-manager z CRONu nespouštět vůbec.
+Description-da.UTF-8: CRON-frekvens:
+ Selvom backup-manager er designet til at foretage daglige arkiveringer, så kan det også køres med lavere frekvens, såsom en gang om ugen eller en gang om måneden.
+ .
+ Bemærk at du også kan vælge ikke at køre backup-manager i det hele taget med CRON.
+Description-de.UTF-8: CRON-Häufigkeit:
+ Obwohl backup-manager für tägliche Archive gemacht wurde, kann es auch mit geringerer Häufigkeit wie z.B. wöchentlich oder monatlich verwendet werden.
+ .
+ Beachten Sie, dass Sie auch wählen können, backup-manager überhaupt nicht mit CRON auszuführen.
+Description-el.UTF-8: συχνότητα CRON:
+ Παρόλο που το backup-manager είναι σχεδιασμένο να δημιουργεί ημερήσιες αρχειοθήκες, μπορεί να εκτελείται και λιγότερο συχνά, όπως π.χ. μια φορά την εβδομάδα ή το μήνα.
+ .
+ Σημειώστε ότι μπορείτε να επιλέξετε να μην εκτελείτε καθόλου το backup-manager με το CRON.
+Description-es.UTF-8: Frecuencia CRON:
+ Aunque backup-manager se diseñó para hacer copias de seguridad diarias, puede ejecutarse con menos frecuencia, como una vez a la semana o incluso una vez al mes.
+ .
+ Tenga en cuenta que también puede elegir no ejecutar backup-manager desde CRON en absoluto.
+Description-eu.UTF-8: CRON maiztasuna:
+ Nahiz eta backup-manager eguneroko fitxategiak egiteko diseinaturik egon, berau maiztasun gutxiagoz erabili daiteke, astero edo hilabetero adibidez.
+ .
+ Kontutan izan hala ere backup-manager CRON bidez ez abiaraztea aukeratu dezakezu.
+Description-fr.UTF-8: Fréquence de la tâche périodique de cron :
+ Bien que backup-manager soit conçu pour générer des archives quotidiennes, il peut être lancé moins fréquemment, par exemple une fois par semaine ou par mois.
+ .
+ Vous pouvez également choisir de ne pas lancer automatiquement backup-manager.
+Description-it.UTF-8: Periodicitià di cron:
+ Anche se backup-manager è studiato per fare archivi giornalieri è possibile utilizzarlo meno di frequente, come settimanalmente o anche mensilmente.
+ .
+ Notare che è sempre possibile non eseguire backup-manager tramite CRON.
+Description-ja.UTF-8: CRON の周期:
+ backup-manager は毎日のアーカイブを作成するよう設計されていますが、週 1 度または月 1 度のように、より少ない周期で実行することもできます。
+ .
+ CRON で backup-manager を実行しないように選択できることにも注意してください。
+Description-nl.UTF-8: CRON-frequentie:
+ Backup-manager is ontworpen om dagelijks archieven te maken, het is echter mogelijk om dit minder vaak te doen (bv. eens peer week, of eens per maand).
+ .
+ Merk op dat u er ook voor kunt kiezen om backup-manager helemaal niet via CRON te draaien.
+Description-pt.UTF-8: Frequência do CRON:
+ Apesar do backup-manager ter sido desenhado para efectuar arquivos diários, pode correr menos frequentemente, tal como uma vez por semana ou por mês.
+ .
+ Repare que pode também escolher não correr o backup-manager de todo com o CRON.
+Description-pt_BR.UTF-8: Frequência do CRON:
+ Apesar do backup-manager ter sido pensado para criar arquivos diários, o mesmo pode ser executado em uma frequência menor, como uma vez por semana ou até mesmo uma vez por mês.
+ .
+ Note que você também pode optar por não executar o backup-manager de nenhuma maneira com o CRON.
+Description-ru.UTF-8: Частота запуска задания в CRON:
+ Хотя backup-manager разрабатывался для создания архивов ежедневно, он может запускаться реже, например, раз в неделю или даже раз в месяц.
+ .
+ Заметим, что также можно выбрать не запускать backup-manager по CRON вообще.
+Description-sv.UTF-8: Cron-frekvens:
+ Även om backup-manager är designad att skapa dagliga arkiv kan den köras mindre frekvent, såsom en gång i veckan eller till och med en gång i månaden.
+ .
+ Notera att du också kan välja att inte köra backup-manager alls med CRON.
+Description-vi.UTF-8: Tần số CRON:
+ Dù trình quản lý sao lưu được thiết kế để tạo kho hàng ngày, có thể chạy nó ít lần hơn, như hàng tuần hoặc ngay cả hàng tháng.
+ .
+ Ghi chú rằng bạn cũng có khả năng chọn không chạy trình quản lý sao lưu dùng CRON (công cụ định thời chạy tiến trình).
+
+Template: backup-manager/repo_user
+Type: string
+Default: root
+Description: Owner user of the repository:
+ For security reason, the repository where archives will be stored is accessible
+ by a specific user.
+ .
+ The repository and archives inside will be readable and writeable by this user.
+Description-cs.UTF-8: Vlastník úložiště:
+ Z bezpečnostních důvodů je úložiště s archivy přístupné pouze konkrétnímu uživateli.
+ .
+ To znamená, že archivy v úložišti může číst a zapisovat pouze zadaný uživatel.
+Description-da.UTF-8: Ejerbruger af depotet:
+ Af sikkerhedsmæssige årsager vil depotet hvor arkiverne gemmes være tilgængelig for en specifik bruger.
+ .
+ Depotet og arkiverne deri vil være læsbare og skrivbare for denne bruger.
+Description-de.UTF-8: Eigentümer des Depots: 
+ Aus Sicherheitsgründen ist das Depot, in dem die Archive gesichert werden, nur für einen spezifischen Benutzer zugänglich.
+ .
+ Das Depot und die Archive darin werden für diesen Benutzer lesbar und schreibbar sein.
+Description-el.UTF-8: Χρήστης-ιδιοκτήτης του αποθετηρίου:
+ Για λόγους ασφαλείας, το αποθετήριο όπου θα αποθηκεύονται οι αρχειοθήκες είναι προσβάσιμο από ένα συγκεκριμένο χρήστη.
+ .
+ Το αποθετήριο και οι αρχειοθήκες μέσα του θα είναι αναγνώσιμες και εγγράψιμες από αυτόν το χρήστη.
+Description-es.UTF-8: Introduzca el usuario propietario del repositorio de copias:
+ Por razones de seguridad, el repositorio donde se guardan las copias de seguridad tiene permisos de acceso para un solo usuario.
+ .
+ El repositorio y las copias de seguridad que contenga tendrán permisos de lectura y escritura para este usuario.
+Description-eu.UTF-8: Errepositorioaren jabe erabiltzailea:
+ Segurtasun arrazoiak direla eta, fitxategiak gordeko diren errepositorioa erabiltzaile zehatz batentzat bakarrik eskuragarri da.
+ .
+ Errepositorioa eta honen barneko fitxategiak erabiltzaile honek bakarrik irakurri eta idatzi ditzake.
+Description-fr.UTF-8: Utilisateur propriétaire du dépôt :
+ Pour des raisons de sécurité, le dépôt où les archives sont sauvegardées n'est accessible que par un identifiant spécifique.
+ .
+ Le dépôt et les archives qui y sont contenues ne seront accessibles en lecture/écriture que par cet utilisateur.
+Description-it.UTF-8: Utente proprietario del repository: 
+ Per motivi di sicurezza, il repository nel quale vengono memorizzati gli archivi, è accessibile ad un utente specifico.
+ .
+ Il repository e gli archivi lì contenuti, saranno accessibili in lettura e scrittura a questo utente.
+Description-ja.UTF-8: リポジトリの所有ユーザ:
+ セキュリティ上の理由で、アーカイブが格納されるリポジトリは指定のユーザでアクセスされます。
+ .
+ リポジトリとアーカイブ内には、このユーザで読み書き可能です。
+Description-nl.UTF-8: Gebruiker-eigenaar van de archiefmap:
+ Omwille van veiligheidsredenen is de archiefmap (waar de archieven opgeslagen worden) enkel toegankelijk voor één specifieke gebruiker.
+ .
+ Deze gebruiker kan in de archiefmap (en dus de archieven) lezen en schrijven.
+Description-pt.UTF-8: Utilizador dono do repositório:
+ Por razões de segurança o repositório onde os arquivos são guardados é apenas acessível por um utilizador específico.
+ .
+ O repositório e os arquivos contidos serão acessíveis em modo de leitura e escrita por este utilizador.
+Description-pt_BR.UTF-8: Usuário proprietário do repositório:
+ Por razões de segurança, o repositório onde os arquivos serão armazenados é acessível por um usuário específico.
+ .
+ O repositório e os arquivos dentro do mesmo serão legíveis e graváveis por esse usuário.
+Description-ru.UTF-8: Пользователь-владелец хранилища:
+ С целью обеспечения безопасности, хранилище с архивными файлами доступно определённому пользователю.
+ .
+ Хранилище и архивы в нём будут доступны на чтение и запись этому пользователю.
+Description-sv.UTF-8: Användaren som äger förrådet:
+ Av säkerhetsskäl kommer förrådet där arkiven lagras att vara tillgänglig för en specifik användare.
+ .
+ Förrådet och arkiven där i kommer att vara läs- och skrivbara av denna användare.
+Description-vi.UTF-8: Người dùng sở hữu kho :
+ Vì lý do bảo mật, kho nơi sẽ cất giữ các kho sao lưu có khả năng truy cập bởi một người dùng riêng.
+ .
+ Kho, và các kho sao lưu bên trong, sẽ có khả năng đọc và ghi bởi người dùng này.
+
+Template: backup-manager/repo_group
+Type: string
+Default: root
+Description: Owner group of the repository:
+ For security reason, the repository where archives will be stored is accessible
+ by a specific group.
+ .
+ The repository and archives inside will be readable and writeable by this group.
+Description-cs.UTF-8: Skupinový vlastník úložiště:
+ Z bezpečnostních důvodů je úložiště s archivy přístupné pouze konkrétní skupině uživatelů.
+ .
+ To znamená, že archivy v úložišti mohou číst a zapisovat pouze uživatelé patřící do zadané skupiny.
+Description-da.UTF-8: Ejergruppe for depotet:
+ Af sikkerhedsmæssige årsager vil depotet hvor arkiverne gemmes være tilgængelig for en specifik gruppe.
+ .
+ Depotet og arkiverne deri vil være læsbare og skrivbare for denne gruppe.
+Description-de.UTF-8: Benutzergruppe des Depots:
+ Aus Sicherheitsgründen ist das Depot, in dem die Archive gesichert werden, nur für eine spezifische Gruppe zugänglich.
+ .
+ Das Depot und die Archive darin werden für diese Gruppe lesbar und schreibbar sein.
+Description-el.UTF-8: Ομάδα-ιδιοκτήτης του αποθετηρίου:
+ Για λόγους ασφαλείας, το αποθετήριο όπου θα αποθηκεύονται οι αρχειοθήκες είναι προσβάσιμο από μια συγκεκριμένη ομάδα.
+ .
+ Το αποθετήριο και οι αρχειοθήκες μέσα του θα είναι αναγνώσιμες και εγγράψιμες από αυτή την ομάδα.
+Description-es.UTF-8: Introduzca el grupo propietario del repositorio:
+ Por razones de seguridad, el repositorio donde se guardan las copias de seguridad tiene permisos de acceso para un solo grupo.
+ .
+ El repositorio y las copias de seguridad que contenga tendrán permisos de lectura y escritura para este grupo.
+Description-eu.UTF-8: Errepositorioaren jabe taldea:
+ Segurtasun arrazoiak direla eta, fitxategiak gordeko diren errepositorioa talde zehatz batentzat bakarrik eskuragarri da.
+ .
+ Errepositorioa eta honen barneko fitxategiak talde honek bakarrik irakurri eta idatzi ditzake.
+Description-fr.UTF-8: Groupe propriétaire du dépôt :
+ Pour des raisons de sécurité, le dépôt où les archives sont sauvegardées est accessible par un groupe spécifique.
+ .
+ Le dépôt et les archives qui y sont contenues ne seront accessibles en lecture/écriture que par ce groupe.
+Description-it.UTF-8: Gruppo proprietario del repository: 
+ Per motivi di sicurezza, il repository nel quale gli archivi saranno memorizzati è accessibile ad uno specifico gruppo.
+ .
+ Il repository e gli archivi lì contenuti, saranno accessibili in lettura e scrittura a questo gruppo.
+Description-ja.UTF-8: リポジトリの所有グループ:
+ セキュリティ上の理由で、アーカイブが格納されるリポジトリは指定のグループでアクセスされます。
+ .
+ リポジトリとアーカイブ内には、このグループで読み書き可能です。
+Description-nl.UTF-8: Groep-eigenaar van de archiefmap:
+ Omwille van veiligheidsredenen is de archiefmap (waar de archieven opgeslagen worden) enkel toegankelijk voor gebruikers die lid zijn van één bepaalde groep.
+ .
+ Leden van deze groep kunnen in de archiefmap (en dus de archieven) lezen en schrijven.
+Description-pt.UTF-8: Grupo dono do repositório:
+ Por razões de segurança, o repositório para onde os arquivos serão guardados são apenas acessíveis por um grupo específico.
+ .
+ O repositório e os arquivos contidos serão acessiveis em modo de leitura e escrita por este grupo.
+Description-pt_BR.UTF-8: Grupo proprietário do repositório:
+ Por razões de segurança, o repositório onde os arquivos serão armazenados é acessível por um grupo específico.
+ .
+ O repositório e os arquivos dentro do mesmo serão legíveis e graváveis por esse grupo.
+Description-ru.UTF-8: Группа-владелец хранилища:
+ С целью обеспечения безопасности, хранилище с архивными файлами доступно определённой группе.
+ .
+ Хранилище и архивы в нём будут доступны на чтение и запись этой группе.
+Description-sv.UTF-8: Gruppen som äger förrådet:
+ Av säkerhetsskäl kommer förrådet där arkiven lagras att vara tillgänglig för en specifik grupp.
+ .
+ Förrådet och arkiven där i kommer att vara läs- och skrivbara av denna grupp.
+Description-vi.UTF-8: Nhóm sở hữu kho :
+ Vì lý do bảo mật, kho nơi sẽ cất giữ các kho sao lưu có khả năng truy cập bởi một nhóm riêng.
+ .
+ Kho, và các kho sao lưu bên trong, sẽ có khả năng đọc và ghi bởi nhóm này.
+
+Template: backup-manager/cron_d_remove_deprecated
+Type: boolean
+Default: false
+Description: Remove deprecated file /etc/cron.d/backup-manager?
+ In previous version, backup-manager uses /etc/cron.d directory but this directory is not
+ handled by anacron. Thus, it is not possible to run backup-manager's job asynchronously, if
+ cron.d is used.
+ .
+ In order to let anacron handle backup-manager's job, the following CRON subdirectories are used:
+ /etc/cron.daily, /etc/cron.weekly and /etc/cron.monthly, depending on the chosen frequency.
+ .
+ As jobs handled by the cron.d subdirectory may be skipped if the system is not running,
+ it is recommended to use one of those directories instead.
+Description-cs.UTF-8: Odstranit zastaralý soubor /etc/cron.d/backup-manager?
+ V předchozí verzi používal backup-manager adresář /etc/cron.d, avšak tento není obsluhován anacronem, tudíž nebylo možno spouštět backup-manager asynchronně.
+ .
+ Aby mohl anacron obsluhovat úlohu backup-manageru, použijí se následující adresáře CRONu: /etc/cron.daily, /etc/cron.weekly nebo /etc/cron.monthly (podle frekvence spouštění).
+ .
+ Protože úlohy umístěné v adresáři cron.d mohou být v případě vypnutého počítače přeskočeny, doporučujeme použít některý ze zmíněných adresářů.
+Description-da.UTF-8: Fjern forældet fil /etc/cron.d/backup-manager?
+ I den forrige version, brugte backup-manager /etc/cron.d-mappen, men denne mappe håndteres ikke af anacron. Det er derfor ikke muligt at køre backup-managers job asynkront, hvis cron.d bruges.
+ .
+ For at lade anacron håndtere backup-managers job, bruges de følgende CRON-undermapper: /etc/cron.daily, /etc/cron.weekly og /etc/cron.monthly, afhængig af den valgt frekvens.
+ .
+ Da job håndteret af cron.d-undermappen kan springes over hvis systemet ikke kører, så anbefales det at bruge en af disse mapper i stedet for.
+Description-de.UTF-8: Löschen der missbilligten Datei /etc/cron.d/backup-manager?
+ Backup-Manager hat in älteren Versionen das Verzeichnis /etc/cron.d benutzt. Dieses Verzeichnis wird aber nicht von anacron durchsucht. Daher ist es nicht möglich, die Aufträge von backup-manager asynchron auszuführen, wenn /etc/cron.d eingesetzt wird.
+ .
+ Damit anacron die Aufträge von backup-manager ausführen kann werden folgende Verzeichnisse benutzt: /etc/cron.daily, /etc/cron.weekly und /etc/cron.monthly, abhängig von der gewählten Häufigkeit.
+ .
+ Da Aufträge im /etc/cron.d Verzeichnis übergangen werden könnten, wenn das System nicht läuft ist es ratsam, eines dieser Verzeichnisse zu benutzen.
+Description-el.UTF-8: Απομάκρυνση του ξεπερασμένου αρχείου /etc/cron.d/backup-manager;
+ Σε προηγούμενη έκδοση, το backup-manager χρησιμοποιεί τον κατάλογο /etc/cron.d, αλλά ο κατάλογος αυτός δε χρησιμοποιείται από το anacron. Έτσι, δεν είναι δυνατή η ασύγχρονη εκτέλεση των εργασιών του backup-manager εάν χρησιμοποιείται το cron.d.
+ .
+ Προκειμένου να αφήσετε το anacron να χειρίζεται τις εργασίες του backup-manager, οι ακόλουθοι υποκατάλογοι CRON χρησιμοποιούνται: /etc/cron.daily, /etc/cron.weekly και /etc/cron.monthly, ανάλογα με την επιλεγμένη συχνότητα.
+ .
+ Καθώς οι εργασίες που χειρίζονται από τον υποκατάλογο cron.d μπορεί να παραβλεφθούν εάν το σύστημα δεν είναι σε λειτουργία, συνίσταται να χρησιμοποιήσετε αντίθετα έναν από εκείνους τους υποκαταλόγους.
+Description-es.UTF-8: ¿Eliminar el fichero desaconsejado /etc/cron.daily/backup-manager?
+ En versiones anteriores, backup-manager usaba el directorio /etc/cron.d, pero anacron no usa este directorio. Por tanto, no se puede ejecutar backup-manager asíncronamente si se usa cron.d.
+ .
+ Para permitir que anacron ejecute backup-manager, se deben usar los siguientes subdirectorios: /etc/cron.daily, /etc/cron.weekly and /etc/cron.monthly, dependiendo de la frecuencia deseada.
+ .
+ Dado que las tareas del subdirectorio cron.d podrían saltarse si el sistema no se está ejecutando en ese momento, se recomienda usar en su lugar uno de esos directorios.
+Description-eu.UTF-8: Zaharkituriko /etc/cron.d/backup-manager fitxategia ezabatu?
+ Aurreko bertsioan, backup manager-ek /etc/cron.d direktorioa erabiltzen zuen baina direktorio hau ez du anacron-ek kudeatzen. Horregatik ezin da backup-manager lana asinkronoki abiarazi cron.d erabiltzen bada.
+ .
+ Anacron-ek backup-manager-en lana behar bezala kudeatzeko, hurrengo CRON direktorioak erabiliko dira: /etc/cron.daily, /etc/cron.weekly etaetc/cron.monthly, aukeratutako maiztasunaren arabera.
+ .
+ cron.d azpidirektorioak kudeatutako lan bat alde batetara geldi liteke sistema abiarazirik ez balego, horregatik beste direktorioak erabiltzea gomendatzen da.
+Description-fr.UTF-8: Faut-il effacer le fichier obsolète /etc/cron.d/backup-manager ?
+ Dans sa version précédente, backup-manager utilisait le répertoire /etc/cron.d mais ce répertoire n'est pas géré par anacron. Ainsi, il n'est pas possible d'exécuter les tâches de backup-manager de manière asynchrone si cron.d est utilisé.
+ .
+ Afin qu'anacron puisse gèrer les tâches de backup-manager, les répertoires /etc/cron.daily, /etc/cron.weekly ou /etc/cron.monthly seront utilisés, en fonction de la fréquence choisie.
+ .
+ Comme les tâches gérées dans le sous-répertoire cron.d peuvent ne pas être lancées si le système est arrêté, il est recommandé d'utiliser un de ces répertoires à la place.
+Description-it.UTF-8: Cancellare il vecchio file /etc/cron.d/backup-manager?
+ Nelle versioni precedenti, backup-manager utilizzava la directory /etc/cron.d ma questa directory non è gestita da anacron. Quindi non è possibile utilizzare le attività schedulate in maniera asincrona se viene usata cron.d.
+ .
+ Per fare in modo che anacron gestisca le attività di backup-manager verranno usate le seguenti sottodirectory: /etc/cron.daily, /etc/cron.weekly e /etc/cron.monthly, a seconda della periodicità dell'attività.
+ .
+ Una attività gestita nella directory cron.d può essere saltata nel caso che il sistema sia spento. È quindi raccomandato di usare queste directory al posto della precedente.
+Description-ja.UTF-8: 廃止されたファイル /etc/cron.d/backup-manager を削除しますか?
+ 以前のバージョンでは、backup-manager は /etc/cron.d ディレクトリを使っていましたが、このディレクトリは anacron では扱われません。そのため、cron.d が使われているときには、backup-manager のジョブを非同期実行することができません。
+ .
+ anacron で backup-manager のジョブを扱えるようにするために、選択された周期に応じて、以下の CRON サブディレクトリが使われます: /etc/cron.daily、/etc/cron.weekly、/etc/cron.monthly。
+ .
+ cron.d サブディレクトリで扱われていたジョブは、システムが実行されていないときには飛ばされる可能性があります。代わりにこれらのディレクトリの 1 つを使うことをお勧めします。
+Description-nl.UTF-8: Wilt u het verouderde bestand /etc/cron.d/backup-manager verwijderen?
+ In eerdere versies gebruikte backup-manager de '/etc/cron.d/'-map. Deze map wordt door anacron echter genegeerd, het is dan ook niet mogelijk om de backup-manager taken asynchroon uit te voeren als cron.d gebruikt wordt.
+ .
+ Om anacron de backup-manager taken te laten beheren worden, afhankelijk van de gekozen frequentie, de volgende CRON-mappen gebruikt: /etc/cron.daily, /etc/cron.weekly, en /etc/cron/monthly.
+ .
+ Taken die via de 'cron.d'-submap beheerd worden, worden overgeslagen als het systeem niet aan staat, het is dan ook aangeraden om deze map niet te gebruiken.
+Description-pt.UTF-8: Remover o ficheiro obsoleto /etc/cron.d/backup-manager?
+ Na sua versão anterior o backup-manager utilizava a pasta /etc/cron.d no entanto esta pasta não é usada pelo anacron. Torna-se assim impossível correr o backup-manager como tarefa assíncrona, se o cron.d for usado.
+ .
+ Para permitir que a tarefa backup-manager seja gerida pelo anacron, as seguintes pastas do CRON são utilizadas: /etc/cron.daily,·/etc/cron.weekly e·/etc/cron.monthly, dependendo da frequência escolhida.
+ .
+ Como as tarefas geridas pela pasta cron.d podem ser ignoradas se o sistema não estiver a correr, é recomendado ao invés utilizar umas das outras pastas anteriores.
+Description-pt_BR.UTF-8: Remover arquivo obsoleto /etc/cron.d/backup-manager?
+ Na versão anterior, o backup-manager utilizava o diretório /etc/cron.d mas esse diretório não é gerenciado pelo anacron. Por isso, não é possível executar os trabalhos do backup-manager de forma assíncrona, caso o cron.d seja usado.
+ .
+ Para permitir que o anacron gerencie os trabalhos do backup-manager, os seguintes subdiretórios são usados: /etc/cron.daily, /etc/cron.weekly e /etc/cron.monthly, dependendo da frequência escolhida.
+ .
+ Como os trabalhos gerenciados pelo subdiretório cron.d podem ser pulados caso o sistema não esteja sendo executado, é recomendado utilizar um desses diretórios.
+Description-ru.UTF-8: Удалить не рекомендуемый файл /etc/cron.d/backup-manager?
+ В предыдущей версии backup-manager использовал каталог /etc/cron.d, который не обрабатывается anacron. Из-за этого невозможно запускать задание backup-manager асинхронно.
+ .
+ Чтобы anacron смог выполнять задание backup-manager, используются следующие подкаталоги CRON: /etc/cron.daily, /etc/cron.weekly и /etc/cron.monthly, в зависимости от желаемой периодичности.
+ .
+ Так как задания из подкаталога cron.d могут не выполниться, если система не была запущена вовремя, то рекомендуется использовать один из перечисленных каталогов.
+Description-sv.UTF-8: Ta bort den föråldrade filen /etc/cron.d/backup-manager?
+ I en tidigare version använde backup-manager katalogen /etc/cron.d men denna katalog är inte hanterad av anacron. Därför är det inte möjligt att köra backup-managers jobb asynkront, om cron.d används.
+ .
+ För att låta anacron hantera backup-managers jobb används följande underkataloger i CRON: /etc/cron.daily, /etc/cron.weekly och /etc/cron.monthly, beroende på den valda frekvensen.
+ .
+ Eftersom jobb hanteras av cron.d kan underkatalogen hoppas över om systemet inte körs, det är rekommenderat att använda en av dessa kataloger istället.
+Description-vi.UTF-8: Gỡ bỏ tập tin bị phải đối « /etc/cron.d/backup-manager» không?
+ Trong phiên bản trước, trình backup-manager dùng thư mục « /etc/cron.d », nhưng mà trình anacron không quản lý thư mục này. Vì vậy, không thể chạy công việc của backup-manager một cách không đồng bộ, nếu dùng « cron.d ». 
+ .
+ Để cho phép trình anacron quản lý công việc của backup-manager, có dùng những thư mục con CRON này: « /etc/cron.daily » (thư mục hàng ngày), « etc/cron.weekly » (hàng tuần) và « /etc/cron.monthly » (hàng tháng), phụ thuộc vào tần số được chọn.
+ .
+ Vì công việc được quản lý bởi thư mục con « cron.d » có thể bị bỏ qua nếu hệ thống không đang chạy, khuyên bạn dùng một của những thư mục này thay vào đó.
+
+Template: backup-manager/enable_encryption
+Type: boolean
+Default: false
+Description: Encrypt archives?
+ If you don't trust the physical device where you store your data, you may want
+ to be sure that your archives won't be accessible by a malicious user.
+ .
+ Backup Manager can encrypt your archives with GPG, that means that you will
+ need a GPG identity to use that feature.
+Description-cs.UTF-8: Šifrovat archivy?
+ Nevěříte-li fyzickému zařízení, na kterém uchováváte svá data, možná budete chtít zajistit, aby se k vašim archivům nedostal nepovolaný uživatel.
+ .
+ Backup Manager umí šifrovat archivy pomocí GnuPG, což znamená, že pokud budete chtít využít této vlastnosti, musíte mít GnuPG identitu.
+Description-da.UTF-8: Krypter arkiver?
+ Hvis du ikke stoler på den fysiske enhed hvor du gemmer dine data, så vil du måske sikre dig, at dine arkiver ikke kan tilgås af en ondsindet bruger.
+ .
+ Backup Manager kan kryptere dine arkiver med GPG, det betyder at du skal bruge en GPG-identitet for at bruge denne funktion.
+Description-de.UTF-8: Archive verschlüsseln?
+ Falls das Gerät, auf dem Sie Ihre Daten speichern, nicht vertrauenswürdig ist, können Sie sicherstellen, dass Ihre Archive für übel gesinnte Benutzer nicht zugänglich sind. 
+ .
+ Backup-Manager kann Ihre Archive mit GPG verschlüsseln. Um dieses Feature zu verwenden, benötigen Sie eine GPG-Identität.
+Description-el.UTF-8: Κρυπτογράφηση αρχειοθηκών;
+ Εάν δεν εμπιστεύεστε τη φυσική συσκευή όπου αποθηκεύετε τα δεδομένα σας, μπορεί να θέλετε να είστε σίγουροι ότι οι αρχειοθήκες σας δεν θα είναι προσβάσιμες από έναν κακόβουλο χρήστη.
+ .
+ Το Backup Manager μπορεί να κρυπτογραφήσει τις αρχειοθήκες σας με το GPG· αυτό σημαίνει ότι θα χρειαστείτε μια ταυτότητα GPG για να χρησιμοποιήσετε αυτό το χαρακτηριστικό.
+Description-es.UTF-8: ¿Cifrar copias de seguridad?
+ Si no confía en el dispositivo físico donde guarda sus datos, podría querer asegurarse de que ningún usuario malicioso podrá acceder a sus copias de seguridad.
+ .
+ Backup Manager puede cifrar sus copias de seguridad con GPG, lo que significa que necesitará una identidad GPG para usar esa característica.
+Description-eu.UTF-8: Paketeak enkriptatu?
+ Zu ez bazara zure datuak gordetzen dituen gailuaz fidatzen, agian erabiltzaile maltzur batek eskura ez ditzan ziurtatu nahi izan dezakezu
+ .
+ Backup Manager-ek paketeak GPG bidez enkripta ditzake, ezaugarri hau erabili ahal izateko GPG identitate bat eduki behar duzu.
+Description-fr.UTF-8: Faut-il chiffrer les archives ?
+ Si vous ne faites pas totalement confiance aux périphériques physiques, vous pourriez avoir besoin d'être rassuré que vos archives ne seront pas accessibles à un utilisateur malveillant.
+ .
+ Backup Manager peut chiffrer vos archives avec GPG, ce qui signifie qu'une identité GPG est nécessaire pour utiliser cette fonction.
+Description-it.UTF-8: Cifra archivi?
+ Nel caso non ci si fidasse del posto fisico dove si depositano i dati, si può cercare di essere egualmente certi che nessuno possa accedervi.
+ .
+ Backup Manager può cifrare gli archivi con GPG, vale a dire che è necessaria una identità GPG per utilizzare questa opzione.
+Description-ja.UTF-8: アーカイブを暗号化しますか?
+ データを格納する物理デバイスを信用できないのであれば、悪意のあるユーザにアーカイブにアクセスされないようにしたいと思うでしょう。
+ .
+ バックアップマネージャはアーカイブを GPG で暗号化できます。つまり、この機能を使うには、GPG ID が必要となります。
+Description-nl.UTF-8: Wilt u de archieven versleutelen?
+ Als u het fysieke apparaat waarop u de data opslaat niet vertrouwd, wilt u zich er waarschijnlijk van verzekeren dat uw archieven niet toegankelijk zijn voor een kwaadwillige gebruiker.
+ .
+ Backup-manager is in staat om uw archieven te versleutelen met GPG. Hiervoor dient u dus wel over een GPG-identiteit te beschikken.
+Description-pt.UTF-8: Encriptar arquivos?
+ Se não confiar no dispositivo físico onde guarda a sua informação, pode querer certificar-se que os seus arquivos não sejam acedidos por um utilizador malicioso.
+ .
+ O Backup Manager pode encriptar os seus ficheiros com GPG, o que significa que precisará de uma identificação GPG para utilizar esta funcionalidade.
+Description-pt_BR.UTF-8: Encriptar arquivos?
+ Caso você não confie no dispositivo físico onde você armazena seus dados você pode querer se certificar de que seus arquivos não estarão acessíveis para um usuário malicioso.
+ .
+ O Backup Manager pode encriptar seus arquivos com o GPG, o que significa que você precisará de uma identidade GPG para utilizar esse recurso.
+Description-ru.UTF-8: Шифровать архивы?
+ Если вы опасаетесь, что к физическому устройству, на котором сохраняются ваши данные, может получить доступ злонамеренная личность, то вы можете обезопасить свои архивы.
+ .
+ Backup Manager может зашифровать архивы с помощью GPG, для чего вам нужна GPG-подлинность (identity).
+Description-sv.UTF-8: Kryptera arkiven?
+ Om du inte litar på den fysiska enhet där du lagrar datat, kan du vilja säkerställa att dina arkiv inte kan nås av en illasinnad användare.
+ .
+ Backup Manager kan kryptera dina arkiv med GPG, vilket innebär att du kommer behöva en GPG-identitet för att använda denna funktion.
+Description-vi.UTF-8: Mật mã hoá kho ?
+ Nếu bạn không tin cây thiết bị vật lý nơi bạn cất giữ dữ liệu, bạn có thể muốn đảm bảo các kho của mình không thể được truy cập bởi người dùng khác.
+ .
+ Trình quản lý sao lưu (backup manager) có khả năng mật mã hoá kho bằng GPG: bạn cần một đồ nhận biệt GPG để sử dụng tính năng này.
+
+Template: backup-manager/encryption_recipient
+Type: string
+Description: GPG recipient:
+ You have to set the recipient for which the archive is encrypted. A valid
+ specification is a short or long key id, or a descriptive name, as explained
+ in the gpg man page.
+ .
+ The public key for this identity must be in the key ring of the user running gpg,
+ which may be root in most of the cases.
+Description-cs.UTF-8: Zadejte GnuPG příjemce:
+ Musíte zadat příjemce, který bude moci archiv dešifrovat. Platný příjemce může být krátké nebo dlouhé ID klíče, případně popisné jméno, jak je vysvětleno v manuálové stránce gpg.
+ .
+ Veřejný klíč této identity musí být na klíčence uživatele spouštícího gpg, což může být v obou případech jediná osoba (např. root).
+Description-da.UTF-8: GPG-modtager:
+ Du skal angive modtageren for hvem arkivet er krypteret. En gyldig specifikation er et kort eller langt nøgle-id, eller et beskrivende navn, som forklaret i gpg-manualsiden.
+ .
+ Den offentlige nøgle for denne identitet skal være i nøgleringen for brugeren der kører gpg, som vil være root i de fleste tilfælde.
+Description-de.UTF-8: GPG-Empfänger:
+ Sie müssen den Empfänger angeben, für den das Archiv verschlüsselt wird. Eine gültige Angabe ist eine kurze oder lange Schlüssel-ID oder ein beschreibender Name, wie in der GPG-Handbuchseite erklärt wird.
+ .
+ Der öffentliche Schlüssel für diese Identität muss im Schlüsselring des Benutzers sein, der gpg ausführt, was in den meisten Fällen root sein dürfte.
+Description-el.UTF-8: Παραλήπτης GPG:
+ Πρέπει να θέσετε τον παραλήπτη για τον οποίο κρυπτογραφείται η αρχειοθήκη. Ένας έγκυρος προσδιορισμός είναι μία σύντομη ή μακριά ταυτότητα κλειδιού, ή ένα περιγραφικό όνομα, όπως εξηγείται στη σελίδα man του gpg.
+ .
+ Το δημόσιο κλειδί γι' αυτή την ταυτότητα πρέπει να βρίσκεται στο δακτύλιο κλειδιών του χρήστη που εκτελεί το gpg, ο οποίος μπορεί να είναι ο root στις περισσότερες των περιπτώσεων.
+Description-es.UTF-8: Destinatario GPG:
+ Tiene que especificar el destinatario para el cual se cifrará la copia de seguridad. Puede usar un id de clave corto o largo, o un nombre descriptivo, tal y como se explica en la página del manual de GPG.
+ .
+ La clave pública para esta identidad debe estar en el llavero del usuario que ejecute gpg, que en la mayoría de los casos será root.
+Description-eu.UTF-8: GPG hartzailea:
+ Bere gakoaz paketea enkriptatu behar den hartzailea ezarri. Ezarpen zuzena id gako labur edo luzea, edo gpg man orrialdean argitzen den bezala azalapen izena izan daiteke.
+ .
+ Identitate honen gako publikoa gpg abiarazten duen erabiltzailearen (arruntean root izaten dena) gako eraztunean egon behar da
+Description-fr.UTF-8: Identité GPG :
+ Vous devez définir l'identité avec laquelle l'archive sera chiffrée. Une identité valide peut être définie par une clé (« id ») courte ou longue ou une description du nom, tel qu'expliqué dans la page de manuel de GPG.
+ .
+ La clé publique de cette identité doit être située dans le trousseau de l'utilisateur exécutant GPG, soit « root » dans la plupart des cas.
+Description-it.UTF-8: «recipient» GPG:
+ Si deve inserire il «recipient» per il quale l'archivio verrà cifrato. Si può utilizzare un ID breve o lungo, o un nome descrittivo, come spiegato nella pagina di manuale di gpg.
+ .
+ La chiave pubblica di questa identità deve essere nel portachiavi dell'utente che esegue gpg, che nella maggior parte dei casi sarà root.
+Description-ja.UTF-8: GPG 受け取り手:
+ 暗号化されたアーカイブの受け取り手を設定する必要があります。有効な仕様は、gpg の man ページに書かれているとおり、短いあるいは長い鍵 ID、記述名です。
+ .
+ この ID の公開鍵は、gpg を実行するユーザ (ほとんどの場合は root) の鍵リングに入っていなければなりません。
+Description-nl.UTF-8: GPG-ontvanger:
+ U dient de GPG-identiteit aan te geven die de versleutelde archieven moet kunnen lezen. Geldige waarden zijn een lange of korte sleutel-id, of een beschrijvende naam (zoals gedefinieerd in de gpg man-pagina).
+ .
+ De publieke sleutel voor deze identiteit dient in de sleutelring van de gebruiker die gpg uitvoert te zitten (dit is meestal root).
+Description-pt.UTF-8: Endereço GPG:
+ Tens que definir um endereço para o qual o arquivo é encriptado. Uma especificação válida é uma chave com id curto ou longo, ou um nome descriptivo, como explicado na página man do gpg.
+ .
+ A chave pública para esta identificação deve existir no 'porta-chaves' do utilizador gpg, o que deverá ser o root na maior parte das vezes.
+Description-pt_BR.UTF-8: Destinatário GPG:
+ Você precisa definir o destinatário para o qual os arquivos serão encriptados. Uma especificação válida é uma identificação de chave curta ou longa, ou um nome descritivo, conforme explicado na página de manual do gpg.
+ .
+ A chave pública para esta identidade deve estar no chaveiro do usuário que está executando o gpg, o qual pode ser o root na maioria dos casos.
+Description-ru.UTF-8: GPG-получатель:
+ Здесь указывается получатель, для которого шифруется архив. Допустимо указать короткий или длинный идентификатор ключа, или описательное имя (см. справочную страницу gpg).
+ .
+ Открытый ключ для этой подлинности должен находиться в брелоке ключей пользователя, запускающего gpg, которым, в большинстве случаев, является root.
+Description-sv.UTF-8: GPG-mottagare:
+ Du måste ange mottagaren som arkiven ska krypteras åt. En giltig sträng är ett kort eller långt nyckelid, eller ett beskrivande namn, så som det förklaras i gpg:s manualsida.
+ .
+ Den publika nyckeln för denna identitet måste finnas i nyckelringen hos den användare som kör gpg, vilket kan vara root i de flesta fall.
+Description-vi.UTF-8: Người nhận GPG:
+ Bạn cần phải đặt người nhận cho họ kho được mật mã. Một đặt tả hợp lệ là một đồ nhận diện (ID) khoá ngắn hay dài, hoặc một tên mô tả, như được diễn tả trên trang hướng dẫn GPG.
+ .
+ Khoá công cho đồ nhận diện này phải nằm trong vòng khoá của người dùng chạy GPG, thường là người chủ (root).
+

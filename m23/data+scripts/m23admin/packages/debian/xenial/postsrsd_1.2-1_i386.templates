@@ -1,0 +1,12 @@
+Template: postsrsd/domain
+Type: string
+Description: Local domain name to use as origin:
+ Addresses of forwarded mail are rewritten to originate from this domain
+ name. This domain should have an SPF policy that allows mail to be send
+ from this mailserver.
+ .
+ Without a configured local domain name, postsrsd will not start.
+Description-pl.UTF-8: Nazwa domeny źródłowej serwera poczty:
+ Adres nadawcy przekazywanych wiadomości będzie nadpisywany tak, by sprawiał wrażenie, że pochodzi z tej domeny. Domena ta powinna mieć ustawioną politykę SPF, która pozwala na wysyłanie z tego serwera poczty.
+ .
+ Bez skonfigurowanej domeny, postsrsd nie uruchomi się.

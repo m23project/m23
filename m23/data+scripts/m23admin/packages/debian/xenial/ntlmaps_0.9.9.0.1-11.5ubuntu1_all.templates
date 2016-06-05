@@ -1,0 +1,370 @@
+Template: ntlmaps/listen_port
+Type: string
+Default: 5865
+Description: Listen port:
+ The NTLM Authorization Proxy Server listens to this port.  This is
+ the port number you use in your http_proxy or web browser settings.
+ .
+ Proxy servers are commonly set to listen to port 8080, but in NTLM
+ APS the default value is 5865.
+Description-cs.UTF-8: Poslouchat na portu:
+ Na tomto portu poslouchá NTLM Autorizační Proxy Server. Číslo portu použijete při nastavení http_proxy nebo v nastavení webového prohlížeče.
+ .
+ Proxy servery jsou obvykle nastaveny poslouchat na portu 8080, ale výchozí hodnota pro NTLM APS je 5865.
+Description-da.UTF-8: Lytteport:
+ Proxyserveren til NTLM-godkendelse lytter på denne port. Dette er portnummeret, som du skal bruge i din http_proxy- eller internetbrowseropsætning.
+ .
+ Proxyservere sættes normalt op til at lytte på port 8080, men i NTLM APS er standardværdien 5865.
+Description-de.UTF-8: Port:
+ Der »NTLM Authorization Proxy Server« wartet auf diesem Port auf Anfragen. Dies ist die Portnummer, die Sie in Ihrer http_proxy oder in den Einstellungen Ihres Webservers verwenden.
+ .
+ Häufig werden die Proxy-Server auf Port 8080 eingestellt, aber in NTLM APS lautet der Standardwert 5865.
+Description-es.UTF-8: Puerto de escucha:
+ El servidor proxy de autorización NTLM escucha en este puerto. Este es el número de puerto que utilizará en la configuración de su navegador web o al definir http_proxy.
+ .
+ Los servidores proxy escuchan normalmente por el puerto 8080, pero en NTLM APS el puerto predeterminado es el 5865.
+Description-fr.UTF-8: Port d'écoute :
+ Veuillez indiquer le port où le serveur mandataire (« proxy ») d'autorisation NTLM sera à l'écoute. Il s'agit du numéro de port que vous utilisez dans « http_proxy » ou dans la configuration de votre navigateur.
+ .
+ Les serveurs mandataires écoutent généralement le port 8080, mais la valeur par défaut du serveur NTLM APS est 5865.
+Description-it.UTF-8: Porta di ascolto:
+ NTLM Authorization Proxy Server si mette in ascolto su questa porta. Questo è il numero della porta da specificare in http_proxy o nelle impostazioni del browser.
+ .
+ Di solito i server proxy si mettono in ascolto sulla porta 8080 però la porta predefinita su cui si mette in ascolto NTLM APS è la 5865.
+Description-ja.UTF-8: 待ち受けるポート:
+ NTLM 認証プロキシサーバはこのポートを待ち受けます。これは http_proxy やウェブブラウザの設定に利用しているポート番号です。
+ .
+ プロキシサーバは一般的にポート 8080 を待ち受けるようになっていますが NTLM APS では 5865 がデフォルト値となっています。
+Description-nl.UTF-8: Poort waarop geluisterd wordt:
+ De NTLM autorisatie-proxy-server luistert op die poort. Dit is het poortnummer dat u gebruikt in de instellingen voor http_proxy of voor uw webbrowser.
+ .
+ Gewoonlijk luisteren proxy-servers op poort 8080, maar in NTLM APS is de standaardwaarde 5865.
+Description-pt.UTF-8: Porto de escuta:
+ O NTLM Authorization Proxy Server escuta por este porto. Este é o número do porto que deve usar no seu navegador-Web ou nas suas definições http_proxy.
+ .
+ Servidores proxy são normalmente configurados para escutar no porto 8080, mas no NTLM APS o porto por omissão é o 5865.
+Description-ru.UTF-8: Прослушиваемый порт:
+ Этот порт прослушивает прокси-сервер авторизации NTLM. Данный номер порта нужно указать в переменной окружения http_proxy или настройках веб-браузера.
+ .
+ Прокси-серверы обычно прослушивают порт 8080, но в NTLM APS значением по умолчанию является 5865.
+Description-sv.UTF-8: Port att lyssna på:
+ Proxyservern för NTLM-identifiering lyssnar på denna port. Detta portnummer ska du använda i din http_proxy eller webläsares inställningar.
+ .
+ Proxyservrar lyssnar vanligen på port 8080 men i NTLM APS är standardvärdet 5865.
+Description-vi.UTF-8: Cổng lắng nghe:
+ Trình phục vụ ủy nhiệm cấp quyền NTLM lắng nghe trên cổng này. Giá trị này là số hiệu cổng dùng trong thiết lập « http_proxy » (ủy nhiệm Mạng) hay trình duyệt Mạng.
+ .
+ Trình phục vụ ủy nhiệm thường được đặt để lắng nghe trên cổng 8080, nhưng mà trong APS của NTLM, giá trị mặc định là 5865.
+Description-zh_CN.UTF-8: 监听端口：
+ NTLM 认证代理服务器监听此端口。这是在 http_proxy 或浏览器设置。
+ .
+ 代理服务器通常设置为监听 8080，但是 NTLM APS 中，默认值是 5865。
+
+Template: ntlmaps/parent_proxy
+Type: string
+Default: your_parentproxy
+Description: Parent proxy:
+ This is the address of the NTLM proxy server (e.g. the Microsoft ISA
+ server) which NTLM APS is authenticating against.
+ .
+ The address may be given with or without the leading http://,
+ for example:
+     proxy.myworkplace.com
+     http://proxy.myworkplace.com
+Description-cs.UTF-8: Nadřazená proxy:
+ Toto je adresa NTLM proxy serveru (např. Microsoft ISA server), vůči kterému se bude NTLM APS autentikovat.
+ .
+ Adresa může být určena s nebo bez úvodního http://, např.:
+     proxy.moje_pracovní_místo.cz
+     http://proxy.moje_pracovní_místo.cz
+Description-da.UTF-8: Overproxy:
+ Dette er adressen på NTLM-proxyserveren (det vil sige Microsoft ISA-serveren) som NTLM APS godkender op imod.
+ .
+ Adressen kan angives både med og uden det foranstående http://, for eksempel:
+     proxy.mitarbejdssteds.dk
+     http://proxy.mitarbejdssted.dk
+Description-de.UTF-8: Eltern-Proxy:
+ Dies ist die Adresse des NTLM Proxy-Servers (z.B. des Microsoft ISA-Servers) gegen den sich NTLM APS authentifiziert.
+ .
+ Die Adresse kann mit oder ohne führendes »http://« angegeben werden, beispielsweise:
+     proxy.meinarbeitsplatz.com
+     http://proxy.meinarbeitsplatz.com
+Description-es.UTF-8: Proxy padre:
+ Esta es la dirección del servidor proxy NTLM (por ejemplo, el servidor Microsoft ISA) contra el que se autentica NTLM APS.
+ .
+ La dirección se puede poner con o sin el «http://» inicial, por ejemplo:
+     proxy.mitrabajo.com
+     http://proxy.mitrabajo.com
+Description-fr.UTF-8: Mandataire parent :
+ Veuillez indiquez l'adresse du serveur mandataire NTLM (par exemple le serveur Microsoft ISA) utilisé pour authentifier NTLM APS.
+ .
+ L'adresse peut être donnée avec ou sans « http:// ». Par exemple :
+     proxy.myworkplace.com
+     http://proxy.myworkplace.com
+Description-it.UTF-8: Proxy principale:
+ Questo è l'indirizzo del server proxy NTLM (p.e. il server Microsoft ISA) verso cui NTLM APS fa l'autenticazione.
+ .
+ L'indirizzo può essere inserito con o senza http:// iniziale, per esempio:
+     proxy.myworkplace.com
+     http://proxy.myworkplace.com
+Description-ja.UTF-8: 親プロキシ:
+ これは NTLM APS の認証先 NTLM プロキシサーバ (例えば Microsoft ISA サーバ) のアドレスです。
+ .
+ アドレスの指定には先頭の http:// の有無を問わず使えます。例えば:
+     proxy.myworkplace.com
+     http://proxy.myworkplace.com
+Description-nl.UTF-8: Bovenliggende proxy:
+ Dit is het adres van de NTLM proxy-server (bijv. de Microsoft ISA-server) tegenover wie NTLM APS zich authenticeert.
+ .
+ Het adres mag ingegeven worden al of niet voorafgegaan door http://, bijv.:
+     proxy.mijnwerkplek.com
+     http://proxy.mijnwerkplek.com
+Description-pt.UTF-8: Proxy Pai:
+ Este é o endereço do servidor proxy NTLM (e.g. Servidor ISA da Microsoft) no qual o NTLM APS se vai autenticar.
+ .
+ O endereço pode ser indicado com ou sem o http:// inicial, exemplo:
+     proxy.myworkplace.com
+     http://proxy.myworkplace.com
+Description-ru.UTF-8: Родительский прокси:
+ Здесь указывается адрес родительского прокси-сервера NTLM (например, сервера Microsoft ISA), который используется NTLM APS для аутентификации.
+ .
+ Адрес можно задавать с или без начального http://, например:
+     proxy.myworkplace.com
+     http://proxy.myworkplace.com
+Description-sv.UTF-8: Huvudproxy:
+ Detta är adressen till NTLM-proxyservern (vanligen Microsoft ISA server) som NTLM APS identfierar sig mot.
+ .
+ Adressen kan anges med eller utan det inledande http://, exempelvis:
+     proxy.example.com
+     http://proxy.example.com
+Description-vi.UTF-8: Ủy nhiệm mẹ:
+ Giá trị này là địa chỉ của máy phục vụ ủy nhiệm NTLM (v.d. máy phục vụ ISA Microsoft): với đó APS của NTLM có xác thực.
+ .
+ Địa chỉ này có thể được nhập dạng có hay không có phần « http:// » cũng được, v.d.:
+ 	proxy.chỗ_làm.com
+ 	http://proxy.chỗ_làm.com
+Description-zh_CN.UTF-8: 上一层代理：
+ 这是NTLM APS 认证的 NTLM 代理服务器的地址(例如，Microsoft ISA 服务器)。
+ .
+ 地址可以以 http:// ，也可以不以其开通，例如：
+     proxy.myworkplace.com
+     http://proxy.myworkplace.com
+
+Template: ntlmaps/parent_proxy_port
+Type: string
+Default: 8080
+Description: Parent proxy port:
+ This is the port number which the NTLM proxy server (e.g. the Microsoft ISA
+ server), that NTLM APS is authenticating against, listens to.
+ .
+ It is commonly set to 8080.
+Description-cs.UTF-8: Port nadřadené proxy:
+ Toto je číslo portu na kterém naslouchá NTLM proxy server (např. Microsoft ISA server) a vůči němuž se NTLM APS autentikuje.
+ .
+ Obvykle je nastaven na 8080.
+Description-da.UTF-8: Overproxyport:
+ Dette er portnummeret som NTLM-proxyserveren (det vil sige Microsoft ISA-serveren), som NTLM godkender imod, lytter på.
+ .
+ Den sættes normalt til 8080.
+Description-de.UTF-8: Port des Eltern-Proxys:
+ Dies ist die Portnummer, auf der der NTLM Proxy-Server (z.B. der Microsoft ISA-Server), gegen den sich NTLM APS authentifiziert, auf Anfragen wartet.
+ .
+ Er wird normalerweise auf 8080 gesetzt.
+Description-es.UTF-8: Puerto del proxy padre:
+ Este es el número de puerto en el que escucha el servidor NTLM (por ejemplo, el servidor Microsoft ISA) contra el que se autentica NTLM APS.
+ .
+ Usualmente es el 8080.
+Description-fr.UTF-8: Port du mandataire parent :
+ Veuillez indiquez le numéro du port où sera à l'écoute le serveur mandataire NTLM (par exemple le serveur Microsoft ISA) qu'utilisera NTLM APS pour vous authentifier.
+ .
+ Il s'agit généralement du port 8080.
+Description-it.UTF-8: Porta del proxy principale:
+ Questo è il numero della porta su cui il server proxy NTLM (p.e. il server Microsoft ISA), verso cui NTLM APS fa l'autenticazione, è in ascolto.
+ .
+ Solitamente è impostato a 8080.
+Description-ja.UTF-8: 親プロキシポート:
+ これは NTLM APS の認証先 NTLM プロキシサーバ (例えば Microsoft ISA サーバ) が待ち受けるポート番号です。
+ .
+ 一般的に 8080 となっています。
+Description-nl.UTF-8: Poort van de bovenliggende proxy:
+ Dit is de poort waarop geluisterd wordt door de NTLM proxy-server (bijv. de Microsoft ISA-server), tegenover wie NTLM APS zich authenticeert.
+ .
+ Gewoonlijk is die ingesteld op 8080.
+Description-pt.UTF-8: Porto do Proxy Pai:
+ Este é o porto de escuta do servidor proxy NTLM (e.g. Servidor ISA da Microsoft), ao qual o NTLM APS se irá autenticar.
+ .
+ É normalmente configurado para 8080.
+Description-ru.UTF-8: Порт родительского прокси:
+ Здесь указывается номер порта прокси-сервера NTLM (например, сервера Microsoft ISA), который NTLM APS использует для аутентификации.
+ .
+ Обычно это 8080.
+Description-sv.UTF-8: Port för huvudproxy:
+ NTLM proxyservern (vanligen en Microsoft ISA server), som NTLM APS identifierar sig mot, lyssnar på detta portnummer.
+ .
+ Vanligen är detta 8080.
+Description-vi.UTF-8: Cổng ủy nhiệm mẹ:
+ Giá trị này là số hiệu cổng trên đó máy phục vụ ủy nhiệm NTLM (v.d. máy phục vụ ISA Microsoft) lắng nghe khi APS của NTLM xác thực với nó.
+ .
+ Thường đặt là 8080.
+Description-zh_CN.UTF-8: 上一层代理端口：
+ 这是 NTLM APS 认证的 NTLM 代理服务器(例如 Microsoft ISA 服务器)监听的端口号
+ .
+ 这通常设置为 8080。
+
+Template: ntlmaps/username
+Type: string
+Default: username_to_use
+Description: NT Windows username:
+ This field identifies the NT Windows username that you use for authentication.
+Description-cs.UTF-8: Uživatelské jméno v doméně Windows NT:
+ Toto políčko identifikuje uživatelské jméno v doméně Windows NT, kterým se budete přihlašovat.
+Description-da.UTF-8: NT Windows-brugernavn:
+ Dette felt identificerer NT Windows-brugernavnet, som du bruger til godkendelse.
+Description-de.UTF-8: NT Windows-Benutzername:
+ Dieses Feld identifiziert den NT Windows-Benutzernamen, den Sie für die Authentifizierung verwenden.
+Description-es.UTF-8: Usuario de Windows NT:
+ Este campo identifica el usuario de Windows NT que usará para la autenticación.
+Description-fr.UTF-8: Identifiant Windows NT :
+ Veuillez indiquez l'identifiant qui sera utilisé pour l'authentification avec Windows NT.
+Description-it.UTF-8: Nome utente di Windows NT:
+ Questo campo identifica il nome dell'utente Windows NT con cui fare l'autenticazione.
+Description-ja.UTF-8: NT Windows ユーザ名:
+ これは認証に使う NT Windows ユーザ名です。
+Description-nl.UTF-8: Gebruikersnaam voor NT Windows:
+ In dit veld geeft u de gebruikersnaam op die u gebruikt voor authenticatie bij NT Windows.
+Description-pt.UTF-8: Nome de utilizador do Windows NT:
+ Este campo identifica o nome de utilizador de Windows NT, que você usa para autenticação.
+Description-ru.UTF-8: Имя пользователя NT Windows:
+ Здесь указывается имя пользователя NT Windows, используемое при аутентификации.
+Description-sv.UTF-8: Användarnamn i NT Windows:
+ Ange användarnamnet för identifieringen i Windows NT.
+Description-vi.UTF-8: Tên người dùng Windows NT:
+ Trường này nhận diện tên người dùng Windows NT bạn sử dụng khi xác thực.
+Description-zh_CN.UTF-8: Windows NT 用户名：
+ 此字段，指明用于认证的 Windows NT 用户名。
+
+Template: ntlmaps/password
+Type: password
+Default: your_nt_password
+Description: NT Windows password:
+ This field identifies the NT Windows password that you use for authentication.
+ .
+ To help with security, it is not stored permanently in the debconf
+ database, but is deleted from there after being written to the
+ ntlmaps config file.  Be aware that it is temporarily stored in the
+ debconf database while this setup procedure is taking place. It is
+ deleted from there at the end of setup.
+ .
+ If you prefer not to have the password stored, even temporarily, in
+ the debconf database, then leave this entry blank, and insert the
+ value manually into the config file /etc/ntlmaps/server.cfg.
+Description-cs.UTF-8: Heslo domény Windows NT:
+ Toto políčko určuje heslo uživatele v doméně Windows NT, které použijete pro přihlášení.
+ .
+ Pomocí pro zabezpečení je, že heslo není natrvalo uloženo v databázi debconfu, ale je odstraněno a pak i zapsáno do konfiguračního souboru ntlmaps. Uvědomte si, že je dočasně uloženo v databázi debconfu, dokud ho nepřevezme tento program. Na konci nastavení je z databáze debconfu odstraněno.
+ .
+ Pokud si nepřejete mít heslo uloženo, i když dočasně, v databázi debconfu, pak nechte toto políčko prázdné a heslo zadejte do konfiguračního souboru /etc/ntlmaps/server.cfg ručně.
+Description-da.UTF-8: NT Windows-adgangskode:
+ Dette felt identificerer NT Windows-adgangskoden, som du bruger til godkendelse.
+ .
+ For at forbedre sikkerheden, gemmes den ikke permanent i debconfdatabasen, men slettes derfra efter den er skrevet til konfigurationsfilen for ntlmaps. Vær opmærksom på, at den midlertidigt er gemt i debconfdatabasen, mens opsætningsproceduren er i gang. Den slettes derfra i slutningen af opsætningen.
+ .
+ Hvis du foretrækker ikke at have adgangskoden gemt, selv midlertidigt, i debconfdatabasen, så efterlad dette punkt tomt, og indsæt værdien manuelt i konfigurationsfilen /etc/ntlmaps/server.cfg.
+Description-de.UTF-8: NT Windows-Passwort:
+ Dieses Feld identifiziert das NT Windows-Passwort, das Sie für die Authentifizierung verwenden.
+ .
+ Um die Sicherheit zu erhöhen, wird es nicht permanent in der Debconf-Datenbank gespeichert sondern dort gelöscht, nachdem es in die Konfigurationsdatei von Ntlmaps geschrieben wurde. Beachten Sie, das es temporär in der Debconf-Datenbank gespeichert ist, bis diese Einrichtungsroutine durchgeführt wurde. Am Ende der Einrichtungsroutine wird es dort gelöscht.
+ .
+ Falls Sie bevorzugen, dass das Passwort auch nicht vorübergehend in der Debconf-Datenbank abgespeichert wird, lassen Sie diesen Eintrag leer und fügen den Wert manuell in die Konfigurationsdatei /etc/ntlmaps/server.cfg ein.
+Description-es.UTF-8: Contraseña de Windows NT:
+ Este campo identifica la contraseña de Windows NT que se usará para la autenticación.
+ .
+ Por motivos de seguridad, la contraseña no se almacena permanentemente en la base de datos de debconf, pero se elimina de ella una vez que se escribe el fichero de configuración de ntlmaps. Tenga en cuenta que se almacena temporalmente en ella mientras dura este procedimiento de configuración. Al acabar la configuración se elmina de la base de datos.
+ .
+ Si prefiere que no se almacene la contraseña en la base de datos de debconf, ni siquiera temporalmente, deje este campo en blanco. En tal caso deberá introducirla manualmente en el fichero de configuración «/etc/ntlmaps/server.cfg».
+Description-fr.UTF-8: Mot de passe Windows NT :
+ Mot de passe d'authentification avec Windows NT
+ .
+ Veuillez noter que le mot de passe est temporairement sauvegardé dans la base de données de debconf, durant toute la procédure de configuration. Il est supprimé de la base à la fin de la configuration du paquet.
+ .
+ Si vous préférez que le mot de passe ne soit pas enregistré, même temporairement, dans la base de données de debconf, laissez cette entrée vide. Vous devrez l'indiquer vous-même dans le fichier de configuration /etc/ntlmaps/server.cfg.
+Description-it.UTF-8: Password di Windows NT:
+ Questo campo identifica la password dell'utente Windows NT con cui fare l'autenticazione.
+ .
+ Per aumentare la sicurezza la password non viene memorizzata permanentemente nel database di debconf, viene cancellata dopo essere stata copiata nel file di configurazione di ntlmaps. Attenzione: la password è temporaneamente memorizzata nel database di debconf durante l'esecuzione di questa procedura e viene cancellata al termine della configurazione.
+ .
+ Se si preferisce che la password non sia memorizzata, nemmeno temporaneamente, nel database di debconf si deve lasciare questa voce in bianco, però poi questo valore deve essere inserito manualmente nel file di configurazione /etc/ntlmaps/server.cfg.
+Description-ja.UTF-8: NT Windows パスワード:
+ これは認証に使う NT Windows パスワードです。
+ .
+ セキュリティの観点から、これは debconf データベースに恒久的には保存されず、ntlmaps 設定ファイルに書かれた後に削除されます。これは設定している間 debconf データベースに一時的に保存されることに留意してください。この準備の最後に削除されます。
+ .
+ 一時的と言えども debconf データベースにパスワードを保存したくない場合はここでは空白にしておいて設定ファイル /etc/ntlmaps/server.cfg に手作業により記入してください。
+Description-nl.UTF-8: Wachtwoord voor NT Windows:
+ Dit veld bevat het wachtwoord dat u gebruikt voor authenticatie bij NT Windows.
+ .
+ Uit veiligheidsoverwegingen wordt dit niet permanent bijgehouden in het gegevensbestand van debconf. Het wordt daaruit verwijderd, nadat het is overgeschreven naar het configuratiebestand van ntlmaps. U moet dus weten dat het tijdelijk opgeslagen wordt in het gegevensbestand van debconf gedurende de tijd dat deze installatieprocedure aan de gang is. Het wordt op het einde van de installatieprocedure daaruit verwijderd.
+ .
+ Indien u liever heeft dat het wachtwoord niet, zelfs niet tijdelijk, opgeslagen wordt in het gegevensbestand van debconf, dan moet u dit veld leeg laten en de waarde ervoor handmatig invoeren in het configuratiebestand /etc/ntlmaps/server.cfg.
+Description-pt.UTF-8: Password do Windows NT:
+ Este campo identifica a password do Windows NT, que você usa para autenticação.
+ .
+ Para melhor segurança, não será guardada permanentemente na base de dados do debconf, mas será apagada de lá após ter sido escrita no ficheiro de configuração do ntlmaps. Tenha atenção que será guardada temporáriamente na base de dados do debconf, enquanto a configuração decorrer, e será apagada no final da configuração.
+ .
+ Se preferir não ter a password guardada, mesmo que temporáriamente na base de dados debconf, então deixe este campo em branco, e insira o valor manualmente no ficheiro de configuração em /etc/ntlmaps/server.cfg.
+Description-ru.UTF-8: Пароль NT Windows:
+ Здесь указывается пароль NT Windows, который используется для аутентификации.
+ .
+ Он не хранится постоянно в базе данных debconf, а удаляется из неё после завершения создания файла настройки ntlmaps. Имейте в виду, что всё же на время настройки он присутствует в базе данных debconf. По окончании настройки он удаляется.
+ .
+ Если вы не хотите хранить пароль в базе данных debconf даже временно, то оставьте поле пустым, и добавьте пароль вручную в файл настройки /etc/ntlmaps/server.cfg.
+Description-sv.UTF-8: Lösenord till Windows NT:
+ Ange lösenordet för identifiering i Windows NT
+ .
+ Av säkerhetsskäl kan det vara bra att känna till att lösenordet endast temporärt sparas i debconf-databasen, när lösenordet är överfört till instälningsfilen för ntlmaps raderas det. Lösenordet sparas alltså endast temporärt i debconf-databasen under tiden som denna inställningsprocedur genomförs, därefter raderas det.
+ .
+ Om du föredrar att inte mellanlagra lösenordet, ens temporärt, i debconf-databsen kan detta fält lämnas tomt och du lägger sedan själv in det i inställningsfilen /etc/ntlmaps/server.cfg.
+Description-vi.UTF-8: Mật khẩu Windows NT:
+ Trường này nhận diện mật khẩu Windows NT bạn sử dụng khi xác thực.
+ .
+ Để bảo vệ hệ thống của bạn, mật khẩu này không được cất giữ hẳn trong cơ sở dữ liệu debconf; nó bị xóa bỏ ra nó sau khi được ghi vào tập tin cấu hình ntlmaps. Ghi chú rằng mật khẩu này được lưu tạm thời vào cơ sở dữ liệu debconf trong khi thiết lập. Nó bị xoá bỏ ra nó một khi thiết lập xong.
+ .
+ Nếu bạn không muốn mật khẩu này được lưu, ngay cả một cách tạm thời, vào co sở dữ liệu debconf, hãy bỏ trống trường này, vẫn tự nhập giá trị vào tập tin cấu hình « /etc/ntlmaps/server.cfg ».
+Description-zh_CN.UTF-8: Windows NT 口令：
+ 此字段指名用于认证的 Windows NT 口令。
+ .
+ 为了安全性，它不是永久保存在 debconf 数据库中的，而是在写入 ntlmaps 配置文件之后就删除了。一定要注意，它只是进行设置时临时保存在 debconf 数据库中。设置完成后，将从那里删除。
+ .
+ 如果不希望在 debconf 数据库中保存口令，即使仅仅是临时保存，就将此项留空，并手动将这个值写入配置文件 /etc/ntlmaps/server.cfg。
+
+Template: ntlmaps/nt_domain
+Type: string
+Default: your_domain
+Description: NT Windows domain:
+ This field identifies the NT Windows domain that you authenticate against.
+Description-cs.UTF-8: Doména Windows NT:
+ Tato položka identifikuje doménu Windows NT, vůči které se budete autentikovat.
+Description-da.UTF-8: NT Windows-domæne:
+ Dette felt identificerer NT Windows-domænet som du godkender imod.
+Description-de.UTF-8: NT Windows-Domäne:
+ Dieses Feld identifiziert die NT Windows-Domäne, gegen die Sie sich authentifizieren.
+Description-es.UTF-8: Dominio de Windows NT:
+ Este campo identifica el dominio de Windows NT contra el que se autenticará.
+Description-fr.UTF-8: Domaine Windows NT :
+ Veuillez indiquer le domaine Windows NT sur lequel se feront les authentifications.
+Description-it.UTF-8: Dominio di Windows NT:
+ Questo campo identifica il dominio Windows NT con cui fare l'autenticazione.
+Description-ja.UTF-8: NT Windos ドメイン:
+ これは 認証先の NT Windows ドメインです。
+Description-nl.UTF-8: NT Windows-domein:
+ In dit veld komt de naam van het NT Windows-domein waartegen u zich authenticeert.
+Description-pt.UTF-8: Domínio do Windows NT.
+ Este campo identifica o domínio Windows NT, no qual você se vai autenticar.
+Description-ru.UTF-8: Домен NT Windows:
+ Здесь указывается домен NT Windows, в котором производится аутентификация.
+Description-sv.UTF-8: NT Windows-domän:
+ Ange domänen för identifiering i NT Windows.
+Description-vi.UTF-8: Miền Windows NT:
+ Trường này nhận diện miền (domain) Windows NT với đó bạn xác thực.
+Description-zh_CN.UTF-8: Windows NT 域：
+ 此字段指明要认证到的 Windows NT 域。

@@ -1,4 +1,6 @@
 <?PHP
+//m23customPatchBegin type=change id=additionalI18N
+//m23customPatchEnd id=additionalI18N
 
 //english translation for add_client.php
 @$I18N_action="Action";
@@ -1334,4 +1336,14 @@ Hint: You (or anybody else with access to your webbrowser) can use the m23 webin
 @$I18N_disabled = 'Deactivated';
 @$I18N_saveAndActivate = 'Save and activate';
 @$I18N_firewallRulesDeactivated = 'Firewall rules have been deactivated';
+
+//16.1
+@$I18N_readLoginFromUCSLDAP = "Read login data from UCS";
+@$I18N_addNewLoginToUCSLDAP = "Save login data to UCS";
+@$I18N_authentificationViaUCS = "Authenticate via UCS";
+@$I18N_addNewLoginToUCSLDAPError = "Error: The login data could not be saved to UCS.";
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(can be used with clients based on Debian 8, Ubuntu 14.04, 16.04 and Linux Mint 17.x)';
+
+//16.2
+@$I18N_clientUsesDynamicIP = "The client uses a dynamically assigned IP (DHCP)";
 ?>

@@ -1,0 +1,212 @@
+Template: isoqlog/main_logtype
+Type: select
+Choices: qmail-multilog, qmail-syslog, postfix, sendmail, exim
+Default: exim
+Description: MTA log type:
+ Isoqlog has multi-mta support. You must select the logformat which is used by
+ your mail server.
+Description-cs.UTF-8: Typ logovacího souboru MTA:
+ Isoqlog obsahuje podporu několika poštovních serverů. Musíte vybrat formát logovacího souboru, který používá váš poštovní server.
+Description-da.UTF-8: MTA-logtype:
+ Isoqlog understøtter flere posthåndteringsprogrammer (MTA'er). Du skal vælge det logformat, der benyttes af din postserver.
+Description-de.UTF-8: Protokolltyp des MTAs:
+ Isoqlog unterstützt mehrere MTAs. Sie müssen das Protokollformat auswählen, das Ihr E-Mail-Server verwendet.
+Description-dz.UTF-8: ཨེམ་ཊི་ཨེ་དྲན་དེབ་དབྱེ་བ:
+ ཨའིསིཀེ་ དྲན་དེབ་དེ་ལུ་ སྣ་མང་ ཨེམ་ཊི་ཨེ་རྒྱབ་སྐྱོར་ཡོདཔ་ཨིན། ཁྱོད་ཀྱིས་ ཁྱོད་རའི་ཡིག་འཕྲིན་སར་བར་གྱིས་ལག་ལེནའཐབ་ཡོད་མི་ དྲན་དེབ་རྩ་སྒྲིག་དེ་སེལ་འཐུ་འབད་དགོ
+Description-es.UTF-8: Tipo de registro del MTA:
+ Isoqlog tiene soporte multi-mta. Debe seleccionar el formato de registro que usa su servidor de correo.
+Description-fr.UTF-8: Type de journal de votre serveur de courriel :
+ Isoqlog gère plusieurs serveurs de courriel (« MTA : Mail Transport Agent »). Vous devez choisir le format des journaux utilisé par le vôtre.
+Description-it.UTF-8: Tipo di log dell'MTA:
+ Isoqlog può gestire più MTA. È necessario selezionare il formato di log usato dal proprio server di posta.
+Description-ja.UTF-8: MTA ログの種類:
+ Isoqlog は複数の MTA に対応しています。処理するメールサーバで使われているログ形式を指定しなければなりません。
+Description-nb.UTF-8: Loggtype for din e-posthåndterer:
+ Isoqlog har støtte for flere typer e-posttjenere (MTA). Du må velge det loggformatet som din e-posttjener bruker.
+Description-nl.UTF-8: Kies uw MTA-logtype.
+ Isoqlog heeft ondersteuning voor meerdere MTA'a (mail transfer agents). U moet het logformaat selecteren dat door uw mailserver wordt gebruikt.
+Description-no.UTF-8: Loggtype for din e-posthåndterer:
+ Isoqlog har støtte for flere typer e-posttjenere (MTA). Du må velge det loggformatet som din e-posttjener bruker.
+Description-pt.UTF-8: Tipo de relatório MTA:
+ O isoqlog possui suporte multi-mta. Terá que seleccionar o formato de relatório usado pelo seu servidor de mail.
+Description-pt_BR.UTF-8: Tipo de "log" do MTA:
+ Isoqlog tem suporte a vários MTAs. Você deve selecionar o formato dos "logs" usado pelo seu servidor de e-mail.
+Description-ru.UTF-8: Тип логов MTA:
+ Isoqlog поддерживает работу с разными mta. Вы должны выбрать формат логов, который используется вашим почтовым сервером.
+Description-sv.UTF-8: Loggtyp för e-postservern:
+ Isoqlog har stöd för flera e-postservrar. Du måste välja det loggformat som används av din e-postserver.
+Description-vi.UTF-8: Kiểu bản ghi MTA:
+ Trình Isoqlog hỗ trợ nhiều MTA (Mail Transfer Agent: tác nhân truyền thư tín). Bạn cần phải chọn định dạng bản ghi dùng bởi máy phục vụ thư tín.
+
+Template: isoqlog/main_outputdir
+Type: string
+Default: /var/www/isoqlog
+Description: Directory to use for HTML outputs:
+ Please choose the directory where isoqlog should write its output. It
+ must be in "WebRoot" of your webserver.
+Description-cs.UTF-8: Adresář, který se má použít pro HTML výstupy:
+ Zadejte prosím adresář, do kterého bude isoqlog ukládat svůj výstup. Adresář se musí nacházet v kořenovém adresáři vašeho webového serveru.
+Description-da.UTF-8: Hvilken mappe skal bruges til HTML-uddata:
+ Vælg venligst mappen hvor isoqlog skal skrive sine uddata til. Den skal være i »WebRoot« på din internetserver.
+Description-de.UTF-8: Verzeichnis für die HTML-Ausgaben:
+ Bitte wählen Sie das Verzeichnis aus, in das Isoqlog seine Ausgaben ablegt. Ihr Webserver muss darauf zugreifen können (innerhalb von »WebRoot«).
+Description-dz.UTF-8: ཨེཆ་ཊི་ཨེམ་ཨེལ་ ཨའུཊི་པུཊི་གི་དོན་ལུ་ལག་ལེན་འཐབ་ནིའི་སྣོད་ཐོ:
+ ཨའི་ཨེསི་ཨོ་དྲན་དེབ་དེ་གིས་ ཁོ་རའི་ཨའུཊི་པུཊི་དེ་འབྲི་ནིའི་སྣོད་ཐོ་དེ་གདམ་ཁ་བརྐྱབ་གནང་། འདི་ཁྱོད་རའི་ ཁྱོད་རའི་ཝེབ་སར་བར་གྱི་"WebRoot"དེ་ནང་ལུ་འོང་དགོཔ་ཨིན།
+Description-es.UTF-8: Directorio a usar para las salidas HTML:
+ Por favor, elija el directorio donde isoqlog debe escribir sus salidas. Debe estar en la raíz de su servidor web.
+Description-fr.UTF-8: Répertoire à utiliser pour les sorties HTML :
+ Veuillez choisir le répertoire où isoqlog écrira ses résultats. Il doit être situé à la racine de votre serveur web.
+Description-it.UTF-8: Directory da usare per l'output HTML:
+ Scegliere la directory in cui isoqlog deve scrivere il suo output. Deve essere nella "WebRoot" del proprio server web.
+Description-ja.UTF-8: HTML 出力に使うディレクトリ:
+ isoqlog が出力を書き込むディレクトリを選択してください。これはウェブサーバの「WebRoot」以下になければなりません。
+Description-nb.UTF-8: Mappe der HTML-data skal lagres:
+ Velg mappe der isoqlog skal skrive sine utdata. Den må være i din nettservers rotmappe «Webroot».
+Description-nl.UTF-8: Map voor HTML-uitvoer:
+ Gelieve de map aan te geven waar isoqlog zijn uitvoer naar toe moet schrijven. Deze moet zich in de WebRoot van uw webserver bevinden.
+Description-no.UTF-8: Mappe der HTML-data skal lagres:
+ Velg mappe der isoqlog skal skrive sine utdata. Den må være i din nettservers rotmappe «Webroot».
+Description-pt.UTF-8: Directório a usar para as saídas ('outputs') em HTML:
+ Por favor escolha o directório para onde o isoqlog deverá escrever a sua saída. Terá que ser na "WebRoot" do seu servidor web.
+Description-pt_BR.UTF-8: Diretório a ser usado para as saídas HTML:
+ Por favor, escolha o diretório onde o isoqlog deveria escrever sua saída. Deve estar na "RaizWeb" ("WebRoot") do seu servidor web.
+Description-ru.UTF-8: Каталог, в который будут складываться отчёты в HTML:
+ Укажите каталог, куда isoqlog должен сохранять отчёты. Этот каталог должен быть в "WebRoot" вашего веб-сервера.
+Description-sv.UTF-8: Katalog att använda för HTML-utdata:
+ Välj den katalog där isoqlog ska skriva sitt utdata. Detnmåste finnas i "WebRoot" för din webbserver.
+Description-vi.UTF-8: Thư mục chứa kết xuất HTML:
+ Hãy chọn thư mục vào đó trình isoqlog nên ghi kết xuất. Thư mục này phải nằm dưới « Gốc Mạng » (WebRoot) của máy phục vụ Mạng.
+
+Template: isoqlog/main_hostname
+Type: string
+Default: localhost
+Description: Local host name:
+Description-cs.UTF-8: Jméno lokálního počítače:
+Description-da.UTF-8: Lokalt værtsnavn:
+Description-de.UTF-8: Lokaler Rechnername:
+Description-dz.UTF-8: ཉེ་གནས་ཧོསཊི་གི་མིང:
+Description-es.UTF-8: Nombre de máquina local:
+Description-fr.UTF-8: Nom d'hôte local :
+Description-it.UTF-8: Nome host locale:
+Description-ja.UTF-8: ローカルホスト名:
+Description-nb.UTF-8: Navnet på den lokale verten:
+Description-nl.UTF-8: Locale computernaam:
+Description-no.UTF-8: Navnet på den lokale verten:
+Description-pt.UTF-8: Nome local da máquina:
+Description-pt_BR.UTF-8: Nome da máquina local:
+Description-ru.UTF-8: Локальное имя машины:
+Description-sv.UTF-8: Lokalt värdnamn:
+Description-vi.UTF-8: Tên máy cục bộ :
+
+Template: isoqlog/main_langfile
+Type: select
+Choices: Bulgarian, Czech, Danish, Dutch, English, Finnish, French, German, Italian, Norwegian, Polish, Portuguese, Romanian, Russian, Spanish, Swedish, Turkish
+Choices-cs.UTF-8: bulharština, čeština, dánština, holandština, angličtina, finština, francouzština, němčina, italština, norština, polština, portugalština, rumunština, ruština, španělština, švédština, turečtina
+Choices-da.UTF-8: Bulgarsk, Tjekkisk, Dansk, Hollandsk, Engelsk, Finsk, Fransk, Tysk, Italiensk, Norsk, Polsk, Portugisisk, Rumænsk, Russisk, Spansk, Svensk, Tyrkisk
+Choices-de.UTF-8: Bulgarisch, Tschechisch, Dänisch, Niederländisch, Englisch, Finnisch, Französisch, Deutsch, Italienisch, Norwegisch, Polnisch, Portugiesisch, Rumänisch, Russisch, Spanisch, Schwedisch, Türkisch
+Choices-dz.UTF-8: བཱལ་ག་རི་ཡཱན་, ཅེཛི་, ཌེ་ནིཤ་, ཌཆ་, ཨིང་ལིཤ་, ཕིན་ནིཤ་, ཕིརེནཆི་, ཇར་མཱན་, ཨི་ཊ་ལི་ཡཱན་, ནོར་ཝེ་ཇི་ཡཱན་, པོ་ལིཤ་, པོར་ཊུ་གིསི་, རོ་མ་ནི་ཡཱན་, ར་ཤི་ཡཱན་, སིཔེ་ནིཤི་, སུའི་ཌིཤི་, ཊར་ཀིཤ་
+Choices-es.UTF-8: Búlgaro, Checo, Danés, Holandés, Inglés, Finlandés, Francés, Alemán, Italiano, Noruego, Polaco, Portugués, Rumano, Ruso, Español, Sueco, Turco
+Choices-fr.UTF-8: bulgare, tchèque, danois, néerlandais, anglais, finlandais, français, allemand, italien, norvégien, polonais, portugais, roumain, russe, espagnol, suédois, turc
+Choices-it.UTF-8: Bulgaro, Ceco, Danese, Olandese, Inglese, Finlandese, Francese, Tedesco, Italiano, Norvegese, Polacco, Portoghese, Rumeno, Russo, Spagnolo, Svedese, Turco
+Choices-ja.UTF-8: ブルガリア語, チェコ語, デンマーク語, オランダ語, 英語, フィンランド語, フランス語, ドイツ語, イタリア語, ノルウェー語, ポーランド語, ポルトガル語, ルーマニア語, ロシア語, スペイン語, スウェーデン語, トルコ語
+Choices-nb.UTF-8: Bulgarsk, Tsjekkisk, Dansk, Nederlandsk, Engelsk, Finsk, Fransk, Tysk, Italiensk, Norsk, Polsk, Portugisisk, Rumensk, Russisk, Spansk, Svensk, Tyrkisk
+Choices-nl.UTF-8: Bulgaars, Tsjechisch, Deens, Nederlands, Engels, Fins, Frans, Duits, Italiaans, Noors, Pools, Portugees, Roemeens, Russisch, Spaans, Zweeds, Turks
+Choices-no.UTF-8: Bulgarsk, Tsjekkisk, Dansk, Nederlandsk, Engelsk, Finsk, Fransk, Tysk, Italiensk, Norsk, Polsk, Portugisisk, Rumensk, Russisk, Spansk, Svensk, Tyrkisk
+Choices-pt.UTF-8: Búlgaro, Checo, Dinamarquês, Holandês, Inglês, Finlandês, Francês, Alemão, Italiano, Norueguês, Polaco, Português, Romeno, Russo, Espanhol, Sueco, Turco
+Choices-pt_BR.UTF-8: Búlgaro, Tcheco, Dinamarquês, Holandês, Inglês, Finlandês, Francês, Alemão, Italiano, Norueguês, Polonês, Português, Romeno, Russo, Espanhol, Sueco, Turco
+Choices-ru.UTF-8: Болгарский, Чешский, Датский, Голландский, Английский, Финский, Французский, Немецкий, Итальянский, Норвежский, Польский, Португальский, Румынский, Русский, Испанский, Шведский, Турецкий
+Choices-sv.UTF-8: Bulgariska, Tjeckiska, Danska, Nederländska, Engelska, Finska, Franska, Tyska, Italienska, Norska, Polska, Portugisiska, Rumänska, Ryska, Spanska, Svenska, Turkiska
+Choices-vi.UTF-8: Bảo Gai Lơi, Séc, Đan Mạch , Hòa Lan , Anh, Phần Lan , Pháp, Đức , Ý, Na Uy, Ba Lan , Bổ Đào Nhà, Lỗ Má Ni , Nga , Tây Ban Nha , Thuỵ Điển , Thổ Nhĩ Kỳ
+Choices-zh_TW.UTF-8: 保加利亞文, 捷克文, 丹麥文, 荷蘭文, 英文, 芬蘭文, 法文, 德文, 意大利文, 挪威文, 波蘭文, 葡萄牙文, 羅馬尼亞文, 俄羅斯文, 西班牙文, 瑞典文, 土耳其
+Default: English
+Default-cs.UTF-8: Czech
+Default-da.UTF-8: Danish
+Default-de.UTF-8: German
+Default-dz.UTF-8: dzongkha
+Default-es.UTF-8: Spanish
+Default-fr.UTF-8: French
+Default-it.UTF-8: Italian
+Default-ja.UTF-8: Japanese
+Default-nb.UTF-8: Norwegian
+Default-nl.UTF-8: Dutch
+Default-no.UTF-8: Norwegian
+Default-pt.UTF-8: Portuguese
+Default-pt_BR.UTF-8: Portuguese
+Default-ru.UTF-8: Russian
+Default-sv.UTF-8: Swedish
+Default-vi.UTF-8: Vietnamese
+Default-zh_TW.UTF-8: English
+Description: Language to use for outputs:
+ Isoqlog has multi language support on reports. You can select the
+ preferred language for outputs.
+Description-cs.UTF-8: Jazyk, který se má použít pro výstupy:
+ Isoqlog podporuje několik jazyků. Vyberte si jazyk, ve kterém se budou vytvářet výstupní hlášení.
+Description-da.UTF-8: Hvilket sprog skal bruges i uddata:
+ Isoqlog understøtter flere sprog i rapporterne. Du kan vælge det sprog, du foretrækker at få rapporterne i.
+Description-de.UTF-8: Sprache für die Ausgaben:
+ Isoqlog unterstützt in den Berichten viele Sprachen. Sie können die bevorzugte Sprache für die Ausgaben auswählen.
+Description-dz.UTF-8: ཨའུཊི་པུཊི་ཚུ་གི་དོན་ལུ་ལག་ལེན་འཐབ་ནིའི་སྐད་ཡིག་:
+ ཨའིསིཀེ་དྲན་དེབ་དེ་གིས་ སྙན་ཞུ་གུ་སྣ་མང་སྙན་ཞུའི་རྒྱབ་སྐྱོར་འདུག ཨའུཊི་པུཊི་ཚུ་གི་དོན་ལས་ སེམས་ཁར་བབ་པའི་སྐད་ཡིག་དེ་སེལ་འཐུ་འབད་ཚུགས།
+Description-es.UTF-8: Idioma a utilizar para las salidas:
+ Isoqlog tiene soporte multi idioma para las informes. Puede seleccionar el idioma que prefere para las salidas.
+Description-fr.UTF-8: Langue utilisée pour les résultats :
+ Isoqlog gère plusieurs langues pour les rapports. Vous devez choisir la langue préférée pour les sorties.
+Description-it.UTF-8: Lingua da usare per l'output:
+ Isoqlog può creare rapporti in diverse lingue. Si può selezionare la lingua preferita per l'output.
+Description-ja.UTF-8: 出力に使う言語:
+ Isoqlog の報告は複数の言語に対応しています。出力したい言語を選択することができます。
+Description-nb.UTF-8: Språk som skal brukes i utdata:
+ Isoqlog kan skrive sine rapporter på mange språk. Du kan velge det du foretrekker for utdata.
+Description-nl.UTF-8: Te gebruiken taal voor uitvoer:
+ Isoqlog ondersteunt meerdere talen voor rapporten. U kunt de taal van uw voorkeur voor uitvoer selecteren.
+Description-no.UTF-8: Språk som skal brukes i utdata:
+ Isoqlog kan skrive sine rapporter på mange språk. Du kan velge det du foretrekker for utdata.
+Description-pt.UTF-8: Idioma a utilizar para as saídas:
+ O isoqlog possui suporte para múltiplos idiomas nos relatórios. Pode seleccionar o idioma para as saídas.
+Description-pt_BR.UTF-8: Língua usada para as saídas:
+ Isoqlog tem suporte a múltiplas línguas nos relatórios. Você pode selecionar a língua preferida para as saídas.
+Description-ru.UTF-8: Язык сообщений в файлах отчёта:
+ Isoqlog может генерировать отчёты на разных языках. Вы можете выбрать предпочтительный язык для отчётов.
+Description-sv.UTF-8: Språk att använda för utdata:
+ Isoqlog har stöd för rapporter på flera språk. Du kan nu välja det föredragna språket för utdata.
+Description-vi.UTF-8: Ngôn ngữ cần dùng cho kết xuất:
+ Trình Isoqlog hỗ trợ khả năng thông báo bằng một của nhiều ngôn ngữ khác nhau. Ở đây thì bạn có thể chọn ngôn ngữ thích hơn.
+
+Template: isoqlog/main_domains
+Type: string
+Description: Domains for which you want to make reports:
+ Isoqlog can display Top incoming, outgoing, total, and byte based
+ statistics for each domain. Please enter the domains separated by spaces.
+Description-cs.UTF-8: Domény, pro které chcete vytvářet hlášení:
+ Isoqlog umí pro každou zadanou doménu zobrazovat statistiky top příchozích, odchozích a celkových přenesených bajtů. Zadejte prosím mezerami oddělený seznam domén.
+Description-da.UTF-8: Domæner hvorfra du ønsker at udarbejde rapporter:
+ Isoqlog kan vise hyppigst indkommende-, udgående-, total- og byte-baserede statistikker for hvert domæne. Angiv domænerne adskilt med mellemrum.
+Description-de.UTF-8: Domänen, für die Sie Berichte erstellen wollen:
+ Isoqlog kann Statistiken zu Ein- und Ausgang, über alles oder nach der Größe in Byte für jede Domäne anzeigen. Bitte die Domänennamen durch Leerzeichen getrennt eingeben.
+Description-dz.UTF-8: ཁྱོད་ཀྱིས་སྙན་ཞུ་ཚུ་བཟོ་དགོ་མནོ་མི་ ཌོ་མེན་
+ ཨའི་ཨོག་དྲན་དེབ་དེ་གིས་ ཌོ་མེན་རེ་རེ་གི་དནོ་ལུ་ ནང་འབྱོར་དང་ ཕྱིར་བསྐྱོད་ བསྡོམས་ དང་ གནད་སྡུད་རིག་པ་ལུ་གཞི་བཞག་ཡོད་མི་ བཡིཊི་དྲག་ཤོས་ཚུ་བཀྲམ་སྟོན་འབད་ཚུགས། བར་སྟོང་གིས་སོ་སོ་ཁ་ཕྱེ་ཡོད་མི་ཌོ་མེན་ཚུ་བཙུགས་དནང་།
+Description-es.UTF-8: Introduzca los dominios para los que quiere generar informes:
+ Isoqlog puede mostrar las estadísticas de mensajes entrantes, salientes, total y estadísticas basadas en bytes para cada dominio. Por favor, introduzca los dominios separados por espacios.
+Description-fr.UTF-8: Domaines pour lesquels vous désirez des rapports :
+ Isoqlog peut afficher des statistiques sur le nombre de courriels entrants sortants et totaux ainsi que sur la taille en octets des messages pour chaque domaine. Veuillez indiquer les différents domaines séparés par des espaces.
+Description-it.UTF-8: Domini per i quali creare rapporti:
+ Isoqlog può visualizzare per ciascun dominio statistiche basate su messaggi in entrata, uscita, totali e byte. Inserire i domini separati da spazi.
+Description-ja.UTF-8: 報告を作成したいドメイン:
+ isoqlog は発信元、送信先、合計、サイズを元にしたドメインごとの統計でその上位を表示することができます。ドメインを空白で区切って入力してください。
+Description-nb.UTF-8: Hvilke domenenavn vil du lage rapporter for:
+ Isoqlog kan vise mest innkommende, utgående, totalt og byte-basert statistikk for hvert domene. Oppgi domenenavnene atskilt med mellomrom.
+Description-nl.UTF-8: Domeinen waarvoor u rapporten wilt maken:
+ Isoqlog kan de meest inkomende, uitgaande, totale en byte gebaseerde statistieken weergeven voor elk domein. Geef de domeinen gescheiden door spaties.
+Description-no.UTF-8: Hvilke domenenavn vil du lage rapporter for:
+ Isoqlog kan vise mest innkommende, utgående, totalt og byte-basert statistikk for hvert domene. Oppgi domenenavnene atskilt med mellomrom.
+Description-pt.UTF-8: Domínios para os quais deverão ser efectuados relatórios:
+ O isoqlog pode mostrar 'Top incoming, outgoing' e estatísticas baseadas em bytes para cada domínio. Por favor introduza os domínios separados por espaços.
+Description-pt_BR.UTF-8: Domínios para os quais você quer gerar relatórios:
+ Isoqlog pode exibir estatísticas dos recebidos ("incoming"), enviados ("outgoing"), do total e baseado em bytes para cada domínio. Por favor, informe os domínios separados por espaços.
+Description-ru.UTF-8: Домены, по которым нужно делать отчёты:
+ Isoqlog может показывать статистику по объёму входящей, исходящей и общий объём почты в байтах по каждому домену. Укажите домены через пробелы.
+Description-sv.UTF-8: Domäner för vilka du vill skapa rapporter:
+ Isoqlog kan visa inkommande, utgående, totalt, och byte-baserad statistik för varje domän. Ange domänerna separerade med blanksteg.
+Description-vi.UTF-8: Các miền về chúng bạn muốn thông báo :
+ Trình Isoqlog có thể hiển thị thống kê tối đa gửi đến, gửi đi, tổng số và dựa vào byte cho mỗi miền. Hãy nhập các miền định giới bằng dấu cách.
+

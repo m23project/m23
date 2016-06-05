@@ -17,18 +17,18 @@
 	");
 
 	//fetch the settings if the values should be entered, generated, or kept	
-	if (!empty($_POST[EGKparamStr]))
+	if (!empty($_POST['EGKparamStr']))
 		{//fetch from the associated array
-			$EGKparams=explodeAssoc("?#?",$_POST[EGKparamStr]);
-			$EGKparamStr = $_POST[EGKparamStr];
+			$EGKparams=explodeAssoc("?#?",$_POST['EGKparamStr']);
+			$EGKparamStr = $_POST['EGKparamStr'];
 		}
 	else
 		$EGKparams = array();
 
 	//add parameters for selecting the enter source (by file, by hand)
-	if (!empty($_POST[FileHandVars]))
+	if (!empty($_POST['FileHandVars']))
 		{
-			$fileHandVars = explode("?#?",$_POST[FileHandVars]);
+			$fileHandVars = explode("?#?",$_POST['FileHandVars']);
 
 			for ($i=0; $i < count($fileHandVars)-1; $i++)
 				{
@@ -48,36 +48,38 @@
 					$step=0;
 					$LAB_submit=$I18N_save;
 
-					if (!empty($_POST[BUT_submit0]))
+					if (!empty($_POST['BUT_submit0']))
 						{
-							$EGKparams[client]=$_POST[RB_client];
-							$EGKparams[office]=$_POST[RB_office];
-							$EGKparams[group]=$_POST[RB_group];
-							$EGKparams[distr]=$_POST[RB_distr];
-							$EGKparams[packageSource]=$_POST[RB_packageSource];
-							$EGKparams[forename]=$_POST[RB_forename];
-							$EGKparams[familyname]=$_POST[RB_familyname];
-							$EGKparams[email]=$_POST[RB_email];
-							$EGKparams[mac]=$_POST[RB_mac];
-							$EGKparams[ip]=$_POST[RB_ip];
-							$EGKparams[netmask]=$_POST[RB_netmask];
-							$EGKparams[gateway]=$_POST[RB_gateway];
-							$EGKparams[dns1]=$_POST[RB_dns1];
-							$EGKparams[dns2]=$_POST[RB_dns2];
-							$EGKparams[firstlogin]=$_POST[RB_firstlogin];
-							$EGKparams[rootlogin]=$_POST[RB_rootlogin];
-							$EGKparams[addNewLocalLogin]=$_POST[RB_addNewLocalLogin];
-							$EGKparams[ldaptype]=$_POST[RB_ldaptype];
-							$EGKparams[userID]=$_POST[RB_userID];
-							$EGKparams[groupID]=$_POST[RB_groupID];
-							$EGKparams[ldapserver]=$_POST[RB_ldapserver];
-							$EGKparams[nfshomeserver]=$_POST[RB_nfshomeserver];
-							$EGKparams[login]=$_POST[RB_login];
-							$EGKparams[loginGenerationMethod]=$_POST[RB_loginGenerationMethod];
-							$EGKparams[loginBaseName]=$_POST[ED_loginBaseName];
-							$EGKparams[loginStartNumber]=$_POST[ED_loginStartNumber];
-							$EGKparams[timeZone]=$_POST[RB_timeZone];
-							$EGKparams[getSystemtimeByNTP]=$_POST[RB_getSystemtimeByNTP];
+							$EGKparams['client']=$_POST['RB_client'];
+							$EGKparams['office']=$_POST['RB_office'];
+							$EGKparams['group']=$_POST['RB_group'];
+							$EGKparams['distr']=$_POST['RB_distr'];
+							$EGKparams['packageSource']=$_POST['RB_packageSource'];
+							$EGKparams['forename']=$_POST['RB_forename'];
+							$EGKparams['familyname']=$_POST['RB_familyname'];
+							$EGKparams['email']=$_POST['RB_email'];
+//m23customPatchBegin type=change id=additionalEGKparamsAssignments
+//m23customPatchEnd id=additionalEGKparamsAssignments
+							$EGKparams['mac']=$_POST['RB_mac'];
+							$EGKparams['ip']=$_POST['RB_ip'];
+							$EGKparams['netmask']=$_POST['RB_netmask'];
+							$EGKparams['gateway']=$_POST['RB_gateway'];
+							$EGKparams['dns1']=$_POST['RB_dns1'];
+							$EGKparams['dns2']=$_POST['RB_dns2'];
+							$EGKparams['firstlogin']=$_POST['RB_firstlogin'];
+							$EGKparams['rootlogin']=$_POST['RB_rootlogin'];
+							$EGKparams['addNewLocalLogin']=$_POST['RB_addNewLocalLogin'];
+							$EGKparams['ldaptype']=$_POST['RB_ldaptype'];
+							$EGKparams['userID']=$_POST['RB_userID'];
+							$EGKparams['groupID']=$_POST['RB_groupID'];
+							$EGKparams['ldapserver']=$_POST['RB_ldapserver'];
+							$EGKparams['nfshomeserver']=$_POST['RB_nfshomeserver'];
+							$EGKparams['login']=$_POST['RB_login'];
+							$EGKparams['loginGenerationMethod']=$_POST['RB_loginGenerationMethod'];
+							$EGKparams['loginBaseName']=$_POST['ED_loginBaseName'];
+							$EGKparams['loginStartNumber']=$_POST['ED_loginStartNumber'];
+							$EGKparams['timeZone']=$_POST['RB_timeZone'];
+							$EGKparams['getSystemtimeByNTP']=$_POST['RB_getSystemtimeByNTP'];
 
 							MSG_showInfo($I18N_data_saved,$GLOBALS["m23_language"]);
 							$step=1;
@@ -107,7 +109,7 @@
 					//get the keys and amount of all "by file" properties
 					$fileHandAmount = MASS_getXProperties($EGKparams,"f",$pre="FH_");
 
-					if ($fileHandAmount[amount] == 0)
+					if ($fileHandAmount['amount'] == 0)
 						{ //there are no properties that should get data from file
 							$step = 3;
 							$LAB_submit="$I18N_nextStep ($I18N_MIstep3)";
@@ -119,9 +121,9 @@
 
 					$LAB_submit=$I18N_save;
 
-					if (!empty($_POST[BUT_submit2]))
+					if (!empty($_POST['BUT_submit2']))
 						{ //submit button clicked
-							if (!empty($_POST[DBfileName]))
+							if (!empty($_POST['DBfileName']))
 								{ //no db file selected
 									$errMsg = MASS_checkAndSaveFields($EGKparams);
 		
@@ -149,7 +151,7 @@
 					$helpPage="mi_step3";
 					$step = 3;
 
-					if (!empty($_POST[BUT_submit3]) && $_POST[go]=="t")
+					if (!empty($_POST['BUT_submit3']) && $_POST['go']=="t")
 						{
 							MASS_saveGeneratorOptions($EGKparams);
 							MSG_showInfo($I18N_data_saved,$GLOBALS["m23_language"]);
@@ -161,7 +163,7 @@
 						{
 							$genratePropertiesAmount = MASS_getXProperties($EGKparams,"g");
 
-							if ($genratePropertiesAmount[amount] == 0)
+							if ($genratePropertiesAmount['amount'] == 0)
 								{
 									MSG_showInfo($I18N_noGeneratorOptionsNeeded,$GLOBALS["m23_language"]);
 									$LAB_submit="$I18N_nextStep ($I18N_MIstep4)";
@@ -187,7 +189,7 @@
 					$go="t";
 					$LAB_submit=$I18N_save;
 					
-					if (!empty($_POST[BUT_submit4]) && $_POST[go]=="t")
+					if (!empty($_POST['BUT_submit4']) && $_POST['go']=="t")
 						{
 							$msg=MASS_startInstall($EGKparams);
 							MSG_showInfo("$I18N_client_creation_status $msg",$m23_language);

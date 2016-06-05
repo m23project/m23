@@ -1,0 +1,245 @@
+Template: plptools/customize
+Type: note
+Description: Customize /etc/default/plptools
+ In addition to plptools' main daemon "ncpd", plptools provides two optional
+ daemons:
+ .
+  plpfuse (for mounting a Psion's drives using Filesystem in USErspace)
+  plpprintd (for printing via PC from an EPOC32 machine)
+ .
+ Both daemons are disabled by default. You can enable them by editing
+ /etc/default/plptools.
+Description-da.UTF-8: Tilpas /etc/default/plptools
+ Udover plptools' hoveddæmon »ncpd« tilbyder plptools to valgfrie dæmoner:
+ .
+  plpfuse (for montering af Psions drev med brug af Filesystem i USErspace)
+  plpprintd (for udskrivning via pc fra en EPOC32-maskine)
+ .
+ Begge dæmoner er deaktiveret som standard. Du kan aktivere dem ved at redigere /etc/default/plptools.
+Description-de.UTF-8: /etc/default/plptools anpassen
+ Zusätzlich zum Haupt-Daemon von Plptools »ncpd« stellt Plptools zwei optionale Daemons zur Verfügung:
+ .
+  plpfuse (zum Einhängen von Laufwerken eines Psions mittels Dateisystem im Userspace)
+  plpprintd (zum Drucken über einen PC von einer EPOC32-Maschine aus)
+ .
+ Beide Daemons sind in der Voreinstellung deaktiviert. Sie können sie durch Bearbeiten von /etc/default/plptools aktivieren.
+Description-es.UTF-8: Personalizar el archivo «/etc/default/plptools»
+ Además del demonio principal «ncpd», plptools proporciona dos demonios opcionales:
+ .
+  plpfuse (para montar unidades Psion utilizando el sistema de archivos en espacio de usuario)
+  plpprintd (para imprimir por medio de un PC desde un equipo EPOC32)
+ .
+ De manera predeterminada, los dos demonios están deshabilitados. Para habilitarlos, edite el archivo «/etc/default/plptools».
+Description-fr.UTF-8: Personnalisation de /etc/plptools.conf
+ En plus du démon principal de plptools « ncpd », deux autres démons optionnels sont fournis :
+ .
+  - plpfuse  : montage des disques d'un Psion dans l'espace utilisateur
+  - plpprintd : impression d'une machine EPOC32 via un PC.
+ .
+ Les deux démons sont désactivés par défaut. Pour les activer vous devrez modifier le fichier /etc/default/plptools.
+Description-ru.UTF-8: Подстройка /etc/default/plptools
+ Помимо основной службы «ncpd», plptools предоставляет две дополнительные службы:
+ .
+  plpfuse (для монтирования дисков Psion с помощью FUSE)
+  plpprintd (для печати на ПК с машины EPOC32)
+ .
+ Обе службы по умолчанию выключены. Для включения отредактируйте /etc/default/plptools.
+Description-sv.UTF-8: Anpassa /etc/plptools.conf
+ I tillägg till plptools huvuddemon "ncpd", kommer plptools med två valfria demoner.
+ .
+  plpfuse (för montering av Psion-diskar som filsystem i userspace)
+  plpprintd (för att kunna skriva ut på PC:n från en EPOC32-maskin)
+ .
+ Båda demonerna är inaktiverade som standard. Du kan aktivera dem genom att redigera /etc/default/plptools.conf.
+
+Template: plptools/ncpd/start
+Type: boolean
+Default: true
+Description: Should ncpd be started during boot?
+ Normally, ncpd - the daemon which handles the serial connection to a
+ Psion - is started on boot-up. If you intend to connect your Psion to
+ another machine on the net and NEVER will use it locally, you can
+ disable this here.
+Description-cs.UTF-8: Spustit ncpd během zavádění počítače?
+ Obvykle se ncpd - daemon zodpovědný za sériové připojení k Psionu - spouští při startu počítače. Plánujete-li připojit svůj Psion k jinému počítači na síti a NIKDY jej nepoužívat lokálně, můžete zde odmítnout.
+Description-da.UTF-8: Skal ncpd igangsættes under opstarten?
+ Normalt startes ncpd - dæmonen som håndterer den serielle forbindelse til en Psion - i gang ved opstart. Hvis du forventer at forbinde din Psion til en anden maskine på nettet og ALDRIG vil bruge den lokalt, så kan du deaktivere dette her.
+Description-de.UTF-8: Soll Ncdp beim Systemstart gestartet werden?
+ Normalerweise wird ncpd - der Daemon, welcher die serielle Verbindung zu einem Psion verwaltet - beim Systemstart gestartet. Falls Sie vorhaben, Ihren Psion mit einem anderen Rechner im Netz zu verbinden und ihn NIE lokal verwenden, können Sie dies hier abschalten.
+Description-es.UTF-8: ¿Se debe iniciar ncpd durante el arranque?
+ Normalmente, ncpd, el demonio que maneja la conexión serie a un Psion, se inicia en el arranque del sistema. Si desea conectar su Psion a otra máquina en la red y NUNCA lo usará localmente, puede deshabilitarlo ahora.
+Description-fr.UTF-8: Faut-il lancer ncpd au démarrage ?
+ Normalement, ncpd (le démon qui gère la connexion série à un Psion) est lancé au démarrage. Si vous avez l'intention de connecter le Psion à une autre machine du réseau mais JAMAIS à celle-ci, vous pouvez le désactiver.
+Description-it.UTF-8: Eseguire ncpd all'avvio del sistema?
+ Normalmente ncpd, il demone che gestisce la connessione seriale a un dispositivo Psion, viene eseguito all'avvio del sistema. Se si desidera collegare il proprio Psion a un'altra macchina sulla rete e non lo si utilizzerà MAI localmente, disabilitare qui il demone.
+Description-ja.UTF-8: ブート時に ncpd を開始しますか?
+ 通常、ncpd - Psion へのシリアル接続を処理するデーモン - はブート時に起動します。Psion をネット上の別のマシンに接続するつもりで、ローカル向けに使うことが *ない* 場合は、ここで無効化することもできます。
+Description-nl.UTF-8: Wilt u dat ncpd gestart wordt tijdens het opstarten van het systeem?
+ Normaal wordt ncpd (de achtergronddienst die de seriële verbinding met de Psion afhandelt) opgestart tijdens het opstarten van het systeem. Als u van plan bent om uw Psion te verbinden met een andere machine op het net en deze NOOIT lokaal gaat gebruiken kunt u dit hier uitschakelen.
+Description-pt.UTF-8: Deve o ncpd ser iniciado no arranque?
+ Normalmente o ncpd - o daemon que trata da ligação em série a um Psion - é iniciado no arranque. Se tenciona ligar o seu Psion a outra máquina na rede e NUNCA o utilizar localmente, pode desactivar aqui.
+Description-ru.UTF-8: Запускать ncpd при включении компьютера?
+ Обычно, служба ncpd для работы с последовательным подключением Psion запускается при загрузке операционной системы. Если вы собираетесь подключать свой Psion к другой машине в сети и НИКОГДА не будете использовать его локально, то можете ответить отрицательно.
+Description-sv.UTF-8: Ska ncpd startas vid systemets uppstart?
+ Normalt sett, ncpd - demonen som hanterar serieanslutningen mot en Psion, startas vid systemets uppstart. Om du tänker ansluta din Psion till en annan maskin på nätverket och ALDRIG använda den lokalt, kan du inaktivera den här.
+Description-vi.UTF-8: Có nên khởi chạy ncpd trong khi khởi động máy không?
+ Bình thường, ncpd (trình nền quản lý kết nối kiểu nối tiếp đến một thiết bị Psion nào đó) được khởi chạy khi khởi động máy. Nếu bạn định kết nối Psion đến một máy khác cùng mạng và KHÔNG BAO GIỜ sử dụng nó một cách cục bộ, thì bạn có thể tắt tùy chọn này.
+
+Template: plptools/ncpd/serial
+Type: string
+Default: /dev/ttyS0
+Description: Serial line to use:
+ By default, the Psion is expected to be connected to the first serial
+ line (COM1:) of your machine. You can change this here.
+Description-da.UTF-8: Angiv seriel linje der skal bruges:
+ Som standard forventes Psion at forbinde til den første serielle linje (COM1:) på din maskine. Du kan ændre dette her.
+Description-de.UTF-8: Zu verwendende serielle Schnittstelle:
+ In der Voreinstellung wird erwartet, dass der Psion mit der ersten seriellen Schnittstelle (COM1:) Ihres Rechners verbunden ist. Sie können dies hier ändern.
+Description-es.UTF-8: Línea serie a usar:
+ De manera predeterminada, se espera que Psion se conecte a la primera línea serie de su máquina (COM1:). Puede cambiarlo aquí.
+Description-fr.UTF-8: Ligne série à utiliser :
+ Veuillez indiquer la ligne série à utiliser pour la connexion du Psion.
+Description-ru.UTF-8: Последовательная линия:
+ По умолчанию ожидается, что Psion подключается к первому последовательному порту (COM1:) компьютера. Это можно изменить здесь.
+Description-sv.UTF-8: Serieport att använda:
+ Som standard förväntar sig Psion att anslutas till första serieporten (COM1:) på din maskin. Du kan ändra det här.
+
+Template: plptools/ncpd/listenat
+Type: string
+Default: 127.0.0.1
+Description: IP address and port for ncpd:
+ If you intend to use the plptools front-ends from other machines, you
+ can specify 0.0.0.0 or the IP address of your machine here. Normal
+ users should keep the default 127.0.0.1!
+ .
+ Note, that THIS IS A SECURITY THREAT as no authentication and no
+ encryption is used! DO NOT USE THIS on machines which are accessible
+ from the Internet!
+Description-da.UTF-8: Angiv IP-adresse og port til ncpd:
+ Hvis du har til hensigt at bruge plptools' front fra andre maskiner, kan du angive 0.0.0.0 eller IP-adresen på din maskine her. Normale brugere bør beholde standarden 127.0.0.1!
+ .
+ Bemærk, at DETTE ER EN SIKKERHEDSRISIKO, da ingen godkendelse og ingen kryptering er anvendt! BRUG IKKE DETTE på maskiner som kan tilgås fra internettet!
+Description-de.UTF-8: IP-Adresse und Port für Ncpd:
+ Falls Sie vorhaben, die Oberflächen der Plptools von einem anderen Rechner aus zu verwenden, können Sie 0.0.0.0 oder die IP-Adresse Ihres Rechners hier eingeben. Gewöhnliche Anwender sollten die Voreinstellung 127.0.0.1 belassen.
+ .
+ Beachten Sie, dass DIES EIN SICHERHEITSRISIKO IST, da keine Authentifizierung und keine Verschlüsselung verwendet wird! VERWENDEN SIE DIES NICHT auf Rechnern, die vom Internet aus zugänglich sind!
+Description-es.UTF-8: Dirección IP y puerto para ncpd:
+ Si planea usar las interfaces de plptools desde otras máquinas, puede introducir «0.0.0.0» ó la dirección IP de su máquina aquí. ¡Los usuarios normales deberán mantener la IP predeterminada 127.0.0.1!
+ .
+ ¡Tenga en cuenta de que ESTO ES UN PROBLEMA DE SEGURIDAD dado que no se utiliza autenticación ni cifrado! ¡NO UTILICE ESTO en máquinas que sean accesibles desde Internet!
+Description-fr.UTF-8: Adresse IP et port pour ncpd :
+ Si vous prévoyez d'utiliser les frontaux de plptools à partir d'autres machines, vous pouvez entrer 0.0.0.0 ou l'adresse IP de cette machine-ci. Pour une utilisation classique, veuillez conserver la valeur par défaut 127.0.0.1.
+ .
+ Veuillez noter que cela peut avoir des implications de sécurité car aucune authentification ni aucun chiffrement ne sont utilisés. Il est déconseillé d'utiliser cette fonctionnalité sur des machines connectées à l'Internet.
+Description-ru.UTF-8: IP-адрес и порт ncpd:
+ Если вы собираетесь использовать оболочки plptools с других машин, то можете указать 0.0.0.0 или IP-адрес вашей машины. Обычно, пользователи должны оставить значение по умолчанию 127.0.0.1!
+ .
+ Заметим, что ЭТО СОЗДАЁТ УГРОЗУ БЕЗОПАСНОСТИ, так как не используется никакой аутентификации и шифрования! НЕ ИСПОЛЬЗУЙТЕ эту возможность на машинах, подключённых к Интернет напрямую!
+Description-sv.UTF-8: IP-adress och port för ncpd:
+ Om du tänker använda gränssnitt för plptools från andra maskiner kan du ange 0.0.0.0 eller IP-adressen för din maskin här. Normala användare bör behålla standarden 127.0.0.1!
+ .
+ Notera att DETTA ÄR EN SÄKERHETSRISK eftersom ingen autentisering och ingen kryptering används! ANVÄND INTE DETTA på maskiner som är nåbara från Internet!
+
+Template: plptools/plpfuse/start
+Type: boolean
+Default: false
+Description: Should plpfuse be started during boot?
+ If plpfuse is started during boot-up, it will wait for a Psion being
+ connected and then automatically mount that Psion. Since this is
+ done as root, non-privileged users will not have access to the
+ mounted directory. If you have a single-user machine, you probably
+ want to start plpfuse manually when you need it.
+Description-cs.UTF-8: Spustit plpfuse během zavádění počítače?
+ Pokud se plpfuse spustí během zavádění počítače, bude čekat, dokud Psion nezapojíte a poté jej automaticky připojí. Protože se tak děje pod uživatelem root, neprivilegovaní uživatelé nebudou mít k připojenému adresáři přístup. Používáte-li počítač jako jediný uživatel, pravděpodobně budete spíše spouštět plpfuse ručně tehdy, kdy to budete potřebovat.
+Description-da.UTF-8: Skal plpfuse igangsættes under opstart?
+ Hvis plpfuse igangsættes under opstart, vil den vente på at en Psion bliver forbundet og så automatisk montere den Psion. Da dette gøres som root (administrator), vil brugere der ikke er priviligerede ikke have adgang til den monterede mappe. Hvis du har en enkeltbrugermaskine, vil du sikkert ønske at starte plpfuse manuelt, når behovet er der.
+Description-de.UTF-8: Soll plpfuse während des Systemstarts gestartet werden?
+ Falls plpfuse während des Systemstarts gestartet wird, wird es warten, bis ein Psion angeschlossen wird und dann den Psion automatisch in den Verzeichnisbaum einhängen. Da dies als Root ausgeführt wird, werden nichtprivilegierte Nutzer keinen Zugang zu dem eingehängten Verzeichnis haben. Falls Sie einen Ein-Benutzer-Rechner haben, möchten Sie wahrscheinlich plpfuse manuell starten, wenn Sie es benötigen.
+Description-es.UTF-8: ¿Desea iniciar plpfuse durante el arranque del sistema?
+ Si se inicia plpfuse durante el arranque, esperará a que se conecte un Psion y montará automáticamente ese Psion. Ya que esto se realiza como administrador («root»), los usuarios sin privilegios no tendrán acceso al directorio montado. Si tiene un sistema con un único usuario, probablemente quiera iniciar plpfuse de forma manual cuando lo necesite.
+Description-fr.UTF-8: Faut-il lancer plpfuse au démarrage du système?
+ Si plpfuse est lancé au démarrage, il attendra la connexion d'un Psion puis le montera automatiquement. Comme cela est fait avec les privilèges du superutilisateur, les utilisateurs non privilégiés n'auront pas accès au répertoire monté. Sur une machine mono-utilisateur, vous devriez démarrer plpfuse vous-même au moment où vous en aurez besoin.
+Description-it.UTF-8: Eseguire plpfuse all'avvio del sistema?
+ Se plpfuse viene eseguito all'avvio del sistema, attenderà che un dispositivo Psion venga collegato e lo monterà automaticamente. Poiché questa operazione viene eseguita come root, gli utenti senza privilegi non avranno alcun accesso alla directory di montaggio. Se si ha una macchina monoutente probabilmente si sceglierà di eseguire plpfuse manualmente quando necessario.
+Description-ja.UTF-8: ブート時に plpfuse を開始しますか?
+ ブート時に plpfuse が開始すると、Psion が接続されるのを待って自動的に Psion をマウントします。これは root により行われるため、権限のないユーザはマウントしたディレクトリにはアクセスできません。他のユーザがいないマシンの場合は、恐らく必要な時に手作業で plpfuse を開始させた方がいいでしょう。
+Description-nl.UTF-8: Wilt u plpfuse starten bij het opstarten van de machine?
+ Als plpfuse opgestart is tijdens het opstarten van de machine zal deze wachten totdat er een Psion verbonden wordt, waarna deze automatisch aangekoppeld wordt. Aangezien dit gedaan wordt als beheerder hebben niet-bevoorrechte gebruikers geen toegang tot de aangekoppelde map. Als u een één-gebruiker-machine heeft is het beter om plpfuse handmatig te starten wanneer u het nodig heeft.
+Description-pt.UTF-8: Deve o plpfuse ser iniciado no arranque?
+ Se o plpfuse for iniciado durante o arranque, irá esperar que um Psion seja conectado e depois irá, automaticamente, montar esse Psion. Uma vez que isto é feito como root, os utilizadores não privilegiados não terão acesso ao directório montado. Se você tem uma máquina de um só utilizador, provavelmente quererá iniciar o plpfuse manualmente quando necessitar dele.
+Description-ru.UTF-8: Запускать plpfuse при включении компьютера?
+ Если plpfuse запускается автоматически, она ожидает подключения Psion и затем автоматически монтирует Psion. Так как эта операция выполняется от имени суперпользователя, непривилегированные пользователи не получат доступа к смонтированному каталогу. Если вы единственный пользователь компьютера, то вам лучше запускать plpfuse вручную когда это необходимо.
+Description-sv.UTF-8: Ska plpfuse startas vid systemets uppstart?
+ Om plpfuse startas vid systemets uppstart kommer den att vänta på att en Psion ska anslutas och sedan automatiskt montera upp den. Eftersom detta görs som root kommer inte vanliga användare ha få tillgång till den monterade katalogen. Om du har en maskin som körs med endast en användare, vill du antagligen starta plpfuse manuellt när du behöver det.
+Description-vi.UTF-8: Có nên khởi chạy plpfuse trong khi khởi động máy không?
+ Nếu trình nền plpfuse có được khởi chạy trong khi khởi động máy thì nó sẽ đợi cho đến khi một thiết bị Psion được kết nối, sau đó tự động gắn Psion đó. Vì chức năng này được thực hiện dưới người chủ, người dùng nào không có quyền truy cập đặc biệt không có thể truy cập đến thư mục đã gắn. Nếu bạn có một máy tính chỉ có một người dùng, rất có thể là bạn muốn tự khởi chạy plpfuse khi nào cần thiết.
+
+Template: plptools/plpprintd/start
+Type: boolean
+Default: false
+Description: Should plpprintd be started during boot?
+ If you intend to use the Psion's "Print via PC" feature, you can
+ enable this option. You must have a working print queue which
+ is capable of printing Postscript in order to use this feature.
+Description-cs.UTF-8: Má se plpprintd spustit během zavádění počítače?
+ Plánujete-li využívat vlastnost Psionu nazvanou „Tisk přes PC“, můžete tuto možnost povolit. Aby to ovšem fungovalo, musíte mít také funkční tiskovou frontu, která je schopna vytisknout PostScript.
+Description-da.UTF-8: Skal plpprintd igangsættes under opstart?
+ Hvis du har til hensigt at bruge Psions funktion »Udskriv via pc«, kan du aktivere denne indstilling. Du skal have en igangsat udskriftskø, som er i stand til at udskrive Postscript for at bruge denne funktion.
+Description-de.UTF-8: Soll plpprintd während des Systemstarts gestartet werden?
+ Falls Sie vorhaben, die »Drucken über PC«-Funktion des Psions zu verwenden, können Sie diese Option aktivieren. Sie müssen eine funktionierende Druckwarteschlange haben, die das Postscript-Format verarbeiten kann, um diese Funktion zu verwenden.
+Description-es.UTF-8: ¿Desea iniciar plpprintd durante el arranque?
+ Si planea utilizar la característica «Print via PC» (n. de t.: imprimir a través de un PC) de Psion, puede habilitar esta opción. Para utilizar esta característica debe tener configurada una cola de impresión que sea capaz de imprimir a través de Postscript.
+Description-fr.UTF-8: Faut-il lancer plpprintd au démarrage ?
+ Si vous prévoyez d'utiliser la fonction « Imprimer via un PC » du Psion, vous pouvez activer cette option. Pour cela, vous devez avoir une file d'attente active et capable d'imprimer du PostScript.
+Description-it.UTF-8: Eseguire plpprintd all'avvio del sistema?
+ Se si desidera utilizzare la funzionalità di Psion «Print via PC», è possibile abilitare questa opzione. Per poter utilizzare questa funzionalità sarà necessario avere una coda di stampa funzionante che possa stampare Postscript.
+Description-ja.UTF-8: ブート時に plpprintd を開始しますか?
+ Psion の「PC を経由した印刷」機能を利用するつもりであればこのオプションを有効にしてください。この機能を利用するには Postscript を印刷する能力を持った、機能するプリントキューが必要です。
+Description-nl.UTF-8: Wilt u plpprintd opstarten tijdens het opstarten van de machine?
+ Als u van plan bent om de Psion's 'Print via PC' feature te gebruiken kunt u deze optie inschakelen. Om deze feature te gebruiken dient u een werkende print-wachtlijst te hebben die in staat is om Postscript te printen.
+Description-pt.UTF-8: Deve o plpprintd ser iniciado no arranque?
+ Se tenciona usar a funcionalidade "Imprimir através do PC" do Psion, pode activar esta opção. Para poder utilizar esta funcionalidade tem de ter uma fila de impressão a funcionar que seja capaz de imprimir Postscript.
+Description-ru.UTF-8: Запускать plpprintd при включении компьютера?
+ Если вы собираете пользоваться возможностью печати с Psion на ПК, то можете ответить утвердительно. Для этого у вас должна существовать работающая очередь печати, способная печатать Postscript.
+Description-sv.UTF-8: Ska plpprintd startas vid systemets uppstart?
+ Om du tänker använda Psions "Utskrift via PC"-funktion kan du aktivera detta. Du måste ha en fungerande utskriftskö som är kapabel att skriva ut Postscript för att använda denna funktion.
+Description-vi.UTF-8: Có nên khởi chạy plpprintd trong khi khởi động máy không?
+ Nếu bạn định sử dụng tính năng « Print via PC » (in thông qua máy tính cá nhân) của Psion, bạn có thể bật tùy chọn này. Phải có một hàng đợi in ấn đang chạy với khả năng in theo Postscript để sử dụng tính năng này.
+
+Template: plptools/plpprintd/printqueue
+Type: string
+Default: psion
+Description: Print queue to use:
+ Please enter the name of the print queue you want to use for
+ printing from the Psion.
+Description-da.UTF-8: Angiv udskriftskøen der skal bruges:
+ Indtast venligst navnet på udskriftskøen du ønsker at bruge for udskrivning fra Psion'en.
+Description-de.UTF-8: Zu verwendende Druckwarteschlange:
+ Bitte geben Sie den Namen der Druckwarteschlange an, die Sie zum Drucken vom Psion verwenden möchten.
+Description-es.UTF-8: Nombre de la cola de impresión a utilizar:
+ Por favor, introduzca el nombre de la cola de impresión que desea utilizar para imprimir desde un Psion.
+Description-fr.UTF-8: File d'attente d'impression à utiliser :
+ Veuillez entrer le nom de la file d'attente d'impression que vous souhaitez utiliser pour imprimer à partir du Psion.
+Description-ru.UTF-8: Очередь печати:
+ Введите имя очереди печати, которую вы хотите использовать при печати с Psion.
+Description-sv.UTF-8: Utskriftskö som ska användas:
+ Ange namnet på den utskriftskö du vill använda för att skriva ut från Psion.
+
+Template: plptools/frontends/remoteaddr
+Type: string
+Description: Remote host to be contacted:
+ Since you have ncpd either disabled or listening on a non-standard
+ address, you should specify the address for the frontends again.
+Description-da.UTF-8: Angiv ekstern vært der skal kontaktes:
+ Da du hverken har ncpd deaktiveret eller lytter på en adresse, som ikke er standard, bør du angive adressen for brugerfladerne igen.
+Description-de.UTF-8: Rechner in der Ferne, mit dem verbunden werden soll:
+ Da Sie Ncpd entweder deaktiviert haben oder ndpd nicht an die Standardadresse gebunden ist, sollten Sie die Adresse für die Oberflächen eingeben.
+Description-es.UTF-8: Nombre del sistema remoto a contactar:
+ Debido a que ha configurado ncpd para escuchar en una dirección no estándar o lo ha deshabilitado, debe introducir nuevamente la dirección de la interfaz.
+Description-fr.UTF-8: Hôte distant à contacter :
+ Comme ncpd est désactivé ou à l'écoute sur une adresse non standard, vous devriez à nouveau indiquer l'adresse des frontaux.
+Description-ru.UTF-8: Удалённая машина для обмена:
+ Так как вы указали отключить ncpd или задали для его работы нестандартный адрес, вам требуется указать адреса клиентов ещё раз.
+Description-sv.UTF-8: Fjärrvärd som ska kontaktas:
+ Eftersom du har ncpd antingen inaktiverad eller lyssnar på en icke-standardadress, bör du ange adressen för gränssnitten igen.
+

@@ -267,12 +267,18 @@ function SRCLST_loadSourceList($name)
 			// Split the line into (deb, mirror url and directory on the mirror)
 			$debUrlDir = preg_split('/[ \t]+/', $line);
 
-			// Use the mirror, if it is valid
-			if (SRCLST_checkm23debsMirror($debUrlDir[1]))
-				$out .= "$line\n";
+			// Use goos-habermann.de as repository when the m23 server is on UCS because apt-cacher-ng has sometimes problems with the SF mirrors
+			if (HELPER_isExecutedOnUCS())
+				$out .= 'deb http://m23debs.goos-habermann.de'." ./\n";
 			else
-			// Otherwise find another mirror
-				$out .= "deb ".SRCLST_getWorkingm23debsMirror()." ./\n";
+			{
+				// Use the mirror, if it is valid
+				if (SRCLST_checkm23debsMirror($debUrlDir[1]))
+					$out .= "$line\n";
+				else
+				// Otherwise find another mirror
+					$out .= "deb ".SRCLST_getWorkingm23debsMirror()." ./\n";
+			}
 		}
 	}
 	return($out);
@@ -1177,7 +1183,7 @@ function SRCLST_possiblem23debsMirrors()
 	'http://downloads.sourceforge.net/project/m23/m23debs',
 	'http://vorboss.dl.sourceforge.net/project/m23/m23debs',
 	'http://netcologne.dl.sourceforge.net/project/m23/m23debs',
-	'http://skylink.dl.sourceforge.net/project/m23/m23debs',
+	'http://heanet.dl.sourceforge.net/project/m23/m23debs',
 	'http://m23debs.goos-habermann.de'
 	));
 }

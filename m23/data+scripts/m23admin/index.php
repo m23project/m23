@@ -66,7 +66,9 @@ if (!empty($templang))
 					$GLOBALS['m23_language']=$_SESSION['m23language'];
 					else
 					//if nothing is found use english
+//m23customPatchBegin type=change id=fallbackLanguage
 					$GLOBALS['m23_language']="en";
+//m23customPatchEnd id=fallbackLanguage
 
 //overwrite all language settings during screenshot making
 if (file_exists("/m23/tmp/screenshot.lang"))
@@ -113,6 +115,8 @@ include("/m23/inc/update.php");
 include("/m23/inc/distr.php");
 include("/m23/inc/sourceslist.php");
 include("/m23/inc/groups.php");
+//m23customPatchBegin type=change id=additionalIncludes
+//m23customPatchEnd id=additionalIncludes
 include("/m23/inc/massTools.php");
 include("/m23/inc/burn.php");
 include("/m23/inc/server.php");
@@ -285,6 +289,8 @@ switch($m23_page)
 		$page = "packages/showCurrentWorkPHP.php";
 		break;
 
+//m23customPatchBegin type=change id=additionalPageCases
+//m23customPatchEnd id=additionalPageCases
 
 	/* MASSTOOLS */
 	case 'massInstall':

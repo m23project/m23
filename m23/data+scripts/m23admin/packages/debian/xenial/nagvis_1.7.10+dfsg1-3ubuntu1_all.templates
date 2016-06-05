@@ -1,0 +1,106 @@
+
+Template: nagvis/monitoring_system
+Type: select
+Default: icinga
+Choices: icinga, nagios, shinken, other
+Choices-cs.UTF-8: icinga, nagios, shinken, jiný
+Choices-da.UTF-8: icinga, nagios, shinken, anden
+Choices-de.UTF-8: icinga, nagios, shinken, Andere
+Choices-es.UTF-8: icinga, nagios, shinken, otro
+Choices-fr.UTF-8: icinga, nagios, shinken, Autre
+Choices-it.UTF-8: icinga, nagios, shinken, altro
+Choices-ja.UTF-8: icinga, nagios, shinken, その他
+Choices-nl.UTF-8: icinga, nagios, shinken, anders
+Choices-pl.UTF-8: icinga, nagios, shinken, inne
+Choices-pt.UTF-8: icinga, nagios, shinken, outro
+Choices-ru.UTF-8: icinga, nagios, shinken, другой
+Choices-sv.UTF-8: icinga, nagios, shinken, annan
+Description: Monitoring suite used with NagVis:
+ The NagVis package supports Icinga as well as
+ Nagios, using the check-mk-live broker backend.
+ .
+ If you would like to use NagVis with a different backend or a different
+ monitoring suite, please choose "other". You'll have to configure it
+ manually.
+Description-cs.UTF-8: Monitorovací sada používaná s NagVis:
+ Balíček NagVis podporuje pomocí zprostředkovatelského backendu check-mk-live jak Icinga, tak i Nagios.
+ .
+ Budete-li chtít použít NagVis s jiným backendem či jinou monitorovací sadou, zvolte prosím "jiný". Nastavit jej budete muset ručně.
+Description-da.UTF-8: Overvågningsprogrampakke brugt med NagVis:
+ Pakken NagVis understøtter Icinga samt Nagios, med brug af check-mk-live broker-motoren.
+ .
+ Hvis du ønsker at bruge NagVis med en anden motor eller en anden overvågningsprogrampakke, så vælg venligst »anden«. Du skal konfigurere den manuelt.
+Description-de.UTF-8: Monitoring-Suite zur Verwendung mit NagVis:
+ Das NagVis-Paket unterstützt sowohl Icinga als auch Nagios und benutzt das check-mk-live-Vermittlungs-Backend.
+ .
+ Wenn Sie NagVis mit einem anderen Backend oder einer anderen Monitoring-Suite verwenden wollen, wählen Sie bitte »Andere«. Sie werden es allerdings per Hand konfigurieren müssen.
+Description-es.UTF-8: Componente de monitorización para NagVis:
+ El paquete NagVis puede trabajar con Icinga y con Nagios utilizando el motor «check-mk-live».
+ .
+ Si prefiere utilizar NagVis con un motor o componente de monitorización distinto, seleccione «otro». Tendrá que configurarlo manualmente.
+Description-fr.UTF-8: Interface de supervision utilisée avec NagVis : 
+ Le paquet NagVis gère aussi bien Icinga que Nagios, en utilisant l'interface « chek-mk-live ».
+ .
+ Si vous souhaitez utiliser Nagvis avec une autre interface de configuration ou un autre logiciel de supervision, veuillez choisir « Autre ». Vous devrez alors configurer NagVis vous-même.
+Description-it.UTF-8: Suite di monitoraggio usata con NagVis:
+ Il pacchetto NagVis supporta Icinga così come Nagios, usando il backend broker check-mk-live.
+ .
+ Se si desidera usare NagVis con un backend diverso o una suite di monitoraggio diversa, scegliere "altro". Sarà necessario configurarli manualmente.
+Description-ja.UTF-8: NagVis で使う監視ツール群:
+ NagVis パッケージは check-mk-live ブローカーバックエンドを使うことにより、Nagios 同様に Icinga もサポートします。
+ .
+ NagVis で別のバックエンドあるいは別の監視ツール群を使いたい場合は「その他」を選択してください。これは恐らく手作業で設定する必要があります。
+Description-nl.UTF-8: Welk bewakingspakket gebruikt u met NagVis?
+ Het NagVis-pakket ondersteunt zowel Icinga als Nagios, met behulp van het bemiddelings-backend check-mk-live.
+ .
+ Als u NagVis wilt gebruiken met een ander backend of met een ander bewakingspakket, kies dan "anders". Deze zal u handmatig moeten instellen.
+Description-pl.UTF-8: Zestaw oprogramowania monitorującego używany z NagVis:
+ Pakiet NagVis obsługuje Icinga oraz Nagios przy użyciu backendu pośredniczącego check-mk-live.
+ .
+ Aby użyć NagVis z innym backendem lub innym oprogramowaniem monitorującym, proszę wybrać "inne". Konieczna będzie wówczas ręczna konfiguracja.
+Description-pt.UTF-8: Suite de monitorização a usar com o NagVis:
+ O pacote NagVis suporta tanto o Icinga como o Nagios, através do backend check-mk-live.
+ .
+ Se quiser usar o NagVis com um backend diferente ou uma suite de monitorização diferente, escolha "outro". Terá que o configurar manualmente.
+Description-ru.UTF-8: Комплекс мониторинга, используемый с NagVis:
+ Пакет NagVis поддерживает Icinga, а также Nagios с помощью посредника check-mk-live.
+ .
+ Если вы хотите использовать NagVis с другим посредником или комплексом мониторинга, то выберите «другой». В этом случае вам нужно будет выполнить настройку самостоятельно.
+Description-sv.UTF-8: Övervakningssvit som används med NagVis:
+ NagVis-paketet har stöd för Icinga så väl sm Nagios, genom att använda bakdelen check-mk-live.
+ .
+ Vill du använda NagVis med en annan bakdel eller en annan övervakningssvit vänligen välj då "annan". Inställningarna ska då göras manuellt.
+
+Template: nagvis/delete_on_purge
+Type: boolean
+Default: false
+Description: Delete NagVis data when purging the package?
+ NagVis creates files in /var/{cache,lib}/nagvis and
+ /etc/nagvis (for instance background images and map files), including a small
+ database for authentification. If you don't need any of these files,
+ they can be removed now, or you may want to keep them and clean up by hand
+ later.
+Description-cs.UTF-8: Smazat při odstraňování balíčku data pro NagVis?
+ NagVis ve /var/{cache,lib}/nagvis a /etc/nagvis vytváří soubory (například pro obrázky na pozadí a soubory s mapami), včetně malé databáze pro ověřování. Pokud žádný z těchto souborů nepotřebujete, lze je nyní odstranit, nebo je můžete ponechat a odstranit je později ručně.
+Description-da.UTF-8: Slet NagVis-data når pakken afinstalleres?
+ NagVis opretter filer i /var/{cache,lib}/nagvis og /etc/nagvis (for eksempel baggrundsbilleder og kortfiler), inklusiv en lille database for godkendelse. Hvis du ikke har brug for nogle af disse filer, så kan de fjernes nu, eller måske ønsker du at beholde dem og rydde op manuelt senere.
+Description-de.UTF-8: NagVis-Daten beim vollständigen Entfernen des Pakets ebenfalls löschen?
+ NagVis erstellt Dateien in /var/{cache,lib}/nagvis und /etc/nagvis (beispielsweise für Hintergründe und Kartendateien), einschließlich einer kleinen Datenbank für die Authentifizierung. Wenn Sie keine dieser Dateien benötigen, können sie jetzt gelöscht werden. Sie können sie auch behalten und später selbst per Hand entfernen.
+Description-es.UTF-8: ¿Desea eliminar los datos de NagVis al purgar el paquete?
+ NagVis genera archivos en «/var/{cache,lib}/nagvis» y en «/etc/nagvis» (p. ej., imágenes de fondo y archivos de mapas), así como una pequeña base de datos para la autentificación. Si no necesita mantener estos archivos puede eliminarlos ahora o quizá prefiera mantenerlos y eliminarlos manualmente más adelante.
+Description-fr.UTF-8: Faut-il effacer les données de NagVis lors de la purge du paquet ?
+ NagVis crée des fichiers de données dans /var/{cache,lib}/nagvis et /etc/nagvis (pour les images d'arrière-plan et les cartes en cours), y compris une petite base de données pour l'authentification. Si vous n'avez pas besoin de ces fichiers, ils peuvent être effacés maintenant ou vous pouvez les conserver et les supprimer manuellement plus tard.
+Description-it.UTF-8: Cancellare i dati NagVis quando il pacchetto viene eliminato?
+ NagVis crea file in /var/{cache,lib}/nagvis e /etc/nagvis (ad esempio immagini di sfondo e file mappa), incluso un piccolo database per l'autenticazione. Se nessuno di questi file è necessario possono essere rimossi adesso, oppure si può tenerli e ripulire a mano successivamente.
+Description-ja.UTF-8: パッケージの完全削除時に NagVis のデータを削除しますか?
+ NagVis は /var/{cache,lib}/nagvis と /etc/nagvis (例えば背景画像やマップファイル) に認証用の小さなデータベースも含め、ファイルを作成します。こういったファイルが一切不要な場合ここで削除することができますが、残しておいて後で手作業で整理することもできます。
+Description-nl.UTF-8: Verwijder gegevens van NagVis bij het wissen ('purge') van het pakket?
+ NagVis maakt bestanden aan in /var/{cache,lib}/nagvis en /etc/nagvis (bijvoorbeeld achtergrondafbeeldingen en map-bestanden), inclusief een kleine database voor authenticatie. Als u deze bestanden niet nodig heeft kunnen ze nu worden verwijderd, of u kunt ze nu bewaren en later zelf met de hand opruimen.
+Description-pl.UTF-8: Usunąć dane NagVis przy czyszczeniu pakietu?
+ NagVis tworzy pliki w /var/{cache,lib}/nagvis i /etc/nagvis (np. pliki tła i pliki map), także małą bazę danych do uwierzytelniania. Jeśli pliki te nie są potrzebne, mogą zostać usunięte; można również wybrać opcję zachowania ich i ręcznego usunięcia później.
+Description-pt.UTF-8: Apagar os dados do NagVis ao purgar a pacote?
+ O NagVis cria ficheiros em /var/{cache,lib}/nagvis e /etc/nagvis (por exemplo, imagens de fundo e ficheiros de mapa), incluindo uma pequena base de dados para autenticação. Se não necessita de nenhum destes ficheiros, podem ser removidos agora, ou pode mantê-los e limpá-los manualmente mais tarde.
+Description-ru.UTF-8: Удалить данные NagVis при вычистке пакета?
+ NagVis создаёт файлы в каталоге /var/{cache,lib}/nagvis и /etc/nagvis (такие как фоновые изображения и карты), в которых содержится маленькая база аутентификационных данных. Если вам ненужны эти файлы, то они могут быть удалены прямо сейчас, или вы можете их оставить и удалить позже вручную.
+Description-sv.UTF-8: Ska NagVis data tas bort när paktet tas bort?
+ NagVis skapar filer i /var/{cache,lib}/nagvis och /etc/nagvis (exempelvis bakgrundsbilder och datafiler), bland annat en liten databas för autentisering. Om du inte behöver dessa filer så kan de tas bort nu om du inte vill behålla dem och ta bort de manuellt senare.

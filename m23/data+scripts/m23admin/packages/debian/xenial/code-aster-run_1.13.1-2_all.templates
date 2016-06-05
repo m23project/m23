@@ -1,0 +1,118 @@
+
+Template: astk/platform
+Type: select
+Choices: LINUX, P_LINUX, LINUX64, P_LINUX64
+Default: LINUX64
+Description: Aster platform:
+ Select Aster platform.
+Description-cs.UTF-8: Aster platforma:
+ Vyberte Aster platformu.
+Description-da.UTF-8: Aasterplatform:
+  Vælg Asterplatform.
+Description-de.UTF-8: Aster-Plattform:
+ Wählen Sie die Aster-Plattform aus.
+Description-es.UTF-8: Plataforma Aster:
+ Seleccione la plataforma Aster.
+Description-fr.UTF-8: Plateforme Aster :
+ Veuillez choisir la plateforme Aster.
+Description-it.UTF-8: Piattaforma Aster:
+ Selezionare la piattaforma Aster.
+Description-ja.UTF-8: Aster プラットホーム:
+ Aster プラットホームを選択します。
+Description-pt.UTF-8: plataforma Aster:
+  Escolha a plataforma Aster.
+Description-ru.UTF-8: Платформа Aster:
+ Выберите платформу Aster.
+Description-sv.UTF-8: Asterplattform:
+ Välj Asterplattform:
+Description-zh_CN.UTF-8: Aster 平台
+ 选择 Aster 平台。
+
+Template: astk/node
+Type: string
+Description: ASTK client node name:
+ Please enter the public name by which this client will be known on
+ the network. It must be a unique name within the domain.
+Description-cs.UTF-8: Název ASTK klientského uzlu:
+ Zadejte prosím veřejný název, pod kterým bude tento klient na síti vystupovat. Název musí být v doméně jedinečný.
+Description-da.UTF-8: ASTK-klientknudenavn:
+ Indtast venligst det offentlige navn som denne klient vil blive kendt som på netværket. Det skal være et unikt navn indenfor domænet.
+Description-de.UTF-8: ASTK-Client-Knoten-Name:
+ Bitte geben Sie den öffentlichen Namen an, unter dem dieser Client im Netzwerk sichtbar sein wird. Es muss ein Name sein, der innerhalb der Domain einmalig ist.
+Description-es.UTF-8: Nombre del nodo del cliente ASTK:
+ Por favor, introduzca el nombre público que se utilizará para este cliente en la red. Tiene que ser un nombre único dentro del dominio.
+Description-fr.UTF-8: Nom de nœud du client ASTK :
+ Veuillez indiquer le nom public par lequel ce client sera vu sur le réseau. Cela doit être un nom unique au sein du domaine.
+Description-it.UTF-8: Nome del nodo del client ASTK:
+ Inserire il nome pubblico con sui sarà conosciuto nella rete questo client. Deve essere un nome univoco all'interno del dominio.
+Description-ja.UTF-8: ASTK クライアントノード名:
+ クライアントがネットワーク上で名乗っている公開名を入力してください。それはドメイン内で一意な名前でないといけません。
+Description-pt.UTF-8: Nome do nó cliente ASTK:
+ Por favor introduza o nome público pelo qual este cliente será conhecido na rede. Tem de ser um nome único dentro do domínio.
+Description-ru.UTF-8: Имя клиентского узла ASTK:
+ Введите общедоступное имя, под которым будет известен данный клиент в сети. Оно должно быть уникальным внутри домена.
+Description-sv.UTF-8: Nodnamn för ASTK-klient:
+ Ange det publika namnet som denna klient kommer att vara känd under i nätverket. Det måste vara ett unikt namn inom domänen.
+Description-zh_CN.UTF-8: ASTK 客户端结点名：
+ 请输入本客户端在网络上所周知的公共名。这必须是域内独有的名称。
+
+Template: astk/EDITOR
+Type: select
+Choices: /usr/bin/nedit, /usr/bin/gedit --display=\@D, /usr/bin/kwrite --display \@D, /usr/bin/xemacs -display \@D, /usr/bin/emacs -display \@D, /usr/bin/xedit -display \@D, /usr/bin/xterm  -display \@D -e \@E -e vi
+Default: /usr/bin/nedit
+Description: Standard editor:
+ Please select the command line that ASTK should use to launch an
+ editor.
+Description-cs.UTF-8: Standardní editor
+ Vyberte prosím příkaz, který má ASTK použít ke spuštění editoru.
+Description-da.UTF-8: Standardredigering:
+ Vælg venligst kommandolinjen som ASTK skal bruge til at starte en redigering.
+Description-de.UTF-8: Standard-Editor:
+ Bitte wählen Sie die Befehlszeile, die ASTK benutzen soll, um einen Editor zu starten.
+Description-es.UTF-8: Editor estándar:
+ Por favor, introduzca la línea de órdenes que debe utilizar ASTK para iniciar el editor.
+Description-fr.UTF-8: Éditeur standard :
+ Veuillez choisir la ligne de commande que ASTK doit utiliser pour démarrer l'éditeur.
+Description-it.UTF-8: Editor standard:
+ Selezionare la riga di comando che ASTK deve usare per avviare un editor.
+Description-ja.UTF-8: 標準のエディタ:
+ ASTK がエディタを起動するために利用するコマンドラインを選んでください。
+Description-pt.UTF-8: Editor standard:
+ Por favor escolha a linha de comandos que o ASTK deve utilizar para lançar um editor.
+Description-ru.UTF-8: Стандартный редактор:
+ Введите командную строку, которую ASTK должен использовать для запуска редактора.
+Description-sv.UTF-8: Förvald editor:
+ Ange kommandoraden som ASTK ska använda för att starta en editor.
+Description-zh_CN.UTF-8: 标准编辑器：
+ 请选择可以让 ASTK 启动一个文本编辑器的命令。
+
+Template: astk/TERMINAL
+Type: select
+Choices: /usr/bin/xterm -display \@D -e \@E, /usr/bin/gnome-terminal --display=\@D --command=\@E, /usr/bin/konsole --display \@D -e \@E
+Default: /usr/bin/gnome-terminal --display=\@D --command=\@E
+Description: Standard terminal emulator:
+ Please select the command line that ASTK should use to launch a
+ terminal window.
+Description-cs.UTF-8: Standardní emulátor terminálu:
+ Vyberte prosím příkaz, který má ASTK použít ke spuštění okna terminálu.
+Description-da.UTF-8: Standardterminalemulator:
+ Vælg venligst kommandolinjen som ASTK skal bruge til at starte et terminalvindue.
+Description-de.UTF-8: Standard-Terminal-Emulator:
+ Bitte wählen Sie die Befehlszeile, die ASTK benutzen soll, um ein Terminal-Fenster zu starten.
+Description-es.UTF-8: Emulador de terminal estándar:
+ Por favor, introduzca la línea de órdenes que debe utilizar ASTK para iniciar la ventana de terminal.
+Description-fr.UTF-8: Émulateur de terminal standard :
+ Veuillez choisir la ligne de commande que ASTK doit utiliser pour ouvrir un terminal.
+Description-it.UTF-8: Emulatore di terminale standard:
+ Selezionare la riga di comando che ASTK deve usare per avviare una finestra di terminale.
+Description-ja.UTF-8: 標準のターミナルエミュレータ:
+ ASTK がターミナルウィンドウを起動するために利用するコマンドラインを選んでください。
+Description-pt.UTF-8: Emulador de terminal standard:
+ Por favor escolha a linha de comandos que o ASTK deve utilizar para lançar uma janela de terminal.
+Description-ru.UTF-8: Стандартный эмулятор терминала:
+ Введите командную строку, которую ASTK должен использовать для запуска окна терминала.
+Description-sv.UTF-8: Förvald terminalemulator:
+ Ange kommandoraden som ASTK ska använda för att starta ett terminalfönster.
+Description-zh_CN.UTF-8: 标准终端模拟器：
+ 请选择可以让 ASTK 启动一个终端窗口的命令。
+

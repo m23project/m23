@@ -6,6 +6,32 @@
 $*/
 
 define('SED_foundLine',"\$m23searchLine");
+define('SED_insertBefore', 'i');
+define('SED_insertAfter', 'a');
+
+
+
+
+
+/**
+**name EDIT_sedSearchAddInsert($file, $search, $text, $insertBeforeOrAfter)
+**description Generates a sed command line to insert text before (SED_insertBefore) or after (SED_insertAfter) a searched line.
+**parameter file: Name of the file to edit.
+**parameter search: Search pattern to find the line for inserting before or after.
+**parameter text: The text to insert.
+**parameter insertBeforeOrAfter: Parameter to select, if the new text should inserted before (SED_insertBefore) or after (SED_insertAfter) the found line
+**returns sed code for inserting text before (SED_insertBefore) or after (SED_insertAfter) a searched line.
+**/
+function EDIT_sedSearchAddInsert($file, $search, $text, $insertBeforeOrAfter)
+{
+	// Escape the search pattern and the text to add for usage with sed
+	$search = str_replace("/", "\/",$search);
+	$text = str_replace("/", "\/",$text);
+
+	return("
+	sed -i '/$search/$insertBeforeOrAfter$text' \"$file\"
+	");
+}
 
 
 

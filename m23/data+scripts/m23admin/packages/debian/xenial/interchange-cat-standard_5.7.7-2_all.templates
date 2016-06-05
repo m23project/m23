@@ -1,0 +1,471 @@
+Template: interchange-cat-standard/install
+Type: boolean
+Default: false
+Description: Create the Interchange demo catalog?
+ Whether to install the demo catalog from the standard template or let
+ you manually install it with makecat.
+Description-cs.UTF-8: Vytvořit ukázkový katalog programu Interchange?
+ Nainstaluje ze standardní šablony ukázkový katalog, ten je možné také vytvořit později ručně pomocí makecat.
+Description-da.UTF-8: Opret demokataloget til Interchange?
+ Hvorvidt demokataloget skal installeres fra standardskabelonen eller lade dig manuelt installere det med makecat.
+Description-de.UTF-8: Soll der Interchange-Demokatalog angelegt werden?
+ Sie können auswählen, ob der Demokatalog aus der Standardvorlage installiert werden soll oder ob Sie ihn manuell mit makecat installieren möchten.
+Description-es.UTF-8: ¿Desea crear el catálogo de demostración de Interchange?
+ Puede instalar el catálogo de demostración a partir de una plantilla estándar o realizar la instalación manualmente con «makecat».
+Description-eu.UTF-8: Interchange demostrazio katalogoa sortu?
+ Edo demostrazio katalogoa instalatu txantiloi estandarretik edo berau makecat erabiliaz instalatzen zuri utzi.
+Description-fi.UTF-8: Luodaanko Interchangen esimerkkiluettelo?
+ Valitse luodaanko esimerkkiluettelo standardimallista vai asennetaanko se käsin ohjelmalla makecat.
+Description-fr.UTF-8: Faut-il créer le catalogue de démonstration d'Interchange ?
+ Cette option vous permet d'installer le catalogue de démonstration à partir du canevas d'origine. Vous pouvez préférer l'installer vous-même avec makecat.
+Description-gl.UTF-8: ¿Crear o catálogo de demostración de Interchange?
+ Se quere instalar o catálogo de demostración a partires do patrón estándar ou se o quere instalar manualmente mediante makecat.
+Description-it.UTF-8: Creare il catalogo dimostrativo di Interchange?
+ Questa opzione consente d'installare il catalogo dimostrativo partendo dal modello standard; in alternativa, è possibile installarlo manualmente, utilizzando makecat.
+Description-nl.UTF-8: Wilt u dat de Interchange demo-catalogus aangemaakt wordt?
+ Of u wilt dat de demo-catalogus geïnstalleerd wordt uitgaande van de standaard sjabloon, of u deze handmatig via makecat wilt installeren.
+Description-pt.UTF-8: Criar o catálogo de demonstração do Interchange?
+ Instalar o catálogo de demonstração do template pré-definido ou deixar que o instale manualmente usando o makecat.
+Description-ru.UTF-8: Создать демонстрационный каталог Interchange?
+ Устанавливать демонстрационный каталог из стандартного шаблона или позволить вам вручную установить его с помощью makecat.
+Description-sv.UTF-8: Vill du skapa Interchanges demokatalog?
+ Huruvida du vill installera demokatalogen från standardmallen eller installera den för hand med makecat.
+Description-vi.UTF-8: Tạo phân loại minh hoạ Interchange ?
+ Có nên cài đặt phân loại minh hoạ từ mẫu tiêu chuẩn, hoặc cho bạn tự cài đặt nó dùng makecat.
+
+Template: interchange-cat-standard/purge
+Type: boolean
+Default: false
+Description: Remove demo catalog on package purge?
+ Should all files belonging to the Interchange demo catalog removed when
+ you purge this package, e.g. with dpkg --purge or apt-get remove --purge ?
+Description-cs.UTF-8: Smazat ukázkový katalog při odstranění balíčku?
+ Mám při odstranění tohoto balíčku smazat také všechny soubory závisející na demo katalogu Interchange, např. pomocí dpkg --purge nebo apt-get remove --purge ?
+Description-da.UTF-8: Fjern demokatalog ved pakkeafinstallering?
+ Skal alle filer tilhørende demokataloget til Interchange fjernes, når du afinstallerer denne pakke f.eks. med dpkg --purge eller apt-get remove --purge?
+Description-de.UTF-8: Soll der Interchange-Demokatalog beim vollständigen Löschen (purge) entfernt werden?
+ Sollen alle Dateien, die zum Interchange-Demokatalog gehören, entfernt werden, wenn diese Paket z.B. mit »dpkg --purge« oder »apt-get remove --purge« vollständig entfernt wird?
+Description-es.UTF-8: ¿Desea borrar el catálogo de demostración al purgar el paquete?
+ ¿Deberían borrarse todos los archivos del catálogo de demostración de Interchange cuando purgue el paquete, es decir cuando ejecute «dpkg --purge» o «apt-get remove --purge»?
+Description-eu.UTF-8: Demostrazio katalogoa ezabatu paketea garbitzerakoan?
+ Interchange demostrazio katalogoko fitxategi guztiak ezabatu egin behar al dira paketea, adib dpkg --purge edo apt-get remove erabiliaz, garbitzerakoan ?
+Description-fi.UTF-8: Poistetaanko esimerkkiluettelo siivottaessa paketti?
+ Tulisiko kaikki Interchangen esimerkkiluetteloon liittyvät tiedostot poistaa, kun paketti siivotaan komennolla dpkg --purge tai apt-get remove --purge?
+Description-fr.UTF-8: Faut-il supprimer le catalogue de démonstration lors de la purge du paquet ?
+ Veuillez choisir si vous souhaitez supprimer tous les fichiers du catalogue de démonstration d'Interchange lors de la purge du paquet (« dpkg --purge » ou « apt-get remove --purge »).
+Description-gl.UTF-8: ¿Eliminar o catálogo de demostración ao purgar o paquete?
+ ¿Quere que se eliminen tódolos ficheiros que pertencen ao catálogo de demostración de Interchange ao purgar este paquete? Por exemplo, con dpkg --purge ou apt-get remove --purge.
+Description-it.UTF-8: Rimuovere il catalogo dimostrativo con l'eliminazione del pacchetto?
+ Scegliere se si desidera che i file che appartengono al catalogo dimostrativo di Interchange vengano rimossi quando si elimina questo pacchetto, cioè con «dpkg --purge» o «apt get remove --purge».
+Description-nl.UTF-8: Wilt u dat de demo-catalogus verwijderd wordt als dit pakket gewist wordt?
+ Wilt u dat alle bestanden die tot de Interchange demo-catalogus behoren verwijderd worden wanneer dit pakket gewist wordt (b.v. via dpkg --purge of apt-get remove --purge)?
+Description-pt.UTF-8: Remover o catálogo de demonstração quando se eliminar o pacote?
+ Devem ser removidos todos os ficheiros do catálogo de demonstração do Interchange quando purgar este pacote, ex. com dpkg --purge ou apt-get remove --purge ?
+Description-ru.UTF-8: Удалить демонстрационный каталог при вычистке пакета?
+ Удалять все файлы демонстрационного каталога Interchange при вычистке пакета, например, с помощью команды dpkg --purge или apt-get remove --purge?
+Description-sv.UTF-8: Ta bort demokatalogen när paketet rensas bort?
+ Ska samtliga filer tillhörande Interchanges demokatalog tas bort när paketet tas bort. T.ex. med dpkg --purge eller apt-get remove --purge?
+Description-vi.UTF-8: Tẩy gọi thì cũng gỡ bỏ phân loại minh hoạ ?
+ Tất cả các tập tin thuộc về phân loại minh hoạ Interchange nên bị gỡ bỏ khi bạn tẩy gói phần mềm này (v.d. dùng câu lệnh « dpkg --purge » hay « apt-get remove --purge ») không?
+
+Template: interchange-cat-standard/replace
+Type: select
+Choices: always, ask, never
+Choices-cs.UTF-8: vždy, zeptat se, nikdy
+Choices-da.UTF-8: altid, spørg, aldrig
+Choices-de.UTF-8: immer, auf Nachfrage, niemals
+Choices-es.UTF-8: siempre, preguntar, nunca
+Choices-eu.UTF-8: beti, galdetu, inoiz
+Choices-fi.UTF-8: aina, kysy, ei koskaan
+Choices-fr.UTF-8: Toujours, Demander, Jamais
+Choices-gl.UTF-8: sempre, preguntar, nunca
+Choices-it.UTF-8: sempre, chiedi, mai
+Choices-nl.UTF-8: altijd, vragen, nooit
+Choices-pt.UTF-8: sempre, perguntar, nunca
+Choices-ru.UTF-8: всегда, спросить, никогда
+Choices-sv.UTF-8: alltid, fråga, aldrig
+Choices-vi.UTF-8: bao giờ cũng, hỏi, không bao giờ
+Default: never
+Description: Policy for replacing existing demo catalogs:
+ Whether to silently replace an existing demo catalog installation, ask for
+ a confirmation or never touch an existing installation.
+Description-cs.UTF-8: Politika odstranění stávajících ukázkových katalogů:
+ Mám odstranit demonstrační katalog tiše, vyžádat si potvrzení nebo existující katalog nikdy neodstraňovat?
+Description-da.UTF-8: Politik for erstatning af eksisterende demokataloger:
+ Hvorvidt en eksisterende installation af et demokatalog skal erstattes i baggrunden, spørg efter bekræftelse eller aldrig røre en eksisterende installation.
+Description-de.UTF-8: Richtlinie für das Ersetzen einer vorhandenen Demokatalog-Installation:
+ Sie können auswählen, ob eine vorhandene Installation des Demokatalogs ohne Nachfrage, auf Nachfrage oder niemals ersetzt werden soll.
+Description-es.UTF-8: Política al reemplazar los catálogos existentes de demostración:
+ Reemplazar de forma silenciosa una instalación existente de un catálogo de demostración, preguntar para confirmar o nunca tocar una instalación existente.
+Description-eu.UTF-8: Dagoen demostrazio katalogoaren ordezkatze politika:
+ Edo isiltasunean ordeztu demostrazio katalogo instalazioa, edo berrespena eskatu edo inoiz ez ordeztu dagoen instalazioa.
+Description-fi.UTF-8: Olemassa olevien esimerkkiluetteloiden korvauspolitiikka:
+ Valitse korvataanko olemassa oleva esimerkkiluettelo kysymättä, kysytäänkö vahvistus vai jätetäänkö olemassa oleva asennus aina rauhaan.
+Description-fr.UTF-8: Stratégie de remplacement des catalogues de démonstration :
+ Cette option permet de choisir si un catalogue de démonstration existant sera toujours remplacé sans avertissement, si une confirmation sera demandée ou si l'installation existante ne sera jamais modifiée.
+Description-gl.UTF-8: Política para substituír os catálogos de demostración existentes:
+ Se quere substituír en silencio unha instalación existente do catálogo de demostración, pedir unha confirmación ou nunca tocar unha instalación existente.
+Description-it.UTF-8: Regola per la sostituzione dei cataloghi dimostrativi esistenti:
+ Scegliere se si desidera sostituire automaticamente il catalogo dimostrativo installato, o se si desidera che venga chiesta conferma, oppure se si desidera che il catalogo dimostrativo installato non venga mai modificato.
+Description-nl.UTF-8: Beleid voor vervangen van bestaande demo-catalogussen:
+ Of u een bestaande demo-catalogus zonder meer wil vervangen, of u gevraagd wilt worden om een bevestiging, of u wilt dat een bestaande installatie altijd met rust gelaten wordt.
+Description-pt.UTF-8: Política para substituir catálogos de demonstração existentes:
+ Substituir silenciosamente uma instalação existente de catálogo, pedir por confirmação ou nunca tocar numa instalação existente.
+Description-ru.UTF-8: Политика замены существующих демонстрационных каталогов:
+ Молча заменять существующую установку демонстрационного каталога, запрашивать подтверждение или никогда не трогать существующую установку.
+Description-sv.UTF-8: Policy för att ersätta existerande demokataloger:
+ Huruvida en existerande demokataloginstallation ska ersättas utan information, efter bekräftelse eller aldrig.
+Description-vi.UTF-8: Chính sách về thay thế phân loại minh hoạ đã có :
+ Có nên thay thế im một bản cài đặt phân loại minh hoạ đã tồn tại, hoặc nhắc bạn xác nhận, hoặc không bao giờ sửa đổi một bản cài đặt đã có.
+
+Template: interchange-cat-standard/confirm
+Type: boolean
+Default: false
+Description: Replace the Interchange demo catalog?
+ There seems to already exist an Interchange demo catalog.
+Description-cs.UTF-8: Odstranit ukázkový katalog Interchange?
+ Zdá se, že ukázkový katalog Interchange již existuje.
+Description-da.UTF-8: Erstat demokataloget til Interchange?
+ Der ser ud til, at der allerede findes et demokatalog til Interchange.
+Description-de.UTF-8: Den Interchange-Demokatalog ersetzen?
+ Es scheint bereits ein Interchange-Demokatalog vorhanden zu sein.
+Description-es.UTF-8: ¿Desea reemplazar el catálogo de demostración de Interchange?
+ Parece que ya existe un catálogo de demostración de Interchange.
+Description-eu.UTF-8: Interchange demostrazio katalogoa ordeztu?
+ Dirudienez dagoeneko badago interchange demostrazio katalogoa.
+Description-fi.UTF-8: Korvataanko Interchangen esimerkkiluettelo?
+ Näyttää siltä, että järjestelmässä on jo Interchangen esimerkkiluettelo.
+Description-fr.UTF-8: Faut-il remplacer le catalogue de démonstration d'Interchange ?
+ Un catalogue de démonstration pour Interchange semble déjà exister.
+Description-gl.UTF-8: ¿Substituír o catálogo de demostración de Interchange?
+ Semella que xa existe un catálogo de demostración de Interchange.
+Description-it.UTF-8: Sostituire il catalogo dimostrativo di Interchange?
+ Sembra che un catalogo dimostrativo di Interchange esista già.
+Description-nl.UTF-8: Wilt u de Interchange demo-catalogus vervangen?
+ Er is al een Interchange demo-catalogus aanwezig.
+Description-pt.UTF-8: Substituir o catálogo de demonstração do Interchange?
+ Parece já existir um catálogo de demonstração do Interchange.
+Description-ru.UTF-8: Заменить демонстрационный каталог Interchange?
+ Похоже, что демонстрационный каталог Interchange уже существует.
+Description-sv.UTF-8: Vill du ersätta Interchanges demokatalog?
+ Det verkar redan finnas en demokatalog för Interchange.
+Description-vi.UTF-8: Thay thế phân loại minh hoạ Interchange ?
+ Có vẻ là một phân loại minh hoạ Interchange đã có.
+
+Template: interchange-cat-standard/vhost
+Type: string
+Default: 
+Description: Virtual host for the demo catalog:
+ You are running Interchange with "FullURL" enabled. Please specify the virtual host for the demo catalog.
+Description-cs.UTF-8: Virtuální počítač s ukázkovým katalogem:
+ Interchange vám běží s povoleným "FullURL". Zadejte prosím virtuální počítač s ukázkovým katalogem.
+Description-da.UTF-8: Virtuel vært for demokataloget:
+ Du kører Interchange med »FullURL« aktiveret. Angiv venligst den virtuelle vært for demokataloget.
+Description-de.UTF-8: Virtueller Host für den Demo-Katalog:
+ Sie betreiben Interchange mit aktiviertem »FullURL«. Bitte geben Sie den virtuellen Host für den Demo-Katalog an.
+Description-es.UTF-8: «Virtual host» del catálogo de demostración:
+ Está ejecutando Interchange con «FullURL» activado. Por favor, especifique el «virtual host» del catálogo de demostración.
+Description-fi.UTF-8: Esimerkkiluettelon virtuaalikone:
+ Ohjelmaa Interchange ajetaan asetuksella ”FullURL”. Anna esimerkkiluettelon virtuaalikone.
+Description-fr.UTF-8: Hôte virtuel pour le catalogue de démonstration d'Interchange :
+ Interchange est utilisé avec l'option « FullURL ». Il est nécessaire d'indiquer un nom d'hôte virtuel pour le catalogue de démonstration.
+Description-it.UTF-8: Host virtuale per il catalogo dimostrativo:
+ Interchange è in esecuzione con l'opzione «FullURL» abilitata. Specificare l'host virtuale per il catalogo dimostrativo.
+Description-pt.UTF-8: 'Host' virtual para o catálogo de demonstração:
+ Está a correr o Interchange com "FullURL" activado. Por favor especifique o 'host' virtual para o catálogo de demonstração.
+Description-ru.UTF-8: Виртуальный хост для демонстрационного каталога:
+ Вы используете Interchange с разрешённым "FullURL". Укажите виртуальный хост для демонстрационного каталога.
+Description-sv.UTF-8: Virtuell värd för demokatalogen:
+ Du kör Interchange med "FullURL" påslagen. Ange den virtuella värden för demokatalogen.
+Description-vi.UTF-8: Máy ảo cho phân loại minh hoạ:
+ Bạn đang chạy Interchange với chức năng « FullURL » (địa chỉ URL đầy đủ) được hiệu lực. Hãy ghi rõ máy ảo cho phân loại minh hoạ.
+
+Template: interchange-cat-standard/username
+Type: string
+Default: interchange
+Description: Username for this catalog's administration:
+ Please provide an username for administering the demo catalog. The
+ username must be at least 2 characters long and only contain letters,
+ digits, underscore, @ or the dot as characters.
+Description-cs.UTF-8: Uživatelské jméno pro správu katalogu.
+ Zadejte prosím uživatelské jméno pro administraci ukázkového katalogu. Uživatelské jméno musí být alespoň 2 znaky dlouhé a smí obsahovat pouze písmena, číslice, podtržítko, @ nebo tečku.
+Description-da.UTF-8: Brugernavn for dette katalogs administration:
+ Angiv venligst et brugernavn for administration af demokataloget. Brugernavnet skal være på mindst 2 tegn og må kun indeholde bogstaver A-Z, tal, understregning, @ eller punktum.
+Description-de.UTF-8: Benutzername für diese Katalogadministration:
+ Bitte geben Sie einen Benutzernamen für die Verwaltung des Demokatalogs ein. Der Benutzername muss mindestens zwei Zeichen lang sein und darf nur Buchstaben, Ziffern, den Unterstrich, @ oder den Punkt als Zeichen enthalten.
+Description-es.UTF-8: Nombre de usuario para la administración de este catálogo:
+ Proporcione un nombre de usuario para la administración del catálogo de demostración. El nombre de usuario debe tener al menos dos caracteres de longitud y sólo puede contener letras, números, subrayados, arrobas (@) o puntos.
+Description-eu.UTF-8: Katalogo honen kudeaketarako erabiltzaile-izena:
+ Mesedez idatzi katalogo kudeaketarako erabiltzaile-izen bat. Erabiltzaile-izenak behintzat bi karaktere luze eduki behar du eta letrak, zenbakiak, azpimarra, @ edo puntu karaktereaz bakarrik osaturik egon daiteke.
+Description-fi.UTF-8: Luettelon ylläpitäjän käyttäjätunnus:
+ Anna käyttäjätunnus esimerkkiluettelon ylläpitoa varten. Tunnuksen pitää olla vähintään 2 merkkiä pitkä ja sallittuja merkkejä ovat kirjaimet, numerot, alaviiva, piste (.) sekä @.
+Description-fr.UTF-8: Identifiant pour l'administration de ce catalogue :
+ Veuillez indiquer l'identifiant à utiliser pour l'administration du catalogue de démonstration. Cet identifiant doit comporter deux caractères minimum : seuls lettres, chiffres, caractère de soulignement (« _ »), « @ » et le point y sont autorisés.
+Description-gl.UTF-8: Usuario para a administración deste catálogo:
+ Indique un nome de usuario para administrar o catálogo de demostración. O usuario debe ter alomenos dous caracteres e conter só letras, números, guións baixos (_), arrobas (@) e puntos.
+Description-it.UTF-8: Nome utente per l'amministrazione di questo catalogo:
+ Fornire un nome utente per l'amministrazione del catalogo dimostrativo. Il nome utente deve consistere di almeno 2 caratteri e può contenere solo lettere, numeri, sottolineature, caratteri «@» o punti.
+Description-nl.UTF-8: Gebruikersnaam van de beheerder van deze catalogus:
+ Wat is de gebruikersnaam voor de beheerder van de demo-catalogus? Deze gebruikersnaam dient minstens uit 2 tekens lang te  zijn, en moet bestaan uit een combinatie van letters, cijfers, _ (underscores), . (punten), en @.
+Description-pt.UTF-8: Nome de utilizador para a administração deste catálogo:
+ Por favor dê um nome de utilizador para a administração do catálogo de demonstração. O nome de utilizador deve ter pelo menos dois caracteres e apenas ter letras, digitos, underscore, @ ou ponto.
+Description-ru.UTF-8: Имя пользователя для администрирования этого каталога:
+ Укажите имя пользователя для администрирования демонстрационного каталога. Оно должно быть минимум 2 символа длиной и содержать только буквы, цифры, подчёркивание, @ или точку.
+Description-sv.UTF-8: Användarnamn för den här katalogens administration:
+ Ange ett användarnamn för administration av demokatalogen. Användarnamnet måste vara åtminstone 2 tecken långt och får bara innehålla bokstäver, siffror, understreck, snabel-a och punkter.
+Description-vi.UTF-8: Tên người dùng để quản trị phân loại này:
+ Hãy cung cấp một tên người dùng để quản trị phân loại minh hoạ này. Tên người dùng phải chứa ít nhất hai ký tự, cũng chỉ chứa được chữ cái, chữ số, gạch dưới, @ hay dấu chấm.
+
+Template: interchange-cat-standard/password
+Type: password
+Default: pass
+Description: Password for this catalog's administration:
+ Please provide a password for administering the standard demo catalog.
+ Choose one which can not be easily guessed. Default is pass. The password 
+ must be at least 4 characters long and only contain letters, digits,
+ underscore @ or the dot as characters.
+Description-cs.UTF-8: Heslo pro administraci tohoto katalogu:
+ Zadejte prosím heslo pro administraci hlavní části ukázkového katalogu. Zvolte takové, které nelze snadno uhádnout. Výchozí hodnotou je pass. Heslo musí být dlouhé alespoň 4 znaky a smí obsahovat pouze písmena, číslice, podtržítko, @ nebo tečku.
+Description-da.UTF-8: Adgangskode for dette katalogs administration:
+ Angiv venligst en adgangskode for administration af standarddemokataloget. Vælg en adgangskode som ikke nemt kan gættes. Standard er pass. Adgangskoden skal være på mindst 4 tegn og må kun indeholde bogstaver A-Z, tal, understregning, @ eller punktum.
+Description-de.UTF-8: Passwort für diese Katalogadministration:
+ Bitte geben Sie ein Passwort für die Verwaltung des Standard-Demokatalogs ein. Das ausgewählte Passwort sollte nicht leicht erraten werden können. Das Wort »pass« ist die Voreinstellung. Das Passwort muss mindestens vier Zeichen lang sein und darf nur Buchstaben, Ziffern, den Unterstrich, @ oder den Punkt als Zeichen enthalten.
+Description-es.UTF-8: Contraseña para la administración de este catálogo:
+ Proporcione una contraseña para la administración del catálogo de demostración. Escoja una que no se pueda averiguar fácilmente. De forma predeterminada se utiliza «pass». La contraseña debe tener al menos cuatro caracteres de longitud y sólo puede contener letras, números, subrayados, arrobas (@) o puntos.
+Description-eu.UTF-8: Katalogo honen kudeaketarako pasahitza:
+ Mesedez zehaztu demostrazio katalogo estandarrarentzat pasahitz bat. Erraz asmatu ezin den bat hautatu beharko zenuke. Lehenetsia pass da. Pasahitzak behintzat 4 karaktereko luzera eduki behar du eta letrak, zenbakiak, azpimarra, @ edo puntu karaktereaz bakarrik osaturik egon daiteke.
+Description-fi.UTF-8: Luettelon ylläpitäjän salasana:
+ Anna salasana esimerkkiluettelon ylläpitoa varten. Valitse salasana, jota ei ole helppo arvata. Oletus on ”pass”. Salasanan tulee olla vähintään 4 merkkiä pitkä ja sallittuja merkkejä ovat kirjaimet, numerot, alaviiva, piste (.) sekä @.
+Description-fr.UTF-8: Mot de passe d'administration du catalogue :
+ Veuillez indiquer le mot de passe d'administration du catalogue initial de démonstration. Choisissez un mot de passe qui ne puisse pas facilement être deviné. Il doit comporter quatre caractères au minimum, suivis de lettres, chiffres, caractère de soulignement, « @ » ou un point.
+Description-gl.UTF-8: Contrasinal para a administración deste catálogo:
+ Indique un contrasinal para administrar o catálogo de demostración. Escolla un difícil de adiviñar. O contrasinal por defecto é "pass". O contrasinal debe ter alomenos catro caracteres e conter só letras, números, guións baixos (_), arrobas (@) e puntos.
+Description-it.UTF-8: Password per l'amministrazione di questo catalogo:
+ Fornire una password per l'amministratore del catalogo dimostrativo standard. Scegliere una password che non possa essere facilmente indovinata. La password predefinita è pass. La password deve consistere di almeno 4 caratteri e può contenere solo lettere, numeri, sottolineature, caratteri «@» o punti.
+Description-nl.UTF-8: Wachtwoord voor de beheerder van deze catalogus:
+ Wat is het wachtwoord voor de beheerder van de standaard demo-catalogus? Gelieve een moeilijk te raden wachtwoord te kiezen. De standaardwaarde is 'pass'. Het wachtwoord dient minstens 4 tekens lang te zijn en te bestaan uit een combinatie van cijfers, letters, _ (underscores), . (punten), en @.
+Description-pt.UTF-8: Palavra-passe para a administração deste catálogo:
+ Por favor indique uma palavra-passe para a administração do catálogo de demonstração. Escolha uma que não pode ser adivinhada com facilidade. Por omissão é pass. A palavra-passe deve ter pelo menos 4 caracteres e conter apenas letras, dígitos, underscore, @ ou ponto.
+Description-ru.UTF-8: Пароль для администрирования этого каталога:
+ Укажите пароль для администрирования стандартного демонстрационного каталога. Выберите такой, который нельзя легко угадать. Значение по умолчанию pass. Пароль должен быть минимум 4 символа длиной и содержать только буквы, цифры, подчёркивание, @ или точку.
+Description-sv.UTF-8: Lösenord för den här katalogens administration:
+ Ange ett lösenord för administration av standarddemokatalogen. Välj ett som inte är enkelt att gissa. Standard är 'pass'. Lösenordet måste vara åtminstone 4 tecken långt och får bara innehålla bokstäver, siffror, understreck, snabel-a och punkter.
+Description-vi.UTF-8: Mật khẩu để quản trị phân loại này:
+ Hãy cung cấp một mật khẩu để quản trị phân loại minh hoạ tiêu chuẩn. Để bảo vệ máy tính thì lúc nào cũng nên chọn một mật khẩu khó đoán. Mật khẩu mặc định là « pass » (rất dễ đoán). Mật khẩu phải chứa ít nhất bốn ký tự (dài hơn thì mạnh hơn), cũng chỉ chứa được chữ cái, chữ số, gạch dưới, @ hay dấu chấm.
+
+Template: interchange-cat-standard/demomode
+Type: boolean
+Default: true
+Description: Enable demo mode?
+Description-cs.UTF-8: Povolit ukázkový režim?
+Description-da.UTF-8: Aktiver demotilstand?
+Description-de.UTF-8: Demomodus aktivieren?
+Description-es.UTF-8: ¿Desea activar el modo de demostración?
+Description-eu.UTF-8: Demostrazio modua gaitu?
+Description-fi.UTF-8: Otetaanko esimerkkitila käyttöön?
+Description-fr.UTF-8: Faut-il activer le mode de démonstration ?
+Description-gl.UTF-8: ¿Activar o modo de demostración?
+Description-it.UTF-8: Abilitare la modalità di dimostrazione?
+Description-nl.UTF-8: Wilt u de demo-modus activeren?
+Description-pt.UTF-8: Activar o modo demonstração?
+Description-ru.UTF-8: Разрешить демонстрационный режим?
+Description-sv.UTF-8: Aktivera demoläge?
+Description-vi.UTF-8: Bật chế độ minh hoạ ?
+
+Template: interchange-cat-standard/locales
+Type: multiselect
+Choices: de_DE, nl_NL
+Description: Additional locales for the storefront:
+ The Interchange demo catalog is able to display the storefront in a number
+ of different languages. Each selected locale will increase the memory
+ footprint of the Interchange server processes, so it is recommended to
+ choose only locales which are really needed.
+Description-cs.UTF-8: Dodatečná místní nastavení pro výlohu:
+ Ukázkový katalog Interchange může zobrazovat výlohu v řadě různých jazyků. Čím více jazyků zvolíte, tím více operační paměti bude program potřebovat, takže se doporučuje vybrat pouze takové, které skutečně použijete.
+Description-da.UTF-8: Yderligere sprog for butiksfladen:
+ Demokataloget til Interchange kan vise butiksfladen i en række sprog. Hvert valgt sprog vil øge hukommelsesforbruget på processerne på Interchangeserveren, så det anbefales kun at vælge sprog som virkelig behøves.
+Description-de.UTF-8: Zusätzliche Ortsanpassungen (»locales«) für die Speicheroberfläche:
+ Der Interchange-Demokatalog kann dem Benutzer in verschiedenen Sprachen präsentiert werden. Jede ausgewählte Sprache erhöht den Hauptspeicherbedarf der Interchange-Prozesse. Wählen Sie deshalb bitte nur Sprachen aus, die Sie wirklich benötigen.
+Description-es.UTF-8: Localizaciones adicionales del escaparate:
+ El catálogo de demostración de Interchange es capaz de mostrar el escaparate en varios idiomas distintos. Cada localización seleccionada incrementará la memoria utilizada de los procesos del servidor de Interchange, por lo que se recomienda escoger sólo las localizaciones realmente necesarias.
+Description-eu.UTF-8: Dendarentzat lokal gehigarriak:
+ Interchange demo katalogoa denda hizkuntz ezberdinetan bistaratzeko gai da. Hautatutako lokal bakoitzak interchange zerbitzari prozesuaren memoria beharrak handituko ditu, beraz benetan behar diren lokalak bakarrik hautatzea gomendatzen da.
+Description-fi.UTF-8: Kauppasivun lisäkielet:
+ Interchangen esimerkkiluettelo voi näyttää kauppasivun useammalla kielellä. Jokainen valittu kieli lisää Interchange-palvelinprosessien muistin käyttöä, joten on suositeltavaa valita vain kielet, joita todella tarvitaan.
+Description-fr.UTF-8: Paramètres régionaux supplémentaires de l'interface du magasin :
+ Le catalogue de démonstration d'Interchange peut afficher l'interface du magasin dans plusieurs langues. Chaque jeu supplémentaire de paramètres régionaux choisi ici augmente l'occupation mémoire des processus du serveur. Il est donc recommandé de se limiter aux paramètres réellement nécessaires.
+Description-gl.UTF-8: Configuracións locais adicionais para o escaparate:
+ O catálogo de demostración de Interchange pode amosar o escaparate en varios idiomas. Cada configuración local ha aumentar a memoria ocupada polos procesos servidor de Interchange, así que se recomenda escoller só as configuracións locais necesarias.
+Description-it.UTF-8: Lingue addizionali per l'interfaccia del negozio:
+ Il catalogo dimostrativo di Interchange è in grado di mostrare l'interfaccia del negozio in diverse lingue. Ogni lingua selezionata aumenterà la quantità di memoria usata dai processi server di Interchange, per cui si raccomanda di scegliere solo le lingue veramente necessarie.
+Description-nl.UTF-8: Aanvullende lokalisaties voor de winkel:
+ De Interchange demo-catalogus kan de winkel in een aantal verschillende talen weergeven. Daar elke geselecteerde lokalisatie het geheugengebruik van de de Interchange-serverprocessen verhoogd is het aan te raden om enkel die lokalisaties te kiezen die echt nodig zijn.
+Description-pt.UTF-8: Locales adicionais para a montra:
+ O catálogo de demonstração do Interchange pode mostrar a montra em várias línguas. Cada locale seleccionado irá aumentar a memória usada pelos processos do servidor Interchange, portanto é recomendado que escolha apenas os locales que serão realmente necessários.
+Description-ru.UTF-8: Дополнительные локали для витрины:
+ Демонстрационный каталог Interchange может отображать витрину на различных языках. Каждая выбранная локаль увеличит память, занимаемую процессами сервера Interchange, так что рекомендуется выбрать только те локали, которые действительно необходимы.
+Description-sv.UTF-8: Ytterligare lokaler för butiksframsidan:
+ Interchanges demokatalog har möjlighet att visa butiksframsidan i ett antal olika språk. Varje vald lokal kommer öka minnesavtrycket för Interchanges serverprocess, så du bör bara välja lokaler som verkligen behövs.
+Description-vi.UTF-8: Miền địa phương bổ sung cho mặt hàng:
+ Phân loại minh hoạ Interchange có khả năng hiển thị mặt hàng (storefront) bằng một số ngôn ngữ khác nhau. Mỗi miền địa phương được chọn ở đây thì tăng kích cỡ bộ nhớ dùng bởi các tiến trình phục vụ Interchange, do đó khuyên bạn chọn chỉ những miền địa phương thật yêu cầu.
+
+Template: interchange-cat-standard/defaultlocale
+Type: select
+Choices: ${LOCALES}
+Default: en_US
+Description: Default locale for the storefront:
+ Please select the default locale for the Interchange demo catalog.
+Description-cs.UTF-8: Výchozí jazyk pro výlohu:
+ Zvolte prosím výchozí hodnotu locale pro ukázkový katalog Interchange.
+Description-da.UTF-8: Standardsprog for butiksfladen:
+ Vælg venligst standardsproget for demokataloget til Interchange.
+Description-de.UTF-8: Voreingestellte Ortsanpassung für die Speicheroberfläche:
+ Bitte wählen Sie die Standard-Ortsanpassung für den Interchange-Demokatalog aus.
+Description-es.UTF-8: Localización predeterminada del escaparate:
+ Escoja la localización predeterminada del catálogo de demostración de Interchange.
+Description-eu.UTF-8: Dendarako lehenetsiriko lokala:
+ Mesedez hautatu interchange demostrazio katalogoak erabiliko duen lokala.
+Description-fi.UTF-8: Kaupan oletuskieli:
+ Valitse Interchangen esimerkkiluettelon oletuskieli.
+Description-fr.UTF-8: Paramètres régionaux par défaut de l'interface du magasin :
+ Veuillez choisir les paramètres régionaux par défaut du catalogue de démonstration d'Interchange.
+Description-gl.UTF-8: Configuración local por defecto para o escaparate:
+ Escolla a configuración local por defecto para o catálogo de demostración de Interchange.
+Description-it.UTF-8: Lingua predefinita per l'interfaccia del negozio:
+ Selezionare la lingua predefinita per il catalogo dimostrativo di Interchange.
+Description-nl.UTF-8: Standaard lokalisatie voor de winkel:
+ Wat is de standaard lokalisatie voor de Interchange demo-catalogus?
+Description-pt.UTF-8: Locale por omissão da montra:
+ Por favor escolha o locale por omissão do catálogo de demonstração do Interchange.
+Description-ru.UTF-8: Локаль по умолчанию для витрины:
+ Выберите локаль по умолчанию для демонстрационного каталога Interchange.
+Description-sv.UTF-8: Standardlokal för butiksframsidan:
+ Välj standardlokalen för Interchanges demokatalog.
+Description-vi.UTF-8: Miền địa phương mặc định cho mặt hàng:
+ Hãy chọn miền địa phương mặc định cho phân loại minh hoạ Interchange.
+
+Template: interchange-cat-standard/dbtype
+Type: select
+Choices: PostgreSQL, MySQL
+Choices-cs.UTF-8: PostgreSQL, MySQL
+Choices-da.UTF-8: PostgreSQL, MySQL
+Choices-de.UTF-8: PostgreSQL, MySQL
+Choices-es.UTF-8: PostgreSQL, MySQL
+Choices-eu.UTF-8: PostgreSQL, MySQL
+Choices-fi.UTF-8: PostgreSQL, MySQL
+Choices-fr.UTF-8: PostgreSQL, MySQL
+Choices-gl.UTF-8: PostgreSQL, MySQL
+Choices-it.UTF-8: PostgreSQL, MySQL
+Choices-nl.UTF-8: PostgreSQL, MySQL
+Choices-pt.UTF-8: PostgreSQL, MySQL
+Choices-ru.UTF-8: PostgreSQL, MySQL
+Choices-sv.UTF-8: PostgreSQL, MySQL
+Choices-vi.UTF-8: PostgreSQL, MySQL
+Default: MySQL
+Description: DBMS for the demo catalog:
+ Please select the database type used for the demo catalog.
+Description-cs.UTF-8: DBMS pro ukázkový katalog:
+ Zvolte prosím typ databáze používané pro ukázkový katalog.
+Description-da.UTF-8: DBMS for demokataloget:
+ Vælg venligst databasetypen brugt for demokataloget.
+Description-de.UTF-8: DBMS für den Demo-Katalog:
+ Bitte wählen Sie den Datenbanktyp für den Demo-Katalog aus.
+Description-es.UTF-8: Sistema de gestión de base de datos (DBMS) del catálogo de demostración:
+ Escoja el tipo de la base de datos del catálogo de demostración.
+Description-fi.UTF-8: Tietokantapalvelin esimerkkiluetteloa varten:
+ Valitse esimerkkiluettelon tietokannan tyyppi.
+Description-fr.UTF-8: Gestionnaire de bases de données pour le catalogue de démonstration :
+ Veuillez choisir le type de base de données utilisée pour le catalogue de démonstration d'Interchange.
+Description-it.UTF-8: DBMS per il catalogo dimostrativo:
+ Selezionare il tipo di database utilizzato per il catalogo dimostrativo.
+Description-pt.UTF-8: SGBD para o catálogo de demonstração:
+ Por favor escolha o tipo de bases de dados usado para o catálogo de demonstração.
+Description-ru.UTF-8: DBMS для демонстрационного каталога:
+ Выберите тип базы данных для демонстрационного каталога.
+Description-sv.UTF-8: DBMS för demokatalogen:
+ Välj den databastyp som ska användas för demokatalogen.
+Description-vi.UTF-8: DBMS cho phân loại minh hoạ:
+ Hãy chọn kiểu cơ sở dữ liệu dùng cho phân loại minh hoạ.
+
+Template: interchange-cat-standard/dbname
+Type: string
+Default: standard
+Description: Database name:
+ Please select the name of the database.
+Description-cs.UTF-8: Jméno databáze:
+ Zadejte prosím jméno použité databáze.
+Description-da.UTF-8: Databasenavn:
+ Vælg venligst navnet på databasen.
+Description-de.UTF-8: Datenbankname:
+ Bitte wählen Sie den Namen der Datenbank aus.
+Description-es.UTF-8: Nombre de la base de datos:
+ Escoja el nombre de la base de datos.
+Description-fi.UTF-8: Tietokannan nimi:
+ Valitse nimi tietokannalle.
+Description-fr.UTF-8: Nom de la base de données :
+ Veuillez choisir le nom de la base de données.
+Description-it.UTF-8: Nome del database:
+ Selezionare il nome del database.
+Description-pt.UTF-8: Nome da base de dados:
+ Por favor escolha o nome da base de dados.
+Description-ru.UTF-8: Имя базы данных:
+ Выберите имя базы данных.
+Description-sv.UTF-8: Databasnamn:
+ Välj namn på databasen.
+Description-vi.UTF-8: Tên cơ sở dữ liệu :
+ Hãy chọn tên của cơ sở dữ liệu (CSDL).
+
+Template: interchange-cat-standard/dbuser
+Type: string
+Default: interchange
+Description: Database user:
+ Please specify the username for connecting to the database.
+Description-cs.UTF-8: Databázový uživatel:
+ Zadejte prosím jméno uživatele databáze.
+Description-da.UTF-8: Databasebruger:
+ Angiv venligst brugernavnet for forbindelsen til databasen.
+Description-de.UTF-8: Datenbankbenutzer:
+ Bitte geben Sie den Benutzernamen für Verbindungen zur Datenbank an.
+Description-es.UTF-8: Usuario de la base de datos:
+ Introduzca el nombre de usuario para conectarse a la base de datos.
+Description-fi.UTF-8: Tietokantakäyttäjä::
+ Anna käyttäjätunnus, jota käytetään otettaessa yhteyttä tietokantaan.
+Description-fr.UTF-8: Identifiant de connexion à la base de données :
+ Veuillez choisir l'identifiant à utiliser pour la connexion au gestionnaire de bases de données.
+Description-it.UTF-8: Utente del database:
+ Specificare il nome utente che sarà utilizzato per collegarsi al database.
+Description-pt.UTF-8: Nome do utilizador na base de dados:
+ Por favor especifique o nome de utilizador para se ligar à base de dados.
+Description-ru.UTF-8: Имя пользователя:
+ Введите имя пользователя для подключения к базе данных.
+Description-sv.UTF-8: Databasanvändare:
+ Ange användarnamnet för anslutning till databasen.
+Description-vi.UTF-8: Người dùng CSDL:
+ Hãy ghi rõ tên người dùng để kết nối đến cơ sở dữ liệu.
+
+Template: interchange-cat-standard/dbpass
+Type: password
+Description: Database password:
+ Please specify the password for connecting to the database.
+Description-cs.UTF-8: Heslo:
+ Zadejte prosím heslo sloužící k připojení do databáze.
+Description-da.UTF-8: Adgangskode for database:
+ Angiv venligst adgangskoden for forbindelsen til databasen.
+Description-de.UTF-8: Datenbankpasswort:
+ Bitte geben Sie das Passwort für Verbindungen zur Datenbank an.
+Description-es.UTF-8: Contraseña de la base de datos:
+ Introduzca la contraseña para conectarse a la base de datos.
+Description-fi.UTF-8: Tietokannan salasana:
+ Anna salasana, jota käytetään otettaessa yhteyttä tietokantaan.
+Description-fr.UTF-8: Mot de passe :
+ Veuillez indiquer le mot de passe pour l'identifiant de connexion à la base de données.
+Description-it.UTF-8: Password del database:
+ Specificare la password che sarà utilizzata per collegarsi al database.
+Description-pt.UTF-8: Palavra-passe da base de dados:
+ Por favor especifique a palavra-passe para se ligar à base de dados.
+Description-ru.UTF-8: Пароль к базе данных:
+ Введите пароль для подключения к базе данных.
+Description-sv.UTF-8: Databaslösenord:
+ Ange lösenordet för anslutning till databasen.
+Description-vi.UTF-8: Mật khẩu CSDL:
+ Hãy ghi rõ mật khẩu để kết nối đến cơ sở dữ liệu.

@@ -1,0 +1,375 @@
+
+Template: fp-compiler/rename_cfg
+Type: boolean
+Default: true
+Description: Rename "/etc/fpc.cfg" to "/etc/fpc.cfg.bak"?
+ FPC now supports having multiple versions installed on the same system.
+ The update-alternatives command can be used to set a default version for
+  * fpc (the compiler);
+  * fpc.cfg (the configuration file);
+  * fp-utils (the helper tools).
+ .
+ Whatever version you may choose as default, the configuration files are
+ always backward compatible, so it should always be safe to use the latest
+ version.
+ .
+ In order to use the alternatives system on the system wide FPC configuration
+ file you must accept renaming "/etc/fpc.cfg"; otherwise you will need to
+ manage this manually by yourself.
+Description-cs.UTF-8: Přejmenovat "/etc/fpc.cfg" na "/etc/fpc.cfg.bak"?
+ FPC nyní podporuje možnost mít na stejném systému nainstalováno vícero verzí. Příkazem update-alternatives lze nastavit výchozí verze pro
+  * fpc (kompilátor);
+  * fpc.cfg (konfigurační soubor);
+  * fp-utils (pomocné nástroje).
+ .
+ Bez ohledu na to, že si můžete vybrat výchozí verzi, jsou konfigurační soubory vždy zpětně kompatibilní, takže by mělo být vždy bezpečné použít nejnovější verzi.
+ .
+ Pokud chcete, aby se v systému pro konfigurační soubor FPC používal systém alternativ, musíte přijmout přejmenování souboru "/etc/fpc.cfg"; jinak bude nutné, aby jste si jej spravovali sami.
+Description-da.UTF-8: Omdøb »/etc/fpc.cfg« til »/etc/fpc.cfg.bak«?
+ FPC understøtter nu at der er installeret flere versioner på det samme system. Kommandoen update-alternatives kan bruges til at angive en standardversion for
+  * fpc (kompileren);
+  * fpc.cfg (konfigurationsfilen);
+  * fp-utils (hjælpeværktøjerne).
+ .
+ Uanset versionen du vælger som standard, så er konfigurationsfilerne altid bagud kompatible, så det bør være sikkert at bruge den seneste version.
+ .
+ For at bruge systemet for alternativerne på den for hele systemet brugte FPC-konfigurationsfil, så skal du acceptere omdøbelse af »/etc/fpc.cfg«; ellers skal du selv håndtere dette manuelt.
+Description-de.UTF-8: »/etc/fpc.cfg« in »/etc/fpc.cfg.bak« umbenennen?
+ FPC unterstützt nun mehrere auf demselben System installierte Versionen. Der Befehl »update-alternatives« kann zum Setzen einer Standardversion für
+  * fpc (den Compiler),
+  * fpc.cfg (die Konfigurationsdatei) und
+  * fp-utils (die Hilfswerkzeuge)
+ benutzt werden.
+ .
+ Egal welche Version als Vorgabe gewählt wird, die Konfigurationsdateien sind immer abwärtskompatibel, so dass die Verwendung der neuesten Version stets sicher möglich sein sollte.
+ .
+ Um das Alternatives-System auf die systemweite Konfigurationsdatei anzuwenden, müssen Sie dem Umbenennen von »/etc/fpc.cfg« zustimmen, andernfalls müssen Sie dies selbst verwalten.
+Description-es.UTF-8: ¿Desea renombrar «/etc/fpc.cfg» a «/etc/fpc.cfg.bak»?
+ FPC ahora puede tener múltiples versiones instaladas en el mismo sistema. Puede utilizar la orden «update-alternatives» para definir la versión predeterminada de:  * fpc (el compilador);
+  * fpc.cfg (el archivo de configuración);
+  * fp-utils (las heramientas de ayuda).
+ .
+ Los archivos de configuración siempre son compatibles con versiones anteriores sin importar la versión que elija como predeterminada, por lo que siempre debería ser seguro utilizar la última versión.
+ .
+ Debe aceptar cambiar el nombre de «/etc/fpc.cfg» para utilizar el sistema de alternativas en la configuración de FPC para todo el equipo, de lo contrario deberá administrarlo a mano por su cuenta.
+Description-fr.UTF-8: Faut-il renommer « /etc/fpc.cfg » en « /etc/fpc.cfg.bak » ?
+ Plusieurs versions de FPC peuvent maintenant être installées sur le même système. La commande update-alternatives permet de définir une version par défaut pour :
+  - fpc (le compilateur) ;
+  - fpc.cfg (le fichier de configuration) ;
+  - fp-utils (les outils d'assistance).
+ .
+ Quelle que soit la version choisie par défaut, les fichiers de configuration sont toujours rétrocompatibles, il devrait donc être toujours possible d'utiliser la dernière version.
+ .
+ Afin d’utiliser le système d’alternatives pour le fichier de configuration global de FPC, vous devez accepter de renommer « /etc/fpc.cfg », sinon vous devrez gérer cela vous-même.
+Description-hu.UTF-8: "/etc/fpc.cfg" átnevezése erre: "/etc/fpc.cfg.bak"?
+ Az FPC támogatja több változat egyidejű telepítését ugyanarra a gépre. Az update-alternatives parancs használható az alapértelmezett változat kiválasztására a következőkhöz:
+  * fpc (a fordító);
+  * fpc.cfg (a beállítások fájlja);
+  * fp-utils (a segédeszközök).
+ .
+ Bármely változatot szeretné alapértelmezetté tenni, a beállítási fájlok mindig visszafelé kompatibilisek, így nyugodtan használhatja a legutóbbit.
+ .
+ Az alternatív FPC beállítások rendszerének egész rendszerre kiterjedő használatához el kell fogadnia a(z) "/etc/fpc.cfg" fájl átnevezését; máskülönben saját kezűleg kell ezt kiviteleznie.
+Description-it.UTF-8: Rinominare «/etc/fpc.cfg» in «/etc/fpc.cfg.bak»?
+ FPC permette adesso di avere più versioni installate sullo stesso sistema. Il comando update-alternatives può essere usato per impostare una versione predefinita per
+  * fpc (il compilatore);
+  * fpc.cfg (il file di configurazione);
+  * fp-utils (gli strumenti ausiliari).
+ .
+ Indipendentemente da quale versione si scelga come predefinita, i file di configurazione sono sempre compatibili all'indietro, perciò dovrebbe in ogni caso essere sicuro scegliere di usare la versione più recente.
+ .
+ Per usare il sistema di alternative per il file di configurazione FPC a livello di sistema, si deve accettare di rinominare «/etc/fpc.cfg»; in caso contrario si dovrà gestire la cosa da soli manualmente.
+Description-ja.UTF-8: 「/etc/fpc.cfg」を「/etc/fpc.cfg.bak」に変更しますか?
+ FPC は現在同一システムに複数バージョンが混在することをサポートしています。update-alternatives コマンドを使って、以下のファイルにデフォルトのバージョンをセットすることが可能です
+  * fpc (コンパイラ)
+  * fpc.cfg (設定ファイル)
+  * fp-utils (補助ツール)
+ .
+ デフォルトにどのバージョンを選んでも、設定ファイルは常に後方互換なので、最新版の使用はいつでも安全です。
+ .
+ システムワイドの FPC 設定ファイルにより代替システムを使用する場合、「/etc/fpc.cfg」ファイルの改名を受け入れないといけません。受け入れない場合は手作業で自ら管理する必要があります。
+Description-nl.UTF-8: Hernoem "/etc/fpc.cfg" naar "/etc/fpc.cfg.bak"?
+ FPC ondersteunt het nu dat meerdere versies simultaan geïnstalleerd zijn. Het commando update-alternatives kan gebruikt worden om de standaardversie in te stellen voor:
+  * fpc (de compiler)
+  * fpc.cfg (het configuratiebestand)
+  * fp-utils (de hulpgereedschappen).
+ .
+ Welke versie u ook als standaard kiest, de configuratiebestanden zijn altijd achterwaarts verenigbaar. Het zou dus altijd veilig moeten zijn om de laatste versie te gebruiken.
+ .
+ Als u het alternatieven-systeem wilt gebuiken voor het systeembrede configuratiebestand van FPC, dan is het noodzakelijk dat u het hernoemen van "/etc/fpc.cfg" accepteert. Als u dat niet doet, zult u dit handmatig moeten afhandelen.
+Description-pl.UTF-8: Zmienić nazwę pliku "/etc/fpc.cfg" na "/etc/fpc.cfg.bak"?
+ FPC obsługuje obecnie instalację wielu wersji w tym samym systemie. Polecenie update-alternatives może zostać użyte do wybrania domyślnej wersji do
+  * fpc (kompilatora),
+  * fpc.cfg (pliku konfiguracyjnego),
+  * fp-utils (narzędzi pomocniczych).
+ .
+ Niezależnie od wyboru wersji domyślnej, pliki konfiguracyjne są zawsze wstecznie kompatybilne, więc korzystanie z najnowszej wersji powinno być całkowicie bezpieczne.
+ .
+ Aby używać systemu alternatyw na poziomie systemowego pliku konfiguracyjnego FPC, konieczne jest zaakceptowanie zmiany nazwy "/etc/fpc.cfg" - w przeciwnym razie konieczne będzie samodzielne zarządzanie wspomnianym plikiem.
+Description-pt.UTF-8: Alterar o nome de "/etc/fpc.cfg" para "/etc/fpc.cfg.bak"?
+ O FPC suporta agora múltiplas versões instaladas no mesmo sistema. O comando update-alternatives pode ser utilizado para definir a versão predefinida para
+  * fpc (o compilador)
+  * fpc.cfg (o ficheiro do configuração)
+  * fp-utils (as ferramentas de ajuda).
+ .
+ Qualquer que seja a versão que escolha como predefinição, os ficheiros de configuração são sempre compatíveis com anteriores, deste modo deverá ser sempre seguro usar a versão mais recente.
+ .
+ De modo a usar o sistema de alternativas abrangendo todo o sistema, deverá aceitar a mudança de nome do ficheiro de configuração do FPC, para "/etc/fpc.cfg"; de outro modo terá que você fazê-lo manualmente.
+Description-pt_BR.UTF-8: Renomear "/etc/fpc.cfg" para "/etc/fpc.cfg.bak"?
+ Agora o FPC suporta ter múltiplas versões instaladas no mesmo sistema. O comando update-alternatives pode ser usado para escolher uma versão padrão para:
+  * fpc (o compilador);
+  * fpc.cfg (o arquivo de configuração);
+  * fp-utils (as ferramentas de apoio).
+ .
+ Para qualquer versão que você escolher como padrão, os arquivos de configuração serão sempre retro-compatíveis, por isso deve ser sempre seguro usar a última versão.
+ .
+ Para utilizar o sistema de alternativas no arquivo global do sistema de configuração do FPC, você precisa aceitar renomear "/etc/fpc.cfg"; caso contrário, você precisará gerenciar isto manualmente por si mesmo.
+Description-ru.UTF-8: Переименовать «/etc/fpc.cfg» в «/etc/fpc.cfg.bak»?
+ Теперь в систему можно установить сразу несколько версий FPC. Для выбора версии по умолчанию можно использовать команду update-alternatives. Можно выбрать разный:
+  * fpc (компилятор);
+  * fpc.cfg (файл настройки);
+  * fp-utils (вспомогательные инструменты).
+ .
+ Какую бы версию вы не выбрали, файлы настройки всегда обратно совместимы, поэтому можно всегда без опаски выбирать самую новую версию.
+ .
+ Чтобы использовать систему альтернатив системный файла настройки FPC нужно разрешить переименовывать в «/etc/fpc.cfg»; в противном случае вам каждый раз нужно будет делать это вручную.
+Description-sk.UTF-8: Premenovať „/etc/fpc.cfg” na „/etc/fpc.cfg.bak”?
+ FPC teraz podporuje viacero nainštalovaných verzií na jednom stroji. Na nastavenie predvolenej verzie možno použiť príkaz update-alternatives pre
+  * fpc (kompilátor);
+  * fpc.cfg (konfiguračný súbor);
+  * fp-utils (pomocné nástroje).
+ .
+ Ako predvolenú môžete zvoliť ktorúkoľvek verziu, konfiguračné súbory sú vždy spätne kompatibilné, takže by malo byť vždy bezpečné používať najnovšiu verziu.
+ .
+ Aby ste mohli používať systém alternatív na systémový konfiguračný súbor FPC, musíte potvrdiť premenovanie „/etc/fpc.cfg”; inak to budete musieť spravovať manuálne.
+Description-sv.UTF-8: Byt namn på "/etc/fpc.cfg" till "/etc/fpc.cfg.bak"?
+ FPC har nu stöd för att ha flera versioner installerade på samma system. Kommandot update-alternatives kan användas för att sätta en standardversion för
+  * fpc (kompileraren);
+  * fpc.cfg (inställningsfilen);
+  * fp-utils (hjälpverktygen).
+ .
+ Inställningsfilerna fungerar på äldre versioner oberoende vilken version du anger som standard, därför är senaste versionen som standard ett säkert val.
+ .
+ För att kunna använda alternativsystemet för systemets inställningsfil för FPC måste du tillåta att "/etc/fpc.cfg" byter namn annars behöver du hantera detta manuellt.
+
+Template: fp-compiler/windres-select
+Type: select
+Choices: ${choices}, Select manually
+Choices-da.UTF-8: ${choices}, Vælg manuelt
+Choices-de.UTF-8: ${choices}, Manuelle Auswahl
+Choices-es.UTF-8: ${choices}, Seleccionar manualmente
+Choices-fr.UTF-8: ${choices}, Sélectionnez vous-même
+Choices-it.UTF-8: ${choices}, Selezione manuale
+Choices-ja.UTF-8: ${choices}, 手作業で指定する
+Choices-nl.UTF-8: ${choices}, Handmatig selecteren
+Choices-pl.UTF-8: ${choices}, Wybierz ręcznie
+Choices-pt.UTF-8: ${choices}, Seleccionar Manualmente
+Choices-pt_BR.UTF-8: ${choices}, Selecionar manualmente
+Choices-ru.UTF-8: ${choices}, Указать вручную
+Choices-sk.UTF-8: ${choices}, Vybrať manuálne
+Choices-sv.UTF-8: ${choices}, Manuell hantering
+Default: Select manually
+Description: Default MS Windows .rc resource compiler:
+ FPC supports compiling programs that embed resources as MS Windows
+ .rc-format files on all platforms where the MinGW windres tool is available.
+ .
+ In order to be able to compile projects using .rc files, you need first to
+ manually install the package mingw32-binutils. mingw32-binutils is suggested
+ by fp-compiler but not pulled in automatically.
+ .
+ If you want to enter a custom .rc file compiler that does not appear in this
+ list or if you simply want to disable this feature, please select
+ "Select manually".
+Description-cs.UTF-8: Výchozí kompilátor zdrojových souborů .rc pro MS Windows:
+ FPC podporuje kompilování programů založených na zdrojových souborech MS Windows ve formátu .rc.
+ .
+ V případě, že chcete mít možnost kompilovat projekty používající soubory .rc, budete v první řadě muset ručně nainstalovat balíček mingw32-binutils. mingw32-binutils je navrhován kompilátorem fp-compiler, ale automaticky jej neinstaluje.
+ .
+ Pokud chcete vložit vlastní kompilátor souborů .rc, který se na tomto seznamu nenachází, nebo pokud tuto funkci chcete prostě zakázat, zvolte prosím "Select manually".
+Description-da.UTF-8: Standard for MS Windows .rc-ressourcekompiler:
+ FPC understøtter kompilering af programmer, som indlejrer ressourcer som MS Windows .rc-format-filer på alle platforme hvor MinGW windres-værktøjet er tilgængeligt.
+ .
+ For at kunne kompilere projekter med brug af .rc-filer, så skal du først manuelt installere pakken mingw32-binutils. Mingw32-binutils foreslås af fp-compiler men installeres ikke automatisk.
+ .
+ Hvis du ønsker at indtaste en tilpasset .rc-fil-kompiler, som ikke fremgår af denne liste eller hvis du simpelthen ønsker at deaktivere denne funktion, så vælg »Vælg manuelt«.
+Description-de.UTF-8: Standard-Compiler für .rc-Ressourcen unter MS Windows:
+ FPC unterstützt Kompilierprogramme, die Ressourcen als Dateien im .rc-Format von MS Windows auf allen Plattformen einbetten, auf denen das MinGW-Windres-Werkzeug verfügbar ist.
+ .
+ Um Projekte mittels .rc-Dateien kompilieren zu können, müssen Sie zuerst das Paket »mingw32-binutils« manuell installieren. »mingw32-binutils« wird durch »fp-compiler« vorgeschlagen, aber nicht automatisch bezogen.
+ .
+ Falls Sie einen benutzerdefinierten Compiler für .rc-Dateien eingeben möchten, der nicht in dieser Liste erscheint oder falls Sie diese Funktionalität deaktivieren wollen, wählen Sie bitte »Manuelle Auswahl«.
+Description-es.UTF-8: Compilador predeterminado de recursos .rc de MS Windows:
+ FPC puede compilar programas que incluyen recursos en archivos con formato .rc de MS Windows en todas las plataformas en las que esté disponible la herramienta «windres» de MinGW.
+ .
+ Para poder compilar proyectos que utilizan archivos .rc, primero debe instalar el paquete mingw32-binutils. El paquete fp-compiler sugiere el paquete mingw32-binutils, pero no se lo instalará automáticamente.
+ .
+ Si desea utilizar un compilador de archivos .rc personalizado que no se encuentra en esta lista o si desea desactivar esta funcionalidad, seleccione «Seleccionar manualmente».
+Description-fr.UTF-8: Compilateur de ressources .rc MS Windows par défaut :
+ FPC permet de compiler des programmes contenant des ressources au format .rc de MS Windows sur toutes les plateformes où l’outil MinGW windres est disponible.
+ .
+ Pour pouvoir compiler des projets utilisant des fichiers .rc, vous devez d’abord installer vous-même le paquet mingw32-binutils. Ce paquet est en effet seulement suggéré par fp-compiler et n’est donc pas installé par défaut.
+ .
+ Pour sélectionner un compilateur de fichiers .rc personnalisé qui n’est pas présent dans cette liste, ou simplement pour désactiver cette fonctionnalité, veuillez choisir « Sélectionnez vous-même ».
+Description-hu.UTF-8: Alapértelmezett MS Windows .rc erőforrásfordító:
+ Az FPC támogatja olyan programok fordítását, melyek beágyazott MS Windows .rc formátumú erőforrásfájlokat tartalmaznak, minden olyan platformon ahol a MinGW windres eszköz elérhető.
+ .
+ Olyan projektek fordításához, melyek .rc fájlokat használnak, kézzel kell telepítenie a mingw32-binutils csomagot. A mingw32-binutils ajánlott az fp-compiler csomaghoz, de nincs automatikusan telepítve.
+ .
+ Ha egyéni .rc fájl fordítót szeretne, mely nem szerepel e listában vagy egyszerűen nem szeretné használni e lehetőséget, válassza a "Kézi kiválasztás"-t!
+Description-it.UTF-8: Compilatore predefinito di risorse .rc di MS Windows:
+ FPC permette la compilazione di programmi che incorporano risorse come file in formato .rc di MS Windows su tutte le piattaforme su cui è disponibile lo strumento MinGW windres.
+ .
+ Per poter compilare i progetti che usano file .rc, è necessario installare prima manualmente il pacchetto mingw32-binutils. mingw32-binutils è suggerito da fp-compiler, ma non viene richiamato automaticamente.
+ .
+ Se si desidera indicare un compilatore di file .rc personalizzato che non appare in questo elenco o se si desidera semplicemente disabilitare questa funzionalità, selezionare «Selezione manuale»
+Description-ja.UTF-8: デフォルトの MS Windows .rc リソースコンパイラ:
+ FPC は MS Windows の .rc 形式のファイルにリソースを埋め込んだプログラムの、MinGW windres ツールが利用できるあらゆるプラットフォーム上でのコンパイルをサポートしています。
+ .
+ .rc ファイルを使っているプロジェクトをコンパイルできるようにするためにはまず mingw32-binutils パッケージを手作業でインストールする必要があります。mingw32-binutils は fp-compiler で提案されていますが自動的にインストールはされません。
+ .
+ 一覧に表示されない独自の .rc ファイルのコンパイラを指定したい、あるいはこの機能を単に無効化したい場合は、「手作業で指定する」を選択ください。
+Description-nl.UTF-8: Standaardcompiler voor MS-Windows .rc-bronnen:
+ Op alle platformen waar MinGW windres beschikbaar is, ondersteunt FPC het compileren van programma's die bronnen inbouwen als MS-Windowsbestanden van het ".rc" formaat.
+ .
+ Om projecten te kunnen compileren die gebruik maken van .rc-bestanden, is het nodig dat het pakket mingw32-binutils is geïnstalleerd. mingw32-binutils wordt gesuggereerd door fp-compiler maar wordt niet automatisch geselecteerd voor installatie.
+ .
+ Selecteer "Handmatig selecteren" als u een compiler voor .rc-bestanden wilt invoeren die niet in de lijst voorkomt of als u deze functionaliteit simpelweg wilt uitschakelen.
+Description-pl.UTF-8: Domyślny kompilator zasobu .rc MS Windows:
+ FPC obsługuje programy kompilujące które osadzają zasoby w formacie .rc MS Windows na wszystkich platformach na których dostępne jest narzędzie MinGW windres.
+ .
+ Aby móc kompilować projekty za pomocą plików .rc konieczna jest uprzednia ręczna instalacja pakietu mingw32-binutils. Jest to zależność pakietu mingw32-binutils na poziomie "poleca", lecz nie jest ona wybierana automatycznie.
+ .
+ Aby wprowadzić własny kompilator plików .rc nie uwidoczniony na tej liście lub aby wyłączyć tę funkcję, proszę wybrać "Wybierz ręcznie".
+Description-pt.UTF-8: Compilador predefinido de recursos .rc do MS Windows:
+ O FPC suporta compilar programas que têm embebidos recursos como ficheiros de formato .rc do MS Windows em todas as plataformas onde a ferramenta MinGW windres esteja disponível.
+ .
+ De modo a ser capaz de compilar projectos que usem ficheiros .rc, primeiro precisa de instalar manualmente o pacote mingw32-binutils. O mingw32-binutils é sugerido pelo fp-compiler mas não adicionado automaticamente.
+ .
+ Se desejar adicionar um compilador personalizado de ficheiros .rc que não aparece nesta lista ou se simplesmente deseja desactivar esta funcionalidade, por favor escolha "Seleccionar Manualmente".
+Description-pt_BR.UTF-8: Compilador de recurso .rc MS Windows padrão:
+ O FPC tem suporte a compilar programas que incorporam recursos como arquivos no formato .rc do MS Windows em todas as plataformas onde a ferramenta MinGW windres estiver disponível.
+ .
+ Para poder compilar projetos usando arquivos .rc, primeiro você precisa instalar manualmente o pacote mingw32-binutils. O mingw32-binutils é sugerido pelo fp-compiler, mas não é trazido automaticamente.
+ .
+ Se você quiser informar um compilador de arquivos .rc personalizado que não aparece nesta lista ou se você simplesmente quiser desabilitar esta característica, por favor, selecione "Selecionar manualmente".
+Description-ru.UTF-8: Компилятор ресурсов MS Windows .rc по умолчанию:
+ FPC поддерживает программы компиляции, которые встраивают файлы ресурсов (такие как MS Windows .rc) на всех платформах, где доступна программа MinGW windres.
+ .
+ Чтобы можно было компилировать проекты с файлами .rc, во-первых, вам нужно вручную установить mingw32-binutils. Наличие пакета mingw32-binutils предполагается fp-compiler, но он не вытягивается автоматически.
+ .
+ Если вы хотите указать другой компилятор файлов .rc, которого нет в списке или хотите совсем отключить эту возможность, выберите «Указать вручную».
+Description-sk.UTF-8: Predvolený kompilátor .rc resource MS Windows:
+ FPC podporuje programy na zostavovanie, ktoré zahrnú zdroje ako súbory vo formáte MS Windows .rc na všetkých platformách, kde je dostupný nástroj MinGW windres.
+ .
+ Aby ste mohli zostavovať projekty pomocou pomocou súborov .rc, musíte najprv manuálne nainštalovať balík mingw32-binutils. Balík mingw32-binutils je navrhovaný balíkom fp-compiler, ale nie je zvolený automaticky.
+ .
+ Ak chcete zadať vlastný kompilátor súboru .rc, ktorý nie je v tomto zozname, alebo ak chcete jednoducho vypnúť túto vlastnosť, prosím, vyberte možnosť „Vybrať manuálne”.
+Description-sv.UTF-8: Standardkompilator för MS Windows .rc-resurser:
+ FPC har stöd för kompilering av program som bäddar in resurser som MS Windows .rc-format-filer på alla plattformar där MinGW windres-verktyg finns tillgängligt.
+ .
+ För att kunna kompilera projekt med .rc-filer behöver du först manuellt installera paketet mingw32-binutils. mingw32-binutils föreslås av fp-compiler men installeras inte automatiskt.
+ .
+ Om du vill ange en alternativ kompilator för .rc-filer som inte visas i denna lista eller om du helt enkelt vill avaktivera den här funktionen ange "Manuell hantering".
+
+Template: fp-compiler/windres
+Type: string
+Default:
+Description: Default MS Windows .rc resource compiler:
+ FPC supports compiling programs that embed resources as MS Windows
+ .rc-format files on all platforms where the MinGW windres tool is available.
+ .
+ In order to be able to compile projects using .rc files, you need first to
+ manually install the package mingw32-binutils. mingw32-binutils is suggested
+ by fp-compiler but not pulled in automatically.
+ .
+ If you don't want to use a default .rc file compiler, leave this blank.
+Description-cs.UTF-8: Výchozí kompilátor zdrojových souborů .rc pro MS Windows:
+ FPC podporuje kompilování programů založených na zdrojových souborech MS Windows ve formátu .rc.
+ .
+ V případě, že chcete mít možnost kompilovat projekty používající soubory .rc, budete v první řadě muset ručně nainstalovat balíček mingw32-binutils. mingw32-binutils je navrhován kompilátorem fp-compiler, ale automaticky jej neinstaluje.
+ .
+ Pokud výchozí kompilátor souborů .rc nechcete používat, ponechte políčko prázdné.
+Description-da.UTF-8: Standard for MS Windows .rc-ressourcekompiler:
+ FPC understøtter kompilering af programmer, som indlejrer ressourcer som MS Windows .rc-format-filer på alle platforme hvor MinGW windres-værktøjet er tilgængeligt.
+ .
+ For at kunne kompilere projekter med brug af .rc-filer, så skal du først manuelt installere pakken mingw32-binutils. Mingw32-binutils foreslås af fp-compiler men installeres ikke automatisk.
+ .
+ Hvis du ikke ønsker at bruge en standard .rc-fil-kompiler, så efterland tom.
+Description-de.UTF-8: Standard-Compiler für .rc-Ressourcen unter MS Windows:
+ FPC unterstützt Kompilierprogramme, die Ressourcen als Dateien im .rc-Format von MS Windows auf allen Plattformen einbetten, auf denen das MinGW-Windres-Werkzeug verfügbar ist.
+ .
+ Um Projekte mittels .rc-Dateien kompilieren zu können, müssen Sie zuerst das Paket »mingw32-binutils« manuell installieren. »mingw32-binutils« wird durch »fp-compiler« vorgeschlagen, aber nicht automatisch bezogen.
+ .
+ Falls Sie keinen Standard-Compiler für .rc-Dateien verwenden möchten, lassen Sie dies leer.
+Description-es.UTF-8: Compilador predeterminado de recursos .rc de MS Windows:
+ FPC puede compilar programas que incluyen recursos en archivos con formato .rc de MS Windows en todas las plataformas en las que esté disponible la herramienta «windres» de MinGW.
+ .
+ Para poder compilar proyectos que utilizan archivos .rc, primero debe instalar el paquete mingw32-binutils. El paquete fp-compiler sugiere el paquete mingw32-binutils, pero no se lo instalará automáticamente.
+ .
+ Si no desea utilizar un compilador de archivos .rc predeterminado, deje este valor vacío.
+Description-fr.UTF-8: Compilateur de ressources .rc MS Windows par défaut :
+ FPC permet de compiler des programmes contenant des ressources au format .rc de MS Windows sur toutes les plateformes où l’outil MinGW windres est disponible.
+ .
+ Pour pouvoir compiler des projets utilisant des fichiers .rc, vous devez d’abord installer vous-même le paquet mingw32-binutils. Ce paquet est en effet seulement suggéré par fp-compiler et n’est donc pas installé par défaut.
+ .
+ Si vous ne voulez pas utiliser de compilateur de fichiers .rc par défaut, laissez ce champ vide.
+Description-hu.UTF-8: Alapértelmezett MS Windows .rc erőforrásfordító:
+ Az FPC támogatja olyan programok fordítását, melyek beágyazott MS Windows .rc formátumú erőforrásfájlokat tartalmaznak, minden olyan platformon ahol a MinGW windres eszköz elérhető.
+ .
+ Olyan projektek fordításához, melyek .rc fájlokat használnak, kézzel kell telepítenie a mingw32-binutils csomagot. A mingw32-binutils ajánlott az fp-compiler csomaghoz, de nincs automatikusan telepítve.
+ .
+ Ha nincs szüksége alapértelmezett .rc fájl fordítóra, hagyja üresen!
+Description-it.UTF-8: Compilatore predefinito di risorse .rc di MS Windows:
+ FPC permette la compilazione di programmi che incorporano risorse come file in formato .rc di MS Windows su tutte le piattaforme su cui è disponibile lo strumento MinGW windres.
+ .
+ Per poter compilare i progetti che usano file .rc, è necessario installare prima manualmente il pacchetto mingw32-binutils. mingw32-binutils è suggerito da fp-compiler, ma non viene richiamato automaticamente.
+ .
+ Se non si desidera usare un compilatore di file .rc predefinito, lasciare vuoto questo campo.
+Description-ja.UTF-8: デフォルトの MS Windows .rc リソースコンパイラ:
+ FPC は MS Windows の .rc 形式のファイルにリソースを埋め込んだプログラムの、MinGW windres ツールが利用できるあらゆるプラットフォーム上でのコンパイルをサポートしています。
+ .
+ .rc ファイルを使っているプロジェクトをコンパイルできるようにするためにはまず mingw32-binutils パッケージを手作業でインストールする必要があります。mingw32-binutils は fp-compiler で提案されていますが自動的にインストールはされません。
+ .
+ デフォルトの .rc ファイルコンパイラを使いたくない場合は空白にしてください。
+Description-nl.UTF-8: Standaardcompiler voor MS-Windows .rc-bronnen:
+ Op alle platformen waar MinGW windres beschikbaar is, ondersteunt FPC het compileren van programma's die bronnen inbouwen als MS-Windowsbestanden van het ".rc" formaat.
+ .
+ Om projecten te kunnen compileren die gebruik maken van .rc-bestanden, is het nodig dat het pakket mingw32-binutils is geïnstalleerd. mingw32-binutils wordt gesuggereerd door fp-compiler maar wordt niet automatisch geselecteerd voor installatie.
+ .
+ Laat dit leeg als u geen standaardcompiler voor .rc-bestanden wilt gebruiken.
+Description-pl.UTF-8: Domyślny kompilator zasobu .rc MS Windows:
+ FPC obsługuje programy kompilujące które osadzają zasoby w formacie .rc MS Windows na wszystkich platformach na których dostępne jest narzędzie MinGW windres.
+ .
+ Aby móc kompilować projekty za pomocą plików .rc konieczna jest uprzednia ręczna instalacja pakietu mingw32-binutils. Jest to zależność pakietu mingw32-binutils na poziomie "poleca", lecz nie jest ona wybierana automatycznie.
+ .
+ Jeśli nie chce się używać domyślnego kompilatora plików .rc, należy pozostawić to pole puste.
+Description-pt.UTF-8: Compilador predefinido de recursos .rc do MS Windows:
+ O FPC suporta compilar programas que têm embebidos recursos como ficheiros de formato .rc do MS Windows em todas as plataformas onde a ferramenta MinGW windres esteja disponível.
+ .
+ De modo a ser capaz de compilar projectos que usem ficheiros .rc, primeiro precisa de instalar manualmente o pacote mingw32-binutils. O mingw32-binutils é sugerido pelo fp-compiler mas não adicionado automaticamente.
+ .
+ Se não deseja usar um compilador predefinido de ficheiros .rc, deixe isto em vazio.
+Description-pt_BR.UTF-8: Compilador de recurso .rc MS Windows padrão:
+ O FPC tem suporte a compilar programas que incorporam recursos como arquivos no formato .rc do MS Windows em todas as plataformas onde a ferramenta MinGW windres estiver disponível.
+ .
+ Para poder compilar projetos usando arquivos .rc, primeiro você precisa instalar manualmente o pacote mingw32-binutils. O mingw32-binutils é sugerido pelo fp-compiler, mas não é trazido automaticamente.
+ .
+ Se você não quer usar um compilador de arquivos .rc padrão, deixe em branco.
+Description-ru.UTF-8: Компилятор ресурсов MS Windows .rc по умолчанию:
+ FPC поддерживает программы компиляции, которые встраивают файлы ресурсов (такие как MS Windows .rc) на всех платформах, где доступна программа MinGW windres.
+ .
+ Чтобы можно было компилировать проекты с файлами .rc, во-первых, вам нужно вручную установить mingw32-binutils. Наличие пакета mingw32-binutils предполагается fp-compiler, но он не вытягивается автоматически.
+ .
+ Если вы не хотите использовать компилятор файлов .rc по умолчанию, оставьте это поле пустым.
+Description-sk.UTF-8: Predvolený kompilátor .rc resource MS Windows:
+ FPC podporuje programy na zostavovanie, ktoré zahrnú zdroje ako súbory vo formáte MS Windows .rc na všetkých platformách, kde je dostupný nástroj MinGW windres.
+ .
+ Aby ste mohli zostavovať projekty pomocou pomocou súborov .rc, musíte najprv manuálne nainštalovať balík mingw32-binutils. Balík mingw32-binutils je navrhovaný balíkom fp-compiler, ale nie je zvolený automaticky.
+ .
+ Ak nechcete používať predvolený kompilátor súboru .rc, nechajte toto pole prázdne.
+Description-sv.UTF-8: Standardkompilator för MS Windows .rc-resurser:
+ FPC har stöd för kompilering av program som bäddar in resurser som MS Windows .rc-format-filer på alla plattformar där MinGW windres-verktyg finns tillgängligt.
+ .
+ För att kunna kompilera projekt med .rc-filer behöver du först manuellt installera paketet mingw32-binutils. mingw32-binutils föreslås av fp-compiler men installeras inte automatiskt.
+ .
+ Vill du inte använda en standardkompilator för .rc-filer kan detta fält lämnas tomt.

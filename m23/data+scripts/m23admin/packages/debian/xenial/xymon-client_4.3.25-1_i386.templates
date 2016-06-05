@@ -1,0 +1,140 @@
+Template: hobbit-client/HOBBITSERVERS
+Type: string
+Default: 127.0.0.1
+Description: Xymon server:
+ Please enter the network address used to access the Xymon
+ server(s). If you use multiple servers, use a space-separated list of
+ addresses.
+ .
+ Using host names instead of IP addresses is discouraged in case the
+ network experiences DNS failures.
+Description-cs.UTF-8: Server Xymon:
+ Zadejte prosím síťovou adresu serveru/serverů Xymon. Pokud chcete použít více serverů, oddělte je pomocí mezery.
+ .
+ Použití jmen počítačů místo IP adresy není doporučeno, zejména pokud může dojít k selhání serveru DNS.
+Description-da.UTF-8: Xymonserver:
+ Indtast venligst netværksadressen brugt til at tilgå Xymonserveren. Hvis du bruger flere servere, så brug en mellemrumsadskilt liste for adresserne.
+ .
+ Brug af værtsnavne i steden for IP-adresser frarådes i tilfælde af at netværket oplever DNS-fejl.
+Description-de.UTF-8: Xymon-Server:
+ Geben Sie die Adresse zum Zugriff auf den Xymon-Server ein. Wenn Sie mehrere Server benutzen, trennen Sie die Adressen mit Leerzeichen.
+ .
+ Es wird empfohlen im Falle von DNS-Ausfällen statt Hostnamen IP-Adressen zu benutzen.
+Description-es.UTF-8: Servidor «Xymon»:
+ Ingrese la dirección de red para acceder al servidor(es) «Xymon». Si usa varios servidores, use un espacio para separar la lista de direcciones.
+ .
+ Usar los nombres de equipo en lugar de direcciones IP no es recomendable en caso que la red experimente fallos de DNS.
+Description-eu.UTF-8: Xymon zerbitzaria:
+ Mesedez idatzi xymon zerbitzaria(k) eskuratzeko erabiliko den sare helbidea. Zerbitzari anitz erabiaz gero zuriunez bereiziriko helbide zerrenda bat erabili.
+ .
+ IP helbideak beharrean ostalari izenak erabiltzea arrisku bat izan liteke sareak DNS erroreak dituen kasuan.
+Description-fi.UTF-8: Xymon-palvelin:
+ Anna Xymon-palvelimen verkko-osoite. Jos käytössä on useampia palvelimia, syötä osoitteet välilyönnein eroteltuna.
+ .
+ Verkkonimien käyttöä IP-osoitteiden sijaan ei suositella mahdollisten DNS:n toimintahäiriöiden takia.
+Description-fr.UTF-8: Serveur Xymon :
+ Veuillez indiquer l'adresse du (ou des) serveur(s) Xymon. Les serveurs multiples éventuels doivent être séparés par des espaces.
+ .
+ Il est conseillé d'indiquer les adresses IP plutôt que les noms d'hôtes afin d'éviter des difficultés si la résolution de noms de domaine (DNS) ne fonctionne plus.
+Description-gl.UTF-8: Servidor Xymon:
+ Introduza o enderezo de rede que quere empregar para acceder ao servidor Xymon. Se emprega varios servidores, introduza unha lista de enderezos separados por espazos.
+ .
+ Recoméndase non empregar nomes, senón enderezos IP, para evitar problemas no caso de que a rede teña problemas con DNS.
+Description-it.UTF-8: Server Xymon:
+ Inserire l'indirizzo di rete da usare per accedere al server Xymon. Se si utilizzano più server, inserire l'elenco degli indirizzi usando uno spazio come separatore.
+ .
+ L'uso dei nomi host al posto degli indirizzi IP è sconsigliato nel caso si verifichino dei problemi con il DNS.
+Description-ja.UTF-8: Xymon サーバ:
+ Xymon サーバに接続するのに使うネットワークアドレスを入力してください。複数のサーバを利用する場合は、空白で区切ったアドレスの一覧を使ってください。
+ .
+ IP アドレスではなくホスト名を使うのは、ネットワークに DNS 障害が起こった場合に問題となるので推奨されません。
+Description-nl.UTF-8: Xymon-server:
+ Geef aan met welk netwerkadres de Xymon-server(s) benaderd kan/kunnen worden. Als u meerdere servers gebruikt dient u de adressen met spaties van elkaar te scheiden.
+ .
+ Gebruik van computernamen in plaats van IP-adressen wordt afgeraden (IP-adressen blijven werken als het netwerk DNS-problemen ondervindt).
+Description-pt.UTF-8: Servidor Xymon:
+ Por favor indique o endereço de rede usado para aceder ao(s) seu(s) servidor(es) Xymon. Se você tem vários servidores, use uma lista de endereços separados por espaços.
+ .
+ A utilização de nomes de máquinas em vez de endereços IP é desaconselhada, na eventualidade da rede sofrer de falhas de DNS.
+Description-pt_BR.UTF-8: Servidor Xymon:
+ Por favor, informe o endereço de rede usado para acessar o(s) servidor(es) Xymon. Se você usa múltiplos servidores, use uma lista de endereços separada por espaços.
+ .
+ Usar nomes de máquinas ao invés de endereços IP é desencorajado caso a rede sofra falhas de DNS.
+Description-ru.UTF-8: Сервер Xymon:
+ Введите сетевой адрес, который нужно использовать для доступа к серверу(ам) Xymon. Если у вас используются несколько серверов, укажите все адреса через пробел.
+ .
+ Использование имён серверов вместо IP-адресов приводит к проблемам в случае отказа DNS.
+Description-sv.UTF-8: Xymonserver:
+ Var vänlig skriv in den nätverksadress som används för att ansluta till Xymonservern/-servrarna. Om du använder flera servrar, separera adresserna med blanksteg.
+ .
+ Användande av värdnamn istället för IP-adresser är inte rekommenderat ifall nätverket upplever DNS-problem.
+Description-vi.UTF-8: Máy phục vụ Xymon:
+ Hãy gõ địa chỉ mạng được dùng để truy cập (các) máy phục vụ Xymon. Định giới nhiều máy phục vụ bằng dấu cách.
+ .
+ Khuyên bạn không sử dụng tên máy thay cho địa chỉ IP, trong trường hợp mạng gặp dịch vụ DNS bị gián đoạn.
+
+Template: hobbit-client/CLIENTHOSTNAME
+Type: string
+Default:
+Description: Client hostname:
+ Please enter the host name used by the Xymon client when sending
+ reports to the Xymon server. This name must match
+ the name used in the hosts.cfg file on the Xymon
+ server.
+Description-cs.UTF-8: Jméno klienta:
+ Zadejte prosím jméno klienta Xymon, které bude použito při zasílání zpráv na server Xymon. Jméno musí odpovídat tomu, které je použito v souboru hosts.cfg na serveru Xymon.
+Description-da.UTF-8: Klientværtsnavn:
+ Indtast venligst værtsnavnet brugt af Xymonklienten, når der indsendes rapporter til Xymonserveren. Dette navn skal svare til navnet brugt i hosts.cfg-filen på Xymonserveren.
+Description-de.UTF-8: Client-Hostname:
+ Geben Sie den Hostnamen ein den der Xymon-Client benutzt um Reports and den Xymon-Server zu senden. Der Name muss mit dem in der Datei hosts.cfg auf dem Server übereinstimmen.
+Description-es.UTF-8: Nombre del cliente
+ Introduzca el nombre del equipo que utilizará el cliente para enviar reportes al servidor «Xymon». Este nombre debe coincidir con el nombre usado en el fichero «hosts.cfg» en el servidor «Xymon».
+Description-eu.UTF-8: Bezero ostalari izena:
+ Mesedez idatzi xymon bezeroak zerbitzarira txostenak bidaltzeko erabiliko duen ostalari izena. Izen hau Xymon zerbitzariko hosts.cfg fitxategian dagoen berdina izan behar da.
+Description-fi.UTF-8: Asiakaskoneen verkkonimi:
+ Anna verkkonimi, jota Xymon-asiakas käyttää lähettäessään raportteja Xymon-palvelimelle. Tämän nimen tulee täsmätä Xymon-serverillä tiedostossa hosts.cfg olevaan nimeen.
+Description-fr.UTF-8: Nom d'hôte du client :
+ Veuillez indiquer le nom d'hôte utilisé par le client Xymon pour envoyer les rapports au serveur Xymon. Ce nom doit correspondre à celui utilisé dans le fichier hosts.cfg sur le serveur Xymon.
+Description-gl.UTF-8: Nome do cliente:
+ Introduza o nome empregado polo cliente Xymon ao enviar informes ao servidor Xymon. Este nome debe coincidir co nome empregado no ficheiro hosts.cfg no servidor Xymon.
+Description-it.UTF-8: Nome host del client:
+ Inserire il nome host che il client Xymon deve usare per l'invio dei report al server Xymon. Questo nome deve coincidere con il nome utilizzato nel file hosts.cfg sul server Xymon.
+Description-ja.UTF-8: クライアントのホスト名:
+ Xymon クライアントが Xymon サーバにレポートを送信する際に使うホスト名を入力してください。この名前は Xymon サーバ上の hosts.cfg ファイルで使われている名前と一致している必要があります。
+Description-nl.UTF-8: Computernaam van de client:
+ Geef aan welke computernaam de Xymon-client gebruikt om rapporten naar de Xymon-server te versturen. Deze naam dient overeen te komen met de naam die in het bestand 'hosts.cfg' op de Xymon-server gebruikt wordt.
+Description-pt.UTF-8: Nome da máquina cliente:
+ Por favor indique o nome da máquina usada pelo cliente Xymon quando envia relatórios para o servidor Xymon. Este nome tem que coincidir com o nome usado no ficheiro hosts.cfg no servidor Xymon.
+Description-pt_BR.UTF-8: Nome da máquina cliente:
+ Por favor, informe o nome da máquina cliente usado pelo cliente Xymon quando envia relatórios para o servidor Xymon. Este nome precisa bater com o nome usado no arquivo hosts.cfg no servidor Xymon.
+Description-ru.UTF-8: Имя клиента:
+ Введите имя клиентской машины, которое будет использовано клиентом Xymon при отправке отчётов на сервер Xymon. Это имя должно совпадать с именем в файле hosts.cfg на сервере Xymon.
+Description-sv.UTF-8: Klientens värdnamn:
+ Var vänlig ange det värdnamn som används av Xymonklienten för att sända rapporter till Xymonservern. Detta namn måste stämma överens med det namn som används i hosts.cfg-filen på Xymonservern.
+Description-vi.UTF-8: Tên máy khách:
+ Hãy gõ tên máy được ứng dụng khách Xymon dùng khi gửi thông báo cho máy phục vụ Xymon. Tên này phải tương ứng với tên nằm trong tập tin « hosts.cfg » trên máy phục vụ Xymon.
+
+Template: hobbit-client/automatic-xymon-migration
+Type: boolean
+Default: true
+Description: Automatically migrate old hobbit files to xymon?
+ The operating system user was renamed from "hobbit" to "xymon", and all
+ configuration, state, log directories and files have been renamed as well.
+ The package postinst scripts can do the migration automatically. This is
+ usually a good idea, but might not work so well if your config differs
+ substantially from the default.
+Description-da.UTF-8: Automatisk migrere gamle hobbit-filer til xymon?
+ Operativsystembrugeren blev omdøbt fra »hobbit« til »xymon«, og al konfiguration, tilstand, logmapper og filer er også blevet omdøbt. Pakkens efterinstallationsskripter kan udføre migreringen automatisk. Dette er normalt en god ide, men fungerer måske ikke så godt hvis din konfiguration er meget anderledes end standarden.
+Description-de.UTF-8: Alte Dateien automatisch von hobbit auf xymon umstellen?
+ Der Betriebssystem-User wurde von "hobbit" in "xymon" umbenannt, zusammen mit allen Konfigurations-, Zustands- und Log-Verzeichnissen und -Dateien. Das Postinst-Skript des Pakets kann die Migration automatisch durchführen. Das ist normalerweise eine gute Sache, kann aber ggf. nicht so gut funktionieren, wenn die Konfiguration stark von der Standardkonfiguration abweicht.
+Description-fr.UTF-8: Faut-il migrer automatiquement les anciens fichiers hobbit vers xymon ?
+ L'utilisateur du système d'exploitation a été renommé de « hobbit » en « xymon » et l'ensemble des répertoires et fichiers de configuration, d'état et de journalisation ont également été renommés. Les scripts postinst du paquet peuvent réaliser cette migration automatiquement. C'est en général une bonne idée, mais cela ne marche pas très bien si votre configuration diffère sensiblement de la configuration par défaut.
+Description-nl.UTF-8: Oude hobbit-bestanden automatisch omzetten naar xymon?
+ De gebruikersnaam in het besturingssysteem is veranderd van "hobbit" naar "xymon" en alle configuratie-, status- en logmappen en -bestanden veranderden ook van naam. De postinstallatiescripts van het pakket kunnen de veranderingen automatisch doorvoeren. Meestal is dit een goede werkwijze, maar indien uw configuratie substantieel verschilt van de standaard, kan het zijn dat dit niet zo goed verloopt.
+Description-pt.UTF-8: Migrar automaticamente ficheiros antigos de hobbit para xymon?
+ O utilizador do sistema operativo foi renomeado de "hobbit" para "xymon", e todos os directórios de configuração, estado, relatórios e os ficheiros foram também renomeados. Os scripts de pós-instalação do pacote podem fazer a migração automaticamente. Isto é geralmente uma boa ideia, mas pode não funcionar muito bem se a sua configuração for substancialmente diferente da predefinida.
+Description-ru.UTF-8: Перейти с файлов hobbit на xymon автоматически?
+ Системный рабочий пользователь был переименован с «hobbit» в «xymon», и все настройки, состояние, журнальные каталоги и файлы также были переименованы. Послеустановочные сценарии пакета могут выполнить переход автоматически. Обычно, всё проходит хорошо, но могут возникать ошибки, если ваши настройки сильно отличаются от настроек по умолчанию.
+Description-sv.UTF-8: Ska gamla hobbit-filer automatiskt migreras till xymon?
+ Operativsystemets användare "hobbit" har bytt namn till "xymon" tillsammans med alla inställningar, status, logkataloger och filer. Paketets skript för efterbehandling kan migrera detta automatiskt. Vanligen är detta en bra idé men det kan finnas omständigheter som inte fungerar så bra om dina inställningar skiljer sig mycket från standardvärdena.
+

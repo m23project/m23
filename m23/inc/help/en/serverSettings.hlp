@@ -2,7 +2,7 @@ $I18N_serverSettings
 At this page you can access the diverse m23 server settings.
 
 <u>$I18N_system</u><ul>
-	<li>$I18N_update: Update your m23 server</li>
+	<li>$I18N_update: Update your m23 server<!-- V16.1 begin -->(not available on UCS)<!-- V16.1 end --></li>
 	<li>$I18N_manage_admins: Create and delete administrator accounts</li>
 	<li>$I18N_themeChoice: Change the look of the m23 interface</li>
 	<li>$I18N_serverStatus: Get status information about your m23 server</li>
@@ -10,15 +10,15 @@ At this page you can access the diverse m23 server settings.
 
 <u>$I18N_components</u><ul>
 	<li>$I18N_manageImageFiles: Get an overview of all client image files and delete client image files</li>
-	<li>$I18N_ipManagement: Configure the internal DHCP server</li>
-	<li>LDAP: Manage the LDAP server and edit LDAP settings</li>
-	<li>m23@web: (if installed) Manage customers of m23@web</li>
+	<li>$I18N_ipManagement: Configure the internal DHCP server <!-- V16.1 begin -->(not available on UCS)<!-- V16.1 end --></li>
+	<li>LDAP: Manage the LDAP server and edit LDAP settings <!-- V16.1 begin -->(not available on UCS)<!-- V16.1 end --></li>
+	<li>m23@web: (if installed) Manage customers of m23@web <!-- V16.1 begin -->(not available on UCS)<!-- V16.1 end --></li>
 	<li>$I18N_manageGPGKeys: Manage your GPG keys which are used to encrypt the m23 server backups</li>
 	<li>$I18N_serverBackup: Plan server backups</li>
 	<li>$I18N_backupList: Get an overview of all existing backup files and delete backup files</li>
 	<li>$I18N_downloadVBoxAddons: Download and select VirtualBox guest additions</li>
 	<li>$I18N_cloudFunctionsCS: Mange your Apache CloudStack&reg; account</li>
-	<!-- V15.2 begin --><li>$I18N_firewallSetting: (De)Activate your m23 server's firewall and edit firewall rules</li><!-- V15.2 end -->
+	<!-- V15.2 begin --><li>$I18N_firewallSetting: (De)Activate your m23 server's firewall and edit firewall rules</li><!-- V15.2 end --> <!-- V16.1 begin -->(not available on UCS)<!-- V16.1 end -->
 </ul>
 
 <u>$I18N_serverHacks</u><ul>
@@ -31,3 +31,8 @@ At this page you can access the diverse m23 server settings.
 	<li>$I18N_calculator: A simple calculator</li>
 	<li>$I18N_BAfHDaylyExcuse: The BAfH excuse of the day (German only)</li>
 </ul>
+
+<!-- V16.1 begin -->
+<u>Not available on UCS</u>
+Some features are not available if the m23 server is running on a  <a href="https://www.univention.de/">Univention Corporate Server</a> (UCS).
+<!-- V16.1 end -->

@@ -1,0 +1,116 @@
+Template: oem-config/remove
+Type: boolean
+Default: true
+Description: for internal use; can be preseeded
+ Remove oem-config on successful completion
+
+Template: oem-config/removing
+Type: text
+Description: Removing packages
+Description-am.UTF-8: ጥቅሎችን በማስወገድ ላይ
+Description-ar.UTF-8: يحذف الحزم
+Description-ast.UTF-8: Desaniciando paquetes
+Description-be.UTF-8: Выдаленне пакетаў
+Description-bg.UTF-8: Премахване на пакети
+Description-bn.UTF-8: প্যাকেজসমূহ অপসারণ করা হচ্ছে
+Description-bo.UTF-8: ཐུམ་བུ་འདོར་བཞིན་པ
+Description-bs.UTF-8: Uklanjanje paketa
+Description-ca.UTF-8: S'estan suprimint els paquets
+Description-cs.UTF-8: Odstraňování balíků
+Description-da.UTF-8: Fjerner pakker
+Description-de.UTF-8: Pakete werden entfernt
+Description-el.UTF-8: Αφαίρεση πακέτων
+Description-en_AU.UTF-8: Removing packages
+Description-en_CA.UTF-8: Removing packages
+Description-en_GB.UTF-8: Removing packages
+Description-eo.UTF-8: Foriganta pakaĵojn
+Description-es.UTF-8: Desinstalando paquetes
+Description-et.UTF-8: Pakettide eemaldamine
+Description-eu.UTF-8: Paketeak ezabatzen
+Description-fi.UTF-8: Poistetaan paketteja
+Description-fr.UTF-8: Suppression des paquets
+Description-gl.UTF-8: Eliminando paquetes
+Description-he.UTF-8: החבילות מוסרות
+Description-hi.UTF-8: पैकेज हटा रहा है
+Description-hr.UTF-8: Uklanjanje paketa
+Description-hu.UTF-8: Csomagok eltávolítása
+Description-id.UTF-8: Menghapus paket
+Description-is.UTF-8: Fjarlægi pakka
+Description-it.UTF-8: Rimozione dei pacchetti
+Description-ja.UTF-8: パッケージを削除しています
+Description-kk.UTF-8: Пакеттер жойылуда
+Description-km.UTF-8: លុប​កញ្ចប់​ចេញ
+Description-ko.UTF-8: 패키지 제거 중
+Description-lt.UTF-8: Šalinami paketai
+Description-lv.UTF-8: Noņem pakotnes
+Description-mr.UTF-8: पॅकेजेस काढून टाकत आहे
+Description-my.UTF-8: ဆော့ဖ်ဝဲလ်ဖိုင်ထုပ်များ ဖယ်ရှားနေပါသည်
+Description-nb.UTF-8: Fjerner pakker
+Description-nl.UTF-8: Pakketten verwijderen
+Description-nn.UTF-8: Fjernar pakkar
+Description-no.UTF-8: Fjerner pakker
+Description-pa.UTF-8: ਪੈਕੇਜ ਹਟਾਏ ਜਾ ਰਹੇ ਹਨ
+Description-pl.UTF-8: Usuwanie pakietów
+Description-pt.UTF-8: A remover pacotes
+Description-pt_BR.UTF-8: Removendo pacotes
+Description-ro.UTF-8: Se elimină pachetele
+Description-ru.UTF-8: Удаление пакетов
+Description-si.UTF-8: පැකේජ ඉවත්කරමින්
+Description-sk.UTF-8: Odstraňujú sa balíky
+Description-sl.UTF-8: Odstranjevanje paketov
+Description-sq.UTF-8: Duke hequr paketat
+Description-sr.UTF-8: Уклањам пакете
+Description-sv.UTF-8: Tar bort paket
+Description-ta.UTF-8: தொகுப்புகள் நீக்கப்படுகிறது
+Description-te.UTF-8: ప్యాకేజీలు తొలగించబడుతున్నాయి
+Description-th.UTF-8: กำลังถอดถอนแพกเกจ
+Description-tr.UTF-8: Paketler kaldırılıyor
+Description-ug.UTF-8: بوغچىلارنى ئۆچۈرۈۋاتىدۇ
+Description-uk.UTF-8: Вилучення пакунків
+Description-vi.UTF-8: Đang gỡ bỏ các gói
+Description-zh_CN.UTF-8: 正在删除软件包
+Description-zh_HK.UTF-8: 移除套件中
+Description-zh_TW.UTF-8: 正在移除套件
+
+Template: oem-config/early_command
+Type: string
+Description: for internal use; can be preseeded
+ Run a command just before oem-config starts.
+
+Template: oem-config/late_command
+Type: string
+Description: for internal use; can be preseeded
+ Run a command after oem-config completes.
+
+Template: oem-config/extra_packages
+Type: string
+Description: for internal use; can be preseeded
+ Comma/space-separated list of extra packages to install
+ as part of user configuration
+
+Template: oem-config/repository
+Type: string
+Description: for internal use; can be preseeded
+ Line to enter into sources.list for the duration of
+ oem-config/extra_packages
+
+Template: oem-config/key
+Type: string
+Description: for internal use; can be preseeded
+ Path of a public key that packages in oem-config/repository
+ are signed with.
+
+Template: oem-config/install-language-support
+Type: boolean
+Default: false
+Description: for internal use; can be preseeded
+ Install language support packages for the locale that has been selected by
+ the user.  Ensure you have provided these packages in oem-config/repository
+ or can guarantee a connection to the Internet.
+
+Template: oem-config/remove_extras
+Type: boolean
+Default: false
+Description: for internal use; can be preseeded
+ Remove packages that were not part of the base install and are not needed
+ by the final system.

@@ -10,7 +10,7 @@ Die Farbe des Statussymbols gibt an, wie weit die Installation des jeweiligen Cl
 <!--V1.5 begin--><li><b>orange</b>: Der Client ist im <b>kritischen Zustand</b>. D.h. bei der Installation ist ein Fehler aufgetreten, der vom Administrator behoben werden muß. Im Kontrollzentrum gibt es eine Reihe von Möglichkeiten, den kritischen Zustand zu beheben.</li>
 <li><b>weiß</b>: Musterclient für die Masseninstallation, von dem die Einstellungen auf die anderen Clients übertragen werden.</li>
 <li><b>Fliege (Bug)</b>: Zeigt an, daß sich ein Client im Debug-Modus befindet.</li><!--V1.5 end-->
-<!--V12.4 begin--><li><b>grau</b>: Dieser Client ist rein virtuell und dient zum Sperren von Client-Eigenschaften (IP,Clientname,MAC), damit diese nicht fälschlciherweise verwendet werden.</li><!--V12.4 end-->
+<!--V12.4 begin--><li><b>grau</b>: Dieser Client ist rein virtuell und dient zum Sperren von Client-Eigenschaften (IP, Clientname, MAC), damit diese nicht fälschlicherweise verwendet werden.</li><!--V12.4 end-->
 </ul>
 
 <!--V1.11 begin--><u>$I18N_jobs</u>

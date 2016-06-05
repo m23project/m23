@@ -1,0 +1,542 @@
+Template: shared/firebird/enabled
+Type: boolean
+Default: true
+Description: Enable Firebird server?
+ Accept if you want Firebird server to start automatically.
+ .
+ If you only need the Firebird client and there are no databases that
+ will be served by this host, decline.
+Description-bg.UTF-8: Стартиране на сървъра на Firebird?
+ Приемете ако желаете сървърът на Firebird да се стартира автоматично.
+ .
+ Ако се нуждаете само от клиентската част на Firebird и не планирате системата да работи като сървър на бази данни на Firebird, откажете.
+Description-cs.UTF-8: Povolit server Firebird?
+ Chcete-li automaticky spouštět server Firebird, přijměte.
+ .
+ Pokud na tomto počítači nemají být žádné databáze a vy potřebujete pouze Firebird klienta, zamítněte.
+Description-da.UTF-8: Aktiver Firebirdserver?
+ Accepter hvis du ønsker, at Firebirdserveren skal starte automatisk.
+ .
+ Hvis du kun har brug for Firebirdklienten, og der ikke er nogen databaser, som vil blive serviceret af denne vært så afslå.
+Description-de.UTF-8: Firebird-Server aktivieren?
+ Geben Sie an, ob der Firebird-Server automatisch gestartet werden soll.
+ .
+ Lehnen Sie dies ab, falls lediglich der Firebird-Client benötigt wird und es keine Datenbanken gibt, die von diesem System bereitgestellt werden.
+Description-es.UTF-8: ¿Desea activar el servidor de Firebird?
+ Acepte esta opción si desea que el servidor de Firebird se inicie autokmáticamente.
+ .
+ Rechace la opción si sólo necesita el cliente de Firebird y no este equipo no va a proporcionar ninguna base de datos.
+Description-eu.UTF-8: Gaitu Firebird zerbitzaria?
+ Onartu Firebird zerbitzaria automatikoki abiaraztea nahi baduzu.
+ .
+ Firebird bezeroa bakarri behar izanez gero eta ostalari honek ez badu datu-baserik zerbitzatu behar ez gaitu aukera hau.
+Description-fi.UTF-8: Otetaanko Firebird-palvelin käyttöön?
+ Valitse tämä, jos Firebird-palvelin tulisi käynnistää automaattisesti.
+ .
+ Tätä ei tarvita, jos käytetään vain Firebird-asiakasta, eikä tällä koneella ole tietokantoja.
+Description-fr.UTF-8: Faut-il activer le serveur Firebird ?
+ Acceptez si vous voulez que le serveur Firebird démarre automatiquement.
+ .
+ Refusez si vous avez uniquement besoin du client Firebird et que ce système n'est pas destiné à héberger des bases de données.
+Description-gl.UTF-8: ¿Activar o servidor Firebird?
+ Acepte se quere que o servidor Firebird se inicie automaticamente.
+ .
+ Se só precisa do cliente Firebird e non ten bases de datos que se teñan que servir desde esta máquina, rexeite a opción.
+Description-it.UTF-8: Attivare il server firebird?
+ Accetta se vuoi che il server Firebird venga avviato automaticamente.
+ .
+ Se hai bisogno del solo client Firebird e non ci sono database che debbano essere gestiti da questo host, rifiuta.
+Description-ja.UTF-8: Firebird サーバを有効にしますか?
+ Firebird サーバを自動的に起動したい場合は有効にしてください。
+ .
+ Firebird のクライアントのみが必要で、このホストで提供するデータベースが存在しない場合は、拒否してください。
+Description-nb.UTF-8: Slå på Firebird-tjener?
+ Godta hvis du vil at Firebird-tjeneren skal starte automatisk.
+ .
+ Avvis dette hvis du bare trenger Firebird-klienten og denne verten ikke betjener noen databaser.
+Description-nl.UTF-8: Wilt u de Firebird-server activeren?
+ Als u wilt dat Firebird-server automatisch start dient u hier te aanvaarden.
+ .
+ Als u enkel de Firebird-client nodig heeft en deze computer geen databases aanbied, dient u hier te weigeren.
+Description-no.UTF-8: Slå på Firebird-tjener?
+ Godta hvis du vil at Firebird-tjeneren skal starte automatisk.
+ .
+ Avvis dette hvis du bare trenger Firebird-klienten og denne verten ikke betjener noen databaser.
+Description-pl.UTF-8: Włączyć serwer Firebid? 
+ Zaakceptuj jeśli serwer firebird ma uruchamiać się automatycznie.
+ .
+ Nie wyrażaj zgody jeżeli potrzebujesz tylko klienta Firebird i żadna baza danych nie będzie obsługiwana przez ten komputer.
+Description-pt.UTF-8: Activr o servidor Firebird:
+ Aceite se desejar que o servidor Firebird arranque automaticamente.
+ .
+ Se apenas necessitar do cliente firebird e não existirem bases de dados a serem servidas por esta máquina, então rejeite.
+Description-ro.UTF-8: Se activează serverul Firebird?
+ Acceptați dacă doriți ca serverul Firebird să pornească automat.
+ .
+ Refuzați dacă aveți nevoie doar de clientul Firebird și nu există nici o bază de date care va fi servită de acest sistem.
+Description-ru.UTF-8: Включить сервер Firebird?
+ Ответьте утвердительно, если сервер Firebird должен запускаться автоматически.
+ .
+ Ответьте "Нет", если вам нужен только клиент Firebird, и на компьютере не установлены сами базы данных.
+Description-sv.UTF-8: Aktivera Firebird?
+ Ange detta alternativ om du vill att Firebird-servern startar automatiskt.
+ .
+ Om du bara behöver klientprogrammet till Firebird och inte ska ha några databaser på den här värden ska du inte aktivera detta alternativet.
+Description-vi.UTF-8: Bật trình phục vụ Firebird không?
+ Muốn trình phục vụ Firebird tự động khởi chạy thì đồng ý.
+ .
+ Chỉ cần chạy trình khách Firebird và không có cơ sở dữ liệu sẽ được máy này phục vụ thì từ chối.
+
+Template: shared/firebird/sysdba_password/first_install
+Type: password
+Description: Password for SYSDBA:
+ Firebird has a special user named SYSDBA, which is the user that has
+ access to all databases. SYSDBA can also create new databases and users.
+ Because of this, it is necessary to secure SYSDBA with a password.
+ .
+ The password is stored in /etc/firebird/${FB_VER}/SYSDBA.password
+ (readable only by root). You may modify it there (don't forget to update
+ the security database too, using the gsec utility), or you may use
+ dpkg-reconfigure to update both.
+ .
+ If you don't enter a password, a random one will be used (and stored in
+ SYSDBA.password).
+Description-bg.UTF-8: Парола за SYSDBA:
+ Firebird използва специален потребител, наречен SYSDBA, който има достъп до всички бази данни, може да създава нови потребители и бази данни и като цяло да прави всичко с Firebird. Поради факта, че за SYSDBA не са валидни ограниченията на обикновените потребители е необходимо достъпът до SYSDBA да бъде защитен с парола.
+ .
+ Паролата ще бъде записана във файла /etc/firebird/${FB_VER}/SYSDBA.password (с разрешен достъп само за root). Може да я промените там (не забравяйте да обновите и базата данни с потребителите с програмата gsec), а можете да използвате и dpkg-reconfigure за да обновите едновременно и двете места.
+ .
+ Ако не въведете нищо ще бъде използвана случайна парола (която ще бъде записана в SYSDBA.password).
+Description-bn.UTF-8: SYSDBA এর জন্য পাসওয়ার্ড:
+ ফায়ারবার্ড এর SYSDBA নামে একটি বিশেষ ব্যবহারকারী আছে, যেই ব্যবহারকারীর সকল ডাটাবেজে প্রবেশের অধিকার আছে। SYSDBA নতুন ডাটাবেজ এবং ব্যবহারকারীও তৈরি করতে পারে। এই কারণে,SYSDBA কে একটি পাসওয়ার্ড দিয়ে নিরাপদ রাখা প্রয়োজন।
+ .
+ পাসওয়ার্ড জমা থাকে /etc/firebird/${FB_VER}/SYSDBA.password তে (যা শুধুমাত্র root কর্তৃক পড়ার যোগ্য)। আপনি এটিকে সেখানে পরিবর্তন করতে পারেন ( নিরাপত্তা ডাটাবেজকে আপডেট করার কথা ভুলবেন না, gsec ইউটিলিটি ব্যবহার করে), অথবা আপনি দুটোই আপডেট করতে dpkg-reconfigure ব্যবহার করতে পারেন।
+ .
+ যদি আপনি কোন পাসওয়ার্ড না দিন, এলোমেলো একটি ব্যবহার হবে (এবং SYSDBA.password এ জমা থাকবে)।
+Description-cs.UTF-8: Heslo pro SYSDBA:
+ Firebird obsahuje speciálního uživatele SYSDBA, který má přístup do všech databází. SYSDBA také může vytvářet nové databáze a uživatele. Z těchto důvodů je nezbytné účet SYSDBA zabezpečit heslem.
+ .
+ Heslo je uloženo v souboru /etc/firebird/${FB_VER}/SYSDBA.password, který může číst jen uživatel root. Heslo můžete změnit přímo ve zmíněném souboru, ovšem pak nesmíte zapomenout aktualizovat bezpečnostní databázi nástrojem gsec. Jednodušší je použít dpkg-reconfigure, kterým se aktualizují hesla na obou místech.
+ .
+ Nezadáte-li žádné heslo, použije se náhodné (a uloží se do SYSDBA.password).
+Description-da.UTF-8: Adgangskode for SYSDBA:
+ Firebird har en speciel bruger kaldt SYSDBA, som er den bruger som har adgang til alle databaser. SYSDBA kan også oprette nye databaser og brugere. På grund af dette er det nødvendigt at sikre SYSDBA med en adgangskode.
+ .
+ Adgangskoden gemmes i /etc/firebird/${FB_VER}/SYSDBA.password (kun læsbar af administrator (root)). Du kan ændre den der (glem ikke også at opdatere sikkerhedsdatabasen, med brug af gsec-redskabet), eller du kan bruge dpkg-reconfigure til at opdatere begge.
+ .
+ Hvis du ikke indtaster en adgangskode, vil et tilfældigt blive brugt (og gemt i SYSDBA.password).
+Description-de.UTF-8: Passwort für SYSDBA:
+ Firebird hat einen speziellen Benutzer namens SYSDBA. Dieser Benutzer hat Zugriff auf alle Datenbanken. SYSDBA kann auch neue Datenbanken und Benutzer erstellen. Deshalb ist es nötig, den SYSDBA-Zugang mit einem Passwort zu sichern.
+ .
+ Das Passwort wird in /etc/firebird/${FB_VER}/SYSDBA.password gespeichert (nur für root lesbar). Sie können es dort ändern (vergessen Sie jedoch nicht, auch die Security-Datenbank mit dem gsec-Werkzeug zu aktualisieren oder verwenden Sie dpkg-reconfigure, um gleich beides zu verändern).
+ .
+ Falls Sie kein Passwort eingeben, wird ein Zufallspasswort verwendet (und in SYSDBA.password gespeichert).
+Description-es.UTF-8: Contraseña para SYSDBA:
+ Firebird tiene un usuario especial llamado SYSDBA, que es el usuario con acceso a todas las bases de datos. SYSDBA también puede crear nuevas bases de datos y usuarios. Por todo esto, es necesario definir una contraseña para SYSDBA para proteger el acceso a éste.
+ .
+ La contraseña se almacena en «/etc/firebird/${FB_VER}/SYSDBA.password» (que sólo puede leer root). Puede modificarla allí (en cuyo caso debe actualizar la base de datos de seguridad con la herramienta gsec) o puede utilizar dpkg-reconfigure para actualizar ambas.
+ .
+ Se generará una de forma aleatoria (introduciéndose en SYSDBA.password) si no introduce ninguna aquí.
+Description-eu.UTF-8: SYSDBA pasahitza:
+ Firebird-ek SYSDBA izeneko erabiltzaile berezi bat du, honek datubase guztietara du sarrera eskubidea. SYSDBA datubase eta erabiltzaileak sortzeko gai da. Hau dela eta beharrezkoa da SYSDBA pasahitz baten bidez babestea.
+ .
+ Pasahitza /etc/firebird/${FB_VER}/SYSDBA.password-ean gordeko da (root-entzat bakarrik irakurgarri).  Hor aldatzeko aukera duzu (ez ahaztu segurtasun datubasea eguneratzeaz, gsec lanabesaren bidez), edo dpkg-reconfigure erabili dezakezu biak eguneratzeko.
+ .
+ Pasahitzik idazten ez baduzu ausazko bat erabiliko da (eta SYSDBA.password-en gordeko da).
+Description-fi.UTF-8: SYSDBA:n salasana:
+ Firebirdissä on erityinen käyttäjä nimeltä SYSDBA, jolla on pääsy kaikkiin tietokantoihin. SYSDBA voi myös luoda uusia tietokantoja tai käyttäjiä. Tämän takia on tarpeen turvata tunnus SYSDBA salasanalla.
+ .
+ Salasana tallennetaan tiedostoon /etc/firebird/${FB_VER}/SYSDBA.password (joka on vain pääkäyttäjän luettavissa). Sitä voidaan muokata tiedostossa (jolloin täytyy muistaa päivittää myös turvallisuustietokanta gsec-työkalulla) tai molemmat voidaan päivittää ohjelmalla dpkg-reconfigure.
+ .
+ Jos salasanaa ei syötetä, käytetään satunnaista salasanaa (joka tallennetaan tiedostoon SYSDBA.password).
+Description-fr.UTF-8: Mot de passe pour l'identifiant SYSDBA :
+ Firebird crée un identifiant spécial appelé SYSDBA, qui a accès à toutes les bases de données. SYSDBA peut également créer de nouvelles bases de données et de nouveaux utilisateurs. Par sécurité, il est nécessaire d'attribuer un mot de passe à SYSDBA.
+ .
+ Le mot de passe est conservé dans le fichier /etc/firebird/${FB_VER}/SYSDBA.password (accessible uniquement au superutilisateur). Pour changer de mot de passe, vous pouvez modifier directement ce fichier (dans ce cas n'oubliez pas de mettre également à jour la base de données « security » avec l'utilitaire gsec), ou bien utiliser la commande « dpkg-reconfigure ».
+ .
+ Si vous laissez ce champ vide, un mot de passe aléatoire sera créé et écrit dans SYSDBA.password.
+Description-gl.UTF-8: Contrasinal de SYSDBA:
+ Firebird ten un usuario especial chamado SYSDBA, que é o usuario que ten acceso a tódalas bases de datos. SYSDBA tamén pode crear novas bases de datos e usuarios. Debido a isto, é necesario asegurar SYSDBA cun contrasinal.
+ .
+ O contrasinal está armacenado no ficheiro /etc/firebird/${FB_VER}/SYSDBA.password (só lexible para o administrador). Pode modificalo aí (non esqueza actualizar tamén a base de datos de seguridade empregando a utilidade "gsec"), ou pode empregar dpkg-reconfigure para actualizar as dúas cousas.
+ .
+ Se non introduce un contrasinal, hase empregar un aleatorio (e hase gravar no ficheiro SYSDBA.password).
+Description-hi.UTF-8: SYSDBA के लिये कूटशब्द:
+ फायरबर्ड के पास एक विशेष उपयोक्ता है जिसका नाम है SYSDBA, जिसे कि समस्त डाटाबेसों की पहुँच होती है. SYSDBA नये डाटाबेस व उपयोक्ता बना सकता है. इस कारणवश SYSDBA को एक कूटशब्द से सुरक्षित करना आवश्यक हो जाता है.
+ .
+ कूटशब्द /etc/firebird/${FB_VER}/SYSDBA.password (केवल root ही इसे पढ़ सकता है ) में संरक्षित किया जाता है. आप इसमें वहाँ पर भी बदलाव कर सकते हैं ( gsec अनुप्रयोग द्वारा सेक्यूरिटी डाटाबेस को अपडेट करना न भूलें), या फिर आप dpkg-reconfigure का प्रयोग करके दोनों को ही अपडेट कर सकते हैं.
+ .
+ यदि आप कोई कूटशब्द नहीं देते हैं, तो एक कूटशब्द सहसा उतपन्न करके प्रयोग किया जाएगा (और SYSDBA.password में संरक्षित किया जाएगा)
+Description-hu.UTF-8: A SYSDBA felhasználó jelszava:
+ A SYSDBA a Firebird olyan speciális felhasználója, akinek az összes adatbázishoz teljeskörű hozzáférése van, valamint képes új felhasználók és adatbázisok létrehozására. Ezt a teljeskörű hozzáférést jelszóval védeni szükséges.
+ .
+ A jelszó a (csak root által olvasható) /etc/firebird/${FB_VER}/SYSDBA.password fájlban tárolódik. Ha meg szeretnéd változtatni, megteheted ebben a fájlban is (ebben ez esetben a security adatbázist gsec-kel frissítened kell), vagy használhatod a dpkg-reconfigure-t is, ami mindkét módosítást elvégzi.
+ .
+ Ha nem adsz meg jelszót, generálok egyet. Hogy ez mi lett, a SYSDBA.password-ben megnézheted.
+Description-it.UTF-8: Password per SYSDBA:
+ Firebird ha uno speciale utente chiamato SYSDBA, che è l'utente che ha accesso a tutti i database. SYSDBA può inoltre creare nuovi database e utenti. Per questo motivo, è necessario rendere sicuro l'uso di SYSDBA tramite una password.
+ .
+ La password è memorizzata in /etc/firebird/${FB_VER}/SYSDBA.password (leggibile solo da root). È possibile modificarla direttamente (senza dimenticare di aggiornare anche il database di sicurezza tramite l'utility gsec), o usare dpkg-reconfigure per aggiornare entrambi.
+ .
+ Non inserendo nessuna password ne verrà usata una casuale (e memorizzata in SYSDBA.password).
+Description-ja.UTF-8: SYSDBA のパスワード:
+ Firebird には、全てのデータベースにアクセスできる SYSDBA という名前の特別なユーザが存在しています。SYSDBA は新たなデータベースやユーザの作成も可能です。このため、SYSDBA をパスワードで保護する必要があります。
+ .
+ パスワードは /etc/firebird/${FB_VER}/SYSDBA.password (root のみが読み出し可能) に保存されています。ファイルを変更しても良いでしょうし (gsec ユーティリティを使ってセキュリティデータベースの更新をするのを忘れないでください)、あるいは dpkg-reconfigure を使って両方を更新しても良いでしょう。
+ .
+ パスワードを入力しなければ、ランダムなものが使われます (SYSDBA.password に保存されます)。
+Description-ko.UTF-8: SYSDBA 비밀번호:
+ Firebird에는 모든 데이터베이스에 접근할 수 있는 SYSDBA라는 특별한 사용자가 있습니다. SYSDBA는 데이터베이스나 사용자도 새로 생성할 수 있습니다. 그렇기 때문에 비밀번호를 사용하여 SYSDBA를 보호할 필요가 있습니다.
+ .
+ 이 비밀번호는 (루트만 읽을 수 있는) /etc/firebird/${FB_VER}/SYSDBA.password이라는 파일에 저장됩니다. 그 파일을 직접 수정해도 되고(gsec을 사용하여 보안 데이터베이스를 갱신하는 것을 잊지 마십시오) dpkg-reconfigure를 사용하여 비밀번호와 파일 모두를 동시에 갱신할 수도 있습니다.
+ .
+ 비밀번호를 입력하지 않으면 임의의 비밀번호를 생성하고 SYSDBA.password에 저장할 것입니다.
+Description-lt.UTF-8: SYSDBA slaptažodis:
+ Specialus naudotojas SYSDBA turi priėjimą prie visų duomenų bazių, SYSDBA taip pat gali sukurti naujas duomenų bazes ir naudotojus, todėl būtina nustatyti naudotojo SYSDBA slaptažodį.
+ .
+ Slaptažodis saugomas rinkmenoje /etc/firebird/${FB_VER}/SYSDBA.password (perskaitomoje tik administratoriui). Galite jį ten ir pakeisti (nepamirškite atnaujinti apsaugos duomenų bazės su programa „gsec“), arba galite pasinaudoti dpkg-reconfigure, kuris atnaujins abu.
+ .
+ Jei slaptažodžio neįvesite, bus sugeneruotas atsitiktinis (ir įrašytas į SYSDBA.password).
+Description-ml.UTF-8: സിസ്ഡിബിഎ (SYSDBA)യ്ക്കുളള  അടയാളവാക്ക് :
+  എല്ലാ ഡാറ്റാബേസിലും അനുമതിയുള്ള സിസ്ഡിബിഎ(SYSDBA) എന്ന പ്രത്യേക ഉപയോക്താവ്  ഫയര്‍ബേര്‍ഡിനുണ്ട്. സിസ്ഡിബിഎ(SYSDBA) യ്ക്ക് പുതിയ ഡാറ്റാബേസുകളേയും ഉപയോക്താക്കളേയും സൃഷ്ടിയ്ക്കാന്‍ സാധിക്കുന്നതുകൊണ്ട് അത് ഒരു അടയാളവാക്ക് ഉപയോഗിച്ച് സംരക്ഷിക്കേണ്ടത് അനിവാര്യമാണ്.
+ .
+ (റൂട്ടിന് മാത്രം വായിക്കാവുന്ന) /etc/firebird/${FB_VER}/SYSDBA.password യില്‍ അടയാളവാക്ക് സൂക്ഷിച്ചിരിക്കുന്നു. നിൂൂങ്ങള്‍ക്ക് ഇത് അവിടെ പുതുക്കുകയോ (ജിസെക്  യൂട്ടിലിറ്റി (gsec utility)  ഉപയോഗിച്ച് സുരക്ഷിതത്വ ഡാറ്റാബേസ് (security database) പുതുക്കാന്‍ മറക്കരുത്), അല്ലെങ്കില്‍ രണ്ടും പുതുക്കാന്‍ ഡിപികെജി-റികോണ്‍ഫിഗര്‍ (dpkg-reconfigure) നിങ്ങള്‍ക്കുപയോഗിയ്ക്കാം.
+ .
+ നിങ്ങള്‍ ഒരു അടയാളവാക്ക് നല്‍കിയിട്ടില്ലെങ്കില്‍, ഏതെങ്കിലുമൊന്ന് ഉപയോഗിക്കപ്പെടും (അത്  സിസ്ഡിബിഎ.പാസ്‌വേര്‍ഡി (SYSDBA.password) ല്‍ ശേഖരിയ്ക്കും).
+Description-ms.UTF-8: Kata laluan untuk SYSDBA:
+ Firebird mempunyai pengguna khas bernama SYSDBA, yang mana pengguna ini mempunyai akses ke semua pangkalan data. SYSDBA juga boleh mencipta pangkalan data dan pengguna baru. Oleh itu, adalah penting untuk lindungi dengan kata laluan.
+ .
+ Kata laluan disimpan di dalam /etc/firebird/${FB_VER}/SYSDBA.password (hanya boleh dibaca oleh root). Anda boleh mengubahnya disitu (jangan lupa untuk kemaskini pangkalan data keselamatan dengan menggunakan utiliti gsec), atau anda boleh menggunakan dpkg-reconfigure untuk kemaskinikan kedua-duanya.
+ .
+ Jika anda tidak masukkan kata laluan, kata laluan rawak akan digunakan (dan disimpan di dalam SYSDBA.password).
+Description-nb.UTF-8: Passord for SYSDBA:
+ Firebird har en spesiell bruker kalt SYSDBA, som er den brukeren som har tilgang til alle databaser. SYSDBA kan også opprette nye databaser og brukere, derfor er det nødvendig å sikre SYSDBA med et passord.
+ .
+ Passordet er lagret i /etc/firebird/${FB_VER}/SYSDBA.password (som bare kan leses av root.) Du kan endre det der (ikke glem å oppdatere sikkerhetsdatabasen også, med «gsec»), eller du kan bruke dpkg-reconfigure for å oppdatere begge.
+ .
+ Hvis du ikke opppgir et passord blir det laget et tilfeldig passord (og lagret i SYSDBA.password).
+Description-nl.UTF-8: Wachtwoord voor 'SYSDBA' (de databasebeheerder):
+ Firebird heeft een speciale gebruiker 'SYSDBA', deze gebruiker heeft toegang tot alle databases en kan nieuwe databases en gebruikers aanmaken. Het is dan ook noodzakelijk om dit te beveiligen met een wachtwoord.
+ .
+ Het wachtwoord wordt opgeslagen in /etc/firebird/${FB_VER}/SYSDBA.password, dit bestand is enkel leesbaar voor 'root'. U kunt het daar aanpassen (vergeet dan niet om de beveiligingsdatabase ook aan te passen met het hulpprogramma 'gsec') of via dpkg-reconfigure.
+ .
+ Als u geen wachtwoord opgeeft wordt er een willekeurig wachtwoord aangemaakt (en opgeslagen in SYSDBA.password).
+Description-no.UTF-8: Passord for SYSDBA:
+ Firebird har en spesiell bruker kalt SYSDBA, som er den brukeren som har tilgang til alle databaser. SYSDBA kan også opprette nye databaser og brukere, derfor er det nødvendig å sikre SYSDBA med et passord.
+ .
+ Passordet er lagret i /etc/firebird/${FB_VER}/SYSDBA.password (som bare kan leses av root.) Du kan endre det der (ikke glem å oppdatere sikkerhetsdatabasen også, med «gsec»), eller du kan bruke dpkg-reconfigure for å oppdatere begge.
+ .
+ Hvis du ikke opppgir et passord blir det laget et tilfeldig passord (og lagret i SYSDBA.password).
+Description-pl.UTF-8: Hasło dla SYSDBA:
+ Firebird ma specjalnego użytkownika SYSDBA, posiadającego dostęp do wszystkich baz danych. SYSDBA może także tworzyć nowe bazy danych i użytkowników. Z tego powodu konieczne jest zabezpieczenie SYSDBA hasłem.
+ .
+ Hasło jest przechowywane w /etc/firebird/${FB_VER}/SYSDBA.password (do odczytu tylko dla administratora). Może zostać tam zmienione (należy pamiętać o aktualizacji bazy danych bezpieczeństwa używając narzędzia gsec), lub można użyć dpkg-reconfigure aby zaktualizować oba.
+ .
+ Jeżeli nie zostanie wprowadzone hasło, zostanie użyte hasło losowe (będzie przechowywane w SYSDBA.password).
+Description-pt.UTF-8: Palavra-chave para SYSDBA:
+ Firebird tem um utilizador especial chamado SYSDBA, que é o utilizador que tem acesso a todas as bases de dados. O SYSDBA também pode criar novas bases de dados e utilizadores. Por causa disso, é necessário que SYSDBA tenha uma palavra-passe.
+ .
+ A palavra-chave é guardada em /etc/firebird/${FB_VER}/SYSDBA.password (legível apenas por root). Pode modifica-lo aqui (não se esqueça de actualizar também a base de dados de segurança, utilizando o utilitário gsec), ou pode utilizar dpkg-reconfigure para actualizar ambos.
+ .
+ Se não introduzir uma palavra-chave, será utilizada uma aleatória (e guardada em SYSDBA.password).
+Description-pt_BR.UTF-8: Senha para o usuário SYSDBA:
+ O Firebird possui um usuário especial chamado SYSDBA, o qual é o usuário que possui acesso a todas as bases de dados. O SYSDBA pode também criar novas bases de dados e novos usuários. Por isso, é necessário definir uma senha para o usuário SYSDBA por questões de segurança.
+ .
+ A senha fica armazenada no arquivo /etc/firebird/${FB_VER}/SYSDBA.password (o qual é legível somente pelo usuário root). Você pode modificá-la nesse arquivo (não se esqueça de atualizar a base de dados de segurança também, usando o utilitário gsec) ou você pode utilizar o comando dpkg-reconfigure para atualizar ambos os locais (o arquivo de senhas e a base de segurança).
+ .
+ Caso você não informe uma senha, uma senha aleatória será utilizada (e armazenada no arquivo SYSDBA.password).
+Description-ro.UTF-8: Parola pentru SYSDBA:
+ Firebird folosește un utilizator special, numit SYSDBA, pentru a accesa toate bazele de date. SYSDBA poate, de asemenea, crea baze de date noi și utilizatori. De aceea, este necesar să securizați contul SYSDBA cu o parolă.
+ .
+ Parola este stocată în /etc/firebird/${FB_VER}/SYSDBA.password (care poate fi citit doar de utilizatorul root). O puteți modifica acolo (nu uitați să actualizați și baza de date de securitate, folosind utilitarul grsec), sau puteți folosi dpkg-reconfigure pentru a le actualiza pe ambele.
+ .
+ Dacă nu introduceți o parolă, va fi folosită una aleatoare (și va fi stocată în SYSDBA.password).
+Description-ru.UTF-8: Пароль для SYSDBA:
+ В Firebird есть специальный пользователь по имени SYSDBA, у которого есть доступ ко всем базам. Также SYSDBA может создавать новые базы и пользователей. Поэтому необходимо защитить SYSDBA паролем.
+ .
+ Пароль хранится в /etc/firebird/${FB_VER}/SYSDBA.password (может читать только root). Вы можете поменять его там (не забудьте также обновить базу безопасности с помощью утилиты gsec), или вы можете использовать dpkg-reconfigure, чтобы обновить сразу все.
+ .
+ Если вы не введёте пароль, будет использован случайный (и сохранён в SYSDBA.password).
+Description-sv.UTF-8: Lösenord för SYSDBA:
+ Firebird har en speciell användare med namnet SYSDBA, som är användaren som har tillgång till alla databaser. SYSDBA kan även skapa nya databaser och användare. På grund av detta är det nödvändigt att säkra upp SYSDBA med ett lösenord.
+ .
+ Lösenordet lagras i /etc/firebird/${FB_VER}/SYSDBA.password (endast läsbar för root). Du kan ändra det där (glöm inte att uppdatera säkerhetsdatabasen också, med verktyget gsec), eller så kan du använda dpkg-reconfigure för att uppdatera båda.
+ .
+ Om du inte anger ett lösenord kommer ett slumpmässigt att användas (och lagras i SYSDBA.password).
+Description-vi.UTF-8: Mật khẩu cho SYSDBA:
+ Trình Firebird có một người dùng đặc biệt tên SYSDBA có quyền truy cập đến mọi cơ sở dữ liệu. SYSDBA cũng có khả năng tạo cơ sở dữ liệu và người dùng mới. Vì thế, cần thiết bảo vệ SYSDBA bằng mật khẩu.
+ .
+ Mật khẩu này được lưu vào tập tin « /etc/firebird/${FB_VER}/SYSDBA.password » (cho phép chỉ người chủ đọc). Bạn có khả năng sửa đổi nó ở đó (đừng quên cũng cập nhật cơ sở dữ liệu bảo mật, dùng tiện ích gsec), hoặc sử dụng câu lệnh cấu hình lại « dpkg-reconfigure ... » để cập nhật cả hai.
+ .
+ Không nhập mật khẩu thì mật khẩu ngẫu nhiên được dùng (và được lưu vào « SYSDBA.password »).
+
+Template: shared/firebird/sysdba_password/upgrade_reconfigure
+Type: password
+Description: Password for SYSDBA:
+ Firebird has a special user named SYSDBA, which is the user that has
+ access to all databases. SYSDBA can also create new databases and users.
+ Because of this, it is necessary to secure SYSDBA with a password.
+ .
+ The password is stored in /etc/firebird/${FB_VER}/SYSDBA.password
+ (readable only by root). You may modify it there (don't forget to update
+ the security database too, using the gsec utility), or you may use
+ dpkg-reconfigure to update both.
+ .
+ To keep your existing password, leave this blank.
+Description-bg.UTF-8: Парола за SYSDBA:
+ Firebird използва специален потребител, наречен SYSDBA, който има достъп до всички бази данни, може да създава нови потребители и бази данни и като цяло да прави всичко с Firebird. Поради факта, че за SYSDBA не са валидни ограниченията на обикновените потребители е необходимо достъпът до SYSDBA да бъде защитен с парола.
+ .
+ Паролата ще бъде записана във файла /etc/firebird/${FB_VER}/SYSDBA.password (с разрешен достъп само за root). Може да я промените там (не забравяйте да обновите и базата данни с потребителите с програмата gsec), а можете да използвате и dpkg-reconfigure за да обновите едновременно и двете места.
+ .
+ Ако не въведете нищо текущата парола ще бъде запазена.
+Description-bn.UTF-8: SYSDBA এর জন্য পাসওয়ার্ড:
+ ফায়ারবার্ড এর SYSDBA নামে একটি বিশেষ ব্যবহারকারী আছে, যেই ব্যবহারকারীর সকল ডাটাবেজে প্রবেশের অধিকার আছে। SYSDBA নতুন ডাটাবেজ এবং ব্যবহারকারীও তৈরি করতে পারে। এই কারণে,SYSDBA কে একটি পাসওয়ার্ড দিয়ে নিরাপদ রাখা প্রয়োজন।
+ .
+ পাসওয়ার্ড জমা থাকে /etc/firebird/${FB_VER}/SYSDBA.password তে (যা শুধুমাত্র root কর্তৃক পড়ার যোগ্য)। আপনি এটিকে সেখানে পরিবর্তন করতে পারেন ( নিরাপত্তা ডাটাবেজকে আপডেট করার কথা ভুলবেন না, gsec ইউটিলিটি ব্যবহার করে), অথবা আপনি দুটোই আপডেট করতে dpkg-reconfigure ব্যবহার করতে পারেন।
+ .
+ আপনার বিদ্যমান পাসওয়ার্ড রাখতে, এটিকে খালি রাখুন।
+Description-cs.UTF-8: Heslo pro SYSDBA:
+ Firebird obsahuje speciálního uživatele SYSDBA, který má přístup do všech databází. SYSDBA také může vytvářet nové databáze a uživatele. Z těchto důvodů je nezbytné účet SYSDBA zabezpečit heslem.
+ .
+ Heslo je uloženo v souboru /etc/firebird/${FB_VER}/SYSDBA.password, který může číst jen uživatel root. Heslo můžete změnit přímo ve zmíněném souboru, ovšem pak nesmíte zapomenout aktualizovat bezpečnostní databázi nástrojem gsec. Jednodušší je použít dpkg-reconfigure, kterým se aktualizují hesla na obou místech.
+ .
+ Pro ponechání stávajícího hesla nezadávejte nic.
+Description-da.UTF-8: Adgangskode for SYSDBA:
+ Firebird har en speciel bruger kaldt SYSDBA, som er den bruger som har adgang til alle databaser. SYSDBA kan også oprette nye databaser og brugere. På grund af dette er det nødvendigt at sikre SYSDBA med en adgangskode.
+ .
+ Adgangskoden gemmes i /etc/firebird/${FB_VER}/SYSDBA.password (kun læsbar af administrator (root)). Du kan ændre den der (glem ikke også at opdatere sikkerhedsdatabasen, med brug af gsec-redskabet), eller du kan bruge dpkg-reconfigure til at opdatere begge.
+ .
+ For at beholde din eksisterende adgangskode, efterlad tom.
+Description-de.UTF-8: Passwort für SYSDBA:
+ Firebird hat einen speziellen Benutzer namens SYSDBA. Dieser Benutzer hat Zugriff auf alle Datenbanken. SYSDBA kann auch neue Datenbanken und Benutzer erstellen. Deshalb ist es nötig, den SYSDBA-Zugang mit einem Passwort zu sichern.
+ .
+ Das Passwort wird in /etc/firebird/${FB_VER}/SYSDBA.password gespeichert (nur für root lesbar). Sie können es dort ändern (vergessen Sie jedoch nicht, auch die Security-Datenbank mit dem gsec-Werkzeug zu aktualisieren oder verwenden Sie dpkg-reconfigure, um gleich beides zu verändern).
+ .
+ Um Ihr vorhandenes Passwort weiter zu verwenden, lassen Sie dies leer.
+Description-es.UTF-8: Contraseña para SYSDBA:
+ Firebird tiene un usuario especial llamado SYSDBA, que es el usuario con acceso a todas las bases de datos. SYSDBA también puede crear nuevas bases de datos y usuarios. Por todo esto, es necesario definir una contraseña para SYSDBA para proteger el acceso a éste.
+ .
+ La contraseña se almacena en «/etc/firebird/${FB_VER}/SYSDBA.password» (que sólo puede leer root). Puede modificarla allí (en cuyo caso debe actualizar la base de datos de seguridad con la herramienta gsec) o puede utilizar dpkg-reconfigure para actualizar ambas.
+ .
+ Deje este campo en blanco si desea mantener la contraseña existente.
+Description-eu.UTF-8: SYSDBA pasahitza:
+ Firebird-ek SYSDBA izeneko erabiltzaile berezi bat du, honek datubase guztietara du sarrera eskubidea. SYSDBA datubase eta erabiltzaileak sortzeko gai da. Hau dela eta beharrezkoa da SYSDBA pasahitz baten bidez babestea.
+ .
+ Pasahitza /etc/firebird/${FB_VER}/SYSDBA.password-ean gordeko da (root-entzat bakarrik irakurgarri).  Hor aldatzeko aukera duzu (ez ahaztu segurtasun datubasea eguneratzeaz, gsec lanabesaren bidez), edo dpkg-reconfigure erabili dezakezu biak eguneratzeko.
+ .
+ Dagoen pasahitza mantentzeko hau zurian utzi.
+Description-fi.UTF-8: SYSDBA:n salasana:
+ Firebirdissä on erityinen käyttäjä nimeltä SYSDBA, jolla on pääsy kaikkiin tietokantoihin. SYSDBA voi myös luoda uusia tietokantoja tai käyttäjiä. Tämän takia on tarpeen turvata tunnus SYSDBA salasanalla.
+ .
+ Salasana tallennetaan tiedostoon /etc/firebird/${FB_VER}/SYSDBA.password (joka on vain pääkäyttäjän luettavissa). Sitä voidaan muokata tiedostossa (jolloin täytyy muistaa päivittää myös turvallisuustietokanta gsec-työkalulla) tai molemmat voidaan päivittää ohjelmalla dpkg-reconfigure.
+ .
+ Olemassa oleva salasana voidaan säilyttää jättämällä kenttä tyhjäksi.
+Description-fr.UTF-8: Mot de passe pour l'identifiant SYSDBA :
+ Firebird crée un identifiant spécial appelé SYSDBA, qui a accès à toutes les bases de données. SYSDBA peut également créer de nouvelles bases de données et de nouveaux utilisateurs. Par sécurité, il est nécessaire d'attribuer un mot de passe à SYSDBA.
+ .
+ Le mot de passe est conservé dans le fichier /etc/firebird/${FB_VER}/SYSDBA.password (accessible uniquement au superutilisateur). Pour changer de mot de passe, vous pouvez modifier directement ce fichier (dans ce cas n'oubliez pas de mettre également à jour la base de données « security » avec l'utilitaire gsec), ou bien utiliser la commande « dpkg-reconfigure ».
+ .
+ Pour conserver votre mot de passe actuel, laissez ce champ vide.
+Description-gl.UTF-8: Contrasinal de SYSDBA:
+ Firebird ten un usuario especial chamado SYSDBA, que é o usuario que ten acceso a tódalas bases de datos. SYSDBA tamén pode crear novas bases de datos e usuarios. Debido a isto, é necesario asegurar SYSDBA cun contrasinal.
+ .
+ O contrasinal está armacenado no ficheiro /etc/firebird/${FB_VER}/SYSDBA.password (só lexible para o administrador). Pode modificalo aí (non esqueza actualizar tamén a base de datos de seguridade empregando a utilidade "gsec"), ou pode empregar dpkg-reconfigure para actualizar as dúas cousas.
+ .
+ Para conservar o contrasinal existente, déixeo en branco.
+Description-hi.UTF-8: SYSDBA के लिये कूटशब्द:
+ फायरबर्ड के पास एक विशेष उपयोक्ता है जिसका नाम है SYSDBA, जिसे कि समस्त डाटाबेसों की पहुँच होती है. SYSDBA नये डाटाबेस व उपयोक्ता बना सकता है. इस कारणवश SYSDBA को एक कूटशब्द से सुरक्षित करना आवश्यक हो जाता है.
+ .
+ कूटशब्द /etc/firebird/${FB_VER}/SYSDBA.password (केवल root ही इसे पढ़ सकता है ) में संरक्षित किया जाता है. आप इसमें वहाँ पर भी बदलाव कर सकते हैं ( gsec अनुप्रयोग द्वारा सेक्यूरिटी डाटाबेस को अपडेट करना न भूलें), या फिर आप dpkg-reconfigure का प्रयोग करके दोनों को ही अपडेट कर सकते हैं.
+ .
+ वर्तमान कूटशब्द को ही विद्यमान रहने देने के लिए इसे रिक्त छोड़ें.
+Description-hu.UTF-8: A SYSDBA felhasználó jelszava:
+ A SYSDBA a Firebird olyan speciális felhasználója, akinek az összes adatbázishoz teljeskörű hozzáférése van, valamint képes új felhasználók és adatbázisok létrehozására. Ezt a teljeskörű hozzáférést jelszóval védeni szükséges.
+ .
+ A jelszó a (csak root által olvasható) /etc/firebird/${FB_VER}/SYSDBA.password fájlban tárolódik. Ha meg szeretnéd változtatni, megteheted ebben a fájlban is (ebben ez esetben a security adatbázist gsec-kel frissítened kell), vagy használhatod a dpkg-reconfigure-t is, ami mindkét módosítást elvégzi.
+ .
+ Ha meg szeretnéd tartani a jelenlegi jelszavad, hagyd üresen ezt a mezőt.
+Description-it.UTF-8: Password per SYSDBA:
+ Firebird ha uno speciale utente chiamato SYSDBA, che è l'utente che ha accesso a tutti i database. SYSDBA può inoltre creare nuovi database e utenti. Per questo motivo, è necessario rendere sicuro l'uso di SYSDBA tramite una password.
+ .
+ La password è memorizzata in /etc/firebird/${FB_VER}/SYSDBA.password (leggibile solo da root). È possibile modificarla direttamente (senza dimenticare di aggiornare anche il database di sicurezza tramite l'utility gsec), o usare dpkg-reconfigure per aggiornare entrambi.
+ .
+ Lasciare vuoto per mantenere la password esistente.
+Description-ja.UTF-8: SYSDBA のパスワード:
+ Firebird には、全てのデータベースにアクセスできる SYSDBA という名前の特別なユーザが存在しています。SYSDBA は新たなデータベースやユーザの作成も可能です。このため、SYSDBA をパスワードで保護する必要があります。
+ .
+ パスワードは /etc/firebird/${FB_VER}/SYSDBA.password (root のみが読み出し可能) に保存されています。ファイルを変更しても良いでしょうし (gsec ユーティリティを使ってセキュリティデータベースの更新をするのを忘れないでください)、あるいは dpkg-reconfigure を使って両方を更新しても良いでしょう。
+ .
+ 既存のパスワードを保持するには、これを空のままにしておいてください。
+Description-ko.UTF-8: SYSDBA 비밀번호:
+ Firebird에는 모든 데이터베이스에 접근할 수 있는 SYSDBA라는 특별한 사용자가 있습니다. SYSDBA는 데이터베이스나 사용자도 새로 생성할 수 있습니다. 그렇기 때문에 비밀번호를 사용하여 SYSDBA를 보호할 필요가 있습니다.
+ .
+ 이 비밀번호는 (루트만 읽을 수 있는) /etc/firebird/${FB_VER}/SYSDBA.password이라는 파일에 저장됩니다. 그 파일을 직접 수정해도 되고(gsec을 사용하여 보안 데이터베이스를 갱신하는 것을 잊지 마십시오) dpkg-reconfigure를 사용하여 비밀번호와 파일 모두를 동시에 갱신할 수도 있습니다.
+ .
+ 기존 비밀번호를 사용하려면 이 항목은 비워두십시오.
+Description-lt.UTF-8: SYSDBA slaptažodis:
+ Specialus naudotojas SYSDBA turi priėjimą prie visų duomenų bazių, SYSDBA taip pat gali sukurti naujas duomenų bazes ir naudotojus, todėl būtina nustatyti naudotojo SYSDBA slaptažodį.
+ .
+ Slaptažodis saugomas rinkmenoje /etc/firebird/${FB_VER}/SYSDBA.password (perskaitomoje tik administratoriui). Galite jį ten ir pakeisti (nepamirškite atnaujinti apsaugos duomenų bazės su programa „gsec“), arba galite pasinaudoti dpkg-reconfigure, kuris atnaujins abu.
+ .
+ Jei norite palikti esamą slaptažodį, palikite lauką tuščią.
+Description-ml.UTF-8: സിസ്ഡിബിഎ (SYSDBA)യ്ക്കുളള  അടയാളവാക്ക് :
+  എല്ലാ ഡാറ്റാബേസിലും അനുമതിയുള്ള സിസ്ഡിബിഎ(SYSDBA) എന്ന പ്രത്യേക ഉപയോക്താവ്  ഫയര്‍ബേര്‍ഡിനുണ്ട്. സിസ്ഡിബിഎ(SYSDBA) യ്ക്ക് പുതിയ ഡാറ്റാബേസുകളേയും ഉപയോക്താക്കളേയും സൃഷ്ടിയ്ക്കാന്‍ സാധിക്കുന്നതുകൊണ്ട് അത് ഒരു അടയാളവാക്ക് ഉപയോഗിച്ച് സംരക്ഷിക്കേണ്ടത് അനിവാര്യമാണ്.
+ .
+ (റൂട്ടിന് മാത്രം വായിക്കാവുന്ന) /etc/firebird/${FB_VER}/SYSDBA.password യില്‍ അടയാളവാക്ക് സൂക്ഷിച്ചിരിക്കുന്നു. നിൂൂങ്ങള്‍ക്ക് ഇത് അവിടെ പുതുക്കുകയോ (ജിസെക്  യൂട്ടിലിറ്റി (gsec utility)  ഉപയോഗിച്ച് സുരക്ഷിതത്വ ഡാറ്റാബേസ് (security database) പുതുക്കാന്‍ മറക്കരുത്), അല്ലെങ്കില്‍ രണ്ടും പുതുക്കാന്‍ ഡിപികെജി-റികോണ്‍ഫിഗര്‍ (dpkg-reconfigure) നിങ്ങള്‍ക്കുപയോഗിയ്ക്കാം.
+ .
+ ഇപ്പോഴുളള അടയാളവാക്ക് നിലനിിര്‍ത്തുന്നതിന്, ഈ കളം വെറുതെ ഇടുക.
+Description-ms.UTF-8: Kata laluan untuk SYSDBA:
+ Firebird mempunyai pengguna khas bernama SYSDBA, yang mana pengguna ini mempunyai akses ke semua pangkalan data. SYSDBA juga boleh mencipta pangkalan data dan pengguna baru. Oleh itu, adalah penting untuk lindungi dengan kata laluan.
+ .
+ Kata laluan disimpan di dalam /etc/firebird/${FB_VER}/SYSDBA.password (hanya boleh dibaca oleh root). Anda boleh mengubahnya disitu (jangan lupa untuk kemaskini pangkalan data keselamatan dengan menggunakan utiliti gsec), atau anda boleh menggunakan dpkg-reconfigure untuk kemaskinikan kedua-duanya.
+ .
+ Untuk kekalkan kata laluan yang sedia ada, biarkan ini kosong.
+Description-nb.UTF-8: Passord for SYSDBA:
+ Firebird har en spesiell bruker kalt SYSDBA, som er den brukeren som har tilgang til alle databaser. SYSDBA kan også opprette nye databaser og brukere, derfor er det nødvendig å sikre SYSDBA med et passord.
+ .
+ Passordet er lagret i /etc/firebird/${FB_VER}/SYSDBA.password (som bare kan leses av root.) Du kan endre det der (ikke glem å oppdatere sikkerhetsdatabasen også, med «gsec»), eller du kan bruke dpkg-reconfigure for å oppdatere begge.
+ .
+ La dette stå tomt for å beholde ditt eksisterende passord.
+Description-nl.UTF-8: Wachtwoord voor 'SYSDBA' (de databasebeheerder):
+ Firebird heeft een speciale gebruiker 'SYSDBA', deze gebruiker heeft toegang tot alle databases en kan nieuwe databases en gebruikers aanmaken. Het is dan ook noodzakelijk om dit te beveiligen met een wachtwoord.
+ .
+ Het wachtwoord wordt opgeslagen in /etc/firebird/${FB_VER}/SYSDBA.password, dit bestand is enkel leesbaar voor 'root'. U kunt het daar aanpassen (vergeet dan niet om de beveiligingsdatabase ook aan te passen met het hulpprogramma 'gsec') of via dpkg-reconfigure.
+ .
+ Als u uw bestaande wachtwoord wilt behouden dient u dit leeg te laten.
+Description-no.UTF-8: Passord for SYSDBA:
+ Firebird har en spesiell bruker kalt SYSDBA, som er den brukeren som har tilgang til alle databaser. SYSDBA kan også opprette nye databaser og brukere, derfor er det nødvendig å sikre SYSDBA med et passord.
+ .
+ Passordet er lagret i /etc/firebird/${FB_VER}/SYSDBA.password (som bare kan leses av root.) Du kan endre det der (ikke glem å oppdatere sikkerhetsdatabasen også, med «gsec»), eller du kan bruke dpkg-reconfigure for å oppdatere begge.
+ .
+ La dette stå tomt for å beholde ditt eksisterende passord.
+Description-pl.UTF-8: Hasło dla SYSDBA:
+ Firebird ma specjalnego użytkownika SYSDBA, posiadającego dostęp do wszystkich baz danych. SYSDBA może także tworzyć nowe bazy danych i użytkowników. Z tego powodu konieczne jest zabezpieczenie SYSDBA hasłem.
+ .
+ Hasło jest przechowywane w /etc/firebird/${FB_VER}/SYSDBA.password (do odczytu tylko dla administratora). Może zostać tam zmienione (należy pamiętać o aktualizacji bazy danych bezpieczeństwa używając narzędzia gsec), lub można użyć dpkg-reconfigure aby zaktualizować oba.
+ .
+ Aby zachować swoje obecne hasło, pozostaw to miejsce puste.
+Description-pt.UTF-8: Palavra-chave para SYSDBA:
+ Firebird tem um utilizador especial chamado SYSDBA, que é o utilizador que tem acesso a todas as bases de dados. O SYSDBA também pode criar novas bases de dados e utilizadores. Por causa disso, é necessário que SYSDBA tenha uma palavra-passe.
+ .
+ A palavra-chave é guardada em /etc/firebird/${FB_VER}/SYSDBA.password (legível apenas por root). Pode modifica-lo aqui (não se esqueça de actualizar também a base de dados de segurança, utilizando o utilitário gsec), ou pode utilizar dpkg-reconfigure para actualizar ambos.
+ .
+ Para manter a palavra-chave actual, deixe isto vazio.
+Description-pt_BR.UTF-8: Senha para o usuário SYSDBA:
+ O Firebird possui um usuário especial chamado SYSDBA, o qual é o usuário que possui acesso a todas as bases de dados. O SYSDBA pode também criar novas bases de dados e novos usuários. Por isso, é necessário definir uma senha para o usuário SYSDBA por questões de segurança.
+ .
+ A senha fica armazenada no arquivo /etc/firebird/${FB_VER}/SYSDBA.password (o qual é legível somente pelo usuário root). Você pode modificá-la nesse arquivo (não se esqueça de atualizar a base de dados de segurança também, usando o utilitário gsec) ou você pode utilizar o comando dpkg-reconfigure para atualizar ambos os locais (o arquivo de senhas e a base de segurança).
+ .
+ Para manter sua senha atual, mantenha este campo em branco.
+Description-ro.UTF-8: Parola pentru SYSDBA:
+ Firebird folosește un utilizator special, numit SYSDBA, pentru a accesa toate bazele de date. SYSDBA poate, de asemenea, crea baze de date noi și utilizatori. De aceea, este necesar să securizați contul SYSDBA cu o parolă.
+ .
+ Parola este stocată în /etc/firebird/${FB_VER}/SYSDBA.password (care poate fi citit doar de utilizatorul root). O puteți modifica acolo (nu uitați să actualizați și baza de date de securitate, folosind utilitarul grsec), sau puteți folosi dpkg-reconfigure pentru a le actualiza pe ambele.
+ .
+ Pentru a păstra parola existentă, lăsați gol acest câmp.
+Description-ru.UTF-8: Пароль для SYSDBA:
+ В Firebird есть специальный пользователь по имени SYSDBA, у которого есть доступ ко всем базам. Также SYSDBA может создавать новые базы и пользователей. Поэтому необходимо защитить SYSDBA паролем.
+ .
+ Пароль хранится в /etc/firebird/${FB_VER}/SYSDBA.password (может читать только root). Вы можете поменять его там (не забудьте также обновить базу безопасности с помощью утилиты gsec), или вы можете использовать dpkg-reconfigure, чтобы обновить сразу все.
+ .
+ Чтобы сохранить ваш текущий пароль, оставьте поле пустым.
+Description-sv.UTF-8: Lösenord för SYSDBA:
+ Firebird har en speciell användare med namnet SYSDBA, som är användaren som har tillgång till alla databaser. SYSDBA kan även skapa nya databaser och användare. På grund av detta är det nödvändigt att säkra upp SYSDBA med ett lösenord.
+ .
+ Lösenordet lagras i /etc/firebird/${FB_VER}/SYSDBA.password (endast läsbar för root). Du kan ändra det där (glöm inte att uppdatera säkerhetsdatabasen också, med verktyget gsec), eller så kan du använda dpkg-reconfigure för att uppdatera båda.
+ .
+ Lämna denna blank för att behålla ditt befintliga lösenord.
+Description-vi.UTF-8: Mật khẩu cho SYSDBA:
+ Trình Firebird có một người dùng đặc biệt tên SYSDBA có quyền truy cập đến mọi cơ sở dữ liệu. SYSDBA cũng có khả năng tạo cơ sở dữ liệu và người dùng mới. Vì thế, cần thiết bảo vệ SYSDBA bằng mật khẩu.
+ .
+ Mật khẩu này được lưu vào tập tin « /etc/firebird/${FB_VER}/SYSDBA.password » (cho phép chỉ người chủ đọc). Bạn có khả năng sửa đổi nó ở đó (đừng quên cũng cập nhật cơ sở dữ liệu bảo mật, dùng tiện ích gsec), hoặc sử dụng câu lệnh cấu hình lại « dpkg-reconfigure ... » để cập nhật cả hai.
+ .
+ Để giữ lại mật khẩu tồn tại, bỏ rỗng trường này.
+
+Template: shared/firebird/sysdba_password/new_password
+Type: password
+Description: New password for SYSDBA (for internal use)
+ *DO NOT TRANSLATE*
+ This is an internal, hidden template
+
+Template: shared/firebird/server_in_use
+Type: error
+Description: firebird${FB_VER}-${FB_FLAVOUR} server is in use
+  To ensure data integrity, package removal/upgrade is aborted. Please stop all local and remote clients before removing or upgrading firebird${FB_VER}-${FB_FLAVOUR}
+Description-bg.UTF-8: Сървърът firebird${FB_VER}-${FB_FLAVOUR} се използва
+ За предпазване от повреди в базите данни, премахването или обновяването на пакета е прекратено. Прекъснете всички местни и отдалечени връзки към firebird${FB_VER}-${FB_FLAVOUR} преди да опитате отново.
+Description-cs.UTF-8: Server firebird${FB_VER}-${FB_FLAVOUR} se používá
+ Pro zajištění integrity dat bude odstranění/aktualizace balíku přerušeno. Před odstraněním nebo aktualizací balíku firebird${FB_VER}-{FB_FLAVOUR} prosím zastavte všechny lokální i vzdálené klienty.
+Description-da.UTF-8: Serveren firebird${FB_VER}-${FB_FLAVOUR} er i brug
+  For at sikre dataintegritet, er pakkefjernelse/-opgradering afbrudt. Stop venligst alle lokale og eksterne klienter før fjernelse eller opgradering af firebird${FB_VER}-${FB_FLAVOUR}
+Description-de.UTF-8: firebird${FB_VER}-${FB_FLAVOUR}-Server wird gerade genutzt
+ Um die Datenintegrität sicher zu stellen, wird die Entfernung/das Upgrade des Pakets abgebrochen. Bitte stoppen Sie alle lokalen und entfernt laufenden Clients, bevor Sie firebird${FB_VER}-${FB_FLAVOUR} entfernen oder aktualisieren.
+Description-es.UTF-8: Está utilizando el servidor firebird${FB_VER}-${FB_FLAVOUR}
+ Se ha abortado la actualización o eliminación del paquete para poder asegurar la integridad de os datos. Debe parar todos los clientes locales y remotos antes de eliminar o actualizar firebird${FB_VER}-${FB_FLAVOUR}
+Description-eu.UTF-8: firebird${FB_VER}-${FB_FLAVOUR} zerbitzaria erabilia dago
+  Datu integritatea ziurtatzeko pakete ezabatze/eguneratze prozesua utzia izan da. Mesedez geratu urruneko eta lokalean egon litezken lokalean bezeroak firebird${FB_VER}-${FB_FLAVOUR} kendu edo eguneratu aurretik.
+Description-fi.UTF-8: firebird${FB_VER}-${FB_FLAVOUR}-palvelin on käytössä
+ Tietojen eheyden varmistamiseksi paketin poisto tai päivitys on keskeytetty. Pysäytä kaikki paikalliset ja etäasiakkaat ennen paketin firebird${FB_VER}-${FB_FLAVOUR} poistamista tai päivittämistä.
+Description-fr.UTF-8: Le serveur firebird${FB_VER}-${FB_FLAVOUR} est actuellement en activité.
+ Afin d'assurer l'intégrité des données, la suppression/mise à jour a été annulée. Veuillez arrêter tous les clients locaux et distants avant de supprimer ou de mettre à jour firebird${FB_VER}-${FB_FLAVOUR}.
+Description-gl.UTF-8: Estase a empregar o servidor firebird${FB_VER}-${FB_FLAVOUR}
+ Para asegurar a integridade dos datos, cancelouse a eliminación/actualización de paquetes. Deteña os clientes locais e remotos antes de eliminar ou actualizar firebird${FB_VER}-${FB_FLAVOUR}
+Description-hu.UTF-8: A firebird${FB_VER}-${FB_FLAVOUR} szerver használatban van.
+  Az adatintegritás megőrzése érdekében a csomag eltávolítását/frissitését megszakítom. A művelet folytatása előtt állítsd le az összes helyi és távoli klienst.
+Description-it.UTF-8: il server firebird${FB_VER}-${FB_FLAVOUR} è in uso
+  Per garantire l'integrità dei dati, la rimozione/aggiornamento è annullata. Chiudere tutti i client locali e remoti prima di rimuovere o aggiornare firebird${FB_VER}-${FB_FLAVOUR}
+Description-ja.UTF-8: firebird${FB_VER}-${FB_FLAVOUR} サーバは利用中です
+ データの完全性を確保するため、パッケージの削除／アップグレードが中断されました。firebird${FB_VER}-${FB_FLAVOUR} を削除あるいはアップグレードする前にローカルおよびリモートの全てのクライアントを停止してください。
+Description-ko.UTF-8: firebird${FB_VER}-${FB_FLAVOUR} 현재 사용중입니다
+ 데이터의 무결성을 위해 꾸러미의 설치/업그레이드를 취소했습니다. 로컬 클라이언트와 원격 클라이언트를 모두 멈춘 후 firebird${FB_VER}-${FB_FLAVOUR}을(를) 업그레이드하십시오.
+Description-lt.UTF-8: firebird${FB_VER}-${FB_FLAVOUR} serveris naudojamas
+  Paketo trynimas/atnaujinimas nutrauktas, kad būtų išsaugotas duomenų vientisumas. Sustabdykite visus vietinius ir nuotolinius klientus prieš trindami ar atnaujindami firebird${FB_VER}-${FB_FLAVOUR}
+Description-ml.UTF-8: ഫയര്‍ബേര്‍ഡ് ${FB_VER}-${FB_FLAVOUR} സെര്‍വര്‍ ഉപയോഗത്തിലാണ്
+ ഡാറ്റയ്ക്ക് മാറ്റം വന്നിട്ടില്ലെന്ന്  ഉറപ്പുവരുത്തുന്നതിനായി പാക്കേജിന്റെ നീക്കംചെയ്യലില്‍/പുതുക്കലില്‍  നിന്നും പിന്തിരിയുക. ഫയര്‍ബേര്‍ഡ് ${FB_VER}-${FB_FLAVOUR} നീക്കുന്നതിനോ പുതുക്കുന്നതിനോ മുന്‍പ്  ദയവായി എല്ലാ പ്രാദേശികവും വിദൂരവുമായ ക്ലയന്റ്സിനേയും നിര്‍ത്തുക.
+Description-nb.UTF-8: firebird${FB_VER}-${FB_FLAVOUR}-tjener er i bruk
+ For å sikre dataintegritet blir pakkefjerning/oppdatering avbrutt. Stopp alle lokale og nettverksklienter før firebird${FB_VER}-${FB_FLAVOUR} fjernes eller oppgraderes
+Description-nl.UTF-8: firebird${FB_VER}-${FB_FLAVOUR} server is in gebruik
+ Om data-integriteit te verzekeren wordt het verwijderen/opwaarderen van dit pakket afgebroken. Gelieve alle clients te stoppen voor u firebird${FB_VER}-${FB_FLAVOUR} verwijderd of opwaardeert.
+Description-no.UTF-8: firebird${FB_VER}-${FB_FLAVOUR}-tjener er i bruk
+ For å sikre dataintegritet blir pakkefjerning/oppdatering avbrutt. Stopp alle lokale og nettverksklienter før firebird${FB_VER}-${FB_FLAVOUR} fjernes eller oppgraderes
+Description-pl.UTF-8: Serwer firebird${FB_VER}-${FB_FLAVOUR} jest używany.
+ Aby zagwarantować integralność danych aktualizacja/usuwanie pakietów zostało przerwane. Zatrzymaj wszystkich lokalnych i zdalnych klientów przed usunięciem lub aktualizacją firebird${FB_VER}-${FB_FLAVOUR}.
+Description-pt.UTF-8: Está em utilização o servidor firebird${FB_VER}-${FB_FLAVOUR}
+ Para assegurar a integridade de dados, a remoção/actualização do pacote foi abortada. Por favor páre todos os clientes locais e remotos antes de remover ou actualizar o firebird${FB_VER}-${FB_FLAVOUR}
+Description-pt_BR.UTF-8: Servidor firebird${FB_VER}-${FB_FLAVOUR} está em uso
+ Para assegurar a integridade dos dados, a remoção/atualização do pacote foi abortada. Por favor, desconecte todos os clientes locais e remotos antes de remover ou atualizar o firebird${FB_VER}-${FB_FLAVOUR}
+Description-ro.UTF-8: Serverul firebird${FB_VER}-${FB_FLAVOUR} este, în prezent, folosit
+  Pentru a asigura integritatea datelor se abandonează ștergerea/actualizarea. Înainte de ștergerea sau actualizarea lui firebird${FB_VER}-${FB_FLAVOUR}, opriți toții clienții, fie ei locali sau de la distanță.
+Description-ru.UTF-8: Сервер firebird${FB_VER}-${FB_FLAVOUR} используется
+  Для сохранения целостности данных, удаление/обновление пакета прервано. Остановите всех локальных и удалённых клиентов перед удалением или обновлением firebird${FB_VER}-${FB_FLAVOUR}
+Description-sv.UTF-8: firebird${FB_VER}-${FB_FLAVOUR} används.
+ För att säkerställa datats integritet avbryts paketets borttagning/uppgradering. Vänligen avsluta alla klienter, lokala som fjärranslutna, före borttagning eller uppgradering av firebird${FB_VER}-${FB_FLAVOUR}
+Description-vi.UTF-8: Trình phục vụ firebird${FB_VER}-${FB_FLAVOUR} đang được dùng
+ Để bảo đảm tình trạng nguyên vẹn của dữ liệu, tiến trình gỡ bỏ/nâng cấp gói bị hủy bỏ. Xin hãy dừng chạy tất cả các ứng dụng khách cả cục bộ lẫn ở xa, trước khi gỡ bỏ hay nâng cấp firebird${FB_VER}-${FB_FLAVOUR}
+
+Template: shared/firebird/title
+Type: title
+Description: Password for firebird ${FB_VER}
+Description-bg.UTF-8: Парола за firebird ${FB_VER}
+Description-cs.UTF-8: Heslo pro firebird ${FB_VER}
+Description-da.UTF-8: Adgangskode for firebird ${FB_VER}
+Description-de.UTF-8: Passwort für Firebird ${FB_VER}
+Description-es.UTF-8: Contraseña para firebird ${FB_VER}
+Description-eu.UTF-8: firebird ${FB_VER} pasahitza
+Description-fi.UTF-8: Firebird ${FB_VER}:n salasana.
+Description-fr.UTF-8: Mot de passe pour firebird ${FB_VER}
+Description-gl.UTF-8: Contrasinal de firebird ${FB_VER}:
+Description-hu.UTF-8: A firebird ${FB_VER} jelszava
+Description-it.UTF-8: Password per firebird ${FB_VER}
+Description-ja.UTF-8: firebird ${FB_VER} のパスワード
+Description-ko.UTF-8: firebird ${FB_VER}의 비밀번호:
+Description-lt.UTF-8: firebird ${FB_VER} slaptažodis
+Description-nb.UTF-8: Passord for firebird ${FB_VER}
+Description-nl.UTF-8: Wachtwoord voor firebird ${FB_VER}
+Description-no.UTF-8: Passord for firebird ${FB_VER}
+Description-pl.UTF-8: Hasło dla firebird ${FB_VER}
+Description-pt.UTF-8: Palavra-passe para firebird ${FB_VER}
+Description-pt_BR.UTF-8: Senha para firebird ${FB_VER}
+Description-ro.UTF-8: Parola pentru firebird ${FB_VER}
+Description-ru.UTF-8: Пароль для firebird ${FB_VER}
+Description-sv.UTF-8: Lösenord för firebird ${FB_VER}
+Description-vi.UTF-8: Mật khẩu cho firebird ${FB_VER}

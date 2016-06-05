@@ -1,0 +1,212 @@
+
+Template: nas/relinquish
+Type: boolean
+Default: true
+Description: Should nasd release /dev/dsp?
+ By default, the NAS server will open the configured audio device
+ at startup, and then keep it open until the server is stopped. This will
+ stop any non-NAS-aware audio clients from using the audio device.
+ .
+ The daemon can be configured to release the audio device when it is
+ not using it, with some delay after the
+ application completes before the device is available.
+ .
+ An alternative is to use the "audiooss" package to wrap any programs
+ that use /dev/dsp to make them use equivalent NAS calls.
+Description-ar.UTF-8: هل يتوجب على خدمة nasd ترك /dev/dsp؟
+ يقوم خادم NAS بشكل افتراضي بفتح جهاز الصوت المُهيّأ عند بدء التشغيل، ويُبقيه مفتوحاً حتى إيقاف الخادم. ويمنع هذا أي من مستخدمي الجهاز الصوتي الغير عارفين بنظام NAS من استخدام الجهاز الصوتي.
+ .
+ يمكن تهيئة الخدمة لترك الجهاز الصوتي عند عدم استخدامه، ويكون هناك بعض التأخير بعد انتهاء التطبيق وقبل أن يتوفر الجهاز.
+ .
+ البديل عنه هو استخدام حزمة "audiooss" للعمل بالنيابة عن أية برامج تستخدم /dev/dsp لجعلها تستخدم أوامر NAS الموافقة.
+Description-cs.UTF-8: Má nasd uvolnit /dev/dsp?
+ NAS server při startu standardně otevře zvukové zařízení nakonfigurované ve vašem systému, a ponechá jej otevřené, dokud není ukončen. Toto zabrání všem audio klientům, kteří nevědí o přítomnosti NAS serveru, používat zvukové zařízení.
+ .
+ Daemon může být nastaven tak, aby v uvolnil audio zařízení v případech, kdy je nepoužívá. Mezi ukončením zvukové aplikace a uvolněním audio zařízení vždy bude drobná prodleva.
+ .
+ Alternativně lze použít balík „audiooss“, který slouží jako obal pro všechny programy, které používají /dev/dsp přímo. Zachytí většinu jejich požadavků na použití /dev/dsp a převede je na příslušné volání NAS serveru.
+Description-da.UTF-8: Skal nasd frigive /dev/dsp?
+ NAS-serveren vil som udgangspunkt ??bne den lydenhed, der er sat op p?? dit system under opstarten, og derefter holde den ??ben indtil den bliver stoppet. Dette vil hindre alle lydklienter, der ikke er forberedt for NAS i at benytte lydenheden.
+ .
+ D??monen kan konfigureres til at frigive lydenheden, n??r den ikke bruger den, med forsinkelse efter programmet bliver f??rdigt, f??r enheden er tilg??ngelig.
+ .
+ Et alternativ er at benytte pakken ??audiooss??, der omklamrer de programmer, der benytter /dev/dsp. Det vil f?? dem til at bruge tilsvarende NAS-kald.
+Description-de.UTF-8: Soll nasd das Gerät /dev/dsp freigeben?
+ Der NAS-Server öffnet standardmäßig das Audio-Gerät, das beim Systemstart eingerichtet ist, und hält es offen, bis er gestoppt wird. Dies verhindert, dass Audio-Clients das Audio-Gerät benutzen, die NAS nicht kennen.
+ .
+ Der Dienst kann so eingerichtet werden, dass er das Audio-Gerät freigibt, sobald er es nicht benutzt. Hierbei tritt nach der Beendigung der Anwendung eine Verzögerung auf, bevor das Gerät verfügbar ist.
+ .
+ Eine andere Möglichkeit bietet das Programm »audiooss«. Es kapselt jedes Programm, das /dev/dsp direkt verwendet, damit es passende Nas-Aufrufe benutzt.
+Description-es.UTF-8: ¿Debería nasd liberar «/dev/dsp»?
+ De forma predeterminada el servidor NAS abrirá al inicio el dispositivo de audio que se configure, y lo mantendrá abierto hasta que se pare. Esto impedirá el uso del dispositivo de audio por parte cualquier cliente de audio no preparado para NAS.
+ .
+ El demonio se puede configurar para que libere el dispositivo de audio cuando no lo esté utilizando, dejándolo disponible cierto tiempo después de que la aplicación termine.
+ .
+ Una alternativa a esto es utilizar el paquete «audiooss» para envolver a los programas que utilizan «/dev/dsp», de modo que utilicen las llamadas equivalentes de NAS.
+Description-eu.UTF-8: Nasd-ek /dev/dsp askatu behar al du?
+ Lehenespen bezala NAS zerbitzariak abiaraztean konfiguratutako audio gailua ireki eta zerbitzaria itxi arte irekirik mantenduko du. Honek NAS-ekin bateragarri ez diren audio bezeroak audio gailua erabiltzea ezinduko du.
+ .
+ Deabrua erabiltzen ez duenean audio gailua askatzeko konfiguratu daiteke, aplikazioa osatu eta azterapen txiki baten ondoren audio gailua eskuragarri egongo da.
+ .
+ Beste aukera bat "audiooss" paketeatearen bidez /dev/dsp erabiltzen duten programak dagozkion NAS deialdiak egitea da.
+Description-fi.UTF-8: Tulisiko nasd:n vapauttaa /dev/dsp?
+ Oletuksena NAS-palvelin avaa asetetun äänilaitteen käynnistettäessä ja pitää sen auki kunnes palvelin pysäytetään. Tämä estää sellaisia ääniasiakkaita, jotka eivät käytä NASia, käyttämästä äänilaitetta.
+ .
+ Taustaohjelma voidaan asettaa vapauttamaan äänilaite muiden saataville jonkin viiveen jälkeen silloin, kun äänilaite ei ole käytössä.
+ .
+ Toinen vaihtoehto on kääriä kaikki /dev/dsp-laitetta käyttävät ohjelmat audiooss-paketin avulla käyttämään vastaavia NAS-kutsuja.
+Description-fr.UTF-8: Nasd doit-il libérer /dev/dsp ?
+ Le serveur NAS ouvrira au démarrage le périphérique audio du système, et le gardera ouvert jusqu'à l'arrêt du serveur. Cela interrompra le fonctionnement des clients audio qui n'utilisent pas le serveur NAS pour accéder au périphérique audio.
+ .
+ Le démon peut être configuré pour libérer le périphérique audio quand il ne l'utilise pas, avec un léger délai entre la fin de l'application et le moment où le périphérique audio redevient disponible.
+ .
+ Une autre possibilité est d'utiliser le paquet « audiooss » pour envelopper tous les programmes qui utilisent directement /dev/dsp pour leur faire utiliser des appels équivalents au serveur NAS.
+Description-gl.UTF-8: ¿nasd debe liberar /dev/dsp?
+ Por defecto, o servidor NAS ha abrir no inicio o dispositivo de audio configurado, e despois ha mantelo aberto ata que se deteña o servidor. Isto ha impedir que os clientes de audio sen soporte de NAS empreguen o dispositivo de audio.
+ .
+ Pódese configurar o servizo para que libere o dispositivo de audio cando non o empregue, cun pouco de retraso entre que a aplicación remata e o dispositivo estea dispoñible.
+ .
+ Unha alternativa consiste en empregar o paquete "audiooss" para facer que os programas que usan /dev/dsp empreguen, no seu canto, chamadas a NAS equivalentes.
+Description-it.UTF-8: nasd deve rilasciare /dev/dsp?
+ Normalmente all'avvio del server NAS viene aperto il device audio configurato e viene tenuto aperto fino a quando il server non viene fermato. Questo impedisce l'uso del device audio a qualsiasi client audio che non utilizza NAS.
+ .
+ Il demone può essere configurato per rilasciare il device audio quando non lo utilizza, con un piccolo ritardo fra la chiusura dell'applicazione e il momento in cui il device è nuovamente disponibile.
+ .
+ Una alternativa è usare il pacchetto "audiooss" in modo da redirigere qualsiasi programma che utilizza /dev/dsp a usare le chiamate a NAS equivalenti.
+Description-ja.UTF-8: nasd が /dev/dsp を開放するようにしますか?
+ デフォルトの挙動では、NAS サーバは起動時に設定済みのオーディオデバイスをオープンし、サーバが停止するまでオープンにし続けます。これによって、NAS を考慮しないオーディオクライアントによるオーディオデバイスの利用が妨げられます。
+ .
+ オーディオデバイスが利用可能になる前、アプリケーションが動作を完了した若干後でデーモンがデバイスを使っていない時点で開放するように設定できます。
+ .
+ もう一つの方法は「audioss」パッケージを使って、/dev/dsp を使うプログラムをラップして NAS を呼び出すのと同様になるようにするやり方です。
+Description-nl.UTF-8: Moet nasd /dev/dsp vrijmaken?
+ Standaard opent de NAS-server het ingestelde geluidsapparaat bij het starten van het systeem, en houdt het dan open totdat de server wordt gestopt. Dit weerhoudt geluidstoepassingen die geen NAS gebruiken ervan om het geluidsapparaat te gebruiken.
+ .
+ De achtergronddienst can worden ingesteld om het geluidsapparaat vrij te maken wanneer het dat niet gebruikt. Er is een korte vertraging tussen het moment dat een toepassing die gebruik maakt van NAS wordt afgesloten en het moment dat het geluidsapparaat beschikbaar komt voor andere toepassingen.
+ .
+ Een alternatief is om met behulp van het "audiooss" pakket alle programma's die /dev/dsp gebruiken in een aangepaste omgeving te plaatsen, zodat ze gelijkwaardige NAS aanroepen gebruiken.
+Description-pt.UTF-8: Deve o nasd libertar o /dev/dsp?
+ Por omissão, o servidor NAS irá abrir o dispositivo de audio no arranque do seu sistema, e mantém-no aberto até que seja parado. Isto irá impedir quaisquer clientes de audio, que não conheçam o NAS, de utilizarem o dispositivo audio.
+ .
+ O daemon pode ser configurado para libertar o dispositivo audio quando não o está a usar, com algum atraso depois da aplicação terminar o dispositivo estará disponível.
+ .
+ Uma alternativa é o uso do pacote "audiooss" para envolver quaisquer programas que utilizem o /dev/dsp para fazer as chamadas NAS equivalentes.
+Description-pt_BR.UTF-8: O nasd deveria liberar o /dev/dsp?
+ Por padrão, o servidor NAS abrirá o dispositivo de áudio configurado na inicialização e manterá o mesmo aberto até que o servidor seja parado. Isto impedirá que quaisquer clientes de áudio que não forem compatíveis com NAS usem o dispositivo de áudio.
+ .
+ O daemon pode ser configurado para liberar o dispositivo de áudio quando não estiver usando-o, com algum atraso caso a aplicação conclua antes do dispositivo estar disponível.
+ .
+ Uma alternativa é usar o pacote "audiooss" para intermediar quaisquer programas que usam o /dev/dsp fazendo-os usar chamadas NAS equivalentes.
+Description-ru.UTF-8: Должен ли nasd освобождать /dev/dsp?
+ По умолчанию, NAS-сервер при запуске системы открывает настроенное аудио устройство, а затем оставляет его открытым до окончания своей работы. Из-за этого, все программы не поддерживающие NAS, не могут работать с этим звуковым устройством.
+ .
+ Демон можно настроить так, чтобы неиспользуемое аудио устройство освобождалось с некоторой задержкой после завершения работавшего с ним приложения.
+ .
+ Альтернативой этому может быть программа "audiooss", которая перехватывает запросы программ к /dev/dsp и заменяет их эквивалентными вызовами NAS.
+Description-sv.UTF-8: Ska nasd släppa /dev/dsp?
+ NAS-servern kommer som standard att öppna ljudenheten som är konfigurerad på ditt system vid uppstart och sedan hålla den öppen tills den stoppas. Det här kommer att stoppa alla ljudklienter som inte känner till NAS från att kunna använda ljudenheten.
+ .
+ Demonen kan ställas in att släppa ljudenheten när den inte används. En viss fördröjning kan förekomma efter att programmet avslutas innan enheten är tillgänglig.
+ .
+ Ett alternativ till det här är att använda programmet "audiooss" (i paketet med samma namn) för att baka in program som använder /dev/dsp direkt - det kommer att fånga upp de flesta som använder /dev/dsp och göra liknande anrop till NAS istället.
+Description-vi.UTF-8: nasd nên nhả « /dev/dsp » không?
+ Lúc khởi chạy, mặc định là trình phục vụ NAS sẽ mở thiết bị âm thanh đã cấu hình, cũng bảo tồn tình trạng mở đến khi trình phục vụ bị dừng chạy. Trường hợp này sẽ ngăn cản ứng dụng khách âm thanh hỗ trợ NAS cũng sử dụng thiết bị âm thanh đó. 
+ .
+ Có thể cấu hình trình nền để nhả thiết bị âm thanh khi không hiện thời sử dụng nó. Cũng có một khoảng đợi giữa ứng dụng chạy xong và thiết bị trở thành sẵn sàng lại.
+ .
+ Hoặc có thể sử dụng gói « audiooss » để bao bọc mỗi chương trình sử dụng « /dev/dsp » để làm cho nó sử dụng cuộc gọi NAS tương đương.
+
+Template: nas/mixer
+Type: boolean
+Default: false
+Description: Should nasd change mixer settings at startup?
+ If you choose this option, the NAS server will change the mixer settings
+ at startup as follows:
+ .
+  - set PCM volume to 50%;
+  - change the record input device to LINE.
+Description-ar.UTF-8: هل يتوجب على خدمة nasd تغيير إعدادات المازج عند بدء التشغيل؟
+ إن انتقيت هذا الخيار، سيقوم خادم NAS بتغيير إعدادات المازج عند بدء التشغيل كما يلي:
+ .
+  - تعيين حدة صوت PCM عند 50%;
+  - تغيير جهاز إدخال الصوت إلى LINE.
+Description-cs.UTF-8: Má nasd při startu změnit nastavení mixéru?
+ Povolíte-li tuto možnost, NAS server změní při startu nastavení mixéru následovně:
+ .
+  - nastaví hlasitost PCM na 50%
+  - změní vstupní nahrávací zařízeni na LINE
+Description-da.UTF-8: Skal nasd ??ndre mikser-indstillingerne under opstarten?
+ Hvis du v??lger denne indstilling, vil NAS-serveren som udgangspunkt ??ndre mikser-indstillingerne under opstarten p?? f??lgende m??de:
+ .
+  - angiv PCM-lydstyrken til 50 %
+  - ??ndr optagelsesenheden til LINE.
+Description-de.UTF-8: Soll nasd die Einstellungen des Mixers beim Systemstart ändern?
+ Falls Sie hier zustimmen, wird der Nas-Server die Einstellungen des Mixers beim Systemstart folgendermaßen ändern:
+ .
+  - setzt PCM-Lautstärke auf 50%;
+  - ändert das Aufnahmegerät auf LINE.
+Description-es.UTF-8: ¿Debería nasd cambiar los ajustes del mezclador al iniciarse?
+ Si escoge esta opción, el servidor de NAS cambiará los ajustes del mezclador al iniciarse por los siguientes:
+ .
+  - establecer el volumen de PCM al 50%
+  - cambiar la entrada del dispositivo de entrada para la grabación a LINEA
+Description-eu.UTF-8: Abiaraztean nasd-ek nahasgailu ezarpenak aldatu behar al ditu?
+ Aukera hau hautatzen baduzu, NAS zerbitzariak abiaraztean nahasgailu ezarpenak horrela aldatuko ditu:
+ .
+  - PCM bolumena %50 bezala ezarri;
+  - aldatu grabaketa sarrera gailua LINEra.
+Description-fi.UTF-8: Tulisiko nasd:n muuttaa mikseriasetuksia käynnistettäessä?
+ Jos valitset tämän vaihtoehdon, NAS-palvelin muuttaa mikseriasetuksia käynnistettäessä seuraavasti:
+ .
+  - asetetaan PCM-äänenvoimakkuustasoksi 50%
+  - vaihdetaan äänityssyötelaitteeksi LINE.
+Description-fr.UTF-8: Faut-il que nasd modifie les réglages du mélangeur au démarrage ?
+ Si vous choisissez cette option, le serveur NAS changera les paramètres du mélangeur (« mixer ») au démarrage, comme suit : 
+ .
+  - volume PCM placé à 50% ;
+  - entrée LIGNE utilisée comme périphérique d'enregistrement.
+Description-gl.UTF-8: ¿nasd debe cambiar a configuración do mesturador no inicio?
+ Se escolle esta opción, o servidor NAS ha cambiar a configuración do mesturador no inicio do sistema do seguinte xeito:
+ .
+  - poñer o volume de PCM ao 50%;
+  - cambiar o dispositivo de gravación a LINE
+Description-it.UTF-8: nasd deve modificare le impostazioni del mixer all'avvio?
+ Se si accetta, il server NAS modifica all'avvio le impostazioni del mixer in questo modo:
+ .
+  - imposta il volume PCM al 50%;
+  - imposta il device di input per la registrazione a LINE.
+Description-ja.UTF-8: nasd は起動時にミキサー設定を変更しますか?
+ この選択肢を選んだ場合、NAS サーバは起動時に以下のようにミキサーの設定を変更します。
+ .
+  - PCM ボリュームを 50% に設定、
+  - 録音入力デバイスを LINE に変更。
+Description-nl.UTF-8: Moet nasd mixerinstellingen wijzigen bij het opstarten?
+ Als u deze optie accepteert, wijzigt de NAS-server bij het starten de mixerinstellingen als volgt:
+ .
+  - het PCM volume wordt op 50% ingesteld;
+  - het opname-apparaat wordt gewijzigd naar LINE.
+Description-pt.UTF-8: Deverá o nasd alterar as configurações do mixer ao arranque?
+ Se escolher esta opção, o servidor NAS irá alterar as configurações do mixer no arranque como se segue:
+ .
+  * colocar o volume PCM em 50%
+  * alterar a entrada do dispositivo de gravação para LINE.
+Description-pt_BR.UTF-8: O nasd deveria mudar as configurações do mixer na inicialização?
+ Se você escolher esta opção, o servidor NAS mudará as configurações do mixer na inicialização da seguinte forma:
+ .
+  - configurar o volume PCM para 50%;
+  - mudar o dispositivo de gravação para LINE.
+Description-ru.UTF-8: Должен ли nasd при запуске изменять настройки микшера?
+ При положительном ответе сервер NAS при запуске изменит настройки микшера на следующие:
+ .
+  - устанавливает громкость PCM в 50%;
+  - изменяет входное устройство записи на LINE.
+Description-sv.UTF-8: Ska nasd ändra mixerinställningar vid uppstart?
+ Nas-servern kommer som standard att ändra mixerinställningar vid uppstart enligt följande:
+ .
+  - sätta PCM-volym till 50%
+  - ändra inspelningsenhet till LINE
+Description-vi.UTF-8: nasd nên thay đổi thiết lập của máy hoà tiếng khi khởi chạy không?
+ Bật tùy chọn này thì trình phục vụ NAS sẽ thay đổi thiết lập của máy hoà tiếng vào lúc khởi chạy, như theo đây:
+ .
+  • đặt âm lượng PCM thành 50%
+  • thay đổi thiết bị thu vào thành « LINE ».

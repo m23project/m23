@@ -135,7 +135,7 @@ then
 	ip -V
 	if [ $? -eq 0 ]
 	then
-		serverGateway=$(ip route | awk \'/default/ { print $3 }\')
+		serverGateway=$(ip route | awk '/default/ { print $3 }' | head -1)
 	else
 		serverGateway=$(route -n | grep '^0\.0\.0\.0' | tr -s '[:blank:]' | cut -d' ' -f2)
 	fi

@@ -8,6 +8,45 @@ $*/
 
 
 
+
+/**
+**name HELPER_showScriptHeader($id, $packName)
+**description Shows a header for own scripts, that creates a log file with the package name and the start time. Sends the log file to the m23 server and shows an installation dialog on the client's screen.
+**parameter id: Job ID of the script
+**parameter packName: Name of the package
+**/
+function HELPER_showScriptHeader($id, $packName)
+{
+	echo ("echo \"### Script $packName has been started.\" > /tmp/$id.log\n");
+	MSR_logCommand("/tmp/$id.log");
+	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $packName);
+	echo ("date  > /tmp/$id.log\n");
+}
+
+
+
+
+
+/**
+**name HELPER_showScriptFooter($id, $packName)
+**description Shows a header for own scripts, that saves the script end time to a log file and sends it to the m23 server. Sets status bar to 100% and marks the job as done. Afterwards executes the next job.
+**parameter id: Job ID of the script.
+**parameter packName: Name of the package.
+**/
+function HELPER_showScriptFooter($id, $packName)
+{
+	echo ("date  >> /tmp/$id.log
+	echo \"### Script $packName done.\" >> /tmp/$id.log\n");
+	MSR_logCommand("/tmp/$id.log");
+	MSR_statusBarCommand(100,$packName);
+	sendClientStatus($id,"done");
+	executeNextWork();
+}
+
+
+
+
+
 /**
 **name HELPER_URIencode($in)
 **description Encodes a string like the JavaScript function URIencode would do it.
@@ -91,6 +130,20 @@ function HELPER_isExecutedInCLI()
 
 
 /**
+**name HELPER_isExecutedOnUCS()
+**description Checks, if it is run on UCS.
+**returns True, when run on UCS otherwise false.
+**/
+function HELPER_isExecutedOnUCS()
+{
+	return(file_exists('/usr/sbin/udm'));
+}
+
+
+
+
+
+/**
 **name HELPER_getContentFromURL($url, $range = '')
 **description Downloads an URL via curl and gives back the site code.
 **parameter url: The URL to download.
@@ -161,7 +214,7 @@ function HELPER_xargsRecursive($cmd, $argsA, $tabAmount = 0)
 
 	//If there is only one argument is left => the argument list cannot be split more => quit function
 	if ($len == 1)
-		return('');
+		return($out);
 	else
 	//If there are two or more arguments => add an if statement that will be executed when the command above fails
 		$out .= "${tabs}if [ \$ret -ne 0 ]
@@ -886,8 +939,41 @@ function HELPER_getTimeZones($country = "")
 		switch ($country)
 		{
 			case "de":	$first = array("Europe/Berlin"); break;
-			case "en":	$first = array("Europe/London"); break;
+			case "en":
+			case "uk":
+				$first = array("Europe/London");
+				break;
 			case "fr":	$first = array("Europe/Paris"); break;
+			case "be-nl":	$first = array("Europe/Brussels"); break;
+			case "bg":	$first = array("Europe/Sofia"); break;
+			case "tw":	$first = array("Asia/Taipei"); break;
+			case "cn":	$first = array("Asia/Taipei"); break;
+			case "dk":	$first = array("Europe/Copenhagen"); break;
+			case "et":	$first = array("Europe/Tallinn"); break;
+			case "fi":	$first = array("Europe/Helsinki"); break;
+			case "gr":	$first = array("Europe/Athens"); break;
+			case "ie":	$first = array("Europe/Dublin"); break;
+			case "nl":	$first = array("Europe/Amsterdam"); break;
+			case "is":	$first = array("Atlantic/Reykjavik"); break;
+			case "it":	$first = array("Europe/Rome"); break;
+			case "no":	$first = array("Europe/Oslo"); break;
+			case "pl":	$first = array("Europe/Warsaw"); break;
+			case "pt":	$first = array("Europe/Lisbon"); break;
+			case "ro":	$first = array("Europe/Bucharest"); break;
+			case "ru":	$first = array("Europe/Moscow"); break;
+			case "sv":	$first = array("Europe/Stockholm"); break;
+			case "ch-de":	$first = array("Europe/Zurich"); break;
+			case "sr":	$first = array("Europe/Belgrade"); break;
+			case "sk":	$first = array("Europe/Bratislava"); break;
+			case "sl":	$first = array("Europe/Ljubljana"); break;
+			case "es":	$first = array("Europe/Madrid"); break;
+			case "hu":	$first = array("Europe/Budapest"); break;
+			case "cs":	$first = array("Europe/Belgrade"); break;
+			case "tr":	$first = array("Europe/Istanbul"); break;
+			case "ja":	$first = array("Asia/Tokyo"); break;
+			case "lt":	$first = array("Europe/Vilnius"); break;
+			case "il":	$first = array("Asia/Jerusalem"); break;
+			case "id":	$first = array("Asia/Jakarta"); break;
 			default	 :	$first = array("UTC");
 		};
 		return(array_merge($first,$timezones));

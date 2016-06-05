@@ -1,0 +1,234 @@
+Template: sn/runfrom
+Type: select
+Choices: cron, ip-up, manually
+Choices-cs.UTF-8: cron, ip-up, ručně
+Choices-da.UTF-8: cron, ip-up, manuelt
+Choices-de.UTF-8: cron, ip-up, manuell
+Choices-es.UTF-8: cron, ip-up, manual
+Choices-eu.UTF-8: cron, ip-up, eskuz
+Choices-fr.UTF-8: cron, ip-up, manuellement
+Choices-it.UTF-8: cron, ip-up, manually
+Choices-ja.UTF-8: cron, ip-up, 手動で
+Choices-nl.UTF-8: cron, ip-up, handmatig
+Choices-pl.UTF-8: cron, ip-up, ręcznie
+Choices-pt.UTF-8: cron, ip-up, manualmente
+Choices-pt_BR.UTF-8: cron, ip-up, manualmente
+Choices-ru.UTF-8: cron, ip-up, вручную
+Choices-sk.UTF-8: cron, ip-up, manuálne
+Choices-sv.UTF-8: cron, ip-up, manuellt
+Choices-vi.UTF-8: cron, ip-up, bằng tay
+Default: cron
+Description: sn should run from:
+ The scripts provided with the package support several ways to run snget
+ (the program to fetch new news):
+ .
+  cron     -- The program will be executed daily by cron -- useful e.g
+              for permanent connections;
+  ip-up    -- The program will called from ip-up, that is, when your
+              computer makes a connection -- useful for e.g. dialup
+              connections;
+  manually -- The program will never be called, you have to call it
+              manually to get new news (just type snget as root).
+Description-cs.UTF-8: sn se má spouštět z:
+ Skripty v tomto balíčku podporují několik možností, jak se má snget (program pro stahování news příspěvků) spouštět:
+ .
+  cron  -- Program se bude spouštět z cronu každý den -- vhodné pro
+           trvalé připojení
+  ip-up -- Program se bude spouštět z ip-up, tj. vždy, když se počítač
+           připojí -- vhodné pro vytáčené připojení
+  ručně -- Program se nebude spouštět automaticky, pro stáhnutí
+           příspěvků budete muset jako root spustit příkaz snget.
+Description-da.UTF-8: sn skal køre fra:
+ Skriptene tilbudt med pakken understøtter flere måder at køre snget på (programmet til at hente nye nyheder):
+ .
+  cron    - Programmet vil blive kørt dagligt af cron - brugbart f.eks.
+            for permanente forbindelser;
+  ip-up   - Programmet vil blive kaldt fra ip-up, dvs. når din
+            computer laver en forbindelse - brugbar f.eks. for
+            opkaldsforbindelser;
+  manuelt - Programmet vil aldrig blive kaldt, du skal foretage opkaldet
+            manuelt for at hente nye nyheder (bare tast snget som root).
+Description-de.UTF-8: Sn soll gestartet werden von:
+ Die Skripte in diesem Paket unterstützen mehrere Arten des Starts von Snget (Programm zum Abrufen neuer Nachrichten):
+ .
+  cron    -- Das Programm wird durch Cron jeden Tag aufgerufen - nützlich
+             für permanente Internetverbindungen;
+  ip-up   -- Das Programm wird über Ip-up gestartet; das heißt, jedesmal
+             wenn Sie eine Internetverbindung herstellen - nützlich für
+             Einwahlverbindungen
+  manuell -- Das Programm wird nur dann ausgeführt, wenn Sie es als 
+             Benutzer Root durch Eingabe von snget starten.
+Description-es.UTF-8: sn debería ejecutarse desde:
+ Los scripts incluidos con el paquete permiten muchas formas de ejecutar snget (el programa para obtener noticias nuevas):
+ .
+  cron     -- Cron ejecutará diariamente el programa -- útil por ejemplo
+ 			  para conexiones permanentes;
+  ip-up    -- Ip-up ejecutará el programa, esto es, cuando su ordenador
+ 			  realice una conexión -- útil por ejemplo con conexiones
+ 			  telefónicas;
+  manual   -- No se llamará nunca al programa, tiene que ejecutarlo
+ 			  manualmente para conseguir las nuevas noticias (sólo tiene
+ 			  que ejecutar snget como root).
+Description-eu.UTF-8: sn nola abiaraziko den:
+ Pakete honek hornitzen dituen script-ek zenbait modu ezberdinetan exekutatu dezakete snget (mezu berriak jasotzeko programa):
+ .
+  cron     -- Programa egunero cron bidez exekutatuko da -- erabilgarria
+              konexio iraunkorretan adibidez;
+  ip-up    -- Programa ip-up-ek deituko du, hau da, zure ordenagailuak
+              konexio bat sortzen duenean -- erabilgarri adibidez markatze
+              bidezko konexioetan;
+  eskuz    -- Programa ez da inoiz exekutatuko, zuk eskuz exekutatu
+              beharko duzu mezuak jasotzeko (snget root gisa)exekutatu.
+Description-fr.UTF-8: Méthode de démarrage de sn :
+ Il est possible de lancer snget (le programme de récupération des nouvelles) de plusieurs manières différentes :
+ .
+  - cron         : le programme sera exécuté quotidiennement par
+                   cron. Cela est utile par ex. pour les connexions
+                   permanentes ;
+  - ip-up        : le programme sera appelé depuis ip-up, c.-à-d.
+                   lorsque votre ordinateur établit une connexion.
+                   Cela est utile pour les connexions par modem ;
+  - manuellement : le programme n'est jamais lancé, vous devez le
+                   lancer vous-même afin de récupérer les dernières
+                   nouvelles. Vous devez alors utiliser la commande
+                   « snget » avec les privilèges du superutilisateur.
+Description-it.UTF-8: sn deve essere eseguito da:
+ Gli script forniti con il pacchetto supportano molti modi di esecuzione di snget (il programma che preleva le nuove notizie):
+ .
+ - «cron»:     il programma sarà eseguito ogni giorno da cron. Utile in
+               particolare per connessioni permanenti
+ - «ip-up»:    il programma sarà chiamato da ip-up, cioè quando il sistema
+               effettua una connessione. Utile in particolare per connessioni
+               di tipo «dial-up»
+ - «manually»: il programma non sarà mai chiamato e dovrà essere eseguito
+               manualmente per prendere nuove notizie (digitando «snget»
+               come root)
+Description-ja.UTF-8: sn の動作方法:
+ このパッケージで提供されるスクリプトは、様々な方法で snget (新しいネットニュースを取得するプログラム) を動作できるようにしています。
+ .
+  cron     -- プログラムは毎日 cron によって実行されます
+              例えば常時接続の場合に役立ちます
+  ip-up    -- コンピュータがネットに接続した時に ip-up からプログラムが
+              呼び出されます -- 例えばダイヤルアップ接続の時に役立ちます
+  手動で   -- プログラムは呼び出されません。ネットニュースを取得するには、
+              手動で呼び出す必要があります (root で snget と入力してください)
+Description-nl.UTF-8: Hoe wordt sn opgestart:
+ De door dit pakket voorziene scripts ondersteunen verschillende manieren om snget (het programma dat nieuws ophaalt) uit te voeren.
+ .
+  cron     -- Het programma wordt dagelijks door cron uitgevoerd
+                  Handig als u een vaste verbinding heeft.
+  ip-up    -- Het programma wordt door ip-up opgestart telkens
+                  wanneer uw computer een verbinding maakt.
+                  Handig voor inbelverbindingen.
+ handmatig -- Het programma wordt enkel uitgevoerd wanneer
+                       u het handmatig aanroept (door het commando
+                      'snget' als root uit te voeren).
+Description-pl.UTF-8: sn powinien być uruchamiany za pomocą:
+ Skrypt dostarczany razem z pakietem obsługuje kilka metod uruchamiania snget (programu pobierającego nowe wiadomości):
+ .
+  cron     -- program będzie wykonywany codziennie przez crona
+              - przydatne np. przy stałym łączu;
+  ip-up    -- program będzie wywoływany z ip-up, tj. gdy komputer
+              łączy się z siecią - przydatne przy połączeniach
+              dodzwanianych;
+  ręcznie  -- program nie zostanie nigdy wywołany - konieczne jest
+              ręczne uruchomienie go (wystarczy wpisać snget jako root).
+Description-pt.UTF-8: sn deve correr a partir de:
+ Os scripts providenciados pelo pacote suportam várias maneiras de executar o snget (o programa para obter novas noticias):
+ .
+  cron     -- O programa irá ser executado diariamente pelo cron -- útil p.e.
+ 	      para conexões permanentes;
+  ip-up    -- O programa irá ser invocado a partir do ip-up, isto é, quando o seu
+ 	      computador conecta -- útil para p.e. conexões dial-up;
+  manually -- O programa nunca será invocado, terá que o invocar manualmente
+ 	      para obter novas noticias (escreva snget como root).
+Description-pt_BR.UTF-8: O sn deverá executar a partir de:
+ Os scripts fornecidos com o pacote oferecem suporte a diversas formas de executar o snget (o programa para buscar novas notícias):
+ .
+  cron        -- O programa será executado diariamente pelo cron -- útil,
+                 por exemplo, para conexões permanentes;
+  ip-up       -- O programa será chamado a partir do ip-up, ou seja,
+                 quando o seu computador fizer uma conexão -- útil, por
+                 exemplo, para conexões discadas;
+  manualmente -- O programa nunca será chamado, você deverá chamá-lo
+                 manualmente para obter novas notícias (apenas digite
+                 snget como root).
+Description-ru.UTF-8: sn должен запускаться из:
+ Сценарии, поставляемые с пакетом, поддерживают несколько путей запуска snget (программы для скачивания новых статей новостей):
+ .
+  cron   --  Программа  будет  выполняться ежедневно по cron -- полезно,
+  например, для постоянных соединений.
+  ip-up  --  Программа   будет  вызываться  из  ip-up,  когда  компьютер
+  соединяется с сетью -- полезно, например, для коммутируемых соединений
+  вручную -- Программа  никогда  не  будет  вызываться, вы должны будете
+  вызывать  ее вручную, чтобы скачать новые статьи новостей (нужно будет
+  запускать snget от root)
+Description-sk.UTF-8: sn má byť spúšťané z:
+ Skripty, poskytované balíkom, podporujú viacero spôsobov spustenia snget (program na sprístupnenie nových news):
+ .
+  cron     – Program bude spúšťaný denne z cron -- vhodné napr.
+             pri trvalom pripojení;
+  ip-up    – Program bude volaný z ip-up, teda keď váš počítač
+             vytvorí spojenie – vhodné napr. pri vytáčanom
+             spojení;
+  manually – Program nebude nikdy volaný a musíte ho spustiť
+             manuálne, aby ste získali nové news (stačí napísať
+             snget ako root).
+Description-sv.UTF-8: sn startar genom:
+ Skripten som kommer med paketet har stÃ¶d fÃ¶r att starta snget pÃ¥ flera sÃ¤tt (programmet fÃ¶r att hÃ¤mta nya nyhetsgrupper):
+ .
+  cron     -- Programmet kommer att startas dagligen ay cron -- anvÃ¤ndbart
+              om du har en permanent anslutning;
+  ip-up    -- Programmet kommer att starta frÃ¥n ip-up vilket Ã¤r nÃ¤r
+              din dator kopplar upp en fÃ¶rbindelse -- anvÃ¤ndbart fÃ¶r exempelvis
+              uppringd fÃ¶rbindelse;
+  manuellt -- Programmet kommer aldrig att startas automatiskt, du 
+              kÃ¶ra det manuellt fÃ¶r att hÃ¤mta nya nyhetsgrupper
+              (bara att starta "snget" som root).
+Description-vi.UTF-8: sn nên chạy từ :
+ Gói có sẵn một số văn lệnh hỗ trợ vài cách khác nhau chạy snget (chương trình lấy bài tin mới):
+ .
+  • cron	Chương trình sẽ được thực hiện hằng ngày bởi cron (công cụ định kỳ): có ích (v.d.) cho kết nối lâu dài
+  • ip-up	Chương trình sẽ được gọi từ ip-up, tức là khi máy tính thiết lập một kết nối: có ích (v.d.) cho kết nối kiểu quay số
+  • bằng tay	Chương trình không bao giờ được gọi: bạn cần phải tự gọi nó để lấy bài tin mới (chỉ gõ « snget » với quyền người chủ).
+
+Template: sn/onlylocal
+Type: boolean
+Default: true
+Description: Should sn only accept connections from localhost?
+ sn is a small newsserver, intended mainly to be run for single user
+ systems.  On such systems, it's better to have sn only answer connections
+ from localhost.  If you intend to use sn from multiple machines, refuse
+ here.
+Description-cs.UTF-8: Má sn přijímat spojení pouze z lokálního počítače?
+ sn je malý news server zamýšlený pro jednouživatelské systémy a právě pro tyto systémy je lepší, aby sn odpovídal pouze na dotazy z lokálního počítače. Chcete-li však sn používat z více počítačů, odpovězte záporně.
+Description-da.UTF-8: Skal sn kun acceptere forbindelser fra localhost?
+ sn er en lille nyhedsserver, som hovedsagelig skal køres for enkelbrugersystemer. På sådanne systemer er det bedre, at sn kun svarer på forbindelser fra localhost. Hvis du har til hensigt at bruge sn fra flere maskiner så afvis.
+Description-de.UTF-8: Soll Sn nur Verbindungen vom lokalen Rechner annehmen?
+ Sn ist ein kleiner Newsserver, gedacht für Einzelbenutzersysteme. Auf solchen Systemen ist es besser, wenn Sn nur Verbindungen vom lokalen Rechner annimmt. Wenn Sn für mehrere Rechner laufen soll, müssen Sie hier ablehnen.
+Description-es.UTF-8: ¿Debería aceptar sn solamente conexiones desde el equipo local?
+ sn es un servidor de noticias modesto, orientado principalmente para ejecutarse en sistemas monousuario. En estos sistemas, es mejor tener sn sólo para responder a conexiones desde el equipo local. Conteste que no aquí si pretende usar sn desde varios equipos.
+Description-eu.UTF-8: Sn-ek localhost-eko konexioak bakarrik onartu behar al ditu?
+ sn berri-talde zerbitzari txiki bat da, askotan erabiltzaile bakar baten sistementzat pentsaturik. Sistema hauetan, hobe da sn-ek ostalari lokaleko konexioak bakarrik onartzea. Sn makina ezberdinentzat erabili nahi baduzu, ezeztatu ezazu hemen.
+Description-fr.UTF-8: Sn doit-il accepter uniquement les connexions depuis l'hôte local ?
+ Sn est un petit serveur de nouvelles, conçu pour fonctionner sur les systèmes ayant un seul utilisateur. Sur de tels systèmes, il est préférable que sn réponde seulement aux connexions depuis l'hôte local (« localhost »). Ne choisissez pas cette option si vous avez l'intention d'utiliser sn depuis plusieurs machines.
+Description-it.UTF-8: sn deve accettare connessioni solo da localhost?
+ sn è un piccolo server per notizie destinato principalmente per sistemi monoutente. Su tali sistemi è meglio impostare sn per rispondere solo a chiamate da localhost. Se si intende usare sn da più sistemi, rifiutare questa scelta.
+Description-ja.UTF-8: sn が localhost からの接続のみを許可するようにしますか?
+ sn は小さなネットニュースサーバで、ユーザが一人のシステムで動作させるのを主に意図しています。そのようなシステムでは、localhost からの接続のみに sn を応答させるのが良い方策です。複数のマシンで sn を使いたい場合は、いいえと答えてください。
+Description-nl.UTF-8: Wilt u dat sn enkel verbindingen van de lokale machine aanvaardt?
+ sn is een kleine nieuwsserver bedoelt voor ééngebruiker-systemen. Op zo'n systemen is het aan te raden om sn enkel verbindingen van de locale machine te laten aanvaarden. Als u van plan bent om sn vanaf verschillende machines te gebruiken dient u hier te weigeren.
+Description-pl.UTF-8: Czy sn powinien akceptować połączenia wyłącznie z tego komputera?
+ sn jest małym serwerem grup dyskusyjnych, przeznaczonym głównie do systemów jednoużytkownikowych. W takich systemach jest lepiej pozwolić wyłącznie na połączenia z bieżącego komputera. Jeśli sn ma być dostępne z kilku komputerów, proszę wybrać "nie".
+Description-pt.UTF-8: Deve o sn só aceitar conexões da máquina local?
+ O sn é um pequeno servidor de noticias, feito principalmente para ser executado em sistemas de utilizador único. Em tais sistemas, é melhor ter o sn só a aceitar conexões da máquina local. Se pretender usar o sn em várias máquinas, recuse aqui.
+Description-pt_BR.UTF-8: O sn deverá aceitar conexões somente a partir do localhost?
+ O sn é um pequeno servidor de notícias ("newsserver"), projetado para ser executado principalmente em sistemas com um único usuário. Em tais sistemas, é melhor deixar o sn responder somente conexões vindas do localhost. Se você pretende usar o sn a partir de múltiplas máquinas, recuse aqui.
+Description-ru.UTF-8: Должен ли sn принимать соединения только с локальной машины?
+ sn - это маленький сервер новостей, сделанный специально для систем с одним пользователем. На таких системах лучше, чтобы sn отвечал на соединения только с локальной машины. Если Вы хотите использовать sn с нескольких машин, то скажите здесь нет.
+Description-sk.UTF-8: Má sn prijímať spojenia len z localhost?
+ sn je malý newsserver, zamýšľaný na použitie v jednopoužívateľských systémoch. Na takýchto systémoch je lepšie, aby odpovedal len na spojenia z localhost. Ak zamýšľate používať sn z viacerých strojov, odmietnite túto voľbu.
+Description-sv.UTF-8: Ska sn bara tillÃ¥ta anslutningar frÃ¥n localhost?
+ sn Ã¤r en liten nyhetsgruppserver som Ã¤r tÃ¤nkt att kÃ¶ras fÃ¶r en-anvÃ¤ndarsystem.  PÃ¥ sÃ¥dana system Ã¤r det bÃ¤ttre att ha sn bara att svara pÃ¥ anslutningar frÃ¥n localhost. Om du tÃ¤nker anvÃ¤nda sn frÃ¥n ett flertal maskiner, vÃ¤gra hÃ¤r.
+Description-vi.UTF-8: Trình sn nên chấp nhận kết nối chỉ từ máy địa phương (localhost) không?
+ sn là một trình phục vụ tin tức nhỏ, dự định chính để chạy trên hệ thống người dùng đơn. Trên hệ thống như vậy, tốt hơn nếu sn chỉ đáp ứng kết nối từ localhost. Nếu bạn định sử dụng sn từ nhiều máy khác nhau, hãy từ chối ở đây.

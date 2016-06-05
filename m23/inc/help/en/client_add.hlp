@@ -4,4 +4,6 @@ helpInclude("client_add_label_descriptions.inc");
 <!-- 15.1 begin-->After reviewing your entries, click on <i>"$I18N_add"</i>.<!-- 15.1 end-->
 
 <u>Additional information:</u>
-<!-- V1.2 -->After adding a new client, the client will boot over the network and runs through a hardware detection sequence. Hardware data (hard disk size, partitions etc.) will be sent to the server. When the data transfer is finished the client will change its status to <i>"yellow"</i>. You can setup your client now. To setup your client click on <i>"$I18N_clients"</i> &rarr; <i>"$I18N_setup"</i> in the menu.
+<!-- V1.2 -->After adding a new client, <!-- V16.1 begin -->(if PXE network booting and Wake-On-LAN are activated in the client's BIOS)<!-- V16.1 end --> the client will boot over the network and runs through a hardware detection sequence. Hardware data (hard disk size, partitions etc.) will be sent to the server. When the data transfer is finished the client will change its status to <i>"yellow"</i>. You can setup your client now. To setup your client click on <i>"$I18N_clients"</i> &rarr; <i>"$I18N_setup"</i> in the menu.
+
+<!-- V16.1 begin -->Please note that the client needs to be connected to a wired network. Wireless connections cannot be used to install the operating system.<!-- V16.1 end -->

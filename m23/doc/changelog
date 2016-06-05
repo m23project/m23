@@ -1,3 +1,247 @@
+2016-06-04
+cha: CPool::startDownloadToPool: Now adds the result form PKG_getDebootStrapBasePackages only, if it is a string (contains packages).
+fix: HELPER_xargsRecursive: Now works with arrays with only one element and doesn't miss out the last element on arrays with uneven amount of elements.
++++++
+2016-06-03
+cha: m23 / postinst: Now adds a description field to the groups table.
+new: GRP_getDescrGroup: Gets the description of a client group. (Thx TS)
+new: GRP_getNameById: gets the groupname of an Id. (Thx TS)
+fix: PKG_listSpecialpackages: Now lists special packages that are stored in userPackages only once.
+new: HELPER_showScriptHeader: Shows a header for own scripts, that creates a log file with the package name and the start time. Sends the log file to the m23 server and shows an installation dialog on the client's screen. (Thx TS)
+new: HELPER_showScriptFooter: Shows a header for own scripts, that saves the script end time to a log file and sends it to the m23 server. Sets status bar to 100% and marks the job as done. Afterwards executes the next job. (Thx TS)
++++++
+2016-06-01
+cha: massInstall.php: Marked array keys as strings.
+cha: massInstall.php, menu.php, head.php, clients_overview.php, DIALOG_start, update.php: Added m23customPatch area.
+new: EDIT_sedSearchAddInsert: Generates a sed command line to insert text before (SED_insertBefore) or after (SED_insertAfter) a searched line.
++++++
+2016-05-29
+cha: CHECK_letFWDie: Now works with objects that were passed as arguments.
++++++
+2016-05-28
+cha: array_makeFirst: Now doesn't insert an entry to the top of the array, if the entry is NULL.
++++++
+2016-05-22
+cha: mkm23extradeb: Now creates the m23hwscanner package too.
++++++
+2016-05-09
+patch 100894: Added Gnome as additional client desktop under Ubuntu 16.04.
+cha: UBUNTU_desktopInstall: Added Gnome for Ubuntu 16.04.
+new: m23Ubuntu1604GnomeInstall.php: Installs Ubuntu 16.04 LTS Gnome Desktop.
++++++
+2016-05-01
+patch 100893: Added Ubuntu 16.04 in the list of distributions supported by UCS LDAP.
+cha: */m23base.php: Added Ubuntu 16.04 in the list of distributions supported by UCS LDAP in $I18N_readLoginFromUCSLDAPSupportedDistros.
++++++
+2016-04-27
+patch 100892: Release m23 rock 16.2.
+fix: CLCFG_interfaces: Removed '-A' parameter from 'ps', because it is not available in BusyBox' ps version.
+cha: *m23updateInstall.php: Now updates the list of available packages before updating.
+cha: listBusyBoxVersions: Now filters out BusyBox releases that start with "busybox-0".
++++++
+2016-04-24
+release 16.2
+new: SFMirrorSwitcher.sh: Exchanges an old SourceForge mirror with a new one in the m23 CMS, server install ISO and sourceslist.php.
++++++
+2016-04-22
+cha: SRCLST_possiblem23debsMirrors: Replaced skylink mirror by heanet.
+cha: PKG_downloadBaseSysTom23Server: Now uses the release name as part of the background job name.
++++++
+2016-04-19
+cha: checkForMissingHlp.sh: Now can only be run, if the development version is active.
+fix: CLCFG_writeM23fetchjob: Now escapes the parameters for the init script correctly.
+cha: readHelp.php: Now sets the language to suppress the warning.
++++++
+2016-04-18
+cha: CLCFG_writeM23fetchjob: Now the created m23fetchjob file will exit when called with "stop" parameter.
+cha: checkForMissingHlp.sh: Now checks for changes between the German help files in the m23 development and release directories to find files that have to translated.
++++++
+2016-04-15
+cha: CLCFG_genFstab, m23x2goServerInstall.php, m23-initscripts / postinst: Now uses lsb_release to detect Ubuntu 16.04.
++++++
+2016-04-14
+new: CClient::addUpdateJob: Adds a job to update the client to the installation queue.
+new: CClient::addNormalUpdateJob: Adds a job to perform a normal update of the client.
+new: CClient::addCompleteUpdateJob: Adds a job to perform a complete update of the client.
+new: m23cli / updateComplete: Updates a client completely (apt-get dist-upgrade)
+new: m23cli / updateNormal: Updates a client in normal mode (apt-get upgrade)
++++++
+2016-04-05
+cha: m23/postinst: Now activates garbage collection of PHP sessions.
+cha: HELPER_getTimeZones: Now has values for countries listed by I18N_listClientLanguages.
++++++
+2016-04-04
+cha: ASSI_showClientAddDialog: Dialog has a new checkbox, if set to true, the client uses a dynamic IP address
+cha: ASSI_addClient: Now has a new parameter, if set to true, the client uses a dynamic IP address
+cha: CLIENT_addClient: Now can add assimilated clients with dynamic IPs.
+fix: CLIENT_showAddDialog: Now suggests the correct client language, if the m23 webinterface is in English.
++++++
+2016-04-01
+cha: SRCLST_getWorkingm23debsMirror: Now returns 'http://m23debs.goos-habermann.de' if executed on UCS.
+cha: SRCLST_loadSourceList: Now uses goos-habermann.de as repository when the m23 server is on UCS because apt-cacher-ng has sometimes problems with the SF mirrors.
+new: meldFileDevelVsRelease: Compares and merges a file from development with the according file from release branch.
++++++
+2016-03-31
+new: meldFileDevelVsRelease: Compares and merges a file from development with the according file from release branch.
++++++
+2016-03-30
+new: PKG_baseSysDownloadedCompletelyTom23Server: Checks, if the debootstrap cache file was downloaded completely to the m23 server.
+cha: PKG_downloadBaseSysTom23Server: Now returns true, if the download is completed, otherwise false.
+cha: work.php: Now waits until the debootstrap cache file is downloaded completely to the m23 server.
++++++
+2016-03-29
+cha: m23-mdk-base: Now includes /mdk/autoTest
+cha: ubuntu / CLCFG_enableLDAPUbuntu: Now has support for Ubuntu 16.04.
+cha: exportDBsourceslist.php: Added "Ubuntu-Xenial".
++++++
+2016-03-25
+cha: m23Search: Now filters out finds in geshi files.
++++++
+2016-03-22
+cha: CLCFG_writeM23fetchjob: Now has an extra parameter for setting the distribution release for special handling of some releases.
++++++
+2016-03-19
+cha: MSR_curDynIPCommand: Now the generated m23fetchjob works on Debian 8 too.
++++++
+2016-03-16
+cha: CLCFG_writeM23fetchjob, hwcheck, m23hwdetect, m23-xorg-configurator: Changed "Required-Start" and "Required-Stop" to "$local_fs $syslog $remote_fs".
++++++
+2016-03-13
+cha: signBaseSys.sh: Now doesn't overwrite existing signature files.
+cha: m23x2goServerInstall.php: Now works on Ubuntu 16.04 too.
++++++
+2016-03-12
+cha: CLCFG_installLightDM: Added Mate.
++++++
+2016-03-11
+cha: UBUNTU_desktopInstall: Added Ubunty for Ubuntu 16.04.
+cha: CLCFG_genFstab: Added Ubuntu 16.04.
+cha: UBUNTU_fixAfterBaseInstall: Now writes a sshd_config that supports the SSH keys from the m23 server.
+new: m23Unity3D1604Install.php: Installs the Unity 3D desktop for Ubuntu 16.04 LTS.
++++++
+2016-03-10
+cha: m23 / postinst: Additional checks to prevent warnings.
+cha: fix-permissions: Now hides a possible warning.
++++++
+2016-03-02
+cha: client_add_label_descriptions.inc: Removed Lilo, because Lilo is not supported anymore.
+cha: externalDHCP.hlp: Added hint about /m23/bin/externalDHCPControl.sh.
++++++
+2016-02-04
+fix: createRFSBins: Now finds the binary in (more / all?) cases, by excluding klibc.
+release 16.1
+++++
+2016-01-19
+patch 100837: Preparations for 16.1 release.
+cha: checkForMissingHlp.sh: Now checks for missing comments in the .hlp and .inc files.
+cha: checkForMissingHlp.sh: Now creates a tar file with the .hlp and .inc files to translate.
+cha: checkForMissingHlp.sh: Now creates a log file.
++++++
+2016-01-04
+cha: sources.list / debian 6: Added LTS, upgraded TDE source to R14.x.
+cha: sources.list / debian 7: Upgraded TDE source to R14.x.
+cha: exportDBsourceslist.php: Added "Linux Mint 17.3 Rosa".
+cha: TRINITY_installLoginManager: Now calls "update-rc.d tdm-trinity defaults" if /etc/init.d/tdm-trinity is present.
++++++
+2015-12-07
+new: externalDHCPControl.sh: Script for controlling an external DHCP server.
+new: DHCP_runScript: Runs the script for controlling an external DHCP server.
+cha: DHCP_rmClient, DHCP_addClient: Now are calling DHCP_runScript.
++++++
+2015-11-28
+cha: CLIENT_showAddDialog: Now shows a text about by the UCS LDAP supported client distributions.
++++++
+2015-11-27
+new: UCS_openFirewallPort: Opens a port on the UCS firewall.
+cha: IMG_serverCreate: Now opens the image transfer port in the UCS firewall, if run on UCS.
+cha: m23-tftp / postinst: Now opens the TFTP port in the UCS firewall, if run on UCS.
++++++
+2015-11-24
+cha: SCREDIT_showEditor: Make sure the line endings are in the correct format
++++++
+2015-11-22
+cha: UCS_enableClientPXEBoot, UCS_disableClientPXEBoot: New udm commands.
++++++
+2015-11-18
+cha: DEBIAN_desktopInstall: Now installs the language packs by default.
++++++
+2015-11-02
+cha: CLCFG_enableLDAPDebian: Now calls UCS_enableClientLDAP, if the m23 server runs on UCS.
+cha: CLIENT_addClient: Now stops adding the client, if there is an error from calling addToCredentialsToLDAPServer.
++++++
+2015-11-01
+fix: m23 / m23-tftp / m23-ldap / config: Now works on Debian again.
++++++
+2015-10-29
+cha: CClient::addToCredentialsToLDAPServer: Now calls UCS_udmSuccessOrErrorMessage to check, if an udm error occurred.
+new: UCS_getUsedIPs: Gets a list with all used IPs managed or known by UCS.
+cha: CLIENT_getNextFreeIp: Now excludes the IPs managed (or known) by UCS.
++++++
+2015-10-28
+new: UCS_udmSuccessOrErrorMessage: Takes the output from an udm command and checks for the return code (must be a single number in the last line). If the return code is non-zero, all lines above the last line are treated as error message and written to $errorMessage.
++++++
+2015-10-27
+new: UCS_delClient: Removes a client from the UCS LDAP.
+cha: getServerNetmask: Now scans bridges on UCS too.
+cha: CLIENT_deleteClient: Now calls UCS_delClient, if the m23 server runs on UCS.
+cah: DHCP_activateBoot: Now can deaktivate network boot on UCS too.
+new: UCS_getEtc_ucr_master: Gets the contents for /etc/univention/ucr_master on the client.
+new: UCS_enableClientLDAP: Enables LDAP authentification on the client on the UCS.
+cha: CLCFG_enableLDAPUbuntu: Now calls UCS_enableClientLDAP, if the m23 server runs on UCS.
+cha: CLIENT_showAddDialog: Now shows special LDAP setting and no NFS option, if the m23 server runs on UCS.
+cha: addToCredentialsToLDAPServer: Now calls UCS_addLDAPUser, if the m23 server runs on UCS.
++++++
+2015-10-25
+new: m23cli / UCS_addUCSClientTom23ClientPreferences.php: Adds an UCS client to the client preferences in m23.
+new: UCS_setClientDistrAndRelease: Sets the distribution and the release of a client to the UCS LDAP.
+cha: client_distr.php: Now calls UCS_setClientDistrAndRelease.
++++++
+2015-10-24
+cha: getDNSServers: Now works on UCS too.
+cha: getServerNetmask: Now works on UCS too.
++++++
+2015-10-23
+cha: CLCFG_copySSLCert: Now disables SSL certificate checking, if the m23 server runs on UCS.
+cha: m23/postinst: Now copies the UCS SSL certificate to /m23/data+scripts/packages/baseSys.
+cha: m23/postinst: Now opens port 2323 in the UCS firewall for Squid.
++++++
+2015-10-21
+new: CClient::addClientToUCS: Adds the client to UCS if the m23 server runs on UCS.
++++++
+2015-10-19
+cha: m23-tftp / postinst / preinst: Special settings for UCS: Removes /etc/init.d/tftp-hpa and replaces it with a symlink to /bin/true to avoid error in the tftp-hpa postinst.
+cha: m23 / config / postinst: Now configures MySQL, Squid and sudoers on UCS without querying debconf.
++++++
+2015-10-16
+cha: serverSettings.php: Now hides some icon when run on UCS.
++++++
+2015-10-15
+cha: m23 / m23-ldap / m23-tftp: Many script changes to run on UCS.
++++++
+2015-10-14
+new: UCS_delUCSClientFromm23ClientPreferences: Removes an UCS client from the client preferences in m23.
+new: UCS_getPrefnameByClient: Generates the preference name for an UCS client.
+new: UCS_addUCSClientTom23ClientPreferences: Adds an UCS client to the client preferences in m23.
+new: UCS_addClient: Adds a client to the UCS LDAP.
+new: UCS_enableClientPXEBoot: Activates PXE booting of a client that is in the UCS LDAP via the univention-dhcp.
+new: UCS_disableClientPXEBoot: Deactivates PXE booting of a client that is in the UCS LDAP via the univention-dhcp.
+cha: DHCP_addClient: Now calls UCS_enableClientPXEBoot when run on UCS.
+cha: DHCP_rmClient: Now calls UCS_disableClientPXEBoot when run on UCS.
++++++
+2015-10-13
+cha: m23 / postinst: Now accepts UCS too.
+cha: m23 / control: Adds univention-dhcp as optional dependency.
+new: HELPER_isExecutedOnUCS: Checks, if it is run on UCS.
++++++
+2015-09-07
+patch: Smal fix for DebianSystemCleaner-PrepareVMForCompression.
+patch 100797: Smal fix for DebianSystemCleaner-PrepareVMForCompression.
+fix: DebianSystemCleaner-PrepareVMForCompression: Now the m23 server package repository is really added to the sources.list.
+patch 100796: Now suggests texlive and texlive-lang-french.
+cha: m23-mdk-doc: Now suggests texlive and texlive-lang-french.
+patch 100795: Now included the m23 package sign key.
+cha: SERVER_importGPGPackageSignKey: Now uses the GPG key that is included in the m23 Debian package.
++++++
 2015-09-06
 patch 100794: User manual fixes.
 new: checkForMissingHTML2LatexEntities.sh: Script to find HTML entities that are missing in the HTML to LaTeX translation index.

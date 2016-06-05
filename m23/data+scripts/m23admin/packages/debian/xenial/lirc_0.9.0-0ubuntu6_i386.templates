@@ -1,0 +1,44 @@
+
+Template: lirc/remote
+Type: select
+Choices: None, Custom${REMOTES}
+Default: None
+Description: Remote control configuration:
+ If you choose a remote or transmitter, but already have a
+ configuration file in /etc/lirc/lircd.conf, the existing
+ file will be renamed to /etc/lirc/lircd.conf.dpkg-old and
+ the community configurations loaded into
+ /etc/lirc/lircd.conf.  If you have a
+ /etc/lirc/lircd.conf.dpkg-old file already, it will not
+ be overwritten and your current /etc/lirc/lircd.conf will
+ be lost.
+
+Template: lirc/transmitter
+Type: select
+Choices: None, Custom${TRANSMITTERS}
+Default: None
+Description: IR transmitter, if present:
+ IR transmitters can be used for controlling external devices.  Some
+ devices are considered transceivers, with the ability to both send
+ and receive.  Other devices require separate hardware to accomplish
+ these tasks.
+
+Template: lirc/dev_input_device
+Type: select
+Choices: /dev/lirc0${EVENTS}
+Default: /dev/lirc0
+Description: Custom event interface for your dev/input device:
+ Many remotes that were previously supported by the lirc_gpio interface now
+ need to be set up via the dev/input interface.  You will need to custom
+ select your remote's event character device.  This can be determined by
+ 'cat /proc/bus/input/devices'.
+
+Template: lirc/serialport
+Type: select
+Choices: /dev/ttyS0, /dev/ttyS1
+Default: /dev/ttyS0
+Description: Port your serial device is attached to:
+ The UART (serial) driver is a low level driver that takes advantage
+ of bit banging a character device.  This means that you can only use it
+ with hardware serial devices.  It unfortunately does not work with USB
+ serial devices.

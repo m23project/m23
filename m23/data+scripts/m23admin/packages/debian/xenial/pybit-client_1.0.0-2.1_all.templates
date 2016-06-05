@@ -1,0 +1,321 @@
+Template: pybit-client/clientid
+Type: string
+Description: PyBit client-ID string:
+ Please specify a unique string that can be used to identify this client
+ within the job list and queues.
+Description-cs.UTF-8: Identifikační řetězec PyBit klienta:
+ Zadejte prosím unikátní řetězec, který se bude používat k identifikaci tohoto klienta v seznamu úloh a ve frontách.
+Description-da.UTF-8: Klient-id-streng for PyBit:
+ Angiv venligst en unik streng som kan bruges til at identificere denne klient indenfor joblisten og køer.
+Description-de.UTF-8: PyBit Client-ID-Zeichenkette:
+ Bitte geben Sie eine eindeutige Zeichenkette an, die diesen Client innerhalb der Aufgabenliste und -warteschlange bezeichnen wird.
+Description-es.UTF-8: Cadena del identificador de cliente (client-ID) pyBit:
+ Indique una cadena de texto única que se pueda usar para identificar este cliente en la lista de trabajos y las colas.
+Description-fr.UTF-8: Chaîne client-ID pour PyBit :
+ Veuillez indiquer une chaîne unique pouvant être utilisée pour identifier ce client au sein de la liste de tâches et des files d'attente.
+Description-it.UTF-8: Stringa ID-client di PyBit:
+ Specificare una stringa univoca che può essere usata per identificare questo client all'interno dell'elenco dei compiti e delle code.
+Description-ja.UTF-8: PyBit クライアント ID 文字列:
+ 一意な文字列を指定してください。これはジョブ一覧およびクエリの中でこのクライアントを識別するのに利用します。
+Description-pl.UTF-8: Identyfikator klienta PyBit:
+ Proszę podać unikalny ciąg, który będzie użyty do zidentyfikowania tego klienta w liście zadań i kolejek.
+Description-pt.UTF-8: String de ID de cliente do PyBit:
+ Indique, por favor, um string único que possa ser usado para identificar este cliente na lista de tarefas e filas.
+Description-ru.UTF-8: Строка-идентификатор клиента PyBit:
+ Введите отличительную строку, по которой можно будет опознать этого клиента в списке заданий и очередях.
+Description-sk.UTF-8: reťazec na identifikáciu klienta PyBit:
+ Prosím, zadajte jedinečný reťazec, ktorý sa dá použiť na identifikáciu tohto klienta v rámci zoznamu úloh a frontov.
+Description-sv.UTF-8: PyBit klient-identifikation:
+ Ange en unik sträng som kan användas för att identifiera denna klient i jobblistan och köer.
+
+Template: pybit-client/lvmsnapshot
+Type: boolean
+Default: false
+Description: Use LVM snapshots on this client?
+ If the sbuild configuration uses LVM snapshots, pybit-client can ensure
+ that your snapshot APT cache data is kept up-to-date whilst keeping the
+ snapshot clean.
+Description-cs.UTF-8: Používat u tohoto klienta LVM snapshoty?
+ Pokud nastavení sbuild používá LVM snapshoty, pybit-client může zajistit, aby snapshoty dat z APT cache zůstaly aktuální a zároveň je udrží pročištěné.
+Description-da.UTF-8: Brug LVM-øjebliksbilleder på denne klient?
+ Hvis sbuild-konfigurationen bruger LVM-øjebliksbilleder, så kan pybit-client sikre, at dine mellemlagerdata for øjebliksbilledets APT bevares opdateret, mens du beholder øjebliksbilledet rent.
+Description-de.UTF-8: Sollen auf diesem Client LVM-Momentaufnahmen benutzt werden?
+ Falls die Konfiguration von Sbuild LVM-Momentaufnahmen benutzt, kann Pybit-Client sicherstellen, dass Ihre zwischengespeicherten APT-Daten aktuell gehalten werden, während die Momentaufnahme sauber gehalten wird.
+Description-es.UTF-8: ¿Desea utilizar instantáneas LVM en este cliente?
+ Si la configuración de sbuild usa instantáneas LVM, pybit-client puede asegurarse de que los datos del caché de APT de su instantánea se mantengan actualizados mientras se mantiene la instantánea limpia.
+Description-fr.UTF-8: Utiliser des instantanés LVM sur ce client ?
+ Si la configuration sbuild utilise des instantanés LVM, pybit-client peut s'assurer que votre instantané des données du cache de APT sont mises à jour tout en gardant l'instantané propre.
+Description-it.UTF-8: Usare istantanee LVM su questo client?
+ Se la configurazione di sbuild usa istantanee LVM, pybit-client può assicurare che i dati della cache APT dell'istantanea vengano tenuti aggiornati mantenendo al contempo pulita l'istantanea.
+Description-ja.UTF-8: このクライアントで LVM スナップショットを使用しますか?
+ sbuild の設定で LVM のスナップショットを使用している場合、pybit-client はスナップショットをクリーンに保つと同時にスナップショットの APT キャッシュデータを最新に保つことが可能です。
+Description-pl.UTF-8: Użyć migawek LVM w tym kliencie?
+ Jeśli bieżąca konfiguracja sbuild używa migawek LVM, pybit-client może zachować aktualność podręcznej migawki APT, jednocześnie utrzymując czystość migawki.
+Description-pt.UTF-8: Utilizar snapshots LVM neste cliente?
+ Se a configuração sbuild usa snapshots LVM, o pybit-client pode garantir que os dados da cache do APT são mantidos actualizados na snapshot e manter a snapshot limpa.
+Description-ru.UTF-8: Использовать снимки LVM на этом клиенте?
+ Если в настройках sbuild используются снимки LVM, pybit-client может обеспечить актуальное состояние снимка данных кэша APT и поддерживать его неизменным.
+Description-sk.UTF-8: Používať snímky LVM na tomto klientovi?
+ Ak konfigurácia sbuild používa snímky LVM, pybit-client môže zabezpečiť, aby dáta vyrovnávacej pamäte APT vašej snímky boli aktuálne a zároveň udržať čisté snímky.
+Description-sv.UTF-8: Ska LVM-ögonblicksbilder användas på den här klienten?
+ Om sbuild-konfigurationen använder LVM-ögonblicksbilder kan pybit-client säkerställa att din APT-data är korrekt i ögonblicksbilden samtidigt som ögonblicksbilden i övrigt är ren.
+
+Template: pybit-client/buildroot
+Type: string
+Default: /home/buildd/pybit
+Description: Buildd location:
+ Please specify a writeable directory where the version control handler
+ and the upload task can write files.
+ .
+ If this is left blank, the default /home/buildd/pybit will be used.
+Description-cs.UTF-8: Umístění pro buildd:
+ Zadejte prosím zapisovatelný adresář, kam může správce verzí a úloha nahrávání ukládat soubory.
+ .
+ Ponecháte-li políčko prázdné, použije se výchozí umístění /home/buildd/pybit.
+Description-da.UTF-8: Placering for buildd:
+ Angiv venligst en skrivbar mappe hvor versionskontrolprogrammet og overførselsopgaven kan skrive filer.
+ .
+ Hvis denne efterlades blank, vil standarden /home/buildd/pybit blive anvendt.
+Description-de.UTF-8: Buildd-Speicherort:
+ Bitte geben Sie ein beschreibbares Verzeichnis an, in dem das Programm zur Versionskontrolle und der Upload-Prozess Dateien erzeugen können.
+ .
+ Falls dies leer gelasssen wird, wird die Vorgabe /home/buildd/pybit benutzt.
+Description-es.UTF-8: Ubicación de buildd:
+ Indique un directorio con permisos de escritura donde el manejador de control de versiones y la tarea de envíos pueden guardar los archivos.
+ .
+ Si deja este campo en blanco se usará el directorio predeterminado («/home/buildd/pybit»).
+Description-fr.UTF-8: Emplacement de Buildd :
+ Veuillez indiquer un répertoire avec les droits d'écriture dans lequel le gestionnaire de contrôle de version et la tâche de téléversement peuvent écrire des fichiers.
+ .
+ Si laissé vide, la valeur par défaut /home/buildd/pybit sera utilisée.
+Description-it.UTF-8: Posizione di buildd:
+ Specificare una directory scrivibile dove il gestore di controllo delle versioni e l'attività di caricamento possano scrivere file.
+ .
+ Se viene lasciato vuoto, verrà usato il valore predefinito /home/buildd/pybit.
+Description-ja.UTF-8: Buildd の場所:
+ 書き込みのできるディレクトリを指定してください。バージョン制御ハンドラとアップロードタスクがここにファイルを書き込める必要があります。
+ .
+ これを空白にするとデフォルトの /home/buildd/pybit を使用します。
+Description-pl.UTF-8: Położenie buildd:
+ Proszę podać zapisywalny katalog, gdzie program obsługi wersji i zadanie wysyłki może zapisywać pliki.
+ .
+ Jeśli nie poda się wartości, zostanie użyta domyślna ścieżka /home/buildd/pybit.
+Description-pt.UTF-8: Localização do buildd:
+ Indique por favor um directório com permissões de escrita para onde podem ser enviados os ficheiros do controlo de versões e da tarefa de upload.
+ .
+ Se for deixado em branco, será usado /home/buildd/pybit.
+Description-ru.UTF-8: Расположение buildd:
+ Укажите каталог, доступный на запись, в который могут записывать файлы обработчик управления версиями и задача по закачке.
+ .
+ Если ничего не вводить, то будет использован /home/buildd/pybit.
+Description-sk.UTF-8: Umiestnenie buildd:
+ Prosím, zadajte zapisovateľný adresár, kde  môže obsluha riadenia verzií a nahrávacia úloha zapisovať súbory.
+ .
+ Ak toto pole ponecháte prázdne, použije sa predvolený adresár /home/buildd/pybit.
+Description-sv.UTF-8: Buildd-sökväg:
+ Ange en skrivbar katalog där versionskontrollhanteringen och uppladdningssteget kan skriva filer.
+ .
+ Om detta lämnas tomt kommer standardplatsen /home/buildd/pybit att användas.
+
+Template: pybit-client/rabbitmqhost
+Type: string
+Description: Host machine running RabbitMQ:
+ Please specify the server running RabbitMQ that this buildd client will
+ communicate with, receiving details of the jobs it needs to attempt to
+ build.
+Description-cs.UTF-8: Hostitelský server, na kterém běží RabbitMQ:
+ Zadejte prosím server, na kterém běží RabbitMQ, se kterým bude tento buildd komunikovat, získávat údaje o úlohách, ty potřebuje při požadavcích na sestavení.
+Description-da.UTF-8: Værtsmaskine der kører RabbitMQ:
+ Angiv venligst serveren der kører RabbitMQ, som denne buildd-klient skal kommunikere med, og som modtager nødvendige detaljer om jobbene den forsøger at bygge.
+Description-de.UTF-8: Host, auf dem RabbitMQ ausgeführt wird:
+ Bitte geben Sie den Server an, auf dem RabbitMQ ausgeführt wird und mit dem sich der Buildd-Client verbinden wird, um Einzelheiten über die Paketbauaufgaben zu erhalten, die er erledigen soll.
+Description-es.UTF-8: Servidor donde se ejecuta RabbitMQ:
+ Indique el servidor donde se ejecuta RabbitMQ con el que se comunicará este cliente buildd y desde donde recibirá los detalles de los trabajos que necesita intentar construir.
+Description-fr.UTF-8: Machine hôte hébergeant RabbitMQ :
+ Veuillez indiquer le serveur faisant tourner RabbitMQ avec lequel ce client buildd communiquera, et qui recevra les détails des tâches dont il a besoin pour tenter de compiler.
+Description-it.UTF-8: Macchina host che esegue RabbitMQ:
+ Specificare il server con in esecuzione RabbitMQ con cui comunicherà questo client buildd, ricevendo i dettagli dei compiti di cui ha bisogno per tentare la compilazione.
+Description-ja.UTF-8: RabbitMQ が実行されるマシンのホスト:
+ RabbitMQ が実行されるサーバを指定してください。この buildd クライアントがビルドする必要のあるジョブの詳細をここから受信します。
+Description-pl.UTF-8: Komputer, na którym działa RabbitMQ:
+ Proszę podać serwer na którym działa RabbitMQ, z którym będzie mógł komunikować się ten klient buildd, otrzymując szczegóły zadań, które są potrzebne do podjęcia próby budowania.
+Description-pt.UTF-8: Máquina que corre RabbitMQ:
+ Indique por favor o servidor que corre o RabbitMQ com que este cliente irá comunicar e a partir do qual receberá os detalhes das tarefas a cumprir.
+Description-ru.UTF-8: Машина с работающим RabbitMQ:
+ Укажите сервер с работающим RabbitMQ, с которым будет связываться клиент buildd и получать задачи, которые нужно попытаться выполнить.
+Description-sk.UTF-8: Hostiteľský počítač, kde beží RabbitMQ:
+ Prosím, zadajte server, kde beží RabbitMQ, s ktorým bude tento klient buildd komunikovať a prijímať podrobnosti úloh, ktoré sa má pokúsiť zostaviť.
+Description-sv.UTF-8: Värdmaskin som kör RabbitMQ:
+ Ange servern som kör RabbitMQ som denna buildd-klient kommer att kommunicera med för att ta emot information om jobb som ska utföras.
+
+Template: pybit-client/dputdest
+Type: string
+Description: Destination for dput package uploads:
+ Please specify the machine that this client will use as upload host.
+ This destination will be stored in its dput configuration.
+ .
+ This entry must not be empty.
+Description-cs.UTF-8: Cíl nahrávání balíčků pro dput:
+ Zadejte prosím server, který bude tento klient používat jako hostitele pro nahrávání. Tento cíl se u klienta uloží do nastavení dput.
+ .
+ Toto políčko nemůže být prázdné.
+Description-da.UTF-8: Destination for dput-pakkeoverførsler:
+ Angiv venligst maskinen som denne klient vil bruge som overførselsvært. Denne destination vil blive gemt i dens dput-konfiguration.
+ .
+ Denne post må ikke være tom.
+Description-de.UTF-8: Ziel für das Hochladen von Paketen mit Dput:
+ Bitte geben Sie den Rechner an, auf den dieser Client Dateien hochladen wird. Dieses Ziel wird in seiner Dput-Konfiguration gespeichert.
+ .
+ Dieser Eintrag darf nicht leer sein.
+Description-es.UTF-8: Destino donde dput enviará paquetes:
+ Indique el equipo que usará este cliente como servidor de envíos. Este destino se almacenará en su configuración dput.
+ .
+ Este campo no puede estar en blanco.
+Description-fr.UTF-8: Destination pour les téléversements du paquet dput : 
+ Veuillez indiquer la machine dont se servira ce client comme hôte de téléversement. Cet emplacement sera enregistré dans sa configuration dput.
+ .
+ Cette entrée ne peut pas être vide.
+Description-it.UTF-8: Destinazione per il caricamento dei pacchetti dput:
+ Specificare la macchina che questo client userà come host per il caricamento. Questa destinazione verrà memorizzata nella sua configurazione di dput.
+ .
+ Questo campo non deve essere vuoto.
+Description-ja.UTF-8: dput のパッケージのアップロード先:
+ このクライアントのアップロード先のホストとなるマシンを指定してください。この宛先は dput の設定に保存されます。
+ .
+ このエントリを空白にはできません。
+Description-pl.UTF-8: Przeznaczenie wysyłek pakietu dput:
+ Proszę podać komputer, który będzie używany przez tego klienta jako cel wysyłek. Położenie zostanie zachowanie w konfiguracji dput.
+ .
+ To pole nie może pozostać puste.
+Description-pt.UTF-8: Destino para uploads de pacotes pelo dput:
+ Indique por favor a máquina que este cliente irá usar para destino de upload. Este destino será guardado na configuração do dput.
+ .
+ Este valor não pode ficar vazio.
+Description-ru.UTF-8: Место для закачки пакетов с помощью dput:
+ Укажите машину, которую данный клиент будет использовать для закачки. Данный параметр будет сохранён в его настройках dput.
+ .
+ Данный параметр не может быть пустым.
+Description-sk.UTF-8: Cieľ nahrávania dput súborov balíkov:
+ Prosím, uveďte počítač, na ktorý tento klient bude nahrávať. Tento cieľ sa uloží v konfigurácii dput.
+ .
+ Táto položka nesmie byť prázdna.
+Description-sv.UTF-8: Mål för dput-paket-uppladdning:
+ Ange maskinen som denna klient ska använda som sin uppladdningsvärd. Denna plats kommer att lagras i dput-inställningarna.
+ .
+ Detta kan inte lämnas tomt.
+
+Template: pybit-client/missingid
+Type: note
+Description: Client-ID string cannot be empty!
+ This client will fail to start until it receives a unique client-ID.
+Description-cs.UTF-8: Identifikační řetězec klienta nemůže být prázdný!
+ Dokud nebude mít klient unikátní ID, nebude jej možné spustit.
+Description-da.UTF-8: Klient-id-streng kan ikke være tom!
+ Denne klient vil fejle i at starte indtil den modtager en unik klient-id.
+Description-de.UTF-8: Client-ID-Zeichenkette kann nicht leer sein!
+ Der Start dieses Clients wird fehlschlagen, bis er eine eindeutige Client-ID erhält.
+Description-es.UTF-8: ¡La cadena del identificador de cliente (client-ID) no puede estar en blanco!
+ El cliente no se iniciará hasta que reciba un identificador de cliente (client-ID) único.
+Description-fr.UTF-8: La chaîne Client-ID ne peut pas être vide !
+ Ce client ne pourra pas démarrer tant qu'il n'aura pas obtenu un client-ID unique.
+Description-it.UTF-8: La stringa client-ID non può essere vuota.
+ Questo client non potrà avviarsi fino a che non riceve un ID-client univoco.
+Description-ja.UTF-8: クライアント ID 文字列を空白にすることはできません!
+ 一意なクライアント ID を受け取るまでこのクライアントは開始に失敗します。
+Description-pl.UTF-8: Łańcuch identyfikacyjny klienta nie może pozostać pusty!
+ Klient nie uruchomi się, dopóki nie otrzyma swojego unikalnego identyfikatora klienta.
+Description-pt.UTF-8: O string de ID de cliente não pode ser vazio!
+ Este cliente não irá iniciar até receber um ID de cliente único.
+Description-ru.UTF-8: Строка-идентификатор клиента не может быть пустой!
+ Данный клиент не запустится, пока не получит отличительную строку-идентификатор.
+Description-sk.UTF-8: Reťazec identifikácia klienta (Client-ID) nemôže byť prázdny!
+ Tohto klienta sa nepodarí spustiť dovtedy, kým nedostane jedinečnú identifikáciu klienta (Client-ID).
+Description-sv.UTF-8: klient-identifikationen kan inte vara tom!
+ Klienten kommer inte kunna starta innan den fått en unik klient-identifikation.
+
+Template: pybit-client/missinghost
+Type: note
+Description: Missing RabbitMQ hostname!
+ This client will not receive any messages from the queue and will
+ not build any packages until a RabbitMQ host is specified.
+ .
+ Please edit /etc/pybit/client/client.conf after configuration.
+Description-cs.UTF-8: Chybí název hostitele RabbitMQ serveru!
+ Klient nebude dostávat žádné zprávy z fronty a nebude sestavovat žádné balíčky, dokud nebude zadán hostitel RabbitMQ serveru.
+ .
+ Po dokončení nastavování upravte prosím soubor /etc/pybit/client/client.conf.
+Description-da.UTF-8: Manglende RabbitMQ-værtsnavn!
+ Denne klient vil ikke modtage nogen beskeder fra køen og vil ikke bygge nogen pakker før end at RabbitMQ-værten er angivet.
+ .
+ Rediger venlisgt /etc/pybit/client/client.conf efter konfiguration.
+Description-de.UTF-8: Fehlender RabbitMQ-Hostname!
+ Dieser Client wird keine Nachrichten aus der Warteschlange empfangen und keine Pakete bauen, bis ein RabbitMQ-Host angegeben wird.
+ .
+ Bitte bearbeiten Sie nach der Konfiguration /etc/pybit/client/client.conf.
+Description-es.UTF-8: ¡Falta el nombre del equipo RabbitMQ!
+ El cliente no recibirá ningún mensaje de la cola ni construirá ningún paquete hasta que indique un nombre de equipo RabbitMQ.
+ .
+ Edite el archivo «/etc/pybit/client/client.conf» después de la configuración.
+Description-fr.UTF-8: Nom d'hôte pour RabbitMQ manquant !
+ Ce client ne recevra pas de messages depuis la file d'attente et ne compilera aucun paquet tant qu'un hôte RabbitMQ n'est pas indiqué.
+ .
+ Veuillez éditer le fichier /etc/pybit/client/client.conf après la configuration.
+Description-it.UTF-8: Nome host RabbitMQ mancante.
+ Questo client non riceverà alcun messaggio dalla coda e non compilerà alcun pacchetto fino a che non viene specificato un host RabbitMQ.
+ .
+ Modificare /etc/pybit/client/client.conf dopo la configurazione.
+Description-ja.UTF-8: RabbitMQ ホスト名がありません!
+ RabbitMQ ホストが指定されるまで、このクライアントはキューからのメッセージを受け取ることはなく、パッケージのビルドも行われません。
+ .
+ 設定後に /etc/pybit/client/client.conf を編集してください。
+Description-pl.UTF-8: Brak nazwy hosta RabbitMQ!
+ Klient nie otrzyma komunikatów z kolejki i nie będzie budował pakietów, dopóki nie poda się nazwy komputera RabbitMQ.
+ .
+ Proszę dokonać edycji pliku /etc/pybit/client/client.conf po konfiguracji.
+Description-pt.UTF-8: Nome do servidor RabbitMQ em falta!
+ Este cliente não irá receber mensagens de listas de espera e não irá criar qualquer pacote até que seja indicado um servidor RabbitMQ.
+ .
+ Edite por favor o ficheiro /etc/pybit/client/client.conf após a configuração.
+Description-ru.UTF-8: Не задано имя узла RabbitMQ!
+ Клиент не будет получать каких-либо сообщений из очереди и не будет собирать пакеты, пока не будет задан узел RabbitMQ.
+ .
+ Измените /etc/pybit/client/client.conf после настройки.
+Description-sk.UTF-8: Chýba názov počítača s RabbitMQ!
+ Tento klient nedostane žiadne správy z frontu a nebudete zostavovať žiadne balíky, kým nezadáte názov počítača s RabbitMQ.
+ .
+ Prosím, po konfigurácii upravte /etc/pybit/client/client.conf.
+Description-sv.UTF-8: RabbitMQ-värdnamn saknas!
+ Klienten kommer inte att ta emot några meddelanden från kön och kommer inte kunna bygga några paket innan RabbitMQ-värd har specificerats.
+ .
+ Redigera /etc/pybit/client/client.conf.
+
+Template: pybit-client/defaultdput
+Type: note
+Description: Missing dput destination!
+ pybit-client is not intended to upload to unspecified dput
+ destinations like ftp-master.debian.org and does not currently
+ support GnuPG signed uploads.
+Description-cs.UTF-8: Chybí cíl pro dput!
+ pybit-client nebyl vytvořen k nahrávání na neurčené dput cíle, jako je ftp-master.debian.org a v současné době nepodporuje nahrávání podepsaná GnuPG klíči.
+Description-da.UTF-8: Manglende dput-destination!
+ pybit-client er ikke lavet til at overføre til uangivne dput-destinationer såsom ftp-master.debian.org og understøtter aktuelt ikke GnuPG-underskrevne overførsler.
+Description-de.UTF-8: Dput-Ziel fehlt!
+ Pybit-Client ist nicht dazu gedacht, an nicht angegebene Dput-Ziele wie ftp-master.debian.org hochzuladen und unterstützt derzeit keine mit GnuPG signierten Uploads.
+Description-es.UTF-8: ¡Falta el destino dput!
+ pybit-client no está diseñado para el envío a destinos dput sin especificar como ftp-master.debian.org y actualmente no permite envíos firmados con GnuGP.
+Description-fr.UTF-8: Emplacement de dput manquant !
+ pybit-client n'a pas pour vocation de téléverser vers des emplacements dput non-spécifés comme ftp-master.debian.org et ne supporte actuellement pas les téléversements signés avec GnuPG.
+Description-it.UTF-8: Destinazione dput mancante.
+ pybit-client non è pensato per caricare su destinazioni dput non specificate come ftp-master.debian.org e attualmente non gestisce caricamenti firmati con GnuPG.
+Description-ja.UTF-8: dput の宛先がありません!
+ pybit-client は dput の宛先を ftp-master.debian.org のように指定することなくアップロードすることを意図していません。また、GnuPG 署名を行ってのアップロードはサポートしていません。
+Description-pl.UTF-8: Brak położenia dput.
+ pybit-client nie został zaprojektowany do wysyłania plików do nieokreślonych lokalizacji dput, takich jak ftp-master.debian.org i nie obsługuje obecnie wysyłek podpisanych za pomocą GnuPG.
+Description-pt.UTF-8: Destino para o dput em falta!
+ O pybit-client não está feito para fazer uploads para destinos dput não especificados, como o ftp-master.debian.org, e não suporta uploads assinados com o GnuPG.
+Description-ru.UTF-8: Отсутствует назначение у dput!
+ pybit-client не способен закачивать с помощью dput закачивать в неуказанные явно места, например в ftp-master.debian.org, и в настоящее время не поддерживает закачку, подписанную GnuPG.
+Description-sk.UTF-8: Chýba cieľ dput!
+ pybit-client nie je určený na nahrávanie na nešpecifikované ciele dput, ako je ftp-master.debian.org a v súčasnosti nepodporuje nahrávania podpísané pomocou GnuPG.
+Description-sv.UTF-8: dput-mål saknas!
+ pybit-client kan inte användas för att skicka till ospecifierade dput-mål som ftp-master.debian.org och har inte stöd för GnuPG-signerade uppladdningar.

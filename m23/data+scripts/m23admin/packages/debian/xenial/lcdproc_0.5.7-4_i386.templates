@@ -1,0 +1,15 @@
+Template: lcdproc/auto-upgrade-config
+Type: boolean
+Default: true
+Description: Perform automatic configuration upgrade ?
+ lcdproc configuration can be merged automatically by cme
+ during package upgrade. This process will keep your
+ configuration customization, apply maintainer's changes and write back 
+ the configuration files.
+ .
+ You can later edit lcdproc configuration with the command 
+ 'sudo cme edit lcdproc'.
+ .
+ If you decline this option, you must then copy the original configuration
+ file(s) from /usr/share/doc/lcdproc to /etc. This file will
+ not be managed by Debian package manager.

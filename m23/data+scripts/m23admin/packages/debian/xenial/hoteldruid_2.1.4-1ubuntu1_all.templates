@@ -1,0 +1,402 @@
+Template: hoteldruid/configure-apache
+Type: boolean
+Default: true
+Description: Automatically configure the Apache web server for HotelDruid?
+ HotelDruid runs on any web server supporting PHP, but automatic
+ configuration can only be performed for Apache.
+ .
+ Once configured, HotelDruid can be accessed locally at
+ "http://localhost/hoteldruid".
+ .
+ Please choose whether automatic configuration should be performed now.
+Description-cs.UTF-8: Nastavit automaticky webový server Apache pro HotelDruid?
+ HotelDruid běží na jakémkoli webovém serveru, který podporuje PHP, automatické nastavení lze však provést pouze pro Apache.
+ .
+ Po nastavení bude možné k HotelDruid místně přistupovat na adrese "http://localhost/hoteldruid".
+ .
+ Zvolte si prosím, zda se má nyní provést automatické nastavení.
+Description-da.UTF-8: Konfigurer automatisk Apache-internetserveren for hotelDruid?
+ HotelDruid kører på enhver internetserver, der understøtter PHP, men automatisk konfiguration kan kun udføres for Apache.
+ .
+ Når først konfigureret kan HotelDruid tilgås lokalt på »http://localhost/hoteldruid«.
+ .
+ Vælg venligst hvorvidt automatisk konfiguration skal udføres nu.
+Description-de.UTF-8: Den Apache-Webserver automatisch für HotelDruid konfigurieren?
+ HotelDruid läuft auf jedem Webserver, der PHP unterstützt. Das Programm kann aber nur für Apache automatisch konfiguriert werden.
+ .
+ Nach der Konfiguration kann auf HotelDruid lokal unter »http://localhost/hoteldruid« zugegriffen werden.
+ .
+ Bitte wählen Sie, ob die automatische Konfiguration jetzt durchgeführt werden soll.
+Description-es.UTF-8: ¿Desea configurar automáticamente el servidor web Apache para HotelDruid?
+ HotelDruid puede funcionar con cualquier servidor web que permita utilizar PHP, pero sólo el servidor web Apache se puede configurar automáticamente.
+ .
+ Una vez configurado, puede acceder a HotelDruid de forma local en «http://localhost/hoteldruid».
+ .
+ Seleccione si desea realizar la configuración automática en este momento.
+Description-fr.UTF-8: Faut-il configurer automatiquement le serveur web Apache pour HotelDruid ?
+ HotelDruid fonctionne avec n'importe quel serveur qui gère PHP, mais seul Apache peut être configuré automatiquement.
+ .
+ Une fois configuré, HotelDruid est accessible localement à l'adresse « http://localhost/hoteldruid ».
+ .
+ Veuillez choisir si la configuration automatique doit être réalisée maintenant.
+Description-it.UTF-8: Configurare automaticamente il server web Apache per HotelDruid?
+ HotelDruid può funzionare su qualsiasi server web che supporti PHP, ma solo solo Apache può essere configurato automaticamente.
+ .
+ Una volta configurato, si può accedere localmente a HotelDruid da "http://localhost/hoteldruid".
+ .
+ Selezionare se effettuare la configurazione automatica ora.
+Description-ja.UTF-8: Apache ウェブサーバを HotelDruid 用に自動的に設定しますか?
+ HotelDruid は PHP 対応のウェブサーバであればどれでも動作しますが、自動設定は Apache ウェブサーバに対してのみ可能です。
+ .
+ 設定が出来ると、HotelDruid はローカルから「http://localhost/hoteldruid」でアクセス出来るようになります。
+ .
+ ここで自動設定を行うかどうか選択してください。
+Description-nl.UTF-8: De Apache webserver automatisch instellen voor HotelDruid?
+ HotelDruid kan uitgevoerd worden op elke webserver die PHP ondersteunt, maar enkel voor Apache kan de configuratie automatisch gebeuren.
+ .
+ Eens HotelDruid ingesteld werd, is het lokaal bereikbaar op "http://localhost/hoteldruid".
+ .
+ Gelieve aan te geven of de automatische configuratie nu moet gebeuren.
+Description-pl.UTF-8: Skonfigurować serwer WWW Apache do obsługi programu HotelDruid?
+ HotelDruid działa na każdym serwerze WWW obsługującym PHP, lecz konfiguracja automatyczna może być wykonana jedynie w przypadku Apache'a.
+ .
+ Po skonfigurowaniu, dostęp do programu HotelDruid można uzyskać lokalnie pod adresem "http://localhost/hoteldruid".
+ .
+ Proszę wybrać, czy automatyczna konfiguracja ma teraz zostać przeprowadzona.
+Description-pt.UTF-8: Configurar automaticamente o servidor web Apache para o HotelDruid?
+ O HotelDruid corre em qualquer servidor web que suporte PHP, mas a configuração automática apenas pode ser feita para o Apache.
+ .
+ Uma vez configurado, o HotelDruid pode ser acedido localmente em "http://localhost/hoteldruid".
+ .
+ Por favor escolha se a configuraão automática deve ser executada agora.
+Description-ru.UTF-8: Настроить веб-сервер Apache для работы HotelDruid автоматически?
+ HotelDruid работает с любым веб-сервером, поддерживающим PHP, однако автоматическая настройка может быть выполнена только для Apache.
+ .
+ После настройки HotelDruid будет доступен локально по адресу «http://localhost/hoteldruid».
+ .
+ Выберите, нужно ли выполнить автоматическую настройку прямо сейчас.
+Description-sv.UTF-8: Ska webbservern Apache automatiskt ställas in för HotelDruid?
+ HotelDruid kan köras på alla webbservrar som har stöd för PHP men automatiska inställningar kan endast göras för Apache.
+ .
+ Efter att inställningarna aktiverats nås HotelDruid lokalt på "http://localhost/hoteldruid".
+ .
+ Ange om automatiska inställningar ska göras nu.
+
+Template: hoteldruid/restrict-localhost
+Type: boolean
+Default: true
+Description: Restrict HotelDruid access to localhost?
+ The Apache web server can be configured to forbid HotelDruid
+ connections from other machines.
+ .
+ It is recommended to activate this setting if HotelDruid is
+ going to be used only from this machine.
+Description-cs.UTF-8: Omezit přístup k HotelDruid pouze na místního hostitele?
+ Webový server Apache lze nastavit tak, aby blokoval připojování k HotelDruid z jiných počítačů.
+ .
+ Toto nastavení se doporučuje aktivovat v případě, že se bude HotelDruid používat jen z tohoto počítače.
+Description-da.UTF-8: Begræns HotelDruid-adgang til localhost?
+ Apache-internetserveren kan konfigureres til at forbyde HotelDruid-forbindelser fra andre maskiner.
+ .
+ Det anbefales, at aktivere denne indstilling hvis HotelDruid kun skal bruges fra denne maskine.
+Description-de.UTF-8: Den Zugriff auf HotelDruid auf den eigenen Rechner (localhost) beschränken?
+ Der Apacher-Webserver kann so eingerichtet werden, dass HotelDruid-Verbindungen von anderen Maschinen nicht möglich sind.
+ .
+ Falls HotelDruid nur auf diesem Rechner genutzt werden soll, wird die Aktivierung dieser Einstellung empfohlen.
+Description-es.UTF-8: ¿Desea limitar el acceso de HotelDruid a localhost?
+ El servidor web Apache se puede configurar para impedir conexiones a HotelDruid desde otras máquinas.
+ .
+ Se recomienda activar esta opción si HotelDruid solo se va a utilizar desde esta máquina.
+Description-fr.UTF-8: Faut-il restreindre l'accès à HotelDruid depuis l'hôte local ?
+ Le serveur web Apache peut être configuré pour interdire les connexions à HotelDruid depuis d'autres machines.
+ .
+ Ce réglage devrait être activé si HotelDruid ne doit être utilisé que depuis cette machine.
+Description-it.UTF-8: Limitare l'accesso a HotelDruid al solo localhost?
+ Il server web Apache può essere configurato per proibire connessioni a HotelDruid che provengano da altri computer.
+ .
+ Si consiglia l'attivazione di questa impostazione se si è intenzionati ad usare HotelDruid solo da questo computer
+Description-ja.UTF-8: HotelDruid へのアクセスをローカルホストからに制限しますか?
+ Apache ウェブサーバは他のコンピュータからの接続を禁止するように設定できます。
+ .
+ HotelDruid をこのマシンからのみ利用する予定であれば、この設定を有効にするよう勧めます。
+Description-nl.UTF-8: Toegankelijkheid van HotelDruid beperken tot localhost?
+ De Apache webserver kan zo ingesteld worden dat HotelDruid-verbindingen vanaf andere computers verboden worden.
+ .
+ Het wordt aanbevolen om deze instelling te activeren indien HotelDruid enkel voor deze computer gebruikt zal worden.
+Description-pl.UTF-8: Ograniczyć dostęp do programu HotelDruid do komputera lokalnego?
+ Serwer WWW Apache może zostać tak skonfigurowany, aby zabraniał połączeń z programem HotelDruid pochodzących z innych komputerów.
+ .
+ Zaleca się włączenie tego ustawienia, jeśli HotelDruid będzie używany jedynie z bieżącego komputera.
+Description-pt.UTF-8: Restrigir o acesso ao HotelDruid apenas ao localhost?
+ O servidor web Apache pode ser configurado para proibir ligações ao HotelDruid a partir de outras máquinas.
+ .
+ É recomendado activar esta configuração se o HotelDruid for utilizado apenas a partir desta maquina.
+Description-ru.UTF-8: Разрешить доступ к HotelDruid только с localhost?
+ Веб-сервер Apache можно настроить так, что доступ к HotelDruid с других машин будет запрещён.
+ .
+ Рекомендуется согласиться с этой настройкой, если HotelDruid будет использоваться только с данной машины.
+Description-sv.UTF-8: Ska HotelDruid begränsa åtkomst till att endast omfatta lokal värd?
+ Apache webbservern kan instrueras att förbjuda anslutningar till HotelDruid från andra maskiner.
+ .
+ Om HotelDruid endast ska användas från den här maskinen är detta en rekomenderad inställning.
+
+Template: hoteldruid/restart-webserver
+Type: boolean
+Default: true
+Description: Reload the web server configuration for HotelDruid?
+ In order to activate the new configuration for HotelDruid,
+ the web server has to reload its configuration files.
+Description-cs.UTF-8: Načíst nastavení webového serveru pro HotelDruid?
+ K aktivaci nového nastavení pro HotelDruid je nutné, aby webový server znovu načetl své konfigurační soubory.
+Description-da.UTF-8: Genindlæs konfigurationen for internetserveren for HotelDruid?
+ For at aktivere den nye konfiguration for HotelDruid, så skal internetserveren genindlæse sine konfigurationsfiler.
+Description-de.UTF-8: Webserver-Konfiguration für HotelDruid erneut laden?
+ Um die neue Konfiguration für HotelDruid zu aktivieren, muss der Webserver seine Konfigurationsdateien erneut laden.
+Description-es.UTF-8: ¿Desea recargar la configuración de servidor web para HotelDruid?
+ Para activar la nueva configuración para HotelDruid, el servidor web debe recargar sus ficheros de configuración.
+Description-fr.UTF-8: Faut-il recharger la configuration du serveur web pour HotelDruid ?
+ Pour activer la nouvelle configuration d'HotelDruid, le serveur web doit recharger ses fichiers de configuration.
+Description-it.UTF-8: Ricaricare la configurazione del server web ora?
+ Per attivare la nuova configurazione per HotelDruid, il server web deve ricaricare i suoi file di configurazione.
+Description-ja.UTF-8: ウェブサーバの設定を HotelDruid 用に読み込み直しますか?
+ HotelDruid 用の新しい設定を反映させるためには、ウェブサーバは設定ファイルをリロードしなければなりません。
+Description-nl.UTF-8: De webserver-configuratie opnieuw laden voor HotelDruid?
+ Om de nieuwe configuratie effectief te maken voor HotelDruid, moet de webserver zijn configuratiebestanden opnieuw laden.
+Description-pl.UTF-8: Przeładować konfigurację serwera WWW do programu HotelDruid?
+ Aby aktywować nową konfigurację programu HotelDruid, serwer WWW musi przeładować swoje pliki konfiguracyjne.
+Description-pt.UTF-8: Carregar novamente a configuração do servidor web para o HotelDruid?
+ De modo a activar a nova configuração para o HotelDruid, o servidor web tem de carregar novamente os seus ficheiros de configuração.
+Description-ru.UTF-8: Перезагрузить настройки веб-сервера для HotelDruid?
+ Чтобы начать пользоваться HotelDruid, требуется перезагрузка файлов настроек веб-сервера.
+Description-sv.UTF-8: Ska webbserverinställningarna läsas om för HotelDruid?
+ För att aktivera de nya inställnngarna för HotelDruid behöver webbservern ladda om inställningsfilerna.
+
+Template: hoteldruid/administrator-username
+Type: string
+Default: admin
+Description: HotelDruid administrator username:
+ Please enter a name for the administrator user, which will be able to
+ manage HotelDruid's configuration and create new users. The
+ username should be composed of ASCII letters and numbers only.
+ .
+ You can later change the administrator username and password from
+ the "User management" page in HotelDruid. If this field is left blank,
+ no user login will be required to access HotelDruid.
+Description-cs.UTF-8: Uživatelské jméno správce HotelDruid:
+ Zadejte prosím uživatelské jméno správce, ten bude moci spravovat nastavení HotelDruid a přidávat nové uživatele. Uživatelské jméno se musí skládat pouze z ASCII znaků a číslic.
+ .
+ Uživatelské jméno a heslo správce lze později změnit v HotelDruid na stránce "Správa uživatelů". Ponecháte-li políčko prázdné, nebude pro přístup k HotelDruid vyžadováno přihlášení.
+Description-da.UTF-8: Brugernavn for HotelDruid-administratoren:
+ Indtast venligst et navn for administratorbrugeren, som vil kunne håndtere HotelDruids konfiguration og oprette nye brugere. Brugernavnet må kun bestå af ASCII-bogstaver og tal.
+ .
+ Du kan senere ændre brugernavn og adgangskode for administratoren fra siden »User management« i HotelDruid. Hvis dette felt er tomt, vil der ikke blive krævet brugerlogind for at tilgå HotelDruid.
+Description-de.UTF-8: Benutzername für den HotelDruid-Administrator:
+ Geben Sie bitte den Namen für den Nutzer an, der HotelDruid konfigurieren und neue Benutzerkonten einrichten darf. Der Benutzername sollte nur aus ASCII-Buchstaben und -Zahlen bestehen.
+ .
+ Sie können später den Benutzernamen des Administrators und sein Passwort auf der HotelDruid-Seite »User management« ändern. Wenn in diesem Feld kein Wert eingetragen ist, kann auf HotelDruid ohne Anmeldung zugegriffen werden.
+Description-es.UTF-8: Nombre de usuario administrador de HotelDruid:
+ Introduzca un nombre para el usuario administrador, que podrá gestionar la configuración de HotelDruid y crear usuarios nuevos. El nombre de usuario se debe componer solo de caracteres ASCII y números.
+ .
+ Más adelante podrá modificar el nombre de usuario administrador y la contraseña en la página «User Management» de HotelDruid. Si no se rellena este campo, no se requerirá un inicio de sesión de usuario para acceder a HotelDruid.
+Description-fr.UTF-8: Identifiant de l'administrateur d'HotelDruid :
+ Veuillez indiquer l'identifiant de l'administrateur, qui pourra gérer la configuration d'HotelDruid et créer de nouveaux utilisateurs. L'identifiant ne peut être constitué que de lettres ASCII et de chiffres.
+ .
+ Vous pourrez modifier l'identifiant et le mot de passe de l'administrateur plus tard depuis la page « User management » d'HotelDruid. Si ce champ est laissé vide, aucun identifiant de connexion ne sera nécessaire pour se connecter à HotelDruid.
+Description-it.UTF-8: Nome dell'utente amministratore di HotelDruid:
+ Inserire un nome per l'utente amministratore, il quale potrà gestire la configurazione di HotelDruid e creare nuovi utenti. Il nome utente deve essere composto solo da caratteri ASCII e numeri.
+ .
+ Il nome e la password dell'utente amministratore possono essere cambiate in seguito dalla pagina di "gestione degli utenti" di HotelDruid. Se questo campo è lasciato vuoto, non verrà richiesto il login utente per l'accesso ad HotelDruid.
+Description-ja.UTF-8: HotelDruid の管理者ユーザ名:
+ 管理ユーザの名前を入力してください。このユーザは HotelDruid の設定管理と新規ユーザの作成が可能になります。ユーザ名にはアスキー文字と数字だけを組み合わせてください。
+ .
+ 管理ユーザのユーザ名とパスワードは HotelDruid の「ユーザ管理」ページから変更できるようになります。これを空白にすると、HotelDruid へのアクセスにログインを要求しなくなります。
+Description-nl.UTF-8: Gebruikersnaam voor de beheerder van HotelDruid:
+ Gelieve een gebruikersnaam op te geven voor de beheerder. Die zal in staat zijn de instellingen van HotelDruid te beheren en nieuwe gebruikers aan te maken. De gebruikersnaam mag enkel bestaan uit ASCII letters en cijfers.
+ .
+ U kunt later de gebruikersnaam en het wachtwoord voor de beheerder van HotelDruid wijzigen vanaf de pagina "Gebruikersbeheer" in HotelDruid. Indien u dit veld leeg laat, zal men zich als gebruiker niet moeten aanmelden om toegang te hebben tot HotelDruid.
+Description-pl.UTF-8: Nazwa użytkownika administrującego programem HotelDruid:
+ Proszę podać nazwę użytkownika administrującego, który będzie mógł zarządzać konfiguracją programu HotelDruid i tworzyć nowych użytkowników, Nazwa użytkownika powinna składać się jedynie ze znaków ASCII i cyfr.
+ .
+ Można zmienić nazwę administratora i jego hasło na stronie "User management" programu HotelDruid. Jeśli pole to pozostanie puste, logowanie nie będzie konieczne do uzyskania dostępu do aplikacji HotelDruid.
+Description-pt.UTF-8: Nome de utilizador do administrador do HotelDruid:
+ Por favor introduza o nome do utilizador administrador, que poderá gerir a configuração do HotelDruid e criar novos utilizadores. O nome do utilizador deve ser composto apenas por letras e números ASCII.
+ .
+ Pode posteriormente alterar o nome de utilizador do administrador e a palavra-passe a partir da página "User Management" no HotelDruid. Se este campo ficar em branco, não será necessário qualquer login de utilizador para aceder ao HotelDruid.
+Description-ru.UTF-8: Имя пользователя администратора HotelDruid:
+ Введите имя учётной записи администратора, который сможет управлять настройкой HotelDruid и создавать новых пользователей. Имя пользователя должно состоять из букв в кодировке ASCII и цифр.
+ .
+ Позднее вы сможете изменить административную учётную запись и пароль на странице «User management» в HotelDruid. Если оставить поле пустым, то HotelDruid будет доступен без логина и пароля.
+Description-sv.UTF-8: Användarnamn för HotelDruid-administratören:
+ Ange ett namn för den administrativa användaren, denna användare kommer att kunna hantera HotelDruids inställningar och skapa nya användare. Användarnamnet kan endast innehålla ASCII-bokstäver och siffror.
+ .
+ Användarnamn och lösenord kan senare ändras från sidan "User management" i HotelDruid. Om detta fält lämnas tomt kommer ingen användare att behövas för att komma åt HotelDruid.
+
+Template: hoteldruid/administrator-password
+Type: password
+Description: HotelDruid administrator password:
+ Please choose a password for the HotelDruid administrator.
+Description-cs.UTF-8: Heslo správce HotelDruid:
+ Zvolte si prosím heslo pro správce HotelDruid.
+Description-da.UTF-8: Adgangskode for HotelDruid-administratoren:
+ Vælg venligst en adgangskode for HotelDruid-administratoren.
+Description-de.UTF-8: Passwort für den HotelDruid-Administrator:
+ Wählen Sie bitte ein Passwort für den HotelDruid-Administrator:
+Description-es.UTF-8: Contraseña de administrador de HotelDruid:
+ Seleccione una contraseña para el administrador de HotelDruid.
+Description-fr.UTF-8: Mot de passe de l'administrateur d'HotelDruid :
+ Veuillez choisir un mot de passe pour l'administrateur d'HotelDruid.
+Description-it.UTF-8: Password dell'utente amministratore di HotelDruid:
+ Scegliere una password per l'utente amministratore di HotelDruid.
+Description-ja.UTF-8: HotelDruid の管理者パスワード:
+ HotelDruid 管理ユーザのパスワードを入力してください。
+Description-nl.UTF-8: Wachtwoord voor de beheerder van HotelDruid:
+ Gelieve een wachtwoord te kiezen voor de beheerder van HotelDruid.
+Description-pl.UTF-8: Hasło użytkownika administrującego programem HotelDruid:
+ Proszę wybrać hasło administratora programu HotelDruid.
+Description-pt.UTF-8: Palavra-passe do administrador do HotelDruid:
+ Por favor escolha a palavra-passe para o administrador do HotelDruid.
+Description-ru.UTF-8: Пароль администратора HotelDruid:
+ Введите пароль администратора HotelDruid.
+Description-sv.UTF-8: Lösenord för HotelDruid-administratören:
+ Ange ett lösenord för HotelDruid-administratören.
+
+Template: hoteldruid/confirm-password
+Type: password
+Description: Re-enter password to verify:
+ Please enter the same "admin" password again to verify
+ you have typed it correctly.
+Description-cs.UTF-8: Zopakujte heslo pro ověření:
+ Zadejte prosím heslo pro správce ještě jednou, abyste se ujistili, že jste ho zadali správně.
+Description-da.UTF-8: Genindtast adgangskode for at verificere:
+ Indtast venligst den samme »adminadgangskode« igen for at verificere din indtastning.
+Description-de.UTF-8: Passwort zur Kontrolle erneut eingeben:
+ Bitte geben Sie das gleiche Administrator-Passwort erneut ein, um sicherzustellen, dass Sie sich nicht vertippt haben.
+Description-es.UTF-8: Vuelva a introducir la contraseña para comprobarla:
+ Introduzca la misma contraseña de «administración» para comprobar que la ha escrito correctamente.
+Description-fr.UTF-8: Confirmation du mot de passe :
+ Veuillez indiquer le même mot de passe pour l'administrateur, pour vérification.
+Description-it.UTF-8: Inserire nuovamente la password per verifica:
+ Inserire nuovamente la medesima password dell'amministratore, per poter verificare che sia stata digitata correttamente.
+Description-ja.UTF-8: 確認のためパスワードを再入力:
+ 正しくパスワードが入力されているのを確認するため、同じ「admin」パスワードをもう一度入力してください。
+Description-nl.UTF-8: Voer ter verificatie het wachtwoord opnieuw in:
+ Gelieve hetzelfde wachtwoord voor "beheerder" nogmaals in te voeren om te controleren of u het juist intypte.
+Description-pt.UTF-8: Reintroduza a palavra-passe para verificação:
+ Por favor introduza a mesma palavra-passe "admin" de novo para verificar que a digitou correctamente.
+Description-ru.UTF-8: Введите пароль ещё раз для проверки:
+ Введите тот же «административный» пароль ещё раз, для проверки правильности ввода.
+Description-sv.UTF-8: Upprepa lösenordet:
+ Ange samma "admin"-lösenord igen för att kontrollera att det skrevs in korrekt.
+
+Template: hoteldruid/administrator-failpass
+Type: error
+Description: Password input error
+ The two passwords you entered were not the same. Please try again.
+Description-cs.UTF-8: Chyba při zadávání hesla
+ Zadaná hesla nesouhlasí. Zkuste to prosím znovu.
+Description-da.UTF-8: Inddatafejl for adgangskode
+ De to adgangskode, du indtastede, var ikke ens. Forsøg venligst igen.
+Description-de.UTF-8: Passwort-Eingabefehler
+ Die beiden Passwörter, die Sie eingegeben haben, sind nicht identisch. Bitte versuchen Sie es erneut.
+Description-es.UTF-8: Se ha producido un error al introducir la contraseña
+ Las dos contraseñas que ha introducido no son la misma. Por favor, inténtelo de nuevo.
+Description-fr.UTF-8: Erreur de mot de passe
+ Les deux mots de passe sont différents. Veuillez recommencer.
+Description-it.UTF-8: Errore d'immissione della password
+ Le due password inserire non sono identiche. Riprovare.
+Description-ja.UTF-8: パスワード入力エラー
+ 入力した 2 つのパスワードが一致しません。もう一度入力してください。
+Description-nl.UTF-8: Fout bij het invoeren van het wachtwoord
+ De twee wachtwoorden die u invoerde waren niet identiek. Gelieve opnieuw te proberen.
+Description-pl.UTF-8: Błąd podczas wprowadzania
+ Hasła, które zostały wpisane nie są identyczne. Proszę spróbować jeszcze raz.
+Description-pt.UTF-8: Erro na entrada da palavra-passe
+ As duas palavra-passe que introduziu não coincidem. Por favor volte a tentar.
+Description-ru.UTF-8: Ошибка ввода пароля
+ Два введённых пароля не совпали. Попробуйте ещё раз.
+Description-sv.UTF-8: Fel vid inmatning av lösenord
+ De två lösenorden som angavs stämde inte överrens. Vänligen försök igen.
+
+Template: hoteldruid/purgedata
+Type: boolean
+Default: false
+Description: Erase HotelDruid data when purging the package?
+ The hoteldruid package is about to be purged from this system.
+ .
+ HotelDruid stores its data in "/var/lib/hoteldruid".
+ If you choose this option, these data files will be erased now.
+ .
+ Refuse this option if there is operational information which should be
+ kept after HotelDruid is purged.
+Description-cs.UTF-8: Mají se při odstraňování balíčku vymazat data pro HotelDruid?
+ Chystáte se ze systému kompletně odstranit balíček hoteldruid.
+ .
+ HotelDruid uchovává svá data ve "/var/lib/hoteldruid". Zvolíte-li tuto možnost, soubory s daty budou nyní vymazány.
+ .
+ Pokud tato data obsahují provozní informace, které je třeba po odstranění HotelDruid zachovat, tuto možnost odmítněte.
+Description-da.UTF-8: Slet HotelDruid-data når pakken afinstalleres?
+ Pakken hoteldruid er ved at blive afinstalleret fra dette system.
+ .
+ HotelDruid gemmer sine data i »/var/lib/hoteldruid«. Hvis du vælger denne indstilling, så vil disse data blive slettet nu.
+ .
+ Afvis dette valg hvis der er operationel information, som skal bevares efter at HotelDruid er blevet afinstalleret.
+Description-de.UTF-8: Die Daten von HotelDruid löschen, wenn das Paket *vollständig* entfernt wird (purge)?
+ Das Paket HotelDruid soll vollständig von Ihrem System entfernt werden.
+ .
+ HotelDruid speichert seine Daten in »/var/lib/hoteldruid«. Falls Sie diese Option wählen, werden diese Datendateien jetzt gelöscht.
+ .
+ Wählen Sie diese Option nicht, wenn wichtige Informationen für den Betrieb nach dem vollständigen Entfernen von HotelDruid erhalten bleiben sollen.
+Description-es.UTF-8: ¿Desea eliminar los datos de HotelDruid al purgar el paquete?
+ EL paquete hoteldruid se va a purgar del sistema.
+ .
+ HotelDruid almacena sus datos en «/var/lib/hoteldruid». Si se selecciona esta opción, se eliminarán estos ficheros de datos ahora mismo.
+ .
+ Rechace esta opción si hay información operativa que se debería preservar después de purgar HotelDruid.
+Description-fr.UTF-8: Faut-il effacer les données d'HotelDuid lors de la purge du paquet ?
+ Le paquet hoteldruid est sur le point d'être purgé du système.
+ .
+ Les données d'HotelDruid sont dans « /var/lib/hoteldruid ». Si vous acceptez cette proposition, ces fichiers de données seront effacés maintenant.
+ .
+ Refusez cette proposition si des renseignements opérationnels doivent être conservés après avoir purgé HotelDruid.
+Description-it.UTF-8: Cancellare i dati di HotelDruid quando si elimina il pacchetto?
+ Il pacchetto hoteldruid sta per essere eliminato dal sistema.
+ .
+ HotelDruid conserva i suoi dati in "/var/lib/hoteldruid". Se si seleziona questa opzione, allora tutti i file con questi dati verranno cancellati ora.
+ .
+ Respingere questa opzione se ci sono informazioni operative che dovrebberoessere mantenute dopo che HotelDruid è stato eliminato.
+Description-ja.UTF-8: パッケージの完全削除時に HotelDruid のデータを削除しますか?
+ hoteldruid パッケージをこのシステムから完全削除しようとしています。
+ .
+ HotelDruid はデータを「/var/lib/hoteldruid」に保存します。このオプションを選択すると、ここにあるデータファイルは直ちに削除されます。
+ .
+ HotelDruid を完全削除した後に残しておきたい運用情報がある場合は、このオプションを拒否してください。
+Description-nl.UTF-8: De gegevens van HotelDruid wissen wanneer het pakket opgeruimd wordt?
+ Het pakket hoteldruid staat op het punt opgeruimd te worden op dit systeem.
+ .
+ HotelDruid bewaart zijn gegevens in "/var/lib/hoteldruid". Indien u voor deze optie kiest, zullen deze gegevensbestanden nu gewist worden.
+ .
+ Verwerp deze optie indien er zich daar operationele informatie bevindt die bewaard moet worden na het opruimen van HotelDruid.
+Description-pl.UTF-8: Usunąć dane programu HotelDruid podczas czyszczenia pakietu?
+ Pakiet hoteldruid ma zostać wyczyszczony.
+ .
+ HotelDruid przechowuje swoje dane w "/var/lib/hoteldruid". Jeśli wybierze się tę opcję, pliki te zostaną teraz usunięte.
+ .
+ Proszę wybrać "nie", jeśli znajdują się tam informacje, które powinny zostać zachowane po wyczyszczeniu programu HotelDruid.
+Description-pt.UTF-8: Apagar os dados do HotelDruid quando purgar o pacote?
+ O pacote hoteldruid está prestas a ser purgado deste sistema.
+ .
+ O HotelDruid guarda os seus dados em "/var/lib/hoteldruid". Se escolher esta opção estes ficheiros de dados serão apagados agora.
+ .
+ Recuse esta opão se existir informação operacional que deve ser mantida após o HotelDruid ser purgado.
+Description-ru.UTF-8: Удалить данные HotelDruid  при вычистке пакета?
+ Выполняется вычистка пакета hoteldruid из системы.
+ .
+ Данные  HotelDruid хранятся в «/var/lib/hoteldruid». Если вы ответите утвердительно, то эти данные будут удалены.
+ .
+ При отказе эта информация останется в системе после вычистки HotelDruid.
+Description-sv.UTF-8: Ska HotelDruid-data kastas när paketet tas bort helt?
+ Paketet hoteldruid kommer att tas bort från sytemet.
+ .
+ HotelDruid lagrar data i "/var/lib/hoteldruid". Om du väljer detta alternativ kommer dessa datafiler att tas bort nu.
+ .
+ Avböj det här alternativet om det finns operativinformation som ska sparas när HoteDruid har tagits bort.

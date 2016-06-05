@@ -1,0 +1,64 @@
+
+Template: kexec-tools/load_kexec
+Type: boolean
+Default: false
+Description: Should kexec-tools handle reboots?
+ If you choose this option, a system reboot will trigger a restart
+ into a kernel loaded by kexec instead of going through the full
+ system boot loader process.
+Description-cs.UTF-8: Mají se kexec-tools starat o restarty?
+ Zvolíte-li tuto možnost, nebude se při restartu systému provádět celá zaváděcí sekvence, ale restartuje se do jádra zavedeného přes kexec.
+Description-da.UTF-8: Skal kexec-tools håndtere genstarter?
+ Hvis du vælger denne indstilling, vil en systemgenstart udløse en genstart med en kerne indlæst af kexec i stedet for at gå igennem den fulde proces med systemopstart.
+Description-de.UTF-8: Soll »kexec-tools« Neustarts verwalten?
+ Falls Sie diese Option wählen, führt ein Systemneustart zum Start eines von »kexec« geladenen Kernels, anstatt den gesamten Bootloader-Prozess zu durchlaufen.
+Description-es.UTF-8: ¿Debe kexec-tools gestionar los reinicios del sistema?
+ Si selecciona esta opción, al reiniciar el sistema se realizará un reinicio en un núcleo cargado por kexec en lugar de iniciar el proceso completo del cargador de arranque del sistema.
+Description-fr.UTF-8: Faut-il gérer les redémarrages avec kexec-tools ?
+ Si vous choisissez cette option, le système redémarrera avec un noyau chargé par kexec plutôt que par le programme d'amorçage habituel.
+Description-ja.UTF-8: kexec-tools で再起動処理を行いますか?
+ このオプションを選んだ場合、通常システムのブートローダ手順通りではなく、kexec からロードされたカーネルから再起動するようにシステムの再起動が設定されます。
+Description-nl.UTF-8: Moet kexec-tools het herstarten afhandelen?
+ Als u hiervoor kiest zal een systeemherstart een kernel via kexec laden in plaats van het doorlopen van het volledige bootloader-proces.
+Description-pt.UTF-8: Usar o kexec-tools para reiniciar o computador?
+ Se escolher esta opção, reiniciar o sistema irá carregar um kernel usando o kexec em vez de passar por todo o processo de reinicio e arranque do computador.
+Description-ru.UTF-8: Использовать kexec-tools для обработки команды на перезагрузку?
+ Если вы ответите утвердительно, то при перезагрузке системы будет выполнен перезапуск в ядро, загруженное с помощью kexec, а не как обычно, с полным перезапуском системы с использованием системного загрузчика.
+Description-sk.UTF-8: Majú reštarty obsluhovať nástroje kexec?
+ Ak zvolíte túto možnosť, reštart systému vyvolá reštart do jadra načítaného pomocou kexec, namiesto vykonania úplného procesu reštartu systému pomocou zavádzača.
+Description-sv.UTF-8: Ska kexec-tools hantera omstarter?
+ Om du väljer detta alternativ så kommer en omstart av systemet innebära att kexec laddar en kärna istället för att köra hela systemets uppstartsprocess.
+Description-tr.UTF-8: kexec-tools yeniden başlatma işlerini idare etsin mi?
+ Bu seçenek etkinleştirilirse, sistemi yeniden başlatma işlemi sistem önyükleme sürecini kullanmayacak, bunun yerine kexec tarafından yüklenmiş olan çekirdek ile doğrudan yeniden başlatma yapacaktır.
+
+Template: kexec-tools/use_grub_config
+Type: boolean
+Default: false
+Description: Read GRUB configuration file to load the kernel?
+ If you choose this option, kexec will read the GRUB configuration file to
+ determine which kernel and options to load for kexec reboot, as opposed
+ to what is in /etc/default/kexec.
+Description-cs.UTF-8: Použít pro zavedení jádra konfigurační souboru GRUBu?
+ Zvolíte-li tuto možnost, kexec nepoužije pro restart parametry jádra zadané v /etc/default/kexec, ale zjistí si je z konfiguračního souboru GRUBu.
+Description-da.UTF-8: Læs GRUB-konfigurationsfil for at indlæse kernen?
+ Hvis du vælger denne indstilling, vil kexec læse GRUB-konfigurationsfilen for at bestemme hvilken kerne og hvilke indstillinger at indlæse for kexec-genstart, til forskel fra hvad der er i /etc/default/kexec.
+Description-de.UTF-8: GRUBs Konfigurationsdatei für das Laden des Kernels auslesen?
+ Falls Sie diese Option wählen, wird »kexec« die Konfigurationsdatei von GRUB auslesen, um den Kernel und die Optionen für das Laden zu ermitteln, anstatt den Inhalt von /etc/default/kexec zu verwenden.
+Description-es.UTF-8: ¿Leer el archivo de configuración de GRUB al cargar el kernel?
+ Si selecciona esta opción, kexec leerá el archivo de configuración de GRUB para determinar el kernel y las opciones que se van a cargar al reiniciar kexec, en lugar de obtener los valores desde el archivo «/etc/default/kexec».
+Description-fr.UTF-8: Faut-il lire le fichier de configuration de GRUB pour charger le noyau ?
+ Si vous choisissez cette option, kexec lira le fichier de configuration de GRUB pour déterminer le noyau et les options à charger pour un redémarrage via kexec, contrairement à ce qui se trouve dans le fichier « /etc/default/kexec ».
+Description-ja.UTF-8: カーネルをロードするための GRUB 設定ファイルを読み込みますか?
+ このオプションを選択すると kexec は /etc/default/kexec の内容ではなく GRUB 設定ファイルを読み込んで kexec の再起動時にどのカーネル及びオプションをロードするか判断します。
+Description-nl.UTF-8: GRUB-configuratie uitlezen om de kernel te laden?
+ Als u hier voor kiest zal kexec het configuratiebestand van GRUB uitlezen om te bepalen welke kernel en opties een kexec-herstart moet gebruiken, in plaats van de inhoud van /etc/default/kexec.
+Description-pt.UTF-8: Ler o ficheiro de configuração do GRUB para carregar o kernel?
+ Se escolher esta opção, o kexec irá ler o ficheiro de configuração do GRUB de modo a determinar qual o kernel e quais as opções para o reinicio do kexec, em oposição ao que existe em /etc/default/kexec.
+Description-ru.UTF-8: Использовать файл настройки GRUB для загрузки ядра?
+ Если вы ответите утвердительно, то при перезагрузке системы kexec будет использовать ядро и параметры из файла настройки GRUB, а не из файла /etc/default/kexec.
+Description-sk.UTF-8: Čítať na určenie jadra konfiguračný súbor GRUB?
+ Ak zvolíte túto možnosť, určí kexec jadro a parametre, ktoré má načítať na reštart pomocou kexec z konfiguračného súboru GRUB, namiesto údajov v /etc/default/kexec.
+Description-sv.UTF-8: Ska inställningsfilen för GRUB läsas för att ladda kärnan?
+ Detta val innebär att kexec kommer att läsa inställningsfilen för GRUB för att utröna vilken kärna och vilka flaggor som ska användas vid kexec-omstarten, till skillnad från vad som är angivet i /etc/default/kexec.
+Description-tr.UTF-8: Çekirdeği yüklemek için GRUB yapılandırma dosyası okunsun mu?
+ Bu seçeneği seçmeniz halinde kexec, yeniden başlatma işleminde hangi çekirdeği ve hangi seçenekleri kullanacağına karar vermek için /etc/default/kexec dosyası yerine GRUB yapılandırma dosyasını okur.

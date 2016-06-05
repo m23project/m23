@@ -1,0 +1,238 @@
+
+Template: ejabberd/hostname
+Type: string
+Default: localhost
+Description: Host name for this Jabber server:
+ Please enter the host name of this Jabber server (lowercase).
+Description-cs.UTF-8: Jméno počítače tohoto Jabber serveru:
+ Zadejte prosím jméno počítače tohoto Jabber serveru (malými písmeny).
+Description-da.UTF-8: Værtsnavn for denne Jabberserver:
+ Indtast venligst værtsnavnet på din Jabberserver (med små bogstaver).
+Description-de.UTF-8: Der Name für diesen Jabber-Server:
+ Geben Sie bitte (in Kleinbuchstaben) den Namen dieses Jabber-Servers an.
+Description-es.UTF-8: Nombre de dominio para este servidor Jabber:
+ Por favor indica el nombre de dominio para este servidor Jabber (en minúsculas).
+Description-fr.UTF-8: Nom d'hôte du serveur Jabber :
+ Veuillez indiquer le nom d'hôte (en minuscules) du serveur Jabber.
+Description-it.UTF-8: Nome host per questo server Jabber:
+ Inserire il nome host di questo server Jabber (in lettere minuscole).
+Description-nl.UTF-8: Computernaam van deze Jabber-server:
+ Voer de computernaam in van deze Jabber-server (in kleine letters).
+Description-pt.UTF-8: Nome de máquina para este servidor Jabber:
+ Por favor insira o nome de máquina deste servidor Jabber (em minúsculas).
+Description-pt_BR.UTF-8: Nome de máquina para este servidor Jabber:
+ Por favor, informe o nome de máquina deste servidor Jabber (letras minúsculas).
+Description-ru.UTF-8: Имя хоста для этого Jabber-сервера:
+ Введите имя хоста для вашего Jabber-сервера (строчными буквами).
+Description-sv.UTF-8: Värdnamnet för jabber-servern:
+ Ange värdnamnet på din jabber-server (endast gemener).
+Description-tr.UTF-8: Bu Jabber sunucusunun makine adı:
+ Lütfen bu Jabber sunucusunun makine adını (küçük harflerle) girin.
+
+Template: ejabberd/user
+Type: string
+Description: Jabber server administrator username:
+ Please provide the name of an account to administrate the ejabberd server.
+ After the installation of ejabberd you can use this account to log in with any
+ Jabber client to do administrative tasks or go to
+ https://${hostname}:5280/admin/ and log in with this account to enter the admin
+ interface.
+ .
+ You only need to enter the username part here (such as ${user}), but
+ the full Jabber ID (such as ${user}@${hostname}) is required to
+ access the ejabberd web interface.
+ .
+ Please leave this field empty if you don't want to create an
+ administrator account automatically.
+Description-cs.UTF-8: Uživatelské jméno správce Jabber serveru:
+ Zadejte prosím jméno účtu, který bude spravovat ejabberd server. Po instalaci serveru ejabberd se můžete pomocí tohoto účtu přihlásit z libovolného jabberového klienta a vzdáleně tak provádět správcovské úkony. Další možností je webové rozhraní na https://${hostname}:5280/admin/, kde se s tímto účtem taktéž můžete přihlásit do správcovského rozhraní.
+ .
+ Zde stačí zadat pouze uživatelskou část (např. ${user}), ale pro přihlášení do webového rozhraní používejte kompletní Jabber ID včetně jména serveru (např. ${user}@${hostname}).
+ .
+ Jestliže nechcete automaticky vytvořit správcovský účet, ponechte pole prázdné.
+Description-da.UTF-8: Brugernavn på administratoren for Jabberserveren:
+ Angiv venligst navnet på en konto til administration af ejabberd-serveren. Efter installationen af ejabberd kan du bruge denne konto til at logge ind med enhver Jabberklient og udføre administrative opgaver eller gå til https://${hostname}:5280/admin/ og logge ind med denne konto for at tilgå administrationsgrænsefladen.
+ .
+ Du skal kun indtaste brugernavnet her (såsom ${user}), men det fulde Jabber-id (såsom ${user}@${hostname}) er krævet for at tilgå ajabberds netgrænseflade.
+ .
+ Efterlad blank hvis du ikke automatisk ønsker at oprette en administrationskonto.
+Description-de.UTF-8: Benutzername des Jabber-Server-Administrators:
+ Geben Sie bitte den Namen für ein Konto an, das den Ejabberd-Server verwalten kann. Nach der Installation können Sie mit Hilfe dieses Kontos und eines beliebigen Jabber-Clients Verwaltungsaufgaben durchführen oder sich unter https://${hostname}:5280/admin/ an der Administratorschnittstelle anmelden.
+ .
+ Sie müssen hier nur den Benutzernamen-Anteil (z.B. ${user}) eingeben, verwenden Sie aber die komplette Jabber-ID (z.B. ${user}@${hostname}), um sich an der Ejabberd-Webschnittstelle anzumelden.
+ .
+ Bitte lassen Sie dieses Feld leer, falls Sie kein privilegiertes Konto automatisch anlegen möchten.
+Description-es.UTF-8: Nombre de usuario del administrador del servidor Jabber:
+ Por favor indica el nombre deseado para una cuenta de administrador en el servidor ejabberd. Después de la instalación de ejabberd podrás usar esta cuenta con un cliente Jabber para hacer tareas de administración, o entrar en la web de administración https://${hostname}:5280/admin/ y entrar indicando la Jabber ID completa.
+ .
+ Aquí solo has de indicar el nombre de usuario (por ejemplo ${user}), pero recuerda indicar el Jabber ID completo (por ejemplo ${user}@${hostname}) para acceder a la página web de administración de ejabberd.
+ .
+ Deja vacío esta casilla si no deseas que se cree automáticamente una cuenta de administrador.
+Description-fr.UTF-8: Identifiant de l'administrateur du serveur Jabber :
+ Veuillez indiquer un identifiant afin d'administrer le serveur ejabberd. Après l'installation, vous pourrez utilisez cette identité pour vous connecter avec tout client Jabber ou l'interface d'administration sur https://${hostname}:5280/admin/ pour réaliser des tâches administratives.
+ .
+ Veuillez seulement entrer ici l'identifiant (par exemple, « ${user} »). Cependant, vous devrez utiliser une identité Jabber complète (par exemple, « ${user}@${hostname} ») pour vous connecter à l'interface web.
+ .
+ Veuillez laisser ce champ vide si vous ne souhaitez pas créer de compte administrateur automatiquement.
+Description-it.UTF-8: Nome utente dell'amministratore del server Jabber:
+ Inserire il nome di un account per amministrare il server ejabberd. Dopo l'installazione di ejabberd sarà possibile usare questo account per fare il login con qualsiasi client Jabber per svolgere compiti di amministrazione oppure si potrà andare all'indirizzo https://${hostname}:5280/admin/ e fare il login con questo account per entrare nell'interfaccia di amministrazione.
+ .
+ È necessario inserire solo la parte del nome utente (ad esempio ${user}), ma è richiesto l'ID Jabber completo (ad esempio ${user}@${hostname}) per accedere all'interfaccia web di ejabberd.
+ .
+ Lasciare vuoto se non si desidera creare automaticamente un account di amministrazione.
+Description-nl.UTF-8: Gebruikersnaam van de beheerder van de Jabber-server:
+ Geef de naam op van een account om de ejabberd-server te beheren. Na de installatie van ejabberd kunt u dit account gebruiken om u met om het even welke Jabber-client aan te melden en beheerstaken uit te voeren. U kunt ook naar https://${computernaam}:5280/admin/ surfen en u daar aanmelden met dit account om naar de beheerdersinterface gaan.
+ .
+ U dient hier enkel het onderdeel gebruiksnaam (zoals ${gebruiker}) in te voeren. Het volledige Jabber-ID (zoals ${gebruiker}@${computernaam} is evenwel vereist om toegang te krijgen tot de webinterface van ejabberd.
+ .
+ Laat dit veld leeg als u niet automatisch een beheerdersaccount wilt aanmaken.
+Description-pt.UTF-8: Nome do utilizador administrador do servidor Jabber:
+ Por favor forneça o nome de uma conta para administrar o servidor Jabber. Após a instalação do ejabberd você pode usar esta conta para iniciar sessão com qualquer cliente Jabber e fazer tarefas administrativas ou ir a https://${hostname}:5280/admin/ e iniciar sessão com esta conta para entrar na interface de administrador.
+ .
+ Você apenas precisa de inserir a parte do nome de utilizador aqui (como ${user}), mas é necessário o ID Jabber completo (como ${user}@${hostname}) para aceder à interface web do ejabberd.
+ .
+ Por favor deixe este campo vazio se não desejar criar uma conta de administrador automaticamente.
+Description-pt_BR.UTF-8: Nome de usuário do administrador do servidor Jabber:
+ Por favor, forneça o nome de uma conta para administrar o servidor ejabberd. Depois da instalação do ejabberd, você pode usar esta conta para logar com qualquer cliente Jabber para realizar tarefas administrativas ou acessar https://${hostname}:5280/admin/ e efetuar o login com esta conta para entrar na interface administrativa.
+ .
+ Você precisa informar somente a parte do nome de usuário aqui (tal como ${user}), mas o ID Jabber completo (tal como ${user}@${hostname}) é necessário para acessar a interface web do ejabberd.
+ .
+ Por favor, deixe esse campo vazio se você não quiser criar automaticamente uma conta administrativa.
+Description-ru.UTF-8: Пользователь для администрирования Jabber-сервера:
+ Введите имя учётной записи администратора сервера ejabberd. После установки ejabberd вы сможете подключаться к нему с помощью Jabber- клиента, используя эту учётную запись и администрировать сервер. Или использовать интерфейс администратора по адресу https://${hostname}:5280/admin/ с этой учётной записью.
+ .
+ Здесь достаточно ввести только имя пользователя (например, ${user}), но для доступа к веб-интерфейсу ejabberd требуется указать полный идентификатор Jabber (например, ${user}@${hostname}).
+ .
+ Оставьте поле пустым, если не хотите создавать учётную запись администратора автоматически.
+Description-sv.UTF-8: Användarnamn för jabber-serverns administratör:
+ Ange användarnamnet för ett administratörskonto för ejabberd-servern. Efter att installationen är klar kan du använda detta konto för att logga in med en Jabber-klient för att utföra administrativa uppgifter, alternativt så kan du besöka https://${hostname}:5280/admin/ och logga in med kontot där för att komma åt administrationsgränssnittet.
+ .
+ Du behöver endast ange användardelen här (exempelvis ${user}), komplett Jabber ID (ex. ${user}@${hostname}) krävs för att komma åt webbgränssnittet för ejabberd.
+ .
+ Lämna fältet tomt om du inte vill skapa ett administrationskonto automatiskt.
+Description-tr.UTF-8: Jabber sunucu yöneticisinin kullanıcı adı:
+ Lütfen ejabberd sunucusunu yönetecek olan hesabın adını girin. Kurulum bittikten sonra yönetimsel görevleri yerine getirmek için herhangi bir Jabber istemcisini kullanarak bu hesapla oturum açabilir veya https://${hostname}:5280/admin/ adresine gidip bu hesapla oturum açarak yönetim arayüzüne girebilirsiniz.
+ .
+ Buraya yalnızca kullanıcı adı kısmını girmeniz yeterlidir (ör. ${user}); ama ejabberd web arayüzüne erişmek için tam Jabber kimliğini (ör. ${user}@${hostname}) kullanmanız gerekmektedir.
+ .
+ Yönetici hesabını otomatik olarak oluşturmak istemiyorsanız bu alanı boş bırakın.
+
+Template: ejabberd/password
+Type: password
+Description: Jabber server administrator password:
+ Please enter the password for the administrative user.
+Description-cs.UTF-8: Heslo správce Jabber serveru:
+ Zadejte prosím heslo uživatele se správcovskými oprávněními.
+Description-da.UTF-8: Adgangskode for Jabberserverens administrator:
+ Indtast venligst adgangskoden for den administrative bruger.
+Description-de.UTF-8: Passwort des Jabber-Server-Administrators:
+ Geben Sie das Passwort für den Administrator an.
+Description-es.UTF-8: Contraseña del administrador del servidor Jabber:
+ Por favor introduce la contraseña para la cuenta de administrador.
+Description-fr.UTF-8: Mot de passe de l'administrateur du serveur Jabber :
+ Veuillez choisir le mot de passe de l'utilisateur administrateur.
+Description-it.UTF-8: Password dell'amministratore del server Jabber:
+ Inserire la password dell'utente amministratore.
+Description-nl.UTF-8: Wachtwoord voor de beheerder van de Jabber-server:
+ Voer het wachtwoord in voor de beheerder.
+Description-pt.UTF-8: Palavra passe do administrador do servidor Jabber:
+ Por favor insira a palavra passe para o utilizador administrador.
+Description-pt_BR.UTF-8: Senha do administrador do servidor Jabber:
+ Por favor, informe a senha para o usuário administrativo.
+Description-ru.UTF-8: Пароль администратора Jabber-сервера:
+ Введите пароль администратора.
+Description-sv.UTF-8: Administrationslösenord för jabber-servern:
+ Ange lösenordet för administratörskontot.
+Description-tr.UTF-8: Jabber sunucusunun yönetici parolası:
+ Lütfen yönetimsel kullanıcı için bir parola girin.
+
+Template: ejabberd/verify
+Type: password
+Description: Re-enter password to verify:
+ Please enter the same administrator password again to verify that you have typed it
+ correctly.
+Description-cs.UTF-8: Znovu zadejte heslo pro ověření:
+ Zadejte prosím správcovské heslo ještě jednou pro ověření, že jste ho zadali správně.
+Description-da.UTF-8: Indtast adgangskoden igen for at verificere:
+ Indtast venligst den samme adgangskode for administratoren igen for at verifivere at du tastede korrekt.
+Description-de.UTF-8: Zur Kontrolle Passwort erneut eingeben:
+ Bitte geben Sie das gleiche Administratorpasswort erneut ein, um sicherzustellen, dass Sie richtig getippt haben.
+Description-es.UTF-8: Reintroduce la contraseña para verificarla:
+ Por favor indica la misma contraseña de administrador para verificar que la has tecleado correctamente.
+Description-fr.UTF-8: Entrez à nouveau le mot de passe pour vérification :
+ Veuillez entrer à nouveau le mot de passe administrateur pour vérifier que  vous l'avez entré correctement.
+Description-it.UTF-8: Inserire nuovamente la password per verifica:
+ Inserire nuovamente la stessa password dell'amministratore per verificare di averla digitata correttamente.
+Description-nl.UTF-8: Voer ter controle het wachtwoord nogmaals in:
+ Gelieve hetzelfde beheerderswachtwoord nogmaals in te voeren om te verifiëren dat u het correct intypte.
+Description-pt.UTF-8: Re-insira a palavra passe para verificação:
+ Por favor insira a mesma palavra passe de administrador outra vez para verificação de se a escreveu correctamente.
+Description-pt_BR.UTF-8: Informe a senha novamente para verificação:
+ Por favor, informe a mesma senha de administrador novamente para verificar se você a digitou corretamente.
+Description-ru.UTF-8: Введите пароль повторно для проверки:
+ Введите тот же пароль администратора повторно для проверки, что вы не ошиблись при вводе.
+Description-sv.UTF-8: Upprepa för verifikation:
+ Ange administratörens lösenord en gång till för att bekräfta att det är korrekt angivet.
+Description-tr.UTF-8: Doğrulamak için parolayı tekrar girin:
+ Lütfen doğru yazıldığından emin olmak için aynı yönetici parolasını tekrar girin.
+
+Template: ejabberd/nomatch
+Type: error
+Description: Password input error
+ The two passwords you entered were not the same. Please try again.
+Description-cs.UTF-8: Chyba při zadávání hesla
+ Zadaná hesla nesouhlasí. Zkuste to prosím znovu.
+Description-da.UTF-8: Indtastningsfejl for adgangskoden
+ Adgangskoderne, du har indtastet, er ikke ens. Forsøg venligst igen.
+Description-de.UTF-8: Passworteingabefehler
+ Die zwei Passwörter waren nicht identisch, bitte versuchen Sie es noch einmal.
+Description-es.UTF-8: Error en la introducción de la contraseña
+ Las dos contraseñas que has tecleado no coinciden. Por favor inténtalo de nuevo.
+Description-fr.UTF-8: Erreur d'entrée du mot de passe
+ Les mots de passe saisis ne correspondent pas. Veuillez recommencer.
+Description-it.UTF-8: Errore nell'inserimento della password
+ Le due password inserite non erano identiche. Riprovare.
+Description-nl.UTF-8: Fout bij het invoeren van het wachtwoord
+ De twee ingevoerde wachtwoorden komen niet overeen. Probeer opnieuw.
+Description-pt.UTF-8: Erro na entrada da palavra passe
+ As duas palavras passe que inseriu não são iguais. Por favor tente de novo.
+Description-pt_BR.UTF-8: Erro de entrada de senha
+ As duas senhas que você digitou não são iguais. Por favor, tente novamente.
+Description-ru.UTF-8: Ошибка ввода пароля
+ Введённые пароли не совпадают. Попробуйте ещё раз.
+Description-sv.UTF-8: Fel vid inmatning av lösenord
+ De båda lösenorden du angav är inte likadana. Vänligen försök igen.
+Description-tr.UTF-8: Parola girişi hatası
+ Girdiğiniz parolalar eşleşmedi. Lütfen tekrar deneyin.
+
+Template: ejabberd/invaliduser
+Type: error
+Description: Invalid administrator account username
+ The username you have typed contains forbidden characters. Please respect the 
+ JID syntax (http://tools.ietf.org/html/rfc6122#appendix-A.5). If you used
+ a full JID (e.g. user@hostname), you have to use the same host name
+ you typed into the host name configuration step.
+Description-cs.UTF-8: Neplatné jméno správcovského účtu
+ Zadané uživatelské jméno obsahuje zakázané znaky. Respektujte prosím syntaxi (http://tools.ietf.org/html/rfc6122#appendix-A.5). Jestliže jste použili úplné JID (např. uzivatel@pocitac), musíte použít stejné jméno počítače, které jste zadali dříve v kroku „jméno počítače“.
+Description-da.UTF-8: Ugyldigt brugernavn for administratorkontoen
+ Det indtastede brugernavn indeholder ugyldige tegn. Respekter venligst JID-syntaksen (http://tools.ietf.org/html/rfc6122#appendix-A.5). Hvis du anvendte en fuld JID (f.eks. user@hostname), så skal du bruge det samme værtsnavn som du indtastede i konfigurationstrinet for værtsnavnet.
+Description-de.UTF-8: Ungültiger Benutzername für administratives Konto
+ Der von Ihnen eingegebene Benutzername enthält verbotene Zeichen. Bitte berücksichtigen Sie die JID-Syntax (http://tools.ietf.org/html/rfc6122#appendix-A.5). Falls Sie eine volle JID verwendet haben (z.B. Benuztzer@Rechnername), müssen Sie den gleichen Rechnernamen verwenden, den Sie auch im Konfigurationsschritt für den Rechnernamen eingegeben haben.
+Description-es.UTF-8: El nombre de usuario de la cuenta de administrador no es válido
+ El nombre de usuario que has indicado contiene caracteres no permitidos. Por favor respeta la sintaxis de JID (http://tools.ietf.org/html/rfc6122#appendix-A.5). Si diste una JID completa (por ejemplo user@hostname), has de usar el mismo nombre de dominio que diste antes al configurar el nombre de dominio.
+Description-fr.UTF-8: Identifiant du compte administrateur non valable
+ L'identifiant que vous avez entré contient des caractères interdits. Veuillez respecter la syntaxe de l'identité Jabber (JID)(http://tools.ietf.org/html/rfc6122#appendix-A.5). Si vous utilisez une identité Jabber complète (par exemple, user@hostname), vous devez utiliser le même nom d'hôte que vous avez entré lors de l'étape de configuration du nom d'hôte.
+Description-it.UTF-8: Nome utente per l'account amministratore non valido
+ Il nome utente che è stato inserito contiene caratteri non permessi. Rispettare la sintassi JID (http://tools.ietf.org/html/rfc6122#appendix-A.5). Se è stato usato un JID completo (ad esempio utente@homehost) è necessario usare lo stesso nome host che è stato inserito durante la configurazione del nome host.
+Description-nl.UTF-8: Ongeldige gebruikersnaam voor het beheerdersaccount
+ De gebruikersnaam die u typte bevat ongeldige tekens. Gelieve de syntaxis van JID (http://tools.ietf.org/html/rfc6122#appendix-A.5) te respecteren. Indien u een volledig JID (bijvoorbeeld gebruiker@computernaam) gebruikte, dient u dezelfde computernaam te gebruiken als die welke u tijdens het configureren van de computernaam invoerde.
+Description-pt.UTF-8: Nome de utilizador inválido para a conta de administrador
+ O nome de utilizador que você escreveu contém caracteres proibidos. Por favor respeite a sintaxe JID (http://tools.ietf.org/html/rfc6122#appendix-A.5). Se você usou um ID completo (ex. utilizador@nome-máquina), você tem de usar o mesmo nome de máquina que escreveu no passo de configuração do nome da máquina.
+Description-pt_BR.UTF-8: Nome de usuário da conta do administrador inválido
+ O nome de usuário que você digitou contém caracteres proibidos. Por favor, respeite a sintaxe JID (http://tools.ietf.org/html/rfc6122#appendix-A.5). Se você usou um JID completo (por exemplo, usuario@nomedemaquina), você deve usar o mesmo nome de máquina que você digitou no passo de configuração do nome de máquina.
+Description-ru.UTF-8: Неверное имя пользователя учётной записи администратора
+ Введённое имя пользователя содержит недопустимые символы. Учитывайте синтаксис JID (http://tools.ietf.org/html/rfc6122#appendix-A.5). Если вы используете полный JID (например, user@hostname), то вам следует использовать то же имя хоста, что было указано вами на шаге настройки хоста.
+Description-sv.UTF-8: Ogiltigt användarnamn för administrationskontot
+ Användarnamnet du angav innehåller otillåtna tecken. JID är standardiserat (http://tools.ietf.org/html/rfc6122#appendix-A.5) och behöver efterlevas. Om du använder ett komplett JID (ex. anv@example.com) måste du också ange samma värdnamn som angavs i inställningen för värdnamn.
+Description-tr.UTF-8: Yönetici hesabı adı geçersiz
+ Girdiğiniz kullanıcı adı kullanımına izin verilmeyen karakterler içeriyor. Lütfen JID sözdizimine dikkat edin (http://tools.ietf.org/html/rfc6122#appendix-A.5). Eğer tam bir JID kullandıysanız (örneğin kullanıcı@makineadı), makine adı kısmı yapılandırma adımında belirttiğiniz makine adıyla aynı olmalıdır.

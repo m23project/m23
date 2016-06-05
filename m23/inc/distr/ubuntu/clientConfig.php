@@ -2,9 +2,6 @@
 
 include_once("/m23/inc/distr/debian/clientConfig.php");
 
-// gconftool-2 --load=/tmp/gconf.orig --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults
-// apt-get remove ubuntu-artwork
-// baobab dconf-tools eog evince-common file-roller gcalctool gedit-common gnome-nettool gnome-power-manager gnome-screenshot gnome-sushi gnome-system-log gucharmap libatk-adaptor-schemas notify-osd seahorse simple-scan vino
 
 define('UBUNTUDESKTOP_UNITY2D',11);
 define('UBUNTUDESKTOP_UNITY3D',12);
@@ -28,6 +25,7 @@ define('MINT13DESKTOP_MATE',63);
 
 define('UBUNTDM_LIGHTDM',1001);
 define('UBUNTDM_MDM',1002);
+define('NO_EXTRA_DM',1003);
 
 // Ubuntu 14.04
 define('UBUNTUDESKTOP_UNITY3D_1404',2012);
@@ -43,52 +41,16 @@ define('MINT17_KDE',2062);
 
 define('ELEMENTARYOS',3001);
 
-/*
-Mint 17
-
-mint-artwork-cinnamon: !!! Predepends: libglib2.0-bin
-
-wichtig: mintlocale linuxmint-keyring mint-meta-core mint-meta-codecs mintdesktop policykit-desktop-privileges
-
-/etc/mdm/mdm.conf
-[daemon]
-Greeter=/usr/lib/mdm/mdmgreeter
-
-[security]
-
-[xdmcp]
-
-[gui]
-
-[greeter]
-GraphicalTheme=Elegance
-
-[chooser]
-
-[debug]
-
-[servers]
-
-
-
-
-mint-meta-mate caja-extensions-common caja-gksu caja-open-terminal
-
-compiz-core compiz-plugins-default
-
-
-
-
-
-policykit-desktop-privileges
-
-ubuntu-settings ubuntu-system-service
-
-
-dpkg --get-selections | grep -v deinstall$ | tr -d '[:blank:]' | sed 's/install$//g' | sort | nc 192.168.1.77 12345
-nc -l -p 12345 > pkg.m23-neu
-
-*/
+// Ubuntu 16.04
+define('UBUNTUDESKTOP_UNITY3D_1604', 4001);
+define('UBUNTUDESKTOP_MATE_1604', 4002);
+define('UBUNTUDESKTOP_EDUBUNTU_1604', 4003);
+define('UBUNTUDESKTOP_KUBUNTU_1604', 4004);
+define('UBUNTUDESKTOP_LUBUNTU_1604', 4005);
+define('UBUNTUDESKTOP_MYTHBUNTU_1604', 4006);
+define('UBUNTUDESKTOP_GNOME_1604', 4007);
+define('UBUNTUDESKTOP_UBUNTUSTUDIO_1604', 4008);
+define('UBUNTUDESKTOP_XUBUNTU_1604', 4009);
 
 
 
@@ -273,20 +235,24 @@ function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $no
 			$dialogHeader = $I18N_installingLXDELubuntuCore;
 			$session = 'Lubuntu';
 		break;
+
 		case UBUNTUDESKTOP_LUBUNTU_1404:
 			$desktopPackages = "lubuntu-desktop";
 			$dialogHeader = $I18N_installingLXDELubuntu;
 			$session = 'Lubuntu';
 		break;
+
 		case UBUNTUDESKTOP_CONSOLE:
 			$desktopPackages = "ubuntu-minimal ";
 		break;
+
 		case MINT13DESKTOP_CINNAMON:
 			$desktopPackages = 'mint-artwork-cinnamon mint-info-cinnamon mint-meta-cinnamon cinnamon cinnamon-themes '.$linuxMint13BasePackages;
 			$displayManager = UBUNTDM_MDM;
 			$dialogHeader = $I18N_installingCinnamon;
 			$session = 'cinnamon.desktop';
 		break;
+
 		case MINT17DESKTOP_CINNAMON:
 			// Fix missing predepends of mint-artwork-cinnamon to libglib2.0-bin
 			CLCFG_aptGet('install', 'libglib2.0-bin');
@@ -295,18 +261,79 @@ function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $no
 			$dialogHeader = $I18N_installingCinnamon;
 			$session = 'cinnamon.desktop';
 		break;
+
 		case MINT13DESKTOP_MATE:
 			$desktopPackages = 'mate-applets mate-applets-common mate-bluetooth mate-calc mate-common mate-conf mate-conf-common mate-conf-editor mate-control-center mate-corba mate-desktop mate-desktop-common mate-dialogs mate-doc-utils mate-icon-theme mate-keyring mate-media mate-media-common mate-media-pulse mate-menus mate-mime-data mate-netspeed mate-notification-daemon mate-panel mate-panel-common mate-polkit mate-power-manager mate-power-manager-common mate-screensaver mate-sensors-applet mate-session-manager mate-settings-daemon mate-settings-daemon-common mate-settings-daemon-pulse mate-system-monitor mate-system-tools mate-terminal mate-terminal-common mate-text-editor mate-utils mate-vfs mate-vfs-common mate-window-manager mint-artwork-mate mint-info-mate mintmenu mint-artwork-common mint-artwork-gnome mint-artwork-mate mint-backgrounds-maya mint-backgrounds-maya-extra mint-common'.$linuxMint13BasePackages;
 			$displayManager = UBUNTDM_MDM;
 			$dialogHeader = $I18N_installingMate;
 			$session = 'mate.desktop';
 		break;
+
 		case MINT17DESKTOP_MATE:
 			$desktopPackages = 'mate-applets mate-applets-common mate-bluetooth mate-calc mate-common mate-conf mate-conf-common mate-conf-editor mate-control-center mate-corba mate-desktop mate-desktop-common mate-dialogs mate-doc-utils mate-icon-theme mate-keyring mate-media mate-media-common mate-media-pulse mate-menus mate-mime-data mate-netspeed mate-notification-daemon mate-panel mate-panel-common mate-polkit mate-power-manager mate-power-manager-common mate-screensaver mate-sensors-applet mate-session-manager mate-settings-daemon mate-settings-daemon-common mate-settings-daemon-pulse mate-system-monitor mate-system-tools mate-terminal mate-terminal-common mate-text-editor mate-utils mate-vfs mate-vfs-common mate-window-manager mint-artwork-mate mint-info-mate mintmenu mint-artwork-common mint-artwork-gnome mint-artwork-mate mint-backgrounds-qiana mint-common mint-meta-mate caja-extensions-common caja-gksu caja-open-terminal metacity metacity-common'.$linuxMint17BasePackages;
 			$displayManager = UBUNTDM_MDM;
 			$dialogHeader = $I18N_installingMate;
 			$session = 'mate.desktop';
 		break;
+
+		case UBUNTUDESKTOP_UNITY3D_1604:
+			$desktopPackages = 'ubuntu-desktop';
+			$displayManager = NO_EXTRA_DM;
+			$dialogHeader = $I18N_installing_unity3d;
+		break;
+
+		case UBUNTUDESKTOP_MATE_1604:
+			$desktopPackages = 'ubuntu-mate-desktop mate-desktop-environment mate-session-manager ubuntu-mate-artwork ubuntu-mate-lightdm-theme';
+			$displayManager = UBUNTDM_LIGHTDM;
+			$session = 'mate';
+			$dialogHeader = $I18N_installingMate;
+		break;
+
+		case UBUNTUDESKTOP_XUBUNTU_1604:
+			$desktopPackages = 'xubuntu-desktop xfce4-session xfdesktop4 xfce4-artwork';
+			$displayManager = UBUNTDM_LIGHTDM;
+			$session = 'xfce';
+			$dialogHeader = $I18N_installingXubuntuDesktop;
+		break;
+
+		case UBUNTUDESKTOP_LUBUNTU_1604:
+			$desktopPackages = 'lubuntu-desktop lxsession lxde-icon-theme blubuntu-look';
+			$displayManager = UBUNTDM_LIGHTDM;
+			$session = 'Lubuntu';
+			$dialogHeader = $I18N_installingLXDELubuntu;
+		break;
+
+		case UBUNTUDESKTOP_KUBUNTU_1604:
+			$desktopPackages = 'kubuntu-desktop kde-config-sddm sddm sddm-theme-breeze';
+			$displayManager = NO_EXTRA_DM;
+// 			$session = 'plasma-desktop';
+			$dialogHeader = $I18N_installing_kde;
+		break;
+
+		case UBUNTUDESKTOP_EDUBUNTU_1604:
+			$desktopPackages = 'edubuntu-desktop-gnome';
+			$displayManager = NO_EXTRA_DM;
+			$dialogHeader = $I18N_installingEduBuntuGnome;
+		break;
+
+		case UBUNTUDESKTOP_MYTHBUNTU_1604:
+			$desktopPackages = 'mythbuntu-desktop';
+			$displayManager = NO_EXTRA_DM;
+			$dialogHeader = $I18N_installingLMythbuntu;
+		break;
+
+		case UBUNTUDESKTOP_GNOME_1604:
+			$desktopPackages = 'ubuntu-gnome-desktop';
+			$displayManager = NO_EXTRA_DM;
+			$dialogHeader = $I18N_installing_gnome;
+		break;
+
+		case UBUNTUDESKTOP_UBUNTUSTUDIO_1604:
+			$desktopPackages = 'ubuntustudio-desktop';
+			$displayManager = NO_EXTRA_DM;
+			$dialogHeader = $I18N_installingUbuntustudio;
+		break;
+
 	}
 
 	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $dialogHeader);
@@ -415,6 +442,9 @@ libvirtodbc0 libvirtodbc0/register-odbc-driver boolean true');
 	else
 	/* =====> */ MSR_statusBarIncCommand(10);
 
+	// Remove Amazon
+	CLCFG_aptGet("remove","unity-webapps-common");
+
 	echo("\ndpkg-reconfigure m23-skel\n");
 }
 
@@ -501,6 +531,99 @@ function UBUNTU_fixAfterBaseInstall($release)
 			');
 			CLCFG_aptGet("install","policykit-1 upower acpi-support iputils-ping ubuntu-extras-keyring ubuntu-sounds");
 		break;
+		case 'xenial':
+			echo(EDIT_writeToFile('/etc/ssh/sshd_config',
+'# Package generated configuration file
+# See the sshd_config(5) manpage for details
+
+# What ports, IPs and protocols we listen for
+Port 22
+# Use these options to restrict which interfaces/protocols sshd will bind to
+#ListenAddress ::
+#ListenAddress 0.0.0.0
+Protocol 2
+# HostKeys for protocol version 2
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+#Privilege Separation is turned on for security
+UsePrivilegeSeparation yes
+
+# Lifetime and size of ephemeral version 1 server key
+KeyRegenerationInterval 3600
+ServerKeyBits 1024
+
+# Logging
+SyslogFacility AUTH
+LogLevel INFO
+
+# Authentication:
+LoginGraceTime 120
+PermitRootLogin yes
+StrictModes yes
+
+RSAAuthentication yes
+PubkeyAuthentication yes
+#AuthorizedKeysFile     %h/.ssh/authorized_keys
+PubkeyAcceptedKeyTypes +ssh-dss
+
+# Don\'t read the user\'s ~/.rhosts and ~/.shosts files
+IgnoreRhosts yes
+# For this to work you will also need host keys in /etc/ssh_known_hosts
+RhostsRSAAuthentication no
+# similar for protocol version 2
+HostbasedAuthentication no
+# Uncomment if you don\'t trust ~/.ssh/known_hosts for RhostsRSAAuthentication
+#IgnoreUserKnownHosts yes
+
+# To enable empty passwords, change to yes (NOT RECOMMENDED)
+PermitEmptyPasswords no
+
+# Change to yes to enable challenge-response passwords (beware issues with
+# some PAM modules and threads)
+ChallengeResponseAuthentication yes
+
+# Change to no to disable tunnelled clear text passwords
+#PasswordAuthentication yes
+
+# Kerberos options
+#KerberosAuthentication no
+#KerberosGetAFSToken no
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+
+# GSSAPI options
+#GSSAPIAuthentication no
+#GSSAPICleanupCredentials yes
+
+X11Forwarding yes
+X11DisplayOffset 10
+PrintMotd no
+PrintLastLog yes
+TCPKeepAlive yes
+#UseLogin no
+
+#MaxStartups 10:30:60
+#Banner /etc/issue.net
+
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+
+Subsystem sftp /usr/lib/openssh/sftp-server
+
+# Set this to \'yes\' to enable PAM authentication, account processing,
+# and session processing. If this is enabled, PAM authentication will
+# be allowed through the ChallengeResponseAuthentication and
+# PasswordAuthentication.  Depending on your PAM configuration,
+# PAM authentication via ChallengeResponseAuthentication may bypass
+# the setting of "PermitRootLogin without-password".
+# If you just want the PAM account and session checks to run without
+# PAM authentication, then enable this but set PasswordAuthentication
+# and ChallengeResponseAuthentication to \'no\'.
+UsePAM yes'));
+
+		break;
 	}
 }
 
@@ -549,6 +672,12 @@ function CLCFG_enableLDAPUbuntu($clientOptions)
 	if ($clientOptions['ldaptype']=="none")
 		return;
 
+	if (HELPER_isExecutedOnUCS())
+	{
+		UCS_enableClientLDAP();
+		return(false);
+	}
+
 	$server=LDAP_loadServer($clientOptions['ldapserver']);
 
 	$LDAPhost = $server['host'];
@@ -558,9 +687,12 @@ function CLCFG_enableLDAPUbuntu($clientOptions)
 	if (empty($LDAPhost) || empty($baseDN))
 		return;
 		
-	if ('trusty' == $clientOptions['release'])
+		
+	switch ($clientOptions['release'])
 	{
-		CLCFG_setDebConfDirect("ldap-auth-config ldap-auth-config/binddn string cn=proxyuser,dc=example,dc=net
+		case 'trusty':
+		case 'xenial':
+			CLCFG_setDebConfDirect("ldap-auth-config ldap-auth-config/binddn string cn=proxyuser,dc=example,dc=net
 ldap-auth-config ldap-auth-config/bindpw password
 ldap-auth-config ldap-auth-config/dblogin boolean false
 ldap-auth-config ldap-auth-config/dbrootlogin boolean false
@@ -573,11 +705,11 @@ ldap-auth-config ldap-auth-config/pam_password select md5
 ldap-auth-config ldap-auth-config/rootbinddn string
 ldap-auth-config ldap-auth-config/rootbindpw password
 libpam-runtime libpam-runtime/profiles multiselect unix, ldap, systemd, capability");
-	}
-	else
-	{
-		// Thanks to the howto from: http://tuxnetworks.blogspot.com/2010/04/ldap-client-lucid-lynx.html
-		CLCFG_setDebConfDirect("ldap-auth-config ldap-auth-config/binddn string cn=proxyuser,dc=example,dc=net
+		break;
+
+		default:
+			// Thanks to the howto from: http://tuxnetworks.blogspot.com/2010/04/ldap-client-lucid-lynx.html
+			CLCFG_setDebConfDirect("ldap-auth-config ldap-auth-config/binddn string cn=proxyuser,dc=example,dc=net
 ldap-auth-config ldap-auth-config/bindpw password
 ldap-auth-config ldap-auth-config/dblogin boolean false
 ldap-auth-config ldap-auth-config/dbrootlogin boolean false
@@ -613,6 +745,7 @@ libpam-ldap shared/ldapns/base-dn string $baseDN
 libpam-ldap shared/ldapns/ldap-server string ldapi://$LDAPhost
 libpam-ldap shared/ldapns/ldap_version select 3
 libpam-runtime libpam-runtime/profiles multiselect unix, ldap, gnome-keyring, consolekit");
+		break;
 	}
 
 /*
@@ -640,20 +773,26 @@ TLS_CACERT      /etc/ssl/certs/ca-certificates.crt\" > /etc/ldap/ldap.conf
 ");
 
 
-if ('trusty' == $clientOptions['release'])
-	echo("echo \"account sufficient		pam_ldap.so
+	switch ($clientOptions['release'])
+	{
+		case 'trusty':
+		case 'xenial':
+			echo("echo \"account sufficient		pam_ldap.so
 account sufficient		pam_unix.so
 account [success=2 new_authtok_reqd=done default=ignore]	pam_unix.so
 account [success=1 default=ignore]		pam_ldap.so
 account required						pam_permit.so
 session required						pam_mkhomedir.so umask=0022 skel=/etc/skel/ silent\" > /etc/pam.d/common-account
 ");
-else
-	echo("
+		break;
+		default:
+			echo("
 echo \"account sufficient pam_ldap.so
 account required pam_unix.so
 session required pam_mkhomedir.so umask=0022 skel=/etc/skel/ silent\" > /etc/pam.d/common-account
 ");
+		break;
+	}
 
 // Add the local groups to the LDAP user
 echo('

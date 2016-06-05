@@ -1,0 +1,92 @@
+Template: cgiemail/template_dir
+Type: string
+Default: /var/www/template/
+Description: Directory where you want to put the cgiemail's mail templates:
+ In old versions of cgiemail, templates that were used for creating e-mails
+ to be sent could be placed anywhere that would be served up by the web
+ server.  This behaviour is a security vulnerability: an attacker can read
+ files that he shouldn't be able to, such as scripts in cgi-bin, if they
+ contain certain pieces of text.
+ .
+ If you enter nothing (that is, erase the default directory, leaving this
+ empty), cgiemail will still work. This may be needed if you are, for
+ instance, hosting web services, and cannot move all of your clients
+ cgiemail templates to one directory.  Remember that this will LEAVE THE
+ SECURITY HOLE OPEN, and is only a choice for backwards compatibility.
+ .
+ To close the hole, enter a directory, which MUST be accessible by
+ your web server.  Template files that you want to use should go there.
+ For further instructions, please read the README.Debian and README files
+ in /usr/share/doc/cgiemail/.
+Description-cs.UTF-8: Adresář, do kterého chcete umístit šablony poštovního programu cgiemail:
+ Ve starších verzích cgiemailu mohly být šablony, které se používaly pro vytváření emailů, umístěny kdekoliv, odkud je mohl webový server nabízet. Toto chování je bezpečnostní dírou, protože útočník tak může číst soubory, které by číst neměl -- například skripty v adresáři cgi-bin, pokud by obsahovaly citlivé informace. 
+ .
+ Cgiemail bude fungovat i když nic nevložíte (to jest smažete výchozí adresář a necháte místo prázdné). Toto může být potřeba v situaci, hostování webových služeb, kdy nemůžete přesunout všechny vaše klientské šablony cgiemailu do jednoho adresáře. Pamatujte, že tohle NECHÁ OTEVŘENOU BEZPEČNOSTNÍ DÍRU a je pouze volbou zpětné kompatibility.
+ .
+ Pro odstranění tohoto problému, zadejte adresář PŘÍSTUPNÝ z vašeho webového serveru. Umístěte tam soubory šablon které chcete používat. Pro další instrukce si prosím přečtěte README.Debian a soubory README v /usr/share/doc/cgiemail/.
+Description-da.UTF-8: Mappe hvor du ønsker at placere cgiemails postskabelon:
+ I gamle versioner af cgiemail kunne skabeloner, som blev brugt for at oprette e-post, som skulle sendes placeres alle de steder, hvor de ville blive betjent af internetserveren. Denne opførsel udgør en sikkerhedsmæssig risiko: En angriber kan læse filer, som denne ikke burde, såsom skripter i cgi-bin, hvis de indeholder bestemte tekststykker.
+ .
+ Hvis du ikke indtaster noget (det vil sige sletter standardmappen og efterlader denne tom), vil cgiemail stadig virke. Dette kan være krævet hvis du for eksempel er vært for internettjenester, og ikke kan flytte alle dine klienters cigemail-skabeloner til en mappe. Husk at dette vil EFTERLADE DETTE SIKKERHEDSMÆSSIGE HUL ÅBENT og kun er en valgmulighed for baglæns kompatibilitet.
+ .
+ For at lukke hullet så indtast en mappe, som SKAL kunne tilgås af din internetserver. Skabelonfiler som du ønsker at bruge skal placeres her. For yderligere instruktioner, så læs venligt README.Debian og README-filer i /usr/share/doc/cgiemail/.
+Description-de.UTF-8: Verzeichnis, in das E-Mail-Vorlagen von Cgiemail abgelegt werden sollen:
+ In älteren Versionen von Cgiemail konnten Vorlagen, die zum Erstellen von E-Mails genutzt wurden, überall abgelegt werden, wo sie der Web-Server erreichen konnte. Das ist ein Sicherheitsrisiko: ein Angreifer kann Dateien lesen, die er nicht lesen dürfte, wie z. B. Skripte im Verzeichnis cgi-bin, wenn diese Text enthalten.
+ .
+ Wenn Sie nichts eingeben (d. h. das Standard-Verzeichnis löschen und das Feld leer lassen), wird Cgiemail dennoch funktionieren. Das könnte nötig sein, wenn Sie z. B. Web-Dienste anbieten und nicht alle Cgiemail-Vorlagen Ihrer Kunden in ein Verzeichnis legen können. Denken Sie aber daran, DIES ÖFFNET EINE SICHERHEITSLÜCKE und sollte nur zur Abwärtskompatibilität ausgewählt werden.
+ .
+ Geben Sie ein Verzeichnis ein, das für Ihren Web-Server zugänglich sein MUSS, um die Lücke zu schließen. Vorlagen-Dateien, die Sie nutzen möchten, sollten Sie dort ablegen. Weitere Informationen entnehmen Sie bitte den Dateien README.Debian und README im Verzeichnis /usr/share/doc/cgiemail/.
+Description-es.UTF-8: Directorio dónde quiere que cgiemail coloque sus plantillas de correo electrónico:
+ En versiones anteriores de cgiemail, las plantillas usadas para crear correos para enviar, se podían colocar en cualquier directorio que pudiera utilizar el servidor web. Este comportamiento es un vulnerabilidad de seguridad, ya que un atacante podría leer archivos (tales como scripts en el directorio cgi-bin) sin tener permisos para leerlos, si contienen ciertos trozos de texto.
+ .
+ Si no introduce nada (es decir, borra el directorio predeterminado, dejándolo en blanco), cgiemail seguirá funcionando. Esto puede ser necesario si está, por ejemplo, albergando servicios web y no puede mover todas las plantillas de cgiemail de todos sus clientes a un único directorio. Tenga en cuenta que esto dejará ABIERTO UN AGUJERO EN LA SEGURIDAD, pero es la única opción para la compatibilidad hacia atrás.
+ .
+ Para cerrar el agujero de seguridad, introduzca un directorio, que su servidor web TIENE que poder leer. Las plantillas que quiere utilizar deberían ir en ese directorio. Para más información, por favor lea los archivos «README.Debian» y «README» que están en el directorio «/usr/share/doc/cgiemail/».
+Description-eu.UTF-8: Cgimail-en posta txantiloiak ipintzea nahi duzun direktorioa:
+ Cgiemail-en bertsio zaharretan, bidaliko den posta sortzeko erabiltzen ziren txantiloiak web zerbitzariarentzat eskuragarri zen edozein direktoriotan gorde zitezkeen. Hori ahulezia da segurtasunerako, erasotzaile bat gai izan baitaiteke behar ez dituen fitxategiak irakurtzeko, hala nola cgi-bin direktorioko script-ak, baldin eta testu jakin batzuk badauzkate.
+ .
+ Direktoriorik zehazten ez baduzu (hau da, direktorio lehenetsia ezabatzen baduzu, eta aukera hutsik utzi), cgiemail-ek funtzionatuko du oraindik. Hala egitea beharrezkoa izan daiteke, adibidez, web zerbitzuak ostatatzen badituzu, eta zure bezeroen cgiemail txantiloi guztiak direktorio bakarrean kokatu ezin badituzu. Gogora ezazu hau egiteak IREKITA UTZIKO DUELA SEGURTASUN-ZULOA, eta atzeranzko bateragarritasunari eusteagatik soilik dela onargarria.
+ .
+ Zuloa ixteko, sar ezazu zure web zerbitzariak irakur DEZAKEEN direktorio bat. Hor egon beharko lukete erabili nahi dituzun txantiloiek. Argibide gehiagorako, irakur itzazu /usr/share/doc/cgiemail/ direktorioko README.Debian eta README fitxategiak.
+Description-fr.UTF-8: Répertoire des gabarits de courriel de cgiemail :
+ Dans les anciennes versions de cgiemail, les gabarits utilisés pour créer des courriels à envoyer pouvaient être placés à tout endroit de l'arborescence du serveur web. Ce comportement induit une faille de sécurité potentielle : un attaquant peut alors lire des fichiers auxquels il n'est pas supposé pouvoir accéder, comme des scripts du répertoire cgi-bin, si les gabarits contiennent certaines chaînes de texte.
+ .
+ Si vous laissez ce champ vide (en supprimant la valeur par défaut), cgiemail fonctionnera toujours comme auparavant. Cela peut être nécessaire si vous hébergez des services web et qu'il vous est impossible de déplacer les gabarits cgiemail des clients en un seul répertoire. Veuillez noter que la faille de sécurité existe alors toujours : ce choix n'existe que pour préserver la compatibilité ascendante.
+ .
+ Pour éviter cette faille de sécurité, veuillez indiquer un répertoire accessible au serveur web. Les gabarits que vous souhaitez utiliser devront être placés à cet endroit. Veuillez consulter les fichiers README.Debian et README dans /usr/share/doc/cgiemail/.
+Description-gl.UTF-8: Directorio no que quere poñer os patróns de correo de cgiemail:
+ Nas versións antigas de cgiemail, os patróns que se empregaban para crear os emails a enviar podíanse poñer en calquera lugar accesible mediante o servidor web. Este comportamento é un problema de seguridade: un atacante pode ler ficheiros que non debería, tales coma algúns scripts de cgi-bin, se conteñen determinados textos.
+ .
+ Se non introduce nada (é dicir, borra o directorio por defecto, deixando este campo en branco), cgiemail ha seguir a funcionar. Isto pode ser necesario se, por exemplo, hospeda servizos web e non pode mover os patróns de cgiemail de tódolos seus clientes a un directorio. Lembre que isto ha deixar o burato de seguridade aberto, e só é unha opción para compatibilidade cara a atrás.
+ .
+ Para pechar o burato, introduza o nome dun directorio, que debe ser accesible mediante o servidor web. Os ficheiros de patrón que queira empregar deberían ir aí. Para máis instrucións, consulte os ficheiros README.Debian e README de /usr/share/doc/cgiemail/.
+Description-ja.UTF-8: cgimail のメールテンプレートを配置するディレクトリ:
+ cgiemail の以前のバージョンでは、送信されるメールの作成に使われるテンプレートは、web サーバが使用するディレクトリならどこにでも配置できました。この挙動はセキュリティ上の脆弱性となります: テンプレートがある種の文字列を含んでいた場合、cgi-bin にあるスクリプトのような読めるべきではないファイルを攻撃者が読めることになります。
+ .
+ 何も入力しない場合 (つまり、デフォルトのディレクトリを消去し、これを空のままにする場合)、それでも cgiemail は動作します。もし、例えばあなたがホスティングサービスを行っており、クライアント全ての cgiemail テンプレートを一つのディレクトリに移動できない場合、これが必要となるかもしれません。これは「セキュリティホールを放置している」のであり、単に後方互換性のための選択であるということに注意してください。
+ .
+ この脆弱性を封じるには、ディレクトリ名を入力してください。これは web サーバからアクセス可能であることが「必要」です。使いたいテンプレートファイルは、ここに置かなければなりません。より詳細な説明については、/usr/share/doc/cgiemail/ の README.Debian と README ファイルを読んでください。
+Description-pt.UTF-8: Directório onde deseja colocar os modelos de email do cgiemail: 
+ Em versões antigas do cgiemail, os modelos que eram usados para criar e-mails a enviar podiam ser colocados em qualquer sitio que fosse servido pelo servidor web. Este comportamento é uma vulnerabilidade de segurança: um atacante pode ler ficheiros que não devia, como 'scripts' em cgi-bin, se contiverem certas partes em texto.
+ .
+ Se não introduzir nada (isto é, apagar o directório pré-definido, deixando este campo vazio), o cgiemail ainda funcionará. Isto pode ser necessário se você está, por exemplo, a alojar servidores web e não puder mover todos os modelos do cgiemail dos seus clientes para um único directório. Lembre-se que isto vai DEIXAR O BURACO DE SEGURANÇA ABERTO, e é apenas uma escolha para retro-compatibilidade.
+ .
+ Para fechar o 'buraco', introduza um directório, que TEM de estar acessível pelo seu servidor web. Os ficheiros modelo que quiser utilizar devem ir para esse directório. Para mais instruções, por favor leia o ficheiro README.Debian e os ficheiros README em /usr/share/doc/cgiemail/.
+Description-ru.UTF-8: Каталог с почтовыми шаблонами cgiemail:
+ В старых версиях cgiemail, шаблоны, используемые для создания отправляемых электронных писем, могли располагаться в любом месте, доступном для веб-сервера. Такое поведение имеет проблемы с безопасностью: атакующий может прочитать файлы для него не предназначенные, например, сценарии в cgi-bin, если они содержат некоторые части текста страницы.
+ .
+ Если вы ничего не введёте (то есть, сотрёте каталог по умолчанию, оставив поле пустым), то cgiemail будет продолжать работать. Это может потребоваться, если вы, например, поддерживаете службу хостинга, и не можете поместить все файлы клиентских шаблонов cgiemail в один каталог. Помните, что это НЕ РЕШАЕТ ПРОБЛЕМУ С БЕЗОПАСНОСТЬЮ и оставлено только для обратной совместимости.
+ .
+ Чтобы закрыть проблему, введите название каталога, который ДОЛЖЕН быть доступен веб-серверу. Положите туда файлы шаблонов, которые нужно использовать. Дальнейшие инструкции читайте в файлах README.Debian и README из каталога /usr/share/doc/cgiemail/.
+Description-sv.UTF-8: Var vill du lägga cgiemail-s e-postmallar?
+ I äldre versioner av cgiemail användes mallar för att skapa e-post som skulle skickas och de kunde placeras var som helst i webservern.  Detta är en säkerhetsrisk eftersom en attackare kan läsa filerna som han inte borde göra, såsom skript i cgi-bin om du innehåller viss typ av text.
+ .
+ Om du inte anger något (alltså, rensa standardmappen, lämna denna blank) kommer cgiemail fortfarande att fungera. Detta kan vara nödvändigt om du till exempel erbjuder webtjänster och inte kan flytta alla dina klienters cgiemail-mallar till en mapp.  Tänk på att detta är ETT ÖPPET SÄKERHETSHÅL och är bara ett val för att vara bakåtkompatibel.
+ .
+ För att stänga detta hål, ange en mapp som din webserver MÅSTE ha tillgång till.  Mallfilerna som du vill använda ska ligger där. För mer instruktioner, läs README.Debian och README-filerna i /usr/share/doc/cgiemail/.
+Description-vi.UTF-8: Thư mục vào đó cần để các mẫu thư của cgiemail:
+ Trong các phiên bản cgiemail cũ, các mẫu được dùng để tạo thư cần gửi vẫn còn có thể được để vào bất cứ vị trí nào sẽ được trình phục vụ cung cấp. Ứng xử này rủi ro bảo mật: người tấn công có thể đọc các tập tin riêng, v.d. các văn lệnh trong cgi-bin, nếu văn lệnh chứa đoạn văn đặc biệt.
+ .
+ Nếu bạn không nhập gì vào đây (tức là xóa thư mục mặc định, bỏ trường này trống) thì phần mềm cgiemail vẫn còn sẽ chạy được. Trường hợp này có thể cần thiết nếu bạn, chẳng hạn, cung cấp các dịch vụ Web, và không thể di chuyển tất cả các mẫu cgiemail của khách sang cùng một thư mục. Ghi nhớ rằng việc này sẽ ĐỂ LẠI LỖ BẢO MẬT CÒN MỞ, và chỉ là sự chọn để tương thích ngược.
+ .
+ Để đóng lỗ này, hãy nhập một thư mục, mà PHẢI cho trình phục vụ Web truy cập được. Các tập tin mẫu cần dùng nên nằm trong thư mục đó. Để tìm thêm hướng dẫn, xem tài liệu Đọc Đi « README.Debian » và các tài liệu Đọc Đi (README) trong thư mục «  /usr/share/doc/cgiemail/ ».

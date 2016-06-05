@@ -1,0 +1,221 @@
+Template: shared/news/server
+Type: string
+Description: News server for reading and posting news:
+ Enter the fully qualified domain name of the news server (NNTP server) that
+ should be used by default for reading and posting news.
+Description-cs.UTF-8: News server pro čtení a odesílání příspěvků:
+ Vložte plně kvalifikované doménové jméno news serveru (NNTP server), který by měl být standardně používán pro čtení a odesílání příspěvků.
+Description-da.UTF-8: Nyhedsserver til at læse og indsende nyheder:
+ Indtast det fuldt kvalificerede domænenavn på nyhedsserveren (NNTP-server) som skal bruges som standard til at læse nyhedsgrupper og indsende indlæg i nyhedsgrupper?
+Description-de.UTF-8: News-Server zum Lesen und Senden von News:
+ Bitte geben Sie den vollständigen Rechnernamen (fully qualified domain name) des News-Servers (NNTP-Server) ein, der standardmäßig zum Lesen und Senden von News benutzt werden soll.
+Description-es.UTF-8: Servidor de noticias para leer y escribir noticias:
+ Introduzca el nombre de dominio completamente cualificado del servidor de noticias (servidor de NNTP) que se debería utilizar de forma predeterminada para leer y escribir noticias.
+Description-eu.UTF-8: Berriak jaso eta bideltzeko berri-talde zerbitzaria:
+ Idatzi lehenespenez berriak jaso eta bidaltzeko erabiliko den berri-talde zerbitzariaren (NNTP zerbitzaria) guztiz kualifikaturiko domeinu izena.
+Description-fi.UTF-8: Uutispalvelin, jota käytetään uutisten lukemiseen ja lähettämiseen:
+ Anna oletuksena uutisten lukemiseen ja lähettämiseen käytettävän uutispalvelimen (NNTP-palvelin) täydellinen verkkotunnus.
+Description-fr.UTF-8: Quel serveur de nouvelles souhaitez-vous utiliser pour lire et poster les nouvelles ?
+ Veuillez indiquer le nom de domaine complètement qualifié du serveur de nouvelles (NNTP) que vous souhaitez utiliser pour lire et poster les nouvelles.
+Description-gl.UTF-8: Servidor de novas para ler e enviar novas:
+ Introduza o nome de dominio completamente cualificado (FQDN) do servidor de novas (servidor NNTP) que se debe empregar por defecto para ler e enviar novas.
+Description-it.UTF-8: Server news per leggere e inviare i messaggi ai newsgroup:
+ Inserire il nome di dominio pienamente qualificato del news server (server NNTP) che deve essere usato in maniera predefinita per leggere e inviare i messaggi ai newsgroup.
+Description-ja.UTF-8: ネットニュースを読み書きするネットニュースサーバ:
+ ネットニュースの読み書きにデフォルトで使うネットニュースサーバ (NNTP サーバ) の完全修飾ドメイン名を入力してください。
+Description-nl.UTF-8: Nieuwsserver voor het lezen en posten van nieuws:
+ Geef de volledige computernaam (FQDN) van de nieuwsserver (NNTP-server) op die standaard moet worden gebruikt voor het lezen en plaatsen van nieuwsberichten.
+Description-pl.UTF-8: Który serwer grup dyskusyjnych będzie używany do czytania i wysyłania?
+ Proszę podać pełną nazwę domenową serwera grupy dyskusyjnej (serwera NNTP), który będzie używany domyślnie do czytania i wysyłania wiadomości.
+Description-pt.UTF-8: Servidor de noticias (news) para ler e publicar noticias:
+ Indique o nome totalmente qualificado de domínio do servidor de noticias (servidor NNTP) que será usado por predefinição para ler e publicar noticias.
+Description-pt_BR.UTF-8: Servidor de notícias para leitura e postagem de notícias:
+ Informe o nome de domínio totalmente qualificado do servidor de notícias (servidor NNTP) que deve ser usado por padrão para leitura e postagem de notícias.
+Description-ru.UTF-8: Cервер для чтения и отправки новостей:
+ Укажите полное доменное имя машины сервера новостей (сервер NNTP), который должен использоваться для чтения и отправки новостей.
+Description-sk.UTF-8: Server news na čítanie a posielanie noviniek:
+ Zadajte plne kvalifikovaná názov servera news (NNTP server), ktorý sa má použiť ako predvolený na čítanie a posielanie noviniek.
+Description-sv.UTF-8: Server för att läsa och skriva i diskussionsgrupper (news):
+ Ange domännamnet på den diskussionsgruppsserver (NNTP-server, newsserver) som skall användas för att läsa och skriva i diskussionsgrupper.
+Description-vi.UTF-8: Máy phục vụ để đọc/gửi bài tin:
+ Hãy nhập tên miền có khả năng đầy đủ của máy phục vụ tin tức (máy phục vụ NNTP) nên dùng theo mặc định để đọc và gửi bài tin.
+
+Template: slrnpull/run_from
+Type: select
+Choices: cron job, ip-up, manually
+Choices-cs.UTF-8: úloha cronu, ip-up, ručně
+Choices-da.UTF-8: cron-job, ip-up, manuelt
+Choices-de.UTF-8: Cronjob, ip-up, manuell
+Choices-es.UTF-8: tarea de cron, ip-up, manualmente
+Choices-eu.UTF-8: cron lana, ip-up, eskuz
+Choices-fi.UTF-8: cron-työnä, ip-up:lla, käsin
+Choices-fr.UTF-8: tâche cron, ip-up, manuellement
+Choices-gl.UTF-8: tarefa de cron, ip-up, manualmente
+Choices-it.UTF-8: compito cron, ip-up, manualmente
+Choices-ja.UTF-8: cron ジョブ, ip-up, 手動で実行
+Choices-nl.UTF-8: crontaak, ip-up, handmatig
+Choices-pl.UTF-8: zadanie cron, ip-up, ręcznie
+Choices-pt.UTF-8: Tarefa agendada (cron), ip-up, Manualmente
+Choices-pt_BR.UTF-8: cron job, ip-up, manualmente
+Choices-ru.UTF-8: задание cron, сценарий ip-up, вручную
+Choices-sk.UTF-8: úloha cron, ip-up, manuálne
+Choices-sv.UTF-8: cron-jobb, ip-up, manuellt
+Choices-vi.UTF-8: công việc định kỳ, ip-up, bằng tay
+Default: cron job
+Description: When should slrnpull be run?
+ Slrnpull needs to run periodically to download news. This can be
+ accomplished in a variety of ways.
+ .
+ A cron job that is run daily can be used. This works well if you have a
+ permanent network connection, or if you are using diald or a similar
+ program that connects to the network on demand.
+ .
+ The ip-up script will make slrnpull download news when you connect to the
+ network via ppp.
+ .
+ Or you can choose to handle this manually and run as root the command
+ slrnpull -h `cat /etc/news/server` as you like it.
+Description-cs.UTF-8: Kdy má běžet slrnpull?
+ Slrnpull potřebuje být spouštěn pravidelně na stahování příspěvků. To může být realizováno více způsoby.
+ .
+ Může být použita úloha cronu, která běží jednou denně. To funguje dobře pokud máte stálé připojení k síti, nebo pokud používáte diald nebo podobný program, který se připojuje k síti na požádání.
+ .
+ Pomocí skriptu ip-up bude slrnpull stahovat příspěvky, když se připojíte na síť pomocí ppp.
+ .
+ Nebo si můžete vybrat řešit toto ručně a jako root spouštět podle potřeby příkaz slrnpull -h `cat /etc/news/server`.
+Description-da.UTF-8: Hvornår skal slrnpull blive kørt?
+ Slrnpull skal køres jævnligt for at hente nyheder. Dette kan gøres på flere måder.
+ .
+ Et cron-job kan køres dagligt. Det fungerer fint, hvis du har en permanent netforbindelse eller benytter diald eller et tilsvarende program til automatisk at forbinde dig til netværket efter behov.
+ .
+ Skriptet ip-up vil få slrnpull til at hente nyheder når du forbinder dig til nettet viar ppp.
+ .
+ Eller du kan vælge at håndtere dette manuelt og som root køre kommandoen slrnpull -h `cat /etc/news/server` som du ønsker.
+Description-de.UTF-8: Wann soll Slrnpull gestartet werden?
+ Slrnpull muss regelmäßig gestartet werden, um News herunterzuladen. Das kann auf verschiedene Weise geschehen.
+ .
+ Es kann ein täglich laufender Cronjob benutzt werden. Das funktioniert gut, wenn Sie über eine dauerhafte Netzverbindung verfügen oder falls Sie Diald oder ein ähnliches Programm verwenden, das eine Netzverbindung bei Bedarf aufbaut.
+ .
+ Das Skript »ip-up« kann Slrnpull veranlassen, News herunterzuladen, sobald Sie sich mit dem Netz via PPP verbinden.
+ .
+ Oder Sie kümmern sich selbst darum und starten als Benutzer Root das Kommando 'slrnpull -h `cat /etc/news/server`' wann immer Sie möchten.
+Description-es.UTF-8: ¿Cuándo debería ejecutarse slrnpull?
+ slrnpull necesita ejecutarse periódicamente para descargar las noticias. Esto puede llevarse a cabo de diferentes maneras.
+ .
+ Puede utilizar una tarea del cron para ejecutar slrnpull diariamente. Esto funciona bien si tiene una conexión permanente a red, o si utiliza «diald» o un programa similar que se conecte a la red bajo demanda.
+ .
+ El script «ip-up» hará que slrnpull descargue las noticias cuando se conecte a la red mediante «ppp».
+ .
+ O puede escoger gestionar esto manualmente y ejecutar como administrador («root») la orden «slrnpull -h `cat /etc/news/server`» cuando quiera.
+Description-eu.UTF-8: Slrnpull noiz abiarazi behar da?
+ Slrnpull aldiro abiarazi behar da berri-talde mezu berriak deskargatzeko. Hau ere modu ezberdinetan kudeatu daiteke.
+ .
+ Egunero abiarazoiko den cron lan bat erabili daiteke. Honek ondo funtzionatuko du konexio egonkor bat baduzu edo eskaripean sarera konektatzen den markatze programa bat edo antzekoren bat erabiltzen baduzu.
+ .
+ Ip-up skriptak slrnpull egin dezake mezu berriak jasotzeko zu ppp bidez sarera konektatzerakoan.
+ .
+ Edu eskuz kudeatzea hautatu dezakezu, orduan berriak jaso nahi dituzunean root gisa slrnpull -h `cat /etc/news/server` komandoa exekutatu.
+Description-fi.UTF-8: Miten slrnpull tulisi ajaa?
+ Ohjelma slrnpull tulee ajaa säännöllisesti uusien uutisten hakemiseksi. Tämä voidaan tehdä usealla tavalla.
+ .
+ Yksi tapa on käyttää päivittäin ajettavaa cron-työtä. Tämä toimii hyvin, jos käytössä on pysyvä verkkoyhteys tai jos käytetään diald:tä tai vastaavaa ohjelmaa, joka ottaa yhteyden tarvittaessa.
+ .
+ Komentosarja ip-up saa slrnpullin lataamaan uutiset, kun ppp-yhteys avataan.
+ .
+ Vaihtoehtoisesti lataaminen voidaan tehdä käsin ajamalla tarpeen mukaan pääkäyttäjänä komento slrnpull -h `cat /etc/news/server`.
+Description-fr.UTF-8: Quand slrnpull doit-il être lancé ?
+ Slrnpull a besoin de fonctionner de façon périodique pour télécharger les nouvelles. Cela peut se réaliser de différentes façons.
+ .
+ On peut utiliser une tâche cron qui sera lancée quotidiennement. Cela fonctionne bien si vous avez une connexion permanente, ou si vous utilisez diald ou un programme du même genre qui se connecte au réseau à la demande.
+ .
+ Le script ip-up fera télécharger les nouvelles par slrnpull lorsque vous vous connecterez au réseau via ppp.
+ .
+ Vous pouvez aussi décider de gérer cela vous-même et exécuter en tant que super-utilisateur la commande « slrnpull -h `cat /etc/news/server` ».
+Description-gl.UTF-8: ¿Cando se debe executar slrnpull?
+ Slrnpull precisa de se executar periodicamente para descargar novas. Isto pódese facer de varias maneiras.
+ .
+ Pódese empregar unha tarefa de cron que se execute diariamente. Isto funciona ben se ten unha conexión permanente á rede, ou se emprega diald ou un programa semellante para se conectar á rede baixo demanda.
+ .
+ O script ip-up ha facer que slrnpull descargue as novas cando se conecte á rede mediante ppp.
+ .
+ Tamén pode xestionar isto manualmente e executar a orde "slrnpull -h `cat /etc/news/server`" de cando en vez.
+Description-it.UTF-8: Quando deve essere eseguito slrnpull?
+ È necessario eseguire slrnpull periodicamente per scaricare i messaggi news. Questo può essere fatto in diversi modi.
+ .
+ Può essere usato un compito cron che viene eseguito quotidianamente. Questo metodo funziona bene se si ha una connessione permanente alla rete, o se si usa diald o un programma simile che crei connessioni alla rete su richiesta.
+ .
+ Lo script ip-up farà sì che slrnpull scarichi i messaggi news quando ci si connette alla rete con ppp.
+ .
+ Oppure si può scegliere di gestire la cosa in modo manuale e di eseguire come root il comando slrnpull -h `cat /etc/news/server` quando lo si desidera.
+Description-ja.UTF-8: いつ slrnpull を動作させればいいですか?
+ ネットニュースをダウンロードするため、slrnpull は定期的に動作する必要があります。これは様々な方法で完了することができます。
+ .
+ 毎日実行される cron ジョブを利用できます。ネットワークが常時接続、あるいはdiald やその他類似のプログラムを使って必要に応じてネットワークに接続する場合、これはうまく動作します。
+ .
+ ip-up スクリプトは、ppp 経由でネットワークに接続した時に slrnpull がネットニュースをダウンロードするようにします。
+ .
+ あるいは手動でこれを管理するのを選び、slrnpull -h `cat /etc/news/server` など好きなコマンドを root として実行することもできます。
+Description-nl.UTF-8: Wanneer moet slrnpull worden uitgevoerd?
+ Slrnpull moet regelmatig worden uitgevoerd om nieuwsberichten op te halen. Dit kan op verschillende manieren worden geregeld.
+ .
+ Er kan een crontaak worden gebruikt die dagelijks uitgevoerd. Dit werkt goed als u een permanente netwerkverbinding heeft of als u daild of een soortgelijk programma gebruikt dat wanneer nodig automatisch verbinding kan maken met het netwerk.
+ .
+ Het ip-up-script zal ervoor zorgen dat slrnpull nieuws ophaalt wanneer u een netwerkverbinding maakt via ppp.
+ .
+ Of u kunt ervoor kiezen om dit handmatig te regelen en als beheerder het commando 'slrnpull -h `cat /etc/news/server`' uit te voeren wanneer u maar wilt.
+Description-pl.UTF-8: Kiedy ma być uruchamiany slrnpull?
+ Program Slrn musi okresowo połączyć się z siecią, aby ściągnąć nowe opisy grup. Może być to wykonane na kilka sposobów.
+ .
+ Można dopisać zadanie do codziennych zadań demona cron. Jest to dobre rozwiązanie przy stałym połączeniu sieciowym, lub jeśli do automatycznego zestawiania połączenia na żądanie używany jest program diald (lub podobny).
+ .
+ Skrypt ip-up będzie uruchamiał slrnpull, który ściągnie posty zaraz po połączeniu się z siecią za pomocą ppp.
+ .
+ Można również wybrać obsługę ręczną i wykonywać co jakiś czas polecenie slrnpull -h `cat /etc/news/server`.
+Description-pt.UTF-8: Quando deve o slrnpull ser executado?
+ O slrnpull precisa de correr periodicamente para receber noticias (news). Isto pode ser efectuado de várias maneiras.
+ .
+ Pode ser utilizada uma tarefa agendada (cron) que corre diariamente. Isto funciona bem se você tiver uma ligação permanente à rede, ou se você usa o diald ou programa semelhante que efectua ligação à rede a pedido.
+ .
+ O script de ip-up fará o slrnpull transferir notícias quando você ligar à rede por ppp.
+ .
+ Ou você pode optar por controlar isto manualmente e correr, como root, o comando  slrnpull -h `cat /etc/news/server` sempre que desejar.
+Description-pt_BR.UTF-8: Quando o slrnpull deverá ser executado?
+ O slrnpull precisa ser executado periodicamente para fazer o download de notícias. Isso pode ser feito de diversas maneiras.
+ .
+ Um cron job que é executado diariamente pode ser usado. Isso funciona bem caso você possua uma conexão de rede permanente, ou caso você esteja usando o diald ou um programa similar que se conecta à rede por demanda.
+ .
+ O script ip-up fará com que o slrnpull faça o download de notícias quando você se conectar à rede via ppp.
+ .
+ Ou você pode escolher por tratar isso manualmente e executar, como root, o comando slrnpull -h `cat /etc/news/server` como preferir.
+Description-ru.UTF-8: Когда должен запускаться slrnpull?
+ Slrnpull должен периодически скачивать новости. Это может быть сделано различными способами.
+ .
+ С помощью ежедневного задания cron. Это хорошо работает, если вы имеете постоянное соединение с Интернет, или используете diald или что-то в этом роде для обеспечения соединения с сетью по запросу.
+ .
+ Сценарий ip-up будет заставлять slrnpull скачивать новости при соединении с сетью по ppp.
+ .
+ Или вы можете выбрать запуск вручную и запускать команду slrnpull -h `cat /etc/news/server` от root когда вам нужно.
+Description-sk.UTF-8: Kedy sa má spúšťať slrnpull?
+ Slrnpull potrebuje pravidelne sťahovať novinky. To sa dá dosiahnuť niekoľkými spôsobmi.
+ .
+ Je možné použiť úlohu cron, ktorá sa spúšťa denne. To funguje dobre ak máte trvalé pripojenie k sieti alebo ako používate diald alebo podobný program, ktorý sa pripája k sieti na požiadanie.
+ .
+ Skript ip-up spôsobí, že slrn stiahne novinky, keď sa pripojíte k sieti pomocou ppp.
+ .
+ Alebo sa môžete rozhodnúť, že sa o to postaráte manuálne a ako používateľ root budete spúšťať príkaz „slrnpull -h `cat /etc/news/server`“ tak často, ako chcete.
+Description-sv.UTF-8: När ska slrnpull köras?
+ Slrn behöver med jämna mellanrum ansluta till nätverket för att hämta nya diskussionsgrupper. Detta kan göras på flera olika sätt.
+ .
+ Ett cron-jobb som körs varje vecka kan användas. Detta fungerar bra om du har en permanent nätverksanslutning, eller om du använder diald eller ett liknande program som ansluter till nätverket vid behov.
+ .
+ Skriptet ip-up kommer att se till att slrnpull laddar ner nyheter när du är uppkopplad på nätverket via PPP.
+ .
+ Du kan också hantera detta för hand genom att som root köra kommandot slrnpull -h `cat /etc/news/server` när det passar.
+Description-vi.UTF-8: Khi nào nên chạy slrnpull?
+ Trình slrnpull cần phải chạy định kỳ để tải về các bài tin. Có thể quản lý trường hợp này bằng vài cách khác nhau.
+ .
+  • Có thể sử dụng một công việc định kỳ (cron job) được chạy hàng tuần. Phương pháp này là tốt nếu bạn có kết nối bền bỉ tới mạng, hoặc nếu bạn sử dụng diald hay chương trình tương tự mà kết nối đến mạng theo yêu cầu.
+ .
+  • Văn lệnh « ip-up » sẽ làm cho trình slrn cập nhật các mô tả khi bạn kết nối tới mạng thông qua PPP
+ .
+  • Hoặc bạn có thể chọn quản lý trường hợp này bằng tay: chạy câu lệnh « slrnpull -h `cat /etc/news/server » theo ý kiến của bạn.

@@ -106,6 +106,10 @@ function SCREDIT_showEditor()
 		if (fwrite($fout,$text) === false)
 			MSG_showError($I18N_couldNotWriteScriptFile);
 		fclose($fout);
+
+		// Make sure the line endings are in the correct format
+		SERVER_runInBackground('SCREDIT_showEditor_dos2unix', "dos2unix '$fout'" , 'root', false);
+		
 	}
 
 	//fake editing for the screenshot
@@ -163,9 +167,17 @@ function SCREDIT_showEditor()
 		</tr>
 			<td valign=\"top\" width=\"50%\">
 				<span class=\"title\">$I18N_uploadCurrentScript</span><br><br>
-				".HTML_listSelection("SEL_file",$fileList,$currentFile)." ".BUT_load." ".BUT_save." ".BUT_delete."<br><br>
+				".HTML_listSelection("SEL_file",$fileList,$currentFile)." ".BUT_load." ".BUT_save." ".
+				//m23customPatchBegin type=del id=SCREDIT_showEditorRemoveDeleteButton
+				BUT_delete.
+				//m23customPatchEnd id=SCREDIT_showEditorRemoveDeleteButton
+				"<br><br>
 				<span class=\"titlesmal\">$I18N_saveAs</span><br>
-				".ED_saveAsName." ".BUT_saveAsName."<br><br>
+				".ED_saveAsName." ".
+				//m23customPatchBegin type=del id=SCREDIT_showEditorRemoveSaveAsButton
+				BUT_saveAsName.
+				//m23customPatchEnd id=SCREDIT_showEditorRemoveSaveAsButton
+				"<br><br>
 
 				<span class=\"titlesmal\">$I18N_createNewScript</span><br>
 				".ED_newFile." ".BUT_create."<br><br>
@@ -177,7 +189,11 @@ function SCREDIT_showEditor()
 				<textarea name=\"ED_description\" rows=\"5\" cols=\"50\">$description</textarea><br><br>
 				<span class=\"titlesmal\">$I18N_author</span><br>
 				".ED_author."<br><br>
-				".BUT_uploadScriptToSF."
+				".
+				//m23customPatchBegin type=del id=SCREDIT_showEditorRemoveUploadToSFButton
+				BUT_uploadScriptToSF.
+				//m23customPatchEnd id=SCREDIT_showEditorRemoveUploadToSFButton
+				"
 			</td>
 		</tr>
 	");

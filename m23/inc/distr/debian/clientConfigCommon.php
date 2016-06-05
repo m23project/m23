@@ -220,6 +220,8 @@ function CLCFG_installLightDM($session, $addSessionWrapper = false)
 
 	$greeters['pantheon'] = 'pantheon-greeter';
 
+	$greeters['mate'] = 'lightdm-gtk-greeter';
+
 	if ($addSessionWrapper)
 		$addLines .= "\nsession-wrapper=/etc/X11/Xsession";
 
@@ -267,6 +269,12 @@ EOF
 function TRINITY_installLoginManager($lang)
 {
 	KDE_installLoginManager($lang, 3, true);
+	echo('
+		if [ -f /etc/init.d/tdm-trinity ]
+		then
+			update-rc.d tdm-trinity defaults
+		fi
+	');
 }
 
 
@@ -1608,7 +1616,7 @@ if ($bootloader == "grub")
 			CLCFG_aptGet("install", "grub2");
 		echo("
 		else
-			if [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ]
+			if [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(lsb_release -c -s) = 'xenial' ]
 			then
 			");
 				CLCFG_aptGet("install", "grub-pc");
@@ -1661,10 +1669,17 @@ if ($bootloader == "grub")
 				fi
 			fi
 
-			if [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ]
+			if [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(lsb_release -c -s) = 'xenial' ]
 			then
 				/usr/sbin/update-grub2
 				sync
+				
+				if [ $(lsb_release -c -s) = 'xenial' ]
+				then
+					sed -i 's/\(GRUB_CMDLINE_LINUX_DEFAULT=\"\)\([^\"]*\)\"/\\1\\2 net.ifnames=0\"/' /etc/default/grub
+					update-grub
+				fi
+				
 			else
 				#write menu.lst
 				/usr/sbin/update-grub -y
@@ -1913,7 +1928,7 @@ fi
 		echo("
 		dhclient
 
-		for dhClientPID in `ps -A | grep dhclient | tr -s [:blank:] | cut -d' ' -f2`
+		for dhClientPID in `ps | grep dhclient | tr -s [:blank:] | cut -d' ' -f2`
 		do
 			kill -9 \$dhClientPID
 		done
@@ -1941,6 +1956,8 @@ rm /etc/hostname 2> /dev/null
 cat >> /etc/hostname << \"EOF\"
 $clientName
 EOF
+
+#hostname $clientName
 
 if [ -f /etc/hostname ]
 then
@@ -1987,7 +2004,10 @@ rm /etc/resolv.conf 2> /dev/null
 
 cat >> /etc/resolv.conf << \"EOF\"
 $nameserver
-EOF
+".
+//m23customPatchBegin type=change id=CLCFG_resolvConfAdditionalLinesInresolv.conf
+//m23customPatchEnd id=CLCFG_resolvConfAdditionalLinesInresolv.conf
+"EOF
 
 # Make a backup of the resolv.conf file
 cp /etc/resolv.conf /etc/resolv.conf.m23
@@ -2676,8 +2696,9 @@ function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePor
 			$debootstrapCacheFileURL = PKG_getDebootstrapCacheServerURL($suite, $arch);
 		else
 		{
-			$debootstrapCacheFileURL = PKG_getDebootstrapCacheSfURL($suite, $arch);
+// 			$debootstrapCacheFileURL = PKG_getDebootstrapCacheSfURL($suite, $arch);
 			PKG_downloadBaseSysTom23Server($suite, $arch);
+			$debootstrapCacheFileURL = PKG_getDebootstrapCacheServerURL($suite, $arch);
 		}
 
 		echo("
@@ -3009,11 +3030,26 @@ echo "*/5 * * * * root screen -dmS m23fetchjob /etc/init.d/m23fetchjob" >> /etc/
 
 
 /**
-**name CLCFG_writeM23fetchjob()
+**name CLCFG_writeM23fetchjob($release)
 **description generates the m23fetchjob script
+**parameter release: Name of the distribution release for special handling of some releases.
 **/
-function CLCFG_writeM23fetchjob()
+function CLCFG_writeM23fetchjob($release = 'none')
 {
+	switch ($release)
+	{
+		case 'xenial':
+			$RequiredStart = "\\\$syslog \\\$remote_fs";
+			$RequiredStop = "\\\$syslog \\\$remote_fs";
+			$DefaultStart = "2 3 4 5";
+			break;
+		default:
+			$RequiredStart = "\\\$network \\\$local_fs";
+			$RequiredStop = "\\\$network \\\$local_fs";
+			$DefaultStart = "S";
+			break;
+	}
+
 echo("
 export > /CLCFG_writeM23fetchjob.log #üüü
 
@@ -3022,11 +3058,11 @@ echo \"#!/bin/bash
 
 ### BEGIN INIT INFO
 # Provides:   m23fetchjob
-# Required-Start:    \\\$network \\\$local_fs
-# Required-Stop:     \\\$network \\\$local_fs
-# Default-Start:     S
+# Required-Start:	$RequiredStart
+# Required-Stop:	$RequiredStop
+# Default-Start:	$DefaultStart
 # Default-Stop:
-# X-Interactive:     true
+# X-Interactive:	true
 # Short-Description: Fetches jobs from the m23 server
 ### END INIT INFO
 
@@ -3036,7 +3072,12 @@ echo \"#!/bin/bash
 
 if [ \`screen -ls | grep -c m23fetchjob\` -gt 1 ]
 then
-	exit
+	exit 0
+fi
+
+if [ \\$# -gt 0 ] && [ \\$1 != \"start\" ]
+then
+	exit 0
 fi
 
 m23fetchjob ".getServerIP()." \" > /etc/init.d/m23fetchjob
@@ -3066,8 +3107,16 @@ MFJEOF
 
 chmod 755 /sbin/m23fetchjob
 chmod +x /sbin/m23fetchjob
+
 \n
 ");
+
+	switch ($release)
+	{
+		case 'xenial':
+			echo("\nfind /etc/rc* | grep m23fetchjob | xargs rm\nupdate-rc.d m23fetchjob defaults\nsystemctl enable m23fetchjob\n");
+		break;
+	}
 }
 
 
@@ -3226,7 +3275,7 @@ for ($year = 11; $year <= date('y'); $year++)
 //Disable checks for Linux Mint 11 and above
 $greps .= ' || ( [ $(grep \'Mint\' /etc/issue -c) -gt 0 ] && [ $(sed \'s/[^0-9]//g\' /etc/issue) -gt 10 ] )';
 
-if ($disableSSLCertCheck)
+if ($disableSSLCertCheck || HELPER_isExecutedOnUCS())
 	$greps .= ' || true';
 
 echo("

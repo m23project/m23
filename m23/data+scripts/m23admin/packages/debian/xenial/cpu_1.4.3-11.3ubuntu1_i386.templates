@@ -1,0 +1,285 @@
+Template: cpu/do_debconf
+Type: boolean
+Default: true
+Description: Do you want to manage cpu's configuration through debconf?
+ Please confirm if you want to allow debconf to manage some parts of your
+ cpu.conf. Please note that any further manual changes to cpu.conf
+ will never be overwritten by debconf.
+Description-cs.UTF-8: Chcete spravovat konfiguraci cpu pomocí debconf?
+ Potvrďte, zda chcete povolit debconfu spravovat některé části cpu.conf. Poznamenejme, že debconf nikdy nepřepíše žádné další ručně provedené změny v cpu.conf.
+Description-da.UTF-8: Ønsker du at håndtere cpu's konfiguration igennem debconf?
+ Bekræft venligst om du ønsker at tillade, at debconf håndterer dele af din cpu.conf. Bemærk venligst at yderligere manuelle ændringer til cpu.conf aldrig vil blive overskrevet af debconf.
+Description-de.UTF-8: Sollen die Einstellungen für dieses Paket von debconf verwaltet werden?
+ Bitte stimmen Sie zu, wenn debconf einige Teile der Datei cpu.conf verwalten soll. Beachten Sie, dass Ihre eigenen Änderungen, durch Editieren der Datei cpu.conf, bei einem späteren Aufruf von debconf mittels dpkg-reconfigure nicht überschrieben werden.
+Description-es.UTF-8: ¿Desea gestionar la configuración de cpu mediante debconf?
+ Confirme si desea que debconf gestione algunas partes del archivo «cpu.conf». Tenga en cuenta que cualquier cambio que haga manualmente al archivo «cpu.conf» no se sobrescribirá más tarde por debconf.
+Description-fi.UTF-8: Hallinnoidaanko paketin cpu asetuksia debconfin avulla?
+ Valitse haluatko muokata debconfin avulla joitain tiedoston cpu.conf osia. Debconf ei tule koskaan kirjoittamaan minkään tämän jälkeen käsin tehtyjen muutosten päälle.
+Description-fr.UTF-8: Faut-il gérer la configuration de CPU avec debconf ?
+ Veuillez confirmer si vous souhaitez que debconf gère certaines parties de votre fichier cpu.conf. Notez que les modifications ultérieures que vous effectuerez directement dans le fichier ne seront jamais écrasées par debconf.
+Description-gl.UTF-8: Desexa xestionar a configuración de CPU mediante debconf?
+ Confirme que desexa permitirlle a debconf xestionar algunhas partes do seu cpu.conf. Lembre que debconf non sobrescribirá as modificacións que faga manualmente en cpu.conf.
+Description-it.UTF-8: Si vuole gestire la configurazione di cpu tramite debconf?
+ Confermare che si intende gestire alcune parti di cpu.conf tramite debconf. Nessuna delle modifiche effettuate manualmente al file cpu.conf sarà sovrascritta da debconf.
+Description-ja.UTF-8: cpu の設定を debconf で管理したいですか?
+ debconf で cpu のいくつかの箇所を管理したいのであれば、「はい」と答えてください。なお、cpu.conf への手動の変更は debconf によって上書きされることはないということに注意してください。
+Description-nl.UTF-8: Wilt u cpu's configuratie door debconf laten beheren?
+ Stem toe indien u debconf wilt toestaan delen van uw cpu.conf te laten beheren. Merk op dat veranderingen die u later handmatig aanbrengt in cpu.conf, nooit door debconf zullen worden overschreven.
+Description-pl.UTF-8: Czy konfiguracja cpu ma być zarządzana za pomocą debconfa?
+ Proszę potwierdzić, że debconf ma zarządzać częściowo plikiem cpu.conf. Proszę zauważyć, że żadne ręczne zmiany w tym pliku nie zostaną nigdy nadpisane przez debconf.
+Description-pt.UTF-8: Deseja gerir a configuração do cpu através do debconf?
+ Por favor confirme se pretende que o debconf faça a gestão de algumas partes do seu cpu.conf. Tome atenção que quaisquer alterações manuais ao cpu.conf não serão sobre-escritas pelo debconf.
+Description-pt_BR.UTF-8: Você deseja gerenciar a configuração do cpu através do debconf ?
+ Por favor, confirme se você deseja permitir ao debconf gerenciar algumas seções de seu arquivo cpu.conf. Por favor, note que quaisquer futuras mudanças manuais feitas no arquivo cpu.conf nunca serão sobreescritas pelo debconf.
+Description-ru.UTF-8: Управлять настройкой cpu через debconf?
+ Ответьте утвердительно, если хотите позволить debconf управлять некоторыми частями cpu.conf. Заметим, что все дальнейшие ручные изменения в cpu.conf никогда не будут перезаписаны debconf.
+Description-sk.UTF-8: Chcete spravovať nastavenie cpu pomocou debconf?
+ Prosím, potvrďte, že chcete dovoliť debconf, aby spravoval niektoré časti vášho cpu.conf. Prosím, pamätajte, že vaše neskoršie manuálne zmeny v cpu.conf nebudú nikdy prepísané pomocou debconf.
+Description-sv.UTF-8: Vill du låta debconf göra inställningarna för cpu?
+ Ange om du vill hantera delar av cpu.conf med hjälp av debconf. Kom ihåg att framtida eventuella ändringar i cpu.conf inte kommer att skrivas över av debconf.
+Description-vi.UTF-8: Bạn có muốn quản lý cấu hình của trình cpu thông qua debconf không?
+ Hãy xác nhận nếu bạn muốn cho phép trình debconf quản lý một số phần của cấu hình trình cpu. Ghi chú rằng nếu bạn tự sửa đổi cpu.conf lần sau, trình debconf sẽ không ghi đè lên nó.
+
+Template: cpu/ldap/LDAP_URI
+Type: string
+Default: ldap://localhost
+Description: LDAP server:
+ Please insert the URI of the LDAP server you plan to use with CPU. Use
+ the standard form of "ldap[s]://host[:port]". The default port value is
+ 389. Use ldaps if you intend to use a TLS encrypted connection.
+Description-cs.UTF-8: LDAP server:
+ Zadejte URI adresu LDAP serveru, který chcete používat s CPU. Použijte standardní formu "ldap[s]://host[:port]". Výchozí hodnota portu je 389. Použijte ldaps, pokud hodláte používat šifrované TLS spojení.
+Description-da.UTF-8: LDAP-server:
+ Indsæt venligst URI'en for LDAP-serveren, du ønsker at bruge med CPU. Brug standardformatet »ldap[s]://vært[:port]«. Standardporten er 389, brug ldaps hvis du forventer at bruge en TLS-krypteret forbindelse.
+Description-de.UTF-8: LDAP-Server:
+ Bitte geben Sie die URI des LDAP-Servers in der Form ldap[s]://host[:port] (Port 389 ist Standard) ein, den Sie für CPU benutzen wollen. Nehmen Sie ldaps, wenn Sie eine Verbindung mit TLS-Verschlüsselung nutzen.
+Description-es.UTF-8: Servidor de LDAP:
+ Introduzca la URI del servidor de LDAP que planea usar con CPU en la forma «ldap[s]://servidor[:puerto]». El puerto predeterminado es 389. Especifique ldaps si va a usar una conexión cifrada con TLS.
+Description-fi.UTF-8: LDAP-palvelin:
+ Anna CPU:n kanssa käytettävän LDAP-palvelimen URI. Käytä standardimuotoa ”ldap[s]://host[:port]”. Oletusportti on 389. Käytä skeemaa ldaps, jos yhteys aiotaan salata TLS:n avulla.
+Description-fr.UTF-8: Serveur LDAP :
+ Veuillez indiquer l'URI du serveur LDAP que vous souhaitez utiliser avec CPU. Vous devez utiliser la forme normalisée « ldap[s]@hôte[:port] ». Le port par défaut est 389. Utilisez « ldaps » si vous prévoyez d'utiliser une connexion chiffrée par TLS.
+Description-gl.UTF-8: Servidor LDAP:
+ Indique a URI do servidor LDAP que teña previsto empregar con CPU. Empregue a forma estándar «ldap[s]://servidor[:porto]». O valor predeterminado do porto é 389. Empregue ldaps se pretende empregar unha conexión cifrada mediante TLS.
+Description-it.UTF-8: Server LDAP:
+ Inserire l'URI del server LDAP che si intende amministrare con CPU. Usare il formato standard di "ldap[s]://host[:porta]". Il valore predefinito della porta è 389. Usare ldaps se si intende usare una connessione TLS criptata.
+Description-ja.UTF-8: LDAP サーバ:
+ CPU の利用を計画している LDAP サーバの URI を挿入してください。"ldap[s]://ホスト[:ポート]" の標準形式を使ってください。デフォルトポート値は 389 です。TLS 暗号化接続を使いたいのであれば、ldaps を使ってください。
+Description-nl.UTF-8: LDAP-server:
+ Geef de URI van de LDAP-server die u met CPU wilt gebruiken. Gebruik het standaardformaat "ldap[s]://host[:poort]". De standaard poortwaarde is 389. Gebruik ldaps als u van plan bent gebruik te maken van een TLS-versleutelde verbinding.
+Description-pl.UTF-8: Serwer LDAP:
+ Proszę wprowadzić URI serwer LDAP, który ma być używany z CPU. Proszę użyć standardowego formatu "ldap[s]://komputer[:port]". Domyślny port to 389. Proszę użyć ldaps, jeśli ma być wykorzystywane szyfrowane połączenie TLS.
+Description-pt.UTF-8: Servidor LDAP:
+ Por favor introduza o URI do servidor LDAP que pretende usar com o CPU. Utilize a forma standard: "ldap[s]://host[:port]". O porto por omissão é 389. Utilize ldaps se pretende utilizar uma ligação encriptada TLS.
+Description-pt_BR.UTF-8: Servidor LDAP :
+ Por favor, insira a URI do servidor LDAP que você planeja utilizar com o CPU. Utilize o formato padrão de "ldap[s]://host[:porta]". A valor padrão de porta é 398. Utilize ldaps caso você planeje utilizar uma conexão TLS encriptada.
+Description-ru.UTF-8: Сервер LDAP:
+ Укажите URI сервера LDAP, который вы планируете использовать с CPU. Стандартный формат: "ldap[s]://хост[:порт]". Значение порта по умолчанию равно 389. Укажите ldaps, если намереваетесь использовать шифрованное TLS-соединение.
+Description-sk.UTF-8: Server LDAP:
+ Prosím, zadajte URI servera LDAP, ktorý chcete použiť s CPU. Použite štandardný formát „ldap[s]://host[:port]”. Predvolená hodnota portu je 389. Použite ldaps, ak plánujete použiť šifrované spojenia TLS.
+Description-sv.UTF-8: LDAP-server:
+ Ange URI till LDAP-servern du kommer att använda tillsammans med CPU. Använd standardformatet "ldap[s]://värd[:port]". Standardporten är 389, använd ldaps om du kommer att använda TLS-kryptering för anslutningen.
+Description-vi.UTF-8: Máy chủ LDAP:
+ Hãy chèn địa chỉ Mạng của máy chủ LDAP bạn định sử dụng với trình cpu. Bạn nên sử dụng dạng thức chuẩn:
+ ldap[s]://máy[:cổng]
+ Giá trị cổng mặc định là 389. Hãy sử dụng «ldaps» nếu bạn định sử dụng sự kết nối được mật mã hóa cách TLS.
+
+Template: cpu/ldap/USER_BASE
+Type: string
+Description: Base DN of your user subtree:
+ Please enter the DN of the part of your directory that contains the users
+ you wish to manage with CPU.
+Description-cs.UTF-8: Základní DN podstromu uživatelů:
+ Zadejte DN (Distinguished Name) části adresáře, která obsahuje uživatele, které si přejete spravovat pomocí CPU.
+Description-da.UTF-8: Basis-DN for dit brugerundertræ:
+ Indtast venligst DN'en for den del af din mappe som indeholder brugerne, du ønsker at håndtere med CPU.
+Description-de.UTF-8: Basis-DN Ihres Benutzer-Unterverzeichnisses:
+ Bitte geben Sie den DN des Teils Ihres Verzeichnisses an, das die Benutzer enthält, die mit CPU verwaltet werden sollen.
+Description-es.UTF-8: DN base del subárbol de usuarios:
+ Introduzca el DN de la parte del directorio que contiene los usuarios que desea administrar con CPU.
+Description-fi.UTF-8: Käyttäjäalipuun erittelevä nimi (Base DN):
+ Anna sen hakemiston DN-osa, jossa olevia käyttäjiä CPU:lla aiotaan hallinnoida.
+Description-fr.UTF-8: Nom distinctif de la base (« base dn ») du sous-arbre des utilisateurs :
+ Veuillez indiquer le nom distinctif (DN) qui contient les utilisateurs que vous souhaitez gérer avec CPU.
+Description-gl.UTF-8: DN base da subárbore do usuario:
+ Indique o nome de dominio (DN) da parte do seu directorio que contén os usuarios que desexa xestionar mediante CPU.
+Description-it.UTF-8: DN di base del sottoramo degli utenti:
+ Inserire il DN della parte di directory LDAP che contiene gli utenti che si intende amministrare con CPU.
+Description-ja.UTF-8: あなたのユーザサブツリーのベース DN:
+ CPU で管理したいユーザを含むあなたのディレクトリの部分の DN を入力してください。
+Description-nl.UTF-8: Wat is de basis DN van uw gebruikers-boomstructuur?
+ Geef de DN van het deel van uw map die de gebruikers bevat die met CPU zullen worden beheerd.
+Description-pl.UTF-8: Bazowa DN poddrzewa użytkownika:
+ Proszę wprowadzić nazwę DN części swojego katalogu zawierającej użytkowników, którzy mają być zarządzani za pomocą CPU.
+Description-pt.UTF-8: Base DN da sub-árvore do seu utilizador:
+ Por favor introduza o DN do directório que contém os utilizadores que pretende que façam a gestão do CPU.
+Description-pt_BR.UTF-8: Base DN da subàrvore de seu usuário :
+ Por favor, informe o DN da parte de seu diretório que contém os usuários que você deseja gerenciar com o CPU.
+Description-ru.UTF-8: Базовый DN поддерева пользователей:
+ Введите DN части вашего каталога, содержащего пользователей, которыми вы хотите управлять с помощью CPU.
+Description-sk.UTF-8: Base DN podstromu vašich používateľov:
+ Prosím, zadajte DN časti vášho adresára, ktorý obsahuje používateľov, ktorých chcete spravovať pomocou CPU.
+Description-sv.UTF-8: Bas-DN för ditt användarträd:
+ Ange DN för den del av katalogen som innehållet användarna som du vill hantera med CPU.
+Description-vi.UTF-8: Tên thư mục cơ bản của cây con người dùng:
+ Hãy nhập tên thư mục (DN) của phần thư mục bạn chứa các người dùng mà bạn muốn quản lý dùng trình CPU.
+
+Template: cpu/ldap/GROUP_BASE
+Type: string
+Description: Base DN of your group subtree:
+ Please enter the DN of the part of your directory that contains the groups
+ you wish to manage with CPU.
+Description-cs.UTF-8: Základní DN podstromu skupin:
+ Zadejte DN (Distinguished Name) části adresáře, která obsahuje skupiny, které si přejete spravovat pomocí CPU.
+Description-da.UTF-8: Basis-DN for dit brugerundertræ:
+ Indtast venligst DN'en for den del af din mappe som indeholder grupperne, du ønsker at håndtere med CPU.
+Description-de.UTF-8: Basis-DN Ihres Gruppen-Unterverzeichnisses:
+ Bitte geben Sie den DN des Teils Ihres Verzeichnisses an, das die Gruppen enthält, die mit CPU verwaltet werden sollen.
+Description-es.UTF-8: DN base del subárbol de grupos:
+ Introduzca el DN de la parte del directorio que contiene los grupos que desea administrar con CPU.
+Description-fi.UTF-8: Ryhmäalipuun erittelevä nimi (Base DN):
+ Anna sen hakemiston DN-osa, jossa olevia ryhmiä CPU:lla aiotaan hallinnoida.
+Description-fr.UTF-8: Nom distinctif de la base (« base dn ») du sous-arbre des groupes :
+ Veuillez indiquer le nom distinctif (DN) de la partie de votre répertoire qui contient les groupes que vous souhaitez gérer avec CPU.
+Description-gl.UTF-8: DN base da subárbore do grupo:
+ Indique o nome de dominio (DN) da parte do seu directorio que contén os grupos que desexa xestionar mediante CPU.
+Description-it.UTF-8: DN di base del sottoramo dei gruppi:
+ Inserire il DN della parte di directory LDAP che contiene i gruppi che si  intende amministrare con CPU.
+Description-ja.UTF-8: あなたのグループサブツリーのベースDN:
+ CPU で管理したいグループを含むあなたのディレクトリの部分の DN を入力してください。
+Description-nl.UTF-8: Wat is de basis DN van uw groepen-boomstructuur?
+ Geef de DN van het deel van uw map die de groepen bevat die met CPU zullen worden beheerd.
+Description-pl.UTF-8: Bazowa DN grupy poddrzewa użytkownika:
+ Proszę wprowadzić nazwę DN części swojego katalogu zawierającej grupy, które mają być zarządzane za pomocą CPU.
+Description-pt.UTF-8: Base DN da sub-árvore do seu grupo:
+ Por favor introduza o DN do directório que contém os grupos que pretende que façam a gestão do CPU.
+Description-pt_BR.UTF-8: Base DN da subàrvore de seu grupo :
+ Por favor, informe o DN da parte de seu diretório que contém os grupos que você deseja gerenciar com o CPU.
+Description-ru.UTF-8: Базовый DN поддерева групп:
+ Введите DN части вашего каталога, содержащего группы, которыми вы хотите управлять с помощью CPU.
+Description-sk.UTF-8: Base DN podstromu vašich skupín:
+ Prosím, zadajte DN časti vášho adresára, ktorý obsahuje skupiny, ktoré chcete spravovať pomocou CPU.
+Description-sv.UTF-8: Bas-DN för ditt gruppträd:
+ Ange DN för den del av katalogen som innehåller de grupper du vill hantera med CPU.
+Description-vi.UTF-8: Tên thư mục cơ bản của cây con nhóm:
+ Hãy nhập tên thư mục (DN) của phần thư mục bạn chứa các nhóm mà bạn muốn quản lý dùng trình CPU.
+
+Template: cpu/ldap/BIND_DN
+Type: string
+Description: LDAP user DN:
+ Please insert the DN of the user CPU will bind to the LDAP server with.
+ Usually this will be your LDAP admin DN, but can be any other DN, as long
+ as it is configured to have full control over at least the subtree under
+ the base you selected before.
+ .
+ Example: "cn=admin,dc=domain,dc=tld"
+Description-cs.UTF-8: DN uživatele LDAP:
+ Zadejte DN uživatele, pod kterým se bude CPU připojovat k LDAP serveru. Obvykle to bývá DN správce LDAP, ale může to být jakékoliv jiné DN, pokud je nastaveno na plnou kontrolu nad přinejmenším těmi podstromy pod základnímy DN, které jste dříve zadali.
+ .
+ Příklad: "cn=admin,dc=domain,dc=tld"
+Description-da.UTF-8: Bruger-DN for LDAP:
+ Indsæt venligst DN'en for brugeren som CPU vil forbinde til LDAP-serveren med. Det vil normalt være din LDAP admin-DN, men kan være enhver DN, så længe den er konfigureret til at have fuld kontrol over i det mindste undertræet under basisen du valgte før.
+ .
+ Eksempel: »cn=admin,dc=domain,dc=tld«
+Description-de.UTF-8: LDAP-Benutzer DN:
+ Bitte geben Sie den DN des Benutzers ein, als der sich CPU mit dem LDAP-Server verbinden soll. Normalerweise ist das der DN des LDAP-Administrators, aber es kann jeder andere DN sein, wenn er zumindest so eingerichtet ist, dass er die volle Kontrolle über die Unterverzeichnisse hat, die Sie vorhin als Basis eingeben haben.
+ .
+ Beispiel: "cn=admin,dc=domain,dc=tld"
+Description-es.UTF-8: DN del usuario de LDAP:
+ Introduzca el DN del usuario que CPU usará para conectar al servidor de LDAP. Normalmente, será su DN del administrador de LDAP, pero puede ser cualquier otro DN, siempre y cuando esté configurado para tener control total al menos sobre el subárbol dentro de la base que seleccionó antes.
+ .
+ Ejemplo: «cn=admin,dc=dominio,dc=tld»
+Description-fi.UTF-8: LDAP-käyttäjätunnuksen erittelevä nimi:
+ Anna sen käyttäjän erittelevä nimi, jonka avulla CPU ottaa yhteyttä LDAP-palvelimeen. Yleensä tämä on LDAP:in admin DN, mutta se voi olla mikä tahansa muukin DN, kunhan sillä on täydet oikeudet hallinnoida aiemmin annettuja alipuita.
+ .
+ Esimerkki: "cn=admin,dc=domain,dc=tld"
+Description-fr.UTF-8: Nom distinctif (DN) de l'utilisateur LDAP :
+ Veuillez indiquer le nom distinctif (DN) de l'utilisateur dont se servira CPU pour se connecter au serveur LDAP. Ce sera en général celui de votre administrateur LDAP. Cela n'est toutefois pas indispensable, à condition que cette identité ait le contrôle total sur l'ensemble du sous-répertoire indiqué précédemment.
+ .
+ Exemple : « cn=admin,dc=domain,dc=tld ».
+Description-gl.UTF-8: DN do usuario de LDAP:
+ Indique o DN do usuario co que CPU ha conectarse ao servidor LDAP. Polo xeral será o DN do administrador de LDAP, pero pode ser outro DN que estea configurado para ter control completo sobre polo menos a subárbore baixo a base que escollese antes.
+ .
+ Exemplo: «cn=admin,dc=dominio,dc=tld»
+Description-it.UTF-8: LDAP user DN:
+ Inserire il DN con il quale si intende connettersi al server LDAP. Questo normalmente sarà il DN dell'amministratore LDAP, ma potrebbe essere un qualsiasi altro utente, purchè sia configurato per avere pieno controllo nei sottorami scelti precedentemente.
+ .
+ Esempio: "cn=admin,dc=domain,dc=tld"
+Description-ja.UTF-8: LDAP ユーザ DN:
+ CPU が LDAP サーバにバインドするのに使うユーザの DN を挿入してください。通常これは、あなたの LDAP admin の DN ですが、少なくともあなたが選択したベースより前のサブツリーの完全な制御ができるよう設定されてさえいれば、ほかの DN にもできます。
+ .
+ 例: "cn=admin,dc=domain,dc=tld"
+Description-nl.UTF-8: DN van de LDAP-gebruiker:
+ Geef de DN van de gebruiker waarmee CPU met de LDAP-server zal verbinden. Meestal zal dit de DN van de LDAP-beheerder zijn, maar het kan elke andere DN zijn, mits die volledige toegang heeft tot het deel van de boomstructuur onder de eerder geselecteerde basis.
+ .
+ Voorbeeld: "cn=beheerder,dc=domein,dc=be"
+Description-pl.UTF-8: DN użytkownika LDAP:
+ Proszę wprowadzić nazwę DN użytkownika, który zostanie podpięty do serwera LDAP. Jest to zwykle DN administratora LDAP, jednak może być również inną DN, jeśli tylko jest ona skonfigurowane aby mieć pełny dostęp przynajmniej do poddrzewa bazy, którą wybrano wcześniej.
+ .
+ Przykład: "cn=admin,dc=domain,dc=tld"
+Description-pt.UTF-8: DN do utilizador LDAP:
+ Por favor introduza o DN do utilizador CPU que irá ligar ao servidor LDAP.Normalmente será o DN do administrador LDAP, mas pode ser qualquer outro DN desde que esteja configurado para ter controlo total sobre a sub-árvore da base que seleccionou anteriormente.
+ .
+ Exemplo: "cn=admin,dc=domain,dc=tld"
+Description-pt_BR.UTF-8: DN do usuário LDAP :
+ Por favor, insira o DN do usuário que o CPU utilizará para se conectar ao servidor LDAP. Normalmente, este será o seu DN administrativo do LDAP, mas pode ser qualquer outro DN, contanto que o mesmo esteja configurado para ter controle total sobre pelo menos a subàrvore sob a base que você selecionou previamente.
+ .
+ Exemplo : "cn=admin,dc=dominio,dc=tld"
+Description-ru.UTF-8: DN пользователя в LDAP:
+ Введите DN пользователя, которым CPU будет подключаться к серверу LDAP. Обычно, это DN admin, но может быть и другой DN, которому предоставлены все права, как минимум, над частью дерева, указанной ранее.
+ .
+ Пример: "cn=admin,dc=domain,dc=tld"
+Description-sk.UTF-8: DN používateľa LDAP:
+ Prosím, zadajte DN používateľa, pod ktorým sa bude bude CPU prihlasovať (bind) k serveru LDAP. Zvyčajne to je DN správcu vášho LDAP, ale môže to byť aj iné DN, pokiaľ má povolený na úplný prístup, minimálne do podstromov, zvolených skôr.
+ .
+ Príklad: "cn=admin,dc=doména,dc=sk"
+Description-sv.UTF-8: Användar-DN för LDAP:
+ Ange det DN som CPU-användaren kommer att använda för att ansluta till LDAP-servern. Vanligen är detta din LDAP-admin-DN men det kan vara vilken DN som helst om den har full kontroll på åtminstone de underträd som du angav tidigare.
+ .
+ Exempel: "cn=admin,dc=domain,dc=tld"
+Description-vi.UTF-8: Tên thư mục người dùng LDAP:
+ Hãy chèn vào đây tên thư mục (DN) của người dùng mà trình CPU sẽ sử dụng để đóng kết đến máy chủ LDAP. Thường nó là tên thư mục quản lý LDAP của bạn, nhưng mà nó có thể là bất cứ tên thư mục nào khác, với điều kiện là nó được cấu hình để điều khiển hoàn thành ít nhất cây con dưới cơ bản mà bạn đã chọn trước này.
+ .
+ Ví dụ: «cn=admin,dc=domain,dc=tld»
+
+Template: cpu/ldap/BIND_PASS
+Type: password
+Description: LDAP password:
+ Please enter the password to use when binding to the LDAP directory. Note
+ that this password will be stored in cleartext in your /etc/cpu/cpu.conf
+ file, so don't let that file became readable to anyone you don't want to
+ give the same power of the user cpu will bind with.
+Description-cs.UTF-8: Heslo pro LDAP:
+ Zadejte heslo pro připojení k LDAP adresáři. Uvědomte si, že toto heslo bude uloženo v čitelné podobě v souboru /etc/cpu/cpu.conf, nenechte tedy tento soubor čitelný pro kohokoliv, komu nechcete dát moc stejnou jako uživateli, pod kterým se bude cpu připojovat.
+Description-da.UTF-8: LDAP-adgangskode:
+ Indtast venligst adgangskoden der skal bruges for at binde til LDAP-mappen. Bemærk at denne adgangskode vil blive gemt i klartekst i filen /etc/cpu/cpu.conf, så den fil må ikke kunne læses af folk, du ikke ønsker at give samme rettigheder, som brugeren cpu vil binde sig med.
+Description-de.UTF-8: LDAP-Passwort:
+ Bitte geben Sie das Passwort für die Verbindung zum LDAP-Server ein. Beachten Sie, dass dieses Passwort im Klartext in der Datei /etc/cpu/cpu.conf gespeichert wird. Diese Datei sollte nicht von Benutzern zu lesen sein, denen Sie nicht die gleichen Rechte einräumen wollen, wie dem Benutzer, der sich mit dem LDAP-Server verbindet.
+Description-es.UTF-8: Contraseña de LDAP:
+ Introduzca la contraseña que utilizará para conectar al directorio LDAP. Tenga en cuenta que esta contraseña se almacenará en texto plano en el archivo «/etc/cpu/cpu.conf», por lo que no deje que este archivo tenga permisos de lectura para nadie a quien no quiera darle el mismo poder que tendrá el usuario de cpu.
+Description-fi.UTF-8: LDAP-tunnuksen salasana:
+ Anna salasana, jota käytetään otettaessa yhteyttä LDAP-hakemistoon. Tämä salasana kirjoitetaan selväkielisenä tiedostoon /etc/cpu/cpu.conf, joten varmista että tiedoston käyttöoikeudet ovat kunnossa.
+Description-fr.UTF-8: Mot de passe LDAP :
+ Veuillez indiquer le mot de passe qui sera utilisé pour la connexion au serveur LDAP. Veuillez noter que ce mot de passe sera conservé en clair dans le fichier /etc/cpu/cpu.conf. Ne laissez donc pas ce fichier accessible en lecture à tous les utilisateurs.
+Description-gl.UTF-8: Contrasinal de LDAP:
+ Indique o contrasinal que se ha empregar para conectar co directorio LDAP. Lembre que se garda como texto simple no ficheiro /etc/cpu/cpu.conf, polo que non debe permitir que ese ficheiro sexa lexíbel por ninguén a quen non lle queira dar o mesmo poder co que se conectará o usuario cpu.
+Description-it.UTF-8: Password LDAP:
+ Inserire la password da usare per connettersi alla directory LDAP. Questa password sara` conservata in chiaro nel file /etc/cpu/cpu.conf, quindi non permettere che tale file possa esser letto da nessuno a cui non si voglia dare lo stesso potere dell'utente che cpu userà per collegarsi a LDAP.
+Description-ja.UTF-8: LDAP パスワード:
+ CPU が LDAP サーバにバインドするのに使うパスワードを入力してください。このパスワードは、/etc/cpu/cpu.conf に暗号化されていないテキストで格納されることに注意してください。cpu がバインドするのと同じ力をユーザに与えてしまわないよう、このファイルを全員に読み取り可能にしてはなりません。
+Description-nl.UTF-8: LDAP-wachtwoord:
+ Geen het wachtwoord om te verbinden met de LDAP-map. Let er op dat dit wachtwoord onversleuteld wordt opgeslagen in uw /etc/cpu/cpu.conf-bestand: maak en houd dit bestand onleesbaar voor onbevoegden.
+Description-pl.UTF-8: Hasło LDAP:
+ Proszę wprowadzić hasło, które będzie użyte do podpięcia do katalogu LDAP. Proszę zauważyć, że będzie ono przechowywane jako jawny tekst w pliku /etc/cpu/cpu.conf, więc nie należy pozwolić na uczynienie tego pliku oddczytywalnym dla kogokolwiek, kto nie powinien posiadać tych samych uprawnień co podpięty użytkownik cpu.
+Description-pt.UTF-8: Password LDAP:
+ Por favor introduza a password a usar quando ligar ao directório LDAP. Note que esta password será armazenada em texto no ficheiro /etc/cpu/cpu.conf, por isso não permita que seja lido por alguém que não queira.
+Description-pt_BR.UTF-8: Senha LDAP :
+ Por favor, informe a senha a ser usada para conexão ao diretório LDAP. Note que essa senha será armazenada em texto puro em seu arquivo /etc/cpu/cpu.conf, portanto, não deixe esse arquivo legível para ninguém para quem você não queira dar o mesmo poder do usuário com o qual o cpu irá se conectar ao LDAP.
+Description-ru.UTF-8: Пароль к LDAP:
+ Введите пароль, который будет использоваться для подключения к каталогу LDAP. Заметим, что пароль будет сохранён в нешифрованном виде в файле /etc/cpu/cpu.conf, поэтому не допускайте его чтение посторонними, если не хотите предоставить им возможности пользователя cpu в каталоге LDAP.
+Description-sk.UTF-8: Heslo LDAP:
+ Prosím, zadajte heslo, ktoré bude použité na prihlásenie (binding) k adresáru LDAP. Pozor, toto heslo bude uložené ako prostý text v súbore /etc/cpu/cpu.conf, preto nenechajte tento súbor čitateľný pre všetkých, ktorý budú chcieť získať rovnaké práva, s akými sa prihlasuje cpu.
+Description-sv.UTF-8: LDAP-lösenord:
+ Ange lösenordet som ska användas för att ansluta till LDAP-katalogen. Detta lösenord kommer att sparas i klartext i filen /etc/cpu/cpu.conf så tillse att den filen inte kan läsas av obehöriga.
+Description-vi.UTF-8: Mật khẩu LDAP:
+ Hãy nhập mật khẩu để sử dụng khi đóng kết đến thư mục LDAP. Ghi chú rằng sẽ cất giữ mật khẩu này có dạng chữ rõ, vào tập tin /etc/cpu/cpu.conf của bạn. Như thế thì bạn nên ngăn cản người khác có quyền đọc tập tin ấy, trừ bạn muốn cho phép họ có cùng quyền của người dùng mà trình cpu sẽ đóng kết với họ.

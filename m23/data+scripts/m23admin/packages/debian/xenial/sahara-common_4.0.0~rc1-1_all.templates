@@ -1,0 +1,162 @@
+
+Template: sahara/configure_db
+Type: boolean
+Default: false
+Description: Set up a database for Sahara?
+ No database has been set up for Sahara to use. Before
+ continuing, you should make sure you have the following information:
+ .
+  * the type of database that you want to use;
+  * the database server hostname (that server must allow TCP connections from this
+    machine);
+  * a username and password to access the database.
+ .
+ If some of these requirements are missing, do not choose this option and run with
+ regular SQLite support.
+ .
+ You can change this setting later on by running "dpkg-reconfigure -plow
+ sahara-common".
+Description-fr.UTF-8: Faut-il paramétrer une base de données pour Sahara ?
+ Aucune base de données n'a été paramétrée pour Sahara. Avant de poursuivre, vous devriez vous assurer d'avoir les informations suivantes :
+ .
+  - Le type de base de données que vous souhaitez utiliser ;
+  - le nom d'hôte du serveur de base de données (ce serveur
+    doit accepter les connexions TCP depuis cette machine) ;
+  - un nom d'utilisateur et un mot de passe pour accéder à
+    cette base de données.     
+ .
+ Si certains de ces prérequis sont manquants, ignorez cette option et exécutez l'application avec le support SQLite normal.
+ .
+ Vous pouvez modifier ce réglage plus tard en lançant « dpkg-reconfigure -plow sahara-common ».
+Description-nl.UTF-8: Een database opzetten voor Sahara?
+ Er werd nog geen database opgezet om door Sahara gebruikt te worden. Zorg er voor dat u de volgende informatie bij de hand heeft vooraleer verder te gaan:
+ .
+  * het type database dat u wilt gebruiken;
+  * de computernaam van de databaseserver (die server moet
+    TCP-verbindingen vanaf deze computer toestaan);
+  * een gebruikersnaam en een wachtwoord om toegang te krijgen tot de database.
+ .
+ Indien niet aan al deze vereisten voldaan is, zou u deze optie niet moeten kiezen en gebruik moeten maken van de reguliere SQLite-ondersteuning.
+ .
+ U kunt deze instelling later wijzigen door het uitvoeren van de opdracht "dpkg-reconfigure -plow sahara-common".
+Description-pt.UTF-8: Configurar uma base de dados para o Sahara?
+ Nenhuma base de dados foi configurada para o Sahara usar. Antes de continuar, você deve certificar-se que tem a seguinte informação:
+ .
+  * o tipo de base de dados que deseja usar;
+  * o nome de máquina do servidor da base de dados (esse servidor deve permitir ligações TCP a partir desta
+    máquina);
+  * um nome de utilizador e palavra passe para aceder à base de dados.
+ .
+ Se alguns destes requerimentos estão em falta, não escolha esta opção e corra com o suporte SQLite regular.
+ .
+ Você pode modificar estas definições mais tarde ao correr "dpkg-reconfigure -plow sahara-common".
+
+Template: sahara/auth-host
+Type: string
+Default: 127.0.0.1
+Description: Authentication server hostname:
+ Please specify the hostname of the authentication server. Typically
+ this is also the hostname of the OpenStack Identity Service (Keystone).
+Description-fr.UTF-8: Nom d'hôte du serveur d'authentification :
+ Veuillez indiquer le nom d'hôte du serveur d'authentification. En général, il s'agit du nom d'hôte du Service d'Identité OpenStack (Keystone).
+Description-nl.UTF-8: Computernaam van de authenticatieserver:
+ Geef de computernaam van de authenticatieserver op. Meestal is dit ook de computernaam van de OpenStack Identiteitsdienst (Keystone).
+Description-pt.UTF-8: Nome de máquina do servidor de autenticação:
+ Por favor especifique o nome de máquina do servidor de autenticação. Tipicamente este é também o nome de máquina do Serviço de Identidade OpenStack (Keystone).
+
+Template: sahara/admin-tenant-name
+Type: string
+Default: admin
+Description: Authentication server tenant name:
+ Please specify the authentication server tenant name.
+Description-fr.UTF-8: Nom d'espace client du serveur d'authentification :
+ Veuillez indiquer le nom d'espace client du serveur d'authentification.
+Description-nl.UTF-8: Naam van de clientruimte (tenant) op de authenticatieserver:
+ Geef de naam op van de clientruimte (tenant) op de authenticatieserver.
+Description-pt.UTF-8: Nome "tenant" do servidor de autenticação:
+ Por favor especifique o nome "tenant" do servidor de autenticação.
+
+Template: sahara/admin-user
+Type: string
+Default: admin
+Description: Authentication server username:
+ Please specify the username to use with the authentication server.
+Description-fr.UTF-8: Nom d'utilisateur du serveur d'authentification :
+ Veuillez indiquer le nom d'utilisateur à utiliser sur le serveur d'authentification.
+Description-nl.UTF-8: Gebruikersnaam op de authenticatieserver:
+ Vermeld de gebruikersnaam die op de authenticatieserver gebruikt zal worden.
+Description-pt.UTF-8: Nome de utilizador do servidor de autenticação:
+ Por favor especifique o nome de utilizador a usar com o servidor de autenticação.
+
+Template: sahara/admin-password
+Type: password
+Description: Authentication server password:
+ Please specify the password to use with the authentication server.
+Description-fr.UTF-8: Mot de passe du serveur d'authentification :
+ Veuillez indiquer le mot de passe à utiliser sur le serveur d'authentification.
+Description-nl.UTF-8: Wachtwoord op de authenticatieserver:
+ Vermeld het wachtwoord dat op de authenticatieserver gebruikt zal worden.
+Description-pt.UTF-8: Palavra passe do servidor de autenticação:
+ Por favor especifique a palavra passe a usar com o servidor de autenticação.
+
+Template: sahara/rabbit_host
+Type: string
+Default: localhost
+Description: IP address of your RabbitMQ host:
+ In order to interoperate with other components of OpenStack, this package
+ needs to connect to a central RabbitMQ server.
+ .
+ Please specify the IP address of that server.
+Description-fr.UTF-8: Adresse IP de votre hôte RabbitMQ :
+ Afin de pouvoir interagir avec d'autres composants d'OpenStack, ce paquet doit se connecter à un serveur centralisé RabbitMQ.
+ .
+ Veuillez indiquer l'adresse IP de ce serveur.
+Description-nl.UTF-8: IP-adres van uw RabbitMQ-computer:
+ Om met andere componenten van OpenStack te kunnen samenwerken, moet dit pakket een verbinding maken met een centrale RabbitMQ-server.
+ .
+ Gelieve het IP-adres van die server op te geven.
+Description-pt.UTF-8: Endereço IP da sua máquina RabbitMQ:
+ De modo a interagir com outros componentes do OpenStack, este pacote precisa de ligar a um servidor RabbitMQ central.
+ .
+ Por favor especifique o endereço IP desse servidor.
+
+Template: sahara/rabbit_userid
+Type: string
+Default: guest
+Description: Username for connection to the RabbitMQ server:
+ In order to interoperate with other components of OpenStack, this package
+ needs to connect to a central RabbitMQ server.
+ .
+ Please specify the username used to connect to the RabbitMQ server.
+Description-fr.UTF-8: Nom d'utilisateur pour la connexion au serveur RabbitMQ :
+ Afin de pouvoir interagir avec d'autres composants d'OpenStack, ce paquet doit se connecter à un serveur centralisé RabbitMQ.
+ .
+ Veuillez indiquer le nom d'utilisateur à utiliser pour se connecter au serveur RabbitMQ.
+Description-nl.UTF-8: Gebruikersnaam voor de verbinding met de RabbitMQ-server:
+ Om met andere componenten van OpenStack te kunnen samenwerken, moet dit pakket een verbinding maken met een centrale RabbitMQ-server.
+ .
+ Vermeld de gebruikersnaam waarmee verbinding gemaakt wordt met de RabbitMQ-server.
+Description-pt.UTF-8: Nome de utilizador para ligação ao servidor RabbitMQ:
+ De modo a interagir com outros componentes do OpenStack, este pacote precisa de ligar a um servidor RabbitMQ central.
+ .
+ Por favor especifique o nome de utilizador a usar para ligação ao servidor RabbitMQ.
+
+Template: sahara/rabbit_password
+Type: password
+Description: Password for connection to the RabbitMQ server:
+ In order to interoperate with other components of OpenStack, this package
+ needs to connect to a central RabbitMQ server.
+ .
+ Please specify the password used to connect to the RabbitMQ server.
+Description-fr.UTF-8: Mot de passe pour la connexion au serveur RabbitMQ :
+ Afin de pouvoir interagir avec d'autres composants d'OpenStack, ce paquet doit se connecter à un serveur centralisé RabbitMQ.
+ .
+ Veuillez indiquer le mot de passe à utiliser pour se connecter au serveur RabbitMQ.
+Description-nl.UTF-8: Wachtwoord voor de verbinding met de RabbitMQ-server:
+ Om met andere componenten van OpenStack te kunnen samenwerken, moet dit pakket een verbinding maken met een centrale RabbitMQ-server.
+ .
+ Geef op welk wachtwoord gebruikt wordt om verbinding te maken met de RabbitMQ-server.
+Description-pt.UTF-8: Palavra passe para ligação ao servidor RabbitMQ:
+ De modo a interagir com outros componentes do OpenStack, este pacote precisa de ligar a um servidor RabbitMQ central.
+ .
+ Por favor especifique a palavra passe a usar para ligação ao servidor RabbitMQ.

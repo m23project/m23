@@ -1,0 +1,86 @@
+
+Template: ganeti-2.15/abort-removal
+Type: boolean
+Default: true
+Description: Abort ${package} removal?
+ You are attempting to remove ${package}, but it seems that the running Ganeti
+ version is still ${version}.
+ .
+ This can happen if you upgrade the ganeti package to a new minor version, but
+ have not run "gnt-cluster upgrade" yet. Removing ${package} will cause Ganeti to
+ stop functioning correctly.
+ .
+ It is highly recommended to abort the removal now and upgrade the cluster before
+ removing ${package}.
+Description-cs.UTF-8: Přerušit odstraňování ${package}?
+ Pokoušíte se odstranit ${package}, vypadá to ale, že je spuštěná verze Ganeti je stále ještě ve verzi ${version}.
+ .
+ Toto mohlo nastat, pokud jste aktualizovali balíček ganeti na novější minoritní verzi, ale ještě jste nespustili "gnt-cluster upgrade". Odstranění ${package} způsobí, že Ganeti přestane správně fungovat.
+ .
+ Před odstraněním ${package} se důrazně doporučuje přerušit odstraňování a aktualizovat cluster.
+Description-da.UTF-8: Om fjernelse af ${package}?
+ Du forsøger at fjerne ${package}, men det ser ud til, at den kørende Ganetiversion stadig er ${version}.
+ .
+ Dette kan ske, hvis du opgraderer pakken ganeti til en ny mindre version, men endnu ikke har kørt »gnt-cluster upgrade«. Fjernelse af ${package} vil medføre at Ganeti stopper med at fungere korrekt.
+ .
+ Det anbefales på det kraftigste at afbryde fjernelsen nu og opgradere klyngen før fjernelse af ${package}.
+Description-de.UTF-8: Entfernen von ${package} abbrechen?
+ Sie versuchen ${package} zu entfernen, aber die ausgeführte Ganeti-Version scheint noch ${version} zu sein.
+ .
+ Das kann geschehen, wenn Sie das Ganeti-Paket auf eine neue Minor-Version aktualisieren, aber noch nicht »gnt-cluster-upgrade« ausgeführt haben. ${package} zu entfernen, wird dazu führen, dass Ganeti nicht mehr richtig funktioniert. 
+ .
+ Es wird dringend empfohlen, das Entfernen nun abzubrechen und den Cluster zu aktualisieren, bevor ${package} entfernt wird.
+Description-es.UTF-8: ¿Desea abortar la eliminación de ${package}?
+ Está intentando eliminar ${package} pero parece que la versión de Ganeti en ejecución es aún la ${version}.
+ .
+ Esto puede suceder cuando actualiza el paquete ganeti a una versión menor y todavía no ha ejecutado «gnt-cluster upgrade». Si elimina ${package}, Ganeti no funcionará correctamente.
+ .
+ Se recomienda encarecidamente que aborte ahora y actualice el clúster antes de eliminar ${package}.
+Description-fr.UTF-8: Faut-il abandonner la suppression de ${package} ?
+ Vous êtes en train d'essayer de supprimer ${package}, mais il semble que la version installée de Ganeti soit toujours ${version}.
+ .
+ Cela peut arriver si vous mettez à jour le paquet ganeti vers une nouvelle version mineure, sans avoir au préalable lancé « gnt-cluster upgrade ». La suppression de ${package} empêchera Ganeti de fonctionner correctement.
+ .
+ Il est fortement recommandé d'abandonner la suppression maintenant et de mettre à jour la grappe avant de désinstaller ${package}.
+Description-it.UTF-8: Abbandonare la rimozione di ${package}?
+ Si sta cercando di rimuovere ${package}, ma sembra che la versione di Ganeti in esecuzione sia sempre la ${version}.
+ .
+ Ciò può succedere se il pacchetto ganeti viene aggiornato ad una nuova versione minore ma non è stato ancora eseguito «gnt-cluster upgrade». La rimozione di ${package} farà sì che Ganeti non funzioni più in modo corretto.
+ .
+ È caldamente raccomandato abbandonare la rimozione adesso e aggiornare il cluster prima di rimuovere ${package}.
+Description-ja.UTF-8: ${package} の削除を中止しますか?
+ ${package} を削除しようとしていますが、まだ Ganeti バージョン ${version} を実行中のようです。
+ .
+ これは ganeti パッケージを番号の小さい新しいバージョンにアップグレードし、「gnt-cluster upgrade」を実行していない場合に起きることがあります。${package} を削除すると Ganeti は正常に機能しなくなります。
+ .
+ 削除をここで中止し、${package} を削除する前にクラスタをアップグレードすることを強く勧めます。
+Description-nl.UTF-8: Verwijderen van ${package} afbreken?
+ U probeert ${package} te verwijderen, maar het ziet er naar uit dat de actieve versie van Ganeti nog altijd ${version} is.
+ .
+ Dit fenomeen kan zich voordoen als u het pakket ganeti opwaardeert naar een nieuwe onderversie, maar nog niet de opdracht "gnt-cluster upgrade" uitgevoerd heeft. Als u ${package} verwijdert zal Ganeti niet langer correct functioneren.
+ .
+ Het wordt stellig aanbevolen om nu het verwijderen af te breken en eerst de cluster op te waarderen voor u ${package} verwijdert.
+Description-pl.UTF-8: Przerwać usuwanie ${package}?
+ Wybrano usunięcie pakietu ${package}, lecz wszystko wskazuje na to, że Ganeti działa wciąż w wersji ${version}.
+ .
+ Może się to zdarzyć przy aktualizacji pakietu ganeti do nowego wydania poprawkowego, gdy nie uruchomiono jeszcze skryptu "gnt-cluster upgrade". Usunięcie pakietu ${package} spowoduje zakłócenie poprawnej pracy Ganeti.
+ .
+ Zaleca się przerwać operację usuwania pakietu i zaktualizować klaster przed kontynuowaniem usuwania ${package}.
+Description-pt.UTF-8: Abortar a remoção do ${package}?
+ Você está a tentar remover o ${package}, mas parece que a versão de Ganeti em execução é ainda ${version}.
+ .
+ Isto pode acontecer se você actualizou o pacote ganeti para uma nova versão menor, mas ainda não correu "gnt-cluster upgrade". Remover o ${package} irá fazer com que o Ganeti pare de funcionar correctamente.
+ .
+ É altamente recomendado aborta a remoção agora e actualizar o cluster antes de remover o ${package}.
+Description-ru.UTF-8: Прервать удаление ${package}?
+ Вы пытаетесь удалить ${package}, но кажется, что сейчас запущена версия Ganeti ${version}.
+ .
+ Это могло случиться, если вы обновили пакет ganeti новой промежуточной (minor) версией, но ещё не запускали «gnt-cluster upgrade». Удаление ${package} приведёт прекращению корректной работы Ganeti.
+ .
+ Настоятельно рекомендуется прервать удаление ${package} и обновить кластер.
+Description-sv.UTF-8: Avbryt radering av ${package}?
+ Du försöker ta bort ${package} men det verkar som att Ganeti kör version ${version} fortfarande.
+ .
+ Detta kan inträffa vid en mindre uppdatering av ganeti-paketet utan att ha kört "gnt-cluster upgrade" än. Tas ${package} bort kommer Ganeti att sluta fungera korrekt.
+ .
+ En stark rekommendation är att avbryta raderingen nu och uppgradera klustret innan ${package} tas bort.
