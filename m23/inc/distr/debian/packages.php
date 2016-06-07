@@ -243,6 +243,9 @@ function PKG_convertPackagesToRepository($poolDir, $logFile, $poolName, &$source
 	rm *.gif *.htm* Packages.* 2> /dev/null
 	touch tempmkpackages
 
+	# Remove [0-9]%.. from the filenames
+	ls *.deb | grep \'%\' | awk \'{o=$1; gsub("[0-9]%..", ""); print("mv \""o"\" \""$1"\"");}\' | bash
+
 	#Make the Packages index file (and generate compressed versions)
 	dpkg-scanpackages -m . tempmkpackages | grep -v "Depends: $" | sed \'s/%/%25/g\'> Packages
 	gzip -c Packages > Packages.gz
@@ -704,15 +707,6 @@ function PKG_preparePackageDir($dir,$packagesource,$logFile="",$returnCmd=false,
 	if (!file_exists($dir))
 		exec("mkdir -p '$dir'");
 
-	foreach(array("$dir/lists/partial", "$dir/apt.conf.d", "$dir/archivs/partial", "$dir/preferences.d") as $testDir)
-	{
-		if (!file_exists($testDir))
-			exec("mkdir -p '$testDir'");
-	}
-
-	if (!file_exists("$dir/lists/lock"))
-		exec("touch '$dir/lists/lock'");
-
 	exec("touch '$dir/status'");
 
 	//if there is no sources.list, generate it from the db
@@ -721,13 +715,33 @@ function PKG_preparePackageDir($dir,$packagesource,$logFile="",$returnCmd=false,
 		exec("cat >> '$dir/sources.list' << \"EOF\"
 $packagesource\ndeb http://127.0.0.1/extraDebs/ ./
 EOF");
-	};
+	}
 
 	if ($sourceName !== false)
 		PKG_addAPTConfigFiles($sourceName, "$dir");
 
+// 	'$dir/lists/partial'
+
 	//update the package information
-	$cmd = "export LANG=\"C\"; sudo apt-get update -o=Dir::Cache::archives='$dir/archivs' -o=Dir::State::status='$dir/status' -o=Dir::State='$dir' $archOption -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$dir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$dir/preferences.d' -o=Dir::Etc::sourcelist='$dir/sources.list' &> '$logFile'".PKG_genPackageSearchCacheFileCMD($dir, $arch);
+	$cmd = "
+	mkdir -p '$dir/apt.conf.d' '$dir/archivs/partial' '$dir/preferences.d'
+	sudo rm -r -f '$dir/archivs/lock' '$dir/lock' '$dir/lists/lock'
+
+	ret=23
+
+	# Try again, if there was an error updating the package cache
+	while [ \$ret -ne 0 ]
+	do
+		export LANG=\"C\"; sudo apt-get update -o=Dir::Cache::archives='$dir/archivs' -o=Dir::State::status='$dir/status' -o=Dir::State='$dir' $archOption -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$dir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$dir/preferences.d' -o=Dir::Etc::sourcelist='$dir/sources.list' -o=Acquire::http::Retries='10' 2>&1 | tee -a '$logFile'
+		ret=\${PIPESTATUS[0]}
+		echo ret0: \$ret >> '$logFile'
+	done
+	".
+	PKG_genPackageSearchCacheFileCMD($dir, $arch);
+
+
+
+file_put_contents('/tmp/PKG_preparePackageDir.cmd', $cmd);
 
 
 	if ($returnCmd)
@@ -1046,45 +1060,37 @@ function PKG_downloadPool($destDir, $sourceslist, $packagesArr, $arch, $release)
 	$logFile = "$destDir/aptDownload.log";
 	
 	$fktName = uniqid('aptdl');
-	$retFile = uniqid('/tmp/PKG_downloadPoolRet');
 
-	$prepareCmd=PKG_preparePackageDir($destDir,$sourceslist,$logFile,true,$arch);
+	$prepareCmd = PKG_preparePackageDir($destDir,$sourceslist,$logFile,true,$arch);
 
 	$archOption = PKG_getAptArchOptions($arch);
 
+	// Combine the package names from $packagesArr[0] and $packagesArr[1] and make sure that there are no newlines
+	$packages = trim(implode(' ', array_map('trim', $packagesArr)));
+
+	$proxySettings = "-o=Acquire::http::Proxy='http://127.0.0.1:2323' -o=Acquire::ftp::Proxy='http://127.0.0.1:2323'";
+
 	$aptCmd="
-	export http_proxy=\"http://127.0.0.1:2323\"
-	export ftp_proxy=\"http://127.0.0.1:2323\"
+// 	export http_proxy=\"http://127.0.0.1:2323\"
+// 	export ftp_proxy=\"http://127.0.0.1:2323\"
+
+	sudo rm $destDir/lock
+
+	sudo apt-get install -d -y -f --force-yes -o=APT::Get::Fix-Missing=true -o=APT::Force-LoopBreak=true -o=APT::Get::Fix-Broken=true -o=Dir::Cache::'archives=$destDir/archivs' -o=Dir::State::status='$destDir/status' -o=Dir::State='$destDir' -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$destDir/apt.conf.d'  -o=Acquire::Retries=5 -o=Dir::Etc::PreferencesParts='$destDir/preferences.d' -o=Dir::Etc::sourcelist='$destDir/sources.list' $archOption $packages 2>&1 | tee -a '$logFile'
+
+	ret=\${PIPESTATUS[0]}
 	
-	$fktName()
-	{
-		sudo rm lock
-		echo \"PID:\$\$\" >> $logFile
+	echo ret1: \$ret >> '$logFile'
 
-		(sudo apt-get install -d -y -f --force-yes --ignore-missing -o=APT::Get::Fix-Missing=true -o=APT::Force-LoopBreak=true -o=APT::Get::Fix-Broken=true -o=Dir::Cache::'archives=$destDir/archivs' -o=Dir::State::status='$destDir/status' -o=Dir::State='$destDir' -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$destDir/apt.conf.d' -o=Acquire::http::Proxy='http://127.0.0.1:2323' -o=Acquire::ftp::Proxy='http://127.0.0.1:2323' -o=Acquire::Retries=5 -o=Dir::Etc::PreferencesParts='$destDir/preferences.d' -o=Dir::Etc::sourcelist='$destDir/sources.list' $archOption \$@; echo $? > $retFile) 2>&1 | tee -a '$logFile'
-		return $(cat $retFile)
-	}\n";
-	
-	
-	foreach ($packagesArr as $packages)
-	{
-		$argsA = explode(' ', $packages);
-		$aptCmd .= HELPER_xargsRecursive($fktName, $argsA);
-	}
+	# Exit, if there was an error updating the package cache
+	if [ \$ret -ne 0 ]
+	then
+		exit \$ret
+	fi
 
+	";
 
-	//Get the file name (with full path) of the debootstrap cache file
-	$debootstrapCacheFileOnServer = PKG_getDebootstrapCacheServerFile($release, $arch);
-
-	//Check, if it exists
-	if (!file_exists($debootstrapCacheFileOnServer))
-	{
-		//Get the URL where to download it from SourceForge
-		$debootstrapCacheFileURL = PKG_getDebootstrapCacheSfURL($release, $arch);
-
-		//Download the file and adjust access rights.
-		$debootstrapCacheFileDownloadCmd = "\nsudo wget $debootstrapCacheFileURL -O $debootstrapCacheFileOnServer; sudo chmod 755 $debootstrapCacheFileOnServer\n";
-	}
+	PKG_downloadBaseSysTom23Server($release, $arch);
 
 	$cmds="export LANG=\"C\"
 	sudo rm -f $logFile
@@ -1097,6 +1103,8 @@ function PKG_downloadPool($destDir, $sourceslist, $packagesArr, $arch, $release)
 
 	sudo chmod 755 $destDir -R
 	";
+
+	file_put_contents('/tmp/PKG_downloadPool', $cmds);
 
 	return($cmds);
 };

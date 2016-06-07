@@ -1350,4 +1350,8 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 
 //16.2
 @$I18N_clientUsesDynamicIP = "Der Client verwendet eine dynamische IP (DHCP)";
+
+//16.3
+@$I18N_poolStep[1]="Paketquellenliste und Pakete für den Download auswählen";
+@$I18N_poolStep[4]=$I18N_packageDownloadIsFinished;
 ?>

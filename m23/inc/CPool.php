@@ -152,6 +152,20 @@ parameter statusFileContentsToCheck: The contents of the status file to check, w
 
 
 /**
+**name CPool::resetDownloadLog()
+**description Deletes the aptDownload.log file and resets the line number of the last read line.
+**/
+	protected function resetDownloadLog()
+	{
+		SERVER_deleteFile($this->getPoolDir().'/aptDownload.log');
+		HELPER_resetNewLogLines('getDownloadLogNewLines'.$this->getPoolName());
+	}
+
+
+
+
+
+/**
 **name CPool::getDownloadLogNewLines()
 **description Gets the last (new) lines of the (growing) download log file.
 **returns: UTF8-encoded new lines of the log file.
@@ -796,15 +810,11 @@ parameter statusFileContentsToCheck: The contents of the status file to check, w
 				if (!$this->hasErrors() && is_string($debootStrapBasePackages))
 					$packagesArr[1] = $debootStrapBasePackages;
 			}
-			
-			file_put_contents ('/tmp/startDownloadToPool', print_r($packagesArr, true) ,FILE_APPEND);
-			
-			
 
 			// Start download of the packages
 			$cmds = PKG_downloadPool($this->getPoolDir(), $this->getPoolImportedFromSourceslist(), $packagesArr, $this->getPoolArch(), $this->getPoolRelease());
 			
-			file_put_contents ('/tmp/startDownloadToPool', $cmds ,FILE_APPEND);
+			file_put_contents ('/tmp/startDownloadToPool', $cmds);
 
 			
 			$this->addInfoMessage($I18N_packageDownloadStarted);

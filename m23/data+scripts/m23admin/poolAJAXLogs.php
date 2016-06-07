@@ -16,10 +16,10 @@ include('/m23/inc/html.php');
 session_start();
 
 $sessionName = urlencode($_GET['pool']);
+$GLOBALS["m23_language"] = $_GET['lang'];
 
 if (!isset($_SESSION['pool'][$sessionName]))
 	$_SESSION['pool'][$sessionName] = new CPool($_GET['pool']);
-
 
 switch($_GET['cmd'])
 {

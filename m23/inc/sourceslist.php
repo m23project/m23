@@ -755,11 +755,12 @@ function SRCLST_getArchitectures($sourceName)
 
 
 /**
-**name SRCLST_showEditor()
+**name SRCLST_showEditor($poolName="", $showSupportedUserInterfacesList = true)
 **description shows an editor for sources lists
 **parameter poolName: if it is set, the editor shows a package download dialog for the selected pool
+**parameter showSupportedUserInterfacesList: if it is set, the list with the supported GUIs will be shown.
 **/
-function SRCLST_showEditor($poolName="")
+function SRCLST_showEditor($poolName="", $showSupportedUserInterfacesList = true)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
@@ -913,7 +914,18 @@ function SRCLST_showEditor($poolName="")
 HTML_showTableHeader();
 
 if (!isset($_POST['BUT_delete']))
-	{
+{
+	if ($showSupportedUserInterfacesList)
+		$showSupportedUserInterfacesListHTML ="
+		<tr>
+			<td colspan=\"2\">
+				".DISTR_getDesktopsCBList($distr,$selectedDesktops)."
+			</td>
+		</tr>
+		";
+	else
+		$showSupportedUserInterfacesListHTML = '';
+
 	//normal mode: edit, load, save the package sources
 	echo("
 		<tr>
@@ -969,11 +981,7 @@ $sourcedescr
 
 			</td>
 		</tr>
-		<tr>
-			<td colspan=\"2\">
-				".DISTR_getDesktopsCBList($distr,$selectedDesktops)."
-			</td>
-		</tr>
+		$showSupportedUserInterfacesListHTML
 		$testResultHTML
 ");
 }

@@ -253,6 +253,20 @@ ${tabs}${tabFiller}${cmd} $argsA[1]
 
 
 /**
+**name HELPER_resetNewLogLines($sessionPrefix)
+**description Resets the line number of the last read line.
+**parameter sessionPrefix: Prefix for storing the last read line number in the session.
+**/
+function HELPER_resetNewLogLines($sessionPrefix)
+{
+	$_SESSION[$sessionPrefix]['lastLogLine'] = 0;
+}
+
+
+
+
+
+/**
 **name HELPER_getNewLogLines($log, $sessionPrefix)
 **description Gets the last (new) lines of a (growing) log file.
 **parameter log: Name of the log file.

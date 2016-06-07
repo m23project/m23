@@ -1,3 +1,18 @@
+2016-06-07
+cha: menuDeb: Now works with Squid 3 too.
+cha: SRCLST_showEditor: Has a new parameter and if it is set, the list with the supported GUIs will be shown otherwise omitted.
+new: HELPER_resetNewLogLines: Resets the line number of the last read line.
+new: CPool::resetDownloadLog: Deletes the aptDownload.log file and resets the line number of the last read line.
+cha: PKG_preparePackageDir: Now tries again and again until a new package list could be downloaded.
++++++
+2016-06-06
+cha: PKG_preparePackageDir: Now deletes old lock files.
+new: poolAJAXLogs.php: Shows different status information about a pool.
+cha: CPoolGUI::show: Now shows the heading directly to show allways the correct heading.
+cha: PKG_preparePackageDir, PKG_downloadPool: Now are exiting the BASH script in case of an error.
+cha: PKG_downloadPool: Now removes "[0-9]%.." from the Debian package filenames.
+cha: PKG_downloadPool: Now calls PKG_downloadBaseSysTom23Server.
++++++
 2016-06-04
 cha: CPool::startDownloadToPool: Now adds the result form PKG_getDebootStrapBasePackages only, if it is a string (contains packages).
 fix: HELPER_xargsRecursive: Now works with arrays with only one element and doesn't miss out the last element on arrays with uneven amount of elements.

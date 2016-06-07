@@ -32,6 +32,8 @@ class CPoolGUI extends CPool
 **/
 	public function show()
 	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
 		$HTMLOutputBuffer = HTML_getOutputBuffer();
 		$pageBefore = $this->page;
 	
@@ -46,6 +48,8 @@ class CPoolGUI extends CPool
 			$this->startDownloadToPool();
 			$this->page = CPoolGUI::POOLDIALOG_SHOWDOWNLOADSTATUS;
 		}
+
+		HTML_showTitle($I18N_poolBuilder.' ('.$_SESSION['poolOGUI']->getHeading().')');
 
 		switch ($this->page)
 		{
@@ -68,6 +72,7 @@ class CPoolGUI extends CPool
 			// Decide to copy packages from CD/DVD or download them form the internet
 			case CPoolGUI::POOLDIALOG_COPYDOWNLOADPACKAGES:
 			{
+				$this->resetDownloadLog();
 				if ($this->getPoolType() == CPoolLister::POOL_TYPE_CD)
 				{
 					POOL_showReadCD($this->getPoolName());
@@ -76,7 +81,7 @@ class CPoolGUI extends CPool
 				}
 				else
 				{
-					SRCLST_showEditor($this->getPoolName());
+					SRCLST_showEditor($this->getPoolName(), false);
 					$this->helpPage = 'poolBuilderSelectPackageSourcesAndPackages';
 					CAPTURE_captureAll(($step+10),"$helpPage",true);
 				};
@@ -135,7 +140,7 @@ class CPoolGUI extends CPool
 	public function getHeading()
 	{
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
-
+// print($this->page);
 		if ($this->page === null)
 			die('ERROR: getHeading: No page set.');
 		return($I18N_poolStep[$this->page]);
@@ -152,7 +157,6 @@ private function DEFINE_importDirFiles($SEL_mountPoint, $BUT_mount)
 
 	if (HTML_submit($BUT_mount, $I18N_mount))
 	{
-		
 	}
 
 }
@@ -185,7 +189,7 @@ function DIALOG_importDirFiles()
 		$disabledNext="";
 	};
 	
-	if (isset($_POST[BUT_readDrive]))
+	if (isset($_POST['BUT_readDrive']))
 	{
 		POOL_readCD($poolName,$firstDevice);
 		$readLabel=$I18N_checkDriveState;
@@ -238,7 +242,7 @@ function DIALOG_importDirFiles()
 			return(false);
 		}
 
-		$AJAXBUT_refresh = HTML_AJAXAutoSubmit($BUT_refresh, '/m23admin/poolAJAXLogs.php?cmd=getconvertPackagesToRepositoryStatusRefreshClicked&pool='.urlencode($this->getPoolName()));
+		$AJAXBUT_refresh = HTML_AJAXAutoSubmit($BUT_refresh, '/m23admin/poolAJAXLogs.php?cmd=getconvertPackagesToRepositoryStatusRefreshClicked&lang='.$GLOBALS["m23_language"].'&pool='.urlencode($this->getPoolName()));
 		$BUT_refreshClicked = HTML_submit($BUT_refresh, $I18N_refresh, constant($AJAXBUT_refresh));
 
 		// If conversation is running add the suitable message and disable the back to start button
@@ -270,7 +274,7 @@ function DIALOG_importDirFiles()
 		
 
 		// Live log area showing the output of the package download tool
-		HTML_liveLogArea($LA_convertPackagesToRepositoryStatus, 100, 20, '/m23admin/poolAJAXLogs.php?cmd=getConvertPackagesToRepositoryLogNewLines&pool='.urlencode($this->getPoolName()));
+		HTML_liveLogArea($LA_convertPackagesToRepositoryStatus, 100, 20, '/m23admin/poolAJAXLogs.php?cmd=getConvertPackagesToRepositoryLogNewLines&lang='.$GLOBALS["m23_language"].'&pool='.urlencode($this->getPoolName()));
 	}
 
 
@@ -347,13 +351,13 @@ function DIALOG_importDirFiles()
 			$this->stopDownloadToPool();
 		}
 
-		$AJAXBUT_refresh = HTML_AJAXAutoSubmit($BUT_refresh, '/m23admin/poolAJAXLogs.php?cmd=getShowDownloadStatusRefreshClicked&pool='.urlencode($this->getPoolName()));
+		$AJAXBUT_refresh = HTML_AJAXAutoSubmit($BUT_refresh, '/m23admin/poolAJAXLogs.php?cmd=getShowDownloadStatusRefreshClicked&lang='.$GLOBALS["m23_language"].'&pool='.urlencode($this->getPoolName()));
 		HTML_submit($BUT_refresh, $I18N_refresh, constant($AJAXBUT_refresh));
 
 		// Live log area showing the output of the package download tool
-		HTML_liveLogArea($LA_downloadStatus, 100, 20, '/m23admin/poolAJAXLogs.php?cmd=getDownloadLogNewLines&pool='.urlencode($this->getPoolName()));
+		HTML_liveLogArea($LA_downloadStatus, 100, 20, '/m23admin/poolAJAXLogs.php?cmd=getDownloadLogNewLines&lang='.$GLOBALS["m23_language"].'&pool='.urlencode($this->getPoolName()));
 
-		HTML_liveSpan($SPAN_poolSize, '/m23admin/poolAJAXLogs.php?cmd=getPoolSize&pool='.urlencode($this->getPoolName()), $this->getPoolSize());
+		HTML_liveSpan($SPAN_poolSize, '/m23admin/poolAJAXLogs.php?cmd=getPoolSize&lang='.$GLOBALS["m23_language"].'&pool='.urlencode($this->getPoolName()), $this->getPoolSize());
 	}
 
 
