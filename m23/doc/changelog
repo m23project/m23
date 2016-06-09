@@ -1,3 +1,16 @@
+2016-06-08
+cha: MAIL_getGpgKeyList: Now has an extra parameter, if it is set to true, available secret keys are listed.
+new: CGPGSign::hasConfigFile: Checks, if the config file exists.
+new: CGPGSign::loadConfigFile: Loads the config file.
+new: CGPGSign::writeConfigFile: Writes the config file.
+new: CGPGSign::setGPGID: Sets the GPG ID to use.
+new: CGPGSign::getGPGID: Gets the GPG ID to use.
+new: CGPGSign::setStoreMode: Sets the configuration file store or load mode.
+new: CGPGSign::getStoreMode: Gets the configuration file store or load mode.
+new: MAIL_gpgSignDetached: Creates a detached signature file for a given private GPG key ID and input file.
+new: MAIL_gpgSign: Creates a signature file for a given private GPG key ID and input file with GPG parameters.
+new: CGPGSign::getKeyInfo: Gets information about the used GPG key.
++++++
 2016-06-07
 cha: menuDeb: Now works with Squid 3 too.
 cha: SRCLST_showEditor: Has a new parameter and if it is set, the list with the supported GUIs will be shown otherwise omitted.

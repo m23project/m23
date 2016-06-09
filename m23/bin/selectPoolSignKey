@@ -1,0 +1,29 @@
+#!/bin/bash
+
+userList="bdpgpg www-data"
+foundKeys=0
+
+getGPGHome()
+{
+	echo "/home/$1/.gnupg/"
+}
+
+
+
+# List all private GPG keys of the users
+for user in $userList
+do
+	echo "Available private GPG keys for \"$user\":
+"
+	sudo -u $user gpg --homedir $(getGPGHome $user) --list-secret-keys 2> /dev/null
+	if [ $? -eq 0 ]
+	then
+		foundKeys=$[ $foundKeys + 1]
+	fi
+done
+
+if [ $foundKeys -eq 0 ]
+then
+	echo "ERROR: now private GPG keys found"
+	exit
+fi

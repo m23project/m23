@@ -16,14 +16,19 @@
 	include_once('/m23/inc/CFDiskBasic.php');
 	include_once('/m23/inc/CFDiskGUI.php');
 	include_once('/m23/inc/CFirewall.php');
+	include_once('/m23/inc/CGPGSign.php');
 
 
+	$GPGSign = new CGPGSign(CGPGSign::MODE_LOAD);
+// 	$GPGSign->setGPGID('9395A599');
+	print($GPGSign->getKeyInfo());
 	
 
 print("<pre>");
-	$argsA = array(0);
 
-	print(HELPER_xargsRecursive('echo', $argsA));
+	print_r(MAIL_getGpgKeyList(true));
+	print_r(MAIL_getGpgKeyList(false));
+	print(serialize($GPGSign->gpgSignDetached('/tmp/infile.txt', '/tmp/infile.txt.asc')));
 
 // 	MAIL_sendMail("hauke@pc-kiel.de", "hallo", "aes");
 // 	print(getServerNetwork());

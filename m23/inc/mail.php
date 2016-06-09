@@ -179,6 +179,76 @@ function MAIL_getHeader($from)
 
 
 /**
+**name MAIL_gpgSign($gpgID, $inFile, $outFile, $gpgParams)
+**description Creates a signature file for a given private GPG key ID and input file with GPG parameters.
+**parameter gpgID: ID of the private GPG key.
+**parameter inFile: The file to create a signature for.
+**parameter outFile: The file with the detached signature.
+**parameter gpgParams: GPG parameters to specify the type of the signature.
+**returns: true, if the signature file was created and the input file exists, otherwise false.
+**/
+function MAIL_gpgSign($gpgID, $inFile, $outFile, $gpgParams)
+{
+	if (!file_exists($inFile))
+		return(false);
+
+	SERVER_runInBackground(uniqid('MAIL_gpgSign'), "cat '$inFile'".' | gpg --homedir '.CONF_GPG_HOME." --default-key 0x$gpgID $gpgParams > '$outFile'", CONF_GPG_USER, false);
+
+	// Check, if the signature file was created
+	if (file_exists($outFile))
+	{
+		// Check, if it has a valid size
+		if (filesize($outFile) > 0)
+			return(true);
+		else
+		{
+			SERVER_deleteFile($outFile);
+			return(false);
+		}
+	}
+	
+	return(false);
+}
+
+
+
+
+
+/**
+**name MAIL_gpgSignDetached($gpgID, $inFile, $outFile)
+**description Creates a detached signature file for a given private GPG key ID and input file.
+**parameter gpgID: ID of the private GPG key.
+**parameter inFile: The file to create a signature for.
+**parameter outFile: The file with the detached signature.
+**returns: true, if the signature file was created and the input file exists, otherwise false.
+**/
+function MAIL_gpgSignDetached($gpgID, $inFile, $outFile)
+{
+	return(MAIL_gpgSign($gpgID, $inFile, $outFile, '--no-options --detach-sign --armor --textmode'));
+}
+
+
+
+
+
+/**
+**name MAIL_gpgSignClear($gpgID, $inFile, $outFile)
+**description Creates a clear text signature file for a given private GPG key ID and input file.
+**parameter gpgID: ID of the private GPG key.
+**parameter inFile: The file to create a signature for.
+**parameter outFile: The file with the detached signature.
+**returns: true, if the signature file was created and the input file exists, otherwise false.
+**/
+function MAIL_gpgSignClear($gpgID, $inFile, $outFile)
+{
+	return(MAIL_gpgSign($gpgID, $inFile, $outFile, '-a -s --clearsign'));
+}
+
+
+
+
+
+/**
 **name MAIL_gpgMail($message,$eMail)
 **description Encrypts a message with GPG for a given eMail address.
 **parameter message: The message text to encrypt.
@@ -212,14 +282,28 @@ function MAIL_gpgMail($message,$eMail)
 
 
 /**
-**name MAIL_getGpgKeyList()
+**name MAIL_getGpgKeyList($listSecretKeys = false)
 **description Gets the list of known GPG keys/identities.
+**parameter listSecretKeys: If set to true, available secret keys are listed.
 **returns: Associative array with key ID as key and the identity with the key information as value.
 **/
-function MAIL_getGpgKeyList()
+function MAIL_getGpgKeyList($listSecretKeys = false)
 {
+	if ($listSecretKeys)
+	{
+		$gpgListParameter = '--list-secret-keys';
+		$gpgOutputSplitWords = array("uid","sec","ssb");
+	}
+	else
+	{
+		$gpgListParameter = '--list-keys';
+		$gpgOutputSplitWords = array("uid","pub","sub");
+	}
+
+	$out = array();
+
 	//get the list of all known GPG keys
-	exec('sudo -u '.CONF_GPG_USER.' gpg --homedir '.CONF_GPG_HOME.' --list-keys',$lines,$retCode);
+	exec('sudo -u '.CONF_GPG_USER.' gpg --homedir '.CONF_GPG_HOME.' '.$gpgListParameter,$lines,$retCode);
 
 	$nr=0;
 	$keyNr = 0;
@@ -227,8 +311,8 @@ function MAIL_getGpgKeyList()
 	//Run thru the lines
 	foreach($lines as $line)
 	{
-		//Check if the line begibs with "uid","pub" or "sub"
-		foreach (array("uid","pub","sub") as $search)
+		//Check if the line begins with "uid","pub" or "sub"
+		foreach ($gpgOutputSplitWords as $search)
 		{
 			if (strpos($line,$search) === 0)
 			{
