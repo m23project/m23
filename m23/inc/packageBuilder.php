@@ -12,8 +12,35 @@ function PKGBUILDER_showDialog()
 	if (!is_dir(EXTRA_DEBS_DIRECTORY))
 		mkdir(EXTRA_DEBS_DIRECTORY);
 
+	echo(H_MESSAGEBOXPLACEHOLDER);
+
 	PKGBUILDER_listFiles();
 	PKGBUILDER_showUploadDialog();
+	PKGBUILDER_showKeySelectionDialog();
+}
+
+
+
+
+
+/**
+**name PKGBUILDER_showKeySelectionDialog()
+**description Shows a dialog for choosing the GPG signing key for the extra packages.
+**/
+function PKGBUILDER_showKeySelectionDialog()
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	$GPGSign = new CGPGSign(CGPGSign::MODE_SAVE);
+
+	echo("<br><span class=\"titlesmal\">$I18N_poolGPGSignKey</span>");
+	HTML_showTableHeader();
+	echo ('
+	<tr>
+		<td>'.$GPGSign->getKeySelectionDialog().'</td>
+	</tr>
+	');
+	HTML_showTableEnd();
 }
 
 
@@ -62,6 +89,9 @@ function PKGBUILDER_listFiles()
 	if (HTML_submit("BUT_recreatePackageIndex",$I18N_recreatePackageIndex))
 	{
 		PKGBUILDER_tar2deb(false);
+		$GPGSign = new CGPGSign(CGPGSign::MODE_LOAD);
+		$GPGSign->gpgSignDetached(EXTRA_DEBS_DIRECTORY.'/Release', EXTRA_DEBS_DIRECTORY.'/Release.gpg');
+		$GPGSign->gpgSignClear(EXTRA_DEBS_DIRECTORY.'/Release', EXTRA_DEBS_DIRECTORY.'/InRelease');
 	}
 	
 

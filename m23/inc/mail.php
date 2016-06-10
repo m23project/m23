@@ -179,20 +179,63 @@ function MAIL_getHeader($from)
 
 
 /**
-**name MAIL_gpgSign($gpgID, $inFile, $outFile, $gpgParams)
+**name MAIL_gpgSignDetached($gpgID, $inFile, $outFile)
+**description Creates a detached signature file for a given private GPG key ID and input file.
+**parameter gpgID: ID of the private GPG key.
+**parameter inFile: The file to create a signature for.
+**parameter outFile: The file with the detached signature.
+**returns: true, if the signature file was created and the input file exists, otherwise false.
+**/
+function MAIL_gpgSignDetached($gpgID, $inFile, $outFile)
+{
+	return(MAIL_gpgSign($gpgID, $inFile, $outFile, '--no-options --detach-sign --armor --textmode'));
+}
+
+
+
+
+
+/**
+**name MAIL_gpgSignClear($gpgID, $inFile, $outFile)
+**description Creates a clear text signature file for a given private GPG key ID and input file.
+**parameter gpgID: ID of the private GPG key.
+**parameter inFile: The file to create a signature for.
+**parameter outFile: The file with the detached signature.
+**returns: true, if the signature file was created and the input file exists, otherwise false.
+**/
+function MAIL_gpgSignClear($gpgID, $inFile, $outFile)
+{
+	return(MAIL_gpgSign($gpgID, $inFile, $outFile, '-a -s --clearsign'));
+}
+
+
+
+
+
+/**
+**name MAIL_gpgSign($gpgID, $inFile, $outFile, $gpgParams, $user = NULL, $mode = '555')
 **description Creates a signature file for a given private GPG key ID and input file with GPG parameters.
 **parameter gpgID: ID of the private GPG key.
 **parameter inFile: The file to create a signature for.
 **parameter outFile: The file with the detached signature.
 **parameter gpgParams: GPG parameters to specify the type of the signature.
+**parameter user: The owner of the output file.
+**parameter mode: The file mode of the output file.
 **returns: true, if the signature file was created and the input file exists, otherwise false.
 **/
-function MAIL_gpgSign($gpgID, $inFile, $outFile, $gpgParams)
+function MAIL_gpgSign($gpgID, $inFile, $outFile, $gpgParams, $user = NULL, $mode = '555')
 {
-	if (!file_exists($inFile))
-		return(false);
+	if (!file_exists($inFile)) return(false);
+	if (is_null($user)) $user = HELPER_getApacheUser();
 
-	SERVER_runInBackground(uniqid('MAIL_gpgSign'), "cat '$inFile'".' | gpg --homedir '.CONF_GPG_HOME." --default-key 0x$gpgID $gpgParams > '$outFile'", CONF_GPG_USER, false);
+	// Load the root rights
+	$inFileContents = str_replace ("'", "\'", SERVER_getFileContents($inFile));
+
+	// Sign the input string
+	$signedInfile = SERVER_runInBackground(uniqid('MAIL_gpgSign'), "echo '$inFileContents'".' | gpg --digest-algo SHA512 --homedir '.CONF_GPG_HOME." --default-key 0x$gpgID $gpgParams", CONF_GPG_USER, false);
+
+	// Write to the output file
+	SERVER_putFileContents($outFile, $signedInfile, $mode, $user);
 
 	// Check, if the signature file was created
 	if (file_exists($outFile))
@@ -254,40 +297,6 @@ function MAIL_gpgCheckKey($gpgID, $privateKey = false)
 	$ret = SERVER_runInBackground(uniqid('MAIL_gpgCheckKey'), $cmd, CONF_GPG_USER, false);
 	
 	return($ret == 0);
-}
-
-
-
-
-
-/**
-**name MAIL_gpgSignDetached($gpgID, $inFile, $outFile)
-**description Creates a detached signature file for a given private GPG key ID and input file.
-**parameter gpgID: ID of the private GPG key.
-**parameter inFile: The file to create a signature for.
-**parameter outFile: The file with the detached signature.
-**returns: true, if the signature file was created and the input file exists, otherwise false.
-**/
-function MAIL_gpgSignDetached($gpgID, $inFile, $outFile)
-{
-	return(MAIL_gpgSign($gpgID, $inFile, $outFile, '--no-options --detach-sign --armor --textmode'));
-}
-
-
-
-
-
-/**
-**name MAIL_gpgSignClear($gpgID, $inFile, $outFile)
-**description Creates a clear text signature file for a given private GPG key ID and input file.
-**parameter gpgID: ID of the private GPG key.
-**parameter inFile: The file to create a signature for.
-**parameter outFile: The file with the detached signature.
-**returns: true, if the signature file was created and the input file exists, otherwise false.
-**/
-function MAIL_gpgSignClear($gpgID, $inFile, $outFile)
-{
-	return(MAIL_gpgSign($gpgID, $inFile, $outFile, '-a -s --clearsign'));
 }
 
 

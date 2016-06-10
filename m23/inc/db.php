@@ -61,7 +61,7 @@ function ip2longSafe($in)
 **/
 function getArchList()
 {
-	return(array("i386" => "i386", "amd64" => "amd64"));
+	return(array("amd64" => "amd64", "i386" => "i386"));
 }
 
 

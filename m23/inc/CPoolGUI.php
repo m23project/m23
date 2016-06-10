@@ -50,6 +50,7 @@ class CPoolGUI extends CPool
 		}
 
 		HTML_showTitle($I18N_poolBuilder.' ('.$_SESSION['poolOGUI']->getHeading().')');
+		echo(H_MESSAGEBOXPLACEHOLDER);
 
 		switch ($this->page)
 		{
@@ -258,6 +259,7 @@ function DIALOG_importDirFiles()
 			{
 				// Refresh button was clicked (by user or AJAX)
 				$this->addInfoMessage($I18N_packageIndexCreationFinished);
+				$this->signRelease();
 				$disabled = '';
 			}
 			else
@@ -410,6 +412,8 @@ function DIALOG_importDirFiles()
 		$this->DEFINE_changePoolDescription('TA_poolDescription', 'BUT_poolSaveChanges', 'LA_poolSourcesList');
 		$this->DEFINE_nextStepCopyDownloadPackages('BUT_copyDownloadPackages');
 
+		$GPGSign = new CGPGSign(CGPGSign::MODE_SAVE);
+
 		HTML_showTableHeader();
 
 		echo('
@@ -457,6 +461,8 @@ function DIALOG_importDirFiles()
 			</tr>
 			<tr><td colspan="4"><span class="subhighlight">'.$I18N_packageSources.'</span></td></tr>
 			<tr><td colspan="4">'.LA_poolSourcesList.'</td></tr>
+			<tr><td colspan="4"><span class="subhighlight">'.$I18N_poolGPGSignKey.'</span></td></tr>
+			<tr><td colspan="4">'.$GPGSign->getKeySelectionDialog().'</td></tr>
 			<tr><td colspan="4" align="center">'.BUT_copyDownloadPackages.'</td></tr>
 		');
 
@@ -526,6 +532,7 @@ function DIALOG_importDirFiles()
 		{
 			$this->setPoolName($poolName);
 			$_SESSION['preferenceForceHTMLReloadValues'] = true;
+			$this->signRelease();
 		}
 
 		// Delete the selected pool

@@ -1354,4 +1354,8 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 //16.3
 @$I18N_poolStep[1]="Paketquellenliste und Pakete für den Download auswählen";
 @$I18N_poolStep[4]=$I18N_packageDownloadIsFinished;
+@$I18N_poolGPGSignKey = 'GPG-Paketquellen-Signierungsschlüssel';
+@$I18N_currentlyUsedGPGKey = 'Aktuelle verwendeter GPG-Schlüssel';
+@$I18N_publicPoolGPGSignKeyExported = 'Der öffentliche GPG-Paketquellen-Signierungsschlüssel wurde exportiert.';
+@$I18N_publicPoolGPGSignKeySelected = 'Öffentlicher GPG-Paketquellen-Signierungsschlüssel ausgewählt.';
 ?>

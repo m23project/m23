@@ -34,6 +34,23 @@ class CPool extends CChecks
 
 
 /**
+**name CPool::signRelease()
+**description Signs the Release file as Release.gpg and InRelease.
+**returns: Name the log file.
+**/
+	protected function signRelease()
+	{
+		$poolDir = $this->getPoolDir();
+		$GPGSign = new CGPGSign(CGPGSign::MODE_LOAD);
+		$GPGSign->gpgSignDetached("$poolDir/Release", "$poolDir/Release.gpg");
+		$GPGSign->gpgSignClear("$poolDir/Release", "$poolDir/InRelease");
+	}
+
+
+
+
+
+/**
 **name CPool::getConvertPackagesToRepositoryLogName()
 **description Returns the full file name of the convert packages to repository log file.
 **returns: Name the log file.
@@ -105,11 +122,6 @@ class CPool extends CChecks
 			{
 				//Run the commands
 				SERVER_runInBackground('convertPackagesToRepository', $cmds, 'root',true);
-
-				$GPGSign = new CGPGSign(CGPGSign::MODE_LOAD);
-				$GPGSign->gpgSignDetached("$poolDir/Release", "$poolDir/Release.gpg");
-				$GPGSign->gpgSignClear("$poolDir/Release", "$poolDir/InRelease");
-
 				return(true);
 			}
 		}
@@ -902,7 +914,7 @@ parameter statusFileContentsToCheck: The contents of the status file to check, w
 			die('ERROR: downloadPackagesAndCreatePool: The pool with the type '.$type.' cannot be used');
 
 		SERVER_runInBackground('downloadPackagesAndCreatePool', $cmds);
-		
+
 		$this->addInfoMessage($I18N_creationOfPoolAndPackageSelectionFromThisClientStarted);
 	}
 }

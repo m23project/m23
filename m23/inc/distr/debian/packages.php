@@ -1068,20 +1068,15 @@ function PKG_downloadPool($destDir, $sourceslist, $packagesArr, $arch, $release)
 	// Combine the package names from $packagesArr[0] and $packagesArr[1] and make sure that there are no newlines
 	$packages = trim(implode(' ', array_map('trim', $packagesArr)));
 
-	$proxySettings = "-o=Acquire::http::Proxy='http://127.0.0.1:2323' -o=Acquire::ftp::Proxy='http://127.0.0.1:2323'";
-
 	$aptCmd="
-// 	export http_proxy=\"http://127.0.0.1:2323\"
-// 	export ftp_proxy=\"http://127.0.0.1:2323\"
+	export http_proxy=\"http://127.0.0.1:2323\"
+	export ftp_proxy=\"http://127.0.0.1:2323\"
 
 	sudo rm $destDir/lock
 
-	sudo apt-get install -d -y -f --force-yes -o=APT::Get::Fix-Missing=true -o=APT::Force-LoopBreak=true -o=APT::Get::Fix-Broken=true -o=Dir::Cache::'archives=$destDir/archivs' -o=Dir::State::status='$destDir/status' -o=Dir::State='$destDir' -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$destDir/apt.conf.d'  -o=Acquire::Retries=5 -o=Dir::Etc::PreferencesParts='$destDir/preferences.d' -o=Dir::Etc::sourcelist='$destDir/sources.list' $archOption $packages 2>&1 | tee -a '$logFile'
+	sudo apt-get install -d -y -f --force-yes -o=Acquire::http::Proxy='http://127.0.0.1:2323' -o=Acquire::ftp::Proxy='http://127.0.0.1:2323' -o=APT::Get::Fix-Missing=true -o=APT::Force-LoopBreak=true -o=APT::Get::Fix-Broken=true -o=Dir::Cache::'archives=$destDir/archivs' -o=Dir::State::status='$destDir/status' -o=Dir::State='$destDir' -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$destDir/apt.conf.d'  -o=Acquire::Retries=5 -o=Dir::Etc::PreferencesParts='$destDir/preferences.d' -o=Dir::Etc::sourcelist='$destDir/sources.list' $archOption $packages 2>&1 | tee -a '$logFile'
 
 	ret=\${PIPESTATUS[0]}
-	
-	echo ret1: \$ret >> '$logFile'
-
 	# Exit, if there was an error updating the package cache
 	if [ \$ret -ne 0 ]
 	then

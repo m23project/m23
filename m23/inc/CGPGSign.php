@@ -33,12 +33,54 @@ class CGPGSign extends CChecks
 
 
 /**
+**name CGPGSign::getKeySelectionDialog()
+**description Generates a dialog to choose the GPG used for signing the pools.
+**/
+	public function getKeySelectionDialog()
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+		$privGPGKeyID = HTML_selection('SEL_showKeySelectionGpgKey', MAIL_getGpgKeyList(true), SELTYPE_selection, true, $this->getGPGID());
+
+		if (HTML_submit('BUT_showKeySelectionUseGpgKey', $I18N_select))
+		{
+			$this->setGPGID($privGPGKeyID);
+			$this->addInfoMessage($I18N_publicPoolGPGSignKeySelected);
+			$this->exportPublicSignKey();
+			$this->showMessages();
+		}
+
+		return("
+		<table>
+			<tr>
+				<td colspan=\"2\">$I18N_currentlyUsedGPGKey: ".$this->getKeyInfo()."</td>
+			</tr>
+			<tr>
+				<td>".SEL_showKeySelectionGpgKey."</td>
+				<td>".BUT_showKeySelectionUseGpgKey."</td>
+			</tr>
+			<tr>
+				<td colspan=\"2\">
+					<div align=\"right\"><a href=\"index.php?page=manageGPGKeys\"><img src=\"/gfx/gpg-mini.png\" border=0>$I18N_manageGPGKeys</a></div>
+				</td>
+			</tr>
+		</table>
+		");
+	}
+
+
+
+
+
+/**
 **name CGPGSign::exportPublicSignKey()
 **description Exports the public key to the webserver directory.
 **parameter true, if the file was exported, othwerwise false.
 **/
 	public function exportPublicSignKey()
 	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
 		// Get the public sign key
 		$publicKeyASC = MAIL_gpgGettKey($this->getGPGID());
 
@@ -50,6 +92,8 @@ class CGPGSign extends CChecks
 
 		// Write it to the webserver directory
 		SERVER_putFileContents(CGPGSign::POOLSIGNKEYFILE, $publicKeyASC, '555', HELPER_getApacheUser());
+
+		$this->addInfoMessage($I18N_publicPoolGPGSignKeyExported);
 
 		return(true);
 	}
@@ -241,8 +285,6 @@ class CGPGSign extends CChecks
 **/
 	function __destruct()
 	{
-		print("__destruct()".$this->getStoreMode());
-	
 		switch ($this->getStoreMode())
 		{
 			case CGPGSign::MODE_SAVE:

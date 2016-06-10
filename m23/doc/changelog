@@ -1,3 +1,11 @@
+2016-06-10
+cha: getArchList: Now gives out "amd64" first.
+new: CPool::signRelease, PKGBUILDER_listFiles: Now are signing the Release file as Release.gpg and InRelease.
+new: CGPGSign::getKeySelectionDialog: Generates a dialog to choose the GPG used for signing the pools.
+cha: CPoolGUI::DIALOG_start: Now calls CGPGSign::getKeySelectionDialog.
+new: PKGBUILDER_showKeySelectionDialog: Shows a dialog for choosing the GPG signing key for the extra packages.
+cha: PKGBUILDER_showDialog: Now calls PKGBUILDER_showKeySelectionDialog.
++++++
 2016-06-09
 new: MAIL_gpgCheckKey: Checks, if a GPG key ID has a valid private or public key.
 new: CGPGSign::checkKey: Checks, if the GPG is valid as public and private key.
