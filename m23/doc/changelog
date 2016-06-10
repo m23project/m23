@@ -1,3 +1,13 @@
+2016-06-09
+new: MAIL_gpgCheckKey: Checks, if a GPG key ID has a valid private or public key.
+new: CGPGSign::checkKey: Checks, if the GPG is valid as public and private key.
+new: MAIL_gpgGettKey: Gets the public GPG key as ASCII.
+new: CGPGSign::exportPublicSignKey: Exports the public key to the webserver directory.
+new: CLCFG_importLocalPoolKey: Generates BASH code to import the local package pool key (if it exists) on the client's APT system.
+cha: CLCFG_installBasePackages: Now calls CLCFG_importLocalPoolKey.
+new: CGPGSign::gpgSignClear: Creates a clear text signature file for a given private GPG key ID and input file.
+cha: convertPackagesToRepository: Now signs the Releases file.
++++++
 2016-06-08
 cha: MAIL_getGpgKeyList: Now has an extra parameter, if it is set to true, available secret keys are listed.
 new: CGPGSign::hasConfigFile: Checks, if the config file exists.

@@ -29,6 +29,7 @@
 	include_once('/m23/inc/CClient.php');
 	include_once('/m23/inc/CFDiskIO.php');
 	include_once('/m23/inc/CFDiskBasic.php');
+	include_once('/m23/inc/CGPGSign.php');
 
 	session_start();
 	

@@ -105,6 +105,11 @@ class CPool extends CChecks
 			{
 				//Run the commands
 				SERVER_runInBackground('convertPackagesToRepository', $cmds, 'root',true);
+
+				$GPGSign = new CGPGSign(CGPGSign::MODE_LOAD);
+				$GPGSign->gpgSignDetached("$poolDir/Release", "$poolDir/Release.gpg");
+				$GPGSign->gpgSignClear("$poolDir/Release", "$poolDir/InRelease");
+
 				return(true);
 			}
 		}

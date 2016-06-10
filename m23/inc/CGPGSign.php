@@ -9,6 +9,7 @@ class CGPGSign extends CChecks
 	const MODE_SAVE = 1;
 	
 	const CONFIGFILE = '/m23/root-only/CGPGSign.conf';
+	const POOLSIGNKEYFILE = '/m23/data+scripts/packages/baseSys/m23serverPoolSignKey.asc';
 
 
 
@@ -32,13 +33,56 @@ class CGPGSign extends CChecks
 
 
 /**
+**name CGPGSign::exportPublicSignKey()
+**description Exports the public key to the webserver directory.
+**parameter true, if the file was exported, othwerwise false.
+**/
+	public function exportPublicSignKey()
+	{
+		// Get the public sign key
+		$publicKeyASC = MAIL_gpgGettKey($this->getGPGID());
+
+		// Check, if it was fetched
+		if (is_bool($publicKeyASC)) return(false);
+
+		// Check, if the key has a valid length
+		if (strlen($publicKeyASC) < 2000) return(false);
+
+		// Write it to the webserver directory
+		SERVER_putFileContents(CGPGSign::POOLSIGNKEYFILE, $publicKeyASC, '555', HELPER_getApacheUser());
+
+		return(true);
+	}
+
+
+
+
+
+/**
+**name CGPGSign::checkKey()
+**description Checks, if the GPG is valid as public and private key.
+**returns: true, if the GPG is valid as public and private key, otherwise false.
+**/
+	public function checkKey()
+	{
+		return(MAIL_gpgCheckKey($this->getGPGID(), true) && MAIL_gpgCheckKey($this->getGPGID(), false));
+	}
+
+
+
+
+
+/**
 **name CGPGSign::getKeyInfo()
 **description Gets information about the used GPG key.
 **returns: Information about the used GPG key.
 **/
 	public function getKeyInfo()
 	{
-		return($this->gpgKeyList[$this->getGPGID()]);
+		if ($this->hasConfigFile())
+			return($this->gpgKeyList[$this->getGPGID()]);
+		else
+			return('');
 	}
 
 
@@ -54,7 +98,25 @@ class CGPGSign extends CChecks
 **/
 	public function gpgSignDetached($inFile, $outFile)
 	{
+		if (!$this->hasConfigFile()) return(false);
 		return(MAIL_gpgSignDetached($this->getGPGID(), $inFile, $outFile));
+	}
+
+
+
+
+
+/**
+**name CGPGSign::gpgSignClear($inFile, $outFile)
+**description Creates a clear text signature file for a given private GPG key ID and input file.
+**parameter inFile: The file to create a signature for.
+**parameter outFile: The file with the detached signature.
+**returns: true, if the signature file was created and the input file exists, otherwise false.
+**/
+	public function gpgSignClear($inFile, $outFile)
+	{
+		if (!$this->hasConfigFile()) return(false);
+		return(MAIL_gpgSignClear($this->getGPGID(), $inFile, $outFile));
 	}
 
 

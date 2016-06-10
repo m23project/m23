@@ -2490,6 +2490,25 @@ function CLCFG_aptGet($command, $packages, $critical = false)
 
 
 /**
+**name CLCFG_importLocalPoolKey()
+**description Generates BASH code to import the local package pool key (if it exists) on the client's APT system.
+**returns BASH code to import the local package pool key or empty string, if there is no package pool sign key.
+**/
+function CLCFG_importLocalPoolKey()
+{
+	if (!file_exists(CGPGSign::POOLSIGNKEYFILE)) return('');
+
+	$serverIP = getServerIP();
+
+	$url = str_replace('/m23/data+scripts/', "http://$serverIP/", CGPGSign::POOLSIGNKEYFILE);
+	return("wget -T1 -t1 -q $url -O - | apt-key add -");
+}
+
+
+
+
+
+/**
 **name CLCFG_installBasePackages($packagelist)
 **description installs needed base packages
 **parameter packagelist: the list of the packages to install
@@ -2528,6 +2547,8 @@ function CLCFG_installBasePackages($packagelist, $keyring="debian-keyring")
 
 	wget -T1 -t1 -q http://m23.sourceforge.net/m23-Sign-Key.asc -O - | apt-key add -
 
+	".CLCFG_importLocalPoolKey()."
+
 	");
 
 	CLCFG_aptGet("upgrade", "");
@@ -2542,6 +2563,8 @@ function CLCFG_installBasePackages($packagelist, $keyring="debian-keyring")
 	
 	echo("
 		wget -T1 -t1 -q http://m23.sourceforge.net/m23-Sign-Key.asc -O - | apt-key add -
+
+		".CLCFG_importLocalPoolKey()."
 
 		dpkg-reconfigure sudo
 

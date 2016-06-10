@@ -215,6 +215,52 @@ function MAIL_gpgSign($gpgID, $inFile, $outFile, $gpgParams)
 
 
 /**
+**name MAIL_gpgGettKey($gpgID)
+**description Gets the public GPG key as ASCII.
+**parameter gpgID: ID of the public GPG key.
+**returns: false, if there is no public GPG key for the given GPG ID.
+**/
+function MAIL_gpgGettKey($gpgID)
+{
+	// Exit, if the public GPG key is not valid
+	if (!MAIL_gpgCheckKey($gpgID, false)) return(false);
+
+	return(SERVER_runInBackground(uniqid('MAIL_gpgGettKey'), "gpg --homedir ".CONF_GPG_HOME." --armor --export  0x$gpgID", CONF_GPG_USER, false));
+}
+
+
+
+
+
+/**
+**name MAIL_gpgCheckKey($gpgID, $privateKey = false)
+**description Checks, if a GPG key ID has a valid private or public key.
+**parameter gpgID: ID of the private GPG key.
+**parameter privateKey: If set to true, the validity as private key is checked.
+**returns: true, if the GPG key is valid.
+**/
+function MAIL_gpgCheckKey($gpgID, $privateKey = false)
+{
+	// Choose GPG parameter
+	if ($privateKey)
+		// private key: Sign a message
+		$gpgParams = '-s';
+	else
+		// public key: Encrypt a message for the public key
+		$gpgParams = "-e -r 0x$gpgID --trust-model always";
+
+	$cmd = "echo test | gpg --homedir ".CONF_GPG_HOME." --default-key 0x$gpgID $gpgParams &> /dev/null; echo $?";
+
+	$ret = SERVER_runInBackground(uniqid('MAIL_gpgCheckKey'), $cmd, CONF_GPG_USER, false);
+	
+	return($ret == 0);
+}
+
+
+
+
+
+/**
 **name MAIL_gpgSignDetached($gpgID, $inFile, $outFile)
 **description Creates a detached signature file for a given private GPG key ID and input file.
 **parameter gpgID: ID of the private GPG key.
@@ -293,11 +339,13 @@ function MAIL_getGpgKeyList($listSecretKeys = false)
 	{
 		$gpgListParameter = '--list-secret-keys';
 		$gpgOutputSplitWords = array("uid","sec","ssb");
+		$keyMarker = 'Priv';
 	}
 	else
 	{
 		$gpgListParameter = '--list-keys';
 		$gpgOutputSplitWords = array("uid","pub","sub");
+		$keyMarker = 'Publ';
 	}
 
 	$out = array();
@@ -353,7 +401,7 @@ function MAIL_getGpgKeyList($listSecretKeys = false)
 				//Split the key strength, key ID and expiration date
 				$strengthKeyidDate = preg_split('/[\/ ]+/', $key);
 				//Use only the key ID as key and the identity with the key information as value
-				$out[$strengthKeyidDate[1]] = $identity['uid'].' '.$key;
+				$out[$strengthKeyidDate[1]] = $keyMarker.': '.$identity['uid'].' '.$key;
 			}
 		}
 
