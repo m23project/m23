@@ -40,13 +40,20 @@ class CGPGSign extends CChecks
 	{
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
+		// Selection with all know private GPG keys
 		$privGPGKeyID = HTML_selection('SEL_showKeySelectionGpgKey', MAIL_getGpgKeyList(true), SELTYPE_selection, true, $this->getGPGID());
 
 		if (HTML_submit('BUT_showKeySelectionUseGpgKey', $I18N_select))
 		{
-			$this->setGPGID($privGPGKeyID);
-			$this->addInfoMessage($I18N_publicPoolGPGSignKeySelected);
-			$this->exportPublicSignKey();
+			if ($this->checkKey($privGPGKeyID))
+			{
+				$this->setGPGID($privGPGKeyID);
+				$this->addInfoMessage($I18N_publicPoolGPGSignKeySelected);
+				$this->exportPublicSignKey();
+			}
+			else
+				$this->addErrorMessage($I18N_givenGPGIdIsNotValidAsPublicAndPrivateKey);
+
 			$this->showMessages();
 		}
 
@@ -103,13 +110,16 @@ class CGPGSign extends CChecks
 
 
 /**
-**name CGPGSign::checkKey()
-**description Checks, if the GPG is valid as public and private key.
+**name CGPGSign::checkKey(privKeyID)
+**description Checks, if the given GPG is valid as public and private key.
+**parameter privKeyID: ID of the GPG key.
 **returns: true, if the GPG is valid as public and private key, otherwise false.
 **/
-	public function checkKey()
+	public function checkKey($privKeyID)
 	{
-		return(MAIL_gpgCheckKey($this->getGPGID(), true) && MAIL_gpgCheckKey($this->getGPGID(), false));
+		$ret = MAIL_gpgCheckKey($privKeyID, true) && MAIL_gpgCheckKey($privKeyID, false);
+	
+		return($ret);
 	}
 
 

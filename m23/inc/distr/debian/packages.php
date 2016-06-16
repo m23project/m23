@@ -250,6 +250,7 @@ function PKG_convertPackagesToRepository($poolDir, $logFile, $poolName, &$source
 	dpkg-scanpackages -m . tempmkpackages | grep -v "Depends: $" | sed \'s/%/%25/g\'> Packages
 	gzip -c Packages > Packages.gz
 	bzip2 -k Packages
+	xz -k -9 -z Packages
 	rm tempmkpackages
 
 	#Create a Releases file
@@ -725,13 +726,14 @@ EOF");
 	//update the package information
 	$cmd = "
 	mkdir -p '$dir/apt.conf.d' '$dir/archivs/partial' '$dir/preferences.d'
-	sudo rm -r -f '$dir/archivs/lock' '$dir/lock' '$dir/lists/lock'
 
 	ret=23
 
 	# Try again, if there was an error updating the package cache
 	while [ \$ret -ne 0 ]
 	do
+		sudo rm -r -f '$dir/archivs/lock' '$dir/lock' '$dir/lists/lock'
+
 		export LANG=\"C\"; sudo apt-get update -o=Dir::Cache::archives='$dir/archivs' -o=Dir::State::status='$dir/status' -o=Dir::State='$dir' $archOption -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$dir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$dir/preferences.d' -o=Dir::Etc::sourcelist='$dir/sources.list' -o=Acquire::http::Retries='10' 2>&1 | tee -a '$logFile'
 		ret=\${PIPESTATUS[0]}
 		echo ret0: \$ret >> '$logFile'
@@ -741,7 +743,7 @@ EOF");
 
 
 
-file_put_contents('/tmp/PKG_preparePackageDir.cmd', $cmd);
+// file_put_contents('/tmp/PKG_preparePackageDir.cmd', $cmd);
 
 
 	if ($returnCmd)
@@ -758,14 +760,14 @@ file_put_contents('/tmp/PKG_preparePackageDir.cmd', $cmd);
 	$printErr=false;
 
 	while (!feof($FILE))
-		{
-			$line=fgets($FILE,10000);
-			$errMsg.=$line;
+	{
+		$line=fgets($FILE,10000);
+		$errMsg.=$line;
 
-			//if (!$printErr && ((substr_count($line,"Err ") > 0) && (substr_count($line,"Release") == 0)))
-			if (!$printErr && (substr_count($line,"Err ") > 0) && (preg_match("|Err(.*)Release|",$line) == 0))
-				$printErr = true;
-		};
+		//if (!$printErr && ((substr_count($line,"Err ") > 0) && (substr_count($line,"Release") == 0)))
+		if (!$printErr && (substr_count($line,"Err ") > 0) && (preg_match("|Err(.*)Release|",$line) == 0))
+			$printErr = true;
+	}
 
 
 	fclose($FILE);

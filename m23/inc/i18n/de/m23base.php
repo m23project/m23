@@ -1355,7 +1355,14 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_poolStep[1]="Paketquellenliste und Pakete für den Download auswählen";
 @$I18N_poolStep[4]=$I18N_packageDownloadIsFinished;
 @$I18N_poolGPGSignKey = 'GPG-Paketquellen-Signierungsschlüssel';
-@$I18N_currentlyUsedGPGKey = 'Aktuelle verwendeter GPG-Schlüssel';
+@$I18N_currentlyUsedGPGKey = 'Aktuell verwendeter GPG-Schlüssel';
 @$I18N_publicPoolGPGSignKeyExported = 'Der öffentliche GPG-Paketquellen-Signierungsschlüssel wurde exportiert.';
 @$I18N_publicPoolGPGSignKeySelected = 'Öffentlicher GPG-Paketquellen-Signierungsschlüssel ausgewählt.';
+@$I18N_pleaseCreateOrLoadAPoolBeforeContinue = 'Bitte laden oder erstellen Sie vor dem Fortfahren eine Paketquelle.';
+@$I18N_givenGPGIdIsNotValidAsPublicAndPrivateKey = 'Der gewählte GPG-Schlüssel kann nicht als öffentlicher und privater Schlüssel verwendet werden. Sie benötigen z.B. zum automatischen Signieren von Paketquellen einen privaten GPG-Schlüssel ohne Paßwortsicherung.';
+@$I18N_updatePackageIndexAndReSignPool = 'Paketquellenindex (neu) erstellen und (neu) signieren';
+@$I18N_groupDescriptionInvalid = 'Gruppenbeschreibung ungültig';
+@$I18N_please_enter_group_description="Bitte geben Sie eine Beschreibung für die neue Gruppe an";
+@$I18N_releaseFilesSignedSucessfully = 'Signaturen für die Release-Datei erfolgreich erstellt.';
+@$I18N_errorSigningReleaseFiles = 'Fehler beim Erstellen der Signaturen für die Release-Datei.';
 ?>

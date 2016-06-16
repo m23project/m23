@@ -82,11 +82,11 @@ function HTML_uploadFile($htmlName,$label,$maxFileSize)
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	clearstatcache();
 	$visibleSize=sprintf("%.2f",$maxFileSize / 1048576);
-	
+
 	$htmlBUTName = "BUT_UL_$htmlName";
-	
+
 	HTML_submitDefine($htmlBUTName, $I18N_upload);
-	
+
 	define($htmlName,'
 		<table>
 			<tr>

@@ -1,3 +1,33 @@
+2016-06-16
+cha: CLCFG_installFirmware: Now filters out faulty bladerf firmware package.
+new; CPoolGUI::DEFINE_updatePackageIndexAndReSignPool: Defines a button for re-creating the Packages files and to re-sign the Release file.
+cha: CPoolGUI::DIALOG_start: Now uses DEFINE_reSignPool.
+cha: CPool::convertPackagesToRepository: Has a new parameter to let the task run in screen or not.
++++++
+2016-06-15
+cha: GRP_add: Now has a new parameter for the group description.
++++++
+2016-06-14
+cha: GRP_listGroupsAndCount: Now includes the group descriptions into the array too.
+cha: GRP_showGeneralInfo: Now shows group descriptions too.
++++++
+2016-06-13
+cha: CGPGSign::checkKey: New paramter for the ID of the GPG key.
+cha: CGPGSign::getKeySelectionDialog: Now checks the validity of the GPG (usable as public and private key) before setting it.
+cha: PKG_convertPackagesToRepository: Now creates a XZ compressed version of Packages.
++++++
+2016-06-12
+new: CmCP::setExitCode: Sets the exit code.
+new: CmCP::setPatchType: Sets the patch type (change or del).
+new: CmCP::patchSourceFile: Does the actual patching.
+new: CmCP::loadSourceFile: Loads the source file (the file to patch) and finds the line numbers with the patch area.
+new: CmCP::checkCommandLineParameters: Checks, if the correct amount of command line parameters is given and assigns them to the private variables.
+new: CmCP::loadPatchFile: Checks and loads the patch file.
+new: CmCP::dieOnErrors: Shows the usage info, shows the errors messages and stops the script, if there are error messages.
+new: CmCP::showFilesWithPatchableAreasAndExit: Shows the PHP file under /m23 that have patchable areas.
+new: CmCP::addErrorMessage: Adds an error message to the error message stack.
+new: CmCP::hasErrors: Checks, if there are error messages.
++++++
 2016-06-10
 cha: getArchList: Now gives out "amd64" first.
 new: CPool::signRelease, PKGBUILDER_listFiles: Now are signing the Release file as Release.gpg and InRelease.

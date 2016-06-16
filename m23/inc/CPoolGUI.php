@@ -302,8 +302,8 @@ function DIALOG_importDirFiles()
 		HTML_showTableHeader();
 		echo ('
 		<tr>
-			<td>'.H_MESSAGEBOXPLACEHOLDER.'<br>
-<span class="title">'.$I18N_packageSources.'</span><br>
+			<td>
+				<span class="title">'.$I18N_packageSources.'</span><br>
 				<textarea cols="100" rows="5" readonly>'.
 				$this->getPoolSourceslist().'
 				</textarea><br><br>
@@ -381,7 +381,7 @@ function DIALOG_importDirFiles()
 		HTML_showTableHeader();
 		echo ('
 		<tr>
-			<td>'.H_MESSAGEBOXPLACEHOLDER.'<br>
+			<td>
 				<span class="title">'.$I18N_packageDownloadStatus.'</span><br>
 				'.LA_downloadStatus.'<br><br>
 				<center><span class="subhighlight">'.$I18N_poolSize.'</span><br><br>
@@ -411,7 +411,9 @@ function DIALOG_importDirFiles()
 		$this->DEFINE_loadDeletePool('SEL_loadDeletePoolname', 'BUT_loadPool', 'BUT_deletePool');
 		$this->DEFINE_changePoolDescription('TA_poolDescription', 'BUT_poolSaveChanges', 'LA_poolSourcesList');
 		$this->DEFINE_nextStepCopyDownloadPackages('BUT_copyDownloadPackages');
+		$this->DEFINE_updatePackageIndexAndReSignPool('BUT_reSignPool');
 
+		// For showing the GPG key selection dialog and the currently used key
 		$GPGSign = new CGPGSign(CGPGSign::MODE_SAVE);
 
 		HTML_showTableHeader();
@@ -456,13 +458,14 @@ function DIALOG_importDirFiles()
 					<span class="subhighlight">'.$I18N_arch.'</span><br><br>
 					'.$this->getPoolArch().'
 					<br><br>
-					<center>'.BUT_poolSaveChanges.'</center>
+					'.BUT_poolSaveChanges.'
 				</td>
 			</tr>
 			<tr><td colspan="4"><span class="subhighlight">'.$I18N_packageSources.'</span></td></tr>
 			<tr><td colspan="4">'.LA_poolSourcesList.'</td></tr>
 			<tr><td colspan="4"><span class="subhighlight">'.$I18N_poolGPGSignKey.'</span></td></tr>
 			<tr><td colspan="4">'.$GPGSign->getKeySelectionDialog().'</td></tr>
+			<tr><td colspan="4" align="center">'.BUT_reSignPool.'</td></tr>
 			<tr><td colspan="4" align="center">'.BUT_copyDownloadPackages.'</td></tr>
 		');
 
@@ -483,7 +486,37 @@ function DIALOG_importDirFiles()
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 		if (HTML_submit($BUT_copyDownloadPackages, "$I18N_nextStep ($I18N_copyPackages / ".$I18N_poolStep["1download"].")"))
-			$this->page = CPoolGUI::POOLDIALOG_COPYDOWNLOADPACKAGES;
+		{
+			if (strlen($this->getPoolName(true)) == 0)
+				$this->addErrorMessage($I18N_pleaseCreateOrLoadAPoolBeforeContinue);
+			else
+				$this->page = CPoolGUI::POOLDIALOG_COPYDOWNLOADPACKAGES;
+		}
+	}
+
+
+
+
+
+/**
+**name CPoolGUI::DEFINE_updatePackageIndexAndReSignPool($BUT_updatePackageIndexAndReSignPool)
+**description Defines a button for re-creating the Packages files and to re-sign the Release file.
+**parameter BUT_reSignPool: HTML constant name for the re-sign button.
+**/
+	private function DEFINE_updatePackageIndexAndReSignPool($BUT_updatePackageIndexAndReSignPool)
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+		if (HTML_submit($BUT_updatePackageIndexAndReSignPool, $I18N_updatePackageIndexAndReSignPool))
+		{
+			if (strlen($this->getPoolName(true)) == 0)
+				$this->addErrorMessage($I18N_pleaseCreateOrLoadAPoolBeforeContinue);
+			else
+			{
+				$this->convertPackagesToRepository(false, false);
+				$this->signRelease();
+			}
+		}
 	}
 
 
@@ -532,7 +565,6 @@ function DIALOG_importDirFiles()
 		{
 			$this->setPoolName($poolName);
 			$_SESSION['preferenceForceHTMLReloadValues'] = true;
-			$this->signRelease();
 		}
 
 		// Delete the selected pool

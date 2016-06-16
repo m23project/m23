@@ -295,7 +295,7 @@ function MAIL_gpgCheckKey($gpgID, $privateKey = false)
 	$cmd = "echo test | gpg --homedir ".CONF_GPG_HOME." --default-key 0x$gpgID $gpgParams &> /dev/null; echo $?";
 
 	$ret = SERVER_runInBackground(uniqid('MAIL_gpgCheckKey'), $cmd, CONF_GPG_USER, false);
-	
+
 	return($ret == 0);
 }
 

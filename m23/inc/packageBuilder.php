@@ -93,7 +93,7 @@ function PKGBUILDER_listFiles()
 		$GPGSign->gpgSignDetached(EXTRA_DEBS_DIRECTORY.'/Release', EXTRA_DEBS_DIRECTORY.'/Release.gpg');
 		$GPGSign->gpgSignClear(EXTRA_DEBS_DIRECTORY.'/Release', EXTRA_DEBS_DIRECTORY.'/InRelease');
 	}
-	
+
 
 	$pressedAction=array_keysSearch($_POST,"/^BUT_action/");
 	if (!($pressedAction === false))

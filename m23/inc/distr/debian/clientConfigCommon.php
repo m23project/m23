@@ -33,7 +33,7 @@ firmware-ipw2x00 firmware-ipw2x00/license/accepted boolean true
 firmware-ivtv firmware-ivtv/license/error error
 firmware-ivtv firmware-ivtv/license/accepted boolean true');
 
-	echo('apt-cache search firmware | sort | grep firmware | cut -d\' \' -f1 | grep firmware | grep -v installer$ | grep -v nexus7 | grep -v grub | grep -v tools$ | grep -v dev$ | grep -v libertas-firmware | xargs -n1 apt-get -y -m --force-yes install');
+	echo('apt-cache search firmware | sort | grep firmware | cut -d\' \' -f1 | grep firmware | grep -v installer$ | grep -v nexus7 | grep -v grub | grep -v tools$ | grep -v dev$ | grep -v libertas-firmware | grep -v bladerf | xargs -n1 apt-get -y -m --force-yes install');
 }
 
 

@@ -28,11 +28,12 @@ function GRP_exists($groupName)
 
 
 /**
-**name GRP_add($groupName)
-**description adds a group
+**name GRP_add($groupName, $groupDescription)
+**description Adds a group with description.
 **parameter groupName: name of the group to add
+**parameter groupDescription: description of the group to add
 **/
-function GRP_add($groupName)
+function GRP_add($groupName, $groupDescription)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
@@ -43,22 +44,28 @@ function GRP_add($groupName)
 	}
 
 	if (GRP_exists($groupName))
-		{
-			MSG_showError($I18N_group_exists);
-			return(false);
-		}
+	{
+		MSG_showError($I18N_group_exists);
+		return(false);
+	}
+	
+	if (CHECK_FW(true, CC_groupdescription, $groupDescription) === false)
+	{
+		MSG_showError($I18N_groupDescriptionInvalid);
+		return(false);
+	}
+
+	$groupDescription = CHECK_text2db($groupDescription);
+
+	$sql="INSERT INTO groups (groupname, description) VALUES ('$groupName', '$groupDescription')";
+	if( db_query($sql)) //FW ok
+		MSG_showInfo($I18N_group_added_sucessfully);
 	else
-		{
-			$sql="INSERT INTO groups (groupname) VALUES ('$groupName')";
-  			if( db_query($sql)) //FW ok
-				MSG_showInfo($I18N_group_added_sucessfully);
-			else
-			{
-				MSG_showError($I18N_error_db);
-				return(false);
-			}
-		};
-		
+	{
+		MSG_showError($I18N_error_db);
+		return(false);
+	}
+
 	return(true);
 };
 
@@ -255,6 +262,7 @@ function GRP_listGroupsAndCount()
 	foreach ($groups as $group)
 		{
 			$arr[$i]['groupname']=$group;
+			$arr[$i]['description']= GRP_getDescrGroup($group);
 			$arr[$i]['count'] = GRP_countClients($group);
 			$i++;
 		};
@@ -657,16 +665,18 @@ function GRP_showGeneralInfo($groupName)
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 	$clientAmount = GRP_countClients($groupName);
+	$grpDescription = GRP_getDescrGroup($groupName);
 
 	echo("<table align=\"center\"><tr><td><div class=\"subtable_shadow\">
 	<table class=\"subtable\" align=\"center\">
-	 <tr> <td colspan=\"2\"><span class=\"subhighlight\">$I18N_group_information:</span></td></tr>
-	 <tr>
-		<td><span class=\"subhighlight\">$I18N_property</span></td>
-		<td><span class=\"subhighlight\">$I18N_value</span></td>
-	 </tr>
-	 <tr> <td>$I18N_group_name:</td>	<td> $groupName </td> </tr>
-	 <tr> <td>$I18N_client_amount:</td>	<td> $clientAmount </td> </tr>
+		<tr> <td colspan=\"2\"><span class=\"subhighlight\">$I18N_group_information:</span></td></tr>
+		<tr>
+			<td><span class=\"subhighlight\">$I18N_property</span></td>
+			<td><span class=\"subhighlight\">$I18N_value</span></td>
+		</tr>
+		<tr> <td>$I18N_group_name:</td>	<td> $groupName </td> </tr>
+		<tr> <td>$I18N_client_amount:</td>	<td> $clientAmount </td> </tr>
+		<tr> <td>$I18N_description:</td>	<td> $grpDescription </td> </tr>
 	</table></div></td><tr></table>");
 
 };

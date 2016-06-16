@@ -47,6 +47,7 @@ define('CC_userID','i');
 define('CC_groupID','i');
 define('CC_lastmodify','i');
 define('CC_groupname','A200');
+define('CC_groupdescription','Se');
 define('CC_groupnameOrEmpty','se200');
 define('CC_biggerEqualSmaler','V>=<');
 define('CC_package','sn255');

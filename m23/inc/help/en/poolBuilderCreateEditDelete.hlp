@@ -14,3 +14,5 @@ The pool builder makes it possible to combine software packages from different m
 <LI><b>$I18N_poolType</b>: The type selects the media the packages should be fetched from. <!-- v13.1 deactivated <i>"$I18N_CDPool"</i> is used for all CD and DVD media. All mount points from /etc/fstab are shown and can be used as source for software packages.--> <i>"$I18N_downloadPool"</i>: This variant downloads all packages from HTTP or FTP servers that can be used for package installation.</li>
 <!--begin v1.18--><li><b>$I18N_arch</b>: Choose here the architecture for the packages to download. Here the architecture of the clients is meant and not the architecture of the m23 server.</li><!--end v1.18-->
 <li><b>Package source</b>: A package source is a directory (with subdirectories) that contains software packages and index files. The index files are storing information about the software packages and are needed to make the packages available for installation.</li></ul>
+
+helpInclude("poolSignKeySelection.inc");

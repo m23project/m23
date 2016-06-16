@@ -40,10 +40,22 @@ class CPool extends CChecks
 **/
 	protected function signRelease()
 	{
-		$poolDir = $this->getPoolDir();
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+		// Result variable for both signing attempts
+		$res = true;
+
 		$GPGSign = new CGPGSign(CGPGSign::MODE_LOAD);
-		$GPGSign->gpgSignDetached("$poolDir/Release", "$poolDir/Release.gpg");
-		$GPGSign->gpgSignClear("$poolDir/Release", "$poolDir/InRelease");
+
+		// Sign in both ways
+		$poolDir = $this->getPoolDir();
+		$res &= $GPGSign->gpgSignDetached("$poolDir/Release", "$poolDir/Release.gpg");
+		$res &= $GPGSign->gpgSignClear("$poolDir/Release", "$poolDir/InRelease");
+
+		if ($res)
+			$this->addInfoMessage($I18N_releaseFilesSignedSucessfully);
+		else
+			$this->addErrorMessage($I18N_errorSigningReleaseFiles);
 	}
 
 
@@ -93,12 +105,13 @@ class CPool extends CChecks
 
 
 /**
-**name CPool::convertPackagesToRepository($returnCommands = false)
+**name CPool::convertPackagesToRepository($returnCommands = false, $runInScreen = true)
 **description Generates a package source from packages stored in one directory.
 **parameter returnCommands: If set to true, the commands for downloading the packages will be returned instead of executed.
+**parameter runInScreen: Set to true if the execution should be done in "screen". False executes it under the normal BASH.
 **returns Commands for creating the package source when $returnCommands is true, true when the screen session for creating the package source is started and false on errors.
 **/
-	public function convertPackagesToRepository($returnCommands = false)
+	public function convertPackagesToRepository($returnCommands = false, $runInScreen = true)
 	{
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
@@ -121,7 +134,7 @@ class CPool extends CChecks
 			else
 			{
 				//Run the commands
-				SERVER_runInBackground('convertPackagesToRepository', $cmds, 'root',true);
+				SERVER_runInBackground('convertPackagesToRepository', $cmds, 'root', $runInScreen);
 				return(true);
 			}
 		}
@@ -831,7 +844,7 @@ parameter statusFileContentsToCheck: The contents of the status file to check, w
 			// Start download of the packages
 			$cmds = PKG_downloadPool($this->getPoolDir(), $this->getPoolImportedFromSourceslist(), $packagesArr, $this->getPoolArch(), $this->getPoolRelease());
 			
-			file_put_contents ('/tmp/startDownloadToPool', $cmds);
+// 			file_put_contents ('/tmp/startDownloadToPool', $cmds);
 
 			
 			$this->addInfoMessage($I18N_packageDownloadStarted);
