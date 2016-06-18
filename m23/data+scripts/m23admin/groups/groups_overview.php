@@ -7,7 +7,7 @@
 
 <?php
 
-GRP_showGroupsAndCount2();
+GRP_showGroupsAndCount();
 
 help_showhelp("groups_overview"); 
 

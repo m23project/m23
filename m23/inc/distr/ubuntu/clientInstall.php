@@ -135,8 +135,8 @@ cd /tmp
 		- /etc/resolv.conf: DNS
 		- /etc/apt/apt.conf.d/70debconf: proxy settings for downloading Debian packages
 	*/
-	CLCFG_interfaces($clientParams);
 	CLCFG_hostname($clientParams['client']);
+	CLCFG_interfaces($clientParams);
 	/* =====> */ MSR_statusBarIncCommand(2);
 
 	//list of DNS servers

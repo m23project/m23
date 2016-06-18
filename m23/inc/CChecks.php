@@ -771,7 +771,7 @@ class CChecks extends CMessageManager
 **parameter errorMsg: Error message to add, if the checking fails.
 **returns true, if the input value matches the rule otherwise false.
 **/
-	private function genericCHECK_FW($rule, $val, $errorMsg)
+	protected function genericCHECK_FW($rule, $val, $errorMsg)
 	{
 		if (CHECK_FW(true, $rule, $val) === false)
 		{

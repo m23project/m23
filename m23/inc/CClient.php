@@ -45,7 +45,7 @@
 
 class CClient extends CChecks
 {
-	private $clientInfo = array(), $paramKeys = '', $md5 = '';
+	private $clientInfo = array(), $paramKeys = '', $md5 = '', $keyValueStore;
 
 	//Status codes of the client
 	const MIN_STATUS = 0;
@@ -136,11 +136,17 @@ class CClient extends CChecks
 			die('Failed to create CClient object (wrong parameter).');
 
 		$this->paramKeys = array_keys($params);
-		
+
 		$options = explodeAssoc('?',$params['options']);
 
 		//Combine the arrays (params have the highest priority and overwrite (hopefully not existing) keys in the options array)
 		$this->clientInfo = array_merge($options, $params);
+
+		// The key value store must be unserialized to be usable
+		if (isset($this->clientInfo['keyValueStore']))
+			$this->clientInfo['keyValueStore'] = unserialize($this->clientInfo['keyValueStore']);
+		else
+			$this->clientInfo['keyValueStore'] = array();
 
 		//Calculate a checksum over the initial settings of the client
 		$this->md5 = md5(serialize($this->clientInfo));
@@ -168,6 +174,59 @@ class CClient extends CChecks
 	public function saveClientPackagesAsPackageSelection($packageSelectionName)
 	{
 		
+	}
+
+
+
+
+
+/**
+**name CClient::setKeyValueStore($key, $value, $check = NULL, $errorMsg = '')
+**description Sets a value in the key value store of the client.
+**parameter key: Name of the key.
+**parameter value: The value to store under the key.
+**parameter check: An optional variable firewall check constant or rule or a function for check the validity of the value.
+**parameter errorMsg: An error message to give out, if the value fails the check.
+**/
+	public function setKeyValueStore($key, $value, $check = NULL, $errorMsg = '')
+	{
+		$checkOK = true;
+
+		// Check, if the value should be checked
+		if (!is_null($check))
+		{
+			// If check is as constant, it is ment as constant for the variable firewall
+			if (defined($check))
+				$this->genericCHECK_FW(constant($check), $value, $errorMsg);
+			// If check is a function, call it and give out the error message, if the check fails
+			elseif (function_exists($check))
+			{
+				$checkOK = $check($value);
+				if (!$checkOK)
+					$this->addErrorMessage($errorMsg);
+			}
+			// A string is interpreted as variable firewall rule
+			elseif (is_string($check))
+				$this->genericCHECK_FW($check, $value, $errorMsg);
+		}
+
+		// Only add the value to the key storage, if the check was sucessfully (or no check was given)
+		if ($checkOK)
+			$this->clientInfo['keyValueStore'][$key] = $value;
+	}
+
+
+
+
+
+/**
+**name CClient::getKeyValueStore($key)
+**description Gets a value from the key value store of the client.
+**returns The value or NULL, if there is no value for the key.
+**/
+	public function getKeyValueStore($key)
+	{
+		return(isset($this->clientInfo['keyValueStore'][$key]) ? $this->clientInfo['keyValueStore'][$key] : NULL);
 	}
 
 
@@ -1285,7 +1344,10 @@ class CClient extends CChecks
 	{
 		$sql = 'UPDATE `clients` SET';
 		$optionsA = array();
-	
+
+		// Serialize the key value store before writing to the DB
+		$this->clientInfo['keyValueStore'] = serialize($this->clientInfo['keyValueStore']);
+
 		foreach ($this->clientInfo as $key => $val)
 		{
 			//Continue on empty key

@@ -282,174 +282,6 @@ function GRP_showGroupsAndCount()
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
-	$actionList[0]=$I18N_install;
-	$actionList[1]=$I18N_deinstall;
-	$actionList[2]=$I18N_update;
-	$actionList[3]=$I18N_recover;
-
-
-	$type=$_GET[SEL_type];
-
-	//make sure that $type has a valid value
-	if (empty($type))
-		$type=$_GET[type];
-
-	if (empty($type))
-		$type=$I18N_install;
-
-	$action = $_GET['SEL_type'];
-
-
-
-	//if the action should make direct changes (true) or call a second page (false)
-	$directChange=false;
-
-	if ($_POST[directChange] == 1)
-		$directChange=true;
-
-	switch($type)
-		{
-			case "$I18N_install": 
-				{
-					$action="";
-					$page="installpackages";
-					$doLabel = $I18N_install_packages;
-					break;
-				};
-
-			case "$I18N_deinstall": 
-				{
-					$action="&action=deinstall";
-					$page="installpackages";
-					$doLabel = $I18N_deinstall_packages;
-					break;
-				};
-				
-			case "$I18N_update":
-				{
-					$action="&action=update";
-					$page="installpackages";
-					$doLabel = $I18N_update;
-					break;
-				};
-				
-			case "$I18N_recover":
-				{
-					$action="&type=$I18N_recover";
-					$page="groupsoverview";
-					$doLabel = $I18N_recover;
-					$directChange=true;
-					break;
-				};
-		};
-	
-	//check if the "do" button is pressed and the changes should be made directly
-	if ($directChange && isset($_POST[BUT_do]))
-	{
-		$nr = 0;
-
-		//get all groups and store them in an array
-		for ($i=0; $i < $_POST['groupAmount']; $i++)
-			{
-				if (isset($_POST["CB_do$i"]))
-					$groups[$nr++]=$_POST["CB_do$i"];
-			}
-
-		$clients=GRP_listAllClientsInGroups($groups);
-
-		switch ($type)
-		{
-			case "$I18N_recover":
-				{
-					GRP_desasterRecovery($clients);
-					break;
-				};
-		};
-		
-	}
-	else
-	{
-	
-		$list=GRP_listGroupsAndCount();
-		
-		//write table header
-		echo("
-		<FORM action=\"index.php?page=$page&groupmode=1$action\" method=\"POST\">
-		<input type=\"hidden\" name=\"directChange\" value=\"");
-
-		if ($directChange)
-			echo("1");
-		else
-			echo("0");
-
-		echo("\">
-		<table align=\"center\"><tr><td><div class=\"subtable_shadow\">
-		<table class=\"subtable\" align=\"center\">
-		<tr>
-			<td>
-				<span class=\"subhighlight\">$I18N_group_name</span>
-			</td>
-			<td>
-				<span class=\"subhighlight\">$I18N_client_amount</span>
-			</td>
-			<td></td>
-		</tr>");
-
-		$i = 0;
-
-		//write the group lines
-		foreach ($list as $entry)
-			{
-				echo("<tr>
-						<td>
-							<a href=\"index.php?page=groupdetails&groupname=$entry[groupname]\">$entry[groupname]
-							</a>
-						</td>
-						<td align=\"center\">$entry[count]</td>
-						<td>
-							<INPUT type=\"checkbox\" name=\"CB_do$i\" value=\"$entry[groupname]\">
-						</td>
-					</tr>");
-					
-				$i++;
-			};
-		
-		HTML_setPage($page);
-		echo("
-		<tr>
-			<td colspan=\"3\" align=\"center\">
-				<INPUT type=\"submit\" name=\"BUT_do\" value=\"$doLabel\">
-			</td>
-		</tr>
-		<input type=\"hidden\" name=\"groupAmount\" value=\"$i\">
-		</FORM>
-		<FORM method=\"GET\">
-		<tr>
-			<td colspan=\"2\">".
-				HTML_listSelection("SEL_type",$actionList,$type)."
-			</td>
-			<td>
-				<INPUT type=\"submit\" name=\"BUT_select\" value=\"$I18N_select\">
-			</td>
-		</tr>");
-		
-		HTML_setPage($page);
-
-		echo("
-		</FORM>
-		</table>
-		</div></td><tr></table>
-		");
-	};
-}
-
-
-
-
-function GRP_showGroupsAndCount2()
-{
-	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
-
 	$actionList[$I18N_install]	= $I18N_install;
 	$actionList[$I18N_deinstall]= $I18N_deinstall;
 	$actionList[$I18N_update]	= $I18N_update;
@@ -545,7 +377,7 @@ function GRP_showGroupsAndCount2()
 
 		HTML_showTableHeader();
 
-		HTML_showTableHeading($I18N_group_name, $I18N_client_amount, "");
+		HTML_showTableHeading($I18N_group_name, $I18N_client_amount, "", $I18N_description);
 
 		$i = 0;
 
@@ -553,7 +385,7 @@ function GRP_showGroupsAndCount2()
 		foreach ($groupList as $entry)
 			{
 				HTML_checkBox("CB_do$i", $entry['groupname'], false, "", $entry['groupname']);
-				HTML_showTableRow(($i % 2 == 1),"<a href=\"index.php?page=groupdetails&groupname=$entry[groupname]\">$entry[groupname]</a>", $entry['count'], constant("CB_do$i"));
+				HTML_showTableRow(($i % 2 == 1),"<a href=\"index.php?page=groupdetails&groupname=$entry[groupname]\">$entry[groupname]</a>", $entry['count'], constant("CB_do$i"), nl2br($entry['description']));
 				$i++;
 			};
 

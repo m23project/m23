@@ -18,21 +18,18 @@
 	include_once('/m23/inc/CFirewall.php');
 
 
-	$GPGSign = new CGPGSign(CGPGSign::MODE_LOAD);
-// 	$GPGSign->setGPGID('9395A599');
-	print($GPGSign->getKeyInfo());
-	print(serialize($GPGSign->checkKey()));
-	$GPGSign->exportPublicSignKey();
+	function test($in)
+	{
+		return(true);
+	}
+
+	$CClientO = new CClient('m23demoClNt23');
+	$CClientO->setKeyValueStore('schl', 'wert', test, 'kaputt');
+	print($CClientO->getKeyValueStore('schl'));
+	$CClientO->showMessages();
+
 
 print("<pre>");
-
-	print_r(MAIL_getGpgKeyList(true));
-	print_r(MAIL_getGpgKeyList(false));
-	print(serialize($GPGSign->gpgSignDetached('/tmp/infile.txt', '/tmp/infile.txt.asc')));
-$GPGSign = new CGPGSign(CGPGSign::MODE_LOAD);
-// 	MAIL_sendMail("hauke@pc-kiel.de", "hallo", "aes");
-// 	print(getServerNetwork());
-// 	CLIENT_executeOnClientOrIP('m23deb8amd64', 'm23install', 'echo lala > /tmp/lala; sleep 10');
 
 
 print("</pre>\n");

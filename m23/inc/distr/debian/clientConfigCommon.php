@@ -1839,7 +1839,9 @@ fi\n
 **/
 function CLCFG_interfaces($clientParams)
 {
+//m23customPatchBegin type=change id=CLCFG_interfacesDhcpBootimage
 	if ($clientParams['dhcpBootimage'] !== "gpxe")
+//m23customPatchEnd id=CLCFG_interfacesDhcpBootimage
 	{
 		$clientIP = $clientParams['ip'];
 		$gateway = $clientParams['gateway'];
@@ -1957,7 +1959,7 @@ cat >> /etc/hostname << \"EOF\"
 $clientName
 EOF
 
-#hostname $clientName
+hostname $clientName
 
 if [ -f /etc/hostname ]
 then

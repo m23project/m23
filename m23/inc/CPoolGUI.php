@@ -149,18 +149,18 @@ class CPoolGUI extends CPool
 
 
 
-private function DEFINE_importDirFiles($SEL_mountPoint, $BUT_mount)
-{
-	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
-	
-	$mountPoints = HELPER_getFdiskMountPoints();
-	$mountPoint = HTML_selection($SEL_mountPoint, $mountPoints, SELTYPE_selection);
-
-	if (HTML_submit($BUT_mount, $I18N_mount))
+	private function DEFINE_importDirFiles($SEL_mountPoint, $BUT_mount)
 	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		
+		$mountPoints = HELPER_getFdiskMountPoints();
+		$mountPoint = HTML_selection($SEL_mountPoint, $mountPoints, SELTYPE_selection);
+	
+		if (HTML_submit($BUT_mount, $I18N_mount))
+		{
+		}
+	
 	}
-
-}
 
 
 
