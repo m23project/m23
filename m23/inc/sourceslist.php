@@ -845,7 +845,7 @@ function SRCLST_showEditor($poolName="", $showSupportedUserInterfacesList = true
 	
 			//add packages from client
 			if (isset($_POST[BUT_addFromClient]))
-				$packageList.=" ".PKG_getClientPackages($firstClient, "", false);
+				$packageList.=" ".PKG_getClientPackages($firstClient, "", false, DEBPKGSTAT_installed);
 
 			$firstPackageList=$_POST[ED_packageSourceName];
 			if (empty($firstPackageList))

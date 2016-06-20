@@ -1357,7 +1357,7 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_poolGPGSignKey = 'GPG-Paketquellen-Signierungsschlüssel';
 @$I18N_currentlyUsedGPGKey = 'Aktuell verwendeter GPG-Schlüssel';
 @$I18N_publicPoolGPGSignKeyExported = 'Der öffentliche GPG-Paketquellen-Signierungsschlüssel wurde exportiert.';
-@$I18N_publicPoolGPGSignKeySelected = 'Öffentlicher GPG-Paketquellen-Signierungsschlüssel ausgewählt.';
+@$I18N_privatePoolGPGSignKeySelected = 'Privater GPG-Paketquellen-Signierungsschlüssel ausgewählt.';
 @$I18N_pleaseCreateOrLoadAPoolBeforeContinue = 'Bitte laden oder erstellen Sie vor dem Fortfahren eine Paketquelle.';
 @$I18N_givenGPGIdIsNotValidAsPublicAndPrivateKey = 'Der gewählte GPG-Schlüssel kann nicht als öffentlicher und privater Schlüssel verwendet werden. Sie benötigen z.B. zum automatischen Signieren von Paketquellen einen privaten GPG-Schlüssel ohne Paßwortsicherung.';
 @$I18N_updatePackageIndexAndReSignPool = 'Paketquellenindex (neu) erstellen und (neu) signieren';

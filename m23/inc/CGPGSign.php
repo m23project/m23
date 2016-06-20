@@ -41,14 +41,14 @@ class CGPGSign extends CChecks
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 		// Selection with all know private GPG keys
-		$privGPGKeyID = HTML_selection('SEL_showKeySelectionGpgKey', MAIL_getGpgKeyList(true), SELTYPE_selection, true, $this->getGPGID());
+		$privGPGKeyID = HTML_selection('SEL_showKeySelectionGpgKey', MAIL_getGpgKeyList(true), SELTYPE_selection, true, $this->getGPGID(true));
 
 		if (HTML_submit('BUT_showKeySelectionUseGpgKey', $I18N_select))
 		{
 			if ($this->checkKey($privGPGKeyID))
 			{
 				$this->setGPGID($privGPGKeyID);
-				$this->addInfoMessage($I18N_publicPoolGPGSignKeySelected);
+				$this->addInfoMessage($I18N_privatePoolGPGSignKeySelected);
 				$this->exportPublicSignKey();
 			}
 			else
@@ -95,7 +95,7 @@ class CGPGSign extends CChecks
 		if (is_bool($publicKeyASC)) return(false);
 
 		// Check, if the key has a valid length
-		if (strlen($publicKeyASC) < 2000) return(false);
+		if (strlen($publicKeyASC) < 1000) return(false);
 
 		// Write it to the webserver directory
 		SERVER_putFileContents(CGPGSign::POOLSIGNKEYFILE, $publicKeyASC, '555', HELPER_getApacheUser());
@@ -133,8 +133,10 @@ class CGPGSign extends CChecks
 **/
 	public function getKeyInfo()
 	{
-		if ($this->hasConfigFile())
-			return($this->gpgKeyList[$this->getGPGID()]);
+		$keyID = $this->getGPGID(true);
+	
+		if (!is_null($keyID))
+			return($this->gpgKeyList[$keyID]);
 		else
 			return('');
 	}
@@ -184,7 +186,7 @@ class CGPGSign extends CChecks
 **/
 	public function hasConfigFile()
 	{
-		return(file_exists(CGPGSign::CONFIGFILE));
+		return(SERVER_fileExists(CGPGSign::CONFIGFILE));
 	}
 
 
@@ -243,14 +245,15 @@ class CGPGSign extends CChecks
 
 
 /**
-**name CGPGSign::getGPGID()
+**name CGPGSign::getGPGID($allowReturnNull = false)
 **description Gets the GPG ID to use.
+**parameter allowReturnNull: Set to true, if NULL may be returned as ID (eg. there is no config file).
 **returns GPG ID to use or dies, if no ID is set.
 **/
-	private function getGPGID()
+	private function getGPGID($allowReturnNull = false)
 	{
-		if (is_null($this->gpgID))
-			die("ERROR: getGPGID: GPG ID ($id) is invalid!");
+		if (is_null($this->gpgID) && !$allowReturnNull)
+			die("ERROR: getGPGID: GPG ID is not set!");
 		return($this->gpgID);
 	}
 

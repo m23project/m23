@@ -862,6 +862,9 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 
 			$CClientO->copyImagingParameters($options);
 			$CClientO->copyMassOptions($options);
+
+			//m23customPatchBegin type=change id=CLIENT_addClientAdditionalValuesForAddOrDefineClients
+			//m23customPatchEnd id=CLIENT_addClientAdditionalValuesForAddOrDefineClients
 		};
 
 	if (($clientAddType == CLIENT_ADD_TYPE_add) && ($CClientO->getBootType() != CClient::BOOTTYPE_GPXE))
@@ -1369,7 +1372,11 @@ function CLIENT_showGeneralInfo($id,$generateEnterKeep=false)
 
 	$result = DB_query("SELECT * FROM clients WHERE id='$id' "); //FW ok
 	$data = mysqli_fetch_array($result);
-	
+
+//m23customPatchBegin type=change id=CLIENT_showGeneralInfoAdditionalCodeAfterQuery
+//m23customPatchEnd id=CLIENT_showGeneralInfoAdditionalCodeAfterQuery
+
+
 	//Try to get the block with informations for the VM client. If it's not a VM client the variable will be empty.
 	$vmInfoHTML = VM_getHTMLStatusBlock($data['client']);
 
@@ -1398,6 +1405,8 @@ function CLIENT_showGeneralInfo($id,$generateEnterKeep=false)
 			$emailEGK=MASS_EGKradioBoxes("RB_email",array(e,n,e),0);
 			$macEGK=MASS_EGKradioBoxes("RB_mac",array(y,n,n),0);
 			$ipEGK=MASS_EGKradioBoxes("RB_ip",array(e,e,n),0);
+			//m23customPatchBegin type=change id=CLIENT_showGeneralInfoAdditionalMASS_EGKradioBoxes
+			//m23customPatchEnd id=CLIENT_showGeneralInfoAdditionalMASS_EGKradioBoxes
 			$netmaskEGK=MASS_EGKradioBoxes("RB_netmask",array(e,e,e),2);
 			$gatewayEGK=MASS_EGKradioBoxes("RB_gateway",array(e,n,e),2);
 			$dns1EGK=MASS_EGKradioBoxes("RB_dns1",array(e,n,e),2);
@@ -1460,14 +1469,20 @@ function CLIENT_showGeneralInfo($id,$generateEnterKeep=false)
 	<tr> <td>$I18N_login_name:</td><td>$allOptions[login]</td>$loginEGK</tr>
 	<tr> <td>$I18N_forename:</td><td>$data[name]</td>$forenameEGK</tr>
 	<tr> <td>$I18N_familyname:</td><td>$data[familyname]</td>$familynameEGK</tr>
-	<tr> <td>eMail:</td><td>$data[email]</td>$emailEGK</tr>
+	<tr> <td>eMail:</td><td>$data[email]</td>$emailEGK</tr>");
+	//m23customPatchBegin type=change id=CLIENT_showGeneralInfoAdditionalTableEntriesAftereMail
+	//m23customPatchEnd id=CLIENT_showGeneralInfoAdditionalTableEntriesAftereMail
+	echo("
 	<tr> <td>$I18N_arch:</td><td>$allOptions[arch]</td></tr>
 	<tr> <td>Kernel:</td><td>".nl2br($allOptions['kernel'])."</td></tr>");
 
 	//Only show network information if the client is NOT gPXE or DHCP client
 	if ($data['dhcpBootimage'] != CClient::BOOTTYPE_GPXE)
 		echo( "<tr> <td>$I18N_mac:</td><td>$data[mac]</td>$macEGK</tr>
-		<tr> <td>$I18N_ip:</td><td>$data[ip]</td>$ipEGK</tr>
+		<tr> <td>$I18N_ip:</td><td>$data[ip]</td>$ipEGK</tr>");
+		//m23customPatchBegin type=change id=CLIENT_showGeneralInfoAdditionalTableEntriesAfterIP
+		//m23customPatchEnd id=CLIENT_showGeneralInfoAdditionalTableEntriesAfterIP
+		echo("
 		<tr> <td>$I18N_netmask:</td><td>$data[netmask]</td>$netmaskEGK</tr>
 		<tr> <td>$I18N_gateway:</td><td>$data[gateway]</td>$gatewayEGK</tr>
 		<tr> <td>DNS1:</td><td>$data[dns1]</td>$dns1EGK</tr>
@@ -3640,6 +3655,8 @@ function CLIENT_changeClient()
 	$i18n['name']=$I18N_forename;
 	$i18n['familyname']=$I18N_familyname;
 	$i18n['eMail']="eMail";
+	//m23customPatchBegin type=change id=CLIENT_changeClientAdditionalTranslations
+	//m23customPatchEnd id=CLIENT_changeClientAdditionalTranslations
 	$i18n['boottype']=$I18N_boottype;
 	$i18n['mac']=$I18N_mac;
 	$i18n['ip']=$I18N_ip;

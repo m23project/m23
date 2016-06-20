@@ -17,20 +17,51 @@
 	include_once('/m23/inc/CFDiskGUI.php');
 	include_once('/m23/inc/CFirewall.php');
 
+	$sql="SELECT * FROM `clients`";
 
-	function test($in)
-	{
-		return(true);
-	}
+	$res=db_query($sql); //FW ok
 
-	$CClientO = new CClient('m23demoClNt23');
-	$CClientO->setKeyValueStore('schl', 'wert', test, 'kaputt');
-	print($CClientO->getKeyValueStore('schl'));
-	$CClientO->showMessages();
 
+// 	function test($in)
+// 	{
+// 		return(true);
+// 	}
+// 
+
+	$CClientO = new CClient($data['client']);
+	$tsSystemInfo = TSMP_getTestSystemById($CClientO->getKeyValueStore('info_mpId'));
+	$testSystemString = $tsSystemInfo[1];
+
+	
+
+// 	$CClientO->setKeyValueStore('schl', 'wert', test, 'kaputt');
+
+/*	$CClientO->setKeyValueStore('macts', $data['macts'], checkMAC, $I18N_macts_invalid);
+	$CClientO->setKeyValueStore('ipts', $data['ipts'], CC_ip, $I18N_ipts_invalid);
+	$CClientO->setKeyValueStore('info_mpId', $data['info_mpId'], CC_id, $I18N_info_mpId_invalid);*/
+	
+	
+		
+
+
+// 	$CClientO->showMessages();
+
+
+/*	$CClientListerO = new CClientLister();
+	$CClientListerO->addKeyValueStoreFilter('schl', 'wert');*/
+// 	$CClientListerO->setOutputColumns(CClientLister::COLUMN_CONTINUOUS_NUMBER, CClientLister::COLUMN_STATUS, CClientLister::COLUMN_CLIENT);
+
+// 	$out = array();
+// 	while ($clientInfo = $CClientListerO->getClient())
+// 	{
+// 		$out[$clientInfo['id']] = $clientInfo;
+// 	}
+// 	
+// 	print_r($out);
 
 print("<pre>");
 
+	print_r(DB_getArrayAssoc($res));
 
 print("</pre>\n");
 	HTML_showTableEnd();

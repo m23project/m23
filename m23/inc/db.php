@@ -764,4 +764,28 @@ function DB_getLikeableColumns($table)
 	}
 	return($out);
 }
+
+
+
+
+
+/**
+**name DB_getArrayAssoc($result)
+**description Fetches all results from a query.
+**parameter result: MySQLi result.
+**returns Array with continuous numbers as keys and associative arrays with the result rows as value.
+**/
+function DB_getArrayAssoc($result)
+{
+	$table_result = array();
+	$r = 0;
+
+	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+	{
+		$table_result[$r] = $row;
+		$r++;
+	}
+
+	return($table_result);
+}
 ?>

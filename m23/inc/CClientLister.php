@@ -35,7 +35,7 @@ class CClientLister extends CChecks
 	const ACTION_MASSINSTALL = 6;
 	const ACTION_CONTROLCENTER = 2323;
 
-	private $orderBy = 'clients.client', $statusWHERE = '', $groupWHERE = '', $groupFROM = '', $searchWHERE = '', $directionORDER = 'ASC', $vmRunOnHostWHERE = '', $mySQLResID = null, $actionString ='', $outputColumns = null, $checkedClientNamesIDs = array(), $extraLine = null, $pingableFilter = null;
+	private $orderBy = 'clients.client', $statusWHERE = '', $groupWHERE = '', $groupFROM = '', $searchWHERE = '', $keyValueStoreWHERE = '', $directionORDER = 'ASC', $vmRunOnHostWHERE = '', $mySQLResID = null, $actionString ='', $outputColumns = null, $checkedClientNamesIDs = array(), $extraLine = null, $pingableFilter = null;
 
 
 
@@ -683,6 +683,27 @@ class CClientLister extends CChecks
 
 
 /**
+**name CClientLister::addKeyValueStoreFilter($key, $value = NULL)
+**description Adds a filter to get only clients that have a key value pair set the client's key value store.
+**parameter key: Name of the key.
+**parameter value: The value to store under the key.
+**/
+	public function addKeyValueStoreFilter($key, $value)
+	{
+		// Key and value are stored in serialized format in the DB
+		$key = serialize($key);
+		$value = serialize($value);
+
+		$likeParam = str_replace ("'", "\'", $key.$value);
+
+		$this->keyValueStoreWHERE = 'keyValueStore LIKE \'%'.$likeParam.'%\'';
+	}
+
+
+
+
+
+/**
 **name CClientLister::addGroupFilter($groupName)
 **description Adds the group filter to get only clients that are into the given group.
 **parameter groupName: Name of the group to filter.
@@ -813,6 +834,11 @@ class CClientLister extends CChecks
 
 			if (isset($w{1})) $or = 'OR';
 
+			if (!empty($this->keyValueStoreWHERE))
+				$w .= " $or ".$this->keyValueStoreWHERE;
+
+			if (isset($w{1})) $or = 'OR';
+
 			//Check if "vmRunOnHost" is set and add the statement
 			if (!empty($this->vmRunOnHostWHERE))
 				$w .= " $or ".$this->vmRunOnHostWHERE;
@@ -832,6 +858,25 @@ class CClientLister extends CChecks
 			return(mysqli_fetch_assoc($this->mySQLResID));
 		else
 			return(false);
+	}
+
+
+
+
+
+/**
+**name CClientLister::getAllMatchingClients()
+**description Gets all clients matching all active filters.
+**returns Array with information about all matching clients with client ID as key.
+**/
+	public function getAllMatchingClients()
+	{
+		$out = array();
+		while ($clientInfo = $this->getClient())
+		{
+			$out[$clientInfo['id']] = $clientInfo;
+		}
+		return($out);
 	}
 
 
