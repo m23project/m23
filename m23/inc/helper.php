@@ -161,6 +161,8 @@ function HELPER_getContentFromURL($url, $range = '')
 	if (isset($range{2}))
 		curl_setopt($ch, CURLOPT_RANGE, $range);
 
+	CSYSTEMPROXY_addCurlProxySettings($ch);
+
 	$out = curl_exec($ch);
 	curl_close($ch);
 

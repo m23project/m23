@@ -51,6 +51,7 @@ define('UBUNTUDESKTOP_MYTHBUNTU_1604', 4006);
 define('UBUNTUDESKTOP_GNOME_1604', 4007);
 define('UBUNTUDESKTOP_UBUNTUSTUDIO_1604', 4008);
 define('UBUNTUDESKTOP_XUBUNTU_1604', 4009);
+define('UBUNTUDESKTOP_TRINITY_MINIMAL_1604', 4010);
 
 
 
@@ -334,6 +335,11 @@ function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $no
 			$dialogHeader = $I18N_installingUbuntustudio;
 		break;
 
+		case UBUNTUDESKTOP_TRINITY_MINIMAL_1604:
+			$desktopPackages = 'desktop-base-trinity kate-trinity kdesktop-trinity kicker-trinity konsole-trinity kpersonalizer-trinity ksmserver-trinity ksplash-trinity tdebase-runtime-data-common-trinity tdebase-trinity-bin tdm-trinity twin-trinity';
+			$dialogHeader = $I18N_installing_trinity;
+			$displayManager = NO_EXTRA_DM;
+		break;
 	}
 
 	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $dialogHeader);

@@ -142,6 +142,7 @@ include_once('/m23/inc/CFDiskBasic.php');
 include_once('/m23/inc/CFDiskGUI.php');
 include("/m23/inc/CScredit.php");
 include_once('/m23/inc/CGPGSign.php');
+include_once('/m23/inc/CSystemProxy.php');
 
 CAPTURE_load();
 

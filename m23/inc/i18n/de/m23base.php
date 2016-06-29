@@ -1365,4 +1365,9 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_please_enter_group_description="Bitte geben Sie eine Beschreibung für die neue Gruppe an";
 @$I18N_releaseFilesSignedSucessfully = 'Signaturen für die Release-Datei erfolgreich erstellt.';
 @$I18N_errorSigningReleaseFiles = 'Fehler beim Erstellen der Signaturen für die Release-Datei.';
+@$I18N_proxyHost = 'Proxy-Server';
+@$I18N_proxyPort = 'Proxy-Port';
+@$I18N_proxyUser = 'Proxy-Benutzer';
+@$I18N_proxyPassword = 'Proxy-Paßwort';
+@$I18N_proxyActive = 'Proxy aktiviert?';
 ?>

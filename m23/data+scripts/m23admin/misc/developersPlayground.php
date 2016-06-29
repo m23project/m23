@@ -28,9 +28,9 @@
 // 	}
 // 
 
-	$CClientO = new CClient($data['client']);
-	$tsSystemInfo = TSMP_getTestSystemById($CClientO->getKeyValueStore('info_mpId'));
-	$testSystemString = $tsSystemInfo[1];
+// 	$CClientO = new CClient($data['client']);
+// 	$tsSystemInfo = TSMP_getTestSystemById($CClientO->getKeyValueStore('info_mpId'));
+// 	$testSystemString = $tsSystemInfo[1];
 
 	
 
@@ -61,7 +61,9 @@
 
 print("<pre>");
 
-	print_r(DB_getArrayAssoc($res));
+	// print_r(CSystemProxy::getProxySettingsArray());
+	$OSystemProxy = new CSystemProxy();
+	$OSystemProxy->showProxyDialog();
 
 print("</pre>\n");
 	HTML_showTableEnd();

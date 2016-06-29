@@ -476,6 +476,21 @@ parameter statusFileContentsToCheck: The contents of the status file to check, w
 	public function setPoolSourceslist($sourceslist)
 	{
 		$this->setProperty('sourceslist', $sourceslist);
+		
+		$poolName = $this->getPoolName(true);
+		
+		// Only try to create a sources list, if the pool name is set
+		if (isset($poolName{1}))
+		{
+			// Generate the name of the sources list
+			$sourceslistName = "PoolBuilder: $poolName";
+
+			// Don't overwrite an existing package sources list
+			if (!SRCLST_sourceListExists($sourceslistName))
+			{
+				SRCLST_saveList($sourceslistName, $sourceslist, $this->getPoolDescription(), $this->getPoolDistribution(), $this->getPoolRelease);
+			}
+		}
 	}
 
 

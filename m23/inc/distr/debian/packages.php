@@ -687,7 +687,7 @@ EOF");
 
 
 /**
-**name PKG_preparePackageDir($dir,$packagesource,$logFile="",$returnCmd=false,$arch,$sourceName=false)
+**name PKG_preparePackageDir($dir, $packagesource, $logFile="", $returnCmd=false, $arch, $sourceName=false, $hardTryUpdate = false)
 **description creates the needed files + sources list in a directory to use it for "local apt".
 **parameter dir: the directory to prepare
 **parameter packagesource: sources list
@@ -695,9 +695,10 @@ EOF");
 **parameter returnCmd: Set to true, if the apt command should be returned or to false to execute it in this function.
 **parameter arch: Architecture to get package infos for.
 **parameter sourceName: The name of the package source list
+**parameter hardTryUpdate: Set to true, if the apt-get update should be run until it succeeds
 **returns: Error text on error or empty string on success.
 **/
-function PKG_preparePackageDir($dir,$packagesource,$logFile="",$returnCmd=false,$arch,$sourceName=false)
+function PKG_preparePackageDir($dir, $packagesource, $logFile="", $returnCmd=false, $arch, $sourceName=false, $hardTryUpdate = false)
 {
 	if (empty($logFile))
 		$logFile = "$dir/aptUpdate.log";
@@ -708,15 +709,13 @@ function PKG_preparePackageDir($dir,$packagesource,$logFile="",$returnCmd=false,
 	if (!file_exists($dir))
 		exec("mkdir -p '$dir'");
 
-	exec("touch '$dir/status'");
-
-	//if there is no sources.list, generate it from the db
-	if (!file_exists("$dir/sources.list"))
-	{
-		exec("cat >> '$dir/sources.list' << \"EOF\"
+	exec("
+	touch '$dir/status'
+	rm '$dir/sources.list'
+	cat >> '$dir/sources.list' << \"EOF\"
 $packagesource\ndeb http://127.0.0.1/extraDebs/ ./
-EOF");
-	}
+EOF
+	");
 
 	if ($sourceName !== false)
 		PKG_addAPTConfigFiles($sourceName, "$dir");
@@ -726,20 +725,35 @@ EOF");
 	//update the package information
 	$cmd = "
 	mkdir -p '$dir/apt.conf.d' '$dir/archivs/partial' '$dir/preferences.d'
+	rm '$logFile'
+	";
 
+	// Add the beginning of the while loop for unlimited tries of apt-get update
+	if ($hardTryUpdate)
+	$cmd .= "
 	ret=23
 
 	# Try again, if there was an error updating the package cache
 	while [ \$ret -ne 0 ]
 	do
+	";
+
+	$cmd .= "
 		sudo rm -r -f '$dir/archivs/lock' '$dir/lock' '$dir/lists/lock'
 
 		export LANG=\"C\"; sudo apt-get update -o=Dir::Cache::archives='$dir/archivs' -o=Dir::State::status='$dir/status' -o=Dir::State='$dir' $archOption -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$dir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$dir/preferences.d' -o=Dir::Etc::sourcelist='$dir/sources.list' -o=Acquire::http::Retries='10' 2>&1 | tee -a '$logFile'
 		ret=\${PIPESTATUS[0]}
 		echo ret0: \$ret >> '$logFile'
+	";
+
+	// Add the end of the while loop for unlimited tries of apt-get update
+	if ($hardTryUpdate)
+	$cmd .= "
 	done
-	".
-	PKG_genPackageSearchCacheFileCMD($dir, $arch);
+	";
+
+	$cmd .= "
+	".PKG_genPackageSearchCacheFileCMD($dir, $arch);
 
 
 
@@ -803,7 +817,7 @@ function PKG_updatePackageInfo($distr, $packagesource, $force, $arch)
 	if ((!file_exists("$dir/sources.list")) || (!file_exists($cacheFile)) || (SRCLST_packageInformationOlderThan(300, $distr, $packagesource)) || $force)
 		{
 			$logFile = "/m23/tmp/update$packagesource.log";
-			$errMsg=PKG_preparePackageDir($dir,SRCLST_loadSourceList($packagesource),$logFile,false,$arch,$packagesource);
+			$errMsg=PKG_preparePackageDir($dir, SRCLST_loadSourceList($packagesource), $logFile, false, $arch, $packagesource);
 
 			if (strlen($errMsg)>0)
 				{
@@ -1063,7 +1077,7 @@ function PKG_downloadPool($destDir, $sourceslist, $packagesArr, $arch, $release)
 	
 	$fktName = uniqid('aptdl');
 
-	$prepareCmd = PKG_preparePackageDir($destDir,$sourceslist,$logFile,true,$arch);
+	$prepareCmd = PKG_preparePackageDir($destDir, $sourceslist, $logFile, true, $arch, false, true);
 
 	$archOption = PKG_getAptArchOptions($arch);
 

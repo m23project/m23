@@ -1,3 +1,40 @@
+2016-06-29
+new: CSYSTEMPROXY_getProxySettingsFromAPT: Parses the (maybe existing) proxy settings from the local APT config file.
+new: CSystemProxy::loadProxySettings: Loads the proxy settings (from APT config file).
+new: CSystemProxy::isProxyActive: Checks, if a proxy is actively used.
+new: CSystemProxy::areProxySettingsAvailable: Checks, if proxy settings are available.
+new: CSYSTEMPROXY_addCurlProxySettings: Sets proxy settings for curl, if a proxy is active.
+cha: HELPER_getContentFromURL, SERVER_sendScriptToSF: Now are calling CSYSTEMPROXY_addCurlProxySettings.
+new: CSystemProxy::getProxyHost: Gets the proxy host/servername.
+new: CSystemProxy::usesUserPassword: Checks, if the proxy uses user/password authetification.
+new: CSystemProxy::getProxyUser: Gets the proxy authentification username.
+new: CSystemProxy::getProxyPassword: Gets the proxy authentification password.
+new: CSystemProxy::getProxyScheme: Gets the proxy scheme (http/ftp).
+new: CSystemProxy::getProxyPort: Gets the proxy port.
+new: CSystemProxy::getUserPasswordString: Creates a string with the user/password combination ($user:$pass@).
+new: CSystemProxy::setProxyActive: Activated or deactivates a proxy.
+new: CSystemProxy::setProxyHost: Sets the proxy host/servername.
+new: CSystemProxy::setProxyUser: Sets the proxy authentification username.
+new: CSystemProxy::setProxyPassword: Sets the proxy authentification password.
+new: CSystemProxy::setProxyPort: Sets the proxy port.
++++++
+2016-06-28
+patch 100905: Linux 4.4, improvements for sources lists handling.
+cha: KDE_installLoginManager: Now supports TDM.
++++++
+2016-06-24
+new: SRCLST_sourceListExists: Checks, if a named sources list exists.
+cha: CPool::setPoolSourceslist: Now creates an initial package sources list.
++++++
+2016-06-23
+cha: archFunctions.inc / localArchAptUpdate: Now excludes package sources from /etc/apt/sources.list.d.
+cha: kernelFunctions.inc / compileKernel: Changed gcc-4.4 to gcc (for Debian Jessie).
+cha: kernelFunctions.inc / compileKernel: Removed call of checkForx86_64Toolchain.
+cha: PKG_preparePackageDir: Now removes the log file and writes the sources.list on every call.
++++++
+2016-06-22
+cha: listKernelVersions: Now supports Linux 4.x.
++++++
 2016-06-19
 patch 100903: Preparing m23 16.3.
 cha: CGPGSign::hasConfigFile: Now uses SERVER_fileExists.

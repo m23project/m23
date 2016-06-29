@@ -73,7 +73,8 @@ function CLCFG_monoRemove()
 **/
 function CLCFG_setDebConfDM($dm)
 {
-	CLCFG_setDebConfDirect("kdm shared/default-x-display-manager select $dm
+	CLCFG_setDebConfDirect("tdm-trinity shared/default-x-display-manager select $dm
+kdm shared/default-x-display-manager select $dm
 lightdm shared/default-x-display-manager select $dm
 xdm shared/default-x-display-manager select $dm
 gdm shared/default-x-display-manager select $dm
@@ -269,6 +270,7 @@ EOF
 function TRINITY_installLoginManager($lang)
 {
 	KDE_installLoginManager($lang, 3, true);
+
 	echo('
 		if [ -f /etc/init.d/tdm-trinity ]
 		then
@@ -978,7 +980,16 @@ function KDE_installLoginManager($lang, $ver=3, $trinity = false)
 	{
 		$etcDir = "trinity";
 		$skelDir = ".trinity";
-		$kdmBin = "/opt/trinity/bin/kdm";
+		$kdmBin = "/opt/trinity/bin/kdm /opt/trinity/bin/tdm";
+		CLCFG_aptGet('install', 'tdm-trinity kdm-trinity');
+		echo("
+		if [ -d /etc/$etcDir/tdm ]
+		then
+			ln -s /etc/$etcDir/tdm /etc/$etcDir/kdm
+			ln -s /etc/$etcDir/tdm/tdmrc /etc/$etcDir/kdm/kdmrc
+		fi
+		");
+		
 	}
 	else
 	{
@@ -1011,7 +1022,15 @@ EDIT_insertAfterLineNumber("/etc/$etcDir/kdm/kdmrc", SED_foundLine, "HiddenUsers
 echo("
 apt-get -m -y --force-yes remove xdm
 
-echo \"$kdmBin\" > /etc/X11/default-display-manager
+# Check for possible display manager executables and use the first existing
+for kdmBin in $kdmBin
+do
+	if [ -f \"\$kdmBin\" ]
+	then
+		echo \"\$kdmBin\" > /etc/X11/default-display-manager
+		break
+	fi
+done
 
 rm /tmp/*.sh /tmp/*.php 2> /dev/null
 ");
@@ -1029,6 +1048,19 @@ rm /etc/trinity/kdm/Xservers 2> /dev/null
 if ($ver == 3)
 echo("
 apt-get -y -m --force-yes install m23-ksplash
+");
+
+echo("
+	if [ -f /opt/trinity/bin/tdm ]
+	then
+");
+		CLCFG_setDebConfDirect('tdm-trinity tdm-trinity/daemon_name string /opt/trinity/bin/tdm
+tdm-trinity tdm-trinity/stop_running_server_with_children boolean false');
+		CLCFG_setDebConfDM('tdm-trinity');
+echo("
+		export DEBIAN_FRONTEND=noninteractive
+		dpkg-reconfigure tdm-trinity
+	fi
 ");
 }
 

@@ -400,6 +400,9 @@ function SERVER_sendScriptToSF($name,$author,$description,$script)
 // 	print("<pre>$cmds</pre>");
 
 	MSG_showMessageBoxHeader("infotable",$I18N_information);
+
+	CSYSTEMPROXY_addCurlProxySettings($ch);
+
 	$Rec_Data = curl_exec($ch);
 	curl_close($ch);
 // 	SERVER_runInBackground("uploadScriptToSF",$cmds,HELPER_getApacheUser,false);

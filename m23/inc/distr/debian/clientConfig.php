@@ -46,7 +46,7 @@ function DEBIAN_desktopInstall($desktop)
 
 		case DEBIAN8DESKTOP_TRINITY_MINIMAL:
 			$desktopPackages = 'desktop-base-trinity kate-trinity kdesktop-trinity kicker-trinity konsole-trinity kpersonalizer-trinity ksmserver-trinity ksplash-trinity tdebase-runtime-data-common-trinity tdebase-trinity-bin tdm-trinity twin-trinity';
-			$dialogHeader = $I18N_installingMate;
+			$dialogHeader = $I18N_installing_trinity;
 		break;
 
 		case DEBIAN8DESKTOP_GNOME_FULL:

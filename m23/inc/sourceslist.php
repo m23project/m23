@@ -242,6 +242,21 @@ function SRCLST_loadSourceListFromDB($name)
 
 
 /**
+**name SRCLST_sourceListExists($name)
+**description Checks, if a named sources list exists.
+**parameter name: the name of the package source list
+**returns true, if the package source list exists, otherwise false.
+**/
+function SRCLST_sourceListExists($name)
+{
+	return(!empty(SRCLST_loadSourceListFromDB($name)));
+}
+
+
+
+
+
+/**
 **name SRCLST_loadSourceList($name)
 **description Loads and returnes the package source list and tries to find a valid mirror for m23debs.
 **parameter name: the name of the package source list

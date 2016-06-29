@@ -223,9 +223,12 @@
 			<td>".($lineNr+1)."</td>
 			<td align=\"left\">$htmlStatus</td>
 			<td><a href=\"index.php?page=clientdetails&client=".$data['client']."&id=".$data['id']."\">$data[client]</a></td>
-			<td>");
+		");
 //m23customPatchBegin type=change id=additionalColumnsDisplayCode
 //m23customPatchEnd id=additionalColumnsDisplayCode
+
+		echo("
+			<td>");
 
 				GRP_showClientGroups($data['client'],true);
 
