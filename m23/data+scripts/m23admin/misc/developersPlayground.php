@@ -64,6 +64,8 @@ print("<pre>");
 	// print_r(CSystemProxy::getProxySettingsArray());
 	$OSystemProxy = new CSystemProxy();
 	$OSystemProxy->showProxyDialog();
+	
+	CSYSTEMPROXY_getEnvironmentVariables();
 
 print("</pre>\n");
 	HTML_showTableEnd();

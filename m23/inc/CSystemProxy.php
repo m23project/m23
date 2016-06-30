@@ -72,12 +72,69 @@ function CSYSTEMPROXY_addCurlProxySettings($ch)
 
 
 
+/**
+**name CSYSTEMPROXY_getUserPasswordString($ps, $connector = '@')
+**description Creates a string with the user/password combination ($user:$pass@).
+**paramter ps: Array with the proxy settings.
+**parameter connector: Character to connect the user/password combination with the following words.
+**returns String with the user/password combination ($user:$pass@) or empty string, if no proxy authentifictaion is used.
+**/
+function CSYSTEMPROXY_getUserPasswordString($ps, $connector = '@')
+{
+	if (isset($ps['user']{0}) && isset($ps['pass']{0}))
+		return("$ps[user]:$ps[pass]$connector");
+	else
+		return('');
+}
+
+
+
+
+
+/**
+**name CSYSTEMPROXY_getEnvironmentVariables($return = false)
+**description Generates BASH proxy variables.
+**parameter return: If set to true, the variables will be returned otherwise shown.
+**/
+function CSYSTEMPROXY_getEnvironmentVariables($return = false)
+{
+	$ps = CSYSTEMPROXY_getProxySettingsFromAPT();
+
+	$out = '';
+
+	// Set the curl proxy settings, if a proxy is enabled
+	if ($ps['active'])
+	{
+		// Get user/password combination, if authentification is used
+		$userPass = CSYSTEMPROXY_getUserPasswordString($ps);
+
+		// Set the settings for all BASH proxy variables
+		foreach (array('http_proxy', 'ftp_proxy', 'https_proxy' , 'rsync_proxy' , 'HTTP_PROXY' , 'HTTPS_PROXY' , 'FTP_PROXY' , 'RSYNC_PROXY') as $varName)
+			$out .= "\nexport $varName=\"$ps[scheme]://$userPass$ps[host]:$ps[port]/\"";
+	}
+
+	// Return or show the variables
+	if ($return)
+		return($out);
+	else
+		echo($out);
+}
+
+
+
+
+
 class CSystemProxy extends CChecks
 {
 	private $proxySettings = array();
 	
 // 	const APT_PROXY_FILE = '/etc/apt/apt.conf.d/70debconf';
 	const APT_PROXY_FILE = '/tmp/70debconf';
+// 	const SQUID_FILE = '/etc/squid3/squid.conf';
+	const SQUID_FILE = '/tmp/squid.conf';
+
+
+
 
 
 /**
@@ -91,16 +148,12 @@ class CSystemProxy extends CChecks
 
 
 
+
+
 /**
-**name CSystemProxy::__destruct()
-**description Destructor for a CSystemProxy object.
+**name CSystemProxy::writeAPTProxyConf()
+**description Writes the proxy settings to the APT configuration file or comments them out.
 **/
-	function __destruct()
-	{
-	}
-
-
-
 	private function writeAPTProxyConf()
 	{
 		$scheme = $this->getProxyScheme();
@@ -119,14 +172,64 @@ class CSystemProxy extends CChecks
 			$config = SERVER_getFileContents(CSystemProxy::APT_PROXY_FILE);
 
 			// Remove the possible proxy lines from the configuration and add the new lines
-			foreach (array('http', 'ftp') as $scheme)
+			foreach (array('http', 'ftp') as $aptScheme)
 			{
-				$config = trim(HELPER_grepNot($config, "Acquire::$scheme::Proxy"));
-				$config .= "\n${deactivatedMarker}Acquire::$scheme::Proxy \"$scheme://$userPass$proxyServer:$proxyPort\";";
+				$config = trim(HELPER_grepNot($config, "Acquire::$aptScheme::Proxy"));
+				$config .= "\n${deactivatedMarker}Acquire::$aptScheme::Proxy \"$scheme://$userPass$proxyServer:$proxyPort\";";
 			}
 
 			SERVER_putFileContents(CSystemProxy::APT_PROXY_FILE, $config, "655");
 		}
+	}
+
+
+
+
+
+/**
+**name CSystemProxy::writeSquidConf()
+**description Writes the (parent) proxy settings to the Squid configuration or removed them.
+**/
+	private function writeSquidConf()
+	{
+		// Only proceed, if the Squid config file exists
+		if (!SERVER_fileExists(CSystemProxy::SQUID_FILE)) return(false);
+
+		// Get the parameters
+		$proxyServer = $this->getProxyHost();
+		$proxyPort = $this->getProxyPort();
+		$userPass = $this->usesUserPassword() ? 'login='.$this->getUserPasswordString('') : '';
+
+		// Generate the Squid proxy settings line
+		$proxyLine1 = "cache_peer $proxyServer parent $proxyPort 0 no-query default $userPass";
+		$proxyLine2 = "never_direct allow all";
+
+		// Read the complete Squid config file
+		$config = SERVER_getFileContents(CSystemProxy::SQUID_FILE);
+
+		// Remove the possible proxy lines from the configuration
+		$config = trim(HELPER_grepNot($config, $proxyLine1));
+		$config = trim(HELPER_grepNot($config, $proxyLine2));
+
+		// Add the proxy lines, if the proxy is active
+		if ($this->isProxyActive())
+			$config .= "\n$proxyLine1\n$proxyLine2";
+
+		SERVER_putFileContents(CSystemProxy::SQUID_FILE, $config, "644");
+	}
+
+
+
+
+
+/**
+**name CSystemProxy::save()
+**description Saves the proxy settings in all configuration files.
+**/
+	private function save()
+	{
+		$this->writeAPTProxyConf();
+		$this->writeSquidConf();
 	}
 
 
@@ -155,9 +258,10 @@ class CSystemProxy extends CChecks
 			$this->setProxyUser($user);
 			$this->setProxyPassword($pass);
 			$this->setProxyPort($port);
+			$this->setProxyScheme('http');
 			
 			if (!$this->hasErrors())
-				$this->writeAPTProxyConf();
+				$this->save();
 			else
 				$this->showMessages();
 		}
@@ -338,6 +442,20 @@ class CSystemProxy extends CChecks
 
 
 /**
+**name CSystemProxy::setProxyScheme($scheme)
+**description Sets the proxy scheme (http/ftp).
+**parameter scheme: Proxy scheme (http/ftp)
+**/
+	public function setProxyScheme($scheme)
+	{
+		$this->proxySettings['scheme'] = $scheme;
+	}
+
+
+
+
+
+/**
 **name CSystemProxy::getProxyScheme()
 **description Gets the proxy scheme (http/ftp).
 **returns Proxy scheme (http/ftp)
@@ -380,14 +498,15 @@ class CSystemProxy extends CChecks
 
 
 /**
-**name CSystemProxy::getUserPasswordString()
+**name CSystemProxy::getUserPasswordString($connector = '@')
 **description Creates a string with the user/password combination ($user:$pass@).
+**parameter connector: Character to connect the user/password combination with the following words.
 **returns String with the user/password combination ($user:$pass@) or empty string, if no proxy authentifictaion is used.
 **/
-	public function getUserPasswordString()
+	public function getUserPasswordString($connector = '@')
 	{
 		if ($this->usesUserPassword())
-			return($this->getProxyUser().':'.$this->getProxyPassword().'@');
+			return($this->getProxyUser().':'.$this->getProxyPassword().$connector);
 		else
 			return('');
 	}

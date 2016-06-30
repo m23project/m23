@@ -1,3 +1,11 @@
+2016-06-30
+new: CSystemProxy::setProxyScheme: Sets the proxy scheme (http/ftp).
+new: CSystemProxy::save: Saves the proxy settings in all configuration files.
+new: CSystemProxy::writeSquidConf: Writes the (parent) proxy settings to the Squid configuration or removed them.
+new: CSYSTEMPROXY_getUserPasswordString: Creates a string with the user/password combination ($user:$pass@).
+new: CSYSTEMPROXY_getEnvironmentVariables: Generates BASH proxy variables.
+new: CSystemProxy::writeAPTProxyConf: Writes the proxy settings to the APT configuration file or comments them out.
++++++
 2016-06-29
 new: CSYSTEMPROXY_getProxySettingsFromAPT: Parses the (maybe existing) proxy settings from the local APT config file.
 new: CSystemProxy::loadProxySettings: Loads the proxy settings (from APT config file).
