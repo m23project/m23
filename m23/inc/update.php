@@ -13,7 +13,7 @@ $*/
 **/
 function UPDATE_doUpdate($URL)
 {
-	$cmd="
+	$cmd = CSYSTEMPROXY_getEnvironmentVariables(true)."\n
 	touch /m23/tmp/serverUpdate.lock
 	wget \"$URL\" -O /m23/tmp/updateCommand.sh
 	chmod +x /m23/tmp/updateCommand.sh

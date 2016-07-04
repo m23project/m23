@@ -3616,6 +3616,8 @@ function CLCFG_updateDebootstrapScripts($distrDir)
 	//if (!file_exists($timeFile) || (((time()-filectime($timeFile))/3600) > 12))
 	if (!file_exists("$m23debootstrapDir/functions"))
 	{
+		$aptGetProxyParamter = CSYSTEMPROXY_getAptGetProxyParamter();
+	
 		exec("sudo rm $timeFile;
 
 sudo apt-get update;
@@ -3624,7 +3626,7 @@ if [ \$? -ne 0 ]
 		exit
 fi
 
-sudo apt-get -m --force-yes -y install debootstrap;
+sudo apt-get -m --force-yes -y install $aptGetProxyParamter debootstrap;
 if [ \$? -ne 0 ]
 	then
 		exit
@@ -3649,6 +3651,7 @@ sudo touch $timeFile;
 			
 			if [ ! -f $m23debootstrapDir/pkgdetails ]
 			then
+				".CSYSTEMPROXY_getEnvironmentVariables(true)."
 				sudo wget http://m23.sf.net/m23debs/pkgdetails -O $m23debootstrapDir/pkgdetails
 			fi
 

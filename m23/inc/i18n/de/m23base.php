@@ -1370,4 +1370,5 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_proxyUser = 'Proxy-Benutzer';
 @$I18N_proxyPassword = 'Proxy-Paßwort';
 @$I18N_proxyActive = 'Proxy aktiviert?';
+@$I18N_systemProxy = 'System-Proxy';
 ?>

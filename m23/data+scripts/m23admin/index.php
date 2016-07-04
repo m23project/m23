@@ -333,6 +333,10 @@ switch($m23_page)
 		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/capture.php");
 		break;
 
+	case 'systemProxy':
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/systemProxy.php");
+		break;
+
 	case 'calculator':
 		$page = "server/calc.php";
 		break;

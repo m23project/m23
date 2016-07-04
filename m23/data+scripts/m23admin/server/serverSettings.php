@@ -134,6 +134,20 @@
 			</td>
 			<?= $disabledByUCSEnd ?>
 		</tr>
+		</tr>
+			<td align="center">
+			<?= $disabledByUCSBegin ?>
+				<a href="index.php?page=systemProxy">
+					<img src="/gfx/proxy.png" border="0"><br>
+					<?PHP echo($I18N_systemProxy);?>
+				</a>
+			<?= $disabledByUCSEnd ?>
+			</td>
+			<td align="center">
+			</td>
+			<td align="center">
+			</td>
+		</tr>
 	</table>
 	</div>
 </td>

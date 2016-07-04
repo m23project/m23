@@ -30,6 +30,7 @@
 	include_once('/m23/inc/CFDiskIO.php');
 	include_once('/m23/inc/CFDiskBasic.php');
 	include_once('/m23/inc/CGPGSign.php');
+	include_once('/m23/inc/CSystemProxy.php');
 
 	session_start();
 	

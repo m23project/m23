@@ -395,17 +395,13 @@ function SERVER_sendScriptToSF($name,$author,$description,$script)
 	curl_setopt($ch, CURLOPT_HEADER, false);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
 
-// 	$cmds="wget -q -O /dev/stdout --post-data \"author=$author&description=$description&script=$script&name=$name\" \"http://m23.sourceforge.net/scriptUpload/upload.php\"";
-	
-// 	print("<pre>$cmds</pre>");
-
 	MSG_showMessageBoxHeader("infotable",$I18N_information);
 
 	CSYSTEMPROXY_addCurlProxySettings($ch);
 
 	$Rec_Data = curl_exec($ch);
 	curl_close($ch);
-// 	SERVER_runInBackground("uploadScriptToSF",$cmds,HELPER_getApacheUser,false);
+
 	MSG_showMessageBoxFooter();
 	
 }
@@ -1108,6 +1104,9 @@ function SERVER_checkDownload($useProxy)
 
 	exec("$proxy
 	rm /tmp/m23dlcheck
+
+	".CSYSTEMPROXY_getEnvironmentVariables(true)."
+
 	wget http://m23.sourceforge.net/randomDownloadData -O /tmp/m23dlcheck
 	");
 	

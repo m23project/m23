@@ -722,6 +722,8 @@ EOF
 
 // 	'$dir/lists/partial'
 
+	$aptGetProxyParameter = CSYSTEMPROXY_getAptGetProxyParamter();
+
 	//update the package information
 	$cmd = "
 	mkdir -p '$dir/apt.conf.d' '$dir/archivs/partial' '$dir/preferences.d'
@@ -741,7 +743,7 @@ EOF
 	$cmd .= "
 		sudo rm -r -f '$dir/archivs/lock' '$dir/lock' '$dir/lists/lock'
 
-		export LANG=\"C\"; sudo apt-get update -o=Dir::Cache::archives='$dir/archivs' -o=Dir::State::status='$dir/status' -o=Dir::State='$dir' $archOption -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$dir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$dir/preferences.d' -o=Dir::Etc::sourcelist='$dir/sources.list' -o=Acquire::http::Retries='10' 2>&1 | tee -a '$logFile'
+		export LANG=\"C\"; sudo apt-get update $aptGetProxyParameter -o=Dir::Cache::archives='$dir/archivs' -o=Dir::State::status='$dir/status' -o=Dir::State='$dir' $archOption -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$dir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$dir/preferences.d' -o=Dir::Etc::sourcelist='$dir/sources.list' -o=Acquire::http::Retries='10' 2>&1 | tee -a '$logFile'
 		ret=\${PIPESTATUS[0]}
 		echo ret0: \$ret >> '$logFile'
 	";
@@ -857,7 +859,10 @@ function PKG_previewInstallDeinstall($clientName,$distr,$packagesource,$packages
 
 	$archOption = PKG_getAptArchOptions($arch);
 
-	$cmd = "LC_ALL=\"C\"; echo \"n\" | sudo apt-get -s --force-yes -y $aptCommand -o=Dir::Cache::archives='$packageInfoDir/archivs' -o=Dir::State::status='$clientStatusFile' $archOption -o=Dir::State='$packageInfoDir' -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$packageInfoDir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$packageInfoDir/preferences.d' -o=Dir::Etc::sourcelist='$packageInfoDir/sources.list' -u -q $packages 2>&1 | grep -v \"Abort.\"";
+	$aptGetProxyParameter = CSYSTEMPROXY_getAptGetProxyParamter();
+
+
+	$cmd = "LC_ALL=\"C\"; echo \"n\" | sudo apt-get -s --force-yes -y $aptCommand $aptGetProxyParameter -o=Dir::Cache::archives='$packageInfoDir/archivs' -o=Dir::State::status='$clientStatusFile' $archOption -o=Dir::State='$packageInfoDir' -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$packageInfoDir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$packageInfoDir/preferences.d' -o=Dir::Etc::sourcelist='$packageInfoDir/sources.list' -u -q $packages 2>&1 | grep -v \"Abort.\"";
 
 	$pin = popen($cmd,"r");
 
@@ -1142,8 +1147,10 @@ function PKG_getDebootStrapBasePackages($release)
 	//Make sure the directory exists
 	if (!is_dir($storDir))
 		mkdir($storDir);
+	
+	$bashProxyVariables = CSYSTEMPROXY_getEnvironmentVariables(true);
 
-	exec("debootstrap --print-debs $release /tmp/debootstrap.tmp > $storFile");
+	exec("$bashProxyVariables\ndebootstrap --print-debs $release /tmp/debootstrap.tmp > $storFile");
 
 	//check, if it worked
 	if (file_exists($storFile) && (filesize($storFile) > 0))
@@ -1153,113 +1160,5 @@ function PKG_getDebootStrapBasePackages($release)
 		SERVER_deleteFile($storFile);
 		return(false);
 	}
-}
-
-
-
-
-
-function convertPackagesToRepositoryALT()
-{
-	$poolDir = $this->getPoolDir();
-	$serverIP = getServerIP();
-	$release = $this->getPoolRelease();
-	$archivPath = "archivs/";
-	$logFile = $this->getConvertPackagesToRepositoryLogName();
-	$poolName = $this->getPoolName();
-
-	//write sources list for this pool
-	$sourceslist = "#mirror: http://$serverIP/pool/$poolName
-deb http://$serverIP/pool/$poolName/ $release main non-free contrib\n";
-	
-	$this->setPoolSourceslist($sourceslist);
-
-	//making links from the existing distr directory to all known releases
-	include_once("/m23/inc/distr/debian/clientConfig.php"); //needed for CLCFG_getDebianReleasesGeneric
-	$linkReleases="";
-	foreach (CLCFG_getDebianReleasesGeneric("debian") as $linkRelease)
-		$linkReleases.="echo 'ln -s `sudo find $poolDir/dists -maxdepth 1 -mindepth 1 -type d` $poolDir/dists/$linkRelease'\n";
-
-	$cmds="
-	cd $poolDir
-	echo \"cd $poolDir\"
-	rm -f $logFile
-	find $archivPath/ -type f | grep deb\$ | awk '{system(\"reprepro -Vb . includedeb $release \"$0\" 2>&1 | tee -a $logFile\")}'
-	find /mdk/m23Debs/debs -type f | grep deb\$ | grep -v woody | awk '{system(\"reprepro -Vb . includedeb $release \"$0\" 2>&1 | tee -a $logFile\")}'
-	sudo rm -f archivs/*
-	$linkReleases
-
-	#Fix the Packages files
-	for pfile in `find \"$poolDir\" | grep \"/Packages\$\"`
-	do
-		#e.g. /m23/data+scripts/pool/mb/dists/etch/main/binary-i386
-		dir=`dirname \$pfile`
-		cd \"\$dir\"
-		echo \"dir: \$dir\"
-		
-		#remove all empty Depends lines from Packages
-		sed '/Depends: \$/d' Packages > Packages2
-		
-		#Check if there were lines removed
-		diff -q Packages Packages2
-		if [ \$? -eq 0 ]
-		then
-			echo \"No changes in \$dir\"
-			continue
-		fi
-	
-		#move Packages
-		cat Packages2 > Packages
-		rm Packages.gz Packages2
-	
-		#Create compressed version
-		gzip -c Packages > Packages.gz
-	
-		#calculate sizes and MD5 sums of Packages and the compressed Packages.gz
-		m=`md5sum Packages | cut -d' ' -f1`
-		s=`find Packages -printf \"%s\"`
-		mgz=`md5sum Packages.gz | cut -d' ' -f1`
-		sgz=`find Packages.gz -printf \"%s\"`
-	
-		#jump to the directory that stores the global Releases file with sizes and hashes
-		#e.g. /m23/data+scripts/pool/mb/dists/etch
-		cd ..
-		cd ..
-		releaseDir=`pwd`
-		echo \"releaseDir: \$releaseDir\"
-	
-		#Remove the release directory from the complete path
-		# e.g. main/binary-i386
-		strippedReleaseDir=`echo \$dir | sed \"s*\$releaseDir**g\" | sed \"s*/**\"`
-		echo \"strippedReleaseDir: \$strippedReleaseDir\"
-	
-		#convert / to \/ for sed's syntax
-		strippedReleaseDirSED=`echo \$strippedReleaseDir | sed 's#\/#\\\/#g'`
-	
-		#remove the lines that contain the Packages and Packages.gz entries for 
-		sed \"/\$strippedReleaseDirSED/d\" Release > /tmp/Release
-		echo \" \$m \$s \$strippedReleaseDir/Packages\" >> /tmp/Release
-		echo \" \$mgz \$sgz \$strippedReleaseDir/Packages.gz\" >> /tmp/Release
-	
-		cat /tmp/Release > Release
-		rm /tmp/Release
-	done
-
-	#fixing code to correct Release files that are missing the information stored in conf/distributions
-	for releasefile in `find \"$poolDir\" | grep Release | grep \"/dists/\"`
-	do
-		if [ `grep -c Origin: \"\$releasefile\"` -eq 0 ]
-		then
-			echo \"fixing: \$releasefile\"
-			cat \"$poolDir/conf/distributions\" > /tmp/fixedRelease
-			echo \"MD5Sum:\" >> /tmp/fixedRelease
-			cat  \"\$releasefile\" >> /tmp/fixedRelease
-			cat /tmp/fixedRelease > \"\$releasefile\"
-			#rm /tmp/fixedRelease
-		fi
-	done
-	";
-
-	SERVER_runInBackground('convertPackagesToRepository', $cmds,HELPER_getApacheUser(),true);
 }
 ?>

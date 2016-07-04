@@ -1,3 +1,10 @@
+2016-07-04
+new: CSYSTEMPROXY_getAptGetProxyParamter: Generates the apt-get proxy parameters.
+cha: PKG_previewInstallDeinstall, PKG_preparePackageDir, CLCFG_updateDebootstrapScripts: Now are using CSYSTEMPROXY_getAptGetProxyParamter.
+cha: SERVER_checkDownload, PKG_getDebootStrapBasePackages, CLCFG_updateDebootstrapScripts, HELPER_getRemoteFileContents, PKG_downloadBaseSysTom23Server, PLG_getPlugin, PLG_getUpdateFile, UPDATE_doUpdate, VM_generateVBOXaddonDownloadCMD and VM_listDownloadableVBoxAddons: Now are using CSYSTEMPROXY_getEnvironmentVariables.
+cha: CSystemProxy::writeSquidConf: Now restarts Squid 3.
+cha: serverSettings.php: Added system proxy icon.
++++++
 2016-06-30
 new: CSystemProxy::setProxyScheme: Sets the proxy scheme (http/ftp).
 new: CSystemProxy::save: Saves the proxy settings in all configuration files.

@@ -230,7 +230,7 @@ function PLG_getPlugin($url,$tempDir,$fileName)
 
  if (strstr($url,"http:") || strstr($url,"ftp:"))
 	{
-	 exec("wget -nv $url -O $tempDir/$fileName -o $tempDir/download.log");
+	 exec(CSYSTEMPROXY_getEnvironmentVariables(true)."\nwget -nv $url -O $tempDir/$fileName -o $tempDir/download.log");
 	 //show the status of the download
 	 if ((!PLG_showDownloadStatus("$tempDir/download.log")) || (!file_exists($tempDir/$fileName)))
 	 	{
@@ -599,7 +599,7 @@ function PLG_getUpdateFile($name)
 
 	if (strstr($url,"http") || strstr($url,"ftp"))
 	{
-		exec("wget -nv $url -O /m23/tmp/$name.update -o /m23/tmp/download.log");
+		exec(CSYSTEMPROXY_getEnvironmentVariables(true)."\nwget -nv $url -O /m23/tmp/$name.update -o /m23/tmp/download.log");
 		//show the status of the download
 
 		if ((!PLG_showDownloadStatus("/m23/tmp/download.log")) || (!file_exists("/m23/tmp/$name.update")))

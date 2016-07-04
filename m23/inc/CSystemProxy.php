@@ -102,7 +102,7 @@ function CSYSTEMPROXY_getEnvironmentVariables($return = false)
 
 	$out = '';
 
-	// Set the curl proxy settings, if a proxy is enabled
+	// Generate the BASH proxy variables, if a proxy is enabled
 	if ($ps['active'])
 	{
 		// Get user/password combination, if authentification is used
@@ -124,14 +124,41 @@ function CSYSTEMPROXY_getEnvironmentVariables($return = false)
 
 
 
+/**
+**name CSYSTEMPROXY_getAptGetProxyParamter()
+**description Generates the apt-get proxy parameters.
+**returns: apt-get proxy parameters, if the system proxy is acive otherwise empty string.
+**/
+function CSYSTEMPROXY_getAptGetProxyParamter()
+{
+	$ps = CSYSTEMPROXY_getProxySettingsFromAPT();
+
+	$out = '';
+
+	// Generate the apt-get proxy settings, if a proxy is enabled
+	if ($ps['active'])
+	{
+		// Get user/password combination, if authentification is used
+		$userPass = CSYSTEMPROXY_getUserPasswordString($ps);
+
+		$out = " -o=Acquire::http::Proxy='$ps[scheme]://$userPass$ps[host]:$ps[port]' -o=Acquire::ftp::Proxy='$ps[scheme]://$userPass$ps[host]:$ps[port]'";
+	}
+
+	return($out);
+}
+
+
+
+
+
 class CSystemProxy extends CChecks
 {
 	private $proxySettings = array();
 	
-// 	const APT_PROXY_FILE = '/etc/apt/apt.conf.d/70debconf';
-	const APT_PROXY_FILE = '/tmp/70debconf';
-// 	const SQUID_FILE = '/etc/squid3/squid.conf';
-	const SQUID_FILE = '/tmp/squid.conf';
+	const APT_PROXY_FILE = '/etc/apt/apt.conf.d/70debconf';
+// 	const APT_PROXY_FILE = '/tmp/70debconf';
+	const SQUID_FILE = '/etc/squid3/squid.conf';
+// 	const SQUID_FILE = '/tmp/squid.conf';
 
 
 
@@ -147,6 +174,10 @@ class CSystemProxy extends CChecks
 	}
 
 
+
+	private function writeEtcProfiles()
+	{
+	ööööööööö
 
 
 
@@ -216,6 +247,9 @@ class CSystemProxy extends CChecks
 			$config .= "\n$proxyLine1\n$proxyLine2";
 
 		SERVER_putFileContents(CSystemProxy::SQUID_FILE, $config, "644");
+
+		// Restart Squid 3
+		SERVER_runInBackground('writeSquidConf', '/etc/init.d/squid3 start', 'root', false);
 	}
 
 

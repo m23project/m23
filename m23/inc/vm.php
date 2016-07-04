@@ -1134,7 +1134,7 @@ function VM_getVBoxAddonDefaultVersion()
 **/
 function VM_generateVBOXaddonDownloadCMD($version)
 {
-return("
+return(CSYSTEMPROXY_getEnvironmentVariables(true)."\n
 #Get the name of the ISO file
 isoFile=`wget http://download.virtualbox.org/virtualbox/$version/ -O - | grep iso | cut -d'\"' -f2 | sort -n | tail -1`
 
@@ -1296,6 +1296,7 @@ function VM_listDownloadableVBoxAddons()
 
 	if [ ! -e /m23/tmp/downloadableVBoxAddons.idx ] || [ \$difTime -gt 300 ]
 	then
+		".CSYSTEMPROXY_getEnvironmentVariables(true)."
 		wget -q http://download.virtualbox.org/virtualbox/ -O /m23/tmp/downloadableVBoxAddons.idx
 	fi
 
