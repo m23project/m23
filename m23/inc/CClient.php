@@ -2275,9 +2275,9 @@ class CClient extends CChecks
 			GRP_delClientFromGroup($client);
 			SERVER_delEtcHosts($client);
 
-			db_query("DELETE FROM clients WHERE client='$client'"); //FW ok
-			db_query("DELETE FROM clientjobs WHERE client='$client' "); //FW ok
-			db_query("DELETE FROM clientpackages WHERE clientname='$client' "); //FW ok
+			DB_query("DELETE FROM clients WHERE client='$client'"); //FW ok
+			DB_query("DELETE FROM clientjobs WHERE client='$client' "); //FW ok
+			DB_query("DELETE FROM clientpackages WHERE clientname='$client' "); //FW ok
 		}
 	
 		//Re-calculate the MD5 sum to disable saving on calling the destructor

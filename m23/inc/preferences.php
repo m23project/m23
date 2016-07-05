@@ -128,7 +128,7 @@ function PREF_loadAllPreferenceValues()
 	CHECK_FW(CC_clientpreferencesname, $prefName);
 
 	$sql = "SELECT DISTINCT var, value FROM `clientpreferences` WHERE name = '$prefName'";
-	$res = db_query($sql); //FW ok
+	$res = DB_query($sql); //FW ok
 
 	while($data = mysqli_fetch_assoc($res))
 		$_SESSION['preferenceSpace'][$data['var']] = $data['value'];
@@ -151,7 +151,7 @@ function PREF_getClientPreferences($default, $directOutput = true)
 {
 	$sql = "SELECT DISTINCT name FROM `clientpreferences` ORDER BY name";
 
-	$result=db_query($sql); //FW ok
+	$result=DB_query($sql); //FW ok
 
 	if ($directOutput)
 	{
@@ -190,7 +190,7 @@ function PREF_getValue($name, $var)
 	CHECK_FW(CC_clientpreferencesname, $name, CC_clientpreferencesvar, $var);
 	$sql = "SELECT value FROM `clientpreferences` WHERE name='$name' AND var='$var'";
 
-	$result = db_query($sql); //FW ok
+	$result = DB_query($sql); //FW ok
 
 	$data = mysqli_fetch_array($result);
 
@@ -215,7 +215,7 @@ function PREF_putValue($name, $var, $value)
 	CHECK_FW(CC_clientpreferencesname, $name, CC_clientpreferencesvar, $var, CC_clientpreferencesvalue, $tval);
 	$sql = "SELECT count(*) FROM `clientpreferences` WHERE name='$name' AND var='$var'";
 
-	$result = db_query($sql); //FW ok
+	$result = DB_query($sql); //FW ok
 
 	$line = mysqli_fetch_row($result);
 
@@ -224,13 +224,13 @@ function PREF_putValue($name, $var, $value)
 			//try to update
 			$sql="UPDATE `clientpreferences` SET value='$value' WHERE name='$name' AND var='$var'";
 
-			$result=db_query($sql); //FW ok
+			$result=DB_query($sql); //FW ok
 		}
 	else
 		{
 			//if we can't update, try to insert
 			$sql = "INSERT INTO `clientpreferences` (name, var, value) VALUES ('$name','$var','$value')";
-			$result = db_query($sql); //FW ok
+			$result = DB_query($sql); //FW ok
 		};
 
 	return($result);
@@ -250,7 +250,7 @@ function PREF_delete($name)
 	CHECK_FW(CC_clientpreferencesname, $name);
 	$sql = "DELETE  FROM  `clientpreferences`  WHERE name = '$name'";
 
-	$result = db_query($sql); //FW ok
+	$result = DB_query($sql); //FW ok
 
 	return($result);
 };
@@ -269,7 +269,7 @@ function PREF_exists($name)
 	CHECK_FW(CC_clientpreferencesname, $name);
 	$sql="SELECT DISTINCT name FROM `clientpreferences` WHERE name='$name'";
 
-	$result = db_query($sql); //FW ok
+	$result = DB_query($sql); //FW ok
 
 	$data = mysqli_fetch_array($result);
 
@@ -312,7 +312,7 @@ function PREF_getAllValues($prefName, $options)
 	CHECK_FW(CC_clientpreferencesname, $prefName);
 	$sql = "SELECT var,value FROM `clientpreferences` WHERE name='$prefName'";
 
-	$result = db_query($sql); //FW ok
+	$result = DB_query($sql); //FW ok
 
 	while ($data = mysqli_fetch_array($result))
 		$options[$data[0]]=$data[1];

@@ -97,7 +97,7 @@ function SRCLST_saveArchitectures($sourceName, $archs)
 {
 	$archs = implode('###',$archs);
 	CHECK_FW(CC_sourceslistname, $sourceName, CC_sourceslistarchs, $archs);
-	return(db_query("UPDATE `sourceslist` SET `archs` = '$archs' WHERE `name` = '$sourceName' LIMIT 1")); //FW ok
+	return(DB_query("UPDATE `sourceslist` SET `archs` = '$archs' WHERE `name` = '$sourceName' LIMIT 1")); //FW ok
 }
 
 
@@ -123,7 +123,7 @@ function SRCLST_saveList($name,$list,$description,$distr,$release="")
 	$list = CHECK_text2db($list);
 
 	$sql="SELECT count(*) FROM `sourceslist` WHERE `name`='$name'";
-	$result=db_query($sql); //FW ok
+	$result=DB_query($sql); //FW ok
 
 	$line=mysqli_fetch_row($result);
 
@@ -139,7 +139,7 @@ function SRCLST_saveList($name,$list,$description,$distr,$release="")
 
 	PKG_updateSourcesListAtAllClients($name);
 
-	return(db_query($sql)); //FW ok
+	return(DB_query($sql)); //FW ok
 };
 
 
@@ -161,7 +161,7 @@ function SRCLST_querySourceslists($distr)
 
 	$sql = "SELECT name FROM `sourceslist` $addQuery ORDER BY name";
 
-	$result = db_query($sql); //FW ok
+	$result = DB_query($sql); //FW ok
 	return($result);
 }
 
@@ -213,7 +213,7 @@ function SRCLST_getValue($name,$var)
 
 	$sql = "SELECT `$var` FROM `sourceslist` WHERE name='$name'";
 
-	$result = db_query($sql); //FW ok
+	$result = DB_query($sql); //FW ok
 
 	$line = mysqli_fetch_row($result);
 
@@ -328,7 +328,7 @@ function SRCLST_delete($name)
 
 	$sql = "DELETE FROM `sourceslist` WHERE `name` = '$name'";
 
-	return(db_query($sql)); //FW ok
+	return(DB_query($sql)); //FW ok
 }
 
 

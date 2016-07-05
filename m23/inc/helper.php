@@ -1077,10 +1077,15 @@ function HELPER_grepNot($string, $search, $cut="\n")
 {
 	$parts = explode($cut,$string);
 	$out = "";
+	$cut2 = '';
 
 	for ($i=0; $i < count($parts); $i++)
 		if (strpos($parts[$i],$search) === false)
-			$out.=$cut.trim($parts[$i]);
+		{
+			if ($i > 0)
+				$cut2 = $cut;
+			$out.=$cut2.trim($parts[$i]);
+		}
 
 	return($out);
 }

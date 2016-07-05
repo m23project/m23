@@ -298,7 +298,7 @@ function MSR_statusBar($percent, $statustext)
 **/
 function MSR_curDynIP($curIP)
 {
-	db_query("UPDATE `clients` SET `ip` = \"$curIP\" WHERE `client` = \"".CLIENT_getClientName()."\"");
+	DB_query("UPDATE `clients` SET `ip` = \"$curIP\" WHERE `client` = \"".CLIENT_getClientName()."\"");
 }
 
 
@@ -449,7 +449,7 @@ function MSR_markm23normalAsDone()
 
 	$sql = str_replace("OR normalPackage = ''","", "UPDATE clientjobs SET status = 'done' WHERE client = '$clientName' AND package = 'm23normal' AND status = 'waiting' AND (normalPackage = '$packagesSQL')");
 
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 }
 
 
@@ -763,7 +763,7 @@ function MSR_importPackageStatus()
 
 	$sql="DELETE FROM `clientpackages` WHERE clientname='$clientName'";
 
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 
 	//Make sure all POST variables are imported
 	HELPER_importAllIntoPOST();
@@ -775,7 +775,7 @@ function MSR_importPackageStatus()
 
 		CHECK_FW(CC_packagestatus, $_POST["s$i"]);
 
-		db_query($sql); //FW ok
+		DB_query($sql); //FW ok
 	};
 };
 
@@ -794,7 +794,7 @@ function MSR_importLog()
 
 	$sql="INSERT INTO `clientlogs` ( `client` , `logtime` , `status` ) VALUES ('$clientName', '".time()."', '".CHECK_text2db($_POST['data'],false)."')";
 
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 };
 
 
@@ -961,7 +961,7 @@ function MSR_clientChange()
 	if (array_key_exists('client',$params))
 		$client=$params['client'];
 
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 
 	//change client options
 	$allOptions = CLIENT_getAllOptions($client);
@@ -1079,7 +1079,7 @@ function MSR_importPartHwData()
 
 	$sql="UPDATE clients SET partitions='$partitions', cpu='".CHECK_text2db(trim($data['cpu']))."', netcards='".CHECK_text2db(trim($data['net']))."', graficcard='".CHECK_text2db(trim($data['vga']))."', soundcard='".CHECK_text2db(trim($data['sound']))."', isa='".CHECK_text2db(trim($data['isa']))."', memory='".CHECK_text2db($data['mem'])."', dmi='".CHECK_text2db($data['dmi'])."', MHz='".CHECK_text2db($data['mhz'])."' WHERE client='$clientName'";
 
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 
 	$CFDiskBasicO = new CFDiskBasic($clientName);
 	$CFDiskBasicO->setUEFI($data['uefi'] == 1);

@@ -62,10 +62,10 @@ function CAPTURE_captureAll($step=0,$comment="",$allowBut=false)
 	CHECK_FW(CC_page, $page);
 
 	$sql="DELETE FROM `formSave` WHERE name='$page' AND step='$step'";
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 	
 	$sql="INSERT INTO `formSave` ( `name` , `get` , `post` , `step`, `comment` ) VALUES ('$page', '$getStr', '$postStr', '$step','$comment')";
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 };
 
 
@@ -95,7 +95,7 @@ function CAPTURE_load()
 
 	$sql = "SELECT * FROM `formSave` WHERE name='$page' AND step='$step'";
 
-	$res = db_query($sql); //FW ok
+	$res = DB_query($sql); //FW ok
 
 	$line=mysqli_fetch_array($res);
 
@@ -207,7 +207,7 @@ function CAPTURE_showEntries()
 	
 	$sql="SELECT * FROM `formSave` ORDER BY name, step";
 	
-	$res = db_query($sql); //FW ok
+	$res = DB_query($sql); //FW ok
 	
 	HTML_showTableHeader();
 	
@@ -253,7 +253,7 @@ function CAPTURE_deleteById($id)
 {
 	CHECK_FW(CC_formsaveid, $id);
 	$sql="DELETE FROM `formSave` WHERE id=$id";
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 };
 
 

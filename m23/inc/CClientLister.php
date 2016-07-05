@@ -851,7 +851,7 @@ class CClientLister extends CChecks
 			if (!empty($w))
 				$w = "($w)";
 	
-			$this->mySQLResID = db_query('SELECT clients.* FROM clients'.$this->groupFROM." $where $w ORDER BY ".$this->orderBy.' '.$this->directionORDER);
+			$this->mySQLResID = DB_query('SELECT clients.* FROM clients'.$this->groupFROM." $where $w ORDER BY ".$this->orderBy.' '.$this->directionORDER);
 		}
 		
 		if ($this->mySQLResID !== false)

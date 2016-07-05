@@ -96,21 +96,21 @@ function CSYSTEMPROXY_getUserPasswordString($ps, $connector = '@')
 **description Generates BASH proxy variables.
 **parameter return: If set to true, the variables will be returned otherwise shown.
 **/
-function CSYSTEMPROXY_getEnvironmentVariables($return = false)
+function CSYSTEMPROXY_getEnvironmentVariables($return = false, $getAlways = false)
 {
 	$ps = CSYSTEMPROXY_getProxySettingsFromAPT();
 
 	$out = '';
 
 	// Generate the BASH proxy variables, if a proxy is enabled
-	if ($ps['active'])
+	if ($ps['active'] || $getAlways)
 	{
 		// Get user/password combination, if authentification is used
 		$userPass = CSYSTEMPROXY_getUserPasswordString($ps);
 
 		// Set the settings for all BASH proxy variables
 		foreach (array('http_proxy', 'ftp_proxy', 'https_proxy' , 'rsync_proxy' , 'HTTP_PROXY' , 'HTTPS_PROXY' , 'FTP_PROXY' , 'RSYNC_PROXY') as $varName)
-			$out .= "\nexport $varName=\"$ps[scheme]://$userPass$ps[host]:$ps[port]/\"";
+			$out .= "export $varName=\"$ps[scheme]://$userPass$ps[host]:$ps[port]/\"\n";
 	}
 
 	// Return or show the variables
@@ -159,6 +159,7 @@ class CSystemProxy extends CChecks
 // 	const APT_PROXY_FILE = '/tmp/70debconf';
 	const SQUID_FILE = '/etc/squid3/squid.conf';
 // 	const SQUID_FILE = '/tmp/squid.conf';
+	const ENVIRONMENT_FILE = '/etc/environment';
 
 
 
@@ -175,9 +176,36 @@ class CSystemProxy extends CChecks
 
 
 
+
+
+/**
+**name CSystemProxy::writeEtcProfiles()
+**description Writes the proxy settings to the environment file.
+**/
 	private function writeEtcProfiles()
 	{
-	ööööööööö
+		$ev = CSYSTEMPROXY_getEnvironmentVariables(true, true);
+
+		if (!SERVER_fileExists(CSystemProxy::ENVIRONMENT_FILE))
+			SERVER_putFileContents(CSystemProxy::ENVIRONMENT_FILE, $ev, "644");
+		else
+		{
+			// Read the complete environment file
+			$config = SERVER_getFileContents(CSystemProxy::ENVIRONMENT_FILE);
+
+			// Remove the possible proxy lines from the configuration and add the new lines, if the proxy is active
+			foreach (explode("\n", $ev) as $line)
+			{
+				$config = HELPER_grepNot($config, $line);
+				if ($this->isProxyActive())
+					$config .= "$line\n";
+			}
+
+			SERVER_putFileContents(CSystemProxy::ENVIRONMENT_FILE, $config, "644");
+		}
+	}
+
+
 
 
 
@@ -264,6 +292,7 @@ class CSystemProxy extends CChecks
 	{
 		$this->writeAPTProxyConf();
 		$this->writeSquidConf();
+		$this->writeEtcProfiles();
 	}
 
 

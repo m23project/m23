@@ -384,7 +384,7 @@ function CLIENT_copyDebconfDB($clientName, $destClient)
 {
 	CHECK_FW(CC_clientname, $clientName, CC_clientname, $destClient);
 
-	$result = db_query("SELECT * FROM debconf WHERE client = '$clientName'");
+	$result = DB_query("SELECT * FROM debconf WHERE client = '$clientName'");
 
 	while ($line = mysqli_fetch_array($result))
 	{
@@ -431,9 +431,9 @@ function CLIENT_getDebconfDB($clientName)
 	CHECK_FW(CC_clientname, $clientName);
 
 	//Set the maximal amount of data that GROUP_CONCAT returns
-	db_query("SET @@group_concat_max_len := @@max_allowed_packet");
+	DB_query("SET @@group_concat_max_len := @@max_allowed_packet");
 
-	$result = db_query("SELECT GROUP_CONCAT(package, ' ', var, ' ', type, ' ', val SEPARATOR '\\n') FROM debconf WHERE client = '$clientName'");
+	$result = DB_query("SELECT GROUP_CONCAT(package, ' ', var, ' ', type, ' ', val SEPARATOR '\\n') FROM debconf WHERE client = '$clientName'");
 	$line = mysqli_fetch_row($result);
 	return($line[0]);
 }
@@ -453,7 +453,7 @@ function CLIENT_getDebconfDB($clientName)
 function CLIENT_getDebconfDBValue($clientName, $package, $var)
 {
 	CHECK_FW(CC_clientname, $clientName, CC_package, $package, CC_debconfVarName, $var);
-	$result = db_query("SELECT val FROM debconf WHERE client = '$clientName' AND package = '$package' AND var = '$var'");
+	$result = DB_query("SELECT val FROM debconf WHERE client = '$clientName' AND package = '$package' AND var = '$var'");
 	$line = mysqli_fetch_row($result);
 	return($line[0]);
 }
@@ -471,7 +471,7 @@ function CLIENT_getAllClientNames()
 {
 	$out = array();
 	$i = 0;
-	$result = db_query("SELECT client FROM `clients`"); //FW ok
+	$result = DB_query("SELECT client FROM `clients`"); //FW ok
 	while ($line = mysqli_fetch_row($result))
 		$out[$i++] = $line[0];
 
@@ -489,7 +489,7 @@ function CLIENT_getAllClientNames()
 **/
 function CLIENT_getClientAmount()
 {
-	$result = db_query("SELECT COUNT( * ) AS cnt FROM `clients`"); //FW ok
+	$result = DB_query("SELECT COUNT( * ) AS cnt FROM `clients`"); //FW ok
 	$line = mysqli_fetch_row($result);
 	return($line[0]);
 }
@@ -1064,7 +1064,7 @@ function CLIENT_getProperty($client,$var)
 {
 	CHECK_FW(CC_clientname, $client, "A", $var);
 	$sql = "SELECT $var FROM `clients` WHERE CLIENT = '$client'";
-	$res = db_query($sql); //FW ok
+	$res = DB_query($sql); //FW ok
 	$line = mysqli_fetch_row($res);
 	return($line[0]);
 };
@@ -1680,7 +1680,7 @@ function CLIENT_setLastmodify($id,$client="")
 		$sql="UPDATE clients SET lastmodify = '$modifydate' WHERE client='$client'";
 	}
 
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 };
 
 
@@ -2276,7 +2276,7 @@ function CLIENT_getClientName()
 
 	if (isset($sql{1}))
 	{
-		$result = db_query($sql); //FW ok
+		$result = DB_query($sql); //FW ok
 		$line = mysqli_fetch_row($result);
 		$clientName = $line[0];
 	}
@@ -2943,7 +2943,7 @@ function CLIENT_query($o1,$s1,$o2,$s2,$groupName="",$o3="",$s3="", $search="")
 
 	$sql="SELECT clients.* FROM clients$cg $where $w ORDER BY $orderBy $direction";
 
-	$res = db_query($sql); //FW ok
+	$res = DB_query($sql); //FW ok
 	
 	return($res);
 };
@@ -3537,9 +3537,9 @@ function CLIENT_deleteClient($client,$showMsg=false, $deleteVM=false)
 	GRP_delClientFromGroup($client);
 	SERVER_delEtcHosts($client);
 
-	db_query("DELETE FROM clients WHERE client='$client'"); //FW ok
-	db_query("DELETE FROM clientjobs WHERE client='$client' "); //FW ok
-	db_query("DELETE FROM clientpackages WHERE clientname='$client' "); //FW ok
+	DB_query("DELETE FROM clients WHERE client='$client'"); //FW ok
+	DB_query("DELETE FROM clientjobs WHERE client='$client' "); //FW ok
+	DB_query("DELETE FROM clientpackages WHERE clientname='$client' "); //FW ok
 
 	if ($showMsg)
 		{
@@ -3589,7 +3589,7 @@ function CLIENT_getNamesWithPackages($showFakeClients=false)
 
 	$sql = "SELECT DISTINCT clientname FROM `clientpackages` WHERE `clientname` $not LIKE '$marker%'";
 
-	$res = db_query($sql); //FW ok
+	$res = DB_query($sql); //FW ok
 	
 	if (!$showFakeClients)
 		{
@@ -3884,7 +3884,7 @@ function CLIENT_changeClient()
 
 		$sql.=" WHERE `id` = ".$_SESSION['clientID'];
 
-		db_query($sql); //FW ok
+		DB_query($sql); //FW ok
 	};
 
 	if ($changeDHCP)
@@ -3941,7 +3941,7 @@ function CLIENT_setAllParams($client,$data)		//OOP
 
 	$sql.="WHERE `client` = \"$client\"";
 
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 }
 
 

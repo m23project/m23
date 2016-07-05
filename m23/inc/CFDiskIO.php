@@ -177,7 +177,7 @@ class CFDiskIO extends CClient
 	{
 		$sql = "SELECT partitions, CFDiskTemp FROM `clients` WHERE client='".$this->getClientName()."';";
 
-		$result = db_query($sql); //FW ok
+		$result = DB_query($sql); //FW ok
 		$line = mysqli_fetch_row($result);
 
 		// Get the current partitioning of the client
@@ -744,7 +744,7 @@ class CFDiskIO extends CClient
 		}
 
 		$sql = "UPDATE `clients` SET `CFDiskTemp` = '".serialize($CFDiskTemp)."' WHERE client='".$this->getClientName()."'";
-		$ret = db_query($sql);
+		$ret = DB_query($sql);
 	}
 
 

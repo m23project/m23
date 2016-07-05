@@ -8,7 +8,7 @@ include("/m23/inc/capture.php");
 
 dbConnect();
 
-$results = db_query("SELECT client, ip FROM clients");
+$results = DB_query("SELECT client, ip FROM clients");
 
 while ($data = mysqli_fetch_array($results))
 {

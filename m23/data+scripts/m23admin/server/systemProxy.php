@@ -1,12 +1,11 @@
 <span class="title"> <?PHP echo($I18N_systemProxy);?> </span><br><br>
 
 <?
-	HTML_setPage('systemProxy');
-
 	HTML_showTableHeader();
 	echo('<tr><td>');
 	HTML_showFormHeader();
 
+	HTML_setPage('systemProxy');
 	$OSystemProxy = new CSystemProxy();
 	$OSystemProxy->showProxyDialog();
 

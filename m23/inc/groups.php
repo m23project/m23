@@ -58,7 +58,7 @@ function GRP_add($groupName, $groupDescription)
 	$groupDescription = CHECK_text2db($groupDescription);
 
 	$sql="INSERT INTO groups (groupname, description) VALUES ('$groupName', '$groupDescription')";
-	if( db_query($sql)) //FW ok
+	if( DB_query($sql)) //FW ok
 		MSG_showInfo($I18N_group_added_sucessfully);
 	else
 	{
@@ -85,7 +85,7 @@ function GRP_getIdByName($groupName)
 	{
 		$sql = "SELECT Id FROM `groups` WHERE groupname='$groupName'";
 
-		$result = db_query($sql); //FW ok
+		$result = DB_query($sql); //FW ok
 
 		$line = mysqli_fetch_row($result);
 
@@ -111,7 +111,7 @@ function GRP_getNameById($groupId)
 	{
 		$sql = "SELECT groupname FROM `groups` WHERE id='$groupId'";
 
-		$result = db_query($sql); //FW ok
+		$result = DB_query($sql); //FW ok
 
 		$line = mysqli_fetch_row($result);
 
@@ -137,11 +137,11 @@ function GRP_del($groupName)
 
 	//delete all clients from the group
 	$sql = "DELETE FROM `clientgroups` WHERE groupid='$groupId'";	
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 
 	//delete group
 	$sql = "DELETE FROM `groups` WHERE id='$groupId'";
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 };
 
 
@@ -163,7 +163,7 @@ function GRP_isClientInGroup($clientName,$groupName)
 
 	$sql="SELECT COUNT(*) FROM `clientgroups` WHERE clientid='$cid' AND groupid='$gid'";
 
-	$res = db_query($sql); //FW ok
+	$res = DB_query($sql); //FW ok
 
 	$line = mysqli_fetch_row($res);
 
@@ -190,7 +190,7 @@ function GRP_addClientToGroup($clientName,$groupName)
 	{
 		$sql="INSERT INTO `clientgroups` (`clientid` , `groupid`) VALUES ('$cid', '$gid')";
 
-		db_query($sql); //FW ok
+		DB_query($sql); //FW ok
 	}
 };
 
@@ -223,7 +223,7 @@ function GRP_delClientFromGroup($clientName,$groupName="")
 	{
 		$sql="DELETE FROM `clientgroups` WHERE clientid='$cid' $addSQL";
 
-		db_query($sql); //FW ok
+		DB_query($sql); //FW ok
 	}
 }
 
@@ -241,7 +241,7 @@ function GRP_getDescrGroup($group)
 	CHECK_FW(CC_groupname, $group);
 	$sql="SELECT description FROM `groups` WHERE groupname='$group'";
 	
-	$result = db_query($sql);
+	$result = DB_query($sql);
 	$group_descr = mysqli_fetch_row($result);
 	
 	return($group_descr[0]);
@@ -438,7 +438,7 @@ function GRP_ren($groupName,$newGroupName)
 			CHECK_FW(CC_groupname, $groupName, CC_groupname, $newGroupName);
 			$sql="UPDATE `groups` SET `groupname` = '$newGroupName' WHERE `groupname` = '$groupName'";
 
-			db_query($sql); //FW ok
+			DB_query($sql); //FW ok
 		};
 };
 
@@ -476,7 +476,7 @@ function GRP_countClients($groupName)
 
 	$sql="SELECT COUNT(*) FROM `clientgroups` WHERE groupid='$gid'";
 
-	$res = db_query($sql); //FW ok
+	$res = DB_query($sql); //FW ok
 
 	$line = mysqli_fetch_row($res);
 
@@ -572,7 +572,7 @@ function GRP_moveClientToGroup($clientName,$oldGroup,$newGroup)
 				{
 					$sql ="UPDATE `clientgroups` SET `groupid` = '$ngid' WHERE `groupid` = '$ogid' AND `clientid` = '$cid'";
 
-					db_query($sql); //FW ok
+					DB_query($sql); //FW ok
 				};
 		}
 	else
@@ -592,7 +592,7 @@ function GRP_listGroups()
 {
 	$sql="SELECT groupname FROM `groups`";
 
-	$result = db_query($sql); //FW ok
+	$result = DB_query($sql); //FW ok
 
 	$i = 0;
 
@@ -825,7 +825,7 @@ function GRP_listClientGroups($clientName)
 
 	$sql="SELECT groups.groupname FROM clientgroups, groups WHERE clientgroups.clientid=\"$cid\" AND clientgroups.groupid=groups.id ORDER BY groups.groupname";
 
-	$res = db_query($sql); //FW ok
+	$res = DB_query($sql); //FW ok
 
 	$i=0;
 
@@ -1044,7 +1044,7 @@ function GRP_listAllClientsInGroups($groupNames)
 
 	$sql="SELECT DISTINCT clients.client FROM clients, clientgroups WHERE clients.id=clientgroups.clientid AND ($gSQL) ORDER BY clients.client";
 
-	$res = db_query($sql); //FW ok
+	$res = DB_query($sql); //FW ok
 
 	$i=0;
 

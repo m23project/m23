@@ -39,7 +39,7 @@ function MIGR_dmi($data)
 	else
 		{
 			$sql = "UPDATE clients SET dmi='$dmi' WHERE client='$data[client]'";
-			db_query($sql);
+			DB_query($sql);
 			echo("DMI conversion DONE!");
 		};
 };
@@ -146,14 +146,14 @@ function MIGR_partitions($data)
 	
 	
 	$sql = "UPDATE clients SET partitions='$partStr' WHERE client='$data[client]'";
-	db_query($sql);
+	DB_query($sql);
 	
 	echo(" partitions conversion DONE!");
 };
 
 
-db_query("ALTER TABLE `sourceslist` ADD `release` VARCHAR( 255 ) NOT NULL AFTER `distr`");
-db_query("ALTER TABLE `sourceslist` ADD `desktops` LONGTEXT NOT NULL");
+DB_query("ALTER TABLE `sourceslist` ADD `release` VARCHAR( 255 ) NOT NULL AFTER `distr`");
+DB_query("ALTER TABLE `sourceslist` ADD `desktops` LONGTEXT NOT NULL");
 /*$res = CLIENT_query("","","","");
 
 while($data = mysqli_fetch_array($res))

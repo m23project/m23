@@ -2363,7 +2363,7 @@ function FDISK_getPartitions($client)
 	CHECK_FW(CC_clientname, $client);
 	$sql = "SELECT partitions FROM `clients` WHERE client='".$client."';";
 
-	$result = db_query($sql); //FW ok
+	$result = DB_query($sql); //FW ok
 	$line = mysqli_fetch_row($result);
  
 	return (explodeAssoc("###",$line[0]));
@@ -3704,7 +3704,7 @@ function FDISK_defineDrive($client,$path,$size,$upperI,$lowerI,$upperO,$lowerO,$
 
 	$sql="UPDATE `clients` SET `partitions` = '".implodeAssoc("###",$param)."' WHERE `client` = '$client'";
 
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 
 	$options=CLIENT_getAllOptions($client);
 	$options['fdiskUpperToleranceIdentical']=$upperI;
@@ -4566,10 +4566,10 @@ function FDISK_adjustFdiskParams($client)
 	CLIENT_setAllOptions($client,$options);
 
 	$sql="UPDATE `clientjobs` SET `params` = '".implodeAssoc("###",$command)."' WHERE `id` = '$fdiskFormatID'";
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 
 	$sql="UPDATE `clientjobs` SET `params` = '$newParam' WHERE `id` = '$baseSysID'";
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 };
 
 

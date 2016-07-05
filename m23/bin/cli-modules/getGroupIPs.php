@@ -2,7 +2,7 @@
 /*
 Description: Fetches the IPs of all clients in a group.
 Parameter: Groupname or 'all'.
-Returns: 0 when the IPs clould be shown, 1 the group doesn't exists, 2 when no command line parameter is given.
+Returns: 0 when the IPs could be shown, 1 the group doesn't exists, 2 when no command line parameter is given.
 */
 
 function run($argc, $argv)

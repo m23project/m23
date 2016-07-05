@@ -428,7 +428,7 @@ function FDISK_defineDrive($client,$path,$size,$upperI,$lowerI,$upperO,$lowerO,$
 
 	$sql="UPDATE `clients` SET `partitions` = '".implodeAssoc("###",$param)."' WHERE `client` = '$client'";
 
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 
 	$options=CLIENT_getAllOptions($client);
 	$options['fdiskUpperToleranceIdentical']=$upperI;

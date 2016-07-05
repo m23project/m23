@@ -41,7 +41,7 @@ function I18N_convertToHumanReadableName($lang)
 	I18N_cacheClientLanguages();
 
 	//Get the short and (translated) longanames
-	$res = db_query("SELECT * FROM `i18n` WHERE webinterface = 'c' AND ShortLanguage = '$lang'");
+	$res = DB_query("SELECT * FROM `i18n` WHERE webinterface = 'c' AND ShortLanguage = '$lang'");
 	$l = mysqli_fetch_assoc($res);
 	return($$l['LongLanguage']);
 }
@@ -98,7 +98,7 @@ function I18N_addLanguage($webinterface, $shortLanguage, $longLanguage, $country
 
 	foreach ($DB_list as $db)
 	{
-		db_query("INSERT INTO `$db`.`i18n` (`webinterface`, `ShortLanguage`, `LongLanguage`, `country`, `lang`, `keymap`, `xkeyboard`, `kdekeyboard`, `locale`, `kdekeyboards`, `timezone`, `packagelang`) VALUES ('$webinterface', '$shortLanguage', '$longLanguage', '$country', '$lang', '$keymap', '$xkeyboard', '$kdekeyboard', '$locale', '$kdekeyboards', '$timezone', '$packagelang');");
+		DB_query("INSERT INTO `$db`.`i18n` (`webinterface`, `ShortLanguage`, `LongLanguage`, `country`, `lang`, `keymap`, `xkeyboard`, `kdekeyboard`, `locale`, `kdekeyboards`, `timezone`, `packagelang`) VALUES ('$webinterface', '$shortLanguage', '$longLanguage', '$country', '$lang', '$keymap', '$xkeyboard', '$kdekeyboard', '$locale', '$kdekeyboards', '$timezone', '$packagelang');");
 	}
 }
 
@@ -120,7 +120,7 @@ function I18N_listClientLanguages($default, $directOutputtedSelection = true)
 	I18N_cacheClientLanguages();
 
 	//Get the short and (translated) longanames
-	$res = db_query("SELECT * FROM `i18n` WHERE webinterface = 'c'");
+	$res = DB_query("SELECT * FROM `i18n` WHERE webinterface = 'c'");
 	while ($lang = mysqli_fetch_assoc($res))
 		$langA[$lang['ShortLanguage']] = $$lang['LongLanguage'];
 
@@ -143,7 +143,7 @@ function I18N_listClientLanguages($default, $directOutputtedSelection = true)
 function I18N_countCachedLanguages($webinterface)
 {
 	$webinterface = ($webinterface ? 'w' : 'c');
-	$res = db_query("SELECT COUNT(*) FROM i18n WHERE webinterface = '$webinterface'");
+	$res = DB_query("SELECT COUNT(*) FROM i18n WHERE webinterface = '$webinterface'");
 	$out = mysqli_fetch_row($res);
 	return($out[0]);
 }
@@ -216,7 +216,7 @@ function I18N_cacheWebinterfaceLanguages()
 function I18N_getAllCachedLanguages($webinterface)
 {
 	$webinterface = ($webinterface ? 'w' : 'c');
-	$res = db_query("SELECT ShortLanguage, LongLanguage FROM i18n WHERE webinterface = '$webinterface'");
+	$res = DB_query("SELECT ShortLanguage, LongLanguage FROM i18n WHERE webinterface = '$webinterface'");
 	while ($line = mysqli_fetch_assoc($res))
 	{
 		$out[$line['ShortLanguage']] = $line['LongLanguage'];
@@ -426,7 +426,7 @@ function I18N_getLangVars(&$lang)
 	I18N_cacheClientLanguages();
 
 	//Get the info for the 
-	$res = db_query("SELECT * FROM `i18n` WHERE webinterface = 'c' AND `ShortLanguage` = '$lang'");
+	$res = DB_query("SELECT * FROM `i18n` WHERE webinterface = 'c' AND `ShortLanguage` = '$lang'");
 	return(mysqli_fetch_assoc($res));
 };
 

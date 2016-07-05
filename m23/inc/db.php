@@ -109,7 +109,7 @@ function getClientLanguage()
 
 	$sql="SELECT language FROM `clients` WHERE client='$clientName'";
 
-	$res=db_query($sql); //FW ok
+	$res=DB_query($sql); //FW ok
 
 	$line=mysqli_fetch_row($res);
 
@@ -439,7 +439,7 @@ function deleteClientLogs($clientName)
 {
 	CHECK_FW(CC_clientname, $clientName);
 	$sql="DELETE FROM `clientlogs` WHERE client='$clientName'";
-	db_query($sql);
+	DB_query($sql);
 }
 
 

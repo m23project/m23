@@ -16,7 +16,7 @@ function RMV_exists4IP($var, $ip)
 	CHECK_FW(CC_remotevarip, $ip, CC_remotevarvar, $var);
 	$sql="SELECT count(*) FROM `remotevar` WHERE ip = '$ip' AND var = '$var'";
 
-	$result = db_query($sql); //FW ok
+	$result = DB_query($sql); //FW ok
 
 	$line = mysqli_fetch_row($result);
 
@@ -42,7 +42,7 @@ function RMV_set4IP($var, $value, $ip)
 	else	 
 		$sql="UPDATE `remotevar` SET value = '".CHECK_text2db($value)."' WHERE ip = '$ip' AND var = '$var'";
 
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 };
 
 
@@ -60,7 +60,7 @@ function RMV_get4IP($var,$ip)
 	CHECK_FW(CC_remotevarip, $ip, CC_remotevarvar, $var);
 	$sql = "SELECT value FROM `remotevar` WHERE ip = '$ip' AND var = '$var'";
 
-	$result = db_query($sql); //FW ok
+	$result = DB_query($sql); //FW ok
 
 	$line = mysqli_fetch_row($result);
 
@@ -96,7 +96,7 @@ function RMV_get($var)
 	CHECK_FW(CC_remotevarvar, $var);
 	$sql = "SELECT value FROM `remotevar` WHERE ip = '".getClientIP()."' AND var = '$var'";
 
-	$result = db_query($sql); //FW ok
+	$result = DB_query($sql); //FW ok
 
 	$line = mysqli_fetch_row($result);
 
@@ -118,7 +118,7 @@ function RMV_rm4IP($var,$ip)
 	CHECK_FW(CC_remotevarip, $ip, CC_remotevarvar, $var);
 	$sql = "DELETE FROM `remotevar` WHERE ip = '$ip' AND var = '$var'";
 
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 };
 
 
@@ -151,6 +151,6 @@ function RMV_rm_old($time)
 
 	$sql = "DELETE FROM `remotevar` WHERE addtime < $leastTime";
 
-	db_query($sql); //FW ok
+	DB_query($sql); //FW ok
 }
 ?>

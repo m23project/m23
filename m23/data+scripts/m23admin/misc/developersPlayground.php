@@ -19,7 +19,7 @@
 
 	$sql="SELECT * FROM `clients`";
 
-	$res=db_query($sql); //FW ok
+	$res=DB_query($sql); //FW ok
 
 
 // 	function test($in)
