@@ -1346,6 +1346,7 @@ class CClient extends CChecks
 		$optionsA = array();
 
 		// Serialize the key value store before writing to the DB
+		$keyValueStoreUnserialized = $this->clientInfo['keyValueStore'];
 		$this->clientInfo['keyValueStore'] = serialize($this->clientInfo['keyValueStore']);
 
 		foreach ($this->clientInfo as $key => $val)
@@ -1370,9 +1371,11 @@ class CClient extends CChecks
 		$options = implodeAssoc('?',$optionsA);
 		$sql .= " `options` = '$options' ";
 
-		
 		$sql .= 'WHERE `id` = \''.$this->clientInfo['id'].'\'';
 		DB_query($sql);
+
+		// Put the unserialized data back into the live data
+		$this->clientInfo['keyValueStore'] = $keyValueStoreUnserialized;
 	}
 
 

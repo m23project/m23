@@ -2,9 +2,14 @@
 
 class Cm23Admin extends CChecks
 {
- 	private $defaultOptions = array('css' => 'index.css', 'language' => "en");
- 	private $cssList = array('index_fb.css', 'index.css');
- 	private $cssAssign = array('index_fb.css' => 'Fresh Blue', 'index.css' => 'Standard');
+	private $defaultOptions = array('css' => 'index.css', 'language' => "en");
+	private $cssList = array('index_fb.css', 'index.css');
+	private $cssAssign = array('index_fb.css' => 'Fresh Blue', 'index.css' => 'Standard');
+	private $options = array();
+	private $pwhash = '';
+	private $salt = '';
+	private $optionsMd5 = '';
+
 	const M23ADMIN_HT_PASSWD = "/m23/etc/.htpasswd";
 	const M23PHP_MYLDAP_ADMIN_HT_PASSWD = "/m23/etc/.phpMyLDAPAdminHtpasswd";
 	const M23BACKUPPC_HT_PASSWD= "/etc/backuppc/htpasswd";
@@ -140,7 +145,7 @@ class Cm23Admin extends CChecks
 			return (false);
 		}
 
-		if ($_SERVER['PHP_AUTH_USER'] == $this->name)
+		if (isset($_SERVER['PHP_AUTH_USER']) && ($_SERVER['PHP_AUTH_USER'] == $this->name))
 		{
 			$this->addErrorMessage($I18N_cantDeleteOwnAccount);
 			return (false);

@@ -709,11 +709,13 @@ function PKG_preparePackageDir($dir, $packagesource, $logFile="", $returnCmd=fal
 	if (!file_exists($dir))
 		exec("mkdir -p '$dir'");
 
+	$serverIP = getServerIP();
+
 	exec("
 	touch '$dir/status'
 	rm '$dir/sources.list'
 	cat >> '$dir/sources.list' << \"EOF\"
-$packagesource\ndeb http://127.0.0.1/extraDebs/ ./
+$packagesource\ndeb http://$serverIP/extraDebs/ ./
 EOF
 	");
 
@@ -1148,7 +1150,7 @@ function PKG_getDebootStrapBasePackages($release)
 	if (!is_dir($storDir))
 		mkdir($storDir);
 	
-	$bashProxyVariables = CSYSTEMPROXY_getEnvironmentVariables(true);
+	$bashProxyVariables = CSYSTEMPROXY_getEnvironmentVariables();
 
 	exec("$bashProxyVariables\ndebootstrap --print-debs $release /tmp/debootstrap.tmp > $storFile");
 

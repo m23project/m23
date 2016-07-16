@@ -795,7 +795,7 @@ function SRCLST_showEditor($poolName="", $showSupportedUserInterfacesList = true
 	if (isset($_POST['BUT_load']) || isset($_POST['BUT_deleteCancel']))
 		{
 			$sourcename = $_POST['SEL_name'];
-			$sourcelist = trim(SRCLST_loadSourceListFromDB($sourcename));
+			$sourcelist = trim(SRCLST_loadSourceList($sourcename));
 			$sourcedescr = trim(SRCLST_getDescription($sourcename));
 			$distr = SRCLST_getValue($sourcename,"distr");
 			$release = SRCLST_getValue($sourcename,"release");

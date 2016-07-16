@@ -22,8 +22,8 @@ function CSYSTEMPROXY_getProxySettingsFromAPT()
 		// Get the line with the HTTP proxy setting
 		$linesWithProxySettings = trim(HELPER_grep($config, 'Acquire::http::Proxy'));
 
-		// Check, if exactly one HTTP proxy setting line was extracted
-		if (count(explode("\n", $linesWithProxySettings)) == 1)
+		// Check, if a HTTP proxy setting line was extracted
+		if (!empty($linesWithProxySettings))
 		{
 			// Get the URL from the setting line: Acquire::http::Proxy "http://user:pass@:host:port"; => http://user:pass@:host:port
 			$proxyURL = preg_replace('/(.*")(.*)(".*)/i','${2}' , $linesWithProxySettings);
@@ -92,15 +92,19 @@ function CSYSTEMPROXY_getUserPasswordString($ps, $connector = '@')
 
 
 /**
-**name CSYSTEMPROXY_getEnvironmentVariables($return = false)
+**name CSYSTEMPROXY_getEnvironmentVariables($getAlways = false)
 **description Generates BASH proxy variables.
-**parameter return: If set to true, the variables will be returned otherwise shown.
+**parameter getAlways: If set to true, the variables will always be returned.
+**returns BASH proxy variables.
 **/
-function CSYSTEMPROXY_getEnvironmentVariables($return = false, $getAlways = false)
+function CSYSTEMPROXY_getEnvironmentVariables($getAlways = false)
 {
 	$ps = CSYSTEMPROXY_getProxySettingsFromAPT();
+	
+	print_r($ps);
 
 	$out = '';
+	$newLine = false;
 
 	// Generate the BASH proxy variables, if a proxy is enabled
 	if ($ps['active'] || $getAlways)
@@ -110,14 +114,15 @@ function CSYSTEMPROXY_getEnvironmentVariables($return = false, $getAlways = fals
 
 		// Set the settings for all BASH proxy variables
 		foreach (array('http_proxy', 'ftp_proxy', 'https_proxy' , 'rsync_proxy' , 'HTTP_PROXY' , 'HTTPS_PROXY' , 'FTP_PROXY' , 'RSYNC_PROXY') as $varName)
-			$out .= "export $varName=\"$ps[scheme]://$userPass$ps[host]:$ps[port]/\"\n";
+		{
+			$nl = $newLine ? "\n" : '';
+			$newLine = true;
+			
+			$out .= "${nl}export $varName=\"$ps[scheme]://$userPass$ps[host]:$ps[port]/\"";
+		}
 	}
 
-	// Return or show the variables
-	if ($return)
-		return($out);
-	else
-		echo($out);
+	return($out);
 }
 
 
@@ -184,7 +189,7 @@ class CSystemProxy extends CChecks
 **/
 	private function writeEtcProfiles()
 	{
-		$ev = CSYSTEMPROXY_getEnvironmentVariables(true, true);
+		$ev = CSYSTEMPROXY_getEnvironmentVariables(true);
 
 		if (!SERVER_fileExists(CSystemProxy::ENVIRONMENT_FILE))
 			SERVER_putFileContents(CSystemProxy::ENVIRONMENT_FILE, $ev, "644");
@@ -267,7 +272,7 @@ class CSystemProxy extends CChecks
 		$config = SERVER_getFileContents(CSystemProxy::SQUID_FILE);
 
 		// Remove the possible proxy lines from the configuration
-		$config = trim(HELPER_grepNot($config, $proxyLine1));
+		$config = trim(HELPER_grepNot($config, "cache_peer "));
 		$config = trim(HELPER_grepNot($config, $proxyLine2));
 
 		// Add the proxy lines, if the proxy is active

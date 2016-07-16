@@ -2626,6 +2626,9 @@ function CLCFG_installBasePackages($packagelist, $keyring="debian-keyring")
 	\n");
 
 	CLCFG_disableAvahiDaemon();
+
+	CLCFG_setDebConfDirect('dash dash/sh boolean false');
+	echo("\ndpkg-reconfigure dash\n");
 };
 
 
@@ -3651,7 +3654,7 @@ sudo touch $timeFile;
 			
 			if [ ! -f $m23debootstrapDir/pkgdetails ]
 			then
-				".CSYSTEMPROXY_getEnvironmentVariables(true)."
+				".CSYSTEMPROXY_getEnvironmentVariables()."
 				sudo wget http://m23.sf.net/m23debs/pkgdetails -O $m23debootstrapDir/pkgdetails
 			fi
 

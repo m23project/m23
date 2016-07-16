@@ -9,6 +9,9 @@
 	include_once('/m23/inc/html.php');
 	include('/m23/inc/remotevar.php');
 	include('/m23/inc/client.php');
+	include("/m23/inc/backup.php");
+	include('/m23/inc/message.php');
+	include_once('/m23/inc/CMessageManager.php');
 	include('/m23/inc/distr.php');
 	include("/m23/inc/preferences.php");
 	include('/m23/inc/sourceslist.php');
@@ -32,6 +35,9 @@
 	include_once('/m23/inc/CChecks.php');
 	include_once('/m23/inc/CClient.php');
 	include_once('/m23/inc/CClientLister.php');
+	include_once('/m23/inc/Cm23Admin.php');
+	include_once('/m23/inc/Cm23AdminLister.php');
+
 
 	dbConnect();
 

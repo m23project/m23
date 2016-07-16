@@ -1,3 +1,25 @@
+2016-07-16
+fix: CClient:save: Now stores the serialized key value store to the DB, but keeps the associative key value store array in memory to allow multiple calls of the save method.
++++++
+2016-07-15
+fix: CLIENT_changeClient: Added missing SQL statement in "ip" case.
++++++
+2016-07-13
+cha: CLCFG_installBasePackages: Now configures the system to use BASH as default shell.
+patch 100909: Added management for the admins of the m23 webinterface.
+new: cli-modules/addm23Admin.php: Creates a new admin account for the m23 webinterface.
+new: cli-modules/delm23Admin.php: Deletes an admin account of the m23 webinterface.
+new: cli-modules/listm23Admins.php: Lists the admin accounts of the m23 webinterface.
+cha: Cm23Admin::delete: Now works without warning in CLI mode.
+cha: BACKUP_delAdmin: Now has support for Apache 2.x.
++++++
+2016-07-06
+patch 100908: System proxy improvements.
+cha: CSYSTEMPROXY_getEnvironmentVariables: Removed unused parameter for returning the result (now the result is always returned).
+fix: CSYSTEMPROXY_getProxySettingsFromAPT: Now gives correct result, if the APT config file, but no proxy line is present.
+cha: SRCLST_showEditor: Now uses SRCLST_loadSourceList instead of SRCLST_loadSourceListFromDB.
+cha: PKG_preparePackageDir: Now uses the server IP for extraDebs.
++++++
 2016-07-05
 patch 100906: Added system proxy.
 cha: addToHosts.php, migrate.php, m23shared.php, capture.php, CClientLister.php, CClient.php, CFDiskAlles.php, CFDiskIO.php, client.php, db.php, fdisk.php, groups.php, i18n.php, messageReceive.php, packages.php, plugin.php, preferences.php, remotevar.php, sourceslist.php and vm.php: Renamed function calls form "db_query" to "DB_query".

@@ -211,7 +211,16 @@ function BACKUP_delAdmin($admin)
 	$newAdminLine="\$Conf{CgiAdminUsers} = '".implode(" ",$admins)."';";
 	$cmd=EDIT_replace("/etc/backuppc/config.pl", $adminLine, $newAdminLine,"g").
 	"
-	/etc/init.d/apache reload
+	if [ -f /etc/init.d/apache ]
+	then
+		/etc/init.d/apache reload
+	fi
+
+	if [ -f /etc/init.d/apache2 ]
+	then
+		/etc/init.d/apache2 reload
+	fi
+
 	/etc/init.d/backuppc reload
 	";
 	SERVER_runInBackground("m23delBackupPCAdmin".time(),$cmd,"root",false);

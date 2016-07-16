@@ -305,7 +305,7 @@ function CLIENT_extraWebAction($action,$client)
 			CLIENT_startInstall($client);
 			break;
 
-		//No action was executed => falase
+		//No action was executed => false
 		default:
 			$ret = false;
 	}
@@ -3722,28 +3722,22 @@ function CLIENT_changeClient()
 					$changeDHCP=true;
 					break;
 				case "mac":
-				//m23customPatchBegin type=change id=CLIENT_changeClientAdditionalCaseMac
-				//m23customPatchEnd id=CLIENT_changeClientAdditionalCaseMac
 					$changeDHCP=true;
 					CHECK_FW(CC_mac, $_SESSION['preferenceSpace'][$elem]);
 					$sql.="`$varname`='".$_SESSION['preferenceSpace'][$elem]."', ";
 					break;
 				case "ip":
-				//m23customPatchBegin type=change id=CLIENT_changeClientAdditionalCaseIp
-				//m23customPatchEnd id=CLIENT_changeClientAdditionalCaseIp
 					//Check, if the new IP is nonused
 					$checker->checkNonusedIP($_SESSION['preferenceSpace'][$elem]);
 					if ($checker->showMessages())
 						return(false);
+					$sql.="`$varname`='".$_SESSION['preferenceSpace'][$elem]."', ";
+					break;
 				case "netmask":
 					$changeDHCP=true;
 					CHECK_FW(CC_ip, $_SESSION['preferenceSpace'][$elem]);
 					$sql.="`$varname`='".$_SESSION['preferenceSpace'][$elem]."', ";
 					break;
-
-				//m23customPatchBegin type=change id=CLIENT_changeClientAdditionalCaseElement
-				//m23customPatchEnd id=CLIENT_changeClientAdditionalCaseElement
-
 				case "proxy":
 					//proxy settings are stored in the "options" row
 					foreach (explode("#","packageProxy#packagePort") as $key)
@@ -3781,6 +3775,8 @@ function CLIENT_changeClient()
 					$allOptions[$elem] = ($_SESSION['preferenceSpace'][$elem] ? "yes" : "");
 					break;
 
+				//m23customPatchBegin type=change id=CLIENT_changeClientAdditionalCaseElements
+				//m23customPatchEnd id=CLIENT_changeClientAdditionalCaseElements
 
 				default:
 				{

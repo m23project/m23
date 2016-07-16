@@ -1105,7 +1105,7 @@ function SERVER_checkDownload($useProxy)
 	exec("$proxy
 	rm /tmp/m23dlcheck
 
-	".CSYSTEMPROXY_getEnvironmentVariables(true)."
+	".CSYSTEMPROXY_getEnvironmentVariables()."
 
 	wget http://m23.sourceforge.net/randomDownloadData -O /tmp/m23dlcheck
 	");

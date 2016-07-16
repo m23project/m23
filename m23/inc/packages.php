@@ -316,7 +316,7 @@ function PKG_downloadBaseSysTom23Server($release, $arch)
 	// Download URL for the debootstrap cache file
 	$debootstrapCacheFileURL = PKG_getDebootstrapCacheSfURL($release, $arch);
 
-	$environmentProxyVariables = CSYSTEMPROXY_getEnvironmentVariables(true);
+	$environmentProxyVariables = CSYSTEMPROXY_getEnvironmentVariables();
 
 	// Download the signature file and check the debootstrap cache file
 	SERVER_runInBackground($backgroundJobName, "

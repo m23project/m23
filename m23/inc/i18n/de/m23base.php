@@ -2,6 +2,9 @@
 //fallback language
 @include("/m23/inc/i18n/en/m23base.php");
 
+//m23customPatchBegin type=change id=additionalI18N
+//m23customPatchEnd id=additionalI18N
+
 //german translation for add_client.php
 @$I18N_action="Aktion";
 @$I18N_activate_sure="Sie müssen die \"sicher\"-Checkbox aktivieren";

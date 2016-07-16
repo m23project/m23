@@ -755,7 +755,7 @@ function HELPER_getRemoteFileContents($url, $storeFile, $refreshTime, $forceOver
 	if ((!is_file($filePath)) || ((time() - filemtime($filePath)) / 60) > $refreshTime)
 	{
 		//Download the file
-		system(CSYSTEMPROXY_getEnvironmentVariables(true)."\nwget \"$url\" -O $filePath.temp -t1 -T5");
+		system(CSYSTEMPROXY_getEnvironmentVariables()."\nwget \"$url\" -O $filePath.temp -t1 -T5");
 	}
 
 	if (file_exists("$filePath.temp") && ((filesize("$filePath.temp") > 0) || $forceOverwrite))
