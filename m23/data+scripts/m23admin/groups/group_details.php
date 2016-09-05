@@ -17,10 +17,10 @@
 		<tr>
 		
 			<td align="center">
-<a href="index.php?page=clientsoverview&groupname=<?PHP echo($groupname);?>">
-<img src="../gfx/listClients.png" border=0><br>
-<?PHP echo($I18N_list_clients);?>
-</a>
+				<a href="index.php?page=clientsoverview&groupname=<?PHP echo($groupname);?>">
+					<img src="../gfx/listClients.png" border=0><br>
+					<?PHP echo($I18N_list_clients);?>
+				</a>
 			</td>
 		</tr>
 	</table>
@@ -37,22 +37,27 @@
 	<div class="subtable_shadow">
 	<table align="center" class="subtable" cellspacing="10">
 		<tr>
-		
 			<td align="center">
-<a href="index.php?page=groupactions&groupname=<?= urlencode($groupname); ?>&action=renameGroup">
-<img src="/gfx/groupRename.png" border=0><br>
-<?PHP echo($I18N_group_rename);?>
-</a>
+				<a href="index.php?page=groupactions&groupname=<?= urlencode($groupname); ?>&action=renameGroup">
+					<img src="/gfx/groupRename.png" border=0><br>
+					<?PHP echo($I18N_group_rename);?>
+				</a>
 			</td>
 
 
+			<td align="center">
+				<a href="index.php?page=groupactions&groupname=<?= urlencode($groupname); ?>&action=changeGroupDescription">
+					<img src="/gfx/changeGroupDescription.png" border=0><br>
+					<?PHP echo($I18N_group_change_description);?>
+				</a>
+			</td>
 
 
 			<td align="center">
-<a href="index.php?page=groupactions&groupname=<?= urlencode($groupname); ?>&action=deleteGroup">
-<img src="/gfx/groupDelete.png" border=0><br>
-<?PHP echo($I18N_group_delete);?>
-</a>
+				<a href="index.php?page=groupactions&groupname=<?= urlencode($groupname); ?>&action=deleteGroup">
+					<img src="/gfx/groupDelete.png" border=0><br>
+					<?PHP echo($I18N_group_delete);?>
+				</a>
 			</td>
 			
 			

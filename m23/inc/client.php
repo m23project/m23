@@ -2004,6 +2004,22 @@ function CLIENT_desasterRecovery($clientName, $addInstallRemovalJobs = true, $ad
 
 
 /**
+**name CLIENT_recoverClientCombineJobs($clientName)
+**description Recover a client: all client jobs are done again, status is set to 0, all identical jobs are combines.
+**parameter clientName: name of the client
+**/
+function CLIENT_recoverClientCombineJobs($clientName)
+{
+	CHECK_FW(CC_clientname, $clientName);
+	CLIENT_desasterRecovery($clientName, false);
+	PKG_removeDuplicatedIdenticalJobs($clientName);
+}
+
+
+
+
+
+/**
 **name CLIENT_wol($clientName)
 **description wakes a client over the network
 **parameter clientName: name of the client
@@ -3966,5 +3982,20 @@ else
 	$cmd.="sudo screen -dmS m23$jobName$data[ip] /m23/bin/plink-ubuntu $password $data[ip] ".getServerIP()." $ubuntuUser";
 	
 system($cmd);
-};
+}
+
+
+
+
+
+/**
+**name CLIENT_isAssimilated($clientName)
+**description Checks, if a client was assimilated.
+**parameter clientName: name of the client
+**returns true, if the client was assimilated. false, if the client was normaly installed.
+**/
+function CLIENT_isAssimilated($clientName)
+{
+	return(is_array(PKG_getPackageIDsByName($clientName,'m23Assimilate',true)));
+}
 ?>

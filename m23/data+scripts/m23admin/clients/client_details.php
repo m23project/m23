@@ -71,7 +71,9 @@ CLIENT_DETAILS_beginCategory($I18N_repairCriticalStatus, "criticalStatus");
 CLIENT_DETAILS_addIcon("recoverclient", "", "reload.png", "$I18N_recover_client", $I18N_recover_client_tooltip);
 CLIENT_DETAILS_addIcon("recoverclient&redoJobs=1", "", "redoJobs.png", "$I18N_redo_client_jobs", $I18N_redo_client_jobs_tooltip);
 CLIENT_DETAILS_addIcon("recoverclient&backToRed=1", "", "backToRed.png", "$I18N_back_to_red", $I18N_back_to_red_tooltip);
-CLIENT_DETAILS_addIcon("clientstatus", "", "trafficLights.png", "$I18N_change_client_status", $I18N_change_client_status_tooltip);
+CLIENT_DETAILS_addIcon("recoverclient&combineJobs=1", "", "redoJobsCombineJobs.png", "$I18N_recover_client_combine_jobs", $I18N_recover_client_combine_jobs_tooltip);
+
+
 
 echo("</tr><tr>"); //Make a second row for the icons
 
@@ -88,13 +90,16 @@ echo("</tr><tr>"); //Make a second row for the icons
 			$tooltip = $I18N_startRescueSystem_tooltip;
 			$rescueStatus = 0;
 		};
-CLIENT_DETAILS_addIcon("rescueclient", "&deactivate=$rescueStatus", "help.png", "$label", $tooltip);
-
-
+CLIENT_DETAILS_addIcon("clientstatus", "", "trafficLights.png", "$I18N_change_client_status", $I18N_change_client_status_tooltip);
 
 CLIENT_DETAILS_addIcon("clientdebug", "", "bug.png", "$I18N_change_debug_status", $I18N_change_debug_status_tooltip);
 CLIENT_DETAILS_addIcon("clientinfo", "&infoType=directConnect", "connect.png", "$I18N_client_directConnect", $I18N_client_directConnect_tooltip);
 CLIENT_DETAILS_addIcon("showCurrentWorkPHP", '&m23clientID='.$_GET['id'], 'workPHP.png', "$I18N_currentWorkPHP", $I18N_currentWorkPHP_tooltip);
+
+echo("</tr><tr>"); //Make a third row for the icons
+
+CLIENT_DETAILS_addIcon("rescueclient", "&deactivate=$rescueStatus", "help.png", "$label", $tooltip);
+
 CLIENT_DETAILS_endCategory();
 
 

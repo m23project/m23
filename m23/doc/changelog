@@ -1,3 +1,34 @@
+2016-09-05
+patch 100913: Added new recovering option to combine identical jobs.
+cha: client_details.php: New icon for client recovery with combining identical jobs.
+cha: recover_client.php: Option for client recovery with combining identical jobs.
+new: PKG_getDuplicatedIdenticalJobs: Returns an array with a list of all jobs that are identical by package, priority, status and params.
+new: PKG_removeDuplicatedIdenticalJobs: Removes all jobs that are identical by package, priority, status and params omitting the first job.
+new: CLIENT_recoverClientCombineJobs: Recover a client: all client jobs are done again, status is set to 0, all identical jobs are combines.
++++++
+2016-08-24
+new: CLIENT_isAssimilated: Checks, if a client was assimilated.
+fix: ASSI_prepareClient: Now calls MSR_curDynIPCommand instead of a non-existing function.
+fix: work.php: Now doesn't wait for finishing the download of the base archive on assimilated clients.
+fix: CLCFG_writeM23fetchjob: Corrected escaping of BASH code for writing m23fetchjob.
++++++
+2016-07-28
+patch: System proxy improvements.
+new: HELPER_hostname2IP: Gets the IP of a known host.
+new: CSystemProxy::getProxyHostIP: Gets the proxy IP.
+cha: CSystemProxy::writeSquidConf: Now uses the IP of the proxy to write to the Squid configuration file.
++++++
+2016-07-20
+cha: m23/postinst: Now uses direct access to the m23 server in m23's Squid.
+cha: CSystemProxy::showProxyDialog: Now hides the password, when opening the dialog.
++++++
+2016-07-19
+patch 100911: Added option to change the group description.
+new: GRP_setDescrGroup: Sets the description of a client group.
+new: GRP_showChangeDescriptionDialog: shows a dialog to change the group description
+cha: group_actions.php: Now can change the group description.
+cha: group_details.php: Added icon for changing the group description.
++++++
 2016-07-16
 fix: CClient:save: Now stores the serialized key value store to the DB, but keeps the associative key value store array in memory to allow multiple calls of the save method.
 +++++

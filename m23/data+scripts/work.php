@@ -70,10 +70,10 @@ echo('#!/bin/bash
 
 			$error=false;
 			CLIENT_recalculateStatusBar($client);
-			
+
 			$waitForFinishedUpdate = UPDATE_running();
 			$waitForSelectionOfDistribution = (($package == "m23fdiskFormat") && empty($options['release']) && ('halfSister' != $distr));
-			$waitForFinishedDownloadOfBaseSys = (!PKG_downloadBaseSysTom23Server($options['release'], $options['arch']));
+			$waitForFinishedDownloadOfBaseSys = (!PKG_downloadBaseSysTom23Server($options['release'], $options['arch']) && !CLIENT_isAssimilated($client));
 
 			if ($waitForFinishedUpdate || $waitForSelectionOfDistribution || $waitForFinishedDownloadOfBaseSys)
 			{

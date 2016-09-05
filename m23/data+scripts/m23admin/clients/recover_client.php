@@ -4,15 +4,18 @@
 	$sure = $_GET['sure'];
 	$redoJobs = $_GET['redoJobs'];
 	$backToRed = $_GET['backToRed'];
+	$combineJobs = $_GET['combineJobs'];
 
 	define('ACT_NORMAL',1);
 	define('ACT_REDO',2);
 	define('ACT_BACKTORED',4);
+	define('ACT_COMBINEJOBS',8);
 
 	//Get the special action for the page
 	$action = ACT_NORMAL;
 	$action = ((1 == $_GET['redoJobs']) ? ACT_REDO : $action);
 	$action = ((1 == $_GET['backToRed']) ? ACT_BACKTORED : $action);
+	$action = ((1 == $_GET['combineJobs']) ? ACT_COMBINEJOBS : $action);
 
 	//Check if all jobs should be executed again, the desaster recovery function should be used or the client should appear as freshly added
 	switch ($action)
@@ -29,6 +32,13 @@
 			$questionPart1 = $I18N_backToRedsQuestion1;
 			$questionPart2 = $I18N_backToRedsQuestion2;
 			$helpPage = 'back_to_red';
+			break;
+
+		case ACT_COMBINEJOBS:
+			$titleAction = $I18N_recover_client_combine_jobs;
+			$questionPart1 = $I18N_recover_client_combine_jobsQuestion1;
+			$questionPart2 = $I18N_recover_client_combine_jobsQuestion2;
+			$helpPage = 'recover_client_combine_jobs';
 			break;
 
 		default:
@@ -51,6 +61,11 @@
 			case ACT_BACKTORED:
 				CLIENT_backToRed($client);
 				MSG_showInfo("$I18N_back_to_red_started<br><br>$I18N_youCanStartYourm23ClientNow");
+				break;
+
+			case ACT_COMBINEJOBS:
+				CLIENT_recoverClientCombineJobs($client);
+				MSG_showInfo("$I18N_client_start_recover_client_combine_jobs<br><br>$I18N_youCanStartYourm23ClientNow");
 				break;
 
 			default:
@@ -78,7 +93,7 @@
 			</tr>
 			<tr>
 				<td align=\"center\">
-					<a href=\"?page=recoverclient&id=$id&client=$client&sure=1&redoJobs=$redoJobs&backToRed=$backToRed\"><img src=\"/gfx/button_ok-mini.png\">$I18N_yes</a> &nbsp; <a href=\"$noURL\"><img src=\"/gfx/button_cancel-mini.png\">$I18N_no<br></a>
+					<a href=\"?page=recoverclient&id=$id&client=$client&sure=1&redoJobs=$redoJobs&backToRed=$backToRed&combineJobs=$combineJobs\"><img src=\"/gfx/button_ok-mini.png\">$I18N_yes</a> &nbsp; <a href=\"$noURL\"><img src=\"/gfx/button_cancel-mini.png\">$I18N_no<br></a>
 				</td>
 			</tr>
 		");

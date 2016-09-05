@@ -3115,6 +3115,65 @@ function PKG_savePackagesList($listName,$packages,$delete=false)
 
 
 /**
+**name PKG_getDuplicatedIdenticalJobs($clientName, $omitFirstID = true)
+**description Returns an array with a list of all jobs that are identical by package, priority, status and params.
+**parameter clientName: Name of the client.
+**parameter omitFirstID: Set to true if the first ID of each duplicate jobs block should be omitted.
+**returns Array with a list of all jobs that are identical by package, priority, status and params.
+**/
+function PKG_getDuplicatedIdenticalJobs($clientName, $omitFirstID = true)
+{
+	CHECK_FW(CC_clientname, $clientName);
+	
+	$out = array();
+
+	// Get all jobs from a client that have the same values for package, priority, status and params
+	// => The IDs of these jobs are returned in the 'ids' row, separated by ','
+	$sql = "SELECT GROUP_CONCAT(id) AS ids, client, package, priority, status, params, normalPackage, COUNT(*) c FROM clientjobs GROUP BY client, package, priority, status, params, package, normalPackage HAVING c > 1 AND client = '$clientName';";
+
+	$result = db_query($sql);
+
+	// Run thru all the duplicated packages
+	while ($row = mysqli_fetch_array($result))
+	{
+		// Split the concatenated ids 
+		$ids = explode(',', $row['ids']);
+
+		// Remove first ID
+		if ($omitFirstID) array_pop($ids);
+
+		// Add the IDs to the output array
+		$out = array_merge($out, $ids);
+	}
+	return($out);
+}
+
+
+
+
+
+/**
+**name PKG_removeDuplicatedIdenticalJobs($clientName)
+**description Removes all jobs that are identical by package, priority, status and params omitting the first job.
+**parameter clientName: Name of the client.
+**/
+function PKG_removeDuplicatedIdenticalJobs($clientName)
+{
+	CHECK_FW(CC_clientname, $clientName);
+
+	// Get the array with the duplicated identical jobs
+	$ids = PKG_getDuplicatedIdenticalJobs($clientName);
+
+	// Check, if there is at least one id
+	if (count($ids) > 0)
+		PKG_removeFromJobList($ids);
+}
+
+
+
+
+
+/**
 **name PKG_loadPackagesList($listName,$arr)
 **description returns an array or a blank seperated list of all packages in the list
 **parameter listName: name of the list to store the packages 

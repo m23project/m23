@@ -1374,4 +1374,13 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_proxyPassword = 'Proxy-Paßwort';
 @$I18N_proxyActive = 'Proxy aktiviert?';
 @$I18N_systemProxy = 'System-Proxy';
+@$I18N_group_change_description = 'Gruppenbeschreibung ändern';
+@$I18N_group_description_changed = 'Gruppenbeschreibung geändert';
+@$I18N_newDescription = 'Neue Beschreibung';
+@$I18N_couldNotGetProxyServerIP = 'IP des Proxy-Servers konnte nicht ermittelt werden. Bitte überprüfen Sie den ';
+@$I18N_recover_client_combine_jobs = 'Client wiederherstellen und Aufträge zusammenfassen';
+@$I18N_recover_client_combine_jobs_tooltip = 'Alle Aufträge des Client erneut ausführen und identische Aufträge zusammenfassen.';
+@$I18N_recover_client_combine_jobsQuestion1="Sollen die Aufträge auf dem Client";
+@$I18N_recover_client_combine_jobsQuestion2="wiederholt werden, wobei identische Aufträge zusammengefaßt werden?";
+@$I18N_client_start_recover_client_combine_jobs="Alle Aufträge werden auf dem Client erneut durchgeführt, wobei identische Aufträge zusammengefaßt werden.";
 ?>

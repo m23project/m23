@@ -140,7 +140,7 @@ function ASSI_prepareClient()
 
 		CLCFG_writeM23fetchjob();
 
-		MSR_doesClientUseDynIPCommand();
+		MSR_curDynIPCommand(false);
 
 		ASSI_addUbuntuRoot();
 

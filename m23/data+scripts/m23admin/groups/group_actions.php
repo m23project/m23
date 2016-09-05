@@ -14,13 +14,24 @@ switch ($action)
 				if (GRP_exists($_POST['ED_newgroupname']))
 					MSG_showError($I18N_group_exists);
 				else
-					{
-						GRP_ren($groupname,$_POST['ED_newgroupname']);
-						MSG_showInfo($I18N_group_renamed);
-						$groupname = $_POST['ED_newgroupname'];
-					};
+				{
+					GRP_ren($groupname,$_POST['ED_newgroupname']);
+					MSG_showInfo($I18N_group_renamed);
+					$groupname = $_POST['ED_newgroupname'];
+				}
 			}
 			$title=$I18N_group_rename;
+			break;
+		}
+
+		case 'changeGroupDescription':
+		{
+			if (isset($_POST['BUT_change']))
+			{
+				GRP_setDescrGroup($groupname, $_POST['TA_newGroupDescription']);
+				MSG_showInfo($I18N_group_description_changed);
+			}
+			$title = $I18N_group_change_description;
 			break;
 		}
 
@@ -45,30 +56,32 @@ switch ($action)
 	HTML_showFormHeader();
 
 	switch ($action)
-		{
-		case "renameGroup" :
-			{
-				GRP_showRenDialog($groupname);
-				$section="groupAdministration";
-				break;
-			};
+	{
+		case 'renameGroup' :
+			GRP_showRenDialog($groupname);
+			$section="groupAdministration";
+			break;
 
-		case "deleteGroup":
+		case 'changeGroupDescription':
+			GRP_showChangeDescriptionDialog($groupname);
+			$section="groupAdministration";
+			break;
+
+
+		case 'deleteGroup':
+			if ($_GET['sure']==1)
 			{
-				if ($_GET['sure']==1)
-					{
-						GRP_del($groupname);
-						MSG_showInfo($I18N_group_deleted);
-						$section="";
-					}
-				else
-					{
-						GRP_showDelDialog($groupname);
-						$section="groupAdministration";
-					};
-				break;
-			};
-		};
+				GRP_del($groupname);
+				MSG_showInfo($I18N_group_deleted);
+				$section="";
+			}
+			else
+			{
+				GRP_showDelDialog($groupname);
+				$section="groupAdministration";
+			}
+			break;
+	}
 
 		if (!empty($section))
 			GRP_HTMLBackToDetails($groupname,$section);
@@ -82,4 +95,3 @@ switch ($action)
 ?>
 
 <input type="hidden" name="action" value="<?php echo($action);?>">
-

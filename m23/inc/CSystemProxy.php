@@ -100,8 +100,6 @@ function CSYSTEMPROXY_getUserPasswordString($ps, $connector = '@')
 function CSYSTEMPROXY_getEnvironmentVariables($getAlways = false)
 {
 	$ps = CSYSTEMPROXY_getProxySettingsFromAPT();
-	
-	print_r($ps);
 
 	$out = '';
 	$newLine = false;
@@ -139,6 +137,8 @@ function CSYSTEMPROXY_getAptGetProxyParamter()
 	$ps = CSYSTEMPROXY_getProxySettingsFromAPT();
 
 	$out = '';
+	
+	$ip = getServerIP();
 
 	// Generate the apt-get proxy settings, if a proxy is enabled
 	if ($ps['active'])
@@ -146,7 +146,8 @@ function CSYSTEMPROXY_getAptGetProxyParamter()
 		// Get user/password combination, if authentification is used
 		$userPass = CSYSTEMPROXY_getUserPasswordString($ps);
 
-		$out = " -o=Acquire::http::Proxy='$ps[scheme]://$userPass$ps[host]:$ps[port]' -o=Acquire::ftp::Proxy='$ps[scheme]://$userPass$ps[host]:$ps[port]'";
+/*		$out = " -o=Acquire::http::Proxy='$ps[scheme]://$userPass$ps[host]:$ps[port]' -o=Acquire::ftp::Proxy='$ps[scheme]://$userPass$ps[host]:$ps[port]'";*/
+		$out = " -o=Acquire::http::Proxy='http://$ip:2323' -o=Acquire::ftp::Proxy='http://$ip:2323'";
 	}
 
 	return($out);
@@ -260,9 +261,12 @@ class CSystemProxy extends CChecks
 		if (!SERVER_fileExists(CSystemProxy::SQUID_FILE)) return(false);
 
 		// Get the parameters
-		$proxyServer = $this->getProxyHost();
+		$proxyServer = $this->getProxyHostIP();
 		$proxyPort = $this->getProxyPort();
 		$userPass = $this->usesUserPassword() ? 'login='.$this->getUserPasswordString('') : '';
+		
+		if ($this->hasErrors())
+			return(false);
 
 		// Generate the Squid proxy settings line
 		$proxyLine1 = "cache_peer $proxyServer parent $proxyPort 0 no-query default $userPass";
@@ -282,7 +286,7 @@ class CSystemProxy extends CChecks
 		SERVER_putFileContents(CSystemProxy::SQUID_FILE, $config, "644");
 
 		// Restart Squid 3
-		SERVER_runInBackground('writeSquidConf', '/etc/init.d/squid3 start', 'root', false);
+		SERVER_runInBackground('writeSquidConf', '/etc/init.d/squid3 start; pkill --signal 1 squid', 'root', false);
 	}
 
 
@@ -315,7 +319,7 @@ class CSystemProxy extends CChecks
 // 		$scheme = HTML_selection('SEL_scheme', array('http', 'ftp'), SELTYPE_selection, $this->getProxyScheme(), 'http');
 		$host = HTML_input("ED_host", $this->getProxyHost(), 20, 255);
 		$user = HTML_input("ED_user", $this->getProxyUser(), 20, 127);
-		$pass = HTML_input("ED_pass", $this->getProxyPassword(), 20, 127);
+		$pass = HTML_input("ED_pass", '*****', 20, 127);
 		$port = HTML_input("ED_port", $this->getProxyPort(), 5, 5);
 		$active = HTML_checkBox('CB_active', '', $this->isProxyActive());
 
@@ -324,6 +328,10 @@ class CSystemProxy extends CChecks
 			$this->setProxyActive($active);
 			$this->setProxyHost($host);
 			$this->setProxyUser($user);
+
+			// Use the stored password, if the password in the input field is hidden
+			if ('*****' == $pass) $pass = $this->getProxyPassword();
+
 			$this->setProxyPassword($pass);
 			$this->setProxyPort($port);
 			$this->setProxyScheme('http');
@@ -435,6 +443,26 @@ class CSystemProxy extends CChecks
 		return($this->proxySettings['host']);
 	}
 
+
+
+
+
+/**
+**name CSystemProxy::getProxyHostIP()
+**description Gets the proxy IP.
+**returns Proxy IP or false, if the proxy IP could not be detected.
+**/
+	public function getProxyHostIP()
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	
+		$ret = HELPER_hostname2IP($this->getProxyHost());
+		
+		if ($ret === false)
+			$this->addErrorMessage($I18N_couldNotGetProxyServerIP);
+
+		return($ret);
+	}
 
 
 

@@ -1277,4 +1277,20 @@ function HELPER_sortByLength(&$array)
 	uasort($array, 'HELPER_compareLengthAbc');
 }
 
+
+
+
+
+/**
+**name HELPER_hostname2IP($host)
+**description Gets the IP of a known host.
+**parameter host: Name of the host, IP or FQDN.
+**returns IP of the host or false, if no IP could be found.
+**/
+function HELPER_hostname2IP($host)
+{
+	$ret = exec("sudo /bin/ping -c1 $host | head -1 | cut -d'(' -f2 | cut -d')' -f1");
+	return(isset($ret{4}) ? $ret : false);
+}
+
 ?>

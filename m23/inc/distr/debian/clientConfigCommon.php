@@ -1940,7 +1940,9 @@ if ifconfig lo 127.0.0.1
 fi
 ");
 
+//m23customPatchBegin type=change id=CLCFG_interfacesDhcpBootimage2
 	if ($clientParams['dhcpBootimage'] !== "gpxe")
+//m23customPatchEnd id=CLCFG_interfacesDhcpBootimage2
 	{
 		echo("
 		
@@ -3135,7 +3137,7 @@ then
 	exit 0
 fi
 
-if [ \\$# -gt 0 ] && [ \\$1 != \"start\" ]
+if [ \\$# -gt 0 ] && [ \\$1 != \\\"start\\\" ]
 then
 	exit 0
 fi

@@ -232,6 +232,25 @@ function GRP_delClientFromGroup($clientName,$groupName="")
 
 
 /**
+**name GRP_setDescrGroup($group, $groupDescription)
+**description Sets the description of a client group.
+**parameter groupName: Name of the group
+**parameter groupDescription: New description of the group
+**/
+function GRP_setDescrGroup($group, $groupDescription)
+{
+	CHECK_FW(CC_groupname, $group);
+	$groupDescription = CHECK_text2db($groupDescription);
+
+	$sql="UPDATE `groups` SET `description` = '$groupDescription' WHERE groupname='$group'";
+	$result = DB_query($sql);
+}
+
+
+
+
+
+/**
 **name GRP_getDescrGroup($group)
 **description Gets the description of a client group.
 **returns Description of the group.
@@ -518,8 +537,9 @@ function GRP_showGeneralInfo($groupName)
 
 
 /**
-**name GRP_showRenDialog()
+**name GRP_showRenDialog($groupname)
 **description shows a dialog to rename a group
+**parameter groupName: name of the group
 **/
 function GRP_showRenDialog($groupname)
 {
@@ -536,9 +556,39 @@ function GRP_showRenDialog($groupname)
 			
 		</td>
 	</tr>
-	</table></div></td><tr></table>	
+	</table></div></td><tr></table>
 ");
 };
+
+
+
+
+
+/**
+**name GRP_showChangeDescriptionDialog($groupname)
+**description shows a dialog to change the group description
+**parameter groupName: name of the group
+**/
+function GRP_showChangeDescriptionDialog($groupname)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	HTML_textArea('TA_newGroupDescription', 40, 5, GRP_getDescrGroup($groupname));
+
+	echo("
+	<table align=\"center\"><tr><td><div class=\"subtable_shadow\">
+	<table class=\"subtable\" align=\"center\">
+	<tr>
+		<td>
+			<span class=\"subhighlight\">$I18N_newDescription</span><br>
+			".TA_newGroupDescription."<br>
+			<INPUT type=\"submit\" name=\"BUT_change\" value=\"$I18N_change\">
+			
+		</td>
+	</tr>
+	</table></div></td><tr></table>	
+");
+}
 
 
 
