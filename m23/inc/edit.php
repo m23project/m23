@@ -520,4 +520,21 @@ grep -v \"$search\" $file > $file.m23
 mv $file.m23 $file
 ".EDIT_restorePerms());
 }
+
+
+
+
+
+/**
+**name EDIT_replaceLineElseAdd($file,$search,$replace)
+**description Deletes all lines, that match regular expression, afterwards adds a given line
+**parameter file: the name to the file
+**parameter search: regular expression to search
+**parameter replace: line to add
+**/
+function EDIT_replaceLineElseAdd($file,$search,$replace)
+{
+	return(EDIT_deleteMatching($file,$search)."
+".EDIT_addIfNotExists($file,$search,$replace));
+}
 ?>

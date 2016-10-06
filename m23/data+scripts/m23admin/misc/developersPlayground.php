@@ -48,9 +48,7 @@ print("<pre>");
 // 	
 // 	CSYSTEMPROXY_getEnvironmentVariables();
 
-	print_r(PKG_getDuplicatedIdenticalJobs('zusammenfassen'));
-	PKG_removeDuplicatedIdenticalJobs('zusammenfassen');
-	print_r(PKG_getDuplicatedIdenticalJobs('zusammenfassen'));
+	print_r(explodeAssoc('?', 'arch?instPart?mbrPart?swapPart?desktop?distr?release?packagesource?kernel?disableSSLCertCheck?disableSudoRootLogin?installX2goserver?uefiActive?amd64??/dev/sda??Debian8Mate?debian?jessie?jessieo?linux-image-amd64?0?0?0?0'));
 
 print("</pre>\n");
 	HTML_showTableEnd();

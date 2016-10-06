@@ -3181,7 +3181,7 @@ class CFDiskIO extends CClient
 
 
 /**
-**name CFDiskIO::fdiskAddFstab($dev, $mountpoint, $parameter)
+**name CFDiskIO::fdiskGetEntry(&$dev, &$mountpoint, &$parameter)
 **description Gets an entry to from the fstab array. Can be called more times to get all entries.
 **parameter dev: Device to mount (e.g. /dev/hda1)
 **parameter mountpoint: Location where to mount the device (e.g. /mnt/hda1)
@@ -3261,7 +3261,7 @@ class CFDiskIO extends CClient
 
 
 /**
-**name CFDiskIO::genManualFstab($fstab, $mntPrefix, $sourceName)
+**name CFDiskIO::genManualFstab($mntPrefix, $sourceName = false)
 **description Generates commands to edit a given fstab, add new entries and remove old ones before.
 **parameter mntPrefix: Prefix to set before the mountpoint (e.g. /mnt/m23root/)
 **parameter sourceName: Name of the client's sources list.

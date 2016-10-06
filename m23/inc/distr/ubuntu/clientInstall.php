@@ -187,6 +187,8 @@ cd /tmp
 	else
 		$ntpPackage="";
 
+	CLCFG_aptGet('install', 'apt-transport-https');
+
 	CLCFG_installBasePackages("apmd console-common console-data console-tools cron less screen sed ssh net-tools $ntpPackage parted gawk hdparm locales $clientOptions[bootloader] hwsetup hwdata-knoppix m23-initscripts m23hwscanner libncursesw5 pciutils mdadm m23-skel ". $clientOptions['kernel'],"ubuntu-keyring");
 	/* =====> */ MSR_statusBarIncCommand(15);
 

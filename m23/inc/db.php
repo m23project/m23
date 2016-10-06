@@ -165,6 +165,8 @@ function DB_setConnection($conn)
 
 
 
+
+
 /**
 **name DB_isConnectionValid()
 **description Checks, if the MySQLi connection is valid.

@@ -573,7 +573,7 @@ class CClient extends CChecks
 **/
 	public function getInstPartDev()
 	{
-		return($this->getProperty('instPart', 'getInstPart: instPart not set.', false));
+		return($this->getProperty('instPart', 'getInstPartDev: instPart not set.', false));
 	}
 
 

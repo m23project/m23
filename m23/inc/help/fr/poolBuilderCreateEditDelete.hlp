@@ -15,4 +15,6 @@ Le constructeur de sources de paquets vous permet de copier des paquets logiciel
 <!--begin v1.18--><li><b>$I18N_arch:</b> Là, vous pouvez préciser l'architecture du processeur pour laquelle vous souhaitez télécharger des paquets. L'architecture doit correspondre à celle des postes clients à installer et non à celle du serveur.</li><!--end v1.18-->
 <li><b>Source de paquets:</b> Une source de paquets est un répertoire (contenant peut-être des sous-répertoires), dans lequel des paquets logiciels sont enregistrés et qui contient des fichiers d'index fournissant des informations sur ces paquets logiciels. Ces fichiers d'index sont absolument nécessaires pour le téléchargement des paquets logiciels par les postes client.</li></ul>
 
-helpInclude("poolSignKeySelection.inc");
+<!--begin v16.3-->helpInclude("poolSignKeySelection.inc");
+
+If you would like to (re)create the index for the currently loaded package source and (re)sign it afterwards, you need to click on <i>"$I18N_updatePackageIndexAndReSignPool"</i>.<!--end v16.3-->

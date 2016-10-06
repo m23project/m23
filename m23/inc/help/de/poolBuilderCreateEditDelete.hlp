@@ -10,12 +10,11 @@ Der Paketquellen-Architekt erlaubt Ihnen, Softwarepakete von verschiedenen Medie
 <li><b>$I18N_nextStep</b>: Klicken Sie anschließend auf den Button, um mit dem Kopieren der Pakete oder der Auswahl der Paketquellen und Pakete fortzufahren.</li>
 </ul>
 
-
 <u>Hinweise</u><ul>
 <LI><b>$I18N_poolType</b>: Der Typ legt fest, von welchem Medium die Pakete stammen. <!-- v13.1 deactivated <i>"$I18N_CDPool"</i> bezeichnet alle CD- und DVD-Medien. Außerdem werden alle zusätzlichen Mountpunkte aus /etc/fstab angezeigt, die Pakete enthalten könnten. --><i>"$I18N_downloadPool"</i>: Bei dieser Variante werden die Pakete von einem HTTP- oder FTP-Server heruntergeladen, der bereits dazu geeignet ist, von ihm Pakete zu installieren.</li>
 <!--begin v1.18--><li><b>$I18N_arch</b>: Wählen Sie hier, für welche Rechnerarchitektur die Pakete heruntergeladen werden sollen. Die Architektur muß mit der der Clients und nicht mit der des Servers übereinstimmen.</li><!--end v1.18-->
 <li><b>Paketquelle</b>: Eine Paketquelle ist ein Verzeichnis (evtl. mit Unterverzeichnissen) in dem Softwarepakete gespeichert sind und das zusätzlich Indexdateien enthält, die Informationen über die Softwarepakete bereithalten. Diese Indexdateien werden benötigt, damit die Clients die Softwarepakete herunterladen können.</li></ul>
 
-helpInclude("poolSignKeySelection.inc");
+<!--begin v16.3-->helpInclude("poolSignKeySelection.inc");
 
-<!--begin v16.3-->Möchten Sie den Index der aktuell geladenen Paketquelle (neu) erstellen und anschließend (neu) signieren, so klicken Sie auf den Button <i>"$I18N_updatePackageIndexAndReSignPool"</i>.<!--end v16.3-->
+Möchten Sie den Index der aktuell geladenen Paketquelle (neu) erstellen und anschließend (neu) signieren, so klicken Sie auf den Button <i>"$I18N_updatePackageIndexAndReSignPool"</i>.<!--end v16.3-->

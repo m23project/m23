@@ -15,4 +15,6 @@ The pool builder makes it possible to combine software packages from different m
 <!--begin v1.18--><li><b>$I18N_arch</b>: Choose here the architecture for the packages to download. Here the architecture of the clients is meant and not the architecture of the m23 server.</li><!--end v1.18-->
 <li><b>Package source</b>: A package source is a directory (with subdirectories) that contains software packages and index files. The index files are storing information about the software packages and are needed to make the packages available for installation.</li></ul>
 
-helpInclude("poolSignKeySelection.inc");
+<!--begin v16.3-->helpInclude("poolSignKeySelection.inc");
+
+If you would like to (re)create the index for the currently loaded package source and (re)sign it afterwards, you need to click on <i>"$I18N_updatePackageIndexAndReSignPool"</i>.<!--end v16.3-->

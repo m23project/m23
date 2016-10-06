@@ -1344,4 +1344,34 @@ Attention: Si le nom de l&apos;utilisateur et son mot de passe sont encore enreg
 
 //16.2
 @$I18N_clientUsesDynamicIP = "Le poste client utilise une adresse IP dynamique (DHCP)";
+
+//16.3
+@$I18N_poolStep[1]="Select package sources list and packages to download";
+@$I18N_poolStep[4]=$I18N_packageDownloadIsFinished;
+@$I18N_poolGPGSignKey = 'GPG key for signing the package source';
+@$I18N_currentlyUsedGPGKey = 'GPG key in use';
+@$I18N_publicPoolGPGSignKeyExported = 'The public GPG key for signing the package soure has been exported.';
+@$I18N_privatePoolGPGSignKeySelected = 'Private GPG key for signing the package source has been selected.';
+@$I18N_pleaseCreateOrLoadAPoolBeforeContinue = 'Please load or create a package source before continuing.';
+@$I18N_givenGPGIdIsNotValidAsPublicAndPrivateKey = 'The selected GPG key cannot be used as public and private key. For example, the key used for automatically signing a package source needs to be a private GPG key without password protection.';
+@$I18N_updatePackageIndexAndReSignPool = 'Create (new) package sources index and sign (anew)';
+@$I18N_groupDescriptionInvalid = 'Group description invalid';
+@$I18N_please_enter_group_description="Please add a description for the new group.";
+@$I18N_releaseFilesSignedSucessfully = 'Successfully created signatures for the release file';
+@$I18N_errorSigningReleaseFiles = 'Signing the release file returned an error.';
+@$I18N_proxyHost = 'Proxy server';
+@$I18N_proxyPort = 'Proxy port';
+@$I18N_proxyUser = 'Proxy user';
+@$I18N_proxyPassword = 'Proxy password';
+@$I18N_proxyActive = 'Proxy active?';
+@$I18N_systemProxy = 'System proxy';
+@$I18N_group_change_description = 'Change group description';
+@$I18N_group_description_changed = 'Group description has been changed.';
+@$I18N_newDescription = 'New description';
+@$I18N_couldNotGetProxyServerIP = 'Couldn\'t determine the proxy server\'s IP address. Please check your settings for the proxy server.';
+@$I18N_recover_client_combine_jobs = 'Recover client and combine Jobs';
+@$I18N_recover_client_combine_jobs_tooltip = 'All Jobs for the client will be executed again. Identical jobs will only be executed once.';
+@$I18N_recover_client_combine_jobsQuestion1="Would you like to";
+@$I18N_recover_client_combine_jobsQuestion2="repeat all jobs on the client, with identical jobs only being executed once?";
+@$I18N_client_start_recover_client_combine_jobs="All jobs on the client will be executed again. Identical jobs will only be executed once.";
 ?>

@@ -184,7 +184,7 @@ cd /tmp
 
 	//generate fstab and write the bootmanager
 	//the rootDevice is the installation partition
-	$rootDevice = $clientOptions[instPart];
+	$rootDevice = $clientOptions['instPart'];
 
 	$bootDevice = CLCFG_getMbrPart($rootDevice,$clientOptions);
 
@@ -203,6 +203,8 @@ cd /tmp
 		$bootloaderPackage = 'grub-pc';
 	else
 		$bootloaderPackage = $clientOptions['bootloader'];
+
+	CLCFG_aptGet('install', 'apt-transport-https');
 
 	CLCFG_installBasePackages("powermgmt-base console-common console-data console-tools less screen sed ssh net-tools $ntpPackage parted gawk hdparm dialog locales $bootloaderPackage hwsetup hwdata-knoppix m23-initscripts m23hwscanner m23-skel ". $clientOptions['kernel']);
 	/* =====> */ MSR_statusBarIncCommand(15);

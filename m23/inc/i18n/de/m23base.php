@@ -1355,7 +1355,7 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_clientUsesDynamicIP = "Der Client verwendet eine dynamische IP (DHCP)";
 
 //16.3
-@$I18N_poolStep[1]="Paketquellenliste und Pakete für den Download auswählen";
+@$I18N_poolStep[1]="Paketquellenliste und Pakete zum Herunterladen auswählen";
 @$I18N_poolStep[4]=$I18N_packageDownloadIsFinished;
 @$I18N_poolGPGSignKey = 'GPG-Paketquellen-Signierungsschlüssel';
 @$I18N_currentlyUsedGPGKey = 'Aktuell verwendeter GPG-Schlüssel';
@@ -1365,9 +1365,9 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_givenGPGIdIsNotValidAsPublicAndPrivateKey = 'Der gewählte GPG-Schlüssel kann nicht als öffentlicher und privater Schlüssel verwendet werden. Sie benötigen z.B. zum automatischen Signieren von Paketquellen einen privaten GPG-Schlüssel ohne Paßwortsicherung.';
 @$I18N_updatePackageIndexAndReSignPool = 'Paketquellenindex (neu) erstellen und (neu) signieren';
 @$I18N_groupDescriptionInvalid = 'Gruppenbeschreibung ungültig';
-@$I18N_please_enter_group_description="Bitte geben Sie eine Beschreibung für die neue Gruppe an";
+@$I18N_please_enter_group_description="Bitte geben Sie eine Beschreibung für die neue Gruppe an.";
 @$I18N_releaseFilesSignedSucessfully = 'Signaturen für die Release-Datei erfolgreich erstellt.';
-@$I18N_errorSigningReleaseFiles = 'Fehler beim Erstellen der Signaturen für die Release-Datei.';
+@$I18N_errorSigningReleaseFiles = 'Fehler beim Erstellen der Signaturen für die Release-Datei';
 @$I18N_proxyHost = 'Proxy-Server';
 @$I18N_proxyPort = 'Proxy-Port';
 @$I18N_proxyUser = 'Proxy-Benutzer';
@@ -1375,11 +1375,11 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_proxyActive = 'Proxy aktiviert?';
 @$I18N_systemProxy = 'System-Proxy';
 @$I18N_group_change_description = 'Gruppenbeschreibung ändern';
-@$I18N_group_description_changed = 'Gruppenbeschreibung geändert';
+@$I18N_group_description_changed = 'Gruppenbeschreibung geändert.';
 @$I18N_newDescription = 'Neue Beschreibung';
-@$I18N_couldNotGetProxyServerIP = 'IP des Proxy-Servers konnte nicht ermittelt werden. Bitte überprüfen Sie den ';
+@$I18N_couldNotGetProxyServerIP = 'IP des Proxy-Servers konnte nicht ermittelt werden. Bitte überprüfen Sie den Proxy-Server!';
 @$I18N_recover_client_combine_jobs = 'Client wiederherstellen und Aufträge zusammenfassen';
-@$I18N_recover_client_combine_jobs_tooltip = 'Alle Aufträge des Client erneut ausführen und identische Aufträge zusammenfassen.';
+@$I18N_recover_client_combine_jobs_tooltip = 'Alle Aufträge des Client erneut ausführen und identische Aufträge zusammenfassen';
 @$I18N_recover_client_combine_jobsQuestion1="Sollen die Aufträge auf dem Client";
 @$I18N_recover_client_combine_jobsQuestion2="wiederholt werden, wobei identische Aufträge zusammengefaßt werden?";
 @$I18N_client_start_recover_client_combine_jobs="Alle Aufträge werden auf dem Client erneut durchgeführt, wobei identische Aufträge zusammengefaßt werden.";
