@@ -12,16 +12,22 @@
 	$searchLine = CLIENT_getOverviewSearchLine(2);
 
 	//Group and client actions
-	$selTypeA['grpDel']		= $I18N_removeFromGroup;
-	$selTypeA['grpAdd']		= $I18N_addToGroup;
-	$selTypeA['grpMov']		= $I18N_moveToGroup;
-	$selTypeA['del']		= $I18N_delete;
-	$selTypeA['recover']	= $I18N_recover;
+	$selTypeA['grpDel']					= $I18N_removeFromGroup;
+	$selTypeA['grpAdd']					= $I18N_addToGroup;
+	$selTypeA['grpMov']					= $I18N_moveToGroup;
+	$selTypeA['del']					= $I18N_delete;
+	$selTypeA['recover']				= $I18N_recover;
+	$selTypeA['comparePackageStatus']	= $I18N_comparePackageStatus;
+	
 	$groupAction = HTML_selection('SEL_type', $selTypeA, SELTYPE_selection);
+
+	// 
+	$allCheckedClients = array();
+	$allCheckedClientsCounter = 0;
 
 	if (HTML_submit('BUT_do',$I18N_accept_changes))
 	{
-		//Run thru all clinet numbers on the page
+		//Run thru all client numbers on the page
 		for ($i=0; $i < $_POST['clientAmount']; $i++)
 		{
 			//Get the according client name of the check box
@@ -48,9 +54,28 @@
 						CLIENT_desasterRecovery($clientName);
 						$checkOff=true;
 						break;
-				};
+					case 'comparePackageStatus':
+						$allCheckedClients[$allCheckedClientsCounter++] = $clientName;
+						break;
+				}
 		}
-	};
+
+		// Handle actions after getting all checked clientnames
+		switch($groupAction)
+		{
+			case 'comparePackageStatus':
+				$comparePackageStatusLink = '?page=comparePackageStatus';
+				if (isset($allCheckedClients[0])) $comparePackageStatusLink.= '&cl1='.$allCheckedClients[0];
+				if (isset($allCheckedClients[1])) $comparePackageStatusLink.= '&cl2='.$allCheckedClients[1];
+
+				HTML_showTitle($I18N_comparePackageStatus);
+				HTML_showTableHeader(true);
+				HTML_showTableRow("<a href=\"$comparePackageStatusLink\">&gt;&gt;&gt; $I18N_comparePackageStatusNow &lt;&lt;&lt;</a>");
+				HTML_showTableEnd(true);
+
+				break;
+		}
+	}
 
 
 

@@ -1303,7 +1303,7 @@ Attention: Si le nom de l&apos;utilisateur et son mot de passe sont encore enreg
 @$I18N_error_thereCannotBeMoreThanOneEFIBootPartition = 'Il ne peut y avoir qu\'une partition EFI d\'amorçage.'; 
 @$I18N_no_EFIBootpartition_selected = 'Il n\'y a pas de partition d\'amorçage EFI. Veuillez en créer une.';
 @$I18N_uefiBooingIsOnlySupportedOnAMD64 = 'Le mode d\'amorçage UEFI est uniquement supporté sur l\'architecture "amd64".';
-@$I18N_clientUsesEfiButSourcesListDoesntSupportEfi_Alternatives = 'Le client utilise le mode d\'amorçageUEFI, mais la liste des sources de paquets sélectionnées ne le supportent pas. Veuillez sélectionner une liste de sources de paquets le permettant.La liste ci-dessous supporte l\'UEFI.';
+@$I18N_clientUsesEfiButSourcesListDoesntSupportEfi_Alternatives = 'Le client utilise le mode d\'amorçage UEFI, mais la liste des sources de paquets sélectionnées ne le supportent pas. Veuillez sélectionner une liste de sources de paquets le permettant.La liste ci-dessous supporte l\'UEFI.';
 @$I18N_scriptUploadGPLHint = 'En le téléversant, votre script sera publié sous <b>les recommandations de la licence <a href="https://www.gnu.org/copyleft/gpl.html">GPL</a></b>. Veuillez lire l\'intégralité du texte de cette license <b>avant de publier</b> votre script.';
 @$I18N_uploadCurrentScript = 'Publier le script actuel';
 @$I18N_saveAs = 'Sauvegarder en tant que';
@@ -1340,38 +1340,60 @@ Attention: Si le nom de l&apos;utilisateur et son mot de passe sont encore enreg
 @$I18N_addNewLoginToUCSLDAP = "Sauvegarde des données d'identification sur UCS";
 @$I18N_authentificationViaUCS = "Authentification via UCS";
 @$I18N_addNewLoginToUCSLDAPError = "Erreur: Les données d'identification ne peuvent être sauvegardées sur UCS.";
-@$I18N_readLoginFromUCSLDAPSupportedDistros = '(Peuvent être utilisées par les clients basés sur Debian 8, Ubuntu 14.04, 16.04 et Linux Mint 17.x)';
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(Peuvent être utilisées par les clients basés sur Debian 8, Ubuntu 14.04, 16.04, Linux Mint 17.x et 18.x)';
 
 //16.2
 @$I18N_clientUsesDynamicIP = "Le poste client utilise une adresse IP dynamique (DHCP)";
 
 //16.3
-@$I18N_poolStep[1]="Select package sources list and packages to download";
+@$I18N_poolStep[1]="Sélectionnez les listes de paquets sources et les paquets à télécharger";
 @$I18N_poolStep[4]=$I18N_packageDownloadIsFinished;
-@$I18N_poolGPGSignKey = 'GPG key for signing the package source';
-@$I18N_currentlyUsedGPGKey = 'GPG key in use';
-@$I18N_publicPoolGPGSignKeyExported = 'The public GPG key for signing the package soure has been exported.';
-@$I18N_privatePoolGPGSignKeySelected = 'Private GPG key for signing the package source has been selected.';
-@$I18N_pleaseCreateOrLoadAPoolBeforeContinue = 'Please load or create a package source before continuing.';
-@$I18N_givenGPGIdIsNotValidAsPublicAndPrivateKey = 'The selected GPG key cannot be used as public and private key. For example, the key used for automatically signing a package source needs to be a private GPG key without password protection.';
-@$I18N_updatePackageIndexAndReSignPool = 'Create (new) package sources index and sign (anew)';
-@$I18N_groupDescriptionInvalid = 'Group description invalid';
-@$I18N_please_enter_group_description="Please add a description for the new group.";
-@$I18N_releaseFilesSignedSucessfully = 'Successfully created signatures for the release file';
-@$I18N_errorSigningReleaseFiles = 'Signing the release file returned an error.';
-@$I18N_proxyHost = 'Proxy server';
-@$I18N_proxyPort = 'Proxy port';
-@$I18N_proxyUser = 'Proxy user';
-@$I18N_proxyPassword = 'Proxy password';
-@$I18N_proxyActive = 'Proxy active?';
-@$I18N_systemProxy = 'System proxy';
-@$I18N_group_change_description = 'Change group description';
-@$I18N_group_description_changed = 'Group description has been changed.';
-@$I18N_newDescription = 'New description';
-@$I18N_couldNotGetProxyServerIP = 'Couldn\'t determine the proxy server\'s IP address. Please check your settings for the proxy server.';
-@$I18N_recover_client_combine_jobs = 'Recover client and combine Jobs';
-@$I18N_recover_client_combine_jobs_tooltip = 'All Jobs for the client will be executed again. Identical jobs will only be executed once.';
-@$I18N_recover_client_combine_jobsQuestion1="Would you like to";
-@$I18N_recover_client_combine_jobsQuestion2="repeat all jobs on the client, with identical jobs only being executed once?";
-@$I18N_client_start_recover_client_combine_jobs="All jobs on the client will be executed again. Identical jobs will only be executed once.";
+@$I18N_poolGPGSignKey = 'Clé GPG pour signer le paquet source';
+@$I18N_currentlyUsedGPGKey = 'Clé GPG en cours d\'utilisation';
+@$I18N_publicPoolGPGSignKeyExported = 'Clé GPG publique pour signer le paquet source venant d\'être exporté.';
+@$I18N_privatePoolGPGSignKeySelected = 'Clé GPG Privée pour signer le paquet source venant d\'être sélectionné.';
+@$I18N_pleaseCreateOrLoadAPoolBeforeContinue = 'Veuillez bien charger ou créer un paquet source avant de continuer.';
+@$I18N_givenGPGIdIsNotValidAsPublicAndPrivateKey = 'La clé GPG sélectionnée ne peut être utilisée comme clé publique et privée. Pour exemple, la clé utilisée pour signer automatiquement un paquet source doit être une clé GPG privée sans mot de passe de protection.';
+@$I18N_updatePackageIndexAndReSignPool = 'Creé un (nouvel) index de paquet source et le signe';
+@$I18N_groupDescriptionInvalid = 'Description du Groupe invalide';
+@$I18N_please_enter_group_description="Veuillez bien ajouter une description pour le nouveau groupe.";
+@$I18N_releaseFilesSignedSucessfully = 'Signatures créées avec succès pour le fichier de modification';
+@$I18N_errorSigningReleaseFiles = 'La signature du fichier de modification a retourné une erreur';
+@$I18N_proxyHost = 'Serveur Proxy';
+@$I18N_proxyPort = 'Port du serveur Proxy';
+@$I18N_proxyUser = 'Nom utilisateur pour le Proxy';
+@$I18N_proxyPassword = 'Mot de passe pour le Proxy';
+@$I18N_proxyActive = 'Le Proxy est-il activé?';
+@$I18N_systemProxy = 'Proxy système';
+@$I18N_group_change_description = 'Modifie la description du groupe';
+@$I18N_group_description_changed = 'La description du groupe a été modifiée.';
+@$I18N_newDescription = 'Nouvelle description';
+@$I18N_couldNotGetProxyServerIP = 'Impossible de déterminer l\'adresse IP du serveur Proxy. Veuillez bien vérifier les paramètres du serveur Proxy.';
+@$I18N_recover_client_combine_jobs = 'Restore les tâches combinés et ceux du client';
+@$I18N_recover_client_combine_jobs_tooltip = 'Toutes les tâches pour le client seront éxécutés à nouveau. Les tâches identiques ne seront éxécutées qu\'une seule fois.';
+@$I18N_recover_client_combine_jobsQuestion1="Souhaitez vous ";
+@$I18N_recover_client_combine_jobsQuestion2="rejouer toutes les tâches sur le client en éxécutant les tâches identiques une seule fois?";
+@$I18N_client_start_recover_client_combine_jobs="Toutes les tâches seront éxécutées à nouveau sur le client. Les tâches identiques ne seront éxécutées qu'une fois.";
+
+//17.1
+@$I18N_noVMHostsForVMSoftware1 = 'Un hôte de VM ne pourrait pas être trouvé pour';
+@$I18N_noVMHostsForVMSoftware2 = '.';
+@$I18N_commandsForDem23ing = 'Commandes pour l\'effacement des composants m23';
+@$I18N_noPrivateGPG = 'La signature GPG et les Fonctionnalités de chiffrement ne sont pas disponible. Si vous voudriez en utiliser, sélectionnez une clé privée, s\'il vous plaît.';
+@$I18N_comparePackageStatus = 'Comparer l\'état de paquets';
+@$I18N_comparePackageStatusNow = 'Lancer la comparaison de l\'état de paquets';
+@$I18N_clientOrFileSelection1 = '1er poste client ou fichier d\'état';
+@$I18N_clientOrFileSelection2 = '2e poste client ou fichier d\'état';
+@$I18N_packageStatusFile = 'Fichier d\'état';
+@$I18N_useClientName = 'Utiliser poste client';
+@$I18N_clientUsed = 'Poste client utilisé';
+@$I18N_statusFileUsed = 'Fichier d\'état utilisé';
+@$I18N_status = 'État';
+@$I18N_exportPackageStatus = 'Exporter l\'état de paquets';
+@$I18N_exportPackageStatus_tooltip = 'Exporter l\'état de paquets (nom de paquet, numéro de version, état d\'installation) en fichier';
+@$I18N_onlyLeft = 'Seulement à gauche';
+@$I18N_equal = 'Identiques';
+@$I18N_onlyRight = 'Seulement à droite';
+@$I18N_noMatch = 'Pas de concordance';
+
 ?>

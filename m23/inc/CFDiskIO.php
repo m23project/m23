@@ -54,11 +54,12 @@ class CFDiskIO extends CClient
 
 
 /**
-**name CFDiskIO::__construct($in)
+**name CFDiskIO::__construct($in, $checkMode = CClient::CHECKMODE_NORMAL)
 **description Constructor for new CFDiskIO objects. The object holds all information about the partitioning (of a client and loads the values from the DB).
 **parameter in: Name or object of an existing client (to load) or data of an empty disk.
+**parameter checkMode: Check for the input variable.
 **/
-	public function __construct($in)
+	public function __construct($in, $checkMode = CClient::CHECKMODE_NORMAL)
 	{
 	/*
 		// If string => Clientname
@@ -78,7 +79,7 @@ class CFDiskIO extends CClient
 		if ($this->setClientName($clientName))
 			$this->fdiskLoadFromDB();
 	*/
-		parent::__construct($in);
+		parent::__construct($in, $checkMode);
 		$this->fdiskLoadFromDB();
 	}
 

@@ -111,7 +111,7 @@ class CmCP
 		for ($i = 0; $i < count($this->sourceContentsArray); $i++)
 		{
 			// Search for the beginning of the patch area
-			if (1 == preg_match('/m23customPatchBegin\s+type=(\w+)\s+id='.$this->patchID.'/', $this->sourceContentsArray[$i]))
+			if (1 == preg_match('/m23customPatchBegin\s+type=(\w+)\s+id='.$this->patchID.'(\W*)$/', $this->sourceContentsArray[$i]))
 			{
 				if (-1 == $this->startLine)
 				{
@@ -127,7 +127,7 @@ class CmCP
 					$this->dieOnErrors();
 				}
 			}
-			elseif (1 == preg_match('/m23customPatchEnd\s+id='.$this->patchID.'/', $this->sourceContentsArray[$i]))
+			elseif (1 == preg_match('/m23customPatchEnd\s+id='.$this->patchID.'(\W*)$/', $this->sourceContentsArray[$i]))
 			{
 				if (-1 == $this->endLine)
 					$this->endLine = $i;

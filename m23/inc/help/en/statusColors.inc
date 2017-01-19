@@ -21,13 +21,16 @@ Select the clients by checking the boxes in the client lines.
 
 Now you can work on all selected clients::
 <ul>
-	<LI><b>$I18N_removeFromGroup</b>: Select the group, all clients should be deleted from. Nothing is done, if a client is not in the selected group.</LI>
-	<LI><b>$I18N_addToGroup</b>: Select the group, all clients should be added to. Nothing is done, if a client already is in the selected group.</LI>
+	<LI><b>$I18N_removeFromGroup</b>: Select the group all clients should be deleted from. Nothing is done, if a client is not in the selected group.</LI>
+	<LI><b>$I18N_addToGroup</b>: Select the group all clients should be added to. Nothing is done, if a client already is in the selected group.</LI>
+	<LI><b>$I18N_delete</b>: Deletes the selected clients.</LI>
 	<!--V12.3 begin-->
 	<LI><b>$I18N_moveToGroup</b>: Moves the clients to another group.</LI>
 	<LI><b>$I18N_recover</b>: Completely reinstalls the clients.</LI>
 	<!--V12.3 end-->
-	<LI><b>$I18N_delete</b>: Deletes the selected clients.</LI>
+	<!--V17.1 begin-->
+        <LI><b>$I18N_comparePackageStatus</b>: Compares the package status of two clients.</LI>
+        <!--V17.1 end-->
 </ul><!--V1.5 end-->
 
 <!--V1.2 begin--><u>Hint</u>

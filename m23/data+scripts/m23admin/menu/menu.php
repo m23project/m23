@@ -48,9 +48,9 @@ CAPTURE_showMessageBox();
 	MENU_startGroup($I18N_server);
 		
 		MENU_showEntry($I18N_home,"index.php","/gfx/home_mini.png");
-		if (!$_SESSION['m23Shared']) MENU_showEntry($I18N_serverSettings,"index.php?page=serverSettings",
+		if (!isset($_SESSION['m23Shared'])) MENU_showEntry($I18N_serverSettings,"index.php?page=serverSettings",
 			"/gfx/settings_mini.png");
-		if ($_SESSION['m23Shared']) MENU_showEntry($I18N_customerCenter,"index.php?page=customerCenter",
+		if (isset($_SESSION['m23Shared']) && $_SESSION['m23Shared']) MENU_showEntry($I18N_customerCenter,"index.php?page=customerCenter",
 			"/gfx/settings_mini.png");
 		MENU_showEntry($I18N_m23RemoteAdministrationService,"index.php?page=m23RemoteAdministrationService","/gfx/m23RemoteAdministrationService-mini.png");
 // 		PLG_listMenuPlugins("/m23/data+scripts/m23admin/server/");
@@ -65,12 +65,12 @@ CAPTURE_showMessageBox();
 			"/gfx/status/yellow.png");
 		MENU_showEntry($I18N_delete,"index.php?page=clientsoverview&action=delete",
 			"/gfx/mini_trash.png");
-		if (!$_SESSION['m23Shared'])  MENU_showEntry($I18N_assimilate,"index.php?page=assimilate",
+		if (!isset($_SESSION['m23Shared']))  MENU_showEntry($I18N_assimilate,"index.php?page=assimilate",
 			"/gfx/assimilate-mini.png");
 // 		PLG_listMenuPlugins("/m23/data+scripts/m23admin/clients/");
 	MENU_endGroup();
 
-	if (!$_SESSION['m23Shared'])
+	if (!isset($_SESSION['m23Shared']))
 	{
 		MENU_startGroup($I18N_VMclients);
 			MENU_showEntry($I18N_createVM,"index.php?page=addvmclient&clearSession=1",
@@ -96,20 +96,22 @@ CAPTURE_showMessageBox();
 			"/gfx/update_mini.png");
 		MENU_showEntry($I18N_poolBuilder,"index.php?page=poolBuilder",
 			"/gfx/update_mini.png");
-		if (!$_SESSION['m23Shared']) MENU_showEntry($I18N_scriptEditor,"index.php?page=scriptEditor",
+		if (!isset($_SESSION['m23Shared'])) MENU_showEntry($I18N_scriptEditor,"index.php?page=scriptEditor",
 			"/gfx/scriptEditor-mini.png");
-		if (!$_SESSION['m23Shared'])  MENU_showEntry($I18N_packageBuilder,"index.php?page=packageBuilder",
+		if (!isset($_SESSION['m23Shared']))  MENU_showEntry($I18N_packageBuilder,"index.php?page=packageBuilder",
 			"/gfx/update_mini.png");
 		MENU_showEntry($I18N_packageSources,"index.php?page=clientsourceslist",
 			"/gfx/package-mini.png");
 		MENU_showEntry($I18N_editPackageSelection,
 			"index.php?page=installpackages&action=packageSelection",
 			"/gfx/packageSelection-mini.png");
+		MENU_showEntry($I18N_comparePackageStatus, "index.php?page=comparePackageStatus", "/gfx/comparePackageStatus-mini.png");
+		
 
 // 		PLG_listMenuPlugins("/m23/data+scripts/m23admin/packages/"); 
 	MENU_endGroup();
 
-	if (!$_SESSION['m23Shared'])
+	if (!isset($_SESSION['m23Shared']))
 	{
 		MENU_startGroup($I18N_massTools);
 			MENU_showEntry($I18N_clientBuilder,"index.php?page=addclient&action=clientBuilder&clearSession=1",

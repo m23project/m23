@@ -18,5 +18,5 @@
 	//Get the name of the log file
 	$log = CLIENT_touchLiveLogFile($client);
 
-	echo(HELPER_getNewLogLines($log, $client));
+	echo(HELPER_getNewLogLines($log, $client, 'CLIENT_filterLinesFromLiveScreenRecording'));
 ?>

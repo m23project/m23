@@ -1349,7 +1349,7 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_addNewLoginToUCSLDAP = "Anmeldungsdaten auf UCS speichern.";
 @$I18N_authentificationViaUCS = "Anmeldung über UCS";
 @$I18N_addNewLoginToUCSLDAPError = "Fehler beim Speichern der Anmeldungsdaten auf UCS.";
-@$I18N_readLoginFromUCSLDAPSupportedDistros = '(nutzbar auf Clients mit Debian 8, Ubuntu 14.04, 16.04 und Linux Mint 17.x)';
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(nutzbar auf Clients mit Debian 8, Ubuntu 14.04, 16.04, Linux Mint 17.x und 18.x)';
 
 //16.2
 @$I18N_clientUsesDynamicIP = "Der Client verwendet eine dynamische IP (DHCP)";
@@ -1383,4 +1383,26 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_recover_client_combine_jobsQuestion1="Sollen die Aufträge auf dem Client";
 @$I18N_recover_client_combine_jobsQuestion2="wiederholt werden, wobei identische Aufträge zusammengefaßt werden?";
 @$I18N_client_start_recover_client_combine_jobs="Alle Aufträge werden auf dem Client erneut durchgeführt, wobei identische Aufträge zusammengefaßt werden.";
+
+//17.1
+@$I18N_noVMHostsForVMSoftware1 = 'Es wurden keine VM-Gastgeber für';
+@$I18N_noVMHostsForVMSoftware2 = 'gefunden.';
+@$I18N_commandsForDem23ing = 'Befehle zum Entfernen von m23-Bestandteilen';
+@$I18N_noPrivateGPG = 'Es wurde kein privater GPG-Schlüssel ausgewählt. Die GPG-Signatur- und Verschlüsselungsfunktionen stehen nicht zur Verfügung.';
+@$I18N_comparePackageStatus = 'Paketstatus vergleichen';
+@$I18N_comparePackageStatusNow = 'Paketstatus jetzt vergleichen';
+@$I18N_clientOrFileSelection1 = '1. Client oder Statusdatei';
+@$I18N_clientOrFileSelection2 = '2. Client oder Statusdatei';
+@$I18N_packageStatusFile = 'Statusdatei';
+@$I18N_useClientName = 'Client nutzen';
+@$I18N_clientUsed = 'Client verwendet';
+@$I18N_statusFileUsed = 'Statusdatei verwendet';
+@$I18N_status = 'Status';
+@$I18N_exportPackageStatus = 'Paketstatus exportieren';
+@$I18N_exportPackageStatus_tooltip = 'Paketstatus (Paketname, -version, Installationsstatus) als Datei exportieren.';
+@$I18N_onlyLeft = 'Nur links';
+@$I18N_equal = 'Identisch';
+@$I18N_onlyRight = 'Nur rechts';
+@$I18N_noMatch = 'Keine Übereinstimmung';
+
 ?>

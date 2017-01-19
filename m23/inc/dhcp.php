@@ -557,7 +557,9 @@ function DHCP_writePXEcfg($clientName,$arch)
 {
 	include('/m23/inc/kernelRamDisk.inc');
 	$iphex=DHCP_calcPXEIP(CLIENT_getIPbyName($clientName));
-	$fp=fopen("/m23/tftp/pxelinux.cfg/$iphex","w");
+	$fileName = "/m23/tftp/pxelinux.cfg/$iphex";
+	
+	$fp=fopen($fileName, "w");
 
 	if (!($fp > 0))
 		 die("Cannot open /m23/tftp/pxelinux.cfg/$iphex!");
@@ -567,6 +569,7 @@ function DHCP_writePXEcfg($clientName,$arch)
 	fputs($fp,"APPEND devfs=nomount vga=normal load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=$kernelRamDisk initrd=initrd-$arch.gz root=/dev/ram0 rw\n");
 
 	fclose($fp);
+	chmod($fileName, 0755);
 }
 
 

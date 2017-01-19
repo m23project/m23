@@ -215,7 +215,29 @@ function PKG_exportSelectedPackages($client)
 	}
 
 	return(rtrim($out));
-};
+}
+
+
+
+
+
+/**
+**name PKG_getPackageStatusCSV($client)
+**description Exports the packages of a client in tabulator separated CSV.
+**parameter client: Name of the client.
+**/
+function PKG_getPackageStatusCSV($client)
+{
+	CHECK_FW(CC_client, $client);
+	$out = '';
+	$sql = "SELECT package, version, status FROM `clientpackages` WHERE clientname='$client' ORDER BY package";
+	$result = DB_query($sql); //FW ok
+
+	while ($line = mysqli_fetch_array($result))
+		$out .= $line['package']."°".$line['version']."°".$line['status']."\n";
+
+	return($out);
+}
 
 
 
@@ -1938,7 +1960,7 @@ function PKG_setClientPackageInstalledOK($client, $package)
 
 /**
 **name PKG_addShutdownPackage($client)
-**description adds a shutdown package, but only if the client is NOT running. returns true, if a schutdown package is added
+**description adds a shutdown package, but only if the client is NOT running. returns true, if a shutdown package is added
 **parameter client: name of the client
 **/
 function PKG_addShutdownPackage($client)

@@ -175,6 +175,11 @@ cd /tmp
 
 	apt-get --force-yes -y dist-upgrade
 
+	if [ $? -ne 0 ]
+	then
+		apt-get --force-yes -y -f install
+	fi
+
 	");
 
 	CLCFG_setDebconf($serverIP,"/distr/debian/m23client-debconf");

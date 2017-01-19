@@ -80,16 +80,22 @@ function CAPTURE_captureAll($step=0,$comment="",$allowBut=false)
 **/
 function CAPTURE_load()
 {
-	if ($_GET[captureLoad]!=1)
+	if (!isset($_GET['captureLoad']) || ($_GET['captureLoad'] != 1))
 		return;
 
-	$page = $_GET[page];
-	if (empty($page))
-		$page = $_POST[page];
+	if (isset($_GET['page']))
+		$page = $_GET['page'];
+	elseif (isset($_POST['page']))
+		$page = $_POST['page'];
+	else
+		$page = '';
 		
-	$step = $_GET[CAPstep];
-	if (empty($step))
-		$step=0;
+	if (isset($_GET['CAPstep']))
+		$step = $_GET['CAPstep'];
+	elseif (isset($_POST['CAPstep']))
+		$step = $_POST['CAPstep'];
+	else
+		$step = '';
 
 	CHECK_FW(CC_capturestep, $step, CC_page, $page);
 
@@ -97,14 +103,14 @@ function CAPTURE_load()
 
 	$res = DB_query($sql); //FW ok
 
-	$line=mysqli_fetch_array($res);
+	$line = mysqli_fetch_array($res);
 
-	$_GET=array_merge($_GET,explodeAssoc("???",$line[get]));
-	$_GET[page]=$page;
-	$_GET[captureLoad]=1;
-	$_POST[page]=$page;
+	$_GET = array_merge($_GET,explodeAssoc("???", $line['get']));
+	$_GET['page'] = $page;
+	$_GET['captureLoad'] = 1;
+	$_POST['page'] = $page;
 	
-	$_POST=explodeAssoc("???",$line[post]);
+	$_POST = explodeAssoc("???", $line['post']);
 };
 
 
@@ -266,7 +272,7 @@ function CAPTURE_deleteById($id)
 **/
 function CAPTURE_showMarker()
 {
-	if ($_GET[captureLoad]==1)
+	if (isset($_GET['captureLoad']) && ($_GET['captureLoad'] == 1))
 		echo("<TD valign=\"bottom\" align=\"right\"><A id=\"ID_marker\"></TD>");
 };
 
@@ -280,7 +286,7 @@ function CAPTURE_showMarker()
 **/
 function CAPTURE_showTableWith()
 {
-	if ($_GET[captureLoad]==1)
+	if (isset($_GET['captureLoad']) && ($_GET['captureLoad'] == 1))
 		echo("width=\"700\"");
 };
 ?>

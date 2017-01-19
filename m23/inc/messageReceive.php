@@ -1151,15 +1151,16 @@ function MSR_getClientSettingsCommand()
 				awk -v ORS='' '/DISTRIB_ID=Ubuntu/ {print(\"&distr=ubuntu\")}
 				/DISTRIB_ID=LinuxMint/ {print(\"&distr=ubuntu\")}
 				' /etc/lsb-release >> /tmp/clientSettings.post
+
+				# Get the release from the sources list
+				release=$(grep ubuntu.com -r /etc/apt/sources.list* | grep main | sed -e 's°.*ubuntu\.com[^ ]*°°' -e 's°^ °°' -e 's° .*°°' | sort | head -1)
+				echo -n \"&release=\$release\" >> /tmp/clientSettings.post
 			else
 				echo -n \"&distr=debian\" >> /tmp/clientSettings.post
+				echo -n \"&release=$(lsb_release -c -s)\" >> /tmp/clientSettings.post
 			fi
 		fi
-	
-		#get Debian release
-		echo -n \"&release=\" >> /tmp/clientSettings.post
-		cut -d'/' -f2 /etc/debian_version | awk -v ORS='' '{print}' >> /tmp/clientSettings.post
-		
+
 		#get APT proxy settings
 		awk -v FS='\"' -v ORS=\"\" '/Acquire::(http|ftp)::Proxy/ {
 		gsub(\"http://\",\"\");

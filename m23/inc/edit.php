@@ -117,6 +117,24 @@ function EDIT_commentoutInsert($file,$search,$lineToInsert,$commentStr)
 
 
 /**
+**name EDIT_commentoutAll($file,$search,$commentStr)
+**description Comments out all matching lines.
+**parameter file: the name of the file
+**parameter search: Search string to match the line to comment out.
+**parameter commentStr: string to comment out (e.g. "#" for BASH or "//" for C/C++ style)
+**/
+function EDIT_commentoutAll($file,$search,$commentStr)
+{
+	return("
+	sed -i '/${search}/s°^\(.*\)°$commentStr\\1°g' '$file'
+	");
+}
+
+
+
+
+
+/**
 **name EDIT_countMatches($file,$search)
 **description Generates BASH code that counts how many times the search string can be found in the file. This can be used in ` `.
 **parameter file: file name

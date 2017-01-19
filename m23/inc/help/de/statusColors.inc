@@ -28,6 +28,9 @@ Danach können Sie verschiedene Aktionen mit allen gewählten Clients durchführen:
 	<LI><b>$I18N_moveToGroup</b>: Verschiebt einen Client in eine Gruppe.</LI>
 	<LI><b>$I18N_recover</b>: Installiert den Client komplett neu.</LI>
 <!--V12.3 end-->
+<!--V17.1 begin-->
+	<LI><b>$I18N_comparePackageStatus</b>: Vergleicht den Paketstatus von zwei Clients.</LI>
+<!--V17.1 end-->
 </ul><!--V1.5 end-->
 
 <!--V1.2 begin--><u>Hinweis</u>

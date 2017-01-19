@@ -40,7 +40,13 @@
 // 	
 // 	print_r($out);
 
+	HTML_submit('BUT_disable', "AUS", " disabled");
+	HTML_submit('BUT_normal', "AN", " ");
+	print(BUT_disable.BUT_normal);
+
 print("<pre>");
+	CLIENT_startLiveScreenRecording('m23lm18');
+	
 
 	// print_r(CSystemProxy::getProxySettingsArray());
 // 	$OSystemProxy = new CSystemProxy();
@@ -48,7 +54,7 @@ print("<pre>");
 // 	
 // 	CSYSTEMPROXY_getEnvironmentVariables();
 
-	print_r(explodeAssoc('?', 'arch?instPart?mbrPart?swapPart?desktop?distr?release?packagesource?kernel?disableSSLCertCheck?disableSudoRootLogin?installX2goserver?uefiActive?amd64??/dev/sda??Debian8Mate?debian?jessie?jessieo?linux-image-amd64?0?0?0?0'));
+// 	print_r(explodeAssoc('?', 'arch?instPart?mbrPart?swapPart?desktop?distr?release?packagesource?kernel?disableSSLCertCheck?disableSudoRootLogin?installX2goserver?uefiActive?amd64??/dev/sda??Debian8Mate?debian?jessie?jessieo?linux-image-amd64?0?0?0?0'));
 
 print("</pre>\n");
 	HTML_showTableEnd();

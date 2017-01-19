@@ -2,12 +2,16 @@
 
 class CGPGSign extends CChecks
 {
-	private $gpgID = NULL, $storeMode, $gpgKeyList;
+	private $gpgID = NULL, $storeMode, $gpgKeyList, $errorHandlingType;
 
-	// Modi of the 
+	// Modi of operation 
 	const MODE_LOAD = 0;
 	const MODE_SAVE = 1;
-	
+
+	// Ways of handling critical errors
+	const ERR_DIE = 0;
+	const ERR_MSGEXIT = 1;
+
 	const CONFIGFILE = '/m23/root-only/CGPGSign.conf';
 	const POOLSIGNKEYFILE = '/m23/data+scripts/packages/baseSys/m23serverPoolSignKey.asc';
 
@@ -20,8 +24,10 @@ class CGPGSign extends CChecks
 **description Constructor for new CGPGSign objects.
 **parameter mode: Save a (new) configuration file or load a (required) configuration file.
 **/
-	public function __construct($mode)
+	public function __construct($mode, $errorHandlingType = CGPGSign::ERR_MSGEXIT)
 	{
+		$this->errorHandlingType = $errorHandlingType;
+	
 		// Get the list of GPG secret keys
 		$this->gpgKeyList = MAIL_getGpgKeyList(true);
 		$this->setStoreMode($mode);
@@ -73,6 +79,31 @@ class CGPGSign extends CChecks
 			</tr>
 		</table>
 		");
+	}
+
+
+
+
+
+/**
+**name CGPGSign::showWarningAndDie($internalMsg, $userMsg)
+**description Shows an "internal" warning message or a message for the m23 administrator and destroys the object afterwards.
+**parameter internalMsg: Internal error message text.
+**parameter userMsg: Warning message for the m23 administrator.
+**/
+	private function showWarningAndDie($internalMsg, $userMsg)
+	{
+		switch ($this->errorHandlingType)
+		{
+			case CGPGSign::ERR_MSGEXIT:
+				MSG_showWarning($userMsg);
+				die('');
+				break;
+			
+			default:
+				die("$internalMsg");
+				break;
+		}
 	}
 
 
@@ -226,13 +257,15 @@ class CGPGSign extends CChecks
 **/
 	public function setGPGID($id)
 	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
 		$id = trim($id);
 		if ((strlen($id) == 8) && (preg_match("![^A-F0-9]!", $id) == 0))
 		{
 			$allPrivateGPGKeys = array_keys($this->gpgKeyList);
 
 			if (!in_array($id, $allPrivateGPGKeys))
-				die("ERROR: setGPGID: No private GPG key for the ID ($id)");
+				$this->showWarningAndDie("ERROR: setGPGID: No private GPG key for the ID ($id)", $I18N_noPrivateGPG);
 			
 			$this->gpgID = $id;
 		}
@@ -252,8 +285,10 @@ class CGPGSign extends CChecks
 **/
 	private function getGPGID($allowReturnNull = false)
 	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
 		if (is_null($this->gpgID) && !$allowReturnNull)
-			die("ERROR: getGPGID: GPG ID is not set!");
+			$this->showWarningAndDie("ERROR: getGPGID: GPG ID is not set!", $I18N_noPrivateGPG);
 		return($this->gpgID);
 	}
 

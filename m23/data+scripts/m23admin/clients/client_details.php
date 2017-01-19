@@ -38,6 +38,7 @@ CLIENT_DETAILS_beginCategory($I18N_client_information, "clientInformation");
 CLIENT_DETAILS_addIcon("clientinfo", "&infoType=hardware", "hwinfo.png", "$I18N_hardware_info", $I18N_hardware_info_tooltip);
 CLIENT_DETAILS_addIcon("clientpackages", "", "packagesInfo.png", "$I18N_packageInformation", $I18N_packageInformation_tooltip);
 CLIENT_DETAILS_addIcon("clientinfo", "&infoType=clientLog", "log.png", "$I18N_client_log", $I18N_client_log_tooltip);
+CLIENT_DETAILS_addIcon("exportPackageStatus", "", "exportPackageStatus.png", "$I18N_exportPackageStatus", $I18N_exportPackageStatus_tooltip);
 CLIENT_DETAILS_endCategory();
 
 

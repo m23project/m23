@@ -20,21 +20,42 @@ function MENU_showEntry(&$text,$link,$icon,$extraIcon="")
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
-	//get page from the URL
-	$temp=explode("page=",$link);
-	$page=$temp[1];
-	$temp=explode("&",$page);
-	$page=$temp[0];
-
-	//get action from the URL	
-	$temp=explode("action=",$link);
-	$action=$temp[1];
-	$temp=explode("&",$action);
-	$action=$temp[0];
+	if (strpos($link, "page=") !== false)
+	{
+		//get page from the URL
+		$temp = explode("page=",$link);
+		$page = $temp[1];
+		$temp = explode("&",$page);
+		$page = $temp[0];
+	}
+	else
+		$page = '';
+	
+	if (strpos($link, "action=") !== false)
+	{
+		//get action from the URL	
+		$temp = explode("action=",$link);
+		$action = $temp[1];
+		$temp = explode("&",$action);
+		$action = $temp[0];
+	}
+	else
+		$action = '';
 
 	//Get the currently choosen page and action
-	$currentPage = (isset($_GET['page']{1}) ? $_GET['page'] : $_POST['page']);
-	$currentAction = (isset($_GET['action']{1}) ? $_GET['action'] : $_POST['action']);
+	if (isset($_GET['page']))
+		$currentPage = $_GET['page'];
+	elseif (isset($_POST['page']))
+		$currentPage = $_POST['page'];
+	else
+		$currentPage = '';
+
+	if (isset($_GET['action']))
+		$currentAction = $_GET['action'];
+	elseif (isset($_POST['action']))
+		$currentAction = $_POST['action'];
+	else
+		$currentAction = '';
 
 	if (!empty($extraIcon))
 		$extraIcon="<img src=\"$extraIcon\">";
@@ -60,7 +81,7 @@ function MENU_showEntry(&$text,$link,$icon,$extraIcon="")
 	$text=str_replace("-<br>","",$text);
 	$text=str_replace("<br>"," ",$text);
 	$text=str_replace("- ","-",$text);
-};
+}
 
 
 

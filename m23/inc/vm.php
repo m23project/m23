@@ -1776,7 +1776,7 @@ function VM_GUIstepCheckHost()
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 	//Preset values for making screenshots
-	if ($_GET['screenshot'] == 1)
+	if (isset($_GET['screenshot']) && ($_GET['screenshot'] == 1))
 	{
 		$_SESSION['VM_createStep'] = VM_stepCheckHost;
 		$_SESSION['VM_host'] = "localhost";
@@ -1893,7 +1893,7 @@ function VM_GUIstepSelectHost($VM_software)
 	$BUT_selectHost = "BUT_selectHost$VM_software";
 
 	//Preset values for making screenshots
-	if ($_GET['screenshot'] == 1)
+	if (isset($_GET['screenshot']) && ($_GET['screenshot'] == 1))
 		$_POST[$SEL_vmHost] = 'localhost';
 
 	$title = VM_vmSwNr2Name($VM_software);
@@ -1907,7 +1907,12 @@ function VM_GUIstepSelectHost($VM_software)
 
 	//Return if there are no hosts for the choosen virtualisation solution
 	if (count($vmHosts) === 0)
+	{
+		echo('<tr><td>');
+		MSG_showWarning("$I18N_noVMHostsForVMSoftware1 $title $I18N_noVMHostsForVMSoftware2");
+		echo('</td></tr>');
 		return(false);
+	}
 
 	$vmHost = HTML_selection($SEL_vmHost, $vmHosts, SELTYPE_selection, true, $_SESSION['VM_host']);
 

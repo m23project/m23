@@ -16,8 +16,7 @@
 			<a HREF="http://m23.goos-habermann.de" target="_blank">
 				<img src="head/m23.png" border="0">
 				<?
-					if ($_SESSION['m23Shared'])
-						echo("<br>m23@web");
+					if (isset($_SESSION['m23Shared']) && $_SESSION['m23Shared']) echo("<br>m23@web");
 				?>
 			</a>
 		</td>

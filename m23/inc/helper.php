@@ -269,15 +269,18 @@ function HELPER_resetNewLogLines($sessionPrefix)
 
 
 /**
-**name HELPER_getNewLogLines($log, $sessionPrefix)
+**name HELPER_getNewLogLines($log, $sessionPrefix, $filterFunction = NULL)
 **description Gets the last (new) lines of a (growing) log file.
 **parameter log: Name of the log file.
 **parameter sessionPrefix: Prefix for storing the last read line number in the session.
+**parameter filterFunction: Function to filter the lines before adding them to the output. The function gets the unfiltered string as input and returns the filtedred version.
 **returns UTF8-encoded new lines of the log file.
 **/
-function HELPER_getNewLogLines($log, $sessionPrefix)
+function HELPER_getNewLogLines($log, $sessionPrefix, $filterFunction = NULL)
 {
 	$out = '';
+	
+	$_SESSION[$sessionPrefix]['lastLogLine'] = 0; // üüü DEBUG
 
 	//Check for the log
 	if (file_exists($log))
@@ -292,7 +295,12 @@ function HELPER_getNewLogLines($log, $sessionPrefix)
 
 		//Give out the new lines that were added since the last call
 		for ($i = $_SESSION[$sessionPrefix]['lastLogLine']; $i < $lastEntry; $i++)
-			$out .= utf8_encode($lines[$i]);
+		{
+			if (!is_null($filterFunction) && function_exists($filterFunction))
+				$out .= $filterFunction(utf8_encode($lines[$i]));
+			else
+				$out .= utf8_encode($lines[$i]);
+		}
 
 		//Update the last shown line number
 		$_SESSION[$sessionPrefix]['lastLogLine'] = $lastEntry;
@@ -737,25 +745,31 @@ function HELPER_debugBacktraceToFile($file)
 
 
 /**
-**name HELPER_getRemoteFileContents($url, $storeFile, $refreshTime)
+**name HELPER_getRemoteFileContents($url, $storeFile, $refreshTime, $forceOverwrite = true, $noProxy = false)
 **description Downloads a file if it is not older than a given time and returns its contents.
 **parameter url: The URL where to download the file from.
 **parameter storeFile: The file name to store the download in.
 **parameter refreshTime: The time in minutes the file is downloaded again.
 **parameter forceOverwrite: Set to true if the file should be overwritten even if the new file is epmty.
+**parameter noProxy: Set to true, if the system proxy should not be used.
 **returns The contents of the files from chache or from download or false if no file could be found.
 **/
-function HELPER_getRemoteFileContents($url, $storeFile, $refreshTime, $forceOverwrite = true)
+function HELPER_getRemoteFileContents($url, $storeFile, $refreshTime, $forceOverwrite = true, $noProxy = false)
 {
 	$tempDir = "/m23/tmp/HELPER_getRemoteFileContents";
 	@mkdir($tempDir);
 	$filePath = "$tempDir/$storeFile";
 
+	if ($noProxy)
+		$proxyVariables = '';
+	else
+		$proxyVariables = CSYSTEMPROXY_getEnvironmentVariables();
+
 	//Download the file if it doesn't exist or is too old
 	if ((!is_file($filePath)) || ((time() - filemtime($filePath)) / 60) > $refreshTime)
 	{
 		//Download the file
-		system(CSYSTEMPROXY_getEnvironmentVariables()."\nwget \"$url\" -O $filePath.temp -t1 -T5");
+		system($proxyVariables."\nwget \"$url\" -O $filePath.temp -t1 -T5");
 	}
 
 	if (file_exists("$filePath.temp") && ((filesize("$filePath.temp") > 0) || $forceOverwrite))

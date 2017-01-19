@@ -19,7 +19,7 @@ function HELP_showHelp($topic, $language = "")
 {
 	if (!isset($language{1}))
 		$language = $GLOBALS['m23_language'];
-	if ((!CAPTURE_isActive() && ($_GET[captureLoad]!=1)) || ($topic=="welcome"))
+	if ((!isset($_GET['captureLoad'])) || (!CAPTURE_isActive() && ($_GET['captureLoad']!=1)) || ($topic=="welcome"))
 		echo("<br><br>".HELP_getHelp($topic,$language));
 }
 

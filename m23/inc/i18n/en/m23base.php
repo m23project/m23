@@ -1342,7 +1342,7 @@ Hint: You (or anybody else with access to your webbrowser) can use the m23 webin
 @$I18N_addNewLoginToUCSLDAP = "Save login data to UCS";
 @$I18N_authentificationViaUCS = "Authenticate via UCS";
 @$I18N_addNewLoginToUCSLDAPError = "Error: The login data could not be saved to UCS.";
-@$I18N_readLoginFromUCSLDAPSupportedDistros = '(can be used with clients based on Debian 8, Ubuntu 14.04, 16.04 and Linux Mint 17.x)';
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(can be used with clients based on Debian 8, Ubuntu 14.04, 16.04, Linux Mint 17.x and 18.x)';
 
 //16.2
 @$I18N_clientUsesDynamicIP = "The client uses a dynamically assigned IP (DHCP)";
@@ -1376,4 +1376,26 @@ Hint: You (or anybody else with access to your webbrowser) can use the m23 webin
 @$I18N_recover_client_combine_jobsQuestion1="Would you like to";
 @$I18N_recover_client_combine_jobsQuestion2="repeat all jobs on the client, with identical jobs only being executed once?";
 @$I18N_client_start_recover_client_combine_jobs="All jobs on the client will be executed again. Identical jobs will only be executed once.";
+
+//17.1
+@$I18N_noVMHostsForVMSoftware1 = 'No VM hosts for';
+@$I18N_noVMHostsForVMSoftware2 = 'found.';
+@$I18N_commandsForDem23ing = 'Commands for removal of m23 components';
+@$I18N_noPrivateGPG = 'The GPG signature and encryption functions are not available. If you would like to use them, please select a private GPG key.';
+@$I18N_comparePackageStatus = 'Compare package status';
+@$I18N_comparePackageStatusNow = 'Compare package status now';
+@$I18N_clientOrFileSelection1 = '1st client or status file';
+@$I18N_clientOrFileSelection2 = '2nd client or status file';
+@$I18N_packageStatusFile = 'Status file';
+@$I18N_useClientName = 'Use client';
+@$I18N_clientUsed = 'Client used';
+@$I18N_statusFileUsed = 'Status file used';
+@$I18N_status = 'Status';
+@$I18N_exportPackageStatus = 'Export package status';
+@$I18N_exportPackageStatus_tooltip = 'Export package status (Package name, version, installation status) to file';
+@$I18N_onlyLeft = 'Only left';
+@$I18N_equal = 'Identical';
+@$I18N_onlyRight = 'Only right';
+@$I18N_noMatch = 'No match';
+
 ?>

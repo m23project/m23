@@ -22,11 +22,14 @@ Puis, vous pouvez exercer des actions différentes sur les postes client choisis:
 <ul>
 	<LI><b>$I18N_removeFromGroup:</b> Sélectionnez le groupe duquel vous voulez effacer les postes client. Si un poste client n'appartient pas à ce groupe, aucune action sera excercé sur lui.</LI>
 	<LI><b>$I18N_addToGroup:</b> Sélectionnez le groupe auquel vous souhaitez ajouter les postes client. Si un poste client appartient déjà à ce groupe, sa dépendance restera inchangée.</LI>
+	<LI><b>$I18N_delete:</b> Efface les postes client sélectionnés</LI>
 	<!--V12.3 begin-->
 	<LI><b>$I18N_moveToGroup</b>: Cette fonction déplace un poste client dans un groupe différent.</LI>
 	<LI><b>$I18N_recover</b>: Réinstallation complète du poste client.</LI>
 	<!--V12.3 end-->
-	<LI><b>$I18N_delete:</b> Efface les postes client sélectionnés</LI>
+	<!--V17.1 begin-->
+        <LI><b>$I18N_comparePackageStatus</b>: Comparaison de l'état des paquets entre deux postes clients.</LI>
+        <!--V17.1 end-->
 </ul><!--V1.5 end-->
 
 <!--V1.2 begin--><u>Notez</u>

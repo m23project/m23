@@ -326,7 +326,7 @@ function GRP_showGroupsAndCount()
 	//if the action should make direct changes (true) or call a second page (false)
 	$directChange=false;
 
-	if ($_POST[directChange] == 1)
+	if ($_POST['directChange'] == 1)
 		$directChange=true;
 
 	//Set form action, page and label of the execution button
@@ -411,7 +411,7 @@ function GRP_showGroupsAndCount()
 		//Add the execution button and hidden variables
 		echo("
 		<tr>
-			<td colspan=\"3\" align=\"center\">
+			<td colspan=\"4\" align=\"center\">
 				".BUT_do."
 			</td>
 		</tr>
@@ -428,10 +428,10 @@ function GRP_showGroupsAndCount()
 		echo("
 
 		<tr>
-			<td colspan=\"2\">
+			<td colspan=\"3\">
 				".SEL_action."
 			</td>
-			<td>
+			<td align=\"right\">
 				".BUT_selectAction."
 			</td>
 		</tr>");

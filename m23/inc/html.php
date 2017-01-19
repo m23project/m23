@@ -70,6 +70,21 @@ function HTML_imgSwitch($htmlName, $off_img, $on_img, $off_text, $on_text, $sepa
 
 
 /**
+**name HTML_getOriginalUploadFilename($htmlName)
+**description Get the original file name of an uploaded file.
+**parameter htmlName: Name of the HTML element
+**returns Original file name of an uploaded file.
+**/
+function HTML_getOriginalUploadFilename($htmlName)
+{
+	return(basename($_FILES[$htmlName]['name']));
+}
+
+
+
+
+
+/**
 **name HTML_uploadFile($htmlName,$label,$maxFileSize)
 **description Shows a dialog for uploading image files.
 **parameter htmlName: Name of the HTML element
@@ -77,7 +92,7 @@ function HTML_imgSwitch($htmlName, $off_img, $on_img, $off_text, $on_text, $sepa
 **parameter maxFileSize: The maximum allowed filesize in bytes.
 **returns The full path to the uploaded file or false in case of an error.
 **/
-function HTML_uploadFile($htmlName,$label,$maxFileSize)
+function HTML_uploadFile($htmlName, $label, $maxFileSize)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	clearstatcache();
@@ -1640,7 +1655,10 @@ function HTML_showFormHeader($addAction="",$method="post")
 	echo("<form method=\"$method\" action=\"index.php$addAction\" name=\"htmlform\" id=\"htmlformID\" enctype=\"multipart/form-data\">".'
 	<script language="javascript">document.write(\'<input type="hidden" name="javaScriptEnabled" value="on">\');</script>');
 
-	$sessionFromPost = unserialize(urldecode($_POST['MSESS_variables']));
+	if (isset($_POST['MSESS_variables']))
+		$sessionFromPost = unserialize(urldecode($_POST['MSESS_variables']));
+	else
+		$sessionFromPost = false;
 
 	if (is_array($sessionFromPost))
 		$_SESSION = array_merge($_SESSION,unserialize(urldecode($_POST['MSESS_variables'])));
@@ -1817,7 +1835,7 @@ function HTML_selection($htmlName, $array, $type, $vertical = true, $defaultSele
 		$multipleSizeAdd = 'size="'.$multipleSize.'"';
 	}
 	else
-		$multipleHtmlNameAdd = $multipleSelectEnable = '';
+		$multipleSizeAdd = $multipleHtmlNameAdd = $multipleSelectEnable = '';
 
 	/*
 		check if the selected value is a valid array key

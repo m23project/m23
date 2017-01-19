@@ -53,7 +53,7 @@ function DISTR_baseInstall($lang,$id)
 				CLCFG_debootstrap($clientOptions['release'],$DNSServers,$clientParams['gateway'],$clientOptions['packageProxy'],$clientOptions['packagePort'],$mirror,$clientOptions['arch'],"","",true,"parted wget",CLCFG_updateDebootstrapScriptsUbuntu);
 	
 				/* =====> */ MSR_statusBarIncCommand(55);
-		};
+		}
 	}
 
 	echo("
@@ -77,7 +77,7 @@ install needed additional m23 tools on the client
 	/* =====> */ MSR_statusBarIncCommand(1);
 
 	CLCFG_executeAfterChroot();
-};
+}
 
 
 
@@ -161,6 +161,11 @@ cd /tmp
 	apt-get --force-yes -y install wget lsb-release apt-utils
 
 	apt-get --force-yes -y dist-upgrade
+
+	if [ $? -ne 0 ]
+	then
+		apt-get --force-yes -y -f install
+	fi
 
 	");
 
@@ -308,7 +313,7 @@ ACIEOF
 
 chmod +x /mnt/root/tmp/afterChrootInstall.sh
 \n");
-};
+}
 
 
 
@@ -330,13 +335,13 @@ function DISTR_startInstall($client,$desktop,$instPart,$swapPart)
 	PKG_addJob($client,"m23baseSys",PKG_getSpecialPackagePriority("m23baseSys",$distr),"instPart=$instPart#swapPart=$swapPart");
 
 	 if ($desktop != "Textmode")
-		{
-			//install XFree86
-			//if ($version > XX)
-			PKG_addJob($client,"m23xfree864",PKG_getSpecialPackagePriority("m23xfree864",$distr),"");
-			//install KDE
-			PKG_addJob($client,"m23$desktop",PKG_getSpecialPackagePriority("m23$desktop",$distr),"");
-		}
+	{
+		//install XFree86
+		//if ($version > XX)
+		PKG_addJob($client,"m23xfree864",PKG_getSpecialPackagePriority("m23xfree864",$distr),"");
+		//install KDE
+		PKG_addJob($client,"m23$desktop",PKG_getSpecialPackagePriority("m23$desktop",$distr),"");
+	}
 
 	//Configures upstart for normal running in an installed system.
 	PKG_addJob($client,'m23configUpstartForNormalUsage',PKG_getSpecialPackagePriority('m23configUpstartForNormalUsage',$distr),"");

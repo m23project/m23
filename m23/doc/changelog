@@ -1,3 +1,164 @@
+2017-01-19
+patch 100948: Development documentation improvement.
+new: m23-Release-Tabelle.odt: Table for checking the tasks for a new m23 release.
++++++
+2017-01-10
+patch 100947: Now supports Linux Mint 18.1 Serena (Mate and Cinnamon).
+cha: exportDBsourceslist.php: Added "LinuxMint 18.1 Serena".
++++++
+2017-01-07
+patch 100946: Smal improvents and fix for UCS.
+fix: DHCP_writePXEcfg: Now sets the access rights of the PXE file to 755 (needed on UCS).
+cha: exportDBsourceslist.php: Removed "squeeze", "squeeze+libreoffice" and "Linux Mint 9 KDE".
+cha: Raspbian-RemoveUnneededPackages.sh: Now configures sshd_config to allow SSH login as root with password.
++++++
+2017-01-05
+release 17.1
++++++
+2017-01-04
+fix: UBUNTU_fixBeforeBaseInstall: Adjusted for changed systemd package in Linux Mint 17.x.
++++++
+2017-01-02
+fix: CLIENT_startLiveScreenRecording: Now closes the screen session on the m23 server when the screen session on the m23 client is finished.
++++++
+2016-12-20
+new: CLIENT_filterLinesFromLiveScreenRecording: Filters out unwanted lines from the live log.
+cha: CLIENT_startLiveScreenRecording: Now exits the loop when the SSH connection was closed.
+cha: HELPER_getNewLogLines: Now has an optional parameter for a function to filter the lines before adding them to the output.
++++++
+2016-12-07
+patch 100942: UCS fixes.
+fix: m23/postinst: Now creates group "grdmgpg" with gid 55001 on UCS to make creation of grdmgpg user possible.
++++++
+2016-12-06
+cha: SRCLST_sourceListExists: Made compatible with UCS.
++++++
+2016-12-02
+cha: m23Deb.inc / mkRelease: Now uses SHA256 for hashing the GPG signature.
++++++
+2016-12-01
+new: checkForMissingHlp.sh: Rewritten to find the files that need translation.
+fix: CLIENT_getOverviewSearchLine: Now shows the search term even after opening the client's overview page in a new tab.
++++++
+2016-11-29
+cha: m23hwdetect: Removed "$remote_fs" from start/stop condition.
++++++
+2016-11-28
+cha: menu.php: Added entry to compare package status.
+new: de / comparePackageStatus.hlp: Help file for the compare package status.
++++++
+2016-11-25
+new: HTML_getOriginalUploadFilename: Get the original file name of an uploaded file.
+new: CPackageStatusCompare::__construct: Constructor for new CPackageStatusCompare objects.
+new: CPackageStatusCompare::__destruct: Destructor for a CPackageStatusCompare object.
+new: CPackageStatusCompare::save: Saves parameters as hidden POST values.
+new: CPackageStatusCompare::setFile: Sets a file name, if the given parameter is a valid file name.
+new: CPackageStatusCompare::setFile1: Sets a 1st file name, if the given parameter is a valid file name.
+new: CPackageStatusCompare::setFile2: Sets a 2nd file name, if the given parameter is a valid file name.
+new: CPackageStatusCompare::setClient: Sets a client, if the given parameter is a valid client name.
+new: CPackageStatusCompare::setClient1: Sets a client, if the given parameter is a valid client name.
+new: CPackageStatusCompare::setClient2: Sets a client, if the given parameter is a valid client name.
+new: CPackageStatusCompare::isClientSet: Checks, if the client is set.
+new: CPackageStatusCompare::isClient1Set: Checks, if the 1st client is set.
+new: CPackageStatusCompare::isClient2Set: Checks, if the 2nd client is set.
+new: CPackageStatusCompare::isFile1Set: Checks, if the 1st combined variable stores a file name.
+new: CPackageStatusCompare::isFile2Set: Checks, if the 2st combined variable stores a file name.
+new: CPackageStatusCompare::getVersionStatus: Gets an array with, the package file name, the version and the status.
+new: CPackageStatusCompare::getStatusFile: Gets the file name of a package status file. If a client name is give, a temporary package status file will be written.
+new: CPackageStatusCompare::showStatusRow: Gets the file name of a package status file. If a client name is give, a temporary package status file will be written.
+new: CPackageStatusCompare::diff: Compares two package status files.
+new: CPackageStatusCompare::show: Shows the comparing dialog.
++++++
+2016-11-24
+cha: clients_overview.php: Now has a new action to compare the package status of two clients.
+new: PKG_getPackageStatusCSV: Exports the packages of a client in tabulator separated CSV.
++++++
+2016-11-23
+cha: m23-xorg.conf-generator.sh: Now configures VirtualBox without generating xorg.conf on LinuxMint 18 when run in LM18.
+cha: m23-xorg-configurator: Now doesn't do anything, if /etc/sysconfig/disableConfig is present.
+cha: menuDeb: Now stops Squid before and starts it after all changes to the Squid cache.
++++++
+2016-11-22
+cha: CGPGSign::showErrorAndDie: Changed to CGPGSign::showWarningAndDie to show a warning message.
+fix: m23InstallerBase.inc / normalPartition: Now creates swap partition again.
++++++
+2016-11-21
+cha: CLCFG_debootstrap: Now has two checks, that may run into critical client status and that test if the base system archive was downloaded and extracted sucessfully.
+new: CGPGSign::showErrorAndDie: Shows an "internal" error message or a message for the m23 administrator and destroys the object afterwards.
+cha: CGPGSign::setGPGID, CGPGSign::getGPGID: Now are using showErrorAndDie.
++++++
+2016-11-17
+cha: index_fb.css: Now disabled submit buttons are visible as disabled.
++++++
+2016-11-16
+new: delete_client.help: Help page for deleting a client.
+cha: CLIENT_showDelDialog: Added information for removing m23 dependencies form an m23 ex client.
+new: CLCFG_installSDDM: Installs the SDDM display manager.
+cha: SERVER_dhcpServerInNetWarn: Now has a m23customPatch area to deactivate the warning about other existing DHCP servers.
+cha: MSR_getClientSettingsCommand: Now has a more generic approach to detect the release name of Debian based distributions (Ubuntu and Linux Mint)
++++++
+2016-11-15
+cha: downloadExtractRFS: Now downloads the package isc-dhcp-client instead of (non existing) dhcp3-client.
++++++
+2016-11-11
+cha: m23 / postinst: Now executes /m23/bin/postinstHook.sh if existing.
++++++
+2016-11-10
+new: EDIT_commentoutAll: Comments out all matching lines.
+cha: exportDBsourceslist.php: Added "LinuxMint 18 Sarah".
+new: m23Mint18CinnamonInstall.php: Installs Linux Mint 18 Cinnamon Desktop.
+new: m23Mint18MateInstall.php: Installs Linux Mint 18 Mate Desktop.
+new: m23Mint18XfceInstall.php: Installs Xfce desktop on Linux Mint 18.
++++++
+2016-11-09
+cha: UBUNTU_desktopInstall: Added support for KDE in Linux Mint 18.
+new: m23Mint18KDEInstall.php: Installs Linux Mint 18 KDE Desktop.
++++++
+2016-11-08
+cha: debian / ubuntu / DISTR_afterChrootInstall: More generic approach to detect Xenial based dirstributions and Linux Mint 18.
+cha: CLCFG_genFstab: Now used grub2 for LinuxMint 18.
++++++
+2016-11-07
+patch 100926: Exchanged m23 server repository on SourceForge with a self hosted repository.
+cha: m23installerBase.inc / installDebs, m23VirtualBoxInstall.php, DebianSystemCleaner-PrepareVMForCompression, Raspbian-RemoveUnneededPackages.sh: Now are using m23inst.goos-habermann.de as repository for the m23 server installation .
++++++
+2016-11-04
+patch 100925: Disables creation or definition of a client with the name of an existing client. Fixes package transfer from client to m23 server.
+fix: PKG_ncTarDebsFromClientToServer_Server, PKG_ncTarDebsFromClientToServer_Client: Corrected port number.
+cha: HELPER_getRemoteFileContents: New parameter to disable the system proxy.
+cha: CClient::getClientCurrentWorkPHP: Now fetches the script without system proxy.
+cha: configXOrgVMware: Now installs open-vm-tools.
+cha: CFDiskIO::__construct: Now transfers the check mode to the parent object.
++++++
+2016-11-03
+patch 100923: Code improvements.
+cha: head.php, HTML_selection, HTML_showFormHeader, VM_GUIstepCheckHost, VM_GUIstepSelectHost, MENU_showEntry, menu.php, CAPTURE_load, CAPTURE_showMarker, CAPTURE_showTableWith, HELP_showHelp: Improved code to generate less PHP notices.
+fix: Cm23Admin::getCSS: Corrected case error.
+cha: VM_GUIstepSelectHost: Now shows a warning, if no hosts for the given VM software could be found.
++++++
+2016-10-24
+release 16.3
+fix: SRCLST_showAlternativeArchitectureSelection: Now doesn't delete the client options when changing the architecture.
+new: CLCFG_installXDM: Installs the XDM display manager.
+cha: UBUNTU_desktopInstall: Now uses XDM for Gnome in Ubuntu 16.04.
++++++
+2016-10-18
+patch 100921: Now interprets IDs with partially containing other IDs in m23customPatch correctly.
+cha: CmCP::loadSourceFile: Now interprets IDs with partially containing other IDs correctly. (Thx TS)
++++++
+2016-10-12
+patch 100920: Now uses goos-habermann.de as mirror for m23 clients.
+cha: SRCLST_loadSourceList: Now uses goos-habermann.de as mirror.
+patch 100919: Disables all SourceForge mirrors for m23 clients.
+cha: SRCLST_possiblem23debsMirrors: Commented out all SourceForge mirrors.
+patch 100918: New networkbootimages.
+cha: CLCFG_copySSLCert: New m23customPatch area "CLCFG_copySSLCertSSLCertificatesPermissions".
+cha: m23hwdetect: Now adds nic ID of DELL Optiplex 5040/7040.
++++++
+2016-10-10
+patch 100915: Changes for m23 16.3.
+cha: m23 / postinst: Now generates SSH RSA keys.
++++++
 2016-10-06
 new: EDIT_replaceLineElseAdd: Deletes all lines, that match regular expression, afterwards adds a given line (Thx TS)
 +++++

@@ -4569,6 +4569,7 @@ function FDISK_adjustFdiskParams($client)
 	DB_query($sql); //FW ok
 
 	$sql="UPDATE `clientjobs` SET `params` = '$newParam' WHERE `id` = '$baseSysID'";
+
 	DB_query($sql); //FW ok
 };
 

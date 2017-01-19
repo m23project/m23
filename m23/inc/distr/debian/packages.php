@@ -129,7 +129,7 @@ function PKG_ncTarDebsFromClientToServer_Client()
 	done
 
 	cd /var/cache/apt/archives
-	tar c *.deb | nc -q 15 $serverIP 654321
+	tar c *.deb | nc -q 15 $serverIP 54321
 	");
 }
 
@@ -148,7 +148,7 @@ function PKG_ncTarDebsFromClientToServer_Server($poolDir)
 	
 	return("
 	cd \"$poolDir\"
-	nc -w 30 -l -p 654321 | tar xv 2>&1 | tee -a '$logFile'
+	nc -w 30 -l -p 54321 | tar xv 2>&1 | tee -a '$logFile'
 	");
 }
 

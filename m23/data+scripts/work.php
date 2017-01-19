@@ -75,7 +75,9 @@ echo('#!/bin/bash
 			$waitForSelectionOfDistribution = (($package == "m23fdiskFormat") && empty($options['release']) && ('halfSister' != $distr));
 			$waitForFinishedDownloadOfBaseSys = (!PKG_downloadBaseSysTom23Server($options['release'], $options['arch']) && !CLIENT_isAssimilated($client));
 
+//m23customPatchBegin type=change id=waitCases
 			if ($waitForFinishedUpdate || $waitForSelectionOfDistribution || $waitForFinishedDownloadOfBaseSys)
+//m23customPatchEnd id=waitCases
 			{
 				if ($waitForFinishedUpdate)
 					$waitMsg = 'Finishing of the m23 server update';
@@ -83,6 +85,8 @@ echo('#!/bin/bash
 					$waitMsg = 'Selection of distribution in the m23 webinterface';
 				elseif ($waitForFinishedDownloadOfBaseSys)
 					$waitMsg = 'Finishing of the download of the distribution base system';
+//m23customPatchBegin type=change id=waitMessages
+//m23customPatchEnd id=waitMessages
 
 				echo("echo Waiting for:\necho $waitMsg\nsleep 60\n");
 				executeNextWork();
@@ -118,8 +122,8 @@ echo('#!/bin/bash
 				{
 					sendClientStatus($id,"error");
 					executeNextWork();
-				};
-			};
+				}
+			}
 		}
 		else
 		{

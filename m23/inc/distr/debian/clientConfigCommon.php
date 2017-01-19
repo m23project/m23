@@ -87,6 +87,54 @@ mdm shared/default-x-display-manager select $dm");
 
 
 /**
+**name CLCFG_installXDM()
+**description Installs the XDM display manager.
+**/
+function CLCFG_installXDM()
+{
+	CLCFG_setDebConfDM('xdm');
+	CLCFG_aptGet('install', 'xdm');
+}
+
+
+
+
+
+/**
+**name CLCFG_installSDDM()
+**description Installs the SDDM display manager.
+**/
+function CLCFG_installSDDM()
+{
+	CLCFG_setDebConfDM('sddm');
+	CLCFG_aptGet('install', 'sddm');
+
+	/*
+		Write a script that will be executed only once and invokes two starts of SDDM
+		At the first start of SDDM, the user icon will be missing. On the next runs, the icon is visible.
+	*/
+	echo('
+mv /usr/bin/sddm /usr/bin/sddm.orig
+
+echo "#!/bin/bash
+/usr/bin/sddm.orig &
+PID=\$!
+sleep 15
+kill \$PID
+wait
+mv /usr/bin/sddm.orig /usr/bin/sddm
+service sddm restart
+" > /usr/bin/sddm
+
+chmod +x /usr/bin/sddm
+');
+}
+
+
+
+
+
+/**
 **name CLCFG_installMintDM()
 **description Installs the Linux Mint DM display manager.
 **/
@@ -1648,7 +1696,7 @@ if ($bootloader == "grub")
 			CLCFG_aptGet("install", "grub2");
 		echo("
 		else
-			if [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(lsb_release -c -s) = 'xenial' ]
+			if [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ]
 			then
 			");
 				CLCFG_aptGet("install", "grub-pc");
@@ -1701,17 +1749,17 @@ if ($bootloader == "grub")
 				fi
 			fi
 
-			if [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(lsb_release -c -s) = 'xenial' ]
+			if [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ]
 			then
 				/usr/sbin/update-grub2
 				sync
 				
-				if [ $(lsb_release -c -s) = 'xenial' ]
+				if [ $(lsb_release -c -s) = 'xenial' ] || [ $(lsb_release -i -s) = 'LinuxMint' ]
 				then
 					sed -i 's/\(GRUB_CMDLINE_LINUX_DEFAULT=\"\)\([^\"]*\)\"/\\1\\2 net.ifnames=0\"/' /etc/default/grub
 					update-grub
 				fi
-				
+
 			else
 				#write menu.lst
 				/usr/sbin/update-grub -y
@@ -2767,6 +2815,13 @@ function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePor
 			rm -r * 2> /dev/null
 
 			wget $debootstrapCacheFileURL -o /tmp/debootstrapCache.log -O $debootstrapCacheFile
+			if [ $? -ne 0 ]
+			then
+				".sendClientLogStatus("Download of base system error: $debootstrapCacheFileURL", false, true)."
+			else
+				".sendClientLogStatus("Download of base system OK: $debootstrapCacheFileURL",true)."
+			fi
+			
 			ret=$(grep -c sourceforge.net $debootstrapCacheFile)
 #			try=0
 
@@ -2783,6 +2838,12 @@ function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePor
 				date +%s > m23-time/debootstrap7z.start
 
 				7zr x -so $debootstrapCacheFile | tar xp --same-owner
+				if [ $? -ne 0 ]
+				then
+					".sendClientLogStatus("Extration of base system error: $debootstrapCacheFile", false, true)."
+				else
+					".sendClientLogStatus("Extration of base system OK: $debootstrapCacheFile",true)."
+				fi
 				rm $debootstrapCacheFile
 
 				date +%s > m23-time/debootstrap7z.stop
@@ -3311,7 +3372,7 @@ cp $rootPath/etc/ssl/certs/$hash.0 $rootPath/usr/local/share/ca-certificates/m23
 	}
 
 	fclose($f);
-
+//m23customPatchBegin type=change id=CLCFG_copySSLCertSSLCertificatesPermissions
 	//Set permission the directories for the SSL certificates
 echo("
 chmod -R 755 $rootPath/etc/ssl/certs $rootPath/usr/lib/ssl/certs $rootPath/usr/local/share/ca-certificates/m23
@@ -3319,6 +3380,7 @@ chown -R root $rootPath/etc/ssl/certs $rootPath/usr/lib/ssl/certs $rootPath/usr/
 chgrp -R root $rootPath/etc/ssl/certs $rootPath/usr/lib/ssl/certs $rootPath/usr/local/share/ca-certificates/m23
 \n
 ");
+//m23customPatchEnd id=CLCFG_copySSLCertSSLCertificatesPermissions
 
 $notFirst = false;
 $greps = '';

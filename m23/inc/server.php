@@ -336,7 +336,8 @@ function SERVER_addToHtpasswd($htpasswdFile,$username,$password)
 function SERVER_dhcpServerInNetWarn()
 {
 	$log = "/m23/tmp/dhcpServerWarner.log";
-
+	
+	//m23customPatchBegin type=del id=SERVER_dhcpServerInNetWarnDisable
 	//Check if a dhcp server warn process is running
 	if (SERVER_runningInBackground("dhcpServerWarner"))
 	{
@@ -355,6 +356,7 @@ function SERVER_dhcpServerInNetWarn()
 		SERVER_runInBackground("dhcpServerWarner",
 		"tcpdump -l -nn 'udp src port 67 and udp dst port 68 and not src $serverIP' 2>&1 | tee $log" /*"tcpdump -l -nn 'udp port 67 and !(host $serverIP) and !(host 0.0.0.0)' 2>&1 | tee $log"*/,"root",true);
 	}
+	//m23customPatchEnd id=SERVER_dhcpServerInNetWarnDisable
 }
 
 

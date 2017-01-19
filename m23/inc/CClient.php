@@ -1308,7 +1308,7 @@ class CClient extends CChecks
 		if (isset($otherScript{1}))
 		{
 			$this->addJob($otherScript, -23, '');
-			$out = HELPER_getRemoteFileContents($this->getClientWorkPHPURL('127.0.0.1'), 'getClientCurrentWorkPHP', 0, true);
+			$out = HELPER_getRemoteFileContents($this->getClientWorkPHPURL('127.0.0.1'), 'getClientCurrentWorkPHP', 0, true, true);
 			$this->delSpecialJob($otherScript, -23);
 			return($out);
 		}

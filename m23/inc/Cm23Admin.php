@@ -271,7 +271,7 @@ class Cm23Admin extends CChecks
 		$displayArray = array();
 		foreach ($this->cssAssign as $cssFileName => $themeName)
 		{
-			$picName = '/gfx/themes/'.substr($cssFileName, 0, (strlen($cssFilename)-3)).'png';
+			$picName = '/gfx/themes/'.substr($cssFileName, 0, (strlen($cssFileName)-3)).'png';
 			$displayArray[$cssFileName] = '<table style="display:inline"><tr><td><img class="framed_image" src="'.$picName.'"></td></tr><tr><td align="center" class="subhighlight">'.$themeName.'</td></tr></table>';
 		};
 

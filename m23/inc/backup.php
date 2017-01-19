@@ -19,13 +19,13 @@ function BACKUP_showClientSettings($client)
 	HTML_showTableHeader();
 	
 	if (empty($client))
-		$client=$_POST[client];
+		$client=$_POST['client'];
 
 	$client = strtolower($client);
 
-	if (isset($_POST[BUT_save]))
+	if (isset($_POST['BUT_save']))
 		BACKUP_saveBackupDirs($client,$_POST['ED_dirs']);
-	
+
 	$dirs=BACKUP_getBackupDirs($client);
 
 	HTML_setPage('backup');

@@ -13,6 +13,8 @@ define("CLIENT_ADD_TYPE_assimilate",2);
 
 
 
+//m23customPatchBegin type=change id=additionalClientFunctions
+//m23customPatchEnd id=additionalClientFunctions
 
 
 /**
@@ -194,7 +196,7 @@ function CLIENT_startLiveScreenRecording($client)
 	//Create the name for the job
 	$jobName = CLIENT_liveLogJobName($client);
 
-	//Run the 
+	//Run the loop waiting for connection to screen session via SSH
 	if (!SERVER_runningInBackground($jobName))
 	{
 		$cmds = "
@@ -202,13 +204,40 @@ function CLIENT_startLiveScreenRecording($client)
 		do
 			date +'%F %T' >> $logFile
 			ssh -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectionAttempts=1 -o ConnectTimeout=2 -t -l root $ip TERM='xterm' screen -x m23install &>> $logFile
+
+			# Exit when the SSH connection was closed
+			if [ $(tail -5 $logFile | egrep -c \"(Write failed: Connection reset by peer|tcsetattr: Input/output error|screen is terminating)\") -gt 0 ]
+			then
+				break
+			fi
+
 			sleep 5
 		done
 		";
 
 		SERVER_runInBackground($jobName,$cmds);
 	}
+}
 
+
+
+
+
+/**
+**name CLIENT_filterLinesFromLiveScreenRecording($in)
+**description Filters out unwanted lines from the live log.
+**parameter in: Input line to give out or not.
+**returns Empty string, if the line should be filtered out or input line.
+**/
+function CLIENT_filterLinesFromLiveScreenRecording($in)
+{
+	$filters = array('Warning: Permanently added' , 'There is no screen to be attached matching m23install.', 'tcsetattr: Input/output error', 'Write failed: Connection reset by peer');
+
+	foreach ($filters as $filter)
+		if (false !== strpos ($in, $filter))
+			return('');
+	
+	return($in);
 }
 
 
@@ -224,11 +253,15 @@ function CLIENT_startLiveScreenRecording($client)
 function CLIENT_getOverviewSearchLine($amount)
 {
 	if (isset($_SESSION['lastSearchLine']))
-		$searchLine = $_SESSION['lastSearchLine'];
+		$defaultValue = $searchLine = $_SESSION['lastSearchLine'];
+	elseif (isset($_GET['searchLine']))
+		$defaultValue = $_GET['searchLine'];
+	else
+		$defaultValue = false;
 
 	for ($i = 1; $i <= $amount; $i++)
 	{
-		$temp = HTML_input("ED_search$i", empty($_GET['searchLine']) ? false : $_GET['searchLine'], 50);
+		$temp = HTML_input("ED_search$i", $defaultValue, 50);
 		if (HTML_submitCheck("BUT_ED_search$i"))
 			$_SESSION['lastSearchLine'] = $searchLine = $temp;
 		if (HTML_submitCheck("BUTDEL_ED_search$i"))
@@ -1904,7 +1937,7 @@ function CLIENT_getMACbyName($clientName)
 	$line=mysqli_fetch_row($result);
 
 	return($line[0]);
-};
+}
 
 
 
@@ -1919,11 +1952,11 @@ function CLIENT_getMACbyName($clientName)
 function CLIENT_sshFetchJob($clientName, $ip = false)
 {
 	if ($ip === false)
-		$ip=CLIENT_getIPbyName($clientName);
+		$ip = CLIENT_getIPbyName($clientName);
 
 	$cmd="sudo ssh -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $ip \"screen -dmS m23install /sbin/m23fetchjob ".getServerIP()."\"";
 	system($cmd);
-};
+}
 
 
 
@@ -3032,11 +3065,21 @@ function CLIENT_showDelDialog()
 			</tr>";
 	}
 
+	HTML_logArea('TA_deM23Code', 100, 1, 'wget http://'.getServerIP().'/dem23Client.sh -O /tmp/dem23Client.sh; bash /tmp/dem23Client.sh');
+	$dem23InfoHTML = "
+	<tr>
+		<td>$I18N_commandsForDem23ing:<br>
+		".TA_deM23Code."</td>
+	</tr>";
+
 
 	//Check if the deletion button was pressed
 	if (HTML_submit("BUT_delete",$I18N_delete))
 		{
 			CLIENT_deleteClient($_SESSION['clientName'], true, $deleteVM);
+			HTML_showTableHeader(true);
+			echo($dem23InfoHTML);
+			HTML_showTableEnd(true);
 		}
 	else
 		{
@@ -3056,7 +3099,10 @@ function CLIENT_showDelDialog()
 				<td align=\"center\">".BUT_delete."</td>
 			</tr>
 			");
-			
+			HTML_showTableEnd(true);
+
+			HTML_showTableHeader(true);
+			echo($dem23InfoHTML);
 			HTML_showTableEnd(true);
 		}
 }
@@ -3558,11 +3604,11 @@ function CLIENT_deleteClient($client,$showMsg=false, $deleteVM=false)
 	DB_query("DELETE FROM clientpackages WHERE clientname='$client' "); //FW ok
 
 	if ($showMsg)
-		{
-			include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
-			MSG_showInfo($I18N_was_deleted);
-		}
-};
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+		MSG_showInfo($I18N_was_deleted);
+	}
+}
 
 
 

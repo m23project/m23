@@ -26,6 +26,8 @@ define('MINT13DESKTOP_MATE',63);
 define('UBUNTDM_LIGHTDM',1001);
 define('UBUNTDM_MDM',1002);
 define('NO_EXTRA_DM',1003);
+define('UBUNTDM_XDM',1004);
+define('UBUNTDM_SDDM',1005);
 
 // Ubuntu 14.04
 define('UBUNTUDESKTOP_UNITY3D_1404',2012);
@@ -53,7 +55,8 @@ define('UBUNTUDESKTOP_UBUNTUSTUDIO_1604', 4008);
 define('UBUNTUDESKTOP_XUBUNTU_1604', 4009);
 define('UBUNTUDESKTOP_TRINITY_MINIMAL_1604', 4010);
 
-
+// Linux Mint 18
+define('MINT18_KDE',5001);
 
 
 
@@ -325,7 +328,7 @@ function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $no
 
 		case UBUNTUDESKTOP_GNOME_1604:
 			$desktopPackages = 'ubuntu-gnome-desktop';
-			$displayManager = NO_EXTRA_DM;
+			$displayManager = UBUNTDM_XDM;
 			$dialogHeader = $I18N_installing_gnome;
 		break;
 
@@ -339,6 +342,15 @@ function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $no
 			$desktopPackages = 'desktop-base-trinity kate-trinity kdesktop-trinity kicker-trinity konsole-trinity kpersonalizer-trinity ksmserver-trinity ksplash-trinity tdebase-runtime-data-common-trinity tdebase-trinity-bin tdm-trinity twin-trinity';
 			$dialogHeader = $I18N_installing_trinity;
 			$displayManager = NO_EXTRA_DM;
+		break;
+
+		case MINT18_KDE:
+			CLCFG_aptGet('install', 'libglib2.0-bin');
+			$desktopPackages = "grub2-theme-mint linuxmint-keyring mint-artwork-common mint-artwork-kde mint-backgrounds-sarah mint-common mint-info-kde mint-meta-codecs-core mint-meta-codecs-kde mint-meta-core mint-meta-kde mint-mirrors mint-translations mint-upgrade-info mint-user-guide-kde mintbackup mintdrivers mintinstall mintinstall-icons mintnanny mintsources mintstick mintsystem mintupdate mintupload mintwelcome kwin kde-config-sddm sddm-theme-breeze sddm plasma-desktop plasma-nm plasma-pa plasma-runners-addons plasma-wallpapers-addons plasma-widget-folderview plasma-widgets-addons kde-baseapps-bin kde-style-oxygen-qt5 kdeconnect kate kcalc kfind ksysguard konsole";
+			$dialogHeader = $I18N_installing_kde;
+			$session = 'kde-plasma';
+			$displayManager = UBUNTDM_SDDM;
+
 		break;
 	}
 
@@ -388,6 +400,14 @@ libvirtodbc0 libvirtodbc0/register-odbc-driver boolean true');
 
 		case UBUNTDM_MDM:
 			CLCFG_installMintDM($session);
+		break;
+
+		case UBUNTDM_XDM:
+			CLCFG_installXDM();
+		break;
+
+		case UBUNTDM_SDDM:
+			CLCFG_installSDDM();
 		break;
 	}
 	/* =====> */ MSR_statusBarIncCommand(25);
@@ -498,6 +518,9 @@ function UBUNTU_fixBeforeBaseInstall($clientOptions)
 
 			touch /etc/init.d/systemd-logind
 			chmod +x /etc/init.d/systemd-logind
+
+			touch /etc/init.d/systemd
+			chmod +x /etc/init.d/systemd
 
 			touch /etc/init.d/modemmanager
 			chmod +x /etc/init.d/modemmanager

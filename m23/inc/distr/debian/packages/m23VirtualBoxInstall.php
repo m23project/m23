@@ -15,10 +15,10 @@ EOF
 debconf-set-selections /tmp/debconfm23-vbox
 
 #Check if the source for the m23 server packages is in sources.list
-if [ `grep -c m23.sourceforge.net/m23inst /etc/apt/sources.list` -eq 0 ]
+if [ `grep -c m23inst.goos-habermann.de /etc/apt/sources.list` -eq 0 ]
 then
 	#Add if if it is nonexistent
-	echo \"deb http://m23.sourceforge.net/m23inst/ ./\" >> /etc/apt/sources.list
+	echo \"deb http://m23inst.goos-habermann.de ./\" >> /etc/apt/sources.list
 fi
 
 export DEBIAN_FRONTEND=noninteractive
