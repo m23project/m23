@@ -1,5 +1,11 @@
 <?
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Functions for managing cron jobs.
+$*/
+
+
 /**
 **name CRON_genCronEntry($min, $hour, $dayOfMonth, $month, $dayOfWeek, $user, $cmd, $identifier, $runInScreen)
 **description Creates a cron line to insert into crontab.
@@ -28,6 +34,24 @@ function CRON_genCronEntry($min, $hour, $dayOfMonth, $month, $dayOfWeek, $user, 
 	}
 
 	return("$min $hour $dayOfMonth $month $dayOfWeek $user $screenCmd$cmd$identifierAdd");
+}
+
+
+
+
+
+/**
+**name CRON_addJobMinutely($intervall, $user, $cmd, $identifier, $runInScreen)
+**description Runs a command every N minutes.
+**parameter intervall: Amount of minutes to wait between calls.
+**parameter user: The user the cron job should be run under.
+**parameter cmd: The command to exectute.
+**parameter identifier: A string to identify the cron entry (for deletion)
+**parameter runInScreen: Set to true if the command should be run in a screen.
+**/
+function CRON_addJobMinutely($intervall, $user, $cmd, $identifier, $runInScreen)
+{
+	CRON_addJobBasic("*/$intervall", "*", "*", "*", "*", $user, $cmd, $identifier, $runInScreen);
 }
 
 
@@ -217,6 +241,22 @@ function CRON_checkHour($hour)
 
 
 /**
+**name CRON_isEntryPresent($identifier)
+**description Checks, if a crontab entry is present with a given identifier.
+**parameter identifier: A string to identify the cron entries
+**returns true, if a crontab entry is present with a given identifier, otherwise false.
+**/
+function CRON_isEntryPresent($identifier)
+{
+	$found = CRON_getEntriesByIdentifier($identifier);
+	return(isset($found[0]['min']));
+}
+
+
+
+
+
+/**
 **name CRON_getEntriesByIdentifier($identifier)
 **description Parses the crontab for all lines matching the identifier.
 **parameter identifier: A string to identify the cron entries
@@ -226,6 +266,7 @@ function CRON_getEntriesByIdentifier($identifier)
 {
 	$fp = fopen("/etc/crontab","r");
 	$nr = 0;
+	$out = array();
 
 	while ($line = fgets($fp))
 	{

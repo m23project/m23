@@ -1,0 +1,27 @@
+$I18N_autoUpdate<!--new 17.2 -->
+
+This dialog allows you to specify times when your m23 clients will be automatically updated. You can add several client groups to an update group, whose clients will update regularly on the selected weekdays and at the specified times. The group that is currently active is marked by a green circle.
+
+<u>$I18N_createNewUpdateSet</u>
+To be able to use the automatical update functionality, you will need at least one update group. Create the group at <i>"$I18N_createNewUpdateSet"</i>. At <i>"$I18N_parallelUpdates"</i>, enter the maximum number of clients that should be updated simultaneously. At <i>"$I18N_updateType"</i>, you can select to use either $I18N_normalUpdate (to update installed packages, and only install new packages when these are required) or $I18N_fullUpdate (to update installed packages, install new packages, and uninstall packages). Then click on <i>"$I18N_createNewUpdateSet"</i>.
+
+<u>Adding update times and client groups</u>
+When you have created an update group, you should now set the time periods during which the group should be updated. In the column <i>"$I18N_addTimePeriod"</i>, select the start and end time and click on <i>"$I18N_addTimePeriod"</i>. Finally, add the client groups from the column <i>"$I18N_addGroup"</i> by clicking on <i>"$I18N_addGroup"</i>.
+
+<u>Unset update times and remove client groups</u>
+When you click on the <i>red x</i> that follows a period of time or a client group, you can remove them from the update group. To remove the whole update group from the list, click on <i>"$I18N_delete"</i> in the corresponding group's row.
+
+<u>Background processes</u>
+When there is (at least) one update group, a <a href="https://en.wikipedia.org/wiki/Cron">cron job</a> will be started in 15-minute intervals, and will check for clients that can be updated.
+
+This will boot clients successively, while restricting the number of clients in the update group that are updating to the number given at <i>"$I18N_parallelUpdates"</i>. When the time frame for the currently active update group has terminated, further clients in the group will not be updated this time. Running updates will not be cancelled.
+
+In addition to this, m23 checks if the update on the clients is actually executed. If the client doesn't start to update within 30 minutes (e.g. because <a href="https://en.wikipedia.org/wiki/Wake-on-LAN">Wake-on-LAN</a> doesn't work), the update job will be retracted, and for the next 24 hours, no further attempts to update will be undertaken.
+
+When the client is already running, the updates will be executed in the background. Clients that have been booted by WOL will be shut down after the update has completed.
+
+When all clients within an update group are done updating, the next group with a suitable time interval will be activated (if there is one).
+
+When the last remaining update group is removed, the cron job entry will also be removed.
+
+In the log file <i>"/m23/log/autoUpdate.log"</i> you will find more info about the updates that were run.

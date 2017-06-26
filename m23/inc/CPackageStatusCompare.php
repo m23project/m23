@@ -1,4 +1,10 @@
 <?php
+
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for comparing the package status between clients and files.
+$*/
+
 class CPackageStatusCompare extends CChecks
 {
 	private $clientOrFile1 = NULL, $clientOrFile2 = NULL, $clientOrFile1Orig = NULL, $clientOrFile2Orig = NULL;
@@ -20,12 +26,12 @@ class CPackageStatusCompare extends CChecks
 		if (isset($_GET['cl1']))
 			$this->setClient1($_GET['cl1']);
 		else
-			$this->clientOrFile1 = $_POST['cl1'];
+			$this->clientOrFile1 = isset($_POST['cl1']) ? $_POST['cl1'] : NULL;
 
 		if (isset($_GET['cl2']))
 			$this->setClient2($_GET['cl2']);
 		else
-			$this->clientOrFile2 = $_POST['cl2'];
+			$this->clientOrFile2 = isset($_POST['cl2']) ? $_POST['cl2'] : NULL;
 
 		// Restore the original file names
 		if (isset($_POST['orig1'])) $this->clientOrFile1Orig = $_POST['orig1'];

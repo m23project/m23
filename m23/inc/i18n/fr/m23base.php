@@ -1340,7 +1340,7 @@ Attention: Si le nom de l&apos;utilisateur et son mot de passe sont encore enreg
 @$I18N_addNewLoginToUCSLDAP = "Sauvegarde des données d'identification sur UCS";
 @$I18N_authentificationViaUCS = "Authentification via UCS";
 @$I18N_addNewLoginToUCSLDAPError = "Erreur: Les données d'identification ne peuvent être sauvegardées sur UCS.";
-@$I18N_readLoginFromUCSLDAPSupportedDistros = '(Peuvent être utilisées par les clients basés sur Debian 8, Ubuntu 14.04, 16.04, Linux Mint 17.x et 18.x)';
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(Peuvent être utilisées par les clients basés sur Debian 8 + 9, Ubuntu 14.04, 16.04 et Linux Mint 17.x)';
 
 //16.2
 @$I18N_clientUsesDynamicIP = "Le poste client utilise une adresse IP dynamique (DHCP)";
@@ -1376,24 +1376,41 @@ Attention: Si le nom de l&apos;utilisateur et son mot de passe sont encore enreg
 @$I18N_client_start_recover_client_combine_jobs="Toutes les tâches seront éxécutées à nouveau sur le client. Les tâches identiques ne seront éxécutées qu'une fois.";
 
 //17.1
-@$I18N_noVMHostsForVMSoftware1 = 'Un hôte de VM ne pourrait pas être trouvé pour';
+@$I18N_noVMHostsForVMSoftware1 = 'Un hôte de Machine Virtuelle (VM) ne peut être trouvé pour';
 @$I18N_noVMHostsForVMSoftware2 = '.';
 @$I18N_commandsForDem23ing = 'Commandes pour l\'effacement des composants m23';
-@$I18N_noPrivateGPG = 'La signature GPG et les Fonctionnalités de chiffrement ne sont pas disponible. Si vous voudriez en utiliser, sélectionnez une clé privée, s\'il vous plaît.';
+@$I18N_noPrivateGPG = 'La signature GPG et les Fonctionnalités de chiffrement ne sont pas disponible. Si vous souhaitez les utiliser, sélectionnez s\'il vous plaît une clé privée.';
 @$I18N_comparePackageStatus = 'Comparer l\'état de paquets';
 @$I18N_comparePackageStatusNow = 'Lancer la comparaison de l\'état de paquets';
 @$I18N_clientOrFileSelection1 = '1er poste client ou fichier d\'état';
-@$I18N_clientOrFileSelection2 = '2e poste client ou fichier d\'état';
+@$I18N_clientOrFileSelection2 = '2ème poste client ou fichier d\'état';
 @$I18N_packageStatusFile = 'Fichier d\'état';
 @$I18N_useClientName = 'Utiliser poste client';
 @$I18N_clientUsed = 'Poste client utilisé';
 @$I18N_statusFileUsed = 'Fichier d\'état utilisé';
 @$I18N_status = 'État';
 @$I18N_exportPackageStatus = 'Exporter l\'état de paquets';
-@$I18N_exportPackageStatus_tooltip = 'Exporter l\'état de paquets (nom de paquet, numéro de version, état d\'installation) en fichier';
-@$I18N_onlyLeft = 'Seulement à gauche';
+@$I18N_exportPackageStatus_tooltip = 'Exporter l\'état de paquets (nom de paquet, numéro de version, état d\'installation) dans un fichier';
+@$I18N_onlyLeft = 'Uniquement à gauche';
 @$I18N_equal = 'Identiques';
-@$I18N_onlyRight = 'Seulement à droite';
+@$I18N_onlyRight = 'Uniquement à droite';
 @$I18N_noMatch = 'Pas de concordance';
 
+//17.2
+@$I18N_LDAPcouldNotCreatePosixAccount = 'Echec de création du compte utilisateur sur le serveur LDAP.';
+@$I18N_LDAPcouldNotCreatePosixGroup = 'Echec de création du groupe sur le serveur LDAP.';
+@$I18N_startTimeMustBeBeforeEndTime = 'L\'heure de début doit précéder l\'heure de fin.';
+@$I18N_addTimePeriod = 'Nouvel intervalle de temps';
+@$I18N_groupWasAddedPreviously = 'Ce groupe a déja été ajouté.';
+@$I18N_updatePeriods = 'Intervals actifs';
+@$I18N_updateGroups = 'Groupes actifs';
+@$I18N_addGroup = 'Ajouter un groupe';
+@$I18N_createNewUpdateSet = 'Ajouter un groupe de mise à jour';
+@$I18N_parallelUpdates = 'Mises à jour simultanées';
+@$I18N_autoUpdate = 'Mises à jour automatiques';
+@$I18N_updateType = 'Type de mise à jour';
+@$I18N_autoUpdateFinishedOk = 'Mise à jour automatique executée avec succès';
+@$I18N_autoUpdateFinishedErrorTooManyFailures = 'Mise à jour automatique: Trop de tentatives ont échoué';
+@$I18N_autoUpdateFinishedWrongParameters = 'Mise à jour automatique: Informations d\'état contradictoires';
+@$I18N_clientname_must_not_be_a_number = 'Le nom du poste client ne doit pas consister d\'un nombre.';
 ?>

@@ -281,68 +281,68 @@ function HELP_showHelpTex($fileName,$imageFile,$scale=0.45)
 	
 
 	//fetch the language from the directory name
-	$tempparts=explode("/",$fileName);
-	$tempam=count($tempparts);
-	$language=$tempparts[$tempam-2];
+	$tempparts = explode("/",$fileName);
+	$tempam = count($tempparts);
+	$language = $tempparts[$tempam-2];
 
-	$html=HELP_getHelp("",$language,"/tmp/m23doc.htmltex",true);
+	$html = HELP_getHelp("",$language,"/tmp/m23doc.htmltex",true);
 
-	$s2[0]="'</table>'si"; $r2[0]="<table>";
-	$html=preg_replace($s2,$r2,$html);
+	$s2[0] = "'</table>'si"; $r2[0]="<table>";
+	$html = preg_replace($s2,$r2,$html);
 	
-	$tables=spliti("<table>",$html);
-	$html="";
+	$tables = preg_split("<table>",$html);
+	$html = "";
 	for ($i=0; $i < count($tables); $i++)
+	{
+		$rows = preg_split("<tr>",$tables[$i]);
+		
+		$width=0;
+		
+		//find the biggest row amount
+		for ($i2=0; $i2 < count($rows); $i2++)
 		{
-			$rows=spliti("<tr>",$tables[$i]);
+			$cols = preg_split("<td[ a-zA-Z0-9/\.\"=]*>",$rows[$i2]);
+			$new = count($cols)-1;
+			if ($new > $width)
+				$width=$new;
+		}
+
+		if ($width == 0)
+			$html .= $tables[$i];
+		else
+		{
+			//in this table block are columns => it must be a table
+			$html .= "\n\begin{tabular}{|".str_repeat ("c|",$width)."}\n\\hline\n";
 			
-			$width=0;
-			
-			//find the biggest row amount
 			for ($i2=0; $i2 < count($rows); $i2++)
+			{
+				//split the columns from each row
+				$cols = preg_split("<td[>]*",$rows[$i2]);
+
+				$add = "&";
+				$line = "";
+
+				if (count($cols) > 1)
 				{
-					$cols=spliti("<td[ a-zA-Z0-9/\.\"=]*>",$rows[$i2]);
-					$new=count($cols)-1;
-					if ($new > $width)
-						$width=$new;
+					//there are columns
+					for ($i3 = 1; $i3 <= $width; $i3++)
+					{
+						//extract the field text
+						$field = trim(str_replace("\\\\\n","",$cols[$i3]));
+						if ($i3 == $width)
+							$add="";
+						$line .= "$field $add ";
+					}
+
+					$html .= trim($line);
+
+					$html .= " \\hline\n";
 				}
-				
-			if ($width == 0)
-				$html.=$tables[$i];
-			else
-				{
-					//in this table block are columns => it must be a table
-					$html.="\n\begin{tabular}{|".str_repeat ("c|",$width)."}\n\\hline\n";
-					
-					for ($i2=0; $i2 < count($rows); $i2++)
-						{
-							//split the columns from each row
-							$cols=spliti("<td[>]*",$rows[$i2]);
+			}
 
-							$add="&";
-							$line="";
-
-							if (count($cols) > 1)
-								{
-									//there are columns
-									for ($i3=1; $i3 <= $width; $i3++)
-										{
-											//extract the field text
-											$field=trim(str_replace("\\\\\n","",$cols[$i3]));
-											if ($i3 == $width)
-												$add="";
-											$line.="$field $add ";
-										};
-										
-									$html.=trim($line);
-										
-									$html.=" \\hline\n";
-								};
-						}
-
-					$html.="\n\\end{tabular}\n";
-				};
-		};
+			$html .= "\n\\end{tabular}\n";
+		}
+	}
 
 	$html=preg_replace($s,$r,$html);
 

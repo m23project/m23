@@ -249,7 +249,6 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $keyword List by keyword
 	* @param string $name name of the virtual machine
 	* @param string $networkId list by network id
-	* @param string $page 
 	* @param string $pageSize 
 	* @param string $podId the pod ID
 	* @param string $state state of the virtual machine
@@ -258,7 +257,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listVirtualMachines($account = "", $domainId = "", $forVirtualNetwork = "", $groupId = "", $hostId = "", $hypervisor = "", $id = "", $isRecursive = "", $keyword = "", $name = "", $networkId = "", $page = "", $pageSize = "", $podId = "", $state = "", $storageId = "", $zoneId = "", $page = "") {
+	public function listVirtualMachines($account = "", $domainId = "", $forVirtualNetwork = "", $groupId = "", $hostId = "", $hypervisor = "", $id = "", $isRecursive = "", $keyword = "", $name = "", $networkId = "", $pageSize = "", $podId = "", $state = "", $storageId = "", $zoneId = "", $page = "") {
 
 		return $this->request("listVirtualMachines", array(
 			'account' => $account,
@@ -526,13 +525,12 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $id the template ID
 	* @param string $keyword List by keyword
 	* @param string $name the template name
-	* @param string $page 
 	* @param string $pageSize 
 	* @param string $zoneId list templates by zoneId
 	* @param string $page Pagination
 	*/
 	
-	public function listTemplates($templateFilter, $account = "", $domainId = "", $hypervisor = "", $id = "", $keyword = "", $name = "", $page = "", $pageSize = "", $zoneId = "", $page = "") {
+	public function listTemplates($templateFilter, $account = "", $domainId = "", $hypervisor = "", $id = "", $keyword = "", $name = "", $pageSize = "", $zoneId = "", $page = "") {
 
 		if (empty($templateFilter)) {
 			throw new CloudStackClientException(sprintf(MISSING_ARGUMENT_MSG, "templateFilter"), MISSING_ARGUMENT);
@@ -698,13 +696,12 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $isReady true if this ISO is ready to be deployed
 	* @param string $keyword List by keyword
 	* @param string $name list all isos by name
-	* @param string $page 
 	* @param string $pageSize 
 	* @param string $zoneId the ID of the zone
 	* @param string $page Pagination
 	*/
 	
-	public function listIsos($account = "", $bootable = "", $domainId = "", $hypervisor = "", $id = "", $isoFilter = "", $isPublic = "", $isReady = "", $keyword = "", $name = "", $page = "", $pageSize = "", $zoneId = "", $page = "") {
+	public function listIsos($account = "", $bootable = "", $domainId = "", $hypervisor = "", $id = "", $isoFilter = "", $isPublic = "", $isReady = "", $keyword = "", $name = "", $pageSize = "", $zoneId = "", $page = "") {
 
 		return $this->request("listIsos", array(
 			'account' => $account,
@@ -1053,7 +1050,6 @@ class CloudStackClient extends BaseCloudStackClient {
 	*		m the parent specified by the domain id till leaves.
 	* @param string $keyword List by keyword
 	* @param string $name the name of the disk volume
-	* @param string $page 
 	* @param string $pageSize 
 	* @param string $podId the pod id the disk volume belongs to
 	* @param string $type the type of disk volume
@@ -1062,7 +1058,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listVolumes($account = "", $domainId = "", $hostId = "", $id = "", $isRecursive = "", $keyword = "", $name = "", $page = "", $pageSize = "", $podId = "", $type = "", $virtualMachineId = "", $zoneId = "", $page = "") {
+	public function listVolumes($account = "", $domainId = "", $hostId = "", $id = "", $isRecursive = "", $keyword = "", $name = "", $pageSize = "", $podId = "", $type = "", $virtualMachineId = "", $zoneId = "", $page = "") {
 
 		return $this->request("listVolumes", array(
 			'account' => $account,
@@ -1230,14 +1226,13 @@ class CloudStackClient extends BaseCloudStackClient {
 	*		ccount in the specified domain ID.
 	* @param string $id list the security group by the id provided
 	* @param string $keyword List by keyword
-	* @param string $page 
 	* @param string $pageSize 
 	* @param string $securityGroupName lists security groups by name
 	* @param string $virtualMachineId lists security groups by virtual machine id
 	* @param string $page Pagination
 	*/
 	
-	public function listSecurityGroups($account = "", $domainId = "", $id = "", $keyword = "", $page = "", $pageSize = "", $securityGroupName = "", $virtualMachineId = "", $page = "") {
+	public function listSecurityGroups($account = "", $domainId = "", $id = "", $keyword = "", $pageSize = "", $securityGroupName = "", $virtualMachineId = "", $page = "") {
 
 		return $this->request("listSecurityGroups", array(
 			'account' => $account,
@@ -1267,14 +1262,13 @@ class CloudStackClient extends BaseCloudStackClient {
 	*		om the parent specified by the domain id till leaves.
 	* @param string $keyword List by keyword
 	* @param string $name list account by account name
-	* @param string $page 
 	* @param string $pageSize 
 	* @param string $state list accounts by state. Valid states are enabled, disabled,
 	*		 and locked.
 	* @param string $page Pagination
 	*/
 	
-	public function listAccounts($accountType = "", $domainId = "", $id = "", $isCleanUpRequired = "", $isRecursive = "", $keyword = "", $name = "", $page = "", $pageSize = "", $state = "", $page = "") {
+	public function listAccounts($accountType = "", $domainId = "", $id = "", $isCleanUpRequired = "", $isRecursive = "", $keyword = "", $name = "", $pageSize = "", $state = "", $page = "") {
 
 		return $this->request("listAccounts", array(
 			'accounttype' => $accountType,
@@ -1331,14 +1325,13 @@ class CloudStackClient extends BaseCloudStackClient {
 	*		rom the parent specified by the domain id till leaves.
 	* @param string $keyword List by keyword
 	* @param string $name lists snapshot by snapshot name
-	* @param string $page 
 	* @param string $pageSize 
 	* @param string $snapshotType valid values are MANUAL or RECURRING.
 	* @param string $volumeId the ID of the disk volume
 	* @param string $page Pagination
 	*/
 	
-	public function listSnapshots($account = "", $domainId = "", $id = "", $intervalType = "", $isRecursive = "", $keyword = "", $name = "", $page = "", $pageSize = "", $snapshotType = "", $volumeId = "", $page = "") {
+	public function listSnapshots($account = "", $domainId = "", $id = "", $intervalType = "", $isRecursive = "", $keyword = "", $name = "", $pageSize = "", $snapshotType = "", $volumeId = "", $page = "") {
 
 		return $this->request("listSnapshots", array(
 			'account' => $account,
@@ -1441,12 +1434,11 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $domainId the domain ID. If used with the account parameter, lists
 	*		 snapshot policies for the specified account in this domain.
 	* @param string $keyword List by keyword
-	* @param string $page 
 	* @param string $pageSize 
 	* @param string $page Pagination
 	*/
 	
-	public function listSnapshotPolicies($volumeId, $account = "", $domainId = "", $keyword = "", $page = "", $pageSize = "", $page = "") {
+	public function listSnapshotPolicies($volumeId, $account = "", $domainId = "", $keyword = "", $pageSize = "", $page = "") {
 
 		if (empty($volumeId)) {
 			throw new CloudStackClientException(sprintf(MISSING_ARGUMENT_MSG, "volumeId"), MISSING_ARGUMENT);
@@ -1495,7 +1487,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listAsyncJobs($account = "", $domainId = "", $keyword = "", $page = "", $pageSize = "", $startDate = "", $page = "") {
+	public function listAsyncJobs($account = "", $domainId = "", $keyword = "", $pageSize = "", $startDate = "", $page = "") {
 
 		return $this->request("listAsyncJobs", array(
 			'account' => $account,
@@ -1530,7 +1522,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listEvents($account = "", $domainId = "", $duration = "", $endDate = "", $entryTime = "", $id = "", $keyword = "", $level = "", $page = "", $pageSize = "", $startDate = "", $type = "", $page = "") {
+	public function listEvents($account = "", $domainId = "", $duration = "", $endDate = "", $entryTime = "", $id = "", $keyword = "", $level = "", $pageSize = "", $startDate = "", $type = "", $page = "") {
 
 		return $this->request("listEvents", array(
 			'account' => $account,
@@ -1560,7 +1552,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listOsTypes($id = "", $keyword = "", $osCategoryId = "", $page = "", $pageSize = "", $page = "") {
+	public function listOsTypes($id = "", $keyword = "", $osCategoryId = "", $pageSize = "", $page = "") {
 
 		return $this->request("listOsTypes", array(
 			'id' => $id,
@@ -1582,7 +1574,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listOsCategories($id = "", $keyword = "", $page = "", $pageSize = "", $page = "") {
+	public function listOsCategories($id = "", $keyword = "", $pageSize = "", $page = "") {
 
 		return $this->request("listOsCategories", array(
 			'id' => $id,
@@ -1609,7 +1601,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listServiceOfferings($domainId = "", $id = "", $keyword = "", $name = "", $page = "", $pageSize = "", $virtualMachineId = "", $page = "") {
+	public function listServiceOfferings($domainId = "", $id = "", $keyword = "", $name = "", $pageSize = "", $virtualMachineId = "", $page = "") {
 
 		return $this->request("listServiceOfferings", array(
 			'domainid' => $domainId,
@@ -1635,7 +1627,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listDiskOfferings($domainId = "", $id = "", $keyword = "", $name = "", $page = "", $pageSize = "", $page = "") {
+	public function listDiskOfferings($domainId = "", $id = "", $keyword = "", $name = "", $pageSize = "", $page = "") {
 
 		return $this->request("listDiskOfferings", array(
 			'domainid' => $domainId,
@@ -1706,7 +1698,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listRemoteAccessVpns($publicIpId, $account = "", $domainId = "", $keyword = "", $page = "", $pageSize = "", $page = "") {
+	public function listRemoteAccessVpns($publicIpId, $account = "", $domainId = "", $keyword = "", $pageSize = "", $page = "") {
 
 		if (empty($publicIpId)) {
 			throw new CloudStackClientException(sprintf(MISSING_ARGUMENT_MSG, "publicIpId"), MISSING_ARGUMENT);
@@ -1791,7 +1783,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listVpnUsers($account = "", $domainId = "", $id = "", $keyword = "", $page = "", $pageSize = "", $userName = "", $page = "") {
+	public function listVpnUsers($account = "", $domainId = "", $id = "", $keyword = "", $pageSize = "", $userName = "", $page = "") {
 
 		return $this->request("listVpnUsers", array(
 			'account' => $account,
@@ -1867,7 +1859,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listPublicIpAddresses($account = "", $allocatedOnly = "", $domainId = "", $forVirtualNetwork = "", $id = "", $ipAddress = "", $keyword = "", $page = "", $pageSize = "", $vlanId = "", $zoneId = "", $page = "") {
+	public function listPublicIpAddresses($account = "", $allocatedOnly = "", $domainId = "", $forVirtualNetwork = "", $id = "", $ipAddress = "", $keyword = "", $pageSize = "", $vlanId = "", $zoneId = "", $page = "") {
 
 		return $this->request("listPublicIpAddresses", array(
 			'account' => $account,
@@ -1899,7 +1891,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listPortForwardingRules($account = "", $domainId = "", $id = "", $ipAddressId = "", $keyword = "", $page = "", $pageSize = "", $page = "") {
+	public function listPortForwardingRules($account = "", $domainId = "", $id = "", $ipAddressId = "", $keyword = "", $pageSize = "", $page = "") {
 
 		return $this->request("listPortForwardingRules", array(
 			'account' => $account,
@@ -2063,7 +2055,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listIpForwardingRules($account = "", $domainId = "", $id = "", $ipAddressId = "", $keyword = "", $page = "", $pageSize = "", $virtualMachineId = "", $page = "") {
+	public function listIpForwardingRules($account = "", $domainId = "", $id = "", $ipAddressId = "", $keyword = "", $pageSize = "", $virtualMachineId = "", $page = "") {
 
 		return $this->request("listIpForwardingRules", array(
 			'account' => $account,
@@ -2227,7 +2219,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listLoadBalancerRules($account = "", $domainId = "", $id = "", $keyword = "", $name = "", $page = "", $pageSize = "", $publicIpId = "", $virtualMachineId = "", $page = "") {
+	public function listLoadBalancerRules($account = "", $domainId = "", $id = "", $keyword = "", $name = "", $pageSize = "", $publicIpId = "", $virtualMachineId = "", $page = "") {
 
 		return $this->request("listLoadBalancerRules", array(
 			'account' => $account,
@@ -2255,7 +2247,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listLoadBalancerRuleInstances($id, $applied = "", $keyword = "", $page = "", $pageSize = "", $page = "") {
+	public function listLoadBalancerRuleInstances($id, $applied = "", $keyword = "", $pageSize = "", $page = "") {
 
 		if (empty($id)) {
 			throw new CloudStackClientException(sprintf(MISSING_ARGUMENT_MSG, "id"), MISSING_ARGUMENT);
@@ -2374,7 +2366,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listSSHKeyPairs($fingerprint = "", $keyword = "", $name = "", $page = "", $pageSize = "", $page = "") {
+	public function listSSHKeyPairs($fingerprint = "", $keyword = "", $name = "", $pageSize = "", $page = "") {
 
 		return $this->request("listSSHKeyPairs", array(
 			'fingerprint' => $fingerprint,
@@ -2459,7 +2451,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listInstanceGroups($account = "", $domainId = "", $id = "", $keyword = "", $name = "", $page = "", $pageSize = "", $page = "") {
+	public function listInstanceGroups($account = "", $domainId = "", $id = "", $keyword = "", $name = "", $pageSize = "", $page = "") {
 
 		return $this->request("listInstanceGroups", array(
 			'account' => $account,
@@ -2566,7 +2558,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listNetworks($account = "", $domainId = "", $id = "", $isDefault = "", $isShared = "", $isSystem = "", $keyword = "", $page = "", $pageSize = "", $trafficType = "", $type = "", $zoneId = "", $page = "") {
+	public function listNetworks($account = "", $domainId = "", $id = "", $isDefault = "", $isShared = "", $isSystem = "", $keyword = "", $pageSize = "", $trafficType = "", $type = "", $zoneId = "", $page = "") {
 
 		return $this->request("listNetworks", array(
 			'account' => $account,
@@ -2652,7 +2644,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listZones($available = "", $domainId = "", $id = "", $keyword = "", $page = "", $pageSize = "", $page = "") {
+	public function listZones($available = "", $domainId = "", $id = "", $keyword = "", $pageSize = "", $page = "") {
 
 		return $this->request("listZones", array(
 			'available' => $available,
@@ -2688,7 +2680,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listNetworkOfferings($availability = "", $displayText = "", $guestIpType = "", $id = "", $isDefault = "", $isShared = "", $keyword = "", $name = "", $page = "", $pageSize = "", $specifyVlan = "", $trafficType = "", $zoneId = "", $page = "") {
+	public function listNetworkOfferings($availability = "", $displayText = "", $guestIpType = "", $id = "", $isDefault = "", $isShared = "", $keyword = "", $name = "", $pageSize = "", $specifyVlan = "", $trafficType = "", $zoneId = "", $page = "") {
 
 		return $this->request("listNetworkOfferings", array(
 			'availability' => $availability,
@@ -2741,7 +2733,7 @@ class CloudStackClient extends BaseCloudStackClient {
 	* @param string $page Pagination
 	*/
 	
-	public function listResourceLimits($account = "", $domainId = "", $id = "", $keyword = "", $page = "", $pageSize = "", $resourceType = "", $page = "") {
+	public function listResourceLimits($account = "", $domainId = "", $id = "", $keyword = "", $pageSize = "", $resourceType = "", $page = "") {
 
 		return $this->request("listResourceLimits", array(
 			'account' => $account,

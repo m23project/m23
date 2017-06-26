@@ -318,7 +318,7 @@ function MASS_showTableDefinition($EGKparams,$DBfileName)
 	};
 
 	//the amount of selections can be increased to the amount of fields in the DB file
-	if ($_POST[ED_columnAmount] > $enterPropertiesAmount)
+	if ($_POST['ED_columnAmount'] > $enterPropertiesAmount)
 		$selectionAmount = $_POST['ED_columnAmount'];
 	else
 		$selectionAmount = $enterPropertiesAmount;
@@ -519,7 +519,7 @@ function MASS_readDBFile($file,$EGKparams)
 		if (isset($line{1}) === false)
 			return(false);
 
-		$parts=explode($EGKparams[glue],$line);
+		$parts=explode($EGKparams['glue'],$line);
 
 		for ($i = 0; $i < $EGKparams['columnAmout']; $i++)
 			$out[$EGKparams["columnKey$i"]] = $parts[$i];
@@ -1449,7 +1449,7 @@ function MASS_showOverview($EGKparams)
 					$getSystemtimeByNTPs[$i] = $_POST["CB_getSystemtimeByNTP$i"];
 
 
-					if ($EGKparams[rootlogin]=="k")
+					if ($EGKparams['rootlogin']=="k")
 						{
 							$rootloginDisabled="disabled";
 							$rootlogins = array_fill(0,$generateAmount,"******");

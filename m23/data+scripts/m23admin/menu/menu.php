@@ -44,11 +44,11 @@ CAPTURE_showMessageBox();
 ?>
 
 <ul class="navmenu">
-<?php 
+<?php
 	MENU_startGroup($I18N_server);
 		
 		MENU_showEntry($I18N_home,"index.php","/gfx/home_mini.png");
-		if (!isset($_SESSION['m23Shared'])) MENU_showEntry($I18N_serverSettings,"index.php?page=serverSettings",
+		if (!$_SESSION['m23Shared']) MENU_showEntry($I18N_serverSettings,"index.php?page=serverSettings",
 			"/gfx/settings_mini.png");
 		if (isset($_SESSION['m23Shared']) && $_SESSION['m23Shared']) MENU_showEntry($I18N_customerCenter,"index.php?page=customerCenter",
 			"/gfx/settings_mini.png");
@@ -65,12 +65,12 @@ CAPTURE_showMessageBox();
 			"/gfx/status/yellow.png");
 		MENU_showEntry($I18N_delete,"index.php?page=clientsoverview&action=delete",
 			"/gfx/mini_trash.png");
-		if (!isset($_SESSION['m23Shared']))  MENU_showEntry($I18N_assimilate,"index.php?page=assimilate",
+		if (!$_SESSION['m23Shared'])  MENU_showEntry($I18N_assimilate,"index.php?page=assimilate",
 			"/gfx/assimilate-mini.png");
 // 		PLG_listMenuPlugins("/m23/data+scripts/m23admin/clients/");
 	MENU_endGroup();
 
-	if (!isset($_SESSION['m23Shared']))
+	if (!$_SESSION['m23Shared'])
 	{
 		MENU_startGroup($I18N_VMclients);
 			MENU_showEntry($I18N_createVM,"index.php?page=addvmclient&clearSession=1",
@@ -94,11 +94,13 @@ CAPTURE_showMessageBox();
 			"/gfx/deinstall-mini.png");
 		MENU_showEntry($I18N_update,"index.php?page=clientsoverview&action=update",
 			"/gfx/update_mini.png");
+		MENU_showEntry($I18N_autoUpdate,"index.php?page=autoUpdate",
+			"/gfx/autoUpdate_mini.png");
 		MENU_showEntry($I18N_poolBuilder,"index.php?page=poolBuilder",
 			"/gfx/update_mini.png");
-		if (!isset($_SESSION['m23Shared'])) MENU_showEntry($I18N_scriptEditor,"index.php?page=scriptEditor",
+		if (!$_SESSION['m23Shared']) MENU_showEntry($I18N_scriptEditor,"index.php?page=scriptEditor",
 			"/gfx/scriptEditor-mini.png");
-		if (!isset($_SESSION['m23Shared']))  MENU_showEntry($I18N_packageBuilder,"index.php?page=packageBuilder",
+		if (!$_SESSION['m23Shared'])  MENU_showEntry($I18N_packageBuilder,"index.php?page=packageBuilder",
 			"/gfx/update_mini.png");
 		MENU_showEntry($I18N_packageSources,"index.php?page=clientsourceslist",
 			"/gfx/package-mini.png");
@@ -111,7 +113,7 @@ CAPTURE_showMessageBox();
 // 		PLG_listMenuPlugins("/m23/data+scripts/m23admin/packages/"); 
 	MENU_endGroup();
 
-	if (!isset($_SESSION['m23Shared']))
+	if (!$_SESSION['m23Shared'])
 	{
 		MENU_startGroup($I18N_massTools);
 			MENU_showEntry($I18N_clientBuilder,"index.php?page=addclient&action=clientBuilder&clearSession=1",

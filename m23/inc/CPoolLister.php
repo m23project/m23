@@ -1,5 +1,10 @@
 <?php
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for listing pools.
+$*/
+
 class CPoolLister extends CChecks
 {
 	const POOL_DIR = '/m23/data+scripts/pool';

@@ -278,6 +278,8 @@ function GRP_listGroupsAndCount()
 {
 	$groups = GRP_listGroups();
 
+	$i = 0;
+
 	foreach ($groups as $group)
 		{
 			$arr[$i]['groupname']=$group;
@@ -300,6 +302,8 @@ function GRP_listGroupsAndCount()
 function GRP_showGroupsAndCount()
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	$selectedGroups = array();
 
 	$actionList[$I18N_install]	= $I18N_install;
 	$actionList[$I18N_deinstall]= $I18N_deinstall;
@@ -326,7 +330,7 @@ function GRP_showGroupsAndCount()
 	//if the action should make direct changes (true) or call a second page (false)
 	$directChange=false;
 
-	if ($_POST['directChange'] == 1)
+	if (isset($_POST['directChange']) && ($_POST['directChange'] == 1))
 		$directChange=true;
 
 	//Set form action, page and label of the execution button
@@ -419,6 +423,7 @@ function GRP_showGroupsAndCount()
 		<input type=\"hidden\" name=\"selectedGroups\" value=\"$selectedGroupsURL\">
 		");
 		HTML_showFormEnd();
+
 
 
 
@@ -647,10 +652,10 @@ function GRP_listGroups()
 	$i = 0;
 
 	while ($line = mysqli_fetch_row($result))
-		{
-			$arr[$i] = $line[0];
-			$i++;
-		};
+	{
+		$arr[$i] = $line[0];
+		$i++;
+	}
 
 	return($arr);
 };
@@ -730,62 +735,66 @@ function GRP_showDelDialog($groupName)
 **parameter clientName: name of the client
 **parameter type: type of the action ("add" for adding,"del" for removing)
 **/
-function GRP_doClientMoreGroups($clientName,$type)
+function GRP_doClientMoreGroups($clientName, $type)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	
-	if (empty($clientName))
-		$clientName=$_POST['client'];
+	$selGroups = array();
 
-	if (empty($id))
-		$id=$_POST['id'];
+	// Get the client name from POST or GET
+	if (isset($_POST['client'])) $clientName = $_POST['client'];
+	elseif (isset($_GET['client'])) $clientName = $_GET['client'];
+	else die('GRP_doClientMoreGroups: No client name given');
 
-	if (empty($id))
-		$id=$_GET['id'];
-		
-	if (empty($type))
-		$type=$_POST['actionType'];
-		
-	if (empty($infoType))
-		$infoType=$_POST['infoType'];
-		
-		
+	// Get the client id from POST or GET
+	if (isset($_POST['id'])) $id = $_POST['id'];
+	elseif (isset($_GET['id'])) $id = $_GET['id'];
+	else die('GRP_doClientMoreGroups: No client id given');
+
+	// Get the action type from POST or GET
+	if (isset($_POST['actionType'])) $type = $_POST['actionType'];
+	elseif (isset($_GET['actionType'])) $type = $_GET['actionType'];
+
+	// Get the info type from POST or GET
+	if (isset($_POST['infoType'])) $infoType = $_POST['infoType'];
+	elseif (isset($_GET['infoType'])) $infoType = $_GET['infoType'];
+
 	switch ($type)
+	{
+		case "add": //client should be added to the groups
 		{
-			case "add": //client should be added to the groups
-				{
-					$buttonLabel = $I18N_add;
-					$title = $I18N_addToGroup;
-					//should the client in the groups?
-					$isInGroupsOnly = false;
-					$sorryText=$I18N_noMoreGroupsForAdding;
-					break;
-				};
-			case "del": //client should be deleted from the groups
-				{
-					$buttonLabel = $I18N_delete;
-					$title = $I18N_removeFromGroup;
-					$isInGroupsOnly = true;
-					$sorryText=$I18N_clientIsInNoGroup;
-					break;
-				};
+			$buttonLabel = $I18N_add;
+			$title = $I18N_addToGroup;
+			//should the client in the groups?
+			$isInGroupsOnly = false;
+			$sorryText=$I18N_noMoreGroupsForAdding;
+			break;
 		}
+		case "del": //client should be deleted from the groups
+		{
+			$buttonLabel = $I18N_delete;
+			$title = $I18N_removeFromGroup;
+			$isInGroupsOnly = true;
+			$sorryText=$I18N_clientIsInNoGroup;
+			break;
+		}
+	}
 
 
 	if (isset($type) && isset($_POST["BUT_$type"]))
+	{
+		for ($i=0; $i < $_POST['groupAmount']; $i++)
 		{
-			for ($i=0; $i < $_POST['groupAmount']; $i++)
+			if (isset($_POST["CB_do$i"]))
+			{
+				switch ($type)
 				{
-					if (isset($_POST["CB_do$i"]))
-						{
-							switch ($type)
-								{
-									case "add": GRP_addClientToGroup($clientName,$_POST["CB_do$i"]); break;
-									case "del": GRP_delClientFromGroup($clientName,$_POST["CB_do$i"]); break;
-								};
-						};
-				};
-		};
+					case "add": GRP_addClientToGroup($clientName,$_POST["CB_do$i"]); break;
+					case "del": GRP_delClientFromGroup($clientName,$_POST["CB_do$i"]); break;
+				}
+			}
+		}
+	}
 
 	$groups = GRP_listGroups();
 	
@@ -879,14 +888,16 @@ function GRP_listClientGroups($clientName)
 
 	$i=0;
 
+	$arr = array();
+
 	while ($line = mysqli_fetch_row($res))
-		{
-			$arr[$i]=$line[0];
-			$i++;
-		};
+	{
+		$arr[$i]=$line[0];
+		$i++;
+	}
 
 	return($arr);
-};
+}
 
 
 
@@ -936,6 +947,8 @@ function GRP_showClientGroups($clientName, $link=false, $output=true )
 **/
 function GRP_listAllClientsInGroup($groupName)
 {
+	$out = array();
+
 	$res = CLIENT_query("","","","",$groupName);
 
 	$nr = 0;
@@ -991,11 +1004,11 @@ function GRP_getDistrsAndSourcesLists($groupName, &$distrs, &$sourceslists)
 				//print("cl: $client ");
 				$options = CLIENT_getAllOptions($client);
 				
-				if (!empty($options[distr]) && !in_array($options[distr],$distrs))
-					$distrs[$dnr++]=$options[distr];
+				if (!empty($options['distr']) && !in_array($options['distr'],$distrs))
+					$distrs[$dnr++]=$options['distr'];
 					
-				if (!empty($options[packagesource]) && !in_array($options[packagesource],$sourceslists))
-					$sourceslists[$snr++]=$options[packagesource];
+				if (!empty($options['packagesource']) && !in_array($options['packagesource'],$sourceslists))
+					$sourceslists[$snr++]=$options['packagesource'];
 			};
 }
 
@@ -1006,7 +1019,7 @@ function GRP_getDistrsAndSourcesLists($groupName, &$distrs, &$sourceslists)
 /**
 **name GRP_showSelDistrSources($groupNames,&$distr, &$sourceslist)
 **description shows a dialog for selection of distribution and package source name. The choices are taken form distr and packagesource values of the clients in the group. If there is only one entry for one or both of the values, the value is written back to the input variable otherwise a HTML selection is shown.
-**parameter groupNames: group names stores in an array
+**parameter groupNames: group names stored in an array or NULL, if groups should be ignored and all distributions and sources lists should be shown.
 **parameter distr: distribution to show first and variable to write the distribution name back
 **parameter sourceslist: sources list to show first and variable to write the sources list name back
 **/
@@ -1014,59 +1027,68 @@ function GRP_showSelDistrSources($groupNames,&$distr, &$sourceslist)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
-	//store all distributions and sources lists used in the clients in $distrs and $sourceslists
-	foreach ($groupNames as $groupName)
-		GRP_getDistrsAndSourcesLists($groupName, $distrs, $sourceslists);
+	if (!is_null($groupNames))
+	{
+		//store all distributions and sources lists used in the clients in $distrs and $sourceslists
+		foreach ($groupNames as $groupName)
+			GRP_getDistrsAndSourcesLists($groupName, $distrs, $sourceslists);
+	}
+	else
+	{
+		$distrs = DISTR_listDistributions();
+		$sourceslists = SRCLST_getListnames('*');
+	}
+	
 
 	$moreDistrs=(count($distrs) > 1);
 	$moreSourceslists=(count($sourceslists) > 1);
-	$selectionMessage=($_GET['action'] == 'packageSelection' ? $I18N_beAwareOfDifferenDistros : $I18N_clientsInGroupHaveDifferentDistributionsSourceslist);
+	$selectionMessage=((isset($_GET['action']) && ($_GET['action'] == 'packageSelection')) ? $I18N_beAwareOfDifferenDistros : $I18N_clientsInGroupHaveDifferentDistributionsSourceslist);
 
 	//if there is anything to select show selection
 	if ($moreDistrs || $moreSourceslists)
+	{
+		HTML_showTableHeader();
+
+		echo("<tr><td>$selectionMessage<br><br>");
+
+		//are there distributions to select?
+		if ($moreDistrs)
 		{
-			HTML_showTableHeader();
-
-			echo("<tr><td>$selectionMessage<br><br>");
-
-			//are there distributions to select?
-			if ($moreDistrs)
-				{
-					sort($distrs);
-					//show selection
-					echo(" $I18N_distribution ".HTML_listSelection("SEL_distr",$distrs,$distr));
-				}
-			else
-				{
-					//assign the only distribution
-					$distr = $distrs[0];
-					echo(" $I18N_distribution: $distr ");
-				}
-
-			//are there sourceslists to select?
-			if ($moreSourceslists)
-				{
-					sort($sourceslists);
-					//show selection
-					echo(" $I18N_packageSourceName ".HTML_listSelection("SEL_sourceslist",$sourceslists,$sourceslist));
-				}
-			else
-				{
-					//assign the only sourceslist
-					$sourceslist = $sourceslists[0];
-					echo(" $I18N_packageSourceName: $sourceslist ");
-				}
-
-			echo("&nbsp;&nbsp;<INPUT type=\"submit\" name=\"BUT_distrSource\" value=\"$I18N_select\"></td></tr>");
-				
-			HTML_showTableEnd();
+			sort($distrs);
+			//show selection
+			echo(" $I18N_distribution ".HTML_listSelection("SEL_distr",$distrs,$distr));
 		}
-	else
+		else
 		{
-			//there is only one sourceslist and one distribution => assign
+			//assign the only distribution
 			$distr = $distrs[0];
+			echo(" $I18N_distribution: $distr ");
+		}
+
+		//are there sourceslists to select?
+		if ($moreSourceslists)
+		{
+			sort($sourceslists);
+			//show selection
+			echo(" $I18N_packageSourceName ".HTML_listSelection("SEL_sourceslist",$sourceslists,$sourceslist));
+		}
+		else
+		{
+			//assign the only sourceslist
 			$sourceslist = $sourceslists[0];
-		};
+			echo(" $I18N_packageSourceName: $sourceslist ");
+		}
+
+		echo("&nbsp;&nbsp;<INPUT type=\"submit\" name=\"BUT_distrSource\" value=\"$I18N_select\"></td></tr>");
+			
+		HTML_showTableEnd();
+	}
+	else
+	{
+		//there is only one sourceslist and one distribution => assign
+		$distr = isset($distrs[0]) ? $distrs[0] : '';
+		$sourceslist = isset($sourceslists[0]) ? $sourceslists[0] : '';
+	}
 };
 
 
@@ -1074,35 +1096,47 @@ function GRP_showSelDistrSources($groupNames,&$distr, &$sourceslist)
 
 
 /**
-**name GRP_listAllClientsInGroups($groupNames)
+**name GRP_listAllClientsInGroups($groupNames, $withAutoUpdateJob = false)
 **description returns an array with all client names contained in the groups
 **parameter groupNames: the names of the groups stored in an array
+**parameter withAutoUpdateJob: If set to true, only clients with auto update job will be listed.
+**returns Array with the found client names.
 **/
-function GRP_listAllClientsInGroups($groupNames)
+function GRP_listAllClientsInGroups($groupNames, $withAutoUpdateJob = false)
 {
-	CHECK_FW(CC_groupname, $groupNames[0]);
-	$gid = GRP_getIdByName($groupNames[0]);
+	$arr = array();
+	$wAUJSQL = '';
+	$firstGroup = true;
+	$gSQL = '';
 
-	$gSQL="clientgroups.groupid=$gid";
+	// Run thru the group names and make an SQL statement that contains only these groups
+	foreach ($groupNames as $name)
+	{
+		CHECK_FW(CC_groupname, $name);
+		$gid = GRP_getIdByName($name);
 
-	for ($i=1; $i < count($groupNames); $i++)
-		{
-			CHECK_FW(CC_groupname, $groupNames[$i]);
-			$gid = GRP_getIdByName($groupNames[$i]);
-			$gSQL.=" OR clientgroups.groupid=$gid";
-		};
+		if ($firstGroup)
+			$gSQL = "clientgroups.groupid=$gid";
+		else
+			$gSQL .= " OR clientgroups.groupid=$gid";
 
-	$sql="SELECT DISTINCT clients.client FROM clients, clientgroups WHERE clients.id=clientgroups.clientid AND ($gSQL) ORDER BY clients.client";
+		$firstGroup = false;
+	}
+	
+	// Only list clients with auto update job?
+	if ($withAutoUpdateJob) $wAUJSQL = 'AND clients.autoUpdate_gotJob = 1';
+
+	$sql="SELECT DISTINCT clients.client FROM clients, clientgroups WHERE clients.id=clientgroups.clientid AND ($gSQL) $wAUJSQL ORDER BY clients.client";
 
 	$res = DB_query($sql); //FW ok
 
 	$i=0;
 
 	while ($line = mysqli_fetch_row($res))
-		{
-			$arr[$i]=$line[0];
-			$i++;
-		};
+	{
+		$arr[$i]=$line[0];
+		$i++;
+	}
 		
 	return($arr);
 }

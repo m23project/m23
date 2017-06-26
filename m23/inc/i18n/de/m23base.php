@@ -1349,7 +1349,7 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_addNewLoginToUCSLDAP = "Anmeldungsdaten auf UCS speichern.";
 @$I18N_authentificationViaUCS = "Anmeldung über UCS";
 @$I18N_addNewLoginToUCSLDAPError = "Fehler beim Speichern der Anmeldungsdaten auf UCS.";
-@$I18N_readLoginFromUCSLDAPSupportedDistros = '(nutzbar auf Clients mit Debian 8, Ubuntu 14.04, 16.04, Linux Mint 17.x und 18.x)';
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(nutzbar auf Clients mit Debian 8 + 9, Ubuntu 14.04, 16.04, Linux Mint 17.x und 18.x)';
 
 //16.2
 @$I18N_clientUsesDynamicIP = "Der Client verwendet eine dynamische IP (DHCP)";
@@ -1405,4 +1405,21 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_onlyRight = 'Nur rechts';
 @$I18N_noMatch = 'Keine Übereinstimmung';
 
+//17.2
+@$I18N_LDAPcouldNotCreatePosixAccount = 'Benutzer konnte nicht im LDAP angelegt werden.';
+@$I18N_LDAPcouldNotCreatePosixGroup = 'Gruppe konnte nicht im LDAP angelegt werden.';
+@$I18N_startTimeMustBeBeforeEndTime = 'Die Anfangszeit muß vor der Endzeit liegen.';
+@$I18N_addTimePeriod = 'Neuer Zeitraum';
+@$I18N_groupWasAddedPreviously = 'Die Gruppe wurde bereits hinzugefügt.';
+@$I18N_updatePeriods = 'Update-Zeiträume';
+@$I18N_updateGroups = 'Update-Gruppen';
+@$I18N_addGroup = 'Gruppe hinzufügen';
+@$I18N_createNewUpdateSet = 'Aktualisierungsgruppe hinzufügen';
+@$I18N_parallelUpdates = 'Gleichzeitige Aktualisierungen';
+@$I18N_autoUpdate = 'Automatisches Update';
+@$I18N_updateType = 'Aktualisierungstyp';
+@$I18N_autoUpdateFinishedOk = 'Automatisches Update wurde erfolgreich durchgeführt';
+@$I18N_autoUpdateFinishedErrorTooManyFailures = 'Zuviele fehlgeschlagene Versuche beim automatischen Update';
+@$I18N_autoUpdateFinishedWrongParameters = 'Widersprüchliche Statusinformationen zum automatischen Update';
+@$I18N_clientname_must_not_be_a_number = 'Der Clientname darf keine Zahl sein.';
 ?>

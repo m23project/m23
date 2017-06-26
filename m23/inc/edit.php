@@ -344,11 +344,9 @@ return("
 **/
 function EDIT_searchLastLineNumber($file,$searchLine)
 {
-	$searchLine = escapeshellcmd($searchLine);
-	
+	$searchLine = str_replace ("'", "\'", $searchLine);
 	return("
-		export m23searchLine=`awk -v SEARCH=\"$searchLine\" 'match($0,SEARCH) {LNR=NR}
-		END {print LNR}' $file`
+		export m23searchLine=`grep -nr '$searchLine' '$file' | cut -d':' -f1`
 		\n");
 };
 

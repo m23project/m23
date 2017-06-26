@@ -45,7 +45,7 @@ sendCommand()
 			exit 2
 		fi
 
-		if [ `echo "$ret" | head -1`  = "ok" ] && [ $retCode -eq 0 ]
+		if [ "`echo "$ret" | head -1`"  = "ok" ] && [ $retCode -eq 0 ]
 		then
 			echo "RAUS"
 			break
@@ -91,6 +91,10 @@ SERVER_startBackup()
 }
 
 
+CAutoUpdate_run()
+{
+	sendCommand CAutoUpdate.run
+}
 
 
 case $1 in
@@ -99,6 +103,9 @@ case $1 in
 		exit;;
 	"SERVER_startBackup")
 		SERVER_startBackup
+		exit;;
+	"CAutoUpdate.run")
+		CAutoUpdate_run
 		exit;;
 	*)
 		exit 1

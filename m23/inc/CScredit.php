@@ -25,10 +25,10 @@ class CScredit extends CChecks
 **/
 	public function __construct()
 	{
-		$this->setCurrentScriptFilename($_POST['currentFile']);
+		$this->setCurrentScriptFilename(isset($_POST['currentFile']) ? $_POST['currentFile'] : '');
 
 		// Try to get a previously loaded script information array
-		$temp = unserialize(urldecode($_POST['onlineScriptInfoArray']));
+		$temp = unserialize(urldecode(isset($_POST['onlineScriptInfoArray']) ? $_POST['onlineScriptInfoArray'] : ''));
 		if (($temp != false) && is_array($temp))
 			$this->onlineScriptInfoArray = $temp;
 
@@ -547,7 +547,7 @@ function run($id)
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 		// Description and author (pseudonyme) for the script to upload
-		$description = $_POST['TA_description'];
+		$description = isset($_POST['TA_description']) ? $_POST['TA_description'] : '';
 		$author = HTML_input('ED_author', false, 50);
 
 		// uploads the currently loaded script to the m23 source forge site.
@@ -610,7 +610,7 @@ function run($id)
 
 
 		//fake editing for the screenshot
-		if ($_GET['screenshot'] == yes)
+		if (isset($_GET['screenshot']) && ($_GET['screenshot'] == yes))
 		{
 			$this->setCurrentScript($this->getNewScriptTemplate());
 			$this->setCurrentScriptFilename('demo');
@@ -635,7 +635,7 @@ function run($id)
 		$viewScriptOutputDialogHTML = $this->getViewScriptOutputDialog();
 
 		echo(
-			HTML_hiddenVar('ACE_postContents', $_POST['ACE_postContents']).
+			HTML_hiddenVar('ACE_postContents', isset($_POST['ACE_postContents']) ? $_POST['ACE_postContents'] : '').
 			HTML_hiddenVar('currentFile', $this->getCurrentScriptFilename())."
 			<tr>".'
 				<style type="text/css" media="screen">

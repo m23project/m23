@@ -660,8 +660,10 @@ function IMG_showCreateImage($client)
 			".FDISK_listDrivesAndPartitions($param, $first, "SEL_ddDrive")."
 		</td>
 	</tr>
+	");
 
-<!--	<tr>
+/*
+	<tr>
 		<td><INPUT type=\"radio\" name=\"SEL_imageFormat\" value=\"".IMGFORMAT_TAR."\"></td>
 		<td>".$desc['IMGFORMAT_TAR']."</td>
 		<td>".IMG_getImageFormatSelection("SEL_ddTrans",array(IMGTRANS_NC),IMGTRANS)."</td>
@@ -684,8 +686,9 @@ function IMG_showCreateImage($client)
 	</tr>
 
 	<tr><td colspan=\"3\" align=\"center\"><hr></td></tr>
- -->
+*/
 
+	echo("
 	<tr>
 		<td colspan=\"2\" align=\"left\">
 			<span class=\"subhighlight\">$I18N_transferPort</span>

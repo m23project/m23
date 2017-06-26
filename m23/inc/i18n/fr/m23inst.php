@@ -71,4 +71,8 @@ $I18N_installing_elementary_desktop = 'Installation du bureau Elementary OS';
 
 //15.2
 $I18N_installing_gnome="Installation du bureau Gnome";
+
+//16.2
+$I18N_installingEduBuntuGnome='Installation du bureau Edubuntu';
+$I18N_installingLMythbuntu='Installation du bureau Mythbuntu';
 ?>

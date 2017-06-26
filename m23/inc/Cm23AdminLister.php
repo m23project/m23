@@ -1,5 +1,11 @@
 <?
 
+/*$mdocInfo
+ Author: Maren Hachmann (maren@goos-habermann.de), Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for listing m23 administrators.
+$*/
+
+
 class Cm23AdminLister
 {
 	const M23ADMIN_HT_PASSWD = "/m23/etc/.htpasswd";

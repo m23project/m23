@@ -1,12 +1,9 @@
 <?php
+
 /*$mdocInfo
  Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
  Description: Contains functions for assimilation of clients
 $*/
-
-
-
-
 
 /**
 **name ASSI_showClientAddDialog()

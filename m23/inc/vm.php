@@ -1,5 +1,4 @@
 <?php
-
 /*$mdocInfo
  Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
  Description: Functions for managing virtual clients.
@@ -8,9 +7,10 @@ $*/
 
 define('CLOUDSTACK_CONFFILE', '/m23/inc/CloudStackConf.php');
 
+
 //Try to include the maybe existing CloudStack configuration file and class
-@include_once(CLOUDSTACK_CONFFILE);
-@include_once('/m23/inc/CloudStack/CloudStackClient.php');
+foreach (array(CLOUDSTACK_CONFFILE, '/m23/inc/CloudStack/CloudStackClient.php') as $inc)
+	if (file_exists($inc)) include_once($inc);
 
 //Path to store the images and virtual machine files
 define('VM_IMAGE_DIR','/m23/vms/');
@@ -1508,6 +1508,8 @@ function VM_vmSwNr2Name($vmType)
 function VM_getHTMLStatusBlock($clientName)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	$vmInfoHTML = '';
 
 	//Get VM host and software for the client
 	$vmSwHost = VM_getSWandHost($clientName);

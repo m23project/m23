@@ -1,5 +1,11 @@
 <?PHP
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Debian specific management functions.
+$*/
+
+
 include('clientConfigCommon.php');
 
 
@@ -149,7 +155,7 @@ function CLCFG_listDebianReleases($selName,$first)
 {
 	return(CLCFG_listDebianReleasesGeneric($selName,$first,"debian"));
 }
-$CLCFG_listReleases=CLCFG_listDebianReleases;
+$CLCFG_listReleases = 'CLCFG_listDebianReleases';
 
 
 
@@ -184,16 +190,16 @@ function CLCFG_showDistributionSpecificOptions($options, $distr = "debian")
 	include_once("/m23/inc/distr/debian/packages.php");
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
-	$options = CLIENT_getSetOption($kernel,"kernel",$options);
+	$options = CLIENT_getSetOption(NULL,"kernel",$options);
 
 	$kernelList = PKG_getKernels($distr, $_POST['SEL_sourcename'], $options['arch']);
-	$kernel = HTML_storableSelection("SEL_kernel", "kernel", $kernelList, SELTYPE_selection, true, $options['kernel'], $options['kernel']);
+	$kernel = HTML_storableSelection("SEL_kernel", "kernel", $kernelList, SELTYPE_selection, true, isset($options['kernel']) ? $options['kernel'] : NULL, $options['kernel']);
 	$options = CLIENT_getSetOption($kernel,"kernel",$options);
 
-	$disableSSLCertCheck = HTML_storableCheckBox('CB_disableSSLCertCheck', '', 'disableSSLCertCheck', ($options['disableSSLCertCheck'] == 1));
+	$disableSSLCertCheck = HTML_storableCheckBox('CB_disableSSLCertCheck', '', 'disableSSLCertCheck', isset($options['disableSSLCertCheck']) && ($options['disableSSLCertCheck'] == 1));
 	$options = CLIENT_getSetOption(($disableSSLCertCheck ? 1 : 0), 'disableSSLCertCheck', $options);
 
-	$installX2goserver = HTML_storableCheckBox('CB_installX2goserver', '', 'installX2goserver', ($options['installX2goserver'] == 1));
+	$installX2goserver = HTML_storableCheckBox('CB_installX2goserver', '', 'installX2goserver', isset($options['installX2goserver']) && ($options['installX2goserver'] == 1));
 	$options = CLIENT_getSetOption(($installX2goserver ? 1 : 0), 'installX2goserver', $options);
 	
 	

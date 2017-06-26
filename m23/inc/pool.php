@@ -275,7 +275,7 @@ function POOL_showReadCD($poolName)
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	$devices=HELPER_getFdiskMountPoints();
 
-	$firstDevice=$_POST[SEL_device];
+	$firstDevice=$_POST['SEL_device'];
 	if (empty($firstDevice))
 		$firstDevice=POOL_getProperty($poolName,"device");
 
@@ -297,7 +297,7 @@ function POOL_showReadCD($poolName)
 		$disabledNext="";
 	};
 	
-	if (isset($_POST[BUT_readDrive]))
+	if (isset($_POST['BUT_readDrive']))
 	{
 		POOL_readCD($poolName,$firstDevice);
 		$readLabel=$I18N_checkDriveState;

@@ -1,5 +1,11 @@
 <?PHP
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Functions for handling messages sent by m23 clients.
+$*/
+
+
 
 /**
 **name MSR_decodeMessage()
@@ -143,7 +149,7 @@ then
 	#CloudStack test
 	wget -T5 -t5 http://\$serverGateway/latest/public-ipv4 -O /tmp/clientIP
 
-	if [ $? -eq 0 ]
+	if [ $? -eq 0 ] && [ -f /tmp/clientIP ] && [ $(grep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' -c /tmp/clientIP) -eq 1 ]
 	then
 		#yes, run in CloudStack
 		curIP=$(cat /tmp/clientIP)
@@ -298,7 +304,8 @@ function MSR_statusBar($percent, $statustext)
 **/
 function MSR_curDynIP($curIP)
 {
-	DB_query("UPDATE `clients` SET `ip` = \"$curIP\" WHERE `client` = \"".CLIENT_getClientName()."\"");
+	if (CHECK_FW(true, CC_ip, $curIP) === true)
+		DB_query("UPDATE `clients` SET `ip` = \"$curIP\" WHERE `client` = \"".CLIENT_getClientName()."\"");
 }
 
 

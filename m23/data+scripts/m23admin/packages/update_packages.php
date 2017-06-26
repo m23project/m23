@@ -16,7 +16,7 @@
 <?PHP
 	$clientOptions = CLIENT_getAllOptions($client);
 
-	$distr = $clientOptions['distr'];
+	$distr = isset($clientOptions['distr']) ? $clientOptions['distr'] : '';
 
 	if (strlen($distr)==0)
 		$distr="debian";
@@ -42,18 +42,18 @@
 
 ?>
 
-<input type="radio" name="RB_updateType" value="complete" <?PHP if($_GET['RB_updateType']=='complete') echo("checked");?>><?PHP echo($I18N_fullUpdate);?>&nbsp;
-<input type="radio" name="RB_updateType" value="normal" <?PHP if($_GET['RB_updateType']=='normal') echo("checked");?>>
+<input type="radio" name="RB_updateType" value="complete" <?PHP if (isset($_GET['RB_updateType']) && ($_GET['RB_updateType']=='complete')) echo("checked");?>><?PHP echo($I18N_fullUpdate);?>&nbsp;
+<input type="radio" name="RB_updateType" value="normal" <?PHP if (isset($_GET['RB_updateType']) && ($_GET['RB_updateType']=='normal')) echo("checked");?>>
 <?PHP echo($I18N_normalUpdate);?>
 
 
 <?PHP
-	if ($_GET['RB_updateType']=="complete")
+	if (isset($_GET['RB_updateType']) && ($_GET['RB_updateType']=='complete'))
 		$completeUpdate=true;
 	else
 		$completeUpdate=false;
 		
-	if (!empty($_GET['BUT_previewUpdate']))
+	if (isset($_GET['BUT_previewUpdate']) && !empty($_GET['BUT_previewUpdate']))
 		PKG_showPreviewUpdateSystem($client,$completeUpdate);
 	else
 		echo("<br>");

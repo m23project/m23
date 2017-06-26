@@ -1,10 +1,27 @@
 <?PHP
 	//Get the client name, the client's ID and current action (deinstall, update, ...) first by fetching with GET, afterwards with POST
-	$client = (isset($_GET['client']) ? $_GET['client'] : $_POST['HID_client']);
-	$id = (empty($_GET['id']) ? $_POST['HID_id'] : $_GET['id']);
-	$action = (isset($_GET['action']) ? $_GET['action'] : $_POST['HID_action']);
+	if (isset($_GET['client']))
+		$client =  $_GET['client'];
+	elseif (isset($_POST['HID_client']))
+		$client =  $_POST['HID_client'];
+	else
+		$client = '';
 
+	if (isset($_GET['id']))
+		$id =  $_GET['id'];
+	elseif (isset($_POST['HID_id']))
+		$id =  $_POST['HID_id'];
 
+	$groupStr = $searchDisabled = '';
+
+	if (isset($_GET['action']))
+		$action = $_GET['action'];
+	elseif (isset($_POST['HID_action']))
+		$action = $_POST['HID_action'];
+	else
+		$action = '';
+
+	$submitButLabel = '';
 
 	//Group variables
 	$isGroup = false;
@@ -17,26 +34,29 @@
 	$updateTypesA['normal'] = $I18N_normalUpdate;
 	$updateType = HTML_selection('RB_updateType', $updateTypesA, SELTYPE_radio, false, 'complete');
 
-
+	$CB_counter = (isset($_POST['HID_CB_counter']) ? $_POST['HID_CB_counter'] : 0);
 
 	//Package selections
 	$isPackageSelection = false;
 
-	//try to get the package selection name from the input save field
-	$packageSelectionName = HTML_input('ED_packageSelection', false, 20, 50);
+	// Set the 1st selected package selection as storing name for the package selection, if the package selection name is empty
+	if (($_POST['RB_packetType'] == 'recommend') && !isset($_POST['ED_packageSelection']{0}))
+	{
+		// Get the 1st selected package selection
+		for ($i = 0; $i < $CB_counter; $i++)
+		{
+			$var="CB_pkgRecommend".$i;
+	
+			if (isset($_POST[$var]))
+			{
+				$_POST['ED_packageSelection'] = $_POST[$var];
+				break;
+			}
+		}
+	}
 
-	//otherwise get the first selected package selection
-// 	if (empty($packageSelectionName))
-// 	for ($i = 0; $i < $CB_counter; $i++)
-// 	{
-// 		$var="CB_pkgRecommend".$i;
-// 
-// 		if (!empty($_POST[$var]))
-// 		{
-// 			$packageSelectionName=$_POST[$var];
-// 			break;
-// 		};
-// 	};
+	//try to get the package selection name from the input save field
+	$packageSelectionName = HTML_input('ED_packageSelection', $packageSelectionName1st, 20, 50);
 
 	//delete the selected package selection
 	if (HTML_submit('BUT_deletePackageSelection',$I18N_delete))
@@ -90,7 +110,6 @@
 			$groupmode=1;
 			$isUpdate=false;
 			$isPackageSelection=true;
-			$isGroup=true;
 			break;
 		};
 	}
@@ -105,85 +124,85 @@
 	}
 	else
 	{
-		$packagesource = $_POST['HID_packagesource'];
-		$distr = $_POST['HID_distr'];
-	};
+		$packagesource = isset($_POST['HID_packagesource']) ? $_POST['HID_packagesource'] : '';
+		$distr = isset($_POST['HID_distr']) ? $_POST['HID_distr'] : '';
+	}
 
 	//Check if we have groups in the hidden variable and if yes: restore the groups array
-	if (!empty($_POST['HID_groupStr']))
-		{
-			$groups = explode("?",$_POST['HID_groupStr']);
-			$isGroup=true;
-			$groupStr = $_POST['HID_groupStr'];
-		}
+	if (isset($_POST['HID_groupStr']) && !empty($_POST['HID_groupStr']))
+	{
+		$groups = explode("?",$_POST['HID_groupStr']);
+		$isGroup=true;
+		$groupStr = $_POST['HID_groupStr'];
+	}
 	elseif($isPackageSelection)
-		{
-			$groupsAndCount = GRP_listGroupsAndCount();
-			
-			//get all groups
-			for ($i=0; $i < count($groupsAndCount); $i++)
-				$groups[$i] = $groupsAndCount[$i]['groupname'];
-		}
+	{
+		$groupsAndCount = GRP_listGroupsAndCount();
+		
+		//get all groups
+		for ($i=0; $i < count($groupsAndCount); $i++)
+			$groups[$i] = $groupsAndCount[$i]['groupname'];
+	}
 	//groups are fetched (POST) from the groups overview page
 	elseif(isset($_POST['selectedGroups']))				//selectedGroups is defined in /m23/inc/groups.php
+	{
+		//Get all groups
+		$groupList = GRP_listGroupsAndCount();
+
+		$nr=0;
+		//get all groups and store them in an array
+		for ($i=0; $i < count($groupList); $i++)
 		{
-			//Get all groups
-			$groupList = GRP_listGroupsAndCount();
-
-			$nr=0;
-			//get all groups and store them in an array
-			for ($i=0; $i < count($groupList); $i++)
-			{
-				if (isset($_POST["CB_do$i"]))			//CB_do$i is defined in /m23/inc/groups.php
-					$groups[$nr++]=$_POST["CB_do$i"];
-			}
-
-			if (0 == $nr)
-			{
-				MSG_showError($I18N_noGroupSelected);
-				exit();
-			}
-
-			//Make the groups storable in a hidden variable
-			$groupStr = implode("?",$groups);
-
-			$isGroup=true;
-			$groupmode = 0;
-
-			//Generate a fake client name for temporarily storing of the pre-selected packages
-			$client="m23fakeGroupClient".time();
+			if (isset($_POST["CB_do$i"]))			//CB_do$i is defined in /m23/inc/groups.php
+				$groups[$nr++]=$_POST["CB_do$i"];
 		}
+
+		if (0 == $nr)
+		{
+			MSG_showError($I18N_noGroupSelected);
+			exit();
+		}
+
+		//Make the groups storable in a hidden variable
+		$groupStr = implode("?",$groups);
+
+		$isGroup=true;
+		$groupmode = 0;
+
+		//Generate a fake client name for temporarily storing of the pre-selected packages
+		$client="m23fakeGroupClient".time();
+	}
 
 	//generate page title for group(s)
 	if ($isGroup && !$isPackageSelection)
-		{
-			$title="$I18N_group:";
+	{
+		$title="$I18N_group:";
 
-			foreach ($groups as $group)
-				$title.=" $group,";
+		foreach ($groups as $group)
+			$title.=" $group,";
 
-			//Remove the ',' at the end
-			$title = rtrim($title,',');
+		//Remove the ',' at the end
+		$title = rtrim($title,',');
 
-			$title.=": $actionStr";
-		}
+		$title.=": $actionStr";
+	}
 	//generate page title for a single client
 	elseif (!$isGroup && !$isPackageSelection)
-		{
-			$title="$client: $actionStr";
+	{
+		$title = "$client: $actionStr";
 
-			//Get distribution and package sources list from the client's options
-			$clientOptions = CLIENT_getAllOptions($client);
-			$distr = $clientOptions['distr'];
-			$packagesource = $clientOptions['packagesource'];
+		//Get distribution and package sources list from the client's options
+		$clientOptions = CLIENT_getAllOptions($client);
+		$distr = isset($clientOptions['distr']) ? $clientOptions['distr'] : '';
+		$packagesource = isset($clientOptions['packagesource']) ? $clientOptions['packagesource'] : '';
 
-			//Use Debian as default, if no distribution is found (for very old m23 clients)
-			if (strlen($distr)==0)
-				$distr="debian";
+		//Use Debian as default, if no distribution is found (for very old m23 clients)
+		if (strlen($distr) == 0)
+			$distr = "debian";
 
-			//include the distribution specific functions
-			include_once("/m23/inc/distr/$distr/packages.php");
-		}
+		//include the distribution specific functions
+		include_once("/m23/inc/distr/$distr/packages.php");
+	}
 	//package selection
 	else
 		$title = str_replace("-","",str_replace("<br>","",str_replace("&nbsp;","",$I18N_editPackageSelection)));
@@ -206,19 +225,22 @@ function showWait()
 
 <CENTER>
 <?PHP
+
 	HTML_showFormHeader();
 
-	if ($isGroup && !$isUpdate)
+	if (($isGroup || !isset($distr) || empty($distr)) && !$isUpdate)
 	{
 		/*show selection for distribution and package source
 		if there is nothing to select for distr and/or packagesource the values are written to $distr and $packagesource*/
-		GRP_showSelDistrSources($groups,$distr,$packagesource);
+		GRP_showSelDistrSources($isGroup ? $groups : NULL,$distr,$packagesource);
 
 		if (!empty($distr))
 			include_once("/m23/inc/distr/$distr/packages.php");
 		else
 			$searchDisabled="disabled";
 	}
+	elseif (!empty($distr))
+		include_once("/m23/inc/distr/$distr/packages.php");
 
 	if (HTML_submit('BUT_updatePackageSearchIndex', $I18N_updatePackageSearchIndex))
 		PKG_updatePackageSearchCacheFile($packagesource);
@@ -279,35 +301,33 @@ function showWait()
 			
 			");
 			break;
-		};
+		}
 
 		case 'update':
 		{
 			echo(RB_updateType."<br>$packageInformationChange");
 			break;
-		};
-	};
+		}
+	}
 ?>
 </CENTER>
 <BR>
 
 <?PHP
+
 	echo(HTML_hiddenVar('HID_packagesource', $packagesource).
 		HTML_hiddenVar('HID_distr', $distr).
 		HTML_hiddenVar('HID_groupStr', $groupStr).
 		HTML_hiddenVar('HID_action', $action).
-		HTML_hiddenVar('HID_id', $id).
-		HTML_hiddenVar('HID_client', $client)
+		(isset($id) ? HTML_hiddenVar('HID_id', $id) : '').
+		(isset($client) ? HTML_hiddenVar('HID_client', $client) : '')
 		);
 
 	HTML_setPage('installpackages');
 
 	if (!$isUpdate)
-	{
 		HTML_showSmallTitle($I18N_found_packages); echo('<br><br>');
-	}
 
-	$CB_counter = (isset($_POST['HID_CB_counter']) ? $_POST['HID_CB_counter'] : 0);
 
 
 // 	if (!empty($_POST['CB_markCounter']))
@@ -545,7 +565,7 @@ function showWait()
 
 
 	echo(HTML_hiddenVar('HID_CB_counter', $CB_counter).
-		HTML_hiddenVar('HID_CB_client', $client));
+		(isset($client) ? HTML_hiddenVar('HID_CB_client', $client) : ''));
 
 
 //title: preselected packages
@@ -557,11 +577,11 @@ function showWait()
 
 //show selected packages
 	if (!$isUpdate)
-		{
-			HTML_showTableHeader();
-			PKG_listSelectedpackages($client,$distr,SRCLST_getRelease($packagesource));
-			HTML_showTableEnd();
-		};
+	{
+		HTML_showTableHeader();
+		PKG_listSelectedpackages($client,$distr,SRCLST_getRelease($packagesource));
+		HTML_showTableEnd();
+	}
 ?>
 
 

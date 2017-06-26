@@ -51,8 +51,6 @@ CLCFG_aptGet("install", "language-pack-gnome-$lV[packagelang]");
 
 echo(") | tee -a /tmp/m23UbuntuDesktop.log
 
-#apt-get --force-yes -y install language-pack-gnome-$lV[packagelang] 2>&1 ; echo $? > /tmp/apt-err | tee /tmp/m23UbuntuDesktop.log
-
 gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.default --type string --set /desktop/gnome/background/picture_filename /usr/m23/kde/m23background.png
 #gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --type string --set /desktop/gnome/background/picture_filename /usr/m23/kde/m23background.png
 

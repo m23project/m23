@@ -1109,6 +1109,11 @@ function FDISK_getDrivesAndPartitions($param, $pathFilter=false, $addSizesAndTyp
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
+	$list = array();
+	
+	if (!isset($param['dev_amount']))
+		return($list);
+
 	//check if there is an "!" in the filter. this means the filter should be inverted
 	$invertFilter = (!($pathFilter === false) && (!(strpos($pathFilter,"!") === false)));
 	if ($invertFilter)
@@ -3870,9 +3875,9 @@ function FDISK_genPartedCommands($partJobs, $mkfsextOptions, $sourceslist)
 
 							switch(SRCLST_getStorageFS($partJobs["fs$jobNr"], $sourceslist))
 								{
-									case ext2: $cmd = "modprobe ext2; sfdisk -c $partPath $partNr 83; mkfs.ext2 $mkfsextOptions $part"; break;
-									case ext3: $cmd = "modprobe ext3; sfdisk -c $partPath $partNr 83; mkfs.ext3 $mkfsextOptions $part"; break;
-									case ext4: $cmd = "modprobe ext4; sfdisk -c $partPath $partNr 83; mkfs.ext4 $mkfsextOptions $part"; break;
+									case ext2: $cmd = "modprobe ext2; sfdisk -c $partPath $partNr 83; mkfs.ext2 -F $mkfsextOptions $part"; break;
+									case ext3: $cmd = "modprobe ext3; sfdisk -c $partPath $partNr 83; mkfs.ext3 -F $mkfsextOptions $part"; break;
+									case ext4: $cmd = "modprobe ext4; sfdisk -c $partPath $partNr 83; mkfs.ext4 -F $mkfsextOptions $part"; break;
 									case reiserfs: $cmd = "modprobe reiserfs; sfdisk -c $partPath $partNr 83; mkreiserfs -f $part"; break;
 									case "linux-swap": $cmd = "sfdisk -c $partPath $partNr 82; mkswap $part"; break;
 								}

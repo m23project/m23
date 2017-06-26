@@ -1,5 +1,10 @@
 <?php
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for storing PHP objects in the database.
+$*/
+
 class CObjectStorageManager extends CChecks
 {
 	private $searchFilter = '', $foundObjects = array();

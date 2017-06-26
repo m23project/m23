@@ -197,7 +197,7 @@ cd /tmp
 	CLCFG_dialogInfoBox($I18N_client_installation,$I18N_client_status,$I18N_hardware_detection);
 
 //sets the client's timezone
-	HS_sysSetTimeZone($clientOptions[timeZone]);
+	HS_sysSetTimeZone($clientOptions['timeZone']);
 
 //hardware detection
 	HS_sysHWsetup();

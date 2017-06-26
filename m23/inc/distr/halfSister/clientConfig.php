@@ -1,7 +1,13 @@
 <?PHP
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: halfSister specific management functions.
+$*/
+
+
 include_once("/m23/data+scripts/packages/m23CommonInstallRoutines.php");
-$CLCFG_listReleases=CLCFG_listHSReleases;
+$CLCFG_listReleases = 'CLCFG_listHSReleases';
 
 
 

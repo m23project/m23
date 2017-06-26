@@ -1,5 +1,10 @@
 <?php
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Funtions for distributing files via BitTorrent.
+$*/
+
 	define('BT_TRACKER_JOB', 'BTTracker');
 	define('BT_CLIENT_JOB', 'BTClient');
 	define('BT_USER', HELPER_getApacheUser());

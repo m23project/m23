@@ -2,10 +2,14 @@
 	//Wraps the descriptions to a given number of characters
 	$wordwrapsize=50;
 
-	if ($step != 1)
-		$step = 0;
+	$packageSelection = '';
+
+	$step = isset($_POST['step']) ? $_POST['step'] : 0;
+
+/*	if ($step != 1)
+		$step = 0;*/
 	
-	if ($captureLoad==1)
+	if (isset($_GET['captureLoad']) && ($_GET['captureLoad'] == 1))
 		//get the step from the captured GET array
 		$step = $_POST['step'];
 	else
@@ -18,19 +22,19 @@
 	$MBRdriveList = $CFDiskGUIO->getDrivesAndPartitions(false, false);
 
 	//check for the distribution
-	$distr = $_POST['distr'];
-	$release = $_POST['release'];
+	$distr = isset($_POST['distr']) ? $_POST['distr'] : '';
+	$release = isset($_POST['release']) ? $_POST['release'] : '';
 
 	if (isset($_POST['SEL_MBRpart']))
 		$mbrPart = $_POST['SEL_MBRpart'];
 	else
-		$mbrPart = $_POST['mbrPart'];
+		$mbrPart = isset($_POST['mbrPart']) ? $_POST['mbrPart'] : '';
 
 	//fall back to the default
 	if ((!isset($distr)) || (empty($distr)))
 		$distr = "debian";
 
-	$desktop = $_POST['SEL_desktop'];
+	$desktop = isset($_POST['SEL_desktop']) ? $_POST['SEL_desktop'] : '';
 
 	$instPart = $CFDiskGUIO->getInstPartDev();
 	$swapPart = $CFDiskGUIO->getSwapPartDev();
@@ -41,12 +45,12 @@
 	//Make sure, the MDs are at the end.
 	$MBRdriveList = FDISK_mdToEndOfArray($MBRdriveList);
 
-	$packageSelection = PKG_multiPackageSelectionsSelection('SEL_packageSelection',$packageSelection,"-");
+	$packageSelection = PKG_multiPackageSelectionsSelection('SEL_packageSelection', false, "-");
 
 	$options = CLIENT_getAllOptions($client);
 	$arch = $options['arch'];
 
-	$sourcename=$_POST['SEL_sourcename'];
+	$sourcename = isset($_POST['SEL_sourcename']) ? $_POST['SEL_sourcename'] : '';
 
 // 	CPoolFromClientGUI::DEFINE_checkboxForAddingm23BuildPoolFromClientPackage('CB_addingm23BuildPoolFromClientPackage', $client);
 	CPoolFromClientDebsGUI::DEFINE_checkboxForAddingm23BuildPoolFromClientDebsPackage('CB_addingm23BuildPoolFromClientDebsPackage', $client);

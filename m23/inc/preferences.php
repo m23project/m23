@@ -27,18 +27,18 @@ function PREF_preferenceLoadManagerHandler()
 		$_SESSION['preferenceName'] = $_POST['SEL_preferenceName'];
 
 	//Loading the preference named in the HTML preference selection
-	if (HTML_submit("BUT_load_preference",$I18N_load))
+	if (HTML_submit("BUT_load_preference", $I18N_load, '', false))
 		PREF_loadAllPreferenceValues();
 
 	//Deleting the preference named in the HTML preference selection
-	if (HTML_submit("BUT_delete_preference",$I18N_delete))
+	if (HTML_submit("BUT_delete_preference", $I18N_delete, '', false))
 	{
 		PREF_delete($_SESSION['preferenceName']);
 		$_SESSION['preferenceName'] = "";
 	}
 
 	//Define the deletion button here to make it available for PREF_showPreferenceManager()
-	HTML_submitDefine("BUT_save_preference",$I18N_save);
+	HTML_submitDefine("BUT_save_preference", $I18N_save, '', false);
 }
 
 

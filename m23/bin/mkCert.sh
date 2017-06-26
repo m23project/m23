@@ -37,7 +37,7 @@ else
 	#get the server IP
 	if test `grep address /etc/network/interfaces | wc -l` -gt 0
 	then
-		serverIP=`grep address /etc/network/interfaces | head -1 | cut -d's' -f3 | cut -d' ' -f2`
+		serverIP=`cat /etc/network/interfaces | tr -d "\t" | tr -s " " | sed 's/^[ ]*//g' | grep ^address | cut -d ' ' -f2 | head -1 | sed 's#/.*##'`
 	else
 		serverIP=`hostname`
 	fi

@@ -1,5 +1,10 @@
 <?
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for lowlevel organisation of partitioning and formating.
+$*/
+
 // grep ' function ' /m23/inc/CFDiskIO.php | sed 's/.* function //' | sort
 
 class CFDiskIO extends CClient
@@ -235,7 +240,7 @@ class CFDiskIO extends CClient
 					$this->fstab = array();
 
 				// Try to get the defined disk sizes for derived clients
-				if (is_array($CFDiskTemp['definedDiskSizes']))
+				if (isset($CFDiskTemp['definedDiskSizes']) && is_array($CFDiskTemp['definedDiskSizes']))
 					$this->definedDiskSizes = $CFDiskTemp['definedDiskSizes'];
 				else
 					$this->definedDiskSizes = false;
@@ -810,6 +815,8 @@ class CFDiskIO extends CClient
 **/
 	private function convertPartitioning2Array($data)
 	{
+		$disk = array();
+	
 		for ($vDisk = 0; !empty($data["dev$vDisk".'_path']); $vDisk++)
 		{
 			// The device of the disk (e.g. /dev/sda)
@@ -1019,7 +1026,7 @@ class CFDiskIO extends CClient
 	{
 		$count=0;
 
-		for ($vPart = 0; $vPart < $this->getPartAmount($vDisk); $vPart++)
+		for ($vPart = 0; isset($this->wantedPartitioning[$vDisk][$vPart]['type']) && ($vPart < $this->getPartAmount($vDisk)); $vPart++)
 			if ($this->wantedPartitioning[$vDisk][$vPart]['type'] == $type)
 				$count++;
 
@@ -1038,7 +1045,7 @@ class CFDiskIO extends CClient
 **/
 	protected function getExtendedVPart($vDisk)
 	{
-		for ($vPart = 0; $vPart < $this->getPartAmount($vDisk); $vPart++)
+		for ($vPart = 0; isset($this->wantedPartitioning[$vDisk][$vPart]['type']) && ($vPart < $this->getPartAmount($vDisk)); $vPart++)
 			if ($this->wantedPartitioning[$vDisk][$vPart]['type'] == CFDiskIO::PT_EXTENDED)
 				return($vPart);
 		return(false);
@@ -1071,7 +1078,7 @@ class CFDiskIO extends CClient
 **/
 	protected function getDiskDev($vDisk)
 	{
-		return($this->fdiskGetProperty($this->wantedPartitioning[$vDisk]['dev'], 'ERROR: $this->wantedPartitioning['.$vDisk.'][\'dev\'] not set.',''));
+		return($this->fdiskGetProperty(isset($this->wantedPartitioning[$vDisk]['dev']) ? $this->wantedPartitioning[$vDisk]['dev'] : NULL, 'ERROR: $this->wantedPartitioning['.$vDisk.'][\'dev\'] not set.',''));
 	}
 
 
@@ -1091,7 +1098,7 @@ class CFDiskIO extends CClient
 		// On RAIDs the start of the fake partition 0 is 0
 		if ($this->isDiskRaid($vDisk))
 			return(0);
-		return($this->fdiskGetProperty($this->wantedPartitioning[$vDisk][$vPart]['start'], "ERROR: \$this->wantedPartitioning[$vDisk][$vPart]['start'] not set.", $return));
+		return($this->fdiskGetProperty(isset($this->wantedPartitioning[$vDisk][$vPart]['start']) ? $this->wantedPartitioning[$vDisk][$vPart]['start'] : 0, "ERROR: \$this->wantedPartitioning[$vDisk][$vPart]['start'] not set.", $return));
 	}
 
 
@@ -1187,7 +1194,7 @@ class CFDiskIO extends CClient
 		// On RAIDs the end of the fake partition 0 is the size of the complete RAID
 		if ($this->isDiskRaid($vDisk))
 			return($this->getDiskSize($vDisk));
-		return($this->fdiskGetProperty($this->wantedPartitioning[$vDisk][$vPart]['end'], "ERROR: \$this->wantedPartitioning[$vDisk][$vPart]['end'] not set.", $return));
+		return($this->fdiskGetProperty(isset($this->wantedPartitioning[$vDisk][$vPart]['end']) ? $this->wantedPartitioning[$vDisk][$vPart]['end'] : 0, "ERROR: \$this->wantedPartitioning[$vDisk][$vPart]['end'] not set.", $return));
 	}
 
 
@@ -1231,7 +1238,7 @@ class CFDiskIO extends CClient
 			$return = false;
 		}
 
-		return($this->fdiskGetProperty($this->wantedPartitioning[$vDisk][$vPart]['fs'], "ERROR: \$this->wantedPartitioning[$vDisk][$vPart]['fs'] not set.", $return));
+		return($this->fdiskGetProperty(isset($this->wantedPartitioning[$vDisk][$vPart]['fs']) ? $this->wantedPartitioning[$vDisk][$vPart]['fs'] : NULL, "ERROR: \$this->wantedPartitioning[$vDisk][$vPart]['fs'] not set.", $return));
 	}
 
 
@@ -2998,6 +3005,9 @@ class CFDiskIO extends CClient
 **/
 	function getPartDevs($vDisk, $excludeType, $includeTypes = array())
 	{
+		$list = NULL;
+
+	
 		//If the device number is -1, all partitions on all devices should be listed
 		if ($vDisk == -1)
 		{
@@ -3030,6 +3040,8 @@ class CFDiskIO extends CClient
 			}
 			else
 			{
+				if (is_null($list)) $list = array();
+
 				// Check if we have a RAID
 				if (!$this->isDiskRaid($vDisk))
 				{

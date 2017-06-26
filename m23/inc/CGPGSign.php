@@ -1,5 +1,10 @@
 <?php
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for managing GPG keys and signing messages.
+$*/
+
 class CGPGSign extends CChecks
 {
 	private $gpgID = NULL, $storeMode, $gpgKeyList, $errorHandlingType;

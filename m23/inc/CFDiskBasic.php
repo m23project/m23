@@ -1,5 +1,10 @@
 <?
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for basic partitioning and formating functions.
+$*/
+
 include_once('/m23/inc/CFDiskIO.php');
 
 class CFDiskBasic extends CFDiskIO
@@ -389,9 +394,9 @@ class CFDiskBasic extends CFDiskIO
 					else
 					switch(SRCLST_getStorageFS($step['fs'], $sourceslist))
 					{
-						case 'ext2': $out .= "modprobe ext2 $ddZero; sfdisk -c $pDisk $pPart 83; mkfs.ext2 $mkfsextOptions $step[dev]"; break;
-						case 'ext3': $out .= "modprobe ext3 $ddZero; sfdisk -c $pDisk $pPart 83; mkfs.ext3 $mkfsextOptions $step[dev]"; break;
-						case 'ext4': $out .= "modprobe ext4 $ddZero; sfdisk -c $pDisk $pPart 83; mkfs.ext4 $mkfsextOptions $step[dev]"; break;
+						case 'ext2': $out .= "modprobe ext2 $ddZero; sfdisk -c $pDisk $pPart 83; mkfs.ext2 -F $mkfsextOptions $step[dev]"; break;
+						case 'ext3': $out .= "modprobe ext3 $ddZero; sfdisk -c $pDisk $pPart 83; mkfs.ext3 -F $mkfsextOptions $step[dev]"; break;
+						case 'ext4': $out .= "modprobe ext4 $ddZero; sfdisk -c $pDisk $pPart 83; mkfs.ext4 -F $mkfsextOptions $step[dev]"; break;
 						case 'reiserfs': $out .= "modprobe reiserfs $ddZero; sfdisk -c $pDisk $pPart 83; mkreiserfs -f $step[dev]"; break;
 						case 'linux-swap': $out .= "echo swap $ddZero; sfdisk -c $pDisk $pPart 82; mkswap $step[dev]"; break;			
 					}

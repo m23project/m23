@@ -137,7 +137,12 @@ function PKG_combinem23normal($packageSelectionName)
 
 		//Create strings containing all packages saved under the priority as key
 		while ($line = mysqli_fetch_array($res))
-			$packagesPriorityA[$line['priority']] .= trim($line['normalPackage']).' ';
+		{
+			if (isset($packagesPriorityA[$line['priority']]))
+				$packagesPriorityA[$line['priority']] .= trim($line['normalPackage']).' ';
+			else
+				$packagesPriorityA[$line['priority']] = trim($line['normalPackage']).' ';
+		}
 
 		//Run thru the package strings by priority
 		foreach ($packagesPriorityA as $priority => $packages)
@@ -320,7 +325,7 @@ function PKG_downloadBaseSysTom23Server($release, $arch)
 
 	// No release given (client has no distribution set) => Don't start download and don't block the client partition/format job
 	if (empty($release))
-		return(true);
+		return(false);
 
 	// The debootstrap cache file is on the m23 server
 	if (PKG_baseSysDownloadedCompletelyTom23Server($release, $arch))
@@ -845,9 +850,9 @@ function PKG_listRecommendPackages($key,$install=true)
 		<center>
 			$I18N_actionForPackageSelection
 			<SELECT name=\"SEL_specialNormalType\" size=\"1\">\n
+				<OPTION value=\"orig\">$I18N_doNotChange</OPTION>
 				$first
 				$second
-				<OPTION value=\"orig\">$I18N_doNotChange</OPTION>
 			</SELECT>
 		</center>
 		</td>
@@ -1114,20 +1119,21 @@ function PKG_getClientjobsStatus($client,$package,$distr,$params,$normalPackage)
 **/
 function PKG_addNormalPackages($amount,$client)
 {
-$count=0;
+	$count = 0;
 
-for ($i=0; $i < $amount; $i++)
+	for ($i=0; $i < $amount; $i++)
 	{
 		$var="CB_pkg".$i;
 		
 		if (!empty($_POST[$var]))
-			{
-				PKG_addNormalPackagesToWait4Aac($client,25,$_POST[$var]);
-				$count++;
-			}
+		{
+			PKG_addNormalPackagesToWait4Aac($client,25,$_POST[$var]);
+			$count++;
+		}
 	}
-return($counter);
-};
+
+	return($count);
+}
 
 
 
@@ -1139,6 +1145,7 @@ return($counter);
 **parameter amount: amount of selected packages
 **parameter client: name of client to install packages on
 **parameter newPriority: The new priority to set.
+**returns Amount of jobs with changed priority.
 **/
 function PKG_changePrioritySelectedPackages($amount, $client, $newPriority)
 {
@@ -1158,7 +1165,8 @@ function PKG_changePrioritySelectedPackages($amount, $client, $newPriority)
 			}
 		}
 	}
-	return($counter);
+
+	return($count);
 };
 
 
@@ -1170,39 +1178,43 @@ function PKG_changePrioritySelectedPackages($amount, $client, $newPriority)
 **description removes normal packages from db
 **parameter amount: amount of selected packages
 **parameter client: name of client to install packages on
+**returns Amount of removed jobs.
 **/
 function PKG_rmSelectedPackages($amount,$client)
 {
-$count=0;
-for ($i=0; $i < $amount; $i++)
+	$count=0;
+
+	for ($i=0; $i < $amount; $i++)
 	{
 		$var="CB_rmNormalpkg".$i;
+
 		if (!empty($_POST[$var]))
+		{
+			PKG_discardNormalJob($client,$_POST[$var]);
+			$count++;
+		}
+		else
+		{
+			$var="CB_rmpkg".$i;
+			if (!empty($_POST[$var]))
 			{
-				PKG_discardNormalJob($client,$_POST[$var]);
+				PKG_discardJob($client, $_POST[$var]);
 				$count++;
 			}
-		else
+			else
 			{
-				$var="CB_rmpkg".$i;
+				$var="CB_rmNormalRemovepkg".$i;
 				if (!empty($_POST[$var]))
-					{
-						PKG_discardJob($client, $_POST[$var]);
-						$count++;
-					}
-				else
-					{
-						$var="CB_rmNormalRemovepkg".$i;
-						if (!empty($_POST[$var]))
-							{
-								PKG_discardRemoveJob($client,$_POST[$var]);
-								$count++;
-							}
-					}
+				{
+					PKG_discardRemoveJob($client,$_POST[$var]);
+					$count++;
+				}
 			}
+		}
 	}
-return($counter);
-};
+
+	return($count);
+}
 
 
 
@@ -1354,6 +1366,9 @@ function PKG_countSelectedpackages($client)
 function PKG_countJobs($client,$status)
 {
 	CHECK_FW(CC_clientname, $client);
+
+	$add = '';
+
 	if (!empty($status))
 	{
 		CHECK_FW(CC_jobstatus, $status);
@@ -1576,30 +1591,33 @@ function PKG_addSpecialPackages($amount,$client,$distr)
 	$count=0;
 	//run thru the special checkbuttons
 	for ($i=0; $i < $amount; $i++)
-		{
-			$var="CB_specialPkg".$i;
-			if (!empty($_POST[$var]))
-			{//add the apecial package to db
-				PKG_addWait4AccJob($client,$_POST[$var],PKG_getSpecialPackagePriority($_POST[$var],$distr),"");
-				$count++;
-			}
+	{
+		$var="CB_specialPkg".$i;
+		if (!empty($_POST[$var]))
+		{//add the apecial package to db
+			PKG_addWait4AccJob($client,$_POST[$var],PKG_getSpecialPackagePriority($_POST[$var],$distr),"");
+			$count++;
 		}
+	}
+
 	return($counter);
-};
+}
 
 
 
 
 
 /**
-**name PKG_getSpecialPackagePriority($package)
+**name PKG_getSpecialPackagePriority($package, $distr = "debian")
 **description gets the priority of a special package
 **parameter package: name of package
+**parameter distr: name of the distribution
 **/
-function PKG_getSpecialPackagePriority($package,$distr="debian")
+function PKG_getSpecialPackagePriority($package, $distr = "debian")
 {
+	if (empty($distr)) $distr = "debian";
 	return(trim(PKG_getSpecialPackageInfo($package,"Priority",$distr)));
-};
+}
 
 
 
@@ -1613,7 +1631,7 @@ function PKG_getSpecialPackagePriority($package,$distr="debian")
 function PKG_getSpecialPackageDescription($package,$distr)
 {
 	return(PKG_getSpecialPackageInfo($package,"Description",$distr));
-};
+}
 
 
 
@@ -1629,31 +1647,29 @@ function PKG_getSpecialPackageDescription($package,$distr)
 **/
 function PKG_getSpecialPackageInfo($package,$infoTyp,$distr)
 {
+	//generate the full path to the package
+	$fullpath = "/m23/data+scripts/packages/".$package."Install.php";
 
+	if (!file_exists($fullpath))
+		$fullpath = "/m23/data+scripts/packages/userPackages/".$package."Install.php";
 
-//generate the full path to the package
-$fullpath = "/m23/data+scripts/packages/".$package."Install.php";
+	if (!file_exists($fullpath))
+		$fullpath = "/m23/inc/distr/$distr/packages/".$package."Install.php";
 
-if (!file_exists($fullpath))
-	$fullpath = "/m23/data+scripts/packages/userPackages/".$package."Install.php";
+	if (!file_exists($fullpath))
+		return(false);
 
-if (!file_exists($fullpath))
-	$fullpath = "/m23/inc/distr/$distr/packages/".$package."Install.php";
+	//grep only the line with our info
+	$cmd="grep -i '$infoTyp:' $fullpath | cut -d':' -f2";
 
-if (!file_exists($fullpath))
-	return(false);
+	//open pipe
+	$file=popen($cmd, "r");
+	//get the line
+	$result=fgets($file,10000);
 
-//grep only the line with our info
-$cmd="grep -i '$infoTyp:' $fullpath | cut -d':' -f2";
-
-//open pipe
-$file=popen($cmd, "r");
-//get the line
-$result=fgets($file,10000);
-
-pclose($file);
-return($result);
-};
+	pclose($file);
+	return($result);
+}
 
 
 
@@ -1672,8 +1688,9 @@ function PKG_getPackageID($client,$package)
 
 	$result = DB_query($sql); //FW ok
 	$line = mysqli_fetch_row($result);
+
 	return($line[0]);
-};
+}
 
 
 
@@ -1689,7 +1706,7 @@ function PKG_getPackageID($client,$package)
 function PKG_rmNormalJob($client, $packageName, $priority = 25)
 {
 	PKG_addStatusJob($client,"m23normalRemove",$priority,$packageName,"waiting");
-};
+}
 
 
 
@@ -1760,9 +1777,9 @@ function PKG_addStatusJob($client,$packageName,$priority,$params,$status)
 {
 	$client = trim($client);
 
-	$clientOptions = CLIENT_getAllOptions($client);
-	$packagesource = $clientOptions['packagesource'];
-	$distr		 = $clientOptions['distr'];
+// 	$clientOptions = CLIENT_getAllOptions($client);
+// 	$packagesource = isset($clientOptions['packagesource']) ? $clientOptions['packagesource'] : '';
+// 	$distr = isset($clientOptions['distr']) ? $clientOptions['distr'] : '';
 
 //search for old job with the same package
 	if (strstr($packageName,"m23normal"))
@@ -2299,6 +2316,8 @@ function PKG_getRecommendPackageAllInstalledSize($packageSelection)
 **/
 function PKG_previewInstallationDeinstallation($clientName,$install)
 {
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
 	if ($install)
 		{
 			$packageRow="m23normal";
@@ -2330,7 +2349,7 @@ function PKG_previewInstallationDeinstallation($clientName,$install)
 	include_once("/m23/inc/distr/".$clientOptions['distr']."/packages.php");
 
 	//try to update the client package status file
-	if ($_SESSION['m23Shared'] !== true)
+	if (!$_SESSION['m23Shared'])
 	{
 		if (function_exists('CLCFG_copyClientPackageStatus'))	//it exists not in halfSister
 			CLCFG_copyClientPackageStatus($clientName);
@@ -2418,13 +2437,16 @@ function PKG_executeOnClientJobs($sql,$packageIDList)
 {
 	if (count($packageIDList) == 0)
 		return;
+
+	$orSQL = '';
+		
 	for ($i=0; $i < count($packageIDList); $i++)
 	{
+		if (!is_numeric($packageIDList[$i])) break;
+	
 		CHECK_FW(CC_packageid, $packageIDList[$i]);
-		if ($i < count($packageIDList)-1)
-			$sql.="id=".$packageIDList[$i]." || ";
-			else
-			$sql.="id=".$packageIDList[$i];
+		$sql.=$orSQL."id=".$packageIDList[$i];
+		$orSQL = " || ";
 	}
 
 	db_query($sql); //FW ok
@@ -2483,6 +2505,24 @@ function PKG_removeSpecialFromJobList($clientName, $package, $priority)
 
 
 /**
+**name PKG_getHigestIDOfSpecialPackage($client, $package)
+**description Gets the highest ID of a special package.
+**parameter clientName: Name of the client.
+**parameter package: Name of the special package.
+**/
+function PKG_getHigestIDOfSpecialPackage($client, $package)
+{
+	$temp = PKG_getPackageIDsByName($client, $package, true);
+	if (is_array($temp))
+		return(array_pop($temp));
+	else
+		return(false);
+}
+
+
+
+
+/**
 **name PKG_previewUpdateSystem($clientName,$completeUpdate)
 **description returns the information of an system update request
 **parameter clientName: name of the client 
@@ -2502,7 +2542,7 @@ function PKG_previewUpdateSystem($clientName,$completeUpdate)
 	include_once("/m23/inc/distr/".$clientOptions['distr']."/packages.php");
 
 	//try to update the client package status file
-	if ($_SESSION['m23Shared'] !== true)
+	if (!$_SESSION['m23Shared'])
 	{
 		if (function_exists('CLCFG_copyClientPackageStatus'))	//it exists not in halfSister
 			CLCFG_copyClientPackageStatus($clientName);
@@ -2846,12 +2886,14 @@ function PKG_deletePackageselection($selectionName)
 **/
 function PKG_getAllPackageSelections($addFirstEntry="")
 {
+	$out = '';
+
 	$sql="SELECT DISTINCT name FROM `recommendpackages` ORDER BY name";
 
 	$result=DB_query($sql); //FW ok
 
-	$i=0;
-	
+	$i = 0;
+
 	if (strlen($addFirstEntry) > 0)
 		$out[$i++]=$addFirstEntry;
 
@@ -2999,6 +3041,8 @@ return($varValue[1]);
 **/
 function PKG_getPackageIDsByName($client,$packageName,$specialPackage)
 {
+	$out = array();
+
 	CHECK_FW(CC_clientname, $client, CC_package, $packageName);
 
 	if ($specialPackage)

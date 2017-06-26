@@ -1,5 +1,10 @@
 <?PHP
 
+/*$mdocInfo
+ Author: Maren Hachmann (maren@goos-habermann.de), Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for managing m23 administrators.
+$*/
+
 class Cm23Admin extends CChecks
 {
 	private $defaultOptions = array('css' => 'index.css', 'language' => "en");

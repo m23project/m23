@@ -95,10 +95,7 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 1))
 	session_destroy();
 	header("WWW-Authenticate: Basic realm=\"m23\"");
 	header("HTTP/1.0 401 Unauthorized");
-	echo("$I18N_userWasLoggedOut
-
-	<meta http-equiv=\"refresh\" content=\"1; URL=/m23admin/index.php\">
-	");
+	echo("$I18N_userWasLoggedOut");
 	exit(0);
 }
 
@@ -144,6 +141,8 @@ include("/m23/inc/CScredit.php");
 include_once('/m23/inc/CGPGSign.php');
 include_once('/m23/inc/CSystemProxy.php');
 include_once('/m23/inc/CPackageStatusCompare.php');
+include_once('/m23/inc/CAutoUpdate.php');
+
 
 CAPTURE_load();
 
@@ -151,8 +150,10 @@ $page2="isset";
 
 if (isset($_POST['page']))
 	$m23_page = $_POST['page'];
-elseif ($_GET['page'])
-	$m23_page=$_GET['page'];
+elseif (isset($_GET['page']))
+	$m23_page = $_GET['page'];
+else
+	$m23_page = 'no_page_selected';
 
 switch($m23_page)
  {
@@ -166,7 +167,7 @@ switch($m23_page)
 		break;
 
 	case 'addvmclient':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "clients/add_vmclient.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "clients/add_vmclient.php");
 		break;
 
 	case 'editclient':
@@ -226,15 +227,15 @@ switch($m23_page)
 		break;
 
 	case 'backup':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "clients/client_backup.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "clients/client_backup.php");
 		break;
 
 	case 'assimilate':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "clients/client_assimilate.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "clients/client_assimilate.php");
 		break;
 
 	case 'createImage':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "clients/client_createImage.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "clients/client_createImage.php");
 		break;
 
   /* GROUPS */
@@ -256,6 +257,11 @@ switch($m23_page)
 		
 
 	/* PACKAGES */
+
+	case 'autoUpdate':
+		$page = "packages/autoUpdate_packages.php" ;
+		break;
+
 	case 'installpackages':
 		$page = "packages/install_packages.php" ;
 		break;
@@ -272,10 +278,10 @@ switch($m23_page)
 		$page = "packages/poolFromClientDebs.php" ;
 		break;
 	case 'scriptEditor':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "packages/scriptEditor.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "packages/scriptEditor.php");
 		break;
 	case 'packageBuilder':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "packages/packageBuilder.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "packages/packageBuilder.php");
 		break;
 	case 'grouppackages':
 		$page = "clients/group_packages.php" ;
@@ -309,40 +315,40 @@ switch($m23_page)
 
 	/* TOOLS */
 	case 'makeBootDisk':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "tools/makeBootDisk.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "tools/makeBootDisk.php");
 		break;
 		
 	case 'makeBootCD':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "tools/makeBootCD.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "tools/makeBootCD.php");
 		break;
 
 	/* SERVER */
 	case 'm23RemoteAdministrationService':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "server/m23RemoteAdministrationService.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/m23RemoteAdministrationService.php");
 		break;
 
 	case 'htaccess':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "server/htaccess.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/htaccess.php");
 		break;
 
 	case 'update':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "server/update.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/update.php");
 		break;
 
 	case 'serverStatus':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "server/serverStatus.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/serverStatus.php");
 		break;
 
 	case 'manageGPGKeys':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "server/manageGPGKeys.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/manageGPGKeys.php");
 		break;
 
 	case 'capture':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "server/capture.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/capture.php");
 		break;
 
 	case 'systemProxy':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "server/systemProxy.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/systemProxy.php");
 		break;
 
 	case 'calculator':
@@ -362,7 +368,7 @@ switch($m23_page)
 		break;
 
 	case 'serverSettings':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "server/serverSettings.php") ;
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/serverSettings.php") ;
 		break;
 	
 	case 'm23sharedAdmin':
@@ -378,31 +384,31 @@ switch($m23_page)
 		break;
 
 	case 'serverBackup':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "server/serverBackup.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/serverBackup.php");
 		break;
 
 	case 'serverBackupList':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "server/serverBackupList.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/serverBackupList.php");
 		break;
 
 	case 'downloadVBoxAddons':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "server/downloadVBoxAddons.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/downloadVBoxAddons.php");
 		break;
 
 	case 'ldapSettings':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "server/ldapSettings.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/ldapSettings.php");
 		break;
 
 	case 'ipManagement':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "server/ipManagement.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/ipManagement.php");
 		break;
 
 	case 'firewall':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "server/firewall.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/firewall.php");
 		break;
 
 	case 'server_daemonsAndPrograms':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "server/daemonsAndPrograms.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/daemonsAndPrograms.php");
 		break;
 
 	case 'manageImageFiles':
@@ -411,11 +417,11 @@ switch($m23_page)
 
   /* PLUGINS */
 	case 'plginstall':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "misc/plginstall.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "misc/plginstall.php");
 		break;
 
 	case 'plgoverview':
-		$page = (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true) ? "misc/support.php" : "misc/plgoverview.php");
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "misc/plgoverview.php");
 		break;
 
 	case 'helpViewer':
@@ -431,7 +437,7 @@ switch($m23_page)
 		break;
 
 	default:
-		$page2 = "";
+		$page = $page2 = "";
 		break;
 
  }
@@ -448,7 +454,7 @@ switch($m23_page)
  else
  $page2=PLG_isPluginSelected("/m23/data+scripts/m23admin/groups/",$page);
  if (!empty($page2))
-	$page=$page2;
+	$page = $page2;
  else
  $page2=PLG_isPluginSelected("/m23/data+scripts/m23admin/packages/",$page);
  if (!empty($page2))

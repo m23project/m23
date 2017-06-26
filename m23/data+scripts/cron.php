@@ -5,6 +5,8 @@ include("/m23/inc/db.php");
 include("/m23/inc/html.php");
 include("/m23/inc/i18n.php");
 include("/m23/inc/help.php");
+include("/m23/inc/helper.php");
+include("/m23/inc/groups.php");
 include("/m23/inc/checks.php");
 include("/m23/inc/message.php");
 include("/m23/inc/capture.php");
@@ -12,7 +14,15 @@ include("/m23/inc/remotevar.php");
 include("/m23/inc/preferences.php");
 include("/m23/inc/mail.php");
 include("/m23/inc/server.php");
+include("/m23/inc/packages.php");
+include("/m23/inc/client.php");
 include("/m23/inc/cronSecret.php");
+include_once('/m23/inc/CMessageManager.php');
+include_once('/m23/inc/CChecks.php');
+include_once('/m23/inc/CAutoUpdate.php');
+include_once('/m23/inc/CClient.php');
+include_once('/m23/inc/CClientLister.php');
+
 if (file_exists('/m23/inc/m23shared/m23shared.php'))
 {
 	include_once('/m23/inc/m23shared/m23shared.php');
@@ -40,7 +50,8 @@ dbconnect();
 
 session_start();
 
-$m23_language = "de";
+$m23_language = "en";
+$GLOBALS["m23_language"] = $m23_language;
 
 //Include the language file
 include("/m23/inc/i18n/".$m23_language."/m23base.php");
@@ -51,9 +62,14 @@ switch ($_GET['cmd'])
 		m23SHARED_sendAllBillMails();
 		break;
 
-	case "SERVER_startBackup":
-		SERVER_startBackup();
+	case "CAutoUpdate.run":
+		$CAutoUpdateO = new CAutoUpdate();
+		$CAutoUpdateO->run();
 		break;
+
+// 	case "SERVER_startBackup":
+// 		SERVER_startBackup();
+// 		break;
 
 	default:
 		exit(23);

@@ -1,5 +1,11 @@
 <?PHP
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Ubuntu specific management functions.
+$*/
+
+
 include_once("/m23/inc/distr/debian/clientConfig.php");
 
 
@@ -74,7 +80,7 @@ function CLCFG_showDistributionSpecificOptionsUbuntu($options)
 	//Add Debian's options
 	$options = CLCFG_showDistributionSpecificOptions($options, 'ubuntu');
 
-	$disableSudoRootLogin = HTML_storableCheckBox('CB_disableSudoRootLogin', '', 'disableSudoRootLogin', ($options['disableSudoRootLogin'] == 1));
+	$disableSudoRootLogin = HTML_storableCheckBox('CB_disableSudoRootLogin', '', 'disableSudoRootLogin', isset($options['disableSudoRootLogin']) &&  ($options['disableSudoRootLogin'] == 1));
 	$options = CLIENT_getSetOption(($disableSudoRootLogin ? 1 : 0), 'disableSudoRootLogin', $options);
 
 	echo("
@@ -469,7 +475,7 @@ libvirtodbc0 libvirtodbc0/register-odbc-driver boolean true');
 	/* =====> */ MSR_statusBarIncCommand(10);
 
 	// Remove Amazon
-	CLCFG_aptGet("remove","unity-webapps-common");
+	CLCFG_aptGet("remove","unity-webapps-common tilda mintupdate");
 
 	echo("\ndpkg-reconfigure m23-skel\n");
 }
@@ -671,7 +677,7 @@ function CLCFG_listUbuntuReleases($selName,$first)
 	return(CLCFG_listDebianReleasesGeneric($selName,$first,"ubuntu"));
 }
 
-$CLCFG_listReleases=CLCFG_listUbuntuReleases;
+$CLCFG_listReleases = 'CLCFG_listUbuntuReleases';
 
 
 

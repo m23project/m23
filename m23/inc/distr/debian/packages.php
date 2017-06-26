@@ -1,7 +1,13 @@
 <?php
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Debian/Ubuntu specific package handling functions.
+$*/
 
-define('DIR_M23APTCACHE', ($_SESSION['m23Shared'] ? "/m23/var/cache/m23apt/".m23SHARED_getCustomerNr() : "/m23/var/cache/m23apt"));
+
+
+define('DIR_M23APTCACHE', $_SESSION['m23Shared'] ? "/m23/var/cache/m23apt/".m23SHARED_getCustomerNr() : "/m23/var/cache/m23apt");
 
 
 
@@ -728,7 +734,7 @@ EOF
 
 	//update the package information
 	$cmd = "
-	mkdir -p '$dir/apt.conf.d' '$dir/archivs/partial' '$dir/preferences.d'
+	mkdir -p '$dir/apt.conf.d' '$dir/archivs/partial' '$dir/preferences.d' '$dir/lists/partial'
 	rm '$logFile'
 	";
 
@@ -759,17 +765,15 @@ EOF
 	$cmd .= "
 	".PKG_genPackageSearchCacheFileCMD($dir, $arch);
 
-
-
-// file_put_contents('/tmp/PKG_preparePackageDir.cmd', $cmd);
-
-
 	if ($returnCmd)
 		return($cmd);
 
 	SERVER_runInBackground('PKG_preparePackageDir',$cmd,HELPER_getApacheUser(),false);
 
 	$errMsg="";
+
+	if (!file_exists($logFile))
+		return("");
 
 	$FILE=fopen("$logFile","r");
 	if ($FILE === false)
@@ -783,7 +787,7 @@ EOF
 		$errMsg.=$line;
 
 		//if (!$printErr && ((substr_count($line,"Err ") > 0) && (substr_count($line,"Release") == 0)))
-		if (!$printErr && (substr_count($line,"Err ") > 0) && (preg_match("|Err(.*)Release|",$line) == 0))
+		if (!$printErr && ((substr_count($line,"Err ") > 0) || (preg_match("|Err(.*)Release|",$line) === 1) || (strpos($line , 'E: ') === 0)))
 			$printErr = true;
 	}
 
@@ -819,23 +823,23 @@ function PKG_updatePackageInfo($distr, $packagesource, $force, $arch)
 		exec("mkdir -p '$dir'");
 
 	if ((!file_exists("$dir/sources.list")) || (!file_exists($cacheFile)) || (SRCLST_packageInformationOlderThan(300, $distr, $packagesource)) || $force)
-		{
-			$logFile = "/m23/tmp/update$packagesource.log";
-			$errMsg=PKG_preparePackageDir($dir, SRCLST_loadSourceList($packagesource), $logFile, false, $arch, $packagesource);
+	{
+		$logFile = "/m23/tmp/update$packagesource.log";
+		$errMsg=PKG_preparePackageDir($dir, SRCLST_loadSourceList($packagesource), $logFile, false, $arch, $packagesource);
 
-			if (strlen($errMsg)>0)
-				{
-					MSG_showError("$I18N_packageSourceName: <b>$packagesource</b><br>
-					$I18N_sourceslist_update_error<br>".
-					nl2br($errMsg)."<br>$I18N_checkYourPackageSource",$GLOBALS["m23_language"]);
-					return(false);
-				}
-				else
-					return($logFile);
+		if (strlen($errMsg)>0)
+		{
+			MSG_showError("$I18N_packageSourceName: <b>$packagesource</b><br>
+			$I18N_sourceslist_update_error<br>".
+			nl2br($errMsg)."<br>$I18N_checkYourPackageSource",$GLOBALS["m23_language"]);
+			return(false);
 		}
 		else
-			return(true);
-};
+			return($logFile);
+	}
+	else
+		return(true);
+}
 
 
 
@@ -907,6 +911,7 @@ function PKG_previewInstallDeinstall($clientName,$distr,$packagesource,$packages
 function PKG_getKernels($distr,$packagesource,$arch)
 {
 	$nr=0;
+	$list = $out = array();
 
 	foreach (array("linux image", "kernel image") as $kernelSearchKeywords)
 	{
@@ -930,19 +935,19 @@ function PKG_getKernels($distr,$packagesource,$arch)
 				{
 					$temp=explode("-",$package_description[0]);
 
-					$fullVersionNr=$temp[2]."-".$temp[3];
+					$fullVersionNr = $temp[2].(isset($temp[3]) ? "-".$temp[3] : '');
 					//$fullVersionNr=2.6.9-5
 
 					$temp=explode("-",$fullVersionNr);
-					$patchLevel=$temp[1];
+					$patchLevel = isset($temp[1]) ? $temp[1] : 0;
 					//$patchLevel=5
 					$temp=$temp[0];
 					$temp=explode(".",$temp);
 					$major=$temp[0];
 					//$major=2
-					$minor=$temp[1];
+					$minor = isset($temp[1]) ? $temp[1] : 0;
 					//$minor=6
-					$extra=$temp[2];
+					$extra = isset($temp[2]) ? $temp[2] : 0;
 					//$minor=9
 				
 					//fill with leading '0' to make every number 6 digits long

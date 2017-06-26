@@ -1,4 +1,10 @@
 <?php
+
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for managing firewall settings.
+$*/
+
 class CFirewall extends CChecks
 {
 

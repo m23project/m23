@@ -29,15 +29,15 @@ define('H_AJAXAUTOSUBMIT_VALUE','submit');
 **/
 function HTML_imgSwitch($htmlName, $off_img, $on_img, $off_text, $on_text, $separator, $default, &$outState)
 {
-	$stateOld = $_POST['state_'.$htmlName];
+	$stateOld = isset($_POST['state_'.$htmlName]) ? $_POST['state_'.$htmlName] : 'Eej7I';
 
-	if (isset($_POST[$htmlName.'_x']) && $_POST['state_'.$htmlName]=="on")
+	if (isset($_POST[$htmlName.'_x']) && $stateOld=="on")
 		$state = "off" ;
-	elseif (isset($_POST[$htmlName.'_x']) && $_POST['state_'.$htmlName]=="off")
+	elseif (isset($_POST[$htmlName.'_x']) && $stateOld=="off")
 		$state = "on" ;
-	elseif  (!isset($_POST[$htmlName.'_x']) && $_POST['state_'.$htmlName]=="on")
+	elseif  (!isset($_POST[$htmlName.'_x']) && $stateOld=="on")
 		$state = "on" ;
-	elseif  (!isset($_POST[$htmlName.'_x']) && $_POST['state_'.$htmlName]=="off")
+	elseif  (!isset($_POST[$htmlName.'_x']) && $stateOld=="off")
 		$state = "off" ;
 	else
 		if ($default == true)
@@ -73,11 +73,11 @@ function HTML_imgSwitch($htmlName, $off_img, $on_img, $off_text, $on_text, $sepa
 **name HTML_getOriginalUploadFilename($htmlName)
 **description Get the original file name of an uploaded file.
 **parameter htmlName: Name of the HTML element
-**returns Original file name of an uploaded file.
+**returns Original file name of an uploaded file or NULL, if none is given.
 **/
 function HTML_getOriginalUploadFilename($htmlName)
 {
-	return(basename($_FILES[$htmlName]['name']));
+	return(isset($_FILES[$htmlName]['name']) ? basename($_FILES[$htmlName]['name']) : NULL);
 }
 
 
@@ -175,6 +175,47 @@ function HTML_urlButton($htmlName, $label, $url)
 {
 	define($htmlName,'<a href="'.$url.'" class="linkAsButton">'.$label.'</a>
 ');
+}
+
+
+
+
+
+/**
+**name HTML_weekdayTimeChooser($htmlName)
+**description Creates a picker for weekday and hour/minute (with 15 minute steps).
+**parameter htmlNames: Name of the weekday and hour/minute picker.
+**returns Choosen weekday and hour/minute as DHHMM string.
+**/
+function HTML_weekdayTimeChooser($htmlName)
+{
+	// Read a (maybe) previously choosen value for the combined HTML element
+	$submitted = HTML_getElementValue($htmlName, $htmlName, '10000');
+
+	// Split the combined value into day and hour/minute
+	if (HELPER_splitDayHourMinuteString($submitted, $day, $hour, $minute))
+	{
+		$submittedDay = $day;
+		$submittedHourMinute = $hour.$minute;
+	}
+
+	// Create an array with all weekdays and according HTML selection
+	$weekDays = I18N_getWeekDayArray();
+	$weekDay = HTML_selection("${htmlName}_weekDay", $weekDays, SELTYPE_selection, true, $submittedDay);
+
+	// Create an array with all hours/minutes with 15 minute steps and according HTML selection
+	$hoursMinutes = array();
+	for ($hour = 0; $hour < 24; $hour++)
+		for ($minute = 0; $minute < 60; $minute += 15)
+			// Create the array and make sure, minute and hour have all two digits (prefixed with 0, if needed)
+			$hoursMinutes[sprintf("%'.02u%'.02u", $hour, $minute)] = sprintf("%'.02u:%'.02u", $hour, $minute);
+	$hoursMinute = HTML_selection("${htmlName}_hoursMinutes", $hoursMinutes, SELTYPE_selection, true, $submittedHourMinute);
+
+	// Create a new constant that contains the HTML code of both selections
+	define($htmlName, constant("${htmlName}_weekDay").' '.constant("${htmlName}_hoursMinutes"));
+
+	// Return the currently choosen day, hour and minute combination
+	return($weekDay.$hoursMinute);
 }
 
 
@@ -807,7 +848,7 @@ function HTML_jQueryMenuHeader($menuName)
 	//Name of the hidden form variable to store the number of the last active accordion element
 	$hiddenVarName = $menuName.'lastOpen';
 	//Try to fetch the active element from a perviously transfered form
-	$active = (is_numeric($_POST[$hiddenVarName]) ? $_POST[$hiddenVarName] : 0);
+	$active = (isset($_POST[$hiddenVarName]) && is_numeric($_POST[$hiddenVarName]) ? $_POST[$hiddenVarName] : 0);
 
 
 return('
@@ -852,7 +893,7 @@ function HTML_jQueryReStoreYWindowPosition($variablePrefix, &$hiddenPosCode, $st
 {
 	//Last Y position of the content the browser window
 	$hiddenPosName = $variablePrefix.'lastYPos';
-	$lastPos = (is_numeric($_POST[$hiddenPosName]) ? $_POST[$hiddenPosName] : 0);
+	$lastPos = ((isset($_POST[$hiddenPosName]) && is_numeric($_POST[$hiddenPosName])) ? $_POST[$hiddenPosName] : 0);
 
 	// If it is standalone, the jQuery functions and the script tags must be around
 	if ($standalone)
@@ -896,11 +937,11 @@ function HTML_jQueryMenuEnd($menuName)
 	//Name of the hidden form variable to store the number of the last active accordion element
 	$hiddenVarName = $menuName.'lastOpen';
 	//Try to fetch the active element from a perviously transfered form
-	$active = (is_numeric($_POST[$hiddenVarName]) ? $_POST[$hiddenVarName] : 0);
+	$active = (isset($_POST[$hiddenVarName]) && is_numeric($_POST[$hiddenVarName]) ? $_POST[$hiddenVarName] : 0);
 
 	//Last Y position of the content the browser window
 	$hiddenPosName = $menuName.'lastYPos';
-	$lastPos = (is_numeric($_POST[$hiddenPosName]) ? $_POST[$hiddenPosName] : 0);
+	$lastPos = (isset($_POST[$hiddenPosName]) && is_numeric($_POST[$hiddenPosName]) ? $_POST[$hiddenPosName] : 0);
 
 	return(HTML_hiddenVar($hiddenVarName,$active).'
 	</div>
@@ -1038,6 +1079,8 @@ function HTML_setStatusBarStatus($id=false, $percent=false, $statustext=false, $
 {
 // 	HELPER_debugBacktraceToFile("/tmp/HTML_setStatusBarStatus.trace");
 
+	$pSQL = '';
+
 	//Check if the ID was given to select the status bar
 	if ($id !== false)
 		{
@@ -1073,6 +1116,7 @@ function HTML_setStatusBarStatus($id=false, $percent=false, $statustext=false, $
 		CHECK_FW(CC_statusBarText, $statustext);
 		$sSQL = "`statustext` =  '$statustext'";
 	}
+
 	DB_query("UPDATE `statusbar` SET $pSQL $sSQL , ts = ".time()." WHERE $wSQL");
 }
 
@@ -1172,6 +1216,8 @@ function HTML_showStatusBarHTML($id)
 	$lang = $_GET['m23_language'];
 	CHECK_FW(CC_language, $lang);
 	include("/m23/inc/i18n/$lang/m23base.php");
+
+	$percentL = '';
 
 	//Get some basic informations about the status bar
 	$res = DB_query("SELECT `type` , `cmd` , `refreshtime`, `statustext`, `percent` , `ts` FROM `statusbar` WHERE `id` =$id");
@@ -1484,7 +1530,7 @@ function HTML_getElementValue($htmlName, $prefKey, $initValue, $checkbox=false)
 	if (isset($_POST['ED_client'])) $checkboxPostIgnore ++;
 	if (isset($_POST['ED_mac'])) $checkboxPostIgnore ++;
 
-	if ($_SESSION['preferenceForceHTMLReloadValues'])
+	if (isset($_SESSION['preferenceForceHTMLReloadValues']) && $_SESSION['preferenceForceHTMLReloadValues'])
 		{
 			$initValue = $_SESSION['preferenceSpace'][$prefKey];
 			$met='preferenceForceHTMLReloadValues';
@@ -1536,60 +1582,60 @@ function HTML_listSelection($selName,$list,&$first,$firstName="")
 {
 	$out="<SELECT name=\"$selName\" size=\"1\">\n";
 
-	if (!isset($list[name0]))
-		{
-			$normalArray = true;
-			$amount = count($list);
-		}
+	if (!isset($list['name0']))
+	{
+		$normalArray = true;
+		$amount = count($list);
+	}
 	else
-		{
-			$normalArray = false;
-			$amount = count($list) / 2;
-		}
+	{
+		$normalArray = false;
+		$amount = count($list) / 2;
+	}
 
 	if (strlen($first) > 0)
+	{
+		if (!empty($firstName))
+			$out.="<option value=\"$first\">$firstName</option>\n";
+		else
 		{
-			if (!empty($firstName))
-				$out.="<option value=\"$first\">$firstName</option>\n";
+			if ($normalArray)
+				$out.="<option value=\"$first\">$first</option>\n";
 			else
-				{
-					if ($normalArray)
-						$out.="<option value=\"$first\">$first</option>\n";
-					else
-						{
-							for ($i=0; $i < $amount; $i++)
-								if ($list["val$i"] == $first)
-									{
-										$out.="<option value=\"$first\">".$list["name$i"]."</option>\n";
-										break;
-									};
-						};
-				};
-		};
+			{
+				for ($i=0; $i < $amount; $i++)
+					if ($list["val$i"] == $first)
+					{
+						$out.="<option value=\"$first\">".$list["name$i"]."</option>\n";
+						break;
+					}
+			}
+		}
+	}
 
 	if (is_array($list))
 	{
 		if ($normalArray)
-			{
-				foreach ($list as $var => $val)
-					if ($first != $val)
-						$out.="<option value=\"".$val."\">".$val."</option>\n";
-			}
+		{
+			foreach ($list as $var => $val)
+				if ($first != $val)
+					$out.="<option value=\"".$val."\">".$val."</option>\n";
+		}
 		else
-			{
-				for ($i=0; $i < $amount; $i++)
-					if ($first != $list["val$i"])
-						$out.="<option value=\"".$list["val$i"]."\">".$list["name$i"]."</option>\n";
-			};
+		{
+			for ($i=0; $i < $amount; $i++)
+				if ($first != $list["val$i"])
+					$out.="<option value=\"".$list["val$i"]."\">".$list["name$i"]."</option>\n";
+		}
 	}
 
 	$out.="</SELECT>\n";
 
 	if ((!($first === false)) && empty($first))
 		if ($normalArray)
-			$first = $list[0];
+			$first = isset($list[0]) ? $list[0] : '';
 		else
-			$first = $list[val0];
+			$first = isset($list['val0']) ? $list['val0'] : '';
 	
 	return($out);
 }
@@ -1605,11 +1651,11 @@ function HTML_listSelection($selName,$list,&$first,$firstName="")
 **parameter tableStyle: CSS class of the inner table.
 **parameter width: Width of the table.
 **/
-function HTML_showTableHeader($centerTable=false, $tableStyle = "subtable", $width = "")
+function HTML_showTableHeader($centerTable=false, $tableStyle = "subtable", $width = "", $valign = 'center')
 {
 if ($centerTable)
 echo("<table width=\"100%\" height=\"100%\">
-	<tr valign=\"center\" height=\"100%\">
+	<tr valign=\"$valign\" height=\"100%\">
 		<td>");
 
 	echo("
@@ -1693,18 +1739,20 @@ echo("<input type=\"hidden\" name=\"MSESS_variables\" value=\"".urlencode(serial
 
 
 /**
-**name HTML_submit($htmlName,$label,$extra="")
+**name HTML_submit($htmlName, $label, $extra="", $allowDoubleDefinition = true)
 **description Defines a submit button.
 **parameter htmlName: Name of the HTML element.
 **parameter label: Label of the element.
 **parameter extra: Extra options for the HTML input tag.
+**parameter allowDoubleDefinition: If set to true, HTML element constants will be defined even if there is a previously defined constant with the same name. This will run into an error and helps debugging.
 **returns True if it was clicked otherwise false.
 **/
-function HTML_submit($htmlName,$label,$extra="")
+function HTML_submit($htmlName, $label, $extra="", $allowDoubleDefinition = true)
 {
-	define($htmlName,'
-		<INPUT type="submit" name="'.$htmlName.'" value="'.$label.'"'.$extra.'>
-	');
+	if (!defined($htmlName) || $allowDoubleDefinition)
+		define($htmlName,'
+			<INPUT type="submit" name="'.$htmlName.'" value="'.$label.'"'.$extra.'>
+		');
 
 	return(isset($_POST[$htmlName]) && ($label === stripslashes($_POST[$htmlName])));
 }
@@ -1798,7 +1846,7 @@ function HTML_getValidSelected($selected, $arrayKeys, $defaultSelection)
 		if (in_array($defaultSelection,$arrayKeys))
 			$selected = $defaultSelection;
 		else
-			$selected = $arrayKeys[0];
+			$selected = isset($arrayKeys[0]) ? $arrayKeys[0] : false;
 	}
 	
 	return($selected);
@@ -1857,39 +1905,39 @@ function HTML_selection($htmlName, $array, $type, $vertical = true, $defaultSele
 	$htmlCode="";
 
 	if ($type === SELTYPE_selection)
+	{
+		//check if the selected element should become the first in the array
+		if (is_array($selected))
+			array_makeFirst($array, $array[$selected[0]]);
+		elseif (!($selected === false))
+			array_makeFirst($array, $array[$selected]);
+
+		$htmlCode='<SELECT '.$js.' id="'.$htmlName.$multipleHtmlNameAdd.'" name="'.$htmlName.$multipleHtmlNameAdd.'" '.$multipleSelectEnable.' '.$multipleSizeAdd.'>'."\n";
+
+		foreach ($array as $value => $description)
 		{
-			//check if the selected element should become the first in the array
-			if (is_array($selected))
-				array_makeFirst($array, $array[$selected[0]]);
-			elseif (!($selected === false))
-				array_makeFirst($array, $array[$selected]);
-
-			$htmlCode='<SELECT '.$js.' id="'.$htmlName.$multipleHtmlNameAdd.'" name="'.$htmlName.$multipleHtmlNameAdd.'" '.$multipleSelectEnable.' '.$multipleSizeAdd.'>'."\n";
-
-			foreach ($array as $value => $description)
-			{
-				if ($selected === false) $selected = $value;
-				$htmlCode.='<option value="'.$value.'">'.$description.'</option>'."\n";
-			}
-
-			$htmlCode.='</SELECT>';
+			if ($selected === false) $selected = $value;
+			$htmlCode.='<option value="'.$value.'">'.$description.'</option>'."\n";
 		}
+
+		$htmlCode.='</SELECT>';
+	}
 	elseif ($type === SELTYPE_radio)
+	{
+		if ($vertical)
+			$htmlBreak="<br>";
+		else
+			$htmlBreak="";
+		
+		foreach ($array as $value => $description)
 		{
-			if ($vertical)
-				$htmlBreak="<br>";
+			//if the element is checked, set checked flag
+			if ($value == $selected)
+				$htmlCode.='<INPUT '.$js.'type="radio" name="'.$htmlName.'" value="'.$value.'" checked> '.$description."$htmlBreak\n";
 			else
-				$htmlBreak="";
-			
-			foreach ($array as $value => $description)
-				{
-					//if the element is checked, set checked flag
-					if ($value == $selected)
-						$htmlCode.='<INPUT '.$js.'type="radio" name="'.$htmlName.'" value="'.$value.'" checked> '.$description."$htmlBreak\n";
-					else
-						$htmlCode.='<INPUT '.$js.'type="radio" name="'.$htmlName.'" value="'.$value.'"> '.$description."$htmlBreak\n";
-				};
+				$htmlCode.='<INPUT '.$js.'type="radio" name="'.$htmlName.'" value="'.$value.'"> '.$description."$htmlBreak\n";
 		}
+	}
 
 	define($htmlName,$htmlCode);
 
@@ -1971,17 +2019,19 @@ function HTML_checkBoxCheckAll($filter = 'CB_')
 
 
 /**
-**name HTML_submitDefine($htmlName,$label,$extra="")
+**name HTML_submitDefine($htmlName, $label, $extra="", $allowDoubleDefinition = true)
 **description Defines but does not show a button.
 **parameter htmlName: Name of the HTML element.
 **parameter label: Label of the element.
 **parameter extra: Extra options for the HTML input tag.
+**parameter allowDoubleDefinition: If set to true, HTML element constants will be defined even if there is a previously defined constant with the same name. This will run into an error and helps debugging.
 **/
-function HTML_submitDefine($htmlName,$label,$extra="")
+function HTML_submitDefine($htmlName, $label, $extra="", $allowDoubleDefinition = true)
 {
-	define($htmlName,'
-		<INPUT type="submit" name="'.$htmlName.'" value="'.$label.'"'.$extra.'>
-	');
+	if (!defined($htmlName) || $allowDoubleDefinition)
+		define($htmlName,'
+			<INPUT type="submit" name="'.$htmlName.'" value="'.$label.'"'.$extra.'>
+		');
 }
 
 
@@ -2011,6 +2061,23 @@ function HTML_submitCheck($htmlName)
 function HTML_showTableRow()
 {
 	$first = func_get_arg(0);
+	$class = $td = '';
+
+	// Check, if there are parameters for the row given as array
+	if (is_array($first))
+	{
+		// Get additional td attributes
+		if (isset($first['td']))
+			$td = $first['td'];
+
+		// Add vertikal top alignment in the rows
+		if (isset($first['tdvtop']) && $first['tdvtop'])
+			$td .= ' valign="top" ';
+
+		// Save it for the coloring
+		if (isset($first['highlight']) && is_bool($first['highlight']))
+			$first = $first['highlight'];
+	}
 
 	//Check, if the first parameter (de)activates the coloring of the row
 	if (is_bool($first))
@@ -2030,7 +2097,7 @@ function HTML_showTableRow()
 	$amount = func_num_args();
 	echo("<tr$class>\n");
 	for(; $i < $amount; $i++)
-		echo("<td><p>".func_get_arg($i)."</p></td>\n");
+		echo("<td $td><p>".func_get_arg($i)."</p></td>\n");
 	echo("</tr>\n");
 }
 

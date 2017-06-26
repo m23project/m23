@@ -1,6 +1,9 @@
 <?
 
-
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for visualisation of partitioning and formating.
+$*/
 
 class CFDiskGUI extends CFDiskBasic
 {
@@ -115,7 +118,7 @@ class CFDiskGUI extends CFDiskBasic
 **/
 	private function getDiskLayoutEntryStart($vDisk, $layoutNr)
 	{
-		return($this->fdiskGetProperty($this->diskLayout[$vDisk][$layoutNr]['start'], "$this->diskLayout[$vDisk][$layoutNr]['start'] not set"));
+		return($this->fdiskGetProperty($this->diskLayout[$vDisk][$layoutNr]['start'], "\$this->diskLayout[$vDisk][$layoutNr]['start'] not set"));
 	}
 
 
@@ -131,7 +134,7 @@ class CFDiskGUI extends CFDiskBasic
 **/
 	private function getDiskLayoutEntryEnd($vDisk, $layoutNr)
 	{
-		return($this->fdiskGetProperty($this->diskLayout[$vDisk][$layoutNr]['end'], "$this->diskLayout[$vDisk][$layoutNr]['end'] not set"));
+		return($this->fdiskGetProperty($this->diskLayout[$vDisk][$layoutNr]['end'], "\$this->diskLayout[$vDisk][$layoutNr]['end'] not set"));
 	}
 
 
@@ -147,7 +150,7 @@ class CFDiskGUI extends CFDiskBasic
 **/
 	private function getDiskLayoutEntrySize($vDisk, $layoutNr)
 	{
-		return($this->fdiskGetProperty($this->diskLayout[$vDisk][$layoutNr]['size'], "$this->diskLayout[$vDisk][$layoutNr]['size'] not set"));
+		return($this->fdiskGetProperty($this->diskLayout[$vDisk][$layoutNr]['size'], "\$this->diskLayout[$vDisk][$layoutNr]['size'] not set"));
 	}
 
 
@@ -163,7 +166,7 @@ class CFDiskGUI extends CFDiskBasic
 **/
 	private function getDiskLayoutEntryType($vDisk, $layoutNr)
 	{
-		return($this->fdiskGetProperty($this->diskLayout[$vDisk][$layoutNr]['type'], "$this->diskLayout[$vDisk][$layoutNr]['type'] not set"));
+		return($this->fdiskGetProperty($this->diskLayout[$vDisk][$layoutNr]['type'], "\$this->diskLayout[$vDisk][$layoutNr]['type'] not set"));
 	}
 
 
@@ -179,7 +182,7 @@ class CFDiskGUI extends CFDiskBasic
 **/
 	private function getDiskLayoutEntryFileSystem($vDisk, $layoutNr)
 	{
-		return($this->fdiskGetProperty($this->diskLayout[$vDisk][$layoutNr]['fs'], "$this->diskLayout[$vDisk][$layoutNr]['fs'] not set"));
+		return($this->fdiskGetProperty($this->diskLayout[$vDisk][$layoutNr]['fs'], "\$this->diskLayout[$vDisk][$layoutNr]['fs'] not set"));
 	}
 
 
@@ -244,7 +247,7 @@ class CFDiskGUI extends CFDiskBasic
 **/
 	private function getDiskLayoutEntryDev($vDisk, $layoutNr)
 	{
-		return($this->fdiskGetProperty($this->diskLayout[$vDisk][$layoutNr]['dev'], "$this->diskLayout[$vDisk][$layoutNr]['dev'] not set", ''));
+		return($this->fdiskGetProperty($this->diskLayout[$vDisk][$layoutNr]['dev'], "\$this->diskLayout[$vDisk][$layoutNr]['dev'] not set", ''));
 	}
 
 
@@ -889,7 +892,7 @@ class CFDiskGUI extends CFDiskBasic
 **/
 	private function getCurrentDiskDev()
 	{
-		return($_POST['SEL_currentDisk']);
+		return(isset($_POST['SEL_currentDisk']) ? $_POST['SEL_currentDisk'] : '');
 	}
 
 
@@ -1457,7 +1460,8 @@ class CFDiskGUI extends CFDiskBasic
 	private function getPartInfoString($vDisk, $vPart)
 	{
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
-	
+
+		$addMP = '';
 
 		$fileSystem = $this->getFileSystemTranslator($this->getPartitionFileSystem($vDisk, $vPart));
 		$dev = $this->getPartitionDev($vDisk, $vPart);
@@ -1468,7 +1472,7 @@ class CFDiskGUI extends CFDiskBasic
 		else
 			$raidInfoAdd = '';
 	
-		$mountPoint = $this->findFstabMountPointByDev("$dev$pPart");
+		$mountPoint = $this->findFstabMountPointByDev("$dev");
 		if ($mountPoint !== false)
 			$addMP = " $I18N_mountpoint: $mountPoint";
 	
@@ -1489,6 +1493,7 @@ class CFDiskGUI extends CFDiskBasic
 	{
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	
+		$addMP = '';
 		$dev = $this->getDiskDev($vDisk);
 		$diskSize = $this->getDiskSize($vDisk);
 

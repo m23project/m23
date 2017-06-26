@@ -178,7 +178,7 @@ cd /tmp
 
 	//generate fstab and write the bootmanager
 	//the rootDevice is the installation partition
-	$rootDevice = $clientOptions[instPart];
+	$rootDevice = $clientOptions['instPart'];
 
 	$bootDevice = CLCFG_getMbrPart($rootDevice,$clientOptions);
 
@@ -239,7 +239,7 @@ cd /tmp
 	CLCFG_dialogInfoBox($I18N_client_installation,$I18N_client_status,$I18N_hardware_detection);
 
 //sets the client's timezone
-	CLCFG_setTimeZone($clientOptions[timeZone]);
+	CLCFG_setTimeZone($clientOptions['timeZone']);
 
 //hardware detection
 	CLCFG_hwdetect();

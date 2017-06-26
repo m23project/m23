@@ -1,5 +1,11 @@
 <?PHP
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Imaging specific management functions.
+$*/
+
+
 include_once("clientConfigCommon.php");
 
 
@@ -86,7 +92,7 @@ function CLCFG_showDistributionSpecificOptions($options, $client)
 
 		<tr>
 			<td>$I18N_configureImageLike</td>
-			<td colspan=\"2\">".DISTR_DistributionsSelections("SEL_configLikeDistr",$_POST[SEL_configLikeDistr],true)."</td>
+			<td colspan=\"2\">".DISTR_DistributionsSelections("SEL_configLikeDistr",$_POST['SEL_configLikeDistr'],true)."</td>
 		</tr>
 		");
 

@@ -1,5 +1,11 @@
 <?
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for handling ranges of IP addresses.
+$*/
+
+
 	class CIPRanges extends CChecks
 	{
 		private $searchFilter = '';

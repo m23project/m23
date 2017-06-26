@@ -1,5 +1,10 @@
 <?PHP
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Common management funtions shared by Linux distributions.
+$*/
+
 
 
 
@@ -178,6 +183,7 @@ DefaultSession=$session
 [xdmcp]
 [gui]
 [greeter]
+IncludeAll=false
 [chooser]
 [debug]
 [servers]' > /etc/mdm/mdm.conf
@@ -1696,7 +1702,8 @@ if ($bootloader == "grub")
 			CLCFG_aptGet("install", "grub2");
 		echo("
 		else
-			if [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ]
+			# DebianVersionSpecific
+			if [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ] || [ $(grep devuan -c /etc/apt/sources.list) -gt 0 ]
 			then
 			");
 				CLCFG_aptGet("install", "grub-pc");
@@ -1749,12 +1756,13 @@ if ($bootloader == "grub")
 				fi
 			fi
 
-			if [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ]
+			# DebianVersionSpecific
+			if [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ]
 			then
 				/usr/sbin/update-grub2
 				sync
 				
-				if [ $(lsb_release -c -s) = 'xenial' ] || [ $(lsb_release -i -s) = 'LinuxMint' ]
+				if [ $(lsb_release -c -s) = 'xenial' ] || [ $(lsb_release -i -s) = 'LinuxMint' ] || [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ]
 				then
 					sed -i 's/\(GRUB_CMDLINE_LINUX_DEFAULT=\"\)\([^\"]*\)\"/\\1\\2 net.ifnames=0\"/' /etc/default/grub
 					update-grub
@@ -2276,14 +2284,17 @@ fi
 **/
 function CLCFG_language($lang, $release = null)
 {
-	$lV=I18N_getLangVars($lang);
+
+	$lV = I18N_getLangVars($lang);
 	
 	if ($release !== null)
 	{
 		switch($release)
 		{
+			// DebianVersionSpecific
 			case 'wheezy':
 			case 'jessie':
+			case 'stretch':
 				foreach ($lV as $var => $val)
 				{
 					$val = str_replace('utf', 'UTF', $val);
@@ -2323,7 +2334,8 @@ GDM_LANG=$lV[lang]\" > /etc/environment
 cat /etc/locale.gen | xargs -n1 locale-gen
 
 #Special handling for Debian Squeeze
-if [ `grep \"Debian GNU/Linux 6.0\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 7\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 8\" /etc/issue -c` -eq 1 ]
+#DebianVersionSpecific
+if [ `grep \"Debian GNU/Linux 6.0\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 7\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 8\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 9\" /etc/issue -c` -eq 1 ]
 then
 	rm /etc/environment /tmp/lg 2> /dev/null
 
@@ -2813,9 +2825,26 @@ function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePor
 
 		echo("
 			rm -r * 2> /dev/null
+			
+			ret=1
+			try=0
 
-			wget $debootstrapCacheFileURL -o /tmp/debootstrapCache.log -O $debootstrapCacheFile
-			if [ $? -ne 0 ]
+			# Try for 60 minutes to fetch the cache file
+			while [ \$ret -ne 0 ] && [ \$try -lt 60 ]
+			do
+				wget $debootstrapCacheFileURL -o /tmp/debootstrapCache.log -O $debootstrapCacheFile
+				ret=\$?
+				
+				if [ \$ret -eq 0 ]
+				then
+					break
+				fi
+				
+				try=$[ \$try + 1 ]
+				sleep 60
+			done
+
+			if [ \$ret -ne 0 ]
 			then
 				".sendClientLogStatus("Download of base system error: $debootstrapCacheFileURL", false, true)."
 			else
@@ -3234,10 +3263,15 @@ chmod +x /sbin/m23fetchjob
 \n
 ");
 
+	// DebianVersionSpecific
 	switch ($release)
 	{
 		case 'xenial':
 			echo("\nfind /etc/rc* | grep m23fetchjob | xargs rm\nupdate-rc.d m23fetchjob defaults\nsystemctl enable m23fetchjob\n");
+		break;
+
+		case 'stretch':
+			echo("\ndpkg-reconfigure m23-initscripts\n");
 		break;
 	}
 }

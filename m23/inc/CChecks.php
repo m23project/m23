@@ -1,4 +1,10 @@
 <?
+
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for checking values.
+$*/
+
 // CC_forename, $data['name'], CC_familyname, $data['familyname'], CC_email, $data['email']
 class CChecks extends CMessageManager
 {
@@ -580,6 +586,11 @@ class CChecks extends CMessageManager
 		elseif (!checkFQDN($clientName))
 		{
 			$this->addErrorMessage("$I18N_invalid_clientname ($clientName)");
+			return(false);
+		}
+		elseif (is_numeric($clientName))
+		{
+			$this->addErrorMessage("$I18N_clientname_must_not_be_a_number ($clientName)");
 			return(false);
 		}
 		elseif (CLIENT_exists($clientName) && $checkNonused)

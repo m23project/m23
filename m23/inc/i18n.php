@@ -12,6 +12,51 @@ const LANGUAGELIST = 'de#en#fr';
 
 
 /**
+**name I18N_getHumanReadableDayHourMinute($in)
+**description Converts a combined numeric day and hour/minute string into a human readable day and hour/minute string.
+**parameter in: Combined numeric day and hour/minute string
+**returns Human readable day and hour/minute string or false in case of conversion error.
+**/
+function I18N_getHumanReadableDayHourMinute($in)
+{
+	$weekdayNames = I18N_getWeekDayArray();
+	if (HELPER_splitDayHourMinuteString($in, $day, $hour, $minute))
+		return($weekdayNames[$day]." $hour:$minute");
+	else
+		return(false);
+}
+
+
+
+
+
+/**
+**name I18N_getWeekDayArray()
+**description Generates an array with all week days as value and week day numbers as keys (Monday = 1, Sunday = 7).
+**returns Array with all week days.
+**/
+function I18N_getWeekDayArray()
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	// Create an array with all weekdays
+	$weekDays = array();
+	$weekDays[1] = $I18N_Monday;
+	$weekDays[2] = $I18N_Tuesday;
+	$weekDays[3] = $I18N_Wednesday;
+	$weekDays[4] = $I18N_Thursday;
+	$weekDays[5] = $I18N_Friday;
+	$weekDays[6] = $I18N_Saturday;
+	$weekDays[7] = $I18N_Sunday;
+
+	return($weekDays);
+}
+
+
+
+
+
+/**
 **name I18N_number_format($in)
 **description Converts numbers to the language specific number formating.
 **parameter in: Input number.
@@ -43,7 +88,7 @@ function I18N_convertToHumanReadableName($lang)
 	//Get the short and (translated) longanames
 	$res = DB_query("SELECT * FROM `i18n` WHERE webinterface = 'c' AND ShortLanguage = '$lang'");
 	$l = mysqli_fetch_assoc($res);
-	return($$l['LongLanguage']);
+	return(isset(${$l['LongLanguage']}) ? ${$l['LongLanguage']} : '');
 }
 
 
@@ -122,7 +167,7 @@ function I18N_listClientLanguages($default, $directOutputtedSelection = true)
 	//Get the short and (translated) longanames
 	$res = DB_query("SELECT * FROM `i18n` WHERE webinterface = 'c'");
 	while ($lang = mysqli_fetch_assoc($res))
-		$langA[$lang['ShortLanguage']] = $$lang['LongLanguage'];
+		$langA[$lang['ShortLanguage']] = ${$lang['LongLanguage']};
 
 	//Sort by the translated labels
 	asort($langA);

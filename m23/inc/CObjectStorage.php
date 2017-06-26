@@ -1,4 +1,10 @@
 <?
+
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for storing PHP objects in the database.
+$*/
+
 class CObjectStorage extends CObjectStorageManager
 {
 	const COSSTATUS_error = -2;

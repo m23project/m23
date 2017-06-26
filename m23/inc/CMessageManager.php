@@ -1,5 +1,11 @@
 <?php
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for managing messages in the m23 webinterface.
+$*/
+
+
 class CMessageManager
 {
 	private $errorMessagesHTML = '', $errorsFound = false, $infoMessagesHTML = '', $infosFound = false, $warningMessagesHTML = '', $warningsFound = false;

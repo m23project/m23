@@ -1,0 +1,27 @@
+$I18N_autoUpdate<!--new 17.2 -->
+
+Ce dialogue permet de spécifier quand vos clients m23 seront automatiquement mis à jour. Vous pouvez ajouter plusieurs groupes de clients à un groupe, ces clients seront régulièrement mis à jour aux heures et au jours de la semaine choisis.
+
+<u>$I18N_createNewUpdateSet</u>
+Afin de pouvoir utiliser les fonctionnalités de mises à jour automatiques, au moins un groupe doit être nécessairement créé. Créez le groupe dans <i>"$I18N_createNewUpdateSet"</i>. Dans le champ <i>"$I18N_parallelUpdates"</i>, entrez le nombre maximum de clients à mettre à jour simultanément. Dans <i>"$I18N_updateType"</i>, vous pouvez choisir d'utiliser $I18N_normalUpdate (pour mettre à jour les paquets installés et seulement installer de nouveaux paquets lorsque ceux-ci sont requis) ou $I18N_fullUpdate (pour mettre à jour les paquets installés, installer de nouveaux paquets et en désinstaller). Puis cliquez sur <i>"$I18N_createNewUpdateSet"</i>.
+
+<u>Ajouter les heures et groupes de clients à mettre à jour</u>
+Après avoir créé un groupe de mise à jour, vous devez renseigner la période de temps pendant laquelle le groupe pourra être mis à jour. Dans la colonne <i>"$I8N_addTimePeriod"</i>, sélectionnez l'heure de début et celle de fin puis cliquez sur <i>"$I18N_addTimePeriod"</i>. Enfin, ajoutez le groupe de clients depuis la colonne <i>"$I18N_addGroup"</i> en cliquant sur <i>"$I18N_addGroup"</i>.
+
+<u>Supprimer les heures et groupes de clients à mettre à jour</u>
+Lorsque vous cliquez sur l'<i>x rouge</i> suivant une période de temps ou un groupe de clients, vous pouvez les supprimer du groupe de mise à jour. Pour supprimer le groupe complet de la liste, cliquez sur <i>"$I18N_delete"</i> dans la rangée correspondant à ce dernier.
+
+<u>Processus en arrière plan</u>
+Lorsqu'il existe au moins un groupe de mise à jour, une <a href="https://fr.wikipedia.org/wiki/Cron">tâche cron</a> sera démarré tous les 15 minutes, elle vérifiera quels clients peuvent être mis à jour.
+
+Les clients démarreront successivement, jusqu'à concurrence du nombre saisi dans <i>"$I18N_parallelUpdates"</i>. Lorsque l'intervalle de temps pour les mises à jour en cours est consommé, aucun autre client du groupe ne sera mis à jour pour cette occurence. Les mises à jour en cours d'application ne seront pas stopées.
+
+En plus de cela, m23 vérifie si la mise à jour sur les clients est actuellement en cours d'exécution. Si le client ne démarre pas la mise à jour dans les 30 minutes (par exemple si le <a href="https://fr.wikipedia.org/wiki/Wake-on-LAN">réveil par le réseau</a> ne fonctionne pas), la tâche de mise à jour sera supprimée pour les prochaines 24 heures.
+
+Lorsque le client est déja actif, les mises à jour seront exécutées en arrière plan. Les clients démarrés à l'aide du réveil par le réseau (Wake-on-LAN) seront arrêtés après que les mises à jour se seront terminées.
+
+Lorsque tous les clients d'un groupe de mise à jour ont terminés avec succès, le groupe suivant sera activé avec son propre intervalle de temps (s'il y'en existe un).
+
+Lorsque le dernier groupe de mise à jour restant est supprimé, la tâche cron correspondante sera également supprimée.
+
+Dans le fichier de log <i>"/m23/log/autoUpdate.log"</i> vous trouverez plus d'informations à propos des mises à jour exécutées.

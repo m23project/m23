@@ -229,7 +229,7 @@ function MSG_show($message, $language="", $width = 700, $urgency, $I18Ntitle)
 	elseif ($language != "none")
 		include("/m23/inc/i18n/$language/m23base.php");
 
-	MSG_showMessageBox($message,$urgency,$$I18Ntitle,$width);
+	MSG_showMessageBox($message,$urgency,${$I18Ntitle},$width);
 };
 
 
@@ -376,7 +376,7 @@ function MSG_showAddJobsInfo($jobNr,$clNr,$language="")
 **/
 function MSG_showNewFeature($url,$language="",$width=700)
 {
-	if (CAPTURE_isActive() || ($_GET[captureLoad]==1))
+	if (CAPTURE_isActive() || ($_GET['captureLoad']==1))
 		return;
 
 	if (($language != "none") && (isset($language{1})))

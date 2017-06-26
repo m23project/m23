@@ -5,7 +5,7 @@
 	HTML_showTableHeader(true, 'subtable', 'width="100%" cellspacing=10');
 
 	$CFDiskGUIO = new CFDiskGUI(isset($_GET['client']) ? $_GET['client'] : $_POST['client']);
-	$CFDiskGUIO->fdiskSessionReset($_GET['clearSession'] == 1);
+	$CFDiskGUIO->fdiskSessionReset(isset($_GET['clearSession']) && ($_GET['clearSession'] == 1));
 	$CFDiskGUIO->showCombinedFdiskGUIDialog();
 	HTML_showTableEnd(true);
 	HTML_showFormEnd();

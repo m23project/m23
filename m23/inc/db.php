@@ -28,6 +28,9 @@ define("STATUS_DEFINE",5);
 //Status for clients that are not m23 clients, but their network settings are handled by the m23 server
 define("STATUS_EXTERNAL",6);
 
+// Make sure that there is a value set for m23Shared
+if (!isset($_SESSION['m23Shared'])) $_SESSION['m23Shared'] = false;
+
 
 
 
@@ -226,7 +229,7 @@ function dbClose()
 **/
 function getServerIP()
 {
-	if (isset($_SESSION['m23Shared']))
+	if ($_SESSION['m23Shared'])
 		return(m23SHARED_getServerIP());
 	else
 	{
@@ -235,7 +238,7 @@ function getServerIP()
 		else
 			$addSudo = '';
 
-		$ip = exec("$addSudo grep address /etc/network/interfaces | cut -d's' -f3 | cut -d' ' -f2 | head -1");
+		$ip = exec("$addSudo cat /etc/network/interfaces | tr -d \"\t\" | tr -s \" \" | sed 's/^[ ]*//g' | grep ^address | cut -d ' ' -f2 | head -1 | sed 's#/.*##'");
 
 		if (empty($ip) && VM_CloudStack_available())
 			$ip = VM_CloudStack_getServerIP();
@@ -254,28 +257,32 @@ function getServerIP()
 **/
 function getServerNetmask()
 {
-	for ($ethNr = 0; $ethNr < 10; $ethNr++)
-	{
-		if (HELPER_isExecutedOnUCS())
-			$netmask = exec('sudo ucr get interfaces/eth'.$ethNr.'/netmask');
-		else
-			$netmask = exec('LC_ALL="C"; sudo /sbin/ifconfig eth'.$ethNr.' | sed "s/  /\n/g" | grep "^Mask" | cut -d":" -f2');
 
-		if (isset($netmask{6}))
-			break;
-	}
-	
-	if (HELPER_isExecutedOnUCS() && !isset($netmask{6}))
-	for ($brNr = 0; $brNr < 10; $brNr++)
+	// Netmask is detected by "ucr" on UCS
+	if (HELPER_isExecutedOnUCS())
 	{
-		$netmask = exec('sudo ucr get interfaces/br'.$brNr.'/netmask');
-		if (isset($netmask{6}))
-			break;
+		// Check the "normal" ethX interfaces
+		for ($ethNr = 0; $ethNr < 10; $ethNr++)
+		{
+			$netmask = exec('sudo ucr get interfaces/eth'.$ethNr.'/netmask');
+
+			if (isset($netmask{6}))
+				break;
+		}
+
+		// Check bridged network devices
+		for ($brNr = 0; $brNr < 10; $brNr++)
+		{
+			$netmask = exec('sudo ucr get interfaces/br'.$brNr.'/netmask');
+			if (isset($netmask{6}))
+				break;
+		}
 	}
+
+	$netmask = exec('LC_ALL="C"; /sbin/ifconfig | egrep "(eth|enp)" -A1 | sed "s/  /\n/g"  | egrep "(^Mask|^netmask)" | sed "s/^.*[ :]//" | head -1');
 
 	return($netmask);
 }
-
 
 
 

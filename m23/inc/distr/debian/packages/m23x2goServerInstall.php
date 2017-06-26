@@ -5,6 +5,8 @@ Priority:30
 */
 function run($id)
 {
+ // DebianVersionSpecific
+
  $lang=getClientLanguage();
  include("/m23/inc/i18n/".I18N_m23instLanguage($lang)."/m23inst.php");
  include('/m23/inc/distr/debian/clientConfigCommon.php');
@@ -14,6 +16,11 @@ echo("
 
 apt-key adv --recv-keys --keyserver keys.gnupg.net E1F958385BFE2B6E
 mkdir -p /etc/apt/sources.list.d
+
+if [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ]
+then
+	echo 'deb http://packages.x2go.org/debian stretch main' > /etc/apt/sources.list.d/x2go.list
+fi
 
 if [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ]
 then

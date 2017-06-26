@@ -1342,7 +1342,7 @@ Hint: You (or anybody else with access to your webbrowser) can use the m23 webin
 @$I18N_addNewLoginToUCSLDAP = "Save login data to UCS";
 @$I18N_authentificationViaUCS = "Authenticate via UCS";
 @$I18N_addNewLoginToUCSLDAPError = "Error: The login data could not be saved to UCS.";
-@$I18N_readLoginFromUCSLDAPSupportedDistros = '(can be used with clients based on Debian 8, Ubuntu 14.04, 16.04, Linux Mint 17.x and 18.x)';
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(can be used with clients based on Debian 8 + 9, Ubuntu 14.04, 16.04, Linux Mint 17.x and 18.x)';
 
 //16.2
 @$I18N_clientUsesDynamicIP = "The client uses a dynamically assigned IP (DHCP)";
@@ -1398,4 +1398,21 @@ Hint: You (or anybody else with access to your webbrowser) can use the m23 webin
 @$I18N_onlyRight = 'Only right';
 @$I18N_noMatch = 'No match';
 
+//17.2
+@$I18N_LDAPcouldNotCreatePosixAccount = 'Failed creating user accoung on LDAP server.';
+@$I18N_LDAPcouldNotCreatePosixGroup = 'Failed creating group on LDAP server.';
+@$I18N_startTimeMustBeBeforeEndTime = 'The start time needs to be before the end time.';
+@$I18N_addTimePeriod = 'New time interval';
+@$I18N_groupWasAddedPreviously = 'This group has already been added.';
+@$I18N_updatePeriods = 'Update intervals';
+@$I18N_updateeGroups = 'Update groups';
+@$I18N_addGroup = 'Add group';
+@$I18N_createNewUpdateSet = 'Add update group';
+@$I18N_parallelUpdates = 'Simultaneous updates';
+@$I18N_autoUpdate = 'Automatical update';
+@$I18N_updateType = 'Type of update';
+@$I18N_autoUpdateFinishedOk = 'Automatical update finished successfully';
+@$I18N_autoUpdateFinishedErrorTooManyFailures = 'Automatical update: Too many failed attempts';
+@$I18N_autoUpdateFinishedWrongParameters = 'Automatical update: Contradictory status information';
+@$I18N_clientname_must_not_be_a_number = 'The name of the client must not be a number.';
 ?>

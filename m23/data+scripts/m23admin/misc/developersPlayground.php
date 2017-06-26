@@ -16,6 +16,10 @@
 	include_once('/m23/inc/CFDiskBasic.php');
 	include_once('/m23/inc/CFDiskGUI.php');
 	include_once('/m23/inc/CFirewall.php');
+	
+// 	print(serialize(CRON_isEntryPresent($identifier)));
+	print(CLIENT_getNextFreeIp());
+	exit(0);
 
 // 	print(serialize(CSYSTEMPROXY_getAptGetProxyParamter()));
 
@@ -40,12 +44,21 @@
 // 	
 // 	print_r($out);
 
-	HTML_submit('BUT_disable', "AUS", " disabled");
-	HTML_submit('BUT_normal', "AN", " ");
-	print(BUT_disable.BUT_normal);
+// 	$clientO = new CClient('d8lo-neu', CClient::CHECKMODE_MUSTEXIST);
+// 	$clientO->startAutoUpdate(CAutoUpdate::UPDATE_NORMAL);
+// 	$clientO->stopAutoUpdate();
+// 	$clientO->checkAutoUpdate();
+	
+	$CAutoUpdateO = new CAutoUpdate();
+/*	$CAutoUpdateO->activateSet(1);
+	print(serialize($CAutoUpdateO->isTimeToRunNow(1)));*/
+// 	print_r($CAutoUpdateO->getRunningClients());
+// 	$CAutoUpdateO->run();
+
 
 print("<pre>");
-	CLIENT_startLiveScreenRecording('m23lm18');
+
+// 	CLIENT_startLiveScreenRecording('m23lm18');
 	
 
 	// print_r(CSystemProxy::getProxySettingsArray());
@@ -55,6 +68,11 @@ print("<pre>");
 // 	CSYSTEMPROXY_getEnvironmentVariables();
 
 // 	print_r(explodeAssoc('?', 'arch?instPart?mbrPart?swapPart?desktop?distr?release?packagesource?kernel?disableSSLCertCheck?disableSudoRootLogin?installX2goserver?uefiActive?amd64??/dev/sda??Debian8Mate?debian?jessie?jessieo?linux-image-amd64?0?0?0?0'));
+
+// 	print_r($CAutoUpdateO->getAllSets());
+	print('<h1>SET:'.$CAutoUpdateO->activateNextSet().'</h1>');
+	
+	$CAutoUpdateO->showAutoUpdateManager();
 
 print("</pre>\n");
 	HTML_showTableEnd();

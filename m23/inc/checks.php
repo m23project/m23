@@ -122,6 +122,7 @@ define('CC_deviceNameDrive', 'd');
 define('CC_deviceNamepartition', 'dp');
 define('CC_deviceNameOrPartition', 'do');
 define('CC_deviceNameOrPartitionOrRaid', 'dr');
+define('CC_mountPoint', 'm');
 
 
 

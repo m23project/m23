@@ -6,6 +6,63 @@
 $*/
 
 
+define('LOG_CAU', '/m23/log/autoUpdate.log');
+
+
+/**
+**name HELPER_logToFile($logFile, $text, $htmlH = NULL)
+**description Adds text to an exclusively opened log file.
+**parameter logFile: Name of the log file with full path.
+**parameter htmlH: If nummeric, the text will shown with the given HTML heading level.
+**parameter text: Text to add.
+**/
+function HELPER_logToFile($logFile, $text, $htmlH = NULL)
+{
+	// Exit, if the log file cannot be written
+	if (!is_writable(dirname($logFile))) return(false);
+
+	$ret = false;
+
+	// Try to write the exlusively opened file
+	while ($ret === false)
+	{
+		$ts = strftime("%Y-%m-%d %T");
+		$ret = file_put_contents($logFile, "[$ts] $text\n", FILE_APPEND | LOCK_EX);
+		usleep(500000);
+	}
+	
+	if (is_numeric($htmlH)) echo("<h$htmlH>$text</h$htmlH>\n");
+}
+
+
+
+
+
+/**
+**name HELPER_splitDayHourMinuteString($in, &$day, &$hour, &$minute)
+**description Splits a combined numeric day and hour/minute string into day and hour/minute.
+**parameter in: Combined numeric day and hour/minute string
+**parameter day: The day variable to write the day number to.
+**parameter hour: The hour variable to write the hour number to.
+**parameter minute: The minute variable to write the minute number to.
+**returns true, if the input string is long enough.
+**/
+function HELPER_splitDayHourMinuteString($in, &$day, &$hour, &$minute)
+{
+	if (isset($in) && isset($in[4]))
+	{
+		$day = $in[0];
+		$hour = substr($in, 1, 2);
+		$minute = substr($in, 3, 2);
+		return(true);
+	}
+	else
+		$day = $hour = $minute = false;
+
+	return(false);
+}
+
+
 
 
 
@@ -801,9 +858,9 @@ function HELPER_passGenerator($length, $amount = 1)
 {
 	//check if pwgen is installed
 	if (isProgrammInstalled("pwgen"))
-		$passwords = MASS_passGenerator($firstPasswordLength,"pwgen",$length);
+		$passwords = MASS_passGenerator($length,"pwgen",$amount);
 	else
-		$passwords = MASS_passGenerator($firstPasswordLength,"random",$length);
+		$passwords = MASS_passGenerator($length,"random",$amount);
 
 	if ($amount == 1)
 		return($passwords[0]);

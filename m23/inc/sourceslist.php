@@ -153,6 +153,8 @@ function SRCLST_saveList($name,$list,$description,$distr,$release="")
 **/
 function SRCLST_querySourceslists($distr)
 {
+	$addQuery = '';
+
 	if ($distr != "*")
 	{
 		CHECK_FW(CC_sourceslistdistr, $distr);
@@ -544,8 +546,9 @@ function SRCLST_getParameter($sourceName, $parameter)
 	
 	foreach ($lines as $line)
 	{
-		$mM=explode("#$parameter:",$line);
-		$out[$i++] = trim($mM[1]);
+		$mM = explode("#$parameter:",$line);
+		if (isset($mM[1]))
+			$out[$i++] = trim($mM[1]);
 	}
 
 	return($out);
@@ -786,11 +789,11 @@ function SRCLST_showEditor($poolName="", $showSupportedUserInterfacesList = true
 	$defaultCheckedArchs = $archs;
 	$forceCheckedArchsReload = false;
 
-	$sourcename=$_POST['sourcename'];
-	$sourcelist=CHECK_db2text(trim($_POST['sourcelist']));
-	$sourcedescr=trim($_POST['sourcedescr']);
-	$distr=$_POST['distr'];
-	$release = $_POST['release'];
+	$sourcename = isset($_POST['sourcename']) ? $_POST['sourcename'] : '';
+	$sourcelist = CHECK_db2text(trim(isset($_POST['sourcelist']) ? $_POST['sourcelist'] : ''));
+	$sourcedescr = trim(isset($_POST['sourcedescr']) ? $_POST['sourcedescr'] : '');
+	$distr = isset($_POST['distr']) ? $_POST['distr'] : '';
+	$release = isset($_POST['release']) ? $_POST['release'] : '';
 
 
 	//loads a sources list
@@ -810,8 +813,8 @@ function SRCLST_showEditor($poolName="", $showSupportedUserInterfacesList = true
 			}
 		};
 
-	if (!is_array($selectedDesktops))
-		$selectedDesktops=DISTR_getSelectedDesktopsArr();
+	if (!isset($selectedDesktops) || !is_array($selectedDesktops))
+		$selectedDesktops = DISTR_getSelectedDesktopsArr();
 
 	$checkedArchs = HTML_multiCheckBox('MUL_archs', $archs, $defaultCheckedArchs, $forceCheckedArchsReload);
 
@@ -853,25 +856,25 @@ function SRCLST_showEditor($poolName="", $showSupportedUserInterfacesList = true
 	
 	if (!empty($poolName))
 		{
-			$packageList = $_POST[TA_packageList];
-			$firstClient = $_POST[SEL_clientName];
+			$packageList = $_POST['TA_packageList'];
+			$firstClient = $_POST['SEL_clientName'];
 			$clientArr = CLIENT_getNamesWithPackages();
-			$firstClient = $_POST[SEL_clientName];
+			$firstClient = $_POST['SEL_clientName'];
 			$packageListsArr = CLIENT_getNamesWithPackages(true);
 
 	
 			//add packages from client
-			if (isset($_POST[BUT_addFromClient]))
+			if (isset($_POST['BUT_addFromClient']))
 				$packageList.=" ".PKG_getClientPackages($firstClient, "", false, DEBPKGSTAT_installed);
 
-			$firstPackageList=$_POST[ED_packageSourceName];
+			$firstPackageList=$_POST['ED_packageSourceName'];
 			if (empty($firstPackageList))
-				$firstPackageList=$_POST[SEL_packageListName];
+				$firstPackageList=$_POST['SEL_packageListName'];
 
 			//load packages list from DB
-			if (isset($_POST[BUT_loadPackagesList]) || isset($_POST[BUT_addPackagesList]))
+			if (isset($_POST['BUT_loadPackagesList']) || isset($_POST['BUT_addPackagesList']))
 				{
-					$packageListName=$_POST[SEL_packageListName];
+					$packageListName=$_POST['SEL_packageListName'];
 					
 					if ($packageListName == "basepackages_$release")
 						{
@@ -882,7 +885,7 @@ function SRCLST_showEditor($poolName="", $showSupportedUserInterfacesList = true
 					else
 						$packageListNew = PKG_loadPackagesList($packageListName,false);
 						
-					if (isset($_POST[BUT_addPackagesList]))
+					if (isset($_POST['BUT_addPackagesList']))
 						$packageList .= $packageListNew;
 					else
 						$packageList = $packageListNew;
@@ -896,13 +899,13 @@ function SRCLST_showEditor($poolName="", $showSupportedUserInterfacesList = true
 			$packageList=implode(" ", $packageListArr);
 
 			//save current packages list
-			if (isset($_POST[BUT_savePackagesList]))
+			if (isset($_POST['BUT_savePackagesList']))
 				PKG_savePackagesList($firstPackageList,$packageList);
 
-			if (isset($_POST[BUT_deletePackagesList]))
+			if (isset($_POST['BUT_deletePackagesList']))
 				{
-					PKG_deletePackagesList($_POST[SEL_packageListName]);
-					if ($_POST[SEL_packageListName] == $firstPackageList)
+					PKG_deletePackagesList($_POST['SEL_packageListName']);
+					if ($_POST['SEL_packageListName'] == $firstPackageList)
 						$packageList="";
 
 					$firstPackageList=false;
@@ -1119,6 +1122,7 @@ function SRCLST_getListnames($distr)
 {
 	$result=SRCLST_querySourceslists($distr);
 
+	$out = '';
 	$i=0;
 
 	while ($line=mysqli_fetch_row($result))
@@ -1138,14 +1142,16 @@ function SRCLST_getListnames($distr)
 **/
 function SRCLST_cleanList($list)
 {
+	$out = '';
 	$i=0;
 	$lines=explode("\n",$list);
+
 	foreach ($lines as $line)
-		{
-			$line=trim($line);
-			if (!empty($line) && (strpos($line,"#")!=0 || strpos($line,"#")===false))
-				$out[$i++]=$line;
-		};
+	{
+		$line=trim($line);
+		if (!empty($line) && (strpos($line,"#")!=0 || strpos($line,"#")===false))
+			$out[$i++]=$line;
+	}
 	return($out);
 };
 

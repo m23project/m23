@@ -1,3 +1,278 @@
+2017-06-24
+release 17.2
++++++
+2017-06-23
+cha: cron.php: Now sets language as global value.
+cha: getServerNetmask: Now compatible with new network device names.
++++++
+2017-06-20
+cha: CClient::__construct, CChecks::checkClientname: Now are checking, if a number was given as name for a (new) client, what is not allowed.
+cha: exportDBsourceslist.php: Now escapes "'".
++++++
+2017-06-19
+cha: CLCFG_debootstrap: Now tries for 60 minutes to fetch the cache file.
+cha: CFDiskBasic::genPartedCommands, FDISK_genPartedCommands: Now use force parameter.
+new: CLIENT_addClientlogsOk: Adds an entry into the client's status log with "ok" status.
+new: CLIENT_addClientlogsFailure: Adds an entry into the client's status log with "failure" status.
+new: CLIENT_addClientlogsUnknown: Adds an entry into the client's status log with "unknown" status.
+cha: CClient::checkAutoUpdate: Now writes success and fail into the client's log.
+fix: index.php: Logout now works better without trying to reload the page.
++++++
+2017-06-18
+new: CLIENT_insertIntoClientlogs: Adds an entry into the client's status log.
++++++
+2017-06-15
+cha: listKernelVersions, menuKernelDownload: Now uses HTTPs instead of FTP for accessing kernel.org.
+cha: createRFSBins: Now gets the needed libs by objdump and ldd.
+cha: createRFScopyLib: Now creates a file with all libraries needed for running the tools of the bootimage, if CPU architecture of the m23 server and the bootimage are identically.
+cha: createRFSBins: Now adds (maybe missing) libaries from library list file, if CPU architecture of the m23 server and the bootimage are not identically.
+cha: bootimage: Now uses Linux Kernel 4.9.32.
++++++
+2017-06-14
+cha: m23/postinst/getCSExternIP, MSR_curDynIPCommand, checkAlternativeM23Server: Now checks, if the IP is valid, that my be given back by a CloudStack virtual switch or by a faulty configured gateway.
++++++
+2017-05-31
+cha: CLCFG_genFstab: Added support for Devuan.
+cha: exportDBsourceslist.php: Added "devuanjessie".
++++++
+2017-05-20
+new: CClientLister::getAllAutoUpdateClientNames: Gets an array with the clients that currently run autoUpdate.
+cha: inc/*.php: Added mdoc header.
++++++
+2017-05-17
+cha: getServerNetmask: Now gets the netmask from an eth device only.
++++++
+2017-05-11
+new: CRON_addJobMinutely: Runs a command every N minutes.
+new: CRON_isEntryPresent: Checks, if a crontab entry is present with a given identifier.
+new: CAutoUpdate::getSetAmount: Get the amount of update sets.
+new: CAutoUpdate::configureCron: Adds and removes the crontab entry dynamically when the first update set gets created or the last gets deleted.
+new: CAutoUpdate::showAutoUpdateManager: Shows a dialog for viewing, creating, changing and deleting automatic update sets.
++++++
+2017-05-10
+cha: m23/postinst: Now makes sure that /m23/log is writable by the Apache user.
+fix: m23CronStarter: Corrected checking of returned error messages.
++++++
+2017-05-09
+new: HELPER_logToFile: Adds text to an exclusively opened log file.
+cha: PKG_addStatusJob: Removed unneeded calls to figure out distribution and sources list variables, that are never used.
+cha: CClient::addNormalJob, CClient::addSpecialJob: Don't call includeDistributionSpecificPackagesPHP anymore, because only non-distribution-specific functions are needed.
+cha: PKG_getSpecialPackagePriority: Now sets distribution name to "debian", if $distr parameter is empty.
+cha: CClient::getSourcesList: Now returns empty string, if no sources list is set instead of dying.
+cha: CClient::addUpdateSourcesListJob: Now adds the update job only if a sources list is set.
++++++
+2017-05-08
+cha: PKG_executeOnClientJobs: Now safe against invalid job IDs.
++++++
+2017-04-26
+new: CAutoUpdate::isTimeToRunNow: Checks, if the given set should be run now.
+new: CAutoUpdate::activateNextTimlySet: Activates the next set with the oldest timestamp that should be executed now.
+cha: CAutoUpdate::getRunningClients: Renamed to CAutoUpdate::getAllClientnames and added parameter to get all or clients or clients running an auto update only.
+new: CAutoUpdate::startNewClients: Starts auto update on a given amount of clients that haven't run auto update for at least one day.
+new: CAutoUpdate::run: Chooses the set that should be run now and starts new auto update on clients.
++++++
+2017-04-25
+new: CClient::addShutdownPackage: Adds a shutdown package, but only if the client is NOT running.
+new: PKG_getHigestIDOfSpecialPackage: Gets the highest ID of a special package.
++++++
+2017-04-24
+cha: HTML_showTableRow: Now accepts additional HTML attributes in first parameters as array.
+new: CClient::startAutoUpdate: Starts auto update on a client.
+cha: GRP_listAllClientsInGroups: Now has an extra parameter, that if set to true, only clients with auto update job will be listed.
+cha: CAutoUpdate::getActiveSet: Renamed to CAutoUpdate::getActiveSetID.
+new: CAutoUpdate::getActiveSet: Gets the active set or false, if none is active or no sets are present.
+new: CAutoUpdate::getActiveGroups: Gets the groups from the current active set.
+new: CAutoUpdate::getRunningClients: Gets the clients in all groups of the active set.
+new: CClient::hasAutoUpdateJob: Checks, if the client has an auto update job.
+new: CClient::getAutoUpdate_lastAttempt: Gives back the timestamp of the last assignment of an auto update job.
+new: CClient::stopAutoUpdate: Stops the auto update after successful or failed attempt.
+new: CClient::checkAutoUpdate: Checks, if an auto update is (physically) running or if it has failed or finished.
++++++
+2017-04-20
+new: CAutoUpdate::setParallelUpdates: Sets the amount of parallel updates for a set.
+new: CAutoUpdate::setType: Sets the type for a set.
+new: CAutoUpdate::getUpdateTypeTranslation: Returns the whole translation array with update type as key and the translation as value or the translation for a given constant.
+new: CAutoUpdate::getType: Gets the type of a set as constant value or in translated form.
+new: CAutoUpdate::getParallelUpdates: Gets the amount of parallel updates in a set.
+cha: UBUNTU_desktopInstall: Now removes mintupdate.
++++++
+2017-04-18
+new: CAutoUpdate::getImgButtonParams: Checks, if an image button was pressed and extracts the two parameters from it.
++++++
+2017-04-12
+new: CAutoUpdate::addGroup: Adds a client group for running the updates on them.
+new: CAutoUpdate::delGroup: Deletes a group.
+new: CAutoUpdate::getAllGroupsHumanReadable: Generate a list of all groups (with optional button for deleting an entry).
++++++
+2017-04-11
+new: HELPER_splitDayHourMinuteString: Splits a combined numeric day and hour/minute string into day and hour/minute.
+new: I18N_getHumanReadableDayHourMinute: Converts a combined numeric day and hour/minute string into a human readable day and hour/minute string.
+new: CAutoUpdate::addStartEnd: Adds a start end range for running the updates.
+new: CAutoUpdate::saveSets: Saves all changed sets to the DB.
+new: CAutoUpdate::getAllStartsEndsHumanReadable: Generate a list of all time ranges (with optional button for deleting an entry).
+new: CAutoUpdate::delStartEnd: Deletes a start end range.
++++++
+2017-04-10
+new: CAutoUpdate::getActiveSet: Gets the ID of the active set or NULL, if none is active or no sets are present.
+new: CAutoUpdate::addEntry: Adds an entry to the schedule.
+new: CAutoUpdate::getAllSets: Generates an array with all sets and the according information for each set.
+new: CAutoUpdate::isASetActive: Checks, if a set is active.
+new: CAutoUpdate::activateSet: Activates one set and deactivates all other sets.
+new: CAutoUpdate::activateNextSet: Activates the next set with the oldest timestamp.
+new: CAutoUpdate::delEntry: Deletes one set.
+new: I18N_getWeekDayArray: Generates an array with all week days as value and week day numbers as keys (Monday = 1, Sunday = 7).
+new: HTML_weekdayTimeChooser: Creates a picker for weekday and hour/minute (with 15 minute steps).
++++++
+2017-04-06
+cha: exportDBsourceslist.php: Removed "LinuxMint 13".
++++++
+2017-03-31
+cha: PKG_listRecommendPackages: Now the "do not change" is the first adding option.
+cha: install_packages.php: Now sets the 1st selected package selection as storing name for the package selection, if the package selection name is empty
++++++
+2017-03-28
+cha: CLCFG_installMintDM: Now hides the user list.
+cha: UBUNTU_desktopInstall: Now removes tilda.
++++++
+2017-03-04
+cha: m23-skel: Disables settings for Mate desktop.
++++++
+2017-03-03
+cha: createRFSImage: Now uses mkfs.ext2 to make sure that an ext2 filesystem is created.
++++++
+2017-02-23
+fix: SERVER_programmStatus, MSG_showNewFeature, POOL_showReadCD, GRP_getDistrsAndSourcesLists, SRCLST_showEditor, CLIENT_isBasesystemInstalledFromImage, CLIENT_showJobs, CLIENT_getNames, MASS_readDBFile MASS_showTableDefinition, MASS_showOverview, debian / clientInstall.php, debian / m23changeClientInstall.php, CLCFG_showDistributionSpecificOptions, ubuntu / m23changeClientInstall.php, halfSister / clientInstall.php: Now uses string (as array key) instead of non set constants that were automatically converted to strings.
+cha: CLCFG_writeM23fetchjob: Now reconfigures m23-initscripts on Debian 9.
+cha: debian / clientInstall.php: Now calles CLCFG_writeM23fetchjob with the used release name. Used for special handling on Debian 9.
+cha: LinuxMint 18.1 Serena: Enabled KDE and Xfce.
++++++
+2017-02-22
+cha: m23-initscripts / postinst: Now generated .service files for systemd on Debian 9.
+++++
+2017-02-18
+cha: debian / clienInstall.php, m23x2goServerInstall.php, CLCFG_language, CLCFG_genFstab, CLCFG_language : Now supports Debian 9.
++++++
+2017-02-17
+fix: LDAP_loadServer: Corrected name for the LDAP config values.
+cha: LDAP_addPosix: Now gives back an error message string, in case of an error.
+cha: CClient::addToCredentialsToLDAPServer: Adjusted to LDAP_addPosix's return value.
++++++
+2017-02-15
+cha: EDIT_searchLastLineNumber: Now is more robust against faulty search strings.
+cha: LDAP_makeConnection: Now uses secure connection.
++++++
+2017-02-14
+cha: exportDBInitTable: Now works on MariaDB too.
+cha: m23 / postinst: Now makes sure that MariaDB uses latin1 and not 4-byte utf8 which would lead to an exceeding of the 1000 bytes limit for unique keys.
++++++
+2017-02-13
+cha: m23 / control: Now installs MariaDB as alternative to MySQL.
+fix: MSESS_load: Now accesses array element or variable only, if it exists.
+fix: : Now presets variables.
+cha: HELP_showHelpTex: Exchanged deprecated spliti with preg_split.
+fix: geshi.php, 00_fpdf_codebar.class.php, 02_fpdf_formulaire.class.php, mypdf.class.php, 99_fpdf_protection.class.php, 01_fpdf_bookmark.class.php: Corrected "PHP 4 constructors are now deprecated".
++++++
+2017-02-09
+cha: m23 / postinst: Now figures out the broadcast address on Debian 9 too.
+cha: db.php: Makes sure that there is a value set for m23Shared in the session array.
+fix: CLIENT_showStatusSelection: Now presets variables.
+cha: DHCP_isNetworkBootingActive, DHCP_exportDHCPSettingsForExternalDHCPServer, DHCP_delDynamicRange, DHCP_addLineToDHCPDConf, DHCP_restartDHCPserver, DHCP_rmClient, DHCP_setBootimage: Now uses SERVER_runInBackground instead of sudo calls.
+cha: DHCP_removePXEcfg, DHCP_rmClient: Now uses SERVER_deleteFile.
++++++
+2017-02-07
+new: LDAP_getValueFromConfigLine: Returns the value from a phpLDAPadmin configuration line.
+cha: LDAP_listServers: Now works with phpLDAPadmin 1.2.3/git.
++++++
+2017-02-06
+fix: LDAP_showServerManagementDialog: Now accesses array element or variable only, if it exists.
+cha: m23-ldap / postinst: Now figures out the IP on Debian 9 too.
+cha: LDAP_addServerTophpLdapAdmin, LDAP_checkphpLdapAdminConfiguration, LDAP_delServerFromphpLdapAdmin, LDAP_loadServer: Now works with phpLDAPadmin 1.2.3/git.
+new: /m23/bin/phpLDAPadminConfigMigration.sh: Converts the config from old phpLDAPadmin to new format used in phpLDAPadmin 1.2.3/git.
+cha: SERVER_multiMkDir: Now can create directories for a given user.
+cha: LDAP_showServerManagementDialog: Removed installation of openLDAP from webinterface.
++++++
+2017-02-05
+fix: add_client.php, LDAP_loadServer, LDAP_showServerManagementDialog: Now accesses array element or variable only, if it exists.
+fix: CLIENT_addClient, CLIENT_getSubnet, CLIENT_getBroadcast: Now presets variables.
+cha: m23 / control: Added net-tools as dependency to make ifconfig available.
+cha: getServerNetmask: Now compatible with Debian 9.
+fix: CLIENT_getNextFreeIp: Now works, if no client (not even localhost) is defined in the DB.
+fix:LDAP_connectServer, LDAP_addPosix, LDAP_showServerManagementDialog: Now uses string (as array key) instead of non set constants that were automatically converted to strings.
++++++
+2017-02-02
+fix: PKG_addShutdownOrRebootPackage, PKG_addShutdownPackage, PKG_previewInstallationDeinstallation, PKG_previewUpdateSystem, CFDiskIO::getPartitionFileSystem, CFDiskIO::getPartitionAmountOfType, DISTR_releaseVersionTranslator, client_distr.php, CFDiskIO::getExtendedVPart, debian + ubuntu / clientConfig.php, CLCFG_showDistributionSpecificOptions, PKG_getKernels: Now accesses array element only, if it exists.
+fix: client_distr.php, PKG_getKernels: Now presets variables.
+cha: DISTR_releaseVersionTranslator: Added Ubuntu Xenial and Debian Stretch.
+new: optionPages for Debian Stretch and Ubuntu Xenial.
+++++++
+2017-02-01
+fix: PKG_combinem23normal, CPackageStatusCompare::__construct, CLIENT_addClient, add_client.php, getAscDescHeader, HTML_setStatusBarStatus, MSG_show, CFDiskGUI::getCurrentDiskDev, CClient::isUEFIActive, CFDiskIO::getDiskDev, CFDiskIO::getPartDevs, HTML_jQueryMenuHeader, HTML_jQueryMenuHeader, client_partition.php: Now accesses array element only, if it exists.
+fix: getDiskInfoString, CFDiskGUI::getPartInfoString: Now presets variables.
+fix: PKG_addNormalPackages: Corrected return value.
+fix: getPartInfoString: Removed empty and unused parameter $pPart from findFstabMountPointByDev call.
+cha: HTML_getOriginalUploadFilename: Now returns NULL, if no original file name is given.
+fix: CC_mountPoint: Created missing fireall constant.
++++++
+2017-01-30
+cha: getServerIP: Now compatible with Debian 9.
+fix: PKG_getAllPackageSelections, SRCLST_getListnames, SRCLST_cleanList: Now presets variables.
+cha: GRP_showSelDistrSources: Now groupnames can be set to NULL to show all distributions and sources lists.
+cha: install_packages.php: Now packagessources mode is not handled as group mode anymore.
+fix: PKG_preparePackageDir: Now shows error message on APT errors.
+cha: m23 / postinst: Now makes sure, that /m23/var/cache/m23apt exists and is owned by www-data.
++++++
+2017-01-27
+fix: install_packages.php: Now accesses array element only, if it exists.
+fix: install_packages.php: Now presets variables.
++++++
+2017-01-26
+cha: m23/postinst: Now makes sure that the userPackages directory is writable by Apache.
+cha: dem23Client.sh: Now removes lines from sources.list.
+fix: GRP_showGroupsAndCount, GRP_showSelDistrSources, HTML_getValidSelected, CScredit::__construct, CScredit::show, HTML_jQueryReStoreYWindowPosition, SRCLST_showEditor, DISTR_getSelectedDesktopsArr, DISTR_getDescriptionValues, DISTR_geti18nValue: Now accesses array element only, if it exists.
+fix: GRP_listGroupsAndCount, GRP_showGroupsAndCount, GRP_listAllClientsInGroup, client_install.hlp, CLIENT_query, MAIL_getGpgKeyList, PKGBUILDER_listFiles, SRCLST_querySourceslists: Now presets variables.
+fix: DISTR_getSelectedDesktopsArr, debian + ubuntu + halfSister/ clientConfig.php: Now uses string (as array key) instead of non set constants that were automatically converted to strings.
+cha: HTML_submit, HTML_submitDefine: Now has an extra parameter. If set to true, HTML element constants will be defined even if there is a previously defined constant with the same name. This will run into an error and helps debugging.
+cha: PREF_preferenceLoadManagerHandler: Now doesn't define HTML elements twice.
+fix: ubuntu / info.txt: Fixed entry for UbuntuXubuntu1604.
++++++
+2017-01-25
+fix: PKG_rmSelectedPackages, PKG_changePrioritySelectedPackages: Corrected return value.
+fix: PKG_previewInstallationDeinstallation: Now includes the language file.
+fix: PKG_addStatusJob, GRP_doClientMoreGroups, FDISK_getDrivesAndPartitions, HTML_listSelection, HTML_listSelection, SERVER_addEtcHosts, SERVER_delEtcHosts, CLIENT_addChangeElement, CLIENT_showAddDialog, add_client.php, CClient::getNetworkBootTypesArrayForSelection(): Now accesses array element only, if it exists.
+cha: client_backup.php, client_createImage.php: Now has a "back to control center" link.
+fix: IMG_showCreateImage: Commented out double declaration of HTML elements.
+cha: m23 / postinst: Now figures out the IP on Debian 9 too.
+fix: add_client.php: Removed alternative help file selection by CLIENT_showAddDialog, because CLIENT_showAddDialog never returned a value.
+cha: I18N_listClientLanguages: Access variable by name stored in variable adjusted to PHP 7.
+fix: HELPER_passGenerator: Parameter for MASS_passGenerator.
++++++
+2017-01-24
+cha: phpMyAdmin: Updated to 4.6.6.
+fix: DMI_getParam, DMI_getBoard, DMI_getBios, HWINFO_getCPU, debian / packages.php, client_packages.php, install_packages.php, SRCLST_getParameter, CLIENT_showJobs: Now accesses array element only, if it exists.
+fix: DMI_getParam, CFDiskIO::convertPartitioning2Array, client_packages.php, install_packages.php: Now presets variables.
++++++
+2017-01-23
+fix: HTML_getElementValue, index.php, HTML_imgSwitch, CLIENT_showGeneralInfo, I18N_convertToHumanReadableName, client_details.php: Now accesses array element only, if it exists.
+fix: CLIENT_getOverviewSearchLine, HTML_showTableRow, VM_getHTMLStatusBlock, CLIENT_showGeneralInfo, HTML_showStatusBarHTML: Now presets variables.
+fix: CloudStackClient.php: Corrected doubled variable names in function declaration.
++++++
+2017-01-22
+cha: m23 /postinst: Adjustments for Debian 9.
++++++
+2017-01-19
+patch 100948: Development documentation improvement.
+new: m23-Release-Tabelle.odt: Table for checking the tasks for a new m23 release.
++++++
+2017-01-10
+patch 100947: Now supports Linux Mint 18.1 Serena (Mate and Cinnamon).
+cha: exportDBsourceslist.php: Added "LinuxMint 18.1 Serena".
++++++
+2017-01-07
+patch 100946: Smal improvents and fix for UCS.
+fix: DHCP_writePXEcfg: Now sets the access rights of the PXE file to 755 (needed on UCS).
+cha: exportDBsourceslist.php: Removed "squeeze", "squeeze+libreoffice" and "Linux Mint 9 KDE".
+cha: Raspbian-RemoveUnneededPackages.sh: Now configures sshd_config to allow SSH login as root with password.
++++++
 2017-01-05
 release 17.1
 +++++
@@ -6,13 +281,14 @@ fix: UBUNTU_fixBeforeBaseInstall: Adjusted for changed systemd package in Linux 
 +++++
 2017-01-02
 fix: CLIENT_startLiveScreenRecording: Now closes the screen session on the m23 server when the screen session on the m23 client is finished.
-++++++
++++++
 2016-12-20
 new: CLIENT_filterLinesFromLiveScreenRecording: Filters out unwanted lines from the live log.
 cha: CLIENT_startLiveScreenRecording: Now exits the loop when the SSH connection was closed.
 cha: HELPER_getNewLogLines: Now has an optional parameter for a function to filter the lines before adding them to the output.
 +++++
 2016-12-07
+patch 100942: UCS fixes.
 fix: m23/postinst: Now creates group "grdmgpg" with gid 55001 on UCS to make creation of grdmgpg user possible.
 +++++
 2016-12-06

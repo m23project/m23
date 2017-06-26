@@ -1,5 +1,10 @@
 <?php
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: GUI class for building pools.
+$*/
+
 class CPoolGUI extends CPool
 {
 	const POOLDIALOG_START = 0;

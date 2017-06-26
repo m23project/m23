@@ -617,8 +617,8 @@ function SERVER_programmStatus($progname,$pkgName,$daemonScript,$description,$in
 				break;
 		};
 	
-	$actionList[name0]=$I18N_noAction;
-	$actionList[val0]="nothing";
+	$actionList['name0']=$I18N_noAction;
+	$actionList['val0']="nothing";
 	
 	if ($daemon)
 		{
@@ -627,10 +627,10 @@ function SERVER_programmStatus($progname,$pkgName,$daemonScript,$description,$in
 			if ($running)
 				{
 					//daemon is installed and running
-					$actionList[name1]=$I18N_daemonStop;
-					$actionList[val1]="stop";
-					$actionList[name2]=$I18N_daemonRestart;
-					$actionList[val2]="restart";
+					$actionList['name1']=$I18N_daemonStop;
+					$actionList['val1']="stop";
+					$actionList['name2']=$I18N_daemonRestart;
+					$actionList['val2']="restart";
 					$statusImg="/gfx/status/green.png";
 				}
 			else
@@ -638,8 +638,8 @@ function SERVER_programmStatus($progname,$pkgName,$daemonScript,$description,$in
 					if (SERVER_checkPackageInstalled($pkgName))
 						{
 							//daemon is installed, but not running
-							$actionList[name1]=$I18N_daemonStart;
-							$actionList[val1]="start";
+							$actionList['name1']=$I18N_daemonStart;
+							$actionList['val1']="start";
 							$statusImg="/gfx/status/yellow.png";
 						}
 					else
@@ -647,8 +647,8 @@ function SERVER_programmStatus($progname,$pkgName,$daemonScript,$description,$in
 							if ($canBeInstalled)
 								{
 									//daemon not installed
-									$actionList[name1]=$I18N_install;
-									$actionList[val1]="install";
+									$actionList['name1']=$I18N_install;
+									$actionList['val1']="install";
 								};
 							$statusImg="/gfx/status/red.png";
 						};
@@ -660,8 +660,8 @@ function SERVER_programmStatus($progname,$pkgName,$daemonScript,$description,$in
 				$statusImg="/gfx/status/green.png";
 			else
 				{
-					$actionList[name1]=$I18N_install;
-					$actionList[val1]="install";
+					$actionList['name1']=$I18N_install;
+					$actionList['val1']="install";
 					$statusImg="/gfx/status/red.png";
 				};
 		};
@@ -1183,27 +1183,17 @@ function SERVER_checkKernel()
 
 
 /**
-**name SERVER_multiMkDir($path, $mode)
+**name SERVER_multiMkDir($path, $mode, $user = NULL)
 **description Creates a directory and all needed directories on the way to the destination path.
 **parameter path: The complete path to create.
 **parameter mode: The access mode of the path to create (should start with "0" e.g. 0777)
+**parameter user: User name to create the directory for. If no name is given, the directory will be created for the Apache user.
 **/
-function SERVER_multiMkDir($path, $mode)
+function SERVER_multiMkDir($path, $mode, $user = NULL)
 {
-	//Split the whole path in parts that will get created one by one
-	$parts = explode("/",$path);
+	$user = is_null($user) ? HELPER_getApacheUser() : $user;
 
-	//Storing the current path to create
-	$p = "";
-
-	//Running thru the single parts
-	foreach ($parts as $part)
-	{
-		//Add the new part to the current path to create
-		$p .= "$part/";
-		//Create the path without error code
-		@mkdir($p, $mode);
-	}
+	SERVER_runInBackground('mkdir', "mkdir -p '$path'; chmod $mode '$path'; chown $user '$path'", "root", false);
 }
 
 

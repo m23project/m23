@@ -66,20 +66,24 @@ function HWINFO_getHDSize($clientName)
 	$speeds=explode("\n",HWINFO_getParam("mhz", $clientName));
 
 	$cpuAmount = $cpuAmountProc = count($cpus);
-	
-	$dataAllBlocks=DMI_getParam("Processor Information", $clientName);
 
-	//get first (only) block
-	$data=$dataAllBlocks[0];
-	
-	//fetch arguments
-	for ($i=0; $i < count($data); $i++)
+	$dataAllBlocks = DMI_getParam("Processor Information", $clientName);
+
+	if (isset($dataAllBlocks[0]))
 	{
-		$varValue=explode(":",$data[$i]);
-		//Check if the amount of CPUs is set in DMI
-		if (stristr($varValue[0],"Core Count"))
-			$cpuAmountDMI=trim($varValue[1]);
+		//get first (only) block
+		$data = $dataAllBlocks[0];
+		
+		//fetch arguments
+		for ($i=0; $i < count($data); $i++)
+		{
+			$varValue=explode(":",$data[$i]);
+			//Check if the amount of CPUs is set in DMI
+			if (stristr($varValue[0],"Core Count"))
+				$cpuAmountDMI=trim($varValue[1]);
+		}
 	}
+		$cpuAmountDMI = 0;
 
 	//If the amount of CPU read from proc differrs from the amount reported by DMI (this may happen when a multi-core system is booted without SMP support) duplicate the CPU and speed information
 	if ($cpuAmountDMI > $cpuAmountProc)
@@ -219,6 +223,8 @@ function DMI_getAllTextBox($clientName)
 **/
 function DMI_getParam($paramName, $clientName)
 {
+	$out = array();
+
 	//get all dmi-infos for the client
 	$dinfos=explode("Handle ",HWINFO_getParam("dmi", $clientName));
 
@@ -233,7 +239,7 @@ function DMI_getParam($paramName, $clientName)
 		{//split all lines of the block
 			$dlines=explode("\n",$dinfos[$infopos]);
 			//check if the block is the searched one
-			if (stristr($dlines[$paramSearchLine],$paramName))
+			if (isset($dlines[$paramSearchLine]) && stristr($dlines[$paramSearchLine], $paramName))
 				$out[$blockNr++]=$dlines;
 		}
 
@@ -253,13 +259,15 @@ function DMI_getBoard($clientName)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	//fetch the data
-	$dataAllBlocks=DMI_getParam("board", $clientName);
+	$dataAllBlocks = DMI_getParam("board", $clientName);
+
+	if (!isset($dataAllBlocks[0])) return('');
 
 	//get first (only) block
-	$data=$dataAllBlocks[0];
+	$data = $dataAllBlocks[0];
 	//fetch arguments
 	for ($i=0; $i < count($data); $i++)
-		{
+	{
 		$varValue=explode(":",$data[$i]);
 		if (stristr($varValue[0],"Vendor") || stristr($varValue[0],"Manufacturer"))
 			$vendor=$varValue[1];
@@ -267,7 +275,8 @@ function DMI_getBoard($clientName)
 			$product=$varValue[1];
 		elseif (stristr($varValue[0],"version"))
 			$version=$varValue[1];
-		}
+	}
+
 	//generate string
 	return("$I18N_vendor: $vendor<br>\n$I18N_name: $product<br>\n$I18N_version: $version");
 };
@@ -286,9 +295,13 @@ function DMI_getBoard($clientName)
  	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 	$dataAllBlocks=DMI_getParam("bios inf", $clientName);
+
+	if (!isset($dataAllBlocks[0])) return('');
+
 	$CharacteristicsFollowing = false;
 
-	$data=$dataAllBlocks[0];
+	$data = $dataAllBlocks[0];
+	
 	$features="<br>\n$I18N_features: ";
 
 	for ($i=0; $i < count($data); $i++)

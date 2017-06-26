@@ -1,5 +1,11 @@
 <?
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Functions for building pools.
+$*/
+
+
 define('EXTRA_DEBS_DIRECTORY',"/m23/data+scripts/extraDebs/");
 
 
@@ -84,6 +90,8 @@ function PKGBUILDER_showUploadDialog()
 function PKGBUILDER_listFiles()
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	$rowodd = true;
 
 	HTML_submit("BUT_reload",$I18N_refresh);
 	if (HTML_submit("BUT_recreatePackageIndex",$I18N_recreatePackageIndex))

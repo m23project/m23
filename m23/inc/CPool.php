@@ -1,5 +1,10 @@
 <?php
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: GUI class for building pools.
+$*/
+
 class CPool extends CChecks
 {
 	private $poolName = null, $poolDir = null;

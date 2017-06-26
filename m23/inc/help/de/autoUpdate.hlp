@@ -1,0 +1,27 @@
+$I18N_autoUpdate<!--new 17.2 -->
+
+In diesem Dialog können Sie festlegen, zu welchen Zeiten Ihre m23-Clients automatisch aktualisiert werden sollen. Hierbei können Sie mehrere Clientgruppen zu einer Aktualisierungsgruppe zusammenfassen, deren Clients wiederkehrend an gewählten Wochentagen und zu festgelegten Uhrzeiten die Aktualisierungen durchführen. Die gerade aktive Gruppe wird durch eine grüne Kugel gekennzeichnet.
+
+<u>$I18N_createNewUpdateSet</u>
+Um automatische Aktualisierungen durchführen zu können, benötigen Sie mindestens eine Aktualisierungsgruppe. Diese legen Sie unter <i>"$I18N_createNewUpdateSet"</i> an. Geben Sie hierbei unter <i>"$I18N_parallelUpdates"</i> an, wieviele Clients (maximal) gleichzeitig aktualisiert werden sollen. Bei <i>"$I18N_updateType"</i> legen Sie fest, ob die Clients mittels $I18N_normalUpdate (aktualisiert vorhandene Pakete und installiert nur neue Pakete, wenn diese unbedingt benötigt werden) oder mittels $I18N_fullUpdate (Vorhandene Pakete werden aktualisiert, sowie neue Pakete installiert und ggf. alte entfernt) aktualisiert werden sollen. Klicken Sie anschließend auf <i>"$I18N_createNewUpdateSet"</i>.
+
+<u>Aktualisierungszeiten und Clientgruppen festlegen</u>
+Nach dem Anlegen einer Aktualisierungsgruppe sollten Sie die Zeitbereiche festlegen, zu denen die Gruppe aktiv werden soll. Wählen Sie hierzu in der Spalte <i>"$I18N_addTimePeriod"</i> den Beginn und das Ende aus und klicken Sie auf <i>"$I18N_addTimePeriod"</i>. Fügen Sie anschließend die Clientgruppen aus der Spalte <i>"$I18N_addGroup"</i> mit einem Klick auf <i>"$I18N_addGroup"</i> hinzu.
+
+<u>Aktualisierungszeiten und Clientgruppen löschen</u>
+Mit einem Klick auf das <i>"rote x"</i> hinter einem Zeitraum oder einer Clientgruppe können Sie diese wieder aus der Aktualisierungsgruppe löschen. Zum Löschen einer Aktualisierungsgruppe klicken Sie auf <i>"$I18N_delete"</i> in der jeweiligen Zeile der Gruppe.
+
+<u>Abläufe im Hintergrund</u>
+Solange (mindestens) eine Aktualisierungsgruppe vorhanden ist, wird alle 15 Minuten ein <a href="https://de.wikipedia.org/wiki/Cron">Cronjob</a> ausgeführt, welcher überprüft, ob gerade Clients aktualisiert werden sollen.
+
+Hierbei werden solange neue Clients mit Aktialisierungsaufträgen gestartet, wie es die Anzahl bei <i>"$I18N_parallelUpdates"</i> zuläßt. Ist das Zeitfenster der gerade aktiven Aktualisierungsgruppe abgelaufen, so werden keine weiteren Clients aus dieser aktualisiert. Bereits laufende Aktualisierungen werden aber nicht abgebrochen.
+
+Außerdem wird überprüft, ob für die Aktualisierung vorgemerkte Clients wirklich ein Update ausführen. Sollten diese nicht innerhalb von 30 Minuten (z.B. aufgrund nicht funktionierendem <a href="https://de.wikipedia.org/wiki/Wake_On_LAN">Wake on LANs</a>) mit dem Aktualisieren beginnen, so werden bei diesen die Aufträge für die automatische Aktualisierung zurückgezogen und für 24 Stunden kein weiterer Versuch unternommen.
+
+Aktualisierungen werden bei bereits laufenden Clients im Hintergrund ausgeführt. Clients, die per WOL gestartet wurden, werden nach der Aktualisierung wieder heruntergefahren.
+
+Sind alle Clients einer Aktualisierungsgruppe abgearbeitet (mit erfolgreicher oder fehlgeschlagener Aktualisierung), so wird die nächste Gruppe mit passendem Zeitbereich (falls vorhanden) aktiviert.
+
+Nach Löschen der letzten Aktualisierungsgruppe wird auch der Cronjob wieder entfernt.
+
+In der Logdatei <i>"/m23/log/autoUpdate.log"</i> finden Sie Informationen zu den durchgeführten Aktualisierungen.

@@ -2,7 +2,7 @@
 
 <span class="title">
 <?PHP
-	if ($_GET['clearSession'] == 1)
+	if (isset($_GET['clearSession']) && ($_GET['clearSession'] == 1))
 	{
 		$_SESSION = array();
 		unset($_SESSION['FDISK_showDiskDefine']);
@@ -18,17 +18,17 @@
 	if (isset($_GET['action']))
 		$_SESSION['clientAddAction'] = $_GET['action'];
 	
-	if ($_SESSION['clientAddAction'] == "clientBuilder")
-		{
-			$clientBuilder = ADDDIALOG_defineOnly;
-			$helpPage="clientBuilder";
-			echo($I18N_clientBuilder);
-		}
+	if (isset($_SESSION['clientAddAction']) && ($_SESSION['clientAddAction'] == "clientBuilder"))
+	{
+		$clientBuilder = ADDDIALOG_defineOnly;
+		$helpPage="clientBuilder";
+		echo($I18N_clientBuilder);
+	}
 	else
-		{
-			echo($I18N_add_client); 
-			$helpPage="client_add";
-		};
+	{
+		echo($I18N_add_client); 
+		$helpPage="client_add";
+	}
 ?>
 </span><br><br>
 
@@ -37,19 +37,14 @@
 <?php
 
 	//Check if m23shared is running and if there are unused paid clients
-	if ($_SESSION['m23Shared'])
+	if (isset($_SESSION['m23Shared']) && $_SESSION['m23Shared'])
 		$showDialog = m23SHARED_unusedPaidClientsAvailable();
 	else
 		$showDialog = true;
 
 	//Show the client add dialog if possible
 	if ($showDialog)
-	{
-			$helpPage2 = CLIENT_showAddDialog($clientBuilder);
-	
-		if (!empty($helpPage2))
-			$helpPage=$helpPage2;
-	}
+		CLIENT_showAddDialog($clientBuilder);
 
 	HTML_showFormEnd();
 	help_showhelp($helpPage);

@@ -1,15 +1,20 @@
-<?PHP $client = $_GET['client']; ?>
+<?PHP
+	$client = $_GET['client'];
+	$id = $_GET['id'];
+?>
 
 <span class="title"><?PHP echo("$client : ".$I18N_packages);?></span><br><br>
 
 <?
 
-$clientOptions=CLIENT_getAllOptions($client);
+$clientOptions = CLIENT_getAllOptions($client);
 
-$distr=$clientOptions['distr'];
 
-if (strlen($distr) == 0)
-	$distr="debian";
+
+if (!isset($clientOptions['distr']) || (strlen($distr) == 0))
+	$distr = "debian";
+else
+	$distr = $clientOptions['distr'];
 
 include_once("/m23/inc/distr/$distr/packages.php");
 
@@ -19,11 +24,12 @@ if (strlen($distr)==0)
 
 	if (!(empty($_GET['BUT_search'])))
 	{
-		$key=$_GET['ED_search'];
+		$key = $_GET['ED_search'];
 		CAPTURE_captureAll(0,"clientpackages: show mozilla",true);
 	}
 	else
-		$key=$_GET['HID_key'];
+		$key = (isset($_GET['HID_key']) ? $_GET['HID_key'] : '');
+	
 
 if (empty($_GET['firstrun']))
 	$key="ashdkjhasdfhasdhlahsdfuaerfnavsdfuv5tz";
@@ -50,7 +56,7 @@ if (empty($_GET['firstrun']))
 
 
 <?PHP
- CLIENT_HTMLBackToDetails($client,$id,"clientInformation");
- 
- help_showhelp("clients_packages");
+	CLIENT_HTMLBackToDetails($client, $id, "clientInformation");
+
+	help_showhelp("clients_packages");
 ?>

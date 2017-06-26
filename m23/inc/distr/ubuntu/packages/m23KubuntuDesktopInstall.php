@@ -62,12 +62,6 @@ CLCFG_aptGet("install", "language-support-writing-$lV[packagelang]");
 CLCFG_aptGet("install", "language-support-$lV[packagelang]");
 CLCFG_aptGet("install", "`check-language-support -l $lV[packagelang]`");
 
-// apt-get -y -m --force-yes install m23-ksplash
-// 
-// apt-get -y -m --force-yes install language-support-writing-$lV[packagelang]
-// apt-get -y -m --force-yes install language-support-$lV[packagelang]
-// apt-get -y -m --force-yes install `check-language-support -l $lV[packagelang]`
-
 echo("
 /usr/share/locales/install-language-pack $lV[packagelang]
 

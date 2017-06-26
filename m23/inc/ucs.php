@@ -1,5 +1,11 @@
 <?php
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Univention corporate server specific functions.
+$*/
+
+
 
 /**
 **name UCS_getPrefnameByClient($client)

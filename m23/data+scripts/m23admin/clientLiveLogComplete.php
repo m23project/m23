@@ -5,6 +5,8 @@
 	include('/m23/inc/checks.php');
 	include('/m23/inc/db.php');
 	include('/m23/inc/capture.php');
+	include('/m23/inc/helper.php');
+	include('/m23/inc/server.php');
 	
 	dbConnect();
 

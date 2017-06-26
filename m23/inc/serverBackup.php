@@ -1,5 +1,10 @@
 <?
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Functions for handling m23 server backups.
+$*/
+
 define('SERVERBACKUP_CONFIG_FILE','/m23/root-only/serverBackup.conf');
 
 

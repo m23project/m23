@@ -1,5 +1,10 @@
 <?
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for handling clients.
+$*/
+
 /*
 > memory
 > hd
@@ -78,6 +83,14 @@ class CClient extends CChecks
 **/
 	public function __construct($in, $checkMode = CClient::CHECKMODE_NORMAL)
 	{
+		// Check, if a number was given as name for a new client => not allowed
+		if (is_numeric($in) && (CClient::CHECKMODE_MUSTNOTEXIST === $checkMode))
+		{
+			$this->checkClientname($in);
+			throw new Exception($this->popErrorMessagesHTML());
+			return(false);
+		}
+
 		//Check if the parameter is a client ID
 		if (is_numeric($in))
 		{
@@ -347,7 +360,7 @@ class CClient extends CChecks
 **/
 	public function addNormalJob($packageName, $priority = 25)
 	{
-		$this->includeDistributionSpecificPackagesPHP();
+// 		$this->includeDistributionSpecificPackagesPHP();
 		PKG_addStatusJob($this->getClientName(), 'm23normal', $priority, $packageName, 'waiting');
 	}
 
@@ -364,10 +377,8 @@ class CClient extends CChecks
 **/
 	public function addSpecialJob($packageName, $params = '', $priority = false)
 	{
-		$this->includeDistributionSpecificPackagesPHP();
-
 		if ($priority === false)
-			$priority = PKG_getSpecialPackagePriority($packageName);
+			$priority = PKG_getSpecialPackagePriority($packageName, $this->getDistribution());
 
 		PKG_addJob($this->getClientName(), $packageName, $priority, $params);
 	}
@@ -382,7 +393,10 @@ class CClient extends CChecks
 **/
 	public function addUpdateSourcesListJob()
 	{
-		$this->addSpecialJob('m23UpdateSourcesList', $this->getSourcesList());
+		$sourcesList = $this->getSourcesList();
+
+		if (isset($sourcesList{1}))
+			$this->addSpecialJob('m23UpdateSourcesList', $sourcesList);
 	}
 
 
@@ -397,6 +411,9 @@ class CClient extends CChecks
 	{
 		$this->addSpecialJob('m23UpdatePackageInfos', '', 90);
 	}
+
+
+
 
 
 /**
@@ -436,6 +453,191 @@ class CClient extends CChecks
 	{
 		$arr['type'] = $type;
 		$this->addSpecialJob('m23update', implodeAssoc("?#?",$arr));
+	}
+
+
+
+
+
+/**
+**name CClient::startAutoUpdate($type)
+**description Starts auto update on a client.
+**parameter type: Normal (CAutoUpdate::UPDATE_NORMAL) or full (CAutoUpdate::UPDATE_FULL) update.
+**/
+	public function startAutoUpdate($type)
+	{
+		// Save the current client state
+		$this->clientInfo['statusBefore_autoUpdate'] = $this->getStatus();
+	
+		if (CAutoUpdate::UPDATE_NORMAL == $type)
+			$this->addNormalUpdateJob();
+		else
+			$this->addCompleteUpdateJob();
+
+		$this->addUpdateSourcesListJob();
+
+		$this->addUpdatePackageInfosJob();
+
+		$this->clientInfo['autoUpdate_shutdownPackage'] = $this->addShutdownPackage();
+
+		$this->startInstall();
+
+		// Mark client that it got the update job by auto update and not by manual admin assignment
+		$this->clientInfo['autoUpdate_gotJob'] = 1;
+
+		// Set the current time as last time the client got an auto update
+		$this->clientInfo['autoUpdate_lastAttempt'] = time();
+
+		// Start with 0 fails
+		$this->clientInfo['autoUpdate_fails'] = 0;
+	}
+
+
+
+
+
+
+/**
+**name CClient::stopAutoUpdate()
+**description Stops the auto update after successful or failed attempt.
+**/
+	public function stopAutoUpdate()
+	{
+		$pkgIDs = array();
+		$i = 0;
+	
+		// Disable auto update
+		$this->clientInfo['autoUpdate_gotJob'] = 0;
+
+
+		// Restore the status from before the auto update
+		$this->setStatus($this->clientInfo['statusBefore_autoUpdate']);
+
+
+		// Remove the jobs that were added by auto update
+		if (isset($this->clientInfo['autoUpdate_shutdownPackage']) && $this->clientInfo['autoUpdate_shutdownPackage'])
+		{
+			$id = PKG_getHigestIDOfSpecialPackage($this->getClientName(), 'm23Shutdown');
+			$pkgIDs[$i++] = $id;
+		}
+
+		$id = PKG_getHigestIDOfSpecialPackage($this->getClientName(), 'm23UpdatePackageInfos');
+		$pkgIDs[$i++] = $id;
+
+		$id = PKG_getHigestIDOfSpecialPackage($this->getClientName(), 'm23update');
+		$pkgIDs[$i++] = $id;
+
+		$id = PKG_getHigestIDOfSpecialPackage($this->getClientName(), 'm23UpdateSourcesList');
+		$pkgIDs[$i++] = $id;
+
+		PKG_removeFromJobList($pkgIDs);
+	}
+
+
+
+
+
+/**
+**name CClient::getAutoUpdate_lastAttempt()
+**description Gives back the timestamp of the last assignment of an auto update job.
+**returns Timestamp of the last assignment of an auto update job or false, in case of an error.
+**/
+	public function getAutoUpdate_lastAttempt()
+	{
+		if (isset($this->clientInfo['autoUpdate_lastAttempt']) && is_numeric($this->clientInfo['autoUpdate_lastAttempt']))
+			return($this->clientInfo['autoUpdate_lastAttempt']);
+		else
+			return(false);
+	}
+
+
+
+
+
+/**
+**name CClient::hasAutoUpdateJob()
+**description Checks, if the client has an auto update job.
+**returns true, if the client has an auto update job, otherwise false.
+**/
+	private function hasAutoUpdateJob()
+	{
+		return (isset($this->clientInfo['autoUpdate_gotJob']) && (1 == $this->clientInfo['autoUpdate_gotJob']));
+	}
+
+
+
+
+
+/**
+**name CClient::checkAutoUpdate()
+**description Checks, if an auto update is (physically) running or if it has failed or finished.
+**/
+	public function checkAutoUpdate()
+	{
+		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+		$lastAttempt = $this->getAutoUpdate_lastAttempt();
+		if ($lastAttempt === false)
+			return(false);
+	
+		// More than 15 minutes since assignment of the auto update?
+		if ((time() - $lastAttempt) > 15 * 60)
+		{
+			$client = $this->getClientName();
+			$waitingUpdateJob = PKG_countJobsWithStatus($client, 'm23update', 'waiting');
+			$waitingJobs = PKG_countJobs($client, 'waiting');
+			$isBlue = ($this->getStatus() == CClient::STATUS_BLUE);
+			HELPER_logToFile(LOG_CAU, "waitingUpdateJob: $waitingUpdateJob, waitingJobs: $waitingJobs, isBlue:".($isBlue ? 't' : 'f'), 4);
+
+			// Status indicates running jobs
+			if ($isBlue)
+			{
+				// Outstanding jobs are running => wait
+				if (($waitingUpdateJob > 0) || ($waitingJobs > 0))
+					return(true);
+				else
+				{
+					HELPER_logToFile(LOG_CAU, "CClient.checkAutoUpdate: stopAutoUpdate1.clientName: $client: ERR1", 4);
+					$this->stopAutoUpdate();
+					CLIENT_addClientlogsFailure($client, $I18N_autoUpdateFinishedWrongParameters);
+					return(false);
+				}
+			}
+			// Status indicates no active jobs
+			else
+			{
+				// All jobs are finished => Client has done the auto update
+				if (($waitingUpdateJob == 0) && ($waitingJobs == 0))
+				{
+					HELPER_logToFile(LOG_CAU, "CClient.checkAutoUpdate: stopAutoUpdate1.clientName: $client: OK", 4);
+					CLIENT_addClientlogsOk($client, $I18N_autoUpdateFinishedOk);
+					$this->stopAutoUpdate();
+					return(true);
+				}
+				// Open jobs, but no activity => failure (maybe no WOL)
+				elseif (($waitingUpdateJob > 0) && ($waitingJobs > 0))
+				{
+					HELPER_logToFile(LOG_CAU, "CClient.checkAutoUpdate: autoUpdate_fails++: $client: ERR2", 4);
+					$this->clientInfo['autoUpdate_fails'] ++;
+				}
+				// Update job is finished, but there are outstanding other jobs => wait
+				elseif (($waitingUpdateJob == 0) && ($waitingJobs > 0))
+				{
+					HELPER_logToFile(LOG_CAU, "CClient.checkAutoUpdate: Update job is finished, but there are outstanding other jobs => wait: $client: OK", 4);
+					return(true);
+				}
+
+				// Too many failures => Stop auto update
+				if ($this->clientInfo['autoUpdate_fails'] > 1)
+				{
+					HELPER_logToFile(LOG_CAU, "CClient.checkAutoUpdate: Too many failures => Stop auto update: $client: ERR", 4);
+					$this->stopAutoUpdate();
+					CLIENT_addClientlogsFailure($client, $I18N_autoUpdateFinishedErrorTooManyFailures);
+					return(false);
+				}
+			}
+		}
+	
 	}
 
 
@@ -497,7 +699,7 @@ class CClient extends CChecks
 **/
 	public function isUEFIActive()
 	{
-		return($this->clientInfo['uefiActive'] == 1);
+		return(isset($this->clientInfo['uefiActive']) && ($this->clientInfo['uefiActive'] == 1));
 	}
 
 
@@ -1253,9 +1455,11 @@ class CClient extends CChecks
 		}
 	
 	
-		if (LDAP_addPosix($this->getLDAPServer(), $this->getLogin(), $this->getForename(), $this->getFamilyname(), $this->getFirstpw(), $this->getUserID(), $this->getGroupID()) === FALSE)
+		$ldapRet = LDAP_addPosix($this->getLDAPServer(), $this->getLogin(), $this->getForename(), $this->getFamilyname(), $this->getFirstpw(), $this->getUserID(), $this->getGroupID());
+
+		if ($ldapRet !== true)
 		{
-			$this->addErrorMessage($I18N_errorAddingNewLoginToLDAP);
+			$this->addErrorMessage($I18N_errorAddingNewLoginToLDAP.'<br>'.$ldapRet);
 			return(false);
 		}
 		else
@@ -1414,7 +1618,7 @@ class CClient extends CChecks
 **/
 	public function getSourcesList()
 	{
-		return($this->getProperty('packagesource', 'getSourcesList: No sources list set.'));
+		return($this->getProperty('packagesource', 'getSourcesList: No sources list set.', ''));
 	}
 
 
@@ -1483,7 +1687,7 @@ class CClient extends CChecks
 **/
 	public function getDistribution()
 	{
-		return($this->getProperty('distr', 'getDistribution: No distribution set.'));
+		return($this->getProperty('distr', 'getDistribution: No distribution set.', ''));
 	}
 
 
@@ -2062,6 +2266,20 @@ class CClient extends CChecks
 	public function startInstall()
 	{
 		CLIENT_startInstall($this->getClientName());
+	}
+
+
+
+
+
+/**
+**name CClient::addShutdownPackage()
+**description Adds a shutdown package, but only if the client is NOT running.
+**returns true, if a shutdown package is added.
+**/
+	public function addShutdownPackage()
+	{
+		return(PKG_addShutdownPackage($this->getClientName()));
 	}
 
 

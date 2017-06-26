@@ -1,5 +1,10 @@
 <?PHP
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Functions for handling distributions.
+$*/
+
 
 
 
@@ -84,6 +89,7 @@ function DISTR_releaseVersionTranslator($release)
 	$r['lucid']="10.04 LTS";
 	$r['precise']="12.04 LTS";
 	$r['trusty']="14.04 LTS";
+	$r['xenial']="16.04 LTS";
 
 	//Debian
 	$r['sarge']="3.1";
@@ -92,9 +98,13 @@ function DISTR_releaseVersionTranslator($release)
 	$r['squeeze']="6.0";
 	$r['wheezy']="7.x";
 	$r['jessie']="8.x";
+	$r['stretch']="9.x";
 	
+	// Devuan
+	$r['devuanjessie'] = '1.x';
 
-	return(ucfirst($release)." ".$r[$release]);
+
+	return(isset($r[$release]) ? ucfirst($release)." ".$r[$release] : '');
 }
 
 
@@ -147,18 +157,18 @@ function DISTR_getDescriptionValues($shortName)
 
 
 	do
-		{
-			$line = fgets($file,10000);
+	{
+		$line = fgets($file,10000);
 
-			$varValue = explode("=",$line);
+		$varValue = explode("=",$line);
 
-			if (($line[0]!='#') &&
-				(strlen($varValue[0]) > 0) &&
-				(strlen($varValue[1]) > 0))
-				{
-					$out[chop($varValue[0])] = chop($varValue[1]);
-				}
-		}
+		if (!isset($varValue[0]) || !isset($varValue[1])) continue;
+
+		if (($line[0]!='#') &&
+			(strlen($varValue[0]) > 0) &&
+			(strlen($varValue[1]) > 0))
+				$out[chop($varValue[0])] = chop($varValue[1]);
+	}
 	while (!feof($file));
 
 	fclose($file);
@@ -227,7 +237,7 @@ function DISTR_geti18nValue($lang,$variable,$values)
 	if (isset($values["$variable".'['."$lang".']']))
 		$out = $values["$variable".'['."$lang".']'];
 	else //if not fall back to english
-		$out = $values["$variable"];
+		$out = isset($values["$variable"]) ? $values["$variable"] : '';
 
 	return($out);
 };
@@ -366,13 +376,17 @@ function DISTR_getDesktopDescription($distr, $desktop)
 **/
 function DISTR_getSelectedDesktopsArr()
 {
-	$list=array();
-	$nr=0;
-	for ($i=0; $i < $_POST[desktopAmount]; $i++)
-		{
-			if (!empty($_POST["CB_desktop$i"]))
-				$list[$nr++]=$_POST["CB_desktop$i"];
-		};
+	$list = array();
+	$nr = 0;
+	
+	if (!isset($_POST['desktopAmount']))
+		return($list);
+
+	for ($i=0; $i < $_POST['desktopAmount']; $i++)
+	{
+		if (!empty($_POST["CB_desktop$i"]))
+			$list[$nr++]=$_POST["CB_desktop$i"];
+	}
 		
 	return($list);
 };

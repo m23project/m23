@@ -13,8 +13,81 @@ define("CLIENT_ADD_TYPE_assimilate",2);
 
 
 
+define('CLIENTLOG_OK', 'ok');
+define('CLIENTLOG_FAILURE', 'failure');
+define('CLIENTLOG_UNKNOWN', 'unknown');
+
+
+
 //m23customPatchBegin type=change id=additionalClientFunctions
 //m23customPatchEnd id=additionalClientFunctions
+
+
+
+
+/**
+**name CLIENT_insertIntoClientlogs($clientName, $text, $status)
+**description Adds an entry into the client's status log
+**parameter clientName: Name of the client.
+**parameter text: Status text
+**parameter status: One of CLIENTLOG_OK, CLIENTLOG_FAILURE or CLIENTLOG_UNKNOWN.
+**/
+function CLIENT_insertIntoClientlogs($clientName, $text, $status)
+{
+	CHECK_FW(CC_clientname, $clientName);
+	
+	$sql="INSERT INTO clientlogs (`client` , `logtime` , `status`) VALUES ( '".$clientName."', '".time()."' , '".CHECK_text2db("$status ° $status")."');";
+
+	DB_query($sql); //FW ok
+}
+
+
+
+
+
+/**
+**name CLIENT_addClientlogsOk($clientName, $text)
+**description Adds an entry into the client's status log with "ok" status.
+**parameter clientName: Name of the client.
+**parameter text: Status text.
+**/
+function CLIENT_addClientlogsOk($clientName, $text)
+{
+	CLIENT_insertIntoClientlogs($clientName, $text, CLIENTLOG_OK);
+}
+
+
+
+
+
+/**
+**name CLIENT_addClientlogsFailure($clientName, $text)
+**description Adds an entry into the client's status log with "failure" status.
+**parameter clientName: Name of the client.
+**parameter text: Status text.
+**/
+function CLIENT_addClientlogsFailure($clientName, $text)
+{
+	CLIENT_insertIntoClientlogs($clientName, $text, CLIENTLOG_FAILURE);
+}
+
+
+
+
+
+/**
+**name CLIENT_addClientlogsUnknown($clientName, $text)
+**description Adds an entry into the client's status log with "unknown" status.
+**parameter clientName: Name of the client.
+**parameter text: Status text.
+**/
+function CLIENT_addClientlogsUnknown($clientName, $text)
+{
+	CLIENT_insertIntoClientlogs($clientName, $text, CLIENTLOG_UNKNOWN);
+}
+
+
+
 
 
 /**
@@ -84,19 +157,26 @@ function CLIENT_getNextFreeIp()
 	$res = DB_query("SELECT INET_ATON( ip ) AS intip FROM clients ORDER BY intip");
 	while ($line  = mysqli_fetch_row($res))
 	{
+		// Skip NULL entries
+		if (is_null($line[0])) continue;
+
 		$ip = $line[0];
 
 		//If the difference between the previous used IP and the current IP is bigger than 1, then there is a hole
 		if (($ip >= $min) && ($ip <= $max) && (($ip - $oldip) > 1) && (! in_array(($ip - 1),$notUse)) && (! pingIP(long2ip($ip - 1))))
 			return(long2ip($ip - 1));
 
+		$notUse[$i++] = $ip;
+
 		$oldip = $ip;
 	}
 
 	//If there were no holes in the used IPs, a free IP must be found after the last IP in the database
 	for (; $ip < $max; $ip++)
-		if (! in_array($ip,$notUse))
+	{
+		if (! in_array($ip, $notUse))
 			return(long2ip($ip));
+	}
 
 	return(false);
 }
@@ -138,8 +218,8 @@ function CLIENT_touchLogFile($client, $base)
 	$log = "$dir/$base";
 
 	//Create the needed directories and touch the log file.
-	@mkdir($baseDir,0755);
-	@mkdir($dir,0755);
+	SERVER_multiMkDir($dir, '0755');
+	
 	@touch($log);
 
 	return($log);
@@ -252,6 +332,8 @@ function CLIENT_filterLinesFromLiveScreenRecording($in)
 **/
 function CLIENT_getOverviewSearchLine($amount)
 {
+	$searchLine = '';
+
 	if (isset($_SESSION['lastSearchLine']))
 		$defaultValue = $searchLine = $_SESSION['lastSearchLine'];
 	elseif (isset($_GET['searchLine']))
@@ -360,7 +442,7 @@ function CLIENT_extraWebAction($action,$client)
 function CLIENT_getOption($client, $optionName)
 {
 	$clientOptions = CLIENT_getAllOptions($client);
-	return($clientOptions[$optionName]);
+	return(isset($clientOptions[$optionName]) ? $clientOptions[$optionName] : '');
 }
 
 
@@ -766,9 +848,9 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 **/
 function CLIENT_isBasesystemInstalledFromImage($options)
 {
-	for ($i=0; $i < $options[IMGPartitionAmount]; $i++)
+	for ($i=0; $i < $options['IMGPartitionAmount']; $i++)
 	{
-		if ((isset($options["IMGdrv$i"])) && ($options[instPart]==$options["IMGdrv$i"]))
+		if ((isset($options["IMGdrv$i"])) && ($options['instPart']==$options["IMGdrv$i"]))
 			return(true);
 	};
 
@@ -856,7 +938,7 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 			$CClientO->setLDAPType($options['ldaptype']);
 			$CClientO->setLDAPServer($options['ldapserver']);
 
-			$CClientO->setUserDetails($data['name'], $data['familyname'], $data['email'], $data['office'], $options['login'], $data['firstpw']);
+			$CClientO->setUserDetails($data['name'], $data['familyname'], isset($data['email']) ? $data['email'] : '', $data['office'], $options['login'], $data['firstpw']);
 
 			$CClientO->setBootType($data['dhcpBootimage']);
 
@@ -922,9 +1004,15 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 
 	//set the right status
 	if ($clientAddType == CLIENT_ADD_TYPE_define)
+	{
+		$defineOnly = true;
 		$status=STATUS_DEFINE;
+	}
 	else
-		$status=STATUS_RED;
+	{
+		$defineOnly = false;
+		$status = STATUS_RED;
+	}
 
 	$CClientO->setStatus($status);
 
@@ -1414,9 +1502,11 @@ function CLIENT_showGeneralInfo($id,$generateEnterKeep=false)
 	$vmInfoHTML = VM_getHTMLStatusBlock($data['client']);
 
 	//Status bar with the state of the client as traffic lights.
-	$HTMLStatusCode=CLIENT_generateHTMLStatusBar($data[client]);
+	$HTMLStatusCode = CLIENT_generateHTMLStatusBar($data['client']);
 
-	$allOptions=CLIENT_getAllOptions($data['client']);
+	$allOptions = CLIENT_getAllOptions($data['client']);
+
+	$tableHeader = $clientEGK = $officeEGK = $groupEGK = $distrEGK = $packageSourceEGK = $languageEGK = $loginEGK = $forenameEGK = $familynameEGK = $emailEGK = $macEGK = $ipEGK = $netmaskEGK = $gatewayEGK = $dns1EGK = $dns2EGK = $firstloginEGK = $netloginEGK = $rootPwdHtml = $addNewLocalLoginEGK = $ldaptypeEGK = $userIDEGK = $groupIDEGK = $ldapserverEGK = $nfshomeserverEGK = $timeZoneEGK = $getSystemtimeByNTPEGK = $installPrinterEGK = '';
 
 	if ($generateEnterKeep)
 		{
@@ -1467,17 +1557,17 @@ function CLIENT_showGeneralInfo($id,$generateEnterKeep=false)
 
 
 	//Choose the icons for (de)activated options
-	if ($allOptions[addNewLocalLogin]=="yes")
+	if (isset($allOptions['addNewLocalLogin']) && ($allOptions['addNewLocalLogin']=="yes"))
 		$addNewLocalLoginCecked="/gfx/button_ok-mini.png";
 	else
 		$addNewLocalLoginCecked="/gfx/button_cancel-mini.png";
 
-	if ($allOptions[getSystemtimeByNTP]=="yes")
+	if (isset($allOptions['getSystemtimeByNTP']) && ($allOptions['getSystemtimeByNTP']=="yes"))
 		$getSystemtimeByNTPCecked="/gfx/button_ok-mini.png";
 	else
 		$getSystemtimeByNTPCecked="/gfx/button_cancel-mini.png";	
 
-	if ($allOptions[installPrinter]=="yes")
+	if (isset($allOptions['installPrinter']) && ($allOptions['installPrinter']=="yes"))
 		$installPrinterCecked="/gfx/button_ok-mini.png";
 	else
 		$installPrinterCecked="/gfx/button_cancel-mini.png";
@@ -1494,20 +1584,20 @@ function CLIENT_showGeneralInfo($id,$generateEnterKeep=false)
 	<tr><td>$I18N_client_name:</td><td>".($_SESSION['m23Shared'] ? m23SHARED_getCompleteClientName($data['client']) : $data['client'])."</td>$clientEGK</tr>
 	<tr> <td>$I18N_office:</td><td>$data[office]</td>$officeEGK</tr>
 	<tr> <td>$I18N_group:</td><td>");
-	 	GRP_showClientGroups($data[client],true);
+	 	GRP_showClientGroups($data['client'],true);
 	echo( "</td>$groupEGK</tr>
-	<tr> <td>$I18N_distribution:</td><td>$allOptions[distr]</td>$distrEGK</tr>
-	<tr> <td>$I18N_packageSourceName:</td> <td>$allOptions[packagesource]</td> $packageSourceEGK </tr>
+	<tr> <td>$I18N_distribution:</td><td>".(isset($allOptions['distr']) ? $allOptions['distr'] : '')."</td>$distrEGK</tr>
+	<tr> <td>$I18N_packageSourceName:</td> <td>".(isset($allOptions['packagesource']) ? LDAP_I18NLdapType($allOptions['packagesource']) : '')."</td> $packageSourceEGK </tr>
 	<tr> <td>$I18N_language:</td><td>".I18N_convertToHumanReadableName($data['language'])."</td>$languageEGK</tr>
-	<tr> <td>$I18N_login_name:</td><td>$allOptions[login]</td>$loginEGK</tr>
-	<tr> <td>$I18N_forename:</td><td>$data[name]</td>$forenameEGK</tr>
-	<tr> <td>$I18N_familyname:</td><td>$data[familyname]</td>$familynameEGK</tr>
-	<tr> <td>eMail:</td><td>$data[email]</td>$emailEGK</tr>");
+	<tr> <td>$I18N_login_name:</td><td>".(isset($allOptions['login']) ? $allOptions['login'] : '')."</td>$loginEGK</tr>
+	<tr> <td>$I18N_forename:</td><td>".(isset($data['name']) ? $data['name'] : '')."</td>$forenameEGK</tr>
+	<tr> <td>$I18N_familyname:</td><td>".(isset($data['familyname']) ? $data['familyname'] : '')."</td>$familynameEGK</tr>
+	<tr> <td>eMail:</td><td>".(isset($data['email']) ? $data['email'] : '')."</td>$emailEGK</tr>");
 	//m23customPatchBegin type=change id=CLIENT_showGeneralInfoAdditionalTableEntriesAftereMail
 	//m23customPatchEnd id=CLIENT_showGeneralInfoAdditionalTableEntriesAftereMail
 	echo("
-	<tr> <td>$I18N_arch:</td><td>$allOptions[arch]</td></tr>
-	<tr> <td>Kernel:</td><td>".nl2br($allOptions['kernel'])."</td></tr>");
+	<tr> <td>$I18N_arch:</td><td>".(isset($allOptions['arch']) ? $allOptions['arch'] : '')."</td></tr>
+	<tr> <td>Kernel:</td><td>".(isset($allOptions['kernel']) ? nl2br($allOptions['kernel']) : '')."</td></tr>");
 
 	//Only show network information if the client is NOT gPXE or DHCP client
 	if ($data['dhcpBootimage'] != CClient::BOOTTYPE_GPXE)
@@ -1521,21 +1611,21 @@ function CLIENT_showGeneralInfo($id,$generateEnterKeep=false)
 		<tr> <td>DNS1:</td><td>$data[dns1]</td>$dns1EGK</tr>
 		<tr> <td>DNS2:</td><td>$data[dns2]</td>$dns2EGK</tr>");
 
-	echo( "<tr> <td>$I18N_install_date:</td>	<td>".date("H:i  d.m.y",$data[installdate])."</td> </tr>
-	<tr> <td>$I18N_last_change:</td> <td>".date("H:i  d.m.y",$data[lastmodify])."</td> </tr>
+	echo( "<tr> <td>$I18N_install_date:</td>	<td>".date("H:i  d.m.y",$data['installdate'])."</td> </tr>
+	<tr> <td>$I18N_last_change:</td> <td>".date("H:i  d.m.y",$data['lastmodify'])."</td> </tr>
 	<tr> <td>$I18N_first_login:</td><td>$data[firstpw]</td>$firstloginEGK</tr>
-	<tr> <td>$I18N_netRootPwd:</td><td>$allOptions[netRootPwd]</td>$netloginEGK</tr>
+	<tr> <td>$I18N_netRootPwd:</td><td>".(isset($allOptions['netRootPwd']) ? $allOptions['netRootPwd'] : '')."</td>$netloginEGK</tr>
 	$rootPwdHtml
 	<tr> <td>$I18N_addNewLocalLogin:</td> <td><img src=\"$addNewLocalLoginCecked\"></td>$addNewLocalLoginEGK </tr>\n");
 
 	if (!$_SESSION['m23Shared'])
-	echo("<tr><td>LDAP:</td> <td>".LDAP_I18NLdapType($allOptions['ldaptype'])."</td>$ldaptypeEGK <tr>
-	<tr><td>$I18N_userID:</td><td>$allOptions[userID]</td>$userIDEGK</tr>
-	<tr><td>$I18N_groupID:</td><td>$allOptions[groupID]</td>$groupIDEGK</tr>
-	<tr><td>$I18N_LDAPServerName:</td><td>$allOptions[ldapserver]</td>$ldapserverEGK</tr>
-	<tr><td>$I18N_homeOnNFS:</td><td>$allOptions[nfshomeserver]</td>$nfshomeserverEGK</tr>\n");
+	echo("<tr><td>LDAP:</td> <td>".(isset($allOptions['ldaptype']) ? LDAP_I18NLdapType($allOptions['ldaptype']) : '')."</td>$ldaptypeEGK <tr>
+	<tr><td>$I18N_userID:</td><td>".(isset($allOptions['userID']) ? $allOptions['userID'] : '')."</td>$userIDEGK</tr>
+	<tr><td>$I18N_groupID:</td><td>".(isset($allOptions['groupID']) ? $allOptions['groupID'] : '')."</td>$groupIDEGK</tr>
+	<tr><td>$I18N_LDAPServerName:</td><td>".(isset($allOptions['ldapserver']) ? $allOptions['ldapserver'] : '')."</td>$ldapserverEGK</tr>
+	<tr><td>$I18N_homeOnNFS:</td><td>".(isset($allOptions['nfshomeserver']) ? $allOptions['nfshomeserver'] : '')."</td>$nfshomeserverEGK</tr>\n");
 
-	echo("<tr><td>$I18N_timeZone:</td><td>$allOptions[timeZone]</td>$timeZoneEGK</tr>
+	echo("<tr><td>$I18N_timeZone:</td><td>".(isset($allOptions['timeZone']) ? $allOptions['timeZone'] : '')."</td>$timeZoneEGK</tr>
 	<tr><td>$I18N_getSystemtimeByNTP:</td><td><img src=\"$getSystemtimeByNTPCecked\"></td>$getSystemtimeByNTPEGK</tr>
 	<tr><td>$I18N_installPrinterDriversAndDetectPrinter:</td> <td><img src=\"$installPrinterCecked\"></td>$installPrinterEGK</tr>
 	<tr> <td>$I18N_status:</td><td>$HTMLStatusCode</td></tr>
@@ -1559,7 +1649,8 @@ function CLIENT_showJobs($client)
 
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
-	$doneNr=$rerunNr=$delNr=0;
+	$doneNr = $rerunNr = $delNr = 0;
+	$delList = $rerunList = $doneList = array();
 
 	if (isset($_POST['BUT_do']))
 		{
@@ -1570,9 +1661,9 @@ function CLIENT_showJobs($client)
 					$actionPkgNr=explode("_",$_POST["SELaction_".$i]);
 					switch ($actionPkgNr[0])
 					{
-						case "d": $delList[$delNr++]=$actionPkgNr[1]; break;
-						case "r": $rerunList[$rerunNr++]=$actionPkgNr[1]; break;
-						case "D": $doneList[$doneNr++]=$actionPkgNr[1]; break;
+						case "d": $delList[$delNr++] = $actionPkgNr[1]; break;
+						case "r": $rerunList[$rerunNr++] = $actionPkgNr[1]; break;
+						case "D": $doneList[$doneNr++] = $actionPkgNr[1]; break;
 					}
 				};
 			}
@@ -1620,12 +1711,12 @@ echo("
 $count=0;
 
 //I18N names for the actions
-$list[val0]="n";
-$list[name0]="-";
+$list['val0']="n";
+$list['name0']="-";
 
-$list[name1]=$I18N_delete;
-$list[name2]=$I18N_rerun;
-$list[name3]=$I18N_done;
+$list['name1']=$I18N_delete;
+$list['name2']=$I18N_rerun;
+$list['name3']=$I18N_done;
 
 
 if( $results )
@@ -1641,9 +1732,9 @@ if( $results )
 				$params = $data['params'];
 
 			//internal names + package IDs for the actions
-			$list[val1]="d_$data[id]";
-			$list[val2]="r_$data[id]";
-			$list[val3]="D_$data[id]";
+			$list['val1']="d_$data[id]";
+			$list['val2']="r_$data[id]";
+			$list['val3']="D_$data[id]";
 
 			//build the selection with actions
 			$first="-";
@@ -1730,6 +1821,7 @@ function CLIENT_getSubnet($ip, $netmask)
 {
 	$ipoctets = explode(".",$ip);
 	$maskoctets = explode(".",$netmask);
+	$network = '';
 
 	for($i=0;$i<4;$i++) 
 	{
@@ -1774,10 +1866,13 @@ function CLIENT_getBroadcast($ip,$netmask)
 {
 	$ipoctets = explode(".",$ip);
 	$maskoctets = explode(".",$netmask);
+	$broadcast = '';
 
-	for($i=0;$i<4;$i++) {
+	for ($i = 0; $i < 4; $i++)
+	{
 		$binipoctets[$i] = decbin($ipoctets[$i]);
 		$binmaskoctets[$i] = decbin($maskoctets[$i]);
+		$invmaskoctets[$i] = '';
 
 		//fuehrende Nullen ergaenzen - quick'n'dirty :)
 		if ($ipoctets[$i] < 128) $binipoctets[$i] = "0".$binipoctets[$i];
@@ -2401,9 +2496,7 @@ function CLIENT_getAllAskingOptions()
 function CLIENT_getSetOption($getvar,$optvar,$options)
 {
 	if (isset($getvar) && (!isset($_GET['BUT_load_preference'])))
-		{
-			$options[$optvar]=$getvar;
-		};
+		$options[$optvar]=$getvar;
 
 	return($options);
 }
@@ -2504,9 +2597,10 @@ function CLIENT_showStatusSelection($client, $id)
 {
 	CHECK_FW(CC_clientname, $client);
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	$code = '';
 
 	//get the current client status
-	$sql="SELECT status FROM `clients` WHERE client='$client'";
+	$sql = "SELECT status FROM `clients` WHERE client='$client'";
 
 	$result = DB_query($sql); //FW ok
 	$line = mysqli_fetch_array($result);
@@ -2520,35 +2614,35 @@ function CLIENT_showStatusSelection($client, $id)
 	//Create checkbox for network booting
 	$networkBoot = HTML_checkBox('CB_networkBoot', $I18N_activateNetBooting, DHCP_isNetworkBootingActive($client));
 
-	$status=$line['status'];
+	$status = $line['status'];
 
 	if (HTML_submit('BUT_save',$I18N_save))
-		{
-			$status = $_POST['RB_status'];
-			CHECK_FW(CC_clientname, $client, CC_status, $status);
+	{
+		$status = $_POST['RB_status'];
+		CHECK_FW(CC_clientname, $client, CC_status, $status);
 
-			$sql="UPDATE `clients` SET status='$status' WHERE client='$client'";
+		$sql="UPDATE `clients` SET status='$status' WHERE client='$client'";
 
-			$result=DB_query($sql); //FW ok
+		$result = DB_query($sql); //FW ok
 
-			DHCP_activateBoot($client, $networkBoot);
-		};
+		DHCP_activateBoot($client, $networkBoot);
+	}
 
 	//create the radio buttons with the correct colors and status codes
 	for ($i=0; $i < 6; $i++)
-		{
-			$statusimage = CLIENT_getStatusimage($i);
+	{
+		$statusimage = CLIENT_getStatusimage($i);
 
-			if ($i == $status)
-				$checked="checked";
-				else
-				$checked="";
+		if ($i == $status)
+			$checked="checked";
+			else
+			$checked="";
 
-			$code.="
-			<input type=\"radio\" name=\"RB_status\" value=\"$i\" $checked>
+		$code.="
+		<input type=\"radio\" name=\"RB_status\" value=\"$i\" $checked>
 
-			<img src=\"$statusimage\" border=\"0\"><br>\n";
-		};
+		<img src=\"$statusimage\" border=\"0\"><br>\n";
+	}
 
 
 HTML_showFormHeader();
@@ -2566,7 +2660,7 @@ HTML_showFormHeader();
 	HTML_setPage('clientstatus');
 	HTML_showTableEnd(true);
 HTML_showFormEnd();
-};
+}
 
 
 
@@ -2874,6 +2968,9 @@ function CLIENT_query($o1,$s1,$o2,$s2,$groupName="",$o3="",$s3="", $search="")
 {
 	CHECK_FW(CC_statusOrEmpty, $s1, CC_statusOrEmpty, $s2, CC_statusOrEmpty, $s3, "se", $search, CC_groupnameOrEmpty, $groupName, CC_biggerEqualSmaler, $o1, CC_biggerEqualSmaler, $o2, CC_biggerEqualSmaler, $o3);
 
+	$cg = '';
+	$parts = 0;
+
 	//If all clients running on a special VM host should be searched, no search string is allowed
 	if (isset($_GET['vmRunOnHost']))
 		$search = '';
@@ -2928,10 +3025,10 @@ function CLIENT_query($o1,$s1,$o2,$s2,$groupName="",$o3="",$s3="", $search="")
 		foreach (DB_getLikeableColumns("clients") as $field)
 		{
 			if ($firstSearchEntry)
-				{
-					$searchSQL .= "($field LIKE \"%$search%\") ";
-					$firstSearchEntry = false;
-				}
+			{
+				$searchSQL .= "($field LIKE \"%$search%\") ";
+				$firstSearchEntry = false;
+			}
 			else
 				$searchSQL .= "|| ($field LIKE \"%$search%\") ";
 		}
@@ -2942,32 +3039,32 @@ function CLIENT_query($o1,$s1,$o2,$s2,$groupName="",$o3="",$s3="", $search="")
 
 	//check if there should be selected clients in a special group only
 	if (!empty($groupName))
-		{
-			$gid = GRP_getIdByName($groupName);	
-			$gSQL="clients.id=clientgroups.clientid AND clientgroups.groupid=$gid";
-			$cg=", clientgroups";
-		};
+	{
+		$gid = GRP_getIdByName($groupName);	
+		$gSQL="clients.id=clientgroups.clientid AND clientgroups.groupid=$gid";
+		$cg=", clientgroups";
+	}
 
 	//add SQL statements for the  first part
 	if (!empty($s1) && !empty($o1))
-		{
-			$w = "status $o1 '$s1' ";
-			$parts++;
-		}
+	{
+		$w = "status $o1 '$s1' ";
+		$parts++;
+	}
 
 	//add SQL statements for the second part	
 	if (!empty($s2) && !empty($o2))
-		{
-			$w .= "OR status $o2 '$s2' ";
-			$parts++;
-		}
+	{
+		$w .= "OR status $o2 '$s2' ";
+		$parts++;
+	}
 		
 	//add SQL statements for the third part
 	if (!empty($s3) && !empty($o3))
-		{
-			$w .= "OR status $o3 '$s3' ";
-			$parts++;
-		}
+	{
+		$w .= "OR status $o3 '$s3' ";
+		$parts++;
+	}
 
 	if (!empty($w))
 		$and="AND";
@@ -3009,12 +3106,17 @@ function CLIENT_query($o1,$s1,$o2,$s2,$groupName="",$o3="",$s3="", $search="")
 **/
 function CLIENT_addChangeElement($elem, $serverOnlyElement = false)
 {
-	if (strpos($_SESSION['changeElements'],"#$elem#") === false)
-		$_SESSION['changeElements'] .= "$elem#";
-
+	if (isset($_SESSION['changeElements']))
+	{
+		if (strpos($_SESSION['changeElements'],"#$elem#") === false)
+			$_SESSION['changeElements'] .= "$elem#";
+	}
+	else
+		$_SESSION['changeElements'] = "$elem#";
+		
 	$htmlName = "RB_change_$elem";
 
-	if (!$_SESSION['createChangeElements'])
+	if (!isset($_SESSION['createChangeElements']) || !$_SESSION['createChangeElements'])
 	{
 		define($htmlName,"");
 		return(false);
@@ -3128,6 +3230,14 @@ function CLIENT_showAddDialog($addType)
 	if (isset($_GET['VM_software'])) $_SESSION['VM_software'] = $_GET['VM_software'];
 	if (isset($_GET['VM_dhcpBootimage'])) unset($_SESSION['preferenceSpace']);	//HACK to make sure, this is really read from GET
 
+	$params['firstpw'] = $params['mac'] = $params['ip'] = $params['netmask'] = $params['gateway'] = $params['dns1'] =  $params['dns2'] = $params['client'] = $params['office'] = $params['name'] = $params['familyname'] = $params['eMail'] = $params['dhcpBootimage'] = $params['newgroup'] = '';
+
+	$options['nfshomeserver'] = $options['timeZone'] = $options['bootloader'] = $options['login'] = $options['arch'] = '';
+
+	$changeClientExitDialog = $defineDisk = false;
+
+	$rowDescription = $HTML_VM_ControlLink = '';
+
 	$colspanWithoutRadios=$colspan=2;
 	switch($addType)
 	{
@@ -3178,14 +3288,12 @@ function CLIENT_showAddDialog($addType)
 
 
 
-
-
 	/*
 		Define lots of dialog elements for values stored directly as parameters
 	*/
 	
 	if (!empty($_GET['VM_client'])) $_POST['ED_client'] = $_GET['VM_client'];
-	$client = HTML_storableInput("ED_client", "client", !empty($_GET['VM_client']) ? $_GET['VM_client'] : $params['client'], $installParams['client'], 20, 64);
+	$client = HTML_storableInput("ED_client", "client", (isset($_GET['VM_client']) && !empty($_GET['VM_client'])) ? $_GET['VM_client'] : $params['client'], $installParams['client'], 20, 64);
 		CLIENT_addChangeElement("client");
 	HTML_storableInput("ED_office", "office", $params['office'], $installParams['office'], 20, 40);
 		CLIENT_addChangeElement("office",true);
@@ -3261,8 +3369,8 @@ function CLIENT_showAddDialog($addType)
 		CLIENT_addChangeElement("bootloader");
 
 	//Proxy server and port
-	HTML_storableInput("ED_packageProxy", "packageProxy", (empty($options['packageProxy']) && (!$_SESSION['m23Shared'])) ? getServerIP() : $options['packageProxy'], $installOptions['packageProxy'], 16, 16);
-	HTML_storableInput("ED_packagePort", "packagePort", (empty($options['packagePort']) && (!$_SESSION['m23Shared'])) ? "2323" : $options['packagePort'], $installOptions['packagePort'], 5, 5);
+	HTML_storableInput("ED_packageProxy", "packageProxy", (empty($options['packageProxy']) && !$_SESSION['m23Shared']) ? getServerIP() : $options['packageProxy'], $installOptions['packageProxy'], 16, 16);
+	HTML_storableInput("ED_packagePort", "packagePort", (empty($options['packagePort']) && !$_SESSION['m23Shared']) ? "2323" : $options['packagePort'], $installOptions['packagePort'], 5, 5);
 		CLIENT_addChangeElement("proxy");
 
 	//Timezone
@@ -3385,8 +3493,8 @@ function CLIENT_showAddDialog($addType)
 							
 							echo("<br>$HTML_VM_ControlLink");
 							CAPTURE_captureAll(0,"normal add client dialog");
-							return($helpFile);
-						};
+							return(true);
+						}
 				}
 
 			//Show the error message if there is one
@@ -3567,8 +3675,7 @@ echo("
 		</script>
 	');
 
-};
-return($helpFile);
+}
 };
 
 
@@ -3625,7 +3732,7 @@ function CLIENT_getNames($groupName="")
 
 	$res=CLIENT_query("","","","",$groupName);
 	while( $data = mysqli_fetch_array($res) )
-		$out[$i++]=$data[client];
+		$out[$i++]=$data['client'];
 
 	return($out);
 };
@@ -3707,9 +3814,9 @@ function CLIENT_changeClient()
 	*/
 
 	//table with converts the POST values in the DB names
-// 	$post2db[email]="eMail";
+// 	$post2db['email']="eMail";
 	$post2db['boottype']="dhcpBootimage";
-// 	$post2db[rootpassword]="rootPassword";
+// 	$post2db['rootpassword']="rootPassword";
 
 	//translates element names to native language
 	$i18n['client']=$I18N_client_name;
@@ -3857,8 +3964,8 @@ function CLIENT_changeClient()
 			{
 				case "proxy":
 					//radiobutton "proxy" is used for the values "packageProxy" and "packagePort"
-					$parms[packageProxy]=$_SESSION['preferenceSpace'][packageProxy];
-					$parms[packagePort]=$_SESSION['preferenceSpace'][packagePort];
+					$parms[packageProxy]=$_SESSION['preferenceSpace']['packageProxy'];
+					$parms[packagePort]=$_SESSION['preferenceSpace']['packagePort'];
 					break;
 
 				case "dns1":
@@ -3874,18 +3981,18 @@ function CLIENT_changeClient()
 					break;
 
 				case "nfshomeserver":
-					$parms[nfshomeserver]=$_SESSION['preferenceSpace'][nfshomeserver];
+					$parms['nfshomeserver']=$_SESSION['preferenceSpace']['nfshomeserver'];
 					break;
 
 				case "ldap":
-					$allOptions[ldaptype]=$_SESSION['preferenceSpace'][ldaptype];
-					$allOptions[ldapserver]=$_SESSION['preferenceSpace'][ldapserver];
-					$allOptions[userID]=$_SESSION['preferenceSpace'][userID];
-					$allOptions[groupID]=$_SESSION['preferenceSpace'][groupID];
-					$parms[ldaptype]=$_SESSION['preferenceSpace'][ldaptype];
-					$parms[ldapserver]=$_SESSION['preferenceSpace'][ldapserver];
-					$parms[userID]=$_SESSION['preferenceSpace'][userID];
-					$parms[groupID]=$_SESSION['preferenceSpace'][groupID];
+					$allOptions['ldaptype']=$_SESSION['preferenceSpace']['ldaptype'];
+					$allOptions['ldapserver']=$_SESSION['preferenceSpace']['ldapserver'];
+					$allOptions['userID']=$_SESSION['preferenceSpace']['userID'];
+					$allOptions['groupID']=$_SESSION['preferenceSpace']['groupID'];
+					$parms['ldaptype']=$_SESSION['preferenceSpace']['ldaptype'];
+					$parms['ldapserver']=$_SESSION['preferenceSpace']['ldapserver'];
+					$parms['userID']=$_SESSION['preferenceSpace']['userID'];
+					$parms['groupID']=$_SESSION['preferenceSpace']['groupID'];
 					break;
 
 // 				case "addNewLocalLogin":
@@ -3894,7 +4001,7 @@ function CLIENT_changeClient()
 // 					break;
 
 				case "timeZone":
-					$parms['timeZone']	= $_SESSION['preferenceSpace'][SEL_timeZone];
+					$parms['timeZone']	= $_SESSION['preferenceSpace']['SEL_timeZone'];
 					break;
 
 				case "getSystemtimeByNTP":

@@ -6,7 +6,8 @@ $*/
 
 
 define('m23serverName',"m23 LDAP server");
-
+define('PHPLDAPADMIN_CONFIG', '/m23/data+scripts/m23admin/phpldapadmin/config/config.php');
+define('PHPLDAPADMIN_CONFIGDIR', '/m23/data+scripts/m23admin/phpldapadmin/config');
 
 
 
@@ -32,9 +33,9 @@ function LDAP_getTypes()
 **/
 function LDAP_connectServer($name)
 {
-	$server=LDAP_loadServer($name);
+	$server = LDAP_loadServer($name);
 	
-	$ds=LDAP_makeConnection($server[host] , $server[base], $server[login_pass]);
+	$ds = LDAP_makeConnection($server['host'] , $server['base'], $server['login_pass']);
 
 	return($ds);
 };
@@ -52,12 +53,14 @@ function LDAP_connectServer($name)
 **/
 function LDAP_makeConnection($host, $baseDN, $pwd="")
 {
-	$ds=ldap_connect($host);
+// 	ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL, 7);
+
+	$ds = ldap_connect("$host");
 
 	ldap_set_option( $ds, LDAP_OPT_PROTOCOL_VERSION, 3 );
 
 	if (!empty($pwd))
-		$r=ldap_bind($ds,"cn=admin,$baseDN", "$pwd");
+		$r=ldap_bind($ds,"cn=admin,$baseDN", $pwd);
 	else
 		$r=ldap_bind($ds);
 
@@ -65,7 +68,30 @@ function LDAP_makeConnection($host, $baseDN, $pwd="")
 		return($r);
 
 	return($ds);
-};
+}
+
+
+
+
+
+/**
+**name LDAP_getValueFromConfigLine($line)
+**description Returns the value from a phpLDAPadmin configuration line.
+**returns Value from a phpLDAPadmin configuration line.
+**/
+function LDAP_getValueFromConfigLine($line)
+{
+	$value = preg_replace("/\\\$servers->setValue\('[^']*','[^']*',[']?/", '', $line);
+
+	// Remove unwanted parts around the value
+	$value = str_replace ('array(\'' , '' , $value);
+	$value = str_replace ('\'))' , '' , $value);
+	$value = str_replace ('\')' , '' , $value);
+	$value = str_replace (')' , '' , $value);
+	$value = trim($value);
+
+	return($value);
+}
 
 
 
@@ -78,14 +104,25 @@ function LDAP_makeConnection($host, $baseDN, $pwd="")
 **/
 function LDAP_listServers()
 {
-	require("/m23/data+scripts/m23admin/phpldapadmin/config.php");
+	$configTxt = SERVER_getFileContents(PHPLDAPADMIN_CONFIG);
+	$lines = explode(';', $configTxt);
 
-	for ($i=0; isset($servers[$i]['name']) || $i < 1; $i++)
-		if (!empty($servers[$i]['name']))
-			$out[$servers[$i]['name']]=$servers[$i]['name'];
+	$out = array();
+
+	// Run thru the lines of the config file (interesting parts are separated by ';')
+	foreach ($lines as $line)
+	{
+		// Get the lines that contain LDAP server names
+		if (strpos($line, "'server','name','") !== false)
+		{
+			// Read out the LDAP server name and add it to the output array as key and value
+			$val = LDAP_getValueFromConfigLine($line);
+			$out[$val] = $val;
+		}
+	}
 
 	return($out);
-};
+}
 
 
 
@@ -98,14 +135,38 @@ function LDAP_listServers()
 **/
 function LDAP_loadServer($name)
 {
-	require("/m23/data+scripts/m23admin/phpldapadmin/config.php");
+	$configTxt = SERVER_getFileContents(PHPLDAPADMIN_CONFIG);
+	$lines = explode(';', $configTxt);
+	$serverFound = false;
+	$server = array();
+	
+	// Array containing the variable names of the config values as key and the keys of the output array as values
+	$wantedVariables = array('host' => 'host', 'base' => 'base', 'port' => 'port', 'bind_pass' => 'login_pass');
 
-	for ($i=0; isset($servers[$i]['name']) || $i < 1; $i++)
-		if ($servers[$i]['name'] == $name)
-			return($servers[$i]);
+	// Run thru the lines of the config file (interesting parts are separated by ';')
+	foreach ($lines as $line)
+	{
+		// It is time to quit, if there is another LDAP server name line after the wanted server
+		if ($serverFound && (strpos($line, "'server','name','") !== false))
+			return($server);
 
-	return(FALSE);
-};
+		// Check, if the line contains the correct LDAP server
+		if (strpos($line, "'server','name','$name'") !== false)
+		{
+			$serverFound = true;
+			$server['name'] = $name;
+		}
+		else
+		{
+			// Check, if the line contains wanted variable names
+			foreach ($wantedVariables as $varFile => $var)
+				if (strpos($line, "','$varFile',") !== false)
+					$server[$var] = LDAP_getValueFromConfigLine($line);
+		}
+	}
+
+	return($server);
+}
 
 
 
@@ -121,9 +182,12 @@ function LDAP_loadServer($name)
 **parameter pwd: the unencrypted password
 **parameter uid: Linux user ID
 **parameter gid: Linux group ID
+**returns true or error message string in case of an error.
 **/
 function LDAP_addPosix($ldapServer,$account,$forename,$familyname,$pwd,$uid,$gid)
 {
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
 	$forename=utf8_encode($forename);
 	$familyname=utf8_encode($familyname);
 	if (empty($familyname))
@@ -131,54 +195,73 @@ function LDAP_addPosix($ldapServer,$account,$forename,$familyname,$pwd,$uid,$gid
 
 	$server=LDAP_loadServer($ldapServer);
 	$ds=LDAP_connectServer($ldapServer);
+// 	print(serialize($ds));
 
 	// Build the array for creating a new user entry
 	$out=array();
-	$out[uid][0]=$account;
-	$out[gn][0]=$forename;
-	$out[sn][0]=$familyname;
-	$out[cn][0]="$forename $familyname";
-	$out[userPassword][0]='{MD5}'.base64_encode(pack('H*',md5($pwd)));
-	$out[loginShell][0]="/bin/bash";
-	$out[uidNumber][0]=$uid;
-	$out[gidNumber][0]=$gid;
-	$out[homeDirectory][0]="/home/$account";
-	$out[shadowMin][0]=-1;
-	$out[shadowMax][0]=999999;
-	$out[shadowWarning][0]=7;
-	$out[shadowInactive][0]=-1;
-	$out[shadowExpire][0]=-1;
-	$out[shadowFlag][0]=0;
-	$out[objectClass][0]="top";
-	$out[objectClass][1]="person";
-	$out[objectClass][2]="posixAccount";
-	$out[objectClass][3]="shadowAccount";
-	$out[objectClass][4]="inetOrgPerson";
+	$out['uid'][0]=$account;
+	$out['gn'][0]=$forename;
+	$out['sn'][0]=$familyname;
+	$out['cn'][0]="$forename $familyname";
+	$out['userPassword'][0]='{MD5}'.base64_encode(pack('H*',md5($pwd)));
+	$out['loginShell'][0]="/bin/bash";
+	$out['uidNumber'][0]=$uid;
+	$out['gidNumber'][0]=$gid;
+	$out['homeDirectory'][0]="/home/$account";
+	$out['shadowMin'][0]=-1;
+	$out['shadowMax'][0]=999999;
+	$out['shadowWarning'][0]=7;
+	$out['shadowInactive'][0]=-1;
+	$out['shadowExpire'][0]=-1;
+	$out['shadowFlag'][0]=0;
+	$out['objectClass'][0]="top";
+	$out['objectClass'][1]="person";
+	$out['objectClass'][2]="posixAccount";
+	$out['objectClass'][3]="shadowAccount";
+	$out['objectClass'][4]="inetOrgPerson";
+
 
 	// Add the new user
-	$dn="uid=$account,ou=people,$server[base]";
-	$ret=ldap_add($ds , $dn, $out);
+	$dn = "uid=$account,ou=people,$server[base]";
+// 	print("<h4>@ldap_add($ds , $dn</h4>");
+// 	print_r($out);
+	$ret = @ldap_add($ds , $dn, $out);
+	if ($ret === false)
+	{
+		$err = "$I18N_LDAPcouldNotCreatePosixAccount ($dn): ".ldap_error($ds).'/'.ldap_errno($ds);
+		ldap_close($ds);
+		return($err);
+	}
+	
+// 	print('<h4>'.ldap_error($ds).'</h4>');
 
 	// Create a group name by the GID
 	$groupname = "gid$gid";
 
 	// Build the array for creating a new group entry
 	$out=array();
-	$out[cn][0] = $groupname;
-	$out[gidNumber][0] = $gid;
-	$out[memberUid] = $account;
-	$out[objectClass][0]="top";
-	$out[objectClass][1]="posixGroup";
+	$out['cn'][0] = $groupname;
+	$out['gidNumber'][0] = $gid;
+	$out['memberUid'] = $account;
+	$out['objectClass'][0]="top";
+	$out['objectClass'][1]="posixGroup";
 
 	// Try to create the new group
 	$dn="cn=$groupname,ou=Group,$server[base]";
 	$ret = @ldap_add($ds, $dn, $out);
+// 	print('<h4>'.ldap_error($ds).'</h4>');
 	if (false === $ret)
 	{
-		// The group seems to exist => Add the uid to 
+		// The group seems to exist => Add the uid to list of users who are in the group
 		$miniOut=array();
-		$miniOut[memberUid] = $uid;
+		$miniOut['memberUid'] = $uid;
 		$ret = @ldap_mod_add($ds, $dn, $miniOut);
+		if ($ret === false)
+		{
+			$err = "$I18N_LDAPcouldNotCreatePosixGroup ($dn): ".ldap_error($ds).'/'.ldap_errno($ds);
+			ldap_close($ds);
+			return($err);
+		}
 	}
 
 	LDAP_addNewUserID($uid);
@@ -186,7 +269,7 @@ function LDAP_addPosix($ldapServer,$account,$forename,$familyname,$pwd,$uid,$gid
 
 	ldap_close($ds);
 
-	return($ret);
+	return(true);
 };
 
 
@@ -319,34 +402,27 @@ else
 **/
 function LDAP_addServerTophpLdapAdmin($name,$host,$base,$pwd,$port=389)
 {
-$confFile="/m23/data+scripts/m23admin/phpldapadmin/config.php";
+
 LDAP_checkphpLdapAdminConfiguration();
 
 $cmd=
-EDIT_searchLastLineNumber($confFile,"'unique_attrs_dn_pass']").
-EDIT_insertAfterLineNumber($confFile, SED_foundLine, "
-\$i++;
-\$servers[\$i]['name'] = '$name';
-\$servers[\$i]['host'] = '$host';
-\$servers[\$i]['base'] = '$base';
-\$servers[\$i]['port'] = $port;
-\$servers[\$i]['auth_type'] = 'config';
-\$servers[\$i]['login_dn'] = 'cn=admin,$base';
-\$servers[\$i]['login_pass'] = '$pwd';
-\$servers[\$i]['tls'] = false;
-\$servers[\$i]['low_bandwidth'] = false;
-\$servers[\$i]['default_hash'] = 'crypt';
-\$servers[\$i]['login_attr'] = 'dn';
-\$servers[\$i]['login_class'] = '';
-\$servers[\$i]['read_only'] = false;
-\$servers[\$i]['show_create'] = true;
-\$servers[\$i]['enable_auto_uid_numbers'] = false;
-\$servers[\$i]['auto_uid_number_mechanism'] = 'search';
-\$servers[\$i]['auto_uid_number_search_base'] = 'ou=People,dc=example,dc=com';
-\$servers[\$i]['auto_uid_number_min'] = 1000;
-\$servers[\$i]['auto_uid_number_uid_pool_dn'] = 'cn=uidPool,dc=example,dc=com';
-\$servers[\$i]['unique_attrs_dn'] = '';
-\$servers[\$i]['unique_attrs_dn_pass'] = '';
+EDIT_searchLastLineNumber(PHPLDAPADMIN_CONFIG, "new Datastore();").
+EDIT_insertAfterLineNumber(PHPLDAPADMIN_CONFIG, SED_foundLine, "
+\$servers->newServer('ldap_pla');
+\$servers->setValue('server','name','$name');
+\$servers->setValue('server','host','$host');
+\$servers->setValue('server','port',$port);
+\$servers->setValue('server','base',array('$base'));
+\$servers->setValue('login','auth_type','config');
+\$servers->setValue('login','bind_id','cn=admin,$base');
+\$servers->setValue('login','bind_pass','$pwd');
+\$servers->setValue('server','tls',false);
+\$servers->setValue('server','read_only',false);
+\$servers->setValue('auto_number','enable',false);
+\$servers->setValue('auto_number','mechanism','search');
+\$servers->setValue('auto_number','search_base','ou=People,$base');
+\$servers->setValue('auto_number','min',array('uidNumber'=>1000,'gidNumber'=>1000));
+\$servers->setValue('server','visible',true);
 ");
 
 system($cmd);
@@ -363,12 +439,10 @@ system($cmd);
 **/
 function LDAP_delServerFromphpLdapAdmin($name)
 {
-$confFile="/m23/data+scripts/m23admin/phpldapadmin/config.php";
-
 $cmd=
-EDIT_searchLineNumber($confFile,"'name'] = '$name';").
-EDIT_calc(SED_foundLine,"- 1").
-EDIT_deleteLinesAmount($confFile,SED_foundLine,23);
+EDIT_searchLineNumber(PHPLDAPADMIN_CONFIG, "'server','name','$name'").
+EDIT_calc(SED_foundLine,"- 2").
+EDIT_deleteLinesAmount(PHPLDAPADMIN_CONFIG, SED_foundLine, 16);
 
 system($cmd);
 };
@@ -383,63 +457,24 @@ system($cmd);
 **/
 function LDAP_checkphpLdapAdminConfiguration()
 {
-if (file_exists("/m23/data+scripts/m23admin/phpldapadmin/config.php"))
-	return;
+	// Check, if the new config file exists. If yes, nothing is to do here
+	if (file_exists(PHPLDAPADMIN_CONFIG)) return(true);
 
-$file=fopen("/m23/data+scripts/m23admin/phpldapadmin/config.php","w");
-fwrite($file,"
-<?php
-\$blowfish_secret = '';
+	// Make sure the directory for storing the new openLDAPadmin config file exists
+	SERVER_multiMkDir(PHPLDAPADMIN_CONFIGDIR, 0755);
 
-\$i=0;
-\$servers = array();
-//['unique_attrs_dn_pass']
-\$jpeg_temp_dir = \"/tmp\";       // Example for Unix systems
-\$date_format = \"%A %e %B %Y\";
-\$hide_configuration_management = false;
-\$tree_display_format = '%rdn';
-\$search_deref = LDAP_DEREF_ALWAYS;
-\$tree_deref = LDAP_DEREF_NEVER;
-\$export_deref = LDAP_DEREF_NEVER;
-\$view_deref = LDAP_DEREF_NEVER;
-\$language = 'auto';
-\$enable_mass_delete = false;
-\$anonymous_bind_implies_read_only = true;
-\$anonymous_bind_redirect_no_tree = false;
-\$cookie_time = 0; // seconds
-\$tree_width = 320; // pixels
-\$jpeg_tmp_keep_time = 120; // seconds
-\$show_hints = true; // set to false to disable hints
-\$search_result_size_limit = 50;
-\$default_search_display = 'list';
-\$obfuscate_password_display = false;
-\$search_attributes = \"uid, cn, gidNumber, objectClass, telephoneNumber, mail, street\";
-\$search_attributes_display = \"User Name, Common Name, Group ID, Object Class, Phone Number, Email, Address\";
-\$search_result_attributes = \"cn, sn, uid, postalAddress, telephoneNumber\";
-\$search_criteria_options = array( \"equals\", \"starts with\", \"contains\", \"ends with\", \"sounds like\" );
-\$multi_line_attributes = array( \"postalAddress\", \"homePostalAddress\", \"personalSignature\" );
-\$multi_line_syntax_oids = array(
-                            // octet string syntax OID:
-                            \"1.3.6.1.4.1.1466.115.121.1.40\",
-                            // postal address syntax OID:
-                            \"1.3.6.1.4.1.1466.115.121.1.41\"  );
-\$friendly_attrs = array();
-\$friendly_attrs[ 'facsimileTelephoneNumber' ] =         'Fax';
-\$friendly_attrs[ 'telephoneNumber' ]  =                 'Phone';
-\$q=0;
-\$queries = array();
-\$queries[\$q]['name'] = 'Samba Users';       /* The name that will appear in the simple search form */
-\$queries[\$q]['server'] = '0';               /* The ldap server to query, must be defined in the \$queries[\$q]['base'] = 'dc=example,dc=com'; /* The base to search on */
-\$queries[\$q]['scope'] = 'sub';              /* The search scope (sub, base, one) */
-\$queries[\$q]['filter'] = '(&(|(objectClass=sambaAccount)(objectClass=sambaSamAccount))(objectClass=posixAccount)(!(uid=*\$)))';
-\$queries[\$q]['attributes'] = 'uid, smbHome, uidNumber';
-\$q++;
-\$queries[\$q]['name'] = 'Samba Computers';
-\$queries[\$q]['server'] = '0';
-\$queries[\$q]['base'] = 'dc=example,dc=com';
-\$queries[\$q]['scope'] = 'sub';
-\$queries[\$q]['filter'] = '(&(objectClass=sambaAccount)(uid=*\$))';
-\$queries[\$q]['attributes'] = 'uid, homeDirectory';
+$file = fopen(PHPLDAPADMIN_CONFIG, "w");
+fwrite($file,"<?php
+\$config->custom->appearance['friendly_attrs'] = array(
+	'facsimileTelephoneNumber' => 'Fax',
+	'gid'                      => 'Group',
+	'mail'                     => 'Email',
+	'telephoneNumber'          => 'Telephone',
+	'uid'                      => 'User Name',
+	'userPassword'             => 'Password'
+);
+
+\$servers = new Datastore();
 ?>
 ");
 fclose($file);
@@ -455,19 +490,22 @@ fclose($file);
 **/
 function LDAP_showServerManagementDialog()
 {
+	$installStarted = false;
+	$htmlLDAPType = '';
+
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	LDAP_checkphpLdapAdminConfiguration();
 
-	$SEL_server=$_POST[SEL_server];
-	$ED_servername=$_POST[ED_servername];
-	$ED_serverhost=$_POST[ED_serverhost];
-	$ED_baseDN=$_POST[ED_baseDN];
-	$ED_serverport=$_POST[ED_serverport];
+	$SEL_server = isset($_POST['SEL_server']) ? $_POST['SEL_server'] : '';
+	$ED_servername = isset($_POST['ED_servername']) ? $_POST['ED_servername'] : '';
+	$ED_serverhost = isset($_POST['ED_serverhost']) ? $_POST['ED_serverhost'] : '';
+	$ED_baseDN = isset($_POST['ED_baseDN']) ? $_POST['ED_baseDN'] : '';
+	$ED_serverport = isset($_POST['ED_serverport']) ? $_POST['ED_serverport'] : '';
 	
 	if (empty($ED_serverport))
 		$ED_serverport=389;
 
-	$servers=LDAP_listServers();
+	$servers = LDAP_listServers();
 	
 	/*
 		changing a LDAP server means:
@@ -476,13 +514,13 @@ function LDAP_showServerManagementDialog()
 	*/
 
 	//delete a LDAP server from the configuration file
-	if ((isset($_POST[BUT_delete])) || (isset($_POST[BUT_change])))
+	if ((isset($_POST['BUT_delete'])) || (isset($_POST['BUT_change'])))
 	{
 		LDAP_delServerFromphpLdapAdmin($SEL_server);
-		$servers=LDAP_listServers();
+		$servers = LDAP_listServers();
 		
 		//if the entry should be deleted only (not changed) the dialog values should be resetted
-		if (!isset($_POST[BUT_change]))
+		if (!isset($_POST['BUT_change']))
 			{
 				$SEL_server=$ED_servername=$ED_serverhost=$ED_baseDN="";
 				MSG_showInfo($I18N_LDAPServerDeleted);
@@ -490,21 +528,21 @@ function LDAP_showServerManagementDialog()
 	};
 
 	//add a new LDAP server to the configuration file
-	if (isset($_POST[BUT_add]) || (isset($_POST[BUT_change])))
+	if (isset($_POST['BUT_add']) || (isset($_POST['BUT_change'])))
 	{
-		if ($_POST[ED_password1] == $_POST[ED_password2])
+		if ($_POST['ED_password1'] == $_POST['ED_password2'])
 			{
 				if (in_array($ED_servername,$servers))
 					MSG_showError($I18N_LDAPServerExists);
-				elseif (LDAP_makeConnection($ED_serverhost,$ED_baseDN,$_POST[ED_password1]) === FALSE)
+				elseif (LDAP_makeConnection($ED_serverhost,$ED_baseDN,$_POST['ED_password1']) === FALSE)
 					MSG_showError($I18N_LDAPServerConnectionRefused);
 				else
 					{
-						LDAP_addServerTophpLdapAdmin($ED_servername,$ED_serverhost,$ED_baseDN,$_POST[ED_password1],$ED_serverport);
-						$servers=LDAP_listServers();
-						$ED_servername=$ED_serverhost=$ED_baseDN="";
+						LDAP_addServerTophpLdapAdmin($ED_servername,$ED_serverhost,$ED_baseDN,$_POST['ED_password1'],$ED_serverport);
+						$servers = LDAP_listServers();
+						$ED_servername = $ED_serverhost = $ED_baseDN = "";
 						
-						if (!isset($_POST[BUT_change]))
+						if (!isset($_POST['BUT_change']))
 							MSG_showInfo($I18N_LDAPServerAdded);
 						else
 							{	//if it should be changed, the selection should be the new server name
@@ -519,15 +557,15 @@ function LDAP_showServerManagementDialog()
 
 
 	//loads the variables from a LDAP server in the dialog
-	if (isset($_POST[BUT_load]))
+	if (isset($_POST['BUT_load']))
 	{
-		$server=LDAP_loadServer($SEL_server);
-		$ED_servername=$server[name];
-		$ED_serverhost=$server[host];
-		$ED_baseDN=$server[base];
-		$ED_serverport=$server[port];
+		$server = LDAP_loadServer($SEL_server);
+		$ED_servername = $server['name'];
+		$ED_serverhost = $server['host'];
+		$ED_baseDN = $server['base'];
+		$ED_serverport = $server['port'];
 
-		if (empty($server[login_pass]))
+		if (empty($server['login_pass']))
 			$htmlLDAPType="<br><span class=\"subhighlight_red\">$I18N_readOnlyLDAPServer</span>
 			<br><br>";
 		else
@@ -579,12 +617,12 @@ function LDAP_showServerManagementDialog()
 		
 		<tr>
 			<td>$I18N_password</td>
-			<td><input type=\"password\" name=\"ED_password1\" value=\"$ED_password1\" size=\"20\" maxlength=\"200\"></td>
+			<td><input type=\"password\" name=\"ED_password1\" value=\"".(isset($ED_password1) ? $ED_password1 : '')."\" size=\"20\" maxlength=\"200\"></td>
 		</tr>
 
 		<tr>
 			<td>$I18N_repeated_password</td>
-			<td><input type=\"password\" name=\"ED_password2\" value=\"$ED_password2\" size=\"20\" maxlength=\"200\"></td>
+			<td><input type=\"password\" name=\"ED_password2\" value=\"".(isset($ED_password2) ? $ED_password2 : '')."\" size=\"20\" maxlength=\"200\"></td>
 		</tr>
 
 		<tr>
@@ -608,79 +646,6 @@ function LDAP_showServerManagementDialog()
 	");
 	HTML_showTableEnd();
 
-	$serverIP=getServerIP();
-
-	if (isset($_POST[BUT_install]))
-		{
-			$startedInstall=false;
-
-			if ($_POST[ED_m23password1] != $_POST[ED_m23password2])
-				MSG_showError($I18N_passwords_dont_match);
-			elseif (empty($_POST[ED_m23password1]))
-				MSG_showError($I18N_pleaseEnterApassword);
-			elseif (empty($_POST[ED_m23org]))
-				MSG_showError($I18N_pleaseEnterAbaseDN);
-			else
-				{
-					LDAP_installServer($serverIP,$_POST[ED_m23org],$_POST[ED_m23base],$_POST[ED_m23password1]);
-					$installStarted=true;
-				};
-		}
-
-	if ($installStarted || SERVER_runningInBackground("installLDAP"))
-		{
-			MSG_showError($I18N_installationOpenLDAPonm23ServerIsRunning);
-			echo("<input type=\"submit\" value=\"$I18N_refresh\">");
-		}
-	elseif (!SERVER_checkPackageInstalled("slapd"))
-	{
-		echo("<br><span class=\"title\">$I18N_installOpenLDAPonm23Server</span><br><br>");
-
-		HTML_showTableHeader();
-
-		echo("
-			<tr>
-				<td>$I18N_LDAPServerName</td>
-				<td>
-					<input type=\"text\" value=\"".m23serverName."\" size=\"20\" readonly>
-				</td>
-			</tr>
-		
-			<tr>
-				<td>$I18N_LDAPServerHost</td>
-				<td>
-					<input type=\"text\" value=\"$serverIP\" size=\"20\" readonly>
-				</td>
-			</tr>
-
-			<tr>
-				<td>$I18N_baseDN</td>
-				<td><input type=\"text\" name=\"ED_m23base\" value=\"m23\" size=\"20\" maxlength=\"200\" readonly></td>
-			</tr>
-
-			<tr>
-				<td>$I18N_organisation</td>
-				<td><input type=\"text\" name=\"ED_m23org\" value=\"m23 server\" size=\"20\" maxlength=\"200\" readonly></td>
-			</tr>
-	
-			<tr>
-				<td>$I18N_password</td>
-				<td><input type=\"password\" name=\"ED_m23password1\" value=\"$_POST[ED_m23password1]\" size=\"20\" maxlength=\"200\"></td>
-			</tr>
-	
-			<tr>
-				<td>$I18N_repeated_password</td>
-				<td><input type=\"password\" name=\"ED_m23password2\" value=\"$_POST[ED_m23password1]\" size=\"20\" maxlength=\"200\"></td>
-			</tr>
-	
-			<tr>
-				<td colspan=\"2\" align=\"center\">
-				<input type=\"submit\" value=\"$I18N_install\" name=\"BUT_install\">
-				</td>
-			</tr>
-		");
-		HTML_showTableEnd();
-	}
 	echo("</form>\n");
 };
 //ldap_delete(\$ds,\"uid=\$account,ou=people,dc=nodomain\");
@@ -904,12 +869,12 @@ function LDAP_getFreeGroupIDs($start,$amount)
 **/
 function LDAP_matchLDAPserver($host,$base)
 {
-	$servers=LDAP_listServers();
+	$servers = LDAP_listServers();
 
 	foreach($servers as $sever)
 	{
 		$data=LDAP_loadServer($sever);
-		if ($data[host]==$host && $data[base]==$base)
+		if ($data['host']==$host && $data['base']==$base)
 			return($sever);
 	};
 	return(false);

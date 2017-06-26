@@ -51,8 +51,8 @@ CLIENT_DETAILS_addIcon("editclient", "", "edit.png", "$I18N_edit_client", $I18N_
 echo('</tr><tr>'); //Make a second row for the icons
 CLIENT_DETAILS_addIcon("clientinfo", "&infoType=addToGroup", "groupAdd.png", "$I18N_addToGroup", $I18N_addToGroup_tooltip);
 CLIENT_DETAILS_addIcon("clientinfo", "&infoType=delFromGroup", "groupDelete.png", "$I18N_removeFromGroup", $I18N_removeFromGroup_tooltip);
-if (!$_SESSION['m23Shared']) CLIENT_DETAILS_addIcon("backup", "", "backup.png", "$I18N_backup", $I18N_backup_tooltip);
-if (!$_SESSION['m23Shared']) CLIENT_DETAILS_addIcon("createImage", "", "imaging.png", "$I18N_createImage", $I18N_createImage_tooltip);
+if (!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared']) CLIENT_DETAILS_addIcon("backup", "", "backup.png", "$I18N_backup", $I18N_backup_tooltip);
+if (!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared']) CLIENT_DETAILS_addIcon("createImage", "", "imaging.png", "$I18N_createImage", $I18N_createImage_tooltip);
 
 if (isset($options['m23cupsadminPW']{1}))
 	$cupsUserPW = "m23cupsadmin:$options[m23cupsadminPW]@";

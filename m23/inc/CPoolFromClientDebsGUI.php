@@ -1,5 +1,10 @@
 <?php
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: GUI class for building pools from client packages.
+$*/
+
 class CPoolFromClientDebsGUI extends CPoolFromClientGUI
 {
 /**
@@ -42,6 +47,8 @@ class CPoolFromClientDebsGUI extends CPoolFromClientGUI
 	{
 		PKG_addJob($clientName, 'm23BuildPoolFromClientDebs', PKG_getSpecialPackagePriority('m23BuildPoolFromClientDebs'),"");
 	}
+
+
 
 
 

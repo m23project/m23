@@ -1,4 +1,10 @@
 <?
+
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for testing partitioning and formating functions.
+$*/
+
 	if (!isset($GLOBALS["m23_language"]))
 		$GLOBALS['m23_language'] = 'de';
 

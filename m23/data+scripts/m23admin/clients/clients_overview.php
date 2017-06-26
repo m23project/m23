@@ -2,8 +2,14 @@
 	HTML_showFormHeader();
 	HTML_setPage('clientsoverview');
 
-	$groupname = $_GET['groupname'];
-	$action = isset($_GET['action']) ? $_GET['action'] : $_POST['action'];
+	$groupname = isset($_GET['groupname']) ? $_GET['groupname'] : '';
+	
+	if (isset($_GET['action']))
+		$action = $_GET['action'];
+	elseif (isset($_POST['action']))
+		$action = $_POST['action'];
+	else
+		$action = 'no_action_selected';
 
 	//do actions to the clients
 	$checkOff=false;
@@ -41,7 +47,7 @@
 						$checkOff=true;
 						break;
 					case "grpMov":
-						GRP_moveClientToGroup($clientName,$groupname,$_POST['SEL_group']);
+						GRP_moveClientToGroup($clientName, $groupname, $_POST['SEL_group']);
 						$checkOff=true;
 						break;
 					case "grpAdd":
@@ -143,7 +149,9 @@
 	
 	
 	if (!empty($groupname))
-		$groupTitle=" ($I18N_group $groupname)";
+		$groupTitle = " ($I18N_group $groupname)";
+	else
+		$groupTitle = '';
 
 	//write page header
 	echo("<span class=\"title\">$title$groupTitle</span><br><br>");
@@ -279,7 +287,7 @@
 	HTML_showTableHeader(true);
 
 	HTML_showTableRow("<span class=\"subhighlight\">$I18N_action</span>", "<span class=\"subhighlight\">$I18N_group</span>", "");
-	HTML_showTableRow(SEL_type, GRP_groupSelection("SEL_group",$groupName), BUT_do);
+	HTML_showTableRow(SEL_type, GRP_groupSelection("SEL_group",$groupname), BUT_do);
 
 	//2nd search line
 	CLIENT_showOverviewSearchDialog('ED_search2',false);

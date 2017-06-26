@@ -30,7 +30,7 @@ functions for installing (clientInstall.php) and configuring (clientConfig.php) 
 
 	//write hostname
 	if (array_key_exists("client",$pkgParams))
-		CLCFG_hostname($pkgParams[client]);
+		CLCFG_hostname($pkgParams['client']);
 
 
 	//write ip, netmask and gateway
@@ -49,8 +49,8 @@ functions for installing (clientInstall.php) and configuring (clientConfig.php) 
 	//set DNS servers
 	if (array_key_exists("dns1",$pkgParams) || array_key_exists("dns2",$pkgParams))
 	{
-		$DNSServers[0]=$pkgParams[dns1];
-		$DNSServers[1]=$pkgParams[dns2];
+		$DNSServers[0]=$pkgParams['dns1'];
+		$DNSServers[1]=$pkgParams['dns2'];
 		CLCFG_resolvConf($DNSServers);
 	}
 
@@ -100,7 +100,7 @@ functions for installing (clientInstall.php) and configuring (clientConfig.php) 
 
 	//set the time zone
 	if (array_key_exists("timeZone",$pkgParams))
-		CLCFG_setTimeZone($pkgParams[timeZone]);
+		CLCFG_setTimeZone($pkgParams['timeZone']);
 
 	//generate wget command to make the changes on the client side
 	MSR_clientChangeCommand($id);

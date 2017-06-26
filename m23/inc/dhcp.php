@@ -20,7 +20,8 @@ function DHCP_exportDHCPSettingsForExternalDHCPServer()
 	$serverIP = getServerIP();
 
 	//Get all host lines of the DHCP config file
-	$lines = shell_exec("sudo grep 'host ' ".DHCPD_CONF_FILE);
+	$cmds = "grep 'host ' ".DHCPD_CONF_FILE;
+	$lines = SERVER_runInBackground('DHCP_exportDHCPSettingsForExternalDHCPServer', $cmds, "root", false);
 
 	//Add settings for the external DHCP server
 	return(str_replace('hardware ethernet', "option dhcp-server-identifier $serverIP; option root-path \"/\"; next-server $serverIP; hardware ethernet", $lines));
@@ -192,8 +193,8 @@ function DHCP_delDynamicRange($firstIP, $lastIP)
 	//Prepare and execute sed
 	$firstIPSed = str_replace('.', '\.', $firstIP);
 	$lastIPSed = str_replace('.', '\.', $lastIP);
-	$cmd="sudo sed -i '/range $firstIPSed $lastIPSed/d' ".DHCPD_CONF_FILE." && echo ok";
-	if (exec($cmd) != "ok")
+
+	if (trim(SERVER_runInBackground('DHCP_delDynamicRange', "sed -i '/range $firstIPSed $lastIPSed/d' ".DHCPD_CONF_FILE." && echo ok", "root", false)) != "ok")
 		return(false);
 
 	//Add a new empty subnet declaration
@@ -363,11 +364,13 @@ function DHCP_addClient($clientName, $ip, $netmask, $mac, $bootType, $gateway, $
 **/
 function DHCP_addLineToDHCPDConf($line)
 {
-	exec("sudo echo \\ \"$line\" > /m23/dhcp/dhcpdtop;
-	sudo cat ".DHCPD_CONF_FILE." >> /m23/dhcp/dhcpdtop;
-	sudo cat /m23/dhcp/dhcpdtop > ".DHCPD_CONF_FILE.";
-	sudo rm /m23/dhcp/dhcpdtop;
-	");
+	$cmds = "echo \"$line\" > /m23/dhcp/dhcpdtop;
+	cat ".DHCPD_CONF_FILE." >> /m23/dhcp/dhcpdtop;
+	cat /m23/dhcp/dhcpdtop > ".DHCPD_CONF_FILE.";
+	rm /m23/dhcp/dhcpdtop;
+	";
+	
+	SERVER_runInBackground('DHCP_addLineToDHCPDConf', $cmds, 'root', false);
 }
 
 
@@ -387,7 +390,7 @@ function DHCP_restartDHCPserver()
 	{
 		if (file_exists("/etc/init.d/$daemon"))
 		{
-			if (exec("sudo /etc/init.d/$daemon restart && echo ok") != "ok")
+			if (trim(SERVER_runInBackground('DHCP_restartDHCPserver', "/etc/init.d/$daemon restart && echo ok", "root", false)) != "ok")
 				return(false);
 		}
 	};
@@ -418,10 +421,10 @@ function DHCP_rmClient($clientName)
 	{
 		//Delete the line from DHCP server only if it is not gPXE
 		//remove the client from dhcpd.conf
-		$cmd="sudo sed '/host.".trim($clientName)."[^A-Za-z0-9]/Id' ".DHCPD_CONF_FILE." > ".DHCPD_CONF_FILE.".tmp && mv ".DHCPD_CONF_FILE.".tmp ".DHCPD_CONF_FILE." && echo ok";
+		$cmds = "sed '/host.".trim($clientName)."[^A-Za-z0-9]/Id' ".DHCPD_CONF_FILE." > ".DHCPD_CONF_FILE.".tmp && mv ".DHCPD_CONF_FILE.".tmp ".DHCPD_CONF_FILE." && echo ok";
 
 		//write changes
-		if (exec($cmd) != "ok")
+		if (trim(SERVER_runInBackground('DHCP_rmClient', $cmds, 'root', false)) != "ok")
 			return(false);
 	}
 
@@ -435,9 +438,7 @@ function DHCP_rmClient($clientName)
 
 		case CClient::BOOTTYPE_ETHERBOOT:
 			$ip = CLIENT_getIPbyName($clientName);
-			$cmd="sudo rm /m23/tftp/$ip";
-			//remove link
-			exec($cmd);
+			SERVER_deleteFile("/m23/tftp/$ip");
 		break;
 	}
 
@@ -459,12 +460,11 @@ function DHCP_rmClient($clientName)
 **/
 function DHCP_setBootimage($clientName, $bootImage)
 {
-	$ip=CLIENT_getIPbyName($clientName);
+	$ip = CLIENT_getIPbyName($clientName);
+	$cmds = "cd /m23/tftp/; rm $ip ; ln -s $bootImage $ip";
 
-	$cmd="cd /m23/tftp/; sudo rm $ip ; sudo ln -s $bootImage $ip";
-
-	exec($cmd);
-};
+	SERVER_runInBackground('DHCP_setBootimage', $cmds, 'root', false);
+}
 
 
 
@@ -485,9 +485,8 @@ function DHCP_activateBoot($clientName, $on, $bootType = 'x')
 	VM_activateNetboot($clientName, $on);
 
 	//Check if the current state is different from the desired state
-	if ((DHCP_isNetworkBootingActive($clientName) == $on) && !HELPER_isExecutedOnUCS())
+	if (DHCP_isNetworkBootingActive($clientName) && !HELPER_isExecutedOnUCS())
 		return(false);
-
 
 
 	if ($on)
@@ -583,8 +582,8 @@ function DHCP_writePXEcfg($clientName,$arch)
 **/
 function DHCP_removePXEcfg($clientName)
 {
-	$iphex=DHCP_calcPXEIP(CLIENT_getIPbyName($clientName));
-	exec("sudo rm /m23/tftp/pxelinux.cfg/$iphex");
+	$iphex = DHCP_calcPXEIP(CLIENT_getIPbyName($clientName));
+	SERVER_deleteFile("/m23/tftp/pxelinux.cfg/$iphex");
 };
 
 
@@ -599,7 +598,7 @@ function DHCP_removePXEcfg($clientName)
 **/
 function DHCP_isNetworkBootingActive($clientName)
 {
-	$ret = exec("sudo grep 'host $clientName ' ".DHCPD_CONF_FILE." -c");
+	$ret = trim(SERVER_runInBackground('DHCP_isNetworkBootingActive', "grep 'host $clientName ' ".DHCPD_CONF_FILE." -c", "root", false));
 	return(is_numeric($ret) && ($ret > 0));
 }
 ?>

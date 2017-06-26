@@ -1,0 +1,68 @@
+<?php
+include ("/m23/inc/packages.php");
+include ("/m23/inc/checks.php");
+include ("/m23/inc/client.php");
+include ("/m23/inc/capture.php");
+
+$params = PKG_OptionPageHeader2("code-aster-run");
+
+$elem["astk/platform"]["type"]="select";
+$elem["astk/platform"]["choices"][1]="LINUX";
+$elem["astk/platform"]["choices"][2]="P_LINUX";
+$elem["astk/platform"]["choices"][3]="LINUX64";
+$elem["astk/platform"]["description"]="Aster platform:
+ Select Aster platform.
+";
+$elem["astk/platform"]["descriptionde"]="Aster-Plattform:
+ Wählen Sie die Aster-Plattform aus.
+";
+$elem["astk/platform"]["descriptionfr"]="Plateforme Aster :
+ Veuillez choisir la plateforme Aster.
+";
+$elem["astk/platform"]["default"]="LINUX64";
+$elem["astk/node"]["type"]="string";
+$elem["astk/node"]["description"]="ASTK client node name:
+ Please enter the public name by which this client will be known on
+ the network. It must be a unique name within the domain.
+";
+$elem["astk/node"]["descriptionde"]="ASTK-Client-Knoten-Name:
+ Bitte geben Sie den öffentlichen Namen an, unter dem dieser Client im Netzwerk sichtbar sein wird. Es muss ein Name sein, der innerhalb der Domain einmalig ist.
+";
+$elem["astk/node"]["descriptionfr"]="Nom de nœud du client ASTK :
+ Veuillez indiquer le nom public par lequel ce client sera vu sur le réseau. Cela doit être un nom unique au sein du domaine.
+";
+$elem["astk/node"]["default"]="";
+$elem["astk/EDITOR"]["type"]="select";
+$elem["astk/EDITOR"]["choices"][1]="/usr/bin/nedit";
+$elem["astk/EDITOR"]["choices"][2]="/usr/bin/gedit --display=\@D";
+$elem["astk/EDITOR"]["choices"][3]="/usr/bin/kwrite --display \@D";
+$elem["astk/EDITOR"]["choices"][4]="/usr/bin/xemacs -display \@D";
+$elem["astk/EDITOR"]["choices"][5]="/usr/bin/emacs -display \@D";
+$elem["astk/EDITOR"]["choices"][6]="/usr/bin/xedit -display \@D";
+$elem["astk/EDITOR"]["description"]="Standard editor:
+ Please select the command line that ASTK should use to launch an
+ editor.
+";
+$elem["astk/EDITOR"]["descriptionde"]="Standard-Editor:
+ Bitte wählen Sie die Befehlszeile, die ASTK benutzen soll, um einen Editor zu starten.
+";
+$elem["astk/EDITOR"]["descriptionfr"]="Éditeur standard :
+ Veuillez choisir la ligne de commande que ASTK doit utiliser pour démarrer l'éditeur.
+";
+$elem["astk/EDITOR"]["default"]="/usr/bin/nedit";
+$elem["astk/TERMINAL"]["type"]="select";
+$elem["astk/TERMINAL"]["choices"][1]="/usr/bin/xterm -display \@D -e \@E";
+$elem["astk/TERMINAL"]["choices"][2]="/usr/bin/gnome-terminal --display=\@D --command=\@E";
+$elem["astk/TERMINAL"]["description"]="Standard terminal emulator:
+ Please select the command line that ASTK should use to launch a
+ terminal window.
+";
+$elem["astk/TERMINAL"]["descriptionde"]="Standard-Terminal-Emulator:
+ Bitte wählen Sie die Befehlszeile, die ASTK benutzen soll, um ein Terminal-Fenster zu starten.
+";
+$elem["astk/TERMINAL"]["descriptionfr"]="Émulateur de terminal standard :
+ Veuillez choisir la ligne de commande que ASTK doit utiliser pour ouvrir un terminal.
+";
+$elem["astk/TERMINAL"]["default"]="/usr/bin/gnome-terminal --display=\@D --command=\@E";
+PKG_OptionPageTail2($elem);
+?>

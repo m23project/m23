@@ -1,5 +1,11 @@
 <?php
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Functions for halfSister.
+$*/
+
+
 define('HSIMGSTOREDIR',"/m23/data+scripts/distr/halfSister/");
 define('HSIMGHTTPDIR',"/distr/halfSister/");
 
@@ -984,8 +990,8 @@ function HS_pkgDeinstall($packages)
 **/
 function HS_wrapperReturn($sendCommandExecutionStatus = false)
 {
-	$params = '';
 	$amount = func_num_args();
+	$params = '';
 	for($i = 0; $i < $amount; $i++)
 		$params .= ' '.func_get_arg($i);
 

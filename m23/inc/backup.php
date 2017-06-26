@@ -1,12 +1,9 @@
 <?php
+
 /*$mdocInfo
  Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
  Description: functions for controling BackupPC
 $*/
-
-
-
-
 
 /**
 **name BACKUP_showClientSettings($client)

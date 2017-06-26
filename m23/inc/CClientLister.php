@@ -1,5 +1,10 @@
 <?
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Class for generating lists of clients.
+$*/
+
 class CClientLister extends CChecks
 {
 	const ORDERBY_STATUS = 'clients.status';
@@ -405,7 +410,7 @@ class CClientLister extends CChecks
 			$this->setAscending(false);
 		}
 
-		return('<center>'.$$i18n.'<br>'.constant($htmlNameASC).constant($htmlNameDESC).'</center>');
+		return('<center>'.${$i18n}.'<br>'.constant($htmlNameASC).constant($htmlNameDESC).'</center>');
 	}
 
 
@@ -897,6 +902,26 @@ class CClientLister extends CChecks
 		$line=mysqli_fetch_array($result);
 
 		return( $line[0] > 0 );
+	}
+
+
+
+
+
+/**
+**name CClientLister::getAllAutoUpdateClientNames()
+**description Gets an array with the clients that currently run autoUpdate.
+**returns Associative array with the names of all client that currently run autoUpdate as key and value.
+**/
+	static public function getAllAutoUpdateClientNames()
+	{
+		$out = array();
+		$sql = 'SELECT DISTINCT client FROM clients WHERE autoUpdate_gotJob = 1';
+		$result = DB_query($sql);
+		while ($line = mysqli_fetch_array($result))
+			$out[$line[0]] = $line[0];
+
+		return($out);
 	}
 
 

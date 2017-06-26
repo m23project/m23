@@ -1,5 +1,10 @@
 <?php
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: GUI class for building pools from client packages.
+$*/
+
 class CPoolFromClientGUI extends CPoolGUI
 {
 	protected $importPoolName = null;

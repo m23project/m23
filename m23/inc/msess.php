@@ -1,8 +1,8 @@
 <?php
 function MSESS_load()
 {
-	$_SESSION = unserialize(urldecode($_POST['MSESS_variables']);
-};
+	$_SESSION = unserialize(urldecode(isset($_POST['MSESS_variables']) ? $_POST['MSESS_variables'] : $_POST['MSESS_variables']));
+}
 
 
 function MSESS_save()

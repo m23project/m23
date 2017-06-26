@@ -101,6 +101,8 @@ function DISTR_afterChrootInstall($lang,$pkgid)
 {
 	$serverIP=getServerIP();
 
+	$additionalPackages = '';
+
 	include("/m23/inc/i18n/".I18N_m23instLanguage($lang)."/m23inst.php");
 	include_once('/m23/inc/client.php');
 	include_once('/m23/inc/sourceslist.php');
@@ -203,15 +205,18 @@ cd /tmp
 	else
 		$ntpPackage="";
 
-
-	if ($clientOptions['release'] == 'jessie')
+	// DebianVersionSpecific
+	if (($clientOptions['release'] == 'jessie') || ($clientOptions['release'] == 'stretch'))
 		$bootloaderPackage = 'grub-pc';
 	else
 		$bootloaderPackage = $clientOptions['bootloader'];
 
+// 	if ($clientOptions['release'] == 'stretch')
+// 		$additionalPackages .= ' sysvinit-core';
+
 	CLCFG_aptGet('install', 'apt-transport-https');
 
-	CLCFG_installBasePackages("powermgmt-base console-common console-data console-tools less screen sed ssh net-tools $ntpPackage parted gawk hdparm dialog locales $bootloaderPackage hwsetup hwdata-knoppix m23-initscripts m23hwscanner m23-skel ". $clientOptions['kernel']);
+	CLCFG_installBasePackages("powermgmt-base console-common console-data console-tools less screen sed ssh net-tools $ntpPackage parted gawk hdparm dialog locales $bootloaderPackage $additionalPackages hwsetup hwdata-knoppix m23-initscripts m23hwscanner m23-skel ". $clientOptions['kernel']);
 	/* =====> */ MSR_statusBarIncCommand(15);
 	
 	if ($clientOptions['release'] == 'lenny')
@@ -258,7 +263,7 @@ cd /tmp
 	CLCFG_dialogInfoBox($I18N_client_installation,$I18N_client_status,$I18N_hardware_detection);
 
 //sets the client's timezone
-	CLCFG_setTimeZone($clientOptions[timeZone]);
+	CLCFG_setTimeZone($clientOptions['timeZone']);
 
 //hardware detection
 	CLCFG_hwdetect();
@@ -280,7 +285,7 @@ rm /debootstrap
 
 \n");
 
-	CLCFG_writeM23fetchjob();
+	CLCFG_writeM23fetchjob($clientOptions['release']);
 
 	CLCFG_writeCrontabm23fetchjobEvery5Minutes($clientParams);
 

@@ -1,5 +1,11 @@
 <?
 
+/*$mdocInfo
+ Author: Hauke Goos-Habermann (HHabermann@pc-kiel.de)
+ Description: Functions for sending mails.
+$*/
+
+
 include_once('mailConf.php');
 
 
@@ -364,6 +370,7 @@ function MAIL_getGpgKeyList($listSecretKeys = false)
 
 	$nr=0;
 	$keyNr = 0;
+	$tmp = NULL;
 
 	//Run thru the lines
 	foreach($lines as $line)
@@ -382,11 +389,17 @@ function MAIL_getGpgKeyList($listSecretKeys = false)
 
 				//If it is not "uid" it is a key
 				if ($search != "uid")
+				{
+					if (!is_array($tmp)) $tmp = array();
 					//Store the key with key strength, key ID and expiration date
 					$tmp[$nr]['key'][$keyNr++] = $line;
+				}
 				else
+				{
+					if (!is_array($tmp)) $tmp = array();
 					//Store the user ID of this key
 					$tmp[$nr]['uid'] = $line;
+				}
 				break;
 			}
 		}
