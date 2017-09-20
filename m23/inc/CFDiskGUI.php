@@ -1360,6 +1360,8 @@ class CFDiskGUI extends CFDiskBasic
 		if (stristr($fsOrType,'jfs')) return('#E77911');
 		if (stristr($fsOrType,'ufs')) return('#FF0000');
 		if (stristr($fsOrType,'xfs')) return('#A742C3');
+		// FAT*
+		if (stristr($fsOrType,'fat')) return('#9D2764');
 	}
 
 
@@ -1564,8 +1566,7 @@ class CFDiskGUI extends CFDiskBasic
 				{
 					echo("	<tr>
 								<td>$I18N_delete</td>
-								<td>".$step['dev'].
-								$step['pPart']."</td>
+								<td>".$this->getDevBypDiskpPart($step['dev'],$step['pPart'])."</td>
 								<td></td>
 							</tr>");
 					break;
@@ -1585,7 +1586,7 @@ class CFDiskGUI extends CFDiskBasic
 				{
 					echo("	<tr>
 								<td>$I18N_set_bootflag</td>
-								<td>".$step['dev'].$step['pPart']."</td>
+								<td>".$this->getDevBypDiskpPart($step['dev'],$step['pPart'])."</td>
 								<td></td>
 							</tr>");
 					break;

@@ -250,6 +250,16 @@ class CFDiskBasic extends CFDiskIO
 **/
 	public function getMknodCommand($dev, $genAll = false)
 	{
+		if (strpos($dev,"nvme0") !== false)
+		{
+			$out = "; mknod /dev/nvme0 c 10 58 2> /dev/null; mknod /dev/nvme0n1 b 259 0 2> /dev/null";
+
+			for ($i = 1; $i < 10; $i++)
+				$out .= "; mknod /dev/nvme0n1p$i b 259 $i 2> /dev/null";
+
+			return($out);
+		}
+	
 		$this->getpDiskAndpPartFromDev($dev, $pDisk, $pPart);
 		// Get the partition number or 0, if the disk is given
 		if ($pPart === false)
@@ -543,6 +553,7 @@ class CFDiskBasic extends CFDiskIO
 			return(false);
 
 		$pPart = $this->virtualAddPartition($vDisk, $start, $end, $type);
+		print("<h2>createPartition(".serialize($pPart)."</h2>");
 
 		// Add creation and (maybe) setting of the boot flag
 		$this->createPartitionJob($dev, $start, $end, $type, $pPart);
@@ -565,8 +576,8 @@ class CFDiskBasic extends CFDiskIO
 	public function createUEFIPartition($dev)
 	{
 		$pPart = $this->createPartition($dev, CFDiskIO::EFIBOOT_PART_START, CFDiskIO::EFIBOOT_PART_END, CFDiskIO::PT_EFIBOOT, true);
-		$this->formatPartition($dev.$pPart, CFDiskIO::PT_EFIBOOT);
-		$this->setEFIBootPartDev($dev.$pPart);
+		$this->formatPartition($this->getDevBypDiskpPart($dev, $pPart), CFDiskIO::PT_EFIBOOT);
+		$this->setEFIBootPartDev($this->getDevBypDiskpPart($dev, $pPart));
 		return($pPart);
 	}
 
@@ -695,6 +706,7 @@ class CFDiskBasic extends CFDiskIO
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 		$this->dev2VDiskVPart($dev, $vDisk, $vPart);
+		print("<h3>dev2VDiskVPart($dev, ".serialize($vDisk).", ".serialize($vPart)."</h3>");
 
 		// Check, if it is NOT a RAID or in case of a RAID, if its parts are complete
 		if (!$this->isRaidComplete($vDisk))
@@ -759,7 +771,7 @@ class CFDiskBasic extends CFDiskIO
 	{
 		// Create the partition and get the installation partition device string
 		$pPart = $this->createPartition($diskDev, $instStart, $instEnd, CFDiskIO::PT_PRIMARY, true);
-		$instPartDev = $diskDev.$pPart;
+		$instPartDev = $this->getDevBypDiskpPart($diskDev, $pPart);
 		
 		$this->showMessages();
 
@@ -783,7 +795,9 @@ class CFDiskBasic extends CFDiskIO
 	{
 		// Create the partition and get the swap partition device string
 		$pPart = $this->createPartition($diskDev, $swapStart, $swapEnd, CFDiskIO::PT_PRIMARY);
-		$swapPartDev = $diskDev.$pPart;
+		print("<h1>getDevBypDiskpPart($diskDev, $pPart);</h1>");
+		
+		$swapPartDev = $this->getDevBypDiskpPart($diskDev, $pPart);
 
 		// Format it and save the swap partition device string in the client
 		$this->formatPartition($swapPartDev, 'linux-swap');
@@ -817,16 +831,16 @@ class CFDiskBasic extends CFDiskIO
 			$diskSize -= CFDiskIO::EFIBOOT_PART_END;
 
 			// Generate the device names for installation and swap
-			$instPartDev = $diskDev."2";
-			$swapPartDev = $diskDev."3";
+			$instPartDev = $this->getDevBypDiskpPart($diskDev, 2);
+			$swapPartDev = $this->getDevBypDiskpPart($diskDev, 3);
 			
 			$instStart = CFDiskIO::EFIBOOT_PART_END + 2;
 		}
 		else
 		{
 			// Generate the device names for installation and swap
-			$instPartDev = $diskDev."1";
-			$swapPartDev = $diskDev."2";
+			$instPartDev = $this->getDevBypDiskpPart($diskDev, 1);
+			$swapPartDev = $this->getDevBypDiskpPart($diskDev, 2);
 
 			// Leave space for grub and for aligning the partition
 			$instStart = 2;
@@ -995,7 +1009,7 @@ class CFDiskBasic extends CFDiskIO
 		$this->dev2VDiskVPart($dev, $vDisk, $vPart);
 		for ($devNr = 1; $devNr <= 4; $devNr++)
 			if ($this->devNrExists($vDisk, $devNr))
-				$this->deletePartition($dev.$devNr, true, true);
+				$this->deletePartition($this->getDevBypDiskpPart($dev, $devNr), true, true);
 	}
 
 

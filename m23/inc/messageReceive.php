@@ -1018,9 +1018,11 @@ function MSR_partHwDataCommand()
 **/
 function MSR_importPartHwData()
 {
+//	SERVER_putFileContents('/tmp/ryzen.hwdata', $_POST['data'], 777);
+
 	$data = explodeAssoc('###',urldecode($_POST['data']));
 	
-// 	print_r($data);
+// 	print_r2($data);
 
 	$clientName = CLIENT_getClientName();
 	CHECK_FW(CC_clientname, $clientName);

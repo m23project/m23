@@ -484,8 +484,14 @@ function DHCP_activateBoot($clientName, $on, $bootType = 'x')
 	//(De)Activate network booting on the VM
 	VM_activateNetboot($clientName, $on);
 
-	//Check if the current state is different from the desired state
-	if (DHCP_isNetworkBootingActive($clientName) && !HELPER_isExecutedOnUCS())
+	/*
+		Check if the current state is different from the desired state
+
+		!!!DHCP_isNetworkBootingActive will return wrong status when called on UCS!!!
+
+		=> Don't return, if run on UCS
+	*/
+	if ((DHCP_isNetworkBootingActive($clientName) == $on) && !HELPER_isExecutedOnUCS())
 		return(false);
 
 

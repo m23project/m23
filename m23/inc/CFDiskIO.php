@@ -286,7 +286,6 @@ class CFDiskIO extends CClient
 		foreach ($this->wantedPartitioning as $disk)
 			if (isset($disk['dev']))
 				$out[$disk['dev']] = $disk['dev'];
-
 		return($out);
 	}
 
@@ -340,9 +339,13 @@ class CFDiskIO extends CClient
 **/
 	public function getpDiskAndpPartFromDev($dev, &$pDisk, &$pPart, $ignoreMD = false)
 	{
+// 		print("<h2>INgetpDiskAndpPartFromDev($dev)</h2>");
+	
 		/*
 			$dev = '/dev/sda1' => $pDisk = '/dev/sda', $pPart = 1;
 			$dev = '/dev/md0' => $pDisk = '/dev/md0', $pPart = false;
+			$dev = '/dev/nvme0n1' => $pDisk = '/dev/nvme0n1', $pPart = false;
+			$dev = '/dev/nvme0n1p1' => $pDisk = '/dev/nvme0n1', $pPart = 1;
 		*/
 		
 		// Check, if it is a MD (where the number is part of the dev and not a partition)
@@ -350,6 +353,25 @@ class CFDiskIO extends CClient
 		{
 			$pDisk = $dev;
 			$pPart = false;
+		}
+		elseif (strpos($dev,"nvme") !== false)
+		{
+			// Check, if it is the whole NVMe disk
+			if (preg_match('/nvme[0-9]+n[1-9]+$/', $dev) === 1)
+			{
+				$pDisk = $dev;
+				$pPart = false;
+			}
+			// Check, if it's an NVMe partition
+			elseif (preg_match('/nvme[0-9]+n[1-9]+p[1-9]+$/', $dev) === 1)
+			{
+				// $dev = '/dev/nvme0n1p1'
+				
+				// Remove /dev/nvme0n1p
+				$pDisk = preg_replace('°p[0-9]+$°', '', $dev);
+				$pPart = preg_replace('°.*/nvme[0-9]+n[1-9]+p°', '', $dev);
+// 				print("<h2>OUTgetpDiskAndpPartFromDev($dev, &$pDisk, &$pPart</h2>");
+			}
 		}
 		else
 		{
@@ -376,7 +398,7 @@ class CFDiskIO extends CClient
 **/
 	public function isDevValidDiskPartitionOrRaid($dev)
 	{
-		return(CHECK_FW(true, CC_deviceNameOrPartition, $dev) || $this->isDevRaid($dev));
+		return(CHECK_FW(true, CC_deviceNameOrPartition, $dev) || $this->isDevRaid($dev) || $this->isNVMe($dev));
 	}
 
 
@@ -398,7 +420,6 @@ class CFDiskIO extends CClient
 			return(false);
 
 		$this->getpDiskAndpPartFromDev($dev, $diskDev, $partNr);
-		
 
 		for ($vDisk = 0; $vDisk < $this->getDiskAmount(); $vDisk++)
 		{
@@ -910,6 +931,21 @@ class CFDiskIO extends CClient
 
 
 /**
+**name CFDiskIO::isNVMe($dev)
+**description Checks, if a device string is an NVMe.
+**parameter dev: The device (e.g. /dev/sda2 or /dev/md0).
+**returns true, if the device string is an NVMe, otherwise false.
+**/
+	protected function isNVMe($dev)
+	{
+		return(strpos($dev, '/dev/nvme') !== false);
+	}
+
+
+
+
+
+/**
 **name CFDiskIO::setDiskPartLockedByRaid($vDisk, $vPart, $lock)
 **description Sets or unsets the RAID lock of a partition or disk.
 **parameter vDisk: Internal disk number (for accessing the disk information in the array).
@@ -1152,7 +1188,30 @@ class CFDiskIO extends CClient
 **/
 	protected function getPartitionDev($vDisk, $vPart, $return = null)
 	{
-		return($this->getDiskDev($vDisk).$this->getPartitionNumber($vDisk, $vPart, $return));
+		$diskDev = $this->getDiskDev($vDisk);
+		
+		if ($this->isNVMe($diskDev))
+			$diskDev .= 'p';
+	
+		return($diskDev.$this->getPartitionNumber($vDisk, $vPart, $return));
+	}
+
+
+
+
+
+/**
+**name CFDiskIO::getDevBypDiskpPart($pDisk, $pPart)
+**description Returns device string with pDisk and partition number correctly combined.
+**parameter pDisk: Physical disk is written to (e.g. /dev/hda).
+**parameter pPart: Physical partition number (e.g. 1) or false (if there is no number in the dev).
+**returns Device string.
+**/
+	protected function getDevBypDiskpPart($pDisk, $pPart)
+	{
+		if ($this->isNVMe($pDisk) && is_numeric($pPart))
+			$pDisk .= 'p';
+		return($pDisk.$pPart);
 	}
 
 

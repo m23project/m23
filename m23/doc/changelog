@@ -1,5 +1,36 @@
+2017-09-20
+new: CFDiskIO::isNVMe: Checks, if a device string is an NVMe.
+cha: CFDiskIO::getpDiskAndpPartFromDev, CFDiskIO::isDevValidDiskPartitionOrRaid, CFDiskIO::getPartitionDev: Now have support for NVMes.
+cha: CFDiskGUI::getHTMLColorForFilesystemOrType: Now has dummy color for FAT.
+new: CFDiskIO::getDevBypDiskpPart: Returns device string with pDisk and partition number correctly combined.
+cha: CFDiskBasic::autoPartitionDisk, CFDiskGUI::listPartJobs, CFDiskBasic::createInstallPartition, CFDiskBasic::createSwapPartition, CFDiskBasic::deleteAllPartitionsOnDisk, CFDiskBasic::createUEFIPartition: Now are using CFDiskIO::getDevBypDiskpPart.
++++++
+2017-09-19
+cha: HWMiniInit.sh: Added loading of USB keyboard module.
+cha: HWMiniInit.sh: Added loading of NVMe module and creation of device nodes.
+cha: createRFSCopyExtraFilesAndDirs: Now copies files from /mdk/client+server/extraRFS into the client's and server's bootimages.
++++++
+2017-09-14
+fix: checkKernelBranch: Labeling of kernel versions corrected.
+fix: mkm23Debs: Added building of m23-mdk-client-server.
++++++
+2017-08-31
+patch 101013: Corrected deactivating of network booting on non-UCS m23 servers.
+fix: DHCP_activateBoot: Corrected deactivating of network booting.
++++++
+2017-07-24
+patch 101008: Network bootimages now enable baseScanner.
+cha: createRFSCopyExtraFilesAndDirs: Now copies m23hwdetect too.
+cha: createRFSBins: Now copies kmod too.
+fix: addBaseScanner: Now checks for modinfo in /bin too (needed for run in network bootimage).
++++++
+2017-07-11
+patch 101006: lightdm configuration to allow shutdown by normal users.
+new: CLCFG_addPAMtoDM: Adds PAM modules (if present) to the pam.d configuration files.
+cha: CLCFG_installLightDM, CLCFG_installMintDM: Added call to CLCFG_addPAMtoDM.
++++++
 2017-06-27
-patch: Test procedure improvements (documentation + script).
+patch 101005: Test procedure improvements (documentation + script).
 cha: m23admin-offline-copy: Additional SQL dumps added.
 cha: quickbuild.sh: Now creates Packages* for m23-ucs-extra in its separated directory.
 new: addLocalm23ServerRepository: Adds local test repository for m23 server packages to the test machine.

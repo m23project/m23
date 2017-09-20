@@ -10,6 +10,28 @@ $*/
 
 
 /**
+**name CLCFG_addPAMtoDM($dmFile)
+**description Adds PAM modules (if present) to the pam.d configuration files.
+**parameter dmFile: Name of the login manager pam.d config file.
+**/
+function CLCFG_addPAMtoDM($dmFile)
+{
+	echo('
+	for lib in pam_loginuid.so pam_systemd.so
+	do
+		if [ $(find /lib | grep -c $lib) -gt 0 ]
+		then
+			echo "session required $lib" >> /etc/pam.d/'.$dmFile.'
+		fi
+	done
+	');
+}
+
+
+
+
+
+/**
 **name CLCFG_disableSudoRootLogin()
 **description Disables getting root rights of normal users via sudo.
 **/
@@ -190,6 +212,8 @@ IncludeAll=false
 fi
 
 sed -i \"s/Session=.*/Session=$dmrcSession/\" /etc/skel/.dmrc\n");
+
+	CLCFG_addPAMtoDM('mdm');
 }
 
 
@@ -288,6 +312,8 @@ allow-guest=false
 user-session=$session
 greeter-session=".$greeters[$session]."$addLines\" > /etc/lightdm/lightdm.conf
 ");
+
+	CLCFG_addPAMtoDM('lightdm');
 }
 
 

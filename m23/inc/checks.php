@@ -398,6 +398,17 @@ function CHECK_FW()
 **/
 function CHECK_deviceName($devName, $partition, $diskOrPartition = false, $raidAllowed = false)
 {
+	print("<h3>CHECK_deviceName($devName, ".serialize($partition).", ".serialize($diskOrPartition).", ".serialize($raidAllowed)."</h3>");
+	
+	if (strpos($devName,"nvme") !== false)
+	{
+		// Strict checking for partition
+		if ($partition && !$diskOrPartition)
+			return(preg_match('/nvme[0-9]+n[1-9]+p[1-9]+$/', $devName) === 1);
+		else
+			return(preg_match('/nvme[0-9]+n[1-9]+$/', $devName) === 1);
+	}
+
 	// Check for RAID
 	if ($raidAllowed && (strpos($devName, '/dev/md') !== false))
 		return(true);

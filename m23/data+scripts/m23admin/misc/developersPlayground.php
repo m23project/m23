@@ -10,15 +10,24 @@
 	HTML_setPage("developersPlayground");
 	
 	include_once('/m23/inc/distr/debian/packages.php');
-	
-// 	include_once('/m23/inc/autoTest.php');
-	include_once('/m23/inc/CFDiskIO.php');
-	include_once('/m23/inc/CFDiskBasic.php');
-	include_once('/m23/inc/CFDiskGUI.php');
-	include_once('/m23/inc/CFirewall.php');
+
+
+// $_POST['data'] = SERVER_getFileContents('/tmp/ryzen.hwdata');
+// $_SESSION['m23Shared_clientName'] = 'TK-Ryzen';
+// MSR_importPartHwData();
+
+	$clientO = new CClient('TK-Ryzen', CClient::CHECKMODE_MUSTEXIST);
+	print(serialize($clientO->isUEFIActive()));
+
+
+// 	$partition = true;
+// 	$diskOrPartition = false;
+// 	print(serialize(CHECK_deviceName('/dev/nvme02n12p12', $partition, $diskOrPartition)));
+
+// 	CLCFG_addPAMtoDM('lightdm');
 	
 // 	print(serialize(CRON_isEntryPresent($identifier)));
-	print(CLIENT_getNextFreeIp());
+// 	print(CLIENT_getNextFreeIp());
 	exit(0);
 
 // 	print(serialize(CSYSTEMPROXY_getAptGetProxyParamter()));
