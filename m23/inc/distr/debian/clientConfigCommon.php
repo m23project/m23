@@ -214,6 +214,12 @@ fi
 sed -i \"s/Session=.*/Session=$dmrcSession/\" /etc/skel/.dmrc\n");
 
 	CLCFG_addPAMtoDM('mdm');
+
+	// Disable CPU intensive fading, background changing only every 5 minutes
+	echo(
+		EDIT_setOption('/usr/share/mdm/html-themes/Mint-X/slideshow.conf', 'interval_seconds', '300')."\n".
+		EDIT_setOption('/usr/share/mdm/html-themes/Mint-X/slideshow.conf', 'fade_seconds', '0')."\n"
+	);
 }
 
 
@@ -1519,8 +1525,13 @@ function CLCFG_efi($CFDiskIOO)
 	// Add entry in fstab
 	echo("
 		efiBootID=`blkid $EFIBootPartDev | sed 's/ /\\n/g' | grep ^UUID | cut -d'\"' -f2`
-		
-		echo \"UUID=\$efiBootID /boot/efi vfat defaults 0  1\" >> /etc/fstab
+
+		# Remove fat32 EFI partition found by m23hwscanner
+		grep -v '$EFIBootPartDev' /etc/fstab > /tmp/fstab
+
+		# Add it with UUID and correct mout path
+		echo \"UUID=\$efiBootID /boot/efi vfat defaults 0  1\" >> /tmp/fstab
+		cat /tmp/fstab > /etc/fstab
 
 		fsck -y $EFIBootPartDev
 
@@ -2286,11 +2297,14 @@ then
 	chmod +x /bin/usleep
 fi
 
-if /sbin/hwsetup -p
+if [ $(lsmod | grep usbnet -c) -eq 0 ]
 then
-	".sendClientLogStatus("hardware detection",true)."
-else
-	".sendClientLogStatus("hardware detection",false,true)."
+	if /sbin/hwsetup -p
+	then
+		".sendClientLogStatus("hardware detection",true)."
+	else
+		".sendClientLogStatus("hardware detection",false,true)."
+	fi
 fi
 \n
 ");
@@ -2510,8 +2524,11 @@ chown root /root/.ssh/authorized_keys
 chgrp root /root/.ssh/authorized_keys
 
 \n
-".EDIT_replace("/etc/ssh/sshd_config", "ChallengeResponseAuthentication no", "ChallengeResponseAuthentication yes","g"));
-
+".EDIT_replace("/etc/ssh/sshd_config", "ChallengeResponseAuthentication no", "ChallengeResponseAuthentication yes","g")."
+".EDIT_commentoutAll('/etc/ssh/sshd_config', 'PermitRootLogin', '#')."
+".EDIT_appendToFile('/etc/ssh/sshd_config', 'PermitRootLogin without-password')."
+".EDIT_commentoutAll('/etc/ssh/sshd_config', 'PubkeyAcceptedKeyTypes', '#')."
+".EDIT_appendToFile('/etc/ssh/sshd_config', 'PubkeyAcceptedKeyTypes=+ssh-dss'));
 };
 
 

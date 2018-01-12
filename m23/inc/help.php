@@ -91,7 +91,7 @@ function HELP_getHelp($topic,$language="",$fileName="",$latex=false)
 	if ($latex)
 		$out="";
 	else	
-		$out="<br>
+		$out="<br><a name=\"m23helpBox\"></a>
 	<table class=\"helptable\" align=\"left\" border=\"0\" cellspacing=\"5\" id=\"ID_helpBox\">
 ";
 

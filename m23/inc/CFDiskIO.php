@@ -3106,7 +3106,7 @@ class CFDiskIO extends CClient
 				{
 					// No, we haven't a RAID
 					for ($vPart = 0; $vPart < $this->getPartAmount($vDisk); $vPart++)
-						if (($this->getPartitionFileSystem($vDisk, $vPart) != $excludeType) && ((0 == count($includeTypes)) || (in_array( $this->getPartitionFileSystem($vDisk, $vPart), $includeTypes))))
+						if ((empty($excludeType) || ($this->getPartitionFileSystem($vDisk, $vPart) != $excludeType)) && ((0 == count($includeTypes)) || (in_array( $this->getPartitionFileSystem($vDisk, $vPart), $includeTypes))))
 						{
 							// Check each partition if it isn't used for a RAID and list it too, if all drives should be scanned
 							if ((! $this->isDiskOrPartLockedByRaid($vDisk, $vPart)) || (!$onlyOneDev))
@@ -3346,6 +3346,9 @@ class CFDiskIO extends CClient
 
 		$clientOptions = CLIENT_getAllAskingOptions();
 
+		# Make sure the NVMe device nodes are present
+		echo($this->getNVMeMknodCommand());
+
 		// Check, if there is the old fstab entry in the client's options
 		if (isset($clientOptions['fstab']))
 		{
@@ -3542,6 +3545,91 @@ class CFDiskIO extends CClient
 			$partType = CFDiskIO::PT_EFI;
 
 		return($unchangedPartType);
+	}
+
+
+
+
+
+/**
+**name CFDiskIO::getNVMeMknodCommand()
+**description Generates the mknod commands for creating the NVMe devices.
+**returns mknod commands for creating the NVMe devices.
+**/
+	public function getNVMeMknodCommand()
+	{
+		return("\ntrue".$this->getMknodCommand("nvme0")."\n");
+	}
+
+
+
+
+
+/**
+**name CFDiskIO::getMknodCommand($dev)
+**description Generates the mknod command for a given /dev/sdX(Y) device (disk or partition).
+**parameter dev: The device (e.g. /dev/sda5) to created the mknod command for.
+**returns mknod command with the parameter matching the given /dev/sdX(Y).
+**/
+	public function getMknodCommand($dev, $genAll = false)
+	{
+		if (strpos($dev,"nvme0") !== false)
+		{
+			$out = "; mknod /dev/nvme0 c 10 58 2> /dev/null; mknod /dev/nvme0n1 b 259 0 2> /dev/null";
+
+			for ($i = 1; $i < 10; $i++)
+				$out .= "; mknod /dev/nvme0n1p$i b 259 $i 2> /dev/null";
+
+			return($out);
+		}
+	
+		$this->getpDiskAndpPartFromDev($dev, $pDisk, $pPart);
+		// Get the partition number or 0, if the disk is given
+		if ($pPart === false)
+			$pPart = 0;
+	
+		// e.g. sda from /dev/sda
+		$pPartPure = basename($pDisk);
+	
+		// Get the ASCII number of the disk device character (e.g. sda => 'a' => 97)
+		$ord = ord($pPartPure{2});
+	
+		// sda ... sdp
+		if (($ord >= 97) && ($ord <= 112))
+		{
+			$minor = $pPart + ($ord - 97) * 16;
+			$major = 8;
+		}
+		// sdq ... sdz
+		else
+		{
+			$minor = $pPart + ($ord - 113) * 16;
+			$major = 65;
+		}
+
+		if ($minor < 0)
+			return('');
+
+		if ($genAll)
+		{
+			$out = '';
+			$minorStart = $minor - $pPart;
+			$minorEnd = $minorStart + 16;
+
+			$pPartI = 1;
+			for ($minor = $minorStart; $minor < $minorEnd; $minor++)
+			{
+				$out .= "; mknod /dev/$pPartPure$pPartI b $major $minor 2> /dev/null";
+				$pPartI++;
+			}
+
+			return($out);
+		}
+		else
+		{
+			$devPure = basename($dev);
+			return("; mknod /dev/$devPure b $major $minor 2> /dev/null");
+		}
 	}
 
 

@@ -18,11 +18,24 @@ if ($sID !== false)
 {
 	CLIENT_DETAILS_beginCategory($I18N_clientRealTimeStatus, "realTimeStatus");
 	echo('<td align="center">');
-		HTML_liveLogArea('LLA_clientLiveLog',80,25,'clientLiveLog.php?client='.$_GET['client']);
-		echo(LLA_clientLiveLog.'<a target="_blank" href="clientLiveLogComplete.php?client='.$_GET['client'].'">&gt;&gt; '.$I18N_showCompleteLiveLogInNewWindows.' &lt;&lt;</a><br>');
+		if (!SERVER_isLiveLogDisabled())
+		{
+			HTML_liveLogArea('LLA_clientLiveLog',80,25,'clientLiveLog.php?client='.$_GET['client']);
+			echo(LLA_clientLiveLog.'<a target="_blank" href="clientLiveLogComplete.php?client='.$_GET['client'].'">&gt;&gt; '.$I18N_showCompleteLiveLogInNewWindows.' &lt;&lt;</a><br>');
+		}
 		HTML_showStatusBar($sID, 500, 50);
 	echo('</td>');
 	CLIENT_DETAILS_endCategory();
+}
+
+if ($params['status'] == STATUS_CRITICAL)
+{
+        //CLIENT_DETAILS_beginCategory($I18N_client_log, "liveLog");
+        echo("<br>
+<a name=\"clientLog\"></a>
+<span class=\"title\">$I18N_client_log</span>");
+        CLIENT_showLastLogError($params['client']);
+        //CLIENT_DETAILS_endCategory();
 }
 
 CLIENT_DETAILS_beginCategory($I18N_objectStorageList, 'objectStorageManager');

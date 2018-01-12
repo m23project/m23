@@ -60,6 +60,7 @@ define('UBUNTUDESKTOP_GNOME_1604', 4007);
 define('UBUNTUDESKTOP_UBUNTUSTUDIO_1604', 4008);
 define('UBUNTUDESKTOP_XUBUNTU_1604', 4009);
 define('UBUNTUDESKTOP_TRINITY_MINIMAL_1604', 4010);
+define('UBUNTUDESKTOP_UNITY3D_MINIMAL_1604', 4011);
 
 // Linux Mint 18
 define('MINT18_KDE',5001);
@@ -128,16 +129,18 @@ fi
 
 
 /**
-**name UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $normalScrollBars, $addDesktopIcons, $removeUbuntuOne)
-**description Installs the Unity desktop.
+**name UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $normalScrollBars, $addDesktopIcons, $removeUbuntuOne, $removeMono = false, $installLangPacks = true)
+**description Installs a desktop environment.
 **parameter desktop: Desktop constant.
 **parameter globalMenu: If set to true Unity's global menus are activated otherwise deactivated.
 **parameter normalButtonPosition: If set to true the window buttons are shown on the top right instead of top left.
 **parameter normalScrollBars: If set to true the normal scroll bars are usesed instead of the Unity bars.
 **parameter addDesktopIcons: If set to true the home, network, volumes and trash icons are shown on the desktop.
 **parameter removeUbuntuOne: If set to true Ubuntu One is removed.
+**parameter removeMono: If set to true Mono is removed.
+**parameter installLangPacks: If set to true language packs will be installed.
 **/
-function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $normalScrollBars, $addDesktopIcons, $removeUbuntuOne, $removeMono = false)
+function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $normalScrollBars, $addDesktopIcons, $removeUbuntuOne, $removeMono = false, $installLangPacks = true)
 {
 	$lang = getClientLanguage();
 
@@ -292,6 +295,13 @@ function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $no
 			$dialogHeader = $I18N_installing_unity3d;
 		break;
 
+		case UBUNTUDESKTOP_UNITY3D_MINIMAL_1604:
+			$desktopPackages = 'unity-greeter language-pack-gnome-de-base';
+			CLCFG_aptGet("install", '--no-install-recommends ubuntu-desktop');
+			$displayManager = NO_EXTRA_DM;
+			$dialogHeader = $I18N_installing_unity3d;
+		break;
+
 		case UBUNTUDESKTOP_MATE_1604:
 			$desktopPackages = 'ubuntu-mate-desktop mate-desktop-environment mate-session-manager ubuntu-mate-artwork ubuntu-mate-lightdm-theme';
 			$displayManager = UBUNTDM_LIGHTDM;
@@ -442,7 +452,8 @@ libvirtodbc0 libvirtodbc0/register-odbc-driver boolean true');
 		}
 	}
 
-	UBUNTU_installLanguagePacks($lang);
+	if ($installLangPacks)
+		UBUNTU_installLanguagePacks($lang);
 	/* =====> */ MSR_statusBarIncCommand(15);
 
 	//(De)Activates the global menus

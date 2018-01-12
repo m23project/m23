@@ -20,14 +20,12 @@
 	<div class="subtable_shadow">
 	<table align="center" class="subtable" cellspacing="10">
 		<tr>
-			<?= $disabledByUCSBegin ?>
 			<td align="center">
 				<a href="index.php?page=update">
 					<img src="/gfx/update.png" border="0"><br>
 					<?PHP echo($I18N_update);?>
 				</a>
 			</td>
-			<?= $disabledByUCSEnd ?>
 			<td align="center">
 				<a href="index.php?page=htaccess">
 					<img src="/gfx/admin.png" border="0"><br>
@@ -44,6 +42,12 @@
 				<a href="index.php?page=serverStatus">
 					<img src="/gfx/serverStatus.png" border="0"><br>
 					<?PHP echo($I18N_serverStatus);?>
+				</a>
+			</td>
+			<td align="center">
+				<a href="index.php?page=serverFeatures">
+					<img src="/gfx/settings.png" border="0"><br>
+					<?PHP echo($I18N_serverFeatures);?>
 				</a>
 			</td>
 		</tr>
@@ -76,7 +80,7 @@
 			</td>
 			<td align="center">
 				<a href="index.php?page=ldapSettings">
-					<img src="/gfx/settings.png" border="0"><br>
+					<img src="/gfx/users.png" border="0"><br>
 					LDAP
 				</a>
 			</td>
@@ -193,6 +197,19 @@ if (HTML_imgSwitch('SW_img', '/gfx/SSLCertificateCheckDisabled-32.png', '/gfx/SS
 				</a>
 			</td>
 		</tr>
+<?php
+if (is_dir('/m23/data+scripts/m23admin/xhprof'))
+echo('
+		<tr>
+			<td align="center">
+				<a href="index.php?page=xhprof">
+					<img src="/gfx/xhprof.png" border="0"><br>
+					XHProf
+				</a>
+			</td>
+		</tr>
+');
+?>
 	</table>
 	</div>
 </td>

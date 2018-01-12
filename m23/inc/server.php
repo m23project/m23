@@ -94,6 +94,141 @@ function SERVER_isSSLCertCheckDisabled()
 
 
 /**
+**name SERVER_isLiveLogDisabled()
+**description Determines, if live logging should be disabled globally for all clients.
+**returns: true, if live logging should be disabled globally for all clients otherwise false.
+**/
+function SERVER_isLiveLogDisabled()
+{
+	return(SERVER_getServerBoolSetting('LiveLogDisabled'));
+}
+
+
+
+
+
+/**
+**name SERVER_setLiveLogDisabled()
+**description Sets/Unsets live disabling of logging globally for all clients.
+**parameter disabled: true, if live logging should be disabled globally for all clients otherwise false.
+**/
+function SERVER_setLiveLogDisabled($disabled)
+{
+	SERVER_setServerBoolSetting('LiveLogDisabled', $disabled);
+}
+
+
+
+
+
+/**
+**name SERVER_isUpdatePackageInfosDisabled()
+**description Determines, if the updatePackageInfos job should NOT be added to any clients.
+**returns: true, if the updatePackageInfos job should NOT be added to any clients otherwise false.
+**/
+function SERVER_isUpdatePackageInfosDisabled()
+{
+	return(SERVER_getServerBoolSetting('UpdatePackageInfosDisabled'));
+}
+
+
+
+
+
+/**
+**name SERVER_setUpdatePackageInfosDisabled()
+**description Sets/Unsets if the updatePackageInfos job should NOT be added to any clients.
+**parameter disabled: true, if the updatePackageInfos job should NOT be added to any clients otherwise false.
+**/
+function SERVER_setUpdatePackageInfosDisabled($disabled)
+{
+	SERVER_setServerBoolSetting('UpdatePackageInfosDisabled', $disabled);
+}
+
+
+
+
+
+/**
+**name SERVER_isClientOnlineStatusEnabled()
+**description Determines, if the online status of all clients should be detected and shown.
+**returns: true, if the online status of all clients should be detected and shown.
+**/
+function SERVER_isClientOnlineStatusEnabled()
+{
+	return(SERVER_getServerBoolSetting('ClientOnlineStatusEnabled'));
+}
+
+
+
+
+
+/**
+**name SERVER_startUpdateClientOnlineInDBBackgroundJob()
+**description Starts a background job to update the online status of the clients cyclically.
+**/
+function SERVER_startUpdateClientOnlineInDBBackgroundJob()
+{
+	if (SERVER_isClientOnlineStatusEnabled() && (!SERVER_runningInBackground('CLIENT_updateClientOnlineInDB')))
+		SERVER_runInBackground('CLIENT_updateClientOnlineInDB', '/m23/bin/m23cli.php updateClientOnlineInDB');
+}
+
+
+
+
+
+/**
+**name SERVER_setClientOnlineStatusEnabled()
+**description Sets/Unsets if the online status of all clients should be detected and shown.
+**parameter active: true, if the online status of all clients should be detected and shown.
+**/
+function SERVER_setClientOnlineStatusEnabled($active)
+{
+	// Kill a job, if it should not run
+	if (!$active && SERVER_runningInBackground('CLIENT_updateClientOnlineInDB'))
+		SERVER_killBackgroundJob('CLIENT_updateClientOnlineInDB');
+
+	// Start it (maybe)
+	SERVER_startUpdateClientOnlineInDBBackgroundJob();
+
+	SERVER_setServerBoolSetting('ClientOnlineStatusEnabled', $active);
+}
+
+
+
+
+
+/**
+**name SERVER_setServerBoolSetting($var, $val)
+**description Sets a bool value of a server setting.
+**parameter: var: Name of the setting.
+**parameter: val: true or false.
+**/
+function SERVER_setServerBoolSetting($var, $val)
+{
+	RMV_set4IP($var, ($val ? 1 : 0), 'm23ServerSetting');
+}
+
+
+
+
+
+/**
+**name SERVER_getServerBoolSetting($var)
+**description Gets the boolean value of a server setting.
+**parameter: var: Name of the setting.
+**returns: true or false.
+**/
+function SERVER_getServerBoolSetting($var)
+{
+	return(RMV_exists4IP($var, 'm23ServerSetting') && (RMV_get4IP($var, 'm23ServerSetting') == 1));
+}
+
+
+
+
+
+/**
 **name SERVER_setServerSetting($var, $val)
 **description Sets the value of a server setting.
 **parameter: var: Name of the setting.

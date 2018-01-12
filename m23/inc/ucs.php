@@ -65,6 +65,312 @@ function UCS_delUCSClientFromm23ClientPreferences($client)
 
 
 /**
+**name UCS_createNetworkObject($networkName, $netmaskBits, $networkIP)
+**description Creates a new network object in the UCS LDAP:
+**parameter networkName: Name of the network object to create.
+**parameter netmaskBits: Amount of set bits in the netmask.
+**parameter networkIP: Network IP (ends with .0)
+**/
+function UCS_createNetworkObject($networkName, $netmaskBits, $networkIP)
+{
+	$cmds = 'eval "$(ucr shell)"
+
+	udm networks/network create --position "cn=networks,$ldap_base" \
+		--set name="'.$networkName.'" \
+		--set netmask="'.$netmaskBits.'" \
+		--set network="'.$networkIP.'"
+	';
+
+	SERVER_runInBackground(uniqid("UCS_createNetworkObject$networkName"), $cmds, 'root', false);
+}
+
+
+
+
+
+/**
+**name UCS_getGenericNetworkName($netmaskBits, $networkIP)
+**description Generates a generic name for a network object in UCS.
+**parameter netmaskBits: Amount of set bits in the netmask.
+**parameter networkIP: Network IP (ends with .0)
+**returns: Generic name for a network object in UCS.
+**/
+function UCS_getGenericNetworkName($netmaskBits, $networkIP)
+{
+	// Make sure the amount of set bits in the netmask is given
+	$netmaskBits = CLIENT_getNetmaskBits($netmaskBits);
+
+	// Build a name from the network IP and the amount of set bits
+	$name = 'm23net-'.str_replace('.', '-', $networkIP).'-'.$netmaskBits;
+	return($name);
+}
+
+
+
+
+
+/**
+**name UCS_ensureNetworkObjectExists($netmaskBits, $networkIP)
+**description Makes sure that the network object exists in the UCS.
+**parameter netmaskBits: Amount of set bits in the netmask.
+**parameter networkIP: Network IP (ends with .0)
+**returns: Generic name for a network object in UCS.
+**/
+function UCS_ensureNetworkObjectExists($netmaskBits, $networkIP)
+{
+	$netmaskBits = CLIENT_getNetmaskBits($netmaskBits);
+
+	// Get the name of the network object
+	$networkName = UCS_getGenericNetworkName($netmaskBits, $networkIP);
+
+	// Create it, if it does not exist
+	if (!UCS_networkObjectExists($networkName))
+		UCS_createNetworkObject($networkName, $netmaskBits, $networkIP);
+
+	return($networkName);
+}
+
+
+
+
+
+/**
+**name UCS_modifyClientIP($client, $ip, $netmask = false)
+**description Modifies the IP of a client in the UCS LDAP.
+**parameter client: Client name or CClient object.
+**parameter ip: The new client's IP address.
+**parameter netmask: Amount of set bits in the netmask or normal netmask.
+**/
+function UCS_modifyClientIP($client, $ip, $netmask = false)
+{
+	// Check, if parameter is a valid object
+	if (is_object($client))
+	{
+		// Object type must be correct too
+		if (get_class($client) == 'CClient')
+		{
+			$mac = $client->getMAC();
+			$client = $client->getClientName();
+		}
+		else
+			die('UCS_modifyClientIP: Unsupported object given!');
+	}
+	else
+	{
+		// Build a new object to get the mac address
+		$CClientO = new CClient($client);
+		$mac = $CClientO->getMAC();
+	}
+
+	$mac = CLIENT_convertMac($mac, ':');
+
+	// Check, if a valid amount of bits is set
+	if ($netmask !== false)
+	{
+		// Get the network IP (ends with .0) from the client's IP and its netmask
+		$networkIP = CLIENT_getSubnet($ip, CLIENT_getNetmaskFromBitAmount($netmask));
+
+		// Get the name of a matching and existing network object
+		$networkName = UCS_ensureNetworkObjectExists($netmask, $networkIP);
+	
+		$networkLine = "\n\t\t--set network=\"cn=$networkName,cn=networks,\$ldap_base\" \\";
+	}
+	else
+		$networkLine = '';
+
+	$cmds = 'eval "$(ucr shell)"
+
+		udm computers/linux modify --dn "cn='.$client.',cn=computers,$ldap_base" \
+		--set ip="'.$ip.'" \
+		--set mac="'.$mac.'" \\'.$networkLine.'
+		--set dhcpEntryZone="cn=$domainname,cn=dhcp,$ldap_base '.$ip.' '.$mac.'"
+';
+
+	SERVER_runInBackground(uniqid("UCS_modifyClientIP$client"), $cmds, 'root', false);
+}
+
+
+
+
+
+/**
+**name UCS_getAllClientNamesLDAP()
+**description Gets all client names stored in the LDAP of the UCS.
+**returns: Array with all client names stored in the LDAP of the UCS.
+**/
+function UCS_getAllClientNamesLDAP()
+{
+	// Get information about all clients and get the lines with the names
+	$cmds = "
+		udm computers/linux list | sed 's/^[[:blank:]]*//' | grep '^name: ' | sed 's/^name: //'
+	";
+
+	$ret = SERVER_runInBackground(uniqid("UCS_getAllClientNamesLDAP"), $cmds, 'root', false);
+
+	// Split the lines into an array and remove empty entries
+	return(array_filter(explode("\n", $ret)));
+}
+
+
+
+
+
+/**
+**name UCS_getUDMInfo($udmModule, $afterLines, $keyWord)
+**description Get information from the UCS's LDAP by udm tool.
+**parameter udmModule: Name of the udm module (eg. networks/network or computers/linux).
+**parameter afterLines: Amount of lines with information after the line containing the keyword.
+**parameter keyWord: Keyword matching the first line to find the block with the wanted information.
+**returns: Associative array with the information.
+**/
+function UCS_getUDMInfo($udmModule, $afterLines, $keyWord)
+{
+	$out = array();
+	
+	// After the line, matching the keyword a given amount of lines with the wanted information are following
+	$cmds = "
+		udm $udmModule list | grep -A$afterLines '$keyWord' | sed 's/^[[:blank:]]*//'
+	";
+
+	$ret = SERVER_runInBackground(uniqid("UCS_getUDMInfo"), $cmds, 'root', false);
+
+	// Run thru the lines of the output
+	foreach (explode("\n", $ret) as $line)
+	{
+		/*
+			Lines start with a property name and are separated by ': ' from the value
+			eg. network: cn=default,cn=networks,dc=test,dc=intranet
+		*/
+		$keyValue = explode(': ', $line, 2);
+
+		// Skip empty keys
+		if (empty($keyValue[0])) continue;
+
+		$out[$keyValue[0]] = $keyValue[1];
+	}
+	
+	return($out);
+}
+
+
+
+
+
+/**
+**name UCS_networkObjectExists($networkName)
+**description Checks, if a network object exists in the UCS.
+**parameter networkName: Network name.
+**returns: true, if a network object exists in the UCS, otherwise false.
+**/
+function UCS_networkObjectExists($networkName)
+{
+	// Get information about the given network
+	$ret = UCS_getNetworkLDAPInfo($networkName);
+
+	// Check, if an array with network information is given back.
+	return(is_array($ret) && (count($ret) > 0));
+}
+
+
+
+
+
+/**
+**name UCS_getNetworkLDAPInfo($client)
+**description Get information about a network stored in the UCS LDAP.
+**parameter networkName: Network name.
+**returns: Associative array with the information about the network.
+**/
+function UCS_getNetworkLDAPInfo($networkName)
+{
+	return(UCS_getUDMInfo('networks/network', 7, $networkName));
+}
+
+
+
+
+
+/**
+**name UCS_getFirstElementFromDN($dn)
+**description Gets the first value of a distinguished name.
+**parameter dn: distinguished name.
+**returns: First value of a distinguished name.
+**/
+function UCS_getFirstElementFromDN($dn)
+{
+	/*
+		Split eg. cn=test,cn=computers,dc=test,dc=intranet into parts separated by ','
+
+		Array
+		(
+			[0] => cn=test
+			[1] => cn=computers
+			[2] => dc=test
+			[3] => dc=intranet
+		)
+	*/
+	$parts = explode(',', $dn);
+
+	/*
+		Split the 1st element into key and value:
+
+		Array
+		(
+			[0] => cn
+			[1] => test
+		)
+	*/
+	$keyValue = explode('=', $parts[0]);
+
+	return($keyValue[1]);
+}
+
+
+
+
+
+/**
+**name UCS_getClientLDAPInfo($client)
+**description Get information about a client stored in the UCS LDAP.
+**parameter client: Client name.
+**returns: Associative array with the information about the client.
+**/
+function UCS_getClientLDAPInfo($client)
+{
+	$out = array();
+
+	// Run thru the lines of the output
+	foreach (UCS_getUDMInfo('computers/linux', 18, "cn=$client,cn=computers") as $key => $value)
+	{
+		switch ($key)
+		{
+			case 'network':
+				$out['networkDN'] = $value;
+
+				// Get the network information by querying the network objects
+				$temp = UCS_getNetworkLDAPInfo($value);
+				$out['network'] = $temp['network'];
+				$out['netmask'] = $temp['netmask'];
+			break;
+
+			case 'DN':
+				$out['client'] = UCS_getFirstElementFromDN($value);
+				$out[$key] = $value;
+			break;
+			
+			default:
+				$out[$key] = $value;
+		}
+	}
+
+	return($out);
+}
+
+
+
+
+
+/**
 **name UCS_addClient($client, $mac, $ip)
 **description Adds a client to the UCS LDAP.
 **parameter client: Client name.

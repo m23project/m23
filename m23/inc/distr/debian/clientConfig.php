@@ -85,11 +85,12 @@ function DEBIAN_desktopInstall($desktop)
 		CLCFG_installDesktopLanguagePackage($lang, true, true);
 
 	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $dialogHeader);
-
+//m23customPatchBegin type=change id=DEBIAN_desktopInstallDisplayManager
 	CLCFG_setDebConfDirect('lightdm shared/default-x-display-manager select lightdm');
 
 	// Install the chosen desktop
 	CLCFG_aptGet("install", "$desktopPackages acpi-support lightdm");
+//m23customPatchEnd id=DEBIAN_desktopInstallDisplayManager
 	/* =====> */ MSR_statusBarIncCommand(100);
 
 	echo("\ndpkg-reconfigure m23-skel\n");

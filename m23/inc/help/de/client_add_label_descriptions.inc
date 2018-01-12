@@ -16,11 +16,17 @@
 
 <li><b>eMail:</b> eMail-Adresse des Benutzers</li>
 <!-- V1.2 --><li><b>$I18N_boottype:</b> Bootstandard für das Booten der Clients über das Netzwerk <!-- 10.3 begin-->
+
+<!-- 18.1 begin-->
+<u>Booten per USB-Stick oder ISO</u>
+Falls Ihr m23-Client nicht per PXE gestartet werden kann, können Sie einen bootfähigen USB-Stick erstellen oder das ISO brennen bzw. in einer virtuellen Maschine verwenden. Weitere Informationen finden Sie im Menü unter <i>"$I18N_makeBootMedia"</i>.
+<!-- 18.1 end-->
+
 <!-- 15.1 begin-->
 <u>Hinweis: Externer DHCP-Server</u>
 <!-- 15.1 end-->Falls Sie m23 mit einem vorhanden DHCP-Server verwenden möchten, lesen Sie bitte folgende Seite: <m23help>externalDHCP</m23help><!-- 10.3 end-->
 <!-- 15.1 begin--><u>Hinweis: UEFI</u>
-Falls Sie Ihren Client über <a href="http://de.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">UEFI</a> starten möchten, wählen Sie <i>"UEFI x86_64"</i> aus. Hierbei wird die Rechnerarchitektur automatisch auf 64 Bit gesetzt, da m23 UEFI nur auf 64-Bit-Systemen unterstützt. Sollte Ihr Rechner kein Netzwerkbooten im UEFI-Modus unterstützen, so können Sie das 64-Bit-Boot-ISO verwenden (zu finden z.B. im Menü unter <i>"$I18N_make_bootcd"</i>).<!-- 15.1 end--></li>
+Falls Sie Ihren Client über <a href="http://de.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">UEFI</a> starten möchten, wählen Sie <i>"UEFI x86_64"</i> aus. Hierbei wird die Rechnerarchitektur automatisch auf 64 Bit gesetzt, da m23 UEFI nur auf 64-Bit-Systemen unterstützt. Sollte Ihr Rechner kein Netzwerkbooten im UEFI-Modus unterstützen, so können Sie das 64-Bit-Boot-ISO verwenden (zu finden z.B. im Menü unter <i>"$I18N_makeBootMedia"</i>).<!-- 15.1 end--></li>
 
 <!-- V1.19 begin--><li><b>$I18N_bootloader:</b> Wählen Sie hier, welchen <a href="http://de.wikipedia.org/wiki/Bootloader" target="_blank">Bootloader/Bootmanager/Urlader</a> Sie zum Starten des Linux-Kernels und evtl. anderen, bereits installierten Betriebssystemen verwenden möchten.
 <!-- V1.20 begin--><u>Hinweis</u><br>

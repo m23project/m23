@@ -127,6 +127,24 @@ define('CC_mountPoint', 'm');
 
 
 
+
+/**
+**name CHECK_ip($ip)
+**description Checks, if an IP is (syntactically) valid.
+**parameter ip: IP to check.
+**returns true, if the IP is valid, otherwise false.
+**/
+function CHECK_ip($ip)
+{
+	$ip2 = long2ip(ip2longSafe($ip));
+	
+	return($ip2 === $ip);
+}
+
+
+
+
+
 /**
 **name CHECK_safeFilename($fileName)
 **description Make sure, the file/directory name is safe and doesn't contain evil characters.
@@ -151,6 +169,8 @@ function CHECK_safeFilename($fileName)
 **/
 function CHECK_text2db($val,$like = false)
 {
+	if (DB_getConnection() == NULL) dbConnect();
+
 	if (get_magic_quotes_gpc())
 		$val = stripslashes($val);
 
@@ -398,7 +418,7 @@ function CHECK_FW()
 **/
 function CHECK_deviceName($devName, $partition, $diskOrPartition = false, $raidAllowed = false)
 {
-	print("<h3>CHECK_deviceName($devName, ".serialize($partition).", ".serialize($diskOrPartition).", ".serialize($raidAllowed)."</h3>");
+// 	print("<h3>CHECK_deviceName($devName, ".serialize($partition).", ".serialize($diskOrPartition).", ".serialize($raidAllowed)."</h3>");
 	
 	if (strpos($devName,"nvme") !== false)
 	{

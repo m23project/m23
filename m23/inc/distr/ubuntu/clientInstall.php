@@ -158,7 +158,9 @@ cd /tmp
 
 	apt-get --force-yes -y -f install
 
+	mv /etc/wgetrc /etc/wgetrc.back
 	apt-get --force-yes -y install wget lsb-release apt-utils
+	mv /etc/wgetrc.back /etc/wgetrc
 
 	apt-get --force-yes -y dist-upgrade
 

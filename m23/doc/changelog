@@ -1,3 +1,243 @@
+2018-01-12
+new: CMSLinkCreator.sh: Creates link files for the CMS for ISO, appliance or RaspBerry Pi image.
++++++
+2018-01-10
+patch 101082: Release 18.1
+release 18.1
+cha: ubuntu/DISTR_afterChrootInstall: Now moves wgetrc out of the way before installing wget and move wgetrc back afterwards. Needed sometimes (!) when m23 server is and UCS and client distribution Linux Mint 18.3 32bits.
++++++
+2018-01-09
+new: installLocalm23DebsOnUCS: Prepares an UCS for installation of local m23 packages and installs them.
++++++
+2017-12-30
+new: DB_getTableColumns: Creates an associative array with table and column names and their data types and codepages (collation).
++++++
+2017-12-29
+cha: CLIENT_showJobs, PKG_listSelectedpackages, install_packages.php: Disabled reason.
+cha: exportDBInitTable: Added "LinuxMint 18.3 Sylvia".
+cha: CLCFG_installMintDM: Now disables CPU intensive fading. Background is now changing every 5 minutes only.
+cha: m23 / control: Added php7.0-bz2 as (possible) dependency.
+cha: PKG_countPackages: Switched back to counting without triggers.
++++++
+2017-12-28
+fix: CFDiskIO::getPartDevs: Now returns partitions without file system when file systems to be excluded are empty.
+cha: HTML_showPagePrintButton: Now shows a button for jumping to the help text too.
+cha: HELP_getHelp: Now has a jump anchor for the help button.
+cha: makeBootMedia.php: Redesigned.
++++++
+2017-12-27
+cha: makeBootCD*: Becomes makeBootMedia*.
+cha: menu.php: Removed tools section.
+cha: menu.php: makeBootMedia now in clients section.
++++++
+2017-12-26
+cha: CFDiskIO::genManualFstab: Now calls CFDiskIO::getNVMeMknodCommand.
+new: CFDiskIO::getNVMeMknodCommand: Generates the mknod commands for creating the NVMe devices.
+cha: CFDiskBasic::getMknodCommand: Becomes CFDiskIO::getMknodCommand.
+cha: m23hwscanner / scanDisksPartitions: Now works with NVMe devices.
++++++
+2017-12-25
+cha: m23InstallerBase.inc: Now starts MariaDB when Linux is still running from the ISO.
++++++
+2017-12-15
+cha: DEBIAN_desktopInstall: Added m23customPatch area for changing the display manager.
++++++
+2017-12-13
+cha: menuManualStart.sh: Commented out screenshot entry.
++++++
+2017-12-12
+cha: UBUNTU_desktopInstall: Now has extra parameter for disabling the installation of language packs.
+new: m23Unity3DMinimal1604Install.php: Installs a minimalistic Unity 3D desktop for Ubuntu 16.04 LTS with German language.
++++++
+2017-12-10
+cha: m23 / template / postinst / config: Now asks for a new password for the pi user, if it is still the default password.
++++++
+2017-12-05
+cha: VM_createVM: Now creates VMs with OSType Debian_64 and 32MB video RAM on VirtualBox > 2.
+cha: VM_GUIstepCreateGuest: Now suggests 1024 MB RAM.
+cha: CLIENT_executeOnClientOrIP: Now calls ssh without user name (will use root).
+cha: VM_createDiskImage: Now works with VirtualBox > 4 too.
+cha: VM_GUIstepCreateGuest: Now shows an error message, if a client with the wanted VM name exists before.
+cha: VM_setHostInDB, VM_setGuestInDB, VM_setVisualURL: Now uses an empty array as base for setting the new parameters.
++++++
+2017-12-04
+cha: phpMyAdmin: Update to version 4.7.6.
+cha: client_add_label_description.inc, externalDHCP.hlp: Added information about boot media and fetchJobManual.
++++++
+2017-12-01
+new: DB_changeAllCollations: Changes the codepage for the collation of all text fields in all tables of a database.
+new: DB_getSuperUserPassword: Returns the password (or empty) of the super MySQL/MariaDB user.
+new: DB_getSuperUserName: Returns the name of the super MySQL/MariaDB user.
++++++
+2017-11-24
+fix: clients_overview.php: Now shows the clients online status column only, if the feature is activated.
+cha: m23InstallerBase.inc: Now deletes GPG keys in new format too.
+cha: m23 / postinst: Now updates/creates the m23 server entry in the client table only, if there is no localhost with the given IP.
++++++
+2017-11-23
+cha: UPDATE_doUpdate: Now makes sure the package repository is included and upgrades the m23 server.
+cha: update.php: Now shows a warning, if the page is opened on UCS.
+cha: serverSettings.php: Now shows update icon on UCS too.
+cha: clients_overview.php, CLIENT_generateHTMLDedicatedAndReachableStatus: Now are using HTML title instead of CSS tooltip.
+cha: SERVERBACKUP_showConfigurationDialog: Deactivated share-online.biz.
+cha: m23 / postinst: Now works on Debian 9 too: Only creates an GPG key, if it's missing. Detected by "gpg --list-secret-keys"
+cha: exportDBInitTable: Now works with tables containing triggers.
+cha: m23 / postinst: Now has special handling for Squid 3 using squid.conf.
++++++
+2017-11-22
+new: EDIT_appendToFile: Appends a text to a file on a client.
+cha: CLCFG_setAuthorized_keys: Now configures sshd_config to allow root logins with SSH key.
++++++
+2017-11-21
+cha: CXhprof.php: Now uses SERVER_getServerBoolSetting and SERVER_setServerBoolSetting. Unneeded converting functions were removed. No extra table for storing the states needed anymore.
+cha: m23 / control: Added fping as dependency.
+new: SERVER_startUpdateClientOnlineInDBBackgroundJob: Starts a background job to update the online status of the clients cyclically.
+new: updateClientOnlineInDB.php: Script to update the online status of the clients in the DB cyclically.
+cha: SERVER_setClientOnlineStatusEnabled: Now starts or stops the background job to update the online status of the clients cyclically.
++++++
+2017-11-18
+cha: addBaseScanner: Now scans for USB modules too.
+cha: CLCFG_hwdetect: Disabled run of hwsetup, if module usbnet is loaded.
++++++
+2017-11-14
+new: GF_changeIPs.php: Changes the IPs and netmasks of the m23 clients in the m23 DB and UCS LDAP.
+new: CLIENT_getNetmaskFromBitAmount: Gets the netmask by the amount of set bits.
+new: CHECK_ip: Checks, if an IP is (syntactically) valid.
+new: UCS_getGenericNetworkName: Generates a generic name for a network object in UCS.
+new: UCS_networkObjectExists: Checks, if a network object exists in the UCS.
+new: UCS_ensureNetworkObjectExists: Makes sure that the network object exists in the UCS.
+new: UCS_getFirstElementFromDN: Gets the first value of a distinguished name.
++++++
+2017-11-13
+new: UCS_createNetworkObject: Creates a new network object in the UCS LDAP.
+fix: client_distr.php: Now gets the name to store the client prefrences under.
+new: clientISO / fetchJobManual: Reads the IP of an m23 server and downloads and executes a work.php.
+new: pool2ISO: Script for generation an ISO image containing the packages from a pool.
++++++
+2017-11-08
+new: UCS_getClientLDAPInfo: Get information about a client stored in the UCS LDAP.
+new: UCS_getNetworkLDAPInfo: Get information about a network stored in the UCS LDAP.
+new: UCS_getAllClientNamesLDAP: Gets all client names stored in the LDAP of the UCS.
++++++
+2017-11-07
+new: CLIENT_getNetmaskBits: Gets the amount if set bits of a netmask.
+new: UCS_modifyClientIP: Modifies the IP of a client in the UCS LDAP.
++++++
+2017-11-06
+cha: DB_escapeString: Removed. Semi-duplicate of CHECK_text2db.
++++++
+2017-11-03
+cha: xhprof_runs.php list_runs: Added links for deleting reports.
+cha: xhprof_html / index.php: Added function and switch for deleting reports.
++++++
+2017-11-01
+cha: adjustControl: Now adds lines to the control file if missing.
++++++
+2017-10-30
+new: xhprof_shutdown: Shutdowns xhprof. (THX TS)
+new: CXhprof::_construct: Constructor for new CXhprof objects. (THX TS)
+new: CXhprof::loadXhprofSettings: Loads current Xhprof settings from database. (THX TS)
+new: CXhprof::showXhprofDialog: Shows a dialog for editing the Xhprof settings. (THX TS)
+new: CXhprof::setActive: Sets profiling active/inactive. (THX TS)
+new: CXhprof::getActive: Gets profiling active/inactive. (THX TS)
+new: CXhprof::isXhprofActive: Returns true if Xhprof is active. (THX TS)
+new: CXhprof::setSave: Toggles Xhprof to save data. (THX TS)
+new: CXhprof::getSave: Gets save setting of Xhprof. (THX TS)
+new: CXhprof::doSave: Returns true if Xhprof shall save data. (THX TS)
+new: CXhprof::save: Saves Xhprof settings to database. (THX TS)
+new: de / xhprof.hlp: Help file for the profiling feature.
+cha: clients_overview.php: Now reads the amount of packages directly from the clients.trg_sum_clientpackages.
+cha: CClient::generateHTMLStatusBar: Now calls VM_statusIcons with aditional parameters.
+new: CClient::getVMRole: Returns the client's vmRole.
+new: CClient::getVmSoftware: Returns the client's vmSoftware.
++++++
+2017-10-29
+cha: CLIENT_showGeneralInfo: Additional values for the call of CLIENT_generateHTMLStatusBar. (THX TS)
+cha: CLIENT_isrunning: Prepared to use CLIENT_isDedicatedAndReachable.
+new: PKG_recountAllClientPackages: Recounts all packages of a client and updates corresponding fields in the database. (THX TS)
+cha: CLIENT_generateHTMLStatusBar, VM_statusIcons: Now are using additional parameters to reduce DB queries. (THX TS)
+new: xhprof_init: Enables xhprof, if it is available and should be activated. (THX TS)
++++++
+2017-10-28
+cha: m23 / postinst: Many SQL speed improvements. (THX TS)
+cha: PKG_countPackages: Prepared to use SQL triggers for getting the amount of client's packages. (THX TS)
++++++
+2017-10-27
+cha: serverSettings.php: Now shows an optional icon for xhprof.
++++++
+2017-10-24
+cha: CLIENT_addClient: Now adds a client to clientgroups, if at least one group is choosen.
+cha: CLIENT_showAddDialog: Now uses pre-sets "default" group.
++++++
+2017-10-23
+new: DB_escapeString: Escapes given String according to database specifications. (THX TS)
+cha: CLIENT_query: Simplified building the SQL query. (THX TS)
+cha: CLIENT_showJobs: Now shows a reason for each job. (THX TS)
+cha: m23 / postinst: Now adds a field for reason in the clientjobs table. (THX TS)
+new: PKG_changeInstallReasonSelectedPackages: Changes the priority of selected wait4acc packages. (THX TS)
+cha: PKG_listSelectedpackages: Added columns for reason. (THX TS)
+cha: PKG_copyPackagesToClient: Added fields for reason. (THX TS)
+cha: install_packages.php: Added adding/editing a reason for the jobs.
++++++
+2017-10-20
+new: MSR_setOnline: Sets the online-state of a client. (THX TS)
+cha: MSR_decodeMessage: Added switch for MSR_setOnline.
++++++
+2017-10-19
+cha: index.css, index_fb.css: Added tooltips. (THX TS)
++++++
+2017-10-18
+new: SERVER_setServerBoolSetting: Sets a bool value of a server setting.
+new: SERVER_getServerBoolSetting: Gets the boolean value of a server setting.
+new: SERVER_isLiveLogDisabled: Determines, if live logging should be disabled globally for all clients.
+new: SERVER_setLiveLogDisabled: Sets/Unsets live disabling of logging globally for all clients.
+new: SERVER_isUpdatePackageInfosDisabled: Determines, if the updatePackageInfos job should NOT be added to any clients.
+new: SERVER_setUpdatePackageInfosDisabled: Sets/Unsets the updatePackageInfos job should NOT be added to any clients.
+new: SERVER_isClientOnlineStatusEnabled: Determines, if the online status of all clients should be detected and shown.
+new: SERVER_setClientOnlineStatusEnabled: Sets/Unsets if the online status of all clients should be detected and shown.
+cha: m23 / postinst: Now adds a field for online status in the client's table.
+new: serverFeatures.php: New page for (de)activating optional m23 server features.
+cha: serverSettings.php / index.php: Added serverFeatures page.
+cha: CLIENT_startLiveScreenRecording: Now exits the function if the live log is disabled.
+cha: client_details.php: Now doesn't show the live log area if live logging is disabled.
+cha: install_packages.php: Now doesn't add the update package status job, if it is disabled by feature setting.
+new: CLIENT_generateHTMLDedicatedAndReachableStatus: Generates HTML code and tooltip containing the status of the client showing if it's dedicated and reachable. (THX TS)
+new: CLIENT_isDedicatedAndReachable: Checks, if a client is dedicated to this M23-Server and reachable. (THX TS)
+cha: clients_overview.php: Shows online status of the clients, if the feature is enabled.
++++++
+2017-10-17
+cha: PREF_putValue, PREF_loadAllPreferenceValues: Now works with arrays as values.
++++++
+2017-10-16
+cha: CSystemProxy::__construct: Now detects Squid's config file and init script name.
+cha: CSystemProxy::writeSquidConf: Now uses Squid's detected config file and init script name.
+cha: m23 / postinst: Added "%no-protection" to the GPG key generation config file to make it work on Debian 9.
+new: CLIENT_showLastLogError: Prints the last error in the client log. (THX TS)
+cha: CLIENT_showLog: Now shows client log, if client is in critical state. (THX TS)
+new: HTML_storableMultiSelection: Shows a list of radio buttons or a selection with loading and storing the checking state to and from the session. (THX TS)
+cha: CLIENT_sshFetchJob: Now has a timeout of 3 seconds and runs as detached thread.
++++++
+2017-10-12
+cha: configureNetwork: Now set network setting temporarily to allow updates during installation.
+cha: installGrub: Now removes resume configuration of initramfs-tools that may contain the (invalid) UUID of the swap partition for suspend/hibernation.
++++++
+2017-10-11
+cha: configureMySQLmycnf: Deactivated reading of root user name and password for MariaDB, because no password is needed when logged in as "root" and MariaDB user is "root" too.
+cha: m23 / control: Added parted as additional dependency.
+cha: createRFSBins: Added libraries to include by hand.
+cha: downloadExtractRFS: Added Debian 9 package sources.
+cha: createRFSBins: Now filters out faulty dependencies.
+cha: downloadExtractRFS: Removed package module-init-tools from download list.
++++++
+2017-10-10
+patch Added NVMe support. Fix for adding clients in DHCP mode.
+cha: index.php: Commented out questionaire.
+cha: clients_overview.php: Now shows the client ID near the client name.
+cha: Updated Linux Kernel to 4.9.54.
++++++
+2017-10-06
+fix: CLIENT_addClient: Now doesn't check recommended IP anymore when in DHCP mode.
++++++
 2017-09-20
 new: CFDiskIO::isNVMe: Checks, if a device string is an NVMe.
 cha: CFDiskIO::getpDiskAndpPartFromDev, CFDiskIO::isDevValidDiskPartitionOrRaid, CFDiskIO::getPartitionDev: Now have support for NVMes.
@@ -489,7 +729,7 @@ fix: work.php: Now doesn't wait for finishing the download of the base archive o
 fix: CLCFG_writeM23fetchjob: Corrected escaping of BASH code for writing m23fetchjob.
 +++++
 2016-07-28
-patch: System proxy improvements.
+patch 101015: System proxy improvements.
 new: HELPER_hostname2IP: Gets the IP of a known host.
 new: CSystemProxy::getProxyHostIP: Gets the proxy IP.
 cha: CSystemProxy::writeSquidConf: Now uses the IP of the proxy to write to the Squid configuration file.
@@ -919,6 +1159,7 @@ patch 100796: Now suggests texlive and texlive-lang-french.
 cha: m23-mdk-doc: Now suggests texlive and texlive-lang-french.
 patch 100795: Now included the m23 package sign key.
 cha: SERVER_importGPGPackageSignKey: Now uses the GPG key that is included in the m23 Debian package.
+patch 101016: Smal fix for DebianSystemCleaner-PrepareVMForCompression.
 +++++
 2015-09-06
 patch 100794: User manual fixes.
@@ -4671,15 +4912,18 @@ cha: m23-tftp/postinst configureTFTP: Now has support for Debian Squeeze.
 patch: Improved Linux Mint 9 installation speed by using a mirror.
 cha: SRCLST_genList: Add the Debian/Ubuntu extraDebs repository only, if it is not a halfSister distribution (Thx Arno)
 cha: Linux Mint 9: Changed pool to a mirror.
+patch 101017: Improved Linux Mint 9 installation speed by using a mirror.
 +++++
 2011-05-17
 patch: Fixed package installation on clients.
 cha: install_packages.php: Now groups are listed in the title seperated with commata.
 fix: install_packages.php: Now works with normal clients again.
+patch 101018: Fixed package installation on clients.
 +++++
 2011-05-16
 patch: Corrects the choosing of groups for assigning actions to them.
 fix: install_packages.php: Now uses the correct post variables to get the groups.
+patch 101019: Corrects the choosing of groups for assigning actions to them.
 +++++
 2011-05-07
 patch: Zarafa installation add-ons.
@@ -4687,6 +4931,7 @@ cha: m23ZarafaInstall.php: Public folder and admin account are now created.
 cha: m23ZarafaInstall.php: spam_header_name and spam_header_value are now 
 cha: m23ZarafaInstall.php: The username of the MySQL user is now a random user name.
 new: HELPER_randomUsername: Generates a random username with a given length.
+patch 101020: Zarafa installation add-ons.
 +++++
 2011-05-03
 new: menuDeb, m23UpdateInstFromm23Testing: Added update optimiser.
@@ -4699,6 +4944,9 @@ patch: Server installation fixes.
 fix: m23 package: Now inccludes /m23/etc/.htpasswd.orig again.
 fix: updateSystem: Now doesn't exit the installer if the user doen't want to update the system.
 patch: Now priorities of special packages are given out correctly.
+patch 101021: Smal fix against warning when choosing the distribution.
+patch 101022: Server installation fixes.
+patch 101023: Now priorities of special packages are given out correctly.
 +++++
 2011-05-01
 cha: PKG_addNormalJob, PKG_addSpecialPackages: Now have the distribution as extra parameter.
@@ -4712,6 +4960,7 @@ patch: New 64 bit bootimages.
 fix: install_packages.php: Now the client ip is stored 
 cha: HTML_esel: Now writes the the url of the iframe only if it the dog-ear is opened.
 cha: Updated 64 bit bootimages.
+patch 101024: New 64 bit bootimages.
 +++++
 2011-04-28
 patch: Some more hardware detection addons (some for VMWare).
@@ -4722,6 +4971,9 @@ cha: Added more kernel modules.
 patch: Hardware detection and scanner fixes (some for VMWare).
 cha: php_urlencode: Now uses the binary awk instead of BusyBox's version.
 cha: CLCFG_setAuthorized_keys: Now makes sure sshd_config exists to remove complaining.
+patch 101025: Some more hardware detection addons (some for VMWare).
+patch 101026: Some more hardware detection and scanner fixes (some for VMWare).
+patch 101027: Hardware detection and scanner fixes (some for VMWare).
 +++++
 2011-04-27
 cha: m23hwdetect/startUdev: Commented out udev calling execution.
@@ -4739,6 +4991,9 @@ fix: client/server bootimages fstab: Corrected path to /dev/pts.
 patch: Zarafa installation fixes.
 cha: installZarafa: Now configures Apache with SSL if the SSL certificates are generated by m23.
 fix: m23ZarafaInstall.php: Now does "apt-get update" before the installation.
+patch 101028: Translations completed.
+patch 101029: Fixes for updating from m23 11.1 to 11.2.
+patch 101030: Zarafa installation fixes.
 +++++
 2011-04-23
 patch: SSL fixes for Zarafa.
@@ -4750,6 +5005,8 @@ patch: Several adjustments for custom scripts.
 cha: checks.php: Clientname length is increased to 64 characters and allowes many more characters.
 cha: checkFQDN: Checks if a string contains only characters that are allowed in a FQDN.
 cha: CLIENT_addClient: Now uses checkFQDN for checking the validity of the client name.
+patch 101031: SSL fixes for Zarafa.
+patch 101032: Several adjustments for custom scripts.
 +++++
 2011-04-22
 cha: PKG_listSelectedpackages: Improved readability.
@@ -4792,10 +5049,12 @@ cha: FDISK_printBars: Now marks the empty space in the partition table, if there
 fix: PKG_listSpecialpackages: Fixed split to explode parameter conversation bug.
 fix: SCREDIT_showEditor: Now shows correct error message, if the script could not be written.
 fix: add_client.php: Now works with m23@web installed but not used again.
+patch 101033: Smaler fixes and extra security for m23@web.
 +++++
 2011-04-15
 patch: m23@web fixes.
 fix: add_client.php: Now works without m23@web again.
+patch 101034: m23@web fixes.
 +++++
 2011-04-13
 fix: statusBar.php, HTML_showStatusBar: Now works with m23@web too.
@@ -4805,12 +5064,14 @@ patch: Patches for m23@web and pPXE added.
 new: MDK: Now uncludes gPXE build environment.
 fix: add_client.php: Now enables m23@web after clearing the session.
 fix: PKG_getAptArchOptions: Now works even if the m23 server is 64 bit and the client 32 bit.
+patch 101035: Patches for m23@web and pPXE added.
 +++++
 2011-04-08
 patch: m23@web IP check fix and MAC address check.
 fix: CLIENT_addClient: No check for the IP if m23@web is active.
 new: checkMAC: Checks if a MAC address is valid.
 cha: CLIENT_addClient: Now uses checkMAC.
+patch 101036: m23@web IP check fix and MAC address check.
 +++++
 2011-04-04
 patch: Many hardware detection improvements. Some for Mac.
@@ -4821,6 +5082,7 @@ fix: getDrives: Now only lists only real devices.
 cha: getDrives, getDriveInfo, getAllPartInfo: Now "types" "No" to avoid asking parted for user interaction if detecting strange partitions.
 cha: m23hwdetect: Now uses functions.
 cha: m23hwdetect: Adds all network modules, if no eth devices could be activated.
+patch 101037: Many hardware detection improvements. Some for Mac.
 +++++
 2011-04-03
 cha: twitterFaceBook-Message.sh: Adjusted for changed layout of is.gd.
@@ -4829,14 +5091,17 @@ cha: twitterFaceBook-Message.sh: Adjusted for changed layout of is.gd.
 patch: DB fix and networking for Mac.
 cha: Boot kernel incudes sky2 module statically.
 fix: m23/postinst: Increased the size of the field "normalPackage" in the table "clientjobs". (Thx AR)
+patch 101038: DB fix and networking for Mac.
 +++++
 2011-03-29
 patch: New Linux kernel to 2.6.38.2.
 cha: Updating boot kernel to 2.6.38.2 and incuding Marvell network module statically.
+patch 101039: New Linux kernel to 2.6.38.2.
 +++++
 2011-03-25
 patch: More network modules in network boot kernel (Testing).
 cha: Activating more network modules in network boot kernel.
+patch 101040: More network modules in network boot kernel (Testing).
 +++++
 2011-03-21
 fix: PKG_acceptJobs: Now show the message if additional packages were added.
@@ -4845,11 +5110,13 @@ fix: PKG_acceptJobs: Now show the message if additional packages were added.
 patch: Smal corrections for halfSister.
 cha: F14/sysMakeBootable: Now uses --force at grub2-install.
 fix: HS_sendCommandExecutionStatus: Corrected order of error message sending and calling wait4go.
+patch 101041: Smal corrections for halfSister.
 +++++
 2011-03-15
 patch: Several fixes for the mass installation and improved halfSister support with lots of status messages.
 cha: createRFSBins: Now includes mkfifo.
 cha: createRFSBins: cp is now called with --force.
+patch 101042: Several fixes for the mass installation and improved halfSister support with lots of status messages.
 +++++
 2011-03-14
 new: mdoc-HS.awk, mdoc-HS.sh: Producing LaTeX code for the documentation from the m23HSAdmin API used by Fedora 14.
@@ -4886,6 +5153,8 @@ fix: FDISK_showDiskDefine: Now stores the client name and id in the sessions to 
 patch: Smal fixes and new option "uploadtesting".
 fix: CRON_cronManagementDialog: Removed unneeded and (without m23shared installed) error producing code.
 new: menuDeb: Now has an extra option "uploadtesting" for uploading the m23 installation packages as testing.
+patch 101043: Fixing client definition.
+patch 101044: Smal fixes and new option "uploadtesting".
 +++++
 2011-03-10
 cha: CLIENT_showDelDialog, HELPER_calcMBSize: Replaced "ereg_replace" with "preg_replace".
@@ -4902,6 +5171,8 @@ cha: HS_fetchAndExtractOSImage, CLCFG_debootstrap: Changed path to the new FRS d
 cha: Mercurial: Changed config file.
 cha: mdoc.sh: Now shows the file that is currently converted to LaTeX.
 cha: menuDevguide, menuManualStart, uploadClientPackagesToSF: Changed path to SF web directory.
+patch 101045: Changed explode syntax in some files.
+patch 101046: Smal changes to the fit the changes SF directories. Development guide and manuals updated.
 +++++
 2011-02-27
 patch: Package source HS-Fedora14 fix.
@@ -4909,6 +5180,8 @@ cha: Package source HS-Fedora14: Only enabling KDE and Textmode desktops.
 cha: mkm23Deb: Removed debug code.
 patch: Fix for accepting jobs.
 fix: PKG_acceptJobs: Now adds a normalInstall or normalRemove job only, if there are such waiting jobs.
+patch 101047: Package source HS-Fedora14 fix.
+patch 101048: Fix for accepting jobs.
 +++++
 2011-02-26
 patch: Hardware detection improvements for the m23 server ISO. Now includes package source for halfSister Fedora 14.
@@ -4919,10 +5192,12 @@ cha: m23install.sh: Now executes /etc/init.d/m23hwdetect twice to make sure that
 cha: exportDBsourceslist.php: Now exports HS-Fedora14 too.
 cha: quickbuild.sh: Now includes m23Debs.inc from the current directory by adding "./" before m23Debs.inc. (Needed by Squeeze)
 cha: excludem23deb: Changed settings to match grep's new regular expression interpretation.
+patch 101049: Hardware detection improvements for the m23 server ISO. Now includes package source for halfSister Fedora 14.
 +++++
 2011-02-23
 release m23 rock 11.1
 patch: m23 rock 11.1
+patch 101050: m23 rock 11.1
 +++++
 2011-02-14
 cha: pkgInstallKDE: Now removes package "firstboot" to disable asking for settings on first boot.
@@ -5038,10 +5313,13 @@ patch: Language fix 2 for Kubuntu
 fix: KDE_install: Now works with english language too.
 patch: Language fix for Kubuntu
 fix: m23KubuntuDesktopInstall.php: Now works with english language too.
+patch 101051: Language fix 2 for Kubuntu
+patch 101052: Language fix for Kubuntu
 +++++
 2010-11-23
 patch: Update preview fixes for assimilated clients.
 fix: m23instUpload: Now only deletes old packages.
+patch 101053: Update preview fixes for assimilated clients.
 +++++
 2010-11-22
 fix: PKG_previewInstallDeinstall: Now updates the list of available packages, if it is not there. This is needed on assimilated clients that did not install extra packages before.
@@ -5053,12 +5331,14 @@ cha: PKG_previewInstallDeinstall: Now uses architecture specific apt-get command
 patch: Smal fixes for VMs.
 cha: VM_startVMCommandFile, VM_stopVMCommandFile: Now works on remote hosts too.
 cha: VM_webAction: Now doesn't run starting and stopping of VMs in screen to get a proper status.
+patch 101054: Smal fixes for VMs.
 +++++
 2010-11-18
 fix: includem23-mdk-basedeb: Removed not existing directory mdk/etc.
 patch: Fix for remote execution of scripts.
 cha: CLIENT_executeOnClientOrIP: Now handles script with "`" too.
 cha: CLIENT_query: Adjusted variable firewall to make searching for clients with special IPs possible.
+patch 101055: Fix for remote execution of scripts.
 +++++
 2010-11-17
 cha: installDebs: Removed debug code.
@@ -5075,6 +5355,8 @@ m23/postinst: Now replaces /dev/random with /dev/urandom temporarily while gener
 patch: Shell compatibility for scripts.
 cha: md5Check, m23update.functions: Removed keyword "function" to make it more compatible.
 cha: filterFileList: Now uses force parameter of "mv" to make sure that the list is filtered without asking the user.
+patch 101056: Some package building fixes.
+patch 101057: Shell compatibility for scripts.
 +++++
 2010-11-15
 patch: Fixes for client assimilisation.
@@ -5084,10 +5366,12 @@ cha: ASSI_prepareClient: Now adds m23debs source to sources.list even if there i
 cha: CLCFG_setAuthorized_keys: Now appends the key to authorized keys file to preserve existing keys.
 cha: CLCFG_addUser: Now only generates adduser commands, if a user and password is given.
 fix: CIR_writeClientID: Now writes the correct m23ClientID.
+patch 101058: Fixes for client assimilisation.
 +++++
 2010-11-14
 patch: Switched VirtualBox packages back to 2.2.4.
 cha: Switched VirtualBox packages back to 2.2.4.
+patch 101059: Switched VirtualBox packages back to 2.2.4.
 +++++
 2010-11-12
 patch: Patches for update and VNC sessions.
@@ -5097,6 +5381,7 @@ cha: m23patch.php: Removed now-working size detection.
 fix: m23patch.php: Now uses correct path for getting update info texts.
 fix: chrootSystem: No deletes /home/m23-vbox/.vnc for a clean vnc configuration.
 cha: restoreVMsStates: Now calls the scripts with restored m23-vbox environment.
+patch 101060: Patches for update and VNC sessions.
 +++++
 2010-11-11
 patch: Gives restoreVMsStates the correct access rights.
@@ -5106,6 +5391,9 @@ fix: VM_startVM: Now gives the screen directory for m23-vbox the correct access 
 patch: Smal fixes for VMs.
 fix: VM_stopVM: Now calls VM_stopVMCommandFile.
 fix: VM_startVM: Now calls VM_startVMCommandFile.
+patch 101061: Gives restoreVMsStates the correct access rights.
+patch 101062: Gives the screen directory for m23-vbox the correct access rights.
+patch 101063: Smal fixes for VMs.
 +++++
 2010-11-10
 patch: Version is now 10.5. Added Button for (de)activating network booting and installation partition can be used to install the MBR on.
@@ -5113,9 +5401,11 @@ new: DHCP_isNetworkBootingActive: Checks, if a client has network booting enable
 cha: client_status.php: Rewritten.
 cha: CLIENT_showStatusSelection: Rewritten and function for (de)activating network booting.
 cha: client_distr.php: Now adds the installation partition to the list of drives that can be used to install the MBR on.
+patch 101064: Version is now 10.5. Added Button for (de)activating network booting and installation partition can be used to install the MBR on.
 +++++
 2010-11-09
 patch: Support for Ubuntu/Kubuntu/Xubuntu 10.04 LTS.
+patch 101065: Support for Ubuntu/Kubuntu/Xubuntu 10.04 LTS.
 +++++
 2010-11-08
 cha: m23KubuntuDesktopInstall.php, m23XubuntuDesktopInstall.php: Now uses CLCFG_aptGet.
@@ -5175,6 +5465,8 @@ cha: Updated pci.ids from pciids.sourceforge.net.
 patch: Online help fix.
 fix: fr/de/en:ldapSettings.hlp: Removed hint for LDAP installation, as the LDAP server is preinstalled and not installable via the webinterface. (Thx biZZa)
 patch: Smal changes and Ubuntu improvements.
+patch 101066: Online help fix.
+patch 101067: Smal changes and Ubuntu improvements.
 +++++
 2010-10-05
 new: SF-hg-backup: New script to backup the m23 source to the Mercurial repository on SF.
@@ -5193,16 +5485,19 @@ cha: extractFromCD: Now shows an error message, if the harddisk could not be mou
 patch: Improvements for VM compression.
 new: prepareOSForCompression: Makes a VM image better compressable.
 new: cleanOSForCompressing: Deletes some files before compressing the OS or VM.
+patch 101068: Improvements for VM compression.
 +++++
 2010-09-20
 patch: Server installation fixes.
 fix: configureNetwork: Now deletes the persistent UDEV rules again.
 cha: m23hwscanner: Removed debug code.
 cha: getDrives: Now only reports devices that contain "dev" to avoid false output.
+patch 101069: Server installation fixes.
 +++++
 2010-09-18
 patch: Smal fixes und updates.
 cha: Updated the bootimage for 64 bit.
+patch 101070: Smal fixes und updates.
 +++++
 2010-09-16
 cha: getDrives: Now gives back multi devices even if parted doesn't list them.
@@ -5433,6 +5728,7 @@ patch: Improvements and fixes for the client add dialog.
 fix: HTML_getElementValue: Now should work together with the checkboxes. (Thx lakul)
 fix: CLIENT_showAddDialog: Now checks the right variables, if the page was run first, for CB_getSystemtimeByNTP, CB_addNewLocalLogin, CB_installPrinter. (Thx lakul)
 cha: CLIENT_addClient: If a readonly LDAP server should be used, m23 doesn't need a login name and doesn't complain about an empty login name in this case. (Thx lakul)
+patch 101071: Improvements and fixes for the client add dialog.
 +++++
 2010-05-06
 cha: twitterFaceBook-Message.sh: Changed shortening service from bit.ly to is.gd, because bit.ly made automated website usage impossible.
@@ -5441,6 +5737,7 @@ cha: twitterFaceBook-Message.sh: Changed shortening service from bit.ly to is.gd
 cha: VirtualBox-networking-setup.sh: Now doesn't complain about missing parameter, if non-interactive mode is used.
 release m23 rock 10.3
 patch: Some improvements in the documentation and the installation process.
+patch 101072: Some improvements in the documentation and the installation process.
 +++++
 2010-04-29
 cha: install18N.*: Added link to www.goos-habermann.de.
@@ -5462,6 +5759,9 @@ cha: BURN_checkISO: Added parameter to set the architecture of the ISO.
 new: BURN_getISOSize: Gets the size of an ISO.
 cha: makeBootCD.php: Now shows links for downloading 32 and 64 bit ISOs.
 patch: Improved hardware detection. Added help for usage with external DHCP. VirtualBox addons installation improvements. Some fixes.
+patch 101073: Removed unneeded ISOs from m23-mdk-client package.
+patch 101074: Links for downloading 32 and 64 bit ISOs added to the "make boot CD" page.
+patch 101075: Improved hardware detection. Added help for usage with external DHCP. VirtualBox addons installation improvements. Some fixes.
 +++++
 2010-04-15
 new: externalDHCP.hlp: Help file for using m23 together with an external DHCP server.
@@ -5532,6 +5832,7 @@ patch: Adds support for changing debconf values from the m23 webinterfaces. Spee
 cha: m23/postinst: Changes "normalPackage" row of the table "clientjobs" to "LONGTEXT".
 cha: PKG_getClientPackages: Now uses the SQL function GROUPS_CONCAT to generate the string of all found packages to improve the speed.
 cha: CLIENT_desasterRecovery: Now uses changed behaviour of PKG_getClientPackages.
+patch 101076: Adds support for changing debconf values from the m23 webinterfaces. Speed improvements for starting client recovery.
 +++++
 2010-03-15
 cha: PKG_listSelectedpackages, PKG_hasOptions: Now has extra parameter for the client's distribution release.
@@ -5561,6 +5862,7 @@ cha: m23/postinst: Adds a row to the clients table to store debconf data.
 patch: Debug status change fix.
 cha: CLIENT_showDebugSelection: Rewritten with new HTML functions.
 fix: CLIENT_showDebugSelection: Now works again. (Thx rluque)
+patch 101077: Debug status change fix.
 +++++
 2010-03-10
 patch: Fixes for the group functions.
@@ -5569,6 +5871,7 @@ new: GRP_showGroupsAndCount2: Replaces the not working GRP_showGroupsAndCount.
 cha: groups_overview.hlp: Adjusted to changed usage.
 cha: MSG_showUpdateInfo: Shows a message about clients who will update again.
 cha: GRP_desasterRecovery: Now shows bullets before the client names that will be recovered.
+patch 101078: Fixes for the group functions.
 +++++
 2010-03-09
 fix: CLIENT_showJobs: Now shows the packages to remove in the job list.
@@ -5577,6 +5880,7 @@ fix: MSG_showAddJobsInfo: Shows a message about assigned jobs again.
 2010-02-27
 release: m23 rock 10.1a
 patch: Client status fixes.
+patch 101079: Client status fixes.
 +++++
 2010-02-26
 cha: PKG_downloadPool: Is now more robust when downloading packages 
@@ -5591,6 +5895,7 @@ new: m23AddUserInstall.php: Adds a user.
 cha: clientInstall.php: Now adds an AddUser and a VBoxKernelModule job.
 cha: CLIENT_setAllParams: Now escapes values before inserting into the DB.
 cha: uploadClientPackagesToSF: Now updates Packages*.
+patch 101080: Serveral fixes for virtual machines, rescuing, mass installation etc.
 +++++
 2010-02-25
 cha: VM_createVM, VM_activateNetbootCMD, VM_delVMCMD: Modified to make it work with changed parameters of newer VirtualBox versions.
@@ -5622,6 +5927,7 @@ fix: rescue_client.php: Now rescues again.
 fix: recover_client.php: Now recovers again.
 new: CLCFG_configUpstartForChroot: Configures upstart to make it not fail installation.
 patch: Fix in administrator management.
+patch 101081: Fix in administrator management.
 fix: htaccess.php: Now can delete admins again.
 cha: htaccess.php: Added a "back" button to delete one admin after another.
 +++++

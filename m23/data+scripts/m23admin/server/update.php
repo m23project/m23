@@ -27,7 +27,7 @@ if (empty($updateURL))
 
 	if (UPDATE_running() || !empty($_POST['BUT_update']))
 	{
-		HTML_liveLogArea('LLA_serverLiveLog',80,25,'serverLiveLog.php?screen=m23install');
+		HTML_liveLogArea('LLA_serverLiveLog',80,25,'serverLiveLog.php?screen=m23serverupdate');
 
 		HTML_submit('BUT_refresh',$I18N_refresh);
 		HTML_showTableHeader(true);
@@ -45,7 +45,7 @@ if (empty($updateURL))
 	{
 
 		//get the update information text
-		$m23updateInfoText=urldecode($_POST[m23updateInfoText]);
+		$m23updateInfoText=urldecode($_POST['m23updateInfoText']);
 
 		if (empty($m23updateInfoText))
 			$m23updateInfoText=UPDATE_getInfo(UPDATE_getUrl($updateURL,"info",$m23_version, $m23_patchLevel));
@@ -59,10 +59,12 @@ if (empty($updateURL))
 
 		if (!empty($_POST['BUT_update']))
 		{
-			UPDATE_doUpdate(UPDATE_getUrl($updateURL,"cmd",$m23_version,$m23_patchLevel));
+			UPDATE_doUpdate();
 		}
 		else
 		{
+			if (HELPER_isExecutedOnUCS())
+				MSG_showWarning($I18N_UCSUpdateWarning);
 
 			HTML_showTableHeader(true);
 			echo("

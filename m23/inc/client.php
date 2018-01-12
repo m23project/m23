@@ -25,6 +25,7 @@ define('CLIENTLOG_UNKNOWN', 'unknown');
 
 
 
+
 /**
 **name CLIENT_insertIntoClientlogs($clientName, $text, $status)
 **description Adds an entry into the client's status log
@@ -268,6 +269,8 @@ function CLIENT_stopLiveScreenRecording($client)
 **/
 function CLIENT_startLiveScreenRecording($client)
 {
+	if (SERVER_isLiveLogDisabled()) return(false);
+
 	$ip = CLIENT_getIPbyName($client);
 
 	//Touch the log file and get its name
@@ -810,7 +813,9 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 			}
 			
 			//Generate the SSH command and the script generating script
-			$SSHcmd = "$sudoWithoutArgs ssh -o ConnectTimeout=5 -o LogLevel=FATAL -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $sshExtra -l $user $ip 'chmod +x $cmdf; chown $user $cmdf; $execCMD' $sshOutput";
+			$SSHcmd = "$sudoWithoutArgs ssh -o ConnectTimeout=5 -o LogLevel=FATAL -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $sshExtra $ip 'chmod +x $cmdf; chown $user $cmdf; $execCMD' $sshOutput";
+
+			//-l $user
 
 			if ($runInScreen)
 			{
@@ -985,7 +990,7 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 	if (($clientAddType == CLIENT_ADD_TYPE_add) && ($CClientO->getBootType() != CClient::BOOTTYPE_GPXE))
 		$CClientO->setMAC($data['mac']);
 
-	if (($clientAddType == CLIENT_ADD_TYPE_add) || ($clientAddType == CLIENT_ADD_TYPE_assimilate))
+	if ((($clientAddType == CLIENT_ADD_TYPE_add) || ($clientAddType == CLIENT_ADD_TYPE_assimilate)) && ($CClientO->getBootType() != CClient::BOOTTYPE_GPXE))
 		$CClientO->setIP($data['ip']);
 
 	// Set system in UEFI mode, if UEFI booting is choosen
@@ -1036,7 +1041,9 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 
 	$CClientO->updateModifyDate();
 	$CClientO->updateInstallDate();
-	$CClientO->addToClientGroup($data['newgroup']);
+	if (!empty($data['newgroup']))
+		foreach ($data['newgroup'] as $group)
+			$CClientO->addToClientGroup($group);
 
 	if ($clientAddType == CLIENT_ADD_TYPE_add)
 		$CClientO->activateNetboot();
@@ -1502,7 +1509,7 @@ function CLIENT_showGeneralInfo($id,$generateEnterKeep=false)
 	$vmInfoHTML = VM_getHTMLStatusBlock($data['client']);
 
 	//Status bar with the state of the client as traffic lights.
-	$HTMLStatusCode = CLIENT_generateHTMLStatusBar($data['client']);
+	$HTMLStatusCode = CLIENT_generateHTMLStatusBar($data['client'], $data['id'], $data['status'], $data['vmRole'], $data['vmSoftware']);
 
 	$allOptions = CLIENT_getAllOptions($data['client']);
 
@@ -1693,6 +1700,9 @@ echo("
 					<td>
 						<span class=\"subhighlight\">$I18N_package_name</span>
 					</td>
+<!--					<td>
+						<span class=\"subhighlight\">$I18N_reason</span>
+					</td>-->
 					<td>
 						<span class=\"subhighlight\">$I18N_parameter</span>
 					</td>
@@ -1726,6 +1736,8 @@ if( $results )
 		{
 			$package=$data['package'];
 
+// 			$reason=preg_replace("/\r\n|\r|\n/",'<br>',$data['reason']);
+
 			if (($package == "m23normal") || ($package == "m23normalRemove"))
 				$params = $data['normalPackage'];
 			else
@@ -1750,6 +1762,7 @@ if( $results )
 			echo("
 						<tr $class>
 							<td valign=\"top\">$package</td>
+<!--							<td valign=\"top\">".wordwrap($reason,75,"<br>",1)."</td> -->
 							<td valign=\"top\">".wordwrap($params,75,"<br>",1)."</td>
 							<td valign=\"top\" align=\"center\">$data[priority]</td>
 							<td valign=\"top\" align=\"center\">$status</td>
@@ -1812,12 +1825,52 @@ function CLIENT_setLastmodify($id,$client="")
 
 
 /**
+**name CLIENT_getNetmaskBits($netmask)
+**description Gets the amount of set bits of a netmask.
+**parameter netmask: IPv4 netmask.
+**returns Amount of set bits of a netmask.
+**/
+function CLIENT_getNetmaskBits($netmask)
+{
+	// Check, if it is a valid IPv4 netmask
+	if (CHECK_ip($netmask))
+		return(substr_count(decbin(ip2longSafe($netmask)), '1'));
+	else
+	// otherwise return the amount of set bits
+		return($netmask);
+}
+
+
+
+
+
+/**
+**name CLIENT_getNetmaskFromBitAmount($bits)
+**description Gets the netmask by the amount of set bits.
+**parameter bits: Amount if set bits of a netmask.
+**returns IPv4 netmask
+**/
+function CLIENT_getNetmaskFromBitAmount($bits)
+{
+	// Check, if its a valid amount of bits
+	if (is_numeric($bits) && ($bits > 0) && ($bits < 32))
+		return(long2ip(bindec(str_repeat('1', $bits).str_repeat ('0', 32 - $bits))));
+	else
+	// otherwise return the netmask
+		return($bits);
+}
+
+
+
+
+
+/**
 **name CLIENT_getSubnet($ip, $netmask)
 **description gets the subnet of a given ip and netmask
 **parameter ip: ip address
 **parameter netmask: netmask
 **/
-function CLIENT_getSubnet($ip, $netmask) 
+function CLIENT_getSubnet($ip, $netmask)
 {
 	$ipoctets = explode(".",$ip);
 	$maskoctets = explode(".",$netmask);
@@ -1849,7 +1902,8 @@ function CLIENT_getSubnet($ip, $netmask)
 		if ($i != 3) $network = $network.".";
 		
 	}// ende for
-	return $network;
+
+	return($network);
 } //ende calcnetwork
 
 
@@ -2049,7 +2103,7 @@ function CLIENT_sshFetchJob($clientName, $ip = false)
 	if ($ip === false)
 		$ip = CLIENT_getIPbyName($clientName);
 
-	$cmd="sudo ssh -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $ip \"screen -dmS m23install /sbin/m23fetchjob ".getServerIP()."\"";
+	$cmd="sudo ssh -o ConnectTimeout=3 -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $ip \"screen -dmS m23install /sbin/m23fetchjob ".getServerIP()."\" > /dev/null 2> /dev/null &";
 	system($cmd);
 }
 
@@ -2262,6 +2316,7 @@ function CLIENT_isrunning($clientName)
 {
 	$ip=CLIENT_getIPbyName($clientName);
 	return(pingIP($ip));
+//	return(CLIENT_isDedicatedAndReachable($clientName));
 }
 
 
@@ -2283,16 +2338,44 @@ function CLIENT_reset($clientName)
 
 
 /**
+**name CLIENT_showLastLogError($clientName)
+**description Prints the last error in the client log
+**parameter clientName: name of the client
+**/
+function CLIENT_showLastLogError($clientName)
+{
+	CHECK_FW(CC_clientname, $clientName);
+
+	$sql = "SELECT logtime, status FROM `clientlogs`
+		WHERE client = '$clientName'
+		AND STATUS REGEXP '(^|\n)E:' AND logtime = (
+			SELECT logtime FROM `clientlogs`
+			WHERE client = '$clientName'
+			AND STATUS REGEXP '(^|\n)E:'
+			ORDER BY logtime DESC
+			LIMIT 1
+		)
+		ORDER BY id";
+
+	CLIENT_showLog($clientName, $sql);
+}
+
+
+
+
+
+/**
 **name CLIENT_showLog($clientName)
 **description prints the log information of the client
 **parameter clientName: name of the client
 **/
-function CLIENT_showLog($clientName)
+function CLIENT_showLog($clientName, $sql = NULL)
 {
 	CHECK_FW(CC_clientname, $clientName);
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
-	$sql="SELECT logtime, status FROM `clientlogs` WHERE client='$clientName' ORDER BY id";
+	if (!isset($sql))
+		$sql="SELECT logtime, status FROM `clientlogs` WHERE client='$clientName' ORDER BY id";
 
 	$result=DB_query($sql); //FW ok
 
@@ -2757,21 +2840,21 @@ function CLIENT_getDebugimage($status)
 
 
 /**
-**name CLIENT_generateHTMLStatusBar($clientName)
+**name CLIENT_generateHTMLStatusBar($clientName, $id, $status, $vmRole, $vmSoftware)
 **description generates HTML code containing the status of the client with links to the pages
-**parameter clientName: name of the client
+**parameter clientName: Name of the m23 client
+**parameter id: ID of the m23 client
+**parameter status: Status (number, green, red, ...) of the client.
+**parameter vmRole: Role of the m23 client (host, guest, no virtualisation)
+**parameter vmSoftware: Number of the used virtualisation software.
 **/
-function CLIENT_generateHTMLStatusBar($clientName)
+function CLIENT_generateHTMLStatusBar($clientName, $id, $status, $vmRole, $vmSoftware)
 {
-	//Get the client status and choose the image for the status
-	$data=CLIENT_getParams($clientName);
-	$id=$data['id'];
-	$statusimage=CLIENT_getStatusimage($data['status']);
+	$statusimage = CLIENT_getStatusimage($status);
 
 	//Get the status of the debug mode and
 	$debugimage = CLIENT_getDebugimage(CLIENT_isInDebugMode($clientName));
-
-	$vmStatusIcons = VM_statusIcons($data);
+	$vmStatusIcons = VM_statusIcons($clientName, $id, $vmRole, $vmSoftware);
 
 $html="<a href=\"index.php?page=clientstatus&client=$clientName&id=$id\"> <img border=\"0\" src=\"$statusimage\"></a>
 ";
@@ -3015,13 +3098,14 @@ function CLIENT_query($o1,$s1,$o2,$s2,$groupName="",$o3="",$s3="", $search="")
 	}
 
 	$where="WHERE";
+	$wArray=array();
 
 	//Check if all fields should be searched with LIKE
 	if (!empty($search))
 	{
 		$firstSearchEntry = true;
 
-		$searchSQL = " (";
+		$searchSQL = "";
 		foreach (DB_getLikeableColumns("clients") as $field)
 		{
 			if ($firstSearchEntry)
@@ -3032,9 +3116,7 @@ function CLIENT_query($o1,$s1,$o2,$s2,$groupName="",$o3="",$s3="", $search="")
 			else
 				$searchSQL .= "|| ($field LIKE \"%$search%\") ";
 		}
-
-		$searchSQL .= ") ";
-
+		$wArray[]=$searchSQL;
 	}
 
 	//check if there should be selected clients in a special group only
@@ -3042,50 +3124,35 @@ function CLIENT_query($o1,$s1,$o2,$s2,$groupName="",$o3="",$s3="", $search="")
 	{
 		$gid = GRP_getIdByName($groupName);	
 		$gSQL="clients.id=clientgroups.clientid AND clientgroups.groupid=$gid";
+			$wArray[]=$gSQL;
 		$cg=", clientgroups";
-	}
+		};
 
 	//add SQL statements for the  first part
 	if (!empty($s1) && !empty($o1))
-	{
-		$w = "status $o1 '$s1' ";
-		$parts++;
-	}
+		$statusSQL = "status $o1 '$s1' ";
 
 	//add SQL statements for the second part	
 	if (!empty($s2) && !empty($o2))
-	{
-		$w .= "OR status $o2 '$s2' ";
-		$parts++;
-	}
+		$statusSQL .= "OR status $o2 '$s2' ";
 		
 	//add SQL statements for the third part
 	if (!empty($s3) && !empty($o3))
-	{
-		$w .= "OR status $o3 '$s3' ";
-		$parts++;
-	}
+		$statusSQL .= "OR status $o3 '$s3' ";
 
-	if (!empty($w))
-		$and="AND";
-
-	if (!empty($gSQL))
-		$w .= "$and $gSQL";
-		
-	if (!empty($searchSQL))
-		$w .= "$and $searchSQL";
+	if (!empty($statusSQL))
+		$wArray[] = "$statusSQL";
 
 	//Check if "vmRunOnHost" is set and add the statement
 	if (isset($_GET['vmRunOnHost']))
-		$w .= " $and clients.vmRunOnHost = $_GET[vmRunOnHost] ";
+		$wArray[] = "clients.vmRunOnHost = $_GET[vmRunOnHost]";
 
 	//disable the WHERE clause if there are no AND or OR filters
-	if (empty($w))
+	if (empty($wArray)) {
 		$where="";
-
-	//Add brackets to make the AND or OR filters work together with "vmRunOnHost" set 
-	if (!empty($w))
-		$w = "($w)";
+	} else {
+		$w = "(" . implode(") AND (",$wArray) . ")";
+	}
 
 	$sql="SELECT clients.* FROM clients$cg $where $w ORDER BY $orderBy $direction";
 
@@ -3347,7 +3414,7 @@ function CLIENT_showAddDialog($addType)
 
 	//Client group
 	$groupList = HELPER_array2AssociativeArray(GRP_listGroups());
-	HTML_storableSelection("SEL_group", "newgroup", $groupList, SELTYPE_selection, true, $params['newgroup'], $installParams['newgroup']);
+	HTML_storableMultiSelection("SEL_group", "newgroup", $groupList, SELTYPE_selection, 10, true, (empty($params['newgroup']) ? array('default') : $params['newgroup']), $installParams['newgroup']);
 
 
 	/*
@@ -4082,7 +4149,7 @@ function CLIENT_changeClient()
 **name CLIENT_setAllParams($client,$data)
 **description Sets all parameters in the columns of a client
 **parameter client: name of the client
-**parameter data: the options as assiciative array
+**parameter data: the options as associative array
 **/
 function CLIENT_setAllParams($client,$data)		//OOP
 {
@@ -4151,4 +4218,87 @@ function CLIENT_isAssimilated($clientName)
 {
 	return(is_array(PKG_getPackageIDsByName($clientName,'m23Assimilate',true)));
 }
+
+
+
+
+
+/**
+**name CLIENT_isDedicatedAndReachable($clientName)
+**description Checks, if a client is dedicated to this M23-Server and reachable.
+**parameter clientName: name of the client
+**returns true, if the client is dedicated and pingable. false, if any of the conditions is false.
+**/
+function CLIENT_isDedicatedAndReachable($clientName)
+{
+//	$netcat_port = "2323";
+//	$client_id = CLIENT_getId($clientName);
+//	$server_hostname = strtolower(shell_exec("hostname -f"));
+
+//	if (CLIENT_isrunning($clientName) && $clientName != "localhost") {
+//		// result syntax: <client_id>:<fqdn m23-server>
+//		$res = explode(":", shell_exec("netcat ".HELPER_hostname2IP($clientName)." $netcat_port"));
+//	}
+//	return($res[0] === $client_id && $res[1] === $server_hostname);
+	$data = CLIENT_getParams($clientName);
+	return($data['online']);
+}
+
+
+
+
+
+/**
+**name CLIENT_generateHTMLDedicatedAndReachableStatus($clientName)
+**description Generates HTML code and tooltip containing the status of the client showing if it's dedicated and reachable.
+**parameter clientName: name of the client
+**returns Associative array containg HTML code and tooltip 
+**/
+function CLIENT_generateHTMLDedicatedAndReachableStatus($clientName)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	$out = array();
+
+//      print("<script>console.log($clientName);</script>");
+	$statusimage = "/gfx/status/";
+	if (CLIENT_isDedicatedAndReachable($clientName))
+	{
+		$statusimage.="green.png";
+		$out['tooltip'] = $I18N_computerOn;
+	}
+	else
+	{
+		$statusimage.="red.png";
+		$out['tooltip'] = $I18N_computerOff;
+	}
+
+	$out['html'] = "<img border=\"0\" src=\"$statusimage\" title=\"$out[tooltip]\">
+";
+
+	return($out);
+};
+
+
+/*
+function CLIENT_sendMessageToAllUsers($title, $message)
+{
+	$ply_msg4user="($counted_finishedClientjobs/$counted_clientjobs) $package";
+	$msg4user = $ply_msg4user;
+
+	if (!empty($reason))
+	{
+		$msg4user .= "\n<b>$I18N_reason:</b>\n$reason";
+		// Probleme mit Sonderzeichen
+		$msg4user = utf8_encode($msg4user);
+		$org = array("\\", "$", "\"", "'");
+		$esc = array("\\\\\\\\", "\\$", "\\\"", "\\'");
+		$msg4user = str_replace($org, $esc, $msg4user);
+		$msg4user = str_replace("\r", "", $msg4user);
+	}
+
+	echo("
+		plymouth --ping && plymouth display-message --text=\"$ply_msg4user\" || notify-send_wrapper \"M23-Server: Installing packages...\" \"\$(date)\\n$msg4user\" -t 0 -i /usr/share/icons/logo.png && touch /tmp/m23_done_work || true
+	");
+}
+*/
 ?>

@@ -112,9 +112,9 @@ function getClientLanguage()
 
 	$sql="SELECT language FROM `clients` WHERE client='$clientName'";
 
-	$res=DB_query($sql); //FW ok
+	$res = DB_query($sql); //FW ok
 
-	$line=mysqli_fetch_row($res);
+	$line = mysqli_fetch_row($res);
 
 	if (!empty($line[0]))
 		return($line[0]);
@@ -188,7 +188,7 @@ function DB_isConnectionValid()
 **name dbConnect()
 **description connects to the m23 database
 **/
-function dbConnect()
+function dbConnect($user = "m23dbuser", $pass = "m23secret", $host = "localhost")
 {
 	//Check if we have the m23SHARED functions
 	if (!function_exists('m23SHARED_init') || !m23SHARED_init())
@@ -198,7 +198,7 @@ function dbConnect()
 		else
 			$dbName="m23";
 
-		DB_setConnection(mysqli_connect("localhost", "m23dbuser", "m23secret", $dbName));
+		DB_setConnection(mysqli_connect($host, $user, $pass, $dbName));
 
 		if (!DB_isConnectionValid())
 			die ("Could not connect to database server!");
@@ -216,8 +216,35 @@ function dbConnect()
 function dbClose()
 {
 	mysqli_close(DB_getConnection());
-};
+}
 
+
+
+
+
+/**
+**name DB_getSuperUserName()
+**description Returns the name of the super MySQL/MariaDB user.
+**returns Name of the super MySQL/MariaDB user.
+**/
+function DB_getSuperUserName()
+{
+	return(trim(SERVER_runInBackground(uniqid("DB_getSuperUserName"), "grep '^user' /etc/mysql/debian.cnf | tr -d '[:blank:]' | cut -d'=' -f2 | head -1", 'root', false)));
+}
+
+
+
+
+
+/**
+**name DB_getSuperUserPassword()
+**description Returns the password (or empty) of the super MySQL/MariaDB user.
+**returns Password (or empty) of the super MySQL/MariaDB user.
+**/
+function DB_getSuperUserPassword()
+{
+	return(trim(SERVER_runInBackground(uniqid("DB_getSuperUserPassword"), "grep '^password' /etc/mysql/debian.cnf | tr -d '[:blank:]' | cut -d'=' -f2 | head -1", 'root', false)));
+}
 
 
 
@@ -226,6 +253,7 @@ function dbClose()
 /**
 **name getServerIP()
 **description returnes the IP of the m23 server
+**returns IP of the m23 server.
 **/
 function getServerIP()
 {
@@ -716,13 +744,13 @@ function delFromArray($arr,$delKeys)
 	$values = array_values($arr);
 
 	for ($i = 0; $i < count($keys); $i++)
-		{
-			if (!in_array($keys[$i],$delKeys))
-				$out[$keys[$i]] = $values[$i];
-		};
+	{
+		if (!in_array($keys[$i],$delKeys))
+			$out[$keys[$i]] = $values[$i];
+	}
 
 	return($out);
-};
+}
 
 
 
@@ -741,10 +769,10 @@ function delValuesFromArray($arr,$delVals)
 	$values = array_values($arr);
 	
 	for ($i = 0; $i < count($keys); $i++)
-		{
-			if (!in_array($values[$i],$delVals))
-				$out[$keys[$i]] = $values[$i];
-		};
+	{
+		if (!in_array($values[$i],$delVals))
+			$out[$keys[$i]] = $values[$i];
+	}
 
 	return($out);
 };
@@ -796,5 +824,56 @@ function DB_getArrayAssoc($result)
 	}
 
 	return($table_result);
+}
+
+
+
+
+
+/**
+**name DB_getTableColumns($dbName = 'm23')
+**description Creates an associative array with table and column names and their data types and codepages (collation).
+**parameter dbName: Name of the database.
+**returns Associative array with table and column names and their data types and codepages (collation).
+**/
+function DB_getTableColumns($dbName = 'm23')
+{
+	$out = array();
+	$i = 0;
+
+	// Get table and column names and their data types and codepages (collation)
+	$sql = "SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='$dbName';";
+	$res = DB_query($sql);
+
+	// Build an associative array
+	while ($row = mysqli_fetch_assoc($res))
+		$out[$row['TABLE_NAME']][$row['COLUMN_NAME']] = $row;
+
+	return($out);
+}
+
+
+
+
+
+/**
+**name DB_changeAllCollations($destCodepage, $dbName = 'm23')
+**description Changes the codepage for the collation of all text fields in all tables of a database.
+**parameter destCodepage: Wanted codepage.
+**parameter dbName: Name of the database.
+**/
+function DB_changeAllCollations($destCodepage, $dbName = 'm23')
+{
+	// Run thru the tables
+	foreach (DB_getTableColumns($dbName) as $tableName => $tableInfo)
+	{
+		// Run thru the columns
+		foreach($tableInfo as $columnName => $columnInfo)
+		{
+			// Check, if a collation name is set (only on text, varchar fields) and if it's not the desired one
+			if (isset($columnInfo['COLLATION_NAME']{1}) && ($columnInfo['COLLATION_NAME'] != $destCodepage))
+				DB_query("ALTER TABLE `$dbName`.`$tableName` CHANGE `$columnName` `$columnName` $columnInfo[COLUMN_TYPE] CHARACTER SET $columnInfo[CHARACTER_SET_NAME] COLLATE $destCodepage NOT NULL;");
+		}
+	}
 }
 ?>

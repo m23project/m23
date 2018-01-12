@@ -79,7 +79,9 @@ function SERVERBACKUP_showConfigurationDialog()
 	$conf = SERVERBACKUP_getBackupConfiguration();
 
 	//Create the dialog elements
-	$conf['uploadServices'] = HTML_selection("SEL_uploadService", array("-" => "-" , "scp" => "scp", "share-online.biz" => "share-online.biz"), SELTYPE_selection, true, $conf['uploadServices']);
+	$conf['uploadServices'] = HTML_selection("SEL_uploadService", array("-" => "-" , "scp" => "scp"), SELTYPE_selection, true, $conf['uploadServices']);
+	
+	//, "share-online.biz" => "share-online.biz"
 
 	//Reload button to change the upload type
 	HTML_submit("BUT_changeBackupUploadType", $I18N_change);

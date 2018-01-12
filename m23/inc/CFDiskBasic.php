@@ -243,77 +243,6 @@ class CFDiskBasic extends CFDiskIO
 
 
 /**
-**name CFDiskBasic::getMknodCommand($dev)
-**description Generates the mknod command for a given /dev/sdX(Y) device (disk or partition).
-**parameter dev: The device (e.g. /dev/sda5) to created the mknod command for.
-**returns mknod command with the parameter matching the given /dev/sdX(Y).
-**/
-	public function getMknodCommand($dev, $genAll = false)
-	{
-		if (strpos($dev,"nvme0") !== false)
-		{
-			$out = "; mknod /dev/nvme0 c 10 58 2> /dev/null; mknod /dev/nvme0n1 b 259 0 2> /dev/null";
-
-			for ($i = 1; $i < 10; $i++)
-				$out .= "; mknod /dev/nvme0n1p$i b 259 $i 2> /dev/null";
-
-			return($out);
-		}
-	
-		$this->getpDiskAndpPartFromDev($dev, $pDisk, $pPart);
-		// Get the partition number or 0, if the disk is given
-		if ($pPart === false)
-			$pPart = 0;
-	
-		// e.g. sda from /dev/sda
-		$pPartPure = basename($pDisk);
-	
-		// Get the ASCII number of the disk device character (e.g. sda => 'a' => 97)
-		$ord = ord($pPartPure{2});
-	
-		// sda ... sdp
-		if (($ord >= 97) && ($ord <= 112))
-		{
-			$minor = $pPart + ($ord - 97) * 16;
-			$major = 8;
-		}
-		// sdq ... sdz
-		else
-		{
-			$minor = $pPart + ($ord - 113) * 16;
-			$major = 65;
-		}
-
-		if ($minor < 0)
-			return('');
-
-		if ($genAll)
-		{
-			$out = '';
-			$minorStart = $minor - $pPart;
-			$minorEnd = $minorStart + 16;
-
-			$pPartI = 1;
-			for ($minor = $minorStart; $minor < $minorEnd; $minor++)
-			{
-				$out .= "; mknod /dev/$pPartPure$pPartI b $major $minor 2> /dev/null";
-				$pPartI++;
-			}
-
-			return($out);
-		}
-		else
-		{
-			$devPure = basename($dev);
-			return("; mknod /dev/$devPure b $major $minor 2> /dev/null");
-		}
-	}
-
-
-
-
-
-/**
 **name CFDiskBasic::getMknodCommandsForDeviceArray($devs)
 **description Generates the mknod commands for given /dev/sdX(Y) devices (disks or partitions).
 **parameter devs: Array with the devices (e.g. /dev/sda5) to created the mknod commands for.
@@ -553,7 +482,7 @@ class CFDiskBasic extends CFDiskIO
 			return(false);
 
 		$pPart = $this->virtualAddPartition($vDisk, $start, $end, $type);
-		print("<h2>createPartition(".serialize($pPart)."</h2>");
+// 		print("<h2>createPartition(".serialize($pPart)."</h2>");
 
 		// Add creation and (maybe) setting of the boot flag
 		$this->createPartitionJob($dev, $start, $end, $type, $pPart);
@@ -706,7 +635,7 @@ class CFDiskBasic extends CFDiskIO
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 		$this->dev2VDiskVPart($dev, $vDisk, $vPart);
-		print("<h3>dev2VDiskVPart($dev, ".serialize($vDisk).", ".serialize($vPart)."</h3>");
+// 		print("<h3>dev2VDiskVPart($dev, ".serialize($vDisk).", ".serialize($vPart)."</h3>");
 
 		// Check, if it is NOT a RAID or in case of a RAID, if its parts are complete
 		if (!$this->isRaidComplete($vDisk))
@@ -795,7 +724,7 @@ class CFDiskBasic extends CFDiskIO
 	{
 		// Create the partition and get the swap partition device string
 		$pPart = $this->createPartition($diskDev, $swapStart, $swapEnd, CFDiskIO::PT_PRIMARY);
-		print("<h1>getDevBypDiskpPart($diskDev, $pPart);</h1>");
+// 		print("<h1>getDevBypDiskpPart($diskDev, $pPart);</h1>");
 		
 		$swapPartDev = $this->getDevBypDiskpPart($diskDev, $pPart);
 

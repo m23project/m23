@@ -6,6 +6,8 @@
 
 	$step = isset($_POST['step']) ? $_POST['step'] : 0;
 
+	$ED_prefName = isset($_POST['ED_prefName']) ? $_POST['ED_prefName'] : '';
+
 /*	if ($step != 1)
 		$step = 0;*/
 	

@@ -131,7 +131,13 @@ function PREF_loadAllPreferenceValues()
 	$res = DB_query($sql); //FW ok
 
 	while($data = mysqli_fetch_assoc($res))
+	{
+		// If the group contains "###", it is intrepreted as a imploded array and needs to be converted back into an array
+		if (preg_match('/###/',$data['value']))
+			$data['value'] = explode("###", $data['value']);
+
 		$_SESSION['preferenceSpace'][$data['var']] = $data['value'];
+	}
 
 	$_SESSION['preferenceForceHTMLReloadValues'] = true;
 }
@@ -210,6 +216,10 @@ function PREF_getValue($name, $var)
 **/
 function PREF_putValue($name, $var, $value)
 {
+	// If it's an array, it needs to be imploded to a string before it can be stored in the DB
+	if (is_array($value))
+		$value = implode("###", $value);
+
 	$tval = trim($value);
 
 	CHECK_FW(CC_clientpreferencesname, $name, CC_clientpreferencesvar, $var, CC_clientpreferencesvalue, $tval);

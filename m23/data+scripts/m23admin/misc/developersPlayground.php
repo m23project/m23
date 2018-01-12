@@ -10,80 +10,54 @@
 	HTML_setPage("developersPlayground");
 	
 	include_once('/m23/inc/distr/debian/packages.php');
-
-
-// $_POST['data'] = SERVER_getFileContents('/tmp/ryzen.hwdata');
-// $_SESSION['m23Shared_clientName'] = 'TK-Ryzen';
-// MSR_importPartHwData();
-
-	$clientO = new CClient('TK-Ryzen', CClient::CHECKMODE_MUSTEXIST);
-	print(serialize($clientO->isUEFIActive()));
-
-
-// 	$partition = true;
-// 	$diskOrPartition = false;
-// 	print(serialize(CHECK_deviceName('/dev/nvme02n12p12', $partition, $diskOrPartition)));
-
-// 	CLCFG_addPAMtoDM('lightdm');
 	
-// 	print(serialize(CRON_isEntryPresent($identifier)));
-// 	print(CLIENT_getNextFreeIp());
+	print(VM_getVBoxVersion('TUXEDO-laptop'));
+	print_r2(VM_getStatus('TUXEDO-laptop'));
+	
+	
+// 	print('<h2>'.serialize(CHECK_ip('192.168.1.256')).'</h2>');
+	
+// 	DB_changeAllCollations('latin1_general_ci');
+	
+/*	$CFDiskIOO = new CFDiskIO('TUXEDO-laptop');
+	$EFIBootPartDev = $CFDiskIOO->getEFIBootPartDev();
+	print($EFIBootPartDev);*/
+	
+	
+
+	
+// 	$dn = "cn=test,cn=computers,dc=test,dc=intranet";
+// print(UCS_getFirstElementFromDN($dn));
+
+// 	print_r2(preg_split('/[,=]/', $dn));
+	
+	
+	
+// 	print('<h2>'.UCS_getGenericNetworkName(24, '192.168.1.0').'</h2>');
+	
+	
+// 	print_r2(UCS_getClientLDAPInfo('Lager-Spectra01'));
+	
+// 	PKG_recountAllClientPackages();
 	exit(0);
-
-// 	print(serialize(CSYSTEMPROXY_getAptGetProxyParamter()));
-
-
-// 	function test($in)
-// 	{
-// 		return(true);
-// 	}
-// 
-
-
-
-/*	$CClientListerO = new CClientLister();
-	$CClientListerO->addKeyValueStoreFilter('schl', 'wert');*/
-// 	$CClientListerO->setOutputColumns(CClientLister::COLUMN_CONTINUOUS_NUMBER, CClientLister::COLUMN_STATUS, CClientLister::COLUMN_CLIENT);
-
-// 	$out = array();
-// 	while ($clientInfo = $CClientListerO->getClient())
-// 	{
-// 		$out[$clientInfo['id']] = $clientInfo;
-// 	}
-// 	
-// 	print_r($out);
-
-// 	$clientO = new CClient('d8lo-neu', CClient::CHECKMODE_MUSTEXIST);
-// 	$clientO->startAutoUpdate(CAutoUpdate::UPDATE_NORMAL);
-// 	$clientO->stopAutoUpdate();
-// 	$clientO->checkAutoUpdate();
-	
-	$CAutoUpdateO = new CAutoUpdate();
-/*	$CAutoUpdateO->activateSet(1);
-	print(serialize($CAutoUpdateO->isTimeToRunNow(1)));*/
-// 	print_r($CAutoUpdateO->getRunningClients());
-// 	$CAutoUpdateO->run();
-
-
-print("<pre>");
-
-// 	CLIENT_startLiveScreenRecording('m23lm18');
 	
 
-	// print_r(CSystemProxy::getProxySettingsArray());
-// 	$OSystemProxy = new CSystemProxy();
-// 	$OSystemProxy->showProxyDialog();
-// 	
-// 	CSYSTEMPROXY_getEnvironmentVariables();
+	for ($i = 0; $i < 10; $i++)
+		$items["k$i"] = "p$i";
 
-// 	print_r(explodeAssoc('?', 'arch?instPart?mbrPart?swapPart?desktop?distr?release?packagesource?kernel?disableSSLCertCheck?disableSudoRootLogin?installX2goserver?uefiActive?amd64??/dev/sda??Debian8Mate?debian?jessie?jessieo?linux-image-amd64?0?0?0?0'));
+// 	$wahl = HTML_selection('SEL_mehr', $items, SELTYPE_selection, true, false, false, "", 5);
 
-// 	print_r($CAutoUpdateO->getAllSets());
-	print('<h1>SET:'.$CAutoUpdateO->activateNextSet().'</h1>');
+	$wahl = HTML_storableMultiSelection('SEL_mehr', 'mehr', $items, SELTYPE_selection, 5, true, false, $storePointer);
 	
-	$CAutoUpdateO->showAutoUpdateManager();
+	HTML_submit('BUT_But', 'Klick');
+	
+	
+	print(SEL_mehr.BUT_But);
+	print_r2($wahl);
+	print_r2($storePointer);
 
-print("</pre>\n");
+// print("<pre>");
+// print("</pre>\n");
 	HTML_showTableEnd();
 	HTML_showFormEnd();
 ?>

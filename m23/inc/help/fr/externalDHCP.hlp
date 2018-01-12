@@ -16,6 +16,11 @@ Solutions:
 <h3>Si l'autre serveur DHCP NE PEUT PAS être désactivé:</h3>
 Dans ce cas, vous devez ajuster la configuration du serveur DHCP externe manuellement et éventuellement installer un serveur TFTP. Suivez le manuel de vos serveurs DHCP et TFTP quant à la configuration à y apporter. 
 
+<!-- v18.1 begin-->
+<h4>Alternativement: $I18N_makeBootMedia</h4>
+Lorsque la modification de la configuration de votre serveur DHCP n'est pas possible, vous pouvez toujours démarrer votre client m23 à partir d'une clé USB ou d'un CD/DVD, puis depuis le shell du client, exécuter le script "<code>fetchJobManual</code>" pour démarrer le processus d'installation du client. De plus amples informations concernant la création du média d'amorçage sont disponibles sur <i>"$I18N_makeBootMedia"</i> dans ce menu.
+<!-- v18.1 end-->
+
 <!-- v16.1 begin-->
 <h4>Configuration dynamique du serveur DHCP</h4>
 Chaque fois l'état de démarrage par réseau d'un poste client est changé (activé / désactivé), le script <i>"/m23/bin/externalDHCPControl.sh"</i> sera exécuté. Vous pouvez adapter le script selon vos besoins afin de configurer dynamiquement un serveur DHCP existant. Trouvez plus d'information dans les commentaired dans le fichier script.

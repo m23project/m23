@@ -17,10 +17,16 @@
 <li><b>eMail:</b> Adresse de courrier électronique de l'utilisateur</li>
 
 <!-- V1.2 --><li><b>$I18N_boottype:</b> Type de démarrage des postes clients par le réseau. <!-- 10.3 begin-->
+
+<!-- 18.1 begin-->
+<u>Amorçage avec Clé USB ou image ISO</u>
+Si votre client m23 ne peut être démarré par PXE, vous pouvez créer une clé USB amorçable ou graver l'image ISO sur un CD/DVD ou l'utiliser directement dans une machine virtuelle. De plus amples informations sont accessibles sur <i>"$I18N_makeBootMedia"</i> (dans ce menu).
+<!-- 18.1 end-->
+
 <!-- 15.1 begin--><u>Note: Serveur DHCP externe</u><!-- 15.1 end-->
 Si vous souhaitez utiliser m23 avec un serveur DHCP existant, lisez la page suivante: <m23help>externalDHCP</m23help><!-- 10.3 end-->
 <!-- 15.1 begin--><u>Note: UEFI</u>
-Si vous désirez démarrer votre client en utilisant <a href="http://fr.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">l'UEFI</a>, Vous devez sélectionner <i>"UEFI x86_64"</i>. L'architecture sera automatiquement paramétrée pour un système 64 bits, puisque m23 ne supporte l'UEFI que pour les systèmes 64 bits. Si votre client ne supporte pas l'amorçage réseau en mode UEFI, Vous pouvez utiliser un DVD d'amorçage pour architecture 64 bits (Voir l'item <i>"$I18N_make_bootcd"</i> du menu).<!-- 15.1 end--></li>
+Si vous désirez démarrer votre client en utilisant <a href="http://fr.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">l'UEFI</a>, Vous devez sélectionner <i>"UEFI x86_64"</i>. L'architecture sera automatiquement paramétrée pour un système 64 bits, puisque m23 ne supporte l'UEFI que pour les systèmes 64 bits. Si votre client ne supporte pas l'amorçage réseau en mode UEFI, Vous pouvez utiliser un DVD d'amorçage pour architecture 64 bits (Voir l'item <i>"$I18N_makeBootMedia"</i> du menu).<!-- 15.1 end--></li>
 
 <!-- V1.19 begin--><li><b>$I18N_bootloader:</b> Choisissez quel <a href="http://fr.wikipedia.org/wiki/Boot_loader" target="_blank">chargeur d'amor&ccedil;age/boot loader</a> vous souhaitez utiliser pour l'amor&ccedil;age du noyau Linux et des autres systèmes d'exploitation eventuellement installés.<!-- V1.20 begin--><br><u>Information supplémentaire</u><br>
 La modification des paramètres de démarrage par des personnes non autorisées n'est rendue possible qu'en saisissant un mot de passe à partir de la version m23 0.6.4 . Il est nécessaire d'entrer le mot des passe de démarrage par le réseau (netboot). Vous pouvez l'extraire dans le centre de contrôle sous <i>&laquo;$I18N_client_directConnect&raquo;</i>.<!-- V1.20 end--><!-- V1.20 end--></li><!-- V1.19 end-->

@@ -1449,6 +1449,39 @@ function HTML_storableSelection($htmlName, $prefKey, $array, $type, $vertical = 
 
 
 /**
+**name HTML_storableMultiSelection($htmlName, $prefKey, $array, $type, $multipleSize, $vertical = true, $defaultSelection = false, &$storePointer = false, $js = "")
+**description Shows a list of radio buttons or a selection with loading and storing the checking state to and from the session.
+**parameter htmlName: Name of the HTML element.
+**parameter prefKey: Variable name of the preference the dialog element stands for.
+**parameter array: An array that hold the returned values (array keys) the naming for the elements (array values).
+**parameter type: SELTYPE_selection for a selection or SELTYPE_radio for radio buttons.
+**parameter multipleSize: Number of elements to display.
+**parameter vertical: Set to true if the radio buttons should be aligned vertically or to false for horizontal aligning. This parameter is ignored by selections.
+**parameter defaultSelection: The value of the item to select by default.
+**parameter storePointer: Additional pointer to the variable where to store the entered value.
+**parameter js: Here can JavaScript or other parameters be added.
+**returns true if the check box is checked.
+**/
+function HTML_storableMultiSelection($htmlName, $prefKey, $array, $type, $multipleSize, $vertical = true, $defaultSelection = false, &$storePointer = false, $js = "")
+{
+	$val = HTML_selection($htmlName, $array, $type, $vertical, $defaultSelection, $prefKey, $js, $multipleSize);
+
+	//Store its value to the session (to make it storable)
+	$_SESSION['preferenceSpace'][$prefKey] = $val;
+
+	//Check if the storePointer is defined and store the resulting value into it
+	if (!($storePointer === false))
+		$storePointer = $val;
+
+	return($val);
+}
+
+
+
+
+
+
+/**
 **name HTML_storableCheckBox($htmlName, $label, $prefKey, $defaultCheck = false, &$storePointer = false, $checkedValue = "yes", $unCheckedValue = "")
 **description Shows a check box with label with loading and storing the checking state to and from the session.
 **parameter htmlName: Name of the HTML element.
@@ -1819,7 +1852,11 @@ function array_makeFirst(&$arr,$first)
 {
 	if (!is_null($first))
 	{
-		$out[array_search($first, $arr)] = $first;
+		if (is_array($first))
+			$out = $first;
+		else
+			$out[array_search($first, $arr)] = $first;
+
 		foreach ($arr as $key => $val)
 			$out[$key] = $val;
 			
@@ -1908,7 +1945,7 @@ function HTML_selection($htmlName, $array, $type, $vertical = true, $defaultSele
 	{
 		//check if the selected element should become the first in the array
 		if (is_array($selected))
-			array_makeFirst($array, $array[$selected[0]]);
+			array_makeFirst($array, array_intersect($array, $selected));
 		elseif (!($selected === false))
 			array_makeFirst($array, $array[$selected]);
 
@@ -1917,7 +1954,9 @@ function HTML_selection($htmlName, $array, $type, $vertical = true, $defaultSele
 		foreach ($array as $value => $description)
 		{
 			if ($selected === false) $selected = $value;
-			$htmlCode.='<option value="'.$value.'">'.$description.'</option>'."\n";
+			elseif (is_array($selected) && in_array($value, $selected)) $htmlSelected = " selected";
+			else $htmlSelected = "";
+			$htmlCode.='<option value="'.$value.'"'.$htmlSelected.'>'.$description.'</option>'."\n";
 		}
 
 		$htmlCode.='</SELECT>';
@@ -2155,6 +2194,9 @@ function HTML_showPagePrintButton()
 	<div align="right">
 		<a href="javascript:window.print()">
 			<img src="/gfx/printer-mini.png" border="0" alt="'.$I18N_print.'" title="'.$I18N_print.'">
+		</a>
+		<a href="#m23helpBox">
+			<img src="/gfx/helpRed-mini.png" border="0" alt="'.$I18N_help.'" title="'.$I18N_help.'">
 		</a>
 	</div>
 	');

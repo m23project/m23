@@ -116,6 +116,12 @@ function MSR_decodeMessage()
 					MSR_buildPoolFromClientDebs();
 					break;
 				}
+
+			case 'MSR_setOnline':
+				{
+					MSR_setOnline($_POST['online']);
+					break;
+				}
 		}
 };
 
@@ -1018,7 +1024,7 @@ function MSR_partHwDataCommand()
 **/
 function MSR_importPartHwData()
 {
-//	SERVER_putFileContents('/tmp/ryzen.hwdata', $_POST['data'], 777);
+//	SERVER_putFileContents('/tmp/out.hwdata', $_POST['data'], 777);
 
 	$data = explodeAssoc('###',urldecode($_POST['data']));
 	
@@ -1368,4 +1374,19 @@ function MSR_clientSettings()
 	CLIENT_setAllParams($client,$data);
 	CLIENT_setAllOptions($client,$options);
 };
+
+
+
+
+
+/**
+**name MSR_setOnline($online)
+**description Sets the online-state of a client.
+**parameter online: The new online-state.
+**/
+function MSR_setOnline($online)
+{
+	CHECK_FW(CC_status, $online);
+	DB_query("UPDATE `clients` SET `online` = \"$online\" WHERE `client` = \"".CLIENT_getClientName()."\"");
+}
 ?>

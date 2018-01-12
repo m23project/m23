@@ -1415,4 +1415,22 @@ Hint: You (or anybody else with access to your webbrowser) can use the m23 webin
 @$I18N_autoUpdateFinishedErrorTooManyFailures = 'Automatical update: Too many failed attempts';
 @$I18N_autoUpdateFinishedWrongParameters = 'Automatical update: Contradictory status information';
 @$I18N_clientname_must_not_be_a_number = 'The name of the client must not be a number.';
+
+//18.1
+@$I18N_reason="Reason";
+@$I18N_changePackageInstallReason="Change reason";
+@$I18N_xhprof_activate = 'activate/ deactivate Xhprof';
+@$I18N_serverFeatures = 'Server features';
+@$I18N_serverFeature = 'Server feature';
+@$I18N_clientOnlineStatusEnabled = 'Determine and display client online status';
+@$I18N_updatePackageInfosDisabled = 'Do not transmit the clients\' package status to the m23 server';
+@$I18N_liveLogDisabled = 'Deactivate real time protocol';
+@$I18N_onlineStatus = 'Online Status';
+@$I18N_xhprof = 'Xhprof Settings';
+@$I18N_xhprof_activate = 'Toggle Xhprof';
+@$I18N_xhprof_save_results = 'save results';
+@$I18N_xhprof_show_results = 'show results';
+@$I18N_UCSUpdateWarning = 'If you update your m23 server using this page this will bypass the "Univention App Center". You might be able to obtain more recent m23 version (e.g. containing bug fixes and new functionality) than are available via the "Univention App Center". These m23 versions are more up-to-date, but have not yet undergone Univention\'s checking procedure. Additionally, the update functionality will activate the UCS unmaintained package source and run a "dist-upgrade" which will also update non-m23-related packages.';
+@$I18N_makeBootMedia = 'Create boot media';
+@$I18N_downloadBootMedia = 'Download boot media';
 ?>

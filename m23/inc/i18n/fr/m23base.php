@@ -1410,7 +1410,25 @@ Attention: Si le nom de l&apos;utilisateur et son mot de passe sont encore enreg
 @$I18N_autoUpdate = 'Mises à jour automatiques';
 @$I18N_updateType = 'Type de mise à jour';
 @$I18N_autoUpdateFinishedOk = 'Mise à jour automatique executée avec succès';
-@$I18N_autoUpdateFinishedErrorTooManyFailures = 'Mise à jour automatique: Trop de tentatives ont échoué';
+@$I18N_autoUpdateFinishedErrorTooManyFailures = 'Mise à jour automatique: Trop de tentatives ont échouées';
 @$I18N_autoUpdateFinishedWrongParameters = 'Mise à jour automatique: Informations d\'état contradictoires';
-@$I18N_clientname_must_not_be_a_number = 'Le nom du poste client ne doit pas consister d\'un nombre.';
+@$I18N_clientname_must_not_be_a_number = 'Le nom du poste client ne doit pas être un nombre.';
+
+//18.1
+@$I18N_reason="Raison";
+@$I18N_changePackageInstallReason="Raison du changement";
+@$I18N_xhprof_activate = 'active/ désactive Xhprof';
+@$I18N_serverFeatures = 'Fonctionnalitées Serveur';
+@$I18N_serverFeature = 'Fonctionnalitée Serveur';
+@$I18N_clientOnlineStatusEnabled = 'Détermine et affiche le status du client en ligne';
+@$I18N_updatePackageInfosDisabled = 'Ne transmet pas les status des packages du client au serveur m23';
+@$I18N_liveLogDisabled = 'Désactive le protocole temps réel';
+@$I18N_onlineStatus = 'Status en ligne';
+@$I18N_xhprof = 'Paramètres Xhprof';
+@$I18N_xhprof_activate = 'Active Xhprof';
+@$I18N_xhprof_save_results = 'Sauvegarde les résultats';
+@$I18N_xhprof_show_results = 'Affiche les résultats';
+@$I18N_UCSUpdateWarning = 'Si vous mettez à jour votre serveur m23 en utilisant cette page, "Univention App Center" sera outrepassé. Depuis cette page, il vous est possible d\'obtenir une version plus récente de la version m23 (comprenant les correctifs d\'erreurs et les nouvelles fonctionnalités) que la version fournie par "Univention App Center". Ces versions m23 sont plus à jour mais n\'ont pas encore passées la procédure de vérification Univention. De plus, la fonctionnalité de mise à jour activera le dépot UCS de paquets sources "non maintenus" et lancera un "dist-upgrade" permettant la mise à jour des paquets non répertoriés par m23.';
+@$I18N_makeBootMedia = 'Création d\'un média d\'amorçage';
+@$I18N_downloadBootMedia = 'Téléchargement d\'un média d\'amorçage';
 ?>

@@ -17,10 +17,16 @@
 <li><b>eMail:</b> eMail address of the user</li>
 
 <!-- V1.2 --><li><b>$I18N_boottype:</b> Boot standard for booting your clients over the network <!-- 10.3 begin-->
+
+<!-- 18.1 begin-->
+<u>Boot with USB flash drive or ISO</u>
+If your m23 client cannot be started via PXE, you can create a bootable USB flash drive or burn the ISO to a CD/DVD or use it directly in a virtual machine. Further information is available from <i>"$I18N_makeBootMedia"</i> (in the menu).
+<!-- 18.1 end-->
+
 <!-- 15.1 begin--><u>Note: External DHCP server</u><!-- 15.1 end-->
 Please read the following page, if you want to use m23 with an existing DHCP server: <m23help>externalDHCP</m23help><!-- 10.3 end-->
 <!-- 15.1 begin--><u>Note: UEFI</u>
-If you would like to boot your client using <a href="http://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">UEFI</a>, you need to select <i>"UEFI x86_64"</i>. The architecture will automaticall be set to 64bit, as m23 only supports UEFI for 64bit systems. If your client computer does not support network boot in UEFI mode, you can use the 64bit boot ISO (see menu item <i>"$I18N_make_bootcd"</i>).<!-- 15.1 end--></li>
+If you would like to boot your client using <a href="http://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">UEFI</a>, you need to select <i>"UEFI x86_64"</i>. The architecture will automaticall be set to 64bit, as m23 only supports UEFI for 64bit systems. If your client computer does not support network boot in UEFI mode, you can use the 64bit boot ISO (see menu item <i>"$I18N_makeBootMedia"</i>).<!-- 15.1 end--></li>
 
 <!-- V1.19 begin--><li><b>$I18N_bootloader:</b> Choose the boot <a href="http://en.wikipedia.org/wiki/Bootloader" target="_blank">loader/boot manager</a> for starting the Linux kernel and possibly already installed other operating systems.<!-- V1.20 begin--><br><u>Hint</u><br>
 Clients installed with m23 0.6.4 or higher secure the bootparameters against editing via the bootmanager. The networkboot password is needed to unlock the editing function of the bootmanager. The password can be found in the control center for the specific client under <i>"$I18N_client_directConnect"</i>.<!-- V1.20 end--></li><!-- V1.19 end-->

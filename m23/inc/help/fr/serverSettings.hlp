@@ -2,32 +2,40 @@ $I18N_serverSettings
 Sur cette page, vous avez accès aux différents paramétrages du serveur m23.
 
 <u>$I18N_system</u><ul>
-	<li>$I18N_update: Mettre à jour votre serveur m23</li>
+	<li>$I18N_update: Mettre à jour votre serveur m23<!-- V16.1 begin -->(non disponible sur UCS)<!-- V16.1 end --></li>
 	<li>$I18N_manage_admins: Créer et supprimer le compte administrateur</li>
 	<li>$I18N_themeChoice: Modifier l'aspect de l'interface m23</li>
 	<li>$I18N_serverStatus: Obtenir les information sur le statut du serveur m23</li>
+        <!-- V18.1 begin --><li>$I18N_serverFeatures: Active ou désactive les fonctionnalités optionnelles du serveur m23</li><!-- V18.1 end -->
 </ul>
 
 <u>$I18N_components</u><ul>
 	<li>$I18N_manageImageFiles: Visualiser tous les fichiers image des clients et supprimer ces images</li>
-	<li>$I18N_ipManagement: Configurer le serveur DHCP interne</li>
-	<li>LDAP: Gérer le serveur LDAP et éditer son paramètrage</li>
-	<li>m23@web: (si installé) Gérer les clients de m23@web</li>
+	<li>$I18N_ipManagement: Configurer le serveur DHCP interne <!-- V16.1 begin -->(non disponible sur UCS)<!-- V16.1 end --></li>
+	<li>LDAP: Gérer le serveur LDAP et éditer son paramètrage <!-- V16.1 begin -->(non disponible sur UCS)<!-- V16.1 end --></li>
+	<li>m23@web: (si installé) Gérer les clients de m23@web <!-- V16.1 begin -->(non disponible sur UCS)<!-- V16.1 end --></li>
 	<li>$I18N_manageGPGKeys: Gérer vos clés GPG utilisées l'encryption des sauvegardes du serveur m23</li>
 	<li>$I18N_serverBackup: Plannification des sauvegardes du serveur</li>
 	<li>$I18N_backupList: Visualisation des sauvegardes existantes et suppression des fichiers de sauvegarde</li>
 	<li>$I18N_downloadVBoxAddons: Télécharger et sélectionner les logiciels clients additionnels VirtualBox</li>
 	<li>$I18N_cloudFunctionsCS: Gérer votre compte Apache CloudStack&reg;</li>
-	<!-- V15.2 begin --><li>$I18N_firewallSetting: (Dés)Activez le pare-feu de votre serveur m23 et éditez les règles du pare-feu</li><!-- V15.2 end -->
+	<!-- V15.2 begin --><li>$I18N_firewallSetting: (Dés)Activez le pare-feu de votre serveur m23 et éditez les règles du pare-feu</li><!-- V15.2 end --> <!-- V16.1 begin -->(non disponible sur UCS)<!-- V16.1 end -->
+	<!-- V18.1 begin --><li>$I18N_systemProxy: Paramètres Proxy pour l'accès internet du serveur m23</li><!-- V18.1 end -->
 </ul>
 
 <u>$I18N_serverHacks</u><ul>
 	<li>phpMyAdmin: Editer la base de données MySQL</li>
 	<li>$I18N_SSLCertCheckDisabled / $I18N_SSLCertCheckEnabled: (Dés)Activer globalement la vérification du certificat SSL par les clients m23</li>
 	<li>$I18N_daemons_and_programs: Démarrer et arrêter les services du serveur</li>
+	<!-- V18.1 begin --><li>XHProf: Active le profiler pour l'interface m23 et la visualisations de ses logs</li><!-- V18.1 end -->
 </ul>
 
 <u>$I18N_extras</u><ul>
 	<li>$I18N_calculator: Une simple calculatrice</li>
 	<li>$I18N_BAfHDaylyExcuse: L'excuse BAfH du jour (Allemand seulement)</li>
 </ul>
+
+<!-- V16.1 begin -->
+<u>Non disponible sur UCS</u>
+Quelques fonctionnalités ne sont pas disponibles si le serveur m23 fonctionne sur un  <a href="https://www.univention.de/">Serveur Univention Corporate</a> (UCS).
+<!-- V16.1 end -->

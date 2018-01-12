@@ -432,6 +432,10 @@ function showWait()
 	if (HTML_submit('BUT_priority', $I18N_changePackagePriority))
 		PKG_changePrioritySelectedPackages(PKG_countSelectedpackages($client),$client,$newPriority);
 
+// 	$newReason = HTML_textArea('TA_reason', 73, 5);
+// 	if (HTML_submit('BUT_reason', $I18N_changePackageInstallReason))
+// 		PKG_changeInstallReasonSelectedPackages(PKG_countSelectedpackages($client),$client,$newReason);
+
 
 	//discard only selected jobs
 	if (HTML_submit('BUT_discardSelected', $I18N_discard_selected))
@@ -454,8 +458,8 @@ function showWait()
 		{
 			$clAmount = 1;
 			$showMsg = true;
-		};
-	};
+		}
+	}
 
 	//accept all jobs
 	if(HTML_submitCheck('BUT_acceptJobs'))
@@ -468,7 +472,7 @@ function showWait()
 				$client = $clients[$i];
 				//copy the waiting packages from the fake client to the current
 				PKG_copyWait4accPackagesToClient($client,$clientOrig);
-			};
+			}
 
 			PKG_addJob($client,"m23UpdateSourcesList",PKG_getSpecialPackagePriority("m23UpdateSourcesList"),"");
 
@@ -479,7 +483,8 @@ function showWait()
 			if (!$isGroup)
 				PKG_addShutdownPackage($client);
 
-			PKG_addJob($client,"m23UpdatePackageInfos",PKG_getSpecialPackagePriority("m23UpdatePackageInfos"),"");
+			if (!SERVER_isUpdatePackageInfosDisabled)
+				PKG_addJob($client,"m23UpdatePackageInfos",PKG_getSpecialPackagePriority("m23UpdatePackageInfos"),"");
 
 			//if ((CLIENT_getClientStatus($client) != STATUS_BLUE) && !$isGroup)
 			//now do all group jobs at once
@@ -499,10 +504,10 @@ function showWait()
 
 			//discard all waiting jobs from the fake client
 			PKG_discardJobs($client);
-		};
+		}
 
 		$tableClose = false;
-	};
+	}
 
 
 
@@ -595,6 +600,7 @@ function showWait()
 	if (!$isUpdate)
 		echo(BUT_discardAll.'&nbsp;&nbsp;'.BUT_discardSelected.'<br><br>'.
 		ED_priority.'&nbsp;&nbsp;'.BUT_priority.'<br><br>'.
+// 		TA_reason.'&nbsp;&nbsp;'.BUT_reason.'<br><br>'.
 		BUT_refresh.'&nbsp;&nbsp;');
 
 

@@ -14,7 +14,11 @@ function run($id)
 	$uid = !empty($accountInfo['uid']) ? $accountInfo['uid'] : '';
 	$gid = !empty($accountInfo['gid']) ? $accountInfo['gid'] : '';
 
+//m23customPatchBegin type=change id=skipCreateUserBegin
+//m23customPatchEnd id=skipCreateUserBegin
 	CLCFG_addUser($accountInfo['login'], $accountInfo['firstpw'], $accountInfo['groups'], $uid, $gid);
+//m23customPatchBegin type=change id=skipCreateUserEnd
+//m23customPatchEnd id=skipCreateUserEnd
 	/* =====> */ MSR_statusBarIncCommand(100);
 	
 	echo('

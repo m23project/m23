@@ -2168,7 +2168,7 @@ class CClient extends CChecks
 		//Get the status of the debug mode and
 		$debugimage = CLIENT_getDebugimage(CLIENT_isInDebugMode($this->getClientName()));
 
-		$vmStatusIcons = VM_statusIcons($this->clientInfo);
+		$vmStatusIcons = VM_statusIcons($this->getClientName(), $this->getID(), $this->getVmRole(), $this->getVmSoftware());
 
 		$html="<a href=\"index.php?page=clientstatus&client=$clientName&id=$id\"> <img border=\"0\" src=\"$statusimage\"></a>\n";
 
@@ -2505,6 +2505,33 @@ class CClient extends CChecks
 		$this->md5 = md5(serialize($this->clientInfo));
 	}
 
+
+
+
+
+/**
+**name CClient::getVMRole()
+**description Returns the client's vmRole.
+**returns vmRole of the client.
+**/
+	public function getVmRole()
+	{
+		return($this->getProperty('vmRole', 'getVmRole: No vmRole set.'));
+	}
+
+
+
+
+
+/**
+**name CClient::getVmSoftware()
+**description Returns the client's vmSoftware.
+**returns vmSoftware of the client.
+**/
+	public function getVmSoftware()
+	{
+		return($this->getProperty('vmSoftware', 'getVmSoftware: No vmSoftware set.'));
+	}
 
 /*	public function __toString()
 	{

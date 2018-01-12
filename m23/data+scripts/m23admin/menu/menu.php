@@ -40,6 +40,7 @@ SERVER_dynamicIPWarn();
 SERVER_rootFreeSpace();
 SERVER_tmpNotWritable();
 CLIENT_listCriticalClients();
+SERVER_startUpdateClientOnlineInDBBackgroundJob();
 CAPTURE_showMessageBox();
 ?>
 
@@ -67,6 +68,7 @@ CAPTURE_showMessageBox();
 			"/gfx/mini_trash.png");
 		if (!$_SESSION['m23Shared'])  MENU_showEntry($I18N_assimilate,"index.php?page=assimilate",
 			"/gfx/assimilate-mini.png");
+		MENU_showEntry($I18N_makeBootMedia,"index.php?page=makeBootMedia","/gfx/cdrom-mini.png");
 // 		PLG_listMenuPlugins("/m23/data+scripts/m23admin/clients/");
 	MENU_endGroup();
 
@@ -123,13 +125,10 @@ CAPTURE_showMessageBox();
 		MENU_endGroup();
 
 
-		MENU_startGroup($I18N_tools);
-			MENU_showEntry($I18N_make_bootdisk,"index.php?page=makeBootDisk",
-				"/gfx/disk-mini.png");
-			MENU_showEntry($I18N_make_bootcd,"index.php?page=makeBootCD","/gfx/cdrom-mini.png");
-
-// 			PLG_listMenuPlugins("/m23/data+scripts/m23admin/tools/");
-		MENU_endGroup();
+// 		MENU_startGroup($I18N_tools);
+// 			MENU_showEntry($I18N_make_bootdisk,"index.php?page=makeBootDisk",
+// 				"/gfx/disk-mini.png");
+// 		MENU_endGroup();
 
 
 /*		MENU_startGroup($I18N_plugins);

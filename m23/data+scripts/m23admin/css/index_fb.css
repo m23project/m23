@@ -69,54 +69,54 @@ table {
 	line-height:		1.1em;
 	overflow:			hidden;
 	*border-collapse: 	collapse; /* IE7 and lower */
-    border-spacing: 	0;
+	border-spacing: 	0;
 	-moz-border-radius: 	8px;
-    -webkit-border-radius: 8px;
-    border-radius: 		8px;
+	-webkit-border-radius: 8px;
+	border-radius: 		8px;
 	border-color: 		#ffffff;
 	padding: 			8px;
 }
 
 table td:first-child, table th:first-child {
-    	border-left: 		none;
+		border-left: 		none;
 }
 
 table th:first-child {
-    	-moz-border-radius: 	8px 0 0 0;
-    	-webkit-border-radius: 8px 0 0 0;
-    	border-radius: 			8px 0 0 0;
+		-moz-border-radius: 	8px 0 0 0;
+		-webkit-border-radius: 8px 0 0 0;
+		border-radius: 			8px 0 0 0;
 }
 
 table th:last-child {
-    	-moz-border-radius: 	0 8px 0 0;
-    	-webkit-border-radius: 0 8px 0 0;
-    	border-radius: 			0 8px 0 0;
+		-moz-border-radius: 	0 8px 0 0;
+		-webkit-border-radius: 0 8px 0 0;
+		border-radius: 			0 8px 0 0;
 }
 
 table th:only-child {
-    	-moz-border-radius: 	8px 8px 0 0;
-    	-webkit-border-radius: 8px 8px 0 0;
-    	border-radius: 			8px 8px 0 0;
+		-moz-border-radius: 	8px 8px 0 0;
+		-webkit-border-radius: 8px 8px 0 0;
+		border-radius: 			8px 8px 0 0;
 }
 
 table tr:last-child td:first-child {
-    	-moz-border-radius: 	0 0 0 8px;
-    	-webkit-border-radius: 0 0 0 8px;
-    	border-radius: 			0 0 0 8px;
+		-moz-border-radius: 	0 0 0 8px;
+		-webkit-border-radius: 0 0 0 8px;
+		border-radius: 			0 0 0 8px;
 }
 
 table tr:last-child td:last-child {
-    	-moz-border-radius: 	0 0 8px 0;
-    	-webkit-border-radius: 0 0 8px 0;
-    	border-radius: 			0 0 8px 0;
+		-moz-border-radius: 	0 0 8px 0;
+		-webkit-border-radius: 0 0 8px 0;
+		border-radius: 			0 0 8px 0;
 }
 
 #calc_table {
-      border-spacing:	8px;
-      border:			8px outset #4a76a8; 
-      font-size: 		large; 
-      font-weight:		bold;
-      border-collapse:	separate;
+	  border-spacing:	8px;
+	  border:			8px outset #4a76a8; 
+	  font-size: 		large; 
+	  font-weight:		bold;
+	  border-collapse:	separate;
 }
 
 .normaltable {
@@ -505,11 +505,11 @@ input[type="button"]:disabled, input[type="button"]:disabled:hover,
 input[type="submit"]:disabled, input[type="submit"]:disabled:hover,
 .linkAsButton:disabled, .linkAsButton:disabled:hover,
 .linkAsButton:link:disabled, .linkAsButton:link:disabled:hover {
-    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #ffffff 0%, #f3f3f3 50%, #ededed 51%, #ffffff 100%) repeat scroll 0px 0px ! important;
-    border-color: #aaaaaa;
-    color: #aaaaaa ! important;
-    cursor: not-allowed;
-    text-shadow: none;
+	background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #ffffff 0%, #f3f3f3 50%, #ededed 51%, #ffffff 100%) repeat scroll 0px 0px ! important;
+	border-color: #aaaaaa;
+	color: #aaaaaa ! important;
+	cursor: not-allowed;
+	text-shadow: none;
 }
 
 input[type="submit"]:hover, .linkAsButton:hover {
@@ -560,4 +560,42 @@ option {
 	margin:				3px;
 	-webkit-appearance: none;
 	font-style:		italic;
+}
+
+/*tooltips*/
+.tooltip {
+	position: relative;
+	display: inline-block;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px;
+	position: absolute;
+	z-index: 100;
+	top: 200%;
+	left: 50px;
+	margin-left: -60px;
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+.tooltip .tooltiptext::after {
+	content: "";
+	position: absolute;
+	bottom: 100%;
+	left: 20px;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent transparent #555 #555;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
 }

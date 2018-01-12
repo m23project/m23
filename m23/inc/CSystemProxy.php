@@ -164,11 +164,11 @@ function CSYSTEMPROXY_getAptGetProxyParamter()
 class CSystemProxy extends CChecks
 {
 	private $proxySettings = array();
+	private $SQUID_INITSCRIPT = '';
+	private $SQUID_FILE = '';
 	
 	const APT_PROXY_FILE = '/etc/apt/apt.conf.d/70debconf';
 // 	const APT_PROXY_FILE = '/tmp/70debconf';
-	const SQUID_FILE = '/etc/squid3/squid.conf';
-// 	const SQUID_FILE = '/tmp/squid.conf';
 	const ENVIRONMENT_FILE = '/etc/environment';
 
 
@@ -182,6 +182,21 @@ class CSystemProxy extends CChecks
 	public function __construct()
 	{
 		$this->loadProxySettings();
+
+		// Detect Squid config file and initscript
+		foreach (array('/etc/squid3/squid.conf' => '/etc/init.d/squid3', '/etc/squid/squid.conf' => '/etc/init.d/squid') as $sqidConfFile => $squidInitscript)
+		{
+			if (file_exists($sqidConfFile))
+			{
+				$this->SQUID_FILE = $sqidConfFile;
+				
+				if (!file_exists($squidInitscript))
+					die('ERROR: Mismatch between Squid config file and initscript name.');
+				
+				$this->SQUID_INITSCRIPT = $squidInitscript;
+				break;
+			}
+		}
 	}
 
 
@@ -262,7 +277,7 @@ class CSystemProxy extends CChecks
 	private function writeSquidConf()
 	{
 		// Only proceed, if the Squid config file exists
-		if (!SERVER_fileExists(CSystemProxy::SQUID_FILE)) return(false);
+		if (!SERVER_fileExists($this->SQUID_FILE)) return(false);
 
 		// Get the parameters
 		$proxyServer = $this->getProxyHostIP();
@@ -277,7 +292,7 @@ class CSystemProxy extends CChecks
 		$proxyLine2 = "never_direct allow all";
 
 		// Read the complete Squid config file
-		$config = SERVER_getFileContents(CSystemProxy::SQUID_FILE);
+		$config = SERVER_getFileContents($this->SQUID_FILE);
 
 		// Remove the possible proxy lines from the configuration
 		$config = trim(HELPER_grepNot($config, "cache_peer "));
@@ -287,10 +302,10 @@ class CSystemProxy extends CChecks
 		if ($this->isProxyActive())
 			$config .= "\n$proxyLine1\n$proxyLine2";
 
-		SERVER_putFileContents(CSystemProxy::SQUID_FILE, $config, "644");
+		SERVER_putFileContents($this->SQUID_FILE, $config, "644");
 
-		// Restart Squid 3
-		SERVER_runInBackground('writeSquidConf', '/etc/init.d/squid3 start; pkill --signal 1 squid', 'root', false);
+		// Restart Squid
+		SERVER_runInBackground('writeSquidConf', $this->SQUID_INITSCRIPT.' start; pkill --signal 1 squid', 'root', false);
 	}
 
 

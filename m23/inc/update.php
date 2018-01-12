@@ -7,22 +7,28 @@ $*/
 
 
 /**
-**name UPDATE_doUpdate($URL)
-**description downloads and executes the update script.
-**parameter URL: url to fetch the update file from
+**name UPDATE_doUpdate()
+**description Makes sure the package repository is included and upgrades the m23 server.
 **/
-function UPDATE_doUpdate($URL)
+function UPDATE_doUpdate()
 {
-	$cmd = CSYSTEMPROXY_getEnvironmentVariables()."\n
-	touch /m23/tmp/serverUpdate.lock
-	wget \"$URL\" -O /m23/tmp/updateCommand.sh
-	chmod +x /m23/tmp/updateCommand.sh
-	echo \"rm /m23/tmp/serverUpdate.lock\" >> /m23/tmp/updateCommand.sh
+	SERVER_runInBackground('m23serverupdate', '
 
-	sudo screen -dmS m23install /m23/tmp/updateCommand.sh
-	";
+	# Make sure the package repository is included
+	if [ $(grep -h ^deb /etc/apt/sources.list /etc/apt/sources.list.d/* | grep -v deb-src | grep \'m23inst.goos-habermann.de\' -c) -eq 0 ]
+	then
+		echo \'deb http://m23inst.goos-habermann.de ./\' > /etc/apt/sources.list.d/m23.list
+	fi
 
-	system($cmd);
+	# Enable unmaintained packages on UCS
+	ucr set repository/online/unmaintained="yes"
+
+	# Do the update
+	export DEBIAN_FRONTEND=noninteractive
+	apt-get update
+	apt-get -m --force-yes -y dist-upgrade
+
+	');
 };
 
 
@@ -35,7 +41,7 @@ function UPDATE_doUpdate($URL)
 **/
 function UPDATE_running()
 {
-	return(SERVER_runningInScreen('m23install', 'root'));
+	return(SERVER_runningInScreen('m23serverupdate', 'root'));
 }
 
 

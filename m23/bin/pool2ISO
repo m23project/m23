@@ -1,0 +1,31 @@
+#!/bin/bash
+
+pool="$(basename $1)"
+poolDir="/m23/data+scripts/pool/$pool"
+cdName="Repo-$pool"
+
+if [ -z "$pool" ] || [ ! -d "$poolDir" ]
+then
+	echo "ERROR: \"$poolDir\" doesn't exist!"
+	exit 1
+fi
+
+cd "$poolDir"
+
+mkisofs -p "$cdName" -A "$cdName" -T -J -joliet-long -R -V "$cdName" -o "../$cdName.iso" .
+
+echo "
+============
+
+Lines to use the ISO in the sources.list:
+
+Use DVD directly:
+
+deb cdrom:[\"$cdName\"]/ ./
+
+
+Use mounted into /mnt/loop:
+
+deb file:/mnt/loop ./
+
+"

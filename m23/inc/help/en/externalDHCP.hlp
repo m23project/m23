@@ -16,6 +16,11 @@ Solutions:
 <h3>The other DHCP server CANNOT be deactivated</h3>
 In this case you need to adjust the configuration of the other DHCP server manually and set up a TFTP server if necessary. Have a look into the documentation of your DHCP and TFTP servers for correct configuration.
 
+<!-- v18.1 begin-->
+<h4>Alternatively: $I18N_makeBootMedia</h4>
+When it is not possible to change the configuration of your DHCP server, you can still start your m23 client using a USB / optical boot medium, and then on the client's command line, run the script "<code>fetchJobManual</code>" to start the client's install process. Further information about boot medium creation is available from <i>"$I18N_makeBootMedia"</i> in the menu.
+<!-- v18.1 end-->
+
 <!-- v16.1 begin-->
 <h4>Configuring DHCP servers dynamically</h4>
 Each time the network boot status of a client is changed (activated / deactivated), the script <i>"/m23/bin/externalDHCPControl.sh"</i> is called. You can adapt this script according to your needs in order to dynamically configure an existing DHCP server. More information can be found in the comments inside the script file.

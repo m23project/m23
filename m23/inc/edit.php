@@ -553,4 +553,26 @@ function EDIT_replaceLineElseAdd($file,$search,$replace)
 	return(EDIT_deleteMatching($file,$search)."
 ".EDIT_addIfNotExists($file,$search,$replace));
 }
+
+
+
+
+
+/**
+**name EDIT_appendToFile($file, $text)
+**description Appends a text to a file on a client.
+**parameter file: Name of the file.
+**parameter text: The text to append.
+**returns Code for appending a text to a file on a client.
+**/
+function EDIT_appendToFile($file, $text)
+{
+$stopper = uniqid('EDIT_appendToFile');
+
+return("
+cat >> $file << \"$stopper\"
+$text
+$stopper
+");
+}
 ?>

@@ -24,7 +24,6 @@ include_once('/m23/inc/CObjectStorage.php');
 include("/m23/inc/helper.php");
 include("/m23/inc/html.php");
 
-
 if (file_exists('/m23/inc/m23shared/m23shared.php')) include_once('/m23/inc/m23shared/m23shared.php');
 
 session_start();
@@ -142,6 +141,7 @@ include_once('/m23/inc/CGPGSign.php');
 include_once('/m23/inc/CSystemProxy.php');
 include_once('/m23/inc/CPackageStatusCompare.php');
 include_once('/m23/inc/CAutoUpdate.php');
+if (is_dir('/m23/data+scripts/m23admin/xhprof')) include("/m23/inc/CXhprof.php");
 
 
 CAPTURE_load();
@@ -318,8 +318,8 @@ switch($m23_page)
 		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "tools/makeBootDisk.php");
 		break;
 		
-	case 'makeBootCD':
-		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "tools/makeBootCD.php");
+	case 'makeBootMedia':
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "tools/makeBootMedia.php");
 		break;
 
 	/* SERVER */
@@ -349,6 +349,10 @@ switch($m23_page)
 
 	case 'systemProxy':
 		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/systemProxy.php");
+		break;
+
+	case 'serverFeatures':
+		$page = ($_SESSION['m23Shared'] === true ? "misc/support.php" : "server/serverFeatures.php");
 		break;
 
 	case 'calculator':
@@ -413,6 +417,10 @@ switch($m23_page)
 
 	case 'manageImageFiles':
 		$page = "server/manageImageFiles.php";
+		break;
+
+	case 'xhprof':
+		$page = "server/xhprof.php";
 		break;
 
   /* PLUGINS */
@@ -483,8 +491,10 @@ switch($m23_page)
 
  <body bgcolor="#596374" onload="if (typeof setEFIStartEndPositionIfEFIBootPartitionTypeIsSet == 'function') { setEFIStartEndPositionIfEFIBootPartitionTypeIsSet(); }">
 <?
+/*
 	HTML_esel();
 	HTML_questionnaire(isset($_GET['disableQuestionnaire']) && ($_GET['disableQuestionnaire'] == 1));
+*/
 ?>
 
 <table align="left" cellspacing="0"  cellpadding="5" border="0">

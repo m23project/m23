@@ -12,7 +12,9 @@
 		$action = 'no_action_selected';
 
 	//do actions to the clients
-	$checkOff=false;
+	$checkOff = false;
+	
+	$clientOnlineStatusColumn = SERVER_isClientOnlineStatusEnabled();
 
 	//Create editlines and get the search term
 	$searchLine = CLIENT_getOverviewSearchLine(2);
@@ -176,6 +178,12 @@
 			<a href=\"index.php?page=clientsoverview&orderBy=name&direction=desc&action=$action\&searchLine=$searchLine\"><img src=\"/gfx/downArrow.png\" border=0></a>
 		</span>
 	</td>
+	");
+
+	if ($clientOnlineStatusColumn)
+		echo("<td align=\"center\"><span class=\"subhighlight\">$I18N_onlineStatus</span></td>");
+
+	echo("
 	<!-- m23customPatchBegin type=change id=additionalColumnHeadings-->
 	<!-- m23customPatchEnd id=additionalColumnHeadings-->
 	<td align=\"center\"><span class=\"subhighlight\">$I18N_group</span></td>
@@ -202,85 +210,94 @@
 
 	if($results)
 	{
-	  while( $data = mysqli_fetch_array($results) ) //Schleife mit Client-Daten
-	   {
-		/* LINK für Action setzen */
-		switch ($action)
+		while( $data = mysqli_fetch_array($results) ) //Schleife mit Client-Daten
 		{
-			case "setup":
-				$link = "<a href=\"index.php?page=fdisk&id=$data[id]&client=$data[client]&clearSession=1\">$I18N_setup</a>"; break;
-				
-	    	case "install":
-				$link = "<a href=\"index.php?page=installpackages&client=$data[client]&id=$data[id]\">$I18N_install</a>"; break;
+			/* LINK für Action setzen */
+			switch ($action)
+			{
+				case "setup":
+					$link = "<a href=\"index.php?page=fdisk&id=$data[id]&client=$data[client]&clearSession=1\">$I18N_setup</a>"; break;
+					
+				case "install":
+					$link = "<a href=\"index.php?page=installpackages&client=$data[client]&id=$data[id]\">$I18N_install</a>"; break;
+	
+				case "deinstall":
+					$link = "<a href=\"index.php?page=installpackages&client=$data[client]&id=$data[id]&key=asdfghjkldfgrf&action=deinstall\">$I18N_deinstall</a>"; break;
+					
+				case "update":
+					$link = "<a href=\"index.php?page=installpackages&client=$data[client]&id=$data[id]&action=update\">$I18N_update</a>"; break;
+					
+				case "delete":
+					$link = "<a href=\"index.php?page=deleteclient&id=$data[id]&client=$data[client]\">$I18N_delete</a>"; break;
+					
+				case "critical":
+					$link = "<a href=\"index.php?page=clientdetails&client=$data[client]&id=$data[id]#criticalStatus\">$I18N_repair</a>"; break;
+					
+				case "massInstall":
+					$link = "<a href=\"index.php?page=massInstall&client=$data[client]&id=$data[id]\">$I18N_massInstall</a>"; break;	
+					
+				default:
+					$link = "<a href=\"index.php?page=clientdetails&client=$data[client]&id=$data[id]\">$I18N_controlCenter</a>";
+			};
 
-			case "deinstall":
-				$link = "<a href=\"index.php?page=installpackages&client=$data[client]&id=$data[id]&key=asdfghjkldfgrf&action=deinstall\">$I18N_deinstall</a>"; break;
-				
-			case "update":
-				$link = "<a href=\"index.php?page=installpackages&client=$data[client]&id=$data[id]&action=update\">$I18N_update</a>"; break;
-				
-			case "delete":
-				$link = "<a href=\"index.php?page=deleteclient&id=$data[id]&client=$data[client]\">$I18N_delete</a>"; break;
-				
-			case "critical":
-				$link = "<a href=\"index.php?page=clientdetails&client=$data[client]&id=$data[id]#criticalStatus\">$I18N_repair</a>"; break;
-				
-			case "massInstall":
-				$link = "<a href=\"index.php?page=massInstall&client=$data[client]&id=$data[id]\">$I18N_massInstall</a>"; break;	
-				
-			default:
-				$link = "<a href=\"index.php?page=clientdetails&client=$data[client]&id=$data[id]\">$I18N_controlCenter</a>";
-		};
-		
-		/* Anzahl der installierten Pakete für Client zählen*/
-		$counted_clientpackages = PKG_countPackages($data['client']);
+			/* Anzahl der installierten Pakete für Client zählen*/
+			$counted_clientpackages = PKG_countPackages($data['client']);
+// 			$counted_clientpackages = $data['trg_sum_clientpackages'];
 
-		/* Anzahl der anstehenden Jobs für Client zählen*/
-		$counted_waitingClientjobs = PKG_countJobs($data['client'],'waiting');
-		$counted_clientjobs = PKG_countJobs($data['client'],'');
-		 
-		$htmlStatus=CLIENT_generateHTMLStatusBar($data['client']);
-
-		/* Unix Datum in Lesbares Datum umwandeln */
-		$installdate = date($DATE_TIME_FORMAT, $data['installdate']);
-		$lastmodify = date($DATE_TIME_FORMAT, $data['lastmodify']);
-		
-		if (($lineNr%2) == 1)
-			$class=' class="oddrow"';
-		else
-			$class=' class="evenrow"';
-
-		/* Spalte für Client ausgeben */
-		echo("
-		<tr$class>
-			<td>".($lineNr+1)."</td>
-			<td align=\"left\">$htmlStatus</td>
-			<td><a href=\"index.php?page=clientdetails&client=".$data['client']."&id=".$data['id']."\">$data[client]</a></td>
-		");
-//m23customPatchBegin type=change id=additionalColumnsDisplayCode
-//m23customPatchEnd id=additionalColumnsDisplayCode
-
-		echo("
-			<td>");
-
-				GRP_showClientGroups($data['client'],true);
-
-				if (isset($_POST["CB_do$lineNr"]) && !$checkOff)
-					$checked="checked";
-				else
-					$checked="";
-
-		echo("
-			</td>
-			<td> <INPUT type=\"checkbox\" name=\"CB_do$lineNr\" value=\"$data[client]\" $checked> </td>
-			<td> <a href=\"index.php?page=clientpackages&id=$data[id]&client=$data[client]\">$counted_clientpackages</a> </td>
-			<td> <a href=\"index.php?page=changeJobs&id=$data[id]&client=$data[client]\">$counted_waitingClientjobs/$counted_clientjobs</a> </td>
-			<td> $installdate </td>
-			<td nowrap> $lastmodify </td>
-			<td> $link </td>
-		</tr>");
-		$lineNr++;
-	   }
+			/* Anzahl der anstehenden Jobs für Client zählen*/
+			$counted_waitingClientjobs = PKG_countJobs($data['client'],'waiting');
+			$counted_clientjobs = PKG_countJobs($data['client'],'');
+			
+			$htmlStatus=CLIENT_generateHTMLStatusBar($data['client'], $data['id'], $data['status'], $data['vmRole'], $data['vmSoftware']);
+	
+			/* Unix Datum in Lesbares Datum umwandeln */
+			$installdate = date($DATE_TIME_FORMAT, $data['installdate']);
+			$lastmodify = date($DATE_TIME_FORMAT, $data['lastmodify']);
+			
+			if (($lineNr%2) == 1)
+				$class=' class="oddrow"';
+			else
+				$class=' class="evenrow"';
+	
+			/* Spalte für Client ausgeben */
+			echo("
+			<tr$class>
+				<td>".($lineNr+1)."</td>
+				<td align=\"left\">$htmlStatus</td>
+				<td><a href=\"index.php?page=clientdetails&client=".$data['client']."&id=".$data['id']."\">$data[client] ($data[id])</a></td>
+			");
+	
+			if ($clientOnlineStatusColumn)
+			{
+				$dr_state = CLIENT_generateHTMLDedicatedAndReachableStatus($data['client']);
+				echo("<td align=\"left\">$dr_state[html]</td>");
+			}
+	
+			
+	//m23customPatchBegin type=change id=additionalColumnsDisplayCode
+	//m23customPatchEnd id=additionalColumnsDisplayCode
+	
+			echo("
+				<td>");
+	
+					GRP_showClientGroups($data['client'],true);
+	
+					if (isset($_POST["CB_do$lineNr"]) && !$checkOff)
+						$checked="checked";
+					else
+						$checked="";
+	
+			echo("
+				</td>
+				<td> <INPUT type=\"checkbox\" name=\"CB_do$lineNr\" value=\"$data[client]\" $checked> </td>
+				<td> <a href=\"index.php?page=clientpackages&id=$data[id]&client=$data[client]\">$counted_clientpackages</a> </td>
+				<td> <a href=\"index.php?page=changeJobs&id=$data[id]&client=$data[client]\">$counted_waitingClientjobs/$counted_clientjobs</a> </td>
+				<td> $installdate </td>
+				<td nowrap> $lastmodify </td>
+				<td> $link </td>
+			</tr>");
+			$lineNr++;
+		}
 	}
 	
 	HTML_showTableEnd(true);

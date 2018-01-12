@@ -1713,25 +1713,33 @@ function VM_GUIstepCreateGuest()
 	//Input lines for the VM name, its MAC and the RAM and harddisk sizes
 	$_SESSION['VM_name'] = HTML_input("ED_VMName");
 	$_SESSION['VM_mac'] = HTML_input("ED_mac",HELPER_randomMAC(), 17);
-	$_SESSION['VM_ram'] = HTML_input("ED_ram",256, 4);
+	$_SESSION['VM_ram'] = HTML_input("ED_ram",1024, 4);
 	$_SESSION['VM_diskSize'] = HTML_input("ED_diskSize",8192, 6);
 
 	//Button for creating the VM
 	if (HTML_submit("BUT_createVM",$I18N_create))
 	{
-		$diskName = $_SESSION['VM_name']."hda";
-		$cmd = VM_createDiskImage($_SESSION['VM_software'], $_SESSION['VM_name'], $diskName, $_SESSION['VM_diskSize']);
-		$cmd .= VM_createVM($_SESSION['VM_software'], $_SESSION['VM_name'], $_SESSION['VM_ram'], $diskName, $_SESSION['VM_mac'],$_SESSION['VM_netDev']);
-		//Execute and get the output or false if there was an error code returned
-		$VMCReationMessage = CLIENT_executeOnClientOrIP($_SESSION['VM_host'],"VM_create",$cmd,"m23-vbox",false);
-		//Check if the creation message contains FAILED. If not the creation should have been sucessfully
-
-		//Count the occurrence of FAILED and VERR_ALREADY_EXISTS (this is prompted if an existing harddisk image is re-used)
-		$failedCount = substr_count($VMCReationMessage,"FAILED");
-		$VERR_ALREADY_EXISTSCount = substr_count($VMCReationMessage,"VERR_ALREADY_EXISTS");
-
-		//If there are NOT more VERR_ALREADY_EXISTS errors than FAILED errors VBox only complains about creating an existing virtual harddisk, that can be re-used in the same VM
-		$VMCreationOK = ($failedCount <= $VERR_ALREADY_EXISTSCount);
+		if (!CLIENT_exists($_SESSION['VM_name']))
+		{
+			$diskName = $_SESSION['VM_name']."hda";
+			$cmd = VM_createDiskImage($_SESSION['VM_software'], $_SESSION['VM_name'], $diskName, $_SESSION['VM_diskSize']);
+			$cmd .= VM_createVM($_SESSION['VM_software'], $_SESSION['VM_name'], $_SESSION['VM_ram'], $diskName, $_SESSION['VM_mac'],$_SESSION['VM_netDev']);
+			//Execute and get the output or false if there was an error code returned
+			$VMCReationMessage = CLIENT_executeOnClientOrIP($_SESSION['VM_host'],"VM_create",$cmd,"m23-vbox",false);
+			//Check if the creation message contains FAILED. If not the creation should have been sucessfully
+	
+			//Count the occurrence of FAILED and VERR_ALREADY_EXISTS (this is prompted if an existing harddisk image is re-used)
+			$failedCount = substr_count($VMCReationMessage,"FAILED");
+			$VERR_ALREADY_EXISTSCount = substr_count($VMCReationMessage,"VERR_ALREADY_EXISTS");
+	
+			//If there are NOT more VERR_ALREADY_EXISTS errors than FAILED errors VBox only complains about creating an existing virtual harddisk, that can be re-used in the same VM
+			$VMCreationOK = ($failedCount <= $VERR_ALREADY_EXISTSCount);
+		}
+		else
+		{
+			$VMCreationOK = false;
+			$VMCReationMessage = $I18N_client_exists;
+		}
 	}
 	else
 		$VMCreationOK = $VMCReationMessage = false;
@@ -1995,6 +2003,8 @@ function VM_getAllVMHosts($VM_software)
 **/
 function VM_setVisualURL($VMguest,$url)
 {
+	$data = array();
+
 	//Get information about the VM guest and its host
 	$info = VM_getSWandHost($VMguest);
 
@@ -2024,7 +2034,9 @@ function VM_setVisualURL($VMguest,$url)
 **/
 function VM_setHostInDB($VMhost, $password, $vmSoftware)
 {
-	$data = CLIENT_getParams($VMhost);
+// 	$data = CLIENT_getParams($VMhost);
+	$data = array();
+
 	$data['vmVisualPassword'] = $password;
 // 	Add the virtualisation software and role by binary ORing
 	$data['vmSoftware'] = ($data['vmSoftware'] | $vmSoftware);
@@ -2046,7 +2058,8 @@ function VM_setHostInDB($VMhost, $password, $vmSoftware)
 **/
 function VM_setGuestInDB($clientName, $VMSoftware, $VMHostName)
 {
-	$data = CLIENT_getParams($clientName);
+// 	$data = CLIENT_getParams($clientName);
+	$data = array();
 	$VMHostID = CLIENT_getId($VMHostName);
 	
 	$data['vmRunOnHost'] = $VMHostID;
@@ -2062,15 +2075,18 @@ function VM_setGuestInDB($clientName, $VMSoftware, $VMHostName)
 
 
 /**
-**name VM_statusIcons($param)
+**name VM_statusIcons($clientName, $id, $vmRole, $vmSoftware)
 **description Returns HTML codes that include the VM status icons of the client.
-**parameter param: Client's parameter array.
+**parameter clientName: Name of the m23 client
+**parameter id: ID of the m23 client
+**parameter vmRole: Role of the m23 client (host, guest, no virtualisation)
+**parameter vmSoftware: Number of the used virtualisation software.
 **returns HTML codes with included status icons.
 **/
-function VM_statusIcons($param)
+function VM_statusIcons($clientName, $id, $vmRole, $vmSoftware)
 {
-	//Exit the function if the client has nox VMs
-	if ($param['vmRole'] == VM_ROLE_NONE)
+	//Exit the function if the client has no VMs
+        if ($vmRole == VM_ROLE_NONE)
 		return("");
 
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
@@ -2079,22 +2095,22 @@ function VM_statusIcons($param)
 	//Array with status icon and description for the virtualsiation soulutions on host and guest.
 	$imgA['VM_ROLE_HOST']['VM_SW_VBOX'][0] = "vm-server-vbox-mini.png";
 	$imgA['VM_ROLE_HOST']['VM_SW_VBOX'][1] = $I18N_VMServerVBox;
-	$imgA['VM_ROLE_HOST']['VM_SW_VBOX'][2] = "index.php?page=clientsoverview&vmRunOnHost=$param[id]";
+        $imgA['VM_ROLE_HOST']['VM_SW_VBOX'][2] = "index.php?page=clientsoverview&vmRunOnHost=$id";
 
 //	$imgA['VM_ROLE_HOST']['VM_SW_KVM'][0] = "vm-server-mini.png";
 	$imgA['VM_ROLE_GUEST']['VM_SW_VBOX'][0] = "vm-client-vbox-mini.png";
 	$imgA['VM_ROLE_GUEST']['VM_SW_VBOX'][1] = $I18N_VMClientVBox;
-	$imgA['VM_ROLE_GUEST']['VM_SW_VBOX'][2] = "index.php?page=clientdetails&client=$param[client]&id=$param[id]#virtualisation";
+        $imgA['VM_ROLE_GUEST']['VM_SW_VBOX'][2] = "index.php?page=clientdetails&client=$clientName&id=$id#virtualisation";
 
 	//Run thru all known roles
 	foreach (array_keys($imgA) as $role)
 	{
 		//Check if the client is in a special role
-		if (($param['vmRole'] & $role) == $role)
+                if (($vmRole & $role) == $role)
 			//Check if the client uses a special virtualisation software in this rule
 			foreach (array_keys($imgA[$role]) as $vmSW)
 				//Choose the icon and title by role and virtualisation software
-				if (($param['vmSoftware'] & $vmSW) == $vmSW)
+                                if (($vmSoftware & $vmSW) == $vmSW)
 					$html .= '<a href="'.$imgA[$role][$vmSW][2].'"><img src="/gfx/'.$imgA[$role][$vmSW][0].'" title="'.$imgA[$role][$vmSW][1].'" border=0></a> ';
 	}
 	return($html);
@@ -2124,7 +2140,7 @@ function VM_createDiskImage($type, $vmName, $diskName, $size, $imageDir = VM_IMA
 		case VM_SW_VBOX:
 			//size in MB
 			$cmd = "mkdir -p \"".VM_IMAGE_DIR."/vbox/$vmName/\"
-			if [ `VBoxManage --version | cut -d'.' -f1` -eq 4 ]
+			if [ `VBoxManage --version | cut -d'.' -f1` -gt 3 ]
 			then
 				VBoxManage createhd --filename \"$imageDir/vbox/$vmName/$diskName.vdi\" --size $size 2>&1 | cat
 			else
@@ -2236,7 +2252,7 @@ function VM_createVM($type, $vmName, $ramSize, $diskName, $mac, $netDev, $imageD
 					VBoxManage modifyvm \"$vmName\" -pae \$hwvirt -ostype debian -memory $ramSize -vram 8 -acpi on -ioapic off -hwvirtex \$hwvirt -nestedpaging \$hwvirt -monitorcount 1 -bioslogofadein off -bioslogofadeout off -hda \"$imageDir/vbox/$vmName/$diskName.vdi\" -nic1 hostif -hostifdev1 $netDev -cableconnected1 on -macaddress1 $mac\n
 				else
 					VBoxManage storagectl \"$vmName\" --name \"IDE Controller\" --add ide
-					VBoxManage modifyvm \"$vmName\" --pae \$hwvirt --ostype debian --memory $ramSize --vram 8 --acpi on --ioapic off --hwvirtex \$hwvirt --nestedpaging \$hwvirt --monitorcount 1 --bioslogofadein off --bioslogofadeout off --hda \"$imageDir/vbox/$vmName/$diskName.vdi\" --nic1 bridged --bridgeadapter1 $netDev --cableconnected1 on --macaddress1 $mac
+					VBoxManage modifyvm \"$vmName\" --pae \$hwvirt --ostype debian_64 --memory $ramSize --vram 32 --acpi on --ioapic off --hwvirtex \$hwvirt --nestedpaging \$hwvirt --monitorcount 1 --bioslogofadein off --bioslogofadeout off --hda \"$imageDir/vbox/$vmName/$diskName.vdi\" --nic1 bridged --bridgeadapter1 $netDev --cableconnected1 on --macaddress1 $mac
 				fi
 				\n";
 	}

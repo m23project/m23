@@ -1422,4 +1422,21 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_autoUpdateFinishedErrorTooManyFailures = 'Zuviele fehlgeschlagene Versuche beim automatischen Update';
 @$I18N_autoUpdateFinishedWrongParameters = 'Widersprüchliche Statusinformationen zum automatischen Update';
 @$I18N_clientname_must_not_be_a_number = 'Der Clientname darf keine Zahl sein.';
+
+//18.1
+@$I18N_reason="Grund";
+@$I18N_changePackageInstallReason="Ändere Grund";
+@$I18N_serverFeatures = 'Serverfunktionen';
+@$I18N_serverFeature = 'Serverfunktion';
+@$I18N_clientOnlineStatusEnabled = 'Client-Online-Status ermitteln und anzeigen';
+@$I18N_updatePackageInfosDisabled = 'Client-Paketstatus nicht an m23-Server übertragen';
+@$I18N_liveLogDisabled = 'Echtzeit-Protokoll deaktivieren';
+@$I18N_onlineStatus = 'Online-Status';
+@$I18N_xhprof = 'Xhprof-Einstellungen';
+@$I18N_xhprof_activate = 'Xhprof (de)aktivieren';
+@$I18N_xhprof_save_results = 'Resultate speichern';
+@$I18N_xhprof_show_results = 'Resultate anzeigen';
+@$I18N_UCSUpdateWarning = 'Wenn Sie Ihrern m23-Server über diese Seite aktualisieren, geschieht dies am "Univention App Center" vorbei. Hierdurch erhalten Sie ggf. neuere m23-Versionen (z.B. mit Fehlerkorrekturen und neuen Funktionen) als über das "Univention App Center". Diese m23-Versionen sind somit aktueller, haben allerdings (noch) nicht die Überprüfung durch Univention durchlaufen. Außerdem werden über die Update-Funktion die UCS-unmaintained-Paketquelle aktiviert und anschließend ein "dist-upgrade" angestoßen, bei dem auch nicht-m23-Pakete aktualisiert werden.';
+@$I18N_makeBootMedia = 'Bootmedien erstellen';
+@$I18N_downloadBootMedia = 'Bootmedien herunterladen';
 ?>

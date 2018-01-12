@@ -1174,6 +1174,40 @@ function PKG_changePrioritySelectedPackages($amount, $client, $newPriority)
 
 
 /**
+**name PKG_changeInstallReasonSelectedPackages($amount, $client, $newReason)
+**description Changes the priority of selected wait4acc packages.
+**parameter amount: amount of selected packages
+**parameter client: name of client to install packages on
+**parameter newReason: The new reason to set.
+**/
+function PKG_changeInstallReasonSelectedPackages($amount, $client, $newReason)
+{
+	$newReason = CHECK_text2db($newReason);
+	$count = 0;
+	$cbTypes = array("CB_rmNormalpkg","CB_rmpkg","CB_rmNormalRemovepkg");
+
+	for ($i = 0; $i < $amount; $i++)
+	{
+		foreach ($cbTypes as $cbType)
+		{
+			$var = $cbType.$i;
+
+			if (!empty($_POST[$var]))
+			{
+				DB_query("UPDATE `clientjobs` SET reason = '$newReason' WHERE client='$client' AND status='wait4acc' AND (((package='m23normal' OR package='m23normalRemove') AND normalPackage='".$_POST[$var]."') OR package='".$_POST[$var]."');");
+				$count++;
+				break;
+			}
+		}
+	}
+	return($counter);
+};
+
+
+
+
+
+/**
 **name PKG_rmSelectedPackages($amount,$client)
 **description removes normal packages from db
 **parameter amount: amount of selected packages
@@ -1237,7 +1271,7 @@ HTML_jsCheckboxChanger('JS_checkboxChanger');
 HTML_checkboxChangerButtons('BUT_checkboxChanger');
 
 //search for all packages witn status wait4acc
-$sql = "SELECT package,params,normalPackage,id,installedSize,priority FROM `clientjobs` WHERE client='$client' AND status='wait4acc' ORDER BY package, normalPackage";
+$sql = "SELECT package,params,normalPackage,id,installedSize,priority,reason FROM `clientjobs` WHERE client='$client' AND status='wait4acc' ORDER BY package, normalPackage";
 $result = DB_query($sql); //FW ok
 
 echo(JS_checkboxChanger."
@@ -1245,6 +1279,7 @@ echo(JS_checkboxChanger."
 		<td></td>
 		<td><span class=\"subhighlight\">$I18N_status</span></td>
 		<td><span class=\"subhighlight\">$I18N_package_name</span></td>
+<!--		<td><span class=\"subhighlight\">$I18N_reason</span></td> -->
 		<td><span class=\"subhighlight\">$I18N_size</span></td>
 		<td><span class=\"subhighlight\">$I18N_parameter</span></td>
 		<td><span class=\"subhighlight\">$I18N_options</span></td>
@@ -1302,6 +1337,7 @@ while ($line=mysqli_fetch_row($result))
 				<td>$jobImg</td>
 				<td valign=\"top\">$status</td>
 				<td valign=\"top\"><b>".$line[2]."</b></td>
+				<td valign=\"top\">".wordwrap(preg_replace("/\r\n|\r|\n/",'<br>',$line[6]),75,"<br>",1)."</td>
 				<td valign=\"top\">".I18N_number_format((float)$line[4]/1024)." MB</td>
 				<td valign=\"top\">".PKG_listParams($line[1])."</td>
 				<td valign=\"top\"><CENTER>".PKG_hasOptions($line[2], $packageID, $distr, $client, $release)."</CENTER></td>
@@ -1317,6 +1353,7 @@ while ($line=mysqli_fetch_row($result))
 				<td>$jobImg</td>
 				<td valign=\"top\">$status</td>
 				<td valign=\"top\"><b>".$line[0]."</b></td>
+				<td valign=\"top\">".wordwrap(preg_replace("/\r\n|\r|\n/",'<br>',$line[6]),75,"<br>",1)."</td>
 				<td valign=\"top\">".I18N_number_format((float)$line[4]/1024)." MB</td>
 				<td valign=\"top\">".PKG_listParams($line[1])."</td>
 				<td valign=\"top\"><CENTER>".PKG_hasOptions($line[0], $packageID, $distr, $client, $release)."</CENTER></td>
@@ -2740,6 +2777,7 @@ function PKG_countPackages($clientName)
 {
 	CHECK_FW(CC_clientname, $clientName);
 	$sql = "SELECT COUNT(*) FROM `clientpackages` WHERE clientname='$clientName'";
+// 	$sql = "SELECT trg_sum_clientpackages FROM `clients` WHERE client='$clientName'";
 	$clientpackages = db_query($sql); //FW ok
 	$counted_clientpackages = mysqli_fetch_row( $clientpackages );
 
@@ -2787,8 +2825,8 @@ function PKG_copyPackagesToClient($to,$from,$status)
 
 	while( $data = mysqli_fetch_array($res))
 	{
-		$iSQL="INSERT INTO `clientjobs` (`client` , `package` , `priority` , `status` , `params` , `normalPackage` , `installedSize` ) VALUES (
-		'$to', '$data[package]', '$data[priority]', '$data[status]', '$data[params]', '$data[normalPackage]', '$data[installedSize]')";
+		$iSQL="INSERT INTO `clientjobs` (`client` , `package` , `reason` , `priority` , `status` , `params` , `normalPackage` , `installedSize` ) VALUES (
+		'$to', '$data[package]', '$data[reason]', '$data[priority]', '$data[status]', '$data[params]', '$data[normalPackage]', '$data[installedSize]')";
 
 		DB_query($iSQL); //FW ok
 	};
@@ -3285,4 +3323,24 @@ function PKG_addNormalJob($client, $packageName, $priority = 25)
 
 	PKG_addStatusJob($client,"m23normal",$priority,$packageName,"waiting");
 };
+
+
+
+
+
+/**
+**name PKG_recountAllClientPackages()
+**description Recounts all packages of a client and updates corresponding fields in the database.
+**/
+function PKG_recountAllClientPackages()
+{
+	foreach (CLIENT_getNames() as $client)
+	{
+		$sql = "SELECT COUNT(*) FROM `clientpackages` WHERE clientname='$client'";
+		$clientpackages = db_query($sql); //FW ok
+		$counted_clientpackages = mysqli_fetch_row( $clientpackages );
+		$sql="UPDATE `clients` SET trg_sum_clientpackages = ".$counted_clientpackages[0]." WHERE client = '$client'";
+		DB_query($sql);
+	}
+}
 ?>
