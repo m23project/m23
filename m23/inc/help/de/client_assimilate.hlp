@@ -16,5 +16,9 @@ Für eine automatische Integration wird auf der Clientseite ein laufender SSH-Däm
 Sollte auf dem Client kein SSH-Dämon laufen, so ist es auch möglich, den Integrationsprozeß auf dem Client per Hand anzustoßen. Führen Sie dazu folgende Befehle als "root" in der Konsole des Clients aus (serverIP dabei durch die IP des m23-Servers ersetzen):
 <code>cd /tmp; wget http://&lt;serverIP&gt;/work.php -O work.php; sh work.php</code>
 
+<u>Fehlerbehandlung</u>
+<!--begin v18.2 -->Sollte sich Ihr Rechner nicht integrieren lassen, so verwenden Sie die <i>"Manuelle Integration"</i>, erweitern den Aufruf aber um die Client-ID (abzulesen aus der in Klammern stehenden Zahl unter <i>"$I18N_overview_clients"</i> hinter dem Clientnamen). Der Aufruf sieht damit folgendermaßen aus:
+<code>cd /tmp; wget http://&lt;serverIP&gt;/work.php?m23clientID=&lt;clientID&gt -O work.php; sh work.php</code><!--end v18.2 -->
+
 <u>Hinweis für die Integration von Ubuntu-Systemen</u>
 Ubuntusysteme lassen sich normalerweise nur manuell integrieren, da bei der Standardinstallation <!--begin v1.17 das root-Konto deaktiviert und end v1.17--> kein laufender SSH-Dämon vorhanden ist. Starten Sie deshalb auf dem Ubuntu-Rechner eine Root-Konsole und beginnen Sie mit der manuellen Integration.

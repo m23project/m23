@@ -237,8 +237,9 @@ function CHECK_FW()
 			continue;
 
 		// Adds an extra character at position 1, if it does not exist. This disables showing the PHP warning, when accessing the 1st character
-		if (!isset($typeS{1}))
+		if ((!is_numeric($typeS)) && (!isset($typeS{1})))
 			$typeS{1}='°';
+			
 
 		switch ($typeS{0})
 		{

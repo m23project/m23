@@ -55,7 +55,7 @@ function ASSI_addClient($client, $ip, $password, $ubuntuUser, $clientUsesDynamic
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	$data['client'] = $client;
 	$data['ip'] = $ip;
-	$data['newgroup'] = "default";
+	$data['newgroup'] = array("default");
 	$data['rootpassword'] = $password;
 	$data['clientUsesDynamicIP'] = $clientUsesDynamicIP;
 
@@ -127,7 +127,7 @@ function ASSI_prepareClient()
 	
 		apt-get update
 	
-		apt-get -y --force-yes install wget screen sed ssh parted gawk hwsetup hwdata-knoppix m23hwscanner dmidecode m23-initscripts finger debconf-utils");
+		apt-get -y --force-yes install wget screen sed ssh parted gawk hwsetup hwdata-knoppix m23hwscanner dmidecode m23-initscripts finger debconf-utils net-tools");
 
 		CLCFG_fetchm23BasicTools("");
 		CIR_writeClientID($clientParams);

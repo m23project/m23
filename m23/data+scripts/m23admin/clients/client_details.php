@@ -55,6 +55,7 @@ CLIENT_DETAILS_addIcon("exportPackageStatus", "", "exportPackageStatus.png", "$I
 CLIENT_DETAILS_endCategory();
 
 
+
 CLIENT_DETAILS_beginCategory($I18N_clientAdministration, "clientAdmin");
 CLIENT_DETAILS_addIcon("installpackages", "", "install.png", "$I18N_install_packages", $I18N_install_packages_tooltip);
 CLIENT_DETAILS_addIcon("installpackages", "&action=deinstall", "deinstall.png", "$I18N_deinstall_packages", $I18N_deinstall_packages_tooltip);
@@ -78,7 +79,10 @@ echo('</tr><tr>'); //Make a third row for the icons
 CLIENT_DETAILS_addIcon("poolFromClientDebs", "", "poolFromClient.png", $I18N_poolFromClientDebs, $I18N_createPoolFromClientDebs_tooltip);
 CLIENT_DETAILS_addIcon('deleteclient&id='.$_GET['id'].'&client='.$_GET['client'], '', 'trash.png', $I18N_delete_client, $I18N_client_delete_tooltip);
 
+if ($params['status'] == STATUS_YELLOW)
+	CLIENT_DETAILS_addIcon('fdisk&id='.$_GET['id'].'&clearSession=1&client='.$_GET['client'], '', 'yellow.png', $I18N_setup_client, $I18N_setup_client_tooltip);
 CLIENT_DETAILS_endCategory();
+
 
 
 CLIENT_DETAILS_beginCategory($I18N_repairCriticalStatus, "criticalStatus");
@@ -116,11 +120,19 @@ CLIENT_DETAILS_addIcon("rescueclient", "&deactivate=$rescueStatus", "help.png", 
 
 CLIENT_DETAILS_endCategory();
 
-
-
 //Check if the client is a VM client
 $vmSwHost = VM_getSWandHost($_GET['client']);
-if ($vmSwHost != false)
+
+if (VM_isHost($_GET['client']) !== false)
+{
+	CLIENT_DETAILS_beginCategory($I18N_virtualisation, "virtualisation");
+
+	HTML_showTableRow($I18N_VMHostSoftwareInstalled);
+
+	CLIENT_DETAILS_endCategory();
+
+}
+elseif ($vmSwHost != false)
 {
 	CLIENT_DETAILS_beginCategory($I18N_virtualisation, "virtualisation");
 	//Try to execute the command

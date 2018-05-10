@@ -122,6 +122,18 @@ function MSR_decodeMessage()
 					MSR_setOnline($_POST['online']);
 					break;
 				}
+
+			case 'MSR_addMonitor':
+				{
+					MSR_addMonitor($_POST['vendor'], $_POST['model'], $_FILES['edid']);
+					break;
+				}
+
+			case 'MSR_listMonitors':
+				{
+					MSR_listMonitors();
+					break;
+				}
 		}
 };
 
@@ -1388,5 +1400,55 @@ function MSR_setOnline($online)
 {
 	CHECK_FW(CC_status, $online);
 	DB_query("UPDATE `clients` SET `online` = \"$online\" WHERE `client` = \"".CLIENT_getClientName()."\"");
+}
+
+
+
+
+
+/**
+**name MSR_addMonitor($vendor, $model, $edid)
+**adds monitor to database and Filesystem (avoiding blob)
+**parameter vendor: The vendor of the monitor
+**parameter model: The model of the monitor
+**parameter edid: The monitor information
+**/
+function MSR_addMonitor($vendor, $model, $edid)
+{
+	CHECK_FW(CC_string255, $vendor, CC_string255, $model);
+	$model_fn = str_replace(" ", "_", $model);
+	$vendor_fn = str_replace(" ", "_", $vendor);
+	$file="/m23/data+scripts/lokales/monitors/${vendor_fn}_-_${model_fn}.edid";
+	if (!file_exists($file))
+	{
+		if (move_uploaded_file($edid['tmp_name'], $file))
+		{
+			$sql="INSERT INTO monitors (vendor, model) VALUES ('$vendor', '$model') ON DUPLICATE KEY UPDATE vendor='$vendor', model='$model'";
+			DB_query($sql);
+		}
+
+	}
+}
+
+
+
+
+
+/**
+**name MSR_listMonitors()
+**lists monitors stored in the m23 database
+**returns list of monitors
+**/
+function MSR_listMonitors()
+{
+	$sql="SELECT vendor,model FROM monitors ORDER BY vendor ASC, model ASC";
+	$result = DB_query($sql);
+	$array = DB_getArrayAssoc($result);
+	foreach ($array as $monitor)
+	{
+		$model_fn = str_replace(" ", "_", $monitor['model']);
+		$vendor_fn = str_replace(" ", "_", $monitor['vendor']);
+		echo("${vendor_fn}_-_${model_fn}\n");
+	}
 }
 ?>

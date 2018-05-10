@@ -44,13 +44,21 @@ xserver-xorg xserver-xorg/config/device/bus_id string
 xserver-xorg xserver-xorg/config/inputdevice/keyboard/rules string xorg\" > /tmp/xorg.debconf
 	debconf-set-selections /tmp/xorg.debconf
 
+# no ddcxinfo-knoppix package on Ubuntu 18.04
+if [ $(grep bionic /etc/apt/sources.list -c) -eq 0]
+then
+	ddcx=\"ddcxinfo-knoppix\"
+else
+	ddcx=\"\"
+fi
+
 export DEBIAN_FRONTEND=noninteractive
 apt-get -q update 2>&1 | tee -a /tmp/m23sourceupdate.log
-if apt-get --force-yes -y -q install x-window-system ddcxinfo-knoppix
+if apt-get --force-yes -y -q install x-window-system \$ddcx
 then
  ".sendClientLogStatus("X11 installed",true)."
 else
-	if apt-get --force-yes -y -q install x-window-system-core ddcxinfo-knoppix
+	if apt-get --force-yes -y -q install x-window-system-core \$ddcx
 	then
 		if [ -d /usr/lib/xorg/modules ]
 		then

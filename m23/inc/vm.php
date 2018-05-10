@@ -50,6 +50,30 @@ define('VM_stepCreateCloudStackVM',3);
 
 
 /**
+**name VM_isHost($clientName)
+**description Check, if an m23 client is an VM host.
+**parameter clientName: Name of the m23 client.
+**returns false, if no VM host software is installed on the client otherwise the number of VM software.
+**/
+function VM_isHost($clientName)
+{
+	CHECK_FW(CC_clientname, $clientName);
+	
+	$res = db_query("SELECT `client`, `vmSoftware` FROM `clients` WHERE (`vmRole` & ".VM_ROLE_HOST.") = ".VM_ROLE_HOST.' AND client="'.$clientName.'"'); //FW ok
+
+	$row = mysqli_fetch_assoc($res);
+	
+	if (is_null($row))
+		return(false);
+	else
+		return($row['vmSoftware']);
+}
+
+
+
+
+
+/**
 **name VM_captureVMScreenAsMovie($type, $vmName, $enable, $movieFile, $width, $height, $rate, $fps)
 **description Enables/disables capturing the screen of a VM to a movie file.
 **parameter type: VM_SW_VBOX for VirtualBox OSE
@@ -143,6 +167,7 @@ function VM_CloudStackDeleteClientVM($virtualMachineId, &$VMDeletionOK)
 /**
 **name VM_isCloudStackClient($clientName)
 **description Checks, if the client is run in CloudStack
+**parameter clientname: CloudStack name of the instance / name of the m23 client.
 **returns true, when the client is run in CloudStack otherwise false.
 **/
 function VM_isCloudStackClient($clientName)
@@ -963,7 +988,7 @@ function VM_rebootAndDisableNetbootAfterInstall($vmName)
 **/
 function VM_rebootAndActivateNetboot($vmName)
 {
-	VM_webAction($vmName, 'rebootAndActivateNetboot');
+	VM_webAction($vmName, 'rebootAndActivateNetboot', true);
 }
 
 
@@ -1384,13 +1409,14 @@ function VM_resumeVM($type, $vmName)
 
 
 /**
-**name VM_webAction($vmName, $action)
+**name VM_webAction($vmName, $action, $visual = false)
 **description Executes an action for a VM controlled by the web UI.
 **parameter vmName: Name of the VM.
 **parameter action: Action for the VM given by the URL parameter.
+**parameter visual: Set to true, if the VM should be started in visual mode always.
 **returns True if the command can be executed otherwise false.
 **/
-function VM_webAction($vmName, $action)
+function VM_webAction($vmName, $action, $visual = false)
 {
 	$info = VM_getSWandHost($vmName);
 
@@ -1422,11 +1448,11 @@ function VM_webAction($vmName, $action)
 			break;
 		case "rebootAndDisableNetboot":
 			$runInScreen = true;
-			$cmd = VM_rebootChangeBootDevice($info['vmSoftware'], isset($info['vmVisualURL']{1}), $vmName, 'disk');
+			$cmd = VM_rebootChangeBootDevice($info['vmSoftware'], ($visual || isset($info['vmVisualURL']{1})), $vmName, 'disk');
 			break;
 		case "rebootAndActivateNetboot":
 			$runInScreen = true;
-			$cmd = VM_rebootChangeBootDevice($info['vmSoftware'], isset($info['vmVisualURL']{1}), $vmName, 'net');
+			$cmd = VM_rebootChangeBootDevice($info['vmSoftware'], ($visual || isset($info['vmVisualURL']{1})), $vmName, 'net');
 			break;
 		default:
 			return(false);
@@ -1533,13 +1559,10 @@ function VM_getHTMLStatusBlock($clientName)
 				<tr><td>$I18N_status:</td><td>$readableStatus[text] $readableStatus[imgTag]</td></tr>";
 
 				//Show the visual connection URL and password if the VM client is on
-				if ($vmInfo['state'] == VM_STATE_ON)
-				{
-					$hostDisplay = explode(':',$vmSwHost['vmVisualURL']);
-					$vmInfoHTML .= "<tr><td>$I18N_VMVisualURL:</td><td>$vmSwHost[vmVisualURL]</td></tr>
-					<tr><td>$I18N_VMVisualPassword:</td><td>$vmSwHost[vmVisualPassword]</td></tr>
-					<tr><td>TightVNC Java Viewer:</td><td><a target=\"_blank\" href=\"/java-vnc/vnc-viewer.php?host=$hostDisplay[0]&pass=$vmSwHost[vmVisualPassword]&display=$hostDisplay[1]\">$I18N_startVNCApplet</a></td></tr>";
-				}
+				$hostDisplay = explode(':',$vmSwHost['vmVisualURL']);
+				$vmInfoHTML .= "<tr><td>$I18N_VMVisualURL:</td><td>$vmSwHost[vmVisualURL]</td></tr>
+				<tr><td>$I18N_VMVisualPassword:</td><td>$vmSwHost[vmVisualPassword]</td></tr>
+				<tr><td>TightVNC Java Viewer:</td><td><a target=\"_blank\" href=\"/java-vnc/vnc-viewer.php?host=$hostDisplay[0]&pass=$vmSwHost[vmVisualPassword]&display=$hostDisplay[1]\">$I18N_startVNCApplet</a></td></tr>";
 		
 				//Run thru the network cards and add their infos
 				for ($nicNr = 1; isset($vmInfo["nic$nicNr"]); $nicNr++)
@@ -1716,6 +1739,10 @@ function VM_GUIstepCreateGuest()
 	$_SESSION['VM_ram'] = HTML_input("ED_ram",1024, 4);
 	$_SESSION['VM_diskSize'] = HTML_input("ED_diskSize",8192, 6);
 
+	// CPU architecture for the VM
+	$_SESSION['VM_arch'] = HTML_selection("SEL_arch", getArchList(), SELTYPE_selection);
+	
+
 	//Button for creating the VM
 	if (HTML_submit("BUT_createVM",$I18N_create))
 	{
@@ -1723,7 +1750,7 @@ function VM_GUIstepCreateGuest()
 		{
 			$diskName = $_SESSION['VM_name']."hda";
 			$cmd = VM_createDiskImage($_SESSION['VM_software'], $_SESSION['VM_name'], $diskName, $_SESSION['VM_diskSize']);
-			$cmd .= VM_createVM($_SESSION['VM_software'], $_SESSION['VM_name'], $_SESSION['VM_ram'], $diskName, $_SESSION['VM_mac'],$_SESSION['VM_netDev']);
+			$cmd .= VM_createVM($_SESSION['VM_software'], $_SESSION['VM_name'], $_SESSION['VM_ram'], $diskName, $_SESSION['VM_mac'], $_SESSION['VM_netDev'], VM_IMAGE_DIR, $_SESSION['VM_arch']);
 			//Execute and get the output or false if there was an error code returned
 			$VMCReationMessage = CLIENT_executeOnClientOrIP($_SESSION['VM_host'],"VM_create",$cmd,"m23-vbox",false);
 			//Check if the creation message contains FAILED. If not the creation should have been sucessfully
@@ -1748,6 +1775,7 @@ function VM_GUIstepCreateGuest()
 	echo("	<tr><td colspan=\"2\"><hr></td></tr>
 			<tr><td>$I18N_hostNetworkCard</td><td align=\"right\">".SEL_bridgingDevice."</td></tr>
 			<tr><td>$I18N_VMName</td><td align=\"right\">".ED_VMName."</td></tr>
+			<tr><td>$I18N_arch</td><td align=\"right\">".SEL_arch."</td></tr>
 			<tr><td>$I18N_mac</td><td align=\"right\">".ED_mac."</td></tr>
 			<tr><td>$I18N_memory</td><td align=\"right\">".ED_ram." MB</td></tr>
 			<tr><td>$I18N_harddisk</td><td align=\"right\">".ED_diskSize." MB</td></tr>\n");
@@ -1757,7 +1785,7 @@ function VM_GUIstepCreateGuest()
 		echo("<tr><td colspan=\"2\" align=\"center\">".BUT_createVM."</td></tr>\n");
 	else
 		//Show the link for adding the VM client to the m23 management
-		echo("<tr><td colspan=\"2\" align=\"center\"><a href=\"index.php?page=addclient&VM_client=".$_SESSION['VM_name']."&VM_mac=".
+		echo("<tr><td colspan=\"2\" align=\"center\"><a href=\"index.php?page=addclient&VM_client=".$_SESSION['VM_name']."&VM_arch=".$_SESSION['VM_arch']."&VM_mac=".
 		str_replace(":","",$_SESSION['VM_mac'])."&VM_host=".$_SESSION['VM_host']."&VM_software=".VM_SW_VBOX."\">&gt; &gt; &gt; $I18N_add_client &lt; &lt; &lt;</a></td></tr>\n");
 
 	//Check if there is a message from the VM creation tool
@@ -2041,6 +2069,7 @@ function VM_setHostInDB($VMhost, $password, $vmSoftware)
 // 	Add the virtualisation software and role by binary ORing
 	$data['vmSoftware'] = ($data['vmSoftware'] | $vmSoftware);
 	$data['vmRole'] = ($data['vmRole'] | VM_ROLE_HOST);
+	
 	return(CLIENT_setAllParams($VMhost,$data));
 }
 
@@ -2222,7 +2251,7 @@ function VM_activateNetbootCMD($type, $vmName, $activate)
 
 
 /**
-**name VM_createVM($type, $vmName, $ramSize, $diskName, $mac)
+**name VM_createVM($type, $vmName, $ramSize, $diskName, $mac, $netDev, $imageDir = VM_IMAGE_DIR, $arch = 'amd64')
 **description Creates a virtual machine.
 **parameter type: VM_SW_VBOX for VirtualBox OSE
 **parameter vmName: Name of the VM.
@@ -2230,14 +2259,22 @@ function VM_activateNetbootCMD($type, $vmName, $activate)
 **parameter diskName: Name of the virtual harddisk file.
 **parameter mac: MAC address of the virtual network card. It can be in the format 12:23:34:45:56:78 or 122334455678.
 **parameter netDev: Device of the real network card that is used to let the VM communictae with the outer world.
+**parameter imageDir: Base directory where to create the directory structure for storing the VM files.
+**parameter arch: Architecture of the VM (amd64 or i386)
 **returns BASH code to create a virtual machine.
 **/
-function VM_createVM($type, $vmName, $ramSize, $diskName, $mac, $netDev, $imageDir = VM_IMAGE_DIR)
+function VM_createVM($type, $vmName, $ramSize, $diskName, $mac, $netDev, $imageDir = VM_IMAGE_DIR, $arch = 'amd64')
 {
 	switch ($type)
 	{
 		case VM_SW_VBOX:
 			$mac = str_replace(":","",$mac);
+
+			if ("i386" == $arch)
+				$vboxOSType = "debian";
+			else
+				$vboxOSType = "debian_64";
+
 			$cmd = "VBoxManage createvm -register -name \"$vmName\"
 
 				if [ $(egrep '(vmx|svm)' /proc/cpuinfo -c) -gt 0 ]
@@ -2252,7 +2289,7 @@ function VM_createVM($type, $vmName, $ramSize, $diskName, $mac, $netDev, $imageD
 					VBoxManage modifyvm \"$vmName\" -pae \$hwvirt -ostype debian -memory $ramSize -vram 8 -acpi on -ioapic off -hwvirtex \$hwvirt -nestedpaging \$hwvirt -monitorcount 1 -bioslogofadein off -bioslogofadeout off -hda \"$imageDir/vbox/$vmName/$diskName.vdi\" -nic1 hostif -hostifdev1 $netDev -cableconnected1 on -macaddress1 $mac\n
 				else
 					VBoxManage storagectl \"$vmName\" --name \"IDE Controller\" --add ide
-					VBoxManage modifyvm \"$vmName\" --pae \$hwvirt --ostype debian_64 --memory $ramSize --vram 32 --acpi on --ioapic off --hwvirtex \$hwvirt --nestedpaging \$hwvirt --monitorcount 1 --bioslogofadein off --bioslogofadeout off --hda \"$imageDir/vbox/$vmName/$diskName.vdi\" --nic1 bridged --bridgeadapter1 $netDev --cableconnected1 on --macaddress1 $mac
+					VBoxManage modifyvm \"$vmName\" --pae \$hwvirt --ostype $vboxOSType --memory $ramSize --vram 32 --acpi on --ioapic off --hwvirtex \$hwvirt --nestedpaging \$hwvirt --monitorcount 1 --bioslogofadein off --bioslogofadeout off --hda \"$imageDir/vbox/$vmName/$diskName.vdi\" --nic1 bridged --bridgeadapter1 $netDev --cableconnected1 on --macaddress1 $mac
 				fi
 				\n";
 	}

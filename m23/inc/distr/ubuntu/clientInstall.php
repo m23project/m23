@@ -195,8 +195,10 @@ cd /tmp
 		$ntpPackage="";
 
 	CLCFG_aptGet('install', 'apt-transport-https');
+	
+	echo ("\napt-get update\n");
 
-	CLCFG_installBasePackages("apmd console-common console-data console-tools cron less screen sed ssh net-tools $ntpPackage parted gawk hdparm locales $clientOptions[bootloader] hwsetup hwdata-knoppix m23-initscripts m23hwscanner libncursesw5 pciutils mdadm m23-skel ". $clientOptions['kernel'],"ubuntu-keyring");
+	CLCFG_installBasePackages("apmd console-common console-data console-tools cron less screen sed ssh net-tools $ntpPackage parted gawk hdparm locales $clientOptions[bootloader] hwsetup hwdata-knoppix m23-initscripts m23hwscanner libncursesw5 pciutils mdadm m23-skel ifupdown ". $clientOptions['kernel'],"ubuntu-keyring");
 	/* =====> */ MSR_statusBarIncCommand(15);
 
 	CLCFG_installFirmware();
@@ -347,6 +349,7 @@ function DISTR_startInstall($client,$desktop,$instPart,$swapPart)
 
 	//Configures upstart for normal running in an installed system.
 	PKG_addJob($client,'m23configUpstartForNormalUsage',PKG_getSpecialPackagePriority('m23configUpstartForNormalUsage',$distr),"");
+	PKG_addJob($client,'m23deactivateaptdaily',PKG_getSpecialPackagePriority('m23deactivateaptdaily',$distr),"");
 
 	//update package infos
 	PKG_addJob($client,"m23UpdatePackageInfos",PKG_getSpecialPackagePriority("m23UpdatePackageInfos",$distr),"");

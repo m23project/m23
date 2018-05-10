@@ -335,7 +335,7 @@ class CFDiskBasic extends CFDiskIO
 					{
 						case 'ext2': $out .= "modprobe ext2 $ddZero; sfdisk -c $pDisk $pPart 83; mkfs.ext2 -F $mkfsextOptions $step[dev]"; break;
 						case 'ext3': $out .= "modprobe ext3 $ddZero; sfdisk -c $pDisk $pPart 83; mkfs.ext3 -F $mkfsextOptions $step[dev]"; break;
-						case 'ext4': $out .= "modprobe ext4 $ddZero; sfdisk -c $pDisk $pPart 83; mkfs.ext4 -F $mkfsextOptions $step[dev]"; break;
+						case 'ext4': $out .= "modprobe ext4 $ddZero; sfdisk -c $pDisk $pPart 83; mkfs.ext4 -O ^metadata_csum -F $mkfsextOptions $step[dev]"; break;
 						case 'reiserfs': $out .= "modprobe reiserfs $ddZero; sfdisk -c $pDisk $pPart 83; mkreiserfs -f $step[dev]"; break;
 						case 'linux-swap': $out .= "echo swap $ddZero; sfdisk -c $pDisk $pPart 82; mkswap $step[dev]"; break;			
 					}
@@ -746,6 +746,79 @@ class CFDiskBasic extends CFDiskIO
 **/
 	function autoPartitionDisk($diskDev, $minSwap=256, $maxSwap=512)
 	{
+		// Delete all partitions of the disk
+		$this->deleteAllPartitions($diskDev);
+
+		// Get vDisk for the disk and its size
+		$this->dev2VDiskVPart($diskDev, $vDisk, $vPart);
+		$diskSize = $this->getDiskSize($vDisk);
+
+		// There is an EFI boot partition on UEFI booted systems
+		if ($this->isUEFIActive())
+		{
+			$this->createUEFIPartition($diskDev);
+			$diskSize -= CFDiskIO::EFIBOOT_PART_END;
+
+			// Generate the device names for installation and swap
+			$instPartDev = $this->getDevBypDiskpPart($diskDev, 2);
+			$swapPartDev = $this->getDevBypDiskpPart($diskDev, 3);
+			
+			$instStart = CFDiskIO::EFIBOOT_PART_END + 2;
+		}
+		else
+		{
+			// Generate the device names for installation and swap
+			$instPartDev = $this->getDevBypDiskpPart($diskDev, 1);
+			$swapPartDev = $this->getDevBypDiskpPart($diskDev, 2);
+
+			// Leave space for grub and for aligning the partition
+			$instStart = 2;
+		}
+
+
+		// Calculate size of swap
+		$swapSize = HWINFO_getMemory($this->getClientName()) / 2;
+
+		if ($swapSize > $maxSwap)
+			$swapSize = $maxSwap;
+		// Needed for massinstall
+		if ($swapSize < $minSwap)
+			$swapSize = $minSwap;
+
+		// Calculate the end of the installation partition
+		$instEnd = $diskSize - $swapSize;
+
+		// Create and format installation partition
+		$this->createInstallPartition($diskDev, $instStart, $instEnd);
+
+		// Calculate start + end positions of the swap partition
+		$swapStart = $instEnd + 1;
+		$swapEnd = $diskSize - 1;
+
+		// Create and format swap partition
+		$this->createSwapPartition($diskDev, $swapStart, $swapEnd);
+	}
+
+
+
+
+
+/**
+**name CFDiskBasic::PM_auto2Disk1SysSwap2Home()
+**description Automatically partitions two disks (1st for system + swap, 2nd for /home).
+**/
+	function PM_auto2Disk1SysSwap2Home()
+	{
+		if ($this->getDiskAmount() < 2)
+		{
+			$this->addErrorMessage($I18N_fdiskTypeautomatic2Disk1SysSwap2HomeDiskAmountERROR);
+			return(false);
+		}
+
+// TODO: Rest of the code :-)
+	
+	
+	
 		// Delete all partitions of the disk
 		$this->deleteAllPartitions($diskDev);
 

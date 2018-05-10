@@ -4,4 +4,6 @@ clip=$2
 svip=$3
 user=$4
 
-/m23/bin/plink-no_ask -pw $pass -l $user $clip "wget http://$svip/work.php -O /tmp/work.php; echo \"$pass\" | sudo -S chmod 777 /tmp/work.php; echo \"$pass\" | sudo -S sh /tmp/work.php"
+#/m23/bin/plink-no_ask -pw $pass -l $user $clip "wget http://$svip/work.php -O /tmp/work.php; echo \"$pass\" | sudo -S chmod 777 /tmp/work.php; echo \"$pass\" | sudo -S sh /tmp/work.php"
+
+sshpass -p "$pass" ssh -o UserKnownHostsFile=/dev/null -o VerifyHostKeyDNS=no -o CheckHostIP=no -o StrictHostKeyChecking=no $user@$clip "wget http://$svip/work.php -O /tmp/work.php; echo \"$pass\" | sudo -S chmod 777 /tmp/work.php; echo \"$pass\" | sudo -S sh /tmp/work.php"

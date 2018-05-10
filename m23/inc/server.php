@@ -122,6 +122,34 @@ function SERVER_setLiveLogDisabled($disabled)
 
 
 /**
+**name SERVER_isInstallReasonEnabled()
+**description Determines, if the install reason feature is enabled
+**returns: true, if the install reason feature is enabled, false otherwise
+**/
+function SERVER_isInstallReasonEnabled()
+{
+	return(SERVER_getServerBoolSetting('InstallReasonEnabled'));
+}
+
+
+
+
+
+/**
+**name SERVER_setInstallReasonEnabled()
+**description Enables the install reason feature
+**parameter $enabled true, if the install reason feature shall be enabled, false otherwise
+**/
+function SERVER_setInstallReasonEnabled($enabled)
+{
+	SERVER_setServerBoolSetting('InstallReasonEnabled', $enabled);
+}
+
+
+
+
+
+/**
 **name SERVER_isUpdatePackageInfosDisabled()
 **description Determines, if the updatePackageInfos job should NOT be added to any clients.
 **returns: true, if the updatePackageInfos job should NOT be added to any clients otherwise false.

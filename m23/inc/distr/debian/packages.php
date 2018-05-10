@@ -559,6 +559,7 @@ function PKG_printStatus($distr,$packagesource) //deb-specific
 **parameter packagesource: name of the package source
 **parameter client: Name of the client the packages are searched for. (Not used here and only for halfSister)
 **parameter completeDescription: If set to true, the full package description and sizes are fetched (time consuming)
+**returns: Amount of found packages.
 **/
 function PKG_listPackages($key,$distr="debian",$packagesource, $client="", $completeDescription = false) //deb-specific
 {
@@ -817,7 +818,7 @@ function PKG_updatePackageInfo($distr, $packagesource, $force, $arch)
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 	$dir = DIR_M23APTCACHE."/$distr/$packagesource";
-	$cacheFile = PKG_getSearchCacheFileName($dir, $arch);
+	$cacheFile = trim(PKG_getSearchCacheFileName($dir, $arch), " \t\n\r\0\x0B'");
 
 	if (!is_dir($dir))
 		exec("mkdir -p '$dir'");

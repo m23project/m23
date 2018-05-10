@@ -352,13 +352,13 @@ function MAIL_getGpgKeyList($listSecretKeys = false)
 {
 	if ($listSecretKeys)
 	{
-		$gpgListParameter = '--list-secret-keys';
+		$gpgListParameter = '--list-secret-keys --keyid-format short';
 		$gpgOutputSplitWords = array("uid","sec","ssb");
 		$keyMarker = 'Priv';
 	}
 	else
 	{
-		$gpgListParameter = '--list-keys';
+		$gpgListParameter = '--list-keys --keyid-format short';
 		$gpgOutputSplitWords = array("uid","pub","sub");
 		$keyMarker = 'Publ';
 	}

@@ -15,6 +15,57 @@ define('H_AJAXAUTOSUBMIT_VALUE','submit');
 
 
 /**
+**name HTML_waitAnimation($htmlName, $waitText, $width = -1)
+**description Defines HTML code for showing a waiting animation and onClick code for insering into buttons. The JavaScript showing function is given out where the PHP function is called.
+**parameter $htmlName: Base name for the defines and naming of the JavaScript function and DIVs.
+**parameter $waitText: Text to show while the animation runs.
+**parameter $width: Width for the animation image or unscaled if not set.
+**/
+function HTML_waitAnimation($htmlName, $waitText, $width = -1)
+{
+	$divName = $htmlName.'div';
+	$fktName = $htmlName.'fkt';
+	$imgName = $htmlName.'img';
+
+	// Scale the animation image?
+	if (-1 != $width)
+		$sizeCSS = 'style="width:'.$width.'px;height: auto;"';
+	else
+		$sizeCSS = '';
+
+	// Function for showing the animation directly
+	echo('
+	<script>
+		function '.$fktName.'()
+		{
+			document.getElementById("'.$divName.'").style.display = "block";
+		}
+	</script>
+	');
+
+	// onClick code for insering into buttons
+	define($htmlName.'OnClick', 'onClick="'.$fktName.'()"');
+
+	// HTML code that will show the animation when the showing function is called
+	define($htmlName, "
+	<div style=\"display: none\" id=\"$divName\">
+		<table class=\"infotable\">
+			<tr>
+				<td>
+					<img id=\"$imgName\" src=\"/gfx/wait-ani.gif\" $sizeCSS>
+					$waitText
+				</td>
+			</tr>
+		</table>
+	</div>
+	");
+}
+
+
+
+
+
+/**
 **name HTML_imgSwitch($htmlName, $off_img, $on_img, $off_text, $on_text, $separator, $default, &$outState)
 **description Defines an image button with two states and a text next to it.
 **parameter $htmlName: Name of the html image input element.
@@ -1385,7 +1436,7 @@ function HTML_setPage($page)
 
 
 /**
-**name HTML_storableInput($htmlName, $prefKey, $initValue = false, &$storePointer = false, $size=20, $maxlength=255, $type = INPUT_TYPE_text)
+**name HTML_storableInput($htmlName, $prefKey, $initValue = false, &$storePointer = false, $size=20, $maxlength=255, $type = INPUT_TYPE_text, $extraHTML = '')
 **description HTML text or password edit line with loading and storing the values to and from the session.
 **parameter htmlName: Name of the HTML element.
 **parameter prefKey: Variable name of the preference the dialog element stands for.
@@ -1394,14 +1445,15 @@ function HTML_setPage($page)
 **parameter size: Size (in characters) of the input line.
 **parameter maxlength: The maximum length of the entered text.
 **parameter type: Type of the edit line (INPUT_TYPE_text or INPUT_TYPE_password)
+**parameter extraHTML: Extra HTML/JavaScript code 
 **returns Returns the entered value, the default value or false.
 **/
-function HTML_storableInput($htmlName, $prefKey, $initValue = false, &$storePointer = false, $size=20, $maxlength=255, $type = INPUT_TYPE_text)
+function HTML_storableInput($htmlName, $prefKey, $initValue = false, &$storePointer = false, $size=20, $maxlength=255, $type = INPUT_TYPE_text, $extraHTML = '')
 {
 	$initValue = HTML_getElementValue($htmlName, $prefKey, $initValue);
 
 	//Define the input element
-	define($htmlName,'<INPUT type="'.$type.'" name="'.$htmlName.'" size="'.$size.'" maxlength="'.$maxlength.'" value="'.$initValue.'">');
+	define($htmlName,'<INPUT type="'.$type.'" id="'.$htmlName.'" name="'.$htmlName.'" size="'.$size.'" maxlength="'.$maxlength.'" value="'.$initValue.'"'.$extraHTML.'>');
 
 	//Store its value to the session (to make it storable)
 	$_SESSION['preferenceSpace'][$prefKey] = $initValue;

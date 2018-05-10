@@ -25,6 +25,7 @@
 	$selTypeA['grpMov']					= $I18N_moveToGroup;
 	$selTypeA['del']					= $I18N_delete;
 	$selTypeA['recover']				= $I18N_recover;
+	$selTypeA['redo']					= $I18N_redo_client_jobs;
 	$selTypeA['comparePackageStatus']	= $I18N_comparePackageStatus;
 	
 	$groupAction = HTML_selection('SEL_type', $selTypeA, SELTYPE_selection);
@@ -60,6 +61,10 @@
 						break;
 					case "recover":
 						CLIENT_desasterRecovery($clientName);
+						$checkOff=true;
+						break;
+					case 'redo':
+						CLIENT_desasterRecovery($clientName, false);
 						$checkOff=true;
 						break;
 					case 'comparePackageStatus':

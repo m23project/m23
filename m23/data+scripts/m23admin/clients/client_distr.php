@@ -1,4 +1,6 @@
 <?PHP
+	HTML_waitAnimation('ANIM_wait', $I18N_pleaseWaitGettingKernelInformation, 40);
+	
 	//Wraps the descriptions to a given number of characters
 	$wordwrapsize=50;
 
@@ -267,7 +269,8 @@ echo("
 
 			<tr>
 				<td colspan=\"3\">
-					<center><input type=\"submit\" name=\"BUT_refresh\" value=\"$I18N_select\"></center>
+					<center><input type=\"submit\" name=\"BUT_refresh\" value=\"$I18N_select\" ".ANIM_waitOnClick."></center>
+					".ANIM_wait."
 				</td>
 			</tr>
 ");
@@ -294,8 +297,13 @@ echo("
 
 			<tr>
 				<td>$I18N_packageSelection</td>
-				<td colspan=\"2\">
+				<td>
+					<div class=\"selectcheckedicons\">
 					".SEL_packageSelection."
+					</div>
+				</td>
+				<td>
+					".wordwrap($I18N_packageSelectionToBeInstalledWithDistribution_hint, 40, '<br>')."
 				</td>
 			</tr>
 

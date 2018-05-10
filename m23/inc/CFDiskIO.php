@@ -24,6 +24,7 @@ class CFDiskIO extends CClient
 	const PM_extended_raid = 5;
 	const PM_extended_raid_lvm = 6;
 	const PM_auto2048_4096 = 7;
+	const PM_auto2Disk1SysSwap2Home = 8;
 
 //extended partition selections/page
 	const EPS_none = -1;

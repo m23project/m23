@@ -65,6 +65,27 @@ define('UBUNTUDESKTOP_UNITY3D_MINIMAL_1604', 4011);
 // Linux Mint 18
 define('MINT18_KDE',5001);
 
+// Ubuntu 18.04
+define('UBUNTUDESKTOP_UBUNTU_1804', 5006); // ubuntu-desktop
+define('UBUNTUDESKTOP_KUBUNTU_1804', 5004); // kubuntu-desktop
+define('UBUNTUDESKTOP_LUBUNTU_1804', 5005); // lubuntu-desktop // lubuntu-gtk-desktop // lubuntu-qt-desktop
+define('UBUNTUDESKTOP_XUBUNTU_1804', 5009); // xubuntu-desktop
+define('UBUNTUDESKTOP_GNOME_1804', 5007); // vanilla-gnome-desktop
+define('UBUNTUDESKTOP_MATE_1804', 5002); // ubuntu-mate-desktop
+define('UBUNTUDESKTOP_BUDGIE_1804', 5003); // ubuntu-budgie-desktop
+define('UBUNTUDESKTOP_UBUNTUSTUDIO_1804', 5008); // ubuntustudio-desktop // ubuntustudio-desktop-core
+define('UBUNTUDESKTOP_TRINITY_MINIMAL_1804', 5010);
+define('UBUNTUDESKTOP_UNITY3D_MINIMAL_1804', 5011);
+
+
+
+
+
+
+
+
+
+
 
 
 /**
@@ -366,8 +387,50 @@ function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $no
 			$dialogHeader = $I18N_installing_kde;
 			$session = 'kde-plasma';
 			$displayManager = UBUNTDM_SDDM;
-
 		break;
+
+		case UBUNTUDESKTOP_KUBUNTU_1804:
+			$desktopPackages = 'kubuntu-desktop';
+			$dialogHeader = $I18N_installing_kde;
+			$displayManager = NO_EXTRA_DM;
+		break;
+
+		case UBUNTUDESKTOP_UBUNTU_1804:
+			$desktopPackages = 'ubuntu-desktop';
+			$dialogHeader = $I18N_installing_gnome;
+			$displayManager = NO_EXTRA_DM;
+		break;
+
+		case UBUNTUDESKTOP_BUDGIE_1804:
+			$desktopPackages = 'ubuntu-budgie-desktop';
+			$dialogHeader = $I18N_installing_budgie;
+			$displayManager = NO_EXTRA_DM;
+		break;
+
+		case UBUNTUDESKTOP_LUBUNTU_1804:
+			$desktopPackages = 'lubuntu-desktop';
+			$dialogHeader = $I18N_installingLXDE;
+			$displayManager = NO_EXTRA_DM;
+		break;
+
+		case UBUNTUDESKTOP_XUBUNTU_1804:
+			$desktopPackages = 'xubuntu-desktop';
+			$dialogHeader = $I18N_installingXubuntuDesktop;
+			$displayManager = NO_EXTRA_DM;
+		break;
+
+		case UBUNTUDESKTOP_GNOME_1804:
+			$desktopPackages = 'vanilla-gnome-desktop';
+			$dialogHeader = $I18N_installing_gnome;
+			$displayManager = NO_EXTRA_DM;
+		break;
+
+		case UBUNTUDESKTOP_MATE_1804:
+			$desktopPackages = 'ubuntu-mate-desktop';
+			$dialogHeader = $I18N_installingMate;
+			$displayManager = NO_EXTRA_DM;
+		break;
+
 	}
 
 	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $dialogHeader);
@@ -406,6 +469,11 @@ samba-common samba-common/workgroup string WORKGROUP
 samba samba/generate_smbpasswd boolean true
 samba samba/run_mode select daemons
 libvirtodbc0 libvirtodbc0/register-odbc-driver boolean true');
+
+	// dbus has to be running for package blueman, dependency of xubuntu-desktop
+	echo("
+		/etc/init.d/dbus start
+	");
 
 	// Install and configure the display manager
 	switch($displayManager)
@@ -486,9 +554,16 @@ libvirtodbc0 libvirtodbc0/register-odbc-driver boolean true');
 	/* =====> */ MSR_statusBarIncCommand(10);
 
 	// Remove Amazon
-	CLCFG_aptGet("remove","unity-webapps-common tilda mintupdate");
+	CLCFG_aptGet("remove","unity-webapps-common tilda mintupdate ubuntu-web-launchers");
+
+	// Disable initial configuration diolog
+	echo("\ndpkg-divert --local --rename --add /etc/xdg/autostart/gnome-initial-setup-first-login.desktop
+	dpkg-divert --local --rename --add /etc/xdg/autostart/gnome-initial-setup-copy-worker.desktop
+	deluser --system gnome-initial-setup\n");
 
 	echo("\ndpkg-reconfigure m23-skel\n");
+	
+	echo("\nsed -i '/nopasswdlogin/d' /etc/pam.d/lightdm\n");
 }
 
 
@@ -577,6 +652,7 @@ function UBUNTU_fixAfterBaseInstall($release)
 			');
 			CLCFG_aptGet("install","policykit-1 upower acpi-support iputils-ping ubuntu-extras-keyring ubuntu-sounds");
 		break;
+		case 'bionic':
 		case 'xenial':
 			echo(EDIT_writeToFile('/etc/ssh/sshd_config',
 '# Package generated configuration file
@@ -738,6 +814,7 @@ function CLCFG_enableLDAPUbuntu($clientOptions)
 	{
 		case 'trusty':
 		case 'xenial':
+		case 'bionic':
 			CLCFG_setDebConfDirect("ldap-auth-config ldap-auth-config/binddn string cn=proxyuser,dc=example,dc=net
 ldap-auth-config ldap-auth-config/bindpw password
 ldap-auth-config ldap-auth-config/dblogin boolean false
@@ -823,6 +900,7 @@ TLS_CACERT      /etc/ssl/certs/ca-certificates.crt\" > /etc/ldap/ldap.conf
 	{
 		case 'trusty':
 		case 'xenial':
+		case 'bionic':
 			echo("echo \"account sufficient		pam_ldap.so
 account sufficient		pam_unix.so
 account [success=2 new_authtok_reqd=done default=ignore]	pam_unix.so

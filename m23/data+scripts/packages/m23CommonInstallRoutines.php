@@ -6,9 +6,6 @@
 $*/
 
 
-
-
-
 /**
 **name CIR_setDateAndTimeTemorarily()
 **description Sets the date and time by calling 'date' temporarily.

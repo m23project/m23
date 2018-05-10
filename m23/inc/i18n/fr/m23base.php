@@ -1340,7 +1340,7 @@ Attention: Si le nom de l&apos;utilisateur et son mot de passe sont encore enreg
 @$I18N_addNewLoginToUCSLDAP = "Sauvegarde des données d'identification sur UCS";
 @$I18N_authentificationViaUCS = "Authentification via UCS";
 @$I18N_addNewLoginToUCSLDAPError = "Erreur: Les données d'identification ne peuvent être sauvegardées sur UCS.";
-@$I18N_readLoginFromUCSLDAPSupportedDistros = '(Peuvent être utilisées par les clients basés sur Debian 8 + 9, Ubuntu 14.04, 16.04 et Linux Mint 17.x)';
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(Peuvent être utilisées par les clients basés sur Debian 8 + 9, Ubuntu 14.04, 16.04, 18.04 et Linux Mint 17.x)';
 
 //16.2
 @$I18N_clientUsesDynamicIP = "Le poste client utilise une adresse IP dynamique (DHCP)";
@@ -1431,4 +1431,14 @@ Attention: Si le nom de l&apos;utilisateur et son mot de passe sont encore enreg
 @$I18N_UCSUpdateWarning = 'Si vous mettez à jour votre serveur m23 en utilisant cette page, "Univention App Center" sera outrepassé. Depuis cette page, il vous est possible d\'obtenir une version plus récente de la version m23 (comprenant les correctifs d\'erreurs et les nouvelles fonctionnalités) que la version fournie par "Univention App Center". Ces versions m23 sont plus à jour mais n\'ont pas encore passées la procédure de vérification Univention. De plus, la fonctionnalité de mise à jour activera le dépot UCS de paquets sources "non maintenus" et lancera un "dist-upgrade" permettant la mise à jour des paquets non répertoriés par m23.';
 @$I18N_makeBootMedia = 'Création d\'un média d\'amorçage';
 @$I18N_downloadBootMedia = 'Téléchargement d\'un média d\'amorçage';
+
+//18.2
+@$I18N_packageSelectionToBeInstalledWithDistribution_hint = 'Veuillez sélectionner une ou plusieurs sélections de paquets devant être installée(s) sur la distribution choisie.<br>Pour sélectionner de <b>multiples choix</b>, vous pouvez Ctrl+Click sur la ligne correspondante dans la plupart des butineurs web.';
+@$I18N_fdiskTypeautomatic2Disk1SysSwap2Home = '1. Disk: Système + Swap, 2. Disk: /home';
+@$I18N_fdiskTypeautomatic2Disk1SysSwap2HomeDiskAmountERROR = 'Ce type de partitionnement requière au moins deux disques durs.';
+@$I18N_packageSearchReturnedNoResultUpdatePackageSearchIndex = "Aucun paquet correspondant ne peut être trouvé. Il se pourrait que votre index des paquets soit obsolète. Vous pouvez le rafraichir en cliquant sur <i>\"$I18N_updatePackageSearchIndex\"</i> puis retenter la recherche.";
+@$I18N_invalidCharactersWereRemovedFromSearchTerm = 'Les caractères invalides ont été supprimés de votre recherche. Les caractères valides sont A-Z, a-z, 0-9, ".", " " et "-".';
+@$I18N_pleaseWaitGettingKernelInformation = 'Veuillez patienter. Recherche des informations concernant les noyaux Linux disponibles en cours.';
+@$I18N_installReasonEnabled = 'Active paramétrage/consultation d\'une raison d\'installation pour les tâches du client';
+@$I18N_VMHostSoftwareInstalled = 'Ce système comprend un logiciel de virtualisation. Vous pouvez l\'utiliser pour installer des clients virtuels.';
 ?>

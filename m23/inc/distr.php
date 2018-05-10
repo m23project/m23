@@ -90,6 +90,7 @@ function DISTR_releaseVersionTranslator($release)
 	$r['precise']="12.04 LTS";
 	$r['trusty']="14.04 LTS";
 	$r['xenial']="16.04 LTS";
+	$r['bionic']="18.04 LTS";
 
 	//Debian
 	$r['sarge']="3.1";

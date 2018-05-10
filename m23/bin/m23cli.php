@@ -34,9 +34,12 @@
 	include_once('/m23/inc/CMessageManager.php');
 	include_once('/m23/inc/CChecks.php');
 	include_once('/m23/inc/CClient.php');
+	include_once('/m23/inc/CIPRanges.php');
 	include_once('/m23/inc/CClientLister.php');
 	include_once('/m23/inc/Cm23Admin.php');
 	include_once('/m23/inc/Cm23AdminLister.php');
+	include_once('/m23/inc/CFDiskIO.php');
+	include_once('/m23/inc/CFDiskBasic.php');
 
 
 	dbConnect();

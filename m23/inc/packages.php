@@ -1270,8 +1270,14 @@ include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 HTML_jsCheckboxChanger('JS_checkboxChanger');
 HTML_checkboxChangerButtons('BUT_checkboxChanger');
 
+$isInstallReasonEnabled = SERVER_isInstallReasonEnabled();
+
 //search for all packages witn status wait4acc
-$sql = "SELECT package,params,normalPackage,id,installedSize,priority,reason FROM `clientjobs` WHERE client='$client' AND status='wait4acc' ORDER BY package, normalPackage";
+if ($isInstallReasonEnabled)
+	$sql = "SELECT package,params,normalPackage,id,installedSize,priority,reason FROM `clientjobs` WHERE client='$client' AND status='wait4acc' ORDER BY package, normalPackage";
+else
+    $sql = "SELECT package,params,normalPackage,id,installedSize,priority FROM `clientjobs` WHERE client='$client' AND status='wait4acc' ORDER BY package, normalPackage";
+
 $result = DB_query($sql); //FW ok
 
 echo(JS_checkboxChanger."
@@ -1279,7 +1285,12 @@ echo(JS_checkboxChanger."
 		<td></td>
 		<td><span class=\"subhighlight\">$I18N_status</span></td>
 		<td><span class=\"subhighlight\">$I18N_package_name</span></td>
-<!--		<td><span class=\"subhighlight\">$I18N_reason</span></td> -->
+");
+if ($isInstallReasonEnabled)
+	echo("
+		<td><span class=\"subhighlight\">$I18N_reason</span></td> 
+	");
+echo("
 		<td><span class=\"subhighlight\">$I18N_size</span></td>
 		<td><span class=\"subhighlight\">$I18N_parameter</span></td>
 		<td><span class=\"subhighlight\">$I18N_options</span></td>
@@ -1337,7 +1348,12 @@ while ($line=mysqli_fetch_row($result))
 				<td>$jobImg</td>
 				<td valign=\"top\">$status</td>
 				<td valign=\"top\"><b>".$line[2]."</b></td>
+		");
+		if ($isInstallReasonEnabled)
+			echo("
 				<td valign=\"top\">".wordwrap(preg_replace("/\r\n|\r|\n/",'<br>',$line[6]),75,"<br>",1)."</td>
+			");
+		echo("
 				<td valign=\"top\">".I18N_number_format((float)$line[4]/1024)." MB</td>
 				<td valign=\"top\">".PKG_listParams($line[1])."</td>
 				<td valign=\"top\"><CENTER>".PKG_hasOptions($line[2], $packageID, $distr, $client, $release)."</CENTER></td>
@@ -1353,7 +1369,12 @@ while ($line=mysqli_fetch_row($result))
 				<td>$jobImg</td>
 				<td valign=\"top\">$status</td>
 				<td valign=\"top\"><b>".$line[0]."</b></td>
+		");
+		if ($isInstallReasonEnabled)
+			echo("
 				<td valign=\"top\">".wordwrap(preg_replace("/\r\n|\r|\n/",'<br>',$line[6]),75,"<br>",1)."</td>
+			");
+		echo("
 				<td valign=\"top\">".I18N_number_format((float)$line[4]/1024)." MB</td>
 				<td valign=\"top\">".PKG_listParams($line[1])."</td>
 				<td valign=\"top\"><CENTER>".PKG_hasOptions($line[0], $packageID, $distr, $client, $release)."</CENTER></td>
@@ -2776,8 +2797,9 @@ function PKG_getClientsByPackages($packageNames, $status = true, $and = false, $
 function PKG_countPackages($clientName)
 {
 	CHECK_FW(CC_clientname, $clientName);
+//m23customPatchBegin type=change id=PKG_countPackagesDB_Trigger
 	$sql = "SELECT COUNT(*) FROM `clientpackages` WHERE clientname='$clientName'";
-// 	$sql = "SELECT trg_sum_clientpackages FROM `clients` WHERE client='$clientName'";
+//m23customPatchEnd id=PKG_countPackagesDB_Trigger
 	$clientpackages = db_query($sql); //FW ok
 	$counted_clientpackages = mysqli_fetch_row( $clientpackages );
 

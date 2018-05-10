@@ -28,6 +28,9 @@ Now you can work on all selected clients::
 	<LI><b>$I18N_moveToGroup</b>: Moves the clients to another group.</LI>
 	<LI><b>$I18N_recover</b>: Completely reinstalls the clients.</LI>
 	<!--V12.3 end-->
+	<!--V18.2 begin-->
+	<LI><b>$I18N_redo_client_jobs</b>: Repeat all tasks that have ever been executed on the m23 client.
+        <!--V18.2 end-->
 	<!--V17.1 begin-->
         <LI><b>$I18N_comparePackageStatus</b>: Compares the package status of two clients.</LI>
         <!--V17.1 end-->

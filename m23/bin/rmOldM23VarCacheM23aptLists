@@ -1,0 +1,3 @@
+#!/bin/bash
+# Removes old cached APT lists files
+find /m23/var/cache/m23apt/ -type f -mmin +360 | grep '/lists/' | xargs -n100 -I° rm "°"

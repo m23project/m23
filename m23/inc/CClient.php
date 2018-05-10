@@ -2041,6 +2041,8 @@ class CClient extends CChecks
 **/
 	public function setMAC($mac)
 	{
+		$mac = CLIENT_convertMac($mac, '');
+	
 		if ($this->checkNonusedMAC($mac))
 		{
 			$this->clientInfo['mac'] = $mac;

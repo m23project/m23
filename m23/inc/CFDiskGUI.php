@@ -1047,6 +1047,8 @@ class CFDiskGUI extends CFDiskBasic
 			// Choosing and execution of partition schemes
 			$partitionSchemes[CFDiskBasic::PM_auto] = $I18N_fdistTypeautomatic;
 			$partitionSchemes[CFDiskBasic::PM_auto2048_4096] = $I18N_fdistTypeautomaticSwap2048_4096;
+			$partitionSchemes[CFDiskBasic::PM_auto2Disk1SysSwap2Home] = $I18N_fdiskTypeautomatic2Disk1SysSwap2Home;
+			
 			$partitionScheme = HTML_selection('SEL_partitionSchemes', $partitionSchemes, SELTYPE_selection);
 
 			// Apply a partition and formating scheme
@@ -1059,6 +1061,9 @@ class CFDiskGUI extends CFDiskBasic
 						break;
 					case CFDiskBasic::PM_auto2048_4096:
 						$this->autoPartitionDisk($this->getCurrentDiskDev(), 2048, 4096);
+						break;
+					case CFDiskBasic::PM_auto2Disk1SysSwap2Home:
+						$this->PM_auto2Disk1SysSwap2Home();
 						break;
 					default:
 						return(false);

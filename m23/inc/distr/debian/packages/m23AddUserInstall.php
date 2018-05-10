@@ -25,6 +25,8 @@ function run($id)
 	export DEBIAN_FRONTEND=noninteractive
 	dpkg-reconfigure libpam-runtime
 	');
+	
+	CLCFG_disableAptSystemdDaily();
 
 	sendClientStatus($id,"done");
 	executeNextWork();

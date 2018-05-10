@@ -12,12 +12,14 @@
 	SERVER_setClientOnlineStatusEnabled(HTML_checkBox('CB_clientOnlineStatusEnabled', '', SERVER_isClientOnlineStatusEnabled()));
 	SERVER_setUpdatePackageInfosDisabled(HTML_checkBox('CB_updatePackageInfosDisabled', '', SERVER_isUpdatePackageInfosDisabled()));
 	SERVER_setLiveLogDisabled(HTML_checkBox('CB_liveLogDisabled', '', SERVER_isLiveLogDisabled()));
+	SERVER_setInstallReasonEnabled(HTML_checkBox('CB_installReasonEnabled', '', SERVER_isInstallReasonEnabled()));
 	HTML_submit('BUT_save', $I18N_save);
 
 	HTML_showTableHeading('', $I18N_serverFeature);
 	HTML_showTableRow(CB_clientOnlineStatusEnabled, $I18N_clientOnlineStatusEnabled);
 	HTML_showTableRow(CB_updatePackageInfosDisabled, $I18N_updatePackageInfosDisabled);
 	HTML_showTableRow(CB_liveLogDisabled, $I18N_liveLogDisabled);
+	HTML_showTableRow(CB_installReasonEnabled, $I18N_installReasonEnabled);
 	echo('<tr><td colspan="2">'.BUT_save.'</td></tr>');
 
 	HTML_showTableEnd();

@@ -420,6 +420,7 @@ function CLIENT_extraWebAction($action,$client)
 		case "install-vmhostsw":
 			MSG_showInfo($I18N_VMServerSWwillBeInstalled);
 			PKG_addJob($client,"m23VirtualBox",PKG_getSpecialPackagePriority("m23VirtualBox",""),"");
+//			PKG_addJob($client,"m23x2goServer",PKG_getSpecialPackagePriority("m23x2goServer"),"");
 			CLIENT_startInstall($client);
 			break;
 
@@ -695,15 +696,17 @@ function CLIENT_getClientID()
 
 
 /**
-**name CLIENT_getActiveNetDevices($clientNameOrIP)
+**name CLIENT_getActiveNetDevices($clientNameOrIP, $skipLoop = true, $skipEQL = true)
 **description Checks for active network devices on a client or localhost.
 **parameter clientNameOrIP: The name of the client or localhost or an IP.
+**parameter skipLoop: Skip loopdevices in the output array, if set to true.
+**parameter skipEQL: Skip eqldevices in the output array, if set to true.
 **returns Associtative array with active network cards (e.g. Array ( [0] => Array ( [dev] => eth0 [type] => encap:Ethernet [mac] => 00:52:66:23:00:23 ) [1] => Array ( [dev] => venet0 [type] => encap:UNSPEC [mac] => 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00 ) )
 **/
-function CLIENT_getActiveNetDevices($clientNameOrIP)
+function CLIENT_getActiveNetDevices($clientNameOrIP, $skipLoop = true, $skipEQL = true)
 {
 	//Get the network card information lines reported by ifconfig
-	$res = CLIENT_executeOnClientOrIP($clientNameOrIP,"m23-getActiveNetDevices",'export LC_ALL=C; ifconfig | egrep "[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]" | tr -s [:blank:]',"root",false);
+	$res = CLIENT_executeOnClientOrIP($clientNameOrIP,"m23-getActiveNetDevices",'export LC_ALL=C; ifconfig 2> /dev/null | egrep "[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]" | tr -s [:blank:]',"root",false);
 
 	$lines = explode("\n",$res);
 
@@ -728,6 +731,34 @@ function CLIENT_getActiveNetDevices($clientNameOrIP)
 		//Get the mac address of the network device (e.g. 00:52:66:23:00:23)
 		$out[$i++]['mac'] = $temp[4];
 	}
+
+	// Check, if ifconfig hasn't fetched device info
+	if (!isset($out[0]) || !isset($out[0]['dev']))
+	{
+		// Try to fetch device info via 'ip'
+		$res = CLIENT_executeOnClientOrIP($clientNameOrIP, "m23-getActiveNetDevices",'export LC_ALL=C; ip -o link',"root",false);
+		$lines = explode("\n",$res);
+		foreach ($lines as $line)
+		{
+			$temp = explode(": ",$line);
+			// skip lines without a device name
+			if (empty($temp[1])) continue;
+
+			// skip (optionally) loop devices
+			if ($skipLoop && ('lo' == $temp[1])) continue;
+
+			// skip (optionally) eql devices
+			if ($skipEQL && ('eql' == $temp[1])) continue;
+
+			$out[$i]['dev'] = $temp[1];
+
+			$line = preg_replace ('#.* link/#', '' , $line);
+			$temp = explode(" ",$line);
+			$out[$i]['type'] = $temp[0];
+			$out[$i++]['mac'] = $temp[1];
+		}
+	}
+
 	return($out);
 }
 
@@ -797,8 +828,16 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 			");
 			fclose($file);
 
-			// Transfer the command file
-			exec("$sudoWithoutArgs scp -o LogLevel=FATAL -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $localCmdf $user@$ip:$cmdf");
+			// Try the given user for scp and use root, if it doesn't work.
+			foreach (array($user, 'root') as $scpUser)
+			{
+				// Transfer the command file
+				exec("$sudoWithoutArgs scp -o LogLevel=FATAL -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $localCmdf $scpUser@$ip:$cmdf", $output_array, $ret);
+
+				// scp command worked
+				if ($ret == 0) break;
+			}
+			
 			// Delete the temporary local command file
 			unlink($localCmdf);
 
@@ -823,7 +862,6 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 				return('');
 			}
 
-
 			//Get the output of SSH and split the lines into an array
 			$lines = explode("\n",@shell_exec($SSHcmd));
 			$out = "";
@@ -834,6 +872,7 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 				if ((strpos($line, "Warning: Permanently") === false) &&
 					(strpos($line, "stdin: is not a tty") === false) &&
 					(strpos($line, "stdin is not a terminal") === false) &&
+					(strpos($line, "mesg: ttyname") === false) &&
 					(strpos($line, "bash: warning: setlocale") === false))
 					$out .= "$line\n";
 			}
@@ -1688,6 +1727,7 @@ function CLIENT_showJobs($client)
 		};
 
 	$results = DB_query("SELECT * FROM clientjobs WHERE client='$client' ORDER BY priority,id "); //FW ok
+	$isInstallReasonEnabled = SERVER_isInstallReasonEnabled();
 
 echo("
 <form method=\"post\">
@@ -1700,9 +1740,14 @@ echo("
 					<td>
 						<span class=\"subhighlight\">$I18N_package_name</span>
 					</td>
-<!--					<td>
+");
+if ($isInstallReasonEnabled)
+	echo("
+					<td>
 						<span class=\"subhighlight\">$I18N_reason</span>
-					</td>-->
+					</td>
+	");
+echo("
 					<td>
 						<span class=\"subhighlight\">$I18N_parameter</span>
 					</td>
@@ -1736,7 +1781,7 @@ if( $results )
 		{
 			$package=$data['package'];
 
-// 			$reason=preg_replace("/\r\n|\r|\n/",'<br>',$data['reason']);
+
 
 			if (($package == "m23normal") || ($package == "m23normalRemove"))
 				$params = $data['normalPackage'];
@@ -1762,7 +1807,18 @@ if( $results )
 			echo("
 						<tr $class>
 							<td valign=\"top\">$package</td>
-<!--							<td valign=\"top\">".wordwrap($reason,75,"<br>",1)."</td> -->
+			");
+
+			if ($isInstallReasonEnabled)
+			{
+				$reason=preg_replace("/\r\n|\r|\n/",'<br>',$data['reason']);
+
+				echo("
+							<td valign=\"top\">".wordwrap($reason,75,"<br>",1)."</td> 
+				");
+			}
+
+			echo("
 							<td valign=\"top\">".wordwrap($params,75,"<br>",1)."</td>
 							<td valign=\"top\" align=\"center\">$data[priority]</td>
 							<td valign=\"top\" align=\"center\">$status</td>
@@ -2455,7 +2511,8 @@ while ($line=mysqli_fetch_row($result))
 **/
 function CLIENT_getClientName()
 {
-	$clientIP = getenv('REMOTE_ADDR');
+	$clientIP = $_SERVER['REMOTE_ADDR']; // getenv('REMOTE_ADDR');
+	HELPER_logToFile('/tmp/REMOTE_ADDR.log', "CLIENT_getClientName: $clientIP"); //üüüü
 	$sql = '';
 
 
@@ -2497,7 +2554,7 @@ function CLIENT_getClientName()
 	}
 	else
 	{
-		CHECK_FW(CC_ip,getenv('REMOTE_ADDR'));
+		CHECK_FW(CC_ip, $_SERVER['REMOTE_ADDR'] /*getenv('REMOTE_ADDR')*/);
 		$sql="SELECT client FROM `clients` WHERE ip='$clientIP';";
 	}
 
@@ -2509,7 +2566,10 @@ function CLIENT_getClientName()
 	}
 
 	if (!isset($clientName{1}))
-		die('CLIENT_getClientName: No client name could be found.');
+		die('echo "ERROR: This machine could not be identified by IP or other features as m23 client.
+Please have a look into the m23 manual and see what you could do, to fix this problem."
+CLIENT_getClientName: No client name could be found.
+exit 1');
 
 	return($clientName);
 }
@@ -3377,7 +3437,18 @@ function CLIENT_showAddDialog($addType)
 	if (!$_SESSION['m23Shared'])
 	{
 		if (!empty($_GET['VM_mac'])) $_POST['ED_mac'] = $_GET['VM_mac'];
-		HTML_storableInput("ED_mac", "mac", !empty($_GET['VM_mac']) ? $_GET['VM_mac'] : $params['mac'], $installParams['mac'], 12, 12);
+		
+		echo('
+		<script>
+		function sanitizeMAC()
+		{
+			var ED_mac = document.getElementById("ED_mac");
+			ED_mac.value = ED_mac.value.replace(/[^0-9a-fA-F]/g, "");
+		}
+		</script>
+		');
+		
+		HTML_storableInput("ED_mac", "mac", !empty($_GET['VM_mac']) ? $_GET['VM_mac'] : $params['mac'], $installParams['mac'], 12, 17, INPUT_TYPE_text, 'onChange="sanitizeMAC();"');
 			CLIENT_addChangeElement("mac",true);
 		$proposedIP = CLIENT_getNextFreeIp();
 		HTML_storableInput("ED_ip", "ip", empty($params['ip']) ? $proposedIP : $params['ip'], $installParams['ip'], 16, 16);
@@ -3426,7 +3497,7 @@ function CLIENT_showAddDialog($addType)
 
 	//Client architecture: 32 or 64 bits
 	$archList = getArchList();
-	HTML_storableSelection("SEL_arch", "arch", $archList, SELTYPE_selection, true, $options['arch'], $installOptions['arch']);
+	HTML_storableSelection("SEL_arch", "arch", $archList, SELTYPE_selection, true, !empty($_GET['VM_arch']) ? $_GET['VM_arch'] : $options['arch'], $installOptions['arch']);
 		CLIENT_addChangeElement("arch",true);
 
 	//Bootloader:Grub
@@ -3634,7 +3705,7 @@ echo("		<tr $oddrow><td>$I18N_netmask*</td><td>".ED_netmask." ($I18N_eg 255.255.
 
 echo("
 			<tr $oddrow><td>$I18N_packageProxy</td><td>".ED_packageProxy." Port ".ED_packagePort."</td>".RB_change_proxy."</tr>
-			<tr $evenrow><td>$I18N_group</td><td>".SEL_group."</td></tr>
+			<tr $evenrow><td>$I18N_group</td><td><div class=\"selectcheckedicons\">".SEL_group."</div></td></tr>
 			<tr $oddrow><td>$I18N_userpassword*</td><td>".ED_firstpw."</td>".RB_change_firstpw."</tr>
 			<tr $evenrow><td>$I18N_rootpassword*</td><td>".ED_rootpassword."</td>".RB_change_rootpassword."</tr>
 			<tr $oddrow><td>$I18N_timeZone</td><td>".SEL_timeZone."</td>".RB_change_timeZone."</tr>
@@ -3653,7 +3724,9 @@ echo("
 			<tr bgcolor=\"#BBFBA5\"><td>$I18N_LDAPServerName</td><td>".SEL_ldapserver."<br>
 				<a href=\"/m23admin/index.php?page=ldapSettings\">$I18N_manageLDAPServers</a></td>
 			</tr>
-
+	");
+	
+echo("
 			<tr><td bgcolor=\"#EF9F74\">$I18N_homeOnNFS</td><td bgcolor=\"#EF9F74\" align=\"right\">".ED_nfshomeserver."<br>($I18N_eg 192.168.1.23:/nfs-homes)</td>".RB_change_nfshomeserver."</tr>
 	");
 
@@ -4200,7 +4273,9 @@ if (empty($ubuntuUser))
 	$cmd.="sudo screen -dmS m23$jobName$data[ip] /m23/bin/plink $password $data[ip] ".getServerIP();
 else
 	$cmd.="sudo screen -dmS m23$jobName$data[ip] /m23/bin/plink-ubuntu $password $data[ip] ".getServerIP()." $ubuntuUser";
-	
+
+HELPER_logToFile('/tmp/CLIENT_plinkFetchJob.log', $cmd);
+
 system($cmd);
 }
 
@@ -4249,19 +4324,19 @@ function CLIENT_isDedicatedAndReachable($clientName)
 
 
 /**
-**name CLIENT_generateHTMLDedicatedAndReachableStatus($clientName)
+**name CLIENT_generateHTMLDedicatedAndReachableStatus($online)
 **description Generates HTML code and tooltip containing the status of the client showing if it's dedicated and reachable.
-**parameter clientName: name of the client
+**parameter online: true, if client is online
 **returns Associative array containg HTML code and tooltip 
 **/
-function CLIENT_generateHTMLDedicatedAndReachableStatus($clientName)
+function CLIENT_generateHTMLDedicatedAndReachableStatus($online)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	$out = array();
 
 //      print("<script>console.log($clientName);</script>");
 	$statusimage = "/gfx/status/";
-	if (CLIENT_isDedicatedAndReachable($clientName))
+	if ($online)
 	{
 		$statusimage.="green.png";
 		$out['tooltip'] = $I18N_computerOn;
@@ -4279,26 +4354,94 @@ function CLIENT_generateHTMLDedicatedAndReachableStatus($clientName)
 };
 
 
-/*
-function CLIENT_sendMessageToAllUsers($title, $message)
+
+
+
+/**
+**name CLIENT_sendPlymouthMessage($message)
+**description If Plymouth is running, display a message
+**parameter message: message to display
+**/
+function CLIENT_sendPlymouthMessage($message)
 {
-	$ply_msg4user="($counted_finishedClientjobs/$counted_clientjobs) $package";
-	$msg4user = $ply_msg4user;
-
-	if (!empty($reason))
-	{
-		$msg4user .= "\n<b>$I18N_reason:</b>\n$reason";
-		// Probleme mit Sonderzeichen
-		$msg4user = utf8_encode($msg4user);
-		$org = array("\\", "$", "\"", "'");
-		$esc = array("\\\\\\\\", "\\$", "\\\"", "\\'");
-		$msg4user = str_replace($org, $esc, $msg4user);
-		$msg4user = str_replace("\r", "", $msg4user);
-	}
-
+	// Hint: plymouth cuts message longer than 255chars
 	echo("
-		plymouth --ping && plymouth display-message --text=\"$ply_msg4user\" || notify-send_wrapper \"M23-Server: Installing packages...\" \"\$(date)\\n$msg4user\" -t 0 -i /usr/share/icons/logo.png && touch /tmp/m23_done_work || true
+		if plymouth --ping; then
+			plymouth display-message --text=\"$message\"
+		fi
 	");
 }
-*/
+
+
+
+
+
+/**
+**name CLIENT_sendNotifySendMessage($message)
+**description Send message to all users using notify-send
+**parameter message: message to display
+**parameter icon_path: icon shown
+**parameter must_inform: respect client settings or force message display? default false
+**parameter timeout_ms: timeout till message disapperas. default 0 (never)
+**parameter title: title of the message
+**parameter escape: escape the message for notify-send? default true
+**parameter timestamp: Show a timestamp at the beginning of the message. default true
+**/
+function CLIENT_sendNotifySendMessage($message, $icon_path, $must_inform = false, $timeout_ms = 0, $title = "M23-Server: Installing packages...", $escape = true, $timestamp = true)
+	{
+
+	// Hint: nofify-send supports html-tags <i> and <b>
+
+	// Handle if the message is forced to be shown, or if the default client-setting shall be respected
+	if ($must_inform)
+		$condition = "true";
+	else
+		$condition = "\"\$M23_USER_NOTIFICATION\" == \"true\"";
+
+
+	if ($escape) {
+		$message = utf8_encode($message);
+		$org = array("\\", "$", "\"", "'");
+		$esc = array("\\\\\\\\", "\\$", "\\\"", "\\'");
+		$message = str_replace($org, $esc, $message);
+		$message = str_replace("\r", "", $message);
+	}
+
+	if ($timestamp)
+		$message = "\$(date)\\n$message";
+
+	$options = " -t $timeout_ms ";
+	if (!empty ($icon_path))
+		$options .= " -i $icon_path ";
+
+	// Test if ensuring $?=0 is necessary.
+	echo("
+		if [ $condition ]; then
+			notify-send_wrapper $options \"$title\" \"$message\" || true
+		fi
+	");
+}
+
+
+
+
+
+/**
+** name CLIENT_sendM23FetchJobFinishedMessage($message, $icon_path, $must_inform, $timeout_ms)
+** description queues a notify-send message, which is displayed when all updates are installed.
+**parameter message: message to display
+**parameter icon_path: icon shown
+**parameter must_inform: respect client settings or force message display? default false
+**/
+function CLIENT_sendM23FetchJobFinishedMessage($message, $icon_path, $must_inform, $timeout_ms)
+{
+	ob_start();
+	CLIENT_sendNotifySendMessage($message, $icon_path, $must_inform, $timeout_ms);
+	$output = ob_get_contents();
+	ob_end_clean();
+	echo ("
+		echo '$output' > /tmp/sendM23FetchJobFinishedMessage
+		chmod +x /tmp/sendM23FetchJobFinishedMessage
+	");
+}
 ?>

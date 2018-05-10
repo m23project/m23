@@ -1349,7 +1349,7 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_addNewLoginToUCSLDAP = "Anmeldungsdaten auf UCS speichern.";
 @$I18N_authentificationViaUCS = "Anmeldung über UCS";
 @$I18N_addNewLoginToUCSLDAPError = "Fehler beim Speichern der Anmeldungsdaten auf UCS.";
-@$I18N_readLoginFromUCSLDAPSupportedDistros = '(nutzbar auf Clients mit Debian 8 + 9, Ubuntu 14.04, 16.04, Linux Mint 17.x und 18.x)';
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(nutzbar auf Clients mit Debian 8 + 9, Ubuntu 14.04, 16.04, 18.04, Linux Mint 17.x und 18.x)';
 
 //16.2
 @$I18N_clientUsesDynamicIP = "Der Client verwendet eine dynamische IP (DHCP)";
@@ -1439,4 +1439,15 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_UCSUpdateWarning = 'Wenn Sie Ihrern m23-Server über diese Seite aktualisieren, geschieht dies am "Univention App Center" vorbei. Hierdurch erhalten Sie ggf. neuere m23-Versionen (z.B. mit Fehlerkorrekturen und neuen Funktionen) als über das "Univention App Center". Diese m23-Versionen sind somit aktueller, haben allerdings (noch) nicht die Überprüfung durch Univention durchlaufen. Außerdem werden über die Update-Funktion die UCS-unmaintained-Paketquelle aktiviert und anschließend ein "dist-upgrade" angestoßen, bei dem auch nicht-m23-Pakete aktualisiert werden.';
 @$I18N_makeBootMedia = 'Bootmedien erstellen';
 @$I18N_downloadBootMedia = 'Bootmedien herunterladen';
+
+
+//18.2
+@$I18N_packageSelectionToBeInstalledWithDistribution_hint = 'Wählen Sie hier eine oder mehrere Paketzusammenstellung(en), die Sie zusammen mit der gewählten Distribution installieren möchten.<br>Eine <b>Mehrfachauswahl</b> ist bei gängigen Browsern durch Strg+Klick auf die gewünschten Zeilen möglich.';
+@$I18N_fdiskTypeautomatic2Disk1SysSwap2Home = '1. Platte: System + Swap, 2. Platte: /home';
+@$I18N_fdiskTypeautomatic2Disk1SysSwap2HomeDiskAmountERROR = 'Für dieses Partitionierungsschema werden mindestens zwei Festplatten benötigt.';
+@$I18N_packageSearchReturnedNoResultUpdatePackageSearchIndex = "Ihre Suche ergab keine passenden Pakete. Ggf. ist der Paketindex veraltet. Sie können diesen mit einem Klick auf <i>\"$I18N_updatePackageSearchIndex\"</i> erneuern und dann Ihre Suche wiederholen.";
+@$I18N_invalidCharactersWereRemovedFromSearchTerm = 'Aus Ihrer Suchanfrage wurden ungültige Zeichen entfernt. Erlaubt sind A-Z, a-z, 0-9, ".", " " und "-".';
+@$I18N_pleaseWaitGettingKernelInformation = 'Bitte warten. Informationen über verfügbare Linux-Kernel werden abgerufen.';
+@$I18N_installReasonEnabled = 'Setzen/Anzeigen eines Installationsgrundes für Aufträge ermöglichen';
+@$I18N_VMHostSoftwareInstalled = 'Auf diesem System ist Virtualisierungssoftware installiert. Sie können es verwenden, um virtuelle m23-Clients darauf zu installieren.';
 ?>

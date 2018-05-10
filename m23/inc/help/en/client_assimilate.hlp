@@ -16,5 +16,9 @@ For automatic assimilation a running SSH daemon that allows logging in as "root"
 You can start the assimilation by hand if there is no SSH daemon running on the client. Execute the following commands as root in a console on the client (replace "serverIP" with the IP of your m23 server):
 <code>cd /tmp; wget http://&lt;serverIP&gt;/work.php -O work.php; sh work.php</code>
 
+<u>Error handling</u>
+<!--begin v18.2 -->If your device cannot be assimilated, you can use the <i>"Manual Assimilation"</i>. You will need to add the client ID (the number in parentheses following the client name at <i>"$I18N_overview_clients"</i>). The full command now looks like this:
+<code>cd /tmp; wget http://&lt;serverIP&gt;/work.php?m23clientID=&lt;clientID&gt -O work.php; sh work.php</code><!--end v18.2 -->
+
 <u>Hint for the assimilation of an Ubuntu system</u>
 Ubuntu systems can be assimilated normally with "manual assimilation" only, because there is no running SSH daemon <!--begin v1.17 and the root login is deactivated end v1.17-->. Please start a root console on the Ubuntu system and continue with the hint "Manual assimilation".

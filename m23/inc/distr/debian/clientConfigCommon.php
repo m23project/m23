@@ -10,6 +10,51 @@ $*/
 
 
 /**
+**name CLCFG_setSystime()
+**description Sets the system time of the client to about the same time of the m23 server.
+**/
+function CLCFG_setSystime()
+{
+	$serverTime = time();
+	$allowedDiffSeconds = 120;
+
+	echo("
+	if [ $[ $(date +%s) - $serverTime ] -gt $allowedDiffSeconds ] || [ $[ $serverTime - $(date +%s) ] -gt $allowedDiffSeconds ]
+	then
+		date +%Y%m%d-%T -s \"".strftime('%Y%m%d-%H:%M:%S')."\"
+	fi
+	");
+}
+
+
+
+
+
+/**
+**name CLCFG_disableAptSystemdDaily()
+**description Deactivates systemd apt-daily.timer.
+**/
+function CLCFG_disableAptSystemdDaily()
+{
+echo('
+systemctl stop apt-daily.timer
+systemctl disable apt-daily.timer
+systemctl mask apt-daily.service
+systemctl daemon-reload
+
+if [ -f /usr/lib/apt/apt.systemd.daily ]
+then
+	dpkg-divert --local --rename --add /usr/lib/apt/apt.systemd.daily
+	mv /usr/lib/apt/apt.systemd.daily /usr/lib/apt/apt.systemd.daily.DISABLED
+fi
+');
+}
+
+
+
+
+
+/**
 **name CLCFG_addPAMtoDM($dmFile)
 **description Adds PAM modules (if present) to the pam.d configuration files.
 **parameter dmFile: Name of the login manager pam.d config file.
@@ -316,6 +361,7 @@ function CLCFG_installLightDM($session, $addSessionWrapper = false)
 echo("echo \"[SeatDefaults]
 allow-guest=false
 user-session=$session
+greeter-show-manual-login=true
 greeter-session=".$greeters[$session]."$addLines\" > /etc/lightdm/lightdm.conf
 ");
 
@@ -1663,7 +1709,9 @@ echo("
 #Normally it should be there, but on newer Ubuntu versions m23hwscanner-ubuntu is not installable, but m23hwscanner
 if [ ! -e /bin/m23hwscanner ]
 then
-	#try to install m23hwscanner (on some Ubuntu versions needed)");
+	#try to install m23hwscanner (on some Ubuntu versions needed)
+	apt-get update
+	");
 	CLCFG_aptGet("install","m23hwscanner");
 echo ("
 fi
@@ -1740,7 +1788,7 @@ if ($bootloader == "grub")
 		echo("
 		else
 			# DebianVersionSpecific
-			if [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ] || [ $(grep devuan -c /etc/apt/sources.list) -gt 0 ]
+			if [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ] || [ $(grep devuan -c /etc/apt/sources.list) -gt 0 ] || [ $(grep bionic -c /etc/apt/sources.list) -gt 0 ]
 			then
 			");
 				CLCFG_aptGet("install", "grub-pc");
@@ -1794,12 +1842,12 @@ if ($bootloader == "grub")
 			fi
 
 			# DebianVersionSpecific
-			if [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ]
+			if [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ] || [ $(grep bionic -c /etc/apt/sources.list) -gt 0 ]
 			then
 				/usr/sbin/update-grub2
 				sync
 				
-				if [ $(lsb_release -c -s) = 'xenial' ] || [ $(lsb_release -i -s) = 'LinuxMint' ] || [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ]
+				if [ $(lsb_release -c -s) = 'bionic' ] || [ $(lsb_release -c -s) = 'xenial' ] || [ $(lsb_release -i -s) = 'LinuxMint' ] || [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ]
 				then
 					sed -i 's/\(GRUB_CMDLINE_LINUX_DEFAULT=\"\)\([^\"]*\)\"/\\1\\2 net.ifnames=0\"/' /etc/default/grub
 					update-grub
@@ -2500,15 +2548,22 @@ fi
 
 
 /**
-**name CLCFG_setAuthorized_keys($serverIP,$pathToKeyFile)
+**name CLCFG_setAuthorized_keys($serverIP, $pathToKeyFile, $acceptyDSSKeys = false)
 **description sets the ssh authorized_file for remote login into the clients
 **parameter serverIP: IP of the server
-**parameter $pathToKeyFile: path on the server where to get the key file from
+**parameter pathToKeyFile: path on the server where to get the key file from
+**parameter acceptyDSSKeys: Set to true, if SSH-DSS keys should be re-enabled
 **/
-function CLCFG_setAuthorized_keys($serverIP,$pathToKeyFile)
+function CLCFG_setAuthorized_keys($serverIP, $pathToKeyFile, $acceptyDSSKeys = false)
 {
 // 	$quiet = ($_SESSION['debug'] ? "": "-qq"); ööö
 $quiet = '-d';
+
+$DSSConfig = '';
+if ($acceptyDSSKeys)
+{
+	$DSSConfig = EDIT_commentoutAll('/etc/ssh/sshd_config', 'PubkeyAcceptedKeyTypes', '#')."\n".EDIT_appendToFile('/etc/ssh/sshd_config', 'PubkeyAcceptedKeyTypes=+ssh-dss');
+}
 
 	echo("
 mkdir -p /root/.ssh
@@ -2527,8 +2582,7 @@ chgrp root /root/.ssh/authorized_keys
 ".EDIT_replace("/etc/ssh/sshd_config", "ChallengeResponseAuthentication no", "ChallengeResponseAuthentication yes","g")."
 ".EDIT_commentoutAll('/etc/ssh/sshd_config', 'PermitRootLogin', '#')."
 ".EDIT_appendToFile('/etc/ssh/sshd_config', 'PermitRootLogin without-password')."
-".EDIT_commentoutAll('/etc/ssh/sshd_config', 'PubkeyAcceptedKeyTypes', '#')."
-".EDIT_appendToFile('/etc/ssh/sshd_config', 'PubkeyAcceptedKeyTypes=+ssh-dss'));
+".$DSSConfig);
 };
 
 
@@ -2700,6 +2754,8 @@ function CLCFG_installBasePackages($packagelist, $keyring="debian-keyring")
 
 	CLCFG_aptGet("install","isc-dhcp-client");
 	
+	CLCFG_aptGet("install","command-not-found bash-completion");
+
 	echo("
 		wget -T1 -t1 -q http://m23.sourceforge.net/m23-Sign-Key.asc -O - | apt-key add -
 
@@ -3233,6 +3289,7 @@ function CLCFG_writeM23fetchjob($release = 'none')
 {
 	switch ($release)
 	{
+		case 'bionic':
 		case 'xenial':
 			$RequiredStart = "\\\$syslog \\\$remote_fs";
 			$RequiredStop = "\\\$syslog \\\$remote_fs";
@@ -3309,6 +3366,7 @@ chmod +x /sbin/m23fetchjob
 	// DebianVersionSpecific
 	switch ($release)
 	{
+		case 'bionic':
 		case 'xenial':
 			echo("\nfind /etc/rc* | grep m23fetchjob | xargs rm\nupdate-rc.d m23fetchjob defaults\nsystemctl enable m23fetchjob\n");
 		break;
@@ -3407,6 +3465,9 @@ function CLCFG_copySSLCert($rootPath="/mnt/root", $disableSSLCertCheck = false)
 {
 	$serverIP = getServerIP();
 	$quietWget = ($_SESSION['debug'] ? "": "-qq");
+
+	// Make sure, the SSL certificates are valid (system time must be never than certificate creation time)
+	CLCFG_setSystime();
 
 	//Determine, if the SSL certificate check is diabled globally for all clients.
 	if (SERVER_isSSLCertCheckDisabled())

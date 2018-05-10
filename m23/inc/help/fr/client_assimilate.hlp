@@ -17,5 +17,9 @@ Pour une intégration automatique un démon SSH actif, permettant l'administration
 Si aucun démon SSH n'est actif sur le poste client, vous avez également la possibilité de lancer le processus d'intégration manuellement. Pour ce faire, exécutez les commandes suivantes en tant que &laquo;root&raquo; ou équivalent (sudo) dans la console du poste client (remplacez &laquo;serverIP&raquo; par l'adresse IP de votre serveur m23):
 <code>cd /tmp; wget http://&lt;serverIP&gt;/work.php -O work.php; sh work.php</code>
 
+<u>Error handling</u>
+<!--begin v18.2 -->Si votre matériel ne peut être assimilé, vous pouvez utiliser l'<i>"Assimilation Manuelle"</i>. Vous devrez ajouter l'ID du client (Le numéro entre parenthèses suivant le nom du client dans <i>"$I18N_overview_clients"</i>). La commande complète ressemble maintenant à cela:
+<code>cd /tmp; wget http://&lt;serverIP&gt;/work.php?m23clientID=&lt;clientID&gt -O work.php; sh work.php</code><!--end v18.2 -->
+
 <u>Intégrer des systèmes Ubuntu</u>
 En général, les systèmes Ubuntu se laissent intégrer uniquement manuellement, après l'installation standard, <!--begin v1.17le compte «root» est désactivé et end v1.17-->aucun démon SSH n'est actif. Vous devez donc lancer une console en tant que superutilisateur «root» ou équivalent (sudo) sur l'ordinateur Ubuntu et commencer l'intégration manuellement.

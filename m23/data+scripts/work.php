@@ -17,6 +17,8 @@
 	include_once('/m23/inc/ldap.php');
 	include_once('/m23/inc/assimilate.php');
 	include_once('/m23/inc/i18n.php');
+//m23customPatchBegin type=change id=fixedLanguage
+//m23customPatchEnd id=fixedLanguage
 	include_once('/m23/inc/imaging.php');
 	include_once('/m23/inc/server.php');
 	include_once('/m23/inc/raidlvm.php');
@@ -33,7 +35,9 @@
 	include_once('/m23/inc/CSystemProxy.php');
 
 	session_start();
-	
+
+	$isInstallReasonEnabled = SERVER_isInstallReasonEnabled();
+
 echo('#!/bin/bash
 ');
 
@@ -43,6 +47,14 @@ echo('#!/bin/bash
 
 	$client = CLIENT_getClientName();
 	$_SESSION['clientName'] = $client;
+
+	// Count waiting and finished jobs for the client
+	if ($isInstallReasonEnabled)
+	{
+		$counted_waitingClientjobs = PKG_countJobs($client,'waiting');
+		$counted_clientjobs = PKG_countJobs($client,'');
+		$counted_finishedClientjobs = $counted_clientjobs - $counted_waitingClientjobs + 1;
+	}
 
 	//Set client debug status in a session parameter
 	$_SESSION['debug'] = CLIENT_isInDebugMode($client);
@@ -54,6 +66,11 @@ echo('#!/bin/bash
 	$options = CLIENT_getAllOptions($client);
 
 	$distr = $options['distr'];
+
+	if ($isInstallReasonEnabled)
+	    $sql="SELECT package,id,reason FROM `clientjobs` WHERE client='$client' AND status='waiting' ORDER BY priority, id";
+	else
+	    $sql="SELECT package,id FROM `clientjobs` WHERE client='$client' AND status='waiting' ORDER BY priority, id";
 
 	$sql="SELECT package,id FROM `clientjobs` WHERE client='$client' AND status='waiting' ORDER BY priority, id";
 	$result=DB_query($sql) or die ("work.php: Can't execute SQL statement:".$sql);
@@ -111,6 +128,22 @@ echo('#!/bin/bash
 
 					if (CLIENT_isAskingInDebugMode())
 						MSR_logCommand("work.php");
+
+					if ($isInstallReasonEnabled)
+					{
+						$reason=$line[2];
+
+						$ply_msg4user="($counted_finishedClientjobs/$counted_clientjobs) $package";
+
+						$msg4user = $ply_msg4user;
+
+						if (SERVER_isInstallReasonEnabled() && !empty($reason))
+							$msg4user .= "\n<b>$I18N_reason:</b>\n$reason";
+
+						CLIENT_sendPlymouthMessage($ply_msg4user);
+						CLIENT_sendNotifySendMessage($msg4user, "/usr/share/icons/ourCompanyLogo.png", false, 0);
+						CLIENT_sendM23FetchJobFinishedMessage("Installation finished", "/usr/share/icons/ourCompanyLogo.png", false, 0);
+					}
 
 					echo("\nsync\n");
 

@@ -29,6 +29,9 @@ Vous pouvez lancer les actions sur les postes client choisis:
 	<LI><b>$I18N_moveToGroup</b>: Cette fonction déplace un poste client dans un groupe différent.</LI>
 	<LI><b>$I18N_recover</b>: Réinstallation complète des postes clients.</LI>
 	<!--V12.3 end-->
+        <!--V18.2 begin-->
+	<LI><b>$I18N_redo_client_jobs</b>: Répète toutes les tâches ayant déja été exécutées sur le client m23.
+        <!--V18.2 end-->
 	<!--V16.4 begin-->
         <LI><b>$I18N_comparePackageStatus</b>: Comparaison de l'état des paquets entre deux postes clients.</LI>
         <!--V16.4 end-->

@@ -215,12 +215,9 @@
 
 <br><br>
 
-<script>
-function showWait()
-{
-	document.getElementById("waitdiv").style.display = "block";
-}
-</script>
+<?php
+	HTML_waitAnimation('ANIM_wait', $I18N_pleaseWaitPackageSearchInProgress);
+?>
 
 
 <CENTER>
@@ -281,23 +278,14 @@ function showWait()
 			else
 				$completeDescriptionHTML = '';
 
-			HTML_submitDefine('BUT_search', $I18N_search, "$searchDisabled onClick=\"showWait()\"");
+			HTML_submitDefine('BUT_search', $I18N_search, "$searchDisabled ".ANIM_waitOnClick);
 
 			echo("
 			$I18N_package_search ".ED_search."&nbsp;".BUT_search."<BR>".RB_packetType."
 			<br>$completeDescriptionHTML<br>
 			$packageInformationChange
 
-			<div style=\"display: none\" id=\"waitdiv\">
-				<table class=\"infotable\">
-					<tr>
-						<td>
-							<img id=\"waitimg\" src=\"/gfx/wait-ani.gif\">
-							$I18N_pleaseWaitPackageSearchInProgress
-						</td>
-					</tr>
-				</table>
-			</div>
+			".ANIM_wait."
 			
 			");
 			break;
@@ -338,7 +326,16 @@ function showWait()
 // 	if (!empty($_POST['packageType']))
 // 		$packageType=$_POST['packageType'];
 
- //list packages
+// Check, if the search term contains valid characters only and give out an info messange and remove unwanted characters
+	$searchTermNew = preg_replace('/[^A-Za-z0-9\.\- δόφί]/', '', $searchTerm);
+	if (strlen($searchTermNew) != strlen($searchTerm))
+	{
+		$searchTerm = $searchTermNew;
+		MSG_showInfo($I18N_invalidCharactersWereRemovedFromSearchTerm);
+	}
+
+
+//list packages
 	if (HTML_submitCheck('BUT_search'))
 	{
 		switch($packetType)
@@ -398,7 +395,8 @@ function showWait()
 
 	//send all marked jobs
 
-	
+	if (0 == $CB_counter)
+		MSG_showInfo($I18N_packageSearchReturnedNoResultUpdatePackageSearchIndex);
 	
 
 	if (HTML_submit('BUT_mark', $I18N_preselect))
@@ -432,9 +430,13 @@ function showWait()
 	if (HTML_submit('BUT_priority', $I18N_changePackagePriority))
 		PKG_changePrioritySelectedPackages(PKG_countSelectedpackages($client),$client,$newPriority);
 
-// 	$newReason = HTML_textArea('TA_reason', 73, 5);
-// 	if (HTML_submit('BUT_reason', $I18N_changePackageInstallReason))
-// 		PKG_changeInstallReasonSelectedPackages(PKG_countSelectedpackages($client),$client,$newReason);
+	$isInstallReasonEnabled = SERVER_isInstallReasonEnabled();
+	if ($isInstallReasonEnabled)
+	{
+		$newReason = HTML_textArea('TA_reason', 73, 5);
+		if (HTML_submit('BUT_reason', $I18N_changePackageInstallReason))
+			PKG_changeInstallReasonSelectedPackages(PKG_countSelectedpackages($client),$client,$newReason);
+	}
 
 
 	//discard only selected jobs
@@ -598,10 +600,13 @@ function showWait()
 
 	//draw discard (all, selected) and refresh buttons
 	if (!$isUpdate)
+	{
 		echo(BUT_discardAll.'&nbsp;&nbsp;'.BUT_discardSelected.'<br><br>'.
-		ED_priority.'&nbsp;&nbsp;'.BUT_priority.'<br><br>'.
-// 		TA_reason.'&nbsp;&nbsp;'.BUT_reason.'<br><br>'.
-		BUT_refresh.'&nbsp;&nbsp;');
+		ED_priority.'&nbsp;&nbsp;'.BUT_priority.'<br><br>');
+		if ($isInstallReasonEnabled)
+			echo(TA_reason.'&nbsp;&nbsp;'.BUT_reason.'<br><br>');
+		echo(BUT_refresh.'&nbsp;&nbsp;');
+	}
 
 
 	//show preview results

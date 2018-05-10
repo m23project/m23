@@ -3,6 +3,7 @@
 	include('/m23/inc/checks.php');
 	include('/m23/inc/remotevar.php');
 	include('/m23/inc/client.php');
+	include('/m23/inc/helper.php');
 
 	include_once('/m23/inc/html.php');
 	include_once('/m23/inc/CMessageManager.php');

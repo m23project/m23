@@ -1342,7 +1342,7 @@ Hint: You (or anybody else with access to your webbrowser) can use the m23 webin
 @$I18N_addNewLoginToUCSLDAP = "Save login data to UCS";
 @$I18N_authentificationViaUCS = "Authenticate via UCS";
 @$I18N_addNewLoginToUCSLDAPError = "Error: The login data could not be saved to UCS.";
-@$I18N_readLoginFromUCSLDAPSupportedDistros = '(can be used with clients based on Debian 8 + 9, Ubuntu 14.04, 16.04, Linux Mint 17.x and 18.x)';
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(can be used with clients based on Debian 8 + 9, Ubuntu 14.04, 16.04, 18.04, Linux Mint 17.x and 18.x)';
 
 //16.2
 @$I18N_clientUsesDynamicIP = "The client uses a dynamically assigned IP (DHCP)";
@@ -1433,4 +1433,14 @@ Hint: You (or anybody else with access to your webbrowser) can use the m23 webin
 @$I18N_UCSUpdateWarning = 'If you update your m23 server using this page this will bypass the "Univention App Center". You might be able to obtain more recent m23 version (e.g. containing bug fixes and new functionality) than are available via the "Univention App Center". These m23 versions are more up-to-date, but have not yet undergone Univention\'s checking procedure. Additionally, the update functionality will activate the UCS unmaintained package source and run a "dist-upgrade" which will also update non-m23-related packages.';
 @$I18N_makeBootMedia = 'Create boot media';
 @$I18N_downloadBootMedia = 'Download boot media';
+
+//18.2
+@$I18N_packageSelectionToBeInstalledWithDistribution_hint = 'Please select one or more package selections that you wish to install with the selected distribution.<br>For selecting <b>multiple items</b>, you can Ctrl+Click on the corresponding lines in common web browsers.';
+@$I18N_fdiskTypeautomatic2Disk1SysSwap2Home = '1. Disk: System + Swap, 2. Disk: /home';
+@$I18N_fdiskTypeautomatic2Disk1SysSwap2HomeDiskAmountERROR = 'This partitioning scheme requires at least two hard drives.';
+@$I18N_packageSearchReturnedNoResultUpdatePackageSearchIndex = "No matching packages could be found. Maybe your package index is outdated. You can update it by clicking on <i>\"$I18N_updatePackageSearchIndex\"</i> and then retry the search.";
+@$I18N_invalidCharactersWereRemovedFromSearchTerm = 'Invalid characters have been removed from your search term. Valid characters are A-Z, a-z, 0-9, ".", " " and "-".';
+@$I18N_pleaseWaitGettingKernelInformation = 'Please wait. Fetching information about available Linux kernels.';
+@$I18N_installReasonEnabled = 'Enable setting/showing an installation reason for client jobs';
+@$I18N_VMHostSoftwareInstalled = 'This system features virtualization software. You can use it for installing virtual m23 clients.';
 ?>

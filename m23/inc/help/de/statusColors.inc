@@ -28,6 +28,9 @@ Danach können Sie verschiedene Aktionen mit allen gewählten Clients durchführen:
 	<LI><b>$I18N_moveToGroup</b>: Verschiebt einen Client in eine Gruppe.</LI>
 	<LI><b>$I18N_recover</b>: Installiert den Client komplett neu.</LI>
 <!--V12.3 end-->
+<!--V18.2 begin-->
+	<LI><b>$I18N_redo_client_jobs</b>: Alle Aufträge (inklusive Partitionierung und Formatierung) wiederholen, die jemals auf dem m23-Client ausgeführt wurden.
+<!--V18.2 end-->
 <!--V17.1 begin-->
 	<LI><b>$I18N_comparePackageStatus</b>: Vergleicht den Paketstatus von zwei Clients.</LI>
 <!--V17.1 end-->

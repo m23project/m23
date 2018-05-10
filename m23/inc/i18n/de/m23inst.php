@@ -75,4 +75,7 @@ $I18N_installing_gnome="Gnome Desktop wird installiert";
 //16.2
 $I18N_installingEduBuntuGnome='Edubuntu-Desktop wird installiert';
 $I18N_installingLMythbuntu='Mythbuntu wird installiert';
+
+//18.2
+$I18N_installing_budgie='Budgie-Desktop wird installiert';
 ?>

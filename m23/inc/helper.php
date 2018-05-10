@@ -13,8 +13,8 @@ define('LOG_CAU', '/m23/log/autoUpdate.log');
 **name HELPER_logToFile($logFile, $text, $htmlH = NULL)
 **description Adds text to an exclusively opened log file.
 **parameter logFile: Name of the log file with full path.
-**parameter htmlH: If nummeric, the text will shown with the given HTML heading level.
 **parameter text: Text to add.
+**parameter htmlH: If nummeric, the text will shown with the given HTML heading level.
 **/
 function HELPER_logToFile($logFile, $text, $htmlH = NULL)
 {
@@ -32,6 +32,7 @@ function HELPER_logToFile($logFile, $text, $htmlH = NULL)
 	}
 	
 	if (is_numeric($htmlH)) echo("<h$htmlH>$text</h$htmlH>\n");
+	return(true);
 }
 
 

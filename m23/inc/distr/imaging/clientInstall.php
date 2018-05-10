@@ -72,7 +72,10 @@ function DISTR_startInstall($client,$desktop,$instPart,$swapPart)
 		PKG_addJob($client,"m23baseSys",PKG_getSpecialPackagePriority("m23baseSys",$extraDistr) + 1, "instPart=$instPart#swapPart=$swapPart#extraDistr=$extraDistr");
 
 		if ('ubuntu' == $extraDistr)
+		{
 			PKG_addJob($client,'m23configUpstartForNormalUsage',PKG_getSpecialPackagePriority('m23configUpstartForNormalUsage',$extraDistr),"");
+			PKG_addJob($client,'m23deactivateaptdaily',PKG_getSpecialPackagePriority('m23deactivateaptdaily',$extraDistr),"");
+		}
 
 		//Add local users if wanted and if on Debian or Ubuntu
 		if (($options['addNewLocalLogin']=="yes") || (!isset($options['addNewLocalLogin'])))

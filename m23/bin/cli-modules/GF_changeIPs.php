@@ -16,9 +16,9 @@ function run($argc, $argv)
 		// Skip localhost, fake entry in the m23 DB for creating VMs on the m23 server
 		if ('localhost' == $client) continue;
 
-		// Change IP: a.b.x.d => a.b.0.d
+		// Change IP: a.b.x.d => a.b.1.d
 		$ipParts = explode('.', $clientLine['ip']);
-		$ipParts[2] = 0;
+		$ipParts[2] = 1;
 		$newIP = implode ('.', $ipParts);
 		
 		echo("\n$client: $clientLine[ip] => $newIP, $clientLine[netmask] => $netmask");

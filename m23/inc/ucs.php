@@ -719,6 +719,7 @@ Auth:
 __EOF__
 
 DEBIAN_FRONTEND=noninteractive pam-auth-update
+DEBIAN_FRONTEND=noninteractive pam-auth-update --force
 
 # Add a field for a user name, disable user selection at the login screen
 mkdir /etc/lightdm/lightdm.conf.d

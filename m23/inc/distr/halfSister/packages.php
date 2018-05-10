@@ -61,12 +61,13 @@ function PKG_pkgUpdateCacheOnServer( $packagesourcename, $packagesource, $force=
 
 
 /**
-**name PKG_listPackages($key)
+**name PKG_listPackages($key,$distr="debian",$packagesource, $client)
 **description list packages matching the key
 **parameter key: search key
 **parameter distr: the distribution name
 **parameter packagesource: name of the package source
 **parameter client: Name of the client the packages are searched for. (Not used here and only for halfSister)
+**returns: Amount of found packages.
 **/
 function PKG_listPackages($key,$distr="debian",$packagesource, $client)
 {

@@ -589,8 +589,9 @@ function DB_genPassword($length)
 **/
 function getClientIP()
 {
- return(getenv('REMOTE_ADDR'));
-};
+	HELPER_logToFile('/tmp/REMOTE_ADDR.log', "getClientIP: $_SERVER[REMOTE_ADDR]"); //üüüü
+	return($_SERVER['REMOTE_ADDR']/*getenv('REMOTE_ADDR')*/);
+}
 
 
 
