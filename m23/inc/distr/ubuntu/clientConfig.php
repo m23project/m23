@@ -76,6 +76,7 @@ define('UBUNTUDESKTOP_BUDGIE_1804', 5003); // ubuntu-budgie-desktop
 define('UBUNTUDESKTOP_UBUNTUSTUDIO_1804', 5008); // ubuntustudio-desktop // ubuntustudio-desktop-core
 define('UBUNTUDESKTOP_TRINITY_MINIMAL_1804', 5010);
 define('UBUNTUDESKTOP_UNITY3D_MINIMAL_1804', 5011);
+define('UBUNTUDESKTOP_UBUNTU_MINIMAL_1804', 5012);
 
 
 
@@ -164,6 +165,7 @@ fi
 function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $normalScrollBars, $addDesktopIcons, $removeUbuntuOne, $removeMono = false, $installLangPacks = true)
 {
 	$lang = getClientLanguage();
+	$snapRemove1804 = false;
 
 	include("/m23/inc/i18n/".I18N_m23instLanguage($lang)."/m23inst.php");
 	
@@ -399,6 +401,15 @@ function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $no
 			$desktopPackages = 'ubuntu-desktop';
 			$dialogHeader = $I18N_installing_gnome;
 			$displayManager = NO_EXTRA_DM;
+			$snapRemove1804 = true;
+		break;
+		
+		case UBUNTUDESKTOP_UBUNTU_MINIMAL_1804:
+			CLCFG_aptGet("install", '--no-install-recommends ubuntu-desktop');
+			$desktopPackages = 'ubuntu-drivers-common ubuntu-keyring ubuntu-minimal ubuntu-wallpapers-bionic';
+			$dialogHeader = $I18N_installing_gnome;
+			$displayManager = NO_EXTRA_DM;
+			$snapRemove1804 = true;
 		break;
 
 		case UBUNTUDESKTOP_BUDGIE_1804:
@@ -564,6 +575,14 @@ libvirtodbc0 libvirtodbc0/register-odbc-driver boolean true');
 	echo("\ndpkg-reconfigure m23-skel\n");
 	
 	echo("\nsed -i '/nopasswdlogin/d' /etc/pam.d/lightdm\n");
+
+	if ($snapRemove1804)
+	{
+		// Remove gnome snaps
+		echo("\nsnap remove gnome-calculator gnome-characters gnome-logs gnome-system-monitor gnome-3-26-1604\n");
+		// Install tools via normal Debian packages
+		CLCFG_aptGet("install", "gnome-calculator gnome-characters gnome-logs gnome-system-monitor");
+	}
 }
 
 

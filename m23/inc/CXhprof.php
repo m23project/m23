@@ -203,7 +203,7 @@ class CXhprof extends CChecks
 **description Gets save setting of Xhprof.
 **returns xhprof save setting (true/false).
 **/
-	private function isSave()
+	public function isSave()
 	{
 		return($this->save);
 	}

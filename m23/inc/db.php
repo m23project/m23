@@ -287,25 +287,25 @@ function getServerNetmask()
 {
 
 	// Netmask is detected by "ucr" on UCS
-	if (HELPER_isExecutedOnUCS())
-	{
-		// Check the "normal" ethX interfaces
-		for ($ethNr = 0; $ethNr < 10; $ethNr++)
-		{
-			$netmask = exec('sudo ucr get interfaces/eth'.$ethNr.'/netmask');
-
-			if (isset($netmask{6}))
-				break;
-		}
-
-		// Check bridged network devices
-		for ($brNr = 0; $brNr < 10; $brNr++)
-		{
-			$netmask = exec('sudo ucr get interfaces/br'.$brNr.'/netmask');
-			if (isset($netmask{6}))
-				break;
-		}
-	}
+// 	if (HELPER_isExecutedOnUCS())
+// 	{
+// 		// Check the "normal" ethX interfaces
+// 		for ($ethNr = 0; $ethNr < 10; $ethNr++)
+// 		{
+// 			$netmask = exec('sudo ucr get interfaces/eth'.$ethNr.'/netmask');
+// 
+// 			if (isset($netmask{6}))
+// 				break;
+// 		}
+// 
+// 		// Check bridged network devices
+// 		for ($brNr = 0; $brNr < 10; $brNr++)
+// 		{
+// 			$netmask = exec('sudo ucr get interfaces/br'.$brNr.'/netmask');
+// 			if (isset($netmask{6}))
+// 				break;
+// 		}
+// 	}
 
 	$netmask = exec('LC_ALL="C"; /sbin/ifconfig | egrep "(eth|enp)" -A1 | sed "s/  /\n/g"  | egrep "(^Mask|^netmask)" | sed "s/^.*[ :]//" | head -1');
 
