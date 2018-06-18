@@ -40,6 +40,8 @@
 	include_once('/m23/inc/Cm23AdminLister.php');
 	include_once('/m23/inc/CFDiskIO.php');
 	include_once('/m23/inc/CFDiskBasic.php');
+	include_once('/m23/inc/mail.php');
+	include_once('/m23/inc/CGPGSign.php');
 
 
 	dbConnect();

@@ -123,7 +123,7 @@ define('CC_deviceNamepartition', 'dp');
 define('CC_deviceNameOrPartition', 'do');
 define('CC_deviceNameOrPartitionOrRaid', 'dr');
 define('CC_mountPoint', 'm');
-
+setlocale(LC_ALL, 'de_DE@euro', 'de_DE', 'de', 'ge', 'de_DE.UTF-8');
 
 
 
@@ -508,7 +508,7 @@ function CHECK_float($val, $allowEmpty=false, $returnNoDie=false)
 {
 	//set language of language specific functions to german
 	//doesn't work for me:
-	setlocale (LC_ALL, 'de_DE@euro', 'de_DE', 'de', 'ge');
+// 	setlocale(LC_ALL, 'de_DE@euro', 'de_DE', 'de', 'ge');
 	$val = str_replace (",",".",$val);
 	if (is_numeric($val))
 		return((float)$val);
@@ -537,7 +537,7 @@ function CHECK_float($val, $allowEmpty=false, $returnNoDie=false)
 function CHECK_strAlpha($val, $maxlen=0, $allowEmpty=false, $returnNoDie=false)
 {
 	//set language of language specific functions to german
-	setlocale(LC_CTYPE, "german");
+// 	setlocale(LC_CTYPE, "german");
 
 	if ($allowEmpty || isset($val{0}))
 	{
@@ -570,7 +570,7 @@ function CHECK_strAlphaNum($val, $maxlen=0, $allowEmpty=false, $returnNoDie=fals
 {
 
 	//set language of language specific functions to german
-	setlocale(LC_CTYPE, "german");
+// 	setlocale(LC_CTYPE, "german");
 	
 	if ($allowEmpty || isset($val{0}))
 	{
@@ -636,13 +636,13 @@ function CHECK_str($val, $maxlen=0, $allowEmpty=false, $returnNoDie=false)
 {
 	$val=(string)$val;
 	//set language of language specific functions to german
-	setlocale(LC_CTYPE, "german");
+// 	setlocale(LC_CTYPE, "german");
 
 	if ($allowEmpty || isset($val{0}))
 	{
 		//the value must be shorter than $malen
 		//and only some letters are allowed
-		if ((($maxlen==0) || (!isset($val{$maxlen}))) && (preg_match("![^-'[:alpha:][:digit:]".CONF_ALLOWEDCHARACTERS." \t\n\r]!", $val)==0))
+		if ((($maxlen==0) || (!isset($val{$maxlen}))) && (preg_match("![^-'[:alpha:][:digit:]".CONF_ALLOWEDCHARACTERS." \t\n\r]!", utf8_decode($val))==0))
 			return((string)$val);
 		elseif ($allowEmpty && !isset($val{0}))
 			return((string)"");

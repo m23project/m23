@@ -122,11 +122,11 @@ function ASSI_prepareClient()
 		export DEBIAN_FRONTEND=noninteractive
 	
 		".EDIT_addIfNotExists("/etc/apt/sources.list","m23.sourceforge.net/m23debs","deb http://m23.sourceforge.net/m23debs/ ./").
+		CLCFG_importLocalPoolKey().
 		"
-		wget -T1 -t1 -q http://m23.sourceforge.net/m23-Sign-Key.asc -O - | apt-key add -
-	
+
 		apt-get update
-	
+
 		apt-get -y --force-yes install wget screen sed ssh parted gawk hwsetup hwdata-knoppix m23hwscanner dmidecode m23-initscripts finger debconf-utils net-tools");
 
 		CLCFG_fetchm23BasicTools("");

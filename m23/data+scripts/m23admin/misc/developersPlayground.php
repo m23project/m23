@@ -10,9 +10,11 @@
 	HTML_setPage("developersPlayground");
 	
 	include_once('/m23/inc/distr/debian/packages.php');
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	
-	print(VM_getVBoxVersion('TUXEDO-laptop'));
-	print_r2(VM_getStatus('TUXEDO-laptop'));
+	CHECK_FW(CC_statusBarName, $I18N_client_added);
+	
+	print(serialize(CHECK_str($I18N_client_added)));
 	
 	
 // 	print('<h2>'.serialize(CHECK_ip('192.168.1.256')).'</h2>');

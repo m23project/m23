@@ -9,7 +9,7 @@ class CGPGSign extends CChecks
 {
 	private $gpgID = NULL, $storeMode, $gpgKeyList, $errorHandlingType;
 
-	// Modi of operation 
+	// Modi of operation
 	const MODE_LOAD = 0;
 	const MODE_SAVE = 1;
 

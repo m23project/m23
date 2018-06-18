@@ -77,7 +77,7 @@ define('UBUNTUDESKTOP_UBUNTUSTUDIO_1804', 5008); // ubuntustudio-desktop // ubun
 define('UBUNTUDESKTOP_TRINITY_MINIMAL_1804', 5010);
 define('UBUNTUDESKTOP_UNITY3D_MINIMAL_1804', 5011);
 define('UBUNTUDESKTOP_UBUNTU_MINIMAL_1804', 5012);
-
+define('UBUNTUDESKTOP_BUDGIE_MINIMAL_1804', 5013);
 
 
 
@@ -414,6 +414,13 @@ function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $no
 
 		case UBUNTUDESKTOP_BUDGIE_1804:
 			$desktopPackages = 'ubuntu-budgie-desktop';
+			$dialogHeader = $I18N_installing_budgie;
+			$displayManager = NO_EXTRA_DM;
+		break;
+		
+		case UBUNTUDESKTOP_BUDGIE_MINIMAL_1804:
+			CLCFG_aptGet("install", '--no-install-recommends ubuntu-budgie-desktop');
+			$desktopPackages = 'ubuntu-drivers-common ubuntu-keyring ubuntu-minimal ubuntu-wallpapers-bionic budgie-desktop-environment budgie-wallpapers-bionic budgie-welcome budgie-appmenu-applet budgie-core budgie-desktop-minimal ubuntu-budgie-themes materia-gtk-theme faba-icon-theme';
 			$dialogHeader = $I18N_installing_budgie;
 			$displayManager = NO_EXTRA_DM;
 		break;

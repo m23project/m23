@@ -355,12 +355,14 @@ function MAIL_getGpgKeyList($listSecretKeys = false)
 		$gpgListParameter = '--list-secret-keys --keyid-format short';
 		$gpgOutputSplitWords = array("uid","sec","ssb");
 		$keyMarker = 'Priv';
+		$skipKeyString = '[E]';
 	}
 	else
 	{
 		$gpgListParameter = '--list-keys --keyid-format short';
 		$gpgOutputSplitWords = array("uid","pub","sub");
 		$keyMarker = 'Publ';
+		$skipKeyString = false;
 	}
 
 	$out = array();
@@ -375,6 +377,8 @@ function MAIL_getGpgKeyList($listSecretKeys = false)
 	//Run thru the lines
 	foreach($lines as $line)
 	{
+		if (strpos($line, $skipKeyString) !== false) continue;
+
 		//Check if the line begins with "uid","pub" or "sub"
 		foreach ($gpgOutputSplitWords as $search)
 		{

@@ -2248,6 +2248,12 @@ then
 else
 	".sendClientLogStatus("/etc/apt/apt.conf.d/70debconf was written",false,true)."
 fi\n
+
+
+".CLCFG_importLocalPoolKey()."
+
+apt-get update
+
 ");
 };
 
@@ -2689,12 +2695,33 @@ function CLCFG_aptGet($command, $packages, $critical = false)
 **/
 function CLCFG_importLocalPoolKey()
 {
-	if (!file_exists(CGPGSign::POOLSIGNKEYFILE)) return('');
-
 	$serverIP = getServerIP();
 
-	$url = str_replace('/m23/data+scripts/', "http://$serverIP/", CGPGSign::POOLSIGNKEYFILE);
-	return("wget -T1 -t1 -q $url -O - | apt-key add -");
+	// Import the m23 client package sign key
+	$cmd ="
+	flase
+	while [ $? -ne 0 ]
+	do
+		wget -T1 -t1 -q http://$serverIP/packages/baseSys/m23-Sign-Key.asc -O - | apt-key add -
+	done
+	";
+
+
+	if (file_exists(CGPGSign::POOLSIGNKEYFILE))
+	{
+
+		$url = str_replace('/m23/data+scripts/', "http://$serverIP/", CGPGSign::POOLSIGNKEYFILE);
+	
+		$cmd .= "
+	false
+	while [ $? -ne 0 ]
+	do
+		wget -T1 -t1 -q $url -O - | apt-key add -
+	done
+	";
+	}
+
+	return($cmd);
 }
 
 
@@ -2738,9 +2765,9 @@ function CLCFG_installBasePackages($packagelist, $keyring="debian-keyring")
 	".CLCFG_createBootDeviceNode()."
 	mount /sys
 
-	wget -T1 -t1 -q http://m23.sourceforge.net/m23-Sign-Key.asc -O - | apt-key add -
-
 	".CLCFG_importLocalPoolKey()."
+
+	apt-get update
 
 	");
 
@@ -2757,7 +2784,6 @@ function CLCFG_installBasePackages($packagelist, $keyring="debian-keyring")
 	CLCFG_aptGet("install","command-not-found bash-completion");
 
 	echo("
-		wget -T1 -t1 -q http://m23.sourceforge.net/m23-Sign-Key.asc -O - | apt-key add -
 
 		".CLCFG_importLocalPoolKey()."
 
@@ -3371,9 +3397,8 @@ chmod +x /sbin/m23fetchjob
 			echo("\nfind /etc/rc* | grep m23fetchjob | xargs rm\nupdate-rc.d m23fetchjob defaults\nsystemctl enable m23fetchjob\n");
 		break;
 
-		case 'stretch':
+		default:
 			echo("\ndpkg-reconfigure m23-initscripts\n");
-		break;
 	}
 }
 

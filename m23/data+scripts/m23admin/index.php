@@ -1,5 +1,6 @@
 <?php
 ob_start();
+session_start();
 
 //Include the files needed for getting the language of the interface only
 include('/m23/inc/checks.php');
@@ -26,7 +27,6 @@ include("/m23/inc/html.php");
 
 if (file_exists('/m23/inc/m23shared/m23shared.php')) include_once('/m23/inc/m23shared/m23shared.php');
 
-session_start();
 echo('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">');
 
 dbConnect();

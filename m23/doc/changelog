@@ -1,3 +1,33 @@
+2018-06-18
+new: GPG_set1stKey.php: Sets the 1st available GPG key as package pool sign key
+cha: CLCFG_writeM23fetchjob: Now runs "dpkg-reconfigure m23-initscripts" as default.
+cha: UCS_addClient: Added new patch area.
++++++
+2018-06-12
+cha: CLCFG_importLocalPoolKey: Now imports the (locally stored) m23 client package sign key too.
+cha: ASSI_prepareClient: Now uses CLCFG_importLocalPoolKey.
++++++
+2018-06-11
+cha: MAIL_getGpgKeyList: Now filters out encrypt-only-keys when listing private keys.
+cha: checks.php: Now sets the locale for ctype_alpha and other functions at the beginning.
++++++
+2018-06-06
+fix: CLCFG_installBasePackages: Added "apt-get update" after importing keys.
+fix: m23 / postinst: Now doesn't call recode on source code, because it can be destroyed in some cases.
+patch 101118: Minor bugfixes and new minimalistic Gnome based Ubuntu desktop with minimal set of applications.
++++++
+2018-06-05
+fix: m23 / postinst: Now calls recode on files and not symlinks. Symlinks get converted to normal files by recode.
++++++
+2018-06-04
+fix: index.php: session_start now is called before 1st access to the session array.
+cha: PKG_preparePackageDir: Now explicitly allows unsigned packages sources and packages sources signed with unknow GPG keys.
++++++
+2018-06-01
+cha: quickBuild.sh: Now the option m23-ucs-extra-4.3 generates a special package for UCS 4.3.
+new: m23-ucs-extra-4.3: Package with special handling for updating m23 from UCS 4.2 to UCS 4.3.
+new: m23UbuntudesktopMinimal1804Install.php, UBUNTU_desktopInstall: Added a minimalistic Gnome based Ubuntu desktop with minimal set of applications.
++++++
 2018-05-29
 cha: getServerNetmask: Commented out unused UCS code.
 +++++

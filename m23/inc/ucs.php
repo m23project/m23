@@ -383,13 +383,17 @@ function UCS_addClient($client, $mac, $ip)
 	
 	$mac = CLIENT_convertMac($mac, ':');
 
+	//m23customPatchBegin type=change id=UCS_addClient_networkPart
+	$networkPart = '--set network="cn=default,cn=networks,$ldap_base" ';
+	//m23customPatchEnd id=UCS_addClient_networkPart
+
 	$cmds = 'eval "$(ucr shell)"
 
 	udm computers/linux create --position "cn=computers,$ldap_base" \
 		--set name="'.$client.'" \
 		--set mac="'.$mac.'" \
 		--set ip="'.$ip.'" \
-		--set network="cn=default,cn=networks,$ldap_base" \
+		'.$networkPart.'" \
 		--set password="ucs_m23_secret" \
 		--set dhcpEntryZone="cn=$domainname,cn=dhcp,$ldap_base '.$ip.' '.$mac.'"
 ';

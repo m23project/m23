@@ -752,7 +752,7 @@ EOF
 	$cmd .= "
 		sudo rm -r -f '$dir/archivs/lock' '$dir/lock' '$dir/lists/lock'
 
-		export LANG=\"C\"; sudo apt-get update $aptGetProxyParameter -o=Dir::Cache::archives='$dir/archivs' -o=Dir::State::status='$dir/status' -o=Dir::State='$dir' $archOption -o=Dir::Etc::sourceparts='/dev/null' -o=Dir::Etc::Parts='$dir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$dir/preferences.d' -o=Dir::Etc::sourcelist='$dir/sources.list' -o=Acquire::http::Retries='10' 2>&1 | tee -a '$logFile'
+		export LANG=\"C\"; sudo apt-get update $aptGetProxyParameter -o=Dir::Cache::archives='$dir/archivs' -o=Dir::State::status='$dir/status' -o=Dir::State='$dir' $archOption -o=Dir::Etc::sourceparts='/dev/null' -o=Binary::apt-get::Acquire::AllowInsecureRepositories='true' -o=APT::Get::AllowUnauthenticated=1 -o=Acquire::AllowInsecureRepositories='true' -o=Dir::Etc::Parts='$dir/apt.conf.d' -o=Dir::Etc::PreferencesParts='$dir/preferences.d' -o=Dir::Etc::sourcelist='$dir/sources.list' -o=Acquire::http::Retries='10' 2>&1 | tee -a '$logFile'
 		ret=\${PIPESTATUS[0]}
 		echo ret0: \$ret >> '$logFile'
 	";
