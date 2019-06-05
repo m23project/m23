@@ -21,7 +21,7 @@ Sollte sich der Schlüssel, den Sie zum Sichern der Daten verwenden möchten, nich
 
 			<li><b>scp</b>: Mittels <a href="http://de.wikipedia.org/wiki/Secure_Copy">Secure Copy</a> können Sie die Backup-Daten auf jeden beliebigen Rechner sichern, auf dem ein SSH-Server läuft. Diese Variante bietet sich an, wenn Sie einen SSH-Server besitzen, der für die Speicherung von Backups geeignet ist. Falls dessen Daten ebenfalls in einem Backupzyklus gesichert werden, ist dies eine sehr sichere Möglichkeit zum Schutz Ihres m23-Servers.</li>
 
-			<li><b>share-online.biz</b>: Wählen Sie diese Einstellung, so lädt der m23-Server die verschlüsselten Backupdaten auf einen sogenannten <a href="http://de.wikipedia.org/wiki/Sharehoster">One-Click-Hoster</a>. Sollten Sie keinen Server zur Sicherung des m23-Servers besitzen, so mag diese Variante eine Option für Sie sein. Durch die Verschlüsselung sind die Backup-Daten vor dem Einsehen durch andere geschützt. Das Hochladen kann unter Umständen einige Zeit in Anspruch nehmen.</li>
+<!-- v18.2 removed			<li><b>share-online.biz</b>: Wählen Sie diese Einstellung, so lädt der m23-Server die verschlüsselten Backupdaten auf einen sogenannten <a href="http://de.wikipedia.org/wiki/Sharehoster">One-Click-Hoster</a>. Sollten Sie keinen Server zur Sicherung des m23-Servers besitzen, so mag diese Variante eine Option für Sie sein. Durch die Verschlüsselung sind die Backup-Daten vor dem Einsehen durch andere geschützt. Das Hochladen kann unter Umständen einige Zeit in Anspruch nehmen.</li>-->
 		</ul>
 	</li>
 
@@ -41,7 +41,7 @@ Sollte sich der Schlüssel, den Sie zum Sichern der Daten verwenden möchten, nich
 			Zudem müssen Sie dafür sorgen, daß auf dem SCP-Server in der Datei <code>~/.ssh/authorized_keys</code> des unter <i>"$I18N_user"</i> angegebenen Benutzers der SSH-root-Schlüssel des m23-Servers aus der Datei <code>/root/.ssh/id_dsa.pub</code> eingetragen ist, damit eine paßwortlose Übertragung der Dateien sichergestellt ist. <!--v12.1 begin-->Für die Schlüsselübertragung können Sie auch <code>ssh-copy-id</code> verwenden: <code>ssh-copy-id -i /root/.ssh/id_dsa.pub benutzer@SCP-Server</code>.<!--v12.2 end-->
 			</li>
 		
-			<li><h3>share-online.biz</h3>
+<!-- v18.2 removed			<li><h3>share-online.biz</h3>
 			Haben Sie sich für die "share-online.biz"-Variante entschieden, so müssen Sie folgende Werte angeben:
 			<ul>
 				<li><b>$I18N_user</b>: Dies ist der Benutzername mit dem Sie sich bei share-online.biz angemeldet haben.</li>
@@ -51,7 +51,7 @@ Sollte sich der Schlüssel, den Sie zum Sichern der Daten verwenden möchten, nich
 			</ul>
 			<u>Hinweis:</u>
 			Für das Hochladen der Backup-Daten ist eine kostenlose Registrierung auf <a href="http://www.share-online.biz/signup.php">www.share-online.biz</a> erforderlich. Das Hochladen und das anschließende Herunterladen sind kostenlos. <b>Sie sollten sich aber dennoch vergewissern, daß sich die Bedingungen nicht geändert haben. Bitte kontaktieren Sie bei einer Änderung zusätzlich <a href="mailto:hhabermann@pc-kiel.de">hhabermann@pc-kiel.de</a>.</b>
-			</li>
+			</li>-->
 		</ul>
 	</li>
 

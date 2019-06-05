@@ -1,8 +1,5 @@
 <?
-	if (isset($_POST['client']{1}))
-		$client = $_POST['client'];
-	else
-		$client = $_GET['client'];
+	HELPER_getClientNameAndID($client, $id);
 ?>
 
 
@@ -13,7 +10,7 @@
 
 
 <?php
-	IMG_showCreateImage($client);
-	CLIENT_HTMLBackToDetails($client, $_GET['id'], "clientAdmin");
+	IMG_showCreateImage($client, $id);
+	CLIENT_HTMLBackToDetails($client, $id, "clientAdmin");
 	help_showhelp("client_createImage");
 ?>

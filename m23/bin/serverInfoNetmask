@@ -1,0 +1,5 @@
+#!/bin/bash
+
+LC_ALL="C"
+
+/sbin/ifconfig | egrep "(eth|enp)" -A1 | sed "s/  /\n/g"  | egrep "(^Mask|^netmask)" | sed "s/^.*[ :]//" | sed 's/[^0-9.]//g' | head -1

@@ -70,7 +70,7 @@ function PKG_addDebianUser($client, $login, $firstpw, $uid = '', $gid = '')
 
 
 /**
-**name PKG_addUser($client, $login, $firstpw, $groups, $uid = '', $gid = '')
+**name PKG_addUser($client, $login, $firstpw, $groups, $uid = '', $gid = '', $debianAndUbuntu = false)
 **description Adds a job for creating an user on the client.
 **parameter client: Name of the client.
 **parameter login: Login name of the new user.
@@ -78,13 +78,25 @@ function PKG_addDebianUser($client, $login, $firstpw, $uid = '', $gid = '')
 **parameter groups: Array of groups the user should be added.
 **parameter uid: Optional user ID of the new user.
 **parameter gid: Optional group ID of the new user.
+**parameter debianAndUbuntu: If set to true, groups for Debian and Ubuntu systems are added and the job chooses the groups when it is executed on the system.
 **/
-function PKG_addUser($client, $login, $firstpw, $groups, $uid = '', $gid = '')
+function PKG_addUser($client, $login, $firstpw, $groups, $uid = '', $gid = '', $debianAndUbuntu = false)
 {
-	if (!is_array($groups) || !sort($groups))
-		exit('ERROR: PKG_addUser: $groups not an array OR cannot be sorted.');
 
-	$accountInfo['groups']= $groups;
+	if (!$debianAndUbuntu)
+	{
+		$accountInfo['groups']= $groups;
+		if (!is_array($groups) || !sort($groups))
+			exit('ERROR: PKG_addUser: $groups not an array OR cannot be sorted.');
+	}
+	else
+	{
+		$accountInfo['groupsUbuntu'] = DISTR_getUbuntuUserGroups();
+		sort($accountInfo['groupsUbuntu']);
+		$accountInfo['groupsDebian'] = DISTR_getDebianUserGroups();
+		sort($accountInfo['groupsDebian']);
+	}
+
 	$accountInfo['login'] = $login;
 	$accountInfo['firstpw'] = $firstpw;
 	$accountInfo['uid'] = $uid;
@@ -390,7 +402,7 @@ function PKG_getDebootstrapCacheServerURL($release, $arch)
 {
 	$serverIP = getServerIP();
 	$debootstrapCacheFile = PKG_getDebootstrapCacheFilename($release, $arch);
-	return("http://$serverIP/packages/baseSys/$debootstrapCacheFile");
+	return("https://$serverIP/packages/baseSys/$debootstrapCacheFile");
 }
 
 
@@ -1307,7 +1319,7 @@ $packageAmount=0;
 
 while ($line=mysqli_fetch_row($result))
 	{
-	 $status=PKG_getClientjobsStatus($client,$line[0],$distr,$line[1],$line[2]);
+	$status = $I18N_preselected;
 
 
 	 $packageID = $line[3];

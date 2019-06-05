@@ -106,8 +106,24 @@
 			PREF_putValue($ED_prefName, "packageSelection",$packageSelection);
 		}
 
+// Check, if a kernel was selected
+	if (isset($_POST['BUT_install']) && ('imaging' != $sourcename))
+	{
+		$distributionSpecificOptions = CLCFG_addDistributionSpecificOptions(array());
+		if (!isset($distributionSpecificOptions['kernel']{1}))
+		{
+			MSG_showError($I18N_errorNoKernelSelected);
+			$kernelOK = false;
+		}
+		else
+			$kernelOK = true;
+	}
+	else
+		$kernelOK = true;
+
+
 //install the distribution
-	if (isset($_POST['BUT_install']) && !SRCLST_clientUsesEfiButSourcesListDoesntSupportEfi($client, $sourcename))
+	if (isset($_POST['BUT_install']) && $kernelOK && !SRCLST_clientUsesEfiButSourcesListDoesntSupportEfi($client, $sourcename))
 		{
 			//set options
 			$options['instPart']		= $instPart;
@@ -190,8 +206,12 @@
 <?PHP 
 if ($step >= 0)
 {
-if ($distrValues['Name'] == "Ubuntu")
-	MSG_showWarning($I18N_ubuntuWarning);
+// if ($distrValues['Name'] == "Ubuntu")
+// 	MSG_showWarning($I18N_ubuntuWarning);
+
+if ($distrValues['Name'] == "Imaging")
+	MSG_showWarning($I18N_imagingWarning);
+
 
 SRCLST_showErrorIfClientUsesEfiButSourcesListDoesntSupportEfi($client, $sourcename);
 
@@ -353,7 +373,7 @@ echo("					".CLIENT_options2HiddenForm($options)."
 			<tr>
 				<td colspan=\"3\">
 					<center>
-						<input type=\"submit\" name=\"BUT_refresh\" value=\"$I18N_refresh\">&nbsp;&nbsp;
+						<input type=\"submit\" name=\"BUT_refresh2\" value=\"$I18N_refresh\">&nbsp;&nbsp;
 						<input type=\"submit\" name=\"BUT_install\" value=\"$I18N_install_distribution\" $disableInstall>
 					</center>
 				</td>

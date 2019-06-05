@@ -218,8 +218,13 @@ function CLIENT_touchLogFile($client, $base)
 	$dir = "$baseDir/$client";
 	$log = "$dir/$base";
 
-	//Create the needed directories and touch the log file.
-	SERVER_multiMkDir($dir, '0755');
+	// FABR: wrapped call to SERVER_multiMkDir() with a check for existence of $dir.
+	// Otherwise, we call the function every time client.php is executed.
+	if (!file_exists($dir))
+	{
+		//Create the needed directories and touch the log file.
+		SERVER_multiMkDir($dir, '0755');
+	}
 	
 	@touch($log);
 
@@ -314,12 +319,12 @@ function CLIENT_startLiveScreenRecording($client)
 **/
 function CLIENT_filterLinesFromLiveScreenRecording($in)
 {
-	$filters = array('Warning: Permanently added' , 'There is no screen to be attached matching m23install.', 'tcsetattr: Input/output error', 'Write failed: Connection reset by peer');
+	$filters = array('Warning: Permanently added' , 'There is no screen to be attached matching m23install.', 'tcsetattr: Input/output error', 'Write failed: Connection reset by peer', 'bash: warning: setlocale', 'cannot change locale', "Warning: Permanently", "stdin: is not a tty", "stdin is not a terminal", "mesg: ttyname", 'lost connection', 'Permission denied');
 
 	foreach ($filters as $filter)
 		if (false !== strpos ($in, $filter))
 			return('');
-	
+
 	return($in);
 }
 
@@ -767,6 +772,31 @@ function CLIENT_getActiveNetDevices($clientNameOrIP, $skipLoop = true, $skipEQL 
 
 
 /**
+**name CLIENT_getSSHKeyorPasswordOptions($password, &$sshPass, &$sshPubkeyOnlyOptions)
+**description Generates SSH options for using sshpass (password given) or SSH public key (no password given).
+**parameter password: Password to use, if it's not NULL or empty.
+**parameter sshPass: sshpass commands are written here, if a password is given.
+**parameter sshPubkeyOnlyOptions: SSH options are written here, if no password is given.
+**/
+function CLIENT_getSSHKeyorPasswordOptions($password, &$sshPass, &$sshPubkeyOnlyOptions)
+{
+	if (is_null($password) || !isset($password{0}))
+	{
+		$sshPass = '';
+		$sshPubkeyOnlyOptions = '-o PreferredAuthentications=publickey -o PasswordAuthentication=no -o BatchMode=yes';
+	}
+	else
+	{
+		$sshPass = "sshpass -p '$password' ";
+		$sshPubkeyOnlyOptions = '';
+	}
+}
+
+
+
+
+
+/**
 **name CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",$runInScreen=true)
 **description Runs a script with "screen" in the background or under a plain BASH under a given user. The script can be executed on the local machine "localhost" or a remote client that is accessible via SSH with a public key and without a password.
 **parameter clientNameOrIP: The name of the client or localhost or an IP.
@@ -776,8 +806,11 @@ function CLIENT_getActiveNetDevices($clientNameOrIP, $skipLoop = true, $skipEQL 
 **parameter runInScreen: Set to true if the execution should be done in "screen". False executes it under the normal BASH.
 **returns The output of the screen (only available on direct output if $runInScreen is false.
 **/
-function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",$runInScreen=true)
+function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",$runInScreen=true, $password=NULL)
 {
+
+	CLIENT_getSSHKeyorPasswordOptions($password, $sshPass, $sshPubkeyOnlyOptions);
+
 	$jobName.=uniqid();
 
 	if ($clientNameOrIP === "localhost")
@@ -796,24 +829,27 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 
 			// Disable sudo calls, when run from the command line
 			if (HELPER_isExecutedInCLI())
+			{
 				$sudoWithArgs = $sudoWithoutArgs = '';
+				$sshExtra = "$user@";
+			}
 			else
 			{
 				$sudoWithArgs = "sudo -i -u $user";
 				$sudoWithoutArgs = 'sudo';
+				$sshExtra = "";
 			}
 
 			//Choose the execution mechanism
 			if ($runInScreen)
 			{
 				$execCMD = "screen -dmS $jobName $sudoWithArgs $cmdf; exit";
-				$sshExtra = "-t -t";
+				$sshExtra = "-t -t $sshExtra";
 				$sshOutput = "";
 			}
 			else
 			{
 				$execCMD = "$sudoWithArgs $cmdf";
-				$sshExtra = "";
 				$sshOutput = "2>&1 | cat";
 			}
 
@@ -832,7 +868,7 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 			foreach (array($user, 'root') as $scpUser)
 			{
 				// Transfer the command file
-				exec("$sudoWithoutArgs scp -o LogLevel=FATAL -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $localCmdf $scpUser@$ip:$cmdf", $output_array, $ret);
+				exec("$sudoWithoutArgs $sshPass scp -o LogLevel=FATAL -o VerifyHostKeyDNS=no $sshPubkeyOnlyOptions -o CheckHostIP=no -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $localCmdf $scpUser@$ip:$cmdf", $output_array, $ret);
 
 				// scp command worked
 				if ($ret == 0) break;
@@ -840,11 +876,11 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 			
 			// Delete the temporary local command file
 			unlink($localCmdf);
-
+ 
 			if ($runInScreen)
 			{
 				// Check, if the client is running systemd and disable killing of processes (like screen) after SSH disconnects
-				exec("$sudoWithoutArgs ssh -o ConnectTimeout=5 -o LogLevel=FATAL -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $ip 'loginctl enable-linger $user'", $outputLinesA, $returnCode);
+				exec("export LC_ALL=C; $sudoWithoutArgs $sshPass ssh -o ConnectionAttempts=2 -o ConnectTimeout=5 -o LogLevel=FATAL -o VerifyHostKeyDNS=no $sshPubkeyOnlyOptions -o CheckHostIP=no -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $ip 'loginctl enable-linger $user'", $outputLinesA, $returnCode);
 
 				// On systemd (or Debian 8 ?) the extra parameters (-t -t) must not be set
 				if ((1 == $returnCode) || (0 == $returnCode))
@@ -852,7 +888,7 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 			}
 			
 			//Generate the SSH command and the script generating script
-			$SSHcmd = "$sudoWithoutArgs ssh -o ConnectTimeout=5 -o LogLevel=FATAL -o VerifyHostKeyDNS=no -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o CheckHostIP=no -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $sshExtra $ip 'chmod +x $cmdf; chown $user $cmdf; $execCMD' $sshOutput";
+			$SSHcmd = "export LC_ALL=C; $sudoWithoutArgs $sshPass ssh -o ConnectionAttempts=2 -o ConnectTimeout=5 -o LogLevel=FATAL -o VerifyHostKeyDNS=no $sshPubkeyOnlyOptions -o CheckHostIP=no -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $sshExtra$ip 'chmod +x $cmdf; chown $user $cmdf; $execCMD' $sshOutput";
 
 			//-l $user
 
@@ -862,21 +898,7 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 				return('');
 			}
 
-			//Get the output of SSH and split the lines into an array
-			$lines = explode("\n",@shell_exec($SSHcmd));
-			$out = "";
-
-			//Run thru the lines and filter out unwanted SSH messages
-			foreach ($lines as $line)
-			{
-				if ((strpos($line, "Warning: Permanently") === false) &&
-					(strpos($line, "stdin: is not a tty") === false) &&
-					(strpos($line, "stdin is not a terminal") === false) &&
-					(strpos($line, "mesg: ttyname") === false) &&
-					(strpos($line, "bash: warning: setlocale") === false))
-					$out .= "$line\n";
-			}
-
+			$out = HELPER_filterOutUnwantedSSHErrors(@shell_exec($SSHcmd));
 			return($out);
 		}
 };
@@ -896,7 +918,7 @@ function CLIENT_isBasesystemInstalledFromImage($options)
 	{
 		if ((isset($options["IMGdrv$i"])) && ($options['instPart']==$options["IMGdrv$i"]))
 			return(true);
-	};
+	}
 
 	return(false);
 }
@@ -1278,7 +1300,7 @@ function CLIENT_listPackages($client, $key,$withActions)
 	while ($line=mysqli_fetch_row($result))
 	{
 		if ($withActions)
-			$actions="<td><INPUT type=\"checkbox\" name=\"CB_pkg$counter\" value=\"$line[0]\"></td>";
+			$actions="<td><INPUT type=\"checkbox\" name=\"CB_pkg$counter\" id=\"CBID_$line[0]\" value=\"$line[0]\"></td>";
 			else
 			$actions="";
 			
@@ -1633,7 +1655,7 @@ function CLIENT_showGeneralInfo($id,$generateEnterKeep=false)
 	 	GRP_showClientGroups($data['client'],true);
 	echo( "</td>$groupEGK</tr>
 	<tr> <td>$I18N_distribution:</td><td>".(isset($allOptions['distr']) ? $allOptions['distr'] : '')."</td>$distrEGK</tr>
-	<tr> <td>$I18N_packageSourceName:</td> <td>".(isset($allOptions['packagesource']) ? LDAP_I18NLdapType($allOptions['packagesource']) : '')."</td> $packageSourceEGK </tr>
+	<tr> <td>$I18N_packageSourceName:</td> <td>".(isset($allOptions['packagesource']) ? $allOptions['packagesource'] : '')."</td> $packageSourceEGK </tr>
 	<tr> <td>$I18N_language:</td><td>".I18N_convertToHumanReadableName($data['language'])."</td>$languageEGK</tr>
 	<tr> <td>$I18N_login_name:</td><td>".(isset($allOptions['login']) ? $allOptions['login'] : '')."</td>$loginEGK</tr>
 	<tr> <td>$I18N_forename:</td><td>".(isset($data['name']) ? $data['name'] : '')."</td>$forenameEGK</tr>
@@ -2199,11 +2221,15 @@ function CLIENT_backToRed($clientName)
 function CLIENT_desasterRecovery($clientName, $addInstallRemovalJobs = true, $addShutdownOrRebootPackage = true)
 {
 	CHECK_FW(CC_clientname, $clientName);
-	//set all packages from the client to status waiting
+	// Set all packages from the client to status waiting
 	$sql = "UPDATE `clientjobs` SET status='waiting' WHERE client='$clientName'";
 	DB_query($sql); //FW ok
 
-	//set statuscode of the client to 0
+	// Set m23createImage jobs to status done, so they won't be executed during recovery
+	$sql = "UPDATE `clientjobs` SET status='done' WHERE client='$clientName' AND package='m23createImage'";
+	DB_query($sql); //FW ok
+
+	// Set statuscode of the client to 0
 	$sql = "UPDATE `clients` SET status = '0' WHERE client = '$clientName'";
 	DB_query($sql); //FW ok
 
@@ -2512,7 +2538,7 @@ while ($line=mysqli_fetch_row($result))
 function CLIENT_getClientName()
 {
 	$clientIP = $_SERVER['REMOTE_ADDR']; // getenv('REMOTE_ADDR');
-	HELPER_logToFile('/tmp/REMOTE_ADDR.log', "CLIENT_getClientName: $clientIP"); //üüüü
+// 	HELPER_logToFile('/tmp/REMOTE_ADDR.log', "CLIENT_getClientName: $clientIP");
 	$sql = '';
 
 
@@ -3434,7 +3460,7 @@ function CLIENT_showAddDialog($addType)
 	//m23customPatchBegin type=change id=CLIENT_showAddDialogAdditionalFormularElementDefinition
 	//m23customPatchEnd id=CLIENT_showAddDialogAdditionalFormularElementDefinition
 
-	if (!$_SESSION['m23Shared'])
+	if (!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared'])
 	{
 		if (!empty($_GET['VM_mac'])) $_POST['ED_mac'] = $_GET['VM_mac'];
 		

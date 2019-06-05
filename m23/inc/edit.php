@@ -126,7 +126,13 @@ function EDIT_commentoutInsert($file,$search,$lineToInsert,$commentStr)
 function EDIT_commentoutAll($file,$search,$commentStr)
 {
 	return("
+	if [ -f $file ]
+	then
 	sed -i '/${search}/s°^\(.*\)°$commentStr\\1°g' '$file'
+	else
+	echo \"WARNING: called EDIT_commentoutAll on non-existing file $file\"
+	fi
+
 	");
 }
 
@@ -384,10 +390,18 @@ function EDIT_replace($file, $searchLine, $replaceText,$mode)
 
 	$cmd="awk -v SEARCH=\"$searchLine\" -v REPLACE=\"$replaceText\" '{"."$mode"."sub(SEARCH,REPLACE); print \$0} ' $file > $file.m23\n";
 
-return(EDIT_savePerms($file)."
+	return("
+if [ -f $file ]
+then
+".EDIT_savePerms($file)."
 $cmd
 mv $file.m23 $file
-".EDIT_restorePerms());
+".EDIT_restorePerms()."
+else
+echo \"WARNING: called EDIT_replace on non-existing file $file\"
+fi
+
+");
 };
 
 
@@ -570,9 +584,15 @@ function EDIT_appendToFile($file, $text)
 $stopper = uniqid('EDIT_appendToFile');
 
 return("
+if [ -f $file ]
+then
 cat >> $file << \"$stopper\"
 $text
 $stopper
+else
+echo \"WARNING: called EDIT_appendToFile on non-existing file $file\"
+fi
+
 ");
 }
 ?>

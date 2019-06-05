@@ -94,13 +94,13 @@ function VM_captureVMWindowAsMovie($type, $vmName, $enable, $movieFile, $width, 
 			if ($enable)
 				return("VBoxManage modifyvm \"$vmName\" --vcpenabled on --vcpscreens 0 --vcpfile \"$movieFile\" --vcpwidth $width --vcpheight $height --vcprate $rate --vcpfps $fps\n");
 			else
-				return("VBoxManage modifyvm \"$vmName\" --vcpenabled off\n");
+				return("VBoxManage modifyvm \"$vmName\" --vcpenabled off\nVBoxManage modifyvm \"$vmName\" --recording off\n");
+				
 		break;
 	}
 	return($cmd);
 }
-
-
+// VBoxManage modifyvm "aTm23sATstretchKDE" --recording on --recordingfile="/tmp/bla.webm" --recordingvideores="1024x756" --recordingvideorate=1024 --recordingvideofps=25
 
 
 
@@ -1346,7 +1346,21 @@ function VM_stopVM($type, $vmName)
 	switch ($type)
 	{
 		case VM_SW_VBOX:
-			$cmd = "VBoxManage controlvm \"$vmName\" poweroff";
+			$cmd = "
+
+			VBoxManage showvminfo '$vmName'
+			if [ $? -eq 0 ]
+			then
+				stopCounter=0
+
+				while [ \$stopCounter -lt 10 ] && [ $(VBoxManage showvminfo \"$vmName\" | grep '^State:' | grep -c off) -eq 0 ]
+				do
+					VBoxManage controlvm \"$vmName\" poweroff
+					sleep 3
+					stopCounter=$[ \$stopCounter + 1 ]
+				done
+			fi";
+
 		break;
 
 		case VM_SW_CLOUDSTACK:
@@ -1355,7 +1369,7 @@ function VM_stopVM($type, $vmName)
 		break;
 	}
 
-	VM_stopVMCommandFile($vmName);
+	VM_stopVMCommandFile($vmName, $cmd);
 
 	return($cmd);
 }
@@ -2205,7 +2219,8 @@ function VM_delVMCMD($type, $vmName)
 					VBoxManage modifyvm \"$vmName\" -hdc none;
 					VBoxManage modifyvm \"$vmName\" --hdc none;
 					VBoxManage unregistervm \"$vmName\" -delete;
-					VBoxManage unregistervm \"$vmName\" --delete;\n";
+					VBoxManage unregistervm \"$vmName\" --delete;
+					\n";
 			break;
 	}
 	return($cmd);
@@ -2221,7 +2236,7 @@ function VM_delVMCMD($type, $vmName)
 **parameter type: VM_SW_VBOX for VirtualBox OSE
 **parameter vmName: Name of the VM.
 **parameter activate: true for booting from network, false for booting from the HD.
-**returns BASH code to delete a virtual machine.
+**returns BASH code to (de)activate network booting of a VM.
 **/
 function VM_activateNetbootCMD($type, $vmName, $activate)
 {
@@ -2246,6 +2261,32 @@ function VM_activateNetbootCMD($type, $vmName, $activate)
 	}
 	return($cmd);
 }
+
+
+
+
+
+/**
+**name VM_restoreSnapshot($type, $vmName, $snapshotName)
+**description Restores a snapshot.
+**parameter type: VM_SW_VBOX for VirtualBox OSE
+**parameter vmName: Name of the VM.
+**parameter snapshotName: Name of the snapshot to restore.
+**returns BASH code to restore a snapshot.
+**/
+function VM_restoreSnapshot($type, $vmName, $snapshotName)
+{
+	switch ($type)
+	{
+		case VM_SW_VBOX:
+			$cmd = "
+			VBoxManage snapshot \"$vmName\" restore \"$snapshotName\"
+			\n";
+			break;
+	}
+	return($cmd);
+}
+
 
 
 
@@ -2275,7 +2316,10 @@ function VM_createVM($type, $vmName, $ramSize, $diskName, $mac, $netDev, $imageD
 			else
 				$vboxOSType = "debian_64";
 
-			$cmd = "VBoxManage createvm -register -name \"$vmName\"
+			$cmd = "
+				mkdir -p \"$imageDir/vbox/$vmName\"
+			
+				VBoxManage createvm -register -name \"$vmName\"
 
 				if [ $(egrep '(vmx|svm)' /proc/cpuinfo -c) -gt 0 ]
 				then
@@ -2345,6 +2389,15 @@ function VM_startVMInExistingXSession($type, $vmName)
 	$cmd ='
 	# Try to get the DISPLAY number of the user who runs this script
 	disp=$(who | tr -s \'[:blank:]\' | grep $(whoami) | cut -d\' \' -f2 | grep \':\')
+	
+	# THX Amir https://superuser.com/questions/647464/how-to-get-the-display-number-i-was-assigned-by-x
+	if [ $(echo -n $disp | wc -m) -eq 0 ]
+	then
+		disp=$(ps -u $(id -u) -o pid= | while read pid
+		do
+			cat /proc/$pid/environ 2>/dev/null | tr \'\0\' \'\n\' | grep \'^DISPLAY=:\'
+		done | grep -o \':[0-9]*\' | sort -u)
+	fi
 
 	# Check, if a DISPLAY number could retrieved
 	if [ $(echo -n $disp | wc -m) -gt 0 ]
@@ -2359,7 +2412,7 @@ function VM_startVMInExistingXSession($type, $vmName)
 	switch ($type)
 	{
 		case VM_SW_VBOX:
-			$cmd .= "VBoxManage startvm $vmName&\n";
+			$cmd .= "VBoxManage startvm \"$vmName\"&\n";
 		break;
 	}
 
@@ -2423,11 +2476,12 @@ function VM_startVMCommandFile($vmName, &$cmd)
 
 
 /**
-**name VM_stopVMCommandFile($vmName)
+**name VM_stopVMCommandFile($vmName, &$cmd)
 **description Removes automatical staring of a VM by removing the command file.
 **parameter vmName: Name of the VM.
+**parameter cmd: Bash code to stop the VM.
 **/
-function VM_stopVMCommandFile($vmName)
+function VM_stopVMCommandFile($vmName, &$cmd)
 {
 	$cmd.="; rm \"/m23/vms/runningVMs/$vmName.run\"";
 }

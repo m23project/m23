@@ -56,7 +56,7 @@
 	}
 
 	//try to get the package selection name from the input save field
-	$packageSelectionName = HTML_input('ED_packageSelection', $packageSelectionName1st, 20, 50);
+	$packageSelectionName = HTML_input('ED_packageSelection', false, 20, 50);
 
 	//delete the selected package selection
 	if (HTML_submit('BUT_deletePackageSelection',$I18N_delete))
@@ -395,7 +395,7 @@
 
 	//send all marked jobs
 
-	if (0 == $CB_counter)
+	if ((0 === $CB_counter) && (isset($searchTerm{0})))
 		MSG_showInfo($I18N_packageSearchReturnedNoResultUpdatePackageSearchIndex);
 	
 
@@ -485,7 +485,7 @@
 			if (!$isGroup)
 				PKG_addShutdownPackage($client);
 
-			if (!SERVER_isUpdatePackageInfosDisabled)
+			if (!SERVER_isUpdatePackageInfosDisabled())
 				PKG_addJob($client,"m23UpdatePackageInfos",PKG_getSpecialPackagePriority("m23UpdatePackageInfos"),"");
 
 			//if ((CLIENT_getClientStatus($client) != STATUS_BLUE) && !$isGroup)

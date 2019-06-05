@@ -21,7 +21,7 @@ function DISTR_baseInstall($lang,$id)
 
 	// Generate a new CFDiskIO object
 	$client = CLIENT_getClientName();
-	$CFDiskIOO = new CFDiskIO($client);
+	$CFDiskIOO = new CFDiskBasic($client);
 
 	//Get the name of the sources list
 	$sourceName = $clientOptions['packagesource'];
@@ -225,8 +225,8 @@ cd /tmp
 	CLCFG_installFirmware();
 	/* =====> */ MSR_statusBarIncCommand(5);
 
-	//generate a new lilo.conf & fstab to make lilo install
-	CLCFG_genFstab($bootDevice, $rootDevice, $clientOptions['bootloader'], $CFDiskIOO);
+	// generate fstan, install and configure grub
+	CLCFG_genFstab($bootDevice, $rootDevice, $clientOptions['bootloader'], false, PKG_isReconfiguredWithExtraDistr($pkgid));
 
 	//edit /etc/fstab again
 	$CFDiskIOO->genManualFstab('');
@@ -268,6 +268,8 @@ cd /tmp
 //hardware detection
 	CLCFG_hwdetect();
 	/* =====> */ MSR_statusBarIncCommand(2);
+
+	CLCFG_dialogInfoBox($I18N_client_installation,$I18N_client_status,$I18N_installing_basesystem);
 
 //write /etc/hosts
 	CLCFG_writeHosts();

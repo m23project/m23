@@ -259,7 +259,7 @@ function array_keysSearch($array,$expr)
 **/
 function PKGBUILDER_tar2deb($tarFile)
 {
-	SERVER_runInBackground('tar2debFixAccess', 'chmod 755 '.EXTRA_DEBS_DIRECTORY.'/*' , 'root', false);
+	SERVER_runInBackground('tar2debFixAccess', 'chmod 755 '.EXTRA_DEBS_DIRECTORY.'/*; rm '.EXTRA_DEBS_DIRECTORY.'/Packages*' , 'root', false);
 
 	if ($tarFile === false)
 		$cmd="

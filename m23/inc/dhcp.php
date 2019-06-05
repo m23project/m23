@@ -492,7 +492,7 @@ function DHCP_activateBoot($clientName, $on, $bootType = 'x')
 
 		=> Don't return, if run on UCS
 	*/
-	if ((DHCP_isNetworkBootingActive($clientName) == $on) && !HELPER_isExecutedOnUCS())
+	if (!HELPER_isExecutedOnUCS() && (DHCP_isNetworkBootingActive($clientName) == $on))
 		return(false);
 
 

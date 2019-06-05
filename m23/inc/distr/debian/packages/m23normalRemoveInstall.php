@@ -15,7 +15,7 @@ function run($id)
 
 	$line=mysqli_fetch_row($result);
 	sendClientStageStatus(STATUS_BLUE);
-	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $I18N_deinstalling_packages);
+// 	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $I18N_deinstalling_packages);
 
 	echo("
 			export DEBIAN_FRONTEND=noninteractive

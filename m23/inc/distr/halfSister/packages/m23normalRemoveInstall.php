@@ -9,7 +9,7 @@ function run($id)
 	include('/m23/inc/distr/debian/clientConfigCommon.php');
 
 	$sql="SELECT normalPackage FROM `clientjobs` WHERE id=$id";
-	$result=DB_query($sql) or die ("SQL-Befehl konnte nicht ausgef¸hrt werden:".$sql);
+	$result=DB_query($sql) or die ("Could not execute SQL statement:".$sql);
 
 	/* =====> */ MSR_statusBarIncCommand(1);
 

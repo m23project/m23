@@ -852,7 +852,7 @@ class CClient extends CChecks
 				return(false);
 
 			// If there are defined disk devices and sizes => It should be a derived client
-			if (is_array($CFDiskTemp['definedDiskSizes']))
+			if (isset($CFDiskTemp['definedDiskSizes']) && is_array($CFDiskTemp['definedDiskSizes']))
 				return(true);
 			else
 				return(false);
@@ -1550,8 +1550,11 @@ class CClient extends CChecks
 		$optionsA = array();
 
 		// Serialize the key value store before writing to the DB
-		$keyValueStoreUnserialized = $this->clientInfo['keyValueStore'];
-		$this->clientInfo['keyValueStore'] = serialize($this->clientInfo['keyValueStore']);
+		if (isset($this->clientInfo['keyValueStore']))
+		{
+			$keyValueStoreUnserialized = $this->clientInfo['keyValueStore'];
+			$this->clientInfo['keyValueStore'] = serialize($this->clientInfo['keyValueStore']);
+		}
 
 		foreach ($this->clientInfo as $key => $val)
 		{
@@ -1578,8 +1581,11 @@ class CClient extends CChecks
 		$sql .= 'WHERE `id` = \''.$this->clientInfo['id'].'\'';
 		DB_query($sql);
 
-		// Put the unserialized data back into the live data
-		$this->clientInfo['keyValueStore'] = $keyValueStoreUnserialized;
+		if (isset($this->clientInfo['keyValueStore']))
+		{
+			// Put the unserialized data back into the live data
+			$this->clientInfo['keyValueStore'] = $keyValueStoreUnserialized;
+		}
 	}
 
 

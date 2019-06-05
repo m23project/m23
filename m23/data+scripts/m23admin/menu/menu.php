@@ -53,7 +53,7 @@ CAPTURE_showMessageBox();
 			"/gfx/settings_mini.png");
 		if (isset($_SESSION['m23Shared']) && $_SESSION['m23Shared']) MENU_showEntry($I18N_customerCenter,"index.php?page=customerCenter",
 			"/gfx/settings_mini.png");
-		MENU_showEntry($I18N_m23RemoteAdministrationService,"index.php?page=m23RemoteAdministrationService","/gfx/m23RemoteAdministrationService-mini.png");
+//MENU_showEntry($I18N_m23RemoteAdministrationService,"index.php?page=m23RemoteAdministrationService","/gfx/m23RemoteAdministrationService-mini.png");
 // 		PLG_listMenuPlugins("/m23/data+scripts/m23admin/server/");
 	MENU_endGroup();
 

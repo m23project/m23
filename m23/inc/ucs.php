@@ -1,3 +1,4 @@
+
 <?php
 
 /*$mdocInfo
@@ -376,6 +377,7 @@ function UCS_getClientLDAPInfo($client)
 **parameter client: Client name.
 **parameter mac: The MAC of the client.
 **parameter ip: The client's IP address.
+**return: udm messages
 **/
 function UCS_addClient($client, $mac, $ip)
 {
@@ -393,11 +395,11 @@ function UCS_addClient($client, $mac, $ip)
 		--set name="'.$client.'" \
 		--set mac="'.$mac.'" \
 		--set ip="'.$ip.'" \
-		'.$networkPart.'" \
+		'.$networkPart.' \
 		--set password="ucs_m23_secret" \
 		--set dhcpEntryZone="cn=$domainname,cn=dhcp,$ldap_base '.$ip.' '.$mac.'"
 ';
-	SERVER_runInBackground("UCS_addClient$client", $cmds, 'root', false);
+	return(SERVER_runInBackground("UCS_addClient$client", $cmds, 'root', false));
 }
 
 
@@ -430,12 +432,14 @@ function UCS_delClient($client)
 **/
 function UCS_enableClientPXEBoot($client, $bootFilename)
 {
+	$udmMessages = '';
+
 	// Thx to the Univention staff: http://forum.univention.de/viewtopic.php?f=68&t=4433
 	
 	$CClientO = new CClient($client);
 
 	UCS_delClient($client);
-	UCS_addClient($client, $CClientO->getMAC(), $CClientO->getIP());
+	$udmMessages .= UCS_addClient($client, $CClientO->getMAC(), $CClientO->getIP());
 
 	$boot_server = getServerIP();
 	$cmds = 'eval "$(ucr shell)"
@@ -452,7 +456,11 @@ function UCS_enableClientPXEBoot($client, $bootFilename)
 /*		--dn "cn=host,cn='.$client.',cn=$domainname,cn=dhcp,$ldap_base" \
 		--policy-reference "cn=host,cn='.$client.',cn=boot,cn=dhcp,cn=policies,$ldap_base"*/
 
-	SERVER_runInBackground("UCS_enablePXEBoot$client", $cmds, 'root', false);
+	$udmMessages .= SERVER_runInBackground("UCS_enablePXEBoot$client", $cmds, 'root', false);
+
+	// Stop on critical error
+	if (isset($udmMessages{1}) && (strpos($udmMessages,'FQDN of this object is too long') !== false))
+		MSG_showEmergencyError("udm: $udmMessages");
 }
 
 
@@ -698,7 +706,7 @@ __EOF__
 auth-client-config -a -p sss
 
 # Restart sssd
-restart sssd
+systemctl restart sssd
 
 cat >/usr/share/pam-configs/ucs_mkhomedir <<__EOF__
 Name: activate mkhomedir
@@ -744,6 +752,9 @@ cat >/etc/krb5.conf <<__EOF__
     ccache_type = 4
     forwardable = true
     proxiable = true
+    default_tkt_enctypes = arcfour-hmac-md5 des-cbc-md5 des3-hmac-sha1 des-cbc-crc des-cbc-md4 des3-cbc-sha1 aes128-cts-hmac-sha1-96 aes256-cts-hmac-sha1-96
+    permitted_enctypes = des3-hmac-sha1 des-cbc-crc des-cbc-md4 des-cbc-md5 des3-cbc-sha1 arcfour-hmac-md5 aes128-cts-hmac-sha1-96 aes256-cts-hmac-sha1-96
+    allow_weak_crypto=true
 
 [realms]
 $kerberos_realm = {
@@ -758,7 +769,8 @@ sed -i \'s|start on (|start on (never and |\' /etc/init/avahi-daemon.conf
 
 # Synchronize the time with the UCS system
 ntpdate -bu $ldap_master
-');
+
+'.CLCFG_patchNsswitchForLDAP());
 }
 
 

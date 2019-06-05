@@ -25,6 +25,7 @@ class CFDiskIO extends CClient
 	const PM_extended_raid_lvm = 6;
 	const PM_auto2048_4096 = 7;
 	const PM_auto2Disk1SysSwap2Home = 8;
+	const PM_auto500GBsysSwapData = 9;
 
 //extended partition selections/page
 	const EPS_none = -1;
@@ -3559,7 +3560,7 @@ class CFDiskIO extends CClient
 **/
 	public function getNVMeMknodCommand()
 	{
-		return("\ntrue".$this->getMknodCommand("nvme0")."\n");
+		return("\n".$this->getMknodCommand("nvme0")."\n");
 	}
 
 
@@ -3576,10 +3577,10 @@ class CFDiskIO extends CClient
 	{
 		if (strpos($dev,"nvme0") !== false)
 		{
-			$out = "; mknod /dev/nvme0 c 10 58 2> /dev/null; mknod /dev/nvme0n1 b 259 0 2> /dev/null";
+			$out = "\nmknod /dev/nvme0 c 10 58 2> /dev/null\nmknod /dev/nvme0n1 b 259 0 2> /dev/null";
 
 			for ($i = 1; $i < 10; $i++)
-				$out .= "; mknod /dev/nvme0n1p$i b 259 $i 2> /dev/null";
+				$out .= "\nmknod /dev/nvme0n1p$i b 259 $i 2> /dev/null";
 
 			return($out);
 		}
@@ -3620,7 +3621,7 @@ class CFDiskIO extends CClient
 			$pPartI = 1;
 			for ($minor = $minorStart; $minor < $minorEnd; $minor++)
 			{
-				$out .= "; mknod /dev/$pPartPure$pPartI b $major $minor 2> /dev/null";
+				$out .= "\nmknod /dev/$pPartPure$pPartI b $major $minor 2> /dev/null\n";
 				$pPartI++;
 			}
 
@@ -3629,7 +3630,7 @@ class CFDiskIO extends CClient
 		else
 		{
 			$devPure = basename($dev);
-			return("; mknod /dev/$devPure b $major $minor 2> /dev/null");
+			return("\nmknod /dev/$devPure b $major $minor 2> /dev/null\n");
 		}
 	}
 

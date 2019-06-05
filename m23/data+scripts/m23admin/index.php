@@ -1,6 +1,5 @@
 <?php
 ob_start();
-session_start();
 
 //Include the files needed for getting the language of the interface only
 include('/m23/inc/checks.php');
@@ -25,7 +24,9 @@ include_once('/m23/inc/CObjectStorage.php');
 include("/m23/inc/helper.php");
 include("/m23/inc/html.php");
 
-if (file_exists('/m23/inc/m23shared/m23shared.php')) include_once('/m23/inc/m23shared/m23shared.php');
+session_start();
+$_SESSION['m23Shared'] = false;
+
 
 echo('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">');
 
@@ -79,6 +80,11 @@ if (file_exists("/m23/tmp/screenshot.lang"))
 
 //Include the language file
 include("/m23/inc/i18n/".$GLOBALS['m23_language']."/m23base.php");
+
+if (file_exists('/m23/inc/m23shared/m23shared.php'))
+	include_once('/m23/inc/m23shared/m23shared.php');
+else
+	$_SESSION['m23Shared'] = false;
 
 include_once('/m23/inc/Cm23Admin.php');
 include_once('/m23/inc/Cm23AdminLister.php');
@@ -421,6 +427,10 @@ switch($m23_page)
 
 	case 'xhprof':
 		$page = "server/xhprof.php";
+		break;
+
+	case 'autoTestHacks':
+		$page = "server/autoTestHacks.php";
 		break;
 
   /* PLUGINS */

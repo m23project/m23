@@ -1,4 +1,7 @@
 <?PHP
+	session_start();
+	$_SESSION['m23Shared'] = false;
+
 	include('/m23/inc/db.php');
 	include('/m23/inc/remotevar.php');
 	include('/m23/inc/client.php');
@@ -24,7 +27,6 @@
 	include_once('/m23/inc/CFDiskIO.php');
 	include_once('/m23/inc/CFDiskBasic.php');
 
-	session_start();
 
 	dbConnect();
 	$GLOBALS["m23_language"] = 'en';

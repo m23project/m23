@@ -9,6 +9,110 @@ $*/
 define('LOG_CAU', '/m23/log/autoUpdate.log');
 
 
+
+/**
+**name HELPER_getClientNameAndID(&$client, &$id)
+**description Gets client ID and name from the $_POST or $_GET array.
+**parameter client: Variable to write the client name to.
+**parameter id: Variable to write the client ID to.
+**/
+function HELPER_getClientNameAndID(&$client, &$id)
+{
+	if (isset($_POST['client']{1}))
+		$client = $_POST['client'];
+	elseif (isset($_GET['client']{1}))
+		$client = $_GET['client'];
+	else
+		die('HELPER_getClientNameAndID: $_POST[client] and $_GET[client] not set!');
+
+	if (isset($_POST['id']))
+		$id = $_POST['id'];
+	elseif (isset($_GET['id']))
+		$id = $_GET['id'];
+	else
+		die('HELPER_getClientNameAndID: $_POST[id] and $_GET[id] not set!');
+}
+
+
+
+
+
+/**
+**name HELPER_indentLines($in, $intent = '    ')
+**description Intents all lines by putting an intent string in front of them.
+**parameter in: Input text.
+**parameter intent: Text tu put in front of all lines.
+**returns Text with intented lines.
+**/
+function HELPER_indentLines($in, $intent = '    ')
+{
+	$out = '';
+
+	foreach (explode("\n", $in) as $line)
+		$out .= "$intent$line\n";
+
+	return($out);
+}
+
+
+
+
+
+/**
+**name HELPER_filterOutUnwantedSSHOutputs($text)
+**description Filters out unwanted lines from SSH client.
+**parameter text: Text to filter.
+**returns Text with all lines removed that are containing unwanted lines from SSH client.
+**/
+function HELPER_filterOutUnwantedSSHErrors($text)
+{
+	$out ='';
+
+	foreach (explode("\n",$text) as $line)
+		$out .= CLIENT_filterLinesFromLiveScreenRecording($line)."\n";
+	
+	return($out);
+}
+
+
+
+
+
+/**
+**name dieWithExitCode($exitMessage, $exitCode)
+**description Let the script die with a message on stderr and exit code.
+**parameter exitMessage: Message to show on exit.
+**parameter exitCode: The exit code of the script.
+**/
+function dieWithExitCode($exitMessage, $exitCode)
+{
+	fwrite(STDERR, "$exitMessage\n");
+	exit($exitCode);
+}
+
+
+
+
+
+/**
+**name HELPER_str_equal_UTF8ISO($a, $b)
+**description Checks, if two strings are equal independent from their encodings (UTF-8 or ISO).
+**parameter a: First string to compare.
+**parameter b: Second string to compare.
+**returns true, if both strings "mean" the same, otherwise false.
+**/
+function HELPER_str_equal_UTF8ISO($a, $b)
+{
+	if (strpos($a, $b) !== FALSE) return(true);
+	if (strpos(utf8_decode($a), $b) !== FALSE) return(true);
+	if (strpos($a, utf8_decode($b)) !== FALSE) return(true);
+	return(false);
+}
+
+
+
+
+
 /**
 **name HELPER_logToFile($logFile, $text, $htmlH = NULL)
 **description Adds text to an exclusively opened log file.
@@ -202,13 +306,14 @@ function HELPER_isExecutedOnUCS()
 
 
 /**
-**name HELPER_getContentFromURL($url, $range = '')
+**name HELPER_getContentFromURL($url, $range = '', $useProxy = true)
 **description Downloads an URL via curl and gives back the site code.
 **parameter url: The URL to download.
 **parameter range: If set, a part of the file will be downloaded. (e.g. 0-500 will download the first 500 kb)
+**parameter useProxy: If set to true, the system wide proxy will be used, otherwise a direct connection is attempted.
 **returns The downloaded site code or false in case of an error.
 **/
-function HELPER_getContentFromURL($url, $range = '')
+function HELPER_getContentFromURL($url, $range = '', $useProxy = true)
 {
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
@@ -219,7 +324,8 @@ function HELPER_getContentFromURL($url, $range = '')
 	if (isset($range{2}))
 		curl_setopt($ch, CURLOPT_RANGE, $range);
 
-	CSYSTEMPROXY_addCurlProxySettings($ch);
+	if ($useProxy)
+		CSYSTEMPROXY_addCurlProxySettings($ch);
 
 	$out = curl_exec($ch);
 	curl_close($ch);
@@ -338,7 +444,7 @@ function HELPER_getNewLogLines($log, $sessionPrefix, $filterFunction = NULL)
 {
 	$out = '';
 	
-	$_SESSION[$sessionPrefix]['lastLogLine'] = 0; // üüü DEBUG
+// 	$_SESSION[$sessionPrefix]['lastLogLine'] = 0; // üüü DEBUG
 
 	//Check for the log
 	if (file_exists($log))

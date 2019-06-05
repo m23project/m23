@@ -1,4 +1,609 @@
+2019-06-05
+patch 101270: Smal fixes.
+fix: m23 / postinst: Now creates /var/spool/squid and /var/log/squid with working access rights.
+fix: CAutoTest::loadXMLFile: Now runs AUTOTEST_getSeleniumSafeString on the included files too.
+patch 101269: m23-autoTest enhancements.
+new: AUTOTEST_VM_export_m23ServerISO_as_OVA: Exports a VM, that was installed via the m23 server installation ISO, to OVA file.
+new: CAutoTest::VMexportm23ServerISOasOVA: Calls AUTOTEST_VM_export_m23ServerISO_as_OVA.
++++++
+2019-06-04
+patch 101268: Compatibility fixes for Debian 8.
+new: autoTestScriptGenerator.php: Generates test sequences for m23-autoTest for m23 servers with Debian 8 + 9 (32 and 64 bits), UCS 4.3 + 4.4., Raspbian, localhost and m23 server installation ISO.
+fix: m23 / control: Now depends strongly on php-bz2, but does'n require it, if PHP 5 is used. This makes it compatible with Debian 8 (again).
+fix: m23 / postinst: Configuring Squid is compatible with Debian 8 (again).
+patch 101265: Added French characters to CONF_ALLOWEDCHARACTERS.
+fix: checks.php: Added French characters to CONF_ALLOWEDCHARACTERS.
++++++
+2019-06-03
+patch: Release 19.1
+release 19.1
++++++
+2019-05-27
+cha: index.php: session_start is called after including CPool*.php to fix "incomplete object php" when opening poolBuilder after client's overview again. (THX FABR)
++++++
+2019-05-22
+cha:IMG_clientRestore: Now activates FSEnlargeWrapper for all image formats.
+cha: m23-initscripts / postinst: Now configures Linux Mint 18 clients with systemd settings.
+cha: CGPGSign::setGPGID($id): Now returns false, if no valid ID is given.
+cha: MSR_clientSideBase64Encode: Now uses the base64 tool as second option and AWK as third.
+cha: MSR_clientSideBase64Encode: Now sets LC_ALL=C before using the AWK script for generating the bas64 output. Seems to be needed now.
+cha: FDISK_listDrivesAndPartitions: Added new parameter to list only partitions.
+cha: IMG_showCreateImage: Now only shows partitions and no drives as clonig source.
+cha: IMG_getAllMBRs: Now returns generic MBR only. Cloned MBRs don't seem to work anymore.
+cha: * / client_distr.hlp: Commented out the parts of the help files that describe deactivated options.
++++++
+2019-05-21
+cha: PKG_addUser: Has a new parameter to choose, if groups for Debian and Ubuntu systems are added and the job chooses the groups when it is executed on the system.
+cha: m23AdduserInstall.php: Special mode to find out what groups should be used for a newly created user.
+fix: partcloneWrapper, FSEnlargeWrapper: Now are detecting file system correctly on EFI systems too.
+cha: MSR_getClientSettingsCommand: Now package source lists from /etc/apt/sources.list.d/*.list too.
+cha: FSEnlargeWrapper: ext file systems are resized online now.
+cha: MSR_clientSettings: Set only the sources list, if it's imaging.
++++++
+2019-05-20
+cha: imaging / DISTR_startInstall: Removed adding of additional jobs and configuring like another distribution.
+new: CLCFG_executeNextWorkEveryMinute: Runs executeNextWork in a loop every minute and shows a status message about elapsed waiting time.
+cha: imaging / DISTR_startInstall: Now uses CLCFG_executeNextWorkEveryMinute.
+cha: imaging / DISTR_startInstall: Now detects the dirstribution (Debian or Ubuntu) by /etc/issue or sources.list*.
+cha: imaging / CLCFG_addDistributionSpecificOptions, CLCFG_showDistributionSpecificOptions: Removed option to configure restores image like a distribution.
++++++
+2019-05-18
+new: imaging / DISTR_afterChrootInstall: Generates a script that is executed after the chrooting.
+new: client_distr.php: Added warning if Imaging is choosen.
++++++
+2019-05-17
+fix: partcloneWrapper: Now detects file system correctly.
+cha: IMG_showImageManagement: Now has a refresh button.
+fix: IMG_getFormatCompressionFromFile: Now correct decompression method is figured out.
+cha: menu.php: Commented out RAS.
+cha: head.php: Now shows the link to the questionnaire if the webinterface language is German only.
+cha: HTML_liveLogArea: Increasing the minimum data length for detecting a change to > 1, because clientLiveLog.php gives out a newline if no changes are there.
+cha: CLCFG_genFstab: Now has an additional parameter, to set if it was called to reconfigure a distribution that was installed by imaging.
++++++
+2019-05-10
+cha: CLCFG_debootstrap: Now uses "--no-proxy" when downloading the compressed base system archive with wget.
+cha: CLCFG_debootstrap: Now checks the integrity of the 7-Zip compressed base system archive and repeats the download until it is valid.
++++++
+2019-05-09
+cha: CATSG::nextClientsArray: Became CATSG::nextClientsArray and is executed in CATSG::generate for each server.
+cha: CATSG::log: Now the client names are framed with "#" in the BASH scripts to make them more prominent.
+new: CATSG::getStopFile: Get the name of the stop file.
+cha: CATSG::generate: Resulting BASH scripts now are stopping, if a stop file exists.
+cha: CATSG::generate: Now the resulting BASH scripts are skipping clients that are marked as "OK" in the log file.
+cha: DHCP_activateBoot: Now checks for running on UCS before checking the network boot state.
+cha: UCS_addClient, UCS_enableClientPXEBoot: Now are returning messages from udm.
+cha: MSG_showEmergencyError: Shows the ermergency error message with a JavaScript "back" button and stops the script afterwards.
+cha: UCS_enableClientPXEBoot: Now calls MSG_showEmergencyError in case of an UDM message.
+cha: CATSG::simplifyNames: Now Simplifies 'amd64' and 'i386' too.
++++++
+2019-05-08
+cha: CAutoTest::isAnswerFoundInTriggerResult: Now decodes HTML entities (with special handling of "&apos;") when translating I18N variables.
+new: CATSG::getWebinterfaceLang: Gets the language of the m23 webinterface.
+cha: CLCFG_importLocalPoolKey: Now moves wgetrc out of the way before installing wget.
+cha: CATSG::getEnvironmentWebinterfaceLang, CATSG::getVMName; Now are using getWebinterfaceLang.
++++++
+2019-05-07
+cha: m23InstallerBase.inc / installDebs: Commented out the installation of m23-vbox.
+cha: mkCert.sh: Now sets the beginning of the certificate validity to 2019-01-01.
+cha: m23 / postinst: Now redirects more errors to /m23/log/m23PostinstNonCriticalErrorMessages.log.
+cha: m23 / postinst: Now the m23 server adds itself to the client's table, if no information about it can be read from the table.
++++++
+2019-05-06
+cha: m23InstallerBase.inc / installDebs: Now removes m23debs.list too.
+cha: * / linuxrc: Now suppresses kernel and modules messages (except panic) from appearing on the console
+cha: CLCFG_copySSLCert: Now suppresses error messages when trying to change ownership of files.
+cha: debian / ubuntu / clientInstall.php: Now goes back to "installing base system" message after hardware detection is finished.
+new: CATSG::initWebinterfaceLangArray: Generates an array with information about the languages of the m23 webinterface.
+new: CATSG::nextWebinterfaceLang: Sets the language of the m23 webinterface to the next (or first) available language in the language array.
+new: CATSG::getEnvironmentWebinterfaceLang: Returnes command line environment variable to set the language of the m23 webinterface.
+cha: CFDiskBasic::genPartedCommands: Now uses "--part-type" instead of the deprecated "-c" for the sfdisk call.
+cha: AutoTest::parseAnswersFromXML: Now if the attribute "sshanswer" is set, it will be used as wanted answer instead of the HTML parameter (eg. in <bad type="ssh_commandoutput" ...).
+cha: AutoTest::parseAnswersFromXML: Now stops the script, if the outdated attribute "cmd" is given or if BASH code to be executed via SSH does contain "'".
+fix: CFDiskBasic::genPartedCommands: Removed additional debug information that breaks the status logging.
+fix: PKG_listSelectedpackages: Now preselected packages are marked with preselected status.
+cha: m23normalRemoveInstall.php, m23normalInstall.php: Now are the same files and symlinks.
+cha: m23normalInstall.php, m23normalRemoveInstall.php: Deactivated infobox, because translation files are not loaded.
++++++
+2019-05-04
+fix: install_packages.php: Corrected undefined variable.
+cha: postMessage.php: Starts session at the begin if the script and disabled m23shared in the $_SESSION.
++++++
+2019-05-03
+fix: client_distr.php: Now the installation of imaging distributions is allowed without a kernel.
++++++
+2019-05-02
+cha: client_details.php: Now doesn't show the install-vm-software icon if it was clicked before. (THX FABR)
+cha: m23RebootInstall.php, m23ShutdownInstall.php: Now are making pauses between reboot/shutdown attempts and gives out a message, if the attempts failed. (THX FABR)
+fix: CLCFG_setSystime: Now uses a date/time string, that BusyBox 1.20.0 can interpret. (THX FABR)
+cha: CLCFG_setAuthorized_keys: Now gives out a warning, if sshd_config isn't present. (THX FABR)
+cha: CLCFG_copySSLCert: Better checking for m23shared. (THX FABR)
+cha: ubuntu / clientInstall.php: Removed using undefined variable.
+cha: CLIENT_touchLogFile: Now creates the directory only if it doesn't exist. (THX FABR)
+cha: getServerIP: Better identification of m23shared existence. (THX FABR)
+cha: EDIT_commentoutAll, EDIT_replace, EDIT_appendToFile: Now are giving out a warning, if file to edit isn't present. (THX FABR)
+cha: FDISK_genPartedCommands: Now uses "--part-type" instead of the deprecated "-c" for the sfdisk call. (THX FABR)
+cha: HTML_showStatusBarHTML: No sets the variables $percentR and $percentL to empty strings instead of letting them undefined. (THX FABR)
+cha: MSR_curDynIPCommand: No messages when checking existence of "ip" command.
+fix: m23 / control: Now depends strongly on php-bz2.
+cha: SRCLST_showErrorIfClientUsesEfiButSourcesListDoesntSupportEfi, SRCLST_clientUsesEfiButSourcesListDoesntSupportEfi: Now don't do not check for EFI, if the client was installed by imaging. (THX FABR)
++++++
+2019-04-30
+new: IMG_recodeToNameOfMBR: Computes the pathname of the MBR file from the pathname of the imagefile. (THX FABR)
+fix: IMG_showCreateImage: Now transfers the client ID too. (THX FABR)
+new: IMG_clientCreate: Option to make gzip compress faster with lower compression ratio.
+new: HELPER_getClientNameAndID: Gets client ID and name from the $_POST or $_GET array.
+fix: CFDiskBasic::genPartedCommands: Now correct variables are used for the status logging.
+cha: CClient::isDerivedClient: Now checks existence of array key before accessing it.
+cha: IMG_clientRestoreAll: Commented out code that will never be executed.
+cha: CClient::save: Now handles $this->clientInfo['keyValueStore'] only, if present.
+fix: partcloneWrapper: Adjustements to current versions of parted and partclone (THX FABR)
+cha: client / linuxrc: Improved output on screen: Coloured messages and less unimportant error messages. (THX FABR)
+cha: client / linuxrc: Usage of haveged is configurable by parameter now. (THX FABR)
+cha: archFunctions / makeLinks: Now gives out a message, if the destination symlink is already existing. (THX FABR)
+cha: kernelFunctions.inc: Now jumps back to MDK's menu from 'make menuconfig' after pressing a key. Give us a chance to see error messages. (THX FABR)
+cha: rfsFunctions.inc: Now uses force parameter when deleting (some) files. (THX FABR)
++++++
+2019-04-29
+new: m23InstallerBase.inc / copyDebs: Copies the Debian packages from the ISO to the installation partition and prepares the system to execute afterRebootSetup.sh at first boot.
++++++
+2019-04-28
+cha: menuManual.hlp, menuDevguide.hlp: Updated and made more precise.
++++++
+2019-04-27
+new: menuFork, menuFork.hlp: Added help function.
+cha: menuServerISO.hlp, menuClientISO.hlp, menuStart.hlp: Updated and made more precise.
+fix: CAutoTest::checkTriggerResult: Now uses correct comparision for $found == $shouldbefound for bad.
++++++
+2019-04-26
+new: CLIENT_getSSHKeyorPasswordOptions: Generates SSH options for using sshpass (password given) or SSH public key (no password given).
+cha: CLIENT_executeOnClientOrIP: Now uses CLIENT_getSSHKeyorPasswordOptions.
+cha: CAutoTest::VMCreate, VMStop, VMStart: Now are giving out debug messages via CAutoTest::debugPrint.
+cha: CAutoTest::parseActionFromXML, executeTriggerAction: Added wait action.
++++++
+2019-04-25
+cha: m23 / postinst: Now disables systemd's PrivateTmp for Apache in service files that were copied to /etc/systemd/system/.
+cha: VM_stopVM: Now stops the VM only if it exists.
+cha: CLIENT_filterLinesFromLiveScreenRecording: Added 'lost connection' and 'Permission denied'.
+fix: AUTOTEST_sshTunnelOverServer: Corrected running of client commands from local m23 server.
++++++
+2019-04-24
+cha: Updated Linux Kernel to 4.9.170.
+cha: CATSG::getVMName: Now the return string includes the client architecture.
+new: CATSG::toggleClientArch: Toggles the client's architecture from amd64 to i386 and reverse.
+new: CATSG::getClientArchEnvironmentVariable: Returnes command line environment variable to create an i386 client or nothing, if the client's architecture should be amd64.
+cha: client_distr.php: Now allows the start of the distribution only, if a kernel was selected. Otherwise shows an error message.
++++++
+2019-04-19
+cha: serverInfoBroadcast, serverInfoGateway, serverInfoDNS, serverInfoIP, serverInfoNetmask: Now are filtering out all parts that are not a valid IP address.
+fix: m23 / postinst: Fixed adjustment of old clients without architecture. (THX FABR)
+cha: m23 / postinst: Now only calls m23customPatch.php if there are patch files.
+cha: m23 / postinst: Now redirects mysql errors to /m23/log/m23PostinstSQL.log, because error messages (eg. creation of existing tables or databases) aren't errors from m23's view. Overwriting of tables and databases would be a fatal error.
++++++
+2019-04-18
+new: nonM23CreateOSImage: Creates a tar.7z image of the currently installed (non m23) system
+fix: configureNetwork: Removed wrong space after IP address.
++++++
+2019-04-16
+cha: /mdk/client+server/updatedDebianPackages: Removed outdated files.
+cha: createRFScopyLib: Now checks the architecture of libraries (32- or 64-bits) before copying them.
++++++
+2019-04-15
+cha: Removed outdated m23 plugins directory /mdk/m23plugin, dependency from m23-mdk/control, SF-hg-backup and build instructions from mkm23Debs.
+cha: m23 / postinst: Now removed bad SSH keys from files only if they are existing.
+cha: m23 / postinst: Now (re-)creates .../baseSys/authorized_keys if it's empty.
+cha: VM_stopVM: Now tries 10 times to shutdown the VM with a pause of 3 seconds between attempts.
++++++
+2019-04-13
+new: Added Ubuntu 18.04 Bionic *OptionPages.php.
++++++
+2019-04-12
+cha: CLCFG_debootstrap, PKG_getDebootstrapCacheServerURL: Now are using HTTPs connections for wget.
+cha: m23-xorg.conf-generator.sh / checkNoXorgConfNeeded: Now checks and returns (but does not delete xorg.conf), if the installed Xorg version will run well without a xorg.conf
+new: m23-xorg.conf-generator.sh / removeNotNeededXorgConf: Removes xorg.conf, if the installed Xorg version will run well without a xorg.conf
+cha: m23-xorg.conf-generator.sh / configXOrgVBox: Now calls checkNoXorgConfNeeded to find out, if xorg.conf is needed.
+cha: install_packages.php: Now shows the message about a maybe outdated package index only, if a search term was given.
+cha: client_distr.php: Disabled Ubuntu warning.
+cha: Removed outdated Ubuntu and Debian *OptionPages.php.
++++++
+2019-04-11
+fix: createRFScopyLib: Now filters out 32 or 64 bit libs depending on the build architecture.
++++++
+2019-04-09
+fix: downloadExtractRFS: Removed non-existing Wheezy sources.
+fix: downloadExtractRFS: Removed now non-existing packages.
+cha: createRFSBins: Disabled usage of allLibs.txt.
+cha: m23InstallerBase.inc / startBaseInstallation: Now uses existing LDAP database.
++++++
+2019-04-08
+new: getCPUDebianArch: Shows the native CPU architecture of the distribution.
+cha: CAutoTest::parseXML: Changed priority of answers. Now it is bad, good and warn.
+cha: CATSG::simplifyNames: Now filters case-sensitive.
+cha: m23-xorg.conf-generator.sh: xorgThereSoStop: Now calls checkNoXorgConfNeeded to remove a unneeded xorg.conf.
+cha: cleanOSForCompressing: Now configures /etc/default/grub and /etc/network/interfaces to use traditional network interface names.
+cha: head.php: Updated links.
+fix: m23 / postinst: Fixed generation of random password.
+cha: PKGBUILDER_tar2deb: Now removes Packages* from the extradebs directory.
+new: checkForCrossGCC: Checks, if DPKG extra architecture and packages for cross compiling (i386 <=> amd64) are installed. (THX FABR)
+cha: compileBusyBox: Now calls checkForCrossGCC and uses parameters to cross-compile BusyBox. (THX FABR)
+fix: m23-ldap / postinst: Fixed path to config.php.
++++++
+2019-04-02
+new: tarBusyBox-compiled+symlinks: Creates a compressed tar file with the BusyBox binaries for i386 and amd64 and the symlinks to them.
++++++
+2019-04-01
+cha: compileBusyBox: Removed cross compiling (doesn't work anymore).
+cha: menuClientISO: Now sources /mdk/globalVars before sourcing include files.
++++++
+2019-03-29
+cha: exportDBInitTable: Removed "Linux Mint 17.1 Rebecca", "Linux Mint 17.2 Rafaela", "Linux Mint 17.3 Rosa".
++++++
+2019-03-28
+new: CATSG::initClientsArray: Generates an array with information about client distributions including available desktops.
+new: CATSG::initServerArray: Generates an array with information about m23 server targets.
+new: CATSG::pickDesktops: Randomly picks desktops from the list of desktops that are available in the distribution.
+new: CATSG::simplifyNames: Simplifies server, sourceslist and desktop names.
+new: CATSG::getVMName: Generates a (unique) name for the VM.
+new: CATSG::getFileName: Generic filename generator.
+new: CATSG::getLogFile: Get the log filename.
+new: CATSG::getBashFile: Get the name of the BASH file that contains the full test set for an m23 server.
+new: CATSG::log: Logs BASH code with the resulting exit and (optionally) exits when a failure occurs.
+cha: exportDBInitTable: Removed "devuanjessie", "trusty", "HS-Fedora14", "HS-opensuse11.4", "HS-centos62", "precise", "precise+Xorg-updates", "wheezy".
++++++
+2019-03-26
+cha: CLIENT_executeOnClientOrIP: Now calls ssh with LC_ALL=C.
+new: SRCLST_getExportedListNames: Generates an array with all sources lists that are exported by /mdk/bin/exportDBsourceslist.php.
++++++
+2019-03-25
+new: AUTOTEST_VM_stop: Stops a VM.
+new: CAutoTest::VMStop: Stops a virtual machine.
++++++
+2019-03-24
+cha: CLIENT_filterLinesFromLiveScreenRecording: Added additional filter strings from CLIENT_executeOnClientOrIP.
+cha: CLIENT_executeOnClientOrIP: Now uses HELPER_filterOutUnwantedSSHErrors instead of filtering the lines directly.
++++++
+2019-03-23
+cha: AUTOTEST_sshTunnelOverServer: Added "-o ServerAliveInterval=60 -o ServerAliveCountMax=1".
++++++
+2019-03-22
+cha: AUTOTEST_VM_hostSanityCheck: Now checks for tesseract and convert (ImageMagick) too.
+cha: AUTOTEST_VM_ocrScreen: Now uses tesseract too.
+cha: CAutoTest::isConsecutiveIdenticalMessage: Now counts the repeated identical messages.
+cha: CAutoTest::showAndLogMessage: Now shows the amount of repeated identical messages.
+cha: AUTOTEST_sshTunnelOverServer: Added connection timout of 15 seconds.
++++++
+2019-03-21
+cha: CLCFG_executeAfterChroot: Now calls /tmp/afterChrootInstall.sh with "bash /tmp/afterChrootInstall.sh" and not as executable script. Needed for Ubuntu 18.04. and Linux Mint 19.x now.
++++++
+2019-03-20
+cha: menuClientISO: Now shows info messages to indicate the called subroutines.
+new: CAutoTest::isConsecutiveIdenticalMessage: Checks, if an consecutive identical message was assigned in the last call.
+cha: CAutoTest::showAndLogMessage: Now has an optional parameter to filter out consecutive identical messages.
+cha: AUTOTEST_VM_delete: Now stops the VM before deleting.
++++++
+2019-03-19
+cha: UCS_enableClientLDAP: Now calls CLCFG_patchNsswitchForLDAP to configure /etc/nsswitch.conf.
+cha: SERVER_runInBackground: Additional parameter to redirect stderr and not shown on in the console.
++++++
+2019-03-18
+cha: CAutoTest::nextCurElement: Now shows and logs a heading for the new test block instead of CAutoTest::setTriggered.
+new: AUTOTEST_createLDAPUserAndGroup: Creates an LDAP user and group on the local LDAD server and shows an info message, if creation was sucessfully or a warning with the direct message from the LDAP server.
+new: autoTestHacks.php: Page for special functions that can be triggered by m23 autoTest.
++++++
+2019-03-17
+new: HELPER_indentLines: Intents all lines by putting an intent string in front of them.
++++++
+2019-03-16
+cha: CAutoTest::elemOk: Renamed to CAutoTest::elemGood.
+cha: SERVER_runInBackground: Now returns stderr too when in direct execution mode.
+new: HELPER_filterOutUnwantedSSHOutputs: Filters out unwanted lines from SSH client.
+cha: CAutoTest::checkTriggerResult: Now jumps out of the foreach loop to not process "warn" or "bad" events after a "good" event.
+cha: CAutoTest::showAndLogMessage: Now UTF8 decodes the message.
++++++
+2019-03-15
+cha: CAutoTest::setTriggered: Now shows and logs a heading for the new test block if it is triggered.
++++++
+2019-03-13
+cha: CAutoTest::isAnswerFoundInTriggerResult: Now checks, if the answer is NOT found in the result, if the answer string begins with "!".
+cha: CAutoTest::getLogFileName: Now returns "autoTest-startup.log", if the constant "VM_NAME" is not set.
+fix: client / linuxrc: Increased the timeout for fetching the first job from 2 seconds to 10 minutes.
++++++
+2019-03-12
+cha: serverInfoIP: Now removes the amount network bits from the IP (if present).
+cha: m23 / postinst: Removed outdated functions to figure out the IP and broadcast address.
+cha: CLIENT_executeOnClientOrIP: Now has an additional parameter to use password authentification for conneting clients via SSH.
+fix: VM_startVMInExistingXSession, AUTOTEST_VM_ocrScreen: Now the VM name is in quotation marks to allow names with spaces.
++++++
+2019-03-11
+cha: CAutoTest::defineConstantsFromXML: Becomes CAutoTest::internalValuesFromXML and reads now the variables section of an XML file and imports the variables into the array with runtime variables.
+cha: CAutoTest::__construct, CAutoTest::parseXML, CAutoTest::executeTriggerAction, CAutoTest::getISO, CAutoTest::checkTriggerResult, CAutoTest::waitForTrigger: Now are using interal variables instead of constants.
+new: CAutoTest::internalVariablesToConstants: Maps internal variables to constants (for backward compatibility).
+new: CAutoTest::isDebug: Checks, if autoTest is in debug mode (variable AT_debug is set).
+new: CAutoTest::debugPrint: Shows a message (, array or object in human readable form) and logs it to the log file, if autoTest is in debug mode.
++++++
+2019-03-10
+cha: CAutoTest::parseAnswersFromXML: Now answers can include a password.
+cah: CAutoTest::checkTriggerResult, CAutoTest::executeTriggerAction, CAutoTest::waitForTrigger: Now can evaluate passwords.
++++++
+2019-03-08
+cha: CAutoTest::waitForTrigger: Now supports TRIGGER_SEL_SOURCENOT_CONTAINS too.
+cha: CAutoTest::waitForTrigger: Constants in the trigger parameter are now replaced by AUTOTEST_replaceConstantsInString.
+cha: CLIENT_desasterRecovery: Now sets m23createImage jobs to status done, so they won't be executed during recovery.
+new: CIR_rootInRamdiskOrExit: Checks, if root is stored on the ramdisk and exits the script, if not.
+cha: m23createImageInstall.php: Now calls CIR_rootInRamdiskOrExit to not make any changes on the HDD/SSD.
++++++
+2019-03-04
+cha: m23 / postinst: Now configures squid.conf to shutdown after 5 seconds. (THX FABR)
+cha: m23 / postinst: Now excludes loopback device from listening devices in /etc/default/isc-dhcp-server. (THX FABR)
+cha: m23 / postinst: Now doesn't insert code for loading mysql.so when running PHP 7.0 anymore. (THX FABR)
++++++
+2019-03-01
+new: CAutoTest::importEnvironmentVariables: Imports environment variables starting with 'AT_' into the runtime variables array.
+cha: CAutoTest::checkTriggerResult, CAutoTest::triggerTypeToConstant: Added sel_sourcenotcontains
+new: CAutoTest::evaluateSetVar: Parses the value of an "setVar" attribute from an aarray with information about the answer and sets it to the runtime variables array, if it seems to be valid.
+cha: CAutoTest::elemOk, elemWarn, elemBad: Parameter is now an array with information about the answer.
+cha: CAutoTest::elemOk, elemWarn, elemBad: Now are calling CAutoTest::evaluateSetVar.
+new: CAutoTest::evaluateRunIf: Checks, if the condition of the runIf attribute is met.
+cha: CAutoTest::addToSequence: Now has an additional parameter for the value of the runIf attribute.
+cha: CAutoTest::parseXML: Now parses runIf attributes too.
+new: CAutoTest::isXMLTEST: Check, if the only the XML should be parsed.
++++++
+2019-02-28
+cha: AUTOTEST_sshTunnelOverServer: Now has an optional parameter to set the SSH password.
+cha: CAutoTest::checkTriggerResult, CAutoTest::waitForTrigger: Now uses password parameter when calling AUTOTEST_sshTunnelOverServer.
+cha: CAutoTest::checkTriggerResult: Added true trigger for good/warn/bad.
+new: CAutoTest::gotSeleniumDriverID: Returnes true, if a Selenium webdriver ID was acquired.
+cha: CAutoTest::parseActionFromXML: Added SSH command action.
+new: AUTOTEST_getSeleniumSafeString: Urldecodes characters that were made it safe for usage in Selenium and SimpleXMLElement.
+new: CAutoTest::getStatusDescriptionInBraces: Returns a status string with optional description in braces.
+cha: CAutoTest::parseAnswersFromXML: Now answers can include a description.
+new: dieWithExitCode: Let the script die with a message on stderr and exit code.
++++++
+2019-02-27
+new: VM_restoreSnapshot: Restores a snapshot.
+new: AUTOTEST_VM_restoreSnapshot: Stops a VM and restores a snapshot.
++++++
+2019-02-26
+fix: m23 / postinst: Now uses the correct variable for integer representation of the old version. (THX FABR)
++++++
+2019-02-25
+fix: CLCFG_setSystime: Now sets the date/time by year, month, day, hour and minute to avoid problems with timezones.
++++++
+2019-02-18
+cha: CAutoTest::defineConstantsFromXML: Now constants defined by settings files can be overwrite with environment variables.
++++++
+2019-02-17
+new: I18N_getAllTranslationsForAllVariables: Translates all I18N variables (in all languages) to their language dependent strings.
+cha: CAutoTest::parseAnswersFromXML: Now adds cmd parameter.
+cha: CAutoTest::parseTriggerFromXML: Now urldecodes the parameters.
+fix: install_packages.php: Now adds the m23UpdatePackageInfos job again.
+cha: CAutoTest::__construct: Now adds a callback function for handling Ctrl+C.
++++++
+2019-02-14
+cha: CAutoTest::parseXML: Added mode for testing the webinterface only.
+fix: AUTOTEST_sshTunnelOverServer: Now uses correct parameter if m23 server and autoTest machine are identically.
++++++
+2019-02-13
+cha: CAutoTest::VMCreate: Now deletes a maybe existing VM with the given name before.
++++++
+2019-02-04
+cha: clientLiveLogComplete.php: Now reads the log file line wise to handle big log files.
++++++
+2019-01-29
+cha: CLCFG_writeM23fetchjob: Now m23fetchjob pings the m23 server in a loop until the ping attempt was successfully. Only then the m23 client tries to fetch the work.php.
++++++
+2019-01-19
+new: CAutoTest::freeSeleniumDriverID: Frees the used Selenium webdriver ID.
+new: CAutoTest::__destruct: Destructor for this CAutoTest object.
++++++
+2019-01-15
+new: CAutoTest::seleniumExecExtra: Runs an action on the HTTP2SeleniumBridge.
+new: CAutoTest::getSeleniumDriverID: Gives the Selenium webdriver ID this instance should use or let the programm die, if all are used.
++++++
+2019-01-09
+cha: exportDBInitTable: Added "LinuxMint 19.1 Tessa"
++++++
+2018-11-29
+new: HELPER_str_equal_UTF8ISO: Checks, if two strings are equal independent from their encodings (UTF-8 or ISO).
+cha: CAutoTest::isAnswerFoundInTriggerResult, isAnswerFoundInTriggerResult: Now are using HELPER_str_equal_UTF8ISO.
+new: CAutoTest::seleniumReload: Reloads the currently loaded page.
++++++
+2018-11-28
+cha: CAutoTest::readSettings: Now tries to read settings.m23test from the home directory first, then tries the current directory.
++++++
+2018-11-27
+fix: CLCFG_setSystime: Now uses seconds since 1970.
++++++
+2018-11-26
+fix: client / linuxrc, createRFSBins, downloadExtractRFS: Added and started haveged to fill the random pool faster. Using haveged will remove the delay when wget connects via SSL the first time.
++++++
+2018-11-22
+fix: HTML_setStatusBarPercentPointByName: Now converts a comma to a point in float values before using it in an SQL statement.
++++++
+2018-11-19
+cha: compileKernel: Now makes sure, the CONFIG_DRM_AMDGPU driver is not included in the i386 kernel.
++++++
+2018-11-18
+cha: compileKernel: Now cleans out the compiled objects when the architecture is changed.
+cha: checkKernelDir: Now filters out any tar files
+cha: Updated Linux Kernel to 4.9.137.
++++++
+2018-11-17
+cha: exportDBInitTable: Added "LinuxMint 19 Tara".
+m23Mint19CinnamonInstall.php
+cha: CLCFG_installLightDM: Now greeter-session line is only added, if it has a value.
+cha: m23-initscripts / postinst: Added support for Linux Mint 19.
++++++
+2018-11-16
+cha: SERVER_sendScriptToSF: Changed URL to HTTPs.
+cha: convert_hd: Updated from https://github.com/openSUSE/hwinfo/raw/master/src/ids/convert_hd.
+cha: createRFSBins: Now exits, if no Linux kernel was compiled for the chosen architecture.
++++++
+2018-11-13
+cha: CLCFG_disableAvahiDaemon: Deactivated.
++++++
+2018-10-30
+cha: checks.php: Added '&' to the list of allowed characters.
+cha: serverInfoBroadcast, serverInfoGateway, serverInfoIP: Made more robust.
++++++
+2018-10-17
+cha: head.php: Now shows server IP.
+fix: CmCP::setExitCode: Now uses correct variable.
++++++
+2018-09-24
+cha: m23DuplicateToFRS, m23instUpload: More workarounds for SourceForge's random SSH key denial.
++++++
+2018-09-23
+new: CFDiskBasic::createFormatPartition: Creates and formats a partition.
+new: CFDiskBasic::PM_auto500GBsysSwapData: Automatically partitions and formats the first 500GB a disk. It creates a system, swap and data partition.
+cha: CFDiskGUI::showFdiskCombinedGUIFunctions: Added PM_auto500GBsysSwapData.
++++++
+2018-09-22
+patch 101167: Fixes for editing clients and Kerberos settings for UCS 4.2
+fix: edit_client.php, client_details.php: The new clearSession variable loads the client name and ID into the session. Without it the client name and ID would be set one time only and not changed afterwards. As consequence one client could be edited only.
+cha: UCS_enableClientLDAP: Updated Kerberos settings to UCS 4.2.
++++++
+2018-09-21
+fix: edit_client.php, client_details.php: The new clearSession variable loads the client name and ID into the session. Without it the client name and ID would be set one time only and not changed afterwards. As consequence one client could be edited only.
++++++
+2018-08-30
+new: CAutoTest::getTriggerAttributes: Returns the attributes (additional parameters) for execution of the current sequence element.
+cha: CAutoTest::parseTriggerFromXML, CAutoTest::addToSequence, CAutoTest::checkTriggerResult, CAutoTest::waitForTrigger: Added trigger attributes parameter and logic.
++++++
+2018-08-28
+cha: client / linuxrc: Now asks for settings, if no valid work.php could be downloaded.
+cha: m23-roms: Removed outdated Etherboot images for floppy disks.
+cha: m23 / control: Removed "Depends" to "m23-roms".
+cha: m23Backup, m23Restore, m23-vbox / postinst, m23shared / postinst, DB_getSuperUserPassword, DB_getSuperUserName: Now are using getMySQL-UserParam.sh and getMySQL-PasswordParam.sh.
+cha: /mdk/outdated: Deleted very old files and directories.
+cha: m23Backup: Now saves the current IP of the server.
+cha: m23Restore: Now replaces the saved IP address with the current IP in the SQL dump before restoring.
++++++
+2018-08-27
+new: /m23/bin/serverInfoBroadcast: Shows the broadcast address of the m23 server.
+new: /m23/bin/serverInfoGateway: Shows the gateway address of the m23 server.
+cha: m23/postinst, m23-ldap/postinst: Now uses serverInfoDNS, serverInfoBroadcast, serverInfoIP and serverInfoGateway.
+cha: exportDBInitTable: Now uses getMySQL-PasswordParam.sh and getMySQL-UserParam.sh.
+new: /m23/bin/getApacheUser: Get Apache user and group
+new: /m23/bin/getApacheGroup: Get the group Apache 1 or 2 is executed under.
+cha: serverFunctions.inc / getApacheUser: Now uses /m23/bin/getApacheUser.
+cha: serverFunctions.inc / getApacheGroup: Now uses /m23/bin/getApacheGroup.
+cha: m23 / control: Removed "mknbi" from Recommends.
++++++
+2018-08-15
+new: AUTOTEST_sshTunnelOverServer: Executes commands on a client indirectly, that is reachable over an m23 server only.
++++++
+2018-08-12
+cha: SRCLST_genSelection: Now sets the value for the options.
+cha: AUTOTEST_VM_ocrScreen: Now recognises characters in the screenshots with four OCR settings. 
++++++
+2018-08-11
+new: CAutoTest::loadXMLFile: Loads an XML file, replaces problematic characters and includes other files.
+new: AUTOTEST_VM_hostSanityCheck: Checks the existence of tools on the VM host.
+cha: AUTOTEST_VM_ocrScreen: Now recognises characters in the screenshots with two OCR settings.
+new: AUTOTEST_getSeleniumSafeString: Replaces characters in a string to make it safe for usage in Selenium and SimpleXMLElement.
+cha: CAutoTest::executeTriggerAction and CAutoTest::loadXMLFile: Now are using AUTOTEST_getSeleniumSafeString.
++++++
+2018-08-10
+cha: VM_startVMInExistingXSession: New code to find the X session, if the old routine fails.
+cha: CAutoTest::readAndDefineOrDieXML: Removed.
+new: AUTOTEST_SEL_getURLByMatch: Searches for one URL in the given HTML code that must contain all search terms.
+new: AUTOTEST_replaceConstantsInString: Searches for variable declarations in a string and replaces them with the values of according constants.
+cha: CAutoTest::executeTriggerAction: Now uses AUTOTEST_replaceConstantsInString on all action parameters.
++++++
+2018-08-09
+new: CAutoTest::seleniumGetSource: Gets the current page source of the selenium browser into the output page.
+new: CAutoTest::isAnswerFoundInTriggerResult: Checks, if a trigger result contains an answer.
+cha: AUTOTEST_VM_create: Now stores the MAC of the VM in a constant after successfully VM creation.
+cha: CAutoTest::parseActionFromXML: Now replaces the action, if it's a placeholder for a constant.
+cha: AUTOTEST_VM_create: Now creates VMs with enabled network booting.
+new: CAutoTest::executePHPFunction: Executes a PHP function with (optional) parameters.
+cha: CAutoTest::executeTriggerAction: Now uses CAutoTest::executePHPFunction.
++++++
+2018-08-08
+cha: HELPER_getContentFromURL: Now has an extra parameter, the if set to true, the system wide proxy will be used, otherwise a direct connection is attempted.
+new: CAutoTest::seleniumHostRunning: Checks, if the HTTP2SeleniumBridge is running.
+new: I18N_getAllTranslationsForVariable: Returns all translations for a given variable.
++++++
+2018-08-07
+new: CAutoTest::seleniumExec: Runs a command on the HTTP2SeleniumBridge.
+new: CAutoTest::seleniumGetStatus: Gets the status message(s) of the HTTP2SeleniumBridge.
++++++
+2018-08-06
+cha: CAutoTest::addToSequenc, CAutoTest::parseActionFromXML: Added test action attributes.
+cha: CAutoTest::parseActionFromXML: Now parses Selenium actions.
+new: CAutoTest::getExecAttributes: Returns the attributes (additional parameters) for execution of the current sequence element.
++++++
+2018-07-20
+cha: UCS_enableClientLDAP: Updated Kerberos settings to UCS 4.2.
++++++
+2018-07-12
+new: /m23/bin/serverInfoIP: Shows the IP of the m23 server.
+cha: getServerIP: Now uses /m23/bin/serverInfoIP.
+new: /m23/bin/serverInfoNetmask: Shows the netmask of the m23 server.
+cha: getServerNetmask: Now uses /m23/bin/serverInfoNetmask.
+new: /m23/bin/serverInfoDNS: Shows the 1st DNS IP that is used by the m23 server.
+cha: getDNSServers: Now uses /m23/bin/serverInfoDNS.
+new: /m23/bin/serverInfoMySQLAccessParams: Shows the username and password parameter for mysql and mysqldump.
+cha: m23 / postinst: Now uses serverInfoMySQLAccessParams.
++++++
+2018-07-11
+patch 101161: Better support of faulty SSDs.
+cha: m23client-*.iso: Updated client boot ISOs.
++++++
+2018-07-10
+cha: CFDiskIO::getMknodCommand: Now splits the mknod commands by newlines.
+cha: CLCFG_mountRootDir: Now uses the mount command with rereadPartTable to check readability of the root (and maybe existing UEFI) partition.
+cha: CFDiskBasic::rereadPartTable: Now has extra parameter for changing the command for testing the readability of a device.
+cha: CFDiskBasic::rereadPartTable: Now re-reads the partition table until a given device is readable.
+fix: CLIENT_showGeneralInfo: Now doesn't try to convert the package sources name into LDAP server type.
+fix: CLCFG_importLocalPoolKey: flase -> false.
+cha: CLCFG_importLocalPoolKey: Now tries to install wget via APT.
++++++
+2018-07-09
+patch 101155: Improved UEFI support.
+new: m23-amd64-linux-4.9.110.conf: Kernel configuration with enabled framebuffer and other options needed for UEFI to show visible output on some hardware.
+cha: Updated Linux Kernel to 4.9.110.
+cha: CFDiskBasic::rereadPartTable: Now re-reads the partition table 5 times with a delay of 15 seconds between attempts.
++++++
+2018-07-06
+cha: menuClientISO: Now creates the m23shared.goos-habermann.de ISO only if the storing directory exists.
+cha: compileKernel: Added kernel settings for framebuffer devices needed on UEFI
+cha: menuClientISO: Commented out creation of Etherboot images.
++++++
+2018-07-04
+patch 101147: Clarification of the online help.
+cha: */serverBackup.hlp: Commented out share-online.biz.
+cha: */serverRestore.hlp: Added hint about identical IP of backuped and restored UCS.
+patch 101146: Encoding fix for UCS newer than 4.1.
+fix m23/postinst: Now encodes files to UTF-8 for UCS newer than 4.1 only once (and not again on a dpkg-reconfigure).
+patch 101144: Now skip restoration of /etc if run on UCS.
+cha: m23Restore: Now skip restoration of /etc if run on UCS.
+patch 101143: Improvements for m23 server backup/restore on UCS plattform.
+cha: m23Backup: Now works with passwordless MySQL/MariaDB servers.
+cha: m23Backup: Now adds user generated custom patches.
+cha: m23Backup: Now doesn't backup openLDAP configuration.
+cha: m23Restore: Now skips restoration of packages and debconf if run on UCS.
+patch 101142: Now works with passwordless MySQL/MariaDB servers.
+cha: m23Restore: Now works with passwordless MySQL/MariaDB servers.
+patch 101141: m23 backup now backups /home/grdmgpg directory only (and not all /home/* directories) when run on UCS.
+cha: createBackupList: Now backups /home/grdmgpg directory only (and not all /home/* directories) when run on UCS.
++++++
+2018-07-03
+cha: compileKernel: Now includes the framebuffer console.
+cha: MSG_DeActivateBlogDialog: Now blogs are disabled by default.
++++++
+2018-06-27
+patch 101140: Now sets additional EFI parameters.
+cha: compileKernel: Now sets additional EFI parameters.
++++++
+2018-06-20
+patch 101139: Cross plattform building fix.
+cha: createRFSBins: Now works on 32 bit Debian 9 with 64 bit client OS.
++++++
 2018-06-18
+patch 101138: Little improvements and fixes for systemD on Ubuntu 18.04.
+cha: m23 / postinst: Now uses all m23 custom patches in /m23/m23customPatch.
+cha: m23 / postinst: Calls "/m23/bin/m23cli.php GPG_set1stKey" now.
 new: GPG_set1stKey.php: Sets the 1st available GPG key as package pool sign key
 cha: CLCFG_writeM23fetchjob: Now runs "dpkg-reconfigure m23-initscripts" as default.
 cha: UCS_addClient: Added new patch area.

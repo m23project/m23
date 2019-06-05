@@ -13,7 +13,11 @@ fi
 m23hgDir="/mnt/crypto/m23-hg/m23$develDirAdd"
 mdkhgDir="/mnt/crypto/m23-hg/mdk$develDirAdd"
 
-
+# DISABLE real Mercurial calls until SF's SSH key problems are fixed
+hg()
+{
+	true
+}
 
 hgBackup()
 {
@@ -89,7 +93,6 @@ hgBackup "$mdkhgDir" m23-mdk-client-server
 hgBackup "$mdkhgDir" m23-mdk-debs
 hgBackup "$mdkhgDir" m23-mdk-doc
 hgBackup "$mdkhgDir" m23-mdk-helper
-hgBackup "$mdkhgDir" m23-mdk-plugin
 hgBackup "$mdkhgDir" m23-mdk-server
 hgBackup "$mdkhgDir" m23-mdk-translator
 hgBackup "$mdkhgDir" m23-mdk-update

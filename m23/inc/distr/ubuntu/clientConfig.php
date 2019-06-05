@@ -29,6 +29,9 @@ define('MINT13DESKTOP_CINNAMON',61);
 define('MINT13DESKTOP_KDE',62);
 define('MINT13DESKTOP_MATE',63);
 
+// Added by FABR
+define('UBUNTUDESKTOP_CONSOLE',71);
+
 define('UBUNTDM_LIGHTDM',1001);
 define('UBUNTDM_MDM',1002);
 define('NO_EXTRA_DM',1003);
@@ -79,8 +82,10 @@ define('UBUNTUDESKTOP_UNITY3D_MINIMAL_1804', 5011);
 define('UBUNTUDESKTOP_UBUNTU_MINIMAL_1804', 5012);
 define('UBUNTUDESKTOP_BUDGIE_MINIMAL_1804', 5013);
 
-
-
+// Linux Mint 19
+define('MINT19DESKTOP_CINNAMON', 5014);
+define('MINT19DESKTOP_MATE', 5015);
+define('MINT19_XFCEFULL', 5016);
 
 
 
@@ -177,6 +182,8 @@ function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $no
 	$linuxMint13BasePackages = 'linuxmint-keyring gstreamer0.10-alsa gstreamer0.10-plugins-base-apps gstreamer0.10-plugins-base-apps ubuntu-extras-keyring ubuntu-keyring mint-meta-core';
 	
 	$linuxMint17BasePackages = 'ubuntu-extras-keyring ubuntu-keyring mintlocale linuxmint-keyring mint-meta-core mint-meta-codecs mintdesktop libglib2.0-bin mint-mdm-themes';
+	
+	$linuxMint19BasePackages = 'ubuntu-extras-keyring ubuntu-keyring mintlocale linuxmint-keyring mint-meta-core mint-meta-codecs mintdesktop libglib2.0-bin slick-greeter mint-backgrounds-tara mint-artwork mint-themes mint-translations mintsystem';
 
 	switch($desktop)
 	{
@@ -449,6 +456,31 @@ function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $no
 			$displayManager = NO_EXTRA_DM;
 		break;
 
+		case MINT19DESKTOP_CINNAMON:
+			// Fix missing predepends of mint-artwork-cinnamon to libglib2.0-bin
+			CLCFG_aptGet('install', 'libglib2.0-bin');
+			$desktopPackages = 'mint-artwork-cinnamon mint-info-cinnamon mint-meta-cinnamon cinnamon cinnamon-themes '.$linuxMint19BasePackages;
+			$displayManager = UBUNTDM_LIGHTDM;
+			$dialogHeader = $I18N_installingCinnamon;
+			$session = 'cinnamon.desktop';
+		break;
+
+		case MINT19DESKTOP_MATE:
+			$desktopPackages = 'mint-info-mate mint-meta-core mint-meta-mate mint-x-icons mint-y-icons mintdesktop'.$linuxMint19BasePackages;
+			$displayManager = UBUNTDM_LIGHTDM;
+			$dialogHeader = $I18N_installingMate;
+			$session = 'mate.desktop';
+		break;
+
+		case MINT19_XFCEFULL:
+			// Fix missing predepends of mint-artwork-xfce to libglib2.0-bin
+			CLCFG_aptGet('install', 'libglib2.0-bin');
+			$desktopPackages = "mint-artwork-common mint-backgrounds-xfce mint-artwork-xfce mint-meta-xfce mint-info-xfce mint-themes xfce-keyboard-shortcuts xfce4-appfinder xfce4-datetime-plugin xfce4-dict xfce4-indicator-plugin xfce4-notifyd xfce4-panel xfce4-places-plugin xfce4-power-manager xfce4-power-manager-data xfce4-power-manager-plugins xfce4-screenshooter xfce4-session xfce4-settings xfce4-taskmanager xfce4-terminal xfce4-volumed xfce4-weather-plugin xfce4-whiskermenu-plugin xfce4-xkb-plugin mint-meta-codecs mint-meta-core ";
+			$dialogHeader = $I18N_installing_xfce;
+			$session = 'xfce';
+			$displayManager = UBUNTDM_LIGHTDM;
+		break;
+
 	}
 
 	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $dialogHeader);
@@ -678,7 +710,7 @@ function UBUNTU_fixAfterBaseInstall($release)
 			');
 			CLCFG_aptGet("install","policykit-1 upower acpi-support iputils-ping ubuntu-extras-keyring ubuntu-sounds");
 		break;
-		case 'bionic':
+// 		case 'bionic':
 		case 'xenial':
 			echo(EDIT_writeToFile('/etc/ssh/sshd_config',
 '# Package generated configuration file

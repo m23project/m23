@@ -1,7 +1,7 @@
 <!--v1.3-->Choisir la distribution des postes clients
 <u>Information</u>
 Cet écran rend possible l'installation de différentes distributions.
-Une distribution est un ensemble cohérent de logiciels assemblés autour du noyau Linux; elle est fournie sur différents types de medias (CD, DVD, clé USB, internet). Il existent beaucoup des distributions libres, téléchargeables gratuitement sur internet. Par exemple, <a href="http://www.debian.org" target="_blank"> Debian</a> qui est une distribution Linux libre. Les distributions diffèrent en général par les programmes d'installation employés et l'interface graphique du bureau. Dans la plupart des cas, le choix d'une distribution est seulement une question de goût. 
+Une distribution est un ensemble cohérent de logiciels assemblés autour du noyau Linux; elle est fournie sur différents types de medias (CD, DVD, clé USB, internet). Il existent beaucoup des distributions libres, téléchargeables gratuitement sur internet. Par exemple, <a href="http://www.debian.org" target="_blank"> Debian</a> qui est une distribution Linux libre. Les distributions différent en général par les programmes d'installation employés et l'interface graphique du bureau. Dans la plupart des cas, le choix d'une distribution est seulement une question de goût. 
 
 <ul>
 	<li><b>Charger des préférences:</b> Sélectionnez une préférence préenregistrée et cliquez sur <i>&laquo;$I18N_load&raquo;</i>.</li>
@@ -13,7 +13,7 @@ Une distribution est un ensemble cohérent de logiciels assemblés autour du noyau
 	<li><b>$I18N_packageSelection:</b> Vous pouvez sélectionner une combinaison de paquets, qui sera installée en même temps que le système d'exploitation.</li>
 	<!--v1.14 end-->
 	<!--v1.21 new-->
-	<li><b>$I18N_MBRTarget:</b> Le programme m23 tente de détecter le premier disque dur automatiquement pour y installer le chargeur d'amor&ccedil;age. Si vous souhaitez utiliser un disque dur différent, vous pouvez le choisir ici. Gardez en mémoire que ce doit être un disque dur correspondant à un de ceux paramétrés dans la séquence de démarrage du <a href="http://fr.wikipedia.org/wiki/Basic_Input_Output_System" target="_blank">BIOS</a>.</li>
+	<li><b>$I18N_MBRTarget:</b> Le programme m23 tente de détecter le premier disque dur automatiquement pour y installer le chargeur d'amor&ccedil;age. Si vous souhaitez utiliser un disque dur différent, vous pouvez le choisir ici. Gardez en mémoire que ce doit être un disque dur correspondant à un de ceux paramètrés dans la séquence de démarrage du <a href="http://fr.wikipedia.org/wiki/Basic_Input_Output_System" target="_blank">BIOS</a>.</li>
 	<!--v1.21 end-->
 	<li> <b>$I18N_distributionSpecificOptions:</b> Chaque distribution peut définir une multitude d'options qui seront utilisé pour l'installation de celle-ci.</li>
 </ul>
@@ -21,12 +21,14 @@ Finalement, cliquez sur <i>&laquo;$I18N_install_distribution&raquo;</i> pour dém
 
 <!--v1.11 begin--><u>Concernant les fichiers image</u>
 Dans la liste des sources de paquets, sélectionnez <i>&laquo;l'image&raquo;</i> pour l'installation du fichier image désiré.<!--v1.11 end-->
-<!--V13.2 begin-->Si la liste vous n'offre pas d'interfaces graphiques, néanmoins confirmez par un clic sur <i>"Choisir"</i> pour pouvoir procéder à la prochaine partie du dialogue.
+<!--V19.1
+Si la liste vous n'offre pas d'interfaces graphiques, néanmoins confirmez par un clic sur <i>"Choisir"</i> pour pouvoir procéder à la prochaine partie du dialogue.
 Maintenant, selectionnez la partition où vous voudriez que le <a href="http://fr.wikipedia.org/wiki/Master_Boot_Record" target="_blank">MBR (Master Boot Record)</a> soit installé et assignez les fichiers image (ou rien) aux partitions de la machine destinataire.<!--V13.2 end-->
 <!--v1.19 begin-->Vous pouvez choisir d'installer sur le poste client le <a href="http://fr.wikipedia.org/wiki/Master_Boot_Record" target="_blank">MBR (Master Boot Record)</a> à partir d'un fichier créé précédemment ou bien le MBR générique de m23. Pour ce faire, choisissez sous <i>&laquo;$I18N_chooseMBRtoInstall&raquo;</i> entre le nom du fichier ou <i>&laquo;$I18N_genericMBR&raquo;</i>.<!--v1.19 end-->
-<!--V13.2 begin-->Si vous choisissez une distribution correspondante à celle du fichier image sous <i>"$I18N_configureImageLike"</i>, m23 essaiera de configurer la machine tant qu'elle peut être administrée par m23.<!--V13.2 end-->
+<!--V13.2 begin-->Si vous choisissez une distribution correspondante à celle du fichier image sous <i>"$I18N_configureImageLike"</i>, m23 essaiera de configurer la machine tant qu'elle peut être administrée par m23. 
+V19.1 end-->
 
 
 
 <u>Information supplémentaire:</u>
-Si vous enregistrez une nouvelle préference sous un nom identique à celui déjà utilisé pour le paramétrage des préferences d'un client, ces préferences additionnelles seront ajoutées à la distribution. À l'inverse, les configurations spécifiques de la distribution seront remplacées.
+Si vous enregistrez une nouvelle préference sous un nom identique à celui déjà utilisé pour le paramètrage des préferences d'un client, ces préferences additionnelles seront ajoutées à la distribution. À l'inverse, les configurations spécifiques de la distribution seront remplacées.

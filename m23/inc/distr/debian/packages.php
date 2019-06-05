@@ -623,7 +623,7 @@ function PKG_listPackages($key,$distr="debian",$packagesource, $client="", $comp
 			<td>".$package_description[0]."</td>
 			<td>".I18N_number_format((float)$descriptionSize[1]/1024)." MB</td>
 			<td>".wordwrap(htmlentities($descriptionSize[0]),60,"<br>",1)."</td>
-			<td><center><input type=\"checkbox\" name=\"$cbName\" value=\"".$package_description[0].'###'.$descriptionSize[1]."\"></center></td>
+			<td><center><input type=\"checkbox\" name=\"$cbName\" value=\"".$package_description[0].'###'.trim($descriptionSize[1])."\" id=\"CBID_".$package_description[0]."\"></center></td>
 		</tr>");
 	};
 
@@ -720,11 +720,20 @@ function PKG_preparePackageDir($dir, $packagesource, $logFile="", $returnCmd=fal
 
 	exec("
 	touch '$dir/status'
-	rm '$dir/sources.list'
+	rm '$dir/sources.list'*
 	cat >> '$dir/sources.list' << \"EOF\"
-$packagesource\ndeb http://$serverIP/extraDebs/ ./
+$packagesource
+deb http://$serverIP/extraDebs/ ./
 EOF
-	");
+echo '$packagesource
+deb http://$serverIP/extraDebs/ ./' > '$dir/sources.list2'
+
+	
+	", $e_out, $e_ret);
+	
+/*	print_r2($e_out);
+	print(serialize($e_ret));*/
+	
 
 	if ($sourceName !== false)
 		PKG_addAPTConfigFiles($sourceName, "$dir");

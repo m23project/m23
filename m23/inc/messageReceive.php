@@ -156,7 +156,7 @@ $cmd = "\n".MSR_getm23clientIDCMD('?')."
 if [ ! -f /etc/network/interfaces ] || [ `grep static /etc/network/interfaces | grep eth -c` -eq 0 ]
 then
 	#Check, if the tool ip is present
-	ip -V
+	ip -V &> /dev/null
 	if [ $? -eq 0 ]
 	then
 		serverGateway=$(ip route | awk '/default/ { print $3 }' | head -1)
@@ -505,7 +505,7 @@ function MSR_decodeClientSideBase64($in,$md5)
 
 /**
 **name MSR_clientSideBase64Encode($fileName)
-**description Encodes a given file to (a slighly different, + is converted to - for sending it as post variable via wget) base64 format and appends the output to statusdata.post. There are two methods for generating the base64 output. First the native uuencode tool that is very fast and second a plattform idependent implementation of base64 encode in AWK taken from the HylaFAX package.
+**description Encodes a given file to (a slighly different, + is converted to - for sending it as post variable via wget) base64 format and appends the output to statusdata.post. There are three methods for generating the base64 output. First and second the native uuencode and base64 tools that are very fast and third a plattform idependent implementation of base64 encode in AWK taken from the HylaFAX package.
 **parameter fileName: name of the file
 **returns Commands for encoding the file.
 **/
@@ -534,6 +534,11 @@ if [ -x /bin/uuencode ] || [ -x /usr/bin/uuencode ]
 then
 	uuencode -m "'.$fileName.'" /dev/stdout | grep -v "^begin-base64 " | sed s#+#-#g >> /tmp/statusdata.post
 else
+	if  [ -x /bin/base64 ] || [ -x /usr/bin/base64 ]
+	then
+		cat "'.$fileName.'" | base64 | sed s#+#-#g >> /tmp/statusdata.post
+	else
+
 awk \'
 function asc(char, l_found)
 {
@@ -686,6 +691,7 @@ BEGIN {
 }
 \' "'.$fileName.'" | sed s#+#-#g >> /tmp/statusdata.post
 fi
+fi
 ');
 }
 
@@ -723,20 +729,18 @@ function MSR_genSendBinayFileCommand($fileName,$type)
 **/
 function MSR_m23ImagerMBR()
 {
-	$data = MSR_decodeClientSideBase64($_POST['data'],$_POST['md5']);
+	$data = MSR_decodeClientSideBase64(trim($_POST['data']),$_POST['md5']);
 
 	//check if there is data or if false was returned in case of an MD5 checksum error
 	if ($data === false)
-		{
-			return(false);
-		}
+		return(false);
 	else
-		{
-			//Save the received master boot record to the image filename with appeded .mbr
-			$f=fopen(IMGSTOREDIR.$_POST['imagename'].'.mbr','w');
-			fwrite($f,$data);
-			fclose($f);
-		}
+	{
+		//Save the received master boot record to the image filename with appeded .mbr
+		$f=fopen(IMGSTOREDIR.$_POST['imagename'].'.mbr','w');
+		fwrite($f,$data);
+		fclose($f);
+	}
 }
 
 
@@ -1165,7 +1169,7 @@ function MSR_getClientSettingsCommand()
 	
 		#get the sources.list
 		echo -n \"&sourceslist=\" >> /tmp/clientSettings.post
-		cat /etc/apt/sources.list | sed 's/%/%25/g' | sed 's/\"/%22/g' | sed 's/\\\\\\\\/%5C/g' | sed 's/&/%26/g' >> /tmp/clientSettings.post
+		cat /etc/apt/sources.list /etc/apt/sources.list.d/*.list | sed 's/%/%25/g' | sed 's/\"/%22/g' | sed 's/\\\\\\\\/%5C/g' | sed 's/&/%26/g' >> /tmp/clientSettings.post
 	
 		#get the timeZone
 		awk -v ORS=\"\" '{print(\"&timeZone=\"$1)}' /etc/timezone >> /tmp/clientSettings.post
@@ -1287,6 +1291,7 @@ function MSR_clientSettings()
 {
 	$client=$_POST['clientname'];
 	$data=CLIENT_getAskingParams();
+	$clientOptions = CLIENT_getAllAskingOptions();
 
 	//sources.list
 	$sourcesListName = SRCLST_matchList($_POST['distr'],$_POST['sourceslist']);
@@ -1300,7 +1305,17 @@ function MSR_clientSettings()
 		SRCLST_saveList($sourcesListName,$_POST['sourceslist'],"Imported from $client",$_POST['distr']);
 		$archs = array(trim($_POST['arch']));
 		SRCLST_saveArchitectures($sourcesListName, $archs);
-	};
+	}
+
+	// Set only the sources list, if it's imaging
+	if (stripos($clientOptions['distr'], 'imaging') !== false)
+	{
+		$options = $clientOptions;
+		$options['packagesource']		= trim($sourcesListName);
+		CLIENT_setAllOptions($client,$options);
+		return(true);
+	}
+	
 	
 	//store values
 	$data['dns1']					= trim($_POST['dns1']);

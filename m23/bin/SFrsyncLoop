@@ -1,0 +1,6 @@
+#!/bin/bash
+false
+while [ $? -ne 0 ]
+do
+	rsync -razPy -e ssh --timeout=5 $@
+done

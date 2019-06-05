@@ -12,6 +12,70 @@ const LANGUAGELIST = 'de#en#fr';
 
 
 /**
+**name I18N_getAllTranslationsForAllVariables($in)
+**description Translates all I18N variables (in all languages) to their language dependent strings.
+**parameter in: Input text.
+**returns Associative array with all languages as keys and the I18N variables translated to their language dependent strings.
+**/
+function I18N_getAllTranslationsForAllVariables($in)
+{
+	// Find all variables in the input
+	preg_match_all("/I18N_[a-zA-Z_0-9\[\]_]+/", $in, $found);
+
+	//Make the found variable names unique
+	rsort($found[0]);
+	reset($found[0]);
+	$found=array_unique($found[0]);
+
+	// Run thru the languages
+	foreach (explode ('#', LANGUAGELIST) as $lang)
+	{
+		include("/m23/inc/i18n/$lang/m23base.php");
+		include("/m23/inc/i18n/$lang/m23inst.php");
+
+		//Run thru the found i18n variables
+		foreach ($found as $f)
+			//Replace all ocurrences of the i18n variable
+			$out[$lang]=str_replace("\$$f",$$f,$in);
+	}
+	
+	return($out);
+}
+
+
+
+
+
+/**
+**name I18N_getAllTranslationsForVariable($var)
+**description Returns all translations for a given variable.
+**parameter var: Name of the variable (without "$")
+**returns All translations for a given variable.
+**/
+function I18N_getAllTranslationsForVariable($var)
+{
+	$all = array();
+
+	// Fix faulty variable names
+	$var = str_replace('$I18N', 'I18N', $var);
+
+	foreach (explode ('#', LANGUAGELIST) as $lang)
+	{
+		include("/m23/inc/i18n/$lang/m23base.php");
+		$all[$lang] = $$var;
+
+		include("/m23/inc/i18n/$lang/m23inst.php");
+		$all['inst_'.$lang] = $$var;
+	}
+
+	return($all);
+}
+
+
+
+
+
+/**
 **name I18N_getHumanReadableDayHourMinute($in)
 **description Converts a combined numeric day and hour/minute string into a human readable day and hour/minute string.
 **parameter in: Combined numeric day and hour/minute string

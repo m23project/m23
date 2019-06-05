@@ -199,6 +199,23 @@ function MSG_showError($message,$language="",$width=700)
 
 
 /**
+**name MSG_showEmergencyError($message,$language="",$width=700)
+**description Shows the ermergency error message with a JavaScript "back" button and stops the script afterwards.
+**parameter message: the text for the info message
+**parameter language: two character language description (e.g. de, en, fr,...)
+**parameter width: width of the box
+**/
+function MSG_showEmergencyError($message,$language="",$width=700)
+{
+	MSG_showError("$message<br><button onclick=\"window.history.back()\">Back/Zurück/Retour</button>",$language,$width);
+	exit(1);
+}
+
+
+
+
+
+/**
 **name MSG_showWarning($message,$language,$width=700)
 **description Shows the warning block for the warning messages.
 **parameter message: the text for the info message
@@ -408,8 +425,18 @@ function MSG_DeActivateBlogDialog($blogVarName,$css,$blogName,$width,&$dialogCod
 
 	$butName = "BUT_blogToggle$blogVarName";
 
-	//Check if the blog is NOT enabled
-	if (RMV_get4IP($blogVarName,"ShowBlog") == "n")
+	//Check if the blog is ENABLED
+	if (RMV_get4IP($blogVarName,"ShowBlog") == "y")
+	{
+		if (HTML_submit($butName,$I18N_save))
+		{
+			RMV_set4IP($blogVarName,"y","ShowBlog");
+			$blogActive = false;
+		}
+		else
+			$blogActive = true;
+	}
+	else
 	{
 		if (HTML_submit($butName,$I18N_save))
 		{
@@ -418,16 +445,6 @@ function MSG_DeActivateBlogDialog($blogVarName,$css,$blogName,$width,&$dialogCod
 		}
 		else
 			$blogActive = false;
-	}
-	else
-	{
-		if (HTML_submit($butName,$I18N_save))
-		{
-			RMV_set4IP($blogVarName,"n","ShowBlog");
-			$blogActive = false;
-		}
-		else
-			$blogActive = true;
 	}
 
 	$actionName = $blogActive ? $I18N_disableBlog : $I18N_enableBlog;

@@ -6,6 +6,9 @@
 $*/
 
 
+// BASH if statements to detect Debian and Ubuntu/LinuxMint
+define('BASH_ifDetectDebian', 'if [ $(grep Debian /etc/issue -c) -gt 0 ]');
+define('BASH_ifDetectUbuntu', 'if [ $(cat /etc/apt/sources.list.d/* /etc/apt/sources.list 2> /dev/null | grep ubuntu -c) -gt 0 ]');
 
 
 

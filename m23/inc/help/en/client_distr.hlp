@@ -18,10 +18,13 @@ To start the installation simply click on <i>"$I18N_install_distribution"</i>.
 
 <!--v1.11 begin--><u>Hint for imaging</u>
 Select <i>"imaging"</i> as package sources to install images.<!--v1.11 end-->
-<!--V13.2 begin-->If the drop down list does not offer any user interfaces, nevertheless confirm this by clicking on <i>"Select"</i> to get to the next part of the dialogue.
-Now choose the partition where you would like the <a href="http://en.wikipedia.org/wiki/Master_Boot_Record" target="_blank">MBR (Master Boot Record)</a> to be installed and assign the desired image file (or none) to the partitions of the targeted machine.<!--V13.2 end-->
-<!--v1.19 begin-->You can choose if you want to install a previously created MBR file or the generic bootloader of m23 to the the client's <a href="http://en.wikipedia.org/wiki/Master_Boot_Record" target="_blank">MBR (Master Boot Record)</a>. Select the file name or <i>"$I18N_genericMBR"</i> from the <i>"$I18N_chooseMBRtoInstall"</i> list.<!--v1.19 end-->
-<!--V13.2 begin-->If you choose a distribution consistent with the image file's distribution at <i>"$I18N_configureImageLike"</i>, m23 will try to configure the machine so that it can be administered using m23.<!--V13.2 end-->
+
+<!--V19.1
+If the drop down list does not offer any user interfaces, still confirm this by clicking on <i>"Select"</i> to get to the next part of the dialogue.
+Now choose the partition where you would like the <a href="http://en.wikipedia.org/wiki/Master_Boot_Record" target="_blank">MBR (Master Boot Record)</a> to be installed and assign the desired image file (or none) to the partitions of the targeted machine.
+You can choose if you want to create the <a href="http://en.wikipedia.org/wiki/Master_Boot_Record" target="_blank">MBR (Master Boot Record)</a> from a file created for that purpose, or if you prefer to use the generic MBR that is shipped with m23, which will start bootable partitions. Select the file name or <i>"$I18N_genericMBR"</i> from the <i>"$I18N_chooseMBRtoInstall"</i> list.
+If you choose a distribution consistent with the image file's distribution at <i>"$I18N_configureImageLike"</i>, m23 will try to configure the machine so that it can be administered using m23.
+V19.1 end-->
 
 <u>Hint:</u>
 If you save a preference under the same name as a preference for client settings, the distribution settings will be added to the preference. On the other hand, distribution specific preferences will be overwritten.

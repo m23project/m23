@@ -26,8 +26,7 @@ function CLCFG_addDistributionSpecificOptions($options)
 		$options["IMGname$i"]=$_POST["SEL_img$i"];
 	};
 
-	$options[configLikeDistr]=$_POST['SEL_configLikeDistr'];
-	$options[IMGMBRfile]=$_POST['SEL_MBR'];
+	$options['IMGMBRfile']=$_POST['SEL_MBR'];
 
 	return($options);
 };
@@ -89,14 +88,7 @@ function CLCFG_showDistributionSpecificOptions($options, $client)
 			<td>$I18N_chooseMBRtoInstall</td>
 			<td>".SEL_MBR."</td>
 		</tr>
-
-		<tr>
-			<td>$I18N_configureImageLike</td>
-			<td colspan=\"2\">".DISTR_DistributionsSelections("SEL_configLikeDistr",$_POST['SEL_configLikeDistr'],true)."</td>
-		</tr>
 		");
-
-	$options=CLIENT_getSetOption($_POST['SEL_configLikeDistr'],"configLikeDistr",$options);
 	
 	echo("<input type=\"hidden\" name=\"IMGPartitionAmount\" value=\"$nr\">");
 	$options = CLIENT_getSetOption($_POST['IMGPartitionAmount'],"IMGPartitionAmount",$options);

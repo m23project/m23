@@ -61,7 +61,7 @@ CLIENT_DETAILS_addIcon("installpackages", "", "install.png", "$I18N_install_pack
 CLIENT_DETAILS_addIcon("installpackages", "&action=deinstall", "deinstall.png", "$I18N_deinstall_packages", $I18N_deinstall_packages_tooltip);
 CLIENT_DETAILS_addIcon("updatepackages", "", "packagesUpdate.png", "$I18N_updateClient", $I18N_updateClient_tooltip);
 CLIENT_DETAILS_addIcon("changeJobs", "", "changeJobs.png", "$I18N_changeJobs", $I18N_changeJobs_tooltip);
-CLIENT_DETAILS_addIcon("editclient", "", "edit.png", "$I18N_edit_client", $I18N_edit_client_tooltip);
+CLIENT_DETAILS_addIcon("editclient&clearSession=1", "", "edit.png", "$I18N_edit_client", $I18N_edit_client_tooltip);
 echo('</tr><tr>'); //Make a second row for the icons
 CLIENT_DETAILS_addIcon("clientinfo", "&infoType=addToGroup", "groupAdd.png", "$I18N_addToGroup", $I18N_addToGroup_tooltip);
 CLIENT_DETAILS_addIcon("clientinfo", "&infoType=delFromGroup", "groupDelete.png", "$I18N_removeFromGroup", $I18N_removeFromGroup_tooltip);
@@ -179,7 +179,7 @@ else
 		CLIENT_DETAILS_beginCategory($I18N_virtualisation, "virtualisation");
 
 		//Only show the install button, if it was not clicked before
-		if (!CLIENT_extraWebAction($_GET['extraAction'],$_GET['client']))
+		if ( !(array_key_exists('action',$_GET) && CLIENT_extraWebAction($_GET['extraAction'],$_GET['client']) ) )
 			CLIENT_DETAILS_addIcon("clientdetails", "&extraAction=install-vmhostsw#virtualisation", "v-server-vbox-install.png", "$I18N_VMinstallVMServerSW", $I18N_VMinstallVMServerSW_tooltip);
 
 		CLIENT_DETAILS_endCategory();

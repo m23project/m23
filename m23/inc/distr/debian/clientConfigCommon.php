@@ -10,18 +10,60 @@ $*/
 
 
 /**
+**name CLCFG_executeNextWorkEveryMinute($lang)
+**description Runs executeNextWork in a loop every minute and shows a status message about elapsed waiting time.
+**parameter lang: language for the messages
+**/
+function CLCFG_executeNextWorkEveryMinute($lang)
+{
+	include("/m23/inc/i18n/".I18N_m23instLanguage($lang)."/m23inst.php");
+	echo("
+	TIME=0
+	
+	while `true`
+		do
+	");
+
+		CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $I18N_waiting_for_jobs);
+		executeNextWork();
+
+	echo("
+	
+			sleep 60
+			TIME=`expr \$TIME + 1`
+		done
+	exit
+	");
+}
+
+
+
+
+
+/**
 **name CLCFG_setSystime()
 **description Sets the system time of the client to about the same time of the m23 server.
 **/
 function CLCFG_setSystime()
 {
+/*
+	echo('
+	date +%Y%m%d%H%M -s "'.strftime('%Y%m%d%H%M').'"
+	');
+*/
+
 	$serverTime = time();
 	$allowedDiffSeconds = 120;
-
+	// FABR: the date command of busybox only accepts a small number of formats.
+	// See https://busybox.net/downloads/BusyBox.html
+	// hh:mm[:ss]
+	// [YYYY.]MM.DD-hh:mm[:ss]
+	// YYYY-MM-DD hh:mm[:ss]
+	// [[[[[YY]YY]MM]DD]hh]mm[.ss]
 	echo("
 	if [ $[ $(date +%s) - $serverTime ] -gt $allowedDiffSeconds ] || [ $[ $serverTime - $(date +%s) ] -gt $allowedDiffSeconds ]
 	then
-		date +%Y%m%d-%T -s \"".strftime('%Y%m%d-%H:%M:%S')."\"
+		date +%Y-%m-%d-%T -s \"".strftime('%Y.%m.%d-%H:%M:%S')."\"
 	fi
 	");
 }
@@ -355,14 +397,16 @@ function CLCFG_installLightDM($session, $addSessionWrapper = false)
 	if ($addSessionWrapper)
 		$addLines .= "\nsession-wrapper=/etc/X11/Xsession";
 
+	if (isset($greeters[$session]))
+		$addLines .= "\ngreeter-session=".$greeters[$session];
+
 	CLCFG_aptGet("install", "lightdm");
 	CLCFG_aptGet("install", $greeters[$session]);
 
 echo("echo \"[SeatDefaults]
 allow-guest=false
 user-session=$session
-greeter-show-manual-login=true
-greeter-session=".$greeters[$session]."$addLines\" > /etc/lightdm/lightdm.conf
+greeter-show-manual-login=true$addLines\" > /etc/lightdm/lightdm.conf
 ");
 
 	CLCFG_addPAMtoDM('lightdm');
@@ -586,6 +630,9 @@ function CLCFG_disablePlymouth()
 **/
 function CLCFG_disableAvahiDaemon()
 {
+	// Disabled
+	return(true);
+
 	echo("
 		dpkg-divert --local --rename --add /usr/sbin/avahi-daemon
 		ln -s /bin/true /usr/sbin/avahi-daemon
@@ -1631,14 +1678,27 @@ function CLCFG_efi($CFDiskIOO)
 
 
 /**
-**name CLCFG_genFstab($bootDevice,$rootDevice)
-**description generates the commands to auto detect the partitions and generate the fstab file
+**name CLCFG_genFstab($bootDevice, $rootDevice, $bootloader, $ignoreErrors = false, $isReconfiguredWithExtraDistr = false)
+**description generates the commands to auto detect the partitions and generate the fstab file and installs a boot manager
 **parameter bootDevice: the device the bootloader should be installed on (e.g. /dev/hda)
 **parameter rootDevice: the path to the installation partition (e.g. /dev/hda1)
+**parameter bootloader: Name of the boot loader to install and configure (actually grub only)
+**parameter ignoreErrors: Set to true, if some errors should be ignored instead of logging them.
+**parameter isReconfiguredWithExtraDistr: Set to true, the function is called to reconfigure a distribution that was installed by imaging.
 **/
-function CLCFG_genFstab($bootDevice, $rootDevice, $bootloader, $ignoreErrors = false)
+function CLCFG_genFstab($bootDevice, $rootDevice, $bootloader, $ignoreErrors = false, $isReconfiguredWithExtraDistr = false)
 {
+	if ($isReconfiguredWithExtraDistr)
+	{
+		$disableAPT = 'alias apt-get=true';
+		$enableAPT = 'unalias apt-get';
+	}
+	else
+		$disableAPT = $enableAPT = '';
+
 	echo("
+$disableAPT
+
 #Deactivate init
 mv /sbin/init /sbin/init.deactivated
 	
@@ -1996,7 +2056,10 @@ then
 	".sendClientLogStatus("activating swap",true)."
 else
 	".sendClientLogStatus("activating swap",false)."
-fi\n
+fi
+
+$enableAPT
+\n
 ");
 
 };
@@ -2562,7 +2625,7 @@ fi
 **/
 function CLCFG_setAuthorized_keys($serverIP, $pathToKeyFile, $acceptyDSSKeys = false)
 {
-// 	$quiet = ($_SESSION['debug'] ? "": "-qq"); ööö
+// 	$quiet = ($_SESSION['debug'] ? "": "-qq");
 $quiet = '-d';
 
 $DSSConfig = '';
@@ -2585,10 +2648,20 @@ chown root /root/.ssh/authorized_keys
 chgrp root /root/.ssh/authorized_keys
 
 \n
+if [ -f /etc/ssh/sshd_config ]; then
+
 ".EDIT_replace("/etc/ssh/sshd_config", "ChallengeResponseAuthentication no", "ChallengeResponseAuthentication yes","g")."
 ".EDIT_commentoutAll('/etc/ssh/sshd_config', 'PermitRootLogin', '#')."
 ".EDIT_appendToFile('/etc/ssh/sshd_config', 'PermitRootLogin without-password')."
-".$DSSConfig);
+".$DSSConfig."
+
+else
+
+echo \"WARNING: in CLCFG_setAuthorized_keys; cannot adapt non-existing file /etc/ssh/sshd_config\"
+
+fi
+\n
+");
 };
 
 
@@ -2699,7 +2772,17 @@ function CLCFG_importLocalPoolKey()
 
 	// Import the m23 client package sign key
 	$cmd ="
-	flase
+
+	type apt-get &> /dev/null
+	if [ $? -eq 0 ]
+	then
+		apt-get update
+		mv /etc/wgetrc /etc/wgetrc.back
+		apt-get -y install wget
+		mv /etc/wgetrc.back /etc/wgetrc
+	fi
+
+	false
 	while [ $? -ne 0 ]
 	do
 		wget -T1 -t1 -q http://$serverIP/packages/baseSys/m23-Sign-Key.asc -O - | apt-key add -
@@ -2903,21 +2986,21 @@ function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePor
 
 			rm /bin/debootstrap 2> /dev/null
 
-			wget $quietWget http://$serverIP/$debootstrapWWW/debootstrap -O /bin/debootstrap
+			wget $quietWget --no-check-certificate https://$serverIP/$debootstrapWWW/debootstrap -O /bin/debootstrap
 
 			chmod +x /bin/debootstrap
 
-			wget $quietWget http://$serverIP/$debootstrapWWW/devices.tar.gz -O /usr/lib/debootstrap/devices.tar.gz
+			wget $quietWget --no-check-certificate https://$serverIP/$debootstrapWWW/devices.tar.gz -O /usr/lib/debootstrap/devices.tar.gz
 
-			wget $quietWget http://$serverIP/$debootstrapWWW/pkgdetails$pkgdetailsArch -O /usr/lib/debootstrap/pkgdetails
+			wget $quietWget --no-check-certificate https://$serverIP/$debootstrapWWW/pkgdetails$pkgdetailsArch -O /usr/lib/debootstrap/pkgdetails
 
 			chmod 777 /usr/lib/debootstrap/pkgdetails
 
-			wget $quietWget http://$serverIP/$debootstrapWWW/arch -O /usr/lib/debootstrap/arch
+			wget $quietWget --no-check-certificate https://$serverIP/$debootstrapWWW/arch -O /usr/lib/debootstrap/arch
 
-			wget $quietWget http://$serverIP/$debootstrapWWW/functions -O /usr/lib/debootstrap/functions
+			wget $quietWget --no-check-certificate https://$serverIP/$debootstrapWWW/functions -O /usr/lib/debootstrap/functions
 
-			wget $quietWget http://$serverIP/$debootstrapWWW/scripts/$suite -O /usr/lib/debootstrap/scripts/$suite
+			wget $quietWget --no-check-certificate https://$serverIP/$debootstrapWWW/scripts/$suite -O /usr/lib/debootstrap/scripts/$suite
 
 			ln -s /usr/lib/debootstrap /usr/share
 		");
@@ -2957,10 +3040,14 @@ function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePor
 			# Try for 60 minutes to fetch the cache file
 			while [ \$ret -ne 0 ] && [ \$try -lt 60 ]
 			do
-				wget $debootstrapCacheFileURL -o /tmp/debootstrapCache.log -O $debootstrapCacheFile
-				ret=\$?
-				
-				if [ \$ret -eq 0 ]
+				wget --no-proxy --no-check-certificate $debootstrapCacheFileURL -o /tmp/debootstrapCache.log -O $debootstrapCacheFile
+				retw=\$?
+
+				# Check integrity of the 7-Zip file
+				7zr t $debootstrapCacheFile
+				ret7=\$?
+
+				if [ \$retw -eq 0 ] && [ \$ret7 -eq 0 ]
 				then
 					break
 				fi
@@ -2969,11 +3056,11 @@ function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePor
 				sleep 60
 			done
 
-			if [ \$ret -ne 0 ]
+			if [ \$retw -eq 0 ] && [ \$ret7 -eq 0 ]
 			then
-				".sendClientLogStatus("Download of base system error: $debootstrapCacheFileURL", false, true)."
-			else
 				".sendClientLogStatus("Download of base system OK: $debootstrapCacheFileURL",true)."
+			else
+				".sendClientLogStatus("Download of base system error: $debootstrapCacheFileURL", false, true)."
 			fi
 			
 			ret=$(grep -c sourceforge.net $debootstrapCacheFile)
@@ -3073,6 +3160,25 @@ echo("
 **/
 function CLCFG_mountRootDir($rootDev, $mountPoint, $CFDiskIOO = false)
 {
+	$efiBootMountPoint = "/mnt/$mountPoint/boot/efi";
+
+	if (is_object($CFDiskIOO))
+	{
+		echo("\n".$CFDiskIOO->rereadPartTable($rootDev)."\n");
+		$mountCMD = $CFDiskIOO->rereadPartTable($rootDev, "mount $rootDev /mnt/$mountPoint");
+		$mountEFICMD = $CFDiskIOO->rereadPartTable($CFDiskIOO->getEFIBootPartDev(), "mount -t vfat ".$CFDiskIOO->getEFIBootPartDev()." $efiBootMountPoint");
+	}
+	else
+	$mountCMD = "
+			if mount $rootDev /mnt/$mountPoint
+				then
+ 					".sendClientLogStatus("$rootDev on $mountPoint mounted",true)."
+				else
+ 					".sendClientLogStatus("$rootDev on $mountPoint mounted",false,true)."
+			fi
+	";
+
+
 	echo("
 			mkdir -p /mnt/$mountPoint
 
@@ -3082,12 +3188,7 @@ function CLCFG_mountRootDir($rootDev, $mountPoint, $CFDiskIOO = false)
 				umount /mnt/$mountPoint
 			fi
 
-			if mount $rootDev /mnt/$mountPoint
-				then
- 					".sendClientLogStatus("$rootDev on $mountPoint mounted",true)."
-				else
- 					".sendClientLogStatus("$rootDev on $mountPoint mounted",false,true)."
-			fi
+			$mountCMD
 
 			mkdir -p /mnt/$mountPoint/tmp
 			cd /mnt/$mountPoint\n
@@ -3096,18 +3197,18 @@ function CLCFG_mountRootDir($rootDev, $mountPoint, $CFDiskIOO = false)
 	// Check, if $CFDiskIOO contains an object
 	if (is_object($CFDiskIOO))
 	{
-		$efiBootMountPoint = "/mnt/$mountPoint/boot/efi";
+		
 
 		// Mount the EFI boot partition, if the client is in UEFI mode
 		if ($CFDiskIOO->isUEFIActive())
 		echo("
-			mkdprobe vfat
+			modprobe vfat
 			
 			mount /proc
 
 			mkdir -p $efiBootMountPoint
 
-			mount -t vfat ".$CFDiskIOO->getEFIBootPartDev()." $efiBootMountPoint
+			$mountEFICMD
 		");
 	}
 };
@@ -3273,17 +3374,21 @@ mkdir -p /mnt/root/var/run/screen/S-root
 cp -dpr /.screen/* /mnt/root/var/run/screen/S-root
 chmod 700 /mnt/root/var/run/screen/S-root
 
+cp -a /dev/* /mnt/root/dev
+
 cd /mnt/root
 
 #change root
 pivot_root . oldroot
 
-mkdir -p /proc
+#mkdir -p /proc
 
-mount /proc
+#mount /proc
+
+#ls -l /tmp
 
 #start afterChrootInstall.sh
-/tmp/afterChrootInstall.sh\n");
+bash /tmp/afterChrootInstall.sh\n");
 };
 
 
@@ -3315,7 +3420,6 @@ function CLCFG_writeM23fetchjob($release = 'none')
 {
 	switch ($release)
 	{
-		case 'bionic':
 		case 'xenial':
 			$RequiredStart = "\\\$syslog \\\$remote_fs";
 			$RequiredStop = "\\\$syslog \\\$remote_fs";
@@ -3373,6 +3477,14 @@ export PATH=/sbin:/usr/sbin:/usr/local/sbin:/bin:/usr/bin:/usr/local/bin
 
 ".MSR_curDynIPCommand(true)."
 
+ret=1
+while [ \$ret -ne 0 ]
+do
+	ping -c1 -q -n -w1 \$1
+	ret=\$?
+	sleep 2
+done
+
 cd /tmp
 rm work.php* 2> /dev/null
 
@@ -3392,7 +3504,6 @@ chmod +x /sbin/m23fetchjob
 	// DebianVersionSpecific
 	switch ($release)
 	{
-		case 'bionic':
 		case 'xenial':
 			echo("\nfind /etc/rc* | grep m23fetchjob | xargs rm\nupdate-rc.d m23fetchjob defaults\nsystemctl enable m23fetchjob\n");
 		break;
@@ -3494,11 +3605,11 @@ function CLCFG_copySSLCert($rootPath="/mnt/root", $disableSSLCertCheck = false)
 	// Make sure, the SSL certificates are valid (system time must be never than certificate creation time)
 	CLCFG_setSystime();
 
-	//Determine, if the SSL certificate check is diabled globally for all clients.
+	//Determine, if the SSL certificate check is disabled globally for all clients.
 	if (SERVER_isSSLCertCheckDisabled())
 		$disableSSLCertCheck = true;
 
-	if ($_SESSION['m23Shared'])
+	if (isset($_SESSION['m23Shared']) && $_SESSION['m23Shared'])
 		$extraDir = "/$serverIP";
 	else
 		$extraDir = "";
@@ -3538,9 +3649,9 @@ cp $rootPath/etc/ssl/certs/$hash.0 $rootPath/usr/local/share/ca-certificates/m23
 //m23customPatchBegin type=change id=CLCFG_copySSLCertSSLCertificatesPermissions
 	//Set permission the directories for the SSL certificates
 echo("
-chmod -R 755 $rootPath/etc/ssl/certs $rootPath/usr/lib/ssl/certs $rootPath/usr/local/share/ca-certificates/m23
-chown -R root $rootPath/etc/ssl/certs $rootPath/usr/lib/ssl/certs $rootPath/usr/local/share/ca-certificates/m23
-chgrp -R root $rootPath/etc/ssl/certs $rootPath/usr/lib/ssl/certs $rootPath/usr/local/share/ca-certificates/m23
+chmod -R 755 $rootPath/etc/ssl/certs $rootPath/usr/lib/ssl/certs $rootPath/usr/local/share/ca-certificates/m23 2> /dev/null
+chown -R root $rootPath/etc/ssl/certs $rootPath/usr/lib/ssl/certs $rootPath/usr/local/share/ca-certificates/m23 2> /dev/null
+chgrp -R root $rootPath/etc/ssl/certs $rootPath/usr/lib/ssl/certs $rootPath/usr/local/share/ca-certificates/m23 2> /dev/null
 \n
 ");
 //m23customPatchEnd id=CLCFG_copySSLCertSSLCertificatesPermissions

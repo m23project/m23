@@ -2,7 +2,10 @@
 Sollte es zu einem Ausfall Ihres m23-Servers kommen, so können Sie diesen mittels der zuvor angelegten Backups in einen der gesicherten Zustände zurückversetzen. Gehen Sie hierzu wie folgt vor:
 
 <ol>
-	<li>Installieren Sie Ihren m23-Server auf einer fehlerfreien Festplatte mit der m23-Serverinstallations-CD (zu beziehen von <a href="http://m23.sf.net">m23.sf.net</a>).</li>
+	<li>Installieren Sie Ihren m23-Server auf einer fehlerfreien Festplatte mit der m23-Serverinstallations-CD (zu beziehen von <a href="http://m23.sf.net">m23.sf.net</a>).
+
+	<!--v18.2 begin--><b>Wichtig, wenn m23 auf UCS installiert wurde:</b> Die IP Ihres neuen UCS-m23-Servers muß mit der IP des gesicherten übereinstimmen.<!--v18.2 end-->
+	</li>
 	<li>Speichern Sie die letzte Sicherungsdatei auf dem Rechner, der auch den GPG-Schlüssel zum ver- und entschlüsseln bereithält.</li>
 	<li>Wenn es sich um ein Linux-System handelt, so entschlüsseln Sie die Backup-Datei auf der Kommandozeile mittels:
 
@@ -14,7 +17,8 @@ Sollte es zu einem Ausfall Ihres m23-Servers kommen, so können Sie diesen mittel
 
 	<code>scp m23backup.tar root@[IP]:/tmp</code>
 
-	Ersetzen Sie hierbei <i>"[IP]"</i> durch die IP Ihres m23-Servers. Unter Windows können Sie das Programm <a href="http://winscp.net/eng/docs/lang:de">WinSCP (www.winscp.net)</a> verwenden.</li>
+	Ersetzen Sie hierbei <i>"[IP]"</i> durch die IP Ihres m23-Servers. Unter Windows können Sie das Programm <a href="http://winscp.net/eng/docs/lang:de">WinSCP (www.winscp.net)</a> verwenden.
+	</li>
 	<li>Loggen Sie sich auf dem m23-Server als Benutzer <b>root</b> ein.</li>
 	<li>Wechseln Sie in das Verzeichnis <i>"/tmp"</i> mit:
 

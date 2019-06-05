@@ -1171,7 +1171,7 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_adminAdded_one = 'Der Administrator ';
 @$I18N_adminAdded_two = ' wurde hinzugefügt.';
 @$I18N_adminDoesntExist = 'Der Administrator existiert nicht!';
-@$I18N_dbStructureChanged = 'Wegen einer Aenderung der Datenbank-Struktur muss sich der Nutzer zunächst einmalig selbst eingeloggt haben, bevor diese Aktion möglich ist.';
+@$I18N_dbStructureChanged = 'Wegen einer Änderung der Datenbank-Struktur muß sich der Nutzer zunächst einmalig selbst eingeloggt haben, bevor diese Aktion möglich ist.';
 @$I18N_cantDeleteLastAdmin = 'Der letzte Administrator kann nicht gelöscht werden!';
 @$I18N_cantDeleteOwnAccount = 'Sie können Ihren eigenen Account nicht löschen, solange Sie eingeloggt sind!';
 @$I18N_databaseDeletionError = 'Fehler beim Löschen aus der Datenbank!';
@@ -1450,4 +1450,9 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_pleaseWaitGettingKernelInformation = 'Bitte warten. Informationen über verfügbare Linux-Kernel werden abgerufen.';
 @$I18N_installReasonEnabled = 'Setzen/Anzeigen eines Installationsgrundes für Aufträge ermöglichen';
 @$I18N_VMHostSoftwareInstalled = 'Auf diesem System ist Virtualisierungssoftware installiert. Sie können es verwenden, um virtuelle m23-Clients darauf zu installieren.';
+
+//19.1
+@$I18N_fdiskTypeautomatic500GBsysSwapData = '500GB: System + Swap + Daten';
+@$I18N_errorNoKernelSelected = 'Kein Kernel ausgewählt!';
+@$I18N_imagingWarning = 'Die Pseudodistribution "Imaging" ist die technisch anspruchsvollste Variante, um einen Client zu installieren. Ob diese zu einem funktionierenden m23-Client führen wird, ist ungewiß. Bei auftretenden Probleme sollten Sie in Betracht ziehen, statt Imaging eine von m23 unterstützte Distribution aus den mitgelieferten Paketquellenlisten zu wählen. Ihre zusätzlich Anpassungen können Sie über Pakete (im "Paket-Architekt") oder m23-Skripte (im "Skript-Editor") realisieren.';
 ?>

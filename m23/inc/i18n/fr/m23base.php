@@ -1441,4 +1441,9 @@ Attention: Si le nom de l&apos;utilisateur et son mot de passe sont encore enreg
 @$I18N_pleaseWaitGettingKernelInformation = 'Veuillez patienter. Recherche des informations concernant les noyaux Linux disponibles en cours.';
 @$I18N_installReasonEnabled = 'Active paramétrage/consultation d\'une raison d\'installation pour les tâches du client';
 @$I18N_VMHostSoftwareInstalled = 'Ce système comprend un logiciel de virtualisation. Vous pouvez l\'utiliser pour installer des clients virtuels.';
+
+//19.1
+@$I18N_fdiskTypeautomatic500GBsysSwapData = '500GB: System + Swap + Data';
+@$I18N_errorNoKernelSelected = 'No kernel selected!';
+@$I18N_imagingWarning = 'The pseudo-distribution "Imaging" is the technically most complex way for installing a client. It is not guaranteed that this approach will create a working m23 client. If you encounter issues with this functionality, please consider using a distribution from the included package sources list, which is supported by m23, instead. You can make additional adjustments by using packages (in the "package architect") or with m23 scripts (in the "script editor").';
 ?>

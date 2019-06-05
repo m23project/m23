@@ -6,6 +6,27 @@
 $*/
 
 
+
+
+
+/**
+**name CIR_rootInRamdiskOrExit()
+**description Checks, if root is stored on the ramdisk and exits the script, if not.
+**/
+function CIR_rootInRamdiskOrExit()
+{
+	echo("
+		if [ $(mount | grep /dev/ram | grep 'on / ' -c) -eq 0 ]
+		then
+			exit 1
+		fi
+	");
+}
+
+
+
+
+
 /**
 **name CIR_setDateAndTimeTemorarily()
 **description Sets the date and time by calling 'date' temporarily.

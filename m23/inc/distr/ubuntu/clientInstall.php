@@ -21,7 +21,7 @@ function DISTR_baseInstall($lang,$id)
 
 	// Generate a new CFDiskIO object
 	$client = CLIENT_getClientName();
-	$CFDiskIOO = new CFDiskIO($client);
+	$CFDiskIOO = new CFDiskBasic($client);
 
 	CIR_writeClientID($clientParams);
 
@@ -116,12 +116,13 @@ export DEBIAN_FRONTEND=noninteractive
 
 cd /tmp
 \n");
+
 	CIR_writeClientID($clientParams);
 
 	CIR_WorkaroundForMissingModulesDep();
 	
 	//edit /etc/fstab
-	$CFDiskIOO->genManualFstab('', $sourceName);
+	$CFDiskIOO->genManualFstab('');
 
 	CLCFG_configUpstartForChroot();
 	/* =====> */ MSR_statusBarIncCommand(2);
@@ -206,11 +207,11 @@ cd /tmp
 
 	UBUNTU_fixAfterBaseInstall($clientOptions['release']);
 
-	//generate a new lilo.conf & fstab to make lilo install
-	CLCFG_genFstab($bootDevice, $rootDevice, $clientOptions['bootloader'], $CFDiskIOO);
+	// generate fstan, install and configure grub
+	CLCFG_genFstab($bootDevice, $rootDevice, $clientOptions['bootloader'], false, PKG_isReconfiguredWithExtraDistr($pkgid));
 
 	//edit /etc/fstab
-	$CFDiskIOO->genManualFstab('', $sourceName);
+	$CFDiskIOO->genManualFstab('');
 
 	CLCFG_efi($CFDiskIOO);
 
@@ -248,6 +249,8 @@ cd /tmp
 //hardware detection
 	CLCFG_hwdetect();
 	/* =====> */ MSR_statusBarIncCommand(2);
+
+	CLCFG_dialogInfoBox($I18N_client_installation,$I18N_client_status,$I18N_installing_basesystem);
 
 //write /etc/hosts
 	CLCFG_writeHosts();

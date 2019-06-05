@@ -1,4 +1,7 @@
 <?PHP
+	session_start();
+	$_SESSION['m23Shared'] = false;
+
 	include('/m23/inc/checks.php');
 	include('/m23/inc/db.php');
 	include('/m23/inc/fdisk.php');
@@ -19,13 +22,14 @@
 	include_once('/m23/inc/i18n.php');
 //m23customPatchBegin type=change id=fixedLanguage
 //m23customPatchEnd id=fixedLanguage
+	if (file_exists('/m23/inc/m23shared/m23shared.php'))
+		include_once('/m23/inc/m23shared/m23shared.php');
 	include_once('/m23/inc/imaging.php');
 	include_once('/m23/inc/server.php');
 	include_once('/m23/inc/raidlvm.php');
 	include_once("/m23/inc/halfSister.php");
 	include_once('/m23/inc/vm.php');
 	include_once('/m23/inc/bittorrent.php');
-	if (file_exists('/m23/inc/m23shared/m23shared.php')) include_once('/m23/inc/m23shared/m23shared.php');
 	include_once('/m23/inc/CMessageManager.php');
 	include_once('/m23/inc/CChecks.php');
 	include_once('/m23/inc/CClient.php');
@@ -34,7 +38,7 @@
 	include_once('/m23/inc/CGPGSign.php');
 	include_once('/m23/inc/CSystemProxy.php');
 
-	session_start();
+
 
 	$isInstallReasonEnabled = SERVER_isInstallReasonEnabled();
 
@@ -65,7 +69,7 @@ echo('#!/bin/bash
 	//get all options
 	$options = CLIENT_getAllOptions($client);
 
-	$distr = $options['distr'];
+	$distr = isset($options['distr']) ? $options['distr'] : '';
 
 	if ($isInstallReasonEnabled)
 	    $sql="SELECT package,id,reason FROM `clientjobs` WHERE client='$client' AND status='waiting' ORDER BY priority, id";
@@ -90,7 +94,11 @@ echo('#!/bin/bash
 
 			$waitForFinishedUpdate = UPDATE_running();
 			$waitForSelectionOfDistribution = (($package == "m23fdiskFormat") && empty($options['release']) && ('halfSister' != $distr));
-			$waitForFinishedDownloadOfBaseSys = (!PKG_downloadBaseSysTom23Server($options['release'], $options['arch']) && !CLIENT_isAssimilated($client));
+			
+			if (isset($options['release']))
+				$waitForFinishedDownloadOfBaseSys = (!PKG_downloadBaseSysTom23Server($options['release'], $options['arch']) && !CLIENT_isAssimilated($client));
+			else
+				$waitForFinishedDownloadOfBaseSys = false;
 
 //m23customPatchBegin type=change id=waitCases
 			if ($waitForFinishedUpdate || $waitForSelectionOfDistribution || $waitForFinishedDownloadOfBaseSys)

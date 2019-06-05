@@ -12,6 +12,8 @@ fi
 
 
 
+
+
 checkForDebconf()
 {
 	#Force installation of debconf
@@ -51,8 +53,11 @@ createBackupList()
 	#Add the logs (if any)
 		echo "/m23/log/" >> $backupList
 
-	#Add openLDAP
+	#Add openLDAP if not run on UCS
+	if [ ! -f '/usr/sbin/udm' ]
+	then
 		echo "/var/lib/ldap/" >> $backupList
+	fi
 
 	#Add BackupPC settings
 		echo "/etc/backuppc/" >> $backupList
@@ -73,15 +78,27 @@ createBackupList()
 		fi
 
 	#Add home directories
-		echo "/home/" >> $backupList
-		echo "/root/" >> $backupList
+		# Check for UCS
+		if [ -f '/usr/sbin/udm' ]
+		then
+			echo "/home/grdmgpg/" >> $backupList
+		else
+			echo "/home/" >> $backupList
+			echo "/root/" >> $backupList
+		fi
 
 	#Add user generated GUIs (if existing)
 		if [ -d /m23/inc/userGUIAddons ]
 		then
 			echo "/m23/inc/userGUIAddons/" >> $backupList
 		fi
-		
+
+	#Add user generated custom patches (if existing)
+		if [ -d /m23/m23customPatch ]
+		then
+			echo "/m23/m23customPatch/" >> $backupList
+		fi
+
 	#Add firewall configuration
 		if [ -f /m23/bin/firewall.sh ]
 		then
@@ -93,7 +110,6 @@ createBackupList()
 			echo "/m23/bin/firewall.iptables" >> $backupList
 		fi
 
-
 	#Add user addons and scripts (if existing)
 		if [ -d /m23/data+scripts/packages/userPackages ]
 		then
@@ -103,6 +119,10 @@ createBackupList()
 	#Add config files of phpMyAdmin and phpldapadmin
 		echo "/m23/data+scripts/m23admin/phpMyAdmin/config.inc.php
 /m23/data+scripts/m23admin/phpldapadmin/config.php" >> $backupList
+
+	#Save the current IP of the server
+		/m23/bin/serverInfoIP > /tmp/serverInfoIP.txt
+		echo "/tmp/serverInfoIP.txt" >> $backupList
 
 	export backupList
 }
@@ -140,10 +160,11 @@ backupDebconf()
 backupDB()
 {
 	echo -n "Storing m23 and m23captured databases..."
-		dbuser=`grep "^user" /etc/mysql/debian.cnf | tr -d [:blank:] | cut -d'=' -f2 | head -1`
-		dbpass=`grep "^password" /etc/mysql/debian.cnf | tr -d [:blank:] | cut -d'=' -f2 | head -1`
-		mysqldump -u$dbuser -p$dbpass m23 | sed 's/ DEFAULT CHARSET=latin1//g'  | bzip2 -9 -z -c > m23.sql.bz2
-		mysqldump -u$dbuser -p$dbpass m23captured | sed 's/ DEFAULT CHARSET=latin1//g'  | bzip2 -9 -z -c > m23captured.sql.bz2
+		dbuser=`/m23/bin/getMySQL-UserParam.sh`
+		dbadmpassParam=`/m23/bin/getMySQL-PasswordParam.sh`
+
+		mysqldump $dbuser $dbadmpassParam m23 | sed 's/ DEFAULT CHARSET=latin1//g' | bzip2 -9 -z -c > m23.sql.bz2
+		mysqldump $dbuser $dbadmpassParam m23captured | sed 's/ DEFAULT CHARSET=latin1//g' | bzip2 -9 -z -c > m23captured.sql.bz2
 	echo " done"
 }
 

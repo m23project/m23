@@ -1,0 +1,9 @@
+#!/bin/bash
+
+BROADINT=`cat /etc/network/interfaces | grep broadcast | sed 's/.*broadcast[ \t]*//'  | sed 's/[^0-9.]//g' | head -1`
+if [ -z $BROADINT ]
+then
+	BROADINT=`LC_ALL=C; ifconfig | grep broadcast | sed 's/.*broadcast //' | sed 's/[^0-9.]//g'`
+fi
+
+echo $BROADINT

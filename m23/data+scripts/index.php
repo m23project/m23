@@ -6,7 +6,7 @@
 	$title="Welcome to your m23 server! Willkommen auf Ihrem m23 Server!";
 ?>
   <title><?PHP echo $title?></title>
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15">
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <meta name="GENERATOR" content="Quanta Plus">
 
 </head>

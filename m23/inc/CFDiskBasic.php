@@ -225,7 +225,7 @@ class CFDiskBasic extends CFDiskIO
 **description Let the OS re-read the partition table.
 **parameter dev: The device that was changed/created (e.g. /dev/sda5).
 **/
-	private function rereadPartTable($dev)
+	public function rereadPartTable($dev, $cmd = false)
 	{
 		//Get the drive (e.g. /dev/sda) from full device (e.g. /dev/sda5)
 		$this->getpDiskAndpPartFromDev($dev, $pDisk, $pPart);
@@ -234,10 +234,25 @@ class CFDiskBasic extends CFDiskIO
 		$pDiskWithoutFullPath = str_replace('/dev/', '', $pDisk);
 
 		$mknods = $this->getMknodCommand($dev, true);
+		
+		if ($cmd === false)
+			$cmd = "dd if=$dev of=/dev/null bs=1K count=1";
 
-		return("$mknods ; echo 1 > /sys/block/$pDiskWithoutFullPath/device/rescan; sfdisk -R $pDisk; hdparm -z $pDisk; blockdev --rereadpt $pDisk; partprobe");
+		return("$mknods\necho 1 > /sys/block/$pDiskWithoutFullPath/device/rescan
+		
+		rereadPartTableRET=23
+		while [ \$rereadPartTableRET -ne 0 ]
+		do
+			sleep 5
+			#sfdisk -R $pDisk
+			hdparm -z $pDisk
+			#blockdev --rereadpt $pDisk
+			partprobe
+			$cmd
+			export rereadPartTableRET=$?
+			echo \$rereadPartTableRET
+		done");
 	}
-
 
 
 
@@ -327,17 +342,19 @@ class CFDiskBasic extends CFDiskIO
 					$this->getpDiskAndpPartFromDev($step['dev'], $pDisk, $pPart);
 
 					$ddZero = $this->rereadPartTable($step['dev']);
-					
+
+					$out .= "true $ddZero\n";
+
 					if ($step['fs'] == CFDiskIO::PT_EFIBOOT)
 						$out .= "echo vfat $ddZero; mkfs.vfat -F 32 -n ".CFDiskIO::PT_EFIBOOT." $step[dev]";
 					else
 					switch(SRCLST_getStorageFS($step['fs'], $sourceslist))
 					{
-						case 'ext2': $out .= "modprobe ext2 $ddZero; sfdisk -c $pDisk $pPart 83; mkfs.ext2 -F $mkfsextOptions $step[dev]"; break;
-						case 'ext3': $out .= "modprobe ext3 $ddZero; sfdisk -c $pDisk $pPart 83; mkfs.ext3 -F $mkfsextOptions $step[dev]"; break;
-						case 'ext4': $out .= "modprobe ext4 $ddZero; sfdisk -c $pDisk $pPart 83; mkfs.ext4 -O ^metadata_csum -F $mkfsextOptions $step[dev]"; break;
-						case 'reiserfs': $out .= "modprobe reiserfs $ddZero; sfdisk -c $pDisk $pPart 83; mkreiserfs -f $step[dev]"; break;
-						case 'linux-swap': $out .= "echo swap $ddZero; sfdisk -c $pDisk $pPart 82; mkswap $step[dev]"; break;			
+						case 'ext2': $out .= "modprobe ext2 $ddZero; sfdisk --part-type $pDisk $pPart 83; mkfs.ext2 -F $mkfsextOptions $step[dev]"; break;
+						case 'ext3': $out .= "modprobe ext3 $ddZero; sfdisk --part-type $pDisk $pPart 83; mkfs.ext3 -F $mkfsextOptions $step[dev]"; break;
+						case 'ext4': $out .= "modprobe ext4 $ddZero; sfdisk --part-type $pDisk $pPart 83; mkfs.ext4 -O ^metadata_csum -F $mkfsextOptions $step[dev]"; break;
+						case 'reiserfs': $out .= "modprobe reiserfs $ddZero; sfdisk --part-type $pDisk $pPart 83; mkreiserfs -f $step[dev]"; break;
+						case 'linux-swap': $out .= "echo swap $ddZero; sfdisk --part-type $pDisk $pPart 82; mkswap $step[dev]"; break;
 					}
 
 					$out .= $this->rereadPartTable($step['dev']);
@@ -354,7 +371,7 @@ class CFDiskBasic extends CFDiskIO
 
 				case 'EFItypeAndGUID':
 				{
-					$out .= "parted -s $step[dev] set $step[pPart] boot on; sfdisk -c $step[dev] $step[pPart] ef00; sgdisk -t $step[pPart]:C12A7328-F81F-11D2-BA4B-00A0C93EC93B $step[dev];";
+					$out .= "parted -s $step[dev] set $step[pPart] boot on; sfdisk --part-type $step[dev] $step[pPart] ef00; sgdisk -t $step[pPart]:C12A7328-F81F-11D2-BA4B-00A0C93EC93B $step[dev];";
 					break;
 				}
 				
@@ -416,9 +433,9 @@ class CFDiskBasic extends CFDiskIO
 			
 					if [ `cat /tmp/parted.err` -ne 0 ]
 					then
-						".sendClientLogStatus("Partition or format error: $cmd",false,$critical)."
+						".sendClientLogStatus("Partition or format error: $step[command]",false,$critical)."
 					else
-						".sendClientLogStatus("Partition or format OK: $cmd",true)."
+						".sendClientLogStatus("Partition or format OK: $step[command]",true)."
 					fi
 			";
 		}
@@ -738,6 +755,31 @@ class CFDiskBasic extends CFDiskIO
 
 
 /**
+**name CFDiskBasic::createFormatPartition($diskDev, $instStart, $instEnd, $fileSystem = 'ext4', $partType = CFDiskIO::PT_PRIMARY)
+**description Creates and formats a partition.
+**parameter diskDev: The disk device (e.g. /dev/hda) where the installation partition should be created on.
+**parameter instStart: Start position of the installation partition (in MB).
+**parameter instEnd: End position of the installation partition (in MB).
+**parameter fileSystem: Type of the file system (eg. ext4)
+**parameter partType: Type of the partition (eg. CFDiskIO::PT_PRIMARY)
+**/
+	private function createFormatPartition($diskDev, $instStart, $instEnd, $fileSystem = 'ext4', $partType = CFDiskIO::PT_PRIMARY)
+	{
+		// Create the partition and get the installation partition device string
+		$pPart = $this->createPartition($diskDev, $instStart, $instEnd, $partType, true);
+		$instPartDev = $this->getDevBypDiskpPart($diskDev, $pPart);
+		
+		$this->showMessages();
+
+		// Format it
+		$this->formatPartition($instPartDev, $fileSystem);
+	}
+
+
+
+
+
+/**
 **name CFDiskBasic::autoPartitionDisk($diskDev, $minSwap=256, $maxSwap=512)
 **description Automatically partitions and formats a disk.
 **parameter diskDev: The disk device (e.g. /dev/hda) that should be partitionated and formated automatically.
@@ -870,6 +912,44 @@ class CFDiskBasic extends CFDiskIO
 
 		// Create and format swap partition
 		$this->createSwapPartition($diskDev, $swapStart, $swapEnd);
+	}
+
+
+
+
+
+/**
+**name CFDiskBasic::PM_auto500GBsysSwapData($diskDev)
+**description Automatically partitions and formats the first 500GB a disk. It creates a system, swap and data partition.
+**parameter diskDev: The disk device (e.g. /dev/hda) that should be partitionated and formated automatically.
+**/
+	public function PM_auto500GBsysSwapData($diskDev)
+	{
+		$diskEnd = 500100;
+		
+		// 40GB for system
+		$sysSize = 40960;
+		// 4GB swap
+		$swapSize = 4096;
+		// Data
+		$dataSize = $diskEnd - $sysSize - $swapSize;
+
+		// Start for th
+		$partStart = 2;
+	
+		// Delete all partitions of the disk
+		$this->deleteAllPartitions($diskDev);
+
+		// Create and format installation partition
+		$this->createInstallPartition($diskDev, $partStart, $partStart + $sysSize);
+		$partStart += $sysSize;
+
+		// Create and format swap partition
+		$this->createSwapPartition($diskDev, $partStart, $partStart + $swapSize);
+		$partStart += $swapSize;
+
+		// Create and format the data partition
+		$this->createFormatPartition($diskDev, $partStart, $diskEnd);
 	}
 
 

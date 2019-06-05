@@ -10,6 +10,36 @@ $*/
 
 
 /**
+**name SRCLST_getExportedListNames()
+**description Generates an array with all sources lists that are exported by /mdk/bin/exportDBsourceslist.php.
+**returns: Array with all sources lists that are exported by /mdk/bin/exportDBsourceslist.php.
+**/
+function SRCLST_getExportedListNames()
+{
+	$ret = SERVER_runInBackground(uniqid('SRCLST_getExportedListNames'), "grep 'allowedNames = array' /mdk/bin/exportDBsourceslist.php | sed -e 's/.*array(//' -e 's/);//' -e 's/,/\\n/g'", HELPER_getApacheUser(), false, true);
+	
+	$out = array();
+	$i = 0;
+	
+	foreach (explode("\n", $ret) as $sourceName)
+	{
+		if (empty($sourceName))
+			break;
+			
+		$sourceName = trim($sourceName);
+		$sourceName = trim($sourceName, '\'"');
+	
+		$out[$i++] = $sourceName;
+	}
+	
+	return($out);
+}
+
+
+
+
+
+/**
 **name SRCLST_getAddToFile($sourceName)
 **description Returns addToFile paramters from the given sources list as an associative array, where file name and file contents are seperated.
 **parameter sourceName: The name of the package source list
@@ -185,11 +215,11 @@ function SRCLST_genSelection($selName, $first, $distr)
 	$out="<select name=\"$selName\" size=\"1\">";
 
 	if (strlen($first) > 0)
-		$out.="<option>$first</option>";
+		$out.="<option value=\"$first\">$first</option>";
 
 	while ($line=mysqli_fetch_row($result))
 		if ($line[0] != $first)
-			$out.="<option>".$line[0]."</option>";
+			$out.="<option value=\"".$line[0]."\">".$line[0]."</option>";
 
 	$out.="</select>";
 
@@ -662,6 +692,8 @@ function SRCLST_getListnamesWithEfiSupport()
 **/
 function SRCLST_clientUsesEfiButSourcesListDoesntSupportEfi($client, $sourceName)
 {
+	// FABR: we do not check for Efi if $sourceName == imaging
+	if ($sourceName == "imaging") return(false);
 	$CFDiskIOO = new CFDiskIO($client);
 
 	return ($CFDiskIOO->isUEFIActive() && !SRCLST_doesDistrSupportEFI($sourceName));
@@ -682,6 +714,8 @@ function SRCLST_showErrorIfClientUsesEfiButSourcesListDoesntSupportEfi($client, 
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
+	// FABR: we do not check for Efi if $sourceName == imaging
+	if ($sourceName == "imaging") return(true);
 	if (SRCLST_clientUsesEfiButSourcesListDoesntSupportEfi($client, $sourceName))
 	{
 		MSG_showError($I18N_clientUsesEfiButSourcesListDoesntSupportEfi_Alternatives.' '.implode(' , ', SRCLST_getListnamesWithEfiSupport()));

@@ -12,8 +12,8 @@ class CScredit extends CChecks
 	private $onlineScriptInfoArray = NULL;
 	private $debugI = 0;
 	const USER_SCRIPT_DIR = '/m23/data+scripts/packages/userPackages';
-	const ONLINE_SCRIPTS_LIST_ARRAY_URL = 'http://m23.sourceforge.net/scriptUpload/listArray.php';
-	const ONLINE_SCRIPT_DOWNLOAD_URL = 'http://m23.sourceforge.net/scriptUpload/script.php?id=';
+	const ONLINE_SCRIPTS_LIST_ARRAY_URL = 'https://m23.sourceforge.io/scriptUpload/listArray.php';
+	const ONLINE_SCRIPT_DOWNLOAD_URL = 'https://m23.sourceforge.io/scriptUpload/script.php?id=';
 
 
 
@@ -137,7 +137,7 @@ class CScredit extends CChecks
 	private function updateOnlineScriptInfo()
 	{
 		// Try to fetch the list array
-		$this->onlineScriptInfoArrayForPop = $this->onlineScriptInfoArray = unserialize(HELPER_getContentFromURL(CScredit::ONLINE_SCRIPTS_LIST_ARRAY_URL));
+		$this->onlineScriptInfoArrayForPop = $this->onlineScriptInfoArray = unserialize(HELPER_getContentFromURL(CScredit::ONLINE_SCRIPTS_LIST_ARRAY_URL, '', false));
 
 		// Check, if a valid list array was received
 		if (!is_array($this->onlineScriptInfoArray))

@@ -1165,17 +1165,32 @@ function FDISK_getDrivesAndPartitions($param, $pathFilter=false, $addSizesAndTyp
 
 
 /**
-**name FDISK_listDrivesAndPartitions($param, $default, $selName)
+**name FDISK_listDrivesAndPartitions($param, $default, $selName, $pathFilter=false, $partitionsOnly = false)
 **description Generates a selection that contains all drives and partitions of a given client.
 **parameter param: parameter string containing status informations about the harddisks
 **parameter default: the drive to show first
 **parameter selName: the name the selection is called in PHP and HTML
 **parameter pathFilter: Set this to another value than false if you want only devices with a given string in it.
+**parameter partitionsOnly: Set to true, if only partitions should be listed.
 **returns String with the HTML selection.
 **/
-function FDISK_listDrivesAndPartitions($param, $default, $selName, $pathFilter=false)
+function FDISK_listDrivesAndPartitions($param, $default, $selName, $pathFilter=false, $partitionsOnly = false)
 {
 	$list=FDISK_getDrivesAndPartitions($param,$pathFilter);
+	
+	if ($partitionsOnly)
+	{
+		$list2 = array();
+		foreach ($list as $device => $description)
+		{
+			$devNr = FDISK_getDriveAndNr($device);
+			if ($devNr[0] != $device)
+				$list2[$device] = $description;
+		}
+		
+		$list = $list2;
+	}
+
 	return(HTML_listSelection($selName,$list,$default));
 }
 
@@ -3875,11 +3890,11 @@ function FDISK_genPartedCommands($partJobs, $mkfsextOptions, $sourceslist)
 
 							switch(SRCLST_getStorageFS($partJobs["fs$jobNr"], $sourceslist))
 								{
-									case ext2: $cmd = "modprobe ext2; sfdisk -c $partPath $partNr 83; mkfs.ext2 -F $mkfsextOptions $part"; break;
-									case ext3: $cmd = "modprobe ext3; sfdisk -c $partPath $partNr 83; mkfs.ext3 -F $mkfsextOptions $part"; break;
-									case ext4: $cmd = "modprobe ext4; sfdisk -c $partPath $partNr 83; mkfs.ext4 -F $mkfsextOptions $part"; break;
-									case reiserfs: $cmd = "modprobe reiserfs; sfdisk -c $partPath $partNr 83; mkreiserfs -f $part"; break;
-									case "linux-swap": $cmd = "sfdisk -c $partPath $partNr 82; mkswap $part"; break;
+									case ext2: $cmd = "modprobe ext2; sfdisk --part-type $partPath $partNr 83; mkfs.ext2 -F $mkfsextOptions $part"; break;
+									case ext3: $cmd = "modprobe ext3; sfdisk --part-type $partPath $partNr 83; mkfs.ext3 -F $mkfsextOptions $part"; break;
+									case ext4: $cmd = "modprobe ext4; sfdisk --part-type $partPath $partNr 83; mkfs.ext4 -F $mkfsextOptions $part"; break;
+									case reiserfs: $cmd = "modprobe reiserfs; sfdisk --part-type $partPath $partNr 83; mkreiserfs -f $part"; break;
+									case "linux-swap": $cmd = "sfdisk --part-type $partPath $partNr 82; mkswap $part"; break;
 								}
 
 							$out.= $cmd;

@@ -229,7 +229,10 @@ function dbClose()
 **/
 function DB_getSuperUserName()
 {
-	return(trim(SERVER_runInBackground(uniqid("DB_getSuperUserName"), "grep '^user' /etc/mysql/debian.cnf | tr -d '[:blank:]' | cut -d'=' -f2 | head -1", 'root', false)));
+	$userParam = trim(SERVER_runInBackground(uniqid("DB_getSuperUserName"), "/m23/bin/getMySQL-UserParam.sh", 'root', false));
+
+	// Remove the first two characters (that are '-u')
+	return(substr($userParam, 2));
 }
 
 
@@ -243,7 +246,10 @@ function DB_getSuperUserName()
 **/
 function DB_getSuperUserPassword()
 {
-	return(trim(SERVER_runInBackground(uniqid("DB_getSuperUserPassword"), "grep '^password' /etc/mysql/debian.cnf | tr -d '[:blank:]' | cut -d'=' -f2 | head -1", 'root', false)));
+	$passwordParam = trim(SERVER_runInBackground(uniqid("DB_getSuperUserPassword"), "/m23/bin/getMySQL-PasswordParam.sh", 'root', false));
+
+	// Remove the first two characters (that are '-p')
+	return(substr($passwordParam, 2));
 }
 
 
@@ -257,7 +263,7 @@ function DB_getSuperUserPassword()
 **/
 function getServerIP()
 {
-	if ($_SESSION['m23Shared'])
+	if (isset($_SESSION['m23Shared']) && $_SESSION['m23Shared'])
 		return(m23SHARED_getServerIP());
 	else
 	{
@@ -266,7 +272,7 @@ function getServerIP()
 		else
 			$addSudo = '';
 
-		$ip = exec("$addSudo cat /etc/network/interfaces | tr -d \"\t\" | tr -s \" \" | sed 's/^[ ]*//g' | grep ^address | cut -d ' ' -f2 | head -1 | sed 's#/.*##'");
+		$ip = exec("$addSudo /m23/bin/serverInfoIP");
 
 		if (empty($ip) && VM_CloudStack_available())
 			$ip = VM_CloudStack_getServerIP();
@@ -307,7 +313,7 @@ function getServerNetmask()
 // 		}
 // 	}
 
-	$netmask = exec('LC_ALL="C"; /sbin/ifconfig | egrep "(eth|enp)" -A1 | sed "s/  /\n/g"  | egrep "(^Mask|^netmask)" | sed "s/^.*[ :]//" | head -1');
+	$netmask = exec('/m23/bin/serverInfoNetmask');
 
 	return($netmask);
 }
@@ -335,7 +341,7 @@ function getServerNetwork()
 **/
 function getDNSServers()
 {
-	exec("sudo cat /etc/resolv.conf | grep nameserver | tr -s '[:blank:]' | head -n 1 | cut -d' ' -f2",$nameservers);
+	exec("sudo /m23/bin/serverInfoDNS",$nameservers);
 	if (!isset($nameservers[0]))
 		$nameservers[0] = '85.88.19.10';
 
@@ -589,7 +595,7 @@ function DB_genPassword($length)
 **/
 function getClientIP()
 {
-	HELPER_logToFile('/tmp/REMOTE_ADDR.log', "getClientIP: $_SERVER[REMOTE_ADDR]"); //üüüü
+// 	HELPER_logToFile('/tmp/REMOTE_ADDR.log', "getClientIP: $_SERVER[REMOTE_ADDR]");
 	return($_SERVER['REMOTE_ADDR']/*getenv('REMOTE_ADDR')*/);
 }
 

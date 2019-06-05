@@ -4,6 +4,12 @@ m23ssldir="/m23/data+scripts/packages/baseSys/"
 
 . /mdk/bin/serverFunctions.inc
 
+# # Disable setting date and time by NTP
+# timedatectl set-ntp false
+# # Rewind the date by one date
+# timedatectl set-time "$(date +"%Y-%m-%d %H:%M:%S" -d 'yesterday')"
+
+
 # With help of: http://qemu-buch.de/de/index.php/QEMU-KVM-Buch/_Netzwerkoptionen/_Netzwerkdienste
 
 #Generates a random serial number with 16 digits
@@ -68,6 +74,7 @@ serialNumber=`genSerial`
 echo "cn = \"m23-Projekt\"
 ca
 cert_signing_key
+activation_date = \"2019-01-01 23:23:23\"
 expiration_days = 3650" > /tmp/ca.cfg
 
 certtool --generate-privkey --bits $keyBits --outfile $sslalldir/ca.key
@@ -89,7 +96,8 @@ cn = $serverIP
 tls_www_server
 encryption_key
 signing_key
-expiration_days = 3650" > /tmp/server.cfg
+expiration_days = 3650
+activation_date = \"2019-01-01 23:23:23\"" > /tmp/server.cfg
 
 certtool --generate-privkey --bits $keyBits --outfile $sslalldir/server.key
 certtool	--generate-certificate					\
@@ -113,3 +121,8 @@ openssl x509 -in $sslalldir/ca.crt -hash -noout >> $m23ssldir/ca.hash
 cp $sslalldir/ca.crt $m23ssldir
 chown $apacheUser.$apacheGroup $m23ssldir/ca.crt $m23ssldir/ca.hash
 chmod 644 $m23ssldir/ca.crt $m23ssldir/ca.hash
+
+# # Forward the date by one date
+# timedatectl set-time "$(date +"%Y-%m-%d %H:%M:%S" -d 'tomorrow')"
+# # Enable setting date and time by NTP
+# timedatectl set-ntp true

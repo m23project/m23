@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#get the group Apache 1 or 2 is executed under
+if [ -f /etc/apache/httpd.conf ]
+then
+	apacheGroup=`grep "^Group " /etc/apache/httpd.conf 2> /dev/null | cut -d' ' -f2`
+else
+	apacheGroup=`grep "APACHE_RUN_GROUP" /etc/apache2/envvars | cut -d'=' -f2`
+fi
+echo $apacheGroup

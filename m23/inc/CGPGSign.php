@@ -265,6 +265,10 @@ class CGPGSign extends CChecks
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 		$id = trim($id);
+		
+		if (empty($id))
+			return(false);
+		
 		if ((strlen($id) == 8) && (preg_match("![^A-F0-9]!", $id) == 0))
 		{
 			$allPrivateGPGKeys = array_keys($this->gpgKeyList);

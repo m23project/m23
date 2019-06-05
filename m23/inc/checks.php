@@ -18,7 +18,7 @@ $*/
 */
 
 
-define('CONF_ALLOWEDCHARACTERS','#?.,+*=@дьцƒ№÷я\!@:\-/_ )(');
+define('CONF_ALLOWEDCHARACTERS','#?.,+*=@дьцƒ№÷я\!@:\-/_ ий«вкофыащлпь)&(');
 define('CC_clientname','S64');
 define('CC_client',CC_clientname);
 define('CC_clientOrEmpty','se64');

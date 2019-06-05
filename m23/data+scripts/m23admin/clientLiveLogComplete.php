@@ -22,6 +22,11 @@
 	//Check for the log
 	if (file_exists($log))
 	{
-		echo(file_get_contents($log));
-	}
+		$fp = fopen($log, 'r');
+		
+		while (($buffer = fgets($fp, 32768)) !== false)
+			echo($buffer);
+			
+		fclose($fp);
+    }
 ?>

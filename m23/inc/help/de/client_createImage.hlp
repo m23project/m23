@@ -8,18 +8,18 @@ Mit diesem Dialog können Sie Dateiabbilder von Partitionen oder ganzen Laufwerke
 Wenn Sie die hier erstellte Abbilddatei für die Installation eines Clients verwenden möchten, wählen Sie bitte beim Einrichten des Clients als Distribution <i>"Imaging"</i> aus.<!--V13.2 end-->
 
 <!--V11.4 begin--><u><b>Achtung</b></u>
-Der Client wird vor dem Anlegen des Abbildes und direkt nach dem Klick auf <i>"$I18N_createImage"</i> <b>neu gestartet</b>! Nicht gespeicherte <b>Daten gehen somit verloren</b>.<!--V11.4 end-->
+Der Client wird vor dem Anlegen des Abbildes und direkt nach dem Klick auf <i>"$I18N_createImage"</i> <b>neu gestartet</b>! Nicht gespeicherte <b>Daten gehen somit verloren</b>.<!--V11.4 end--><!--V19.1 begin--> Stellen Sie sicher, daß der Client über das Netzwerk oder über ein anderes m23-Client-Bootmedium gestartet wird.<!--V19.1 end-->
 
 <u>Hinweis zu den Abbilddateien</u>
 Die Dateien werden im Verzeichnis <b>/m23/data+scripts/clientImages</b> abgelegt und können in verschiedenen Formaten und mit anderen Verfahren komprimiert werden, sind aber immer nach dem gleichen Dateinamenschema aufgebaut: &lt;Abbildname&gt;&lt;Größe des entpackten Abbildes in Bytes&gt;&lt;Abbildformat&gt;&lt;Kompression&gt;
 Hierbei kann das Abbildformat folgendes sein:
 
-<!--V13.3 begin--><ul><LI><a href="http://partclone.org/" target="_blank"><b>Partclone</b></a>: Speichert bei einer Partition mit unterstütztem Dateisystem nur die belegten Sektoren, ansonsten die komplette Festplatte</LI></ul><!--V13.3 end-->
-<ul><LI><a href="index.php?page=manViewer&manPage=dd" target="_blank"><b>dd</b></a>: Speichert die kompletten Daten einer Partition oder Festplatte</LI></ul>
+<!--V13.3 begin--><ul><li><a href="http://partclone.org/" target="_blank"><b>Partclone</b></a>: Speichert bei einer Partition mit unterstütztem Dateisystem nur die belegten Sektoren, ansonsten die komplette Festplatte</LI></ul><!--V13.3 end-->
+<ul><li><a href="index.php?page=manViewer&manPage=dd" target="_blank"><b>dd</b></a>: Speichert die kompletten Daten einer Partition oder Festplatte</li></ul>
 Für die Kompression sind folgende Werte gültig:
-<ul><LI> (keine Kompressionsendung): Die Abbilddatei ist nicht komprimiert.</LI>
-<LI><a href="index.php?page=manViewer&manPage=gzip" target="_blank"><b>gz</b></a>: Komprimiert mit dem Programm gzip.</LI>
-<LI><a href="index.php?page=manViewer&manPage=bzip2" target="_blank"><b>bz2</b></a>: Komprimiert mit dem Programm bzip2 und komprimiert meist stärker.</LI></ul>
+<ul><li> (keine Kompressionsendung): Die Abbilddatei ist nicht komprimiert.</li>
+<li><a href="index.php?page=manViewer&manPage=gzip" target="_blank"><b>gz</b></a>: Komprimiert mit dem Programm gzip.</li>
+<li><a href="index.php?page=manViewer&manPage=bzip2" target="_blank"><b>bz2</b></a>: Komprimiert mit dem Programm bzip2 und komprimiert meist stärker.</li></ul>
 
 <u>Hinweis zum $I18N_transferPort</u>
 Für den $I18N_imageTransferType müssen Sie zusätzlich einen Netzwerk-Port angeben, der auf Client- und Serverseite verwendet werden kann und nicht durch eine Firewall etc. geblockt ist. Möchten Sie mehrere Abbilder gleichzeitig erstellen, so müssen Sie unterschiedliche Ports wählen.

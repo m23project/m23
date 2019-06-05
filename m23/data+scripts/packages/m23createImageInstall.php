@@ -10,6 +10,8 @@ function run($id)
 {
 	include('/m23/inc/distr/debian/clientConfigCommon.php');
 
+	CIR_rootInRamdiskOrExit();
+
 	$serverIP=getServerIP();
 
 //get all parameters for the imaging job
@@ -17,12 +19,12 @@ function run($id)
 
 	CIR_detectSCSI();
 
+	CIR_setDateAndTimeTemorarily();
+
 //sets the ssh authorized_file for remote login into the clients
 	CLCFG_setAuthorized_keys($serverIP,"/packages/baseSys/authorized_keys");
 
 	CIR_enableDropbear();
-
-	CIR_setDateAndTimeTemorarily();
 
 	CLCFG_copySSLCert("");
 

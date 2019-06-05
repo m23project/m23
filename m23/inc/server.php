@@ -539,7 +539,7 @@ function SERVER_sendScriptToSF($name,$author,$description,$script)
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
 	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, 'http://m23.sourceforge.net/scriptUpload/upload.php');
+	curl_setopt($ch, CURLOPT_URL, 'https://m23.sourceforge.io/scriptUpload/upload.php');
 
 	// Set to NOT urlencoded data
 	$headers[] = 'Content-type: multipart/form-data';
@@ -945,17 +945,23 @@ function SERVER_programmStatusTableHeader()
 
 
 /**
-**name SERVER_runInBackground($jobName,$cmds,$user,$runInScreen)
+**name SERVER_runInBackground($jobName,$cmds,$user,$runInScreen, $redirectStdErr = false)
 **description Runs a script with "screen" in the background under a given user
 **parameter jobName: name of the job screen should show
 **parameter cmds: the commands of the script 
 **parameter user: user the script should be run under
 **parameter runInScreen: Set to true if the execution should be done in "screen". False executes it under the normal BASH.
+**parameter redirectStdErr: Set to true if stderr should be redirected and not shown on in the console.
 **/
-function SERVER_runInBackground($jobName,$cmds,$user="root",$runInScreen=true)
+function SERVER_runInBackground($jobName,$cmds,$user="root",$runInScreen=true, $redirectStdErr = false)
 {
 	$cmdf="/m23/tmp/$jobName.sh";
 	$lock="/m23/tmp/$jobName.lock";
+	
+	if ($redirectStdErr)
+		$redirectStdErr = '2>&1';
+	else
+		$redirectStdErr = '';
 
 	// Check, if the script is run in command line
 	if (HELPER_isExecutedInCLI())
@@ -997,7 +1003,7 @@ $cmds
 	if ($runInScreen)
 		$execCMD = "${changeUserScreenBegin}screen -dmS $jobName $cmdf${changeUserScreenEnd}";
 	else
-		$execCMD = "${changeUserDirectBegin}$cmdf${changeUserDirectEnd}";
+		$execCMD = "${changeUserDirectBegin}$cmdf${changeUserDirectEnd} $redirectStdErr";
 
 return(shell_exec("
 	chmod +x $cmdf

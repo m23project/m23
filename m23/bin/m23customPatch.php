@@ -35,7 +35,7 @@ class CmCP
 **/
 	private function setExitCode($code)
 	{
-		if (in_array($type, array(CmCP::EX_WRONG_PARAMETER_COUNT, CmCP::EX_PATCH_FILE_INVALID, CmCP::EX_SOURCE_FILE_NOT_FOUND, CmCP::EX_PATCH_ID_NOT_FOUND_IN_SOURCE_FILE)))
+		if (in_array($code, array(CmCP::EX_WRONG_PARAMETER_COUNT, CmCP::EX_PATCH_FILE_INVALID, CmCP::EX_SOURCE_FILE_NOT_FOUND, CmCP::EX_PATCH_ID_NOT_FOUND_IN_SOURCE_FILE)))
 			$this->exitCode = $code;
 		else
 			$this->exitCode = 5;
@@ -161,7 +161,7 @@ class CmCP
 	{
 		global $argv;
 		if (!isset($argv[1]))
-			$this->addErrorMessage("Name of patch file not given as 1st paramter.", CmCP::EX_WRONG_PARAMETER_COUNT);
+			$this->addErrorMessage("Name of patch file not given as 1st parameter.", CmCP::EX_WRONG_PARAMETER_COUNT);
 		else
 		{
 			if ('--list' == $argv[1])

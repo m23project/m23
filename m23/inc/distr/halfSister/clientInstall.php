@@ -21,7 +21,7 @@ function DISTR_baseInstall($lang,$id)
 
 	// Generate a new CFDiskIO object
 	$client = CLIENT_getClientName();
-	$CFDiskIOO = new CFDiskIO($client);
+	$CFDiskIOO = new CFDiskBasic($client);
 
 	//Get the name of the sources list
 	$sourceName = $clientOptions['packagesource'];

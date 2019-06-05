@@ -2,16 +2,16 @@ $I18N_createImage<!--V 1.11 new-->
 
 Par ce dialogue, vous pouvez créer des fichiers image de partitions ou de disques durs entiers d'un poste client; ultérieurement, vous pourrez utiliser ces images pour l'installation d'autres postes client. 
 Pour cela, choisissez le $I18N_imageFormat souhaité, le $I18N_imageTransferType et la $I18N_imageCompression.
-Dépendant du format de l'image, il est nécessaire que vous saisissiez des informations additionelles dans le champ <i>«$I18N_imageSource»</i>, par exemple quelle partition ou quel disque a été enregistré dans le fichier image.
-Choisissez ensuite un nom pour votre fichier et saisissez le dans le champ <i>«$I18N_imageName»</i>. 
-Enfin, cliquez sur <i>«$I18N_createImage»</i>.
+Dépendant du format de l'image, il est nécessaire que vous saisissiez des informations additionelles dans le champ <i>&laquo;$I18N_imageSource&raquo;</i>, par exemple quelle partition ou quel disque a été enregistré dans le fichier image.
+Choisissez ensuite un nom pour votre fichier et saisissez le dans le champ <i>&laquo;$I18N_imageName&raquo</i>. 
+Enfin, cliquez sur <i>&laquo;$I18N_createImage&raquo;</i>.
 
 <!--V13.2 begin-->Vous pouvez accéder une vue d'ensemble de tous les fichiers images chez <i>"Configurations du serveur"</i> &rarr; <i>"$I18N_manageImageFiles"</i>, où vous pouvez aussi effacer les fichiers images dont vous n'avez plus besoin.
 Si vous désirez utiliser le fichier image que vous avez créé ici pour l'installation d'un poste client, choisissez <i>"Imaging"</i> comme distribution pendant la <i>"Configuration"</i> du poste client.<!--V13.2 end-->
 
 <!--V11.4 begin--><u><b>Attention</b></u>
 Le poste client va redémarrer <b>immédiatement</b> après que vous avez cliqué sur <i>"$I18N_createImage"</i>. Ensuite, la création du fichier image débutera! 
-Tous les données n'ayant pas été sauvegardées avant la validation sur <i>"$I18N_createImage"</i> <b>seront perdues</b>!<!--V11.4 end-->
+Tous les données n'ayant pas été sauvegardées avant la validation sur <i>"$I18N_createImage"</i> <b>seront perdues</b>!<!--V11.4 end--><!--V19.1 begin--> Please ensure that the client will be booted via network or another m23 client boot medium..<!--V19.1 end-->
 
 <u>Les fichiers image</u>
 Les fichiers seront enregistrés dans le répertoire <b>/m23/data+scripts/clientImages</b> 
@@ -19,11 +19,11 @@ sous différents types et compressés dans des formats distincts.
 Les noms de fichiers sont toujours composés selon le même principe: &lt;nom de l'image&gt;&lt;taille de l'image decompressée en bytes&gt;&lt;format de l'image&gt;&lt;compression&gt;
 L'image sera créée comme suit:
 Pour la commande:
-<ul><LI><a href="index.php?page=manViewer&manPage=dd" target="_blank"><b>dd</b></a>: Toutes les données d'une partition ou d'un lecteur seront enregistrées (block par block).</LI></ul>
+<ul><li><a href="index.php?page=manViewer&manPage=dd" target="_blank"><b>dd</b></a>: Toutes les données d'une partition ou d'un lecteur seront enregistrées (block par block).</li></ul>
 Pour la compression, les valeurs suivantes sont valides:
-<ul><LI> (aucune extension de compression): Le fichier image n'est pas comprimé.</LI>
-<LI><a href="index.php?page=manViewer&manPage=gzip" target="_blank\"><b>gz</b></a>: La compression sera exécutée avec le programme gzip.</LI>
-<LI><a href="index.php?page=manViewer&manPage=bzip2" target="_blank"><b>bz2</b></a>: La compression sera exécutée avec le programme bzip2 (le plus efficient dans la plupart des cas).</LI></ul>
+<ul><li> (aucune extension de compression): Le fichier image n'est pas comprimé.</li>
+<li><a href="index.php?page=manViewer&manPage=gzip" target="_blank\"><b>gz</b></a>: La compression sera exécutée avec le programme gzip.</li>
+<li><a href="index.php?page=manViewer&manPage=bzip2" target="_blank"><b>bz2</b></a>: La compression sera exécutée avec le programme bzip2 (le plus efficient dans la plupart des cas).</li></ul>
 
 <u>Le $I18N_transferPort</u>
 Pour le mode de transfert de l'image, vous devez indiquer le port de connexion devant être utilisée tant du coté du poste client que du côté serveur; ce port ne doit pas être bloqué par un pare-feu, etc. 

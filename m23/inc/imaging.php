@@ -15,15 +15,17 @@ define('IMGFORMAT_PARTCLONE',7);
 define('IMGCOMPRESSION_NONE',3);
 define('IMGCOMPRESSION_GZ',4);
 define('IMGCOMPRESSION_BZ2',5);
+define('IMGCOMPRESSION_GZFAST',6);
+
 
 //descriptions for the transfer, format and compression types
-define('IMGDESCRIPTIONS',serialize(array(IMGTRANS_NC => "nc (netcat)", IMGFORMAT_DD => "dd (Convert and Copy)", IMGFORMAT_TAR => "tar (Tarball)", IMGFORMAT_DDRESCUE => "ddrescue (Harddisk rescue)", IMGFORMAT_PARTCLONE => 'Partclone', IMGCOMPRESSION_NONE => "-", IMGCOMPRESSION_GZ => "Gzip", IMGCOMPRESSION_BZ2 => "bzip2")));
+define('IMGDESCRIPTIONS',serialize(array(IMGTRANS_NC => "nc (netcat)", IMGFORMAT_DD => "dd (Convert and Copy)", IMGFORMAT_TAR => "tar (Tarball)", IMGFORMAT_DDRESCUE => "ddrescue (Harddisk rescue)", IMGFORMAT_PARTCLONE => 'Partclone', IMGCOMPRESSION_NONE => "-", IMGCOMPRESSION_GZ => "Gzip", IMGCOMPRESSION_GZFAST => 'Gzip (fast)', IMGCOMPRESSION_BZ2 => "bzip2")));
 
 //format extension
 define('IMGFORMEXTENSIONS',serialize(array(IMGFORMAT_DD => "dd", IMGFORMAT_TAR => "tar", IMGFORMAT_PARTCLONE => 'partclone')));
 
 //compression extensions
-define('IMGCOMPREXTENSIONS',serialize(array(IMGCOMPRESSION_NONE => "", IMGCOMPRESSION_GZ => "gz", IMGCOMPRESSION_BZ2 => "bz2")));
+define('IMGCOMPREXTENSIONS',serialize(array(IMGCOMPRESSION_NONE => "", IMGCOMPRESSION_GZ => "gz", IMGCOMPRESSION_GZFAST => 'gz', IMGCOMPRESSION_BZ2 => "bz2")));
 
 //property type
 define('IMGCOMPRESSION',0);
@@ -35,6 +37,42 @@ define('IMGEXTENSION',3);
 //directory to store the images
 define('IMGSTOREDIR',"/m23/data+scripts/clientImages/");
 define('IMGHTTPDIR',"/clientImages/");
+
+
+
+
+
+/**
+**name IMG_ReconfigureEFI($options)
+**description Reconfigures EFI boot for the client.
+**parameter options: the options array with some values
+**parameter options[uefiActive]: is UEFI configured for this client; 0 or 1
+**parameter options[efiPart]: partition for efi boot
+**parameter options[instPart]: root partition
+**license-info: Sponsored by FR
+**/
+function IMG_ReconfigureEFI($options)
+{
+	if (isset($options['uefiActive']) && isset($options['efiPart']) && isset($options['instPart']))
+	{
+		if ($options['uefiActive'])
+		{
+			$efiPart = $options['efiPart'];
+			$instPart = $options['instPart'];
+			echo("
+
+echo \"Restoring grub for EFI boot\"
+if [ -f /bin/exec-in-chroot ];then
+   echo \"Running command /bin/exec-in-chroot \"
+   exec-in-chroot $instPart $efiPart grub-install --uefi-secure-boot
+else
+   echo \"Unable to locate command /bin/exec-in-chroot\"
+fi
+
+");
+		}
+	}
+}
 
 
 
@@ -68,13 +106,13 @@ function IMG_installMBR($options)
 function IMG_storeMBR($device, $imagename)
 {
 	$devNr = FDISK_getDriveAndNr($device);
-	
-	//check if a partition is choosen because it makes no sense to store the MBR if the whole disk is stored into an image that allready contains the MBR.
+
+	//check if a partition is choosen because it makes no sense to store the MBR if the whole disk is stored into an image that already contains the MBR.
 	if ($devNr[0] != $device)
-		{
-			echo ('dd if='.$devNr[0].' of=/tmp/mbr bs=512 count=1');
-			MSR_genSendBinayFileCommand("/tmp/mbr","MSR_m23ImagerMBR&imagename=".urlencode($imagename));
-		}
+	{
+		echo ('dd if='.$devNr[0].' of=/tmp/mbr bs=512 count=1');
+		MSR_genSendBinayFileCommand("/tmp/mbr","MSR_m23ImagerMBR&imagename=".urlencode($imagename));
+	}
 }
 
 
@@ -105,6 +143,10 @@ function IMG_getExtractedSize($fileName)
 **/
 function IMG_setFilenameSize($fileName,$size)
 {
+	// FABR: hier wird das Image umbenannt.
+	// FABR-FIX-ME: fix bug in IMG_showImageManagement fuer Aktion 'del'
+	// Die Datei mit dem MBR wird nicht umbenannt.
+
 	$newName=str_replace(".0.",".$size.",$fileName);
 	
 	system("sudo mv ".IMGSTOREDIR."$fileName ".IMGSTOREDIR.$newName);
@@ -126,17 +168,20 @@ function IMG_clientRestoreAll($options, $lang)
 	for ($i=0; $i < $options['IMGPartitionAmount']; $i++)
 	{
 		if (isset($options["IMGname$i"]))
-			{
-				preg_match ("/[0-9]+$/",$options["IMGdrv$i"], $found);
-				$partNrs[$pnr]=$found[(count($found)-1)];
+		{
+			preg_match ("/[0-9]+$/",$options["IMGdrv$i"], $found);
+			$partNrs[$pnr]=$found[(count($found)-1)];
 
-				if (!in_array($dev,$devs))
-					$devs[$dnr++]=str_replace($partNrs[$pnr],"",$options["IMGdrv$i"]);
-					
-				IMG_clientRestore($options["IMGname$i"], $options["IMGdrv$i"], $lang);
-				$pnr++;
-			};
-	};
+/*
+	Never true, because $dev is undefined
+			if (!in_array($dev,$devs))
+				$devs[$dnr++]=str_replace($partNrs[$pnr],"",$options["IMGdrv$i"]);
+*/
+
+			IMG_clientRestore($options["IMGname$i"], $options["IMGdrv$i"], $lang);
+			$pnr++;
+		}
+	}
 
 	$out['p']=$partNrs;
 	$out['d']=$devs;
@@ -166,7 +211,7 @@ function IMG_clientRestore($fileName, $destDevice, $lang)
 
 	$cmd="\nwget -q https://".getServerIP().IMGHTTPDIR."$fileName -O - | ";
 
-	$FSEnlargeWrapper = false;
+	$FSEnlargeWrapper = true;
 	$gaugeActive = true;
 
 	switch ($format)
@@ -174,9 +219,10 @@ function IMG_clientRestore($fileName, $destDevice, $lang)
 		case IMGFORMAT_DD:
 			$cmd.=$compr[IMGFORMAT_DD][$compression]."dd of=$destDevice&";
 			$mount=false;
-			$FSEnlargeWrapper = true;
 			break;
 		case IMGFORMAT_PARTCLONE:
+			// FABR: is it really an '-o', which is redundant to the trailing '-'?
+			// REDO_BACKUP uses capital '-O $destDevice' instead.
 			$cmd.=$compr[IMGFORMAT_DD][$compression]."partclone.restore -F -L /tmp/partclone.log -o $destDevice -s -";
 			$mount = false;
 			$gaugeActive = false;
@@ -225,10 +271,10 @@ function IMG_getAllImagesSel($selName,$default)
 			$list["name$nr"]=$image['filename']." $I18N_imageExtractedSize: ".$image['extractedSize'];
 			$list["val$nr"]=$image['filename'];
 			$nr++;
-		};
+		}
 
 	return(HTML_listSelection($selName,$list,$default));
-};
+}
 
 
 
@@ -242,20 +288,18 @@ function IMG_getAllImagesSel($selName,$default)
 function IMG_getAllMBRs()
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
-	$dir=opendir(IMGSTOREDIR);
-	$i=0;
-	while ($fileName = readdir($dir))
-	if (preg_match('/\.mbr$/',$fileName))
-	{
-		$list[$fileName] = $fileName;
-	}
+// 	$dir=opendir(IMGSTOREDIR);
+// 	$i=0;
+// 	while ($fileName = readdir($dir))
+// 	if (preg_match('/\.mbr$/',$fileName))
+// 		$list[$fileName] = $fileName;
 
 	$list["*generic*"] = $I18N_genericMBR;
 
 	//close the directory handle
-	closedir($dir);
+// 	closedir($dir);
 	return($list);
-};
+}
 
 
 
@@ -290,7 +334,11 @@ function IMG_getAllImages()
 
 		//the extracted size is the last numeric part of the filename
 		preg_match ("/[.]+[0-9]+[.]+/",$fileName, $found);
+		if(count($found) > 0){
 		$out[$i]['extractedSize'] = str_replace(".","",$found[(count($found)-1)]);
+		} else {
+			$out[$i]['extractedSize'] = "0";
+		}
 		$i++;
 	}
 
@@ -304,6 +352,55 @@ function IMG_getAllImages()
 
 
 /**
+**name IMG_recodeToNameOfMBR($pathNameOfImageFile)
+**description Computes the pathname of the MBR file from the pathname of the imagefile.
+**parameter pathNameOfImageFile: name of the image file (with full path name)
+**
+** Example:
+** The function maps
+**      /bums/bla/PartImage-UbuntuXenial-1604-aima01-sda1.534773760.partclone.gz
+** to
+**      /bums/bla/PartImage-UbuntuXenial-1604-aima01-sda1.0.partclone.gz.mbr
+**/
+function IMG_recodeToNameOfMBR($pathNameOfImageFile)
+{
+        // Split $pathNameOfImageFile into dirname and basename parts
+        $path=dirname($pathNameOfImageFile);
+        $imageName=basename($pathNameOfImageFile);
+        //echo("path: " . $path .PHP_EOL);
+        //echo("imageName: " . $imageName .PHP_EOL);
+
+        // Select the size omponent in the $imageName
+        $parts=explode(".",$imageName);
+
+        if(count($parts) > 1){
+                $size=$parts{1};
+        } else {
+                // Pathological case, only
+                // $imageName is empty
+                $size="0";
+        }
+        $mbrName=str_replace(".".$size.".",".0.",$imageName).".mbr";
+
+        //echo("size: " . $size .PHP_EOL);
+        //echo("mbrName: " . $mbrName .PHP_EOL);
+
+        // Add path info, if there is any
+        if ($path !== ''){
+                $pathNameOfMBRFile = $path."/".$mbrName;
+        } else {
+                // Pathological case, only
+                $pathNameOfMBRFile = $mbrName;
+        }
+        return($pathNameOfMBRFile);
+}
+
+
+
+
+
+
+/**
 **name IMG_showImageManagement()
 **description Shows a dialog with all existing image files with the possibillity to delete them.
 **/
@@ -311,16 +408,27 @@ function IMG_showImageManagement()
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
-	switch ($_GET['action'])
+	if (array_key_exists('action', $_GET))
 	{
-		case del:
-			$file = IMGSTOREDIR.urldecode($_GET["file"]);
-			exec("sudo rm $file $file.mbr");
-			break;
-	};
+		switch ($_GET['action'])
+		{
+			case "del":
+				$file = IMGSTOREDIR.urldecode($_GET["file"]);
+				//exec("sudo rm -f $file $file.mbr");
+				/* Note
+					* PartImage-UbuntuXenial-1604-aima01-sda1.534773760.partclone.gz
+					* but  
+					* PartImage-UbuntuXenial-1604-aima01-sda1.0.partclone.gz.mbr
+					*/
+				exec("sudo rm -f $file " . IMG_recodeToNameOfMBR($file));
+				break;
+		}
+	}
 
 	HTML_showFormHeader();
 	HTML_showTableHeader();
+	
+	HTML_submitDefine('BUT_reload', $I18N_refresh);
 
 	HTML_setPage("manageImageFiles");
 	echo("
@@ -354,6 +462,7 @@ function IMG_showImageManagement()
 		echo("<tr><td colspan=\"5\" align=\"center\">
 			<br>$I18N_noImageFilesAvailable<br>
 		</td></tr>");
+	echo("<tr><td colspan=\"7\" align=\"center\">".BUT_reload."</td></tr>");
 
 	HTML_showTableEnd();
 	HTML_showFormEnd();
@@ -409,17 +518,18 @@ function IMG_getFormatCompressionFromFile($fileName,&$format,&$compression,&$wit
 	$compression = array_search($parts[$compPos],$cExt);
 	
 	if ($compression === false)
-		{
-			//this is not a compression extension
-			$compression = IMGCOMPRESSION_NONE;
-			$formPos++;
-		};
+	{
+		//this is not a compression extension
+		$compression = IMGCOMPRESSION_NONE;
+		$formPos++;
+	}
 
 	//get the index number for the format extension
 	$format  = array_search($parts[$formPos],$fExt);
 
 	//check if an MBR file exists
-	$withMBR  = file_exists("$fileName.mbr");
+	//$withMBR  = file_exists("$fileName.mbr");
+	$withMBR  = file_exists(IMG_recodeToNameOfMBR($fileName));
 };
 
 
@@ -523,6 +633,7 @@ function IMG_clientCreate($transport ,$format, $compression, $device, $server, $
 
 	$compr[IMGFORMAT_DD][IMGCOMPRESSION_NONE] = "";
 	$compr[IMGFORMAT_DD][IMGCOMPRESSION_GZ] = "gzip | ";
+	$compr[IMGFORMAT_DD][IMGCOMPRESSION_GZFAST] = "gzip --fast | ";
 	$compr[IMGFORMAT_DD][IMGCOMPRESSION_BZ2] = "bzip2 | ";
 	
 	$gaugeActive = true;
@@ -567,15 +678,15 @@ function IMG_clientCreate($transport ,$format, $compression, $device, $server, $
 **name IMG_showCreateImage($client)
 **description Shows a dialog for creating an image.
 **parameter client: name of the client.
+**parameter the_client_id: id of the client.
 **/
-function IMG_showCreateImage($client)
+function IMG_showCreateImage($client, $the_client_id)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	$desc=unserialize(IMGDESCRIPTIONS);
 	
 	$port = HTML_input('ED_transferPort', rand(10000, 50000), 5);
 	$imageName = HTML_input('ED_imageName', '', 50, 200);
-
 
 	if (HTML_submit('BUT_createImage',$I18N_createImage))
 	{
@@ -622,7 +733,7 @@ function IMG_showCreateImage($client)
 				MSG_showInfo($I18N_createImageJobHasBeenStored);
 
 				return;
-			};
+			}
 		}
 	}
 
@@ -640,6 +751,7 @@ function IMG_showCreateImage($client)
 	HTML_setPage('createImage');
 	echo("
 	<input type=\"hidden\" name=\"client\" value=\"$client\">
+	<input type=\"hidden\" name=\"id\" value=\"$the_client_id\">
 	<tr>
 		<td><span class=\"subhighlight\">$I18N_imageFormat</span></td>
 		<td><span class=\"subhighlight\">$I18N_imageTransferType</span></td>
@@ -648,7 +760,7 @@ function IMG_showCreateImage($client)
 	<tr>
 		<td>".SEL_imageFormat."</td>
 		<td>".IMG_getImageFormatSelection("SEL_ddTrans",array(IMGTRANS_NC),IMGTRANS)."</td>
-		<td>".IMG_getImageFormatSelection("SEL_ddComp",array(IMGCOMPRESSION_GZ,IMGCOMPRESSION_BZ2,IMGCOMPRESSION_NONE),IMGCOMPRESSION)."</td>
+		<td>".IMG_getImageFormatSelection("SEL_ddComp",array(IMGCOMPRESSION_GZ, IMGCOMPRESSION_GZFAST, IMGCOMPRESSION_BZ2, IMGCOMPRESSION_NONE), IMGCOMPRESSION)."</td>
 	</tr>
 
 	<tr>
@@ -657,7 +769,7 @@ function IMG_showCreateImage($client)
 
 	<tr>
 		<td colspan=\"3\">
-			".FDISK_listDrivesAndPartitions($param, $first, "SEL_ddDrive")."
+			".FDISK_listDrivesAndPartitions($param, $first, "SEL_ddDrive", false, true)."
 		</td>
 	</tr>
 	");

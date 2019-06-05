@@ -174,7 +174,7 @@ function HELP_getHelp($topic,$language="",$fileName="",$latex=false)
 
 			//Replace all ocurrences of the i18n variable
 			$out=str_replace("\$$f",$replace,$out);
-		};
+		}
 
 	//Replace m23 page links that link to other m23 help pages
 	$out = preg_replace('/(<m23help>)(\w+)(<\/m23help>)/i', "<a href=\"/m23admin/misc/helpViewer.php?helpPage=$2&lang=$GLOBALS[m23_language]\" target=\"_blank\">$2</a>", $out);

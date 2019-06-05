@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#get Apache user and group
+if [ -f /etc/apache/httpd.conf ]
+then
+	apacheUser=`grep "^User " /etc/apache/httpd.conf 2> /dev/null | cut -d' ' -f2`
+else
+	apacheUser=`grep "APACHE_RUN_USER" /etc/apache2/envvars | cut -d'=' -f2`
+fi
+echo $apacheUser

@@ -1443,4 +1443,9 @@ Hint: You (or anybody else with access to your webbrowser) can use the m23 webin
 @$I18N_pleaseWaitGettingKernelInformation = 'Please wait. Fetching information about available Linux kernels.';
 @$I18N_installReasonEnabled = 'Enable setting/showing an installation reason for client jobs';
 @$I18N_VMHostSoftwareInstalled = 'This system features virtualization software. You can use it for installing virtual m23 clients.';
+
+//19.1
+@$I18N_fdiskTypeautomatic500GBsysSwapData = '500GB: System + Swap + Data';
+@$I18N_errorNoKernelSelected = 'No kernel selected!';
+@$I18N_imagingWarning = 'The pseudo-distribution "Imaging" is the technically most complex way for installing a client. It is not guaranteed that this approach will create a working m23 client. If you encounter issues with this functionality, please consider using a distribution from the included package sources list, which is supported by m23, instead. You can make additional adjustments by using packages (in the "package architect") or with m23 scripts (in the "script editor").';
 ?>

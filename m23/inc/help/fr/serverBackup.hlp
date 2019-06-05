@@ -21,7 +21,7 @@ Si la clé GPG que vous souhaitez utiliser pour le chiffrement des données n'est 
 
 			<li><b>scp:</b> Au moyen de <a href="http://fr.wikipedia.org/wiki/Secure_Copy">Secure Copy</a> vous pouvez sauvegarder les archives de sauvegarde sur un quelconque ordinateur accessible par son serveur SSH. Cette option s'impose si vous disposez d'un serveur SSH pouvant accueillir les sauvegardes. Si les données de ce serveur sont également sauvegardées par un cycle de sauvegarde, cette option est une possibilité très sûre pour la protection de votre serveur m23.</li>
 
-			<li><b>share-online.biz:</b> Si vous sélectionnez cette option, le serveur m23 va transférer vos archives de sauvegarde chiffrées sur un <a href="http://fr.wikipedia.org/wiki/Site_d%27h%C3%A9bergement_de_fichiers_en_un_clic">One-Click-Hoster</a>. Si vous n'avez pas de serveur pour copier l'archive de sauvegarde de votre serveur m23, cette option pourrait vous intéresser. Vos données de sauvegarde seront protégées par le chiffrement contre l'accès non autorisé. Le téléchargement peut durer quelque temps.</li>
+<!-- v18.2 removed			<li><b>share-online.biz:</b> Si vous sélectionnez cette option, le serveur m23 va transférer vos archives de sauvegarde chiffrées sur un <a href="http://fr.wikipedia.org/wiki/Site_d%27h%C3%A9bergement_de_fichiers_en_un_clic">One-Click-Hoster</a>. Si vous n'avez pas de serveur pour copier l'archive de sauvegarde de votre serveur m23, cette option pourrait vous intéresser. Vos données de sauvegarde seront protégées par le chiffrement contre l'accès non autorisé. Le téléchargement peut durer quelque temps.</li>-->
 		</ul>
 	</li>
 
@@ -41,7 +41,7 @@ Si la clé GPG que vous souhaitez utiliser pour le chiffrement des données n'est 
 			Prenez soin que la clé SSH du superutilisateur root du serveur m23 qui est contenu dans le fichier <code>/root/.ssh/id_dsa.pub</code> serait entré dans le fichier <code>~/.ssh/authorized_keys</code> de l'utilisateur indiqué <i>&laquo;$I18N_user&raquo;</i> sur le serveur SCP pour qu'un transfert des fichiers sans mot de passe soit possible. <!--v12.1 begin-->Si vous disposez de la commande &laquo;ssh-copy-id&raquo;, la copie s'effectuera simplement. Pour ce faire, tapez la commande &laquo;ssh-copy-id -i /root/.ssh/id_dsa.pub user@serveur_SCP&raquo;.<!--v12.2 end-->
 			</li>
 		
-			<li><h3>share-online.biz</h3>
+<!-- v18.2 removed			<li><h3>share-online.biz</h3>
 			Si vous avez choisi "share-online.biz", vous devez entrer les valeurs suivantes:
 			<ul>
 				<li><b>$I18N_user:</b> C'est le nom d'utilisateur, avec lequel vous êtes registrés chez share-online.biz.</li>
@@ -51,7 +51,7 @@ Si la clé GPG que vous souhaitez utiliser pour le chiffrement des données n'est 
 			</ul>
 			<u>Remarque:</u>
 			Pour transférer des archives de sauvegarde, il faut s'enregistrer gratuitement sur <a href="http://www.share-online.biz/signup.php">www.share-online.biz</a>. Les transferts sur et depuis le serveur sont gratuits. <b>Vous devriez vous assurer que les conditions n'aient pas changées. Si c'était le cas, contactez-nous sous<a href="mailto:hhabermann@pc-kiel.de">hhabermann@pc-kiel.de</a>,s.v.p.</b>
-			</li>
+			</li>-->
 		</ul>
 	</li>
 

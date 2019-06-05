@@ -539,7 +539,7 @@ function HTML_liveLogArea($htmlName, $width, $height, $url, $timeout = 500, $max
 				type: 'POST', url : '$url',
 				success: function (data)
 				{
-					if (data.length > 0)
+					if (data.length > 1)
 					{
 						var elem = $('#id$htmlName');
 
@@ -1071,6 +1071,8 @@ function HTML_setStatusBarPercentPointByName($statusBarName, $client, $recalcula
 	}
 
 	$percentPoint = (float)((((float)$basePercent)/((float)$waitingJobs)));
+	$percentPoint = str_replace(',', '.', $percentPoint);
+	$percent = str_replace(',', '.', $percent);
 
 	DB_query("UPDATE `statusbar` SET `percentpoint` = '$percentPoint' , `statustext` = '' , `percent` = '$percent', `ts` = ".time()." WHERE `client`='$client' AND `name`='$statusBarName'");
 
@@ -1313,9 +1315,15 @@ function HTML_showStatusBarHTML($id)
 	//Check if the percent number should be shown in the finished (left) or unfinished (right) part
 	//So the font width of the procent number will not hinder showing the correct finished length
 	if ($percent > 15)
+	{
 		$percentL = $percentS;
+		$percentR = "";
+	}
 	else
+	{
+		$percentL = "";
 		$percentR = $percentS;
+	}
 
 echo("
 	<html>

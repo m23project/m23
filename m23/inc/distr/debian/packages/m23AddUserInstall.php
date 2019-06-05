@@ -16,7 +16,29 @@ function run($id)
 
 //m23customPatchBegin type=change id=skipCreateUserBegin
 //m23customPatchEnd id=skipCreateUserBegin
-	CLCFG_addUser($accountInfo['login'], $accountInfo['firstpw'], $accountInfo['groups'], $uid, $gid);
+
+if (isset($accountInfo['groupsUbuntu']))
+{
+	echo('
+	'.BASH_ifDetectDebian.'
+	then
+	');
+		CLCFG_addUser($accountInfo['login'], $accountInfo['firstpw'], $accountInfo['groupsDebian'], $uid, $gid);
+	echo('
+	fi
+
+	'.BASH_ifDetectUbuntu.'
+	then
+	');
+		CLCFG_addUser($accountInfo['login'], $accountInfo['firstpw'], $accountInfo['groupsUbuntu'], $uid, $gid);
+	echo('
+	fi
+	');
+}
+	else
+		CLCFG_addUser($accountInfo['login'], $accountInfo['firstpw'], $accountInfo['groups'], $uid, $gid);
+
+
 //m23customPatchBegin type=change id=skipCreateUserEnd
 //m23customPatchEnd id=skipCreateUserEnd
 	/* =====> */ MSR_statusBarIncCommand(100);

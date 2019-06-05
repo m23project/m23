@@ -1,0 +1,52 @@
+#!/bin/bash
+
+conf='/etc/mysql/debian.cnf'
+
+# Check, if the config file is readable by the current user
+cat $conf &> /dev/null
+if [ $? -ne 0 ]
+then
+	exit 1
+fi
+
+
+
+
+
+#Shows the mysql password (if needed (only on MySQL))
+showDBAdmPassword()
+{
+	grep "^password" $conf | tr -d '[:blank:]' | cut -d'=' -f2 | head -1
+}
+
+
+
+
+
+#Shows the MySQL / MariaDB password parameter (if needed (only on MySQL))
+showDBAdmPasswordParameter()
+{
+	dbadmpass=`showDBAdmPassword`
+
+	if [ $dbadmpass ]
+	then
+		echo -n "-p$dbadmpass"
+	fi
+}
+
+
+
+
+
+#Shows the MySQL / MariaDB admin user
+showDBAdmUser()
+{
+	grep "^user" $conf | tr -d '[:blank:]' | cut -d'=' -f2 | head -1
+}
+
+
+
+
+
+# Show the username and password parameter for mysql and mysqldump
+echo "-u$(showDBAdmUser) $(showDBAdmPasswordParameter)"

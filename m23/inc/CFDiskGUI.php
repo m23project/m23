@@ -1048,6 +1048,7 @@ class CFDiskGUI extends CFDiskBasic
 			$partitionSchemes[CFDiskBasic::PM_auto] = $I18N_fdistTypeautomatic;
 			$partitionSchemes[CFDiskBasic::PM_auto2048_4096] = $I18N_fdistTypeautomaticSwap2048_4096;
 			$partitionSchemes[CFDiskBasic::PM_auto2Disk1SysSwap2Home] = $I18N_fdiskTypeautomatic2Disk1SysSwap2Home;
+			$partitionSchemes[CFDiskBasic::PM_auto500GBsysSwapData] = $I18N_fdiskTypeautomatic500GBsysSwapData;
 			
 			$partitionScheme = HTML_selection('SEL_partitionSchemes', $partitionSchemes, SELTYPE_selection);
 
@@ -1064,6 +1065,9 @@ class CFDiskGUI extends CFDiskBasic
 						break;
 					case CFDiskBasic::PM_auto2Disk1SysSwap2Home:
 						$this->PM_auto2Disk1SysSwap2Home();
+						break;
+					case CFDiskBasic::PM_auto500GBsysSwapData:
+						$this->PM_auto500GBsysSwapData($this->getCurrentDiskDev());
 						break;
 					default:
 						return(false);
