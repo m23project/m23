@@ -17,6 +17,11 @@ echo("
 apt-key adv --recv-keys --keyserver keys.gnupg.net E1F958385BFE2B6E
 mkdir -p /etc/apt/sources.list.d
 
+if [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ]
+then
+	echo 'deb http://packages.x2go.org/debian buster main' > /etc/apt/sources.list.d/x2go.list
+fi
+
 if [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ]
 then
 	echo 'deb http://packages.x2go.org/debian stretch main' > /etc/apt/sources.list.d/x2go.list

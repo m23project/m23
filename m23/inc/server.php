@@ -990,7 +990,15 @@ function SERVER_runInBackground($jobName,$cmds,$user="root",$runInScreen=true, $
 
 	fwrite($file,
 	"#!/bin/bash
-	chmod 775 /var/run/screen 2> /dev/null
+
+	# Special access rights for Debian/Raspbian 10
+	if [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep -c 'Raspbian GNU/Linux 10' /etc/issue) -gt 0 ]
+	then
+		chmod 777 /var/run/screen 2> /dev/null
+	else
+		chmod 775 /var/run/screen 2> /dev/null
+	fi
+
 	rm $lock 2> /dev/null
 	touch $lock
 $cmds

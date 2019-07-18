@@ -13,17 +13,16 @@
 	include_once('/m23/inc/distr/debian/packages.php');
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
-
-$in = '12345678';
-$_POST['data'] = base64_encode($in);
-$_POST['md5'] = md5($in);
-$_POST['imagename'] = 'test';
-
-MSR_m23ImagerMBR();
-
-
 // print("<pre>");
 // print("</pre>\n");
 	HTML_showTableEnd();
+	
+	
+	$a = ip2longSafe('192.168.1.1');
+	var_dump($a);
+	
+	$b = ip2long('192.168.1.1');
+	var_dump($b);
+
 	HTML_showFormEnd();
 ?>

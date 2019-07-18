@@ -19,7 +19,16 @@ define('DEBIAN8DESKTOP_KDE_FULL', 4006);
 define('DEBIAN8DESKTOP_CINNAMON_FULL', 4007);
 define('DEBIAN8DESKTOP_LXDE_FULL', 4008);
 
+define('DEBIAN10DESKTOP_LXQT', 4009);
 
+
+// #gnome-desktop
+// #xfce-desktop
+// #kde-desktop
+// #cinnamon-desktop
+// #mate-desktop
+// #lxde-desktop
+// lxqt-desktop
 
 
 
@@ -40,6 +49,12 @@ function DEBIAN_desktopInstall($desktop)
 
 	switch($desktop)
 	{
+		case DEBIAN10DESKTOP_LXQT:
+			$desktopPackages = 'task-lxqt-desktop task-desktop xfwm4 xfwm4-theme-breeze sddm';
+			$dialogHeader = $I18N_installingLXQT;
+			CLCFG_blacklistPackageInstallation('connman');
+		break;
+
 		case DEBIAN8DESKTOP_MATE_FULL:
 			$desktopPackages = 'task-mate-desktop';
 			$dialogHeader = $I18N_installingMate;
@@ -71,7 +86,7 @@ function DEBIAN_desktopInstall($desktop)
 		break;
 
 		case DEBIAN8DESKTOP_CINNAMON_FULL:
-			$desktopPackages = 'task-cinnamon-desktop';
+			$desktopPackages = 'task-cinnamon-desktop dbus-x11';
 			$dialogHeader = $I18N_installingCinnamon;
 		break;
 

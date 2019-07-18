@@ -161,7 +161,7 @@ function CLIENT_getNextFreeIp()
 		// Skip NULL entries
 		if (is_null($line[0])) continue;
 
-		$ip = $line[0];
+		$ip = (float)$line[0];
 
 		//If the difference between the previous used IP and the current IP is bigger than 1, then there is a hole
 		if (($ip >= $min) && ($ip <= $max) && (($ip - $oldip) > 1) && (! in_array(($ip - 1),$notUse)) && (! pingIP(long2ip($ip - 1))))
@@ -173,10 +173,10 @@ function CLIENT_getNextFreeIp()
 	}
 
 	//If there were no holes in the used IPs, a free IP must be found after the last IP in the database
-	for (; $ip < $max; $ip++)
+	for (; (float)$ip < (float)$max; $ip++)
 	{
 		if (! in_array($ip, $notUse))
-			return(long2ip($ip));
+			return(long2ip((int)$ip));
 	}
 
 	return(false);

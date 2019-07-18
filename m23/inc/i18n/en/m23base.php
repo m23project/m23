@@ -1342,7 +1342,7 @@ Hint: You (or anybody else with access to your webbrowser) can use the m23 webin
 @$I18N_addNewLoginToUCSLDAP = "Save login data to UCS";
 @$I18N_authentificationViaUCS = "Authenticate via UCS";
 @$I18N_addNewLoginToUCSLDAPError = "Error: The login data could not be saved to UCS.";
-@$I18N_readLoginFromUCSLDAPSupportedDistros = '(can be used with clients based on Debian 8 + 9, Ubuntu 14.04, 16.04, 18.04, Linux Mint 17.x and 18.x)';
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(can be used with clients based on Debian 8, 9 + 10, Ubuntu 14.04, 16.04, 18.04, Linux Mint 17.x and 18.x)';
 
 //16.2
 @$I18N_clientUsesDynamicIP = "The client uses a dynamically assigned IP (DHCP)";
@@ -1448,4 +1448,5 @@ Hint: You (or anybody else with access to your webbrowser) can use the m23 webin
 @$I18N_fdiskTypeautomatic500GBsysSwapData = '500GB: System + Swap + Data';
 @$I18N_errorNoKernelSelected = 'No kernel selected!';
 @$I18N_imagingWarning = 'The pseudo-distribution "Imaging" is the technically most complex way for installing a client. It is not guaranteed that this approach will create a working m23 client. If you encounter issues with this functionality, please consider using a distribution from the included package sources list, which is supported by m23, instead. You can make additional adjustments by using packages (in the "package architect") or with m23 scripts (in the "script editor").';
+@$I18N_setup_client_tooltip = 'Partition and format, select distribution and desktop.';
 ?>

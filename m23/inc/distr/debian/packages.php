@@ -941,7 +941,8 @@ function PKG_getKernels($distr,$packagesource,$arch)
 
 			if ((strlen($package_description[0])>0) &&
 				(strstr($package_description[0],"-image")) &&
-				(strpos($package_description[0], 'grub-imageboot') === FALSE))
+				(strpos($package_description[0], 'grub-imageboot') === FALSE) &&
+				(strpos($package_description[0], '-template') === FALSE))
 				{
 					$temp=explode("-",$package_description[0]);
 

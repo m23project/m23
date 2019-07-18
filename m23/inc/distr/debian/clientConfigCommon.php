@@ -10,6 +10,25 @@ $*/
 
 
 /**
+**name CLCFG_blacklistPackageInstallation($package)
+**description Blacklists a package for APT to make it uninstallable.
+**parameter package: Name of the package.
+**/
+function CLCFG_blacklistPackageInstallation($package)
+{
+	echo("
+mkdir -p /etc/apt/preferences.d
+
+echo \"Package: $package
+Pin: release *
+Pin-Priority: -1\" > /etc/apt/preferences.d/blacklist-$package.pref
+");
+}
+
+
+
+
+/**
 **name CLCFG_executeNextWorkEveryMinute($lang)
 **description Runs executeNextWork in a loop every minute and shows a status message about elapsed waiting time.
 **parameter lang: language for the messages
@@ -147,7 +166,7 @@ firmware-ipw2x00 firmware-ipw2x00/license/accepted boolean true
 firmware-ivtv firmware-ivtv/license/error error
 firmware-ivtv firmware-ivtv/license/accepted boolean true');
 
-	echo('apt-cache search firmware | sort | grep firmware | cut -d\' \' -f1 | grep firmware | grep -v installer$ | grep -v nexus7 | grep -v grub | grep -v tools$ | grep -v dev$ | grep -v libertas-firmware | grep -v bladerf | xargs -n1 apt-get -y -m --force-yes install');
+	echo('apt-cache search firmware | sort | grep firmware | cut -d\' \' -f1 | grep firmware | grep -v installer$ | grep -v nexus7 | grep -v grub | grep -v tools$ | grep -v dev$ | grep -v libertas-firmware | grep -v bladerf | grep -v dahdi | grep -v firmware-adi | grep -v ath9k-htc | grep -v firmware-ivtv | grep -v microbit | grep -v firmware-samsung | grep -v firmware-siano | grep -v hdmi2usb-fx2-firmware | grep -v midisport-firmware | grep -v nxt-firmware | grep -v sigrok-firmware-fx2lafw | grep -v ubertooth | xargs -n1 apt-get -y -m --force-yes install');
 }
 
 
@@ -1848,7 +1867,7 @@ if ($bootloader == "grub")
 		echo("
 		else
 			# DebianVersionSpecific
-			if [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ] || [ $(grep devuan -c /etc/apt/sources.list) -gt 0 ] || [ $(grep bionic -c /etc/apt/sources.list) -gt 0 ]
+			if [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ] || [ $(grep devuan -c /etc/apt/sources.list) -gt 0 ] || [ $(grep bionic -c /etc/apt/sources.list) -gt 0 ]
 			then
 			");
 				CLCFG_aptGet("install", "grub-pc");
@@ -1902,12 +1921,12 @@ if ($bootloader == "grub")
 			fi
 
 			# DebianVersionSpecific
-			if [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ] || [ $(grep bionic -c /etc/apt/sources.list) -gt 0 ]
+			if [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ] || [ $(grep bionic -c /etc/apt/sources.list) -gt 0 ]
 			then
 				/usr/sbin/update-grub2
 				sync
-				
-				if [ $(lsb_release -c -s) = 'bionic' ] || [ $(lsb_release -c -s) = 'xenial' ] || [ $(lsb_release -i -s) = 'LinuxMint' ] || [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ]
+				# DebianVersionSpecific
+				if [ $(lsb_release -c -s) = 'bionic' ] || [ $(lsb_release -c -s) = 'xenial' ] || [ $(lsb_release -i -s) = 'LinuxMint' ] || [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ]
 				then
 					sed -i 's/\(GRUB_CMDLINE_LINUX_DEFAULT=\"\)\([^\"]*\)\"/\\1\\2 net.ifnames=0\"/' /etc/default/grub
 					update-grub
@@ -2142,6 +2161,8 @@ if ifconfig lo 127.0.0.1
 	else
 		".sendClientLogStatus("127.0.0.1 loopdevice setup",false)."
 fi
+
+touch /etc/network/if-pre-up.d/wpasupplicant
 ");
 
 //m23customPatchBegin type=change id=CLCFG_interfacesDhcpBootimage2
@@ -2452,6 +2473,7 @@ function CLCFG_language($lang, $release = null)
 			case 'wheezy':
 			case 'jessie':
 			case 'stretch':
+			case 'buster':
 				foreach ($lV as $var => $val)
 				{
 					$val = str_replace('utf', 'UTF', $val);
@@ -2492,7 +2514,7 @@ cat /etc/locale.gen | xargs -n1 locale-gen
 
 #Special handling for Debian Squeeze
 #DebianVersionSpecific
-if [ `grep \"Debian GNU/Linux 6.0\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 7\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 8\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 9\" /etc/issue -c` -eq 1 ]
+if [ `grep \"Debian GNU/Linux 6.0\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 7\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 8\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 9\" /etc/issue -c` -eq 1 ] || [ `grep \"Debian GNU/Linux 10\" /etc/issue -c` -eq 1 ]
 then
 	rm /etc/environment /tmp/lg 2> /dev/null
 
@@ -3670,8 +3692,12 @@ for ($year = 11; $year <= date('y'); $year++)
 	$greps .= "[ `grep -i 'Ubuntu $year.04' $rootPath/etc/issue -c` -gt 0 ] || [ `grep -i 'Ubuntu $year.10' $rootPath/etc/issue -c` -gt 0 ]";
 }
 
+//DebianVersionSpecific
+$greps .= ' || [ $(grep -c \'Debian GNU/Linux 10\' /etc/issue) -gt 0 ]';
+
 //Disable checks for Linux Mint 11 and above
-$greps .= ' || ( [ $(grep \'Mint\' /etc/issue -c) -gt 0 ] && [ $(sed \'s/[^0-9]//g\' /etc/issue) -gt 10 ] )';
+$greps .= ' || ( [ $(grep \'Mint\' /etc/issue -c) -gt 0 ] && [ $(sed \'s/[^0-9]//g\' /etc/issue) -gt 10 ] )'; 
+
 
 if ($disableSSLCertCheck || HELPER_isExecutedOnUCS())
 	$greps .= ' || true';
@@ -3681,6 +3707,7 @@ if $greps
 then
 	echo 'check_certificate = off' >> $rootPath/etc/wgetrc
 fi
+
 ");
 
 

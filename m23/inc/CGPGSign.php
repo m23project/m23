@@ -191,7 +191,12 @@ class CGPGSign extends CChecks
 	public function gpgSignDetached($inFile, $outFile)
 	{
 		if (!$this->hasConfigFile()) return(false);
-		return(MAIL_gpgSignDetached($this->getGPGID(), $inFile, $outFile));
+
+		SERVER_deleteFile($outFile);
+
+		SERVER_runInBackground(uniqid('gpgSignDetached'), "cat '$inFile' | sudo -u ".CONF_GPG_USER." gpg --default-key 0x".$this->getGPGID()." --no-options --detach-sign --armor --textmode --digest-algo SHA256 > '$outFile'", 'root', false);
+
+		return(file_exists($outFile));
 	}
 
 
@@ -208,7 +213,12 @@ class CGPGSign extends CChecks
 	public function gpgSignClear($inFile, $outFile)
 	{
 		if (!$this->hasConfigFile()) return(false);
-		return(MAIL_gpgSignClear($this->getGPGID(), $inFile, $outFile));
+
+		SERVER_deleteFile($outFile);
+
+		SERVER_runInBackground(uniqid('gpgSignClear'), "cat '$inFile' | sudo -u ".CONF_GPG_USER." gpg --default-key 0x".$this->getGPGID()." -a -s --clearsign  --digest-algo SHA256 > '$outFile'", 'root', false);
+
+		return(file_exists($outFile));
 	}
 
 

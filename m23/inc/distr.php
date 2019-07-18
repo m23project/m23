@@ -103,6 +103,7 @@ function DISTR_releaseVersionTranslator($release)
 	$r['wheezy']="7.x";
 	$r['jessie']="8.x";
 	$r['stretch']="9.x";
+	$r['buster']="10.x";
 	
 	// Devuan
 	$r['devuanjessie'] = '1.x';

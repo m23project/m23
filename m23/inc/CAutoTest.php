@@ -19,6 +19,7 @@ class CAutoTest
 	const TRIGGER_SSH_COMMANDOUTPUT = 105;		// Result of SSH command contains a string
 	const TRIGGER_WAIT = 106;					// A virtual trigger that is triggered after a given amount of seconds
 	const TRIGGER_SEL_SOURCENOT_CONTAINS = 107;	// Result of selenium run NOT containing a string
+	const TRIGGER_VSSSH_COMMANDOUTPUT = 108;	// Result of SSH command executed on the virtualisation server contains a string
 
 	// Execution type
 	const EXEC_KEY = 201;						// Emulate keyboard strokes into the VM
@@ -33,6 +34,7 @@ class CAutoTest
 	const EXEC_SEL_CLICKURL = 210;				// Click a mathing URL with Selenium
 	const EXEC_SSH_COMMAND= 211;				// Runs an SSH command
 	const EXEC_WAIT= 212;						// Action that waits a given amount of seconds
+	const EXEC_VSSSH_COMMAND= 213;				// Runs an SSH command on the virtualisation server
 
 	// Environment type
 	const ENVIRONMENT_VM = 301;					// Run the tests in VM
@@ -54,6 +56,7 @@ class CAutoTest
 	const SEQIDX_EXECATTRIBUTES		= 411;
 	const SEQIDX_TRIGGERATTRIBUTES	= 412;
 	const SEQIDX_RUNIF				= 413;
+	const SEQIDX_VMSCREENCHANGEINTERVALL	= 414;
 
 	// Good/warn/bad answer
 	const GWB_GOOD				= 501;
@@ -72,6 +75,7 @@ class CAutoTest
 			$curElementNr = 0,
 			$environment = NULL, 	//VM, HW, webinterface, xmltest?
 			$timeout = NULL,
+			$vmScreenChangeIntervall = NULL,
 			$triggered = false,
 			$driverID = NULL,		// ID of the Selenium webdriver instance under HTTP2SeleniumBridge
 			$variables = array(),	// Array for storing runtime variables
@@ -507,7 +511,57 @@ class CAutoTest
 	private function setTimeout()
 	{
 		$elem = $this->getCurElement();
-		$this->timeout = $elem[CAutoTest::SEQIDX_TIMEOUT];
+		$this->timeout = (int)$elem[CAutoTest::SEQIDX_TIMEOUT][0];
+		
+		$this->debugPrint('+++++$this->timeout: '.$this->timeout."\n");
+		$this->debugPrint($elem);
+		
+		$this->setVMScreenChangeIntervall();
+	}
+
+
+
+
+
+/**
+**name CAutoTest::setVMScreenChangeIntervall()
+**description Sets the time to wait (in seconds) between making two screenshots and checking for changes.
+**/
+	private function setVMScreenChangeIntervall()
+	{
+		$elem = $this->getCurElement();
+		$this->vmScreenChangeIntervall = $elem[CAutoTest::SEQIDX_VMSCREENCHANGEINTERVALL];
+	}
+
+
+
+
+
+/**
+**name CAutoTest::checkVMScreenChange()
+**description Makes another screenshot and compares it with the previous, if the waiting time is over. In case that too less pixels have been changed a warning is logged and shown.
+**/
+	private function checkVMScreenChange()
+	{
+		$this->debugPrint('#####$this->vmScreenChangeIntervall: '.serialize($this->vmScreenChangeIntervall)."\n");
+	
+		// Run only, if VM screen change checking is enabled for this test
+		if (!is_null($this->vmScreenChangeIntervall))
+		{
+			$this->vmScreenChangeIntervall -= CAutoTest::RUN_LOOP_SLEEP;
+
+			// Is it time to make another screenshot and compare it with the previous?
+			if ($this->vmScreenChangeIntervall <= 0)
+			{
+				$this->setVMScreenChangeIntervall();
+
+				$changedPixels = AUTOTEST_VM_screenPixelDiff(VM_NAME);
+
+				// Check, if enough pixels have been changed
+				if ($changedPixels < 50)
+					$this->elemWarn("VMScreenChange: Only $changedPixels screen pixels were changed in the last ".$this->vmScreenChangeIntervall." seconds.");
+			}
+		}
 	}
 
 
@@ -520,12 +574,16 @@ class CAutoTest
 **/
 	private function decTimeout()
 	{
+		$this->debugPrint('>>>>>$this->timeout: '.$this->timeout."\n");
+	
 		$this->timeout -= CAutoTest::RUN_LOOP_SLEEP;
 		
 		if ($this->timeout < -CAutoTest::TIMEOUT_OVER_WARN)
 			$this->elemWarn('Timeout (TIMEOUT_OVER_WARN)');
 		elseif ($this->timeout < -CAutoTest::TIMEOUT_OVER_BAD)
 			$this->elemWarn('Timeout (TIMEOUT_OVER_BAD)');
+
+		$this->checkVMScreenChange();
 	}
 
 
@@ -533,7 +591,7 @@ class CAutoTest
 
 
 /**
-**name CAutoTest::addToSequence($triggerType, $triggerParam, $answersA, $execType, $execParam, $execAttributes, $timeout, $description, $triggerAttributes, $runIf)
+**name CAutoTest::addToSequence($triggerType, $triggerParam, $answersA, $execType, $execParam, $execAttributes, $timeout, $description, $triggerAttributes, $runIf, $vmScreenChangeIntervall)
 **description Adds an element to the sequence.
 **parameter triggerType: Type of the trigger (CAutoTest::TRIGGER_*) or the type event, that should happen to begin with the given element of the sequence.
 **parameter triggerParam: Parameter for the trigger (e.g. string that should be read from the screen when in CAutoTest::TRIGGER_OCR mode).
@@ -545,8 +603,9 @@ class CAutoTest
 **parameter description: Description for the test.
 **parameter triggerAttributes: Trigger attribute(s). Can hold additional parameters. (Result is written to this pointer)
 **parameter runIf: Value of the runIf attribute.
+**parameter vmScreenChangeIntervall: Time to wait (in seconds) between making two screenshots and checking for changes.
 **/
-	public function addToSequence($triggerType, $triggerParam, $answersA, $execType, $execParam, $execAttributes, $timeout, $description, $triggerAttributes, $runIf)
+	public function addToSequence($triggerType, $triggerParam, $answersA, $execType, $execParam, $execAttributes, $timeout, $description, $triggerAttributes, $runIf, $vmScreenChangeIntervall)
 	{
 		$this->sequence[$this->sequenceSize][CAutoTest::SEQIDX_TRIGGERTYPE] = $triggerType;
 		$this->sequence[$this->sequenceSize][CAutoTest::SEQIDX_TRIGGERPARAM] = $triggerParam;
@@ -556,6 +615,7 @@ class CAutoTest
 		$this->sequence[$this->sequenceSize][CAutoTest::SEQIDX_EXECPARAM] = $execParam;
 		$this->sequence[$this->sequenceSize][CAutoTest::SEQIDX_EXECATTRIBUTES] = $execAttributes;
 		$this->sequence[$this->sequenceSize][CAutoTest::SEQIDX_TIMEOUT] = $timeout;
+		$this->sequence[$this->sequenceSize][CAutoTest::SEQIDX_VMSCREENCHANGEINTERVALL] = (isset($vmScreenChangeIntervall) && is_numeric($vmScreenChangeIntervall)) ? $vmScreenChangeIntervall : NULL;
 		$this->sequence[$this->sequenceSize][CAutoTest::SEQIDX_DESCRIPTION] = $description;
 		$this->sequence[$this->sequenceSize][CAutoTest::SEQIDX_RUNIF] = $runIf;
 		$this->sequenceSize++;
@@ -737,6 +797,11 @@ class CAutoTest
 					$this->showAndLogMessage("\n".HELPER_indentLines($in), "TRIGGER_SSH_COMMANDOUTPUT (checkTriggerResult)", true);
 				break;
 
+				case CAutoTest::TRIGGER_VSSSH_COMMANDOUTPUT:
+					$in =  AUTOTEST_sshVMServer($answer['cmd']);
+					$this->showAndLogMessage("\n".HELPER_indentLines($in), "TRIGGER_VSSSH_COMMANDOUTPUT (checkTriggerResult)", true);
+				break;
+
 				case CAutoTest::TRIGGER_TRUE:
 					$in = $answer['text'] = '1';
 				break;
@@ -768,7 +833,6 @@ class CAutoTest
 				break;
 			}
 		}
-		$this->decTimeout();
 	}
 
 
@@ -989,12 +1053,16 @@ class CAutoTest
 					
 					$this->showAndLogMessage("\n".HELPER_indentLines($res), "EXEC_SSH_COMMAND (executeTriggerAction)", true);
 				break;
+				
+				case CAutoTest::EXEC_VSSSH_COMMAND:
+					$res =  AUTOTEST_sshVMServer($execParam);
+					$this->showAndLogMessage("\n".HELPER_indentLines($res), "EXEC_VSSSH_COMMAND (executeTriggerAction)", true);
+				break;
 			}
 			$i++;
 		}
 
 		$this->setTriggered();
-		$this->setTimeout();
 	}
 
 
@@ -1057,6 +1125,16 @@ class CAutoTest
 						$this->executeTriggerAction();
 				break;
 
+				// Gets triggered by matching text found in the output of an SSH command executed on the virtualisation server
+				case CAutoTest::TRIGGER_VSSSH_COMMANDOUTPUT:
+					$in =  AUTOTEST_sshVMServer($triggerAttributes['cmd']);
+					$this->showAndLogMessage("\n".HELPER_indentLines($in), "TRIGGER_VSSSH_COMMANDOUTPUT (waitForTrigger): \n", true);
+					
+					if ($this->isAnswerFoundInTriggerResult($in, $triggerParam))
+						$this->executeTriggerAction();
+				break;
+
+
 				// Gets triggered by a running HTTP2SeleniumBridge
 				case CAutoTest::TRIGGER_SEL_HOSTREADY:
 					if ($this->seleniumHostRunning())
@@ -1111,6 +1189,7 @@ class CAutoTest
 			$elem = $this->getCurElement();
 			$description = $elem[CAutoTest::SEQIDX_DESCRIPTION];
 			$this->showAndLogMessage("$description =====", "\n===== ");
+			$this->setTimeout();
 		}
 	}
 
@@ -1426,6 +1505,8 @@ class CAutoTest
 				return(CAutoTest::TRIGGER_TRUE);
 			case 'ssh_commandoutput':
 				return(CAutoTest::TRIGGER_SSH_COMMANDOUTPUT);
+			case 'vsssh_commandoutput':
+				return(CAutoTest::TRIGGER_VSSSH_COMMANDOUTPUT);
 			case 'wait':
 				return(CAutoTest::TRIGGER_WAIT);
 			default:
@@ -1536,9 +1617,13 @@ class CAutoTest
 				case 'sel_setcheck':
 					$testActionType[$i] = CAutoTest::EXEC_SEL_SETCHECK;
 				break;
-				
+
 				case 'ssh_command':
 					$testActionType[$i] = CAutoTest::EXEC_SSH_COMMAND;
+				break;
+
+				case 'vsssh_command':
+					$testActionType[$i] = CAutoTest::EXEC_VSSSH_COMMAND;
 				break;
 
 				case 'wait':
@@ -1698,7 +1783,15 @@ class CAutoTest
 	{
 		if (!$this->gotSeleniumDriverID())
 		{
+			$tries = 0;
 			$this->driverID = $this->seleniumExecExtra('nextdriverid');
+
+			while (($this->driverID == '-1') && ($tries++ < 10))
+			{
+				sleep(1);
+				$this->driverID = $this->seleniumExecExtra('nextdriverid');
+			}
+
 			if ($this->driverID == '-1')
 				dieWithExitCode('ERROR: No free Selenium webdrivers available', 9);
 			elseif ($this->driverID === false)
@@ -1867,7 +1960,9 @@ class CAutoTest
 		{
 			$testDescription = $this->setVariableFromXML($xmlO->sequence->test[$i]['description'], "description of test $i");
 			$testTimeout = $this->setVariableFromXML($xmlO->sequence->test[$i]['timeout'], "$testDescription: timeout");
+
 			$runIf = (string)$xmlO->sequence->test[$i]['runIf'];
+			$vmScreenChangeIntervall = (string)$xmlO->sequence->test[$i]['vmScreenChangeIntervall'];
 
 			// Trigger
 			$this->parseTriggerFromXML($xmlO->sequence->test[$i]->trigger, $testDescription, $testTrigger, $testTriggerType, $testTriggerAttributes);
@@ -1882,7 +1977,7 @@ class CAutoTest
 			$answersA = array_merge($badA, $goodA, $warnA);
 
 			// Add the parsed values to the sequence
-			$this->addToSequence($testTriggerType, $testTrigger, $answersA, $testActionType, $testAction, $testActionAttributes, $testTimeout, $testDescription, $testTriggerAttributes, $runIf);
+			$this->addToSequence($testTriggerType, $testTrigger, $answersA, $testActionType, $testAction, $testActionAttributes, $testTimeout, $testDescription, $testTriggerAttributes, $runIf, $vmScreenChangeIntervall);
 
 			$i++;
 		}
@@ -1908,6 +2003,7 @@ class CAutoTest
 				else
 					$this->waitForTrigger();
 	
+				$this->decTimeout();
 				sleep(CAutoTest::RUN_LOOP_SLEEP);
 			}
 		}

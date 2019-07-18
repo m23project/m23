@@ -32,20 +32,23 @@ genSerial()
 
 
 
-if [ $# -gt 0 ]
+if [ $1 ] && [ $1 != 'renewServerCert' ]
 then
 	serverIP=$1
 	echo "Certificate will be created for the server \"$serverIP\""
 	#Extend the directories for storing the SSL certificate
 	sslalldir="$sslalldir/$serverIP"
 	m23ssldir="$m23ssldir/$serverIP/"
-else
+fi
+
+if [ -z $1 ] || [ $1 != 'renewServerCert' ]
+then
 	#get the server IP
 	if test `grep address /etc/network/interfaces | wc -l` -gt 0
 	then
-		serverIP=`cat /etc/network/interfaces | tr -d "\t" | tr -s " " | sed 's/^[ ]*//g' | grep ^address | cut -d ' ' -f2 | head -1 | sed 's#/.*##'`
+		export serverIP=`/m23/bin/serverInfoIP`
 	else
-		serverIP=`hostname`
+		export serverIP=`hostname`
 	fi
 fi
 
@@ -61,28 +64,48 @@ mkdir -p $sslalldir $m23ssldir
 apacheUser=`getApacheUser`
 apacheGroup=`getApacheGroup`
 
-#delete old keys and certificates
-rm $sslalldir/ca.key $sslalldir/ca.csr $sslalldir/ca.crt $sslalldir/server.key $sslalldir/server.csr $sslalldir/server.crt  2> /dev/null
 
-
+#  only, if if should be created
+if [ -z $1 ] || [ $1 != 'renewServerCert' ]
+then
+	# delete old CA files
+	rm $sslalldir/ca.key $sslalldir/ca.csr $sslalldir/ca.crt 2> /dev/null
 
 ########Generate the CA
 
 #Get a new serial number
 serialNumber=`genSerial`
 
-echo "cn = \"m23-Projekt\"
+echo "organization=m23 project
+cn=$serverIP
+unit=self signing
 ca
 cert_signing_key
 activation_date = \"2019-01-01 23:23:23\"
 expiration_days = 3650" > /tmp/ca.cfg
 
-certtool --generate-privkey --bits $keyBits --outfile $sslalldir/ca.key
-certtool --generate-self-signed --load-privkey $sslalldir/ca.key --outfile $sslalldir/ca.crt --template /tmp/ca.cfg
+	certtool --generate-privkey --bits $keyBits --outfile $sslalldir/ca.key
+	certtool --generate-self-signed --load-privkey $sslalldir/ca.key --outfile $sslalldir/ca.crt --template /tmp/ca.cfg
 
 rm /tmp/ca.cfg
 
+#build ssl hash and copy files to the m23ssl dir
 
+#Call the old hash routine (on new openssl)
+	openssl x509 -in $sslalldir/ca.crt -subject_hash_old -noout > $m23ssldir/ca.hash 2> /dev/null
+
+#Call the normal routine (on old openssl)
+	openssl x509 -in $sslalldir/ca.crt -hash -noout >> $m23ssldir/ca.hash
+
+	cp $sslalldir/ca.crt $m23ssldir
+	chown $apacheUser.$apacheGroup $m23ssldir/ca.crt $m23ssldir/ca.hash
+	chmod 644 $m23ssldir/ca.crt $m23ssldir/ca.hash
+
+fi
+
+
+# delete old server certificates
+rm $sslalldir/server.key $sslalldir/server.csr $sslalldir/server.crt 2> /dev/null
 
 
 
@@ -91,8 +114,10 @@ rm /tmp/ca.cfg
 #Get a new serial number
 serialNumber=`genSerial`
 
-echo "organization = m23 project
-cn = $serverIP
+echo "organization=m23 project
+cn=$serverIP
+ip_address=$serverIP
+unit=self signing
 tls_www_server
 encryption_key
 signing_key
@@ -108,21 +133,3 @@ certtool	--generate-certificate					\
 			--outfile $sslalldir/server.crt
 
 rm /tmp/server.cfg
-
-
-
-#build ssl hash and copy files to the m23ssl dir
-
-#Call the old hash routine (on new openssl)
-openssl x509 -in $sslalldir/ca.crt -subject_hash_old -noout > $m23ssldir/ca.hash 2> /dev/null
-#Call the normal routine (on old openssl)
-openssl x509 -in $sslalldir/ca.crt -hash -noout >> $m23ssldir/ca.hash
-
-cp $sslalldir/ca.crt $m23ssldir
-chown $apacheUser.$apacheGroup $m23ssldir/ca.crt $m23ssldir/ca.hash
-chmod 644 $m23ssldir/ca.crt $m23ssldir/ca.hash
-
-# # Forward the date by one date
-# timedatectl set-time "$(date +"%Y-%m-%d %H:%M:%S" -d 'tomorrow')"
-# # Enable setting date and time by NTP
-# timedatectl set-ntp true

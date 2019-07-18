@@ -72,6 +72,25 @@ function AUTOTEST_isDebug()
 
 
 /**
+**name AUTOTEST_sshVMServer($cmds)
+**description Executes commands on virtualisation server.
+**parameter cmds: The commands to execute on the virtualisation server.
+**returns The output of the commands.
+**/
+function AUTOTEST_sshVMServer($cmds)
+{
+	$cmds = AUTOTEST_getSeleniumUnsafeString($cmds);
+
+	$result = CLIENT_executeOnClientOrIP(TEST_VBOX_HOST, "AUTOTEST_sshVMServer".uniqid(), $cmds, TEST_VBOX_USER, false);
+
+	return($result);
+}
+
+
+
+
+
+/**
 **name AUTOTEST_sshTunnelOverServer($serverNameOrIP, $clientNameOrIP, $cmds, $password = NULL)
 **description Executes commands on a client indirectly, that is reachable over an m23 server only. SSH connections require root user on the m23 server and the client.
 **parameter serverNameOrIP: The name of the m23 server or its IP.
@@ -496,7 +515,10 @@ function AUTOTEST_VM_export_m23ServerISO_as_OVA($vmName, &$VMExportMessage)
 	$product = "m23 ${m23_codename} ${m23_version}";
 	
 	if (defined('AT_OVA_EXPORT_DIR'))
+	{
 		$ovaFile = AT_OVA_EXPORT_DIR."/m23server_${m23_version}_${m23_codename}.ova";
+		$zipFile = AT_OVA_EXPORT_DIR."/m23server_${m23_version}_${m23_codename}.7z";
+	}
 	else
 		die('ERROR: AT_OVA_EXPORT_DIR is not defined!');
 
@@ -514,6 +536,9 @@ m23 is a system deployment tool for Linux. It does hardware detection, partition
 echo -n \"R$?R\" > /tmp/AUTOTEST_VM_export_m23ServerISO_as_OVA.ret
 [ -f '$ovaFile' ]
 echo -n \"O$?O\" >> /tmp/AUTOTEST_VM_export_m23ServerISO_as_OVA.ret
+
+7zr -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on a '$zipFile' '$ovaFile'
+echo -n \"Z$?Z\" >> /tmp/AUTOTEST_VM_export_m23ServerISO_as_OVA.ret
 ";
 
 	$VMExportMessage = CLIENT_executeOnClientOrIP(TEST_VBOX_HOST, "AUTOTEST_VM_export_m23ServerISO_as_OVA", $cmd, TEST_VBOX_USER, false);
@@ -678,6 +703,44 @@ function AUTOTEST_VM_ocrScreen($vmName)
 		echo("AUTOTEST_VM_ocrScreen($vmName)\n$result\n");
 	
 	return($result);
+}
+
+
+
+
+
+/**
+**name AUTOTEST_VM_screenPixelDiff($vmName)
+**description Compares the VM's screen with a previously saved screen and gives back the amount of changed pixels.
+**parameter vmName: Name of the VM.
+**returns Amount of changed pixels (or 99999999999 if there is no previously saved screen).
+**/
+function AUTOTEST_VM_screenPixelDiff($vmName)
+{
+	$png1 = '/tmp/AUTOTEST_VM_screendiff1'.$vmName.'.png';
+	$xpm1 = '/tmp/AUTOTEST_VM_screendiff1'.$vmName.'.xpm';
+	$png2 = '/tmp/AUTOTEST_VM_screendiff2'.$vmName.'.png';
+	$xpm2 = '/tmp/AUTOTEST_VM_screendiff2'.$vmName.'.xpm';
+
+	$cmd = "
+	if [ -f '$xpm1' ]
+	then
+		VBoxManage controlvm '$vmName' screenshotpng '$png2'
+		convert '$png2' '$xpm2'
+		cmp -l '$xpm1' '$xpm2' | wc -l
+		mv '$xpm2' '$xpm1'
+		rm '$png2' 2> /dev/null
+	else
+		VBoxManage controlvm '$vmName' screenshotpng '$png1'
+		convert '$png1' '$xpm1'
+		rm '$png1' 2> /dev/null
+		echo 99999999999
+	fi
+	";
+
+	$diff = CLIENT_executeOnClientOrIP(TEST_VBOX_HOST, "VM_screendiff", $cmd, TEST_VBOX_USER, false);
+
+	return(trim($diff));
 }
 
 

@@ -78,4 +78,7 @@ $I18N_installingLMythbuntu='Mythbuntu wird installiert';
 
 //18.2
 $I18N_installing_budgie='Budgie-Desktop wird installiert';
+
+//19.2
+$I18N_installingLXQT="Installiere LXQt-Desktop";
 ?>

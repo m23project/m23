@@ -1,2 +1,2 @@
-rsync `rsUS` -avPyrL -e ssh $1 "hhabermann,m23@frs.sourceforge.net:/home/frs/project/m/m2/m23/baseSys" 
-rsync `rsUS` -rzaPy $1 "root@tux05:/var/www/basesys/"
+dt_sf_rsyncWrapper -avPyrL -e ssh $1 "hhabermann,m23@frs.sourceforge.net:/home/frs/project/m/m2/m23/baseSys" 
+rsync -rzaPy $1 "root@tux05:/var/www/basesys/"

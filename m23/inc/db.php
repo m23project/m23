@@ -45,12 +45,15 @@ function ip2longSafe($in)
 {
 	if (is_numeric($in))
 		return($in);
-	
+
 	//Solution from: http://au2.php.net/manual/de/function.ip2long.php#108567
 	if (($lngIP = ip2long($in)) < 0)
+	{
 		$lngIP += 4294967296;
-
-	return($lngIP);
+		return($lngIP);
+	}
+	else
+		return($lngIP);
 }
 
 

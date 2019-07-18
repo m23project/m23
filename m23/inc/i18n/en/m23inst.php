@@ -78,4 +78,7 @@ $I18N_installingLMythbuntu='Installing Mythbuntu';
 
 //18.2
 $I18N_installing_budgie='Installing Budgie Desktop';
+
+//19.2
+$I18N_installingLXQT="Installing LXQt desktop";
 ?>

@@ -78,4 +78,7 @@ $I18N_installingLMythbuntu='Installation du bureau Mythbuntu';
 
 //18.2
 $I18N_installing_budgie='Installation du bureau Budgie';
+
+//19.2
+$I18N_installingLXQT="Installation du bureau LXQt";
 ?>

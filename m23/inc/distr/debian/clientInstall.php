@@ -206,7 +206,7 @@ cd /tmp
 		$ntpPackage="";
 
 	// DebianVersionSpecific
-	if (($clientOptions['release'] == 'jessie') || ($clientOptions['release'] == 'stretch'))
+	if (($clientOptions['release'] == 'jessie') || ($clientOptions['release'] == 'stretch') || ($clientOptions['release'] == 'buster'))
 		$bootloaderPackage = 'grub-pc';
 	else
 		$bootloaderPackage = $clientOptions['bootloader'];

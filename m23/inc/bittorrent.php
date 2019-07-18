@@ -33,7 +33,7 @@ $*/
 		$logFile = "/tmp/$torrentFile.log";
 
 		// Make sure, aria2c is installed
-		CLCFG_aptGet('install', 'aria2');
+		CLCFG_aptGet('install', 'aria2 screen');
 	
 	echo('
 #Write a script file for downloading and sharing a torrent
@@ -43,7 +43,7 @@ aria2c --disable-ipv6=true --allow-overwrite --max-connection-per-server=3 -d \"
 chmod +x "'.$scriptFile.'"
 
 # Run it in background
-chmod 775 /var/run/screen
+chmod 777 /var/run/screen
 screen -dmS "'.$torrentFile.'" "'.$scriptFile.'"
 
 # Check, if the download is finished
@@ -53,11 +53,13 @@ do
 	screen -S "'.$torrentFile.'" -X hardcopy "'.$logFile.'"
 
 	# Check, if the download is finished
-	if [ $(grep -c "SEED" "'.$logFile.'") -gt 0 ]
+	if [ -f "'.$logFile.'" ]
 	then
-		break
+		if [ $(grep -c "SEED" "'.$logFile.'") -gt 0 ]
+		then
+			break
+		fi
 	fi
-
 	sleep 2
 done
 	');
@@ -312,14 +314,17 @@ done
 			$srv = getServerIP();
 
 			// Create a torrent and add it to the white list
+			echo("Creating torrent file ". $tor ."; please be patient...");
+
 			$cmds = "cd ".BT_DIR."
-			rm '$tor'
+			rm -f '$tor'
 			btmakemetafile.bittorrent '$fileToShare' 'http://$srv:6969/announce'
 			chmod 755 '$fileToShare' '$tor'";
 
 			SERVER_runInBackground("BT_CreateTorrent$fileToShare", $cmds, BT_USER, false);
 
 			BT_updateWhitelist();
+			BT_restartTracker();
 
 			if (file_exists($tor))
 				return(true);

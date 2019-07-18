@@ -1349,7 +1349,7 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_addNewLoginToUCSLDAP = "Anmeldungsdaten auf UCS speichern.";
 @$I18N_authentificationViaUCS = "Anmeldung über UCS";
 @$I18N_addNewLoginToUCSLDAPError = "Fehler beim Speichern der Anmeldungsdaten auf UCS.";
-@$I18N_readLoginFromUCSLDAPSupportedDistros = '(nutzbar auf Clients mit Debian 8 + 9, Ubuntu 14.04, 16.04, 18.04, Linux Mint 17.x und 18.x)';
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(nutzbar auf Clients mit Debian 8, 9 + 10, Ubuntu 14.04, 16.04, 18.04, Linux Mint 17.x und 18.x)';
 
 //16.2
 @$I18N_clientUsesDynamicIP = "Der Client verwendet eine dynamische IP (DHCP)";
@@ -1455,4 +1455,5 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_fdiskTypeautomatic500GBsysSwapData = '500GB: System + Swap + Daten';
 @$I18N_errorNoKernelSelected = 'Kein Kernel ausgewählt!';
 @$I18N_imagingWarning = 'Die Pseudodistribution "Imaging" ist die technisch anspruchsvollste Variante, um einen Client zu installieren. Ob diese zu einem funktionierenden m23-Client führen wird, ist ungewiß. Bei auftretenden Probleme sollten Sie in Betracht ziehen, statt Imaging eine von m23 unterstützte Distribution aus den mitgelieferten Paketquellenlisten zu wählen. Ihre zusätzlich Anpassungen können Sie über Pakete (im "Paket-Architekt") oder m23-Skripte (im "Skript-Editor") realisieren.';
+@$I18N_setup_client_tooltip = 'Partitionieren, Formatieren, Distribution und Desktop wählen.';
 ?>

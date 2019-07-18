@@ -1,3 +1,120 @@
+2019-07-17
+new: stopAll: Generates .stop files to stop proceding the m23 autoTest testing scripts for the next client.
+cha: exportDBInitTable: Added "LinuxMint 19.2 Tina".
++++++
+2019-07-16
+fix: CLIENT_getNextFreeIp: Fixed calculation on 32 bit systems by tricky casting between float and int.
++++++
+2019-07-15
+cha: SERVER_runInBackground: Now sets "chmod 777 /var/run/screen" for Raspbian 10.
++++++
+2019-07-11
+cha: CAutoTest::getSeleniumDriverID: Now tries 10 times with a pause of 1 second to get a Selenium driver ID.
++++++
+2019-07-10
+cha: m23 / postinst: Configuration of MariaDB 10.3: MariaDB 10.3 (Debian 10) needs additional parameters to accept INSERTs without setting all values on tables with fields that have no explicit default value.
+fix: mkCert.sh: Corrected conditions for renewServerCert more.
+cha: mkCert.sh: No uses /m23/bin/serverInfoIP.
+cha: SERVER_runInBackground: Now sets "chmod 777 /var/run/screen" for Debian 10.
++++++
+2019-07-09
+cha: m23-ldap / postinst: Now tries 10 times to start slapd earlier to make slapd available for ldapadd.
+cha: DEBIAN_desktopInstall: Now installs dbus-x11 if desktop is DEBIAN8DESKTOP_CINNAMON_FULL. This is needed under Debian 10 and brings no disadvantaged under Debian 8 and 9.
++++++
+2019-07-08
+cha: m23 / control: Added dependencies for packages in Debian 10.
+fix: mkCert.sh: Corrected conditions for renewServerCert.
+cha: m23 / control: Made php.ini configuration compatible with PHP 7.3 under Debian 10.
+cha: m23-ldap / postinst: Now tries 10 times to start slapd with a pause of 3 seconds between attempts.
+cha: Updated phpLDAPAdmin to the PHP 7.3 compatible version from https://github.com/breisig/phpLDAPadmin .
+new: CLCFG_blacklistPackageInstallation: Blacklists a package for APT to make it uninstallable.
+cha: autoTestScriptGenerator.php: Added testing of Debian 10 servers.
++++++
+2019-07-02
+fix: CAutoTest::setTimeout: Now converts the timout from SimpleXMLElement to int.
+cha: CAutoTest::run: Now calls CAutoTest::decTimeout instead of CAutoTest::checkTriggerResult.
+cha: CAutoTest::nextCurElement: Now calls CAutoTest::setTimeout instead of CAutoTest::executeTriggerAction.
++++++
+2019-07-01
+cha: CAutoTest::addToSequence, ::setTimeout: Added handling of vmScreenChangeTime.
+new: CAutoTest::setVMScreenChangeTime: Sets the time to wait (in seconds) between making two screenshots and checking for changes.
+new: CAutoTest::checkVMScreenChange: Makes another screenshot and compares it with the previous, if the waiting time is over. In case that too less pixels have been changed a warning is logged and shown.
+cha: CAutoTest::setTimeout: Now calls CAutoTest::setVMScreenChangeTime.
+cha: CAutoTest::decTimeout: Now calls CAutoTest::checkVMScreenChange.
++++++
+2019-06-30
+cha: mkCert.sh: Has an optional setting (renewServerCert) to renew the server certificate only and keep the CA.
+new: AUTOTEST_VM_screenPixelDiff: Compares the VM's screen with a previously saved screen and gives back the amount of changed pixels.
+cha: m23 / postinst: Now renews the SSL server certificate (with IP address included), if m23 is upgraded.
++++++
+2019-06-29
+cha:CLCFG_installFirmware: Now filters out more non important firmware from the installation list.
++++++
+2019-06-28
+cha: PKG_getKernels: Now filters out packages that end with "-template". Needed for Debian 10.
+new: CATSG::unsetAllButOneInClientsArray: Removes all but one sourcesnames from the clients array.
+cha: autoTestScriptGenerator.php: Now accepts the name of a sourceslist as optional command lines parameter. If it's set, test scripts for testing this distribution only with alls desktops are generated.
+cha: exportDBInitTable: Added "buster".
++++++
+2019-06-27
+cha: CGPGSign::gpgSignClear: Now calls gpg directly instead of using MAIL_gpgSignClear.
+cha: CGPGSign::MAIL_gpgSignDetached: Now calls gpg directly instead of using MAIL_gpgSignDetached.
++++++
+2019-06-26
+cha: CLCFG_interfaces: Now touches wpasupplicant that is needed by Debian 10.
++++++
+2019-06-25
+cha: BT_dlFile: Now installs screen too.
+cha: BT_createTorrent: Now calls BT_restartTracker to make sure the tracker uses the newest version of the .torrent files.
+cha: BT_dlFile: Now "chmod 777 /var/run/screen". (THX FABR)
+cha: BT_dlFile: Now checks for existance of the log file before greping its contents. (THX FABR)
+cha: mkCert.sh: Now certificates are generated with the IP address of the m23 server included as additional parameter. This is needed to satisfy the certificate checking of Debian 10's wget.
++++++
+2019-06-23
+cha: CLCFG_copySSLCert: Now deactivates SSL check in wgetrc for Debian 10 too.
++++++
+2019-06-22
+cha: compressedDebootstrap: Added workarounds for bugs in Debian 10's debootstrap.
+cha: DISTR_releaseVersionTranslator, debian / clientInstall.php, m23x2goServerInstall.php, CLCFG_language, CLCFG_genFstab: Added Debian 10.
+cha: m23-initscripts / postinst: Added Debian 10.
+cha: compressedDebootstrap: Changed 7Zip's compression settings. Added testing of the created tar.7z file.
++++++
+2019-06-14
+patch 101273: Smal translation fixes.
++++++
+2019-06-12
+fix: ucs.php: Removed empty line at the beginning. (THX FABR)
+fix: */m23base.php: Added missing $I18N_setup_client_tooltip. (THX FABR)
++++++
+2019-06-08
+cha: dlhttrack: Now uses dt_sf_rsyncWrapper instead of rsync.
+cha: dlhttrack: Now creates and deletes a temporary directory for creating the offline copies.
++++++
+2019-06-06
+patch 101271: m23-autoTest enhancements.
+cha: CAutoTest::waitForTrigger, ::triggerTypeToConstant, ::parseActionFromXML, ::checkTriggerResult, ::executeTriggerAction: Now can run SSH commands on the virtualisation server and check the results.
+new: AUTOTEST_sshVMServer: Executes commands on virtualisation server.
++++++
+2019-06-05
+patch 101270: Smal fixes.
+fix: m23 / postinst: Now creates /var/spool/squid and /var/log/squid with working access rights.
+fix: CAutoTest::loadXMLFile: Now runs AUTOTEST_getSeleniumSafeString on the included files too.
+patch 101269: m23-autoTest enhancements.
+new: AUTOTEST_VM_export_m23ServerISO_as_OVA: Exports a VM, that was installed via the m23 server installation ISO, to OVA file.
+new: CAutoTest::VMexportm23ServerISOasOVA: Calls AUTOTEST_VM_export_m23ServerISO_as_OVA.
++++++
+2019-06-04
+patch 101268: Compatibility fixes for Debian 8.
+new: autoTestScriptGenerator.php: Generates test sequences for m23-autoTest for m23 servers with Debian 8 + 9 (32 and 64 bits), UCS 4.3 + 4.4., Raspbian, localhost and m23 server installation ISO.
+fix: m23 / control: Now depends strongly on php-bz2, but does'n require it, if PHP 5 is used. This makes it compatible with Debian 8 (again).
+fix: m23 / postinst: Configuring Squid is compatible with Debian 8 (again).
+patch 101265: Added French characters to CONF_ALLOWEDCHARACTERS.
+fix: checks.php: Added French characters to CONF_ALLOWEDCHARACTERS.
++++++
+2019-06-03
+patch: Release 19.1
+release 19.1
++++++
 2019-05-27
 cha: index.php: session_start is called after including CPool*.php to fix "incomplete object php" when opening poolBuilder after client's overview again. (THX FABR)
 +++++
@@ -437,6 +554,11 @@ new: CFDiskBasic::createFormatPartition: Creates and formats a partition.
 new: CFDiskBasic::PM_auto500GBsysSwapData: Automatically partitions and formats the first 500GB a disk. It creates a system, swap and data partition.
 cha: CFDiskGUI::showFdiskCombinedGUIFunctions: Added PM_auto500GBsysSwapData.
 +++++
+2018-09-22
+patch 101167: Fixes for editing clients and Kerberos settings for UCS 4.2
+fix: edit_client.php, client_details.php: The new clearSession variable loads the client name and ID into the session. Without it the client name and ID would be set one time only and not changed afterwards. As consequence one client could be edited only.
+cha: UCS_enableClientLDAP: Updated Kerberos settings to UCS 4.2.
++++++
 2018-09-21
 fix: edit_client.php, client_details.php: The new clearSession variable loads the client name and ID into the session. Without it the client name and ID would be set one time only and not changed afterwards. As consequence one client could be edited only.
 +++++
@@ -576,7 +698,7 @@ patch 101139: Cross plattform building fix.
 cha: createRFSBins: Now works on 32 bit Debian 9 with 64 bit client OS.
 +++++
 2018-06-18
-patch 101138: Little improvements and fixes fpr systemD on Ubuntu 18.04.
+patch 101138: Little improvements and fixes for systemD on Ubuntu 18.04.
 cha: m23 / postinst: Now uses all m23 custom patches in /m23/m23customPatch.
 cha: m23 / postinst: Calls "/m23/bin/m23cli.php GPG_set1stKey" now.
 new: GPG_set1stKey.php: Sets the 1st available GPG key as package pool sign key
