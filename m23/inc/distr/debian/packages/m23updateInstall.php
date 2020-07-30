@@ -26,12 +26,26 @@ function run($id)
 	echo("
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
-apt-get --force-yes -y $aptCommand\n");
+apt-get --force-yes -y $aptCommand
 
-	/* =====> */ MSR_statusBarIncCommand(100);
+if [ $? -eq 0 ]
+then
+".sendClientLogStatus("Update ($aptCommand)",true));
 
 	sendClientStageStatus(STATUS_GREEN);
-sendClientStatus($id,"done");
+	sendClientStatus($id,"done");
+echo('
+else
+');
+	sendClientStageStatus(STATUS_CRITICAL);
+
+echo(
+	sendClientLogStatus("Update ($aptCommand)",false,true).
+'
+fi
+');
+
+	/* =====> */ MSR_statusBarIncCommand(100);
 executeNextWork();
 }
 ?>

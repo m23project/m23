@@ -3,6 +3,8 @@
 
 include('/m23/inc/db.php');
 include('/m23/inc/dhcp.php');
+include('/m23/inc/helper.php');
+include('/m23/inc/server.php');
 
 echo(DHCP_exportDHCPSettingsForExternalDHCPServer());
 ?>

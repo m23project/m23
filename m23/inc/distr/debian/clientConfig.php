@@ -184,10 +184,10 @@ $CLCFG_listReleases = 'CLCFG_listDebianReleases';
 **/
 function CLCFG_addDistributionSpecificOptions($options)
 {
-	$options['kernel']=$_POST['SEL_kernel'];
-	$options['disableSSLCertCheck']=($_POST['CB_disableSSLCertCheck'] == 'yes' ? 1 : 0);
-	$options['disableSudoRootLogin']=($_POST['CB_disableSudoRootLogin'] == 'yes' ? 1 : 0);
-	$options['installX2goserver']=($_POST['CB_installX2goserver'] == 'yes' ? 1 : 0);
+	$options['kernel']=(isset($_POST['SEL_kernel']) ? $_POST['SEL_kernel'] : NULL);
+	$options['disableSSLCertCheck'] = (HTML_getElementValue('CB_disableSSLCertCheck', '', false, true) ? 1 : 0);
+	$options['disableSudoRootLogin'] = (HTML_getElementValue('CB_disableSudoRootLogin', '', false, true) ? 1 : 0);
+	$options['installX2goserver'] = (HTML_getElementValue('CB_installX2goserver', '', false, true) ? 1 : 0);
 	return($options);
 };
 

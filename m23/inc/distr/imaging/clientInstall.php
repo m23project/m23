@@ -28,6 +28,8 @@ function DISTR_baseInstall($lang,$id)
 
 	CIR_enableDropbear();
 
+	CIR_stopHaveged();
+
 	CLCFG_activateDMA();
 
 /*

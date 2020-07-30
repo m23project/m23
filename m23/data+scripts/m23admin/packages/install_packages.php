@@ -40,7 +40,7 @@
 	$isPackageSelection = false;
 
 	// Set the 1st selected package selection as storing name for the package selection, if the package selection name is empty
-	if (($_POST['RB_packetType'] == 'recommend') && !isset($_POST['ED_packageSelection']{0}))
+	if (isset($_POST['RB_packetType']) && ($_POST['RB_packetType'] == 'recommend') && !isset($_POST['ED_packageSelection']{0}))
 	{
 		// Get the 1st selected package selection
 		for ($i = 0; $i < $CB_counter; $i++)

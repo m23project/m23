@@ -1,2 +1,9 @@
 #!/bin/bash
+conf='/m23/etc/gateway.override'
+if [ -f $conf ]
+then
+	cat $conf
+	exit 0
+fi
+
 cat /etc/network/interfaces | grep gateway | sed 's/.*gateway[ \t]*//' | sed 's/[^0-9.]//g' | head -1

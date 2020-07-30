@@ -40,7 +40,7 @@ class CClientLister extends CChecks
 	const ACTION_MASSINSTALL = 6;
 	const ACTION_CONTROLCENTER = 2323;
 
-	private $orderBy = 'clients.client', $statusWHERE = '', $groupWHERE = '', $groupFROM = '', $searchWHERE = '', $keyValueStoreWHERE = '', $directionORDER = 'ASC', $vmRunOnHostWHERE = '', $mySQLResID = null, $actionString ='', $outputColumns = null, $checkedClientNamesIDs = array(), $extraLine = null, $pingableFilter = null;
+	private $orderBy = 'clients.client', $statusWHERE = '', $groupWHERE = '', $groupFROM = '', $searchWHERE = '', $keyValueStoreWHERE = '', $keyValueStoreJOIN = '', $directionORDER = 'ASC', $vmRunOnHostWHERE = '', $mySQLResID = null, $actionString ='', $outputColumns = null, $checkedClientNamesIDs = array(), $extraLine = null, $pingableFilter = null;
 
 
 
@@ -693,15 +693,24 @@ class CClientLister extends CChecks
 **parameter key: Name of the key.
 **parameter value: The value to store under the key.
 **/
-	public function addKeyValueStoreFilter($key, $value)
+	public function addKeyValueStoreFilter($search)
 	{
-		// Key and value are stored in serialized format in the DB
-		$key = serialize($key);
-		$value = serialize($value);
+		$this->keyValueStoreJOIN = 'LEFT JOIN clientkvstore ON clients.client = clientkvstore.client';
 
-		$likeParam = str_replace ("'", "\'", $key.$value);
+		$firstSearchEntry = true;
 
-		$this->keyValueStoreWHERE = 'keyValueStore LIKE \'%'.$likeParam.'%\'';
+		$this->keyValueStoreWHERE = " (";
+		foreach (DB_getLikeableColumns("clientkvstore") as $field)
+		{
+			if ($firstSearchEntry) 
+			{
+				$this->keyValueStoreWHERE .= "(clientkvstore.$field LIKE \"%$search%\") ";
+				$firstSearchEntry = false;
+			}
+			else
+				$this->keyValueStoreWHERE .= "|| (clientkvstore.$field LIKE \"%$search%\") ";
+		}
+		$this->keyValueStoreWHERE .= ") ";
 	}
 
 
@@ -742,11 +751,11 @@ class CClientLister extends CChecks
 		{
 			if ($firstSearchEntry)
 			{
-				$this->searchWHERE .= "($field LIKE \"%$search%\") ";
+				$this->searchWHERE .= "(clients.$field LIKE \"%$search%\") ";
 				$firstSearchEntry = false;
 			}
 			else
-				$this->searchWHERE .= "|| ($field LIKE \"%$search%\") ";
+				$this->searchWHERE .= "|| (clients.$field LIKE \"%$search%\") ";
 		}
 
 		$this->searchWHERE .= ") ";
@@ -824,7 +833,9 @@ class CClientLister extends CChecks
 		if (is_null($this->mySQLResID))
 		{
 			$where = 'WHERE';
+			$or = '';
 	
+			$join = '';
 			$w = $this->statusWHERE;
 	
 			if (isset($w{1})) $or = 'OR';
@@ -839,6 +850,8 @@ class CClientLister extends CChecks
 
 			if (isset($w{1})) $or = 'OR';
 
+			if (!empty($this->keyValueStoreJOIN))
+				$join = $this->keyValueStoreJOIN;
 			if (!empty($this->keyValueStoreWHERE))
 				$w .= " $or ".$this->keyValueStoreWHERE;
 
@@ -856,7 +869,7 @@ class CClientLister extends CChecks
 			if (!empty($w))
 				$w = "($w)";
 	
-			$this->mySQLResID = DB_query('SELECT clients.* FROM clients'.$this->groupFROM." $where $w ORDER BY ".$this->orderBy.' '.$this->directionORDER);
+			$this->mySQLResID = DB_query('SELECT clients.* FROM clients'.$this->groupFROM." $join $where $w ORDER BY ".$this->orderBy.' '.$this->directionORDER);
 		}
 		
 		if ($this->mySQLResID !== false)

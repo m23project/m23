@@ -14,128 +14,139 @@ $*/
 function MSR_decodeMessage()
 {
 	switch ($_POST['type'])
+	{
+		case 'pkg':
 		{
-			case 'pkg':
-				{
-					MSR_importPackageStatus();
-					break;
-				}
-
-			case 'log':
-				{
-					MSR_importLog();
-					break;
-				}
-
-			case 'statusFile':
-				{
-					MSR_importStatusFile();
-					break;
-				};
-			case 'partHwData':
-				{
-					MSR_importPartHwData();
-					break;
-				};
-			case 'clientChange':
-				{
-					MSR_clientChange();
-					break;
-				};
-
-			case 'clientSettings':
-				{
-					MSR_clientSettings();
-					break;
-				};
-
-			case 'm23ImagerSize':
-				{
-					MSR_m23ImagerSize();
-					break;
-				};
-
-			case 'MSR_m23ImagerMBR':
-				{
-					MSR_m23ImagerMBR();
-					break;
-				};
-
-			case 'MSR_markm23normalAsDone':
-				{
-					MSR_markm23normalAsDone();
-					break;
-				}
-
-			case 'MSR_VM_setHostInDB':
-				{
-					$VMhost = CLIENT_getClientName();
-					VM_setHostInDB($VMhost, $_POST['password'], $_POST['VMtype']);
-					break;
-				};
-
-			case 'MSR_VM_setVisualURL':
-				{
-					$VMguest = $_POST['clientName'];
-					VM_setVisualURL($VMguest,$_POST['url']);
-					break;
-				};
-
-			case 'MSR_copyClientPackageStatusdiff':
-				{
-					MSR_copyClientPackageStatus('diff');
-					break;
-				}
-
-			case 'MSR_copyClientPackageStatusfull':
-				{
-					MSR_copyClientPackageStatus('full');
-					break;
-				}
-
-			case 'MSR_curDynIP':
-				{
-					MSR_curDynIP($_POST['curIP']);
-					break;
-				}
-
-			case 'MSR_statusBar':
-				{
-					MSR_statusBar($_POST['percent'],$_POST['statustext']);
-					break;
-				}
-
-			case 'MSR_statusBarInc':
-				{
-					MSR_statusBarInc($_POST['percent']);
-					break;
-				}
-
-			case 'BuildPoolFromClientDebs':
-				{
-					MSR_buildPoolFromClientDebs();
-					break;
-				}
-
-			case 'MSR_setOnline':
-				{
-					MSR_setOnline($_POST['online']);
-					break;
-				}
-
-			case 'MSR_addMonitor':
-				{
-					MSR_addMonitor($_POST['vendor'], $_POST['model'], $_FILES['edid']);
-					break;
-				}
-
-			case 'MSR_listMonitors':
-				{
-					MSR_listMonitors();
-					break;
-				}
+			MSR_importPackageStatus();
+			break;
 		}
-};
+
+		case 'log':
+		{
+			MSR_importLog();
+			break;
+		}
+
+		case 'statusFile':
+		{
+			MSR_importStatusFile();
+			break;
+		}
+
+		case 'partHwData':
+		{
+			MSR_importPartHwData();
+			break;
+		}
+
+		case 'clientChange':
+		{
+			MSR_clientChange();
+			break;
+		}
+
+		case 'clientSettings':
+		{
+			MSR_clientSettings();
+			break;
+		}
+
+		case 'm23ImagerSize':
+		{
+			MSR_m23ImagerSize();
+			break;
+		}
+
+		case 'MSR_m23ImagerMBR':
+		{
+			MSR_m23ImagerMBR();
+			break;
+		}
+
+		case 'MSR_markm23normalAsDone':
+		{
+			MSR_markm23normalAsDone();
+			break;
+		}
+
+		case 'MSR_VM_setHostInDB':
+		{
+			$VMhost = CLIENT_getClientName();
+			VM_setHostInDB($VMhost, $_POST['password'], $_POST['VMtype']);
+			break;
+		}
+
+		case 'MSR_VM_setVisualURL':
+		{
+			$VMguest = $_POST['clientName'];
+			VM_setVisualURL($VMguest,$_POST['url']);
+			break;
+		}
+
+		case 'MSR_copyClientPackageStatusdiff':
+		{
+			MSR_copyClientPackageStatus('diff');
+			break;
+		}
+
+		case 'MSR_copyClientPackageStatusfull':
+		{
+			MSR_copyClientPackageStatus('full');
+			break;
+		}
+
+		case 'MSR_curDynIP':
+		{
+			MSR_curDynIP($_POST['curIP']);
+			break;
+		}
+
+		case 'MSR_statusBar':
+		{
+			MSR_statusBar($_POST['percent'],$_POST['statustext']);
+			break;
+		}
+
+		case 'MSR_statusBarInc':
+		{
+			MSR_statusBarInc($_POST['percent']);
+			break;
+		}
+
+		case 'BuildPoolFromClientDebs':
+		{
+			MSR_buildPoolFromClientDebs();
+			break;
+		}
+
+		case 'MSR_setOnline':
+		{
+			MSR_setOnline($_POST['online']);
+			break;
+		}
+
+		//m23customPatchBegin type=change id=MSR_decodeMessageAdditionalCases
+		//m23customPatchEnd id=MSR_decodeMessageAdditionalCases
+			
+		case 'MSR_sshHttpsStatus':
+		{
+			MSR_sshHttpsStatus();
+			break;
+		}
+
+		case 'MSR_setTimeStampForRebootClientAfterJobsIsNecessary':
+		{
+			MSR_setTimeStampForRebootClientAfterJobsIsNecessary();
+			break;
+		}
+		
+		case 'MSR_unsetTimeStampForRebootingClientIfNOTNecessary':
+		{
+			MSR_unsetTimeStampForRebootingClientIfNOTNecessary();
+			break;
+		}
+	}
+}
 
 
 
@@ -284,17 +295,22 @@ function MSR_statusBarCommand($percent, $statustext)
 **parameter params: Parameters to send with POST to the server in the form of "var1=val1&var2=val2&var3=val3..."
 **parameter wgetParams: Extra parameters for wget.
 **/
-function MSR_genericSendCommand($type, $params, $wgetParams = '')
+function MSR_genericSendCommand($type, $params, $wgetParams = '', $returnInsteadOfEcho = false)
 {
 	$serverIP=getServerIP();
 
-	echo('
+	$out = '
 
 	'.MSR_getm23clientIDCMD('?')."
 
 	wget $wgetParams -T5 -t0 --post-data \"type=$type&$params\" https://$serverIP/postMessage.php\$idvar -O /dev/null
- ");
-};
+	";
+	
+	if ($returnInsteadOfEcho)
+		return($out);
+	else
+		echo($out);
+}
 
 
 
@@ -1421,28 +1437,25 @@ function MSR_setOnline($online)
 
 
 
-/**
-**name MSR_addMonitor($vendor, $model, $edid)
-**adds monitor to database and Filesystem (avoiding blob)
-**parameter vendor: The vendor of the monitor
-**parameter model: The model of the monitor
-**parameter edid: The monitor information
-**/
-function MSR_addMonitor($vendor, $model, $edid)
-{
-	CHECK_FW(CC_string255, $vendor, CC_string255, $model);
-	$model_fn = str_replace(" ", "_", $model);
-	$vendor_fn = str_replace(" ", "_", $vendor);
-	$file="/m23/data+scripts/lokales/monitors/${vendor_fn}_-_${model_fn}.edid";
-	if (!file_exists($file))
-	{
-		if (move_uploaded_file($edid['tmp_name'], $file))
-		{
-			$sql="INSERT INTO monitors (vendor, model) VALUES ('$vendor', '$model') ON DUPLICATE KEY UPDATE vendor='$vendor', model='$model'";
-			DB_query($sql);
-		}
+//m23customPatchBegin type=change id=AdditionalCaseMethods
+//m23customPatchEnd id=AdditionalCaseMethods
 
-	}
+
+
+
+
+/**
+**name MSR_sshHttpsStatus()
+**description Sets the ping and advanced SSH/HTTPs available status.
+**/
+function MSR_sshHttpsStatus()
+{
+	$clientName = CLIENT_getClientName();
+	
+	$sql = "UPDATE `clients` SET `online` = ".(ONLINE_STATUS_sshHttps | ONLINE_STATUS_ping)." WHERE `client` = \"".CLIENT_getClientName()."\"";
+// 	print($sql);
+	
+	DB_query($sql);
 }
 
 
@@ -1450,20 +1463,54 @@ function MSR_addMonitor($vendor, $model, $edid)
 
 
 /**
-**name MSR_listMonitors()
-**lists monitors stored in the m23 database
-**returns list of monitors
+**name MSR_setTimeStampForRebootClientAfterJobsIsNecessaryCMD()
+**description Generates the commands to inform the m23 server that a reboot of the client is necessary because Debian packages, that were installed, required it.
+**returns BASH commands.
 **/
-function MSR_listMonitors()
+function MSR_setTimeStampForRebootClientAfterJobsIsNecessaryCMD()
 {
-	$sql="SELECT vendor,model FROM monitors ORDER BY vendor ASC, model ASC";
-	$result = DB_query($sql);
-	$array = DB_getArrayAssoc($result);
-	foreach ($array as $monitor)
-	{
-		$model_fn = str_replace(" ", "_", $monitor['model']);
-		$vendor_fn = str_replace(" ", "_", $monitor['vendor']);
-		echo("${vendor_fn}_-_${model_fn}\n");
-	}
+	return(MSR_genericSendCommand('MSR_setTimeStampForRebootClientAfterJobsIsNecessary', "ok=ok", '', true));
+}
+
+
+
+
+
+/**
+**name MSR_setTimeStampForRebootClientAfterJobsIsNecessary()
+**description Updates the timestamp of the reboot request of the client, that became necessary because of newly installed Debian packages.
+**/
+function MSR_setTimeStampForRebootClientAfterJobsIsNecessary()
+{
+	$clientName = CLIENT_getClientName();
+	DB_query("UPDATE `clients` SET `rebootAfterJobsStarted` = ".time()." WHERE `client` = \"".CLIENT_getClientName()."\"");
+}
+
+
+
+
+
+/**
+**name MSR_unsetTimeStampForRebootingClientIfNOTNecessaryCMD
+**description Generates the commands to inform the m23 server that a reboot of the client has been done, after Debian packages required it.
+**returns BASH commands.
+**/
+function MSR_unsetTimeStampForRebootingClientIfNOTNecessaryCMD()
+{
+	return(MSR_genericSendCommand('MSR_unsetTimeStampForRebootingClientIfNOTNecessary', "ok=ok", '', true));
+}
+
+
+
+
+
+/**
+**name MSR_unsetTimeStampForRebootingClientIfNOTNecessary()
+**description Removes the timestamp of the reboot request of the client, that became necessary because of newly installed Debian packages.
+**/
+function MSR_unsetTimeStampForRebootingClientIfNOTNecessary()
+{
+	$clientName = CLIENT_getClientName();
+	DB_query("UPDATE `clients` SET `rebootAfterJobsStarted` = \"0\" WHERE `client` = \"".CLIENT_getClientName()."\"");
 }
 ?>

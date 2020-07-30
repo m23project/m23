@@ -1,9 +1,15 @@
 #!/bin/bash
+conf='/m23/etc/broadcast.override'
+if [ -f $conf ]
+then
+	cat $conf
+	exit 0
+fi
 
 BROADINT=`cat /etc/network/interfaces | grep broadcast | sed 's/.*broadcast[ \t]*//'  | sed 's/[^0-9.]//g' | head -1`
 if [ -z $BROADINT ]
 then
-	BROADINT=`LC_ALL=C; ifconfig | grep broadcast | sed 's/.*broadcast //' | sed 's/[^0-9.]//g'`
+	BROADINT=`LC_ALL=C; /sbin/ifconfig | grep broadcast | sed 's/.*broadcast //' | sed 's/[^0-9.]//g'`
 fi
 
 echo $BROADINT

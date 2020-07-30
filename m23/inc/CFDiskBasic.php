@@ -278,6 +278,187 @@ class CFDiskBasic extends CFDiskIO
 
 
 /**
+**name CFDiskBasic::efiCheckOnClient()
+**description Checks the validity of an EFI partition diretly on the m23 client, if EFI is used and writes the result to /tmp/efiCheck.result.
+**/
+	private function efiCheckOnClient()
+	{
+		// Only run, if client uses EFI
+		if (!$this->isUEFIActive())
+			return(false);
+		
+		// Get the EFI device (drive + partition number)
+		$EFIBootPartDev = $this->getEFIBootPartDev();
+		$driveAndNr = FDISK_getDriveAndNr($EFIBootPartDev);
+
+		// Get the EFI driver (without partition number)
+		$EFIBootDrive = $driveAndNr[0];
+
+		echo ('
+			# Set language for parted output
+			export LC_OLD=$LC_ALL
+			export LC_ALL="C"
+
+			# Temporary mountpoint for checking the EFI partition
+			mkdir -p "/tmp/efiCheckMnt"
+
+			# Get the information of the drive containing the EFI partition
+			parted -m '.$EFIBootDrive.' print > "/tmp/efiCheck.info"
+
+			# Check GPT partition table format
+			if [ $(grep "^'.$EFIBootDrive.'" "/tmp/efiCheck.info" | grep gpt -c) -gt 0 ]
+			then
+				gptCheck=0
+				echo "GPT: ok" | tee -a /tmp/efiCheck.log
+			else
+				gptCheck=1
+				echo "GPT: fail" | tee -a /tmp/efiCheck.log
+			fi
+
+
+
+			# Check FAT32 on 1st partition
+			if [ $(grep "^1:" "/tmp/efiCheck.info" | grep fat32 -c) -gt 0 ]
+			then
+				fatCheck=0
+				echo "FAT32 on 1st partition: ok" | tee -a /tmp/efiCheck.log
+			else
+				fatCheck=1
+				echo "FAT32 on 1st partition: fail" | tee -a /tmp/efiCheck.log
+			fi
+
+
+
+			# Check boot and ESP flags on 1st partition
+			if [ $(grep "^1:" "/tmp/efiCheck.info" | grep esp | grep boot -c) -gt 0 ]
+			then
+				bootESPCheck=0
+				echo "Boot and ESP flags on 1st partition: ok" | tee -a /tmp/efiCheck.log
+			else
+				bootESPCheck=1
+				echo "Boot and ESP flags on 1st partition: fail" | tee -a /tmp/efiCheck.log
+			fi
+
+
+
+			# Check mounting 1st partition
+			mount "'.$EFIBootPartDev.'" "/tmp/efiCheckMnt"
+			if [ $? -eq 0 ]
+			then
+				mountCheck=0
+				echo "Mounting 1st partition: ok" | tee -a /tmp/efiCheck.log
+			else
+				mountCheck=1
+				echo "Mounting 1st partition: fail" | tee -a /tmp/efiCheck.log
+			fi
+			
+			find "/tmp/efiCheckMnt"
+			ls "/tmp/efiCheckMnt"
+
+
+
+			# Check EFI directory
+			if [ $(ls -1 "/tmp/efiCheckMnt" | grep -i efi -c) -gt 0 ]
+			then
+				efiDirCheck=0
+				echo "EFI directory: ok" | tee -a /tmp/efiCheck.log
+			else
+				efiDirCheck=1
+				echo "EFI directory: fail" | tee -a /tmp/efiCheck.log
+			fi
+			umount "'.$EFIBootPartDev.'"
+
+			# Sum all results (0 = all checks were successfully)
+			allCheck=$[ $gptCheck + $fatCheck + $bootESPCheck + $mountCheck + $efiDirCheck ]
+
+			echo $allCheck > /tmp/efiCheck.result
+
+			rmdir "/tmp/efiCheckMnt"
+			rm "/tmp/efiCheck.info"
+			export LC_ALL=$LC_OLD
+		');
+		
+		MSR_logCommand("/tmp/efiCheck.log");
+		MSR_logCommand("/tmp/efiCheck.result");
+	}
+
+
+
+/*
+	private function efiPartitionShowContents()
+	{
+		$EFIBootPartDev = $this->getEFIBootPartDev();
+		return('
+			# Temporary mountpoint for checking the EFI partition
+			mkdir -p "/tmp/efiCheckMnt"
+
+			mount "'.$EFIBootPartDev.'" "/tmp/efiCheckMnt"
+
+			echo EFISTATUS3
+			ls -1 /tmp/efiCheckMnt
+			find /tmp/efiCheckMnt
+			echo EFISTATUS3
+
+			umount "'.$EFIBootPartDev.'"
+		');
+
+	}
+*/
+
+
+
+/**
+**name CFDiskBasic::runIfEFIPartInvalid($cmd, $drive, $pPart = false)
+**description Takes BASH commands (for partitioning and formating) and executes them only, if EFI is not used, the commands are NOT ment for the drive the EFI partition is on or the EFI partition itself and if the EFI partition is invalid.
+**parameter cmd: BASH commands (for partitioning and formating)
+**parameter drive: The drive (eg. /dev/sda) the commands are ment for
+**parameter pPart: The physical partition number (eg. 1) the commands are ment for or false, if the whole drive is the parameter for the BASH code (eg. when creating a new partition)
+**returns Commands for creating and deletion of partitions, formating or building RAIDs.
+**/
+	public function runIfEFIPartInvalid($cmd, $drive, $pPart = false)
+	{
+		// Execute the command directly, if EFI is not used
+		if (!$this->isUEFIActive()) return($cmd);
+
+		// Get the EFI device (drive + partition number)
+		$EFIBootPartDev = $this->getEFIBootPartDev();
+		
+		if ($drive != $EFIBootPartDev)
+		{
+			$driveAndNr = FDISK_getDriveAndNr($EFIBootPartDev);
+	
+			// Get the EFI driver (without partition number)
+			$EFIBootDrive = $driveAndNr[0];
+	
+			// Execute the command directly, if it is not for the EFI drive
+			if ($EFIBootDrive != $drive) return($cmd);
+	
+			// Execute the command directly, if it is not for the EFI partition
+			if (($pPart !== false) && ($driveAndNr[1] != $pPart)) return($cmd);
+		}
+
+		return('
+		if [ $(cat /tmp/efiCheck.result) -ne 0 ]
+		then
+#			echo EFINEU
+#			cat /tmp/efiCheck.result
+#			echo EFINEU
+			
+			'.$cmd.'
+#		else
+#			echo EFIALT
+#			'./*$this->efiPartitionShowContents().*/'
+#			cat /tmp/efiCheck.result
+#			echo EFIALT
+		fi
+		');
+	}
+
+
+
+
+
+/**
 **name CFDiskBasic::genPartedCommands($mkfsextOptions, $sourceslist)
 **description Generates commands for creating and deletion of partitions, formating or building RAIDs.
 **parameter mkfsextOptions: Extra parameter for mkfs.extX .
@@ -289,6 +470,8 @@ class CFDiskBasic extends CFDiskIO
 	{
 		$critical = true;
 		$out = '';
+
+		$this->efiCheckOnClient();
 
 // 		while ($step = $this->shiftPartitionStep())
 		foreach ($this->getPartitionStepsArray() as $step)
@@ -302,9 +485,12 @@ class CFDiskBasic extends CFDiskIO
 					
 					if ($this->isUEFIActive())
 					{
-						$partedLog='/tmp/parted.err';
+						if (!isset($addPartAmount[$step['dev']]))
+							$addPartAmount[$step['dev']] = 1;
 					
-						$out .= "
+						$partedLog='/tmp/parted.err';
+
+						$out .= $this->runIfEFIPartInvalid("
 							parted -a optimal -s $step[dev] mkpart P$step[start]-$step[end] $step[start] $step[end] > $partedLog
 
 							# Get the closest start and end positions and re-try creating the partition, if parted could not create it before
@@ -314,11 +500,13 @@ class CFDiskBasic extends CFDiskIO
 								newEnd=`grep 'closest location' $partedLog | sed -e 's/.* //' -e 's/\.//'`
 								parted -s $step[dev] mkpart \"P\$newStart-\$newEnd\" \$newStart \$newEnd
 							fi
-						echo ";
+						echo ", $step['dev'], ($step['start'] < 10) ? 1 : 100);
 					}
 					else
 						$out .= "\nparted -s $step[dev] mkpart $step[type] $step[start] $step[end]";
-					
+						
+// 					$out .= $this->efiPartitionShowContents();
+
 					$out .= $this->rereadPartTable($step['dev'])."\n";
 	
 					$critical=false;
@@ -331,7 +519,11 @@ class CFDiskBasic extends CFDiskIO
 					if ($this->isDevRaid($step['dev']))
 						$out .= "mdadm --stop $step[dev]";
 					else
-						$out .= "parted -s $step[dev] rm $step[pPart]".$this->rereadPartTable($step['dev']);
+						$out .= $this->runIfEFIPartInvalid(
+							"parted -s $step[dev] rm $step[pPart]".$this->rereadPartTable($step['dev']),
+							$step['dev'], $step['pPart']);
+
+// 					$out .= $this->efiPartitionShowContents();
 
 					$critical=false;
 					break;
@@ -346,7 +538,9 @@ class CFDiskBasic extends CFDiskIO
 					$out .= "true $ddZero\n";
 
 					if ($step['fs'] == CFDiskIO::PT_EFIBOOT)
-						$out .= "echo vfat $ddZero; mkfs.vfat -F 32 -n ".CFDiskIO::PT_EFIBOOT." $step[dev]";
+						$out .=  $this->runIfEFIPartInvalid(
+							"echo vfat $ddZero; mkfs.vfat -F 32 -n ".CFDiskIO::PT_EFIBOOT." $step[dev]",
+							$step['dev']);
 					else
 					switch(SRCLST_getStorageFS($step['fs'], $sourceslist))
 					{
@@ -356,6 +550,9 @@ class CFDiskBasic extends CFDiskIO
 						case 'reiserfs': $out .= "modprobe reiserfs $ddZero; sfdisk --part-type $pDisk $pPart 83; mkreiserfs -f $step[dev]"; break;
 						case 'linux-swap': $out .= "echo swap $ddZero; sfdisk --part-type $pDisk $pPart 82; mkswap $step[dev]"; break;
 					}
+
+// 					$out .= $this->efiPartitionShowContents();
+
 
 					$out .= $this->rereadPartTable($step['dev']);
 
@@ -371,10 +568,12 @@ class CFDiskBasic extends CFDiskIO
 
 				case 'EFItypeAndGUID':
 				{
-					$out .= "parted -s $step[dev] set $step[pPart] boot on; sfdisk --part-type $step[dev] $step[pPart] ef00; sgdisk -t $step[pPart]:C12A7328-F81F-11D2-BA4B-00A0C93EC93B $step[dev];";
+					$out .= $this->runIfEFIPartInvalid(
+						"parted -s $step[dev] set $step[pPart] boot on; sfdisk --part-type $step[dev] $step[pPart] ef00; sgdisk -t $step[pPart]:C12A7328-F81F-11D2-BA4B-00A0C93EC93B $step[dev];",
+						 $step['dev'], $step['pPart']);
+
 					break;
 				}
-				
 
 				// Creates a RAID
 				case 'raid':

@@ -16,46 +16,24 @@ echo("
 if [ $(lsb_release -c -s) = 'xenial' ]
 then
 	echo 'deb http://ppa.launchpad.net/x2go/stable/ubuntu xenial main' > /etc/apt/sources.list.d/x2go.list
+	apt-key adv --recv-keys --keyserver keys.gnupg.net 7CDE3A860A53F9FD
 	apt-get update
 fi
 
-if [ $(grep -i \"Ubuntu 14.04\" /etc/issue -c) -gt 0 ] || [ 'qiana' = $(lsb_release -c -s) ]
+if [ $(lsb_release -c -s) = 'bionic' ]
 then
-		echo 'deb http://ppa.launchpad.net/x2go/stable/ubuntu trusty main' > /etc/apt/sources.list.d/x2go.list
-		apt-get update
-
-cat >> $x2goStopCmd << \"EOF\"
-#!/bin/bash
-while `true`
-do
-	if [ $(ps -A | grep ' x2go' -c) -gt 0 ]
-	then
-		echo fertig >> $x2goStopCmd.log
-		break
-	fi
-	date >> $x2goStopCmd.log
-	sleep 1
-done
-
-(/etc/init.d/x2goserver stop 2>&1) >> $x2goStopCmd.log
-
-(ps -A -o pid -o comm | sed 's/^ *//' | grep x2go | cut -d' ' -f1 | xargs -n1 kill -9 2>&1) >> $x2goStopCmd.log
-
-EOF
-
-chmod +x $x2goStopCmd
-
-chmod 755 /var/run/screen
-
-(screen -dmS xTWOgoStopSniper $x2goStopCmd 2>&1) >> $x2goStopCmd.screenlog
-
-else
-	if [ $(grep -i \"Ubuntu 12.04\" /etc/issue -c) -gt 0 ] || [ $(grep -i \"Linux Mint\" /etc/issue -c) -gt 0 ]
-	then
-		echo 'deb http://ppa.launchpad.net/x2go/stable/ubuntu precise main' > /etc/apt/sources.list.d/x2go.list
-		apt-get update
-	fi
+	echo 'deb http://ppa.launchpad.net/x2go/stable/ubuntu bionic main' > /etc/apt/sources.list.d/x2go.list
+	apt-key adv --recv-keys --keyserver keys.gnupg.net 7CDE3A860A53F9FD
+	apt-get update
 fi
+
+if [ $(grep focal -c /etc/apt/sources.list) -gt 0 ]
+then
+	echo 'deb http://ppa.launchpad.net/x2go/stable/ubuntu focal main' > /etc/apt/sources.list.d/x2go.list
+	apt-key adv --recv-keys --keyserver keys.gnupg.net 7CDE3A860A53F9FD
+	apt-get update
+fi
+
 ");
 
 CLCFG_aptGet('install', 'x2goserver');

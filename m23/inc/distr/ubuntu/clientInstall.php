@@ -31,6 +31,8 @@ function DISTR_baseInstall($lang,$id)
 
 	CIR_enableDropbear();
 
+	CIR_stopHaveged();
+
 	CLCFG_activateDMA();
 
 	CLCFG_mountRootDir($clientOptions['instPart'], 'root', $CFDiskIOO);
@@ -50,7 +52,7 @@ function DISTR_baseInstall($lang,$id)
 	
 				$mirror=SRCLST_getMirror($clientOptions['packagesource']);
 	
-				CLCFG_debootstrap($clientOptions['release'],$DNSServers,$clientParams['gateway'],$clientOptions['packageProxy'],$clientOptions['packagePort'],$mirror,$clientOptions['arch'],"","",true,"parted wget",CLCFG_updateDebootstrapScriptsUbuntu);
+				CLCFG_debootstrap($clientOptions['release'],$DNSServers,$clientParams['gateway'],$clientOptions['packageProxy'],$clientOptions['packagePort'],$mirror,$clientOptions['arch'],"","",true,"parted wget", 'CLCFG_updateDebootstrapScriptsUbuntu');
 	
 				/* =====> */ MSR_statusBarIncCommand(55);
 		}

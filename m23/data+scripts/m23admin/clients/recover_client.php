@@ -1,10 +1,10 @@
 <?
 	$client = $_GET['client'];
 	$id = $_GET['id'];
-	$sure = $_GET['sure'];
-	$redoJobs = $_GET['redoJobs'];
-	$backToRed = $_GET['backToRed'];
-	$combineJobs = $_GET['combineJobs'];
+	$sure = isset($_GET['sure']) ? $_GET['sure'] : 0;
+	$redoJobs = isset($_GET['redoJobs']) ? $_GET['redoJobs'] : 0;
+	$backToRed = isset($_GET['backToRed']) ? $_GET['backToRed'] : 0;
+	$combineJobs = isset($_GET['combineJobs']) ? $_GET['combineJobs'] : 0;
 
 	define('ACT_NORMAL',1);
 	define('ACT_REDO',2);
@@ -13,9 +13,9 @@
 
 	//Get the special action for the page
 	$action = ACT_NORMAL;
-	$action = ((1 == $_GET['redoJobs']) ? ACT_REDO : $action);
-	$action = ((1 == $_GET['backToRed']) ? ACT_BACKTORED : $action);
-	$action = ((1 == $_GET['combineJobs']) ? ACT_COMBINEJOBS : $action);
+	$action = ((1 == $redoJobs) ? ACT_REDO : $action);
+	$action = ((1 == $backToRed) ? ACT_BACKTORED : $action);
+	$action = ((1 == $combineJobs) ? ACT_COMBINEJOBS : $action);
 
 	//Check if all jobs should be executed again, the desaster recovery function should be used or the client should appear as freshly added
 	switch ($action)
@@ -48,6 +48,8 @@
 			$helpPage = 'clients_recover';
 	}
 
+	echo("<span class=\"title\">$client: $titleAction</span><br><br>");
+
 	//Check, if the changes should be done really
 	if( $sure == "1" )
 	{
@@ -78,8 +80,6 @@
 	}
 	else
 	{
-		echo("<span class=\"title\">$client: $titleAction</span><br><br>");
-
 		CLIENT_showGeneralInfo($id);
 
 		$noURL = CLIENT_getToDetailsURL($client,$id,"criticalStatus");

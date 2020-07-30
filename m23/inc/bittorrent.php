@@ -43,7 +43,9 @@ aria2c --disable-ipv6=true --allow-overwrite --max-connection-per-server=3 -d \"
 chmod +x "'.$scriptFile.'"
 
 # Run it in background
-chmod 777 /var/run/screen
+
+'.BASH_SET_VAR_RUN_SCREEN_BY_DISTRIBUTION.'
+
 screen -dmS "'.$torrentFile.'" "'.$scriptFile.'"
 
 # Check, if the download is finished

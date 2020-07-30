@@ -45,7 +45,7 @@ xserver-xorg xserver-xorg/config/inputdevice/keyboard/rules string xorg\" > /tmp
 	debconf-set-selections /tmp/xorg.debconf
 
 # no ddcxinfo-knoppix package on Ubuntu 18.04
-if [ $(grep bionic /etc/apt/sources.list -c) -eq 0]
+if [ $(grep bionic /etc/apt/sources.list -c) -eq 0 ] &&  [ $(grep focal -c /etc/apt/sources.list) -gt 0 ]
 then
 	ddcx=\"ddcxinfo-knoppix\"
 else

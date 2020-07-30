@@ -496,16 +496,19 @@ function HTML_showSmallTitle($title)
 
 
 /**
-**name HTML_hiddenVar($var,$val)
+**name HTML_hiddenVar($var, $val, $storeIntoPreferenceSpace = false)
 **description Create a hidden HTML variable to store values in an HTML form.
 **parameter var: Name of the hidden variable.
 **parameter val: Its value.
+**parameter storeIntoPreferenceSpace: Set to true, if the value should be stored under the prefKey in the preferenceSpace.
 **/
-function HTML_hiddenVar($var,$val)
+function HTML_hiddenVar($var, $val, $storeIntoPreferenceSpace = false)
 {
+	if ($storeIntoPreferenceSpace)
+		$_SESSION['preferenceSpace'][$var] = $val;
+
 	return("<input type=\"hidden\" id=\"$var\" name=\"$var\" value=\"$val\">");
 }
-
 
 
 
@@ -911,7 +914,7 @@ return('
 
 		$( "#'.$menuName.'" ).accordion
 		({
-			change: function(event, ui)
+			activate: function(event, ui)
 			{
 				//Get the currently active accordion element number
 				var active = $( "#'.$menuName.'" ).accordion( "option", "active" );
@@ -1367,6 +1370,7 @@ function HTML_multiCheckBox($htmlName, $valuesLabels, $defaultChecked = array(),
 {
 	$i = 0;
 	$html = '';
+	$out = array();
 
 	//Run thru all values and labels
 	foreach ($valuesLabels as $val => $label)
@@ -1595,7 +1599,7 @@ function HTML_storableCheckBox($htmlName, $label, $prefKey, $defaultCheck = fals
 
 
 /**
-**name HTML_getElementValue($htmlName, $prefKey, $initValue)
+**name HTML_getElementValue($htmlName, $prefKey, $initValue, $checkbox=false)
 **description Gets the value for a HTML element by the session data or POST value.
 **parameter htmlName: Name of the HTML element.
 **parameter prefKey: Variable name of the preference the dialog element stands for.
@@ -1623,7 +1627,7 @@ function HTML_getElementValue($htmlName, $prefKey, $initValue, $checkbox=false)
 	if (isset($_POST['ED_client'])) $checkboxPostIgnore ++;
 	if (isset($_POST['ED_mac'])) $checkboxPostIgnore ++;
 
-	if (isset($_SESSION['preferenceForceHTMLReloadValues']) && $_SESSION['preferenceForceHTMLReloadValues'])
+	if (isset($_SESSION['preferenceForceHTMLReloadValues']) && $_SESSION['preferenceForceHTMLReloadValues'] && isset($_SESSION['preferenceSpace'][$prefKey]))
 		{
 			$initValue = $_SESSION['preferenceSpace'][$prefKey];
 			$met='preferenceForceHTMLReloadValues';
@@ -1876,27 +1880,47 @@ function HTML_submitImg($htmlName, $img, $alt, $extra="")
 
 
 
+/**
+**name HTML_button($htmlName, $img, $value="", $extra="")
+**description Defines a (graphical) button
+**parameter htmlName: Name of the HTML element.
+**parameter label: Label of the button
+**parameter value: value of the button (not label)
+**parameter extra: Extra options for the HTML input tag.
+**/
+function HTML_button($htmlName, $label, $value="", $extra="")
+{
+	$htmlCode = '<button type="button" id="'.$htmlName.'" name="'.$htmlName.'" value="'.$value.'"'.$extra.'>'.$label.'</button>';
+	define($htmlName, $htmlCode);
+}
+
+
+
+
+
 define('INPUT_TYPE_text','text');
 define('INPUT_TYPE_password','password');
 /**
-**name HTML_input($htmlName, $htmlValue = false, $size=20, $maxlength=255, $type = INPUT_TYPE_text)
+**name HTML_input($htmlName, $htmlValue = false, $size=20, $maxlength=255, $type = INPUT_TYPE_text, $forceDefaultSelection = false)
 **description HTML text or password edit line.
 **parameter htmlName: Name of the HTML element.
 **parameter htmlValue: The default text to show in the edit line if nothing was submitted.
 **parameter size: Size (in characters) of the input line.
 **parameter maxlength: The maximum length of the entered text.
 **parameter type: Type of the edit line (INPUT_TYPE_text or INPUT_TYPE_password)
+**parameter forceDefaultSelection: Don't query $_POST, use what is supplied by htmlValue
 **parameter Returns the entered value, the default value or false.
 **/
-function HTML_input($htmlName, $htmlValue = false, $size=20, $maxlength=255, $type = INPUT_TYPE_text)
+function HTML_input($htmlName, $htmlValue = false, $size=20, $maxlength=255, $type = INPUT_TYPE_text, $forceDefaultSelection = false)
 {
 	//check if the password/text is valid
-	if (isset($_POST[$htmlName]))
-		$htmlValue = $_POST[$htmlName];
+	if (!$forceDefaultSelection)
+		if (isset($_POST[$htmlName]))
+			$htmlValue = $_POST[$htmlName];
 
-	define($htmlName,'<INPUT type="'.$type.'" name="'.$htmlName.'" size="'.$size.'" maxlength="'.$maxlength.'" value="'.$htmlValue.'">');
+	define($htmlName,'<INPUT type="'.$type.'" id="'.$htmlName.'" name="'.$htmlName.'" size="'.$size.'" maxlength="'.$maxlength.'" value="'.$htmlValue.'">');
 	return($htmlValue);
-};
+}
 
 
 
@@ -1931,7 +1955,7 @@ function array_makeFirst(&$arr,$first)
 /**
 **name HTML_getValidSelected($selected, $arrayKeys, $defaultSelection)
 **description Checks for a valid selected value from a list of possible values. In case the value could not be found, a default value is taken.
-**parameter selected: Array or single value to check, if it is on the list aof array keys.
+**parameter selected: Array or single value to check, if it is on the list of array keys.
 **parameter arrayKeys: An array that holds the possible returned values (array keys).
 **parameter defaultSelection: The value of the item to select by default.
 **returns A valid value from a list of possible values.
@@ -1945,7 +1969,7 @@ function HTML_getValidSelected($selected, $arrayKeys, $defaultSelection)
 		else
 			$selected = isset($arrayKeys[0]) ? $arrayKeys[0] : false;
 	}
-	
+
 	return($selected);
 }
 
@@ -1957,7 +1981,7 @@ define('SELTYPE_selection',0);
 define('SELTYPE_radio',1);
 
 /**
-**name HTML_selection($htmlName, $array, $type, $vertical = true, $defaultSelection = false, $prefKey = false, $js = "", $multipleSize = false)
+**name HTML_selection($htmlName, $array, $type, $vertical = true, $defaultSelection = false, $prefKey = false, $js = "", $multipleSize = false, $forceDefaultSelection = false)
 **description Shows a list of radio buttons or a selection.
 **parameter htmlName: Name of the HTML element.
 **parameter array: An array that hold the returned values (array keys) the naming for the elements (array values).
@@ -1967,11 +1991,17 @@ define('SELTYPE_radio',1);
 **parameter prefKey: Variable name of the preference the dialog element stands for.
 **parameter js: Here can JavaScript or other parameters be added.
 **parameter multipleSize: If set to a number (and not to false) a multi selection is generated, where the user can select multiple entries. The number sets the amount of entries to show the user.
+**parameter forceDefaultSelection: Don't query $_POST or prefKey, use what is supplied by defaultSelection
 **returns The value of the selected element or false if nothing was selected.
 **/
-function HTML_selection($htmlName, $array, $type, $vertical = true, $defaultSelection = false, $prefKey = false, $js = "", $multipleSize = false)
+function HTML_selection($htmlName, $array, $type, $vertical = true, $defaultSelection = false, $prefKey = false, $js = "", $multipleSize = false, $forceDefaultSelection = false)
 {
+	if (($defaultSelection !== false) && $forceDefaultSelection)
+		$selected = $defaultSelection;
+	else
 	$selected = HTML_getElementValue($htmlName, $prefKey, $defaultSelection);
+
+
 
 	if (($multipleSize !== false) && (is_numeric($multipleSize)))
 	{
@@ -1981,6 +2011,7 @@ function HTML_selection($htmlName, $array, $type, $vertical = true, $defaultSele
 	}
 	else
 		$multipleSizeAdd = $multipleHtmlNameAdd = $multipleSelectEnable = '';
+
 
 	/*
 		check if the selected value is a valid array key
@@ -1997,9 +2028,16 @@ function HTML_selection($htmlName, $array, $type, $vertical = true, $defaultSele
 			$selected[$key] = HTML_getValidSelected($val,$arrayKeys,$defaultSelection);
 	}
 	else
+	{
 		$selected = HTML_getValidSelected($selected,$arrayKeys,$defaultSelection);
 
+		// For selections allowing multiple elements to be chosen, $selected must be an array
+		if ($multipleSize !== false)
+			$selected = array($selected);
+	}
+
 	$htmlCode="";
+
 
 	if ($type === SELTYPE_selection)
 	{
@@ -2013,9 +2051,13 @@ function HTML_selection($htmlName, $array, $type, $vertical = true, $defaultSele
 
 		foreach ($array as $value => $description)
 		{
-			if ($selected === false) $selected = $value;
-			elseif (is_array($selected) && in_array($value, $selected)) $htmlSelected = " selected";
-			else $htmlSelected = "";
+			$htmlSelected = "";
+
+			if ($selected === false)
+				$selected = $value;
+			elseif (is_array($selected) && in_array($value, $selected))
+				$htmlSelected = " selected";
+
 			$htmlCode.='<option value="'.$value.'"'.$htmlSelected.'>'.$description.'</option>'."\n";
 		}
 
@@ -2048,7 +2090,100 @@ function HTML_selection($htmlName, $array, $type, $vertical = true, $defaultSele
 
 
 /**
-**name HTML_checkBox($htmlName, $label, $defaultCheck = false, $prefKey = "", $htmlValue = 1, $forceReload = false)
+**name HTML_datalist($htmlName, $array, $defaultSelection = false, $prefKey = false, $js = "")
+**description Shows a datalist with auto-completion. Caution: Not supported by Safari browser 12.0 (or earlier).
+**parameter htmlName: Name of the HTML element.
+**parameter array: An array that hold the returned values (array keys) the naming for the elements (array values).
+**parameter defaultSelection: The value of the item to select by default.
+**parameter prefKey: Variable name of the preference the dialog element stands for.
+**parameter js: Here can JavaScript or other parameters be added.
+**parameter forceDefaultSelection: Don't query $_POST, use what is supplied by defaultSelection
+**returns The value of the selected element or false if nothing was selected.
+**/
+function HTML_datalist($htmlName, $array, $defaultSelection = false, $prefKey = false, $js = "", $forceDefaultSelection = false)
+{
+	if (($defaultSelection !== false) && $forceDefaultSelection)
+		$selected = $defaultSelection;
+	else
+		$selected = HTML_getElementValue($htmlName, $prefKey, $defaultSelection);
+
+	if (!($selected === false))
+		$htmlSelected = 'value="'.$selected.'"';
+	else
+		$htmlSelected = "";
+
+	$htmlCode="";
+	$htmlCode='<input '.$js.' list="DL_'.$htmlName.'" id="'.$htmlName.'" name="'.$htmlName.'" '.$htmlSelected.'>'."\n";
+	$htmlCode.='<datalist id="DL_'.$htmlName.'" name="'.$htmlName.'">'."\n";
+	foreach ($array as $value => $description)
+	{
+		$htmlCode.='  <option value="'.$value.'">'.$description.'</option>'."\n";
+	}
+	$htmlCode.='</datalist>'."\n";
+
+	define($htmlName, $htmlCode);
+
+	return(array_search($selected, $array));
+}
+
+
+
+
+
+/**
+**name HTML_imgSelection($htmlName, $array, $imgArray = array(), $defaultSelection = false, $prefKey = false, $js = "", $forceDefaultSelection = false)
+**description Shows a jQuery enhanced SELECT
+**parameter htmlName: Name of the HTML element.
+**parameter array: An array that hold the returned values (array keys) the naming for the elements (array values).
+**parameter imgArray: An array containing the images for our options.
+**parameter defaultSelection: The value of the item to select by default.
+**parameter prefKey: Variable name of the preference the dialog element stands for.
+**parameter js: Here can JavaScript or other parameters be added.
+**parameter forceDefaultSelection: Don't query $_POST, use what is supplied by defaultSelection
+**returns The value of the selected element or false if nothing was selected.
+**/
+function HTML_imgSelection($htmlName, $array, $imgArray = array(), $defaultSelection = false, $prefKey = false, $js = "", $forceDefaultSelection = false)
+{
+	if (($defaultSelection !== false) && $forceDefaultSelection)
+		$selected = $defaultSelection;
+	else
+		$selected = HTML_getElementValue($htmlName, $prefKey, $defaultSelection);
+
+	$htmlCode="";
+	$htmlCode='<SELECT class="imgselectmenu" '.$js.' id="'.$htmlName.'" name="'.$htmlName.'">'."\n";
+
+	$i=0;
+	foreach ($array as $value => $description)
+	{
+		$htmlSelected = "";
+
+		if ($selected === false)
+			$selected = $value;
+		elseif ($selected == $value)
+			$htmlSelected = " selected";
+
+		if (!empty($imgArray[$i]))
+			$img = $imgArray[$i];
+		else
+			$img = "";
+
+		$htmlCode.='<option img="'.$img.'" value="'.$value.'"'.$htmlSelected.'>'.$description.'</option>'."\n";
+		$i++;
+	}
+
+	$htmlCode.='</SELECT>';
+
+	define($htmlName, $htmlCode);
+
+	return($selected);
+}
+
+
+
+
+
+/**
+**name HTML_checkBox($htmlName, $label, $defaultCheck = false, $prefKey = "", $htmlValue = 1, $forceReload = false, $extraHTML = '')
 **description Shows a check box with label.
 **parameter htmlName: Name of the HTML element.
 **parameter label: Label of the element.
@@ -2056,9 +2191,10 @@ function HTML_selection($htmlName, $array, $type, $vertical = true, $defaultSele
 **parameter prefKey: Variable name of the preference the dialog element stands for.
 **parameter htmlValue: Value of the checkbox if clicked.
 **parameter forceReload: Set to true if the check box should be set to the state of $defaultCheck in any case.
+**parameter extraHTML: Extra HTML/JavaScript code 
 **returns True if the check box is checked.
 **/
-function HTML_checkBox($htmlName, $label, $defaultCheck = false, $prefKey = "", $htmlValue = 1, $forceReload = false)
+function HTML_checkBox($htmlName, $label, $defaultCheck = false, $prefKey = "", $htmlValue = 1, $forceReload = false, $extraHTML = '')
 {
 	if ($forceReload)
 	{
@@ -2084,7 +2220,7 @@ function HTML_checkBox($htmlName, $label, $defaultCheck = false, $prefKey = "", 
 	else
 		$labelCode='';
 
-	define($htmlName,'<INPUT type="checkbox" name="'.$htmlName.'" value="'.$htmlValue.'" '.$htmlChecked.'> '.$labelCode);
+	define($htmlName,'<INPUT type="checkbox" id="'.$htmlName.'" name="'.$htmlName.'" value="'.$htmlValue.'" '.$extraHTML.' '.$htmlChecked.'> '.$labelCode);
 	
 	//Alternate solution, if unchecked boxes return the default value
 // 	return($_POST[$htmlName] == $htmlValue);

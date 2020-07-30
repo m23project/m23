@@ -81,4 +81,7 @@ $I18N_installing_budgie='Installation du bureau Budgie';
 
 //19.2
 $I18N_installingLXQT="Installation du bureau LXQt";
+
+//20.1
+$I18N_installing_UbuntuGnome="Installation d'un bureau Ubuntu basé sur Gnome";
 ?>

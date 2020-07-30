@@ -2,4 +2,4 @@
 
 LC_ALL="C"
 
-/sbin/ifconfig | egrep "(eth|enp)" -A1 | sed "s/  /\n/g"  | egrep "(^Mask|^netmask)" | sed "s/^.*[ :]//" | sed 's/[^0-9.]//g' | head -1
+/sbin/ifconfig | egrep "(eth|enp|ens)" -A1 | sed "s/  /\n/g"  | egrep "(^Mask|^netmask)" | sed "s/^.*[ :]//" | sed 's/[^0-9.]//g' | head -1

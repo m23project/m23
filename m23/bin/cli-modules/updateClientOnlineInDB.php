@@ -5,29 +5,6 @@ Description: Script to update the online status of the clients in the DB cyclica
 
 
 
-/**
-**name getClientIPArray()
-**description Generates an associative array with the client names as keys and their IPs as values.
-**returns: Associative array with the client names as keys and their IPs as values.
-**/
-function getClientIPArray()
-{
-	$clients = array();
-
-	// Get information about all clients
-	$res = CLIENT_getAllAsRes();
-	while ($clientLine = mysqli_fetch_assoc($res))
-	{
-		// Add the client only if it has a valid IP
-		if (CHECK_ip($clientLine['ip']))
-			$clients[$clientLine['client']] = $clientLine['ip'];
-	}
-
-	return($clients);
-}
-
-
-
 
 
 /**
@@ -47,27 +24,31 @@ function isAlive($line)
 
 function run($argc, $argv)
 {
+	$loopCounter = 0;
+
 	while (true)
 	{
-
 		$start = time();
-	
-		$clientsIPs = getClientIPArray();
-		
+
+		$out = $aliveIPs = array();
+
+		$clientsIPs = CLIENT_getClientIPArray();
+
 		// Ping all clients
-		exec('fping '.implode(' ', $clientsIPs).' 2> /dev/null', $out);
+		exec('fping -r 1 -t 100 '.implode(' ', $clientsIPs).' 2> /dev/null', $out);
 	
 		// Generate a new array with entries only containing alive IPs
 		$aliveIPs = array_filter($out, 'isAlive');
 
 		// Set all clients to offline
 		DB_query("UPDATE clients SET online='0';");
+// 		print_r($aliveIPs);
 
 		if (!empty($aliveIPs))
 		{
 			$sql = "UPDATE clients SET online='1' WHERE";
 			$or = '';
-			
+
 			// Get the lines from active IPs
 			foreach ($aliveIPs as $line)
 			{
@@ -76,7 +57,7 @@ function run($argc, $argv)
 
 				$sql .= $or.' ip = "'.$IPOtherParts[0].'"';
 				$or = ' OR';
-				
+
 				echo("Active: $IPOtherParts[0]\n");
 			}
 
@@ -84,9 +65,39 @@ function run($argc, $argv)
 			DB_query($sql);
 		}
 
+		if (SERVER_isClientSshHttpsStatusEnabled())
+		{
+			echo("Advanced SSH/HTTPs tests: start\n");
+			foreach ($aliveIPs as $line)
+			{
+				// eg. $line = '192.168.1.77 is alive'
+				$IPOtherParts = explode(' ',$line);
+				$clientIP = $IPOtherParts[0];
+				$clientName = array_search($clientIP, $clientsIPs);
+	
+				// Skip the m23 server itself
+				if ('localhost' == $clientName) continue;
+
+				print("$clientName => $clientIP\n");
+				
+				$cmd = MSR_genericSendCommand('MSR_sshHttpsStatus', "ok=ok", '-qq', true);
+				print("$cmd\n");
+				
+				CLIENT_executeOnClientOrIP($clientIP, "$clientName-sshHttpsStatus", MSR_genericSendCommand('MSR_sshHttpsStatus', "ok=ok", '-qq', true));
+			}
+			echo("Advanced SSH/HTTPs tests: done\n");
+		}
+
+		// Call CLIENT_updateReporting (possibly) on every 4th run of while loop, to update the database every 20 minutes
+		if ((($loopCounter % 4) == 0) && SERVER_getExportIntoClientreporting())
+			CLIENT_updateReporting();
+
+		echo("Waiting 5 minutes for next round...\n");
+
 		// Wait 5 minutes until next run
 		sleep(300 - (time() - $start));
+
+		$loopCounter++;
 	}
 }
-
 ?>

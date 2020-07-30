@@ -22,11 +22,14 @@
 	session_start();
 
 	dbConnect();
-	
+
 	$status = $_GET['status'];
 
+	// Timestamp for changing the job's status
+	$finishtime = time();
+
 	CHECK_FW(CC_jobstatus, $status, CC_id, $_GET['id']);
-	$sql="UPDATE clientjobs SET status='".$status."' WHERE id=".$_GET['id'].";";
+	$sql="UPDATE clientjobs SET status='$status',finishtime='$finishtime' WHERE id=$_GET[id];";
 
 	DB_query($sql); //FW ok
 ?>

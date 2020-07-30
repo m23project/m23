@@ -101,13 +101,19 @@ function DHCP_addDynamicRange($firstIP, $lastIP, $netmask, $gateway)
 
 	$insertText = "subnet $subnet netmask $netmask { range $firstIP $lastIP; option broadcast-address $broadcast; option routers $gateway; option subnet-mask $netmask;}";
 	
+	SERVER_waitForLock('/m23/tmp/DHCP_addDynamicRange.lock');
+	
 	$insertAfterLine = DHCP_lineNumberAffterLastClient();
 	SERVER_insertLineNumber(DHCPD_CONF_FILE, $insertAfterLine, $insertText);
 
 	//Delete the empty subnet definition to make sure, that it is not defined twice
 	DHCP_delSubnetDefinition($subnet, $netmask);
 
-	return(DHCP_restartDHCPserver());
+	$retDHCPserver = DHCP_restartDHCPserver();
+
+	unlink('/m23/tmp/DHCP_addDynamicRange.lock');
+
+	return($retDHCPserver);
 }
 
 
@@ -194,6 +200,8 @@ function DHCP_delDynamicRange($firstIP, $lastIP)
 	//Prepare and execute sed
 	$firstIPSed = str_replace('.', '\.', $firstIP);
 	$lastIPSed = str_replace('.', '\.', $lastIP);
+	
+	SERVER_waitForLock('/m23/tmp/DHCP_delDynamicRange.lock');
 
 	if (trim(SERVER_runInBackground('DHCP_delDynamicRange', "sed -i '/range $firstIPSed $lastIPSed/d' ".DHCPD_CONF_FILE." && echo ok", "root", false)) != "ok")
 		return(false);
@@ -205,7 +213,11 @@ function DHCP_delDynamicRange($firstIP, $lastIP)
 		DHCP_addSubnetDefinition($subnet, $netmask);
 	}
 
-	return(DHCP_restartDHCPserver());
+	$retDHCPserver = DHCP_restartDHCPserver();
+
+	unlink('/m23/tmp/DHCP_delDynamicRange.lock');
+
+	return($retDHCPserver);
 }
 
 
@@ -280,6 +292,8 @@ function DHCP_addClient($clientName, $ip, $netmask, $mac, $bootType, $gateway, $
 	$bootType = DHCP_bootTypeToNewFormat($bootType);
 	$broadcast = CLIENT_getBroadcast($ip,$netmask);
 
+	SERVER_waitForLock('/m23/tmp/DHCP_addClient.lock');
+
 	DHCP_runScript('add', $clientName, $ip, $netmask, $mac, $bootType, $gateway);
 
 	/*
@@ -347,11 +361,19 @@ function DHCP_addClient($clientName, $ip, $netmask, $mac, $bootType, $gateway, $
 	}
 
 	if (HELPER_isExecutedOnUCS())
+	{
+		unlink('/m23/tmp/DHCP_addClient.lock');
 		return(true);
+	}
+
 
 	DHCP_addSubnetDefinition($subnet, $netmask);
 
-	return(DHCP_restartDHCPserver());
+	$retDHCPserver = DHCP_restartDHCPserver();
+
+	unlink('/m23/tmp/DHCP_addClient.lock');
+
+	return($retDHCPserver);
 }
 
 
@@ -410,6 +432,9 @@ function DHCP_rmClient($clientName)
 {
 	$bootType = CLIENT_getBootType($clientName);
 
+	if (!HELPER_isExecutedOnUCS())
+		$ret = SERVER_waitForLock('/m23/tmp/DHCP_rmClient.lock');
+
 	DHCP_runScript('remove', $clientName);
 
 	if ($bootType == CClient::BOOTTYPE_GPXE)
@@ -425,7 +450,7 @@ function DHCP_rmClient($clientName)
 		$cmds = "sed '/host.".trim($clientName)."[^A-Za-z0-9]/Id' ".DHCPD_CONF_FILE." > ".DHCPD_CONF_FILE.".tmp && mv ".DHCPD_CONF_FILE.".tmp ".DHCPD_CONF_FILE." && echo ok";
 
 		//write changes
-		if (trim(SERVER_runInBackground('DHCP_rmClient', $cmds, 'root', false)) != "ok")
+		if (trim(SERVER_runInBackground('DHCP_rmClient-del', $cmds, 'root', false)) != "ok")
 			return(false);
 	}
 
@@ -446,7 +471,13 @@ function DHCP_rmClient($clientName)
 	if (HELPER_isExecutedOnUCS())
 		return(true);
 	else
-		return(DHCP_restartDHCPserver());
+	{
+		$retDHCPserver = DHCP_restartDHCPserver();
+
+		unlink('/m23/tmp/DHCP_rmClient.lock');
+
+		return($retDHCPserver);
+	}
 }
 
 

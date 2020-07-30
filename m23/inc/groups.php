@@ -5,6 +5,268 @@
 $*/
 
 
+define('GRP_SETTING_TYPE_execWhenAllJobsFinished', 1);
+define('GRP_SETTING_TYPE_execBeginningOfWorkPHP', 2);
+
+define('GRP_SETTING_VAR_rebootClientAfterJobsIfNecessary', 'rebootClientAfterJobsIfNecessary');
+define('GRP_SETTING_VAR_unsetTimeStampForRebootClientNecessary', 'unsetTimeStampForRebootClientNecessary');
+
+
+
+/**
+**name GRP_safeSettings($groupName, &$type, &$var, &$val)
+**description Makes the contents of the input variables safe for SQL usage.
+**parameter groupName: name of the group
+**parameter type: Type of the group setting (can be used to identify the places where it should be used)
+**parameter var: Name of the group setting.
+**parameter val: Its value.
+**returns group ID on success, false otherwise.
+**/
+function GRP_safeSettings($groupName, &$type, &$var, &$val)
+{
+	$groupID = GRP_getIdByName($groupName);
+
+	// Return, if no group with the given name could be found
+	if ($groupID === false) return(false);
+
+	// Make the input variables safe
+	$val = CHECK_text2db($val);
+	$var = CHECK_text2db($var);
+	$type = (int)$type;
+
+	return($groupID);
+}
+
+
+
+
+
+/**
+**name GRP_setSetting($groupName, $type, $var, $val)
+**description Adds or changes a group setting.
+**parameter groupName: name of the group to add/change the setting for
+**parameter type: Type of the group setting (can be used to identify the places where it should be used)
+**parameter var: Name of the group setting.
+**parameter val: Its value.
+**returns true on successful adding/changing a group setting, false otherwise.
+**/
+function GRP_setSetting($groupName, $type, $var, $val)
+{
+	$groupID = GRP_safeSettings($groupName, $type, $var, $val);
+	// Return, if no group with the given name could be found
+	if ($groupID === false) return(false);
+
+	$sql = "INSERT INTO `groupSettings` (`id`, `groupid`, `type`, `var`, `val`) VALUES (NULL, '$groupID', '$type', '$var', '$val') ON DUPLICATE KEY UPDATE val = '$val';";
+
+	$res = DB_queryNoDie($sql); //FW ok
+
+	return(!($res !== true));
+}
+
+
+
+
+
+/**
+**name GRP_unsetSetting($groupName, $type, $var)
+**description Removes a group setting.
+**parameter groupName: name of the group to add/change the setting for
+**parameter type: Type of the group setting (can be used to identify the places where it should be used)
+**parameter var: Name of the group setting.
+**returns true on successful removal of a group setting, false otherwise.
+**/
+function GRP_unsetSetting($groupName, $type, $var)
+{
+	$val = 'empty';
+
+	$groupID = GRP_safeSettings($groupName, $type, $var, $val);
+	// Return, if no group with the given name could be found
+	if ($groupID === false) return(false);
+
+	$sql = "DELETE FROM `groupSettings` WHERE groupid='$groupID' AND type='$type' AND var='$var';";
+
+	$res = DB_queryNoDie($sql); //FW ok
+
+	return(!($res !== true));
+}
+
+
+
+
+
+/**
+**name GRP_getSetting($groupName, $type, $var)
+**description Gets the variable names, values and group setting types of a group setting.
+**parameter groupName: name of the group (required)
+**parameter type: (optional) Type of the group setting (can be used to identify the places where it should be used)
+**parameter var: (optional) Name of the group setting.
+**returns All variable names, values and group setting types of a group setting in an associative array or false if it's unset. ($out[$i]['var'], $out[$i]['val'], $out[$i]['type'])
+**/
+function GRP_getSetting($groupName, $type = false, $var = false)
+{
+	$val = 'empty';
+	$i = 0;
+	$out = array();
+	
+	// Save original values, to check if they are false before they are made safe
+	$typeOriginal = $type;
+	$varOriginal = $var;
+	
+	$groupID = GRP_safeSettings($groupName, $type, $var, $val);
+	// Return, if no group with the given name could be found
+	if ($groupID === false) return(false);
+
+	// Get all settings for a group
+	$sql = "SELECT * FROM `groupSettings` WHERE `groupid`='$groupID'";
+
+	// Filter by group setting type, if it's not false
+	if ($typeOriginal !== false)
+		$sql .= " AND `type`='$type'";
+
+	// Filter by group setting variable name, if it's not false
+	if ($varOriginal !== false)
+		$sql .= " AND `var`='$var'";
+
+	$res = DB_queryNoDie($sql); //FW ok
+
+	if ($res === false) return(false);
+
+	while ($line = mysqli_fetch_assoc($res))
+	{
+		$out[$i]['var'] = CHECK_db2text($line['var']);
+		$out[$i]['val'] = CHECK_db2text($line['val']);
+		$out[$i]['type'] = intval($line['type']);
+		$i++;
+	}
+
+	return($out);
+}
+
+
+
+
+
+/**
+**name GRP_getSettingsForClient($clientName, $type = false, $var = false)
+**description Gets the variable names, values and group setting types of all group settings that are assigned to a client.
+**parameter clientName: name of the client (required)
+**parameter type: (optional) Type of the group setting (can be used to identify the places where it should be used)
+**parameter var: (optional) Name of the group setting.
+**returns All variable names, values and group setting types of a group setting in an associative array or false if the client is in no group. ($out[$i]['var'], $out[$i]['val'], $out[$i]['type'])
+**/
+function GRP_getSettingsForClient($clientName, $type = false, $var = false)
+{
+	$groups = GRP_listClientGroups($clientName);
+
+	// Return, if the client is in no group
+	if (count($groups) == 0) return(false);
+
+	$out = array();
+
+	// Merge the group settings of all groups the client is in
+	foreach ($groups as $groupName)
+		$out = array_merge(GRP_getSetting($groupName, $type, $var), $out);
+
+	// Make sure, the settings are unique
+	return(array_unique($out, SORT_REGULAR));
+}
+
+
+
+
+
+/**
+**name GRP_editSettingsDialog($groupName)
+**description Shows a dialog for editing group settings.
+**parameter groupName: name of the group.
+**/
+function GRP_editSettingsDialog($groupName)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	HTML_submit("BUT_save",$I18N_save);
+
+	// Checkbox for "rebootClientAfterJobsIfNecessary"
+	$rebootClientAfterJobsIfNecessary = HTML_checkBox('CB_rebootClientAfterJobsIfNecessary', '',
+		GRP_getSingleSetting($groupName, GRP_SETTING_TYPE_execWhenAllJobsFinished, GRP_SETTING_VAR_rebootClientAfterJobsIfNecessary) != false);
+
+		GRP_setSetting($groupName, GRP_SETTING_TYPE_execWhenAllJobsFinished, GRP_SETTING_VAR_rebootClientAfterJobsIfNecessary, $rebootClientAfterJobsIfNecessary);
+		GRP_setSetting($groupName, GRP_SETTING_TYPE_execBeginningOfWorkPHP, GRP_SETTING_VAR_unsetTimeStampForRebootClientNecessary, $rebootClientAfterJobsIfNecessary);
+
+	echo("
+	<table>
+		<tr>
+			<td>".CB_rebootClientAfterJobsIfNecessary."</td>
+			<td>$I18N_rebootClientAfterJobsIfNecessary</td>
+		</tr>
+		<tr>
+			<td colspan=\"2\" align=\"center\">".BUT_save."</td>
+		</tr>
+		
+	</table>
+	");
+}
+
+
+
+
+
+/**
+**name GRP_getSingleSetting($groupName, $type, $var)
+**description Gets the value of a single group setting.
+**parameter groupName: name of the group
+**parameter type: Type of the group setting (can be used to identify the places where it should be used)
+**parameter var: Name of the group setting.
+**returns Value of a single group setting or false, if it's unset.
+**/
+function GRP_getSingleSetting($groupName, $type, $var)
+{
+	$setting = GRP_getSetting($groupName, $type, $var);
+	return(isset($setting[0]['val']) ? $setting[0]['val'] : false);
+}
+
+
+
+
+
+/**
+**name GRP_runSettingsForClient($clientName, $type = false, $var = false)
+**description Run group settings for a given client.
+**parameter clientName: name of the client (required)
+**parameter type: (optional) Type of the group setting (can be used to identify the places where it should be used)
+**parameter var: (optional) Name of the group setting.
+**returns true, if there were group settings for the clients, otherwise false.
+**/
+function GRP_runSettingsForClient($clientName, $type = false, $var = false)
+{
+	$settings = GRP_getSettingsForClient($clientName, $type, $var);
+
+	// Return, if the client is in no group or no settings were found
+	if (($settings == false) || (0 == count($settings)))  return(false);
+
+	// Run thru all the settings
+	foreach ($settings as $setting)
+	{
+		// Decide by the variable name what has to be done
+		switch ($setting['var'])
+		{
+			case GRP_SETTING_VAR_rebootClientAfterJobsIfNecessary:
+				if ($setting['val'] == 1)
+					CLIENT_rebootClientAfterJobsIfNecessaryBASH();
+			break;
+			case GRP_SETTING_VAR_unsetTimeStampForRebootClientNecessary:
+				if ($setting['val'] == 1)
+					CLIENT_unsetTimeStampForRebootingClientIfNOTNecessaryBASH();
+			break;
+		}
+	}
+
+	return(true);
+}
+
+
+
+
 
 /**
 **name GRP_exists($groupName)
@@ -281,12 +543,12 @@ function GRP_listGroupsAndCount()
 	$i = 0;
 
 	foreach ($groups as $group)
-		{
-			$arr[$i]['groupname']=$group;
-			$arr[$i]['description']= GRP_getDescrGroup($group);
-			$arr[$i]['count'] = GRP_countClients($group);
-			$i++;
-		};
+	{
+		$arr[$i]['groupname']=$group;
+		$arr[$i]['description']= GRP_getDescrGroup($group);
+		$arr[$i]['count'] = GRP_countClients($group);
+		$i++;
+	}
 
 	return($arr);
 }
@@ -416,11 +678,11 @@ function GRP_showGroupsAndCount()
 		echo("
 		<tr>
 			<td colspan=\"4\" align=\"center\">
+				<input type=\"hidden\" name=\"SEL_action\" value=\"$actionStr\">
+				<input type=\"hidden\" name=\"selectedGroups\" value=\"$selectedGroupsURL\">
 				".BUT_do."
 			</td>
 		</tr>
-		<input type=\"hidden\" name=\"SEL_action\" value=\"$actionStr\">
-		<input type=\"hidden\" name=\"selectedGroups\" value=\"$selectedGroupsURL\">
 		");
 		HTML_showFormEnd();
 
@@ -525,12 +787,6 @@ function GRP_showGeneralInfo($groupName)
 
 	echo("<table align=\"center\"><tr><td><div class=\"subtable_shadow\">
 	<table class=\"subtable\" align=\"center\">
-		<tr> <td colspan=\"2\"><span class=\"subhighlight\">$I18N_group_information:</span></td></tr>
-		<tr>
-			<td><span class=\"subhighlight\">$I18N_property</span></td>
-			<td><span class=\"subhighlight\">$I18N_value</span></td>
-		</tr>
-		<tr> <td>$I18N_group_name:</td>	<td> $groupName </td> </tr>
 		<tr> <td>$I18N_client_amount:</td>	<td> $clientAmount </td> </tr>
 		<tr> <td>$I18N_description:</td>	<td> $grpDescription </td> </tr>
 	</table></div></td><tr></table>");

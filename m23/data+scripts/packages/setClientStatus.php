@@ -25,6 +25,5 @@
 
 	CHECK_FW(CC_status,$_GET['status']);
 	$sql="UPDATE clients SET status='".$_GET['status']."' WHERE client='".CLIENT_getClientName()."';";
-
 	DB_query($sql); //FW ok
 ?>

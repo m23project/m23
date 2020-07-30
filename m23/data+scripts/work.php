@@ -8,6 +8,7 @@
 	include_once('/m23/inc/html.php');
 	include('/m23/inc/remotevar.php');
 	include('/m23/inc/client.php');
+	include('/m23/inc/groups.php');
 	include('/m23/inc/distr.php');
 	include('/m23/inc/sourceslist.php');
 	include_once('/m23/inc/messageReceive.php');
@@ -52,6 +53,8 @@ echo('#!/bin/bash
 	$client = CLIENT_getClientName();
 	$_SESSION['clientName'] = $client;
 
+	GRP_runSettingsForClient($client, GRP_SETTING_TYPE_execBeginningOfWorkPHP);
+
 	// Count waiting and finished jobs for the client
 	if ($isInstallReasonEnabled)
 	{
@@ -76,11 +79,12 @@ echo('#!/bin/bash
 	else
 	    $sql="SELECT package,id FROM `clientjobs` WHERE client='$client' AND status='waiting' ORDER BY priority, id";
 
-	$sql="SELECT package,id FROM `clientjobs` WHERE client='$client' AND status='waiting' ORDER BY priority, id";
 	$result=DB_query($sql) or die ("work.php: Can't execute SQL statement:".$sql);
 	
 	if ($result)
 	{
+		// HELPER_logOnClientBASH('/tmp/work.runLog', 'result');
+
 		$line = mysqli_fetch_row($result);
 
 		$package=$line[0];
@@ -88,6 +92,7 @@ echo('#!/bin/bash
 
 		if (strlen($package)>0)
 		{
+			// HELPER_logOnClientBASH('/tmp/work.runLog', 'package > 0');
 
 			$error=false;
 			CLIENT_recalculateStatusBar($client);
@@ -104,6 +109,9 @@ echo('#!/bin/bash
 			if ($waitForFinishedUpdate || $waitForSelectionOfDistribution || $waitForFinishedDownloadOfBaseSys)
 //m23customPatchEnd id=waitCases
 			{
+				// HELPER_logOnClientBASH('/tmp/work.runLog', 'wait');
+
+			
 				if ($waitForFinishedUpdate)
 					$waitMsg = 'Finishing of the m23 server update';
 				elseif ($waitForSelectionOfDistribution)
@@ -115,9 +123,12 @@ echo('#!/bin/bash
 
 				echo("echo Waiting for:\necho $waitMsg\nsleep 60\n");
 				executeNextWork();
+				// HELPER_logOnClientBASH('/tmp/work.runLog', 'executeNextWork1');
 			}
 			else
 			{
+				// HELPER_logOnClientBASH('/tmp/work.runLog', 'no wait');
+
 				if (file_exists("/m23/inc/distr/$distr/packages/".$package."Install.php"))
 					//use distribution specific path
 					include("/m23/inc/distr/$distr/packages/".$package."Install.php");
@@ -132,6 +143,7 @@ echo('#!/bin/bash
 
 				if (!$error)
 				{
+					// HELPER_logOnClientBASH('/tmp/work.runLog', 'no error');
 					CLIENT_setLastmodify(-1,$client);
 
 					if (CLIENT_isAskingInDebugMode())
@@ -139,6 +151,8 @@ echo('#!/bin/bash
 
 					if ($isInstallReasonEnabled)
 					{
+						// HELPER_logOnClientBASH('/tmp/work.runLog', 'isInstallReasonEnabled');
+						
 						$reason=$line[2];
 
 						$ply_msg4user="($counted_finishedClientjobs/$counted_clientjobs) $package";
@@ -148,10 +162,16 @@ echo('#!/bin/bash
 						if (SERVER_isInstallReasonEnabled() && !empty($reason))
 							$msg4user .= "\n<b>$I18N_reason:</b>\n$reason";
 
+						//m23customPatchBegin type=change id=companyLogo
 						CLIENT_sendPlymouthMessage($ply_msg4user);
 						CLIENT_sendNotifySendMessage($msg4user, "/usr/share/icons/ourCompanyLogo.png", false, 0);
 						CLIENT_sendM23FetchJobFinishedMessage("Installation finished", "/usr/share/icons/ourCompanyLogo.png", false, 0);
+						//m23customPatchEnd id=companyLogo
 					}
+
+					// HELPER_logOnClientBASH('/tmp/work.runLog', 'run');
+
+					PKG_updateStartTime($line[1]);
 
 					echo("\nsync\n");
 
@@ -161,13 +181,23 @@ echo('#!/bin/bash
 				}
 				else
 				{
+					// HELPER_logOnClientBASH('/tmp/work.runLog', 'error');
 					sendClientStatus($id,"error");
+					// HELPER_logOnClientBASH('/tmp/work.runLog', 'executeNextWork2');
 					executeNextWork();
 				}
 			}
 		}
 		else
 		{
+			// Make sure, the client has installed the base system
+			if (PKG_countJobs($client, '') > 2)
+			{
+				// HELPER_logOnClientBASH('/tmp/work.runLog', 'GRP_runSettingsForClient');
+				GRP_runSettingsForClient($client, GRP_SETTING_TYPE_execWhenAllJobsFinished);
+			}
+
+			// HELPER_logOnClientBASH('/tmp/work.runLog', 'CLIENT_stopLiveScreenRecording');
 			//Stop the real-time client logging
 			CLIENT_stopLiveScreenRecording($client);
 		}

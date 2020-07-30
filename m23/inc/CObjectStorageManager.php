@@ -115,8 +115,8 @@ class CObjectStorageManager extends CChecks
 		CHECK_FW(CC_COSclass, $class, CC_COSident, $ident);
 		$res = DB_query("SELECT object, ident FROM `PHPObjectStorage` WHERE `class` = '$class' AND `ident` = '$ident'");
 		$objects = $this->getAllObjectsByRes($res);
-		
-		if (is_object($objects[0]))
+
+		if (isset($objects[0]) && (is_object($objects[0])))
 			return($objects[0]);
 		else
 			return(null);

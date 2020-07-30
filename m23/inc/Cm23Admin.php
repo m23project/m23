@@ -7,7 +7,7 @@ $*/
 
 class Cm23Admin extends CChecks
 {
-	private $defaultOptions = array('css' => 'index.css', 'language' => "en");
+	private $defaultOptions = array('css' => 'index_fb.css', 'language' => "en");
 	private $cssList = array('index_fb.css', 'index.css');
 	private $cssAssign = array('index_fb.css' => 'Fresh Blue', 'index.css' => 'Standard');
 	private $options = array();

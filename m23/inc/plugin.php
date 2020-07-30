@@ -12,7 +12,7 @@ $*/
 **/
 function PLG_listMenuPlugins($path)
 {
-	if (!$_SESSION['m23Shared'])
+	if (!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared'])
 	{
 		$handle = opendir($path);
 

@@ -32,7 +32,7 @@ A click on <i>"$I18N_delete"</i> removes the current (shown/selected at <i>"$I18
 You can create a new partition in the free space of a hard disk with this function. Choose the start and end point of the new partition by clicking into the white space of a drive (on activated JavaScript) or by entering the values for its bordes into <i>"$I18N_start"</i> and <i>"$I18N_end"</i>. Of course it is possible to create a partition that is smaler than the whole free area. Choose the type of the partition at <i>"$I18N_type"</i> to select, if a primary, extended or logical partition should be created. Finally create it with a click to <i>"$I18N_add"</i>.
 
 <!-- V15.1 begin --><u>Note about UEFI</u>
-If your m23 client is using UEFI, you need to create an EFI boot partition first. Position and size of this partition are set automatically and cannot be changed.<!-- V15.1 end -->
+If your m23 client is using UEFI, you need to create an EFI boot partition first. Position and size of this partition are set automatically and cannot be changed.<!-- V15.1 end --><!-- V20.1 begin --> When there already exists an EFI boot partition on the m23 client, it will continue to be used, keeping the bootloaders of other potential operating systems on the system intact. The EFI partition will only be deleted, created and / or formated, when it is damaged or does not exist.<!-- V20.1 end -->
 
 <b>$I18N_formatPartition</b>
 This will format the currently selected partition. Choose the file system you want to use at <i>"$I18N_type"</i> and then click on <i>"$I18N_format"</i>.

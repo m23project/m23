@@ -15,6 +15,9 @@
 	$checkOff = false;
 	
 	$clientOnlineStatusColumn = SERVER_isClientOnlineStatusEnabled();
+	$clientUpdateJobsMaxAllowedDelay = SERVER_getWarnWhenUpdateJobsAreDelayed();
+	$clientRebootMaxAllowedDelay = SERVER_getWarnWhenClientRebootsRequestedByPackagesAreDelayed();
+	$clientLastUpgradeColumn = SERVER_getShowClientLastUpgradeColumn();
 
 	//Create editlines and get the search term
 	$searchLine = CLIENT_getOverviewSearchLine(2);
@@ -30,7 +33,7 @@
 	
 	$groupAction = HTML_selection('SEL_type', $selTypeA, SELTYPE_selection);
 
-	// 
+	// Set initial values
 	$allCheckedClients = array();
 	$allCheckedClientsCounter = 0;
 
@@ -39,6 +42,9 @@
 		//Run thru all client numbers on the page
 		for ($i=0; $i < $_POST['clientAmount']; $i++)
 		{
+			// Skips undefined checkbuttons (not set client names)
+			if (!isset($_POST["CB_do$i"])) continue;
+
 			//Get the according client name of the check box
 			$clientName = $_POST["CB_do$i"];
 			if (isset($clientName))
@@ -96,62 +102,70 @@
 
 // Page selection (decide what clients should be shown)
 	switch ($action)
+	{
+		case "setup":
 		{
-			case "setup":
-				{
-					$title = $I18N_setup_client;
-					$results = CLIENT_query("=",STATUS_YELLOW,"","",$groupname,"","", $searchLine);
-					break;
-				};
-				
-			case "install":
-				{
-					$title = $I18N_install_packages;
-					$results = CLIENT_query("=",STATUS_GREEN,"=",STATUS_BLUE,$groupname,"=",STATUS_DEFINE, $searchLine);
-					break;
-				};
-				
-			case "deinstall":
-				{
-					$title = $I18N_deinstall_packages;
-					$results = CLIENT_query("=",STATUS_GREEN,"","",$groupname,"","", $searchLine);
-					break;
-				};
-				
-			case "delete":
-				{
-					$title = $I18N_delete_client;
-					$results = CLIENT_query("","","","",$groupname,"","", $searchLine);
-					break;
-				};
-				
-			case "update":
-				{
-					$title = $I18N_updateClient;
-					$results = CLIENT_query("=",STATUS_GREEN,"","",$groupname,"","", $searchLine);
-					break;
-				};
-				
-			case "critical":
-				{
-					$title = $I18N_criticalClients;
-					$results = CLIENT_query("=",STATUS_CRITICAL,"","",$groupname,"","", $searchLine);
-					break;
-				};
+			$title = $I18N_setup_client;
+			if (!empty($searchLine))
+				$results = CLIENT_query("=",STATUS_YELLOW,"","",$groupname,"","", $searchLine);
+			break;
+		}
+			
+		case "install":
+		{
+			$title = $I18N_install_packages;
+			if (!empty($searchLine))
+				$results = CLIENT_query("=",STATUS_GREEN,"=",STATUS_BLUE,$groupname,"=",STATUS_DEFINE, $searchLine);
+			break;
+		}
+			
+		case "deinstall":
+		{
+			$title = $I18N_deinstall_packages;
+			if (!empty($searchLine))
+				$results = CLIENT_query("=",STATUS_GREEN,"","",$groupname,"","", $searchLine);
+			break;
+		}
 
-			case "massInstall":
-				{
-					$title = $I18N_massInstall;
-					$results = CLIENT_query("=",STATUS_DEFINE,"","",$groupname,"","", $searchLine);
-					break;
-				};
+		case "delete":
+		{
+			$title = $I18N_delete_client;
+			if (!empty($searchLine))
+				$results = CLIENT_query("","","","",$groupname,"","", $searchLine);
+			break;
+		}
 
-			default:
-				{
-					$title = $I18N_overview_clients;
-					$results = CLIENT_query("","","","",$groupname,"","", $searchLine);
-				};
-		};
+		case "update":
+		{
+			$title = $I18N_updateClient;
+			if (!empty($searchLine))
+				$results = CLIENT_query("=",STATUS_GREEN,"","",$groupname,"","", $searchLine);
+			break;
+		}
+
+		case "critical":
+		{
+			$title = $I18N_criticalClients;
+			if (!empty($searchLine))
+				$results = CLIENT_query("=",STATUS_CRITICAL,"","",$groupname,"","", $searchLine);
+			break;
+		}
+
+		case "massInstall":
+		{
+			$title = $I18N_massInstall;
+			if (!empty($searchLine))
+				$results = CLIENT_query("=",STATUS_DEFINE,"","",$groupname,"","", $searchLine);
+			break;
+		}
+
+		default:
+		{
+			$title = $I18N_overview_clients;
+			if (!empty($searchLine))
+				$results = CLIENT_query("","","","",$groupname,"","", $searchLine);
+		}
+	}
 	// Page selection end
 	
 	
@@ -164,6 +178,10 @@
 	echo("<span class=\"title\">$title$groupTitle</span><br><br>");
 
 	//1st search line
+	$searchFilter = new CSearchFilter();
+	$searchFilter->showSearchFilterDialog();
+	if (empty($searchLine))
+		$results = $searchFilter->getClientsAsMySQLResult();
 	CLIENT_showOverviewSearchDialog('ED_search1',true);
 
 	HTML_showTableHeader(true);
@@ -206,7 +224,12 @@
 			<a href=\"index.php?page=clientsoverview&orderBy=lastchange&direction=asc&action=$action&searchLine=$searchLine\"><img src=\"/gfx/upArrow.png\" border=0></a>
 			<a href=\"index.php?page=clientsoverview&orderBy=lastchange&direction=desc&action=$action&searchLine=$searchLine\"><img src=\"/gfx/downArrow.png\" border=0></a>
 		</span>
-	</td>
+	</td>");
+
+	if ($clientLastUpgradeColumn)
+		echo("<td align=\"center\"><span class=\"subhighlight\">$I18N_lastUpgrade</span></td>");
+
+	echo("
 	<td></td>
      </tr>");
 
@@ -245,15 +268,20 @@
 					$link = "<a href=\"index.php?page=clientdetails&client=$data[client]&id=$data[id]\">$I18N_controlCenter</a>";
 			};
 
+			//m23customPatchBegin type=change id=packageCountingByDB_Trigger
 			/* Anzahl der installierten Pakete für Client zählen*/
 			$counted_clientpackages = PKG_countPackages($data['client']);
 // 			$counted_clientpackages = $data['trg_sum_clientpackages'];
+			//m23customPatchEnd id=packageCountingByDB_Trigger
 
 			/* Anzahl der anstehenden Jobs für Client zählen*/
 			$counted_waitingClientjobs = PKG_countJobs($data['client'],'waiting');
 			$counted_clientjobs = PKG_countJobs($data['client'],'');
 			
-			$htmlStatus=CLIENT_generateHTMLStatusBar($data['client'], $data['id'], $data['status'], $data['vmRole'], $data['vmSoftware']);
+			$htmlStatus = CLIENT_generateHTMLStatusBar($data['client'], $data['id'], $data['status'], $data['vmRole'], $data['vmSoftware']);
+			$htmlStatus .= CLIENT_generateHTMLDelayStatus($data['client'], $data['id'], $clientUpdateJobsMaxAllowedDelay, $clientRebootMaxAllowedDelay);
+			
+			
 	
 			/* Unix Datum in Lesbares Datum umwandeln */
 			$installdate = date($DATE_TIME_FORMAT, $data['installdate']);
@@ -274,7 +302,7 @@
 	
 			if ($clientOnlineStatusColumn)
 			{
-				$dr_state = CLIENT_generateHTMLDedicatedAndReachableStatus($data['client']);
+				$dr_state = CLIENT_generateHTMLDedicatedAndReachableStatus($data['online']);
 				echo("<td align=\"left\">$dr_state[html]</td>");
 			}
 	
@@ -284,27 +312,36 @@
 	
 			echo("
 				<td>");
-	
+
 					GRP_showClientGroups($data['client'],true);
-	
+
 					if (isset($_POST["CB_do$lineNr"]) && !$checkOff)
 						$checked="checked";
 					else
 						$checked="";
-	
+
 			echo("
 				</td>
 				<td> <INPUT type=\"checkbox\" name=\"CB_do$lineNr\" value=\"$data[client]\" $checked> </td>
 				<td> <a href=\"index.php?page=clientpackages&id=$data[id]&client=$data[client]\">$counted_clientpackages</a> </td>
 				<td> <a href=\"index.php?page=changeJobs&id=$data[id]&client=$data[client]\">$counted_waitingClientjobs/$counted_clientjobs</a> </td>
 				<td> $installdate </td>
-				<td nowrap> $lastmodify </td>
+				<td nowrap> $lastmodify </td>");
+
+			if ($clientLastUpgradeColumn)
+			{
+				$lastUpgradeTime = PKG_getLastUpgradeTime($data['client']);
+				$lastUpgradeTimeS = is_null($lastUpgradeTime)? 'x' : date($DATE_TIME_FORMAT, $lastUpgradeTime);
+				echo("<td nowrap> $lastUpgradeTimeS </td>");
+			}
+
+			echo("
 				<td> $link </td>
 			</tr>");
 			$lineNr++;
 		}
 	}
-	
+
 	HTML_showTableEnd(true);
 	HTML_showTableHeader(true);
 

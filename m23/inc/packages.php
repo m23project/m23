@@ -6,6 +6,168 @@ $*/
 
 
 
+/**
+**name PKG_getLastUpgradeTime($clientName)
+**description Gets the timestamp of the latest finished update job.
+**parameter clientName: Name of the client.
+**return Timestamp of the latest finished update job, or NULL, if there is none.
+**/
+function PKG_getLastUpgradeTime($clientName)
+{
+	CHECK_FW(CC_client, $clientName);
+	$sql = "SELECT max(finishtime) FROM `clientjobs` WHERE status = 'done' AND package = 'm23update' AND client = '$clientName' GROUP BY client, package";
+
+	$res = DB_query($sql); //FW ok
+
+	$data = mysqli_fetch_row($res);
+
+	return($data[0]);
+}
+
+
+
+
+
+/**
+**name PKG_updateStartTime($id)
+**description Updates the starting time of a job with the current timestamp.
+**parameter id: id for the selected job.
+**/
+function PKG_updateStartTime($id)
+{
+	// Timestamp for starting the job
+	$starttime = time();
+
+	CHECK_FW(CC_id, $id);
+	$sql="UPDATE clientjobs SET starttime='$starttime' WHERE id=$id;";
+	DB_query($sql);
+}
+
+
+
+
+
+/**
+**name PKG_getDelayedJobsSQL($clientName, $maxAllowedDelay, $select = true, $status = 'waiting', $package = false)
+**description Prepares an SQL statement to get information about delayed jobs of a client or its amount.
+**parameter clientName: Name of the client or false, if all clients that are delayed, should be found.
+**parameter maxAllowedDelay: The maximum tolerable amount of time since adding the job. Only jobs that exceed the limit are added to the array.
+**parameter select: If true, an SQL statement to get information about delayed jobs will be created, otherwise it's an SQL statement for getting the amount of deleyed jobs.
+**parameter status: Status of the packages to check for delays. If unset, waiting jobs, if false all, will be checked.
+**parameter package: Name of the packages to check or false to check all.
+**return SQL statement to get information about delayed jobs of a client or its amount.
+**/
+function PKG_getDelayedJobsSQL($clientName, $maxAllowedDelay, $select, $status = 'waiting', $package = false)
+{
+	$maxAllowedDelay = (int) $maxAllowedDelay;
+	$currentTime = time();
+	$packageSQL = $statusSQL = '';
+
+	if ($clientName === false)
+	{
+		$what = 'client';
+		$clientWhereSQL = '';
+	}
+	else
+	{
+		CHECK_FW(CC_client, $clientName);
+		$clientWhereSQL = "`client` = '$clientName' AND";
+
+		if ($select)
+			$what = "id, package, normalPackage, (`finishtime` - `addtime`) AS timediffJobs, ($currentTime - `finishtime` - `addtime`) AS timediffServer";
+		else
+			$what = "COUNT(*)";
+	}
+
+	// Filter by package name
+	if ($package !== false)
+		$packageSQL = "`package` = '$package' AND";
+
+	// Filter by package status
+	if ($status !== false)
+		$statusSQL = "`status` = '$status' AND";
+
+	return("SELECT $what FROM `clientjobs` WHERE $clientWhereSQL $packageSQL $statusSQL ((`finishtime` - `addtime`) > $maxAllowedDelay OR	( ((`finishtime` - `addtime`) < 0) AND ( ($currentTime - `finishtime` - `addtime`) > $maxAllowedDelay )))");
+}
+
+
+
+
+
+/**
+**name PKG_getDelayedJobs($clientName, $maxAllowedDelay, $status = 'waiting', $package = false)
+**description Gets an associative array with information about delayed jobs of a client.
+**parameter clientName: Name of the client.
+**parameter maxAllowedDelay: The maximum tolerable amount of time since adding the job. Only jobs that exceed the limit are added to the array.
+**parameter status: Status of the packages to check for delays. If unset, waiting jobs, if false all, will be checked.
+**parameter package: Name of the packages to check or false to check all.
+**return Associative array with information about delayed jobs of a client.
+**/
+function PKG_getDelayedJobs($clientName, $maxAllowedDelay, $status = 'waiting', $package = false)
+{
+	$i = 0;
+	$out = array();
+
+	$sql = PKG_getDelayedJobsSQL($clientName, $maxAllowedDelay, true, $status, $package);
+
+	$res = DB_query($sql);
+
+	while($data = mysqli_fetch_assoc($res))
+		$out[ $i++ ] = $data;
+
+	return($out);
+}
+
+
+
+
+
+/**
+**name PKG_getDelayedJobsAmount($clientName, $maxAllowedDelay, $status = 'waiting', $package = false)
+**description Gets the amount of delayed jobs of a client.
+**parameter clientName: Name of the client.
+**parameter maxAllowedDelay: The maximum tolerable amount of time since adding the job. Only jobs that exceed the limit are added to the array.
+**return Amount of delayed jobs of a client.
+**/
+function PKG_getDelayedJobsAmount($clientName, $maxAllowedDelay, $status = 'waiting', $package = false)
+{
+	$sql = PKG_getDelayedJobsSQL($clientName, $maxAllowedDelay, false, $status, $package);
+// 	print("<h4>$sql</h4>");
+
+	$res = DB_query($sql); //FW ok
+
+	$data = mysqli_fetch_row($res);
+
+	return($data[0]);
+}
+
+
+
+
+
+/**
+**name PKG_getClientsWithDelayedUpdateJobs($maxAllowedDelay)
+**description Gets all clients that have delayed jobs.
+**parameter maxAllowedDelay: The maximum tolerable amount of time since adding the job. Only jobs that exceed the limit are added to the array.
+**return Array with all clients that have delayed jobs.
+**/
+function PKG_getClientsWithDelayedUpdateJobs($maxAllowedDelay)
+{
+	$out = array();
+	$i = 0;
+
+	$sql = PKG_getDelayedJobsSQL(false, $maxAllowedDelay, false, 'waiting', 'm23update');
+
+	$res = DB_query($sql); //FW ok
+
+	while ($data = mysqli_fetch_row($res))
+		$out[$i++] = $data[0];
+
+	return($out);
+}
+
+
+
 
 
 /**
@@ -197,12 +359,15 @@ function PKG_importSelectedPackagesFromFile($client, $file)
 	//Get the space-seperated packages from the file and generate an array
 	$packages = explode(' ',file_get_contents($file));
 
+	// Timestamp for adding the job
+	$addtime = time();
+
 	//Run thru the packages
 	foreach ($packages as $package)
 	{
 		CHECK_FW(CC_package, $package);
 	
-		$sqlInsert = "INSERT INTO `clientjobs` (`client` , `package` , `priority` , `status` , `params` , `normalPackage` , `installedSize`) VALUES ('$client', 'm23normal', 25, 'wait4acc', '', '$package', 0)";
+		$sqlInsert = "INSERT INTO `clientjobs` (`client` , `package` , `priority` , `status` , `params` , `normalPackage` , `installedSize`, `addtime`, `finishtime`) VALUES ('$client', 'm23normal', 25, 'wait4acc', '', '$package', 0, $addtime, -1)";
 
 		DB_query($sqlInsert);
 	}
@@ -997,12 +1162,15 @@ function PKG_addPackageSelection($client,$packageSelectionName,$normalPackageTyp
 
 			CHECK_FW(CC_package, $normalPackageType, CC_clientname, $client);
 
+			// Timestamp for adding the job
+			$addtime = time();
+
 			// Split normal package lines, that may contain multiple package names
 			foreach (explode(' ', $line['normalPackage']) as $normalPackage)
 			{
 				if (empty($normalPackage)) continue;
 
-				$sqlInsert = "INSERT INTO `clientjobs` (`client` , `package` , `priority` , `status` , `params` , `normalPackage` , `installedSize`) VALUES ('$client', '$normalPackageType', '".$line['priority']."','wait4acc', '".$line['params']."', '$normalPackage', '".$line['installedSize']."')";
+				$sqlInsert = "INSERT INTO `clientjobs` (`client` , `package` , `priority` , `status` , `params` , `normalPackage` , `installedSize`, `addtime`, `finishtime`) VALUES ('$client', '$normalPackageType', '".$line['priority']."','wait4acc', '".$line['params']."', '$normalPackage', '".$line['installedSize']."', $addtime, -1)";
 
 				DB_query($sqlInsert);
 
@@ -1658,9 +1826,9 @@ return($i);
 **/
 function PKG_addSpecialPackages($amount,$client,$distr)
 {
-	$count=0;
+	$count = 0;
 	//run thru the special checkbuttons
-	for ($i=0; $i < $amount; $i++)
+	for ($i = 0; $i < $amount; $i++)
 	{
 		$var="CB_specialPkg".$i;
 		if (!empty($_POST[$var]))
@@ -1670,7 +1838,7 @@ function PKG_addSpecialPackages($amount,$client,$distr)
 		}
 	}
 
-	return($counter);
+	return($count);
 }
 
 
@@ -1847,6 +2015,9 @@ function PKG_addStatusJob($client,$packageName,$priority,$params,$status)
 {
 	$client = trim($client);
 
+	// Timestamp for adding the job
+	$addtime = time();
+
 // 	$clientOptions = CLIENT_getAllOptions($client);
 // 	$packagesource = isset($clientOptions['packagesource']) ? $clientOptions['packagesource'] : '';
 // 	$distr = isset($clientOptions['distr']) ? $clientOptions['distr'] : '';
@@ -1873,28 +2044,28 @@ function PKG_addStatusJob($client,$packageName,$priority,$params,$status)
 
 			$sql = "SELECT id FROM `clientjobs` WHERE client='$client' AND status='$status' AND normalPackage='$params'";
 
-			$insertSql="INSERT INTO clientjobs (client,package,priority,status,normalPackage,installedSize) VALUES
-			('$client', '$packageName', $priority, '$status', '$params','$installedSize');";
+			$insertSql="INSERT INTO clientjobs (client,package,priority,status,normalPackage,installedSize,addtime,finishtime) VALUES
+			('$client', '$packageName', $priority, '$status', '$params','$installedSize', '$addtime', '-1');";
 		}
 	else //if we have other packages the package names differ
 		{
 			CHECK_FW(CC_clientname, $client, CC_jobstatus, $status, CC_nochecknow, $params, CC_package, $packageName, CC_packagepriority, $priority);
 			$sql = "SELECT id FROM `clientjobs` WHERE client='$client' AND status='$status' AND package='$packageName' AND priority='$priority'";
 
-			$insertSql="INSERT INTO clientjobs (client,package,priority,status,params) VALUES
-			('$client', '$packageName', '$priority', '$status', '$params');";
+			$insertSql="INSERT INTO clientjobs (client,package,priority,status,params,addtime,finishtime) VALUES
+			('$client', '$packageName', '$priority', '$status', '$params', '$addtime', '-1');";
 		}
 
 	$result=DB_query($sql); //FW ok
 
 	if ($line=mysqli_fetch_row($result))
-		{//we got one old job: let's delete it
-			$sql="DELETE FROM clientjobs WHERE id = '".$line[0]."';";
-			DB_query($sql); //FW ok
-		}
+	{//we got one old job: let's delete it
+		$sql="DELETE FROM clientjobs WHERE id = '".$line[0]."';";
+		DB_query($sql); //FW ok
+	}
 
 	DB_query($insertSql); //FW ok
-};
+}
 
 
 
@@ -2057,7 +2228,7 @@ function PKG_addShutdownPackage($client)
 			PKG_addJob($client,"m23Shutdown",PKG_getSpecialPackagePriority("m23Shutdown"),"");
 			return(true);
 		}
-	elseif ($_SESSION['m23Shared'])
+	elseif (isset($_SESSION['m23Shared']) && $_SESSION['m23Shared'])
 		//Add nothing, if m23shared is active
 		return(false);
 	else
@@ -2081,7 +2252,7 @@ function PKG_addShutdownOrRebootPackage($client)
 		return(false);
 
 	//Add a shutdown package, if m23shared is active
-	if ($_SESSION['m23Shared'])
+	if (isset($_SESSION['m23Shared']) && $_SESSION['m23Shared'])
 		PKG_addJob($client,"m23Shutdown",PKG_getSpecialPackagePriority("m23Shutdown"),"");
 
 	if (CLIENT_isrunning($client) || VM_isCloudStackClient($client))
@@ -2419,7 +2590,7 @@ function PKG_previewInstallationDeinstallation($clientName,$install)
 	include_once("/m23/inc/distr/".$clientOptions['distr']."/packages.php");
 
 	//try to update the client package status file
-	if (!$_SESSION['m23Shared'])
+	if ((!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared']))
 	{
 		if (function_exists('CLCFG_copyClientPackageStatus'))	//it exists not in halfSister
 			CLCFG_copyClientPackageStatus($clientName);
@@ -2612,7 +2783,7 @@ function PKG_previewUpdateSystem($clientName,$completeUpdate)
 	include_once("/m23/inc/distr/".$clientOptions['distr']."/packages.php");
 
 	//try to update the client package status file
-	if (!$_SESSION['m23Shared'])
+	if (!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared'])
 	{
 		if (function_exists('CLCFG_copyClientPackageStatus'))	//it exists not in halfSister
 			CLCFG_copyClientPackageStatus($clientName);
@@ -2839,7 +3010,7 @@ function PKG_copyWait4accPackagesToClient($to,$from)
 
 /**
 **name PKG_copyPackagesToClient($to,$from,$status)
-**description copies all with a selected status jobs from one client to another
+**description copies all packages with a selected status jobs from one client to another
 **parameter from: the source client
 **parameter to: the destination client
 **parameter status: can be set to a package status or be empty to copy all jobs
@@ -2859,8 +3030,8 @@ function PKG_copyPackagesToClient($to,$from,$status)
 
 	while( $data = mysqli_fetch_array($res))
 	{
-		$iSQL="INSERT INTO `clientjobs` (`client` , `package` , `reason` , `priority` , `status` , `params` , `normalPackage` , `installedSize` ) VALUES (
-		'$to', '$data[package]', '$data[reason]', '$data[priority]', '$data[status]', '$data[params]', '$data[normalPackage]', '$data[installedSize]')";
+		$iSQL="INSERT INTO `clientjobs` (`client` , `package` , `reason` , `priority` , `status` , `params` , `normalPackage` , `installedSize`, `addtime`, `finishtime`) VALUES (
+		'$to', '$data[package]', '$data[reason]', '$data[priority]', '$data[status]', '$data[params]', '$data[normalPackage]', '$data[installedSize]', '$data[addtime], '$data[finishtime])";
 
 		DB_query($iSQL); //FW ok
 	};
@@ -2958,7 +3129,7 @@ function PKG_deletePackageselection($selectionName)
 **/
 function PKG_getAllPackageSelections($addFirstEntry="")
 {
-	$out = '';
+	$out = array();
 
 	$sql="SELECT DISTINCT name FROM `recommendpackages` ORDER BY name";
 
@@ -2991,7 +3162,25 @@ function PKG_multiPackageSelectionsSelection($selName,$first,$addFirstEntry="")
 {
 	$selections = HELPER_array2AssociativeArray(PKG_getAllPackageSelections($addFirstEntry));
 	return(HTML_selection($selName,$selections, SELTYPE_selection, true, $first, false, "", 5));
-};
+}
+
+
+
+
+
+/**
+**name PKG_storablePackageSelectionsSelection($selName, $prefKey, $storePointer)
+**description Generates a storble multi selection with all package selections.
+**parameter selName: Name of the selection
+**parameter prefKey: Variable name of the preference the dialog element stands for.
+**parameter storePointer: Additional pointer to the variable where to store the entered value.
+**return An associative array with the choosen package selections.
+**/
+function PKG_storablePackageSelectionsSelection($selName, $prefKey, &$storePointer)
+{
+	$selections = HELPER_array2AssociativeArray(PKG_getAllPackageSelections('-'));
+	return(HTML_storableMultiSelection($selName, $prefKey, $selections, SELTYPE_selection, 5, true, false, $storePointer));
+}
 
 
 
@@ -3007,7 +3196,7 @@ function PKG_multiPackageSelectionsSelection($selName,$first,$addFirstEntry="")
 function PKG_showAllPackageSelections($selName,$first,$addFirstEntry="")
 {
 	return(HTML_listSelection($selName,PKG_getAllPackageSelections($addFirstEntry),$first));
-};
+}
 
 
 

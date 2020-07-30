@@ -525,7 +525,7 @@ class CFDiskIO extends CClient
 
 /**
 **name CFDiskIO::findAndSetEFIBootPartDev()
-**description Searches for the first vfat partitions and if one if found, sets it as EFI boot partition.
+**description Searches for the first vfat partition and if one is found, sets it as EFI boot partition.
 **/
 	public function findAndSetEFIBootPartDev()
 	{
@@ -601,6 +601,7 @@ class CFDiskIO extends CClient
 			$undoStep['ps'] = $this->partitionSteps;
 
 			// and add it
+			array_push($this->undoArray, $undoStep);
 			$this->updateUndoMd5();
 		}
 	}
@@ -3169,6 +3170,7 @@ class CFDiskIO extends CClient
 		$list['ext4'] = 'ext4';
 		$list['linux-swap'] = 'linux-swap';
 		$list['reiserfs'] = 'reiserfs';
+		$list['efi-boot'] = 'efi-boot';
 		return($list);
 	}
 
@@ -3264,7 +3266,7 @@ class CFDiskIO extends CClient
 **/
 	public function fdiskGetEntry(&$dev, &$mountpoint, &$parameter)
 	{
-		$cur = each($this->fstab);
+		$cur = HELPER_each($this->fstab);
 
 		// Is the array pointer at the end of the array?
 		if ($cur === false)
@@ -3278,7 +3280,7 @@ class CFDiskIO extends CClient
 		$mountpoint = $cur['value']['mnt'];
 		$parameter = $cur['value']['param'];
 
-		// Another entry could be 
+		// Another entry could be fetched
 		return(true);
 	}
 
@@ -3575,6 +3577,9 @@ class CFDiskIO extends CClient
 **/
 	public function getMknodCommand($dev, $genAll = false)
 	{
+		if (!isset($dev{0}))
+			return('');
+	
 		if (strpos($dev,"nvme0") !== false)
 		{
 			$out = "\nmknod /dev/nvme0 c 10 58 2> /dev/null\nmknod /dev/nvme0n1 b 259 0 2> /dev/null";
@@ -3592,7 +3597,7 @@ class CFDiskIO extends CClient
 	
 		// e.g. sda from /dev/sda
 		$pPartPure = basename($pDisk);
-	
+
 		// Get the ASCII number of the disk device character (e.g. sda => 'a' => 97)
 		$ord = ord($pPartPure{2});
 	

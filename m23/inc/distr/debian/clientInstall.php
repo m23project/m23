@@ -30,6 +30,8 @@ function DISTR_baseInstall($lang,$id)
 
 	CIR_enableDropbear();
 
+	CIR_stopHaveged();
+
 	CLCFG_activateDMA();
 
 	CLCFG_mountRootDir($clientOptions['instPart'], 'root', $CFDiskIOO);
@@ -40,11 +42,11 @@ function DISTR_baseInstall($lang,$id)
 
 	$CFDiskIOO->genManualFstab('/mnt/root');
 
-	
 	/* =====> */ MSR_statusBarIncCommand(2);
 
 	if (!PKG_isReconfiguredWithExtraDistr($id))
 	{
+
 		if (!CLIENT_isBasesystemInstalledFromImage($clientOptions))
 		{
 				CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $I18N_installing_basesystem);
@@ -371,6 +373,6 @@ function DISTR_startInstall($client,$desktop,$instPart,$swapPart)
 	//Make sure that the client is in the same state (running or turned off) after the insallation like before.
 	PKG_addShutdownOrRebootPackage($client);
 
- 	 CLIENT_startInstall($client);
+	CLIENT_startInstall($client);
 };
 ?>

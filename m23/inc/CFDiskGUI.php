@@ -37,6 +37,25 @@ class CFDiskGUI extends CFDiskBasic
 
 
 /**
+**name CFDiskGUI::getFSHint($fs)
+**description Extends selected file system names by hints.
+**parameter fs: Name of the file system.
+**returns Name of the file system potentially extended by a hint.
+**/
+	private function getFSHint($fs)
+	{
+		// Add a hint, if the filesystem is efi-boot
+		if ($fs == CFDiskIO::PT_EFIBOOT) 
+			return("$fs&nbsp;(*)");
+		else
+			return($fs);
+	}
+
+
+
+
+
+/**
 **name CFDiskGUI::fdiskSessionSetter($newVal, $varName)
 **description Generic function to store values in the client partition and format session or loads them.
 **parameter newVal: The value to set or false for not changing.
@@ -494,7 +513,7 @@ class CFDiskGUI extends CFDiskBasic
 
 
 /**
-**name CFDiskGUI::showPartTable($vDisk)
+**name CFDiskGUI::showPartTable2($vDisk)
 **description Shows the partition information for a disk as table.
 **parameter vDisk: Virtual (internally used) device number.
 **/
@@ -570,7 +589,7 @@ class CFDiskGUI extends CFDiskBasic
 				<td width=\"20\" bgcolor=\"$htmlColor\"></td>
 				<td>$dev</td>
 				<td>".$this->getPartitionTypeTranslator($type)."$raidInfoAdd</td>
-				<td>".$this->getFileSystemTranslator($fileSystem)."</td>
+				<td>".$this->getFSHint($this->getFileSystemTranslator($fileSystem))."</td>
 				<td>$size</td>
 				<td>$start - $end</td>
 			</tr>");
@@ -988,6 +1007,8 @@ class CFDiskGUI extends CFDiskBasic
 	{
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
+		$defineDiskHTML = '';
+
 		//Define edit lines for begin and end of the new partition
 		$newPartStart = HTML_input('ED_newPart_start', false, 6);
 		$newPartEnd = HTML_input('ED_newPart_end', false, 6);
@@ -1342,6 +1363,8 @@ class CFDiskGUI extends CFDiskBasic
 **/
 	private function getHTMLColorForFilesystemOrType($fsOrType)
 	{
+		// Also defined in: FDISK_colorFS
+	
 		// Supported filesystems
 		if (stristr($fsOrType,'ext4')) return('#406BA9');
 		if (stristr($fsOrType,'ext3')) return('#5186D4');
@@ -1487,6 +1510,8 @@ class CFDiskGUI extends CFDiskBasic
 		if ($mountPoint !== false)
 			$addMP = " $I18N_mountpoint: $mountPoint";
 	
+		$fileSystem = $this->getFSHint($fileSystem);
+	
 		return("$dev: $I18N_filesystem: $fileSystem$raidInfoAdd$addMP");
 	}
 
@@ -1586,7 +1611,7 @@ class CFDiskGUI extends CFDiskBasic
 					echo("	<tr>
 								<td>$I18N_format</td>
 								<td>".$step['dev']."</td>
-								<td>$I18N_filesystem: ".$step['fs']."</td>
+								<td>$I18N_filesystem: ".$this->getFSHint($step['fs'])."</td>
 							</tr>");
 					break;
 				}
@@ -1741,7 +1766,7 @@ class CFDiskGUI extends CFDiskBasic
 				<tr>
 					<td width=\"20\">&nbsp;&nbsp;</td>
 					<td width=\"20\" bgcolor=\"".$this->getHTMLColorForFilesystemOrType($fs)."\">&nbsp;&nbsp;</td>
-					<td>$fs</td>
+					<td>".$this->getFSHint($fs)."</td>
 				</tr>
 			");
 		}

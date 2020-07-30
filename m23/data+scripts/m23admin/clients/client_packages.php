@@ -9,9 +9,7 @@
 
 $clientOptions = CLIENT_getAllOptions($client);
 
-
-
-if (!isset($clientOptions['distr']) || (strlen($distr) == 0))
+if (!isset($clientOptions['distr']) || (strlen($clientOptions['distr']) == 0))
 	$distr = "debian";
 else
 	$distr = $clientOptions['distr'];

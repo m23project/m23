@@ -10,6 +10,59 @@ define('LOG_CAU', '/m23/log/autoUpdate.log');
 
 
 
+
+
+/**
+**name HELPER_logOnClientBASH($logFile, $message)
+**description Generates BASH code to show and log a status message with timestamp.
+**parameter logFile: Name of the log file on the client.
+**parameter message: Message to show.
+**/
+function HELPER_logOnClientBASH($logFile, $message)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	echo("
+	echo \"$(date +%Y-%m-%d-%T): $message\" > \"$logFile\"
+	cat \"$logFile\"
+");
+}
+
+
+
+
+
+/**
+**name HELPER_each(&$arr)
+**description Replacement for the deprecaded each function: Returns the next element from an array on each call.
+**parameter arr: Input array.
+**returns: Array with (0 => $key, 1 => $val, 'key' => $key, 'value' => $val) or NULL, if there are no more elements in the array.
+**/
+function HELPER_each(&$arr)
+{
+	// Get key of the currently selected element
+	$key = key($arr);
+
+	if ($key === NULL)
+		$out = false;
+	else
+	{
+		// Get value of the currently selected element
+		$val = current($arr);
+		// Build an array storing keys and values in associative and normal notation, like the original "each" would do.
+		$out = array(0 => $key, 1 => $val, 'key' => $key, 'value' => $val);
+	}
+
+	// Jump to next element in array
+	next($arr);
+
+	return($out);
+}
+
+
+
+
+
 /**
 **name HELPER_getClientNameAndID(&$client, &$id)
 **description Gets client ID and name from the $_POST or $_GET array.
@@ -933,7 +986,7 @@ function HELPER_getRemoteFileContents($url, $storeFile, $refreshTime, $forceOver
 	if ((!is_file($filePath)) || ((time() - filemtime($filePath)) / 60) > $refreshTime)
 	{
 		//Download the file
-		system($proxyVariables."\nwget \"$url\" -O $filePath.temp -t1 -T5");
+		system($proxyVariables."\nwget -qq \"$url\" -O $filePath.temp -t1 -T5");
 	}
 
 	if (file_exists("$filePath.temp") && ((filesize("$filePath.temp") > 0) || $forceOverwrite))

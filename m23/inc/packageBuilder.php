@@ -84,6 +84,22 @@ function PKGBUILDER_showUploadDialog()
 
 
 /**
+**name PKGBUILDER_signExtraDebsRelease()
+**description Signs the Release file in the extraDebs directory as Release.gpg and InRelease.
+**/
+function PKGBUILDER_signExtraDebsRelease()
+{
+	$GPGSign = new CGPGSign(CGPGSign::MODE_LOAD);
+	$GPGSign->gpgSignDetached(EXTRA_DEBS_DIRECTORY.'/Release', EXTRA_DEBS_DIRECTORY.'/Release.gpg');
+	$GPGSign->gpgSignClear(EXTRA_DEBS_DIRECTORY.'/Release', EXTRA_DEBS_DIRECTORY.'/InRelease');
+	$GPGSign->exportPublicSignKey();
+}
+
+
+
+
+
+/**
 **name PKGBUILDER_listFiles()
 **description Shows a dialog of all files in EXTRA_DEBS_DIRECTORY with possibillity to create Debian packages from tar files and to delete files.
 **/
@@ -97,9 +113,7 @@ function PKGBUILDER_listFiles()
 	if (HTML_submit("BUT_recreatePackageIndex",$I18N_recreatePackageIndex))
 	{
 		PKGBUILDER_tar2deb(false);
-		$GPGSign = new CGPGSign(CGPGSign::MODE_LOAD);
-		$GPGSign->gpgSignDetached(EXTRA_DEBS_DIRECTORY.'/Release', EXTRA_DEBS_DIRECTORY.'/Release.gpg');
-		$GPGSign->gpgSignClear(EXTRA_DEBS_DIRECTORY.'/Release', EXTRA_DEBS_DIRECTORY.'/InRelease');
+		PKGBUILDER_signExtraDebsRelease();
 	}
 
 

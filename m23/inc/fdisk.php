@@ -2216,6 +2216,8 @@ function FDISK_getAllDrives($partitions)
 **/
 function FDISK_colorFS($fsName)
 {
+ // Also defined in: CFDiskGUI::getHTMLColorForFilesystemOrType
+
  //html color-codes
  $COL_EXT2="#62A1FF";
  $COL_EXT3="#5186D4";
@@ -2683,6 +2685,7 @@ function FDISK_getSupportedFS()
 	$list[2] = "ext4";
 	$list[3] = "linux-swap";
 	$list[4] = "reiserfs";
+	$list[5] = "efi-boot";
 	return($list);
 }
 
@@ -3841,93 +3844,96 @@ function FDISK_genPartedCommands($partJobs, $mkfsextOptions, $sourceslist)
 	$critical=true;
 
 	for ($jobNr = 0; $jobNr < $partJobs['job_amount']; $jobNr++)
-		{
-			switch ($partJobs["command$jobNr"])
+	{
+		if (!isset($partJobs["command$jobNr"]))
+			continue;
+	
+		switch ($partJobs["command$jobNr"])
+			{
+				case "add":
+				{ //create a partition
+					$cmd = "
+					checkdisklabel ".$partJobs["path$jobNr"]."
+					parted -s ".$partJobs["path$jobNr"]." mkpart ".$partJobs["type$jobNr"]." ".$partJobs["start$jobNr"]." ".$partJobs["end$jobNr"].FDISK_rereadPartTable($partJobs["path$jobNr"]);
+					$out.= $cmd;
+					$critical=false;
+					break;
+				}
+
+				case "rm":
 				{
-					case "add":
-						{ //create a partition
-							$cmd = "
-							checkdisklabel ".$partJobs["path$jobNr"]."
-							parted -s ".$partJobs["path$jobNr"]." mkpart ".$partJobs["type$jobNr"]." ".$partJobs["start$jobNr"]." ".$partJobs["end$jobNr"].FDISK_rereadPartTable($partJobs["path$jobNr"]);
-							$out.= $cmd;
-							$critical=false;
-							break;
-						};
+					$path = $partJobs["path$jobNr"];
 
-					case "rm":
-						{
-							$path = $partJobs["path$jobNr"];
+					//Check if a RAID should be deleted
+					if (strpos($path, "/dev/md") !== false)
+						$cmd = "mdadm --stop $path";
+					else
+						$cmd = "parted -s $path rm ".$partJobs["devNr$jobNr"].FDISK_rereadPartTable($path);
+					$out.= $cmd;
+					$critical=false;
 
-							//Check if a RAID should be deleted
-							if (strpos($path, "/dev/md") !== false)
-								$cmd = "mdadm --stop $path";
-							else
-								$cmd = "parted -s $path rm ".$partJobs["devNr$jobNr"].FDISK_rereadPartTable($path);
-							$out.= $cmd;
-							$critical=false;
+					break;
+				}
 
-							break;
-						};
+				case "format":
+				{
+					$part = $partJobs["path$jobNr"];
 
-					case "format":
-						{
-							$part = $partJobs["path$jobNr"];
+					/*
+						E.g. $part = "/dev/hda1"
+					*/
+					$pathNr = preg_split("/[0-9]/",$part);
+					//$pathNr[0] = "/dev/hda"
+					$partPath = $pathNr[0];
+					/*
+						Get the part of partition path after the drive
+						
+						$part = "/dev/hda1"
+						$partPath = "/dev/hda"
+						$partNr   = "1"
+					*/
+					$partNr = substr($part, strlen($partPath));
 
-							/*
-								E.g. $part = "/dev/hda1"
-							*/
-							$pathNr = preg_split("/[0-9]/",$part);
-							//$pathNr[0] = "/dev/hda"
-							$partPath = $pathNr[0];
-							/*
-								Get the part of partition path after the drive
-								
-								$part = "/dev/hda1"
-								$partPath = "/dev/hda"
-								$partNr   = "1"
-							*/
-							$partNr = substr($part, strlen($partPath));
+					switch(SRCLST_getStorageFS($partJobs["fs$jobNr"], $sourceslist))
+					{
+						case 'ext2': $cmd = "modprobe ext2; sfdisk --part-type $partPath $partNr 83; mkfs.ext2 -F $mkfsextOptions $part"; break;
+						case 'ext3': $cmd = "modprobe ext3; sfdisk --part-type $partPath $partNr 83; mkfs.ext3 -F $mkfsextOptions $part"; break;
+						case 'ext4': $cmd = "modprobe ext4; sfdisk --part-type $partPath $partNr 83; mkfs.ext4 -F $mkfsextOptions $part"; break;
+						case 'reiserfs': $cmd = "modprobe reiserfs; sfdisk --part-type $partPath $partNr 83; mkreiserfs -f $part"; break;
+						case 'linux-swap': $cmd = "sfdisk --part-type $partPath $partNr 82; mkswap $part"; break;
+					}
 
-							switch(SRCLST_getStorageFS($partJobs["fs$jobNr"], $sourceslist))
-								{
-									case ext2: $cmd = "modprobe ext2; sfdisk --part-type $partPath $partNr 83; mkfs.ext2 -F $mkfsextOptions $part"; break;
-									case ext3: $cmd = "modprobe ext3; sfdisk --part-type $partPath $partNr 83; mkfs.ext3 -F $mkfsextOptions $part"; break;
-									case ext4: $cmd = "modprobe ext4; sfdisk --part-type $partPath $partNr 83; mkfs.ext4 -F $mkfsextOptions $part"; break;
-									case reiserfs: $cmd = "modprobe reiserfs; sfdisk --part-type $partPath $partNr 83; mkreiserfs -f $part"; break;
-									case "linux-swap": $cmd = "sfdisk --part-type $partPath $partNr 82; mkswap $part"; break;
-								}
+					$out.= $cmd;
+					break;
+				}
 
-							$out.= $cmd;
-							break;
-						}
+				case "bflag":
+				{
+					$cmd = "parted -s ".$partJobs["path$jobNr"]." set ".$partJobs["devNr$jobNr"]." boot on";
+					$out.= $cmd;
+					break;
+				}
 
-					case "bflag":
-						{
-							$cmd = "parted -s ".$partJobs["path$jobNr"]." set ".$partJobs["devNr$jobNr"]." boot on";
-							$out.= $cmd;
-							break;
-						};
+				case "raid":
+				{
+					$cmd = RAID_create($partJobs["raidDev$jobNr"], $partJobs["devList$jobNr"], $partJobs["raidMode$jobNr"]);
+					$out.= $cmd;
+					break;
+				}
+			};
 
-					case "raid":
-						{
-							$cmd = RAID_create($partJobs["raidDev$jobNr"], $partJobs["devList$jobNr"], $partJobs["raidMode$jobNr"]);
-							$out.= $cmd;
-							break;
-						};
-				};
+		$out .= "\n
+		echo $? > /tmp/parted.err
 
-			$out .= "\n
-			echo $? > /tmp/parted.err
+		if [ `cat /tmp/parted.err` -ne 0 ]
+		then
+			".sendClientLogStatus("Partition or format error: $cmd",false,$critical)."
+		else
+			".sendClientLogStatus("Partition or format OK: $cmd",true)."
+		fi
 
-			if [ `cat /tmp/parted.err` -ne 0 ]
-			then
-				".sendClientLogStatus("Partition or format error: $cmd",false,$critical)."
-			else
-				".sendClientLogStatus("Partition or format OK: $cmd",true)."
-			fi
-
-			";
-		};
+		";
+	};
 
 	return($out);
 };

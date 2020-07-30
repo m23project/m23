@@ -1349,7 +1349,7 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_addNewLoginToUCSLDAP = "Anmeldungsdaten auf UCS speichern.";
 @$I18N_authentificationViaUCS = "Anmeldung über UCS";
 @$I18N_addNewLoginToUCSLDAPError = "Fehler beim Speichern der Anmeldungsdaten auf UCS.";
-@$I18N_readLoginFromUCSLDAPSupportedDistros = '(nutzbar auf Clients mit Debian 8, 9 + 10, Ubuntu 14.04, 16.04, 18.04, Linux Mint 17.x und 18.x)';
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(nutzbar auf Clients mit Debian 8, 9 + 10, Ubuntu 16.04, 18.04, 20.04 und Linux Mint 17.x, 18.x, 20.x)';
 
 //16.2
 @$I18N_clientUsesDynamicIP = "Der Client verwendet eine dynamische IP (DHCP)";
@@ -1428,7 +1428,7 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_changePackageInstallReason="Ändere Grund";
 @$I18N_serverFeatures = 'Serverfunktionen';
 @$I18N_serverFeature = 'Serverfunktion';
-@$I18N_clientOnlineStatusEnabled = 'Client-Online-Status ermitteln und anzeigen';
+@$I18N_clientOnlineStatusEnabled = 'Client-Online-Status ermitteln (ping) und anzeigen';
 @$I18N_updatePackageInfosDisabled = 'Client-Paketstatus nicht an m23-Server übertragen';
 @$I18N_liveLogDisabled = 'Echtzeit-Protokoll deaktivieren';
 @$I18N_onlineStatus = 'Online-Status';
@@ -1456,4 +1456,71 @@ Hinweis: Falls der Benutzername und das dazugehörige Paßwort weiterhin im Browse
 @$I18N_errorNoKernelSelected = 'Kein Kernel ausgewählt!';
 @$I18N_imagingWarning = 'Die Pseudodistribution "Imaging" ist die technisch anspruchsvollste Variante, um einen Client zu installieren. Ob diese zu einem funktionierenden m23-Client führen wird, ist ungewiß. Bei auftretenden Probleme sollten Sie in Betracht ziehen, statt Imaging eine von m23 unterstützte Distribution aus den mitgelieferten Paketquellenlisten zu wählen. Ihre zusätzlich Anpassungen können Sie über Pakete (im "Paket-Architekt") oder m23-Skripte (im "Skript-Editor") realisieren.';
 @$I18N_setup_client_tooltip = 'Partitionieren, Formatieren, Distribution und Desktop wählen.';
+
+// 20.1
+@$I18N_cannot_store_serverip_override_file = 'Die Datei zum Überschreiben der angezeigten Server-IP konnte nicht angelegt werden.';
+@$I18N_cannot_remove_serverip_override_file = 'Die Datei zum Überschreiben der angezeigten Server-IP konnte nicht gelöscht werden.';
+@$I18N_serverip_override_file_stored_sucessfully = 'Die Datei zum Überschreiben der angezeigten Server-IP wurde erfolgreich angelegt.';
+@$I18N_serverip_override_file_removed_sucessfully = 'Die Datei zum Überschreiben der angezeigten Server-IP wurde erfolgreich gelöscht.';
+@$I18N_serverip_override = 'm23-Server-IP (mit alternativer</br>IP-Adresse oder FQDN) überschreiben';
+@$I18N_m23ServerIncudedInSourcesListDisabled = 'Hinzufügen der m23-Server-Paketquelle zu den Paketquellenlisten der m23-Clients deaktivieren';
+@$I18N_inGroup="In Gruppe";
+@$I18N_rebootClientAfterJobsIfNecessary='m23-Client automatisch nach den Aufträgen neu starten, wenn erforderlich';
+@$I18N_groupSettings = 'Gruppeneinstellungen';
+@$I18N_clientSshHttpsStatusEnabled = 'Erweiterten Client-Online-Status (SSH &amp; HTTPS) ermitteln und anzeigen';
+@$I18N_computerOnWithPingSSHHttps = 'Rechner läuft: Kommunikation per SSH und HTTPS aktiv';
+@$I18N_computerPingNoSSHNoHttps = 'Rechner läuft: Keine Verbindung über SSH und HTTPS';
+@$I18N_debuggingEnabled = 'Debug-Modus aktiv';
+@$I18N_warnWhenJobsAreDelayed = 'Anzahl der Minuten, nach der gewarnt wird, wenn Aufträge nicht innerhalb dieser Zeit abgeschlossen sind.</br>Geben Sie "0" zum Deaktivieren der Warnung ein.';
+@$I18N_warnWhenUpdateJobsAreDelayed = "Anzahl der Minuten, nach denen gewarnt wird, wenn die <b>Aktualisierung</b> nicht innerhalb dieser Zeit abgeschlossen sind.</br>
+Geben Sie \"0\" zum Deaktivieren der Warnung ein.</br>
+<b><u>Hinweis:</u></b> Diese Option muß unter den Gruppeneinstellungen ($I18N_groups &rarr; $I18N_overview &rarr; &lt;Name der Gruppe&gt; &rarr; $I18N_groupSettings &rarr; $I18N_rebootClientAfterJobsIfNecessary) aktiviert werden.";
+@$I18N_warningJobsAreDelayed = 'Aufträge wurden nicht innerhalb der vorgegebenen Zeit abgeschlossen';
+@$I18N_warningUpdateIsDelayed = 'Aktualisierung wurde nicht innerhalb der vorgegebenen Zeit abgeschlossen';
+@$I18N_addingTime = 'Erstellungszeit';
+@$I18N_finishTime = 'Fertiggestellt';
+@$I18N_runningTime = 'Laufzeit</br>in Minuten';
+@$I18N_timeBeforeMinutes1 = 'vor';
+@$I18N_timeBeforeMinutes2 = 'Minute(n)';
+@$I18N_showTimeInformationOnJobs = 'Zeitinformationen bei Clientaufträgen zeigen';
+@$I18N_statusInformation = 'Statusinformationen';
+@$I18N_clientsWithDelayedUpdateJobs = 'Clients mit verspäterer Aktualisierung';
+@$I18N_warnWhenClientRebootsRequestedByPackagesAreDelayed = 'Anzahl der Minuten, nach der gewarnt wird, wenn Software auf dem Client einen <b>Neustart</b> erforderlich macht und noch kein Neustart geschehen ist. </br>Geben Sie "0" zum Deaktivieren der Warnung ein.';
+@$I18N_settings = 'Einstellungen';
+@$I18N_clientsWithDelayedReboots = 'Clients mit verspätetem Neustart';
+@$I18N_warningRebootIsDelayed = 'Client wurde nicht innerhalb der vorgegebenen Zeit neugestartet';
+@$I18N_lastUpgrade = 'Letzte Aktualisierung';
+@$I18N_showClientLastUpgradeColumn = "Zeitpunkt der letzten Aktualisierung im $I18N_overview_clients anzeigen";
+@$I18N_exportIntoClientreporting = "Alle 5 Minuten die folgenden Statusinformationen in die Tabelle \"clientreporting\" schreiben:<ul>
+<li>Name des Clients</li>
+<li>Anzahl der installierten Pakete</li>
+<li>$I18N_onlineStatus: 0 = $I18N_computerOff, 1 = $I18N_computerPingNoSSHNoHttps,  2 = $I18N_computerOnWithPingSSHHttps</li>
+<li>Neustartstatus: 0 = kein Neustart nötig, 1 = Neustart nötig, aber noch nicht durchgeführt, 2 = Neustart nötig, nicht durchgeführt und verspätet</li>
+<li>Aktualisierungsstatus: 0 = keine Aktualisierung beauftragt, 1 = Aktualisierung beauftragt, aber noch nicht durchgeführt, 2 = Aktualisierung beauftragt, nicht durchgeführt und verspätet</li>
+<li>Zeitpunkt der letzten erfolgreichen Aktualisierung</li></ul>";
+
+@$I18N_online_ssh_http='online, ssh/http: ok';
+@$I18N_online='online';
+@$I18N_offline='offline';
+@$I18N_status_red='rot';
+@$I18N_status_yellow='gelb';
+@$I18N_status_green='grün';
+@$I18N_status_blue='blau';
+@$I18N_status_critical='kritisch';
+@$I18N_status_define='definiert';
+@$I18N_status_blocked='blockiert';
+@$I18N_begins_with='beginnt mit';
+@$I18N_not_begins_with='beginnt nicht mit';
+@$I18N_ends_with='endet mit';
+@$I18N_not_ends_with='endet nicht mit';
+@$I18N_contains='enthält';
+@$I18N_not_contains='enthält nicht';
+@$I18N_id="ID";
+@$I18N_totaljobs="Alle Aufträge";
+@$I18N_filter="Filter";
+@$I18N_sorting="Sortierung";
+@$I18N_before='vor';
+@$I18N_before_equals='vor incl.';
+@$I18N_after='nach';
+@$I18N_after_equals='nach incl.';
 ?>

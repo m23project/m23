@@ -94,6 +94,7 @@ function DISTR_releaseVersionTranslator($release)
 	$r['trusty']="14.04 LTS";
 	$r['xenial']="16.04 LTS";
 	$r['bionic']="18.04 LTS";
+	$r['focal']="20.04 LTS";
 
 	//Debian
 	$r['sarge']="3.1";
@@ -152,14 +153,14 @@ function DISTR_listDistributions($addEmpty=false)
 **name DISTR_getDescriptionValues($shortName)
 **description gets the valuest stored in the info.txt file of the distributions and returns a associative array
 **parameter shortName: the short name of the distribution
+**returns: Associative array with information about the distribution.
 **/
 function DISTR_getDescriptionValues($shortName)
 {
 	if (file_exists("/m23/inc/distr/$shortName/info.txt"))
 		$file = fopen("/m23/inc/distr/$shortName/info.txt","r");
-		else
-		return("");
-
+	else
+		return(array('Name' => '', 'Logo' => ''));
 
 	do
 	{

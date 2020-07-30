@@ -1342,7 +1342,7 @@ Hint: You (or anybody else with access to your webbrowser) can use the m23 webin
 @$I18N_addNewLoginToUCSLDAP = "Save login data to UCS";
 @$I18N_authentificationViaUCS = "Authenticate via UCS";
 @$I18N_addNewLoginToUCSLDAPError = "Error: The login data could not be saved to UCS.";
-@$I18N_readLoginFromUCSLDAPSupportedDistros = '(can be used with clients based on Debian 8, 9 + 10, Ubuntu 14.04, 16.04, 18.04, Linux Mint 17.x and 18.x)';
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(can be used with clients based on Debian 8, 9 + 10, Ubuntu 16.04, 18.04, 20.04 and Linux Mint 17.x, 18.x, 20.x)';
 
 //16.2
 @$I18N_clientUsesDynamicIP = "The client uses a dynamically assigned IP (DHCP)";
@@ -1422,7 +1422,7 @@ Hint: You (or anybody else with access to your webbrowser) can use the m23 webin
 @$I18N_xhprof_activate = 'activate/ deactivate Xhprof';
 @$I18N_serverFeatures = 'Server features';
 @$I18N_serverFeature = 'Server feature';
-@$I18N_clientOnlineStatusEnabled = 'Determine and display client online status';
+@$I18N_clientOnlineStatusEnabled = 'Determine and display client online status (ping)';
 @$I18N_updatePackageInfosDisabled = 'Do not transmit the clients\' package status to the m23 server';
 @$I18N_liveLogDisabled = 'Deactivate real time protocol';
 @$I18N_onlineStatus = 'Online Status';
@@ -1449,4 +1449,71 @@ Hint: You (or anybody else with access to your webbrowser) can use the m23 webin
 @$I18N_errorNoKernelSelected = 'No kernel selected!';
 @$I18N_imagingWarning = 'The pseudo-distribution "Imaging" is the technically most complex way for installing a client. It is not guaranteed that this approach will create a working m23 client. If you encounter issues with this functionality, please consider using a distribution from the included package sources list, which is supported by m23, instead. You can make additional adjustments by using packages (in the "package architect") or with m23 scripts (in the "script editor").';
 @$I18N_setup_client_tooltip = 'Partition and format, select distribution and desktop.';
+
+// 20.1
+@$I18N_cannot_store_serverip_override_file = 'The file for overriding the server\'s IP could not be written.';
+@$I18N_cannot_remove_serverip_override_file = 'The file for overriding the server\'s IP could not be deleted.';
+@$I18N_serverip_override_file_stored_sucessfully = 'The file for overriding the server\'s IP has been created sucessfully.';
+@$I18N_serverip_override_file_removed_sucessfully = 'The file for overriding the server\'s IP has been deleted sucessfully.';
+@$I18N_serverip_override = 'Override m23 server\'s IP (with alternative IP address or FQDN)';
+@$I18N_m23ServerIncudedInSourcesListDisabled = 'Disable adding the m23 server package source to the package sources list of the m23 clients';
+@$I18N_inGroup="In group";
+@$I18N_rebootClientAfterJobsIfNecessary='Reboot m23 clients automatically after jobs are finished if necessary';
+@$I18N_groupSettings = 'Group settings';
+@$I18N_clientSshHttpsStatusEnabled = 'Fetch and display advanced client online status (SSH &amp; HTTPS)';
+@$I18N_computerOnWithPingSSHHttps = 'System is running: SSH and HTTPS commmunication active';
+@$I18N_computerPingNoSSHNoHttps = 'System is running: No SSH and HTTPS connection';
+@$I18N_debuggingEnabled = 'Debug mode enabled';
+@$I18N_warnWhenJobsAreDelayed = 'Number of minutes to wait before warning about jobs not being completed.</br>Use \"0\" to disable the warning entirely.';
+@$I18N_warnWhenUpdateJobsAreDelayed = "Number of minutes to wait before warning about an <b>update</b> not being completed.</br>
+Use \"0\" to disable the warning entirely.</br>
+<b><u>Note:</u></b> This option needs to be activated in the group settings ($I18N_groups &rarr; $I18N_overview &rarr; &lt;Group name&gt; &rarr; $I18N_groupSettings &rarr; $I18N_rebootClientAfterJobsIfNecessary).";
+@$I18N_warningJobsAreDelayed = 'Jobs did not complete within the allotted time';
+@$I18N_warningUpdateIsDelayed = 'Updates did not complete within the allotted time.';
+@$I18N_addingTime = 'Creation time';
+@$I18N_finishTime = 'Completion';
+@$I18N_runningTime = 'Duration</br>(minutes)';
+@$I18N_timeBeforeMinutes1 = 'minute(s)';
+@$I18N_timeBeforeMinutes2 = 'ago';
+@$I18N_showTimeInformationOnJobs = 'Display timing information for client jobs';
+@$I18N_statusInformation = 'Status information';
+@$I18N_clientsWithDelayedUpdateJobs = 'Clients with delayed updates';
+@$I18N_warnWhenClientRebootsRequestedByPackagesAreDelayed = 'Number of minutes to wait before warning about a necessary <b>reboot</b> not having been completed.</br>Use \"0\" to disable the warning entirely.';
+@$I18N_settings = 'Settings';
+@$I18N_clientsWithDelayedReboots = 'Clients with delayed reboot';
+@$I18N_warningRebootIsDelayed = 'Client did not reboot within the allotted time';
+@$I18N_lastUpgrade = 'Last Update';
+@$I18N_showClientLastUpgradeColumn = "Display date and time of the last update in $I18N_overview_clients";
+@$I18N_exportIntoClientreporting = "Every 5 minutes, write the following status information into the \"clientreporting\" table:<ul>
+<li>Client name</li>
+<li>Number of installed packages</li>
+<li>$I18N_onlineStatus: 0 = $I18N_computerOff, 1 = $I18N_computerPingNoSSHNoHttps,  2 = $I18N_computerOnWithPingSSHHttps</li>
+<li>Reboot status: 0 = no reboot needed, 1 = reboot required, 2 = reboot required and delayed</li>
+<li>Update status: 0 = no update requested, 1 = update requested, 2 = update requested and delayed</li>
+<li>Date and time of the last successful update</li></ul>";
+
+@$I18N_online_ssh_http='online, ssh/http: ok';
+@$I18N_online='online';
+@$I18N_offline='offline';
+@$I18N_status_red='red';
+@$I18N_status_yellow='yellow';
+@$I18N_status_green='green';
+@$I18N_status_blue='blue';
+@$I18N_status_critical='critical';
+@$I18N_status_define='define';
+@$I18N_status_blocked='blocked';
+@$I18N_begins_with='starts with';
+@$I18N_not_begins_with="does not start with";
+@$I18N_ends_with='ends with';
+@$I18N_not_ends_with="does not end with";
+@$I18N_contains='contains';
+@$I18N_not_contains="does not contain";
+@$I18N_id="ID";
+@$I18N_totaljobs="total jobs";
+@$I18N_filter="filter";
+@$I18N_sorting="sorting";
+@$I18N_before='before';
+@$I18N_before_equals='before incl.';
+@$I18N_after='after';
+@$I18N_after_equals='after incl.';
 ?>

@@ -28,6 +28,7 @@ Pin-Priority: -1\" > /etc/apt/preferences.d/blacklist-$package.pref
 
 
 
+
 /**
 **name CLCFG_executeNextWorkEveryMinute($lang)
 **description Runs executeNextWork in a loop every minute and shows a status message about elapsed waiting time.
@@ -213,6 +214,9 @@ xdm shared/default-x-display-manager select $dm
 gdm shared/default-x-display-manager select $dm
 gdm3 shared/default-x-display-manager select $dm
 mdm shared/default-x-display-manager select $dm");
+
+	if ('lightdm' == $dm)
+		CLCFG_setDebConfDirect("lightdm lightdm/daemon_name string /usr/sbin/lightdm");
 }
 
 
@@ -420,15 +424,20 @@ function CLCFG_installLightDM($session, $addSessionWrapper = false)
 		$addLines .= "\ngreeter-session=".$greeters[$session];
 
 	CLCFG_aptGet("install", "lightdm");
-	CLCFG_aptGet("install", $greeters[$session]);
+	
+	if (isset($greeters[$session]))
+		CLCFG_aptGet("install", $greeters[$session]);
 
 echo("echo \"[SeatDefaults]
 allow-guest=false
 user-session=$session
+greeter-hide-users=true
 greeter-show-manual-login=true$addLines\" > /etc/lightdm/lightdm.conf
 ");
 
 	CLCFG_addPAMtoDM('lightdm');
+	
+	echo("\ndpkg-reconfigure lightdm\n");
 }
 
 
@@ -1480,7 +1489,7 @@ chown root /etc/hosts
 
 chgrp root /etc/hosts
 
-chmod 777 /var/run/screen
+".BASH_SET_VAR_RUN_SCREEN_BY_DISTRIBUTION."
 chown root.utmp /var/run/screen
 ");
 };
@@ -1654,6 +1663,11 @@ function CLCFG_efi($CFDiskIOO)
 		mount /proc
 
 		mount -t efivarfs efivarfs /sys/firmware/efi/efivars
+		
+#		echo EFISTATUS1
+#		ls /boot/efi
+#		echo EFISTATUS1
+		
 	");
 
 	CLCFG_aptGet('install', 'efibootmgr shim grub-efi-amd64 grub-efi-amd64-bin linux-signed-generic grub-efi-amd64-signed shim-signed');
@@ -1867,7 +1881,7 @@ if ($bootloader == "grub")
 		echo("
 		else
 			# DebianVersionSpecific
-			if [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ] || [ $(grep devuan -c /etc/apt/sources.list) -gt 0 ] || [ $(grep bionic -c /etc/apt/sources.list) -gt 0 ]
+			if [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ] || [ $(grep devuan -c /etc/apt/sources.list) -gt 0 ] || [ $(grep bionic -c /etc/apt/sources.list) -gt 0 ] || [ $(grep focal -c /etc/apt/sources.list) -gt 0 ]
 			then
 			");
 				CLCFG_aptGet("install", "grub-pc");
@@ -1921,14 +1935,19 @@ if ($bootloader == "grub")
 			fi
 
 			# DebianVersionSpecific
-			if [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ] || [ $(grep bionic -c /etc/apt/sources.list) -gt 0 ]
+			if [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ] || [ $(grep bionic -c /etc/apt/sources.list) -gt 0 ] || [ $(grep focal -c /etc/apt/sources.list) -gt 0 ]
 			then
 				/usr/sbin/update-grub2
 				sync
 				# DebianVersionSpecific
-				if [ $(lsb_release -c -s) = 'bionic' ] || [ $(lsb_release -c -s) = 'xenial' ] || [ $(lsb_release -i -s) = 'LinuxMint' ] || [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ]
+				if [ $(lsb_release -c -s) = 'bionic' ] || [ $(lsb_release -c -s) = 'xenial' ] || [ $(lsb_release -i -s) = 'LinuxMint' ] || [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep focal -c /etc/apt/sources.list) -gt 0 ]
 				then
+					# Use traditional networkcard device names (eth0, eth1, ...)
 					sed -i 's/\(GRUB_CMDLINE_LINUX_DEFAULT=\"\)\([^\"]*\)\"/\\1\\2 net.ifnames=0\"/' /etc/default/grub
+
+					# Disable splash (can lead to corrupted framebuffer console)
+					sed -i 's/splash//' /etc/default/grub
+
 					update-grub
 				fi
 
@@ -2130,6 +2149,8 @@ $netDownSED
 
 rm /etc/network/interfaces 2> /dev/null
 
+mkdir -p /etc/network
+
 #removes old stored udev network device(s)
 rm /etc/udev/rules.d/*persistent-net.rules 2> /dev/null
 
@@ -2278,7 +2299,7 @@ rm /etc/NetworkManager/dispatcher.d/m23restore-resolv.conf 2> /dev/null
 # Create a script, that will copy the backup back
 cat >> /etc/NetworkManager/dispatcher.d/m23restore-resolv.conf << \"EOF\"
 #!/bin/bash
-if [ $(diff -u /etc/resolv.conf.m23 /etc/resolv.conf | grep -e ^' ' -c) -eq 0 ]
+if [ $(diff /etc/resolv.conf.m23 /etc/resolv.conf | egrep -v '^< $' | grep '^< ' -c) -gt 0 ]
 then
 	cat /etc/resolv.conf.m23 >> /etc/resolv.conf
 fi
@@ -2907,7 +2928,7 @@ function CLCFG_installBasePackages($packagelist, $keyring="debian-keyring")
 
 	CLCFG_aptGet("install","man nano");
 
-	echo("\nchmod 755 /var/run/screen
+	echo("\n".BASH_SET_VAR_RUN_SCREEN_BY_DISTRIBUTION."
 
 	#Reactivate init
 	mv /sbin/init.deactivated /sbin/init
@@ -2982,7 +3003,7 @@ function CLCFG_setDebconf($serverIP,$debconfFile)
 **parameter isCritical: selects if debootstrap errors should be critical
 **parameter additionalPackages: space seperated list of additional packages that should be installed during bootstrapping
 **/
-function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePort,$mirror="",$arch="i386",$exclude="",$include="dialog libncursesw5 parted wget apt",$isCritical=false,$additionalPackages="dialog libncursesw5 parted wget apt",$updateFkt=CLCFG_updateDebootstrapScriptsDebian)
+function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePort,$mirror="",$arch="i386",$exclude="",$include="dialog libncursesw5 parted wget apt",$isCritical=false,$additionalPackages="dialog libncursesw5 parted wget apt",$updateFkt='CLCFG_updateDebootstrapScriptsDebian')
 {
 	$serverIP = getServerIP();
 	$quietWget = ($_SESSION['debug'] ? "": "-qq");
@@ -2990,7 +3011,7 @@ function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePor
 	//set resolv.conf in ramdisk
 	CLCFG_resolvConf($DNSServers);
 
-	$debootstrapWWW=$updateFkt($m23debootstrapDir);
+	$debootstrapWWW=$updateFkt();
 	
 	if ($arch != "i386")
 		$pkgdetailsArch="-amd64";
@@ -3054,8 +3075,9 @@ function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePor
 		}
 
 		echo("
-			rm -r * 2> /dev/null
-			
+			#No removal of everything anymore
+			#rm -r * 2> /dev/null
+
 			ret=1
 			try=0
 
@@ -3110,6 +3132,12 @@ function CLCFG_debootstrap($suite,$DNSServers,$gateway,$packageProxy,$packagePor
 				rm $debootstrapCacheFile
 
 				date +%s > m23-time/debootstrap7z.stop
+				
+#			echo EFISTATUS6
+#			find boot/efi
+#			echo EFISTATUS6
+
+				
 			else
 				#so dialog is available after change root
 				export additional=\"apt $additionalPackages\"
@@ -3231,6 +3259,10 @@ function CLCFG_mountRootDir($rootDev, $mountPoint, $CFDiskIOO = false)
 			mkdir -p $efiBootMountPoint
 
 			$mountEFICMD
+
+#			echo EFISTATUS4
+#			find $efiBootMountPoint
+#			echo EFISTATUS4
 		");
 	}
 };
@@ -3495,24 +3527,7 @@ rm /sbin/m23fetchjob 2> /dev/null
 
 cat >> /sbin/m23fetchjob << \"MFJEOF\"
 #!/bin/bash
-export PATH=/sbin:/usr/sbin:/usr/local/sbin:/bin:/usr/bin:/usr/local/bin
-
-".MSR_curDynIPCommand(true)."
-
-ret=1
-while [ \$ret -ne 0 ]
-do
-	ping -c1 -q -n -w1 \$1
-	ret=\$?
-	sleep 2
-done
-
-cd /tmp
-rm work.php* 2> /dev/null
-
-wget -t2 -w5 https://\$1/work.php\$idvar -O work.php
-chmod +x work.php
-./work.php
+".CLIENT_fetchBASHScriptFromServerAndRun('$1', 'work.php', MSR_curDynIPCommand(true))."
 exit
 
 MFJEOF
@@ -3641,7 +3656,9 @@ function CLCFG_copySSLCert($rootPath="/mnt/root", $disableSSLCertCheck = false)
 echo("
 mkdir -p $rootPath/etc/ssl/certs
 mkdir -p $rootPath/usr/lib/ssl
-mkdir -p $rootPath/usr/local/share/ca-certificates/m23
+mkdir -p $rootPath/usr/local/share/ca-certificates
+
+
 
 ln -s /etc/ssl/certs $rootPath/usr/lib/ssl
 ");
@@ -3663,7 +3680,10 @@ then
 fi
 
 # Copy the certificate to CAcert
-cp $rootPath/etc/ssl/certs/$hash.0 $rootPath/usr/local/share/ca-certificates/m23/m23server.crt
+cp $rootPath/etc/ssl/certs/$hash.0 $rootPath/usr/local/share/ca-certificates/m23server.crt
+
+update-ca-certificates
+
 ");
 	}
 
@@ -3962,6 +3982,8 @@ if [ `dpkg --get-selections | grep firefox -c` -gt 0 ]
 then
 ");
 	CLCFG_aptGet("install","firefox-l10n-$pkgLang");
+	CLCFG_aptGet("install","firefox-locale-$pkgLang");
+	
 echo("
 fi
 ");

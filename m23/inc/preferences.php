@@ -68,20 +68,22 @@ function PREF_preferenceSaveManagerHandler()
 **name PREF_showPreferenceManager()
 **description Shows a dialog to load and delete existing preferences and to create new preferences.
 **/
-function PREF_showPreferenceManager()
+function PREF_showPreferenceManager($htmlName = false)
 {
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	
+	$preferenceName = isset($_SESSION['preferenceName']) ? $_SESSION['preferenceName'] : '';
 
-	echo("
+	$html = "
 	<table style=\"border-style:none;\">
 		<tr>
 			<td style=\"border-style:none; padding:5px;\" colspan=\"2\" align=\"left\">$I18N_preferences</td>
 		</tr>
 		<tr>
 			<td style=\"border-style:none;\" colspan=\"2\" align=\"left\">
-				<select name=\"SEL_preferenceName\" size=\"1\">");
-					PREF_getClientPreferences($_SESSION['preferenceName']);
-	echo("		</select>
+				<select name=\"SEL_preferenceName\" size=\"1\">".
+					PREF_getClientPreferences($preferenceName, true, false).
+		"		</select>
 			</td>
 		</tr>
 		<tr>
@@ -90,13 +92,18 @@ function PREF_showPreferenceManager()
 		</tr>
 		<tr>
 			<td style=\"border-style:none;\" colspan=\"2\" align=\"left\">
-				<input type=\"text\" name=\"ED_preferenceName\" value=\"$_SESSION[preferenceName]\" size=\"16\" maxlength=\"200\">
+				<input type=\"text\" name=\"ED_preferenceName\" value=\"$preferenceName\" size=\"16\" maxlength=\"200\">
 			</td>
 		</tr>
 		<tr>
 			<td style=\"border-style:none;\" colspan=\"2\" align=\"left\">".BUT_save_preference."</td>
 		</tr>
-	</table>");
+	</table>";
+
+	if ($htmlName !== false)
+		define($htmlName, $html);
+	else
+		echo($html);
 }
 
 
@@ -110,6 +117,7 @@ function PREF_showPreferenceManager()
 function PREF_saveAllPreferenceValues()
 {
 	$prefName = $_SESSION['preferenceName'];
+
 	foreach ($_SESSION['preferenceSpace'] as $var => $value)
 		PREF_putValue($prefName, $var, $value);
 }
@@ -147,28 +155,36 @@ function PREF_loadAllPreferenceValues()
 
 
 /**
-**name PREF_getClientPreferences($default, $directOutput = true)
-**description list all preferences
+**name PREF_getClientPreferences($default, $generateHTML = true, $showHTML = true)
+**description List all preferences, as HTML selections or associative array.
 **parameter default: The name of the preference to list first
-**parameter directOutput: If enabled the preference names will be given out as a HTML option list. If disabled an array with the preference names as key and value will be returned.
-**returns Array with the preference names or nothing on enabled directOutput.
+**parameter generateHTML: If enabled the preference names will be generated as a HTML option list. If disabled an array with the preference names as key and value will be returned.
+**parameter showHTML: If enabled the generated as a HTML option list will be shown, if disabled, it will be returned.
+**returns Array with the preference names or nothing on enabled showHTML.
 **/
-function PREF_getClientPreferences($default, $directOutput = true)
+function PREF_getClientPreferences($default, $generateHTML = true, $showHTML = true)
 {
 	$sql = "SELECT DISTINCT name FROM `clientpreferences` ORDER BY name";
 
 	$result=DB_query($sql); //FW ok
 
-	if ($directOutput)
+	$outHTML = '';
+
+	if ($generateHTML)
 	{
 		if (PREF_exists($default))
-			echo("<option value=\"$default\">$default</option>");
+			$outHTML .= "<option value=\"$default\">$default</option>";
 	
 		while( $data = mysqli_fetch_array($result) )
 		{
 			if ($data[0] != $default)
-				echo("<option value=\"$data[0]\">$data[0]</option>");
+				$outHTML .= "<option value=\"$data[0]\">$data[0]</option>";
 		}
+
+		if ($showHTML)
+			echo($outHTML);
+		else
+			return($outHTML);
 	}
 	else
 	{
@@ -219,6 +235,8 @@ function PREF_putValue($name, $var, $value)
 	// If it's an array, it needs to be imploded to a string before it can be stored in the DB
 	if (is_array($value))
 		$value = implode("###", $value);
+		
+	print("<h3>PREF_putValue($name, $var, $value)</h3>");
 
 	$tval = trim($value);
 
@@ -230,18 +248,18 @@ function PREF_putValue($name, $var, $value)
 	$line = mysqli_fetch_row($result);
 
 	if ($line[0] > 0)
-		{
-			//try to update
-			$sql="UPDATE `clientpreferences` SET value='$value' WHERE name='$name' AND var='$var'";
-
-			$result=DB_query($sql); //FW ok
-		}
+	{
+		//try to update
+		$sql="UPDATE `clientpreferences` SET value='$value' WHERE name='$name' AND var='$var'";
+		$result = DB_query($sql); //FW ok
+		
+	}
 	else
-		{
-			//if we can't update, try to insert
-			$sql = "INSERT INTO `clientpreferences` (name, var, value) VALUES ('$name','$var','$value')";
-			$result = DB_query($sql); //FW ok
-		};
+	{
+		//if we can't update, try to insert
+		$sql = "INSERT INTO `clientpreferences` (name, var, value) VALUES ('$name','$var','$value')";
+		$result = DB_query($sql); //FW ok
+	}
 
 	return($result);
 }
@@ -302,10 +320,8 @@ function PREF_putAllOptions($prefName,$options)
 	$values=array_values($options);
 
 	for ($i=0; $i < count($keys); $i++)
-		{
-			PREF_putValue($prefName, $keys[$i], $values[$i]);
-		};
-};
+		PREF_putValue($prefName, $keys[$i], $values[$i]);
+}
 
 
 

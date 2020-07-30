@@ -10,7 +10,7 @@ function run($id)
 	/* =====> */ MSR_statusBarIncCommand(100);
 
 	DHCP_activateBoot(CLIENT_getClientName(), false);
-
+//m23customPatchBegin type=change id=m23ShutdownInstall
 	echo("
 
 # /sbin/poweroff > /dev/null 2>&1
@@ -66,7 +66,8 @@ echo \"Firing up last poweroff command\"
 /sbin/poweroff -f > /dev/null 2>&1
 
  ");
+//m23customPatchEnd id=m23ShutdownInstall
 
-	DHCP_activateBoot(CLIENT_getClientName(), false);
+// 	DHCP_activateBoot(CLIENT_getClientName(), false);
 }
 ?>

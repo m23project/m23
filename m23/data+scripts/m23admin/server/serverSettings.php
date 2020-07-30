@@ -47,7 +47,7 @@
 			<td align="center">
 				<a href="index.php?page=serverFeatures">
 					<img src="/gfx/settings.png" border="0"><br>
-					<?PHP echo($I18N_serverFeatures);?>
+					<?PHP echo($I18N_settings);?>
 				</a>
 			</td>
 		</tr>

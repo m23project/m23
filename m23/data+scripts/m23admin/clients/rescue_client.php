@@ -2,7 +2,7 @@
 	$client = $_GET['client'];
 	$id = $_GET['id'];
 	$deactivate = $_GET['deactivate'];
-	$sure = $_GET['sure'];
+	$sure = isset($_GET['sure']) ? $_GET['sure'] : "0";
 
 	$data = CLIENT_getParams($client);
 
@@ -55,7 +55,7 @@
 <table align="center" class="subtable"><tr><td>
 
    <?PHP
-	echo("$beforeClientname<span class=\"highlight\"> ".$data[client]." </span>$afterClientname");
+	echo("$beforeClientname<span class=\"highlight\"> ".$data['client']." </span>$afterClientname");
    ?>
   </td>
  </tr>

@@ -10,6 +10,21 @@ $*/
 
 
 /**
+**name CIR_stopHaveged()
+**description Kills haveged to make it not consume much CPU ressources.
+**/
+function CIR_stopHaveged()
+{
+	echo("
+		killall -9 haveged
+	");
+}
+
+
+
+
+
+/**
 **name CIR_rootInRamdiskOrExit()
 **description Checks, if root is stored on the ramdisk and exits the script, if not.
 **/
@@ -77,7 +92,7 @@ function CIR_transferClientIP()
 **/
 function CIR_writeClientID($clientParams)
 {
-if ($_SESSION['m23Shared'])
+if (isset($_SESSION['m23Shared']) && $_SESSION['m23Shared'])
 	$clientID = m23SHARED_getCompleteClientName();
 else
 	$clientID = $clientParams['id'];
@@ -191,8 +206,10 @@ while \$loopRun
 		fi
 
 		wget $quiet -O$wPhp \"https://".getServerIP()."/work.php\$idvar\" --no-check-certificate
-		
-		if [ `find $wPhp -printf \"%s\"` -gt 15 ]
+
+		#if [ `find $wPhp -printf \"%s\"` -gt 15 ]
+		# A script needs more then 5 lines of BASH code, excluding lines between #IgnoreCountRebootRequired[1-2]Begin and #IgnoreCountRebootRequired[1-2]End
+		if [ `awk 'BEGIN { show=1 } /#IgnoreCountRebootRequired[1-2]Begin/{ show=0 } { if (show == 1) print($0) } /#IgnoreCountRebootRequired[1-2]End/{ show=1 }' $wPhp | wc -l` -gt 5 ]
 		then
 			chmod +x $wPhp
 			loopRun=`false`

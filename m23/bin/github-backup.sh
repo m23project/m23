@@ -41,6 +41,7 @@ do
 *.7z
 mailConf.php
 CloudStackConf.php
+vncpasswd.php
 " > .gitignore
 		git add .
 		echo git remote add origin "git@github.com:m23project/$backupName.git"

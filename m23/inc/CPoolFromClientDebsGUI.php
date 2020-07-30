@@ -53,18 +53,22 @@ class CPoolFromClientDebsGUI extends CPoolFromClientGUI
 
 
 /**
-**name CPoolFromClientDebsGUI::DEFINE_checkboxForAddingm23BuildPoolFromClientDebsPackage($htmlName, $clientName)
+**name CPoolFromClientDebsGUI::DEFINE_storableCheckboxForAddingm23BuildPoolFromClientDebsPackage($htmlName, $clientName, $prefKey, $storePointer)
 **description Defines a checkbox, that adds a m23BuildPoolFromClientDebs job when checked.
 **parameter htmlName: Name of the HTML element and constant.
 **parameter clientName: Name of the client, the pool should be build from.
+**parameter prefKey: Variable name of the preference the dialog element stands for.
+**parameter storePointer: Additional pointer to the variable where to store the entered value.
 **/
-	static public function DEFINE_checkboxForAddingm23BuildPoolFromClientDebsPackage($htmlName, $clientName)
+	static public function DEFINE_storableCheckboxForAddingm23BuildPoolFromClientDebsPackage($htmlName, $clientName, $prefKey, &$storePointer)
 	{
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
-		if (HTML_checkBox($htmlName, $I18N_poolFromClient))
+		if (HTML_storableCheckBox($htmlName, $I18N_poolFromClient, $prefKey, false, $storePointer))
 			CPoolFromClientDebsGUI::addm23BuildPoolFromClientDebsJob($clientName);
 	}
+
+
 
 	static public function addm23BuildPoolFromClientDebsJobAndStart($clientName)
 	{

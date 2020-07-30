@@ -12,6 +12,27 @@ const LANGUAGELIST = 'de#en#fr';
 
 
 /**
+**name I18N_getTimeDateAndElapsedMinutes($time)
+**description Takes a timestamp, calculates its date and time sting in the given language and the minutes from the timestamp to the current time.
+**parameter time: The timestamp.
+time
+**returns Time information string in the given language.
+**/
+function I18N_getTimeDateAndElapsedMinutes($time)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	$timeS = strftime($I18N_timeFormat, $time);
+	$timeBefore = time() - $time;
+
+	return("$timeS</br>$I18N_timeBeforeMinutes1 ".(int)($timeBefore / 60)." $I18N_timeBeforeMinutes2");
+}
+
+
+
+
+
+/**
 **name I18N_getAllTranslationsForAllVariables($in)
 **description Translates all I18N variables (in all languages) to their language dependent strings.
 **parameter in: Input text.
@@ -200,7 +221,7 @@ function I18N_addLanguage($webinterface, $shortLanguage, $longLanguage, $country
 	//If it's a webinterface language, set the value to 'w'. Otherwise it's a client language, marked by a 'c'.
 	$webinterface = ($webinterface ? 'w' : 'c');	
 
-	if ($_SESSION['m23Shared'] === true)
+	if (isset($_SESSION['m23Shared']) && ($_SESSION['m23Shared'] === true))
 		$DB_list = array('m23shared_'.$_SESSION['m23Shared_DB']);
 	else
 		$DB_list = array('m23','m23captured');

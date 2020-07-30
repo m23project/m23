@@ -23,6 +23,314 @@ define('CLIENTLOG_UNKNOWN', 'unknown');
 //m23customPatchEnd id=additionalClientFunctions
 
 
+/**
+**name CLIENT_removeOldReportings()
+**description Removes entries from the `clientreporting` table that are too old.
+**/
+function CLIENT_removeOldReportings()
+{
+	// Store the reports of 10 * 24h when creating a reporting every 5 minutes (24 * 60 / 5 = 288)
+	$maxReportings = 2880;
+
+	// Array for the timestamps
+	$times = array();
+	$i = 0;
+
+	// Read the distinct timestamps of the reportings
+	$sql = "SELECT DISTINCT `reportCreationTime` FROM `clientreporting` ORDER BY reportCreationTime ASC";
+	$res = db_query($sql);
+	while ($clientLine = mysqli_fetch_row($res))
+		$times[$i++] = $clientLine[0];
+
+	// Check, if there are too many reportings and delete the oldest until the limit is reached
+	$reportingsAmount = count($times);
+	if ($reportingsAmount > $maxReportings)
+		for ($i = 0; $i < ($reportingsAmount - $maxReportings); $i++)
+		{
+			$sql = "DELETE FROM `clientreporting` WHERE reportCreationTime = '$times[$i]'";
+			db_query($sql);
+		}
+}
+
+
+
+
+
+/**
+**name CLIENT_updateReporting()
+**description Stores clientname, amount of packages on the client, online status (0 = offline, 1 = pingable, 2 = SSH/HTTPs working), reboot status (0 = no reboot needed, 1 = reboot needed, but unfinished, 2 = reboot needed, but unfinished and delayed), update status (0 = no update job assigned, 1 = update job assigned, but unfinished, 2 = update job assigned, but unfinished and delayed) and the timestamp of the last finished update job into the table `clientreporting`.
+**/
+function CLIENT_updateReporting()
+{
+	$clientUpdateJobsMaxAllowedDelay = SERVER_getWarnWhenUpdateJobsAreDelayed();
+	$clientRebootMaxAllowedDelay = SERVER_getWarnWhenClientRebootsRequestedByPackagesAreDelayed();
+	$reportCreationTime = time();
+
+	// Run through the clients table
+	$res = CLIENT_getAllAsRes();
+	while ($clientLine = mysqli_fetch_assoc($res))
+	{
+		$clientName = $clientLine['client'];
+
+		$onlinestatus = $clientLine['online'];
+
+		// Are there waiting update jobs?
+		if (PKG_countSpecialPackages($clientName, 'm23update', 'waiting'))
+		{
+			// Is a maximum tolerable delay for update jobs set and is it exceeded?
+			if (($clientUpdateJobsMaxAllowedDelay > 0) && (PKG_getDelayedJobsAmount($clientName, $clientUpdateJobsMaxAllowedDelay * 60, 'waiting', 'm23update') > 0))
+				// Maximum set and exceeded
+				$updatestatus = 2;
+			else
+				// No maximum set or not exceeded
+				$updatestatus = 1;
+		}
+		else
+			// No waiting update jobs
+			$updatestatus = 0;
+
+		$packageamount = PKG_countPackages($clientName);
+
+		// Is there a waiting reboot?
+		if ($clientLine['rebootAfterJobsStarted'] > 0)
+		{
+			// Is a maximum tolerable delay for reboots set and is it exceeded?
+			if (($clientRebootMaxAllowedDelay) && (CLIENT_isRebootDelayed($clientName, $clientRebootMaxAllowedDelay * 60) > 0))
+				// Reboot waiting and delayed
+				$rebootstatus = 2;
+			else
+				// Reboot waiting and not exceeding the maximum tolerable delay
+				$rebootstatus = 1;
+		}
+		else
+			// No waiting reboot
+			$rebootstatus = 0;
+
+		$lastupdate = PKG_getLastUpgradeTime($clientName);
+
+		// Store the information for the current client
+		$sql = "INSERT INTO `clientreporting` (`reportCreationTime`, `client`, `packageamount`, `onlinestatus`, `rebootstatus`, `updatestatus`, `lastupdate`) VALUES ('$reportCreationTime', '$clientName', '$packageamount', '$onlinestatus', '$rebootstatus', '$updatestatus', '$lastupdate');";
+		
+		db_query($sql);
+
+// 		print("client: $clientName, packageamount: $packageamount, onlinestatus: $onlinestatus, rebootstatus: $rebootstatus, updatestatus: $updatestatus, lastupdate: $lastupdate</br>");
+	}
+
+	// Remove (maybe existing) old reportings that are too many
+	CLIENT_removeOldReportings();
+}
+
+
+
+
+
+/**
+**name CLIENT_getDelayedRebootsSQL($clientName, $maxAllowedDelay)
+**description Prepares an SQL statement to get clients with delayed reboots or the delay status of a given client.
+**parameter clientName: Name of the client or false, if all clients that are delayed, should be found.
+**parameter maxAllowedDelay: The maximum tolerable amount of time since requesting the reboot. Only clients that exceed the limit are added to the array.
+**return SQL statement to get information about delayed reboot request of a client or a list of clients with delayed reboot requests.
+**/
+function CLIENT_getDelayedRebootsSQL($clientName, $maxAllowedDelay)
+{
+	$maxAllowedDelay = (int) $maxAllowedDelay;
+	$currentTime = time();
+	$packageSQL = $statusSQL = '';
+
+	if ($clientName === false)
+	{
+		$what = 'client';
+		$clientWhereSQL = '';
+	}
+	else
+	{
+		CHECK_FW(CC_client, $clientName);
+		$clientWhereSQL = "`client` = '$clientName' AND";
+		$what = "COUNT(*)";
+	}
+
+	return("SELECT $what FROM `clients` WHERE $clientWhereSQL ((`rebootAfterJobsStarted` > 0) AND (($currentTime - `rebootAfterJobsStarted`) > $maxAllowedDelay))");
+}
+
+
+
+
+
+/**
+**name CLIENT_getClientsWithDelayedReboots($clientName, $maxAllowedDelay)
+**description Gets clients with delayed reboots.
+**parameter clientName: Name of the client.
+**parameter maxAllowedDelay: The maximum tolerable amount of time since adding the job. Only jobs that exceed the limit are added to the array.
+**return Array containing clients with delayed reboots.
+**/
+function CLIENT_getClientsWithDelayedReboots($maxAllowedDelay)
+{
+	$i = 0;
+	$out = array();
+
+	$sql = CLIENT_getDelayedRebootsSQL(false, $maxAllowedDelay);
+
+	$res = DB_query($sql);
+
+	while($data = mysqli_fetch_row($res))
+		$out[ $i++ ] = $data[0];
+
+	return($out);
+}
+
+
+
+
+
+/**
+**name CLIENT_isRebootDelayed($clientName, $maxAllowedDelay)
+**description Checks, if a client has a delayed reboot request.
+**parameter clientName: Name of the client.
+**parameter maxAllowedDelay: The maximum tolerable amount of time since adding the job. Only jobs that exceed the limit are added to the array.
+**return Amount of delayed reboot requests of a client.
+**/
+function CLIENT_isRebootDelayed($clientName, $maxAllowedDelay)
+{
+	$sql = CLIENT_getDelayedRebootsSQL($clientName, $maxAllowedDelay);
+// 	print("<h4>$sql</h4>");
+
+	$res = DB_query($sql); //FW ok
+
+	$data = mysqli_fetch_row($res);
+
+	return($data[0] > 0);
+}
+
+
+
+
+
+/**
+**name CLIENT_fetchBASHScriptFromServerAndRun($serverIP = '$1', $script = 'work.php', $afterExport = '')
+**description Generates BASH code to fetch the script from the m23 server and execute it.
+**parameter serverIP: IP, name, BASH variable name of the server, or NULL to get the server IP by getServerIP().
+**parameter script: Name of the PHP script under /m23/data+scripts/
+**parameter afterExport: BASH code to insert after the export line.
+**returns: BASH code to fetch the script from the m23 server and execute it
+**/
+function CLIENT_fetchBASHScriptFromServerAndRun($serverIP = '$1', $script = 'work.php', $afterExport = '')
+{
+	if (is_null($serverIP)) $serverIP = getServerIP();
+
+return("
+export PATH=/sbin:/usr/sbin:/usr/local/sbin:/bin:/usr/bin:/usr/local/bin
+
+$afterExport
+
+ret=1
+while [ \$ret -ne 0 ]
+do
+	ping -c1 -q -n -w1 $serverIP
+	ret=\$?
+	sleep 2
+done
+
+cd /tmp
+rm $script* 2> /dev/null
+
+#Add the client ID if it is available
+id=`cat /m23clientID 2> /dev/null`
+if [ \$id ]
+then
+	idvar=\"?m23clientID=\$id\"
+fi
+
+wget -t2 -w5 https://$serverIP/$script\$idvar -O $script
+chmod +x $script
+./$script");
+}
+
+
+
+
+
+/**
+**name CLIENT_getClientIPArray()
+**description Generates an associative array with the client names as keys and their IPs as values.
+**returns: Associative array with the client names as keys and their IPs as values.
+**/
+function CLIENT_getClientIPArray()
+{
+	$clients = array();
+
+	// Get information about all clients
+	$res = CLIENT_getAllAsRes();
+	while ($clientLine = mysqli_fetch_assoc($res))
+	{
+		// Add the client only if it has a valid IP
+		if (CHECK_ip($clientLine['ip']))
+			$clients[$clientLine['client']] = $clientLine['ip'];
+	}
+
+	return($clients);
+}
+
+
+
+
+
+/**
+**name CLIENT_rebootClientAfterJobsIfNecessary()
+**description Reboots the client, if a reboot is necessary and the global server side option "m23ServerRebootClientAfterJobsIfNecessary" is set.
+**/
+// function CLIENT_rebootClientAfterJobsIfNecessary()
+// {
+// 	if (SERVER_isRebootClientAfterJobsIfNecessary())
+// 		CLIENT_rebootClientAfterJobsIfNecessaryBASH();
+// }
+
+
+
+
+
+/**
+**name CLIENT_unsetTimeStampForRebootingClientIfNOTNecessaryBASH()
+**description Shows BASH code that detects, if a reboot is necessary and disables the server side check, if it's not.
+**/
+function CLIENT_unsetTimeStampForRebootingClientIfNOTNecessaryBASH()
+{
+	echo('
+	#IgnoreCountRebootRequired1Begin
+		if [ $(find /var/run/reboot-required* -maxdepth 0 -mindepth 0 -type f 2> /dev/null | wc -l) -eq 0 ]
+		then
+			'.MSR_unsetTimeStampForRebootingClientIfNOTNecessaryCMD().'
+		fi
+	#IgnoreCountRebootRequired1End
+	');
+}
+
+
+
+
+
+/**
+**name CLIENT_rebootClientAfterJobsIfNecessaryBASH()
+**description Shows BASH code for rebooting the client, if a reboot is necessary.
+**/
+function CLIENT_rebootClientAfterJobsIfNecessaryBASH()
+{
+	echo('
+		#IgnoreCountRebootRequired2Begin
+		if [ $(find /var/run/reboot-required* -maxdepth 0 -mindepth 0 -type f 2> /dev/null | wc -l) -gt 0 ]
+		then
+			'.MSR_setTimeStampForRebootClientAfterJobsIsNecessaryCMD().'
+
+			reboot > /dev/null 2>&1
+
+			sleep 10
+
+			reboot -f > /dev/null 2>&1
+		fi
+		#IgnoreCountRebootRequired2End
+	');
+}
+
+
 
 
 
@@ -165,7 +473,7 @@ function CLIENT_getNextFreeIp()
 
 		//If the difference between the previous used IP and the current IP is bigger than 1, then there is a hole
 		if (($ip >= $min) && ($ip <= $max) && (($ip - $oldip) > 1) && (! in_array(($ip - 1),$notUse)) && (! pingIP(long2ip($ip - 1))))
-			return(long2ip($ip - 1));
+			return(long2ip((int)$ip - 1));
 
 		$notUse[$i++] = $ip;
 
@@ -914,6 +1222,9 @@ function CLIENT_executeOnClientOrIP($clientNameOrIP,$jobName,$cmds,$user="root",
 **/
 function CLIENT_isBasesystemInstalledFromImage($options)
 {
+	if (!isset($options['IMGPartitionAmount']))
+		return(false);
+
 	for ($i=0; $i < $options['IMGPartitionAmount']; $i++)
 	{
 		if ((isset($options["IMGdrv$i"])) && ($options['instPart']==$options["IMGdrv$i"]))
@@ -1607,7 +1918,7 @@ function CLIENT_showGeneralInfo($id,$generateEnterKeep=false)
 			$rootPwdHtml="<tr><td>$I18N_rootpassword:</td><td>???</td>".MASS_EGKradioBoxes("RB_rootlogin",array(e,n,e),0)."</tr>";
 			$addNewLocalLoginEGK=MASS_EGKradioBoxes("RB_addNewLocalLogin",array(e,n,e),2);
 
-			if (!$_SESSION['m23Shared'])
+			if ((!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared']))
 			{
 				$ldaptypeEGK=MASS_EGKradioBoxes("RB_ldaptype",array(e,n,e),2);
 				$userIDEGK=MASS_EGKradioBoxes("RB_userID",array(e,e,e),0);
@@ -1686,7 +1997,7 @@ function CLIENT_showGeneralInfo($id,$generateEnterKeep=false)
 	$rootPwdHtml
 	<tr> <td>$I18N_addNewLocalLogin:</td> <td><img src=\"$addNewLocalLoginCecked\"></td>$addNewLocalLoginEGK </tr>\n");
 
-	if (!$_SESSION['m23Shared'])
+	if ((!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared']))
 	echo("<tr><td>LDAP:</td> <td>".(isset($allOptions['ldaptype']) ? LDAP_I18NLdapType($allOptions['ldaptype']) : '')."</td>$ldaptypeEGK <tr>
 	<tr><td>$I18N_userID:</td><td>".(isset($allOptions['userID']) ? $allOptions['userID'] : '')."</td>$userIDEGK</tr>
 	<tr><td>$I18N_groupID:</td><td>".(isset($allOptions['groupID']) ? $allOptions['groupID'] : '')."</td>$groupIDEGK</tr>
@@ -1721,35 +2032,36 @@ function CLIENT_showJobs($client)
 	$delList = $rerunList = $doneList = array();
 
 	if (isset($_POST['BUT_do']))
+	{
+		for ($i=0; $i < $_POST['RM_buttons']; $i++)
 		{
-			for ($i=0; $i < $_POST['RM_buttons']; $i++)
+			if (isset($_POST["SELaction_".$i]) && ($_POST["SELaction_".$i] != "n"))
 			{
-				if (isset($_POST["SELaction_".$i]) && ($_POST["SELaction_".$i] != "n"))
+				$actionPkgNr=explode("_",$_POST["SELaction_".$i]);
+				switch ($actionPkgNr[0])
 				{
-					$actionPkgNr=explode("_",$_POST["SELaction_".$i]);
-					switch ($actionPkgNr[0])
-					{
-						case "d": $delList[$delNr++] = $actionPkgNr[1]; break;
-						case "r": $rerunList[$rerunNr++] = $actionPkgNr[1]; break;
-						case "D": $doneList[$doneNr++] = $actionPkgNr[1]; break;
-					}
-				};
-			}
-	
-			PKG_removeFromJobList($delList);
-			PKG_changeClientJobsStatus($rerunList,"waiting");
-			PKG_changeClientJobsStatus($doneList,"done");
-			CLIENT_resetStatusBar($client);
-		};
+					case "d": $delList[$delNr++] = $actionPkgNr[1]; break;
+					case "r": $rerunList[$rerunNr++] = $actionPkgNr[1]; break;
+					case "D": $doneList[$doneNr++] = $actionPkgNr[1]; break;
+				}
+			};
+		}
+
+		PKG_removeFromJobList($delList);
+		PKG_changeClientJobsStatus($rerunList,"waiting");
+		PKG_changeClientJobsStatus($doneList,"done");
+		CLIENT_resetStatusBar($client);
+	}
 	
 	if (isset($_POST['BUT_start']))
-		{
-			CLIENT_startInstall($client);
-			MSG_showInfo($I18N_jobs_added);
-		};
+	{
+		CLIENT_startInstall($client);
+		MSG_showInfo($I18N_jobs_added);
+	}
 
 	$results = DB_query("SELECT * FROM clientjobs WHERE client='$client' ORDER BY priority,id "); //FW ok
 	$isInstallReasonEnabled = SERVER_isInstallReasonEnabled();
+	$showTimes = SERVER_getShowTimeInformationOnJobs();
 
 echo("
 <form method=\"post\">
@@ -1769,6 +2081,7 @@ if ($isInstallReasonEnabled)
 						<span class=\"subhighlight\">$I18N_reason</span>
 					</td>
 	");
+
 echo("
 					<td>
 						<span class=\"subhighlight\">$I18N_parameter</span>
@@ -1782,6 +2095,22 @@ echo("
 					<td>
 						<span class=\"subhighlight\">$I18N_action</span>
 					</td>
+	");
+
+if ($showTimes)
+echo("
+					<td>
+						<span class=\"subhighlight\">$I18N_addingTime</span>
+					</td>
+					<td>
+						<span class=\"subhighlight\">$I18N_finishTime</span>
+					</td>
+					<td>
+						<span class=\"subhighlight\">$I18N_runningTime</span>
+					</td>
+	");
+
+echo("
 	 			</tr>
 ");
 
@@ -1821,6 +2150,13 @@ if( $results )
 
 			$status = PKG_translateClientjobsStatus($data['status']);
 
+			if ($showTimes)
+			{
+				$addingTimeS = ($data['addtime'] > 10) ? I18N_getTimeDateAndElapsedMinutes($data['addtime']) : '?';
+				$finishTimeS = ($data['finishtime'] > 10) ? I18N_getTimeDateAndElapsedMinutes($data['finishtime']) : '?';
+				$runningTimeS = (($data['finishtime'] > 10) && ($data['starttime'] > 10)) ? sprintf("%.2f", ($data['finishtime'] - $data['starttime']) / 60) : '?';
+			}
+
 			if (($count % 2) == 0)
 				$class = 'class="evenrow"';
 			else
@@ -1845,6 +2181,16 @@ if( $results )
 							<td valign=\"top\" align=\"center\">$data[priority]</td>
 							<td valign=\"top\" align=\"center\">$status</td>
 							<td valign=\"top\" align=\"center\">$actionSel</td>
+			");
+
+			if ($showTimes)
+			echo("
+							<td valign=\"top\" align=\"center\">$addingTimeS</td>
+							<td valign=\"top\" align=\"center\">$finishTimeS</td>
+							<td valign=\"top\" align=\"center\">$runningTimeS</td>
+				");
+
+			echo("
 						</tr>
 				");
 
@@ -2220,9 +2566,12 @@ function CLIENT_backToRed($clientName)
 **/
 function CLIENT_desasterRecovery($clientName, $addInstallRemovalJobs = true, $addShutdownOrRebootPackage = true)
 {
+	// Timestamp for adding the job
+	$addtime = time();
+
 	CHECK_FW(CC_clientname, $clientName);
 	// Set all packages from the client to status waiting
-	$sql = "UPDATE `clientjobs` SET status='waiting' WHERE client='$clientName'";
+	$sql = "UPDATE `clientjobs` SET status='waiting', addtime='$addtime', finishtime='-1' WHERE client='$clientName'";
 	DB_query($sql); //FW ok
 
 	// Set m23createImage jobs to status done, so they won't be executed during recovery
@@ -2482,13 +2831,16 @@ while ($line=mysqli_fetch_row($result))
 			$logStatus = explode($splitter, $loglines[0]);
 
 			//color the
-			if ($logStatus[1]==" ok")
-				$color="subhighlight_green";
-				elseif ($logStatus[1]==" failure")
-					$color="subhighlight_red";
-					else
-					$color="subhighlight_yellow";
-	
+			$color="subhighlight_yellow";
+			
+			if (isset($logStatus[1]))
+			{
+				if ($logStatus[1]==" ok")
+					$color="subhighlight_green";
+					elseif ($logStatus[1]==" failure")
+						$color="subhighlight_red";
+			}
+			
 			//if it has no status, it may be a logfile
 			if ($color=="subhighlight_yellow")
 				{
@@ -2633,7 +2985,8 @@ function CLIENT_getAllOptions($clientName)
 function CLIENT_setAllOptions($clientName,$options)
 {
 	CHECK_FW(CC_clientname, $clientName);
-	$optionsStr = implodeAssoc("?",$options);
+// 	$optionsStr = implodeAssoc("?",$options);
+	$optionsStr = serialize($options);
 
 	$sql="UPDATE `clients` SET `options` = '$optionsStr' WHERE `client` = '$clientName' LIMIT 1";
 
@@ -2692,11 +3045,10 @@ function CLIENT_options2HiddenForm($options)
 
 	for ($i=0; $i < count($options); $i++)
 		if (strlen($keys[$i])>0)
-			{
-				$code.="<input type=\"hidden\" name=\"OPT_$counter\" value=\"".$keys[$i]."?#*".$values[$i]."\">\n";
-
-				$counter++;
-			}
+		{
+			$code.="<input type=\"hidden\" name=\"OPT_$counter\" value=\"".$keys[$i]."?#*".$values[$i]."\">\n";
+			$counter++;
+		}
 
 	$code.="<input type=\"hidden\" name=\"OPT_count\" value=\"".$counter."\">\n";
 
@@ -2836,6 +3188,91 @@ HTML_showFormEnd();
 
 
 /**
+**name CLIENT_listClientsInWarningMessageBox($clients, $header)
+**description Lists clients in a warning message box with links to their detailed pages.
+**parameter clients: Array with the client names to list.
+**parameter header: Heading of the warning box.
+**returns true, if there are client names to list, false otherwise.
+**/
+function CLIENT_listClientsInWarningMessageBox($clients, $header)
+{
+	if (is_array($clients) && (count($clients) > 0))
+	{
+		$message = "
+				<table>
+					<tr>
+						<td>
+		";
+
+		foreach ($clients as $clientName)
+		{
+			$clientID = CLIENT_getId($clientName);
+			$message .= "&bull; <a href=\"index.php?page=clientdetails&client=$clientName&id=$clientID\">$clientName</a><br>";
+		}
+
+		$message .= "
+						</td>
+					</tr>
+				</table>";
+
+		MSG_showMessageBox($message,"warningtable",$header,120);
+
+		return(true);
+	}
+	else
+		return(false);
+}
+
+
+
+
+
+/**
+**name CLIENT_listClientsWithDelays()
+**description Lists clients in a warning message box, that are having delayed jobs.
+**/
+function CLIENT_listClientsWithDelays()
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	$clientUpdateJobsMaxAllowedDelay = SERVER_getWarnWhenUpdateJobsAreDelayed();
+
+	if ($clientUpdateJobsMaxAllowedDelay > 0)
+	{
+		$clientsWithDelayedUpdateJobs = PKG_getClientsWithDelayedUpdateJobs($clientUpdateJobsMaxAllowedDelay * 60);
+		CLIENT_listClientsInWarningMessageBox($clientsWithDelayedUpdateJobs, $I18N_clientsWithDelayedUpdateJobs);
+	}
+}
+
+
+
+
+
+
+
+
+/**
+**name CLIENT_listClientsWithDelayedReboots()
+**description Lists clients in a warning message box, that are having delayed reboot requests.
+**/
+function CLIENT_listClientsWithDelayedReboots()
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	$clientRebootMaxAllowedDelay = SERVER_getWarnWhenClientRebootsRequestedByPackagesAreDelayed();
+
+	if ($clientRebootMaxAllowedDelay > 0)
+	{
+		$clientsWithDelayedReboots = CLIENT_getClientsWithDelayedReboots($clientRebootMaxAllowedDelay * 60);
+		CLIENT_listClientsInWarningMessageBox($clientsWithDelayedReboots, $I18N_clientsWithDelayedReboots);
+	}
+}
+
+
+
+
+
+/**
 **name CLIENT_listCriticalClients()
 **description lists clients with critical status'
 **/
@@ -2847,25 +3284,61 @@ function CLIENT_listCriticalClients()
 	
 	$result=DB_query($sql);	//FW ok
 	
-	$line=mysqli_fetch_array($result);	
+	$line=mysqli_fetch_array($result);
 		
 	if ($line[0] > 0)
-		{
+	{
+		$groupHTML = '';
+	
+		foreach (CLIENT_criticalClientAmountInGroups() as $groupname => $criticalClientAmount)
+			$groupHTML .= "<a href=\"?page=clientsoverview&groupname=$groupname&action=critical\">".$groupname." ($criticalClientAmount)</a></br>";
+	
 			$message="
-	<table>
-		<tr>
-			<td>
-				<a href=\"index.php?page=clientsoverview&action=critical\">".$line[0]." $I18N_clients</a>
-			</td>
-		<td>
-			<a href=\"index.php?page=clientsoverview&action=critical\"><img src=\"/gfx/error.png\"></a>
-		</td>
-		</tr>
-	</table>";
+				<table>
+					<tr>
+						<td>
+							<a href=\"index.php?page=clientsoverview&action=critical\">
+								<img src=\"/gfx/error.png\">
+								".$line[0]." $I18N_clients
+							</a></br></br>
+
+							<span class=\"subhighlight\">$I18N_inGroup</span></br></br>
+							$groupHTML
+						</td>
+					</tr>
+				</table>";
 
 			MSG_showMessageBox($message,"errortable",$I18N_criticalClients,120);
-		};
-};
+	}
+}
+
+
+
+
+
+/**
+**name CLIENT_criticalClientAmountInGroups()
+**description Checks for critical clients in all groups and generates an associative array about groups with critical clients.
+**returns Associative array with all groupnames as key and the amount of the critical clients as value. Only groups with critical clients are added to the output array.
+**/
+function CLIENT_criticalClientAmountInGroups()
+{
+	$out = array();
+
+	// Run thru the groups
+	foreach (GRP_listGroups() as $groupname)
+	{
+		// Get the amount of critical clients in each group
+		$res = CLIENT_query("=",STATUS_CRITICAL,"","",$groupname);
+		$criticalClientAmount = mysqli_num_rows($res);
+
+		// Add the amount of critical clients (if there are any) to the output array
+		if ($criticalClientAmount > 0)
+			$out[$groupname] = $criticalClientAmount;
+	}
+
+	return($out);
+}
 
 
 
@@ -2919,7 +3392,41 @@ function CLIENT_getDebugimage($status)
 		return("/gfx/status/debug.png");
 	else
 		return(FALSE);
-};
+}
+
+
+
+
+
+/**
+**name CLIENT_generateHTMLDelayStatus($clientName, $clientID, $clientUpdateJobsMaxAllowedDelay, $clientRebootMaxAllowedDelay)
+**description Generates icons for showing the delayed status of a clinet.
+**parameter clientName: Name of the client.
+**parameter clientID: ID of the client.
+**parameter clientUpdateJobsMaxAllowedDelay: The maximum tolerable amount of running/waiting time (in minutes) to finish update jobs since adding it or 0, to disable.
+**parameter clientRebootMaxAllowedDelay: The maximum tolerable amount of time since requesting the reboot.
+**returns Associative array containg HTML code and tooltip 
+**/
+function CLIENT_generateHTMLDelayStatus($clientName, $clientID, $clientUpdateJobsMaxAllowedDelay, $clientRebootMaxAllowedDelay)
+{
+	if (($clientUpdateJobsMaxAllowedDelay <= 0) && ($clientRebootMaxAllowedDelay <= 0)) return('');
+
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	
+	$html = '';
+	$statusimage = "/gfx/status/";
+
+	if (PKG_getDelayedJobsAmount($clientName, $clientUpdateJobsMaxAllowedDelay * 60, 'waiting', 'm23update') > 0)
+		$html .= "<img border=\"0\" src=\"$statusimage/updatesDelayed.png\" title=\"$I18N_warningUpdateIsDelayed\">";
+		
+	if (CLIENT_isRebootDelayed($clientName, $clientRebootMaxAllowedDelay * 60) > 0)
+		$html .= "<img border=\"0\" src=\"$statusimage/rebootDelayed.png\" title=\"$I18N_warningRebootIsDelayed\">";
+
+	if (isset($html{1}))
+		return("<a href=\"index.php?page=changeJobs&id=$clientID&client=$clientName\">$html</a>");
+	else
+		return('');
+}
 
 
 
@@ -2936,23 +3443,25 @@ function CLIENT_getDebugimage($status)
 **/
 function CLIENT_generateHTMLStatusBar($clientName, $id, $status, $vmRole, $vmSoftware)
 {
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
 	$statusimage = CLIENT_getStatusimage($status);
 
 	//Get the status of the debug mode and
 	$debugimage = CLIENT_getDebugimage(CLIENT_isInDebugMode($clientName));
 	$vmStatusIcons = VM_statusIcons($clientName, $id, $vmRole, $vmSoftware);
 
-$html="<a href=\"index.php?page=clientstatus&client=$clientName&id=$id\"> <img border=\"0\" src=\"$statusimage\"></a>
-";
+	$html="<a href=\"index.php?page=clientstatus&client=$clientName&id=$id\"> <img border=\"0\" src=\"$statusimage\"></a>
+	";
 
-if ($debugimage != FALSE)
-	$html.="<a href=\"index.php?page=clientdebug&client=$clientName&id=$id\"> <img border=\"0\" src=\"$debugimage\"></a>
-";
+	if ($debugimage != FALSE)
+		$html.="<a href=\"index.php?page=clientdebug&client=$clientName&id=$id\"> <img border=\"0\" src=\"$debugimage\" title=\"$I18N_debuggingEnabled\"></a>
+	";
 
 	$html .= $vmStatusIcons;
 
-return($html);
-};
+	return($html);
+}
 
 
 
@@ -2972,25 +3481,25 @@ function CLIENT_showDebugSelection($client)
 		$client=$_GET['client'];
 
 	if (isset($_GET['BUT_save']))
-		{
-			if ($_GET['RB_Debug'] == "on")
-				CLIENT_toggleDebugMode($client,true);
-			else
-				CLIENT_toggleDebugMode($client,false);
-		}
-	
-	$debugState=CLIENT_isInDebugMode($client);
+	{
+		if ($_GET['RB_Debug'] == "on")
+			CLIENT_toggleDebugMode($client,true);
+		else
+			CLIENT_toggleDebugMode($client,false);
+	}
+
+	$debugState = CLIENT_isInDebugMode($client);
 
 	if ($debugState)
-		{
-			$checkedOn="checked";
-			$checkedOff="";
-		}
+	{
+		$checkedOn="checked";
+		$checkedOff="";
+	}
 	else
-		{
-			$checkedOff="checked";
-			$checkedOn="";
-		}	
+	{
+		$checkedOff="checked";
+		$checkedOn="";
+	}
 
 		$code.="
 			<input type=\"radio\" name=\"RB_Debug\" value=\"on\" $checkedOn> $I18N_activate<br>
@@ -3243,7 +3752,7 @@ function CLIENT_query($o1,$s1,$o2,$s2,$groupName="",$o3="",$s3="", $search="")
 	$sql="SELECT clients.* FROM clients$cg $where $w ORDER BY $orderBy $direction";
 
 	$res = DB_query($sql); //FW ok
-	
+
 	return($res);
 };
 
@@ -3259,6 +3768,8 @@ function CLIENT_query($o1,$s1,$o2,$s2,$groupName="",$o3="",$s3="", $search="")
 **/
 function CLIENT_addChangeElement($elem, $serverOnlyElement = false)
 {
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
 	if (isset($_SESSION['changeElements']))
 	{
 		if (strpos($_SESSION['changeElements'],"#$elem#") === false)
@@ -3377,6 +3888,8 @@ define("ADDDIALOG_changeClient",2);
 **/
 function CLIENT_showAddDialog($addType)
 {
+	$err = '';
+
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	
 	if (isset($_GET['VM_host'])) $_SESSION['VM_host'] = $_GET['VM_host'];
@@ -3447,7 +3960,7 @@ function CLIENT_showAddDialog($addType)
 	
 	if (!empty($_GET['VM_client'])) $_POST['ED_client'] = $_GET['VM_client'];
 	$client = HTML_storableInput("ED_client", "client", (isset($_GET['VM_client']) && !empty($_GET['VM_client'])) ? $_GET['VM_client'] : $params['client'], $installParams['client'], 20, 64);
-		CLIENT_addChangeElement("client");
+// 		CLIENT_addChangeElement("client");
 	HTML_storableInput("ED_office", "office", $params['office'], $installParams['office'], 20, 40);
 		CLIENT_addChangeElement("office",true);
 	HTML_storableInput("ED_name", "name", $params['name'], $installParams['name'], 20, 40);
@@ -3533,8 +4046,8 @@ function CLIENT_showAddDialog($addType)
 		CLIENT_addChangeElement("bootloader");
 
 	//Proxy server and port
-	HTML_storableInput("ED_packageProxy", "packageProxy", (empty($options['packageProxy']) && !$_SESSION['m23Shared']) ? getServerIP() : $options['packageProxy'], $installOptions['packageProxy'], 16, 16);
-	HTML_storableInput("ED_packagePort", "packagePort", (empty($options['packagePort']) && !$_SESSION['m23Shared']) ? "2323" : $options['packagePort'], $installOptions['packagePort'], 5, 5);
+	HTML_storableInput("ED_packageProxy", "packageProxy", (empty($options['packageProxy']) && (!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared'])) ? getServerIP() : $options['packageProxy'], $installOptions['packageProxy'], 16, 16);
+	HTML_storableInput("ED_packagePort", "packagePort", (empty($options['packagePort']) && (!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared'])) ? "2323" : $options['packagePort'], $installOptions['packagePort'], 5, 5);
 		CLIENT_addChangeElement("proxy");
 
 	//Timezone
@@ -3542,7 +4055,7 @@ function CLIENT_showAddDialog($addType)
 	HTML_storableSelection("SEL_timeZone", "timeZone", $timeZonesList, SELTYPE_selection, true, $options['timeZone'], $installOptions['timeZone']);
 		CLIENT_addChangeElement("timeZone");
 
-	if (!$_SESSION['m23Shared'])
+	if ((!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared']))
 	{
 		//LDAP servers and LDAP user and group IDs
 		$ldapServerList = LDAP_listServers();
@@ -3642,7 +4155,7 @@ function CLIENT_showAddDialog($addType)
 								$HTML_VM_ControlLink ="";
 
 							//Add a link to a help text for booting the client via internet.
-							if ($_SESSION['m23Shared'])
+							if (isset($_SESSION['m23Shared']) && $_SESSION['m23Shared'])
 							{
 								$addm23SharedHelp = "\n<br>".m23SHARED_getInformationForBootingYourClientLink($client);
 								$addBootHelp = "";
@@ -3702,7 +4215,7 @@ HTML_setPage($page);
 			<tr $evenrow><td>$I18N_preferences</td><td>");PREF_showPreferenceManager();echo("</td>$rowDescription</tr>
 			<tr $oddrow><td>$I18N_language</td><td>".SEL_language."</td>".RB_change_language."</tr>
 			<tr $evenrow><td>$I18N_login_name*</td><td>".ED_login." ($I18N_eg pmiller)</td>".RB_change_login."</tr>
-			<tr $oddrow><td>$I18N_client_name*</td><td>".ED_client." ($I18N_eg Test01)</td>".RB_change_client."</tr>
+			<tr $oddrow><td>$I18N_client_name*</td><td>".ED_client." ($I18N_eg Test01)</td><td colspan=\"3\"></td></tr>
 			<tr $evenrow><td>$I18N_office</td><td>".ED_office."</td>".RB_change_office."</tr>
 			<tr $oddrow><td>$I18N_forename*</td><td>".ED_name."</td>".RB_change_name."</tr>
 			<tr $evenrow><td>$I18N_familyname</td><td>".ED_familyname."</td>".RB_change_familyname."</tr>
@@ -3716,14 +4229,14 @@ if ($addType == ADDDIALOG_changeClient)
 		echo("<tr $evenrow><td>Kernel</td><td>".SEL_kernel."</td>".RB_change_kernel."</tr>");
 
 if ((($addType == ADDDIALOG_normalAdd) ||
-	($addType == ADDDIALOG_changeClient)) && !$_SESSION['m23Shared'])
+	($addType == ADDDIALOG_changeClient)) && (!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared']))
 		echo("<tr $oddrow><td>$I18N_mac*</td><td>".ED_mac." ($I18N_eg 009b52a5e121)</td>".RB_change_mac."</tr>
 			<tr $evenrow><td>$I18N_ip*</td><td>".ED_ip." ($I18N_eg 192.168.0.5)</td>".RB_change_ip."</tr>");
 	
 	//m23customPatchBegin type=change id=CLIENT_showAddDialogShowAdditionalFormularElemens
 	//m23customPatchEnd id=CLIENT_showAddDialogShowAdditionalFormularElemens
 
-	if (!$_SESSION['m23Shared'])
+	if ((!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared']))
 echo("		<tr $oddrow><td>$I18N_netmask*</td><td>".ED_netmask." ($I18N_eg 255.255.255.0)</td>".RB_change_netmask."</tr>
 			<tr $evenrow><td>$I18N_gateway*</td><td>".ED_gateway." ($I18N_eg 192.168.0.1)</td>".RB_change_gateway."</tr>
 			<tr $oddrow><td>DNS1*</td><td>".ED_dns1." ($I18N_eg 192.168.0.1)</td>".RB_change_dns1."</tr>
@@ -3741,7 +4254,7 @@ echo("
 	");
 
 
-	if (!$_SESSION['m23Shared'] && !HELPER_isExecutedOnUCS())
+	if ((!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared']) && !HELPER_isExecutedOnUCS())
 echo("
 			<tr><td bgcolor=\"#BBFBA5\" colspan=\"$colspanWithoutRadios\"><center><span class=\"highlight\">LDAP</span></center></td></tr>
 			<tr bgcolor=\"#BBFBA5\"><td>$I18N_LDAPUsage</td><td>".SEL_ldaptype."</td></tr>
@@ -3875,6 +4388,7 @@ function CLIENT_deleteClient($client,$showMsg=false, $deleteVM=false)
 	DB_query("DELETE FROM clients WHERE client='$client'"); //FW ok
 	DB_query("DELETE FROM clientjobs WHERE client='$client' "); //FW ok
 	DB_query("DELETE FROM clientpackages WHERE clientname='$client' "); //FW ok
+	DB_query("DELETE FROM clientkvstore WHERE client='$client' "); //FW ok
 
 	if ($showMsg)
 	{
@@ -3889,19 +4403,39 @@ function CLIENT_deleteClient($client,$showMsg=false, $deleteVM=false)
 
 /**
 **name CLIENT_getNames($groupName="")
-**description returns an array with all clients
+**description Returns an array with the names of all clients.
 **parameter groupName: if the group is set, only clients in the group are returned, otherwise all clients
 **/
 function CLIENT_getNames($groupName="")
 {
 	$i=0;
-
+	$out=array();
 	$res=CLIENT_query("","","","",$groupName);
 	while( $data = mysqli_fetch_array($res) )
 		$out[$i++]=$data['client'];
 
 	return($out);
-};
+}
+
+
+
+
+
+/**
+**name CLIENT_getIds($groupName="")
+**description Returns an array with all client IDs.
+**parameter groupName: if the group is set, only clients in the group are returned, otherwise all clients
+**/
+function CLIENT_getIds($groupname="")
+{
+	$i=0;
+	$out=array();
+	$res=CLIENT_query("","","","",$groupname, "", "", "", "id");
+	while( $data = mysqli_fetch_array($res) )
+		$out[$i++]=$data['id'];
+
+	return($out);
+}
 
 
 
@@ -3927,19 +4461,19 @@ function CLIENT_getNamesWithPackages($showFakeClients=false)
 	$res = DB_query($sql); //FW ok
 	
 	if (!$showFakeClients)
-		{
-			while( $data = mysqli_fetch_row($res))
-				$out[$i++]=$data[0];
-		}
+	{
+		while( $data = mysqli_fetch_row($res))
+			$out[$i++]=$data[0];
+	}
 	else
+	{
+		while( $data = mysqli_fetch_row($res))
 		{
-			while( $data = mysqli_fetch_row($res))
-				{
-					$packageName=str_replace($marker,"",$data[0]);
-					if (!empty($packageName))
-						$out[$i++]=$packageName;
-				};
+			$packageName=str_replace($marker,"",$data[0]);
+			if (!empty($packageName))
+				$out[$i++]=$packageName;
 		}
+	}
 
 	if (is_array($out))
 		sort($out);
@@ -4041,6 +4575,9 @@ function CLIENT_changeClient()
 		else
 			echo("<h1>No translation found for \"$elem\"!!!</h1>");
 
+		if (!isset($_POST["RB_change_$elem"]))
+			continue;
+
 		//change the settings directly on the server
 		if ($_POST["RB_change_$elem"] == "db")
 		{
@@ -4130,8 +4667,8 @@ function CLIENT_changeClient()
 			{
 				case "proxy":
 					//radiobutton "proxy" is used for the values "packageProxy" and "packagePort"
-					$parms[packageProxy]=$_SESSION['preferenceSpace']['packageProxy'];
-					$parms[packagePort]=$_SESSION['preferenceSpace']['packagePort'];
+					$parms['packageProxy']=$_SESSION['preferenceSpace']['packageProxy'];
+					$parms['packagePort']=$_SESSION['preferenceSpace']['packagePort'];
 					break;
 
 				case "dns1":
@@ -4198,12 +4735,12 @@ function CLIENT_changeClient()
 	CLIENT_setAllOptions($clientName,$allOptions);
 
 	//check if there are params so a job can be created
-	if (count($parms)>0)
+	if (@count($parms)>0)
 	{
 		$paramsStr=implodeAssoc("###",$parms);
 		PKG_addJob($clientName,"m23changeClient",PKG_getSpecialPackagePriority("m23changeClient"),$paramsStr );
 		CLIENT_sshFetchJob($clientName);
-	};
+	}
 
 	//check if there is at least 1 "SET `var` = 'value'" touple
 	if (substr_count($sql, ", ") > 0)
@@ -4216,7 +4753,7 @@ function CLIENT_changeClient()
 		$sql.=" WHERE `id` = ".$_SESSION['clientID'];
 
 		DB_query($sql); //FW ok
-	};
+	}
 
 	if ($changeDHCP)
 		{
@@ -4352,7 +4889,7 @@ function CLIENT_isDedicatedAndReachable($clientName)
 /**
 **name CLIENT_generateHTMLDedicatedAndReachableStatus($online)
 **description Generates HTML code and tooltip containing the status of the client showing if it's dedicated and reachable.
-**parameter online: true, if client is online
+**parameter online: One or more of the ONLINE_STATUS_* bits.
 **returns Associative array containg HTML code and tooltip 
 **/
 function CLIENT_generateHTMLDedicatedAndReachableStatus($online)
@@ -4360,12 +4897,26 @@ function CLIENT_generateHTMLDedicatedAndReachableStatus($online)
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 	$out = array();
 
-//      print("<script>console.log($clientName);</script>");
 	$statusimage = "/gfx/status/";
-	if ($online)
+
+	$ping = (($online & ONLINE_STATUS_ping) == ONLINE_STATUS_ping);
+	$ssh = (($online & ONLINE_STATUS_sshHttps) == ONLINE_STATUS_sshHttps);
+
+// var_dump($online);
+
+// 	print("<h3>ON: $online, Ping:  & ONLINE_STATUS_ping
+
+//      print("<script>console.log($clientName);</script>");
+	
+	if ($ping && $ssh)
 	{
 		$statusimage.="green.png";
-		$out['tooltip'] = $I18N_computerOn;
+		$out['tooltip'] = $I18N_computerOnWithPingSSHHttps;
+	}
+	elseif ($ping)
+	{
+		$statusimage.="greenred.png";
+		$out['tooltip'] = $I18N_computerPingNoSSHNoHttps;
 	}
 	else
 	{
@@ -4377,7 +4928,7 @@ function CLIENT_generateHTMLDedicatedAndReachableStatus($online)
 ";
 
 	return($out);
-};
+}
 
 
 

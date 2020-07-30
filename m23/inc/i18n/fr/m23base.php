@@ -1340,7 +1340,7 @@ Attention: Si le nom de l&apos;utilisateur et son mot de passe sont encore enreg
 @$I18N_addNewLoginToUCSLDAP = "Sauvegarde des données d'identification sur UCS";
 @$I18N_authentificationViaUCS = "Authentification via UCS";
 @$I18N_addNewLoginToUCSLDAPError = "Erreur: Les données d'identification ne peuvent être sauvegardées sur UCS.";
-@$I18N_readLoginFromUCSLDAPSupportedDistros = '(Peuvent être utilisées par les clients basés sur Debian 8, 9 + 10, Ubuntu 14.04, 16.04, 18.04 et Linux Mint 17.x)';
+@$I18N_readLoginFromUCSLDAPSupportedDistros = '(Peuvent être utilisées par les clients basés sur Debian 8, 9 + 10, Ubuntu 16.04, 18.04, 20.04 et Linux Mint 17.x, 18.x, 20.x)';
 
 //16.2
 @$I18N_clientUsesDynamicIP = "Le poste client utilise une adresse IP dynamique (DHCP)";
@@ -1420,7 +1420,7 @@ Attention: Si le nom de l&apos;utilisateur et son mot de passe sont encore enreg
 @$I18N_xhprof_activate = 'active/ désactive Xhprof';
 @$I18N_serverFeatures = 'Fonctionnalitées Serveur';
 @$I18N_serverFeature = 'Fonctionnalitée Serveur';
-@$I18N_clientOnlineStatusEnabled = 'Détermine et affiche le status du client en ligne';
+@$I18N_clientOnlineStatusEnabled = 'Détermine et affiche le status du client en ligne (ping)';
 @$I18N_updatePackageInfosDisabled = 'Ne transmet pas les status des packages du client au serveur m23';
 @$I18N_liveLogDisabled = 'Désactive le protocole temps réel';
 @$I18N_onlineStatus = 'Status en ligne';
@@ -1443,8 +1443,75 @@ Attention: Si le nom de l&apos;utilisateur et son mot de passe sont encore enreg
 @$I18N_VMHostSoftwareInstalled = 'Ce système comprend un logiciel de virtualisation. Vous pouvez l\'utiliser pour installer des clients virtuels.';
 
 //19.1
-@$I18N_fdiskTypeautomatic500GBsysSwapData = '500GB: System + Swap + Data';
-@$I18N_errorNoKernelSelected = 'No kernel selected!';
-@$I18N_imagingWarning = 'The pseudo-distribution "Imaging" is the technically most complex way for installing a client. It is not guaranteed that this approach will create a working m23 client. If you encounter issues with this functionality, please consider using a distribution from the included package sources list, which is supported by m23, instead. You can make additional adjustments by using packages (in the "package architect") or with m23 scripts (in the "script editor").';
-@$I18N_setup_client_tooltip = 'Partition and format, select distribution and desktop.';
+@$I18N_fdiskTypeautomatic500GBsysSwapData = '500GB: Système + swap + données';
+@$I18N_errorNoKernelSelected = 'Aucun noyeau sélectionné!';
+@$I18N_imagingWarning = 'La pseudo-distribution "Imaging" constitue la méthode d\'installation de client la plus compliquée. Il n\'est pas garanti que cela va créer un poste client m23 opérationnel. Si vous encontréz des problèmes avec cette fonctionnalité, considérez utiliser une distribution qui est supportée par m23. Vous pouvez l\'ajuster en utilisant des paquets (avec l\'architecte de paquets) ou avec des scripts de m23 (dans l\'éditeur des scripts).';
+@$I18N_setup_client_tooltip = 'Partitionner et formater, sélectionner la distribution et l\'environnement de bureau.';
+
+// 20.1
+@$I18N_cannot_store_serverip_override_file = 'Le fichier qui prime l\'adresse IP du serveur ne pouvait pas être crée.';
+@$I18N_cannot_remove_serverip_override_file = 'Le fichier qui prime l\'adresse IP du serveur ne pouvait pas être effacé.';
+@$I18N_serverip_override_file_stored_sucessfully = 'Le fichier qui prime l\'adresse IP du serveur a été crée avec succès.';
+@$I18N_serverip_override_file_removed_sucessfully = 'Le fichier qui prime l\'adresse IP du serveur a été effacé avec succès.';
+@$I18N_serverip_override = 'Prime l\'adresse IP du serveur m23 (avec adresse IP alternative ou FQDN)';
+@$I18N_m23ServerIncudedInSourcesListDisabled = 'Désactiver l\'ajout de la source des paquets du serveur m23 à la liste des sources de paquets des client m23';
+@$I18N_inGroup="Dans groupe";
+@$I18N_rebootClientAfterJobsIfNecessary='Automatiquement redémarrer les cliens m23 après la finalisation des tâches, si c\'est nécessaire';
+@$I18N_groupSettings = 'Paramètres des groupes';
+@$I18N_clientSshHttpsStatusEnabled = 'Collectionner et présenter l\'état avancée en ligne du client (SSH &amp; HTTPS)';
+@$I18N_computerOnWithPingSSHHttps = 'Système allumé: communication SSH et HTTPS active';
+@$I18N_computerPingNoSSHNoHttps = 'Système allumé: Pas de connection SSH et HTTPS';
+@$I18N_debuggingEnabled = 'Mode de debogage actif';
+@$I18N_warnWhenJobsAreDelayed = 'Attendre pour ce nombre de minutes avant de présenter un avertissement sur des tâches non-complétées.</br>Entrez \"0\" pour désactiver l\'avertissement.';
+@$I18N_warnWhenUpdateJobsAreDelayed = "Attendre pour ce nombre de minutes avant de présenter un avertissement sur une <b>mise à jour</b> non-complétée.</br>
+Entrez \"0\" pour désactiver l'affichage d'un avertissement.</br>
+<b><u>Information:</u></b> Cette option doit être activée dans les paramètres du groupe ($I18N_groups &rarr; $I18N_overview &rarr; &lt;Nom du groupe&gt; &rarr; $I18N_groupSettings &rarr; $I18N_rebootClientAfterJobsIfNecessary).";
+@$I18N_warningJobsAreDelayed = 'Des tâches ne pouvaient pas être complétées dans l\'espace du nombre de minutes prévu.';
+@$I18N_warningUpdateIsDelayed = 'Des actualisations ne pouvaient pas être complétées dans l\'espace du nombre de minutes prévu.';
+@$I18N_addingTime = 'Temps de création';
+@$I18N_finishTime = 'Temps de finissage';
+@$I18N_runningTime = 'Durée</br>(minutes)';
+@$I18N_timeBeforeMinutes1 = 'minute(s)';
+@$I18N_timeBeforeMinutes2 = 'avant';
+@$I18N_showTimeInformationOnJobs = 'Présenter l\'information sur la durée des tâches des clients';
+@$I18N_statusInformation = 'Information d\'état';
+@$I18N_clientsWithDelayedUpdateJobs = 'Clients avec des actualisations retardées.';
+@$I18N_warnWhenClientRebootsRequestedByPackagesAreDelayed = 'Attendre pour ce nombre de minutes avant de présenter un avertissement sur <b>une redémarrage nécessaire non-compléteé</b>.</br>Entrez \"0\" pour désactiver l\'affichage d\'un avertissement.';
+@$I18N_settings = 'Paramètres';
+@$I18N_clientsWithDelayedReboots = 'Clients avec une redémarrage retardée';
+@$I18N_warningRebootIsDelayed = 'Le client n\'a pas redémarré dans l\'espace du nombre de minutes prévu';
+@$I18N_lastUpgrade = 'Dernière mise à jour';
+@$I18N_showClientLastUpgradeColumn = "Présenter la date et l'heure de la dernière mise à jour dans $I18N_overview_clients";
+@$I18N_exportIntoClientreporting = "Toutes les 5 minutes, écrire l'information suivante dans le tableau \"clientreporting\":<ul>
+<li>Nom du client</li>
+<li>Nombre de paquets installés</li>
+<li>$I18N_onlineStatus: 0 = $I18N_computerOff, 1 = $I18N_computerPingNoSSHNoHttps,  2 = $I18N_computerOnWithPingSSHHttps</li>
+<li>État de redémarrage: 0 = redémarrage n'est pas nécessaire, 1 = redémarrage nécessaire, 2 = redémarrage nécessaire et retardé</li>
+<li>État de mise à jour: 0 = mise à jour n'est pas demandée, 1 = mise à jour demandée, 2 = mise à jour demandée et retardée</li>
+<li>Date et heure de la dernière mise à jour avec succès</li></ul>";
+
+@$I18N_online_ssh_http='en ligne, ssh/http: ok';
+@$I18N_online='en ligne';
+@$I18N_offline='hors ligne';
+@$I18N_status_red='rouge';
+@$I18N_status_yellow='jaune';
+@$I18N_status_green='vert';
+@$I18N_status_blue='bleu';
+@$I18N_status_critical='critique';
+@$I18N_status_define='definit';
+@$I18N_status_blocked='obstruée';
+@$I18N_begins_with='commence avec';
+@$I18N_not_begins_with="ne commence pas avec";
+@$I18N_ends_with='finit avec';
+@$I18N_not_ends_with="ne finit pas avec";
+@$I18N_contains='contient';
+@$I18N_not_contains="does not contain";
+@$I18N_id="ID";
+@$I18N_totaljobs="numéro de tâches";
+@$I18N_filter="filtrer";
+@$I18N_sorting="ordre";
+@$I18N_before='avant';
+@$I18N_before_equals='avant, incl.';
+@$I18N_after='après';
+@$I18N_after_equals='après incl.';
 ?>

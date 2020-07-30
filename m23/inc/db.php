@@ -26,10 +26,29 @@ define("STATUS_CRITICAL",4);
 define("STATUS_DEFINE",5);
 
 //Status for clients that are not m23 clients, but their network settings are handled by the m23 server
-define("STATUS_EXTERNAL",6);
+define("STATUS_BLOCKED",6);
 
 // Make sure that there is a value set for m23Shared
 if (!isset($_SESSION['m23Shared'])) $_SESSION['m23Shared'] = false;
+
+// Online status codes for client availability
+// Client is pingable
+define('ONLINE_STATUS_ping', 1);
+
+// Server can access client by SSH, lets it execute a job and gets a message back
+define('ONLINE_STATUS_sshHttps', 2);
+
+
+// Constant that contains BASH code to set access rights of /var/run/screen according to what screen expects on the running distribution.
+define('BASH_SET_VAR_RUN_SCREEN_BY_DISTRIBUTION', "
+	# Different access rights for /var/run/screen by distribution
+	if [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep -c 'Raspbian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep -c 'Linux Mint 19.2 Tina' /etc/issue) -gt 0 ]
+	then
+		chmod 777 /var/run/screen 2> /dev/null
+	else
+		chmod 775 /var/run/screen 2> /dev/null
+	fi
+");
 
 
 
@@ -475,7 +494,6 @@ exit
 
 
 
-
 /**
 **name deleteClientLogs($clientName)
 **description deletes the installation logs
@@ -570,6 +588,20 @@ function DB_queryNoDie($sql)
 
 
 /**
+**name DB_getErrorMessage()
+**description Gets the error message from the last query.
+**returns Error message from the last query.
+**/
+function DB_getErrorMessage()
+{
+	return(@mysqli_error(DB_getConnection()));
+}
+
+
+
+
+
+/**
 **name DB_genPassword($length)
 **description generates a random password with a specified length
 **parameter length: length of password
@@ -617,11 +649,11 @@ function implodeAssoc($glue,$arr)
 	if (count($arr) == 0)
 		return($glue);
 	
-	$keys=array_keys($arr);
-	$values=array_values($arr);
+	$keys = array_keys($arr);
+	$values = array_values($arr);
 
 	return(implode($glue,$keys).$glue.implode($glue,$values));
-};
+}
 
 
 
@@ -635,15 +667,22 @@ function implodeAssoc($glue,$arr)
 **/
 function explodeAssoc($glue,$str)
 {
-	$arr=explode($glue,$str);
-	
-	$size=count($arr);
+	// Try to unserialize with PHP function
+	$out = @unserialize($str);
 
-	for ($i=0; $i < $size/2; $i++)
-		$out[$arr[$i]]=$arr[$i+($size/2)];
+	// Use m23's function as fallback
+	if ((false === $out) || (!is_array($out)))
+	{
+		$arr = explode($glue,$str);
+		
+		$size = count($arr);
+	
+		for ($i=0; $i < $size/2; $i++)
+			$out[$arr[$i]]=$arr[$i+($size/2)];
+	}
 
 	return($out);
-};
+}
 
 
 

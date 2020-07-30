@@ -39,5 +39,7 @@ echo \"Firing up last reboot command\"
 /sbin/reboot -f > /dev/null 2>&1
 
 ");
+
+// 	DHCP_activateBoot(CLIENT_getClientName(), false);
 }
 ?>

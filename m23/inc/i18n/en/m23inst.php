@@ -81,4 +81,7 @@ $I18N_installing_budgie='Installing Budgie Desktop';
 
 //19.2
 $I18N_installingLXQT="Installing LXQt desktop";
+
+//20.1
+$I18N_installing_UbuntuGnome='Installing Gnome-based Ubuntu desktop';
 ?>

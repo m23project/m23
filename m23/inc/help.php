@@ -6,6 +6,17 @@
 $*/
 
 
+/**
+**name HELP_showHelpTex2($fileName)
+**description shows the help file converted to LaTeX code
+**parameter fileName: name of the help file
+**/
+function HELP_showHelpTex2($fileName,$imageFile,$scale=0.45)
+{
+	$language = $GLOBALS['m23_language'];
+	$html = HELP_getHelp("",$language,$fileName,false,true);
+	echo($html);
+}
 
 
 
@@ -35,7 +46,7 @@ function HELP_showHelp($topic, $language = "")
 **parameter fileName: full path to a help file in a directory with language short name
 **returns help block string
 **/
-function HELP_getHelp($topic,$language="",$fileName="",$latex=false)
+function HELP_getHelp($topic,$language="",$fileName="",$latex=false,$pandoc=false)
 {
 	if (!isset($language{1}))
 		$language = $GLOBALS['m23_language'];
@@ -88,7 +99,7 @@ function HELP_getHelp($topic,$language="",$fileName="",$latex=false)
 	$heading=fgets($FILE,1000);
 
 	//Add the table opening tag if we want HTML output
-	if ($latex)
+	if ($latex || $pandoc)
 		$out="";
 	else	
 		$out="<br><a name=\"m23helpBox\"></a>
@@ -97,11 +108,13 @@ function HELP_getHelp($topic,$language="",$fileName="",$latex=false)
 
 	//Heading or no heading: That's the question ;-)
 	if ($heading!="noheading\n")
-		if ($latex)
+		if ($latex && !$pandoc)
 			{
 				$heading=str_replace("\n","",$heading);
 				$out.="\section{".$heading."}";
 			}
+		elseif ($pandoc)
+			$out.="<h2>$I18N_help: $heading</h2>";
 		else
 			$out.="<tr><td><p><span class=\"subhighlight\">$I18N_help: $heading</span></p>";
 
@@ -122,7 +135,7 @@ function HELP_getHelp($topic,$language="",$fileName="",$latex=false)
 
 					//Get and add all its lines
 					while ($iLine=fgets($incFile))
-						if ($latex)
+						if ($latex && !$pandoc)
 							{
 								$lLine=str_replace("\n","",$iLine);
 								$out.="$lLine\n";
@@ -134,7 +147,7 @@ function HELP_getHelp($topic,$language="",$fileName="",$latex=false)
 				}
 			else
 			//It is a normal line, so add it
-				if ($latex)
+				if ($latex && !$pandoc)
 					{
 						$lLine=str_replace("\n","",$line);
 						$out.="$lLine\n";
@@ -182,7 +195,7 @@ function HELP_getHelp($topic,$language="",$fileName="",$latex=false)
 	fclose($FILE);
 
 	//Close the table if we don't use LaTeX
-	if (!$latex)
+	if (!$latex && !$pandoc)
 		$out.="</td></tr></TABLE>";
 
 	return($out);
@@ -317,7 +330,7 @@ function HELP_showHelpTex($fileName,$imageFile,$scale=0.45)
 			for ($i2=0; $i2 < count($rows); $i2++)
 			{
 				//split the columns from each row
-				$cols = preg_split("<td[>]*",$rows[$i2]);
+				$cols = preg_split("<td[>]*",$rows[$i2]);		// <=== ööö
 
 				$add = "&";
 				$line = "";

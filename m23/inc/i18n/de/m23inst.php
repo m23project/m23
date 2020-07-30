@@ -81,4 +81,7 @@ $I18N_installing_budgie='Budgie-Desktop wird installiert';
 
 //19.2
 $I18N_installingLXQT="Installiere LXQt-Desktop";
+
+//20.1
+$I18N_installing_UbuntuGnome='Installiere Ubuntus Gnome-basierten Desktop';
 ?>

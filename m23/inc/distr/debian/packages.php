@@ -7,7 +7,7 @@ $*/
 
 
 
-define('DIR_M23APTCACHE', $_SESSION['m23Shared'] ? "/m23/var/cache/m23apt/".m23SHARED_getCustomerNr() : "/m23/var/cache/m23apt");
+define('DIR_M23APTCACHE', (isset($_SESSION['m23Shared']) && $_SESSION['m23Shared']) ? "/m23/var/cache/m23apt/".m23SHARED_getCustomerNr() : "/m23/var/cache/m23apt");
 
 
 
@@ -728,8 +728,20 @@ EOF
 echo '$packagesource
 deb http://$serverIP/extraDebs/ ./' > '$dir/sources.list2'
 
-	
-	", $e_out, $e_ret);
+# Detecting possible PrivateTmp systemd redirection of /tmp
+if [ $(find '$dir/sources.list2' -printf '%s') -gt $(find '$dir/sources.list' -printf '%s') ]
+then
+	mv '$dir/sources.list2' '$dir/sources.list'
+	exit 1
+fi
+
+exit 0
+", $e_out, $e_ret);
+
+
+if ($e_ret == 1)
+	return('Err: Detecting possible PrivateTmp systemd redirection of /tmp');
+
 	
 /*	print_r2($e_out);
 	print(serialize($e_ret));*/

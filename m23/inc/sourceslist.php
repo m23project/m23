@@ -105,7 +105,7 @@ function SRCLST_genList($clientName)
 	$packageSource = $allOptions['packagesource'];
 
 	//Add the Debian/Ubuntu extraDebs repository only, if it is not a halfSister distribution
-	if ($allOptions['distr'] == 'halfSister')
+	if (($allOptions['distr'] == 'halfSister') || SERVER_ism23ServerIncudedInSourcesListDisabled())
 		$addExtraDeb = "";
 	else
 		$addExtraDeb = "\ndeb http://".getServerIP()."/extraDebs/ ./";
@@ -203,14 +203,14 @@ function SRCLST_querySourceslists($distr)
 
 /**
 **name SRCLST_genSelection($selName, $first, $distr)
-**description generates a HTML selection with the names of alls package sources
+**description generates a HTML selection with the names of all package sources
 **parameter selName: the name of the selection
 **parameter first: the package source that should be shown first
 **parameter distr: the distribution the sources list is for or "*" for all distributions
 **/
 function SRCLST_genSelection($selName, $first, $distr)
 {
-	$result=SRCLST_querySourceslists($distr);
+	$result = SRCLST_querySourceslists($distr);
 
 	$out="<select name=\"$selName\" size=\"1\">";
 
@@ -224,7 +224,32 @@ function SRCLST_genSelection($selName, $first, $distr)
 	$out.="</select>";
 
 	return($out);
-};
+}
+
+
+
+
+
+/**
+**name SRCLST_storableSelection($htmlName, $defaultSelection, $distr, $prefKey, $storePointer)
+**description Generates a storable HTML selection with the names of all package sources.
+**parameter htmlName: The name of the selection
+**parameter distr: The distribution the sources list is for or "*" for all distributions
+**parameter prefKey: Variable name of the preference the dialog element stands for.
+**parameter storePointer: Additional pointer to the variable where to store the entered value.
+**returns Name of selected sources list.
+**/
+function SRCLST_storableSelection($htmlName, $distr, $prefKey, &$storePointer)
+{
+	$array = array();
+
+	$result = SRCLST_querySourceslists($distr);
+
+	while ($line = mysqli_fetch_row($result))
+		$array[$line[0]] = $line[0];
+
+	return(HTML_storableSelection($htmlName, $prefKey, $array, SELTYPE_selection, true, false, $storePointer));
+}
 
 
 
@@ -641,6 +666,32 @@ function SRCLST_showDesktopsSel($sourceName,$selName,$first)
 
 
 /**
+**name SRCLST_storableDesktopsSelection($htmlName, $sourceName, $defaultSelection, $prefKey, $storePointer)
+**description Generates a storable HTML selection with the names of all desktops.
+**parameter htmlName: The name of the selection
+**parameter sourceName: the name of the package source list
+**parameter prefKey: Variable name of the preference the dialog element stands for.
+**parameter storePointer: Additional pointer to the variable where to store the entered value.
+**returns Name of selected desktop.
+**/
+function SRCLST_storableDesktopsSelection($htmlName, $sourceName, $prefKey, &$storePointer)
+{
+	$desktops = SRCLST_getDesktopList($sourceName);
+	sort($desktops);
+	
+	$desktops = HELPER_array2AssociativeArray($desktops);
+
+	if (!isset($defaultSelection{0}))
+		$defaultSelection = false;
+
+	return(HTML_storableSelection($htmlName, $prefKey, $desktops, SELTYPE_selection, true, false, $storePointer));
+}
+
+
+
+
+
+/**
 **name SRCLST_doesDistrSupportEFI($sourceName)
 **description Checks, if a sources list contains a distribution that supports EFI.
 **parameter sourceName: the name of the package source list
@@ -801,7 +852,7 @@ function SRCLST_getArchitectures($sourceName)
 		return(HELPER_array2AssociativeArray($archs));
 	}
 	else
-		return(array('i386'));
+		return(array('i386' => 'i386'));
 }
 
 
@@ -1154,13 +1205,13 @@ HTML_showTableEnd();
 **/
 function SRCLST_getListnames($distr)
 {
-	$result=SRCLST_querySourceslists($distr);
+	$out = array();
+	$result = SRCLST_querySourceslists($distr);
 
-	$out = '';
 	$i=0;
 
 	while ($line=mysqli_fetch_row($result))
-		$out[$i++]=$line[0];
+		$out[$i++] = $line[0];
 
 	return($out);
 };

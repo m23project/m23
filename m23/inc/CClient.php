@@ -50,7 +50,7 @@ $*/
 
 class CClient extends CChecks
 {
-	private $clientInfo = array(), $paramKeys = '', $md5 = '', $keyValueStore;
+	private $clientInfo = array(), $paramKeys = '', $md5 = '', $keyValueStore = array();
 
 	//Status codes of the client
 	const MIN_STATUS = 0;
@@ -130,6 +130,7 @@ class CClient extends CChecks
 
 					//Add a basic entry to the DB
 					DB_query("INSERT INTO clients (client, lastmodify) VALUES ('$clientName', '$modifydate')");
+					DB_query("INSERT INTO clientkvstore (client) VALUES ('$clientName')");
 
 					//Fetch the entry from the DB again
 					$result = DB_query($sqlSelect); //FW ok
@@ -156,13 +157,13 @@ class CClient extends CChecks
 		$this->clientInfo = array_merge($options, $params);
 
 		// The key value store must be unserialized to be usable
-		if (isset($this->clientInfo['keyValueStore']))
-			$this->clientInfo['keyValueStore'] = unserialize($this->clientInfo['keyValueStore']);
-		else
-			$this->clientInfo['keyValueStore'] = array();
+		$this->keyValueStore = mysqli_fetch_assoc(DB_query("SELECT * FROM `clientkvstore` WHERE client='".$params['client']."'"));
 
 		//Calculate a checksum over the initial settings of the client
-		$this->md5 = md5(serialize($this->clientInfo));
+		//$this->md5 = md5(serialize($this->clientInfo));
+
+		//$this->md5 = md5(serialize($this->clientInfo));
+		$this->md5 = md5(serialize(array($this->clientInfo, $this->keyValueStore)));
 
 		//Make sure there is a status bar
 		HTML_newStatusBar('installStatus', $this->getClientName(), STATUSBAR_TYPE_db);
@@ -178,7 +179,8 @@ class CClient extends CChecks
 **/
 	function __destruct()
 	{
-		if ($this->md5 != md5(serialize($this->clientInfo)))
+		//if ($this->md5 != md5(serialize($this->clientInfo)))
+		if ($this->md5 != md5(serialize(array($this->clientInfo, $this->keyValueStore))))
 			$this->save();
 	}
 
@@ -225,7 +227,7 @@ class CClient extends CChecks
 
 		// Only add the value to the key storage, if the check was sucessfully (or no check was given)
 		if ($checkOK)
-			$this->clientInfo['keyValueStore'][$key] = $value;
+			$this->keyValueStore[$key] = $value;
 	}
 
 
@@ -239,7 +241,7 @@ class CClient extends CChecks
 **/
 	public function getKeyValueStore($key)
 	{
-		return(isset($this->clientInfo['keyValueStore'][$key]) ? $this->clientInfo['keyValueStore'][$key] : NULL);
+		return(isset($this->keyValueStore[$key]) ? $this->keyValueStore[$key] : NULL);
 	}
 
 
@@ -1547,6 +1549,7 @@ class CClient extends CChecks
 	public function save()
 	{
 		$sql = 'UPDATE `clients` SET';
+		$kvArray = array();
 		$optionsA = array();
 
 		// Serialize the key value store before writing to the DB
@@ -1574,6 +1577,26 @@ class CClient extends CChecks
 				$optionsA[$key] = $val;
 		}
 
+		$result = DB_query("SELECT COLUMN_NAME FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE TABLE_SCHEMA = 'm23' AND TABLE_NAME = 'clientkvstore'");
+		while ($row = mysqli_fetch_assoc($result))
+			$columns[] = $row['COLUMN_NAME'];
+		foreach ($this->keyValueStore as $key => $val)
+		{
+			// This one always exists and we mustn't change it!
+			if ($key == 'client')
+				continue;
+
+			 //Make the values safe
+			$key = CHECK_text2db($key);
+			$val = CHECK_text2db($val);
+
+			if (!in_array($key, $columns))
+				DB_query("ALTER TABLE `clientkvstore` ADD `$key` LONGTEXT NOT NULL");
+
+			$kvArray[] = "`$key` = '$val'";
+		}
+		
+
 		//Combine the options array to a string and add to the SQL query
 		$options = implodeAssoc('?',$optionsA);
 		$sql .= " `options` = '$options' ";
@@ -1581,11 +1604,8 @@ class CClient extends CChecks
 		$sql .= 'WHERE `id` = \''.$this->clientInfo['id'].'\'';
 		DB_query($sql);
 
-		if (isset($this->clientInfo['keyValueStore']))
-		{
-			// Put the unserialized data back into the live data
-			$this->clientInfo['keyValueStore'] = $keyValueStoreUnserialized;
-		}
+		if (!empty($kvArray))
+			DB_query("UPDATE `clientkvstore` SET ".implode($kvArray, ", ")." WHERE client='".$this->clientInfo['client']."'");
 	}
 
 
@@ -2257,7 +2277,7 @@ class CClient extends CChecks
 **/
 	public static function getNetworkBootTypesArrayForSelection()
 	{
-		if ($_SESSION['m23Shared'])
+		if (isset($_SESSION['m23Shared']) && $_SESSION['m23Shared'])
 			return(array(CClient::BOOTTYPE_GPXE => "gPXE/DHCP"));
 		else
 			return(array(CClient::BOOTTYPE_PXE => "pxe", CClient::BOOTTYPE_GRUB2EFIX64 => 'UEFI x86_64', CClient::BOOTTYPE_ETHERBOOT => "etherboot", CClient::BOOTTYPE_GPXE => "gPXE/DHCP"));
@@ -2507,10 +2527,12 @@ class CClient extends CChecks
 			DB_query("DELETE FROM clients WHERE client='$client'"); //FW ok
 			DB_query("DELETE FROM clientjobs WHERE client='$client' "); //FW ok
 			DB_query("DELETE FROM clientpackages WHERE clientname='$client' "); //FW ok
+			DB_queryNoDie("DELETE FROM clientkvstore WHERE client='$client' "); //FW ok
 		}
 	
 		//Re-calculate the MD5 sum to disable saving on calling the destructor
-		$this->md5 = md5(serialize($this->clientInfo));
+		//$this->md5 = md5(serialize($this->clientInfo));
+		$this->md5 = md5(serialize(array($this->clientInfo, $this->keyValueStore)));
 	}
 
 

@@ -417,75 +417,75 @@ function DMI_getCPU($clientName)
 
 
 
- /**
- **name DMI_getChassis($clientName)
- **description get the dmi chassis information
- **parameter clientName: name of the client
- **/
- function DMI_getChassis($clientName)
- {
-  include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+/**
+**name DMI_getChassis($clientName)
+**description get the dmi chassis information
+**parameter clientName: name of the client
+**/
+function DMI_getChassis($clientName)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+	
+	$dataAllBlocks=DMI_getParam("Chassis", $clientName);
+	
+	$vendor = $serial = $version = $asset = $out = '';
+	
+	for ($blockNr=0; $blockNr < count($dataAllBlocks); $blockNr++)
+	{
+		$data=$dataAllBlocks[$blockNr];
 
-  $dataAllBlocks=DMI_getParam("Chassis", $clientName);
-
-  $out="";
-
-  for ($blockNr=0; $blockNr < count($dataAllBlocks); $blockNr++)
-	  {
-	   $data=$dataAllBlocks[$blockNr];
-
-	   for ($i=0; $i < count($data); $i++)
+		for ($i=0; $i < count($data); $i++)
 		{
-		 $varValue=explode(":",$data[$i]);
-		 if (stristr($varValue[0],"vendor"))
-			 $vendor=$varValue[1];
-		 elseif (stristr($varValue[0],"serial"))
-			 $serial=$varValue[1];
-		 elseif (stristr($varValue[0],"Version"))
-			 $version=$varValue[1];
-		 elseif (stristr($varValue[0],"asset"))
-			 $asset=$varValue[1];
+			$varValue=explode(":",$data[$i]);
+			if (stristr($varValue[0],"vendor"))
+				$vendor=$varValue[1];
+			elseif (stristr($varValue[0],"serial"))
+				$serial=$varValue[1];
+			elseif (stristr($varValue[0],"Version"))
+				$version=$varValue[1];
+			elseif (stristr($varValue[0],"asset"))
+				$asset=$varValue[1];
 		}
 
-		//if (!empty($vendor))
-			$out.="$I18N_vendor: $vendor<br>\n$I18N_version: $version<br>\n$I18N_serial_number: $serial<br>\n$I18N_inventory_number: $asset";
-	  }
-
-  return($out);
- };
-
-
+			//if (!empty($vendor))
+				$out.="$I18N_vendor: $vendor<br>\n$I18N_version: $version<br>\n$I18N_serial_number: $serial<br>\n$I18N_inventory_number: $asset";
+	}
+	
+	return($out);
+}
 
 
 
- /**
- **name DMI_getCache($clientName)
- **description get the dmi cache information
- **parameter clientName: name of the client
- **/
- function DMI_getCache($clientName)
- {
-  include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
-  $dataAllBlocks=DMI_getParam("Cache", $clientName);
 
-  $out="";
+/**
+**name DMI_getCache($clientName)
+**description get the dmi cache information
+**parameter clientName: name of the client
+**/
+function DMI_getCache($clientName)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
-  for ($blockNr=0; $blockNr < count($dataAllBlocks); $blockNr++)
-	  {
-	   $data=$dataAllBlocks[$blockNr];
+	$dataAllBlocks=DMI_getParam("Cache", $clientName);
 
+	$out="";
+
+	for ($blockNr=0; $blockNr < count($dataAllBlocks); $blockNr++)
+	{
+		$data=$dataAllBlocks[$blockNr];
+	
 		for ($i=0; $i < count($data); $i++)
 		{
 			$varValue=explode(":",$data[$i]);
 			if (stristr($varValue[0],"Socket"))
 				$socket=$varValue[1];
 			elseif (stristr($varValue[0],"Internal"))
-				{
-					$parts=explode(" ",trim($varValue[0]));
-					$cacheNr=$parts[0][1];
-					$internal=$varValue[1];
-				}
+			{
+				$parts=explode(" ",trim($varValue[0]));
+				$cacheNr=$parts[0][1];
+				$internal=$varValue[1];
+			}
 			elseif (stristr($varValue[0],"Configuration"))
 				$cacheNr = $varValue[1];
 			elseif (stristr($varValue[0],"Size"))
@@ -496,13 +496,13 @@ function DMI_getCPU($clientName)
 				$type=$varValue[1];
 		}
 
-		if ($cacheNr > 1)
-			$out.="<br>";
-		$out.="$I18N_cache_number: $cacheNr<br>\n$I18N_type: $socket<br>\n$I18N_internal_cache: $internal<br>\n$I18N_size: $size<br>\n$I18N_maximal_size;: $maximum<br>\n$I18N_type: $type<br>";
-	  }
-
-  return($out);
- };
+			if ($cacheNr > 1)
+				$out.="<br>";
+			$out.="$I18N_cache_number: $cacheNr<br>\n$I18N_type: $socket<br>\n$I18N_internal_cache: $internal<br>\n$I18N_size: $size<br>\n$I18N_maximal_size;: $maximum<br>\n$I18N_type: $type<br>";
+	}
+	
+	return($out);
+}
 
 
 

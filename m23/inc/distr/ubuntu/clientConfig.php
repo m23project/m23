@@ -87,7 +87,23 @@ define('MINT19DESKTOP_CINNAMON', 5014);
 define('MINT19DESKTOP_MATE', 5015);
 define('MINT19_XFCEFULL', 5016);
 
+// Ubuntu 20.04
+define('UBUNTUDESKTOP_UBUNTU_2004', 6001);
+define('UBUNTUDESKTOP_KUBUNTU_2004', 6002);
+define('UBUNTUDESKTOP_MATE_2004', 6003);
+define('UBUNTUDESKTOP_XUBUNTU_2004', 6004);
+define('UBUNTUDESKTOP_BUDGIE_2004', 6005);
+define('UBUNTUDESKTOP_LUBUNTU_2004', 6006);
 
+// Linux Mint 20
+define('MINT20DESKTOP_CINNAMON', 6014);
+define('MINT20DESKTOP_MATE', 6015);
+define('MINT20_XFCEFULL', 6016);
+
+// lubuntu-desktop
+// ubuntu-budgie-desktop
+// ubuntustudio-desktop
+// ubuntustudio-desktop-core
 
 
 
@@ -170,10 +186,10 @@ fi
 function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $normalScrollBars, $addDesktopIcons, $removeUbuntuOne, $removeMono = false, $installLangPacks = true)
 {
 	$lang = getClientLanguage();
-	$snapRemove1804 = false;
+	$removeGdm3UbuntuSessionEnableLightdm = $snapRemove1804 = $snapRemove2004 = false;
 
 	include("/m23/inc/i18n/".I18N_m23instLanguage($lang)."/m23inst.php");
-	
+
 	$displayManager = UBUNTDM_LIGHTDM;
 
 	//Default package(s) for Ubuntu
@@ -184,6 +200,8 @@ function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $no
 	$linuxMint17BasePackages = 'ubuntu-extras-keyring ubuntu-keyring mintlocale linuxmint-keyring mint-meta-core mint-meta-codecs mintdesktop libglib2.0-bin mint-mdm-themes';
 	
 	$linuxMint19BasePackages = 'ubuntu-extras-keyring ubuntu-keyring mintlocale linuxmint-keyring mint-meta-core mint-meta-codecs mintdesktop libglib2.0-bin slick-greeter mint-backgrounds-tara mint-artwork mint-themes mint-translations mintsystem';
+	
+	$linuxMint20BasePackages = 'ubuntu-keyring mintlocale linuxmint-keyring mint-meta-core mint-meta-codecs mintdesktop libglib2.0-bin slick-greeter mint-backgrounds-ulyana mint-artwork mint-themes mint-translations mintsystem';
 
 	switch($desktop)
 	{
@@ -481,6 +499,94 @@ function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $no
 			$displayManager = UBUNTDM_LIGHTDM;
 		break;
 
+		case UBUNTUDESKTOP_UBUNTU_2004:
+			$dialogHeader = $I18N_installing_UbuntuGnome;
+			$desktopPackages = 'ubuntu-desktop';
+			$snapRemove2004 = true;
+			$session = 'ubuntu.desktop';
+			$displayManager = UBUNTDM_LIGHTDM;
+// 			$removeGdm3UbuntuSessionEnableLightdm = true;
+		break;
+
+		case UBUNTUDESKTOP_KUBUNTU_2004:
+			$desktopPackages = 'kubuntu-desktop';
+			$dialogHeader = $I18N_installing_kde;
+			$snapRemove2004 = true;
+			$session = 'plasma';
+			$displayManager = UBUNTDM_LIGHTDM;
+			$removeGdm3UbuntuSessionEnableLightdm = true;
+		break;
+
+		case UBUNTUDESKTOP_MATE_2004:
+			$desktopPackages = 'ubuntu-mate-desktop';
+			$dialogHeader = $I18N_installingMate;
+			$snapRemove2004 = true;
+			$session = 'mate';
+			$displayManager = UBUNTDM_LIGHTDM;
+			$removeGdm3UbuntuSessionEnableLightdm = true;
+		break;
+
+		case UBUNTUDESKTOP_XUBUNTU_2004:
+			$desktopPackages = 'xubuntu-desktop';
+			$dialogHeader = $I18N_installingXubuntuDesktop;
+			$snapRemove2004 = true;
+			$session = 'xfce.desktop';
+			$displayManager = UBUNTDM_LIGHTDM;
+			$removeGdm3UbuntuSessionEnableLightdm = true;
+		break;
+
+		case UBUNTUDESKTOP_BUDGIE_2004:
+			$desktopPackages = 'ubuntu-budgie-desktop';
+			$dialogHeader = $I18N_installing_budgie;
+			$snapRemove2004 = true;
+// 			$displayManager = NO_EXTRA_DM;
+			$session = 'budgie-desktop';
+			$displayManager = UBUNTDM_LIGHTDM;
+			$removeGdm3UbuntuSessionEnableLightdm = true;
+		break;
+
+		case UBUNTUDESKTOP_LUBUNTU_2004:
+			$desktopPackages = 'lubuntu-desktop';
+			$dialogHeader = $I18N_installingLXDE;
+			$snapRemove2004 = true;
+			$session = 'Lubuntu';
+			$displayManager = UBUNTDM_LIGHTDM;
+			$removeGdm3UbuntuSessionEnableLightdm = true;
+		break;
+
+
+		case MINT20DESKTOP_MATE:
+ 			$desktopPackages = 'mint-info-mate mint-meta-core mint-meta-mate mint-x-icons mint-y-icons mintdesktop '.$linuxMint20BasePackages;
+			$dialogHeader = $I18N_installingMate;
+			$snapRemove2004 = true;
+			$session = 'mate.desktop';
+			$displayManager = UBUNTDM_LIGHTDM;
+			$removeGdm3UbuntuSessionEnableLightdm = true;
+		break;
+
+		case MINT20_XFCEFULL:
+			CLCFG_aptGet('install', 'libglib2.0-bin');
+			$desktopPackages = "mint-meta-xfce mint-info-xfce mint-themes xfce-keyboard-shortcuts xfce4-appfinder xfce4-datetime-plugin xfce4-dict xfce4-indicator-plugin xfce4-notifyd xfce4-panel xfce4-places-plugin xfce4-power-manager xfce4-power-manager-data xfce4-power-manager-plugins xfce4-screenshooter xfce4-session xfce4-settings xfce4-taskmanager xfce4-terminal xfce4-volumed xfce4-weather-plugin xfce4-whiskermenu-plugin xfce4-xkb-plugin mint-meta-codecs mint-meta-core ".$linuxMint20BasePackages;
+// 			$desktopPackages = 'xubuntu-desktop';
+			$dialogHeader = $I18N_installing_xfce;
+// 			$session = 'xfce';
+			$session = 'xfce.desktop';
+			$displayManager = UBUNTDM_LIGHTDM;
+			$snapRemove2004 = true;
+			$removeGdm3UbuntuSessionEnableLightdm = true;
+		break;
+
+		case MINT20DESKTOP_CINNAMON:
+			// Fix missing predepends of mint-artwork-cinnamon to libglib2.0-bin
+			CLCFG_aptGet('install', 'libglib2.0-bin');
+			$desktopPackages = 'mint-artwork-cinnamon mint-info-cinnamon mint-meta-cinnamon cinnamon cinnamon-themes '.$linuxMint20BasePackages;
+			$displayManager = UBUNTDM_LIGHTDM;
+			$dialogHeader = $I18N_installingCinnamon;
+			$session = 'cinnamon.desktop';
+			$snapRemove2004 = true;
+			$removeGdm3UbuntuSessionEnableLightdm = true;
+		break;
+		
 	}
 
 	CLCFG_dialogInfoBox($I18N_client_installation, $I18N_client_status, $dialogHeader);
@@ -508,7 +614,6 @@ wvdial wvdial/passphrase password
 wvdial wvdial/passphrases_mismatch error
 wvdial wvdial/phone string
 wvdial wvdial/wvdialconf boolean true
-dictionaries-common dictionaries-common/default-wordlist select english (Webster\'s Second International English wordlist)
 dictionaries-common dictionaries-common/old_wordlist_link boolean true
 dictionaries-common dictionaries-common/selecting_ispell_wordlist_default note
 libvirtodbc0 libvirtodbc0/register-odbc-driver boolean false
@@ -590,7 +695,7 @@ libvirtodbc0 libvirtodbc0/register-odbc-driver boolean true');
 	//Remove Ubuntu One?
 	if ($removeUbuntuOne)
 	{
-		CLCFG_aptGet("remove","ubuntuone-client ubuntuone-installer rhythmbox-ubuntuone python-ubuntuone-storageprotocol python-ubuntuone-client");
+		CLCFG_aptGet("remove", "ubuntuone-client ubuntuone-installer rhythmbox-ubuntuone python-ubuntuone-storageprotocol python-ubuntuone-client");
 	}
 
 	// Remove mono?
@@ -622,6 +727,20 @@ libvirtodbc0 libvirtodbc0/register-odbc-driver boolean true');
 		// Install tools via normal Debian packages
 		CLCFG_aptGet("install", "gnome-calculator gnome-characters gnome-logs gnome-system-monitor");
 	}
+
+	if ($snapRemove2004)
+	{
+		CLCFG_aptGet("remove", "snap");
+	}
+
+	//Remove gdm3 and ubuntu-session?
+	if ($removeGdm3UbuntuSessionEnableLightdm)
+	{
+		CLCFG_aptGet("remove", "gdm3 ubuntu-session");
+		CLCFG_installLightDM($session);
+	}
+
+	CLCFG_installApplicationLanguagePackages(I18N_m23instLanguage($lang));
 }
 
 
@@ -873,6 +992,7 @@ function CLCFG_enableLDAPUbuntu($clientOptions)
 		case 'trusty':
 		case 'xenial':
 		case 'bionic':
+		case 'focal':
 			CLCFG_setDebConfDirect("ldap-auth-config ldap-auth-config/binddn string cn=proxyuser,dc=example,dc=net
 ldap-auth-config ldap-auth-config/bindpw password
 ldap-auth-config ldap-auth-config/dblogin boolean false
@@ -959,6 +1079,7 @@ TLS_CACERT      /etc/ssl/certs/ca-certificates.crt\" > /etc/ldap/ldap.conf
 		case 'trusty':
 		case 'xenial':
 		case 'bionic':
+		case 'focal':
 			echo("echo \"account sufficient		pam_ldap.so
 account sufficient		pam_unix.so
 account [success=2 new_authtok_reqd=done default=ignore]	pam_unix.so

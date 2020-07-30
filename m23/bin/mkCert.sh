@@ -39,22 +39,11 @@ then
 	#Extend the directories for storing the SSL certificate
 	sslalldir="$sslalldir/$serverIP"
 	m23ssldir="$m23ssldir/$serverIP/"
-fi
-
-if [ -z $1 ] || [ $1 != 'renewServerCert' ]
-then
-	#get the server IP
-	if test `grep address /etc/network/interfaces | wc -l` -gt 0
-	then
-		export serverIP=`/m23/bin/serverInfoIP`
-	else
-		export serverIP=`hostname`
-	fi
+else
+	export serverIP=`/m23/bin/serverInfoIP`
 fi
 
 keyBits=4096
-
-
 
 #Make the needed SSL cert directories
 mkdir -p $sslalldir $m23ssldir
@@ -87,6 +76,8 @@ expiration_days = 3650" > /tmp/ca.cfg
 	certtool --generate-privkey --bits $keyBits --outfile $sslalldir/ca.key
 	certtool --generate-self-signed --load-privkey $sslalldir/ca.key --outfile $sslalldir/ca.crt --template /tmp/ca.cfg
 
+cp /tmp/ca.cfg /m23/log
+
 rm /tmp/ca.cfg
 
 #build ssl hash and copy files to the m23ssl dir
@@ -109,14 +100,41 @@ rm $sslalldir/server.key $sslalldir/server.csr $sslalldir/server.crt 2> /dev/nul
 
 
 
+
+
 ########Generate the server key + certificate
+
+# Include IP into the certificate, if it's valid
+/m23/bin/checkIP $serverIP 2> /dev/null
+serverIPIsIP=$?
+/m23/bin/checkFQDN $serverIP 2> /dev/null
+serverIPIsFQDN=$?
+
+newIP="$(hostname -I | tr -d '[[:blank:]]')"
+/m23/bin/checkIP $newIP 2> /dev/null
+newIPIsIP=$?
+/m23/bin/checkFQDN $newIP 2> /dev/null
+newIPIsFQDN=$?
+
+# FQDN, but no IP reported by serverInfoIP
+# and
+# IP, but no FQDN reported by hostname -I
+# and
+# both IPs are not the same
+# if [ $serverIPIsIP -ne 0 ] && [ $serverIPIsFQDN -eq 0 ] && [ $newIPIsIP -eq 0 ] && [ $newIPIsFQDN -ne 0 ] && [ $newIP != $serverIP ]
+# then
+	export ipLine="
+ip_address=$newIP"
+# else
+# 	export ipLine=""
+# fi
+
 
 #Get a new serial number
 serialNumber=`genSerial`
 
 echo "organization=m23 project
-cn=$serverIP
-ip_address=$serverIP
+cn=$serverIP$ipLine
 unit=self signing
 tls_www_server
 encryption_key
@@ -132,4 +150,5 @@ certtool	--generate-certificate					\
 			--template /tmp/server.cfg				\
 			--outfile $sslalldir/server.crt
 
+cp /tmp/server.cfg /m23/log
 rm /tmp/server.cfg

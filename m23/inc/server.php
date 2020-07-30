@@ -12,6 +12,121 @@ define('m23phpMyLDAPAdminHtpasswd',"/m23/etc/.phpMyLDAPAdminHtpasswd");
 define('m23BackuppcHtpasswd',"/etc/backuppc/htpasswd");
 define('m23RASTunnelScript','/m23/bin/m23RemoteAdministrationServiceOpenTunnel');
 
+define('m23ServerIPOverrideFile', '/m23/etc/address.override');
+
+
+
+
+
+/**
+**name SERVER_getExportIntoClientreporting()
+**description Determines, if the information should be exported to the `clientreporting` table.
+**returns: true, if the information should be exported to the `clientreporting` table, otherwise false.
+**/
+function SERVER_getExportIntoClientreporting()
+{
+	return(SERVER_getServerBoolSetting('exportIntoClientreporting'));
+}
+
+
+
+
+
+/**
+**name SERVER_setExportIntoClientreporting($active)
+**description Sets, if the information should be exported to the `clientreporting` table.
+**parameter active: true, if the information should be exported to the `clientreporting` table, otherwise false.
+**/
+function SERVER_setExportIntoClientreporting($active)
+{
+	SERVER_setServerBoolSetting('exportIntoClientreporting', $active);
+}
+
+
+
+
+
+########
+/**
+**name SERVER_getShowClientLastUpgradeColumn()
+**description Determines, if the time of the last finished update job should be shown in the client's job overview.
+**returns: true, if the time of the last finished update job should be shown, otherwise false.
+**/
+function SERVER_getShowClientLastUpgradeColumn()
+{
+	return(SERVER_getServerBoolSetting('ShowClientLastUpgradeColumn'));
+}
+
+
+
+
+
+/**
+**name SERVER_setShowClientLastUpgradeColumn($active)
+**description Sets, if the time of the last finished update job should be shown.
+**parameter active: true, if the time of the last finished update job should be shown, otherwise false.
+**/
+function SERVER_setShowClientLastUpgradeColumn($active)
+{
+	SERVER_setServerBoolSetting('ShowClientLastUpgradeColumn', $active);
+}
+
+
+
+
+
+/**
+**name SERVER_setWarnWhenClientRebootsRequestedByPackagesAreDelayed($maxAllowedDelay)
+**description Sets the tolerable amount of time between a reboot requested by a Debian package and the actual reboot.
+**parameter maxAllowedDelay: Tolerable amount of time (in minutes) between a reboot requested by a Debian package and the actual reboot. or 0, to disable the warning.
+**/
+function SERVER_setWarnWhenClientRebootsRequestedByPackagesAreDelayed($maxAllowedDelay)
+{
+	SERVER_setServerSetting('warnWhenClientRebootsRequestedByPackagesAreDelayed', $maxAllowedDelay);
+}
+
+
+
+
+
+/**
+**name SERVER_getWarnWhenClientRebootsRequestedByPackagesAreDelayed()
+**description Gets the tolerable amount of time between a reboot requested by a Debian package and the actual reboot.
+**returns: Tolerable amount of time (in minutes) between a reboot requested by a Debian package and the actual reboot. or 0, to disable the warning.
+**/
+function SERVER_getWarnWhenClientRebootsRequestedByPackagesAreDelayed()
+{
+	return(SERVER_getServerIntSetting('warnWhenClientRebootsRequestedByPackagesAreDelayed', 0, 0));
+}
+
+
+
+
+
+/**
+**name SERVER_getShowTimeInformationOnJobs()
+**description Determines, if time information should be shown in the client's job overview.
+**returns: true, if the information should be shown, otherwise false.
+**/
+function SERVER_getShowTimeInformationOnJobs()
+{
+	return(SERVER_getServerBoolSetting('ShowTimeInformationOnJobs'));
+}
+
+
+
+
+
+/**
+**name SERVER_setShowTimeInformationOnJobs($active)
+**description Sets, if time information should be shown in the client's job overview.
+**parameter active: true, if the information should be shown, otherwise false.
+**/
+function SERVER_setShowTimeInformationOnJobs($active)
+{
+	SERVER_setServerBoolSetting('ShowTimeInformationOnJobs', $active);
+}
+
 
 
 
@@ -54,6 +169,69 @@ chmod 755 $logfile
 	exec($cmd);
 
 	return($logfile);
+}
+
+
+
+
+
+/**
+**name SERVER_getWarnWhenUpdateJobsAreDelayed()
+**description Gets the tolerable amount of running/waiting time to finish an update job.
+**returns: Tolerable amount of running/waiting time (in minutes) to finish a job or 0, to disable the warning.
+**/
+function SERVER_getWarnWhenUpdateJobsAreDelayed()
+{
+	return(SERVER_getServerIntSetting('warnWhenUpdateJobsAreDelayed', 0, 0));
+}
+
+
+
+
+
+/**
+**name SERVER_setWarnWhenUpdateJobsAreDelayed($maxAllowedDelay)
+**description Sets the tolerable amount of running/waiting time to finish an update job.
+**parameter maxAllowedDelay: The maximum tolerable amount of running/waiting time (in minutes) to finish since adding it or 0, to disable.
+**/
+function SERVER_setWarnWhenUpdateJobsAreDelayed($maxAllowedDelay)
+{
+	SERVER_setServerSetting('warnWhenUpdateJobsAreDelayed', $maxAllowedDelay);
+}
+
+
+
+
+
+/**
+**name SERVER_getWarnWhenJobsAreDelayed()
+**description Gets the tolerable amount of running/waiting time to finish a job.
+**returns: Tolerable amount of running/waiting time (in minutes) to finish a job or 0, to disable the warning.
+**/
+function SERVER_getWarnWhenJobsAreDelayed()
+{
+	if (!RMV_exists4IP('warnWhenJobsAreDelayed', 'm23ServerSetting'))
+		return(0);
+
+	$maxAllowedDelay = (int)SERVER_getServerSetting('warnWhenJobsAreDelayed');
+	if ($maxAllowedDelay < 0)
+		return(0);
+
+	return($maxAllowedDelay);
+}
+
+
+
+
+
+/**
+**name SERVER_setWarnWhenJobsAreDelayed($maxAllowedDelay)
+**description Sets the tolerable amount of running/waiting time to finish a job.
+**parameter maxAllowedDelay: The maximum tolerable amount of running/waiting time (in minutes) to finish since adding it or 0, to disable.
+**/
+function SERVER_setWarnWhenJobsAreDelayed($maxAllowedDelay)
+{
+	SERVER_setServerSetting('warnWhenJobsAreDelayed', $maxAllowedDelay);
 }
 
 
@@ -108,7 +286,7 @@ function SERVER_isLiveLogDisabled()
 
 
 /**
-**name SERVER_setLiveLogDisabled()
+**name SERVER_setLiveLogDisabled($disabled)
 **description Sets/Unsets live disabling of logging globally for all clients.
 **parameter disabled: true, if live logging should be disabled globally for all clients otherwise false.
 **/
@@ -129,6 +307,62 @@ function SERVER_setLiveLogDisabled($disabled)
 function SERVER_isInstallReasonEnabled()
 {
 	return(SERVER_getServerBoolSetting('InstallReasonEnabled'));
+}
+
+
+
+
+
+/**
+**name SERVER_setRebootClientAfterJobsIfNecessary($disabled)
+**description Sets/Unsets rebooting clients, if a reboot is necessary after jobs are finished.
+**parameter disabled: true, if clients should be rebooted after the jobs are finished and a reboot is necessary, otherwise false.
+**/
+function SERVER_setRebootClientAfterJobsIfNecessary($disabled)
+{
+	SERVER_setServerBoolSetting('m23ServerRebootClientAfterJobsIfNecessary', $disabled);
+}
+
+
+
+
+
+/**
+**name SERVER_isRebootClientAfterJobsIfNecessary()
+**description Determines, if clients should be rebooted after the jobs are finished and a reboot is necessary, otherwise false.
+**returns: true, if clients should be rebooted after the jobs are finished and a reboot is necessary, otherwise false.
+**/
+function SERVER_isRebootClientAfterJobsIfNecessary()
+{
+	return(SERVER_getServerBoolSetting('m23ServerRebootClientAfterJobsIfNecessary'));
+}
+
+
+
+
+
+/**
+**name SERVER_setm23ServerIncudedInSourcesListDisabled($disabled)
+**description Sets/Unsets disabling of including the m23 server into all client's sources.lists.
+**parameter disabled: true, if the m23 server should not be included into all client's sources.lists otherwise false.
+**/
+function SERVER_setm23ServerIncudedInSourcesListDisabled($disabled)
+{
+	SERVER_setServerBoolSetting('m23ServerIncudedInSourcesListDisabled', $disabled);
+}
+
+
+
+
+
+/**
+**name SERVER_ism23ServerIncudedInSourcesListDisabled()
+**description Determines, if including the m23 server into all client's sources.lists should be disabled.
+**returns: true, if including the m23 server into all client's sources.lists should be disabled, otherwise false.
+**/
+function SERVER_ism23ServerIncudedInSourcesListDisabled()
+{
+	return(SERVER_getServerBoolSetting('m23ServerIncudedInSourcesListDisabled'));
 }
 
 
@@ -178,6 +412,37 @@ function SERVER_setUpdatePackageInfosDisabled($disabled)
 
 
 /**
+**name SERVER_isClientSshHttpsStatusEnabled()
+**description Determines, if the SSH (server -> client) and the HTTPs (client -> server) status of all clients should be detected and shown.
+**returns: true, if the SSH and the HTTPs status of all clients should be detected and shown.
+**/
+function SERVER_isClientSshHttpsStatusEnabled()
+{
+	return(SERVER_getServerBoolSetting('ClientSshHttpsStatusEnabled'));
+}
+
+
+
+
+
+/**
+**name SERVER_setClientSshHttpsStatusEnabled($active)
+**description Sets/Unsets if the SSH (server -> client) and the HTTPs (client -> server) status of all clients should be detected and shown.
+**parameter active: true, if the SSH and the HTTPs status of all clients should be detected and shown.
+**/
+function SERVER_setClientSshHttpsStatusEnabled($active)
+{
+	SERVER_setServerBoolSetting('ClientSshHttpsStatusEnabled', $active);
+	
+	// Make sure, the ping test is active. Without it, the advanced SSH/HTTPs tests will not work.
+	if ($active) SERVER_setClientOnlineStatusEnabled(true);
+}
+
+
+
+
+
+/**
 **name SERVER_isClientOnlineStatusEnabled()
 **description Determines, if the online status of all clients should be detected and shown.
 **returns: true, if the online status of all clients should be detected and shown.
@@ -212,6 +477,9 @@ function SERVER_startUpdateClientOnlineInDBBackgroundJob()
 **/
 function SERVER_setClientOnlineStatusEnabled($active)
 {
+	// Stop the advanced SSH/HTTPs tests, because it will not work without the ping test.
+	if (!$active) SERVER_setClientSshHttpsStatusEnabled(false);
+
 	// Kill a job, if it should not run
 	if (!$active && SERVER_runningInBackground('CLIENT_updateClientOnlineInDB'))
 		SERVER_killBackgroundJob('CLIENT_updateClientOnlineInDB');
@@ -280,6 +548,32 @@ function SERVER_setServerSetting($var, $val)
 function SERVER_getServerSetting($var)
 {
 	return(RMV_get4IP($var, 'm23ServerSetting'));
+}
+
+
+
+
+
+/**
+**name SERVER_getServerIntSetting($var, $default, $minimun = false)
+**description Gets the integer value of a server setting.
+**parameter: var: Name of the setting.
+**parameter: default: Default value, if the server side variable is not set or the tored value is too low
+**parameter: minimum: Minumum allowed value.
+**returns: Value the setting or default, if no value is stored or it's invalid.
+**/
+function SERVER_getServerIntSetting($var, $default, $minimun = false)
+{
+	// Return default value, if server side variable is not set
+	if (!RMV_exists4IP($var, 'm23ServerSetting')) return($default);
+
+	$out = (int)SERVER_getServerSetting($var);
+
+	// Return default value, if server side stored value is too low
+	if (($minimun !== false) && ($out < $minimun))
+		return($default);
+
+	return($out);
 }
 
 
@@ -941,22 +1235,58 @@ function SERVER_programmStatusTableHeader()
 };
 
 
+	
+/**
+**name SERVER_waitForLock($lockFile)
+**description Cyclically and randomly waits until a lock file isn't existing and creates it at once.
+**parameter lockFile: name of the lock file.
+**returns true, if the lock file could be created, otherwise false.
+**/
+function SERVER_waitForLock($lockFile)
+{
+	// Wait until the lock is free
+	while (true)
+	{
+		clearstatcache();
+		if (!file_exists($lockFile))
+		{
+			touch("$lockFile.log");
+			return(touch($lockFile));
+		}
+
+		// Sleep a random amount of miliseconds between attempts
+		usleep(rand (125, 500));
+	}
+}
+
+
 
 
 
 /**
-**name SERVER_runInBackground($jobName,$cmds,$user,$runInScreen, $redirectStdErr = false)
+**name SERVER_runInBackground($jobName,$cmds,$user="root",$runInScreen=true, $redirectStdErr = false, $bashLock = true)
 **description Runs a script with "screen" in the background under a given user
 **parameter jobName: name of the job screen should show
 **parameter cmds: the commands of the script 
 **parameter user: user the script should be run under
 **parameter runInScreen: Set to true if the execution should be done in "screen". False executes it under the normal BASH.
 **parameter redirectStdErr: Set to true if stderr should be redirected and not shown on in the console.
+**parameter bashLock: Set to false to use the PHP locking with randomly waiting instead of the locking inside the BASH script.
 **/
-function SERVER_runInBackground($jobName,$cmds,$user="root",$runInScreen=true, $redirectStdErr = false)
+function SERVER_runInBackground($jobName,$cmds,$user="root",$runInScreen=true, $redirectStdErr = false, $bashLock = true)
 {
 	$cmdf="/m23/tmp/$jobName.sh";
 	$lock="/m23/tmp/$jobName.lock";
+	
+	// Create the 
+	if ($bashLock)
+	{
+		$BASH_lockSet = "touch $lock";
+		$BASH_lockRemove = "rm $lock";
+	}
+	else
+		$BASH_lockSet = $BASH_lockRemove = '';
+	
 	
 	if ($redirectStdErr)
 		$redirectStdErr = '2>&1';
@@ -986,24 +1316,21 @@ function SERVER_runInBackground($jobName,$cmds,$user="root",$runInScreen=true, $
 		$changeUserDirectEnd = '';
 	}
 
-	$file=fopen($cmdf,"w");
-
+	$file = fopen($cmdf,"w");
+	
+	if (!$bashLock)
+		SERVER_waitForLock($lock);
+	
 	fwrite($file,
 	"#!/bin/bash
 
-	# Special access rights for Debian/Raspbian 10
-	if [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep -c 'Raspbian GNU/Linux 10' /etc/issue) -gt 0 ]
-	then
-		chmod 777 /var/run/screen 2> /dev/null
-	else
-		chmod 775 /var/run/screen 2> /dev/null
-	fi
+".BASH_SET_VAR_RUN_SCREEN_BY_DISTRIBUTION."
 
-	rm $lock 2> /dev/null
-	touch $lock
+	$BASH_lockSet
 $cmds
 	rm $cmdf
-	rm $lock\n");
+	$BASH_lockRemove
+	\n");
 
 	fclose($file);
 
@@ -1013,11 +1340,16 @@ $cmds
 	else
 		$execCMD = "${changeUserDirectBegin}$cmdf${changeUserDirectEnd} $redirectStdErr";
 
-return(shell_exec("
+	$cmdOutput = shell_exec("
 	chmod +x $cmdf
 $execCMD
-	"));
-};
+	");
+
+	if (!$bashLock)
+		unlink($lock);
+
+	return($cmdOutput);
+}
 
 
 
@@ -1158,6 +1490,120 @@ chmod $mode '$fileName'
 
 
 /**
+**name SERVER_overrideServerIP($ipOrFQDN)
+**description Overrides the (autodetected) IP of the m23 server.
+**parameter ip: New server IP to show to the m23 clients.
+**returns true on successfully setting and false otherwise.
+**/
+function SERVER_overrideServerIP($ipOrFQDN)
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	if (checkIP($ipOrFQDN) || checkFQDN($ipOrFQDN))
+	{
+		$ret = SERVER_putFileContents(m23ServerIPOverrideFile, $ipOrFQDN, '755');
+
+		if ($ret)
+		{
+			MSG_showInfo($I18N_serverip_override_file_stored_sucessfully);
+			return(true);
+		}
+		else
+		{
+			MSG_showError($I18N_cannot_store_serverip_override_file);
+			return(false);
+		}
+	}
+	else
+	{
+		MSG_showError($I18N_invalid_ip);
+		return(false);
+	}
+}
+
+
+
+
+
+/**
+**name SERVER_unoverrideServerIP()
+**description Removes the file for overriding the IP of the m23 server.
+**parameter ip: New server IP to show to the m23 clients.
+**returns true on successfully deleting and false otherwise.
+**/
+function SERVER_unoverrideServerIP()
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	$ret = SERVER_deleteFile(m23ServerIPOverrideFile);
+
+	if ($ret)
+	{
+		MSG_showInfo($I18N_serverip_override_file_removed_sucessfully);
+		return(true);
+	}
+	else
+	{
+		MSG_showError($I18N_cannot_remove_serverip_override_file);
+		return(false);
+	}
+}
+
+
+
+
+
+/**
+**name SERVER_isOverrideServerIPFilePresent()
+**description Checks, if the file for overriding the IP of the m23 server is present.
+**returns true, if the file for overriding the IP of the m23 server is present and false otherwise.
+**/
+function SERVER_isOverrideServerIPFilePresent()
+{
+	return(file_exists(m23ServerIPOverrideFile));
+}
+
+
+
+
+
+/**
+**name SERVER_Dialog_overrideServerIP()
+**description Dialog for (un)overriding the IP of the m23 server.
+**returns HTML code with the dialog elements.
+**/
+function SERVER_Dialog_overrideServerIP()
+{
+	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+	// Set or delete the override file
+	if (HTML_submitCheck('BUT_overrideServerIP'))
+	{
+		if (SERVER_isOverrideServerIPFilePresent())
+		{
+			$_POST['ED_overrideServerIP'] = NULL;
+			SERVER_unoverrideServerIP();
+		}
+		else
+			SERVER_overrideServerIP($_POST['ED_overrideServerIP']);
+	}
+
+	// Generate the input field with the now valid server IP and the according button
+	HTML_input('ED_overrideServerIP', getServerIP(), 50, 255);
+
+	if (SERVER_isOverrideServerIPFilePresent())
+		HTML_submitDefine('BUT_overrideServerIP', $I18N_delete);
+	else
+		HTML_submitDefine('BUT_overrideServerIP', $I18N_save);
+
+	return(ED_overrideServerIP.' '.BUT_overrideServerIP);
+}
+
+
+
+
+
+/**
 **name SERVER_delLineFromFile($file,$search)
 **description Deletes lines from the file that match the search pattern
 **parameter file: name of the file to edit
@@ -1188,7 +1634,7 @@ function SERVER_delLineFromFile($file,$search)
 **/
 function SERVER_addEtcHosts($hostname,$ip)
 {
-	if ($_SESSION['m23Shared']) return(false);
+	if (isset($_SESSION['m23Shared']) && $_SESSION['m23Shared']) return(false);
 
 	//m23customPatchBegin type=del id=SERVER_addEtcHostsNoAdd
 	SERVER_addLineToFile("/etc/hosts"," $hostname$","$ip $hostname");
@@ -1209,7 +1655,7 @@ function SERVER_addEtcHosts($hostname,$ip)
 **/
 function SERVER_delEtcHosts($hostname)
 {
-	if ($_SESSION['m23Shared']) return(false);
+	if (isset($_SESSION['m23Shared']) && $_SESSION['m23Shared']) return(false);
 
 	//m23customPatchBegin type=del id=SERVER_delEtcHostsNoDel
 	SERVER_delLineFromFile("/etc/hosts"," $hostname$");

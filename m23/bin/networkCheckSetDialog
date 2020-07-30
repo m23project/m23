@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# Checks network settings and asks for correct values for the override files
+
+
+#name checkIPAskForAlternative
+#description Checks, if an FQDN, IP or netmask is valid and asks the administrator for a valid
+#parameter: $1 text
+#parameter: name of the override file
+#parameter: true, if FQDN is allowed, otherwise false.
+checkIPAskForAlternative()
+{
+	backtitle='m23 network configuration for m23 clients'
+	title="$1"
+	text="Invalid configuration found! Please enter a valid value.
+Hint: This tool does not change the network configuration ON the m23 server.
+ Here you set network settings for m23 clients.
+
+Ungueltige Konfiguration gefunden! Bitte geben Sie eine gueltigen Wert ein.
+Hinweise: Hiermit aendern Sie NICHT die Netzwerkkonfiguration des m23-Servers,
+ sondern die der m23-Clients."
+	confFile="$2"
+	allowFQDN="$3"
+	
+	export retCode=1
+
+	while [ $retCode -ne 0 ]
+	do
+		echo "dialog --backtitle `echo \"'$backtitle'\"` --title `echo \"'$title'\"` --clear --inputbox `echo \"'$text'\"` 20 75 \"\" 2> /tmp/dialog.value; exit \$?" > /tmp/dialog.cmd
+		bash /tmp/dialog.cmd
+
+		RET="$(cat /tmp/dialog.value)"
+
+		/m23/bin/checkIP "$RET" || ( /m23/bin/checkFQDN "$RET" && $allowFQDN )
+		export retCode=$?
+		echo -n "$RET" > "$confFile"
+	done
+}
+
+
+
+
+/m23/bin/checkIP "`/m23/bin/serverInfoDNS`"
+if [ $? -ne 0 ]
+then
+	checkIPAskForAlternative "DNS server/DNS-Server" "/m23/etc/dns.override" false
+fi
+
+IP="`/m23/bin/serverInfoIP`"
+/m23/bin/checkIP "$IP" || /m23/bin/checkFQDN "$IP"
+if [ $? -ne 0 ]
+then
+	checkIPAskForAlternative "IP address/IP-Adresse" "/m23/etc/address.override" true
+fi
+
+/m23/bin/checkIP "`/m23/bin/serverInfoGateway`"
+if [ $? -ne 0 ]
+then
+	checkIPAskForAlternative "Gateway server/Gateway-Server" "/m23/etc/gateway.override" false
+fi
+
+/m23/bin/checkIP "`/m23/bin/serverInfoBroadcast`"
+if [ $? -ne 0 ]
+then
+	checkIPAskForAlternative "Broadcast address/Broadcast-Adresse" "/m23/etc/broadcast.override" false
+fi
