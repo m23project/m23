@@ -25,7 +25,9 @@ function run($id)
 	{
 		include($scriptName);
 		$executeScript = true;
-	};
+	}
+	else
+		$executeScript = false;
 
 	if ($executeScript)
 		preInstallCommands($clientOptions);

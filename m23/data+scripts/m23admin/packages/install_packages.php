@@ -410,7 +410,7 @@
 			};
 			case 'recommend':
 			{
-				PKG_addRecommendPackages($CB_counter,$client,$_POST[SEL_specialNormalType],$distr);
+				PKG_addRecommendPackages($CB_counter,$client,$_POST['SEL_specialNormalType'],$distr);
 				break;
 			};
 			case 'special':

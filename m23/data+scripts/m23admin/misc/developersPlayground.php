@@ -15,7 +15,8 @@
 
 print("<pre>");
 
-PKG_updateStartTime(64140);
+print_r(SRCLST_getAppendToFile('LinuxMint 20 Ulyana'));
+
 
 /*	var_dump(GRP_setSetting('default', 10, 'rebootClientAfterJobsIfNecessary24', 24));
 	var_dump(GRP_setSetting('default', GRP_SETTING_TYPE_execWhenAllJobsFinished, GRP_SETTING_VAR_rebootClientAfterJobsIfNecessary, 1));

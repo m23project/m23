@@ -1,12 +1,72 @@
+2020-10-29
+patch: 
+cha: UPDATE_doUpdate: Now imports the package sign key. Just in case it was not imported before.
+cha: CLCFG_sourceslistCreateConfigFiles: Now adds lines to add only if they are not existing in the destination file.
++++++
+2020-10-28
+new: SRCLST_getXToFile: Returns paramters of a given parameter type from the given sources list as an associative array, where file name and file contents are seperated.
+cha: SRCLST_getAddToFile: Now uses SRCLST_getXToFile.
+new: SRCLST_getAppendToFile: Returns appendToFile paramters from the given sources list as an associative array, where file name and file contents are seperated.
+cha: CLCFG_sourceslistCreateConfigFiles: Now uses SRCLST_getAppendToFile too and appends the parameters to the given files.
++++++
+2020-10-27
+new: SERVER_setHandleAllClientsAsDynamic: Sets/Unsets handling of all m23 clients as dynamic clients.
+new: SERVER_isHandleAllClientsAsDynamicEnabled: Determines, if handling of all m23 clients as dynamic clients is enabled.
+cha: CLIENT_getClientName: Now calls SERVER_isHandleAllClientsAsDynamicEnabled.
++++++
+2020-10-26
+cha: m23 / postinst: Disables DontCache option of apt-cacher-ng, because it seems to produce broken downloads, that will let APT download a package in a loop.
+fix: CLCFG_genFstab: Adds "net.ifnames=0" to GRUB_CMDLINE_LINUX_DEFAULT in /etc/default/grub if it wasn't present before.
+cha: CLCFG_genFstab: Now sets grub-pc install_devices via debconf.
+++++
+2020-10-22
+cha: db.php: Added Linux Mint 20 in BASH_SET_VAR_RUN_SCREEN_BY_DISTRIBUTION.
++++++
+2020-10-14
+new: CHECK_login: Checks, if a login name is valid.
+cha: CHECK_FW: Added support for login names.
+cha: cha: * / m23x2goServerInstall.php: Commented out calling of VM_CloudStackSendSetVisualURL.
++++++
+2020-10-13
+cha: client / linuxrc: Now checkAlternativeM23Server isn't called anymore (was used to CloudStack detection).
+cha: MSR_curDynIPCommand: Commented out CloudStack detection.
++++++
+2020-09-29
+cha: *m23updateInstall.php: Now ensures that dpkg keeps edited config files without asking.
+cha: .../imaging/packages/m23updateInstall.php: Now is a symlink to .../debian/packages/m23updateInstall.php.
++++++
+2020-09-24
+new: CSystemProxy::writeACNGConf: Write Configuration for apt-cacher-ng. (THX TS)
+cha: CSystemProxy::writeAPTProxyConf: 
++++++
+2020-08-27
+fix: install_packages.php: Now uses strings instead of non set constants that were automatically converted to strings.
+fix: PKG_addRecommendPackages: Now returnes the correct variable.
++++++
+2020-08-20
+fix: PKG_copyPackagesToClient: Corrected SQL statement.
+fix: MASS_checkAndSaveFields: Now allowes FQDN for the client name.
+fix: Package sources list Ubuntu-Bionic: Now uses "Bionic" instead of "Trusty" in the comment.
+fix: Package sources list Ubuntu-Xenial: Now uses "Xenial" instead of "Trusty" in the comment.
+fix: Package sources list Ubuntu-Focal: Now uses "Focal" instead of "Trusty" in the comment.
++++++
+2020-08-17
+patch 101389: Improved m23 release documentation and scripts. m23 server IP and m23 client ID are included in kernel boot parameters.
+cha: DHCP_writePXEcfg: Now adds the IP of the m23 server and the ID of the m23 client to the kernel boot parameters.
+new: SRCLST_getImportGPGKeyBASH: Returns BASH code to import GPG APT keys from the URLs that are given in the importGPGKey paramters in a sources list.
+cha: CLCFG_sourceslist, PKG_preparePackageDir: Now are calling SRCLST_getImportGPGKeyBASH.
++++++
 2020-07-30
 fix: CMSLinkCreator.sh: Now inserts the correct file date and size into the link file.
-cha: index.php: Removed old inlcudes for CSS and JS and removed the according unneeded files.
+cha: index.php: Removed old includes for CSS and JS and removed the according unneeded files.
+cha: m23-Release-Tabelle.odt, m23-Release-Anweisung.odt: Updated.
 +++++
 2020-07-29
 cha: check-UCS-unmaintained: Now uses downloaded packages directly instead of trying to download them.
 +++++
 2020-07-28
 patch 101387: Release 20.1
+release 20.1
 +++++
 2020-07-24
 fix: de / manual.tex: Fixed "! TeX capacity exceeded, sorry [input stack size=5000]." by removing "\usepackage{german,url}".

@@ -760,6 +760,11 @@ if ($e_ret == 1)
 	rm '$logFile'
 	";
 
+	// Import the GPG keys
+	if ($sourceName !== false)
+		$cmd .= SRCLST_getImportGPGKeyBASH($sourceName);
+
+
 	// Add the beginning of the while loop for unlimited tries of apt-get update
 	if ($hardTryUpdate)
 	$cmd .= "

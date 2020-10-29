@@ -26,7 +26,8 @@ function run($id)
 	echo("
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
-apt-get --force-yes -y $aptCommand
+#apt-get --force-yes -y $aptCommand
+apt-get --yes --force-yes -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' $aptCommand
 
 if [ $? -eq 0 ]
 then

@@ -1523,4 +1523,7 @@ Geben Sie \"0\" zum Deaktivieren der Warnung ein.</br>
 @$I18N_before_equals='vor incl.';
 @$I18N_after='nach';
 @$I18N_after_equals='nach incl.';
+
+//20.1a
+@$I18N_handleAllClientsAsDynamic = 'Alle m23-Clients wie Clients mit dynamischen IPs behandeln';
 ?>

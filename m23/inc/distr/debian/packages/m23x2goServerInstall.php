@@ -58,7 +58,7 @@ fi
 
 /* =====> */ MSR_statusBarIncCommand(90);
 
-VM_CloudStackSendSetVisualURL();
+// VM_CloudStackSendSetVisualURL();
 
 /* =====> */ MSR_statusBarIncCommand(10);
 

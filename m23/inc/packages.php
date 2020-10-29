@@ -1097,20 +1097,18 @@ function PKG_listRecommendSubPackages($package,$cut,&$params)
 **/
 function PKG_addRecommendPackages($amount,$client,$normalPackageType2,$distr)
 {
-$count=0;
+	$count = 0;
 
-for ($i=0; $i < $amount; $i++)
+	for ($i = 0; $i < $amount; $i++)
 	{
 	 $var="CB_pkgRecommend".$i;
 
 	//$_POST[$var] contains the name of the package selection
 	if (!empty($_POST[$var]))
-		{
-			$count=PKG_addPackageSelection($client,$_POST[$var],$normalPackageType2, $distr);
-		};
+		$count = PKG_addPackageSelection($client,$_POST[$var],$normalPackageType2, $distr);
 	}
 
-	return($counter);
+	return($count);
 };
 
 
@@ -3031,7 +3029,7 @@ function PKG_copyPackagesToClient($to,$from,$status)
 	while( $data = mysqli_fetch_array($res))
 	{
 		$iSQL="INSERT INTO `clientjobs` (`client` , `package` , `reason` , `priority` , `status` , `params` , `normalPackage` , `installedSize`, `addtime`, `finishtime`) VALUES (
-		'$to', '$data[package]', '$data[reason]', '$data[priority]', '$data[status]', '$data[params]', '$data[normalPackage]', '$data[installedSize]', '$data[addtime], '$data[finishtime])";
+		'$to', '$data[package]', '$data[reason]', '$data[priority]', '$data[status]', '$data[params]', '$data[normalPackage]', '$data[installedSize]', '$data[addtime]', '$data[finishtime]')";
 
 		DB_query($iSQL); //FW ok
 	};

@@ -22,10 +22,12 @@ function run($id)
 	$scriptName="/m23/data+scripts/distr/".$clientOptions['distr']."/packages/".$line['normalPackage']."extraCommands.php";
 
 	if (file_exists($scriptName))
-		{
-			include($scriptName);
-			$executeScript = true;
-		};
+	{
+		include($scriptName);
+		$executeScript = true;
+	}
+	else
+		$executeScript = false;
 
 	if ($executeScript)
 		preInstallCommands($clientOptions);

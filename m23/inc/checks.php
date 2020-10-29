@@ -18,6 +18,9 @@ $*/
 */
 
 
+
+
+
 define('CONF_ALLOWEDCHARACTERS','#?.,+*=@‰¸ˆƒ‹÷ﬂ\!@:\-/_ ËÈ«‚ÍÓÙ˚‡˘ÎÔ¸)&(');
 define('CC_clientname','S64');
 define('CC_client',CC_clientname);
@@ -40,8 +43,8 @@ define('CC_familyname','se40');
 define('CC_forename','sn40');
 define('CC_name',CC_forename);
 define('CC_office','se');
-define('CC_login','An32');
-define('CC_loginOrEmpty','Ae32');
+define('CC_login','u');
+define('CC_loginOrEmpty','ue');
 define('CC_id','i');
 define('CC_userID','i');
 define('CC_groupID','i');
@@ -124,6 +127,25 @@ define('CC_deviceNameOrPartition', 'do');
 define('CC_deviceNameOrPartitionOrRaid', 'dr');
 define('CC_mountPoint', 'm');
 setlocale(LC_ALL, 'de_DE@euro', 'de_DE', 'de', 'ge', 'de_DE.UTF-8');
+
+
+
+
+
+/**
+**name CHECK_login($login, $allowEmpty)
+**description Checks, if a login name is valid.
+**parameter login: login name to check.
+**parameter allowEmpty: true, if empty is allowed.
+**returns true, if the login name is valid, otherwise false.
+**/
+function CHECK_login($login, $allowEmpty)
+{
+	if ($allowEmpty && !isset($login{0})) return(true);
+
+	return(preg_match('/^[a-z_]([a-z0-9_-]{0,31}|[a-z0-9_-]{0,30}\$)$/', $login) === 1);
+}
+
 
 
 
@@ -239,7 +261,8 @@ function CHECK_FW()
 		// Adds an extra character at position 1, if it does not exist. This disables showing the PHP warning, when accessing the 1st character
 		if ((!is_numeric($typeS)) && (!isset($typeS{1})))
 			$typeS{1}='∞';
-			
+
+
 
 		switch ($typeS{0})
 		{
@@ -390,6 +413,12 @@ function CHECK_FW()
 				//l:	length of the input string is greater than 0
 				//l10:	length of the input string is greater than 10
 				return(isset($val{(isset($typeS{1}) ? substr($typeS,1) : 0)}));
+				break;
+
+			case 'u':
+				//u:	valid login name allowed
+				//ue:	valid login name or empty allowed
+				return(CHECK_login($val, $typeS{1} == "e"));
 				break;
 
 			case 0:

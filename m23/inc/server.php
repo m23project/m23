@@ -342,6 +342,34 @@ function SERVER_isRebootClientAfterJobsIfNecessary()
 
 
 /**
+**name SERVER_setHandleAllClientsAsDynamic($enabled)
+**description Sets/Unsets handling of all m23 clients as dynamic clients.
+**parameter enabled: true, if all m23 clients should be handled as dynamic clients, otherwise false.
+**/
+function SERVER_setHandleAllClientsAsDynamic($enabled)
+{
+	SERVER_setServerBoolSetting('handleAllClientsAsDynamic', $enabled);
+}
+
+
+
+
+
+/**
+**name SERVER_isHandleAllClientsAsDynamicEnabled()
+**description Determines, if handling of all m23 clients as dynamic clients is enabled.
+**returns: true, if handling of all m23 clients as dynamic clients is enabled, otherwise false.
+**/
+function SERVER_isHandleAllClientsAsDynamicEnabled()
+{
+	return(SERVER_getServerBoolSetting('handleAllClientsAsDynamic'));
+}
+
+
+
+
+
+/**
 **name SERVER_setm23ServerIncudedInSourcesListDisabled($disabled)
 **description Sets/Unsets disabling of including the m23 server into all client's sources.lists.
 **parameter disabled: true, if the m23 server should not be included into all client's sources.lists otherwise false.

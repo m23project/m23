@@ -168,7 +168,7 @@ class CSystemProxy extends CChecks
 	private $SQUID_FILE = '';
 	
 	const APT_PROXY_FILE = '/etc/apt/apt.conf.d/70debconf';
-// 	const APT_PROXY_FILE = '/tmp/70debconf';
+ 	const ACNG_CONF_FILE = '/etc/apt-cacher-ng/acng.conf';
 	const ENVIRONMENT_FILE = '/etc/environment';
 
 
@@ -245,10 +245,11 @@ class CSystemProxy extends CChecks
 		$proxyPort = $this->getProxyPort();
 		$userPass = $this->getUserPasswordString();
 		$deactivatedMarker = (!$this->isProxyActive() ? '// ' : '');
+		$serverIP = getServerIP();
 
 		if (!SERVER_fileExists(CSystemProxy::APT_PROXY_FILE))
 		{
-			SERVER_putFileContents(CSystemProxy::APT_PROXY_FILE, "Acquire::http::Proxy \"$scheme://$userPass$proxyServer:$proxyPort\";\nAcquire::ftp::Proxy \"$scheme://$userPass$proxyServer:$proxyPort\";");
+			SERVER_putFileContents(CSystemProxy::APT_PROXY_FILE, "Acquire::HTTP::Proxy::$serverIP \"DIRECT\";\n${deactivatedMarker}Acquire::http::Proxy \"$scheme://$userPass$proxyServer:$proxyPort\";\n${deactivatedMarker}Acquire::ftp::Proxy \"$scheme://$userPass$proxyServer:$proxyPort\";");
 		}
 		else
 		{
@@ -313,6 +314,35 @@ class CSystemProxy extends CChecks
 
 
 /**
+**name CSystemProxy::writeACNGConf()
+**description Write Configuration for apt-cacher-ng
+**/
+	private function writeACNGConf()
+	{
+		$scheme = $this->getProxyScheme();
+		$proxyServer = $this->getProxyHost();
+		$proxyPort = $this->getProxyPort();
+		$userPass = $this->getUserPasswordString();
+		$deactivatedMarker = (!$this->isProxyActive() ? '#' : '');
+
+		// Read the complete ACNG config file
+		$config = SERVER_getFileContents(CSystemProxy::ACNG_CONF_FILE);
+
+		// Remove the possible proxy line from the configuration and add the new lines
+		$config = trim(HELPER_grepNot($config, "Proxy:"));
+		$config .= "\n${deactivatedMarker}Proxy: $scheme://$userPass$proxyServer:$proxyPort";
+
+		SERVER_putFileContents(CSystemProxy::ACNG_CONF_FILE, $config, "655");
+
+		// Restart ACNG
+		SERVER_runInBackground('writeACNGConf', 'systemctl restart apt-cacher-ng.service', 'root', false);
+	}
+
+
+
+
+
+/**
 **name CSystemProxy::save()
 **description Saves the proxy settings in all configuration files.
 **/
@@ -321,6 +351,7 @@ class CSystemProxy extends CChecks
 		$this->writeAPTProxyConf();
 		$this->writeSquidConf();
 		$this->writeEtcProfiles();
+		$this->writeACNGConf();
 	}
 
 

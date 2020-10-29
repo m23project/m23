@@ -1884,6 +1884,7 @@ if ($bootloader == "grub")
 			if [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 8' /etc/issue) -gt 0 ] || [ $(grep xenial -c /etc/apt/sources.list) -gt 0 ] || [ $(grep devuan -c /etc/apt/sources.list) -gt 0 ] || [ $(grep bionic -c /etc/apt/sources.list) -gt 0 ] || [ $(grep focal -c /etc/apt/sources.list) -gt 0 ]
 			then
 			");
+
 				CLCFG_aptGet("install", "grub-pc");
 			echo("
 			else
@@ -1942,8 +1943,11 @@ if ($bootloader == "grub")
 				# DebianVersionSpecific
 				if [ $(lsb_release -c -s) = 'bionic' ] || [ $(lsb_release -c -s) = 'xenial' ] || [ $(lsb_release -i -s) = 'LinuxMint' ] || [ $(grep -c 'Debian GNU/Linux 9' /etc/issue) -gt 0 ] || [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep focal -c /etc/apt/sources.list) -gt 0 ]
 				then
-					# Use traditional networkcard device names (eth0, eth1, ...)
-					sed -i 's/\(GRUB_CMDLINE_LINUX_DEFAULT=\"\)\([^\"]*\)\"/\\1\\2 net.ifnames=0\"/' /etc/default/grub
+					if [ $(grep '^GRUB_CMDLINE_LINUX_DEFAULT' /etc/default/grub | grep 'net.ifnames=0' -c) -eq 0 ]
+					then
+						# Use traditional networkcard device names (eth0, eth1, ...)
+						sed -i 's/\(GRUB_CMDLINE_LINUX_DEFAULT=\"\)\([^\"]*\)\"/\\1\\2 net.ifnames=0\"/' /etc/default/grub
+					fi
 
 					# Disable splash (can lead to corrupted framebuffer console)
 					sed -i 's/splash//' /etc/default/grub
@@ -2379,6 +2383,9 @@ function CLCFG_sourceslist($clientIP,$clientName,$serverIP)
 
 	$sourceName = $allOptions['packagesource'];
 
+	// Import the GPG keys
+	echo(SRCLST_getImportGPGKeyBASH($sourceName));
+
 	echo("
 
 rm /etc/apt/sources.list 2> /dev/null
@@ -2400,7 +2407,7 @@ apt-get update 2>&1 | tee /tmp/m23sourceupdate.log\n
 	MSR_logCommand("/tmp/m23sourceupdate.log");
 
 	CLCFG_sourceslistCreateConfigFiles($sourceName);
-};
+}
 
 
 
@@ -2415,21 +2422,42 @@ function CLCFG_sourceslistCreateConfigFiles($sourceName)
 {
 	//Get the list of files to add
 	$atf = SRCLST_getAddToFile($sourceName);
+	
+	//Get the list of files to append
+	$apf = SRCLST_getAppendToFile($sourceName);
 
 	//If the first entry has no file name, then nothing of value is in it
-	if (!isset($atf[0]['file']))
-		return(false);
-
-	//Run thru the file names and texts
-	foreach ($atf as $fileText)
+	if (isset($atf[0]['file']))
 	{
-		echo("
+		//Run thru the file names and texts
+		foreach ($atf as $fileText)
+		{
+			echo("
 rm \"$fileText[file]\" 2> /dev/null
 cat >> \"$fileText[file]\" << \"EOF\"
 $fileText[text]
 EOF
 chmod 755 \"$fileText[file]\"
 	");
+		}
+	}
+
+	//If the first entry has no file name, then nothing of value is in it
+	if (isset($apf[0]['file']))
+	{
+		//Run thru the file names and texts
+		foreach ($apf as $fileText)
+		{
+			echo("
+if [ $(grep -c '$fileText[text]' \"$fileText[file]\") -eq 0 ]
+then
+	cat >> \"$fileText[file]\" << \"EOF\"
+$fileText[text]
+EOF
+	chmod 755 \"$fileText[file]\"
+fi
+	");
+		}
 	}
 }
 

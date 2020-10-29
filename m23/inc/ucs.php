@@ -579,7 +579,7 @@ function UCS_addLDAPUser($account,$forename,$familyname,$pwd,$uid)
 **/
 function UCS_getEtc_ucr_master()
 {
-	$out = SERVER_runInBackground(UCS_getEtc_ucr_master, 'ucr shell | grep -v ^hostname=', 'root', false);
+	$out = SERVER_runInBackground('UCS_getEtc_ucr_master', 'ucr shell | grep -v ^hostname=', 'root', false);
 	$out .= "master_ip=".getServerIP();
 	return($out);
 }

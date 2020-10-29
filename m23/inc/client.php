@@ -2910,7 +2910,7 @@ function CLIENT_getClientName()
 			{
 				// Check, if the client uses dynamic IP assignment
 				$clientO = new CClient($_GET['m23clientID'], CClient::CHECKMODE_MUSTEXIST);
-				if ($clientO->usesDynamicIP())
+				if ($clientO->usesDynamicIP() || SERVER_isHandleAllClientsAsDynamicEnabled())
 					// Clients with dynamic IPs are identified by client id (Needed for MSR_curDynIP)
 					$sql = "SELECT client FROM `clients` WHERE id='$_GET[m23clientID]';";
 				else

@@ -1516,4 +1516,7 @@ Use \"0\" to disable the warning entirely.</br>
 @$I18N_before_equals='before incl.';
 @$I18N_after='after';
 @$I18N_after_equals='after incl.';
+
+//20.1a
+@$I18N_handleAllClientsAsDynamic = 'Treat all m23 clients like clients with dynamic IP';
 ?>

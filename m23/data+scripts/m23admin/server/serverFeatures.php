@@ -44,6 +44,9 @@
 	SERVER_setLiveLogDisabled(HTML_checkBox('CB_liveLogDisabled', '', SERVER_isLiveLogDisabled()));
 	SERVER_setInstallReasonEnabled(HTML_checkBox('CB_installReasonEnabled', '', SERVER_isInstallReasonEnabled()));
 	SERVER_setm23ServerIncudedInSourcesListDisabled(HTML_checkBox('CB_m23ServerIncudedInSourcesListDisabled', '', SERVER_ism23ServerIncudedInSourcesListDisabled()));
+	SERVER_setHandleAllClientsAsDynamic(HTML_checkBox('CB_handleAllClientsAsDynamic', '', SERVER_isHandleAllClientsAsDynamicEnabled()));
+
+
 
 	SERVER_setShowTimeInformationOnJobs(HTML_checkBox('CB_showTimeInformationOnJobs', '', SERVER_getShowTimeInformationOnJobs()));
 
@@ -87,6 +90,7 @@
 	HTML_showTableHeader();
 	HTML_showTableRow(CB_m23ServerIncudedInSourcesListDisabled, $I18N_m23ServerIncudedInSourcesListDisabled);
 // 	HTML_showTableRow(CB_m23ServerRebootClientAfterJobsIfNecessary, $I18N_rebootClientAfterJobsIfNecessary);
+	HTML_showTableRow(CB_handleAllClientsAsDynamic, $I18N_handleAllClientsAsDynamic);
 	echo('<tr><td colspan="2">'.BUT_save.'</td></tr>');
 	HTML_showTableEnd();
 

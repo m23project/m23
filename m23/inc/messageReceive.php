@@ -176,16 +176,16 @@ then
 	fi
 
 	#CloudStack test
-	wget -T5 -t5 http://\$serverGateway/latest/public-ipv4 -O /tmp/clientIP
+#	wget -T5 -t5 http://\$serverGateway/latest/public-ipv4 -O /tmp/clientIP
 
-	if [ $? -eq 0 ] && [ -f /tmp/clientIP ] && [ $(grep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' -c /tmp/clientIP) -eq 1 ]
-	then
+#	if [ $? -eq 0 ] && [ -f /tmp/clientIP ] && [ $(grep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' -c /tmp/clientIP) -eq 1 ]
+#	then
 		#yes, run in CloudStack
-		curIP=$(cat /tmp/clientIP)
-	else
+#		curIP=$(cat /tmp/clientIP)
+#	else
 		#no, normal DHCP IP
 		curIP=`export LC_ALL=C; ifconfig | grep \"inet addr\" | cut -d':' -f2 | cut -d' ' -f1 | head -1`
-	fi
+#	fi
 	wget -T5 -t0 --post-data \"type=MSR_curDynIP&curIP=\$curIP\" https://$m23Server/postMessage.php\$idvar -O /tmp/clientIP.log
 fi
 ";

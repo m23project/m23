@@ -1514,4 +1514,7 @@ Entrez \"0\" pour désactiver l'affichage d'un avertissement.</br>
 @$I18N_before_equals='avant, incl.';
 @$I18N_after='après';
 @$I18N_after_equals='après incl.';
+
+//20.1a
+@$I18N_handleAllClientsAsDynamic = 'Traiter tous les clients m23 comme des clients avec des IP dynamiques';
 ?>

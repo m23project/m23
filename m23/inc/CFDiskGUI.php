@@ -95,7 +95,7 @@ class CFDiskGUI extends CFDiskBasic
 
 
 /**
-**name FDISK_fdiskSessionReset($resetClientName = false)
+**name CFDiskGUI::fdiskSessionReset($resetClientName = false)
 **description Sets back all session variables (client name optionally) for partitioning and formating a client.
 **parameter resetClientName: If set to true, the name of the client will be deleted too (and re-set by FDISK_fdiskSessionClient).
 **/

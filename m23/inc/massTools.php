@@ -473,7 +473,7 @@ function MASS_checkAndSaveFields(&$EGKparams)
 
 			case "client":
 			{
-				if (!checkNormalKeys($parts[$i]))
+				if (!checkFQDN($parts[$i]))
 					$errMsg .= $I18N_invalid_clientname."\n";
 				break;
 			};

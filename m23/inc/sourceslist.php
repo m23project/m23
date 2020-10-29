@@ -40,6 +40,33 @@ function SRCLST_getExportedListNames()
 
 
 /**
+**name SRCLST_getImportGPGKeyBASH($sourceName)
+**description Returns BASH code to import GPG APT keys from the URLs that are given in the importGPGKey paramters in a sources list.
+**parameter sourceName: The name of the package source list
+**returns: BASH code to import GPG APT keys.
+**/
+function SRCLST_getImportGPGKeyBASH($sourceName)
+{
+	/*
+		The input lines have the following format:
+		#importGPGKey:<URL with public GPG APT key>
+	*/
+
+	//Get all lines with importGPGKey parameter
+	$urls = SRCLST_getParameter($sourceName, 'importGPGKey');
+	$bash = '';
+
+	foreach ($urls as $url)
+		$bash .= "\nwget -q -O - $url | apt-key add -\n";
+
+	return($bash);
+}
+
+
+
+
+
+/**
 **name SRCLST_getAddToFile($sourceName)
 **description Returns addToFile paramters from the given sources list as an associative array, where file name and file contents are seperated.
 **parameter sourceName: The name of the package source list
@@ -47,13 +74,43 @@ function SRCLST_getExportedListNames()
 **/
 function SRCLST_getAddToFile($sourceName)
 {
+	return(SRCLST_getXToFile($sourceName, 'addToFile'));
+}
+
+
+
+
+
+/**
+**name SRCLST_getAppendToFile($sourceName)
+**description Returns appendToFile paramters from the given sources list as an associative array, where file name and file contents are seperated.
+**parameter sourceName: The name of the package source list
+**returns: Associative array with file name and file contents (e.g. [0] => Array ([file] => file1.txt, [text] => text1), [1] => Array ([file] => file2.txt, [text] => text2), ...)
+**/
+function SRCLST_getAppendToFile($sourceName)
+{
+	return(SRCLST_getXToFile($sourceName, 'appendToFile'));
+}
+
+
+
+
+
+/**
+**name SRCLST_getXToFile($sourceName, $parameterName)
+**description Returns paramters of a given parameter type from the given sources list as an associative array, where file name and file contents are seperated.
+**parameter sourceName: The name of the package source list
+**returns: Associative array with file name and file contents (e.g. [0] => Array ([file] => file1.txt, [text] => text1), [1] => Array ([file] => file2.txt, [text] => text2), ...)
+**/
+function SRCLST_getXToFile($sourceName, $parameterName)
+{
 	/*
-		The input lines have the folliwing format:
+		The input lines have the following format:
 		#addToFile:<File name to store the text in>###line 1###line 2###line 3###line 4
 	*/
 
 	//Get all lines with addToFile parameter
-	$lines = SRCLST_getParameter($sourceName, 'addToFile');
+	$lines = SRCLST_getParameter($sourceName, $parameterName);
 	$out = array();
 	$i=0;
 

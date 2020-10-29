@@ -42,7 +42,7 @@ define('ONLINE_STATUS_sshHttps', 2);
 // Constant that contains BASH code to set access rights of /var/run/screen according to what screen expects on the running distribution.
 define('BASH_SET_VAR_RUN_SCREEN_BY_DISTRIBUTION', "
 	# Different access rights for /var/run/screen by distribution
-	if [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep -c 'Raspbian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep -c 'Linux Mint 19.2 Tina' /etc/issue) -gt 0 ]
+	if [ $(grep -c 'Debian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep -c 'Raspbian GNU/Linux 10' /etc/issue) -gt 0 ] || [ $(grep -c 'Linux Mint 19.2 Tina' /etc/issue) -gt 0 ] || [ $(grep -c 'Linux Mint 20' /etc/issue) -gt 0 ]
 	then
 		chmod 777 /var/run/screen 2> /dev/null
 	else

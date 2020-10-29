@@ -557,7 +557,7 @@ function DHCP_activateBoot($clientName, $on, $bootType = 'x')
 					$bootType = CClient::BOOTTYPE_PXE;
 
 				if (CClient::BOOTTYPE_NOBOOT != $bootType)
-					DHCP_writePXEcfg($clientName, $allOptions['arch']);
+					DHCP_writePXEcfg($clientName, $allParams['id'], $allOptions['arch']);
 				return(DHCP_addClient($clientName, $allParams['ip'], $allParams['netmask'], $allParams['mac'], $bootType, $allParams['gateway']));
 			}
 			else
@@ -585,16 +585,18 @@ function DHCP_calcPXEIP($ip)
 
 
 /**
-**name DHCP_writePXEcfg($clientName)
+**name DHCP_writePXEcfg($clientName, $clientID, $arch)
 **description writes the pxe config file for te client
 **parameter clientName: name of the client
+**parameter clientID: ID of the client
 **parameter arch: computer architecture (i386 or amd64)
 **/
-function DHCP_writePXEcfg($clientName,$arch)
+function DHCP_writePXEcfg($clientName, $clientID, $arch)
 {
 	include('/m23/inc/kernelRamDisk.inc');
 	$iphex=DHCP_calcPXEIP(CLIENT_getIPbyName($clientName));
 	$fileName = "/m23/tftp/pxelinux.cfg/$iphex";
+	$m23server = getServerIP();
 	
 	$fp=fopen($fileName, "w");
 
@@ -603,7 +605,7 @@ function DHCP_writePXEcfg($clientName,$arch)
 
 	fputs($fp,"LABEL linux\n");
 	fputs($fp,"KERNEL m23pxeinstall-$arch\n");
-	fputs($fp,"APPEND devfs=nomount vga=normal load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=$kernelRamDisk initrd=initrd-$arch.gz root=/dev/ram0 rw\n");
+	fputs($fp,"APPEND devfs=nomount vga=normal load_ramdisk=1 m23server=$m23server m23clientID=$clientID prompt_ramdisk=0 ramdisk_size=$kernelRamDisk initrd=initrd-$arch.gz root=/dev/ram0 rw\n");
 
 	fclose($fp);
 	chmod($fileName, 0755);

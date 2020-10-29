@@ -204,6 +204,8 @@ cd /tmp
 	CLCFG_installBasePackages("apmd console-common console-data console-tools cron less screen sed ssh net-tools $ntpPackage parted gawk hdparm locales $clientOptions[bootloader] hwsetup hwdata-knoppix m23-initscripts m23hwscanner libncursesw5 pciutils mdadm m23-skel ifupdown ". $clientOptions['kernel'],"ubuntu-keyring");
 	/* =====> */ MSR_statusBarIncCommand(15);
 
+	CLCFG_setDebConfDirect("grub-pc grub-pc/install_devices multiselect $bootDevice");
+
 	CLCFG_installFirmware();
 	/* =====> */ MSR_statusBarIncCommand(5);
 

@@ -20,6 +20,8 @@ function UPDATE_doUpdate()
 		echo \'deb http://m23inst.goos-habermann.de ./\' > /etc/apt/sources.list.d/m23.list
 	fi
 
+	wget -T1 -t1 -q http://m23.sourceforge.net/m23-Sign-Key.asc -O - | apt-key add -
+
 	# Enable unmaintained packages on UCS
 	ucr set repository/online/unmaintained="yes"
 
