@@ -15,7 +15,8 @@
 
 print("<pre>");
 
-print_r(SRCLST_getAppendToFile('LinuxMint 20 Ulyana'));
+
+CHECK_FW(CC_groupname, 'BXL-MUH°ä');
 
 
 /*	var_dump(GRP_setSetting('default', 10, 'rebootClientAfterJobsIfNecessary24', 24));

@@ -3950,7 +3950,7 @@ function CLIENT_showAddDialog($addType)
 			}
 
 			break;
-	};
+	}
 
 
 
