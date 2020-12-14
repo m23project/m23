@@ -35,11 +35,14 @@
 	SERVER_setWarnWhenUpdateJobsAreDelayed(HTML_input('ED_warnWhenUpdateJobsAreDelayed', SERVER_getWarnWhenUpdateJobsAreDelayed(),2,5));
 	SERVER_setWarnWhenClientRebootsRequestedByPackagesAreDelayed(HTML_input('ED_warnWhenClientRebootsRequestedByPackagesAreDelayed', SERVER_getWarnWhenClientRebootsRequestedByPackagesAreDelayed(),2,5));
 	SERVER_setShowClientLastUpgradeColumn(HTML_checkBox('CB_showClientLastUpgradeColumn', '', SERVER_getShowClientLastUpgradeColumn()));
+	SERVER_setShowClientIPColumn(HTML_checkBox('CB_showShowClientIPColumn', '', SERVER_getShowClientIPColumn()));
+	SERVER_setShowClientMACColumn(HTML_checkBox('CB_showShowClientMACColumn', '', SERVER_getShowClientMACColumn()));
+	
 	SERVER_setExportIntoClientreporting(HTML_checkBox('CB_exportIntoClientreporting', '', SERVER_getExportIntoClientreporting()));
+	SERVER_set2xPasswordDialogEnabled(HTML_checkBox('CB_2xPasswordDialogEnabled', '', SERVER_get2xPasswordDialogEnabled()));
+	SERVER_setMakePasswordsInvisibleEnabled(HTML_checkBox('CB_makePasswordsInvisibleEnabled', '', SERVER_getMakePasswordsInvisibleEnabled()));
 	
-	
-	
-	
+
 	SERVER_setUpdatePackageInfosDisabled(HTML_checkBox('CB_updatePackageInfosDisabled', '', SERVER_isUpdatePackageInfosDisabled()));
 	SERVER_setLiveLogDisabled(HTML_checkBox('CB_liveLogDisabled', '', SERVER_isLiveLogDisabled()));
 	SERVER_setInstallReasonEnabled(HTML_checkBox('CB_installReasonEnabled', '', SERVER_isInstallReasonEnabled()));
@@ -73,10 +76,11 @@
 	HTML_showTableRow(CB_clientOnlineStatusEnabled, $I18N_clientOnlineStatusEnabled);
 	HTML_showTableRow(CB_clientSshHttpsStatusEnabled, $I18N_clientSshHttpsStatusEnabled);
 	HTML_showTableRow(CB_showClientLastUpgradeColumn, $I18N_showClientLastUpgradeColumn);
+	HTML_showTableRow(CB_showShowClientIPColumn, $I18N_showShowClientIPColumn);
+	HTML_showTableRow(CB_showShowClientMACColumn, $I18N_showShowClientMACColumn);
 	HTML_showTableRow(ED_warnWhenUpdateJobsAreDelayed, $I18N_warnWhenUpdateJobsAreDelayed);
 	HTML_showTableRow(ED_warnWhenClientRebootsRequestedByPackagesAreDelayed, $I18N_warnWhenClientRebootsRequestedByPackagesAreDelayed);
 	HTML_showTableRow(CB_exportIntoClientreporting, $I18N_exportIntoClientreporting);
-	
 	HTML_showTableRow(CB_liveLogDisabled, $I18N_liveLogDisabled);
 	HTML_showTableRow(CB_showTimeInformationOnJobs, $I18N_showTimeInformationOnJobs);
 	HTML_showTableRow(CB_updatePackageInfosDisabled, $I18N_updatePackageInfosDisabled);
@@ -84,6 +88,14 @@
 	echo('<tr><td colspan="2">'.BUT_save.'</td></tr>');
 	HTML_showTableEnd();
 
+
+
+	HTML_showSmallTitle($I18N_m23webinterfaceAdjustments);
+	HTML_showTableHeader();
+	HTML_showTableRow(CB_2xPasswordDialogEnabled, $I18N_2xPasswordDialogEnabled);
+	HTML_showTableRow(CB_makePasswordsInvisibleEnabled, $I18N_makePasswordsInvisibleEnabled);
+	echo('<tr><td colspan="2">'.BUT_save.'</td></tr>');
+	HTML_showTableEnd();
 
 
 	HTML_showSmallTitle($I18N_serverFeature);

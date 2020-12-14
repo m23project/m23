@@ -1336,11 +1336,6 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 				$CClientO->setDNS($data['dns1'], $data['dns2']);
 			}
 
-			//check the user password
-			if( empty($data['rootpassword']) )
-				$err.="$I18N_no_rootpassword<br>";
-			//if( !empty($data['rootpassword']) && !checkNormalKeys($data['rootpassword']))
-			//	$err.="$I18N_invalid_rootpassword<br>";
 
 			$CClientO->setPackageProxy($options['packageProxy'], $options['packagePort']);
 
@@ -1357,7 +1352,7 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 
 			//m23customPatchBegin type=change id=CLIENT_addClientAdditionalValuesForAddOrDefineClients
 			//m23customPatchEnd id=CLIENT_addClientAdditionalValuesForAddOrDefineClients
-		};
+		}
 
 	if (($clientAddType == CLIENT_ADD_TYPE_add) && ($CClientO->getBootType() != CClient::BOOTTYPE_GPXE))
 		$CClientO->setMAC($data['mac']);
@@ -1378,6 +1373,9 @@ function CLIENT_addClient($data,$options,$clientAddType,$cryptRootPw=true)
 		$CClientO->setBootloader($options['bootloader']);
 		$CClientO->setNfshomeserver($options['nfshomeserver']);
 	}
+
+	if (isset($options['UCSNetwork']))
+		$CClientO->setUCSNetwork($options['UCSNetwork']);
 
 	//set the right status
 	if ($clientAddType == CLIENT_ADD_TYPE_define)
@@ -1992,7 +1990,7 @@ function CLIENT_showGeneralInfo($id,$generateEnterKeep=false)
 
 	echo( "<tr> <td>$I18N_install_date:</td>	<td>".date("H:i  d.m.y",$data['installdate'])."</td> </tr>
 	<tr> <td>$I18N_last_change:</td> <td>".date("H:i  d.m.y",$data['lastmodify'])."</td> </tr>
-	<tr> <td>$I18N_first_login:</td><td>$data[firstpw]</td>$firstloginEGK</tr>
+	<tr> <td>$I18N_first_login:</td><td>".HTML_getInvisiblePasswordsIfFeatureEnabled($data['firstpw'])."</td>$firstloginEGK</tr>
 	<tr> <td>$I18N_netRootPwd:</td><td>".(isset($allOptions['netRootPwd']) ? $allOptions['netRootPwd'] : '')."</td>$netloginEGK</tr>
 	$rootPwdHtml
 	<tr> <td>$I18N_addNewLocalLogin:</td> <td><img src=\"$addNewLocalLoginCecked\"></td>$addNewLocalLoginEGK </tr>\n");
@@ -3678,6 +3676,9 @@ function CLIENT_query($o1,$s1,$o2,$s2,$groupName="",$o3="",$s3="", $search="")
 		case "mac":
 			$orderBy="clients.mac";
 			break;
+		case "group":
+			$orderBy="clients.mac";
+			break;
 		default:
 			$orderBy="clients.client";
 	}
@@ -3898,11 +3899,19 @@ function CLIENT_showAddDialog($addType)
 
 	$params['firstpw'] = $params['mac'] = $params['ip'] = $params['netmask'] = $params['gateway'] = $params['dns1'] =  $params['dns2'] = $params['client'] = $params['office'] = $params['name'] = $params['familyname'] = $params['eMail'] = $params['dhcpBootimage'] = $params['newgroup'] = '';
 
-	$options['nfshomeserver'] = $options['timeZone'] = $options['bootloader'] = $options['login'] = $options['arch'] = '';
+	$options['UCSNetwork'] = $options['nfshomeserver'] = $options['timeZone'] = $options['bootloader'] = $options['login'] = $options['arch'] = '';
 
 	$changeClientExitDialog = $defineDisk = false;
 
-	$rowDescription = $HTML_VM_ControlLink = '';
+//m23customPatchBegin type=change id=CLIENT_showAddDialog-ucsNetworkDemo
+	$ucsNetworkDemo = false;
+//m23customPatchEnd id=CLIENT_showAddDialog-ucsNetworkDemo
+
+	$RB_change_Null = $rowDescription = $HTML_VM_ControlLink = '';
+
+	// CSS color of the current row
+	$rowColor = '';
+
 
 	$colspanWithoutRadios=$colspan=2;
 	switch($addType)
@@ -3918,6 +3927,7 @@ function CLIENT_showAddDialog($addType)
 			$page="addclient";
 			break;
 		case ADDDIALOG_changeClient:
+			$RB_change_Null = "<td colspan=\"3\"></td>";
 			$submitLabel=$I18N_edit_client;
 			$page="editclient";
 
@@ -3963,7 +3973,11 @@ function CLIENT_showAddDialog($addType)
 // 		CLIENT_addChangeElement("client");
 	HTML_storableInput("ED_office", "office", $params['office'], $installParams['office'], 20, 40);
 		CLIENT_addChangeElement("office",true);
-	HTML_storableInput("ED_name", "name", $params['name'], $installParams['name'], 20, 40);
+	
+//m23customPatchBegin type=change id=CLIENT_showAddDialog-defaultName
+	$defaultName = '';
+//m23customPatchEnd id=CLIENT_showAddDialog-defaultName
+	HTML_storableInput("ED_name", "name", empty($defaultName) ? $params['name'] : $defaultName, $installParams['name'], 20, 40);
 		CLIENT_addChangeElement("name");
 	HTML_storableInput("ED_familyname", "familyname", $params['familyname'], $installParams['familyname'], 20, 40);
 		CLIENT_addChangeElement("familyname",true);
@@ -3989,9 +4003,17 @@ function CLIENT_showAddDialog($addType)
 		
 		HTML_storableInput("ED_mac", "mac", !empty($_GET['VM_mac']) ? $_GET['VM_mac'] : $params['mac'], $installParams['mac'], 12, 17, INPUT_TYPE_text, 'onChange="sanitizeMAC();"');
 			CLIENT_addChangeElement("mac",true);
+
+		if ($ucsNetworkDemo && HELPER_isExecutedOnUCS())
+		{
+			$ucsnetworkList = UCS_getAllNetworkNames();
+			HTML_storableSelection("SEL_UCSNetwork", "UCSNetwork", $ucsnetworkList, SELTYPE_selection, true, $options['UCSNetwork'], $installOptions['UCSNetwork'], 'onchange="disableNetworkOnDHCP(); chooseAmd64ArchitectureOnUEFIBootType();"');
+		}
+
 		$proposedIP = CLIENT_getNextFreeIp();
 		HTML_storableInput("ED_ip", "ip", empty($params['ip']) ? $proposedIP : $params['ip'], $installParams['ip'], 16, 16);
 			CLIENT_addChangeElement("ip");
+
 		HTML_storableInput("ED_netmask", "netmask", empty($params['netmask']) ? getServerNetmask() : $params['netmask'], $installParams['netmask'], 16, 16);
 			CLIENT_addChangeElement("netmask");
 		HTML_storableInput("ED_gateway", "gateway", empty($params['gateway']) ? getServerGateway() : $params['gateway'], $installParams['gateway'], 16, 16);
@@ -4003,10 +4025,26 @@ function CLIENT_showAddDialog($addType)
 			CLIENT_addChangeElement("dns2");
 	}
 
-	HTML_storableInput("ED_firstpw", "firstpw", empty($params['firstpw']) ? HELPER_passGenerator(8) : $params['firstpw'], $installParams['firstpw'], 20, 20);
-		CLIENT_addChangeElement("firstpw");
-	HTML_storableInput("ED_rootpassword", "rootpassword", HELPER_passGenerator(8), $installParams['rootpassword'], 20, 20);
-		CLIENT_addChangeElement("rootpassword");
+
+//m23customPatchBegin type=change id=CLIENT_showAddDialog-defaultFirstPW
+	$defaultFirstPW = ( empty($params['firstpw']) ? HELPER_passGenerator(8) : $params['firstpw'] );
+//m23customPatchEnd id=CLIENT_showAddDialog-defaultFirstPW
+
+	if (SERVER_get2xPasswordDialogEnabled())
+		HTML_storable2xPassword("ED_firstpw", "firstpw", $defaultFirstPW, $installParams['firstpw'], 20, 20);
+	else
+		HTML_storableInput("ED_firstpw", "firstpw", $defaultFirstPW, $installParams['firstpw'], 20, 20);
+	CLIENT_addChangeElement("firstpw");
+
+//m23customPatchBegin type=change id=CLIENT_showAddDialog-defaultRootPW
+	$defaultRootPW1x = HELPER_passGenerator(8);
+	$defaultRootPW2x = '';
+//m23customPatchEnd id=CLIENT_showAddDialog-defaultRootPW
+	if (SERVER_get2xPasswordDialogEnabled())
+		HTML_storable2xPassword("ED_rootpassword", "rootpassword", $defaultRootPW2x, $installParams['rootpassword'], 20, 20);
+	else
+		HTML_storableInput("ED_rootpassword", "rootpassword", $defaultRootPW1x, $installParams['rootpassword'], 20, 20);
+	CLIENT_addChangeElement("rootpassword");
 
 	$bootTypeList = CClient::getNetworkBootTypesArrayForSelection();
 	$boottype = HTML_storableSelection("SEL_boottype", "boottype", $bootTypeList, SELTYPE_selection, true, isset($_GET['VM_dhcpBootimage']) ? $_GET['VM_dhcpBootimage'] : $params['dhcpBootimage'], $installParams['dhcpBootimage'], 'onchange="disableNetworkOnDHCP(); chooseAmd64ArchitectureOnUEFIBootType();"');
@@ -4030,8 +4068,10 @@ function CLIENT_showAddDialog($addType)
 	/*
 		Define lots of dialog elements for values stored in the options associative array
 	*/
-
-	HTML_storableInput("ED_login", "login", $options['login'], $installOptions['login'], 20, 32);
+//m23customPatchBegin type=change id=CLIENT_showAddDialog-defaultLogin
+	$defaultLogin = '';
+//m23customPatchEnd id=CLIENT_showAddDialog-defaultLogin
+	HTML_storableInput("ED_login", "login", empty($defaultLogin) ? $options['login'] : $defaultLogin, $installOptions['login'], 20, 32);
 		CLIENT_addChangeElement("login");
 
 	//Client architecture: 32 or 64 bits
@@ -4201,8 +4241,13 @@ function CLIENT_showAddDialog($addType)
 	else
 {
 
-$oddrow = 'class="oddrow"';
-$evenrow = 'class="evenrow"';
+
+
+
+//m23customPatchBegin type=change id=CLIENT_showAddDialog-defaultExampleClientName
+	$defaultExampleClientName='Test01';
+//m23customPatchEnd id=CLIENT_showAddDialog-defaultExampleClientName
+
 
 HTML_setPage($page);
 		echo ("
@@ -4212,45 +4257,56 @@ HTML_setPage($page);
 	<td><div class=\"subtable_shadow\">
 		<table align=\"center\" class=\"subtable2\">
 			
-			<tr $evenrow><td>$I18N_preferences</td><td>");PREF_showPreferenceManager();echo("</td>$rowDescription</tr>
-			<tr $oddrow><td>$I18N_language</td><td>".SEL_language."</td>".RB_change_language."</tr>
-			<tr $evenrow><td>$I18N_login_name*</td><td>".ED_login." ($I18N_eg pmiller)</td>".RB_change_login."</tr>
-			<tr $oddrow><td>$I18N_client_name*</td><td>".ED_client." ($I18N_eg Test01)</td><td colspan=\"3\"></td></tr>
-			<tr $evenrow><td>$I18N_office</td><td>".ED_office."</td>".RB_change_office."</tr>
-			<tr $oddrow><td>$I18N_forename*</td><td>".ED_name."</td>".RB_change_name."</tr>
-			<tr $evenrow><td>$I18N_familyname</td><td>".ED_familyname."</td>".RB_change_familyname."</tr>
-			<tr $oddrow><td>eMail</td><td>".ED_eMail."</td>".RB_change_eMail."</tr>
-			<tr $evenrow><td>$I18N_boottype*</td><td>".SEL_boottype."</td>".RB_change_boottype."</tr>
-			<tr $oddrow><td>$I18N_bootloader</td><td>".SEL_bootloader."</td>".RB_change_bootloader."</tr>
-			<tr $evenrow><td>$I18N_arch*</td><td>".SEL_arch."</td>".RB_change_arch."</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_preferences</td><td>");PREF_showPreferenceManager();echo("</td>$rowDescription</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_language</td><td>".SEL_language."</td>".RB_change_language."</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_login_name*</td><td>".ED_login." ($I18N_eg pmiller)</td>".RB_change_login."</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_client_name*</td><td>".ED_client." ($I18N_eg $defaultExampleClientName)</td>$RB_change_Null</tr>
+<!--m23customPatchBegin type=del id=CLIENT_showAddDialog-hideED_office-->
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_office</td><td>".ED_office."</td>".RB_change_office."</tr>
+<!--m23customPatchEnd id=CLIENT_showAddDialog-hideED_office-->
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_forename*</td><td>".ED_name."</td>".RB_change_name."</tr>
+<!--m23customPatchBegin type=del id=CLIENT_showAddDialog-hideED_familyname-->
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_familyname</td><td>".ED_familyname."</td>".RB_change_familyname."</tr>
+<!--m23customPatchEnd id=CLIENT_showAddDialog-hideED_familyname-->
+<!--m23customPatchBegin type=del id=CLIENT_showAddDialog-hideED_eMail-->
+			<tr ".HTML_rowColor($rowColor)."><td>eMail</td><td>".ED_eMail."</td>".RB_change_eMail."</tr>
+<!--m23customPatchEnd id=CLIENT_showAddDialog-hideED_eMail-->
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_boottype*</td><td>".SEL_boottype."</td>".RB_change_boottype."</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_bootloader</td><td>".SEL_bootloader."</td>".RB_change_bootloader."</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_arch*</td><td>".SEL_arch."</td>".RB_change_arch."</tr>
 			");
 
 if ($addType == ADDDIALOG_changeClient)
-		echo("<tr $evenrow><td>Kernel</td><td>".SEL_kernel."</td>".RB_change_kernel."</tr>");
+		echo("<tr ".HTML_rowColor($rowColor)."><td>Kernel</td><td>".SEL_kernel."</td>".RB_change_kernel."</tr>");
 
 if ((($addType == ADDDIALOG_normalAdd) ||
 	($addType == ADDDIALOG_changeClient)) && (!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared']))
-		echo("<tr $oddrow><td>$I18N_mac*</td><td>".ED_mac." ($I18N_eg 009b52a5e121)</td>".RB_change_mac."</tr>
-			<tr $evenrow><td>$I18N_ip*</td><td>".ED_ip." ($I18N_eg 192.168.0.5)</td>".RB_change_ip."</tr>");
+		echo("<tr ".HTML_rowColor($rowColor)."><td>$I18N_mac*</td><td>".ED_mac." ($I18N_eg 009b52a5e121)</td>".RB_change_mac."</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_ip*</td><td>".ED_ip." ($I18N_eg 192.168.0.5)</td>".RB_change_ip."</tr>");
+	
+	if ($ucsNetworkDemo && HELPER_isExecutedOnUCS())
+		echo("<tr ".HTML_rowColor($rowColor)."><td>UCSNetwork</td><td>".SEL_UCSNetwork." </td></tr>");
 	
 	//m23customPatchBegin type=change id=CLIENT_showAddDialogShowAdditionalFormularElemens
 	//m23customPatchEnd id=CLIENT_showAddDialogShowAdditionalFormularElemens
 
 	if ((!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared']))
-echo("		<tr $oddrow><td>$I18N_netmask*</td><td>".ED_netmask." ($I18N_eg 255.255.255.0)</td>".RB_change_netmask."</tr>
-			<tr $evenrow><td>$I18N_gateway*</td><td>".ED_gateway." ($I18N_eg 192.168.0.1)</td>".RB_change_gateway."</tr>
-			<tr $oddrow><td>DNS1*</td><td>".ED_dns1." ($I18N_eg 192.168.0.1)</td>".RB_change_dns1."</tr>
-			<tr $evenrow><td>DNS2</td><td>".ED_dns2."</td>".RB_change_dns2."</tr>");
+echo("		<tr ".HTML_rowColor($rowColor)."><td>$I18N_netmask*</td><td>".ED_netmask." ($I18N_eg 255.255.255.0)</td>".RB_change_netmask."</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_gateway*</td><td>".ED_gateway." ($I18N_eg 192.168.0.1)</td>".RB_change_gateway."</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>DNS1*</td><td>".ED_dns1." ($I18N_eg 192.168.0.1)</td>".RB_change_dns1."</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>DNS2</td><td>".ED_dns2."</td>".RB_change_dns2."</tr>");
 
 echo("
-			<tr $oddrow><td>$I18N_packageProxy</td><td>".ED_packageProxy." Port ".ED_packagePort."</td>".RB_change_proxy."</tr>
-			<tr $evenrow><td>$I18N_group</td><td><div class=\"selectcheckedicons\">".SEL_group."</div></td></tr>
-			<tr $oddrow><td>$I18N_userpassword*</td><td>".ED_firstpw."</td>".RB_change_firstpw."</tr>
-			<tr $evenrow><td>$I18N_rootpassword*</td><td>".ED_rootpassword."</td>".RB_change_rootpassword."</tr>
-			<tr $oddrow><td>$I18N_timeZone</td><td>".SEL_timeZone."</td>".RB_change_timeZone."</tr>
-			<tr $evenrow><td>$I18N_getSystemtimeByNTP</td><td>".CB_getSystemtimeByNTP."</td>".RB_change_getSystemtimeByNTP."</tr>
-			<tr $oddrow><td>$I18N_installPrinterDriversAndDetectPrinter</td><td>".CB_installPrinter."</td>".RB_change_installPrinter."</tr>
-			<tr $evenrow><td>$I18N_addNewLocalLogin</td><td>".CB_addNewLocalLogin."</td>".RB_change_addNewLocalLogin."</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_packageProxy</td><td>".ED_packageProxy." Port ".ED_packagePort."</td>".RB_change_proxy."</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_group</td><td><div class=\"selectcheckedicons\">".SEL_group."</div></td></tr>
+<!--m23customPatchBegin type=del id=CLIENT_showAddDialog-hideED_firstpw-->
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_userpassword*</td><td>".ED_firstpw."</td>".RB_change_firstpw."</tr>
+<!--m23customPatchEnd id=CLIENT_showAddDialog-hideED_firstpw-->
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_rootpassword*</td><td>".ED_rootpassword."</td>".RB_change_rootpassword."</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_timeZone</td><td>".SEL_timeZone."</td>".RB_change_timeZone."</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_getSystemtimeByNTP</td><td>".CB_getSystemtimeByNTP."</td>".RB_change_getSystemtimeByNTP."</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_installPrinterDriversAndDetectPrinter</td><td>".CB_installPrinter."</td>".RB_change_installPrinter."</tr>
+			<tr ".HTML_rowColor($rowColor)."><td>$I18N_addNewLocalLogin</td><td>".CB_addNewLocalLogin."</td>".RB_change_addNewLocalLogin."</tr>
 	");
 
 
@@ -4504,6 +4560,7 @@ function CLIENT_changeClient()
 		array_pop($elements);
 	$clientName = $_SESSION['clientName'];
 
+
 	/*
 		$elem: contains the current variable name
 		$_SESSION['preferenceSpace'][$elem]: contains the new values
@@ -4661,7 +4718,7 @@ function CLIENT_changeClient()
 		//generate the job for the client
 		elseif ($_POST["RB_change_$elem"] == "cl")
 		{
-			$serverMsg .= $message;
+			$clientMsg .= $message;
 
 			switch ($elem)
 			{
@@ -4732,15 +4789,22 @@ function CLIENT_changeClient()
 		}
 	}
 
+
 	CLIENT_setAllOptions($clientName,$allOptions);
 
 	//check if there are params so a job can be created
 	if (@count($parms)>0)
 	{
 		$paramsStr=implodeAssoc("###",$parms);
+/*print_r2($elements);
+print_r2($_POST);*/
+// print_r2($parms);
+// print(PKG_getSpecialPackagePriority("m23changeClient"));
 		PKG_addJob($clientName,"m23changeClient",PKG_getSpecialPackagePriority("m23changeClient"),$paramsStr );
 		CLIENT_sshFetchJob($clientName);
 	}
+
+// return(false);
 
 	//check if there is at least 1 "SET `var` = 'value'" touple
 	if (substr_count($sql, ", ") > 0)

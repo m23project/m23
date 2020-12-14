@@ -13,10 +13,22 @@
 	include_once('/m23/inc/distr/debian/packages.php');
 	include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
 
+
+print('da'.HTML_getInvisiblePasswordsIfFeatureEnabled('weg').'da');
+
+
+
 print("<pre>");
 
 
 CHECK_FW(CC_groupname, 'BXL-MUH°ä');
+$params = array();
+
+
+var_dump(HTML_storable2xPassword("ED_firstpw", "firstpw", empty($params['firstpw']) ? HELPER_passGenerator(8) : $params['firstpw'], $installParams['firstpw'], 20, 20));
+HTML_submit("BUT_change",'Speichern');
+
+print(ED_firstpw.'<br>'.BUT_change);
 
 
 /*	var_dump(GRP_setSetting('default', 10, 'rebootClientAfterJobsIfNecessary24', 24));

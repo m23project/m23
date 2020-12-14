@@ -11,8 +11,119 @@ define('m23adminHtpasswd',"/m23/etc/.htpasswd");
 define('m23phpMyLDAPAdminHtpasswd',"/m23/etc/.phpMyLDAPAdminHtpasswd");
 define('m23BackuppcHtpasswd',"/etc/backuppc/htpasswd");
 define('m23RASTunnelScript','/m23/bin/m23RemoteAdministrationServiceOpenTunnel');
-
 define('m23ServerIPOverrideFile', '/m23/etc/address.override');
+
+
+
+
+
+/**
+**name SERVER_getShowClientMACColumn()
+**description Determines, if the client's MAC should be shown in the client overview.
+**returns: true, if the MAC should be invisible, false otherwise.
+**/
+function SERVER_getShowClientMACColumn()
+{
+	return(SERVER_getServerBoolSetting('showClientMACColumn'));
+}
+
+
+
+
+
+/**
+**name SERVER_setShowClientMACColumn($enabled)
+**description En/Disables showing client MACs in the client overview.
+**parameter enabled: true, if the MAC should be invisible, false otherwise.
+**/
+function SERVER_setShowClientMACColumn($enabled)
+{
+	SERVER_setServerBoolSetting('showClientMACColumn', $enabled);
+}
+
+
+
+
+
+/**
+**name SERVER_getShowClientIPColumn()
+**description Determines, if the client's IP should be shown in the client overview.
+**returns: true, if the IP should be invisible, false otherwise.
+**/
+function SERVER_getShowClientIPColumn()
+{
+	return(SERVER_getServerBoolSetting('showClientIPColumn'));
+}
+
+
+
+
+
+/**
+**name SERVER_setShowClientIPColumn($enabled)
+**description En/Disables showing client IPs in the client overview.
+**parameter enabled: true, if the IP should be invisible, false otherwise.
+**/
+function SERVER_setShowClientIPColumn($enabled)
+{
+	SERVER_setServerBoolSetting('showClientIPColumn', $enabled);
+}
+
+
+
+
+
+/**
+**name SERVER_getMakePasswordsInvisibleEnabled()
+**description Determines, if passwords should be made invisible (eg. in the Control center).
+**returns: true, if passwords should be invisible, false otherwise.
+**/
+function SERVER_getMakePasswordsInvisibleEnabled()
+{
+	return(SERVER_getServerBoolSetting('makePasswordsInvisible'));
+}
+
+
+
+
+
+/**
+**name SERVER_setMakePasswordsInvisibleEnabled($enabled)
+**description Enables making passwords invisible (eg. in the Control center).
+**parameter enabled: true, if passwords should be invisible, false otherwise.
+**/
+function SERVER_setMakePasswordsInvisibleEnabled($enabled)
+{
+	SERVER_setServerBoolSetting('makePasswordsInvisible', $enabled);
+}
+
+
+
+
+
+/**
+**name SERVER_set2xPasswordDialogEnabled($enabled)
+**description Enables using two passwords edit lines with obscured passwords instead of showing the password in plaintext.
+**parameter enabled: true, if two passwords edit lines with obscured passwords should be used, false otherwise
+**/
+function SERVER_set2xPasswordDialogEnabled($enabled)
+{
+	SERVER_setServerBoolSetting('2xPasswordDialog', $enabled);
+}
+
+
+
+
+
+/**
+**name SERVER_get2xPasswordDialogEnabled()
+**description Determines, if two passwords edit lines with obscured passwords should be used.
+**returns: true, if two passwords edit lines with obscured passwords should be used, false otherwise
+**/
+function SERVER_get2xPasswordDialogEnabled()
+{
+	return(SERVER_getServerBoolSetting('2xPasswordDialog'));
+}
 
 
 
@@ -46,7 +157,6 @@ function SERVER_setExportIntoClientreporting($active)
 
 
 
-########
 /**
 **name SERVER_getShowClientLastUpgradeColumn()
 **description Determines, if the time of the last finished update job should be shown in the client's job overview.
@@ -398,9 +508,9 @@ function SERVER_ism23ServerIncudedInSourcesListDisabled()
 
 
 /**
-**name SERVER_setInstallReasonEnabled()
+**name SERVER_setInstallReasonEnabled($enabled)
 **description Enables the install reason feature
-**parameter $enabled true, if the install reason feature shall be enabled, false otherwise
+**parameter enabled: true, if the install reason feature shall be enabled, false otherwise
 **/
 function SERVER_setInstallReasonEnabled($enabled)
 {

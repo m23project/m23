@@ -135,13 +135,14 @@ function UCS_ensureNetworkObjectExists($netmaskBits, $networkIP)
 
 
 /**
-**name UCS_modifyClientIP($client, $ip, $netmask = false)
+**name UCS_modifyClientIP($client, $ip, $netmask = false, $networkName = '')
 **description Modifies the IP of a client in the UCS LDAP.
 **parameter client: Client name or CClient object.
 **parameter ip: The new client's IP address.
 **parameter netmask: Amount of set bits in the netmask or normal netmask.
+**parameter networkName: UCS network name.
 **/
-function UCS_modifyClientIP($client, $ip, $netmask = false)
+function UCS_modifyClientIP($client, $ip, $netmask = false, $networkName = '')
 {
 	// Check, if parameter is a valid object
 	if (is_object($client))
@@ -164,6 +165,10 @@ function UCS_modifyClientIP($client, $ip, $netmask = false)
 
 	$mac = CLIENT_convertMac($mac, ':');
 
+	// Distinct network name given?
+	if (isset($networkName{1}))
+		$networkLine = "\n\t\t--set network=\"cn=$networkName,cn=networks,\$ldap_base\" \\";
+	else
 	// Check, if a valid amount of bits is set
 	if ($netmask !== false)
 	{
@@ -216,16 +221,60 @@ function UCS_getAllClientNamesLDAP()
 
 
 /**
-**name UCS_getUDMInfo($udmModule, $afterLines, $keyWord)
+**name UCS_getUDMCompleteInfo($udmModule)
+**description Get complete information from the UCS's LDAP by udm tool for a given module.
+**returns: Array with associative arrays containing the information of all blocks.
+**/
+function UCS_getUDMCompleteInfo($udmModule)
+{
+	$counterArr = $out = array();
+	$blockNr = 0;
+	
+	// After the line, matching the keyword a given amount of lines with the wanted information are following
+	$cmds = "
+		udm $udmModule list | sed 's/^[[:blank:]]*//'
+	";
+
+	$ret = SERVER_runInBackground(uniqid("UCS_getUDMInfo"), $cmds, 'root', false);
+
+	// Run thru the lines of the output
+	foreach (explode("\n", $ret) as $line)
+	{
+		/*
+			Lines start with a property name and are separated by ': ' from the value
+			eg. network: cn=default,cn=networks,dc=test,dc=intranet
+		*/
+		$keyValue = explode(': ', $line, 2);
+
+		// Skip empty keys
+		if (empty($keyValue[0]))
+		{
+			$blockNr++;
+			continue;
+		}
+
+		$out[$blockNr][$keyValue[0]] = $keyValue[1];
+	}
+	
+	return($out);
+}
+
+
+
+
+
+/**
+**name UCS_getUDMInfo($udmModule, $afterLines, $keyWord, $multiple = false)
 **description Get information from the UCS's LDAP by udm tool.
 **parameter udmModule: Name of the udm module (eg. networks/network or computers/linux).
 **parameter afterLines: Amount of lines with information after the line containing the keyword.
 **parameter keyWord: Keyword matching the first line to find the block with the wanted information.
-**returns: Associative array with the information.
+**parameter multiple: true, if there are multiple data sets with identical key names.
+**returns: Associative array with the information. Can be nested into a normal array, if $multiple = true.
 **/
-function UCS_getUDMInfo($udmModule, $afterLines, $keyWord)
+function UCS_getUDMInfo($udmModule, $afterLines, $keyWord, $multiple = false)
 {
-	$out = array();
+	$counterArr = $out = array();
 	
 	// After the line, matching the keyword a given amount of lines with the wanted information are following
 	$cmds = "
@@ -246,7 +295,48 @@ function UCS_getUDMInfo($udmModule, $afterLines, $keyWord)
 		// Skip empty keys
 		if (empty($keyValue[0])) continue;
 
-		$out[$keyValue[0]] = $keyValue[1];
+		if ($multiple)
+		{
+			if (!isset($counterArr[$keyValue[0]]))
+				$counterArr[$keyValue[0]] = 0;
+			$out[$counterArr[$keyValue[0]]++][$keyValue[0]] = $keyValue[1];
+		}
+		else
+			$out[$keyValue[0]] = $keyValue[1];
+	}
+	
+	return($out);
+}
+
+
+
+
+
+/**
+**name UCS_getAllNetworkInformation()
+**description Get information about all UCS networks.
+**returns: Array with nested associative arrays that are containing the information about each network.
+**/
+function UCS_getAllNetworkInformation()
+{
+	return(UCS_getUDMInfo('networks/network', 7, 'DN', true));
+}
+
+
+
+
+
+/**
+**name UCS_getAllNetworkNames()
+**description Get the names of all UCS networks.
+**returns: Associative arrays the names of all UCS networks as key and value.
+**/
+function UCS_getAllNetworkNames()
+{
+	$out = array();
+	foreach (UCS_getAllNetworkInformation() as $netInfo)
+	{
+		$out[$netInfo['name']] = $netInfo['name'];
 	}
 	
 	return($out);
@@ -371,21 +461,22 @@ function UCS_getClientLDAPInfo($client)
 
 
 /**
-**name UCS_addClient($client, $mac, $ip)
+**name UCS_addClient($client, $mac, $ip, $networkname = 'default')
 **description Adds a client to the UCS LDAP.
 **parameter client: Client name.
 **parameter mac: The MAC of the client.
 **parameter ip: The client's IP address.
+**parameter networkname: UCS network name.
 **return: udm messages
 **/
-function UCS_addClient($client, $mac, $ip)
+function UCS_addClient($client, $mac, $ip, $networkname = 'default')
 {
 	// Thx to the Univention staff: http://forum.univention.de/viewtopic.php?f=68&t=4433
 	
 	$mac = CLIENT_convertMac($mac, ':');
 
 	//m23customPatchBegin type=change id=UCS_addClient_networkPart
-	$networkPart = '--set network="cn=default,cn=networks,$ldap_base" ';
+	$networkPart = '--set network="cn='.$networkname.',cn=networks,$ldap_base" ';
 	//m23customPatchEnd id=UCS_addClient_networkPart
 
 	$cmds = 'eval "$(ucr shell)"
@@ -437,8 +528,9 @@ function UCS_enableClientPXEBoot($client, $bootFilename)
 	
 	$CClientO = new CClient($client);
 
-	UCS_delClient($client);
-	$udmMessages .= UCS_addClient($client, $CClientO->getMAC(), $CClientO->getIP());
+/*	UCS_delClient($client);
+	$udmMessages .= */
+	UCS_addClient($client, $CClientO->getMAC(), $CClientO->getIP(), $CClientO->getUCSNetwork());
 
 	$boot_server = getServerIP();
 	$cmds = 'eval "$(ucr shell)"
@@ -458,13 +550,19 @@ function UCS_enableClientPXEBoot($client, $bootFilename)
 	$udmMessages .= SERVER_runInBackground("UCS_enablePXEBoot$client", $cmds, 'root', false);
 
 	// Stop on critical error
-	if (isset($udmMessages{1}) && (strpos($udmMessages,'FQDN of this object is too long') !== false))
+	if (isset($udmMessages{1}) && (strpos($udmMessages,'FQDN of this object is too long') !== false || strpos($udmMessages,'E:') === 0))
 		MSG_showEmergencyError("udm: $udmMessages");
 }
 
 
+// udm dhcp/host create --superordinate "cn=$domainname,cn=dhcp,$ldap_base" \
+// --dn "cn=m23cl-ucs-ohne-loeschen,cn=$domainname,cn=dhcp,$ldap_base" \
+// --policy-reference "cn=m23cl-ucs-ohne-loeschen,cn=boot,cn=dhcp,cn=policies,$ldap_base" \
+// --set hwaddress="ethernet 08:00:27:F0:00:13" \
+// --set host="192.168.1.144"
 
-
+// udm policies/dhcp_boot list
+// udm dhcp/host list
 
 /**
 **name UCS_disableClientPXEBoot($client)
@@ -473,6 +571,8 @@ function UCS_enableClientPXEBoot($client, $bootFilename)
 **/
 function UCS_disableClientPXEBoot($client)
 {
+	return(true);
+
 	// Thx to the Univention staff: http://forum.univention.de/viewtopic.php?f=68&t=4433
 
 // 	udm policies/dhcp_boot remove --dn "cn=host,cn='.$client.',cn=boot,cn=dhcp,cn=policies,$ldap_base"

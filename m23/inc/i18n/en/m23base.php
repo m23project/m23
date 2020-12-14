@@ -342,7 +342,6 @@
 @$I18N_startUpdate="Start update";
 @$I18N_updateJobHasBeenStored="Update job has been stored!";
 @$I18N_criticalClients="Critical clients";
-@$I18N_repairCriticalStatus="Repair critical status";
 @$I18N_solutionProposal="Solution proposal";
 @$I18N_repair="Repair";
 @$I18N_change_client_status="Change client status";
@@ -1519,4 +1518,14 @@ Use \"0\" to disable the warning entirely.</br>
 
 //20.1a
 @$I18N_handleAllClientsAsDynamic = 'Treat all m23 clients like clients with dynamic IP';
+
+//20.1b
+@$I18N_2xPasswordDialogEnabled = 'Enable password query with double obfuscated input';
+@$I18N_root_passwords_dont_match = 'root passwords do not match!';
+@$I18N_firstpw_passwords_dont_match ='"User passwords do not match!';
+@$I18N_makePasswordsInvisibleEnabled = "Make passwords invisible (e.g. in $I18N_controlCenter)";
+@$I18N_m23webinterfaceAdjustments = 'm23 webinterface adjustments';
+@$I18N_showShowClientIPColumn = "Show client IP in $I18N_overview_clients";
+@$I18N_repairCriticalStatus = 'Expert mode';
+
 ?>

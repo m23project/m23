@@ -1,3 +1,65 @@
+2020-12-14
+cha: client_partition.php: Added a warning, when existing partition and formating jobs would be deleted.
+new: UCS_getUDMCompleteInfo: Get complete information from the UCS's LDAP by udm tool for a given module.
++++++
+2020-12-11
+cha: UCS_enableClientPXEBoot: Now all UDM messages starting with "E:" are criticaly.
++++++
+2020-12-05
+cha: UCS_addClient, UCS_modifyClientIP: Added UCS network name as optional parameter.
+new: CClient::setUCSNetwork: Sets the UCSNetwork for the client.
+new: CClient::getUCSNetwork: Returns the client's UCSNetwork.
+cha: CLIENT_addClient: Now calls CClient::getUCSNetwork.
+cha: CLIENT_showAddDialog: Now can store UCSNetwork.
++++++
+2020-12-04
+new: HTML_rowColor: Toggles the row color between oddrow and evenrow class.
+cha: CLIENT_showAddDialog: Now uses HTML_rowColor.
++++++
+2020-12-02
+cha: UCS_getUDMInfo: Now has an extra parameter to enable parsing of multiple data sets with identical key names.
+new: UCS_getAllNetworkInformation: Get information about all UCS networks.
+new: UCS_getAllNetworkNames: Get the names of all UCS networks.
+fix: CLIENT_showAddDialog: Table is draw correctly now, if change client is not active.
++++++
+2020-11-25
+cha: CLCFG_genFstab: Now sets grub timeout to 5 seconds.
+new: SERVER_getShowClientMACColumn: Determines, if the client's MAC should be shown in the client overview.
+new: SERVER_setShowClientMACColumn: En/Disables showing client MACs in the client overview.
++++++
+2020-11-14
+fix: m23-initscripts / postinst: Now doesn't create a "Documentation" line in the .service file anymore, because it generates as warning message.
+cha: serverFeatures.php: New category m23webinterfaceAdjustments.
+new: SERVER_getShowClientIPColumn: Determines, if the client's IP should be shown in the client overview.
+new: SERVER_setShowClientIPColumn: En/Disables showing client IPs in the client overview.
+cha: clients_overview.php, CSearchFilter::loadFilterFromGet: Added ordering by client groups.
++++++
+2020-11-20
+fix: CSearchFilter::__construct: Now can handle "!=" filters on unset client parameters. (THX TS)
++++++
+2020-11-19
+cha: DHCP_writePXEcfg: Now writes pxelinux.cfg configuration in PXELINUX 6.x format.
+cha: UCS_enableClientPXEBoot: Now doesn't remove the client from UCS's ldap.
+cha: UCS_disableClientPXEBoot: Disabled functionality. Seems not to be needed anymore, as network booting gets disabled by UCS itself.
+cha: CLCFG_makeDev: Now hides mknod errors (when trying to create an existing device node).
++++++
+2020-11-18
+new: SERVER_getMakePasswordsInvisibleEnabled: Determines, if passwords should be made invisible (eg. in the Control center).
+new: SERVER_setMakePasswordsInvisibleEnabled: Enables making passwords invisible (eg. in the Control center).
+new: HTML_getInvisiblePasswordsIfFeatureEnabled: Makes a password invisible by setting text color to "transparent", if the "makePasswordsInvisibleEnabled" feature is active, otherwise it will be shown normally.
+fix: CLIENT_changeClient: Client-side changes are listed as client-side changes now.
++++++
+2020-11-12
+new: m23Mint20MateFullInstall.php: Installs Linux Mint 20 full Mate Desktop.
+cha: UBUNTU_desktopInstall: Added installation of Linux Mint 20 full Mate Desktop.
++++++
+2020-11-10
+new: HTML_storable2xPassword: HTML 2x password edit lines for entering and re-entering a the same password.
+new: SERVER_set2xPasswordDialogEnabled: Enables using two passwords edit lines with obscured passwords instead of showing the password in plaintext.
+new: SERVER_get2xPasswordDialogEnabled: Determines, if two passwords edit lines with obscured passwords should be used.
+cha: CLIENT_addClient: 
+cha: CChecks::checkRootpassword, CChecks::firstpw: Now are returning false and giving out an error message, if the double-entered user or root passwords don't match.
++++++
 2020-11-07
 cha: checks.php: Now more and different characters are allowed for group names.
 +++++

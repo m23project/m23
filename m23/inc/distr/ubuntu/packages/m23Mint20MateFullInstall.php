@@ -1,6 +1,6 @@
 <?PHP
 /*
-Description: Linux Mint 20 minimal Mate Desktop
+Description: Linux Mint 20 full Mate Desktop
 Priority:20
 */
 
@@ -9,7 +9,7 @@ function run($id)
 ////	include_once('/m23/inc/distr/debian/clientConfigCommon.php');
 	include_once('/m23/inc/distr/ubuntu/clientConfig.php');
 
-	UBUNTU_desktopInstall(MINT20DESKTOP_MATE, false, true, false, false, true, true);
+	UBUNTU_desktopInstall(MINT20DESKTOP_MATEFULL, false, true, false, false, true, true);
 
 	sendClientStatus($id,"done");
 	sendClientStageStatus(STATUS_GREEN);

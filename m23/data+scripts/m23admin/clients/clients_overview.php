@@ -18,6 +18,8 @@
 	$clientUpdateJobsMaxAllowedDelay = SERVER_getWarnWhenUpdateJobsAreDelayed();
 	$clientRebootMaxAllowedDelay = SERVER_getWarnWhenClientRebootsRequestedByPackagesAreDelayed();
 	$clientLastUpgradeColumn = SERVER_getShowClientLastUpgradeColumn();
+	$clientShowClientIPColumn = SERVER_getShowClientIPColumn();
+	$clientShowClientMACColumn = SERVER_getShowClientMACColumn();
 
 	//Create editlines and get the search term
 	$searchLine = CLIENT_getOverviewSearchLine(2);
@@ -209,10 +211,20 @@
 	echo("
 	<!-- m23customPatchBegin type=change id=additionalColumnHeadings-->
 	<!-- m23customPatchEnd id=additionalColumnHeadings-->
-	<td align=\"center\"><span class=\"subhighlight\">$I18N_group</span></td>
+	<td align=\"center\"><span class=\"subhighlight\">$I18N_group<br>
+			<a href=\"index.php?page=clientsoverview&orderBy=group&direction=asc&action=$action&searchLine=\"><img src=\"/gfx/upArrow.png\" border=0></a>
+			<a href=\"index.php?page=clientsoverview&orderBy=group&direction=desc&action=$action\&searchLine=\"><img src=\"/gfx/downArrow.png\" border=0></a></span></td>
 	<td></td>
 	<td align=\"center\"><span class=\"subhighlight\">$I18N_packages</span></td>
 	<td align=\"center\"><span class=\"subhighlight\">$I18N_jobs</span></td>
+	");
+	
+	if ($clientShowClientIPColumn)
+		echo("<td align=\"center\"><span class=\"subhighlight\">IP</span></td>");
+	if ($clientShowClientMACColumn)
+		echo("<td align=\"center\"><span class=\"subhighlight\">MAC</span></td>");
+
+	echo("
 	<td align=\"center\">
 		<span class=\"subhighlight\">$I18N_install_date<br>
 			<a href=\"index.php?page=clientsoverview&orderBy=installdate&direction=asc&action=$action&searchLine=$searchLine\"><img src=\"/gfx/upArrow.png\" border=0></a>
@@ -305,11 +317,10 @@
 				$dr_state = CLIENT_generateHTMLDedicatedAndReachableStatus($data['online']);
 				echo("<td align=\"left\">$dr_state[html]</td>");
 			}
-	
 			
 	//m23customPatchBegin type=change id=additionalColumnsDisplayCode
 	//m23customPatchEnd id=additionalColumnsDisplayCode
-	
+
 			echo("
 				<td>");
 
@@ -323,8 +334,16 @@
 			echo("
 				</td>
 				<td> <INPUT type=\"checkbox\" name=\"CB_do$lineNr\" value=\"$data[client]\" $checked> </td>
-				<td> <a href=\"index.php?page=clientpackages&id=$data[id]&client=$data[client]\">$counted_clientpackages</a> </td>
+				<td> <a href=\"index.php?page=clientpackages&id=$data[id]&client=$data[client]\">$counted_clientpackages</a></td>
 				<td> <a href=\"index.php?page=changeJobs&id=$data[id]&client=$data[client]\">$counted_waitingClientjobs/$counted_clientjobs</a> </td>
+");
+				
+			if ($clientShowClientIPColumn)
+				echo("<td align=\"left\">$data[ip]</td>");
+			if ($clientShowClientMACColumn)
+				echo("<td align=\"left\">$data[mac]</td>");
+
+			echo("
 				<td> $installdate </td>
 				<td nowrap> $lastmodify </td>");
 

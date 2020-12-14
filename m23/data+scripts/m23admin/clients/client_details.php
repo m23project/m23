@@ -60,11 +60,26 @@ CLIENT_DETAILS_beginCategory($I18N_clientAdministration, "clientAdmin");
 CLIENT_DETAILS_addIcon("installpackages", "", "install.png", "$I18N_install_packages", $I18N_install_packages_tooltip);
 CLIENT_DETAILS_addIcon("installpackages", "&action=deinstall", "deinstall.png", "$I18N_deinstall_packages", $I18N_deinstall_packages_tooltip);
 CLIENT_DETAILS_addIcon("updatepackages", "", "packagesUpdate.png", "$I18N_updateClient", $I18N_updateClient_tooltip);
-CLIENT_DETAILS_addIcon("changeJobs", "", "changeJobs.png", "$I18N_changeJobs", $I18N_changeJobs_tooltip);
-CLIENT_DETAILS_addIcon("editclient&clearSession=1", "", "edit.png", "$I18N_edit_client", $I18N_edit_client_tooltip);
+CLIENT_DETAILS_addIcon("recoverclient&redoJobs=1", "", "redoJobs.png", "$I18N_redo_client_jobs", $I18N_redo_client_jobs_tooltip);
+
+
 echo('</tr><tr>'); //Make a second row for the icons
+//============================
+
 CLIENT_DETAILS_addIcon("clientinfo", "&infoType=addToGroup", "groupAdd.png", "$I18N_addToGroup", $I18N_addToGroup_tooltip);
 CLIENT_DETAILS_addIcon("clientinfo", "&infoType=delFromGroup", "groupDelete.png", "$I18N_removeFromGroup", $I18N_removeFromGroup_tooltip);
+CLIENT_DETAILS_addIcon("editclient&clearSession=1", "", "edit.png", "$I18N_edit_client", $I18N_edit_client_tooltip);
+CLIENT_DETAILS_addIcon('deleteclient&id='.$_GET['id'].'&client='.$_GET['client'], '', 'trash.png', $I18N_delete_client, $I18N_client_delete_tooltip);
+
+
+
+echo('</tr><tr>'); //Make a third row for the icons
+//============================
+
+if ($params['status'] == STATUS_YELLOW)
+	CLIENT_DETAILS_addIcon('fdisk&id='.$_GET['id'].'&clearSession=1&client='.$_GET['client'], '', 'yellow.png', $I18N_setup_client, $I18N_setup_client_tooltip);
+
+//m23customPatchBegin type=del id=ICONS_delete_backup_createImage_printer
 if (!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared']) CLIENT_DETAILS_addIcon("backup", "", "backup.png", "$I18N_backup", $I18N_backup_tooltip);
 if (!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared']) CLIENT_DETAILS_addIcon("createImage", "", "imaging.png", "$I18N_createImage", $I18N_createImage_tooltip);
 
@@ -72,29 +87,14 @@ if (isset($options['m23cupsadminPW']{1}))
 	$cupsUserPW = "m23cupsadmin:$options[m23cupsadminPW]@";
 else
 	$cupsUserPW = '';
-
 CLIENT_DETAILS_addIcon2("https://$cupsUserPW$params[ip]:631/admin/", "printer.png", "$I18N_printer", $I18N_printer_tooltip);
-echo('</tr><tr>'); //Make a third row for the icons
+//m23customPatchEnd id=ICONS_delete_backup_createImage_printer
 
-CLIENT_DETAILS_addIcon("poolFromClientDebs", "", "poolFromClient.png", $I18N_poolFromClientDebs, $I18N_createPoolFromClientDebs_tooltip);
-CLIENT_DETAILS_addIcon('deleteclient&id='.$_GET['id'].'&client='.$_GET['client'], '', 'trash.png', $I18N_delete_client, $I18N_client_delete_tooltip);
-
-if ($params['status'] == STATUS_YELLOW)
-	CLIENT_DETAILS_addIcon('fdisk&id='.$_GET['id'].'&clearSession=1&client='.$_GET['client'], '', 'yellow.png', $I18N_setup_client, $I18N_setup_client_tooltip);
 CLIENT_DETAILS_endCategory();
 
 
 
 CLIENT_DETAILS_beginCategory($I18N_repairCriticalStatus, "criticalStatus");
-CLIENT_DETAILS_addIcon("recoverclient", "", "reload.png", "$I18N_recover_client", $I18N_recover_client_tooltip);
-CLIENT_DETAILS_addIcon("recoverclient&redoJobs=1", "", "redoJobs.png", "$I18N_redo_client_jobs", $I18N_redo_client_jobs_tooltip);
-CLIENT_DETAILS_addIcon("recoverclient&backToRed=1", "", "backToRed.png", "$I18N_back_to_red", $I18N_back_to_red_tooltip);
-CLIENT_DETAILS_addIcon("recoverclient&combineJobs=1", "", "redoJobsCombineJobs.png", "$I18N_recover_client_combine_jobs", $I18N_recover_client_combine_jobs_tooltip);
-
-
-
-echo("</tr><tr>"); //Make a second row for the icons
-
 //Toggle title and command depending on the rescuemode status
 	if (CLIENT_isInRescueMode($_GET['client']))
 		{
@@ -108,15 +108,27 @@ echo("</tr><tr>"); //Make a second row for the icons
 			$tooltip = $I18N_startRescueSystem_tooltip;
 			$rescueStatus = 0;
 		};
+CLIENT_DETAILS_addIcon("rescueclient", "&deactivate=$rescueStatus", "help.png", "$label", $tooltip);
+CLIENT_DETAILS_addIcon("recoverclient", "", "reload.png", "$I18N_recover_client", $I18N_recover_client_tooltip);
+CLIENT_DETAILS_addIcon("recoverclient&backToRed=1", "", "backToRed.png", "$I18N_back_to_red", $I18N_back_to_red_tooltip);
+CLIENT_DETAILS_addIcon("recoverclient&combineJobs=1", "", "redoJobsCombineJobs.png", "$I18N_recover_client_combine_jobs", $I18N_recover_client_combine_jobs_tooltip);
+
+
+
+echo("</tr><tr>"); //Make a second row for the icons
+
+
+CLIENT_DETAILS_addIcon("changeJobs", "", "changeJobs.png", "$I18N_changeJobs", $I18N_changeJobs_tooltip);
 CLIENT_DETAILS_addIcon("clientstatus", "", "trafficLights.png", "$I18N_change_client_status", $I18N_change_client_status_tooltip);
 
 CLIENT_DETAILS_addIcon("clientdebug", "", "bug.png", "$I18N_change_debug_status", $I18N_change_debug_status_tooltip);
 CLIENT_DETAILS_addIcon("clientinfo", "&infoType=directConnect", "connect.png", "$I18N_client_directConnect", $I18N_client_directConnect_tooltip);
-CLIENT_DETAILS_addIcon("showCurrentWorkPHP", '&m23clientID='.$_GET['id'], 'workPHP.png', "$I18N_currentWorkPHP", $I18N_currentWorkPHP_tooltip);
 
 echo("</tr><tr>"); //Make a third row for the icons
 
-CLIENT_DETAILS_addIcon("rescueclient", "&deactivate=$rescueStatus", "help.png", "$label", $tooltip);
+CLIENT_DETAILS_addIcon("poolFromClientDebs", "", "poolFromClient.png", $I18N_poolFromClientDebs, $I18N_createPoolFromClientDebs_tooltip);
+CLIENT_DETAILS_addIcon("showCurrentWorkPHP", '&m23clientID='.$_GET['id'], 'workPHP.png', "$I18N_currentWorkPHP", $I18N_currentWorkPHP_tooltip);
+
 
 CLIENT_DETAILS_endCategory();
 

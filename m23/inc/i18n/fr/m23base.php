@@ -344,7 +344,6 @@ include("/m23/inc/i18n/en/m23base.php");
 @$I18N_startUpdate="Commencer la mise à jour";
 @$I18N_updateJobHasBeenStored="La tâche &laquo;Mise à jour&raquo; a été enregistrée!";
 @$I18N_criticalClients="Postes clients critiques";
-@$I18N_repairCriticalStatus="Réparer l&apos;état critique";
 @$I18N_solutionProposal="Proposition de solution";
 @$I18N_repair="Réparer";
 @$I18N_change_client_status="Changer l&apos;état du poste client";
@@ -1517,4 +1516,13 @@ Entrez \"0\" pour désactiver l'affichage d'un avertissement.</br>
 
 //20.1a
 @$I18N_handleAllClientsAsDynamic = 'Traiter tous les clients m23 comme des clients avec des IP dynamiques';
+
+//20.1b
+@$I18N_2xPasswordDialogEnabled = "Activer la demande de mot de passe avec double saisie obscurcie";
+@$I18N_root_passwords_dont_match="Les mots de passe de la racine ne correspondent pas!";
+@$I18N_firstpw_passwords_dont_match="Les mots de passe des utilisateurs ne correspondent pas!"
+@$I18N_makePasswordsInvisibleEnabled = "Rendre les mots de passe invisibles (par exemple dans $I18N_controlCenter)";
+@$I18N_m23webinterfaceAdjustments = "m23 web interface adjustments";
+@$I18N_showShowClientIPColumn = "Afficher l'IP du client dans $I18N_overview_clients";
+@$I18N_repairCriticalStatus = 'Mode expert';
 ?>

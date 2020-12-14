@@ -236,7 +236,7 @@ function PREF_putValue($name, $var, $value)
 	if (is_array($value))
 		$value = implode("###", $value);
 		
-	print("<h3>PREF_putValue($name, $var, $value)</h3>");
+// 	print("<h3>PREF_putValue($name, $var, $value)</h3>");
 
 	$tval = trim($value);
 

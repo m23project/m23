@@ -43,7 +43,7 @@ functions for installing (clientInstall.php) and configuring (clientConfig.php) 
 				$$key=$pkgParams[$key];
 
 		CLCFG_interfaces($ip,$gateway,$netmask);
-	};
+	}
 
 
 	//set DNS servers

@@ -2098,6 +2098,35 @@ class CClient extends CChecks
 
 
 /**
+**name CClient::setUCSNetwork($UCSNetwork)
+**description Sets the UCSNetwork for the client.
+**parameter UCSNetwork: Name of the UCSNetwork.
+**returns true on successfully setting the client's UCSNetwork, otherwise false.
+**/
+	public function setUCSNetwork($UCSNetwork)
+	{
+		$this->clientInfo['UCSNetwork'] = $UCSNetwork;
+	}
+
+
+
+
+
+/**
+**name CClient::getUCSNetwork()
+**description Returns the client's UCSNetwork.
+**returns UCSNetwork of the client.
+**/
+	public function getUCSNetwork()
+	{
+		return($this->getProperty('UCSNetwork', 'getUCSNetwork: No UCSNetwork set.', false));
+	}
+
+
+
+
+
+/**
 **name CClient::setGateway($gateway)
 **description Sets the gateway address for the client.
 **parameter gateway: IP address of the gateway.

@@ -68,9 +68,13 @@ CAPTURE_showMessageBox();
 			"/gfx/status/yellow.png");
 		MENU_showEntry($I18N_delete,"index.php?page=clientsoverview&action=delete",
 			"/gfx/mini_trash.png");
+//m23customPatchBegin type=del id=MENU_delete_assimilate_makeBootMedia
 		if ((!isset($_SESSION['m23Shared']) || !$_SESSION['m23Shared']))  MENU_showEntry($I18N_assimilate,"index.php?page=assimilate",
 			"/gfx/assimilate-mini.png");
+
 		MENU_showEntry($I18N_makeBootMedia,"index.php?page=makeBootMedia","/gfx/cdrom-mini.png");
+//m23customPatchEnd id=MENU_delete_assimilate_makeBootMedia
+
 // 		PLG_listMenuPlugins("/m23/data+scripts/m23admin/clients/");
 	MENU_endGroup();
 

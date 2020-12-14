@@ -604,8 +604,14 @@ function DHCP_writePXEcfg($clientName, $clientID, $arch)
 		 die("Cannot open /m23/tftp/pxelinux.cfg/$iphex!");
 
 	fputs($fp,"LABEL linux\n");
-	fputs($fp,"KERNEL m23pxeinstall-$arch\n");
-	fputs($fp,"APPEND devfs=nomount vga=normal load_ramdisk=1 m23server=$m23server m23clientID=$clientID prompt_ramdisk=0 ramdisk_size=$kernelRamDisk initrd=initrd-$arch.gz root=/dev/ram0 rw\n");
+	
+	// Old PXELINUX (2004)
+/*	fputs($fp,"KERNEL m23pxeinstall-$arch\n");
+	fputs($fp,"APPEND devfs=nomount vga=normal load_ramdisk=1 m23server=$m23server m23clientID=$clientID prompt_ramdisk=0 ramdisk_size=$kernelRamDisk initrd=initrd-$arch.gz root=/dev/ram0 rw\n");*/
+
+	// New PXELINUX (2014)
+	fputs($fp,"DEFAULT m23pxeinstall-$arch devfs=nomount vga=normal load_ramdisk=1 m23server=$m23server m23clientID=$clientID prompt_ramdisk=0 ramdisk_size=$kernelRamDisk initrd=initrd-$arch.gz root=/dev/ram0 rw\n");
+
 
 	fclose($fp);
 	chmod($fileName, 0755);

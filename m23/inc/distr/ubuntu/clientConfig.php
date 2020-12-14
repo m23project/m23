@@ -99,6 +99,7 @@ define('UBUNTUDESKTOP_LUBUNTU_2004', 6006);
 define('MINT20DESKTOP_CINNAMON', 6014);
 define('MINT20DESKTOP_MATE', 6015);
 define('MINT20_XFCEFULL', 6016);
+define('MINT20DESKTOP_MATEFULL', 6017);
 
 // lubuntu-desktop
 // ubuntu-budgie-desktop
@@ -554,9 +555,17 @@ function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $no
 			$removeGdm3UbuntuSessionEnableLightdm = true;
 		break;
 
-
 		case MINT20DESKTOP_MATE:
- 			$desktopPackages = 'mint-info-mate mint-meta-core mint-meta-mate mint-x-icons mint-y-icons mintdesktop '.$linuxMint20BasePackages;
+			$desktopPackages = 'mint-info-mate mint-meta-core mint-meta-mate mint-x-icons mint-y-icons mintdesktop '.$linuxMint20BasePackages;
+			$dialogHeader = $I18N_installingMate;
+			$snapRemove2004 = true;
+			$session = 'mate.desktop';
+			$displayManager = UBUNTDM_LIGHTDM;
+			$removeGdm3UbuntuSessionEnableLightdm = true;
+		break;
+
+		case MINT20DESKTOP_MATEFULL:
+			$desktopPackages = 'mate-desktop mint-info-mate mint-meta-core mint-meta-mate mint-x-icons mint-y-icons mintdesktop mint-meta-codecs mate-desktop-environment firefox libreoffice gimp inkscape vlc thunderbird flameshot krita chromium audacity evince frozen-bubble gnome-games pluma pix engrampa gnote xviewer catfish '.$linuxMint20BasePackages;
 			$dialogHeader = $I18N_installingMate;
 			$snapRemove2004 = true;
 			$session = 'mate.desktop';
@@ -567,7 +576,6 @@ function UBUNTU_desktopInstall($desktop, $globalMenu, $normalButtonPosition, $no
 		case MINT20_XFCEFULL:
 			CLCFG_aptGet('install', 'libglib2.0-bin');
 			$desktopPackages = "mint-meta-xfce mint-info-xfce mint-themes xfce-keyboard-shortcuts xfce4-appfinder xfce4-datetime-plugin xfce4-dict xfce4-indicator-plugin xfce4-notifyd xfce4-panel xfce4-places-plugin xfce4-power-manager xfce4-power-manager-data xfce4-power-manager-plugins xfce4-screenshooter xfce4-session xfce4-settings xfce4-taskmanager xfce4-terminal xfce4-volumed xfce4-weather-plugin xfce4-whiskermenu-plugin xfce4-xkb-plugin mint-meta-codecs mint-meta-core ".$linuxMint20BasePackages;
-// 			$desktopPackages = 'xubuntu-desktop';
 			$dialogHeader = $I18N_installing_xfce;
 // 			$session = 'xfce';
 			$session = 'xfce.desktop';

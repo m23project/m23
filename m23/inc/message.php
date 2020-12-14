@@ -207,7 +207,7 @@ function MSG_showError($message,$language="",$width=700)
 **/
 function MSG_showEmergencyError($message,$language="",$width=700)
 {
-	MSG_showError("$message<br><button onclick=\"window.history.back()\">Back/Zurück/Retour</button>",$language,$width);
+	MSG_showError("$message<br>".H_JSBACKBUTTON,$language,$width);
 	exit(1);
 }
 

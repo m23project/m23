@@ -295,6 +295,14 @@ class CChecks extends CMessageManager
 	public function checkRootpassword($rootpassword)
 	{
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+		// false (from SERVER_set2xPasswordDialogEnabled) indicates that the 2 entered passwords didn't match
+		if ($rootpassword === false)
+		{
+			$this->addErrorMessage($I18N_root_passwords_dont_match);
+			return(false);
+		}
+
 		return($this->genericCHECK_FW(CC_rootpassword, $rootpassword, $I18N_rootpasswordInvalid));
 	}
 
@@ -312,6 +320,13 @@ class CChecks extends CMessageManager
 	public function firstpw($pass, $allowEmpty = false)
 	{
 		include("/m23/inc/i18n/".$GLOBALS["m23_language"]."/m23base.php");
+
+		// false (from SERVER_set2xPasswordDialogEnabled) indicates that the 2 entered passwords didn't match
+		if ($pass === false)
+		{
+			$this->addErrorMessage($I18N_firstpw_passwords_dont_match);
+			return(false);
+		}
 
 		if ($allowEmpty)
 			$CC = CC_firstpwOrEmpty;

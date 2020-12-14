@@ -354,7 +354,6 @@
 @$I18N_startUpdate="Update starten";
 @$I18N_updateJobHasBeenStored="Update-Auftrag wurde gespeichert!";
 @$I18N_criticalClients="Kritische Clients";
-@$I18N_repairCriticalStatus="Kritischen Status beheben";
 @$I18N_solutionProposal="Lösungsvorschlag";
 @$I18N_repair="Reparieren";
 @$I18N_netRootPwd="Bootimage-Root-Paßwort";
@@ -1526,4 +1525,15 @@ Geben Sie \"0\" zum Deaktivieren der Warnung ein.</br>
 
 //20.1a
 @$I18N_handleAllClientsAsDynamic = 'Alle m23-Clients wie Clients mit dynamischen IPs behandeln';
+
+//20.1b
+@$I18N_2xPasswordDialogEnabled = 'Paßwortabfrage mit zweifacher verschleierter Eingabe aktivieren';
+@$I18N_root_passwords_dont_match="root-Paßwörter stimmen nicht überein!";
+@$I18N_firstpw_passwords_dont_match="Benutzer-Paßwörter stimmen nicht überein!";
+@$I18N_makePasswordsInvisibleEnabled = "Paßwörter unsichtbar machen (z.B. im $I18N_controlCenter)";
+@$I18N_m23webinterfaceAdjustments = 'm23-Weboberflächenanpassungen';
+@$I18N_showShowClientIPColumn = "Client-IP im $I18N_overview_clients anzeigen";
+@$I18N_repairCriticalStatus = 'Expertenmodus';
+@$I18N_showShowClientMACColumn = "Client-MAC im $I18N_overview_clients anzeigen";
+@$I18N_partInformationArePresentWarning = 'Dieser m23-Client wurde bereits partitioniert und formatiert. Wenn Sie fortfahren, werden die vorherigen Partitionierungs- und Formatierungsinformationen verworfen.';
 ?>

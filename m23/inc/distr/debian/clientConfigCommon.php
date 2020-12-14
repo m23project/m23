@@ -599,10 +599,10 @@ function CLCFG_makeDev()
 		./MAKEDEV generic 2> /dev/null
 	fi
 
-	mknod vda b 254 0
+	mknod vda b 254 0 2> /dev/null
 	for i in `seq 1 9`
 	do
-		mknod vda\$i b 254 \$i
+		mknod vda\$i b 254 \$i 2> /dev/null
 	done
 
 	cd \$cDir
@@ -1951,6 +1951,9 @@ if ($bootloader == "grub")
 
 					# Disable splash (can lead to corrupted framebuffer console)
 					sed -i 's/splash//' /etc/default/grub
+
+					# Set grub timeout to 5 seconds
+					sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=5/g' /etc/default/grub
 
 					update-grub
 				fi

@@ -9,6 +9,48 @@ define('H_SHB','<span class="subhighlight">');
 define('H_SHE','</span>');
 define('H_MESSAGEBOXPLACEHOLDER', '<!-- MessageBoxPlaceholder -->');
 define('H_AJAXAUTOSUBMIT_VALUE','submit');
+define('H_JSBACKBUTTON',"<button class=\"linkAsButton\" onclick=\"window.history.back()\">Back/Zurück/Retour</button>");
+
+
+
+
+
+/**
+**name HTML_rowColor(&$lastRow)
+**description Toggles the row color between oddrow and evenrow class.
+**parameter lastRow: External variable to store the last row state.
+**returns Newly set row color.
+**/
+function HTML_rowColor(&$lastRow)
+{
+	$oddrow = 'class="oddrow"';
+	$evenrow = 'class="evenrow"';
+
+	if ($lastRow == $evenrow)
+		$lastRow = $oddrow;
+	else
+		$lastRow = $evenrow;
+
+	return($lastRow);
+}
+
+
+
+
+
+/**
+**name HTML_getInvisiblePasswordsIfFeatureEnabled($pass)
+**description Makes a password invisible by setting text color to "transparent", if the "makePasswordsInvisibleEnabled" feature is active, otherwise it will be shown normally.
+**parameter pass: The password to make (in)visble.
+**returns Visible or invisible password.
+**/
+function HTML_getInvisiblePasswordsIfFeatureEnabled($pass)
+{
+	if (SERVER_getMakePasswordsInvisibleEnabled())
+		return('<img src="/gfx/eye-mini.png"><span style="color: transparent">'.$pass.'</span><img src="/gfx/eye-mini.png">');
+	else
+		return($pass);
+}
 
 
 
@@ -17,9 +59,9 @@ define('H_AJAXAUTOSUBMIT_VALUE','submit');
 /**
 **name HTML_waitAnimation($htmlName, $waitText, $width = -1)
 **description Defines HTML code for showing a waiting animation and onClick code for insering into buttons. The JavaScript showing function is given out where the PHP function is called.
-**parameter $htmlName: Base name for the defines and naming of the JavaScript function and DIVs.
-**parameter $waitText: Text to show while the animation runs.
-**parameter $width: Width for the animation image or unscaled if not set.
+**parameter htmlName: Base name for the defines and naming of the JavaScript function and DIVs.
+**parameter waitText: Text to show while the animation runs.
+**parameter width: Width for the animation image or unscaled if not set.
 **/
 function HTML_waitAnimation($htmlName, $waitText, $width = -1)
 {
@@ -68,14 +110,14 @@ function HTML_waitAnimation($htmlName, $waitText, $width = -1)
 /**
 **name HTML_imgSwitch($htmlName, $off_img, $on_img, $off_text, $on_text, $separator, $default, &$outState)
 **description Defines an image button with two states and a text next to it.
-**parameter $htmlName: Name of the html image input element.
-**parameter $off_img: Name and path of image to be displayed if its state is "off"
-**parameter $on_img: Name and path of image to be displayed it its state is "on"
-**parameter $off_text: Text to be displayed if state is "off"
-**parameter $on_text: Text to be displayed if state is "on"
-**parameter $separator: Anything which shall be displayed between the picture (clickable) and the text (not clickable)
-**parameter $default: State of the image input element on first load of page ("on" or "off")
-**parameter $outState: Current state of element (true for "on" or false for "off").
+**parameter htmlName: Name of the html image input element.
+**parameter off_img: Name and path of image to be displayed if its state is "off"
+**parameter on_img: Name and path of image to be displayed it its state is "on"
+**parameter off_text: Text to be displayed if state is "off"
+**parameter on_text: Text to be displayed if state is "on"
+**parameter separator: Anything which shall be displayed between the picture (clickable) and the text (not clickable)
+**parameter default: State of the image input element on first load of page ("on" or "off")
+**parameter outState: Current state of element (true for "on" or false for "off").
 **returns true, if the button was clicked otherwise false.
 **/
 function HTML_imgSwitch($htmlName, $off_img, $on_img, $off_text, $on_text, $separator, $default, &$outState)
@@ -1475,6 +1517,45 @@ function HTML_storableInput($htmlName, $prefKey, $initValue = false, &$storePoin
 		$storePointer = $initValue;
 
 	return($initValue);
+}
+
+
+
+
+
+/**
+**name HTML_storable2xPassword($htmlName, $prefKey, $initValue = false, &$storePointer = false, $size=20, $maxlength=255, $type = INPUT_TYPE_password, $extraHTML = '')
+**description HTML 2x password edit lines for entering and re-entering a the same password.
+**parameter htmlName: Name of the HTML element.
+**parameter prefKey: Variable name of the preference the dialog element stands for.
+**parameter initValue: The initial value if the element is shown first.
+**parameter storePointer: Additional pointer to the variable where to store the entered value.
+**parameter size: Size (in characters) of the input line.
+**parameter maxlength: The maximum length of the entered text.
+**parameter type: unused, but there to be parameter compatible with HTML_storableInput.
+**parameter extraHTML: Extra HTML/JavaScript code 
+**returns Returns the password, if it's equal in both password edit lines, or false.
+**/
+function HTML_storable2xPassword($htmlName, $prefKey, $initValue = false, &$storePointer = false, $size=20, $maxlength=255, $type = INPUT_TYPE_password, $extraHTML = '')
+{
+	// Variables for the 2nd password line
+	$prefKeyPw2 = "${prefKey}_pw2";
+	$storePointerPw2 = false;
+
+	$pw1 = HTML_storableInput("${htmlName}_pw1", $prefKey, $initValue, $storePointer, $size, $maxlength, INPUT_TYPE_password, $extraHTML);
+	$pw2 = HTML_storableInput("${htmlName}_pw2", $prefKeyPw2, $initValue, $storePointerPw2, $size, $maxlength, INPUT_TYPE_password, $extraHTML);
+
+	// Build combined
+	define($htmlName,constant("${htmlName}_pw1").'&nbsp;'.constant("${htmlName}_pw2"));
+
+	// Check for equality of entered passwords
+	if ($pw1 != $pw2)
+	{
+		$storePointer = false;
+		return(false);
+	}
+
+	return($pw1);
 }
 
 

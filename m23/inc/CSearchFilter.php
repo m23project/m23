@@ -178,7 +178,8 @@ class CSearchFilter extends CChecks
 				'sql_vprefix' => "^",
 				'sql_vpostfix' => "$",
 				'sql_gc_vprefix' => "(^|,)",
-				'sql_gc_vpostfix' => "(,|$)"));
+				'sql_gc_vpostfix' => "(,|$)",
+				'sql_include_null' => true));
 		$this->OPERATOR_NUMBER = array(
 			'SFO_LESS_THAN' => array(
 				'value' => "SFO_LESS_THAN",
@@ -225,7 +226,8 @@ class CSearchFilter extends CChecks
 				'name' => $I18N_not_begins_with,
 				'sql' => "NOT REGEXP",
 				'sql_vprefix' => "^",
-				'sql_gc_vprefix' => "(^|,)"),
+				'sql_gc_vprefix' => "(^|,)",
+				'sql_include_null' => true),
 			'SFO_ENDS_WITH' => array(
 				'value' => "SFO_ENDS_WITH",
 				'name' => $I18N_ends_with,
@@ -237,7 +239,8 @@ class CSearchFilter extends CChecks
 				'name' => $I18N_not_ends_with,
 				'sql' => "NOT REGEXP",
 				'sql_vpostfix' => "$",
-				'sql_gc_vpostfix' => "(,|$)"),
+				'sql_gc_vpostfix' => "(,|$)",
+				'sql_include_null' => true),
 			'SFO_CONTAINS' => array(
 				'value' => "SFO_CONTAINS",
 				'name' => $I18N_contains,
@@ -245,7 +248,8 @@ class CSearchFilter extends CChecks
 			'SFO_NOT_CONTAINS' => array(
 				'value' => "SFO_NOT_CONTAINS",
 				'name' => $I18N_not_contains,
-				'sql' => "NOT REGEXP"));
+				'sql' => "NOT REGEXP",
+				'sql_include_null' => true));
 		$this->ALLOPERATORS = $this->OPERATOR_GENERAL + $this->OPERATOR_NUMBER + $this->OPERATOR_TEXT + $this->OPERATOR_DATE;
 
 		/**
@@ -503,9 +507,17 @@ class CSearchFilter extends CChecks
 
 			// assuming where and having are exclusive
 			if (!empty($this->PROPERTY[$filter['property']]['sql_where']))
-				$whereClauseArr[] = str_replace($this->SQLREPLACE, $sqlreplacewith, $this->PROPERTY[$filter['property']]['sql_where']);
+				if(!empty($this->ALLOPERATORS[$filter['operator']]['sql_include_null']) && $this->ALLOPERATORS[$filter['operator']]['sql_include_null'])
+					$whereClauseArr[] = "(".explode(" ", $this->PROPERTY[$filter['property']]['sql_where'])[0]." IS NULL OR ".
+								str_replace($this->SQLREPLACE, $sqlreplacewith, $this->PROPERTY[$filter['property']]['sql_where']).")";
+				else
+					$whereClauseArr[] = str_replace($this->SQLREPLACE, $sqlreplacewith, $this->PROPERTY[$filter['property']]['sql_where']);
 			else
-				$havingClauseArr[] = str_replace($this->SQLREPLACE, $sqlreplacewith, $this->PROPERTY[$filter['property']]['sql_having']);
+				if(!empty($this->ALLOPERATORS[$filter['operator']]['sql_include_null']) && $this->ALLOPERATORS[$filter['operator']]['sql_include_null'])
+					$havingClauseArr[] = "(".explode(" ", $this->PROPERTY[$filter['property']]['sql_having'])[0]." IS NULL OR ".
+								str_replace($this->SQLREPLACE, $sqlreplacewith, $this->PROPERTY[$filter['property']]['sql_having']).")";
+				else
+					$havingClauseArr[] = str_replace($this->SQLREPLACE, $sqlreplacewith, $this->PROPERTY[$filter['property']]['sql_having']);
 
 			if (!empty($this->PROPERTY[$filter['property']]['sql_groupby']))
 				$groupbyClauseArr[] = $this->PROPERTY[$filter['property']]['sql_groupby'];
@@ -1037,6 +1049,10 @@ document.getElementById(valueId).parentNode.appendChild(newScript);';
 						case "lastchange":
 							$orderBy=$this->PROPERTY['SFP_LAST_CHANGE_DATE']['value'];
 							break;
+						case "group":
+							$orderBy=$this->PROPERTY['SFP_GROUP']['value'];
+							break;
+							
 						//case "ip":
 						//	$orderBy="";
 						//	break;
