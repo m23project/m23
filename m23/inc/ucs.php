@@ -221,11 +221,12 @@ function UCS_getAllClientNamesLDAP()
 
 
 /**
-**name UCS_getUDMCompleteInfo($udmModule)
+**name UCS_getUDMCompleteInfo($udmModule, $multiple = false)
 **description Get complete information from the UCS's LDAP by udm tool for a given module.
-**returns: Array with associative arrays containing the information of all blocks.
+**parameter multiple: true, if there are multiple values with identical key names.
+**returns: Array with associative arrays containing the information of all blocks. If multiple is active, the values are stored under [key][...] = $val otherwise under [key] = $val.
 **/
-function UCS_getUDMCompleteInfo($udmModule)
+function UCS_getUDMCompleteInfo($udmModule, $multiple = false)
 {
 	$counterArr = $out = array();
 	$blockNr = 0;
@@ -253,8 +254,30 @@ function UCS_getUDMCompleteInfo($udmModule)
 			continue;
 		}
 
-		$out[$blockNr][$keyValue[0]] = $keyValue[1];
+		// Store value directly or in an array
+		if ($multiple)
+			$out[$blockNr][$keyValue[0]][] = $keyValue[1];
+		else
+			$out[$blockNr][$keyValue[0]] = $keyValue[1];
 	}
+	
+	return($out);
+}
+
+
+
+
+
+/**
+**name UCS_getOrganisationUnits()
+**description Get information about all organisation units (eg. schools).
+**returns: Associative array with all organisation units. Name as key, name and display name as value.
+**/
+function UCS_getOrganisationUnits()
+{
+	$out = array();
+	foreach (UCS_getUDMCompleteInfo('container/ou') as $info)
+		$out[$info['name']] = $info['name'].' ('.$info['displayName'].')';
 	
 	return($out);
 }
